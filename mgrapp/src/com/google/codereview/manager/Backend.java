@@ -182,18 +182,6 @@ name|ScheduledExecutorService
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
 comment|/**  * Configuration and state related to a single Gerrit backend process.  */
 end_comment
@@ -407,15 +395,9 @@ parameter_list|)
 block|{
 name|executor
 operator|.
-name|schedule
+name|submit
 argument_list|(
 name|task
-argument_list|,
-literal|0
-argument_list|,
-name|TimeUnit
-operator|.
-name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 block|}
