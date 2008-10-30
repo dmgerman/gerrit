@@ -1183,15 +1183,13 @@ name|shutdown
 argument_list|()
 expr_stmt|;
 name|boolean
-name|waiting
-init|=
-literal|true
+name|isTerminated
 decl_stmt|;
 do|do
 block|{
 try|try
 block|{
-name|waiting
+name|isTerminated
 operator|=
 name|pool
 operator|.
@@ -1210,11 +1208,17 @@ parameter_list|(
 name|InterruptedException
 name|ie
 parameter_list|)
-block|{           }
+block|{
+name|isTerminated
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
-name|waiting
+operator|!
+name|isTerminated
 condition|)
 do|;
 name|LOG
