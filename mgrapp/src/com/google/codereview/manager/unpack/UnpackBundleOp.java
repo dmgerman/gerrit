@@ -300,6 +300,20 @@ name|jgit
 operator|.
 name|errors
 operator|.
+name|IncorrectObjectTypeException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|spearce
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
 name|MissingBundlePrerequisiteException
 import|;
 end_import
@@ -1194,6 +1208,18 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IncorrectObjectTypeException
+name|notCommit
+parameter_list|)
+block|{
+comment|// These happen in some repositories like linux-2.6.git where
+comment|// there is an annotated tag pointing at a tree, or in git.git
+comment|// where there is an annotated tag pointing at a blob.
+comment|//
+continue|continue;
 block|}
 catch|catch
 parameter_list|(
