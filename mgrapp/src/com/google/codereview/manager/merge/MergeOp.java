@@ -1709,10 +1709,12 @@ condition|(
 name|failed
 operator|.
 name|patchsetKey
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+continue|continue;
+block|}
 name|failed
 operator|.
 name|statusCode
@@ -1733,7 +1735,6 @@ name|failed
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|LOG
 operator|.
