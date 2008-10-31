@@ -110,6 +110,16 @@ name|RevCommit
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Extended commit entity with code review specific metadata. */
 end_comment
@@ -137,6 +147,14 @@ name|MergeResultItem
 operator|.
 name|CodeType
 name|statusCode
+decl_stmt|;
+comment|/** Commits which are missing ancestors of this commit. */
+DECL|field|missing
+name|List
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|missing
 decl_stmt|;
 DECL|method|CodeReviewCommit (final AnyObjectId id)
 name|CodeReviewCommit
