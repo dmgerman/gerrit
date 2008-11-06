@@ -182,6 +182,11 @@ specifier|private
 name|boolean
 name|truncated
 decl_stmt|;
+DECL|field|merge
+specifier|private
+name|boolean
+name|merge
+decl_stmt|;
 DECL|field|lines
 specifier|private
 name|List
@@ -353,6 +358,29 @@ name|b
 parameter_list|)
 block|{
 name|truncated
+operator|=
+name|b
+expr_stmt|;
+block|}
+DECL|method|isMerge ()
+name|boolean
+name|isMerge
+parameter_list|()
+block|{
+return|return
+name|merge
+return|;
+block|}
+DECL|method|setMerge (final boolean b)
+name|void
+name|setMerge
+parameter_list|(
+specifier|final
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|merge
 operator|=
 name|b
 expr_stmt|;
