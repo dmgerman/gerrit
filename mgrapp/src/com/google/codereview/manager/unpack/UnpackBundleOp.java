@@ -1641,6 +1641,16 @@ name|c
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|req
+operator|.
+name|setBundleKey
+argument_list|(
+name|in
+operator|.
+name|getBundleKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 specifier|final
 name|MutableBoolean
 name|continueCreation
