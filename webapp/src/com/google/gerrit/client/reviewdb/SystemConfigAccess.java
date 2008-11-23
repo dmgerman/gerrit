@@ -76,7 +76,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Relation
+name|Access
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Schema
+name|OrmException
 import|;
 end_import
 
@@ -104,43 +104,45 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Sequence
+name|PrimaryKey
 import|;
 end_import
 
 begin_comment
-comment|/** The review service database schema. */
+comment|/** Access interface for {@link SystemConfig}. */
 end_comment
 
 begin_interface
-DECL|interface|ReviewDb
+DECL|interface|SystemConfigAccess
 specifier|public
 interface|interface
-name|ReviewDb
+name|SystemConfigAccess
 extends|extends
-name|Schema
+name|Access
+argument_list|<
+name|SystemConfig
+argument_list|,
+name|SystemConfig
+operator|.
+name|Key
+argument_list|>
 block|{
 annotation|@
-name|Relation
-DECL|method|systemConfig ()
-name|SystemConfigAccess
-name|systemConfig
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|accounts ()
-name|AccountAccess
-name|accounts
-parameter_list|()
-function_decl|;
-comment|/** Create the next unique id for an {@link Account}. */
-annotation|@
-name|Sequence
-DECL|method|nextAccountId ()
-name|int
-name|nextAccountId
-parameter_list|()
+name|PrimaryKey
+argument_list|(
+literal|"singleton"
+argument_list|)
+DECL|method|get (SystemConfig.Key key)
+name|SystemConfig
+name|get
+parameter_list|(
+name|SystemConfig
+operator|.
+name|Key
+name|key
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
