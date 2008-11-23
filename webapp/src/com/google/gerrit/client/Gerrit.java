@@ -674,7 +674,7 @@ name|leftMenu
 argument_list|,
 name|DockPanel
 operator|.
-name|WEST
+name|LINE_START
 argument_list|)
 expr_stmt|;
 name|body
