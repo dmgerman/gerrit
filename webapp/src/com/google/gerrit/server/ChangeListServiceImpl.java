@@ -164,20 +164,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|server
-operator|.
-name|JsonServlet
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -202,10 +188,24 @@ specifier|public
 class|class
 name|ChangeListServiceImpl
 extends|extends
-name|JsonServlet
+name|GerritJsonServlet
 implements|implements
 name|ChangeListService
 block|{
+annotation|@
+name|Override
+DECL|method|createServiceHandle ()
+specifier|protected
+name|Object
+name|createServiceHandle
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|this
+return|;
+block|}
 DECL|method|mine (final AsyncCallback<MineResult> callback)
 specifier|public
 name|void
