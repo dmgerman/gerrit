@@ -152,6 +152,15 @@ name|Link
 implements|implements
 name|HistoryListener
 block|{
+DECL|field|SETTINGS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS
+init|=
+literal|"settings"
+decl_stmt|;
 DECL|field|MINE
 specifier|public
 specifier|static
@@ -279,7 +288,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO show error
+comment|// TODO on bad URL
 block|}
 block|}
 DECL|method|select (final String token)

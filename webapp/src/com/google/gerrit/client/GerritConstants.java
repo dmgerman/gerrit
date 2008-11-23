@@ -88,6 +88,26 @@ name|GerritConstants
 extends|extends
 name|Constants
 block|{
+DECL|method|menuSignIn ()
+name|String
+name|menuSignIn
+parameter_list|()
+function_decl|;
+DECL|method|menuSignOut ()
+name|String
+name|menuSignOut
+parameter_list|()
+function_decl|;
+DECL|method|menuSettings ()
+name|String
+name|menuSettings
+parameter_list|()
+function_decl|;
+DECL|method|signInDialogTitle ()
+name|String
+name|signInDialogTitle
+parameter_list|()
+function_decl|;
 DECL|method|leftMenuCodeReviews ()
 name|String
 name|leftMenuCodeReviews
