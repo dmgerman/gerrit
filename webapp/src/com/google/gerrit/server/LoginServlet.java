@@ -615,6 +615,8 @@ argument_list|)
 expr_stmt|;
 name|finishLogin
 argument_list|(
+name|req
+argument_list|,
 name|rsp
 argument_list|,
 literal|null
@@ -661,6 +663,8 @@ comment|// Provider wants us to cancel the attempt.
 comment|//
 name|finishLogin
 argument_list|(
+name|req
+argument_list|,
 name|rsp
 argument_list|,
 literal|null
@@ -711,6 +715,8 @@ comment|// User already authenticated.
 comment|//
 name|finishLogin
 argument_list|(
+name|req
+argument_list|,
 name|rsp
 argument_list|,
 name|user
@@ -857,6 +863,8 @@ block|}
 block|}
 name|finishLogin
 argument_list|(
+name|req
+argument_list|,
 name|rsp
 argument_list|,
 name|user
@@ -1009,6 +1017,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|forceLogout
+argument_list|(
+name|rsp
+argument_list|)
+expr_stmt|;
 comment|// Hard-code to use the Google Account service.
 comment|//
 specifier|final
@@ -1068,11 +1081,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|finishLogin (final HttpServletResponse rsp, final OpenIdUser user, final String email)
+DECL|method|finishLogin (final HttpServletRequest req, final HttpServletResponse rsp, final OpenIdUser user, final String email)
 specifier|private
 name|void
 name|finishLogin
 parameter_list|(
+specifier|final
+name|HttpServletRequest
+name|req
+parameter_list|,
 specifier|final
 name|HttpServletResponse
 name|rsp
@@ -1349,6 +1366,16 @@ argument_list|(
 name|server
 operator|.
 name|getSessionAge
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|c
+operator|.
+name|setPath
+argument_list|(
+name|req
+operator|.
+name|getContextPath
 argument_list|()
 argument_list|)
 expr_stmt|;
