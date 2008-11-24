@@ -176,6 +176,20 @@ name|BranchAccess
 name|branches
 parameter_list|()
 function_decl|;
+annotation|@
+name|Relation
+DECL|method|projectLeadAccounts ()
+name|ProjectLeadAccountAccess
+name|projectLeadAccounts
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|projectLeadGroups ()
+name|ProjectLeadGroupAccess
+name|projectLeadGroups
+parameter_list|()
+function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */
 annotation|@
 name|Sequence
