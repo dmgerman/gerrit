@@ -190,6 +190,41 @@ name|ProjectLeadGroupAccess
 name|projectLeadGroups
 parameter_list|()
 function_decl|;
+annotation|@
+name|Relation
+DECL|method|changes ()
+name|ChangeAccess
+name|changes
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|patchSets ()
+name|PatchSetAccess
+name|patchSets
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|patchSetInfo ()
+name|PatchSetInfoAccess
+name|patchSetInfo
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|patches ()
+name|PatchAccess
+name|patches
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|patchComments ()
+name|PatchLineCommentAccess
+name|patchComments
+parameter_list|()
+function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */
 annotation|@
 name|Sequence
