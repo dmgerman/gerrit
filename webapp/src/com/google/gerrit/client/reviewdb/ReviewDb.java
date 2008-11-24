@@ -162,6 +162,20 @@ name|AccountGroupMemberAccess
 name|accountGroupMembers
 parameter_list|()
 function_decl|;
+annotation|@
+name|Relation
+DECL|method|projects ()
+name|ProjectAccess
+name|projects
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|branches ()
+name|BranchAccess
+name|branches
+parameter_list|()
+function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */
 annotation|@
 name|Sequence
@@ -189,6 +203,22 @@ name|Sequence
 DECL|method|nextAccountGroupId ()
 name|int
 name|nextAccountGroupId
+parameter_list|()
+function_decl|;
+comment|/** Next unique id for a {@link Project}. */
+annotation|@
+name|Sequence
+DECL|method|nextProjectId ()
+name|int
+name|nextProjectId
+parameter_list|()
+function_decl|;
+comment|/** Next unique id for a {@link Branch}. */
+annotation|@
+name|Sequence
+DECL|method|nextBranchId ()
+name|int
+name|nextBranchId
 parameter_list|()
 function_decl|;
 block|}
