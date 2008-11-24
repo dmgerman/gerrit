@@ -76,7 +76,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Relation
+name|Access
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Schema
+name|OrmException
 import|;
 end_import
 
@@ -104,65 +104,110 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Sequence
+name|PrimaryKey
 import|;
 end_import
 
-begin_comment
-comment|/** The review service database schema. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Query
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|ResultSet
+import|;
+end_import
 
 begin_interface
-DECL|interface|ReviewDb
+DECL|interface|AccountAgreementAccess
 specifier|public
 interface|interface
-name|ReviewDb
+name|AccountAgreementAccess
 extends|extends
-name|Schema
+name|Access
+argument_list|<
+name|AccountAgreement
+argument_list|,
+name|AccountAgreement
+operator|.
+name|Key
+argument_list|>
 block|{
 annotation|@
-name|Relation
-DECL|method|systemConfig ()
-name|SystemConfigAccess
-name|systemConfig
-parameter_list|()
+name|PrimaryKey
+argument_list|(
+literal|"key"
+argument_list|)
+DECL|method|get (AccountAgreement.Key key)
+name|AccountAgreement
+name|get
+parameter_list|(
+name|AccountAgreement
+operator|.
+name|Key
+name|key
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 annotation|@
-name|Relation
-DECL|method|contributorAgreements ()
-name|ContributorAgreementAccess
-name|contributorAgreements
-parameter_list|()
+name|Query
+argument_list|(
+literal|"WHERE key.accountId = ? ORDER BY acceptedOn DESC"
+argument_list|)
+DECL|method|byAccount (Account.Id id)
+name|ResultSet
+argument_list|<
+name|AccountAgreement
+argument_list|>
+name|byAccount
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 annotation|@
-name|Relation
-DECL|method|accounts ()
-name|AccountAccess
-name|accounts
+name|Query
+argument_list|(
+literal|"WHERE status = '"
+operator|+
+name|AccountAgreement
+operator|.
+name|STATUS_NEW
+operator|+
+literal|"' ORDER BY acceptedOn DESC"
+argument_list|)
+DECL|method|unreviewed ()
+name|ResultSet
+argument_list|<
+name|AccountAgreement
+argument_list|>
+name|unreviewed
 parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|accountAgreements ()
-name|AccountAgreementAccess
-name|accountAgreements
-parameter_list|()
-function_decl|;
-comment|/** Create the next unique id for an {@link Account}. */
-annotation|@
-name|Sequence
-DECL|method|nextAccountId ()
-name|int
-name|nextAccountId
-parameter_list|()
-function_decl|;
-comment|/** Create the next unique id for a {@link ContributorAgreement}. */
-annotation|@
-name|Sequence
-DECL|method|nextContributorAgreementId ()
-name|int
-name|nextContributorAgreementId
-parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
