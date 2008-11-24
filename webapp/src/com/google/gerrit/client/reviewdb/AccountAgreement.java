@@ -171,7 +171,24 @@ DECL|method|Key ()
 specifier|protected
 name|Key
 parameter_list|()
-block|{     }
+block|{
+name|accountId
+operator|=
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|()
+expr_stmt|;
+name|claId
+operator|=
+operator|new
+name|ContributorAgreement
+operator|.
+name|Id
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|Key (final Account.Id account, final ContributorAgreement.Id cla)
 specifier|public
 name|Key

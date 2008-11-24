@@ -134,7 +134,24 @@ DECL|method|Key ()
 specifier|protected
 name|Key
 parameter_list|()
-block|{     }
+block|{
+name|accountId
+operator|=
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|()
+expr_stmt|;
+name|groupId
+operator|=
+operator|new
+name|AccountGroup
+operator|.
+name|Id
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|Key (final Account.Id a, final AccountGroup.Id g)
 specifier|public
 name|Key
