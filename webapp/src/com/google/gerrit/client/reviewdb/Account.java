@@ -216,11 +216,6 @@ argument_list|>
 block|{
 annotation|@
 name|Column
-argument_list|(
-name|name
-operator|=
-literal|"account_id"
-argument_list|)
 DECL|field|id
 specifier|protected
 name|int
@@ -262,10 +257,10 @@ block|}
 block|}
 annotation|@
 name|Column
-DECL|field|localId
+DECL|field|accountId
 specifier|protected
 name|Id
-name|localId
+name|accountId
 decl_stmt|;
 comment|/** Identity from the OpenID provider the user authenticates through. */
 annotation|@
@@ -336,7 +331,7 @@ name|openidIdentity
 operator|=
 name|identity
 expr_stmt|;
-name|localId
+name|accountId
 operator|=
 name|newId
 expr_stmt|;
@@ -362,7 +357,7 @@ name|getId
 parameter_list|()
 block|{
 return|return
-name|localId
+name|accountId
 return|;
 block|}
 comment|/** Get the full name of the user ("Given-name Surname" style). */

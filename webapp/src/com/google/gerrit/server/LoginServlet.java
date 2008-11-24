@@ -1157,7 +1157,7 @@ operator|.
 name|accounts
 argument_list|()
 operator|.
-name|byOpenidIdentity
+name|byOpenId
 argument_list|(
 name|provId
 argument_list|)

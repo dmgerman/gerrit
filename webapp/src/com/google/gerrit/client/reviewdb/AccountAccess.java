@@ -147,9 +147,9 @@ name|PrimaryKey
 argument_list|(
 literal|"openidIdentity"
 argument_list|)
-DECL|method|byOpenidIdentity (Account.OpenId key)
+DECL|method|byOpenId (Account.OpenId key)
 name|Account
-name|byOpenidIdentity
+name|byOpenId
 parameter_list|(
 name|Account
 operator|.
@@ -163,11 +163,11 @@ comment|/** Locate an account by our locally generated identity. */
 annotation|@
 name|SecondaryKey
 argument_list|(
-literal|"localId"
+literal|"accountId"
 argument_list|)
-DECL|method|byLocalId (Account.Id key)
+DECL|method|byId (Account.Id key)
 name|Account
-name|byLocalId
+name|byId
 parameter_list|(
 name|Account
 operator|.

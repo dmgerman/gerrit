@@ -266,7 +266,7 @@ operator|.
 name|accounts
 argument_list|()
 operator|.
-name|byLocalId
+name|byId
 argument_list|(
 operator|new
 name|Account
