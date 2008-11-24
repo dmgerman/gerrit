@@ -76,7 +76,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Relation
+name|Access
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Schema
+name|OrmException
 import|;
 end_import
 
@@ -104,87 +104,72 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|Sequence
+name|PrimaryKey
 import|;
 end_import
 
-begin_comment
-comment|/** The review service database schema. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|SecondaryKey
+import|;
+end_import
 
 begin_interface
-DECL|interface|ReviewDb
+DECL|interface|AccountGroupAccess
 specifier|public
 interface|interface
-name|ReviewDb
+name|AccountGroupAccess
 extends|extends
-name|Schema
+name|Access
+argument_list|<
+name|AccountGroup
+argument_list|,
+name|AccountGroup
+operator|.
+name|NameKey
+argument_list|>
 block|{
 annotation|@
-name|Relation
-DECL|method|systemConfig ()
-name|SystemConfigAccess
-name|systemConfig
-parameter_list|()
+name|PrimaryKey
+argument_list|(
+literal|"name"
+argument_list|)
+DECL|method|get (AccountGroup.NameKey name)
+name|AccountGroup
+name|get
+parameter_list|(
+name|AccountGroup
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 annotation|@
-name|Relation
-DECL|method|contributorAgreements ()
-name|ContributorAgreementAccess
-name|contributorAgreements
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|accounts ()
-name|AccountAccess
-name|accounts
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|accountAgreements ()
-name|AccountAgreementAccess
-name|accountAgreements
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|accountGroups ()
-name|AccountGroupAccess
-name|accountGroups
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|accountGroupMembers ()
-name|AccountGroupMemberAccess
-name|accountGroupMembers
-parameter_list|()
-function_decl|;
-comment|/** Create the next unique id for an {@link Account}. */
-annotation|@
-name|Sequence
-DECL|method|nextAccountId ()
-name|int
-name|nextAccountId
-parameter_list|()
-function_decl|;
-comment|/** Create the next unique id for a {@link ContributorAgreement}. */
-annotation|@
-name|Sequence
-DECL|method|nextContributorAgreementId ()
-name|int
-name|nextContributorAgreementId
-parameter_list|()
-function_decl|;
-comment|/** Next unique id for a {@link AccountGroup}. */
-annotation|@
-name|Sequence
-DECL|method|nextAccountGroupId ()
-name|int
-name|nextAccountGroupId
-parameter_list|()
+name|SecondaryKey
+argument_list|(
+literal|"groupId"
+argument_list|)
+DECL|method|byGroupId (AccountGroup.Id id)
+name|AccountGroup
+name|byGroupId
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
