@@ -304,6 +304,19 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
+comment|/** Non-Internet based contact details for the account's owner. */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|contact
+specifier|protected
+name|ContactInformation
+name|contact
+decl_stmt|;
 DECL|method|Account ()
 specifier|protected
 name|Account
@@ -424,6 +437,31 @@ block|{
 return|return
 name|registeredOn
 return|;
+block|}
+DECL|method|getContactInformation ()
+specifier|public
+name|ContactInformation
+name|getContactInformation
+parameter_list|()
+block|{
+return|return
+name|contact
+return|;
+block|}
+DECL|method|setContactInformation (final ContactInformation i)
+specifier|public
+name|void
+name|setContactInformation
+parameter_list|(
+specifier|final
+name|ContactInformation
+name|i
+parameter_list|)
+block|{
+name|contact
+operator|=
+name|i
+expr_stmt|;
 block|}
 block|}
 end_class
