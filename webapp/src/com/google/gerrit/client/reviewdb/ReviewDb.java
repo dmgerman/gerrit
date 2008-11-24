@@ -165,6 +165,11 @@ function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */
 annotation|@
 name|Sequence
+argument_list|(
+name|startWith
+operator|=
+literal|1000000
+argument_list|)
 DECL|method|nextAccountId ()
 name|int
 name|nextAccountId
