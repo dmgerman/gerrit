@@ -206,6 +206,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|deltaContent ()
+name|DeltaContentAccess
+name|deltaContent
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|changes ()
 name|ChangeAccess
 name|changes
