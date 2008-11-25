@@ -195,7 +195,7 @@ literal|"WHERE status = '"
 operator|+
 name|AccountAgreement
 operator|.
-name|STATUS_NEW
+name|NEW_CODE
 operator|+
 literal|"' ORDER BY acceptedOn DESC"
 argument_list|)
