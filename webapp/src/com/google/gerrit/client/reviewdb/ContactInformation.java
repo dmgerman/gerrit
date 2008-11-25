@@ -134,7 +134,7 @@ literal|false
 argument_list|,
 name|length
 operator|=
-literal|20
+literal|30
 argument_list|)
 DECL|field|phoneNbr
 specifier|protected
@@ -150,7 +150,7 @@ literal|false
 argument_list|,
 name|length
 operator|=
-literal|20
+literal|30
 argument_list|)
 DECL|field|faxNbr
 specifier|protected
