@@ -129,6 +129,20 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|approvalCategories ()
+name|ApprovalCategoryAccess
+name|approvalCategories
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|approvalCategoryValues ()
+name|ApprovalCategoryValueAccess
+name|approvalCategoryValues
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|contributorAgreements ()
 name|ContributorAgreementAccess
 name|contributorAgreements
@@ -195,6 +209,13 @@ name|Relation
 DECL|method|changes ()
 name|ChangeAccess
 name|changes
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|changeApprovals ()
+name|ChangeApprovalAccess
+name|changeApprovals
 parameter_list|()
 function_decl|;
 annotation|@
