@@ -291,6 +291,14 @@ name|int
 name|nextBranchId
 parameter_list|()
 function_decl|;
+comment|/** Next unique id for a {@link Change}. */
+annotation|@
+name|Sequence
+DECL|method|nextChangeId ()
+name|int
+name|nextChangeId
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
