@@ -447,6 +447,27 @@ name|reviewedOn
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|,
+name|length
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+DECL|field|reviewComments
+specifier|protected
+name|String
+name|reviewComments
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|AccountAgreement ()
 specifier|protected
@@ -550,6 +571,37 @@ block|{
 return|return
 name|reviewedBy
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|getReviewComments ()
+specifier|public
+name|String
+name|getReviewComments
+parameter_list|()
+block|{
+return|return
+name|reviewComments
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setReviewComments (final String s)
+specifier|public
+name|void
+name|setReviewComments
+parameter_list|(
+specifier|final
+name|String
+name|s
+parameter_list|)
+block|{
+name|reviewComments
+operator|=
+name|s
+expr_stmt|;
 block|}
 end_function
 
