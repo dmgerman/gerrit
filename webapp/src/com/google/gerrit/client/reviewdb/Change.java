@@ -192,6 +192,24 @@ name|id
 return|;
 block|}
 block|}
+DECL|field|STATUS_NEW
+specifier|protected
+specifier|static
+specifier|final
+name|char
+name|STATUS_NEW
+init|=
+literal|'n'
+decl_stmt|;
+DECL|field|STATUS_MERGED
+specifier|protected
+specifier|static
+specifier|final
+name|char
+name|STATUS_MERGED
+init|=
+literal|'M'
+decl_stmt|;
 DECL|enum|Status
 specifier|public
 specifier|static
@@ -200,22 +218,20 @@ name|Status
 block|{
 DECL|enumConstant|NEW
 name|NEW
-argument_list|(
-literal|'n'
-argument_list|)
-block|,
+parameter_list|(
+name|STATUS_NEW
+parameter_list|)
+operator|,
 DECL|enumConstant|MERGED
-name|MERGED
-argument_list|(
-literal|'M'
-argument_list|)
-block|,
+constructor|MERGED(STATUS_MERGED
+block|)
+enum|,
 DECL|enumConstant|ABANDONED
 name|ABANDONED
 argument_list|(
 literal|'A'
 argument_list|)
-block|;
+enum|;
 DECL|field|code
 specifier|private
 specifier|final
@@ -288,7 +304,13 @@ literal|null
 return|;
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/** Locally assigned unique identifier of the change */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|changeId
@@ -296,7 +318,13 @@ specifier|protected
 name|Id
 name|changeId
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** optimistic locking */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 annotation|@
@@ -306,7 +334,13 @@ specifier|protected
 name|int
 name|rowVersion
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** When this change was first introduced into the database. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|createdOn
@@ -314,6 +348,9 @@ specifier|protected
 name|Timestamp
 name|createdOn
 decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
@@ -328,7 +365,13 @@ operator|.
 name|Id
 name|owner
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** The branch (and project) this change merges into. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|dest
@@ -338,7 +381,13 @@ operator|.
 name|NameKey
 name|dest
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** Current state code; see {@link Status}. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|status
@@ -346,7 +395,13 @@ specifier|protected
 name|char
 name|status
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** The total number of {@link PatchSet} children in this Change. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|nbrPatchSets
@@ -354,7 +409,13 @@ specifier|protected
 name|int
 name|nbrPatchSets
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** The current patch set. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|currentPatchSetId
@@ -362,7 +423,13 @@ specifier|protected
 name|int
 name|currentPatchSetId
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** Subject from the current patch set. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|subject
@@ -370,11 +437,17 @@ specifier|protected
 name|String
 name|subject
 decl_stmt|;
+end_decl_stmt
+
+begin_constructor
 DECL|method|Change ()
 specifier|protected
 name|Change
 parameter_list|()
 block|{   }
+end_constructor
+
+begin_constructor
 DECL|method|Change (final Change.Id newId, final Account.Id ownedBy, final Branch.NameKey forBranch)
 specifier|public
 name|Change
@@ -429,6 +502,9 @@ name|NEW
 argument_list|)
 expr_stmt|;
 block|}
+end_constructor
+
+begin_function
 DECL|method|getKey ()
 specifier|public
 name|Change
@@ -441,6 +517,9 @@ return|return
 name|changeId
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getId ()
 specifier|public
 name|int
@@ -454,6 +533,9 @@ name|get
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getCreatedOn ()
 specifier|public
 name|Timestamp
@@ -464,6 +546,9 @@ return|return
 name|createdOn
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getOwner ()
 specifier|public
 name|Account
@@ -476,6 +561,9 @@ return|return
 name|owner
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getDest ()
 specifier|public
 name|Branch
@@ -488,7 +576,26 @@ return|return
 name|dest
 return|;
 block|}
+end_function
+
+begin_function
+DECL|method|getSubject ()
+specifier|public
+name|String
+name|getSubject
+parameter_list|()
+block|{
+return|return
+name|subject
+return|;
+block|}
+end_function
+
+begin_comment
 comment|/** Get the id of the most current {@link PatchSet} in this change. */
+end_comment
+
+begin_function
 DECL|method|currentPatchSetId ()
 specifier|public
 name|PatchSet
@@ -520,6 +627,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setCurrentPatchSet (final PatchSetInfo ps)
 specifier|public
 name|void
@@ -548,7 +658,13 @@ name|getSubject
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**    * Allocate a new PatchSet id within this change.    *<p>    *<b>Note: This makes the change dirty. Call update() after.</b>    */
+end_comment
+
+begin_function
 DECL|method|newPatchSetId ()
 specifier|public
 name|PatchSet
@@ -570,6 +686,9 @@ name|nbrPatchSets
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getStatus ()
 specifier|public
 name|Status
@@ -585,6 +704,9 @@ name|status
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setStatus (final Status newStatus)
 specifier|public
 name|void
@@ -603,8 +725,8 @@ name|getCode
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

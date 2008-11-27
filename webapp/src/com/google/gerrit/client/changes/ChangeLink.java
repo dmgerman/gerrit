@@ -106,7 +106,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|ChangeHeader
+name|ChangeInfo
 import|;
 end_import
 
@@ -186,10 +186,10 @@ name|Hyperlink
 block|{
 DECL|field|change
 specifier|private
-name|ChangeHeader
+name|ChangeInfo
 name|change
 decl_stmt|;
-DECL|method|ChangeLink (final String text, final ChangeHeader c)
+DECL|method|ChangeLink (final String text, final ChangeInfo c)
 specifier|public
 name|ChangeLink
 parameter_list|(
@@ -198,7 +198,7 @@ name|String
 name|text
 parameter_list|,
 specifier|final
-name|ChangeHeader
+name|ChangeInfo
 name|c
 parameter_list|)
 block|{

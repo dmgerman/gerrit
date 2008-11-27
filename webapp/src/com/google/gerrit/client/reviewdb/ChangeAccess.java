@@ -108,6 +108,34 @@ name|PrimaryKey
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Query
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|ResultSet
+import|;
+end_import
+
 begin_interface
 DECL|interface|ChangeAccess
 specifier|public
@@ -133,6 +161,58 @@ name|Change
 name|get
 parameter_list|(
 name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE owner = ? AND status = '"
+operator|+
+name|Change
+operator|.
+name|STATUS_NEW
+operator|+
+literal|"' ORDER BY createdOn DESC"
+argument_list|)
+DECL|method|byOwnerOpen (Account.Id id)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byOwnerOpen
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE owner = ? AND status = '"
+operator|+
+name|Change
+operator|.
+name|STATUS_MERGED
+operator|+
+literal|"' ORDER BY createdOn DESC LIMIT 20"
+argument_list|)
+DECL|method|byOwnerMerged (Account.Id id)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byOwnerMerged
+parameter_list|(
+name|Account
 operator|.
 name|Id
 name|id

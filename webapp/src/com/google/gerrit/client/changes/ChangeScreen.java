@@ -92,7 +92,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|ChangeHeader
+name|ChangeInfo
 import|;
 end_import
 
@@ -121,12 +121,12 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeScreen (final ChangeHeader c)
+DECL|method|ChangeScreen (final ChangeInfo c)
 specifier|public
 name|ChangeScreen
 parameter_list|(
 specifier|final
-name|ChangeHeader
+name|ChangeInfo
 name|c
 parameter_list|)
 block|{
@@ -134,7 +134,8 @@ name|super
 argument_list|(
 name|c
 operator|.
-name|subject
+name|getSubject
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
