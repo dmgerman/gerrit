@@ -155,6 +155,20 @@ name|accountSettingsHeading
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|onLoad ()
+specifier|public
+name|void
+name|onLoad
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onLoad
+argument_list|()
+expr_stmt|;
 name|Util
 operator|.
 name|ACCOUNT_SVC
