@@ -191,6 +191,31 @@ return|return
 name|id
 return|;
 block|}
+comment|/** Parse a Change.Id out of a string representation. */
+DECL|method|fromString (final String str)
+specifier|public
+specifier|static
+name|Id
+name|fromString
+parameter_list|(
+specifier|final
+name|String
+name|str
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Id
+argument_list|(
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|str
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 DECL|field|STATUS_NEW
 specifier|protected

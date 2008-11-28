@@ -188,6 +188,45 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE revision = ? LIMIT 2"
+argument_list|)
+DECL|method|byRevision (String rev)
+name|ResultSet
+argument_list|<
+name|PatchSet
+argument_list|>
+name|byRevision
+parameter_list|(
+name|String
+name|rev
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE revision>= ? AND revision<= ? LIMIT 2"
+argument_list|)
+DECL|method|byRevisionRange (String reva, String revb)
+name|ResultSet
+argument_list|<
+name|PatchSet
+argument_list|>
+name|byRevisionRange
+parameter_list|(
+name|String
+name|reva
+parameter_list|,
+name|String
+name|revb
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
