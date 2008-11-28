@@ -173,6 +173,11 @@ name|String
 name|menuProjects
 parameter_list|()
 function_decl|;
+DECL|method|rpcStatusLoading ()
+name|String
+name|rpcStatusLoading
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
