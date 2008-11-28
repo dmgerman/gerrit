@@ -126,7 +126,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountScreen
+name|Screen
 import|;
 end_import
 
@@ -170,7 +170,7 @@ specifier|public
 class|class
 name|AccountDashboardScreen
 extends|extends
-name|AccountScreen
+name|Screen
 block|{
 DECL|field|ownerId
 specifier|private
@@ -298,6 +298,19 @@ argument_list|(
 name|table
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ownerId
+operator|==
+literal|null
+condition|)
+block|{
+name|setRequiresSignIn
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
