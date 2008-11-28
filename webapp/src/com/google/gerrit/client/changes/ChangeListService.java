@@ -92,9 +92,41 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|data
+operator|.
+name|ChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|reviewdb
 operator|.
 name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|Change
 import|;
 end_import
 
@@ -130,6 +162,40 @@ name|RemoteJsonService
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtjsonrpc
+operator|.
+name|client
+operator|.
+name|VoidResult
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|ChangeListService
 specifier|public
@@ -138,6 +204,7 @@ name|ChangeListService
 extends|extends
 name|RemoteJsonService
 block|{
+comment|/** Get the data to show {@link AccountDashboardScreen} for an account. */
 DECL|method|forAccount (Account.Id id, AsyncCallback<AccountDashboardInfo> callback)
 name|void
 name|forAccount
@@ -150,6 +217,53 @@ parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|AccountDashboardInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get the changes starred by the caller. */
+DECL|method|myStarredChanges (AsyncCallback<List<ChangeInfo>> callback)
+name|void
+name|myStarredChanges
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get the ids of all changes starred by the caller. */
+DECL|method|myStarredChangeIds (AsyncCallback<Set<Change.Id>> callback)
+name|void
+name|myStarredChangeIds
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/**    * Add and/or remove changes from the set of starred changes of the caller.    *     * @param req the add and remove cluster.    */
+DECL|method|toggleStars (ToggleStarRequest req, AsyncCallback<VoidResult> callback)
+name|void
+name|toggleStars
+parameter_list|(
+name|ToggleStarRequest
+name|req
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
 argument_list|>
 name|callback
 parameter_list|)
