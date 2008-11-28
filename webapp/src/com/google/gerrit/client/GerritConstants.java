@@ -178,6 +178,11 @@ name|String
 name|rpcStatusLoading
 parameter_list|()
 function_decl|;
+DECL|method|anonymousCoward ()
+name|String
+name|anonymousCoward
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

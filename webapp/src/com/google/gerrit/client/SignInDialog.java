@@ -502,7 +502,9 @@ block|{
 name|Gerrit
 operator|.
 name|postSignIn
-argument_list|()
+argument_list|(
+name|result
+argument_list|)
 expr_stmt|;
 name|hide
 argument_list|()
