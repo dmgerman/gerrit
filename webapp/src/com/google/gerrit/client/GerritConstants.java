@@ -108,6 +108,16 @@ name|String
 name|signInDialogTitle
 parameter_list|()
 function_decl|;
+DECL|method|notFoundTitle ()
+name|String
+name|notFoundTitle
+parameter_list|()
+function_decl|;
+DECL|method|notFoundBody ()
+name|String
+name|notFoundBody
+parameter_list|()
+function_decl|;
 DECL|method|menuAll ()
 name|String
 name|menuAll

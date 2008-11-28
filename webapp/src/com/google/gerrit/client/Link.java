@@ -379,7 +379,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO on bad URL
+name|Gerrit
+operator|.
+name|display
+argument_list|(
+operator|new
+name|NotFoundScreen
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|select (final String token)
