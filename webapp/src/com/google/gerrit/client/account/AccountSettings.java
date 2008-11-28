@@ -94,7 +94,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Screen
+name|AccountScreen
 import|;
 end_import
 
@@ -138,7 +138,7 @@ specifier|public
 class|class
 name|AccountSettings
 extends|extends
-name|Screen
+name|AccountScreen
 block|{
 DECL|method|AccountSettings ()
 specifier|public

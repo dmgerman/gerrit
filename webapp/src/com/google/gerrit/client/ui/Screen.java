@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|Gerrit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -124,6 +138,11 @@ name|Screen
 extends|extends
 name|FlowPanel
 block|{
+DECL|field|requiresSignIn
+specifier|private
+name|boolean
+name|requiresSignIn
+decl_stmt|;
 DECL|method|Screen (final String heading)
 specifier|public
 name|Screen
@@ -168,6 +187,33 @@ argument_list|,
 name|h
 argument_list|)
 expr_stmt|;
+block|}
+comment|/** Set whether or not {@link Gerrit#isSignedIn()} must be true. */
+DECL|method|setRequiresSignIn (final boolean b)
+specifier|public
+name|void
+name|setRequiresSignIn
+parameter_list|(
+specifier|final
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|requiresSignIn
+operator|=
+name|b
+expr_stmt|;
+block|}
+comment|/** Does {@link Gerrit#isSignedIn()} have to be true to be on this screen? */
+DECL|method|isRequiresSignIn ()
+specifier|public
+name|boolean
+name|isRequiresSignIn
+parameter_list|()
+block|{
+return|return
+name|requiresSignIn
+return|;
 block|}
 block|}
 end_class
