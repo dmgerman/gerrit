@@ -108,19 +108,9 @@ name|String
 name|signInDialogTitle
 parameter_list|()
 function_decl|;
-DECL|method|leftMenuCodeReviews ()
+DECL|method|menuAll ()
 name|String
-name|leftMenuCodeReviews
-parameter_list|()
-function_decl|;
-DECL|method|menuMyChanges ()
-name|String
-name|menuMyChanges
-parameter_list|()
-function_decl|;
-DECL|method|menuMyUnclaimedChanges ()
-name|String
-name|menuMyUnclaimedChanges
+name|menuAll
 parameter_list|()
 function_decl|;
 DECL|method|menuAllUnclaimedChanges ()
@@ -133,14 +123,29 @@ name|String
 name|menuAllRecentChanges
 parameter_list|()
 function_decl|;
+DECL|method|menuMine ()
+name|String
+name|menuMine
+parameter_list|()
+function_decl|;
+DECL|method|menuMyChanges ()
+name|String
+name|menuMyChanges
+parameter_list|()
+function_decl|;
+DECL|method|menuMyUnclaimedChanges ()
+name|String
+name|menuMyUnclaimedChanges
+parameter_list|()
+function_decl|;
 DECL|method|menuMyStarredChanges ()
 name|String
 name|menuMyStarredChanges
 parameter_list|()
 function_decl|;
-DECL|method|leftMenuAdmin ()
+DECL|method|menuAdmin ()
 name|String
-name|leftMenuAdmin
+name|menuAdmin
 parameter_list|()
 function_decl|;
 DECL|method|menuPeople ()
