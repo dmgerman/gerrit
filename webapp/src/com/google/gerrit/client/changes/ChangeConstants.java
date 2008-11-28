@@ -90,24 +90,9 @@ name|ChangeConstants
 extends|extends
 name|Constants
 block|{
-DECL|method|mineHeading ()
+DECL|method|changesRecentlyClosed ()
 name|String
-name|mineHeading
-parameter_list|()
-function_decl|;
-DECL|method|mineByMe ()
-name|String
-name|mineByMe
-parameter_list|()
-function_decl|;
-DECL|method|mineForReview ()
-name|String
-name|mineForReview
-parameter_list|()
-function_decl|;
-DECL|method|mineClosed ()
-name|String
-name|mineClosed
+name|changesRecentlyClosed
 parameter_list|()
 function_decl|;
 DECL|method|starredHeading ()

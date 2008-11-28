@@ -108,7 +108,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|MineScreen
+name|AccountDashboardScreen
 import|;
 end_import
 
@@ -436,7 +436,7 @@ argument_list|)
 condition|)
 return|return
 operator|new
-name|MineScreen
+name|AccountDashboardScreen
 argument_list|()
 return|;
 elseif|else
@@ -519,7 +519,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|MineScreen
+name|AccountDashboardScreen
 argument_list|(
 operator|new
 name|Account
