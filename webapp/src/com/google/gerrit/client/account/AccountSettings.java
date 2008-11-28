@@ -76,7 +76,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Screen
+name|reviewdb
+operator|.
+name|Account
 import|;
 end_import
 
@@ -90,9 +92,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|reviewdb
+name|ui
 operator|.
-name|Account
+name|Screen
 import|;
 end_import
 

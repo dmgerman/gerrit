@@ -76,7 +76,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Screen
+name|data
+operator|.
+name|ChangeInfo
 import|;
 end_import
 
@@ -90,9 +92,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|data
+name|ui
 operator|.
-name|ChangeInfo
+name|Screen
 import|;
 end_import
 

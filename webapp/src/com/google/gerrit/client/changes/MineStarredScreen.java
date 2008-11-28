@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|ui
+operator|.
 name|Screen
 import|;
 end_import

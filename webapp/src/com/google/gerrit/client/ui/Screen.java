@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client
+DECL|package|com.google.gerrit.client.ui
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|ui
 package|;
 end_package
 
@@ -76,9 +78,23 @@ name|user
 operator|.
 name|client
 operator|.
-name|ui
+name|DOM
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|FlowPanel
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|Element
 import|;
 end_import
 
@@ -96,7 +112,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Label
+name|FlowPanel
 import|;
 end_import
 
@@ -123,25 +139,33 @@ literal|"gerrit-Screen"
 argument_list|)
 expr_stmt|;
 specifier|final
-name|Label
-name|hLabel
+name|Element
+name|h
 init|=
-operator|new
-name|Label
+name|DOM
+operator|.
+name|createElement
 argument_list|(
-name|heading
+literal|"h1"
 argument_list|)
 decl_stmt|;
-name|hLabel
+name|DOM
 operator|.
-name|setStyleName
+name|setInnerText
 argument_list|(
-literal|"gerrit-ScreenHeading"
+name|h
+argument_list|,
+name|heading
 argument_list|)
 expr_stmt|;
-name|add
+name|DOM
+operator|.
+name|appendChild
 argument_list|(
-name|hLabel
+name|getElement
+argument_list|()
+argument_list|,
+name|h
 argument_list|)
 expr_stmt|;
 block|}
