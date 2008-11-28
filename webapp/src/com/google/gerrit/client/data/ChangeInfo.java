@@ -131,6 +131,11 @@ specifier|protected
 name|ProjectInfo
 name|project
 decl_stmt|;
+DECL|field|starred
+specifier|protected
+name|boolean
+name|starred
+decl_stmt|;
 DECL|method|ChangeInfo ()
 specifier|protected
 name|ChangeInfo
@@ -256,6 +261,31 @@ block|{
 return|return
 name|project
 return|;
+block|}
+DECL|method|isStarred ()
+specifier|public
+name|boolean
+name|isStarred
+parameter_list|()
+block|{
+return|return
+name|starred
+return|;
+block|}
+DECL|method|setStarred (final boolean s)
+specifier|public
+name|void
+name|setStarred
+parameter_list|(
+specifier|final
+name|boolean
+name|s
+parameter_list|)
+block|{
+name|starred
+operator|=
+name|s
+expr_stmt|;
 block|}
 block|}
 end_class
