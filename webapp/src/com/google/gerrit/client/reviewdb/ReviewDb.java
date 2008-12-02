@@ -157,6 +157,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountExternalIds ()
+name|AccountExternalIdAccess
+name|accountExternalIds
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|accountAgreements ()
 name|AccountAgreementAccess
 name|accountAgreements

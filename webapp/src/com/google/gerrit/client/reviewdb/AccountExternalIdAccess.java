@@ -104,6 +104,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|PrimaryKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Query
 import|;
 end_import
@@ -122,52 +136,33 @@ name|ResultSet
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
-import|;
-end_import
-
-begin_comment
-comment|/** Access interface for {@link Account}. */
-end_comment
-
 begin_interface
-DECL|interface|AccountAccess
+DECL|interface|AccountExternalIdAccess
 specifier|public
 interface|interface
-name|AccountAccess
+name|AccountExternalIdAccess
 extends|extends
 name|Access
 argument_list|<
-name|Account
+name|AccountExternalId
 argument_list|,
-name|Account
+name|AccountExternalId
 operator|.
-name|Id
+name|Key
 argument_list|>
 block|{
-comment|/** Locate an account by our locally generated identity. */
 annotation|@
-name|SecondaryKey
+name|PrimaryKey
 argument_list|(
-literal|"accountId"
+literal|"key"
 argument_list|)
-DECL|method|byId (Account.Id key)
-name|Account
-name|byId
+DECL|method|get (AccountExternalId.Key key)
+name|AccountExternalId
+name|get
 parameter_list|(
-name|Account
+name|AccountExternalId
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|)
 throws|throws
@@ -176,17 +171,37 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE preferredEmail = ? LIMIT 2"
+literal|"WHERE key.externalId = ? LIMIT 2"
 argument_list|)
-DECL|method|byPreferredEmail (String email)
+DECL|method|byExternal (String id)
 name|ResultSet
 argument_list|<
-name|Account
+name|AccountExternalId
 argument_list|>
-name|byPreferredEmail
+name|byExternal
 parameter_list|(
 name|String
-name|email
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.accountId = ?"
+argument_list|)
+DECL|method|byAccount (Account.Id id)
+name|ResultSet
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|byAccount
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
 parameter_list|)
 throws|throws
 name|OrmException

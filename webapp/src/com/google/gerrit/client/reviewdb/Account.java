@@ -96,20 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|StringKey
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -129,68 +115,6 @@ specifier|final
 class|class
 name|Account
 block|{
-comment|/** Globally unique key to identify a user. */
-DECL|class|OpenId
-specifier|public
-specifier|static
-class|class
-name|OpenId
-extends|extends
-name|StringKey
-argument_list|<
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Key
-argument_list|<
-name|?
-argument_list|>
-argument_list|>
-block|{
-annotation|@
-name|Column
-DECL|field|openidIdentity
-specifier|protected
-name|String
-name|openidIdentity
-decl_stmt|;
-DECL|method|OpenId ()
-specifier|protected
-name|OpenId
-parameter_list|()
-block|{     }
-DECL|method|OpenId (final String id)
-specifier|public
-name|OpenId
-parameter_list|(
-specifier|final
-name|String
-name|id
-parameter_list|)
-block|{
-name|openidIdentity
-operator|=
-name|id
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|get ()
-specifier|public
-name|String
-name|get
-parameter_list|()
-block|{
-return|return
-name|openidIdentity
-return|;
-block|}
-block|}
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
 specifier|public
@@ -262,14 +186,6 @@ specifier|protected
 name|Id
 name|accountId
 decl_stmt|;
-comment|/** Identity from the OpenID provider the user authenticates through. */
-annotation|@
-name|Column
-DECL|field|openidIdentity
-specifier|protected
-name|OpenId
-name|openidIdentity
-decl_stmt|;
 comment|/** Date and time the user registered with the review server. */
 annotation|@
 name|Column
@@ -322,17 +238,11 @@ specifier|protected
 name|Account
 parameter_list|()
 block|{   }
-comment|/**    * Create a new account.    *     * @param identity identity assigned by the OpenID provider.    * @param newId unique id, see {@link ReviewDb#nextAccountId()}.    */
-DECL|method|Account (final Account.OpenId identity, final Account.Id newId)
+comment|/**    * Create a new account.    *     * @param newId unique id, see {@link ReviewDb#nextAccountId()}.    */
+DECL|method|Account (final Account.Id newId)
 specifier|public
 name|Account
 parameter_list|(
-specifier|final
-name|Account
-operator|.
-name|OpenId
-name|identity
-parameter_list|,
 specifier|final
 name|Account
 operator|.
@@ -340,10 +250,6 @@ name|Id
 name|newId
 parameter_list|)
 block|{
-name|openidIdentity
-operator|=
-name|identity
-expr_stmt|;
 name|accountId
 operator|=
 name|newId
