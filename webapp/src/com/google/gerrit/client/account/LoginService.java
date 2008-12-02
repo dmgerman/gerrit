@@ -72,22 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|user
@@ -140,17 +124,17 @@ name|LoginService
 extends|extends
 name|RemoteJsonService
 block|{
-comment|/**    * Create a callback for LoginServlet to call post sign in.    *<p>    * The Account result is null if the sign in was aborted by the user (or    * failed too many times); it is non-null and contains the user account    * details if the user is signed in successfully.    */
-DECL|method|signIn (AsyncCallback<Account> c)
+comment|/**    * Create a callback for LoginServlet to call post sign in.    *<p>    * The LoginResult.getStatus() is {@link SignInResult.Status#CANCEL} is null    * if the sign in was aborted by the user (or failed too many times).    */
+DECL|method|signIn (AsyncCallback<SignInResult> c)
 name|CallbackHandle
 argument_list|<
-name|Account
+name|SignInResult
 argument_list|>
 name|signIn
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|Account
+name|SignInResult
 argument_list|>
 name|c
 parameter_list|)
