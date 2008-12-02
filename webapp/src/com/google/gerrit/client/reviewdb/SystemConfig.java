@@ -226,6 +226,7 @@ literal|36
 argument_list|)
 DECL|field|xsrfPrivateKey
 specifier|public
+specifier|transient
 name|String
 name|xsrfPrivateKey
 decl_stmt|;
@@ -239,6 +240,7 @@ literal|36
 argument_list|)
 DECL|field|accountPrivateKey
 specifier|public
+specifier|transient
 name|String
 name|accountPrivateKey
 decl_stmt|;
@@ -247,6 +249,7 @@ annotation|@
 name|Column
 DECL|field|maxSessionAge
 specifier|public
+specifier|transient
 name|int
 name|maxSessionAge
 decl_stmt|;
