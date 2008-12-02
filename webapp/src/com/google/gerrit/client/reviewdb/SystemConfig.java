@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|HostPageServlet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -252,6 +266,19 @@ specifier|public
 specifier|transient
 name|int
 name|maxSessionAge
+decl_stmt|;
+comment|/**    * Local filesystem location of header/footer/CSS configuration files    *     * @see HostPageServlet    */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|sitePath
+specifier|public
+name|String
+name|sitePath
 decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
