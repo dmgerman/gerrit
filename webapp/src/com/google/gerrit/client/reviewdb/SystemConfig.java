@@ -280,6 +280,14 @@ specifier|public
 name|String
 name|sitePath
 decl_stmt|;
+comment|/** Optional canonical URL for this application. */
+annotation|@
+name|Column
+DECL|field|canonicalUrl
+specifier|public
+name|String
+name|canonicalUrl
+decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig

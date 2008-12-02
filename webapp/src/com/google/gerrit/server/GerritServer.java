@@ -1471,6 +1471,44 @@ else|:
 literal|null
 return|;
 block|}
+comment|/** Optional canonical URL for this application. */
+DECL|method|getCanonicalURL ()
+specifier|public
+name|String
+name|getCanonicalURL
+parameter_list|()
+block|{
+name|String
+name|u
+init|=
+name|config
+operator|.
+name|canonicalUrl
+decl_stmt|;
+if|if
+condition|(
+name|u
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|u
+operator|.
+name|endsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|u
+operator|+=
+literal|"/"
+expr_stmt|;
+block|}
+return|return
+name|u
+return|;
+block|}
 block|}
 end_class
 
