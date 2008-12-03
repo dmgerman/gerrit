@@ -136,6 +136,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|SignInRequired
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -222,6 +238,8 @@ name|callback
 parameter_list|)
 function_decl|;
 comment|/** Get the changes starred by the caller. */
+annotation|@
+name|SignInRequired
 DECL|method|myStarredChanges (AsyncCallback<List<ChangeInfo>> callback)
 name|void
 name|myStarredChanges
@@ -237,6 +255,8 @@ name|callback
 parameter_list|)
 function_decl|;
 comment|/** Get the ids of all changes starred by the caller. */
+annotation|@
+name|SignInRequired
 DECL|method|myStarredChangeIds (AsyncCallback<Set<Change.Id>> callback)
 name|void
 name|myStarredChangeIds
@@ -254,6 +274,8 @@ name|callback
 parameter_list|)
 function_decl|;
 comment|/**    * Add and/or remove changes from the set of starred changes of the caller.    *     * @param req the add and remove cluster.    */
+annotation|@
+name|SignInRequired
 DECL|method|toggleStars (ToggleStarRequest req, AsyncCallback<VoidResult> callback)
 name|void
 name|toggleStars

@@ -223,9 +223,6 @@ specifier|final
 name|GerritCall
 name|c
 init|=
-operator|(
-name|GerritCall
-operator|)
 name|GerritJsonServlet
 operator|.
 name|getCurrentCall
