@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
-operator|.
-name|changes
+name|server
 package|;
 end_package
 
@@ -72,58 +70,54 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
-operator|.
-name|i18n
+name|gerrit
 operator|.
 name|client
 operator|.
-name|Messages
+name|changes
+operator|.
+name|ChangeDetailServiceImpl
 import|;
 end_import
 
-begin_interface
-DECL|interface|ChangeMessages
+begin_comment
+comment|/** Publishes {@link ChangeDetailServiceImpl} over JSON. */
+end_comment
+
+begin_class
+DECL|class|ChangeDetailServiceSrv
 specifier|public
-interface|interface
-name|ChangeMessages
+class|class
+name|ChangeDetailServiceSrv
 extends|extends
-name|Messages
+name|GerritJsonServlet
 block|{
-DECL|method|accountDashboardTitle (String fullName)
-name|String
-name|accountDashboardTitle
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesUploadedBy (String fullName)
-name|String
-name|changesUploadedBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesReviewableBy (String fullName)
-name|String
-name|changesReviewableBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changeScreenTitleId (int id)
-name|String
-name|changeScreenTitleId
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-function_decl|;
+annotation|@
+name|Override
+DECL|method|createServiceHandle ()
+specifier|protected
+name|Object
+name|createServiceHandle
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+operator|new
+name|ChangeDetailServiceImpl
+argument_list|(
+name|GerritServer
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getDatabase
+argument_list|()
+argument_list|)
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

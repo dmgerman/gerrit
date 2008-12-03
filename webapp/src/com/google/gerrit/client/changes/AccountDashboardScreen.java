@@ -140,7 +140,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|GerritCallback
+name|ScreenLoadCallback
 import|;
 end_import
 
@@ -361,7 +361,7 @@ argument_list|(
 name|ownerId
 argument_list|,
 operator|new
-name|GerritCallback
+name|ScreenLoadCallback
 argument_list|<
 name|AccountDashboardInfo
 argument_list|>

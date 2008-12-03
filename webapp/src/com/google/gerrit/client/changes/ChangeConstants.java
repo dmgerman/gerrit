@@ -135,6 +135,31 @@ name|String
 name|changeTableNone
 parameter_list|()
 function_decl|;
+DECL|method|changeScreenDescription ()
+name|String
+name|changeScreenDescription
+parameter_list|()
+function_decl|;
+DECL|method|changeScreenDependencies ()
+name|String
+name|changeScreenDependencies
+parameter_list|()
+function_decl|;
+DECL|method|changeScreenDependsOn ()
+name|String
+name|changeScreenDependsOn
+parameter_list|()
+function_decl|;
+DECL|method|changeScreenNeededBy ()
+name|String
+name|changeScreenNeededBy
+parameter_list|()
+function_decl|;
+DECL|method|changeScreenApprovals ()
+name|String
+name|changeScreenApprovals
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

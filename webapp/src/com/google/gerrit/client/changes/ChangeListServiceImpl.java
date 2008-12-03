@@ -256,6 +256,22 @@ name|client
 operator|.
 name|rpc
 operator|.
+name|NoSuchEntityException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
 name|RpcUtil
 import|;
 end_import
@@ -472,10 +488,8 @@ operator|.
 name|onFailure
 argument_list|(
 operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"No Account.Id"
-argument_list|)
+name|NoSuchEntityException
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -537,10 +551,8 @@ operator|new
 name|Failure
 argument_list|(
 operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"No such user"
-argument_list|)
+name|NoSuchEntityException
+argument_list|()
 argument_list|)
 throw|;
 block|}

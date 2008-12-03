@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.rpc
 package|package
 name|com
 operator|.
@@ -62,68 +62,44 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|rpc
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
-import|;
-end_import
+begin_comment
+comment|/** Error indicating the entity requested doesn't exist. */
+end_comment
 
-begin_interface
-DECL|interface|ChangeMessages
+begin_class
+DECL|class|NoSuchEntityException
 specifier|public
-interface|interface
-name|ChangeMessages
+class|class
+name|NoSuchEntityException
 extends|extends
-name|Messages
+name|Exception
 block|{
-DECL|method|accountDashboardTitle (String fullName)
+DECL|field|MESSAGE
+specifier|public
+specifier|static
+specifier|final
 name|String
-name|accountDashboardTitle
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesUploadedBy (String fullName)
-name|String
-name|changesUploadedBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesReviewableBy (String fullName)
-name|String
-name|changesReviewableBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changeScreenTitleId (int id)
-name|String
-name|changeScreenTitleId
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-function_decl|;
+name|MESSAGE
+init|=
+literal|"Not Found"
+decl_stmt|;
+DECL|method|NoSuchEntityException ()
+specifier|public
+name|NoSuchEntityException
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
