@@ -1183,6 +1183,24 @@ name|void
 name|onSignIn
 parameter_list|()
 block|{
+if|if
+condition|(
+name|table
+operator|.
+name|getRowCount
+argument_list|()
+operator|<=
+name|sections
+operator|.
+name|size
+argument_list|()
+condition|)
+block|{
+comment|// There are no data rows in this table, so star status is
+comment|// simply not relevant to the caller.
+comment|//
+return|return;
+block|}
 name|Util
 operator|.
 name|LIST_SVC
