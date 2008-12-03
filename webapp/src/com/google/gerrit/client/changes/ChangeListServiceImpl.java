@@ -196,6 +196,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NotSignedInException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -670,10 +686,8 @@ operator|.
 name|onFailure
 argument_list|(
 operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Not signed in"
-argument_list|)
+name|NotSignedInException
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -832,10 +846,8 @@ operator|.
 name|onFailure
 argument_list|(
 operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Not signed in"
-argument_list|)
+name|NotSignedInException
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1161,10 +1173,8 @@ operator|.
 name|onFailure
 argument_list|(
 operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Not signed in"
-argument_list|)
+name|NotSignedInException
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
