@@ -525,6 +525,18 @@ name|currentScreen
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** @return the currently signed in user's account data; null if no account */
+DECL|method|getUserAccount ()
+specifier|public
+specifier|static
+name|Account
+name|getUserAccount
+parameter_list|()
+block|{
+return|return
+name|myAccount
+return|;
+block|}
 comment|/** @return true if the user is currently authenticated */
 DECL|method|isSignedIn ()
 specifier|public
@@ -534,7 +546,8 @@ name|isSignedIn
 parameter_list|()
 block|{
 return|return
-name|myAccount
+name|getUserAccount
+argument_list|()
 operator|!=
 literal|null
 return|;
