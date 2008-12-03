@@ -148,8 +148,19 @@ specifier|private
 name|Element
 name|headerElem
 decl_stmt|;
+DECL|method|Screen ()
+specifier|protected
+name|Screen
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|Screen (final String headingText)
-specifier|public
+specifier|protected
 name|Screen
 parameter_list|(
 specifier|final
@@ -232,6 +243,32 @@ parameter_list|()
 block|{
 return|return
 name|requiresSignIn
+return|;
+block|}
+comment|/** Get the token to cache this screen's widget; null if it shouldn't cache. */
+DECL|method|getScreenCacheToken ()
+specifier|public
+name|Object
+name|getScreenCacheToken
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**    * Reconfigure this screen after being recycled.    *<p>    * This method is invoked on a cached screen instance just before it is    * recycled into the UI. The returned screen instance is what will actually be    * shown to the user.    *     * @param newScreen the screen object created by the Link class (or some other    *        form of screen constructor) and that was just passed into    *        {@link Gerrit#display(Screen)}. Its {@link #getScreenCacheToken()}    *        is equal to<code>this.getScreenCacheToken()</code> but it may have    *        other parameter information worth copying.    * @return typically<code>this</code> to reuse the cached screen;    *<code>newScreen</code> to discard the cached screen instance and    *         use the new one.    */
+DECL|method|recycleThis (final Screen newScreen)
+specifier|public
+name|Screen
+name|recycleThis
+parameter_list|(
+specifier|final
+name|Screen
+name|newScreen
+parameter_list|)
+block|{
+return|return
+name|this
 return|;
 block|}
 block|}
