@@ -200,7 +200,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"ORDER BY name"
+literal|"ORDER BY position, name"
 argument_list|)
 DECL|method|all ()
 name|ResultSet

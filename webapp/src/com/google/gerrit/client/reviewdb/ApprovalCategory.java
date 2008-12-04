@@ -196,6 +196,13 @@ specifier|protected
 name|String
 name|name
 decl_stmt|;
+annotation|@
+name|Column
+DECL|field|position
+specifier|protected
+name|short
+name|position
+decl_stmt|;
 DECL|method|ApprovalCategory ()
 specifier|protected
 name|ApprovalCategory
@@ -240,6 +247,31 @@ block|{
 return|return
 name|categoryId
 return|;
+block|}
+DECL|method|getPosition ()
+specifier|public
+name|short
+name|getPosition
+parameter_list|()
+block|{
+return|return
+name|position
+return|;
+block|}
+DECL|method|setPosition (final short p)
+specifier|public
+name|void
+name|setPosition
+parameter_list|(
+specifier|final
+name|short
+name|p
+parameter_list|)
+block|{
+name|position
+operator|=
+name|p
+expr_stmt|;
 block|}
 block|}
 end_class
