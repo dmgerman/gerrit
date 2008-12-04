@@ -283,10 +283,28 @@ decl_stmt|;
 comment|/** Optional canonical URL for this application. */
 annotation|@
 name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
 DECL|field|canonicalUrl
 specifier|public
 name|String
 name|canonicalUrl
+decl_stmt|;
+comment|/** Optional URL of a gitweb installation to also view changes through. */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|gitwebUrl
+specifier|public
+name|String
+name|gitwebUrl
 decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected

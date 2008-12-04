@@ -97,6 +97,11 @@ specifier|private
 name|String
 name|canonicalUrl
 decl_stmt|;
+DECL|field|gitweb
+specifier|private
+name|GitwebLink
+name|gitweb
+decl_stmt|;
 DECL|field|approvalTypes
 specifier|private
 name|List
@@ -110,6 +115,16 @@ specifier|public
 name|GerritConfig
 parameter_list|()
 block|{   }
+DECL|method|getCanonicalUrl ()
+specifier|public
+name|String
+name|getCanonicalUrl
+parameter_list|()
+block|{
+return|return
+name|canonicalUrl
+return|;
+block|}
 DECL|method|setCanonicalUrl (final String u)
 specifier|public
 name|void
@@ -125,15 +140,30 @@ operator|=
 name|u
 expr_stmt|;
 block|}
-DECL|method|getCanonicalUrl ()
+DECL|method|getGitwebLink ()
 specifier|public
-name|String
-name|getCanonicalUrl
+name|GitwebLink
+name|getGitwebLink
 parameter_list|()
 block|{
 return|return
-name|canonicalUrl
+name|gitweb
 return|;
+block|}
+DECL|method|setGitwebLink (final GitwebLink w)
+specifier|public
+name|void
+name|setGitwebLink
+parameter_list|(
+specifier|final
+name|GitwebLink
+name|w
+parameter_list|)
+block|{
+name|gitweb
+operator|=
+name|w
+expr_stmt|;
 block|}
 DECL|method|add (final ApprovalType t)
 specifier|public

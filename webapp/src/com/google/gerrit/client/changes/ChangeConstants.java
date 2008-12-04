@@ -205,6 +205,16 @@ name|String
 name|changeInfoBlockStatus
 parameter_list|()
 function_decl|;
+DECL|method|changePermalink ()
+name|String
+name|changePermalink
+parameter_list|()
+function_decl|;
+DECL|method|patchSetInfoDownload ()
+name|String
+name|patchSetInfoDownload
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
