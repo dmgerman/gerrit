@@ -126,6 +126,18 @@ name|AbstractImagePrototype
 name|starFilled
 parameter_list|()
 function_decl|;
+DECL|method|greenCheck ()
+specifier|public
+name|AbstractImagePrototype
+name|greenCheck
+parameter_list|()
+function_decl|;
+DECL|method|redNot ()
+specifier|public
+name|AbstractImagePrototype
+name|redNot
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

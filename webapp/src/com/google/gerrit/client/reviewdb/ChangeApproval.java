@@ -472,6 +472,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getGranted ()
+specifier|public
+name|Timestamp
+name|getGranted
+parameter_list|()
+block|{
+return|return
+name|granted
+return|;
+block|}
 block|}
 end_class
 

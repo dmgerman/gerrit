@@ -248,6 +248,31 @@ return|return
 name|categoryId
 return|;
 block|}
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+DECL|method|setName (final String n)
+specifier|public
+name|void
+name|setName
+parameter_list|(
+specifier|final
+name|String
+name|n
+parameter_list|)
+block|{
+name|name
+operator|=
+name|n
+expr_stmt|;
+block|}
 DECL|method|getPosition ()
 specifier|public
 name|short

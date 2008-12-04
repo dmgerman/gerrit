@@ -160,6 +160,11 @@ name|String
 name|changeScreenApprovals
 parameter_list|()
 function_decl|;
+DECL|method|approvalTableReviewer ()
+name|String
+name|approvalTableReviewer
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
