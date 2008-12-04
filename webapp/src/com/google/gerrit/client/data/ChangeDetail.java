@@ -569,6 +569,16 @@ return|return
 name|change
 return|;
 block|}
+DECL|method|getOwner ()
+specifier|public
+name|AccountInfo
+name|getOwner
+parameter_list|()
+block|{
+return|return
+name|owner
+return|;
+block|}
 DECL|method|getApprovals ()
 specifier|public
 name|List

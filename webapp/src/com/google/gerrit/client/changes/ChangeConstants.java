@@ -90,6 +90,21 @@ name|ChangeConstants
 extends|extends
 name|Constants
 block|{
+DECL|method|statusLongNew ()
+name|String
+name|statusLongNew
+parameter_list|()
+function_decl|;
+DECL|method|statusLongMerged ()
+name|String
+name|statusLongMerged
+parameter_list|()
+function_decl|;
+DECL|method|statusLongAbandoned ()
+name|String
+name|statusLongAbandoned
+parameter_list|()
+function_decl|;
 DECL|method|changesRecentlyClosed ()
 name|String
 name|changesRecentlyClosed
@@ -163,6 +178,31 @@ function_decl|;
 DECL|method|approvalTableReviewer ()
 name|String
 name|approvalTableReviewer
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockOwner ()
+name|String
+name|changeInfoBlockOwner
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockProject ()
+name|String
+name|changeInfoBlockProject
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockBranch ()
+name|String
+name|changeInfoBlockBranch
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockUploaded ()
+name|String
+name|changeInfoBlockUploaded
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockStatus ()
+name|String
+name|changeInfoBlockStatus
 parameter_list|()
 function_decl|;
 block|}
