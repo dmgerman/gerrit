@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.patches
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|patches
 package|;
 end_package
 
@@ -72,90 +72,74 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
-operator|.
-name|i18n
+name|gerrit
 operator|.
 name|client
 operator|.
-name|Messages
+name|reviewdb
+operator|.
+name|Patch
 import|;
 end_import
 
-begin_interface
-DECL|interface|ChangeMessages
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Screen
+import|;
+end_import
+
+begin_class
+DECL|class|PatchScreen
 specifier|public
-interface|interface
-name|ChangeMessages
+class|class
+name|PatchScreen
 extends|extends
-name|Messages
+name|Screen
 block|{
-DECL|method|accountDashboardTitle (String fullName)
-name|String
-name|accountDashboardTitle
+DECL|field|patchId
+specifier|protected
+specifier|final
+name|Patch
+operator|.
+name|Id
+name|patchId
+decl_stmt|;
+DECL|method|PatchScreen (final Patch.Id id)
+specifier|public
+name|PatchScreen
 parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesUploadedBy (String fullName)
-name|String
-name|changesUploadedBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesReviewableBy (String fullName)
-name|String
-name|changesReviewableBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changeScreenTitleId (int id)
-name|String
-name|changeScreenTitleId
-parameter_list|(
-name|int
+specifier|final
+name|Patch
+operator|.
+name|Id
 name|id
 parameter_list|)
-function_decl|;
-DECL|method|patchSetHeader (int id)
-name|String
-name|patchSetHeader
-parameter_list|(
-name|int
+block|{
+name|patchId
+operator|=
 name|id
-parameter_list|)
-function_decl|;
-DECL|method|repoDownload (String project, int change, int ps)
-name|String
-name|repoDownload
-parameter_list|(
-name|String
-name|project
-parameter_list|,
-name|int
-name|change
-parameter_list|,
-name|int
-name|ps
-parameter_list|)
-function_decl|;
-DECL|method|patchTableComments (@luralCount int count)
-name|String
-name|patchTableComments
-parameter_list|(
-annotation|@
-name|PluralCount
-name|int
-name|count
-parameter_list|)
-function_decl|;
+expr_stmt|;
+name|setTitleText
+argument_list|(
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

@@ -324,26 +324,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|FlexTable
-operator|.
-name|FlexCellFormatter
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -666,15 +646,6 @@ argument_list|(
 name|focusy
 argument_list|)
 expr_stmt|;
-specifier|final
-name|FlexCellFormatter
-name|fmt
-init|=
-name|table
-operator|.
-name|getFlexCellFormatter
-argument_list|()
-decl_stmt|;
 name|table
 operator|.
 name|setText
@@ -686,7 +657,10 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|fmt
+name|table
+operator|.
+name|getCellFormatter
+argument_list|()
 operator|.
 name|addStyleName
 argument_list|(
@@ -709,6 +683,11 @@ name|row
 parameter_list|)
 block|{
 return|return
+name|FancyFlexTable
+operator|.
+expr|<
+name|RowItem
+operator|>
 name|getRowItem
 argument_list|(
 name|table
@@ -1092,11 +1071,15 @@ name|S_ICON_CELL
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|finishDisplay ()
+DECL|method|finishDisplay (final boolean requestFocus)
 specifier|public
 name|void
 name|finishDisplay
-parameter_list|()
+parameter_list|(
+specifier|final
+name|boolean
+name|requestFocus
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -1196,6 +1179,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|requestFocus
+operator|&&
 name|currentRow
 operator|>=
 literal|0

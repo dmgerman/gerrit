@@ -326,6 +326,13 @@ name|table
 operator|.
 name|setStyleName
 argument_list|(
+literal|"gerrit-InfoBlock"
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|addStyleName
+argument_list|(
 literal|"gerrit-ChangeInfoBlock"
 argument_list|)
 expr_stmt|;

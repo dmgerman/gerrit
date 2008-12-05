@@ -507,7 +507,9 @@ expr_stmt|;
 name|table
 operator|.
 name|finishDisplay
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}

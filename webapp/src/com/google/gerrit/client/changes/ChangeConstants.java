@@ -150,6 +150,36 @@ name|String
 name|changeTableNone
 parameter_list|()
 function_decl|;
+DECL|method|patchTableColumnName ()
+name|String
+name|patchTableColumnName
+parameter_list|()
+function_decl|;
+DECL|method|patchTableColumnDelta ()
+name|String
+name|patchTableColumnDelta
+parameter_list|()
+function_decl|;
+DECL|method|patchTableColumnComments ()
+name|String
+name|patchTableColumnComments
+parameter_list|()
+function_decl|;
+DECL|method|patchTableColumnDiff ()
+name|String
+name|patchTableColumnDiff
+parameter_list|()
+function_decl|;
+DECL|method|patchTableDiffSideBySide ()
+name|String
+name|patchTableDiffSideBySide
+parameter_list|()
+function_decl|;
+DECL|method|patchTableDiffUnified ()
+name|String
+name|patchTableDiffUnified
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenDescription ()
 name|String
 name|changeScreenDescription

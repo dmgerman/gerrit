@@ -1135,7 +1135,12 @@ block|{
 name|psp
 operator|.
 name|ensureLoaded
+argument_list|(
+name|detail
+operator|.
+name|getCurrentPatchSetDetail
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else

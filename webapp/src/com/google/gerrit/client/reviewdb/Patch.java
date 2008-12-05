@@ -366,6 +366,18 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getKey ()
+specifier|public
+name|Patch
+operator|.
+name|Id
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
+block|}
 DECL|method|getCommentCount ()
 specifier|public
 name|int
