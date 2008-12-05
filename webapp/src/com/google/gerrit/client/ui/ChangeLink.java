@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.ui
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|ui
 package|;
 end_package
 
@@ -77,6 +77,22 @@ operator|.
 name|client
 operator|.
 name|Link
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|ChangeScreen
 import|;
 end_import
 
@@ -109,38 +125,6 @@ operator|.
 name|reviewdb
 operator|.
 name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|DirectScreenLink
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|Screen
 import|;
 end_import
 
