@@ -463,6 +463,17 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
+literal|0
+argument_list|,
+literal|"reviewer"
+argument_list|)
+expr_stmt|;
+name|fmt
+operator|.
+name|addStyleName
+argument_list|(
+name|row
+argument_list|,
 literal|1
 argument_list|,
 literal|"approvalrole"

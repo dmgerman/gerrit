@@ -357,7 +357,7 @@ name|loginFrame
 operator|.
 name|setHeight
 argument_list|(
-literal|"420px"
+literal|"440px"
 argument_list|)
 expr_stmt|;
 name|add
