@@ -104,6 +104,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|PrimaryKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Query
 import|;
 end_import
@@ -119,20 +133,6 @@ operator|.
 name|client
 operator|.
 name|ResultSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
 import|;
 end_import
 
@@ -157,7 +157,7 @@ argument_list|>
 block|{
 comment|/** Locate an account by our locally generated identity. */
 annotation|@
-name|SecondaryKey
+name|PrimaryKey
 argument_list|(
 literal|"accountId"
 argument_list|)
