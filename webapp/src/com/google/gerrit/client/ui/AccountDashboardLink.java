@@ -265,6 +265,11 @@ name|ai
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|addStyleName
+argument_list|(
+literal|"gerrit-AccountName"
+argument_list|)
+expr_stmt|;
 name|account
 operator|=
 name|ai
