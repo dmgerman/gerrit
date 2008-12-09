@@ -286,7 +286,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|isNotSignedIn (final Throwable caught)
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|isNotSignedIn
@@ -326,7 +326,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNoSuchEntity (final Throwable caught)
-specifier|protected
+specifier|public
 specifier|static
 name|boolean
 name|isNoSuchEntity
