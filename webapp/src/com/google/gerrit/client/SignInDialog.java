@@ -412,11 +412,11 @@ name|install
 argument_list|()
 expr_stmt|;
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|url
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|url

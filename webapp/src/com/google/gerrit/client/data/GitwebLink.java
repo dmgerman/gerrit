@@ -183,11 +183,11 @@ name|ps
 parameter_list|)
 block|{
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|p
@@ -223,11 +223,11 @@ name|project
 parameter_list|)
 block|{
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|p
@@ -263,11 +263,11 @@ name|branch
 parameter_list|)
 block|{
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|p
@@ -300,14 +300,14 @@ operator|+
 name|r
 return|;
 block|}
-DECL|method|p (final StringBuffer r, final Project.NameKey project)
+DECL|method|p (final StringBuilder r, final Project.NameKey project)
 specifier|private
 specifier|static
 name|void
 name|p
 parameter_list|(
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 parameter_list|,
 specifier|final
@@ -351,14 +351,14 @@ name|n
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|h (final StringBuffer r, final PatchSet ps)
+DECL|method|h (final StringBuilder r, final PatchSet ps)
 specifier|private
 specifier|static
 name|void
 name|h
 parameter_list|(
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 parameter_list|,
 specifier|final
@@ -379,14 +379,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|h (final StringBuffer r, final Branch.NameKey branch)
+DECL|method|h (final StringBuilder r, final Branch.NameKey branch)
 specifier|private
 specifier|static
 name|void
 name|h
 parameter_list|(
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 parameter_list|,
 specifier|final
@@ -409,14 +409,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|a (final StringBuffer r, final String where)
+DECL|method|a (final StringBuilder r, final String where)
 specifier|private
 specifier|static
 name|void
 name|a
 parameter_list|(
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 parameter_list|,
 specifier|final
@@ -434,14 +434,14 @@ name|where
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|var (final StringBuffer r, final String n, final String v)
+DECL|method|var (final StringBuilder r, final String n, final String v)
 specifier|private
 specifier|static
 name|void
 name|var
 parameter_list|(
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|r
 parameter_list|,
 specifier|final

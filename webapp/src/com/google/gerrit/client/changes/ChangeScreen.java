@@ -1009,11 +1009,11 @@ name|subject
 parameter_list|)
 block|{
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|titleBuf
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 if|if
