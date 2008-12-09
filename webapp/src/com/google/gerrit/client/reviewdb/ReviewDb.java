@@ -255,6 +255,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|patchSetAncestors ()
+name|PatchSetAncestorAccess
+name|patchSetAncestors
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|patches ()
 name|PatchAccess
 name|patches

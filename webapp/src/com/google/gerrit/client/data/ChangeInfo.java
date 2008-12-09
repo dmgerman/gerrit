@@ -145,13 +145,17 @@ specifier|protected
 name|ChangeInfo
 parameter_list|()
 block|{   }
-DECL|method|ChangeInfo (final Change c)
+DECL|method|ChangeInfo (final Change c, final AccountInfoCacheFactory acc)
 specifier|public
 name|ChangeInfo
 parameter_list|(
 specifier|final
 name|Change
 name|c
+parameter_list|,
+specifier|final
+name|AccountInfoCacheFactory
+name|acc
 parameter_list|)
 block|{
 name|id
@@ -194,6 +198,13 @@ argument_list|()
 operator|.
 name|getParentKey
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|acc
+operator|.
+name|want
+argument_list|(
+name|owner
 argument_list|)
 expr_stmt|;
 block|}

@@ -1264,6 +1264,8 @@ operator|new
 name|ChangeInfo
 argument_list|(
 name|c
+argument_list|,
+name|accts
 argument_list|)
 decl_stmt|;
 name|ci
@@ -1279,16 +1281,6 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|accts
-operator|.
-name|want
-argument_list|(
-name|c
-operator|.
-name|getOwner
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
