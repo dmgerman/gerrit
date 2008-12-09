@@ -82,6 +82,10 @@ name|Account
 import|;
 end_import
 
+begin_comment
+comment|/** Summary information about an {@link Account}, for simple tabular displays. */
+end_comment
+
 begin_class
 DECL|class|AccountInfo
 specifier|public
@@ -110,6 +114,26 @@ specifier|protected
 name|AccountInfo
 parameter_list|()
 block|{   }
+comment|/**    * Create an 'Anonymous Coward' account info, when only the id is known.    *<p>    * This constructor should only be a last-ditch effort, when the usual account    * lookup has failed and a stale account id has been discovered in the data    * store.    */
+DECL|method|AccountInfo (final Account.Id id)
+specifier|public
+name|AccountInfo
+parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|this
+operator|.
+name|id
+operator|=
+name|id
+expr_stmt|;
+block|}
+comment|/**    * Create an account description from a real data store record.    *     * @param a the data store record holding the specific account details.    */
 DECL|method|AccountInfo (final Account a)
 specifier|public
 name|AccountInfo
@@ -141,6 +165,7 @@ name|getPreferredEmail
 argument_list|()
 expr_stmt|;
 block|}
+comment|/** @return the unique local id of the account */
 DECL|method|getId ()
 specifier|public
 name|Account
@@ -153,6 +178,7 @@ return|return
 name|id
 return|;
 block|}
+comment|/** @return the full name of the account holder; null if not supplied */
 DECL|method|getFullName ()
 specifier|public
 name|String
@@ -163,6 +189,7 @@ return|return
 name|fullName
 return|;
 block|}
+comment|/** @return the email address of the account holder; null if not supplied */
 DECL|method|getPreferredEmail ()
 specifier|public
 name|String

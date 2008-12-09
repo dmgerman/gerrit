@@ -78,7 +78,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|AccountCache
+name|AccountInfoCacheFactory
 import|;
 end_import
 
@@ -357,7 +357,7 @@ argument_list|(
 name|db
 argument_list|,
 operator|new
-name|AccountCache
+name|AccountInfoCacheFactory
 argument_list|(
 name|db
 argument_list|)

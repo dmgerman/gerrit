@@ -78,6 +78,22 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|ApprovalCategory
 import|;
 end_import
@@ -182,7 +198,9 @@ argument_list|)
 decl_stmt|;
 DECL|field|account
 specifier|protected
-name|AccountInfo
+name|Account
+operator|.
+name|Id
 name|account
 decl_stmt|;
 DECL|field|approvals
@@ -205,18 +223,20 @@ specifier|protected
 name|ApprovalDetail
 parameter_list|()
 block|{   }
-DECL|method|ApprovalDetail (final AccountInfo ai)
+DECL|method|ApprovalDetail (final Account.Id id)
 specifier|public
 name|ApprovalDetail
 parameter_list|(
 specifier|final
-name|AccountInfo
-name|ai
+name|Account
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 name|account
 operator|=
-name|ai
+name|id
 expr_stmt|;
 name|approvals
 operator|=
@@ -230,7 +250,9 @@ expr_stmt|;
 block|}
 DECL|method|getAccount ()
 specifier|public
-name|AccountInfo
+name|Account
+operator|.
+name|Id
 name|getAccount
 parameter_list|()
 block|{

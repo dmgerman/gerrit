@@ -234,6 +234,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|changeMessages ()
+name|ChangeMessageAccess
+name|changeMessages
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|patchSets ()
 name|PatchSetAccess
 name|patchSets

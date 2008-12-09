@@ -94,7 +94,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|ChangeInfo
+name|MineStarredInfo
 import|;
 end_import
 
@@ -198,16 +198,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -240,16 +230,13 @@ function_decl|;
 comment|/** Get the changes starred by the caller. */
 annotation|@
 name|SignInRequired
-DECL|method|myStarredChanges (AsyncCallback<List<ChangeInfo>> callback)
+DECL|method|myStarredChanges (AsyncCallback<MineStarredInfo> callback)
 name|void
 name|myStarredChanges
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|ChangeInfo
-argument_list|>
+name|MineStarredInfo
 argument_list|>
 name|callback
 parameter_list|)

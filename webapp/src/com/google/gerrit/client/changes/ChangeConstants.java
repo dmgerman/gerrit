@@ -205,6 +205,11 @@ name|String
 name|changeScreenApprovals
 parameter_list|()
 function_decl|;
+DECL|method|changeScreenMessages ()
+name|String
+name|changeScreenMessages
+parameter_list|()
+function_decl|;
 DECL|method|approvalTableReviewer ()
 name|String
 name|approvalTableReviewer
@@ -238,6 +243,26 @@ function_decl|;
 DECL|method|changePermalink ()
 name|String
 name|changePermalink
+parameter_list|()
+function_decl|;
+DECL|method|messageNoAuthor ()
+name|String
+name|messageNoAuthor
+parameter_list|()
+function_decl|;
+DECL|method|messageExpandRecent ()
+name|String
+name|messageExpandRecent
+parameter_list|()
+function_decl|;
+DECL|method|messageExpandAll ()
+name|String
+name|messageExpandAll
+parameter_list|()
+function_decl|;
+DECL|method|messageCollapseAll ()
+name|String
+name|messageCollapseAll
 parameter_list|()
 function_decl|;
 DECL|method|patchSetInfoDownload ()

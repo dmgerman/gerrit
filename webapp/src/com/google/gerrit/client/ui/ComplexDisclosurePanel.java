@@ -390,6 +390,11 @@ argument_list|,
 literal|"&nbsp;"
 argument_list|)
 expr_stmt|;
+name|addStyleName
+argument_list|(
+literal|"complexHeader"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -494,6 +499,19 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getContent ()
+specifier|public
+name|Widget
+name|getContent
+parameter_list|()
+block|{
+return|return
+name|main
+operator|.
+name|getContent
+argument_list|()
+return|;
+block|}
 DECL|method|addEventHandler (final DisclosureHandler handler)
 specifier|public
 name|void
@@ -527,6 +545,25 @@ operator|.
 name|removeEventHandler
 argument_list|(
 name|handler
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Changes the visible state of this panel's content.    *     * @param isOpen<code>true</code> to open,<code>false</code> to close    */
+DECL|method|setOpen (final boolean isOpen)
+specifier|public
+name|void
+name|setOpen
+parameter_list|(
+specifier|final
+name|boolean
+name|isOpen
+parameter_list|)
+block|{
+name|main
+operator|.
+name|setOpen
+argument_list|(
+name|isOpen
 argument_list|)
 expr_stmt|;
 block|}

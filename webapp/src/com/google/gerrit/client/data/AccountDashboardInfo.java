@@ -68,6 +68,38 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|AccountDashboardScreen
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -76,15 +108,26 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/** Summary information needed for {@link AccountDashboardScreen}. */
+end_comment
+
 begin_class
 DECL|class|AccountDashboardInfo
 specifier|public
 class|class
 name|AccountDashboardInfo
 block|{
+DECL|field|accounts
+specifier|protected
+name|AccountInfoCache
+name|accounts
+decl_stmt|;
 DECL|field|owner
 specifier|protected
-name|AccountInfo
+name|Account
+operator|.
+name|Id
 name|owner
 decl_stmt|;
 DECL|field|byOwner
@@ -116,12 +159,14 @@ specifier|protected
 name|AccountDashboardInfo
 parameter_list|()
 block|{   }
-DECL|method|AccountDashboardInfo (final AccountInfo forUser)
+DECL|method|AccountDashboardInfo (final Account.Id forUser)
 specifier|public
 name|AccountDashboardInfo
 parameter_list|(
 specifier|final
-name|AccountInfo
+name|Account
+operator|.
+name|Id
 name|forUser
 parameter_list|)
 block|{
@@ -130,9 +175,36 @@ operator|=
 name|forUser
 expr_stmt|;
 block|}
+DECL|method|getAccounts ()
+specifier|public
+name|AccountInfoCache
+name|getAccounts
+parameter_list|()
+block|{
+return|return
+name|accounts
+return|;
+block|}
+DECL|method|setAccounts (final AccountInfoCache ac)
+specifier|public
+name|void
+name|setAccounts
+parameter_list|(
+specifier|final
+name|AccountInfoCache
+name|ac
+parameter_list|)
+block|{
+name|accounts
+operator|=
+name|ac
+expr_stmt|;
+block|}
 DECL|method|getOwner ()
 specifier|public
-name|AccountInfo
+name|Account
+operator|.
+name|Id
 name|getOwner
 parameter_list|()
 block|{
