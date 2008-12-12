@@ -193,14 +193,14 @@ name|Query
 argument_list|(
 literal|"WHERE ancestorRevision = ?"
 argument_list|)
-DECL|method|descendantsOf (String revision)
+DECL|method|descendantsOf (RevId revision)
 name|ResultSet
 argument_list|<
 name|PatchSetAncestor
 argument_list|>
 name|descendantsOf
 parameter_list|(
-name|String
+name|RevId
 name|revision
 parameter_list|)
 throws|throws

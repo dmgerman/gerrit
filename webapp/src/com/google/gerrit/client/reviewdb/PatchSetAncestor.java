@@ -226,14 +226,9 @@ name|key
 decl_stmt|;
 annotation|@
 name|Column
-argument_list|(
-name|length
-operator|=
-literal|40
-argument_list|)
 DECL|field|ancestorRevision
 specifier|protected
-name|String
+name|RevId
 name|ancestorRevision
 decl_stmt|;
 DECL|method|PatchSetAncestor ()
@@ -241,7 +236,7 @@ specifier|protected
 name|PatchSetAncestor
 parameter_list|()
 block|{   }
-DECL|method|PatchSetAncestor (final PatchSetAncestor.Key k, final String rev)
+DECL|method|PatchSetAncestor (final PatchSetAncestor.Key k, final RevId rev)
 specifier|public
 name|PatchSetAncestor
 parameter_list|(
@@ -252,7 +247,7 @@ name|Key
 name|k
 parameter_list|,
 specifier|final
-name|String
+name|RevId
 name|rev
 parameter_list|)
 block|{
@@ -305,7 +300,7 @@ return|;
 block|}
 DECL|method|getAncestorRevision ()
 specifier|public
-name|String
+name|RevId
 name|getAncestorRevision
 parameter_list|()
 block|{

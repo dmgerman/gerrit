@@ -220,17 +220,13 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
-name|length
-operator|=
-literal|40
-argument_list|,
 name|notNull
 operator|=
 literal|false
 argument_list|)
 DECL|field|revision
 specifier|protected
-name|String
+name|RevId
 name|revision
 decl_stmt|;
 DECL|method|PatchSet ()
@@ -254,7 +250,7 @@ operator|=
 name|k
 expr_stmt|;
 block|}
-DECL|method|PatchSet (final PatchSet.Id k, final String rev)
+DECL|method|PatchSet (final PatchSet.Id k, final RevId rev)
 specifier|public
 name|PatchSet
 parameter_list|(
@@ -265,7 +261,7 @@ name|Id
 name|k
 parameter_list|,
 specifier|final
-name|String
+name|RevId
 name|rev
 parameter_list|)
 block|{
@@ -306,7 +302,7 @@ return|;
 block|}
 DECL|method|getRevision ()
 specifier|public
-name|String
+name|RevId
 name|getRevision
 parameter_list|()
 block|{

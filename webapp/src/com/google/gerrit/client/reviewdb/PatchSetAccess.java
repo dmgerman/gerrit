@@ -193,14 +193,14 @@ name|Query
 argument_list|(
 literal|"WHERE revision = ? LIMIT 2"
 argument_list|)
-DECL|method|byRevision (String rev)
+DECL|method|byRevision (RevId rev)
 name|ResultSet
 argument_list|<
 name|PatchSet
 argument_list|>
 name|byRevision
 parameter_list|(
-name|String
+name|RevId
 name|rev
 parameter_list|)
 throws|throws
@@ -211,17 +211,17 @@ name|Query
 argument_list|(
 literal|"WHERE revision>= ? AND revision<= ? LIMIT 2"
 argument_list|)
-DECL|method|byRevisionRange (String reva, String revb)
+DECL|method|byRevisionRange (RevId reva, RevId revb)
 name|ResultSet
 argument_list|<
 name|PatchSet
 argument_list|>
 name|byRevisionRange
 parameter_list|(
-name|String
+name|RevId
 name|reva
 parameter_list|,
-name|String
+name|RevId
 name|revb
 parameter_list|)
 throws|throws
