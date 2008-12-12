@@ -306,6 +306,19 @@ specifier|public
 name|String
 name|gitwebUrl
 decl_stmt|;
+comment|/** Local filesystem loction all projects reside within. */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|gitBasePath
+specifier|public
+name|String
+name|gitBasePath
+decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig
