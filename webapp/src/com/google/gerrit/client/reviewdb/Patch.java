@@ -444,6 +444,20 @@ specifier|protected
 name|char
 name|patchType
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|contentSha1
+specifier|protected
+name|PatchContent
+operator|.
+name|Key
+name|contentSha1
+decl_stmt|;
 comment|/** Number of published comments on this patch. */
 annotation|@
 name|Column
@@ -603,6 +617,35 @@ name|key
 operator|.
 name|fileName
 return|;
+block|}
+DECL|method|getContent ()
+specifier|public
+name|PatchContent
+operator|.
+name|Key
+name|getContent
+parameter_list|()
+block|{
+return|return
+name|contentSha1
+return|;
+block|}
+DECL|method|setContent (final PatchContent.Key k)
+specifier|public
+name|void
+name|setContent
+parameter_list|(
+specifier|final
+name|PatchContent
+operator|.
+name|Key
+name|k
+parameter_list|)
+block|{
+name|contentSha1
+operator|=
+name|k
+expr_stmt|;
 block|}
 DECL|method|getSourceFileName ()
 specifier|public

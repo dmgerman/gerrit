@@ -269,6 +269,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|patchContents ()
+name|PatchContentAccess
+name|patchContents
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|patchComments ()
 name|PatchLineCommentAccess
 name|patchComments
