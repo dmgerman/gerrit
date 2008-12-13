@@ -484,7 +484,7 @@ specifier|protected
 name|Patch
 parameter_list|()
 block|{   }
-DECL|method|Patch (final Patch.Id newId, final ChangeType ct, final PatchType pt)
+DECL|method|Patch (final Patch.Id newId)
 specifier|public
 name|Patch
 parameter_list|(
@@ -493,14 +493,6 @@ name|Patch
 operator|.
 name|Id
 name|newId
-parameter_list|,
-specifier|final
-name|ChangeType
-name|ct
-parameter_list|,
-specifier|final
-name|PatchType
-name|pt
 parameter_list|)
 block|{
 name|key
@@ -509,12 +501,16 @@ name|newId
 expr_stmt|;
 name|setChangeType
 argument_list|(
-name|ct
+name|ChangeType
+operator|.
+name|MODIFIED
 argument_list|)
 expr_stmt|;
 name|setPatchType
 argument_list|(
-name|pt
+name|PatchType
+operator|.
+name|UNIFIED
 argument_list|)
 expr_stmt|;
 block|}

@@ -250,31 +250,6 @@ operator|=
 name|k
 expr_stmt|;
 block|}
-DECL|method|PatchSet (final PatchSet.Id k, final RevId rev)
-specifier|public
-name|PatchSet
-parameter_list|(
-specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|k
-parameter_list|,
-specifier|final
-name|RevId
-name|rev
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|k
-argument_list|)
-expr_stmt|;
-name|revision
-operator|=
-name|rev
-expr_stmt|;
-block|}
 DECL|method|getKey ()
 specifier|public
 name|PatchSet
@@ -309,6 +284,21 @@ block|{
 return|return
 name|revision
 return|;
+block|}
+DECL|method|setRevision (final RevId i)
+specifier|public
+name|void
+name|setRevision
+parameter_list|(
+specifier|final
+name|RevId
+name|i
+parameter_list|)
+block|{
+name|revision
+operator|=
+name|i
+expr_stmt|;
 block|}
 block|}
 end_class
