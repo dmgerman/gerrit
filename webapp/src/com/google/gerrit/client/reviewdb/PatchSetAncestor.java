@@ -236,7 +236,7 @@ specifier|protected
 name|PatchSetAncestor
 parameter_list|()
 block|{   }
-DECL|method|PatchSetAncestor (final PatchSetAncestor.Key k, final RevId rev)
+DECL|method|PatchSetAncestor (final PatchSetAncestor.Key k)
 specifier|public
 name|PatchSetAncestor
 parameter_list|(
@@ -245,19 +245,11 @@ name|PatchSetAncestor
 operator|.
 name|Key
 name|k
-parameter_list|,
-specifier|final
-name|RevId
-name|rev
 parameter_list|)
 block|{
 name|key
 operator|=
 name|k
-expr_stmt|;
-name|ancestorRevision
-operator|=
-name|rev
 expr_stmt|;
 block|}
 DECL|method|getKey ()
@@ -307,6 +299,21 @@ block|{
 return|return
 name|ancestorRevision
 return|;
+block|}
+DECL|method|setAncestorRevision (final RevId id)
+specifier|public
+name|void
+name|setAncestorRevision
+parameter_list|(
+specifier|final
+name|RevId
+name|id
+parameter_list|)
+block|{
+name|ancestorRevision
+operator|=
+name|id
+expr_stmt|;
 block|}
 block|}
 end_class
