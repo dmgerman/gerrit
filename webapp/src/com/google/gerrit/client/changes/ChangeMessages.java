@@ -162,6 +162,30 @@ name|String
 name|date
 parameter_list|)
 function_decl|;
+DECL|method|renamedFrom (String sourcePath)
+name|String
+name|renamedFrom
+parameter_list|(
+name|String
+name|sourcePath
+parameter_list|)
+function_decl|;
+DECL|method|copiedFrom (String sourcePath)
+name|String
+name|copiedFrom
+parameter_list|(
+name|String
+name|sourcePath
+parameter_list|)
+function_decl|;
+DECL|method|otherFrom (String sourcePath)
+name|String
+name|otherFrom
+parameter_list|(
+name|String
+name|sourcePath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
