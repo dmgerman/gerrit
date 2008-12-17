@@ -295,7 +295,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Detail necessary to display{@link ChangeScreen}. */
+comment|/** Detail necessary to display {@link ChangeScreen}. */
 end_comment
 
 begin_class
