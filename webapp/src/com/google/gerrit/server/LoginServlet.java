@@ -2897,21 +2897,27 @@ name|rsp
 operator|.
 name|setHeader
 argument_list|(
-literal|"Cache-Control"
+literal|"Expires"
+argument_list|,
+literal|"Fri, 01 Jan 1980 00:00:00 GMT"
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setHeader
+argument_list|(
+literal|"Pragma"
 argument_list|,
 literal|"no-cache"
 argument_list|)
 expr_stmt|;
 name|rsp
 operator|.
-name|setDateHeader
+name|setHeader
 argument_list|(
-literal|"Expires"
+literal|"Cache-Control"
 argument_list|,
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
+literal|"no-cache, must-revalidate"
 argument_list|)
 expr_stmt|;
 name|rsp
