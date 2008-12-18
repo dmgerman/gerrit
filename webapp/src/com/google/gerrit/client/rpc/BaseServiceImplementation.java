@@ -273,7 +273,7 @@ block|}
 block|}
 comment|/** Exception whose cause is passed into onFailure. */
 DECL|class|Failure
-specifier|protected
+specifier|public
 specifier|static
 class|class
 name|Failure
@@ -298,7 +298,7 @@ block|}
 block|}
 comment|/** Arbitrary action to run with a database connection. */
 DECL|interface|Action
-specifier|protected
+specifier|public
 specifier|static
 interface|interface
 name|Action

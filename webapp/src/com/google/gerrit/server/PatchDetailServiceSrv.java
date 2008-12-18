@@ -64,6 +64,22 @@ name|server
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|PatchDetailServiceImpl
+import|;
+end_import
+
 begin_comment
 comment|/** Publishes {@link PatchDetailServiceImpl} over JSON. */
 end_comment
