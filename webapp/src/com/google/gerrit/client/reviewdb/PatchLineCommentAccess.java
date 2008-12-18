@@ -177,19 +177,50 @@ name|PatchLineComment
 operator|.
 name|STATUS_PUBLISHED
 operator|+
-literal|"' ORDER BY writtenOn,lineNbr"
+literal|"' ORDER BY lineNbr,writtenOn"
 argument_list|)
-DECL|method|byPatch (Patch.Id id)
+DECL|method|published (Patch.Id id)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|byPatch
+name|published
 parameter_list|(
 name|Patch
 operator|.
 name|Id
 name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.patchId = ? AND status = '"
+operator|+
+name|PatchLineComment
+operator|.
+name|STATUS_DRAFT
+operator|+
+literal|"' AND author = ? ORDER BY lineNbr,writtenOn"
+argument_list|)
+DECL|method|draft (Patch.Id patch, Account.Id author)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|draft
+parameter_list|(
+name|Patch
+operator|.
+name|Id
+name|patch
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|author
 parameter_list|)
 throws|throws
 name|OrmException

@@ -118,6 +118,11 @@ specifier|public
 class|class
 name|UnifiedPatchDetail
 block|{
+DECL|field|accounts
+specifier|protected
+name|AccountInfoCache
+name|accounts
+decl_stmt|;
 DECL|field|patch
 specifier|protected
 name|Patch
@@ -136,19 +141,37 @@ specifier|protected
 name|UnifiedPatchDetail
 parameter_list|()
 block|{   }
-DECL|method|UnifiedPatchDetail (final Patch p)
+DECL|method|UnifiedPatchDetail (final Patch p, final AccountInfoCache aic)
 specifier|public
 name|UnifiedPatchDetail
 parameter_list|(
 specifier|final
 name|Patch
 name|p
+parameter_list|,
+specifier|final
+name|AccountInfoCache
+name|aic
 parameter_list|)
 block|{
 name|patch
 operator|=
 name|p
 expr_stmt|;
+name|accounts
+operator|=
+name|aic
+expr_stmt|;
+block|}
+DECL|method|getAccounts ()
+specifier|public
+name|AccountInfoCache
+name|getAccounts
+parameter_list|()
+block|{
+return|return
+name|accounts
+return|;
 block|}
 DECL|method|getPatch ()
 specifier|public

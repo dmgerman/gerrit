@@ -225,6 +225,15 @@ name|uuid
 return|;
 block|}
 block|}
+DECL|field|STATUS_DRAFT
+specifier|protected
+specifier|static
+specifier|final
+name|char
+name|STATUS_DRAFT
+init|=
+literal|'d'
+decl_stmt|;
 DECL|field|STATUS_PUBLISHED
 specifier|protected
 specifier|static
@@ -242,16 +251,14 @@ name|Status
 block|{
 DECL|enumConstant|DRAFT
 name|DRAFT
-argument_list|(
-literal|'d'
-argument_list|)
-block|,
-DECL|enumConstant|PUBLISHED
-name|PUBLISHED
 parameter_list|(
-name|STATUS_PUBLISHED
+name|STATUS_DRAFT
 parameter_list|)
-constructor_decl|;
+operator|,
+DECL|enumConstant|PUBLISHED
+constructor|PUBLISHED(STATUS_PUBLISHED
+block|)
+enum|;
 DECL|field|code
 specifier|private
 specifier|final
@@ -324,6 +331,9 @@ literal|null
 return|;
 block|}
 block|}
+end_class
+
+begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
@@ -338,7 +348,13 @@ specifier|protected
 name|Id
 name|key
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** Line number this comment applies to; it should display after the line. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|lineNbr
@@ -346,7 +362,13 @@ specifier|protected
 name|int
 name|lineNbr
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** Who wrote this comment. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
@@ -361,7 +383,13 @@ operator|.
 name|Id
 name|author
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** When this comment was drafted. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|writtenOn
@@ -369,7 +397,13 @@ specifier|protected
 name|Timestamp
 name|writtenOn
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** Current publication state of the comment; see {@link Status}. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|status
@@ -377,7 +411,13 @@ specifier|protected
 name|char
 name|status
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** Which file is this comment; 0 is ancestor, 1 is new version. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 DECL|field|side
@@ -385,7 +425,13 @@ specifier|protected
 name|short
 name|side
 decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** The text left by the user. */
+end_comment
+
+begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
@@ -404,11 +450,17 @@ specifier|protected
 name|String
 name|message
 decl_stmt|;
+end_decl_stmt
+
+begin_constructor
 DECL|method|PatchLineComment ()
 specifier|protected
 name|PatchLineComment
 parameter_list|()
 block|{   }
+end_constructor
+
+begin_constructor
 DECL|method|PatchLineComment (final PatchLineComment.Id id, final int line, final Account.Id a)
 specifier|public
 name|PatchLineComment
@@ -469,6 +521,9 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+end_constructor
+
+begin_function
 DECL|method|getKey ()
 specifier|public
 name|PatchLineComment
@@ -481,6 +536,9 @@ return|return
 name|key
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getLine ()
 specifier|public
 name|int
@@ -491,6 +549,9 @@ return|return
 name|lineNbr
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getAuthor ()
 specifier|public
 name|Account
@@ -503,6 +564,9 @@ return|return
 name|author
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getWrittenOn ()
 specifier|public
 name|Timestamp
@@ -513,6 +577,9 @@ return|return
 name|writtenOn
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getStatus ()
 specifier|public
 name|Status
@@ -528,6 +595,9 @@ name|status
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setStatus (final Status s)
 specifier|public
 name|void
@@ -546,6 +616,9 @@ name|getCode
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getSide ()
 specifier|public
 name|short
@@ -556,6 +629,9 @@ return|return
 name|side
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setSide (final short s)
 specifier|public
 name|void
@@ -571,6 +647,9 @@ operator|=
 name|s
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getMessage ()
 specifier|public
 name|String
@@ -581,6 +660,9 @@ return|return
 name|message
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setMessage (final String s)
 specifier|public
 name|void
@@ -596,8 +678,8 @@ operator|=
 name|s
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
