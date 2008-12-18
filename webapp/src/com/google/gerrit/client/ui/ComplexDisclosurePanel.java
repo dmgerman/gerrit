@@ -548,6 +548,20 @@ name|handler
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** @return true if the panel's content is visible. */
+DECL|method|isOpen ()
+specifier|public
+name|boolean
+name|isOpen
+parameter_list|()
+block|{
+return|return
+name|main
+operator|.
+name|isOpen
+argument_list|()
+return|;
+block|}
 comment|/**    * Changes the visible state of this panel's content.    *     * @param isOpen<code>true</code> to open,<code>false</code> to close    */
 DECL|method|setOpen (final boolean isOpen)
 specifier|public
