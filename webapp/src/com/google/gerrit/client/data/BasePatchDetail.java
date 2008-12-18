@@ -78,7 +78,7 @@ name|client
 operator|.
 name|patches
 operator|.
-name|PatchUnifiedScreen
+name|PatchScreen
 import|;
 end_import
 
@@ -98,44 +98,35 @@ name|Patch
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/** Detail necessary to display {@link PatchUnifiedScreen}. */
+comment|/** Detail necessary to display {@link PatchScreen}. */
 end_comment
 
 begin_class
-DECL|class|UnifiedPatchDetail
+DECL|class|BasePatchDetail
 specifier|public
+specifier|abstract
 class|class
-name|UnifiedPatchDetail
-extends|extends
 name|BasePatchDetail
 block|{
-DECL|field|lines
+DECL|field|accounts
 specifier|protected
-name|List
-argument_list|<
-name|PatchLine
-argument_list|>
-name|lines
+name|AccountInfoCache
+name|accounts
 decl_stmt|;
-DECL|method|UnifiedPatchDetail ()
+DECL|field|patch
 specifier|protected
-name|UnifiedPatchDetail
+name|Patch
+name|patch
+decl_stmt|;
+DECL|method|BasePatchDetail ()
+specifier|protected
+name|BasePatchDetail
 parameter_list|()
 block|{   }
-DECL|method|UnifiedPatchDetail (final Patch p, final AccountInfoCache aic)
+DECL|method|BasePatchDetail (final Patch p, final AccountInfoCache aic)
 specifier|public
-name|UnifiedPatchDetail
+name|BasePatchDetail
 parameter_list|(
 specifier|final
 name|Patch
@@ -146,44 +137,34 @@ name|AccountInfoCache
 name|aic
 parameter_list|)
 block|{
-name|super
-argument_list|(
+name|patch
+operator|=
 name|p
-argument_list|,
+expr_stmt|;
+name|accounts
+operator|=
 name|aic
-argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getLines ()
+DECL|method|getAccounts ()
 specifier|public
-name|List
-argument_list|<
-name|PatchLine
-argument_list|>
-name|getLines
+name|AccountInfoCache
+name|getAccounts
 parameter_list|()
 block|{
 return|return
-name|lines
+name|accounts
 return|;
 block|}
-DECL|method|setLines (final List<PatchLine> in)
+DECL|method|getPatch ()
 specifier|public
-name|void
-name|setLines
-parameter_list|(
-specifier|final
-name|List
-argument_list|<
-name|PatchLine
-argument_list|>
-name|in
-parameter_list|)
+name|Patch
+name|getPatch
+parameter_list|()
 block|{
-name|lines
-operator|=
-name|in
-expr_stmt|;
+return|return
+name|patch
+return|;
 block|}
 block|}
 end_class
