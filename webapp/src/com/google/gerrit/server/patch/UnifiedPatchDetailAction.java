@@ -566,6 +566,8 @@ argument_list|()
 operator|.
 name|getStartLine
 argument_list|()
+operator|-
+literal|1
 decl_stmt|;
 name|int
 name|newLine
@@ -574,6 +576,8 @@ name|h
 operator|.
 name|getNewStartLine
 argument_list|()
+operator|-
+literal|1
 decl_stmt|;
 name|SCAN
 label|:
