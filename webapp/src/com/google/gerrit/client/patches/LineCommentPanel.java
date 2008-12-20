@@ -167,7 +167,7 @@ name|l
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gerrit-ChangeMessage-Message"
+literal|"gerrit-PatchLineComment"
 argument_list|)
 expr_stmt|;
 name|initWidget

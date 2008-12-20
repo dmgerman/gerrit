@@ -67,14 +67,14 @@ package|;
 end_package
 
 begin_comment
-comment|/** A single line of a 2-way patch file. */
+comment|/** A line of a file in a side-by-side view. */
 end_comment
 
 begin_class
-DECL|class|PatchLine
+DECL|class|SideBySideLine
 specifier|public
 class|class
-name|PatchLine
+name|SideBySideLine
 extends|extends
 name|LineWithComments
 block|{
@@ -84,34 +84,23 @@ specifier|static
 enum|enum
 name|Type
 block|{
-DECL|enumConstant|FILE_HEADER
-name|FILE_HEADER
+DECL|enumConstant|DELETE
+DECL|enumConstant|INSERT
+DECL|enumConstant|EQUAL
+name|DELETE
 block|,
-DECL|enumConstant|HUNK_HEADER
-name|HUNK_HEADER
+name|INSERT
 block|,
-DECL|enumConstant|PRE_IMAGE
-name|PRE_IMAGE
-block|,
-DECL|enumConstant|CONTEXT
-name|CONTEXT
-block|,
-DECL|enumConstant|POST_IMAGE
-name|POST_IMAGE
+name|EQUAL
 block|;   }
-DECL|field|oldLineNumber
+DECL|field|lineNumber
 specifier|protected
 name|int
-name|oldLineNumber
-decl_stmt|;
-DECL|field|newLineNumber
-specifier|protected
-name|int
-name|newLineNumber
+name|lineNumber
 decl_stmt|;
 DECL|field|type
 specifier|protected
-name|PatchLine
+name|SideBySideLine
 operator|.
 name|Type
 name|type
@@ -121,25 +110,21 @@ specifier|protected
 name|String
 name|text
 decl_stmt|;
-DECL|method|PatchLine ()
+DECL|method|SideBySideLine ()
 specifier|protected
-name|PatchLine
+name|SideBySideLine
 parameter_list|()
 block|{   }
-DECL|method|PatchLine (final int oLine, final int nLine, final PatchLine.Type t, final String s)
+DECL|method|SideBySideLine (final int line, final SideBySideLine.Type t, final String s)
 specifier|public
-name|PatchLine
+name|SideBySideLine
 parameter_list|(
 specifier|final
 name|int
-name|oLine
+name|line
 parameter_list|,
 specifier|final
-name|int
-name|nLine
-parameter_list|,
-specifier|final
-name|PatchLine
+name|SideBySideLine
 operator|.
 name|Type
 name|t
@@ -149,13 +134,9 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|oldLineNumber
+name|lineNumber
 operator|=
-name|oLine
-expr_stmt|;
-name|newLineNumber
-operator|=
-name|nLine
+name|line
 expr_stmt|;
 name|type
 operator|=
@@ -166,29 +147,19 @@ operator|=
 name|s
 expr_stmt|;
 block|}
-DECL|method|getOldLineNumber ()
+DECL|method|getLineNumber ()
 specifier|public
 name|int
-name|getOldLineNumber
+name|getLineNumber
 parameter_list|()
 block|{
 return|return
-name|oldLineNumber
-return|;
-block|}
-DECL|method|getNewLineNumber ()
-specifier|public
-name|int
-name|getNewLineNumber
-parameter_list|()
-block|{
-return|return
-name|newLineNumber
+name|lineNumber
 return|;
 block|}
 DECL|method|getType ()
 specifier|public
-name|PatchLine
+name|SideBySideLine
 operator|.
 name|Type
 name|getType

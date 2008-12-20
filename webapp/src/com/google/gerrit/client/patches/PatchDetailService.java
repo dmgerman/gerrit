@@ -78,6 +78,22 @@ name|client
 operator|.
 name|data
 operator|.
+name|SideBySidePatchDetail
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
 name|UnifiedPatchDetail
 import|;
 end_import
@@ -152,6 +168,24 @@ name|PatchDetailService
 extends|extends
 name|RemoteJsonService
 block|{
+annotation|@
+name|AllowCrossSiteRequest
+DECL|method|sideBySidePatchDetail (Patch.Id key, AsyncCallback<SideBySidePatchDetail> callback)
+name|void
+name|sideBySidePatchDetail
+parameter_list|(
+name|Patch
+operator|.
+name|Id
+name|key
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SideBySidePatchDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 annotation|@
 name|AllowCrossSiteRequest
 DECL|method|unifiedPatchDetail (Patch.Id key, AsyncCallback<UnifiedPatchDetail> callback)

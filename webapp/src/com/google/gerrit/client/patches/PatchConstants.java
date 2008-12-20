@@ -95,6 +95,16 @@ name|String
 name|draft
 parameter_list|()
 function_decl|;
+DECL|method|patchHeaderOld ()
+name|String
+name|patchHeaderOld
+parameter_list|()
+function_decl|;
+DECL|method|patchHeaderNew ()
+name|String
+name|patchHeaderNew
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

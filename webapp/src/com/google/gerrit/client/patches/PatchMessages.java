@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.client.patches
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|client
+operator|.
+name|patches
 package|;
 end_package
 
@@ -70,51 +72,44 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
 operator|.
-name|server
+name|i18n
 operator|.
-name|patch
+name|client
 operator|.
-name|PatchDetailServiceImpl
+name|Messages
 import|;
 end_import
 
-begin_comment
-comment|/** Publishes {@link PatchDetailServiceImpl} over JSON. */
-end_comment
-
-begin_class
-DECL|class|PatchDetailServiceSrv
+begin_interface
+DECL|interface|PatchMessages
 specifier|public
-class|class
-name|PatchDetailServiceSrv
+interface|interface
+name|PatchMessages
 extends|extends
-name|GerritJsonServlet
+name|Messages
 block|{
+DECL|method|patchHeaderAncestor (int id)
+name|String
+name|patchHeaderAncestor
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+function_decl|;
+DECL|method|patchSkipRegion (@luralCount int lineCnt)
+name|String
+name|patchSkipRegion
+parameter_list|(
 annotation|@
-name|Override
-DECL|method|createServiceHandle ()
-specifier|protected
-name|Object
-name|createServiceHandle
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-return|return
-operator|new
-name|PatchDetailServiceImpl
-argument_list|(
-name|GerritServer
-operator|.
-name|getInstance
-argument_list|()
-argument_list|)
-return|;
+name|PluralCount
+name|int
+name|lineCnt
+parameter_list|)
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
