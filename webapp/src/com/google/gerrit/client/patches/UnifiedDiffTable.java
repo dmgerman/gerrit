@@ -126,19 +126,6 @@ name|UnifiedDiffTable
 extends|extends
 name|AbstractPatchContentTable
 block|{
-DECL|method|UnifiedDiffTable ()
-specifier|public
-name|UnifiedDiffTable
-parameter_list|()
-block|{
-name|table
-operator|.
-name|setStyleName
-argument_list|(
-literal|"gerrit-UnifiedDiffTable"
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|display (final List<PatchLine> list)
 specifier|public
 name|void

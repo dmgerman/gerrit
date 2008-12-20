@@ -204,19 +204,6 @@ specifier|private
 name|int
 name|maxLineNumber
 decl_stmt|;
-DECL|method|SideBySideTable ()
-specifier|public
-name|SideBySideTable
-parameter_list|()
-block|{
-name|table
-operator|.
-name|setStyleName
-argument_list|(
-literal|"gerrit-SideBySideTable"
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|display (final SideBySidePatchDetail detail)
 specifier|public
 name|void
@@ -1370,7 +1357,7 @@ name|nc
 operator|.
 name|append
 argument_list|(
-literal|"<td class=\"DiffText DiffText-"
+literal|"<td class=\"FileLine FileLine-"
 argument_list|)
 expr_stmt|;
 name|nc
@@ -1450,7 +1437,7 @@ name|nc
 operator|.
 name|append
 argument_list|(
-literal|"<td class=\"NoLineDiffText\">&nbsp;</td>"
+literal|"<td class=\"FileLine FileLineNone\">&nbsp;</td>"
 argument_list|)
 expr_stmt|;
 block|}

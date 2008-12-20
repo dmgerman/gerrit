@@ -264,6 +264,19 @@ operator|-
 name|AGE
 argument_list|)
 decl_stmt|;
+DECL|method|AbstractPatchContentTable ()
+specifier|protected
+name|AbstractPatchContentTable
+parameter_list|()
+block|{
+name|table
+operator|.
+name|setStyleName
+argument_list|(
+literal|"gerrit-PatchContentTable"
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getRowItemKey (final Object item)
