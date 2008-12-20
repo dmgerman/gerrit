@@ -512,14 +512,6 @@ operator|.
 name|DRAFT
 argument_list|)
 expr_stmt|;
-name|setSide
-argument_list|(
-operator|(
-name|short
-operator|)
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
 end_constructor
 

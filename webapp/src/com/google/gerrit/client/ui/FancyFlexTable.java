@@ -523,8 +523,7 @@ argument_list|()
 expr_stmt|;
 name|table
 operator|=
-operator|new
-name|MyFlexTable
+name|createFlexTable
 argument_list|()
 expr_stmt|;
 name|table
@@ -681,6 +680,18 @@ argument_list|,
 name|S_ICON_HEADER
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|createFlexTable ()
+specifier|protected
+name|MyFlexTable
+name|createFlexTable
+parameter_list|()
+block|{
+return|return
+operator|new
+name|MyFlexTable
+argument_list|()
+return|;
 block|}
 DECL|method|getRowItem (final int row)
 specifier|protected
