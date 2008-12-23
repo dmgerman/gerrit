@@ -319,6 +319,14 @@ specifier|public
 name|String
 name|gitBasePath
 decl_stmt|;
+comment|/** Local TCP port number the embedded SSHD server binds onto. */
+annotation|@
+name|Column
+DECL|field|sshdPort
+specifier|public
+name|int
+name|sshdPort
+decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig
