@@ -164,6 +164,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountSshKeys ()
+name|AccountSshKeyAccess
+name|accountSshKeys
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|accountAgreements ()
 name|AccountAgreementAccess
 name|accountAgreements
