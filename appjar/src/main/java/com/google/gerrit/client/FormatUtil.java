@@ -157,12 +157,18 @@ name|dt
 parameter_list|)
 block|{
 return|return
+name|dt
+operator|!=
+literal|null
+condition|?
 name|dtfmt
 operator|.
 name|format
 argument_list|(
 name|dt
 argument_list|)
+else|:
+literal|""
 return|;
 block|}
 comment|/** Format an account as a name and email address. */
