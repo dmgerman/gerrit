@@ -171,7 +171,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE id.accountId = ? AND valid = true ORDER BY storedOn DESC"
+literal|"WHERE id.accountId = ? ORDER BY storedOn DESC"
 argument_list|)
 DECL|method|byAccount (Account.Id id)
 name|ResultSet
@@ -179,6 +179,26 @@ argument_list|<
 name|AccountSshKey
 argument_list|>
 name|byAccount
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE id.accountId = ? AND valid = true ORDER BY storedOn DESC"
+argument_list|)
+DECL|method|valid (Account.Id id)
+name|ResultSet
+argument_list|<
+name|AccountSshKey
+argument_list|>
+name|valid
 parameter_list|(
 name|Account
 operator|.

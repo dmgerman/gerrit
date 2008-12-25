@@ -596,7 +596,7 @@ operator|.
 name|accountSshKeys
 argument_list|()
 operator|.
-name|byAccount
+name|valid
 argument_list|(
 name|matches
 operator|.
