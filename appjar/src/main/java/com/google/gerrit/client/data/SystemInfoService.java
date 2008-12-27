@@ -141,7 +141,7 @@ name|HostPageCache
 argument_list|(
 name|name
 operator|=
-literal|"gerrit_gerritconfig"
+literal|"gerrit_gerritconfig_obj"
 argument_list|,
 name|once
 operator|=

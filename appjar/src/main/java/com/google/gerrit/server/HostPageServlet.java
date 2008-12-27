@@ -884,7 +884,7 @@ name|w
 operator|.
 name|write
 argument_list|(
-literal|"="
+literal|"_obj="
 argument_list|)
 expr_stmt|;
 name|GerritJsonServlet
