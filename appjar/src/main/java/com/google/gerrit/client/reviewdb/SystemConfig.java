@@ -277,6 +277,7 @@ literal|false
 argument_list|)
 DECL|field|sitePath
 specifier|public
+specifier|transient
 name|String
 name|sitePath
 decl_stmt|;
@@ -316,6 +317,7 @@ literal|false
 argument_list|)
 DECL|field|gitBasePath
 specifier|public
+specifier|transient
 name|String
 name|gitBasePath
 decl_stmt|;
