@@ -499,6 +499,8 @@ operator|.
 name|split
 argument_list|(
 literal|" "
+argument_list|,
+literal|3
 argument_list|)
 decl_stmt|;
 if|if
