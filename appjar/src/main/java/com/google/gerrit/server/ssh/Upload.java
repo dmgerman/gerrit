@@ -114,6 +114,7 @@ block|{
 name|closeDb
 argument_list|()
 expr_stmt|;
+comment|// TODO Verify the user can access this project.
 specifier|final
 name|UploadPack
 name|up
