@@ -160,6 +160,26 @@ name|VoidResult
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|AccountService
 specifier|public
@@ -183,13 +203,16 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|mySshKeys (AsyncCallback<SshKeyList> callback)
+DECL|method|mySshKeys (AsyncCallback<List<AccountSshKey>> callback)
 name|void
 name|mySshKeys
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|SshKeyList
+name|List
+argument_list|<
+name|AccountSshKey
+argument_list|>
 argument_list|>
 name|callback
 parameter_list|)
@@ -212,14 +235,17 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|deleteSshKey (AccountSshKey.Id id, AsyncCallback<VoidResult> callback)
+DECL|method|deleteSshKeys (Set<AccountSshKey.Id> ids, AsyncCallback<VoidResult> callback)
 name|void
-name|deleteSshKey
+name|deleteSshKeys
 parameter_list|(
+name|Set
+argument_list|<
 name|AccountSshKey
 operator|.
 name|Id
-name|id
+argument_list|>
+name|ids
 parameter_list|,
 name|AsyncCallback
 argument_list|<

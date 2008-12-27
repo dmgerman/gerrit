@@ -95,6 +95,76 @@ name|String
 name|accountSettingsHeading
 parameter_list|()
 function_decl|;
+DECL|method|fullName ()
+name|String
+name|fullName
+parameter_list|()
+function_decl|;
+DECL|method|preferredEmail ()
+name|String
+name|preferredEmail
+parameter_list|()
+function_decl|;
+DECL|method|registeredOn ()
+name|String
+name|registeredOn
+parameter_list|()
+function_decl|;
+DECL|method|tabPreferences ()
+name|String
+name|tabPreferences
+parameter_list|()
+function_decl|;
+DECL|method|tabSshKeys ()
+name|String
+name|tabSshKeys
+parameter_list|()
+function_decl|;
+DECL|method|tabAgreements ()
+name|String
+name|tabAgreements
+parameter_list|()
+function_decl|;
+DECL|method|buttonDeleteSshKey ()
+name|String
+name|buttonDeleteSshKey
+parameter_list|()
+function_decl|;
+DECL|method|buttonAddSshKey ()
+name|String
+name|buttonAddSshKey
+parameter_list|()
+function_decl|;
+DECL|method|sshKeyAlgorithm ()
+name|String
+name|sshKeyAlgorithm
+parameter_list|()
+function_decl|;
+DECL|method|sshKeyKey ()
+name|String
+name|sshKeyKey
+parameter_list|()
+function_decl|;
+DECL|method|sshKeyComment ()
+name|String
+name|sshKeyComment
+parameter_list|()
+function_decl|;
+DECL|method|sshKeyLastUsed ()
+name|String
+name|sshKeyLastUsed
+parameter_list|()
+function_decl|;
+DECL|method|sshKeyStored ()
+name|String
+name|sshKeyStored
+parameter_list|()
+function_decl|;
+DECL|method|addSshKeyPanelHeader ()
+name|String
+name|addSshKeyPanelHeader
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
