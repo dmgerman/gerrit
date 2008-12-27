@@ -1670,7 +1670,7 @@ literal|40
 condition|)
 block|{
 return|return
-literal|null
+name|s
 return|;
 block|}
 return|return
