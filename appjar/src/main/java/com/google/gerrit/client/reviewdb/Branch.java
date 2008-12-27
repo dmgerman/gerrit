@@ -383,6 +383,18 @@ return|return
 name|branchId
 return|;
 block|}
+DECL|method|getNameKey ()
+specifier|public
+name|Branch
+operator|.
+name|NameKey
+name|getNameKey
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 DECL|method|getName ()
 specifier|public
 name|String

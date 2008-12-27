@@ -320,6 +320,18 @@ return|return
 name|projectId
 return|;
 block|}
+DECL|method|getNameKey ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getNameKey
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 DECL|method|getName ()
 specifier|public
 name|String
