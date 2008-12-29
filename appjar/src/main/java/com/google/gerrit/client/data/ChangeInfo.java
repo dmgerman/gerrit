@@ -98,6 +98,26 @@ name|Change
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeInfo
 specifier|public
@@ -139,6 +159,11 @@ DECL|field|starred
 specifier|protected
 name|boolean
 name|starred
+decl_stmt|;
+DECL|field|lastUpdatedOn
+specifier|protected
+name|Timestamp
+name|lastUpdatedOn
 decl_stmt|;
 DECL|method|ChangeInfo ()
 specifier|protected
@@ -199,6 +224,13 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|lastUpdatedOn
+operator|=
+name|c
+operator|.
+name|getLastUpdatedOn
+argument_list|()
 expr_stmt|;
 name|acc
 operator|.
@@ -288,6 +320,16 @@ name|starred
 operator|=
 name|s
 expr_stmt|;
+block|}
+DECL|method|getLastUpdatedOn ()
+specifier|public
+name|Date
+name|getLastUpdatedOn
+parameter_list|()
+block|{
+return|return
+name|lastUpdatedOn
+return|;
 block|}
 block|}
 end_class

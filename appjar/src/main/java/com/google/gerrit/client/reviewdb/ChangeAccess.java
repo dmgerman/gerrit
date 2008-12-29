@@ -177,7 +177,7 @@ name|Change
 operator|.
 name|STATUS_NEW
 operator|+
-literal|"' ORDER BY createdOn DESC"
+literal|"' ORDER BY lastUpdatedOn DESC"
 argument_list|)
 DECL|method|byOwnerOpen (Account.Id id)
 name|ResultSet
@@ -203,7 +203,7 @@ name|Change
 operator|.
 name|STATUS_MERGED
 operator|+
-literal|"' ORDER BY createdOn DESC LIMIT 20"
+literal|"' ORDER BY lastUpdatedOn DESC LIMIT 20"
 argument_list|)
 DECL|method|byOwnerMerged (Account.Id id)
 name|ResultSet

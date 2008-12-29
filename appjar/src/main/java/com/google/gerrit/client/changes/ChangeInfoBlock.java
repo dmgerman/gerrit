@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -77,6 +77,8 @@ operator|.
 name|client
 operator|.
 name|FormatUtil
+operator|.
+name|mediumFormat
 import|;
 end_import
 
@@ -260,6 +262,15 @@ name|R_UPLOADED
 init|=
 literal|3
 decl_stmt|;
+DECL|field|R_UPDATED
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|R_UPDATED
+init|=
+literal|4
+decl_stmt|;
 DECL|field|R_STATUS
 specifier|private
 specifier|static
@@ -267,7 +278,7 @@ specifier|final
 name|int
 name|R_STATUS
 init|=
-literal|4
+literal|5
 decl_stmt|;
 DECL|field|R_PERMALINK
 specifier|private
@@ -276,7 +287,7 @@ specifier|final
 name|int
 name|R_PERMALINK
 init|=
-literal|5
+literal|6
 decl_stmt|;
 DECL|field|R_CNT
 specifier|private
@@ -285,7 +296,7 @@ specifier|final
 name|int
 name|R_CNT
 init|=
-literal|6
+literal|7
 decl_stmt|;
 DECL|field|table
 specifier|private
@@ -367,6 +378,18 @@ operator|.
 name|C
 operator|.
 name|changeInfoBlockUploaded
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|initRow
+argument_list|(
+name|R_UPDATED
+argument_list|,
+name|Util
+operator|.
+name|C
+operator|.
+name|changeInfoBlockUpdated
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -590,13 +613,28 @@ name|R_UPLOADED
 argument_list|,
 literal|1
 argument_list|,
-name|FormatUtil
-operator|.
 name|mediumFormat
 argument_list|(
 name|chg
 operator|.
 name|getCreatedOn
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|setText
+argument_list|(
+name|R_UPDATED
+argument_list|,
+literal|1
+argument_list|,
+name|mediumFormat
+argument_list|(
+name|chg
+operator|.
+name|getLastUpdatedOn
 argument_list|()
 argument_list|)
 argument_list|)

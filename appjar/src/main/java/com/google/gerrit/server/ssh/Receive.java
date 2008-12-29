@@ -2314,6 +2314,11 @@ name|getPatchSetInfo
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|change
+operator|.
+name|updated
+argument_list|()
+expr_stmt|;
 name|db
 operator|.
 name|changes

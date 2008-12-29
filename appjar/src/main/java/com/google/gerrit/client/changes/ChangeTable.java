@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|FormatUtil
+operator|.
+name|mediumFormat
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -454,6 +470,15 @@ name|String
 name|S_C_SUBJECT
 init|=
 literal|"C_SUBJECT"
+decl_stmt|;
+DECL|field|S_C_LAST_UPDATE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|S_C_LAST_UPDATE
+init|=
+literal|"C_LAST_UPDATE"
 decl_stmt|;
 DECL|field|S_SECTION_HEADER
 specifier|private
@@ -1463,6 +1488,17 @@ argument_list|,
 name|S_C_SUBJECT
 argument_list|)
 expr_stmt|;
+name|fmt
+operator|.
+name|addStyleName
+argument_list|(
+name|row
+argument_list|,
+name|C_LAST_UPDATE
+argument_list|,
+name|S_C_LAST_UPDATE
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|populateChangeRow (final int row, final ChangeInfo c)
 specifier|private
@@ -1653,7 +1689,13 @@ name|row
 argument_list|,
 name|C_LAST_UPDATE
 argument_list|,
-literal|"TODO"
+name|mediumFormat
+argument_list|(
+name|c
+operator|.
+name|getLastUpdatedOn
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|setRowItem

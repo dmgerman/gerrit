@@ -235,6 +235,11 @@ name|String
 name|changeInfoBlockUploaded
 parameter_list|()
 function_decl|;
+DECL|method|changeInfoBlockUpdated ()
+name|String
+name|changeInfoBlockUpdated
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockStatus ()
 name|String
 name|changeInfoBlockStatus

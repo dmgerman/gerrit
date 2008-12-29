@@ -387,6 +387,14 @@ specifier|protected
 name|Timestamp
 name|createdOn
 decl_stmt|;
+comment|/**    * When was a meaningful modification last made to this record's data    *<p>    * Note, this update timestamp includes its children.    */
+annotation|@
+name|Column
+DECL|field|lastUpdatedOn
+specifier|protected
+name|Timestamp
+name|lastUpdatedOn
+decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
@@ -486,6 +494,10 @@ name|currentTimeMillis
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|lastUpdatedOn
+operator|=
+name|createdOn
+expr_stmt|;
 name|owner
 operator|=
 name|ownedBy
@@ -536,6 +548,34 @@ block|{
 return|return
 name|createdOn
 return|;
+block|}
+DECL|method|getLastUpdatedOn ()
+specifier|public
+name|Timestamp
+name|getLastUpdatedOn
+parameter_list|()
+block|{
+return|return
+name|lastUpdatedOn
+return|;
+block|}
+DECL|method|updated ()
+specifier|public
+name|void
+name|updated
+parameter_list|()
+block|{
+name|lastUpdatedOn
+operator|=
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getOwner ()
 specifier|public
