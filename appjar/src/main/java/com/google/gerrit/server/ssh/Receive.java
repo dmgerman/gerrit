@@ -548,6 +548,11 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|rp
+specifier|private
+name|ReceivePack
+name|rp
+decl_stmt|;
 DECL|field|newChange
 specifier|private
 name|ReceiveCommand
@@ -657,16 +662,14 @@ name|ccEmail
 argument_list|)
 expr_stmt|;
 comment|// TODO verify user has signed a CLA for this project
-specifier|final
-name|ReceivePack
 name|rp
-init|=
+operator|=
 operator|new
 name|ReceivePack
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|rp
 operator|.
 name|setAllowCreates
@@ -725,17 +728,10 @@ name|commands
 argument_list|)
 expr_stmt|;
 name|createNewChanges
-argument_list|(
-name|rp
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|appendPatchSets
-argument_list|(
-name|rp
-operator|.
-name|getRevWalk
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1634,15 +1630,11 @@ name|changeEnt
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createNewChanges (final ReceivePack rp)
+DECL|method|createNewChanges ()
 specifier|private
 name|void
 name|createNewChanges
-parameter_list|(
-specifier|final
-name|ReceivePack
-name|rp
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -2063,15 +2055,11 @@ argument_list|)
 expr_stmt|;
 comment|// TODO list the new change id
 block|}
-DECL|method|appendPatchSets (final RevWalk walk)
+DECL|method|appendPatchSets ()
 specifier|private
 name|void
 name|appendPatchSets
-parameter_list|(
-specifier|final
-name|RevWalk
-name|walk
-parameter_list|)
+parameter_list|()
 block|{
 for|for
 control|(
@@ -2128,8 +2116,6 @@ try|try
 block|{
 name|appendPatchSet
 argument_list|(
-name|walk
-argument_list|,
 name|change
 argument_list|,
 name|cmd
@@ -2177,15 +2163,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|appendPatchSet (final RevWalk walk, final Change change, final ReceiveCommand cmd)
+DECL|method|appendPatchSet (final Change change, final ReceiveCommand cmd)
 specifier|private
 name|void
 name|appendPatchSet
 parameter_list|(
-specifier|final
-name|RevWalk
-name|walk
-parameter_list|,
 specifier|final
 name|Change
 name|change
@@ -2203,7 +2185,10 @@ specifier|final
 name|RevCommit
 name|c
 init|=
-name|walk
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
 operator|.
 name|parseCommit
 argument_list|(
@@ -2327,7 +2312,10 @@ name|ru
 operator|.
 name|update
 argument_list|(
-name|walk
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
