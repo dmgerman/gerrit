@@ -115,6 +115,39 @@ specifier|final
 class|class
 name|Account
 block|{
+comment|/** Default number of lines of context. */
+DECL|field|DEFAULT_CONTEXT
+specifier|public
+specifier|static
+specifier|final
+name|short
+name|DEFAULT_CONTEXT
+init|=
+literal|10
+decl_stmt|;
+comment|/** Typical valid choices for the default context setting. */
+DECL|field|CONTEXT_CHOICES
+specifier|public
+specifier|static
+specifier|final
+name|short
+index|[]
+name|CONTEXT_CHOICES
+init|=
+block|{
+literal|3
+block|,
+literal|10
+block|,
+literal|25
+block|,
+literal|50
+block|,
+literal|75
+block|,
+literal|100
+block|}
+decl_stmt|;
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
 specifier|public
@@ -267,6 +300,14 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
+comment|/** Default number of lines of context when viewing a patch. */
+annotation|@
+name|Column
+DECL|field|defaultContext
+specifier|protected
+name|short
+name|defaultContext
+decl_stmt|;
 comment|/** Non-Internet based contact details for the account's owner. */
 annotation|@
 name|Column
@@ -311,6 +352,10 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|defaultContext
+operator|=
+name|DEFAULT_CONTEXT
 expr_stmt|;
 block|}
 comment|/** Get local id of this account, to link with in other entities */
@@ -390,6 +435,33 @@ block|{
 return|return
 name|registeredOn
 return|;
+block|}
+comment|/** Get the default number of lines of context when viewing a patch. */
+DECL|method|getDefaultContext ()
+specifier|public
+name|short
+name|getDefaultContext
+parameter_list|()
+block|{
+return|return
+name|defaultContext
+return|;
+block|}
+comment|/** Set the number of lines of context when viewing a patch. */
+DECL|method|setDefaultContext (final short s)
+specifier|public
+name|void
+name|setDefaultContext
+parameter_list|(
+specifier|final
+name|short
+name|s
+parameter_list|)
+block|{
+name|defaultContext
+operator|=
+name|s
+expr_stmt|;
 block|}
 DECL|method|getContactInformation ()
 specifier|public

@@ -110,6 +110,11 @@ name|String
 name|registeredOn
 parameter_list|()
 function_decl|;
+DECL|method|defaultContext ()
+name|String
+name|defaultContext
+parameter_list|()
+function_decl|;
 DECL|method|tabPreferences ()
 name|String
 name|tabPreferences

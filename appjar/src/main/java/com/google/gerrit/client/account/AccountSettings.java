@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -77,6 +77,8 @@ operator|.
 name|client
 operator|.
 name|FormatUtil
+operator|.
+name|mediumFormat
 import|;
 end_import
 
@@ -139,6 +141,22 @@ operator|.
 name|ui
 operator|.
 name|AccountScreen
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|i18n
+operator|.
+name|client
+operator|.
+name|LocaleInfo
 import|;
 end_import
 
@@ -260,6 +278,15 @@ name|AccountSettings
 extends|extends
 name|AccountScreen
 block|{
+DECL|field|labelIdx
+DECL|field|fieldIdx
+specifier|private
+specifier|final
+name|int
+name|labelIdx
+decl_stmt|,
+name|fieldIdx
+decl_stmt|;
 DECL|field|info
 specifier|private
 specifier|final
@@ -273,7 +300,7 @@ name|tabs
 decl_stmt|;
 DECL|field|prefsPanel
 specifier|private
-name|Panel
+name|PreferencePanel
 name|prefsPanel
 decl_stmt|;
 DECL|field|agreementsPanel
@@ -301,6 +328,37 @@ name|accountSettingsHeading
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LocaleInfo
+operator|.
+name|getCurrentLocale
+argument_list|()
+operator|.
+name|isRTL
+argument_list|()
+condition|)
+block|{
+name|labelIdx
+operator|=
+literal|1
+expr_stmt|;
+name|fieldIdx
+operator|=
+literal|0
+expr_stmt|;
+block|}
+else|else
+block|{
+name|labelIdx
+operator|=
+literal|0
+expr_stmt|;
+name|fieldIdx
+operator|=
+literal|1
+expr_stmt|;
+block|}
 name|info
 operator|=
 operator|new
@@ -411,19 +469,8 @@ expr_stmt|;
 name|prefsPanel
 operator|=
 operator|new
-name|FlowPanel
+name|PreferencePanel
 argument_list|()
-expr_stmt|;
-name|prefsPanel
-operator|.
-name|add
-argument_list|(
-operator|new
-name|Label
-argument_list|(
-literal|"Not Implemented"
-argument_list|)
-argument_list|)
 expr_stmt|;
 name|keysPanel
 operator|=
@@ -558,7 +605,7 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|0
+name|labelIdx
 argument_list|,
 name|name
 argument_list|)
@@ -658,7 +705,7 @@ name|setText
 argument_list|(
 literal|0
 argument_list|,
-literal|1
+name|fieldIdx
 argument_list|,
 name|account
 operator|.
@@ -672,7 +719,7 @@ name|setText
 argument_list|(
 literal|1
 argument_list|,
-literal|1
+name|fieldIdx
 argument_list|,
 name|account
 operator|.
@@ -686,10 +733,8 @@ name|setText
 argument_list|(
 literal|2
 argument_list|,
-literal|1
+name|fieldIdx
 argument_list|,
-name|FormatUtil
-operator|.
 name|mediumFormat
 argument_list|(
 name|account
@@ -697,6 +742,13 @@ operator|.
 name|getRegisteredOn
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|prefsPanel
+operator|.
+name|display
+argument_list|(
+name|account
 argument_list|)
 expr_stmt|;
 block|}
