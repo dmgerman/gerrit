@@ -461,12 +461,12 @@ operator|.
 name|getChange
 argument_list|()
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|,
 name|patchSet
 operator|.
-name|getId
+name|getPatchSetId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -488,14 +488,14 @@ operator|.
 name|getChange
 argument_list|()
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 operator|+
 literal|" "
 operator|+
 name|patchSet
 operator|.
-name|getId
+name|getPatchSetId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -556,7 +556,7 @@ name|patchSetDetail
 argument_list|(
 name|patchSet
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|,
 operator|new

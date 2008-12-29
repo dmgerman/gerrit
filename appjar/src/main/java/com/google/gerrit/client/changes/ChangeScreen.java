@@ -1375,7 +1375,7 @@ name|patchSetHeader
 argument_list|(
 name|ps
 operator|.
-name|getId
+name|getPatchSetId
 argument_list|()
 argument_list|)
 argument_list|,

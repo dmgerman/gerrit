@@ -148,7 +148,7 @@ name|Patch
 argument_list|,
 name|Patch
 operator|.
-name|Id
+name|Key
 argument_list|>
 block|{
 annotation|@
@@ -156,13 +156,13 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (Patch.Id id)
+DECL|method|get (Patch.Key id)
 name|Patch
 name|get
 parameter_list|(
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 throws|throws

@@ -148,7 +148,7 @@ name|ChangeMessage
 argument_list|,
 name|ChangeMessage
 operator|.
-name|Id
+name|Key
 argument_list|>
 block|{
 annotation|@
@@ -156,13 +156,13 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (ChangeMessage.Id id)
+DECL|method|get (ChangeMessage.Key id)
 name|ChangeMessage
 name|get
 parameter_list|(
 name|ChangeMessage
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 throws|throws

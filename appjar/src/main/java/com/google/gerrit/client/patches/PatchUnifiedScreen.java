@@ -127,14 +127,14 @@ specifier|private
 name|UnifiedDiffTable
 name|diffTable
 decl_stmt|;
-DECL|method|PatchUnifiedScreen (final Patch.Id id)
+DECL|method|PatchUnifiedScreen (final Patch.Key id)
 specifier|public
 name|PatchUnifiedScreen
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{

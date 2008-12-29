@@ -170,13 +170,13 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|AllowCrossSiteRequest
-DECL|method|sideBySidePatchDetail (Patch.Id key, AsyncCallback<SideBySidePatchDetail> callback)
+DECL|method|sideBySidePatchDetail (Patch.Key key, AsyncCallback<SideBySidePatchDetail> callback)
 name|void
 name|sideBySidePatchDetail
 parameter_list|(
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|,
 name|AsyncCallback
@@ -188,13 +188,13 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|AllowCrossSiteRequest
-DECL|method|unifiedPatchDetail (Patch.Id key, AsyncCallback<UnifiedPatchDetail> callback)
+DECL|method|unifiedPatchDetail (Patch.Key key, AsyncCallback<UnifiedPatchDetail> callback)
 name|void
 name|unifiedPatchDetail
 parameter_list|(
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|,
 name|AsyncCallback

@@ -159,9 +159,9 @@ name|SecondaryKey
 argument_list|(
 literal|"groupId"
 argument_list|)
-DECL|method|byGroupId (AccountGroup.Id id)
+DECL|method|get (AccountGroup.Id id)
 name|AccountGroup
-name|byGroupId
+name|get
 parameter_list|(
 name|AccountGroup
 operator|.

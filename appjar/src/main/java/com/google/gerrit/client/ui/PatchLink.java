@@ -137,14 +137,14 @@ name|PatchLink
 extends|extends
 name|DirectScreenLink
 block|{
-DECL|field|id
+DECL|field|key
 specifier|protected
 name|Patch
 operator|.
-name|Id
-name|id
+name|Key
+name|key
 decl_stmt|;
-DECL|method|PatchLink (final String text, final Patch.Id p, final String token)
+DECL|method|PatchLink (final String text, final Patch.Key p, final String token)
 specifier|public
 name|PatchLink
 parameter_list|(
@@ -155,7 +155,7 @@ parameter_list|,
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|p
 parameter_list|,
 specifier|final
@@ -170,7 +170,7 @@ argument_list|,
 name|token
 argument_list|)
 expr_stmt|;
-name|id
+name|key
 operator|=
 name|p
 expr_stmt|;
@@ -183,7 +183,7 @@ name|SideBySide
 extends|extends
 name|PatchLink
 block|{
-DECL|method|SideBySide (final String text, final Patch.Id p)
+DECL|method|SideBySide (final String text, final Patch.Key p)
 specifier|public
 name|SideBySide
 parameter_list|(
@@ -194,7 +194,7 @@ parameter_list|,
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|p
 parameter_list|)
 block|{
@@ -225,7 +225,7 @@ return|return
 operator|new
 name|PatchSideBySideScreen
 argument_list|(
-name|id
+name|key
 argument_list|)
 return|;
 block|}
@@ -238,7 +238,7 @@ name|Unified
 extends|extends
 name|PatchLink
 block|{
-DECL|method|Unified (final String text, final Patch.Id p)
+DECL|method|Unified (final String text, final Patch.Key p)
 specifier|public
 name|Unified
 parameter_list|(
@@ -249,7 +249,7 @@ parameter_list|,
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|p
 parameter_list|)
 block|{
@@ -280,7 +280,7 @@ return|return
 operator|new
 name|PatchUnifiedScreen
 argument_list|(
-name|id
+name|key
 argument_list|)
 return|;
 block|}

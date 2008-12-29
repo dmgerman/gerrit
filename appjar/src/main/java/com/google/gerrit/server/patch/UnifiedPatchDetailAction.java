@@ -260,13 +260,13 @@ argument_list|<
 name|UnifiedPatchDetail
 argument_list|>
 block|{
-DECL|method|UnifiedPatchDetailAction (final Patch.Id key)
+DECL|method|UnifiedPatchDetailAction (final Patch.Key key)
 name|UnifiedPatchDetailAction
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|)
 block|{

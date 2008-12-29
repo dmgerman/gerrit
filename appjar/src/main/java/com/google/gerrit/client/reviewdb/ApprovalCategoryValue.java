@@ -105,11 +105,11 @@ specifier|final
 class|class
 name|ApprovalCategoryValue
 block|{
-DECL|class|Key
+DECL|class|Id
 specifier|public
 specifier|static
 class|class
-name|Key
+name|Id
 extends|extends
 name|ShortKey
 argument_list|<
@@ -134,9 +134,9 @@ specifier|protected
 name|short
 name|value
 decl_stmt|;
-DECL|method|Key ()
+DECL|method|Id ()
 specifier|protected
-name|Key
+name|Id
 parameter_list|()
 block|{
 name|categoryId
@@ -148,9 +148,9 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final ApprovalCategory.Id cat, final short v)
+DECL|method|Id (final ApprovalCategory.Id cat, final short v)
 specifier|public
-name|Key
+name|Id
 parameter_list|(
 specifier|final
 name|ApprovalCategory
@@ -226,7 +226,7 @@ name|NONE
 argument_list|)
 DECL|field|key
 specifier|protected
-name|Key
+name|Id
 name|key
 decl_stmt|;
 annotation|@
@@ -246,14 +246,14 @@ specifier|protected
 name|ApprovalCategoryValue
 parameter_list|()
 block|{   }
-DECL|method|ApprovalCategoryValue (final ApprovalCategoryValue.Key id, final String name)
+DECL|method|ApprovalCategoryValue (final ApprovalCategoryValue.Id id, final String name)
 specifier|public
 name|ApprovalCategoryValue
 parameter_list|(
 specifier|final
 name|ApprovalCategoryValue
 operator|.
-name|Key
+name|Id
 name|id
 parameter_list|,
 specifier|final

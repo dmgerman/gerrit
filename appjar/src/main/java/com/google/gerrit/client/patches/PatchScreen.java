@@ -111,17 +111,17 @@ specifier|protected
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|patchId
 decl_stmt|;
-DECL|method|PatchScreen (final Patch.Id id)
+DECL|method|PatchScreen (final Patch.Key id)
 specifier|public
 name|PatchScreen
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{

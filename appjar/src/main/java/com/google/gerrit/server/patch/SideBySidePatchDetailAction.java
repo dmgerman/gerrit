@@ -430,7 +430,7 @@ name|IntList
 index|[]
 name|lineIndex
 decl_stmt|;
-DECL|method|SideBySidePatchDetailAction (final RepositoryCache rc, final Patch.Id key)
+DECL|method|SideBySidePatchDetailAction (final RepositoryCache rc, final Patch.Key key)
 name|SideBySidePatchDetailAction
 parameter_list|(
 specifier|final
@@ -440,7 +440,7 @@ parameter_list|,
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|)
 block|{

@@ -381,7 +381,7 @@ DECL|field|patchKey
 specifier|protected
 name|Patch
 operator|.
-name|Id
+name|Key
 name|patchKey
 decl_stmt|;
 DECL|field|aged
@@ -482,7 +482,7 @@ argument_list|(
 operator|new
 name|PatchLineComment
 operator|.
-name|Id
+name|Key
 argument_list|(
 name|patchKey
 argument_list|,
@@ -763,7 +763,7 @@ operator|=
 name|aic
 expr_stmt|;
 block|}
-DECL|method|setPatchKey (final Patch.Id id)
+DECL|method|setPatchKey (final Patch.Key id)
 specifier|public
 name|void
 name|setPatchKey
@@ -771,7 +771,7 @@ parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{

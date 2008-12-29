@@ -105,11 +105,11 @@ specifier|final
 class|class
 name|PatchSetAncestor
 block|{
-DECL|class|Key
+DECL|class|Id
 specifier|public
 specifier|static
 class|class
-name|Key
+name|Id
 extends|extends
 name|IntKey
 argument_list|<
@@ -141,9 +141,9 @@ specifier|protected
 name|int
 name|position
 decl_stmt|;
-DECL|method|Key ()
+DECL|method|Id ()
 specifier|protected
-name|Key
+name|Id
 parameter_list|()
 block|{
 name|patchSetId
@@ -155,9 +155,9 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final PatchSet.Id psId, final int pos)
+DECL|method|Id (final PatchSet.Id psId, final int pos)
 specifier|public
-name|Key
+name|Id
 parameter_list|(
 specifier|final
 name|PatchSet
@@ -237,7 +237,7 @@ name|NONE
 argument_list|)
 DECL|field|key
 specifier|protected
-name|Key
+name|Id
 name|key
 decl_stmt|;
 annotation|@
@@ -252,14 +252,14 @@ specifier|protected
 name|PatchSetAncestor
 parameter_list|()
 block|{   }
-DECL|method|PatchSetAncestor (final PatchSetAncestor.Key k)
+DECL|method|PatchSetAncestor (final PatchSetAncestor.Id k)
 specifier|public
 name|PatchSetAncestor
 parameter_list|(
 specifier|final
 name|PatchSetAncestor
 operator|.
-name|Key
+name|Id
 name|k
 parameter_list|)
 block|{
@@ -268,12 +268,12 @@ operator|=
 name|k
 expr_stmt|;
 block|}
-DECL|method|getKey ()
+DECL|method|getId ()
 specifier|public
 name|PatchSetAncestor
 operator|.
-name|Key
-name|getKey
+name|Id
+name|getId
 parameter_list|()
 block|{
 return|return

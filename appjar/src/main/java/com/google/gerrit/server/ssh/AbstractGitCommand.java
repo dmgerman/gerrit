@@ -412,7 +412,7 @@ operator|.
 name|projects
 argument_list|()
 operator|.
-name|byName
+name|get
 argument_list|(
 operator|new
 name|Project

@@ -145,14 +145,14 @@ specifier|private
 name|SideBySideTable
 name|sbsTable
 decl_stmt|;
-DECL|method|PatchSideBySideScreen (final Patch.Id id)
+DECL|method|PatchSideBySideScreen (final Patch.Key id)
 specifier|public
 name|PatchSideBySideScreen
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{

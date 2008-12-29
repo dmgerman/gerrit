@@ -148,7 +148,7 @@ name|PatchSetAncestor
 argument_list|,
 name|PatchSetAncestor
 operator|.
-name|Key
+name|Id
 argument_list|>
 block|{
 annotation|@
@@ -156,13 +156,13 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (PatchSetAncestor.Key key)
+DECL|method|get (PatchSetAncestor.Id key)
 name|PatchSetAncestor
 name|get
 parameter_list|(
 name|PatchSetAncestor
 operator|.
-name|Key
+name|Id
 name|key
 parameter_list|)
 throws|throws

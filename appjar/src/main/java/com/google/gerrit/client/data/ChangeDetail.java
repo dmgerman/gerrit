@@ -416,7 +416,7 @@ name|byChange
 argument_list|(
 name|change
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 operator|.
@@ -434,7 +434,7 @@ name|byChange
 argument_list|(
 name|change
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 operator|.
@@ -533,7 +533,7 @@ name|byChange
 argument_list|(
 name|change
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 control|)
@@ -769,7 +769,7 @@ name|ck
 init|=
 name|p
 operator|.
-name|getKey
+name|getId
 argument_list|()
 operator|.
 name|getParentKey
@@ -1192,7 +1192,7 @@ if|if
 condition|(
 name|ps
 operator|.
-name|getKey
+name|getId
 argument_list|()
 operator|.
 name|equals

@@ -230,7 +230,7 @@ operator|=
 name|gs
 expr_stmt|;
 block|}
-DECL|method|sideBySidePatchDetail (final Patch.Id key, final AsyncCallback<SideBySidePatchDetail> callback)
+DECL|method|sideBySidePatchDetail (final Patch.Key key, final AsyncCallback<SideBySidePatchDetail> callback)
 specifier|public
 name|void
 name|sideBySidePatchDetail
@@ -238,7 +238,7 @@ parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|,
 specifier|final
@@ -292,7 +292,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|unifiedPatchDetail (final Patch.Id key, final AsyncCallback<UnifiedPatchDetail> callback)
+DECL|method|unifiedPatchDetail (final Patch.Key key, final AsyncCallback<UnifiedPatchDetail> callback)
 specifier|public
 name|void
 name|unifiedPatchDetail
@@ -300,7 +300,7 @@ parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|,
 specifier|final

@@ -259,10 +259,10 @@ name|Column
 operator|.
 name|NONE
 argument_list|)
-DECL|field|key
+DECL|field|id
 specifier|protected
 name|Id
-name|key
+name|id
 decl_stmt|;
 annotation|@
 name|Column
@@ -292,31 +292,31 @@ name|Id
 name|k
 parameter_list|)
 block|{
-name|key
+name|id
 operator|=
 name|k
 expr_stmt|;
 block|}
-DECL|method|getKey ()
+DECL|method|getId ()
 specifier|public
 name|PatchSet
 operator|.
 name|Id
-name|getKey
-parameter_list|()
-block|{
-return|return
-name|key
-return|;
-block|}
-DECL|method|getId ()
-specifier|public
-name|int
 name|getId
 parameter_list|()
 block|{
 return|return
-name|key
+name|id
+return|;
+block|}
+DECL|method|getPatchSetId ()
+specifier|public
+name|int
+name|getPatchSetId
+parameter_list|()
+block|{
+return|return
+name|id
 operator|.
 name|get
 argument_list|()
@@ -372,7 +372,7 @@ specifier|final
 name|int
 name|changeId
 init|=
-name|key
+name|id
 operator|.
 name|getParentKey
 argument_list|()
@@ -435,7 +435,7 @@ name|r
 operator|.
 name|append
 argument_list|(
-name|key
+name|id
 operator|.
 name|get
 argument_list|()

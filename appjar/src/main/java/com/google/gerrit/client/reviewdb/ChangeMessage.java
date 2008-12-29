@@ -115,11 +115,11 @@ specifier|final
 class|class
 name|ChangeMessage
 block|{
-DECL|class|Id
+DECL|class|Key
 specifier|public
 specifier|static
 class|class
-name|Id
+name|Key
 extends|extends
 name|StringKey
 argument_list|<
@@ -149,9 +149,9 @@ specifier|protected
 name|String
 name|uuid
 decl_stmt|;
-DECL|method|Id ()
+DECL|method|Key ()
 specifier|protected
-name|Id
+name|Key
 parameter_list|()
 block|{
 name|changeId
@@ -163,9 +163,9 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Id (final Change.Id change, final String uuid)
+DECL|method|Key (final Change.Id change, final String uuid)
 specifier|public
-name|Id
+name|Key
 parameter_list|(
 specifier|final
 name|Change
@@ -245,7 +245,7 @@ name|NONE
 argument_list|)
 DECL|field|key
 specifier|protected
-name|Id
+name|Key
 name|key
 decl_stmt|;
 comment|/** Who wrote this comment; null if it was written by the Gerrit system. */
@@ -299,14 +299,14 @@ specifier|protected
 name|ChangeMessage
 parameter_list|()
 block|{   }
-DECL|method|ChangeMessage (final ChangeMessage.Id k, final Account.Id a)
+DECL|method|ChangeMessage (final ChangeMessage.Key k, final Account.Id a)
 specifier|public
 name|ChangeMessage
 parameter_list|(
 specifier|final
 name|ChangeMessage
 operator|.
-name|Id
+name|Key
 name|k
 parameter_list|,
 specifier|final
@@ -340,7 +340,7 @@ DECL|method|getKey ()
 specifier|public
 name|ChangeMessage
 operator|.
-name|Id
+name|Key
 name|getKey
 parameter_list|()
 block|{

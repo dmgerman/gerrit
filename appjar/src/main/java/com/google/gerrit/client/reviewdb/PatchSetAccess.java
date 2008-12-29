@@ -154,7 +154,7 @@ block|{
 annotation|@
 name|PrimaryKey
 argument_list|(
-literal|"key"
+literal|"id"
 argument_list|)
 DECL|method|get (PatchSet.Id id)
 name|PatchSet
@@ -171,7 +171,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.changeId = ? ORDER BY key.patchSetId"
+literal|"WHERE id.changeId = ? ORDER BY id.patchSetId"
 argument_list|)
 DECL|method|byChange (Change.Id id)
 name|ResultSet

@@ -1399,7 +1399,7 @@ operator|.
 name|branches
 argument_list|()
 operator|.
-name|byName
+name|get
 argument_list|(
 operator|new
 name|Branch
@@ -1975,7 +1975,7 @@ name|Id
 argument_list|(
 name|change
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|,
 literal|1
@@ -2103,7 +2103,7 @@ name|url
 operator|+
 name|change
 operator|.
-name|getId
+name|getChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;

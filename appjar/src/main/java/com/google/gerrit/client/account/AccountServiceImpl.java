@@ -244,7 +244,7 @@ operator|.
 name|accounts
 argument_list|()
 operator|.
-name|byId
+name|get
 argument_list|(
 name|RpcUtil
 operator|.

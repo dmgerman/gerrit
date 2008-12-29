@@ -792,7 +792,7 @@ name|get
 argument_list|(
 name|dst
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -811,7 +811,7 @@ name|byPatchSet
 argument_list|(
 name|dst
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 control|)
@@ -844,7 +844,7 @@ name|ancestorsOf
 argument_list|(
 name|dst
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 control|)
@@ -1091,7 +1091,7 @@ name|PatchSetInfo
 argument_list|(
 name|dst
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1191,11 +1191,11 @@ argument_list|(
 operator|new
 name|PatchSetAncestor
 operator|.
-name|Key
+name|Id
 argument_list|(
 name|dst
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|,
 name|p
@@ -1381,11 +1381,11 @@ argument_list|(
 operator|new
 name|Patch
 operator|.
-name|Id
+name|Key
 argument_list|(
 name|dst
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|,
 name|path

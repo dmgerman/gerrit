@@ -105,11 +105,11 @@ specifier|final
 class|class
 name|Patch
 block|{
-DECL|class|Id
+DECL|class|Key
 specifier|public
 specifier|static
 class|class
-name|Id
+name|Key
 extends|extends
 name|StringKey
 argument_list|<
@@ -141,9 +141,9 @@ specifier|protected
 name|String
 name|fileName
 decl_stmt|;
-DECL|method|Id ()
+DECL|method|Key ()
 specifier|protected
-name|Id
+name|Key
 parameter_list|()
 block|{
 name|patchSetId
@@ -155,9 +155,9 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Id (final PatchSet.Id ps, final String name)
+DECL|method|Key (final PatchSet.Id ps, final String name)
 specifier|public
-name|Id
+name|Key
 parameter_list|(
 specifier|final
 name|PatchSet
@@ -229,7 +229,7 @@ comment|/** Parse a Patch.Id out of a string representation. */
 DECL|method|parse (final String str)
 specifier|public
 specifier|static
-name|Id
+name|Key
 name|parse
 parameter_list|(
 specifier|final
@@ -238,11 +238,11 @@ name|str
 parameter_list|)
 block|{
 specifier|final
-name|Id
+name|Key
 name|r
 init|=
 operator|new
-name|Id
+name|Key
 argument_list|()
 decl_stmt|;
 name|r
@@ -472,7 +472,7 @@ name|NONE
 argument_list|)
 DECL|field|key
 specifier|protected
-name|Id
+name|Key
 name|key
 decl_stmt|;
 comment|/** What sort of change is this to the path; see {@link ChangeType}. */
@@ -531,14 +531,14 @@ specifier|protected
 name|Patch
 parameter_list|()
 block|{   }
-DECL|method|Patch (final Patch.Id newId)
+DECL|method|Patch (final Patch.Key newId)
 specifier|public
 name|Patch
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|newId
 parameter_list|)
 block|{
@@ -565,7 +565,7 @@ DECL|method|getKey ()
 specifier|public
 name|Patch
 operator|.
-name|Id
+name|Key
 name|getKey
 parameter_list|()
 block|{

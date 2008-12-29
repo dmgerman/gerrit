@@ -485,7 +485,7 @@ specifier|protected
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 decl_stmt|;
 DECL|field|patch
@@ -543,13 +543,13 @@ argument_list|>
 name|drafted
 index|[]
 decl_stmt|;
-DECL|method|PatchDetailAction (final Patch.Id key)
+DECL|method|PatchDetailAction (final Patch.Key key)
 name|PatchDetailAction
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|key
 parameter_list|)
 block|{

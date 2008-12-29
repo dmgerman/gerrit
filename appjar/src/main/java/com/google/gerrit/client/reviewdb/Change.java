@@ -536,22 +536,22 @@ name|NEW
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getKey ()
+DECL|method|getId ()
 specifier|public
 name|Change
 operator|.
 name|Id
-name|getKey
+name|getId
 parameter_list|()
 block|{
 return|return
 name|changeId
 return|;
 block|}
-DECL|method|getId ()
+DECL|method|getChangeId ()
 specifier|public
 name|int
-name|getId
+name|getChangeId
 parameter_list|()
 block|{
 return|return

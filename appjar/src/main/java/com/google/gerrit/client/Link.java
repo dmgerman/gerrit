@@ -488,7 +488,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|toPatchSideBySide (final Patch.Id id)
+DECL|method|toPatchSideBySide (final Patch.Key id)
 specifier|public
 specifier|static
 name|String
@@ -497,7 +497,7 @@ parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{
@@ -510,7 +510,7 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|toPatchUnified (final Patch.Id id)
+DECL|method|toPatchUnified (final Patch.Key id)
 specifier|public
 specifier|static
 name|String
@@ -519,7 +519,7 @@ parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{
@@ -532,7 +532,7 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|toPatch (final String type, final Patch.Id id)
+DECL|method|toPatch (final String type, final Patch.Key id)
 specifier|public
 specifier|static
 name|String
@@ -545,7 +545,7 @@ parameter_list|,
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 block|{
@@ -731,7 +731,7 @@ name|PatchSideBySideScreen
 argument_list|(
 name|Patch
 operator|.
-name|Id
+name|Key
 operator|.
 name|parse
 argument_list|(
@@ -763,7 +763,7 @@ name|PatchUnifiedScreen
 argument_list|(
 name|Patch
 operator|.
-name|Id
+name|Key
 operator|.
 name|parse
 argument_list|(

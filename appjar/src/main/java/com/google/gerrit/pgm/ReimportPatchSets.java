@@ -552,7 +552,7 @@ name|get
 argument_list|(
 name|ps
 operator|.
-name|getKey
+name|getId
 argument_list|()
 operator|.
 name|getParentKey

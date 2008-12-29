@@ -115,17 +115,17 @@ specifier|final
 class|class
 name|PatchLineComment
 block|{
-DECL|class|Id
+DECL|class|Key
 specifier|public
 specifier|static
 class|class
-name|Id
+name|Key
 extends|extends
 name|StringKey
 argument_list|<
 name|Patch
 operator|.
-name|Id
+name|Key
 argument_list|>
 block|{
 annotation|@
@@ -137,12 +137,12 @@ name|Column
 operator|.
 name|NONE
 argument_list|)
-DECL|field|patchId
+DECL|field|patchKey
 specifier|protected
 name|Patch
 operator|.
-name|Id
-name|patchId
+name|Key
+name|patchKey
 decl_stmt|;
 annotation|@
 name|Column
@@ -156,28 +156,28 @@ specifier|protected
 name|String
 name|uuid
 decl_stmt|;
-DECL|method|Id ()
+DECL|method|Key ()
 specifier|protected
-name|Id
+name|Key
 parameter_list|()
 block|{
-name|patchId
+name|patchKey
 operator|=
 operator|new
 name|Patch
 operator|.
-name|Id
+name|Key
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Id (final Patch.Id p, final String uuid)
+DECL|method|Key (final Patch.Key p, final String uuid)
 specifier|public
-name|Id
+name|Key
 parameter_list|(
 specifier|final
 name|Patch
 operator|.
-name|Id
+name|Key
 name|p
 parameter_list|,
 specifier|final
@@ -187,7 +187,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|patchId
+name|patchKey
 operator|=
 name|p
 expr_stmt|;
@@ -204,12 +204,12 @@ DECL|method|getParentKey ()
 specifier|public
 name|Patch
 operator|.
-name|Id
+name|Key
 name|getParentKey
 parameter_list|()
 block|{
 return|return
-name|patchId
+name|patchKey
 return|;
 block|}
 annotation|@
@@ -361,7 +361,7 @@ name|NONE
 argument_list|)
 DECL|field|key
 specifier|protected
-name|Id
+name|Key
 name|key
 decl_stmt|;
 end_decl_stmt
@@ -477,14 +477,14 @@ block|{   }
 end_constructor
 
 begin_constructor
-DECL|method|PatchLineComment (final PatchLineComment.Id id, final int line, final Account.Id a)
+DECL|method|PatchLineComment (final PatchLineComment.Key id, final int line, final Account.Id a)
 specifier|public
 name|PatchLineComment
 parameter_list|(
 specifier|final
 name|PatchLineComment
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|,
 specifier|final
@@ -536,7 +536,7 @@ DECL|method|getKey ()
 specifier|public
 name|PatchLineComment
 operator|.
-name|Id
+name|Key
 name|getKey
 parameter_list|()
 block|{

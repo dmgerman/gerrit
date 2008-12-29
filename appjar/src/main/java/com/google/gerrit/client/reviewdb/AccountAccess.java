@@ -161,9 +161,9 @@ name|PrimaryKey
 argument_list|(
 literal|"accountId"
 argument_list|)
-DECL|method|byId (Account.Id key)
+DECL|method|get (Account.Id key)
 name|Account
-name|byId
+name|get
 parameter_list|(
 name|Account
 operator|.

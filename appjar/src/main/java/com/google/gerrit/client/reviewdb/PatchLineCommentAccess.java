@@ -148,7 +148,7 @@ name|PatchLineComment
 argument_list|,
 name|PatchLineComment
 operator|.
-name|Id
+name|Key
 argument_list|>
 block|{
 annotation|@
@@ -156,13 +156,13 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (PatchLineComment.Id id)
+DECL|method|get (PatchLineComment.Key id)
 name|PatchLineComment
 name|get
 parameter_list|(
 name|PatchLineComment
 operator|.
-name|Id
+name|Key
 name|id
 parameter_list|)
 throws|throws
@@ -171,7 +171,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.patchId = ? AND status = '"
+literal|"WHERE key.patchKey = ? AND status = '"
 operator|+
 name|PatchLineComment
 operator|.
@@ -179,7 +179,7 @@ name|STATUS_PUBLISHED
 operator|+
 literal|"' ORDER BY lineNbr,writtenOn"
 argument_list|)
-DECL|method|published (Patch.Id id)
+DECL|method|published (Patch.Key patch)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
@@ -188,8 +188,8 @@ name|published
 parameter_list|(
 name|Patch
 operator|.
-name|Id
-name|id
+name|Key
+name|patch
 parameter_list|)
 throws|throws
 name|OrmException
@@ -197,7 +197,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.patchId = ? AND status = '"
+literal|"WHERE key.patchKey = ? AND status = '"
 operator|+
 name|PatchLineComment
 operator|.
@@ -205,7 +205,7 @@ name|STATUS_DRAFT
 operator|+
 literal|"' AND author = ? ORDER BY lineNbr,writtenOn"
 argument_list|)
-DECL|method|draft (Patch.Id patch, Account.Id author)
+DECL|method|draft (Patch.Key patch, Account.Id author)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
@@ -214,7 +214,7 @@ name|draft
 parameter_list|(
 name|Patch
 operator|.
-name|Id
+name|Key
 name|patch
 parameter_list|,
 name|Account

@@ -214,7 +214,7 @@ name|get
 argument_list|(
 name|patchSet
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -229,7 +229,7 @@ name|byPatchSet
 argument_list|(
 name|patchSet
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|)
 operator|.

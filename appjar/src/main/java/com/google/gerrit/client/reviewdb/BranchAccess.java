@@ -170,9 +170,9 @@ name|PrimaryKey
 argument_list|(
 literal|"name"
 argument_list|)
-DECL|method|byName (Branch.NameKey name)
+DECL|method|get (Branch.NameKey name)
 name|Branch
-name|byName
+name|get
 parameter_list|(
 name|Branch
 operator|.
@@ -187,9 +187,9 @@ name|SecondaryKey
 argument_list|(
 literal|"branchId"
 argument_list|)
-DECL|method|byId (Branch.Id id)
+DECL|method|get (Branch.Id id)
 name|Branch
-name|byId
+name|get
 parameter_list|(
 name|Branch
 operator|.

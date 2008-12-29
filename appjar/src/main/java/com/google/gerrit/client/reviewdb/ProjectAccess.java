@@ -170,9 +170,9 @@ name|PrimaryKey
 argument_list|(
 literal|"name"
 argument_list|)
-DECL|method|byName (Project.NameKey name)
+DECL|method|get (Project.NameKey name)
 name|Project
-name|byName
+name|get
 parameter_list|(
 name|Project
 operator|.
@@ -187,9 +187,9 @@ name|SecondaryKey
 argument_list|(
 literal|"projectId"
 argument_list|)
-DECL|method|byId (Project.Id id)
+DECL|method|get (Project.Id id)
 name|Project
-name|byId
+name|get
 parameter_list|(
 name|Project
 operator|.

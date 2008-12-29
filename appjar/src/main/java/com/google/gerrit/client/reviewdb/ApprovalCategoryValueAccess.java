@@ -148,7 +148,7 @@ name|ApprovalCategoryValue
 argument_list|,
 name|ApprovalCategoryValue
 operator|.
-name|Key
+name|Id
 argument_list|>
 block|{
 annotation|@
@@ -156,13 +156,13 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (ApprovalCategoryValue.Key key)
+DECL|method|get (ApprovalCategoryValue.Id key)
 name|ApprovalCategoryValue
 name|get
 parameter_list|(
 name|ApprovalCategoryValue
 operator|.
-name|Key
+name|Id
 name|key
 parameter_list|)
 throws|throws
