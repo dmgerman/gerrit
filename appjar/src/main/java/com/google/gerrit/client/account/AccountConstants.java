@@ -170,6 +170,26 @@ name|String
 name|addSshKeyPanelHeader
 parameter_list|()
 function_decl|;
+DECL|method|addSshKeyHelp ()
+name|String
+name|addSshKeyHelp
+parameter_list|()
+function_decl|;
+DECL|method|watchedProjects ()
+name|String
+name|watchedProjects
+parameter_list|()
+function_decl|;
+DECL|method|buttonWatchProject ()
+name|String
+name|buttonWatchProject
+parameter_list|()
+function_decl|;
+DECL|method|defaultProjectName ()
+name|String
+name|defaultProjectName
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

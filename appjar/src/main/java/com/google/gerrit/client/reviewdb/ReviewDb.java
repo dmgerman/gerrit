@@ -199,6 +199,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountProjectWatches ()
+name|AccountProjectWatchAccess
+name|accountProjectWatches
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|projects ()
 name|ProjectAccess
 name|projects

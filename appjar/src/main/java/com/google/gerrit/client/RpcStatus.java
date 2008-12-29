@@ -152,11 +152,48 @@ end_import
 
 begin_class
 DECL|class|RpcStatus
+specifier|public
 class|class
 name|RpcStatus
 implements|implements
 name|RpcStatusListener
 block|{
+DECL|field|hideDepth
+specifier|private
+specifier|static
+name|int
+name|hideDepth
+decl_stmt|;
+comment|/** Execute code, hiding the RPCs they execute from being shown visually. */
+DECL|method|hide (final Runnable run)
+specifier|public
+specifier|static
+name|void
+name|hide
+parameter_list|(
+specifier|final
+name|Runnable
+name|run
+parameter_list|)
+block|{
+try|try
+block|{
+name|hideDepth
+operator|++
+expr_stmt|;
+name|run
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|hideDepth
+operator|--
+expr_stmt|;
+block|}
+block|}
 DECL|field|loading
 specifier|private
 specifier|final
@@ -259,6 +296,13 @@ operator|==
 literal|1
 condition|)
 block|{
+if|if
+condition|(
+name|hideDepth
+operator|==
+literal|0
+condition|)
+block|{
 name|loading
 operator|.
 name|setVisible
@@ -266,6 +310,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|onCallEnd ()
