@@ -80,6 +80,20 @@ name|Column
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|KeyUtil
+import|;
+end_import
+
 begin_comment
 comment|/** Content of a single patch file */
 end_comment
@@ -180,9 +194,13 @@ name|o
 parameter_list|)
 block|{
 return|return
+name|getClass
+argument_list|()
+operator|==
 name|o
-operator|instanceof
-name|Key
+operator|.
+name|getClass
+argument_list|()
 operator|&&
 name|sha1
 operator|.
@@ -195,6 +213,23 @@ operator|)
 name|o
 operator|)
 operator|.
+name|sha1
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|KeyUtil
+operator|.
+name|encode
+argument_list|(
 name|sha1
 argument_list|)
 return|;
