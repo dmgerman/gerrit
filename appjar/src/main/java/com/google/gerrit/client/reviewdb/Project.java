@@ -180,6 +180,22 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|set (String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|newValue
+parameter_list|)
+block|{
+name|name
+operator|=
+name|newValue
+expr_stmt|;
+block|}
 block|}
 comment|/** Synthetic key to link to within the database */
 DECL|class|Id
@@ -243,6 +259,22 @@ block|{
 return|return
 name|id
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|set (int newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|int
+name|newValue
+parameter_list|)
+block|{
+name|id
+operator|=
+name|newValue
+expr_stmt|;
 block|}
 block|}
 annotation|@

@@ -1040,7 +1040,7 @@ name|Change
 operator|.
 name|Id
 operator|.
-name|fromString
+name|parse
 argument_list|(
 name|m
 operator|.

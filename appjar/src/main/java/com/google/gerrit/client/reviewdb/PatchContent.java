@@ -234,6 +234,26 @@ name|sha1
 argument_list|)
 return|;
 block|}
+DECL|method|fromString (final String in)
+specifier|public
+name|void
+name|fromString
+parameter_list|(
+specifier|final
+name|String
+name|in
+parameter_list|)
+block|{
+name|sha1
+operator|=
+name|KeyUtil
+operator|.
+name|decode
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getParentKey ()
 specifier|public
 name|com

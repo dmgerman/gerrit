@@ -201,6 +201,22 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|set (String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|newValue
+parameter_list|)
+block|{
+name|branchName
+operator|=
+name|newValue
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 DECL|method|getParentKey ()
 specifier|public
 name|Project
@@ -317,6 +333,22 @@ block|{
 return|return
 name|id
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|set (int newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|int
+name|newValue
+parameter_list|)
+block|{
+name|id
+operator|=
+name|newValue
+expr_stmt|;
 block|}
 block|}
 annotation|@

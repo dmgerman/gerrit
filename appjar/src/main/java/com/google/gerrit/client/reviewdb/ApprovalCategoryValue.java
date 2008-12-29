@@ -198,6 +198,22 @@ return|return
 name|value
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|set (short newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|short
+name|newValue
+parameter_list|)
+block|{
+name|value
+operator|=
+name|newValue
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Column

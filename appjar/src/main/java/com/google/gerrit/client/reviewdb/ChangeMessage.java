@@ -217,6 +217,22 @@ return|return
 name|uuid
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|set (String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|newValue
+parameter_list|)
+block|{
+name|uuid
+operator|=
+name|newValue
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Column

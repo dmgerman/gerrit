@@ -182,6 +182,28 @@ return|return
 name|VALUE
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|set (final String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+specifier|final
+name|String
+name|newValue
+parameter_list|)
+block|{
+assert|assert
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|newValue
+argument_list|)
+assert|;
+block|}
 block|}
 DECL|method|create ()
 specifier|public

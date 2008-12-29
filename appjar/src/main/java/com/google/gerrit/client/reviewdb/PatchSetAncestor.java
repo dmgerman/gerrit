@@ -209,6 +209,22 @@ return|return
 name|position
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|set (int newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|int
+name|newValue
+parameter_list|)
+block|{
+name|position
+operator|=
+name|newValue
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Column
