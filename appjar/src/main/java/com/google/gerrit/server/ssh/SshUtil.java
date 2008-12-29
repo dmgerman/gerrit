@@ -805,6 +805,13 @@ name|Account
 name|acct
 parameter_list|)
 block|{
+if|if
+condition|(
+name|acct
+operator|!=
+literal|null
+condition|)
+block|{
 synchronized|synchronized
 init|(
 name|keys
@@ -820,6 +827,7 @@ name|getPreferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/** Locate keys for the requested account whose email matches the name given. */
