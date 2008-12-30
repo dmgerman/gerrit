@@ -94,6 +94,16 @@ name|StringKey
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/** Association of an external account identifier to a local {@link Account}. */
 end_comment
@@ -229,6 +239,30 @@ specifier|protected
 name|Key
 name|key
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|emailAddress
+specifier|protected
+name|String
+name|emailAddress
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|lastUsedOn
+specifier|protected
+name|Timestamp
+name|lastUsedOn
+decl_stmt|;
 DECL|method|AccountExternalId ()
 specifier|protected
 name|AccountExternalId
@@ -251,6 +285,18 @@ operator|=
 name|k
 expr_stmt|;
 block|}
+DECL|method|getKey ()
+specifier|public
+name|AccountExternalId
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
+block|}
 comment|/** Get local id of this account, to link with in other entities */
 DECL|method|getAccountId ()
 specifier|public
@@ -265,6 +311,71 @@ name|key
 operator|.
 name|accountId
 return|;
+block|}
+DECL|method|getExternalId ()
+specifier|public
+name|String
+name|getExternalId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|externalId
+return|;
+block|}
+DECL|method|getEmailAddress ()
+specifier|public
+name|String
+name|getEmailAddress
+parameter_list|()
+block|{
+return|return
+name|emailAddress
+return|;
+block|}
+DECL|method|setEmailAddress (final String e)
+specifier|public
+name|void
+name|setEmailAddress
+parameter_list|(
+specifier|final
+name|String
+name|e
+parameter_list|)
+block|{
+name|emailAddress
+operator|=
+name|e
+expr_stmt|;
+block|}
+DECL|method|getLastUsedOn ()
+specifier|public
+name|Timestamp
+name|getLastUsedOn
+parameter_list|()
+block|{
+return|return
+name|lastUsedOn
+return|;
+block|}
+DECL|method|setLastUsedOn ()
+specifier|public
+name|void
+name|setLastUsedOn
+parameter_list|()
+block|{
+name|lastUsedOn
+operator|=
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

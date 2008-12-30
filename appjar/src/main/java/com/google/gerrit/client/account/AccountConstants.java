@@ -125,6 +125,11 @@ name|String
 name|tabSshKeys
 parameter_list|()
 function_decl|;
+DECL|method|tabWebIdentities ()
+name|String
+name|tabWebIdentities
+parameter_list|()
+function_decl|;
 DECL|method|tabAgreements ()
 name|String
 name|tabAgreements
@@ -173,6 +178,26 @@ function_decl|;
 DECL|method|addSshKeyHelp ()
 name|String
 name|addSshKeyHelp
+parameter_list|()
+function_decl|;
+DECL|method|webIdLastUsed ()
+name|String
+name|webIdLastUsed
+parameter_list|()
+function_decl|;
+DECL|method|webIdEmail ()
+name|String
+name|webIdEmail
+parameter_list|()
+function_decl|;
+DECL|method|webIdIdentity ()
+name|String
+name|webIdIdentity
+parameter_list|()
+function_decl|;
+DECL|method|buttonLinkIdentity ()
+name|String
+name|buttonLinkIdentity
 parameter_list|()
 function_decl|;
 DECL|method|watchedProjects ()
