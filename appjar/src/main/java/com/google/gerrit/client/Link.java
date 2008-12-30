@@ -816,7 +816,7 @@ if|if
 condition|(
 name|token
 operator|.
-name|matches
+name|startsWith
 argument_list|(
 name|p
 argument_list|)
