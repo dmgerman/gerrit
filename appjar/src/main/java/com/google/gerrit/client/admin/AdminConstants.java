@@ -110,6 +110,11 @@ name|String
 name|buttonSaveDescription
 parameter_list|()
 function_decl|;
+DECL|method|buttonRenameGroup ()
+name|String
+name|buttonRenameGroup
+parameter_list|()
+function_decl|;
 DECL|method|headingDescription ()
 name|String
 name|headingDescription

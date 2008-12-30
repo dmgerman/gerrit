@@ -401,6 +401,35 @@ name|get
 argument_list|()
 return|;
 block|}
+DECL|method|getNameKey ()
+specifier|public
+name|AccountGroup
+operator|.
+name|NameKey
+name|getNameKey
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+DECL|method|setNameKey (final AccountGroup.NameKey nameKey)
+specifier|public
+name|void
+name|setNameKey
+parameter_list|(
+specifier|final
+name|AccountGroup
+operator|.
+name|NameKey
+name|nameKey
+parameter_list|)
+block|{
+name|name
+operator|=
+name|nameKey
+expr_stmt|;
+block|}
 DECL|method|getDescription ()
 specifier|public
 name|String
