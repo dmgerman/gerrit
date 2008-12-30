@@ -1845,6 +1845,23 @@ name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|toCreate
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|reject
+argument_list|(
+name|newChange
+argument_list|,
+literal|"no new changes"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 try|try
 block|{
 for|for
