@@ -140,6 +140,21 @@ name|String
 name|columnOwner
 parameter_list|()
 function_decl|;
+DECL|method|columnGroupName ()
+name|String
+name|columnGroupName
+parameter_list|()
+function_decl|;
+DECL|method|columnGroupDescription ()
+name|String
+name|columnGroupDescription
+parameter_list|()
+function_decl|;
+DECL|method|groupListTitle ()
+name|String
+name|groupListTitle
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

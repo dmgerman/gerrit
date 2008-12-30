@@ -166,6 +166,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -178,6 +188,22 @@ name|GroupAdminService
 extends|extends
 name|RemoteJsonService
 block|{
+annotation|@
+name|SignInRequired
+DECL|method|ownedGroups (AsyncCallback<List<AccountGroup>> callback)
+name|void
+name|ownedGroups
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|AccountGroup
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 annotation|@
 name|SignInRequired
 DECL|method|groupDetail (AccountGroup.Id groupId, AsyncCallback<AccountGroupDetail> callback)
