@@ -1413,13 +1413,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
-literal|"admin"
-argument_list|)
+name|ADMIN_GROUP
 argument_list|)
 decl_stmt|;
 if|if
