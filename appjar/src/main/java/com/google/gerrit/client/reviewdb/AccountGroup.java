@@ -313,6 +313,7 @@ name|r
 return|;
 block|}
 block|}
+comment|/** Unique name of this group within the system. */
 annotation|@
 name|Column
 DECL|field|name
@@ -320,6 +321,7 @@ specifier|protected
 name|NameKey
 name|name
 decl_stmt|;
+comment|/** Unique identity, to link entities as {@link #name} can change. */
 annotation|@
 name|Column
 DECL|field|groupId
@@ -327,6 +329,15 @@ specifier|protected
 name|Id
 name|groupId
 decl_stmt|;
+comment|/**    * Identity of the group whose members can manage this group.    *<p>    * This can be a self-reference to indicate the group's members manage itself.    */
+annotation|@
+name|Column
+DECL|field|ownerGroupId
+specifier|protected
+name|Id
+name|ownerGroupId
+decl_stmt|;
+comment|/** A textual description of the group's purpose. */
 annotation|@
 name|Column
 argument_list|(
@@ -374,6 +385,10 @@ expr_stmt|;
 name|groupId
 operator|=
 name|newId
+expr_stmt|;
+name|ownerGroupId
+operator|=
+name|groupId
 expr_stmt|;
 block|}
 DECL|method|getId ()
@@ -453,6 +468,35 @@ block|{
 name|description
 operator|=
 name|d
+expr_stmt|;
+block|}
+DECL|method|getOwnerGroupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getOwnerGroupId
+parameter_list|()
+block|{
+return|return
+name|ownerGroupId
+return|;
+block|}
+DECL|method|setOwnerGroupId (final AccountGroup.Id id)
+specifier|public
+name|void
+name|setOwnerGroupId
+parameter_list|(
+specifier|final
+name|AccountGroup
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|ownerGroupId
+operator|=
+name|id
 expr_stmt|;
 block|}
 block|}

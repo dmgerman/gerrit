@@ -265,14 +265,6 @@ specifier|protected
 name|Key
 name|key
 decl_stmt|;
-comment|/** If true, this user owns this group and can edit the membership. */
-annotation|@
-name|Column
-DECL|field|owner
-specifier|protected
-name|boolean
-name|owner
-decl_stmt|;
 DECL|method|AccountGroupMember ()
 specifier|protected
 name|AccountGroupMember
@@ -333,31 +325,6 @@ name|key
 operator|.
 name|groupId
 return|;
-block|}
-DECL|method|isGroupOwner ()
-specifier|public
-name|boolean
-name|isGroupOwner
-parameter_list|()
-block|{
-return|return
-name|owner
-return|;
-block|}
-DECL|method|setGroupOwner (final boolean o)
-specifier|public
-name|void
-name|setGroupOwner
-parameter_list|(
-specifier|final
-name|boolean
-name|o
-parameter_list|)
-block|{
-name|owner
-operator|=
-name|o
-expr_stmt|;
 block|}
 block|}
 end_class

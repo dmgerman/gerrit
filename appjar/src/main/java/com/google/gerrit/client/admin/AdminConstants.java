@@ -120,6 +120,16 @@ name|String
 name|buttonCreateGroup
 parameter_list|()
 function_decl|;
+DECL|method|buttonChangeGroupOwner ()
+name|String
+name|buttonChangeGroupOwner
+parameter_list|()
+function_decl|;
+DECL|method|headingOwner ()
+name|String
+name|headingOwner
+parameter_list|()
+function_decl|;
 DECL|method|headingDescription ()
 name|String
 name|headingDescription
@@ -143,11 +153,6 @@ function_decl|;
 DECL|method|columnEmailAddress ()
 name|String
 name|columnEmailAddress
-parameter_list|()
-function_decl|;
-DECL|method|columnOwner ()
-name|String
-name|columnOwner
 parameter_list|()
 function_decl|;
 DECL|method|columnGroupName ()

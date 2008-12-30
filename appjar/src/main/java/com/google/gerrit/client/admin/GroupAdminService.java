@@ -281,6 +281,27 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|changeGroupOwner (AccountGroup.Id groupId, String newOwnerName, AsyncCallback<VoidResult> callback)
+name|void
+name|changeGroupOwner
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|,
+name|String
+name|newOwnerName
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|renameGroup (AccountGroup.Id groupId, String newName, AsyncCallback<VoidResult> callback)
 name|void
 name|renameGroup
@@ -334,27 +355,6 @@ operator|.
 name|Key
 argument_list|>
 name|keys
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|SignInRequired
-DECL|method|changeGroupOwner (AccountGroupMember.Key key, boolean owner, AsyncCallback<VoidResult> callback)
-name|void
-name|changeGroupOwner
-parameter_list|(
-name|AccountGroupMember
-operator|.
-name|Key
-name|key
-parameter_list|,
-name|boolean
-name|owner
 parameter_list|,
 name|AsyncCallback
 argument_list|<
