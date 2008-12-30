@@ -115,6 +115,11 @@ name|String
 name|buttonRenameGroup
 parameter_list|()
 function_decl|;
+DECL|method|buttonCreateGroup ()
+name|String
+name|buttonCreateGroup
+parameter_list|()
+function_decl|;
 DECL|method|headingDescription ()
 name|String
 name|headingDescription
@@ -123,6 +128,11 @@ function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
+parameter_list|()
+function_decl|;
+DECL|method|headingCreateGroup ()
+name|String
+name|headingCreateGroup
 parameter_list|()
 function_decl|;
 DECL|method|columnMember ()
