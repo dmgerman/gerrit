@@ -286,6 +286,32 @@ return|return
 name|r
 return|;
 block|}
+comment|/** Merge the information from another cache into this one. */
+DECL|method|merge (final AccountInfoCache other)
+specifier|public
+name|void
+name|merge
+parameter_list|(
+specifier|final
+name|AccountInfoCache
+name|other
+parameter_list|)
+block|{
+assert|assert
+name|this
+operator|!=
+name|EMPTY
+assert|;
+name|accounts
+operator|.
+name|putAll
+argument_list|(
+name|other
+operator|.
+name|accounts
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

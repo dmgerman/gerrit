@@ -198,6 +198,18 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|getAccountGroupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getAccountGroupId
+parameter_list|()
+block|{
+return|return
+name|groupId
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()
@@ -281,6 +293,18 @@ name|key
 operator|=
 name|k
 expr_stmt|;
+block|}
+DECL|method|getKey ()
+specifier|public
+name|AccountGroupMember
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
 block|}
 DECL|method|getAccountId ()
 specifier|public

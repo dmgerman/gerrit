@@ -191,6 +191,26 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE key.accountId = ? AND owner = 'Y'"
+argument_list|)
+DECL|method|owned (Account.Id id)
+name|ResultSet
+argument_list|<
+name|AccountGroupMember
+argument_list|>
+name|owned
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE key.groupId = ?"
 argument_list|)
 DECL|method|byGroup (AccountGroup.Id id)

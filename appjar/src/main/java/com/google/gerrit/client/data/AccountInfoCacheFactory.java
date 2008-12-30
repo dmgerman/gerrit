@@ -474,6 +474,40 @@ return|return
 name|a
 return|;
 block|}
+comment|/** Remember one account that was previously loaded. */
+DECL|method|put (final Account a)
+specifier|public
+name|void
+name|put
+parameter_list|(
+specifier|final
+name|Account
+name|a
+parameter_list|)
+block|{
+name|toFetch
+operator|.
+name|remove
+argument_list|(
+name|a
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|cache
+operator|.
+name|put
+argument_list|(
+name|a
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|a
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Create an AccountInfoCache with the currently loaded Account entities.    *<p>    * Implicitly invokes {@link #fetch()} prior to creating the cache, ensuring    * any previously enqueued entities will be included in the result.    * */
 DECL|method|create ()
 specifier|public
