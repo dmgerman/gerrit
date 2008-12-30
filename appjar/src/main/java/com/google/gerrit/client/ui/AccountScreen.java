@@ -98,6 +98,17 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|AccountScreen ()
+specifier|public
+name|AccountScreen
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
