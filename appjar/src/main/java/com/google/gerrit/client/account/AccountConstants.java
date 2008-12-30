@@ -120,6 +120,11 @@ name|String
 name|tabPreferences
 parameter_list|()
 function_decl|;
+DECL|method|tabContactInformation ()
+name|String
+name|tabContactInformation
+parameter_list|()
+function_decl|;
 DECL|method|tabSshKeys ()
 name|String
 name|tabSshKeys
@@ -213,6 +218,41 @@ function_decl|;
 DECL|method|defaultProjectName ()
 name|String
 name|defaultProjectName
+parameter_list|()
+function_decl|;
+DECL|method|contactFieldFullName ()
+name|String
+name|contactFieldFullName
+parameter_list|()
+function_decl|;
+DECL|method|contactFieldEmail ()
+name|String
+name|contactFieldEmail
+parameter_list|()
+function_decl|;
+DECL|method|contactFieldAddress ()
+name|String
+name|contactFieldAddress
+parameter_list|()
+function_decl|;
+DECL|method|contactFieldCountry ()
+name|String
+name|contactFieldCountry
+parameter_list|()
+function_decl|;
+DECL|method|contactFieldPhone ()
+name|String
+name|contactFieldPhone
+parameter_list|()
+function_decl|;
+DECL|method|contactFieldFax ()
+name|String
+name|contactFieldFax
+parameter_list|()
+function_decl|;
+DECL|method|buttonSaveContact ()
+name|String
+name|buttonSaveContact
 parameter_list|()
 function_decl|;
 block|}

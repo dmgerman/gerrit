@@ -396,6 +396,15 @@ name|SETTINGS_AGREEMENTS
 init|=
 literal|"settings,agreements"
 decl_stmt|;
+DECL|field|SETTINGS_CONTACT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_CONTACT
+init|=
+literal|"settings,contact-information"
+decl_stmt|;
 DECL|field|MINE
 specifier|public
 specifier|static
