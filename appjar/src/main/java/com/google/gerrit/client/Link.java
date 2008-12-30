@@ -403,7 +403,7 @@ specifier|final
 name|String
 name|SETTINGS_CONTACT
 init|=
-literal|"settings,contact-information"
+literal|"settings,contact"
 decl_stmt|;
 DECL|field|MINE
 specifier|public

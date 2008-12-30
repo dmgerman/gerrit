@@ -496,6 +496,23 @@ block|}
 end_constructor
 
 begin_function
+DECL|method|getAgreementId ()
+specifier|public
+name|ContributorAgreement
+operator|.
+name|Id
+name|getAgreementId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|claId
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|getAcceptedOn ()
 specifier|public
 name|Timestamp
