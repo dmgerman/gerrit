@@ -487,7 +487,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^refs/changes/(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/new)$"
+literal|"^refs/changes/(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/new)?$"
 argument_list|)
 decl_stmt|;
 DECL|field|reviewerEmail
