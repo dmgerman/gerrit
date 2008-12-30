@@ -628,7 +628,7 @@ argument_list|()
 expr_stmt|;
 name|Util
 operator|.
-name|ADMIN_SVC
+name|GROUP_SVC
 operator|.
 name|groupDetail
 argument_list|(
@@ -833,7 +833,7 @@ argument_list|()
 decl_stmt|;
 name|Util
 operator|.
-name|ADMIN_SVC
+name|GROUP_SVC
 operator|.
 name|changeGroupDescription
 argument_list|(
@@ -1304,7 +1304,7 @@ argument_list|)
 expr_stmt|;
 name|Util
 operator|.
-name|ADMIN_SVC
+name|GROUP_SVC
 operator|.
 name|addGroupMember
 argument_list|(
@@ -1808,7 +1808,7 @@ condition|)
 block|{
 name|Util
 operator|.
-name|ADMIN_SVC
+name|GROUP_SVC
 operator|.
 name|deleteGroupMembers
 argument_list|(
@@ -2121,7 +2121,7 @@ argument_list|()
 decl_stmt|;
 name|Util
 operator|.
-name|ADMIN_SVC
+name|GROUP_SVC
 operator|.
 name|changeGroupOwner
 argument_list|(

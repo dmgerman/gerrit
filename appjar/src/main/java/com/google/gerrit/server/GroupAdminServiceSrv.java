@@ -76,19 +76,19 @@ name|client
 operator|.
 name|admin
 operator|.
-name|AdminServiceImpl
+name|GroupAdminServiceImpl
 import|;
 end_import
 
 begin_comment
-comment|/** Publishes {@link AdminServiceImpl} over JSON. */
+comment|/** Publishes {@link GroupAdminServiceImpl} over JSON. */
 end_comment
 
 begin_class
-DECL|class|AdminServiceSrv
+DECL|class|GroupAdminServiceSrv
 specifier|public
 class|class
-name|AdminServiceSrv
+name|GroupAdminServiceSrv
 extends|extends
 name|GerritJsonServlet
 block|{
@@ -104,7 +104,7 @@ name|Exception
 block|{
 return|return
 operator|new
-name|AdminServiceImpl
+name|GroupAdminServiceImpl
 argument_list|(
 name|GerritServer
 operator|.

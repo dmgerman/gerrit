@@ -171,10 +171,10 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|AdminService
+DECL|interface|GroupAdminService
 specifier|public
 interface|interface
-name|AdminService
+name|GroupAdminService
 extends|extends
 name|RemoteJsonService
 block|{

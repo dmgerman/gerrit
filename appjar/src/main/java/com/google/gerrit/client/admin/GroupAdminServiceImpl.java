@@ -285,18 +285,18 @@ import|;
 end_import
 
 begin_class
-DECL|class|AdminServiceImpl
+DECL|class|GroupAdminServiceImpl
 specifier|public
 class|class
-name|AdminServiceImpl
+name|GroupAdminServiceImpl
 extends|extends
 name|BaseServiceImplementation
 implements|implements
-name|AdminService
+name|GroupAdminService
 block|{
-DECL|method|AdminServiceImpl (final SchemaFactory<ReviewDb> rdf)
+DECL|method|GroupAdminServiceImpl (final SchemaFactory<ReviewDb> rdf)
 specifier|public
-name|AdminServiceImpl
+name|GroupAdminServiceImpl
 parameter_list|(
 specifier|final
 name|SchemaFactory
