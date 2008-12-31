@@ -206,6 +206,24 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE emailAddress = ?"
+argument_list|)
+DECL|method|byEmailAddress (String email)
+name|ResultSet
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|byEmailAddress
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
