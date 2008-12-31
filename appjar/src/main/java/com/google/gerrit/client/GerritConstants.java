@@ -108,6 +108,11 @@ name|String
 name|signInDialogTitle
 parameter_list|()
 function_decl|;
+DECL|method|linkIdentityDialogTitle ()
+name|String
+name|linkIdentityDialogTitle
+parameter_list|()
+function_decl|;
 DECL|method|errorDialogTitle ()
 name|String
 name|errorDialogTitle
