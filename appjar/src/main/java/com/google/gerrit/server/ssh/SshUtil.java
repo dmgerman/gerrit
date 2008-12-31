@@ -859,6 +859,28 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|invalidate
+argument_list|(
+name|acct
+operator|.
+name|getPreferredEmail
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/** Invalidate all cached keys for the given account. */
+DECL|method|invalidate (final String username)
+specifier|public
+specifier|static
+name|void
+name|invalidate
+parameter_list|(
+specifier|final
+name|String
+name|username
+parameter_list|)
+block|{
 synchronized|synchronized
 init|(
 name|keys
@@ -868,13 +890,9 @@ name|keys
 operator|.
 name|remove
 argument_list|(
-name|acct
-operator|.
-name|getPreferredEmail
-argument_list|()
+name|username
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/** Locate keys for the requested account whose email matches the name given. */
