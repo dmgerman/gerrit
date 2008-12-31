@@ -64,22 +64,6 @@ name|server
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|admin
-operator|.
-name|GroupAdminServiceImpl
-import|;
-end_import
-
 begin_comment
 comment|/** Publishes {@link GroupAdminServiceImpl} over JSON. */
 end_comment
@@ -109,9 +93,6 @@ argument_list|(
 name|GerritServer
 operator|.
 name|getInstance
-argument_list|()
-operator|.
-name|getDatabase
 argument_list|()
 argument_list|)
 return|;

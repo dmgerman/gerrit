@@ -351,6 +351,16 @@ specifier|public
 name|int
 name|sshdPort
 decl_stmt|;
+comment|/** Identity of the administration group; those with full access. */
+annotation|@
+name|Column
+DECL|field|adminGroupId
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|adminGroupId
+decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig

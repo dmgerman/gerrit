@@ -188,24 +188,6 @@ name|GroupAdminService
 extends|extends
 name|RemoteJsonService
 block|{
-comment|/** Special group, which must not be renamed as its "blessed". */
-DECL|field|ADMIN_GROUP
-specifier|public
-specifier|static
-specifier|final
-name|AccountGroup
-operator|.
-name|NameKey
-name|ADMIN_GROUP
-init|=
-operator|new
-name|AccountGroup
-operator|.
-name|NameKey
-argument_list|(
-literal|"admin"
-argument_list|)
-decl_stmt|;
 annotation|@
 name|SignInRequired
 DECL|method|ownedGroups (AsyncCallback<List<AccountGroup>> callback)
