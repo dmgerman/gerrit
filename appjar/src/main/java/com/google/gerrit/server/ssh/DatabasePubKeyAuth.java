@@ -142,6 +142,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|session
+operator|.
+name|ServerSession
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|security
@@ -238,7 +254,7 @@ operator|=
 name|rdf
 expr_stmt|;
 block|}
-DECL|method|hasKey (final String username, final PublicKey inkey)
+DECL|method|hasKey (final String username, final PublicKey inkey, final ServerSession session)
 specifier|public
 name|boolean
 name|hasKey
@@ -250,6 +266,10 @@ parameter_list|,
 specifier|final
 name|PublicKey
 name|inkey
+parameter_list|,
+specifier|final
+name|ServerSession
+name|session
 parameter_list|)
 block|{
 specifier|final
@@ -297,6 +317,20 @@ block|{
 name|updateLastUsed
 argument_list|(
 name|k
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|setAttribute
+argument_list|(
+name|SshUtil
+operator|.
+name|CURRENT_ACCOUNT
+argument_list|,
+name|k
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

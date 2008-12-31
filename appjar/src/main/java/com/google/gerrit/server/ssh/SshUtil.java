@@ -182,6 +182,22 @@ name|sshd
 operator|.
 name|common
 operator|.
+name|session
+operator|.
+name|AttributeKey
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|common
+operator|.
 name|util
 operator|.
 name|Buffer
@@ -360,6 +376,27 @@ specifier|public
 class|class
 name|SshUtil
 block|{
+comment|/** Server session attribute holding the {@link Account.Id}. */
+DECL|field|CURRENT_ACCOUNT
+specifier|static
+specifier|final
+name|AttributeKey
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|CURRENT_ACCOUNT
+init|=
+operator|new
+name|AttributeKey
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|/**    * Parse a public key into its Java type.    *     * @param key the account key to parse.    * @return the valid public key object.    * @throws InvalidKeySpecException the key supplied is not a valid SSH key.    * @throws NoSuchAlgorithmException the JVM is missing the key algorithm.    * @throws NoSuchProviderException the JVM is missing the provider.    */
 DECL|method|parse (final AccountSshKey key)
 specifier|public

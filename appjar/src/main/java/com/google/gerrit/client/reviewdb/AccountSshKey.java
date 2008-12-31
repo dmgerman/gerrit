@@ -326,6 +326,20 @@ literal|true
 expr_stmt|;
 comment|// We can assume it is fine.
 block|}
+DECL|method|getAccount ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAccount
+parameter_list|()
+block|{
+return|return
+name|id
+operator|.
+name|accountId
+return|;
+block|}
 DECL|method|getKey ()
 specifier|public
 name|AccountSshKey
