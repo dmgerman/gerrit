@@ -224,6 +224,30 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE emailAddress>= ? AND emailAddress<= ? ORDER BY emailAddress LIMIT ?"
+argument_list|)
+DECL|method|suggestByEmailAddress (String emailA, String emailB, int limit)
+name|ResultSet
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|suggestByEmailAddress
+parameter_list|(
+name|String
+name|emailA
+parameter_list|,
+name|String
+name|emailB
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
