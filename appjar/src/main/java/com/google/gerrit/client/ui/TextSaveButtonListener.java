@@ -218,7 +218,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|mod
+operator|&
+operator|(
+name|MODIFIER_CTRL
+operator||
+name|MODIFIER_ALT
+operator||
+name|MODIFIER_META
+operator|)
+operator|)
 operator|==
 literal|0
 condition|)

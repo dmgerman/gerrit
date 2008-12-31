@@ -255,6 +255,91 @@ name|String
 name|buttonSaveContact
 parameter_list|()
 function_decl|;
+DECL|method|newAgreement ()
+name|String
+name|newAgreement
+parameter_list|()
+function_decl|;
+DECL|method|agreementStatus ()
+name|String
+name|agreementStatus
+parameter_list|()
+function_decl|;
+DECL|method|agreementName ()
+name|String
+name|agreementName
+parameter_list|()
+function_decl|;
+DECL|method|agreementDescription ()
+name|String
+name|agreementDescription
+parameter_list|()
+function_decl|;
+DECL|method|agreementAccepted ()
+name|String
+name|agreementAccepted
+parameter_list|()
+function_decl|;
+DECL|method|agreementStatus_EXPIRED ()
+name|String
+name|agreementStatus_EXPIRED
+parameter_list|()
+function_decl|;
+DECL|method|agreementStatus_NEW ()
+name|String
+name|agreementStatus_NEW
+parameter_list|()
+function_decl|;
+DECL|method|agreementStatus_REJECTED ()
+name|String
+name|agreementStatus_REJECTED
+parameter_list|()
+function_decl|;
+DECL|method|agreementStatus_VERIFIED ()
+name|String
+name|agreementStatus_VERIFIED
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementSelectTypeHeading ()
+name|String
+name|newAgreementSelectTypeHeading
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementNoneAvailable ()
+name|String
+name|newAgreementNoneAvailable
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementReviewLegalHeading ()
+name|String
+name|newAgreementReviewLegalHeading
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementReviewContactHeading ()
+name|String
+name|newAgreementReviewContactHeading
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementCompleteHeading ()
+name|String
+name|newAgreementCompleteHeading
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementIAGREE ()
+name|String
+name|newAgreementIAGREE
+parameter_list|()
+function_decl|;
+DECL|method|newAgreementAlreadySubmitted ()
+name|String
+name|newAgreementAlreadySubmitted
+parameter_list|()
+function_decl|;
+DECL|method|buttonSubmitNewAgreement ()
+name|String
+name|buttonSubmitNewAgreement
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

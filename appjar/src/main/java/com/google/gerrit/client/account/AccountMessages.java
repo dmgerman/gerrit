@@ -98,6 +98,14 @@ name|short
 name|cnt
 parameter_list|)
 function_decl|;
+DECL|method|enterIAGREE (String iagree)
+name|String
+name|enterIAGREE
+parameter_list|(
+name|String
+name|iagree
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

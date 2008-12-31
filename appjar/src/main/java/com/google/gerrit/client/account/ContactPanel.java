@@ -496,6 +496,16 @@ specifier|private
 name|Button
 name|save
 decl_stmt|;
+DECL|method|ContactPanel ()
+name|ContactPanel
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ContactPanel (final AccountSettings parent)
 name|ContactPanel
 parameter_list|(
@@ -929,6 +939,19 @@ expr_stmt|;
 name|initWidget
 argument_list|(
 name|body
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|hideSaveButton ()
+name|void
+name|hideSaveButton
+parameter_list|()
+block|{
+name|save
+operator|.
+name|setVisible
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1408,7 +1431,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|doSave ()
-specifier|private
 name|void
 name|doSave
 parameter_list|()
@@ -1579,6 +1601,13 @@ operator|.
 name|refreshMenuBar
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|parentScreen
+operator|!=
+literal|null
+condition|)
+block|{
 name|parentScreen
 operator|.
 name|display
@@ -1586,6 +1615,7 @@ argument_list|(
 name|me
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)

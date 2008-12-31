@@ -246,20 +246,13 @@ specifier|protected
 name|String
 name|shortDescription
 decl_stmt|;
-comment|/** Text of the agreement, in formatted HTML */
+comment|/** Web address of the agreement documentation. */
 annotation|@
 name|Column
-argument_list|(
-name|length
-operator|=
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
-DECL|field|agreementHtml
+DECL|field|agreementUrl
 specifier|protected
 name|String
-name|agreementHtml
+name|agreementUrl
 decl_stmt|;
 DECL|method|ContributorAgreement ()
 specifier|protected
@@ -413,27 +406,27 @@ operator|=
 name|d
 expr_stmt|;
 block|}
-DECL|method|getAgreementHtml ()
+DECL|method|getAgreementUrl ()
 specifier|public
 name|String
-name|getAgreementHtml
+name|getAgreementUrl
 parameter_list|()
 block|{
 return|return
-name|agreementHtml
+name|agreementUrl
 return|;
 block|}
-DECL|method|setAgreementHtml (final String h)
+DECL|method|setAgreementUrl (final String h)
 specifier|public
 name|void
-name|setAgreementHtml
+name|setAgreementUrl
 parameter_list|(
 specifier|final
 name|String
 name|h
 parameter_list|)
 block|{
-name|agreementHtml
+name|agreementUrl
 operator|=
 name|h
 expr_stmt|;

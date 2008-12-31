@@ -496,6 +496,21 @@ block|}
 end_constructor
 
 begin_function
+DECL|method|getKey ()
+specifier|public
+name|AccountAgreement
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|getAgreementId ()
 specifier|public
 name|ContributorAgreement
