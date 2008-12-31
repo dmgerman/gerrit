@@ -174,6 +174,20 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
+name|AllowCrossSiteRequest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtjsonrpc
+operator|.
+name|client
+operator|.
 name|RemoteJsonService
 import|;
 end_import
@@ -211,6 +225,8 @@ extends|extends
 name|RemoteJsonService
 block|{
 comment|/** Get the data to show {@link AccountDashboardScreen} for an account. */
+annotation|@
+name|AllowCrossSiteRequest
 DECL|method|forAccount (Account.Id id, AsyncCallback<AccountDashboardInfo> callback)
 name|void
 name|forAccount
@@ -229,6 +245,8 @@ parameter_list|)
 function_decl|;
 comment|/** Get the changes starred by the caller. */
 annotation|@
+name|AllowCrossSiteRequest
+annotation|@
 name|SignInRequired
 DECL|method|myStarredChanges (AsyncCallback<MineStarredInfo> callback)
 name|void
@@ -242,6 +260,8 @@ name|callback
 parameter_list|)
 function_decl|;
 comment|/** Get the ids of all changes starred by the caller. */
+annotation|@
+name|AllowCrossSiteRequest
 annotation|@
 name|SignInRequired
 DECL|method|myStarredChangeIds (AsyncCallback<Set<Change.Id>> callback)
