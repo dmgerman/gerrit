@@ -194,6 +194,24 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE sshUserName = ?"
+argument_list|)
+DECL|method|bySshUserName (String userName)
+name|ResultSet
+argument_list|<
+name|Account
+argument_list|>
+name|bySshUserName
+parameter_list|(
+name|String
+name|userName
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE fullName>= ? AND fullName<= ? ORDER BY fullName LIMIT ?"
 argument_list|)
 DECL|method|suggestByFullName (String nameA, String nameB, int limit)

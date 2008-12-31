@@ -507,6 +507,19 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
+comment|/**    * Username to authenticate as through SSH connections.    *<p>    * Note that this property tracks {@link #preferredEmail}.    */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|sshUserName
+specifier|protected
+name|String
+name|sshUserName
+decl_stmt|;
 comment|/** Default number of lines of context when viewing a patch. */
 annotation|@
 name|Column
@@ -627,10 +640,62 @@ name|String
 name|addr
 parameter_list|)
 block|{
+if|if
+condition|(
+name|addr
+operator|!=
+literal|null
+operator|&&
+name|addr
+operator|.
+name|contains
+argument_list|(
+literal|"@"
+argument_list|)
+condition|)
+block|{
+name|sshUserName
+operator|=
+name|addr
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|addr
+operator|.
+name|indexOf
+argument_list|(
+literal|'@'
+argument_list|)
+argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sshUserName
+operator|=
+literal|null
+expr_stmt|;
+block|}
 name|preferredEmail
 operator|=
 name|addr
 expr_stmt|;
+block|}
+comment|/** Get the name the user logins as through SSH. */
+DECL|method|getSshUserName ()
+specifier|public
+name|String
+name|getSshUserName
+parameter_list|()
+block|{
+return|return
+name|sshUserName
+return|;
 block|}
 comment|/** Get the date and time the user first registered. */
 DECL|method|getRegisteredOn ()

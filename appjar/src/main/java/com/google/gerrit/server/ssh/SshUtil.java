@@ -863,7 +863,7 @@ name|invalidate
 argument_list|(
 name|acct
 operator|.
-name|getPreferredEmail
+name|getSshUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -979,7 +979,7 @@ operator|.
 name|accounts
 argument_list|()
 operator|.
-name|byPreferredEmail
+name|bySshUserName
 argument_list|(
 name|username
 argument_list|)

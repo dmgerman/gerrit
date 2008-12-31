@@ -105,6 +105,11 @@ name|String
 name|preferredEmail
 parameter_list|()
 function_decl|;
+DECL|method|sshUserName ()
+name|String
+name|sshUserName
+parameter_list|()
+function_decl|;
 DECL|method|registeredOn ()
 name|String
 name|registeredOn
