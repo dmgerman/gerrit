@@ -91,9 +91,16 @@ extends|extends
 name|Messages
 block|{
 DECL|method|group (String name)
-specifier|public
 name|String
 name|group
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+DECL|method|project (String name)
+name|String
+name|project
 parameter_list|(
 name|String
 name|name
