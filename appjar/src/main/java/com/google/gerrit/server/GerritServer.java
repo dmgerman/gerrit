@@ -950,6 +950,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|admin
+operator|.
+name|setDescription
+argument_list|(
+literal|"Gerrit Site Administrators"
+argument_list|)
+expr_stmt|;
 name|c
 operator|.
 name|accountGroups
