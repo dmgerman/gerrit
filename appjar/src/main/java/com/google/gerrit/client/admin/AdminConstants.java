@@ -170,6 +170,11 @@ name|String
 name|groupListTitle
 parameter_list|()
 function_decl|;
+DECL|method|projectListTitle ()
+name|String
+name|projectListTitle
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

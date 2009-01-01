@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.reviewdb
+DECL|package|com.google.gerrit.client.admin
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|reviewdb
+name|admin
 package|;
 end_package
 
@@ -72,11 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|Access
+name|reviewdb
+operator|.
+name|Project
 import|;
 end_import
 
@@ -86,11 +88,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|OrmException
+name|rpc
+operator|.
+name|SignInRequired
 import|;
 end_import
 
@@ -100,11 +104,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gwt
+operator|.
+name|user
 operator|.
 name|client
 operator|.
-name|PrimaryKey
+name|rpc
+operator|.
+name|AsyncCallback
 import|;
 end_import
 
@@ -114,11 +122,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|Query
+name|RemoteJsonService
 import|;
 end_import
 
@@ -128,135 +136,107 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|ResultSet
+name|VoidResult
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
+name|List
 import|;
 end_import
 
 begin_interface
-DECL|interface|ProjectAccess
+DECL|interface|ProjectAdminService
 specifier|public
 interface|interface
-name|ProjectAccess
+name|ProjectAdminService
 extends|extends
-name|Access
-argument_list|<
-name|Project
-argument_list|,
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+name|RemoteJsonService
 block|{
 annotation|@
-name|PrimaryKey
-argument_list|(
-literal|"name"
-argument_list|)
-DECL|method|get (Project.NameKey name)
-name|Project
-name|get
+name|SignInRequired
+DECL|method|ownedProjects (AsyncCallback<List<Project>> callback)
+name|void
+name|ownedProjects
 parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
 name|Project
-operator|.
-name|NameKey
-name|name
+argument_list|>
+argument_list|>
+name|callback
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 annotation|@
-name|SecondaryKey
-argument_list|(
-literal|"projectId"
-argument_list|)
-DECL|method|get (Project.Id id)
-name|Project
-name|get
+name|SignInRequired
+DECL|method|projectDetail (Project.Id projectId, AsyncCallback<ProjectDetail> callback)
+name|void
+name|projectDetail
 parameter_list|(
 name|Project
 operator|.
 name|Id
-name|id
+name|projectId
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ProjectDetail
+argument_list|>
+name|callback
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 annotation|@
-name|Query
-argument_list|(
-literal|"ORDER BY name"
-argument_list|)
-DECL|method|all ()
-name|ResultSet
-argument_list|<
-name|Project
-argument_list|>
-name|all
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE ownerGroupId = ?"
-argument_list|)
-DECL|method|ownedByGroup (AccountGroup.Id groupId)
-name|ResultSet
-argument_list|<
-name|Project
-argument_list|>
-name|ownedByGroup
+name|SignInRequired
+DECL|method|changeProjectDescription (Project.Id projectId, String description, AsyncCallback<VoidResult> callback)
+name|void
+name|changeProjectDescription
 parameter_list|(
-name|AccountGroup
+name|Project
 operator|.
 name|Id
-name|groupId
+name|projectId
+parameter_list|,
+name|String
+name|description
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 annotation|@
-name|Query
-argument_list|(
-literal|"WHERE name.name>= ? AND name.name<= ? ORDER BY name LIMIT ?"
-argument_list|)
-DECL|method|suggestByName (String nameA, String nameB, int limit)
-name|ResultSet
-argument_list|<
-name|Project
-argument_list|>
-name|suggestByName
+name|SignInRequired
+DECL|method|changeProjectOwner (Project.Id projectId, String newOwnerName, AsyncCallback<VoidResult> callback)
+name|void
+name|changeProjectOwner
 parameter_list|(
-name|String
-name|nameA
+name|Project
+operator|.
+name|Id
+name|projectId
 parameter_list|,
 name|String
-name|nameB
+name|newOwnerName
 parameter_list|,
-name|int
-name|limit
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 block|}
 end_interface
