@@ -220,20 +220,6 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
-DECL|method|projectLeadAccounts ()
-name|ProjectLeadAccountAccess
-name|projectLeadAccounts
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|projectLeadGroups ()
-name|ProjectLeadGroupAccess
-name|projectLeadGroups
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
 DECL|method|changes ()
 name|ChangeAccess
 name|changes
