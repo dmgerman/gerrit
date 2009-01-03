@@ -915,6 +915,25 @@ return|return
 name|m
 return|;
 block|}
+comment|/** Force the entire group cache to flush from memory and recompute. */
+DECL|method|flush ()
+specifier|public
+name|void
+name|flush
+parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|byAccount
+init|)
+block|{
+name|byAccount
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
