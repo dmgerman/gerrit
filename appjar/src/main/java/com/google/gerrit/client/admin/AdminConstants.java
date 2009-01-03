@@ -95,6 +95,11 @@ name|String
 name|defaultAccountName
 parameter_list|()
 function_decl|;
+DECL|method|defaultAccountGroupName ()
+name|String
+name|defaultAccountGroupName
+parameter_list|()
+function_decl|;
 DECL|method|buttonDeleteGroupMembers ()
 name|String
 name|buttonDeleteGroupMembers
@@ -123,6 +128,11 @@ function_decl|;
 DECL|method|buttonChangeGroupOwner ()
 name|String
 name|buttonChangeGroupOwner
+parameter_list|()
+function_decl|;
+DECL|method|buttonAddProjectRight ()
+name|String
+name|buttonAddProjectRight
 parameter_list|()
 function_decl|;
 DECL|method|headingOwner ()
