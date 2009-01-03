@@ -518,6 +518,12 @@ specifier|final
 name|RepositoryCache
 name|repositories
 decl_stmt|;
+DECL|field|groupCache
+specifier|private
+specifier|final
+name|GroupCache
+name|groupCache
+decl_stmt|;
 DECL|method|GerritServer ()
 specifier|private
 name|GerritServer
@@ -618,6 +624,16 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|groupCache
+operator|=
+operator|new
+name|GroupCache
+argument_list|(
+name|db
+argument_list|,
+name|sConfig
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|createDatabase ()
 specifier|private
@@ -1857,19 +1873,15 @@ return|return
 name|repositories
 return|;
 block|}
-comment|/** Get the group whose members have full access to manage the site. */
-DECL|method|getAdminGroupId ()
+comment|/** Get the group membership cache. */
+DECL|method|getGroupCache ()
 specifier|public
-name|AccountGroup
-operator|.
-name|Id
-name|getAdminGroupId
+name|GroupCache
+name|getGroupCache
 parameter_list|()
 block|{
 return|return
-name|sConfig
-operator|.
-name|adminGroupId
+name|groupCache
 return|;
 block|}
 block|}
