@@ -492,7 +492,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|columnGroupName
+name|columnProjectName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -508,7 +508,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|columnGroupDescription
+name|columnProjectDescription
 argument_list|()
 argument_list|)
 expr_stmt|;

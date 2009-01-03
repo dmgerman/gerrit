@@ -145,6 +145,11 @@ name|String
 name|headingCreateGroup
 parameter_list|()
 function_decl|;
+DECL|method|headingAccessRights ()
+name|String
+name|headingAccessRights
+parameter_list|()
+function_decl|;
 DECL|method|columnMember ()
 name|String
 name|columnMember
@@ -160,9 +165,29 @@ name|String
 name|columnGroupName
 parameter_list|()
 function_decl|;
+DECL|method|columnProjectName ()
+name|String
+name|columnProjectName
+parameter_list|()
+function_decl|;
 DECL|method|columnGroupDescription ()
 name|String
 name|columnGroupDescription
+parameter_list|()
+function_decl|;
+DECL|method|columnProjectDescription ()
+name|String
+name|columnProjectDescription
+parameter_list|()
+function_decl|;
+DECL|method|columnApprovalCategory ()
+name|String
+name|columnApprovalCategory
+parameter_list|()
+function_decl|;
+DECL|method|columnRightRange ()
+name|String
+name|columnRightRange
 parameter_list|()
 function_decl|;
 DECL|method|groupListTitle ()

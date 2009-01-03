@@ -106,6 +106,14 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+DECL|method|deletedGroup (int id)
+name|String
+name|deletedGroup
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

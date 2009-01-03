@@ -243,6 +243,18 @@ return|return
 name|projectId
 return|;
 block|}
+DECL|method|getProjectId ()
+specifier|public
+name|Project
+operator|.
+name|Id
+name|getProjectId
+parameter_list|()
+block|{
+return|return
+name|projectId
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()
@@ -345,6 +357,48 @@ parameter_list|()
 block|{
 return|return
 name|key
+return|;
+block|}
+DECL|method|getProjectId ()
+specifier|public
+name|Project
+operator|.
+name|Id
+name|getProjectId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|projectId
+return|;
+block|}
+DECL|method|getApprovalCategoryId ()
+specifier|public
+name|ApprovalCategory
+operator|.
+name|Id
+name|getApprovalCategoryId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|categoryId
+return|;
+block|}
+DECL|method|getAccountGroupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getAccountGroupId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|groupId
 return|;
 block|}
 DECL|method|getMinValue ()
