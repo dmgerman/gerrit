@@ -361,6 +361,26 @@ operator|.
 name|Id
 name|adminGroupId
 decl_stmt|;
+comment|/** Identity of the anonymous group, which permits anyone. */
+annotation|@
+name|Column
+DECL|field|anonymousGroupId
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|anonymousGroupId
+decl_stmt|;
+comment|/** Identity of the registered users group, which permits anyone. */
+annotation|@
+name|Column
+DECL|field|registeredGroupId
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|registeredGroupId
+decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig

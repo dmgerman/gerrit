@@ -261,12 +261,17 @@ specifier|protected
 name|AccountGroup
 name|ownerGroup
 decl_stmt|;
+DECL|field|autoGroup
+specifier|protected
+name|boolean
+name|autoGroup
+decl_stmt|;
 DECL|method|AccountGroupDetail ()
 specifier|public
 name|AccountGroupDetail
 parameter_list|()
 block|{   }
-DECL|method|load (final ReviewDb db, final AccountInfoCacheFactory acc, final AccountGroup g)
+DECL|method|load (final ReviewDb db, final AccountInfoCacheFactory acc, final AccountGroup g, final boolean isAuto)
 specifier|public
 name|void
 name|load
@@ -282,6 +287,10 @@ parameter_list|,
 specifier|final
 name|AccountGroup
 name|g
+parameter_list|,
+specifier|final
+name|boolean
+name|isAuto
 parameter_list|)
 throws|throws
 name|OrmException
@@ -329,6 +338,41 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|autoGroup
+operator|=
+name|isAuto
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|autoGroup
+condition|)
+block|{
+name|loadMembers
+argument_list|(
+name|db
+argument_list|,
+name|acc
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|loadMembers (final ReviewDb db, final AccountInfoCacheFactory acc)
+specifier|private
+name|void
+name|loadMembers
+parameter_list|(
+specifier|final
+name|ReviewDb
+name|db
+parameter_list|,
+specifier|final
+name|AccountInfoCacheFactory
+name|acc
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
 name|members
 operator|=
 name|db
