@@ -310,6 +310,9 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
+comment|// Support newer-style "git receive-pack" requests by converting
+comment|// to the older-style "git-receive-pack".
+comment|//
 if|if
 condition|(
 literal|"git"
