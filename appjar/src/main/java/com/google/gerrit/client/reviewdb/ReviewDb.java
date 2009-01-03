@@ -213,6 +213,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|projectRights ()
+name|ProjectRightAccess
+name|projectRights
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|branches ()
 name|BranchAccess
 name|branches
