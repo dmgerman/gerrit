@@ -188,27 +188,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE status = '"
-operator|+
-name|AccountAgreement
-operator|.
-name|NEW_CODE
-operator|+
-literal|"' ORDER BY acceptedOn DESC"
-argument_list|)
-DECL|method|unreviewed ()
-name|ResultSet
-argument_list|<
-name|AccountAgreement
-argument_list|>
-name|unreviewed
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 block|}
 end_interface
 
