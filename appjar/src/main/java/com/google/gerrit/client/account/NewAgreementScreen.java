@@ -1494,7 +1494,7 @@ expr_stmt|;
 block|}
 name|Util
 operator|.
-name|ACCOUNT_SVC
+name|ACCOUNT_SEC
 operator|.
 name|enterAgreement
 argument_list|(

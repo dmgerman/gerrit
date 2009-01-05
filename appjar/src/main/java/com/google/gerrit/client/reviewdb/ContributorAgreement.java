@@ -220,6 +220,14 @@ specifier|protected
 name|boolean
 name|requireContactInformation
 decl_stmt|;
+comment|/** Does this agreement automatically verify new accounts? */
+annotation|@
+name|Column
+DECL|field|autoVerify
+specifier|protected
+name|boolean
+name|autoVerify
+decl_stmt|;
 comment|/** A short name for the agreement. */
 annotation|@
 name|Column
@@ -342,6 +350,31 @@ name|g
 parameter_list|)
 block|{
 name|groupAgreement
+operator|=
+name|g
+expr_stmt|;
+block|}
+DECL|method|isAutoVerify ()
+specifier|public
+name|boolean
+name|isAutoVerify
+parameter_list|()
+block|{
+return|return
+name|autoVerify
+return|;
+block|}
+DECL|method|setAutoVerify (final boolean g)
+specifier|public
+name|void
+name|setAutoVerify
+parameter_list|(
+specifier|final
+name|boolean
+name|g
+parameter_list|)
+block|{
+name|autoVerify
 operator|=
 name|g
 expr_stmt|;
