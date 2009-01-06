@@ -768,18 +768,29 @@ if|if
 condition|(
 name|name
 operator|.
+name|length
+argument_list|()
+operator|<
+literal|2
+operator|||
+operator|!
+name|name
+operator|.
 name|startsWith
 argument_list|(
 literal|"/"
 argument_list|)
-operator|&&
-name|name
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|1
-operator|&&
+condition|)
+block|{
+comment|// Too short to be a valid file name, or doesn't start with
+comment|// the path info separator like we expected.
+comment|//
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
 name|name
 operator|.
 name|indexOf
@@ -788,10 +799,30 @@ literal|'/'
 argument_list|,
 literal|1
 argument_list|)
-operator|<
+operator|>
+literal|0
+operator|||
+name|name
+operator|.
+name|indexOf
+argument_list|(
+literal|'\\'
+argument_list|,
+literal|1
+argument_list|)
+operator|>
 literal|0
 condition|)
 block|{
+comment|// Contains a path separator. Don't serve it as the client
+comment|// might be trying something evil like "/../../etc/passwd".
+comment|// This static servlet is just meant to facilitate simple
+comment|// assets like banner images.
+comment|//
+return|return
+literal|null
+return|;
+block|}
 specifier|final
 name|File
 name|p
@@ -817,10 +848,6 @@ argument_list|()
 condition|?
 name|p
 else|:
-literal|null
-return|;
-block|}
-return|return
 literal|null
 return|;
 block|}
