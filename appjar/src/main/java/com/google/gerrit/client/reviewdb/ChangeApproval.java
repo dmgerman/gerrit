@@ -318,7 +318,7 @@ specifier|protected
 name|ChangeApproval
 parameter_list|()
 block|{   }
-DECL|method|ChangeApproval (final ChangeApproval.Key k)
+DECL|method|ChangeApproval (final ChangeApproval.Key k, final short v)
 specifier|public
 name|ChangeApproval
 parameter_list|(
@@ -327,6 +327,10 @@ name|ChangeApproval
 operator|.
 name|Key
 name|k
+parameter_list|,
+specifier|final
+name|short
+name|v
 parameter_list|)
 block|{
 name|key
@@ -335,10 +339,7 @@ name|k
 expr_stmt|;
 name|setValue
 argument_list|(
-operator|(
-name|short
-operator|)
-literal|0
+name|v
 argument_list|)
 expr_stmt|;
 block|}
@@ -418,6 +419,17 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|clear ()
+specifier|public
+name|void
+name|clear
+parameter_list|()
+block|{
+name|value
+operator|=
+literal|0
 expr_stmt|;
 block|}
 DECL|method|getGranted ()
