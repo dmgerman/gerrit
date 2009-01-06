@@ -2539,6 +2539,17 @@ condition|(
 name|newChange
 operator|==
 literal|null
+operator|||
+name|newChange
+operator|.
+name|getResult
+argument_list|()
+operator|!=
+name|ReceiveCommand
+operator|.
+name|Result
+operator|.
+name|NOT_ATTEMPTED
 condition|)
 block|{
 return|return;
