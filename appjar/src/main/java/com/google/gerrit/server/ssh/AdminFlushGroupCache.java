@@ -74,7 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|client
+operator|.
+name|data
 operator|.
 name|GroupCache
 import|;

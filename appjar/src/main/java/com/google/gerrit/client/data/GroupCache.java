@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.client.data
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|client
+operator|.
+name|data
 package|;
 end_package
 
@@ -337,7 +339,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|method|GroupCache (final SchemaFactory<ReviewDb> rdf, final SystemConfig cfg)
-specifier|protected
+specifier|public
 name|GroupCache
 parameter_list|(
 specifier|final
@@ -769,6 +771,20 @@ name|Id
 name|accountId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|accountId
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
 name|Set
 argument_list|<
 name|AccountGroup
