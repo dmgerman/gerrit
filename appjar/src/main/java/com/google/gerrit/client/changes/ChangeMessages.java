@@ -186,6 +186,14 @@ name|String
 name|sourcePath
 parameter_list|)
 function_decl|;
+DECL|method|needApproval (String categoryName)
+name|String
+name|needApproval
+parameter_list|(
+name|String
+name|categoryName
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

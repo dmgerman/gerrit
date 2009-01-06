@@ -342,6 +342,9 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|setGranted
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getChangeId ()
 specifier|public
@@ -409,17 +412,6 @@ name|value
 operator|=
 name|v
 expr_stmt|;
-name|granted
-operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|clear ()
 specifier|public
@@ -441,6 +433,24 @@ block|{
 return|return
 name|granted
 return|;
+block|}
+DECL|method|setGranted ()
+specifier|public
+name|void
+name|setGranted
+parameter_list|()
+block|{
+name|granted
+operator|=
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
