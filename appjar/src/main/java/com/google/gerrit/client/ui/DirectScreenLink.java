@@ -207,6 +207,23 @@ operator|.
 name|ONCLICK
 condition|)
 block|{
+name|onClick
+argument_list|(
+name|event
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|onClick (final Event event)
+specifier|protected
+name|void
+name|onClick
+parameter_list|(
+specifier|final
+name|Event
+name|event
+parameter_list|)
+block|{
 name|History
 operator|.
 name|newItem
@@ -232,7 +249,6 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/** Create the screen this link wants to display. */
 DECL|method|createScreen ()

@@ -169,7 +169,7 @@ extends|extends
 name|DirectScreenLink
 block|{
 DECL|field|id
-specifier|private
+specifier|protected
 name|Change
 operator|.
 name|Id
