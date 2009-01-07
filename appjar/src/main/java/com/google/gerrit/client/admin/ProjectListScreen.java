@@ -695,6 +695,11 @@ argument_list|(
 name|row
 argument_list|)
 expr_stmt|;
+name|applyDataRowStyle
+argument_list|(
+name|row
+argument_list|)
+expr_stmt|;
 name|populate
 argument_list|(
 name|row

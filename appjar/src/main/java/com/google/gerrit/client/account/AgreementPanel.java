@@ -658,6 +658,11 @@ argument_list|(
 name|row
 argument_list|)
 expr_stmt|;
+name|applyDataRowStyle
+argument_list|(
+name|row
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ContributorAgreement
 name|cla
