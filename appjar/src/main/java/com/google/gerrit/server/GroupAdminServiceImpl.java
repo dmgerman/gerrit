@@ -380,24 +380,6 @@ name|BaseServiceImplementation
 implements|implements
 name|GroupAdminService
 block|{
-DECL|method|GroupAdminServiceImpl (final GerritServer server)
-specifier|public
-name|GroupAdminServiceImpl
-parameter_list|(
-specifier|final
-name|GerritServer
-name|server
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|server
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|ownedGroups (final AsyncCallback<List<AccountGroup>> callback)
 specifier|public
 name|void

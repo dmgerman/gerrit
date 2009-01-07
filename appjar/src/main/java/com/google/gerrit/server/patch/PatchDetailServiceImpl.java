@@ -217,14 +217,6 @@ name|GerritServer
 name|gs
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|gs
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|server
 operator|=
 name|gs

@@ -104,11 +104,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|OrmException
+name|rpc
+operator|.
+name|Common
 import|;
 end_import
 
@@ -122,7 +124,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
+name|OrmException
 import|;
 end_import
 
@@ -219,31 +221,6 @@ name|DatabasePubKeyAuth
 implements|implements
 name|PublickeyAuthenticator
 block|{
-DECL|field|schema
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
-DECL|method|DatabasePubKeyAuth (final SchemaFactory<ReviewDb> rdf)
-name|DatabasePubKeyAuth
-parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|)
-block|{
-name|schema
-operator|=
-name|rdf
-expr_stmt|;
-block|}
 DECL|method|hasKey (final String username, final PublicKey inkey, final ServerSession session)
 specifier|public
 name|boolean
@@ -277,8 +254,6 @@ name|SshUtil
 operator|.
 name|keysFor
 argument_list|(
-name|schema
-argument_list|,
 name|username
 argument_list|)
 control|)
@@ -494,7 +469,10 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|schema
+name|Common
+operator|.
+name|getSchemaFactory
+argument_list|()
 operator|.
 name|open
 argument_list|()
@@ -566,7 +544,10 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|schema
+name|Common
+operator|.
+name|getSchemaFactory
+argument_list|()
 operator|.
 name|open
 argument_list|()

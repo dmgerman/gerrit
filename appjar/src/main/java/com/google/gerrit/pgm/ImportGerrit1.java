@@ -593,9 +593,9 @@ argument_list|()
 expr_stmt|;
 name|db
 operator|=
-name|gs
+name|Common
 operator|.
-name|getDatabase
+name|getSchemaFactory
 argument_list|()
 operator|.
 name|open

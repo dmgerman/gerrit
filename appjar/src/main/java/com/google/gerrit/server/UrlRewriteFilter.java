@@ -164,6 +164,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|Common
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtjsonrpc
 operator|.
 name|server
@@ -583,11 +599,6 @@ specifier|private
 name|FilterConfig
 name|config
 decl_stmt|;
-DECL|field|server
-specifier|private
-name|GerritServer
-name|server
-decl_stmt|;
 DECL|method|init (final FilterConfig config)
 specifier|public
 name|void
@@ -608,8 +619,6 @@ name|config
 expr_stmt|;
 try|try
 block|{
-name|server
-operator|=
 name|GerritServer
 operator|.
 name|getInstance
@@ -1198,9 +1207,9 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
+name|Common
 operator|.
-name|getDatabase
+name|getSchemaFactory
 argument_list|()
 operator|.
 name|open
@@ -1467,9 +1476,9 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
+name|Common
 operator|.
-name|getDatabase
+name|getSchemaFactory
 argument_list|()
 operator|.
 name|open

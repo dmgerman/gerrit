@@ -212,20 +212,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -264,24 +250,6 @@ name|BaseServiceImplementation
 implements|implements
 name|SuggestService
 block|{
-DECL|method|SuggestServiceImpl (final SchemaFactory<ReviewDb> rdf)
-specifier|public
-name|SuggestServiceImpl
-parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|rdf
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|suggestProjectNameKey (final String query, final int limit, final AsyncCallback<List<Project.NameKey>> callback)
 specifier|public
 name|void

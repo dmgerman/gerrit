@@ -346,20 +346,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|Transaction
 import|;
 end_import
@@ -434,24 +420,6 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeListService
 block|{
-DECL|method|ChangeListServiceImpl (final SchemaFactory<ReviewDb> rdf)
-specifier|public
-name|ChangeListServiceImpl
-parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|rdf
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|forAccount (final Account.Id id, final AsyncCallback<AccountDashboardInfo> callback)
 specifier|public
 name|void

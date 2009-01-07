@@ -663,13 +663,18 @@ expr_stmt|;
 block|}
 name|Common
 operator|.
+name|setSchemaFactory
+argument_list|(
+name|db
+argument_list|)
+expr_stmt|;
+name|Common
+operator|.
 name|setGroupCache
 argument_list|(
 operator|new
 name|GroupCache
 argument_list|(
-name|db
-argument_list|,
 name|sConfig
 argument_list|)
 argument_list|)
@@ -1986,20 +1991,6 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
-block|}
-comment|/** Get the {@link ReviewDb} schema factory for the server. */
-DECL|method|getDatabase ()
-specifier|public
-name|Database
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|getDatabase
-parameter_list|()
-block|{
-return|return
-name|db
-return|;
 block|}
 comment|/** Time (in seconds) that user sessions stay "signed in". */
 DECL|method|getSessionAge ()

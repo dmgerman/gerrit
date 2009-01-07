@@ -89,12 +89,7 @@ block|{
 return|return
 operator|new
 name|GroupAdminServiceImpl
-argument_list|(
-name|GerritServer
-operator|.
-name|getInstance
 argument_list|()
-argument_list|)
 return|;
 block|}
 block|}

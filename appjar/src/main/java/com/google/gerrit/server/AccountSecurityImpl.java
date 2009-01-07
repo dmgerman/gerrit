@@ -312,20 +312,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|Transaction
 import|;
 end_import
@@ -402,24 +388,6 @@ name|BaseServiceImplementation
 implements|implements
 name|AccountSecurity
 block|{
-DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> rdf)
-specifier|public
-name|AccountSecurityImpl
-parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|rdf
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)
 specifier|public
 name|void

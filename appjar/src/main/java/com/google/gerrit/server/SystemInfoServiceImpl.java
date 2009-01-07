@@ -194,28 +194,6 @@ name|SystemInfoServiceImpl
 implements|implements
 name|SystemInfoService
 block|{
-DECL|field|server
-specifier|private
-specifier|final
-name|GerritServer
-name|server
-decl_stmt|;
-DECL|method|SystemInfoServiceImpl (final GerritServer server)
-specifier|public
-name|SystemInfoServiceImpl
-parameter_list|(
-specifier|final
-name|GerritServer
-name|server
-parameter_list|)
-block|{
-name|this
-operator|.
-name|server
-operator|=
-name|server
-expr_stmt|;
-block|}
 DECL|method|loadGerritConfig (final AsyncCallback<GerritConfig> callback)
 specifier|public
 name|void
@@ -262,9 +240,9 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
+name|Common
 operator|.
-name|getDatabase
+name|getSchemaFactory
 argument_list|()
 operator|.
 name|open

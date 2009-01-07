@@ -382,24 +382,6 @@ name|BaseServiceImplementation
 implements|implements
 name|ProjectAdminService
 block|{
-DECL|method|ProjectAdminServiceImpl (final GerritServer server)
-specifier|public
-name|ProjectAdminServiceImpl
-parameter_list|(
-specifier|final
-name|GerritServer
-name|server
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|server
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|ownedProjects (final AsyncCallback<List<Project>> callback)
 specifier|public
 name|void

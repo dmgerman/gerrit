@@ -120,11 +120,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|OrmException
+name|rpc
+operator|.
+name|Common
 import|;
 end_import
 
@@ -138,7 +140,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
+name|OrmException
 import|;
 end_import
 
@@ -896,7 +898,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Locate keys for the requested account whose email matches the name given. */
-DECL|method|keysFor (final SchemaFactory<ReviewDb> rdf, final String username)
+DECL|method|keysFor (final String username)
 specifier|public
 specifier|static
 name|List
@@ -905,13 +907,6 @@ name|AccountSshKey
 argument_list|>
 name|keysFor
 parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|,
 specifier|final
 name|String
 name|username
@@ -960,7 +955,10 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|rdf
+name|Common
+operator|.
+name|getSchemaFactory
+argument_list|()
 operator|.
 name|open
 argument_list|()

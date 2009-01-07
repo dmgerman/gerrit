@@ -462,12 +462,7 @@ name|setPublickeyAuthenticator
 argument_list|(
 operator|new
 name|DatabasePubKeyAuth
-argument_list|(
-name|srv
-operator|.
-name|getDatabase
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|sshd

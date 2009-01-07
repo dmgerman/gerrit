@@ -114,20 +114,6 @@ name|OrmException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
 begin_comment
 comment|/** Support for services which require a {@link ReviewDb} instance. */
 end_comment
@@ -138,32 +124,6 @@ specifier|public
 class|class
 name|BaseServiceImplementation
 block|{
-DECL|field|schema
-specifier|protected
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
-DECL|method|BaseServiceImplementation (final SchemaFactory<ReviewDb> rdf)
-specifier|protected
-name|BaseServiceImplementation
-parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|)
-block|{
-name|schema
-operator|=
-name|rdf
-expr_stmt|;
-block|}
 comment|/**    * Executes<code>action.run</code> with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *     * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
 DECL|method|run (final AsyncCallback<T> callback, final Action<T> action)
 specifier|protected
@@ -194,7 +154,10 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|schema
+name|Common
+operator|.
+name|getSchemaFactory
+argument_list|()
 operator|.
 name|open
 argument_list|()

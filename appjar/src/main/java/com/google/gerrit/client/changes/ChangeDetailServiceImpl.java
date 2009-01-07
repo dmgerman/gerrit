@@ -258,20 +258,6 @@ name|OrmException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
 begin_class
 DECL|class|ChangeDetailServiceImpl
 specifier|public
@@ -282,24 +268,6 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeDetailService
 block|{
-DECL|method|ChangeDetailServiceImpl (final SchemaFactory<ReviewDb> rdf)
-specifier|public
-name|ChangeDetailServiceImpl
-parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|rdf
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|changeDetail (final Change.Id id, final AsyncCallback<ChangeDetail> callback)
 specifier|public
 name|void

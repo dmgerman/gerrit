@@ -152,11 +152,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|OrmException
+name|rpc
+operator|.
+name|Common
 import|;
 end_import
 
@@ -170,7 +172,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
+name|OrmException
 import|;
 end_import
 
@@ -234,15 +236,6 @@ specifier|public
 class|class
 name|GroupCache
 block|{
-DECL|field|schema
-specifier|private
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|schema
-decl_stmt|;
 DECL|field|adminGroupId
 specifier|private
 name|AccountGroup
@@ -338,26 +331,15 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|GroupCache (final SchemaFactory<ReviewDb> rdf, final SystemConfig cfg)
+DECL|method|GroupCache (final SystemConfig cfg)
 specifier|public
 name|GroupCache
 parameter_list|(
-specifier|final
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|rdf
-parameter_list|,
 specifier|final
 name|SystemConfig
 name|cfg
 parameter_list|)
 block|{
-name|schema
-operator|=
-name|rdf
-expr_stmt|;
 name|adminGroupId
 operator|=
 name|cfg
@@ -836,7 +818,10 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|schema
+name|Common
+operator|.
+name|getSchemaFactory
+argument_list|()
 operator|.
 name|open
 argument_list|()
