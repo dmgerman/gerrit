@@ -132,6 +132,30 @@ specifier|public
 class|class
 name|FormatUtil
 block|{
+DECL|field|sTime
+specifier|private
+specifier|static
+specifier|final
+name|DateTimeFormat
+name|sTime
+init|=
+name|DateTimeFormat
+operator|.
+name|getShortTimeFormat
+argument_list|()
+decl_stmt|;
+DECL|field|mDate
+specifier|private
+specifier|static
+specifier|final
+name|DateTimeFormat
+name|mDate
+init|=
+name|DateTimeFormat
+operator|.
+name|getMediumDateFormat
+argument_list|()
+decl_stmt|;
 DECL|field|dtfmt
 specifier|private
 specifier|static
@@ -141,8 +165,20 @@ name|dtfmt
 init|=
 name|DateTimeFormat
 operator|.
-name|getMediumDateTimeFormat
+name|getFormat
+argument_list|(
+name|mDate
+operator|.
+name|getPattern
 argument_list|()
+operator|+
+literal|" "
+operator|+
+name|sTime
+operator|.
+name|getPattern
+argument_list|()
+argument_list|)
 decl_stmt|;
 comment|/** Format a date using the locale's medium length format. */
 DECL|method|mediumFormat (final Date dt)
