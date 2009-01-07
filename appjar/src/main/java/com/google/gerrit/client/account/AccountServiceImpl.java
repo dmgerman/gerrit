@@ -158,7 +158,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|NoSuchEntityException
+name|Common
 import|;
 end_import
 
@@ -174,7 +174,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Common
+name|NoSuchEntityException
 import|;
 end_import
 
