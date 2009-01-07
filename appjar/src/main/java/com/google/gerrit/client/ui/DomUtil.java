@@ -144,6 +144,27 @@ name|in
 argument_list|)
 return|;
 block|}
+comment|/** Convert bare URLs into&lt;a href&gt; tags. */
+DECL|method|linkify (final String in)
+specifier|public
+specifier|static
+name|String
+name|linkify
+parameter_list|(
+specifier|final
+name|String
+name|in
+parameter_list|)
+block|{
+return|return
+name|INSTANCE
+operator|.
+name|linkify
+argument_list|(
+name|in
+argument_list|)
+return|;
+block|}
 DECL|method|DomUtil ()
 specifier|private
 name|DomUtil
@@ -165,6 +186,25 @@ name|String
 name|in
 parameter_list|)
 function_decl|;
+DECL|method|linkify (String in)
+name|String
+name|linkify
+parameter_list|(
+name|String
+name|in
+parameter_list|)
+block|{
+return|return
+name|in
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(https?://[^ \n\r\t]*)"
+argument_list|,
+literal|"<a href=\"$1\">$1</a>"
+argument_list|)
+return|;
+block|}
 block|}
 DECL|class|ClientImpl
 specifier|private
