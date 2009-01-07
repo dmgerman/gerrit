@@ -148,6 +148,14 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+name|Common
+operator|.
+name|getProjectCache
+argument_list|()
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
