@@ -252,7 +252,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 import|;
 end_import
 
@@ -483,7 +483,7 @@ name|groupCache
 operator|.
 name|isAdministrator
 argument_list|(
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -699,7 +699,7 @@ name|AccountGroupMember
 operator|.
 name|Key
 argument_list|(
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -1638,7 +1638,7 @@ name|groupCache
 operator|.
 name|isAdministrator
 argument_list|(
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -1786,7 +1786,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -1908,7 +1908,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()

@@ -76,7 +76,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 import|;
 end_import
 
@@ -400,7 +400,7 @@ condition|)
 block|{
 name|cn
 operator|=
-name|RpcUtil
+name|Common
 operator|.
 name|C
 operator|.

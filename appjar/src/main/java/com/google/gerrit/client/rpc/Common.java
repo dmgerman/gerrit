@@ -113,10 +113,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RpcUtil
+DECL|class|Common
 specifier|public
 class|class
-name|RpcUtil
+name|Common
 block|{
 DECL|field|C
 specifier|public

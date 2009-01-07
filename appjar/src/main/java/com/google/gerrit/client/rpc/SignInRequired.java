@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation indicating a service method requires a current user.  *<p>  * If there is no current user then {@link NotSignedInException} will be given  * to the callback's onFailure method. Methods tagged with this will never get  * null from {@link RpcUtil#getAccountId()}.  */
+comment|/**  * Annotation indicating a service method requires a current user.  *<p>  * If there is no current user then {@link NotSignedInException} will be given  * to the callback's onFailure method. Methods tagged with this will never get  * null from {@link Common#getAccountId()}.  */
 end_comment
 
 begin_annotation_defn

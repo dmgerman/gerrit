@@ -364,7 +364,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 import|;
 end_import
 
@@ -915,7 +915,7 @@ return|return
 operator|new
 name|AccountDashboardScreen
 argument_list|(
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()

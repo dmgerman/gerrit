@@ -222,7 +222,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 import|;
 end_import
 
@@ -656,7 +656,7 @@ argument_list|)
 expr_stmt|;
 name|me
 operator|=
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()

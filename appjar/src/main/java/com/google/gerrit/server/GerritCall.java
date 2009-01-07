@@ -106,7 +106,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 operator|.
 name|CurrentAccountImpl
 import|;
@@ -204,7 +204,7 @@ name|ActiveCall
 block|{
 static|static
 block|{
-name|RpcUtil
+name|Common
 operator|.
 name|setCurrentAccountImpl
 argument_list|(

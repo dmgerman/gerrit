@@ -272,7 +272,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RpcUtil
+name|Common
 import|;
 end_import
 
@@ -477,7 +477,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -712,7 +712,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -917,7 +917,7 @@ operator|.
 name|Id
 name|me
 init|=
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
@@ -1192,7 +1192,7 @@ name|starredBy
 argument_list|(
 name|db
 argument_list|,
-name|RpcUtil
+name|Common
 operator|.
 name|getAccountId
 argument_list|()
