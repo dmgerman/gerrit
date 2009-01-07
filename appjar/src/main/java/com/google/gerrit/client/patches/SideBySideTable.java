@@ -1463,9 +1463,6 @@ name|nc
 operator|.
 name|append
 argument_list|(
-operator|(
-name|int
-operator|)
 name|s
 operator|.
 name|getLineNumber
