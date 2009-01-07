@@ -894,6 +894,11 @@ argument_list|()
 operator|.
 name|isUseContributorAgreements
 argument_list|()
+operator|&&
+name|proj
+operator|.
+name|isUseContributorAgreements
+argument_list|()
 condition|)
 block|{
 name|verifyActiveContributorAgreement

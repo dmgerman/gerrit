@@ -349,6 +349,13 @@ operator|.
 name|Id
 name|ownerGroupId
 decl_stmt|;
+annotation|@
+name|Column
+DECL|field|useContributorAgreements
+specifier|protected
+name|boolean
+name|useContributorAgreements
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -378,6 +385,10 @@ expr_stmt|;
 name|projectId
 operator|=
 name|newId
+expr_stmt|;
+name|useContributorAgreements
+operator|=
+literal|true
 expr_stmt|;
 block|}
 DECL|method|getId ()
@@ -469,6 +480,31 @@ block|{
 name|ownerGroupId
 operator|=
 name|id
+expr_stmt|;
+block|}
+DECL|method|isUseContributorAgreements ()
+specifier|public
+name|boolean
+name|isUseContributorAgreements
+parameter_list|()
+block|{
+return|return
+name|useContributorAgreements
+return|;
+block|}
+DECL|method|setUseContributorAgreements (final boolean u)
+specifier|public
+name|void
+name|setUseContributorAgreements
+parameter_list|(
+specifier|final
+name|boolean
+name|u
+parameter_list|)
+block|{
+name|useContributorAgreements
+operator|=
+name|u
 expr_stmt|;
 block|}
 block|}
