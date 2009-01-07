@@ -402,6 +402,33 @@ return|return
 name|values
 return|;
 block|}
+DECL|method|getMin ()
+specifier|public
+name|ApprovalCategoryValue
+name|getMin
+parameter_list|()
+block|{
+if|if
+condition|(
+name|values
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|values
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+return|;
+block|}
 DECL|method|getMax ()
 specifier|public
 name|ApprovalCategoryValue
