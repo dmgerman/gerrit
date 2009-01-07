@@ -119,6 +119,24 @@ specifier|final
 class|class
 name|ApprovalCategory
 block|{
+comment|/** Id of the special "Submit" action (and category). */
+DECL|field|SUBMIT
+specifier|public
+specifier|static
+specifier|final
+name|ApprovalCategory
+operator|.
+name|Id
+name|SUBMIT
+init|=
+operator|new
+name|ApprovalCategory
+operator|.
+name|Id
+argument_list|(
+literal|"SUBM"
+argument_list|)
+decl_stmt|;
 DECL|class|Id
 specifier|public
 specifier|static

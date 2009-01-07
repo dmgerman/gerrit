@@ -646,9 +646,11 @@ operator|.
 name|approvalCategories
 argument_list|()
 operator|.
-name|byName
+name|get
 argument_list|(
-literal|"Submit"
+name|ApprovalCategory
+operator|.
+name|SUBMIT
 argument_list|)
 expr_stmt|;
 specifier|final

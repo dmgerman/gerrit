@@ -1667,13 +1667,9 @@ operator|=
 operator|new
 name|ApprovalCategory
 argument_list|(
-operator|new
 name|ApprovalCategory
 operator|.
-name|Id
-argument_list|(
-literal|"SUBM"
-argument_list|)
+name|SUBMIT
 argument_list|,
 literal|"Submit"
 argument_list|)
