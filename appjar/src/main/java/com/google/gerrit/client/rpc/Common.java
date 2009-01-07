@@ -90,6 +90,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|data
+operator|.
+name|GerritConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -124,6 +140,12 @@ specifier|static
 specifier|final
 name|RpcConstants
 name|C
+decl_stmt|;
+DECL|field|config
+specifier|private
+specifier|static
+name|GerritConfig
+name|config
 decl_stmt|;
 DECL|field|caImpl
 specifier|private
@@ -197,6 +219,34 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+comment|/** Get the public configuration data used by this Gerrit instance. */
+DECL|method|getGerritConfig ()
+specifier|public
+specifier|static
+name|GerritConfig
+name|getGerritConfig
+parameter_list|()
+block|{
+return|return
+name|config
+return|;
+block|}
+DECL|method|setGerritConfig (final GerritConfig imp)
+specifier|public
+specifier|static
+name|void
+name|setGerritConfig
+parameter_list|(
+specifier|final
+name|GerritConfig
+name|imp
+parameter_list|)
+block|{
+name|config
+operator|=
+name|imp
+expr_stmt|;
 block|}
 comment|/** Get the unique id for this account; null if there is no account. */
 DECL|method|getAccountId ()

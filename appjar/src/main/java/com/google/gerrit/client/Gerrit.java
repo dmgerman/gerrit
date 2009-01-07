@@ -124,6 +124,22 @@ name|client
 operator|.
 name|rpc
 operator|.
+name|Common
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
 name|GerritCallback
 import|;
 end_import
@@ -488,12 +504,6 @@ specifier|final
 name|SystemInfoService
 name|SYSTEM_SVC
 decl_stmt|;
-DECL|field|config
-specifier|private
-specifier|static
-name|GerritConfig
-name|config
-decl_stmt|;
 DECL|field|myAccount
 specifier|private
 specifier|static
@@ -748,18 +758,6 @@ argument_list|(
 name|currentScreen
 argument_list|)
 expr_stmt|;
-block|}
-comment|/** Get the public configuration data used by this Gerrit server. */
-DECL|method|getGerritConfig ()
-specifier|public
-specifier|static
-name|GerritConfig
-name|getGerritConfig
-parameter_list|()
-block|{
-return|return
-name|config
-return|;
 block|}
 comment|/** @return the currently signed in user's account data; null if no account */
 DECL|method|getUserAccount ()
@@ -1048,9 +1046,12 @@ name|GerritConfig
 name|result
 parameter_list|)
 block|{
-name|config
-operator|=
+name|Common
+operator|.
+name|setGerritConfig
+argument_list|(
 name|result
+argument_list|)
 expr_stmt|;
 name|onModuleLoad2
 argument_list|()

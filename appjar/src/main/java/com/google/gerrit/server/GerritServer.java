@@ -232,6 +232,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|Common
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|git
 operator|.
 name|RepositoryCache
@@ -526,11 +542,6 @@ DECL|field|sConfig
 specifier|private
 name|SystemConfig
 name|sConfig
-decl_stmt|;
-DECL|field|gerritConfig
-specifier|private
-name|GerritConfig
-name|gerritConfig
 decl_stmt|;
 DECL|field|xsrf
 specifier|private
@@ -1971,9 +1982,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|gerritConfig
-operator|=
+name|Common
+operator|.
+name|setGerritConfig
+argument_list|(
 name|r
+argument_list|)
 expr_stmt|;
 block|}
 comment|/** Get the {@link ReviewDb} schema factory for the server. */
@@ -2200,17 +2214,6 @@ expr_stmt|;
 block|}
 return|return
 name|u
-return|;
-block|}
-comment|/** Get the cached configuration data used by the client. */
-DECL|method|getGerritConfig ()
-specifier|public
-name|GerritConfig
-name|getGerritConfig
-parameter_list|()
-block|{
-return|return
-name|gerritConfig
 return|;
 block|}
 comment|/** Get the repositories maintained by this server. */

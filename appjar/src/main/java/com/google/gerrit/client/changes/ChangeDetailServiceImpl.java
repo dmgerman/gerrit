@@ -110,22 +110,6 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|data
-operator|.
 name|GroupCache
 import|;
 end_import
@@ -207,6 +191,22 @@ operator|.
 name|rpc
 operator|.
 name|BaseServiceImplementation
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|Common
 import|;
 end_import
 
@@ -304,13 +304,7 @@ specifier|final
 name|GroupCache
 name|groupCache
 decl_stmt|;
-DECL|field|config
-specifier|private
-specifier|final
-name|GerritConfig
-name|config
-decl_stmt|;
-DECL|method|ChangeDetailServiceImpl (final SchemaFactory<ReviewDb> rdf, final GroupCache groups, final GerritConfig c)
+DECL|method|ChangeDetailServiceImpl (final SchemaFactory<ReviewDb> rdf, final GroupCache groups)
 specifier|public
 name|ChangeDetailServiceImpl
 parameter_list|(
@@ -324,10 +318,6 @@ parameter_list|,
 specifier|final
 name|GroupCache
 name|groups
-parameter_list|,
-specifier|final
-name|GerritConfig
-name|c
 parameter_list|)
 block|{
 name|super
@@ -338,10 +328,6 @@ expr_stmt|;
 name|groupCache
 operator|=
 name|groups
-expr_stmt|;
-name|config
-operator|=
-name|c
 expr_stmt|;
 block|}
 DECL|method|changeDetail (final Change.Id id, final AsyncCallback<ChangeDetail> callback)
@@ -425,7 +411,10 @@ init|=
 operator|new
 name|RightRule
 argument_list|(
-name|config
+name|Common
+operator|.
+name|getGerritConfig
+argument_list|()
 argument_list|,
 name|groupCache
 argument_list|,
