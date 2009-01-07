@@ -343,6 +343,14 @@ specifier|transient
 name|String
 name|gitBasePath
 decl_stmt|;
+comment|/** Is a verified {@link AccountAgreement} required to upload changes? */
+annotation|@
+name|Column
+DECL|field|useContributorAgreements
+specifier|public
+name|boolean
+name|useContributorAgreements
+decl_stmt|;
 comment|/** Local TCP port number the embedded SSHD server binds onto. */
 annotation|@
 name|Column

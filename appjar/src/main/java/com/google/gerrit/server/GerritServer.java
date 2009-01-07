@@ -1918,6 +1918,15 @@ operator|.
 name|sshdPort
 argument_list|)
 expr_stmt|;
+name|r
+operator|.
+name|setUseContributorAgreements
+argument_list|(
+name|sConfig
+operator|.
+name|useContributorAgreements
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|sConfig

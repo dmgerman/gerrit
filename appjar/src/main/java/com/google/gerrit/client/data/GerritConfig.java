@@ -159,6 +159,11 @@ specifier|protected
 name|int
 name|sshdPort
 decl_stmt|;
+DECL|field|useContributorAgreements
+specifier|protected
+name|boolean
+name|useContributorAgreements
+decl_stmt|;
 DECL|field|byCategoryId
 specifier|private
 specifier|transient
@@ -378,6 +383,31 @@ block|{
 name|sshdPort
 operator|=
 name|p
+expr_stmt|;
+block|}
+DECL|method|isUseContributorAgreements ()
+specifier|public
+name|boolean
+name|isUseContributorAgreements
+parameter_list|()
+block|{
+return|return
+name|useContributorAgreements
+return|;
+block|}
+DECL|method|setUseContributorAgreements (final boolean r)
+specifier|public
+name|void
+name|setUseContributorAgreements
+parameter_list|(
+specifier|final
+name|boolean
+name|r
+parameter_list|)
+block|{
+name|useContributorAgreements
+operator|=
+name|r
 expr_stmt|;
 block|}
 DECL|method|getApprovalType (final ApprovalCategory.Id id)
