@@ -979,9 +979,9 @@ name|int
 name|tabIndex
 parameter_list|)
 block|{
-name|History
+name|Gerrit
 operator|.
-name|newItem
+name|display
 argument_list|(
 name|tabTokens
 operator|.

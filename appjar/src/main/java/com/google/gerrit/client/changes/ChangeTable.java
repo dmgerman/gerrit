@@ -1281,9 +1281,9 @@ name|ChangeInfo
 name|c
 parameter_list|)
 block|{
-name|History
+name|Gerrit
 operator|.
-name|newItem
+name|display
 argument_list|(
 name|Link
 operator|.
@@ -1292,13 +1292,6 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-name|Gerrit
-operator|.
-name|display
-argument_list|(
 operator|new
 name|ChangeScreen
 argument_list|(
