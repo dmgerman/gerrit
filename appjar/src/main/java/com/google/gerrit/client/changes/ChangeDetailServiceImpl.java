@@ -332,9 +332,7 @@ name|rules
 init|=
 operator|new
 name|RightRule
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 specifier|final
 name|ChangeDetail

@@ -314,26 +314,6 @@ specifier|public
 class|class
 name|RightRule
 block|{
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
-DECL|method|RightRule (final ReviewDb d)
-specifier|public
-name|RightRule
-parameter_list|(
-specifier|final
-name|ReviewDb
-name|d
-parameter_list|)
-block|{
-name|db
-operator|=
-name|d
-expr_stmt|;
-block|}
 DECL|method|apply (final ProjectCache.Entry project, final Collection<ChangeApproval> approvals)
 specifier|public
 name|Set
@@ -563,7 +543,7 @@ return|return
 name|missing
 return|;
 block|}
-DECL|method|normalize (final ProjectCache.Entry project, final Collection<ChangeApproval> approvals, final Transaction txn)
+DECL|method|normalize (final ProjectCache.Entry project, final Collection<ChangeApproval> approvals, final ReviewDb db, final Transaction txn)
 specifier|public
 name|void
 name|normalize
@@ -580,6 +560,10 @@ argument_list|<
 name|ChangeApproval
 argument_list|>
 name|approvals
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|,
 specifier|final
 name|Transaction
