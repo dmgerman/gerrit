@@ -99,13 +99,13 @@ import|;
 end_import
 
 begin_comment
-comment|/** Causes the {@link GroupCache} to purge all entries and reload. */
+comment|/** Causes the caches to purge all entries and reload. */
 end_comment
 
 begin_class
-DECL|class|AdminFlushGroupCache
+DECL|class|AdminFlushCaches
 class|class
-name|AdminFlushGroupCache
+name|AdminFlushCaches
 extends|extends
 name|AbstractCommand
 block|{
@@ -151,6 +151,14 @@ expr_stmt|;
 name|Common
 operator|.
 name|getProjectCache
+argument_list|()
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+name|Common
+operator|.
+name|getAccountCache
 argument_list|()
 operator|.
 name|flush

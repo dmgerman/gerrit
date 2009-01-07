@@ -578,8 +578,6 @@ specifier|final
 name|AccountGroupMember
 name|m
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 specifier|final
 name|AccountInfoCacheFactory

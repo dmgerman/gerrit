@@ -179,7 +179,7 @@ name|commands
 operator|.
 name|put
 argument_list|(
-literal|"gerrit-flush-group-cache"
+literal|"gerrit-flush-caches"
 argument_list|,
 operator|new
 name|Factory
@@ -192,7 +192,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|AdminFlushGroupCache
+name|AdminFlushCaches
 argument_list|()
 return|;
 block|}
