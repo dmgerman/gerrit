@@ -193,6 +193,7 @@ name|newValue
 expr_stmt|;
 block|}
 block|}
+comment|/** Internal short unique identifier for this category. */
 annotation|@
 name|Column
 DECL|field|categoryId
@@ -200,6 +201,7 @@ specifier|protected
 name|Id
 name|categoryId
 decl_stmt|;
+comment|/** Unique name for this category, shown in the web interface to users. */
 annotation|@
 name|Column
 argument_list|(
@@ -212,6 +214,7 @@ specifier|protected
 name|String
 name|name
 decl_stmt|;
+comment|/**    * Order of this category within the Approvals table when presented.    *<p>    * If< 0 (e.g. -1) this category is not shown in the Approvals table but is    * instead considered to be an action that the user might be able to perform,    * e.g. "Submit".    *<p>    * If>= 0 this category is shown in the Approvals table, sorted along with    * its siblings by<code>position, name</code>.    */
 annotation|@
 name|Column
 DECL|field|position
@@ -313,6 +316,18 @@ name|position
 operator|=
 name|p
 expr_stmt|;
+block|}
+DECL|method|isAction ()
+specifier|public
+name|boolean
+name|isAction
+parameter_list|()
+block|{
+return|return
+name|position
+operator|<
+literal|0
+return|;
 block|}
 block|}
 end_class
