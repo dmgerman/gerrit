@@ -204,14 +204,6 @@ specifier|protected
 name|boolean
 name|active
 decl_stmt|;
-comment|/** Is this agreement one that covers a group of people? */
-annotation|@
-name|Column
-DECL|field|groupAgreement
-specifier|protected
-name|boolean
-name|groupAgreement
-decl_stmt|;
 comment|/** Does this agreement require the {@link Account} to have contact details? */
 annotation|@
 name|Column
@@ -327,31 +319,6 @@ block|{
 name|active
 operator|=
 name|a
-expr_stmt|;
-block|}
-DECL|method|isGroupAgreement ()
-specifier|public
-name|boolean
-name|isGroupAgreement
-parameter_list|()
-block|{
-return|return
-name|groupAgreement
-return|;
-block|}
-DECL|method|setGroupAgreement (final boolean g)
-specifier|public
-name|void
-name|setGroupAgreement
-parameter_list|(
-specifier|final
-name|boolean
-name|g
-parameter_list|)
-block|{
-name|groupAgreement
-operator|=
-name|g
 expr_stmt|;
 block|}
 DECL|method|isAutoVerify ()
