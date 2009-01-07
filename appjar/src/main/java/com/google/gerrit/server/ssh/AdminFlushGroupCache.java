@@ -82,6 +82,22 @@ name|GroupCache
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|Common
+import|;
+end_import
+
 begin_comment
 comment|/** Causes the {@link GroupCache} to purge all entries and reload. */
 end_comment
@@ -111,8 +127,7 @@ specifier|final
 name|GroupCache
 name|gc
 init|=
-name|getGerritServer
-argument_list|()
+name|Common
 operator|.
 name|getGroupCache
 argument_list|()

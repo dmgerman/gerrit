@@ -561,12 +561,6 @@ specifier|final
 name|RepositoryCache
 name|repositories
 decl_stmt|;
-DECL|field|groupCache
-specifier|private
-specifier|final
-name|GroupCache
-name|groupCache
-decl_stmt|;
 DECL|method|GerritServer ()
 specifier|private
 name|GerritServer
@@ -667,14 +661,17 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|groupCache
-operator|=
+name|Common
+operator|.
+name|setGroupCache
+argument_list|(
 operator|new
 name|GroupCache
 argument_list|(
 name|db
 argument_list|,
 name|sConfig
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2225,17 +2222,6 @@ parameter_list|()
 block|{
 return|return
 name|repositories
-return|;
-block|}
-comment|/** Get the group membership cache. */
-DECL|method|getGroupCache ()
-specifier|public
-name|GroupCache
-name|getGroupCache
-parameter_list|()
-block|{
-return|return
-name|groupCache
 return|;
 block|}
 block|}

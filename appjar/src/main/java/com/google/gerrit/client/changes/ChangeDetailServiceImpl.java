@@ -110,22 +110,6 @@ name|client
 operator|.
 name|data
 operator|.
-name|GroupCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|data
-operator|.
 name|PatchSetDetail
 import|;
 end_import
@@ -298,13 +282,7 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeDetailService
 block|{
-DECL|field|groupCache
-specifier|private
-specifier|final
-name|GroupCache
-name|groupCache
-decl_stmt|;
-DECL|method|ChangeDetailServiceImpl (final SchemaFactory<ReviewDb> rdf, final GroupCache groups)
+DECL|method|ChangeDetailServiceImpl (final SchemaFactory<ReviewDb> rdf)
 specifier|public
 name|ChangeDetailServiceImpl
 parameter_list|(
@@ -314,20 +292,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|rdf
-parameter_list|,
-specifier|final
-name|GroupCache
-name|groups
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|rdf
 argument_list|)
-expr_stmt|;
-name|groupCache
-operator|=
-name|groups
 expr_stmt|;
 block|}
 DECL|method|changeDetail (final Change.Id id, final AsyncCallback<ChangeDetail> callback)
@@ -416,7 +386,10 @@ operator|.
 name|getGerritConfig
 argument_list|()
 argument_list|,
-name|groupCache
+name|Common
+operator|.
+name|getGroupCache
+argument_list|()
 argument_list|,
 name|db
 argument_list|)
