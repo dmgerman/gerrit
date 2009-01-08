@@ -130,6 +130,17 @@ name|int
 name|id
 parameter_list|)
 function_decl|;
+DECL|method|patchSetAction (String action, int id)
+name|String
+name|patchSetAction
+parameter_list|(
+name|String
+name|action
+parameter_list|,
+name|int
+name|id
+parameter_list|)
+function_decl|;
 DECL|method|repoDownload (String project, int change, int ps)
 name|String
 name|repoDownload

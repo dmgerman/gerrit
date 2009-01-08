@@ -522,6 +522,11 @@ specifier|private
 name|ChangeInfo
 name|changeInfo
 decl_stmt|;
+DECL|field|refreshOnSignIn
+specifier|private
+name|boolean
+name|refreshOnSignIn
+decl_stmt|;
 DECL|field|infoBlock
 specifier|private
 name|ChangeInfoBlock
@@ -676,6 +681,32 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|onSignIn ()
+specifier|public
+name|void
+name|onSignIn
+parameter_list|()
+block|{
+if|if
+condition|(
+name|refreshOnSignIn
+condition|)
+block|{
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|onSignOut ()
+specifier|public
+name|void
+name|onSignOut
+parameter_list|()
+block|{   }
+annotation|@
+name|Override
 DECL|method|onLoad ()
 specifier|public
 name|void
@@ -712,6 +743,16 @@ operator|.
 name|onLoad
 argument_list|()
 expr_stmt|;
+name|refresh
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|refresh ()
+specifier|public
+name|void
+name|refresh
+parameter_list|()
+block|{
 name|Util
 operator|.
 name|DETAIL_SVC
@@ -1164,16 +1205,6 @@ name|ChangeDetail
 name|detail
 parameter_list|)
 block|{
-if|if
-condition|(
-name|changeInfo
-operator|==
-literal|null
-condition|)
-block|{
-comment|// We couldn't set the title correctly when we loaded the page
-comment|// into the browser, update it now that we have the full detail.
-comment|//
 name|displayTitle
 argument_list|(
 name|detail
@@ -1185,7 +1216,20 @@ name|getSubject
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
+name|refreshOnSignIn
+operator|=
+operator|!
+name|detail
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isClosed
+argument_list|()
+expr_stmt|;
 name|dependencies
 operator|.
 name|setAccountInfoCache
