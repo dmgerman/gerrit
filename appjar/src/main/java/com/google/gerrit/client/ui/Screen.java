@@ -86,6 +86,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|Link
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -109,6 +123,22 @@ operator|.
 name|client
 operator|.
 name|Element
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|History
 import|;
 end_import
 
@@ -245,6 +275,37 @@ return|return
 name|requiresSignIn
 return|;
 block|}
+comment|/** Invoked if this screen is the current screen and the user signs out. */
+DECL|method|onSignOut ()
+specifier|public
+name|void
+name|onSignOut
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isRequiresSignIn
+argument_list|()
+condition|)
+block|{
+name|History
+operator|.
+name|newItem
+argument_list|(
+name|Link
+operator|.
+name|ALL
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/** Invoked if this screen is the current screen and the user signs in. */
+DECL|method|onSignIn ()
+specifier|public
+name|void
+name|onSignIn
+parameter_list|()
+block|{   }
 comment|/** Get the token to cache this screen's widget; null if it shouldn't cache. */
 DECL|method|getScreenCacheToken ()
 specifier|public
