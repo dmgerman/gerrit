@@ -95,6 +95,11 @@ name|String
 name|statusLongNew
 parameter_list|()
 function_decl|;
+DECL|method|statusLongSubmitted ()
+name|String
+name|statusLongSubmitted
+parameter_list|()
+function_decl|;
 DECL|method|statusLongMerged ()
 name|String
 name|statusLongMerged
