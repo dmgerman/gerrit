@@ -3583,6 +3583,17 @@ block|}
 block|}
 name|change
 operator|.
+name|setStatus
+argument_list|(
+name|Change
+operator|.
+name|Status
+operator|.
+name|NEW
+argument_list|)
+expr_stmt|;
+name|change
+operator|.
 name|setCurrentPatchSet
 argument_list|(
 name|imp
