@@ -274,6 +274,18 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+DECL|method|getId ()
+specifier|public
+name|ApprovalCategoryValue
+operator|.
+name|Id
+name|getId
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
+block|}
 DECL|method|getCategoryId ()
 specifier|public
 name|ApprovalCategory

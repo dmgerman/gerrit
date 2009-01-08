@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2008 Google Inc.
+comment|// Copyright 2009 Google Inc.
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.reviewdb
+DECL|package|com.google.gerrit.client.changes
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|reviewdb
+name|changes
 package|;
 end_package
 
@@ -72,11 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|Access
+name|reviewdb
+operator|.
+name|ApprovalCategoryValue
 import|;
 end_import
 
@@ -86,11 +88,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|OrmException
+name|reviewdb
+operator|.
+name|PatchSet
 import|;
 end_import
 
@@ -100,11 +104,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|client
 operator|.
-name|PrimaryKey
+name|rpc
+operator|.
+name|SignInRequired
 import|;
 end_import
 
@@ -114,11 +120,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gwt
+operator|.
+name|user
 operator|.
 name|client
 operator|.
-name|Query
+name|rpc
+operator|.
+name|AsyncCallback
 import|;
 end_import
 
@@ -128,103 +138,58 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|ResultSet
+name|RemoteJsonService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtjsonrpc
+operator|.
+name|client
+operator|.
+name|VoidResult
 import|;
 end_import
 
 begin_interface
-DECL|interface|ChangeAccess
+DECL|interface|ChangeManageService
 specifier|public
 interface|interface
-name|ChangeAccess
+name|ChangeManageService
 extends|extends
-name|Access
-argument_list|<
-name|Change
-argument_list|,
-name|Change
-operator|.
-name|Id
-argument_list|>
+name|RemoteJsonService
 block|{
 annotation|@
-name|PrimaryKey
-argument_list|(
-literal|"changeId"
-argument_list|)
-DECL|method|get (Change.Id id)
-name|Change
-name|get
+name|SignInRequired
+DECL|method|patchSetAction (ApprovalCategoryValue.Id value, PatchSet.Id patchSetId, AsyncCallback<VoidResult> callback)
+name|void
+name|patchSetAction
 parameter_list|(
-name|Change
+name|ApprovalCategoryValue
 operator|.
 name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE owner = ? AND status>= '"
-operator|+
-name|Change
+name|value
+parameter_list|,
+name|PatchSet
 operator|.
-name|MIN_OPEN
-operator|+
-literal|"' AND status<= '"
-operator|+
-name|Change
-operator|.
-name|MAX_OPEN
-operator|+
-literal|"' ORDER BY lastUpdatedOn DESC"
-argument_list|)
-DECL|method|byOwnerOpen (Account.Id id)
-name|ResultSet
+name|Id
+name|patchSetId
+parameter_list|,
+name|AsyncCallback
 argument_list|<
-name|Change
+name|VoidResult
 argument_list|>
-name|byOwnerOpen
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
+name|callback
 parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE owner = ? AND status = '"
-operator|+
-name|Change
-operator|.
-name|STATUS_MERGED
-operator|+
-literal|"' ORDER BY lastUpdatedOn DESC LIMIT 20"
-argument_list|)
-DECL|method|byOwnerMerged (Account.Id id)
-name|ResultSet
-argument_list|<
-name|Change
-argument_list|>
-name|byOwnerMerged
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 block|}
 end_interface

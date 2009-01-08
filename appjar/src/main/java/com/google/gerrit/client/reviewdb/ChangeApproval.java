@@ -346,6 +346,18 @@ name|setGranted
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getKey ()
+specifier|public
+name|ChangeApproval
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
+block|}
 DECL|method|getChangeId ()
 specifier|public
 name|Change
