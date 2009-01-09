@@ -180,15 +180,6 @@ name|getPattern
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|method|guessTimeZone ()
-specifier|private
-specifier|static
-specifier|native
-name|int
-name|guessTimeZone
-parameter_list|()
-comment|/*-{ return new Date().getTimezoneOffset() }-*/
-function_decl|;
 comment|/** Format a date using the locale's medium length format. */
 DECL|method|mediumFormat (final Date dt)
 specifier|public
@@ -212,18 +203,6 @@ return|return
 literal|""
 return|;
 block|}
-specifier|final
-name|long
-name|tzOffset
-init|=
-operator|-
-name|guessTimeZone
-argument_list|()
-operator|*
-literal|60
-operator|*
-literal|1000L
-decl_stmt|;
 return|return
 name|dtfmt
 operator|.
@@ -236,8 +215,6 @@ name|dt
 operator|.
 name|getTime
 argument_list|()
-operator|+
-name|tzOffset
 argument_list|)
 argument_list|)
 return|;
