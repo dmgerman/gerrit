@@ -209,7 +209,7 @@ name|Change
 operator|.
 name|STATUS_MERGED
 operator|+
-literal|"' ORDER BY lastUpdatedOn DESC LIMIT 20"
+literal|"' ORDER BY lastUpdatedOn DESC LIMIT 5"
 argument_list|)
 DECL|method|byOwnerMerged (Account.Id id)
 name|ResultSet
