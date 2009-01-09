@@ -158,6 +158,22 @@ name|client
 operator|.
 name|rpc
 operator|.
+name|BaseServiceImplementation
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
 name|Common
 import|;
 end_import
@@ -407,6 +423,34 @@ operator|+
 name|reqName
 operator|+
 literal|"': not a valid project"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|BaseServiceImplementation
+operator|.
+name|canRead
+argument_list|(
+name|proj
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|Failure
+argument_list|(
+literal|1
+argument_list|,
+literal|"fatal: '"
+operator|+
+name|reqName
+operator|+
+literal|"': not a Gerrit project"
 argument_list|)
 throw|;
 block|}

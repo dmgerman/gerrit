@@ -169,6 +169,24 @@ argument_list|(
 literal|"SUBM"
 argument_list|)
 decl_stmt|;
+comment|/** Id of the special "Read" action (and category). */
+DECL|field|READ
+specifier|public
+specifier|static
+specifier|final
+name|ApprovalCategory
+operator|.
+name|Id
+name|READ
+init|=
+operator|new
+name|ApprovalCategory
+operator|.
+name|Id
+argument_list|(
+literal|"READ"
+argument_list|)
+decl_stmt|;
 DECL|class|Id
 specifier|public
 specifier|static

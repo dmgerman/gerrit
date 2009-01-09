@@ -585,7 +585,7 @@ name|d
 operator|.
 name|setByOwner
 argument_list|(
-name|list
+name|filter
 argument_list|(
 name|changes
 operator|.
@@ -604,7 +604,7 @@ name|d
 operator|.
 name|setClosed
 argument_list|(
-name|list
+name|filter
 argument_list|(
 name|changes
 operator|.
@@ -753,7 +753,7 @@ name|d
 operator|.
 name|setStarred
 argument_list|(
-name|list
+name|filter
 argument_list|(
 name|db
 operator|.
@@ -1167,14 +1167,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|list (final ResultSet<Change> rs, final Set<Change.Id> starred, final AccountInfoCacheFactory accts)
+DECL|method|filter (final ResultSet<Change> rs, final Set<Change.Id> starred, final AccountInfoCacheFactory accts)
 specifier|private
 specifier|static
 name|List
 argument_list|<
 name|ChangeInfo
 argument_list|>
-name|list
+name|filter
 parameter_list|(
 specifier|final
 name|ResultSet
@@ -1220,6 +1220,14 @@ range|:
 name|rs
 control|)
 block|{
+if|if
+condition|(
+name|canRead
+argument_list|(
+name|c
+argument_list|)
+condition|)
+block|{
 specifier|final
 name|ChangeInfo
 name|ci
@@ -1254,6 +1262,7 @@ argument_list|(
 name|ci
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|r

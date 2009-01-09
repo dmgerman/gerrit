@@ -225,6 +225,19 @@ name|MaxWithBlock
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|all
+operator|.
+name|put
+argument_list|(
+name|NoOpFunction
+operator|.
+name|NAME
+argument_list|,
+operator|new
+name|NoOpFunction
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Locate a function by name.    *     * @param functionName the function's unique name.    * @return the function implementation; null if the function is not known to    *         Gerrit and thus cannot be executed.    */
 DECL|method|forName (final String functionName)

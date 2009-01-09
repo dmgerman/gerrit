@@ -418,6 +418,17 @@ name|n
 argument_list|)
 control|)
 block|{
+if|if
+condition|(
+name|canRead
+argument_list|(
+name|p
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|r
 operator|.
 name|add
@@ -428,6 +439,7 @@ name|getNameKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|r
