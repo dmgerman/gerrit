@@ -203,12 +203,12 @@ name|all
 operator|.
 name|put
 argument_list|(
-name|AllValid
+name|SubmitFunction
 operator|.
 name|NAME
 argument_list|,
 operator|new
-name|AllValid
+name|SubmitFunction
 argument_list|()
 argument_list|)
 expr_stmt|;

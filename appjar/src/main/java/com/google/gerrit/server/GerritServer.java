@@ -284,7 +284,7 @@ name|client
 operator|.
 name|workflow
 operator|.
-name|AllValid
+name|SubmitFunction
 import|;
 end_import
 
@@ -1730,7 +1730,7 @@ name|cat
 operator|.
 name|setFunctionName
 argument_list|(
-name|AllValid
+name|SubmitFunction
 operator|.
 name|NAME
 argument_list|)

@@ -126,6 +126,22 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|ProjectRight
 import|;
 end_import
@@ -147,14 +163,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Computes an {@link ApprovalCategory} by requiring all others to be valid.  *<p>  * In order to be considered "approved" this function requires that all approval  * categories with a position>= 0 (that is any whose  * {@link ApprovalCategory#isAction()} method returns false) is valid in the  * state.  *<p>  * This is mostly useful for actions, like {@link ApprovalCategory#SUBMIT}.  */
+comment|/**  * Computes if the submit function can be used.  *<p>  * In order to be considered "approved" this function requires that all approval  * categories with a position>= 0 (that is any whose  * {@link ApprovalCategory#isAction()} method returns false) is valid and that  * the change state be {@link Change.Status#NEW}.  *<p>  * This is mostly useful for actions, like {@link ApprovalCategory#SUBMIT}.  */
 end_comment
 
 begin_class
-DECL|class|AllValid
+DECL|class|SubmitFunction
 specifier|public
 class|class
-name|AllValid
+name|SubmitFunction
 extends|extends
 name|CategoryFunction
 block|{
@@ -164,7 +180,7 @@ specifier|static
 name|String
 name|NAME
 init|=
-literal|"AllValid"
+literal|"Submit"
 decl_stmt|;
 annotation|@
 name|Override
@@ -290,6 +306,27 @@ name|FunctionState
 name|state
 parameter_list|)
 block|{
+if|if
+condition|(
+name|state
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getStatus
+argument_list|()
+operator|!=
+name|Change
+operator|.
+name|Status
+operator|.
+name|NEW
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 for|for
 control|(
 specifier|final
