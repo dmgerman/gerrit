@@ -98,12 +98,28 @@ name|String
 name|hostname
 parameter_list|)
 function_decl|;
-DECL|method|notSupported (String url)
+DECL|method|linkAt (String hostname)
 name|String
-name|notSupported
+name|linkAt
 parameter_list|(
 name|String
-name|url
+name|hostname
+parameter_list|)
+function_decl|;
+DECL|method|signInWith (String who)
+name|String
+name|signInWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
+DECL|method|linkWith (String who)
+name|String
+name|linkWith
+parameter_list|(
+name|String
+name|who
 parameter_list|)
 function_decl|;
 block|}
