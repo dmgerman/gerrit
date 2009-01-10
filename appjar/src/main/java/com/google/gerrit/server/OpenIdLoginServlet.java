@@ -565,10 +565,10 @@ comment|/** Handles the<code>/login</code> URL for web based single-sign-on. */
 end_comment
 
 begin_class
-DECL|class|LoginServlet
+DECL|class|OpenIdLoginServlet
 specifier|public
 class|class
-name|LoginServlet
+name|OpenIdLoginServlet
 extends|extends
 name|HttpServlet
 block|{

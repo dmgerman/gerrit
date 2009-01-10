@@ -989,7 +989,7 @@ name|canonicalUrl
 operator|.
 name|equals
 argument_list|(
-name|LoginServlet
+name|OpenIdLoginServlet
 operator|.
 name|serverUrl
 argument_list|(
