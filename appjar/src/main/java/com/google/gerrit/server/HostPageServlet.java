@@ -259,7 +259,6 @@ extends|extends
 name|HttpServlet
 block|{
 DECL|field|MAX_AGE
-specifier|private
 specifier|static
 specifier|final
 name|long
@@ -273,7 +272,6 @@ literal|1000L
 comment|/* milliseconds */
 decl_stmt|;
 DECL|field|CACHE_CTRL
-specifier|private
 specifier|static
 specifier|final
 name|String
