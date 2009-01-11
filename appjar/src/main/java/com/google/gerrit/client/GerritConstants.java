@@ -113,6 +113,11 @@ name|String
 name|linkIdentityDialogTitle
 parameter_list|()
 function_decl|;
+DECL|method|loginTypeUnsupported ()
+name|String
+name|loginTypeUnsupported
+parameter_list|()
+function_decl|;
 DECL|method|errorDialogTitle ()
 name|String
 name|errorDialogTitle

@@ -205,6 +205,20 @@ argument_list|)
 assert|;
 block|}
 block|}
+DECL|enum|LoginType
+specifier|public
+specifier|static
+enum|enum
+name|LoginType
+block|{
+comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} */
+DECL|enumConstant|OPENID
+name|OPENID
+block|,
+comment|/**      * Login relies upon the container/web server security.      *<p>      * The container or web server must populate an HTTP header with the some      * user token. Gerrit will implicitly trust the value of this header to      * supply the unique identity.      */
+DECL|enumConstant|HTTP
+name|HTTP
+block|;   }
 DECL|method|create ()
 specifier|public
 specifier|static
@@ -343,6 +357,55 @@ specifier|transient
 name|String
 name|gitBasePath
 decl_stmt|;
+comment|/** Type of login access used by this instance. */
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|16
+argument_list|)
+DECL|field|loginType
+specifier|protected
+name|String
+name|loginType
+decl_stmt|;
+comment|/** HTTP header to use for the user identity if loginType is HTTP. */
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|30
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|loginHttpHeader
+specifier|public
+specifier|transient
+name|String
+name|loginHttpHeader
+decl_stmt|;
+comment|/** Format to generate email address from a login names */
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|30
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|emailFormat
+specifier|public
+specifier|transient
+name|String
+name|emailFormat
+decl_stmt|;
 comment|/** Is a verified {@link AccountAgreement} required to upload changes? */
 annotation|@
 name|Column
@@ -389,6 +452,45 @@ operator|.
 name|Id
 name|registeredGroupId
 decl_stmt|;
+DECL|method|getLoginType ()
+specifier|public
+name|LoginType
+name|getLoginType
+parameter_list|()
+block|{
+return|return
+name|loginType
+operator|!=
+literal|null
+condition|?
+name|LoginType
+operator|.
+name|valueOf
+argument_list|(
+name|loginType
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+DECL|method|setLoginType (final LoginType t)
+specifier|public
+name|void
+name|setLoginType
+parameter_list|(
+specifier|final
+name|LoginType
+name|t
+parameter_list|)
+block|{
+name|loginType
+operator|=
+name|t
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig

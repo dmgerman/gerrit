@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|SystemConfig
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -164,6 +180,13 @@ specifier|protected
 name|boolean
 name|useContributorAgreements
 decl_stmt|;
+DECL|field|loginType
+specifier|protected
+name|SystemConfig
+operator|.
+name|LoginType
+name|loginType
+decl_stmt|;
 DECL|field|byCategoryId
 specifier|private
 specifier|transient
@@ -205,6 +228,35 @@ block|{
 name|canonicalUrl
 operator|=
 name|u
+expr_stmt|;
+block|}
+DECL|method|getLoginType ()
+specifier|public
+name|SystemConfig
+operator|.
+name|LoginType
+name|getLoginType
+parameter_list|()
+block|{
+return|return
+name|loginType
+return|;
+block|}
+DECL|method|setLoginType (final SystemConfig.LoginType t)
+specifier|public
+name|void
+name|setLoginType
+parameter_list|(
+specifier|final
+name|SystemConfig
+operator|.
+name|LoginType
+name|t
+parameter_list|)
+block|{
+name|loginType
+operator|=
+name|t
 expr_stmt|;
 block|}
 DECL|method|getGitwebLink ()
