@@ -406,6 +406,15 @@ specifier|transient
 name|String
 name|emailFormat
 decl_stmt|;
+comment|/**    * Can user accounts from Gerrit1 upgrade to use OpenID?    *<p>    * This setting should only be true if this server is an upgraded database    * from Gerrit1, and if there are still outstanding accounts which need to be    * upgraded to Gerrit2's OpenID authentication scheme. Any other system should    * leave this setting false.    */
+annotation|@
+name|Column
+DECL|field|allowGoogleAccountUpgrade
+specifier|public
+specifier|transient
+name|boolean
+name|allowGoogleAccountUpgrade
+decl_stmt|;
 comment|/** Is a verified {@link AccountAgreement} required to upload changes? */
 annotation|@
 name|Column

@@ -2750,6 +2750,18 @@ return|return
 name|repositories
 return|;
 block|}
+DECL|method|isAllowGoogleAccountUpgrade ()
+specifier|public
+name|boolean
+name|isAllowGoogleAccountUpgrade
+parameter_list|()
+block|{
+return|return
+name|sConfig
+operator|.
+name|allowGoogleAccountUpgrade
+return|;
+block|}
 block|}
 end_class
 
