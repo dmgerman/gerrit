@@ -3487,6 +3487,8 @@ name|singleton
 argument_list|(
 name|a
 argument_list|)
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 block|}
@@ -3577,6 +3579,8 @@ name|getValue
 argument_list|()
 argument_list|)
 argument_list|)
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 block|}
@@ -3620,6 +3624,8 @@ name|singleton
 argument_list|(
 name|change
 argument_list|)
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 name|txn

@@ -928,6 +928,8 @@ name|singleton
 argument_list|(
 name|dst
 argument_list|)
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 block|}
@@ -949,6 +951,8 @@ name|singleton
 argument_list|(
 name|info
 argument_list|)
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 block|}
@@ -967,6 +971,8 @@ name|singleton
 argument_list|(
 name|info
 argument_list|)
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 block|}
