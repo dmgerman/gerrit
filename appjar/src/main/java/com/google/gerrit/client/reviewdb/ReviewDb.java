@@ -341,6 +341,13 @@ name|int
 name|nextChangeId
 parameter_list|()
 function_decl|;
+annotation|@
+name|Sequence
+DECL|method|nextChangeMessageId ()
+name|int
+name|nextChangeMessageId
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

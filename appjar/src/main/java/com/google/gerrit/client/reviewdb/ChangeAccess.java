@@ -226,6 +226,32 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE dest = ? AND status = '"
+operator|+
+name|Change
+operator|.
+name|STATUS_SUBMITTED
+operator|+
+literal|"' ORDER BY lastUpdatedOn"
+argument_list|)
+DECL|method|submitted (Branch.NameKey dest)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|submitted
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|dest
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
