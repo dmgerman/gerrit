@@ -76,6 +76,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Relation
 import|;
 end_import
@@ -300,6 +314,8 @@ DECL|method|nextAccountId ()
 name|int
 name|nextAccountId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 comment|/** Create the next unique id for a {@link ContributorAgreement}. */
 annotation|@
@@ -308,6 +324,8 @@ DECL|method|nextContributorAgreementId ()
 name|int
 name|nextContributorAgreementId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 comment|/** Next unique id for a {@link AccountGroup}. */
 annotation|@
@@ -316,6 +334,8 @@ DECL|method|nextAccountGroupId ()
 name|int
 name|nextAccountGroupId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 comment|/** Next unique id for a {@link Project}. */
 annotation|@
@@ -324,6 +344,8 @@ DECL|method|nextProjectId ()
 name|int
 name|nextProjectId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 comment|/** Next unique id for a {@link Branch}. */
 annotation|@
@@ -332,6 +354,8 @@ DECL|method|nextBranchId ()
 name|int
 name|nextBranchId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 comment|/** Next unique id for a {@link Change}. */
 annotation|@
@@ -340,6 +364,8 @@ DECL|method|nextChangeId ()
 name|int
 name|nextChangeId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 annotation|@
 name|Sequence
@@ -347,6 +373,8 @@ DECL|method|nextChangeMessageId ()
 name|int
 name|nextChangeMessageId
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
