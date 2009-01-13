@@ -171,19 +171,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE owner = ? AND status>= '"
-operator|+
-name|Change
-operator|.
-name|MIN_OPEN
-operator|+
-literal|"' AND status<= '"
-operator|+
-name|Change
-operator|.
-name|MAX_OPEN
-operator|+
-literal|"' ORDER BY lastUpdatedOn DESC"
+literal|"WHERE owner = ? AND open = true ORDER BY lastUpdatedOn DESC"
 argument_list|)
 DECL|method|byOwnerOpen (Account.Id id)
 name|ResultSet
@@ -203,20 +191,14 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE owner = ? AND status = '"
-operator|+
-name|Change
-operator|.
-name|STATUS_MERGED
-operator|+
-literal|"' ORDER BY lastUpdatedOn DESC LIMIT 5"
+literal|"WHERE owner = ? AND open = false ORDER BY lastUpdatedOn DESC LIMIT 5"
 argument_list|)
-DECL|method|byOwnerMerged (Account.Id id)
+DECL|method|byOwnerClosed (Account.Id id)
 name|ResultSet
 argument_list|<
 name|Change
 argument_list|>
-name|byOwnerMerged
+name|byOwnerClosed
 parameter_list|(
 name|Account
 operator|.

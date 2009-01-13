@@ -608,7 +608,7 @@ name|filter
 argument_list|(
 name|changes
 operator|.
-name|byOwnerMerged
+name|byOwnerClosed
 argument_list|(
 name|target
 argument_list|)
