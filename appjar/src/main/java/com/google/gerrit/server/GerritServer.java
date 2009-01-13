@@ -659,6 +659,7 @@ name|sConfig
 decl_stmt|;
 DECL|field|gerritPersonIdentTemplate
 specifier|private
+specifier|final
 name|PersonIdent
 name|gerritPersonIdentTemplate
 decl_stmt|;
@@ -679,6 +680,16 @@ specifier|private
 specifier|final
 name|RepositoryCache
 name|repositories
+decl_stmt|;
+DECL|field|outgoingMail
+specifier|private
+specifier|final
+name|javax
+operator|.
+name|mail
+operator|.
+name|Session
+name|outgoingMail
 decl_stmt|;
 DECL|method|GerritServer ()
 specifier|private
@@ -871,6 +882,11 @@ name|gerritGitName
 argument_list|,
 name|email
 argument_list|)
+expr_stmt|;
+name|outgoingMail
+operator|=
+name|createOutgoingMail
+argument_list|()
 expr_stmt|;
 name|Common
 operator|.
@@ -2608,6 +2624,53 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|createOutgoingMail ()
+specifier|private
+name|javax
+operator|.
+name|mail
+operator|.
+name|Session
+name|createOutgoingMail
+parameter_list|()
+block|{
+specifier|final
+name|String
+name|dsName
+init|=
+literal|"java:comp/env/mail/Outgoing"
+decl_stmt|;
+try|try
+block|{
+return|return
+operator|(
+name|javax
+operator|.
+name|mail
+operator|.
+name|Session
+operator|)
+operator|new
+name|InitialContext
+argument_list|()
+operator|.
+name|lookup
+argument_list|(
+name|dsName
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|NamingException
+name|namingErr
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+block|}
 comment|/** Time (in seconds) that user sessions stay "signed in". */
 DECL|method|getSessionAge ()
 specifier|public
@@ -2853,6 +2916,21 @@ parameter_list|()
 block|{
 return|return
 name|repositories
+return|;
+block|}
+comment|/** The mail session used to send messages; null if not configured. */
+DECL|method|getOutgoingMail ()
+specifier|public
+name|javax
+operator|.
+name|mail
+operator|.
+name|Session
+name|getOutgoingMail
+parameter_list|()
+block|{
+return|return
+name|outgoingMail
 return|;
 block|}
 comment|/** Get a new identity representing this Gerrit server in Git. */
