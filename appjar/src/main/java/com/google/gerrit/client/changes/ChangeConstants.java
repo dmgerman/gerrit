@@ -275,6 +275,16 @@ name|String
 name|messageCollapseAll
 parameter_list|()
 function_decl|;
+DECL|method|patchSetInfoAuthor ()
+name|String
+name|patchSetInfoAuthor
+parameter_list|()
+function_decl|;
+DECL|method|patchSetInfoCommitter ()
+name|String
+name|patchSetInfoCommitter
+parameter_list|()
+function_decl|;
 DECL|method|patchSetInfoDownload ()
 name|String
 name|patchSetInfoDownload
