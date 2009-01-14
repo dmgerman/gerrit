@@ -202,8 +202,6 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|contributorAgreements (AsyncCallback<List<ContributorAgreement>> callback)
 name|void
 name|contributorAgreements

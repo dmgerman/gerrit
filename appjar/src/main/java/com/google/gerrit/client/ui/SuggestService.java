@@ -142,20 +142,6 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|AllowCrossSiteRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
 name|RemoteJsonService
 import|;
 end_import
@@ -178,8 +164,6 @@ name|SuggestService
 extends|extends
 name|RemoteJsonService
 block|{
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|suggestProjectNameKey (String query, int limit, AsyncCallback<List<Project.NameKey>> callback)
 name|void
 name|suggestProjectNameKey
@@ -202,8 +186,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|suggestAccount (String query, int limit, AsyncCallback<List<AccountInfo>> callback)
 name|void
 name|suggestAccount
@@ -224,8 +206,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|suggestAccountGroup (String query, int limit, AsyncCallback<List<AccountGroup>> callback)
 name|void
 name|suggestAccountGroup

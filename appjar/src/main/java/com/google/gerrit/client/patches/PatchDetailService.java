@@ -142,20 +142,6 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|AllowCrossSiteRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
 name|RemoteJsonService
 import|;
 end_import
@@ -168,8 +154,6 @@ name|PatchDetailService
 extends|extends
 name|RemoteJsonService
 block|{
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|sideBySidePatchDetail (Patch.Key key, AsyncCallback<SideBySidePatchDetail> callback)
 name|void
 name|sideBySidePatchDetail
@@ -186,8 +170,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|unifiedPatchDetail (Patch.Key key, AsyncCallback<UnifiedPatchDetail> callback)
 name|void
 name|unifiedPatchDetail

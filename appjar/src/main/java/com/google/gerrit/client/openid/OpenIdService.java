@@ -94,20 +94,6 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|AllowCrossSiteRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
 name|CallbackHandle
 import|;
 end_import
@@ -134,8 +120,6 @@ name|OpenIdService
 extends|extends
 name|RemoteJsonService
 block|{
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|discover ( AsyncCallback<DiscoveryResult> callback)
 name|CallbackHandle
 argument_list|<
