@@ -142,20 +142,6 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|AllowCrossSiteRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
 name|RemoteJsonService
 import|;
 end_import
@@ -204,8 +190,6 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|SignInRequired
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|myAccount (AsyncCallback<Account> callback)
 name|void
 name|myAccount
@@ -235,8 +219,6 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|myProjectWatch (AsyncCallback<List<AccountProjectWatchInfo>> callback)
 name|void
 name|myProjectWatch
@@ -290,8 +272,6 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-annotation|@
-name|AllowCrossSiteRequest
 DECL|method|myAgreements (AsyncCallback<AgreementInfo> callback)
 name|void
 name|myAgreements
