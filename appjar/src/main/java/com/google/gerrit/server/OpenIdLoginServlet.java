@@ -3016,7 +3016,7 @@ comment|// login through different server hostnames, as Google issues
 comment|// unique OpenID tokens per server.
 comment|//
 comment|// Match to an existing account only if there is exactly one record
-comment|// for this email using the generic Google URL.
+comment|// for this email using the generic Google identity.
 comment|//
 specifier|final
 name|List
@@ -3055,9 +3055,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|OpenIdUtil
-operator|.
-name|URL_GOOGLE
+literal|"Google Account "
+operator|+
+name|email
 argument_list|)
 condition|)
 block|{
