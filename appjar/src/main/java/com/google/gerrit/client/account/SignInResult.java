@@ -66,22 +66,6 @@ name|account
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|Account
-import|;
-end_import
-
 begin_comment
 comment|/** Result from a sign-in attempt via the LoginServlet. */
 end_comment
@@ -109,9 +93,16 @@ DECL|enumConstant|CANCEL
 name|CANCEL
 block|,
 comment|/** The sign-in was successful and we have the account data */
+DECL|enumConstant|SuppressWarnings
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"hiding"
+argument_list|)
 DECL|enumConstant|SUCCESS
 name|SUCCESS
-block|,   }
+decl_stmt|;
+block|}
 comment|/** Singleton representing {@link Status#CANCEL}. */
 DECL|field|CANCEL
 specifier|public
@@ -126,8 +117,22 @@ argument_list|(
 name|Status
 operator|.
 name|CANCEL
-argument_list|,
-literal|null
+argument_list|)
+decl_stmt|;
+comment|/** Singleton representing {@link Status#CANCEL}. */
+DECL|field|SUCCESS
+specifier|public
+specifier|static
+specifier|final
+name|SignInResult
+name|SUCCESS
+init|=
+operator|new
+name|SignInResult
+argument_list|(
+name|Status
+operator|.
+name|SUCCESS
 argument_list|)
 decl_stmt|;
 DECL|field|status
@@ -135,37 +140,24 @@ specifier|protected
 name|Status
 name|status
 decl_stmt|;
-DECL|field|account
-specifier|protected
-name|Account
-name|account
-decl_stmt|;
 DECL|method|SignInResult ()
 specifier|protected
 name|SignInResult
 parameter_list|()
 block|{   }
 comment|/** Create a new result. */
-DECL|method|SignInResult (final Status s, final Account a)
+DECL|method|SignInResult (final Status s)
 specifier|public
 name|SignInResult
 parameter_list|(
 specifier|final
 name|Status
 name|s
-parameter_list|,
-specifier|final
-name|Account
-name|a
 parameter_list|)
 block|{
 name|status
 operator|=
 name|s
-expr_stmt|;
-name|account
-operator|=
-name|a
 expr_stmt|;
 block|}
 comment|/** The status of the login attempt */
@@ -177,17 +169,6 @@ parameter_list|()
 block|{
 return|return
 name|status
-return|;
-block|}
-comment|/** The account data; only if {@link #getStatus()} is {@link Status#SUCCESS} */
-DECL|method|getAccount ()
-specifier|public
-name|Account
-name|getAccount
-parameter_list|()
-block|{
-return|return
-name|account
 return|;
 block|}
 block|}
