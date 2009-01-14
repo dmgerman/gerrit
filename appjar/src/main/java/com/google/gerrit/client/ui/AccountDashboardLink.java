@@ -270,6 +270,16 @@ argument_list|(
 literal|"gerrit-AccountName"
 argument_list|)
 expr_stmt|;
+name|setTitle
+argument_list|(
+name|FormatUtil
+operator|.
+name|nameEmail
+argument_list|(
+name|ai
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|account
 operator|=
 name|ai
