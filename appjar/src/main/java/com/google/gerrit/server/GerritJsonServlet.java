@@ -425,12 +425,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|call
 operator|.
 name|isComplete
 argument_list|()
-operator|&&
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 name|call
 operator|.
 name|getMethod
@@ -444,7 +448,25 @@ name|class
 argument_list|)
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+comment|// If SignInRequired is set on this method we must have both a
+comment|// valid XSRF token *and* have the user signed in. Doing these
+comment|// checks also validates that they agree on the user identity.
+comment|//
+if|if
+condition|(
+operator|!
+name|call
+operator|.
+name|requireXsrfValid
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 name|call
 operator|.
 name|getAccountId
@@ -453,9 +475,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// If SignInRequired exists on the method and we don't have an
-comment|// account id in the request, we can't permit this call to finish.
-comment|//
 name|call
 operator|.
 name|onFailure
@@ -465,6 +484,8 @@ name|NotSignedInException
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return;
+block|}
 block|}
 block|}
 annotation|@
