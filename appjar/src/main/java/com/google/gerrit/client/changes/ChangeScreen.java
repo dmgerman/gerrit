@@ -1932,6 +1932,18 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
+name|messagesPanel
+operator|.
+name|setVisible
+argument_list|(
+name|msgList
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|messagesMenuBar ()
 specifier|private
