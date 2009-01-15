@@ -675,6 +675,12 @@ specifier|final
 name|SignedToken
 name|account
 decl_stmt|;
+DECL|field|emailReg
+specifier|private
+specifier|final
+name|SignedToken
+name|emailReg
+decl_stmt|;
 DECL|field|repositories
 specifier|private
 specifier|final
@@ -786,6 +792,24 @@ operator|new
 name|SignedToken
 argument_list|(
 name|accountCookieAge
+argument_list|,
+name|sConfig
+operator|.
+name|accountPrivateKey
+argument_list|)
+expr_stmt|;
+name|emailReg
+operator|=
+operator|new
+name|SignedToken
+argument_list|(
+literal|5
+operator|*
+literal|24
+operator|*
+literal|60
+operator|*
+literal|60
 argument_list|,
 name|sConfig
 operator|.
@@ -2704,6 +2728,17 @@ parameter_list|()
 block|{
 return|return
 name|account
+return|;
+block|}
+comment|/** Get the signature used for email registration/validation links. */
+DECL|method|getEmailRegistrationToken ()
+specifier|public
+name|SignedToken
+name|getEmailRegistrationToken
+parameter_list|()
+block|{
+return|return
+name|emailReg
 return|;
 block|}
 DECL|method|getLoginHttpHeader ()

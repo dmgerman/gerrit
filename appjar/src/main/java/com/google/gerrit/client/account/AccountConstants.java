@@ -260,6 +260,26 @@ name|String
 name|buttonSaveContact
 parameter_list|()
 function_decl|;
+DECL|method|buttonOpenRegisterNewEmail ()
+name|String
+name|buttonOpenRegisterNewEmail
+parameter_list|()
+function_decl|;
+DECL|method|buttonSendRegisterNewEmail ()
+name|String
+name|buttonSendRegisterNewEmail
+parameter_list|()
+function_decl|;
+DECL|method|titleRegisterNewEmail ()
+name|String
+name|titleRegisterNewEmail
+parameter_list|()
+function_decl|;
+DECL|method|descRegisterNewEmail ()
+name|String
+name|descRegisterNewEmail
+parameter_list|()
+function_decl|;
 DECL|method|newAgreement ()
 name|String
 name|newAgreement

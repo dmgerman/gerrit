@@ -209,6 +209,29 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE key.accountId = ? AND emailAddress = ?"
+argument_list|)
+DECL|method|byAccountEmail (Account.Id id, String email)
+name|ResultSet
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|byAccountEmail
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|email
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE emailAddress = ?"
 argument_list|)
 DECL|method|byEmailAddress (String email)
