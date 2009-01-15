@@ -295,6 +295,13 @@ argument_list|(
 name|detail
 argument_list|)
 expr_stmt|;
+name|sbsTable
+operator|.
+name|finishDisplay
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

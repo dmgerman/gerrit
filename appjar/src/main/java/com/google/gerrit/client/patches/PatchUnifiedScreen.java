@@ -271,6 +271,13 @@ name|getLines
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|diffTable
+operator|.
+name|finishDisplay
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
