@@ -171,7 +171,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE owner = ? AND open = true ORDER BY lastUpdatedOn DESC"
+literal|"WHERE owner = ? AND open = true ORDER BY createdOn, changeId"
 argument_list|)
 DECL|method|byOwnerOpen (Account.Id id)
 name|ResultSet
