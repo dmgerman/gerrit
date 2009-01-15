@@ -82,6 +82,16 @@ name|Messages
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
+import|;
+end_import
+
 begin_interface
 DECL|interface|PatchMessages
 specifier|public
@@ -106,6 +116,14 @@ annotation|@
 name|PluralCount
 name|int
 name|lineCnt
+parameter_list|)
+function_decl|;
+DECL|method|draftSaved (Date when)
+name|String
+name|draftSaved
+parameter_list|(
+name|Date
+name|when
 parameter_list|)
 function_decl|;
 block|}

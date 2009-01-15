@@ -95,6 +95,21 @@ name|String
 name|draft
 parameter_list|()
 function_decl|;
+DECL|method|buttonSave ()
+name|String
+name|buttonSave
+parameter_list|()
+function_decl|;
+DECL|method|buttonDiscard ()
+name|String
+name|buttonDiscard
+parameter_list|()
+function_decl|;
+DECL|method|confirmDiscard ()
+name|String
+name|confirmDiscard
+parameter_list|()
+function_decl|;
 DECL|method|patchHeaderOld ()
 name|String
 name|patchHeaderOld
