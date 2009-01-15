@@ -474,8 +474,7 @@ name|mod
 operator|==
 literal|0
 operator|&&
-operator|!
-name|exists
+name|isNew
 argument_list|()
 condition|)
 block|{
@@ -518,8 +517,7 @@ name|KEY_DELETE
 case|:
 if|if
 condition|(
-operator|!
-name|exists
+name|isNew
 argument_list|()
 condition|)
 block|{
@@ -680,7 +678,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|exists
+operator|!
+name|isNew
 argument_list|()
 condition|)
 block|{
@@ -759,10 +758,9 @@ name|take
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|exists ()
-specifier|private
+DECL|method|isNew ()
 name|boolean
-name|exists
+name|isNew
 parameter_list|()
 block|{
 return|return
@@ -773,7 +771,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-operator|!=
+operator|==
 literal|null
 return|;
 block|}
@@ -966,8 +964,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-operator|!
-name|exists
+name|isNew
 argument_list|()
 condition|)
 block|{
@@ -1161,11 +1158,15 @@ operator|==
 name|this
 condition|)
 block|{
-name|table
+name|AbstractPatchContentTable
 operator|.
-name|removeRow
+name|destroyEditor
 argument_list|(
+name|table
+argument_list|,
 name|row
+argument_list|,
+name|cell
 argument_list|)
 expr_stmt|;
 name|Widget
