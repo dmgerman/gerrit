@@ -192,6 +192,16 @@ name|VoidResult
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_interface
 DECL|interface|PatchDetailService
 specifier|public
@@ -228,6 +238,27 @@ parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|UnifiedPatchDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|myDrafts (Patch.Key key, AsyncCallback<List<PatchLineComment>> callback)
+name|void
+name|myDrafts
+parameter_list|(
+name|Patch
+operator|.
+name|Key
+name|key
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|PatchLineComment
+argument_list|>
 argument_list|>
 name|callback
 parameter_list|)
