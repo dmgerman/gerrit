@@ -507,10 +507,7 @@ name|ServletException
 argument_list|(
 literal|"Cannot start sshd on "
 operator|+
-name|sshd
-operator|.
-name|getPort
-argument_list|()
+name|myPort
 argument_list|,
 name|e
 argument_list|)
