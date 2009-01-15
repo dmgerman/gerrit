@@ -300,22 +300,6 @@ name|user
 operator|.
 name|client
 operator|.
-name|DeferredCommand
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|History
 import|;
 end_import
@@ -1449,6 +1433,8 @@ block|{
 name|postSignIn
 argument_list|(
 name|result
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1600,7 +1586,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Hook from {@link SignInDialog} to let us know to refresh the UI. */
-DECL|method|postSignIn (final Account acct)
+DECL|method|postSignIn (final Account acct, final AsyncCallback<?> ac)
 specifier|static
 name|void
 name|postSignIn
@@ -1608,6 +1594,13 @@ parameter_list|(
 specifier|final
 name|Account
 name|acct
+parameter_list|,
+specifier|final
+name|AsyncCallback
+argument_list|<
+name|?
+argument_list|>
+name|ac
 parameter_list|)
 block|{
 name|myAccount
@@ -1617,19 +1610,6 @@ expr_stmt|;
 name|refreshMenuBar
 argument_list|()
 expr_stmt|;
-name|DeferredCommand
-operator|.
-name|addCommand
-argument_list|(
-operator|new
-name|Command
-argument_list|()
-block|{
-specifier|public
-name|void
-name|execute
-parameter_list|()
-block|{
 for|for
 control|(
 specifier|final
@@ -1658,10 +1638,21 @@ name|onSignIn
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
+if|if
+condition|(
+name|ac
+operator|!=
+literal|null
+condition|)
+block|{
+name|ac
+operator|.
+name|onSuccess
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|refreshMenuBar ()
 specifier|public
