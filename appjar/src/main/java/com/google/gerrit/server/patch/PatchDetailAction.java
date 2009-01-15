@@ -1023,7 +1023,7 @@ index|[
 name|side
 index|]
 operator|.
-name|get
+name|remove
 argument_list|(
 name|line
 argument_list|)
