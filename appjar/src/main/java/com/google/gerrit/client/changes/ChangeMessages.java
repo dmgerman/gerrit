@@ -165,6 +165,16 @@ name|int
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|patchTableDrafts (@luralCount int count)
+name|String
+name|patchTableDrafts
+parameter_list|(
+annotation|@
+name|PluralCount
+name|int
+name|count
+parameter_list|)
+function_decl|;
 DECL|method|messageWrittenOn (String date)
 name|String
 name|messageWrittenOn

@@ -513,6 +513,12 @@ specifier|protected
 name|int
 name|nbrComments
 decl_stmt|;
+comment|/** Number of drafts by the current user; not persisted in the datastore. */
+DECL|field|nbrDrafts
+specifier|protected
+name|int
+name|nbrDrafts
+decl_stmt|;
 comment|/**    * Original if {@link #changeType} is {@link ChangeType#COPIED} or    * {@link ChangeType#RENAMED}.    */
 annotation|@
 name|Column
@@ -594,6 +600,31 @@ name|n
 parameter_list|)
 block|{
 name|nbrComments
+operator|=
+name|n
+expr_stmt|;
+block|}
+DECL|method|getDraftCount ()
+specifier|public
+name|int
+name|getDraftCount
+parameter_list|()
+block|{
+return|return
+name|nbrDrafts
+return|;
+block|}
+DECL|method|setDraftCount (final int n)
+specifier|public
+name|void
+name|setDraftCount
+parameter_list|(
+specifier|final
+name|int
+name|n
+parameter_list|)
+block|{
+name|nbrDrafts
 operator|=
 name|n
 expr_stmt|;
