@@ -884,6 +884,28 @@ name|currentScreen
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|uncache (final Screen view)
+specifier|public
+specifier|static
+name|void
+name|uncache
+parameter_list|(
+specifier|final
+name|Screen
+name|view
+parameter_list|)
+block|{
+name|priorScreens
+operator|.
+name|remove
+argument_list|(
+name|view
+operator|.
+name|getScreenCacheToken
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** @return the currently signed in user's account data; null if no account */
 DECL|method|getUserAccount ()
 specifier|public
