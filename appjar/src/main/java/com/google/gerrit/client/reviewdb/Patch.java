@@ -583,6 +583,21 @@ return|return
 name|nbrComments
 return|;
 block|}
+DECL|method|setCommentCount (final int n)
+specifier|public
+name|void
+name|setCommentCount
+parameter_list|(
+specifier|final
+name|int
+name|n
+parameter_list|)
+block|{
+name|nbrComments
+operator|=
+name|n
+expr_stmt|;
+block|}
 DECL|method|getChangeType ()
 specifier|public
 name|ChangeType
