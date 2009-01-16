@@ -920,13 +920,6 @@ argument_list|(
 name|messagesContent
 argument_list|)
 expr_stmt|;
-name|messagesPanel
-operator|.
-name|setWidth
-argument_list|(
-literal|"95%"
-argument_list|)
-expr_stmt|;
 name|add
 argument_list|(
 name|messagesPanel
@@ -1722,13 +1715,6 @@ operator|.
 name|setContent
 argument_list|(
 name|mp
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|setWidth
-argument_list|(
-literal|"98%"
 argument_list|)
 expr_stmt|;
 name|messagesContent

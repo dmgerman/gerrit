@@ -164,11 +164,7 @@ name|HTML
 argument_list|(
 name|DomUtil
 operator|.
-name|linkify
-argument_list|(
-name|DomUtil
-operator|.
-name|escape
+name|wikify
 argument_list|(
 name|msg
 operator|.
@@ -177,7 +173,6 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

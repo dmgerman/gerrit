@@ -165,6 +165,48 @@ name|in
 argument_list|)
 return|;
 block|}
+comment|/** Do wiki style formatting to make it pretty */
+DECL|method|wikify (String in)
+specifier|public
+specifier|static
+name|String
+name|wikify
+parameter_list|(
+name|String
+name|in
+parameter_list|)
+block|{
+name|in
+operator|=
+name|INSTANCE
+operator|.
+name|escape
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+name|in
+operator|=
+name|INSTANCE
+operator|.
+name|linkify
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+name|in
+operator|=
+name|INSTANCE
+operator|.
+name|wikify
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+return|return
+name|in
+return|;
+block|}
 DECL|method|DomUtil ()
 specifier|private
 name|DomUtil
@@ -186,6 +228,40 @@ name|String
 name|in
 parameter_list|)
 function_decl|;
+DECL|method|wikify (String s)
+name|String
+name|wikify
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|s
+operator|=
+name|s
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(^|\n)([ \t][^\n]*)"
+argument_list|,
+literal|"$1<span class=\"gerrit-preformat\">$2</span><br />"
+argument_list|)
+expr_stmt|;
+name|s
+operator|=
+name|s
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n\n"
+argument_list|,
+literal|"<p>\n"
+argument_list|)
+expr_stmt|;
+return|return
+name|s
+return|;
+block|}
 DECL|method|linkify (String in)
 name|String
 name|linkify
