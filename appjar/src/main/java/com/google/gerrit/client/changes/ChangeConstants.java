@@ -290,6 +290,31 @@ name|String
 name|patchSetInfoDownload
 parameter_list|()
 function_decl|;
+DECL|method|buttonPublishCommentsBegin ()
+name|String
+name|buttonPublishCommentsBegin
+parameter_list|()
+function_decl|;
+DECL|method|buttonPublishCommentsSend ()
+name|String
+name|buttonPublishCommentsSend
+parameter_list|()
+function_decl|;
+DECL|method|buttonPublishCommentsCancel ()
+name|String
+name|buttonPublishCommentsCancel
+parameter_list|()
+function_decl|;
+DECL|method|headingCoverMessage ()
+name|String
+name|headingCoverMessage
+parameter_list|()
+function_decl|;
+DECL|method|headingPatchComments ()
+name|String
+name|headingPatchComments
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

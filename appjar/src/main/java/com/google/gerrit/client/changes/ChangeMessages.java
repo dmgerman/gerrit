@@ -205,6 +205,25 @@ name|String
 name|categoryName
 parameter_list|)
 function_decl|;
+DECL|method|publishComments (int change, int ps)
+name|String
+name|publishComments
+parameter_list|(
+name|int
+name|change
+parameter_list|,
+name|int
+name|ps
+parameter_list|)
+function_decl|;
+DECL|method|lineHeader (int line)
+name|String
+name|lineHeader
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

@@ -188,6 +188,31 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.changeId = ? AND key.accountId = ?"
+argument_list|)
+DECL|method|byChangeUser (Change.Id change, Account.Id account)
+name|ResultSet
+argument_list|<
+name|ChangeApproval
+argument_list|>
+name|byChangeUser
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|change
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|account
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 

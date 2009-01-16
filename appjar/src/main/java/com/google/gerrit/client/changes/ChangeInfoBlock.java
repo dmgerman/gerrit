@@ -94,7 +94,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|ChangeDetail
+name|AccountInfoCache
 import|;
 end_import
 
@@ -517,25 +517,20 @@ literal|"header"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final ChangeDetail detail)
+DECL|method|display (final Change chg, final AccountInfoCache acc)
 specifier|public
 name|void
 name|display
 parameter_list|(
 specifier|final
-name|ChangeDetail
-name|detail
-parameter_list|)
-block|{
-specifier|final
 name|Change
 name|chg
-init|=
-name|detail
-operator|.
-name|getChange
-argument_list|()
-decl_stmt|;
+parameter_list|,
+specifier|final
+name|AccountInfoCache
+name|acc
+parameter_list|)
+block|{
 specifier|final
 name|Branch
 operator|.
@@ -559,15 +554,9 @@ name|AccountDashboardLink
 operator|.
 name|link
 argument_list|(
-name|detail
-operator|.
-name|getAccounts
-argument_list|()
+name|acc
 argument_list|,
-name|detail
-operator|.
-name|getChange
-argument_list|()
+name|chg
 operator|.
 name|getOwner
 argument_list|()

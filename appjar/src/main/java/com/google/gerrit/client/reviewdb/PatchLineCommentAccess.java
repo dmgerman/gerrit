@@ -197,6 +197,37 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE key.patchKey.patchSetId = ? AND status = '"
+operator|+
+name|PatchLineComment
+operator|.
+name|STATUS_DRAFT
+operator|+
+literal|"' AND author = ? ORDER BY key.patchKey,lineNbr,writtenOn"
+argument_list|)
+DECL|method|draft (PatchSet.Id patchset, Account.Id author)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|draft
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchset
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|author
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE key.patchKey = ? AND status = '"
 operator|+
 name|PatchLineComment
