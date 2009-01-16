@@ -256,6 +256,32 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE status = '"
+operator|+
+name|PatchLineComment
+operator|.
+name|STATUS_DRAFT
+operator|+
+literal|"' AND author = ?"
+argument_list|)
+DECL|method|draftByAuthor (Account.Id author)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|draftByAuthor
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|author
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 

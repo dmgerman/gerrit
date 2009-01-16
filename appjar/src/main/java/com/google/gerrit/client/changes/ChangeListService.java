@@ -94,7 +94,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|MineStarredInfo
+name|SingleListChangeInfo
 import|;
 end_import
 
@@ -230,13 +230,27 @@ function_decl|;
 comment|/** Get the changes starred by the caller. */
 annotation|@
 name|SignInRequired
-DECL|method|myStarredChanges (AsyncCallback<MineStarredInfo> callback)
+DECL|method|myStarredChanges (AsyncCallback<SingleListChangeInfo> callback)
 name|void
 name|myStarredChanges
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|MineStarredInfo
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get the changes with unpublished drafts by the caller. */
+annotation|@
+name|SignInRequired
+DECL|method|myDraftChanges (AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|myDraftChanges
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
 argument_list|>
 name|callback
 parameter_list|)

@@ -168,6 +168,11 @@ name|String
 name|menuMyChanges
 parameter_list|()
 function_decl|;
+DECL|method|menyMyDrafts ()
+name|String
+name|menyMyDrafts
+parameter_list|()
+function_decl|;
 DECL|method|menuMyUnclaimedChanges ()
 name|String
 name|menuMyUnclaimedChanges

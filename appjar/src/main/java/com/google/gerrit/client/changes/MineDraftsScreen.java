@@ -113,16 +113,16 @@ import|;
 end_import
 
 begin_class
-DECL|class|MineStarredScreen
+DECL|class|MineDraftsScreen
 specifier|public
 class|class
-name|MineStarredScreen
+name|MineDraftsScreen
 extends|extends
 name|MineSingleListScreen
 block|{
-DECL|method|MineStarredScreen ()
+DECL|method|MineDraftsScreen ()
 specifier|public
-name|MineStarredScreen
+name|MineDraftsScreen
 parameter_list|()
 block|{
 name|super
@@ -131,12 +131,12 @@ name|Util
 operator|.
 name|C
 operator|.
-name|starredHeading
+name|draftsHeading
 argument_list|()
 argument_list|,
 name|Link
 operator|.
-name|MINE_STARRED
+name|MINE_DRAFTS
 argument_list|)
 expr_stmt|;
 block|}
@@ -157,7 +157,7 @@ name|Util
 operator|.
 name|LIST_SVC
 operator|.
-name|myStarredChanges
+name|myDraftChanges
 argument_list|(
 operator|new
 name|GerritCallback
