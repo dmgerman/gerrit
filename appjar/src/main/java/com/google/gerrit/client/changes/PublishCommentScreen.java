@@ -936,10 +936,8 @@ argument_list|(
 name|send
 argument_list|)
 expr_stmt|;
-specifier|final
-name|Button
 name|cancel
-init|=
+operator|=
 operator|new
 name|Button
 argument_list|(
@@ -950,7 +948,7 @@ operator|.
 name|buttonPublishCommentsCancel
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|cancel
 operator|.
 name|addClickListener
