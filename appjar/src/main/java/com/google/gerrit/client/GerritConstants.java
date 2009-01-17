@@ -148,14 +148,19 @@ name|String
 name|menuAll
 parameter_list|()
 function_decl|;
-DECL|method|menuAllUnclaimedChanges ()
+DECL|method|menuAllOpen ()
 name|String
-name|menuAllUnclaimedChanges
+name|menuAllOpen
 parameter_list|()
 function_decl|;
-DECL|method|menuAllRecentChanges ()
+DECL|method|menuAllMerged ()
 name|String
-name|menuAllRecentChanges
+name|menuAllMerged
+parameter_list|()
+function_decl|;
+DECL|method|menuAllAbandoned ()
+name|String
+name|menuAllAbandoned
 parameter_list|()
 function_decl|;
 DECL|method|menuMine ()

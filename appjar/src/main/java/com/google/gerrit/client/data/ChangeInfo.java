@@ -108,16 +108,6 @@ name|Timestamp
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
 begin_class
 DECL|class|ChangeInfo
 specifier|public
@@ -164,6 +154,11 @@ DECL|field|lastUpdatedOn
 specifier|protected
 name|Timestamp
 name|lastUpdatedOn
+decl_stmt|;
+DECL|field|sortKey
+specifier|protected
+name|String
+name|sortKey
 decl_stmt|;
 DECL|method|ChangeInfo ()
 specifier|protected
@@ -230,6 +225,13 @@ operator|=
 name|c
 operator|.
 name|getLastUpdatedOn
+argument_list|()
+expr_stmt|;
+name|sortKey
+operator|=
+name|c
+operator|.
+name|getSortKey
 argument_list|()
 expr_stmt|;
 name|acc
@@ -323,12 +325,26 @@ expr_stmt|;
 block|}
 DECL|method|getLastUpdatedOn ()
 specifier|public
-name|Date
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
 name|getLastUpdatedOn
 parameter_list|()
 block|{
 return|return
 name|lastUpdatedOn
+return|;
+block|}
+DECL|method|getSortKey ()
+specifier|public
+name|String
+name|getSortKey
+parameter_list|()
+block|{
+return|return
+name|sortKey
 return|;
 block|}
 block|}

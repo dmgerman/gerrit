@@ -99,6 +99,11 @@ name|ChangeInfo
 argument_list|>
 name|changes
 decl_stmt|;
+DECL|field|atEnd
+specifier|protected
+name|boolean
+name|atEnd
+decl_stmt|;
 DECL|method|SingleListChangeInfo ()
 specifier|public
 name|SingleListChangeInfo
@@ -142,6 +147,16 @@ return|return
 name|changes
 return|;
 block|}
+DECL|method|isAtEnd ()
+specifier|public
+name|boolean
+name|isAtEnd
+parameter_list|()
+block|{
+return|return
+name|atEnd
+return|;
+block|}
 DECL|method|setChanges (List<ChangeInfo> c)
 specifier|public
 name|void
@@ -154,9 +169,36 @@ argument_list|>
 name|c
 parameter_list|)
 block|{
+name|setChanges
+argument_list|(
+name|c
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setChanges (List<ChangeInfo> c, boolean end)
+specifier|public
+name|void
+name|setChanges
+parameter_list|(
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|c
+parameter_list|,
+name|boolean
+name|end
+parameter_list|)
+block|{
 name|changes
 operator|=
 name|c
+expr_stmt|;
+name|atEnd
+operator|=
+name|end
 expr_stmt|;
 block|}
 block|}

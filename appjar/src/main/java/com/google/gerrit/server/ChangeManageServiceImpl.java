@@ -898,10 +898,12 @@ operator|.
 name|SUBMITTED
 argument_list|)
 expr_stmt|;
-name|change
+name|ChangeUtil
 operator|.
 name|updated
-argument_list|()
+argument_list|(
+name|change
+argument_list|)
 expr_stmt|;
 block|}
 block|}

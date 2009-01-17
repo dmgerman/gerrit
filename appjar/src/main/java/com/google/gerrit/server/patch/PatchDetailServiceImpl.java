@@ -2990,12 +2990,14 @@ name|txn
 argument_list|)
 expr_stmt|;
 block|}
+name|ChangeUtil
+operator|.
+name|updated
+argument_list|(
 name|r
 operator|.
 name|change
-operator|.
-name|updated
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|db
 operator|.

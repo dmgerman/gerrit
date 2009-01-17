@@ -210,6 +210,88 @@ name|ChangeListService
 extends|extends
 name|RemoteJsonService
 block|{
+comment|/** Get all open changes more recent than pos, fetching at most limit rows. */
+DECL|method|allOpenPrev (String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|allOpenPrev
+parameter_list|(
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get all open changes older than pos, fetching at most limit rows. */
+DECL|method|allOpenNext (String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|allOpenNext
+parameter_list|(
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get all closed changes more recent than pos, fetching at most limit rows. */
+DECL|method|allClosedPrev (Change.Status status, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|allClosedPrev
+parameter_list|(
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|,
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get all closed changes older than pos, fetching at most limit rows. */
+DECL|method|allClosedNext (Change.Status status, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|allClosedNext
+parameter_list|(
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|,
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 comment|/** Get the data to show {@link AccountDashboardScreen} for an account. */
 DECL|method|forAccount (Account.Id id, AsyncCallback<AccountDashboardInfo> callback)
 name|void

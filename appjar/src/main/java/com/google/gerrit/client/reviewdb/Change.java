@@ -503,6 +503,25 @@ name|lastUpdatedOn
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/** A {@link #lastUpdatedOn} ASC,{@link #changeId} ASC for sorting. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|16
+argument_list|)
+DECL|field|sortKey
+specifier|protected
+name|String
+name|sortKey
+decl_stmt|;
+end_decl_stmt
+
 begin_decl_stmt
 annotation|@
 name|Column
@@ -733,10 +752,10 @@ block|}
 end_function
 
 begin_function
-DECL|method|updated ()
+DECL|method|resetLastUpdatedOn ()
 specifier|public
 name|void
-name|updated
+name|resetLastUpdatedOn
 parameter_list|()
 block|{
 name|lastUpdatedOn
@@ -749,6 +768,37 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getSortKey ()
+specifier|public
+name|String
+name|getSortKey
+parameter_list|()
+block|{
+return|return
+name|sortKey
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setSortKey (final String newSortKey)
+specifier|public
+name|void
+name|setSortKey
+parameter_list|(
+specifier|final
+name|String
+name|newSortKey
+parameter_list|)
+block|{
+name|sortKey
+operator|=
+name|newSortKey
 expr_stmt|;
 block|}
 end_function

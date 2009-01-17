@@ -294,7 +294,7 @@ name|newItem
 argument_list|(
 name|Link
 operator|.
-name|ALL
+name|ALL_OPEN
 argument_list|)
 expr_stmt|;
 block|}

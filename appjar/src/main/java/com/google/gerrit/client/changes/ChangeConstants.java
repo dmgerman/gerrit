@@ -125,6 +125,21 @@ name|String
 name|draftsHeading
 parameter_list|()
 function_decl|;
+DECL|method|allOpenChanges ()
+name|String
+name|allOpenChanges
+parameter_list|()
+function_decl|;
+DECL|method|allAbandonedChanges ()
+name|String
+name|allAbandonedChanges
+parameter_list|()
+function_decl|;
+DECL|method|allMergedChanges ()
+name|String
+name|allMergedChanges
+parameter_list|()
+function_decl|;
 DECL|method|changeTableColumnID ()
 name|String
 name|changeTableColumnID
@@ -318,6 +333,16 @@ function_decl|;
 DECL|method|headingPatchComments ()
 name|String
 name|headingPatchComments
+parameter_list|()
+function_decl|;
+DECL|method|pagedChangeListPrev ()
+name|String
+name|pagedChangeListPrev
+parameter_list|()
+function_decl|;
+DECL|method|pagedChangeListNext ()
+name|String
+name|pagedChangeListNext
 parameter_list|()
 function_decl|;
 block|}
