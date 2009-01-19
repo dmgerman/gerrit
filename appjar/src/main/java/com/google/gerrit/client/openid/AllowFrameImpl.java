@@ -141,6 +141,13 @@ name|contains
 argument_list|(
 literal|".claimid.com/"
 argument_list|)
+operator|||
+name|url
+operator|.
+name|contains
+argument_list|(
+literal|"://claimid.com/"
+argument_list|)
 return|;
 block|}
 block|}
