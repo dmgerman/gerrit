@@ -1431,6 +1431,17 @@ argument_list|()
 decl_stmt|;
 name|s
 operator|.
+name|maxSessionAge
+operator|=
+literal|12
+operator|*
+literal|60
+operator|*
+literal|60
+comment|/* seconds */
+expr_stmt|;
+name|s
+operator|.
 name|xsrfPrivateKey
 operator|=
 name|SignedToken

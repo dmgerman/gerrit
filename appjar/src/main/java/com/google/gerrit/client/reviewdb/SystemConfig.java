@@ -219,6 +219,7 @@ comment|/**      * Login relies upon the container/web server security.      *<p
 DECL|enumConstant|HTTP
 name|HTTP
 block|;   }
+comment|/** Construct a new, unconfigured instance. */
 DECL|method|create ()
 specifier|public
 specifier|static
@@ -243,17 +244,6 @@ name|SystemConfig
 operator|.
 name|Key
 argument_list|()
-expr_stmt|;
-name|r
-operator|.
-name|maxSessionAge
-operator|=
-literal|12
-operator|*
-literal|60
-operator|*
-literal|60
-comment|/* seconds */
 expr_stmt|;
 return|return
 name|r
