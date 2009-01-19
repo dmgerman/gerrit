@@ -84,7 +84,7 @@ name|dyuproject
 operator|.
 name|openid
 operator|.
-name|OpenIdUserManager
+name|RelyingParty
 import|;
 end_import
 
@@ -96,7 +96,9 @@ name|dyuproject
 operator|.
 name|openid
 operator|.
-name|RelyingParty
+name|manager
+operator|.
+name|CookieBasedUserManager
 import|;
 end_import
 
@@ -138,13 +140,22 @@ specifier|public
 class|class
 name|GerritOpenIdUserManager
 extends|extends
-name|OpenIdUserManager
+name|CookieBasedUserManager
 block|{
 DECL|method|GerritOpenIdUserManager ()
 specifier|public
 name|GerritOpenIdUserManager
 parameter_list|()
 block|{
+specifier|final
+name|int
+name|age
+init|=
+literal|2
+operator|*
+literal|60
+comment|/* seconds */
+decl_stmt|;
 name|setCookieName
 argument_list|(
 literal|"gerrit_openid"
@@ -157,7 +168,12 @@ argument_list|)
 expr_stmt|;
 name|setMaxAge
 argument_list|(
-literal|120
+name|age
+argument_list|)
+expr_stmt|;
+name|setLoginTimeout
+argument_list|(
+name|age
 argument_list|)
 expr_stmt|;
 name|setEncrypted
@@ -166,6 +182,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init (Properties properties)
 specifier|public
 name|void
@@ -197,7 +215,7 @@ name|getParameter
 argument_list|(
 name|RelyingParty
 operator|.
-name|DEFAULT_PARAMETER
+name|DEFAULT_IDENTIFIER_PARAMETER
 argument_list|)
 operator|!=
 literal|null
