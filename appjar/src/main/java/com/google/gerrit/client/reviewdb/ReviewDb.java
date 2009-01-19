@@ -136,6 +136,13 @@ name|Schema
 block|{
 annotation|@
 name|Relation
+DECL|method|schemaVersion ()
+name|SchemaVersionAccess
+name|schemaVersion
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|systemConfig ()
 name|SystemConfigAccess
 name|systemConfig
