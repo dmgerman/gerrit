@@ -129,6 +129,21 @@ specifier|protected
 name|int
 name|tz
 decl_stmt|;
+comment|/** If the user has a Gerrit account, their account identity. */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|accountId
+specifier|protected
+name|Account
+operator|.
+name|Id
+name|accountId
+decl_stmt|;
 DECL|method|getName ()
 specifier|public
 name|String
@@ -227,6 +242,35 @@ block|{
 name|tz
 operator|=
 name|offset
+expr_stmt|;
+block|}
+DECL|method|getAccount ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAccount
+parameter_list|()
+block|{
+return|return
+name|accountId
+return|;
+block|}
+DECL|method|setAccount (final Account.Id id)
+specifier|public
+name|void
+name|setAccount
+parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|accountId
+operator|=
+name|id
 expr_stmt|;
 block|}
 block|}
