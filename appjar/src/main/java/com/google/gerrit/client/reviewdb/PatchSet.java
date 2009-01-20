@@ -94,6 +94,16 @@ name|IntKey
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/** A single revision of a {@link Change}. */
 end_comment
@@ -276,6 +286,28 @@ specifier|protected
 name|RevId
 name|revision
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|name
+operator|=
+literal|"uploader_account_id"
+argument_list|)
+DECL|field|uploader
+specifier|protected
+name|Account
+operator|.
+name|Id
+name|uploader
+decl_stmt|;
+comment|/** When this patch set was first introduced onto the change. */
+annotation|@
+name|Column
+DECL|field|createdOn
+specifier|protected
+name|Timestamp
+name|createdOn
+decl_stmt|;
 DECL|method|PatchSet ()
 specifier|protected
 name|PatchSet
@@ -345,6 +377,60 @@ block|{
 name|revision
 operator|=
 name|i
+expr_stmt|;
+block|}
+DECL|method|getUploader ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getUploader
+parameter_list|()
+block|{
+return|return
+name|uploader
+return|;
+block|}
+DECL|method|setUploader (final Account.Id who)
+specifier|public
+name|void
+name|setUploader
+parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|who
+parameter_list|)
+block|{
+name|uploader
+operator|=
+name|who
+expr_stmt|;
+block|}
+DECL|method|getCreatedOn ()
+specifier|public
+name|Timestamp
+name|getCreatedOn
+parameter_list|()
+block|{
+return|return
+name|createdOn
+return|;
+block|}
+DECL|method|setCreatedOn (final Timestamp ts)
+specifier|public
+name|void
+name|setCreatedOn
+parameter_list|(
+specifier|final
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|createdOn
+operator|=
+name|ts
 expr_stmt|;
 block|}
 DECL|method|getRefName ()
