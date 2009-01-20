@@ -2543,6 +2543,20 @@ range|:
 name|approvals
 control|)
 block|{
+comment|// If we bypass a '0' value then it will be removed from the
+comment|// database (if it exists), or won't be inserted if it would
+comment|// have been new. Clients shouldn't send us 0 values anyway.
+comment|//
+if|if
+condition|(
+name|v
+operator|.
+name|get
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
 name|values
 operator|.
 name|put
@@ -2555,6 +2569,7 @@ argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|final
 name|Map
