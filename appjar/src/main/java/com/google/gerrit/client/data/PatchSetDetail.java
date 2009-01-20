@@ -313,7 +313,7 @@ literal|null
 condition|)
 block|{
 comment|// If we are signed in, compute the number of draft comments by the
-comment|// current user on each of these patch files. This way the can more
+comment|// current user on each of these patch files. This way they can more
 comment|// quickly locate where they have pending drafts, and review them.
 comment|//
 specifier|final
