@@ -2496,7 +2496,9 @@ name|sVer
 operator|.
 name|versionNbr
 operator|=
-literal|2
+name|ReviewDb
+operator|.
+name|VERSION
 expr_stmt|;
 name|c
 operator|.
@@ -2567,7 +2569,9 @@ name|sVer
 operator|.
 name|versionNbr
 operator|==
-literal|2
+name|ReviewDb
+operator|.
+name|VERSION
 condition|)
 block|{
 name|sConfig

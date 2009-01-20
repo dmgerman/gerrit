@@ -134,6 +134,15 @@ name|ReviewDb
 extends|extends
 name|Schema
 block|{
+DECL|field|VERSION
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|VERSION
+init|=
+literal|2
+decl_stmt|;
 annotation|@
 name|Relation
 DECL|method|schemaVersion ()
