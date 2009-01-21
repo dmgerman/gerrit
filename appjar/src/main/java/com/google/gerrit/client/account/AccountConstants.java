@@ -225,6 +225,21 @@ name|String
 name|defaultProjectName
 parameter_list|()
 function_decl|;
+DECL|method|watchedProjectColumnEmailNotifications ()
+name|String
+name|watchedProjectColumnEmailNotifications
+parameter_list|()
+function_decl|;
+DECL|method|watchedProjectColumnNewChanges ()
+name|String
+name|watchedProjectColumnNewChanges
+parameter_list|()
+function_decl|;
+DECL|method|watchedProjectColumnAllComments ()
+name|String
+name|watchedProjectColumnAllComments
+parameter_list|()
+function_decl|;
 DECL|method|contactFieldFullName ()
 name|String
 name|contactFieldFullName

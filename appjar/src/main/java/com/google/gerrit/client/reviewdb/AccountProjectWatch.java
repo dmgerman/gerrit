@@ -253,6 +253,22 @@ specifier|protected
 name|Key
 name|key
 decl_stmt|;
+comment|/** Automatically send email notifications of new changes? */
+annotation|@
+name|Column
+DECL|field|notifyNewChanges
+specifier|protected
+name|boolean
+name|notifyNewChanges
+decl_stmt|;
+comment|/** Automatically receive comments published to this project */
+annotation|@
+name|Column
+DECL|field|notifyAllComments
+specifier|protected
+name|boolean
+name|notifyAllComments
+decl_stmt|;
 DECL|method|AccountProjectWatch ()
 specifier|protected
 name|AccountProjectWatch
@@ -313,6 +329,56 @@ name|key
 operator|.
 name|projectId
 return|;
+block|}
+DECL|method|isNotifyNewChanges ()
+specifier|public
+name|boolean
+name|isNotifyNewChanges
+parameter_list|()
+block|{
+return|return
+name|notifyNewChanges
+return|;
+block|}
+DECL|method|setNotifyNewChanges (final boolean a)
+specifier|public
+name|void
+name|setNotifyNewChanges
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|notifyNewChanges
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|isNotifyAllComments ()
+specifier|public
+name|boolean
+name|isNotifyAllComments
+parameter_list|()
+block|{
+return|return
+name|notifyAllComments
+return|;
+block|}
+DECL|method|setNotifyAllComments (final boolean a)
+specifier|public
+name|void
+name|setNotifyAllComments
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|notifyAllComments
+operator|=
+name|a
+expr_stmt|;
 block|}
 block|}
 end_class

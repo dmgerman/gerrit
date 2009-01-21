@@ -251,6 +251,22 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|updateProjectWatch (AccountProjectWatch watch, AsyncCallback<VoidResult> callback)
+name|void
+name|updateProjectWatch
+parameter_list|(
+name|AccountProjectWatch
+name|watch
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|deleteProjectWatches (Set<AccountProjectWatch.Key> keys, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteProjectWatches

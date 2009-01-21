@@ -188,6 +188,46 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE notifyNewChanges = true AND key.projectId = ?"
+argument_list|)
+DECL|method|notifyNewChanges (Project.Id id)
+name|ResultSet
+argument_list|<
+name|AccountProjectWatch
+argument_list|>
+name|notifyNewChanges
+parameter_list|(
+name|Project
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE notifyAllComments = true AND key.projectId = ?"
+argument_list|)
+DECL|method|notifyAllComments (Project.Id id)
+name|ResultSet
+argument_list|<
+name|AccountProjectWatch
+argument_list|>
+name|notifyAllComments
+parameter_list|(
+name|Project
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
