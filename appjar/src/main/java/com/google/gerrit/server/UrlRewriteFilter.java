@@ -520,6 +520,17 @@ name|staticLinks
 operator|.
 name|put
 argument_list|(
+literal|"/settings"
+argument_list|,
+name|Link
+operator|.
+name|SETTINGS
+argument_list|)
+expr_stmt|;
+name|staticLinks
+operator|.
+name|put
+argument_list|(
 literal|"/all_unclaimed"
 argument_list|,
 name|Link
