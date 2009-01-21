@@ -98,9 +98,9 @@ name|String
 name|fullName
 parameter_list|)
 function_decl|;
-DECL|method|changesUploadedBy (String fullName)
+DECL|method|changesStartedBy (String fullName)
 name|String
-name|changesUploadedBy
+name|changesStartedBy
 parameter_list|(
 name|String
 name|fullName
