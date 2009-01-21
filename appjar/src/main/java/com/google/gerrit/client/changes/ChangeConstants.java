@@ -180,11 +180,6 @@ name|String
 name|patchTableColumnName
 parameter_list|()
 function_decl|;
-DECL|method|patchTableColumnDelta ()
-name|String
-name|patchTableColumnDelta
-parameter_list|()
-function_decl|;
 DECL|method|patchTableColumnComments ()
 name|String
 name|patchTableColumnComments
