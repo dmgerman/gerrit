@@ -433,6 +433,9 @@ name|BaseServiceImplementation
 operator|.
 name|canRead
 argument_list|(
+name|getAccountId
+argument_list|()
+argument_list|,
 name|proj
 operator|.
 name|getNameKey
