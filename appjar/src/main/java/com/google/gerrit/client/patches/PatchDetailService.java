@@ -252,7 +252,7 @@ name|PatchDetailService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|sideBySidePatchDetail (Patch.Key key, AsyncCallback<SideBySidePatchDetail> callback)
+DECL|method|sideBySidePatchDetail (Patch.Key key, List<PatchSet.Id> versions, AsyncCallback<SideBySidePatchDetail> callback)
 name|void
 name|sideBySidePatchDetail
 parameter_list|(
@@ -260,6 +260,14 @@ name|Patch
 operator|.
 name|Key
 name|key
+parameter_list|,
+name|List
+argument_list|<
+name|PatchSet
+operator|.
+name|Id
+argument_list|>
+name|versions
 parameter_list|,
 name|AsyncCallback
 argument_list|<

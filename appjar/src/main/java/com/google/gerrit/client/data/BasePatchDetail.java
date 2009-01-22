@@ -98,6 +98,16 @@ name|Patch
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Detail necessary to display {@link PatchScreen}. */
 end_comment
@@ -118,6 +128,14 @@ DECL|field|patch
 specifier|protected
 name|Patch
 name|patch
+decl_stmt|;
+DECL|field|history
+specifier|protected
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|history
 decl_stmt|;
 DECL|method|BasePatchDetail ()
 specifier|protected
@@ -165,6 +183,37 @@ block|{
 return|return
 name|patch
 return|;
+block|}
+DECL|method|getHistory ()
+specifier|public
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|getHistory
+parameter_list|()
+block|{
+return|return
+name|history
+return|;
+block|}
+DECL|method|setHistory (final List<Patch> ids)
+specifier|public
+name|void
+name|setHistory
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|ids
+parameter_list|)
+block|{
+name|history
+operator|=
+name|ids
+expr_stmt|;
 block|}
 block|}
 end_class

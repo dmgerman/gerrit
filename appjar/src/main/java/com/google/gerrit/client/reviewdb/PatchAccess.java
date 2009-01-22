@@ -188,6 +188,31 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.patchSetId.changeId = ?"
+operator|+
+literal|" AND key.fileName = ? ORDER BY key.patchSetId"
+argument_list|)
+DECL|method|history (Change.Id c, String fileName)
+name|ResultSet
+argument_list|<
+name|Patch
+argument_list|>
+name|history
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|c
+parameter_list|,
+name|String
+name|fileName
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 

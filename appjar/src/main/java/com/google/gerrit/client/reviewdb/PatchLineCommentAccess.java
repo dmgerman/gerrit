@@ -197,6 +197,37 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE key.patchKey.patchSetId.changeId = ?"
+operator|+
+literal|" AND key.patchKey.fileName = ? AND status = '"
+operator|+
+name|PatchLineComment
+operator|.
+name|STATUS_PUBLISHED
+operator|+
+literal|"' ORDER BY lineNbr,writtenOn"
+argument_list|)
+DECL|method|published (Change.Id id, String file)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|published
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|file
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE key.patchKey.patchSetId = ? AND status = '"
 operator|+
 name|PatchLineComment
@@ -247,6 +278,42 @@ name|Patch
 operator|.
 name|Key
 name|patch
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|author
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.patchKey.patchSetId.changeId = ?"
+operator|+
+literal|" AND key.patchKey.fileName = ? AND author = ? AND status = '"
+operator|+
+name|PatchLineComment
+operator|.
+name|STATUS_DRAFT
+operator|+
+literal|"' ORDER BY lineNbr,writtenOn"
+argument_list|)
+DECL|method|draft (Change.Id id, String file, Account.Id author)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|draft
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|file
 parameter_list|,
 name|Account
 operator|.

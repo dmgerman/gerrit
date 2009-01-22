@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.patches
+DECL|package|com.google.gerrit.client.rpc
 package|package
 name|com
 operator|.
@@ -62,71 +62,44 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
+name|rpc
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Constants
-import|;
-end_import
+begin_comment
+comment|/** Error indicating there are no differences in selected files. */
+end_comment
 
-begin_interface
-DECL|interface|PatchConstants
+begin_class
+DECL|class|NoDifferencesException
 specifier|public
-interface|interface
-name|PatchConstants
+class|class
+name|NoDifferencesException
 extends|extends
-name|Constants
+name|Exception
 block|{
-DECL|method|draft ()
+DECL|field|MESSAGE
+specifier|public
+specifier|static
+specifier|final
 name|String
-name|draft
+name|MESSAGE
+init|=
+literal|"No Differences"
+decl_stmt|;
+DECL|method|NoDifferencesException ()
+specifier|public
+name|NoDifferencesException
 parameter_list|()
-function_decl|;
-DECL|method|buttonSave ()
-name|String
-name|buttonSave
-parameter_list|()
-function_decl|;
-DECL|method|buttonDiscard ()
-name|String
-name|buttonDiscard
-parameter_list|()
-function_decl|;
-DECL|method|confirmDiscard ()
-name|String
-name|confirmDiscard
-parameter_list|()
-function_decl|;
-DECL|method|patchHeaderOld ()
-name|String
-name|patchHeaderOld
-parameter_list|()
-function_decl|;
-DECL|method|patchHeaderNew ()
-name|String
-name|patchHeaderNew
-parameter_list|()
-function_decl|;
-DECL|method|patchHistoryTitle ()
-name|String
-name|patchHistoryTitle
-parameter_list|()
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

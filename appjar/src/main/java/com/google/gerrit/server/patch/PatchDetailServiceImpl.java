@@ -598,7 +598,7 @@ operator|=
 name|gs
 expr_stmt|;
 block|}
-DECL|method|sideBySidePatchDetail (final Patch.Key key, final AsyncCallback<SideBySidePatchDetail> callback)
+DECL|method|sideBySidePatchDetail (final Patch.Key key, final List<PatchSet.Id> versions, final AsyncCallback<SideBySidePatchDetail> callback)
 specifier|public
 name|void
 name|sideBySidePatchDetail
@@ -608,6 +608,15 @@ name|Patch
 operator|.
 name|Key
 name|key
+parameter_list|,
+specifier|final
+name|List
+argument_list|<
+name|PatchSet
+operator|.
+name|Id
+argument_list|>
+name|versions
 parameter_list|,
 specifier|final
 name|AsyncCallback
@@ -656,6 +665,8 @@ argument_list|(
 name|rc
 argument_list|,
 name|key
+argument_list|,
+name|versions
 argument_list|)
 argument_list|)
 expr_stmt|;

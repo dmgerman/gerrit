@@ -272,7 +272,11 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+literal|null
+argument_list|,
 name|key
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
