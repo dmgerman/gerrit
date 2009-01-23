@@ -1188,6 +1188,20 @@ name|boolean
 name|execute
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|isAttached
+argument_list|()
+condition|)
+block|{
+comment|// If the user navigated away, we aren't in the DOM anymore.
+comment|// Don't continue to render.
+comment|//
+return|return
+literal|false
+return|;
+block|}
 name|start
 operator|=
 name|System
