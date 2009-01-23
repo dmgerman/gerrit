@@ -106,7 +106,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|MergeQueue
+name|WorkQueue
 import|;
 end_import
 
@@ -326,7 +326,7 @@ name|void
 name|destroy
 parameter_list|()
 block|{
-name|MergeQueue
+name|WorkQueue
 operator|.
 name|terminate
 argument_list|()
