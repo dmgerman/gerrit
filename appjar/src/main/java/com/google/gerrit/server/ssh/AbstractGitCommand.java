@@ -423,6 +423,12 @@ operator|+
 name|reqName
 operator|+
 literal|"': not a valid project"
+argument_list|,
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Cannot access the wildcard project"
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -454,6 +460,12 @@ operator|+
 name|reqName
 operator|+
 literal|"': not a Gerrit project"
+argument_list|,
+operator|new
+name|SecurityException
+argument_list|(
+literal|"Account lacks Read permission"
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -490,6 +502,8 @@ operator|+
 name|reqName
 operator|+
 literal|"': not a git archive"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -529,6 +543,12 @@ argument_list|(
 literal|1
 argument_list|,
 literal|"fatal: cannot query user database"
+argument_list|,
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Account record no longer in database"
+argument_list|)
 argument_list|)
 throw|;
 block|}

@@ -1297,7 +1297,9 @@ name|Failure
 argument_list|(
 literal|1
 argument_list|,
-literal|"database error"
+literal|"fatal: database error"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -1875,7 +1877,9 @@ name|Failure
 argument_list|(
 literal|1
 argument_list|,
-literal|"database error"
+literal|"fatal: database error"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -1981,7 +1985,7 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
-name|err
+name|e
 parameter_list|)
 block|{
 throw|throw
@@ -1990,7 +1994,9 @@ name|Failure
 argument_list|(
 literal|1
 argument_list|,
-literal|"fatal: cannot lookup reviewers, database is down"
+literal|"fatal: database is down"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
