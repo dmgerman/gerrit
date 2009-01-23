@@ -422,6 +422,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|spearce
 operator|.
 name|jgit
@@ -743,6 +763,22 @@ name|Receive
 extends|extends
 name|AbstractGitCommand
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|Receive
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|NEW_CHANGE
 specifier|private
 specifier|static
@@ -2493,6 +2529,21 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot lookup branch "
+operator|+
+name|proj
+operator|+
+literal|" "
+operator|+
+name|destBranchName
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
@@ -2594,6 +2645,17 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot lookup existing change "
+operator|+
+name|changeId
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
@@ -2939,6 +3001,15 @@ operator|.
 name|REJECTED_MISSING_OBJECT
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Invalid pack upload; one or more objects weren't sent"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -2957,8 +3028,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-try|try
-block|{
 for|for
 control|(
 specifier|final
@@ -2968,23 +3037,13 @@ range|:
 name|toCreate
 control|)
 block|{
+try|try
+block|{
 name|createChange
 argument_list|(
 name|walk
 argument_list|,
 name|c
-argument_list|)
-expr_stmt|;
-block|}
-name|newChange
-operator|.
-name|setResult
-argument_list|(
-name|ReceiveCommand
-operator|.
-name|Result
-operator|.
-name|OK
 argument_list|)
 expr_stmt|;
 block|}
@@ -2994,6 +3053,20 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error computing patch of commit "
+operator|+
+name|c
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|newChange
@@ -3008,6 +3081,20 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error creating change for commit "
+operator|+
+name|c
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|newChange
@@ -3016,6 +3103,18 @@ literal|"database error"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+name|newChange
+operator|.
+name|setResult
+argument_list|(
+name|ReceiveCommand
+operator|.
+name|Result
+operator|.
+name|OK
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|createChange (final RevWalk walk, final RevCommit c)
 specifier|private
@@ -3578,7 +3677,20 @@ name|MessagingException
 name|e
 parameter_list|)
 block|{
-comment|// TODO Log (like everything else) email send failures
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot send email for new change "
+operator|+
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|appendPatchSets ()
@@ -3643,6 +3755,27 @@ name|IOException
 name|err
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error computing replacement patch for change "
+operator|+
+name|changeId
+operator|+
+literal|", commit "
+operator|+
+name|cmd
+operator|.
+name|getNewId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
@@ -3657,6 +3790,27 @@ name|OrmException
 name|err
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error storing replacement patch for change "
+operator|+
+name|changeId
+operator|+
+literal|", commit "
+operator|+
+name|cmd
+operator|.
+name|getNewId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
@@ -3679,6 +3833,29 @@ operator|.
 name|NOT_ATTEMPTED
 condition|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Replacement patch for change "
+operator|+
+name|changeId
+operator|+
+literal|", commit "
+operator|+
+name|cmd
+operator|.
+name|getNewId
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|" wasn't attempted."
+operator|+
+literal|"  This is a bug in the receive process implementation."
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd

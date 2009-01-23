@@ -424,6 +424,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -616,6 +636,22 @@ name|OpenIdLoginServlet
 extends|extends
 name|HttpServlet
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|OpenIdLoginServlet
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|LASTID_AGE
 specifier|private
 specifier|static
@@ -720,16 +756,11 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 operator|new
 name|ServletException
 argument_list|(
-literal|"Cannot configure GerritServer"
+literal|"Cannot load GerritServer"
 argument_list|,
 name|e
 argument_list|)
@@ -741,16 +772,11 @@ name|XsrfException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 operator|new
 name|ServletException
 argument_list|(
-literal|"Cannot configure GerritServer"
+literal|"Cannot load GerritServer"
 argument_list|,
 name|e
 argument_list|)
@@ -812,14 +838,18 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Cannot setup RelyingParty"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|RuntimeException
+name|ServletException
 argument_list|(
 literal|"Cannot setup RelyingParty"
 argument_list|,
@@ -849,6 +879,17 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"No "
+operator|+
+name|scHtmlName
+operator|+
+literal|" in CLASSPATH"
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|ServletException

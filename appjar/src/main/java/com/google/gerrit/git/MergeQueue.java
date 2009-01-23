@@ -96,6 +96,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -144,6 +164,22 @@ specifier|public
 class|class
 name|MergeQueue
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MergeQueue
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|pool
 specifier|private
 specifier|static
@@ -580,11 +616,18 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-comment|// TODO we should have better logging than stderr
-name|e
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Merge attempt for "
+operator|+
+name|branch
+operator|+
+literal|" failed"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
