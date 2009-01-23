@@ -198,6 +198,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -309,6 +329,22 @@ specifier|private
 specifier|static
 name|SshServer
 name|sshd
+decl_stmt|;
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|SshServlet
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|startSshd ()
 specifier|public
@@ -490,6 +526,15 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Started Gerrit SSHD on 0.0.0.0:"
+operator|+
+name|myPort
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -497,6 +542,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot start Gerrit SSHD on 0.0.0.0:"
+operator|+
+name|myPort
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|sshd
 operator|=
 literal|null
@@ -535,6 +591,18 @@ name|sshd
 operator|.
 name|stop
 argument_list|()
+expr_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Stopped Gerrit SSHD on 0.0.0.0:"
+operator|+
+name|sshd
+operator|.
+name|getPort
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
