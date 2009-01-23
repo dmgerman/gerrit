@@ -178,11 +178,6 @@ name|String
 name|menyMyDrafts
 parameter_list|()
 function_decl|;
-DECL|method|menuMyUnclaimedChanges ()
-name|String
-name|menuMyUnclaimedChanges
-parameter_list|()
-function_decl|;
 DECL|method|menuMyStarredChanges ()
 name|String
 name|menuMyStarredChanges

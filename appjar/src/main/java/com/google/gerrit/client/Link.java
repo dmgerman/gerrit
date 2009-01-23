@@ -599,15 +599,6 @@ name|MINE
 init|=
 literal|"mine"
 decl_stmt|;
-DECL|field|MINE_UNCLAIMED
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|MINE_UNCLAIMED
-init|=
-literal|"mine,unclaimed"
-decl_stmt|;
 DECL|field|MINE_STARRED
 specifier|public
 specifier|static

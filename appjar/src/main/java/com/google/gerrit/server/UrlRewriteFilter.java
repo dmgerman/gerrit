@@ -498,17 +498,6 @@ name|staticLinks
 operator|.
 name|put
 argument_list|(
-literal|"/unclaimed"
-argument_list|,
-name|Link
-operator|.
-name|MINE_UNCLAIMED
-argument_list|)
-expr_stmt|;
-name|staticLinks
-operator|.
-name|put
-argument_list|(
 literal|"/starred"
 argument_list|,
 name|Link
