@@ -130,6 +130,14 @@ name|int
 name|id
 parameter_list|)
 function_decl|;
+DECL|method|loadingPatchSet (int id)
+name|String
+name|loadingPatchSet
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+function_decl|;
 DECL|method|patchSetAction (String action, int id)
 name|String
 name|patchSetAction
