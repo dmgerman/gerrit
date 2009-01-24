@@ -1129,6 +1129,11 @@ name|Patch
 argument_list|>
 name|list
 decl_stmt|;
+DECL|field|attached
+specifier|private
+name|boolean
+name|attached
+decl_stmt|;
 DECL|field|nc
 specifier|private
 name|StringBuilder
@@ -1188,11 +1193,36 @@ name|boolean
 name|execute
 parameter_list|()
 block|{
+specifier|final
+name|boolean
+name|attachedNow
+init|=
+name|isAttached
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
-name|isAttached
-argument_list|()
+name|attached
+operator|&&
+name|attachedNow
+condition|)
+block|{
+comment|// Remember that we have been attached at least once. If
+comment|// later we find we aren't attached we should stop running.
+comment|//
+name|attached
+operator|=
+literal|true
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|attached
+operator|&&
+operator|!
+name|attachedNow
 condition|)
 block|{
 comment|// If the user navigated away, we aren't in the DOM anymore.
