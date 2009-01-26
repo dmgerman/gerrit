@@ -1226,9 +1226,6 @@ name|void
 name|newChangeFooter
 parameter_list|()
 block|{
-name|openFooter
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|changeUrl
@@ -1237,6 +1234,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|openFooter
+argument_list|()
+expr_stmt|;
 name|body
 operator|.
 name|append
@@ -1572,9 +1572,6 @@ comment|// If we have no body, don't bother generating an email.
 comment|//
 return|return;
 block|}
-name|openFooter
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|changeUrl
@@ -1583,6 +1580,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|openFooter
+argument_list|()
+expr_stmt|;
 name|body
 operator|.
 name|append
