@@ -191,6 +191,29 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE id.changeId = ? AND revision = ?"
+argument_list|)
+DECL|method|byChangeRevision (Change.Id id, RevId rev)
+name|ResultSet
+argument_list|<
+name|PatchSet
+argument_list|>
+name|byChangeRevision
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|RevId
+name|rev
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE revision = ? LIMIT 2"
 argument_list|)
 DECL|method|byRevision (RevId rev)
