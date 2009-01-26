@@ -3005,6 +3005,14 @@ block|{
 name|ccSender
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|settingsUrl
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|openFooter
 argument_list|()
 expr_stmt|;
@@ -3030,6 +3038,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|msg
 operator|.
 name|setText
