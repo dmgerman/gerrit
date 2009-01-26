@@ -159,7 +159,7 @@ operator|==
 name|LEN
 return|;
 block|}
-comment|/**    * @return if {@link #isComplete()},<code>this</code>. Otherwise a new RevId    *         with '~' appended on the end until {@link #LEN} is reached.    */
+comment|/**    * @return if {@link #isComplete()},<code>this</code>; otherwise a new RevId    *         with 'z' appended on the end.    */
 DECL|method|max ()
 specifier|public
 name|RevId
@@ -183,7 +183,13 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|LEN
+name|get
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 name|revEnd
@@ -194,24 +200,13 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-while|while
-condition|(
-name|revEnd
-operator|.
-name|length
-argument_list|()
-operator|<
-name|LEN
-condition|)
-block|{
 name|revEnd
 operator|.
 name|append
 argument_list|(
-literal|'~'
+literal|'z'
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 operator|new
 name|RevId
