@@ -3031,6 +3031,11 @@ name|toCreate
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+name|addByChange
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|reject
