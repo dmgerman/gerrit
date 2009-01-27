@@ -2098,7 +2098,7 @@ name|rsp
 argument_list|,
 name|user
 operator|.
-name|getIdentity
+name|getClaimedId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2284,7 +2284,7 @@ name|extAccess
 argument_list|,
 name|user
 operator|.
-name|getIdentity
+name|getClaimedId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2346,7 +2346,7 @@ argument_list|()
 argument_list|,
 name|user
 operator|.
-name|getIdentity
+name|getClaimedId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2512,7 +2512,7 @@ argument_list|()
 argument_list|,
 name|user
 operator|.
-name|getIdentity
+name|getClaimedId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2772,7 +2772,7 @@ argument_list|()
 argument_list|,
 name|user
 operator|.
-name|getIdentity
+name|getClaimedId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3044,7 +3044,7 @@ block|{
 return|return
 name|user
 operator|.
-name|getIdentity
+name|getClaimedId
 argument_list|()
 operator|.
 name|startsWith
