@@ -686,6 +686,7 @@ name|getText
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|nc
 operator|.
 name|append
@@ -698,10 +699,14 @@ name|line
 operator|.
 name|getText
 argument_list|()
+argument_list|,
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|nc
 operator|.
 name|append
@@ -709,6 +714,7 @@ argument_list|(
 literal|"&nbsp;"
 argument_list|)
 expr_stmt|;
+block|}
 name|nc
 operator|.
 name|append
