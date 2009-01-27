@@ -282,6 +282,15 @@ name|BaseServiceImplementation
 implements|implements
 name|SuggestService
 block|{
+DECL|field|MAX_SUFFIX
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MAX_SUFFIX
+init|=
+literal|"\u9fa5"
+decl_stmt|;
 DECL|method|suggestProjectNameKey (final String query, final int limit, final AsyncCallback<List<Project.NameKey>> callback)
 specifier|public
 name|void
@@ -352,7 +361,7 @@ name|b
 init|=
 name|a
 operator|+
-literal|"\uffff"
+name|MAX_SUFFIX
 decl_stmt|;
 specifier|final
 name|int
@@ -513,7 +522,7 @@ name|b
 init|=
 name|a
 operator|+
-literal|"\uffff"
+name|MAX_SUFFIX
 decl_stmt|;
 specifier|final
 name|int
@@ -838,7 +847,7 @@ name|b
 init|=
 name|a
 operator|+
-literal|"\uffff"
+name|MAX_SUFFIX
 decl_stmt|;
 specifier|final
 name|int
