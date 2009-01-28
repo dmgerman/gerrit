@@ -922,6 +922,25 @@ condition|)
 block|{
 continue|continue;
 block|}
+comment|// If the ref still exists locally, send it, else delete it.
+comment|//
+specifier|final
+name|String
+name|srcexp
+init|=
+name|db
+operator|.
+name|resolve
+argument_list|(
+name|src
+argument_list|)
+operator|!=
+literal|null
+condition|?
+name|src
+else|:
+literal|null
+decl_stmt|;
 specifier|final
 name|String
 name|dst
@@ -949,7 +968,7 @@ name|RemoteRefUpdate
 argument_list|(
 name|db
 argument_list|,
-name|src
+name|srcexp
 argument_list|,
 name|dst
 argument_list|,
