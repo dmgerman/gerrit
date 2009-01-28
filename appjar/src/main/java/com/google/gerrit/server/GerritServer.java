@@ -1807,6 +1807,8 @@ operator|.
 name|insert
 argument_list|(
 name|vals
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 name|txn
@@ -1979,6 +1981,8 @@ operator|.
 name|insert
 argument_list|(
 name|vals
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 name|txn
@@ -2177,6 +2181,8 @@ operator|.
 name|insert
 argument_list|(
 name|vals
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 name|txn
@@ -2425,6 +2431,8 @@ operator|.
 name|insert
 argument_list|(
 name|vals
+argument_list|,
+name|txn
 argument_list|)
 expr_stmt|;
 name|txn
