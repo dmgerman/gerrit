@@ -528,6 +528,14 @@ specifier|protected
 name|short
 name|defaultContext
 decl_stmt|;
+comment|/** Should the site header be displayed when logged in ? */
+annotation|@
+name|Column
+DECL|field|showSiteHeader
+specifier|protected
+name|boolean
+name|showSiteHeader
+decl_stmt|;
 comment|/** Non-Internet based contact details for the account's owner. */
 annotation|@
 name|Column
@@ -576,6 +584,10 @@ expr_stmt|;
 name|defaultContext
 operator|=
 name|DEFAULT_CONTEXT
+expr_stmt|;
+name|showSiteHeader
+operator|=
+literal|true
 expr_stmt|;
 block|}
 comment|/** Get local id of this account, to link with in other entities */
@@ -733,6 +745,31 @@ block|{
 name|defaultContext
 operator|=
 name|s
+expr_stmt|;
+block|}
+DECL|method|isShowSiteHeader ()
+specifier|public
+name|boolean
+name|isShowSiteHeader
+parameter_list|()
+block|{
+return|return
+name|showSiteHeader
+return|;
+block|}
+DECL|method|setShowSiteHeader (final boolean b)
+specifier|public
+name|void
+name|setShowSiteHeader
+parameter_list|(
+specifier|final
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|showSiteHeader
+operator|=
+name|b
 expr_stmt|;
 block|}
 DECL|method|getContactInformation ()

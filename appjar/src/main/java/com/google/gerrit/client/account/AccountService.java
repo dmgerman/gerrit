@@ -203,6 +203,22 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|changeShowSiteHeader (boolean show, AsyncCallback<VoidResult> gerritCallback)
+name|void
+name|changeShowSiteHeader
+parameter_list|(
+name|boolean
+name|show
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|gerritCallback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|changeDefaultContext (short newSetting, AsyncCallback<VoidResult> callback)
 name|void
 name|changeDefaultContext

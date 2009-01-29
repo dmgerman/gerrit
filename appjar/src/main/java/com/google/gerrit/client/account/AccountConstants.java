@@ -120,6 +120,11 @@ name|String
 name|defaultContext
 parameter_list|()
 function_decl|;
+DECL|method|showSiteHeader ()
+name|String
+name|showSiteHeader
+parameter_list|()
+function_decl|;
 DECL|method|tabPreferences ()
 name|String
 name|tabPreferences
