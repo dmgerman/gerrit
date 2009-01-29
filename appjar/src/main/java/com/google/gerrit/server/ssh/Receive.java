@@ -1750,7 +1750,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
@@ -1932,7 +1932,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
@@ -1968,7 +1968,7 @@ name|REJECTED
 case|:
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
@@ -1996,7 +1996,7 @@ name|NEW
 case|:
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
@@ -2099,7 +2099,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
