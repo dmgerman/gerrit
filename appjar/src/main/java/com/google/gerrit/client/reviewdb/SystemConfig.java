@@ -333,6 +333,19 @@ specifier|public
 name|String
 name|gitwebUrl
 decl_stmt|;
+comment|/**    * Optional URL of the anonymous git daemon for project access.    *<p>    * For example:<code>git://host/base/</code>    */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|gitDaemonUrl
+specifier|public
+name|String
+name|gitDaemonUrl
+decl_stmt|;
 comment|/** Local filesystem location all projects reside within. */
 annotation|@
 name|Column
@@ -441,6 +454,14 @@ DECL|field|sshdPort
 specifier|public
 name|int
 name|sshdPort
+decl_stmt|;
+comment|/** Should Gerrit advertise 'repo download' for patch sets? */
+annotation|@
+name|Column
+DECL|field|useRepoDownload
+specifier|public
+name|boolean
+name|useRepoDownload
 decl_stmt|;
 comment|/** Identity of the administration group; those with full access. */
 annotation|@

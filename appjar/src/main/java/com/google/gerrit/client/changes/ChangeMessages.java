@@ -149,20 +149,6 @@ name|int
 name|id
 parameter_list|)
 function_decl|;
-DECL|method|repoDownload (String project, int change, int ps)
-name|String
-name|repoDownload
-parameter_list|(
-name|String
-name|project
-parameter_list|,
-name|int
-name|change
-parameter_list|,
-name|int
-name|ps
-parameter_list|)
-function_decl|;
 DECL|method|patchTableComments (@luralCount int count)
 name|String
 name|patchTableComments

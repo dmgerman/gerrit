@@ -367,6 +367,11 @@ specifier|protected
 name|AccountInfoCache
 name|accounts
 decl_stmt|;
+DECL|field|allowsAnonymous
+specifier|protected
+name|boolean
+name|allowsAnonymous
+decl_stmt|;
 DECL|field|change
 specifier|protected
 name|Change
@@ -449,7 +454,7 @@ specifier|public
 name|ChangeDetail
 parameter_list|()
 block|{   }
-DECL|method|load (final ReviewDb db, final AccountInfoCacheFactory acc, final Change c)
+DECL|method|load (final ReviewDb db, final AccountInfoCacheFactory acc, final Change c, final boolean allowAnon)
 specifier|public
 name|void
 name|load
@@ -465,6 +470,10 @@ parameter_list|,
 specifier|final
 name|Change
 name|c
+parameter_list|,
+specifier|final
+name|boolean
+name|allowAnon
 parameter_list|)
 throws|throws
 name|OrmException
@@ -490,6 +499,10 @@ name|want
 argument_list|(
 name|owner
 argument_list|)
+expr_stmt|;
+name|allowsAnonymous
+operator|=
+name|allowAnon
 expr_stmt|;
 name|patchSets
 operator|=
@@ -1349,6 +1362,16 @@ parameter_list|()
 block|{
 return|return
 name|accounts
+return|;
+block|}
+DECL|method|isAllowsAnonymous ()
+specifier|public
+name|boolean
+name|isAllowsAnonymous
+parameter_list|()
+block|{
+return|return
+name|allowsAnonymous
 return|;
 block|}
 DECL|method|getChange ()
