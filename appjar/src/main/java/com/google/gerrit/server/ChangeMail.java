@@ -2167,12 +2167,15 @@ name|initUserAgent
 argument_list|()
 expr_stmt|;
 name|initListId
-argument_list|(
-name|messageClass
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|initChangeUrl
 argument_list|()
+expr_stmt|;
+name|initMessageType
+argument_list|(
+name|messageClass
+argument_list|)
 expr_stmt|;
 name|initSubject
 argument_list|()
@@ -2298,15 +2301,11 @@ literal|"Gerrit/2"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initListId (final String messageClass)
+DECL|method|initListId ()
 specifier|private
 name|void
 name|initListId
-parameter_list|(
-specifier|final
-name|String
-name|messageClass
-parameter_list|)
+parameter_list|()
 throws|throws
 name|MessagingException
 block|{
@@ -2325,20 +2324,6 @@ operator|.
 name|append
 argument_list|(
 literal|"gerrit-"
-argument_list|)
-expr_stmt|;
-name|listid
-operator|.
-name|append
-argument_list|(
-name|messageClass
-argument_list|)
-expr_stmt|;
-name|listid
-operator|.
-name|append
-argument_list|(
-literal|"-"
 argument_list|)
 expr_stmt|;
 name|listid
@@ -2470,6 +2455,28 @@ literal|">"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|initMessageType (final String messageClass)
+specifier|private
+name|void
+name|initMessageType
+parameter_list|(
+specifier|final
+name|String
+name|messageClass
+parameter_list|)
+throws|throws
+name|MessagingException
+block|{
+name|msg
+operator|.
+name|setHeader
+argument_list|(
+literal|"X-Gerrit-MessageType"
+argument_list|,
+name|messageClass
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|initInReplyToChange ()
 specifier|private
