@@ -333,7 +333,7 @@ specifier|public
 name|String
 name|gitwebUrl
 decl_stmt|;
-comment|/** Local filesystem loction all projects reside within. */
+comment|/** Local filesystem location all projects reside within. */
 annotation|@
 name|Column
 argument_list|(
