@@ -1513,14 +1513,10 @@ literal|"  "
 operator|+
 name|url
 operator|+
-literal|"Gerrit#"
-operator|+
-name|Link
-operator|.
-name|toChange
-argument_list|(
 name|c
-argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|"\n"
 argument_list|)
