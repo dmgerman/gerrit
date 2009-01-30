@@ -276,7 +276,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onCellDoubleClick (final int row, final int column)
+DECL|method|onCellDoubleClick (final int row, int column)
 specifier|protected
 name|void
 name|onCellDoubleClick
@@ -285,7 +285,6 @@ specifier|final
 name|int
 name|row
 parameter_list|,
-specifier|final
 name|int
 name|column
 parameter_list|)
@@ -294,7 +293,7 @@ if|if
 condition|(
 name|column
 operator|>
-literal|1
+literal|0
 operator|&&
 name|getRowItem
 argument_list|(
@@ -333,6 +332,25 @@ operator|/
 literal|2
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|column
+operator|<
+operator|(
+literal|1
+operator|+
+name|file
+operator|*
+literal|2
+operator|+
+literal|1
+operator|)
+condition|)
+block|{
+name|column
+operator|++
+expr_stmt|;
+block|}
 specifier|final
 name|SideBySideLine
 name|line
