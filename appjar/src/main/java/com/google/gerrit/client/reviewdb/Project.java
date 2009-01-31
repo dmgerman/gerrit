@@ -196,6 +196,37 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+comment|/** Parse a Project.NameKey out of a string representation. */
+DECL|method|parse (final String str)
+specifier|public
+specifier|static
+name|NameKey
+name|parse
+parameter_list|(
+specifier|final
+name|String
+name|str
+parameter_list|)
+block|{
+specifier|final
+name|NameKey
+name|r
+init|=
+operator|new
+name|NameKey
+argument_list|()
+decl_stmt|;
+name|r
+operator|.
+name|fromString
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
+return|return
+name|r
+return|;
+block|}
 block|}
 comment|/** Synthetic key to link to within the database */
 DECL|class|Id

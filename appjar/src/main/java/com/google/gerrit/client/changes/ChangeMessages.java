@@ -114,6 +114,14 @@ name|String
 name|fullName
 parameter_list|)
 function_decl|;
+DECL|method|changesOpenInProject (String string)
+name|String
+name|changesOpenInProject
+parameter_list|(
+name|String
+name|string
+parameter_list|)
+function_decl|;
 DECL|method|changeScreenTitleId (int id)
 name|String
 name|changeScreenTitleId

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2008 Google Inc.
+comment|// Copyright 2009 Google Inc.
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.data
+DECL|package|com.google.gerrit.client.ui
 package|package
 name|com
 operator|.
@@ -62,9 +62,39 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|data
+name|ui
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|Link
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|ByProjectOpenChangesScreen
+import|;
+end_import
 
 begin_import
 import|import
@@ -82,65 +112,95 @@ name|Project
 import|;
 end_import
 
+begin_comment
+comment|/** Link to the open changes of a project. */
+end_comment
+
 begin_class
-DECL|class|ProjectInfo
+DECL|class|ProjectOpenLink
 specifier|public
 class|class
-name|ProjectInfo
+name|ProjectOpenLink
+extends|extends
+name|DirectScreenLink
 block|{
-DECL|field|key
-specifier|protected
+DECL|field|project
+specifier|private
 name|Project
 operator|.
 name|NameKey
-name|key
+name|project
 decl_stmt|;
-DECL|method|ProjectInfo ()
-specifier|protected
-name|ProjectInfo
-parameter_list|()
-block|{   }
-DECL|method|ProjectInfo (final Project.NameKey key)
+DECL|method|ProjectOpenLink (final Project.NameKey proj)
 specifier|public
-name|ProjectInfo
+name|ProjectOpenLink
 parameter_list|(
 specifier|final
 name|Project
 operator|.
 name|NameKey
-name|key
+name|proj
 parameter_list|)
 block|{
 name|this
-operator|.
-name|key
-operator|=
-name|key
-expr_stmt|;
-block|}
-DECL|method|getKey ()
-specifier|public
-name|Project
-operator|.
-name|NameKey
-name|getKey
-parameter_list|()
-block|{
-return|return
-name|key
-return|;
-block|}
-DECL|method|getName ()
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|key
+argument_list|(
+name|proj
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|proj
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectOpenLink (final String text, final Project.NameKey proj)
+specifier|public
+name|ProjectOpenLink
+parameter_list|(
+specifier|final
+name|String
+name|text
+parameter_list|,
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|proj
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|text
+argument_list|,
+name|Link
+operator|.
+name|toProjectOpen
+argument_list|(
+name|proj
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|project
+operator|=
+name|proj
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|createScreen ()
+specifier|protected
+name|Screen
+name|createScreen
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ByProjectOpenChangesScreen
+argument_list|(
+name|project
+argument_list|,
+literal|"n,z"
+argument_list|)
 return|;
 block|}
 block|}

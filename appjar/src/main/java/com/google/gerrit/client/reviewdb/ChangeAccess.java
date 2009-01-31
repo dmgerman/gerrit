@@ -279,6 +279,62 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE open = true AND dest.projectName = ? AND sortKey> ?"
+operator|+
+literal|" ORDER BY sortKey LIMIT ?"
+argument_list|)
+DECL|method|byProjectOpenPrev (Project.NameKey p, String sortKey, int limit)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProjectOpenPrev
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|String
+name|sortKey
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE open = true AND dest.projectName = ? AND sortKey< ?"
+operator|+
+literal|" ORDER BY sortKey DESC LIMIT ?"
+argument_list|)
+DECL|method|byProjectOpenNext (Project.NameKey p, String sortKey, int limit)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProjectOpenNext
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|String
+name|sortKey
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE open = false AND status = ? AND sortKey> ? ORDER BY sortKey LIMIT ?"
 argument_list|)
 DECL|method|allClosedPrev (char status, String sortKey, int limit)
