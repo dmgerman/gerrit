@@ -1200,6 +1200,16 @@ name|doRegisterNewEmail
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+name|save
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
