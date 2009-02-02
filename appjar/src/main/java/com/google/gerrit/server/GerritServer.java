@@ -500,6 +500,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -1041,12 +1051,6 @@ name|dsName
 init|=
 literal|"java:comp/env/jdbc/ReviewDb"
 decl_stmt|;
-specifier|final
-name|String
-name|pName
-init|=
-literal|"GerritServer.properties"
-decl_stmt|;
 name|DataSource
 name|ds
 decl_stmt|;
@@ -1078,9 +1082,7 @@ name|Properties
 name|p
 init|=
 name|readGerritDataSource
-argument_list|(
-name|pName
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1093,15 +1095,17 @@ throw|throw
 operator|new
 name|OrmException
 argument_list|(
-literal|"No DataSource "
+literal|"Initialization error:\n"
+operator|+
+literal|"  * No DataSource "
 operator|+
 name|dsName
 operator|+
-literal|" and no "
+literal|"\n"
 operator|+
-name|pName
+literal|"  * No -DGerritServer=GerritServer.properties"
 operator|+
-literal|" in CLASSPATH.  GerritServer requires either format."
+literal|" on Java command line"
 argument_list|,
 name|namingErr
 argument_list|)
@@ -1128,11 +1132,7 @@ throw|throw
 operator|new
 name|OrmException
 argument_list|(
-literal|"Database in "
-operator|+
-name|pName
-operator|+
-literal|" unavailable"
+literal|"Database unavailable"
 argument_list|,
 name|se
 argument_list|)
@@ -1154,15 +1154,11 @@ name|class
 argument_list|)
 return|;
 block|}
-DECL|method|readGerritDataSource (final String name)
+DECL|method|readGerritDataSource ()
 specifier|private
 name|Properties
 name|readGerritDataSource
-parameter_list|(
-specifier|final
-name|String
-name|name
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1174,36 +1170,40 @@ operator|new
 name|Properties
 argument_list|()
 decl_stmt|;
-specifier|final
-name|InputStream
-name|in
-decl_stmt|;
-name|in
-operator|=
-name|getClass
-argument_list|()
-operator|.
-name|getClassLoader
-argument_list|()
-operator|.
-name|getResourceAsStream
-argument_list|(
+name|String
 name|name
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"GerritServer"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|in
+name|name
 operator|==
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
+name|name
+operator|=
+literal|"GerritServer.properties"
+expr_stmt|;
 block|}
 try|try
 block|{
+specifier|final
+name|InputStream
+name|in
+init|=
+operator|new
+name|FileInputStream
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|srvprop
