@@ -1190,13 +1190,13 @@ name|detail
 argument_list|)
 condition|)
 block|{
+name|populateCommentAction
+argument_list|()
+expr_stmt|;
 name|populateActions
 argument_list|(
 name|detail
 argument_list|)
-expr_stmt|;
-name|populateCommentAction
-argument_list|()
 expr_stmt|;
 block|}
 name|body
