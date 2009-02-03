@@ -210,6 +210,16 @@ name|String
 name|projectListTitle
 parameter_list|()
 function_decl|;
+DECL|method|projectAdminTabGeneral ()
+name|String
+name|projectAdminTabGeneral
+parameter_list|()
+function_decl|;
+DECL|method|projectAdminTabAccess ()
+name|String
+name|projectAdminTabAccess
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

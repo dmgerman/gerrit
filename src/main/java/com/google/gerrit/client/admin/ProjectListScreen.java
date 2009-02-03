@@ -610,6 +610,24 @@ name|History
 operator|.
 name|newItem
 argument_list|(
+name|link
+argument_list|(
+name|item
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|link (final Project item)
+specifier|private
+name|String
+name|link
+parameter_list|(
+specifier|final
+name|Project
+name|item
+parameter_list|)
+block|{
+return|return
 name|Link
 operator|.
 name|toProjectAdmin
@@ -618,9 +636,12 @@ name|item
 operator|.
 name|getId
 argument_list|()
+argument_list|,
+name|ProjectAdminScreen
+operator|.
+name|INFO_TAB
 argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|display (final List<Project> result)
 name|void
@@ -723,14 +744,9 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Link
-operator|.
-name|toProjectAdmin
+name|link
 argument_list|(
 name|k
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
