@@ -1260,11 +1260,6 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|err
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1278,23 +1273,9 @@ finally|finally
 block|{
 try|try
 block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|err
-parameter_list|)
-block|{       }
-try|try
-block|{
 name|out
 operator|.
-name|close
+name|flush
 argument_list|()
 expr_stmt|;
 block|}
@@ -1308,7 +1289,7 @@ try|try
 block|{
 name|err
 operator|.
-name|close
+name|flush
 argument_list|()
 expr_stmt|;
 block|}
