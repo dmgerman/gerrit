@@ -115,6 +115,11 @@ name|String
 name|registeredOn
 parameter_list|()
 function_decl|;
+DECL|method|accountId ()
+name|String
+name|accountId
+parameter_list|()
+function_decl|;
 DECL|method|defaultContext ()
 name|String
 name|defaultContext
