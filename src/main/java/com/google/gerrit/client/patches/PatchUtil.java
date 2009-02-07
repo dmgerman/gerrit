@@ -189,7 +189,7 @@ literal|"rpc/PatchDetailService"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|lineToHTML (final String src, final int lineLength)
+DECL|method|lineToHTML (final String src, final int lineLength, final boolean showWhiteSpaceErrors)
 specifier|public
 specifier|static
 name|String
@@ -202,6 +202,10 @@ parameter_list|,
 specifier|final
 name|int
 name|lineLength
+parameter_list|,
+specifier|final
+name|boolean
+name|showWhiteSpaceErrors
 parameter_list|)
 block|{
 specifier|final
@@ -239,6 +243,26 @@ argument_list|(
 name|brokenSrc
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|showWhiteSpaceErrors
+condition|)
+block|{
+name|html
+operator|=
+name|showTabAfterSpace
+argument_list|(
+name|html
+argument_list|)
+expr_stmt|;
+name|html
+operator|=
+name|showTrailingWhitespace
+argument_list|(
+name|html
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|brokenSrc
@@ -443,6 +467,30 @@ name|String
 name|src
 parameter_list|)
 comment|/*-{ return src.replace(/\n/g, '<br>'); }-*/
+function_decl|;
+DECL|method|showTabAfterSpace (String src)
+specifier|private
+specifier|native
+specifier|static
+name|String
+name|showTabAfterSpace
+parameter_list|(
+name|String
+name|src
+parameter_list|)
+comment|/*-{ return src.replace(/^(  *\t)/, '<span class="gerrit-whitespaceerror">$1</span>'); }-*/
+function_decl|;
+DECL|method|showTrailingWhitespace (String src)
+specifier|private
+specifier|native
+specifier|static
+name|String
+name|showTrailingWhitespace
+parameter_list|(
+name|String
+name|src
+parameter_list|)
+comment|/*-{ return src.replace(/([ \t][ \t]*)(\r?\n?)$/, '<span class="gerrit-whitespaceerror">$1</span>$2'); }-*/
 function_decl|;
 block|}
 end_class
