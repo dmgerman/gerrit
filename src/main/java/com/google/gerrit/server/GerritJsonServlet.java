@@ -331,6 +331,11 @@ operator|.
 name|terminate
 argument_list|()
 expr_stmt|;
+name|GerritServer
+operator|.
+name|closeDataSource
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|destroy
