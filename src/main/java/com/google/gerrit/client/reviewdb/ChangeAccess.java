@@ -237,6 +237,27 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE status = '"
+operator|+
+name|Change
+operator|.
+name|STATUS_SUBMITTED
+operator|+
+literal|"'"
+argument_list|)
+DECL|method|allSubmitted ()
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|allSubmitted
+parameter_list|()
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE open = true AND sortKey> ? ORDER BY sortKey LIMIT ?"
 argument_list|)
 DECL|method|allOpenPrev (String sortKey, int limit)
