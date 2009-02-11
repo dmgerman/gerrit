@@ -100,6 +100,16 @@ name|String
 name|defaultAccountGroupName
 parameter_list|()
 function_decl|;
+DECL|method|defaultBranchName ()
+name|String
+name|defaultBranchName
+parameter_list|()
+function_decl|;
+DECL|method|defaultRevisionSpec ()
+name|String
+name|defaultRevisionSpec
+parameter_list|()
+function_decl|;
 DECL|method|buttonDeleteGroupMembers ()
 name|String
 name|buttonDeleteGroupMembers
@@ -200,6 +210,26 @@ name|String
 name|columnRightRange
 parameter_list|()
 function_decl|;
+DECL|method|columnBranchName ()
+name|String
+name|columnBranchName
+parameter_list|()
+function_decl|;
+DECL|method|initialRevision ()
+name|String
+name|initialRevision
+parameter_list|()
+function_decl|;
+DECL|method|buttonAddBranch ()
+name|String
+name|buttonAddBranch
+parameter_list|()
+function_decl|;
+DECL|method|buttonDeleteBranch ()
+name|String
+name|buttonDeleteBranch
+parameter_list|()
+function_decl|;
 DECL|method|groupListTitle ()
 name|String
 name|groupListTitle
@@ -213,6 +243,11 @@ function_decl|;
 DECL|method|projectAdminTabGeneral ()
 name|String
 name|projectAdminTabGeneral
+parameter_list|()
+function_decl|;
+DECL|method|projectAdminTabBranches ()
+name|String
+name|projectAdminTabBranches
 parameter_list|()
 function_decl|;
 DECL|method|projectAdminTabAccess ()
