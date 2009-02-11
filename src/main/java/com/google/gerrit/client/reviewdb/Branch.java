@@ -119,6 +119,24 @@ specifier|final
 class|class
 name|Branch
 block|{
+DECL|field|R_HEADS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|R_HEADS
+init|=
+literal|"refs/heads/"
+decl_stmt|;
+DECL|field|R_REFS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|R_REFS
+init|=
+literal|"refs/"
+decl_stmt|;
 comment|/** Branch name key */
 DECL|class|NameKey
 specifier|public
@@ -250,7 +268,7 @@ name|n
 operator|.
 name|startsWith
 argument_list|(
-literal|"refs/heads/"
+name|R_HEADS
 argument_list|)
 condition|)
 block|{
@@ -259,7 +277,7 @@ name|n
 operator|.
 name|substring
 argument_list|(
-literal|"refs/heads/"
+name|R_HEADS
 operator|.
 name|length
 argument_list|()
