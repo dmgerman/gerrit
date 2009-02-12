@@ -235,6 +235,11 @@ name|String
 name|approvalTableReviewer
 parameter_list|()
 function_decl|;
+DECL|method|approvalTableAddReviewer ()
+name|String
+name|approvalTableAddReviewer
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockOwner ()
 name|String
 name|changeInfoBlockOwner
