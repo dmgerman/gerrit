@@ -465,6 +465,11 @@ argument_list|>
 name|list
 parameter_list|)
 block|{
+name|initVersions
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
 specifier|final
 name|StringBuilder
 name|nc
