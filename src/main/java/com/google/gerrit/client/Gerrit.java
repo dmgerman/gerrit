@@ -1079,6 +1079,29 @@ name|void
 name|onModuleLoad
 parameter_list|()
 block|{
+if|if
+condition|(
+name|GWT
+operator|.
+name|isScript
+argument_list|()
+operator|&&
+name|amInsideIFrame
+argument_list|()
+condition|)
+block|{
+name|bustOutOfIFrame
+argument_list|(
+name|Window
+operator|.
+name|Location
+operator|.
+name|getHref
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|initHistoryHooks
 argument_list|()
 expr_stmt|;
@@ -1182,6 +1205,27 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|amInsideIFrame ()
+specifier|private
+specifier|static
+specifier|native
+name|boolean
+name|amInsideIFrame
+parameter_list|()
+comment|/*-{ return top.location != $wnd.location; }-*/
+function_decl|;
+DECL|method|bustOutOfIFrame (String newloc)
+specifier|private
+specifier|static
+specifier|native
+name|void
+name|bustOutOfIFrame
+parameter_list|(
+name|String
+name|newloc
+parameter_list|)
+comment|/*-{ top.location.href = newloc }-*/
+function_decl|;
 DECL|field|historyHooks
 specifier|private
 specifier|static
