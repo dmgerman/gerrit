@@ -215,7 +215,7 @@ name|column
 argument_list|,
 name|pl
 operator|.
-name|getOldLineNumber
+name|getNewLineNumber
 argument_list|()
 argument_list|,
 operator|(
