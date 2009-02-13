@@ -1036,7 +1036,7 @@ block|}
 block|}
 block|}
 DECL|method|onOpen ()
-specifier|private
+specifier|protected
 name|void
 name|onOpen
 parameter_list|()
