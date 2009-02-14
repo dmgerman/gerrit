@@ -3752,6 +3752,7 @@ argument_list|,
 literal|"diff error"
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -3780,6 +3781,7 @@ argument_list|,
 literal|"database error"
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 block|}
 name|newChange
