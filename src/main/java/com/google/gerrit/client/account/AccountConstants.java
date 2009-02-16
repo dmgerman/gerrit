@@ -205,6 +205,11 @@ name|String
 name|addSshKeyHelp
 parameter_list|()
 function_decl|;
+DECL|method|invalidSshKeyError ()
+name|String
+name|invalidSshKeyError
+parameter_list|()
+function_decl|;
 DECL|method|webIdLastUsed ()
 name|String
 name|webIdLastUsed
