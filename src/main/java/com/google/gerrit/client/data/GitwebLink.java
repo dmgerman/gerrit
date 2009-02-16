@@ -197,6 +197,13 @@ argument_list|,
 name|project
 argument_list|)
 expr_stmt|;
+name|a
+argument_list|(
+name|r
+argument_list|,
+literal|"commit"
+argument_list|)
+expr_stmt|;
 name|h
 argument_list|(
 name|r
