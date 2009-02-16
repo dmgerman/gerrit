@@ -1648,6 +1648,13 @@ name|getElement
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|RootPanel
+operator|.
+name|detachNow
+argument_list|(
+name|sg
+argument_list|)
+expr_stmt|;
 name|History
 operator|.
 name|addHistoryListener
