@@ -165,6 +165,11 @@ name|String
 name|buttonClearSshKeyInput
 parameter_list|()
 function_decl|;
+DECL|method|buttonOpenSshKey ()
+name|String
+name|buttonOpenSshKey
+parameter_list|()
+function_decl|;
 DECL|method|buttonAddSshKey ()
 name|String
 name|buttonAddSshKey
@@ -208,6 +213,11 @@ function_decl|;
 DECL|method|addSshKeyHelp ()
 name|String
 name|addSshKeyHelp
+parameter_list|()
+function_decl|;
+DECL|method|sshJavaAppletNotAvailable ()
+name|String
+name|sshJavaAppletNotAvailable
 parameter_list|()
 function_decl|;
 DECL|method|invalidSshKeyError ()
