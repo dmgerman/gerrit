@@ -160,6 +160,11 @@ name|String
 name|buttonDeleteSshKey
 parameter_list|()
 function_decl|;
+DECL|method|buttonClearSshKeyInput ()
+name|String
+name|buttonClearSshKeyInput
+parameter_list|()
+function_decl|;
 DECL|method|buttonAddSshKey ()
 name|String
 name|buttonAddSshKey
