@@ -400,6 +400,24 @@ name|addPanel
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setAddButtonText (final String text)
+specifier|public
+name|void
+name|setAddButtonText
+parameter_list|(
+specifier|final
+name|String
+name|text
+parameter_list|)
+block|{
+name|addMember
+operator|.
+name|setText
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|addClickListener (ClickListener listener)
 specifier|public
 name|void
