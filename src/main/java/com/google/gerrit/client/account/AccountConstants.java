@@ -165,6 +165,11 @@ name|String
 name|buttonAddSshKey
 parameter_list|()
 function_decl|;
+DECL|method|sshKeyInvalid ()
+name|String
+name|sshKeyInvalid
+parameter_list|()
+function_decl|;
 DECL|method|sshKeyAlgorithm ()
 name|String
 name|sshKeyAlgorithm
