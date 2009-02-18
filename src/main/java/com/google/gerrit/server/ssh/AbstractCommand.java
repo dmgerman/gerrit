@@ -1108,6 +1108,44 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|IOException
+operator|.
+name|class
+operator|&&
+literal|"Pipe closed"
+operator|.
+name|equals
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// This is sshd telling us the client just dropped off while
+comment|// we were waiting for a read or a write to complete. Either
+comment|// way its not really a fatal error. Don't log it.
+comment|//
+throw|throw
+operator|new
+name|UnloggedFailure
+argument_list|(
+literal|127
+argument_list|,
+literal|"error: client went away"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 throw|throw
 operator|new
 name|Failure
