@@ -2382,7 +2382,7 @@ specifier|final
 name|String
 name|txt
 init|=
-literal|"Your change could not been merged due to a path conflict.\n"
+literal|"Your change could not be merged due to a path conflict.\n"
 operator|+
 literal|"\n"
 operator|+
