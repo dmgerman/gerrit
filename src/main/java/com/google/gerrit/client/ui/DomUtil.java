@@ -300,7 +300,7 @@ parameter_list|(
 name|String
 name|src
 parameter_list|)
-comment|/*-{ return src.replace(/&/g,'&amp;').replace(/>/g,'&gt;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }-*/
+comment|/*-{ return src.replace(/&/g,'&amp;')                    .replace(/>/g,'&gt;')                    .replace(/</g,'&lt;')                    .replace(/"/g,'&quot;')                    .replace(/'/g,'&#39;')                    ; }-*/
 function_decl|;
 block|}
 DECL|class|JavaImpl
@@ -410,6 +410,17 @@ operator|.
 name|append
 argument_list|(
 literal|"&quot;"
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|'\''
+case|:
+name|r
+operator|.
+name|append
+argument_list|(
+literal|"&#39;"
 argument_list|)
 expr_stmt|;
 break|break;
