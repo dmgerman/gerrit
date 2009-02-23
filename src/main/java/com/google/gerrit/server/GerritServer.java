@@ -3237,6 +3237,17 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
+name|setUseContactInfo
+argument_list|(
+name|sConfig
+operator|.
+name|contactStoreURL
+operator|!=
+literal|null
+argument_list|)
+expr_stmt|;
+name|r
+operator|.
 name|setLoginType
 argument_list|(
 name|sConfig
@@ -3566,6 +3577,30 @@ return|return
 name|sConfig
 operator|.
 name|emailFormat
+return|;
+block|}
+DECL|method|getContactStoreURL ()
+specifier|public
+name|String
+name|getContactStoreURL
+parameter_list|()
+block|{
+return|return
+name|sConfig
+operator|.
+name|contactStoreURL
+return|;
+block|}
+DECL|method|getContactStoreAPPSEC ()
+specifier|public
+name|String
+name|getContactStoreAPPSEC
+parameter_list|()
+block|{
+return|return
+name|sConfig
+operator|.
+name|contactStoreAPPSEC
 return|;
 block|}
 comment|/** A binary string key to encrypt cookies related to account data. */

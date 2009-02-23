@@ -285,6 +285,11 @@ name|String
 name|contactFieldEmail
 parameter_list|()
 function_decl|;
+DECL|method|contactPrivacyDetailsHtml ()
+name|String
+name|contactPrivacyDetailsHtml
+parameter_list|()
+function_decl|;
 DECL|method|contactFieldAddress ()
 name|String
 name|contactFieldAddress

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2008 Google Inc.
+comment|// Copyright 2009 Google Inc.
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.account
+DECL|package|com.google.gerrit.client.rpc
 package|package
 name|com
 operator|.
@@ -62,70 +62,61 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|rpc
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
-import|;
-end_import
+begin_comment
+comment|/** Error indicating the server cannot store contact information. */
+end_comment
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
-begin_interface
-DECL|interface|AccountMessages
+begin_class
+DECL|class|ContactInformationStoreException
 specifier|public
-interface|interface
-name|AccountMessages
+class|class
+name|ContactInformationStoreException
 extends|extends
-name|Messages
+name|Exception
 block|{
-DECL|method|lines (short cnt)
+DECL|field|MESSAGE
+specifier|public
+specifier|static
+specifier|final
 name|String
-name|lines
-parameter_list|(
-name|short
-name|cnt
-parameter_list|)
-function_decl|;
-DECL|method|enterIAGREE (String iagree)
-name|String
-name|enterIAGREE
-parameter_list|(
-name|String
-name|iagree
-parameter_list|)
-function_decl|;
-DECL|method|contactOnFile (Date lastDate)
-name|String
-name|contactOnFile
-parameter_list|(
-name|Date
-name|lastDate
-parameter_list|)
-function_decl|;
+name|MESSAGE
+init|=
+literal|"Cannot store contact information"
+decl_stmt|;
+DECL|method|ContactInformationStoreException ()
+specifier|public
+name|ContactInformationStoreException
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+DECL|method|ContactInformationStoreException (final Throwable why)
+specifier|public
+name|ContactInformationStoreException
+parameter_list|(
+specifier|final
+name|Throwable
+name|why
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+argument_list|,
+name|why
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 

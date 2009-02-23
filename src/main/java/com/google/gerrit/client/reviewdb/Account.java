@@ -536,7 +536,7 @@ specifier|protected
 name|boolean
 name|showSiteHeader
 decl_stmt|;
-comment|/** Non-Internet based contact details for the account's owner. */
+comment|/** When did the user last give us contact information? Null if never. */
 annotation|@
 name|Column
 argument_list|(
@@ -544,10 +544,10 @@ name|notNull
 operator|=
 literal|false
 argument_list|)
-DECL|field|contact
+DECL|field|contactFiledOn
 specifier|protected
-name|ContactInformation
-name|contact
+name|Timestamp
+name|contactFiledOn
 decl_stmt|;
 DECL|method|Account ()
 specifier|protected
@@ -772,29 +772,44 @@ operator|=
 name|b
 expr_stmt|;
 block|}
-DECL|method|getContactInformation ()
+DECL|method|isContactFiled ()
 specifier|public
-name|ContactInformation
-name|getContactInformation
+name|boolean
+name|isContactFiled
 parameter_list|()
 block|{
 return|return
-name|contact
+name|contactFiledOn
+operator|!=
+literal|null
 return|;
 block|}
-DECL|method|setContactInformation (final ContactInformation i)
+DECL|method|getContactFiledOn ()
+specifier|public
+name|Timestamp
+name|getContactFiledOn
+parameter_list|()
+block|{
+return|return
+name|contactFiledOn
+return|;
+block|}
+DECL|method|setContactFiled ()
 specifier|public
 name|void
-name|setContactInformation
-parameter_list|(
-specifier|final
-name|ContactInformation
-name|i
-parameter_list|)
+name|setContactFiled
+parameter_list|()
 block|{
-name|contact
+name|contactFiledOn
 operator|=
-name|i
+operator|new
+name|Timestamp
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

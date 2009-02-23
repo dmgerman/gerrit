@@ -180,6 +180,11 @@ specifier|protected
 name|boolean
 name|useContributorAgreements
 decl_stmt|;
+DECL|field|useContactInfo
+specifier|protected
+name|boolean
+name|useContactInfo
+decl_stmt|;
 DECL|field|loginType
 specifier|protected
 name|SystemConfig
@@ -466,6 +471,31 @@ name|r
 parameter_list|)
 block|{
 name|useContributorAgreements
+operator|=
+name|r
+expr_stmt|;
+block|}
+DECL|method|isUseContactInfo ()
+specifier|public
+name|boolean
+name|isUseContactInfo
+parameter_list|()
+block|{
+return|return
+name|useContactInfo
+return|;
+block|}
+DECL|method|setUseContactInfo (final boolean r)
+specifier|public
+name|void
+name|setUseContactInfo
+parameter_list|(
+specifier|final
+name|boolean
+name|r
+parameter_list|)
+block|{
+name|useContactInfo
 operator|=
 name|r
 expr_stmt|;

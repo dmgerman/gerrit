@@ -78,6 +78,22 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|AccountExternalId
 import|;
 end_import
@@ -291,7 +307,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|updateContact (String fullName, String emailAddr, ContactInformation info, AsyncCallback<VoidResult> callback)
+DECL|method|updateContact (String fullName, String emailAddr, ContactInformation info, AsyncCallback<Account> callback)
 name|void
 name|updateContact
 parameter_list|(
@@ -306,7 +322,7 @@ name|info
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|Account
 argument_list|>
 name|callback
 parameter_list|)
