@@ -307,6 +307,32 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|deleteExternalIds (Set<AccountExternalId.Key> keys, AsyncCallback<Set<AccountExternalId.Key>> callback)
+name|void
+name|deleteExternalIds
+parameter_list|(
+name|Set
+argument_list|<
+name|AccountExternalId
+operator|.
+name|Key
+argument_list|>
+name|keys
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|Set
+argument_list|<
+name|AccountExternalId
+operator|.
+name|Key
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|updateContact (String fullName, String emailAddr, ContactInformation info, AsyncCallback<Account> callback)
 name|void
 name|updateContact

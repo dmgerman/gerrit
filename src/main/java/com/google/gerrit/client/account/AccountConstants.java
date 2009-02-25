@@ -240,6 +240,11 @@ name|String
 name|webIdIdentity
 parameter_list|()
 function_decl|;
+DECL|method|buttonDeleteIdentity ()
+name|String
+name|buttonDeleteIdentity
+parameter_list|()
+function_decl|;
 DECL|method|buttonLinkIdentity ()
 name|String
 name|buttonLinkIdentity
