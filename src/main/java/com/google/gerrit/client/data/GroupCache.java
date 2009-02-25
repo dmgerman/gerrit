@@ -1031,7 +1031,7 @@ name|TrustedExternalId
 operator|.
 name|isIdentityTrustable
 argument_list|(
-name|getTrustedIds
+name|getTrustedExternalIds
 argument_list|(
 name|db
 argument_list|)
@@ -1049,14 +1049,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getTrustedIds (final ReviewDb db)
-specifier|private
+DECL|method|getTrustedExternalIds ( final ReviewDb db)
+specifier|public
 specifier|synchronized
 name|List
 argument_list|<
 name|TrustedExternalId
 argument_list|>
-name|getTrustedIds
+name|getTrustedExternalIds
 parameter_list|(
 specifier|final
 name|ReviewDb

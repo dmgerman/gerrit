@@ -230,6 +230,11 @@ name|String
 name|webIdLastUsed
 parameter_list|()
 function_decl|;
+DECL|method|webIdStatus ()
+name|String
+name|webIdStatus
+parameter_list|()
+function_decl|;
 DECL|method|webIdEmail ()
 name|String
 name|webIdEmail
@@ -238,6 +243,11 @@ function_decl|;
 DECL|method|webIdIdentity ()
 name|String
 name|webIdIdentity
+parameter_list|()
+function_decl|;
+DECL|method|untrustedProvider ()
+name|String
+name|untrustedProvider
 parameter_list|()
 function_decl|;
 DECL|method|buttonDeleteIdentity ()

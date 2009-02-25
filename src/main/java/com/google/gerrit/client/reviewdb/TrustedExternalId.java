@@ -239,7 +239,7 @@ literal|true
 return|;
 block|}
 DECL|method|isTrusted (final AccountExternalId id, final Collection<TrustedExternalId> trusted)
-specifier|private
+specifier|public
 specifier|static
 name|boolean
 name|isTrusted

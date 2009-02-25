@@ -291,16 +291,13 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|myExternalIds (AsyncCallback<List<AccountExternalId>> callback)
+DECL|method|myExternalIds (AsyncCallback<ExternalIdDetail> callback)
 name|void
 name|myExternalIds
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|AccountExternalId
-argument_list|>
+name|ExternalIdDetail
 argument_list|>
 name|callback
 parameter_list|)
