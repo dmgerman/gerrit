@@ -476,7 +476,7 @@ name|groups
 init|=
 name|groupCache
 operator|.
-name|getGroups
+name|getEffectiveGroups
 argument_list|(
 name|account
 argument_list|)

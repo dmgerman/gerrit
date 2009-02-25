@@ -1545,6 +1545,16 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|Common
+operator|.
+name|getGroupCache
+argument_list|()
+operator|.
+name|invalidate
+argument_list|(
+name|me
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|removed

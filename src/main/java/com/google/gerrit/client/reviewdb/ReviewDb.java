@@ -141,7 +141,7 @@ specifier|final
 name|int
 name|VERSION
 init|=
-literal|5
+literal|6
 decl_stmt|;
 annotation|@
 name|Relation
@@ -155,6 +155,13 @@ name|Relation
 DECL|method|systemConfig ()
 name|SystemConfigAccess
 name|systemConfig
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|trustedExternalIds ()
+name|TrustedExternalIdAccess
+name|trustedExternalIds
 parameter_list|()
 function_decl|;
 annotation|@

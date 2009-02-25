@@ -3384,7 +3384,7 @@ operator|.
 name|getGroupCache
 argument_list|()
 operator|.
-name|getGroups
+name|getEffectiveGroups
 argument_list|(
 name|me
 argument_list|)

@@ -1350,7 +1350,7 @@ operator|.
 name|getGroupCache
 argument_list|()
 operator|.
-name|getGroups
+name|getEffectiveGroups
 argument_list|(
 name|id
 argument_list|)
