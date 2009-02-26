@@ -897,6 +897,26 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Invalidate all cached keys. */
+DECL|method|flush ()
+specifier|public
+specifier|static
+name|void
+name|flush
+parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|keys
+init|)
+block|{
+name|keys
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 comment|/** Locate keys for the requested account whose email matches the name given. */
 DECL|method|keysFor (final String username)
 specifier|public

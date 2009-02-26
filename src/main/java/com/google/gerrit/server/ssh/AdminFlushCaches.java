@@ -164,6 +164,11 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+name|SshUtil
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
