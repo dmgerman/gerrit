@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright 2008 Google Inc.
+comment|// Copyright 2009 Google Inc.
 end_comment
 
 begin_comment
@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|core
 operator|.
 name|client
 operator|.
-name|Window
+name|GWT
 import|;
 end_import
 
@@ -94,30 +94,42 @@ name|user
 operator|.
 name|client
 operator|.
-name|WindowResizeListener
+name|ui
+operator|.
+name|DialogBox
 import|;
 end_import
 
 begin_comment
-comment|/** A DialogBox that automatically re-centers itself if the window changes */
+comment|/**  * A DialogBox that can appear over Flash movies and Java applets.  *<p>  * Some browsers have issues with placing a&lt;div&gt; (such as that used by  * the DialogBox implementation) over top of native UI such as that used by the  * Flash plugin. Often the native UI leaks over top of the&lt;div&gt;, which is  * not the desired behavior for a dialog box.  *<p>  * This implementation hides the native resources by setting their display  * property to 'none' when the dialog is shown, and restores them back to their  * prior setting when the dialog is hidden.  * */
 end_comment
 
 begin_class
-DECL|class|AutoCenterDialogBox
+DECL|class|PluginSafeDialogBox
 specifier|public
 class|class
-name|AutoCenterDialogBox
-extends|extends
 name|PluginSafeDialogBox
+extends|extends
+name|DialogBox
 block|{
-DECL|field|recenter
+DECL|field|impl
 specifier|private
-name|WindowResizeListener
-name|recenter
+specifier|final
+name|PluginSafeDialogBoxImpl
+name|impl
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|PluginSafeDialogBoxImpl
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
-DECL|method|AutoCenterDialogBox ()
+DECL|method|PluginSafeDialogBox ()
 specifier|public
-name|AutoCenterDialogBox
+name|PluginSafeDialogBox
 parameter_list|()
 block|{
 name|this
@@ -126,9 +138,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AutoCenterDialogBox (final boolean autoHide)
+DECL|method|PluginSafeDialogBox (final boolean autoHide)
 specifier|public
-name|AutoCenterDialogBox
+name|PluginSafeDialogBox
 parameter_list|(
 specifier|final
 name|boolean
@@ -143,9 +155,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AutoCenterDialogBox (final boolean autoHide, final boolean modal)
+DECL|method|PluginSafeDialogBox (final boolean autoHide, final boolean modal)
 specifier|public
-name|AutoCenterDialogBox
+name|PluginSafeDialogBox
 parameter_list|(
 specifier|final
 name|boolean
@@ -161,6 +173,33 @@ argument_list|(
 name|autoHide
 argument_list|,
 name|modal
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|setVisible (final boolean show)
+specifier|public
+name|void
+name|setVisible
+parameter_list|(
+specifier|final
+name|boolean
+name|show
+parameter_list|)
+block|{
+name|impl
+operator|.
+name|visible
+argument_list|(
+name|show
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setVisible
+argument_list|(
+name|show
 argument_list|)
 expr_stmt|;
 block|}
@@ -172,50 +211,13 @@ name|void
 name|show
 parameter_list|()
 block|{
-if|if
-condition|(
-name|recenter
-operator|==
-literal|null
-condition|)
-block|{
-name|recenter
-operator|=
-operator|new
-name|WindowResizeListener
-argument_list|()
-block|{
-specifier|public
-name|void
-name|onWindowResized
-parameter_list|(
-specifier|final
-name|int
-name|width
-parameter_list|,
-specifier|final
-name|int
-name|height
-parameter_list|)
-block|{
-name|onResize
-argument_list|(
-name|width
-argument_list|,
-name|height
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-expr_stmt|;
-name|Window
+name|impl
 operator|.
-name|addWindowResizeListener
+name|visible
 argument_list|(
-name|recenter
+literal|true
 argument_list|)
 expr_stmt|;
-block|}
 name|super
 operator|.
 name|show
@@ -224,62 +226,30 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onUnload ()
-specifier|protected
+DECL|method|hide (final boolean autoClosed)
+specifier|public
 name|void
-name|onUnload
-parameter_list|()
-block|{
-if|if
-condition|(
-name|recenter
-operator|!=
-literal|null
-condition|)
-block|{
-name|Window
-operator|.
-name|removeWindowResizeListener
-argument_list|(
-name|recenter
-argument_list|)
-expr_stmt|;
-name|recenter
-operator|=
-literal|null
-expr_stmt|;
-block|}
-name|super
-operator|.
-name|onUnload
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**    * Invoked when the outer browser window resizes.    *<p>    * Subclasses may override (but should ensure they still call super.onResize)    * to implement custom logic when a window resize occurs.    *     * @param width new browser window width    * @param height new browser window height    */
-DECL|method|onResize (final int width, final int height)
-specifier|protected
-name|void
-name|onResize
+name|hide
 parameter_list|(
 specifier|final
-name|int
-name|width
-parameter_list|,
-specifier|final
-name|int
-name|height
+name|boolean
+name|autoClosed
 parameter_list|)
 block|{
-if|if
-condition|(
-name|isAttached
-argument_list|()
-condition|)
-block|{
-name|center
-argument_list|()
+name|impl
+operator|.
+name|visible
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
-block|}
+name|super
+operator|.
+name|hide
+argument_list|(
+name|autoClosed
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
