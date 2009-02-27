@@ -690,7 +690,7 @@ name|fmt
 operator|.
 name|addStyleName
 argument_list|(
-literal|5
+literal|4
 argument_list|,
 literal|0
 argument_list|,
