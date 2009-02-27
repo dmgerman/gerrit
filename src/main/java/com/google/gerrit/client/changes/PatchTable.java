@@ -150,22 +150,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|ProgressMeter
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|user
@@ -241,6 +225,22 @@ operator|.
 name|ui
 operator|.
 name|TableListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|progress
+operator|.
+name|client
+operator|.
+name|ProgressBar
 import|;
 end_import
 
@@ -1160,7 +1160,7 @@ name|start
 decl_stmt|;
 DECL|field|meter
 specifier|private
-name|ProgressMeter
+name|ProgressBar
 name|meter
 decl_stmt|;
 DECL|method|DisplayCommand (final List<Patch> list)
@@ -1406,7 +1406,7 @@ expr_stmt|;
 name|meter
 operator|=
 operator|new
-name|ProgressMeter
+name|ProgressBar
 argument_list|(
 name|Util
 operator|.
