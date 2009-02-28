@@ -68,6 +68,7 @@ end_package
 
 begin_class
 DECL|class|BufferSealElement
+specifier|final
 class|class
 name|BufferSealElement
 implements|implements

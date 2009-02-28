@@ -68,6 +68,7 @@ end_package
 
 begin_class
 DECL|class|BufferDirect
+specifier|final
 class|class
 name|BufferDirect
 implements|implements
