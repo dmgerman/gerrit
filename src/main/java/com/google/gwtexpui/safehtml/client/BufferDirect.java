@@ -84,6 +84,20 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+DECL|method|isEmpty ()
+name|boolean
+name|isEmpty
+parameter_list|()
+block|{
+return|return
+name|strbuf
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+return|;
+block|}
 DECL|method|append (final boolean v)
 specifier|public
 name|void

@@ -163,6 +163,33 @@ name|BufferDirect
 argument_list|()
 expr_stmt|;
 block|}
+comment|/** @return true if this builder has not had an append occur yet. */
+DECL|method|isEmpty ()
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+block|{
+return|return
+name|dBuf
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
+comment|/** @return true if this builder has content appended into it. */
+DECL|method|hasContent ()
+specifier|public
+name|boolean
+name|hasContent
+parameter_list|()
+block|{
+return|return
+operator|!
+name|isEmpty
+argument_list|()
+return|;
+block|}
 DECL|method|append (final boolean in)
 specifier|public
 name|SafeHtmlBuilder
