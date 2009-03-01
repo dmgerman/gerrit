@@ -72,13 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
+operator|.
+name|core
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|DomUtil
+name|GWT
 import|;
 end_import
 
@@ -88,13 +88,29 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|core
+name|safehtml
 operator|.
 name|client
 operator|.
-name|GWT
+name|SafeHtml
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|SafeHtmlBuilder
 import|;
 end_import
 
@@ -189,11 +205,11 @@ literal|"rpc/PatchDetailService"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|lineToHTML (final String src, final int lineLength, final boolean showWhiteSpaceErrors)
+DECL|method|lineToSafeHtml (final String src, final int lineLength, final boolean showWhiteSpaceErrors)
 specifier|public
 specifier|static
-name|String
-name|lineToHTML
+name|SafeHtml
+name|lineToSafeHtml
 parameter_list|(
 specifier|final
 name|String
@@ -233,12 +249,14 @@ argument_list|,
 name|lineLength
 argument_list|)
 decl_stmt|;
-name|String
+name|SafeHtml
 name|html
 init|=
-name|DomUtil
+operator|new
+name|SafeHtmlBuilder
+argument_list|()
 operator|.
-name|escape
+name|append
 argument_list|(
 name|brokenSrc
 argument_list|)
@@ -444,54 +462,90 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|expandTabs (String src)
+DECL|method|expandTabs (SafeHtml src)
 specifier|private
-specifier|native
 specifier|static
-name|String
+name|SafeHtml
 name|expandTabs
 parameter_list|(
-name|String
+name|SafeHtml
 name|src
 parameter_list|)
-comment|/*-{ return src.replace(/\t/g, '<span title="Visual Tab" class="gerrit-visualtab">&raquo;</span>\t'); }-*/
-function_decl|;
-DECL|method|expandLFs (String src)
+block|{
+return|return
+name|src
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\t"
+argument_list|,
+literal|"<span title=\"Visual Tab\" class=\"gerrit-visualtab\">&raquo;</span>\t"
+argument_list|)
+return|;
+block|}
+DECL|method|expandLFs (SafeHtml src)
 specifier|private
-specifier|native
 specifier|static
-name|String
+name|SafeHtml
 name|expandLFs
 parameter_list|(
-name|String
+name|SafeHtml
 name|src
 parameter_list|)
-comment|/*-{ return src.replace(/\n/g, '<br>'); }-*/
-function_decl|;
-DECL|method|showTabAfterSpace (String src)
+block|{
+return|return
+name|src
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|"<br />"
+argument_list|)
+return|;
+block|}
+DECL|method|showTabAfterSpace (SafeHtml src)
 specifier|private
-specifier|native
 specifier|static
-name|String
+name|SafeHtml
 name|showTabAfterSpace
 parameter_list|(
-name|String
+name|SafeHtml
 name|src
 parameter_list|)
-comment|/*-{ return src.replace(/^(  *\t)/, '<span class="gerrit-whitespaceerror">$1</span>'); }-*/
-function_decl|;
-DECL|method|showTrailingWhitespace (String src)
+block|{
+return|return
+name|src
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"^(  *\t)"
+argument_list|,
+literal|"<span class=\"gerrit-whitespaceerror\">$1</span>"
+argument_list|)
+return|;
+block|}
+DECL|method|showTrailingWhitespace (SafeHtml src)
 specifier|private
-specifier|native
 specifier|static
-name|String
+name|SafeHtml
 name|showTrailingWhitespace
 parameter_list|(
-name|String
+name|SafeHtml
 name|src
 parameter_list|)
-comment|/*-{ return src.replace(/([ \t][ \t]*)(\r?\n?)$/, '<span class="gerrit-whitespaceerror">$1</span>$2'); }-*/
-function_decl|;
+block|{
+return|return
+name|src
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"([ \t][ \t]*)(\r?\n?)$"
+argument_list|,
+literal|"<span class=\"gerrit-whitespaceerror\">$1</span>$2"
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

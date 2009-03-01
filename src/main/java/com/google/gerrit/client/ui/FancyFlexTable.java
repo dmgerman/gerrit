@@ -378,6 +378,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|SafeHtml
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -845,13 +861,13 @@ name|item
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|resetHtml (final String body)
+DECL|method|resetHtml (final SafeHtml body)
 specifier|protected
 name|void
 name|resetHtml
 parameter_list|(
 specifier|final
-name|String
+name|SafeHtml
 name|body
 parameter_list|)
 block|{
