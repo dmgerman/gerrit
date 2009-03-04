@@ -310,6 +310,31 @@ name|String
 name|patchSetInfoDownload
 parameter_list|()
 function_decl|;
+DECL|method|buttonAbandonChangeBegin ()
+name|String
+name|buttonAbandonChangeBegin
+parameter_list|()
+function_decl|;
+DECL|method|buttonAbandonChangeSend ()
+name|String
+name|buttonAbandonChangeSend
+parameter_list|()
+function_decl|;
+DECL|method|buttonAbandonChangeCancel ()
+name|String
+name|buttonAbandonChangeCancel
+parameter_list|()
+function_decl|;
+DECL|method|headingAbandonMessage ()
+name|String
+name|headingAbandonMessage
+parameter_list|()
+function_decl|;
+DECL|method|abandonChangeTitle ()
+name|String
+name|abandonChangeTitle
+parameter_list|()
+function_decl|;
 DECL|method|buttonPublishCommentsBegin ()
 name|String
 name|buttonPublishCommentsBegin
