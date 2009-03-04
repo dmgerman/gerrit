@@ -146,6 +146,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|HighlightSuggestOracle
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -174,14 +190,14 @@ specifier|public
 class|class
 name|AccountSuggestOracle
 extends|extends
-name|SuggestOracle
+name|HighlightSuggestOracle
 block|{
 annotation|@
 name|Override
-DECL|method|requestSuggestions (final Request req, final Callback callback)
+DECL|method|onRequestSuggestions (final Request req, final Callback callback)
 specifier|public
 name|void
-name|requestSuggestions
+name|onRequestSuggestions
 parameter_list|(
 specifier|final
 name|Request
