@@ -1437,6 +1437,10 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|stage
+operator|==
+literal|0
+operator|&&
 name|meter
 operator|==
 literal|null
