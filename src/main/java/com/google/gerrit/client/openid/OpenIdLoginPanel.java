@@ -874,7 +874,10 @@ operator|=
 operator|new
 name|NamedFrame
 argument_list|(
-literal|"openid_provider"
+name|DOM
+operator|.
+name|createUniqueId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|providerFrame
