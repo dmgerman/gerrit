@@ -1693,8 +1693,10 @@ literal|true
 argument_list|,
 name|auth
 operator|.
-name|toString
+name|getUrl
 argument_list|()
+argument_list|,
+name|auth
 argument_list|)
 argument_list|,
 name|req

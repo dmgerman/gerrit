@@ -66,6 +66,16 @@ name|openid
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 DECL|class|DiscoveryResult
 specifier|public
@@ -78,17 +88,27 @@ specifier|public
 name|boolean
 name|validProvider
 decl_stmt|;
-DECL|field|redirectUrl
+DECL|field|providerUrl
 specifier|public
 name|String
-name|redirectUrl
+name|providerUrl
+decl_stmt|;
+DECL|field|providerArgs
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|providerArgs
 decl_stmt|;
 DECL|method|DiscoveryResult ()
 specifier|protected
 name|DiscoveryResult
 parameter_list|()
 block|{   }
-DECL|method|DiscoveryResult (final boolean valid, final String redirect)
+DECL|method|DiscoveryResult (final boolean valid, final String redirect, final Map<String, String> args)
 specifier|public
 name|DiscoveryResult
 parameter_list|(
@@ -99,15 +119,28 @@ parameter_list|,
 specifier|final
 name|String
 name|redirect
+parameter_list|,
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|args
 parameter_list|)
 block|{
 name|validProvider
 operator|=
 name|valid
 expr_stmt|;
-name|redirectUrl
+name|providerUrl
 operator|=
 name|redirect
+expr_stmt|;
+name|providerArgs
+operator|=
+name|args
 expr_stmt|;
 block|}
 DECL|method|DiscoveryResult (final boolean fail)
@@ -122,6 +155,8 @@ block|{
 name|this
 argument_list|(
 literal|false
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
