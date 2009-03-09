@@ -416,6 +416,27 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|abandonChange (PatchSet.Id patchSetId, String message, AsyncCallback<VoidResult> callback)
+name|void
+name|abandonChange
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+name|String
+name|message
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
