@@ -3354,12 +3354,9 @@ name|change
 operator|.
 name|getStatus
 argument_list|()
-operator|==
-name|Change
 operator|.
-name|Status
-operator|.
-name|NEW
+name|isOpen
+argument_list|()
 operator|&&
 name|change
 operator|.

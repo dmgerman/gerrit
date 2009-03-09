@@ -507,6 +507,16 @@ comment|// and project administrator can mark the change as abandoned.
 comment|//
 name|canAbandon
 operator|=
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+expr_stmt|;
+name|canAbandon
+operator|&=
 name|me
 operator|.
 name|equals
