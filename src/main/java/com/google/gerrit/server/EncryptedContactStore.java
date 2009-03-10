@@ -352,18 +352,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|mortbay
-operator|.
-name|util
-operator|.
-name|UrlEncoded
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|spearce
 operator|.
 name|jgit
@@ -1115,7 +1103,7 @@ condition|)
 block|{
 name|u
 operator|.
-name|add
+name|put
 argument_list|(
 literal|"APPSEC"
 argument_list|,
@@ -1135,7 +1123,7 @@ condition|)
 block|{
 name|u
 operator|.
-name|add
+name|put
 argument_list|(
 literal|"email"
 argument_list|,
@@ -1155,7 +1143,7 @@ condition|)
 block|{
 name|u
 operator|.
-name|add
+name|put
 argument_list|(
 literal|"filed"
 argument_list|,
@@ -1175,7 +1163,7 @@ expr_stmt|;
 block|}
 name|u
 operator|.
-name|add
+name|put
 argument_list|(
 literal|"account_id"
 argument_list|,
@@ -1195,7 +1183,7 @@ argument_list|)
 expr_stmt|;
 name|u
 operator|.
-name|add
+name|put
 argument_list|(
 literal|"data"
 argument_list|,
@@ -1209,7 +1197,7 @@ name|body
 init|=
 name|u
 operator|.
-name|encode
+name|toString
 argument_list|()
 operator|.
 name|getBytes
