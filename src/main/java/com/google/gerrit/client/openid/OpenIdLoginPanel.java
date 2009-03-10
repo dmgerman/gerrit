@@ -855,7 +855,9 @@ operator|=
 operator|new
 name|Hidden
 argument_list|(
-literal|"openid_identifier"
+name|OpenIdUtil
+operator|.
+name|OPENID_IDENTIFIER
 argument_list|)
 argument_list|)
 expr_stmt|;
