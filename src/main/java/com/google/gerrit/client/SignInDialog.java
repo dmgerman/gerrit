@@ -666,7 +666,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-literal|440
+literal|460
 argument_list|,
 name|height
 operator|-
