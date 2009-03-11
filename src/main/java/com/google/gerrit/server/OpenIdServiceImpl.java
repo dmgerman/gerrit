@@ -322,6 +322,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|ResultSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Transaction
 import|;
 end_import
@@ -978,6 +992,14 @@ operator|.
 name|contextUrl
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|requestRegistration
+argument_list|(
+name|aReq
+argument_list|)
+condition|)
+block|{
 specifier|final
 name|SRegRequest
 name|sregReq
@@ -1062,6 +1084,7 @@ name|fetch
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|MessageException
@@ -1123,6 +1146,130 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|requestRegistration (final AuthRequest aReq)
+specifier|private
+name|boolean
+name|requestRegistration
+parameter_list|(
+specifier|final
+name|AuthRequest
+name|aReq
+parameter_list|)
+block|{
+if|if
+condition|(
+name|AuthRequest
+operator|.
+name|SELECT_ID
+operator|.
+name|equals
+argument_list|(
+name|aReq
+operator|.
+name|getIdentity
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// We don't know anything about the identity, as the provider
+comment|// will offer the user a way to indicate their identity. Skip
+comment|// any database query operation and assume we must ask for the
+comment|// registration information, in case the identity is new to us.
+comment|//
+return|return
+literal|true
+return|;
+block|}
+comment|// We might already have this account on file. Look for it.
+comment|//
+try|try
+block|{
+specifier|final
+name|ReviewDb
+name|db
+init|=
+name|Common
+operator|.
+name|getSchemaFactory
+argument_list|()
+operator|.
+name|open
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+specifier|final
+name|ResultSet
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|ae
+init|=
+name|db
+operator|.
+name|accountExternalIds
+argument_list|()
+operator|.
+name|byExternal
+argument_list|(
+name|aReq
+operator|.
+name|getIdentity
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ae
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|hasNext
+argument_list|()
+condition|)
+block|{
+comment|// We already have it. Don't bother asking for the
+comment|// registration information, we have what we need.
+comment|//
+return|return
+literal|false
+return|;
+block|}
+block|}
+finally|finally
+block|{
+name|db
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failed looking for existing account"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+comment|// We don't have this account on file, or our query failed. Assume
+comment|// we should ask for registration information in case the account
+comment|// turns out to be new.
+comment|//
+return|return
+literal|true
+return|;
 block|}
 comment|/** Called by {@link OpenIdLoginServlet} doGet, doPost */
 DECL|method|doAuth (final HttpServletRequest req, final HttpServletResponse rsp)
