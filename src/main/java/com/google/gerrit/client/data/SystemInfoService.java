@@ -201,6 +201,22 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|AllowCrossSiteRequest
+DECL|method|daemonHostKeys (AsyncCallback<List<SshHostKey>> callback)
+name|void
+name|daemonHostKeys
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|SshHostKey
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
 name|SignInRequired
 DECL|method|contributorAgreements (AsyncCallback<List<ContributorAgreement>> callback)
 name|void

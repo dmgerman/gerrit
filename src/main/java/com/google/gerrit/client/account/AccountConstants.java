@@ -235,6 +235,21 @@ name|String
 name|invalidSshKeyError
 parameter_list|()
 function_decl|;
+DECL|method|sshHostKeyTitle ()
+name|String
+name|sshHostKeyTitle
+parameter_list|()
+function_decl|;
+DECL|method|sshHostKeyFingerprint ()
+name|String
+name|sshHostKeyFingerprint
+parameter_list|()
+function_decl|;
+DECL|method|sshHostKeyKnownHostEntry ()
+name|String
+name|sshHostKeyKnownHostEntry
+parameter_list|()
+function_decl|;
 DECL|method|webIdLastUsed ()
 name|String
 name|webIdLastUsed
