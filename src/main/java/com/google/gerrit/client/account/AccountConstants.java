@@ -155,6 +155,16 @@ name|String
 name|tabAgreements
 parameter_list|()
 function_decl|;
+DECL|method|buttonShowAddSshKey ()
+name|String
+name|buttonShowAddSshKey
+parameter_list|()
+function_decl|;
+DECL|method|buttonCloseAddSshKey ()
+name|String
+name|buttonCloseAddSshKey
+parameter_list|()
+function_decl|;
 DECL|method|buttonDeleteSshKey ()
 name|String
 name|buttonDeleteSshKey
