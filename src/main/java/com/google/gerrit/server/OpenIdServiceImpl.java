@@ -564,18 +564,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Document
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -621,16 +609,6 @@ operator|.
 name|util
 operator|.
 name|TreeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|ServletException
 import|;
 end_import
 
@@ -799,8 +777,6 @@ throws|,
 name|OrmException
 throws|,
 name|XsrfException
-throws|,
-name|ServletException
 block|{
 if|if
 condition|(
@@ -832,12 +808,6 @@ specifier|final
 name|ConsumerManager
 name|manager
 decl_stmt|;
-DECL|field|pleaseSetCookieDoc
-specifier|private
-specifier|final
-name|Document
-name|pleaseSetCookieDoc
-decl_stmt|;
 DECL|method|OpenIdServiceImpl ()
 specifier|private
 name|OpenIdServiceImpl
@@ -848,8 +818,6 @@ throws|,
 name|OrmException
 throws|,
 name|XsrfException
-throws|,
-name|ServletException
 block|{
 name|server
 operator|=
@@ -864,51 +832,6 @@ operator|new
 name|ConsumerManager
 argument_list|()
 expr_stmt|;
-specifier|final
-name|String
-name|scHtmlName
-init|=
-literal|"com/google/gerrit/public/SetCookie.html"
-decl_stmt|;
-name|pleaseSetCookieDoc
-operator|=
-name|HtmlDomUtil
-operator|.
-name|parseFile
-argument_list|(
-name|scHtmlName
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|pleaseSetCookieDoc
-operator|==
-literal|null
-condition|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"No "
-operator|+
-name|scHtmlName
-operator|+
-literal|" in CLASSPATH"
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|ServletException
-argument_list|(
-literal|"No "
-operator|+
-name|scHtmlName
-operator|+
-literal|" in CLASSPATH"
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|discover (final String openidIdentifier, final SignInDialog.Mode mode, final boolean remember, final String returnToken, final AsyncCallback<DiscoveryResult> callback)
 specifier|public
