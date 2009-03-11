@@ -1042,7 +1042,7 @@ name|r
 operator|.
 name|append
 argument_list|(
-name|OpenIdLoginServlet
+name|GerritServer
 operator|.
 name|serverUrl
 argument_list|(
@@ -1104,7 +1104,7 @@ name|canonicalUrl
 operator|.
 name|equals
 argument_list|(
-name|OpenIdLoginServlet
+name|GerritServer
 operator|.
 name|serverUrl
 argument_list|(

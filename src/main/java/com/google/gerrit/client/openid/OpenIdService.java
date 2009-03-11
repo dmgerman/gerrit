@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|SignInDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -94,7 +108,7 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|CallbackHandle
+name|AllowCrossSiteRequest
 import|;
 end_import
 
@@ -120,13 +134,26 @@ name|OpenIdService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|discover ( AsyncCallback<DiscoveryResult> callback)
-name|CallbackHandle
-argument_list|<
-name|DiscoveryResult
-argument_list|>
+annotation|@
+name|AllowCrossSiteRequest
+DECL|method|discover (String openidIdentifier, SignInDialog.Mode mode, boolean remember, String returnToken, AsyncCallback<DiscoveryResult> callback)
+name|void
 name|discover
 parameter_list|(
+name|String
+name|openidIdentifier
+parameter_list|,
+name|SignInDialog
+operator|.
+name|Mode
+name|mode
+parameter_list|,
+name|boolean
+name|remember
+parameter_list|,
+name|String
+name|returnToken
+parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|DiscoveryResult
