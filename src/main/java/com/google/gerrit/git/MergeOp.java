@@ -909,6 +909,15 @@ return|;
 block|}
 block|}
 expr_stmt|;
+name|rw
+operator|.
+name|sort
+argument_list|(
+name|RevSort
+operator|.
+name|TOPO
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|openBranch ()
 specifier|private
@@ -2001,7 +2010,18 @@ name|sort
 argument_list|(
 name|RevSort
 operator|.
+name|TOPO
+argument_list|)
+expr_stmt|;
+name|rw
+operator|.
+name|sort
+argument_list|(
+name|RevSort
+operator|.
 name|REVERSE
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|rw
