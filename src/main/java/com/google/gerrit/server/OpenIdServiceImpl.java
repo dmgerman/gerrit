@@ -1470,6 +1470,24 @@ argument_list|,
 name|returnToken
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|state
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Re-discovery must have failed, we can't run a login.
+comment|//
+name|cancel
+argument_list|(
+name|req
+argument_list|,
+name|rsp
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 specifier|final
 name|String
 name|returnTo
