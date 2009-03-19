@@ -3150,9 +3150,11 @@ name|u
 operator|.
 name|setRefLogMessage
 argument_list|(
-literal|"created via web"
+literal|"created via web from "
+operator|+
+name|startingRevision
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 specifier|final
