@@ -315,6 +315,11 @@ name|String
 name|watchedProjectColumnAllComments
 parameter_list|()
 function_decl|;
+DECL|method|watchedProjectColumnSubmittedChanges ()
+name|String
+name|watchedProjectColumnSubmittedChanges
+parameter_list|()
+function_decl|;
 DECL|method|contactFieldFullName ()
 name|String
 name|contactFieldFullName

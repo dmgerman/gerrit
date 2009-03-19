@@ -269,6 +269,14 @@ specifier|protected
 name|boolean
 name|notifyAllComments
 decl_stmt|;
+comment|/** Automatically receive changes submitted to this project */
+annotation|@
+name|Column
+DECL|field|notifySubmittedChanges
+specifier|protected
+name|boolean
+name|notifySubmittedChanges
+decl_stmt|;
 DECL|method|AccountProjectWatch ()
 specifier|protected
 name|AccountProjectWatch
@@ -376,6 +384,31 @@ name|a
 parameter_list|)
 block|{
 name|notifyAllComments
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|isNotifySubmittedChanges ()
+specifier|public
+name|boolean
+name|isNotifySubmittedChanges
+parameter_list|()
+block|{
+return|return
+name|notifySubmittedChanges
+return|;
+block|}
+DECL|method|setNotifySubmittedChanges (final boolean a)
+specifier|public
+name|void
+name|setNotifySubmittedChanges
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|notifySubmittedChanges
 operator|=
 name|a
 expr_stmt|;

@@ -228,6 +228,26 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE notifySubmittedChanges = true AND key.projectId = ?"
+argument_list|)
+DECL|method|notifySubmittedChanges (Project.Id id)
+name|ResultSet
+argument_list|<
+name|AccountProjectWatch
+argument_list|>
+name|notifySubmittedChanges
+parameter_list|(
+name|Project
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
