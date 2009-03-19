@@ -1227,9 +1227,12 @@ name|refLogIdent
 operator|=
 name|ChangeUtil
 operator|.
-name|toPersonIdent
+name|toReflogIdent
 argument_list|(
 name|userAccount
+argument_list|,
+name|getRemoteAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rp
