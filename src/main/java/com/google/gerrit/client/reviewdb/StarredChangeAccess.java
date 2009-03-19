@@ -188,6 +188,26 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.changeId = ?"
+argument_list|)
+DECL|method|byChange (Change.Id id)
+name|ResultSet
+argument_list|<
+name|StarredChange
+argument_list|>
+name|byChange
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
