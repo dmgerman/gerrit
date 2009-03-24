@@ -352,7 +352,7 @@ block|{
 return|return
 name|replaceAll
 argument_list|(
-literal|"(https?://[^ \n\r\t]*)"
+literal|"(https?://[a-zA-Z0-9$_.+!*',%;:@&=?#/()-]{1,}[a-zA-Z0-9$_.+!*',%;:@&=?#/-])"
 argument_list|,
 literal|"<a href=\"$1\">$1</a>"
 argument_list|)
