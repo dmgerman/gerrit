@@ -2276,7 +2276,6 @@ name|r
 return|;
 block|}
 DECL|method|starredBy (final ReviewDb db, final Account.Id me)
-specifier|private
 specifier|static
 name|Set
 argument_list|<

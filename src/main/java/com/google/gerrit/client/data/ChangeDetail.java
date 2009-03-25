@@ -382,6 +382,11 @@ specifier|protected
 name|Change
 name|change
 decl_stmt|;
+DECL|field|starred
+specifier|protected
+name|boolean
+name|starred
+decl_stmt|;
 DECL|field|dependsOn
 specifier|protected
 name|List
@@ -459,7 +464,7 @@ specifier|public
 name|ChangeDetail
 parameter_list|()
 block|{   }
-DECL|method|load (final ReviewDb db, final AccountInfoCacheFactory acc, final Change c, final boolean allowAnon, final boolean canAbdn)
+DECL|method|load (final ReviewDb db, final AccountInfoCacheFactory acc, final Change c, final boolean allowAnon, final boolean canAbdn, final boolean isStarred)
 specifier|public
 name|void
 name|load
@@ -483,6 +488,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|canAbdn
+parameter_list|,
+specifier|final
+name|boolean
+name|isStarred
 parameter_list|)
 throws|throws
 name|OrmException
@@ -490,6 +499,10 @@ block|{
 name|change
 operator|=
 name|c
+expr_stmt|;
+name|starred
+operator|=
+name|isStarred
 expr_stmt|;
 specifier|final
 name|Account
@@ -1405,6 +1418,16 @@ parameter_list|()
 block|{
 return|return
 name|change
+return|;
+block|}
+DECL|method|isStarred ()
+specifier|public
+name|boolean
+name|isStarred
+parameter_list|()
+block|{
+return|return
+name|starred
 return|;
 block|}
 DECL|method|getDependsOn ()
