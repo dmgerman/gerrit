@@ -394,6 +394,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|UserAgent
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -639,12 +655,20 @@ argument_list|)
 expr_stmt|;
 name|focusy
 operator|=
-operator|new
-name|FocusPanel
+name|UserAgent
+operator|.
+name|wrapFocusPanel
 argument_list|(
 name|table
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|addKeyboardListener
@@ -750,13 +774,20 @@ specifier|final
 name|Widget
 name|sender
 parameter_list|)
-block|{       }
+block|{         }
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|initWidget
 argument_list|(
 name|focusy
+operator|!=
+literal|null
+condition|?
+name|focusy
+else|:
+name|table
 argument_list|)
 expr_stmt|;
 name|table
@@ -1571,9 +1602,15 @@ parameter_list|()
 block|{
 return|return
 name|focusy
+operator|!=
+literal|null
+condition|?
+name|focusy
 operator|.
 name|getTabIndex
 argument_list|()
+else|:
+literal|0
 return|;
 block|}
 DECL|method|setAccessKey (char key)
@@ -1585,6 +1622,13 @@ name|char
 name|key
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|setAccessKey
@@ -1592,6 +1636,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setFocus (boolean focused)
 specifier|public
@@ -1602,6 +1647,13 @@ name|boolean
 name|focused
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|setFocus
@@ -1609,6 +1661,7 @@ argument_list|(
 name|focused
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setTabIndex (int index)
 specifier|public
@@ -1619,6 +1672,13 @@ name|int
 name|index
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|setTabIndex
@@ -1626,6 +1686,7 @@ argument_list|(
 name|index
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|addFocusListener (FocusListener listener)
 specifier|public
@@ -1636,6 +1697,13 @@ name|FocusListener
 name|listener
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|addFocusListener
@@ -1643,6 +1711,7 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|addKeyboardListener (KeyboardListener listener)
 specifier|public
@@ -1653,6 +1722,13 @@ name|KeyboardListener
 name|listener
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|addKeyboardListener
@@ -1660,6 +1736,7 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|removeFocusListener (FocusListener listener)
 specifier|public
@@ -1670,6 +1747,13 @@ name|FocusListener
 name|listener
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|removeFocusListener
@@ -1677,6 +1761,7 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|removeKeyboardListener (KeyboardListener listener)
 specifier|public
@@ -1687,6 +1772,13 @@ name|KeyboardListener
 name|listener
 parameter_list|)
 block|{
+if|if
+condition|(
+name|focusy
+operator|!=
+literal|null
+condition|)
+block|{
 name|focusy
 operator|.
 name|removeKeyboardListener
@@ -1694,6 +1786,7 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|class|MyFlexTable
 specifier|protected
