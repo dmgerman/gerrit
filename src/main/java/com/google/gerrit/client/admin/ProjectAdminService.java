@@ -298,6 +298,29 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|changeProjectSubmitType (Project.Id projectId, Project.SubmitType newSubmitType, AsyncCallback<VoidResult> callback)
+name|void
+name|changeProjectSubmitType
+parameter_list|(
+name|Project
+operator|.
+name|Id
+name|projectId
+parameter_list|,
+name|Project
+operator|.
+name|SubmitType
+name|newSubmitType
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|deleteRight (Set<ProjectRight.Key> ids, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteRight

@@ -155,6 +155,11 @@ name|String
 name|headingDescription
 parameter_list|()
 function_decl|;
+DECL|method|headingSubmitType ()
+name|String
+name|headingSubmitType
+parameter_list|()
+function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
@@ -168,6 +173,21 @@ function_decl|;
 DECL|method|headingAccessRights ()
 name|String
 name|headingAccessRights
+parameter_list|()
+function_decl|;
+DECL|method|projectSubmitType_FAST_FORWARD_ONLY ()
+name|String
+name|projectSubmitType_FAST_FORWARD_ONLY
+parameter_list|()
+function_decl|;
+DECL|method|projectSubmitType_MERGE_ALWAYS ()
+name|String
+name|projectSubmitType_MERGE_ALWAYS
+parameter_list|()
+function_decl|;
+DECL|method|projectSubmitType_MERGE_IF_NECESSARY ()
+name|String
+name|projectSubmitType_MERGE_IF_NECESSARY
 parameter_list|()
 function_decl|;
 DECL|method|columnMember ()
