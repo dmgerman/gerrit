@@ -2574,7 +2574,7 @@ argument_list|(
 operator|(
 name|short
 operator|)
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 name|c
@@ -2638,7 +2638,7 @@ argument_list|(
 operator|(
 name|short
 operator|)
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 name|c
