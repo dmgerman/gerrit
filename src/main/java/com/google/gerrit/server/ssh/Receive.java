@@ -157,6 +157,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|ApprovalCategory
+operator|.
+name|PUSH_TAG_ANNOTATED
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|ApprovalCategory
+operator|.
+name|PUSH_TAG_ANY
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2863,6 +2899,20 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+if|if
+condition|(
+name|canPerform
+argument_list|(
+name|PUSH_TAG
+argument_list|,
+name|PUSH_TAG_ANY
+argument_list|)
+condition|)
+block|{
+comment|// If we can push any tag, validation is sufficient at this point.
+comment|//
+return|return;
+block|}
 specifier|final
 name|RevTag
 name|tag
@@ -2924,6 +2974,49 @@ argument_list|,
 literal|"invalid tagger "
 operator|+
 name|email
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+name|tag
+operator|.
+name|getFullMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"-----BEGIN PGP SIGNATURE-----\n"
+argument_list|)
+condition|)
+block|{
+comment|// Signed tags are currently assumed valid, as we don't have a GnuPG
+comment|// key ring to validate them against, and we might be missing the
+comment|// necessary (but currently optional) BouncyCastle Crypto libraries.
+comment|//
+block|}
+elseif|else
+if|if
+condition|(
+name|canPerform
+argument_list|(
+name|PUSH_TAG
+argument_list|,
+name|PUSH_TAG_ANNOTATED
+argument_list|)
+condition|)
+block|{
+comment|// User is permitted to push an unsigned annotated tag.
+comment|//
+block|}
+else|else
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"must be signed"
 argument_list|)
 expr_stmt|;
 return|return;

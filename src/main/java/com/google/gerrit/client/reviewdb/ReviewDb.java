@@ -141,7 +141,7 @@ specifier|final
 name|int
 name|VERSION
 init|=
-literal|7
+literal|8
 decl_stmt|;
 annotation|@
 name|Relation

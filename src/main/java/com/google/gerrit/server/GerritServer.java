@@ -2861,9 +2861,43 @@ name|value
 argument_list|(
 name|cat
 argument_list|,
-literal|1
+name|ApprovalCategory
+operator|.
+name|PUSH_TAG_SIGNED
 argument_list|,
-literal|"Create Tag"
+literal|"Create Signed Tag"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|vals
+operator|.
+name|add
+argument_list|(
+name|value
+argument_list|(
+name|cat
+argument_list|,
+name|ApprovalCategory
+operator|.
+name|PUSH_TAG_ANNOTATED
+argument_list|,
+literal|"Create Annotated Tag"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|vals
+operator|.
+name|add
+argument_list|(
+name|value
+argument_list|(
+name|cat
+argument_list|,
+name|ApprovalCategory
+operator|.
+name|PUSH_TAG_ANY
+argument_list|,
+literal|"Create Any Tag"
 argument_list|)
 argument_list|)
 expr_stmt|;
