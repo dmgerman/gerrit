@@ -74,6 +74,10 @@ DECL|enumConstant|CLEAN_MERGE
 name|CLEAN_MERGE
 block|,
 comment|/** */
+DECL|enumConstant|CLEAN_PICK
+name|CLEAN_PICK
+block|,
+comment|/** */
 DECL|enumConstant|ALREADY_MERGED
 name|ALREADY_MERGED
 block|,

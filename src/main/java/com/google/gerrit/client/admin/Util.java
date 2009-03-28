@@ -263,6 +263,15 @@ operator|.
 name|projectSubmitType_MERGE_ALWAYS
 argument_list|()
 return|;
+case|case
+name|CHERRY_PICK
+case|:
+return|return
+name|C
+operator|.
+name|projectSubmitType_CHERRY_PICK
+argument_list|()
+return|;
 default|default:
 return|return
 name|type

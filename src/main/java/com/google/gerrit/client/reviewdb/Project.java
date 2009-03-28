@@ -362,6 +362,12 @@ name|MERGE_ALWAYS
 argument_list|(
 literal|'A'
 argument_list|)
+block|,
+DECL|enumConstant|CHERRY_PICK
+name|CHERRY_PICK
+argument_list|(
+literal|'C'
+argument_list|)
 block|;
 DECL|field|code
 specifier|private

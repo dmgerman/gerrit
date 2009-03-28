@@ -190,6 +190,11 @@ name|String
 name|projectSubmitType_MERGE_IF_NECESSARY
 parameter_list|()
 function_decl|;
+DECL|method|projectSubmitType_CHERRY_PICK ()
+name|String
+name|projectSubmitType_CHERRY_PICK
+parameter_list|()
+function_decl|;
 DECL|method|columnMember ()
 name|String
 name|columnMember
