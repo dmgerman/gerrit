@@ -3344,6 +3344,13 @@ control|)
 block|{
 if|if
 condition|(
+name|a
+operator|.
+name|getValue
+argument_list|()
+operator|>
+literal|0
+operator|&&
 name|ApprovalCategory
 operator|.
 name|SUBMIT
