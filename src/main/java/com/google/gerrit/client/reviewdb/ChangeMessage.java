@@ -392,6 +392,38 @@ return|return
 name|author
 return|;
 block|}
+DECL|method|setAuthor (final Account.Id accountId)
+specifier|public
+name|void
+name|setAuthor
+parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
+block|{
+if|if
+condition|(
+name|author
+operator|!=
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cannot modify author once assigned"
+argument_list|)
+throw|;
+block|}
+name|author
+operator|=
+name|accountId
+expr_stmt|;
+block|}
 DECL|method|getWrittenOn ()
 specifier|public
 name|Timestamp
