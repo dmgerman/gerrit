@@ -726,6 +726,11 @@ name|void
 name|onSignIn
 parameter_list|()
 block|{
+name|super
+operator|.
+name|onSignIn
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|refreshOnSignIn
@@ -759,6 +764,11 @@ name|void
 name|onSignOut
 parameter_list|()
 block|{
+name|super
+operator|.
+name|onSignOut
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|starChange
