@@ -183,6 +183,7 @@ end_import
 begin_class
 DECL|class|Screen
 specifier|public
+specifier|abstract
 class|class
 name|Screen
 extends|extends
@@ -190,19 +191,16 @@ name|View
 block|{
 DECL|field|header
 specifier|private
-specifier|final
 name|FlowPanel
 name|header
 decl_stmt|;
 DECL|field|headerText
 specifier|private
-specifier|final
 name|InlineLabel
 name|headerText
 decl_stmt|;
 DECL|field|body
 specifier|private
-specifier|final
 name|FlowPanel
 name|body
 decl_stmt|;
@@ -216,32 +214,11 @@ specifier|protected
 name|Screen
 parameter_list|()
 block|{
-name|this
+name|initWidget
 argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|Screen (final String headingText)
-specifier|protected
-name|Screen
-parameter_list|(
-specifier|final
-name|String
-name|headingText
-parameter_list|)
-block|{
-specifier|final
-name|FlowPanel
-name|me
-init|=
 operator|new
 name|FlowPanel
 argument_list|()
-decl_stmt|;
-name|initWidget
-argument_list|(
-name|me
 argument_list|)
 expr_stmt|;
 name|setStyleName
@@ -249,6 +226,48 @@ argument_list|(
 literal|"gerrit-Screen"
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|onLoad ()
+specifier|protected
+name|void
+name|onLoad
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onLoad
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|header
+operator|==
+literal|null
+condition|)
+block|{
+name|onInitUI
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|onInitUI ()
+specifier|protected
+name|void
+name|onInitUI
+parameter_list|()
+block|{
+specifier|final
+name|FlowPanel
+name|me
+init|=
+operator|(
+name|FlowPanel
+operator|)
+name|getWidget
+argument_list|()
+decl_stmt|;
 name|me
 operator|.
 name|add
@@ -286,14 +305,12 @@ name|headerText
 operator|=
 operator|new
 name|InlineLabel
-argument_list|(
-name|headingText
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setTitleText (final String text)
-specifier|public
+specifier|protected
 name|void
 name|setTitleText
 parameter_list|(
@@ -352,6 +369,7 @@ block|}
 comment|/** Set whether or not {@link Gerrit#isSignedIn()} must be true. */
 DECL|method|setRequiresSignIn (final boolean b)
 specifier|public
+specifier|final
 name|void
 name|setRequiresSignIn
 parameter_list|(
@@ -368,6 +386,7 @@ block|}
 comment|/** Does {@link Gerrit#isSignedIn()} have to be true to be on this screen? */
 DECL|method|isRequiresSignIn ()
 specifier|public
+specifier|final
 name|boolean
 name|isRequiresSignIn
 parameter_list|()

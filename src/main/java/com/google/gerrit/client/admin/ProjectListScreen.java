@@ -291,22 +291,6 @@ specifier|private
 name|ProjectTable
 name|projects
 decl_stmt|;
-DECL|method|ProjectListScreen ()
-specifier|public
-name|ProjectListScreen
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|Util
-operator|.
-name|C
-operator|.
-name|projectListTitle
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|onLoad ()
@@ -315,17 +299,11 @@ name|void
 name|onLoad
 parameter_list|()
 block|{
-if|if
-condition|(
-name|projects
-operator|==
-literal|null
-condition|)
-block|{
-name|initUI
+name|super
+operator|.
+name|onLoad
 argument_list|()
 expr_stmt|;
-block|}
 name|Util
 operator|.
 name|PROJECT_SVC
@@ -377,12 +355,29 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initUI ()
-specifier|private
+annotation|@
+name|Override
+DECL|method|onInitUI ()
+specifier|protected
 name|void
-name|initUI
+name|onInitUI
 parameter_list|()
 block|{
+name|super
+operator|.
+name|onInitUI
+argument_list|()
+expr_stmt|;
+name|setTitleText
+argument_list|(
+name|Util
+operator|.
+name|C
+operator|.
+name|projectListTitle
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|projects
 operator|=
 operator|new

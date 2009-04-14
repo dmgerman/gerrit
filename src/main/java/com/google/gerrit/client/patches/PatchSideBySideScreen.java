@@ -455,17 +455,6 @@ name|void
 name|onLoad
 parameter_list|()
 block|{
-if|if
-condition|(
-name|sbsTable
-operator|==
-literal|null
-condition|)
-block|{
-name|initUI
-argument_list|()
-expr_stmt|;
-block|}
 name|super
 operator|.
 name|onLoad
@@ -511,12 +500,19 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initUI ()
-specifier|private
+annotation|@
+name|Override
+DECL|method|onInitUI ()
+specifier|protected
 name|void
-name|initUI
+name|onInitUI
 parameter_list|()
 block|{
+name|super
+operator|.
+name|onInitUI
+argument_list|()
+expr_stmt|;
 name|historyTable
 operator|=
 operator|new

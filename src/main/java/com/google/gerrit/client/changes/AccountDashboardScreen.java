@@ -200,6 +200,7 @@ name|Screen
 block|{
 DECL|field|ownerId
 specifier|private
+specifier|final
 name|Account
 operator|.
 name|Id
@@ -245,6 +246,15 @@ block|{
 name|ownerId
 operator|=
 name|id
+operator|!=
+literal|null
+condition|?
+name|id
+else|:
+name|Common
+operator|.
+name|getAccountId
+argument_list|()
 expr_stmt|;
 name|setRequiresSignIn
 argument_list|(
@@ -256,34 +266,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onLoad ()
-specifier|public
+DECL|method|onInitUI ()
+specifier|protected
 name|void
-name|onLoad
+name|onInitUI
 parameter_list|()
 block|{
-if|if
-condition|(
-name|ownerId
-operator|==
-literal|null
-condition|)
-block|{
-name|ownerId
-operator|=
-name|Common
+name|super
 operator|.
-name|getAccountId
+name|onInitUI
 argument_list|()
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|table
-operator|==
-literal|null
-condition|)
-block|{
 name|table
 operator|=
 operator|new
@@ -346,7 +339,6 @@ argument_list|(
 name|table
 argument_list|)
 expr_stmt|;
-block|}
 name|table
 operator|.
 name|setSavePointerId
@@ -359,6 +351,15 @@ name|ownerId
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|onLoad ()
+specifier|protected
+name|void
+name|onLoad
+parameter_list|()
+block|{
 name|super
 operator|.
 name|onLoad

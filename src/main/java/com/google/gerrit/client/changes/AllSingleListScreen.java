@@ -276,14 +276,10 @@ specifier|protected
 name|String
 name|pos
 decl_stmt|;
-DECL|method|AllSingleListScreen (final String title, final String anchorToken, final String positionToken)
-specifier|public
+DECL|method|AllSingleListScreen (final String anchorToken, final String positionToken)
+specifier|protected
 name|AllSingleListScreen
 parameter_list|(
-specifier|final
-name|String
-name|title
-parameter_list|,
 specifier|final
 name|String
 name|anchorToken
@@ -293,11 +289,6 @@ name|String
 name|positionToken
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|title
-argument_list|)
-expr_stmt|;
 name|anchorPrefix
 operator|=
 name|anchorToken
@@ -323,19 +314,17 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onLoad ()
-specifier|public
+DECL|method|onInitUI ()
+specifier|protected
 name|void
-name|onLoad
+name|onInitUI
 parameter_list|()
 block|{
-if|if
-condition|(
-name|table
-operator|==
-literal|null
-condition|)
-block|{
+name|super
+operator|.
+name|onInitUI
+argument_list|()
+expr_stmt|;
 name|table
 operator|=
 operator|new
@@ -452,6 +441,14 @@ name|buttons
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|onLoad ()
+specifier|public
+name|void
+name|onLoad
+parameter_list|()
+block|{
 name|super
 operator|.
 name|onLoad

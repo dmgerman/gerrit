@@ -135,6 +135,7 @@ end_import
 begin_class
 DECL|class|MineSingleListScreen
 specifier|public
+specifier|abstract
 class|class
 name|MineSingleListScreen
 extends|extends
@@ -158,27 +159,32 @@ operator|.
 name|Section
 name|drafts
 decl_stmt|;
-DECL|method|MineSingleListScreen (final String title, final String historyToken)
-specifier|public
+DECL|method|MineSingleListScreen (final String historyToken)
+specifier|protected
 name|MineSingleListScreen
 parameter_list|(
-specifier|final
-name|String
-name|title
-parameter_list|,
 specifier|final
 name|String
 name|historyToken
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|title
-argument_list|)
-expr_stmt|;
 name|anchor
 operator|=
 name|historyToken
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|onInitUI ()
+specifier|protected
+name|void
+name|onInitUI
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onInitUI
+argument_list|()
 expr_stmt|;
 name|table
 operator|=

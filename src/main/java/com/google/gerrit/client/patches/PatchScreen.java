@@ -101,6 +101,7 @@ end_import
 begin_class
 DECL|class|PatchScreen
 specifier|public
+specifier|abstract
 class|class
 name|PatchScreen
 extends|extends
@@ -115,7 +116,7 @@ name|Key
 name|patchId
 decl_stmt|;
 DECL|method|PatchScreen (final Patch.Key id)
-specifier|public
+specifier|protected
 name|PatchScreen
 parameter_list|(
 specifier|final
@@ -129,9 +130,23 @@ name|patchId
 operator|=
 name|id
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|onInitUI ()
+specifier|protected
+name|void
+name|onInitUI
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onInitUI
+argument_list|()
+expr_stmt|;
 name|setTitleText
 argument_list|(
-name|id
+name|patchId
 operator|.
 name|get
 argument_list|()

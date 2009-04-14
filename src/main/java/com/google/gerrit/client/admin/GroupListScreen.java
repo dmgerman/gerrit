@@ -389,22 +389,6 @@ specifier|private
 name|Button
 name|addNew
 decl_stmt|;
-DECL|method|GroupListScreen ()
-specifier|public
-name|GroupListScreen
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|Util
-operator|.
-name|C
-operator|.
-name|groupListTitle
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|onLoad ()
@@ -413,17 +397,11 @@ name|void
 name|onLoad
 parameter_list|()
 block|{
-if|if
-condition|(
-name|groups
-operator|==
-literal|null
-condition|)
-block|{
-name|initUI
+name|super
+operator|.
+name|onLoad
 argument_list|()
 expr_stmt|;
-block|}
 name|Util
 operator|.
 name|GROUP_SVC
@@ -475,12 +453,29 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initUI ()
-specifier|private
+annotation|@
+name|Override
+DECL|method|onInitUI ()
+specifier|protected
 name|void
-name|initUI
+name|onInitUI
 parameter_list|()
 block|{
+name|super
+operator|.
+name|onInitUI
+argument_list|()
+expr_stmt|;
+name|setTitleText
+argument_list|(
+name|Util
+operator|.
+name|C
+operator|.
+name|groupListTitle
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|groups
 operator|=
 operator|new
