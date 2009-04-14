@@ -845,7 +845,7 @@ argument_list|(
 literal|"gerrit-PublishCommentsScreen"
 argument_list|)
 expr_stmt|;
-name|setTitleText
+name|setPageTitle
 argument_list|(
 name|Util
 operator|.

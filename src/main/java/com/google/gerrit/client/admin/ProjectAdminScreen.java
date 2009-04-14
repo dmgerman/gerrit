@@ -669,7 +669,7 @@ name|result
 operator|.
 name|project
 decl_stmt|;
-name|setTitleText
+name|setPageTitle
 argument_list|(
 name|Util
 operator|.

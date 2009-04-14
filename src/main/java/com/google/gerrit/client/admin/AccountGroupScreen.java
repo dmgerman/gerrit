@@ -851,7 +851,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|setTitleText
+name|setPageTitle
 argument_list|(
 name|Util
 operator|.
@@ -1398,7 +1398,7 @@ name|result
 operator|.
 name|group
 decl_stmt|;
-name|setTitleText
+name|setPageTitle
 argument_list|(
 name|Util
 operator|.

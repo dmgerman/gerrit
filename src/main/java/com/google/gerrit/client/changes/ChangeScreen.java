@@ -1278,7 +1278,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|setTitleText
+name|setPageTitle
 argument_list|(
 name|titleBuf
 operator|.

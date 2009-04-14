@@ -451,7 +451,12 @@ argument_list|(
 name|o
 argument_list|)
 decl_stmt|;
-name|setTitleText
+name|setWindowTitle
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|setPageTitle
 argument_list|(
 name|Util
 operator|.

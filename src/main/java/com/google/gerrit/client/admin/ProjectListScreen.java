@@ -368,7 +368,7 @@ operator|.
 name|onInitUI
 argument_list|()
 expr_stmt|;
-name|setTitleText
+name|setPageTitle
 argument_list|(
 name|Util
 operator|.

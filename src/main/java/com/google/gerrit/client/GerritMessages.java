@@ -88,6 +88,25 @@ name|GerritMessages
 extends|extends
 name|Messages
 block|{
+DECL|method|windowTitle1 (String hostname)
+name|String
+name|windowTitle1
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
+function_decl|;
+DECL|method|windowTitle2 (String section, String hostname)
+name|String
+name|windowTitle2
+parameter_list|(
+name|String
+name|section
+parameter_list|,
+name|String
+name|hostname
+parameter_list|)
+function_decl|;
 DECL|method|poweredBy (String version)
 name|String
 name|poweredBy

@@ -100,6 +100,28 @@ name|PatchMessages
 extends|extends
 name|Messages
 block|{
+DECL|method|patchWindowTitle (int id, String file)
+name|String
+name|patchWindowTitle
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|String
+name|file
+parameter_list|)
+function_decl|;
+DECL|method|patchPageTitle (int id, String path)
+name|String
+name|patchPageTitle
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|String
+name|path
+parameter_list|)
+function_decl|;
 DECL|method|patchHeaderAncestor (int id)
 name|String
 name|patchHeaderAncestor

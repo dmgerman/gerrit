@@ -209,6 +209,11 @@ specifier|private
 name|boolean
 name|requiresSignIn
 decl_stmt|;
+DECL|field|windowTitle
+specifier|private
+name|String
+name|windowTitle
+decl_stmt|;
 DECL|method|Screen ()
 specifier|protected
 name|Screen
@@ -309,16 +314,49 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setTitleText (final String text)
+DECL|method|setWindowTitle (final String text)
 specifier|protected
 name|void
-name|setTitleText
+name|setWindowTitle
 parameter_list|(
 specifier|final
 name|String
 name|text
 parameter_list|)
 block|{
+name|windowTitle
+operator|=
+name|text
+expr_stmt|;
+name|Gerrit
+operator|.
+name|setWindowTitle
+argument_list|(
+name|this
+argument_list|,
+name|text
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setPageTitle (final String text)
+specifier|protected
+name|void
+name|setPageTitle
+parameter_list|(
+specifier|final
+name|String
+name|text
+parameter_list|)
+block|{
+specifier|final
+name|String
+name|old
+init|=
+name|headerText
+operator|.
+name|getText
+argument_list|()
+decl_stmt|;
 name|headerText
 operator|.
 name|setText
@@ -326,6 +364,23 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|windowTitle
+operator|==
+literal|null
+operator|||
+name|windowTitle
+operator|==
+name|old
+condition|)
+block|{
+name|setWindowTitle
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|insertTitleWidget (final Widget w)
 specifier|protected
@@ -426,6 +481,30 @@ name|void
 name|onSignIn
 parameter_list|()
 block|{   }
+DECL|method|onShowView ()
+specifier|public
+name|void
+name|onShowView
+parameter_list|()
+block|{
+if|if
+condition|(
+name|windowTitle
+operator|!=
+literal|null
+condition|)
+block|{
+name|Gerrit
+operator|.
+name|setWindowTitle
+argument_list|(
+name|this
+argument_list|,
+name|windowTitle
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
