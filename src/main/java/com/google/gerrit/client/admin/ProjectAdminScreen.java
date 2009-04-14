@@ -138,7 +138,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|GerritCallback
+name|ScreenLoadCallback
 import|;
 end_import
 
@@ -374,15 +374,19 @@ argument_list|(
 name|projectId
 argument_list|,
 operator|new
-name|GerritCallback
+name|ScreenLoadCallback
 argument_list|<
 name|ProjectDetail
 argument_list|>
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 block|{
-specifier|public
+annotation|@
+name|Override
+specifier|protected
 name|void
-name|onSuccess
+name|preDisplay
 parameter_list|(
 specifier|final
 name|ProjectDetail

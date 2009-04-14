@@ -92,7 +92,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|GerritCallback
+name|ScreenLoadCallback
 import|;
 end_import
 
@@ -204,20 +204,31 @@ argument_list|(
 name|magicToken
 argument_list|,
 operator|new
-name|GerritCallback
+name|ScreenLoadCallback
 argument_list|<
 name|VoidResult
 argument_list|>
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 block|{
-specifier|public
+annotation|@
+name|Override
+specifier|protected
 name|void
-name|onSuccess
+name|preDisplay
 parameter_list|(
 specifier|final
 name|VoidResult
 name|result
 parameter_list|)
+block|{           }
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|postDisplay
+parameter_list|()
 block|{
 name|History
 operator|.

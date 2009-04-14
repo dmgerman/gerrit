@@ -1141,15 +1141,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|renderSelf
+argument_list|()
+expr_stmt|;
 name|display
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|display ()
+DECL|method|renderSelf ()
 specifier|private
 name|void
-name|display
+name|renderSelf
 parameter_list|()
 block|{
 name|current

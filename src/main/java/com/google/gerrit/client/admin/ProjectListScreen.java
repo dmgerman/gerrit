@@ -108,7 +108,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|GerritCallback
+name|ScreenLoadCallback
 import|;
 end_import
 
@@ -309,19 +309,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getScreenCacheToken ()
-specifier|public
-name|Object
-name|getScreenCacheToken
-parameter_list|()
-block|{
-return|return
-name|getClass
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|onLoad ()
 specifier|public
 name|void
@@ -346,18 +333,22 @@ operator|.
 name|ownedProjects
 argument_list|(
 operator|new
-name|GerritCallback
+name|ScreenLoadCallback
 argument_list|<
 name|List
 argument_list|<
 name|Project
 argument_list|>
 argument_list|>
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 block|{
-specifier|public
+annotation|@
+name|Override
+specifier|protected
 name|void
-name|onSuccess
+name|preDisplay
 parameter_list|(
 specifier|final
 name|List
@@ -366,12 +357,6 @@ name|Project
 argument_list|>
 name|result
 parameter_list|)
-block|{
-if|if
-condition|(
-name|isAttached
-argument_list|()
-condition|)
 block|{
 name|projects
 operator|.
@@ -387,7 +372,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)

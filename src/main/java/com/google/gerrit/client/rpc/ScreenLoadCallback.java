@@ -94,6 +94,22 @@ name|NotFoundScreen
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Screen
+import|;
+end_import
+
 begin_comment
 comment|/** Callback switching {@link NoSuchEntityException} to {@link NotFoundScreen} */
 end_comment
@@ -113,6 +129,76 @@ argument_list|<
 name|T
 argument_list|>
 block|{
+DECL|field|screen
+specifier|private
+specifier|final
+name|Screen
+name|screen
+decl_stmt|;
+DECL|method|ScreenLoadCallback (final Screen s)
+specifier|public
+name|ScreenLoadCallback
+parameter_list|(
+specifier|final
+name|Screen
+name|s
+parameter_list|)
+block|{
+name|screen
+operator|=
+name|s
+expr_stmt|;
+block|}
+DECL|method|onSuccess (final T result)
+specifier|public
+specifier|final
+name|void
+name|onSuccess
+parameter_list|(
+specifier|final
+name|T
+name|result
+parameter_list|)
+block|{
+if|if
+condition|(
+name|screen
+operator|.
+name|isAttached
+argument_list|()
+condition|)
+block|{
+name|preDisplay
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+name|screen
+operator|.
+name|display
+argument_list|()
+expr_stmt|;
+name|postDisplay
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|preDisplay (T result)
+specifier|protected
+specifier|abstract
+name|void
+name|preDisplay
+parameter_list|(
+name|T
+name|result
+parameter_list|)
+function_decl|;
+DECL|method|postDisplay ()
+specifier|protected
+name|void
+name|postDisplay
+parameter_list|()
+block|{   }
 annotation|@
 name|Override
 DECL|method|onFailure (final Throwable caught)

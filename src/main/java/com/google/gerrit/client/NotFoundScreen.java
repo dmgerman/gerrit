@@ -173,6 +173,23 @@ name|body
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|onLoad ()
+specifier|protected
+name|void
+name|onLoad
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onLoad
+argument_list|()
+expr_stmt|;
+name|display
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 
