@@ -803,40 +803,7 @@ argument_list|()
 condition|)
 block|{
 name|doSignIn
-argument_list|(
-operator|new
-name|AsyncCallback
-argument_list|<
-name|Object
-argument_list|>
 argument_list|()
-block|{
-specifier|public
-name|void
-name|onSuccess
-parameter_list|(
-specifier|final
-name|Object
-name|result
-parameter_list|)
-block|{
-name|display
-argument_list|(
-name|view
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|onFailure
-parameter_list|(
-specifier|final
-name|Throwable
-name|caught
-parameter_list|)
-block|{         }
-block|}
-argument_list|)
 expr_stmt|;
 return|return;
 block|}
@@ -967,26 +934,17 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**    * Sign the user into the application.    *     * @param callback optional; if sign in is successful the onSuccess method    *        will be called.    */
-DECL|method|doSignIn (final AsyncCallback<?> callback)
+comment|/**    * Sign the user into the application.    */
+DECL|method|doSignIn ()
 specifier|public
 specifier|static
 name|void
 name|doSignIn
-parameter_list|(
-specifier|final
-name|AsyncCallback
-argument_list|<
-name|?
-argument_list|>
-name|callback
-parameter_list|)
+parameter_list|()
 block|{
 operator|new
 name|SignInDialog
-argument_list|(
-name|callback
-argument_list|)
+argument_list|()
 operator|.
 name|center
 argument_list|()
@@ -2165,9 +2123,7 @@ name|execute
 parameter_list|()
 block|{
 name|doSignIn
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}

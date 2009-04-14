@@ -532,20 +532,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
-name|CallbackHandle
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -638,7 +624,7 @@ specifier|private
 name|boolean
 name|discovering
 decl_stmt|;
-DECL|method|OpenIdLoginPanel (final SignInDialog.Mode m, final CallbackHandle<?> sc)
+DECL|method|OpenIdLoginPanel (final SignInDialog.Mode m)
 specifier|public
 name|OpenIdLoginPanel
 parameter_list|(
@@ -647,13 +633,6 @@ name|SignInDialog
 operator|.
 name|Mode
 name|m
-parameter_list|,
-specifier|final
-name|CallbackHandle
-argument_list|<
-name|?
-argument_list|>
-name|sc
 parameter_list|)
 block|{
 name|mode
