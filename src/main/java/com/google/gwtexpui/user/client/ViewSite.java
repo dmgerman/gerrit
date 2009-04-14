@@ -258,6 +258,22 @@ name|view
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Invoked after the view becomes the current view and has been made visible.    *     * @param view the view being displayed.    */
+DECL|method|onShowView (final V view)
+specifier|protected
+name|void
+name|onShowView
+parameter_list|(
+specifier|final
+name|V
+name|view
+parameter_list|)
+block|{   }
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|swap (final View v)
 specifier|final
 name|void
@@ -310,6 +326,14 @@ operator|.
 name|setVisible
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|onShowView
+argument_list|(
+operator|(
+name|V
+operator|)
+name|v
 argument_list|)
 expr_stmt|;
 block|}
