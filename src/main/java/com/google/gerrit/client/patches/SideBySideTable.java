@@ -1076,6 +1076,16 @@ name|needInsert
 init|=
 literal|true
 decl_stmt|;
+if|if
+condition|(
+name|commentRow
+operator|<
+name|table
+operator|.
+name|getRowCount
+argument_list|()
+condition|)
+block|{
 for|for
 control|(
 name|int
@@ -1125,6 +1135,7 @@ operator|=
 literal|false
 expr_stmt|;
 break|break;
+block|}
 block|}
 block|}
 if|if
