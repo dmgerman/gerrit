@@ -235,6 +235,33 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|update (final PatchLineComment msg)
+name|void
+name|update
+parameter_list|(
+specifier|final
+name|PatchLineComment
+name|msg
+parameter_list|)
+block|{
+name|comment
+operator|=
+name|msg
+expr_stmt|;
+name|SafeHtml
+operator|.
+name|set
+argument_list|(
+name|getElement
+argument_list|()
+argument_list|,
+name|toSafeHtml
+argument_list|(
+name|comment
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

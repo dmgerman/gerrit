@@ -95,9 +95,19 @@ name|String
 name|draft
 parameter_list|()
 function_decl|;
+DECL|method|buttonEdit ()
+name|String
+name|buttonEdit
+parameter_list|()
+function_decl|;
 DECL|method|buttonSave ()
 name|String
 name|buttonSave
+parameter_list|()
+function_decl|;
+DECL|method|buttonCancel ()
+name|String
+name|buttonCancel
 parameter_list|()
 function_decl|;
 DECL|method|buttonDiscard ()
