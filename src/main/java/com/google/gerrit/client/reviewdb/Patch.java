@@ -263,8 +263,8 @@ specifier|static
 enum|enum
 name|ChangeType
 block|{
-DECL|enumConstant|ADD
-name|ADD
+DECL|enumConstant|ADDED
+name|ADDED
 argument_list|(
 literal|'A'
 argument_list|)

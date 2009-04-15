@@ -1595,7 +1595,7 @@ name|Patch
 operator|.
 name|ChangeType
 operator|.
-name|ADD
+name|ADDED
 argument_list|)
 expr_stmt|;
 block|}
