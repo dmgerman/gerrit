@@ -200,6 +200,16 @@ name|String
 name|patchTableDiffUnified
 parameter_list|()
 function_decl|;
+DECL|method|patchTableDownloadPreImage ()
+name|String
+name|patchTableDownloadPreImage
+parameter_list|()
+function_decl|;
+DECL|method|patchTableDownloadPostImage ()
+name|String
+name|patchTableDownloadPostImage
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenDescription ()
 name|String
 name|changeScreenDescription
