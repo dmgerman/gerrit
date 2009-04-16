@@ -586,6 +586,16 @@ argument_list|()
 operator|.
 name|isOpen
 argument_list|()
+operator|&&
+name|psi
+operator|.
+name|equals
+argument_list|(
+name|change
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|computeAllowed

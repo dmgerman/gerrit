@@ -1231,7 +1231,13 @@ name|Gerrit
 operator|.
 name|isSignedIn
 argument_list|()
-operator|&&
+condition|)
+block|{
+name|populateCommentAction
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
 name|changeDetail
 operator|.
 name|isCurrentPatchSet
@@ -1240,9 +1246,6 @@ name|detail
 argument_list|)
 condition|)
 block|{
-name|populateCommentAction
-argument_list|()
-expr_stmt|;
 name|populateActions
 argument_list|(
 name|detail
@@ -1259,6 +1262,7 @@ block|{
 name|populateAbandonAction
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 name|body
