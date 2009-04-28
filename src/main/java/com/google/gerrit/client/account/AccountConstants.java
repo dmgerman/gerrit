@@ -125,6 +125,11 @@ name|String
 name|defaultContext
 parameter_list|()
 function_decl|;
+DECL|method|contextWholeFile ()
+name|String
+name|contextWholeFile
+parameter_list|()
+function_decl|;
 DECL|method|showSiteHeader ()
 name|String
 name|showSiteHeader

@@ -163,6 +163,17 @@ name|DEFAULT_CONTEXT
 init|=
 literal|10
 decl_stmt|;
+comment|/** Context setting to display the entire file. */
+DECL|field|WHOLE_FILE_CONTEXT
+specifier|public
+specifier|static
+specifier|final
+name|short
+name|WHOLE_FILE_CONTEXT
+init|=
+operator|-
+literal|1
+decl_stmt|;
 comment|/** Typical valid choices for the default context setting. */
 DECL|field|CONTEXT_CHOICES
 specifier|public
@@ -184,6 +195,8 @@ block|,
 literal|75
 block|,
 literal|100
+block|,
+name|WHOLE_FILE_CONTEXT
 block|}
 decl_stmt|;
 comment|/**    * Locate exactly one account matching the name or name/email string.    *     * @param db open database handle to use for the query.    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", or just the preferred email    *        address ("email@example"), or a full name.    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
