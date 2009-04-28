@@ -3721,6 +3721,33 @@ name|subj
 operator|.
 name|append
 argument_list|(
+literal|"["
+argument_list|)
+expr_stmt|;
+name|subj
+operator|.
+name|append
+argument_list|(
+name|change
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|getShortName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|subj
+operator|.
+name|append
+argument_list|(
+literal|"] "
+argument_list|)
+expr_stmt|;
+name|subj
+operator|.
+name|append
+argument_list|(
 literal|"Change "
 argument_list|)
 expr_stmt|;
