@@ -478,6 +478,11 @@ operator|.
 name|Id
 name|me
 decl_stmt|;
+DECL|field|myAccount
+specifier|protected
+name|Account
+name|myAccount
+decl_stmt|;
 DECL|field|published
 specifier|protected
 name|HashMap
@@ -785,6 +790,15 @@ operator|.
 name|getAccountId
 argument_list|()
 expr_stmt|;
+name|myAccount
+operator|=
+name|accountInfo
+operator|.
+name|get
+argument_list|(
+name|me
+argument_list|)
+expr_stmt|;
 specifier|final
 name|int
 name|fileCnt
@@ -1019,6 +1033,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getContextSetting ()
+specifier|protected
+name|short
+name|getContextSetting
+parameter_list|()
+block|{
+return|return
+name|myAccount
+operator|!=
+literal|null
+condition|?
+name|myAccount
+operator|.
+name|getDefaultContext
+argument_list|()
+else|:
+name|Account
+operator|.
+name|DEFAULT_CONTEXT
+return|;
 block|}
 DECL|method|history (final ReviewDb db)
 specifier|protected
