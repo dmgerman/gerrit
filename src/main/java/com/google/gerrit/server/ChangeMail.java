@@ -1736,6 +1736,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|file
 operator|=
 operator|new
@@ -1743,11 +1745,23 @@ name|PatchFile
 argument_list|(
 name|repo
 argument_list|,
-name|db
+name|patchSet
+operator|.
+name|getRevision
+argument_list|()
 argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+comment|// Don't quote the line if we can't load it.
+block|}
 block|}
 else|else
 block|{

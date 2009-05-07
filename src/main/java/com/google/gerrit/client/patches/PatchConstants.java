@@ -120,6 +120,11 @@ name|String
 name|confirmDiscard
 parameter_list|()
 function_decl|;
+DECL|method|noDifference ()
+name|String
+name|noDifference
+parameter_list|()
+function_decl|;
 DECL|method|patchHeaderOld ()
 name|String
 name|patchHeaderOld

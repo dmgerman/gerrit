@@ -122,14 +122,6 @@ name|String
 name|path
 parameter_list|)
 function_decl|;
-DECL|method|patchHeaderAncestor (int id)
-name|String
-name|patchHeaderAncestor
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-function_decl|;
 DECL|method|patchSkipRegion (@luralCount int lineCnt)
 name|String
 name|patchSkipRegion
