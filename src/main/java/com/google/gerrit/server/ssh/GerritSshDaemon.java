@@ -730,7 +730,9 @@ name|setPublickeyAuthenticator
 argument_list|(
 operator|new
 name|DatabasePubKeyAuth
-argument_list|()
+argument_list|(
+name|srv
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sshd
