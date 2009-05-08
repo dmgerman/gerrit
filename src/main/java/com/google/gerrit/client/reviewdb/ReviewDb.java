@@ -141,7 +141,7 @@ specifier|final
 name|int
 name|VERSION
 init|=
-literal|9
+literal|10
 decl_stmt|;
 annotation|@
 name|Relation
@@ -309,13 +309,6 @@ name|Relation
 DECL|method|patches ()
 name|PatchAccess
 name|patches
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|patchContents ()
-name|PatchContentAccess
-name|patchContents
 parameter_list|()
 function_decl|;
 annotation|@
