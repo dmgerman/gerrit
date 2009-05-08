@@ -212,22 +212,6 @@ name|SshServlet
 extends|extends
 name|HttpServlet
 block|{
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|SshServlet
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|init (final ServletConfig config)
