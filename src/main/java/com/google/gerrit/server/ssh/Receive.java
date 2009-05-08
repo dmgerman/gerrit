@@ -806,7 +806,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|OutputStreamWriter
+name|PrintWriter
 import|;
 end_import
 
@@ -1514,15 +1514,12 @@ name|getCanonicalURL
 argument_list|()
 decl_stmt|;
 specifier|final
-name|OutputStreamWriter
+name|PrintWriter
 name|msg
 init|=
-operator|new
-name|OutputStreamWriter
+name|toPrintWriter
 argument_list|(
 name|err
-argument_list|,
-literal|"UTF-8"
 argument_list|)
 decl_stmt|;
 name|msg

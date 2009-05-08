@@ -106,7 +106,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -121,6 +131,10 @@ name|AdminFlushCaches
 extends|extends
 name|AbstractCommand
 block|{
+DECL|field|p
+name|PrintWriter
+name|p
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|run (String[] args)
@@ -134,10 +148,21 @@ name|args
 parameter_list|)
 throws|throws
 name|Failure
+throws|,
+name|UnsupportedEncodingException
 block|{
 name|assertIsAdministrator
 argument_list|()
 expr_stmt|;
+name|p
+operator|=
+name|toPrintWriter
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|Common
 operator|.
 name|getGroupCache
@@ -201,34 +226,24 @@ name|Throwable
 name|e1
 parameter_list|)
 block|{
-try|try
-block|{
-name|err
+name|p
 operator|.
-name|write
+name|println
 argument_list|(
-operator|(
-literal|"warning: "
+literal|"warning: cannot flush cache \"diff\": "
 operator|+
-name|err
-operator|.
-name|toString
-argument_list|()
-operator|)
-operator|.
-name|getBytes
-argument_list|(
-literal|"UTF-8"
-argument_list|)
+name|e1
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e2
-parameter_list|)
-block|{       }
+block|}
+finally|finally
+block|{
+name|p
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 DECL|method|flushCache (final String name)
@@ -261,38 +276,19 @@ name|Throwable
 name|e1
 parameter_list|)
 block|{
-try|try
-block|{
-name|err
+name|p
 operator|.
-name|write
+name|println
 argument_list|(
-operator|(
-literal|"warning: cannot flush cache "
+literal|"warning: cannot flush cache \""
 operator|+
 name|name
 operator|+
-literal|": "
+literal|"\": "
 operator|+
-name|err
-operator|.
-name|toString
-argument_list|()
-operator|)
-operator|.
-name|getBytes
-argument_list|(
-literal|"UTF-8"
-argument_list|)
+name|e1
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e2
-parameter_list|)
-block|{       }
 block|}
 block|}
 block|}
