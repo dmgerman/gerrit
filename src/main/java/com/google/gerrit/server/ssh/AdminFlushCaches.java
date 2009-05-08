@@ -76,22 +76,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|data
-operator|.
-name|GroupCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|reviewdb
 operator|.
 name|SystemConfig
@@ -151,27 +135,13 @@ parameter_list|)
 throws|throws
 name|Failure
 block|{
-specifier|final
-name|GroupCache
-name|gc
-init|=
+name|assertIsAdministrator
+argument_list|()
+expr_stmt|;
 name|Common
 operator|.
 name|getGroupCache
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|gc
-operator|.
-name|isAdministrator
-argument_list|(
-name|getAccountId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|gc
 operator|.
 name|flush
 argument_list|()
@@ -188,11 +158,6 @@ name|Common
 operator|.
 name|getAccountCache
 argument_list|()
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-name|SshUtil
 operator|.
 name|flush
 argument_list|()
@@ -263,20 +228,7 @@ parameter_list|(
 name|IOException
 name|e2
 parameter_list|)
-block|{         }
-block|}
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|Failure
-argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: Not a Gerrit administrator"
-argument_list|)
-throw|;
+block|{       }
 block|}
 block|}
 DECL|method|flushCache (final String name)

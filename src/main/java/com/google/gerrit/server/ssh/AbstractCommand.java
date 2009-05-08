@@ -827,6 +827,40 @@ literal|false
 argument_list|)
 return|;
 block|}
+DECL|method|assertIsAdministrator ()
+specifier|protected
+name|void
+name|assertIsAdministrator
+parameter_list|()
+throws|throws
+name|Failure
+block|{
+if|if
+condition|(
+operator|!
+name|Common
+operator|.
+name|getGroupCache
+argument_list|()
+operator|.
+name|isAdministrator
+argument_list|(
+name|getAccountId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|Failure
+argument_list|(
+literal|1
+argument_list|,
+literal|"fatal: Not a Gerrit administrator"
+argument_list|)
+throw|;
+block|}
+block|}
 DECL|method|getName ()
 specifier|protected
 name|String
