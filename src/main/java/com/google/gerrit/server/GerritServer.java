@@ -1855,6 +1855,14 @@ name|mkdirs
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|loc
+operator|.
+name|canWrite
+argument_list|()
+condition|)
+block|{
 specifier|final
 name|DiskStoreConfiguration
 name|c
@@ -1892,6 +1900,22 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Can't write to disk cache: "
+operator|+
+name|loc
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
