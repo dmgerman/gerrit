@@ -4523,6 +4523,12 @@ operator|+
 name|sVer
 operator|.
 name|versionNbr
+operator|+
+literal|"; expected schema version "
+operator|+
+name|ReviewDb
+operator|.
+name|VERSION
 argument_list|)
 throw|;
 block|}
