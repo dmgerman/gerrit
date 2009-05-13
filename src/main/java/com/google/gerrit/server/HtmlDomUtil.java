@@ -222,6 +222,16 @@ name|javax
 operator|.
 name|servlet
 operator|.
+name|ServletContext
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|servlet
+operator|.
 name|ServletException
 import|;
 end_import
@@ -900,13 +910,17 @@ return|return
 name|d
 return|;
 block|}
-comment|/** Parse an XHTML file from our CLASSPATH and return the instance. */
-DECL|method|parseFile (final String name)
+comment|/** Parse an XHTML file from our ServletContext and return the instance. */
+DECL|method|parseFile (final ServletContext context, final String name)
 specifier|public
 specifier|static
 name|Document
 name|parseFile
 parameter_list|(
+specifier|final
+name|ServletContext
+name|context
+parameter_list|,
 specifier|final
 name|String
 name|name
@@ -920,12 +934,7 @@ name|in
 decl_stmt|;
 name|in
 operator|=
-name|HtmlDomUtil
-operator|.
-name|class
-operator|.
-name|getClassLoader
-argument_list|()
+name|context
 operator|.
 name|getResourceAsStream
 argument_list|(

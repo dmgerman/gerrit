@@ -1572,7 +1572,7 @@ name|url
 operator|=
 name|GWT
 operator|.
-name|getModuleBaseURL
+name|getHostPageBaseURL
 argument_list|()
 operator|+
 name|url

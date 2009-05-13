@@ -2107,6 +2107,19 @@ expr_stmt|;
 comment|// cut "rpc"
 name|url
 operator|.
+name|setLength
+argument_list|(
+name|url
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|"/"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// cut "gerrit"
+name|url
+operator|.
 name|append
 argument_list|(
 literal|"/Gerrit#VE,"

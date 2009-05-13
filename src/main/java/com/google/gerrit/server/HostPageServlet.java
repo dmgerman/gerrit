@@ -432,7 +432,7 @@ specifier|final
 name|String
 name|hostPageName
 init|=
-literal|"com/google/gerrit/public/Gerrit.html"
+literal|"WEB-INF/Gerrit.html"
 decl_stmt|;
 name|hostDoc
 operator|=
@@ -440,6 +440,11 @@ name|HtmlDomUtil
 operator|.
 name|parseFile
 argument_list|(
+name|getServletContext
+argument_list|()
+argument_list|,
+literal|"/"
+operator|+
 name|hostPageName
 argument_list|)
 expr_stmt|;
@@ -458,7 +463,7 @@ literal|"No "
 operator|+
 name|hostPageName
 operator|+
-literal|" in CLASSPATH"
+literal|" in webapp"
 argument_list|)
 throw|;
 block|}
@@ -1038,6 +1043,13 @@ literal|"No gerrit_module to rewrite in host document"
 argument_list|)
 throw|;
 block|}
+name|scriptNode
+operator|.
+name|removeAttribute
+argument_list|(
+literal|"id"
+argument_list|)
+expr_stmt|;
 specifier|final
 name|String
 name|src
@@ -1049,7 +1061,6 @@ argument_list|(
 literal|"src"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|InputStream
 name|in
 init|=
@@ -1182,13 +1193,6 @@ operator|.
 name|name
 argument_list|()
 decl_stmt|;
-name|scriptNode
-operator|.
-name|removeAttribute
-argument_list|(
-literal|"id"
-argument_list|)
-expr_stmt|;
 name|scriptNode
 operator|.
 name|setAttribute

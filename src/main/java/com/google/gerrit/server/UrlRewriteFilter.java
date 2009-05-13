@@ -719,7 +719,7 @@ name|pathInfo
 operator|.
 name|startsWith
 argument_list|(
-literal|"/rpc/"
+literal|"/gerrit/rpc/"
 argument_list|)
 condition|)
 block|{

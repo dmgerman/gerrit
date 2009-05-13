@@ -1227,17 +1227,23 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+specifier|final
+name|String
+name|sfx
+init|=
+literal|"/gerrit/rpc/"
+decl_stmt|;
 if|if
 condition|(
 name|uri
 operator|.
 name|endsWith
 argument_list|(
-literal|"/rpc/"
+name|sfx
 argument_list|)
 condition|)
 block|{
-comment|// Nope, it was one of our RPC servlets. Drop the /rpc/ part too.
+comment|// Nope, it was one of our RPC servlets. Drop the rpc too.
 comment|//
 name|uri
 operator|=
@@ -1252,7 +1258,14 @@ operator|.
 name|length
 argument_list|()
 operator|-
-literal|4
+operator|(
+name|sfx
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+operator|)
 argument_list|)
 expr_stmt|;
 block|}

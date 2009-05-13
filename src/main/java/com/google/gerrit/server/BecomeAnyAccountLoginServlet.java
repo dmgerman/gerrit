@@ -688,7 +688,7 @@ name|rsp
 operator|.
 name|sendRedirect
 argument_list|(
-literal|"Gerrit.html"
+literal|"Gerrit"
 argument_list|)
 expr_stmt|;
 block|}
