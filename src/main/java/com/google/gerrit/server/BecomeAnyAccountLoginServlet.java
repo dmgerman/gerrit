@@ -389,90 +389,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-operator|!
-name|allowed
-condition|)
-block|{
+name|doPost
+argument_list|(
+name|req
+argument_list|,
 name|rsp
-operator|.
-name|sendError
-argument_list|(
-name|HttpServletResponse
-operator|.
-name|SC_NOT_FOUND
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-name|rsp
-operator|.
-name|setContentType
-argument_list|(
-literal|"text/html"
-argument_list|)
-expr_stmt|;
-specifier|final
-name|ServletOutputStream
-name|out
-init|=
-name|rsp
-operator|.
-name|getOutputStream
-argument_list|()
-decl_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"<html>"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"<form method=\"POST\"><b>ssh_user_name:</b> "
-operator|+
-literal|"<input type=\"text\" size=\"30\" name=\"ssh_user_name\" />"
-operator|+
-literal|"<input type=\"submit\" value=\"Become Account\" />"
-operator|+
-literal|"</form>"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"<form method=\"POST\"><b>preferred_email:</b> "
-operator|+
-literal|"<input type=\"text\" size=\"30\" name=\"preferred_email\" />"
-operator|+
-literal|"<input type=\"submit\" value=\"Become Account\" />"
-operator|+
-literal|"</form>"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"<form method=\"POST\"><b>account_id:</b> "
-operator|+
-literal|"<input type=\"text\" size=\"12\" name=\"account_id\" />"
-operator|+
-literal|"<input type=\"submit\" value=\"Become Account\" />"
-operator|+
-literal|"</form>"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|print
-argument_list|(
-literal|"</html>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -603,11 +524,73 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|doGet
-argument_list|(
-name|req
-argument_list|,
+specifier|final
+name|ServletOutputStream
+name|out
+init|=
 name|rsp
+operator|.
+name|getOutputStream
+argument_list|()
+decl_stmt|;
+name|rsp
+operator|.
+name|setContentType
+argument_list|(
+literal|"text/html"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+literal|"<html>"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+literal|"<form method=\"POST\"><b>ssh_user_name:</b> "
+operator|+
+literal|"<input type=\"text\" size=\"30\" name=\"ssh_user_name\" />"
+operator|+
+literal|"<input type=\"submit\" value=\"Become Account\" />"
+operator|+
+literal|"</form>"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+literal|"<form method=\"POST\"><b>preferred_email:</b> "
+operator|+
+literal|"<input type=\"text\" size=\"30\" name=\"preferred_email\" />"
+operator|+
+literal|"<input type=\"submit\" value=\"Become Account\" />"
+operator|+
+literal|"</form>"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+literal|"<form method=\"POST\"><b>account_id:</b> "
+operator|+
+literal|"<input type=\"text\" size=\"12\" name=\"account_id\" />"
+operator|+
+literal|"<input type=\"submit\" value=\"Become Account\" />"
+operator|+
+literal|"</form>"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+literal|"</html>"
 argument_list|)
 expr_stmt|;
 return|return;
