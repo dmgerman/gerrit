@@ -280,6 +280,16 @@ name|InvalidKeySpecException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Utilities to support SSH operations. */
 end_comment
@@ -325,6 +335,29 @@ operator|new
 name|AttributeKey
 argument_list|<
 name|SocketAddress
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/** Server session attribute holding the current commands. */
+DECL|field|ACTIVE
+specifier|static
+specifier|final
+name|AttributeKey
+argument_list|<
+name|List
+argument_list|<
+name|AbstractCommand
+argument_list|>
+argument_list|>
+name|ACTIVE
+init|=
+operator|new
+name|AttributeKey
+argument_list|<
+name|List
+argument_list|<
+name|AbstractCommand
+argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
