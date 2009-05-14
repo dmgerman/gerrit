@@ -147,15 +147,11 @@ name|p
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|run (String[] args)
+DECL|method|run ()
 specifier|protected
 name|void
 name|run
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
+parameter_list|()
 throws|throws
 name|Failure
 throws|,

@@ -196,6 +196,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|spearce
 operator|.
 name|jgit
@@ -224,6 +236,30 @@ name|AbstractGitCommand
 extends|extends
 name|AbstractCommand
 block|{
+annotation|@
+name|Argument
+argument_list|(
+name|index
+operator|=
+literal|0
+argument_list|,
+name|metaVar
+operator|=
+literal|"PROJECT.git"
+argument_list|,
+name|required
+operator|=
+literal|true
+argument_list|,
+name|usage
+operator|=
+literal|"project name"
+argument_list|)
+DECL|field|reqProjName
+specifier|private
+name|String
+name|reqProjName
+decl_stmt|;
 DECL|field|repo
 specifier|protected
 name|Repository
@@ -269,35 +305,59 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|run (final String[] args)
+DECL|method|preRun ()
+specifier|protected
+name|void
+name|preRun
+parameter_list|()
+throws|throws
+name|Failure
+block|{
+name|super
+operator|.
+name|preRun
+argument_list|()
+expr_stmt|;
+name|db
+operator|=
+name|openReviewDb
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|postRun ()
+specifier|protected
+name|void
+name|postRun
+parameter_list|()
+block|{
+name|closeDb
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|postRun
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|run ()
 specifier|protected
 specifier|final
 name|void
 name|run
-parameter_list|(
-specifier|final
-name|String
-index|[]
-name|args
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 throws|,
 name|Failure
 block|{
-specifier|final
-name|String
-name|reqName
-init|=
-name|parseCommandLine
-argument_list|(
-name|args
-argument_list|)
-decl_stmt|;
 name|String
 name|projectName
 init|=
-name|reqName
+name|reqProjName
 decl_stmt|;
 if|if
 condition|(
@@ -387,7 +447,7 @@ literal|1
 argument_list|,
 literal|"fatal: '"
 operator|+
-name|reqName
+name|reqProjName
 operator|+
 literal|"': not a Gerrit project"
 argument_list|)
@@ -423,7 +483,7 @@ literal|1
 argument_list|,
 literal|"fatal: '"
 operator|+
-name|reqName
+name|reqProjName
 operator|+
 literal|"': not a valid project"
 argument_list|,
@@ -452,9 +512,9 @@ literal|1
 argument_list|,
 literal|"fatal: '"
 operator|+
-name|reqName
+name|reqProjName
 operator|+
-literal|"': not a Gerrit project"
+literal|"': unknown project"
 argument_list|,
 operator|new
 name|SecurityException
@@ -494,7 +554,7 @@ literal|1
 argument_list|,
 literal|"fatal: '"
 operator|+
-name|reqName
+name|reqProjName
 operator|+
 literal|"': not a git archive"
 argument_list|,
@@ -502,13 +562,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-name|db
-operator|=
-name|openReviewDb
-argument_list|()
-expr_stmt|;
-try|try
-block|{
 name|userAccount
 operator|=
 name|Common
@@ -550,13 +603,6 @@ block|}
 name|runImpl
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|closeDb
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|closeDb ()
 specifier|protected
@@ -618,19 +664,6 @@ parameter_list|()
 throws|throws
 name|IOException
 throws|,
-name|Failure
-function_decl|;
-DECL|method|parseCommandLine (String[] args)
-specifier|protected
-specifier|abstract
-name|String
-name|parseCommandLine
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-throws|throws
 name|Failure
 function_decl|;
 block|}

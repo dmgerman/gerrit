@@ -189,43 +189,16 @@ name|AbstractCommand
 block|{
 annotation|@
 name|Override
-DECL|method|run (final String[] args)
+DECL|method|run ()
 specifier|protected
 name|void
 name|run
-parameter_list|(
-specifier|final
-name|String
-index|[]
-name|args
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 throws|,
 name|Failure
 block|{
-if|if
-condition|(
-name|args
-operator|.
-name|length
-operator|!=
-literal|0
-condition|)
-block|{
-throw|throw
-operator|new
-name|Failure
-argument_list|(
-literal|1
-argument_list|,
-literal|"usage: "
-operator|+
-name|getName
-argument_list|()
-argument_list|)
-throw|;
-block|}
 specifier|final
 name|PrintWriter
 name|stdout

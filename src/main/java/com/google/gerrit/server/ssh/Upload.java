@@ -136,50 +136,6 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|parseCommandLine (final String[] args)
-specifier|protected
-name|String
-name|parseCommandLine
-parameter_list|(
-specifier|final
-name|String
-index|[]
-name|args
-parameter_list|)
-throws|throws
-name|Failure
-block|{
-if|if
-condition|(
-name|args
-operator|.
-name|length
-operator|!=
-literal|1
-condition|)
-throw|throw
-operator|new
-name|Failure
-argument_list|(
-literal|1
-argument_list|,
-literal|"usage: "
-operator|+
-name|getName
-argument_list|()
-operator|+
-literal|" '/project.git'"
-argument_list|)
-throw|;
-return|return
-name|args
-index|[
-literal|0
-index|]
-return|;
-block|}
 block|}
 end_class
 
