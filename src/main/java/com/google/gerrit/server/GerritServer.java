@@ -5198,6 +5198,17 @@ return|return
 name|u
 return|;
 block|}
+comment|/** Get the parsed<code>$site_path/gerrit.config</code> file. */
+DECL|method|getGerritConfig ()
+specifier|public
+name|RepositoryConfig
+name|getGerritConfig
+parameter_list|()
+block|{
+return|return
+name|gerritConfigFile
+return|;
+block|}
 comment|/** Get the repositories maintained by this server. */
 DECL|method|getRepositoryCache ()
 specifier|public
