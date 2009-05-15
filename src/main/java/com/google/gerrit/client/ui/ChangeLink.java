@@ -184,7 +184,7 @@ block|{
 return|return
 name|GWT
 operator|.
-name|getModuleBaseURL
+name|getHostPageBaseURL
 argument_list|()
 operator|+
 name|c

@@ -1247,7 +1247,7 @@ name|base
 init|=
 name|GWT
 operator|.
-name|getModuleBaseURL
+name|getHostPageBaseURL
 argument_list|()
 decl_stmt|;
 name|base
