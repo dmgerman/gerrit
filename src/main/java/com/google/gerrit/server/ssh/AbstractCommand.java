@@ -1478,6 +1478,8 @@ name|list
 operator|.
 name|remove
 argument_list|(
+name|AbstractCommand
+operator|.
 name|this
 argument_list|)
 expr_stmt|;
