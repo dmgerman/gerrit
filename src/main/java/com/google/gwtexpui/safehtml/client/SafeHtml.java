@@ -199,6 +199,29 @@ specifier|abstract
 class|class
 name|SafeHtml
 block|{
+comment|/** @return the existing HTML property of a widget. */
+DECL|method|get (final HasHTML t)
+specifier|public
+specifier|static
+name|SafeHtml
+name|get
+parameter_list|(
+specifier|final
+name|HasHTML
+name|t
+parameter_list|)
+block|{
+return|return
+operator|new
+name|SafeHtmlString
+argument_list|(
+name|t
+operator|.
+name|getHTML
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/** Set the HTML property of a widget. */
 DECL|method|set (final T e, final SafeHtml str)
 specifier|public
@@ -234,6 +257,31 @@ return|return
 name|e
 return|;
 block|}
+comment|/** @return the existing inner HTML of any element. */
+DECL|method|get (final Element e)
+specifier|public
+specifier|static
+name|SafeHtml
+name|get
+parameter_list|(
+specifier|final
+name|Element
+name|e
+parameter_list|)
+block|{
+return|return
+operator|new
+name|SafeHtmlString
+argument_list|(
+name|DOM
+operator|.
+name|getInnerHTML
+argument_list|(
+name|e
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/** Set the inner HTML of any element. */
 DECL|method|set (final Element e, final SafeHtml str)
 specifier|public
@@ -264,6 +312,41 @@ argument_list|)
 expr_stmt|;
 return|return
 name|e
+return|;
+block|}
+comment|/** @return the existing inner HTML of a table cell. */
+DECL|method|get (final HTMLTable t, final int row, final int col)
+specifier|public
+specifier|static
+name|SafeHtml
+name|get
+parameter_list|(
+specifier|final
+name|HTMLTable
+name|t
+parameter_list|,
+specifier|final
+name|int
+name|row
+parameter_list|,
+specifier|final
+name|int
+name|col
+parameter_list|)
+block|{
+return|return
+operator|new
+name|SafeHtmlString
+argument_list|(
+name|t
+operator|.
+name|getHTML
+argument_list|(
+name|row
+argument_list|,
+name|col
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|/** Set the inner HTML of a table cell. */
