@@ -98,42 +98,6 @@ name|Window
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|FocusPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|Widget
-import|;
-end_import
-
 begin_comment
 comment|/**  * User agent feature tests we don't create permutations for.  *<p>  * Some features aren't worth creating full permutations in GWT for, as each new  * boolean permutation (only two settings) doubles the compile time required. If  * the setting only affects a couple of lines of JavaScript code, the slightly  * larger cache files for user agents that lack the functionality requested is  * trivial compared to the time developers lose building their application.  */
 end_comment
@@ -221,43 +185,6 @@ name|newloc
 parameter_list|)
 comment|/*-{ top.location.href = newloc }-*/
 function_decl|;
-DECL|field|focusFactory
-specifier|private
-specifier|static
-specifier|final
-name|FocusPanelFactory
-name|focusFactory
-init|=
-name|GWT
-operator|.
-name|create
-argument_list|(
-name|FocusPanelFactory
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-comment|/**    * @return a FocusPanel containing the supplied<code>child</code>;    *<code>null</code> if the browser can't support it. Some browsers    *         (e.g. WebKit based ones) can't correctly wrap a table that sinks    *         click events; the events are delivered incorrectly and the table    *         doesn't get the click where the user actually clicked (it arrives    *         on another row).    */
-DECL|method|wrapFocusPanel (final Widget child)
-specifier|public
-specifier|static
-name|FocusPanel
-name|wrapFocusPanel
-parameter_list|(
-specifier|final
-name|Widget
-name|child
-parameter_list|)
-block|{
-return|return
-name|focusFactory
-operator|.
-name|wrapFocusPanel
-argument_list|(
-name|child
-argument_list|)
-return|;
-block|}
 DECL|method|UserAgent ()
 specifier|private
 name|UserAgent
