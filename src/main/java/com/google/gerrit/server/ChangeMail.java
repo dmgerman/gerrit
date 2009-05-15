@@ -948,14 +948,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"newchange"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 name|newChangeTo
 argument_list|()
 expr_stmt|;
@@ -1036,7 +1033,6 @@ expr_stmt|;
 name|send
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 DECL|method|newChangePatchSetInfo ()
 specifier|private
@@ -1281,14 +1277,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"newpatchset"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 name|newChangeTo
 argument_list|()
 expr_stmt|;
@@ -1365,7 +1358,6 @@ name|send
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 DECL|method|sendComment ()
 specifier|public
 name|void
@@ -1374,14 +1366,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"comment"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 if|if
 condition|(
 name|message
@@ -1831,7 +1820,6 @@ name|send
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 DECL|method|sendRequestReview ()
 specifier|public
 name|void
@@ -1840,14 +1828,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"requestReview"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 specifier|final
 name|Account
 name|a
@@ -1993,7 +1978,6 @@ name|send
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 DECL|method|sendMerged ()
 specifier|public
 name|void
@@ -2002,14 +1986,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"merged"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 name|body
 operator|.
 name|append
@@ -2149,7 +2130,6 @@ name|send
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 DECL|method|sendMergeFailed ()
 specifier|public
 name|void
@@ -2158,14 +2138,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"comment"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 name|body
 operator|.
 name|append
@@ -2355,7 +2332,6 @@ name|send
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 DECL|method|sendAbandoned ()
 specifier|public
 name|void
@@ -2364,14 +2340,11 @@ parameter_list|()
 throws|throws
 name|MessagingException
 block|{
-if|if
-condition|(
 name|begin
 argument_list|(
 literal|"abandon"
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 specifier|final
 name|Account
 name|a
@@ -2557,7 +2530,6 @@ expr_stmt|;
 name|send
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 DECL|method|newChangeTo ()
 specifier|private
@@ -3289,7 +3261,7 @@ block|}
 block|}
 DECL|method|begin (final String messageClass)
 specifier|private
-name|boolean
+name|void
 name|begin
 parameter_list|(
 specifier|final
@@ -3387,9 +3359,6 @@ name|inFooter
 operator|=
 literal|false
 expr_stmt|;
-return|return
-literal|true
-return|;
 block|}
 DECL|method|initFrom ()
 specifier|private
