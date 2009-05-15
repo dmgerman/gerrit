@@ -2178,11 +2178,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|m
-operator|.
-name|lastInGroup
-argument_list|()
-expr_stmt|;
 return|return
 name|m
 return|;
