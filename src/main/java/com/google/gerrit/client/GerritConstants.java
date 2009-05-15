@@ -203,6 +203,16 @@ name|String
 name|menuProjects
 parameter_list|()
 function_decl|;
+DECL|method|searchHint ()
+name|String
+name|searchHint
+parameter_list|()
+function_decl|;
+DECL|method|searchButton ()
+name|String
+name|searchButton
+parameter_list|()
+function_decl|;
 DECL|method|rpcStatusLoading ()
 name|String
 name|rpcStatusLoading
