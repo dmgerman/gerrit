@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|LinkMenuItem
+operator|.
+name|impl
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -189,6 +207,13 @@ operator|==
 name|Event
 operator|.
 name|ONCLICK
+operator|&&
+name|impl
+operator|.
+name|handleAsClick
+argument_list|(
+name|event
+argument_list|)
 condition|)
 block|{
 name|onClick

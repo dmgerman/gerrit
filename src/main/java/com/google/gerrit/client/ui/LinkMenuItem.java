@@ -211,8 +211,8 @@ extends|extends
 name|Hyperlink
 block|{
 DECL|field|impl
-specifier|private
 specifier|static
+specifier|final
 name|HyperlinkImpl
 name|impl
 init|=
