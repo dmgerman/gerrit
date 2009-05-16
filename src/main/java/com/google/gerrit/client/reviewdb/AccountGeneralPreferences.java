@@ -153,6 +153,14 @@ specifier|protected
 name|boolean
 name|showSiteHeader
 decl_stmt|;
+comment|/** Should the Flash helper movie be used to copy text to the clipboard? */
+annotation|@
+name|Column
+DECL|field|useFlashClipboard
+specifier|protected
+name|boolean
+name|useFlashClipboard
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -210,6 +218,31 @@ operator|=
 name|b
 expr_stmt|;
 block|}
+DECL|method|isUseFlashClipboard ()
+specifier|public
+name|boolean
+name|isUseFlashClipboard
+parameter_list|()
+block|{
+return|return
+name|useFlashClipboard
+return|;
+block|}
+DECL|method|setUseFlashClipboard (final boolean b)
+specifier|public
+name|void
+name|setUseFlashClipboard
+parameter_list|(
+specifier|final
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|useFlashClipboard
+operator|=
+name|b
+expr_stmt|;
+block|}
 DECL|method|resetToDefaults ()
 specifier|public
 name|void
@@ -221,6 +254,10 @@ operator|=
 name|DEFAULT_CONTEXT
 expr_stmt|;
 name|showSiteHeader
+operator|=
+literal|true
+expr_stmt|;
+name|useFlashClipboard
 operator|=
 literal|true
 expr_stmt|;

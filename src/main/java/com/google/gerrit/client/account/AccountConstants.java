@@ -135,6 +135,11 @@ name|String
 name|showSiteHeader
 parameter_list|()
 function_decl|;
+DECL|method|useFlashClipboard ()
+name|String
+name|useFlashClipboard
+parameter_list|()
+function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
