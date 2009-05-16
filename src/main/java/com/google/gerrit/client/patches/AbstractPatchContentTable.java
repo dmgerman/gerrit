@@ -588,6 +588,11 @@ operator|.
 name|Id
 name|idSideB
 decl_stmt|;
+DECL|field|onlyOneHunk
+specifier|protected
+name|boolean
+name|onlyOneHunk
+decl_stmt|;
 DECL|field|aged
 specifier|private
 specifier|final
@@ -1142,6 +1147,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|onlyOneHunk
+operator|&&
 name|o
 operator|instanceof
 name|PatchLine
