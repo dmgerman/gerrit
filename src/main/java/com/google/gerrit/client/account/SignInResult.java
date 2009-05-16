@@ -83,26 +83,13 @@ enum|enum
 name|Status
 block|{
 comment|/** The user canceled the sign-in and wasn't able to complete it */
-DECL|enumConstant|SuppressWarnings
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"hiding"
-argument_list|)
 DECL|enumConstant|CANCEL
 name|CANCEL
 block|,
 comment|/** The sign-in was successful and we have the account data */
-DECL|enumConstant|SuppressWarnings
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"hiding"
-argument_list|)
 DECL|enumConstant|SUCCESS
 name|SUCCESS
-decl_stmt|;
-block|}
+block|;   }
 comment|/** Singleton representing {@link Status#CANCEL}. */
 DECL|field|CANCEL
 specifier|public
