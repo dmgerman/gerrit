@@ -1057,15 +1057,6 @@ name|onSignOut
 parameter_list|()
 block|{
 specifier|final
-name|FlexCellFormatter
-name|fmt
-init|=
-name|table
-operator|.
-name|getFlexCellFormatter
-argument_list|()
-decl_stmt|;
-specifier|final
 name|int
 name|max
 init|=
@@ -2047,11 +2038,6 @@ range|:
 name|sections
 control|)
 block|{
-name|boolean
-name|dirty
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 name|beforeRow
