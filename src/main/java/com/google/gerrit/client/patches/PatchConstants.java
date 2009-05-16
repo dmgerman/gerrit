@@ -155,6 +155,16 @@ name|String
 name|lineNext
 parameter_list|()
 function_decl|;
+DECL|method|chunkPrev ()
+name|String
+name|chunkPrev
+parameter_list|()
+function_decl|;
+DECL|method|chunkNext ()
+name|String
+name|chunkNext
+parameter_list|()
+function_decl|;
 DECL|method|commentInsert ()
 name|String
 name|commentInsert
