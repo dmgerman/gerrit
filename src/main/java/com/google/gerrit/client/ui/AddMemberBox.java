@@ -250,15 +250,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|TextBox
+name|NpTextBox
 import|;
 end_import
 
@@ -285,7 +283,7 @@ decl_stmt|;
 DECL|field|nameTxtBox
 specifier|private
 specifier|final
-name|TextBox
+name|NpTextBox
 name|nameTxtBox
 decl_stmt|;
 DECL|field|nameTxt
@@ -321,7 +319,7 @@ expr_stmt|;
 name|nameTxtBox
 operator|=
 operator|new
-name|TextBox
+name|NpTextBox
 argument_list|()
 expr_stmt|;
 name|nameTxt

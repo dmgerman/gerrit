@@ -242,15 +242,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|TextArea
+name|NpTextArea
 import|;
 end_import
 
@@ -301,7 +299,7 @@ decl_stmt|;
 DECL|field|message
 specifier|private
 specifier|final
-name|TextArea
+name|NpTextArea
 name|message
 decl_stmt|;
 DECL|field|sendButton
@@ -435,7 +433,7 @@ expr_stmt|;
 name|message
 operator|=
 operator|new
-name|TextArea
+name|NpTextArea
 argument_list|()
 expr_stmt|;
 name|message

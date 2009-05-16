@@ -560,7 +560,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextBox
+name|FlexTable
+operator|.
+name|FlexCellFormatter
 import|;
 end_import
 
@@ -570,17 +572,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|FlexTable
-operator|.
-name|FlexCellFormatter
+name|NpTextBox
 import|;
 end_import
 
@@ -707,7 +705,7 @@ name|rangeMaxBox
 decl_stmt|;
 DECL|field|nameTxtBox
 specifier|private
-name|TextBox
+name|NpTextBox
 name|nameTxtBox
 decl_stmt|;
 DECL|field|nameTxt
@@ -1092,7 +1090,7 @@ expr_stmt|;
 name|nameTxtBox
 operator|=
 operator|new
-name|TextBox
+name|NpTextBox
 argument_list|()
 expr_stmt|;
 name|nameTxt

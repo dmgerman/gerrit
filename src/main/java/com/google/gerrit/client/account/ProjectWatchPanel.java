@@ -374,7 +374,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextBox
+name|FlexTable
+operator|.
+name|FlexCellFormatter
 import|;
 end_import
 
@@ -384,17 +386,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|FlexTable
-operator|.
-name|FlexCellFormatter
+name|NpTextBox
 import|;
 end_import
 
@@ -488,11 +486,11 @@ literal|"gerrit-ProjectWatchPanel-AddPanel"
 argument_list|)
 expr_stmt|;
 specifier|final
-name|TextBox
+name|NpTextBox
 name|box
 init|=
 operator|new
-name|TextBox
+name|NpTextBox
 argument_list|()
 decl_stmt|;
 name|nameTxt

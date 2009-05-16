@@ -494,7 +494,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextBox
+name|FormPanel
+operator|.
+name|SubmitEvent
 import|;
 end_import
 
@@ -504,17 +506,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|FormPanel
-operator|.
-name|SubmitEvent
+name|NpTextBox
 import|;
 end_import
 
@@ -601,7 +599,7 @@ name|login
 decl_stmt|;
 DECL|field|providerId
 specifier|private
-name|TextBox
+name|NpTextBox
 name|providerId
 decl_stmt|;
 DECL|field|rememberId
@@ -1083,7 +1081,7 @@ expr_stmt|;
 name|providerId
 operator|=
 operator|new
-name|TextBox
+name|NpTextBox
 argument_list|()
 expr_stmt|;
 name|providerId
@@ -1138,11 +1136,6 @@ operator|.
 name|KEY_ENTER
 condition|)
 block|{
-name|event
-operator|.
-name|stopPropagation
-argument_list|()
-expr_stmt|;
 name|event
 operator|.
 name|preventDefault
@@ -1558,15 +1551,6 @@ operator|.
 name|validProvider
 condition|)
 block|{
-specifier|final
-name|String
-name|url
-init|=
-name|providerId
-operator|.
-name|getText
-argument_list|()
-decl_stmt|;
 name|redirectForm
 operator|.
 name|setMethod

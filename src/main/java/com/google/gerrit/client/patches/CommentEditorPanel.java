@@ -408,7 +408,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextArea
+name|Widget
 import|;
 end_import
 
@@ -418,15 +418,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|Widget
+name|NpTextArea
 import|;
 end_import
 
@@ -504,7 +502,7 @@ decl_stmt|;
 DECL|field|text
 specifier|private
 specifier|final
-name|TextArea
+name|NpTextArea
 name|text
 decl_stmt|;
 DECL|field|edit
@@ -660,7 +658,7 @@ expr_stmt|;
 name|text
 operator|=
 operator|new
-name|TextArea
+name|NpTextArea
 argument_list|()
 expr_stmt|;
 name|text
@@ -720,11 +718,6 @@ name|KeyPressEvent
 name|event
 parameter_list|)
 block|{
-name|event
-operator|.
-name|stopPropagation
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|event

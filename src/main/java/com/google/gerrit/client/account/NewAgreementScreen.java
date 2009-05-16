@@ -510,7 +510,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextBox
+name|VerticalPanel
 import|;
 end_import
 
@@ -520,15 +520,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|VerticalPanel
+name|NpTextBox
 import|;
 end_import
 
@@ -639,7 +637,7 @@ name|finalGroup
 decl_stmt|;
 DECL|field|yesIAgreeBox
 specifier|private
-name|TextBox
+name|NpTextBox
 name|yesIAgreeBox
 decl_stmt|;
 DECL|field|submit
@@ -929,7 +927,7 @@ decl_stmt|;
 name|yesIAgreeBox
 operator|=
 operator|new
-name|TextBox
+name|NpTextBox
 argument_list|()
 expr_stmt|;
 name|yesIAgreeBox
