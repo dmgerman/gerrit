@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -76,34 +76,89 @@ name|event
 operator|.
 name|shared
 operator|.
-name|EventHandler
+name|GwtEvent
 import|;
 end_import
 
-begin_comment
-comment|/** Listener to monitor the state of the user's account token. */
-end_comment
-
-begin_interface
-DECL|interface|SignOutHandler
+begin_class
+DECL|class|SignOutEvent
 specifier|public
-interface|interface
-name|SignOutHandler
-extends|extends
-name|EventHandler
-block|{
-comment|/** Invoked while the user is signing out of their account. */
-DECL|method|onSignOut (SignOutEvent event)
-specifier|public
-name|void
-name|onSignOut
-parameter_list|(
+class|class
 name|SignOutEvent
-name|event
-parameter_list|)
-function_decl|;
+extends|extends
+name|GwtEvent
+argument_list|<
+name|SignOutHandler
+argument_list|>
+block|{
+DECL|field|TYPE
+specifier|private
+specifier|static
+specifier|final
+name|Type
+argument_list|<
+name|SignOutHandler
+argument_list|>
+name|TYPE
+init|=
+operator|new
+name|Type
+argument_list|<
+name|SignOutHandler
+argument_list|>
+argument_list|()
+decl_stmt|;
+DECL|method|getType ()
+specifier|public
+specifier|static
+name|Type
+argument_list|<
+name|SignOutHandler
+argument_list|>
+name|getType
+parameter_list|()
+block|{
+return|return
+name|TYPE
+return|;
 block|}
-end_interface
+annotation|@
+name|Override
+DECL|method|getAssociatedType ()
+specifier|public
+name|Type
+argument_list|<
+name|SignOutHandler
+argument_list|>
+name|getAssociatedType
+parameter_list|()
+block|{
+return|return
+name|TYPE
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|dispatch (final SignOutHandler handler)
+specifier|protected
+name|void
+name|dispatch
+parameter_list|(
+specifier|final
+name|SignOutHandler
+name|handler
+parameter_list|)
+block|{
+name|handler
+operator|.
+name|onSignOut
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 
