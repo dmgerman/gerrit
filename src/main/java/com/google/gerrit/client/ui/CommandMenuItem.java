@@ -227,6 +227,11 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
+name|setFocus
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|command
 operator|.
 name|execute
