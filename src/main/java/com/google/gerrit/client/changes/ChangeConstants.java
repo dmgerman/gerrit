@@ -195,6 +195,16 @@ name|String
 name|changeTableStar
 parameter_list|()
 function_decl|;
+DECL|method|changeTablePagePrev ()
+name|String
+name|changeTablePagePrev
+parameter_list|()
+function_decl|;
+DECL|method|changeTablePageNext ()
+name|String
+name|changeTablePageNext
+parameter_list|()
+function_decl|;
 DECL|method|upToDashboard ()
 name|String
 name|upToDashboard
