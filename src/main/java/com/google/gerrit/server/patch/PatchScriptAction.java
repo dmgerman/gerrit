@@ -112,7 +112,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|Account
+name|AccountGeneralPreferences
 import|;
 end_import
 
@@ -1045,7 +1045,7 @@ if|if
 condition|(
 name|context
 operator|==
-name|Account
+name|AccountGeneralPreferences
 operator|.
 name|WHOLE_FILE_CONTEXT
 condition|)

@@ -1228,7 +1228,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|buttonSaveContact
+name|buttonSaveChanges
 argument_list|()
 argument_list|)
 expr_stmt|;
