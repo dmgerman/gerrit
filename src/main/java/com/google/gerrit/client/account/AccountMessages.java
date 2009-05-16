@@ -108,6 +108,14 @@ name|short
 name|cnt
 parameter_list|)
 function_decl|;
+DECL|method|rowsPerPage (short cnt)
+name|String
+name|rowsPerPage
+parameter_list|(
+name|short
+name|cnt
+parameter_list|)
+function_decl|;
 DECL|method|enterIAGREE (String iagree)
 name|String
 name|enterIAGREE

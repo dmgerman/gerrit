@@ -572,7 +572,7 @@ specifier|final
 name|int
 name|MAX_PER_PAGE
 init|=
-literal|50
+literal|100
 decl_stmt|;
 DECL|method|safePageSize (final int pageSize)
 specifier|private

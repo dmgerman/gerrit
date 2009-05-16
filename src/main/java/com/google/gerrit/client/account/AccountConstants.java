@@ -125,6 +125,11 @@ name|String
 name|defaultContextFieldLabel
 parameter_list|()
 function_decl|;
+DECL|method|maximumPageSizeFieldLabel ()
+name|String
+name|maximumPageSizeFieldLabel
+parameter_list|()
+function_decl|;
 DECL|method|contextWholeFile ()
 name|String
 name|contextWholeFile

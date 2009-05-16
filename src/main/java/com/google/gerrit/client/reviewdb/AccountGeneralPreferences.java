@@ -137,6 +137,35 @@ block|,
 name|WHOLE_FILE_CONTEXT
 block|}
 decl_stmt|;
+comment|/** Default number of items to display per page. */
+DECL|field|DEFAULT_PAGESIZE
+specifier|public
+specifier|static
+specifier|final
+name|short
+name|DEFAULT_PAGESIZE
+init|=
+literal|25
+decl_stmt|;
+comment|/** Valid choices for the page size. */
+DECL|field|PAGESIZE_CHOICES
+specifier|public
+specifier|static
+specifier|final
+name|short
+index|[]
+name|PAGESIZE_CHOICES
+init|=
+block|{
+literal|10
+block|,
+literal|25
+block|,
+literal|50
+block|,
+literal|100
+block|}
+decl_stmt|;
 comment|/** Default number of lines of context when viewing a patch. */
 annotation|@
 name|Column
@@ -144,6 +173,14 @@ DECL|field|defaultContext
 specifier|protected
 name|short
 name|defaultContext
+decl_stmt|;
+comment|/** Number of changes to show in a screen. */
+annotation|@
+name|Column
+DECL|field|maximumPageSize
+specifier|protected
+name|short
+name|maximumPageSize
 decl_stmt|;
 comment|/** Should the site header be displayed when logged in ? */
 annotation|@
@@ -189,6 +226,31 @@ name|s
 parameter_list|)
 block|{
 name|defaultContext
+operator|=
+name|s
+expr_stmt|;
+block|}
+DECL|method|getMaximumPageSize ()
+specifier|public
+name|short
+name|getMaximumPageSize
+parameter_list|()
+block|{
+return|return
+name|maximumPageSize
+return|;
+block|}
+DECL|method|setMaximumPageSize (final short s)
+specifier|public
+name|void
+name|setMaximumPageSize
+parameter_list|(
+specifier|final
+name|short
+name|s
+parameter_list|)
+block|{
+name|maximumPageSize
 operator|=
 name|s
 expr_stmt|;
@@ -252,6 +314,10 @@ block|{
 name|defaultContext
 operator|=
 name|DEFAULT_CONTEXT
+expr_stmt|;
+name|maximumPageSize
+operator|=
+name|DEFAULT_PAGESIZE
 expr_stmt|;
 name|showSiteHeader
 operator|=
