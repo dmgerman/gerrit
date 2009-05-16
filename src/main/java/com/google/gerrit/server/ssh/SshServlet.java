@@ -185,6 +185,11 @@ comment|/**  * Servlet hosting an SSH daemon on another port. During a standard 
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|SshServlet
 specifier|public
 class|class

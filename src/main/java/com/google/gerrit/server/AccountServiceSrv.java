@@ -85,6 +85,11 @@ comment|/** Publishes {@link AccountServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|AccountServiceSrv
 specifier|public
 class|class

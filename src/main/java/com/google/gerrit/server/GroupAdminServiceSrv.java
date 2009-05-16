@@ -69,6 +69,11 @@ comment|/** Publishes {@link GroupAdminServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|GroupAdminServiceSrv
 specifier|public
 class|class

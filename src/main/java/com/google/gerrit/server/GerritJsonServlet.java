@@ -227,6 +227,11 @@ comment|/**  * Base JSON servlet to ensure the current user is not forged.  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|GerritJsonServlet
 specifier|public
 specifier|abstract

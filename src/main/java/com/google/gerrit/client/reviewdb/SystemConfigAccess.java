@@ -108,6 +108,34 @@ name|PrimaryKey
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Query
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|ResultSet
+import|;
+end_import
+
 begin_comment
 comment|/** Access interface for {@link SystemConfig}. */
 end_comment
@@ -141,6 +169,18 @@ operator|.
 name|Key
 name|key
 parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+DECL|method|all ()
+name|ResultSet
+argument_list|<
+name|SystemConfig
+argument_list|>
+name|all
+parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;

@@ -223,6 +223,11 @@ comment|/** Cache of account information. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|AccountCache
 specifier|public
 class|class

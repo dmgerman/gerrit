@@ -315,6 +315,11 @@ comment|/** Sends the Gerrit host page to clients. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|HostPageServlet
 specifier|public
 class|class

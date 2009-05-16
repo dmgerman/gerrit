@@ -257,6 +257,11 @@ comment|/** Sends static content from the site 's<code>static/</code> subdirecto
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|StaticServlet
 specifier|public
 class|class

@@ -1909,6 +1909,15 @@ name|Failure
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|exitCode
 specifier|final
 name|int
@@ -1977,6 +1986,15 @@ name|UnloggedFailure
 extends|extends
 name|Failure
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|UnloggedFailure (final int exitCode, final String msg)
 specifier|public
 name|UnloggedFailure

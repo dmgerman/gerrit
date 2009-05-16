@@ -69,6 +69,11 @@ comment|/** Publishes {@link AccountSecurityImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|AccountSecuritySrv
 specifier|public
 class|class

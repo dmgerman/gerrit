@@ -154,6 +154,15 @@ operator|.
 name|Id
 argument_list|>
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Column
 DECL|field|accountId

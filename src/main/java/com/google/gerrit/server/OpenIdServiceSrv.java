@@ -69,6 +69,11 @@ comment|/** Publishes {@link OpenIdServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|OpenIdServiceSrv
 specifier|public
 class|class

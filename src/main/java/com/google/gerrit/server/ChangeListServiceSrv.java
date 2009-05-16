@@ -85,6 +85,11 @@ comment|/** Publishes {@link ChangeListServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|ChangeListServiceSrv
 specifier|public
 class|class

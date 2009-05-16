@@ -175,6 +175,11 @@ comment|/** Handles the<code>/login</code> URL for web based single-sign-on. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|OpenIdLoginServlet
 specifier|public
 class|class

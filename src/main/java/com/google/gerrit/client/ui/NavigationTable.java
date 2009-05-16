@@ -287,6 +287,11 @@ argument_list|<
 name|RowItem
 argument_list|>
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|field|savedPositions
 specifier|private
 specifier|static

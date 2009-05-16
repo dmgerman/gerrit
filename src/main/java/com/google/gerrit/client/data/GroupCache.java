@@ -257,6 +257,11 @@ comment|/** Cache of group information, including account memberships. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|GroupCache
 specifier|public
 class|class

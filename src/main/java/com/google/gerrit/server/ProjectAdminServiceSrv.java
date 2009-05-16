@@ -69,6 +69,11 @@ comment|/** Publishes {@link ProjectAdminServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|ProjectAdminServiceSrv
 specifier|public
 class|class

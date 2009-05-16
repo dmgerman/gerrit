@@ -189,6 +189,11 @@ comment|/** Cache of project information, including access rights. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|ProjectCache
 specifier|public
 class|class

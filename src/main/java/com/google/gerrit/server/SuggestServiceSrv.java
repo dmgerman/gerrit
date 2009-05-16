@@ -85,6 +85,11 @@ comment|/** Publishes {@link SuggestServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|SuggestServiceSrv
 specifier|public
 class|class

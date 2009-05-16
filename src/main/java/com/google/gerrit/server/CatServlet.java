@@ -485,6 +485,11 @@ comment|/**  * Exports a single version of a patch as a normal file download.  *
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|CatServlet
 specifier|public
 class|class

@@ -85,6 +85,11 @@ comment|/** Publishes {@link PatchDetailServiceImpl} over JSON. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|PatchDetailServiceSrv
 specifier|public
 class|class
