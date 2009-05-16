@@ -959,7 +959,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|onUnload ()
-specifier|public
+specifier|protected
 name|void
 name|onUnload
 parameter_list|()

@@ -336,7 +336,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|onLoad ()
-specifier|public
+specifier|protected
 name|void
 name|onLoad
 parameter_list|()
