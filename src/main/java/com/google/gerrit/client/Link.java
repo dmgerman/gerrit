@@ -620,6 +620,15 @@ name|SETTINGS_CONTACT
 init|=
 literal|"settings,contact"
 decl_stmt|;
+DECL|field|SETTINGS_PROJECTS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_PROJECTS
+init|=
+literal|"settings,projects"
+decl_stmt|;
 DECL|field|SETTINGS_NEW_AGREEMENT
 specifier|public
 specifier|static
