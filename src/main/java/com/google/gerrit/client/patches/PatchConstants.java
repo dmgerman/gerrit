@@ -140,6 +140,41 @@ name|String
 name|patchHistoryTitle
 parameter_list|()
 function_decl|;
+DECL|method|upToChange ()
+name|String
+name|upToChange
+parameter_list|()
+function_decl|;
+DECL|method|linePrev ()
+name|String
+name|linePrev
+parameter_list|()
+function_decl|;
+DECL|method|lineNext ()
+name|String
+name|lineNext
+parameter_list|()
+function_decl|;
+DECL|method|commentInsert ()
+name|String
+name|commentInsert
+parameter_list|()
+function_decl|;
+DECL|method|commentSaveDraft ()
+name|String
+name|commentSaveDraft
+parameter_list|()
+function_decl|;
+DECL|method|commentDiscard ()
+name|String
+name|commentDiscard
+parameter_list|()
+function_decl|;
+DECL|method|commentCancelEdit ()
+name|String
+name|commentCancelEdit
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

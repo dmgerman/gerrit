@@ -175,6 +175,36 @@ name|String
 name|changeTableNone
 parameter_list|()
 function_decl|;
+DECL|method|changeTablePrev ()
+name|String
+name|changeTablePrev
+parameter_list|()
+function_decl|;
+DECL|method|changeTableNext ()
+name|String
+name|changeTableNext
+parameter_list|()
+function_decl|;
+DECL|method|changeTableOpen ()
+name|String
+name|changeTableOpen
+parameter_list|()
+function_decl|;
+DECL|method|changeTableStar ()
+name|String
+name|changeTableStar
+parameter_list|()
+function_decl|;
+DECL|method|upToDashboard ()
+name|String
+name|upToDashboard
+parameter_list|()
+function_decl|;
+DECL|method|keyPublishComments ()
+name|String
+name|keyPublishComments
+parameter_list|()
+function_decl|;
 DECL|method|patchTableColumnName ()
 name|String
 name|patchTableColumnName
@@ -208,6 +238,21 @@ function_decl|;
 DECL|method|patchTableDownloadPostImage ()
 name|String
 name|patchTableDownloadPostImage
+parameter_list|()
+function_decl|;
+DECL|method|patchTablePrev ()
+name|String
+name|patchTablePrev
+parameter_list|()
+function_decl|;
+DECL|method|patchTableNext ()
+name|String
+name|patchTableNext
+parameter_list|()
+function_decl|;
+DECL|method|patchTableOpen ()
+name|String
+name|patchTableOpen
 parameter_list|()
 function_decl|;
 DECL|method|changeScreenDescription ()

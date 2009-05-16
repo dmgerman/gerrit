@@ -255,6 +255,36 @@ name|String
 name|buttonDeleteBranch
 parameter_list|()
 function_decl|;
+DECL|method|projectListPrev ()
+name|String
+name|projectListPrev
+parameter_list|()
+function_decl|;
+DECL|method|projectListNext ()
+name|String
+name|projectListNext
+parameter_list|()
+function_decl|;
+DECL|method|projectListOpen ()
+name|String
+name|projectListOpen
+parameter_list|()
+function_decl|;
+DECL|method|groupListPrev ()
+name|String
+name|groupListPrev
+parameter_list|()
+function_decl|;
+DECL|method|groupListNext ()
+name|String
+name|groupListNext
+parameter_list|()
+function_decl|;
+DECL|method|groupListOpen ()
+name|String
+name|groupListOpen
+parameter_list|()
+function_decl|;
 DECL|method|groupListTitle ()
 name|String
 name|groupListTitle

@@ -118,7 +118,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|SignedInListener
+name|SignOutHandler
 import|;
 end_import
 
@@ -763,7 +763,7 @@ name|patchTable
 decl_stmt|;
 DECL|field|signedInListener
 specifier|private
-name|SignedInListener
+name|SignOutHandler
 name|signedInListener
 decl_stmt|;
 DECL|method|PatchSetPanel (final ChangeDetail detail, final PatchSet ps)
@@ -923,7 +923,7 @@ condition|)
 block|{
 name|Gerrit
 operator|.
-name|addSignedInListener
+name|addSignOutHandler
 argument_list|(
 name|signedInListener
 argument_list|)
@@ -947,7 +947,7 @@ condition|)
 block|{
 name|Gerrit
 operator|.
-name|removeSignedInListener
+name|removeSignOutHandler
 argument_list|(
 name|signedInListener
 argument_list|)
@@ -1211,14 +1211,9 @@ expr_stmt|;
 name|signedInListener
 operator|=
 operator|new
-name|SignedInListener
+name|SignOutHandler
 argument_list|()
 block|{
-specifier|public
-name|void
-name|onSignIn
-parameter_list|()
-block|{       }
 specifier|public
 name|void
 name|onSignOut
@@ -1241,7 +1236,7 @@ block|}
 expr_stmt|;
 name|Gerrit
 operator|.
-name|addSignedInListener
+name|addSignOutHandler
 argument_list|(
 name|signedInListener
 argument_list|)

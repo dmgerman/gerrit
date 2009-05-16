@@ -223,6 +223,26 @@ name|String
 name|anonymousCoward
 parameter_list|()
 function_decl|;
+DECL|method|sectionNavigation ()
+name|String
+name|sectionNavigation
+parameter_list|()
+function_decl|;
+DECL|method|sectionActions ()
+name|String
+name|sectionActions
+parameter_list|()
+function_decl|;
+DECL|method|keySearch ()
+name|String
+name|keySearch
+parameter_list|()
+function_decl|;
+DECL|method|keyHelp ()
+name|String
+name|keyHelp
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

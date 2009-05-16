@@ -220,6 +220,27 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|registerKeys ()
+specifier|public
+name|void
+name|registerKeys
+parameter_list|()
+block|{
+name|super
+operator|.
+name|registerKeys
+argument_list|()
+expr_stmt|;
+name|table
+operator|.
+name|setRegisterKeys
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|loadCallback ()
 specifier|protected
 name|AsyncCallback
@@ -292,9 +313,7 @@ expr_stmt|;
 name|table
 operator|.
 name|finishDisplay
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}

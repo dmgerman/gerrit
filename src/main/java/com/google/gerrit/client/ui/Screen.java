@@ -257,6 +257,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|registerKeys ()
+specifier|public
+name|void
+name|registerKeys
+parameter_list|()
+block|{   }
 DECL|method|onInitUI ()
 specifier|protected
 name|void
@@ -474,13 +480,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Invoked if this screen is the current screen and the user signs in. */
-DECL|method|onSignIn ()
-specifier|public
-name|void
-name|onSignIn
-parameter_list|()
-block|{   }
 DECL|method|onShowView ()
 specifier|public
 name|void
@@ -504,6 +503,9 @@ name|windowTitle
 argument_list|)
 expr_stmt|;
 block|}
+name|registerKeys
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

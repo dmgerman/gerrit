@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client
+DECL|package|com.google.gerrit.client.ui
 package|package
 name|com
 operator|.
@@ -61,35 +61,86 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|ui
 package|;
 end_package
 
-begin_comment
-comment|/** Listener to monitor the state of the user's account token. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|globalkey
+operator|.
+name|client
+operator|.
+name|KeyCommand
+import|;
+end_import
 
-begin_interface
-DECL|interface|SignedInListener
+begin_class
+DECL|class|NeedsSignInKeyCommand
 specifier|public
-interface|interface
-name|SignedInListener
+specifier|abstract
+class|class
+name|NeedsSignInKeyCommand
+extends|extends
+name|KeyCommand
 block|{
-comment|/** Invoked after the user has finished sign-in to their account. */
-DECL|method|onSignIn ()
+DECL|method|NeedsSignInKeyCommand (int mask, int key, String help)
 specifier|public
-name|void
-name|onSignIn
-parameter_list|()
-function_decl|;
-comment|/** Invoked while the user is signing out of their account. */
-DECL|method|onSignOut ()
-specifier|public
-name|void
-name|onSignOut
-parameter_list|()
-function_decl|;
+name|NeedsSignInKeyCommand
+parameter_list|(
+name|int
+name|mask
+parameter_list|,
+name|int
+name|key
+parameter_list|,
+name|String
+name|help
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|mask
+argument_list|,
+name|key
+argument_list|,
+name|help
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+DECL|method|NeedsSignInKeyCommand (int mask, char key, String help)
+specifier|public
+name|NeedsSignInKeyCommand
+parameter_list|(
+name|int
+name|mask
+parameter_list|,
+name|char
+name|key
+parameter_list|,
+name|String
+name|help
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|mask
+argument_list|,
+name|key
+argument_list|,
+name|help
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 

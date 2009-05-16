@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|SignedInListener
+name|SignOutHandler
 import|;
 end_import
 
@@ -566,7 +566,7 @@ decl_stmt|;
 DECL|field|signedInListener
 specifier|private
 specifier|final
-name|SignedInListener
+name|SignOutHandler
 name|signedInListener
 decl_stmt|;
 DECL|field|changeId
@@ -752,22 +752,9 @@ expr_stmt|;
 name|signedInListener
 operator|=
 operator|new
-name|SignedInListener
+name|SignOutHandler
 argument_list|()
 block|{
-specifier|public
-name|void
-name|onSignIn
-parameter_list|()
-block|{
-name|addReviewer
-operator|.
-name|setVisible
-argument_list|(
-name|changeIsOpen
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 name|void
 name|onSignOut
@@ -794,7 +781,7 @@ parameter_list|()
 block|{
 name|Gerrit
 operator|.
-name|addSignedInListener
+name|addSignOutHandler
 argument_list|(
 name|signedInListener
 argument_list|)
@@ -815,7 +802,7 @@ parameter_list|()
 block|{
 name|Gerrit
 operator|.
-name|removeSignedInListener
+name|removeSignOutHandler
 argument_list|(
 name|signedInListener
 argument_list|)
