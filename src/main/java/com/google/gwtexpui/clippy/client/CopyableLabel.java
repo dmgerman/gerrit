@@ -464,6 +464,41 @@ specifier|static
 name|String
 name|swfUrl
 decl_stmt|;
+DECL|field|flashEnabled
+specifier|private
+specifier|static
+name|boolean
+name|flashEnabled
+init|=
+literal|true
+decl_stmt|;
+DECL|method|isFlashEnabled ()
+specifier|public
+specifier|static
+name|boolean
+name|isFlashEnabled
+parameter_list|()
+block|{
+return|return
+name|flashEnabled
+return|;
+block|}
+DECL|method|setFlashEnabled (final boolean on)
+specifier|public
+specifier|static
+name|void
+name|setFlashEnabled
+parameter_list|(
+specifier|final
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|flashEnabled
+operator|=
+name|on
+expr_stmt|;
+block|}
 DECL|method|swfUrl ()
 specifier|private
 specifier|static
@@ -639,6 +674,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|flashEnabled
+operator|&&
 name|UserAgent
 operator|.
 name|hasFlash
