@@ -144,7 +144,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Hyperlink
+name|InlineHyperlink
 import|;
 end_import
 
@@ -159,7 +159,7 @@ specifier|abstract
 class|class
 name|DirectScreenLink
 extends|extends
-name|Hyperlink
+name|InlineHyperlink
 block|{
 comment|/**    * Creates a link with its text and target history token specified.    *     * @param text the hyperlink's text    * @param historyToken the history token to which it will link    */
 DECL|method|DirectScreenLink (final String text, final String historyToken)
