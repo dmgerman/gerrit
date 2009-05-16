@@ -436,7 +436,7 @@ argument_list|)
 expr_stmt|;
 name|Gerrit
 operator|.
-name|refreshMenuBar
+name|applyUserPreferences
 argument_list|()
 expr_stmt|;
 block|}
