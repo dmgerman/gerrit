@@ -1210,21 +1210,11 @@ name|patchTable
 operator|.
 name|setSavePointerId
 argument_list|(
-literal|"patchTable "
-operator|+
-name|changeDetail
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getChangeId
-argument_list|()
-operator|+
-literal|" "
+literal|"PatchTable "
 operator|+
 name|patchSet
 operator|.
-name|getPatchSetId
+name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;

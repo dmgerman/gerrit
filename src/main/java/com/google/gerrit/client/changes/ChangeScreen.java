@@ -912,6 +912,8 @@ name|GlobalKey
 operator|.
 name|add
 argument_list|(
+name|this
+argument_list|,
 name|keysNavigation
 argument_list|)
 expr_stmt|;
@@ -921,6 +923,8 @@ name|GlobalKey
 operator|.
 name|add
 argument_list|(
+name|this
+argument_list|,
 name|keysAction
 argument_list|)
 expr_stmt|;

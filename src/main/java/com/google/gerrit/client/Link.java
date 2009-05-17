@@ -364,23 +364,7 @@ name|client
 operator|.
 name|patches
 operator|.
-name|PatchSideBySideScreen
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|patches
-operator|.
-name|PatchUnifiedScreen
+name|PatchScreen
 import|;
 end_import
 
@@ -1375,7 +1359,9 @@ argument_list|)
 condition|)
 return|return
 operator|new
-name|PatchSideBySideScreen
+name|PatchScreen
+operator|.
+name|SideBySide
 argument_list|(
 name|Patch
 operator|.
@@ -1390,6 +1376,8 @@ argument_list|,
 name|token
 argument_list|)
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 return|;
 name|p
@@ -1407,7 +1395,9 @@ argument_list|)
 condition|)
 return|return
 operator|new
-name|PatchUnifiedScreen
+name|PatchScreen
+operator|.
+name|Unified
 argument_list|(
 name|Patch
 operator|.
@@ -1422,6 +1412,8 @@ argument_list|,
 name|token
 argument_list|)
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}

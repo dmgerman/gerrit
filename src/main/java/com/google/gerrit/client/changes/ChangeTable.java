@@ -398,22 +398,6 @@ name|user
 operator|.
 name|client
 operator|.
-name|Event
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|ui
 operator|.
 name|AbstractImagePrototype
@@ -1236,16 +1220,25 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onOpenItem (final ChangeInfo c)
+DECL|method|onOpenRow (final int row)
 specifier|protected
 name|void
-name|onOpenItem
+name|onOpenRow
 parameter_list|(
+specifier|final
+name|int
+name|row
+parameter_list|)
+block|{
 specifier|final
 name|ChangeInfo
 name|c
-parameter_list|)
-block|{
+init|=
+name|getRowItem
+argument_list|(
+name|row
+argument_list|)
+decl_stmt|;
 name|Gerrit
 operator|.
 name|display
@@ -2281,15 +2274,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onClick (final Event event)
-specifier|protected
+DECL|method|go ()
+specifier|public
 name|void
-name|onClick
-parameter_list|(
-specifier|final
-name|Event
-name|event
-parameter_list|)
+name|go
+parameter_list|()
 block|{
 name|movePointerTo
 argument_list|(
@@ -2298,10 +2287,8 @@ argument_list|)
 expr_stmt|;
 name|super
 operator|.
-name|onClick
-argument_list|(
-name|event
-argument_list|)
+name|go
+argument_list|()
 expr_stmt|;
 block|}
 block|}

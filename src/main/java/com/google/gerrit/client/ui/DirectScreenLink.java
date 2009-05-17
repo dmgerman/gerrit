@@ -216,22 +216,24 @@ name|event
 argument_list|)
 condition|)
 block|{
-name|onClick
+name|DOM
+operator|.
+name|eventPreventDefault
 argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+name|go
+argument_list|()
+expr_stmt|;
 block|}
 block|}
-DECL|method|onClick (final Event event)
-specifier|protected
+comment|/** Create the screen and start rendering, updating the browser history. */
+DECL|method|go ()
+specifier|public
 name|void
-name|onClick
-parameter_list|(
-specifier|final
-name|Event
-name|event
-parameter_list|)
+name|go
+parameter_list|()
 block|{
 name|Gerrit
 operator|.
@@ -242,13 +244,6 @@ argument_list|()
 argument_list|,
 name|createScreen
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|DOM
-operator|.
-name|eventPreventDefault
-argument_list|(
-name|event
 argument_list|)
 expr_stmt|;
 block|}

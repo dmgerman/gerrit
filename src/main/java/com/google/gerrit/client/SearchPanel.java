@@ -678,6 +678,8 @@ name|GlobalKey
 operator|.
 name|addApplication
 argument_list|(
+name|this
+argument_list|,
 operator|new
 name|KeyCommand
 argument_list|(

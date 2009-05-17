@@ -733,14 +733,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|onOpenItem (final Project item)
+DECL|method|onOpenRow (final int row)
 specifier|protected
 name|void
-name|onOpenItem
+name|onOpenRow
 parameter_list|(
 specifier|final
-name|Project
-name|item
+name|int
+name|row
 parameter_list|)
 block|{
 name|History
@@ -749,7 +749,10 @@ name|newItem
 argument_list|(
 name|link
 argument_list|(
-name|item
+name|getRowItem
+argument_list|(
+name|row
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

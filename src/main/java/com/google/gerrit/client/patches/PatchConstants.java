@@ -165,6 +165,11 @@ name|String
 name|chunkNext
 parameter_list|()
 function_decl|;
+DECL|method|fileList ()
+name|String
+name|fileList
+parameter_list|()
+function_decl|;
 DECL|method|commentInsert ()
 name|String
 name|commentInsert
