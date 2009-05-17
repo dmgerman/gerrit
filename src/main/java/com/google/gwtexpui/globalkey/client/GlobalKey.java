@@ -275,7 +275,7 @@ argument_list|)
 expr_stmt|;
 name|keyApplication
 operator|.
-name|add
+name|remove
 argument_list|(
 name|key
 argument_list|)
