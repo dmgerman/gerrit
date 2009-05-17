@@ -304,6 +304,19 @@ operator|.
 name|keyMask
 argument_list|)
 assert|;
+if|if
+condition|(
+operator|!
+name|map
+operator|.
+name|containsKey
+argument_list|(
+name|k
+operator|.
+name|keyMask
+argument_list|)
+condition|)
+block|{
 name|map
 operator|.
 name|put
@@ -315,6 +328,7 @@ argument_list|,
 name|k
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|remove (final KeyCommand k)
 specifier|public
