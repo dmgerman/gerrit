@@ -728,7 +728,9 @@ name|setitr
 init|=
 name|GlobalKey
 operator|.
-name|keys
+name|active
+operator|.
+name|all
 operator|.
 name|getSets
 argument_list|()

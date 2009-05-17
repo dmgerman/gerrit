@@ -128,6 +128,17 @@ name|ShowHelpCommand
 extends|extends
 name|KeyCommand
 block|{
+DECL|field|INSTANCE
+specifier|public
+specifier|static
+specifier|final
+name|ShowHelpCommand
+name|INSTANCE
+init|=
+operator|new
+name|ShowHelpCommand
+argument_list|()
+decl_stmt|;
 DECL|method|ShowHelpCommand ()
 specifier|public
 name|ShowHelpCommand

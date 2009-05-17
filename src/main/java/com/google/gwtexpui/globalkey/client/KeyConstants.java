@@ -100,6 +100,11 @@ name|String
 name|showHelp
 parameter_list|()
 function_decl|;
+DECL|method|closeCurrentDialog ()
+name|String
+name|closeCurrentDialog
+parameter_list|()
+function_decl|;
 DECL|method|keyboardShortcuts ()
 name|String
 name|keyboardShortcuts
