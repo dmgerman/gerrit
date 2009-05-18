@@ -120,6 +120,11 @@ name|String
 name|orOtherKey
 parameter_list|()
 function_decl|;
+DECL|method|thenOtherKey ()
+name|String
+name|thenOtherKey
+parameter_list|()
+function_decl|;
 DECL|method|keyCtrl ()
 name|String
 name|keyCtrl
