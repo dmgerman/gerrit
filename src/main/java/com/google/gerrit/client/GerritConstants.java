@@ -243,6 +243,36 @@ name|String
 name|keyHelp
 parameter_list|()
 function_decl|;
+DECL|method|sectionJumping ()
+name|String
+name|sectionJumping
+parameter_list|()
+function_decl|;
+DECL|method|jumpAllOpen ()
+name|String
+name|jumpAllOpen
+parameter_list|()
+function_decl|;
+DECL|method|jumpAllMerged ()
+name|String
+name|jumpAllMerged
+parameter_list|()
+function_decl|;
+DECL|method|jumpMine ()
+name|String
+name|jumpMine
+parameter_list|()
+function_decl|;
+DECL|method|jumpMineDrafts ()
+name|String
+name|jumpMineDrafts
+parameter_list|()
+function_decl|;
+DECL|method|jumpMineStarred ()
+name|String
+name|jumpMineStarred
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

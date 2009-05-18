@@ -2073,6 +2073,13 @@ name|Link
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JumpKeys
+operator|.
+name|register
+argument_list|(
+name|body
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 literal|""
