@@ -170,6 +170,11 @@ name|String
 name|fileList
 parameter_list|()
 function_decl|;
+DECL|method|commentEditorSet ()
+name|String
+name|commentEditorSet
+parameter_list|()
+function_decl|;
 DECL|method|commentInsert ()
 name|String
 name|commentInsert
