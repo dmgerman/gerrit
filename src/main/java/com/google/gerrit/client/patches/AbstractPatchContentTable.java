@@ -3452,6 +3452,9 @@ name|KeyPressEvent
 name|event
 parameter_list|)
 block|{
+name|ensurePointerVisible
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -3628,6 +3631,9 @@ name|KeyPressEvent
 name|event
 parameter_list|)
 block|{
+name|ensurePointerVisible
+argument_list|()
+expr_stmt|;
 name|moveToPrevChunk
 argument_list|(
 name|getCurrentRow
@@ -3679,6 +3685,9 @@ name|KeyPressEvent
 name|event
 parameter_list|)
 block|{
+name|ensurePointerVisible
+argument_list|()
+expr_stmt|;
 name|moveToNextChunk
 argument_list|(
 name|getCurrentRow
