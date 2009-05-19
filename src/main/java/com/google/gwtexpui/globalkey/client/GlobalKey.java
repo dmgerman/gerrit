@@ -492,7 +492,7 @@ expr_stmt|;
 assert|assert
 name|panel
 operator|.
-name|isVisible
+name|isShowing
 argument_list|()
 assert|;
 assert|assert
