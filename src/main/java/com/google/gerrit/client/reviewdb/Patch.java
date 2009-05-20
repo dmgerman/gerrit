@@ -266,36 +266,42 @@ name|r
 return|;
 block|}
 block|}
+comment|/** Type of modification made to the file path. */
 DECL|enum|ChangeType
 specifier|public
 specifier|static
 enum|enum
 name|ChangeType
 block|{
+comment|/** Path is being created/introduced by this patch. */
 DECL|enumConstant|ADDED
 name|ADDED
 argument_list|(
 literal|'A'
 argument_list|)
 block|,
+comment|/** Path already exists, and has updated content. */
 DECL|enumConstant|MODIFIED
 name|MODIFIED
 argument_list|(
 literal|'M'
 argument_list|)
 block|,
+comment|/** Path existed, but is being removed by this patch. */
 DECL|enumConstant|DELETED
 name|DELETED
 argument_list|(
 literal|'D'
 argument_list|)
 block|,
+comment|/** Path existed at {@link Patch#getSourceFileName()} but was moved. */
 DECL|enumConstant|RENAMED
 name|RENAMED
 argument_list|(
 literal|'R'
 argument_list|)
 block|,
+comment|/** Path was copied from {@link Patch#getSourceFileName()}. */
 DECL|enumConstant|COPIED
 name|COPIED
 argument_list|(
@@ -374,24 +380,28 @@ literal|null
 return|;
 block|}
 block|}
+comment|/** Type of formatting for this patch. */
 DECL|enum|PatchType
 specifier|public
 specifier|static
 enum|enum
 name|PatchType
 block|{
+comment|/**      * A textual difference between two versions.      *       *<p>      * A UNIFIED patch can be rendered in multiple ways. Most commonly, it is      * rendered as a side by side display using two columns, left column for the      * old version, right column for the new version. A UNIFIED patch can also      * be formatted in a number of standard "patch script" styles, but typically      * is formatted in the POSIX standard unified diff format.      *       *<p>      * Usually Gerrit renders a UNIFIED patch in a      * {@link com.google.gerrit.client.patches.PatchScreen.SideBySide} view,      * presenting the file in two columns. If the user chooses, a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} is also a      * valid display method.      * */
 DECL|enumConstant|UNIFIED
 name|UNIFIED
 argument_list|(
 literal|'U'
 argument_list|)
 block|,
+comment|/**      * Difference of two (or more) binary contents.      *       *<p>      * A BINARY patch cannot be viewed in a text display, as it represents a      * change in binary content at the associated path, for example, an image      * file has been replaced with a different image.      *       *<p>      * Gerrit can only render a BINARY file in a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} view, as the      * only information it can display is the old and new file content hashes.      */
 DECL|enumConstant|BINARY
 name|BINARY
 argument_list|(
 literal|'B'
 argument_list|)
 block|,
+comment|/**      * Difference of three or more textual contents.      *       *<p>      * Git can produce an n-way unified diff, showing how a merge conflict was      * resolved when two or more conflicting branches were merged together in a      * single merge commit.      *       *<p>      * This type of patch can only appear if there are two or more      * {@link PatchSetAncestor} entities for the same parent {@link PatchSet},      * as that denotes that the patch set is a merge commit.      *       *<p>      * Gerrit can only render an N_WAY file in a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} view, as it      * does not have code to split the n-way unified diff into multiple edit      * lists, one per pre-image. However, a logical way to display this format      * would be an n-way table, with n+1 columns displayed (n pre-images, +1      * post-image).      */
 DECL|enumConstant|N_WAY
 name|N_WAY
 argument_list|(
