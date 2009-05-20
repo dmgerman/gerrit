@@ -1181,6 +1181,7 @@ name|impl
 return|;
 block|}
 DECL|method|serverUrl (final HttpServletRequest req)
+specifier|public
 specifier|static
 name|String
 name|serverUrl
