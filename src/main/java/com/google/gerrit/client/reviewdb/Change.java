@@ -248,6 +248,7 @@ name|r
 return|;
 block|}
 block|}
+comment|/** Minimum database status constant for an open change. */
 DECL|field|MIN_OPEN
 specifier|private
 specifier|static
@@ -257,6 +258,7 @@ name|MIN_OPEN
 init|=
 literal|'a'
 decl_stmt|;
+comment|/** Database constant for {@link Status#NEW}. */
 DECL|field|STATUS_NEW
 specifier|protected
 specifier|static
@@ -266,6 +268,7 @@ name|STATUS_NEW
 init|=
 literal|'n'
 decl_stmt|;
+comment|/** Database constant for {@link Status#SUBMITTED}. */
 DECL|field|STATUS_SUBMITTED
 specifier|protected
 specifier|static
@@ -275,6 +278,7 @@ name|STATUS_SUBMITTED
 init|=
 literal|'s'
 decl_stmt|;
+comment|/** Maximum database status constant for an open change. */
 DECL|field|MAX_OPEN
 specifier|private
 specifier|static
@@ -284,6 +288,7 @@ name|MAX_OPEN
 init|=
 literal|'z'
 decl_stmt|;
+comment|/** Database constant for {@link Status#MERGED}. */
 DECL|field|STATUS_MERGED
 specifier|protected
 specifier|static
@@ -293,28 +298,33 @@ name|STATUS_MERGED
 init|=
 literal|'M'
 decl_stmt|;
+comment|/**    * Current state within the basic workflow of the change.    *     *<p>    * Within the database, lower case codes ('a'..'z') indicate a change that is    * still open, and that can be modified/refined further, while upper case    * codes ('A'..'Z') indicate a change that is closed and cannot be further    * modified.    * */
 DECL|enum|Status
 specifier|public
 specifier|static
 enum|enum
 name|Status
 block|{
+comment|/**      * Change is open and pending review, or review is in progress.      *       *<p>      * This is the default state assigned to a change when it is first created      * in the database. A change stays in the NEW state throughout its review      * cycle, until the change is submitted or abandoned.      *       *<p>      * Changes in the NEW state can be moved to:      *<ul>      *<li>{@link #SUBMITTED} - when the Submit Patch Set action is used;      *<li>{@link #ABANDONED} - when the Abandon action is used.      *</ul>      */
 DECL|enumConstant|NEW
 name|NEW
 parameter_list|(
 name|STATUS_NEW
 parameter_list|)
 operator|,
+comment|/**      * Change is open, but has been submitted to the merge queue.      *       *<p>      * A change enters the SUBMITTED state when an authorized user presses the      * "submit" action through the web UI, requesting that Gerrit merge the      * change's current patch set into the destination branch.      *       *<p>      * Typically a change resides in the SUBMITTED for only a brief sub-second      * period while the merge queue fires and the destination branch is updated.      * However, if a dependency commit (a {@link PatchSetAncestor}, directly or      * transitively) is not yet merged into the branch, the change will hang in      * the SUBMITTED state indefinately.      *       *<p>      * Changes in the SUBMITTED state can be moved to:      *<ul>      *<li>{@link #NEW} - when a replacement patch set is supplied, OR when a      * merge conflict is detected;      *<li>{@link #MERGED} - when the change has been successfully merged into      * the destination branch;      *<li>{@link #ABANDONED} - when the Abandon action is used.      *</ul>      */
 DECL|enumConstant|SUBMITTED
 constructor|SUBMITTED(STATUS_SUBMITTED
 block|)
 enum|,
+comment|/**      * Change is closed, and submitted to its destination branch.      *       *<p>      * Once a change has been merged, it cannot be further modified by adding a      * replacement patch set. Draft comments however may be published,      * supporting a post-submit review.      */
 DECL|enumConstant|MERGED
 name|MERGED
 parameter_list|(
 name|STATUS_MERGED
 parameter_list|)
 operator|,
+comment|/**      * Change is closed, but was not submitted to its destination branch.      *       *<p>      * Once a change has been abandoned, it cannot be further modified by adding      * a replacement patch set, and it cannot be merged. Draft comments however      * may be published, permitting reviewers to send constructive feedback.      */
 DECL|enumConstant|ABANDONED
 constructor|ABANDONED('A'
 block|)
