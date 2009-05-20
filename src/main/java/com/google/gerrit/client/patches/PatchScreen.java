@@ -722,10 +722,6 @@ name|fileList
 operator|=
 name|fileList
 expr_stmt|;
-name|fileList
-operator|=
-literal|null
-expr_stmt|;
 specifier|final
 name|FlowPanel
 name|fp
