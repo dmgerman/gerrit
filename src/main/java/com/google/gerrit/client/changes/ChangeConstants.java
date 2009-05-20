@@ -265,6 +265,21 @@ name|String
 name|patchTableOpen
 parameter_list|()
 function_decl|;
+DECL|method|upToChangeIconLink ()
+name|String
+name|upToChangeIconLink
+parameter_list|()
+function_decl|;
+DECL|method|prevPatchLinkIcon ()
+name|String
+name|prevPatchLinkIcon
+parameter_list|()
+function_decl|;
+DECL|method|nextPatchLinkIcon ()
+name|String
+name|nextPatchLinkIcon
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenDescription ()
 name|String
 name|changeScreenDescription

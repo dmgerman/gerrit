@@ -1377,7 +1377,11 @@ name|token
 argument_list|)
 argument_list|)
 argument_list|,
+literal|0
+comment|/* patchIndex */
+argument_list|,
 literal|null
+comment|/* patchTable */
 argument_list|)
 return|;
 name|p
@@ -1413,7 +1417,11 @@ name|token
 argument_list|)
 argument_list|)
 argument_list|,
+literal|0
+comment|/* patchIndex */
+argument_list|,
 literal|null
+comment|/* patchTable  */
 argument_list|)
 return|;
 block|}

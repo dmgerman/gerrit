@@ -1878,6 +1878,7 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
+comment|// Parent table can be null here since we are not showing any next/previous links
 name|panel
 operator|.
 name|add
@@ -1890,6 +1891,11 @@ argument_list|(
 name|fn
 argument_list|,
 name|patchKey
+argument_list|,
+literal|0
+argument_list|,
+literal|null
+comment|/* parent table */
 argument_list|)
 argument_list|)
 expr_stmt|;
