@@ -899,6 +899,17 @@ name|SocketAddress
 name|remoteAddress
 parameter_list|)
 block|{
+if|if
+condition|(
+name|remoteAddress
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|"?"
+return|;
+block|}
 name|String
 name|host
 init|=
