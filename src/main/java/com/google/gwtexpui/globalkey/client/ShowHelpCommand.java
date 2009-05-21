@@ -292,6 +292,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|current
+operator|=
+name|help
+expr_stmt|;
 name|help
 operator|.
 name|setPopupPositionAndShow

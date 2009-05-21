@@ -676,7 +676,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|toMask (final KeyPressEvent event)
-specifier|private
 specifier|static
 name|int
 name|toMask

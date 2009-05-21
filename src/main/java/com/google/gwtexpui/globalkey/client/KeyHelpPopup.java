@@ -705,6 +705,36 @@ name|KeyPressEvent
 name|event
 parameter_list|)
 block|{
+if|if
+condition|(
+name|KeyCommandSet
+operator|.
+name|toMask
+argument_list|(
+name|event
+argument_list|)
+operator|==
+name|ShowHelpCommand
+operator|.
+name|INSTANCE
+operator|.
+name|keyMask
+condition|)
+block|{
+comment|// Block the '?' key from triggering us to show right after
+comment|// we just hide ourselves.
+comment|//
+name|event
+operator|.
+name|stopPropagation
+argument_list|()
+expr_stmt|;
+name|event
+operator|.
+name|preventDefault
+argument_list|()
+expr_stmt|;
+block|}
 name|hide
 argument_list|()
 expr_stmt|;
