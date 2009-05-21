@@ -1152,9 +1152,17 @@ name|comments
 operator|=
 literal|null
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isCurrentView
+argument_list|()
+condition|)
+block|{
 name|display
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|showPatch (final boolean showPatch)

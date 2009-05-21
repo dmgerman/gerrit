@@ -304,6 +304,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|SafeHtml
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -1221,6 +1237,30 @@ return|return
 operator|-
 literal|1
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|resetHtml (SafeHtml body)
+specifier|protected
+name|void
+name|resetHtml
+parameter_list|(
+name|SafeHtml
+name|body
+parameter_list|)
+block|{
+name|currentRow
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|super
+operator|.
+name|resetHtml
+argument_list|(
+name|body
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|finishDisplay ()
 specifier|public
