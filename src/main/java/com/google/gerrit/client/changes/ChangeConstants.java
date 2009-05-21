@@ -165,6 +165,11 @@ name|String
 name|changeTableColumnProject
 parameter_list|()
 function_decl|;
+DECL|method|changeTableColumnBranch ()
+name|String
+name|changeTableColumnBranch
+parameter_list|()
+function_decl|;
 DECL|method|changeTableColumnLastUpdate ()
 name|String
 name|changeTableColumnLastUpdate

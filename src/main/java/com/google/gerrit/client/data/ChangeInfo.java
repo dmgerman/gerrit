@@ -145,6 +145,11 @@ specifier|protected
 name|ProjectInfo
 name|project
 decl_stmt|;
+DECL|field|branch
+specifier|protected
+name|String
+name|branch
+decl_stmt|;
 DECL|field|starred
 specifier|protected
 name|boolean
@@ -219,6 +224,16 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|branch
+operator|=
+name|c
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|getShortName
+argument_list|()
 expr_stmt|;
 name|lastUpdatedOn
 operator|=
@@ -296,6 +311,16 @@ parameter_list|()
 block|{
 return|return
 name|project
+return|;
+block|}
+DECL|method|getBranch ()
+specifier|public
+name|String
+name|getBranch
+parameter_list|()
+block|{
+return|return
+name|branch
 return|;
 block|}
 DECL|method|isStarred ()
