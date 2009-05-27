@@ -383,6 +383,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
+comment|/**    * Next id for a block of {@link ChangeMessage} records.    *     * @see com.google.gerrit.server.ChangeUtil#messageUUID(ReviewDb)    */
 annotation|@
 name|Sequence
 DECL|method|nextChangeMessageId ()
