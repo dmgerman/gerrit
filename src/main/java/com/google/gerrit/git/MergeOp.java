@@ -2682,6 +2682,19 @@ parameter_list|()
 throws|throws
 name|MergeException
 block|{
+if|if
+condition|(
+name|mergeTip
+operator|==
+literal|null
+condition|)
+block|{
+comment|// If mergeTip is null here, branchTip was null, indicating a new branch
+comment|// at the start of the merge process. We also elected to merge nothing,
+comment|// probably due to missing dependencies. Nothing was cleanly merged.
+comment|//
+return|return;
+block|}
 try|try
 block|{
 name|rw
