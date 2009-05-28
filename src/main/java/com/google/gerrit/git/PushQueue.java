@@ -354,6 +354,10 @@ name|TimeUnit
 import|;
 end_import
 
+begin_comment
+comment|/** Manages automatic replication to remote repositories. */
+end_comment
+
 begin_class
 DECL|class|PushQueue
 specifier|public
@@ -449,6 +453,81 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Determine if replication is enabled, or not. */
+DECL|method|isReplicationEnabled ()
+specifier|public
+specifier|static
+name|boolean
+name|isReplicationEnabled
+parameter_list|()
+block|{
+return|return
+operator|!
+name|allConfigs
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
+comment|/**    * Schedule a full replication for a single project.    *<p>    * All remote URLs are checked to verify the are current with regards to the    * local project state. If not, they are updated by pushing new refs, updating    * existing ones which don't match, and deleting stale refs which have been    * removed from the local repository.    *     * @param project identity of the project to replicate.    */
+DECL|method|scheduleFullSync (final Project.NameKey project)
+specifier|public
+specifier|static
+name|void
+name|scheduleFullSync
+parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|)
+block|{
+for|for
+control|(
+specifier|final
+name|RemoteConfig
+name|cfg
+range|:
+name|allConfigs
+argument_list|()
+control|)
+block|{
+for|for
+control|(
+specifier|final
+name|URIish
+name|uri
+range|:
+name|cfg
+operator|.
+name|getURIs
+argument_list|()
+control|)
+block|{
+name|scheduleImp
+argument_list|(
+name|project
+argument_list|,
+name|PushOp
+operator|.
+name|MIRROR_ALL
+argument_list|,
+name|cfg
+argument_list|,
+name|expandURI
+argument_list|(
+name|uri
+argument_list|,
+name|project
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+comment|/**    * Schedule update of a single ref.    *<p>    * This method automatically tries to batch together multiple requests in the    * same project, to take advantage of Git's native ability to update multiple    * refs during a single push operation.    *     * @param project identity of the project to replicate.    * @param ref unique name of the ref; must start with {@code refs/}.    */
 DECL|method|scheduleUpdate (final Project.NameKey project, final String ref)
 specifier|public
 specifier|static
