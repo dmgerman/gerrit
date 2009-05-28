@@ -1140,7 +1140,7 @@ name|matchSrc
 argument_list|(
 name|src
 operator|.
-name|getName
+name|getOrigName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1611,7 +1611,7 @@ name|equals
 argument_list|(
 name|ref
 operator|.
-name|getName
+name|getOrigName
 argument_list|()
 argument_list|)
 return|;
