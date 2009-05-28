@@ -460,8 +460,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**    * Schedule a full replication for a single project.    *<p>    * All remote URLs are checked to verify the are current with regards to the    * local project state. If not, they are updated by pushing new refs, updating    * existing ones which don't match, and deleting stale refs which have been    * removed from the local repository.    *     * @param project identity of the project to replicate.    */
-DECL|method|scheduleFullSync (final Project.NameKey project)
+comment|/**    * Schedule a full replication for a single project.    *<p>    * All remote URLs are checked to verify the are current with regards to the    * local project state. If not, they are updated by pushing new refs, updating    * existing ones which don't match, and deleting stale refs which have been    * removed from the local repository.    *     * @param project identity of the project to replicate.    * @param urlMatch substring that must appear in a URI to support replication.    */
+DECL|method|scheduleFullSync (final Project.NameKey project, final String urlMatch)
 specifier|public
 specifier|static
 name|void
@@ -472,6 +472,10 @@ name|Project
 operator|.
 name|NameKey
 name|project
+parameter_list|,
+specifier|final
+name|String
+name|urlMatch
 parameter_list|)
 block|{
 for|for
@@ -495,6 +499,8 @@ operator|.
 name|getURIs
 argument_list|(
 name|project
+argument_list|,
+name|urlMatch
 argument_list|)
 control|)
 block|{
@@ -563,6 +569,8 @@ operator|.
 name|getURIs
 argument_list|(
 name|project
+argument_list|,
+literal|null
 argument_list|)
 control|)
 block|{
@@ -1257,7 +1265,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|getURIs (final Project.NameKey project)
+DECL|method|getURIs (final Project.NameKey project, final String urlMatch)
 name|List
 argument_list|<
 name|URIish
@@ -1269,6 +1277,10 @@ name|Project
 operator|.
 name|NameKey
 name|project
+parameter_list|,
+specifier|final
+name|String
+name|urlMatch
 parameter_list|)
 block|{
 specifier|final
@@ -1304,6 +1316,16 @@ name|getURIs
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|matches
+argument_list|(
+name|uri
+argument_list|,
+name|urlMatch
+argument_list|)
+condition|)
+block|{
 name|uri
 operator|=
 name|uri
@@ -1334,8 +1356,60 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|r
+return|;
+block|}
+DECL|method|matches (URIish uri, final String urlMatch)
+specifier|private
+specifier|static
+name|boolean
+name|matches
+parameter_list|(
+name|URIish
+name|uri
+parameter_list|,
+specifier|final
+name|String
+name|urlMatch
+parameter_list|)
+block|{
+if|if
+condition|(
+name|urlMatch
+operator|==
+literal|null
+operator|||
+name|urlMatch
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+operator|||
+name|urlMatch
+operator|.
+name|equals
+argument_list|(
+literal|"*"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+return|return
+name|uri
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|urlMatch
+argument_list|)
 return|;
 block|}
 block|}

@@ -196,6 +196,39 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|urlMatch
+specifier|private
+specifier|final
+name|String
+name|urlMatch
+decl_stmt|;
+DECL|method|PushAllProjectsOp ()
+specifier|public
+name|PushAllProjectsOp
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|PushAllProjectsOp (final String urlMatch)
+specifier|public
+name|PushAllProjectsOp
+parameter_list|(
+specifier|final
+name|String
+name|urlMatch
+parameter_list|)
+block|{
+name|this
+operator|.
+name|urlMatch
+operator|=
+name|urlMatch
+expr_stmt|;
+block|}
 DECL|method|run ()
 specifier|public
 name|void
@@ -259,6 +292,8 @@ name|project
 operator|.
 name|getNameKey
 argument_list|()
+argument_list|,
+name|urlMatch
 argument_list|)
 expr_stmt|;
 block|}
@@ -297,8 +332,29 @@ name|String
 name|toString
 parameter_list|()
 block|{
-return|return
+name|String
+name|s
+init|=
 literal|"Replicate All Projects"
+decl_stmt|;
+if|if
+condition|(
+name|urlMatch
+operator|!=
+literal|null
+condition|)
+block|{
+name|s
+operator|=
+name|s
+operator|+
+literal|" to "
+operator|+
+name|urlMatch
+expr_stmt|;
+block|}
+return|return
+name|s
 return|;
 block|}
 block|}

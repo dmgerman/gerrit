@@ -214,6 +214,26 @@ name|boolean
 name|all
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--url"
+argument_list|,
+name|metaVar
+operator|=
+literal|"PATTERN"
+argument_list|,
+name|usage
+operator|=
+literal|"pattern to match URL on"
+argument_list|)
+DECL|field|urlMatch
+specifier|private
+name|String
+name|urlMatch
+decl_stmt|;
+annotation|@
 name|Argument
 argument_list|(
 name|index
@@ -305,7 +325,9 @@ name|schedule
 argument_list|(
 operator|new
 name|PushAllProjectsOp
-argument_list|()
+argument_list|(
+name|urlMatch
+argument_list|)
 argument_list|,
 literal|0
 argument_list|,
@@ -360,6 +382,8 @@ operator|.
 name|scheduleFullSync
 argument_list|(
 name|key
+argument_list|,
+name|urlMatch
 argument_list|)
 expr_stmt|;
 block|}
