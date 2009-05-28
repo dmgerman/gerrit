@@ -1127,7 +1127,7 @@ argument_list|()
 expr_stmt|;
 name|impl
 operator|.
-name|reloadMergeQueue
+name|reloadSubmitQueue
 argument_list|()
 expr_stmt|;
 block|}
@@ -4857,10 +4857,10 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|reloadMergeQueue ()
+DECL|method|reloadSubmitQueue ()
 specifier|private
 name|void
-name|reloadMergeQueue
+name|reloadSubmitQueue
 parameter_list|()
 block|{
 name|WorkQueue
@@ -4978,6 +4978,17 @@ name|branch
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Reload Submit Queue"
+return|;
 block|}
 block|}
 argument_list|,
