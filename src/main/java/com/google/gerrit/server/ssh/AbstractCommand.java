@@ -540,6 +540,11 @@ specifier|protected
 name|ServerSession
 name|session
 decl_stmt|;
+DECL|field|db
+specifier|protected
+name|ReviewDb
+name|db
+decl_stmt|;
 DECL|field|name
 specifier|private
 name|String
@@ -804,9 +809,17 @@ parameter_list|()
 throws|throws
 name|Failure
 block|{
+if|if
+condition|(
+name|db
+operator|==
+literal|null
+condition|)
+block|{
 try|try
 block|{
-return|return
+name|db
+operator|=
 name|Common
 operator|.
 name|getSchemaFactory
@@ -814,7 +827,7 @@ argument_list|()
 operator|.
 name|open
 argument_list|()
-return|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -834,6 +847,10 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+return|return
+name|db
+return|;
 block|}
 DECL|method|getAccountId ()
 specifier|protected
@@ -1900,7 +1917,35 @@ specifier|protected
 name|void
 name|postRun
 parameter_list|()
-block|{   }
+block|{
+name|closeDb
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|closeDb ()
+specifier|protected
+name|void
+name|closeDb
+parameter_list|()
+block|{
+if|if
+condition|(
+name|db
+operator|!=
+literal|null
+condition|)
+block|{
+name|db
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|db
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
 DECL|class|Failure
 specifier|public
 specifier|static
