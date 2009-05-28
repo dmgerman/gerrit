@@ -430,6 +430,14 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|pool
+specifier|private
+specifier|final
+name|PushQueue
+operator|.
+name|ReplicationConfig
+name|pool
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 specifier|final
@@ -458,9 +466,15 @@ specifier|private
 name|Repository
 name|db
 decl_stmt|;
-DECL|method|PushOp (final String d, final RemoteConfig c, final URIish u)
+DECL|method|PushOp (final PushQueue.ReplicationConfig p, final String d, final RemoteConfig c, final URIish u)
 name|PushOp
 parameter_list|(
+specifier|final
+name|PushQueue
+operator|.
+name|ReplicationConfig
+name|p
+parameter_list|,
 specifier|final
 name|String
 name|d
@@ -474,6 +488,10 @@ name|URIish
 name|u
 parameter_list|)
 block|{
+name|pool
+operator|=
+name|p
+expr_stmt|;
 name|projectName
 operator|=
 name|d
@@ -553,7 +571,7 @@ comment|// Lock the queue, and remove ourselves, so we can't be modified once
 comment|// we start replication (instead a new instance, with the same URI, is
 comment|// created and scheduled for a future point in time.)
 comment|//
-name|PushQueue
+name|pool
 operator|.
 name|notifyStarting
 argument_list|(
