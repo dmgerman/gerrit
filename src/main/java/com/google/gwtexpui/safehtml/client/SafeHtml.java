@@ -222,6 +222,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** @return the existing HTML text, wrapped in a safe buffer. */
+DECL|method|asis (final String htmlText)
+specifier|public
+specifier|static
+name|SafeHtml
+name|asis
+parameter_list|(
+specifier|final
+name|String
+name|htmlText
+parameter_list|)
+block|{
+return|return
+operator|new
+name|SafeHtmlString
+argument_list|(
+name|htmlText
+argument_list|)
+return|;
+block|}
 comment|/** Set the HTML property of a widget. */
 DECL|method|set (final T e, final SafeHtml str)
 specifier|public
