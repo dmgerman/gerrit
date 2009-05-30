@@ -143,6 +143,8 @@ DECL|class|GerritConfig
 specifier|public
 class|class
 name|GerritConfig
+implements|implements
+name|Cloneable
 block|{
 DECL|field|canonicalUrl
 specifier|protected
@@ -170,11 +172,6 @@ name|ApprovalType
 argument_list|>
 name|actionTypes
 decl_stmt|;
-DECL|field|sshdPort
-specifier|protected
-name|int
-name|sshdPort
-decl_stmt|;
 DECL|field|useContributorAgreements
 specifier|protected
 name|boolean
@@ -201,6 +198,11 @@ DECL|field|gitDaemonUrl
 specifier|protected
 name|String
 name|gitDaemonUrl
+decl_stmt|;
+DECL|field|sshdAddress
+specifier|protected
+name|String
+name|sshdAddress
 decl_stmt|;
 DECL|field|byCategoryId
 specifier|private
@@ -424,31 +426,6 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|getSshdPort ()
-specifier|public
-name|int
-name|getSshdPort
-parameter_list|()
-block|{
-return|return
-name|sshdPort
-return|;
-block|}
-DECL|method|setSshdPort (final int p)
-specifier|public
-name|void
-name|setSshdPort
-parameter_list|(
-specifier|final
-name|int
-name|p
-parameter_list|)
-block|{
-name|sshdPort
-operator|=
-name|p
-expr_stmt|;
 block|}
 DECL|method|isUseContributorAgreements ()
 specifier|public
@@ -675,6 +652,31 @@ block|}
 name|gitDaemonUrl
 operator|=
 name|url
+expr_stmt|;
+block|}
+DECL|method|getSshdAddress ()
+specifier|public
+name|String
+name|getSshdAddress
+parameter_list|()
+block|{
+return|return
+name|sshdAddress
+return|;
+block|}
+DECL|method|setSshdAddress (final String addr)
+specifier|public
+name|void
+name|setSshdAddress
+parameter_list|(
+specifier|final
+name|String
+name|addr
+parameter_list|)
+block|{
+name|sshdAddress
+operator|=
+name|addr
 expr_stmt|;
 block|}
 block|}

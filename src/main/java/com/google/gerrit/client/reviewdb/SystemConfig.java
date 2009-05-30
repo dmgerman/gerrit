@@ -456,14 +456,6 @@ specifier|public
 name|boolean
 name|useContributorAgreements
 decl_stmt|;
-comment|/** Local TCP port number the embedded SSHD server binds onto. */
-annotation|@
-name|Column
-DECL|field|sshdPort
-specifier|public
-name|int
-name|sshdPort
-decl_stmt|;
 comment|/** Should Gerrit advertise 'repo download' for patch sets? */
 annotation|@
 name|Column
