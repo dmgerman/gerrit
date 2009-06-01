@@ -369,27 +369,6 @@ specifier|transient
 name|String
 name|gitBasePath
 decl_stmt|;
-comment|/** Name this Gerrit instance calls itself when it makes changes in Git. */
-annotation|@
-name|Column
-DECL|field|gerritGitName
-specifier|public
-name|String
-name|gerritGitName
-decl_stmt|;
-comment|/** Email this Gerrit instance calls itself when it makes changes in Git. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|gerritGitEmail
-specifier|public
-name|String
-name|gerritGitEmail
-decl_stmt|;
 comment|/** Type of login access used by this instance. */
 annotation|@
 name|Column
