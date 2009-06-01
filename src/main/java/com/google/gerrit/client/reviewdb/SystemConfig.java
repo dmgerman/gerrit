@@ -494,34 +494,6 @@ operator|.
 name|Id
 name|registeredGroupId
 decl_stmt|;
-comment|/** Optional URL of the contact information store. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|contactStoreURL
-specifier|public
-specifier|transient
-name|String
-name|contactStoreURL
-decl_stmt|;
-comment|/** APPSEC token to get into {@link #contactStoreURL}. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|contactStoreAPPSEC
-specifier|public
-specifier|transient
-name|String
-name|contactStoreAPPSEC
-decl_stmt|;
 DECL|method|getLoginType ()
 specifier|public
 name|LoginType

@@ -4778,9 +4778,8 @@ name|r
 operator|.
 name|setUseContactInfo
 argument_list|(
-name|sConfig
-operator|.
-name|contactStoreURL
+name|getContactStoreURL
+argument_list|()
 operator|!=
 literal|null
 argument_list|)
@@ -5165,9 +5164,17 @@ name|getContactStoreURL
 parameter_list|()
 block|{
 return|return
-name|sConfig
+name|getGerritConfig
+argument_list|()
 operator|.
-name|contactStoreURL
+name|getString
+argument_list|(
+literal|"contactstore"
+argument_list|,
+literal|null
+argument_list|,
+literal|"url"
+argument_list|)
 return|;
 block|}
 DECL|method|getContactStoreAPPSEC ()
@@ -5177,9 +5184,17 @@ name|getContactStoreAPPSEC
 parameter_list|()
 block|{
 return|return
-name|sConfig
+name|getGerritConfig
+argument_list|()
 operator|.
-name|contactStoreAPPSEC
+name|getString
+argument_list|(
+literal|"contactstore"
+argument_list|,
+literal|null
+argument_list|,
+literal|"appsec"
+argument_list|)
 return|;
 block|}
 comment|/** A binary string key to encrypt cookies related to account data. */
