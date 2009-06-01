@@ -347,14 +347,6 @@ specifier|transient
 name|String
 name|gitBasePath
 decl_stmt|;
-comment|/** Should Gerrit advertise 'repo download' for patch sets? */
-annotation|@
-name|Column
-DECL|field|useRepoDownload
-specifier|public
-name|boolean
-name|useRepoDownload
-decl_stmt|;
 comment|/** Identity of the administration group; those with full access. */
 annotation|@
 name|Column
