@@ -286,7 +286,7 @@ name|table
 operator|.
 name|addStyleName
 argument_list|(
-literal|"gerrit-PatchHistoryTable"
+literal|"gerrit-ChangeTable"
 argument_list|)
 expr_stmt|;
 block|}
