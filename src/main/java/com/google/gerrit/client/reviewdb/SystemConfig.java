@@ -320,19 +320,6 @@ specifier|public
 name|String
 name|canonicalUrl
 decl_stmt|;
-comment|/** Optional URL of a gitweb installation to also view changes through. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|gitwebUrl
-specifier|public
-name|String
-name|gitwebUrl
-decl_stmt|;
 comment|/**    * Optional URL of the anonymous git daemon for project access.    *<p>    * For example:<code>git://host/base/</code>    */
 annotation|@
 name|Column

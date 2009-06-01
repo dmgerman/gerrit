@@ -429,6 +429,13 @@ argument_list|,
 name|rs
 argument_list|)
 expr_stmt|;
+name|gitweb
+argument_list|(
+name|config
+argument_list|,
+name|rs
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|sshd (RepositoryConfig config, ResultSet rs)
 specifier|private
@@ -705,6 +712,35 @@ literal|60
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|gitweb (RepositoryConfig config, ResultSet rs)
+specifier|private
+specifier|static
+name|void
+name|gitweb
+parameter_list|(
+name|RepositoryConfig
+name|config
+parameter_list|,
+name|ResultSet
+name|rs
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+name|copy
+argument_list|(
+name|config
+argument_list|,
+literal|"gitweb"
+argument_list|,
+literal|"url"
+argument_list|,
+name|rs
+argument_list|,
+literal|"gitweb_url"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|copy (RepositoryConfig config, String section, String key, ResultSet rs, String colName)
 specifier|private
