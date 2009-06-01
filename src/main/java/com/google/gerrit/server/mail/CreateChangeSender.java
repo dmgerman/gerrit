@@ -194,28 +194,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|MessagingException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|Message
-operator|.
-name|RecipientType
-import|;
-end_import
-
 begin_comment
 comment|/** Notify interested parties of a brand new change. */
 end_comment
@@ -254,8 +232,6 @@ specifier|protected
 name|void
 name|init
 parameter_list|()
-throws|throws
-name|MessagingException
 block|{
 name|super
 operator|.
@@ -271,8 +247,6 @@ specifier|private
 name|void
 name|bccWatchers
 parameter_list|()
-throws|throws
-name|MessagingException
 block|{
 if|if
 condition|(

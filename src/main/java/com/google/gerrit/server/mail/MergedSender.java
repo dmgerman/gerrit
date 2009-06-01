@@ -258,28 +258,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|MessagingException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|Message
-operator|.
-name|RecipientType
-import|;
-end_import
-
 begin_comment
 comment|/** Send notice about a change successfully merged. */
 end_comment
@@ -320,8 +298,6 @@ specifier|protected
 name|void
 name|init
 parameter_list|()
-throws|throws
-name|MessagingException
 block|{
 name|super
 operator|.
@@ -954,8 +930,6 @@ specifier|private
 name|void
 name|bccWatchesNotifySubmittedChanges
 parameter_list|()
-throws|throws
-name|MessagingException
 block|{
 if|if
 condition|(

@@ -514,6 +514,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|EmailException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|ReplacePatchSetSender
 import|;
 end_import
@@ -973,16 +989,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|MessagingException
 import|;
 end_import
 
@@ -4622,7 +4628,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MessagingException
+name|EmailException
 name|e
 parameter_list|)
 block|{
@@ -6148,7 +6154,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MessagingException
+name|EmailException
 name|e
 parameter_list|)
 block|{

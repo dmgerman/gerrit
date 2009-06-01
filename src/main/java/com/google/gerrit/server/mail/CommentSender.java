@@ -232,16 +232,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|mail
-operator|.
-name|MessagingException
-import|;
-end_import
-
 begin_comment
 comment|/** Send comments, after the author of them hit used Publish Comments in the UI. */
 end_comment
@@ -313,8 +303,6 @@ specifier|protected
 name|void
 name|init
 parameter_list|()
-throws|throws
-name|MessagingException
 block|{
 name|super
 operator|.
