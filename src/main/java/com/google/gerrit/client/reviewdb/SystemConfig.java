@@ -307,32 +307,6 @@ specifier|transient
 name|String
 name|sitePath
 decl_stmt|;
-comment|/** Optional canonical URL for this application. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|canonicalUrl
-specifier|public
-name|String
-name|canonicalUrl
-decl_stmt|;
-comment|/**    * Optional URL of the anonymous git daemon for project access.    *<p>    * For example:<code>git://host/base/</code>    */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|gitDaemonUrl
-specifier|public
-name|String
-name|gitDaemonUrl
-decl_stmt|;
 comment|/** Local filesystem location all projects reside within. */
 annotation|@
 name|Column
