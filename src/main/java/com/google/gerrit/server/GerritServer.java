@@ -2595,7 +2595,8 @@ name|r
 return|;
 block|}
 DECL|method|createDatabase ()
-specifier|private
+specifier|public
+specifier|static
 name|Database
 argument_list|<
 name|ReviewDb
@@ -2713,6 +2714,7 @@ return|;
 block|}
 DECL|method|readGerritDataSource ()
 specifier|private
+specifier|static
 name|Properties
 name|readGerritDataSource
 parameter_list|()
