@@ -293,15 +293,6 @@ specifier|transient
 name|String
 name|accountPrivateKey
 decl_stmt|;
-comment|/** Maximum web session age, in seconds. */
-annotation|@
-name|Column
-DECL|field|maxSessionAge
-specifier|public
-specifier|transient
-name|int
-name|maxSessionAge
-decl_stmt|;
 comment|/**    * Local filesystem location of header/footer/CSS configuration files    *     * @see HostPageServlet    */
 annotation|@
 name|Column
@@ -369,72 +360,6 @@ specifier|transient
 name|String
 name|gitBasePath
 decl_stmt|;
-comment|/** Type of login access used by this instance. */
-annotation|@
-name|Column
-argument_list|(
-name|length
-operator|=
-literal|16
-argument_list|)
-DECL|field|loginType
-specifier|protected
-name|String
-name|loginType
-decl_stmt|;
-comment|/** HTTP header to use for the user identity if loginType is HTTP. */
-annotation|@
-name|Column
-argument_list|(
-name|length
-operator|=
-literal|30
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|loginHttpHeader
-specifier|public
-specifier|transient
-name|String
-name|loginHttpHeader
-decl_stmt|;
-comment|/** Format to generate email address from a login names */
-annotation|@
-name|Column
-argument_list|(
-name|length
-operator|=
-literal|30
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|emailFormat
-specifier|public
-specifier|transient
-name|String
-name|emailFormat
-decl_stmt|;
-comment|/**    * Can user accounts from Gerrit1 upgrade to use OpenID?    *<p>    * This setting should only be true if this server is an upgraded database    * from Gerrit1, and if there are still outstanding accounts which need to be    * upgraded to Gerrit2's OpenID authentication scheme. Any other system should    * leave this setting false.    */
-annotation|@
-name|Column
-DECL|field|allowGoogleAccountUpgrade
-specifier|public
-specifier|transient
-name|boolean
-name|allowGoogleAccountUpgrade
-decl_stmt|;
-comment|/** Is a verified {@link AccountAgreement} required to upload changes? */
-annotation|@
-name|Column
-DECL|field|useContributorAgreements
-specifier|public
-name|boolean
-name|useContributorAgreements
-decl_stmt|;
 comment|/** Should Gerrit advertise 'repo download' for patch sets? */
 annotation|@
 name|Column
@@ -473,45 +398,6 @@ operator|.
 name|Id
 name|registeredGroupId
 decl_stmt|;
-DECL|method|getLoginType ()
-specifier|public
-name|LoginType
-name|getLoginType
-parameter_list|()
-block|{
-return|return
-name|loginType
-operator|!=
-literal|null
-condition|?
-name|LoginType
-operator|.
-name|valueOf
-argument_list|(
-name|loginType
-argument_list|)
-else|:
-literal|null
-return|;
-block|}
-DECL|method|setLoginType (final LoginType t)
-specifier|public
-name|void
-name|setLoginType
-parameter_list|(
-specifier|final
-name|LoginType
-name|t
-parameter_list|)
-block|{
-name|loginType
-operator|=
-name|t
-operator|.
-name|name
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig
