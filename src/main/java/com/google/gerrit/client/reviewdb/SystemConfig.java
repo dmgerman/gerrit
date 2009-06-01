@@ -307,20 +307,6 @@ specifier|transient
 name|String
 name|sitePath
 decl_stmt|;
-comment|/** Local filesystem location all projects reside within. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|gitBasePath
-specifier|public
-specifier|transient
-name|String
-name|gitBasePath
-decl_stmt|;
 comment|/** Identity of the administration group; those with full access. */
 annotation|@
 name|Column

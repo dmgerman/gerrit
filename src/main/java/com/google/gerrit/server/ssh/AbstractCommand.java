@@ -792,7 +792,7 @@ argument_list|,
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"git_base_path not set in system_config"
+literal|"gerrit.basePath not set"
 argument_list|)
 argument_list|)
 throw|;
