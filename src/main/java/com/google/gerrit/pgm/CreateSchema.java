@@ -198,7 +198,9 @@ block|{
 name|GerritServer
 operator|.
 name|getInstance
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 name|Common
 operator|.
