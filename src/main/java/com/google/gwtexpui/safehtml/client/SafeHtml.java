@@ -455,7 +455,19 @@ block|{
 return|return
 name|replaceAll
 argument_list|(
-literal|"(https?://[a-zA-Z0-9$_.+!*',%;:@&=?#/()-]{1,}[a-zA-Z0-9$_.+!*',%;:@&=?#/-])"
+literal|"(https?://"
+operator|+
+literal|"[a-zA-Z0-9$_.+!*',%;:@&=?#/-]{2,}"
+operator|+
+literal|"([(]"
+operator|+
+literal|"[a-zA-Z0-9$_.+!*',%;:@&=?#/-]*"
+operator|+
+literal|"[)])*"
+operator|+
+literal|"[a-zA-Z0-9$_.+!*',%;:@&=?#/-]*"
+operator|+
+literal|")"
 argument_list|,
 literal|"<a href=\"$1\">$1</a>"
 argument_list|)
