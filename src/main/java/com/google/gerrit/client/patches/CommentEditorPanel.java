@@ -809,16 +809,6 @@ return|return;
 case|case
 literal|'d'
 case|:
-case|case
-name|KeyCodes
-operator|.
-name|KEY_BACKSPACE
-case|:
-case|case
-name|KeyCodes
-operator|.
-name|KEY_DELETE
-case|:
 name|event
 operator|.
 name|preventDefault
