@@ -841,6 +841,19 @@ parameter_list|()
 throws|throws
 name|EmailException
 block|{
+if|if
+condition|(
+operator|!
+name|server
+operator|.
+name|isOutgoingMailEnabled
+argument_list|()
+condition|)
+block|{
+comment|// Server has explicitly disabled email sending.
+comment|//
+return|return;
+block|}
 name|init
 argument_list|()
 expr_stmt|;

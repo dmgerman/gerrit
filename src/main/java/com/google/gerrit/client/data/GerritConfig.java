@@ -182,6 +182,11 @@ specifier|protected
 name|boolean
 name|useContactInfo
 decl_stmt|;
+DECL|field|allowRegisterNewEmail
+specifier|protected
+name|boolean
+name|allowRegisterNewEmail
+decl_stmt|;
 DECL|field|loginType
 specifier|protected
 name|SystemConfig
@@ -473,6 +478,31 @@ name|r
 parameter_list|)
 block|{
 name|useContactInfo
+operator|=
+name|r
+expr_stmt|;
+block|}
+DECL|method|isAllowRegisterNewEmail ()
+specifier|public
+name|boolean
+name|isAllowRegisterNewEmail
+parameter_list|()
+block|{
+return|return
+name|allowRegisterNewEmail
+return|;
+block|}
+DECL|method|setAllowRegisterNewEmail (final boolean r)
+specifier|public
+name|void
+name|setAllowRegisterNewEmail
+parameter_list|(
+specifier|final
+name|boolean
+name|r
+parameter_list|)
+block|{
+name|allowRegisterNewEmail
 operator|=
 name|r
 expr_stmt|;

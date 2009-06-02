@@ -4802,6 +4802,14 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|.
+name|setAllowRegisterNewEmail
+argument_list|(
+name|isOutgoingMailEnabled
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|r
+operator|.
 name|setLoginType
 argument_list|(
 name|getLoginType
@@ -4894,6 +4902,28 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|isOutgoingMailEnabled ()
+specifier|public
+name|boolean
+name|isOutgoingMailEnabled
+parameter_list|()
+block|{
+return|return
+name|getGerritConfig
+argument_list|()
+operator|.
+name|getBoolean
+argument_list|(
+literal|"sendemail"
+argument_list|,
+literal|null
+argument_list|,
+literal|"enable"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|createOutgoingMail ()
 specifier|public
 name|SMTPClient
@@ -4902,6 +4932,21 @@ parameter_list|()
 throws|throws
 name|EmailException
 block|{
+if|if
+condition|(
+operator|!
+name|isOutgoingMailEnabled
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|EmailException
+argument_list|(
+literal|"Sending email is disabled"
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|RepositoryConfig
 name|cfg
