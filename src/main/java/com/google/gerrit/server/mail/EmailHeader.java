@@ -425,9 +425,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|first
-operator|&&
+condition|)
+block|{
+name|first
+operator|=
+literal|false
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 literal|72
 operator|<
 name|len
@@ -454,11 +462,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|first
-condition|)
+else|else
 block|{
 name|w
 operator|.
@@ -467,10 +471,6 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
-name|first
-operator|=
-literal|false
-expr_stmt|;
 block|}
 name|w
 operator|.
@@ -478,6 +478,13 @@ name|write
 argument_list|(
 name|s
 argument_list|)
+expr_stmt|;
+name|len
+operator|+=
+name|s
+operator|.
+name|length
+argument_list|()
 expr_stmt|;
 block|}
 block|}
