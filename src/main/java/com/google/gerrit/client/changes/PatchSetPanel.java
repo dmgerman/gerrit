@@ -1548,6 +1548,16 @@ argument_list|()
 operator|!=
 literal|null
 operator|&&
+name|Common
+operator|.
+name|getGerritConfig
+argument_list|()
+operator|.
+name|getSshdAddress
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|Gerrit
 operator|.
 name|getUserAccount
