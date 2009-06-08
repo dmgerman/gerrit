@@ -721,7 +721,7 @@ block|}
 return|;
 block|}
 DECL|method|display (final SingleListChangeInfo result)
-specifier|private
+specifier|protected
 name|void
 name|display
 parameter_list|(

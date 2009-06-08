@@ -832,6 +832,12 @@ specifier|static
 name|RootPanel
 name|siteFooter
 decl_stmt|;
+DECL|field|searchPanel
+specifier|private
+specifier|static
+name|SearchPanel
+name|searchPanel
+decl_stmt|;
 DECL|field|body
 specifier|private
 specifier|static
@@ -985,6 +991,24 @@ name|view
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|setQueryString (String query)
+specifier|public
+specifier|static
+name|void
+name|setQueryString
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+name|searchPanel
+operator|.
+name|setText
+argument_list|(
+name|query
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|setWindowTitle (final Screen screen, final String text)
 specifier|public
@@ -1276,6 +1300,12 @@ operator|new
 name|LinkMenuBar
 argument_list|()
 expr_stmt|;
+name|searchPanel
+operator|=
+operator|new
+name|SearchPanel
+argument_list|()
+expr_stmt|;
 name|menuLeft
 operator|.
 name|setStyleName
@@ -1323,9 +1353,7 @@ name|menuRightPanel
 operator|.
 name|add
 argument_list|(
-operator|new
-name|SearchPanel
-argument_list|()
+name|searchPanel
 argument_list|)
 expr_stmt|;
 name|menuLine

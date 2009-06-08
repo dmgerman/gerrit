@@ -354,6 +354,48 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+comment|/** Get all changes which match an arbitrary query string. */
+DECL|method|allQueryPrev (String query, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|allQueryPrev
+parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/** Get all changes which match an arbitrary query string. */
+DECL|method|allQueryNext (String query, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|allQueryNext
+parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 comment|/** Get the data to show {@link AccountDashboardScreen} for an account. */
 DECL|method|forAccount (Account.Id id, AsyncCallback<AccountDashboardInfo> callback)
 name|void

@@ -236,6 +236,22 @@ name|int
 name|line
 parameter_list|)
 function_decl|;
+DECL|method|changeQueryWindowTitle (String query)
+name|String
+name|changeQueryWindowTitle
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+function_decl|;
+DECL|method|changeQueryPageTitle (String query)
+name|String
+name|changeQueryPageTitle
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
