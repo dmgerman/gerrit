@@ -374,6 +374,14 @@ specifier|protected
 name|String
 name|description
 decl_stmt|;
+comment|/** Is the membership managed by some external means? */
+annotation|@
+name|Column
+DECL|field|automaticMembership
+specifier|protected
+name|boolean
+name|automaticMembership
+decl_stmt|;
 DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
@@ -515,6 +523,31 @@ block|{
 name|ownerGroupId
 operator|=
 name|id
+expr_stmt|;
+block|}
+DECL|method|isAutomaticMembership ()
+specifier|public
+name|boolean
+name|isAutomaticMembership
+parameter_list|()
+block|{
+return|return
+name|automaticMembership
+return|;
+block|}
+DECL|method|setAutomaticMembership (final boolean auto)
+specifier|public
+name|void
+name|setAutomaticMembership
+parameter_list|(
+specifier|final
+name|boolean
+name|auto
+parameter_list|)
+block|{
+name|automaticMembership
+operator|=
+name|auto
 expr_stmt|;
 block|}
 block|}

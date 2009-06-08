@@ -2998,6 +2998,13 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|anonymous
+operator|.
+name|setAutomaticMembership
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|c
 operator|.
 name|accountGroups
@@ -3055,6 +3062,13 @@ name|admin
 operator|.
 name|getId
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|registered
+operator|.
+name|setAutomaticMembership
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|c

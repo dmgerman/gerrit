@@ -341,6 +341,11 @@ block|}
 name|autoGroup
 operator|=
 name|isAuto
+operator|||
+name|g
+operator|.
+name|isAutomaticMembership
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
