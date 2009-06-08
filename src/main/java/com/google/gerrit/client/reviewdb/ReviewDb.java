@@ -141,7 +141,7 @@ specifier|final
 name|int
 name|VERSION
 init|=
-literal|12
+literal|13
 decl_stmt|;
 annotation|@
 name|Relation
@@ -225,6 +225,13 @@ name|Relation
 DECL|method|accountGroupMembers ()
 name|AccountGroupMemberAccess
 name|accountGroupMembers
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|accountGroupMembersAudit ()
+name|AccountGroupMemberAuditAccess
+name|accountGroupMembersAudit
 parameter_list|()
 function_decl|;
 annotation|@
