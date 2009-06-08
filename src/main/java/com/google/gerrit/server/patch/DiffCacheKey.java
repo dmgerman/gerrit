@@ -196,7 +196,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|2L
+literal|3L
 decl_stmt|;
 DECL|field|projectKey
 specifier|private
