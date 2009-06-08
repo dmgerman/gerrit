@@ -236,6 +236,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountGroupAgreements ()
+name|AccountGroupAgreementAccess
+name|accountGroupAgreements
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|starredChanges ()
 name|StarredChangeAccess
 name|starredChanges

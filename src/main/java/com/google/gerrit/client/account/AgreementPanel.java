@@ -106,7 +106,39 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|AbstractAgreement
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|AccountAgreement
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|AccountGroupAgreement
 import|;
 end_import
 
@@ -399,7 +431,7 @@ name|AgreementTable
 extends|extends
 name|FancyFlexTable
 argument_list|<
-name|AccountAgreement
+name|AbstractAgreement
 argument_list|>
 block|{
 DECL|method|AgreementTable ()
@@ -545,7 +577,26 @@ name|k
 range|:
 name|result
 operator|.
-name|accepted
+name|userAccepted
+control|)
+block|{
+name|addOne
+argument_list|(
+name|result
+argument_list|,
+name|k
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+specifier|final
+name|AccountGroupAgreement
+name|k
+range|:
+name|result
+operator|.
+name|groupAccepted
 control|)
 block|{
 name|addOne
@@ -557,7 +608,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addOne (final AgreementInfo info, final AccountAgreement k)
+DECL|method|addOne (final AgreementInfo info, final AbstractAgreement k)
 name|void
 name|addOne
 parameter_list|(
@@ -566,7 +617,7 @@ name|AgreementInfo
 name|info
 parameter_list|,
 specifier|final
-name|AccountAgreement
+name|AbstractAgreement
 name|k
 parameter_list|)
 block|{

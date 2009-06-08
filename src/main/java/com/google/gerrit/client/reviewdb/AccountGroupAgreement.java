@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -105,15 +105,15 @@ import|;
 end_import
 
 begin_comment
-comment|/** Electronic acceptance of a {@link ContributorAgreement} by {@link Account} */
+comment|/**  * Acceptance of a {@link ContributorAgreement} by an {@link AccountGroup}.  */
 end_comment
 
 begin_class
-DECL|class|AccountAgreement
+DECL|class|AccountGroupAgreement
 specifier|public
 specifier|final
 class|class
-name|AccountAgreement
+name|AccountGroupAgreement
 implements|implements
 name|AbstractAgreement
 block|{
@@ -125,7 +125,7 @@ name|Key
 extends|extends
 name|CompoundKey
 argument_list|<
-name|Account
+name|AccountGroup
 operator|.
 name|Id
 argument_list|>
@@ -141,12 +141,12 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|accountId
+DECL|field|groupId
 specifier|protected
-name|Account
+name|AccountGroup
 operator|.
 name|Id
-name|accountId
+name|groupId
 decl_stmt|;
 annotation|@
 name|Column
@@ -162,10 +162,10 @@ specifier|protected
 name|Key
 parameter_list|()
 block|{
-name|accountId
+name|groupId
 operator|=
 operator|new
-name|Account
+name|AccountGroup
 operator|.
 name|Id
 argument_list|()
@@ -179,15 +179,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Account.Id account, final ContributorAgreement.Id cla)
+DECL|method|Key (final AccountGroup.Id group, final ContributorAgreement.Id cla)
 specifier|public
 name|Key
 parameter_list|(
 specifier|final
-name|Account
+name|AccountGroup
 operator|.
 name|Id
-name|account
+name|group
 parameter_list|,
 specifier|final
 name|ContributorAgreement
@@ -198,9 +198,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|accountId
+name|groupId
 operator|=
-name|account
+name|group
 expr_stmt|;
 name|this
 operator|.
@@ -213,14 +213,14 @@ annotation|@
 name|Override
 DECL|method|getParentKey ()
 specifier|public
-name|Account
+name|AccountGroup
 operator|.
 name|Id
 name|getParentKey
 parameter_list|()
 block|{
 return|return
-name|accountId
+name|groupId
 return|;
 block|}
 annotation|@
@@ -336,17 +336,17 @@ specifier|protected
 name|String
 name|reviewComments
 decl_stmt|;
-DECL|method|AccountAgreement ()
+DECL|method|AccountGroupAgreement ()
 specifier|protected
-name|AccountAgreement
+name|AccountGroupAgreement
 parameter_list|()
 block|{   }
-DECL|method|AccountAgreement (final AccountAgreement.Key k)
+DECL|method|AccountGroupAgreement (final AccountGroupAgreement.Key k)
 specifier|public
-name|AccountAgreement
+name|AccountGroupAgreement
 parameter_list|(
 specifier|final
-name|AccountAgreement
+name|AccountGroupAgreement
 operator|.
 name|Key
 name|k
@@ -379,7 +379,7 @@ expr_stmt|;
 block|}
 DECL|method|getKey ()
 specifier|public
-name|AccountAgreement
+name|AccountGroupAgreement
 operator|.
 name|Key
 name|getKey
@@ -473,45 +473,6 @@ block|{
 name|reviewComments
 operator|=
 name|s
-expr_stmt|;
-block|}
-DECL|method|review (final Status newStatus, final Account.Id by)
-specifier|public
-name|void
-name|review
-parameter_list|(
-specifier|final
-name|Status
-name|newStatus
-parameter_list|,
-specifier|final
-name|Account
-operator|.
-name|Id
-name|by
-parameter_list|)
-block|{
-name|status
-operator|=
-name|newStatus
-operator|.
-name|getCode
-argument_list|()
-expr_stmt|;
-name|reviewedBy
-operator|=
-name|by
-expr_stmt|;
-name|reviewedOn
-operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 block|}
