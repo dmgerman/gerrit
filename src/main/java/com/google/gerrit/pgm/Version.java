@@ -117,6 +117,8 @@ DECL|class|Version
 specifier|public
 class|class
 name|Version
+extends|extends
+name|AbstractProgram
 block|{
 DECL|field|version
 specifier|private
@@ -223,17 +225,15 @@ return|return
 name|version
 return|;
 block|}
-DECL|method|main (final String[] argv)
+annotation|@
+name|Override
+DECL|method|run ()
 specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-specifier|final
-name|String
-index|[]
-name|argv
-parameter_list|)
+name|int
+name|run
+parameter_list|()
+throws|throws
+name|Exception
 block|{
 specifier|final
 name|String
@@ -258,13 +258,9 @@ argument_list|(
 literal|"fatal: version unavailable"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|System
 operator|.
@@ -277,6 +273,9 @@ operator|+
 name|v
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 block|}
 end_class
