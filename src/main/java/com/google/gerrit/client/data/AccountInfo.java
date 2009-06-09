@@ -200,6 +200,21 @@ return|return
 name|preferredEmail
 return|;
 block|}
+DECL|method|setPreferredEmail (final String email)
+specifier|public
+name|void
+name|setPreferredEmail
+parameter_list|(
+specifier|final
+name|String
+name|email
+parameter_list|)
+block|{
+name|preferredEmail
+operator|=
+name|email
+expr_stmt|;
+block|}
 block|}
 end_class
 

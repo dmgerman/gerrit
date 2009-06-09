@@ -212,6 +212,24 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE fullName = ? LIMIT 2"
+argument_list|)
+DECL|method|byFullName (String name)
+name|ResultSet
+argument_list|<
+name|Account
+argument_list|>
+name|byFullName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE fullName>= ? AND fullName<= ? ORDER BY fullName LIMIT ?"
 argument_list|)
 DECL|method|suggestByFullName (String nameA, String nameB, int limit)
