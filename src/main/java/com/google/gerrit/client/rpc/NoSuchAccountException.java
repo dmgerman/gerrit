@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client
+DECL|package|com.google.gerrit.client.rpc
 package|package
 name|com
 operator|.
@@ -61,70 +61,59 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|rpc
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
-import|;
-end_import
+begin_comment
+comment|/** Error indicating the account requested doesn't exist. */
+end_comment
 
-begin_interface
-DECL|interface|GerritMessages
+begin_class
+DECL|class|NoSuchAccountException
 specifier|public
-interface|interface
-name|GerritMessages
+class|class
+name|NoSuchAccountException
 extends|extends
-name|Messages
+name|Exception
 block|{
-DECL|method|windowTitle1 (String hostname)
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|field|MESSAGE
+specifier|public
+specifier|static
+specifier|final
 name|String
-name|windowTitle1
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|windowTitle2 (String section, String hostname)
-name|String
-name|windowTitle2
-parameter_list|(
-name|String
-name|section
-parameter_list|,
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|poweredBy (String version)
-name|String
-name|poweredBy
-parameter_list|(
-name|String
-name|version
-parameter_list|)
-function_decl|;
-DECL|method|noSuchAccountMessage (String who)
-name|String
-name|noSuchAccountMessage
+name|MESSAGE
+init|=
+literal|"Not Found: "
+decl_stmt|;
+DECL|method|NoSuchAccountException (String who)
+specifier|public
+name|NoSuchAccountException
 parameter_list|(
 name|String
 name|who
 parameter_list|)
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+operator|+
+name|who
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

@@ -143,6 +143,11 @@ name|String
 name|nameAlreadyUsedBody
 parameter_list|()
 function_decl|;
+DECL|method|noSuchAccountTitle ()
+name|String
+name|noSuchAccountTitle
+parameter_list|()
+function_decl|;
 DECL|method|menuAll ()
 name|String
 name|menuAll
