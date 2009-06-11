@@ -135,6 +135,11 @@ name|String
 name|patchHeaderNew
 parameter_list|()
 function_decl|;
+DECL|method|showFullFiles ()
+name|String
+name|showFullFiles
+parameter_list|()
+function_decl|;
 DECL|method|patchHistoryTitle ()
 name|String
 name|patchHistoryTitle
