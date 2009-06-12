@@ -124,16 +124,6 @@ name|OutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dummy shell which prints a message and terminates.  *<p>  * This implementation is used by {@link SshServlet} to ensure clients who try  * to SSH directly to this server without supplying a command will get a  * reasonable error message, but cannot continue further.  */
 end_comment
@@ -241,12 +231,7 @@ name|void
 name|start
 parameter_list|(
 specifier|final
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+name|Environment
 name|env
 parameter_list|)
 throws|throws
