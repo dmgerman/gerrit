@@ -68,6 +68,24 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
+name|PatchScriptSettings
+operator|.
+name|Whitespace
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -218,6 +236,23 @@ name|settings
 operator|.
 name|getContext
 argument_list|()
+return|;
+block|}
+DECL|method|isIgnoreWhitespace ()
+specifier|public
+name|boolean
+name|isIgnoreWhitespace
+parameter_list|()
+block|{
+return|return
+name|settings
+operator|.
+name|getWhitespace
+argument_list|()
+operator|!=
+name|Whitespace
+operator|.
+name|IGNORE_NONE
 return|;
 block|}
 DECL|method|getA ()

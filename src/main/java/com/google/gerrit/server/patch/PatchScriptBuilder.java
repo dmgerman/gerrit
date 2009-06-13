@@ -620,17 +620,21 @@ name|getContext
 argument_list|()
 return|;
 block|}
-DECL|method|toPatchScript (final DiffCacheContent content, final CommentDetail comments)
+DECL|method|toPatchScript (final DiffCacheContent contentWS, final CommentDetail comments, final DiffCacheContent contentAct)
 name|PatchScript
 name|toPatchScript
 parameter_list|(
 specifier|final
 name|DiffCacheContent
-name|content
+name|contentWS
 parameter_list|,
 specifier|final
 name|CommentDetail
 name|comments
+parameter_list|,
+specifier|final
+name|DiffCacheContent
+name|contentAct
 parameter_list|)
 throws|throws
 name|CorruptEntityException
@@ -639,7 +643,7 @@ specifier|final
 name|FileHeader
 name|fh
 init|=
-name|content
+name|contentAct
 operator|.
 name|getFileHeader
 argument_list|()
@@ -686,7 +690,7 @@ name|srcA
 operator|=
 name|open
 argument_list|(
-name|content
+name|contentAct
 operator|.
 name|getOldId
 argument_list|()
@@ -696,12 +700,12 @@ if|if
 condition|(
 name|eq
 argument_list|(
-name|content
+name|contentAct
 operator|.
 name|getOldId
 argument_list|()
 argument_list|,
-name|content
+name|contentAct
 operator|.
 name|getNewId
 argument_list|()
@@ -719,7 +723,7 @@ name|srcB
 operator|=
 name|open
 argument_list|(
-name|content
+name|contentAct
 operator|.
 name|getNewId
 argument_list|()
@@ -728,7 +732,7 @@ expr_stmt|;
 block|}
 name|edits
 operator|=
-name|content
+name|contentAct
 operator|.
 name|getEdits
 argument_list|()
@@ -805,7 +809,10 @@ operator|<=
 name|context
 argument_list|()
 operator|&&
-name|edits
+name|contentAct
+operator|.
+name|getEdits
+argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
@@ -902,6 +909,30 @@ expr_stmt|;
 block|}
 name|packContent
 argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|contentWS
+operator|!=
+name|contentAct
+condition|)
+block|{
+comment|// The edit list we used to pack the file contents doesn't honor the
+comment|// whitespace settings requested. Instead we must rebuild our edit
+comment|// list around the whitespace edit list.
+comment|//
+name|edits
+operator|=
+name|contentWS
+operator|.
+name|getEdits
+argument_list|()
+expr_stmt|;
+name|ensureCommentsVisible
+argument_list|(
+name|comments
+argument_list|)
 expr_stmt|;
 block|}
 return|return
