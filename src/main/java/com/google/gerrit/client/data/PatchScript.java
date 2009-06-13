@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|patches
+operator|.
+name|PatchScriptSettings
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -114,10 +130,10 @@ name|String
 argument_list|>
 name|header
 decl_stmt|;
-DECL|field|context
+DECL|field|settings
 specifier|protected
-name|int
-name|context
+name|PatchScriptSettings
+name|settings
 decl_stmt|;
 DECL|field|a
 specifier|protected
@@ -137,7 +153,7 @@ name|Edit
 argument_list|>
 name|edits
 decl_stmt|;
-DECL|method|PatchScript (final List<String> h, final int ctx, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e)
+DECL|method|PatchScript (final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -149,8 +165,8 @@ argument_list|>
 name|h
 parameter_list|,
 specifier|final
-name|int
-name|ctx
+name|PatchScriptSettings
+name|s
 parameter_list|,
 specifier|final
 name|SparseFileContent
@@ -172,9 +188,9 @@ name|header
 operator|=
 name|h
 expr_stmt|;
-name|context
+name|settings
 operator|=
-name|ctx
+name|s
 expr_stmt|;
 name|a
 operator|=
@@ -214,7 +230,10 @@ name|getContext
 parameter_list|()
 block|{
 return|return
-name|context
+name|settings
+operator|.
+name|getContext
+argument_list|()
 return|;
 block|}
 DECL|method|getA ()
@@ -411,17 +430,21 @@ name|int
 name|i
 parameter_list|)
 block|{
-return|return
+specifier|final
+name|Edit
+name|s
+init|=
 name|edits
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-operator|.
-name|getBeginA
-argument_list|()
-operator|-
+decl_stmt|;
+specifier|final
+name|Edit
+name|e
+init|=
 name|edits
 operator|.
 name|get
@@ -430,13 +453,22 @@ name|i
 operator|-
 literal|1
 argument_list|)
+decl_stmt|;
+return|return
+name|s
+operator|.
+name|getBeginA
+argument_list|()
+operator|-
+name|e
 operator|.
 name|getEndA
 argument_list|()
 operator|<=
 literal|2
 operator|*
-name|context
+name|getContext
+argument_list|()
 return|;
 block|}
 DECL|method|combineB (final int i)
@@ -449,7 +481,10 @@ name|int
 name|i
 parameter_list|)
 block|{
-return|return
+specifier|final
+name|int
+name|s
+init|=
 name|edits
 operator|.
 name|get
@@ -459,7 +494,11 @@ argument_list|)
 operator|.
 name|getBeginB
 argument_list|()
-operator|-
+decl_stmt|;
+specifier|final
+name|int
+name|e
+init|=
 name|edits
 operator|.
 name|get
@@ -471,10 +510,16 @@ argument_list|)
 operator|.
 name|getEndB
 argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|-
+name|e
 operator|<=
 literal|2
 operator|*
-name|context
+name|getContext
+argument_list|()
 return|;
 block|}
 DECL|method|end (final Edit edit, final int a, final int b)
@@ -613,7 +658,8 @@ operator|.
 name|getBeginA
 argument_list|()
 operator|-
-name|context
+name|getContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|bCur
@@ -629,7 +675,8 @@ operator|.
 name|getBeginB
 argument_list|()
 operator|-
-name|context
+name|getContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|aEnd
@@ -648,7 +695,8 @@ operator|.
 name|getEndA
 argument_list|()
 operator|+
-name|context
+name|getContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|bEnd
@@ -667,7 +715,8 @@ operator|.
 name|getEndB
 argument_list|()
 operator|+
-name|context
+name|getContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

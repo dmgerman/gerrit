@@ -134,6 +134,28 @@ operator|.
 name|IGNORE_NONE
 expr_stmt|;
 block|}
+DECL|method|PatchScriptSettings (final PatchScriptSettings s)
+specifier|public
+name|PatchScriptSettings
+parameter_list|(
+specifier|final
+name|PatchScriptSettings
+name|s
+parameter_list|)
+block|{
+name|context
+operator|=
+name|s
+operator|.
+name|context
+expr_stmt|;
+name|whitespace
+operator|=
+name|s
+operator|.
+name|whitespace
+expr_stmt|;
+block|}
 DECL|method|getContext ()
 specifier|public
 name|int

@@ -124,6 +124,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|patches
+operator|.
+name|PatchScriptSettings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|reviewdb
 operator|.
 name|Patch
@@ -493,10 +509,10 @@ operator|.
 name|Key
 name|patchKey
 decl_stmt|;
-DECL|field|context
+DECL|field|settings
 specifier|private
-name|int
-name|context
+name|PatchScriptSettings
+name|settings
 decl_stmt|;
 DECL|field|srcA
 specifier|private
@@ -577,19 +593,32 @@ name|getKey
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setContext (final int c)
+DECL|method|setSettings (final PatchScriptSettings s)
 name|void
-name|setContext
+name|setSettings
 parameter_list|(
 specifier|final
-name|int
-name|c
+name|PatchScriptSettings
+name|s
 parameter_list|)
 block|{
-name|context
+name|settings
 operator|=
-name|c
+name|s
 expr_stmt|;
+block|}
+DECL|method|context ()
+specifier|private
+name|int
+name|context
+parameter_list|()
+block|{
+return|return
+name|settings
+operator|.
+name|getContext
+argument_list|()
+return|;
 block|}
 DECL|method|toPatchScript (final DiffCacheContent content, final CommentDetail comments)
 name|PatchScript
@@ -643,7 +672,7 @@ name|PatchScript
 argument_list|(
 name|header
 argument_list|,
-name|context
+name|settings
 argument_list|,
 name|dstA
 argument_list|,
@@ -774,6 +803,7 @@ name|size
 argument_list|()
 operator|<=
 name|context
+argument_list|()
 operator|&&
 name|edits
 operator|.
@@ -859,11 +889,15 @@ operator|&&
 literal|25
 operator|<
 name|context
+argument_list|()
 condition|)
 block|{
-name|context
-operator|=
+name|settings
+operator|.
+name|setContext
+argument_list|(
 literal|25
+argument_list|)
 expr_stmt|;
 block|}
 name|packContent
@@ -876,7 +910,7 @@ name|PatchScript
 argument_list|(
 name|header
 argument_list|,
-name|context
+name|settings
 argument_list|,
 name|dstA
 argument_list|,
@@ -1772,6 +1806,7 @@ name|getBeginA
 argument_list|()
 operator|-
 name|context
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|int
@@ -1789,6 +1824,7 @@ name|getBeginB
 argument_list|()
 operator|-
 name|context
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1810,6 +1846,7 @@ name|getEndA
 argument_list|()
 operator|+
 name|context
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1831,6 +1868,7 @@ name|getEndB
 argument_list|()
 operator|+
 name|context
+argument_list|()
 argument_list|)
 decl_stmt|;
 while|while
@@ -2052,6 +2090,7 @@ operator|<=
 literal|2
 operator|*
 name|context
+argument_list|()
 return|;
 block|}
 DECL|method|combineB (final List<Edit> e, final int i)
@@ -2097,6 +2136,7 @@ operator|<=
 literal|2
 operator|*
 name|context
+argument_list|()
 return|;
 block|}
 DECL|method|end (final Edit edit, final int a, final int b)
