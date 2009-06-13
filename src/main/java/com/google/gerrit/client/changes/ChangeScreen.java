@@ -1811,6 +1811,8 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+operator|+
+literal|" "
 argument_list|)
 decl_stmt|;
 name|revtxt
