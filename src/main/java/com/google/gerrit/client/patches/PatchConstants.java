@@ -140,6 +140,11 @@ name|String
 name|showFullFiles
 parameter_list|()
 function_decl|;
+DECL|method|ignoreWhitespace ()
+name|String
+name|ignoreWhitespace
+parameter_list|()
+function_decl|;
 DECL|method|patchHistoryTitle ()
 name|String
 name|patchHistoryTitle

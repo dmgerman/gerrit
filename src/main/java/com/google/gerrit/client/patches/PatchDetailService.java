@@ -252,7 +252,7 @@ name|PatchDetailService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, int context, AsyncCallback<PatchScript> callback)
+DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, PatchScriptSettings settings, AsyncCallback<PatchScript> callback)
 name|void
 name|patchScript
 parameter_list|(
@@ -271,8 +271,8 @@ operator|.
 name|Id
 name|b
 parameter_list|,
-name|int
-name|context
+name|PatchScriptSettings
+name|settings
 parameter_list|,
 name|AsyncCallback
 argument_list|<

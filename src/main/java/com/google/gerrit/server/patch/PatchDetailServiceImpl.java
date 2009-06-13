@@ -156,6 +156,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|patches
+operator|.
+name|PatchScriptSettings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -738,7 +754,7 @@ operator|=
 name|gs
 expr_stmt|;
 block|}
-DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final int ctx, final AsyncCallback<PatchScript> callback)
+DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings s, final AsyncCallback<PatchScript> callback)
 specifier|public
 name|void
 name|patchScript
@@ -762,8 +778,8 @@ name|Id
 name|psb
 parameter_list|,
 specifier|final
-name|int
-name|ctx
+name|PatchScriptSettings
+name|s
 parameter_list|,
 specifier|final
 name|AsyncCallback
@@ -837,7 +853,7 @@ name|psa
 argument_list|,
 name|psb
 argument_list|,
-name|ctx
+name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
