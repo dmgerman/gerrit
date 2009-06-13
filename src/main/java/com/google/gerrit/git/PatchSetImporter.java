@@ -74,7 +74,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
+name|data
 operator|.
 name|PatchScriptSettings
 operator|.

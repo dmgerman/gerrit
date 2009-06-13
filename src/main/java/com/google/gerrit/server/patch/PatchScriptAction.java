@@ -110,9 +110,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
+name|data
 operator|.
-name|CommentDetail
+name|PatchScriptSettings
 import|;
 end_import
 
@@ -128,7 +128,7 @@ name|client
 operator|.
 name|patches
 operator|.
-name|PatchScriptSettings
+name|CommentDetail
 import|;
 end_import
 

@@ -112,7 +112,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
+name|data
 operator|.
 name|PatchScriptSettings
 operator|.
@@ -132,7 +132,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
+name|data
 operator|.
 name|PatchScriptSettings
 operator|.
@@ -215,6 +215,22 @@ operator|.
 name|data
 operator|.
 name|PatchScript
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
+name|PatchScriptSettings
 import|;
 end_import
 
