@@ -98,7 +98,7 @@ block|}
 DECL|method|getOpenBytes ()
 specifier|public
 specifier|static
-name|int
+name|long
 name|getOpenBytes
 parameter_list|()
 block|{

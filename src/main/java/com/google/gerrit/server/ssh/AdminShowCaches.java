@@ -437,7 +437,7 @@ operator|-
 name|mFree
 decl_stmt|;
 specifier|final
-name|int
+name|long
 name|jgitBytes
 init|=
 name|WindowCacheStatAccessor
