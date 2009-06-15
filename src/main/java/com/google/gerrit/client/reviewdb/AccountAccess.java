@@ -275,6 +275,30 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE sshUserName>= ? AND sshUserName<= ? ORDER BY sshUserName LIMIT ?"
+argument_list|)
+DECL|method|suggestBySshUserName (String nameA, String nameB, int limit)
+name|ResultSet
+argument_list|<
+name|Account
+argument_list|>
+name|suggestBySshUserName
+parameter_list|(
+name|String
+name|nameA
+parameter_list|,
+name|String
+name|nameB
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 

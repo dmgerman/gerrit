@@ -211,6 +211,26 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE owner = ? AND open = false ORDER BY lastUpdatedOn"
+argument_list|)
+DECL|method|byOwnerClosedAll (Account.Id id)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byOwnerClosedAll
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE dest = ? AND status = '"
 operator|+
 name|Change

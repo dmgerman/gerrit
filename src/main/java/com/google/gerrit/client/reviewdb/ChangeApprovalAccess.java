@@ -255,6 +255,26 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE changeOpen = false AND key.accountId = ? ORDER BY changeSortKey"
+argument_list|)
+DECL|method|closedByUserAll (Account.Id account)
+name|ResultSet
+argument_list|<
+name|ChangeApproval
+argument_list|>
+name|closedByUserAll
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|account
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
