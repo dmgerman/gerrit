@@ -6109,6 +6109,16 @@ range|:
 name|reviewerId
 control|)
 block|{
+if|if
+condition|(
+name|haveApprovals
+operator|.
+name|add
+argument_list|(
+name|reviewer
+argument_list|)
+condition|)
+block|{
 name|insertDummyChangeApproval
 argument_list|(
 name|result
@@ -6122,6 +6132,7 @@ argument_list|,
 name|txn
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
