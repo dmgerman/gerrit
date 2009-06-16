@@ -4902,7 +4902,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|e
+name|err
 argument_list|)
 expr_stmt|;
 name|reject
@@ -4937,7 +4937,7 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|e
+name|err
 argument_list|)
 expr_stmt|;
 name|reject
