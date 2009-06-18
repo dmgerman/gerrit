@@ -205,6 +205,31 @@ name|String
 name|commentCancelEdit
 parameter_list|()
 function_decl|;
+DECL|method|whitespaceIgnoreLabel ()
+name|String
+name|whitespaceIgnoreLabel
+parameter_list|()
+function_decl|;
+DECL|method|whitespaceIGNORE_NONE ()
+name|String
+name|whitespaceIGNORE_NONE
+parameter_list|()
+function_decl|;
+DECL|method|whitespaceIGNORE_SPACE_AT_EOL ()
+name|String
+name|whitespaceIGNORE_SPACE_AT_EOL
+parameter_list|()
+function_decl|;
+DECL|method|whitespaceIGNORE_SPACE_CHANGE ()
+name|String
+name|whitespaceIGNORE_SPACE_CHANGE
+parameter_list|()
+function_decl|;
+DECL|method|whitespaceIGNORE_ALL_SPACE ()
+name|String
+name|whitespaceIGNORE_ALL_SPACE
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
