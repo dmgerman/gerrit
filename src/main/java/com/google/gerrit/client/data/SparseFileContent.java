@@ -392,11 +392,11 @@ return|;
 block|}
 if|if
 condition|(
+name|idx
+operator|<
 name|cur
 operator|.
 name|base
-operator|<
-name|idx
 condition|)
 name|high
 operator|=
