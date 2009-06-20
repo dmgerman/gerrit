@@ -266,22 +266,6 @@ specifier|protected
 name|Account
 name|userAccount
 decl_stmt|;
-DECL|method|isGerrit ()
-specifier|protected
-name|boolean
-name|isGerrit
-parameter_list|()
-block|{
-return|return
-name|getName
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"gerrit-"
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|preRun ()
