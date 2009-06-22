@@ -455,6 +455,11 @@ name|String
 name|pagedChangeListNext
 parameter_list|()
 function_decl|;
+DECL|method|reply ()
+name|String
+name|reply
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

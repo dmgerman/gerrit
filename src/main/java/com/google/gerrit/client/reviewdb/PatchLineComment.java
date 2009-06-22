@@ -477,6 +477,29 @@ name|message
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/** The parent of this comment, or null if this is the first comment on this line */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|40
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|parentUuid
+specifier|protected
+name|String
+name|parentUuid
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|PatchLineComment ()
 specifier|protected
@@ -486,7 +509,7 @@ block|{   }
 end_constructor
 
 begin_constructor
-DECL|method|PatchLineComment (final PatchLineComment.Key id, final int line, final Account.Id a)
+DECL|method|PatchLineComment (final PatchLineComment.Key id, final int line, final Account.Id a, String parentUuid)
 specifier|public
 name|PatchLineComment
 parameter_list|(
@@ -505,6 +528,9 @@ name|Account
 operator|.
 name|Id
 name|a
+parameter_list|,
+name|String
+name|parentUuid
 parameter_list|)
 block|{
 name|key
@@ -518,6 +544,12 @@ expr_stmt|;
 name|author
 operator|=
 name|a
+expr_stmt|;
+name|this
+operator|.
+name|parentUuid
+operator|=
+name|parentUuid
 expr_stmt|;
 name|setStatus
 argument_list|(
@@ -707,6 +739,19 @@ name|currentTimeMillis
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getParentUuid ()
+specifier|public
+name|String
+name|getParentUuid
+parameter_list|()
+block|{
+return|return
+name|parentUuid
+return|;
 block|}
 end_function
 

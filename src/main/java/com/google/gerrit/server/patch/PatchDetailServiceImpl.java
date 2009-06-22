@@ -1111,6 +1111,11 @@ name|getLine
 argument_list|()
 argument_list|,
 name|me
+argument_list|,
+name|comment
+operator|.
+name|getParentUuid
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|nc
