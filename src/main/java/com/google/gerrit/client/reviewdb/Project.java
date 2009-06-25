@@ -705,6 +705,35 @@ name|getCode
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|copySettingsFrom (final Project update)
+specifier|public
+name|void
+name|copySettingsFrom
+parameter_list|(
+specifier|final
+name|Project
+name|update
+parameter_list|)
+block|{
+name|description
+operator|=
+name|update
+operator|.
+name|description
+expr_stmt|;
+name|useContributorAgreements
+operator|=
+name|update
+operator|.
+name|useContributorAgreements
+expr_stmt|;
+name|submitType
+operator|=
+name|update
+operator|.
+name|submitType
+expr_stmt|;
+block|}
 block|}
 end_class
 

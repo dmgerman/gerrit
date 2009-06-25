@@ -145,6 +145,11 @@ name|String
 name|buttonAddProjectRight
 parameter_list|()
 function_decl|;
+DECL|method|buttonSaveChanges ()
+name|String
+name|buttonSaveChanges
+parameter_list|()
+function_decl|;
 DECL|method|headingOwner ()
 name|String
 name|headingOwner
