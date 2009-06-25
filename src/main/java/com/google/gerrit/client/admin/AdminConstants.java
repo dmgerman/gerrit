@@ -150,6 +150,16 @@ name|String
 name|buttonSaveChanges
 parameter_list|()
 function_decl|;
+DECL|method|useContributorAgreements ()
+name|String
+name|useContributorAgreements
+parameter_list|()
+function_decl|;
+DECL|method|useSignedOffBy ()
+name|String
+name|useSignedOffBy
+parameter_list|()
+function_decl|;
 DECL|method|headingOwner ()
 name|String
 name|headingOwner
@@ -178,6 +188,11 @@ function_decl|;
 DECL|method|headingAccessRights ()
 name|String
 name|headingAccessRights
+parameter_list|()
+function_decl|;
+DECL|method|headingAgreements ()
+name|String
+name|headingAgreements
 parameter_list|()
 function_decl|;
 DECL|method|projectSubmitType_FAST_FORWARD_ONLY ()

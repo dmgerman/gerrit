@@ -509,6 +509,13 @@ name|useContributorAgreements
 decl_stmt|;
 annotation|@
 name|Column
+DECL|field|useSignedOffBy
+specifier|protected
+name|boolean
+name|useSignedOffBy
+decl_stmt|;
+annotation|@
+name|Column
 DECL|field|submitType
 specifier|protected
 name|char
@@ -672,6 +679,31 @@ operator|=
 name|u
 expr_stmt|;
 block|}
+DECL|method|isUseSignedOffBy ()
+specifier|public
+name|boolean
+name|isUseSignedOffBy
+parameter_list|()
+block|{
+return|return
+name|useSignedOffBy
+return|;
+block|}
+DECL|method|setUseSignedOffBy (final boolean sbo)
+specifier|public
+name|void
+name|setUseSignedOffBy
+parameter_list|(
+specifier|final
+name|boolean
+name|sbo
+parameter_list|)
+block|{
+name|useSignedOffBy
+operator|=
+name|sbo
+expr_stmt|;
+block|}
 DECL|method|getSubmitType ()
 specifier|public
 name|SubmitType
@@ -726,6 +758,12 @@ operator|=
 name|update
 operator|.
 name|useContributorAgreements
+expr_stmt|;
+name|useSignedOffBy
+operator|=
+name|update
+operator|.
+name|useSignedOffBy
 expr_stmt|;
 name|submitType
 operator|=
