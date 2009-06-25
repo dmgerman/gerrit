@@ -3611,6 +3611,16 @@ operator|>
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|identbuf
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|identbuf
 operator|.
 name|append
@@ -3618,6 +3628,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 name|identbuf
 operator|.
 name|append
@@ -3664,6 +3675,16 @@ condition|)
 block|{
 continue|continue;
 block|}
+if|if
+condition|(
+name|identbuf
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|identbuf
 operator|.
 name|append
@@ -3671,6 +3692,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 name|identbuf
 operator|.
 name|append
@@ -3797,6 +3819,26 @@ literal|'-'
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|contains
+argument_list|(
+name|footers
+argument_list|,
+operator|new
+name|FooterKey
+argument_list|(
+name|tag
+argument_list|)
+argument_list|,
+name|identbuf
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|msgbuf
 operator|.
 name|append
@@ -3808,7 +3850,7 @@ name|msgbuf
 operator|.
 name|append
 argument_list|(
-literal|':'
+literal|": "
 argument_list|)
 expr_stmt|;
 name|msgbuf
@@ -3825,6 +3867,7 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
