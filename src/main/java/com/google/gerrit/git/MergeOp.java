@@ -3644,7 +3644,7 @@ condition|)
 block|{
 name|tag
 operator|=
-literal|"Verified-by"
+literal|"Tested-by"
 expr_stmt|;
 block|}
 else|else
