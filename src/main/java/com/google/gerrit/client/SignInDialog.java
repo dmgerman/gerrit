@@ -219,6 +219,28 @@ name|Mode
 name|signInMode
 parameter_list|)
 block|{
+name|this
+argument_list|(
+name|signInMode
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Create a new dialog to handle user sign in.    *     * @param signInMode type of mode the login will perform.    * @param errorMsg error message to display, if non-null.    */
+DECL|method|SignInDialog (final Mode signInMode, final String errorMsg)
+specifier|public
+name|SignInDialog
+parameter_list|(
+specifier|final
+name|Mode
+name|signInMode
+parameter_list|,
+specifier|final
+name|String
+name|errorMsg
+parameter_list|)
+block|{
 name|super
 argument_list|(
 comment|/* auto hide */
@@ -248,6 +270,8 @@ operator|new
 name|OpenIdLoginPanel
 argument_list|(
 name|signInMode
+argument_list|,
+name|errorMsg
 argument_list|)
 expr_stmt|;
 break|break;

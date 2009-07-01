@@ -612,7 +612,7 @@ specifier|private
 name|boolean
 name|discovering
 decl_stmt|;
-DECL|method|OpenIdLoginPanel (final SignInDialog.Mode m)
+DECL|method|OpenIdLoginPanel (final SignInDialog.Mode requestedMode, final String initialErrorMsg)
 specifier|public
 name|OpenIdLoginPanel
 parameter_list|(
@@ -620,12 +620,16 @@ specifier|final
 name|SignInDialog
 operator|.
 name|Mode
-name|m
+name|requestedMode
+parameter_list|,
+specifier|final
+name|String
+name|initialErrorMsg
 parameter_list|)
 block|{
 name|mode
 operator|=
-name|m
+name|requestedMode
 expr_stmt|;
 name|icons
 operator|=
@@ -781,6 +785,19 @@ name|iconYahoo
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|initialErrorMsg
+operator|!=
+literal|null
+condition|)
+block|{
+name|showError
+argument_list|(
+name|initialErrorMsg
+argument_list|)
+expr_stmt|;
+block|}
 name|formBody
 operator|.
 name|add
@@ -983,14 +1000,7 @@ name|errorMsg
 operator|=
 operator|new
 name|InlineLabel
-argument_list|(
-name|OpenIdUtil
-operator|.
-name|C
-operator|.
-name|notSupported
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|errorLine
 operator|.
@@ -1014,12 +1024,23 @@ name|errorLine
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|showError ()
+DECL|method|showError (final String msgText)
 specifier|private
 name|void
 name|showError
-parameter_list|()
+parameter_list|(
+specifier|final
+name|String
+name|msgText
+parameter_list|)
 block|{
+name|errorMsg
+operator|.
+name|setText
+argument_list|(
+name|msgText
+argument_list|)
+expr_stmt|;
 name|errorLine
 operator|.
 name|setVisible
@@ -1659,7 +1680,14 @@ name|onDiscoveryFailure
 parameter_list|()
 block|{
 name|showError
+argument_list|(
+name|OpenIdUtil
+operator|.
+name|C
+operator|.
+name|notSupported
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|enable
 argument_list|(
