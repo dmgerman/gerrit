@@ -2161,7 +2161,7 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"Gerrit#"
+literal|"#"
 argument_list|)
 expr_stmt|;
 name|msg
@@ -2328,7 +2328,7 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"Gerrit#"
+literal|"#"
 argument_list|)
 expr_stmt|;
 name|msg
@@ -2485,7 +2485,7 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"Gerrit#"
+literal|"#"
 argument_list|)
 expr_stmt|;
 name|msg

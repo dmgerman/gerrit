@@ -1253,13 +1253,6 @@ argument_list|(
 name|canonicalUrl
 argument_list|)
 expr_stmt|;
-name|reqUrl
-operator|.
-name|append
-argument_list|(
-literal|"Gerrit"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|hasScreenName
@@ -1349,7 +1342,7 @@ name|r
 operator|.
 name|append
 argument_list|(
-literal|"Gerrit#"
+literal|"#"
 argument_list|)
 expr_stmt|;
 name|r

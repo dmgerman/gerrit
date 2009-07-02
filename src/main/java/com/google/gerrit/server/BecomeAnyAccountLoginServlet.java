@@ -676,7 +676,10 @@ name|rsp
 operator|.
 name|sendRedirect
 argument_list|(
-literal|"Gerrit"
+name|c
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -3435,13 +3435,6 @@ name|req
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rdr
-operator|.
-name|append
-argument_list|(
-literal|"Gerrit"
-argument_list|)
-expr_stmt|;
 specifier|final
 name|String
 name|token
@@ -3564,13 +3557,6 @@ name|serverUrl
 argument_list|(
 name|req
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|rdr
-operator|.
-name|append
-argument_list|(
-literal|"Gerrit"
 argument_list|)
 expr_stmt|;
 name|rdr
