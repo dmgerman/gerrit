@@ -230,6 +230,16 @@ name|String
 name|whitespaceIGNORE_ALL_SPACE
 parameter_list|()
 function_decl|;
+DECL|method|previousFileHelp ()
+name|String
+name|previousFileHelp
+parameter_list|()
+function_decl|;
+DECL|method|nextFileHelp ()
+name|String
+name|nextFileHelp
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
