@@ -981,15 +981,15 @@ name|int
 name|patchIndex
 decl_stmt|;
 comment|/** Keys that cause an action on this screen */
-DECL|field|keysAction
+DECL|field|keysNavigation
 specifier|private
 name|KeyCommandSet
-name|keysAction
+name|keysNavigation
 decl_stmt|;
-DECL|field|regAction
+DECL|field|regNavigation
 specifier|private
 name|HandlerRegistration
-name|regAction
+name|regNavigation
 decl_stmt|;
 comment|/** Link to the screen for the previous file, null if not applicable */
 DECL|field|previousFileLink
@@ -1200,7 +1200,7 @@ operator|.
 name|onInitUI
 argument_list|()
 expr_stmt|;
-name|keysAction
+name|keysNavigation
 operator|=
 operator|new
 name|KeyCommandSet
@@ -1209,7 +1209,7 @@ name|Gerrit
 operator|.
 name|C
 operator|.
-name|sectionActions
+name|sectionNavigation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1514,7 +1514,7 @@ name|String
 name|help
 parameter_list|)
 block|{
-name|keysAction
+name|keysNavigation
 operator|.
 name|add
 argument_list|(
@@ -2122,17 +2122,17 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|regAction
+name|regNavigation
 operator|!=
 literal|null
 condition|)
 block|{
-name|regAction
+name|regNavigation
 operator|.
 name|removeHandler
 argument_list|()
 expr_stmt|;
-name|regAction
+name|regNavigation
 operator|=
 literal|null
 expr_stmt|;
@@ -2166,7 +2166,7 @@ name|isVisible
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|regAction
+name|regNavigation
 operator|=
 name|GlobalKey
 operator|.
@@ -2174,7 +2174,7 @@ name|add
 argument_list|(
 name|this
 argument_list|,
-name|keysAction
+name|keysNavigation
 argument_list|)
 expr_stmt|;
 block|}
