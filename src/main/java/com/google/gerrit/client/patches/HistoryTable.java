@@ -234,6 +234,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * A table used to specify which two patch sets should be diff'ed.  */
+end_comment
+
 begin_class
 DECL|class|HistoryTable
 class|class

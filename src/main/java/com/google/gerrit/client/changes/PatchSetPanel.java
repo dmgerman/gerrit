@@ -1021,6 +1021,7 @@ name|onUnload
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**    * Display the table showing the Author, Committer and Download links, followed by the    * action buttons.    */
 DECL|method|ensureLoaded (final PatchSetDetail detail)
 specifier|public
 name|void
