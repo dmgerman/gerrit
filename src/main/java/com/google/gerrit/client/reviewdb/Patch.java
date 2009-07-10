@@ -537,6 +537,12 @@ specifier|protected
 name|String
 name|sourceFileName
 decl_stmt|;
+comment|/** True if this patch has been reviewed by the current logged in user */
+DECL|field|reviewedByCurrentUser
+specifier|private
+name|boolean
+name|reviewedByCurrentUser
+decl_stmt|;
 DECL|method|Patch ()
 specifier|protected
 name|Patch
@@ -735,6 +741,30 @@ block|{
 name|sourceFileName
 operator|=
 name|n
+expr_stmt|;
+block|}
+DECL|method|isReviewedByCurrentUser ()
+specifier|public
+name|boolean
+name|isReviewedByCurrentUser
+parameter_list|()
+block|{
+return|return
+name|reviewedByCurrentUser
+return|;
+block|}
+DECL|method|setReviewedByCurrentUser (boolean r)
+specifier|public
+name|void
+name|setReviewedByCurrentUser
+parameter_list|(
+name|boolean
+name|r
+parameter_list|)
+block|{
+name|reviewedByCurrentUser
+operator|=
+name|r
 expr_stmt|;
 block|}
 annotation|@
