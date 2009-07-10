@@ -737,6 +737,26 @@ operator|=
 name|n
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"[Patch "
+operator|+
+name|getKey
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"]"
+return|;
+block|}
 block|}
 end_class
 

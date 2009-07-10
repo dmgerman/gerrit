@@ -700,6 +700,26 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"[PatchSet "
+operator|+
+name|getId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"]"
+return|;
+block|}
 block|}
 end_class
 

@@ -2613,6 +2613,7 @@ operator|=
 name|list
 expr_stmt|;
 block|}
+comment|/**      * Add the files contained in the list of patches to the table, one per row.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
