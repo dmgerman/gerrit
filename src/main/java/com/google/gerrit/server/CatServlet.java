@@ -254,6 +254,18 @@ end_import
 
 begin_import
 import|import
+name|eu
+operator|.
+name|medsea
+operator|.
+name|mimeutil
+operator|.
+name|MimeType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -497,14 +509,18 @@ name|CatServlet
 extends|extends
 name|HttpServlet
 block|{
-DECL|field|APPLICATION_OCTET_STREAM
+DECL|field|ZIP
 specifier|private
 specifier|static
 specifier|final
-name|String
-name|APPLICATION_OCTET_STREAM
+name|MimeType
+name|ZIP
 init|=
-literal|"application/octet-stream"
+operator|new
+name|MimeType
+argument_list|(
+literal|"application/zip"
+argument_list|)
 decl_stmt|;
 DECL|field|server
 specifier|private
@@ -515,6 +531,11 @@ DECL|field|rng
 specifier|private
 name|SecureRandom
 name|rng
+decl_stmt|;
+DECL|field|registry
+specifier|private
+name|FileTypeRegistry
+name|registry
 decl_stmt|;
 annotation|@
 name|Override
@@ -583,6 +604,13 @@ name|rng
 operator|=
 operator|new
 name|SecureRandom
+argument_list|()
+expr_stmt|;
+name|registry
+operator|=
+name|FileTypeRegistry
+operator|.
+name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
@@ -1365,13 +1393,13 @@ argument_list|()
 operator|*
 literal|1000L
 decl_stmt|;
-name|String
+name|MimeType
 name|contentType
 init|=
-name|guessContentType
+name|registry
+operator|.
+name|getMimeType
 argument_list|(
-name|project
-argument_list|,
 name|path
 argument_list|,
 name|blobData
@@ -1388,6 +1416,8 @@ name|outData
 decl_stmt|;
 if|if
 condition|(
+name|registry
+operator|.
 name|isSafeInline
 argument_list|(
 name|contentType
@@ -1519,7 +1549,7 @@ argument_list|()
 expr_stmt|;
 name|contentType
 operator|=
-literal|"application/zip"
+name|ZIP
 expr_stmt|;
 name|fn
 operator|=
@@ -1538,6 +1568,9 @@ operator|.
 name|setContentType
 argument_list|(
 name|contentType
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rsp
@@ -1608,65 +1641,6 @@ argument_list|(
 name|outData
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|guessContentType (final Project project, final String path, final byte[] content)
-specifier|private
-name|String
-name|guessContentType
-parameter_list|(
-specifier|final
-name|Project
-name|project
-parameter_list|,
-specifier|final
-name|String
-name|path
-parameter_list|,
-specifier|final
-name|byte
-index|[]
-name|content
-parameter_list|)
-block|{
-comment|// When in doubt, call it a generic binary stream.
-comment|//
-return|return
-name|APPLICATION_OCTET_STREAM
-return|;
-block|}
-DECL|method|isSafeInline (final String contentType)
-specifier|private
-name|boolean
-name|isSafeInline
-parameter_list|(
-specifier|final
-name|String
-name|contentType
-parameter_list|)
-block|{
-if|if
-condition|(
-name|APPLICATION_OCTET_STREAM
-operator|.
-name|equals
-argument_list|(
-name|contentType
-argument_list|)
-condition|)
-block|{
-comment|// Most browsers perform content type sniffing when they get told
-comment|// a generic content type. This is bad, so assume we cannot send
-comment|// the file inline.
-comment|//
-return|return
-literal|false
-return|;
-block|}
-comment|// Assume we cannot send the content inline.
-comment|//
-return|return
-literal|false
-return|;
 block|}
 DECL|method|safeFileName (String fileName, final String suffix)
 specifier|private
