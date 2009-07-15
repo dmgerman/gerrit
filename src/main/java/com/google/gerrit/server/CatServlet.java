@@ -1406,10 +1406,6 @@ name|blobData
 argument_list|)
 decl_stmt|;
 specifier|final
-name|String
-name|fn
-decl_stmt|;
-specifier|final
 name|byte
 index|[]
 name|outData
@@ -1424,15 +1420,6 @@ name|contentType
 argument_list|)
 condition|)
 block|{
-name|fn
-operator|=
-name|safeFileName
-argument_list|(
-name|path
-argument_list|,
-name|suffix
-argument_list|)
-expr_stmt|;
 name|outData
 operator|=
 name|blobData
@@ -1551,8 +1538,14 @@ name|contentType
 operator|=
 name|ZIP
 expr_stmt|;
-name|fn
-operator|=
+name|rsp
+operator|.
+name|setHeader
+argument_list|(
+literal|"Content-Disposition"
+argument_list|,
+literal|"attachment; filename=\""
+operator|+
 name|safeFileName
 argument_list|(
 name|path
@@ -1561,6 +1554,9 @@ name|suffix
 argument_list|)
 operator|+
 literal|".zip"
+operator|+
+literal|"\""
+argument_list|)
 expr_stmt|;
 block|}
 name|rsp
@@ -1589,19 +1585,6 @@ argument_list|(
 literal|"Last-Modified"
 argument_list|,
 name|when
-argument_list|)
-expr_stmt|;
-name|rsp
-operator|.
-name|setHeader
-argument_list|(
-literal|"Content-Disposition"
-argument_list|,
-literal|"attachment; filename=\""
-operator|+
-name|fn
-operator|+
-literal|"\""
 argument_list|)
 expr_stmt|;
 name|rsp
