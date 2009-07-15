@@ -460,6 +460,11 @@ name|String
 name|reply
 parameter_list|()
 function_decl|;
+DECL|method|reviewed ()
+name|String
+name|reviewed
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
