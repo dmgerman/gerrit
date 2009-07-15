@@ -162,6 +162,16 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getContent ()
+name|byte
+index|[]
+name|getContent
+parameter_list|()
+block|{
+return|return
+name|content
+return|;
+block|}
 DECL|method|getLine (final int i)
 name|String
 name|getLine

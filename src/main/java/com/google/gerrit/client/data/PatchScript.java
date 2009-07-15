@@ -124,6 +124,21 @@ specifier|public
 class|class
 name|PatchScript
 block|{
+DECL|enum|DisplayMethod
+specifier|public
+specifier|static
+enum|enum
+name|DisplayMethod
+block|{
+DECL|enumConstant|NONE
+DECL|enumConstant|DIFF
+DECL|enumConstant|IMG
+name|NONE
+block|,
+name|DIFF
+block|,
+name|IMG
+block|}
 DECL|field|header
 specifier|protected
 name|List
@@ -155,7 +170,17 @@ name|Edit
 argument_list|>
 name|edits
 decl_stmt|;
-DECL|method|PatchScript (final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e)
+DECL|field|displayMethodA
+specifier|protected
+name|DisplayMethod
+name|displayMethodA
+decl_stmt|;
+DECL|field|displayMethodB
+specifier|protected
+name|DisplayMethod
+name|displayMethodB
+decl_stmt|;
+DECL|method|PatchScript (final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -184,6 +209,14 @@ argument_list|<
 name|Edit
 argument_list|>
 name|e
+parameter_list|,
+specifier|final
+name|DisplayMethod
+name|ma
+parameter_list|,
+specifier|final
+name|DisplayMethod
+name|mb
 parameter_list|)
 block|{
 name|header
@@ -206,12 +239,40 @@ name|edits
 operator|=
 name|e
 expr_stmt|;
+name|displayMethodA
+operator|=
+name|ma
+expr_stmt|;
+name|displayMethodB
+operator|=
+name|mb
+expr_stmt|;
 block|}
 DECL|method|PatchScript ()
 specifier|protected
 name|PatchScript
 parameter_list|()
 block|{   }
+DECL|method|getDisplayMethodA ()
+specifier|public
+name|DisplayMethod
+name|getDisplayMethodA
+parameter_list|()
+block|{
+return|return
+name|displayMethodA
+return|;
+block|}
+DECL|method|getDisplayMethodB ()
+specifier|public
+name|DisplayMethod
+name|getDisplayMethodB
+parameter_list|()
+block|{
+return|return
+name|displayMethodB
+return|;
+block|}
 DECL|method|getPatchHeader ()
 specifier|public
 name|List
