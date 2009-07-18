@@ -587,16 +587,7 @@ return|return
 name|DiffCacheContent
 operator|.
 name|createEmpty
-argument_list|(
-name|db
-argument_list|,
-name|newId
-argument_list|,
-name|key
-operator|.
-name|getFileName
 argument_list|()
-argument_list|)
 return|;
 block|}
 elseif|else
@@ -673,10 +664,6 @@ name|DiffCacheContent
 operator|.
 name|create
 argument_list|(
-name|db
-argument_list|,
-name|key
-argument_list|,
 name|file
 argument_list|)
 return|;

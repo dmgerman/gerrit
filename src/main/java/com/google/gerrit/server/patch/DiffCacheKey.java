@@ -224,13 +224,12 @@ implements|implements
 name|Serializable
 block|{
 DECL|field|serialVersionUID
-specifier|private
 specifier|static
 specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|4L
+literal|5L
 decl_stmt|;
 DECL|field|projectKey
 specifier|private
@@ -402,6 +401,7 @@ return|return
 name|projectKey
 return|;
 block|}
+comment|/** Commit name, or the empty tree name if this is for an initial commit. */
 DECL|method|getOldId ()
 specifier|public
 name|ObjectId
@@ -412,6 +412,7 @@ return|return
 name|oldId
 return|;
 block|}
+comment|/** Commit name. */
 DECL|method|getNewId ()
 specifier|public
 name|ObjectId

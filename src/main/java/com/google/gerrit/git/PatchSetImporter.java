@@ -2309,10 +2309,6 @@ name|DiffCacheContent
 operator|.
 name|create
 argument_list|(
-name|repo
-argument_list|,
-name|k
-argument_list|,
 name|fh
 argument_list|)
 argument_list|)
