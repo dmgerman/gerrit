@@ -814,18 +814,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isNoDifference ()
-specifier|public
-name|boolean
-name|isNoDifference
-parameter_list|()
-block|{
-return|return
-name|header
-operator|==
-literal|null
-return|;
-block|}
 DECL|method|getOldId ()
 specifier|public
 name|ObjectId
