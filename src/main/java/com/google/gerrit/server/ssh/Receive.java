@@ -7204,8 +7204,6 @@ name|RevCommit
 name|c
 parameter_list|)
 block|{
-comment|// Require that committer matches the uploader.
-comment|//
 specifier|final
 name|PersonIdent
 name|committer
@@ -7215,6 +7213,77 @@ operator|.
 name|getCommitterIdent
 argument_list|()
 decl_stmt|;
+specifier|final
+name|PersonIdent
+name|author
+init|=
+name|c
+operator|.
+name|getAuthorIdent
+argument_list|()
+decl_stmt|;
+comment|// Don't allow the user to amend a merge created by Gerrit Code Review.
+comment|// This seems to happen all too often, due to users not paying any
+comment|// attention to what they are doing.
+comment|//
+specifier|final
+name|PersonIdent
+name|serverIdent
+init|=
+name|server
+operator|.
+name|newGerritPersonIdent
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|c
+operator|.
+name|getParentCount
+argument_list|()
+operator|>
+literal|1
+operator|&&
+name|author
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|serverIdent
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|&&
+name|author
+operator|.
+name|getEmailAddress
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|serverIdent
+operator|.
+name|getEmailAddress
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"do not amend merges not made by you"
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+comment|// Require that committer matches the uploader.
+comment|//
 if|if
 condition|(
 operator|!
@@ -7256,15 +7325,6 @@ block|{
 comment|// If the project wants Signed-off-by / Acked-by lines, verify we
 comment|// have them for the blamable parties involved on this change.
 comment|//
-specifier|final
-name|PersonIdent
-name|author
-init|=
-name|c
-operator|.
-name|getAuthorIdent
-argument_list|()
-decl_stmt|;
 name|boolean
 name|sboAuthor
 init|=
