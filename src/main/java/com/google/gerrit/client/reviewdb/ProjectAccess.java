@@ -217,26 +217,6 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE ownerGroupId = ?"
-argument_list|)
-DECL|method|ownedByGroup (AccountGroup.Id groupId)
-name|ResultSet
-argument_list|<
-name|Project
-argument_list|>
-name|ownedByGroup
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
 literal|"WHERE name.name>= ? AND name.name<= ? ORDER BY name LIMIT ?"
 argument_list|)
 DECL|method|suggestByName (String nameA, String nameB, int limit)

@@ -493,15 +493,6 @@ name|description
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|ownerGroupId
-specifier|protected
-name|AccountGroup
-operator|.
-name|Id
-name|ownerGroupId
-decl_stmt|;
-annotation|@
-name|Column
 DECL|field|useContributorAgreements
 specifier|protected
 name|boolean
@@ -623,35 +614,6 @@ block|{
 name|description
 operator|=
 name|d
-expr_stmt|;
-block|}
-DECL|method|getOwnerGroupId ()
-specifier|public
-name|AccountGroup
-operator|.
-name|Id
-name|getOwnerGroupId
-parameter_list|()
-block|{
-return|return
-name|ownerGroupId
-return|;
-block|}
-DECL|method|setOwnerGroupId (final AccountGroup.Id id)
-specifier|public
-name|void
-name|setOwnerGroupId
-parameter_list|(
-specifier|final
-name|AccountGroup
-operator|.
-name|Id
-name|id
-parameter_list|)
-block|{
-name|ownerGroupId
-operator|=
-name|id
 expr_stmt|;
 block|}
 DECL|method|isUseContributorAgreements ()

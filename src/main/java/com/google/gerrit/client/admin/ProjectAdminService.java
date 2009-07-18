@@ -272,27 +272,6 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|changeProjectOwner (Project.Id projectId, String newOwnerName, AsyncCallback<VoidResult> callback)
-name|void
-name|changeProjectOwner
-parameter_list|(
-name|Project
-operator|.
-name|Id
-name|projectId
-parameter_list|,
-name|String
-name|newOwnerName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|SignInRequired
 DECL|method|deleteRight (Set<ProjectRight.Key> ids, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteRight

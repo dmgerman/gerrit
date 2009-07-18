@@ -304,14 +304,6 @@ name|AccountGroup
 argument_list|>
 argument_list|()
 expr_stmt|;
-name|wantGroup
-argument_list|(
-name|project
-operator|.
-name|getOwnerGroupId
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|rights
 operator|=
 operator|new

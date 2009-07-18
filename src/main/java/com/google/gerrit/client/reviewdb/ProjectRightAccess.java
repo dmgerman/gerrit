@@ -191,39 +191,24 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.groupId = ?"
+literal|"WHERE key.categoryId = ? AND key.groupId = ?"
 argument_list|)
-DECL|method|byGroup (AccountGroup.Id id)
+DECL|method|byCategoryGroup (ApprovalCategory.Id cat, AccountGroup.Id group)
 name|ResultSet
 argument_list|<
 name|ProjectRight
 argument_list|>
-name|byGroup
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE key.categoryId = ?"
-argument_list|)
-DECL|method|byApprovalCategory (ApprovalCategory.Id id)
-name|ResultSet
-argument_list|<
-name|ProjectRight
-argument_list|>
-name|byApprovalCategory
+name|byCategoryGroup
 parameter_list|(
 name|ApprovalCategory
 operator|.
 name|Id
-name|id
+name|cat
+parameter_list|,
+name|AccountGroup
+operator|.
+name|Id
+name|group
 parameter_list|)
 throws|throws
 name|OrmException

@@ -724,6 +724,10 @@ name|Id
 name|toShow
 parameter_list|)
 block|{
+name|projectId
+operator|=
+name|toShow
+expr_stmt|;
 specifier|final
 name|FlowPanel
 name|body
@@ -741,10 +745,6 @@ name|initWidget
 argument_list|(
 name|body
 argument_list|)
-expr_stmt|;
-name|projectId
-operator|=
-name|toShow
 expr_stmt|;
 block|}
 annotation|@
@@ -1018,6 +1018,37 @@ operator|.
 name|getCategory
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|ProjectRight
+operator|.
+name|WILD_PROJECT
+operator|.
+name|equals
+argument_list|(
+name|projectId
+argument_list|)
+operator|&&
+name|ApprovalCategory
+operator|.
+name|OWN
+operator|.
+name|equals
+argument_list|(
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Giving out control of the WILD_PROJECT to other groups beyond
+comment|// Administrators is dangerous. Having control over WILD_PROJECT
+comment|// is about the same as having Administrator access as users are
+comment|// able to affect grants in all projects on the system.
+comment|//
+continue|continue;
+block|}
 name|catBox
 operator|.
 name|addItem

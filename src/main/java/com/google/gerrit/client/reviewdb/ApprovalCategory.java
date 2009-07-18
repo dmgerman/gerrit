@@ -203,6 +203,24 @@ argument_list|(
 literal|"READ"
 argument_list|)
 decl_stmt|;
+comment|/** Id of the special "Own" category; manages a project. */
+DECL|field|OWN
+specifier|public
+specifier|static
+specifier|final
+name|ApprovalCategory
+operator|.
+name|Id
+name|OWN
+init|=
+operator|new
+name|ApprovalCategory
+operator|.
+name|Id
+argument_list|(
+literal|"OWN"
+argument_list|)
+decl_stmt|;
 comment|/** Id of the special "Push Annotated Tag" action (and category). */
 DECL|field|PUSH_TAG
 specifier|public
@@ -374,6 +392,31 @@ name|id
 operator|=
 name|newValue
 expr_stmt|;
+block|}
+comment|/** True if the right can inherit from {@link ProjectRight#WILD_PROJECT}. */
+DECL|method|canInheritFromWildProject ()
+specifier|public
+name|boolean
+name|canInheritFromWildProject
+parameter_list|()
+block|{
+if|if
+condition|(
+name|OWN
+operator|.
+name|equals
+argument_list|(
+name|this
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
 block|}
 block|}
 comment|/** Internal short unique identifier for this category. */

@@ -987,8 +987,6 @@ argument_list|,
 name|actionId
 argument_list|,
 name|val
-argument_list|,
-literal|false
 argument_list|)
 return|;
 block|}
