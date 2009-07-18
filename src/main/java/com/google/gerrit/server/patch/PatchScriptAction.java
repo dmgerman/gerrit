@@ -1002,6 +1002,8 @@ name|b
 operator|.
 name|toPatchScript
 argument_list|(
+name|key
+argument_list|,
 name|contentWS
 argument_list|,
 name|comments
