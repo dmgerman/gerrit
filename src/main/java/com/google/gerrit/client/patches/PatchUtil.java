@@ -94,6 +94,22 @@ name|safehtml
 operator|.
 name|client
 operator|.
+name|Prettify
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
 name|SafeHtml
 import|;
 end_import
@@ -205,7 +221,7 @@ literal|"rpc/PatchDetailService"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|lineToSafeHtml (final String src, final int lineLength, final boolean showWhiteSpaceErrors)
+DECL|method|lineToSafeHtml (final String src, final int lineLength, final boolean showWhiteSpaceErrors, final String languageType)
 specifier|public
 specifier|static
 name|SafeHtml
@@ -222,6 +238,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|showWhiteSpaceErrors
+parameter_list|,
+specifier|final
+name|String
+name|languageType
 parameter_list|)
 block|{
 specifier|final
@@ -248,6 +268,14 @@ name|hasTab
 argument_list|,
 name|lineLength
 argument_list|)
+decl_stmt|;
+specifier|final
+name|boolean
+name|hasLFs
+init|=
+name|brokenSrc
+operator|!=
+name|src
 decl_stmt|;
 name|SafeHtml
 name|html
@@ -283,9 +311,33 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|brokenSrc
-operator|!=
-name|src
+name|hasTab
+condition|)
+block|{
+comment|// We had at least one horizontal tab, so we should expand it out.
+comment|//
+name|html
+operator|=
+name|expandTabs
+argument_list|(
+name|html
+argument_list|)
+expr_stmt|;
+block|}
+name|html
+operator|=
+name|Prettify
+operator|.
+name|prettify
+argument_list|(
+name|html
+argument_list|,
+name|languageType
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|hasLFs
 condition|)
 block|{
 comment|// If we had line breaks inserted into the source text we need
@@ -295,21 +347,6 @@ comment|//
 name|html
 operator|=
 name|expandLFs
-argument_list|(
-name|html
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|hasTab
-condition|)
-block|{
-comment|// We had at least one horizontal tab, so we should expand it out.
-comment|//
-name|html
-operator|=
-name|expandTabs
 argument_list|(
 name|html
 argument_list|)
@@ -479,7 +516,7 @@ name|replaceAll
 argument_list|(
 literal|"\t"
 argument_list|,
-literal|"<span title=\"Visual Tab\" class=\"gerrit-visualtab\">&raquo;</span>\t"
+literal|"<span title=\"Visual Tab\" class=\"gerrit-visualtab\"></span>\t"
 argument_list|)
 return|;
 block|}
