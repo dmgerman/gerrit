@@ -1095,8 +1095,9 @@ name|fileList
 operator|=
 name|patchTable
 expr_stmt|;
-comment|// If we have any diff side stored, make sure they are applicable to the current change,
-comment|// discard them otherwise.
+comment|// If we have any diff side stored, make sure they are applicable to the
+comment|// current change, discard them otherwise.
+comment|//
 name|Change
 operator|.
 name|Id
@@ -1526,7 +1527,8 @@ name|createNextPrevLinks
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// This must be done after calling createNextPrevLinks(), which initializes these fields
+comment|// This must be done after calling createNextPrevLinks(), which initializes
+comment|// these fields
 if|if
 condition|(
 name|previousFileLink
@@ -1671,7 +1673,7 @@ literal|2
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Add the contextual widgets for this patch: "Show full files" and "Keep unreviewed"    */
+comment|/**    * Add the contextual widgets for this patch: "Show full files" and    * "Keep unreviewed"    */
 DECL|method|createContext (final Grid parent, final int row, final int col)
 specifier|private
 name|void
