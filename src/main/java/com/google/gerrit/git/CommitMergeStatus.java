@@ -96,6 +96,10 @@ block|,
 comment|/** */
 DECL|enumConstant|REVISION_GONE
 name|REVISION_GONE
+block|,
+comment|/** */
+DECL|enumConstant|CRISS_CROSS_MERGE
+name|CRISS_CROSS_MERGE
 block|; }
 end_enum
 
