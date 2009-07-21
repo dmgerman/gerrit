@@ -3470,16 +3470,6 @@ name|msgbuf
 operator|.
 name|append
 argument_list|(
-name|server
-operator|.
-name|getCanonicalURL
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|msgbuf
-operator|.
-name|append
-argument_list|(
 name|url
 argument_list|)
 expr_stmt|;
