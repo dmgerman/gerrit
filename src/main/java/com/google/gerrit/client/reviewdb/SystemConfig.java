@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|HostPageServlet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -293,7 +279,7 @@ specifier|transient
 name|String
 name|accountPrivateKey
 decl_stmt|;
-comment|/**    * Local filesystem location of header/footer/CSS configuration files    *     * @see HostPageServlet    */
+comment|/**    * Local filesystem location of header/footer/CSS configuration files    */
 annotation|@
 name|Column
 argument_list|(
