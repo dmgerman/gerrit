@@ -196,7 +196,7 @@ block|{
 operator|new
 name|ErrorDialog
 argument_list|(
-name|Common
+name|RpcConstants
 operator|.
 name|C
 operator|.
@@ -336,7 +336,7 @@ block|{
 operator|new
 name|ErrorDialog
 argument_list|(
-name|Common
+name|RpcConstants
 operator|.
 name|C
 operator|.
