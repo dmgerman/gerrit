@@ -64,22 +64,6 @@ name|server
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|account
-operator|.
-name|AccountServiceImpl
-import|;
-end_import
-
 begin_comment
 comment|/** Publishes {@link AccountServiceImpl} over JSON. */
 end_comment

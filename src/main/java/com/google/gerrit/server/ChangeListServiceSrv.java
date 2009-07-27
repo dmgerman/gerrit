@@ -64,22 +64,6 @@ name|server
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|changes
-operator|.
-name|ChangeListServiceImpl
-import|;
-end_import
-
 begin_comment
 comment|/** Publishes {@link ChangeListServiceImpl} over JSON. */
 end_comment

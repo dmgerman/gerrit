@@ -72,9 +72,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
-operator|.
-name|rpc
+name|server
 operator|.
 name|BaseServiceImplementation
 operator|.

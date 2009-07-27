@@ -158,7 +158,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|BaseServiceImplementation
+name|Common
 import|;
 end_import
 
@@ -170,11 +170,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|rpc
-operator|.
-name|Common
+name|BaseServiceImplementation
 import|;
 end_import
 

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.ui
+DECL|package|com.google.gerrit.server
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
-operator|.
-name|ui
+name|server
 package|;
 end_package
 
@@ -190,7 +188,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|BaseServiceImplementation
+name|Common
 import|;
 end_import
 
@@ -204,9 +202,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|rpc
+name|ui
 operator|.
-name|Common
+name|SuggestService
 import|;
 end_import
 
