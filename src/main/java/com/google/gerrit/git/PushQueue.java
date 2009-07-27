@@ -688,13 +688,6 @@ condition|(
 name|path
 operator|==
 literal|null
-operator|||
-name|gs
-operator|.
-name|getRepositoryCache
-argument_list|()
-operator|==
-literal|null
 condition|)
 block|{
 return|return
