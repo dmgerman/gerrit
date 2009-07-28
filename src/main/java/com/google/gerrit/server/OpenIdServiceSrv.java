@@ -106,20 +106,34 @@ name|OpenIdServiceSrv
 extends|extends
 name|GerritJsonServlet
 block|{
+DECL|field|impl
+specifier|private
+specifier|final
+name|OpenIdServiceImpl
+name|impl
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceSrv (final GerritServer gs)
+DECL|method|OpenIdServiceSrv (final GerritServer gs, final OpenIdServiceImpl i)
 name|OpenIdServiceSrv
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|OpenIdServiceImpl
+name|i
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|gs
 argument_list|)
+expr_stmt|;
+name|impl
+operator|=
+name|i
 expr_stmt|;
 block|}
 annotation|@
@@ -133,10 +147,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|OpenIdServiceImpl
-operator|.
-name|getInstance
-argument_list|()
+name|impl
 return|;
 block|}
 block|}
