@@ -122,11 +122,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|rpc
-operator|.
-name|Common
+name|GerritServer
 import|;
 end_import
 
@@ -232,6 +230,26 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|server
+specifier|private
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
+DECL|method|SshKeyCacheEntryFactory (final GerritServer gs)
+specifier|public
+name|SshKeyCacheEntryFactory
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|server
+operator|=
+name|gs
+expr_stmt|;
+block|}
 DECL|method|createEntry (final Object genericKey)
 specifier|public
 name|Object
@@ -257,7 +275,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()

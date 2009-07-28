@@ -759,7 +759,8 @@ try|try
 block|{
 name|db
 operator|=
-name|Common
+name|getGerritServer
+argument_list|()
 operator|.
 name|getSchemaFactory
 argument_list|()

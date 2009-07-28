@@ -865,7 +865,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()

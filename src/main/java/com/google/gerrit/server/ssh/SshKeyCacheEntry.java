@@ -122,11 +122,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|rpc
-operator|.
-name|Common
+name|GerritServer
 import|;
 end_import
 
@@ -274,10 +272,14 @@ name|inkey
 argument_list|)
 return|;
 block|}
-DECL|method|updateLastUsed ()
+DECL|method|updateLastUsed (final GerritServer server)
 name|void
 name|updateLastUsed
-parameter_list|()
+parameter_list|(
+specifier|final
+name|GerritServer
+name|server
+parameter_list|)
 block|{
 try|try
 block|{
@@ -285,7 +287,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()

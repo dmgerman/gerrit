@@ -225,6 +225,12 @@ specifier|final
 name|SelfPopulatingCache
 name|sshKeysCache
 decl_stmt|;
+DECL|field|server
+specifier|private
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
 DECL|method|DatabasePubKeyAuth (final GerritServer gs)
 name|DatabasePubKeyAuth
 parameter_list|(
@@ -239,6 +245,10 @@ name|gs
 operator|.
 name|getSshKeysCache
 argument_list|()
+expr_stmt|;
+name|server
+operator|=
+name|gs
 expr_stmt|;
 block|}
 DECL|method|hasKey (final String username, final PublicKey inkey, final ServerSession session)
@@ -338,7 +348,9 @@ block|{
 name|matched
 operator|.
 name|updateLastUsed
-argument_list|()
+argument_list|(
+name|server
+argument_list|)
 expr_stmt|;
 name|session
 operator|.

@@ -148,13 +148,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
 name|client
 operator|.
-name|rpc
-operator|.
-name|Common
+name|OrmException
 import|;
 end_import
 
@@ -164,11 +162,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|client
-operator|.
-name|OrmException
+name|Inject
 import|;
 end_import
 
@@ -560,11 +556,32 @@ literal|".png"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|field|server
+specifier|private
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
 DECL|field|config
 specifier|private
 name|FilterConfig
 name|config
 decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|UrlRewriteFilter (final GerritServer gs)
+name|UrlRewriteFilter
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|server
+operator|=
+name|gs
+expr_stmt|;
+block|}
 DECL|method|init (final FilterConfig config)
 specifier|public
 name|void
@@ -1254,7 +1271,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()
