@@ -356,6 +356,30 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -721,6 +745,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|OpenIdServiceImpl
 class|class
 name|OpenIdServiceImpl
@@ -872,6 +898,8 @@ specifier|final
 name|SelfPopulatingCache
 name|discoveryCache
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|OpenIdServiceImpl (final GerritServer gs)
 name|OpenIdServiceImpl
 parameter_list|(

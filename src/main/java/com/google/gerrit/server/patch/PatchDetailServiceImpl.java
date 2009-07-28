@@ -664,6 +664,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -744,6 +756,7 @@ end_import
 
 begin_class
 DECL|class|PatchDetailServiceImpl
+specifier|public
 class|class
 name|PatchDetailServiceImpl
 extends|extends
@@ -771,6 +784,8 @@ specifier|final
 name|FileTypeRegistry
 name|registry
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|PatchDetailServiceImpl (final GerritServer gs, final FileTypeRegistry ftr)
 name|PatchDetailServiceImpl
 parameter_list|(

@@ -384,6 +384,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -691,6 +703,8 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|ProjectAdminServiceImpl (final GerritServer gs)
 name|ProjectAdminServiceImpl
 parameter_list|(

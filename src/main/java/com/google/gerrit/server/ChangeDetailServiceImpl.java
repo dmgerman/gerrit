@@ -224,6 +224,18 @@ name|OrmException
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeDetailServiceImpl
 class|class
@@ -233,6 +245,8 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeDetailService
 block|{
+annotation|@
+name|Inject
 DECL|method|ChangeDetailServiceImpl (final GerritServer gs)
 name|ChangeDetailServiceImpl
 parameter_list|(

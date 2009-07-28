@@ -116,6 +116,20 @@ name|google
 operator|.
 name|gwtjsonrpc
 operator|.
+name|client
+operator|.
+name|RemoteJsonService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtjsonrpc
+operator|.
 name|server
 operator|.
 name|JsonServlet
@@ -133,6 +147,18 @@ operator|.
 name|server
 operator|.
 name|SignedToken
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -172,7 +198,7 @@ literal|"serial"
 argument_list|)
 DECL|class|GerritJsonServlet
 specifier|public
-specifier|abstract
+specifier|final
 class|class
 name|GerritJsonServlet
 extends|extends
@@ -209,18 +235,32 @@ specifier|protected
 name|GerritServer
 name|server
 decl_stmt|;
-DECL|method|GerritJsonServlet (final GerritServer gs)
-specifier|protected
+DECL|field|service
+specifier|private
+name|RemoteJsonService
+name|service
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|GerritJsonServlet (final GerritServer gs, final RemoteJsonService s)
 name|GerritJsonServlet
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|RemoteJsonService
+name|s
 parameter_list|)
 block|{
 name|server
 operator|=
 name|gs
+expr_stmt|;
+name|service
+operator|=
+name|s
 expr_stmt|;
 block|}
 annotation|@
@@ -404,13 +444,14 @@ annotation|@
 name|Override
 DECL|method|createServiceHandle ()
 specifier|protected
-specifier|abstract
 name|Object
 name|createServiceHandle
 parameter_list|()
-throws|throws
-name|Exception
-function_decl|;
+block|{
+return|return
+name|service
+return|;
+block|}
 block|}
 end_class
 

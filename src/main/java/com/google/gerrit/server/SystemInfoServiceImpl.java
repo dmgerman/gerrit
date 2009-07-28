@@ -212,6 +212,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|jcraft
 operator|.
 name|jsch
@@ -446,6 +458,8 @@ specifier|final
 name|GerritServer
 name|server
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|SystemInfoServiceImpl (final GerritServer gs)
 name|SystemInfoServiceImpl
 parameter_list|(
