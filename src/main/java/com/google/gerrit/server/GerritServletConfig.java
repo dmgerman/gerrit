@@ -904,13 +904,11 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|toInstance
+name|to
 argument_list|(
-operator|new
-name|FileTypeRegistry
-argument_list|(
-name|gs
-argument_list|)
+name|MimeUtilFileTypeRegistry
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}
