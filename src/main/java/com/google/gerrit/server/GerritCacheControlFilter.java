@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -70,53 +70,35 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtexpui
+operator|.
+name|server
+operator|.
+name|CacheControlFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Singleton
 import|;
 end_import
 
-begin_comment
-comment|/** Publishes {@link AccountSecurityImpl} over JSON. */
-end_comment
-
 begin_class
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-annotation|@
 name|Singleton
-DECL|class|AccountSecuritySrv
-specifier|public
+DECL|class|GerritCacheControlFilter
 class|class
-name|AccountSecuritySrv
+name|GerritCacheControlFilter
 extends|extends
-name|GerritJsonServlet
-block|{
-annotation|@
-name|Override
-DECL|method|createServiceHandle ()
-specifier|protected
-name|Object
-name|createServiceHandle
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-return|return
-operator|new
-name|AccountSecurityImpl
-argument_list|(
-name|GerritServer
-operator|.
-name|getInstance
-argument_list|()
-argument_list|)
-return|;
-block|}
-block|}
+name|CacheControlFilter
+block|{ }
 end_class
 
 end_unit

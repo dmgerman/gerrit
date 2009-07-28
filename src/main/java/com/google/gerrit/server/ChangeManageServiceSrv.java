@@ -64,6 +64,18 @@ name|server
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
 begin_comment
 comment|/** Publishes {@link ChangeManageServiceImpl} over JSON. */
 end_comment
@@ -74,6 +86,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"serial"
 argument_list|)
+annotation|@
+name|Singleton
 DECL|class|ChangeManageServiceSrv
 specifier|public
 class|class

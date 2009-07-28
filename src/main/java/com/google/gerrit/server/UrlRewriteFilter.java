@@ -188,6 +188,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -359,6 +371,8 @@ comment|/** Rewrites Gerrit 1 style URLs to Gerrit 2 style URLs. */
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|UrlRewriteFilter
 specifier|public
 class|class

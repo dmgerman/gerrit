@@ -80,6 +80,18 @@ name|PatchDetailServiceImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
 begin_comment
 comment|/** Publishes {@link PatchDetailServiceImpl} over JSON. */
 end_comment
@@ -90,6 +102,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"serial"
 argument_list|)
+annotation|@
+name|Singleton
 DECL|class|PatchDetailServiceSrv
 specifier|public
 class|class
