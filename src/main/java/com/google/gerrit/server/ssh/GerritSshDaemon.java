@@ -1629,7 +1629,9 @@ name|setCommandFactory
 argument_list|(
 operator|new
 name|GerritCommandFactory
-argument_list|()
+argument_list|(
+name|srv
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|setShellFactory

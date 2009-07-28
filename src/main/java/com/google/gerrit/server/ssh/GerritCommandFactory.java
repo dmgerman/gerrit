@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|GerritServer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -101,6 +115,12 @@ name|GerritCommandFactory
 implements|implements
 name|CommandFactory
 block|{
+DECL|field|server
+specifier|private
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
 DECL|field|commands
 specifier|private
 specifier|final
@@ -112,10 +132,18 @@ name|Factory
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|method|GerritCommandFactory ()
+DECL|method|GerritCommandFactory (final GerritServer gs)
 name|GerritCommandFactory
-parameter_list|()
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
 block|{
+name|server
+operator|=
+name|gs
+expr_stmt|;
 name|commands
 operator|=
 operator|new
@@ -540,6 +568,12 @@ argument_list|(
 name|cmd
 argument_list|)
 decl_stmt|;
+name|c
+operator|.
+name|server
+operator|=
+name|server
+expr_stmt|;
 name|c
 operator|.
 name|setCommandLine
