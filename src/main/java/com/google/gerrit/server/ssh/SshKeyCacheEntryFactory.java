@@ -120,11 +120,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|server
+name|client
 operator|.
-name|GerritServer
+name|OrmException
 import|;
 end_import
 
@@ -138,7 +138,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|OrmException
+name|SchemaFactory
 import|;
 end_import
 
@@ -230,24 +230,30 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|field|server
+DECL|field|schema
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
 decl_stmt|;
-DECL|method|SshKeyCacheEntryFactory (final GerritServer gs)
+DECL|method|SshKeyCacheEntryFactory (final SchemaFactory<ReviewDb> sf)
 specifier|public
 name|SshKeyCacheEntryFactory
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 block|{
-name|server
+name|schema
 operator|=
-name|gs
+name|sf
 expr_stmt|;
 block|}
 DECL|method|createEntry (final Object genericKey)
@@ -275,10 +281,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()

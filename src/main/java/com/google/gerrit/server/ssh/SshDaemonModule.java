@@ -92,6 +92,20 @@ name|CommandFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|PublickeyAuthenticator
+import|;
+end_import
+
 begin_comment
 comment|/** Configures standard dependencies for {@link GerritSshDaemon}. */
 end_comment
@@ -129,6 +143,20 @@ operator|.
 name|to
 argument_list|(
 name|GerritCommandFactory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|PublickeyAuthenticator
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|DatabasePubKeyAuth
 operator|.
 name|class
 argument_list|)

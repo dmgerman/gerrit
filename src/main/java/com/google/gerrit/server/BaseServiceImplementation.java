@@ -274,6 +274,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -292,24 +306,30 @@ specifier|public
 class|class
 name|BaseServiceImplementation
 block|{
-DECL|field|server
-specifier|protected
+DECL|field|schema
+specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
 decl_stmt|;
-DECL|method|BaseServiceImplementation (final GerritServer gs)
+DECL|method|BaseServiceImplementation (final SchemaFactory<ReviewDb> sf)
 specifier|protected
 name|BaseServiceImplementation
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 block|{
-name|server
+name|schema
 operator|=
-name|gs
+name|sf
 expr_stmt|;
 block|}
 comment|/**    * Executes<code>action.run</code> with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *     * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
@@ -342,10 +362,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()

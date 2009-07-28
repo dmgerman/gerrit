@@ -120,11 +120,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|server
+name|client
 operator|.
-name|GerritServer
+name|OrmException
 import|;
 end_import
 
@@ -138,7 +138,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|OrmException
+name|SchemaFactory
 import|;
 end_import
 
@@ -272,13 +272,16 @@ name|inkey
 argument_list|)
 return|;
 block|}
-DECL|method|updateLastUsed (final GerritServer server)
+DECL|method|updateLastUsed (final SchemaFactory<ReviewDb> schema)
 name|void
 name|updateLastUsed
 parameter_list|(
 specifier|final
-name|GerritServer
-name|server
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
 parameter_list|)
 block|{
 try|try
@@ -287,10 +290,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()

@@ -422,20 +422,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|Transaction
 import|;
 end_import
@@ -2241,7 +2227,7 @@ argument_list|,
 operator|new
 name|SshKeyCacheEntryFactory
 argument_list|(
-name|this
+name|db
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4957,20 +4943,6 @@ parameter_list|()
 block|{
 return|return
 name|gerritConfigFile
-return|;
-block|}
-comment|/** Get the schema factory for this instance. */
-DECL|method|getSchemaFactory ()
-specifier|public
-name|SchemaFactory
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|getSchemaFactory
-parameter_list|()
-block|{
-return|return
-name|db
 return|;
 block|}
 comment|/**    * Get (or open) a repository by name.    *     * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */

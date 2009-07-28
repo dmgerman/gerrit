@@ -658,6 +658,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Transaction
 import|;
 end_import
@@ -778,6 +792,12 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|server
+specifier|private
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
 DECL|field|registry
 specifier|private
 specifier|final
@@ -786,9 +806,16 @@ name|registry
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final GerritServer gs, final FileTypeRegistry ftr)
+DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr)
 name|PatchDetailServiceImpl
 parameter_list|(
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
+parameter_list|,
 specifier|final
 name|GerritServer
 name|gs
@@ -800,8 +827,12 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
+name|sf
 argument_list|)
+expr_stmt|;
+name|server
+operator|=
+name|gs
 expr_stmt|;
 name|registry
 operator|=

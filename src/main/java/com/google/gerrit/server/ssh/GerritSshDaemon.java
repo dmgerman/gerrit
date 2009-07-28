@@ -594,6 +594,20 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|PublickeyAuthenticator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
 name|ServerChannel
 import|;
 end_import
@@ -1067,7 +1081,7 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritSshDaemon (final GerritServer srv, final CommandFactory commandFactory)
+DECL|method|GerritSshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth)
 specifier|public
 name|GerritSshDaemon
 parameter_list|(
@@ -1078,6 +1092,10 @@ parameter_list|,
 specifier|final
 name|CommandFactory
 name|commandFactory
+parameter_list|,
+specifier|final
+name|PublickeyAuthenticator
+name|userAuth
 parameter_list|)
 block|{
 name|setPort
@@ -1167,7 +1185,7 @@ argument_list|()
 expr_stmt|;
 name|initUserAuth
 argument_list|(
-name|srv
+name|userAuth
 argument_list|)
 expr_stmt|;
 name|setKeyPairProvider
@@ -3085,14 +3103,14 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|initUserAuth (final GerritServer srv)
+DECL|method|initUserAuth (final PublickeyAuthenticator pubkey)
 specifier|private
 name|void
 name|initUserAuth
 parameter_list|(
 specifier|final
-name|GerritServer
-name|srv
+name|PublickeyAuthenticator
+name|pubkey
 parameter_list|)
 block|{
 name|setUserAuthFactories
@@ -3117,11 +3135,7 @@ argument_list|)
 expr_stmt|;
 name|setPublickeyAuthenticator
 argument_list|(
-operator|new
-name|DatabasePubKeyAuth
-argument_list|(
-name|srv
-argument_list|)
+name|pubkey
 argument_list|)
 expr_stmt|;
 block|}

@@ -342,6 +342,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Transaction
 import|;
 end_import
@@ -405,12 +419,15 @@ name|merger
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final GerritServer gs, final MergeQueue mq)
+DECL|method|ChangeManageServiceImpl (final SchemaFactory<ReviewDb> sf, final MergeQueue mq)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|,
 specifier|final
 name|MergeQueue
@@ -419,7 +436,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
+name|sf
 argument_list|)
 expr_stmt|;
 name|merger

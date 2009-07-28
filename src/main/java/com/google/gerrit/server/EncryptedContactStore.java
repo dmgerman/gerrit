@@ -160,6 +160,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -533,6 +547,15 @@ specifier|final
 name|GerritServer
 name|server
 decl_stmt|;
+DECL|field|schema
+specifier|private
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
+decl_stmt|;
 DECL|field|dest
 specifier|private
 name|PGPPublicKey
@@ -553,12 +576,19 @@ specifier|private
 name|String
 name|storeAPPSEC
 decl_stmt|;
-DECL|method|EncryptedContactStore (final GerritServer gs)
+DECL|method|EncryptedContactStore (final GerritServer gs, final SchemaFactory<ReviewDb> sf)
 name|EncryptedContactStore
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 throws|throws
 name|ContactInformationStoreException
@@ -566,6 +596,10 @@ block|{
 name|server
 operator|=
 name|gs
+expr_stmt|;
+name|schema
+operator|=
+name|sf
 expr_stmt|;
 if|if
 condition|(
@@ -676,21 +710,15 @@ operator|=
 name|selectKey
 argument_list|(
 name|readPubRing
-argument_list|(
-name|gs
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|readPubRing (final GerritServer gs)
+DECL|method|readPubRing ()
 specifier|private
 name|PGPPublicKeyRingCollection
 name|readPubRing
-parameter_list|(
-specifier|final
-name|GerritServer
-name|gs
-parameter_list|)
+parameter_list|()
 throws|throws
 name|ContactInformationStoreException
 block|{
@@ -701,7 +729,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|gs
+name|server
 operator|.
 name|getSitePath
 argument_list|()
@@ -1644,10 +1672,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()

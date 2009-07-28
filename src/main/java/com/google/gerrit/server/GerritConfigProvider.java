@@ -346,12 +346,19 @@ name|sshd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final GerritServer gs)
+DECL|method|GerritConfigProvider (final GerritServer gs, final SchemaFactory<ReviewDb> sf)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 block|{
 name|server
@@ -360,10 +367,7 @@ name|gs
 expr_stmt|;
 name|schema
 operator|=
-name|gs
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|sf
 expr_stmt|;
 block|}
 annotation|@

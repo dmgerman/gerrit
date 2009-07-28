@@ -246,6 +246,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -302,17 +316,20 @@ literal|"\u9fa5"
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestServiceImpl (final GerritServer gs)
+DECL|method|SuggestServiceImpl (final SchemaFactory<ReviewDb> sf)
 name|SuggestServiceImpl
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
+name|sf
 argument_list|)
 expr_stmt|;
 block|}

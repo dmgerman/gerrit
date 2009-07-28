@@ -456,6 +456,20 @@ name|gwtorm
 operator|.
 name|client
 operator|.
+name|SchemaFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
 name|Transaction
 import|;
 end_import
@@ -784,17 +798,20 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ChangeListServiceImpl (final GerritServer gs)
+DECL|method|ChangeListServiceImpl (final SchemaFactory<ReviewDb> sf)
 name|ChangeListServiceImpl
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
+name|sf
 argument_list|)
 expr_stmt|;
 block|}

@@ -134,11 +134,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|server
+name|client
 operator|.
-name|GerritServer
+name|OrmException
 import|;
 end_import
 
@@ -152,7 +152,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|OrmException
+name|SchemaFactory
 import|;
 end_import
 
@@ -210,11 +210,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|server
+DECL|field|schema
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
 decl_stmt|;
 DECL|field|replication
 specifier|private
@@ -228,13 +231,16 @@ specifier|final
 name|String
 name|urlMatch
 decl_stmt|;
-DECL|method|PushAllProjectsOp (final GerritServer gs, final ReplicationQueue rq)
+DECL|method|PushAllProjectsOp (final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq)
 specifier|public
 name|PushAllProjectsOp
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|,
 specifier|final
 name|ReplicationQueue
@@ -243,7 +249,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|gs
+name|sf
 argument_list|,
 name|rq
 argument_list|,
@@ -251,13 +257,16 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PushAllProjectsOp (final GerritServer gs, final ReplicationQueue rq, final String urlMatch)
+DECL|method|PushAllProjectsOp (final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final String urlMatch)
 specifier|public
 name|PushAllProjectsOp
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|,
 specifier|final
 name|ReplicationQueue
@@ -270,9 +279,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|server
+name|schema
 operator|=
-name|gs
+name|sf
 expr_stmt|;
 name|this
 operator|.
@@ -317,10 +326,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()

@@ -364,7 +364,7 @@ argument_list|(
 operator|new
 name|PushAllProjectsOp
 argument_list|(
-name|server
+name|schema
 argument_list|,
 name|replication
 argument_list|,

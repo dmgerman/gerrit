@@ -116,13 +116,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
 name|client
 operator|.
-name|rpc
-operator|.
-name|Common
+name|OrmException
 import|;
 end_import
 
@@ -136,7 +134,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|OrmException
+name|SchemaFactory
 import|;
 end_import
 
@@ -306,6 +304,15 @@ specifier|final
 name|boolean
 name|allowed
 decl_stmt|;
+DECL|field|schema
+specifier|private
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
+decl_stmt|;
 DECL|field|server
 specifier|private
 specifier|final
@@ -314,14 +321,25 @@ name|server
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BecomeAnyAccountLoginServlet (final GerritServer gs)
+DECL|method|BecomeAnyAccountLoginServlet (final SchemaFactory<ReviewDb> sf, final GerritServer gs)
 name|BecomeAnyAccountLoginServlet
 parameter_list|(
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
+parameter_list|,
 specifier|final
 name|GerritServer
 name|gs
 parameter_list|)
 block|{
+name|schema
+operator|=
+name|sf
+expr_stmt|;
 name|server
 operator|=
 name|gs
@@ -675,10 +693,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()
@@ -759,10 +774,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()
@@ -879,10 +891,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|server
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()
