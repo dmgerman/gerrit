@@ -347,6 +347,12 @@ specifier|final
 name|GerritServer
 name|server
 decl_stmt|;
+DECL|field|config
+specifier|private
+specifier|final
+name|GerritConfig
+name|config
+decl_stmt|;
 DECL|field|canonicalUrl
 specifier|private
 name|String
@@ -364,17 +370,25 @@ name|hostDoc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final GerritServer gs)
+DECL|method|HostPageServlet (final GerritServer gs, final GerritConfig gc)
 name|HostPageServlet
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|GerritConfig
+name|gc
 parameter_list|)
 block|{
 name|server
 operator|=
 name|gs
+expr_stmt|;
+name|config
+operator|=
+name|gc
 expr_stmt|;
 block|}
 annotation|@
@@ -1384,15 +1398,6 @@ name|get
 argument_list|(
 name|me
 argument_list|)
-decl_stmt|;
-specifier|final
-name|GerritConfig
-name|config
-init|=
-name|SystemInfoServiceImpl
-operator|.
-name|getGerritConfig
-argument_list|()
 decl_stmt|;
 specifier|final
 name|Document

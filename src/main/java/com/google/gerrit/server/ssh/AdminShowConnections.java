@@ -100,6 +100,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -306,6 +318,13 @@ name|PrintWriter
 name|p
 decl_stmt|;
 annotation|@
+name|Inject
+DECL|field|daemon
+specifier|private
+name|GerritSshDaemon
+name|daemon
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|run ()
 specifier|protected
@@ -331,7 +350,7 @@ specifier|final
 name|IoAcceptor
 name|acceptor
 init|=
-name|GerritSshDaemon
+name|daemon
 operator|.
 name|getIoAcceptor
 argument_list|()
@@ -349,7 +368,7 @@ name|Failure
 argument_list|(
 literal|1
 argument_list|,
-literal|"fatal: sshd not running"
+literal|"fatal: sshd no longer running"
 argument_list|)
 throw|;
 block|}
