@@ -107,9 +107,7 @@ init|=
 name|GerritServer
 operator|.
 name|getInstance
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|gs
 operator|.

@@ -82,6 +82,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|jcraft
 operator|.
 name|jsch
@@ -371,7 +383,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A push to remote operation started by {@link PushQueue}.  *<p>  * Instance members are protected by the lock within PushQueue. Callers must  * take that lock to ensure they are working with a current view of the object.  */
+comment|/**  * A push to remote operation started by {@link ReplicationQueue}.  *<p>  * Instance members are protected by the lock within PushQueue. Callers must  * take that lock to ensure they are working with a current view of the object.  */
 end_comment
 
 begin_class
@@ -388,7 +400,7 @@ specifier|final
 name|Logger
 name|log
 init|=
-name|PushQueue
+name|PushReplication
 operator|.
 name|log
 decl_stmt|;
@@ -400,9 +412,10 @@ name|MIRROR_ALL
 init|=
 literal|"..all.."
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|field|server
 specifier|private
-specifier|final
 name|GerritServer
 name|server
 decl_stmt|;
@@ -425,7 +438,7 @@ decl_stmt|;
 DECL|field|pool
 specifier|private
 specifier|final
-name|PushQueue
+name|PushReplication
 operator|.
 name|ReplicationConfig
 name|pool
@@ -458,15 +471,11 @@ specifier|private
 name|Repository
 name|db
 decl_stmt|;
-DECL|method|PushOp (final GerritServer gs, final PushQueue.ReplicationConfig p, final String d, final RemoteConfig c, final URIish u)
+DECL|method|PushOp (final PushReplication.ReplicationConfig p, final String d, final RemoteConfig c, final URIish u)
 name|PushOp
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
-parameter_list|,
-specifier|final
-name|PushQueue
+name|PushReplication
 operator|.
 name|ReplicationConfig
 name|p
@@ -484,10 +493,6 @@ name|URIish
 name|u
 parameter_list|)
 block|{
-name|server
-operator|=
-name|gs
-expr_stmt|;
 name|pool
 operator|=
 name|p

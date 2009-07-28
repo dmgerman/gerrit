@@ -502,7 +502,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|PushQueue
+name|ReplicationQueue
 import|;
 end_import
 
@@ -623,6 +623,18 @@ operator|.
 name|client
 operator|.
 name|Transaction
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -1360,6 +1372,13 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Inject
+DECL|field|replication
+specifier|private
+name|ReplicationQueue
+name|replication
+decl_stmt|;
 DECL|field|rp
 specifier|private
 name|ReceivePack
@@ -1737,7 +1756,7 @@ block|{
 comment|// We only schedule heads and tags for replication.
 comment|// Change refs are scheduled when they are created.
 comment|//
-name|PushQueue
+name|replication
 operator|.
 name|scheduleUpdate
 argument_list|(
@@ -4931,7 +4950,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|PushQueue
+name|replication
 operator|.
 name|scheduleUpdate
 argument_list|(
@@ -6728,7 +6747,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|PushQueue
+name|replication
 operator|.
 name|scheduleUpdate
 argument_list|(

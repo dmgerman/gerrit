@@ -397,20 +397,34 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeManageService
 block|{
+DECL|field|merger
+specifier|private
+specifier|final
+name|MergeQueue
+name|merger
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final GerritServer gs)
+DECL|method|ChangeManageServiceImpl (final GerritServer gs, final MergeQueue mq)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|MergeQueue
+name|mq
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|gs
 argument_list|)
+expr_stmt|;
+name|merger
+operator|=
+name|mq
 expr_stmt|;
 block|}
 DECL|method|patchSetAction (final ApprovalCategoryValue.Id value, final PatchSet.Id patchSetId, final AsyncCallback<VoidResult> callback)
@@ -1075,7 +1089,7 @@ operator|.
 name|SUBMITTED
 condition|)
 block|{
-name|MergeQueue
+name|merger
 operator|.
 name|merge
 argument_list|(

@@ -122,7 +122,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|PushQueue
+name|ReplicationQueue
 import|;
 end_import
 
@@ -137,6 +137,18 @@ operator|.
 name|git
 operator|.
 name|WorkQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -280,6 +292,13 @@ literal|2
 argument_list|)
 decl_stmt|;
 annotation|@
+name|Inject
+DECL|field|replication
+specifier|private
+name|ReplicationQueue
+name|replication
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|run ()
 specifier|protected
@@ -317,9 +336,9 @@ block|}
 if|if
 condition|(
 operator|!
-name|PushQueue
+name|replication
 operator|.
-name|isReplicationEnabled
+name|isEnabled
 argument_list|()
 condition|)
 block|{
@@ -345,8 +364,9 @@ argument_list|(
 operator|new
 name|PushAllProjectsOp
 argument_list|(
-name|getGerritServer
-argument_list|()
+name|server
+argument_list|,
+name|replication
 argument_list|,
 name|urlMatch
 argument_list|)
@@ -399,7 +419,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|PushQueue
+name|replication
 operator|.
 name|scheduleFullSync
 argument_list|(

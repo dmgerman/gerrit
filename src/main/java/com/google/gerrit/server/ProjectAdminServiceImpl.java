@@ -332,7 +332,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|PushQueue
+name|ReplicationQueue
 import|;
 end_import
 
@@ -703,20 +703,34 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|replication
+specifier|private
+specifier|final
+name|ReplicationQueue
+name|replication
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final GerritServer gs)
+DECL|method|ProjectAdminServiceImpl (final GerritServer gs, final ReplicationQueue rq)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|ReplicationQueue
+name|rq
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|gs
 argument_list|)
+expr_stmt|;
+name|replication
+operator|=
+name|rq
 expr_stmt|;
 block|}
 DECL|method|ownedProjects (final AsyncCallback<List<Project>> callback)
@@ -2365,7 +2379,7 @@ argument_list|(
 name|mKey
 argument_list|)
 expr_stmt|;
-name|PushQueue
+name|replication
 operator|.
 name|scheduleUpdate
 argument_list|(
@@ -3018,7 +3032,7 @@ case|:
 case|case
 name|NO_CHANGE
 case|:
-name|PushQueue
+name|replication
 operator|.
 name|scheduleUpdate
 argument_list|(

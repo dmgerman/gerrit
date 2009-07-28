@@ -76,34 +76,52 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|Branch
+name|Project
 import|;
 end_import
 
+begin_comment
+comment|/** Manages replication to other nodes. */
+end_comment
+
 begin_interface
-DECL|interface|MergeQueue
+DECL|interface|ReplicationQueue
 specifier|public
 interface|interface
-name|MergeQueue
+name|ReplicationQueue
 block|{
-DECL|method|merge (Branch.NameKey branch)
+comment|/** Is replication to one or more other destinations configured? */
+DECL|method|isEnabled ()
+name|boolean
+name|isEnabled
+parameter_list|()
+function_decl|;
+comment|/**    * Schedule a full replication for a single project.    *<p>    * All remote URLs are checked to verify the are current with regards to the    * local project state. If not, they are updated by pushing new refs, updating    * existing ones which don't match, and deleting stale refs which have been    * removed from the local repository.    *     * @param project identity of the project to replicate.    * @param urlMatch substring that must appear in a URI to support replication.    */
+DECL|method|scheduleFullSync (Project.NameKey project, String urlMatch)
 name|void
-name|merge
+name|scheduleFullSync
 parameter_list|(
-name|Branch
+name|Project
 operator|.
 name|NameKey
-name|branch
+name|project
+parameter_list|,
+name|String
+name|urlMatch
 parameter_list|)
 function_decl|;
-DECL|method|schedule (Branch.NameKey branch)
+comment|/**    * Schedule update of a single ref.    *<p>    * This method automatically tries to batch together multiple requests in the    * same project, to take advantage of Git's native ability to update multiple    * refs during a single push operation.    *     * @param project identity of the project to replicate.    * @param ref unique name of the ref; must start with {@code refs/}.    */
+DECL|method|scheduleUpdate (Project.NameKey project, String ref)
 name|void
-name|schedule
+name|scheduleUpdate
 parameter_list|(
-name|Branch
+name|Project
 operator|.
 name|NameKey
-name|branch
+name|project
+parameter_list|,
+name|String
+name|ref
 parameter_list|)
 function_decl|;
 block|}

@@ -892,6 +892,12 @@ specifier|final
 name|GerritServer
 name|server
 decl_stmt|;
+DECL|field|replication
+specifier|private
+specifier|final
+name|ReplicationQueue
+name|replication
+decl_stmt|;
 DECL|field|myIdent
 specifier|private
 specifier|final
@@ -984,13 +990,17 @@ specifier|private
 name|RefUpdate
 name|branchUpdate
 decl_stmt|;
-DECL|method|MergeOp (final GerritServer gs, final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final ReplicationQueue rq, final Branch.NameKey branch)
 specifier|public
 name|MergeOp
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|ReplicationQueue
+name|rq
 parameter_list|,
 specifier|final
 name|Branch
@@ -1002,6 +1012,10 @@ block|{
 name|server
 operator|=
 name|gs
+expr_stmt|;
+name|replication
+operator|=
+name|rq
 expr_stmt|;
 name|myIdent
 operator|=
@@ -4466,7 +4480,7 @@ case|:
 case|case
 name|FAST_FORWARD
 case|:
-name|PushQueue
+name|replication
 operator|.
 name|scheduleUpdate
 argument_list|(
