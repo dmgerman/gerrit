@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|patch
 package|;
 end_package
 
@@ -74,9 +76,33 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|GerritJsonServlet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|PatchDetailServiceImpl
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|GerritServer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -112,6 +138,22 @@ extends|extends
 name|GerritJsonServlet
 block|{
 annotation|@
+name|Inject
+DECL|method|PatchDetailServiceSrv (final GerritServer gs)
+name|PatchDetailServiceSrv
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Override
 DECL|method|createServiceHandle ()
 specifier|protected
@@ -125,10 +167,7 @@ return|return
 operator|new
 name|PatchDetailServiceImpl
 argument_list|(
-name|GerritServer
-operator|.
-name|getInstance
-argument_list|()
+name|server
 argument_list|)
 return|;
 block|}

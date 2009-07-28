@@ -538,7 +538,6 @@ end_import
 
 begin_class
 DECL|class|ChangeListServiceImpl
-specifier|public
 class|class
 name|ChangeListServiceImpl
 extends|extends
@@ -770,6 +769,20 @@ name|pageSize
 else|:
 name|MAX_PER_PAGE
 return|;
+block|}
+DECL|method|ChangeListServiceImpl (final GerritServer gs)
+name|ChangeListServiceImpl
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|allOpenPrev (final String pos, final int pageSize, final AsyncCallback<SingleListChangeInfo> callback)
 specifier|public

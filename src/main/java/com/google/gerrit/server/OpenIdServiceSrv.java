@@ -72,6 +72,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -89,12 +101,27 @@ argument_list|)
 annotation|@
 name|Singleton
 DECL|class|OpenIdServiceSrv
-specifier|public
 class|class
 name|OpenIdServiceSrv
 extends|extends
 name|GerritJsonServlet
 block|{
+annotation|@
+name|Inject
+DECL|method|OpenIdServiceSrv (final GerritServer gs)
+name|OpenIdServiceSrv
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|createServiceHandle ()

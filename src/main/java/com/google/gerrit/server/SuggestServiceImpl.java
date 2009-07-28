@@ -272,7 +272,6 @@ end_import
 
 begin_class
 DECL|class|SuggestServiceImpl
-specifier|public
 class|class
 name|SuggestServiceImpl
 extends|extends
@@ -289,6 +288,20 @@ name|MAX_SUFFIX
 init|=
 literal|"\u9fa5"
 decl_stmt|;
+DECL|method|SuggestServiceImpl (final GerritServer gs)
+name|SuggestServiceImpl
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|suggestProjectNameKey (final String query, final int limit, final AsyncCallback<List<Project.NameKey>> callback)
 specifier|public
 name|void

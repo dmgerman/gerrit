@@ -623,12 +623,6 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|field|server
-specifier|private
-specifier|final
-name|GerritServer
-name|server
-decl_stmt|;
 DECL|method|AccountSecurityImpl (final GerritServer gs)
 name|AccountSecurityImpl
 parameter_list|(
@@ -637,9 +631,10 @@ name|GerritServer
 name|gs
 parameter_list|)
 block|{
-name|server
-operator|=
+name|super
+argument_list|(
 name|gs
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)

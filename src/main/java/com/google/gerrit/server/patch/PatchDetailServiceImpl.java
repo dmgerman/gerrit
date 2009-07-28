@@ -730,7 +730,6 @@ end_import
 
 begin_class
 DECL|class|PatchDetailServiceImpl
-specifier|public
 class|class
 name|PatchDetailServiceImpl
 extends|extends
@@ -752,14 +751,7 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|field|server
-specifier|private
-specifier|final
-name|GerritServer
-name|server
-decl_stmt|;
 DECL|method|PatchDetailServiceImpl (final GerritServer gs)
-specifier|public
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -767,9 +759,10 @@ name|GerritServer
 name|gs
 parameter_list|)
 block|{
-name|server
-operator|=
+name|super
+argument_list|(
 name|gs
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings s, final AsyncCallback<PatchScript> callback)

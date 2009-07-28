@@ -292,6 +292,26 @@ specifier|public
 class|class
 name|BaseServiceImplementation
 block|{
+DECL|field|server
+specifier|protected
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
+DECL|method|BaseServiceImplementation (final GerritServer gs)
+specifier|protected
+name|BaseServiceImplementation
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|server
+operator|=
+name|gs
+expr_stmt|;
+block|}
 comment|/**    * Executes<code>action.run</code> with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *     * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
 DECL|method|run (final AsyncCallback<T> callback, final Action<T> action)
 specifier|protected

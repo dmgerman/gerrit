@@ -352,7 +352,6 @@ end_import
 
 begin_class
 DECL|class|AccountServiceImpl
-specifier|public
 class|class
 name|AccountServiceImpl
 extends|extends
@@ -360,6 +359,20 @@ name|BaseServiceImplementation
 implements|implements
 name|AccountService
 block|{
+DECL|method|AccountServiceImpl (final GerritServer gs)
+name|AccountServiceImpl
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|myAccount (final AsyncCallback<Account> callback)
 specifier|public
 name|void

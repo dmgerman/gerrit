@@ -378,7 +378,6 @@ end_import
 
 begin_class
 DECL|class|ChangeManageServiceImpl
-specifier|public
 class|class
 name|ChangeManageServiceImpl
 extends|extends
@@ -386,6 +385,20 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeManageService
 block|{
+DECL|method|ChangeManageServiceImpl (final GerritServer gs)
+name|ChangeManageServiceImpl
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|patchSetAction (final ApprovalCategoryValue.Id value, final PatchSet.Id patchSetId, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void

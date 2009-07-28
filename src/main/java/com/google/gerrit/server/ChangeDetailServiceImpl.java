@@ -226,7 +226,6 @@ end_import
 
 begin_class
 DECL|class|ChangeDetailServiceImpl
-specifier|public
 class|class
 name|ChangeDetailServiceImpl
 extends|extends
@@ -234,6 +233,20 @@ name|BaseServiceImplementation
 implements|implements
 name|ChangeDetailService
 block|{
+DECL|method|ChangeDetailServiceImpl (final GerritServer gs)
+name|ChangeDetailServiceImpl
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|changeDetail (final Change.Id id, final AsyncCallback<ChangeDetail> callback)
 specifier|public
 name|void

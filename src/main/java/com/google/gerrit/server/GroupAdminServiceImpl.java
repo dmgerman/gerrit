@@ -388,7 +388,6 @@ end_import
 
 begin_class
 DECL|class|GroupAdminServiceImpl
-specifier|public
 class|class
 name|GroupAdminServiceImpl
 extends|extends
@@ -396,6 +395,20 @@ name|BaseServiceImplementation
 implements|implements
 name|GroupAdminService
 block|{
+DECL|method|GroupAdminServiceImpl (final GerritServer gs)
+name|GroupAdminServiceImpl
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|gs
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ownedGroups (final AsyncCallback<List<AccountGroup>> callback)
 specifier|public
 name|void
