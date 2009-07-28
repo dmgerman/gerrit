@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -70,9 +70,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Inject
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|Account
 import|;
 end_import
 
@@ -82,82 +86,53 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Singleton
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|ContactInformation
 import|;
 end_import
 
-begin_comment
-comment|/** Publishes {@link AccountSecurityImpl} over JSON. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|ContactInformationStoreException
+import|;
+end_import
 
-begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-annotation|@
-name|Singleton
-DECL|class|AccountSecuritySrv
-class|class
-name|AccountSecuritySrv
-extends|extends
-name|GerritJsonServlet
-block|{
-DECL|field|contactStore
-specifier|private
-specifier|final
+begin_interface
+DECL|interface|ContactStore
+specifier|public
+interface|interface
 name|ContactStore
-name|contactStore
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|AccountSecuritySrv (final GerritServer gs, final ContactStore cs)
-name|AccountSecuritySrv
+block|{
+DECL|method|store (Account account, ContactInformation info)
+name|void
+name|store
 parameter_list|(
-specifier|final
-name|GerritServer
-name|gs
+name|Account
+name|account
 parameter_list|,
-specifier|final
-name|ContactStore
-name|cs
+name|ContactInformation
+name|info
 parameter_list|)
-block|{
-name|super
-argument_list|(
-name|gs
-argument_list|)
-expr_stmt|;
-name|contactStore
-operator|=
-name|cs
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|createServiceHandle ()
-specifier|protected
-name|Object
-name|createServiceHandle
-parameter_list|()
 throws|throws
-name|Exception
-block|{
-return|return
-operator|new
-name|AccountSecurityImpl
-argument_list|(
-name|server
-argument_list|,
-name|contactStore
-argument_list|)
-return|;
+name|ContactInformationStoreException
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

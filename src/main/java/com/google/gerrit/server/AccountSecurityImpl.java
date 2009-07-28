@@ -623,18 +623,32 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|method|AccountSecurityImpl (final GerritServer gs)
+DECL|field|contactStore
+specifier|private
+specifier|final
+name|ContactStore
+name|contactStore
+decl_stmt|;
+DECL|method|AccountSecurityImpl (final GerritServer gs, final ContactStore cs)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|ContactStore
+name|cs
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|gs
 argument_list|)
+expr_stmt|;
+name|contactStore
+operator|=
+name|cs
 expr_stmt|;
 block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)
@@ -1735,7 +1749,7 @@ condition|)
 block|{
 try|try
 block|{
-name|EncryptedContactStore
+name|contactStore
 operator|.
 name|store
 argument_list|(
