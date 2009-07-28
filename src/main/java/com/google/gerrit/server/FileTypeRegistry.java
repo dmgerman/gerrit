@@ -70,11 +70,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
+name|inject
 operator|.
-name|server
-operator|.
-name|XsrfException
+name|Inject
 import|;
 end_import
 
@@ -84,11 +82,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|client
-operator|.
-name|OrmException
+name|Singleton
 import|;
 end_import
 
@@ -253,6 +249,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|FileTypeRegistry
 specifier|public
 class|class
@@ -292,39 +290,31 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|INSTANCE
+DECL|field|server
 specifier|private
-specifier|static
 specifier|final
-name|FileTypeRegistry
-name|INSTANCE
-init|=
-operator|new
-name|FileTypeRegistry
-argument_list|()
+name|GerritServer
+name|server
 decl_stmt|;
-comment|/** Get the global registry. */
-DECL|method|getInstance ()
-specifier|public
-specifier|static
-name|FileTypeRegistry
-name|getInstance
-parameter_list|()
-block|{
-return|return
-name|INSTANCE
-return|;
-block|}
 DECL|field|mimeUtil
 specifier|private
 name|MimeUtil2
 name|mimeUtil
 decl_stmt|;
-DECL|method|FileTypeRegistry ()
-specifier|private
+annotation|@
+name|Inject
+DECL|method|FileTypeRegistry (final GerritServer gs)
 name|FileTypeRegistry
-parameter_list|()
+parameter_list|(
+specifier|final
+name|GerritServer
+name|gs
+parameter_list|)
 block|{
+name|server
+operator|=
+name|gs
+expr_stmt|;
 name|mimeUtil
 operator|=
 operator|new
@@ -649,16 +639,11 @@ specifier|final
 name|RepositoryConfig
 name|cfg
 init|=
+name|server
+operator|.
 name|getGerritConfig
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|cfg
-operator|!=
-literal|null
-condition|)
-block|{
 specifier|final
 name|boolean
 name|any
@@ -704,12 +689,6 @@ name|genericMedia
 argument_list|)
 return|;
 block|}
-comment|// Assume we cannot send the content inline.
-comment|//
-return|return
-literal|false
-return|;
-block|}
 DECL|method|isSafe (RepositoryConfig cfg, String type, boolean def)
 specifier|private
 specifier|static
@@ -740,64 +719,6 @@ argument_list|,
 name|def
 argument_list|)
 return|;
-block|}
-DECL|method|getGerritConfig ()
-specifier|private
-specifier|static
-name|RepositoryConfig
-name|getGerritConfig
-parameter_list|()
-block|{
-try|try
-block|{
-return|return
-name|GerritServer
-operator|.
-name|getInstance
-argument_list|()
-operator|.
-name|getGerritConfig
-argument_list|()
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot obtain GerritServer"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|XsrfException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot obtain GerritServer"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
 block|}
 DECL|method|isUnknownType (Collection<MimeType> mimeTypes)
 specifier|private

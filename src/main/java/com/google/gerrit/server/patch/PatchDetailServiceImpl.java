@@ -492,6 +492,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|FileTypeRegistry
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritJsonServlet
 import|;
 end_import
@@ -751,18 +765,32 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|method|PatchDetailServiceImpl (final GerritServer gs)
+DECL|field|registry
+specifier|private
+specifier|final
+name|FileTypeRegistry
+name|registry
+decl_stmt|;
+DECL|method|PatchDetailServiceImpl (final GerritServer gs, final FileTypeRegistry ftr)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|FileTypeRegistry
+name|ftr
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|gs
 argument_list|)
+expr_stmt|;
+name|registry
+operator|=
+name|ftr
 expr_stmt|;
 block|}
 DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings s, final AsyncCallback<PatchScript> callback)
@@ -826,6 +854,8 @@ operator|new
 name|PatchScriptAction
 argument_list|(
 name|server
+argument_list|,
+name|registry
 argument_list|,
 name|patchKey
 argument_list|,

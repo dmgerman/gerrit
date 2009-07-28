@@ -668,9 +668,13 @@ specifier|final
 name|FileTypeRegistry
 name|registry
 decl_stmt|;
-DECL|method|PatchScriptBuilder ()
+DECL|method|PatchScriptBuilder (final FileTypeRegistry ftr)
 name|PatchScriptBuilder
-parameter_list|()
+parameter_list|(
+specifier|final
+name|FileTypeRegistry
+name|ftr
+parameter_list|)
 block|{
 name|header
 operator|=
@@ -695,10 +699,7 @@ argument_list|()
 expr_stmt|;
 name|registry
 operator|=
-name|FileTypeRegistry
-operator|.
-name|getInstance
-argument_list|()
+name|ftr
 expr_stmt|;
 block|}
 DECL|method|setRepository (final Repository r)

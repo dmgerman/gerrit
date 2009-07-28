@@ -334,6 +334,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|FileTypeRegistry
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritServer
 import|;
 end_import
@@ -554,6 +568,12 @@ specifier|final
 name|GerritServer
 name|server
 decl_stmt|;
+DECL|field|registry
+specifier|private
+specifier|final
+name|FileTypeRegistry
+name|registry
+decl_stmt|;
 DECL|field|patchKey
 specifier|private
 specifier|final
@@ -622,12 +642,16 @@ specifier|private
 name|Repository
 name|git
 decl_stmt|;
-DECL|method|PatchScriptAction (final GerritServer gs, final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings settings)
+DECL|method|PatchScriptAction (final GerritServer gs, final FileTypeRegistry ftr, final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings settings)
 name|PatchScriptAction
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|FileTypeRegistry
+name|ftr
 parameter_list|,
 specifier|final
 name|Patch
@@ -657,6 +681,12 @@ operator|.
 name|server
 operator|=
 name|gs
+expr_stmt|;
+name|this
+operator|.
+name|registry
+operator|=
+name|ftr
 expr_stmt|;
 name|this
 operator|.
@@ -1255,7 +1285,9 @@ name|b
 init|=
 operator|new
 name|PatchScriptBuilder
-argument_list|()
+argument_list|(
+name|registry
+argument_list|)
 decl_stmt|;
 name|b
 operator|.
