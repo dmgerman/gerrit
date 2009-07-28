@@ -1315,7 +1315,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()
@@ -2180,7 +2180,7 @@ specifier|final
 name|ReviewDb
 name|d
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()

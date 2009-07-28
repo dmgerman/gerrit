@@ -140,22 +140,6 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Common
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
 name|ContactInformationStoreException
 import|;
 end_import
@@ -600,6 +584,12 @@ block|}
 return|;
 block|}
 block|}
+DECL|field|server
+specifier|private
+specifier|final
+name|GerritServer
+name|server
+decl_stmt|;
 DECL|field|dest
 specifier|private
 name|PGPPublicKey
@@ -631,6 +621,10 @@ parameter_list|)
 throws|throws
 name|ContactInformationStoreException
 block|{
+name|server
+operator|=
+name|gs
+expr_stmt|;
 if|if
 condition|(
 name|gs
@@ -1576,7 +1570,6 @@ return|;
 block|}
 DECL|method|format (final Account account, final ContactInformation info)
 specifier|private
-specifier|static
 name|String
 name|format
 parameter_list|(
@@ -1709,7 +1702,7 @@ specifier|final
 name|ReviewDb
 name|db
 init|=
-name|Common
+name|server
 operator|.
 name|getSchemaFactory
 argument_list|()

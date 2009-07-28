@@ -345,6 +345,9 @@ argument_list|(
 operator|new
 name|PushAllProjectsOp
 argument_list|(
+name|getGerritServer
+argument_list|()
+argument_list|,
 name|urlMatch
 argument_list|)
 argument_list|,
