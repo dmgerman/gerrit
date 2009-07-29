@@ -172,6 +172,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -362,6 +378,12 @@ specifier|final
 name|Config
 name|cfg
 decl_stmt|;
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 DECL|field|server
 specifier|private
 specifier|final
@@ -394,7 +416,7 @@ name|contactStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, final GerritServer gs, final SchemaFactory<ReviewDb> sf)
+DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, final AuthConfig ac, final GerritServer gs, final SchemaFactory<ReviewDb> sf)
 name|GerritConfigProvider
 parameter_list|(
 annotation|@
@@ -402,6 +424,10 @@ name|GerritServerConfig
 specifier|final
 name|Config
 name|gsc
+parameter_list|,
+specifier|final
+name|AuthConfig
+name|ac
 parameter_list|,
 specifier|final
 name|GerritServer
@@ -418,6 +444,10 @@ block|{
 name|cfg
 operator|=
 name|gsc
+expr_stmt|;
+name|authConfig
+operator|=
+name|ac
 expr_stmt|;
 name|server
 operator|=
@@ -599,7 +629,7 @@ name|config
 operator|.
 name|setLoginType
 argument_list|(
-name|server
+name|authConfig
 operator|.
 name|getLoginType
 argument_list|()

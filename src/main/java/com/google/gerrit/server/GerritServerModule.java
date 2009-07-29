@@ -192,9 +192,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|config
 operator|.
-name|PatchSetInfoFactory
+name|AuthConfig
 import|;
 end_import
 
@@ -339,6 +339,22 @@ operator|.
 name|mail
 operator|.
 name|SmtpEmailSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|PatchSetInfoFactory
 import|;
 end_import
 
@@ -649,6 +665,13 @@ operator|.
 name|in
 argument_list|(
 name|SINGLETON
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|AuthConfig
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|bind

@@ -298,6 +298,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailException
@@ -661,6 +677,12 @@ specifier|final
 name|ContactStore
 name|contactStore
 decl_stmt|;
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 DECL|field|registerNewEmailFactory
 specifier|private
 specifier|final
@@ -671,7 +693,7 @@ name|registerNewEmailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ContactStore cs, final RegisterNewEmailSender.Factory esf)
+DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -688,6 +710,10 @@ parameter_list|,
 specifier|final
 name|ContactStore
 name|cs
+parameter_list|,
+specifier|final
+name|AuthConfig
+name|ac
 parameter_list|,
 specifier|final
 name|RegisterNewEmailSender
@@ -708,6 +734,10 @@ expr_stmt|;
 name|contactStore
 operator|=
 name|cs
+expr_stmt|;
+name|authConfig
+operator|=
+name|ac
 expr_stmt|;
 name|registerNewEmailFactory
 operator|=
@@ -2239,7 +2269,7 @@ specifier|final
 name|ValidToken
 name|t
 init|=
-name|server
+name|authConfig
 operator|.
 name|getEmailRegistrationToken
 argument_list|()
