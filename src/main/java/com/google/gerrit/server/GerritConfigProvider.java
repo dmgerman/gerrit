@@ -250,7 +250,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RepositoryConfig
+name|Config
 import|;
 end_import
 
@@ -400,7 +400,7 @@ throws|throws
 name|OrmException
 block|{
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 init|=
 name|server

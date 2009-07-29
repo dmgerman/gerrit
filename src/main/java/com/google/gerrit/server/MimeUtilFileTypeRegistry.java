@@ -154,7 +154,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RepositoryConfig
+name|Config
 import|;
 end_import
 
@@ -635,7 +635,7 @@ literal|false
 return|;
 block|}
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 init|=
 name|server
@@ -688,13 +688,13 @@ name|genericMedia
 argument_list|)
 return|;
 block|}
-DECL|method|isSafe (RepositoryConfig cfg, String type, boolean def)
+DECL|method|isSafe (Config cfg, String type, boolean def)
 specifier|private
 specifier|static
 name|boolean
 name|isSafe
 parameter_list|(
-name|RepositoryConfig
+name|Config
 name|cfg
 parameter_list|,
 name|String

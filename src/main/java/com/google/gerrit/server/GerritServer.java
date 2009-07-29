@@ -536,6 +536,34 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|spearce
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|FileBasedConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|spearce
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -578,7 +606,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RepositoryConfig
+name|UserConfig
 import|;
 end_import
 
@@ -870,7 +898,7 @@ decl_stmt|;
 DECL|field|gerritConfigFile
 specifier|private
 specifier|final
-name|RepositoryConfig
+name|FileBasedConfig
 name|gerritConfigFile
 decl_stmt|;
 DECL|field|sessionAge
@@ -965,10 +993,8 @@ decl_stmt|;
 name|gerritConfigFile
 operator|=
 operator|new
-name|RepositoryConfig
+name|FileBasedConfig
 argument_list|(
-literal|null
-argument_list|,
 name|cfgLoc
 argument_list|)
 expr_stmt|;
@@ -1519,7 +1545,7 @@ name|mgrCfg
 parameter_list|)
 block|{
 specifier|final
-name|RepositoryConfig
+name|Config
 name|i
 init|=
 name|gerritConfigFile
@@ -1725,7 +1751,7 @@ name|defaultAge
 parameter_list|)
 block|{
 specifier|final
-name|RepositoryConfig
+name|Config
 name|i
 init|=
 name|gerritConfigFile
@@ -2087,7 +2113,7 @@ argument_list|)
 throw|;
 block|}
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 init|=
 name|getGerritConfig
@@ -2647,7 +2673,7 @@ block|}
 comment|/** Get the parsed<code>$site_path/gerrit.config</code> file. */
 DECL|method|getGerritConfig ()
 specifier|public
-name|RepositoryConfig
+name|Config
 name|getGerritConfig
 parameter_list|()
 block|{
@@ -3041,6 +3067,13 @@ name|email
 init|=
 name|getGerritConfig
 argument_list|()
+operator|.
+name|get
+argument_list|(
+name|UserConfig
+operator|.
+name|KEY
+argument_list|)
 operator|.
 name|getCommitterEmail
 argument_list|()

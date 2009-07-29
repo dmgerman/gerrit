@@ -766,7 +766,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RepositoryConfig
+name|Config
 import|;
 end_import
 
@@ -1127,7 +1127,7 @@ comment|/* never used */
 argument_list|)
 expr_stmt|;
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 init|=
 name|srv
@@ -1758,7 +1758,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|parseListen (final RepositoryConfig cfg)
+DECL|method|parseListen (final Config cfg)
 specifier|private
 name|List
 argument_list|<
@@ -1767,7 +1767,7 @@ argument_list|>
 name|parseListen
 parameter_list|(
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 parameter_list|)
 block|{
@@ -2248,13 +2248,13 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|initCiphers (final RepositoryConfig cfg)
+DECL|method|initCiphers (final Config cfg)
 specifier|private
 name|void
 name|initCiphers
 parameter_list|(
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 parameter_list|)
 block|{
@@ -2536,13 +2536,13 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|initMacs (final RepositoryConfig cfg)
+DECL|method|initMacs (final Config cfg)
 specifier|private
 name|void
 name|initMacs
 parameter_list|(
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 parameter_list|)
 block|{
@@ -2581,7 +2581,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|filter (final RepositoryConfig cfg, final String key, final NamedFactory<T>... avail)
+DECL|method|filter (final Config cfg, final String key, final NamedFactory<T>... avail)
 specifier|private
 specifier|static
 parameter_list|<
@@ -2597,7 +2597,7 @@ argument_list|>
 name|filter
 parameter_list|(
 specifier|final
-name|RepositoryConfig
+name|Config
 name|cfg
 parameter_list|,
 specifier|final
