@@ -2017,46 +2017,6 @@ literal|"emailformat"
 argument_list|)
 return|;
 block|}
-DECL|method|getContactStoreURL ()
-specifier|public
-name|String
-name|getContactStoreURL
-parameter_list|()
-block|{
-return|return
-name|getGerritConfig
-argument_list|()
-operator|.
-name|getString
-argument_list|(
-literal|"contactstore"
-argument_list|,
-literal|null
-argument_list|,
-literal|"url"
-argument_list|)
-return|;
-block|}
-DECL|method|getContactStoreAPPSEC ()
-specifier|public
-name|String
-name|getContactStoreAPPSEC
-parameter_list|()
-block|{
-return|return
-name|getGerritConfig
-argument_list|()
-operator|.
-name|getString
-argument_list|(
-literal|"contactstore"
-argument_list|,
-literal|null
-argument_list|,
-literal|"appsec"
-argument_list|)
-return|;
-block|}
 comment|/** Optional canonical URL for this application. */
 DECL|method|getCanonicalURL ()
 specifier|public

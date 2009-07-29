@@ -118,6 +118,11 @@ specifier|public
 interface|interface
 name|ContactStore
 block|{
+DECL|method|isEnabled ()
+name|boolean
+name|isEnabled
+parameter_list|()
+function_decl|;
 DECL|method|store (Account account, ContactInformation info)
 name|void
 name|store
