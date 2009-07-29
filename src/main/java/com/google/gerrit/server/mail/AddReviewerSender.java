@@ -96,6 +96,32 @@ name|GerritServer
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
 begin_comment
 comment|/** Asks a user to review a change. */
 end_comment
@@ -108,7 +134,24 @@ name|AddReviewerSender
 extends|extends
 name|NewChangeSender
 block|{
-DECL|method|AddReviewerSender (GerritServer gs, EmailSender sf, Change c)
+DECL|interface|Factory
+specifier|public
+specifier|static
+interface|interface
+name|Factory
+block|{
+DECL|method|create (Change change)
+name|AddReviewerSender
+name|create
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+function_decl|;
+block|}
+annotation|@
+name|Inject
+DECL|method|AddReviewerSender (GerritServer gs, EmailSender sf, @Assisted Change c)
 specifier|public
 name|AddReviewerSender
 parameter_list|(
@@ -118,6 +161,8 @@ parameter_list|,
 name|EmailSender
 name|sf
 parameter_list|,
+annotation|@
+name|Assisted
 name|Change
 name|c
 parameter_list|)
