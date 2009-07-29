@@ -1228,6 +1228,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//FIXME: This code has to be moved to separate method when patchSetInfo
+comment|//creation is removed
 for|for
 control|(
 name|int
