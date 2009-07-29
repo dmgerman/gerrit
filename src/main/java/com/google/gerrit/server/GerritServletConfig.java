@@ -725,6 +725,13 @@ operator|.
 name|SINGLETON
 argument_list|)
 expr_stmt|;
+name|bind
+argument_list|(
+name|GerritCall
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|serve
 argument_list|(
 literal|"/Gerrit"

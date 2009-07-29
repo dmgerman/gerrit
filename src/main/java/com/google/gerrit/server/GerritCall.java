@@ -246,6 +246,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|servlet
+operator|.
+name|RequestScoped
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -313,6 +339,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|RequestScoped
 DECL|class|GerritCall
 specifier|public
 class|class
@@ -395,8 +423,9 @@ specifier|private
 name|boolean
 name|rememberAccount
 decl_stmt|;
+annotation|@
+name|Inject
 DECL|method|GerritCall (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final HttpServletRequest i, final HttpServletResponse o)
-specifier|public
 name|GerritCall
 parameter_list|(
 specifier|final
