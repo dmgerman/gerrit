@@ -96,6 +96,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -138,6 +164,22 @@ name|RegisterNewEmailSender
 extends|extends
 name|OutgoingEmail
 block|{
+DECL|interface|Factory
+specifier|public
+specifier|static
+interface|interface
+name|Factory
+block|{
+DECL|method|create (String address)
+specifier|public
+name|RegisterNewEmailSender
+name|create
+parameter_list|(
+name|String
+name|address
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|req
 specifier|private
 specifier|final
@@ -150,7 +192,9 @@ specifier|final
 name|String
 name|addr
 decl_stmt|;
-DECL|method|RegisterNewEmailSender (final GerritServer gs, final EmailSender sf, final String address, final HttpServletRequest request)
+annotation|@
+name|Inject
+DECL|method|RegisterNewEmailSender (final GerritServer gs, final EmailSender sf, @Assisted final String address, final HttpServletRequest request)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(
@@ -162,6 +206,8 @@ specifier|final
 name|EmailSender
 name|sf
 parameter_list|,
+annotation|@
+name|Assisted
 specifier|final
 name|String
 name|address
