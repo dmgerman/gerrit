@@ -86,6 +86,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|SitePath
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -1081,7 +1097,7 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritSshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth)
+DECL|method|GerritSshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, @SitePath final File sitePath)
 specifier|public
 name|GerritSshDaemon
 parameter_list|(
@@ -1096,6 +1112,12 @@ parameter_list|,
 specifier|final
 name|PublickeyAuthenticator
 name|userAuth
+parameter_list|,
+annotation|@
+name|SitePath
+specifier|final
+name|File
+name|sitePath
 parameter_list|)
 block|{
 name|setPort
@@ -1192,7 +1214,7 @@ name|setKeyPairProvider
 argument_list|(
 name|initHostKey
 argument_list|(
-name|srv
+name|sitePath
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3139,25 +3161,16 @@ name|pubkey
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initHostKey (final GerritServer srv)
+DECL|method|initHostKey (final File sitePath)
 specifier|private
 name|KeyPairProvider
 name|initHostKey
 parameter_list|(
 specifier|final
-name|GerritServer
-name|srv
-parameter_list|)
-block|{
-specifier|final
 name|File
 name|sitePath
-init|=
-name|srv
-operator|.
-name|getSitePath
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 specifier|final
 name|File
 name|anyKey

@@ -188,6 +188,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|SitePath
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailException
@@ -901,7 +917,7 @@ name|sshKeysCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritServer (final Database<ReviewDb> database, final SystemConfig sConfig)
+DECL|method|GerritServer (final Database<ReviewDb> database, final SystemConfig sConfig, @SitePath final File path)
 name|GerritServer
 parameter_list|(
 specifier|final
@@ -914,6 +930,12 @@ parameter_list|,
 specifier|final
 name|SystemConfig
 name|sConfig
+parameter_list|,
+annotation|@
+name|SitePath
+specifier|final
+name|File
+name|path
 parameter_list|)
 throws|throws
 name|OrmException
@@ -926,21 +948,7 @@ name|database
 expr_stmt|;
 name|sitePath
 operator|=
-name|sConfig
-operator|.
-name|sitePath
-operator|!=
-literal|null
-condition|?
-operator|new
-name|File
-argument_list|(
-name|sConfig
-operator|.
-name|sitePath
-argument_list|)
-else|:
-literal|null
+name|path
 expr_stmt|;
 specifier|final
 name|File
@@ -949,8 +957,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|getSitePath
-argument_list|()
+name|sitePath
 argument_list|,
 literal|"gerrit.config"
 argument_list|)
@@ -1176,8 +1183,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|getSitePath
-argument_list|()
+name|sitePath
 argument_list|,
 name|basePath
 argument_list|)
@@ -1406,8 +1412,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|getSitePath
-argument_list|()
+name|sitePath
 argument_list|,
 name|path
 argument_list|)
@@ -2591,17 +2596,6 @@ literal|null
 argument_list|,
 literal|"appsec"
 argument_list|)
-return|;
-block|}
-comment|/** Local filesystem location of header/footer/CSS configuration files. */
-DECL|method|getSitePath ()
-specifier|public
-name|File
-name|getSitePath
-parameter_list|()
-block|{
-return|return
-name|sitePath
 return|;
 block|}
 comment|/** Optional canonical URL for this application. */

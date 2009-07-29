@@ -134,6 +134,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|SitePath
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -166,6 +182,16 @@ name|Provider
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
 begin_class
 DECL|class|EncryptedContactStoreProvider
 class|class
@@ -194,6 +220,15 @@ argument_list|>
 name|schema
 decl_stmt|;
 annotation|@
+name|Inject
+annotation|@
+name|SitePath
+DECL|field|sitePath
+specifier|private
+name|File
+name|sitePath
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|get ()
 specifier|public
@@ -208,6 +243,8 @@ operator|new
 name|EncryptedContactStore
 argument_list|(
 name|server
+argument_list|,
+name|sitePath
 argument_list|,
 name|schema
 argument_list|)
