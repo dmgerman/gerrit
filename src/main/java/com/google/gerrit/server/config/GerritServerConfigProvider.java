@@ -293,7 +293,7 @@ init|=
 operator|new
 name|FileBasedConfig
 argument_list|(
-name|sitePath
+name|cfgPath
 argument_list|)
 decl_stmt|;
 if|if
