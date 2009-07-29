@@ -1530,6 +1530,13 @@ argument_list|)
 expr_stmt|;
 name|setHeader
 argument_list|(
+literal|"Content-Transfer-Encoding"
+argument_list|,
+literal|"8bit"
+argument_list|)
+expr_stmt|;
+name|setHeader
+argument_list|(
 literal|"Content-Disposition"
 argument_list|,
 literal|"inline"
