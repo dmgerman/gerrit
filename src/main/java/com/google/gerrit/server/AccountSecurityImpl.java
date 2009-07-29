@@ -348,6 +348,22 @@ name|server
 operator|.
 name|ssh
 operator|.
+name|SshKeyCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ssh
+operator|.
 name|SshUtil
 import|;
 end_import
@@ -691,9 +707,15 @@ operator|.
 name|Factory
 name|registerNewEmailFactory
 decl_stmt|;
+DECL|field|sshKeyCache
+specifier|private
+specifier|final
+name|SshKeyCache
+name|sshKeyCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf)
+DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -720,6 +742,10 @@ name|RegisterNewEmailSender
 operator|.
 name|Factory
 name|esf
+parameter_list|,
+specifier|final
+name|SshKeyCache
+name|skc
 parameter_list|)
 block|{
 name|super
@@ -742,6 +768,10 @@ expr_stmt|;
 name|registerNewEmailFactory
 operator|=
 name|esf
+expr_stmt|;
+name|sshKeyCache
+operator|=
+name|skc
 expr_stmt|;
 block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)
@@ -1275,12 +1305,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|server
+name|sshKeyCache
 operator|.
-name|getSshKeysCache
-argument_list|()
-operator|.
-name|remove
+name|evict
 argument_list|(
 name|userName
 argument_list|)

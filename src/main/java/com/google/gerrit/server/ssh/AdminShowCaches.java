@@ -147,7 +147,7 @@ DECL|class|AdminShowCaches
 class|class
 name|AdminShowCaches
 extends|extends
-name|AbstractCommand
+name|AbstractAdminCacheCommand
 block|{
 DECL|field|p
 name|PrintWriter
@@ -181,9 +181,6 @@ specifier|final
 name|Ehcache
 name|cache
 range|:
-name|getGerritServer
-argument_list|()
-operator|.
 name|getAllCaches
 argument_list|()
 control|)

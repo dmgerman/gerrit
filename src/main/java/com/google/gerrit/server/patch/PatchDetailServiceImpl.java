@@ -820,6 +820,12 @@ specifier|final
 name|FileTypeRegistry
 name|registry
 decl_stmt|;
+DECL|field|diffCache
+specifier|private
+specifier|final
+name|DiffCache
+name|diffCache
+decl_stmt|;
 DECL|field|emailSender
 specifier|private
 specifier|final
@@ -844,7 +850,7 @@ name|abandonedSenderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr, final EmailSender es, final AddReviewerSender.Factory arsf, final AbandonedSender.Factory asf)
+DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr, final DiffCache dc, final EmailSender es, final AddReviewerSender.Factory arsf, final AbandonedSender.Factory asf)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -861,6 +867,10 @@ parameter_list|,
 specifier|final
 name|FileTypeRegistry
 name|ftr
+parameter_list|,
+specifier|final
+name|DiffCache
+name|dc
 parameter_list|,
 specifier|final
 name|EmailSender
@@ -891,6 +901,10 @@ expr_stmt|;
 name|registry
 operator|=
 name|ftr
+expr_stmt|;
+name|diffCache
+operator|=
+name|dc
 expr_stmt|;
 name|emailSender
 operator|=
@@ -968,6 +982,8 @@ argument_list|(
 name|server
 argument_list|,
 name|registry
+argument_list|,
+name|diffCache
 argument_list|,
 name|patchKey
 argument_list|,

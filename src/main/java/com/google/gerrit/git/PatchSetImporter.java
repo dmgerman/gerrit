@@ -270,6 +270,22 @@ name|server
 operator|.
 name|patch
 operator|.
+name|DiffCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
 name|DiffCacheContent
 import|;
 end_import
@@ -315,34 +331,6 @@ operator|.
 name|client
 operator|.
 name|Transaction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|ehcache
-operator|.
-name|Element
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|ehcache
-operator|.
-name|constructs
-operator|.
-name|blocking
-operator|.
-name|SelfPopulatingCache
 import|;
 end_import
 
@@ -561,7 +549,7 @@ block|{
 DECL|field|diffCache
 specifier|private
 specifier|final
-name|SelfPopulatingCache
+name|DiffCache
 name|diffCache
 decl_stmt|;
 DECL|field|db
@@ -734,13 +722,17 @@ name|PatchSetAncestor
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|PatchSetImporter (final GerritServer gs, final ReviewDb dstDb, final Project.NameKey proj, final Repository srcRepo, final RevCommit srcCommit, final PatchSet dstPatchSet, final boolean isNewPatchSet)
+DECL|method|PatchSetImporter (final GerritServer gs, final DiffCache dc, final ReviewDb dstDb, final Project.NameKey proj, final Repository srcRepo, final RevCommit srcCommit, final PatchSet dstPatchSet, final boolean isNewPatchSet)
 specifier|public
 name|PatchSetImporter
 parameter_list|(
 specifier|final
 name|GerritServer
 name|gs
+parameter_list|,
+specifier|final
+name|DiffCache
+name|dc
 parameter_list|,
 specifier|final
 name|ReviewDb
@@ -771,10 +763,7 @@ parameter_list|)
 block|{
 name|diffCache
 operator|=
-name|gs
-operator|.
-name|getDiffCache
-argument_list|()
+name|dc
 expr_stmt|;
 name|db
 operator|=
@@ -1228,8 +1217,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//FIXME: This code has to be moved to separate method when patchSetInfo
-comment|//creation is removed
+comment|// FIXME: This code has to be moved to separate method when patchSetInfo
+comment|// creation is removed
 for|for
 control|(
 name|int
@@ -2302,9 +2291,6 @@ name|diffCache
 operator|.
 name|put
 argument_list|(
-operator|new
-name|Element
-argument_list|(
 name|k
 argument_list|,
 name|DiffCacheContent
@@ -2312,7 +2298,6 @@ operator|.
 name|create
 argument_list|(
 name|fh
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

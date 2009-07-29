@@ -176,6 +176,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|DiffCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -361,7 +377,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Recreates PatchSet and Patch entities for the changes supplied.  *<p>  * Takes on input strings of the form<code>change_id|patch_set_id</code> or  *<code>change_id,patch_set_id</code>, such as might be created by the  * following PostgreSQL database dump:  *   *<pre>  *  psql reviewdb -tAc 'select change_id,patch_set_id from patch_sets'  *</pre>  *<p>  * For each supplied PatchSet the info and patch entities are completely updated  * based on the data stored in Git.  */
+comment|/**  * Recreates PatchSet and Patch entities for the changes supplied.  *<p>  * Takes on input strings of the form<code>change_id|patch_set_id</code> or  *<code>change_id,patch_set_id</code>, such as might be created by the  * following PostgreSQL database dump:  *  *<pre>  *  psql reviewdb -tAc 'select change_id,patch_set_id from patch_sets'  *</pre>  *<p>  * For each supplied PatchSet the info and patch entities are completely updated  * based on the data stored in Git.  */
 end_comment
 
 begin_class
@@ -388,6 +404,13 @@ DECL|field|gs
 specifier|private
 name|GerritServer
 name|gs
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|field|diffCache
+specifier|private
+name|DiffCache
+name|diffCache
 decl_stmt|;
 annotation|@
 name|Override
@@ -763,6 +786,8 @@ operator|new
 name|PatchSetImporter
 argument_list|(
 name|gs
+argument_list|,
+name|diffCache
 argument_list|,
 name|db
 argument_list|,

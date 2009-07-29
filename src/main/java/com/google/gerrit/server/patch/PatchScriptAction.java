@@ -574,6 +574,12 @@ specifier|final
 name|FileTypeRegistry
 name|registry
 decl_stmt|;
+DECL|field|diffCache
+specifier|private
+specifier|final
+name|DiffCache
+name|diffCache
+decl_stmt|;
 DECL|field|patchKey
 specifier|private
 specifier|final
@@ -642,7 +648,7 @@ specifier|private
 name|Repository
 name|git
 decl_stmt|;
-DECL|method|PatchScriptAction (final GerritServer gs, final FileTypeRegistry ftr, final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings settings)
+DECL|method|PatchScriptAction (final GerritServer gs, final FileTypeRegistry ftr, final DiffCache dc, final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings settings)
 name|PatchScriptAction
 parameter_list|(
 specifier|final
@@ -652,6 +658,10 @@ parameter_list|,
 specifier|final
 name|FileTypeRegistry
 name|ftr
+parameter_list|,
+specifier|final
+name|DiffCache
+name|dc
 parameter_list|,
 specifier|final
 name|Patch
@@ -687,6 +697,12 @@ operator|.
 name|registry
 operator|=
 name|ftr
+expr_stmt|;
+name|this
+operator|.
+name|diffCache
+operator|=
+name|dc
 expr_stmt|;
 name|this
 operator|.
@@ -1097,10 +1113,7 @@ try|try
 block|{
 name|cacheElem
 operator|=
-name|server
-operator|.
-name|getDiffCache
-argument_list|()
+name|diffCache
 operator|.
 name|get
 argument_list|(

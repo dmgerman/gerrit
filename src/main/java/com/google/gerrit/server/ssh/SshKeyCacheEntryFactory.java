@@ -210,7 +210,6 @@ end_import
 
 begin_class
 DECL|class|SshKeyCacheEntryFactory
-specifier|public
 class|class
 name|SshKeyCacheEntryFactory
 implements|implements
@@ -240,7 +239,6 @@ argument_list|>
 name|schema
 decl_stmt|;
 DECL|method|SshKeyCacheEntryFactory (final SchemaFactory<ReviewDb> sf)
-specifier|public
 name|SshKeyCacheEntryFactory
 parameter_list|(
 specifier|final
