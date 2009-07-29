@@ -330,6 +330,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|mail
+operator|.
+name|EmailSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ssh
 operator|.
 name|SshUtil
@@ -661,9 +677,15 @@ specifier|final
 name|ContactStore
 name|contactStore
 decl_stmt|;
+DECL|field|emailSender
+specifier|private
+specifier|final
+name|EmailSender
+name|emailSender
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ContactStore cs)
+DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ContactStore cs, final EmailSender es)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -680,6 +702,10 @@ parameter_list|,
 specifier|final
 name|ContactStore
 name|cs
+parameter_list|,
+specifier|final
+name|EmailSender
+name|es
 parameter_list|)
 block|{
 name|super
@@ -694,6 +720,10 @@ expr_stmt|;
 name|contactStore
 operator|=
 name|cs
+expr_stmt|;
+name|emailSender
+operator|=
+name|es
 expr_stmt|;
 block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)
@@ -2125,6 +2155,8 @@ operator|new
 name|RegisterNewEmailSender
 argument_list|(
 name|server
+argument_list|,
+name|emailSender
 argument_list|,
 name|address
 argument_list|,

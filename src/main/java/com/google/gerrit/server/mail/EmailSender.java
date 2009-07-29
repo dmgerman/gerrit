@@ -68,89 +68,69 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|Change
+name|Collection
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritServer
+name|Map
 import|;
 end_import
 
 begin_comment
-comment|/** Asks a user to review a change. */
+comment|/** Sends email messages to third parties. */
 end_comment
 
-begin_class
-DECL|class|AddReviewerSender
+begin_interface
+DECL|interface|EmailSender
 specifier|public
-class|class
-name|AddReviewerSender
-extends|extends
-name|NewChangeSender
-block|{
-DECL|method|AddReviewerSender (GerritServer gs, EmailSender sf, Change c)
-specifier|public
-name|AddReviewerSender
-parameter_list|(
-name|GerritServer
-name|gs
-parameter_list|,
+interface|interface
 name|EmailSender
-name|sf
-parameter_list|,
-name|Change
-name|c
-parameter_list|)
 block|{
-name|super
-argument_list|(
-name|gs
-argument_list|,
-name|sf
-argument_list|,
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|init ()
-specifier|protected
-name|void
-name|init
+DECL|method|isEnabled ()
+name|boolean
+name|isEnabled
 parameter_list|()
-block|{
-name|super
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
-name|ccExistingReviewers
-argument_list|()
-expr_stmt|;
+function_decl|;
+comment|/**    * Sends an email message.    *     * @param from who the message is from.    * @param rcpt one or more address where the message will be delivered to.    *        This list overrides any To or CC headers in {@code headers}.    * @param headers message headers.    * @param body text to appear in the body of the message.    * @throws EmailException the message cannot be sent.    */
+DECL|method|send (Address from, Collection<Address> rcpt, Map<String, EmailHeader> headers, String body)
+name|void
+name|send
+parameter_list|(
+name|Address
+name|from
+parameter_list|,
+name|Collection
+argument_list|<
+name|Address
+argument_list|>
+name|rcpt
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|EmailHeader
+argument_list|>
+name|headers
+parameter_list|,
+name|String
+name|body
+parameter_list|)
+throws|throws
+name|EmailException
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

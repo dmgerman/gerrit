@@ -222,12 +222,15 @@ name|CreateChangeSender
 extends|extends
 name|NewChangeSender
 block|{
-DECL|method|CreateChangeSender (GerritServer gs, Change c)
+DECL|method|CreateChangeSender (GerritServer gs, EmailSender sf, Change c)
 specifier|public
 name|CreateChangeSender
 parameter_list|(
 name|GerritServer
 name|gs
+parameter_list|,
+name|EmailSender
+name|sf
 parameter_list|,
 name|Change
 name|c
@@ -236,6 +239,8 @@ block|{
 name|super
 argument_list|(
 name|gs
+argument_list|,
+name|sf
 argument_list|,
 name|c
 argument_list|)

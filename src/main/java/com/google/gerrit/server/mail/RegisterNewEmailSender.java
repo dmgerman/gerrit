@@ -150,13 +150,17 @@ specifier|final
 name|String
 name|addr
 decl_stmt|;
-DECL|method|RegisterNewEmailSender (final GerritServer srv, final String address, final HttpServletRequest request)
+DECL|method|RegisterNewEmailSender (final GerritServer gs, final EmailSender sf, final String address, final HttpServletRequest request)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(
 specifier|final
 name|GerritServer
-name|srv
+name|gs
+parameter_list|,
+specifier|final
+name|EmailSender
+name|sf
 parameter_list|,
 specifier|final
 name|String
@@ -169,7 +173,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|srv
+name|gs
+argument_list|,
+name|sf
 argument_list|,
 literal|null
 argument_list|,
