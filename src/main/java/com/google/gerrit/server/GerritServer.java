@@ -2063,9 +2063,8 @@ return|return
 name|u
 return|;
 block|}
-comment|/** Get the parsed<code>$site_path/gerrit.config</code> file. */
 DECL|method|getGerritConfig ()
-specifier|public
+specifier|private
 name|Config
 name|getGerritConfig
 parameter_list|()
@@ -2074,7 +2073,7 @@ return|return
 name|gerritConfigFile
 return|;
 block|}
-comment|/**    * Get (or open) a repository by name.    *     * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
+comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
 DECL|method|openRepository (String name)
 specifier|public
 name|Repository
