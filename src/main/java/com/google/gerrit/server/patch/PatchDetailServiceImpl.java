@@ -834,9 +834,17 @@ operator|.
 name|Factory
 name|addReviewerSenderFactory
 decl_stmt|;
+DECL|field|abandonedSenderFactory
+specifier|private
+specifier|final
+name|AbandonedSender
+operator|.
+name|Factory
+name|abandonedSenderFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr, final EmailSender es, final AddReviewerSender.Factory arsf)
+DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr, final EmailSender es, final AddReviewerSender.Factory arsf, final AbandonedSender.Factory asf)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -863,6 +871,12 @@ name|AddReviewerSender
 operator|.
 name|Factory
 name|arsf
+parameter_list|,
+specifier|final
+name|AbandonedSender
+operator|.
+name|Factory
+name|asf
 parameter_list|)
 block|{
 name|super
@@ -885,6 +899,10 @@ expr_stmt|;
 name|addReviewerSenderFactory
 operator|=
 name|arsf
+expr_stmt|;
+name|abandonedSenderFactory
+operator|=
+name|asf
 expr_stmt|;
 block|}
 DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings s, final AsyncCallback<PatchScript> callback)
@@ -3605,13 +3623,10 @@ name|cm
 decl_stmt|;
 name|cm
 operator|=
-operator|new
-name|AbandonedSender
+name|abandonedSenderFactory
+operator|.
+name|create
 argument_list|(
-name|server
-argument_list|,
-name|emailSender
-argument_list|,
 name|change
 argument_list|)
 expr_stmt|;
