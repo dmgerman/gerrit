@@ -148,6 +148,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
+name|MergedSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -295,9 +311,17 @@ specifier|final
 name|EmailSender
 name|emailSender
 decl_stmt|;
+DECL|field|mergedSenderFactory
+specifier|private
+specifier|final
+name|MergedSender
+operator|.
+name|Factory
+name|mergedSenderFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeMergeQueue (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final EmailSender es)
+DECL|method|ChangeMergeQueue (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final EmailSender es, final MergedSender.Factory msf)
 name|ChangeMergeQueue
 parameter_list|(
 specifier|final
@@ -318,6 +342,12 @@ parameter_list|,
 specifier|final
 name|EmailSender
 name|es
+parameter_list|,
+specifier|final
+name|MergedSender
+operator|.
+name|Factory
+name|msf
 parameter_list|)
 block|{
 name|server
@@ -335,6 +365,10 @@ expr_stmt|;
 name|emailSender
 operator|=
 name|es
+expr_stmt|;
+name|mergedSenderFactory
+operator|=
+name|msf
 expr_stmt|;
 block|}
 annotation|@
@@ -734,6 +768,8 @@ argument_list|,
 name|replication
 argument_list|,
 name|emailSender
+argument_list|,
+name|mergedSenderFactory
 argument_list|,
 name|branch
 argument_list|)

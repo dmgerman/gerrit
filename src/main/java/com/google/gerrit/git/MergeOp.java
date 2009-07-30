@@ -943,6 +943,14 @@ specifier|final
 name|EmailSender
 name|emailSender
 decl_stmt|;
+DECL|field|mergedSenderFactory
+specifier|private
+specifier|final
+name|MergedSender
+operator|.
+name|Factory
+name|mergedSenderFactory
+decl_stmt|;
 DECL|field|myIdent
 specifier|private
 specifier|final
@@ -1035,7 +1043,7 @@ specifier|private
 name|RefUpdate
 name|branchUpdate
 decl_stmt|;
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final EmailSender es, final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final EmailSender es, final MergedSender.Factory msf, final Branch.NameKey branch)
 specifier|public
 name|MergeOp
 parameter_list|(
@@ -1059,6 +1067,12 @@ name|EmailSender
 name|es
 parameter_list|,
 specifier|final
+name|MergedSender
+operator|.
+name|Factory
+name|msf
+parameter_list|,
+specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -1080,6 +1094,10 @@ expr_stmt|;
 name|emailSender
 operator|=
 name|es
+expr_stmt|;
+name|mergedSenderFactory
+operator|=
+name|msf
 expr_stmt|;
 name|myIdent
 operator|=
@@ -5635,13 +5653,10 @@ name|cm
 decl_stmt|;
 name|cm
 operator|=
-operator|new
-name|MergedSender
+name|mergedSenderFactory
+operator|.
+name|create
 argument_list|(
-name|server
-argument_list|,
-name|emailSender
-argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
