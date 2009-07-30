@@ -294,6 +294,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailException
@@ -979,6 +995,12 @@ operator|.
 name|Factory
 name|mergeFailSenderFactory
 decl_stmt|;
+DECL|field|canonicalWebUrl
+specifier|private
+specifier|final
+name|String
+name|canonicalWebUrl
+decl_stmt|;
 DECL|field|myIdent
 specifier|private
 specifier|final
@@ -1073,7 +1095,7 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl final String cwu, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1104,6 +1126,12 @@ name|Factory
 name|mfsf
 parameter_list|,
 annotation|@
+name|CanonicalWebUrl
+specifier|final
+name|String
+name|cwu
+parameter_list|,
+annotation|@
 name|Assisted
 specifier|final
 name|Branch
@@ -1131,6 +1159,10 @@ expr_stmt|;
 name|mergeFailSenderFactory
 operator|=
 name|mfsf
+expr_stmt|;
+name|canonicalWebUrl
+operator|=
+name|cwu
 expr_stmt|;
 name|myIdent
 operator|=
@@ -3575,10 +3607,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|server
-operator|.
-name|getCanonicalURL
-argument_list|()
+name|canonicalWebUrl
 operator|!=
 literal|null
 condition|)
@@ -3587,10 +3616,7 @@ specifier|final
 name|String
 name|url
 init|=
-name|server
-operator|.
-name|getCanonicalURL
-argument_list|()
+name|canonicalWebUrl
 operator|+
 name|n
 operator|.

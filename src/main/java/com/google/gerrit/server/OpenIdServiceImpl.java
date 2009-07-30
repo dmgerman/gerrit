@@ -274,6 +274,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -950,11 +966,11 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
-DECL|field|server
+DECL|field|canonicalWebUrl
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|String
+name|canonicalWebUrl
 decl_stmt|;
 DECL|field|schema
 specifier|private
@@ -979,7 +995,7 @@ name|discoveryCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl (final Injector i, final AuthConfig ac, final GerritServer gs, final CacheManager cacheMgr, final SchemaFactory<ReviewDb> sf)
+DECL|method|OpenIdServiceImpl (final Injector i, final AuthConfig ac, @CanonicalWebUrl final String cwu, final CacheManager cacheMgr, final SchemaFactory<ReviewDb> sf)
 name|OpenIdServiceImpl
 parameter_list|(
 specifier|final
@@ -990,9 +1006,11 @@ specifier|final
 name|AuthConfig
 name|ac
 parameter_list|,
+annotation|@
+name|CanonicalWebUrl
 specifier|final
-name|GerritServer
-name|gs
+name|String
+name|cwu
 parameter_list|,
 specifier|final
 name|CacheManager
@@ -1023,9 +1041,9 @@ name|authConfig
 operator|=
 name|ac
 expr_stmt|;
-name|server
+name|canonicalWebUrl
 operator|=
-name|gs
+name|cwu
 expr_stmt|;
 name|schema
 operator|=
@@ -3802,10 +3820,7 @@ block|}
 name|String
 name|contextUrl
 init|=
-name|server
-operator|.
-name|getCanonicalURL
-argument_list|()
+name|canonicalWebUrl
 decl_stmt|;
 if|if
 condition|(
