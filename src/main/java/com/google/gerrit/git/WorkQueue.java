@@ -250,13 +250,11 @@ name|WorkQueue
 block|{
 DECL|field|defaultQueue
 specifier|private
-specifier|static
 name|Executor
 name|defaultQueue
 decl_stmt|;
 DECL|field|queues
 specifier|private
-specifier|static
 specifier|final
 name|CopyOnWriteArrayList
 argument_list|<
@@ -271,9 +269,9 @@ name|Executor
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/** Get the default work queue, for miscellaneous tasks. */
 DECL|method|getDefaultQueue ()
-specifier|private
-specifier|static
+specifier|public
 specifier|synchronized
 name|Executor
 name|getDefaultQueue
@@ -303,7 +301,6 @@ block|}
 comment|/** Create a new executor queue with one thread. */
 DECL|method|createQueue (final int poolsize, final String prefix)
 specifier|public
-specifier|static
 name|Executor
 name|createQueue
 parameter_list|(
@@ -353,15 +350,16 @@ return|return
 name|r
 return|;
 block|}
-comment|/** Get all of the tasks currently scheduled in the work queue. */
+comment|/** Get all of the tasks currently scheduled in any work queue. */
 DECL|method|getTasks ()
 specifier|public
-specifier|static
+name|List
+argument_list|<
 name|Task
 argument_list|<
 name|?
 argument_list|>
-index|[]
+argument_list|>
 name|getTasks
 parameter_list|()
 block|{
@@ -404,59 +402,13 @@ expr_stmt|;
 block|}
 return|return
 name|r
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|Task
-index|[
-name|r
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
-comment|/**    * Schedule a task to run at a later point in time.    *     * @param task the task to invoke the {@code run()} method of later, on a    *        background thread.    * @param delay amount to wait before calling the task. May be 0 to request    *        "as soon as possible".    * @param unit time unit that {@code delay} is measured in.    */
-DECL|method|schedule (final Runnable task, final long delay, final TimeUnit unit)
+comment|/** Shutdown all queues, aborting any pending tasks that haven't started. */
+DECL|method|shutdown ()
 specifier|public
-specifier|static
 name|void
-name|schedule
-parameter_list|(
-specifier|final
-name|Runnable
-name|task
-parameter_list|,
-specifier|final
-name|long
-name|delay
-parameter_list|,
-specifier|final
-name|TimeUnit
-name|unit
-parameter_list|)
-block|{
-name|getDefaultQueue
-argument_list|()
-operator|.
-name|schedule
-argument_list|(
-name|task
-argument_list|,
-name|delay
-argument_list|,
-name|unit
-argument_list|)
-expr_stmt|;
-block|}
-comment|/** Shutdown the work queue, aborting any pending tasks that haven't started. */
-DECL|method|terminate ()
-specifier|public
-specifier|static
-name|void
-name|terminate
+name|shutdown
 parameter_list|()
 block|{
 for|for

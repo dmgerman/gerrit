@@ -72,20 +72,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|git
-operator|.
-name|WorkQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|ssh
@@ -370,21 +356,10 @@ return|return
 literal|1
 return|;
 block|}
-try|try
-block|{
 return|return
 name|run
 argument_list|()
 return|;
-block|}
-finally|finally
-block|{
-name|WorkQueue
-operator|.
-name|terminate
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/** Method that never returns, e.g. to keep a daemon running. */
 DECL|method|never ()

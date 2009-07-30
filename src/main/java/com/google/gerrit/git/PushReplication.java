@@ -463,6 +463,12 @@ specifier|final
 name|Injector
 name|injector
 decl_stmt|;
+DECL|field|workQueue
+specifier|private
+specifier|final
+name|WorkQueue
+name|workQueue
+decl_stmt|;
 DECL|field|configs
 specifier|private
 specifier|final
@@ -474,12 +480,16 @@ name|configs
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PushReplication (final Injector i, @SitePath final File sitePath)
+DECL|method|PushReplication (final Injector i, final WorkQueue wq, @SitePath final File sitePath)
 name|PushReplication
 parameter_list|(
 specifier|final
 name|Injector
 name|i
+parameter_list|,
+specifier|final
+name|WorkQueue
+name|wq
 parameter_list|,
 annotation|@
 name|SitePath
@@ -495,6 +505,10 @@ block|{
 name|injector
 operator|=
 name|i
+expr_stmt|;
+name|workQueue
+operator|=
+name|wq
 expr_stmt|;
 name|configs
 operator|=
@@ -996,6 +1010,8 @@ name|ReplicationConfig
 argument_list|(
 name|injector
 argument_list|,
+name|workQueue
+argument_list|,
 name|c
 argument_list|,
 name|cfg
@@ -1179,12 +1195,16 @@ operator|.
 name|Factory
 name|opFactory
 decl_stmt|;
-DECL|method|ReplicationConfig (final Injector injector, final RemoteConfig rc, final Config cfg)
+DECL|method|ReplicationConfig (final Injector injector, final WorkQueue workQueue, final RemoteConfig rc, final Config cfg)
 name|ReplicationConfig
 parameter_list|(
 specifier|final
 name|Injector
 name|injector
+parameter_list|,
+specifier|final
+name|WorkQueue
+name|workQueue
 parameter_list|,
 specifier|final
 name|RemoteConfig
@@ -1254,7 +1274,7 @@ argument_list|()
 decl_stmt|;
 name|pool
 operator|=
-name|WorkQueue
+name|workQueue
 operator|.
 name|createQueue
 argument_list|(

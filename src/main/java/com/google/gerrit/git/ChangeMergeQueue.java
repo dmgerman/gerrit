@@ -208,6 +208,12 @@ name|MergeEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|workQueue
+specifier|private
+specifier|final
+name|WorkQueue
+name|workQueue
+decl_stmt|;
 DECL|field|opFactory
 specifier|private
 specifier|final
@@ -218,9 +224,13 @@ name|opFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeMergeQueue (final MergeOp.Factory of)
+DECL|method|ChangeMergeQueue (final WorkQueue wq, final MergeOp.Factory of)
 name|ChangeMergeQueue
 parameter_list|(
+specifier|final
+name|WorkQueue
+name|wq
+parameter_list|,
 specifier|final
 name|MergeOp
 operator|.
@@ -228,6 +238,10 @@ name|Factory
 name|of
 parameter_list|)
 block|{
+name|workQueue
+operator|=
+name|wq
+expr_stmt|;
 name|opFactory
 operator|=
 name|of
@@ -488,7 +502,10 @@ name|jobScheduled
 operator|=
 literal|true
 expr_stmt|;
-name|WorkQueue
+name|workQueue
+operator|.
+name|getDefaultQueue
+argument_list|()
 operator|.
 name|schedule
 argument_list|(

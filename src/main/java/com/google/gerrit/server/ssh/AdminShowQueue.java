@@ -98,6 +98,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -132,7 +144,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -162,6 +174,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -179,6 +201,13 @@ name|AdminShowQueue
 extends|extends
 name|AbstractCommand
 block|{
+annotation|@
+name|Inject
+DECL|field|workQueue
+specifier|private
+name|WorkQueue
+name|workQueue
+decl_stmt|;
 DECL|field|p
 name|PrintWriter
 name|p
@@ -206,19 +235,21 @@ name|out
 argument_list|)
 expr_stmt|;
 specifier|final
+name|List
+argument_list|<
 name|Task
 argument_list|<
 name|?
 argument_list|>
-index|[]
+argument_list|>
 name|pending
 init|=
-name|WorkQueue
+name|workQueue
 operator|.
 name|getTasks
 argument_list|()
 decl_stmt|;
-name|Arrays
+name|Collections
 operator|.
 name|sort
 argument_list|(
@@ -508,7 +539,8 @@ literal|"  "
 operator|+
 name|pending
 operator|.
-name|length
+name|size
+argument_list|()
 operator|+
 literal|" tasks\n"
 argument_list|)
