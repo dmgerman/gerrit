@@ -138,7 +138,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|EmailSender
+name|MergeFailSender
 import|;
 end_import
 
@@ -305,12 +305,6 @@ specifier|final
 name|ReplicationQueue
 name|replication
 decl_stmt|;
-DECL|field|emailSender
-specifier|private
-specifier|final
-name|EmailSender
-name|emailSender
-decl_stmt|;
 DECL|field|mergedSenderFactory
 specifier|private
 specifier|final
@@ -319,9 +313,17 @@ operator|.
 name|Factory
 name|mergedSenderFactory
 decl_stmt|;
+DECL|field|mergeFailSenderFactory
+specifier|private
+specifier|final
+name|MergeFailSender
+operator|.
+name|Factory
+name|mergeFailSenderFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeMergeQueue (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final EmailSender es, final MergedSender.Factory msf)
+DECL|method|ChangeMergeQueue (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf)
 name|ChangeMergeQueue
 parameter_list|(
 specifier|final
@@ -340,14 +342,16 @@ name|ReplicationQueue
 name|rq
 parameter_list|,
 specifier|final
-name|EmailSender
-name|es
-parameter_list|,
-specifier|final
 name|MergedSender
 operator|.
 name|Factory
 name|msf
+parameter_list|,
+specifier|final
+name|MergeFailSender
+operator|.
+name|Factory
+name|mfsf
 parameter_list|)
 block|{
 name|server
@@ -362,13 +366,13 @@ name|replication
 operator|=
 name|rq
 expr_stmt|;
-name|emailSender
-operator|=
-name|es
-expr_stmt|;
 name|mergedSenderFactory
 operator|=
 name|msf
+expr_stmt|;
+name|mergeFailSenderFactory
+operator|=
+name|mfsf
 expr_stmt|;
 block|}
 annotation|@
@@ -767,9 +771,9 @@ name|schema
 argument_list|,
 name|replication
 argument_list|,
-name|emailSender
-argument_list|,
 name|mergedSenderFactory
+argument_list|,
+name|mergeFailSenderFactory
 argument_list|,
 name|branch
 argument_list|)
