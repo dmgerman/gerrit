@@ -408,6 +408,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -822,6 +848,22 @@ specifier|public
 class|class
 name|MergeOp
 block|{
+DECL|interface|Factory
+specifier|public
+interface|interface
+name|Factory
+block|{
+DECL|method|create (Branch.NameKey branch)
+name|MergeOp
+name|create
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|branch
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|log
 specifier|private
 specifier|static
@@ -1029,8 +1071,9 @@ specifier|private
 name|RefUpdate
 name|branchUpdate
 decl_stmt|;
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final Branch.NameKey branch)
-specifier|public
+annotation|@
+name|Inject
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1060,6 +1103,8 @@ operator|.
 name|Factory
 name|mfsf
 parameter_list|,
+annotation|@
+name|Assisted
 specifier|final
 name|Branch
 operator|.
