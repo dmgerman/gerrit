@@ -568,18 +568,6 @@ specifier|final
 name|String
 name|messageClass
 decl_stmt|;
-DECL|field|server
-specifier|protected
-specifier|final
-name|GerritServer
-name|server
-decl_stmt|;
-DECL|field|emailSender
-specifier|private
-specifier|final
-name|EmailSender
-name|emailSender
-decl_stmt|;
 DECL|field|change
 specifier|protected
 specifier|final
@@ -654,11 +642,6 @@ specifier|private
 name|boolean
 name|inFooter
 decl_stmt|;
-DECL|field|myUrl
-specifier|private
-name|String
-name|myUrl
-decl_stmt|;
 DECL|field|fromId
 specifier|protected
 name|Account
@@ -688,6 +671,20 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
+DECL|field|server
+specifier|protected
+name|GerritServer
+name|server
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|field|emailSender
+specifier|private
+name|EmailSender
+name|emailSender
+decl_stmt|;
+annotation|@
+name|Inject
 annotation|@
 name|CanonicalWebUrl
 DECL|field|canonicalWebUrl
@@ -695,18 +692,15 @@ specifier|private
 name|String
 name|canonicalWebUrl
 decl_stmt|;
-DECL|method|OutgoingEmail (final GerritServer gs, final EmailSender es, final Change c, final String mc)
+DECL|field|httpRequestUrl
+specifier|private
+name|String
+name|httpRequestUrl
+decl_stmt|;
+DECL|method|OutgoingEmail (final Change c, final String mc)
 specifier|protected
 name|OutgoingEmail
 parameter_list|(
-specifier|final
-name|GerritServer
-name|gs
-parameter_list|,
-specifier|final
-name|EmailSender
-name|es
-parameter_list|,
 specifier|final
 name|Change
 name|c
@@ -716,14 +710,6 @@ name|String
 name|mc
 parameter_list|)
 block|{
-name|server
-operator|=
-name|gs
-expr_stmt|;
-name|emailSender
-operator|=
-name|es
-expr_stmt|;
 name|change
 operator|=
 name|c
@@ -763,6 +749,49 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|OutgoingEmail (final String mc)
+specifier|protected
+name|OutgoingEmail
+parameter_list|(
+specifier|final
+name|String
+name|mc
+parameter_list|)
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|,
+name|mc
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Inject
+argument_list|(
+name|optional
+operator|=
+literal|true
+argument_list|)
+DECL|method|setHttpServletRequest (final HttpServletRequest req)
+name|void
+name|setHttpServletRequest
+parameter_list|(
+specifier|final
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+name|httpRequestUrl
+operator|=
+name|GerritServer
+operator|.
+name|serverUrl
+argument_list|(
+name|req
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setFrom (final Account.Id id)
 specifier|public
 name|void
@@ -778,26 +807,6 @@ block|{
 name|fromId
 operator|=
 name|id
-expr_stmt|;
-block|}
-DECL|method|setHttpServletRequest (final HttpServletRequest req)
-specifier|public
-name|void
-name|setHttpServletRequest
-parameter_list|(
-specifier|final
-name|HttpServletRequest
-name|req
-parameter_list|)
-block|{
-name|myUrl
-operator|=
-name|GerritServer
-operator|.
-name|serverUrl
-argument_list|(
-name|req
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setPatchSet (final PatchSet ps, final PatchSetInfo psi)
@@ -1790,7 +1799,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getGerritHost ()
-specifier|private
+specifier|protected
 name|String
 name|getGerritHost
 parameter_list|()
@@ -1945,7 +1954,7 @@ literal|null
 return|;
 block|}
 DECL|method|getGerritUrl ()
-specifier|private
+specifier|protected
 name|String
 name|getGerritUrl
 parameter_list|()
@@ -1962,7 +1971,7 @@ name|canonicalWebUrl
 return|;
 block|}
 return|return
-name|myUrl
+name|httpRequestUrl
 return|;
 block|}
 DECL|method|getChangeMessageThreadId ()

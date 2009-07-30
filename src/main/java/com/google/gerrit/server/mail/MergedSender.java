@@ -232,20 +232,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritServer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -337,16 +323,10 @@ name|dest
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedSender (GerritServer gs, EmailSender sf, @Assisted Change c)
+DECL|method|MergedSender ( @ssisted Change c)
 specifier|public
 name|MergedSender
 parameter_list|(
-name|GerritServer
-name|gs
-parameter_list|,
-name|EmailSender
-name|sf
-parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -355,10 +335,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
-argument_list|,
-name|sf
-argument_list|,
 name|c
 argument_list|,
 literal|"merged"

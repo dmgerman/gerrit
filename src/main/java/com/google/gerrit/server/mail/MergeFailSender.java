@@ -88,20 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritServer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -152,16 +138,10 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|MergeFailSender (GerritServer gs, EmailSender sf, @Assisted Change c)
+DECL|method|MergeFailSender (@ssisted Change c)
 specifier|public
 name|MergeFailSender
 parameter_list|(
-name|GerritServer
-name|gs
-parameter_list|,
-name|EmailSender
-name|sf
-parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -170,10 +150,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
-argument_list|,
-name|sf
-argument_list|,
 name|c
 argument_list|,
 literal|"comment"

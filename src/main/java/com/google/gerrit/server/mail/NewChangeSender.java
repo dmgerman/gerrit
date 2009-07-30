@@ -100,20 +100,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritServer
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -205,26 +191,16 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|NewChangeSender (GerritServer gs, EmailSender sf, Change c)
+DECL|method|NewChangeSender (Change c)
 specifier|protected
 name|NewChangeSender
 parameter_list|(
-name|GerritServer
-name|gs
-parameter_list|,
-name|EmailSender
-name|sf
-parameter_list|,
 name|Change
 name|c
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
-argument_list|,
-name|sf
-argument_list|,
 name|c
 argument_list|,
 literal|"newchange"

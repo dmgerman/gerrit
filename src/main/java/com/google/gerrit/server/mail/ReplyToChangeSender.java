@@ -82,20 +82,6 @@ name|Change
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritServer
-import|;
-end_import
-
 begin_comment
 comment|/** Alert a user to a reply to a change, usually commentary made during review. */
 end_comment
@@ -109,16 +95,10 @@ name|ReplyToChangeSender
 extends|extends
 name|OutgoingEmail
 block|{
-DECL|method|ReplyToChangeSender (GerritServer gs, EmailSender sf, Change c, String mc)
+DECL|method|ReplyToChangeSender (Change c, String mc)
 specifier|protected
 name|ReplyToChangeSender
 parameter_list|(
-name|GerritServer
-name|gs
-parameter_list|,
-name|EmailSender
-name|sf
-parameter_list|,
 name|Change
 name|c
 parameter_list|,
@@ -128,10 +108,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gs
-argument_list|,
-name|sf
-argument_list|,
 name|c
 argument_list|,
 name|mc
