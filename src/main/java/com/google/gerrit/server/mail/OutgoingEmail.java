@@ -396,16 +396,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|InetAddress
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|MalformedURLException
 import|;
 end_import
@@ -417,16 +407,6 @@ operator|.
 name|net
 operator|.
 name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|UnknownHostException
 import|;
 end_import
 
@@ -1850,28 +1830,15 @@ comment|// Fall back onto whatever the local operating system thinks
 comment|// this server is called. We hopefully didn't get here as a
 comment|// good admin would have configured the canonical url.
 comment|//
-try|try
-block|{
 return|return
-name|InetAddress
+name|SystemReader
 operator|.
-name|getLocalHost
+name|getInstance
 argument_list|()
 operator|.
-name|getCanonicalHostName
+name|getHostname
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnknownHostException
-name|e
-parameter_list|)
-block|{
-return|return
-literal|"localhost"
-return|;
-block|}
 block|}
 comment|/** Get a link to the change; null if the server doesn't know its own address. */
 DECL|method|getChangeUrl ()
