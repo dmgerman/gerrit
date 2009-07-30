@@ -256,18 +256,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Injector
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Provider
 import|;
 end_import
@@ -588,12 +576,15 @@ name|registry
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CatServlet (final Injector i, final GerritServer gs, final SchemaFactory<ReviewDb> sf, final FileTypeRegistry ftr)
+DECL|method|CatServlet (final Provider<GerritCall> cf, final GerritServer gs, final SchemaFactory<ReviewDb> sf, final FileTypeRegistry ftr)
 name|CatServlet
 parameter_list|(
 specifier|final
-name|Injector
-name|i
+name|Provider
+argument_list|<
+name|GerritCall
+argument_list|>
+name|cf
 parameter_list|,
 specifier|final
 name|GerritServer
@@ -613,14 +604,7 @@ parameter_list|)
 block|{
 name|callFactory
 operator|=
-name|i
-operator|.
-name|getProvider
-argument_list|(
-name|GerritCall
-operator|.
-name|class
-argument_list|)
+name|cf
 expr_stmt|;
 name|server
 operator|=

@@ -436,18 +436,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Injector
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Provider
 import|;
 end_import
@@ -1011,12 +999,15 @@ name|discoveryCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl (final Injector i, final AuthConfig ac, @CanonicalWebUrl @Nullable final String cwu, final CacheManager cacheMgr, final SchemaFactory<ReviewDb> sf)
+DECL|method|OpenIdServiceImpl (final Provider<GerritCall> cf, final AuthConfig ac, @CanonicalWebUrl @Nullable final String cwu, final CacheManager cacheMgr, final SchemaFactory<ReviewDb> sf)
 name|OpenIdServiceImpl
 parameter_list|(
 specifier|final
-name|Injector
-name|i
+name|Provider
+argument_list|<
+name|GerritCall
+argument_list|>
+name|cf
 parameter_list|,
 specifier|final
 name|AuthConfig
@@ -1046,14 +1037,7 @@ name|ConsumerException
 block|{
 name|callFactory
 operator|=
-name|i
-operator|.
-name|getProvider
-argument_list|(
-name|GerritCall
-operator|.
-name|class
-argument_list|)
+name|cf
 expr_stmt|;
 name|authConfig
 operator|=
