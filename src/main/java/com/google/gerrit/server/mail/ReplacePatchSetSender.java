@@ -114,6 +114,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -164,6 +190,22 @@ name|ReplacePatchSetSender
 extends|extends
 name|ReplyToChangeSender
 block|{
+DECL|interface|Factory
+specifier|public
+specifier|static
+interface|interface
+name|Factory
+block|{
+DECL|method|create (Change change)
+specifier|public
+name|ReplacePatchSetSender
+name|create
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|reviewers
 specifier|private
 specifier|final
@@ -204,7 +246,9 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|ReplacePatchSetSender (GerritServer gs, EmailSender sf, Change c)
+annotation|@
+name|Inject
+DECL|method|ReplacePatchSetSender (GerritServer gs, EmailSender sf, @Assisted Change c)
 specifier|public
 name|ReplacePatchSetSender
 parameter_list|(
@@ -214,6 +258,8 @@ parameter_list|,
 name|EmailSender
 name|sf
 parameter_list|,
+annotation|@
+name|Assisted
 name|Change
 name|c
 parameter_list|)
