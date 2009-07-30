@@ -82,18 +82,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|BindingAnnotation
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -105,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a {@link String} holding the canonical address for this server.  *<p>  * Note that the String may be null, if the administrator has not configured the  * value. Clients must handle such cases explicitly.  */
+comment|/** Indicates an injected dependency can be null. */
 end_comment
 
 begin_annotation_defn
@@ -114,12 +102,10 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
-annotation|@
-name|BindingAnnotation
-DECL|annotation|CanonicalWebUrl
+DECL|annotation|Nullable
 specifier|public
 annotation_defn|@interface
-name|CanonicalWebUrl
+name|Nullable
 block|{ }
 end_annotation_defn
 

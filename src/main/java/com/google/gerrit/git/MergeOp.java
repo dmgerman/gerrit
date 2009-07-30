@@ -310,6 +310,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailException
@@ -1095,7 +1111,7 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl final String cwu, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final String cwu, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1127,6 +1143,8 @@ name|mfsf
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|cwu

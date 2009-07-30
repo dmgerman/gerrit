@@ -140,6 +140,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|SitePath
 import|;
 end_import
@@ -171,18 +187,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Injector
 import|;
 end_import
 
@@ -437,12 +441,15 @@ name|hostDoc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Injector i, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl final String cwu)
+DECL|method|HostPageServlet (final Provider<GerritCall> cf, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final String cwu)
 name|HostPageServlet
 parameter_list|(
 specifier|final
-name|Injector
-name|i
+name|Provider
+argument_list|<
+name|GerritCall
+argument_list|>
+name|cf
 parameter_list|,
 annotation|@
 name|SitePath
@@ -456,6 +463,8 @@ name|gc
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|cwu
@@ -463,14 +472,7 @@ parameter_list|)
 block|{
 name|callFactory
 operator|=
-name|i
-operator|.
-name|getProvider
-argument_list|(
-name|GerritCall
-operator|.
-name|class
-argument_list|)
+name|cf
 expr_stmt|;
 name|canonicalUrl
 operator|=

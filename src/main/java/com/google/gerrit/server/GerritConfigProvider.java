@@ -218,6 +218,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailSender
@@ -432,7 +448,7 @@ name|contactStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, @CanonicalWebUrl final String cwu, final AuthConfig ac, final SchemaFactory<ReviewDb> sf)
+DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, final SchemaFactory<ReviewDb> sf)
 name|GerritConfigProvider
 parameter_list|(
 annotation|@
@@ -443,6 +459,8 @@ name|gsc
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
+annotation|@
+name|Nullable
 specifier|final
 name|String
 name|cwu
