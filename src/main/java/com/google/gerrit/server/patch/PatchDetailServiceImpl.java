@@ -594,22 +594,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|mail
-operator|.
-name|EmailSender
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|user
@@ -826,12 +810,6 @@ specifier|final
 name|DiffCache
 name|diffCache
 decl_stmt|;
-DECL|field|emailSender
-specifier|private
-specifier|final
-name|EmailSender
-name|emailSender
-decl_stmt|;
 DECL|field|addReviewerSenderFactory
 specifier|private
 specifier|final
@@ -848,9 +826,17 @@ operator|.
 name|Factory
 name|abandonedSenderFactory
 decl_stmt|;
+DECL|field|commentSenderFactory
+specifier|private
+specifier|final
+name|CommentSender
+operator|.
+name|Factory
+name|commentSenderFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr, final DiffCache dc, final EmailSender es, final AddReviewerSender.Factory arsf, final AbandonedSender.Factory asf)
+DECL|method|PatchDetailServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final FileTypeRegistry ftr, final DiffCache dc, final AddReviewerSender.Factory arsf, final AbandonedSender.Factory asf, final CommentSender.Factory csf)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -873,10 +859,6 @@ name|DiffCache
 name|dc
 parameter_list|,
 specifier|final
-name|EmailSender
-name|es
-parameter_list|,
-specifier|final
 name|AddReviewerSender
 operator|.
 name|Factory
@@ -887,6 +869,12 @@ name|AbandonedSender
 operator|.
 name|Factory
 name|asf
+parameter_list|,
+specifier|final
+name|CommentSender
+operator|.
+name|Factory
+name|csf
 parameter_list|)
 block|{
 name|super
@@ -906,10 +894,6 @@ name|diffCache
 operator|=
 name|dc
 expr_stmt|;
-name|emailSender
-operator|=
-name|es
-expr_stmt|;
 name|addReviewerSenderFactory
 operator|=
 name|arsf
@@ -917,6 +901,10 @@ expr_stmt|;
 name|abandonedSenderFactory
 operator|=
 name|asf
+expr_stmt|;
+name|commentSenderFactory
+operator|=
+name|csf
 expr_stmt|;
 block|}
 DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings s, final AsyncCallback<PatchScript> callback)
@@ -1617,13 +1605,10 @@ name|cm
 decl_stmt|;
 name|cm
 operator|=
-operator|new
-name|CommentSender
+name|commentSenderFactory
+operator|.
+name|create
 argument_list|(
-name|server
-argument_list|,
-name|emailSender
-argument_list|,
 name|r
 operator|.
 name|change

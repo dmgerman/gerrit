@@ -176,6 +176,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -244,6 +270,22 @@ name|CommentSender
 extends|extends
 name|ReplyToChangeSender
 block|{
+DECL|interface|Factory
+specifier|public
+specifier|static
+interface|interface
+name|Factory
+block|{
+DECL|method|create (Change change)
+specifier|public
+name|CommentSender
+name|create
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|inlineComments
 specifier|private
 name|List
@@ -257,7 +299,9 @@ operator|.
 name|emptyList
 argument_list|()
 decl_stmt|;
-DECL|method|CommentSender (GerritServer gs, EmailSender sf, Change c)
+annotation|@
+name|Inject
+DECL|method|CommentSender (GerritServer gs, EmailSender sf, @Assisted Change c)
 specifier|public
 name|CommentSender
 parameter_list|(
@@ -267,6 +311,8 @@ parameter_list|,
 name|EmailSender
 name|sf
 parameter_list|,
+annotation|@
+name|Assisted
 name|Change
 name|c
 parameter_list|)
