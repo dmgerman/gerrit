@@ -166,6 +166,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
 name|GerritServerModule
 import|;
 end_import

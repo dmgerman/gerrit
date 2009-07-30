@@ -224,6 +224,7 @@ end_import
 
 begin_class
 DECL|class|EncryptedContactStoreProvider
+specifier|public
 class|class
 name|EncryptedContactStoreProvider
 implements|implements

@@ -268,6 +268,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|MimeUtilFileTypeRegistry
+specifier|public
 class|class
 name|MimeUtilFileTypeRegistry
 implements|implements

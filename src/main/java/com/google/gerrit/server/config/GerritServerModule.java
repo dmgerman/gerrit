@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.config
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|config
 package|;
 end_package
 
@@ -248,9 +250,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AuthConfig
+name|ContactStore
 import|;
 end_import
 
@@ -264,9 +264,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|CacheManagerProvider
+name|EncryptedContactStoreProvider
 import|;
 end_import
 
@@ -280,9 +278,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|CanonicalWebUrl
+name|FileTypeRegistry
 import|;
 end_import
 
@@ -296,9 +292,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|CanonicalWebUrlProvider
+name|GerritServer
 import|;
 end_import
 
@@ -312,73 +306,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|FactoryModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|GerritServerConfigProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|SitePath
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|SitePathProvider
+name|MimeUtilFileTypeRegistry
 import|;
 end_import
 
