@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.rpc
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|rpc
 package|;
 end_package
 
@@ -93,6 +95,20 @@ operator|.
 name|rpc
 operator|.
 name|SignInRequired
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|GerritCall
 import|;
 end_import
 
@@ -225,7 +241,6 @@ argument_list|(
 literal|"serial"
 argument_list|)
 DECL|class|GerritJsonServlet
-specifier|public
 specifier|final
 class|class
 name|GerritJsonServlet
@@ -235,29 +250,6 @@ argument_list|<
 name|GerritCall
 argument_list|>
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|getCurrentCall ()
-specifier|public
-specifier|static
-specifier|final
-name|GerritCall
-name|getCurrentCall
-parameter_list|()
-block|{
-return|return
-name|JsonServlet
-operator|.
-expr|<
-name|GerritCall
-operator|>
-name|getCurrentCall
-argument_list|()
-return|;
-block|}
 DECL|field|callFactory
 specifier|private
 specifier|final

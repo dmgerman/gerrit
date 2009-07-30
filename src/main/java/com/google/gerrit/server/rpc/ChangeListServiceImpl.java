@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.rpc
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|rpc
 package|;
 end_package
 
@@ -383,6 +385,20 @@ operator|.
 name|rpc
 operator|.
 name|NoSuchEntityException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|BaseServiceImplementation
 import|;
 end_import
 
