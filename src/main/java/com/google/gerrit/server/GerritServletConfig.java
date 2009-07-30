@@ -436,16 +436,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|ProviderException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|concurrent
@@ -1121,7 +1111,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ProviderException
+name|ProvisionException
 name|e
 parameter_list|)
 block|{
@@ -1179,7 +1169,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ProviderException
+name|ProvisionException
 name|e
 parameter_list|)
 block|{
@@ -1226,7 +1216,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ProviderException
+name|ProvisionException
 name|e
 parameter_list|)
 block|{
@@ -1294,7 +1284,7 @@ comment|// Assume it never started.
 block|}
 catch|catch
 parameter_list|(
-name|ProviderException
+name|ProvisionException
 name|e
 parameter_list|)
 block|{
@@ -1356,7 +1346,7 @@ comment|// Assume it never started.
 block|}
 catch|catch
 parameter_list|(
-name|ProviderException
+name|ProvisionException
 name|e
 parameter_list|)
 block|{
@@ -1443,7 +1433,7 @@ comment|// Assume it never started.
 block|}
 catch|catch
 parameter_list|(
-name|ProviderException
+name|ProvisionException
 name|ce
 parameter_list|)
 block|{
