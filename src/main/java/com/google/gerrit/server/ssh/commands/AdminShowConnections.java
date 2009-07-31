@@ -701,7 +701,7 @@ literal|" [ %s ]\n"
 argument_list|,
 name|cmd
 operator|.
-name|getCommandLine
+name|toString
 argument_list|()
 argument_list|)
 argument_list|)

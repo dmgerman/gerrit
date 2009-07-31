@@ -147,6 +147,64 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Configure a command to be invoked by name.    *    * @param name the name of the command the client will provide in order to    *        call the command.    * @return a binding that must be bound to a non-singleton provider for a    *         {@link Command} object.    */
+DECL|method|command (final CommandName name)
+specifier|protected
+name|LinkedBindingBuilder
+argument_list|<
+name|Command
+argument_list|>
+name|command
+parameter_list|(
+specifier|final
+name|CommandName
+name|name
+parameter_list|)
+block|{
+return|return
+name|bind
+argument_list|(
+name|Commands
+operator|.
+name|key
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**    * Configure a command to be invoked by name.    *    *@param parent context of the parent command, that this command is a    *        subcommand of.    * @param name the name of the command the client will provide in order to    *        call the command.    * @return a binding that must be bound to a non-singleton provider for a    *         {@link Command} object.    */
+DECL|method|command (final CommandName parent, final String name)
+specifier|protected
+name|LinkedBindingBuilder
+argument_list|<
+name|Command
+argument_list|>
+name|command
+parameter_list|(
+specifier|final
+name|CommandName
+name|parent
+parameter_list|,
+specifier|final
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|bind
+argument_list|(
+name|Commands
+operator|.
+name|key
+argument_list|(
+name|parent
+argument_list|,
+name|name
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**    * Alias one command to another.    *    * @param from the new command name that when called will actually delegate to    *        {@code to}'s implementation.    * @param to name of an already registered command that will perform the    *        action when {@code from} is invoked by a client.    */
 DECL|method|alias (final String from, final String to)
 specifier|protected

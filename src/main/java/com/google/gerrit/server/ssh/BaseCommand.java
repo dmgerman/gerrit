@@ -136,16 +136,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -195,6 +185,20 @@ DECL|field|session
 specifier|protected
 name|ServerSession
 name|session
+decl_stmt|;
+comment|/** Text of the command line which lead up to invoking this instance. */
+DECL|field|commandPrefix
+specifier|protected
+name|String
+name|commandPrefix
+init|=
+literal|""
+decl_stmt|;
+comment|/** Unparsed rest of the command line. */
+DECL|field|commandLine
+specifier|protected
+name|String
+name|commandLine
 decl_stmt|;
 DECL|method|setInputStream (final InputStream in)
 specifier|public
@@ -281,17 +285,51 @@ operator|=
 name|session
 expr_stmt|;
 block|}
-DECL|method|delegateTo (final Command cmd)
+DECL|method|setCommandPrefix (final String prefix)
+specifier|public
+name|void
+name|setCommandPrefix
+parameter_list|(
+specifier|final
+name|String
+name|prefix
+parameter_list|)
+block|{
+name|this
+operator|.
+name|commandPrefix
+operator|=
+name|prefix
+expr_stmt|;
+block|}
+comment|/**    * Set the command line to be evaluated by this command.    *<p>    * If this command is being invoked from a higher level    * {@link DispatchCommand} then only the portion after the command name (that    * is, the arguments) is supplied.    *    * @param line the command line received from the client.    */
+DECL|method|setCommandLine (final String line)
+specifier|public
+name|void
+name|setCommandLine
+parameter_list|(
+specifier|final
+name|String
+name|line
+parameter_list|)
+block|{
+name|this
+operator|.
+name|commandLine
+operator|=
+name|line
+expr_stmt|;
+block|}
+comment|/**    * Pass all state into the command, then run its start method.    *<p>    * This method copies all critical state, like the input and output streams,    * into the supplied command. The caller must still invoke {@code cmd.start()}    * if wants to pass control to the command.    *    * @param cmd the command that will receive the current state.    */
+DECL|method|provideStateTo (final Command cmd)
 specifier|protected
 name|void
-name|delegateTo
+name|provideStateTo
 parameter_list|(
 specifier|final
 name|Command
 name|cmd
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(
@@ -341,11 +379,33 @@ argument_list|(
 name|exit
 argument_list|)
 expr_stmt|;
-name|cmd
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+if|if
+condition|(
+name|commandPrefix
 operator|.
-name|start
+name|isEmpty
 argument_list|()
-expr_stmt|;
+condition|)
+return|return
+name|commandLine
+return|;
+else|else
+return|return
+name|commandPrefix
+operator|+
+literal|" "
+operator|+
+name|commandLine
+return|;
 block|}
 block|}
 end_class

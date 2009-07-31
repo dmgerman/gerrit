@@ -258,15 +258,11 @@ name|error
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|setCommandLine (final String cmdName, final String line)
+DECL|method|setCommandLine (final String line)
 specifier|public
 name|void
 name|setCommandLine
 parameter_list|(
-specifier|final
-name|String
-name|cmdName
-parameter_list|,
 specifier|final
 name|String
 name|line
@@ -276,9 +272,7 @@ name|super
 operator|.
 name|setCommandLine
 argument_list|(
-name|cmdName
-argument_list|,
-literal|""
+name|line
 argument_list|)
 expr_stmt|;
 specifier|final

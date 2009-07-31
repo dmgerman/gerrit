@@ -458,10 +458,6 @@ name|Set
 import|;
 end_import
 
-begin_comment
-comment|/** Basic command implementation invoked by {@link GuiceCommandFactory}. */
-end_comment
-
 begin_class
 DECL|class|AbstractCommand
 specifier|public
@@ -533,16 +529,6 @@ DECL|field|db
 specifier|protected
 name|ReviewDb
 name|db
-decl_stmt|;
-DECL|field|name
-specifier|private
-name|String
-name|name
-decl_stmt|;
-DECL|field|unsplitArguments
-specifier|private
-name|String
-name|unsplitArguments
 decl_stmt|;
 DECL|field|userGroups
 specifier|private
@@ -825,62 +811,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getName ()
-specifier|protected
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
-DECL|method|getCommandLine ()
-specifier|public
-name|String
-name|getCommandLine
-parameter_list|()
-block|{
-return|return
-name|unsplitArguments
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|?
-name|name
-operator|+
-literal|" "
-operator|+
-name|unsplitArguments
-else|:
-name|name
-return|;
-block|}
-DECL|method|setCommandLine (final String cmdName, final String line)
-specifier|public
-name|void
-name|setCommandLine
-parameter_list|(
-specifier|final
-name|String
-name|cmdName
-parameter_list|,
-specifier|final
-name|String
-name|line
-parameter_list|)
-block|{
-name|name
-operator|=
-name|cmdName
-expr_stmt|;
-name|unsplitArguments
-operator|=
-name|line
-expr_stmt|;
-block|}
 DECL|method|parseArguments ()
 specifier|private
 name|void
@@ -924,7 +854,7 @@ literal|0
 init|;
 name|ip
 operator|<
-name|unsplitArguments
+name|commandLine
 operator|.
 name|length
 argument_list|()
@@ -935,7 +865,7 @@ specifier|final
 name|char
 name|b
 init|=
-name|unsplitArguments
+name|commandLine
 operator|.
 name|charAt
 argument_list|(
@@ -1012,7 +942,7 @@ name|inquote
 operator|||
 name|ip
 operator|==
-name|unsplitArguments
+name|commandLine
 operator|.
 name|length
 argument_list|()
@@ -1030,7 +960,7 @@ name|r
 operator|.
 name|append
 argument_list|(
-name|unsplitArguments
+name|commandLine
 operator|.
 name|charAt
 argument_list|(
@@ -1149,8 +1079,7 @@ name|msg
 operator|.
 name|write
 argument_list|(
-name|getName
-argument_list|()
+name|commandPrefix
 argument_list|)
 expr_stmt|;
 name|clp
@@ -1262,8 +1191,7 @@ name|Thread
 argument_list|(
 literal|"Execute "
 operator|+
-name|getName
-argument_list|()
+name|commandPrefix
 operator|+
 literal|" ["
 operator|+
@@ -1688,7 +1616,7 @@ name|logmsg
 operator|.
 name|append
 argument_list|(
-name|name
+name|commandPrefix
 argument_list|)
 expr_stmt|;
 name|logmsg
@@ -1702,7 +1630,7 @@ name|logmsg
 operator|.
 name|append
 argument_list|(
-name|unsplitArguments
+name|commandLine
 argument_list|)
 expr_stmt|;
 return|return
