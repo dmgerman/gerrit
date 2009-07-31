@@ -237,7 +237,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|GerritCommandFactory
+name|GuiceCommandFactory
 argument_list|(
 name|createMap
 argument_list|()

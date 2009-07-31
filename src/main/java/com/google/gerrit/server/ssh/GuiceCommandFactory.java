@@ -131,13 +131,13 @@ import|;
 end_import
 
 begin_comment
-comment|/** Creates a command implementation based on the client input. */
+comment|/**  * Creates a command implementation by looking up an entry in Guice.  *<p>  * Commands can be registered in Guice through a {@link CommandModule}, using  * the {@link CommandModule#command(String)} binding to connect a String command  * name to a command implementation.  */
 end_comment
 
 begin_class
-DECL|class|GerritCommandFactory
+DECL|class|GuiceCommandFactory
 class|class
-name|GerritCommandFactory
+name|GuiceCommandFactory
 implements|implements
 name|CommandFactory
 block|{
@@ -155,8 +155,8 @@ argument_list|>
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|method|GerritCommandFactory (final Map<String, Provider<Command>> c)
-name|GerritCommandFactory
+DECL|method|GuiceCommandFactory (final Map<String, Provider<Command>> c)
+name|GuiceCommandFactory
 parameter_list|(
 specifier|final
 name|Map

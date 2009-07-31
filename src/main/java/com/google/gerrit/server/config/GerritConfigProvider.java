@@ -204,7 +204,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|Sshd
+name|SshInfo
 import|;
 end_import
 
@@ -386,7 +386,7 @@ name|schema
 decl_stmt|;
 DECL|field|sshd
 specifier|private
-name|Sshd
+name|SshInfo
 name|sshd
 decl_stmt|;
 DECL|field|emailSender
@@ -454,12 +454,12 @@ name|optional
 operator|=
 literal|true
 argument_list|)
-DECL|method|setSshd (final Sshd d)
+DECL|method|setSshd (final SshInfo d)
 name|void
 name|setSshd
 parameter_list|(
 specifier|final
-name|Sshd
+name|SshInfo
 name|d
 parameter_list|)
 block|{

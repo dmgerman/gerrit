@@ -308,6 +308,22 @@ name|server
 operator|.
 name|ssh
 operator|.
+name|SshDaemon
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ssh
+operator|.
 name|SshDaemonModule
 import|;
 end_import
@@ -324,7 +340,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|Sshd
+name|SshInfo
 import|;
 end_import
 
@@ -891,7 +907,7 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|Sshd
+name|SshInfo
 operator|.
 name|class
 argument_list|)
@@ -902,7 +918,7 @@ name|sshInjector
 operator|.
 name|getProvider
 argument_list|(
-name|Sshd
+name|SshInfo
 operator|.
 name|class
 argument_list|)
@@ -1252,7 +1268,7 @@ name|sshInjector
 operator|.
 name|getInstance
 argument_list|(
-name|Sshd
+name|SshDaemon
 operator|.
 name|class
 argument_list|)
@@ -1328,7 +1344,7 @@ name|sshInjector
 operator|.
 name|getInstance
 argument_list|(
-name|Sshd
+name|SshDaemon
 operator|.
 name|class
 argument_list|)

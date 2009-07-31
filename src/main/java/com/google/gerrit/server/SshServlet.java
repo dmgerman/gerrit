@@ -76,7 +76,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|Sshd
+name|SshInfo
 import|;
 end_import
 
@@ -212,16 +212,16 @@ block|{
 DECL|field|sshd
 specifier|private
 specifier|final
-name|Sshd
+name|SshInfo
 name|sshd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshServlet (final Sshd daemon)
+DECL|method|SshServlet (final SshInfo daemon)
 name|SshServlet
 parameter_list|(
 specifier|final
-name|Sshd
+name|SshInfo
 name|daemon
 parameter_list|)
 block|{

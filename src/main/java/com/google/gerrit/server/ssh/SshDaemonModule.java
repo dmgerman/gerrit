@@ -283,7 +283,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Configures standard dependencies for {@link GerritSshDaemon}. */
+comment|/** Configures standard dependencies for {@link SshDaemon}. */
 end_comment
 
 begin_class
@@ -347,14 +347,14 @@ argument_list|()
 expr_stmt|;
 name|bind
 argument_list|(
-name|Sshd
+name|SshInfo
 operator|.
 name|class
 argument_list|)
 operator|.
 name|to
 argument_list|(
-name|GerritSshDaemon
+name|SshDaemon
 operator|.
 name|class
 argument_list|)

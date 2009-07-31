@@ -459,7 +459,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Basic command implementation invoked by {@link GerritCommandFactory}. */
+comment|/** Basic command implementation invoked by {@link GuiceCommandFactory}. */
 end_comment
 
 begin_class

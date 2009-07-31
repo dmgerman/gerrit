@@ -168,7 +168,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|SshDaemonModule
+name|SshDaemon
 import|;
 end_import
 
@@ -184,7 +184,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|Sshd
+name|SshDaemonModule
 import|;
 end_import
 
@@ -320,7 +320,7 @@ name|injector
 operator|.
 name|getInstance
 argument_list|(
-name|Sshd
+name|SshDaemon
 operator|.
 name|class
 argument_list|)

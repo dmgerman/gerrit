@@ -158,7 +158,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|Sshd
+name|SshInfo
 import|;
 end_import
 
@@ -464,7 +464,7 @@ decl_stmt|;
 DECL|field|sshd
 specifier|private
 specifier|final
-name|Sshd
+name|SshInfo
 name|sshd
 decl_stmt|;
 DECL|field|config
@@ -484,7 +484,7 @@ name|hostKeys
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SystemInfoServiceImpl (final SchemaFactory<ReviewDb> sf, final Sshd daemon, final GerritConfig gc)
+DECL|method|SystemInfoServiceImpl (final SchemaFactory<ReviewDb> sf, final SshInfo daemon, final GerritConfig gc)
 name|SystemInfoServiceImpl
 parameter_list|(
 specifier|final
@@ -495,7 +495,7 @@ argument_list|>
 name|sf
 parameter_list|,
 specifier|final
-name|Sshd
+name|SshInfo
 name|daemon
 parameter_list|,
 specifier|final

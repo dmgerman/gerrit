@@ -68,32 +68,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|mina
-operator|.
-name|core
-operator|.
-name|service
-operator|.
-name|IoAcceptor
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|net
@@ -123,23 +97,11 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|Sshd
+DECL|interface|SshInfo
 specifier|public
 interface|interface
-name|Sshd
+name|SshInfo
 block|{
-DECL|method|start ()
-name|void
-name|start
-parameter_list|()
-throws|throws
-name|IOException
-function_decl|;
-DECL|method|stop ()
-name|void
-name|stop
-parameter_list|()
-function_decl|;
 DECL|method|getAddress ()
 name|InetSocketAddress
 name|getAddress
@@ -151,11 +113,6 @@ argument_list|<
 name|PublicKey
 argument_list|>
 name|getHostKeys
-parameter_list|()
-function_decl|;
-DECL|method|getIoAcceptor ()
-name|IoAcceptor
-name|getIoAcceptor
 parameter_list|()
 function_decl|;
 block|}

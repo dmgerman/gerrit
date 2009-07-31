@@ -128,7 +128,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|SshUtil
+name|SshDaemon
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|Sshd
+name|SshUtil
 import|;
 end_import
 
@@ -371,7 +371,7 @@ annotation|@
 name|Inject
 DECL|field|daemon
 specifier|private
-name|Sshd
+name|SshDaemon
 name|daemon
 decl_stmt|;
 annotation|@

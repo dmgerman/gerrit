@@ -975,13 +975,14 @@ end_comment
 begin_class
 annotation|@
 name|Singleton
-DECL|class|GerritSshDaemon
+DECL|class|SshDaemon
+specifier|public
 class|class
-name|GerritSshDaemon
+name|SshDaemon
 extends|extends
 name|SshServer
 implements|implements
-name|Sshd
+name|SshInfo
 block|{
 DECL|field|DEFAULT_PORT
 specifier|private
@@ -1003,7 +1004,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|GerritSshDaemon
+name|SshDaemon
 operator|.
 name|class
 argument_list|)
@@ -1136,8 +1137,8 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritSshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, @SitePath final File sitePath, @GerritServerConfig final Config cfg)
-name|GerritSshDaemon
+DECL|method|SshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, @SitePath final File sitePath, @GerritServerConfig final Config cfg)
+name|SshDaemon
 parameter_list|(
 specifier|final
 name|GerritServer
