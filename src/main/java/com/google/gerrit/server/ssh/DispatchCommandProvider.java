@@ -170,7 +170,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|LinkedHashMap
 import|;
 end_import
 
@@ -191,6 +191,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
 import|;
 end_import
 
@@ -422,7 +432,7 @@ argument_list|>
 name|m
 init|=
 operator|new
-name|HashMap
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,
@@ -515,7 +525,11 @@ name|Collections
 operator|.
 name|unmodifiableMap
 argument_list|(
+operator|new
+name|LinkedHashMap
+argument_list|(
 name|m
+argument_list|)
 argument_list|)
 return|;
 block|}
