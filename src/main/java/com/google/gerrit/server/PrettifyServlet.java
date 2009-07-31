@@ -72,6 +72,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -122,17 +134,7 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|ServletConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|ServletException
+name|ServletContext
 import|;
 end_import
 
@@ -193,30 +195,23 @@ literal|"20090521"
 decl_stmt|;
 DECL|field|content
 specifier|private
+specifier|final
 name|byte
 index|[]
 name|content
 decl_stmt|;
 annotation|@
-name|Override
-DECL|method|init (ServletConfig config)
-specifier|public
-name|void
-name|init
+name|Inject
+DECL|method|PrettifyServlet (final ServletContext servletContext)
+name|PrettifyServlet
 parameter_list|(
-name|ServletConfig
-name|config
+specifier|final
+name|ServletContext
+name|servletContext
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
-name|super
-operator|.
-name|init
-argument_list|(
-name|config
-argument_list|)
-expr_stmt|;
 specifier|final
 name|String
 name|myDir
@@ -239,6 +234,8 @@ name|load
 argument_list|(
 name|buffer
 argument_list|,
+name|servletContext
+argument_list|,
 name|myDir
 operator|+
 literal|"prettify.js"
@@ -249,8 +246,7 @@ control|(
 name|Object
 name|p
 range|:
-name|getServletContext
-argument_list|()
+name|servletContext
 operator|.
 name|getResourcePaths
 argument_list|(
@@ -289,6 +285,8 @@ name|load
 argument_list|(
 name|buffer
 argument_list|,
+name|servletContext
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
@@ -302,7 +300,7 @@ name|toByteArray
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|load (final OutputStream buffer, final String path)
+DECL|method|load (final OutputStream buffer, final ServletContext servletContext, final String path)
 specifier|private
 name|void
 name|load
@@ -312,16 +310,21 @@ name|OutputStream
 name|buffer
 parameter_list|,
 specifier|final
+name|ServletContext
+name|servletContext
+parameter_list|,
+specifier|final
 name|String
 name|path
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 specifier|final
 name|InputStream
 name|in
 init|=
-name|getServletContext
-argument_list|()
+name|servletContext
 operator|.
 name|getResourceAsStream
 argument_list|(
@@ -405,10 +408,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|getServletContext
-argument_list|()
-operator|.
-name|log
+throw|throw
+operator|new
+name|IOException
 argument_list|(
 literal|"Cannot read "
 operator|+
@@ -416,7 +418,7 @@ name|path
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 block|}
 block|}

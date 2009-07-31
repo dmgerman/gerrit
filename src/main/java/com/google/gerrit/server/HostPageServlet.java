@@ -296,6 +296,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -346,17 +356,7 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|ServletConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|ServletException
+name|ServletContext
 import|;
 end_import
 
@@ -450,12 +450,13 @@ name|wantSSL
 decl_stmt|;
 DECL|field|hostDoc
 specifier|private
+specifier|final
 name|Document
 name|hostDoc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Provider<GerritCall> cf, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final String cwu)
+DECL|method|HostPageServlet (final Provider<GerritCall> cf, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final String cwu, final ServletContext servletContext)
 name|HostPageServlet
 parameter_list|(
 specifier|final
@@ -482,7 +483,13 @@ name|Nullable
 specifier|final
 name|String
 name|cwu
+parameter_list|,
+specifier|final
+name|ServletContext
+name|servletContext
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|callFactory
 operator|=
@@ -513,27 +520,6 @@ argument_list|(
 literal|"https:"
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|init (ServletConfig config)
-specifier|public
-name|void
-name|init
-parameter_list|(
-name|ServletConfig
-name|config
-parameter_list|)
-throws|throws
-name|ServletException
-block|{
-name|super
-operator|.
-name|init
-argument_list|(
-name|config
-argument_list|)
-expr_stmt|;
 specifier|final
 name|String
 name|hostPageName
@@ -546,8 +532,7 @@ name|HtmlDomUtil
 operator|.
 name|parseFile
 argument_list|(
-name|getServletContext
-argument_list|()
+name|servletContext
 argument_list|,
 literal|"/"
 operator|+
@@ -563,7 +548,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|FileNotFoundException
 argument_list|(
 literal|"No "
 operator|+
@@ -576,6 +561,8 @@ block|}
 name|fixModuleReference
 argument_list|(
 name|hostDoc
+argument_list|,
+name|servletContext
 argument_list|)
 expr_stmt|;
 name|injectCssFile
@@ -634,7 +621,7 @@ name|String
 name|fileName
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
 specifier|final
 name|Element
@@ -757,7 +744,7 @@ name|String
 name|fileName
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
 specifier|final
 name|Element
@@ -1037,7 +1024,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fixModuleReference (final Document hostDoc)
+DECL|method|fixModuleReference (final Document hostDoc, final ServletContext servletContext)
 specifier|private
 name|void
 name|fixModuleReference
@@ -1045,9 +1032,13 @@ parameter_list|(
 specifier|final
 name|Document
 name|hostDoc
+parameter_list|,
+specifier|final
+name|ServletContext
+name|servletContext
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
 specifier|final
 name|Element
@@ -1071,7 +1062,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"No gerrit_module to rewrite in host document"
 argument_list|)
@@ -1098,8 +1089,7 @@ decl_stmt|;
 name|InputStream
 name|in
 init|=
-name|getServletContext
-argument_list|()
+name|servletContext
 operator|.
 name|getResourceAsStream
 argument_list|(
@@ -1117,7 +1107,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"No "
 operator|+
@@ -1200,7 +1190,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Failed reading "
 operator|+

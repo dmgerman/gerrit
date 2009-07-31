@@ -230,16 +230,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|servlet
-operator|.
-name|ServletException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|xml
 operator|.
 name|parsers
@@ -926,7 +916,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
 specifier|final
 name|InputStream
@@ -976,7 +966,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
@@ -994,7 +984,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
@@ -1022,7 +1012,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
@@ -1049,7 +1039,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
 if|if
 condition|(
@@ -1108,7 +1098,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
@@ -1126,7 +1116,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
@@ -1164,7 +1154,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
@@ -1191,7 +1181,7 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|ServletException
+name|IOException
 block|{
 if|if
 condition|(
@@ -1326,7 +1316,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ServletException
+name|IOException
 argument_list|(
 literal|"Error reading "
 operator|+
