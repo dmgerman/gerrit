@@ -170,6 +170,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|pgm
+operator|.
+name|CmdLineParser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|BaseServiceImplementation
@@ -478,6 +492,7 @@ end_comment
 
 begin_class
 DECL|class|AbstractCommand
+specifier|public
 specifier|abstract
 class|class
 name|AbstractCommand
@@ -956,6 +971,7 @@ name|name
 return|;
 block|}
 DECL|method|getCommandLine ()
+specifier|public
 name|String
 name|getCommandLine
 parameter_list|()
@@ -978,6 +994,7 @@ name|name
 return|;
 block|}
 DECL|method|setCommandLine (final String cmdName, final String line)
+specifier|public
 name|void
 name|setCommandLine
 parameter_list|(

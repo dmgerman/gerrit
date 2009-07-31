@@ -52,8 +52,20 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.ssh
+DECL|package|com.google.gerrit.server
 package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+package|;
+end_package
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -63,8 +75,10 @@ operator|.
 name|server
 operator|.
 name|ssh
-package|;
-end_package
+operator|.
+name|Sshd
+import|;
+end_import
 
 begin_import
 import|import

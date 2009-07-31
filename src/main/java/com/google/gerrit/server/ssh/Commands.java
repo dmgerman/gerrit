@@ -80,6 +80,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|CommandFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -89,6 +103,10 @@ operator|.
 name|Annotation
 import|;
 end_import
+
+begin_comment
+comment|/** Utilities to support {@link CommandName} construction. */
+end_comment
 
 begin_class
 DECL|class|Commands
@@ -101,7 +119,9 @@ specifier|public
 specifier|static
 name|Key
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 name|key
 parameter_list|(
@@ -115,7 +135,9 @@ name|Key
 operator|.
 name|get
 argument_list|(
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 operator|.
 name|class
 argument_list|,
@@ -126,6 +148,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/** Create a CommandName annotation for the supplied name. */
 DECL|method|named (final String name)
 specifier|public
 specifier|static

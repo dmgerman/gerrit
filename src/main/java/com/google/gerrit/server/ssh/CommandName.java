@@ -104,6 +104,10 @@ name|Retention
 import|;
 end_import
 
+begin_comment
+comment|/**  * Name of a command registered in an SSH daemon.  *  * @see CommandModule#command(String)  * @see Commands#named(String)  */
+end_comment
+
 begin_annotation_defn
 annotation|@
 name|Retention

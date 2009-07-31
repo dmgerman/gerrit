@@ -152,16 +152,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -212,6 +202,10 @@ name|Map
 import|;
 end_import
 
+begin_comment
+comment|/**  * Creates a CommandFactory using commands registered by {@link CommandModule}.  */
+end_comment
+
 begin_class
 DECL|class|CommandFactoryProvider
 class|class
@@ -229,14 +223,9 @@ specifier|final
 name|Logger
 name|log
 init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
 name|SshDaemonModule
 operator|.
-name|class
-argument_list|)
+name|log
 decl_stmt|;
 DECL|field|injector
 specifier|private
@@ -289,7 +278,9 @@ name|String
 argument_list|,
 name|Provider
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 argument_list|>
 name|createMap
@@ -302,7 +293,9 @@ name|String
 argument_list|,
 name|Provider
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 argument_list|>
 name|m
@@ -316,7 +309,9 @@ name|String
 argument_list|,
 name|Provider
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 argument_list|>
 argument_list|()
@@ -395,7 +390,9 @@ argument_list|,
 operator|(
 name|Provider
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 operator|)
 name|binding
@@ -420,7 +417,9 @@ name|List
 argument_list|<
 name|Binding
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 argument_list|>
 name|allCommands
@@ -434,7 +433,9 @@ argument_list|(
 operator|new
 name|TypeLiteral
 argument_list|<
-name|AbstractCommand
+name|CommandFactory
+operator|.
+name|Command
 argument_list|>
 argument_list|()
 block|{}

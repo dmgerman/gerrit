@@ -1,10 +1,10 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Copyright (C) 2008, Shawn O. Pearce<spearce@spearce.org>  *   * (Taken from JGit org.spearce.jgit.pgm.opt.CmdLineParser.)  *   * All rights reserved.  *   * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *   * - Redistributions of source code must retain the above copyright notice, this  * list of conditions and the following disclaimer.  *   * - Redistributions in binary form must reproduce the above copyright notice,  * this list of conditions and the following disclaimer in the documentation  * and/or other materials provided with the distribution.  *   * - Neither the name of the Git Development Community nor the names of its  * contributors may be used to endorse or promote products derived from this  * software without specific prior written permission.  *   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE  * POSSIBILITY OF SUCH DAMAGE.  */
+comment|/*  * Copyright (C) 2008, Shawn O. Pearce<spearce@spearce.org>  *  * (Taken from JGit org.spearce.jgit.pgm.opt.CmdLineParser.)  *  * All rights reserved.  *  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  * - Redistributions of source code must retain the above copyright notice, this  * list of conditions and the following disclaimer.  *  * - Redistributions in binary form must reproduce the above copyright notice,  * this list of conditions and the following disclaimer in the documentation  * and/or other materials provided with the distribution.  *  * - Neither the name of the Git Development Community nor the names of its  * contributors may be used to endorse or promote products derived from this  * software without specific prior written permission.  *  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF  * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE  * POSSIBILITY OF SUCH DAMAGE.  */
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.ssh
+DECL|package|com.google.gerrit.pgm
 package|package
 name|com
 operator|.
@@ -12,9 +12,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|ssh
+name|pgm
 package|;
 end_package
 
@@ -70,7 +68,7 @@ name|args4j
 operator|.
 name|CmdLineParser
 block|{
-comment|/**    * Creates a new command line owner that parses arguments/options and set them    * into the given object.    *     * @param bean instance of a class annotated by    *        {@link org.kohsuke.args4j.Option} and    *        {@link org.kohsuke.args4j.Argument}. this object will receive    *        values.    *     * @throws IllegalAnnotationError if the option bean class is using args4j    *         annotations incorrectly.    */
+comment|/**    * Creates a new command line owner that parses arguments/options and set them    * into the given object.    *    * @param bean instance of a class annotated by    *        {@link org.kohsuke.args4j.Option} and    *        {@link org.kohsuke.args4j.Argument}. this object will receive    *        values.    *    * @throws IllegalAnnotationError if the option bean class is using args4j    *         annotations incorrectly.    */
 DECL|method|CmdLineParser (final Object bean)
 specifier|public
 name|CmdLineParser

@@ -152,12 +152,12 @@ name|String
 argument_list|,
 name|Provider
 argument_list|<
-name|AbstractCommand
+name|Command
 argument_list|>
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|method|GerritCommandFactory (final Map<String, Provider<AbstractCommand>> c)
+DECL|method|GerritCommandFactory (final Map<String, Provider<Command>> c)
 name|GerritCommandFactory
 parameter_list|(
 specifier|final
@@ -167,7 +167,7 @@ name|String
 argument_list|,
 name|Provider
 argument_list|<
-name|AbstractCommand
+name|Command
 argument_list|>
 argument_list|>
 name|c
@@ -370,8 +370,6 @@ block|{
 specifier|final
 name|Provider
 argument_list|<
-name|?
-extends|extends
 name|Command
 argument_list|>
 name|p

@@ -8,7 +8,7 @@ comment|/*  * NB: This code was primarly ripped out of MINA SSHD.  *  * @author<
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.ssh
+DECL|package|com.google.gerrit.server.ssh.commands
 package|package
 name|com
 operator|.
@@ -19,8 +19,26 @@ operator|.
 name|server
 operator|.
 name|ssh
+operator|.
+name|commands
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ssh
+operator|.
+name|AbstractCommand
+import|;
+end_import
 
 begin_import
 import|import
@@ -241,6 +259,7 @@ decl_stmt|;
 annotation|@
 name|Override
 DECL|method|setCommandLine (final String cmdName, final String line)
+specifier|public
 name|void
 name|setCommandLine
 parameter_list|(

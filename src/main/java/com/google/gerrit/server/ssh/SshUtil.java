@@ -210,26 +210,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|InetAddress
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|InetSocketAddress
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|SocketAddress
 import|;
 end_import
@@ -322,6 +302,7 @@ name|SshUtil
 block|{
 comment|/** Server session attribute holding the {@link Account.Id}. */
 DECL|field|CURRENT_ACCOUNT
+specifier|public
 specifier|static
 specifier|final
 name|AttributeKey
@@ -343,6 +324,7 @@ argument_list|()
 decl_stmt|;
 comment|/** Server session attribute holding the remote {@link SocketAddress}. */
 DECL|field|REMOTE_PEER
+specifier|public
 specifier|static
 specifier|final
 name|AttributeKey
@@ -360,6 +342,7 @@ argument_list|()
 decl_stmt|;
 comment|/** Server session attribute holding the current commands. */
 DECL|field|ACTIVE
+specifier|public
 specifier|static
 specifier|final
 name|AttributeKey
@@ -381,7 +364,7 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**    * Parse a public key into its Java type.    *     * @param key the account key to parse.    * @return the valid public key object.    * @throws InvalidKeySpecException the key supplied is not a valid SSH key.    * @throws NoSuchAlgorithmException the JVM is missing the key algorithm.    * @throws NoSuchProviderException the JVM is missing the provider.    */
+comment|/**    * Parse a public key into its Java type.    *    * @param key the account key to parse.    * @return the valid public key object.    * @throws InvalidKeySpecException the key supplied is not a valid SSH key.    * @throws NoSuchAlgorithmException the JVM is missing the key algorithm.    * @throws NoSuchProviderException the JVM is missing the provider.    */
 DECL|method|parse (final AccountSshKey key)
 specifier|public
 specifier|static
@@ -470,7 +453,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Convert an RFC 4716 style key to an OpenSSH style key.    *     * @param keyStr the key string to convert.    * @return<code>keyStr</code> if conversion failed; otherwise the converted    *         key, in OpenSSH key format.    */
+comment|/**    * Convert an RFC 4716 style key to an OpenSSH style key.    *    * @param keyStr the key string to convert.    * @return<code>keyStr</code> if conversion failed; otherwise the converted    *         key, in OpenSSH key format.    */
 DECL|method|toOpenSshPublicKey (final String keyStr)
 specifier|public
 specifier|static
