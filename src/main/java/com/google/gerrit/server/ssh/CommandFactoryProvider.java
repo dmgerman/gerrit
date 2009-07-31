@@ -142,16 +142,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -216,17 +206,6 @@ argument_list|<
 name|CommandFactory
 argument_list|>
 block|{
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|SshDaemonModule
-operator|.
-name|log
-decl_stmt|;
 DECL|field|injector
 specifier|private
 specifier|final
@@ -355,18 +334,6 @@ name|CommandName
 operator|)
 condition|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"SSH command binding lacks @CommandName: "
-operator|+
-name|binding
-operator|.
-name|getKey
-argument_list|()
-argument_list|)
-expr_stmt|;
 continue|continue;
 block|}
 specifier|final
