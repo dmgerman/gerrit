@@ -78,22 +78,8 @@ name|RequestScoped
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|servlet
-operator|.
-name|SessionScoped
-import|;
-end_import
-
 begin_comment
-comment|/**  * Information about the currently logged in user.  *<p>  * This is a {@link RequestScoped} or {@link SessionScoped} property managed by  * Guice, depending on the environment. Application code should just assume it  * is {@code RequestScoped}.  *  * @see IdentifiedUser  */
+comment|/**  * Information about the currently logged in user.  *<p>  * This is a {@link RequestScoped} property managed by Guice.  *  * @see IdentifiedUser  */
 end_comment
 
 begin_class
