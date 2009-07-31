@@ -36,7 +36,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|AbstractCommand
+name|BaseCommand
 import|;
 end_import
 
@@ -175,7 +175,7 @@ DECL|class|ScpCommand
 class|class
 name|ScpCommand
 extends|extends
-name|AbstractCommand
+name|BaseCommand
 block|{
 DECL|field|TYPE_DIR
 specifier|private
@@ -446,10 +446,35 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|run ()
-specifier|protected
+DECL|method|start ()
+specifier|public
+name|void
+name|start
+parameter_list|()
+block|{
+name|startThread
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
 name|void
 name|run
+parameter_list|()
+block|{
+name|runImp
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|runImp ()
+specifier|private
+name|void
+name|runImp
 parameter_list|()
 block|{
 try|try
