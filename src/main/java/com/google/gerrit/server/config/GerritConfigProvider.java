@@ -204,7 +204,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|GerritSshDaemon
+name|Sshd
 import|;
 end_import
 
@@ -318,6 +318,7 @@ end_import
 
 begin_class
 DECL|class|GerritConfigProvider
+specifier|public
 class|class
 name|GerritConfigProvider
 implements|implements
@@ -385,7 +386,7 @@ name|schema
 decl_stmt|;
 DECL|field|sshd
 specifier|private
-name|GerritSshDaemon
+name|Sshd
 name|sshd
 decl_stmt|;
 DECL|field|emailSender
@@ -453,12 +454,12 @@ name|optional
 operator|=
 literal|true
 argument_list|)
-DECL|method|setGerritSshDaemon (final GerritSshDaemon d)
+DECL|method|setSshd (final Sshd d)
 name|void
-name|setGerritSshDaemon
+name|setSshd
 parameter_list|(
 specifier|final
-name|GerritSshDaemon
+name|Sshd
 name|d
 parameter_list|)
 block|{

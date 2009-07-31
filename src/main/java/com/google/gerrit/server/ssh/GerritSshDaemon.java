@@ -954,11 +954,12 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GerritSshDaemon
-specifier|public
 class|class
 name|GerritSshDaemon
 extends|extends
 name|SshServer
+implements|implements
+name|Sshd
 block|{
 DECL|field|DEFAULT_PORT
 specifier|private
@@ -1114,7 +1115,6 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GerritSshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, @SitePath final File sitePath, @GerritServerConfig final Config cfg)
-specifier|public
 name|GerritSshDaemon
 parameter_list|(
 specifier|final
@@ -1353,6 +1353,8 @@ name|computePreferredAddress
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHostKeys ()
 specifier|public
 name|Collection
@@ -1366,6 +1368,8 @@ return|return
 name|hostKeys
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getAddress ()
 specifier|public
 name|InetSocketAddress

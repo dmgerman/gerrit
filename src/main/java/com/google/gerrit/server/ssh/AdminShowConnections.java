@@ -321,7 +321,7 @@ annotation|@
 name|Inject
 DECL|field|daemon
 specifier|private
-name|GerritSshDaemon
+name|Sshd
 name|daemon
 decl_stmt|;
 annotation|@

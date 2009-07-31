@@ -198,16 +198,16 @@ block|{
 DECL|field|sshd
 specifier|private
 specifier|final
-name|GerritSshDaemon
+name|Sshd
 name|sshd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshServlet (final GerritSshDaemon daemon)
+DECL|method|SshServlet (final Sshd daemon)
 name|SshServlet
 parameter_list|(
 specifier|final
-name|GerritSshDaemon
+name|Sshd
 name|daemon
 parameter_list|)
 block|{
