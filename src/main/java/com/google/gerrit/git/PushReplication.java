@@ -140,6 +140,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|FactoryProvider
@@ -401,6 +413,8 @@ comment|/** Manages automatic replication to remote repositories. */
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|PushReplication
 specifier|public
 class|class

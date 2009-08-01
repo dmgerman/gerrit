@@ -66,6 +66,18 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -243,6 +255,8 @@ comment|/** Delayed execution of tasks using a background thread pool. */
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|WorkQueue
 specifier|public
 class|class

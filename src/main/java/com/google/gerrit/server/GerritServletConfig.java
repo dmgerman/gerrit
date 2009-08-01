@@ -79,20 +79,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Stage
-operator|.
-name|DEVELOPMENT
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -462,18 +448,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Scopes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|servlet
 operator|.
 name|GuiceServletContextListener
@@ -745,8 +719,6 @@ argument_list|)
 operator|.
 name|in
 argument_list|(
-name|Scopes
-operator|.
 name|SINGLETON
 argument_list|)
 expr_stmt|;
@@ -837,41 +809,41 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|rootInjector
+DECL|field|sysInjector
 specifier|private
-specifier|final
 name|Injector
-name|rootInjector
+name|sysInjector
 decl_stmt|;
 DECL|field|webInjector
 specifier|private
-specifier|final
 name|Injector
 name|webInjector
 decl_stmt|;
 DECL|field|sshInjector
 specifier|private
-specifier|final
 name|Injector
 name|sshInjector
 decl_stmt|;
-DECL|method|GerritServletConfig ()
-specifier|public
-name|GerritServletConfig
+DECL|method|init ()
+specifier|private
+specifier|synchronized
+name|void
+name|init
 parameter_list|()
 block|{
-comment|// Sadly we use DEVELOPMENT right now to permit lazy construction on
-comment|// everything. This allows us to perform a graceful shutdown during
-comment|// contextDestroyed if we failed part way through contextInitialized.
-comment|//
-name|rootInjector
+if|if
+condition|(
+name|sysInjector
+operator|==
+literal|null
+condition|)
+block|{
+name|sysInjector
 operator|=
 name|Guice
 operator|.
 name|createInjector
 argument_list|(
-name|DEVELOPMENT
-argument_list|,
 operator|new
 name|GerritServerModule
 argument_list|()
@@ -879,7 +851,7 @@ argument_list|)
 expr_stmt|;
 name|sshInjector
 operator|=
-name|rootInjector
+name|sysInjector
 operator|.
 name|createChildInjector
 argument_list|(
@@ -890,7 +862,7 @@ argument_list|)
 expr_stmt|;
 name|webInjector
 operator|=
-name|rootInjector
+name|sysInjector
 operator|.
 name|createChildInjector
 argument_list|(
@@ -970,6 +942,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
 DECL|method|getInjector ()
@@ -978,6 +951,9 @@ name|Injector
 name|getInjector
 parameter_list|()
 block|{
+name|init
+argument_list|()
+expr_stmt|;
 return|return
 name|webInjector
 return|;
@@ -1000,6 +976,9 @@ name|contextInitialized
 argument_list|(
 name|event
 argument_list|)
+expr_stmt|;
+name|init
+argument_list|()
 expr_stmt|;
 comment|// Temporary hack to make Common.getAccountId() honor the Guice
 comment|// managed request state in either SSH or HTTP environments.
@@ -1146,7 +1125,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|rootInjector
+name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
@@ -1206,7 +1185,7 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|rootInjector
+name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
@@ -1340,6 +1319,13 @@ parameter_list|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|sshInjector
+operator|!=
+literal|null
+condition|)
+block|{
 name|sshInjector
 operator|.
 name|getInstance
@@ -1353,6 +1339,7 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|ConfigurationException
@@ -1367,7 +1354,14 @@ parameter_list|)
 block|{     }
 try|try
 block|{
-name|rootInjector
+if|if
+condition|(
+name|sysInjector
+operator|!=
+literal|null
+condition|)
+block|{
+name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
@@ -1380,32 +1374,6 @@ name|shutdown
 argument_list|()
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|ConfigurationException
-name|e
-parameter_list|)
-block|{     }
-catch|catch
-parameter_list|(
-name|ProvisionException
-name|e
-parameter_list|)
-block|{     }
-try|try
-block|{
-name|rootInjector
-operator|.
-name|getInstance
-argument_list|(
-name|CacheManager
-operator|.
-name|class
-argument_list|)
-operator|.
-name|shutdown
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1421,9 +1389,51 @@ parameter_list|)
 block|{     }
 try|try
 block|{
+if|if
+condition|(
+name|sysInjector
+operator|!=
+literal|null
+condition|)
+block|{
+name|sysInjector
+operator|.
+name|getInstance
+argument_list|(
+name|CacheManager
+operator|.
+name|class
+argument_list|)
+operator|.
+name|shutdown
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|ConfigurationException
+name|e
+parameter_list|)
+block|{     }
+catch|catch
+parameter_list|(
+name|ProvisionException
+name|e
+parameter_list|)
+block|{     }
+try|try
+block|{
+if|if
+condition|(
+name|sysInjector
+operator|!=
+literal|null
+condition|)
+block|{
 name|closeDataSource
 argument_list|(
-name|rootInjector
+name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
@@ -1433,6 +1443,7 @@ name|DS
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
