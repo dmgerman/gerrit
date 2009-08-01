@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.data
+DECL|package|com.google.gerrit.client
 package|package
 name|com
 operator|.
@@ -61,42 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|client
-operator|.
-name|data
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|ContributorAgreement
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|SignInRequired
-import|;
-end_import
 
 begin_import
 import|import
@@ -126,7 +92,7 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|AllowCrossSiteRequest
+name|HostPageCache
 import|;
 end_import
 
@@ -144,52 +110,31 @@ name|RemoteJsonService
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_interface
-DECL|interface|SystemInfoService
-specifier|public
+DECL|interface|HostPageDataService
 interface|interface
-name|SystemInfoService
+name|HostPageDataService
 extends|extends
 name|RemoteJsonService
 block|{
 annotation|@
-name|AllowCrossSiteRequest
-DECL|method|daemonHostKeys (AsyncCallback<List<SshHostKey>> callback)
+name|HostPageCache
+argument_list|(
+name|name
+operator|=
+literal|"gerrit_hostpagedata_obj"
+argument_list|,
+name|once
+operator|=
+literal|true
+argument_list|)
+DECL|method|load (AsyncCallback<HostPageData> callback)
 name|void
-name|daemonHostKeys
+name|load
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|SshHostKey
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|SignInRequired
-DECL|method|contributorAgreements (AsyncCallback<List<ContributorAgreement>> callback)
-name|void
-name|contributorAgreements
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|ContributorAgreement
-argument_list|>
+name|HostPageData
 argument_list|>
 name|callback
 parameter_list|)

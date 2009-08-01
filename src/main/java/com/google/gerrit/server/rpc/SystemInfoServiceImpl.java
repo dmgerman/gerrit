@@ -78,22 +78,6 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|data
-operator|.
 name|SshHostKey
 import|;
 end_import
@@ -479,12 +463,6 @@ specifier|final
 name|SshInfo
 name|sshd
 decl_stmt|;
-DECL|field|config
-specifier|private
-specifier|final
-name|GerritConfig
-name|config
-decl_stmt|;
 DECL|field|hostKeys
 specifier|private
 specifier|final
@@ -505,7 +483,7 @@ name|httpRequest
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SystemInfoServiceImpl (final SchemaFactory<ReviewDb> sf, final SshInfo daemon, final GerritConfig gc, final Provider<HttpServletRequest> hsr)
+DECL|method|SystemInfoServiceImpl (final SchemaFactory<ReviewDb> sf, final SshInfo daemon, final Provider<HttpServletRequest> hsr)
 name|SystemInfoServiceImpl
 parameter_list|(
 specifier|final
@@ -518,10 +496,6 @@ parameter_list|,
 specifier|final
 name|SshInfo
 name|daemon
-parameter_list|,
-specifier|final
-name|GerritConfig
-name|gc
 parameter_list|,
 specifier|final
 name|Provider
@@ -538,10 +512,6 @@ expr_stmt|;
 name|sshd
 operator|=
 name|daemon
-expr_stmt|;
-name|config
-operator|=
-name|gc
 expr_stmt|;
 name|hostKeys
 operator|=
@@ -582,27 +552,6 @@ name|getHostAddress
 argument_list|()
 argument_list|)
 return|;
-block|}
-DECL|method|loadGerritConfig (final AsyncCallback<GerritConfig> callback)
-specifier|public
-name|void
-name|loadGerritConfig
-parameter_list|(
-specifier|final
-name|AsyncCallback
-argument_list|<
-name|GerritConfig
-argument_list|>
-name|callback
-parameter_list|)
-block|{
-name|callback
-operator|.
-name|onSuccess
-argument_list|(
-name|config
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|contributorAgreements ( final AsyncCallback<List<ContributorAgreement>> callback)
 specifier|public
