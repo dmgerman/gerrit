@@ -224,6 +224,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|jcraft
 operator|.
 name|jsch
@@ -482,9 +494,18 @@ name|PublicKey
 argument_list|>
 name|hostKeys
 decl_stmt|;
+DECL|field|httpRequest
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|HttpServletRequest
+argument_list|>
+name|httpRequest
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SystemInfoServiceImpl (final SchemaFactory<ReviewDb> sf, final SshInfo daemon, final GerritConfig gc)
+DECL|method|SystemInfoServiceImpl (final SchemaFactory<ReviewDb> sf, final SshInfo daemon, final GerritConfig gc, final Provider<HttpServletRequest> hsr)
 name|SystemInfoServiceImpl
 parameter_list|(
 specifier|final
@@ -501,6 +522,13 @@ parameter_list|,
 specifier|final
 name|GerritConfig
 name|gc
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|HttpServletRequest
+argument_list|>
+name|hsr
 parameter_list|)
 block|{
 name|schema
@@ -519,6 +547,10 @@ name|hostKeys
 operator|=
 name|sortHostKeys
 argument_list|()
+expr_stmt|;
+name|httpRequest
+operator|=
+name|hsr
 expr_stmt|;
 block|}
 DECL|method|isIPv6 (final InetAddress ip)
@@ -936,18 +968,6 @@ name|String
 name|hostIdent
 parameter_list|()
 block|{
-specifier|final
-name|HttpServletRequest
-name|req
-init|=
-name|GerritJsonServlet
-operator|.
-name|getCurrentCall
-argument_list|()
-operator|.
-name|getHttpServletRequest
-argument_list|()
-decl_stmt|;
 name|InetSocketAddress
 name|addr
 init|=
@@ -980,7 +1000,10 @@ name|InetAddress
 operator|.
 name|getByName
 argument_list|(
-name|req
+name|httpRequest
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getServerName
 argument_list|()

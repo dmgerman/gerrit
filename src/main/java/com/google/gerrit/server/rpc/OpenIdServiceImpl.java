@@ -999,9 +999,18 @@ specifier|final
 name|SelfPopulatingCache
 name|discoveryCache
 decl_stmt|;
+DECL|field|httpRequest
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|HttpServletRequest
+argument_list|>
+name|httpRequest
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl (final Provider<GerritCall> cf, final AuthConfig ac, @CanonicalWebUrl @Nullable final String cwu, final CacheManager cacheMgr, final SchemaFactory<ReviewDb> sf)
+DECL|method|OpenIdServiceImpl (final Provider<GerritCall> cf, final Provider<HttpServletRequest> hsr, final AuthConfig ac, @CanonicalWebUrl @Nullable final String cwu, final CacheManager cacheMgr, final SchemaFactory<ReviewDb> sf)
 name|OpenIdServiceImpl
 parameter_list|(
 specifier|final
@@ -1010,6 +1019,13 @@ argument_list|<
 name|GerritCall
 argument_list|>
 name|cf
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|HttpServletRequest
+argument_list|>
+name|hsr
 parameter_list|,
 specifier|final
 name|AuthConfig
@@ -1040,6 +1056,10 @@ block|{
 name|callFactory
 operator|=
 name|cf
+expr_stmt|;
+name|httpRequest
+operator|=
+name|hsr
 expr_stmt|;
 name|authConfig
 operator|=
@@ -1232,18 +1252,6 @@ expr_stmt|;
 return|return;
 block|}
 specifier|final
-name|HttpServletRequest
-name|httpReq
-init|=
-name|GerritJsonServlet
-operator|.
-name|getCurrentCall
-argument_list|()
-operator|.
-name|getHttpServletRequest
-argument_list|()
-decl_stmt|;
-specifier|final
 name|State
 name|state
 decl_stmt|;
@@ -1251,8 +1259,6 @@ name|state
 operator|=
 name|init
 argument_list|(
-name|httpReq
-argument_list|,
 name|openidIdentifier
 argument_list|,
 name|mode
@@ -1708,8 +1714,6 @@ name|state
 operator|=
 name|init
 argument_list|(
-name|req
-argument_list|,
 name|openidIdentifier
 argument_list|,
 name|mode
@@ -3620,15 +3624,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (final HttpServletRequest httpReq, final String openidIdentifier, final SignInDialog.Mode mode, final boolean remember, final String returnToken)
+DECL|method|init (final String openidIdentifier, final SignInDialog.Mode mode, final boolean remember, final String returnToken)
 specifier|private
 name|State
 name|init
 parameter_list|(
-specifier|final
-name|HttpServletRequest
-name|httpReq
-parameter_list|,
 specifier|final
 name|String
 name|openidIdentifier
@@ -3722,7 +3722,10 @@ name|GerritServer
 operator|.
 name|serverUrl
 argument_list|(
-name|httpReq
+name|httpRequest
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
