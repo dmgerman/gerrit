@@ -386,6 +386,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|RemotePeer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -449,6 +463,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -652,7 +678,7 @@ name|java
 operator|.
 name|net
 operator|.
-name|InetSocketAddress
+name|SocketAddress
 import|;
 end_import
 
@@ -726,18 +752,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletRequest
-import|;
-end_import
-
 begin_class
 DECL|class|ProjectAdminServiceImpl
 class|class
@@ -773,9 +787,18 @@ specifier|final
 name|ReplicationQueue
 name|replication
 decl_stmt|;
+DECL|field|remotePeer
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|SocketAddress
+argument_list|>
+name|remotePeer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ReplicationQueue rq)
+DECL|method|ProjectAdminServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ReplicationQueue rq, @RemotePeer final Provider<SocketAddress> rp)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -792,6 +815,15 @@ parameter_list|,
 specifier|final
 name|ReplicationQueue
 name|rq
+parameter_list|,
+annotation|@
+name|RemotePeer
+specifier|final
+name|Provider
+argument_list|<
+name|SocketAddress
+argument_list|>
+name|rp
 parameter_list|)
 block|{
 name|super
@@ -806,6 +838,10 @@ expr_stmt|;
 name|replication
 operator|=
 name|rq
+expr_stmt|;
+name|remotePeer
+operator|=
+name|rp
 expr_stmt|;
 block|}
 DECL|method|ownedProjects (final AsyncCallback<List<Project>> callback)
@@ -3001,18 +3037,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-specifier|final
-name|HttpServletRequest
-name|hreq
-init|=
-name|GerritJsonServlet
-operator|.
-name|getCurrentCall
-argument_list|()
-operator|.
-name|getHttpServletRequest
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 specifier|final
@@ -3053,19 +3077,10 @@ name|toReflogIdent
 argument_list|(
 name|me
 argument_list|,
-operator|new
-name|InetSocketAddress
-argument_list|(
-name|hreq
+name|remotePeer
 operator|.
-name|getRemoteHost
+name|get
 argument_list|()
-argument_list|,
-name|hreq
-operator|.
-name|getRemotePort
-argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
