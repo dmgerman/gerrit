@@ -95,6 +95,11 @@ name|String
 name|buttonSignIn
 parameter_list|()
 function_decl|;
+DECL|method|buttonRegister ()
+name|String
+name|buttonRegister
+parameter_list|()
+function_decl|;
 DECL|method|buttonLinkId ()
 name|String
 name|buttonLinkId

@@ -98,6 +98,14 @@ name|String
 name|hostname
 parameter_list|)
 function_decl|;
+DECL|method|registerAt (String hostname)
+name|String
+name|registerAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
+function_decl|;
 DECL|method|linkAt (String hostname)
 name|String
 name|linkAt
@@ -109,6 +117,14 @@ function_decl|;
 DECL|method|signInWith (String who)
 name|String
 name|signInWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
+DECL|method|registerWith (String who)
+name|String
+name|registerWith
 parameter_list|(
 name|String
 name|who

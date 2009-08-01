@@ -98,6 +98,11 @@ name|String
 name|menuSignOut
 parameter_list|()
 function_decl|;
+DECL|method|menuRegister ()
+name|String
+name|menuRegister
+parameter_list|()
+function_decl|;
 DECL|method|menuSettings ()
 name|String
 name|menuSettings
@@ -111,6 +116,11 @@ function_decl|;
 DECL|method|linkIdentityDialogTitle ()
 name|String
 name|linkIdentityDialogTitle
+parameter_list|()
+function_decl|;
+DECL|method|registerDialogTitle ()
+name|String
+name|registerDialogTitle
 parameter_list|()
 function_decl|;
 DECL|method|loginTypeUnsupported ()

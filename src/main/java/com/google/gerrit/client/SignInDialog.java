@@ -167,7 +167,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Prompts the user to sign in to their account.  *<p>  * This dialog performs the login within an iframe, allowing normal HTML based  * login pages to be used, including those which aren't served from the same  * server as Gerrit. This is important to permit an OpenID provider or some  * other web based single-sign-on system to be used for authentication.  *<p>  * Post login the iframe content is expected to execute the JavaScript snippet:  *   *<pre>  * $callback(account);  *</pre>  *   * where<code>$callback</code> is the parameter in the initial request and  *<code>account</code> is either<code>!= null</code> (the user is now signed  * in) or<code>null</code> (the sign in was aborted/canceled before it  * completed).  */
+comment|/**  * Prompts the user to sign in to their account.  *<p>  * This dialog performs the login within an iframe, allowing normal HTML based  * login pages to be used, including those which aren't served from the same  * server as Gerrit. This is important to permit an OpenID provider or some  * other web based single-sign-on system to be used for authentication.  *<p>  * Post login the iframe content is expected to execute the JavaScript snippet:  *  *<pre>  * $callback(account);  *</pre>  *  * where<code>$callback</code> is the parameter in the initial request and  *<code>account</code> is either<code>!= null</code> (the user is now signed  * in) or<code>null</code> (the sign in was aborted/canceled before it  * completed).  */
 end_comment
 
 begin_class
@@ -186,9 +186,12 @@ name|Mode
 block|{
 DECL|enumConstant|SIGN_IN
 DECL|enumConstant|LINK_IDENTIY
+DECL|enumConstant|REGISTER
 name|SIGN_IN
 block|,
 name|LINK_IDENTIY
+block|,
+name|REGISTER
 block|;   }
 DECL|field|panel
 specifier|private
@@ -209,7 +212,7 @@ name|SIGN_IN
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new dialog to handle user sign in.    *     * @param signInMode type of mode the login will perform.    */
+comment|/**    * Create a new dialog to handle user sign in.    *    * @param signInMode type of mode the login will perform.    */
 DECL|method|SignInDialog (final Mode signInMode)
 specifier|public
 name|SignInDialog
@@ -227,7 +230,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new dialog to handle user sign in.    *     * @param signInMode type of mode the login will perform.    * @param errorMsg error message to display, if non-null.    */
+comment|/**    * Create a new dialog to handle user sign in.    *    * @param signInMode type of mode the login will perform.    * @param errorMsg error message to display, if non-null.    */
 DECL|method|SignInDialog (final Mode signInMode, final String errorMsg)
 specifier|public
 name|SignInDialog
@@ -328,6 +331,20 @@ operator|.
 name|C
 operator|.
 name|linkIdentityDialogTitle
+argument_list|()
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|REGISTER
+case|:
+name|setText
+argument_list|(
+name|Gerrit
+operator|.
+name|C
+operator|.
+name|registerDialogTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
