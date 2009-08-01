@@ -524,13 +524,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-name|install
-argument_list|(
-operator|new
-name|DatabaseModule
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|bind
 argument_list|(
 name|File
