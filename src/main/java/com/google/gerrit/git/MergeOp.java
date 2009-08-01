@@ -458,6 +458,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -1011,11 +1023,14 @@ operator|.
 name|Factory
 name|mergeFailSenderFactory
 decl_stmt|;
-DECL|field|canonicalWebUrl
+DECL|field|urlProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|String
-name|canonicalWebUrl
+argument_list|>
+name|urlProvider
 decl_stmt|;
 DECL|field|myIdent
 specifier|private
@@ -1111,7 +1126,7 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final String cwu, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1146,7 +1161,10 @@ name|CanonicalWebUrl
 annotation|@
 name|Nullable
 specifier|final
+name|Provider
+argument_list|<
 name|String
+argument_list|>
 name|cwu
 parameter_list|,
 annotation|@
@@ -1178,7 +1196,7 @@ name|mergeFailSenderFactory
 operator|=
 name|mfsf
 expr_stmt|;
-name|canonicalWebUrl
+name|urlProvider
 operator|=
 name|cwu
 expr_stmt|;
@@ -3623,9 +3641,18 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
+specifier|final
+name|String
+name|siteUrl
+init|=
+name|urlProvider
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|canonicalWebUrl
+name|siteUrl
 operator|!=
 literal|null
 condition|)
@@ -3634,7 +3661,7 @@ specifier|final
 name|String
 name|url
 init|=
-name|canonicalWebUrl
+name|siteUrl
 operator|+
 name|n
 operator|.

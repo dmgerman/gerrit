@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a {@link String} holding the canonical address for this server.  *<p>  * Note that the String may be null, if the administrator has not configured the  * value. Clients must handle such cases explicitly.  */
+comment|/**  * Marker on a {@link String} holding the canonical address for this server.  *<p>  * Note that the String may be null, if the administrator has not configured the  * value and we are not in an HTTP request where the URL can be guessed from the  * request state. Clients must handle such cases explicitly.  */
 end_comment
 
 begin_annotation_defn
