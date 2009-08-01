@@ -94,7 +94,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|SystemConfig
+name|LoginType
 import|;
 end_import
 
@@ -189,8 +189,6 @@ name|allowRegisterNewEmail
 decl_stmt|;
 DECL|field|loginType
 specifier|protected
-name|SystemConfig
-operator|.
 name|LoginType
 name|loginType
 decl_stmt|;
@@ -254,8 +252,6 @@ expr_stmt|;
 block|}
 DECL|method|getLoginType ()
 specifier|public
-name|SystemConfig
-operator|.
 name|LoginType
 name|getLoginType
 parameter_list|()
@@ -264,14 +260,12 @@ return|return
 name|loginType
 return|;
 block|}
-DECL|method|setLoginType (final SystemConfig.LoginType t)
+DECL|method|setLoginType (final LoginType t)
 specifier|public
 name|void
 name|setLoginType
 parameter_list|(
 specifier|final
-name|SystemConfig
-operator|.
 name|LoginType
 name|t
 parameter_list|)

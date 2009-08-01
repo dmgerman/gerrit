@@ -200,20 +200,6 @@ argument_list|)
 assert|;
 block|}
 block|}
-DECL|enum|LoginType
-specifier|public
-specifier|static
-enum|enum
-name|LoginType
-block|{
-comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} */
-DECL|enumConstant|OPENID
-name|OPENID
-block|,
-comment|/**      * Login relies upon the container/web server security.      *<p>      * The container or web server must populate an HTTP header with the some      * user token. Gerrit will implicitly trust the value of this header to      * supply the unique identity.      */
-DECL|enumConstant|HTTP
-name|HTTP
-block|;   }
 comment|/** Construct a new, unconfigured instance. */
 DECL|method|create ()
 specifier|public

@@ -78,7 +78,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|SystemConfig
+name|LoginType
 import|;
 end_import
 
@@ -95,8 +95,6 @@ operator|.
 name|reviewdb
 operator|.
 name|SystemConfig
-operator|.
-name|LoginType
 import|;
 end_import
 
@@ -393,6 +391,18 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isBecomeAnyoneEnabled
+argument_list|()
+condition|)
+block|{
+return|return
+name|LoginType
+operator|.
+name|DEVELOPMENT_BECOME_ANY_ACCOUNT
+return|;
+block|}
 name|String
 name|type
 init|=
@@ -458,6 +468,40 @@ operator|+
 name|type
 argument_list|)
 throw|;
+block|}
+DECL|method|isBecomeAnyoneEnabled ()
+specifier|private
+specifier|static
+name|boolean
+name|isBecomeAnyoneEnabled
+parameter_list|()
+block|{
+try|try
+block|{
+name|String
+name|s
+init|=
+literal|"com.google.gerrit.server.http.BecomeAnyAccountLoginServlet"
+decl_stmt|;
+return|return
+name|Boolean
+operator|.
+name|getBoolean
+argument_list|(
+name|s
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|SecurityException
+name|se
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/** Type of user authentication used by this Gerrit server. */
 DECL|method|getLoginType ()

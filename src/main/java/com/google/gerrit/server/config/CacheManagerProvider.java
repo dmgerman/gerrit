@@ -26,8 +26,6 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|SystemConfig
-operator|.
 name|LoginType
 import|;
 end_import
