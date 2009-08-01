@@ -266,7 +266,7 @@ name|globalkey
 operator|.
 name|client
 operator|.
-name|HidePopupPanelCommand
+name|GlobalKey
 import|;
 end_import
 
@@ -282,7 +282,7 @@ name|globalkey
 operator|.
 name|client
 operator|.
-name|GlobalKey
+name|HidePopupPanelCommand
 import|;
 end_import
 

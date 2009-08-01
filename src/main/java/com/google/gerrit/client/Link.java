@@ -252,7 +252,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ChangeQueryResultsScreen
+name|ByProjectOpenChangesScreen
 import|;
 end_import
 
@@ -268,7 +268,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ByProjectOpenChangesScreen
+name|ChangeQueryResultsScreen
 import|;
 end_import
 

@@ -80,6 +80,24 @@ name|reviewdb
 operator|.
 name|AccountGeneralPreferences
 operator|.
+name|CONTEXT_CHOICES
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|AccountGeneralPreferences
+operator|.
 name|DEFAULT_CONTEXT
 import|;
 end_import
@@ -99,24 +117,6 @@ operator|.
 name|AccountGeneralPreferences
 operator|.
 name|DEFAULT_PAGESIZE
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|AccountGeneralPreferences
-operator|.
-name|CONTEXT_CHOICES
 import|;
 end_import
 
