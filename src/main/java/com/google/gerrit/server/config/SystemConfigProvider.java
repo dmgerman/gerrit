@@ -388,16 +388,33 @@ argument_list|<
 name|SystemConfig
 argument_list|>
 block|{
-annotation|@
-name|Inject
 DECL|field|schema
 specifier|private
+specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|SystemConfigProvider (final SchemaFactory<ReviewDb> sf)
+name|SystemConfigProvider
+parameter_list|(
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
+parameter_list|)
+block|{
+name|schema
+operator|=
+name|sf
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|get ()
