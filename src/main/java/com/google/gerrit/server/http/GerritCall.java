@@ -420,6 +420,14 @@ name|schema
 operator|=
 name|sf
 expr_stmt|;
+name|setXsrfSignedToken
+argument_list|(
+name|ac
+operator|.
+name|getXsrfToken
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
