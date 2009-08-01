@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|http
+operator|.
 name|SshServlet
 import|;
 end_import

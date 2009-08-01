@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.rpc
+DECL|package|com.google.gerrit.server.http
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|rpc
+name|http
 package|;
 end_package
 
@@ -95,20 +95,6 @@ operator|.
 name|rpc
 operator|.
 name|SignInRequired
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritCall
 import|;
 end_import
 
