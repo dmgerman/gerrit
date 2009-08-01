@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.rpc
+DECL|package|com.google.gerrit.server.openid
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|rpc
+name|openid
 package|;
 end_package
 
@@ -205,22 +205,6 @@ operator|.
 name|reviewdb
 operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|SystemConfig
 import|;
 end_import
 
@@ -857,6 +841,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|RETURN_URL
+specifier|static
+specifier|final
+name|String
+name|RETURN_URL
+init|=
+literal|"OpenID"
+decl_stmt|;
 DECL|field|P_MODE
 specifier|private
 specifier|static
@@ -1053,20 +1045,6 @@ operator|new
 name|ConsumerManager
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|authConfig
-operator|.
-name|getLoginType
-argument_list|()
-operator|==
-name|SystemConfig
-operator|.
-name|LoginType
-operator|.
-name|OPENID
-condition|)
-block|{
 specifier|final
 name|Cache
 name|base
@@ -1159,14 +1137,6 @@ name|discoveryCache
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|discoveryCache
-operator|=
-literal|null
-expr_stmt|;
-block|}
-block|}
 DECL|method|discover (final String openidIdentifier, final SignInDialog.Mode mode, final boolean remember, final String returnToken, final AsyncCallback<DiscoveryResult> callback)
 specifier|public
 name|void
@@ -1198,33 +1168,6 @@ argument_list|>
 name|callback
 parameter_list|)
 block|{
-if|if
-condition|(
-name|authConfig
-operator|.
-name|getLoginType
-argument_list|()
-operator|!=
-name|SystemConfig
-operator|.
-name|LoginType
-operator|.
-name|OPENID
-condition|)
-block|{
-name|callback
-operator|.
-name|onFailure
-argument_list|(
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"OpenID not enabled"
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 specifier|final
 name|State
 name|state
@@ -2237,7 +2180,9 @@ operator|.
 name|getMethod
 argument_list|()
 operator|+
-literal|" /login"
+literal|" /"
+operator|+
+name|RETURN_URL
 argument_list|)
 expr_stmt|;
 for|for
@@ -3708,7 +3653,7 @@ name|UrlEncoded
 argument_list|(
 name|contextUrl
 operator|+
-literal|"login"
+name|RETURN_URL
 argument_list|)
 decl_stmt|;
 name|retTo
