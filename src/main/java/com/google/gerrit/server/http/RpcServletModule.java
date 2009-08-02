@@ -271,6 +271,11 @@ argument_list|(
 name|clazz
 argument_list|)
 decl_stmt|;
+name|bind
+argument_list|(
+name|clazz
+argument_list|)
+expr_stmt|;
 name|serve
 argument_list|(
 name|prefix
