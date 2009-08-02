@@ -1718,14 +1718,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateContact (final String fullName, final String emailAddr, final ContactInformation info, final AsyncCallback<Account> callback)
+DECL|method|updateContact (final String name, final String emailAddr, final ContactInformation info, final AsyncCallback<Account> callback)
 specifier|public
 name|void
 name|updateContact
 parameter_list|(
 specifier|final
 name|String
-name|fullName
+name|name
 parameter_list|,
 specifier|final
 name|String
@@ -1796,7 +1796,19 @@ name|me
 operator|.
 name|setFullName
 argument_list|(
-name|fullName
+name|name
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|name
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+name|name
+else|:
+literal|null
 argument_list|)
 expr_stmt|;
 name|me

@@ -480,6 +480,51 @@ name|String
 name|buttonSubmitNewAgreement
 parameter_list|()
 function_decl|;
+DECL|method|welcomeToGerritCodeReview ()
+name|String
+name|welcomeToGerritCodeReview
+parameter_list|()
+function_decl|;
+DECL|method|welcomeReviewContact ()
+name|String
+name|welcomeReviewContact
+parameter_list|()
+function_decl|;
+DECL|method|welcomeContactFrom ()
+name|String
+name|welcomeContactFrom
+parameter_list|()
+function_decl|;
+DECL|method|welcomeSshKeyHeading ()
+name|String
+name|welcomeSshKeyHeading
+parameter_list|()
+function_decl|;
+DECL|method|welcomeSshKeyText ()
+name|String
+name|welcomeSshKeyText
+parameter_list|()
+function_decl|;
+DECL|method|welcomeAgreementHeading ()
+name|String
+name|welcomeAgreementHeading
+parameter_list|()
+function_decl|;
+DECL|method|welcomeAgreementText ()
+name|String
+name|welcomeAgreementText
+parameter_list|()
+function_decl|;
+DECL|method|welcomeAgreementLater ()
+name|String
+name|welcomeAgreementLater
+parameter_list|()
+function_decl|;
+DECL|method|welcomeContinue ()
+name|String
+name|welcomeContinue
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
