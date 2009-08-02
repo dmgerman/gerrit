@@ -366,6 +366,13 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
+name|CommandFactoryProvider
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
 name|CommandFactory
 operator|.
 name|class
