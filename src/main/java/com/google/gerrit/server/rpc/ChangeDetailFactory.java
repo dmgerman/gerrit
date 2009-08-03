@@ -430,7 +430,7 @@ name|server
 operator|.
 name|BaseServiceImplementation
 operator|.
-name|Action
+name|Failure
 import|;
 end_import
 
@@ -444,9 +444,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|BaseServiceImplementation
+name|patch
 operator|.
-name|Failure
+name|PatchSetInfoNotAvailableException
 import|;
 end_import
 
@@ -610,8 +610,8 @@ begin_class
 DECL|class|ChangeDetailFactory
 class|class
 name|ChangeDetailFactory
-implements|implements
-name|Action
+extends|extends
+name|Handler
 argument_list|<
 name|ChangeDetail
 argument_list|>
@@ -645,6 +645,12 @@ operator|.
 name|Factory
 name|patchSetDetail
 decl_stmt|;
+DECL|field|db
+specifier|private
+specifier|final
+name|ReviewDb
+name|db
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 specifier|final
@@ -665,7 +671,7 @@ name|detail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeDetailFactory (final GerritConfig gerritConfig, final PatchSetDetailFactory.Factory patchSetDetail, @Assisted final Change.Id id)
+DECL|method|ChangeDetailFactory (final GerritConfig gerritConfig, final PatchSetDetailFactory.Factory patchSetDetail, final ReviewDb db, @Assisted final Change.Id id)
 name|ChangeDetailFactory
 parameter_list|(
 specifier|final
@@ -677,6 +683,10 @@ name|PatchSetDetailFactory
 operator|.
 name|Factory
 name|patchSetDetail
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|,
 annotation|@
 name|Assisted
@@ -701,22 +711,30 @@ name|patchSetDetail
 expr_stmt|;
 name|this
 operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
 name|changeId
 operator|=
 name|id
 expr_stmt|;
 block|}
-DECL|method|run (final ReviewDb db)
+annotation|@
+name|Override
+DECL|method|call ()
 specifier|public
 name|ChangeDetail
-name|run
-parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|)
+name|call
+parameter_list|()
 throws|throws
 name|OrmException
+throws|,
+name|NoSuchEntityException
+throws|,
+name|PatchSetInfoNotAvailableException
 throws|,
 name|Failure
 block|{
@@ -754,12 +772,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Failure
-argument_list|(
-operator|new
 name|NoSuchEntityException
 argument_list|()
-argument_list|)
 throw|;
 block|}
 specifier|final
@@ -814,12 +828,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Failure
-argument_list|(
-operator|new
 name|NoSuchEntityException
 argument_list|()
-argument_list|)
 throw|;
 block|}
 specifier|final
@@ -1006,14 +1016,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|loadPatchSets
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|loadMessages
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1026,15 +1032,11 @@ literal|null
 condition|)
 block|{
 name|loadCurrentPatchSet
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 name|load
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|detail
 operator|.
@@ -1050,15 +1052,11 @@ return|return
 name|detail
 return|;
 block|}
-DECL|method|loadPatchSets (final ReviewDb db)
+DECL|method|loadPatchSets ()
 specifier|private
 name|void
 name|loadPatchSets
-parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1081,15 +1079,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadMessages (final ReviewDb db)
+DECL|method|loadMessages ()
 specifier|private
 name|void
 name|loadMessages
-parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1135,15 +1129,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|load (final ReviewDb db)
+DECL|method|load ()
 specifier|private
 name|void
 name|load
-parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1502,19 +1492,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadCurrentPatchSet (final ReviewDb db)
+DECL|method|loadCurrentPatchSet ()
 specifier|private
 name|void
 name|loadCurrentPatchSet
-parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 throws|,
-name|Failure
+name|NoSuchEntityException
+throws|,
+name|PatchSetInfoNotAvailableException
 block|{
 specifier|final
 name|PatchSet
@@ -1556,10 +1544,8 @@ name|setCurrentPatchSetDetail
 argument_list|(
 name|loader
 operator|.
-name|run
-argument_list|(
-name|db
-argument_list|)
+name|call
+argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final
