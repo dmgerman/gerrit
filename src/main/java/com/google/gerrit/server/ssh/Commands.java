@@ -119,12 +119,22 @@ DECL|field|ROOT
 specifier|public
 specifier|static
 specifier|final
-name|CommandName
+name|String
 name|ROOT
+init|=
+literal|""
+decl_stmt|;
+comment|/** Magic value signaling the top level. */
+DECL|field|CMD_ROOT
+specifier|public
+specifier|static
+specifier|final
+name|CommandName
+name|CMD_ROOT
 init|=
 name|named
 argument_list|(
-literal|""
+name|ROOT
 argument_list|)
 decl_stmt|;
 DECL|method|key (final String name)
@@ -277,7 +287,17 @@ name|int
 name|hashCode
 parameter_list|()
 block|{
+comment|// This is specified in java.lang.Annotation.
 return|return
+operator|(
+literal|127
+operator|*
+literal|"value"
+operator|.
+name|hashCode
+argument_list|()
+operator|)
+operator|^
 name|value
 argument_list|()
 operator|.
@@ -326,12 +346,21 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"CommandName["
+literal|"@"
+operator|+
+name|CommandName
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"(value="
 operator|+
 name|value
 argument_list|()
 operator|+
-literal|"]"
+literal|")"
 return|;
 block|}
 block|}
@@ -453,7 +482,7 @@ if|if
 condition|(
 name|parent
 operator|==
-name|ROOT
+name|CMD_ROOT
 condition|)
 block|{
 return|return

@@ -372,7 +372,6 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|UrlRewriteFilter
-specifier|public
 class|class
 name|UrlRewriteFilter
 implements|implements
