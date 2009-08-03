@@ -912,7 +912,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start()}, such as:    *    *<pre>    * startThread(new Task() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *<p>    * If the function throws an exception, it is translated to a simple message    * for the client, a non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
+comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start()}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *<p>    * If the function throws an exception, it is translated to a simple message    * for the client, a non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
 DECL|method|startThread (final CommandRunnable thunk)
 specifier|protected
 name|void
