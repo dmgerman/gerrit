@@ -138,6 +138,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountByEmailCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|AuthConfig
@@ -347,6 +363,12 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|byEmailCache
+specifier|private
+specifier|final
+name|AccountByEmailCache
+name|byEmailCache
+decl_stmt|;
 DECL|field|accountRead
 specifier|private
 name|boolean
@@ -366,7 +388,7 @@ name|rememberAccount
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritCall (final AuthConfig ac, final SchemaFactory<ReviewDb> sf, final HttpServletRequest i, final HttpServletResponse o)
+DECL|method|GerritCall (final AuthConfig ac, final SchemaFactory<ReviewDb> sf, final AccountByEmailCache bec, final HttpServletRequest i, final HttpServletResponse o)
 name|GerritCall
 parameter_list|(
 specifier|final
@@ -379,6 +401,10 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
+parameter_list|,
+specifier|final
+name|AccountByEmailCache
+name|bec
 parameter_list|,
 specifier|final
 name|HttpServletRequest
@@ -403,6 +429,10 @@ expr_stmt|;
 name|schema
 operator|=
 name|sf
+expr_stmt|;
+name|byEmailCache
+operator|=
+name|bec
 expr_stmt|;
 name|setXsrfSignedToken
 argument_list|(
@@ -1174,6 +1204,16 @@ name|txn
 operator|.
 name|commit
 argument_list|()
+expr_stmt|;
+name|byEmailCache
+operator|.
+name|evict
+argument_list|(
+name|a
+operator|.
+name|getPreferredEmail
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|accountId
 operator|=

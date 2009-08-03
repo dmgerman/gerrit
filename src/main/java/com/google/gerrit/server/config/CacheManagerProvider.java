@@ -381,6 +381,16 @@ literal|"sshkeys"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|mgr
+operator|.
+name|addCache
+argument_list|(
+name|named
+argument_list|(
+literal|"accounts_byemail"
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|mgr
 return|;
