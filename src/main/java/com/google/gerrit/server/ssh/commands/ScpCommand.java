@@ -172,6 +172,7 @@ end_import
 
 begin_class
 DECL|class|ScpCommand
+specifier|final
 class|class
 name|ScpCommand
 extends|extends

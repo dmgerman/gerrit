@@ -216,6 +216,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AnonymousUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ContactStore
 import|;
 end_import
@@ -634,6 +648,13 @@ argument_list|(
 name|SINGLETON
 argument_list|)
 expr_stmt|;
+name|bind
+argument_list|(
+name|AnonymousUser
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 comment|// Note that the CanonicalWebUrl itself must not be a singleton, but its
 comment|// provider must be.
 comment|//
@@ -861,7 +882,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|bind
+name|factory
 argument_list|(
 name|IdentifiedUser
 operator|.

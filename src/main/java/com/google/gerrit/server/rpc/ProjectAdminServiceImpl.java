@@ -390,7 +390,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|RemotePeer
+name|IdentifiedUser
 import|;
 end_import
 
@@ -676,16 +676,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|SocketAddress
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -787,18 +777,18 @@ specifier|final
 name|ReplicationQueue
 name|replication
 decl_stmt|;
-DECL|field|remotePeer
+DECL|field|identifiedUser
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|SocketAddress
+name|IdentifiedUser
 argument_list|>
-name|remotePeer
+name|identifiedUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ReplicationQueue rq, @RemotePeer final Provider<SocketAddress> rp)
+DECL|method|ProjectAdminServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ReplicationQueue rq, final Provider<IdentifiedUser> iu)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -816,14 +806,12 @@ specifier|final
 name|ReplicationQueue
 name|rq
 parameter_list|,
-annotation|@
-name|RemotePeer
 specifier|final
 name|Provider
 argument_list|<
-name|SocketAddress
+name|IdentifiedUser
 argument_list|>
-name|rp
+name|iu
 parameter_list|)
 block|{
 name|super
@@ -839,9 +827,9 @@ name|replication
 operator|=
 name|rq
 expr_stmt|;
-name|remotePeer
+name|identifiedUser
 operator|=
-name|rp
+name|iu
 expr_stmt|;
 block|}
 DECL|method|ownedProjects (final AsyncCallback<List<Project>> callback)
@@ -3071,17 +3059,13 @@ name|u
 operator|.
 name|setRefLogIdent
 argument_list|(
-name|ChangeUtil
-operator|.
-name|toReflogIdent
-argument_list|(
-name|me
-argument_list|,
-name|remotePeer
+name|identifiedUser
 operator|.
 name|get
 argument_list|()
-argument_list|)
+operator|.
+name|toPersonIdent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|u

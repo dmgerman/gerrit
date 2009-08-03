@@ -80,7 +80,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|AbstractCommand
+name|BaseCommand
 import|;
 end_import
 
@@ -151,12 +151,12 @@ import|;
 end_import
 
 begin_class
-DECL|class|AbstractAdminCacheCommand
+DECL|class|CacheCommand
 specifier|abstract
 class|class
-name|AbstractAdminCacheCommand
+name|CacheCommand
 extends|extends
-name|AbstractCommand
+name|BaseCommand
 block|{
 annotation|@
 name|Inject

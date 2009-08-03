@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.ssh.commands
+DECL|package|com.google.gerrit.server.ssh
 package|package
 name|com
 operator|.
@@ -63,22 +63,20 @@ operator|.
 name|server
 operator|.
 name|ssh
-operator|.
-name|commands
 package|;
 end_package
 
 begin_import
-import|import
-name|org
+import|import static
+name|java
 operator|.
-name|spearce
+name|lang
 operator|.
-name|jgit
+name|annotation
 operator|.
-name|transport
+name|RetentionPolicy
 operator|.
-name|UploadPack
+name|RUNTIME
 import|;
 end_import
 
@@ -86,58 +84,63 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|lang
 operator|.
-name|IOException
+name|annotation
+operator|.
+name|ElementType
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Retention
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Target
 import|;
 end_import
 
 begin_comment
-comment|/** Publishes Git repositories over SSH using the Git upload-pack protocol. */
+comment|/**  * Annotation tagged on a concrete Command that requires administrator access.  *<p>  * Currently this annotation is only enforced by DispatchCommand after it has  * created the command object, but before it populates it or starts execution.  */
 end_comment
 
-begin_class
-DECL|class|Upload
-specifier|final
-class|class
-name|Upload
-extends|extends
-name|AbstractGitCommand
-block|{
+begin_annotation_defn
 annotation|@
-name|Override
-DECL|method|runImpl ()
-specifier|protected
-name|void
-name|runImpl
-parameter_list|()
-throws|throws
-name|IOException
+name|Target
+argument_list|(
 block|{
-specifier|final
-name|UploadPack
-name|up
-init|=
-operator|new
-name|UploadPack
-argument_list|(
-name|repo
-argument_list|)
-decl_stmt|;
-name|up
+name|ElementType
 operator|.
-name|upload
-argument_list|(
-name|in
-argument_list|,
-name|out
-argument_list|,
-name|err
+name|TYPE
+block|}
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+annotation|@
+name|Retention
+argument_list|(
+name|RUNTIME
+argument_list|)
+DECL|annotation|AdminCommand
+specifier|public
+annotation_defn|@interface
+name|AdminCommand
+block|{ }
+end_annotation_defn
 
 end_unit
 
