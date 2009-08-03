@@ -66,22 +66,8 @@ name|reviewdb
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Column
-import|;
-end_import
-
 begin_comment
-comment|/**  * Additional data about a {@link PatchSet} not normally loaded.  *<p>  * This is stored out of band from the PatchSet itself, to reduce the size of  * each PatchSet record.  */
+comment|/**  * Additional data about a {@link PatchSet} not normally loaded.  *  * @see com.google.gerrit.server.patch.PatchSetInfoFactory  */
 end_comment
 
 begin_class
@@ -91,15 +77,6 @@ specifier|final
 class|class
 name|PatchSetInfo
 block|{
-annotation|@
-name|Column
-argument_list|(
-name|name
-operator|=
-name|Column
-operator|.
-name|NONE
-argument_list|)
 DECL|field|key
 specifier|protected
 name|PatchSet
@@ -108,58 +85,24 @@ name|Id
 name|key
 decl_stmt|;
 comment|/** First line of {@link #message}. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|subject
 specifier|protected
 name|String
 name|subject
 decl_stmt|;
 comment|/** The complete description of the change the patch set introduces. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|,
-name|length
-operator|=
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|)
 DECL|field|message
 specifier|protected
 name|String
 name|message
 decl_stmt|;
 comment|/** Identity of who wrote the patch set. May differ from {@link #committer}. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|author
 specifier|protected
 name|UserIdentity
 name|author
 decl_stmt|;
 comment|/** Identity of who committed the patch set to the VCS. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|committer
 specifier|protected
 name|UserIdentity

@@ -838,6 +838,21 @@ operator|=
 name|id
 expr_stmt|;
 block|}
+DECL|method|setPatchSet (final PatchSet ps)
+specifier|public
+name|void
+name|setPatchSet
+parameter_list|(
+specifier|final
+name|PatchSet
+name|ps
+parameter_list|)
+block|{
+name|patchSet
+operator|=
+name|ps
+expr_stmt|;
+block|}
 DECL|method|setPatchSet (final PatchSet ps, final PatchSetInfo psi)
 specifier|public
 name|void

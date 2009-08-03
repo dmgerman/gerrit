@@ -68,20 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Column
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|sql
@@ -98,45 +84,30 @@ class|class
 name|UserIdentity
 block|{
 comment|/** Full name of the user. */
-annotation|@
-name|Column
 DECL|field|name
 specifier|protected
 name|String
 name|name
 decl_stmt|;
 comment|/** Email address (or user@host style string anyway). */
-annotation|@
-name|Column
 DECL|field|email
 specifier|protected
 name|String
 name|email
 decl_stmt|;
 comment|/** Time (in UTC) when the identity was constructed. */
-annotation|@
-name|Column
 DECL|field|when
 specifier|protected
 name|Timestamp
 name|when
 decl_stmt|;
 comment|/** Offset from UTC */
-annotation|@
-name|Column
 DECL|field|tz
 specifier|protected
 name|int
 name|tz
 decl_stmt|;
 comment|/** If the user has a Gerrit account, their account identity. */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|accountId
 specifier|protected
 name|Account
