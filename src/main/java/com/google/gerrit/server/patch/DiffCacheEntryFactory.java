@@ -170,7 +170,6 @@ end_import
 
 begin_class
 DECL|class|DiffCacheEntryFactory
-specifier|public
 class|class
 name|DiffCacheEntryFactory
 implements|implements
@@ -183,7 +182,6 @@ name|GerritServer
 name|server
 decl_stmt|;
 DECL|method|DiffCacheEntryFactory (final GerritServer gs)
-specifier|public
 name|DiffCacheEntryFactory
 parameter_list|(
 specifier|final
