@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.rpc
+DECL|package|com.google.gerrit.server.rpc.changedetail
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|rpc
+operator|.
+name|changedetail
 package|;
 end_package
 
@@ -239,6 +241,22 @@ operator|.
 name|patch
 operator|.
 name|PatchSetInfoNotAvailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|rpc
+operator|.
+name|Handler
 import|;
 end_import
 

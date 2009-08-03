@@ -580,6 +580,7 @@ end_import
 
 begin_class
 DECL|class|ChangeListServiceImpl
+specifier|public
 class|class
 name|ChangeListServiceImpl
 extends|extends
@@ -3197,6 +3198,7 @@ name|r
 return|;
 block|}
 DECL|method|starredBy (final ReviewDb db, final Account.Id me)
+specifier|public
 specifier|static
 name|Set
 argument_list|<
