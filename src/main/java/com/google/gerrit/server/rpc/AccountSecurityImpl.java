@@ -711,6 +711,12 @@ specifier|final
 name|SshKeyCache
 name|sshKeyCache
 decl_stmt|;
+DECL|field|useContactInfo
+specifier|private
+specifier|final
+name|boolean
+name|useContactInfo
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc)
@@ -762,6 +768,17 @@ expr_stmt|;
 name|sshKeyCache
 operator|=
 name|skc
+expr_stmt|;
+name|useContactInfo
+operator|=
+name|contactStore
+operator|!=
+literal|null
+operator|&&
+name|contactStore
+operator|.
+name|isEnabled
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)
@@ -1820,13 +1837,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
-operator|.
-name|isUseContactInfo
-argument_list|()
+name|useContactInfo
 condition|)
 block|{
 if|if

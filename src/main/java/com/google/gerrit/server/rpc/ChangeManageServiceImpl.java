@@ -108,6 +108,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|data
+operator|.
+name|GerritConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -447,9 +463,15 @@ specifier|final
 name|MergeQueue
 name|merger
 decl_stmt|;
+DECL|field|gerritConfig
+specifier|private
+specifier|final
+name|GerritConfig
+name|gerritConfig
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final SchemaFactory<ReviewDb> sf, final MergeQueue mq)
+DECL|method|ChangeManageServiceImpl (final SchemaFactory<ReviewDb> sf, final MergeQueue mq, final GerritConfig gc)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
@@ -462,6 +484,10 @@ parameter_list|,
 specifier|final
 name|MergeQueue
 name|mq
+parameter_list|,
+specifier|final
+name|GerritConfig
+name|gc
 parameter_list|)
 block|{
 name|super
@@ -472,6 +498,10 @@ expr_stmt|;
 name|merger
 operator|=
 name|mq
+expr_stmt|;
+name|gerritConfig
+operator|=
+name|gc
 expr_stmt|;
 block|}
 DECL|method|patchSetAction (final ApprovalCategoryValue.Id value, final PatchSet.Id patchSetId, final AsyncCallback<VoidResult> callback)
@@ -772,10 +802,7 @@ specifier|final
 name|ApprovalType
 name|actionType
 init|=
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
+name|gerritConfig
 operator|.
 name|getApprovalType
 argument_list|(
@@ -838,10 +865,7 @@ control|(
 name|ApprovalType
 name|c
 range|:
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
+name|gerritConfig
 operator|.
 name|getApprovalTypes
 argument_list|()

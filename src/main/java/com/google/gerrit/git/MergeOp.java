@@ -92,6 +92,22 @@ name|client
 operator|.
 name|data
 operator|.
+name|GerritConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
 name|ProjectCache
 import|;
 end_import
@@ -1032,6 +1048,12 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
+DECL|field|gerritConfig
+specifier|private
+specifier|final
+name|GerritConfig
+name|gerritConfig
+decl_stmt|;
 DECL|field|myIdent
 specifier|private
 specifier|final
@@ -1126,7 +1148,7 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final GerritConfig gc, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1167,6 +1189,10 @@ name|String
 argument_list|>
 name|cwu
 parameter_list|,
+specifier|final
+name|GerritConfig
+name|gc
+parameter_list|,
 annotation|@
 name|Assisted
 specifier|final
@@ -1199,6 +1225,10 @@ expr_stmt|;
 name|urlProvider
 operator|=
 name|cwu
+expr_stmt|;
+name|gerritConfig
+operator|=
+name|gc
 expr_stmt|;
 name|myIdent
 operator|=
@@ -4085,10 +4115,7 @@ specifier|final
 name|ApprovalType
 name|at
 init|=
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
+name|gerritConfig
 operator|.
 name|getApprovalType
 argument_list|(
@@ -5502,10 +5529,7 @@ control|(
 name|ApprovalType
 name|at
 range|:
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
+name|gerritConfig
 operator|.
 name|getApprovalTypes
 argument_list|()

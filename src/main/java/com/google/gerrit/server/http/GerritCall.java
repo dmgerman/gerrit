@@ -136,22 +136,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|Common
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -539,8 +523,12 @@ name|rememberAccount
 operator|=
 literal|false
 expr_stmt|;
-name|setAccountCookie
-argument_list|()
+name|removeCookie
+argument_list|(
+name|Gerrit
+operator|.
+name|ACCOUNT_COOKIE
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -577,9 +565,7 @@ literal|true
 expr_stmt|;
 name|ValidToken
 name|accountInfo
-decl_stmt|;
-name|accountInfo
-operator|=
+init|=
 name|getCookie
 argument_list|(
 name|Gerrit
@@ -591,7 +577,7 @@ operator|.
 name|getAccountToken
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|accountInfo
@@ -601,10 +587,7 @@ condition|)
 block|{
 switch|switch
 condition|(
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
+name|authConfig
 operator|.
 name|getLoginType
 argument_list|()
@@ -638,12 +621,8 @@ block|{
 comment|// The cookie is bogus, but it was sent. Send an expired cookie
 comment|// back to clear it out of the browser's cookie store.
 comment|//
-name|removeCookie
-argument_list|(
-name|Gerrit
-operator|.
-name|ACCOUNT_COOKIE
-argument_list|)
+name|logout
+argument_list|()
 expr_stmt|;
 block|}
 return|return;
@@ -685,20 +664,8 @@ block|{
 comment|// Whoa, did we change our cookie format or something? This should
 comment|// never happen on a valid acocunt token, but discard it anyway.
 comment|//
-name|removeCookie
-argument_list|(
-name|Gerrit
-operator|.
-name|ACCOUNT_COOKIE
-argument_list|)
-expr_stmt|;
-name|accountInfo
-operator|=
-literal|null
-expr_stmt|;
-name|accountId
-operator|=
-literal|null
+name|logout
+argument_list|()
 expr_stmt|;
 return|return;
 block|}

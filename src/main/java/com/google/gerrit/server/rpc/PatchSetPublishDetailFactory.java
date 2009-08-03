@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.changes
+DECL|package|com.google.gerrit.server.rpc
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|changes
+name|rpc
 package|;
 end_package
 
@@ -434,6 +434,32 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -494,7 +520,6 @@ end_import
 
 begin_class
 DECL|class|PatchSetPublishDetailFactory
-specifier|public
 specifier|final
 class|class
 name|PatchSetPublishDetailFactory
@@ -504,7 +529,23 @@ argument_list|<
 name|PatchSetPublishDetail
 argument_list|>
 block|{
+DECL|interface|Factory
+interface|interface
+name|Factory
+block|{
+DECL|method|create (PatchSet.Id patchSetId)
+name|PatchSetPublishDetailFactory
+name|create
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|patchSetId
+specifier|private
 specifier|final
 name|PatchSet
 operator|.
@@ -512,9 +553,16 @@ name|Id
 name|patchSetId
 decl_stmt|;
 DECL|field|infoFactory
+specifier|private
 specifier|final
 name|PatchSetInfoFactory
 name|infoFactory
+decl_stmt|;
+DECL|field|gerritConfig
+specifier|private
+specifier|final
+name|GerritConfig
+name|gerritConfig
 decl_stmt|;
 DECL|field|accounts
 specifier|protected
@@ -568,17 +616,26 @@ name|ChangeApproval
 argument_list|>
 name|given
 decl_stmt|;
-DECL|method|PatchSetPublishDetailFactory (PatchSet.Id patchSetId, PatchSetInfoFactory infoFactory)
-specifier|public
+annotation|@
+name|Inject
+DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final GerritConfig gerritConfig, @Assisted final PatchSet.Id patchSetId)
 name|PatchSetPublishDetailFactory
 parameter_list|(
+specifier|final
+name|PatchSetInfoFactory
+name|infoFactory
+parameter_list|,
+specifier|final
+name|GerritConfig
+name|gerritConfig
+parameter_list|,
+annotation|@
+name|Assisted
+specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|patchSetId
-parameter_list|,
-name|PatchSetInfoFactory
-name|infoFactory
 parameter_list|)
 block|{
 name|this
@@ -592,6 +649,12 @@ operator|.
 name|infoFactory
 operator|=
 name|infoFactory
+expr_stmt|;
+name|this
+operator|.
+name|gerritConfig
+operator|=
+name|gerritConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -958,15 +1021,6 @@ argument_list|>
 name|list
 parameter_list|)
 block|{
-specifier|final
-name|GerritConfig
-name|cfg
-init|=
-name|Common
-operator|.
-name|getGerritConfig
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 specifier|final
@@ -1045,7 +1099,7 @@ specifier|final
 name|ApprovalType
 name|at
 init|=
-name|cfg
+name|gerritConfig
 operator|.
 name|getApprovalType
 argument_list|(
