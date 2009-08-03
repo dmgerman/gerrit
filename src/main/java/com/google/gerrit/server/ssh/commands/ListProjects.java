@@ -180,6 +180,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -206,6 +218,13 @@ extends|extends
 name|AbstractCommand
 block|{
 annotation|@
+name|Inject
+DECL|field|db
+specifier|private
+name|ReviewDb
+name|db
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|run ()
 specifier|protected
@@ -225,13 +244,6 @@ name|toPrintWriter
 argument_list|(
 name|out
 argument_list|)
-decl_stmt|;
-specifier|final
-name|ReviewDb
-name|db
-init|=
-name|openReviewDb
-argument_list|()
 decl_stmt|;
 try|try
 block|{
@@ -347,11 +359,6 @@ block|{
 name|stdout
 operator|.
 name|flush
-argument_list|()
-expr_stmt|;
-name|db
-operator|.
-name|close
 argument_list|()
 expr_stmt|;
 block|}

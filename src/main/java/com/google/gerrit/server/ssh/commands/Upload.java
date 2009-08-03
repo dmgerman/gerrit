@@ -113,9 +113,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|closeDb
-argument_list|()
-expr_stmt|;
 specifier|final
 name|UploadPack
 name|up
