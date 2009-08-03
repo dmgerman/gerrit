@@ -332,7 +332,7 @@ operator|=
 name|sf
 expr_stmt|;
 block|}
-comment|/**    * Executes<code>action.run</code> with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *     * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
+comment|/**    * Executes<code>action.run</code> with an active ReviewDb connection.    *<p>    * A database handle is automatically opened and closed around the action's    * {@link Action#run(ReviewDb)} method. OrmExceptions are caught and passed    * into the onFailure method of the callback.    *    * @param<T> type of result the callback expects.    * @param callback the callback that will receive the result.    * @param action the action logic to perform.    */
 DECL|method|run (final AsyncCallback<T> callback, final Action<T> action)
 specifier|protected
 parameter_list|<
@@ -511,6 +511,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Throws NoSuchEntityException if the caller cannot access the project. */
+annotation|@
+name|Deprecated
 DECL|method|assertCanRead (final Change change)
 specifier|public
 specifier|static
@@ -545,6 +547,8 @@ throw|;
 block|}
 block|}
 comment|/** Throws NoSuchEntityException if the caller cannot access the project. */
+annotation|@
+name|Deprecated
 DECL|method|assertCanRead (final Project.NameKey projectKey)
 specifier|public
 specifier|static
@@ -581,6 +585,8 @@ throw|;
 block|}
 block|}
 comment|/** Return true if the current user can read this change's project. */
+annotation|@
+name|Deprecated
 DECL|method|canRead (final Change change)
 specifier|public
 specifier|static
@@ -610,6 +616,8 @@ argument_list|)
 return|;
 block|}
 comment|/** Return true if the current user can read this project, and its contents. */
+annotation|@
+name|Deprecated
 DECL|method|canRead (final Project.NameKey projectKey)
 specifier|public
 specifier|static
@@ -635,6 +643,8 @@ name|projectKey
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|canRead (final Account.Id who, final Project.NameKey projectKey)
 specifier|public
 specifier|static
@@ -671,6 +681,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|canRead (final Account.Id who, final ProjectCache.Entry e)
 specifier|public
 specifier|static
@@ -708,6 +720,8 @@ literal|1
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|canPerform (final Account.Id who, final ProjectCache.Entry e, final ApprovalCategory.Id actionId, final short requireValue)
 specifier|public
 specifier|static
@@ -768,6 +782,8 @@ name|requireValue
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|canPerform (final Set<AccountGroup.Id> myGroups, final ProjectCache.Entry e, final ApprovalCategory.Id actionId, final short requireValue)
 specifier|public
 specifier|static
@@ -978,6 +994,8 @@ name|requireValue
 return|;
 block|}
 comment|/** Exception whose cause is passed into onFailure. */
+annotation|@
+name|Deprecated
 DECL|class|Failure
 specifier|public
 specifier|static
@@ -1021,7 +1039,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/**      * Perform this action, returning the onSuccess value.      *       * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      */
+comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      */
 DECL|method|run (ReviewDb db)
 name|T
 name|run
