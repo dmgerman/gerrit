@@ -482,20 +482,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -846,11 +832,11 @@ name|projectDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final SchemaFactory<ReviewDb> sf, final GerritServer gs, final ProjectCache pc, final ReplicationQueue rq, final Provider<IdentifiedUser> iu, final ProjectControl.Factory projectControlFactory, final ProjectDetailFactory.Factory projectDetailFactory)
+DECL|method|ProjectAdminServiceImpl (final Provider<ReviewDb> sf, final GerritServer gs, final ProjectCache pc, final ReplicationQueue rq, final Provider<IdentifiedUser> iu, final ProjectControl.Factory projectControlFactory, final ProjectDetailFactory.Factory projectDetailFactory)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>

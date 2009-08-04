@@ -328,20 +328,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|Transaction
 import|;
 end_import
@@ -355,6 +341,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -425,11 +423,11 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountServiceImpl (final SchemaFactory<ReviewDb> sf, final ProjectCache projectCache)
+DECL|method|AccountServiceImpl (final Provider<ReviewDb> sf, final ProjectCache projectCache)
 name|AccountServiceImpl
 parameter_list|(
 specifier|final
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>

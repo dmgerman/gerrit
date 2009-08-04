@@ -500,20 +500,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|Transaction
 import|;
 end_import
@@ -872,11 +858,11 @@ name|changeControlFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeListServiceImpl (final SchemaFactory<ReviewDb> sf, final Provider<CurrentUser> currentUser, final ChangeControl.Factory changeControlFactory)
+DECL|method|ChangeListServiceImpl (final Provider<ReviewDb> sf, final Provider<CurrentUser> currentUser, final ChangeControl.Factory changeControlFactory)
 name|ChangeListServiceImpl
 parameter_list|(
 specifier|final
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>

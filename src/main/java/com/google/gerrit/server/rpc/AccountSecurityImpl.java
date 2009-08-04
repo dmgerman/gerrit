@@ -512,20 +512,6 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
 name|Transaction
 import|;
 end_import
@@ -539,6 +525,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -741,11 +739,11 @@ name|useContactInfo
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final SchemaFactory<ReviewDb> sf, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> sf, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>

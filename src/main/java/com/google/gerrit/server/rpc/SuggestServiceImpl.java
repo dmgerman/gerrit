@@ -308,20 +308,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SchemaFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -405,11 +391,11 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestServiceImpl (final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final Provider<CurrentUser> cu)
+DECL|method|SuggestServiceImpl (final Provider<ReviewDb> sf, final ProjectCache pc, final Provider<CurrentUser> cu)
 name|SuggestServiceImpl
 parameter_list|(
 specifier|final
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
