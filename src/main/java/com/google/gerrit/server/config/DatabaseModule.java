@@ -300,7 +300,7 @@ argument_list|)
 operator|.
 name|toProvider
 argument_list|(
-name|ReviewDbProvider
+name|ReviewDbDatabaseProvider
 operator|.
 name|class
 argument_list|)

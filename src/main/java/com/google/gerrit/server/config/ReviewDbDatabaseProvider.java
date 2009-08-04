@@ -171,14 +171,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Provides the {@link ReviewDb} database handle. */
+comment|/** Provides the {@code Database<ReviewDb>} database handle. */
 end_comment
 
 begin_class
-DECL|class|ReviewDbProvider
+DECL|class|ReviewDbDatabaseProvider
 specifier|final
 class|class
-name|ReviewDbProvider
+name|ReviewDbDatabaseProvider
 implements|implements
 name|Provider
 argument_list|<
@@ -196,8 +196,8 @@ name|datasource
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewDbProvider (@amedR) final DataSource ds)
-name|ReviewDbProvider
+DECL|method|ReviewDbDatabaseProvider (@amedR) final DataSource ds)
+name|ReviewDbDatabaseProvider
 parameter_list|(
 annotation|@
 name|Named
