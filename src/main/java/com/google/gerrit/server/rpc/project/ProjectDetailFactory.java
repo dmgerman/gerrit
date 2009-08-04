@@ -320,14 +320,14 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.Id id)
+DECL|method|create (Project.NameKey name)
 name|ProjectDetailFactory
 name|create
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|name
 parameter_list|)
 function_decl|;
 block|}
@@ -343,13 +343,13 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|projectId
+DECL|field|projectName
 specifier|private
 specifier|final
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|field|detail
 specifier|private
@@ -370,7 +370,7 @@ name|groups
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectDetailFactory (final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.Id id)
+DECL|method|ProjectDetailFactory (final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.NameKey name)
 name|ProjectDetailFactory
 parameter_list|(
 specifier|final
@@ -386,8 +386,8 @@ name|Assisted
 specifier|final
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|name
 parameter_list|)
 block|{
 name|this
@@ -404,9 +404,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|projectId
+name|projectName
 operator|=
-name|id
+name|name
 expr_stmt|;
 block|}
 annotation|@
@@ -429,7 +429,7 @@ name|projectCache
 operator|.
 name|get
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 decl_stmt|;
 if|if
@@ -525,7 +525,13 @@ name|WILD_PROJECT
 operator|.
 name|equals
 argument_list|(
-name|projectId
+name|e
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 condition|)
 block|{

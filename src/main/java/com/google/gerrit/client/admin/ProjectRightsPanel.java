@@ -666,12 +666,12 @@ name|ProjectRightsPanel
 extends|extends
 name|Composite
 block|{
-DECL|field|projectId
+DECL|field|projectName
 specifier|private
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|field|rights
 specifier|private
@@ -713,18 +713,18 @@ specifier|private
 name|SuggestBox
 name|nameTxt
 decl_stmt|;
-DECL|method|ProjectRightsPanel (final Project.Id toShow)
+DECL|method|ProjectRightsPanel (final Project.NameKey toShow)
 specifier|public
 name|ProjectRightsPanel
 parameter_list|(
 specifier|final
 name|Project
 operator|.
-name|Id
+name|NameKey
 name|toShow
 parameter_list|)
 block|{
-name|projectId
+name|projectName
 operator|=
 name|toShow
 expr_stmt|;
@@ -771,7 +771,7 @@ name|PROJECT_SVC
 operator|.
 name|projectDetail
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 operator|new
 name|GerritCallback
@@ -1026,7 +1026,7 @@ name|WILD_PROJECT
 operator|.
 name|equals
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 operator|&&
 name|ApprovalCategory
@@ -1748,7 +1748,7 @@ name|PROJECT_SVC
 operator|.
 name|addRight
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 name|at
 operator|.
@@ -2346,6 +2346,8 @@ name|PROJECT_SVC
 operator|.
 name|deleteRight
 argument_list|(
+name|projectName
+argument_list|,
 name|ids
 argument_list|,
 operator|new
@@ -2594,7 +2596,7 @@ name|WILD_PROJECT
 operator|.
 name|equals
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 condition|)
 block|{

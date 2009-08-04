@@ -949,7 +949,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|toProjectAdmin (final Project.Id id, final String tab)
+DECL|method|toProjectAdmin (final Project.NameKey n, final String tab)
 specifier|public
 specifier|static
 name|String
@@ -958,8 +958,8 @@ parameter_list|(
 specifier|final
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|n
 parameter_list|,
 specifier|final
 name|String
@@ -969,7 +969,7 @@ block|{
 return|return
 literal|"admin,project,"
 operator|+
-name|id
+name|n
 operator|.
 name|toString
 argument_list|()
@@ -1784,7 +1784,7 @@ name|ProjectAdminScreen
 argument_list|(
 name|Project
 operator|.
-name|Id
+name|NameKey
 operator|.
 name|parse
 argument_list|(

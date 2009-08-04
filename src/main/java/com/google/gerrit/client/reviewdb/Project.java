@@ -325,37 +325,6 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
-comment|/** Parse a Project.Id out of a string representation. */
-DECL|method|parse (final String str)
-specifier|public
-specifier|static
-name|Id
-name|parse
-parameter_list|(
-specifier|final
-name|String
-name|str
-parameter_list|)
-block|{
-specifier|final
-name|Id
-name|r
-init|=
-operator|new
-name|Id
-argument_list|()
-decl_stmt|;
-name|r
-operator|.
-name|fromString
-argument_list|(
-name|str
-argument_list|)
-expr_stmt|;
-return|return
-name|r
-return|;
-block|}
 block|}
 DECL|enum|SubmitType
 specifier|public

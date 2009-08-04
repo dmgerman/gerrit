@@ -238,14 +238,14 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|projectDetail (Project.Id projectId, AsyncCallback<ProjectDetail> callback)
+DECL|method|projectDetail (Project.NameKey projectName, AsyncCallback<ProjectDetail> callback)
 name|void
 name|projectDetail
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -272,10 +272,15 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|deleteRight (Set<ProjectRight.Key> ids, AsyncCallback<VoidResult> callback)
+DECL|method|deleteRight (Project.NameKey projectName, Set<ProjectRight.Key> ids, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteRight
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Set
 argument_list|<
 name|ProjectRight
@@ -293,14 +298,14 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addRight (Project.Id projectId, ApprovalCategory.Id categoryId, String groupName, short min, short max, AsyncCallback<ProjectDetail> callback)
+DECL|method|addRight (Project.NameKey projectName, ApprovalCategory.Id categoryId, String groupName, short min, short max, AsyncCallback<ProjectDetail> callback)
 name|void
 name|addRight
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 parameter_list|,
 name|ApprovalCategory
 operator|.
@@ -325,14 +330,14 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|listBranches (Project.Id project, AsyncCallback<List<Branch>> callback)
+DECL|method|listBranches (Project.NameKey projectName, AsyncCallback<List<Branch>> callback)
 name|void
 name|listBranches
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|project
+name|NameKey
+name|projectName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -346,14 +351,14 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addBranch (Project.Id project, String branchName, String startingRevision, AsyncCallback<List<Branch>> callback)
+DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<List<Branch>> callback)
 name|void
 name|addBranch
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|project
+name|NameKey
+name|projectName
 parameter_list|,
 name|String
 name|branchName
@@ -373,10 +378,15 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|deleteBranch (Set<Branch.NameKey> ids, AsyncCallback<Set<Branch.NameKey>> callback)
+DECL|method|deleteBranch (Project.NameKey projectName, Set<Branch.NameKey> ids, AsyncCallback<Set<Branch.NameKey>> callback)
 name|void
 name|deleteBranch
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
 name|Set
 argument_list|<
 name|Branch

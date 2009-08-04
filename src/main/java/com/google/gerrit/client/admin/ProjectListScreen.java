@@ -774,7 +774,7 @@ name|toProjectAdmin
 argument_list|(
 name|item
 operator|.
-name|getId
+name|getNameKey
 argument_list|()
 argument_list|,
 name|ProjectAdminScreen

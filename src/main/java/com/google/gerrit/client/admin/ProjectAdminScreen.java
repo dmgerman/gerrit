@@ -282,13 +282,13 @@ name|ACCESS_TAB
 init|=
 literal|"access"
 decl_stmt|;
-DECL|field|projectId
+DECL|field|projectName
 specifier|private
 specifier|final
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|field|initialTabToken
 specifier|private
@@ -309,14 +309,14 @@ specifier|private
 name|TabPanel
 name|tabs
 decl_stmt|;
-DECL|method|ProjectAdminScreen (final Project.Id toShow, final String token)
+DECL|method|ProjectAdminScreen (final Project.NameKey toShow, final String token)
 specifier|public
 name|ProjectAdminScreen
 parameter_list|(
 specifier|final
 name|Project
 operator|.
-name|Id
+name|NameKey
 name|toShow
 parameter_list|,
 specifier|final
@@ -324,7 +324,7 @@ name|String
 name|token
 parameter_list|)
 block|{
-name|projectId
+name|projectName
 operator|=
 name|toShow
 expr_stmt|;
@@ -352,7 +352,7 @@ name|PROJECT_SVC
 operator|.
 name|projectDetail
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 operator|new
 name|ScreenLoadCallback
@@ -455,7 +455,7 @@ return|return
 operator|new
 name|ProjectInfoPanel
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 return|;
 block|}
@@ -477,7 +477,7 @@ name|Link
 operator|.
 name|toProjectAdmin
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 name|INFO_TAB
 argument_list|)
@@ -492,7 +492,7 @@ name|WILD_PROJECT
 operator|.
 name|equals
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 condition|)
 block|{
@@ -515,7 +515,7 @@ return|return
 operator|new
 name|ProjectBranchesPanel
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 return|;
 block|}
@@ -537,7 +537,7 @@ name|Link
 operator|.
 name|toProjectAdmin
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 name|BRANCH_TAB
 argument_list|)
@@ -563,7 +563,7 @@ return|return
 operator|new
 name|ProjectRightsPanel
 argument_list|(
-name|projectId
+name|projectName
 argument_list|)
 return|;
 block|}
@@ -585,7 +585,7 @@ name|Link
 operator|.
 name|toProjectAdmin
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 name|ACCESS_TAB
 argument_list|)

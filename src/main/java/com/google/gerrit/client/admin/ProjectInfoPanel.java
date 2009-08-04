@@ -420,12 +420,12 @@ name|ProjectInfoPanel
 extends|extends
 name|Composite
 block|{
-DECL|field|projectId
+DECL|field|projectName
 specifier|private
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|field|project
 specifier|private
@@ -467,14 +467,14 @@ specifier|private
 name|Button
 name|saveProject
 decl_stmt|;
-DECL|method|ProjectInfoPanel (final Project.Id toShow)
+DECL|method|ProjectInfoPanel (final Project.NameKey toShow)
 specifier|public
 name|ProjectInfoPanel
 parameter_list|(
 specifier|final
 name|Project
 operator|.
-name|Id
+name|NameKey
 name|toShow
 parameter_list|)
 block|{
@@ -551,7 +551,7 @@ argument_list|(
 name|body
 argument_list|)
 expr_stmt|;
-name|projectId
+name|projectName
 operator|=
 name|toShow
 expr_stmt|;
@@ -597,7 +597,7 @@ name|PROJECT_SVC
 operator|.
 name|projectDetail
 argument_list|(
-name|projectId
+name|projectName
 argument_list|,
 operator|new
 name|GerritCallback

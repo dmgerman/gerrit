@@ -118,6 +118,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|NoSuchProjectException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -247,6 +263,22 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchProjectException
+name|e
+parameter_list|)
+block|{
+name|callback
+operator|.
+name|onFailure
+argument_list|(
+operator|new
+name|NoSuchEntityException
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -397,7 +429,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      */
+comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      * @throws NoSuchProjectException      */
 DECL|method|run (ReviewDb db)
 name|T
 name|run
@@ -409,6 +441,8 @@ throws|throws
 name|OrmException
 throws|,
 name|Failure
+throws|,
+name|NoSuchProjectException
 function_decl|;
 block|}
 block|}
