@@ -362,6 +362,16 @@ name|mgr
 operator|.
 name|addCache
 argument_list|(
+name|named
+argument_list|(
+literal|"accounts_byemail"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|mgr
+operator|.
+name|addCache
+argument_list|(
 name|disk
 argument_list|(
 name|named
@@ -377,7 +387,7 @@ name|addCache
 argument_list|(
 name|named
 argument_list|(
-literal|"sshkeys"
+literal|"projects"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -387,7 +397,7 @@ name|addCache
 argument_list|(
 name|named
 argument_list|(
-literal|"accounts_byemail"
+literal|"sshkeys"
 argument_list|)
 argument_list|)
 expr_stmt|;

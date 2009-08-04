@@ -156,15 +156,13 @@ name|google
 operator|.
 name|inject
 operator|.
-name|servlet
-operator|.
-name|RequestScoped
+name|Singleton
 import|;
 end_import
 
 begin_class
 annotation|@
-name|RequestScoped
+name|Singleton
 DECL|class|HttpCurrentUserProvider
 class|class
 name|HttpCurrentUserProvider
@@ -177,7 +175,10 @@ block|{
 DECL|field|call
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|GerritCall
+argument_list|>
 name|call
 decl_stmt|;
 DECL|field|anonymous
@@ -191,16 +192,19 @@ specifier|private
 specifier|final
 name|IdentifiedUser
 operator|.
-name|Factory
+name|RequestFactory
 name|identified
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpCurrentUserProvider (final GerritCall c, final AnonymousUser a, final IdentifiedUser.Factory f)
+DECL|method|HttpCurrentUserProvider (final Provider<GerritCall> c, final AnonymousUser a, final IdentifiedUser.RequestFactory f)
 name|HttpCurrentUserProvider
 parameter_list|(
 specifier|final
+name|Provider
+argument_list|<
 name|GerritCall
+argument_list|>
 name|c
 parameter_list|,
 specifier|final
@@ -210,7 +214,7 @@ parameter_list|,
 specifier|final
 name|IdentifiedUser
 operator|.
-name|Factory
+name|RequestFactory
 name|f
 parameter_list|)
 block|{
@@ -242,6 +246,9 @@ name|Id
 name|id
 init|=
 name|call
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAccountId
 argument_list|()

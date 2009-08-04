@@ -86,6 +86,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Key
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|FactoryProvider
@@ -125,7 +137,7 @@ name|FactoryModule
 extends|extends
 name|AbstractModule
 block|{
-comment|/**    * Register an assisted injection factory.    *<p>    * This function provides an automatic way to define a factory that creates a    * concrete type through assited injection. For example to configure the    * following assisted injection case:    *    *<pre>    * public class Foo {    *   public interface Factory {    *     Foo create(int a);    *   }    *&#064;Inject    *   Foo(Logger log, @Assisted int a) {...}    * }    *</pre>    *    * Just pass {@code Foo.Factory.class} to this method. The factory will be    * generated to return its one return type as declared in the creation method.    *    * @param<F>    * @param factory    */
+comment|/**    * Register an assisted injection factory.    *<p>    * This function provides an automatic way to define a factory that creates a    * concrete type through assited injection. For example to configure the    * following assisted injection case:    *    *<pre>    * public class Foo {    *   public interface Factory {    *     Foo create(int a);    *   }    *&#064;Inject    *   Foo(Logger log, @Assisted int a) {...}    * }    *</pre>    *    * Just pass {@code Foo.Factory.class} to this method. The factory will be    * generated to return its one return type as declared in the creation method.    *    * @param<F>    * @param factory interface which specifies the bean factory method.    */
 DECL|method|factory (final Class<F> factory)
 specifier|protected
 parameter_list|<
@@ -134,6 +146,43 @@ parameter_list|>
 name|void
 name|factory
 parameter_list|(
+specifier|final
+name|Class
+argument_list|<
+name|F
+argument_list|>
+name|factory
+parameter_list|)
+block|{
+name|factory
+argument_list|(
+name|Key
+operator|.
+name|get
+argument_list|(
+name|factory
+argument_list|)
+argument_list|,
+name|factory
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Register an assisted injection factory.    *<p>    * This function provides an automatic way to define a factory that creates a    * concrete type through assited injection. For example to configure the    * following assisted injection case:    *    *<pre>    * public class Foo {    *   public interface Factory {    *     Foo create(int a);    *   }    *&#064;Inject    *   Foo(Logger log, @Assisted int a) {...}    * }    *</pre>    *    * Just pass {@code Foo.Factory.class} to this method. The factory will be    * generated to return its one return type as declared in the creation method.    *    * @param<F>    * @param key key to bind with in Guice bindings.    * @param factory interface which specifies the bean factory method.    */
+DECL|method|factory (final Key<F> key, final Class<F> factory)
+specifier|protected
+parameter_list|<
+name|F
+parameter_list|>
+name|void
+name|factory
+parameter_list|(
+specifier|final
+name|Key
+argument_list|<
+name|F
+argument_list|>
+name|key
+parameter_list|,
 specifier|final
 name|Class
 argument_list|<
@@ -203,7 +252,7 @@ else|else
 block|{
 name|bind
 argument_list|(
-name|factory
+name|key
 argument_list|)
 operator|.
 name|toProvider

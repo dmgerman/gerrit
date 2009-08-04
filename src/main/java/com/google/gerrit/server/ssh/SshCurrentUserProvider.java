@@ -150,7 +150,21 @@ name|ProvisionException
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
 begin_class
+annotation|@
+name|Singleton
 DECL|class|SshCurrentUserProvider
 class|class
 name|SshCurrentUserProvider
@@ -165,18 +179,18 @@ specifier|private
 specifier|final
 name|IdentifiedUser
 operator|.
-name|Factory
+name|RequestFactory
 name|factory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshCurrentUserProvider (final IdentifiedUser.Factory f)
+DECL|method|SshCurrentUserProvider (final IdentifiedUser.RequestFactory f)
 name|SshCurrentUserProvider
 parameter_list|(
 specifier|final
 name|IdentifiedUser
 operator|.
-name|Factory
+name|RequestFactory
 name|f
 parameter_list|)
 block|{
