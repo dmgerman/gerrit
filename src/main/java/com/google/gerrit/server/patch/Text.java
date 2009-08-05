@@ -126,12 +126,14 @@ end_import
 
 begin_class
 DECL|class|Text
+specifier|public
 class|class
 name|Text
 extends|extends
 name|RawText
 block|{
 DECL|field|EMPTY
+specifier|public
 specifier|static
 specifier|final
 name|Text
@@ -148,6 +150,7 @@ index|]
 argument_list|)
 decl_stmt|;
 DECL|method|Text (final byte[] r)
+specifier|public
 name|Text
 parameter_list|(
 specifier|final
@@ -163,6 +166,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getContent ()
+specifier|public
 name|byte
 index|[]
 name|getContent
@@ -173,6 +177,7 @@ name|content
 return|;
 block|}
 DECL|method|getLine (final int i)
+specifier|public
 name|String
 name|getLine
 parameter_list|(
@@ -240,6 +245,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|addLineTo (final SparseFileContent out, final int i)
+specifier|public
 name|void
 name|addLineTo
 parameter_list|(
