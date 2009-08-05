@@ -112,7 +112,7 @@ name|rpc
 operator|.
 name|changedetail
 operator|.
-name|ChangeDetailModule
+name|ChangeModule
 import|;
 end_import
 
@@ -219,7 +219,7 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
-name|ChangeDetailModule
+name|ChangeModule
 argument_list|()
 argument_list|)
 expr_stmt|;

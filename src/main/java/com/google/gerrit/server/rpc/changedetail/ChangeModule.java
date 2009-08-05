@@ -117,16 +117,16 @@ import|;
 end_import
 
 begin_class
-DECL|class|ChangeDetailModule
+DECL|class|ChangeModule
 specifier|public
 class|class
-name|ChangeDetailModule
+name|ChangeModule
 extends|extends
 name|RpcServletModule
 block|{
-DECL|method|ChangeDetailModule ()
+DECL|method|ChangeModule ()
 specifier|public
-name|ChangeDetailModule
+name|ChangeModule
 parameter_list|()
 block|{
 name|super
