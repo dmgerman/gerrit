@@ -104,13 +104,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
 name|client
 operator|.
-name|rpc
-operator|.
-name|Common
+name|OrmException
 import|;
 end_import
 
@@ -124,7 +122,7 @@ name|gwtorm
 operator|.
 name|client
 operator|.
-name|OrmException
+name|SchemaFactory
 import|;
 end_import
 
@@ -292,7 +290,32 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Invalidate all cached information about a single user account.    *     * @param accountId the account to invalidate from the cache.    */
+DECL|field|schema
+specifier|private
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schema
+decl_stmt|;
+DECL|method|AccountCache (SchemaFactory<ReviewDb> s)
+specifier|public
+name|AccountCache
+parameter_list|(
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|s
+parameter_list|)
+block|{
+name|schema
+operator|=
+name|s
+expr_stmt|;
+block|}
+comment|/**    * Invalidate all cached information about a single user account.    *    * @param accountId the account to invalidate from the cache.    */
 DECL|method|invalidate (final Account.Id accountId)
 specifier|public
 name|void
@@ -319,7 +342,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Get a single account.    *     * @param accountId the account to obtain.    * @return the cached account entity; null if the account is not in the    *         database anymore.    */
+comment|/**    * Get a single account.    *    * @param accountId the account to obtain.    * @return the cached account entity; null if the account is not in the    *         database anymore.    */
 DECL|method|get (final Account.Id accountId)
 specifier|public
 name|Account
@@ -341,7 +364,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Get a single account.    *     * @param accountId the account to obtain.    * @param qd optional connection to reuse (if not null) when doing a lookup.    * @return the cached account entity; null if the account is not in the    *         database anymore.    */
+comment|/**    * Get a single account.    *    * @param accountId the account to obtain.    * @param qd optional connection to reuse (if not null) when doing a lookup.    * @return the cached account entity; null if the account is not in the    *         database anymore.    */
 DECL|method|get (final Account.Id accountId, final ReviewDb qd)
 specifier|public
 name|Account
@@ -410,10 +433,7 @@ literal|null
 condition|?
 name|qd
 else|:
-name|Common
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()
@@ -491,7 +511,7 @@ return|return
 name|m
 return|;
 block|}
-comment|/**    * Lookup multiple account records.    *     * @param fetch set of all accounts to obtain.    * @param qd optional query handle to use if the account data is not in cache.    * @return records which match; if an account listed in<code>fetch</code> is    *         not found it will not be returned.    */
+comment|/**    * Lookup multiple account records.    *    * @param fetch set of all accounts to obtain.    * @param qd optional query handle to use if the account data is not in cache.    * @return records which match; if an account listed in<code>fetch</code> is    *         not found it will not be returned.    */
 DECL|method|get (final Set<Account.Id> fetch, final ReviewDb qd)
 specifier|public
 name|Collection
@@ -644,10 +664,7 @@ literal|null
 condition|?
 name|qd
 else|:
-name|Common
-operator|.
-name|getSchemaFactory
-argument_list|()
+name|schema
 operator|.
 name|open
 argument_list|()
