@@ -1415,6 +1415,14 @@ name|config
 operator|=
 name|config
 expr_stmt|;
+comment|// Grab the current GerritCall to gain access to the XSRF token
+comment|// generator, and force a token to be constructed for this user.
+comment|// We can then send the XSRF token as part of the initial data
+comment|// vector in the host page, saving the client 1 round trip as it
+comment|// bootstraps itself.
+comment|//
+try|try
+block|{
 specifier|final
 name|GerritCall
 name|call
@@ -1424,8 +1432,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|call
 operator|.
 name|xsrfValidate
