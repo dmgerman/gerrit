@@ -105,24 +105,6 @@ specifier|final
 class|class
 name|ProjectRight
 block|{
-comment|/** Project.Id meaning "any and all projects on this server". */
-DECL|field|WILD_PROJECT
-specifier|public
-specifier|static
-specifier|final
-name|Project
-operator|.
-name|Id
-name|WILD_PROJECT
-init|=
-operator|new
-name|Project
-operator|.
-name|Id
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 DECL|class|Key
 specifier|public
 specifier|static
@@ -133,7 +115,7 @@ name|CompoundKey
 argument_list|<
 name|Project
 operator|.
-name|Id
+name|NameKey
 argument_list|>
 block|{
 DECL|field|serialVersionUID
@@ -147,12 +129,12 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|projectId
+DECL|field|projectName
 specifier|protected
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 decl_stmt|;
 annotation|@
 name|Column
@@ -177,12 +159,12 @@ specifier|protected
 name|Key
 parameter_list|()
 block|{
-name|projectId
+name|projectName
 operator|=
 operator|new
 name|Project
 operator|.
-name|Id
+name|NameKey
 argument_list|()
 expr_stmt|;
 name|categoryId
@@ -202,14 +184,14 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Project.Id p, final ApprovalCategory.Id a, final AccountGroup.Id g)
+DECL|method|Key (final Project.NameKey p, final ApprovalCategory.Id a, final AccountGroup.Id g)
 specifier|public
 name|Key
 parameter_list|(
 specifier|final
 name|Project
 operator|.
-name|Id
+name|NameKey
 name|p
 parameter_list|,
 specifier|final
@@ -225,7 +207,7 @@ name|Id
 name|g
 parameter_list|)
 block|{
-name|projectId
+name|projectName
 operator|=
 name|p
 expr_stmt|;
@@ -244,24 +226,24 @@ DECL|method|getParentKey ()
 specifier|public
 name|Project
 operator|.
-name|Id
+name|NameKey
 name|getParentKey
 parameter_list|()
 block|{
 return|return
-name|projectId
+name|projectName
 return|;
 block|}
-DECL|method|getProjectId ()
+DECL|method|getProjectNameKey ()
 specifier|public
 name|Project
 operator|.
-name|Id
-name|getProjectId
+name|NameKey
+name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
-name|projectId
+name|projectName
 return|;
 block|}
 annotation|@
@@ -368,18 +350,18 @@ return|return
 name|key
 return|;
 block|}
-DECL|method|getProjectId ()
+DECL|method|getProjectNameKey ()
 specifier|public
 name|Project
 operator|.
-name|Id
-name|getProjectId
+name|NameKey
+name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
 name|key
 operator|.
-name|projectId
+name|projectName
 return|;
 block|}
 DECL|method|getApprovalCategoryId ()

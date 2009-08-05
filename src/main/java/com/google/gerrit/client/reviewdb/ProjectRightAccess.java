@@ -171,9 +171,9 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.projectId = ?"
+literal|"WHERE key.projectName = ?"
 argument_list|)
-DECL|method|byProject (Project.Id id)
+DECL|method|byProject (Project.NameKey name)
 name|ResultSet
 argument_list|<
 name|ProjectRight
@@ -182,8 +182,8 @@ name|byProject
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|name
 parameter_list|)
 throws|throws
 name|OrmException

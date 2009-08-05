@@ -191,9 +191,9 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE notifyNewChanges = true AND key.projectId = ?"
+literal|"WHERE notifyNewChanges = true AND key.projectName = ?"
 argument_list|)
-DECL|method|notifyNewChanges (Project.Id id)
+DECL|method|notifyNewChanges (Project.NameKey name)
 name|ResultSet
 argument_list|<
 name|AccountProjectWatch
@@ -202,8 +202,8 @@ name|notifyNewChanges
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|name
 parameter_list|)
 throws|throws
 name|OrmException
@@ -211,9 +211,9 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE notifyAllComments = true AND key.projectId = ?"
+literal|"WHERE notifyAllComments = true AND key.projectName = ?"
 argument_list|)
-DECL|method|notifyAllComments (Project.Id id)
+DECL|method|notifyAllComments (Project.NameKey name)
 name|ResultSet
 argument_list|<
 name|AccountProjectWatch
@@ -222,8 +222,8 @@ name|notifyAllComments
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|name
 parameter_list|)
 throws|throws
 name|OrmException
@@ -231,9 +231,9 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE notifySubmittedChanges = true AND key.projectId = ?"
+literal|"WHERE notifySubmittedChanges = true AND key.projectName = ?"
 argument_list|)
-DECL|method|notifySubmittedChanges (Project.Id id)
+DECL|method|notifySubmittedChanges (Project.NameKey name)
 name|ResultSet
 argument_list|<
 name|AccountProjectWatch
@@ -242,8 +242,8 @@ name|notifySubmittedChanges
 parameter_list|(
 name|Project
 operator|.
-name|Id
-name|id
+name|NameKey
+name|name
 parameter_list|)
 throws|throws
 name|OrmException

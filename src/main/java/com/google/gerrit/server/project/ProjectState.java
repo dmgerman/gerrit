@@ -297,7 +297,7 @@ name|byProject
 argument_list|(
 name|project
 operator|.
-name|getId
+name|getNameKey
 argument_list|()
 argument_list|)
 operator|.

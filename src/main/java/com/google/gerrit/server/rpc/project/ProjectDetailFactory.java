@@ -174,6 +174,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|WildProjectName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -320,10 +336,15 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey name)
+DECL|method|create (@ssistedR) Project.NameKey name)
 name|ProjectDetailFactory
 name|create
 parameter_list|(
+annotation|@
+name|Assisted
+argument_list|(
+literal|"name"
+argument_list|)
 name|Project
 operator|.
 name|NameKey
@@ -342,6 +363,14 @@ specifier|private
 specifier|final
 name|ReviewDb
 name|db
+decl_stmt|;
+DECL|field|wildProject
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|wildProject
 decl_stmt|;
 DECL|field|projectName
 specifier|private
@@ -370,7 +399,7 @@ name|groups
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectDetailFactory (final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.NameKey name)
+DECL|method|ProjectDetailFactory (final ProjectCache projectCache, final ReviewDb db, @WildProjectName final Project.NameKey wp, @Assisted(R) final Project.NameKey name)
 name|ProjectDetailFactory
 parameter_list|(
 specifier|final
@@ -382,7 +411,18 @@ name|ReviewDb
 name|db
 parameter_list|,
 annotation|@
+name|WildProjectName
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|wp
+parameter_list|,
+annotation|@
 name|Assisted
+argument_list|(
+literal|"name"
+argument_list|)
 specifier|final
 name|Project
 operator|.
@@ -401,6 +441,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|wildProject
+operator|=
+name|wp
 expr_stmt|;
 name|this
 operator|.
@@ -519,9 +565,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|ProjectRight
-operator|.
-name|WILD_PROJECT
+name|wildProject
 operator|.
 name|equals
 argument_list|(
@@ -530,7 +574,7 @@ operator|.
 name|getProject
 argument_list|()
 operator|.
-name|getId
+name|getNameKey
 argument_list|()
 argument_list|)
 condition|)

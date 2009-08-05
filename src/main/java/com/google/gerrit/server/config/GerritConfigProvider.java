@@ -142,6 +142,22 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|ReviewDb
 import|;
 end_import
@@ -384,6 +400,14 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|wildProject
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|wildProject
+decl_stmt|;
 DECL|field|sshd
 specifier|private
 name|SshInfo
@@ -401,7 +425,7 @@ name|contactStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, final SchemaFactory<ReviewDb> sf)
+DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, final SchemaFactory<ReviewDb> sf, @WildProjectName final Project.NameKey wp)
 name|GerritConfigProvider
 parameter_list|(
 annotation|@
@@ -428,6 +452,14 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
+parameter_list|,
+annotation|@
+name|WildProjectName
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|wp
 parameter_list|)
 block|{
 name|cfg
@@ -445,6 +477,10 @@ expr_stmt|;
 name|schema
 operator|=
 name|sf
+expr_stmt|;
+name|wildProject
+operator|=
+name|wp
 expr_stmt|;
 block|}
 annotation|@
@@ -619,6 +655,13 @@ name|authConfig
 operator|.
 name|getLoginType
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|config
+operator|.
+name|setWildProject
+argument_list|(
+name|wildProject
 argument_list|)
 expr_stmt|;
 specifier|final

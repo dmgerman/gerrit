@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.server.config
 package|package
 name|com
 operator|.
@@ -62,9 +62,23 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|config
 package|;
 end_package
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+import|;
+end_import
 
 begin_import
 import|import
@@ -82,65 +96,48 @@ name|Project
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|BindingAnnotation
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Retention
+import|;
+end_import
+
 begin_comment
-comment|/** Indicates the project does not exist. */
+comment|/**  * Marker on a {@link Project.NameKey} for the current wildcard project.  *<p>  * This is the name of the project whose rights inherit into every other project  * in the system.  */
 end_comment
 
-begin_class
-DECL|class|NoSuchProjectException
-specifier|public
-class|class
-name|NoSuchProjectException
-extends|extends
-name|Exception
-block|{
-DECL|method|NoSuchProjectException (final Project.NameKey key)
-specifier|public
-name|NoSuchProjectException
-parameter_list|(
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|key
-parameter_list|)
-block|{
-name|this
+begin_annotation_defn
+annotation|@
+name|Retention
 argument_list|(
-name|key
-argument_list|,
-literal|null
+name|RUNTIME
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|NoSuchProjectException (final Project.NameKey key, final Throwable why)
+annotation|@
+name|BindingAnnotation
+DECL|annotation|WildProjectName
 specifier|public
-name|NoSuchProjectException
-parameter_list|(
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|key
-parameter_list|,
-specifier|final
-name|Throwable
-name|why
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|key
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-name|why
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+annotation_defn|@interface
+name|WildProjectName
+block|{ }
+end_annotation_defn
 
 end_unit
 

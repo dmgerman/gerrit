@@ -138,12 +138,12 @@ name|accountId
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|projectId
+DECL|field|projectName
 specifier|protected
 name|Project
 operator|.
-name|Id
-name|projectId
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|method|Key ()
 specifier|protected
@@ -158,16 +158,16 @@ operator|.
 name|Id
 argument_list|()
 expr_stmt|;
-name|projectId
+name|projectName
 operator|=
 operator|new
 name|Project
 operator|.
-name|Id
+name|NameKey
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Account.Id a, final Project.Id g)
+DECL|method|Key (final Account.Id a, final Project.NameKey g)
 specifier|public
 name|Key
 parameter_list|(
@@ -180,7 +180,7 @@ parameter_list|,
 specifier|final
 name|Project
 operator|.
-name|Id
+name|NameKey
 name|g
 parameter_list|)
 block|{
@@ -188,7 +188,7 @@ name|accountId
 operator|=
 name|a
 expr_stmt|;
-name|projectId
+name|projectName
 operator|=
 name|g
 expr_stmt|;
@@ -243,7 +243,7 @@ name|?
 argument_list|>
 index|[]
 block|{
-name|projectId
+name|projectName
 block|}
 empty_stmt|;
 block|}
@@ -333,18 +333,18 @@ operator|.
 name|accountId
 return|;
 block|}
-DECL|method|getProjectId ()
+DECL|method|getProjectNameKey ()
 specifier|public
 name|Project
 operator|.
-name|Id
-name|getProjectId
+name|NameKey
+name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
 name|key
 operator|.
-name|projectId
+name|projectName
 return|;
 block|}
 DECL|method|isNotifyNewChanges ()

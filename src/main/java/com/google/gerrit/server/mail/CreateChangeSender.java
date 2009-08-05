@@ -154,11 +154,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|reviewdb
+name|project
 operator|.
-name|Project
+name|ProjectState
 import|;
 end_import
 
@@ -303,15 +303,15 @@ block|{
 comment|// BCC anyone else who has interest in this project's changes
 comment|//
 specifier|final
-name|Project
-name|project
+name|ProjectState
+name|ps
 init|=
-name|getProject
+name|getProjectState
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|project
+name|ps
 operator|!=
 literal|null
 condition|)
@@ -389,9 +389,12 @@ argument_list|()
 operator|.
 name|notifyNewChanges
 argument_list|(
-name|project
+name|ps
 operator|.
-name|getId
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
 argument_list|()
 argument_list|)
 control|)
