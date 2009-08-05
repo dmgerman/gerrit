@@ -157,7 +157,17 @@ specifier|protected
 name|void
 name|configure
 parameter_list|()
-block|{       }
+block|{
+name|factory
+argument_list|(
+name|AgreementInfoFactory
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
