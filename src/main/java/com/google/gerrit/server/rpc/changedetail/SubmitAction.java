@@ -268,6 +268,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|rpc
 operator|.
 name|Handler
@@ -455,6 +469,12 @@ operator|.
 name|Factory
 name|functionState
 decl_stmt|;
+DECL|field|user
+specifier|private
+specifier|final
+name|IdentifiedUser
+name|user
+decl_stmt|;
 DECL|field|patchSetId
 specifier|private
 specifier|final
@@ -465,7 +485,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitAction (final ReviewDb db, final MergeQueue mq, final GerritConfig gc, final FunctionState.Factory fs, @Assisted final PatchSet.Id patchSetId)
+DECL|method|SubmitAction (final ReviewDb db, final MergeQueue mq, final GerritConfig gc, final FunctionState.Factory fs, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
 name|SubmitAction
 parameter_list|(
 specifier|final
@@ -485,6 +505,10 @@ name|FunctionState
 operator|.
 name|Factory
 name|fs
+parameter_list|,
+specifier|final
+name|IdentifiedUser
+name|user
 parameter_list|,
 annotation|@
 name|Assisted
@@ -518,6 +542,12 @@ operator|.
 name|functionState
 operator|=
 name|fs
+expr_stmt|;
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 name|this
 operator|.
@@ -653,17 +683,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
-name|Account
-operator|.
-name|Id
-name|me
-init|=
-name|Common
-operator|.
-name|getAccountId
-argument_list|()
-decl_stmt|;
-specifier|final
 name|ChangeApproval
 operator|.
 name|Key
@@ -679,7 +698,10 @@ operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|me
+name|user
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|,
 name|SUBMIT
 argument_list|)
@@ -873,7 +895,7 @@ argument_list|)
 operator|.
 name|isValid
 argument_list|(
-name|me
+name|user
 argument_list|,
 name|actionType
 argument_list|,

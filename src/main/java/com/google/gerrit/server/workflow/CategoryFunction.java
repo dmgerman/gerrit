@@ -94,22 +94,6 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
 name|ApprovalCategory
 import|;
 end_import
@@ -143,6 +127,20 @@ operator|.
 name|reviewdb
 operator|.
 name|ProjectRight
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|CurrentUser
 import|;
 end_import
 
@@ -239,7 +237,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Locate a function by category.    *     * @param category the category the function is for.    * @return the function implementation; {@link NoOpFunction} if the function    *         is not known to Gerrit and thus cannot be executed.    */
+comment|/**    * Locate a function by category.    *    * @param category the category the function is for.    * @return the function implementation; {@link NoOpFunction} if the function    *         is not known to Gerrit and thus cannot be executed.    */
 DECL|method|forCategory (final ApprovalCategory category)
 specifier|public
 specifier|static
@@ -275,7 +273,7 @@ name|NoOpFunction
 argument_list|()
 return|;
 block|}
-comment|/**    * Locate a function by name.    *     * @param functionName the function's unique name.    * @return the function implementation; null if the function is not known to    *         Gerrit and thus cannot be executed.    */
+comment|/**    * Locate a function by name.    *    * @param functionName the function's unique name.    * @return the function implementation; null if the function is not known to    *         Gerrit and thus cannot be executed.    */
 DECL|method|forName (final String functionName)
 specifier|public
 specifier|static
@@ -296,7 +294,7 @@ name|functionName
 argument_list|)
 return|;
 block|}
-comment|/**    * Normalize ChangeApprovals and set the valid flag for this category.    *<p>    * Implementors should invoke:    *     *<pre>    * state.valid(at, true);    *</pre>    *<p>    * If the set of approvals from<code>state.getApprovals(at)</code> covers the    * requirements for the function, indicating the category has been completed.    *<p>    * An example implementation which requires at least one positive and no    * negatives might be:    *     *<pre>    * boolean neg = false, pos = false;    * for (final ChangeApproval ca : state.getApprovals(at)) {    *   state.normalize(ca);    *   neg |= ca.getValue()&lt; 0;    *   pos |= ca.getValue()&gt; 0;    * }    * state.valid(at, !neg&amp;&amp; pos);    *</pre>    *     * @param at the cached category description to process.    * @param state state to read approvals and project rights from, and to update    *        the valid status into.    */
+comment|/**    * Normalize ChangeApprovals and set the valid flag for this category.    *<p>    * Implementors should invoke:    *    *<pre>    * state.valid(at, true);    *</pre>    *<p>    * If the set of approvals from<code>state.getApprovals(at)</code> covers the    * requirements for the function, indicating the category has been completed.    *<p>    * An example implementation which requires at least one positive and no    * negatives might be:    *    *<pre>    * boolean neg = false, pos = false;    * for (final ChangeApproval ca : state.getApprovals(at)) {    *   state.normalize(ca);    *   neg |= ca.getValue()&lt; 0;    *   pos |= ca.getValue()&gt; 0;    * }    * state.valid(at, !neg&amp;&amp; pos);    *</pre>    *    * @param at the cached category description to process.    * @param state state to read approvals and project rights from, and to update    *        the valid status into.    */
 DECL|method|run (ApprovalType at, FunctionState state)
 specifier|public
 specifier|abstract
@@ -310,16 +308,14 @@ name|FunctionState
 name|state
 parameter_list|)
 function_decl|;
-DECL|method|isValid (final Account.Id accountId, final ApprovalType at, final FunctionState state)
+DECL|method|isValid (final CurrentUser user, final ApprovalType at, final FunctionState state)
 specifier|public
 name|boolean
 name|isValid
 parameter_list|(
 specifier|final
-name|Account
-operator|.
-name|Id
-name|accountId
+name|CurrentUser
+name|user
 parameter_list|,
 specifier|final
 name|ApprovalType
@@ -346,12 +342,13 @@ control|)
 block|{
 if|if
 condition|(
-name|state
+name|user
 operator|.
-name|isMember
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|contains
 argument_list|(
-name|accountId
-argument_list|,
 name|pr
 operator|.
 name|getAccountGroupId

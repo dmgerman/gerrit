@@ -110,22 +110,6 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
 name|ReviewDb
 import|;
 end_import
@@ -170,12 +154,6 @@ specifier|private
 specifier|static
 name|AccountCache
 name|accountCache
-decl_stmt|;
-DECL|field|caImpl
-specifier|private
-specifier|static
-name|CurrentAccountImpl
-name|caImpl
 decl_stmt|;
 comment|/** Get the public configuration data used by this Gerrit instance. */
 DECL|method|getGerritConfig ()
@@ -266,54 +244,6 @@ name|schema
 operator|=
 name|imp
 expr_stmt|;
-block|}
-comment|/** Get the unique id for this account; null if there is no account. */
-DECL|method|getAccountId ()
-specifier|public
-specifier|static
-name|Account
-operator|.
-name|Id
-name|getAccountId
-parameter_list|()
-block|{
-return|return
-name|caImpl
-operator|.
-name|getAccountId
-argument_list|()
-return|;
-block|}
-DECL|method|setCurrentAccountImpl (final CurrentAccountImpl i)
-specifier|public
-specifier|static
-name|void
-name|setCurrentAccountImpl
-parameter_list|(
-specifier|final
-name|CurrentAccountImpl
-name|i
-parameter_list|)
-block|{
-name|caImpl
-operator|=
-name|i
-expr_stmt|;
-block|}
-DECL|interface|CurrentAccountImpl
-specifier|public
-interface|interface
-name|CurrentAccountImpl
-block|{
-comment|/** Get the unique id for this account; null if there is no account. */
-DECL|method|getAccountId ()
-specifier|public
-name|Account
-operator|.
-name|Id
-name|getAccountId
-parameter_list|()
-function_decl|;
 block|}
 block|}
 end_class

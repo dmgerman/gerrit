@@ -846,7 +846,7 @@ name|projectDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final Provider<ReviewDb> sf, final GerritServer gs, final ProjectCache pc, final ReplicationQueue rq, final Provider<IdentifiedUser> iu, @WildProjectName final Project.NameKey wp, final ProjectControl.Factory projectControlFactory, final ProjectDetailFactory.Factory projectDetailFactory)
+DECL|method|ProjectAdminServiceImpl (final Provider<ReviewDb> schema, final GerritServer gs, final ProjectCache pc, final ReplicationQueue rq, final Provider<IdentifiedUser> currentUser, @WildProjectName final Project.NameKey wp, final ProjectControl.Factory projectControlFactory, final ProjectDetailFactory.Factory projectDetailFactory)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -854,7 +854,7 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
 parameter_list|,
 specifier|final
 name|GerritServer
@@ -873,7 +873,7 @@ name|Provider
 argument_list|<
 name|IdentifiedUser
 argument_list|>
-name|iu
+name|currentUser
 parameter_list|,
 annotation|@
 name|WildProjectName
@@ -898,7 +898,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|currentUser
 argument_list|)
 expr_stmt|;
 name|this
@@ -929,7 +931,7 @@ name|this
 operator|.
 name|identifiedUser
 operator|=
-name|iu
+name|currentUser
 expr_stmt|;
 name|this
 operator|.
@@ -2868,8 +2870,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)

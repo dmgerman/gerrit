@@ -480,7 +480,7 @@ name|agreementInfoFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountServiceImpl (final Provider<ReviewDb> sf, final Provider<IdentifiedUser> currentUser, final AccountCache2 accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory)
+DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final AccountCache2 accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory)
 name|AccountServiceImpl
 parameter_list|(
 specifier|final
@@ -488,14 +488,14 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
 parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
 name|IdentifiedUser
 argument_list|>
-name|currentUser
+name|identifiedUser
 parameter_list|,
 specifier|final
 name|AccountCache2
@@ -516,14 +516,16 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|identifiedUser
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|currentUser
 operator|=
-name|currentUser
+name|identifiedUser
 expr_stmt|;
 name|this
 operator|.
@@ -623,8 +625,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -771,8 +771,6 @@ argument_list|()
 operator|.
 name|byAccount
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -1044,8 +1042,6 @@ block|{
 if|if
 condition|(
 operator|!
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 operator|.
@@ -1167,8 +1163,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;

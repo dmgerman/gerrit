@@ -90,11 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|reviewdb
-operator|.
-name|Account
+name|CurrentUser
 import|;
 end_import
 
@@ -136,16 +134,14 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|isValid (final Account.Id accountId, final ApprovalType at, final FunctionState state)
+DECL|method|isValid (final CurrentUser user, final ApprovalType at, final FunctionState state)
 specifier|public
 name|boolean
 name|isValid
 parameter_list|(
 specifier|final
-name|Account
-operator|.
-name|Id
-name|accountId
+name|CurrentUser
+name|user
 parameter_list|,
 specifier|final
 name|ApprovalType

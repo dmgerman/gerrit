@@ -534,7 +534,7 @@ name|groupControlFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> sf, final Provider<IdentifiedUser> iu, final AccountCache2 accountCache, final GroupCache groupCache, final GroupControl.Factory groupControlFactory)
+DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final AccountCache2 accountCache, final GroupCache groupCache, final GroupControl.Factory groupControlFactory)
 name|GroupAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -542,14 +542,14 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
 parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
 name|IdentifiedUser
 argument_list|>
-name|iu
+name|currentUser
 parameter_list|,
 specifier|final
 name|AccountCache2
@@ -568,14 +568,16 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|currentUser
 argument_list|)
 expr_stmt|;
 name|this
 operator|.
 name|identifiedUser
 operator|=
-name|iu
+name|currentUser
 expr_stmt|;
 name|this
 operator|.
@@ -982,8 +984,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -1813,8 +1813,6 @@ name|AccountGroupMemberAudit
 argument_list|(
 name|m
 argument_list|,
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -1994,8 +1992,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;

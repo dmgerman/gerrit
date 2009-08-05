@@ -462,6 +462,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|AddReviewerSender
@@ -803,7 +817,7 @@ name|addReviewerCategoryId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> sf, final AddReviewerSender.Factory arsf, final CommentSender.Factory csf, final PatchSetInfoFactory psif, final GerritConfig gc, final AbandonChange.Factory abandonChangeFactory, final CommentDetailFactory.Factory commentDetailFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory)
+DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final AddReviewerSender.Factory arsf, final CommentSender.Factory csf, final PatchSetInfoFactory psif, final GerritConfig gc, final AbandonChange.Factory abandonChangeFactory, final CommentDetailFactory.Factory commentDetailFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -811,7 +825,14 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|currentUser
 parameter_list|,
 specifier|final
 name|AddReviewerSender
@@ -860,7 +881,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|currentUser
 argument_list|)
 expr_stmt|;
 name|patchSetInfoFactory
@@ -1180,8 +1203,6 @@ block|}
 if|if
 condition|(
 operator|!
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 operator|.
@@ -1384,8 +1405,6 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -1544,8 +1563,6 @@ operator|.
 name|Id
 name|account
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -1720,8 +1737,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -2775,8 +2790,6 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)

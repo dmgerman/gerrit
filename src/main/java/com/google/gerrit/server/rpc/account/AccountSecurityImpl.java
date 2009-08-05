@@ -298,6 +298,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountByEmailCache
@@ -739,7 +753,7 @@ name|externalIdDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> sf, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache2 uac, final ExternalIdDetailFactory.Factory externalIdDetailFactory)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache2 uac, final ExternalIdDetailFactory.Factory externalIdDetailFactory)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -747,7 +761,14 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|currentUser
 parameter_list|,
 specifier|final
 name|ContactStore
@@ -784,7 +805,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|currentUser
 argument_list|)
 expr_stmt|;
 name|contactStore
@@ -880,8 +903,6 @@ argument_list|()
 operator|.
 name|byAccount
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -946,8 +967,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -1182,8 +1201,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -1464,8 +1481,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -1789,8 +1804,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
@@ -2153,8 +2166,6 @@ name|AccountAgreement
 operator|.
 name|Key
 argument_list|(
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
@@ -2483,8 +2494,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;

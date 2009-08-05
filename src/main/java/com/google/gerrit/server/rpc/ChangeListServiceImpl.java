@@ -858,7 +858,7 @@ name|changeControlFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeListServiceImpl (final Provider<ReviewDb> sf, final Provider<CurrentUser> currentUser, final ChangeControl.Factory changeControlFactory)
+DECL|method|ChangeListServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ChangeControl.Factory changeControlFactory)
 name|ChangeListServiceImpl
 parameter_list|(
 specifier|final
@@ -866,7 +866,7 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
 parameter_list|,
 specifier|final
 name|Provider
@@ -884,7 +884,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|currentUser
 argument_list|)
 expr_stmt|;
 name|this
@@ -2113,8 +2115,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -2560,8 +2560,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -2728,8 +2726,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -2916,8 +2912,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
@@ -3838,8 +3832,6 @@ operator|.
 name|Id
 name|me
 init|=
-name|Common
-operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;

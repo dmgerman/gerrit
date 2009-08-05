@@ -391,7 +391,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestServiceImpl (final Provider<ReviewDb> sf, final ProjectCache pc, final Provider<CurrentUser> cu)
+DECL|method|SuggestServiceImpl (final Provider<ReviewDb> schema, final ProjectCache pc, final Provider<CurrentUser> currentUser)
 name|SuggestServiceImpl
 parameter_list|(
 specifier|final
@@ -399,7 +399,7 @@ name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|sf
+name|schema
 parameter_list|,
 specifier|final
 name|ProjectCache
@@ -410,21 +410,27 @@ name|Provider
 argument_list|<
 name|CurrentUser
 argument_list|>
-name|cu
+name|currentUser
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|sf
+name|schema
+argument_list|,
+name|currentUser
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|projectCache
 operator|=
 name|pc
 expr_stmt|;
+name|this
+operator|.
 name|currentUser
 operator|=
-name|cu
+name|currentUser
 expr_stmt|;
 block|}
 DECL|method|suggestProjectNameKey (final String query, final int limit, final AsyncCallback<List<Project.NameKey>> callback)

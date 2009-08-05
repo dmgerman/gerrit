@@ -192,7 +192,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Common
+name|NoSuchEntityException
 import|;
 end_import
 
@@ -204,11 +204,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|rpc
-operator|.
-name|NoSuchEntityException
+name|IdentifiedUser
 import|;
 end_import
 
@@ -438,6 +436,10 @@ specifier|private
 name|PatchSetDetail
 name|detail
 decl_stmt|;
+DECL|field|control
+name|ChangeControl
+name|control
+decl_stmt|;
 DECL|field|patchSet
 name|PatchSet
 name|patchSet
@@ -513,11 +515,17 @@ name|NoSuchChangeException
 block|{
 if|if
 condition|(
+name|control
+operator|==
+literal|null
+operator|||
 name|patchSet
 operator|==
 literal|null
 condition|)
 block|{
+name|control
+operator|=
 name|changeControlFactory
 operator|.
 name|validateFor
@@ -597,28 +605,39 @@ name|toList
 argument_list|()
 argument_list|)
 expr_stmt|;
-specifier|final
-name|Account
-operator|.
-name|Id
-name|me
-init|=
-name|Common
-operator|.
-name|getAccountId
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|me
-operator|!=
-literal|null
+name|control
+operator|.
+name|getCurrentUser
+argument_list|()
+operator|instanceof
+name|IdentifiedUser
 condition|)
 block|{
 comment|// If we are signed in, compute the number of draft comments by the
 comment|// current user on each of these patch files. This way they can more
 comment|// quickly locate where they have pending drafts, and review them.
 comment|//
+specifier|final
+name|Account
+operator|.
+name|Id
+name|me
+init|=
+operator|(
+operator|(
+name|IdentifiedUser
+operator|)
+name|control
+operator|.
+name|getCurrentUser
+argument_list|()
+operator|)
+operator|.
+name|getAccountId
+argument_list|()
+decl_stmt|;
 specifier|final
 name|List
 argument_list|<
