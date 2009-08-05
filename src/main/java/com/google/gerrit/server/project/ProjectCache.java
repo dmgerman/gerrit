@@ -554,10 +554,10 @@ argument_list|()
 return|;
 block|}
 comment|/** Invalidate the cached information about the given project. */
-DECL|method|invalidate (final Project p)
+DECL|method|evict (final Project p)
 specifier|public
 name|void
-name|invalidate
+name|evict
 parameter_list|(
 specifier|final
 name|Project

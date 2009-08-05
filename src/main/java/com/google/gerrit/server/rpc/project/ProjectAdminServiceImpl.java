@@ -1197,7 +1197,7 @@ argument_list|)
 expr_stmt|;
 name|projectCache
 operator|.
-name|invalidate
+name|evict
 argument_list|(
 name|proj
 argument_list|)
@@ -1576,7 +1576,7 @@ block|}
 block|}
 name|projectCache
 operator|.
-name|invalidate
+name|evict
 argument_list|(
 name|control
 operator|.
@@ -2006,7 +2006,7 @@ expr_stmt|;
 block|}
 name|projectCache
 operator|.
-name|invalidate
+name|evict
 argument_list|(
 name|proj
 argument_list|)
