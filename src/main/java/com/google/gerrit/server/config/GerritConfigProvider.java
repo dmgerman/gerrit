@@ -408,10 +408,11 @@ operator|.
 name|NameKey
 name|wildProject
 decl_stmt|;
-DECL|field|sshd
+DECL|field|sshInfo
 specifier|private
+specifier|final
 name|SshInfo
-name|sshd
+name|sshInfo
 decl_stmt|;
 DECL|field|emailSender
 specifier|private
@@ -425,7 +426,7 @@ name|contactStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, final SchemaFactory<ReviewDb> sf, @WildProjectName final Project.NameKey wp)
+DECL|method|GerritConfigProvider (@erritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, final SchemaFactory<ReviewDb> sf, @WildProjectName final Project.NameKey wp, final SshInfo si)
 name|GerritConfigProvider
 parameter_list|(
 annotation|@
@@ -460,6 +461,10 @@ name|Project
 operator|.
 name|NameKey
 name|wp
+parameter_list|,
+specifier|final
+name|SshInfo
+name|si
 parameter_list|)
 block|{
 name|cfg
@@ -478,30 +483,13 @@ name|schema
 operator|=
 name|sf
 expr_stmt|;
+name|sshInfo
+operator|=
+name|si
+expr_stmt|;
 name|wildProject
 operator|=
 name|wp
-expr_stmt|;
-block|}
-annotation|@
-name|Inject
-argument_list|(
-name|optional
-operator|=
-literal|true
-argument_list|)
-DECL|method|setSshd (final SshInfo d)
-name|void
-name|setSshd
-parameter_list|(
-specifier|final
-name|SshInfo
-name|d
-parameter_list|)
-block|{
-name|sshd
-operator|=
-name|d
 expr_stmt|;
 block|}
 annotation|@
@@ -765,11 +753,11 @@ specifier|final
 name|InetSocketAddress
 name|addr
 init|=
-name|sshd
+name|sshInfo
 operator|!=
 literal|null
 condition|?
-name|sshd
+name|sshInfo
 operator|.
 name|getAddress
 argument_list|()
