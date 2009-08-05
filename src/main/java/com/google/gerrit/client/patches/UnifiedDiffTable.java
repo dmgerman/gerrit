@@ -138,6 +138,22 @@ name|client
 operator|.
 name|data
 operator|.
+name|EditList
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
 name|PatchScript
 import|;
 end_import
@@ -170,9 +186,9 @@ name|client
 operator|.
 name|data
 operator|.
-name|PatchScript
+name|EditList
 operator|.
-name|DisplayMethod
+name|Hunk
 import|;
 end_import
 
@@ -190,7 +206,7 @@ name|data
 operator|.
 name|PatchScript
 operator|.
-name|Hunk
+name|DisplayMethod
 import|;
 end_import
 
@@ -967,7 +983,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|PatchScript
+name|EditList
 operator|.
 name|Hunk
 name|hunk
@@ -989,7 +1005,7 @@ while|while
 condition|(
 name|hunk
 operator|.
-name|hasNextLine
+name|next
 argument_list|()
 condition|)
 block|{
@@ -1272,11 +1288,6 @@ name|nc
 argument_list|)
 expr_stmt|;
 block|}
-name|hunk
-operator|.
-name|next
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 name|resetHtml
