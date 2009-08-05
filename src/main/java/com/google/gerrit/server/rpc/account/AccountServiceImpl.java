@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.rpc
+DECL|package|com.google.gerrit.server.rpc.account
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|server
 operator|.
 name|rpc
+operator|.
+name|account
 package|;
 end_package
 
