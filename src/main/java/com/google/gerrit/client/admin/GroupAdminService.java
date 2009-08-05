@@ -326,10 +326,15 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|deleteGroupMembers (Set<AccountGroupMember.Key> keys, AsyncCallback<VoidResult> callback)
+DECL|method|deleteGroupMembers (AccountGroup.Id groupId, Set<AccountGroupMember.Key> keys, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteGroupMembers
 parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|,
 name|Set
 argument_list|<
 name|AccountGroupMember

@@ -266,6 +266,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AccountCache2
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchProjectException
@@ -440,6 +456,12 @@ name|IdentifiedUser
 argument_list|>
 name|currentUser
 decl_stmt|;
+DECL|field|accountCache
+specifier|private
+specifier|final
+name|AccountCache2
+name|accountCache
+decl_stmt|;
 DECL|field|projectControlFactory
 specifier|private
 specifier|final
@@ -458,7 +480,7 @@ name|agreementInfoFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountServiceImpl (final Provider<ReviewDb> sf, final Provider<IdentifiedUser> currentUser, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory)
+DECL|method|AccountServiceImpl (final Provider<ReviewDb> sf, final Provider<IdentifiedUser> currentUser, final AccountCache2 accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory)
 name|AccountServiceImpl
 parameter_list|(
 specifier|final
@@ -474,6 +496,10 @@ argument_list|<
 name|IdentifiedUser
 argument_list|>
 name|currentUser
+parameter_list|,
+specifier|final
+name|AccountCache2
+name|accountCache
 parameter_list|,
 specifier|final
 name|ProjectControl
@@ -498,6 +524,12 @@ operator|.
 name|currentUser
 operator|=
 name|currentUser
+expr_stmt|;
+name|this
+operator|.
+name|accountCache
+operator|=
+name|accountCache
 expr_stmt|;
 name|this
 operator|.
@@ -634,6 +666,16 @@ name|singleton
 argument_list|(
 name|a
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|a
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Common

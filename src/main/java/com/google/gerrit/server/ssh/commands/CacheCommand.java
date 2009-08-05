@@ -192,13 +192,6 @@ name|names
 operator|.
 name|add
 argument_list|(
-literal|"groups"
-argument_list|)
-expr_stmt|;
-name|names
-operator|.
-name|add
-argument_list|(
 literal|"accounts"
 argument_list|)
 expr_stmt|;

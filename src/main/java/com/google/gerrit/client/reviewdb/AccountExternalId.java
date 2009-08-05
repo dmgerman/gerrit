@@ -260,7 +260,7 @@ name|newValue
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Select the most recently used identity from a list of identities.    *     * @param all all known identities    * @return most recently used login identity; null if none matches.    */
+comment|/**    * Select the most recently used identity from a list of identities.    *    * @param all all known identities    * @return most recently used login identity; null if none matches.    */
 DECL|method|mostRecent (Collection<AccountExternalId> all)
 specifier|public
 specifier|static
@@ -394,12 +394,18 @@ specifier|protected
 name|Timestamp
 name|lastUsedOn
 decl_stmt|;
+comment|/**<i>computed value</i> is this identity trusted by the site administrator? */
+DECL|field|trusted
+specifier|protected
+name|boolean
+name|trusted
+decl_stmt|;
 DECL|method|AccountExternalId ()
 specifier|protected
 name|AccountExternalId
 parameter_list|()
 block|{   }
-comment|/**    * Create a new binding to an external identity.    *     * @param k the binding key.    */
+comment|/**    * Create a new binding to an external identity.    *    * @param k the binding key.    */
 DECL|method|AccountExternalId (final AccountExternalId.Key k)
 specifier|public
 name|AccountExternalId
@@ -574,6 +580,31 @@ block|}
 return|return
 literal|true
 return|;
+block|}
+DECL|method|isTrusted ()
+specifier|public
+name|boolean
+name|isTrusted
+parameter_list|()
+block|{
+return|return
+name|trusted
+return|;
+block|}
+DECL|method|setTrusted (final boolean t)
+specifier|public
+name|void
+name|setTrusted
+parameter_list|(
+specifier|final
+name|boolean
+name|t
+parameter_list|)
+block|{
+name|trusted
+operator|=
+name|t
+expr_stmt|;
 block|}
 block|}
 end_class

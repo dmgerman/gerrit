@@ -302,6 +302,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -525,7 +535,10 @@ argument_list|(
 operator|new
 name|GerritCallback
 argument_list|<
-name|ExternalIdDetail
+name|List
+argument_list|<
+name|AccountExternalId
+argument_list|>
 argument_list|>
 argument_list|()
 block|{
@@ -534,7 +547,10 @@ name|void
 name|onSuccess
 parameter_list|(
 specifier|final
-name|ExternalIdDetail
+name|List
+argument_list|<
+name|AccountExternalId
+argument_list|>
 name|result
 parameter_list|)
 block|{
@@ -942,12 +958,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|display (final ExternalIdDetail result)
+DECL|method|display (final List<AccountExternalId> result)
 name|void
 name|display
 parameter_list|(
 specifier|final
-name|ExternalIdDetail
+name|List
+argument_list|<
+name|AccountExternalId
+argument_list|>
 name|result
 parameter_list|)
 block|{
@@ -979,16 +998,11 @@ name|AccountExternalId
 name|k
 range|:
 name|result
-operator|.
-name|getIds
-argument_list|()
 control|)
 block|{
 name|addOneId
 argument_list|(
 name|k
-argument_list|,
-name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -1001,9 +1015,6 @@ operator|.
 name|mostRecent
 argument_list|(
 name|result
-operator|.
-name|getIds
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1061,17 +1072,13 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|addOneId (final AccountExternalId k, final ExternalIdDetail detail)
+DECL|method|addOneId (final AccountExternalId k)
 name|void
 name|addOneId
 parameter_list|(
 specifier|final
 name|AccountExternalId
 name|k
-parameter_list|,
-specifier|final
-name|ExternalIdDetail
-name|detail
 parameter_list|)
 block|{
 specifier|final
@@ -1186,12 +1193,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|detail
+name|k
 operator|.
 name|isTrusted
-argument_list|(
-name|k
-argument_list|)
+argument_list|()
 condition|)
 block|{
 name|table

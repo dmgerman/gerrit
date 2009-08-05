@@ -1427,9 +1427,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|result
+name|group
 operator|.
-name|autoGroup
+name|isAutomaticMembership
+argument_list|()
 condition|)
 block|{
 name|memberPanel
@@ -1804,6 +1805,8 @@ name|GROUP_SVC
 operator|.
 name|deleteGroupMembers
 argument_list|(
+name|groupId
+argument_list|,
 name|ids
 argument_list|,
 operator|new
