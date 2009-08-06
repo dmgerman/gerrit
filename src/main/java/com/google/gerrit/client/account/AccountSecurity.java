@@ -291,6 +291,22 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|changeSshUserName (String newName, AsyncCallback<VoidResult> callback)
+name|void
+name|changeSshUserName
+parameter_list|(
+name|String
+name|newName
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|myExternalIds (AsyncCallback<List<AccountExternalId>> callback)
 name|void
 name|myExternalIds

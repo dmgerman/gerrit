@@ -482,7 +482,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|SshKeyPanel
+name|SshPanel
 argument_list|()
 block|{
 block|{

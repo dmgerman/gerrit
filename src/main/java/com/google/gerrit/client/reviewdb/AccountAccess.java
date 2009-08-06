@@ -136,6 +136,20 @@ name|ResultSet
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|SecondaryKey
+import|;
+end_import
+
 begin_comment
 comment|/** Access interface for {@link Account}. */
 end_comment
@@ -192,15 +206,12 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
-name|Query
+name|SecondaryKey
 argument_list|(
-literal|"WHERE sshUserName = ?"
+literal|"sshUserName"
 argument_list|)
 DECL|method|bySshUserName (String userName)
-name|ResultSet
-argument_list|<
 name|Account
-argument_list|>
 name|bySshUserName
 parameter_list|(
 name|String

@@ -105,11 +105,6 @@ name|String
 name|preferredEmail
 parameter_list|()
 function_decl|;
-DECL|method|sshUserName ()
-name|String
-name|sshUserName
-parameter_list|()
-function_decl|;
 DECL|method|registeredOn ()
 name|String
 name|registeredOn
@@ -203,6 +198,16 @@ function_decl|;
 DECL|method|buttonAddSshKey ()
 name|String
 name|buttonAddSshKey
+parameter_list|()
+function_decl|;
+DECL|method|sshUserName ()
+name|String
+name|sshUserName
+parameter_list|()
+function_decl|;
+DECL|method|buttonChangeSshUserName ()
+name|String
+name|buttonChangeSshUserName
 parameter_list|()
 function_decl|;
 DECL|method|sshKeyInvalid ()

@@ -276,7 +276,7 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
-comment|/**    * Username to authenticate as through SSH connections.    *<p>    * Note that this property tracks {@link #preferredEmail}.    */
+comment|/** Username to authenticate as through SSH connections. */
 annotation|@
 name|Column
 argument_list|(
@@ -423,47 +423,6 @@ name|String
 name|addr
 parameter_list|)
 block|{
-if|if
-condition|(
-name|addr
-operator|!=
-literal|null
-operator|&&
-name|addr
-operator|.
-name|contains
-argument_list|(
-literal|"@"
-argument_list|)
-condition|)
-block|{
-name|sshUserName
-operator|=
-name|addr
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|addr
-operator|.
-name|indexOf
-argument_list|(
-literal|'@'
-argument_list|)
-argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|sshUserName
-operator|=
-literal|null
-expr_stmt|;
-block|}
 name|preferredEmail
 operator|=
 name|addr
@@ -479,6 +438,22 @@ block|{
 return|return
 name|sshUserName
 return|;
+block|}
+comment|/** Set the name the user logins as through SSH. */
+DECL|method|setSshUserName (final String name)
+specifier|public
+name|void
+name|setSshUserName
+parameter_list|(
+specifier|final
+name|String
+name|name
+parameter_list|)
+block|{
+name|sshUserName
+operator|=
+name|name
+expr_stmt|;
 block|}
 comment|/** Get the date and time the user first registered. */
 DECL|method|getRegisteredOn ()
