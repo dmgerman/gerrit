@@ -2033,6 +2033,13 @@ name|Account
 name|result
 parameter_list|)
 block|{
+name|registerNewEmail
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|onSaveSuccess
 argument_list|(
 name|result
@@ -2085,13 +2092,6 @@ name|Account
 name|result
 parameter_list|)
 block|{
-name|registerNewEmail
-operator|.
-name|setEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 specifier|final
 name|Account
 name|me
