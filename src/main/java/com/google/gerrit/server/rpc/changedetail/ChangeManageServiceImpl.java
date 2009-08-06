@@ -235,6 +235,17 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
+specifier|final
+name|ApprovalCategory
+operator|.
+name|Id
+name|category
+init|=
+name|value
+operator|.
+name|getParentKey
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|ApprovalCategory
@@ -243,7 +254,7 @@ name|SUBMIT
 operator|.
 name|equals
 argument_list|(
-name|value
+name|category
 argument_list|)
 operator|&&
 name|value
