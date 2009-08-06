@@ -287,10 +287,10 @@ comment|/** Configures standard dependencies for {@link SshDaemon}. */
 end_comment
 
 begin_class
-DECL|class|SshDaemonModule
+DECL|class|SshModule
 specifier|public
 class|class
-name|SshDaemonModule
+name|SshModule
 extends|extends
 name|FactoryModule
 block|{

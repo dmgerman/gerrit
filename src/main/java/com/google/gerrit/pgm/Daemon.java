@@ -200,7 +200,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|SshDaemonModule
+name|SshModule
 import|;
 end_import
 
@@ -281,7 +281,7 @@ name|GerritGlobalModule
 argument_list|()
 argument_list|,
 operator|new
-name|SshDaemonModule
+name|SshModule
 argument_list|()
 argument_list|,
 operator|new

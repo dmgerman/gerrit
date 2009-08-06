@@ -230,7 +230,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|SshDaemonModule
+name|SshModule
 import|;
 end_import
 
@@ -774,7 +774,7 @@ operator|.
 name|createChildInjector
 argument_list|(
 operator|new
-name|SshDaemonModule
+name|SshModule
 argument_list|()
 argument_list|)
 return|;
