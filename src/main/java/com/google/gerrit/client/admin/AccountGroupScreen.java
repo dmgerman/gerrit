@@ -625,7 +625,7 @@ argument_list|,
 operator|new
 name|ScreenLoadCallback
 argument_list|<
-name|AccountGroupDetail
+name|GroupDetail
 argument_list|>
 argument_list|(
 name|this
@@ -638,7 +638,7 @@ name|void
 name|preDisplay
 parameter_list|(
 specifier|final
-name|AccountGroupDetail
+name|GroupDetail
 name|result
 parameter_list|)
 block|{
@@ -1327,13 +1327,13 @@ name|memberPanel
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final AccountGroupDetail result)
+DECL|method|display (final GroupDetail result)
 specifier|private
 name|void
 name|display
 parameter_list|(
 specifier|final
-name|AccountGroupDetail
+name|GroupDetail
 name|result
 parameter_list|)
 block|{
@@ -1513,7 +1513,7 @@ argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
-name|AccountGroupDetail
+name|GroupDetail
 argument_list|>
 argument_list|()
 block|{
@@ -1522,7 +1522,7 @@ name|void
 name|onSuccess
 parameter_list|(
 specifier|final
-name|AccountGroupDetail
+name|GroupDetail
 name|result
 parameter_list|)
 block|{
@@ -1564,25 +1564,15 @@ operator|.
 name|accounts
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-specifier|final
-name|AccountGroupMember
-name|m
-range|:
+name|members
+operator|.
+name|display
+argument_list|(
 name|result
 operator|.
 name|members
-control|)
-block|{
-name|members
-operator|.
-name|insertMember
-argument_list|(
-name|m
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 annotation|@

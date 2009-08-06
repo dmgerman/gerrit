@@ -224,7 +224,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|groupDetail (AccountGroup.Id groupId, AsyncCallback<AccountGroupDetail> callback)
+DECL|method|groupDetail (AccountGroup.Id groupId, AsyncCallback<GroupDetail> callback)
 name|void
 name|groupDetail
 parameter_list|(
@@ -235,7 +235,7 @@ name|groupId
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|AccountGroupDetail
+name|GroupDetail
 argument_list|>
 name|callback
 parameter_list|)
@@ -305,7 +305,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addGroupMember (AccountGroup.Id groupId, String nameOrEmail, AsyncCallback<AccountGroupDetail> callback)
+DECL|method|addGroupMember (AccountGroup.Id groupId, String nameOrEmail, AsyncCallback<GroupDetail> callback)
 name|void
 name|addGroupMember
 parameter_list|(
@@ -319,7 +319,7 @@ name|nameOrEmail
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|AccountGroupDetail
+name|GroupDetail
 argument_list|>
 name|callback
 parameter_list|)

@@ -426,6 +426,22 @@ name|isOwner
 argument_list|()
 return|;
 block|}
+DECL|method|canSee (Account.Id id)
+specifier|public
+name|boolean
+name|canSee
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|isOwner
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

@@ -1689,7 +1689,7 @@ name|refLogIdent
 operator|=
 name|currentUser
 operator|.
-name|toPersonIdent
+name|newPersonIdent
 argument_list|()
 expr_stmt|;
 name|rp

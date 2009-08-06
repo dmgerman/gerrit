@@ -78,22 +78,6 @@ name|client
 operator|.
 name|data
 operator|.
-name|AccountCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|data
-operator|.
 name|GerritConfig
 import|;
 end_import
@@ -109,12 +93,6 @@ specifier|private
 specifier|static
 name|GerritConfig
 name|config
-decl_stmt|;
-DECL|field|accountCache
-specifier|private
-specifier|static
-name|AccountCache
-name|accountCache
 decl_stmt|;
 comment|/** Get the public configuration data used by this Gerrit instance. */
 DECL|method|getGerritConfig ()
@@ -140,34 +118,6 @@ name|imp
 parameter_list|)
 block|{
 name|config
-operator|=
-name|imp
-expr_stmt|;
-block|}
-comment|/**    * Get the active AccountCache instance.    *<p>    *<b>Note: this is likely only available on the server side.</b>    */
-DECL|method|getAccountCache ()
-specifier|public
-specifier|static
-name|AccountCache
-name|getAccountCache
-parameter_list|()
-block|{
-return|return
-name|accountCache
-return|;
-block|}
-DECL|method|setAccountCache (final AccountCache imp)
-specifier|public
-specifier|static
-name|void
-name|setAccountCache
-parameter_list|(
-specifier|final
-name|AccountCache
-name|imp
-parameter_list|)
-block|{
-name|accountCache
 operator|=
 name|imp
 expr_stmt|;

@@ -397,6 +397,13 @@ name|String
 name|username
 parameter_list|)
 block|{
+if|if
+condition|(
+name|username
+operator|!=
+literal|null
+condition|)
+block|{
 name|self
 operator|.
 name|remove
@@ -404,6 +411,7 @@ argument_list|(
 name|username
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

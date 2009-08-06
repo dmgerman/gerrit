@@ -188,13 +188,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|names
-operator|.
-name|add
-argument_list|(
-literal|"accounts"
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 specifier|final

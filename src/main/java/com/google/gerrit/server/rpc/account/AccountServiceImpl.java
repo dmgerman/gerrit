@@ -208,22 +208,6 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Common
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
 name|NoSuchEntityException
 import|;
 end_import
@@ -268,7 +252,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache2
+name|AccountCache
 import|;
 end_import
 
@@ -459,7 +443,7 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 decl_stmt|;
 DECL|field|projectControlFactory
@@ -480,7 +464,7 @@ name|agreementInfoFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final AccountCache2 accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory)
+DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final AccountCache accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory)
 name|AccountServiceImpl
 parameter_list|(
 specifier|final
@@ -498,7 +482,7 @@ argument_list|>
 name|identifiedUser
 parameter_list|,
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 parameter_list|,
 specifier|final
@@ -671,19 +655,6 @@ expr_stmt|;
 name|accountCache
 operator|.
 name|evict
-argument_list|(
-name|a
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Common
-operator|.
-name|getAccountCache
-argument_list|()
-operator|.
-name|invalidate
 argument_list|(
 name|a
 operator|.

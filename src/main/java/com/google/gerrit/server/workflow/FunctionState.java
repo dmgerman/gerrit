@@ -240,7 +240,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache2
+name|AccountCache
 import|;
 end_import
 
@@ -421,7 +421,7 @@ block|}
 DECL|field|accountCache
 specifier|private
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 decl_stmt|;
 DECL|field|projectCache
@@ -566,7 +566,7 @@ name|modified
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ProjectCache pc, final AccountCache2 ac, final GroupCache egc, @Assisted final Change c, @Assisted final Collection<ChangeApproval> all)
+DECL|method|FunctionState (final ProjectCache pc, final AccountCache ac, final GroupCache egc, @Assisted final Change c, @Assisted final Collection<ChangeApproval> all)
 name|FunctionState
 parameter_list|(
 specifier|final
@@ -574,7 +574,7 @@ name|ProjectCache
 name|pc
 parameter_list|,
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|ac
 parameter_list|,
 specifier|final

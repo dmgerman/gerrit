@@ -388,22 +388,6 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Common
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
 name|NoSuchAccountException
 import|;
 end_import
@@ -463,6 +447,22 @@ operator|.
 name|server
 operator|.
 name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountResolver
 import|;
 end_import
 
@@ -775,6 +775,12 @@ specifier|final
 name|GerritConfig
 name|gerritConfig
 decl_stmt|;
+DECL|field|accountResolver
+specifier|private
+specifier|final
+name|AccountResolver
+name|accountResolver
+decl_stmt|;
 DECL|field|abandonChangeFactory
 specifier|private
 specifier|final
@@ -817,7 +823,7 @@ name|addReviewerCategoryId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final AddReviewerSender.Factory arsf, final CommentSender.Factory csf, final PatchSetInfoFactory psif, final GerritConfig gc, final AbandonChange.Factory abandonChangeFactory, final CommentDetailFactory.Factory commentDetailFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory)
+DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final AddReviewerSender.Factory arsf, final CommentSender.Factory csf, final PatchSetInfoFactory psif, final GerritConfig gc, final AccountResolver accountResolver, final AbandonChange.Factory abandonChangeFactory, final CommentDetailFactory.Factory commentDetailFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -853,6 +859,10 @@ parameter_list|,
 specifier|final
 name|GerritConfig
 name|gc
+parameter_list|,
+specifier|final
+name|AccountResolver
+name|accountResolver
 parameter_list|,
 specifier|final
 name|AbandonChange
@@ -901,6 +911,12 @@ expr_stmt|;
 name|gerritConfig
 operator|=
 name|gc
+expr_stmt|;
+name|this
+operator|.
+name|accountResolver
+operator|=
+name|accountResolver
 expr_stmt|;
 name|this
 operator|.
@@ -2685,12 +2701,10 @@ specifier|final
 name|Account
 name|who
 init|=
-name|Account
+name|accountResolver
 operator|.
 name|find
 argument_list|(
-name|db
-argument_list|,
 name|email
 argument_list|)
 decl_stmt|;

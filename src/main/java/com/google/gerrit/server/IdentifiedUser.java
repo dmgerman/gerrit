@@ -172,7 +172,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache2
+name|AccountCache
 import|;
 end_import
 
@@ -362,6 +362,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -373,6 +383,16 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
 import|;
 end_import
 
@@ -406,12 +426,12 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory (final SystemConfig systemConfig, final AccountCache2 accountCache)
+DECL|method|GenericFactory (final SystemConfig systemConfig, final AccountCache accountCache)
 name|GenericFactory
 parameter_list|(
 specifier|final
@@ -419,7 +439,7 @@ name|SystemConfig
 name|systemConfig
 parameter_list|,
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 parameter_list|)
 block|{
@@ -483,7 +503,7 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 decl_stmt|;
 DECL|field|remotePeerProvider
@@ -506,7 +526,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory (final SystemConfig systemConfig, final AccountCache2 accountCache, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory (final SystemConfig systemConfig, final AccountCache accountCache, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
 specifier|final
@@ -514,7 +534,7 @@ name|SystemConfig
 name|systemConfig
 parameter_list|,
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 parameter_list|,
 specifier|final
@@ -607,7 +627,7 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 decl_stmt|;
 annotation|@
@@ -655,7 +675,7 @@ name|Id
 argument_list|>
 name|starredChanges
 decl_stmt|;
-DECL|method|IdentifiedUser (final SystemConfig systemConfig, final AccountCache2 accountCache, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
+DECL|method|IdentifiedUser (final SystemConfig systemConfig, final AccountCache accountCache, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -664,7 +684,7 @@ name|SystemConfig
 name|systemConfig
 parameter_list|,
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 parameter_list|,
 annotation|@
@@ -932,11 +952,39 @@ return|return
 name|starredChanges
 return|;
 block|}
-DECL|method|toPersonIdent ()
+DECL|method|newPersonIdent ()
 specifier|public
 name|PersonIdent
-name|toPersonIdent
+name|newPersonIdent
 parameter_list|()
+block|{
+return|return
+name|newPersonIdent
+argument_list|(
+operator|new
+name|Date
+argument_list|()
+argument_list|,
+name|TimeZone
+operator|.
+name|getDefault
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|newPersonIdent (final Date when, final TimeZone tz)
+specifier|public
+name|PersonIdent
+name|newPersonIdent
+parameter_list|(
+specifier|final
+name|Date
+name|when
+parameter_list|,
+specifier|final
+name|TimeZone
+name|tz
+parameter_list|)
 block|{
 specifier|final
 name|Account
@@ -1121,6 +1169,10 @@ operator|+
 literal|"@"
 operator|+
 name|host
+argument_list|,
+name|when
+argument_list|,
+name|tz
 argument_list|)
 return|;
 block|}

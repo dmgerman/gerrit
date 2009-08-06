@@ -377,10 +377,10 @@ end_comment
 begin_class
 annotation|@
 name|Singleton
-DECL|class|AccountCache2
+DECL|class|AccountCache
 specifier|public
 class|class
-name|AccountCache2
+name|AccountCache
 block|{
 DECL|field|log
 specifier|private
@@ -393,7 +393,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|AccountCache2
+name|AccountCache
 operator|.
 name|class
 argument_list|)
@@ -443,8 +443,8 @@ name|anonymous
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCache2 (final SchemaFactory<ReviewDb> sf, final SystemConfig cfg, final AuthConfig ac, final CacheManager mgr)
-name|AccountCache2
+DECL|method|AccountCache (final SchemaFactory<ReviewDb> sf, final SystemConfig cfg, final AuthConfig ac, final CacheManager mgr)
+name|AccountCache
 parameter_list|(
 specifier|final
 name|SchemaFactory
@@ -641,7 +641,10 @@ block|{
 comment|// Account no longer exists? They are anonymous.
 comment|//
 return|return
-literal|null
+name|missing
+argument_list|(
+name|who
+argument_list|)
 return|;
 block|}
 specifier|final

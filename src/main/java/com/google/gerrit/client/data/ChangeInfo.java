@@ -170,17 +170,13 @@ specifier|protected
 name|ChangeInfo
 parameter_list|()
 block|{   }
-DECL|method|ChangeInfo (final Change c, final AccountInfoCacheFactory acc)
+DECL|method|ChangeInfo (final Change c)
 specifier|public
 name|ChangeInfo
 parameter_list|(
 specifier|final
 name|Change
 name|c
-parameter_list|,
-specifier|final
-name|AccountInfoCacheFactory
-name|acc
 parameter_list|)
 block|{
 name|id
@@ -248,13 +244,6 @@ name|c
 operator|.
 name|getSortKey
 argument_list|()
-expr_stmt|;
-name|acc
-operator|.
-name|want
-argument_list|(
-name|owner
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getId ()

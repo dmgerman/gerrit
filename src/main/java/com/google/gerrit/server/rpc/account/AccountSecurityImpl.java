@@ -208,22 +208,6 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|Common
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
 name|ContactInformationStoreException
 import|;
 end_import
@@ -330,7 +314,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache2
+name|AccountCache
 import|;
 end_import
 
@@ -734,7 +718,7 @@ decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|accountCache
 decl_stmt|;
 DECL|field|useContactInfo
@@ -753,7 +737,7 @@ name|externalIdDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache2 uac, final ExternalIdDetailFactory.Factory externalIdDetailFactory)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final ExternalIdDetailFactory.Factory externalIdDetailFactory)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -793,7 +777,7 @@ name|AccountByEmailCache
 name|abec
 parameter_list|,
 specifier|final
-name|AccountCache2
+name|AccountCache
 name|uac
 parameter_list|,
 specifier|final
@@ -1137,8 +1121,6 @@ expr_stmt|;
 name|uncacheSshKeys
 argument_list|(
 name|me
-argument_list|,
-name|db
 argument_list|)
 expr_stmt|;
 return|return
@@ -1296,8 +1278,6 @@ expr_stmt|;
 name|uncacheSshKeys
 argument_list|(
 name|me
-argument_list|,
-name|db
 argument_list|)
 expr_stmt|;
 block|}
@@ -1311,7 +1291,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|uncacheSshKeys (final Account.Id me, final ReviewDb db)
+DECL|method|uncacheSshKeys (final Account.Id me)
 specifier|private
 name|void
 name|uncacheSshKeys
@@ -1321,44 +1301,24 @@ name|Account
 operator|.
 name|Id
 name|me
-parameter_list|,
-specifier|final
-name|ReviewDb
-name|db
 parameter_list|)
 block|{
-specifier|final
-name|Account
-name|a
-init|=
-name|Common
-operator|.
-name|getAccountCache
-argument_list|()
+name|uncacheSshKeys
+argument_list|(
+name|accountCache
 operator|.
 name|get
 argument_list|(
 name|me
-argument_list|,
-name|db
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|a
-operator|!=
-literal|null
-condition|)
-block|{
-name|uncacheSshKeys
-argument_list|(
-name|a
+operator|.
+name|getAccount
+argument_list|()
 operator|.
 name|getSshUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|uncacheSshKeys (final String userName)
 specifier|private
@@ -1370,13 +1330,6 @@ name|String
 name|userName
 parameter_list|)
 block|{
-if|if
-condition|(
-name|userName
-operator|!=
-literal|null
-condition|)
-block|{
 name|sshKeyCache
 operator|.
 name|evict
@@ -1384,7 +1337,6 @@ argument_list|(
 name|userName
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|myExternalIds (AsyncCallback<List<AccountExternalId>> callback)
 specifier|public
@@ -2003,19 +1955,6 @@ block|}
 name|accountCache
 operator|.
 name|evict
-argument_list|(
-name|me
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Common
-operator|.
-name|getAccountCache
-argument_list|()
-operator|.
-name|invalidate
 argument_list|(
 name|me
 operator|.
@@ -2649,16 +2588,6 @@ expr_stmt|;
 name|accountCache
 operator|.
 name|evict
-argument_list|(
-name|me
-argument_list|)
-expr_stmt|;
-name|Common
-operator|.
-name|getAccountCache
-argument_list|()
-operator|.
-name|invalidate
 argument_list|(
 name|me
 argument_list|)
