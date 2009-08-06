@@ -797,6 +797,23 @@ name|getAccount
 argument_list|()
 return|;
 block|}
+DECL|method|getEmailAddresses ()
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getEmailAddresses
+parameter_list|()
+block|{
+return|return
+name|state
+argument_list|()
+operator|.
+name|getEmailAddresses
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getEffectiveGroups ()
