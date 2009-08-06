@@ -168,7 +168,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerModule
+name|GerritGlobalModule
 import|;
 end_import
 
@@ -277,7 +277,7 @@ name|DatabaseModule
 argument_list|()
 argument_list|,
 operator|new
-name|GerritServerModule
+name|GerritGlobalModule
 argument_list|()
 argument_list|,
 operator|new

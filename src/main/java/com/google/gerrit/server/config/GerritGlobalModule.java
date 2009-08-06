@@ -715,14 +715,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Starts {@link GerritServer} with standard dependencies. */
+comment|/** Starts global state with standard dependencies. */
 end_comment
 
 begin_class
-DECL|class|GerritServerModule
+DECL|class|GerritGlobalModule
 specifier|public
 class|class
-name|GerritServerModule
+name|GerritGlobalModule
 extends|extends
 name|FactoryModule
 block|{
