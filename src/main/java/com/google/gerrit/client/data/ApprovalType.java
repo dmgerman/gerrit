@@ -110,7 +110,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -476,13 +476,13 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|isMaxNegative (final ChangeApproval ca)
+DECL|method|isMaxNegative (final PatchSetApproval ca)
 specifier|public
 name|boolean
 name|isMaxNegative
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 parameter_list|)
 block|{
@@ -495,13 +495,13 @@ name|getValue
 argument_list|()
 return|;
 block|}
-DECL|method|isMaxPositive (final ChangeApproval ca)
+DECL|method|isMaxPositive (final PatchSetApproval ca)
 specifier|public
 name|boolean
 name|isMaxPositive
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 parameter_list|)
 block|{
@@ -536,13 +536,13 @@ name|value
 argument_list|)
 return|;
 block|}
-DECL|method|getValue (final ChangeApproval ca)
+DECL|method|getValue (final PatchSetApproval ca)
 specifier|public
 name|ApprovalCategoryValue
 name|getValue
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 parameter_list|)
 block|{

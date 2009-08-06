@@ -110,7 +110,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -284,7 +284,7 @@ DECL|field|approvals
 specifier|protected
 name|List
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|approvals
 decl_stmt|;
@@ -327,7 +327,7 @@ operator|=
 operator|new
 name|ArrayList
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;
@@ -352,7 +352,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|getApprovalMap
 parameter_list|()
@@ -364,7 +364,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|r
 decl_stmt|;
@@ -377,14 +377,14 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;
 for|for
 control|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 range|:
 name|approvals
@@ -424,13 +424,13 @@ operator|.
 name|EG_0
 expr_stmt|;
 block|}
-DECL|method|add (final ChangeApproval ca)
+DECL|method|add (final PatchSetApproval ca)
 specifier|public
 name|void
 name|add
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 parameter_list|)
 block|{

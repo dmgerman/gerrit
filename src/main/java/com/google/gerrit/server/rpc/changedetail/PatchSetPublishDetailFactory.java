@@ -208,7 +208,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -660,7 +660,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|given
 decl_stmt|;
@@ -861,7 +861,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;
@@ -892,17 +892,17 @@ expr_stmt|;
 for|for
 control|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|a
 range|:
 name|db
 operator|.
-name|changeApprovals
+name|patchSetApprovals
 argument_list|()
 operator|.
-name|byChangeUser
+name|byPatchSetUser
 argument_list|(
-name|changeId
+name|patchSetId
 argument_list|,
 name|user
 operator|.

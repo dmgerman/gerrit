@@ -206,7 +206,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -493,6 +493,10 @@ condition|(
 name|db
 operator|!=
 literal|null
+operator|&&
+name|patchSet
+operator|!=
+literal|null
 condition|)
 block|{
 try|try
@@ -510,7 +514,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|pos
@@ -528,7 +532,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 argument_list|()
@@ -546,7 +550,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|neg
@@ -564,24 +568,24 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 range|:
 name|db
 operator|.
-name|changeApprovals
+name|patchSetApprovals
 argument_list|()
 operator|.
-name|byChange
+name|byPatchSet
 argument_list|(
-name|change
+name|patchSet
 operator|.
 name|getId
 argument_list|()
@@ -651,7 +655,7 @@ comment|// Don't list the approvals
 block|}
 block|}
 block|}
-DECL|method|format (final String type, final Map<Account.Id, Map<ApprovalCategory.Id, ChangeApproval>> list)
+DECL|method|format (final String type, final Map<Account.Id, Map<ApprovalCategory.Id, PatchSetApproval>> list)
 specifier|private
 name|void
 name|format
@@ -673,7 +677,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|list
@@ -713,7 +717,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|ent
@@ -731,7 +735,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|l
 init|=
@@ -778,7 +782,7 @@ argument_list|()
 control|)
 block|{
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 init|=
 name|l
@@ -906,7 +910,7 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insert ( final Map<Account.Id, Map<ApprovalCategory.Id, ChangeApproval>> list, final ChangeApproval ca)
+DECL|method|insert ( final Map<Account.Id, Map<ApprovalCategory.Id, PatchSetApproval>> list, final PatchSetApproval ca)
 specifier|private
 name|void
 name|insert
@@ -924,13 +928,13 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|list
 parameter_list|,
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 parameter_list|)
 block|{
@@ -940,7 +944,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|m
 init|=
@@ -970,7 +974,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;

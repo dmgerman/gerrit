@@ -105,15 +105,15 @@ import|;
 end_import
 
 begin_comment
-comment|/** An approval (or negative approval) on a change. */
+comment|/** An approval (or negative approval) on a patch set. */
 end_comment
 
 begin_class
-DECL|class|ChangeApproval
+DECL|class|PatchSetApproval
 specifier|public
 specifier|final
 class|class
-name|ChangeApproval
+name|PatchSetApproval
 block|{
 DECL|class|Key
 specifier|public
@@ -123,7 +123,7 @@ name|Key
 extends|extends
 name|CompoundKey
 argument_list|<
-name|Change
+name|PatchSet
 operator|.
 name|Id
 argument_list|>
@@ -139,12 +139,19 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|changeId
+argument_list|(
+name|name
+operator|=
+name|Column
+operator|.
+name|NONE
+argument_list|)
+DECL|field|patchSetId
 specifier|protected
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|patchSetId
 decl_stmt|;
 annotation|@
 name|Column
@@ -169,10 +176,10 @@ specifier|protected
 name|Key
 parameter_list|()
 block|{
-name|changeId
+name|patchSetId
 operator|=
 operator|new
-name|Change
+name|PatchSet
 operator|.
 name|Id
 argument_list|()
@@ -194,15 +201,15 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Change.Id change, final Account.Id a, final ApprovalCategory.Id c)
+DECL|method|Key (final PatchSet.Id ps, final Account.Id a, final ApprovalCategory.Id c)
 specifier|public
 name|Key
 parameter_list|(
 specifier|final
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|change
+name|ps
 parameter_list|,
 specifier|final
 name|Account
@@ -219,9 +226,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|changeId
+name|patchSetId
 operator|=
-name|change
+name|ps
 expr_stmt|;
 name|this
 operator|.
@@ -240,14 +247,14 @@ annotation|@
 name|Override
 DECL|method|getParentKey ()
 specifier|public
-name|Change
+name|PatchSet
 operator|.
 name|Id
 name|getParentKey
 parameter_list|()
 block|{
 return|return
-name|changeId
+name|patchSetId
 return|;
 block|}
 annotation|@
@@ -347,17 +354,17 @@ specifier|protected
 name|String
 name|changeSortKey
 decl_stmt|;
-DECL|method|ChangeApproval ()
+DECL|method|PatchSetApproval ()
 specifier|protected
-name|ChangeApproval
+name|PatchSetApproval
 parameter_list|()
 block|{   }
-DECL|method|ChangeApproval (final ChangeApproval.Key k, final short v)
+DECL|method|PatchSetApproval (final PatchSetApproval.Key k, final short v)
 specifier|public
-name|ChangeApproval
+name|PatchSetApproval
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 operator|.
 name|Key
 name|k
@@ -386,7 +393,7 @@ expr_stmt|;
 block|}
 DECL|method|getKey ()
 specifier|public
-name|ChangeApproval
+name|PatchSetApproval
 operator|.
 name|Key
 name|getKey
@@ -396,18 +403,18 @@ return|return
 name|key
 return|;
 block|}
-DECL|method|getChangeId ()
+DECL|method|getPatchSetId ()
 specifier|public
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|getChangeId
+name|getPatchSetId
 parameter_list|()
 block|{
 return|return
 name|key
 operator|.
-name|changeId
+name|patchSetId
 return|;
 block|}
 DECL|method|getAccountId ()
@@ -461,17 +468,6 @@ block|{
 name|value
 operator|=
 name|v
-expr_stmt|;
-block|}
-DECL|method|clear ()
-specifier|public
-name|void
-name|clear
-parameter_list|()
-block|{
-name|value
-operator|=
-literal|0
 expr_stmt|;
 block|}
 DECL|method|getGranted ()

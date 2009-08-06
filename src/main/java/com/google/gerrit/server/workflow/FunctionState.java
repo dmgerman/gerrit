@@ -174,7 +174,23 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|PatchSetApproval
 import|;
 end_import
 
@@ -403,16 +419,21 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change c, Collection<ChangeApproval> all)
+DECL|method|create (Change c, PatchSet.Id psId, Collection<PatchSetApproval> all)
 name|FunctionState
 name|create
 parameter_list|(
 name|Change
 name|c
 parameter_list|,
+name|PatchSet
+operator|.
+name|Id
+name|psId
+parameter_list|,
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|all
 parameter_list|)
@@ -441,7 +462,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|approvals
@@ -455,7 +476,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|>
 argument_list|()
@@ -560,13 +581,13 @@ DECL|field|modified
 specifier|private
 name|Set
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|modified
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ProjectCache pc, final AccountCache ac, final GroupCache egc, @Assisted final Change c, @Assisted final Collection<ChangeApproval> all)
+DECL|method|FunctionState (final ProjectCache pc, final AccountCache ac, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
 specifier|final
@@ -590,9 +611,17 @@ parameter_list|,
 annotation|@
 name|Assisted
 specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|psId
+parameter_list|,
+annotation|@
+name|Assisted
+specifier|final
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|all
 parameter_list|)
@@ -627,15 +656,28 @@ expr_stmt|;
 for|for
 control|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 range|:
 name|all
 control|)
 block|{
+if|if
+condition|(
+name|psId
+operator|.
+name|equals
+argument_list|(
+name|ca
+operator|.
+name|getPatchSetId
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|l
 init|=
@@ -661,7 +703,7 @@ operator|=
 operator|new
 name|ArrayList
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;
@@ -685,6 +727,7 @@ argument_list|(
 name|ca
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getChange ()
@@ -792,7 +835,7 @@ DECL|method|getApprovals (final ApprovalType at)
 specifier|public
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|getApprovals
 parameter_list|(
@@ -815,7 +858,7 @@ DECL|method|getApprovals (final ApprovalCategory.Id id)
 specifier|public
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|getApprovals
 parameter_list|(
@@ -829,7 +872,7 @@ block|{
 specifier|final
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|l
 init|=
@@ -850,19 +893,19 @@ else|:
 name|Collections
 operator|.
 expr|<
-name|ChangeApproval
+name|PatchSetApproval
 operator|>
 name|emptySet
 argument_list|()
 return|;
 block|}
-DECL|method|dirty (final ChangeApproval ap)
+DECL|method|dirty (final PatchSetApproval ap)
 specifier|public
 name|void
 name|dirty
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ap
 parameter_list|)
 block|{
@@ -878,7 +921,7 @@ operator|=
 operator|new
 name|HashSet
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;
@@ -895,7 +938,7 @@ DECL|method|getDirtyChangeApprovals ()
 specifier|public
 name|Collection
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|getDirtyChangeApprovals
 parameter_list|()
@@ -1319,7 +1362,7 @@ name|r
 return|;
 block|}
 comment|/**    * Normalize the approval record down to the range permitted by the type, in    * case the type was modified since the approval was originally granted.    *<p>    * If the record's value was modified, its automatically marked as dirty.    */
-DECL|method|applyTypeFloor (final ApprovalType at, final ChangeApproval a)
+DECL|method|applyTypeFloor (final ApprovalType at, final PatchSetApproval a)
 specifier|public
 name|void
 name|applyTypeFloor
@@ -1329,7 +1372,7 @@ name|ApprovalType
 name|at
 parameter_list|,
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|a
 parameter_list|)
 block|{
@@ -1419,13 +1462,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Normalize the approval record to be inside the maximum range permitted by    * the ProjectRights granted to groups the account is a member of.    *<p>    * If multiple ProjectRights are matched (assigned to different groups the    * account is a member of) the lowest minValue and the highest maxValue of the    * union of them is used.    *<p>    * If the record's value was modified, its automatically marked as dirty.    */
-DECL|method|applyRightFloor (final ChangeApproval a)
+DECL|method|applyRightFloor (final PatchSetApproval a)
 specifier|public
 name|void
 name|applyRightFloor
 parameter_list|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|a
 parameter_list|)
 block|{
@@ -1583,7 +1626,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Run<code>applyTypeFloor</code>,<code>applyRightFloor</code>. */
-DECL|method|normalize (final ApprovalType at, final ChangeApproval ca)
+DECL|method|normalize (final ApprovalType at, final PatchSetApproval ca)
 specifier|public
 name|void
 name|normalize
@@ -1593,7 +1636,7 @@ name|ApprovalType
 name|at
 parameter_list|,
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 parameter_list|)
 block|{

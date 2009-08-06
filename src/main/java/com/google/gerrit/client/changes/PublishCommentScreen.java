@@ -202,7 +202,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -1453,7 +1453,7 @@ name|catId
 argument_list|)
 decl_stmt|;
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|prior
 init|=
 name|r

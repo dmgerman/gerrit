@@ -264,7 +264,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -1646,7 +1646,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|am
 init|=
@@ -1707,7 +1707,7 @@ name|types
 control|)
 block|{
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|ca
 init|=
 name|am

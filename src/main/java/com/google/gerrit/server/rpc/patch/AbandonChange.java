@@ -96,7 +96,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -886,13 +886,13 @@ expr_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|approvals
 init|=
 name|db
 operator|.
-name|changeApprovals
+name|patchSetApprovals
 argument_list|()
 operator|.
 name|byChange
@@ -908,7 +908,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ChangeApproval
+name|PatchSetApproval
 name|a
 range|:
 name|approvals
@@ -924,7 +924,7 @@ expr_stmt|;
 block|}
 name|db
 operator|.
-name|changeApprovals
+name|patchSetApprovals
 argument_list|()
 operator|.
 name|update

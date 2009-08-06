@@ -285,9 +285,9 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
-DECL|method|changeApprovals ()
-name|ChangeApprovalAccess
-name|changeApprovals
+DECL|method|patchSetApprovals ()
+name|PatchSetApprovalAccess
+name|patchSetApprovals
 parameter_list|()
 function_decl|;
 annotation|@

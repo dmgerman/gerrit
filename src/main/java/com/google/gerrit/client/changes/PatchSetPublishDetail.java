@@ -142,7 +142,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -262,7 +262,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|given
 decl_stmt|;
@@ -324,7 +324,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|getGiven
 parameter_list|()
@@ -333,7 +333,7 @@ return|return
 name|given
 return|;
 block|}
-DECL|method|setGiven (Map<ApprovalCategory.Id, ChangeApproval> given)
+DECL|method|setGiven (Map<ApprovalCategory.Id, PatchSetApproval> given)
 specifier|public
 name|void
 name|setGiven
@@ -344,7 +344,7 @@ name|ApprovalCategory
 operator|.
 name|Id
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|given
 parameter_list|)
@@ -532,7 +532,7 @@ return|;
 block|}
 DECL|method|getChangeApproval (final ApprovalCategory.Id id)
 specifier|public
-name|ChangeApproval
+name|PatchSetApproval
 name|getChangeApproval
 parameter_list|(
 specifier|final

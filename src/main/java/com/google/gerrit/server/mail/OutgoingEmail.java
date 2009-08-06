@@ -142,7 +142,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -3041,12 +3041,12 @@ comment|// CC anyone else who has posted an approval mark on this change
 comment|//
 for|for
 control|(
-name|ChangeApproval
+name|PatchSetApproval
 name|ap
 range|:
 name|db
 operator|.
-name|changeApprovals
+name|patchSetApprovals
 argument_list|()
 operator|.
 name|byChange

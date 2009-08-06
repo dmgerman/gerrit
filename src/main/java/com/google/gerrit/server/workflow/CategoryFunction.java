@@ -110,7 +110,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -165,7 +165,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Function to control {@link ChangeApproval}s in an {@link ApprovalCategory}. */
+comment|/** Function to control {@link PatchSetApproval}s in an {@link ApprovalCategory}. */
 end_comment
 
 begin_class

@@ -137,16 +137,16 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|ChangeApprovalAccess
+DECL|interface|PatchSetApprovalAccess
 specifier|public
 interface|interface
-name|ChangeApprovalAccess
+name|PatchSetApprovalAccess
 extends|extends
 name|Access
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|,
-name|ChangeApproval
+name|PatchSetApproval
 operator|.
 name|Key
 argument_list|>
@@ -156,11 +156,11 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (ChangeApproval.Key key)
-name|ChangeApproval
+DECL|method|get (PatchSetApproval.Key key)
+name|PatchSetApproval
 name|get
 parameter_list|(
-name|ChangeApproval
+name|PatchSetApproval
 operator|.
 name|Key
 name|key
@@ -171,12 +171,12 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.changeId = ?"
+literal|"WHERE key.patchSetId.changeId = ?"
 argument_list|)
 DECL|method|byChange (Change.Id id)
 name|ResultSet
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|byChange
 parameter_list|(
@@ -191,19 +191,39 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.changeId = ? AND key.accountId = ?"
+literal|"WHERE key.patchSetId = ?"
 argument_list|)
-DECL|method|byChangeUser (Change.Id change, Account.Id account)
+DECL|method|byPatchSet (PatchSet.Id id)
 name|ResultSet
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
-name|byChangeUser
+name|byPatchSet
 parameter_list|(
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|change
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.patchSetId = ? AND key.accountId = ?"
+argument_list|)
+DECL|method|byPatchSetUser (PatchSet.Id patchSet, Account.Id account)
+name|ResultSet
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|byPatchSetUser
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSet
 parameter_list|,
 name|Account
 operator|.
@@ -221,7 +241,7 @@ argument_list|)
 DECL|method|openByUser (Account.Id account)
 name|ResultSet
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|openByUser
 parameter_list|(
@@ -243,7 +263,7 @@ argument_list|)
 DECL|method|closedByUser (Account.Id account)
 name|ResultSet
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|closedByUser
 parameter_list|(
@@ -263,7 +283,7 @@ argument_list|)
 DECL|method|closedByUserAll (Account.Id account)
 name|ResultSet
 argument_list|<
-name|ChangeApproval
+name|PatchSetApproval
 argument_list|>
 name|closedByUserAll
 parameter_list|(

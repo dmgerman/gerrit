@@ -110,7 +110,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|ChangeApproval
+name|PatchSetApproval
 import|;
 end_import
 
@@ -163,7 +163,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|ChangeApproval
+name|PatchSetApproval
 name|a
 range|:
 name|state
