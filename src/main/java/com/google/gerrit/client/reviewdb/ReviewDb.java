@@ -159,13 +159,6 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
-DECL|method|trustedExternalIds ()
-name|TrustedExternalIdAccess
-name|trustedExternalIds
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
 DECL|method|approvalCategories ()
 name|ApprovalCategoryAccess
 name|approvalCategories
@@ -397,7 +390,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Next id for a block of {@link ChangeMessage} records.    *     * @see com.google.gerrit.server.ChangeUtil#messageUUID(ReviewDb)    */
+comment|/**    * Next id for a block of {@link ChangeMessage} records.    *    * @see com.google.gerrit.server.ChangeUtil#messageUUID(ReviewDb)    */
 annotation|@
 name|Sequence
 DECL|method|nextChangeMessageId ()
