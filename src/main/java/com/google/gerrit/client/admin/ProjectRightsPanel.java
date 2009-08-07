@@ -964,6 +964,9 @@ argument_list|()
 operator|.
 name|getApprovalTypes
 argument_list|()
+operator|.
+name|getApprovalTypes
+argument_list|()
 control|)
 block|{
 specifier|final
@@ -1003,6 +1006,9 @@ range|:
 name|Common
 operator|.
 name|getGerritConfig
+argument_list|()
+operator|.
+name|getApprovalTypes
 argument_list|()
 operator|.
 name|getActionTypes
@@ -1556,6 +1562,9 @@ operator|.
 name|getGerritConfig
 argument_list|()
 operator|.
+name|getApprovalTypes
+argument_list|()
+operator|.
 name|getApprovalType
 argument_list|(
 operator|new
@@ -1871,6 +1880,9 @@ operator|=
 name|Common
 operator|.
 name|getGerritConfig
+argument_list|()
+operator|.
+name|getApprovalTypes
 argument_list|()
 operator|.
 name|getApprovalType
@@ -2556,6 +2568,9 @@ name|ApprovalType
 name|ar
 init|=
 name|config
+operator|.
+name|getApprovalTypes
+argument_list|()
 operator|.
 name|getApprovalType
 argument_list|(

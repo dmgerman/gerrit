@@ -114,7 +114,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
+name|ApprovalTypes
 import|;
 end_import
 
@@ -146,7 +146,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|PatchSetApproval
+name|PatchSet
 import|;
 end_import
 
@@ -162,7 +162,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|PatchSet
+name|PatchSetApproval
 import|;
 end_import
 
@@ -423,11 +423,11 @@ specifier|final
 name|MergeQueue
 name|merger
 decl_stmt|;
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 DECL|field|functionState
 specifier|private
@@ -453,7 +453,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitAction (final ReviewDb db, final MergeQueue mq, final GerritConfig gc, final FunctionState.Factory fs, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
+DECL|method|SubmitAction (final ReviewDb db, final MergeQueue mq, final ApprovalTypes at, final FunctionState.Factory fs, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
 name|SubmitAction
 parameter_list|(
 specifier|final
@@ -465,8 +465,8 @@ name|MergeQueue
 name|mq
 parameter_list|,
 specifier|final
-name|GerritConfig
-name|gc
+name|ApprovalTypes
+name|at
 parameter_list|,
 specifier|final
 name|FunctionState
@@ -501,9 +501,9 @@ name|mq
 expr_stmt|;
 name|this
 operator|.
-name|gerritConfig
+name|approvalTypes
 operator|=
-name|gc
+name|at
 expr_stmt|;
 name|this
 operator|.
@@ -758,7 +758,7 @@ specifier|final
 name|ApprovalType
 name|actionType
 init|=
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalType
 argument_list|(
@@ -820,7 +820,7 @@ control|(
 name|ApprovalType
 name|c
 range|:
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()

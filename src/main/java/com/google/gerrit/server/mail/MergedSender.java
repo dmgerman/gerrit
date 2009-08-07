@@ -94,7 +94,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
+name|ApprovalTypes
 import|;
 end_import
 
@@ -323,10 +323,10 @@ name|dest
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 annotation|@
 name|Inject
@@ -775,7 +775,7 @@ control|(
 name|ApprovalType
 name|at
 range|:
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()

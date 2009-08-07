@@ -92,7 +92,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
+name|ApprovalTypes
 import|;
 end_import
 
@@ -1098,11 +1098,11 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
@@ -1212,7 +1212,7 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final GerritConfig gc, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1264,8 +1264,8 @@ argument_list|>
 name|cwu
 parameter_list|,
 specifier|final
-name|GerritConfig
-name|gc
+name|ApprovalTypes
+name|approvalTypes
 parameter_list|,
 specifier|final
 name|PatchSetInfoFactory
@@ -1318,9 +1318,11 @@ name|urlProvider
 operator|=
 name|cwu
 expr_stmt|;
-name|gerritConfig
+name|this
+operator|.
+name|approvalTypes
 operator|=
-name|gc
+name|approvalTypes
 expr_stmt|;
 name|patchSetInfoFactory
 operator|=
@@ -4171,7 +4173,7 @@ specifier|final
 name|ApprovalType
 name|at
 init|=
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalType
 argument_list|(
@@ -5491,7 +5493,7 @@ control|(
 name|ApprovalType
 name|at
 range|:
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()

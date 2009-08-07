@@ -112,6 +112,22 @@ name|client
 operator|.
 name|data
 operator|.
+name|ApprovalTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
 name|ChangeDetail
 import|;
 end_import
@@ -129,22 +145,6 @@ operator|.
 name|data
 operator|.
 name|ChangeInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|data
-operator|.
-name|GerritConfig
 import|;
 end_import
 
@@ -585,11 +585,11 @@ name|id
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 DECL|field|changeControlFactory
 specifier|private
@@ -647,12 +647,12 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeDetailFactory (final GerritConfig gerritConfig, final FunctionState.Factory functionState, final PatchSetDetailFactory.Factory patchSetDetail, final ReviewDb db, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, @Assisted final Change.Id id)
+DECL|method|ChangeDetailFactory (final ApprovalTypes approvalTypes, final FunctionState.Factory functionState, final PatchSetDetailFactory.Factory patchSetDetail, final ReviewDb db, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, @Assisted final Change.Id id)
 name|ChangeDetailFactory
 parameter_list|(
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 parameter_list|,
 specifier|final
 name|FunctionState
@@ -693,9 +693,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|gerritConfig
+name|approvalTypes
 operator|=
-name|gerritConfig
+name|approvalTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1112,7 +1112,7 @@ specifier|final
 name|ApprovalType
 name|at
 range|:
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()
@@ -1167,7 +1167,7 @@ specifier|final
 name|ApprovalType
 name|at
 range|:
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getActionTypes
 argument_list|()

@@ -337,6 +337,9 @@ argument_list|()
 operator|.
 name|getApprovalTypes
 argument_list|()
+operator|.
+name|getApprovalTypes
+argument_list|()
 control|)
 block|{
 if|if

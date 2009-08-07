@@ -634,6 +634,9 @@ argument_list|()
 operator|.
 name|getApprovalTypes
 argument_list|()
+operator|.
+name|getApprovalTypes
+argument_list|()
 expr_stmt|;
 name|table
 operator|=

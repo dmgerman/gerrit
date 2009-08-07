@@ -202,22 +202,6 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|PatchSetApproval
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
 name|Patch
 import|;
 end_import
@@ -251,6 +235,22 @@ operator|.
 name|reviewdb
 operator|.
 name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|PatchSetApproval
 import|;
 end_import
 
@@ -1314,6 +1314,9 @@ argument_list|()
 operator|.
 name|getApprovalTypes
 argument_list|()
+operator|.
+name|getApprovalTypes
+argument_list|()
 control|)
 block|{
 if|if
@@ -1878,7 +1881,8 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
-comment|// Parent table can be null here since we are not showing any next/previous links
+comment|// Parent table can be null here since we are not showing any
+comment|// next/previous links
 name|panel
 operator|.
 name|add
@@ -1895,7 +1899,7 @@ argument_list|,
 literal|0
 argument_list|,
 literal|null
-comment|/* parent table */
+comment|/*                                                                     * parent                                                                     * table                                                                     */
 argument_list|)
 argument_list|)
 expr_stmt|;

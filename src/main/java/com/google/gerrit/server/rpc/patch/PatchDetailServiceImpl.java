@@ -96,7 +96,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
+name|ApprovalTypes
 import|;
 end_import
 
@@ -751,11 +751,11 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 DECL|field|accountResolver
 specifier|private
@@ -805,7 +805,7 @@ name|addReviewerCategoryId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final AddReviewerSender.Factory arsf, final CommentSender.Factory csf, final PatchSetInfoFactory psif, final GerritConfig gc, final AccountResolver accountResolver, final AbandonChange.Factory abandonChangeFactory, final CommentDetailFactory.Factory commentDetailFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory)
+DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final AddReviewerSender.Factory arsf, final CommentSender.Factory csf, final PatchSetInfoFactory psif, final ApprovalTypes approvalTypes, final AccountResolver accountResolver, final AbandonChange.Factory abandonChangeFactory, final CommentDetailFactory.Factory commentDetailFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -839,8 +839,8 @@ name|PatchSetInfoFactory
 name|psif
 parameter_list|,
 specifier|final
-name|GerritConfig
-name|gc
+name|ApprovalTypes
+name|approvalTypes
 parameter_list|,
 specifier|final
 name|AccountResolver
@@ -890,9 +890,11 @@ name|commentSenderFactory
 operator|=
 name|csf
 expr_stmt|;
-name|gerritConfig
+name|this
+operator|.
+name|approvalTypes
 operator|=
-name|gc
+name|approvalTypes
 expr_stmt|;
 name|this
 operator|.
@@ -931,7 +933,7 @@ name|ApprovalType
 argument_list|>
 name|allTypes
 init|=
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()
@@ -2128,7 +2130,7 @@ specifier|final
 name|ApprovalType
 name|at
 range|:
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()

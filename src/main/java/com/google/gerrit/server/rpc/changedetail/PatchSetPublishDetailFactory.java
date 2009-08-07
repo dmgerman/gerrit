@@ -128,7 +128,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
+name|ApprovalTypes
 import|;
 end_import
 
@@ -208,22 +208,6 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|PatchSetApproval
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
 name|PatchLineComment
 import|;
 end_import
@@ -241,6 +225,22 @@ operator|.
 name|reviewdb
 operator|.
 name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|PatchSetApproval
 import|;
 end_import
 
@@ -572,11 +572,11 @@ specifier|final
 name|PatchSetInfoFactory
 name|infoFactory
 decl_stmt|;
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 DECL|field|db
 specifier|private
@@ -666,7 +666,7 @@ name|given
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final ProjectCache projectCache, final GerritConfig gerritConfig, final ReviewDb db, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
+DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final ProjectCache projectCache, final ApprovalTypes approvalTypes, final ReviewDb db, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
 name|PatchSetPublishDetailFactory
 parameter_list|(
 specifier|final
@@ -678,8 +678,8 @@ name|ProjectCache
 name|projectCache
 parameter_list|,
 specifier|final
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 parameter_list|,
 specifier|final
 name|ReviewDb
@@ -724,9 +724,9 @@ name|infoFactory
 expr_stmt|;
 name|this
 operator|.
-name|gerritConfig
+name|approvalTypes
 operator|=
-name|gerritConfig
+name|approvalTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1153,7 +1153,7 @@ specifier|final
 name|ApprovalType
 name|at
 init|=
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalType
 argument_list|(

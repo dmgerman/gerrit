@@ -236,7 +236,7 @@ name|client
 operator|.
 name|data
 operator|.
-name|GerritConfig
+name|ApprovalTypes
 import|;
 end_import
 
@@ -1427,10 +1427,10 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|gerritConfig
+DECL|field|approvalTypes
 specifier|private
-name|GerritConfig
-name|gerritConfig
+name|ApprovalTypes
+name|approvalTypes
 decl_stmt|;
 annotation|@
 name|Inject
@@ -1625,11 +1625,6 @@ name|Failure
 block|{
 if|if
 condition|(
-name|gerritConfig
-operator|.
-name|isUseContributorAgreements
-argument_list|()
-operator|&&
 name|proj
 operator|.
 name|isUseContributorAgreements
@@ -4121,7 +4116,7 @@ name|ApprovalType
 argument_list|>
 name|allTypes
 init|=
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()
@@ -6026,7 +6021,7 @@ name|ApprovalType
 argument_list|>
 name|allTypes
 init|=
-name|gerritConfig
+name|approvalTypes
 operator|.
 name|getApprovalTypes
 argument_list|()
