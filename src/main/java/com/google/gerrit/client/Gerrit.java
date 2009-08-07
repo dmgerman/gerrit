@@ -76,6 +76,22 @@ name|client
 operator|.
 name|data
 operator|.
+name|GerritConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|data
+operator|.
 name|SystemInfoService
 import|;
 end_import
@@ -109,22 +125,6 @@ operator|.
 name|reviewdb
 operator|.
 name|AccountGeneralPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|Common
 import|;
 end_import
 
@@ -757,6 +757,12 @@ specifier|static
 name|String
 name|myVersion
 decl_stmt|;
+DECL|field|myConfig
+specifier|private
+specifier|static
+name|GerritConfig
+name|myConfig
+decl_stmt|;
 DECL|field|myAccount
 specifier|private
 specifier|static
@@ -1048,6 +1054,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/** Get the public configuration data used by this Gerrit instance. */
+DECL|method|getConfig ()
+specifier|public
+specifier|static
+name|GerritConfig
+name|getConfig
+parameter_list|()
+block|{
+return|return
+name|myConfig
+return|;
 block|}
 comment|/** @return the currently signed in user's account data; null if no account */
 DECL|method|getUserAccount ()
@@ -1522,14 +1540,11 @@ name|HostPageData
 name|result
 parameter_list|)
 block|{
-name|Common
-operator|.
-name|setGerritConfig
-argument_list|(
+name|myConfig
+operator|=
 name|result
 operator|.
 name|config
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2295,9 +2310,7 @@ argument_list|)
 expr_stmt|;
 switch|switch
 condition|(
-name|Common
-operator|.
-name|getGerritConfig
+name|getConfig
 argument_list|()
 operator|.
 name|getLoginType
@@ -2346,9 +2359,7 @@ else|else
 block|{
 switch|switch
 condition|(
-name|Common
-operator|.
-name|getGerritConfig
+name|getConfig
 argument_list|()
 operator|.
 name|getLoginType

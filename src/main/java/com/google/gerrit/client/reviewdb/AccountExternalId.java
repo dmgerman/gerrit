@@ -76,9 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|rpc
-operator|.
-name|Common
+name|Gerrit
 import|;
 end_import
 
@@ -522,9 +520,9 @@ parameter_list|()
 block|{
 switch|switch
 condition|(
-name|Common
+name|Gerrit
 operator|.
-name|getGerritConfig
+name|getConfig
 argument_list|()
 operator|.
 name|getLoginType

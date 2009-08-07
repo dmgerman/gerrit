@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|data
+operator|.
+name|ApprovalTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -390,6 +406,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -439,6 +465,12 @@ name|all
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|approvalTypes
+specifier|private
+specifier|final
+name|ApprovalTypes
+name|approvalTypes
+decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
@@ -587,9 +619,13 @@ name|modified
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ProjectCache pc, final AccountCache ac, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
+DECL|method|FunctionState (final ApprovalTypes approvalTypes, final ProjectCache pc, final AccountCache ac, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
+specifier|final
+name|ApprovalTypes
+name|approvalTypes
+parameter_list|,
 specifier|final
 name|ProjectCache
 name|pc
@@ -626,6 +662,12 @@ argument_list|>
 name|all
 parameter_list|)
 block|{
+name|this
+operator|.
+name|approvalTypes
+operator|=
+name|approvalTypes
+expr_stmt|;
 name|projectCache
 operator|=
 name|pc
@@ -729,6 +771,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|getApprovalTypes ()
+name|List
+argument_list|<
+name|ApprovalType
+argument_list|>
+name|getApprovalTypes
+parameter_list|()
+block|{
+return|return
+name|approvalTypes
+operator|.
+name|getApprovalTypes
+argument_list|()
+return|;
 block|}
 DECL|method|getChange ()
 specifier|public
