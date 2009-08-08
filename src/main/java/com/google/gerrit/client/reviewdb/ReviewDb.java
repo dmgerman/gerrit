@@ -370,16 +370,6 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
-comment|/** Next unique id for a {@link Branch}. */
-annotation|@
-name|Sequence
-DECL|method|nextBranchId ()
-name|int
-name|nextBranchId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 comment|/** Next unique id for a {@link Change}. */
 annotation|@
 name|Sequence

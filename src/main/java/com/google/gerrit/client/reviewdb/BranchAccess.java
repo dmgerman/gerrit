@@ -136,20 +136,6 @@ name|ResultSet
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
-import|;
-end_import
-
 begin_interface
 DECL|interface|BranchAccess
 specifier|public
@@ -178,23 +164,6 @@ name|Branch
 operator|.
 name|NameKey
 name|name
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|SecondaryKey
-argument_list|(
-literal|"branchId"
-argument_list|)
-DECL|method|get (Branch.Id id)
-name|Branch
-name|get
-parameter_list|(
-name|Branch
-operator|.
-name|Id
-name|id
 parameter_list|)
 throws|throws
 name|OrmException
