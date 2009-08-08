@@ -3544,7 +3544,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"Google Account "
+name|AccountExternalId
+operator|.
+name|LEGACY_GAE
 operator|+
 name|email
 argument_list|)

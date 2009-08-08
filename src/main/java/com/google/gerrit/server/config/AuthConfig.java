@@ -731,12 +731,11 @@ if|if
 condition|(
 name|id
 operator|.
-name|getExternalId
-argument_list|()
-operator|.
-name|startsWith
+name|isScheme
 argument_list|(
-literal|"Google Account "
+name|AccountExternalId
+operator|.
+name|LEGACY_GAE
 argument_list|)
 condition|)
 block|{
@@ -753,12 +752,11 @@ if|if
 condition|(
 name|id
 operator|.
-name|getExternalId
-argument_list|()
-operator|.
-name|startsWith
+name|isScheme
 argument_list|(
-literal|"mailto:"
+name|AccountExternalId
+operator|.
+name|SCHEME_MAILTO
 argument_list|)
 condition|)
 block|{

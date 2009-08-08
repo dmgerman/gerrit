@@ -983,7 +983,9 @@ specifier|final
 name|String
 name|eid
 init|=
-literal|"gerrit:"
+name|AccountExternalId
+operator|.
+name|SCHEME_GERRIT
 operator|+
 name|user
 decl_stmt|;

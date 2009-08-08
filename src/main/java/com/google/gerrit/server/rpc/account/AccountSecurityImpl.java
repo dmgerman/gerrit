@@ -1815,14 +1815,7 @@ comment|// user might lock themselves out of the account.
 comment|//
 continue|continue;
 block|}
-elseif|else
-if|if
-condition|(
-name|e
-operator|.
-name|canUserDelete
-argument_list|()
-condition|)
+else|else
 block|{
 name|toDelete
 operator|.
@@ -2668,7 +2661,9 @@ name|Key
 argument_list|(
 name|me
 argument_list|,
-literal|"mailto:"
+name|AccountExternalId
+operator|.
+name|SCHEME_MAILTO
 operator|+
 name|newEmail
 argument_list|)

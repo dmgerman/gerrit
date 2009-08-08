@@ -139,6 +139,33 @@ specifier|final
 class|class
 name|AccountExternalId
 block|{
+DECL|field|SCHEME_GERRIT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SCHEME_GERRIT
+init|=
+literal|"gerrit:"
+decl_stmt|;
+DECL|field|SCHEME_MAILTO
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SCHEME_MAILTO
+init|=
+literal|"mailto:"
+decl_stmt|;
+DECL|field|LEGACY_GAE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|LEGACY_GAE
+init|=
+literal|"Google Account "
+decl_stmt|;
 DECL|class|Key
 specifier|public
 specifier|static
@@ -316,7 +343,7 @@ argument_list|()
 operator|.
 name|startsWith
 argument_list|(
-literal|"mailto:"
+name|SCHEME_MAILTO
 argument_list|)
 condition|)
 block|{
@@ -512,71 +539,34 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|canUserDelete ()
+DECL|method|isScheme (final String scheme)
 specifier|public
 name|boolean
-name|canUserDelete
-parameter_list|()
+name|isScheme
+parameter_list|(
+specifier|final
+name|String
+name|scheme
+parameter_list|)
 block|{
-switch|switch
-condition|(
-name|Gerrit
-operator|.
-name|getConfig
-argument_list|()
-operator|.
-name|getLoginType
-argument_list|()
-condition|)
-block|{
-case|case
-name|OPENID
-case|:
-if|if
-condition|(
+specifier|final
+name|String
+name|id
+init|=
 name|getExternalId
 argument_list|()
+decl_stmt|;
+return|return
+name|id
+operator|!=
+literal|null
+operator|&&
+name|id
 operator|.
 name|startsWith
 argument_list|(
-literal|"Google Account "
+name|scheme
 argument_list|)
-condition|)
-block|{
-comment|// Don't allow users to delete legacy google account tokens.
-comment|// Administrators will do it when cleaning the database.
-comment|//
-return|return
-literal|false
-return|;
-block|}
-break|break;
-case|case
-name|HTTP
-case|:
-if|if
-condition|(
-name|getExternalId
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"gerrit:"
-argument_list|)
-condition|)
-block|{
-comment|// Don't allow users to delete a gerrit: token, as this is
-comment|// a Gerrit generated value for single-sign-on configurations
-comment|// not using OpenID.
-comment|//
-return|return
-literal|false
-return|;
-block|}
-break|break;
-block|}
-return|return
-literal|true
 return|;
 block|}
 DECL|method|isTrusted ()
