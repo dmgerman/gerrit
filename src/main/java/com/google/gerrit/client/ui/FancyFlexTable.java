@@ -353,6 +353,13 @@ argument_list|(
 name|MY_STYLE
 argument_list|)
 expr_stmt|;
+name|table
+operator|.
+name|setWidth
+argument_list|(
+literal|"100%"
+argument_list|)
+expr_stmt|;
 name|initWidget
 argument_list|(
 name|table
@@ -754,7 +761,7 @@ name|S_LEFT_MOST_CELL
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the td element that contains another element.    *     * @param target the child element whose parent td is required.    * @return the td containing element {@code target}; null if {@code target} is    *         not a member of this table.    */
+comment|/**    * Get the td element that contains another element.    *    * @param target the child element whose parent td is required.    * @return the td containing element {@code target}; null if {@code target} is    *         not a member of this table.    */
 DECL|method|getParentCell (final Element target)
 specifier|protected
 name|Element

@@ -580,6 +580,13 @@ parameter_list|()
 block|{
 name|table
 operator|.
+name|setWidth
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
 name|setText
 argument_list|(
 literal|0
