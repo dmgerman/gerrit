@@ -1649,6 +1649,7 @@ specifier|final
 name|int
 name|exitCode
 decl_stmt|;
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      */
 DECL|method|Failure (final int exitCode, final String msg)
 specifier|public
 name|Failure
@@ -1672,6 +1673,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to      *        the client's stderr.      */
 DECL|method|Failure (final int exitCode, final String msg, final Throwable why)
 specifier|public
 name|Failure
@@ -1722,6 +1724,7 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      */
 DECL|method|UnloggedFailure (final int exitCode, final String msg)
 specifier|public
 name|UnloggedFailure
@@ -1745,6 +1748,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      * @param why stack trace to include in the server's log, but is not sent to      *        the client's stderr.      */
 DECL|method|UnloggedFailure (final int exitCode, final String msg, final Throwable why)
 specifier|public
 name|UnloggedFailure
