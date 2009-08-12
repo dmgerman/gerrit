@@ -637,6 +637,15 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|gs
+operator|.
+name|setProjectDescription
+argument_list|(
+name|projectName
+argument_list|,
+name|projectDescription
+argument_list|)
+expr_stmt|;
 name|txn
 operator|.
 name|commit
