@@ -698,12 +698,6 @@ return|return
 operator|!
 name|isModifiedLine
 argument_list|()
-operator|||
-name|endIdx
-operator|+
-literal|1
-operator|<
-name|curIdx
 return|;
 block|}
 DECL|method|isDeletedA ()
@@ -777,14 +771,13 @@ name|in
 argument_list|(
 name|curEdit
 argument_list|)
-operator|&&
-operator|++
+condition|)
+block|{
+if|if
+condition|(
 name|curIdx
 operator|<
-name|edits
-operator|.
-name|size
-argument_list|()
+name|endIdx
 condition|)
 block|{
 name|curEdit
@@ -793,9 +786,11 @@ name|edits
 operator|.
 name|get
 argument_list|(
+operator|++
 name|curIdx
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|aCur
