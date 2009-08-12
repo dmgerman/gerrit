@@ -1388,7 +1388,7 @@ decl_stmt|;
 name|String
 name|cmd
 init|=
-literal|"mkdir "
+literal|"mkdir -p "
 operator|+
 name|projectPath
 operator|+
