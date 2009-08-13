@@ -414,6 +414,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|URLDecoder
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|security
 operator|.
 name|MessageDigest
@@ -633,6 +643,24 @@ operator|.
 name|getPathInfo
 argument_list|()
 decl_stmt|;
+comment|// We shouldn't have to do this extra decode pass, but somehow we
+comment|// are now receiving our "^1" suffix as "%5E1", which confuses us
+comment|// downstream. Other times we get our embedded "," as "%2C", which
+comment|// is equally bad. And yet when these happen a "%2F" is left as-is,
+comment|// rather than escaped as "%252F", which makes me feel really really
+comment|// uncomfortable with a blind decode right here.
+comment|//
+name|keyStr
+operator|=
+name|URLDecoder
+operator|.
+name|decode
+argument_list|(
+name|keyStr
+argument_list|,
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
