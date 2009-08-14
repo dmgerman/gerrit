@@ -7011,6 +7011,12 @@ block|}
 if|if
 condition|(
 operator|!
+name|sboAuthor
+operator|&&
+operator|!
+name|sboCommitter
+operator|&&
+operator|!
 name|sboMe
 condition|)
 block|{
@@ -7018,29 +7024,7 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"not Signed-off-by you"
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
-operator|!
-name|sboCommitter
-condition|)
-block|{
-name|reject
-argument_list|(
-name|cmd
-argument_list|,
-literal|"not Signed-off-by "
-operator|+
-name|committer
-operator|.
-name|getEmailAddress
-argument_list|()
+literal|"not Signed-off-by author/committer/uploader"
 argument_list|)
 expr_stmt|;
 return|return
