@@ -220,6 +220,12 @@ specifier|final
 name|String
 name|httpHeader
 decl_stmt|;
+DECL|field|logoutUrl
+specifier|private
+specifier|final
+name|String
+name|logoutUrl
+decl_stmt|;
 DECL|field|trusted
 specifier|private
 specifier|final
@@ -304,6 +310,19 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"httpheader"
+argument_list|)
+expr_stmt|;
+name|logoutUrl
+operator|=
+name|cfg
+operator|.
+name|getString
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"logouturl"
 argument_list|)
 expr_stmt|;
 name|trusted
@@ -594,6 +613,16 @@ parameter_list|()
 block|{
 return|return
 name|httpHeader
+return|;
+block|}
+DECL|method|getLogoutURL ()
+specifier|public
+name|String
+name|getLogoutURL
+parameter_list|()
+block|{
+return|return
+name|logoutUrl
 return|;
 block|}
 comment|/** Time (in seconds) that user sessions stay "signed in". */
