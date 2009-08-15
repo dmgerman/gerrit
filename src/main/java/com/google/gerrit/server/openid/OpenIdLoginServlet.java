@@ -137,7 +137,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Handles the<code>/login</code> URL for web based single-sign-on. */
+comment|/** Handles the<code>/OpenID</code> URL for web based single-sign-on. */
 end_comment
 
 begin_class
@@ -221,6 +221,33 @@ name|IOException
 block|{
 try|try
 block|{
+name|rsp
+operator|.
+name|setHeader
+argument_list|(
+literal|"Expires"
+argument_list|,
+literal|"Fri, 01 Jan 1980 00:00:00 GMT"
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setHeader
+argument_list|(
+literal|"Pragma"
+argument_list|,
+literal|"no-cache"
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setHeader
+argument_list|(
+literal|"Cache-Control"
+argument_list|,
+literal|"no-cache, must-revalidate"
+argument_list|)
+expr_stmt|;
 name|impl
 operator|.
 name|doAuth
