@@ -257,14 +257,14 @@ name|HttpAuthFilter
 implements|implements
 name|Filter
 block|{
-DECL|field|gerritCall
+DECL|field|webSession
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|gerritCall
+name|webSession
 decl_stmt|;
 DECL|field|signInRaw
 specifier|private
@@ -282,15 +282,15 @@ name|signInGzip
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpAuthFilter (final Provider<GerritCall> gerritCall, final ServletContext servletContext)
+DECL|method|HttpAuthFilter (final Provider<WebSession> webSession, final ServletContext servletContext)
 name|HttpAuthFilter
 parameter_list|(
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|gerritCall
+name|webSession
 parameter_list|,
 specifier|final
 name|ServletContext
@@ -301,9 +301,9 @@ name|IOException
 block|{
 name|this
 operator|.
-name|gerritCall
+name|webSession
 operator|=
-name|gerritCall
+name|webSession
 expr_stmt|;
 specifier|final
 name|String
@@ -392,15 +392,14 @@ name|ServletException
 block|{
 if|if
 condition|(
-name|gerritCall
+operator|!
+name|webSession
 operator|.
 name|get
 argument_list|()
 operator|.
-name|getAccountId
+name|isSignedIn
 argument_list|()
-operator|==
-literal|null
 condition|)
 block|{
 comment|// Not signed in yet. Since the browser state might have an anchor

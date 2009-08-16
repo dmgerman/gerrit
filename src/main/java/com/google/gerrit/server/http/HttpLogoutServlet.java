@@ -221,14 +221,14 @@ name|HttpLogoutServlet
 extends|extends
 name|HttpServlet
 block|{
-DECL|field|gerritCall
+DECL|field|webSession
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|gerritCall
+name|webSession
 decl_stmt|;
 DECL|field|urlProvider
 specifier|private
@@ -247,7 +247,7 @@ name|logoutUrl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final Provider<GerritCall> gerritCall, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AccountManager accountManager)
+DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final Provider<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AccountManager accountManager)
 name|HttpLogoutServlet
 parameter_list|(
 specifier|final
@@ -257,9 +257,9 @@ parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|gerritCall
+name|webSession
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -279,9 +279,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|gerritCall
+name|webSession
 operator|=
-name|gerritCall
+name|webSession
 expr_stmt|;
 name|this
 operator|.
@@ -317,7 +317,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|gerritCall
+name|webSession
 operator|.
 name|get
 argument_list|()

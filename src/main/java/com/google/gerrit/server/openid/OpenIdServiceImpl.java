@@ -262,7 +262,7 @@ name|server
 operator|.
 name|http
 operator|.
-name|GerritCall
+name|WebSession
 import|;
 end_import
 
@@ -815,14 +815,14 @@ name|SCHEMA_LASTNAME
 init|=
 literal|"http://schema.openid.net/namePerson/last"
 decl_stmt|;
-DECL|field|callFactory
+DECL|field|webSession
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|callFactory
+name|webSession
 decl_stmt|;
 DECL|field|identifiedUser
 specifier|private
@@ -862,13 +862,13 @@ name|discoveryCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl (final Provider<GerritCall> cf, final Provider<IdentifiedUser> iu, @CanonicalWebUrl @Nullable final Provider<String> up, final CacheManager cacheMgr, final AccountManager am)
+DECL|method|OpenIdServiceImpl (final Provider<WebSession> cf, final Provider<IdentifiedUser> iu, @CanonicalWebUrl @Nullable final Provider<String> up, final CacheManager cacheMgr, final AccountManager am)
 name|OpenIdServiceImpl
 parameter_list|(
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
 name|cf
 parameter_list|,
@@ -901,7 +901,7 @@ parameter_list|)
 throws|throws
 name|ConsumerException
 block|{
-name|callFactory
+name|webSession
 operator|=
 name|cf
 expr_stmt|;
@@ -2052,12 +2052,12 @@ argument_list|(
 name|lastId
 argument_list|)
 expr_stmt|;
-name|callFactory
+name|webSession
 operator|.
 name|get
 argument_list|()
 operator|.
-name|setAccount
+name|login
 argument_list|(
 name|arsp
 operator|.
@@ -2360,7 +2360,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|callFactory
+name|webSession
 operator|.
 name|get
 argument_list|()
@@ -2418,7 +2418,7 @@ name|mode
 argument_list|)
 condition|)
 block|{
-name|callFactory
+name|webSession
 operator|.
 name|get
 argument_list|()

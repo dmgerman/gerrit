@@ -210,20 +210,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
-operator|.
-name|server
-operator|.
-name|XsrfException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -450,14 +436,14 @@ name|CurrentUser
 argument_list|>
 name|currentUser
 decl_stmt|;
-DECL|field|jsonCall
+DECL|field|webSession
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|jsonCall
+name|webSession
 decl_stmt|;
 DECL|field|sitePath
 specifier|private
@@ -494,7 +480,7 @@ name|hostDoc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final Provider<GerritCall> cp, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final Provider<String> up, @CanonicalWebUrl @Nullable final String configuredUrl, final ServletContext servletContext)
+DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final Provider<WebSession> ws, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final Provider<String> up, @CanonicalWebUrl @Nullable final String configuredUrl, final ServletContext servletContext)
 name|HostPageServlet
 parameter_list|(
 specifier|final
@@ -507,9 +493,9 @@ parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
-name|GerritCall
+name|WebSession
 argument_list|>
-name|cp
+name|ws
 parameter_list|,
 annotation|@
 name|SitePath
@@ -551,9 +537,9 @@ name|currentUser
 operator|=
 name|cu
 expr_stmt|;
-name|jsonCall
+name|webSession
 operator|=
-name|cp
+name|ws
 expr_stmt|;
 name|urlProvider
 operator|=
@@ -1415,52 +1401,6 @@ name|config
 operator|=
 name|config
 expr_stmt|;
-comment|// Grab the current GerritCall to gain access to the XSRF token
-comment|// generator, and force a token to be constructed for this user.
-comment|// We can then send the XSRF token as part of the initial data
-comment|// vector in the host page, saving the client 1 round trip as it
-comment|// bootstraps itself.
-comment|//
-try|try
-block|{
-specifier|final
-name|GerritCall
-name|call
-init|=
-name|jsonCall
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
-name|call
-operator|.
-name|xsrfValidate
-argument_list|()
-expr_stmt|;
-name|pageData
-operator|.
-name|xsrfToken
-operator|=
-name|call
-operator|.
-name|getXsrfKeyOut
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|XsrfException
-name|e
-parameter_list|)
-block|{
-name|log
-argument_list|(
-literal|"Cannot create initial XSRF token for user"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 specifier|final
 name|CurrentUser
 name|user
@@ -1477,6 +1417,18 @@ operator|instanceof
 name|IdentifiedUser
 condition|)
 block|{
+name|pageData
+operator|.
+name|xsrfToken
+operator|=
+name|webSession
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getToken
+argument_list|()
+expr_stmt|;
 name|pageData
 operator|.
 name|userAccount

@@ -586,16 +586,6 @@ name|Gerrit
 implements|implements
 name|EntryPoint
 block|{
-comment|/**    * Name of the Cookie our authentication data is stored in.    *<p>    * If this cookie has a value we assume we are signed in.    *    * @see #isSignedIn()    */
-DECL|field|ACCOUNT_COOKIE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACCOUNT_COOKIE
-init|=
-literal|"GerritAccount"
-decl_stmt|;
 DECL|field|C
 specifier|public
 specifier|static
