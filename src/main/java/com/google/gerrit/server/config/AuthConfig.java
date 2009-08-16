@@ -312,7 +312,7 @@ literal|60
 argument_list|,
 name|s
 operator|.
-name|accountPrivateKey
+name|registerEmailPrivateKey
 argument_list|)
 expr_stmt|;
 name|allowGoogleAccountUpgrade

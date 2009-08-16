@@ -1033,16 +1033,7 @@ argument_list|()
 decl_stmt|;
 name|s
 operator|.
-name|xsrfPrivateKey
-operator|=
-name|SignedToken
-operator|.
-name|generateRandomKey
-argument_list|()
-expr_stmt|;
-name|s
-operator|.
-name|accountPrivateKey
+name|registerEmailPrivateKey
 operator|=
 name|SignedToken
 operator|.

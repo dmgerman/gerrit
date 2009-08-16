@@ -237,20 +237,6 @@ specifier|protected
 name|Key
 name|singleton
 decl_stmt|;
-comment|/** Private key to sign XSRF protection tokens. */
-annotation|@
-name|Column
-argument_list|(
-name|length
-operator|=
-literal|36
-argument_list|)
-DECL|field|xsrfPrivateKey
-specifier|public
-specifier|transient
-name|String
-name|xsrfPrivateKey
-decl_stmt|;
 comment|/** Private key to sign account identification cookies. */
 annotation|@
 name|Column
@@ -259,11 +245,11 @@ name|length
 operator|=
 literal|36
 argument_list|)
-DECL|field|accountPrivateKey
+DECL|field|registerEmailPrivateKey
 specifier|public
 specifier|transient
 name|String
-name|accountPrivateKey
+name|registerEmailPrivateKey
 decl_stmt|;
 comment|/**    * Local filesystem location of header/footer/CSS configuration files    */
 annotation|@
