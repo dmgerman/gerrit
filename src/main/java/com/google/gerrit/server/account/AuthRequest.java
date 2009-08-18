@@ -213,6 +213,26 @@ return|return
 name|externalId
 return|;
 block|}
+DECL|method|isScheme (final String scheme)
+specifier|public
+name|boolean
+name|isScheme
+parameter_list|(
+specifier|final
+name|String
+name|scheme
+parameter_list|)
+block|{
+return|return
+name|getExternalId
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|scheme
+argument_list|)
+return|;
+block|}
 DECL|method|getLocalUser ()
 specifier|public
 name|String
@@ -221,10 +241,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|getExternalId
-argument_list|()
-operator|.
-name|startsWith
+name|isScheme
 argument_list|(
 name|SCHEME_GERRIT
 argument_list|)

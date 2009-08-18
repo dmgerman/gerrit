@@ -861,10 +861,7 @@ argument_list|()
 operator|&&
 name|who
 operator|.
-name|getExternalId
-argument_list|()
-operator|.
-name|startsWith
+name|isScheme
 argument_list|(
 name|OpenIdUtil
 operator|.

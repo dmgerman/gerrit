@@ -1475,15 +1475,6 @@ name|AccountExternalId
 name|k
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|id
-init|=
-name|k
-operator|.
-name|getExternalId
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|k
@@ -1499,16 +1490,13 @@ block|{
 comment|// A local user identity should just be itself.
 comment|//
 return|return
-name|id
+name|k
 operator|.
-name|substring
+name|getSchemeRest
 argument_list|(
 name|AccountExternalId
 operator|.
 name|SCHEME_GERRIT
-operator|.
-name|length
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1600,9 +1588,15 @@ operator|+
 literal|" (Imported from Google AppEngine)"
 return|;
 block|}
+else|else
+block|{
 return|return
-name|id
+name|k
+operator|.
+name|getExternalId
+argument_list|()
 return|;
+block|}
 block|}
 block|}
 block|}
