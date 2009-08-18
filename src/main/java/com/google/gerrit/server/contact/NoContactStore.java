@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.contact
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|contact
 package|;
 end_package
 
@@ -112,18 +114,29 @@ name|ContactInformationStoreException
 import|;
 end_import
 
-begin_interface
-DECL|interface|ContactStore
-specifier|public
-interface|interface
+begin_class
+DECL|class|NoContactStore
+class|class
+name|NoContactStore
+implements|implements
 name|ContactStore
 block|{
+annotation|@
+name|Override
 DECL|method|isEnabled ()
+specifier|public
 name|boolean
 name|isEnabled
 parameter_list|()
-function_decl|;
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|store (Account account, ContactInformation info)
+specifier|public
 name|void
 name|store
 parameter_list|(
@@ -135,9 +148,21 @@ name|info
 parameter_list|)
 throws|throws
 name|ContactInformationStoreException
-function_decl|;
+block|{
+throw|throw
+operator|new
+name|ContactInformationStoreException
+argument_list|(
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"ContactStore not configured"
+argument_list|)
+argument_list|)
+throw|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

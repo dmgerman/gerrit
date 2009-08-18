@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm
+DECL|package|com.google.gerrit.server.contact
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|server
+operator|.
+name|contact
 package|;
 end_package
 
@@ -72,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|client
 operator|.
-name|config
+name|reviewdb
 operator|.
-name|GerritGlobalModule
+name|Account
 import|;
 end_import
 
@@ -88,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|client
 operator|.
-name|ssh
+name|reviewdb
 operator|.
-name|SshDaemon
+name|ContactInformation
 import|;
 end_import
 
@@ -104,87 +106,40 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|client
 operator|.
-name|ssh
+name|rpc
 operator|.
-name|SshModule
+name|ContactInformationStoreException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Injector
-import|;
-end_import
-
-begin_comment
-comment|/** Run only the SSH daemon portions of Gerrit. */
-end_comment
-
-begin_class
-DECL|class|Daemon
+begin_interface
+DECL|interface|ContactStore
 specifier|public
-class|class
-name|Daemon
-extends|extends
-name|AbstractProgram
+interface|interface
+name|ContactStore
 block|{
-annotation|@
-name|Override
-DECL|method|run ()
-specifier|public
-name|int
-name|run
+DECL|method|isEnabled ()
+name|boolean
+name|isEnabled
 parameter_list|()
+function_decl|;
+DECL|method|store (Account account, ContactInformation info)
+name|void
+name|store
+parameter_list|(
+name|Account
+name|account
+parameter_list|,
+name|ContactInformation
+name|info
+parameter_list|)
 throws|throws
-name|Exception
-block|{
-name|Injector
-name|sysInjector
-init|=
-name|GerritGlobalModule
-operator|.
-name|createInjector
-argument_list|()
-decl_stmt|;
-name|Injector
-name|sshInjector
-init|=
-name|sysInjector
-operator|.
-name|createChildInjector
-argument_list|(
-operator|new
-name|SshModule
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|sshInjector
-operator|.
-name|getInstance
-argument_list|(
-name|SshDaemon
-operator|.
-name|class
-argument_list|)
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-return|return
-name|never
-argument_list|()
-return|;
+name|ContactInformationStoreException
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
