@@ -82,22 +82,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|ehcache
-operator|.
-name|constructs
-operator|.
-name|blocking
-operator|.
-name|CacheEntryFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|spearce
@@ -170,10 +154,9 @@ end_import
 
 begin_class
 DECL|class|DiffCacheEntryFactory
+specifier|final
 class|class
 name|DiffCacheEntryFactory
-implements|implements
-name|CacheEntryFactory
 block|{
 DECL|field|server
 specifier|private
@@ -194,26 +177,17 @@ operator|=
 name|gs
 expr_stmt|;
 block|}
-DECL|method|createEntry (Object genericKey)
-specifier|public
-name|Object
+DECL|method|createEntry (final DiffCacheKey key)
+name|DiffCacheContent
 name|createEntry
 parameter_list|(
-name|Object
-name|genericKey
+specifier|final
+name|DiffCacheKey
+name|key
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-specifier|final
-name|DiffCacheKey
-name|key
-init|=
-operator|(
-name|DiffCacheKey
-operator|)
-name|genericKey
-decl_stmt|;
 specifier|final
 name|Repository
 name|db
