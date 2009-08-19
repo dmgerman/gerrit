@@ -1700,6 +1700,34 @@ return|return
 name|inetAddr
 return|;
 block|}
+comment|// No non-loopback address available? Try any address then.
+comment|//
+for|for
+control|(
+specifier|final
+name|SocketAddress
+name|addr
+range|:
+name|listen
+control|)
+block|{
+if|if
+condition|(
+name|addr
+operator|instanceof
+name|InetSocketAddress
+condition|)
+block|{
+return|return
+operator|(
+name|InetSocketAddress
+operator|)
+name|addr
+return|;
+block|}
+block|}
+comment|// We give up, with no valid address.
+comment|//
 return|return
 literal|null
 return|;
