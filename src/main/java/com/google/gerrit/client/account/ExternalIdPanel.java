@@ -447,7 +447,7 @@ operator|.
 name|getConfig
 argument_list|()
 operator|.
-name|getLoginType
+name|getAuthType
 argument_list|()
 condition|)
 block|{

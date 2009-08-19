@@ -122,7 +122,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|LoginType
+name|AuthType
 import|;
 end_import
 
@@ -887,7 +887,7 @@ block|}
 DECL|field|loginType
 specifier|private
 specifier|final
-name|LoginType
+name|AuthType
 name|loginType
 decl_stmt|;
 annotation|@

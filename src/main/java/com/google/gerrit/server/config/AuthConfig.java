@@ -110,7 +110,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|LoginType
+name|AuthType
 import|;
 end_import
 
@@ -251,7 +251,7 @@ block|{
 DECL|field|loginType
 specifier|private
 specifier|final
-name|LoginType
+name|AuthType
 name|loginType
 decl_stmt|;
 DECL|field|httpHeader
@@ -523,7 +523,7 @@ block|}
 DECL|method|toType (final Config cfg)
 specifier|private
 specifier|static
-name|LoginType
+name|AuthType
 name|toType
 parameter_list|(
 specifier|final
@@ -538,7 +538,7 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|LoginType
+name|AuthType
 operator|.
 name|DEVELOPMENT_BECOME_ANY_ACCOUNT
 return|;
@@ -556,7 +556,7 @@ literal|null
 argument_list|,
 literal|"type"
 argument_list|,
-name|LoginType
+name|AuthType
 operator|.
 name|OPENID
 argument_list|)
@@ -599,7 +599,7 @@ block|}
 comment|/** Type of user authentication used by this Gerrit server. */
 DECL|method|getLoginType ()
 specifier|public
-name|LoginType
+name|AuthType
 name|getLoginType
 parameter_list|()
 block|{

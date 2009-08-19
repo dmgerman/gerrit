@@ -108,7 +108,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|LoginType
+name|AuthType
 import|;
 end_import
 
@@ -417,7 +417,7 @@ decl_stmt|;
 DECL|field|loginType
 specifier|private
 specifier|final
-name|LoginType
+name|AuthType
 name|loginType
 decl_stmt|;
 annotation|@
@@ -448,7 +448,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|WebModule (final Provider<SshInfo> sshInfoProvider, final LoginType loginType)
+DECL|method|WebModule (final Provider<SshInfo> sshInfoProvider, final AuthType loginType)
 name|WebModule
 parameter_list|(
 specifier|final
@@ -459,7 +459,7 @@ argument_list|>
 name|sshInfoProvider
 parameter_list|,
 specifier|final
-name|LoginType
+name|AuthType
 name|loginType
 parameter_list|)
 block|{

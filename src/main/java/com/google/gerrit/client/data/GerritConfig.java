@@ -78,7 +78,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|LoginType
+name|AuthType
 import|;
 end_import
 
@@ -131,10 +131,10 @@ specifier|protected
 name|boolean
 name|allowRegisterNewEmail
 decl_stmt|;
-DECL|field|loginType
+DECL|field|authType
 specifier|protected
-name|LoginType
-name|loginType
+name|AuthType
+name|authType
 decl_stmt|;
 DECL|field|useRepoDownload
 specifier|protected
@@ -188,27 +188,27 @@ operator|=
 name|u
 expr_stmt|;
 block|}
-DECL|method|getLoginType ()
+DECL|method|getAuthType ()
 specifier|public
-name|LoginType
-name|getLoginType
+name|AuthType
+name|getAuthType
 parameter_list|()
 block|{
 return|return
-name|loginType
+name|authType
 return|;
 block|}
-DECL|method|setLoginType (final LoginType t)
+DECL|method|setAuthType (final AuthType t)
 specifier|public
 name|void
-name|setLoginType
+name|setAuthType
 parameter_list|(
 specifier|final
-name|LoginType
+name|AuthType
 name|t
 parameter_list|)
 block|{
-name|loginType
+name|authType
 operator|=
 name|t
 expr_stmt|;

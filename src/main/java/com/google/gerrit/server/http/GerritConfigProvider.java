@@ -611,7 +611,7 @@ argument_list|)
 expr_stmt|;
 name|config
 operator|.
-name|setLoginType
+name|setAuthType
 argument_list|(
 name|authConfig
 operator|.

@@ -67,10 +67,10 @@ package|;
 end_package
 
 begin_enum
-DECL|enum|LoginType
+DECL|enum|AuthType
 specifier|public
 enum|enum
-name|LoginType
+name|AuthType
 block|{
 comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} */
 DECL|enumConstant|OPENID
