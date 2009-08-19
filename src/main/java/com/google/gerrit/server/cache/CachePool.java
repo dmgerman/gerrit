@@ -901,9 +901,6 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|// mgr.addCache(disk(named("diff")));
-comment|// mgr.addCache(disk(tti(named("web_sessions"), D_SESSIONAGE)));
-comment|// mgr.addCache(ttl(named("openid"), 5));
 return|return
 name|mgr
 return|;
