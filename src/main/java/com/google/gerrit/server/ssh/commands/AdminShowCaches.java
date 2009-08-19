@@ -749,7 +749,7 @@ decl_stmt|;
 if|if
 condition|(
 name|ttl
-operator|>
+operator|>=
 literal|60
 condition|)
 block|{
@@ -765,7 +765,7 @@ block|}
 if|if
 condition|(
 name|ttl
-operator|>
+operator|>=
 literal|60
 condition|)
 block|{
@@ -781,7 +781,7 @@ block|}
 if|if
 condition|(
 name|ttl
-operator|>
+operator|>=
 literal|24
 condition|)
 block|{
