@@ -544,6 +544,9 @@ break|break;
 case|case
 name|HTTP
 case|:
+case|case
+name|HTTP_LDAP
+case|:
 name|install
 argument_list|(
 operator|new

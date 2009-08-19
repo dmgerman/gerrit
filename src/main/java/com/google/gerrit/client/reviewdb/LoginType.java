@@ -76,9 +76,13 @@ comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} 
 DECL|enumConstant|OPENID
 name|OPENID
 block|,
-comment|/**    * Login relies upon the container/web server security.    *<p>    * The container or web server must populate an HTTP header with the some    * user token. Gerrit will implicitly trust the value of this header to    * supply the unique identity.    */
+comment|/**    * Login relies upon the container/web server security.    *<p>    * The container or web server must populate an HTTP header with a unique name    * for the current user. Gerrit will implicitly trust the value of this header    * to supply the unique identity.    */
 DECL|enumConstant|HTTP
 name|HTTP
+block|,
+comment|/**    * Login relies upon the container/web server security, but also uses LDAP.    *<p>    * Like {@link #HTTP}, the container or web server must populate an HTTP    * header with a unique name for the current user. Gerrit will implicitly    * trust the value of this header to supply the unique identity.    *<p>    * In addition to trusting the HTTP headers, Gerrit will obtain basic user    * registration (name and email) from LDAP, and some group memberships.    */
+DECL|enumConstant|HTTP_LDAP
+name|HTTP_LDAP
 block|,
 comment|/** Development mode to enable becoming anyone you want. */
 DECL|enumConstant|DEVELOPMENT_BECOME_ANY_ACCOUNT

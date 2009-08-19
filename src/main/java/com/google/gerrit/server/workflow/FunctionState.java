@@ -270,9 +270,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountCache
+name|IdentifiedUser
 import|;
 end_import
 
@@ -471,11 +469,13 @@ specifier|final
 name|ApprovalTypes
 name|approvalTypes
 decl_stmt|;
-DECL|field|accountCache
+DECL|field|userFactory
 specifier|private
 specifier|final
-name|AccountCache
-name|accountCache
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|userFactory
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
@@ -619,7 +619,7 @@ name|modified
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ApprovalTypes approvalTypes, final ProjectCache pc, final AccountCache ac, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
+DECL|method|FunctionState (final ApprovalTypes approvalTypes, final ProjectCache pc, final IdentifiedUser.GenericFactory userFactory, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
 specifier|final
@@ -631,8 +631,10 @@ name|ProjectCache
 name|pc
 parameter_list|,
 specifier|final
-name|AccountCache
-name|ac
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|userFactory
 parameter_list|,
 specifier|final
 name|GroupCache
@@ -668,13 +670,15 @@ name|approvalTypes
 operator|=
 name|approvalTypes
 expr_stmt|;
+name|this
+operator|.
+name|userFactory
+operator|=
+name|userFactory
+expr_stmt|;
 name|projectCache
 operator|=
 name|pc
-expr_stmt|;
-name|accountCache
-operator|=
-name|ac
 expr_stmt|;
 name|change
 operator|=
@@ -1579,9 +1583,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|accountCache
+name|userFactory
 operator|.
-name|get
+name|create
 argument_list|(
 name|who
 argument_list|)

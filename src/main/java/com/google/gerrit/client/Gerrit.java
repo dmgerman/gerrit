@@ -2112,6 +2112,9 @@ block|{
 case|case
 name|HTTP
 case|:
+case|case
+name|HTTP_LDAP
+case|:
 break|break;
 case|case
 name|OPENID

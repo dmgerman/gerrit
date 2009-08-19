@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|reviewdb
+name|config
 operator|.
-name|SystemConfig
+name|AuthConfig
 import|;
 end_import
 
@@ -147,24 +147,26 @@ specifier|abstract
 class|class
 name|CurrentUser
 block|{
-DECL|field|systemConfig
+DECL|field|authConfig
 specifier|protected
 specifier|final
-name|SystemConfig
-name|systemConfig
+name|AuthConfig
+name|authConfig
 decl_stmt|;
-DECL|method|CurrentUser (final SystemConfig cfg)
+DECL|method|CurrentUser (final AuthConfig authConfig)
 specifier|protected
 name|CurrentUser
 parameter_list|(
 specifier|final
-name|SystemConfig
-name|cfg
+name|AuthConfig
+name|authConfig
 parameter_list|)
 block|{
-name|systemConfig
+name|this
+operator|.
+name|authConfig
 operator|=
-name|cfg
+name|authConfig
 expr_stmt|;
 block|}
 comment|/**    * Get the set of groups the user is currently a member of.    *<p>    * The returned set may be a subset of the user's actual groups; if the user's    * account is currently deemed to be untrusted then the effective group set is    * only the anonymous and registered user groups. To enable additional groups    * (and gain their granted permissions) the user must update their account to    * use only trusted authentication providers.    *    * @return active groups for this user.    */
@@ -208,9 +210,10 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|systemConfig
+name|authConfig
 operator|.
-name|adminGroupId
+name|getAdministratorsGroup
+argument_list|()
 argument_list|)
 return|;
 block|}
