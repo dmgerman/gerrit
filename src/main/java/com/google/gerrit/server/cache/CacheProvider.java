@@ -162,16 +162,14 @@ specifier|private
 name|long
 name|timeToIdle
 init|=
-operator|-
-literal|1
+name|DEFAULT
 decl_stmt|;
 DECL|field|timeToLive
 specifier|private
 name|long
 name|timeToLive
 init|=
-operator|-
-literal|1
+name|DEFAULT
 decl_stmt|;
 DECL|field|cacheName
 specifier|private
@@ -322,13 +320,13 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|timeToIdle (final int duration, final TimeUnit unit)
+DECL|method|timeToIdle (final long duration, final TimeUnit unit)
 specifier|public
 name|NamedCacheBinding
 name|timeToIdle
 parameter_list|(
 specifier|final
-name|int
+name|long
 name|duration
 parameter_list|,
 specifier|final
@@ -368,13 +366,13 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|timeToLive (final int duration, final TimeUnit unit)
+DECL|method|timeToLive (final long duration, final TimeUnit unit)
 specifier|public
 name|NamedCacheBinding
 name|timeToLive
 parameter_list|(
 specifier|final
-name|int
+name|long
 name|duration
 parameter_list|,
 specifier|final

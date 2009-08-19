@@ -88,13 +88,32 @@ specifier|public
 interface|interface
 name|NamedCacheBinding
 block|{
+DECL|field|INFINITE
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|INFINITE
+init|=
+literal|0L
+decl_stmt|;
+DECL|field|DEFAULT
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|DEFAULT
+init|=
+operator|-
+literal|1L
+decl_stmt|;
 comment|/** Set the time an element lives without access before being expired. */
-DECL|method|timeToIdle (int duration, TimeUnit durationUnits)
+DECL|method|timeToIdle (long duration, TimeUnit durationUnits)
 specifier|public
 name|NamedCacheBinding
 name|timeToIdle
 parameter_list|(
-name|int
+name|long
 name|duration
 parameter_list|,
 name|TimeUnit
@@ -102,12 +121,12 @@ name|durationUnits
 parameter_list|)
 function_decl|;
 comment|/** Set the time an element lives since creation, before being expired. */
-DECL|method|timeToLive (int duration, TimeUnit durationUnits)
+DECL|method|timeToLive (long duration, TimeUnit durationUnits)
 specifier|public
 name|NamedCacheBinding
 name|timeToLive
 parameter_list|(
-name|int
+name|long
 name|duration
 parameter_list|,
 name|TimeUnit

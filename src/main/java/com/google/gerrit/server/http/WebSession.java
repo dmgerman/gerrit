@@ -68,15 +68,19 @@ end_package
 
 begin_import
 import|import static
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|concurrent
+name|gerrit
 operator|.
-name|TimeUnit
+name|server
 operator|.
-name|HOURS
+name|cache
+operator|.
+name|NamedCacheBinding
+operator|.
+name|INFINITE
 import|;
 end_import
 
@@ -90,7 +94,7 @@ name|concurrent
 operator|.
 name|TimeUnit
 operator|.
-name|SECONDS
+name|HOURS
 import|;
 end_import
 
@@ -391,9 +395,9 @@ argument_list|)
 operator|.
 name|timeToLive
 argument_list|(
-literal|0
+name|INFINITE
 argument_list|,
-name|SECONDS
+name|HOURS
 argument_list|)
 expr_stmt|;
 name|bind
