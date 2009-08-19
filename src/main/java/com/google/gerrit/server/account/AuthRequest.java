@@ -124,7 +124,12 @@ name|String
 name|username
 parameter_list|)
 block|{
-return|return
+specifier|final
+name|AuthRequest
+name|r
+decl_stmt|;
+name|r
+operator|=
 operator|new
 name|AuthRequest
 argument_list|(
@@ -132,6 +137,16 @@ name|SCHEME_GERRIT
 operator|+
 name|username
 argument_list|)
+expr_stmt|;
+name|r
+operator|.
+name|setSshUserName
+argument_list|(
+name|username
+argument_list|)
+expr_stmt|;
+return|return
+name|r
 return|;
 block|}
 comment|/**    * Create a request for an email address registration.    *<p>    * This type of request should be used only to attach a new email address to    * an existing user account.    */
@@ -186,6 +201,11 @@ DECL|field|emailAddress
 specifier|private
 name|String
 name|emailAddress
+decl_stmt|;
+DECL|field|sshUserName
+specifier|private
+name|String
+name|sshUserName
 decl_stmt|;
 DECL|method|AuthRequest (final String externalId)
 specifier|public
@@ -338,6 +358,31 @@ condition|?
 name|email
 else|:
 literal|null
+expr_stmt|;
+block|}
+DECL|method|getSshUserName ()
+specifier|public
+name|String
+name|getSshUserName
+parameter_list|()
+block|{
+return|return
+name|sshUserName
+return|;
+block|}
+DECL|method|setSshUserName (final String user)
+specifier|public
+name|void
+name|setSshUserName
+parameter_list|(
+specifier|final
+name|String
+name|user
+parameter_list|)
+block|{
+name|sshUserName
+operator|=
+name|user
 expr_stmt|;
 block|}
 block|}
