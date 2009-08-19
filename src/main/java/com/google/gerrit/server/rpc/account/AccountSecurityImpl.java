@@ -1650,6 +1650,16 @@ argument_list|(
 name|newName
 argument_list|)
 expr_stmt|;
+name|accountCache
+operator|.
+name|evict
+argument_list|(
+name|me
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|VoidResult
 operator|.
