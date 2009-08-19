@@ -78,6 +78,22 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -98,6 +114,18 @@ specifier|public
 interface|interface
 name|Realm
 block|{
+comment|/** Can the end-user modify this field of their own account? */
+DECL|method|allowsEdit (Account.FieldName field)
+specifier|public
+name|boolean
+name|allowsEdit
+parameter_list|(
+name|Account
+operator|.
+name|FieldName
+name|field
+parameter_list|)
+function_decl|;
 DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthRequest

@@ -115,6 +115,21 @@ specifier|final
 class|class
 name|Account
 block|{
+DECL|enum|FieldName
+specifier|public
+specifier|static
+enum|enum
+name|FieldName
+block|{
+DECL|enumConstant|FULL_NAME
+DECL|enumConstant|SSH_USER_NAME
+DECL|enumConstant|REGISTER_NEW_EMAIL
+name|FULL_NAME
+block|,
+name|SSH_USER_NAME
+block|,
+name|REGISTER_NEW_EMAIL
+block|;   }
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
 specifier|public
