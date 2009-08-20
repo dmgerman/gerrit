@@ -472,6 +472,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NoSuchAccountException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|git
 operator|.
 name|PatchSetImporter
@@ -1148,20 +1164,6 @@ name|Pattern
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|security
-operator|.
-name|auth
-operator|.
-name|login
-operator|.
-name|AccountNotFoundException
-import|;
-end_import
-
 begin_comment
 comment|/** Receives change upload over SSH using the Git receive-pack protocol. */
 end_comment
@@ -1343,7 +1345,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AccountNotFoundException
+name|NoSuchAccountException
 name|e
 parameter_list|)
 block|{
@@ -1422,7 +1424,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|AccountNotFoundException
+name|NoSuchAccountException
 name|e
 parameter_list|)
 block|{
@@ -2683,7 +2685,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
-name|AccountNotFoundException
+name|NoSuchAccountException
 block|{
 specifier|final
 name|Account
@@ -2705,7 +2707,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|AccountNotFoundException
+name|NoSuchAccountException
 argument_list|(
 literal|"\""
 operator|+
@@ -4481,7 +4483,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|AccountNotFoundException
+name|NoSuchAccountException
 name|e
 parameter_list|)
 block|{
@@ -5466,7 +5468,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|AccountNotFoundException
+name|NoSuchAccountException
 name|e
 parameter_list|)
 block|{
