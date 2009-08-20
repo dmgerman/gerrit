@@ -796,8 +796,7 @@ specifier|final
 name|CmdLineParser
 name|clp
 init|=
-operator|new
-name|CmdLineParser
+name|newCmdLineParserInstance
 argument_list|(
 name|this
 argument_list|)
@@ -924,6 +923,23 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|newCmdLineParserInstance (Object bean)
+specifier|protected
+name|CmdLineParser
+name|newCmdLineParserInstance
+parameter_list|(
+name|Object
+name|bean
+parameter_list|)
+block|{
+return|return
+operator|new
+name|CmdLineParser
+argument_list|(
+name|bean
+argument_list|)
+return|;
 block|}
 comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start()}, such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
 DECL|method|startThread (final Runnable thunk)
