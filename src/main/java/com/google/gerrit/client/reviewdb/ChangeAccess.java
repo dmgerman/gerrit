@@ -191,6 +191,31 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE changeKey>= ? AND changeKey<= ?"
+argument_list|)
+DECL|method|byKeyRange (Change.Key reva, Change.Key revb)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byKeyRange
+parameter_list|(
+name|Change
+operator|.
+name|Key
+name|reva
+parameter_list|,
+name|Change
+operator|.
+name|Key
+name|revb
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE dest.projectName = ? AND changeKey = ?"
 argument_list|)
 DECL|method|byProjectKey (Project.NameKey p, Change.Key key)

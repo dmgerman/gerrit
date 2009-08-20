@@ -355,6 +355,55 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+comment|/** Construct a key that is after all keys prefixed by this key. */
+DECL|method|max ()
+specifier|public
+name|Key
+name|max
+parameter_list|()
+block|{
+specifier|final
+name|StringBuilder
+name|revEnd
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
+name|get
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|1
+argument_list|)
+decl_stmt|;
+name|revEnd
+operator|.
+name|append
+argument_list|(
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|revEnd
+operator|.
+name|append
+argument_list|(
+literal|'\u9fa5'
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|Key
+argument_list|(
+name|revEnd
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/** Parse a Change.Key out of a string representation. */
 DECL|method|parse (final String str)
 specifier|public
