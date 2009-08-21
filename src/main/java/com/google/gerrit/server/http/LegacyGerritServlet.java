@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Redirects from {@code /Gerrit#foo} to {@code /#foo} in JavaScript.  *<p>  * This redirect exists to convert the older /Gerrit URL into the more modern  * URL format which does not use a servlet name for the host page. We cannot do  * the direct here in the server side, as it would lose any history token that  * appears in the URL. Instead we send an HTML page which instructs the browser  * to replace the URL, but preserve the history token.  */
+comment|/**  * Redirects from {@code /Gerrit#foo} to {@code /#foo} in JavaScript.  *<p>  * This redirect exists to convert the older /Gerrit URL into the more modern  * URL format which does not use a servlet name for the host page. We cannot do  * the redirect here in the server side, as it would lose any history token that  * appears in the URL. Instead we send an HTML page which instructs the browser  * to replace the URL, but preserve the history token.  */
 end_comment
 
 begin_class
