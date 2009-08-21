@@ -171,6 +171,51 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE changeKey = ?"
+argument_list|)
+DECL|method|byKey (Change.Key key)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byKey
+parameter_list|(
+name|Change
+operator|.
+name|Key
+name|key
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE dest.projectName = ? AND changeKey = ?"
+argument_list|)
+DECL|method|byProjectKey (Project.NameKey p, Change.Key key)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProjectKey
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|Change
+operator|.
+name|Key
+name|key
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE owner = ? AND open = true ORDER BY createdOn, changeId"
 argument_list|)
 DECL|method|byOwnerOpen (Account.Id id)

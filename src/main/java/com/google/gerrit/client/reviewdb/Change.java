@@ -110,6 +110,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|StringKey
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -234,6 +248,131 @@ name|r
 init|=
 operator|new
 name|Id
+argument_list|()
+decl_stmt|;
+name|r
+operator|.
+name|fromString
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
+return|return
+name|r
+return|;
+block|}
+block|}
+comment|/** Globally unique identification of this change. */
+DECL|class|Key
+specifier|public
+specifier|static
+class|class
+name|Key
+extends|extends
+name|StringKey
+argument_list|<
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Key
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|60
+argument_list|)
+DECL|field|id
+specifier|protected
+name|String
+name|id
+decl_stmt|;
+DECL|method|Key ()
+specifier|protected
+name|Key
+parameter_list|()
+block|{     }
+DECL|method|Key (final String id)
+specifier|public
+name|Key
+parameter_list|(
+specifier|final
+name|String
+name|id
+parameter_list|)
+block|{
+name|this
+operator|.
+name|id
+operator|=
+name|id
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|String
+name|get
+parameter_list|()
+block|{
+return|return
+name|id
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|set (String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|newValue
+parameter_list|)
+block|{
+name|id
+operator|=
+name|newValue
+expr_stmt|;
+block|}
+comment|/** Parse a Change.Key out of a string representation. */
+DECL|method|parse (final String str)
+specifier|public
+specifier|static
+name|Key
+name|parse
+parameter_list|(
+specifier|final
+name|String
+name|str
+parameter_list|)
+block|{
+specifier|final
+name|Key
+name|r
+init|=
+operator|new
+name|Key
 argument_list|()
 decl_stmt|;
 name|r
@@ -479,6 +618,20 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/** Globally assigned unique identifier of the change */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+DECL|field|changeKey
+specifier|protected
+name|Key
+name|changeKey
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/** optimistic locking */
 end_comment
 
@@ -653,10 +806,16 @@ block|{   }
 end_constructor
 
 begin_constructor
-DECL|method|Change (final Change.Id newId, final Account.Id ownedBy, final Branch.NameKey forBranch)
+DECL|method|Change (final Change.Key newKey, final Change.Id newId, final Account.Id ownedBy, final Branch.NameKey forBranch)
 specifier|public
 name|Change
 parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Key
+name|newKey
+parameter_list|,
 specifier|final
 name|Change
 operator|.
@@ -676,6 +835,10 @@ name|NameKey
 name|forBranch
 parameter_list|)
 block|{
+name|changeKey
+operator|=
+name|newKey
+expr_stmt|;
 name|changeId
 operator|=
 name|newId
@@ -741,6 +904,41 @@ operator|.
 name|get
 argument_list|()
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|getKey ()
+specifier|public
+name|Change
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|changeKey
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setKey (final Change.Key k)
+specifier|public
+name|void
+name|setKey
+parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Key
+name|k
+parameter_list|)
+block|{
+name|changeKey
+operator|=
+name|k
+expr_stmt|;
 block|}
 end_function
 
