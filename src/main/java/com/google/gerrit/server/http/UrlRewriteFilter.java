@@ -413,17 +413,6 @@ name|staticLinks
 operator|.
 name|put
 argument_list|(
-literal|"/all_unclaimed"
-argument_list|,
-name|Link
-operator|.
-name|ALL_UNCLAIMED
-argument_list|)
-expr_stmt|;
-name|staticLinks
-operator|.
-name|put
-argument_list|(
 literal|"/all"
 argument_list|,
 name|Link

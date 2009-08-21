@@ -715,15 +715,6 @@ name|ALL_OPEN
 init|=
 literal|"all,open,n,z"
 decl_stmt|;
-DECL|field|ALL_UNCLAIMED
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ALL_UNCLAIMED
-init|=
-literal|"all,unclaimed"
-decl_stmt|;
 DECL|field|ADMIN_PEOPLE
 specifier|public
 specifier|static
