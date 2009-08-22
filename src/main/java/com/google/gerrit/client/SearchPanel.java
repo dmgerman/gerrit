@@ -426,7 +426,7 @@ name|searchBox
 operator|.
 name|setVisibleLength
 argument_list|(
-literal|42
+literal|46
 argument_list|)
 expr_stmt|;
 name|searchBox
