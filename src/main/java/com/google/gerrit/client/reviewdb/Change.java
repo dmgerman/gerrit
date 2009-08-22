@@ -404,6 +404,41 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/** Obtain a shorter version of this key string, using a leading prefix. */
+DECL|method|abbreviate ()
+specifier|public
+name|String
+name|abbreviate
+parameter_list|()
+block|{
+specifier|final
+name|String
+name|s
+init|=
+name|get
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|Math
+operator|.
+name|min
+argument_list|(
+name|s
+operator|.
+name|length
+argument_list|()
+argument_list|,
+literal|9
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/** Parse a Change.Key out of a string representation. */
 DECL|method|parse (final String str)
 specifier|public

@@ -1460,7 +1460,10 @@ name|idstr
 init|=
 name|c
 operator|.
-name|getAbbreviatedKey
+name|getKey
+argument_list|()
+operator|.
+name|abbreviate
 argument_list|()
 decl_stmt|;
 name|table
