@@ -76,6 +76,22 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -135,6 +151,13 @@ name|PatchSet
 operator|.
 name|Id
 name|patchsetId
+decl_stmt|;
+comment|/** Unique key of the change itself. */
+DECL|field|changeKey
+name|Change
+operator|.
+name|Key
+name|changeKey
 decl_stmt|;
 comment|/**    * Ordinal position of this commit within the submit queue.    *<p>    * Only valid if {@link #patchsetId} is not null.    */
 DECL|field|originalOrder
