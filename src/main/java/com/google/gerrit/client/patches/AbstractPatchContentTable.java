@@ -1785,6 +1785,13 @@ name|cell
 init|=
 literal|0
 init|;
+name|row
+operator|<
+name|table
+operator|.
+name|getRowCount
+argument_list|()
+operator|&&
 name|cell
 operator|<
 name|table
