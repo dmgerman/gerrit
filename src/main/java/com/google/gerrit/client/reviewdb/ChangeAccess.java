@@ -390,6 +390,26 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE open = true AND dest.projectName = ?"
+argument_list|)
+DECL|method|byProjectOpenAll (Project.NameKey p)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProjectOpenAll
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE open = true AND dest.projectName = ? AND sortKey> ?"
 operator|+
 literal|" ORDER BY sortKey LIMIT ?"
