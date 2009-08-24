@@ -701,6 +701,33 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|IOException
+operator|.
+name|class
+operator|&&
+literal|"Pipe closed"
+operator|.
+name|equals
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Ignore a pipe closed error, its the user disconnecting from us
+comment|// while we are waiting for them to stalk.
+comment|//
+return|return;
+block|}
 try|try
 block|{
 name|out
