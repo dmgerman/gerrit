@@ -1376,6 +1376,15 @@ name|getPreferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|realm
+operator|.
+name|onCreateAccount
+argument_list|(
+name|who
+argument_list|,
+name|account
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|AuthResult

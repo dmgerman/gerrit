@@ -137,6 +137,18 @@ parameter_list|)
 throws|throws
 name|AccountException
 function_decl|;
+DECL|method|onCreateAccount (AuthRequest who, Account account)
+specifier|public
+name|void
+name|onCreateAccount
+parameter_list|(
+name|AuthRequest
+name|who
+parameter_list|,
+name|Account
+name|account
+parameter_list|)
+function_decl|;
 DECL|method|groups (AccountState who)
 specifier|public
 name|Set
@@ -149,6 +161,18 @@ name|groups
 parameter_list|(
 name|AccountState
 name|who
+parameter_list|)
+function_decl|;
+comment|/**    * Locate an account whose local username is the given account name.    *<p>    * Generally this only works for local realms, such as one backed by an LDAP    * directory, or where there is an {@link EmailExpander} configured that knows    * how to convert the accountName into an email address, and then locate the    * user by that email address.    */
+DECL|method|lookup (String accountName)
+specifier|public
+name|Account
+operator|.
+name|Id
+name|lookup
+parameter_list|(
+name|String
+name|accountName
 parameter_list|)
 function_decl|;
 block|}
