@@ -654,6 +654,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|PatchSetInfoFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -1538,6 +1554,13 @@ name|PatchSetImporter
 operator|.
 name|Factory
 name|importFactory
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|field|patchSetInfoFactory
+specifier|private
+name|PatchSetInfoFactory
+name|patchSetInfoFactory
 decl_stmt|;
 annotation|@
 name|Inject
@@ -8139,6 +8162,8 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+argument_list|,
+name|c
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -8243,6 +8268,10 @@ operator|.
 name|cmd
 argument_list|,
 name|psi
+argument_list|,
+name|req
+operator|.
+name|newCommit
 argument_list|)
 expr_stmt|;
 block|}
@@ -8306,7 +8335,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|closeChange (final ReceiveCommand cmd, final PatchSet.Id psi)
+DECL|method|closeChange (final ReceiveCommand cmd, final PatchSet.Id psi, final RevCommit commit)
 specifier|private
 name|void
 name|closeChange
@@ -8320,6 +8349,10 @@ name|PatchSet
 operator|.
 name|Id
 name|psi
+parameter_list|,
+specifier|final
+name|RevCommit
+name|commit
 parameter_list|)
 throws|throws
 name|OrmException
@@ -8479,6 +8512,19 @@ operator|.
 name|patchSet
 operator|=
 name|ps
+expr_stmt|;
+name|result
+operator|.
+name|info
+operator|=
+name|patchSetInfoFactory
+operator|.
+name|get
+argument_list|(
+name|commit
+argument_list|,
+name|psi
+argument_list|)
 expr_stmt|;
 name|result
 operator|.
