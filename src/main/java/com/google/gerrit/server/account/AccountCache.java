@@ -512,14 +512,14 @@ name|registered
 operator|=
 name|auth
 operator|.
-name|getAnonymousGroups
+name|getRegisteredGroups
 argument_list|()
 expr_stmt|;
 name|anonymous
 operator|=
 name|auth
 operator|.
-name|getRegisteredGroups
+name|getAnonymousGroups
 argument_list|()
 expr_stmt|;
 name|self
