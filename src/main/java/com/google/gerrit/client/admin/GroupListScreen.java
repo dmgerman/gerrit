@@ -1121,6 +1121,17 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
+literal|1
+argument_list|,
+literal|"GroupName"
+argument_list|)
+expr_stmt|;
+name|fmt
+operator|.
+name|addStyleName
+argument_list|(
+name|row
+argument_list|,
 literal|2
 argument_list|,
 name|S_DATA_CELL
