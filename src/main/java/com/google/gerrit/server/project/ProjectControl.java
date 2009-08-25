@@ -394,6 +394,25 @@ name|controlForAnonymousUser
 argument_list|()
 return|;
 block|}
+DECL|method|forUser (final CurrentUser who)
+specifier|public
+name|ProjectControl
+name|forUser
+parameter_list|(
+specifier|final
+name|CurrentUser
+name|who
+parameter_list|)
+block|{
+return|return
+name|state
+operator|.
+name|controlFor
+argument_list|(
+name|who
+argument_list|)
+return|;
+block|}
 DECL|method|controlFor (final Change change)
 specifier|public
 name|ChangeControl

@@ -296,15 +296,15 @@ specifier|protected
 name|Repository
 name|repo
 decl_stmt|;
-DECL|field|cachedProj
+DECL|field|projectState
 specifier|protected
 name|ProjectState
-name|cachedProj
+name|projectState
 decl_stmt|;
-DECL|field|proj
+DECL|field|project
 specifier|protected
 name|Project
-name|proj
+name|project
 decl_stmt|;
 annotation|@
 name|Override
@@ -414,7 +414,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|cachedProj
+name|projectState
 operator|=
 name|projectCache
 operator|.
@@ -431,7 +431,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|cachedProj
+name|projectState
 operator|==
 literal|null
 condition|)
@@ -450,9 +450,9 @@ literal|"': not a Gerrit project"
 argument_list|)
 throw|;
 block|}
-name|proj
+name|project
 operator|=
-name|cachedProj
+name|projectState
 operator|.
 name|getProject
 argument_list|()
@@ -501,7 +501,7 @@ name|server
 operator|.
 name|openRepository
 argument_list|(
-name|proj
+name|project
 operator|.
 name|getName
 argument_list|()
@@ -562,7 +562,7 @@ name|val
 parameter_list|)
 block|{
 return|return
-name|cachedProj
+name|projectState
 operator|.
 name|controlFor
 argument_list|(

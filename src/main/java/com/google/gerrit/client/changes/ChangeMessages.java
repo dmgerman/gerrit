@@ -252,6 +252,22 @@ name|String
 name|query
 parameter_list|)
 function_decl|;
+DECL|method|accountNotFound (String who)
+name|String
+name|accountNotFound
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
+DECL|method|changeNotVisibleTo (String who)
+name|String
+name|changeNotVisibleTo
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

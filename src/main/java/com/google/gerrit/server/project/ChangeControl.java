@@ -520,6 +520,31 @@ name|change
 argument_list|)
 return|;
 block|}
+DECL|method|forUser (final CurrentUser who)
+specifier|public
+name|ChangeControl
+name|forUser
+parameter_list|(
+specifier|final
+name|CurrentUser
+name|who
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ChangeControl
+argument_list|(
+name|projectControl
+operator|.
+name|forUser
+argument_list|(
+name|who
+argument_list|)
+argument_list|,
+name|change
+argument_list|)
+return|;
+block|}
 DECL|method|getCurrentUser ()
 specifier|public
 name|CurrentUser

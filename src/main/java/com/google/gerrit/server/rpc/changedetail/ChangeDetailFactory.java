@@ -562,6 +562,7 @@ end_comment
 
 begin_class
 DECL|class|ChangeDetailFactory
+specifier|public
 class|class
 name|ChangeDetailFactory
 extends|extends
@@ -571,6 +572,7 @@ name|ChangeDetail
 argument_list|>
 block|{
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{
