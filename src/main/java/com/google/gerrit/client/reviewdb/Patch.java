@@ -265,6 +265,17 @@ return|return
 name|r
 return|;
 block|}
+DECL|method|getFileName ()
+specifier|public
+name|String
+name|getFileName
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|()
+return|;
+block|}
 block|}
 comment|/** Type of modification made to the file path. */
 DECL|enum|ChangeType
