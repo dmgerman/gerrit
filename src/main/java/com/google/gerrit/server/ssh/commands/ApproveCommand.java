@@ -546,6 +546,10 @@ name|required
 operator|=
 literal|true
 argument_list|,
+name|metaVar
+operator|=
+literal|"CHANGE,PATCHSET"
+argument_list|,
 name|usage
 operator|=
 literal|"Patch set to approve"

@@ -258,7 +258,7 @@ name|CmdLineException
 block|{
 specifier|final
 name|String
-name|idString
+name|token
 init|=
 name|params
 operator|.
@@ -283,7 +283,7 @@ name|Id
 operator|.
 name|parse
 argument_list|(
-name|idString
+name|token
 argument_list|)
 expr_stmt|;
 block|}
@@ -299,9 +299,11 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"Invalid patch set: "
+literal|"\""
 operator|+
-name|idString
+name|token
+operator|+
+literal|"\" is not a valid patch set"
 argument_list|)
 throw|;
 block|}
