@@ -296,11 +296,8 @@ literal|0
 condition|)
 block|{
 throw|throw
-operator|new
-name|Failure
+name|error
 argument_list|(
-literal|1
-argument_list|,
 literal|"error: cannot use --list with --all or --cache"
 argument_list|)
 throw|;
@@ -323,11 +320,8 @@ literal|0
 condition|)
 block|{
 throw|throw
-operator|new
-name|Failure
+name|error
 argument_list|(
-literal|1
-argument_list|,
 literal|"error: cannot combine --all and --cache"
 argument_list|)
 throw|;
@@ -411,11 +405,8 @@ argument_list|)
 condition|)
 block|{
 throw|throw
-operator|new
-name|Failure
+name|error
 argument_list|(
-literal|1
-argument_list|,
 literal|"error: cache \""
 operator|+
 name|n
@@ -428,6 +419,27 @@ block|}
 name|doBulkFlush
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|error (final String msg)
+specifier|private
+specifier|static
+name|UnloggedFailure
+name|error
+parameter_list|(
+specifier|final
+name|String
+name|msg
+parameter_list|)
+block|{
+return|return
+operator|new
+name|UnloggedFailure
+argument_list|(
+literal|1
+argument_list|,
+name|msg
+argument_list|)
+return|;
 block|}
 DECL|method|doList ()
 specifier|private
