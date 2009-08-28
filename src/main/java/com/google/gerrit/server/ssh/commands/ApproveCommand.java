@@ -1402,8 +1402,6 @@ specifier|private
 name|void
 name|getApprovalNames
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
 name|optionList
 operator|=
@@ -1467,15 +1465,20 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%4d"
+literal|"%3s"
 argument_list|,
+name|CmdOption
+operator|.
+name|format
+argument_list|(
 name|v
 operator|.
 name|getValue
 argument_list|()
 argument_list|)
+argument_list|)
 operator|+
-literal|"  -  "
+literal|": "
 operator|+
 name|v
 operator|.
