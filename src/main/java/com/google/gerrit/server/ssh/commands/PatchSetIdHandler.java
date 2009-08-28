@@ -265,6 +265,8 @@ throw|throw
 operator|new
 name|CmdLineException
 argument_list|(
+name|owner
+argument_list|,
 literal|"Invalid patch set: "
 operator|+
 name|idString
