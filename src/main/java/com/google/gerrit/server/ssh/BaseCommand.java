@@ -796,10 +796,8 @@ specifier|final
 name|CmdLineParser
 name|clp
 init|=
-name|newCmdLineParserInstance
-argument_list|(
-name|this
-argument_list|)
+name|newCmdLineParser
+argument_list|()
 decl_stmt|;
 try|try
 block|{
@@ -924,20 +922,18 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|newCmdLineParserInstance (Object bean)
+comment|/** Construct a new parser for this command's received command line. */
+DECL|method|newCmdLineParser ()
 specifier|protected
 name|CmdLineParser
-name|newCmdLineParserInstance
-parameter_list|(
-name|Object
-name|bean
-parameter_list|)
+name|newCmdLineParser
+parameter_list|()
 block|{
 return|return
 operator|new
 name|CmdLineParser
 argument_list|(
-name|bean
+name|this
 argument_list|)
 return|;
 block|}

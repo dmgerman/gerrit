@@ -514,24 +514,23 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|newCmdLineParserInstance (final Object bean)
+annotation|@
+name|Override
+DECL|method|newCmdLineParser ()
 specifier|protected
 specifier|final
 name|CmdLineParser
-name|newCmdLineParserInstance
-parameter_list|(
-specifier|final
-name|Object
-name|bean
-parameter_list|)
+name|newCmdLineParser
+parameter_list|()
 block|{
+specifier|final
 name|CmdLineParser
 name|parser
 init|=
 operator|new
 name|CmdLineParser
 argument_list|(
-name|bean
+name|this
 argument_list|)
 decl_stmt|;
 for|for
