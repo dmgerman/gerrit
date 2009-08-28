@@ -436,6 +436,15 @@ name|exit
 decl_stmt|;
 annotation|@
 name|Inject
+DECL|field|cmdLineParserFactory
+specifier|private
+name|CmdLineParser
+operator|.
+name|Factory
+name|cmdLineParserFactory
+decl_stmt|;
+annotation|@
+name|Inject
 DECL|field|cleanup
 specifier|private
 name|RequestCleanup
@@ -930,8 +939,9 @@ name|newCmdLineParser
 parameter_list|()
 block|{
 return|return
-operator|new
-name|CmdLineParser
+name|cmdLineParserFactory
+operator|.
+name|create
 argument_list|(
 name|this
 argument_list|)
