@@ -1168,9 +1168,12 @@ operator|.
 name|NameKey
 name|projectKey
 init|=
-name|branchKey
+name|changeDetail
 operator|.
-name|getParentKey
+name|getChange
+argument_list|()
+operator|.
+name|getProject
 argument_list|()
 decl_stmt|;
 specifier|final

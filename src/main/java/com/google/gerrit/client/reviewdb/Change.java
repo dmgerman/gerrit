@@ -1135,6 +1135,24 @@ block|}
 end_function
 
 begin_function
+DECL|method|getProject ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|dest
+operator|.
+name|getParentKey
+argument_list|()
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|getSubject ()
 specifier|public
 name|String

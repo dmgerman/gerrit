@@ -668,9 +668,9 @@ argument_list|,
 operator|new
 name|ProjectOpenLink
 argument_list|(
-name|dst
+name|chg
 operator|.
-name|getParentKey
+name|getProject
 argument_list|()
 argument_list|)
 argument_list|)

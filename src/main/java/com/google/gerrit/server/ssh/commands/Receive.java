@@ -4016,10 +4016,7 @@ name|equals
 argument_list|(
 name|changeEnt
 operator|.
-name|getDest
-argument_list|()
-operator|.
-name|getParentKey
+name|getProject
 argument_list|()
 argument_list|)
 condition|)

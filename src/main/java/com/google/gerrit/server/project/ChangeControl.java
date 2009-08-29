@@ -337,10 +337,7 @@ name|projectKey
 init|=
 name|change
 operator|.
-name|getDest
-argument_list|()
-operator|.
-name|getParentKey
+name|getProject
 argument_list|()
 decl_stmt|;
 return|return

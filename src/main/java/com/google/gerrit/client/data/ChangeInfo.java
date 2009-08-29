@@ -228,10 +228,7 @@ name|ProjectInfo
 argument_list|(
 name|c
 operator|.
-name|getDest
-argument_list|()
-operator|.
-name|getParentKey
+name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;

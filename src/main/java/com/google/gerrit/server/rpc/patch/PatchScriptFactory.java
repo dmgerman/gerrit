@@ -945,10 +945,7 @@ name|projectKey
 operator|=
 name|change
 operator|.
-name|getDest
-argument_list|()
-operator|.
-name|getParentKey
+name|getProject
 argument_list|()
 expr_stmt|;
 try|try

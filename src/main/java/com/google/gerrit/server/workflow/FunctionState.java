@@ -676,10 +676,7 @@ name|get
 argument_list|(
 name|change
 operator|.
-name|getDest
-argument_list|()
-operator|.
-name|getParentKey
+name|getProject
 argument_list|()
 argument_list|)
 expr_stmt|;
