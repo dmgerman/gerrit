@@ -526,15 +526,6 @@ return|return
 name|parser
 return|;
 block|}
-DECL|field|CMD_ERR
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|CMD_ERR
-init|=
-literal|3
-decl_stmt|;
 annotation|@
 name|Argument
 argument_list|(
@@ -707,12 +698,13 @@ literal|null
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|error
 argument_list|(
-name|CMD_ERR
-argument_list|,
-literal|"Invalid patchset id"
+literal|""
+operator|+
+name|patchSetId
+operator|+
+literal|" no such patch set"
 argument_list|)
 throw|;
 block|}
@@ -762,12 +754,13 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|error
 argument_list|(
-name|CMD_ERR
-argument_list|,
-literal|"Change is closed."
+literal|"change "
+operator|+
+name|cid
+operator|+
+literal|" is closed"
 argument_list|)
 throw|;
 block|}
@@ -1331,11 +1324,8 @@ argument_list|()
 condition|)
 block|{
 throw|throw
-operator|new
-name|UnloggedFailure
+name|error
 argument_list|(
-name|CMD_ERR
-argument_list|,
 name|co
 operator|.
 name|name
@@ -1550,6 +1540,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|error (final String msg)
+specifier|private
+specifier|static
+name|UnloggedFailure
+name|error
+parameter_list|(
+specifier|final
+name|String
+name|msg
+parameter_list|)
+block|{
+return|return
+operator|new
+name|UnloggedFailure
+argument_list|(
+literal|1
+argument_list|,
+name|msg
+argument_list|)
+return|;
 block|}
 block|}
 end_class
