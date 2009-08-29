@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.ssh.commands
+DECL|package|com.google.gerrit.server.ssh.args4j
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|commands
+name|args4j
 package|;
 end_package
 
@@ -80,7 +80,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|Account
+name|Project
 import|;
 end_import
 
@@ -94,9 +94,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|project
 operator|.
-name|AccountResolver
+name|NoSuchProjectException
 import|;
 end_import
 
@@ -106,11 +106,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|OrmException
+name|project
+operator|.
+name|ProjectControl
 import|;
 end_import
 
@@ -219,23 +221,23 @@ import|;
 end_import
 
 begin_class
-DECL|class|AccountIdHandler
+DECL|class|ProjectControlHandler
 specifier|public
 class|class
-name|AccountIdHandler
+name|ProjectControlHandler
 extends|extends
 name|OptionHandler
 argument_list|<
-name|Account
-operator|.
-name|Id
+name|ProjectControl
 argument_list|>
 block|{
-DECL|field|accountResolver
+DECL|field|projectControlFactory
 specifier|private
 specifier|final
-name|AccountResolver
-name|accountResolver
+name|ProjectControl
+operator|.
+name|Factory
+name|projectControlFactory
 decl_stmt|;
 annotation|@
 name|SuppressWarnings
@@ -244,13 +246,15 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Inject
-DECL|method|AccountIdHandler (final AccountResolver accountResolver, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|ProjectControlHandler ( final ProjectControl.Factory projectControlFactory, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
 specifier|public
-name|AccountIdHandler
+name|ProjectControlHandler
 parameter_list|(
 specifier|final
-name|AccountResolver
-name|accountResolver
+name|ProjectControl
+operator|.
+name|Factory
+name|projectControlFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -282,9 +286,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|accountResolver
+name|projectControlFactory
 operator|=
-name|accountResolver
+name|projectControlFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -313,57 +317,91 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-specifier|final
-name|Account
-operator|.
-name|Id
-name|accountId
-decl_stmt|;
-try|try
-block|{
-specifier|final
-name|Account
-name|a
+name|String
+name|projectName
 init|=
-name|accountResolver
-operator|.
-name|find
-argument_list|(
 name|token
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|a
-operator|==
-literal|null
+name|projectName
+operator|.
+name|endsWith
+argument_list|(
+literal|".git"
+argument_list|)
 condition|)
 block|{
-throw|throw
-operator|new
-name|CmdLineException
-argument_list|(
-name|owner
-argument_list|,
-literal|"\""
-operator|+
-name|token
-operator|+
-literal|"\" is not registered"
-argument_list|)
-throw|;
-block|}
-name|accountId
+comment|// Be nice and drop the trailing ".git" suffix, which we never keep
+comment|// in our database, but clients might mistakenly provide anyway.
+comment|//
+name|projectName
 operator|=
-name|a
+name|projectName
 operator|.
-name|getId
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|projectName
+operator|.
+name|length
 argument_list|()
+operator|-
+literal|4
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|projectName
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+comment|// Be nice and drop the leading "/" if supplied by an absolute path.
+comment|// We don't have a file system hierarchy, just a flat namespace in
+comment|// the database's Project entities. We never encode these with a
+comment|// leading '/' but users might accidentally include them in Git URLs.
+comment|//
+name|projectName
+operator|=
+name|projectName
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+specifier|final
+name|ProjectControl
+name|control
+decl_stmt|;
+try|try
+block|{
+name|control
+operator|=
+name|projectControlFactory
+operator|.
+name|validateFor
+argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+name|projectName
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|NoSuchProjectException
 name|e
 parameter_list|)
 block|{
@@ -373,7 +411,11 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"database is down"
+literal|"'"
+operator|+
+name|token
+operator|+
+literal|"': not a Gerrit project"
 argument_list|)
 throw|;
 block|}
@@ -381,7 +423,7 @@ name|setter
 operator|.
 name|addValue
 argument_list|(
-name|accountId
+name|control
 argument_list|)
 expr_stmt|;
 return|return
@@ -398,7 +440,7 @@ name|getDefaultMetaVariable
 parameter_list|()
 block|{
 return|return
-literal|"EMAIL"
+literal|"PROJECT"
 return|;
 block|}
 block|}
