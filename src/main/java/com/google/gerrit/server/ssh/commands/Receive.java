@@ -2101,9 +2101,9 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|projectState
+name|projectControl
 operator|.
-name|controlFor
+name|forUser
 argument_list|(
 name|user
 argument_list|)
@@ -9218,6 +9218,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|canPerform (final ApprovalCategory.Id actionId, final short val)
+specifier|private
+name|boolean
+name|canPerform
+parameter_list|(
+specifier|final
+name|ApprovalCategory
+operator|.
+name|Id
+name|actionId
+parameter_list|,
+specifier|final
+name|short
+name|val
+parameter_list|)
+block|{
+return|return
+name|projectControl
+operator|.
+name|canPerform
+argument_list|(
+name|actionId
+argument_list|,
+name|val
+argument_list|)
+return|;
 block|}
 DECL|method|reject (final ReceiveCommand cmd)
 specifier|private
