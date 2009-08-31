@@ -910,7 +910,7 @@ name|loginType
 operator|=
 name|authConfig
 operator|.
-name|getLoginType
+name|getAuthType
 argument_list|()
 expr_stmt|;
 block|}

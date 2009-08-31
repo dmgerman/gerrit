@@ -248,11 +248,11 @@ specifier|public
 class|class
 name|AuthConfig
 block|{
-DECL|field|loginType
+DECL|field|authType
 specifier|private
 specifier|final
 name|AuthType
-name|loginType
+name|authType
 decl_stmt|;
 DECL|field|httpHeader
 specifier|private
@@ -333,7 +333,7 @@ parameter_list|)
 throws|throws
 name|XsrfException
 block|{
-name|loginType
+name|authType
 operator|=
 name|toType
 argument_list|(
@@ -457,7 +457,7 @@ name|adminGroupId
 expr_stmt|;
 if|if
 condition|(
-name|loginType
+name|authType
 operator|==
 name|AuthType
 operator|.
@@ -614,14 +614,14 @@ return|;
 block|}
 block|}
 comment|/** Type of user authentication used by this Gerrit server. */
-DECL|method|getLoginType ()
+DECL|method|getAuthType ()
 specifier|public
 name|AuthType
-name|getLoginType
+name|getAuthType
 parameter_list|()
 block|{
 return|return
-name|loginType
+name|authType
 return|;
 block|}
 DECL|method|getLoginHttpHeader ()
@@ -724,7 +724,7 @@ parameter_list|)
 block|{
 switch|switch
 condition|(
-name|getLoginType
+name|getAuthType
 argument_list|()
 condition|)
 block|{
