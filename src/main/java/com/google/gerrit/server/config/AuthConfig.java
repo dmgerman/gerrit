@@ -455,6 +455,15 @@ name|s
 operator|.
 name|adminGroupId
 expr_stmt|;
+if|if
+condition|(
+name|loginType
+operator|==
+name|AuthType
+operator|.
+name|OPENID
+condition|)
+block|{
 name|allowGoogleAccountUpgrade
 operator|=
 name|cfg
@@ -468,6 +477,14 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|allowGoogleAccountUpgrade
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 DECL|method|toTrusted (final Config cfg)
 specifier|private
