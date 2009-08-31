@@ -1744,6 +1744,17 @@ name|String
 name|parentUuid
 parameter_list|)
 block|{
+if|if
+condition|(
+name|line
+operator|<
+literal|1
+condition|)
+block|{
+comment|// Refuse to create an editor before the start of the file.
+comment|//
+return|return;
+block|}
 name|int
 name|row
 init|=
