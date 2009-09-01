@@ -1188,7 +1188,54 @@ parameter_list|)
 block|{
 try|try
 block|{
-specifier|final
+name|Class
+argument_list|<
+name|?
+argument_list|>
+name|type
+init|=
+name|Class
+operator|.
+name|forName
+argument_list|(
+literal|"org.apache.commons.dbcp.BasicDataSource"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|type
+operator|.
+name|isInstance
+argument_list|(
+name|ds
+argument_list|)
+condition|)
+block|{
+name|type
+operator|.
+name|getMethod
+argument_list|(
+literal|"close"
+argument_list|)
+operator|.
+name|invoke
+argument_list|(
+name|ds
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|bad
+parameter_list|)
+block|{
+comment|// Oh well, its not a Commons DBCP pooled connection.
+block|}
+try|try
+block|{
 name|Class
 argument_list|<
 name|?
@@ -1239,8 +1286,7 @@ name|Throwable
 name|bad
 parameter_list|)
 block|{
-comment|// Oh well, its not a c3p0 pooled connection. Too bad its
-comment|// not standardized how "good applications cleanup".
+comment|// Oh well, its not a c3p0 pooled connection.
 block|}
 block|}
 block|}
