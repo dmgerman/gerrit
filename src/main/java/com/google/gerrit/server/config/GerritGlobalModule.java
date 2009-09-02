@@ -638,7 +638,7 @@ name|server
 operator|.
 name|patch
 operator|.
-name|DiffCache
+name|PatchListCache
 import|;
 end_import
 
@@ -1065,7 +1065,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|DiffCache
+name|GroupCache
 operator|.
 name|module
 argument_list|()
@@ -1073,7 +1073,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|GroupCache
+name|PatchListCache
 operator|.
 name|module
 argument_list|()

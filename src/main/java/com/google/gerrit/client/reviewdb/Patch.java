@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|CodedEnum
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -283,6 +299,8 @@ specifier|public
 specifier|static
 enum|enum
 name|ChangeType
+implements|implements
+name|CodedEnum
 block|{
 comment|/** Path is being created/introduced by this patch. */
 DECL|enumConstant|ADDED
@@ -397,22 +415,24 @@ specifier|public
 specifier|static
 enum|enum
 name|PatchType
+implements|implements
+name|CodedEnum
 block|{
-comment|/**      * A textual difference between two versions.      *       *<p>      * A UNIFIED patch can be rendered in multiple ways. Most commonly, it is      * rendered as a side by side display using two columns, left column for the      * old version, right column for the new version. A UNIFIED patch can also      * be formatted in a number of standard "patch script" styles, but typically      * is formatted in the POSIX standard unified diff format.      *       *<p>      * Usually Gerrit renders a UNIFIED patch in a      * {@link com.google.gerrit.client.patches.PatchScreen.SideBySide} view,      * presenting the file in two columns. If the user chooses, a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} is also a      * valid display method.      * */
+comment|/**      * A textual difference between two versions.      *      *<p>      * A UNIFIED patch can be rendered in multiple ways. Most commonly, it is      * rendered as a side by side display using two columns, left column for the      * old version, right column for the new version. A UNIFIED patch can also      * be formatted in a number of standard "patch script" styles, but typically      * is formatted in the POSIX standard unified diff format.      *      *<p>      * Usually Gerrit renders a UNIFIED patch in a      * {@link com.google.gerrit.client.patches.PatchScreen.SideBySide} view,      * presenting the file in two columns. If the user chooses, a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} is also a      * valid display method.      * */
 DECL|enumConstant|UNIFIED
 name|UNIFIED
 argument_list|(
 literal|'U'
 argument_list|)
 block|,
-comment|/**      * Difference of two (or more) binary contents.      *       *<p>      * A BINARY patch cannot be viewed in a text display, as it represents a      * change in binary content at the associated path, for example, an image      * file has been replaced with a different image.      *       *<p>      * Gerrit can only render a BINARY file in a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} view, as the      * only information it can display is the old and new file content hashes.      */
+comment|/**      * Difference of two (or more) binary contents.      *      *<p>      * A BINARY patch cannot be viewed in a text display, as it represents a      * change in binary content at the associated path, for example, an image      * file has been replaced with a different image.      *      *<p>      * Gerrit can only render a BINARY file in a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} view, as the      * only information it can display is the old and new file content hashes.      */
 DECL|enumConstant|BINARY
 name|BINARY
 argument_list|(
 literal|'B'
 argument_list|)
 block|,
-comment|/**      * Difference of three or more textual contents.      *       *<p>      * Git can produce an n-way unified diff, showing how a merge conflict was      * resolved when two or more conflicting branches were merged together in a      * single merge commit.      *       *<p>      * This type of patch can only appear if there are two or more      * {@link PatchSetAncestor} entities for the same parent {@link PatchSet},      * as that denotes that the patch set is a merge commit.      *       *<p>      * Gerrit can only render an N_WAY file in a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} view, as it      * does not have code to split the n-way unified diff into multiple edit      * lists, one per pre-image. However, a logical way to display this format      * would be an n-way table, with n+1 columns displayed (n pre-images, +1      * post-image).      */
+comment|/**      * Difference of three or more textual contents.      *      *<p>      * Git can produce an n-way unified diff, showing how a merge conflict was      * resolved when two or more conflicting branches were merged together in a      * single merge commit.      *      *<p>      * This type of patch can only appear if there are two or more      * {@link PatchSetAncestor} entities for the same parent {@link PatchSet},      * as that denotes that the patch set is a merge commit.      *      *<p>      * Gerrit can only render an N_WAY file in a      * {@link com.google.gerrit.client.patches.PatchScreen.Unified} view, as it      * does not have code to split the n-way unified diff into multiple edit      * lists, one per pre-image. However, a logical way to display this format      * would be an n-way table, with n+1 columns displayed (n pre-images, +1      * post-image).      */
 DECL|enumConstant|N_WAY
 name|N_WAY
 argument_list|(
@@ -491,39 +511,24 @@ literal|null
 return|;
 block|}
 block|}
-annotation|@
-name|Column
-argument_list|(
-name|name
-operator|=
-name|Column
-operator|.
-name|NONE
-argument_list|)
 DECL|field|key
 specifier|protected
 name|Key
 name|key
 decl_stmt|;
 comment|/** What sort of change is this to the path; see {@link ChangeType}. */
-annotation|@
-name|Column
 DECL|field|changeType
 specifier|protected
 name|char
 name|changeType
 decl_stmt|;
 comment|/** What type of patch is this; see {@link PatchType}. */
-annotation|@
-name|Column
 DECL|field|patchType
 specifier|protected
 name|char
 name|patchType
 decl_stmt|;
 comment|/** Number of published comments on this patch. */
-annotation|@
-name|Column
 DECL|field|nbrComments
 specifier|protected
 name|int
@@ -536,13 +541,6 @@ name|int
 name|nbrDrafts
 decl_stmt|;
 comment|/**    * Original if {@link #changeType} is {@link ChangeType#COPIED} or    * {@link ChangeType#RENAMED}.    */
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
 DECL|field|sourceFileName
 specifier|protected
 name|String

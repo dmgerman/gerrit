@@ -232,6 +232,32 @@ literal|"WHERE key.patchKey.patchSetId = ? AND status = '"
 operator|+
 name|PatchLineComment
 operator|.
+name|STATUS_PUBLISHED
+operator|+
+literal|"'"
+argument_list|)
+DECL|method|published (PatchSet.Id patchset)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|published
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchset
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.patchKey.patchSetId = ? AND status = '"
+operator|+
+name|PatchLineComment
+operator|.
 name|STATUS_DRAFT
 operator|+
 literal|"' AND author = ? ORDER BY key.patchKey,lineNbr,writtenOn"
