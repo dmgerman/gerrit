@@ -141,16 +141,13 @@ name|getNewName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// I'm not sure why JGit is calling this binary, it may be because
-comment|// there are no edits on the file, which is fine.
-comment|//
 name|assertSame
 argument_list|(
 name|Patch
 operator|.
 name|PatchType
 operator|.
-name|BINARY
+name|UNIFIED
 argument_list|,
 name|e
 operator|.
@@ -169,14 +166,6 @@ argument_list|,
 name|e
 operator|.
 name|getChangeType
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-name|e
-operator|.
-name|getFileHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
