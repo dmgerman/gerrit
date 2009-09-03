@@ -175,6 +175,11 @@ name|String
 name|headingSubmitType
 parameter_list|()
 function_decl|;
+DECL|method|headingGroupProperties ()
+name|String
+name|headingGroupProperties
+parameter_list|()
+function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
