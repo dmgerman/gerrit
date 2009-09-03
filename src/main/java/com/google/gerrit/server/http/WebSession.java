@@ -80,7 +80,7 @@ name|cache
 operator|.
 name|NamedCacheBinding
 operator|.
-name|INFINITE
+name|INFINITE_TIME
 import|;
 end_import
 
@@ -185,6 +185,22 @@ operator|.
 name|cache
 operator|.
 name|CacheModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
+name|EvictionPolicy
 import|;
 end_import
 
@@ -385,6 +401,13 @@ name|type
 argument_list|,
 name|cacheName
 argument_list|)
+comment|//
+operator|.
+name|memoryLimit
+argument_list|(
+literal|1024
+argument_list|)
+comment|// reasonable default for many sites
 operator|.
 name|timeToIdle
 argument_list|(
@@ -392,13 +415,23 @@ literal|12
 argument_list|,
 name|HOURS
 argument_list|)
+comment|// expire sessions if they are inactive
 operator|.
 name|timeToLive
 argument_list|(
-name|INFINITE
+name|INFINITE_TIME
 argument_list|,
 name|HOURS
 argument_list|)
+comment|// never expire a live session
+operator|.
+name|evictionPolicy
+argument_list|(
+name|EvictionPolicy
+operator|.
+name|LRU
+argument_list|)
+comment|// keep most recently used
 expr_stmt|;
 name|bind
 argument_list|(

@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -166,20 +180,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|MINUTES
-import|;
-end_import
-
 begin_comment
 comment|/** Servlets and RPC support related to OpenID authentication. */
 end_comment
@@ -206,6 +206,11 @@ operator|new
 name|CacheModule
 argument_list|()
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 annotation|@
 name|Override
 specifier|protected
@@ -244,6 +249,7 @@ name|type
 argument_list|,
 literal|"openid"
 argument_list|)
+comment|//
 operator|.
 name|timeToIdle
 argument_list|(
@@ -251,6 +257,7 @@ literal|5
 argument_list|,
 name|MINUTES
 argument_list|)
+comment|// don't cache too long, might be stale
 operator|.
 name|timeToLive
 argument_list|(
@@ -258,6 +265,13 @@ literal|5
 argument_list|,
 name|MINUTES
 argument_list|)
+comment|//
+operator|.
+name|memoryLimit
+argument_list|(
+literal|64
+argument_list|)
+comment|// short TTL means we won't have many entries
 expr_stmt|;
 block|}
 block|}

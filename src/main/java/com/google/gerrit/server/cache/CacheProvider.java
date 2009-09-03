@@ -157,19 +157,42 @@ specifier|final
 name|boolean
 name|disk
 decl_stmt|;
+DECL|field|memoryLimit
+specifier|private
+name|int
+name|memoryLimit
+init|=
+literal|1024
+decl_stmt|;
+DECL|field|diskLimit
+specifier|private
+name|int
+name|diskLimit
+init|=
+literal|16384
+decl_stmt|;
 DECL|field|timeToIdle
 specifier|private
 name|long
 name|timeToIdle
 init|=
-name|DEFAULT
+name|DEFAULT_TIME
 decl_stmt|;
 DECL|field|timeToLive
 specifier|private
 name|long
 name|timeToLive
 init|=
-name|DEFAULT
+name|DEFAULT_TIME
+decl_stmt|;
+DECL|field|evictionPolicy
+specifier|private
+name|EvictionPolicy
+name|evictionPolicy
+init|=
+name|EvictionPolicy
+operator|.
+name|LFU
 decl_stmt|;
 DECL|field|cacheName
 specifier|private
@@ -269,6 +292,24 @@ return|return
 name|disk
 return|;
 block|}
+DECL|method|memoryLimit ()
+name|int
+name|memoryLimit
+parameter_list|()
+block|{
+return|return
+name|memoryLimit
+return|;
+block|}
+DECL|method|diskLimit ()
+name|int
+name|diskLimit
+parameter_list|()
+block|{
+return|return
+name|diskLimit
+return|;
+block|}
 DECL|method|timeToIdle ()
 name|long
 name|timeToIdle
@@ -285,6 +326,15 @@ parameter_list|()
 block|{
 return|return
 name|timeToLive
+return|;
+block|}
+DECL|method|evictionPolicy ()
+name|EvictionPolicy
+name|evictionPolicy
+parameter_list|()
+block|{
+return|return
+name|evictionPolicy
 return|;
 block|}
 DECL|method|name (final String name)
@@ -315,6 +365,60 @@ block|}
 name|cacheName
 operator|=
 name|name
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|memoryLimit (final int objects)
+specifier|public
+name|NamedCacheBinding
+name|memoryLimit
+parameter_list|(
+specifier|final
+name|int
+name|objects
+parameter_list|)
+block|{
+name|memoryLimit
+operator|=
+name|objects
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|diskLimit (final int objects)
+specifier|public
+name|NamedCacheBinding
+name|diskLimit
+parameter_list|(
+specifier|final
+name|int
+name|objects
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|disk
+condition|)
+block|{
+comment|// TODO This should really be a compile time type error, but I'm
+comment|// too lazy to create the mess of permutations required to setup
+comment|// type safe returns for bindings in our little DSL.
+comment|//
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Cache is not disk based"
+argument_list|)
+throw|;
+block|}
+name|diskLimit
+operator|=
+name|objects
 expr_stmt|;
 return|return
 name|this
@@ -407,6 +511,26 @@ name|duration
 argument_list|,
 name|unit
 argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|evictionPolicy (final EvictionPolicy policy)
+specifier|public
+name|NamedCacheBinding
+name|evictionPolicy
+parameter_list|(
+specifier|final
+name|EvictionPolicy
+name|policy
+parameter_list|)
+block|{
+name|evictionPolicy
+operator|=
+name|policy
 expr_stmt|;
 return|return
 name|this

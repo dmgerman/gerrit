@@ -88,25 +88,45 @@ specifier|public
 interface|interface
 name|NamedCacheBinding
 block|{
-DECL|field|INFINITE
+DECL|field|INFINITE_TIME
 specifier|public
 specifier|static
 specifier|final
 name|long
-name|INFINITE
+name|INFINITE_TIME
 init|=
 literal|0L
 decl_stmt|;
-DECL|field|DEFAULT
+DECL|field|DEFAULT_TIME
 specifier|public
 specifier|static
 specifier|final
 name|long
-name|DEFAULT
+name|DEFAULT_TIME
 init|=
 operator|-
 literal|1L
 decl_stmt|;
+comment|/** Set the number of objects to cache in memory. */
+DECL|method|memoryLimit (int objects)
+specifier|public
+name|NamedCacheBinding
+name|memoryLimit
+parameter_list|(
+name|int
+name|objects
+parameter_list|)
+function_decl|;
+comment|/** Set the number of objects to cache in memory. */
+DECL|method|diskLimit (int objects)
+specifier|public
+name|NamedCacheBinding
+name|diskLimit
+parameter_list|(
+name|int
+name|objects
+parameter_list|)
+function_decl|;
 comment|/** Set the time an element lives without access before being expired. */
 DECL|method|timeToIdle (long duration, TimeUnit durationUnits)
 specifier|public
@@ -131,6 +151,16 @@ name|duration
 parameter_list|,
 name|TimeUnit
 name|durationUnits
+parameter_list|)
+function_decl|;
+comment|/** Set the eviction policy for elements when the cache is full. */
+DECL|method|evictionPolicy (EvictionPolicy policy)
+specifier|public
+name|NamedCacheBinding
+name|evictionPolicy
+parameter_list|(
+name|EvictionPolicy
+name|policy
 parameter_list|)
 function_decl|;
 block|}

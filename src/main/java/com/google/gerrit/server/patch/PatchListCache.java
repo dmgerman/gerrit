@@ -210,6 +210,22 @@ name|server
 operator|.
 name|cache
 operator|.
+name|EvictionPolicy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|cache
+operator|.
 name|SelfPopulatingCache
 import|;
 end_import
@@ -499,6 +515,21 @@ name|type
 argument_list|,
 name|CACHE_NAME
 argument_list|)
+comment|//
+operator|.
+name|memoryLimit
+argument_list|(
+literal|128
+argument_list|)
+comment|// very large items, cache only a few
+operator|.
+name|evictionPolicy
+argument_list|(
+name|EvictionPolicy
+operator|.
+name|LRU
+argument_list|)
+comment|// prefer most recent
 expr_stmt|;
 name|bind
 argument_list|(
