@@ -461,12 +461,6 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|projectCache
-specifier|private
-specifier|final
-name|ProjectCache
-name|projectCache
-decl_stmt|;
 DECL|field|approvals
 specifier|private
 specifier|final
@@ -578,7 +572,7 @@ argument_list|>
 argument_list|>
 name|projectRights
 decl_stmt|;
-DECL|field|wildcardRights
+DECL|field|inheritedRights
 specifier|private
 name|Map
 argument_list|<
@@ -591,7 +585,7 @@ argument_list|<
 name|ProjectRight
 argument_list|>
 argument_list|>
-name|wildcardRights
+name|inheritedRights
 decl_stmt|;
 DECL|field|modified
 specifier|private
@@ -603,7 +597,7 @@ name|modified
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ApprovalTypes approvalTypes, final ProjectCache pc, final IdentifiedUser.GenericFactory userFactory, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
+DECL|method|FunctionState (final ApprovalTypes approvalTypes, final ProjectCache projectCache, final IdentifiedUser.GenericFactory userFactory, final GroupCache egc, @Assisted final Change c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
 specifier|final
@@ -612,7 +606,7 @@ name|approvalTypes
 parameter_list|,
 specifier|final
 name|ProjectCache
-name|pc
+name|projectCache
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -659,10 +653,6 @@ operator|.
 name|userFactory
 operator|=
 name|userFactory
-expr_stmt|;
-name|projectCache
-operator|=
-name|pc
 expr_stmt|;
 name|change
 operator|=
@@ -1054,7 +1044,7 @@ name|index
 argument_list|(
 name|project
 operator|.
-name|getRights
+name|getLocalRights
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1129,18 +1119,18 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|wildcardRights
+name|inheritedRights
 operator|==
 literal|null
 condition|)
 block|{
-name|wildcardRights
+name|inheritedRights
 operator|=
 name|index
 argument_list|(
-name|projectCache
+name|project
 operator|.
-name|getWildcardRights
+name|getInheritedRights
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1152,7 +1142,7 @@ name|ProjectRight
 argument_list|>
 name|l
 init|=
-name|wildcardRights
+name|inheritedRights
 operator|.
 name|get
 argument_list|(

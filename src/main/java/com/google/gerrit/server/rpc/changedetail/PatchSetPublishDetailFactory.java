@@ -1035,7 +1035,7 @@ name|am
 argument_list|,
 name|pe
 operator|.
-name|getRights
+name|getLocalRights
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1043,9 +1043,9 @@ name|computeAllowed
 argument_list|(
 name|am
 argument_list|,
-name|projectCache
+name|pe
 operator|.
-name|getWildcardRights
+name|getInheritedRights
 argument_list|()
 argument_list|)
 expr_stmt|;

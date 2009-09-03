@@ -384,6 +384,13 @@ specifier|final
 name|AnonymousUser
 name|anonymousUser
 decl_stmt|;
+DECL|field|wildProject
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|wildProject
+decl_stmt|;
 DECL|field|schema
 specifier|private
 specifier|final
@@ -392,14 +399,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
-decl_stmt|;
-DECL|field|wildProject
-specifier|private
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|wildProject
 decl_stmt|;
 DECL|field|byName
 specifier|private
@@ -577,7 +576,6 @@ block|}
 block|}
 comment|/** Get the rights which are applied to all projects in the system. */
 DECL|method|getWildcardRights ()
-specifier|public
 name|Collection
 argument_list|<
 name|ProjectRight
@@ -591,7 +589,7 @@ argument_list|(
 name|wildProject
 argument_list|)
 operator|.
-name|getRights
+name|getLocalRights
 argument_list|()
 return|;
 block|}

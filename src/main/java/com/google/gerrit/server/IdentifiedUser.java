@@ -504,6 +504,10 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
+name|AccessPath
+operator|.
+name|UNKNOWN
+argument_list|,
 name|authConfig
 argument_list|,
 name|accountCache
@@ -629,11 +633,15 @@ operator|=
 name|dbProvider
 expr_stmt|;
 block|}
-DECL|method|create (final Account.Id id)
+DECL|method|create (final AccessPath accessPath, final Account.Id id)
 specifier|public
 name|IdentifiedUser
 name|create
 parameter_list|(
+specifier|final
+name|AccessPath
+name|accessPath
+parameter_list|,
 specifier|final
 name|Account
 operator|.
@@ -645,6 +653,8 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
+name|accessPath
+argument_list|,
 name|authConfig
 argument_list|,
 name|accountCache
@@ -751,10 +761,14 @@ name|Id
 argument_list|>
 name|starredChanges
 decl_stmt|;
-DECL|method|IdentifiedUser (final AuthConfig authConfig, final AccountCache accountCache, final Realm realm, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
+DECL|method|IdentifiedUser (final AccessPath accessPath, final AuthConfig authConfig, final AccountCache accountCache, final Realm realm, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
+specifier|final
+name|AccessPath
+name|accessPath
+parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
@@ -794,6 +808,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|accessPath
+argument_list|,
 name|authConfig
 argument_list|)
 expr_stmt|;

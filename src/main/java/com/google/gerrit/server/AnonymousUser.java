@@ -182,6 +182,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|AccessPath
+operator|.
+name|UNKNOWN
+argument_list|,
 name|auth
 argument_list|)
 expr_stmt|;

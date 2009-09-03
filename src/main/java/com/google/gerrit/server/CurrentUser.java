@@ -147,16 +147,26 @@ specifier|abstract
 class|class
 name|CurrentUser
 block|{
+DECL|field|accessPath
+specifier|private
+specifier|final
+name|AccessPath
+name|accessPath
+decl_stmt|;
 DECL|field|authConfig
 specifier|protected
 specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
-DECL|method|CurrentUser (final AuthConfig authConfig)
+DECL|method|CurrentUser (final AccessPath accessPath, final AuthConfig authConfig)
 specifier|protected
 name|CurrentUser
 parameter_list|(
+specifier|final
+name|AccessPath
+name|accessPath
+parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
@@ -164,10 +174,28 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|accessPath
+operator|=
+name|accessPath
+expr_stmt|;
+name|this
+operator|.
 name|authConfig
 operator|=
 name|authConfig
 expr_stmt|;
+block|}
+comment|/** How this user is accessing the Gerrit Code Review application. */
+DECL|method|getAccessPath ()
+specifier|public
+specifier|final
+name|AccessPath
+name|getAccessPath
+parameter_list|()
+block|{
+return|return
+name|accessPath
+return|;
 block|}
 comment|/**    * Get the set of groups the user is currently a member of.    *<p>    * The returned set may be a subset of the user's actual groups; if the user's    * account is currently deemed to be untrusted then the effective group set is    * only the anonymous and registered user groups. To enable additional groups    * (and gain their granted permissions) the user must update their account to    * use only trusted authentication providers.    *    * @return active groups for this user.    */
 DECL|method|getEffectiveGroups ()

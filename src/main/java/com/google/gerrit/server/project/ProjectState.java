@@ -386,17 +386,69 @@ return|return
 name|project
 return|;
 block|}
-DECL|method|getRights ()
+comment|/** Get the rights that pertain only to this project. */
+DECL|method|getLocalRights ()
 specifier|public
 name|Collection
 argument_list|<
 name|ProjectRight
 argument_list|>
-name|getRights
+name|getLocalRights
 parameter_list|()
 block|{
 return|return
 name|rights
+return|;
+block|}
+comment|/** Get the rights this project inherits from the wild project. */
+DECL|method|getInheritedRights ()
+specifier|public
+name|Collection
+argument_list|<
+name|ProjectRight
+argument_list|>
+name|getInheritedRights
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isSpecialWildProject
+argument_list|()
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
+return|return
+name|projectCache
+operator|.
+name|getWildcardRights
+argument_list|()
+return|;
+block|}
+comment|/** Is this the special wild project which manages inherited rights? */
+DECL|method|isSpecialWildProject ()
+specifier|public
+name|boolean
+name|isSpecialWildProject
+parameter_list|()
+block|{
+return|return
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|projectCache
+operator|.
+name|wildProject
+argument_list|)
 return|;
 block|}
 DECL|method|getOwners ()
