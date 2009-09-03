@@ -616,6 +616,15 @@ name|SETTINGS_WEBIDENT
 init|=
 literal|"settings,web-identities"
 decl_stmt|;
+DECL|field|SETTINGS_MYGROUPS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_MYGROUPS
+init|=
+literal|"settings,group-memberships"
+decl_stmt|;
 DECL|field|SETTINGS_AGREEMENTS
 specifier|public
 specifier|static

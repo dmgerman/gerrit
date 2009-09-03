@@ -165,6 +165,11 @@ name|String
 name|tabWebIdentities
 parameter_list|()
 function_decl|;
+DECL|method|tabMyGroups ()
+name|String
+name|tabMyGroups
+parameter_list|()
+function_decl|;
 DECL|method|tabAgreements ()
 name|String
 name|tabAgreements
