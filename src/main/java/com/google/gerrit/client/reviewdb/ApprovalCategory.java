@@ -345,7 +345,7 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
-comment|/** True if the right can inherit from {@link ProjectRight#WILD_PROJECT_ID}. */
+comment|/** True if the right can inherit from the magical "-- All Projects --". */
 DECL|method|canInheritFromWildProject ()
 specifier|public
 name|boolean
