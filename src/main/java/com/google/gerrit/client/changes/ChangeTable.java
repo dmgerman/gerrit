@@ -78,7 +78,7 @@ name|client
 operator|.
 name|FormatUtil
 operator|.
-name|mediumFormat
+name|shortFormat
 import|;
 end_import
 
@@ -2025,7 +2025,7 @@ name|row
 argument_list|,
 name|C_LAST_UPDATE
 argument_list|,
-name|mediumFormat
+name|shortFormat
 argument_list|(
 name|c
 operator|.
