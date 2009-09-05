@@ -288,6 +288,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|ConfigUtil
 import|;
 end_import
@@ -622,6 +638,12 @@ specifier|final
 name|String
 name|password
 decl_stmt|;
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 DECL|field|schema
 specifier|private
 specifier|final
@@ -721,9 +743,13 @@ name|membershipCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LdapRealm ( final GroupCache groupCache, final EmailExpander emailExpander, final SchemaFactory<ReviewDb> schema, @Named(LdapModule.GROUP_CACHE) final Cache<String, Set<AccountGroup.Id>> rawGroup, @Named(LdapModule.USERNAME_CACHE) final Cache<String, Account.Id> rawUsername, @GerritServerConfig final Config config)
+DECL|method|LdapRealm ( final AuthConfig authConfig, final GroupCache groupCache, final EmailExpander emailExpander, final SchemaFactory<ReviewDb> schema, @Named(LdapModule.GROUP_CACHE) final Cache<String, Set<AccountGroup.Id>> rawGroup, @Named(LdapModule.USERNAME_CACHE) final Cache<String, Account.Id> rawUsername, @GerritServerConfig final Config config)
 name|LdapRealm
 parameter_list|(
+specifier|final
+name|AuthConfig
+name|authConfig
+parameter_list|,
 specifier|final
 name|GroupCache
 name|groupCache
@@ -785,6 +811,12 @@ name|Config
 name|config
 parameter_list|)
 block|{
+name|this
+operator|.
+name|authConfig
+operator|=
+name|authConfig
+expr_stmt|;
 name|this
 operator|.
 name|groupCache
@@ -2151,6 +2183,20 @@ name|group
 operator|.
 name|isAutomaticMembership
 argument_list|()
+operator|&&
+operator|!
+name|authConfig
+operator|.
+name|getRegisteredGroups
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|group
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|findId (final Collection<AccountExternalId> ids)
