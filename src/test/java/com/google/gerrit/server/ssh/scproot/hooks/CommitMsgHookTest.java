@@ -1154,6 +1154,62 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testCommitDashV ()
+specifier|public
+name|void
+name|testCommitDashV
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I7fc3876fee63c766a2063df97fbe04a2dddd8d7c\n"
+operator|+
+comment|//
+name|SOB1
+operator|+
+comment|//
+name|SOB2
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+name|SOB1
+operator|+
+comment|//
+name|SOB2
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"# on branch master\n"
+operator|+
+comment|//
+literal|"diff --git a/src b/src\n"
+operator|+
+comment|//
+literal|"new file mode 100644\n"
+operator|+
+comment|//
+literal|"index 0000000..c78b7f0\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|hookDoesNotModify (final String in)
 specifier|private
 name|void
