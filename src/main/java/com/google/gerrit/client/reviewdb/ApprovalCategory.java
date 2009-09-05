@@ -392,6 +392,23 @@ specifier|protected
 name|String
 name|name
 decl_stmt|;
+comment|/** Abbreviated form of {@link #name} for display in very wide tables. */
+annotation|@
+name|Column
+argument_list|(
+name|length
+operator|=
+literal|4
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|abbreviatedName
+specifier|protected
+name|String
+name|abbreviatedName
+decl_stmt|;
 comment|/**    * Order of this category within the Approvals table when presented.    *<p>    * If< 0 (e.g. -1) this category is not shown in the Approvals table but is    * instead considered to be an action that the user might be able to perform,    * e.g. "Submit".    *<p>    * If>= 0 this category is shown in the Approvals table, sorted along with    * its siblings by<code>position, name</code>.    */
 annotation|@
 name|Column
@@ -480,6 +497,31 @@ name|n
 parameter_list|)
 block|{
 name|name
+operator|=
+name|n
+expr_stmt|;
+block|}
+DECL|method|getAbbreviatedName ()
+specifier|public
+name|String
+name|getAbbreviatedName
+parameter_list|()
+block|{
+return|return
+name|abbreviatedName
+return|;
+block|}
+DECL|method|setAbbreviatedName (final String n)
+specifier|public
+name|void
+name|setAbbreviatedName
+parameter_list|(
+specifier|final
+name|String
+name|n
+parameter_list|)
+block|{
+name|abbreviatedName
 operator|=
 name|n
 expr_stmt|;

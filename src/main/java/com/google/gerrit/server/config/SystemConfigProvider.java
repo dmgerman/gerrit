@@ -1211,6 +1211,13 @@ operator|)
 literal|0
 argument_list|)
 expr_stmt|;
+name|cat
+operator|.
+name|setAbbreviatedName
+argument_list|(
+literal|"V"
+argument_list|)
+expr_stmt|;
 name|vals
 operator|=
 operator|new
@@ -1358,6 +1365,13 @@ operator|(
 name|short
 operator|)
 literal|1
+argument_list|)
+expr_stmt|;
+name|cat
+operator|.
+name|setAbbreviatedName
+argument_list|(
+literal|"R"
 argument_list|)
 expr_stmt|;
 name|vals
