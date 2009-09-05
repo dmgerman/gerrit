@@ -425,6 +425,14 @@ specifier|protected
 name|String
 name|functionName
 decl_stmt|;
+comment|/** If set, the minimum score is copied during patch set replacement. */
+annotation|@
+name|Column
+DECL|field|copyMinScore
+specifier|protected
+name|boolean
+name|copyMinScore
+decl_stmt|;
 DECL|method|ApprovalCategory ()
 specifier|protected
 name|ApprovalCategory
@@ -586,6 +594,31 @@ block|{
 name|functionName
 operator|=
 name|name
+expr_stmt|;
+block|}
+DECL|method|isCopyMinScore ()
+specifier|public
+name|boolean
+name|isCopyMinScore
+parameter_list|()
+block|{
+return|return
+name|copyMinScore
+return|;
+block|}
+DECL|method|setCopyMinScore (final boolean copy)
+specifier|public
+name|void
+name|setCopyMinScore
+parameter_list|(
+specifier|final
+name|boolean
+name|copy
+parameter_list|)
+block|{
+name|copyMinScore
+operator|=
+name|copy
 expr_stmt|;
 block|}
 block|}

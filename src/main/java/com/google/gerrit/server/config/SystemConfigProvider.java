@@ -1374,6 +1374,13 @@ argument_list|(
 literal|"R"
 argument_list|)
 expr_stmt|;
+name|cat
+operator|.
+name|setCopyMinScore
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|vals
 operator|=
 operator|new
