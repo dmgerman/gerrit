@@ -297,14 +297,7 @@ argument_list|,
 name|GROUP_CACHE
 argument_list|)
 operator|.
-name|timeToIdle
-argument_list|(
-literal|1
-argument_list|,
-name|HOURS
-argument_list|)
-operator|.
-name|timeToLive
+name|maxAge
 argument_list|(
 literal|1
 argument_list|,

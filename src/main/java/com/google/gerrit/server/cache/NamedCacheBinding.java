@@ -88,25 +88,6 @@ specifier|public
 interface|interface
 name|NamedCacheBinding
 block|{
-DECL|field|INFINITE_TIME
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|INFINITE_TIME
-init|=
-literal|0L
-decl_stmt|;
-DECL|field|DEFAULT_TIME
-specifier|public
-specifier|static
-specifier|final
-name|long
-name|DEFAULT_TIME
-init|=
-operator|-
-literal|1L
-decl_stmt|;
 comment|/** Set the number of objects to cache in memory. */
 DECL|method|memoryLimit (int objects)
 specifier|public
@@ -127,24 +108,11 @@ name|int
 name|objects
 parameter_list|)
 function_decl|;
-comment|/** Set the time an element lives without access before being expired. */
-DECL|method|timeToIdle (long duration, TimeUnit durationUnits)
+comment|/** Set the time an element lives before being expired. */
+DECL|method|maxAge (long duration, TimeUnit durationUnits)
 specifier|public
 name|NamedCacheBinding
-name|timeToIdle
-parameter_list|(
-name|long
-name|duration
-parameter_list|,
-name|TimeUnit
-name|durationUnits
-parameter_list|)
-function_decl|;
-comment|/** Set the time an element lives since creation, before being expired. */
-DECL|method|timeToLive (long duration, TimeUnit durationUnits)
-specifier|public
-name|NamedCacheBinding
-name|timeToLive
+name|maxAge
 parameter_list|(
 name|long
 name|duration

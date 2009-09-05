@@ -251,21 +251,13 @@ literal|"openid"
 argument_list|)
 comment|//
 operator|.
-name|timeToIdle
+name|maxAge
 argument_list|(
 literal|5
 argument_list|,
 name|MINUTES
 argument_list|)
 comment|// don't cache too long, might be stale
-operator|.
-name|timeToLive
-argument_list|(
-literal|5
-argument_list|,
-name|MINUTES
-argument_list|)
-comment|//
 operator|.
 name|memoryLimit
 argument_list|(

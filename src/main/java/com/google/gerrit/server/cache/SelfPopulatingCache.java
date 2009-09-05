@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|SECONDS
+import|;
+end_import
+
+begin_import
 import|import
 name|net
 operator|.
@@ -513,10 +527,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getTimeToIdle (final TimeUnit unit)
+DECL|method|getTimeToLive (final TimeUnit unit)
 specifier|public
 name|long
-name|getTimeToIdle
+name|getTimeToLive
 parameter_list|(
 specifier|final
 name|TimeUnit
@@ -525,14 +539,14 @@ parameter_list|)
 block|{
 specifier|final
 name|long
-name|idle
+name|maxAge
 init|=
 name|self
 operator|.
 name|getCacheConfiguration
 argument_list|()
 operator|.
-name|getTimeToIdleSeconds
+name|getTimeToLiveSeconds
 argument_list|()
 decl_stmt|;
 return|return
@@ -540,10 +554,8 @@ name|unit
 operator|.
 name|convert
 argument_list|(
-name|idle
+name|maxAge
 argument_list|,
-name|TimeUnit
-operator|.
 name|SECONDS
 argument_list|)
 return|;

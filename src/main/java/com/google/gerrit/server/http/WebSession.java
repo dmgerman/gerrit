@@ -68,24 +68,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|cache
-operator|.
-name|NamedCacheBinding
-operator|.
-name|INFINITE_TIME
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -423,21 +405,13 @@ literal|1024
 argument_list|)
 comment|// reasonable default for many sites
 operator|.
-name|timeToIdle
+name|maxAge
 argument_list|(
 literal|12
 argument_list|,
 name|HOURS
 argument_list|)
 comment|// expire sessions if they are inactive
-operator|.
-name|timeToLive
-argument_list|(
-name|INFINITE_TIME
-argument_list|,
-name|HOURS
-argument_list|)
-comment|// never expire a live session
 operator|.
 name|evictionPolicy
 argument_list|(
@@ -627,35 +601,29 @@ argument_list|()
 operator|&&
 name|val
 operator|.
-name|refreshCookieAt
-operator|<=
-name|System
-operator|.
-name|currentTimeMillis
+name|needsCookieRefresh
 argument_list|()
 condition|)
 block|{
-comment|// Cookie is more than half old. Send it again to the client with a
-comment|// fresh expiration date.
+comment|// Cookie is more than half old. Send the cookie again to the
+comment|// client with an updated expiration date. We don't dare to
+comment|// change the key token here because there may be other RPCs
+comment|// queued up in the browser whose xsrfKey would not get updated
+comment|// with the new token, causing them to fail.
 comment|//
+name|val
+operator|=
 name|manager
 operator|.
-name|updateRefreshCookieAt
+name|createVal
 argument_list|(
+name|key
+argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
 name|saveCookie
-argument_list|(
-name|key
-operator|.
-name|token
-argument_list|,
-name|val
-operator|.
-name|getCookieAge
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -760,18 +728,19 @@ argument_list|()
 condition|?
 name|key
 operator|.
-name|token
+name|getToken
+argument_list|()
 else|:
 literal|null
 return|;
 block|}
-DECL|method|isTokenValid (final String keyIn)
+DECL|method|isTokenValid (final String inputToken)
 name|boolean
 name|isTokenValid
 parameter_list|(
 specifier|final
 name|String
-name|keyIn
+name|inputToken
 parameter_list|)
 block|{
 return|return
@@ -780,11 +749,12 @@ argument_list|()
 operator|&&
 name|key
 operator|.
-name|token
+name|getToken
+argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|keyIn
+name|inputToken
 argument_list|)
 return|;
 block|}
@@ -810,7 +780,8 @@ name|WEB
 argument_list|,
 name|val
 operator|.
-name|accountId
+name|getAccountId
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -855,57 +826,12 @@ argument_list|(
 name|key
 argument_list|,
 name|id
-argument_list|)
-expr_stmt|;
-specifier|final
-name|int
-name|age
-decl_stmt|;
-if|if
-condition|(
-name|rememberMe
-condition|)
-block|{
-name|manager
-operator|.
-name|updateRefreshCookieAt
-argument_list|(
-name|val
-argument_list|)
-expr_stmt|;
-name|age
-operator|=
-name|val
-operator|.
-name|getCookieAge
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|val
-operator|.
-name|refreshCookieAt
-operator|=
-name|Long
-operator|.
-name|MAX_VALUE
-expr_stmt|;
-name|age
-operator|=
-operator|-
-literal|1
-comment|/* don't store on client disk */
-expr_stmt|;
-block|}
-name|saveCookie
-argument_list|(
-name|key
-operator|.
-name|token
 argument_list|,
-name|age
+name|rememberMe
 argument_list|)
+expr_stmt|;
+name|saveCookie
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|logout ()
@@ -937,29 +863,60 @@ operator|=
 literal|null
 expr_stmt|;
 name|saveCookie
-argument_list|(
-literal|""
-argument_list|,
-literal|0
-comment|/* erase at client */
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|saveCookie (final String val, final int age)
+DECL|method|saveCookie ()
 specifier|private
 name|void
 name|saveCookie
-parameter_list|(
+parameter_list|()
+block|{
 specifier|final
 name|String
-name|val
-parameter_list|,
+name|token
+decl_stmt|;
 specifier|final
 name|int
-name|age
-parameter_list|)
+name|ageSeconds
+decl_stmt|;
+if|if
+condition|(
+name|key
+operator|==
+literal|null
+condition|)
 block|{
+name|token
+operator|=
+literal|""
+expr_stmt|;
+name|ageSeconds
+operator|=
+literal|0
+comment|/* erase at client */
+expr_stmt|;
+block|}
+else|else
+block|{
+name|token
+operator|=
+name|key
+operator|.
+name|getToken
+argument_list|()
+expr_stmt|;
+name|ageSeconds
+operator|=
+name|manager
+operator|.
+name|getCookieAge
+argument_list|(
+name|val
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|outCookie
@@ -997,7 +954,7 @@ name|Cookie
 argument_list|(
 name|ACCOUNT_COOKIE
 argument_list|,
-name|val
+name|token
 argument_list|)
 expr_stmt|;
 name|outCookie
@@ -1011,7 +968,7 @@ name|outCookie
 operator|.
 name|setMaxAge
 argument_list|(
-name|age
+name|ageSeconds
 argument_list|)
 expr_stmt|;
 name|response
@@ -1026,16 +983,16 @@ else|else
 block|{
 name|outCookie
 operator|.
-name|setMaxAge
+name|setValue
 argument_list|(
-name|age
+name|token
 argument_list|)
 expr_stmt|;
 name|outCookie
 operator|.
-name|setValue
+name|setMaxAge
 argument_list|(
-name|val
+name|ageSeconds
 argument_list|)
 expr_stmt|;
 block|}

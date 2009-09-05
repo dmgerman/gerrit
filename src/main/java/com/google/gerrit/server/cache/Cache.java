@@ -126,11 +126,11 @@ name|K
 name|key
 parameter_list|)
 function_decl|;
-comment|/**    * Get the time an idle (not accessed) element will survive in the cache.    *    * @param unit desired units of the return value.    * @return time an item can live without being accessed before being purged.    */
-DECL|method|getTimeToIdle (TimeUnit unit)
+comment|/**    * Get the time an element will survive in the cache.    *    * @param unit desired units of the return value.    * @return time an item can live before being purged.    */
+DECL|method|getTimeToLive (TimeUnit unit)
 specifier|public
 name|long
-name|getTimeToIdle
+name|getTimeToLive
 parameter_list|(
 name|TimeUnit
 name|unit
