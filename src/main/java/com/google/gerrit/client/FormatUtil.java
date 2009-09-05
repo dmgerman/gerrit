@@ -139,7 +139,7 @@ specifier|final
 name|long
 name|ONE_YEAR
 init|=
-literal|360L
+literal|182L
 operator|*
 literal|24
 operator|*
