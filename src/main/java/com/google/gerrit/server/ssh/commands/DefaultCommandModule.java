@@ -174,6 +174,10 @@ argument_list|(
 literal|"gerrit"
 argument_list|)
 decl_stmt|;
+comment|// The following commands can be ran on a server in either Master or Slave
+comment|// mode. If a command should only be used on a server in one mode, but not
+comment|// both, it should be bound in both MasterCommandModule and
+comment|// SlaveCommandModule.
 name|command
 argument_list|(
 name|gerrit
@@ -186,34 +190,6 @@ name|DispatchCommandProvider
 argument_list|(
 name|gerrit
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
-literal|"approve"
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|ApproveCommand
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
-literal|"create-project"
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|AdminCreateProject
-operator|.
-name|class
 argument_list|)
 expr_stmt|;
 name|command
@@ -240,34 +216,6 @@ operator|.
 name|to
 argument_list|(
 name|ListProjects
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
-literal|"receive-pack"
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|Receive
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
-literal|"replicate"
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|AdminReplicate
 operator|.
 name|class
 argument_list|)
@@ -373,7 +321,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// Honor the legacy hypenated forms as aliases for the non-hypenated forms
+comment|// Honor the legacy hyphenated forms as aliases for the non-hyphenated forms
 comment|//
 name|command
 argument_list|(
