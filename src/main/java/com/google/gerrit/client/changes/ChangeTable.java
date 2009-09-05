@@ -2775,7 +2775,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Some web browsers ignore the embedded newline; some like it;
-comment|// so we include a space before the newline to accomodate both.
+comment|// so we include a space before the newline to accommodate both.
 comment|//
 name|fmt
 operator|.
