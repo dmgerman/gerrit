@@ -271,6 +271,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|table
+operator|.
+name|addStyleName
+argument_list|(
+literal|"gerrit-AccountDashboard"
+argument_list|)
+expr_stmt|;
 name|byOwner
 operator|=
 operator|new
