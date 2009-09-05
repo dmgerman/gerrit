@@ -927,6 +927,232 @@ name|SOB2
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"b: not a footer\nc\nd\ne\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"f\ng\nh\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I8869aabd44b3017cd55d2d7e0d546a03e3931ee2\n"
+operator|+
+comment|//
+name|SOB1
+operator|+
+comment|//
+name|SOB2
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"b: not a footer\nc\nd\ne\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"f\ng\nh\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+name|SOB1
+operator|+
+comment|//
+name|SOB2
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testNoteInMiddle ()
+specifier|public
+name|void
+name|testNoteInMiddle
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"NOTE: This\n"
+operator|+
+comment|//
+literal|"does not fix it.\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I988a127969a6ee5e58db546aab74fc46e66847f8\n"
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"NOTE: This\n"
+operator|+
+comment|//
+literal|"does not fix it.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testKernelStyleFooter ()
+specifier|public
+name|void
+name|testKernelStyleFooter
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I1bd787f9e7590a2ac82b02c404c955ffb21877c4\n"
+operator|+
+comment|//
+name|SOB1
+operator|+
+comment|//
+literal|"[ja: Fixed\n"
+operator|+
+comment|//
+literal|"     the indentation]\n"
+operator|+
+comment|//
+name|SOB2
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+name|SOB1
+operator|+
+comment|//
+literal|"[ja: Fixed\n"
+operator|+
+comment|//
+literal|"     the indentation]\n"
+operator|+
+comment|//
+name|SOB2
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testChangeIdAfterBugOrIssue ()
+specifier|public
+name|void
+name|testChangeIdAfterBugOrIssue
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Bug: 42\n"
+operator|+
+comment|//
+literal|"Change-Id: I8c0321227c4324e670b9ae8cf40eccc87af21b1b\n"
+operator|+
+comment|//
+name|SOB1
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Bug: 42\n"
+operator|+
+comment|//
+name|SOB1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Issue: 42\n"
+operator|+
+comment|//
+literal|"Change-Id: Ie66e07d89ae5b114c0975b49cf326e90331dd822\n"
+operator|+
+comment|//
+name|SOB1
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Issue: 42\n"
+operator|+
+comment|//
+name|SOB1
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|hookDoesNotModify (final String in)
 specifier|private
