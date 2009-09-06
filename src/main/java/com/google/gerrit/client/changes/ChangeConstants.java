@@ -285,11 +285,6 @@ name|String
 name|nextPatchLinkIcon
 parameter_list|()
 function_decl|;
-DECL|method|changeScreenDescription ()
-name|String
-name|changeScreenDescription
-parameter_list|()
-function_decl|;
 DECL|method|changeScreenDependencies ()
 name|String
 name|changeScreenDependencies
