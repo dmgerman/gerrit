@@ -300,9 +300,9 @@ name|String
 name|changeScreenNeededBy
 parameter_list|()
 function_decl|;
-DECL|method|changeScreenMessages ()
+DECL|method|changeScreenComments ()
 name|String
-name|changeScreenMessages
+name|changeScreenComments
 parameter_list|()
 function_decl|;
 DECL|method|approvalTableReviewer ()

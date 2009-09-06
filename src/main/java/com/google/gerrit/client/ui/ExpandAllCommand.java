@@ -119,7 +119,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Expands all {@link ComplexDisclosurePanel} in a parent panel. */
+comment|/** Expands all {@link CommentPanel} in a parent panel. */
 end_comment
 
 begin_class
@@ -183,13 +183,13 @@ if|if
 condition|(
 name|w
 operator|instanceof
-name|ComplexDisclosurePanel
+name|CommentPanel
 condition|)
 block|{
 name|expand
 argument_list|(
 operator|(
-name|ComplexDisclosurePanel
+name|CommentPanel
 operator|)
 name|w
 argument_list|)
@@ -197,13 +197,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|expand (final ComplexDisclosurePanel w)
+DECL|method|expand (final CommentPanel w)
 specifier|protected
 name|void
 name|expand
 parameter_list|(
 specifier|final
-name|ComplexDisclosurePanel
+name|CommentPanel
 name|w
 parameter_list|)
 block|{
