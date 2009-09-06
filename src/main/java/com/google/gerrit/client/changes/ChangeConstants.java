@@ -300,11 +300,6 @@ name|String
 name|changeScreenNeededBy
 parameter_list|()
 function_decl|;
-DECL|method|changeScreenApprovals ()
-name|String
-name|changeScreenApprovals
-parameter_list|()
-function_decl|;
 DECL|method|changeScreenMessages ()
 name|String
 name|changeScreenMessages
