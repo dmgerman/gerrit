@@ -1849,6 +1849,20 @@ name|void
 name|onSend
 parameter_list|()
 block|{
+if|if
+condition|(
+name|commentEditors
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|onSend2
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 specifier|final
 name|GerritCallback
 argument_list|<
@@ -1912,6 +1926,7 @@ argument_list|(
 name|afterSaveDraft
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|onSend2 ()
