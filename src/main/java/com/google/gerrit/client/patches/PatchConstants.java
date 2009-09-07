@@ -95,6 +95,11 @@ name|String
 name|draft
 parameter_list|()
 function_decl|;
+DECL|method|buttonReply ()
+name|String
+name|buttonReply
+parameter_list|()
+function_decl|;
 DECL|method|buttonEdit ()
 name|String
 name|buttonEdit
