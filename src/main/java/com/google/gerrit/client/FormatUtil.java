@@ -478,7 +478,16 @@ literal|">"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|acct
+operator|.
+name|getId
+argument_list|()
+operator|!=
+literal|null
+condition|)
 block|{
 name|b
 operator|.
