@@ -185,6 +185,11 @@ name|String
 name|fileList
 parameter_list|()
 function_decl|;
+DECL|method|expandComment ()
+name|String
+name|expandComment
+parameter_list|()
+function_decl|;
 DECL|method|commentEditorSet ()
 name|String
 name|commentEditorSet
