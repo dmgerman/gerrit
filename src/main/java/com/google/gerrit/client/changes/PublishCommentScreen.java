@@ -1823,7 +1823,7 @@ name|editor
 operator|.
 name|setOpen
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|commentEditors
