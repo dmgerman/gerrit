@@ -1789,9 +1789,6 @@ operator|=
 name|fn
 expr_stmt|;
 block|}
-name|Label
-name|m
-decl_stmt|;
 specifier|final
 name|CommentEditorPanel
 name|editor
