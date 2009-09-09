@@ -1272,6 +1272,13 @@ argument_list|)
 expr_stmt|;
 name|b
 operator|.
+name|setChange
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
+name|b
+operator|.
 name|setSettings
 argument_list|(
 name|s
