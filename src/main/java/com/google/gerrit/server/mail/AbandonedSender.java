@@ -200,7 +200,10 @@ literal|" has abandoned change "
 operator|+
 name|change
 operator|.
-name|getChangeId
+name|getKey
+argument_list|()
+operator|.
+name|abbreviate
 argument_list|()
 operator|+
 literal|":\n"
