@@ -3567,10 +3567,7 @@ name|add
 argument_list|(
 name|extId
 operator|.
-name|getKey
-argument_list|()
-operator|.
-name|getParentKey
+name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;

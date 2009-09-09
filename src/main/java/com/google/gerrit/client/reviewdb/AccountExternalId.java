@@ -160,9 +160,18 @@ name|Key
 extends|extends
 name|StringKey
 argument_list|<
-name|Account
+name|com
 operator|.
-name|Id
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Key
+argument_list|<
+name|?
+argument_list|>
 argument_list|>
 block|{
 DECL|field|serialVersionUID
@@ -176,15 +185,6 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|accountId
-specifier|protected
-name|Account
-operator|.
-name|Id
-name|accountId
-decl_stmt|;
-annotation|@
-name|Column
 DECL|field|externalId
 specifier|protected
 name|String
@@ -194,53 +194,20 @@ DECL|method|Key ()
 specifier|protected
 name|Key
 parameter_list|()
-block|{
-name|accountId
-operator|=
-operator|new
-name|Account
-operator|.
-name|Id
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|Key (final Account.Id a, final String e)
+block|{     }
+DECL|method|Key (final String e)
 specifier|public
 name|Key
 parameter_list|(
-specifier|final
-name|Account
-operator|.
-name|Id
-name|a
-parameter_list|,
 specifier|final
 name|String
 name|e
 parameter_list|)
 block|{
-name|accountId
-operator|=
-name|a
-expr_stmt|;
 name|externalId
 operator|=
 name|e
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getParentKey ()
-specifier|public
-name|Account
-operator|.
-name|Id
-name|getParentKey
-parameter_list|()
-block|{
-return|return
-name|accountId
-return|;
 block|}
 annotation|@
 name|Override
@@ -380,6 +347,15 @@ name|key
 decl_stmt|;
 annotation|@
 name|Column
+DECL|field|accountId
+specifier|protected
+name|Account
+operator|.
+name|Id
+name|accountId
+decl_stmt|;
+annotation|@
+name|Column
 argument_list|(
 name|notNull
 operator|=
@@ -413,11 +389,17 @@ specifier|protected
 name|AccountExternalId
 parameter_list|()
 block|{   }
-comment|/**    * Create a new binding to an external identity.    *    * @param k the binding key.    */
-DECL|method|AccountExternalId (final AccountExternalId.Key k)
+comment|/**    * Create a new binding to an external identity.    *    * @param who the account this binds to.    * @param k the binding key.    */
+DECL|method|AccountExternalId (final Account.Id who, final AccountExternalId.Key k)
 specifier|public
 name|AccountExternalId
 parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|who
+parameter_list|,
 specifier|final
 name|AccountExternalId
 operator|.
@@ -425,6 +407,10 @@ name|Key
 name|k
 parameter_list|)
 block|{
+name|accountId
+operator|=
+name|who
+expr_stmt|;
 name|key
 operator|=
 name|k
@@ -452,8 +438,6 @@ name|getAccountId
 parameter_list|()
 block|{
 return|return
-name|key
-operator|.
 name|accountId
 return|;
 block|}
