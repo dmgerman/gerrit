@@ -960,7 +960,13 @@ expr_stmt|;
 block|}
 end_constructor
 
+begin_comment
+comment|/** Legacy 32 bit integer identity for a change. */
+end_comment
+
 begin_function
+annotation|@
+name|Deprecated
 DECL|method|getId ()
 specifier|public
 name|Change
@@ -975,7 +981,13 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/** Legacy 32 bit integer identity for a change. */
+end_comment
+
 begin_function
+annotation|@
+name|Deprecated
 DECL|method|getChangeId ()
 specifier|public
 name|int
@@ -990,6 +1002,10 @@ argument_list|()
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/** The Change-Id tag out of the initial commit, or a natural key. */
+end_comment
 
 begin_function
 DECL|method|getKey ()
