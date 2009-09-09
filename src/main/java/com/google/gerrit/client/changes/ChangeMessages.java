@@ -122,12 +122,12 @@ name|String
 name|string
 parameter_list|)
 function_decl|;
-DECL|method|changeScreenTitleId (int id)
+DECL|method|changeScreenTitleId (String changeId)
 name|String
 name|changeScreenTitleId
 parameter_list|(
-name|int
-name|id
+name|String
+name|changeId
 parameter_list|)
 function_decl|;
 DECL|method|patchSetHeader (int id)
@@ -223,12 +223,12 @@ name|String
 name|valueName
 parameter_list|)
 function_decl|;
-DECL|method|publishComments (int change, int ps)
+DECL|method|publishComments (String changeId, int ps)
 name|String
 name|publishComments
 parameter_list|(
-name|int
-name|change
+name|String
+name|changeId
 parameter_list|,
 name|int
 name|ps

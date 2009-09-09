@@ -1352,11 +1352,17 @@ name|comments
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|displayTitle (final String subject)
+DECL|method|displayTitle (final Change.Key changeId, final String subject)
 specifier|private
 name|void
 name|displayTitle
 parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Key
+name|changeId
+parameter_list|,
 specifier|final
 name|String
 name|subject
@@ -1415,7 +1421,7 @@ name|changeScreenTitleId
 argument_list|(
 name|changeId
 operator|.
-name|get
+name|abbreviate
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1435,7 +1441,7 @@ name|changeScreenTitleId
 argument_list|(
 name|changeId
 operator|.
-name|get
+name|abbreviate
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1484,6 +1490,14 @@ parameter_list|)
 block|{
 name|displayTitle
 argument_list|(
+name|detail
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getKey
+argument_list|()
+argument_list|,
 name|detail
 operator|.
 name|getChange

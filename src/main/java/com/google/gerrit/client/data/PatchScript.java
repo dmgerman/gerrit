@@ -86,6 +86,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|spearce
@@ -129,6 +145,13 @@ name|DIFF
 block|,
 name|IMG
 block|}
+DECL|field|changeId
+specifier|protected
+name|Change
+operator|.
+name|Key
+name|changeId
+decl_stmt|;
 DECL|field|header
 specifier|protected
 name|List
@@ -170,10 +193,16 @@ specifier|protected
 name|DisplayMethod
 name|displayMethodB
 decl_stmt|;
-DECL|method|PatchScript (final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb)
+DECL|method|PatchScript (final Change.Key ck, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb)
 specifier|public
 name|PatchScript
 parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Key
+name|ck
+parameter_list|,
 specifier|final
 name|List
 argument_list|<
@@ -209,6 +238,10 @@ name|DisplayMethod
 name|mb
 parameter_list|)
 block|{
+name|changeId
+operator|=
+name|ck
+expr_stmt|;
 name|header
 operator|=
 name|h
@@ -243,6 +276,18 @@ specifier|protected
 name|PatchScript
 parameter_list|()
 block|{   }
+DECL|method|getChangeId ()
+specifier|public
+name|Change
+operator|.
+name|Key
+name|getChangeId
+parameter_list|()
+block|{
+return|return
+name|changeId
+return|;
+block|}
 DECL|method|getDisplayMethodA ()
 specifier|public
 name|DisplayMethod

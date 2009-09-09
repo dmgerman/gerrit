@@ -100,23 +100,23 @@ name|PatchMessages
 extends|extends
 name|Messages
 block|{
-DECL|method|patchWindowTitle (int id, String file)
+DECL|method|patchWindowTitle (String changeId, String file)
 name|String
 name|patchWindowTitle
 parameter_list|(
-name|int
-name|id
+name|String
+name|changeId
 parameter_list|,
 name|String
 name|file
 parameter_list|)
 function_decl|;
-DECL|method|patchPageTitle (int id, String path)
+DECL|method|patchPageTitle (String changeId, String path)
 name|String
 name|patchPageTitle
 parameter_list|(
-name|int
-name|id
+name|String
+name|changeId
 parameter_list|,
 name|String
 name|path
