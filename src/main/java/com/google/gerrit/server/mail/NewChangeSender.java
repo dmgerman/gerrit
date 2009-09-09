@@ -500,7 +500,10 @@ literal|"Change "
 operator|+
 name|change
 operator|.
-name|getId
+name|getKey
+argument_list|()
+operator|.
+name|abbreviate
 argument_list|()
 argument_list|)
 expr_stmt|;

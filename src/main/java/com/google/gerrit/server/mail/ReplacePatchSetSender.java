@@ -489,7 +489,10 @@ literal|"I'd like you to reexamine change "
 operator|+
 name|change
 operator|.
-name|getId
+name|getKey
+argument_list|()
+operator|.
+name|abbreviate
 argument_list|()
 operator|+
 literal|"."
@@ -571,7 +574,10 @@ literal|"Change "
 operator|+
 name|change
 operator|.
-name|getId
+name|getKey
+argument_list|()
+operator|.
+name|abbreviate
 argument_list|()
 argument_list|)
 expr_stmt|;
