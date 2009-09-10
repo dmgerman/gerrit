@@ -264,6 +264,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|GerritPersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritServer
 import|;
 end_import
@@ -1225,7 +1239,7 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, @GerritPersonIdent final PersonIdent myIdent, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1291,6 +1305,12 @@ name|GenericFactory
 name|iuf
 parameter_list|,
 annotation|@
+name|GerritPersonIdent
+specifier|final
+name|PersonIdent
+name|myIdent
+parameter_list|,
+annotation|@
 name|Assisted
 specifier|final
 name|Branch
@@ -1345,12 +1365,11 @@ name|identifiedUserFactory
 operator|=
 name|iuf
 expr_stmt|;
+name|this
+operator|.
 name|myIdent
 operator|=
-name|server
-operator|.
-name|newGerritPersonIdent
-argument_list|()
+name|myIdent
 expr_stmt|;
 name|destBranch
 operator|=

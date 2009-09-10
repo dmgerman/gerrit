@@ -514,6 +514,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|GerritPersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -1477,6 +1491,15 @@ DECL|field|canonicalWebUrl
 specifier|private
 name|String
 name|canonicalWebUrl
+decl_stmt|;
+annotation|@
+name|Inject
+annotation|@
+name|GerritPersonIdent
+DECL|field|gerritIdent
+specifier|private
+name|PersonIdent
+name|gerritIdent
 decl_stmt|;
 DECL|field|rp
 specifier|private
@@ -7519,15 +7542,6 @@ comment|// Don't allow the user to amend a merge created by Gerrit Code Review.
 comment|// This seems to happen all too often, due to users not paying any
 comment|// attention to what they are doing.
 comment|//
-specifier|final
-name|PersonIdent
-name|serverIdent
-init|=
-name|server
-operator|.
-name|newGerritPersonIdent
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|c
@@ -7544,7 +7558,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|serverIdent
+name|gerritIdent
 operator|.
 name|getName
 argument_list|()
@@ -7557,7 +7571,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|serverIdent
+name|gerritIdent
 operator|.
 name|getEmailAddress
 argument_list|()
