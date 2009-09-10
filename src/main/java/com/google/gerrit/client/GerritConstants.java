@@ -138,6 +138,16 @@ name|String
 name|errorDialogClose
 parameter_list|()
 function_decl|;
+DECL|method|notSignedInTitle ()
+name|String
+name|notSignedInTitle
+parameter_list|()
+function_decl|;
+DECL|method|notSignedInBody ()
+name|String
+name|notSignedInBody
+parameter_list|()
+function_decl|;
 DECL|method|notFoundTitle ()
 name|String
 name|notFoundTitle

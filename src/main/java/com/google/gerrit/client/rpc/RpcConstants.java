@@ -122,11 +122,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|errorNotSignedIn ()
-name|String
-name|errorNotSignedIn
-parameter_list|()
-function_decl|;
 DECL|method|errorServerUnavailable ()
 name|String
 name|errorServerUnavailable
