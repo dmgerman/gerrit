@@ -76,20 +76,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|GerritServer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|GerritServerConfig
@@ -1095,13 +1081,9 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshDaemon (final GerritServer srv, final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, @GerritServerConfig final Config cfg)
+DECL|method|SshDaemon (final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, @GerritServerConfig final Config cfg)
 name|SshDaemon
 parameter_list|(
-specifier|final
-name|GerritServer
-name|srv
-parameter_list|,
 specifier|final
 name|CommandFactory
 name|commandFactory
