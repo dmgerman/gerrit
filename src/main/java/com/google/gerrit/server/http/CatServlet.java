@@ -154,9 +154,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|FileTypeRegistry
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -170,7 +170,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|GerritServer
+name|FileTypeRegistry
 import|;
 end_import
 
@@ -541,11 +541,11 @@ name|ReviewDb
 argument_list|>
 name|requestDb
 decl_stmt|;
-DECL|field|server
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|rng
 specifier|private
@@ -569,12 +569,12 @@ name|changeControl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CatServlet (final GerritServer gs, final Provider<ReviewDb> sf, final FileTypeRegistry ftr, final ChangeControl.Factory ccf)
+DECL|method|CatServlet (final GitRepositoryManager grm, final Provider<ReviewDb> sf, final FileTypeRegistry ftr, final ChangeControl.Factory ccf)
 name|CatServlet
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 specifier|final
 name|Provider
@@ -598,9 +598,9 @@ name|requestDb
 operator|=
 name|sf
 expr_stmt|;
-name|server
+name|repoManager
 operator|=
-name|gs
+name|grm
 expr_stmt|;
 name|rng
 operator|=
@@ -963,7 +963,7 @@ try|try
 block|{
 name|repo
 operator|=
-name|server
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

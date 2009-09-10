@@ -70,20 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritServer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -442,11 +428,11 @@ name|MIRROR_ALL
 init|=
 literal|"..all.."
 decl_stmt|;
-DECL|field|server
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|pool
 specifier|private
@@ -502,12 +488,12 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PushOp (final GerritServer gs, final PushReplication.ReplicationConfig p, final RemoteConfig c, @Assisted final String d, @Assisted final URIish u)
+DECL|method|PushOp (final GitRepositoryManager grm, final PushReplication.ReplicationConfig p, final RemoteConfig c, @Assisted final String d, @Assisted final URIish u)
 name|PushOp
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 specifier|final
 name|PushReplication
@@ -532,9 +518,9 @@ name|URIish
 name|u
 parameter_list|)
 block|{
-name|server
+name|repoManager
 operator|=
-name|gs
+name|grm
 expr_stmt|;
 name|pool
 operator|=
@@ -628,7 +614,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|=
-name|server
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

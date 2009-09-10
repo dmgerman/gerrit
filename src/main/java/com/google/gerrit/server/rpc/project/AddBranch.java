@@ -158,7 +158,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -170,9 +170,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|ReplicationQueue
 import|;
 end_import
 
@@ -538,11 +538,11 @@ specifier|final
 name|IdentifiedUser
 name|identifiedUser
 decl_stmt|;
-DECL|field|gerritServer
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|gerritServer
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|replication
 specifier|private
@@ -578,7 +578,7 @@ name|startingRevision
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GerritServer gerritServer, final ReplicationQueue replication, final ReviewDb db, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
+DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, final ReplicationQueue replication, final ReviewDb db, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
 name|AddBranch
 parameter_list|(
 specifier|final
@@ -598,8 +598,8 @@ name|IdentifiedUser
 name|identifiedUser
 parameter_list|,
 specifier|final
-name|GerritServer
-name|gerritServer
+name|GitRepositoryManager
+name|repoManager
 parameter_list|,
 specifier|final
 name|ReplicationQueue
@@ -653,9 +653,9 @@ name|identifiedUser
 expr_stmt|;
 name|this
 operator|.
-name|gerritServer
+name|repoManager
 operator|=
-name|gerritServer
+name|repoManager
 expr_stmt|;
 name|this
 operator|.
@@ -833,7 +833,7 @@ specifier|final
 name|Repository
 name|repo
 init|=
-name|gerritServer
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

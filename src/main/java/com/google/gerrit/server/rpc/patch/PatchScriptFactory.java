@@ -254,9 +254,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|FileTypeRegistry
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -270,7 +270,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|GerritServer
+name|FileTypeRegistry
 import|;
 end_import
 
@@ -592,11 +592,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|server
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|registry
 specifier|private
@@ -711,12 +711,12 @@ name|bId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchScriptFactory (final GerritServer gs, final FileTypeRegistry ftr, final PatchListCache patchListCache, final ReviewDb db, final ChangeControl.Factory changeControlFactory, @Assisted final Patch.Key patchKey, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted final PatchScriptSettings settings)
+DECL|method|PatchScriptFactory (final GitRepositoryManager grm, final FileTypeRegistry ftr, final PatchListCache patchListCache, final ReviewDb db, final ChangeControl.Factory changeControlFactory, @Assisted final Patch.Key patchKey, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted final PatchScriptSettings settings)
 name|PatchScriptFactory
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 specifier|final
 name|FileTypeRegistry
@@ -777,9 +777,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|server
+name|repoManager
 operator|=
-name|gs
+name|grm
 expr_stmt|;
 name|this
 operator|.
@@ -944,7 +944,7 @@ try|try
 block|{
 name|git
 operator|=
-name|server
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

@@ -126,7 +126,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -138,9 +138,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|ReplicationQueue
 import|;
 end_import
 
@@ -400,11 +400,11 @@ operator|.
 name|Factory
 name|projectControlFactory
 decl_stmt|;
-DECL|field|gerritServer
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|gerritServer
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|replication
 specifier|private
@@ -439,7 +439,7 @@ name|toRemove
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GerritServer gerritServer, final ReplicationQueue replication, final ReviewDb db, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
+DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final ReplicationQueue replication, final ReviewDb db, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
 name|DeleteBranches
 parameter_list|(
 specifier|final
@@ -449,8 +449,8 @@ name|Factory
 name|projectControlFactory
 parameter_list|,
 specifier|final
-name|GerritServer
-name|gerritServer
+name|GitRepositoryManager
+name|repoManager
 parameter_list|,
 specifier|final
 name|ReplicationQueue
@@ -486,9 +486,9 @@ name|projectControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|gerritServer
+name|repoManager
 operator|=
-name|gerritServer
+name|repoManager
 expr_stmt|;
 name|this
 operator|.
@@ -635,7 +635,7 @@ specifier|final
 name|Repository
 name|r
 init|=
-name|gerritServer
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

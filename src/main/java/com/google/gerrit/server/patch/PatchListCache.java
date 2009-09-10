@@ -160,9 +160,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -542,11 +542,11 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|server
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|self
 specifier|private
@@ -561,12 +561,12 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchListCache (final GerritServer gs, @Named(CACHE_NAME) final Cache<PatchListKey, PatchList> raw)
+DECL|method|PatchListCache (final GitRepositoryManager grm, @Named(CACHE_NAME) final Cache<PatchListKey, PatchList> raw)
 name|PatchListCache
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 annotation|@
 name|Named
@@ -583,9 +583,9 @@ argument_list|>
 name|raw
 parameter_list|)
 block|{
-name|server
+name|repoManager
 operator|=
-name|gs
+name|grm
 expr_stmt|;
 name|self
 operator|=
@@ -756,7 +756,7 @@ specifier|final
 name|Repository
 name|repo
 init|=
-name|server
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

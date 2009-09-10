@@ -192,7 +192,7 @@ name|gerrit
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -204,9 +204,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|ReplicationQueue
 import|;
 end_import
 
@@ -519,10 +519,10 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|gs
+DECL|field|repoManager
 specifier|private
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
@@ -630,7 +630,7 @@ expr_stmt|;
 name|Repository
 name|repo
 init|=
-name|gs
+name|repoManager
 operator|.
 name|createRepository
 argument_list|(
@@ -644,7 +644,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|gs
+name|repoManager
 operator|.
 name|setProjectDescription
 argument_list|(

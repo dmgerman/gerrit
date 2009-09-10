@@ -186,9 +186,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -372,11 +372,11 @@ specifier|public
 class|class
 name|PatchSetInfoFactory
 block|{
-DECL|field|gs
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|schemaFactory
 specifier|private
@@ -395,13 +395,13 @@ name|byEmailCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetInfoFactory (final GerritServer gs, final SchemaFactory<ReviewDb> schemaFactory, final AccountByEmailCache byEmailCache)
+DECL|method|PatchSetInfoFactory (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> schemaFactory, final AccountByEmailCache byEmailCache)
 specifier|public
 name|PatchSetInfoFactory
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 specifier|final
 name|SchemaFactory
@@ -417,9 +417,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|gs
+name|repoManager
 operator|=
-name|gs
+name|grm
 expr_stmt|;
 name|this
 operator|.
@@ -595,7 +595,7 @@ argument_list|()
 decl_stmt|;
 name|repo
 operator|=
-name|gs
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

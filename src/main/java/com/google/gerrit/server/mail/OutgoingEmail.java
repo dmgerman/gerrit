@@ -250,9 +250,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritPersonIdent
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -266,7 +266,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|GerritServer
+name|GerritPersonIdent
 import|;
 end_import
 
@@ -780,7 +780,7 @@ annotation|@
 name|Inject
 DECL|field|server
 specifier|protected
-name|GerritServer
+name|GitRepositoryManager
 name|server
 decl_stmt|;
 annotation|@

@@ -278,20 +278,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|GerritServer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -1065,11 +1051,11 @@ argument_list|(
 literal|"Change-Id"
 argument_list|)
 decl_stmt|;
-DECL|field|server
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|schemaFactory
 specifier|private
@@ -1239,12 +1225,12 @@ name|branchUpdate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GerritServer gs, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, @GerritPersonIdent final PersonIdent myIdent, @Assisted final Branch.NameKey branch)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, @GerritPersonIdent final PersonIdent myIdent, @Assisted final Branch.NameKey branch)
 name|MergeOp
 parameter_list|(
 specifier|final
-name|GerritServer
-name|gs
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 specifier|final
 name|SchemaFactory
@@ -1319,9 +1305,9 @@ name|NameKey
 name|branch
 parameter_list|)
 block|{
-name|server
+name|repoManager
 operator|=
-name|gs
+name|grm
 expr_stmt|;
 name|schemaFactory
 operator|=
@@ -1609,7 +1595,7 @@ try|try
 block|{
 name|db
 operator|=
-name|server
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

@@ -108,9 +108,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -322,11 +322,11 @@ operator|.
 name|Factory
 name|projectControlFactory
 decl_stmt|;
-DECL|field|gerritServer
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|gerritServer
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|projectName
 specifier|private
@@ -338,7 +338,7 @@ name|projectName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListBranches (final ProjectControl.Factory projectControlFactory, final GerritServer gerritServer, @Assisted final Project.NameKey name)
+DECL|method|ListBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, @Assisted final Project.NameKey name)
 name|ListBranches
 parameter_list|(
 specifier|final
@@ -348,8 +348,8 @@ name|Factory
 name|projectControlFactory
 parameter_list|,
 specifier|final
-name|GerritServer
-name|gerritServer
+name|GitRepositoryManager
+name|repoManager
 parameter_list|,
 annotation|@
 name|Assisted
@@ -368,9 +368,9 @@ name|projectControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|gerritServer
+name|repoManager
 operator|=
-name|gerritServer
+name|repoManager
 expr_stmt|;
 name|this
 operator|.
@@ -431,7 +431,7 @@ specifier|final
 name|Repository
 name|db
 init|=
-name|gerritServer
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

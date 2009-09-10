@@ -92,9 +92,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -226,10 +226,10 @@ name|projectControl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|server
+DECL|field|repoManager
 specifier|protected
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|repo
 specifier|protected
@@ -312,7 +312,7 @@ try|try
 block|{
 name|repo
 operator|=
-name|server
+name|repoManager
 operator|.
 name|openRepository
 argument_list|(

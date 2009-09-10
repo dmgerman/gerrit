@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.git
 package|package
 name|com
 operator|.
@@ -60,41 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|reviewdb
-operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AuthConfig
-import|;
-end_import
 
 begin_import
 import|import
@@ -293,16 +261,16 @@ import|;
 end_import
 
 begin_comment
-comment|/** Global server-side state for Gerrit. */
+comment|/** Class managing Git repositories. */
 end_comment
 
 begin_class
 annotation|@
 name|Singleton
-DECL|class|GerritServer
+DECL|class|GitRepositoryManager
 specifier|public
 class|class
-name|GerritServer
+name|GitRepositoryManager
 block|{
 DECL|field|log
 specifier|private
@@ -315,7 +283,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|GerritServer
+name|GitRepositoryManager
 operator|.
 name|class
 argument_list|)
@@ -334,13 +302,9 @@ name|basepath
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritServer (final SystemConfig sConfig, @SitePath final File path, @GerritServerConfig final Config cfg, final AuthConfig authConfig)
-name|GerritServer
+DECL|method|GitRepositoryManager (@itePath final File path, @GerritServerConfig final Config cfg)
+name|GitRepositoryManager
 parameter_list|(
-specifier|final
-name|SystemConfig
-name|sConfig
-parameter_list|,
 annotation|@
 name|SitePath
 specifier|final
@@ -352,10 +316,6 @@ name|GerritServerConfig
 specifier|final
 name|Config
 name|cfg
-parameter_list|,
-specifier|final
-name|AuthConfig
-name|authConfig
 parameter_list|)
 block|{
 name|sitePath

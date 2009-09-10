@@ -124,9 +124,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|git
 operator|.
-name|GerritServer
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -297,11 +297,11 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|server
+DECL|field|repoManager
 specifier|private
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|repoManager
 decl_stmt|;
 DECL|field|update
 specifier|private
@@ -311,7 +311,7 @@ name|update
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectSettings ( final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, final GerritServer server, @Assisted final Project update)
+DECL|method|ChangeProjectSettings ( final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, final GitRepositoryManager grm, @Assisted final Project update)
 name|ChangeProjectSettings
 parameter_list|(
 specifier|final
@@ -335,8 +335,8 @@ name|ReviewDb
 name|db
 parameter_list|,
 specifier|final
-name|GerritServer
-name|server
+name|GitRepositoryManager
+name|grm
 parameter_list|,
 annotation|@
 name|Assisted
@@ -371,9 +371,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|server
+name|repoManager
 operator|=
-name|server
+name|grm
 expr_stmt|;
 name|this
 operator|.
@@ -486,7 +486,7 @@ name|isSpecialWildProject
 argument_list|()
 condition|)
 block|{
-name|server
+name|repoManager
 operator|.
 name|setProjectDescription
 argument_list|(
