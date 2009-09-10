@@ -1015,8 +1015,6 @@ name|validateParameters
 parameter_list|()
 throws|throws
 name|Failure
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(
