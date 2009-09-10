@@ -416,7 +416,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|isInvalidXSRF (final Throwable caught)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isInvalidXSRF
@@ -445,7 +445,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNotSignedIn (final Throwable caught)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isNotSignedIn
@@ -455,17 +455,6 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{
-if|if
-condition|(
-name|caught
-operator|instanceof
-name|NotSignedInException
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 return|return
 name|caught
 operator|instanceof
@@ -485,7 +474,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNoSuchEntity (final Throwable caught)
-specifier|public
+specifier|protected
 specifier|static
 name|boolean
 name|isNoSuchEntity
@@ -495,17 +484,6 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{
-if|if
-condition|(
-name|caught
-operator|instanceof
-name|NoSuchEntityException
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 return|return
 name|caught
 operator|instanceof
@@ -525,7 +503,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNoSuchAccount (final Throwable caught)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isNoSuchAccount
@@ -535,17 +513,6 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{
-if|if
-condition|(
-name|caught
-operator|instanceof
-name|NoSuchAccountException
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 return|return
 name|caught
 operator|instanceof
@@ -565,7 +532,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isNameAlreadyUsed (final Throwable caught)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isNameAlreadyUsed
@@ -575,17 +542,6 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{
-if|if
-condition|(
-name|caught
-operator|instanceof
-name|NameAlreadyUsedException
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 return|return
 name|caught
 operator|instanceof
