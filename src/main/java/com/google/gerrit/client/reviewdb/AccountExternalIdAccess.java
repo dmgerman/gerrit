@@ -171,25 +171,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.externalId = ? LIMIT 2"
-argument_list|)
-DECL|method|byExternal (String id)
-name|ResultSet
-argument_list|<
-name|AccountExternalId
-argument_list|>
-name|byExternal
-parameter_list|(
-name|String
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE key.accountId = ?"
+literal|"WHERE accountId = ?"
 argument_list|)
 DECL|method|byAccount (Account.Id id)
 name|ResultSet
@@ -209,7 +191,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.accountId = ? AND emailAddress = ?"
+literal|"WHERE accountId = ? AND emailAddress = ?"
 argument_list|)
 DECL|method|byAccountEmail (Account.Id id, String email)
 name|ResultSet
