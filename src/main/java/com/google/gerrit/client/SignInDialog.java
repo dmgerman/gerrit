@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Prompts the user to sign in to their account.  *<p>  * This dialog performs the login within an iframe, allowing normal HTML based  * login pages to be used, including those which aren't served from the same  * server as Gerrit. This is important to permit an OpenID provider or some  * other web based single-sign-on system to be used for authentication.  *<p>  * Post login the iframe content is expected to execute the JavaScript snippet:  *  *<pre>  * $callback(account);  *</pre>  *  * where<code>$callback</code> is the parameter in the initial request and  *<code>account</code> is either<code>!= null</code> (the user is now signed  * in) or<code>null</code> (the sign in was aborted/canceled before it  * completed).  */
+comment|/** Prompts the user to sign in to their account. */
 end_comment
 
 begin_class
