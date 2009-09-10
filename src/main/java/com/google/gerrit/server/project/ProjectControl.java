@@ -1036,9 +1036,7 @@ name|pr
 range|:
 name|state
 operator|.
-name|projectCache
-operator|.
-name|getWildcardRights
+name|getInheritedRights
 argument_list|()
 control|)
 block|{

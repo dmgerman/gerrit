@@ -362,7 +362,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountByEmailCache
+name|AccountByEmailCacheImpl
 import|;
 end_import
 
@@ -378,7 +378,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountCache
+name|AccountCacheImpl
 import|;
 end_import
 
@@ -442,7 +442,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupCacheImpl
 import|;
 end_import
 
@@ -666,7 +666,7 @@ name|server
 operator|.
 name|patch
 operator|.
-name|PatchListCache
+name|PatchListCacheImpl
 import|;
 end_import
 
@@ -698,7 +698,23 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectCache
+name|ProjectCacheImpl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -714,7 +730,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|SshKeyCache
+name|SshKeyCacheImpl
 import|;
 end_import
 
@@ -1112,7 +1128,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|AccountByEmailCache
+name|AccountByEmailCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -1120,7 +1136,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|AccountCache
+name|AccountCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -1128,7 +1144,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|GroupCache
+name|GroupCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -1136,7 +1152,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|PatchListCache
+name|PatchListCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -1144,7 +1160,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|ProjectCache
+name|ProjectCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -1152,7 +1168,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|SshKeyCache
+name|SshKeyCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -1161,6 +1177,15 @@ expr_stmt|;
 name|factory
 argument_list|(
 name|AccountInfoCacheFactory
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
+name|ProjectState
 operator|.
 name|Factory
 operator|.
