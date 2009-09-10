@@ -1007,9 +1007,8 @@ operator|.
 name|getParameters
 argument_list|()
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 throw|throw
@@ -1331,9 +1330,8 @@ operator|.
 name|getParameters
 argument_list|()
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 throw|throw
