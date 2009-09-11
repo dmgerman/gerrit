@@ -177,6 +177,7 @@ argument_list|>
 name|externalIds
 decl_stmt|;
 DECL|method|AccountState (final Account account, final Set<AccountGroup.Id> actualGroups, final Collection<AccountExternalId> externalIds)
+specifier|public
 name|AccountState
 parameter_list|(
 specifier|final
