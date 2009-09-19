@@ -124,8 +124,8 @@ name|String
 name|ref
 parameter_list|)
 function_decl|;
-comment|/**    * Create new empty project at the remote sites.    *<p>    * When a new project has been created locally call this method to make sure    * that the project will be created at the remote sites as well.    *    * @param project of the project to be created.    */
-DECL|method|replicateNewProject (Project.NameKey project)
+comment|/**    * Create new empty project at the remote sites.    *<p>    * When a new project has been created locally call this method to make sure    * that the project will be created at the remote sites as well.    *    * @param project of the project to be created.    * @param head name HEAD should point at (must be {@code refs/heads/...}).    */
+DECL|method|replicateNewProject (Project.NameKey project, String head)
 name|void
 name|replicateNewProject
 parameter_list|(
@@ -133,6 +133,9 @@ name|Project
 operator|.
 name|NameKey
 name|project
+parameter_list|,
+name|String
+name|head
 parameter_list|)
 function_decl|;
 block|}

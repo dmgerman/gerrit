@@ -1226,7 +1226,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|replicateNewProject (Project.NameKey projectName)
+DECL|method|replicateNewProject (Project.NameKey projectName, String head)
 specifier|public
 name|void
 name|replicateNewProject
@@ -1235,6 +1235,9 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
+parameter_list|,
+name|String
+name|head
 parameter_list|)
 block|{
 if|if
@@ -1313,12 +1316,14 @@ name|uriIter
 operator|.
 name|next
 argument_list|()
+argument_list|,
+name|head
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|replicateProject (final URIish replicateURI)
+DECL|method|replicateProject (final URIish replicateURI, final String head)
 specifier|private
 name|void
 name|replicateProject
@@ -1326,6 +1331,10 @@ parameter_list|(
 specifier|final
 name|URIish
 name|replicateURI
+parameter_list|,
+specifier|final
+name|String
+name|head
 parameter_list|)
 block|{
 name|SshSessionFactory
@@ -1397,6 +1406,17 @@ operator|+
 name|projectPath
 operator|+
 literal|"&& git init --bare"
+operator|+
+literal|"&& git symbolic-ref HEAD "
+operator|+
+name|QuotedString
+operator|.
+name|BOURNE
+operator|.
+name|quote
+argument_list|(
+name|head
+argument_list|)
 decl_stmt|;
 try|try
 block|{
