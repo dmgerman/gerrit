@@ -291,6 +291,16 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
+comment|/** Regular expression that {@link #sshUserName} must match (not enforced in this class). */
+DECL|field|SSH_USER_NAME_PATTERN
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SSH_USER_NAME_PATTERN
+init|=
+literal|"^[a-zA-Z][a-zA-Z0-9._-]+$"
+decl_stmt|;
 comment|/** Username to authenticate as through SSH connections. */
 annotation|@
 name|Column
