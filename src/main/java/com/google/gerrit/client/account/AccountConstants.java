@@ -215,6 +215,11 @@ name|String
 name|buttonChangeSshUserName
 parameter_list|()
 function_decl|;
+DECL|method|invalidSshUserName ()
+name|String
+name|invalidSshUserName
+parameter_list|()
+function_decl|;
 DECL|method|sshKeyInvalid ()
 name|String
 name|sshKeyInvalid

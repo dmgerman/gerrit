@@ -130,6 +130,40 @@ name|SSH_USER_NAME
 block|,
 name|REGISTER_NEW_EMAIL
 block|;   }
+DECL|field|SSH_USER_NAME_PATTERN_FIRST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SSH_USER_NAME_PATTERN_FIRST
+init|=
+literal|"[a-zA-Z]"
+decl_stmt|;
+DECL|field|SSH_USER_NAME_PATTERN_REST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SSH_USER_NAME_PATTERN_REST
+init|=
+literal|"[a-zA-Z0-9._-]"
+decl_stmt|;
+comment|/** Regular expression that {@link #sshUserName} must match. */
+DECL|field|SSH_USER_NAME_PATTERN
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SSH_USER_NAME_PATTERN
+init|=
+literal|"^"
+operator|+
+name|SSH_USER_NAME_PATTERN_FIRST
+operator|+
+name|SSH_USER_NAME_PATTERN_REST
+operator|+
+literal|"+$"
+decl_stmt|;
 comment|/** Key local to Gerrit to identify a user. */
 DECL|class|Id
 specifier|public
@@ -290,16 +324,6 @@ DECL|field|preferredEmail
 specifier|protected
 name|String
 name|preferredEmail
-decl_stmt|;
-comment|/** Regular expression that {@link #sshUserName} must match (not enforced in this class). */
-DECL|field|SSH_USER_NAME_PATTERN
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SSH_USER_NAME_PATTERN
-init|=
-literal|"^[a-zA-Z][a-zA-Z0-9._-]+$"
 decl_stmt|;
 comment|/** Username to authenticate as through SSH connections. */
 annotation|@
