@@ -3063,6 +3063,12 @@ operator|.
 name|SECURITY_CREDENTIALS
 argument_list|,
 name|password
+operator|!=
+literal|null
+condition|?
+name|password
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
