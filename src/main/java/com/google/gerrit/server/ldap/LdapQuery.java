@@ -684,23 +684,22 @@ name|attName
 argument_list|)
 return|;
 block|}
-DECL|method|keySet ()
-name|Set
+DECL|method|map ()
+name|Map
 argument_list|<
 name|String
+argument_list|,
+name|String
 argument_list|>
-name|keySet
+name|map
 parameter_list|()
 block|{
 return|return
 name|Collections
 operator|.
-name|unmodifiableSet
+name|unmodifiableMap
 argument_list|(
 name|atts
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 return|;
 block|}
