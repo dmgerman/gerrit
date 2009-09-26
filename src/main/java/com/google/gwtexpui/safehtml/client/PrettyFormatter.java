@@ -242,6 +242,15 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
+name|STYLES
+operator|.
+name|put
+argument_list|(
+literal|"scala"
+argument_list|,
+name|c
+argument_list|)
+expr_stmt|;
 name|MultiLineStyle
 name|xml
 init|=
