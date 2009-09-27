@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.openid
+DECL|package|com.google.gerrit.client.auth.openid
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|auth
 operator|.
 name|openid
 package|;

@@ -118,6 +118,8 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|auth
+operator|.
 name|openid
 operator|.
 name|OpenIdUtil

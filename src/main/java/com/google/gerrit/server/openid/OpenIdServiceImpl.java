@@ -120,6 +120,8 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|auth
+operator|.
 name|openid
 operator|.
 name|DiscoveryResult
@@ -136,6 +138,8 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|auth
+operator|.
 name|openid
 operator|.
 name|OpenIdService
@@ -151,6 +155,8 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|auth
 operator|.
 name|openid
 operator|.

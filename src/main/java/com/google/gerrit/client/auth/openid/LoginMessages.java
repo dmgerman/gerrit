@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.openid
+DECL|package|com.google.gerrit.client.auth.openid
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|auth
 operator|.
 name|openid
 package|;
@@ -78,57 +80,65 @@ name|i18n
 operator|.
 name|client
 operator|.
-name|Constants
+name|Messages
 import|;
 end_import
 
 begin_interface
-DECL|interface|LoginConstants
+DECL|interface|LoginMessages
 specifier|public
 interface|interface
-name|LoginConstants
+name|LoginMessages
 extends|extends
-name|Constants
+name|Messages
 block|{
-DECL|method|buttonSignIn ()
+DECL|method|signInAt (String hostname)
 name|String
-name|buttonSignIn
-parameter_list|()
+name|signInAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
 function_decl|;
-DECL|method|buttonRegister ()
+DECL|method|registerAt (String hostname)
 name|String
-name|buttonRegister
-parameter_list|()
+name|registerAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
 function_decl|;
-DECL|method|buttonLinkId ()
+DECL|method|linkAt (String hostname)
 name|String
-name|buttonLinkId
-parameter_list|()
+name|linkAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
 function_decl|;
-DECL|method|rememberMe ()
+DECL|method|signInWith (String who)
 name|String
-name|rememberMe
-parameter_list|()
+name|signInWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
 function_decl|;
-DECL|method|notSupported ()
+DECL|method|registerWith (String who)
 name|String
-name|notSupported
-parameter_list|()
+name|registerWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
 function_decl|;
-DECL|method|nameGoogle ()
+DECL|method|linkWith (String who)
 name|String
-name|nameGoogle
-parameter_list|()
-function_decl|;
-DECL|method|nameYahoo ()
+name|linkWith
+parameter_list|(
 name|String
-name|nameYahoo
-parameter_list|()
-function_decl|;
-DECL|method|whatIsOpenIDHtml ()
-name|String
-name|whatIsOpenIDHtml
-parameter_list|()
+name|who
+parameter_list|)
 function_decl|;
 block|}
 end_interface
