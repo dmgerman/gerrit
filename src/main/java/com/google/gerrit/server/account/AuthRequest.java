@@ -192,6 +192,11 @@ specifier|final
 name|String
 name|externalId
 decl_stmt|;
+DECL|field|password
+specifier|private
+name|String
+name|password
+decl_stmt|;
 DECL|field|displayName
 specifier|private
 name|String
@@ -283,6 +288,31 @@ block|}
 return|return
 literal|null
 return|;
+block|}
+DECL|method|getPassword ()
+specifier|public
+name|String
+name|getPassword
+parameter_list|()
+block|{
+return|return
+name|password
+return|;
+block|}
+DECL|method|setPassword (final String pass)
+specifier|public
+name|void
+name|setPassword
+parameter_list|(
+specifier|final
+name|String
+name|pass
+parameter_list|)
+block|{
+name|password
+operator|=
+name|pass
+expr_stmt|;
 block|}
 DECL|method|getDisplayName ()
 specifier|public

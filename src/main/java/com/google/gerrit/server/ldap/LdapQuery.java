@@ -487,6 +487,12 @@ DECL|class|Result
 class|class
 name|Result
 block|{
+DECL|field|dn
+specifier|private
+specifier|final
+name|String
+name|dn
+decl_stmt|;
 DECL|field|atts
 specifier|private
 specifier|final
@@ -517,6 +523,13 @@ parameter_list|)
 throws|throws
 name|NamingException
 block|{
+name|dn
+operator|=
+name|sr
+operator|.
+name|getNameInNamespace
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|returnAttributes
@@ -659,12 +672,18 @@ name|put
 argument_list|(
 literal|"dn"
 argument_list|,
-name|sr
-operator|.
-name|getNameInNamespace
-argument_list|()
+name|dn
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getDN ()
+name|String
+name|getDN
+parameter_list|()
+block|{
+return|return
+name|dn
+return|;
 block|}
 DECL|method|get (final String attName)
 name|String
@@ -712,12 +731,8 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|atts
-operator|.
-name|get
-argument_list|(
-literal|"dn"
-argument_list|)
+name|getDN
+argument_list|()
 return|;
 block|}
 block|}

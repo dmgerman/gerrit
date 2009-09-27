@@ -1082,6 +1082,9 @@ block|{
 case|case
 name|HTTP_LDAP
 case|:
+case|case
+name|LDAP
+case|:
 name|install
 argument_list|(
 operator|new

@@ -84,6 +84,10 @@ comment|/**    * Login relies upon the container/web server security, but also u
 DECL|enumConstant|HTTP_LDAP
 name|HTTP_LDAP
 block|,
+comment|/**    * Login collects username and password through a web form, and binds to LDAP.    *<p>    * Unlike {@link #HTTP_LDAP}, Gerrit presents a sign-in dialog to the user and    * makes the connection to the LDAP server on their behalf.    */
+DECL|enumConstant|LDAP
+name|LDAP
+block|,
 comment|/** Development mode to enable becoming anyone you want. */
 DECL|enumConstant|DEVELOPMENT_BECOME_ANY_ACCOUNT
 name|DEVELOPMENT_BECOME_ANY_ACCOUNT
