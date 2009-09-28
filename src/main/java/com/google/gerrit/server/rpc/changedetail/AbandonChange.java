@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.rpc.patch
+DECL|package|com.google.gerrit.server.rpc.changedetail
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|server
 operator|.
 name|rpc
 operator|.
-name|patch
+name|changedetail
 package|;
 end_package
 

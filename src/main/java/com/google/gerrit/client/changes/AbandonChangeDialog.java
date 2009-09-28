@@ -532,9 +532,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|PatchUtil
+name|Util
 operator|.
-name|DETAIL_SVC
+name|MANAGE_SVC
 operator|.
 name|abandonChange
 argument_list|(
