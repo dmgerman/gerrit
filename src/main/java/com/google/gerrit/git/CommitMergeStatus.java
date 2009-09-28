@@ -100,6 +100,14 @@ block|,
 comment|/** */
 DECL|enumConstant|CRISS_CROSS_MERGE
 name|CRISS_CROSS_MERGE
+block|,
+comment|/** */
+DECL|enumConstant|CANNOT_CHERRY_PICK_ROOT
+name|CANNOT_CHERRY_PICK_ROOT
+block|,
+comment|/** */
+DECL|enumConstant|NOT_FAST_FORWARD
+name|NOT_FAST_FORWARD
 block|; }
 end_enum
 
