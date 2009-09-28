@@ -450,6 +450,16 @@ name|String
 name|reviewed
 parameter_list|()
 function_decl|;
+DECL|method|submitFailed ()
+name|String
+name|submitFailed
+parameter_list|()
+function_decl|;
+DECL|method|buttonClose ()
+name|String
+name|buttonClose
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

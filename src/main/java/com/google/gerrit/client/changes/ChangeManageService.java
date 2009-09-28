@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|reviewdb
+name|data
 operator|.
-name|ApprovalCategoryValue
+name|ChangeDetail
 import|;
 end_import
 
@@ -146,20 +146,6 @@ name|RemoteJsonService
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
-name|VoidResult
-import|;
-end_import
-
 begin_interface
 DECL|interface|ChangeManageService
 specifier|public
@@ -170,15 +156,10 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|SignInRequired
-DECL|method|patchSetAction (ApprovalCategoryValue.Id value, PatchSet.Id patchSetId, AsyncCallback<VoidResult> callback)
+DECL|method|submit (PatchSet.Id patchSetId, AsyncCallback<ChangeDetail> callback)
 name|void
-name|patchSetAction
+name|submit
 parameter_list|(
-name|ApprovalCategoryValue
-operator|.
-name|Id
-name|value
-parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -186,14 +167,14 @@ name|patchSetId
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|ChangeDetail
 argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|abandonChange (PatchSet.Id patchSetId, String message, AsyncCallback<VoidResult> callback)
+DECL|method|abandonChange (PatchSet.Id patchSetId, String message, AsyncCallback<ChangeDetail> callback)
 name|void
 name|abandonChange
 parameter_list|(
@@ -207,7 +188,7 @@ name|message
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|ChangeDetail
 argument_list|>
 name|callback
 parameter_list|)

@@ -146,13 +146,10 @@ name|int
 name|id
 parameter_list|)
 function_decl|;
-DECL|method|patchSetAction (String action, int id)
+DECL|method|submitPatchSet (int id)
 name|String
-name|patchSetAction
+name|submitPatchSet
 parameter_list|(
-name|String
-name|action
-parameter_list|,
 name|int
 name|id
 parameter_list|)

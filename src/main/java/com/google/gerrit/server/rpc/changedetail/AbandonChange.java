@@ -78,9 +78,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|reviewdb
+name|data
 operator|.
-name|Change
+name|ChangeDetail
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|client
 operator|.
 name|reviewdb
 operator|.
-name|PatchSetApproval
+name|Change
 import|;
 end_import
 
@@ -144,7 +144,39 @@ name|client
 operator|.
 name|reviewdb
 operator|.
+name|PatchSetApproval
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|reviewdb
+operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NoSuchEntityException
 import|;
 end_import
 
@@ -234,6 +266,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|patch
+operator|.
+name|PatchSetInfoNotAvailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -269,20 +317,6 @@ operator|.
 name|rpc
 operator|.
 name|Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
-name|VoidResult
 import|;
 end_import
 
@@ -381,7 +415,7 @@ name|AbandonChange
 extends|extends
 name|Handler
 argument_list|<
-name|VoidResult
+name|ChangeDetail
 argument_list|>
 block|{
 DECL|interface|Factory
@@ -430,6 +464,14 @@ operator|.
 name|Factory
 name|abandonedSenderFactory
 decl_stmt|;
+DECL|field|changeDetailFactory
+specifier|private
+specifier|final
+name|ChangeDetailFactory
+operator|.
+name|Factory
+name|changeDetailFactory
+decl_stmt|;
 DECL|field|patchSetId
 specifier|private
 specifier|final
@@ -448,7 +490,7 @@ name|message
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final AbandonedSender.Factory abandonedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message)
+DECL|method|AbandonChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final AbandonedSender.Factory abandonedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message)
 name|AbandonChange
 parameter_list|(
 specifier|final
@@ -470,6 +512,12 @@ name|AbandonedSender
 operator|.
 name|Factory
 name|abandonedSenderFactory
+parameter_list|,
+specifier|final
+name|ChangeDetailFactory
+operator|.
+name|Factory
+name|changeDetailFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -514,6 +562,12 @@ name|abandonedSenderFactory
 expr_stmt|;
 name|this
 operator|.
+name|changeDetailFactory
+operator|=
+name|changeDetailFactory
+expr_stmt|;
+name|this
+operator|.
 name|patchSetId
 operator|=
 name|patchSetId
@@ -529,7 +583,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|VoidResult
+name|ChangeDetail
 name|call
 parameter_list|()
 throws|throws
@@ -538,6 +592,10 @@ throws|,
 name|OrmException
 throws|,
 name|EmailException
+throws|,
+name|NoSuchEntityException
+throws|,
+name|PatchSetInfoNotAvailableException
 block|{
 specifier|final
 name|Change
@@ -803,9 +861,15 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
-name|VoidResult
+name|changeDetailFactory
 operator|.
-name|INSTANCE
+name|create
+argument_list|(
+name|changeId
+argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 DECL|method|doAbandonChange (final String message, final Change change, final PatchSet.Id psid, final ChangeMessage cm, final ReviewDb db, final Transaction txn)
