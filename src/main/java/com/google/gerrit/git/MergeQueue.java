@@ -80,6 +80,18 @@ name|Branch
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
 begin_interface
 DECL|interface|MergeQueue
 specifier|public
@@ -104,6 +116,22 @@ name|Branch
 operator|.
 name|NameKey
 name|branch
+parameter_list|)
+function_decl|;
+DECL|method|recheckAfter (Branch.NameKey branch, long delay, TimeUnit delayUnit)
+name|void
+name|recheckAfter
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|branch
+parameter_list|,
+name|long
+name|delay
+parameter_list|,
+name|TimeUnit
+name|delayUnit
 parameter_list|)
 function_decl|;
 block|}

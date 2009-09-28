@@ -192,19 +192,17 @@ return|return
 name|r
 return|;
 block|}
-comment|/**    * Unique key of the PatchSet entity from the code review system.    *<p>    * This value is only available on commits that have a PatchSet represented in    * the code review system and whose PatchSet is in the current submit queue.    * Merge commits created during the merge or commits that aren't in the submit    * queue will keep this member null.    */
+comment|/**    * Unique key of the PatchSet entity from the code review system.    *<p>    * This value is only available on commits that have a PatchSet represented in    * the code review system.    */
 DECL|field|patchsetId
 name|PatchSet
 operator|.
 name|Id
 name|patchsetId
 decl_stmt|;
-comment|/** Unique key of the change itself. */
-DECL|field|changeKey
+comment|/** The change containing {@link #patchsetId} . */
+DECL|field|change
 name|Change
-operator|.
-name|Key
-name|changeKey
+name|change
 decl_stmt|;
 comment|/**    * Ordinal position of this commit within the submit queue.    *<p>    * Only valid if {@link #patchsetId} is not null.    */
 DECL|field|originalOrder
@@ -253,11 +251,11 @@ name|src
 operator|.
 name|patchsetId
 expr_stmt|;
-name|changeKey
+name|change
 operator|=
 name|src
 operator|.
-name|changeKey
+name|change
 expr_stmt|;
 name|originalOrder
 operator|=
