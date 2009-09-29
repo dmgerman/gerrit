@@ -115,6 +115,11 @@ argument_list|>
 name|getHostKeys
 parameter_list|()
 function_decl|;
+DECL|method|getSshdAddress ()
+name|String
+name|getSshdAddress
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
