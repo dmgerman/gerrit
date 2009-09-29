@@ -404,6 +404,15 @@ argument_list|)
 expr_stmt|;
 name|appendText
 argument_list|(
+literal|"    "
+operator|+
+name|pullUrl
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|appendText
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
