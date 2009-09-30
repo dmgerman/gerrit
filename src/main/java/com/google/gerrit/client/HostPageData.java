@@ -111,11 +111,6 @@ specifier|public
 name|Account
 name|userAccount
 decl_stmt|;
-DECL|field|xsrfToken
-specifier|public
-name|String
-name|xsrfToken
-decl_stmt|;
 DECL|field|config
 specifier|public
 name|GerritConfig

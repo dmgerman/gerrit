@@ -436,15 +436,6 @@ name|CurrentUser
 argument_list|>
 name|currentUser
 decl_stmt|;
-DECL|field|webSession
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|WebSession
-argument_list|>
-name|webSession
-decl_stmt|;
 DECL|field|sitePath
 specifier|private
 specifier|final
@@ -480,7 +471,7 @@ name|hostDoc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final Provider<WebSession> ws, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final Provider<String> up, @CanonicalWebUrl @Nullable final String configuredUrl, final ServletContext servletContext)
+DECL|method|HostPageServlet (final Provider<CurrentUser> cu, @SitePath final File path, final GerritConfig gc, @CanonicalWebUrl @Nullable final Provider<String> up, @CanonicalWebUrl @Nullable final String configuredUrl, final ServletContext servletContext)
 name|HostPageServlet
 parameter_list|(
 specifier|final
@@ -489,13 +480,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|cu
-parameter_list|,
-specifier|final
-name|Provider
-argument_list|<
-name|WebSession
-argument_list|>
-name|ws
 parameter_list|,
 annotation|@
 name|SitePath
@@ -536,10 +520,6 @@ block|{
 name|currentUser
 operator|=
 name|cu
-expr_stmt|;
-name|webSession
-operator|=
-name|ws
 expr_stmt|;
 name|urlProvider
 operator|=
@@ -1417,18 +1397,6 @@ operator|instanceof
 name|IdentifiedUser
 condition|)
 block|{
-name|pageData
-operator|.
-name|xsrfToken
-operator|=
-name|webSession
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getToken
-argument_list|()
-expr_stmt|;
 name|pageData
 operator|.
 name|userAccount
