@@ -122,6 +122,22 @@ name|String
 name|string
 parameter_list|)
 function_decl|;
+DECL|method|changesMergedInProject (String string)
+name|String
+name|changesMergedInProject
+parameter_list|(
+name|String
+name|string
+parameter_list|)
+function_decl|;
+DECL|method|changesAbandonedInProject (String string)
+name|String
+name|changesAbandonedInProject
+parameter_list|(
+name|String
+name|string
+parameter_list|)
+function_decl|;
 DECL|method|changeScreenTitleId (String changeId)
 name|String
 name|changeScreenTitleId

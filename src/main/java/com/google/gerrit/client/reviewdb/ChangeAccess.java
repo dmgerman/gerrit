@@ -466,6 +466,68 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE open = false AND status = ? AND dest.projectName = ? AND sortKey> ?"
+operator|+
+literal|" ORDER BY sortKey LIMIT ?"
+argument_list|)
+DECL|method|byProjectClosedPrev (char status, Project.NameKey p, String sortKey, int limit)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProjectClosedPrev
+parameter_list|(
+name|char
+name|status
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|String
+name|sortKey
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE open = false AND status = ? AND dest.projectName = ? AND sortKey< ?"
+operator|+
+literal|" ORDER BY sortKey DESC LIMIT ?"
+argument_list|)
+DECL|method|byProjectClosedNext (char status, Project.NameKey p, String sortKey, int limit)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProjectClosedNext
+parameter_list|(
+name|char
+name|status
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|String
+name|sortKey
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE open = false AND status = ? AND sortKey> ? ORDER BY sortKey LIMIT ?"
 argument_list|)
 DECL|method|allClosedPrev (char status, String sortKey, int limit)
