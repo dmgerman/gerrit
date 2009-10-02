@@ -349,6 +349,21 @@ expr_stmt|;
 name|formatChangeDetail
 argument_list|()
 expr_stmt|;
+name|appendText
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|appendText
+argument_list|(
+literal|"  "
+operator|+
+name|getPullUrl
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|formatSalutation ()
 specifier|private
@@ -361,13 +376,6 @@ name|String
 name|changeUrl
 init|=
 name|getChangeUrl
-argument_list|()
-decl_stmt|;
-specifier|final
-name|String
-name|pullUrl
-init|=
-name|getPullUrl
 argument_list|()
 decl_stmt|;
 if|if
@@ -398,15 +406,6 @@ argument_list|(
 literal|"    "
 operator|+
 name|changeUrl
-operator|+
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"    "
-operator|+
-name|pullUrl
 operator|+
 literal|"\n"
 argument_list|)
@@ -512,47 +511,6 @@ argument_list|(
 literal|"    "
 operator|+
 name|changeUrl
-operator|+
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"    "
-operator|+
-name|pullUrl
-operator|+
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"to review the following change:\n"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|appendText
-argument_list|(
-literal|"  Please execute\n"
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
-literal|"    "
-operator|+
-name|pullUrl
 operator|+
 literal|"\n"
 argument_list|)
