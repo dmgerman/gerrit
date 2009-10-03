@@ -308,6 +308,62 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+comment|/**    * Get all closed changes with same status, more recent than pos, fetching at    * most limit rows.    */
+DECL|method|byProjectClosedPrev (Project.NameKey project, Change.Status status, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|byProjectClosedPrev
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|,
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/**    * Get all closed changes with same status, older than pos, fetching at most    * limit rows.    */
+DECL|method|byProjectClosedNext (Project.NameKey project, Change.Status status, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|byProjectClosedNext
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|,
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 comment|/** Get all closed changes more recent than pos, fetching at most limit rows. */
 DECL|method|allClosedPrev (Change.Status status, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
 name|void
@@ -460,7 +516,7 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-comment|/**    * Add and/or remove changes from the set of starred changes of the caller.    *     * @param req the add and remove cluster.    */
+comment|/**    * Add and/or remove changes from the set of starred changes of the caller.    *    * @param req the add and remove cluster.    */
 annotation|@
 name|SignInRequired
 DECL|method|toggleStars (ToggleStarRequest req, AsyncCallback<VoidResult> callback)

@@ -408,7 +408,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|ProjectOpenLink
+name|ProjectLink
 import|;
 end_import
 
@@ -2050,7 +2050,7 @@ argument_list|,
 name|C_PROJECT
 argument_list|,
 operator|new
-name|ProjectOpenLink
+name|ProjectLink
 argument_list|(
 name|c
 operator|.
@@ -2058,6 +2058,11 @@ name|getProject
 argument_list|()
 operator|.
 name|getKey
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getStatus
 argument_list|()
 argument_list|)
 argument_list|)

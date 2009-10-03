@@ -174,7 +174,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|ProjectOpenLink
+name|ProjectLink
 import|;
 end_import
 
@@ -666,11 +666,16 @@ argument_list|,
 literal|1
 argument_list|,
 operator|new
-name|ProjectOpenLink
+name|ProjectLink
 argument_list|(
 name|chg
 operator|.
 name|getProject
+argument_list|()
+argument_list|,
+name|chg
+operator|.
+name|getStatus
 argument_list|()
 argument_list|)
 argument_list|)

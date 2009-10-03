@@ -92,6 +92,24 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|reviewdb
+operator|.
+name|Change
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|GerritCallback
@@ -142,7 +160,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|ProjectOpenLink
+name|ProjectLink
 import|;
 end_import
 
@@ -1609,7 +1627,7 @@ argument_list|,
 literal|2
 argument_list|,
 operator|new
-name|ProjectOpenLink
+name|ProjectLink
 argument_list|(
 name|k
 operator|.
@@ -1618,6 +1636,10 @@ argument_list|()
 operator|.
 name|getNameKey
 argument_list|()
+argument_list|,
+name|Status
+operator|.
+name|NEW
 argument_list|)
 argument_list|)
 expr_stmt|;
