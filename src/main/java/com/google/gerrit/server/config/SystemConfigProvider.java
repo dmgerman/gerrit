@@ -1765,6 +1765,20 @@ name|value
 argument_list|(
 name|cat
 argument_list|,
+literal|2
+argument_list|,
+literal|"Upload permission"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|vals
+operator|.
+name|add
+argument_list|(
+name|value
+argument_list|(
+name|cat
+argument_list|,
 literal|1
 argument_list|,
 literal|"Read access"
@@ -1853,7 +1867,7 @@ argument_list|(
 operator|(
 name|short
 operator|)
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
 name|read
