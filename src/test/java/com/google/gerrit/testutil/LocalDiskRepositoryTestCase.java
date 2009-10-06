@@ -162,7 +162,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -176,7 +176,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -190,7 +190,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -204,7 +204,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -218,7 +218,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -232,7 +232,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -981,9 +981,25 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|createWorkRepository ()
+specifier|protected
+name|Repository
+name|createWorkRepository
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|createRepository
+argument_list|(
+literal|false
+comment|/* not bare */
+argument_list|)
+return|;
+block|}
 comment|/** Creates a new empty repository. */
 DECL|method|createRepository (boolean bare)
-specifier|protected
+specifier|private
 name|Repository
 name|createRepository
 parameter_list|(

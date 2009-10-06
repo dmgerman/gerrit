@@ -296,7 +296,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -310,7 +310,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -324,7 +324,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -338,7 +338,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -352,7 +352,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -366,7 +366,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -380,7 +380,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -394,7 +394,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -1011,7 +1011,7 @@ block|}
 specifier|final
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -1023,7 +1023,7 @@ init|=
 operator|new
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.

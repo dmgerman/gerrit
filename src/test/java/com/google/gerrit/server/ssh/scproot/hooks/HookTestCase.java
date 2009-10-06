@@ -232,7 +232,7 @@ begin_import
 import|import
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -303,11 +303,8 @@ argument_list|()
 expr_stmt|;
 name|repository
 operator|=
-name|createRepository
-argument_list|(
-literal|false
-comment|/* not bare */
-argument_list|)
+name|createWorkRepository
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getHook (final String name)

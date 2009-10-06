@@ -52,11 +52,11 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|org.spearce.jgit.diff
+DECL|package|org.eclipse.jgit.diff
 package|package
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.

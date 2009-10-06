@@ -331,7 +331,7 @@ name|registerTypeAdapter
 argument_list|(
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.
@@ -344,7 +344,7 @@ argument_list|,
 operator|new
 name|org
 operator|.
-name|spearce
+name|eclipse
 operator|.
 name|jgit
 operator|.

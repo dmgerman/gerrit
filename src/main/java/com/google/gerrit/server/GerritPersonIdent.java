@@ -103,7 +103,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a {@link org.spearce.jgit.lib.PersonIdent} pointing to the identity representing Gerrit  * server itself.  */
+comment|/**  * Marker on a {@link org.eclipse.jgit.lib.PersonIdent} pointing to the identity representing Gerrit  * server itself.  */
 end_comment
 
 begin_annotation_defn
