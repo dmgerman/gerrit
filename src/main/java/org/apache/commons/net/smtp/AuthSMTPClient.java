@@ -573,13 +573,21 @@ name|line
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|line
 operator|.
 name|startsWith
 argument_list|(
 literal|"250 AUTH "
 argument_list|)
-condition|)
+operator|||
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"250-AUTH "
+argument_list|)
+operator|)
 block|{
 name|authTypes
 operator|=
