@@ -626,10 +626,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|types
+literal|""
 operator|.
-name|isEmpty
-argument_list|()
+name|equals
+argument_list|(
+name|authTypes
+argument_list|)
 condition|)
 block|{
 comment|// Server didn't advertise authentication support.
