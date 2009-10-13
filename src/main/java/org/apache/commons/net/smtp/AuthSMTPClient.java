@@ -588,6 +588,7 @@ argument_list|(
 literal|"250-AUTH "
 argument_list|)
 operator|)
+condition|)
 block|{
 name|authTypes
 operator|=
