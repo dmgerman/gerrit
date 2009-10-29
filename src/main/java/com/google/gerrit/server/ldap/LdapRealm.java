@@ -2733,8 +2733,6 @@ parameter_list|,
 name|String
 name|dn
 parameter_list|)
-throws|throws
-name|NamingException
 block|{
 name|ArrayList
 argument_list|<
