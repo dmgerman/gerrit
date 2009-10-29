@@ -200,6 +200,23 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|SecondaryKey
+argument_list|(
+literal|"externalName"
+argument_list|)
+DECL|method|get (AccountGroup.ExternalNameKey name)
+name|AccountGroup
+name|get
+parameter_list|(
+name|AccountGroup
+operator|.
+name|ExternalNameKey
+name|name
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
 name|Query
 argument_list|(
 literal|"ORDER BY name"

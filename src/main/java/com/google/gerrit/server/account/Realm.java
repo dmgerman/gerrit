@@ -76,22 +76,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|admin
-operator|.
-name|GroupDetail
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -111,16 +95,6 @@ operator|.
 name|reviewdb
 operator|.
 name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -199,21 +173,6 @@ name|lookup
 parameter_list|(
 name|String
 name|accountName
-parameter_list|)
-function_decl|;
-comment|/** Obtain detailed properties about this group, for display to owners. */
-DECL|method|getProperties (AccountGroup group)
-specifier|public
-name|List
-argument_list|<
-name|GroupDetail
-operator|.
-name|RealmProperty
-argument_list|>
-name|getProperties
-parameter_list|(
-name|AccountGroup
-name|group
 parameter_list|)
 function_decl|;
 block|}

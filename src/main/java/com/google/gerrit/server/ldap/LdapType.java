@@ -236,12 +236,6 @@ return|return
 name|RFC_2307
 return|;
 block|}
-DECL|method|groupName ()
-specifier|abstract
-name|String
-name|groupName
-parameter_list|()
-function_decl|;
 DECL|method|groupMemberPattern ()
 specifier|abstract
 name|String
@@ -286,17 +280,6 @@ name|Rfc2307
 extends|extends
 name|LdapType
 block|{
-annotation|@
-name|Override
-DECL|method|groupName ()
-name|String
-name|groupName
-parameter_list|()
-block|{
-return|return
-literal|"cn"
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|groupMemberPattern ()
@@ -508,17 +491,6 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|groupName ()
-name|String
-name|groupName
-parameter_list|()
-block|{
-return|return
-literal|"cn"
-return|;
 block|}
 annotation|@
 name|Override

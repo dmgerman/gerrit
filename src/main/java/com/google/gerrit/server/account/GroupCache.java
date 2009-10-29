@@ -103,6 +103,17 @@ name|Id
 name|groupId
 parameter_list|)
 function_decl|;
+DECL|method|get (AccountGroup.ExternalNameKey externalName)
+specifier|public
+name|AccountGroup
+name|get
+parameter_list|(
+name|AccountGroup
+operator|.
+name|ExternalNameKey
+name|externalName
+parameter_list|)
+function_decl|;
 DECL|method|evict (AccountGroup group)
 specifier|public
 name|void

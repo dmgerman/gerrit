@@ -222,22 +222,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|Realm
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|rpc
 operator|.
 name|Handler
@@ -369,12 +353,6 @@ specifier|final
 name|GroupCache
 name|groupCache
 decl_stmt|;
-DECL|field|realm
-specifier|private
-specifier|final
-name|Realm
-name|realm
-decl_stmt|;
 DECL|field|aic
 specifier|private
 specifier|final
@@ -396,7 +374,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupDetailFactory (final ReviewDb db, final GroupControl.Factory groupControl, final GroupCache groupCache, final Realm realm, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, @Assisted final AccountGroup.Id groupId)
+DECL|method|GroupDetailFactory (final ReviewDb db, final GroupControl.Factory groupControl, final GroupCache groupCache, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, @Assisted final AccountGroup.Id groupId)
 name|GroupDetailFactory
 parameter_list|(
 specifier|final
@@ -412,10 +390,6 @@ parameter_list|,
 specifier|final
 name|GroupCache
 name|groupCache
-parameter_list|,
-specifier|final
-name|Realm
-name|realm
 parameter_list|,
 specifier|final
 name|AccountInfoCacheFactory
@@ -449,12 +423,6 @@ operator|.
 name|groupCache
 operator|=
 name|groupCache
-expr_stmt|;
-name|this
-operator|.
-name|realm
-operator|=
-name|realm
 expr_stmt|;
 name|this
 operator|.
@@ -529,18 +497,6 @@ name|group
 operator|.
 name|getOwnerGroupId
 argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|detail
-operator|.
-name|setRealmProperties
-argument_list|(
-name|realm
-operator|.
-name|getProperties
-argument_list|(
-name|group
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -211,6 +211,93 @@ name|newValue
 expr_stmt|;
 block|}
 block|}
+comment|/** Distinguished name, within organization directory server. */
+DECL|class|ExternalNameKey
+specifier|public
+specifier|static
+class|class
+name|ExternalNameKey
+extends|extends
+name|StringKey
+argument_list|<
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Key
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+annotation|@
+name|Column
+DECL|field|name
+specifier|protected
+name|String
+name|name
+decl_stmt|;
+DECL|method|ExternalNameKey ()
+specifier|protected
+name|ExternalNameKey
+parameter_list|()
+block|{     }
+DECL|method|ExternalNameKey (final String n)
+specifier|public
+name|ExternalNameKey
+parameter_list|(
+specifier|final
+name|String
+name|n
+parameter_list|)
+block|{
+name|name
+operator|=
+name|n
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|String
+name|get
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|set (String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|newValue
+parameter_list|)
+block|{
+name|name
+operator|=
+name|newValue
+expr_stmt|;
+block|}
+block|}
 comment|/** Synthetic key to link to within the database */
 DECL|class|Id
 specifier|public
@@ -382,6 +469,19 @@ specifier|protected
 name|boolean
 name|automaticMembership
 decl_stmt|;
+comment|/** Distinguished name in the directory server. */
+annotation|@
+name|Column
+argument_list|(
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|externalName
+specifier|protected
+name|ExternalNameKey
+name|externalName
+decl_stmt|;
 DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
@@ -533,6 +633,10 @@ parameter_list|()
 block|{
 return|return
 name|automaticMembership
+operator|||
+name|externalName
+operator|!=
+literal|null
 return|;
 block|}
 DECL|method|setAutomaticMembership (final boolean auto)
@@ -548,6 +652,31 @@ block|{
 name|automaticMembership
 operator|=
 name|auto
+expr_stmt|;
+block|}
+DECL|method|getExternalNameKey ()
+specifier|public
+name|ExternalNameKey
+name|getExternalNameKey
+parameter_list|()
+block|{
+return|return
+name|externalName
+return|;
+block|}
+DECL|method|setExternalNameKey (final ExternalNameKey k)
+specifier|public
+name|void
+name|setExternalNameKey
+parameter_list|(
+specifier|final
+name|ExternalNameKey
+name|k
+parameter_list|)
+block|{
+name|externalName
+operator|=
+name|k
 expr_stmt|;
 block|}
 block|}
