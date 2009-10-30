@@ -418,6 +418,24 @@ name|r
 return|;
 block|}
 block|}
+DECL|enum|Type
+specifier|public
+specifier|static
+enum|enum
+name|Type
+block|{
+comment|/** System defined and managed group, e.g. anonymous users. */
+DECL|enumConstant|SYSTEM
+name|SYSTEM
+block|,
+comment|/** Group defined within our database. */
+DECL|enumConstant|INTERNAL
+name|INTERNAL
+block|,
+comment|/** Group defined by external LDAP database. */
+DECL|enumConstant|LDAP
+name|LDAP
+block|;   }
 comment|/** Unique name of this group within the system. */
 annotation|@
 name|Column
@@ -464,10 +482,15 @@ decl_stmt|;
 comment|/** Is the membership managed by some external means? */
 annotation|@
 name|Column
-DECL|field|automaticMembership
+argument_list|(
+name|length
+operator|=
+literal|8
+argument_list|)
+DECL|field|groupType
 specifier|protected
-name|boolean
-name|automaticMembership
+name|String
+name|groupType
 decl_stmt|;
 comment|/** Distinguished name in the directory server. */
 annotation|@
@@ -625,33 +648,37 @@ operator|=
 name|id
 expr_stmt|;
 block|}
-DECL|method|isAutomaticMembership ()
+DECL|method|getType ()
 specifier|public
-name|boolean
-name|isAutomaticMembership
+name|Type
+name|getType
 parameter_list|()
 block|{
 return|return
-name|automaticMembership
-operator|||
-name|externalName
-operator|!=
-literal|null
+name|Type
+operator|.
+name|valueOf
+argument_list|(
+name|groupType
+argument_list|)
 return|;
 block|}
-DECL|method|setAutomaticMembership (final boolean auto)
+DECL|method|setType (final Type t)
 specifier|public
 name|void
-name|setAutomaticMembership
+name|setType
 parameter_list|(
 specifier|final
-name|boolean
-name|auto
+name|Type
+name|t
 parameter_list|)
 block|{
-name|automaticMembership
+name|groupType
 operator|=
-name|auto
+name|t
+operator|.
+name|name
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getExternalNameKey ()

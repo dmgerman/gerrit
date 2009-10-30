@@ -743,9 +743,13 @@ argument_list|)
 decl_stmt|;
 name|g
 operator|.
-name|setAutomaticMembership
+name|setType
 argument_list|(
-literal|true
+name|AccountGroup
+operator|.
+name|Type
+operator|.
+name|SYSTEM
 argument_list|)
 expr_stmt|;
 name|g

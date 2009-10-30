@@ -140,6 +140,16 @@ name|String
 name|buttonChangeGroupOwner
 parameter_list|()
 function_decl|;
+DECL|method|buttonChangeGroupType ()
+name|String
+name|buttonChangeGroupType
+parameter_list|()
+function_decl|;
+DECL|method|buttonSelectGroup ()
+name|String
+name|buttonSelectGroup
+parameter_list|()
+function_decl|;
 DECL|method|buttonAddProjectRight ()
 name|String
 name|buttonAddProjectRight
@@ -175,9 +185,19 @@ name|String
 name|headingSubmitType
 parameter_list|()
 function_decl|;
+DECL|method|headingGroupType ()
+name|String
+name|headingGroupType
+parameter_list|()
+function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
+parameter_list|()
+function_decl|;
+DECL|method|headingExternalGroup ()
+name|String
+name|headingExternalGroup
 parameter_list|()
 function_decl|;
 DECL|method|headingCreateGroup ()
@@ -213,6 +233,21 @@ function_decl|;
 DECL|method|projectSubmitType_CHERRY_PICK ()
 name|String
 name|projectSubmitType_CHERRY_PICK
+parameter_list|()
+function_decl|;
+DECL|method|groupType_SYSTEM ()
+name|String
+name|groupType_SYSTEM
+parameter_list|()
+function_decl|;
+DECL|method|groupType_INTERNAL ()
+name|String
+name|groupType_INTERNAL
+parameter_list|()
+function_decl|;
+DECL|method|groupType_LDAP ()
+name|String
+name|groupType_LDAP
 parameter_list|()
 function_decl|;
 DECL|method|columnMember ()
@@ -328,6 +363,16 @@ function_decl|;
 DECL|method|projectAdminTabAccess ()
 name|String
 name|projectAdminTabAccess
+parameter_list|()
+function_decl|;
+DECL|method|noGroupSelected ()
+name|String
+name|noGroupSelected
+parameter_list|()
+function_decl|;
+DECL|method|errorNoMatchingGroups ()
+name|String
+name|errorNoMatchingGroups
 parameter_list|()
 function_decl|;
 block|}

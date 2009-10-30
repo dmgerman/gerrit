@@ -265,7 +265,7 @@ name|String
 index|[]
 name|returnAttributes
 decl_stmt|;
-DECL|method|LdapQuery (final String base, final SearchScope searchScope, final String pattern, final Set<String> returnAttributes)
+DECL|method|LdapQuery (final String base, final SearchScope searchScope, final ParamertizedString pattern, final Set<String> returnAttributes)
 name|LdapQuery
 parameter_list|(
 specifier|final
@@ -277,7 +277,7 @@ name|SearchScope
 name|searchScope
 parameter_list|,
 specifier|final
-name|String
+name|ParamertizedString
 name|pattern
 parameter_list|,
 specifier|final
@@ -304,11 +304,7 @@ name|this
 operator|.
 name|pattern
 operator|=
-operator|new
-name|ParamertizedString
-argument_list|(
 name|pattern
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
