@@ -87,6 +87,7 @@ end_comment
 begin_class
 DECL|class|SignInDialog
 specifier|public
+specifier|abstract
 class|class
 name|SignInDialog
 extends|extends

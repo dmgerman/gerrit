@@ -2327,13 +2327,15 @@ name|execute
 parameter_list|()
 block|{
 operator|new
-name|SignInDialog
+name|OpenIdSignInDialog
 argument_list|(
 name|SignInDialog
 operator|.
 name|Mode
 operator|.
 name|REGISTER
+argument_list|,
+literal|null
 argument_list|)
 operator|.
 name|center
