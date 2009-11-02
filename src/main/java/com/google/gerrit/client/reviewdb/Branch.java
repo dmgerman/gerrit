@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Registered line of development within a {@link Project}. */
+comment|/** Line of development within a {@link Project}. */
 end_comment
 
 begin_class
@@ -284,19 +284,15 @@ name|n
 return|;
 block|}
 block|}
-annotation|@
-name|Column
-argument_list|(
-name|name
-operator|=
-name|Column
-operator|.
-name|NONE
-argument_list|)
 DECL|field|name
 specifier|protected
 name|NameKey
 name|name
+decl_stmt|;
+DECL|field|revision
+specifier|protected
+name|RevId
+name|revision
 decl_stmt|;
 DECL|method|Branch ()
 specifier|protected
@@ -356,6 +352,31 @@ operator|.
 name|getShortName
 argument_list|()
 return|;
+block|}
+DECL|method|getRevision ()
+specifier|public
+name|RevId
+name|getRevision
+parameter_list|()
+block|{
+return|return
+name|revision
+return|;
+block|}
+DECL|method|setRevision (final RevId id)
+specifier|public
+name|void
+name|setRevision
+parameter_list|(
+specifier|final
+name|RevId
+name|id
+parameter_list|)
+block|{
+name|revision
+operator|=
+name|id
+expr_stmt|;
 block|}
 block|}
 end_class

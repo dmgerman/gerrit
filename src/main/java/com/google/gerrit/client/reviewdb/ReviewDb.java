@@ -271,13 +271,6 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
-DECL|method|branches ()
-name|BranchAccess
-name|branches
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
 DECL|method|changes ()
 name|ChangeAccess
 name|changes
