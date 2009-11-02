@@ -133,7 +133,7 @@ operator|=
 name|id
 expr_stmt|;
 block|}
-comment|/**    * Create an account description from a real data store record.    *     * @param a the data store record holding the specific account details.    */
+comment|/**    * Create an account description from a real data store record.    *    * @param a the data store record holding the specific account details.    */
 DECL|method|AccountInfo (final Account a)
 specifier|public
 name|AccountInfo

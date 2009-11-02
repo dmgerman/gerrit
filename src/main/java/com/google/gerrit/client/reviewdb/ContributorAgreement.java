@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An agreement {@link Account} must acknowledge to contribute changes.  *   * @see AccountAgreement  */
+comment|/**  * An agreement {@link Account} must acknowledge to contribute changes.  *  * @see AccountAgreement  */
 end_comment
 
 begin_class
@@ -268,7 +268,7 @@ specifier|protected
 name|ContributorAgreement
 parameter_list|()
 block|{   }
-comment|/**    * Create a new agreement.    *     * @param newId unique id, see {@link ReviewDb#nextAccountId()}.    * @param name a short title/name for the agreement.    */
+comment|/**    * Create a new agreement.    *    * @param newId unique id, see {@link ReviewDb#nextAccountId()}.    * @param name a short title/name for the agreement.    */
 DECL|method|ContributorAgreement (final ContributorAgreement.Id newId, final String name)
 specifier|public
 name|ContributorAgreement

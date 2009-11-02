@@ -101,7 +101,7 @@ name|boolean
 name|isEnabled
 parameter_list|()
 function_decl|;
-comment|/**    * Sends an email message.    *     * @param from who the message is from.    * @param rcpt one or more address where the message will be delivered to.    *        This list overrides any To or CC headers in {@code headers}.    * @param headers message headers.    * @param body text to appear in the body of the message.    * @throws EmailException the message cannot be sent.    */
+comment|/**    * Sends an email message.    *    * @param from who the message is from.    * @param rcpt one or more address where the message will be delivered to.    *        This list overrides any To or CC headers in {@code headers}.    * @param headers message headers.    * @param body text to appear in the body of the message.    * @throws EmailException the message cannot be sent.    */
 DECL|method|send (Address from, Collection<Address> rcpt, Map<String, EmailHeader> headers, String body)
 name|void
 name|send

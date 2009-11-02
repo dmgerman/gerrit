@@ -161,7 +161,7 @@ name|DirectScreenLink
 extends|extends
 name|InlineHyperlink
 block|{
-comment|/**    * Creates a link with its text and target history token specified.    *     * @param text the hyperlink's text    * @param historyToken the history token to which it will link    */
+comment|/**    * Creates a link with its text and target history token specified.    *    * @param text the hyperlink's text    * @param historyToken the history token to which it will link    */
 DECL|method|DirectScreenLink (final String text, final String historyToken)
 specifier|protected
 name|DirectScreenLink
