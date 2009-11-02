@@ -295,6 +295,11 @@ name|String
 name|columnBranchName
 parameter_list|()
 function_decl|;
+DECL|method|columnBranchRevision ()
+name|String
+name|columnBranchRevision
+parameter_list|()
+function_decl|;
 DECL|method|initialRevision ()
 name|String
 name|initialRevision
