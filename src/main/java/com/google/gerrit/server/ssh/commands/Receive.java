@@ -6214,6 +6214,16 @@ name|getTree
 argument_list|()
 condition|)
 block|{
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseBody
+argument_list|(
+name|prior
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|c
