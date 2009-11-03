@@ -349,11 +349,13 @@ operator|=
 name|accountMapper
 expr_stmt|;
 block|}
-comment|/**    * True if user identified by this external identity string has an account.    */
-DECL|method|exists (final String externalId)
+comment|/**    * @return user identified by this external identity string, or null.    */
+DECL|method|lookup (final String externalId)
 specifier|public
-name|boolean
-name|exists
+name|Account
+operator|.
+name|Id
+name|lookup
 parameter_list|(
 specifier|final
 name|String
@@ -375,7 +377,10 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-return|return
+specifier|final
+name|AccountExternalId
+name|ext
+init|=
 name|db
 operator|.
 name|accountExternalIds
@@ -391,7 +396,17 @@ argument_list|(
 name|externalId
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+name|ext
 operator|!=
+literal|null
+condition|?
+name|ext
+operator|.
+name|getAccountId
+argument_list|()
+else|:
 literal|null
 return|;
 block|}
