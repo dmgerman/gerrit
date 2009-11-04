@@ -483,7 +483,7 @@ literal|"sendemail"
 argument_list|,
 literal|null
 argument_list|,
-literal|"smtpuserpass"
+literal|"smtppass"
 argument_list|)
 expr_stmt|;
 name|allowrcpt
