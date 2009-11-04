@@ -842,6 +842,17 @@ argument_list|(
 literal|"Gerrit Site Administrators"
 argument_list|)
 expr_stmt|;
+name|admin
+operator|.
+name|setType
+argument_list|(
+name|AccountGroup
+operator|.
+name|Type
+operator|.
+name|INTERNAL
+argument_list|)
+expr_stmt|;
 name|c
 operator|.
 name|accountGroups
