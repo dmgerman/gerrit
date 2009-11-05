@@ -424,15 +424,15 @@ specifier|static
 enum|enum
 name|Type
 block|{
-comment|/** System defined and managed group, e.g. anonymous users. */
+comment|/**      * System defined and managed group, e.g. anonymous users.      *<p>      * These groups must be explicitly named by {@link SystemConfig} and are      * specially handled throughout the code. In UI contexts their membership is      * not displayed. When computing effective group membership for any given      * user account, these groups are automatically handled using specialized      * branch conditions.      */
 DECL|enumConstant|SYSTEM
 name|SYSTEM
 block|,
-comment|/** Group defined within our database. */
+comment|/**      * Group defined within our database.      *<p>      * An internal group has its membership fully enumerated in the database.      * The membership can be viewed and edited through the web UI by any user      * who is a member of the owner group. These groups are not treated special      * in the code.      */
 DECL|enumConstant|INTERNAL
 name|INTERNAL
 block|,
-comment|/** Group defined by external LDAP database. */
+comment|/**      * Group defined by external LDAP database.      *<p>      * A group whose membership is determined by the LDAP directory that we      * connect to for user and group information. In UI contexts the membership      * of the group is not displayed, as it may be exceedingly large, or might      * contain users who have never logged into this server before (and thus      * have no matching account record). Adding or removing users from an LDAP      * group requires making edits through the LDAP directory, and cannot be      * done through our UI.      */
 DECL|enumConstant|LDAP
 name|LDAP
 block|;   }
