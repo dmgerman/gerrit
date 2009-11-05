@@ -982,7 +982,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|anonymous
+name|registered
 operator|.
 name|setType
 argument_list|(
