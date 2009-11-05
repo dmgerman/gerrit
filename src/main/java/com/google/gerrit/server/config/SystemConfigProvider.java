@@ -364,6 +364,7 @@ end_comment
 
 begin_class
 DECL|class|SystemConfigProvider
+specifier|public
 class|class
 name|SystemConfigProvider
 implements|implements
@@ -401,6 +402,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|SystemConfigProvider (final SchemaFactory<ReviewDb> sf)
+specifier|public
 name|SystemConfigProvider
 parameter_list|(
 specifier|final

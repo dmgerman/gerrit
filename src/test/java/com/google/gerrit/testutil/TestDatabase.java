@@ -86,6 +86,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|SystemConfigProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -391,6 +407,26 @@ argument_list|()
 operator|.
 name|open
 argument_list|()
+return|;
+block|}
+comment|/** Ensure the database schema has been created and initialized. */
+DECL|method|create ()
+specifier|public
+name|TestDatabase
+name|create
+parameter_list|()
+block|{
+operator|new
+name|SystemConfigProvider
+argument_list|(
+name|this
+argument_list|)
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 comment|/** Drop this database from memory so it no longer exists. */
