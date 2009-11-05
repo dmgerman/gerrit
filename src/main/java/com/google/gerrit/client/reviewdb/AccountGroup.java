@@ -539,6 +539,13 @@ name|ownerGroupId
 operator|=
 name|groupId
 expr_stmt|;
+name|setType
+argument_list|(
+name|Type
+operator|.
+name|INTERNAL
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getId ()
 specifier|public
