@@ -307,7 +307,7 @@ name|onUnload
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Invoked when the outer browser window resizes.    *<p>    * Subclasses may override (but should ensure they still call super.onResize)    * to implement custom logic when a window resize occurs.    *     * @param width new browser window width    * @param height new browser window height    */
+comment|/**    * Invoked when the outer browser window resizes.    *<p>    * Subclasses may override (but should ensure they still call super.onResize)    * to implement custom logic when a window resize occurs.    *    * @param width new browser window width    * @param height new browser window height    */
 DECL|method|onResize (final int width, final int height)
 specifier|protected
 name|void

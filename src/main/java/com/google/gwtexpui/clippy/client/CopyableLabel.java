@@ -553,7 +553,7 @@ specifier|private
 name|Element
 name|swf
 decl_stmt|;
-comment|/**    * Create a new label    *     * @param str initial content    */
+comment|/**    * Create a new label    *    * @param str initial content    */
 DECL|method|CopyableLabel (final String str)
 specifier|public
 name|CopyableLabel
@@ -571,7 +571,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new label    *     * @param str initial content    * @param showLabel if true, the content is shown, if false it is hidden from    *        view and only the copy icon is displayed.    */
+comment|/**    * Create a new label    *    * @param str initial content    * @param showLabel if true, the content is shown, if false it is hidden from    *        view and only the copy icon is displayed.    */
 DECL|method|CopyableLabel (final String str, final boolean showLabel)
 specifier|public
 name|CopyableLabel

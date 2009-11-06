@@ -198,7 +198,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Set the next view to display.    *<p>    * The view will be attached to the DOM tree within a hidden container,    * permitting its<code>onLoad()</code> method to execute and update the DOM    * without the user seeing the result.    *     * @param view the next view to display.    */
+comment|/**    * Set the next view to display.    *<p>    * The view will be attached to the DOM tree within a hidden container,    * permitting its<code>onLoad()</code> method to execute and update the DOM    * without the user seeing the result.    *    * @param view the next view to display.    */
 DECL|method|setView (final V view)
 specifier|public
 name|void
@@ -258,7 +258,7 @@ name|view
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Invoked after the view becomes the current view and has been made visible.    *     * @param view the view being displayed.    */
+comment|/**    * Invoked after the view becomes the current view and has been made visible.    *    * @param view the view being displayed.    */
 DECL|method|onShowView (final V view)
 specifier|protected
 name|void
