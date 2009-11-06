@@ -306,6 +306,143 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testBulletList4 ()
+specifier|public
+name|void
+name|testBulletList4
+parameter_list|()
+block|{
+specifier|final
+name|SafeHtml
+name|o
+init|=
+name|html
+argument_list|(
+literal|"To see this bug, you have to:\n"
+comment|//
+operator|+
+literal|"* Be on IMAP or EAS (not on POP)\n"
+comment|//
+operator|+
+literal|"* Be very unlucky\n"
+argument_list|)
+decl_stmt|;
+specifier|final
+name|SafeHtml
+name|n
+init|=
+name|o
+operator|.
+name|wikify
+argument_list|()
+decl_stmt|;
+name|assertNotSame
+argument_list|(
+name|o
+argument_list|,
+name|n
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"<p>To see this bug, you have to:</p>"
+comment|//
+operator|+
+name|BEGIN_LIST
+comment|//
+operator|+
+name|item
+argument_list|(
+literal|"Be on IMAP or EAS (not on POP)"
+argument_list|)
+comment|//
+operator|+
+name|item
+argument_list|(
+literal|"Be very unlucky"
+argument_list|)
+comment|//
+operator|+
+name|END_LIST
+comment|//
+argument_list|,
+name|n
+operator|.
+name|asString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testBulletList5 ()
+specifier|public
+name|void
+name|testBulletList5
+parameter_list|()
+block|{
+specifier|final
+name|SafeHtml
+name|o
+init|=
+name|html
+argument_list|(
+literal|"To see this bug,\n"
+comment|//
+operator|+
+literal|"you have to:\n"
+comment|//
+operator|+
+literal|"* Be on IMAP or EAS (not on POP)\n"
+comment|//
+operator|+
+literal|"* Be very unlucky\n"
+argument_list|)
+decl_stmt|;
+specifier|final
+name|SafeHtml
+name|n
+init|=
+name|o
+operator|.
+name|wikify
+argument_list|()
+decl_stmt|;
+name|assertNotSame
+argument_list|(
+name|o
+argument_list|,
+name|n
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"<p>To see this bug, you have to:</p>"
+comment|//
+operator|+
+name|BEGIN_LIST
+comment|//
+operator|+
+name|item
+argument_list|(
+literal|"Be on IMAP or EAS (not on POP)"
+argument_list|)
+comment|//
+operator|+
+name|item
+argument_list|(
+literal|"Be very unlucky"
+argument_list|)
+comment|//
+operator|+
+name|END_LIST
+comment|//
+argument_list|,
+name|n
+operator|.
+name|asString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|testDashList1 ()
 specifier|public
 name|void
