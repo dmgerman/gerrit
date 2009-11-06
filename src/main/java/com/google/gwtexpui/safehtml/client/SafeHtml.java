@@ -1009,7 +1009,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Go through the {@link RegexFindReplace} list, calling {@link #replaceAll()}    * on the HTML string for every find/replace pair in the list.    */
+comment|/**    * Go through the {@link RegexFindReplace} list, calling    * {@link #replaceAll(String,String)} on the HTML string for every    * find/replace pair in the list.    */
 DECL|method|replaceAll (final List<RegexFindReplace> findReplaceList)
 specifier|public
 name|SafeHtml
