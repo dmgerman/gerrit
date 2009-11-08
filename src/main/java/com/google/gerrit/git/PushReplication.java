@@ -210,26 +210,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jgit
@@ -363,6 +343,26 @@ operator|.
 name|util
 operator|.
 name|QuotedString
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -1528,7 +1528,7 @@ parameter_list|(
 name|InterruptedException
 name|e
 parameter_list|)
-block|{ }
+block|{         }
 block|}
 name|channel
 operator|.
