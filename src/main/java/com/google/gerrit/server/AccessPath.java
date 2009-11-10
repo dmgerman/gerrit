@@ -85,6 +85,10 @@ block|,
 comment|/** Access through an SSH command, e.g. git fetch or push. */
 DECL|enumConstant|SSH
 name|SSH
+block|,
+comment|/** Access through replication */
+DECL|enumConstant|REPLICATION
+name|REPLICATION
 block|; }
 end_enum
 
