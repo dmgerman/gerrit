@@ -494,6 +494,17 @@ argument_list|)
 expr_stmt|;
 name|serve
 argument_list|(
+literal|"/servlet/*"
+argument_list|)
+operator|.
+name|with
+argument_list|(
+name|notFound
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|serve
+argument_list|(
 literal|"/all"
 argument_list|)
 operator|.
