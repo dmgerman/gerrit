@@ -190,7 +190,6 @@ end_comment
 
 begin_class
 DECL|class|GerritServerConfigProvider
-specifier|public
 class|class
 name|GerritServerConfigProvider
 implements|implements

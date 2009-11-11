@@ -119,10 +119,10 @@ comment|/** Provides {@link java.io.File} annotated with {@link SitePath}. */
 end_comment
 
 begin_class
-DECL|class|SitePathProvider
+DECL|class|SitePathFromSystemConfigProvider
 specifier|public
 class|class
-name|SitePathProvider
+name|SitePathFromSystemConfigProvider
 implements|implements
 name|Provider
 argument_list|<
@@ -137,8 +137,8 @@ name|path
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SitePathProvider (final SystemConfig config)
-name|SitePathProvider
+DECL|method|SitePathFromSystemConfigProvider (final SystemConfig config)
+name|SitePathFromSystemConfigProvider
 parameter_list|(
 specifier|final
 name|SystemConfig
