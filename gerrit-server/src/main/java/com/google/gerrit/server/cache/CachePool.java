@@ -102,6 +102,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|lifecycle
+operator|.
+name|LifecycleListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -338,6 +352,66 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|class|Lifecycle
+specifier|public
+specifier|static
+class|class
+name|Lifecycle
+implements|implements
+name|LifecycleListener
+block|{
+DECL|field|cachePool
+specifier|private
+specifier|final
+name|CachePool
+name|cachePool
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|Lifecycle (final CachePool cachePool)
+name|Lifecycle
+parameter_list|(
+specifier|final
+name|CachePool
+name|cachePool
+parameter_list|)
+block|{
+name|this
+operator|.
+name|cachePool
+operator|=
+name|cachePool
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|start ()
+specifier|public
+name|void
+name|start
+parameter_list|()
+block|{
+name|cachePool
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|stop ()
+specifier|public
+name|void
+name|stop
+parameter_list|()
+block|{
+name|cachePool
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 DECL|field|config
 specifier|private
 specifier|final
@@ -430,9 +504,8 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Start the cache pool. The pool must be started before any access occurs. */
 DECL|method|start ()
-specifier|public
+specifier|private
 name|void
 name|start
 parameter_list|()
@@ -504,9 +577,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** Stop the cache pool. The pool should be stopped before terminating. */
 DECL|method|stop ()
-specifier|public
+specifier|private
 name|void
 name|stop
 parameter_list|()
