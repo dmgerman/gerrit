@@ -411,10 +411,37 @@ return|return
 literal|1
 return|;
 block|}
+try|try
+block|{
 return|return
 name|run
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Die
+name|err
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"fatal: "
+operator|+
+name|err
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|128
+return|;
+block|}
 block|}
 DECL|method|emptyInjector ()
 specifier|private
@@ -435,6 +462,49 @@ name|Module
 operator|>
 name|emptyList
 argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/** Create a new exception to indicate we won't continue. */
+DECL|method|die (String why)
+specifier|protected
+specifier|static
+name|Die
+name|die
+parameter_list|(
+name|String
+name|why
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Die
+argument_list|(
+name|why
+argument_list|)
+return|;
+block|}
+comment|/** Create a new exception to indicate we won't continue. */
+DECL|method|die (String why, Throwable cause)
+specifier|protected
+specifier|static
+name|Die
+name|die
+parameter_list|(
+name|String
+name|why
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Die
+argument_list|(
+name|why
+argument_list|,
+name|cause
 argument_list|)
 return|;
 block|}

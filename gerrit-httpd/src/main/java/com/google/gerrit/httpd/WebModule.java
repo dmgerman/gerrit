@@ -442,6 +442,7 @@ end_import
 
 begin_class
 DECL|class|WebModule
+specifier|public
 class|class
 name|WebModule
 extends|extends

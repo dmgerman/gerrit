@@ -394,6 +394,15 @@ range|:
 name|injectors
 control|)
 block|{
+if|if
+condition|(
+name|injector
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 for|for
 control|(
 specifier|final

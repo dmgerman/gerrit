@@ -192,6 +192,7 @@ end_comment
 
 begin_class
 DECL|class|HttpCanonicalWebUrlProvider
+specifier|public
 class|class
 name|HttpCanonicalWebUrlProvider
 extends|extends
@@ -231,6 +232,7 @@ operator|=
 literal|true
 argument_list|)
 DECL|method|setHttpServletRequest (final Provider<HttpServletRequest> hsr)
+specifier|public
 name|void
 name|setHttpServletRequest
 parameter_list|(
