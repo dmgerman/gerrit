@@ -1256,7 +1256,6 @@ comment|// The user is signed in and anonymous access isn't allowed.
 comment|// Use our SSH daemon URL as its the only way they can get
 comment|// to the project (that we know of anyway).
 comment|//
-specifier|final
 name|String
 name|sshAddr
 init|=
@@ -1330,6 +1329,26 @@ name|Location
 operator|.
 name|getHostName
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|sshAddr
+operator|.
+name|startsWith
+argument_list|(
+literal|"*"
+argument_list|)
+condition|)
+block|{
+name|sshAddr
+operator|=
+name|sshAddr
+operator|.
+name|substring
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
