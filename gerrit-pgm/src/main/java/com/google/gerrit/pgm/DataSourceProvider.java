@@ -897,7 +897,7 @@ condition|)
 block|{
 name|database
 operator|=
-literal|"ReviewDB"
+literal|"db/ReviewDB"
 expr_stmt|;
 block|}
 name|File
