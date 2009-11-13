@@ -140,26 +140,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jgit
@@ -281,6 +261,26 @@ operator|.
 name|RepositoryCache
 operator|.
 name|FileKey
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -502,6 +502,17 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+comment|/** @return base directory under which all projects are stored. */
+DECL|method|getBasePath ()
+specifier|public
+name|File
+name|getBasePath
+parameter_list|()
+block|{
+return|return
+name|basepath
+return|;
 block|}
 comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
 DECL|method|openRepository (String name)

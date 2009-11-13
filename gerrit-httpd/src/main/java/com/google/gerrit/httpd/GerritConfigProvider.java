@@ -402,6 +402,12 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
+DECL|field|gitWebConfig
+specifier|private
+specifier|final
+name|GitWebConfig
+name|gitWebConfig
+decl_stmt|;
 DECL|field|wildProject
 specifier|private
 specifier|final
@@ -435,7 +441,7 @@ name|contactStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, @WildProjectName final Project.NameKey wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, @CanonicalWebUrl @Nullable final String cwu, final AuthConfig ac, final GitWebConfig gwc, @WildProjectName final Project.NameKey wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -459,6 +465,10 @@ parameter_list|,
 specifier|final
 name|AuthConfig
 name|ac
+parameter_list|,
+specifier|final
+name|GitWebConfig
+name|gwc
 parameter_list|,
 annotation|@
 name|WildProjectName
@@ -496,6 +506,10 @@ expr_stmt|;
 name|authConfig
 operator|=
 name|ac
+expr_stmt|;
+name|gitWebConfig
+operator|=
+name|gwc
 expr_stmt|;
 name|sshInfo
 operator|=
@@ -728,24 +742,12 @@ argument_list|(
 name|fields
 argument_list|)
 expr_stmt|;
-specifier|final
-name|String
-name|gitwebUrl
-init|=
-name|cfg
-operator|.
-name|getString
-argument_list|(
-literal|"gitweb"
-argument_list|,
-literal|null
-argument_list|,
-literal|"url"
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
-name|gitwebUrl
+name|gitWebConfig
+operator|.
+name|getUrl
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -757,7 +759,10 @@ argument_list|(
 operator|new
 name|GitwebLink
 argument_list|(
-name|gitwebUrl
+name|gitWebConfig
+operator|.
+name|getUrl
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
