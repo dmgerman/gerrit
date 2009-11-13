@@ -489,7 +489,7 @@ literal|"--slave"
 argument_list|,
 name|usage
 operator|=
-literal|"support fetch only"
+literal|"Support fetch only; implies --disable-httpd"
 argument_list|)
 DECL|field|slave
 specifier|private
