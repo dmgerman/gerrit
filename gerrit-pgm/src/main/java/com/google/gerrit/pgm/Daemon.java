@@ -496,6 +496,22 @@ specifier|private
 name|boolean
 name|slave
 decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--console-log"
+argument_list|,
+name|usage
+operator|=
+literal|"Log to console (not $site_path/logs)"
+argument_list|)
+DECL|field|consoleLog
+specifier|private
+name|boolean
+name|consoleLog
+decl_stmt|;
 DECL|field|manager
 specifier|private
 specifier|final
@@ -604,6 +620,27 @@ argument_list|(
 literal|"--enable-httpd currently requires --enable-sshd"
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+name|consoleLog
+condition|)
+block|{     }
+else|else
+block|{
+name|manager
+operator|.
+name|add
+argument_list|(
+name|ErrorLogFile
+operator|.
+name|start
+argument_list|(
+name|getSitePath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 name|dbInjector
 operator|=
