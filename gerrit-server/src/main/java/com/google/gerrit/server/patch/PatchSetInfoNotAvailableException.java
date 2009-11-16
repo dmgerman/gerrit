@@ -75,6 +75,15 @@ name|PatchSetInfoNotAvailableException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|PatchSetInfoNotAvailableException (Exception cause)
 specifier|public
 name|PatchSetInfoNotAvailableException

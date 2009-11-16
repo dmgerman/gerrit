@@ -72,6 +72,15 @@ name|Die
 extends|extends
 name|RuntimeException
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|Die (final String why)
 specifier|public
 name|Die

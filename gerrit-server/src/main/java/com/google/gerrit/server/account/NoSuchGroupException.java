@@ -92,6 +92,15 @@ name|NoSuchGroupException
 extends|extends
 name|Exception
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|NoSuchGroupException (final AccountGroup.Id key)
 specifier|public
 name|NoSuchGroupException
