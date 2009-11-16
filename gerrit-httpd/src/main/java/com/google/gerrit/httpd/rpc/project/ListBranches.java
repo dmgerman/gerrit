@@ -426,10 +426,6 @@ name|NoSuchProjectException
 throws|,
 name|RepositoryNotFoundException
 block|{
-specifier|final
-name|ProjectControl
-name|projectControl
-init|=
 name|projectControlFactory
 operator|.
 name|validateFor
@@ -444,7 +440,7 @@ name|ProjectControl
 operator|.
 name|VISIBLE
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 specifier|final
 name|List
 argument_list|<
