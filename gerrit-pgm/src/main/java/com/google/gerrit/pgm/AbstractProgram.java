@@ -413,6 +413,11 @@ return|;
 block|}
 try|try
 block|{
+name|ProxyUtil
+operator|.
+name|configureHttpProxy
+argument_list|()
+expr_stmt|;
 return|return
 name|run
 argument_list|()
