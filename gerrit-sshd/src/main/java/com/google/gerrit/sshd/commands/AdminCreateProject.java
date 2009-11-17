@@ -272,6 +272,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Environment
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|eclipse
 operator|.
 name|jgit
@@ -560,11 +574,15 @@ name|rq
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start ()
+DECL|method|start (final Environment env)
 specifier|public
 name|void
 name|start
-parameter_list|()
+parameter_list|(
+specifier|final
+name|Environment
+name|env
+parameter_list|)
 block|{
 name|startThread
 argument_list|(

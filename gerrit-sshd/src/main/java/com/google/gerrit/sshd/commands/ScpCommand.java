@@ -54,19 +54,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
+name|apache
 operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|sshd
 operator|.
-name|slf4j
+name|server
 operator|.
-name|LoggerFactory
+name|Environment
 import|;
 end_import
 
@@ -81,6 +75,26 @@ operator|.
 name|util
 operator|.
 name|RawParseUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -453,11 +467,15 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|start ()
+DECL|method|start (final Environment env)
 specifier|public
 name|void
 name|start
-parameter_list|()
+parameter_list|(
+specifier|final
+name|Environment
+name|env
+parameter_list|)
 block|{
 name|startThread
 argument_list|(

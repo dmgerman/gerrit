@@ -192,8 +192,6 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|CommandFactory
-operator|.
 name|Command
 import|;
 end_import
@@ -208,7 +206,19 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|CommandFactory
+name|Environment
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
 operator|.
 name|ExitCallback
 import|;
@@ -597,6 +607,14 @@ operator|=
 name|line
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|destroy ()
+specifier|public
+name|void
+name|destroy
+parameter_list|()
+block|{   }
 comment|/**    * Pass all state into the command, then run its start method.    *<p>    * This method copies all critical state, like the input and output streams,    * into the supplied command. The caller must still invoke {@code cmd.start()}    * if wants to pass control to the command.    *    * @param cmd the command that will receive the current state.    */
 DECL|method|provideStateTo (final Command cmd)
 specifier|protected
@@ -1003,7 +1021,7 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start()}, such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
+comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start(Environment)},    * such as:    *    *<pre>    * startThread(new Runnable() {    *   public void run() {    *     runImp();    *   }    * });    *</pre>    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
 DECL|method|startThread (final Runnable thunk)
 specifier|protected
 name|void
@@ -1039,7 +1057,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start()}, such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *<p>    * If the function throws an exception, it is translated to a simple message    * for the client, a non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
+comment|/**    * Spawn a function into its own thread.    *<p>    * Typically this should be invoked within {@link Command#start(Environment)},    * such as:    *    *<pre>    * startThread(new CommandRunnable() {    *   public void run() throws Exception {    *     runImp();    *   }    * });    *</pre>    *<p>    * If the function throws an exception, it is translated to a simple message    * for the client, a non-zero exit code, and the stack trace is logged.    *    * @param thunk the runnable to execute on the thread, performing the    *        command's logic.    */
 DECL|method|startThread (final CommandRunnable thunk)
 specifier|protected
 name|void

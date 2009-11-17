@@ -122,7 +122,7 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|session
+name|Session
 operator|.
 name|AttributeKey
 import|;

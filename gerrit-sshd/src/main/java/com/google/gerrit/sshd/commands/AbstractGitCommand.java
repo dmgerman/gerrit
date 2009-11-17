@@ -142,11 +142,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|kohsuke
+name|apache
 operator|.
-name|args4j
+name|sshd
 operator|.
-name|Argument
+name|server
+operator|.
+name|Environment
 import|;
 end_import
 
@@ -175,6 +177,18 @@ operator|.
 name|lib
 operator|.
 name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|Argument
 import|;
 end_import
 
@@ -239,11 +253,15 @@ name|project
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start ()
+DECL|method|start (final Environment env)
 specifier|public
 name|void
 name|start
-parameter_list|()
+parameter_list|(
+specifier|final
+name|Environment
+name|env
+parameter_list|)
 block|{
 name|startThread
 argument_list|(

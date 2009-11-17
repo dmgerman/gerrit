@@ -134,8 +134,6 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|CommandFactory
-operator|.
 name|Command
 import|;
 end_import

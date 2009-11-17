@@ -224,10 +224,10 @@ operator|=
 name|sf
 expr_stmt|;
 block|}
-DECL|method|hasKey (final String username, final PublicKey suppliedKey, final ServerSession session)
+DECL|method|authenticate (final String username, final PublicKey suppliedKey, final ServerSession session)
 specifier|public
 name|boolean
-name|hasKey
+name|authenticate
 parameter_list|(
 specifier|final
 name|String

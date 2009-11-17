@@ -86,7 +86,7 @@ name|sshd
 operator|.
 name|server
 operator|.
-name|CommandFactory
+name|Command
 import|;
 end_import
 
@@ -140,8 +140,6 @@ specifier|public
 specifier|static
 name|Key
 argument_list|<
-name|CommandFactory
-operator|.
 name|Command
 argument_list|>
 name|key
@@ -166,8 +164,6 @@ specifier|public
 specifier|static
 name|Key
 argument_list|<
-name|CommandFactory
-operator|.
 name|Command
 argument_list|>
 name|key
@@ -182,8 +178,6 @@ name|Key
 operator|.
 name|get
 argument_list|(
-name|CommandFactory
-operator|.
 name|Command
 operator|.
 name|class
@@ -197,8 +191,6 @@ specifier|public
 specifier|static
 name|Key
 argument_list|<
-name|CommandFactory
-operator|.
 name|Command
 argument_list|>
 name|key
@@ -217,8 +209,6 @@ name|Key
 operator|.
 name|get
 argument_list|(
-name|CommandFactory
-operator|.
 name|Command
 operator|.
 name|class

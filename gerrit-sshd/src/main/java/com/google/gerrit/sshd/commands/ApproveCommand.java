@@ -454,6 +454,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|Environment
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|kohsuke
 operator|.
 name|args4j
@@ -828,12 +842,16 @@ name|optionList
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start ()
+DECL|method|start (final Environment env)
 specifier|public
 specifier|final
 name|void
 name|start
-parameter_list|()
+parameter_list|(
+specifier|final
+name|Environment
+name|env
+parameter_list|)
 block|{
 name|startThread
 argument_list|(

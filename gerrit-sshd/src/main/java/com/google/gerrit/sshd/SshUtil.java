@@ -132,7 +132,7 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|session
+name|Session
 operator|.
 name|AttributeKey
 import|;
@@ -163,8 +163,6 @@ operator|.
 name|sshd
 operator|.
 name|server
-operator|.
-name|CommandFactory
 operator|.
 name|Command
 import|;
