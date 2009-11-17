@@ -150,7 +150,7 @@ name|jgit
 operator|.
 name|util
 operator|.
-name|NB
+name|IO
 import|;
 end_import
 
@@ -668,7 +668,7 @@ index|[
 name|len
 index|]
 decl_stmt|;
-name|NB
+name|IO
 operator|.
 name|readFully
 argument_list|(

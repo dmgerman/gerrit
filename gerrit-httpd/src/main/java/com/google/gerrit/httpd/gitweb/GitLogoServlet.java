@@ -170,7 +170,7 @@ name|jgit
 operator|.
 name|util
 operator|.
-name|NB
+name|IO
 import|;
 end_import
 
@@ -281,7 +281,7 @@ try|try
 block|{
 name|png
 operator|=
-name|NB
+name|IO
 operator|.
 name|readFully
 argument_list|(

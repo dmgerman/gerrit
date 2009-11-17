@@ -214,13 +214,13 @@ end_package
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|eclipse
 operator|.
-name|gerrit
+name|jgit
 operator|.
-name|testutil
+name|junit
 operator|.
 name|LocalDiskRepositoryTestCase
 import|;
