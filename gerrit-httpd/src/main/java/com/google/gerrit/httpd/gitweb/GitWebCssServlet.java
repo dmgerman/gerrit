@@ -327,13 +327,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|path (File sitePath, GitWebConfig gitWebConfig)
+DECL|method|path (File etc, GitWebConfig gitWebConfig)
 specifier|protected
 name|File
 name|path
 parameter_list|(
 name|File
-name|sitePath
+name|etc
 parameter_list|,
 name|GitWebConfig
 name|gitWebConfig
@@ -343,7 +343,7 @@ return|return
 operator|new
 name|File
 argument_list|(
-name|sitePath
+name|etc
 argument_list|,
 literal|"GerritSite.css"
 argument_list|)
@@ -390,13 +390,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|path (File sitePath, GitWebConfig gitWebConfig)
+DECL|method|path (File etc, GitWebConfig gitWebConfig)
 specifier|protected
 name|File
 name|path
 parameter_list|(
 name|File
-name|sitePath
+name|etc
 parameter_list|,
 name|GitWebConfig
 name|gitWebConfig
@@ -455,7 +455,13 @@ name|src
 init|=
 name|path
 argument_list|(
+operator|new
+name|File
+argument_list|(
 name|sitePath
+argument_list|,
+literal|"etc"
+argument_list|)
 argument_list|,
 name|gitWebConfig
 argument_list|)

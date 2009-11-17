@@ -408,7 +408,7 @@ name|File
 argument_list|(
 name|sitePath
 argument_list|,
-literal|"contact_information.pub"
+literal|"etc/contact_information.pub"
 argument_list|)
 decl_stmt|;
 if|if

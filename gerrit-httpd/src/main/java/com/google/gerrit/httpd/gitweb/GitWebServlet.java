@@ -923,6 +923,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final
+name|File
+name|etc
+init|=
+operator|new
+name|File
+argument_list|(
+name|sitePath
+argument_list|,
+literal|"etc"
+argument_list|)
+decl_stmt|;
+specifier|final
 name|PrintWriter
 name|p
 init|=
@@ -969,7 +981,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|sitePath
+name|etc
 argument_list|,
 literal|"GerritSiteHeader.html"
 argument_list|)
@@ -1004,7 +1016,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|sitePath
+name|etc
 argument_list|,
 literal|"GerritSiteFooter.html"
 argument_list|)
@@ -1076,7 +1088,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|sitePath
+name|etc
 argument_list|,
 literal|"GerritSite.css"
 argument_list|)
@@ -1345,7 +1357,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|sitePath
+name|etc
 argument_list|,
 literal|"gitweb_config.perl"
 argument_list|)

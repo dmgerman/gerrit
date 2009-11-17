@@ -964,7 +964,7 @@ name|cfg
 argument_list|,
 literal|"sslkeystore"
 argument_list|,
-literal|"keystore"
+literal|"etc/keystore"
 argument_list|)
 decl_stmt|;
 name|String
