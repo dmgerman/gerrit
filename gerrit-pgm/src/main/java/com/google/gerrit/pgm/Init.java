@@ -597,6 +597,10 @@ expr_stmt|;
 name|initSitePath
 argument_list|()
 expr_stmt|;
+name|deleteOnFailure
+operator|=
+literal|false
+expr_stmt|;
 name|inject
 argument_list|()
 expr_stmt|;
