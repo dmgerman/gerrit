@@ -1024,28 +1024,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|gerrit_config
-operator|.
-name|exists
-argument_list|()
-condition|)
-block|{
-throw|throw
-name|die
-argument_list|(
-literal|"'"
-operator|+
-name|sitePath
-operator|+
-literal|"' is not a Gerrit server site"
-argument_list|)
-throw|;
-block|}
-block|}
+block|{      }
 elseif|else
 if|if
 condition|(

@@ -461,6 +461,52 @@ return|return
 name|path
 return|;
 block|}
+comment|/** Ensures we are running inside of a valid site, otherwise throws a Die. */
+DECL|method|mustHaveValidSite ()
+specifier|protected
+name|void
+name|mustHaveValidSite
+parameter_list|()
+throws|throws
+name|Die
+block|{
+if|if
+condition|(
+operator|!
+operator|new
+name|File
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|getSitePath
+argument_list|()
+argument_list|,
+literal|"etc"
+argument_list|)
+argument_list|,
+literal|"gerrit.config"
+argument_list|)
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+throw|throw
+name|die
+argument_list|(
+literal|"not a Gerrit site: '"
+operator|+
+name|getSitePath
+argument_list|()
+operator|+
+literal|"'\n"
+operator|+
+literal|"Perhaps you need to run init first?"
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/** Load extra JARs from {@code lib/} subdirectory of {@link #getSitePath()} */
 DECL|method|loadSiteLib ()
 specifier|protected

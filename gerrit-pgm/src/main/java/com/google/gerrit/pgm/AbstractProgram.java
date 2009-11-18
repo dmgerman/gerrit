@@ -477,6 +477,13 @@ name|cause
 operator|.
 name|getMessage
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|"\nfatal: "
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -489,6 +496,13 @@ argument_list|(
 literal|"fatal: "
 operator|+
 name|diemsg
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|"\nfatal: "
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
