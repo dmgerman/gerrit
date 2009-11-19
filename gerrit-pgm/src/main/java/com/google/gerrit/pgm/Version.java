@@ -64,6 +64,22 @@ name|pgm
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|util
+operator|.
+name|AbstractProgram
+import|;
+end_import
+
 begin_comment
 comment|/** Display the version of Gerrit. */
 end_comment

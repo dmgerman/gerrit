@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm
+DECL|package|com.google.gerrit.pgm.util
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|pgm
+operator|.
+name|util
 package|;
 end_package
 
@@ -228,6 +230,7 @@ end_comment
 
 begin_class
 DECL|class|LibraryDownloader
+specifier|public
 class|class
 name|LibraryDownloader
 block|{
@@ -269,6 +272,7 @@ name|File
 name|dst
 decl_stmt|;
 DECL|method|LibraryDownloader (final ConsoleUI console, final File sitePath)
+specifier|public
 name|LibraryDownloader
 parameter_list|(
 specifier|final
@@ -300,6 +304,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setRequired (final boolean required)
+specifier|public
 name|LibraryDownloader
 name|setRequired
 parameter_list|(
@@ -319,6 +324,7 @@ name|this
 return|;
 block|}
 DECL|method|setName (final String name)
+specifier|public
 name|LibraryDownloader
 name|setName
 parameter_list|(
@@ -338,6 +344,7 @@ name|this
 return|;
 block|}
 DECL|method|setJarUrl (final String url)
+specifier|public
 name|LibraryDownloader
 name|setJarUrl
 parameter_list|(
@@ -357,6 +364,7 @@ name|this
 return|;
 block|}
 DECL|method|setSHA1 (final String sha1)
+specifier|public
 name|LibraryDownloader
 name|setSHA1
 parameter_list|(
@@ -376,6 +384,7 @@ name|this
 return|;
 block|}
 DECL|method|download ()
+specifier|public
 name|void
 name|download
 parameter_list|()
