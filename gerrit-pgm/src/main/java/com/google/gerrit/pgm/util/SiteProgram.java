@@ -1013,11 +1013,17 @@ argument_list|)
 return|;
 block|}
 comment|/** @return provides database connectivity and site path. */
-DECL|method|createDbInjector ()
+DECL|method|createDbInjector (final DataSourceProvider.Context context)
 specifier|protected
 name|Injector
 name|createDbInjector
-parameter_list|()
+parameter_list|(
+specifier|final
+name|DataSourceProvider
+operator|.
+name|Context
+name|context
+parameter_list|)
 block|{
 name|loadSiteLib
 argument_list|()
@@ -1096,6 +1102,20 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|bind
+argument_list|(
+name|DataSourceProvider
+operator|.
+name|Context
+operator|.
+name|class
+argument_list|)
+operator|.
+name|toInstance
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|Key

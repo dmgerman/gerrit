@@ -286,7 +286,7 @@ name|ds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DataSourceProvider (@itePath final File sitePath, @GerritServerConfig final Config cfg)
+DECL|method|DataSourceProvider (@itePath final File sitePath, @GerritServerConfig final Config cfg, Context ctx)
 name|DataSourceProvider
 parameter_list|(
 annotation|@
@@ -300,6 +300,9 @@ name|GerritServerConfig
 specifier|final
 name|Config
 name|cfg
+parameter_list|,
+name|Context
+name|ctx
 parameter_list|)
 block|{
 name|ds
@@ -309,6 +312,8 @@ argument_list|(
 name|sitePath
 argument_list|,
 name|cfg
+argument_list|,
+name|ctx
 argument_list|)
 expr_stmt|;
 block|}
@@ -372,6 +377,18 @@ comment|// Ignore the close failure.
 block|}
 block|}
 block|}
+DECL|enum|Context
+specifier|public
+specifier|static
+enum|enum
+name|Context
+block|{
+DECL|enumConstant|SINGLE_USER
+DECL|enumConstant|MULTI_USER
+name|SINGLE_USER
+block|,
+name|MULTI_USER
+block|;   }
 DECL|enum|Type
 specifier|public
 specifier|static
@@ -396,7 +413,7 @@ name|H2
 block|,
 name|MYSQL
 block|;   }
-DECL|method|open (final File sitePath, final Config cfg)
+DECL|method|open (final File sitePath, final Config cfg, final Context context)
 specifier|private
 name|DataSource
 name|open
@@ -408,6 +425,10 @@ parameter_list|,
 specifier|final
 name|Config
 name|cfg
+parameter_list|,
+specifier|final
+name|Context
+name|context
 parameter_list|)
 block|{
 name|Type
@@ -1196,6 +1217,20 @@ argument_list|,
 name|usePool
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|context
+operator|==
+name|Context
+operator|.
+name|SINGLE_USER
+condition|)
+block|{
+name|usePool
+operator|=
+literal|false
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|usePool
