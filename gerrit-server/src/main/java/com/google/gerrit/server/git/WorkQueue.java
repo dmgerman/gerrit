@@ -666,7 +666,7 @@ name|setName
 argument_list|(
 name|prefix
 operator|+
-literal|"-thread-"
+literal|"-"
 operator|+
 name|tid
 operator|.
