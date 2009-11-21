@@ -158,20 +158,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|eclipse
 operator|.
 name|jgit
@@ -288,16 +274,6 @@ name|InvalidKeySpecException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/** Utilities to support SSH operations. */
 end_comment
@@ -348,27 +324,21 @@ name|SocketAddress
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** Server session attribute holding the current commands. */
-DECL|field|ACTIVE
+comment|/** Server session attribute holding a unique session id. */
+DECL|field|SESSION_ID
 specifier|public
 specifier|static
 specifier|final
 name|AttributeKey
 argument_list|<
-name|List
-argument_list|<
-name|Command
+name|Integer
 argument_list|>
-argument_list|>
-name|ACTIVE
+name|SESSION_ID
 init|=
 operator|new
 name|AttributeKey
 argument_list|<
-name|List
-argument_list|<
-name|Command
-argument_list|>
+name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;

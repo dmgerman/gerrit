@@ -116,6 +116,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -1248,7 +1264,7 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshDaemon (final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, @GerritServerConfig final Config cfg)
+DECL|method|SshDaemon (final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, final IdGenerator idGenerator, @GerritServerConfig final Config cfg)
 name|SshDaemon
 parameter_list|(
 specifier|final
@@ -1262,6 +1278,10 @@ parameter_list|,
 specifier|final
 name|KeyPairProvider
 name|hostKeyProvider
+parameter_list|,
+specifier|final
+name|IdGenerator
+name|idGenerator
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1457,16 +1477,12 @@ name|setAttribute
 argument_list|(
 name|SshUtil
 operator|.
-name|ACTIVE
+name|SESSION_ID
 argument_list|,
-operator|new
-name|ArrayList
-argument_list|<
-name|Command
-argument_list|>
-argument_list|(
-literal|2
-argument_list|)
+name|idGenerator
+operator|.
+name|next
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|s
