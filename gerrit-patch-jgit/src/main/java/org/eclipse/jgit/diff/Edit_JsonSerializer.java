@@ -90,6 +90,8 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
+name|impl
+operator|.
 name|JsonSerializer
 import|;
 end_import

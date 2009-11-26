@@ -146,6 +146,8 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
+name|event
+operator|.
 name|RpcCompleteEvent
 import|;
 end_import
@@ -159,6 +161,8 @@ operator|.
 name|gwtjsonrpc
 operator|.
 name|client
+operator|.
+name|event
 operator|.
 name|RpcCompleteHandler
 import|;
@@ -174,6 +178,8 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
+name|event
+operator|.
 name|RpcStartEvent
 import|;
 end_import
@@ -187,6 +193,8 @@ operator|.
 name|gwtjsonrpc
 operator|.
 name|client
+operator|.
+name|event
 operator|.
 name|RpcStartHandler
 import|;
