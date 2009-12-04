@@ -769,7 +769,7 @@ name|host
 operator|.
 name|substring
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
