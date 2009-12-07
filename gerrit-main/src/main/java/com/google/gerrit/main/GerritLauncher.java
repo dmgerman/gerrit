@@ -325,6 +325,31 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|System
+operator|.
+name|exit
+argument_list|(
+name|mainImpl
+argument_list|(
+name|argv
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|mainImpl (final String argv[])
+specifier|private
+specifier|static
+name|int
+name|mainImpl
+parameter_list|(
+specifier|final
+name|String
+name|argv
+index|[]
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 if|if
 condition|(
 name|argv
@@ -481,13 +506,9 @@ operator|.
 name|println
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 if|if
 condition|(
@@ -567,6 +588,7 @@ operator|==
 literal|2
 condition|)
 block|{
+return|return
 name|cat
 argument_list|(
 name|argv
@@ -574,7 +596,7 @@ index|[
 literal|1
 index|]
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
@@ -587,13 +609,9 @@ argument_list|(
 literal|"usage: cat FILE"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 elseif|else
@@ -635,6 +653,9 @@ block|{
 name|ls
 argument_list|()
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 else|else
 block|{
@@ -647,13 +668,9 @@ argument_list|(
 literal|"usage: ls"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 else|else
@@ -677,13 +694,14 @@ argument_list|(
 name|cl
 argument_list|)
 expr_stmt|;
-name|runMain
+return|return
+name|invokeProgram
 argument_list|(
 name|cl
 argument_list|,
 name|argv
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 DECL|method|getVersion (final File me)
@@ -785,7 +803,7 @@ block|}
 DECL|method|cat (String fileName)
 specifier|private
 specifier|static
-name|void
+name|int
 name|cat
 parameter_list|(
 name|String
@@ -872,13 +890,9 @@ operator|+
 name|fileName
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 try|try
 block|{
@@ -948,6 +962,9 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 DECL|method|ls ()
 specifier|private
@@ -1120,11 +1137,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|runMain (final ClassLoader loader, final String[] origArgv)
+DECL|method|invokeProgram (final ClassLoader loader, final String[] origArgv)
 specifier|private
 specifier|static
-name|void
-name|runMain
+name|int
+name|invokeProgram
 parameter_list|(
 specifier|final
 name|ClassLoader
@@ -1312,14 +1329,9 @@ operator|+
 literal|")"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
-return|return;
+return|;
 block|}
 specifier|final
 name|Method
@@ -1359,14 +1371,9 @@ operator|+
 name|name
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
-return|return;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1385,14 +1392,9 @@ operator|+
 name|name
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|1
-argument_list|)
-expr_stmt|;
-return|return;
+return|;
 block|}
 specifier|final
 name|Object
@@ -1473,6 +1475,7 @@ argument_list|()
 operator|instanceof
 name|Exception
 condition|)
+block|{
 throw|throw
 operator|(
 name|Exception
@@ -1482,6 +1485,7 @@ operator|.
 name|getCause
 argument_list|()
 throw|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1492,6 +1496,7 @@ argument_list|()
 operator|instanceof
 name|Error
 condition|)
+block|{
 throw|throw
 operator|(
 name|Error
@@ -1501,9 +1506,13 @@ operator|.
 name|getCause
 argument_list|()
 throw|;
+block|}
+else|else
+block|{
 throw|throw
 name|ite
 throw|;
+block|}
 block|}
 if|if
 condition|(
@@ -1512,10 +1521,7 @@ operator|instanceof
 name|Number
 condition|)
 block|{
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 operator|(
 operator|(
 name|Number
@@ -1525,18 +1531,13 @@ operator|)
 operator|.
 name|intValue
 argument_list|()
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|0
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 DECL|method|libClassLoader ()
