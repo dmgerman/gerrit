@@ -2507,9 +2507,25 @@ block|}
 block|}
 block|}
 block|}
+try|try
+block|{
+return|return
+name|tmp
+operator|.
+name|getCanonicalFile
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
 return|return
 name|tmp
 return|;
+block|}
 block|}
 DECL|method|GerritLauncher ()
 specifier|private
