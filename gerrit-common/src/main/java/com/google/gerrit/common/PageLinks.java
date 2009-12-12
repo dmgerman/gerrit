@@ -279,15 +279,6 @@ name|ALL_OPEN
 init|=
 literal|"all,open,n,z"
 decl_stmt|;
-DECL|field|ADMIN_PEOPLE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ADMIN_PEOPLE
-init|=
-literal|"admin,people"
-decl_stmt|;
 DECL|field|ADMIN_GROUPS
 specifier|public
 specifier|static
