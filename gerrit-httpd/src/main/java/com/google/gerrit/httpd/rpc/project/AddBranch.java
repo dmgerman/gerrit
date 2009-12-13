@@ -843,7 +843,7 @@ name|setRefLogIdent
 argument_list|(
 name|identifiedUser
 operator|.
-name|newPersonIdent
+name|newRefLogIdent
 argument_list|()
 argument_list|)
 expr_stmt|;

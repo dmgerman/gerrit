@@ -3519,7 +3519,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
-name|newPersonIdent
+name|newRefLogIdent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4524,15 +4524,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|final
-name|PersonIdent
-name|submitIdent
-init|=
-name|toPersonIdent
-argument_list|(
-name|submitAudit
-argument_list|)
-decl_stmt|;
-specifier|final
 name|Commit
 name|mergeCommit
 init|=
@@ -4578,13 +4569,10 @@ name|mergeCommit
 operator|.
 name|setCommitter
 argument_list|(
-name|submitIdent
-operator|!=
-literal|null
-condition|?
-name|submitIdent
-else|:
-name|myIdent
+name|toCommitterIdent
+argument_list|(
+name|submitAudit
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|mergeCommit
@@ -4784,10 +4772,10 @@ block|}
 end_function
 
 begin_function
-DECL|method|toPersonIdent (final PatchSetApproval audit)
+DECL|method|toCommitterIdent (final PatchSetApproval audit)
 specifier|private
 name|PersonIdent
-name|toPersonIdent
+name|toCommitterIdent
 parameter_list|(
 specifier|final
 name|PatchSetApproval
@@ -4797,14 +4785,10 @@ block|{
 if|if
 condition|(
 name|audit
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
-block|}
 return|return
 name|identifiedUserFactory
 operator|.
@@ -4816,7 +4800,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
-name|newPersonIdent
+name|newCommitterIdent
 argument_list|(
 name|audit
 operator|.
@@ -4828,6 +4812,10 @@ operator|.
 name|getTimeZone
 argument_list|()
 argument_list|)
+return|;
+block|}
+return|return
+name|myIdent
 return|;
 block|}
 end_function

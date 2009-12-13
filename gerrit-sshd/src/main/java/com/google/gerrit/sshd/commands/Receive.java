@@ -1643,7 +1643,7 @@ name|refLogIdent
 operator|=
 name|currentUser
 operator|.
-name|newPersonIdent
+name|newRefLogIdent
 argument_list|()
 expr_stmt|;
 name|verifyProjectVisible
