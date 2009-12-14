@@ -781,6 +781,22 @@ name|boolean
 name|importProjects
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--no-auto-start"
+argument_list|,
+name|usage
+operator|=
+literal|"Don't automatically start daemon after init"
+argument_list|)
+DECL|field|noAutoStart
+specifier|private
+name|boolean
+name|noAutoStart
+decl_stmt|;
+annotation|@
 name|Inject
 DECL|field|repositoryManager
 specifier|private
@@ -990,6 +1006,9 @@ expr_stmt|;
 if|if
 condition|(
 name|isNew
+operator|&&
+operator|!
+name|noAutoStart
 condition|)
 block|{
 if|if
