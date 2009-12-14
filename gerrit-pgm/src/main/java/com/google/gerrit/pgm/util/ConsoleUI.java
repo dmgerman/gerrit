@@ -340,12 +340,15 @@ name|args
 parameter_list|)
 function_decl|;
 comment|/** Request the user to answer a yes/no question. */
-DECL|method|yesno (String fmt, Object... args)
+DECL|method|yesno (Boolean def, String fmt, Object... args)
 specifier|public
 specifier|abstract
 name|boolean
 name|yesno
 parameter_list|(
+name|Boolean
+name|def
+parameter_list|,
 name|String
 name|fmt
 parameter_list|,
@@ -365,55 +368,9 @@ function_decl|;
 comment|/** Prompt the user for a string, suggesting a default, and returning choice. */
 DECL|method|readString (String def, String fmt, Object... args)
 specifier|public
-specifier|final
-name|String
-name|readString
-parameter_list|(
-name|String
-name|def
-parameter_list|,
-name|String
-name|fmt
-parameter_list|,
-name|Object
-modifier|...
-name|args
-parameter_list|)
-block|{
-if|if
-condition|(
-name|def
-operator|!=
-literal|null
-operator|&&
-name|def
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|def
-operator|=
-literal|null
-expr_stmt|;
-block|}
-return|return
-name|readStringImpl
-argument_list|(
-name|def
-argument_list|,
-name|fmt
-argument_list|,
-name|args
-argument_list|)
-return|;
-block|}
-comment|/** Prompt the user for a string, suggesting a default, and returning choice. */
-DECL|method|readStringImpl (String def, String fmt, Object... args)
-specifier|protected
 specifier|abstract
 name|String
-name|readStringImpl
+name|readString
 parameter_list|(
 name|String
 name|def
@@ -510,11 +467,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|yesno (String fmt, Object... args)
+DECL|method|yesno (Boolean def, String fmt, Object... args)
 specifier|public
 name|boolean
 name|yesno
 parameter_list|(
+name|Boolean
+name|def
+parameter_list|,
 name|String
 name|fmt
 parameter_list|,
@@ -542,7 +502,41 @@ init|;
 condition|;
 control|)
 block|{
-specifier|final
+name|String
+name|y
+init|=
+literal|"y"
+decl_stmt|;
+name|String
+name|n
+init|=
+literal|"n"
+decl_stmt|;
+if|if
+condition|(
+name|def
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|def
+condition|)
+block|{
+name|y
+operator|=
+literal|"Y"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|n
+operator|=
+literal|"N"
+expr_stmt|;
+block|}
+block|}
 name|String
 name|yn
 init|=
@@ -550,9 +544,13 @@ name|console
 operator|.
 name|readLine
 argument_list|(
-literal|"%-30s [y/n]? "
+literal|"%-30s [%s/%s]? "
 argument_list|,
 name|prompt
+argument_list|,
+name|y
+argument_list|,
+name|n
 argument_list|)
 decl_stmt|;
 if|if
@@ -566,6 +564,29 @@ throw|throw
 name|abort
 argument_list|()
 throw|;
+block|}
+name|yn
+operator|=
+name|yn
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|def
+operator|!=
+literal|null
+operator|&&
+name|yn
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|def
+return|;
 block|}
 if|if
 condition|(
@@ -639,10 +660,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|readStringImpl (String def, String fmt, Object... args)
-specifier|protected
+DECL|method|readString (String def, String fmt, Object... args)
+specifier|public
 name|String
-name|readStringImpl
+name|readString
 parameter_list|(
 name|String
 name|def
@@ -1128,11 +1149,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|yesno (String fmt, Object... args)
+DECL|method|yesno (Boolean def, String fmt, Object... args)
 specifier|public
 name|boolean
 name|yesno
 parameter_list|(
+name|Boolean
+name|def
+parameter_list|,
 name|String
 name|fmt
 parameter_list|,
@@ -1142,15 +1166,21 @@ name|args
 parameter_list|)
 block|{
 return|return
+name|def
+operator|!=
+literal|null
+condition|?
+name|def
+else|:
 literal|true
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|readStringImpl (String def, String fmt, Object... args)
-specifier|protected
+DECL|method|readString (String def, String fmt, Object... args)
+specifier|public
 name|String
-name|readStringImpl
+name|readString
 parameter_list|(
 name|String
 name|def

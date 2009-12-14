@@ -582,6 +582,8 @@ name|console
 operator|.
 name|yesno
 argument_list|(
+literal|true
+argument_list|,
 name|msg
 operator|.
 name|toString
@@ -794,6 +796,9 @@ name|console
 operator|.
 name|yesno
 argument_list|(
+operator|!
+name|required
+argument_list|,
 literal|"Continue without this library"
 argument_list|)
 condition|)
@@ -1243,10 +1248,14 @@ name|console
 operator|.
 name|yesno
 argument_list|(
+literal|null
+comment|/* force an answer */
+argument_list|,
 literal|"error: SHA-1 checksum does not match\n"
 operator|+
 literal|"Use %s anyway"
 argument_list|,
+comment|//
 name|dst
 operator|.
 name|getName
