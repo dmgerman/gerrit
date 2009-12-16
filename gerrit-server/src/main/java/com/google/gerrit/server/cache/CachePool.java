@@ -530,6 +530,30 @@ literal|"Cache pool has already been started"
 argument_list|)
 throw|;
 block|}
+try|try
+block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"net.sf.ehcache.skipUpdateCheck"
+argument_list|,
+literal|""
+operator|+
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SecurityException
+name|e
+parameter_list|)
+block|{
+comment|// Ignore it, the system is just going to ping some external page
+comment|// using a background thread and there's not much we can do about
+comment|// it now.
+block|}
 name|manager
 operator|=
 operator|new
