@@ -152,10 +152,10 @@ name|GerritConfig
 implements|implements
 name|Cloneable
 block|{
-DECL|field|canonicalUrl
+DECL|field|registerUrl
 specifier|protected
 name|String
-name|canonicalUrl
+name|registerUrl
 decl_stmt|;
 DECL|field|gitweb
 specifier|protected
@@ -227,27 +227,27 @@ name|RegexFindReplace
 argument_list|>
 name|commentLinks
 decl_stmt|;
-DECL|method|getCanonicalUrl ()
+DECL|method|getRegisterUrl ()
 specifier|public
 name|String
-name|getCanonicalUrl
+name|getRegisterUrl
 parameter_list|()
 block|{
 return|return
-name|canonicalUrl
+name|registerUrl
 return|;
 block|}
-DECL|method|setCanonicalUrl (final String u)
+DECL|method|setRegisterUrl (final String u)
 specifier|public
 name|void
-name|setCanonicalUrl
+name|setRegisterUrl
 parameter_list|(
 specifier|final
 name|String
 name|u
 parameter_list|)
 block|{
-name|canonicalUrl
+name|registerUrl
 operator|=
 name|u
 expr_stmt|;
