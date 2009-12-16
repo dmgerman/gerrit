@@ -3032,12 +3032,22 @@ parameter_list|()
 block|{
 specifier|final
 name|Section
-name|cfg
+name|auth
 init|=
 operator|new
 name|Section
 argument_list|(
 literal|"auth"
+argument_list|)
+decl_stmt|;
+specifier|final
+name|Section
+name|ldap
+init|=
+operator|new
+name|Section
+argument_list|(
+literal|"ldap"
 argument_list|)
 decl_stmt|;
 name|ui
@@ -3051,7 +3061,7 @@ specifier|final
 name|AuthType
 name|auth_type
 init|=
-name|cfg
+name|auth
 operator|.
 name|select
 argument_list|(
@@ -3079,7 +3089,7 @@ block|{
 name|String
 name|hdr
 init|=
-name|cfg
+name|auth
 operator|.
 name|get
 argument_list|(
@@ -3100,7 +3110,7 @@ literal|"Get username from custom HTTP header"
 argument_list|)
 condition|)
 block|{
-name|cfg
+name|auth
 operator|.
 name|string
 argument_list|(
@@ -3120,7 +3130,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|cfg
+name|auth
 operator|.
 name|unset
 argument_list|(
@@ -3128,7 +3138,7 @@ literal|"httpHeader"
 argument_list|)
 expr_stmt|;
 block|}
-name|cfg
+name|auth
 operator|.
 name|string
 argument_list|(
@@ -3157,7 +3167,7 @@ block|{
 name|String
 name|server
 init|=
-name|cfg
+name|ldap
 operator|.
 name|string
 argument_list|(
@@ -3221,7 +3231,7 @@ operator|+
 name|server
 expr_stmt|;
 block|}
-name|cfg
+name|ldap
 operator|.
 name|set
 argument_list|(
@@ -3231,7 +3241,7 @@ name|server
 argument_list|)
 expr_stmt|;
 block|}
-name|cfg
+name|ldap
 operator|.
 name|string
 argument_list|(
@@ -3242,7 +3252,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|cfg
+name|ldap
 operator|.
 name|password
 argument_list|(
@@ -3263,7 +3273,7 @@ decl_stmt|;
 name|String
 name|aBase
 init|=
-name|cfg
+name|ldap
 operator|.
 name|string
 argument_list|(
@@ -3277,7 +3287,7 @@ decl_stmt|;
 name|String
 name|gBase
 init|=
-name|cfg
+name|ldap
 operator|.
 name|string
 argument_list|(
