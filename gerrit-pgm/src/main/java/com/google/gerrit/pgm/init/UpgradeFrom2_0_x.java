@@ -350,7 +350,6 @@ implements|implements
 name|InitStep
 block|{
 DECL|field|etcFiles
-specifier|private
 specifier|static
 specifier|final
 name|String
@@ -510,7 +509,6 @@ name|etc_dir
 expr_stmt|;
 block|}
 DECL|method|isNeedUpgrade ()
-specifier|public
 name|boolean
 name|isNeedUpgrade
 parameter_list|()
