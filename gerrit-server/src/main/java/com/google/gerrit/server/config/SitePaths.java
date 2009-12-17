@@ -253,6 +253,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|SitePaths (final @SitePath File sitePath)
+specifier|public
 name|SitePaths
 parameter_list|(
 specifier|final
