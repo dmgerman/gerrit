@@ -240,6 +240,26 @@ name|InetSocketAddress
 operator|)
 name|s
 decl_stmt|;
+if|if
+condition|(
+name|addr
+operator|.
+name|getPort
+argument_list|()
+operator|==
+name|defaultPort
+condition|)
+block|{
+return|return
+name|safeHostname
+argument_list|(
+name|hostname
+argument_list|(
+name|addr
+argument_list|)
+argument_list|)
+return|;
+block|}
 return|return
 name|format
 argument_list|(
@@ -276,6 +296,27 @@ name|int
 name|port
 parameter_list|)
 block|{
+return|return
+name|safeHostname
+argument_list|(
+name|hostname
+argument_list|)
+operator|+
+literal|":"
+operator|+
+name|port
+return|;
+block|}
+DECL|method|safeHostname (String hostname)
+specifier|private
+specifier|static
+name|String
+name|safeHostname
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
+block|{
 if|if
 condition|(
 literal|0
@@ -299,10 +340,6 @@ expr_stmt|;
 block|}
 return|return
 name|hostname
-operator|+
-literal|":"
-operator|+
-name|port
 return|;
 block|}
 comment|/** Parse an address string such as {@code host:port} or {@code *:port}. */
@@ -361,7 +398,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"invalid IPv6 representation"
+literal|"invalid IPv6: "
+operator|+
+name|desc
 argument_list|)
 throw|;
 block|}
@@ -507,7 +546,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"invalid port"
+literal|"invalid port: "
+operator|+
+name|desc
 argument_list|)
 throw|;
 block|}
@@ -641,10 +682,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"unknown host: "
+operator|+
+name|desc
 argument_list|,
 name|e
 argument_list|)
