@@ -92,7 +92,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -200,14 +200,12 @@ name|git_logo_png
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebConfig (@itePath final File sitePath, @GerritServerConfig final Config cfg)
+DECL|method|GitWebConfig (final SitePaths sitePaths, @GerritServerConfig final Config cfg)
 name|GitWebConfig
 parameter_list|(
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|sitePaths
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -338,35 +336,13 @@ comment|// cannot be used as specified.
 comment|//
 name|cgi
 operator|=
-operator|new
-name|File
+name|sitePaths
+operator|.
+name|resolve
 argument_list|(
 name|cfgCgi
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|cgi
-operator|.
-name|isAbsolute
-argument_list|()
-condition|)
-block|{
-name|cgi
-operator|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-name|cfgCgi
-argument_list|)
-operator|.
-name|getAbsoluteFile
-argument_list|()
-expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!

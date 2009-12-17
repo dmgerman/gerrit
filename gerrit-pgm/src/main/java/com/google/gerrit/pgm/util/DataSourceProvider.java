@@ -124,7 +124,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -296,14 +296,12 @@ name|ds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DataSourceProvider (@itePath final File sitePath, @GerritServerConfig final Config cfg, Context ctx)
+DECL|method|DataSourceProvider (final SitePaths site, @GerritServerConfig final Config cfg, Context ctx)
 name|DataSourceProvider
 parameter_list|(
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -319,7 +317,7 @@ name|ds
 operator|=
 name|open
 argument_list|(
-name|sitePath
+name|site
 argument_list|,
 name|cfg
 argument_list|,
@@ -423,14 +421,14 @@ name|H2
 block|,
 name|MYSQL
 block|;   }
-DECL|method|open (final File sitePath, final Config cfg, final Context context)
+DECL|method|open (final SitePaths site, final Config cfg, final Context context)
 specifier|private
 name|DataSource
 name|open
 parameter_list|(
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|Config
@@ -936,31 +934,13 @@ block|}
 name|File
 name|db
 init|=
-operator|new
-name|File
+name|site
+operator|.
+name|resolve
 argument_list|(
 name|database
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|db
-operator|.
-name|isAbsolute
-argument_list|()
-condition|)
-block|{
-name|db
-operator|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-name|database
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|db
@@ -984,7 +964,6 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 name|url
 operator|=

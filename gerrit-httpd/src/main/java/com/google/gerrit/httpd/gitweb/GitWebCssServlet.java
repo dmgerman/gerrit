@@ -162,7 +162,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -303,13 +303,11 @@ name|GitWebCssServlet
 block|{
 annotation|@
 name|Inject
-DECL|method|Site (@itePath File sp, GitWebConfig gwc)
+DECL|method|Site (SitePaths paths, GitWebConfig gwc)
 name|Site
 parameter_list|(
-annotation|@
-name|SitePath
-name|File
-name|sp
+name|SitePaths
+name|paths
 parameter_list|,
 name|GitWebConfig
 name|gwc
@@ -319,35 +317,13 @@ name|IOException
 block|{
 name|super
 argument_list|(
-name|sp
+name|paths
+operator|.
+name|site_css
 argument_list|,
 name|gwc
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|path (File etc, GitWebConfig gitWebConfig)
-specifier|protected
-name|File
-name|path
-parameter_list|(
-name|File
-name|etc
-parameter_list|,
-name|GitWebConfig
-name|gitWebConfig
-parameter_list|)
-block|{
-return|return
-operator|new
-name|File
-argument_list|(
-name|etc
-argument_list|,
-literal|"GerritSite.css"
-argument_list|)
-return|;
 block|}
 block|}
 annotation|@
@@ -366,14 +342,9 @@ name|GitWebCssServlet
 block|{
 annotation|@
 name|Inject
-DECL|method|Default (@itePath File sp, GitWebConfig gwc)
+DECL|method|Default (GitWebConfig gwc)
 name|Default
 parameter_list|(
-annotation|@
-name|SitePath
-name|File
-name|sp
-parameter_list|,
 name|GitWebConfig
 name|gwc
 parameter_list|)
@@ -382,32 +353,14 @@ name|IOException
 block|{
 name|super
 argument_list|(
-name|sp
+name|gwc
+operator|.
+name|getGitwebCSS
+argument_list|()
 argument_list|,
 name|gwc
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|path (File etc, GitWebConfig gitWebConfig)
-specifier|protected
-name|File
-name|path
-parameter_list|(
-name|File
-name|etc
-parameter_list|,
-name|GitWebConfig
-name|gitWebConfig
-parameter_list|)
-block|{
-return|return
-name|gitWebConfig
-operator|.
-name|getGitwebCSS
-argument_list|()
-return|;
 block|}
 block|}
 DECL|field|ENC
@@ -433,14 +386,12 @@ name|byte
 index|[]
 name|gz_css
 decl_stmt|;
-DECL|method|GitWebCssServlet (@itePath final File sitePath, final GitWebConfig gitWebConfig)
+DECL|method|GitWebCssServlet (final File src, final GitWebConfig gitWebConfig)
 name|GitWebCssServlet
 parameter_list|(
-annotation|@
-name|SitePath
 specifier|final
 name|File
-name|sitePath
+name|src
 parameter_list|,
 specifier|final
 name|GitWebConfig
@@ -449,23 +400,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
-name|File
-name|src
-init|=
-name|path
-argument_list|(
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-literal|"etc"
-argument_list|)
-argument_list|,
-name|gitWebConfig
-argument_list|)
-decl_stmt|;
 specifier|final
 name|File
 name|dir
@@ -535,19 +469,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|path (File sitePath, GitWebConfig gitWebConfig)
-specifier|protected
-specifier|abstract
-name|File
-name|path
-parameter_list|(
-name|File
-name|sitePath
-parameter_list|,
-name|GitWebConfig
-name|gitWebConfig
-parameter_list|)
-function_decl|;
 annotation|@
 name|Override
 DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)

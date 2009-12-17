@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.util
+DECL|package|com.google.gerrit.pgm.init
 package|package
 name|com
 operator|.
@@ -62,9 +62,69 @@ name|gerrit
 operator|.
 name|pgm
 operator|.
-name|util
+name|init
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|util
+operator|.
+name|ConsoleUI
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|util
+operator|.
+name|Die
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
 
 begin_import
 import|import
@@ -230,21 +290,26 @@ end_comment
 
 begin_class
 DECL|class|LibraryDownloader
-specifier|public
 class|class
 name|LibraryDownloader
 block|{
-DECL|field|console
+DECL|field|ui
 specifier|private
 specifier|final
 name|ConsoleUI
-name|console
+name|ui
 decl_stmt|;
-DECL|field|libDirectory
+DECL|field|lib_dir
 specifier|private
 specifier|final
 name|File
-name|libDirectory
+name|lib_dir
+decl_stmt|;
+DECL|field|reload
+specifier|private
+specifier|final
+name|ReloadSiteLibrary
+name|reload
 decl_stmt|;
 DECL|field|required
 specifier|private
@@ -271,40 +336,46 @@ specifier|private
 name|File
 name|dst
 decl_stmt|;
-DECL|method|LibraryDownloader (final ConsoleUI console, final File sitePath)
-specifier|public
+annotation|@
+name|Inject
+DECL|method|LibraryDownloader (final ReloadSiteLibrary reload, final ConsoleUI ui, final SitePaths site)
 name|LibraryDownloader
 parameter_list|(
 specifier|final
-name|ConsoleUI
-name|console
+name|ReloadSiteLibrary
+name|reload
 parameter_list|,
 specifier|final
-name|File
-name|sitePath
+name|ConsoleUI
+name|ui
+parameter_list|,
+specifier|final
+name|SitePaths
+name|site
 parameter_list|)
 block|{
 name|this
 operator|.
-name|console
+name|ui
 operator|=
-name|console
+name|ui
 expr_stmt|;
 name|this
 operator|.
-name|libDirectory
+name|lib_dir
 operator|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-literal|"lib"
-argument_list|)
+name|site
+operator|.
+name|lib_dir
+expr_stmt|;
+name|this
+operator|.
+name|reload
+operator|=
+name|reload
 expr_stmt|;
 block|}
 DECL|method|setName (final String name)
-specifier|public
 name|void
 name|setName
 parameter_list|(
@@ -321,7 +392,6 @@ name|name
 expr_stmt|;
 block|}
 DECL|method|setJarUrl (final String url)
-specifier|public
 name|void
 name|setJarUrl
 parameter_list|(
@@ -338,7 +408,6 @@ name|url
 expr_stmt|;
 block|}
 DECL|method|setSHA1 (final String sha1)
-specifier|public
 name|void
 name|setSHA1
 parameter_list|(
@@ -355,7 +424,6 @@ name|sha1
 expr_stmt|;
 block|}
 DECL|method|downloadRequired ()
-specifier|public
 name|void
 name|downloadRequired
 parameter_list|()
@@ -371,7 +439,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|downloadOptional ()
-specifier|public
 name|void
 name|downloadOptional
 parameter_list|()
@@ -479,7 +546,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|libDirectory
+name|lib_dir
 argument_list|,
 name|jarName
 argument_list|)
@@ -509,7 +576,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|console
+name|ui
 operator|.
 name|isBatch
 argument_list|()
@@ -581,7 +648,7 @@ literal|"Download and install it now"
 argument_list|)
 expr_stmt|;
 return|return
-name|console
+name|ui
 operator|.
 name|yesno
 argument_list|(
@@ -606,13 +673,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|libDirectory
+name|lib_dir
 operator|.
 name|exists
 argument_list|()
 operator|&&
 operator|!
-name|libDirectory
+name|lib_dir
 operator|.
 name|mkdirs
 argument_list|()
@@ -624,7 +691,7 @@ name|Die
 argument_list|(
 literal|"Cannot create "
 operator|+
-name|libDirectory
+name|lib_dir
 argument_list|)
 throw|;
 block|}
@@ -650,7 +717,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|console
+name|ui
 operator|.
 name|isBatch
 argument_list|()
@@ -774,7 +841,7 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|console
+name|ui
 operator|.
 name|waitForUser
 argument_list|()
@@ -795,7 +862,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|console
+name|ui
 operator|.
 name|yesno
 argument_list|(
@@ -815,6 +882,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+name|reload
+operator|.
+name|reload
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|doGetByHttp ()
 specifier|private
@@ -1222,7 +1294,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|console
+name|ui
 operator|.
 name|isBatch
 argument_list|()
@@ -1247,7 +1319,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|console
+name|ui
 operator|.
 name|yesno
 argument_list|(

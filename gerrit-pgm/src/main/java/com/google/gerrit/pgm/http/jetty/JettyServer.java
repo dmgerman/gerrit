@@ -152,7 +152,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -752,11 +752,11 @@ throw|;
 block|}
 block|}
 block|}
-DECL|field|sitePath
+DECL|field|site
 specifier|private
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 decl_stmt|;
 DECL|field|httpd
 specifier|private
@@ -772,7 +772,7 @@ name|baseResource
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|JettyServer (@erritServerConfig final Config cfg, @SitePath final File sitePath, final JettyEnv env)
+DECL|method|JettyServer (@erritServerConfig final Config cfg, final SitePaths site, final JettyEnv env)
 name|JettyServer
 parameter_list|(
 annotation|@
@@ -781,11 +781,9 @@ specifier|final
 name|Config
 name|cfg
 parameter_list|,
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|JettyEnv
@@ -798,9 +796,9 @@ name|IOException
 block|{
 name|this
 operator|.
-name|sitePath
+name|site
 operator|=
-name|sitePath
+name|site
 expr_stmt|;
 name|Handler
 name|app
@@ -1616,37 +1614,13 @@ operator|=
 name|def
 expr_stmt|;
 block|}
-name|File
-name|loc
-init|=
-operator|new
-name|File
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|loc
-operator|.
-name|isAbsolute
-argument_list|()
-condition|)
-block|{
-name|loc
-operator|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
-block|}
 return|return
-name|loc
+name|site
+operator|.
+name|resolve
+argument_list|(
+name|path
+argument_list|)
 return|;
 block|}
 DECL|method|threadPool (Config cfg)

@@ -192,7 +192,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -601,7 +601,7 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebServlet (final GitRepositoryManager repoManager, final ProjectControl.Factory projectControl, @SitePath final File sitePath, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
+DECL|method|GitWebServlet (final GitRepositoryManager repoManager, final ProjectControl.Factory projectControl, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
 name|GitWebServlet
 parameter_list|(
 specifier|final
@@ -614,11 +614,9 @@ operator|.
 name|Factory
 name|projectControl
 parameter_list|,
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|GerritConfig
@@ -699,7 +697,7 @@ argument_list|()
 expr_stmt|;
 name|makeSiteConfig
 argument_list|(
-name|sitePath
+name|site
 argument_list|,
 name|gerritConfig
 argument_list|)
@@ -814,14 +812,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|makeSiteConfig (final File sitePath, final GerritConfig gerritConfig)
+DECL|method|makeSiteConfig (final SitePaths site, final GerritConfig gerritConfig)
 specifier|private
 name|void
 name|makeSiteConfig
 parameter_list|(
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|GerritConfig
@@ -923,18 +921,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final
-name|File
-name|etc
-init|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-literal|"etc"
-argument_list|)
-decl_stmt|;
-specifier|final
 name|PrintWriter
 name|p
 init|=
@@ -978,13 +964,9 @@ specifier|final
 name|File
 name|hdr
 init|=
-operator|new
-name|File
-argument_list|(
-name|etc
-argument_list|,
-literal|"GerritSiteHeader.html"
-argument_list|)
+name|site
+operator|.
+name|site_header
 decl_stmt|;
 if|if
 condition|(
@@ -1013,13 +995,9 @@ specifier|final
 name|File
 name|ftr
 init|=
-operator|new
-name|File
-argument_list|(
-name|etc
-argument_list|,
-literal|"GerritSiteFooter.html"
-argument_list|)
+name|site
+operator|.
+name|site_footer
 decl_stmt|;
 if|if
 condition|(
@@ -1085,13 +1063,9 @@ specifier|final
 name|File
 name|css
 init|=
-operator|new
-name|File
-argument_list|(
-name|etc
-argument_list|,
-literal|"GerritSite.css"
-argument_list|)
+name|site
+operator|.
+name|site_css
 decl_stmt|;
 if|if
 condition|(
@@ -1354,13 +1328,9 @@ specifier|final
 name|File
 name|sitecfg
 init|=
-operator|new
-name|File
-argument_list|(
-name|etc
-argument_list|,
-literal|"gitweb_config.perl"
-argument_list|)
+name|site
+operator|.
+name|site_gitweb
 decl_stmt|;
 if|if
 condition|(

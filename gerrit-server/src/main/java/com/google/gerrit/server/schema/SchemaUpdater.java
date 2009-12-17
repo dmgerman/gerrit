@@ -120,7 +120,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -170,16 +170,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -213,11 +203,11 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|field|sitePath
+DECL|field|site
 specifier|private
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 decl_stmt|;
 DECL|field|creator
 specifier|private
@@ -227,7 +217,7 @@ name|creator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaUpdater (final SchemaFactory<ReviewDb> schema, final @SitePath File sitePath, final SchemaCreator creator)
+DECL|method|SchemaUpdater (final SchemaFactory<ReviewDb> schema, final SitePaths site, final SchemaCreator creator)
 name|SchemaUpdater
 parameter_list|(
 specifier|final
@@ -238,10 +228,8 @@ argument_list|>
 name|schema
 parameter_list|,
 specifier|final
-annotation|@
-name|SitePath
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|SchemaCreator
@@ -256,9 +244,9 @@ name|schema
 expr_stmt|;
 name|this
 operator|.
-name|sitePath
+name|site
 operator|=
-name|sitePath
+name|site
 expr_stmt|;
 name|this
 operator|.
@@ -418,7 +406,9 @@ name|sc
 operator|.
 name|sitePath
 operator|=
-name|sitePath
+name|site
+operator|.
+name|site_path
 operator|.
 name|getCanonicalPath
 argument_list|()
@@ -434,7 +424,9 @@ name|sc
 operator|.
 name|sitePath
 operator|=
-name|sitePath
+name|site
+operator|.
+name|site_path
 operator|.
 name|getAbsolutePath
 argument_list|()

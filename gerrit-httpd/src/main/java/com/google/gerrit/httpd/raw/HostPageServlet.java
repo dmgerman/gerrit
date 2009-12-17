@@ -168,7 +168,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -464,7 +464,7 @@ name|hostDoc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Provider<CurrentUser> cu, @SitePath final File sitePath, final GerritConfig gc, @GerritServerConfig final Config cfg, final ServletContext servletContext)
+DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final SitePaths site, final GerritConfig gc, @GerritServerConfig final Config cfg, final ServletContext servletContext)
 name|HostPageServlet
 parameter_list|(
 specifier|final
@@ -474,11 +474,9 @@ name|CurrentUser
 argument_list|>
 name|cu
 parameter_list|,
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|GerritConfig
@@ -542,18 +540,6 @@ literal|" in webapp"
 argument_list|)
 throw|;
 block|}
-specifier|final
-name|File
-name|etc
-init|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-literal|"etc"
-argument_list|)
-decl_stmt|;
 name|fixModuleReference
 argument_list|(
 name|hostDoc
@@ -567,9 +553,9 @@ name|hostDoc
 argument_list|,
 literal|"gerrit_sitecss"
 argument_list|,
-name|etc
-argument_list|,
-literal|"GerritSite.css"
+name|site
+operator|.
+name|site_css
 argument_list|)
 expr_stmt|;
 name|injectXmlFile
@@ -578,9 +564,9 @@ name|hostDoc
 argument_list|,
 literal|"gerrit_header"
 argument_list|,
-name|etc
-argument_list|,
-literal|"GerritSiteHeader.html"
+name|site
+operator|.
+name|site_header
 argument_list|)
 expr_stmt|;
 name|injectXmlFile
@@ -589,13 +575,13 @@ name|hostDoc
 argument_list|,
 literal|"gerrit_footer"
 argument_list|,
-name|etc
-argument_list|,
-literal|"GerritSiteFooter.html"
+name|site
+operator|.
+name|site_footer
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|injectXmlFile (final Document hostDoc, final String id, final File etc, final String fileName)
+DECL|method|injectXmlFile (final Document hostDoc, final String id, final File src)
 specifier|private
 name|void
 name|injectXmlFile
@@ -610,11 +596,7 @@ name|id
 parameter_list|,
 specifier|final
 name|File
-name|etc
-parameter_list|,
-specifier|final
-name|String
-name|fileName
+name|src
 parameter_list|)
 throws|throws
 name|IOException
@@ -662,7 +644,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|Document
 name|html
 init|=
@@ -670,9 +651,15 @@ name|HtmlDomUtil
 operator|.
 name|parseFile
 argument_list|(
-name|etc
+name|src
+operator|.
+name|getParentFile
+argument_list|()
 argument_list|,
-name|fileName
+name|src
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -718,7 +705,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|injectCssFile (final Document hostDoc, final String id, final File etc, final String fileName)
+DECL|method|injectCssFile (final Document hostDoc, final String id, final File src)
 specifier|private
 name|void
 name|injectCssFile
@@ -733,11 +720,7 @@ name|id
 parameter_list|,
 specifier|final
 name|File
-name|etc
-parameter_list|,
-specifier|final
-name|String
-name|fileName
+name|src
 parameter_list|)
 throws|throws
 name|IOException
@@ -793,9 +776,15 @@ name|HtmlDomUtil
 operator|.
 name|readFile
 argument_list|(
-name|etc
+name|src
+operator|.
+name|getParentFile
+argument_list|()
 argument_list|,
-name|fileName
+name|src
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

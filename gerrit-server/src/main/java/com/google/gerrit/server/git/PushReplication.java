@@ -148,7 +148,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -488,16 +488,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -717,7 +707,7 @@ name|replicationUserFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PushReplication (final Injector i, final WorkQueue wq, @SitePath final File sitePath, final ReplicationUser.Factory ruf, final SchemaFactory<ReviewDb> db)
+DECL|method|PushReplication (final Injector i, final WorkQueue wq, final SitePaths site, final ReplicationUser.Factory ruf, final SchemaFactory<ReviewDb> db)
 name|PushReplication
 parameter_list|(
 specifier|final
@@ -728,11 +718,9 @@ specifier|final
 name|WorkQueue
 name|wq
 parameter_list|,
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|ReplicationUser
@@ -772,7 +760,7 @@ name|configs
 operator|=
 name|allConfigs
 argument_list|(
-name|sitePath
+name|site
 argument_list|)
 expr_stmt|;
 block|}
@@ -981,7 +969,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|allConfigs (final File path)
+DECL|method|allConfigs (final SitePaths site)
 specifier|private
 name|List
 argument_list|<
@@ -990,8 +978,8 @@ argument_list|>
 name|allConfigs
 parameter_list|(
 specifier|final
-name|File
-name|path
+name|SitePaths
+name|site
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -999,37 +987,15 @@ throws|,
 name|IOException
 block|{
 specifier|final
-name|File
-name|etc
-init|=
-operator|new
-name|File
-argument_list|(
-name|path
-argument_list|,
-literal|"etc"
-argument_list|)
-decl_stmt|;
-specifier|final
-name|File
-name|cfgFile
-init|=
-operator|new
-name|File
-argument_list|(
-name|etc
-argument_list|,
-literal|"replication.config"
-argument_list|)
-decl_stmt|;
-specifier|final
 name|FileBasedConfig
 name|cfg
 init|=
 operator|new
 name|FileBasedConfig
 argument_list|(
-name|cfgFile
+name|site
+operator|.
+name|replication_config
 argument_list|)
 decl_stmt|;
 if|if
@@ -1147,7 +1113,10 @@ name|IOException
 argument_list|(
 literal|"Cannot read "
 operator|+
-name|cfgFile
+name|cfg
+operator|.
+name|getFile
+argument_list|()
 operator|+
 literal|": "
 operator|+

@@ -78,7 +78,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -656,25 +656,19 @@ name|staticBase
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|StaticServlet (@itePath final File sitePath)
+DECL|method|StaticServlet (final SitePaths site)
 name|StaticServlet
 parameter_list|(
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|)
 block|{
 name|staticBase
 operator|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-literal|"static"
-argument_list|)
+name|site
+operator|.
+name|static_dir
 expr_stmt|;
 block|}
 DECL|method|local (final HttpServletRequest req)

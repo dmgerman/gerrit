@@ -206,6 +206,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|WildProjectNameProvider
 import|;
 end_import
@@ -441,11 +457,13 @@ argument_list|(
 literal|"-- All Projects --"
 argument_list|)
 decl_stmt|;
-DECL|field|sitePath
 specifier|private
 specifier|final
+annotation|@
+name|SitePath
+DECL|field|site_path
 name|File
-name|sitePath
+name|site_path
 decl_stmt|;
 DECL|field|index_generic
 specifier|private
@@ -467,7 +485,24 @@ name|mysql_nextval
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator (final @SitePath File sitePath)
+DECL|method|SchemaCreator (final SitePaths site)
+specifier|public
+name|SchemaCreator
+parameter_list|(
+specifier|final
+name|SitePaths
+name|site
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|site
+operator|.
+name|site_path
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|SchemaCreator (final @SitePath File site)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -475,14 +510,12 @@ specifier|final
 annotation|@
 name|SitePath
 name|File
-name|sitePath
+name|site
 parameter_list|)
 block|{
-name|this
-operator|.
-name|sitePath
+name|site_path
 operator|=
-name|sitePath
+name|site
 expr_stmt|;
 name|index_generic
 operator|=
@@ -965,7 +998,7 @@ name|s
 operator|.
 name|sitePath
 operator|=
-name|sitePath
+name|site_path
 operator|.
 name|getCanonicalPath
 argument_list|()
@@ -981,7 +1014,7 @@ name|s
 operator|.
 name|sitePath
 operator|=
-name|sitePath
+name|site_path
 operator|.
 name|getAbsolutePath
 argument_list|()

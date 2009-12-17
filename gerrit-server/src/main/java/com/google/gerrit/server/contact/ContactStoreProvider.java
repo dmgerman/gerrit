@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|SitePath
+name|SitePaths
 import|;
 end_import
 
@@ -239,11 +239,11 @@ specifier|final
 name|Config
 name|config
 decl_stmt|;
-DECL|field|sitePath
+DECL|field|site
 specifier|private
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 decl_stmt|;
 DECL|field|schema
 specifier|private
@@ -256,7 +256,7 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ContactStoreProvider (@erritServerConfig final Config config, @SitePath final File sitePath, final SchemaFactory<ReviewDb> schema)
+DECL|method|ContactStoreProvider (@erritServerConfig final Config config, final SitePaths site, final SchemaFactory<ReviewDb> schema)
 name|ContactStoreProvider
 parameter_list|(
 annotation|@
@@ -265,11 +265,9 @@ specifier|final
 name|Config
 name|config
 parameter_list|,
-annotation|@
-name|SitePath
 specifier|final
-name|File
-name|sitePath
+name|SitePaths
+name|site
 parameter_list|,
 specifier|final
 name|SchemaFactory
@@ -287,9 +285,9 @@ name|config
 expr_stmt|;
 name|this
 operator|.
-name|sitePath
+name|site
 operator|=
-name|sitePath
+name|site
 expr_stmt|;
 name|this
 operator|.
@@ -403,13 +401,9 @@ specifier|final
 name|File
 name|pubkey
 init|=
-operator|new
-name|File
-argument_list|(
-name|sitePath
-argument_list|,
-literal|"etc/contact_information.pub"
-argument_list|)
+name|site
+operator|.
+name|contact_information_pub
 decl_stmt|;
 if|if
 condition|(
