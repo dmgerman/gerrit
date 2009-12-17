@@ -222,6 +222,14 @@ specifier|public
 class|class
 name|ErrorLogFile
 block|{
+DECL|field|LOG_NAME
+specifier|static
+specifier|final
+name|String
+name|LOG_NAME
+init|=
+literal|"error_log"
+decl_stmt|;
 DECL|method|errorOnlyConsole ()
 specifier|public
 specifier|static
@@ -377,7 +385,7 @@ name|dst
 operator|.
 name|setName
 argument_list|(
-literal|"error_log"
+name|LOG_NAME
 argument_list|)
 expr_stmt|;
 name|dst
@@ -403,7 +411,7 @@ name|File
 argument_list|(
 name|logdir
 argument_list|,
-literal|"error_log"
+name|LOG_NAME
 argument_list|)
 operator|.
 name|getAbsolutePath
