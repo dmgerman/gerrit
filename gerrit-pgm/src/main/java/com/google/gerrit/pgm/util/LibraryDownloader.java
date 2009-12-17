@@ -303,29 +303,9 @@ literal|"lib"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setRequired (final boolean required)
-specifier|public
-name|LibraryDownloader
-name|setRequired
-parameter_list|(
-specifier|final
-name|boolean
-name|required
-parameter_list|)
-block|{
-name|this
-operator|.
-name|required
-operator|=
-name|required
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
 DECL|method|setName (final String name)
 specifier|public
-name|LibraryDownloader
+name|void
 name|setName
 parameter_list|(
 specifier|final
@@ -339,13 +319,10 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-return|return
-name|this
-return|;
 block|}
 DECL|method|setJarUrl (final String url)
 specifier|public
-name|LibraryDownloader
+name|void
 name|setJarUrl
 parameter_list|(
 specifier|final
@@ -359,13 +336,10 @@ name|jarUrl
 operator|=
 name|url
 expr_stmt|;
-return|return
-name|this
-return|;
 block|}
 DECL|method|setSHA1 (final String sha1)
 specifier|public
-name|LibraryDownloader
+name|void
 name|setSHA1
 parameter_list|(
 specifier|final
@@ -379,12 +353,41 @@ name|sha1
 operator|=
 name|sha1
 expr_stmt|;
-return|return
+block|}
+DECL|method|downloadRequired ()
+specifier|public
+name|void
+name|downloadRequired
+parameter_list|()
+block|{
 name|this
-return|;
+operator|.
+name|required
+operator|=
+literal|true
+expr_stmt|;
+name|download
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|downloadOptional ()
+specifier|public
+name|void
+name|downloadOptional
+parameter_list|()
+block|{
+name|this
+operator|.
+name|required
+operator|=
+literal|false
+expr_stmt|;
+name|download
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|download ()
-specifier|public
+specifier|private
 name|void
 name|download
 parameter_list|()
