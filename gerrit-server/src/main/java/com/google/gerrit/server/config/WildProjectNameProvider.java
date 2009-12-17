@@ -122,6 +122,7 @@ end_import
 
 begin_class
 DECL|class|WildProjectNameProvider
+specifier|public
 class|class
 name|WildProjectNameProvider
 implements|implements
@@ -134,6 +135,7 @@ argument_list|>
 block|{
 comment|/** Project.Id meaning "any and all projects on this server". */
 DECL|field|WILD_PROJECT_ID
+specifier|public
 specifier|static
 specifier|final
 name|Project
