@@ -104,9 +104,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lifecycle
+name|launcher
 operator|.
-name|LifecycleListener
+name|GerritLauncher
 import|;
 end_import
 
@@ -118,9 +118,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|main
+name|lifecycle
 operator|.
-name|GerritLauncher
+name|LifecycleListener
 import|;
 end_import
 
@@ -2299,7 +2299,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-literal|"com/google/gerrit/main/"
+literal|"com/google/gerrit/launcher/"
 argument_list|)
 condition|)
 continue|continue;

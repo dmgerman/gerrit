@@ -72,7 +72,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|main
+name|launcher
 operator|.
 name|GerritLauncher
 import|;

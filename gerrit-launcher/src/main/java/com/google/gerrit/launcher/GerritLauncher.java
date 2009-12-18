@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|com.google.gerrit.main
+DECL|package|com.google.gerrit.launcher
 package|package
 name|com
 operator|.
@@ -8,7 +8,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|main
+name|launcher
 package|;
 end_package
 

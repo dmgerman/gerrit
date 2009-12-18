@@ -483,7 +483,7 @@ argument_list|)
 expr_stmt|;
 name|serve
 argument_list|(
-literal|"/com/google/gerrit/main/*"
+literal|"/com/google/gerrit/launcher/*"
 argument_list|)
 operator|.
 name|with
