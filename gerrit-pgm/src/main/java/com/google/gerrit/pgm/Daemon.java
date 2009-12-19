@@ -72,9 +72,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|server
 operator|.
-name|util
+name|schema
 operator|.
 name|DataSourceProvider
 operator|.

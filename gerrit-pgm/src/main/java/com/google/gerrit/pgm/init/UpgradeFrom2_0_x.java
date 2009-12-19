@@ -144,11 +144,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|server
 operator|.
-name|util
+name|config
 operator|.
-name|DataSourceProvider
+name|SitePaths
 import|;
 end_import
 
@@ -162,9 +162,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|schema
 operator|.
-name|SitePaths
+name|DataSourceProvider
 import|;
 end_import
 
