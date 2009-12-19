@@ -532,6 +532,14 @@ name|equals
 argument_list|(
 name|name
 argument_list|)
+comment|//
+operator|||
+name|name
+operator|.
+name|endsWith
+argument_list|(
+literal|".pid"
+argument_list|)
 return|;
 block|}
 DECL|method|isCompressed (final File entry)
