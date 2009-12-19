@@ -132,6 +132,15 @@ name|SCHEME_GERRIT
 init|=
 literal|"gerrit:"
 decl_stmt|;
+DECL|field|SCHEME_UUID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SCHEME_UUID
+init|=
+literal|"uuid:"
+decl_stmt|;
 DECL|field|SCHEME_MAILTO
 specifier|public
 specifier|static

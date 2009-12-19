@@ -782,6 +782,25 @@ return|return
 literal|true
 return|;
 block|}
+if|if
+condition|(
+name|id
+operator|.
+name|isScheme
+argument_list|(
+name|AccountExternalId
+operator|.
+name|SCHEME_UUID
+argument_list|)
+condition|)
+block|{
+comment|// UUID identities are absolutely meaningless and cannot be
+comment|// constructed through any normal login process we use.
+comment|//
+return|return
+literal|true
+return|;
+block|}
 for|for
 control|(
 specifier|final

@@ -105,6 +105,7 @@ name|boolean
 name|isNew
 decl_stmt|;
 DECL|method|AuthResult (final Account.Id accountId, final boolean isNew)
+specifier|public
 name|AuthResult
 parameter_list|(
 specifier|final
