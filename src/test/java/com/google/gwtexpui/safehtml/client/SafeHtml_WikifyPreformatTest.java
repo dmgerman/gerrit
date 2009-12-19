@@ -91,7 +91,7 @@ specifier|final
 name|String
 name|B
 init|=
-literal|"<span class=\"gwtexpui-SafeHtml-WikiPreFormat\">"
+literal|"<span class=\"wikiPreFormat\">"
 decl_stmt|;
 DECL|field|E
 specifier|private

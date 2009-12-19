@@ -74,112 +74,65 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|core
+name|resources
 operator|.
 name|client
 operator|.
-name|GWT
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Constants
+name|CssResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|KeyConstants
+DECL|interface|KeyCss
 specifier|public
 interface|interface
-name|KeyConstants
+name|KeyCss
 extends|extends
-name|Constants
+name|CssResource
 block|{
-DECL|field|I
-specifier|public
-specifier|static
-specifier|final
-name|KeyConstants
-name|I
-init|=
-name|GWT
-operator|.
-name|create
-argument_list|(
-name|KeyConstants
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-DECL|method|applicationSection ()
+DECL|method|helpPopup ()
 name|String
-name|applicationSection
+name|helpPopup
 parameter_list|()
 function_decl|;
-DECL|method|showHelp ()
+DECL|method|helpHeader ()
 name|String
-name|showHelp
+name|helpHeader
 parameter_list|()
 function_decl|;
-DECL|method|closeCurrentDialog ()
+DECL|method|helpHeaderGlue ()
 name|String
-name|closeCurrentDialog
+name|helpHeaderGlue
 parameter_list|()
 function_decl|;
-DECL|method|keyboardShortcuts ()
+DECL|method|helpTable ()
 name|String
-name|keyboardShortcuts
+name|helpTable
 parameter_list|()
 function_decl|;
-DECL|method|closeButton ()
+DECL|method|helpTableGlue ()
 name|String
-name|closeButton
+name|helpTableGlue
 parameter_list|()
 function_decl|;
-DECL|method|orOtherKey ()
+DECL|method|helpGroup ()
 name|String
-name|orOtherKey
+name|helpGroup
 parameter_list|()
 function_decl|;
-DECL|method|thenOtherKey ()
+DECL|method|helpKeyStroke ()
 name|String
-name|thenOtherKey
+name|helpKeyStroke
 parameter_list|()
 function_decl|;
-DECL|method|keyCtrl ()
+DECL|method|helpSeparator ()
 name|String
-name|keyCtrl
+name|helpSeparator
 parameter_list|()
 function_decl|;
-DECL|method|keyAlt ()
+DECL|method|helpKey ()
 name|String
-name|keyAlt
-parameter_list|()
-function_decl|;
-DECL|method|keyMeta ()
-name|String
-name|keyMeta
-parameter_list|()
-function_decl|;
-DECL|method|keyEnter ()
-name|String
-name|keyEnter
-parameter_list|()
-function_decl|;
-DECL|method|keyEsc ()
-name|String
-name|keyEsc
+name|helpKey
 parameter_list|()
 function_decl|;
 block|}

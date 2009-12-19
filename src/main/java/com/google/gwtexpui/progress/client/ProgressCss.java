@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.globalkey.client
+DECL|package|com.google.gwtexpui.progress.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gwtexpui
 operator|.
-name|globalkey
+name|progress
 operator|.
 name|client
 package|;
@@ -74,112 +74,35 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|core
+name|resources
 operator|.
 name|client
 operator|.
-name|GWT
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Constants
+name|CssResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|KeyConstants
+DECL|interface|ProgressCss
 specifier|public
 interface|interface
-name|KeyConstants
+name|ProgressCss
 extends|extends
-name|Constants
+name|CssResource
 block|{
-DECL|field|I
-specifier|public
-specifier|static
-specifier|final
-name|KeyConstants
-name|I
-init|=
-name|GWT
-operator|.
-name|create
-argument_list|(
-name|KeyConstants
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-DECL|method|applicationSection ()
+DECL|method|container ()
 name|String
-name|applicationSection
+name|container
 parameter_list|()
 function_decl|;
-DECL|method|showHelp ()
+DECL|method|text ()
 name|String
-name|showHelp
+name|text
 parameter_list|()
 function_decl|;
-DECL|method|closeCurrentDialog ()
+DECL|method|bar ()
 name|String
-name|closeCurrentDialog
-parameter_list|()
-function_decl|;
-DECL|method|keyboardShortcuts ()
-name|String
-name|keyboardShortcuts
-parameter_list|()
-function_decl|;
-DECL|method|closeButton ()
-name|String
-name|closeButton
-parameter_list|()
-function_decl|;
-DECL|method|orOtherKey ()
-name|String
-name|orOtherKey
-parameter_list|()
-function_decl|;
-DECL|method|thenOtherKey ()
-name|String
-name|thenOtherKey
-parameter_list|()
-function_decl|;
-DECL|method|keyCtrl ()
-name|String
-name|keyCtrl
-parameter_list|()
-function_decl|;
-DECL|method|keyAlt ()
-name|String
-name|keyAlt
-parameter_list|()
-function_decl|;
-DECL|method|keyMeta ()
-name|String
-name|keyMeta
-parameter_list|()
-function_decl|;
-DECL|method|keyEnter ()
-name|String
-name|keyEnter
-parameter_list|()
-function_decl|;
-DECL|method|keyEsc ()
-name|String
-name|keyEsc
+name|bar
 parameter_list|()
 function_decl|;
 block|}

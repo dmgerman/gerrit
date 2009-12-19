@@ -427,7 +427,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Label which permits the user to easily copy the complete content.  *<p>  * If the Flash plugin is available a "movie" is embedded that provides  * one-click copying of the content onto the system clipboard. The label (if  * visible) can also be clicked, switching from a label to an input box,  * allowing the user to copy the text with a keyboard shortcut.  *<p>  * Style name:<code>gwtexpui-Clippy</code>  */
+comment|/**  * Label which permits the user to easily copy the complete content.  *<p>  * If the Flash plugin is available a "movie" is embedded that provides  * one-click copying of the content onto the system clipboard. The label (if  * visible) can also be clicked, switching from a label to an input box,  * allowing the user to copy the text with a keyboard shortcut.  */
 end_comment
 
 begin_class
@@ -472,6 +472,19 @@ name|flashEnabled
 init|=
 literal|true
 decl_stmt|;
+static|static
+block|{
+name|ClippyResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|ensureInjected
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|isFlashEnabled ()
 specifier|public
 specifier|static
@@ -591,13 +604,6 @@ operator|new
 name|FlowPanel
 argument_list|()
 expr_stmt|;
-name|content
-operator|.
-name|setStyleName
-argument_list|(
-literal|"gwtexpui-Clippy"
-argument_list|)
-expr_stmt|;
 name|initWidget
 argument_list|(
 name|content
@@ -625,7 +631,15 @@ name|textLabel
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gwtexpui-Clippy-Label"
+name|ClippyResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|label
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|textLabel
@@ -714,7 +728,15 @@ name|h
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gwtexpui-Clippy-Control"
+name|ClippyResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|control
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|h

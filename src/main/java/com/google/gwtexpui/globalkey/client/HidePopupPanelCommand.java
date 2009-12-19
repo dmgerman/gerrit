@@ -140,9 +140,9 @@ name|mask
 argument_list|,
 name|key
 argument_list|,
-name|Util
+name|KeyConstants
 operator|.
-name|C
+name|I
 operator|.
 name|closeCurrentDialog
 argument_list|()

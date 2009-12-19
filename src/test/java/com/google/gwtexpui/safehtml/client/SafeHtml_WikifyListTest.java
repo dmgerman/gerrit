@@ -91,7 +91,7 @@ specifier|final
 name|String
 name|BEGIN_LIST
 init|=
-literal|"<ul class=\"gwtexpui-SafeHtml-WikiList\">"
+literal|"<ul class=\"wikiList\">"
 decl_stmt|;
 DECL|field|END_LIST
 specifier|private

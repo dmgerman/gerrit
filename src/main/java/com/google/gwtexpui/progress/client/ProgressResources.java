@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.globalkey.client
+DECL|package|com.google.gwtexpui.progress.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gwtexpui
 operator|.
-name|globalkey
+name|progress
 operator|.
 name|client
 package|;
@@ -90,96 +90,46 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|i18n
+name|resources
 operator|.
 name|client
 operator|.
-name|Constants
+name|ClientBundle
 import|;
 end_import
 
 begin_interface
-DECL|interface|KeyConstants
+DECL|interface|ProgressResources
 specifier|public
 interface|interface
-name|KeyConstants
+name|ProgressResources
 extends|extends
-name|Constants
+name|ClientBundle
 block|{
 DECL|field|I
 specifier|public
 specifier|static
 specifier|final
-name|KeyConstants
+name|ProgressResources
 name|I
 init|=
 name|GWT
 operator|.
 name|create
 argument_list|(
-name|KeyConstants
+name|ProgressResources
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|applicationSection ()
-name|String
-name|applicationSection
-parameter_list|()
-function_decl|;
-DECL|method|showHelp ()
-name|String
-name|showHelp
-parameter_list|()
-function_decl|;
-DECL|method|closeCurrentDialog ()
-name|String
-name|closeCurrentDialog
-parameter_list|()
-function_decl|;
-DECL|method|keyboardShortcuts ()
-name|String
-name|keyboardShortcuts
-parameter_list|()
-function_decl|;
-DECL|method|closeButton ()
-name|String
-name|closeButton
-parameter_list|()
-function_decl|;
-DECL|method|orOtherKey ()
-name|String
-name|orOtherKey
-parameter_list|()
-function_decl|;
-DECL|method|thenOtherKey ()
-name|String
-name|thenOtherKey
-parameter_list|()
-function_decl|;
-DECL|method|keyCtrl ()
-name|String
-name|keyCtrl
-parameter_list|()
-function_decl|;
-DECL|method|keyAlt ()
-name|String
-name|keyAlt
-parameter_list|()
-function_decl|;
-DECL|method|keyMeta ()
-name|String
-name|keyMeta
-parameter_list|()
-function_decl|;
-DECL|method|keyEnter ()
-name|String
-name|keyEnter
-parameter_list|()
-function_decl|;
-DECL|method|keyEsc ()
-name|String
-name|keyEsc
+annotation|@
+name|Source
+argument_list|(
+literal|"progress.css"
+argument_list|)
+DECL|method|css ()
+name|ProgressCss
+name|css
 parameter_list|()
 function_decl|;
 block|}

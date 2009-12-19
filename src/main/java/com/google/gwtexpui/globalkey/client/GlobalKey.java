@@ -286,6 +286,19 @@ specifier|static
 name|Timer
 name|restoreTimer
 decl_stmt|;
+static|static
+block|{
+name|KeyResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|ensureInjected
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|initEvents ()
 specifier|private
 specifier|static
@@ -769,9 +782,9 @@ operator|=
 operator|new
 name|KeyCommandSet
 argument_list|(
-name|Util
+name|KeyConstants
 operator|.
-name|C
+name|I
 operator|.
 name|applicationSection
 argument_list|()

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.globalkey.client
+DECL|package|com.google.gwtexpui.clippy.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gwtexpui
 operator|.
-name|globalkey
+name|clippy
 operator|.
 name|client
 package|;
@@ -74,43 +74,34 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|core
+name|resources
 operator|.
 name|client
 operator|.
-name|GWT
+name|CssResource
 import|;
 end_import
 
-begin_class
-DECL|class|Util
+begin_interface
+DECL|interface|ClippyCss
 specifier|public
-class|class
-name|Util
+interface|interface
+name|ClippyCss
+extends|extends
+name|CssResource
 block|{
-DECL|field|C
-specifier|public
-specifier|static
-specifier|final
-name|KeyConstants
-name|C
-init|=
-name|GWT
-operator|.
-name|create
-argument_list|(
-name|KeyConstants
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-DECL|method|Util ()
-specifier|private
-name|Util
+DECL|method|label ()
+name|String
+name|label
 parameter_list|()
-block|{   }
+function_decl|;
+DECL|method|control ()
+name|String
+name|control
+parameter_list|()
+function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 

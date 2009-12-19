@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple progress bar with a text label.  *<p>  * The bar is 200 pixels wide and 20 pixels high. To keep the implementation  * simple and lightweight this dimensions are fixed and shouldn't be modified by  * style overrides in client code or CSS.  *<p>  * Style name:<code>gwtexpui-ProgressMeter</code>  */
+comment|/**  * A simple progress bar with a text label.  *<p>  * The bar is 200 pixels wide and 20 pixels high. To keep the implementation  * simple and lightweight this dimensions are fixed and shouldn't be modified by  * style overrides in client code or CSS.  */
 end_comment
 
 begin_class
@@ -132,6 +132,19 @@ name|ProgressBar
 extends|extends
 name|Composite
 block|{
+static|static
+block|{
+name|ProgressResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|ensureInjected
+argument_list|()
+expr_stmt|;
+block|}
 DECL|field|callerText
 specifier|private
 specifier|final
@@ -217,7 +230,15 @@ name|body
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gwtexpui-ProgressBar"
+name|ProgressResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|container
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|msg
@@ -232,7 +253,15 @@ name|msg
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gwtexpui-ProgressBar-Text"
+name|ProgressResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|text
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|body
@@ -254,7 +283,15 @@ name|bar
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gwtexpui-ProgressBar-Bar"
+name|ProgressResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|bar
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|body
