@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -72,70 +72,25 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|resources
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|AbstractImagePrototype
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|ImageBundle
+name|CssResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|GerritIcons
+DECL|interface|GerritCssResource
 specifier|public
 interface|interface
-name|GerritIcons
+name|GerritCssResource
 extends|extends
-name|ImageBundle
+name|CssResource
 block|{
-DECL|method|arrowRight ()
-specifier|public
-name|AbstractImagePrototype
-name|arrowRight
-parameter_list|()
-function_decl|;
-DECL|method|starOpen ()
-specifier|public
-name|AbstractImagePrototype
-name|starOpen
-parameter_list|()
-function_decl|;
-DECL|method|starFilled ()
-specifier|public
-name|AbstractImagePrototype
-name|starFilled
-parameter_list|()
-function_decl|;
-DECL|method|greenCheck ()
-specifier|public
-name|AbstractImagePrototype
-name|greenCheck
-parameter_list|()
-function_decl|;
-DECL|method|redNot ()
-specifier|public
-name|AbstractImagePrototype
-name|redNot
+DECL|method|greenCheckClass ()
+name|String
+name|greenCheckClass
 parameter_list|()
 function_decl|;
 block|}

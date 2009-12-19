@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2008 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.openid
+DECL|package|com.google.gerrit.client
 package|package
 name|com
 operator|.
@@ -61,10 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|client
-operator|.
-name|auth
-operator|.
-name|openid
 package|;
 end_package
 
@@ -76,13 +72,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|resources
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|AbstractImagePrototype
+name|ClientBundle
 import|;
 end_import
 
@@ -94,40 +88,85 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|resources
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|ImageBundle
+name|ImageResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|LoginIcons
+DECL|interface|GerritResources
 specifier|public
 interface|interface
-name|LoginIcons
+name|GerritResources
 extends|extends
-name|ImageBundle
+name|ClientBundle
 block|{
-DECL|method|openidLogo ()
-specifier|public
-name|AbstractImagePrototype
-name|openidLogo
+annotation|@
+name|Source
+argument_list|(
+literal|"gerrit2.css"
+argument_list|)
+DECL|method|css ()
+name|GerritCssResource
+name|css
 parameter_list|()
 function_decl|;
-DECL|method|iconGoogle ()
+annotation|@
+name|Source
+argument_list|(
+literal|"arrowRight.gif"
+argument_list|)
+DECL|method|arrowRight ()
 specifier|public
-name|AbstractImagePrototype
-name|iconGoogle
+name|ImageResource
+name|arrowRight
 parameter_list|()
 function_decl|;
-DECL|method|iconYahoo ()
+annotation|@
+name|Source
+argument_list|(
+literal|"starOpen.gif"
+argument_list|)
+DECL|method|starOpen ()
 specifier|public
-name|AbstractImagePrototype
-name|iconYahoo
+name|ImageResource
+name|starOpen
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"starFilled.gif"
+argument_list|)
+DECL|method|starFilled ()
+specifier|public
+name|ImageResource
+name|starFilled
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"greenCheck.png"
+argument_list|)
+DECL|method|greenCheck ()
+specifier|public
+name|ImageResource
+name|greenCheck
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"redNot.png"
+argument_list|)
+DECL|method|redNot ()
+specifier|public
+name|ImageResource
+name|redNot
 parameter_list|()
 function_decl|;
 block|}

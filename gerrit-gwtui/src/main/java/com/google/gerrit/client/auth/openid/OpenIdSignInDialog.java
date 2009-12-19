@@ -296,6 +296,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|ImageResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|user
 operator|.
 name|client
@@ -381,24 +397,6 @@ operator|.
 name|client
 operator|.
 name|Window
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|AbstractImagePrototype
 import|;
 end_import
 
@@ -625,7 +623,7 @@ block|{
 DECL|field|icons
 specifier|private
 specifier|final
-name|LoginIcons
+name|LoginResources
 name|icons
 decl_stmt|;
 DECL|field|panelWidget
@@ -712,7 +710,7 @@ name|GWT
 operator|.
 name|create
 argument_list|(
-name|LoginIcons
+name|LoginResources
 operator|.
 name|class
 argument_list|)
@@ -960,13 +958,14 @@ name|headerLogo
 operator|.
 name|add
 argument_list|(
+operator|new
+name|Image
+argument_list|(
 name|icons
 operator|.
 name|openidLogo
 argument_list|()
-operator|.
-name|createImage
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|formBody
@@ -1500,7 +1499,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|link (final String identUrl, final String who, final AbstractImagePrototype icon)
+DECL|method|link (final String identUrl, final String who, final ImageResource icon)
 specifier|private
 name|void
 name|link
@@ -1514,7 +1513,7 @@ name|String
 name|who
 parameter_list|,
 specifier|final
-name|AbstractImagePrototype
+name|ImageResource
 name|icon
 parameter_list|)
 block|{
@@ -1578,10 +1577,11 @@ specifier|final
 name|Image
 name|img
 init|=
+operator|new
+name|Image
+argument_list|(
 name|icon
-operator|.
-name|createImage
-argument_list|()
+argument_list|)
 decl_stmt|;
 name|img
 operator|.
