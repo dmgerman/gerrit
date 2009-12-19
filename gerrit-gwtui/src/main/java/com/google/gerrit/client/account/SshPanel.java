@@ -3554,6 +3554,8 @@ name|k
 operator|.
 name|getEncodedKey
 argument_list|()
+argument_list|,
+literal|40
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3699,13 +3701,19 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|elide (final String s)
+block|}
+DECL|method|elide (final String s, final int len)
+specifier|static
 name|String
 name|elide
 parameter_list|(
 specifier|final
 name|String
 name|s
+parameter_list|,
+specifier|final
+name|int
+name|len
 parameter_list|)
 block|{
 if|if
@@ -3719,7 +3727,11 @@ operator|.
 name|length
 argument_list|()
 operator|<
-literal|40
+name|len
+operator|||
+name|len
+operator|<=
+literal|10
 condition|)
 block|{
 return|return
@@ -3733,7 +3745,9 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-literal|30
+name|len
+operator|-
+literal|10
 argument_list|)
 operator|+
 literal|"..."
@@ -3750,7 +3764,6 @@ operator|-
 literal|10
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class
