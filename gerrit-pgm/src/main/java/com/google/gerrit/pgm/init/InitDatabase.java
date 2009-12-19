@@ -483,9 +483,6 @@ expr_stmt|;
 break|break;
 block|}
 case|case
-name|POSTGRES
-case|:
-case|case
 name|POSTGRESQL
 case|:
 case|case
