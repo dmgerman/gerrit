@@ -540,18 +540,6 @@ name|Config
 name|cfg
 parameter_list|)
 block|{
-if|if
-condition|(
-name|isBecomeAnyoneEnabled
-argument_list|()
-condition|)
-block|{
-return|return
-name|AuthType
-operator|.
-name|DEVELOPMENT_BECOME_ANY_ACCOUNT
-return|;
-block|}
 return|return
 name|ConfigUtil
 operator|.
@@ -570,35 +558,6 @@ operator|.
 name|OPENID
 argument_list|)
 return|;
-block|}
-DECL|method|isBecomeAnyoneEnabled ()
-specifier|private
-specifier|static
-name|boolean
-name|isBecomeAnyoneEnabled
-parameter_list|()
-block|{
-try|try
-block|{
-return|return
-name|Boolean
-operator|.
-name|getBoolean
-argument_list|(
-literal|"com.google.gerrit.httpd.auth.become"
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|SecurityException
-name|se
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 comment|/** Type of user authentication used by this Gerrit server. */
 DECL|method|getAuthType ()
