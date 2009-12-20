@@ -252,6 +252,15 @@ name|MINE_DRAFTS
 init|=
 literal|"mine,drafts"
 decl_stmt|;
+DECL|field|TOP
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TOP
+init|=
+literal|"n,z"
+decl_stmt|;
 DECL|field|ALL_ABANDONED
 specifier|public
 specifier|static
@@ -259,7 +268,9 @@ specifier|final
 name|String
 name|ALL_ABANDONED
 init|=
-literal|"all,abandoned,n,z"
+literal|"all,abandoned,"
+operator|+
+name|TOP
 decl_stmt|;
 DECL|field|ALL_MERGED
 specifier|public
@@ -268,7 +279,9 @@ specifier|final
 name|String
 name|ALL_MERGED
 init|=
-literal|"all,merged,n,z"
+literal|"all,merged,"
+operator|+
+name|TOP
 decl_stmt|;
 DECL|field|ALL_OPEN
 specifier|public
@@ -277,7 +290,9 @@ specifier|final
 name|String
 name|ALL_OPEN
 init|=
-literal|"all,open,n,z"
+literal|"all,open,"
+operator|+
+name|TOP
 decl_stmt|;
 DECL|field|ADMIN_GROUPS
 specifier|public
@@ -404,7 +419,9 @@ argument_list|(
 name|query
 argument_list|)
 operator|+
-literal|",n,z"
+literal|","
+operator|+
+name|TOP
 return|;
 block|}
 DECL|method|PageLinks ()

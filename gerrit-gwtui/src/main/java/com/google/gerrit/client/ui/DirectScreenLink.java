@@ -90,20 +90,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|Gerrit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|user
@@ -231,28 +217,9 @@ block|}
 comment|/** Create the screen and start rendering, updating the browser history. */
 DECL|method|go ()
 specifier|public
+specifier|abstract
 name|void
 name|go
-parameter_list|()
-block|{
-name|Gerrit
-operator|.
-name|display
-argument_list|(
-name|getTargetHistoryToken
-argument_list|()
-argument_list|,
-name|createScreen
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|/** Create the screen this link wants to display. */
-DECL|method|createScreen ()
-specifier|protected
-specifier|abstract
-name|Screen
-name|createScreen
 parameter_list|()
 function_decl|;
 block|}

@@ -335,19 +335,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|createScreen ()
-specifier|protected
-name|Screen
-name|createScreen
+DECL|method|go ()
+specifier|public
+name|void
+name|go
 parameter_list|()
 block|{
-return|return
+name|Gerrit
+operator|.
+name|display
+argument_list|(
+name|getTargetHistoryToken
+argument_list|()
+argument_list|,
+comment|//
 operator|new
 name|AccountDashboardScreen
 argument_list|(
 name|accountId
 argument_list|)
-return|;
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
