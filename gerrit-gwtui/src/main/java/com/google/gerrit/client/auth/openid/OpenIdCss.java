@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.ui
+DECL|package|com.google.gerrit.client.auth.openid
 package|package
 name|com
 operator|.
@@ -62,7 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|ui
+name|auth
+operator|.
+name|openid
 package|;
 end_package
 
@@ -72,79 +74,55 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|Gerrit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
-name|user
+name|resources
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|Label
+name|CssResource
 import|;
 end_import
 
-begin_class
-DECL|class|SmallHeading
-specifier|public
-class|class
-name|SmallHeading
+begin_interface
+DECL|interface|OpenIdCss
+interface|interface
+name|OpenIdCss
 extends|extends
-name|Label
+name|CssResource
 block|{
-DECL|method|SmallHeading ()
-specifier|public
-name|SmallHeading
-parameter_list|()
-block|{
-name|setStyleName
-argument_list|(
-name|Gerrit
-operator|.
-name|RESOURCES
-operator|.
-name|css
-argument_list|()
-operator|.
-name|smallHeading
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|SmallHeading (final String text)
-specifier|public
-name|SmallHeading
-parameter_list|(
-specifier|final
+DECL|method|loginForm ()
 name|String
-name|text
-parameter_list|)
-block|{
-name|this
-argument_list|()
-expr_stmt|;
-name|setText
-argument_list|(
-name|text
-argument_list|)
-expr_stmt|;
+name|loginForm
+parameter_list|()
+function_decl|;
+DECL|method|logo ()
+name|String
+name|logo
+parameter_list|()
+function_decl|;
+DECL|method|loginLine ()
+name|String
+name|loginLine
+parameter_list|()
+function_decl|;
+DECL|method|identifier ()
+name|String
+name|identifier
+parameter_list|()
+function_decl|;
+DECL|method|directLink ()
+name|String
+name|directLink
+parameter_list|()
+function_decl|;
+DECL|method|error ()
+name|String
+name|error
+parameter_list|()
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

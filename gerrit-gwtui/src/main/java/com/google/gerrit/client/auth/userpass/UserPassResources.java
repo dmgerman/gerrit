@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.ui
+DECL|package|com.google.gerrit.client.auth.userpass
 package|package
 name|com
 operator|.
@@ -62,7 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|ui
+name|auth
+operator|.
+name|userpass
 package|;
 end_package
 
@@ -72,11 +74,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
+operator|.
+name|core
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|GWT
 import|;
 end_import
 
@@ -88,63 +92,48 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|resources
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|Label
+name|ClientBundle
 import|;
 end_import
 
-begin_class
-DECL|class|SmallHeading
-specifier|public
-class|class
-name|SmallHeading
+begin_interface
+DECL|interface|UserPassResources
+interface|interface
+name|UserPassResources
 extends|extends
-name|Label
+name|ClientBundle
 block|{
-DECL|method|SmallHeading ()
-specifier|public
-name|SmallHeading
-parameter_list|()
-block|{
-name|setStyleName
-argument_list|(
-name|Gerrit
-operator|.
-name|RESOURCES
-operator|.
-name|css
-argument_list|()
-operator|.
-name|smallHeading
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|SmallHeading (final String text)
-specifier|public
-name|SmallHeading
-parameter_list|(
+DECL|field|I
+specifier|static
 specifier|final
-name|String
-name|text
-parameter_list|)
-block|{
-name|this
-argument_list|()
-expr_stmt|;
-name|setText
+name|UserPassResources
+name|I
+init|=
+name|GWT
+operator|.
+name|create
 argument_list|(
-name|text
+name|UserPassResources
+operator|.
+name|class
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+annotation|@
+name|Source
+argument_list|(
+literal|"userpass.css"
+argument_list|)
+DECL|method|css ()
+name|UserPassCss
+name|css
+parameter_list|()
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

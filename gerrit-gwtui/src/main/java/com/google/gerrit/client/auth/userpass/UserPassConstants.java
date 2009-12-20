@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.openid
+DECL|package|com.google.gerrit.client.auth.userpass
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|client
 operator|.
 name|auth
 operator|.
-name|openid
+name|userpass
 package|;
 end_package
 
@@ -85,10 +85,10 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|LoginConstants
+DECL|interface|UserPassConstants
 specifier|public
 interface|interface
-name|LoginConstants
+name|UserPassConstants
 extends|extends
 name|Constants
 block|{
@@ -97,39 +97,29 @@ name|String
 name|buttonSignIn
 parameter_list|()
 function_decl|;
-DECL|method|buttonRegister ()
+DECL|method|username ()
 name|String
-name|buttonRegister
+name|username
 parameter_list|()
 function_decl|;
-DECL|method|buttonLinkId ()
+DECL|method|password ()
 name|String
-name|buttonLinkId
+name|password
 parameter_list|()
 function_decl|;
-DECL|method|rememberMe ()
+DECL|method|invalidLogin ()
 name|String
-name|rememberMe
+name|invalidLogin
 parameter_list|()
 function_decl|;
-DECL|method|notSupported ()
+DECL|method|usernameRequired ()
 name|String
-name|notSupported
+name|usernameRequired
 parameter_list|()
 function_decl|;
-DECL|method|nameGoogle ()
+DECL|method|passwordRequired ()
 name|String
-name|nameGoogle
-parameter_list|()
-function_decl|;
-DECL|method|nameYahoo ()
-name|String
-name|nameYahoo
-parameter_list|()
-function_decl|;
-DECL|method|whatIsOpenIDHtml ()
-name|String
-name|whatIsOpenIDHtml
+name|passwordRequired
 parameter_list|()
 function_decl|;
 block|}

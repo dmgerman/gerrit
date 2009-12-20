@@ -295,13 +295,6 @@ operator|new
 name|FlowPanel
 argument_list|()
 decl_stmt|;
-name|buttonPanel
-operator|.
-name|setStyleName
-argument_list|(
-literal|"gerrit-CommentEditor-Buttons"
-argument_list|)
-expr_stmt|;
 name|Button
 name|close
 init|=

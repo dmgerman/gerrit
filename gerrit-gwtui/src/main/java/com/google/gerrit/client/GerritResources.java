@@ -92,6 +92,22 @@ name|resources
 operator|.
 name|client
 operator|.
+name|CssResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
 name|ImageResource
 import|;
 end_import
@@ -107,11 +123,21 @@ block|{
 annotation|@
 name|Source
 argument_list|(
-literal|"gerrit2.css"
+literal|"gerrit.css"
 argument_list|)
 DECL|method|css ()
-name|GerritCssResource
+name|GerritCss
 name|css
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"gwt_override.css"
+argument_list|)
+DECL|method|gwt_override ()
+name|CssResource
+name|gwt_override
 parameter_list|()
 function_decl|;
 annotation|@

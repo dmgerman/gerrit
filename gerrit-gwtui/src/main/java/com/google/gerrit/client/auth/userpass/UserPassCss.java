@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client
+DECL|package|com.google.gerrit.client.auth.userpass
 package|package
 name|com
 operator|.
@@ -61,6 +61,10 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|auth
+operator|.
+name|userpass
 package|;
 end_package
 
@@ -81,16 +85,21 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|GerritCssResource
+DECL|interface|UserPassCss
 specifier|public
 interface|interface
-name|GerritCssResource
+name|UserPassCss
 extends|extends
 name|CssResource
 block|{
-DECL|method|greenCheckClass ()
+DECL|method|loginForm ()
 name|String
-name|greenCheckClass
+name|loginForm
+parameter_list|()
+function_decl|;
+DECL|method|error ()
+name|String
+name|error
 parameter_list|()
 function_decl|;
 block|}

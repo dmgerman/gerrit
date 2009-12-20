@@ -80,65 +80,57 @@ name|i18n
 operator|.
 name|client
 operator|.
-name|Messages
+name|Constants
 import|;
 end_import
 
 begin_interface
-DECL|interface|LoginMessages
+DECL|interface|OpenIdConstants
 specifier|public
 interface|interface
-name|LoginMessages
+name|OpenIdConstants
 extends|extends
-name|Messages
+name|Constants
 block|{
-DECL|method|signInAt (String hostname)
+DECL|method|buttonSignIn ()
 name|String
-name|signInAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
+name|buttonSignIn
+parameter_list|()
 function_decl|;
-DECL|method|registerAt (String hostname)
+DECL|method|buttonRegister ()
 name|String
-name|registerAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
+name|buttonRegister
+parameter_list|()
 function_decl|;
-DECL|method|linkAt (String hostname)
+DECL|method|buttonLinkId ()
 name|String
-name|linkAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
+name|buttonLinkId
+parameter_list|()
 function_decl|;
-DECL|method|signInWith (String who)
+DECL|method|rememberMe ()
 name|String
-name|signInWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
+name|rememberMe
+parameter_list|()
 function_decl|;
-DECL|method|registerWith (String who)
+DECL|method|notSupported ()
 name|String
-name|registerWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
+name|notSupported
+parameter_list|()
 function_decl|;
-DECL|method|linkWith (String who)
+DECL|method|nameGoogle ()
 name|String
-name|linkWith
-parameter_list|(
+name|nameGoogle
+parameter_list|()
+function_decl|;
+DECL|method|nameYahoo ()
 name|String
-name|who
-parameter_list|)
+name|nameYahoo
+parameter_list|()
+function_decl|;
+DECL|method|whatIsOpenIDHtml ()
+name|String
+name|whatIsOpenIDHtml
+parameter_list|()
 function_decl|;
 block|}
 end_interface

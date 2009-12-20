@@ -126,14 +126,14 @@ DECL|field|C
 specifier|public
 specifier|static
 specifier|final
-name|LoginConstants
+name|OpenIdConstants
 name|C
 decl_stmt|;
 DECL|field|M
 specifier|public
 specifier|static
 specifier|final
-name|LoginMessages
+name|OpenIdMessages
 name|M
 decl_stmt|;
 DECL|field|SVC
@@ -151,7 +151,7 @@ name|GWT
 operator|.
 name|create
 argument_list|(
-name|LoginConstants
+name|OpenIdConstants
 operator|.
 name|class
 argument_list|)
@@ -162,7 +162,7 @@ name|GWT
 operator|.
 name|create
 argument_list|(
-name|LoginMessages
+name|OpenIdMessages
 operator|.
 name|class
 argument_list|)

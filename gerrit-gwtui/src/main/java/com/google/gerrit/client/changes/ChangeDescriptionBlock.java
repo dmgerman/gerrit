@@ -251,7 +251,15 @@ name|description
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gerrit-ChangeScreen-Description"
+name|Gerrit
+operator|.
+name|RESOURCES
+operator|.
+name|css
+argument_list|()
+operator|.
+name|changeScreenDescription
+argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final

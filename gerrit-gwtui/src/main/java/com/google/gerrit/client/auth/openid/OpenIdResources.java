@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.userpass
+DECL|package|com.google.gerrit.client.auth.openid
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|client
 operator|.
 name|auth
 operator|.
-name|userpass
+name|openid
 package|;
 end_package
 
@@ -76,50 +76,132 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|i18n
+name|core
 operator|.
 name|client
 operator|.
-name|Constants
+name|GWT
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|ClientBundle
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|DataResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|ImageResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|LoginConstants
-specifier|public
+DECL|interface|OpenIdResources
 interface|interface
-name|LoginConstants
+name|OpenIdResources
 extends|extends
-name|Constants
+name|ClientBundle
 block|{
-DECL|method|buttonSignIn ()
-name|String
-name|buttonSignIn
+DECL|field|I
+specifier|static
+specifier|final
+name|OpenIdResources
+name|I
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|OpenIdResources
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+annotation|@
+name|Source
+argument_list|(
+literal|"openid.css"
+argument_list|)
+DECL|method|css ()
+name|OpenIdCss
+name|css
 parameter_list|()
 function_decl|;
-DECL|method|username ()
-name|String
-name|username
+annotation|@
+name|Source
+argument_list|(
+literal|"identifierBackground.gif"
+argument_list|)
+DECL|method|identifierBackground ()
+name|DataResource
+name|identifierBackground
 parameter_list|()
 function_decl|;
-DECL|method|password ()
-name|String
-name|password
+annotation|@
+name|Source
+argument_list|(
+literal|"openidLogo.png"
+argument_list|)
+DECL|method|openidLogo ()
+name|ImageResource
+name|openidLogo
 parameter_list|()
 function_decl|;
-DECL|method|invalidLogin ()
-name|String
-name|invalidLogin
+annotation|@
+name|Source
+argument_list|(
+literal|"iconGoogle.gif"
+argument_list|)
+DECL|method|iconGoogle ()
+name|ImageResource
+name|iconGoogle
 parameter_list|()
 function_decl|;
-DECL|method|usernameRequired ()
-name|String
-name|usernameRequired
-parameter_list|()
-function_decl|;
-DECL|method|passwordRequired ()
-name|String
-name|passwordRequired
+annotation|@
+name|Source
+argument_list|(
+literal|"iconYahoo.gif"
+argument_list|)
+DECL|method|iconYahoo ()
+name|ImageResource
+name|iconYahoo
 parameter_list|()
 function_decl|;
 block|}

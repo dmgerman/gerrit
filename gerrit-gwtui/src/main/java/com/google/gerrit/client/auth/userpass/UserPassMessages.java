@@ -85,10 +85,10 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|LoginMessages
+DECL|interface|UserPassMessages
 specifier|public
 interface|interface
-name|LoginMessages
+name|UserPassMessages
 extends|extends
 name|Messages
 block|{
