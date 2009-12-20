@@ -179,6 +179,16 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"lang-apollo.js"
+argument_list|)
+DECL|method|lang_apollo ()
+name|TextResource
+name|lang_apollo
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"lang-css.js"
 argument_list|)
 DECL|method|lang_css ()
