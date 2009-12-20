@@ -231,6 +231,14 @@ specifier|public
 interface|interface
 name|Messages
 block|{
+DECL|method|info (String msg)
+name|void
+name|info
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+function_decl|;
 DECL|method|warning (String msg)
 name|void
 name|warning
@@ -243,7 +251,7 @@ block|}
 DECL|field|repositoryManager
 specifier|private
 specifier|final
-name|GitRepositoryManager
+name|LocalDiskRepositoryManager
 name|repositoryManager
 decl_stmt|;
 DECL|field|schema
@@ -262,11 +270,11 @@ name|messages
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitProjectImporter (final GitRepositoryManager repositoryManager, final SchemaFactory<ReviewDb> schema)
+DECL|method|GitProjectImporter (final LocalDiskRepositoryManager repositoryManager, final SchemaFactory<ReviewDb> schema)
 name|GitProjectImporter
 parameter_list|(
 specifier|final
-name|GitRepositoryManager
+name|LocalDiskRepositoryManager
 name|repositoryManager
 parameter_list|,
 specifier|final
@@ -307,6 +315,18 @@ block|{
 name|messages
 operator|=
 name|msg
+expr_stmt|;
+name|messages
+operator|.
+name|info
+argument_list|(
+literal|"Scanning "
+operator|+
+name|repositoryManager
+operator|.
+name|getBasePath
+argument_list|()
+argument_list|)
 expr_stmt|;
 specifier|final
 name|ReviewDb

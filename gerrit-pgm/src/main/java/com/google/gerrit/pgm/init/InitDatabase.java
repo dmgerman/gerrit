@@ -110,9 +110,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|server
 operator|.
-name|util
+name|schema
 operator|.
 name|DataSourceProvider
 operator|.
@@ -146,11 +146,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|server
 operator|.
-name|util
+name|config
 operator|.
-name|DataSourceProvider
+name|SitePaths
 import|;
 end_import
 
@@ -164,9 +164,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|schema
 operator|.
-name|SitePaths
+name|DataSourceProvider
 import|;
 end_import
 
@@ -482,9 +482,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-case|case
-name|POSTGRES
-case|:
 case|case
 name|POSTGRESQL
 case|:

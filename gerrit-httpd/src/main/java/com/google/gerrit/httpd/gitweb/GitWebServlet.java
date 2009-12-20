@@ -208,7 +208,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
+name|LocalDiskRepositoryManager
 import|;
 end_import
 
@@ -582,7 +582,7 @@ decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
-name|GitRepositoryManager
+name|LocalDiskRepositoryManager
 name|repoManager
 decl_stmt|;
 DECL|field|projectControl
@@ -601,11 +601,11 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebServlet (final GitRepositoryManager repoManager, final ProjectControl.Factory projectControl, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
+DECL|method|GitWebServlet (final LocalDiskRepositoryManager repoManager, final ProjectControl.Factory projectControl, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
 name|GitWebServlet
 parameter_list|(
 specifier|final
-name|GitRepositoryManager
+name|LocalDiskRepositoryManager
 name|repoManager
 parameter_list|,
 specifier|final
