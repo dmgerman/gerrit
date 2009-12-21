@@ -1010,6 +1010,8 @@ name|showResultSet
 argument_list|(
 name|rs
 argument_list|,
+literal|false
+argument_list|,
 comment|//
 name|Identity
 operator|.
@@ -1189,6 +1191,8 @@ expr_stmt|;
 name|showResultSet
 argument_list|(
 name|rs
+argument_list|,
+literal|true
 argument_list|,
 comment|//
 name|Identity
@@ -1705,6 +1709,8 @@ init|=
 name|showResultSet
 argument_list|(
 name|rs
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1807,7 +1813,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|showResultSet (final ResultSet rs, Function... show)
+DECL|method|showResultSet (final ResultSet rs, boolean alreadyOnRow, Function... show)
 specifier|private
 name|int
 name|showResultSet
@@ -1815,6 +1821,9 @@ parameter_list|(
 specifier|final
 name|ResultSet
 name|rs
+parameter_list|,
+name|boolean
+name|alreadyOnRow
 parameter_list|,
 name|Function
 modifier|...
@@ -1991,6 +2000,8 @@ argument_list|()
 decl_stmt|;
 while|while
 condition|(
+name|alreadyOnRow
+operator|||
 name|rs
 operator|.
 name|next
@@ -2088,6 +2099,10 @@ name|add
 argument_list|(
 name|row
 argument_list|)
+expr_stmt|;
+name|alreadyOnRow
+operator|=
+literal|false
 expr_stmt|;
 block|}
 specifier|final
