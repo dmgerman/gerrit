@@ -1724,6 +1724,17 @@ argument_list|,
 name|antJavaC
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"Gerrit.GwtDevMode"
+argument_list|,
+literal|""
+operator|+
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1874,6 +1885,36 @@ argument_list|,
 literal|"WEB-INF/web.xml"
 argument_list|)
 decl_stmt|;
+comment|// Jetty won't start unless this directory exists.
+if|if
+condition|(
+operator|!
+name|warDir
+operator|.
+name|exists
+argument_list|()
+operator|&&
+operator|!
+name|warDir
+operator|.
+name|mkdirs
+argument_list|()
+condition|)
+name|logger
+operator|.
+name|branch
+argument_list|(
+name|TreeLogger
+operator|.
+name|ERROR
+argument_list|,
+literal|"Cannot create "
+operator|+
+name|warDir
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 comment|// Create a new web app in the war directory.
 comment|//
 name|WebAppContext

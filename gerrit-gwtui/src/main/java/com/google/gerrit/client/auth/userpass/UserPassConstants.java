@@ -85,10 +85,10 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|LoginConstants
+DECL|interface|UserPassConstants
 specifier|public
 interface|interface
-name|LoginConstants
+name|UserPassConstants
 extends|extends
 name|Constants
 block|{

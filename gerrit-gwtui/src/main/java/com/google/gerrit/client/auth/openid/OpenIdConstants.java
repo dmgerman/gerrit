@@ -85,10 +85,10 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|LoginConstants
+DECL|interface|OpenIdConstants
 specifier|public
 interface|interface
-name|LoginConstants
+name|OpenIdConstants
 extends|extends
 name|Constants
 block|{

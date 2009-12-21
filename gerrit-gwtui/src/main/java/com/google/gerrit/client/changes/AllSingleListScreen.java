@@ -592,7 +592,15 @@ name|buttons
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gerrit-ChangeTable-PrevNextLinks"
+name|Gerrit
+operator|.
+name|RESOURCES
+operator|.
+name|css
+argument_list|()
+operator|.
+name|changeTablePrevNextLinks
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|buttons

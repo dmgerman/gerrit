@@ -76,29 +76,31 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|i18n
+name|resources
 operator|.
 name|client
 operator|.
-name|Messages
+name|CssResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|LoginMessages
+DECL|interface|UserPassCss
 specifier|public
 interface|interface
-name|LoginMessages
+name|UserPassCss
 extends|extends
-name|Messages
+name|CssResource
 block|{
-DECL|method|signInAt (String hostname)
+DECL|method|loginForm ()
 name|String
-name|signInAt
-parameter_list|(
+name|loginForm
+parameter_list|()
+function_decl|;
+DECL|method|error ()
 name|String
-name|hostname
-parameter_list|)
+name|error
+parameter_list|()
 function_decl|;
 block|}
 end_interface

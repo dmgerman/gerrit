@@ -76,59 +76,69 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|i18n
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|AbstractImagePrototype
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|ImageBundle
+name|Messages
 import|;
 end_import
 
 begin_interface
-DECL|interface|LoginIcons
+DECL|interface|OpenIdMessages
 specifier|public
 interface|interface
-name|LoginIcons
+name|OpenIdMessages
 extends|extends
-name|ImageBundle
+name|Messages
 block|{
-DECL|method|openidLogo ()
-specifier|public
-name|AbstractImagePrototype
-name|openidLogo
-parameter_list|()
+DECL|method|signInAt (String hostname)
+name|String
+name|signInAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
 function_decl|;
-DECL|method|iconGoogle ()
-specifier|public
-name|AbstractImagePrototype
-name|iconGoogle
-parameter_list|()
+DECL|method|registerAt (String hostname)
+name|String
+name|registerAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
 function_decl|;
-DECL|method|iconYahoo ()
-specifier|public
-name|AbstractImagePrototype
-name|iconYahoo
-parameter_list|()
+DECL|method|linkAt (String hostname)
+name|String
+name|linkAt
+parameter_list|(
+name|String
+name|hostname
+parameter_list|)
+function_decl|;
+DECL|method|signInWith (String who)
+name|String
+name|signInWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
+DECL|method|registerWith (String who)
+name|String
+name|registerWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
+DECL|method|linkWith (String who)
+name|String
+name|linkWith
+parameter_list|(
+name|String
+name|who
+parameter_list|)
 function_decl|;
 block|}
 end_interface

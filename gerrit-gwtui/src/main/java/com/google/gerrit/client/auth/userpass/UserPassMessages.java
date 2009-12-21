@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.openid
+DECL|package|com.google.gerrit.client.auth.userpass
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|client
 operator|.
 name|auth
 operator|.
-name|openid
+name|userpass
 package|;
 end_package
 
@@ -85,10 +85,10 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|LoginMessages
+DECL|interface|UserPassMessages
 specifier|public
 interface|interface
-name|LoginMessages
+name|UserPassMessages
 extends|extends
 name|Messages
 block|{
@@ -98,46 +98,6 @@ name|signInAt
 parameter_list|(
 name|String
 name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|registerAt (String hostname)
-name|String
-name|registerAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|linkAt (String hostname)
-name|String
-name|linkAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|signInWith (String who)
-name|String
-name|signInWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|registerWith (String who)
-name|String
-name|registerWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|linkWith (String who)
-name|String
-name|linkWith
-parameter_list|(
-name|String
-name|who
 parameter_list|)
 function_decl|;
 block|}
