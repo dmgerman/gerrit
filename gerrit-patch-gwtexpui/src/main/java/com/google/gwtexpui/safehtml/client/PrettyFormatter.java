@@ -368,19 +368,11 @@ name|lang
 parameter_list|)
 block|{
 return|return
-name|Pretty
-operator|.
-name|loaded
-condition|?
 operator|new
 name|Pretty
 argument_list|(
 name|lang
 argument_list|)
-else|:
-operator|new
-name|PassThrough
-argument_list|()
 return|;
 block|}
 DECL|field|showWhiteSpaceErrors
@@ -684,14 +676,6 @@ return|return
 name|line
 return|;
 block|}
-DECL|class|PassThrough
-specifier|private
-specifier|static
-class|class
-name|PassThrough
-extends|extends
-name|PrettyFormatter
-block|{   }
 DECL|class|Pretty
 specifier|private
 specifier|static
@@ -813,24 +797,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|loaded
-specifier|static
-specifier|final
-name|boolean
-name|loaded
-init|=
-name|isLoaded
-argument_list|()
-decl_stmt|;
-DECL|method|isLoaded ()
-specifier|private
-specifier|static
-specifier|native
-name|boolean
-name|isLoaded
-parameter_list|()
-comment|/*-{ return window.prettyPrintOne != null }-*/
-function_decl|;
 DECL|method|eval (final TextResource core)
 specifier|private
 specifier|static
