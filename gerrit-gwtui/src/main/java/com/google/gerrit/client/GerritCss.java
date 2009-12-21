@@ -833,16 +833,6 @@ name|String
 name|version
 parameter_list|()
 function_decl|;
-DECL|method|visualtab ()
-name|String
-name|visualtab
-parameter_list|()
-function_decl|;
-DECL|method|whitespaceerror ()
-name|String
-name|whitespaceerror
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 

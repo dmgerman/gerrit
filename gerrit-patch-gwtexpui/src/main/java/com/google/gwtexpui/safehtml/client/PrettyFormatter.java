@@ -638,7 +638,19 @@ name|replaceFirst
 argument_list|(
 literal|"^(  *\t)"
 argument_list|,
-literal|"<span class=\"gerrit-whitespaceerror\">$1</span>"
+literal|"<span class=\""
+operator|+
+name|Resources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|whitespaceerror
+argument_list|()
+operator|+
+literal|"\">$1</span>"
 argument_list|)
 return|;
 block|}
@@ -659,7 +671,19 @@ name|replaceFirst
 argument_list|(
 literal|"([ \t][ \t]*)(\r?\n?)$"
 argument_list|,
-literal|"<span class=\"gerrit-whitespaceerror\">$1</span>$2"
+literal|"<span class=\""
+operator|+
+name|Resources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|whitespaceerror
+argument_list|()
+operator|+
+literal|"\">$1</span>$2"
 argument_list|)
 return|;
 block|}
@@ -686,6 +710,16 @@ name|PrettyFormatter
 block|{
 static|static
 block|{
+name|Resources
+operator|.
+name|I
+operator|.
+name|prettify_css
+argument_list|()
+operator|.
+name|ensureInjected
+argument_list|()
+expr_stmt|;
 name|Resources
 operator|.
 name|I

@@ -161,8 +161,18 @@ name|Source
 argument_list|(
 literal|"prettify.css"
 argument_list|)
-DECL|method|css ()
+DECL|method|prettify_css ()
 name|CssResource
+name|prettify_css
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"gerrit.css"
+argument_list|)
+DECL|method|css ()
+name|PrettyCss
 name|css
 parameter_list|()
 function_decl|;
