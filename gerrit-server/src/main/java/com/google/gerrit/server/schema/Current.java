@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -60,21 +60,23 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
+operator|.
+name|schema
 package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gwtorm
+name|annotation
 operator|.
-name|client
+name|RetentionPolicy
 operator|.
-name|Access
+name|RUNTIME
 import|;
 end_import
 
@@ -84,66 +86,42 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|client
-operator|.
-name|OrmException
+name|BindingAnnotation
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gwtorm
+name|annotation
 operator|.
-name|client
-operator|.
-name|PrimaryKey
+name|Retention
 import|;
 end_import
 
 begin_comment
-comment|/** Access interface for {@link CurrentSchemaVersion}. */
+comment|/** Indicates the {@link SchemaVersion} is the current one. */
 end_comment
 
-begin_interface
-DECL|interface|SchemaVersionAccess
-specifier|public
-interface|interface
-name|SchemaVersionAccess
-extends|extends
-name|Access
-argument_list|<
-name|CurrentSchemaVersion
-argument_list|,
-name|CurrentSchemaVersion
-operator|.
-name|Key
-argument_list|>
-block|{
+begin_annotation_defn
 annotation|@
-name|PrimaryKey
+name|Retention
 argument_list|(
-literal|"singleton"
+name|RUNTIME
 argument_list|)
-DECL|method|get (CurrentSchemaVersion.Key key)
-name|CurrentSchemaVersion
-name|get
-parameter_list|(
-name|CurrentSchemaVersion
-operator|.
-name|Key
-name|key
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-block|}
-end_interface
+annotation|@
+name|BindingAnnotation
+DECL|annotation|Current
+specifier|public
+annotation_defn|@interface
+name|Current
+block|{ }
+end_annotation_defn
 
 end_unit
 

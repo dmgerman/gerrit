@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|CurrentSchemaVersion
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|SchemaVersion
+name|ReviewDb
 import|;
 end_import
 
@@ -166,11 +166,33 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|SQLException
 import|;
 end_import
 
@@ -215,9 +237,18 @@ specifier|final
 name|SchemaCreator
 name|creator
 decl_stmt|;
+DECL|field|updater
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|SchemaVersion
+argument_list|>
+name|updater
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaUpdater (final SchemaFactory<ReviewDb> schema, final SitePaths site, final SchemaCreator creator)
+DECL|method|SchemaUpdater (final SchemaFactory<ReviewDb> schema, final SitePaths site, final SchemaCreator creator, @Current final Provider<SchemaVersion> update)
 name|SchemaUpdater
 parameter_list|(
 specifier|final
@@ -234,6 +265,15 @@ parameter_list|,
 specifier|final
 name|SchemaCreator
 name|creator
+parameter_list|,
+annotation|@
+name|Current
+specifier|final
+name|Provider
+argument_list|<
+name|SchemaVersion
+argument_list|>
+name|update
 parameter_list|)
 block|{
 name|this
@@ -254,12 +294,22 @@ name|creator
 operator|=
 name|creator
 expr_stmt|;
+name|this
+operator|.
+name|updater
+operator|=
+name|update
+expr_stmt|;
 block|}
-DECL|method|update ()
+DECL|method|update (final UpdateUI ui)
 specifier|public
 name|void
 name|update
-parameter_list|()
+parameter_list|(
+specifier|final
+name|UpdateUI
+name|ui
+parameter_list|)
 throws|throws
 name|OrmException
 block|{
@@ -276,6 +326,15 @@ try|try
 block|{
 specifier|final
 name|SchemaVersion
+name|u
+init|=
+name|updater
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+specifier|final
+name|CurrentSchemaVersion
 name|version
 init|=
 name|getSchemaVersion
@@ -300,6 +359,36 @@ expr_stmt|;
 block|}
 else|else
 block|{
+try|try
+block|{
+name|u
+operator|.
+name|check
+argument_list|(
+name|ui
+argument_list|,
+name|version
+argument_list|,
+name|db
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"Cannot upgrade schema"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 name|updateSystemConfig
 argument_list|(
 name|db
@@ -318,7 +407,7 @@ block|}
 block|}
 DECL|method|getSchemaVersion (final ReviewDb db)
 specifier|private
-name|SchemaVersion
+name|CurrentSchemaVersion
 name|getSchemaVersion
 parameter_list|(
 specifier|final
@@ -337,7 +426,7 @@ operator|.
 name|get
 argument_list|(
 operator|new
-name|SchemaVersion
+name|CurrentSchemaVersion
 operator|.
 name|Key
 argument_list|()

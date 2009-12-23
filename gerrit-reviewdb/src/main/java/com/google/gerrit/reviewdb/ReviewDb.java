@@ -132,15 +132,7 @@ name|ReviewDb
 extends|extends
 name|Schema
 block|{
-DECL|field|VERSION
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|VERSION
-init|=
-literal|19
-decl_stmt|;
+comment|/* If you change anything, update SchemaVersion.C to use a new version. */
 annotation|@
 name|Relation
 DECL|method|schemaVersion ()

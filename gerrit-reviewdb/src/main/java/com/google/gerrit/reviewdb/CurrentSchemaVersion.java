@@ -97,11 +97,11 @@ comment|/** Current version of the database schema, to facilitate live upgrades.
 end_comment
 
 begin_class
-DECL|class|SchemaVersion
+DECL|class|CurrentSchemaVersion
 specifier|public
 specifier|final
 class|class
-name|SchemaVersion
+name|CurrentSchemaVersion
 block|{
 DECL|class|Key
 specifier|public
@@ -202,16 +202,16 @@ comment|/** Construct a new, unconfigured instance. */
 DECL|method|create ()
 specifier|public
 specifier|static
-name|SchemaVersion
+name|CurrentSchemaVersion
 name|create
 parameter_list|()
 block|{
 specifier|final
-name|SchemaVersion
+name|CurrentSchemaVersion
 name|r
 init|=
 operator|new
-name|SchemaVersion
+name|CurrentSchemaVersion
 argument_list|()
 decl_stmt|;
 name|r
@@ -219,7 +219,7 @@ operator|.
 name|singleton
 operator|=
 operator|new
-name|SchemaVersion
+name|CurrentSchemaVersion
 operator|.
 name|Key
 argument_list|()
@@ -244,9 +244,9 @@ specifier|transient
 name|int
 name|versionNbr
 decl_stmt|;
-DECL|method|SchemaVersion ()
+DECL|method|CurrentSchemaVersion ()
 specifier|protected
-name|SchemaVersion
+name|CurrentSchemaVersion
 parameter_list|()
 block|{   }
 block|}
