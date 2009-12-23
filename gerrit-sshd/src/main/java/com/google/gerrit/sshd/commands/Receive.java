@@ -6159,8 +6159,9 @@ return|return
 literal|null
 return|;
 block|}
-comment|// Don't allow the same tree if the commit message is unmodified,
-comment|// else warn that only the message changed.
+comment|// Don't allow the same tree if the commit message is unmodified
+comment|// or no parents were updated (rebase), else warn that only part
+comment|// of the commit was modified.
 comment|//
 if|if
 condition|(
@@ -6195,8 +6196,10 @@ argument_list|(
 name|prior
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+specifier|final
+name|boolean
+name|messageEq
+init|=
 name|c
 operator|.
 name|getFullMessage
@@ -6209,6 +6212,23 @@ operator|.
 name|getFullMessage
 argument_list|()
 argument_list|)
+decl_stmt|;
+specifier|final
+name|boolean
+name|parentsEq
+init|=
+name|parentsEqual
+argument_list|(
+name|c
+argument_list|,
+name|prior
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|messageEq
+operator|&&
+name|parentsEq
 condition|)
 block|{
 name|reject
@@ -6234,7 +6254,8 @@ name|Constants
 operator|.
 name|encode
 argument_list|(
-literal|"warning: Only commit message changed in "
+literal|"warning: "
+comment|//
 operator|+
 name|change
 operator|.
@@ -6244,7 +6265,47 @@ operator|.
 name|abbreviate
 argument_list|()
 operator|+
+literal|": "
+comment|//
+operator|+
+literal|" no files changed, but"
+comment|//
+operator|+
+operator|(
+operator|!
+name|messageEq
+condition|?
+literal|" message updated"
+else|:
+literal|""
+operator|)
+comment|//
+operator|+
+operator|(
+operator|!
+name|messageEq
+operator|&&
+operator|!
+name|parentsEq
+condition|?
+literal|" and"
+else|:
+literal|""
+operator|)
+comment|//
+operator|+
+operator|(
+operator|!
+name|parentsEq
+condition|?
+literal|" was rebased"
+else|:
+literal|""
+operator|)
+comment|//
+operator|+
 literal|"\n"
+comment|//
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7225,6 +7286,79 @@ name|getKey
 argument_list|()
 else|:
 literal|null
+return|;
+block|}
+DECL|method|parentsEqual (RevCommit a, RevCommit b)
+specifier|static
+name|boolean
+name|parentsEqual
+parameter_list|(
+name|RevCommit
+name|a
+parameter_list|,
+name|RevCommit
+name|b
+parameter_list|)
+block|{
+if|if
+condition|(
+name|a
+operator|.
+name|getParentCount
+argument_list|()
+operator|!=
+name|b
+operator|.
+name|getParentCount
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|a
+operator|.
+name|getParentCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|a
+operator|.
+name|getParent
+argument_list|(
+name|i
+argument_list|)
+operator|!=
+name|b
+operator|.
+name|getParent
+argument_list|(
+name|i
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+return|return
+literal|true
 return|;
 block|}
 DECL|method|insertDummyApproval (final ReplaceResult result, final Account.Id forAccount, final ApprovalCategory.Id catId, final ReviewDb db, final Transaction txn)
