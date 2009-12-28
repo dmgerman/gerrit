@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.common.data
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|common
+operator|.
+name|data
 package|;
 end_package
 
@@ -178,6 +180,21 @@ name|Parameter
 argument_list|>
 name|parameters
 decl_stmt|;
+DECL|method|ParamertizedString ()
+specifier|protected
+name|ParamertizedString
+parameter_list|()
+block|{
+name|this
+argument_list|(
+operator|new
+name|Constant
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ParamertizedString (final Constant c)
 specifier|private
 name|ParamertizedString

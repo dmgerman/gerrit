@@ -745,6 +745,11 @@ name|gitWebConfig
 operator|.
 name|getUrl
 argument_list|()
+argument_list|,
+name|gitWebConfig
+operator|.
+name|getGitWebType
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
