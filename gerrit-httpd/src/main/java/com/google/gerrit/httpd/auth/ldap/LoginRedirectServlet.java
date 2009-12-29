@@ -226,6 +226,10 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_comment
+comment|/**  * Servlet bound to {@code /login/*} to redirect after user/pass sign-in.  *<p>  * This servlet is required because user authentication is done over RPC, but if  * the RPC is successful we need to force the host page to fully reload to pick  * up the account information, as we don't support updating the UI on the fly  * after a sign-in.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
