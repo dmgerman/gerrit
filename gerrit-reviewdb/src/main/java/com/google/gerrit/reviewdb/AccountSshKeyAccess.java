@@ -169,7 +169,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE id.accountId = ? ORDER BY storedOn DESC"
+literal|"WHERE id.accountId = ?"
 argument_list|)
 DECL|method|byAccount (Account.Id id)
 name|ResultSet
@@ -189,7 +189,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE id.accountId = ? AND valid = true ORDER BY storedOn DESC"
+literal|"WHERE id.accountId = ? AND valid = true"
 argument_list|)
 DECL|method|valid (Account.Id id)
 name|ResultSet

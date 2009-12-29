@@ -92,16 +92,6 @@ name|IntKey
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
 begin_comment
 comment|/** An SSH key approved for use by an {@link Account}. */
 end_comment
@@ -264,29 +254,10 @@ name|sshPublicKey
 decl_stmt|;
 annotation|@
 name|Column
-DECL|field|storedOn
-specifier|protected
-name|Timestamp
-name|storedOn
-decl_stmt|;
-annotation|@
-name|Column
 DECL|field|valid
 specifier|protected
 name|boolean
 name|valid
-decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|lastUsedOn
-specifier|protected
-name|Timestamp
-name|lastUsedOn
 decl_stmt|;
 DECL|method|AccountSshKey ()
 specifier|protected
@@ -315,17 +286,6 @@ expr_stmt|;
 name|sshPublicKey
 operator|=
 name|pub
-expr_stmt|;
-name|storedOn
-operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|valid
 operator|=
@@ -560,16 +520,6 @@ literal|2
 index|]
 return|;
 block|}
-DECL|method|getStoredOn ()
-specifier|public
-name|Timestamp
-name|getStoredOn
-parameter_list|()
-block|{
-return|return
-name|storedOn
-return|;
-block|}
 DECL|method|isValid ()
 specifier|public
 name|boolean
@@ -589,34 +539,6 @@ block|{
 name|valid
 operator|=
 literal|false
-expr_stmt|;
-block|}
-DECL|method|getLastUsedOn ()
-specifier|public
-name|Timestamp
-name|getLastUsedOn
-parameter_list|()
-block|{
-return|return
-name|lastUsedOn
-return|;
-block|}
-DECL|method|setLastUsedOn ()
-specifier|public
-name|void
-name|setLastUsedOn
-parameter_list|()
-block|{
-name|lastUsedOn
-operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 block|}

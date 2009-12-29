@@ -240,16 +240,6 @@ name|String
 name|sshKeyComment
 parameter_list|()
 function_decl|;
-DECL|method|sshKeyLastUsed ()
-name|String
-name|sshKeyLastUsed
-parameter_list|()
-function_decl|;
-DECL|method|sshKeyStored ()
-name|String
-name|sshKeyStored
-parameter_list|()
-function_decl|;
 DECL|method|addSshKeyPanelHeader ()
 name|String
 name|addSshKeyPanelHeader
@@ -283,11 +273,6 @@ function_decl|;
 DECL|method|sshHostKeyKnownHostEntry ()
 name|String
 name|sshHostKeyKnownHostEntry
-parameter_list|()
-function_decl|;
-DECL|method|webIdLastUsed ()
-name|String
-name|webIdLastUsed
 parameter_list|()
 function_decl|;
 DECL|method|webIdStatus ()
