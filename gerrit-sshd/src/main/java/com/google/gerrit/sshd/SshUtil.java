@@ -356,6 +356,40 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/** Username the last authentication tried to perform as. */
+DECL|field|AUTH_ATTEMPTED_AS
+specifier|static
+specifier|final
+name|AttributeKey
+argument_list|<
+name|String
+argument_list|>
+name|AUTH_ATTEMPTED_AS
+init|=
+operator|new
+name|AttributeKey
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|/** Error message from last authentication attempt. */
+DECL|field|AUTH_ERROR
+specifier|static
+specifier|final
+name|AttributeKey
+argument_list|<
+name|String
+argument_list|>
+name|AUTH_ERROR
+init|=
+operator|new
+name|AttributeKey
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|/**    * Parse a public key into its Java type.    *    * @param key the account key to parse.    * @return the valid public key object.    * @throws InvalidKeySpecException the key supplied is not a valid SSH key.    * @throws NoSuchAlgorithmException the JVM is missing the key algorithm.    * @throws NoSuchProviderException the JVM is missing the provider.    */
 DECL|method|parse (final AccountSshKey key)
 specifier|public

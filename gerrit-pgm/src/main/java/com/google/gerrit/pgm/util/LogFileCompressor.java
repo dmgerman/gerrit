@@ -534,6 +534,14 @@ name|name
 argument_list|)
 comment|//
 operator|||
+literal|"sshd_log"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+comment|//
+operator|||
 name|name
 operator|.
 name|endsWith

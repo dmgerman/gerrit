@@ -499,7 +499,9 @@ argument_list|()
 expr_stmt|;
 name|onExit
 argument_list|(
-literal|1
+name|BaseCommand
+operator|.
+name|STATUS_NOT_ADMIN
 argument_list|)
 expr_stmt|;
 return|return;
@@ -601,7 +603,9 @@ argument_list|()
 expr_stmt|;
 name|onExit
 argument_list|(
-literal|127
+name|BaseCommand
+operator|.
+name|STATUS_NOT_FOUND
 argument_list|)
 expr_stmt|;
 block|}
