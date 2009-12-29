@@ -169,6 +169,15 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
+name|DeleteExternalIds
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|ExternalIdDetailFactory
 operator|.
 name|Factory

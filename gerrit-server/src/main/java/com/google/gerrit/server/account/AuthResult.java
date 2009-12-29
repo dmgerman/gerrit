@@ -80,6 +80,20 @@ name|Account
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountExternalId
+import|;
+end_import
+
 begin_comment
 comment|/** Result from {@link AccountManager#authenticate(AuthRequest)}. */
 end_comment
@@ -98,13 +112,21 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
+DECL|field|externalId
+specifier|private
+specifier|final
+name|AccountExternalId
+operator|.
+name|Key
+name|externalId
+decl_stmt|;
 DECL|field|isNew
 specifier|private
 specifier|final
 name|boolean
 name|isNew
 decl_stmt|;
-DECL|method|AuthResult (final Account.Id accountId, final boolean isNew)
+DECL|method|AuthResult (final Account.Id accountId, final AccountExternalId.Key externalId, final boolean isNew)
 specifier|public
 name|AuthResult
 parameter_list|(
@@ -113,6 +135,12 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|,
+specifier|final
+name|AccountExternalId
+operator|.
+name|Key
+name|externalId
 parameter_list|,
 specifier|final
 name|boolean
@@ -124,6 +152,12 @@ operator|.
 name|accountId
 operator|=
 name|accountId
+expr_stmt|;
+name|this
+operator|.
+name|externalId
+operator|=
+name|externalId
 expr_stmt|;
 name|this
 operator|.
@@ -143,6 +177,19 @@ parameter_list|()
 block|{
 return|return
 name|accountId
+return|;
+block|}
+comment|/** External identity used to authenticate the user. */
+DECL|method|getExternalId ()
+specifier|public
+name|AccountExternalId
+operator|.
+name|Key
+name|getExternalId
+parameter_list|()
+block|{
+return|return
+name|externalId
 return|;
 block|}
 comment|/**    * True if this account was recently created for the user.    *<p>    * New users should be redirected to the registration screen, so they can    * configure their new user account.    */

@@ -425,9 +425,6 @@ operator|.
 name|login
 argument_list|(
 name|res
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|,
 literal|false
 argument_list|)

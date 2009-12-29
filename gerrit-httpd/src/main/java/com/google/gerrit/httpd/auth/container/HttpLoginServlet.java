@@ -732,9 +732,6 @@ operator|.
 name|login
 argument_list|(
 name|arsp
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|,
 literal|false
 argument_list|)

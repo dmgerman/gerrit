@@ -78,6 +78,20 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
+name|WebSession
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
 name|rpc
 operator|.
 name|Handler
@@ -139,6 +153,20 @@ operator|.
 name|config
 operator|.
 name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -215,9 +243,15 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
+DECL|field|session
+specifier|private
+specifier|final
+name|WebSession
+name|session
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdDetailFactory (final ReviewDb db, final IdentifiedUser user, final AuthConfig authConfig)
+DECL|method|ExternalIdDetailFactory (final ReviewDb db, final IdentifiedUser user, final AuthConfig authConfig, final WebSession session)
 name|ExternalIdDetailFactory
 parameter_list|(
 specifier|final
@@ -231,6 +265,10 @@ parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
+parameter_list|,
+specifier|final
+name|WebSession
+name|session
 parameter_list|)
 block|{
 name|this
@@ -251,6 +289,12 @@ name|authConfig
 operator|=
 name|authConfig
 expr_stmt|;
+name|this
+operator|.
+name|session
+operator|=
+name|session
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -263,8 +307,19 @@ argument_list|>
 name|call
 parameter_list|()
 throws|throws
-name|Exception
+name|OrmException
 block|{
+specifier|final
+name|AccountExternalId
+operator|.
+name|Key
+name|last
+init|=
+name|session
+operator|.
+name|getLastLoginExternalId
+argument_list|()
+decl_stmt|;
 specifier|final
 name|List
 argument_list|<
@@ -311,6 +366,30 @@ name|singleton
 argument_list|(
 name|e
 argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// The identity can be deleted only if its not the one used to
+comment|// establish this web session, and if only if an identity was
+comment|// actually used to establish this web session.
+comment|//
+name|e
+operator|.
+name|setCanDelete
+argument_list|(
+name|last
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|last
+operator|.
+name|equals
+argument_list|(
+name|e
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
