@@ -177,7 +177,7 @@ name|HostPageCache
 argument_list|(
 name|name
 operator|=
-literal|"gerrit_hostpagedata_obj"
+literal|"gerrit_hostpagedata"
 argument_list|,
 name|once
 operator|=

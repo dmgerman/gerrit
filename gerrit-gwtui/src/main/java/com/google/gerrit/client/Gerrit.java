@@ -1703,7 +1703,7 @@ if|if
 condition|(
 name|result
 operator|.
-name|userAccount
+name|account
 operator|!=
 literal|null
 condition|)
@@ -1712,7 +1712,7 @@ name|myAccount
 operator|=
 name|result
 operator|.
-name|userAccount
+name|account
 expr_stmt|;
 name|applyUserPreferences
 argument_list|()

@@ -90,10 +90,10 @@ specifier|public
 class|class
 name|HostPageData
 block|{
-DECL|field|userAccount
+DECL|field|account
 specifier|public
 name|Account
-name|userAccount
+name|account
 decl_stmt|;
 DECL|field|config
 specifier|public
