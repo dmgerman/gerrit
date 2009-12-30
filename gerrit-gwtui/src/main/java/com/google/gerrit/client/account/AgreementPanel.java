@@ -272,9 +272,7 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
-operator|.
-name|user
+name|gerrit
 operator|.
 name|client
 operator|.

@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Dispatcher
 import|;
 end_import
 
@@ -262,9 +262,7 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
-operator|.
-name|user
+name|gerrit
 operator|.
 name|client
 operator|.
@@ -818,7 +816,7 @@ name|item
 parameter_list|)
 block|{
 return|return
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toProjectAdmin
 argument_list|(

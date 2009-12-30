@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Dispatcher
 import|;
 end_import
 
@@ -200,9 +200,7 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
-operator|.
-name|user
+name|gerrit
 operator|.
 name|client
 operator|.
@@ -583,7 +581,7 @@ name|History
 operator|.
 name|newItem
 argument_list|(
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toAccountGroup
 argument_list|(
@@ -705,7 +703,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toAccountGroup
 argument_list|(

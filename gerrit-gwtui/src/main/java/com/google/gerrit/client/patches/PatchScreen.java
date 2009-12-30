@@ -122,7 +122,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Dispatcher
 import|;
 end_import
 
@@ -218,7 +218,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|DirectScreenLink
+name|InlineHyperlink
 import|;
 end_import
 
@@ -1200,13 +1200,13 @@ decl_stmt|;
 comment|/** Link to the screen for the previous file, null if not applicable */
 DECL|field|previousFileLink
 specifier|private
-name|DirectScreenLink
+name|InlineHyperlink
 name|previousFileLink
 decl_stmt|;
 comment|/** Link to the screen for the next file, null if not applicable */
 DECL|field|nextFileLink
 specifier|private
-name|DirectScreenLink
+name|InlineHyperlink
 name|nextFileLink
 decl_stmt|;
 DECL|field|SHORTCUT_PREVIOUS_FILE
@@ -1689,13 +1689,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|installLinkShortCut (final DirectScreenLink link, char shortcut, String help)
+DECL|method|installLinkShortCut (final InlineHyperlink link, char shortcut, String help)
 specifier|private
 name|void
 name|installLinkShortCut
 parameter_list|(
 specifier|final
-name|DirectScreenLink
+name|InlineHyperlink
 name|link
 parameter_list|,
 name|char
@@ -2959,18 +2959,14 @@ argument_list|(
 name|contentTable
 argument_list|)
 expr_stmt|;
-name|History
-operator|.
-name|newItem
+name|setToken
 argument_list|(
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toPatchUnified
 argument_list|(
 name|patchKey
 argument_list|)
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}

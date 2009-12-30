@@ -364,22 +364,6 @@ name|user
 operator|.
 name|client
 operator|.
-name|History
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|Window
 import|;
 end_import
@@ -677,7 +661,7 @@ specifier|private
 name|boolean
 name|discovering
 decl_stmt|;
-DECL|method|OpenIdSignInDialog (final SignInMode requestedMode, final String initialErrorMsg)
+DECL|method|OpenIdSignInDialog (final SignInMode requestedMode, final String token, final String initialErrorMsg)
 specifier|public
 name|OpenIdSignInDialog
 parameter_list|(
@@ -687,12 +671,18 @@ name|requestedMode
 parameter_list|,
 specifier|final
 name|String
+name|token
+parameter_list|,
+specifier|final
+name|String
 name|initialErrorMsg
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|requestedMode
+argument_list|,
+name|token
 argument_list|)
 expr_stmt|;
 name|formBody
@@ -1973,15 +1963,6 @@ operator|&&
 name|rememberId
 operator|.
 name|getValue
-argument_list|()
-decl_stmt|;
-specifier|final
-name|String
-name|token
-init|=
-name|History
-operator|.
-name|getToken
 argument_list|()
 decl_stmt|;
 name|OpenIdUtil

@@ -204,6 +204,11 @@ specifier|private
 name|FlowPanel
 name|body
 decl_stmt|;
+DECL|field|token
+specifier|private
+name|String
+name|token
+decl_stmt|;
 DECL|field|requiresSignIn
 specifier|private
 name|boolean
@@ -442,6 +447,72 @@ argument_list|(
 name|w
 argument_list|)
 expr_stmt|;
+block|}
+comment|/** Get the history token for this screen. */
+DECL|method|getToken ()
+specifier|public
+name|String
+name|getToken
+parameter_list|()
+block|{
+return|return
+name|token
+return|;
+block|}
+comment|/** Set the history token for this screen. */
+DECL|method|setToken (final String t)
+specifier|public
+name|void
+name|setToken
+parameter_list|(
+specifier|final
+name|String
+name|t
+parameter_list|)
+block|{
+assert|assert
+name|t
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|t
+operator|.
+name|isEmpty
+argument_list|()
+assert|;
+name|token
+operator|=
+name|t
+expr_stmt|;
+if|if
+condition|(
+name|isCurrentView
+argument_list|()
+condition|)
+block|{
+name|Gerrit
+operator|.
+name|updateImpl
+argument_list|(
+name|token
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**    * If this view can display the given token, update it.    *    * @param newToken token the UI wants to show.    * @return true if this view can show the token immediately, false if not.    */
+DECL|method|displayToken (String newToken)
+specifier|public
+name|boolean
+name|displayToken
+parameter_list|(
+name|String
+name|newToken
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
 block|}
 comment|/** Set whether or not {@link Gerrit#isSignedIn()} must be true. */
 DECL|method|setRequiresSignIn (final boolean b)

@@ -108,7 +108,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|DirectScreenLink
+name|InlineHyperlink
 import|;
 end_import
 
@@ -753,7 +753,7 @@ block|}
 comment|/**    * @return a link to the previous file in this patch set, or null.    */
 DECL|method|getPreviousPatchLink (int index, PatchScreen.Type patchType)
 specifier|public
-name|DirectScreenLink
+name|InlineHyperlink
 name|getPreviousPatchLink
 parameter_list|(
 name|int
@@ -802,7 +802,7 @@ block|}
 comment|/**    * @return a link to the next file in this patch set, or null.    */
 DECL|method|getNextPatchLink (int index, PatchScreen.Type patchType)
 specifier|public
-name|DirectScreenLink
+name|InlineHyperlink
 name|getNextPatchLink
 parameter_list|(
 name|int
@@ -2965,12 +2965,12 @@ if|if
 condition|(
 name|link
 operator|instanceof
-name|DirectScreenLink
+name|InlineHyperlink
 condition|)
 block|{
 operator|(
 operator|(
-name|DirectScreenLink
+name|InlineHyperlink
 operator|)
 name|link
 operator|)

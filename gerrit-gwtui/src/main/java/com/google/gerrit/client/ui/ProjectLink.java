@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Dispatcher
 import|;
 end_import
 
@@ -196,7 +196,7 @@ specifier|public
 class|class
 name|ProjectLink
 extends|extends
-name|DirectScreenLink
+name|InlineHyperlink
 block|{
 DECL|field|project
 specifier|private
@@ -263,7 +263,7 @@ name|super
 argument_list|(
 name|text
 argument_list|,
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toProject
 argument_list|(

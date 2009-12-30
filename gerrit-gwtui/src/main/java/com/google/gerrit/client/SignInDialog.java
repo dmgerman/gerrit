@@ -115,14 +115,24 @@ specifier|final
 name|SignInMode
 name|mode
 decl_stmt|;
-comment|/**    * Create a new dialog to handle user sign in.    *    * @param signInMode type of mode the login will perform.    */
-DECL|method|SignInDialog (final SignInMode signInMode)
+DECL|field|token
+specifier|protected
+specifier|final
+name|String
+name|token
+decl_stmt|;
+comment|/**    * Create a new dialog to handle user sign in.    *    * @param signInMode type of mode the login will perform.    * @param token the token to jump to after sign-in is complete.    */
+DECL|method|SignInDialog (final SignInMode signInMode, final String token)
 specifier|protected
 name|SignInDialog
 parameter_list|(
 specifier|final
 name|SignInMode
 name|signInMode
+parameter_list|,
+specifier|final
+name|String
+name|token
 parameter_list|)
 block|{
 name|super
@@ -134,9 +144,17 @@ comment|/* modal */
 literal|true
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|mode
 operator|=
 name|signInMode
+expr_stmt|;
+name|this
+operator|.
+name|token
+operator|=
+name|token
 expr_stmt|;
 switch|switch
 condition|(

@@ -238,8 +238,6 @@ argument_list|(
 name|PageLinks
 operator|.
 name|ALL_OPEN
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -283,8 +281,6 @@ argument_list|(
 name|PageLinks
 operator|.
 name|ALL_MERGED
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -336,8 +332,6 @@ argument_list|(
 name|PageLinks
 operator|.
 name|MINE
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -381,8 +375,6 @@ argument_list|(
 name|PageLinks
 operator|.
 name|MINE_DRAFTS
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -426,8 +418,6 @@ argument_list|(
 name|PageLinks
 operator|.
 name|MINE_STARRED
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}

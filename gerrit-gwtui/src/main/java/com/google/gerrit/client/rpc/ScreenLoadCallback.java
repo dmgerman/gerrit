@@ -239,6 +239,11 @@ name|Gerrit
 operator|.
 name|display
 argument_list|(
+name|screen
+operator|.
+name|getToken
+argument_list|()
+argument_list|,
 operator|new
 name|NotFoundScreen
 argument_list|()

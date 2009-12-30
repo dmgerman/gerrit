@@ -326,22 +326,6 @@ name|user
 operator|.
 name|client
 operator|.
-name|History
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|Window
 operator|.
 name|Location
@@ -545,10 +529,14 @@ specifier|private
 name|TextBox
 name|password
 decl_stmt|;
-DECL|method|UserPassSignInDialog (final String initialErrorMsg)
+DECL|method|UserPassSignInDialog (final String token, final String initialErrorMsg)
 specifier|public
 name|UserPassSignInDialog
 parameter_list|(
+specifier|final
+name|String
+name|token
+parameter_list|,
 specifier|final
 name|String
 name|initialErrorMsg
@@ -559,6 +547,8 @@ argument_list|(
 name|SignInMode
 operator|.
 name|SIGN_IN
+argument_list|,
+name|token
 argument_list|)
 expr_stmt|;
 name|formBody
@@ -1358,12 +1348,9 @@ name|success
 condition|)
 block|{
 name|String
-name|token
+name|to
 init|=
-name|History
-operator|.
-name|getToken
-argument_list|()
+name|token
 decl_stmt|;
 if|if
 condition|(
@@ -1372,7 +1359,7 @@ operator|.
 name|isNew
 operator|&&
 operator|!
-name|token
+name|to
 operator|.
 name|startsWith
 argument_list|(
@@ -1384,7 +1371,7 @@ literal|","
 argument_list|)
 condition|)
 block|{
-name|token
+name|to
 operator|=
 name|PageLinks
 operator|.
@@ -1392,7 +1379,7 @@ name|REGISTER
 operator|+
 literal|","
 operator|+
-name|token
+name|to
 expr_stmt|;
 block|}
 comment|// Unfortunately we no longer support updating the web UI when the
@@ -1411,7 +1398,7 @@ argument_list|()
 operator|+
 literal|"login/"
 operator|+
-name|token
+name|to
 argument_list|)
 expr_stmt|;
 block|}

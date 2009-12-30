@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|Dispatcher
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Gerrit
 import|;
 end_import
 
@@ -333,6 +333,58 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|displayToken (String token)
+specifier|public
+name|boolean
+name|displayToken
+parameter_list|(
+name|String
+name|token
+parameter_list|)
+block|{
+specifier|final
+name|int
+name|tabIdx
+init|=
+name|tabTokens
+operator|.
+name|indexOf
+argument_list|(
+name|token
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+literal|0
+operator|<=
+name|tabIdx
+condition|)
+block|{
+name|tabs
+operator|.
+name|selectTab
+argument_list|(
+name|tabIdx
+argument_list|)
+expr_stmt|;
+name|setToken
+argument_list|(
+name|token
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+annotation|@
+name|Override
 DECL|method|onLoad ()
 specifier|protected
 name|void
@@ -471,7 +523,7 @@ name|tabTokens
 operator|.
 name|add
 argument_list|(
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toProjectAdmin
 argument_list|(
@@ -535,7 +587,7 @@ name|tabTokens
 operator|.
 name|add
 argument_list|(
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toProjectAdmin
 argument_list|(
@@ -583,7 +635,7 @@ name|tabTokens
 operator|.
 name|add
 argument_list|(
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toProjectAdmin
 argument_list|(
@@ -618,9 +670,7 @@ argument_list|>
 name|event
 parameter_list|)
 block|{
-name|Gerrit
-operator|.
-name|display
+name|setToken
 argument_list|(
 name|tabTokens
 operator|.
@@ -631,8 +681,6 @@ operator|.
 name|getSelectedItem
 argument_list|()
 argument_list|)
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}

@@ -178,7 +178,7 @@ specifier|public
 class|class
 name|ChangeLink
 extends|extends
-name|DirectScreenLink
+name|InlineHyperlink
 block|{
 DECL|method|permalink (final Change.Id c)
 specifier|public

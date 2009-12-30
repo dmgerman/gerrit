@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Dispatcher
 import|;
 end_import
 
@@ -621,7 +621,7 @@ name|History
 operator|.
 name|newItem
 argument_list|(
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toAccountGroup
 argument_list|(

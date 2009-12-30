@@ -1563,8 +1563,6 @@ operator|.
 name|display
 argument_list|(
 name|nextToken
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}

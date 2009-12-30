@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|HistoryHandler
+name|Dispatcher
 import|;
 end_import
 
@@ -110,6 +110,22 @@ name|Patch
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|History
+import|;
+end_import
+
 begin_class
 DECL|class|PatchLink
 specifier|public
@@ -117,7 +133,7 @@ specifier|abstract
 class|class
 name|PatchLink
 extends|extends
-name|DirectScreenLink
+name|InlineHyperlink
 block|{
 DECL|field|patchKey
 specifier|protected
@@ -197,7 +213,7 @@ name|void
 name|go
 parameter_list|()
 block|{
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|patch
 argument_list|(
@@ -255,7 +271,7 @@ name|patchKey
 argument_list|,
 name|patchIndex
 argument_list|,
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toPatchSideBySide
 argument_list|(
@@ -305,7 +321,7 @@ name|patchKey
 argument_list|,
 name|patchIndex
 argument_list|,
-name|HistoryHandler
+name|Dispatcher
 operator|.
 name|toPatchUnified
 argument_list|(

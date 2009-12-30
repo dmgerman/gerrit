@@ -78,9 +78,23 @@ name|client
 operator|.
 name|ui
 operator|.
-name|LinkMenuItem
+name|Hyperlink
 operator|.
 name|impl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|Gerrit
 import|;
 end_import
 
@@ -116,8 +130,16 @@ name|Event
 import|;
 end_import
 
-begin_import
-import|import
+begin_comment
+comment|/** Standard GWT hyperlink with late updating of the token. */
+end_comment
+
+begin_class
+DECL|class|InlineHyperlink
+specifier|public
+class|class
+name|InlineHyperlink
+extends|extends
 name|com
 operator|.
 name|google
@@ -131,26 +153,11 @@ operator|.
 name|ui
 operator|.
 name|InlineHyperlink
-import|;
-end_import
-
-begin_comment
-comment|/**  * Link to a Screen which can carry richer payload.  *<p>  * A standard Hyperlink widget which updates the current history token when  * activated, but subclasses are able to create the Screen instance themselves,  * passing additional data into the Screen's constructor. This may permit the  * screen to show some limited information early, before RPCs required to fully  * populate it are even started.  */
-end_comment
-
-begin_class
-DECL|class|DirectScreenLink
-specifier|public
-specifier|abstract
-class|class
-name|DirectScreenLink
-extends|extends
-name|InlineHyperlink
 block|{
-comment|/**    * Creates a link with its text and target history token specified.    *    * @param text the hyperlink's text    * @param historyToken the history token to which it will link    */
-DECL|method|DirectScreenLink (final String text, final String historyToken)
-specifier|protected
-name|DirectScreenLink
+comment|/**    * Creates a link with its text and target history token specified.    *    * @param text the hyperlink's text    * @param token the history token to which it will link    */
+DECL|method|InlineHyperlink (final String text, final String token)
+specifier|public
+name|InlineHyperlink
 parameter_list|(
 specifier|final
 name|String
@@ -158,14 +165,14 @@ name|text
 parameter_list|,
 specifier|final
 name|String
-name|historyToken
+name|token
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|text
 argument_list|,
-name|historyToken
+name|token
 argument_list|)
 expr_stmt|;
 block|}
@@ -213,15 +220,33 @@ name|go
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
+name|super
+operator|.
+name|onBrowserEvent
+argument_list|(
+name|event
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/** Create the screen and start rendering, updating the browser history. */
 DECL|method|go ()
 specifier|public
-specifier|abstract
 name|void
 name|go
 parameter_list|()
-function_decl|;
+block|{
+name|Gerrit
+operator|.
+name|display
+argument_list|(
+name|getTargetHistoryToken
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
