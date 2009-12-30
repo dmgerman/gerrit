@@ -1,17 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_package
-DECL|package|com.google.gerrit.launcher
-package|package
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|launcher
-package|;
-end_package
-
 begin_comment
 comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
@@ -63,6 +50,19 @@ end_comment
 begin_comment
 comment|// limitations under the License.
 end_comment
+
+begin_package
+DECL|package|com.google.gerrit.launcher
+package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|launcher
+package|;
+end_package
 
 begin_import
 import|import static
