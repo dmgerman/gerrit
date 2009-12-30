@@ -72,28 +72,46 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|i18n
+name|resources
 operator|.
 name|client
 operator|.
-name|Constants
+name|ClientBundle
 import|;
 end_import
 
-begin_comment
-comment|/**  * Automatically generated version code.  *<p>  * Do not translate this constants interface.  */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|TextResource
+import|;
+end_import
 
 begin_interface
-DECL|interface|Version
+DECL|interface|ClientVersion
 specifier|public
 interface|interface
-name|Version
+name|ClientVersion
 extends|extends
-name|Constants
+name|ClientBundle
 block|{
+comment|/** Version number of this client software build. */
+annotation|@
+name|Source
+argument_list|(
+literal|"Version"
+argument_list|)
 DECL|method|version ()
-name|String
+name|TextResource
 name|version
 parameter_list|()
 function_decl|;
