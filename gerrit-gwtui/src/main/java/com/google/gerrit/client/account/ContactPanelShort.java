@@ -2190,16 +2190,6 @@ name|getPreferredEmail
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|me
-operator|.
-name|setSshUserName
-argument_list|(
-name|result
-operator|.
-name|getSshUserName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|Gerrit
 operator|.
 name|refreshMenuBar

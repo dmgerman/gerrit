@@ -103,6 +103,7 @@ specifier|final
 class|class
 name|AccountExternalId
 block|{
+comment|/**    * Scheme used for {@link AuthType#LDAP}, {@link AuthType#HTTP}, and    * {@link AuthType#HTTP_LDAP} usernames.    *<p>    * The name {@code gerrit:} was a very poor choice.    */
 DECL|field|SCHEME_GERRIT
 specifier|public
 specifier|static
@@ -112,6 +113,7 @@ name|SCHEME_GERRIT
 init|=
 literal|"gerrit:"
 decl_stmt|;
+comment|/** Scheme used for randomly created identities constructed by a UUID. */
 DECL|field|SCHEME_UUID
 specifier|public
 specifier|static
@@ -121,6 +123,7 @@ name|SCHEME_UUID
 init|=
 literal|"uuid:"
 decl_stmt|;
+comment|/** Scheme used to represent only an email address. */
 DECL|field|SCHEME_MAILTO
 specifier|public
 specifier|static
@@ -130,6 +133,17 @@ name|SCHEME_MAILTO
 init|=
 literal|"mailto:"
 decl_stmt|;
+comment|/** Scheme for the username used to authenticate an account, e.g. over SSH. */
+DECL|field|SCHEME_USERNAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SCHEME_USERNAME
+init|=
+literal|"username:"
+decl_stmt|;
+comment|/** Very old scheme from Gerrit Code Review 1.x imports. */
 DECL|field|LEGACY_GAE
 specifier|public
 specifier|static
@@ -187,6 +201,41 @@ specifier|protected
 name|Key
 parameter_list|()
 block|{     }
+DECL|method|Key (String scheme, final String identity)
+specifier|public
+name|Key
+parameter_list|(
+name|String
+name|scheme
+parameter_list|,
+specifier|final
+name|String
+name|identity
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|scheme
+operator|.
+name|endsWith
+argument_list|(
+literal|":"
+argument_list|)
+condition|)
+block|{
+name|scheme
+operator|+=
+literal|":"
+expr_stmt|;
+block|}
+name|externalId
+operator|=
+name|scheme
+operator|+
+name|identity
+expr_stmt|;
+block|}
 DECL|method|Key (final String e)
 specifier|public
 name|Key
@@ -414,31 +463,40 @@ name|scheme
 argument_list|)
 return|;
 block|}
-DECL|method|getSchemeRest (final String scheme)
+DECL|method|getSchemeRest ()
 specifier|public
 name|String
 name|getSchemeRest
-parameter_list|(
-specifier|final
-name|String
-name|scheme
-parameter_list|)
+parameter_list|()
 block|{
-return|return
-name|isScheme
-argument_list|(
-name|scheme
-argument_list|)
-condition|?
+name|String
+name|id
+init|=
 name|getExternalId
 argument_list|()
+decl_stmt|;
+name|int
+name|c
+init|=
+name|id
+operator|.
+name|indexOf
+argument_list|(
+literal|':'
+argument_list|)
+decl_stmt|;
+return|return
+literal|0
+operator|<
+name|c
+condition|?
+name|id
 operator|.
 name|substring
 argument_list|(
-name|scheme
-operator|.
-name|length
-argument_list|()
+name|c
+operator|+
+literal|1
 argument_list|)
 else|:
 literal|null

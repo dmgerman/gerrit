@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountExternalId
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1947,7 +1963,7 @@ literal|null
 return|;
 comment|// only if not obtained from LDAP
 case|case
-name|SSH_USER_NAME
+name|USER_NAME
 case|:
 return|return
 name|accountSshUserName
@@ -2143,7 +2159,7 @@ argument_list|)
 expr_stmt|;
 name|who
 operator|.
-name|setSshUserName
+name|setUserName
 argument_list|(
 name|apply
 argument_list|(
@@ -2955,11 +2971,7 @@ return|return
 name|i
 operator|.
 name|getSchemeRest
-argument_list|(
-name|AccountExternalId
-operator|.
-name|SCHEME_GERRIT
-argument_list|)
+argument_list|()
 return|;
 block|}
 block|}
@@ -3217,16 +3229,6 @@ decl_stmt|;
 try|try
 block|{
 specifier|final
-name|String
-name|id
-init|=
-name|AccountExternalId
-operator|.
-name|SCHEME_GERRIT
-operator|+
-name|username
-decl_stmt|;
-specifier|final
 name|AccountExternalId
 name|extId
 init|=
@@ -3242,7 +3244,9 @@ name|AccountExternalId
 operator|.
 name|Key
 argument_list|(
-name|id
+name|SCHEME_GERRIT
+argument_list|,
+name|username
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -1225,7 +1225,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"if ($ENV{'GERRIT_SSH_USER_NAME'}) {\n"
+literal|"if ($ENV{'GERRIT_USER_NAME'}) {\n"
 argument_list|)
 expr_stmt|;
 name|p
@@ -1239,7 +1239,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|", $ENV{'GERRIT_SSH_USER_NAME'}"
+literal|", $ENV{'GERRIT_USER_NAME'}"
 argument_list|)
 expr_stmt|;
 name|p
@@ -2776,17 +2776,14 @@ name|user
 init|=
 name|u
 operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 decl_stmt|;
 name|env
 operator|.
 name|set
 argument_list|(
-literal|"GERRIT_SSH_USER_NAME"
+literal|"GERRIT_USER_NAME"
 argument_list|,
 name|user
 argument_list|)

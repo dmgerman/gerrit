@@ -120,61 +120,61 @@ enum|enum
 name|FieldName
 block|{
 DECL|enumConstant|FULL_NAME
-DECL|enumConstant|SSH_USER_NAME
+DECL|enumConstant|USER_NAME
 DECL|enumConstant|REGISTER_NEW_EMAIL
 name|FULL_NAME
 block|,
-name|SSH_USER_NAME
+name|USER_NAME
 block|,
 name|REGISTER_NEW_EMAIL
 block|;   }
-DECL|field|SSH_USER_NAME_PATTERN_FIRST
+DECL|field|USER_NAME_PATTERN_FIRST
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SSH_USER_NAME_PATTERN_FIRST
+name|USER_NAME_PATTERN_FIRST
 init|=
 literal|"[a-zA-Z]"
 decl_stmt|;
-DECL|field|SSH_USER_NAME_PATTERN_REST
+DECL|field|USER_NAME_PATTERN_REST
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SSH_USER_NAME_PATTERN_REST
+name|USER_NAME_PATTERN_REST
 init|=
 literal|"[a-zA-Z0-9._-]"
 decl_stmt|;
-DECL|field|SSH_USER_NAME_PATTERN_LAST
+DECL|field|USER_NAME_PATTERN_LAST
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SSH_USER_NAME_PATTERN_LAST
+name|USER_NAME_PATTERN_LAST
 init|=
 literal|"[a-zA-Z0-9]"
 decl_stmt|;
-comment|/** Regular expression that {@link #sshUserName} must match. */
-DECL|field|SSH_USER_NAME_PATTERN
+comment|/** Regular expression that {@link #userName} must match. */
+DECL|field|USER_NAME_PATTERN
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SSH_USER_NAME_PATTERN
+name|USER_NAME_PATTERN
 init|=
 literal|"^"
 operator|+
 comment|//
-name|SSH_USER_NAME_PATTERN_FIRST
+name|USER_NAME_PATTERN_FIRST
 operator|+
 comment|//
-name|SSH_USER_NAME_PATTERN_REST
+name|USER_NAME_PATTERN_REST
 operator|+
 literal|"*"
 operator|+
 comment|//
-name|SSH_USER_NAME_PATTERN_LAST
+name|USER_NAME_PATTERN_LAST
 operator|+
 comment|//
 literal|"$"
@@ -363,30 +363,13 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
-comment|/** Username to authenticate as through SSH connections. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|5
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|sshUserName
-specifier|protected
-name|String
-name|sshUserName
-decl_stmt|;
 comment|/** When did the user last give us contact information? Null if never. */
 annotation|@
 name|Column
 argument_list|(
 name|id
 operator|=
-literal|6
+literal|5
 argument_list|,
 name|notNull
 operator|=
@@ -403,7 +386,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|7
+literal|6
 argument_list|,
 name|name
 operator|=
@@ -415,6 +398,12 @@ DECL|field|generalPreferences
 specifier|protected
 name|AccountGeneralPreferences
 name|generalPreferences
+decl_stmt|;
+comment|/**<i>computed</i> the username selected from the identities. */
+DECL|field|userName
+specifier|protected
+name|String
+name|userName
 decl_stmt|;
 DECL|method|Account ()
 specifier|protected
@@ -527,33 +516,6 @@ operator|=
 name|addr
 expr_stmt|;
 block|}
-comment|/** Get the name the user logins as through SSH. */
-DECL|method|getSshUserName ()
-specifier|public
-name|String
-name|getSshUserName
-parameter_list|()
-block|{
-return|return
-name|sshUserName
-return|;
-block|}
-comment|/** Set the name the user logins as through SSH. */
-DECL|method|setSshUserName (final String name)
-specifier|public
-name|void
-name|setSshUserName
-parameter_list|(
-specifier|final
-name|String
-name|name
-parameter_list|)
-block|{
-name|sshUserName
-operator|=
-name|name
-expr_stmt|;
-block|}
 comment|/** Get the date and time the user first registered. */
 DECL|method|getRegisteredOn ()
 specifier|public
@@ -628,6 +590,35 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+comment|/** @return the computed user name for this account */
+DECL|method|getUserName ()
+specifier|public
+name|String
+name|getUserName
+parameter_list|()
+block|{
+return|return
+name|userName
+return|;
+block|}
+comment|/** Update the computed user name property. */
+DECL|method|setUserName (final String userName)
+specifier|public
+name|void
+name|setUserName
+parameter_list|(
+specifier|final
+name|String
+name|userName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|userName
+operator|=
+name|userName
 expr_stmt|;
 block|}
 block|}

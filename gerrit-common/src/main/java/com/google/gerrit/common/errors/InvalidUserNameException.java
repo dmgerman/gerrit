@@ -81,14 +81,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Error indicating the SSH user name does not match {@link Account#SSH_USER_NAME_PATTERN} pattern. */
+comment|/** Error indicating the SSH user name does not match {@link Account#USER_NAME_PATTERN} pattern. */
 end_comment
 
 begin_class
-DECL|class|InvalidSshUserNameException
+DECL|class|InvalidUserNameException
 specifier|public
 class|class
-name|InvalidSshUserNameException
+name|InvalidUserNameException
 extends|extends
 name|Exception
 block|{
@@ -108,11 +108,11 @@ specifier|final
 name|String
 name|MESSAGE
 init|=
-literal|"Invalid SSH user name."
+literal|"Invalid user name."
 decl_stmt|;
-DECL|method|InvalidSshUserNameException ()
+DECL|method|InvalidUserNameException ()
 specifier|public
-name|InvalidSshUserNameException
+name|InvalidUserNameException
 parameter_list|()
 block|{
 name|super

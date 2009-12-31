@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountExternalId
+operator|.
+name|SCHEME_USERNAME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -213,6 +229,18 @@ name|externalIds
 operator|=
 name|externalIds
 expr_stmt|;
+name|this
+operator|.
+name|account
+operator|.
+name|setUserName
+argument_list|(
+name|getUserName
+argument_list|(
+name|externalIds
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** Get the cached account metadata. */
 DECL|method|getAccount ()
@@ -223,6 +251,20 @@ parameter_list|()
 block|{
 return|return
 name|account
+return|;
+block|}
+comment|/**    * Get the username, if one has been declared for this user.    *<p>    * The username is the {@link AccountExternalId} using the scheme    * {@link AccountExternalId#SCHEME_USERNAME}.    */
+DECL|method|getUserName ()
+specifier|public
+name|String
+name|getUserName
+parameter_list|()
+block|{
+return|return
+name|account
+operator|.
+name|getUserName
+argument_list|()
 return|;
 block|}
 comment|/**    * All email addresses registered to this account.    *<p>    * Gerrit is "reasonably certain" that the returned email addresses actually    * belong to the user of the account. Some emails may have been obtained from    * the authentication provider, which in the case of OpenID may be trusting    * the provider to have validated the address. Other emails may have been    * validated by Gerrit directly.    */
@@ -321,6 +363,49 @@ parameter_list|()
 block|{
 return|return
 name|internalGroups
+return|;
+block|}
+DECL|method|getUserName (Collection<AccountExternalId> ids)
+specifier|private
+specifier|static
+name|String
+name|getUserName
+parameter_list|(
+name|Collection
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|ids
+parameter_list|)
+block|{
+for|for
+control|(
+name|AccountExternalId
+name|id
+range|:
+name|ids
+control|)
+block|{
+if|if
+condition|(
+name|id
+operator|.
+name|isScheme
+argument_list|(
+name|SCHEME_USERNAME
+argument_list|)
+condition|)
+block|{
+return|return
+name|id
+operator|.
+name|getSchemeRest
+argument_list|()
+return|;
+block|}
+block|}
+return|return
+literal|null
 return|;
 block|}
 block|}

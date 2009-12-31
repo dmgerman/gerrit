@@ -134,20 +134,6 @@ name|ResultSet
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
-import|;
-end_import
-
 begin_comment
 comment|/** Access interface for {@link Account}. */
 end_comment
@@ -199,21 +185,6 @@ name|byPreferredEmail
 parameter_list|(
 name|String
 name|email
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|SecondaryKey
-argument_list|(
-literal|"sshUserName"
-argument_list|)
-DECL|method|bySshUserName (String userName)
-name|Account
-name|bySshUserName
-parameter_list|(
-name|String
-name|userName
 parameter_list|)
 throws|throws
 name|OrmException
@@ -271,30 +242,6 @@ argument_list|<
 name|Account
 argument_list|>
 name|suggestByPreferredEmail
-parameter_list|(
-name|String
-name|nameA
-parameter_list|,
-name|String
-name|nameB
-parameter_list|,
-name|int
-name|limit
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE sshUserName>= ? AND sshUserName<= ? ORDER BY sshUserName LIMIT ?"
-argument_list|)
-DECL|method|suggestBySshUserName (String nameA, String nameB, int limit)
-name|ResultSet
-argument_list|<
-name|Account
-argument_list|>
-name|suggestBySshUserName
 parameter_list|(
 name|String
 name|nameA

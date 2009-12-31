@@ -1170,10 +1170,7 @@ name|P_USER_NAME
 argument_list|,
 name|u
 operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 argument_list|)
 expr_stmt|;

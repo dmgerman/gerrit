@@ -999,6 +999,21 @@ return|return
 name|accountId
 return|;
 block|}
+comment|/** @return the user's user name; null if one has not been selected/assigned. */
+DECL|method|getUserName ()
+specifier|public
+name|String
+name|getUserName
+parameter_list|()
+block|{
+return|return
+name|state
+argument_list|()
+operator|.
+name|getUserName
+argument_list|()
+return|;
+block|}
 DECL|method|getAccount ()
 specifier|public
 name|Account
@@ -1325,9 +1340,7 @@ block|}
 name|String
 name|user
 init|=
-name|ua
-operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 decl_stmt|;
 if|if
@@ -1513,9 +1526,7 @@ comment|//
 name|String
 name|user
 init|=
-name|ua
-operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 decl_stmt|;
 if|if

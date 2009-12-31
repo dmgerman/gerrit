@@ -1305,7 +1305,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 operator|!=
 literal|null
@@ -1315,7 +1315,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 operator|.
 name|length
@@ -1363,7 +1363,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getSshUserName
+name|getUserName
 argument_list|()
 argument_list|)
 expr_stmt|;

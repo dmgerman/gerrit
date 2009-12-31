@@ -801,6 +801,24 @@ return|return
 literal|true
 return|;
 block|}
+if|if
+condition|(
+name|id
+operator|.
+name|isScheme
+argument_list|(
+name|AccountExternalId
+operator|.
+name|SCHEME_USERNAME
+argument_list|)
+condition|)
+block|{
+comment|// We can trust their username, its local to our server only.
+comment|//
+return|return
+literal|true
+return|;
+block|}
 for|for
 control|(
 specifier|final
