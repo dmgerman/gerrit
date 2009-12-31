@@ -134,20 +134,6 @@ name|ResultSet
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
-import|;
-end_import
-
 begin_interface
 DECL|interface|ApprovalCategoryAccess
 specifier|public
@@ -176,21 +162,6 @@ name|ApprovalCategory
 operator|.
 name|Id
 name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|SecondaryKey
-argument_list|(
-literal|"name"
-argument_list|)
-DECL|method|byName (String name)
-name|ApprovalCategory
-name|byName
-parameter_list|(
-name|String
-name|name
 parameter_list|)
 throws|throws
 name|OrmException
