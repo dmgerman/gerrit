@@ -5544,6 +5544,8 @@ name|txt
 argument_list|)
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -6714,13 +6716,15 @@ argument_list|,
 name|msg
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
 end_function
 
 begin_function
-DECL|method|sendMergeFail (Change c, ChangeMessage msg, final boolean makeNew)
+DECL|method|sendMergeFail (Change c, ChangeMessage msg, final boolean makeNew, final boolean useSubmitter)
 specifier|private
 name|void
 name|sendMergeFail
@@ -6734,6 +6738,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|makeNew
+parameter_list|,
+specifier|final
+name|boolean
+name|useSubmitter
 parameter_list|)
 block|{
 try|try
@@ -6901,6 +6909,22 @@ block|}
 try|try
 block|{
 specifier|final
+name|MergeFailSender
+name|cm
+init|=
+name|mergeFailSenderFactory
+operator|.
+name|create
+argument_list|(
+name|c
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|useSubmitter
+condition|)
+block|{
+specifier|final
 name|PatchSetApproval
 name|submitter
 init|=
@@ -6910,17 +6934,6 @@ name|c
 operator|.
 name|currentPatchSetId
 argument_list|()
-argument_list|)
-decl_stmt|;
-specifier|final
-name|MergeFailSender
-name|cm
-init|=
-name|mergeFailSenderFactory
-operator|.
-name|create
-argument_list|(
-name|c
 argument_list|)
 decl_stmt|;
 if|if
@@ -6940,6 +6953,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|cm
 operator|.
