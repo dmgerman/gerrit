@@ -134,20 +134,6 @@ name|ResultSet
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
-import|;
-end_import
-
 begin_interface
 DECL|interface|AccountGroupAccess
 specifier|public
@@ -181,30 +167,16 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
-name|SecondaryKey
+name|Query
 argument_list|(
-literal|"name"
+literal|"WHERE externalName = ?"
 argument_list|)
-DECL|method|get (AccountGroup.NameKey name)
+DECL|method|byExternalName (AccountGroup.ExternalNameKey name)
+name|ResultSet
+argument_list|<
 name|AccountGroup
-name|get
-parameter_list|(
-name|AccountGroup
-operator|.
-name|NameKey
-name|name
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|SecondaryKey
-argument_list|(
-literal|"externalName"
-argument_list|)
-DECL|method|get (AccountGroup.ExternalNameKey name)
-name|AccountGroup
-name|get
+argument_list|>
+name|byExternalName
 parameter_list|(
 name|AccountGroup
 operator|.

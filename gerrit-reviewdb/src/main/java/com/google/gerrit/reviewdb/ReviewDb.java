@@ -205,6 +205,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountGroupNames ()
+name|AccountGroupNameAccess
+name|accountGroupNames
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|accountGroupMembers ()
 name|AccountGroupMemberAccess
 name|accountGroupMembers

@@ -214,6 +214,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|GroupCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|NoSuchGroupException
 import|;
 end_import
@@ -393,6 +409,12 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|groupCache
+specifier|private
+specifier|final
+name|GroupCache
+name|groupCache
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -443,7 +465,7 @@ name|max
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddProjectRight (final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, final ApprovalTypes approvalTypes, @Assisted final Project.NameKey projectName, @Assisted final ApprovalCategory.Id categoryId, @Assisted final String groupName, @Assisted(R) final short min, @Assisted(R) final short max)
+DECL|method|AddProjectRight (final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final GroupCache groupCache, final ReviewDb db, final ApprovalTypes approvalTypes, @Assisted final Project.NameKey projectName, @Assisted final ApprovalCategory.Id categoryId, @Assisted final String groupName, @Assisted(R) final short min, @Assisted(R) final short max)
 name|AddProjectRight
 parameter_list|(
 specifier|final
@@ -461,6 +483,10 @@ parameter_list|,
 specifier|final
 name|ProjectCache
 name|projectCache
+parameter_list|,
+specifier|final
+name|GroupCache
+name|groupCache
 parameter_list|,
 specifier|final
 name|ReviewDb
@@ -528,6 +554,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|groupCache
+operator|=
+name|groupCache
 expr_stmt|;
 name|this
 operator|.
@@ -730,10 +762,7 @@ specifier|final
 name|AccountGroup
 name|group
 init|=
-name|db
-operator|.
-name|accountGroups
-argument_list|()
+name|groupCache
 operator|.
 name|get
 argument_list|(

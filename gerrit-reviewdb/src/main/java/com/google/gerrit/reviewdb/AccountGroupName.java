@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.reviewdb
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|account
+name|reviewdb
 package|;
 end_package
 
@@ -72,92 +70,111 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|reviewdb
+name|client
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
+name|Column
 import|;
 end_import
 
 begin_comment
-comment|/** Tracks group objects in memory for efficient access. */
+comment|/** Unique name of an {@link AccountGroup}. */
 end_comment
 
-begin_interface
-DECL|interface|GroupCache
+begin_class
+DECL|class|AccountGroupName
 specifier|public
-interface|interface
-name|GroupCache
+class|class
+name|AccountGroupName
 block|{
-DECL|method|get (AccountGroup.Id groupId)
-specifier|public
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
+DECL|field|name
+specifier|protected
 name|AccountGroup
-name|get
-parameter_list|(
+operator|.
+name|NameKey
+name|name
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
+DECL|field|groupId
+specifier|protected
 name|AccountGroup
 operator|.
 name|Id
 name|groupId
-parameter_list|)
-function_decl|;
-DECL|method|get (AccountGroup.NameKey name)
+decl_stmt|;
+DECL|method|AccountGroupName ()
+specifier|protected
+name|AccountGroupName
+parameter_list|()
+block|{   }
+DECL|method|AccountGroupName (AccountGroup.NameKey name, AccountGroup.Id groupId)
 specifier|public
-name|AccountGroup
-name|get
+name|AccountGroupName
 parameter_list|(
 name|AccountGroup
 operator|.
 name|NameKey
 name|name
-parameter_list|)
-function_decl|;
-DECL|method|get (AccountGroup.ExternalNameKey externalName)
-specifier|public
-name|Collection
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|get
-parameter_list|(
+parameter_list|,
 name|AccountGroup
 operator|.
-name|ExternalNameKey
-name|externalName
+name|Id
+name|groupId
 parameter_list|)
-function_decl|;
-DECL|method|evict (AccountGroup group)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+name|this
+operator|.
+name|groupId
+operator|=
+name|groupId
+expr_stmt|;
+block|}
+DECL|method|getNameKey ()
 specifier|public
-name|void
-name|evict
-parameter_list|(
-name|AccountGroup
-name|group
-parameter_list|)
-function_decl|;
-DECL|method|evictAfterRename (AccountGroup.NameKey oldName)
-specifier|public
-name|void
-name|evictAfterRename
-parameter_list|(
 name|AccountGroup
 operator|.
 name|NameKey
-name|oldName
-parameter_list|)
-function_decl|;
+name|getNameKey
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
 block|}
-end_interface
+DECL|method|getId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getId
+parameter_list|()
+block|{
+return|return
+name|groupId
+return|;
+block|}
+block|}
+end_class
 
 end_unit
 

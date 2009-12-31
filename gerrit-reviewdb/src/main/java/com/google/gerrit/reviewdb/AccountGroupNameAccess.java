@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2009The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.reviewdb
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|account
+name|reviewdb
 package|;
 end_package
 
@@ -72,48 +70,64 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|reviewdb
+name|client
 operator|.
-name|AccountGroup
+name|Access
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Collection
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|OrmException
 import|;
 end_import
 
-begin_comment
-comment|/** Tracks group objects in memory for efficient access. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|PrimaryKey
+import|;
+end_import
 
 begin_interface
-DECL|interface|GroupCache
+DECL|interface|AccountGroupNameAccess
 specifier|public
 interface|interface
-name|GroupCache
-block|{
-DECL|method|get (AccountGroup.Id groupId)
-specifier|public
-name|AccountGroup
-name|get
-parameter_list|(
+name|AccountGroupNameAccess
+extends|extends
+name|Access
+argument_list|<
+name|AccountGroupName
+argument_list|,
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
-parameter_list|)
-function_decl|;
+name|NameKey
+argument_list|>
+block|{
+annotation|@
+name|PrimaryKey
+argument_list|(
+literal|"name"
+argument_list|)
 DECL|method|get (AccountGroup.NameKey name)
-specifier|public
-name|AccountGroup
+name|AccountGroupName
 name|get
 parameter_list|(
 name|AccountGroup
@@ -121,40 +135,8 @@ operator|.
 name|NameKey
 name|name
 parameter_list|)
-function_decl|;
-DECL|method|get (AccountGroup.ExternalNameKey externalName)
-specifier|public
-name|Collection
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|get
-parameter_list|(
-name|AccountGroup
-operator|.
-name|ExternalNameKey
-name|externalName
-parameter_list|)
-function_decl|;
-DECL|method|evict (AccountGroup group)
-specifier|public
-name|void
-name|evict
-parameter_list|(
-name|AccountGroup
-name|group
-parameter_list|)
-function_decl|;
-DECL|method|evictAfterRename (AccountGroup.NameKey oldName)
-specifier|public
-name|void
-name|evictAfterRename
-parameter_list|(
-name|AccountGroup
-operator|.
-name|NameKey
-name|oldName
-parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
