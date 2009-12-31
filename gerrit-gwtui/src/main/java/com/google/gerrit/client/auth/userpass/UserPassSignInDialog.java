@@ -551,6 +551,11 @@ argument_list|,
 name|token
 argument_list|)
 expr_stmt|;
+name|setAutoHideEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|formBody
 operator|=
 operator|new
@@ -1035,7 +1040,7 @@ name|Gerrit
 operator|.
 name|C
 operator|.
-name|errorDialogClose
+name|signInDialogClose
 argument_list|()
 argument_list|)
 expr_stmt|;

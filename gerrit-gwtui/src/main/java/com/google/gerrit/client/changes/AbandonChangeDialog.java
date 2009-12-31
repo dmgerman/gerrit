@@ -341,9 +341,14 @@ block|{
 name|super
 argument_list|(
 comment|/* auto hide */
-literal|true
+literal|false
 argument_list|,
 comment|/* modal */
+literal|true
+argument_list|)
+expr_stmt|;
+name|setGlassEnabled
+argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;

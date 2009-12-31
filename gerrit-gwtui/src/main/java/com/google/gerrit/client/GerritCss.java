@@ -423,6 +423,16 @@ name|String
 name|errorDialog
 parameter_list|()
 function_decl|;
+DECL|method|errorDialogGlass ()
+name|String
+name|errorDialogGlass
+parameter_list|()
+function_decl|;
+DECL|method|errorDialogTitle ()
+name|String
+name|errorDialogTitle
+parameter_list|()
+function_decl|;
 DECL|method|errorDialogButtons ()
 name|String
 name|errorDialogButtons

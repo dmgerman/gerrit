@@ -113,6 +113,11 @@ name|String
 name|signInDialogTitle
 parameter_list|()
 function_decl|;
+DECL|method|signInDialogClose ()
+name|String
+name|signInDialogClose
+parameter_list|()
+function_decl|;
 DECL|method|linkIdentityDialogTitle ()
 name|String
 name|linkIdentityDialogTitle
@@ -133,9 +138,9 @@ name|String
 name|errorDialogTitle
 parameter_list|()
 function_decl|;
-DECL|method|errorDialogClose ()
+DECL|method|errorDialogContinue ()
 name|String
-name|errorDialogClose
+name|errorDialogContinue
 parameter_list|()
 function_decl|;
 DECL|method|notSignedInTitle ()

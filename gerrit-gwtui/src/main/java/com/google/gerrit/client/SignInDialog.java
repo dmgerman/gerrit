@@ -144,6 +144,11 @@ comment|/* modal */
 literal|true
 argument_list|)
 expr_stmt|;
+name|setGlassEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|mode
