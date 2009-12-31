@@ -92,6 +92,10 @@ block|{
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|length
 operator|=
 name|Integer
@@ -110,6 +114,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -126,6 +134,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -142,6 +154,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|,
 name|notNull
 operator|=
 literal|false

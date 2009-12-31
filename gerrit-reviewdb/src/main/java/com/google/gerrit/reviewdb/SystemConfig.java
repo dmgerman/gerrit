@@ -147,6 +147,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|length
 operator|=
 literal|1
@@ -230,6 +234,11 @@ return|;
 block|}
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|singleton
 specifier|protected
 name|Key
@@ -239,6 +248,10 @@ comment|/** Private key to sign account identification cookies. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|length
 operator|=
 literal|36
@@ -253,6 +266,10 @@ comment|/**    * Local filesystem location of header/footer/CSS configuration fi
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -266,6 +283,11 @@ decl_stmt|;
 comment|/** Identity of the administration group; those with full access. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|adminGroupId
 specifier|public
 name|AccountGroup
@@ -276,6 +298,11 @@ decl_stmt|;
 comment|/** Identity of the anonymous group, which permits anyone. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|)
 DECL|field|anonymousGroupId
 specifier|public
 name|AccountGroup
@@ -286,6 +313,11 @@ decl_stmt|;
 comment|/** Identity of the registered users group, which permits anyone. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|)
 DECL|field|registeredGroupId
 specifier|public
 name|AccountGroup

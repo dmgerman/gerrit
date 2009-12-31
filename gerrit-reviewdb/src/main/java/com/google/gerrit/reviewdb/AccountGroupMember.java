@@ -127,6 +127,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|accountId
 specifier|protected
 name|Account
@@ -136,6 +141,11 @@ name|accountId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|groupId
 specifier|protected
 name|AccountGroup
@@ -261,6 +271,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column

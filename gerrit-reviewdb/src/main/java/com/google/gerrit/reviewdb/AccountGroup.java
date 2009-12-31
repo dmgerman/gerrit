@@ -152,6 +152,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|length
 operator|=
 literal|40
@@ -243,6 +247,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|name
 specifier|protected
 name|String
@@ -330,6 +339,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|id
 specifier|protected
 name|int
@@ -437,6 +451,11 @@ block|;   }
 comment|/** Unique name of this group within the system. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|name
 specifier|protected
 name|NameKey
@@ -445,6 +464,11 @@ decl_stmt|;
 comment|/** Unique identity, to link entities as {@link #name} can change. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|groupId
 specifier|protected
 name|Id
@@ -453,6 +477,11 @@ decl_stmt|;
 comment|/**    * Identity of the group whose members can manage this group.    *<p>    * This can be a self-reference to indicate the group's members manage itself.    */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|ownerGroupId
 specifier|protected
 name|Id
@@ -462,6 +491,10 @@ comment|/** A textual description of the group's purpose. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|,
 name|length
 operator|=
 name|Integer
@@ -481,6 +514,10 @@ comment|/** Is the membership managed by some external means? */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|,
 name|length
 operator|=
 literal|8
@@ -494,6 +531,10 @@ comment|/** Distinguished name in the directory server. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|,
 name|notNull
 operator|=
 literal|false

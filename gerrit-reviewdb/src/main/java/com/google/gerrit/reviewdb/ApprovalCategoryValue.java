@@ -127,6 +127,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|categoryId
 specifier|protected
 name|ApprovalCategory
@@ -136,6 +141,11 @@ name|categoryId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|value
 specifier|protected
 name|short
@@ -225,6 +235,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -239,6 +253,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|length
 operator|=
 literal|50

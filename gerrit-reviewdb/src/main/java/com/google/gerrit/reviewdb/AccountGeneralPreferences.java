@@ -167,6 +167,11 @@ decl_stmt|;
 comment|/** Default number of lines of context when viewing a patch. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|defaultContext
 specifier|protected
 name|short
@@ -175,6 +180,11 @@ decl_stmt|;
 comment|/** Number of changes to show in a screen. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|maximumPageSize
 specifier|protected
 name|short
@@ -183,6 +193,11 @@ decl_stmt|;
 comment|/** Should the site header be displayed when logged in ? */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|showSiteHeader
 specifier|protected
 name|boolean
@@ -191,6 +206,11 @@ decl_stmt|;
 comment|/** Should the Flash helper movie be used to copy text to the clipboard? */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|useFlashClipboard
 specifier|protected
 name|boolean

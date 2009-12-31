@@ -146,6 +146,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|projectName
 specifier|protected
 name|Project
@@ -155,6 +160,11 @@ name|projectName
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|branchName
 specifier|protected
 name|String

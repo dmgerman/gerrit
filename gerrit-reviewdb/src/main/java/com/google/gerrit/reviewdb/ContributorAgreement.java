@@ -137,6 +137,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 literal|"cla_id"
@@ -198,6 +202,11 @@ block|}
 block|}
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|id
 specifier|protected
 name|Id
@@ -206,6 +215,11 @@ decl_stmt|;
 comment|/** Is this an active agreement contributors can use. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|active
 specifier|protected
 name|boolean
@@ -214,6 +228,11 @@ decl_stmt|;
 comment|/** Does this agreement require the {@link Account} to have contact details? */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|requireContactInformation
 specifier|protected
 name|boolean
@@ -222,6 +241,11 @@ decl_stmt|;
 comment|/** Does this agreement automatically verify new accounts? */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|autoVerify
 specifier|protected
 name|boolean
@@ -231,6 +255,10 @@ comment|/** A short name for the agreement. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|,
 name|length
 operator|=
 literal|40
@@ -244,6 +272,10 @@ comment|/** A short one-line description text to appear next to the name. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -256,6 +288,11 @@ decl_stmt|;
 comment|/** Web address of the agreement documentation. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|)
 DECL|field|agreementUrl
 specifier|protected
 name|String

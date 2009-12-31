@@ -128,6 +128,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -143,6 +147,11 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|position
 specifier|protected
 name|int
@@ -236,6 +245,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -249,6 +262,11 @@ name|key
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|ancestorRevision
 specifier|protected
 name|RevId

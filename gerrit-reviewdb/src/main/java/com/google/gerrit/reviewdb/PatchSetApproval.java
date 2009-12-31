@@ -138,6 +138,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -153,6 +157,11 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|accountId
 specifier|protected
 name|Account
@@ -162,6 +171,11 @@ name|accountId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|categoryId
 specifier|protected
 name|ApprovalCategory
@@ -301,6 +315,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -315,6 +333,11 @@ decl_stmt|;
 comment|/**    * Value assigned by the user.    *<p>    * The precise meaning of "value" is up to each category.    *<p>    * In general:    *<ul>    *<li><b>&lt; 0:</b> The approval is rejected/revoked.</li>    *<li><b>= 0:</b> No indication either way is provided.</li>    *<li><b>&gt; 0:</b> The approval is approved/positive.</li>    *</ul>    * and in the negative and positive direction a magnitude can be assumed.The    * further from 0 the more assertive the approval.    */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|value
 specifier|protected
 name|short
@@ -322,6 +345,11 @@ name|value
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|granted
 specifier|protected
 name|Timestamp
@@ -330,6 +358,11 @@ decl_stmt|;
 comment|/**<i>Cached copy of Change.open.</i> */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|changeOpen
 specifier|protected
 name|boolean
@@ -339,6 +372,10 @@ comment|/**<i>Cached copy of Change.sortKey</i>; only if {@link #changeOpen} = f
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|,
 name|length
 operator|=
 literal|16

@@ -127,6 +127,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|accountId
 specifier|protected
 name|Account
@@ -136,6 +141,11 @@ name|accountId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|seq
 specifier|protected
 name|int
@@ -225,6 +235,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -241,6 +255,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|length
 operator|=
 name|Integer
@@ -254,6 +272,11 @@ name|sshPublicKey
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|valid
 specifier|protected
 name|boolean

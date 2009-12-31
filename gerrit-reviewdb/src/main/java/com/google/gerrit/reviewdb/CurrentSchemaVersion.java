@@ -147,6 +147,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|length
 operator|=
 literal|1
@@ -230,6 +234,11 @@ return|;
 block|}
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|singleton
 specifier|protected
 name|Key
@@ -238,6 +247,11 @@ decl_stmt|;
 comment|/** Current version number of the schema. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|versionNbr
 specifier|public
 specifier|transient

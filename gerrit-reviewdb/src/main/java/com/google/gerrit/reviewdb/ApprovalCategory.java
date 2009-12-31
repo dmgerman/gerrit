@@ -287,6 +287,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|length
 operator|=
 literal|4
@@ -372,6 +376,11 @@ block|}
 comment|/** Internal short unique identifier for this category. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|categoryId
 specifier|protected
 name|Id
@@ -381,6 +390,10 @@ comment|/** Unique name for this category, shown in the web interface to users. 
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|length
 operator|=
 literal|20
@@ -394,6 +407,10 @@ comment|/** Abbreviated form of {@link #name} for display in very wide tables. *
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|,
 name|length
 operator|=
 literal|4
@@ -410,6 +427,11 @@ decl_stmt|;
 comment|/**    * Order of this category within the Approvals table when presented.    *<p>    * If< 0 (e.g. -1) this category is not shown in the Approvals table but is    * instead considered to be an action that the user might be able to perform,    * e.g. "Submit".    *<p>    * If>= 0 this category is shown in the Approvals table, sorted along with    * its siblings by<code>position, name</code>.    */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|position
 specifier|protected
 name|short
@@ -418,6 +440,11 @@ decl_stmt|;
 comment|/** Identity of the function used to aggregate the category's value. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|)
 DECL|field|functionName
 specifier|protected
 name|String
@@ -426,6 +453,11 @@ decl_stmt|;
 comment|/** If set, the minimum score is copied during patch set replacement. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|)
 DECL|field|copyMinScore
 specifier|protected
 name|boolean

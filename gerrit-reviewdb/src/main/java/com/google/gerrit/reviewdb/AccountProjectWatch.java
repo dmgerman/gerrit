@@ -127,6 +127,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|accountId
 specifier|protected
 name|Account
@@ -136,6 +141,11 @@ name|accountId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|projectName
 specifier|protected
 name|Project
@@ -249,6 +259,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -263,6 +277,11 @@ decl_stmt|;
 comment|/** Automatically send email notifications of new changes? */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|notifyNewChanges
 specifier|protected
 name|boolean
@@ -271,6 +290,11 @@ decl_stmt|;
 comment|/** Automatically receive comments published to this project */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|notifyAllComments
 specifier|protected
 name|boolean
@@ -279,6 +303,11 @@ decl_stmt|;
 comment|/** Automatically receive changes submitted to this project */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|notifySubmittedChanges
 specifier|protected
 name|boolean

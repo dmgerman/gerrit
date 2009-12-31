@@ -174,6 +174,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|id
 specifier|protected
 name|int
@@ -295,6 +300,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|length
 operator|=
 literal|60
@@ -689,15 +698,20 @@ unit|}
 comment|/** Locally assigned unique identifier of the change */
 end_comment
 
-begin_decl_stmt
+begin_expr_stmt
 unit|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|changeId
 specifier|protected
 name|Id
 name|changeId
-decl_stmt|;
-end_decl_stmt
+expr_stmt|;
+end_expr_stmt
 
 begin_comment
 comment|/** Globally assigned unique identifier of the change */
@@ -706,6 +720,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|changeKey
 specifier|protected
 name|Key
@@ -720,6 +739,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 annotation|@
 name|RowVersion
 DECL|field|rowVersion
@@ -736,6 +760,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|createdOn
 specifier|protected
 name|Timestamp
@@ -750,6 +779,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|)
 DECL|field|lastUpdatedOn
 specifier|protected
 name|Timestamp
@@ -765,6 +799,10 @@ begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|,
 name|length
 operator|=
 literal|16
@@ -780,6 +818,10 @@ begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|,
 name|name
 operator|=
 literal|"owner_account_id"
@@ -800,6 +842,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|)
 DECL|field|dest
 specifier|protected
 name|Branch
@@ -816,6 +863,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|9
+argument_list|)
 DECL|field|open
 specifier|protected
 name|boolean
@@ -830,6 +882,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|10
+argument_list|)
 DECL|field|status
 specifier|protected
 name|char
@@ -844,6 +901,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|11
+argument_list|)
 DECL|field|nbrPatchSets
 specifier|protected
 name|int
@@ -858,6 +920,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|12
+argument_list|)
 DECL|field|currentPatchSetId
 specifier|protected
 name|int
@@ -872,6 +939,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|13
+argument_list|)
 DECL|field|subject
 specifier|protected
 name|String

@@ -213,6 +213,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|id
 specifier|protected
 name|int
@@ -301,6 +306,11 @@ block|}
 block|}
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|accountId
 specifier|protected
 name|Id
@@ -309,6 +319,11 @@ decl_stmt|;
 comment|/** Date and time the user registered with the review server. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|registeredOn
 specifier|protected
 name|Timestamp
@@ -318,6 +333,10 @@ comment|/** Full name of the user ("Given-name Surname" style). */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -331,6 +350,10 @@ comment|/** Email address the user prefers to be contacted through. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -344,6 +367,10 @@ comment|/** Username to authenticate as through SSH connections. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -357,6 +384,10 @@ comment|/** When did the user last give us contact information? Null if never. *
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -370,6 +401,10 @@ comment|/** This user's preferences */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|,
 name|name
 operator|=
 name|Column

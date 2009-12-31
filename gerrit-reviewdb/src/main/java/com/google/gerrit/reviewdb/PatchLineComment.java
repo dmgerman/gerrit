@@ -138,6 +138,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -154,6 +158,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|length
 operator|=
 literal|40
@@ -360,6 +368,10 @@ begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -380,6 +392,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|lineNbr
 specifier|protected
 name|int
@@ -395,6 +412,10 @@ begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|,
 name|name
 operator|=
 literal|"author_id"
@@ -415,6 +436,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|writtenOn
 specifier|protected
 name|Timestamp
@@ -429,6 +455,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|)
 DECL|field|status
 specifier|protected
 name|char
@@ -443,6 +474,11 @@ end_comment
 begin_decl_stmt
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|)
 DECL|field|side
 specifier|protected
 name|short
@@ -458,6 +494,10 @@ begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -476,13 +516,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** The parent of this comment, or null if this is the first comment on this line */
+comment|/**    * The parent of this comment, or null if this is the first comment on this    * line    */
 end_comment
 
 begin_decl_stmt
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|,
 name|length
 operator|=
 literal|40

@@ -137,6 +137,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|changeId
 specifier|protected
 name|Change
@@ -147,6 +152,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|length
 operator|=
 literal|40
@@ -244,6 +253,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -259,6 +272,10 @@ comment|/** Who wrote this comment; null if it was written by the Gerrit system.
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|name
 operator|=
 literal|"author_id"
@@ -277,6 +294,11 @@ decl_stmt|;
 comment|/** When this comment was drafted. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|writtenOn
 specifier|protected
 name|Timestamp
@@ -286,6 +308,10 @@ comment|/** The text left by the user. */
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|,
 name|notNull
 operator|=
 literal|false

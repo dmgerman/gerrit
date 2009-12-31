@@ -167,6 +167,11 @@ literal|1L
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
 DECL|field|changeId
 specifier|protected
 name|Change
@@ -176,6 +181,11 @@ name|changeId
 decl_stmt|;
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|)
 DECL|field|patchSetId
 specifier|protected
 name|int
@@ -427,6 +437,10 @@ block|}
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
 name|name
 operator|=
 name|Column
@@ -441,6 +455,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
 name|notNull
 operator|=
 literal|false
@@ -453,6 +471,10 @@ decl_stmt|;
 annotation|@
 name|Column
 argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|,
 name|name
 operator|=
 literal|"uploader_account_id"
@@ -467,6 +489,11 @@ decl_stmt|;
 comment|/** When this patch set was first introduced onto the change. */
 annotation|@
 name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|)
 DECL|field|createdOn
 specifier|protected
 name|Timestamp
