@@ -757,17 +757,6 @@ operator|new
 name|Project
 argument_list|(
 name|newProjectNameKey
-argument_list|,
-operator|new
-name|Project
-operator|.
-name|Id
-argument_list|(
-name|db
-operator|.
-name|nextProjectId
-argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|newProject

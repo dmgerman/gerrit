@@ -325,6 +325,21 @@ operator|.
 name|Id
 name|registeredGroupId
 decl_stmt|;
+comment|/** Identity of the project  */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|)
+DECL|field|wildProjectName
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|wildProjectName
+decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
 name|SystemConfig

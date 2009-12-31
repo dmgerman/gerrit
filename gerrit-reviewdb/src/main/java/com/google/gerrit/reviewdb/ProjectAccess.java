@@ -134,20 +134,6 @@ name|ResultSet
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|SecondaryKey
-import|;
-end_import
-
 begin_interface
 DECL|interface|ProjectAccess
 specifier|public
@@ -176,23 +162,6 @@ name|Project
 operator|.
 name|NameKey
 name|name
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|SecondaryKey
-argument_list|(
-literal|"projectId"
-argument_list|)
-DECL|method|get (Project.Id id)
-name|Project
-name|get
-parameter_list|(
-name|Project
-operator|.
-name|Id
-name|id
 parameter_list|)
 throws|throws
 name|OrmException

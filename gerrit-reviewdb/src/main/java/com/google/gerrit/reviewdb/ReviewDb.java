@@ -336,16 +336,6 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
-comment|/** Next unique id for a {@link Project}. */
-annotation|@
-name|Sequence
-DECL|method|nextProjectId ()
-name|int
-name|nextProjectId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 comment|/** Next unique id for a {@link Change}. */
 annotation|@
 name|Sequence

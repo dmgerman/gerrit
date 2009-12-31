@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|Dispatcher
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Dispatcher
+name|Gerrit
 import|;
 end_import
 
@@ -123,6 +123,22 @@ operator|.
 name|ui
 operator|.
 name|AccountScreen
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Hyperlink
 import|;
 end_import
 
@@ -253,22 +269,6 @@ operator|.
 name|client
 operator|.
 name|History
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|Hyperlink
 import|;
 end_import
 
@@ -775,7 +775,7 @@ block|{
 return|return
 name|item
 operator|.
-name|getId
+name|getNameKey
 argument_list|()
 return|;
 block|}
