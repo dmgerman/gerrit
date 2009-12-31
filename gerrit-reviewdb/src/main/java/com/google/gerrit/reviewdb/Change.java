@@ -1325,12 +1325,25 @@ comment|/**    * Allocate a new PatchSet id within this change.    *<p>    *<b>N
 end_comment
 
 begin_function
-DECL|method|newPatchSetId ()
+DECL|method|nextPatchSetId ()
+specifier|public
+name|void
+name|nextPatchSetId
+parameter_list|()
+block|{
+operator|++
+name|nbrPatchSets
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|currPatchSetId ()
 specifier|public
 name|PatchSet
 operator|.
 name|Id
-name|newPatchSetId
+name|currPatchSetId
 parameter_list|()
 block|{
 return|return
@@ -1341,7 +1354,6 @@ name|Id
 argument_list|(
 name|changeId
 argument_list|,
-operator|++
 name|nbrPatchSets
 argument_list|)
 return|;

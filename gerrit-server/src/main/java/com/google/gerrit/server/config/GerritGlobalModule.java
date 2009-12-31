@@ -410,7 +410,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -426,7 +426,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GitRepositoryManager
+name|LocalDiskRepositoryManager
 import|;
 end_import
 
@@ -459,22 +459,6 @@ operator|.
 name|git
 operator|.
 name|MergeQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|PatchSetImporter
 import|;
 end_import
 
@@ -1226,15 +1210,6 @@ operator|.
 name|in
 argument_list|(
 name|SINGLETON
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|PatchSetImporter
-operator|.
-name|Factory
-operator|.
-name|class
 argument_list|)
 expr_stmt|;
 name|bind

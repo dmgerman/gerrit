@@ -727,15 +727,6 @@ block|}
 block|}
 comment|// If we have any older user names, remove them.
 comment|//
-if|if
-condition|(
-operator|!
-name|old
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
 name|db
 operator|.
 name|accountExternalIds
@@ -764,7 +755,6 @@ name|getSchemeRest
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|accountCache
 operator|.
