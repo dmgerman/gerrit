@@ -1041,8 +1041,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|selector
-operator|.
 name|select
 argument_list|(
 name|req
@@ -1279,6 +1277,48 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|select (final HttpServletRequest req)
+specifier|private
+name|Permutation
+name|select
+parameter_list|(
+specifier|final
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+if|if
+condition|(
+literal|"0"
+operator|.
+name|equals
+argument_list|(
+name|req
+operator|.
+name|getParameter
+argument_list|(
+literal|"s"
+argument_list|)
+argument_list|)
+condition|)
+block|{
+comment|// If s=0 is used in the URL, the user has explicitly asked us
+comment|// to not perform selection on the server side, perhaps due to
+comment|// it incorrectly guessing their user agent.
+comment|//
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|selector
+operator|.
+name|select
+argument_list|(
+name|req
+argument_list|)
+return|;
 block|}
 DECL|method|concat (byte[] p1, byte[] p2, byte[] p3)
 specifier|private
