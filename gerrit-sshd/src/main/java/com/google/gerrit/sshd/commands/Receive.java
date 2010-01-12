@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|ChangeHookRunner
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -1431,6 +1445,13 @@ DECL|field|patchSetInfoFactory
 specifier|private
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|field|hooks
+specifier|private
+name|ChangeHookRunner
+name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
@@ -5401,6 +5422,15 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|hooks
+operator|.
+name|doPatchsetCreatedHook
+argument_list|(
+name|change
+argument_list|,
+name|ps
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isReviewer (final FooterLine candidateFooterLine)
 specifier|private
@@ -7141,6 +7171,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|hooks
+operator|.
+name|doPatchsetCreatedHook
+argument_list|(
+name|result
+operator|.
+name|change
+argument_list|,
+name|ps
+argument_list|)
+expr_stmt|;
 block|}
 specifier|final
 name|RefUpdate
@@ -9212,6 +9253,24 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|hooks
+operator|.
+name|doChangeMergedHook
+argument_list|(
+name|result
+operator|.
+name|change
+argument_list|,
+name|currentUser
+operator|.
+name|getAccount
+argument_list|()
+argument_list|,
+name|result
+operator|.
+name|patchSet
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|insertAncestors (PatchSet.Id id, RevCommit src)
