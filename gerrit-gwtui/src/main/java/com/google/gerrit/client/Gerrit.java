@@ -825,6 +825,15 @@ specifier|final
 name|SystemInfoService
 name|SYSTEM_SVC
 decl_stmt|;
+DECL|field|SESSION_COOKIE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SESSION_COOKIE
+init|=
+literal|"GerritAccount"
+decl_stmt|;
 DECL|field|myHost
 specifier|private
 specifier|static
@@ -1268,6 +1277,27 @@ argument_list|()
 expr_stmt|;
 break|break;
 block|}
+block|}
+DECL|method|deleteSessionCookie ()
+specifier|static
+name|void
+name|deleteSessionCookie
+parameter_list|()
+block|{
+name|Cookies
+operator|.
+name|removeCookie
+argument_list|(
+name|SESSION_COOKIE
+argument_list|)
+expr_stmt|;
+name|myAccount
+operator|=
+literal|null
+expr_stmt|;
+name|refreshMenuBar
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|onModuleLoad ()
 specifier|public
@@ -1800,7 +1830,7 @@ name|Cookies
 operator|.
 name|getCookie
 argument_list|(
-literal|"GerritAccount"
+name|SESSION_COOKIE
 argument_list|)
 return|;
 block|}

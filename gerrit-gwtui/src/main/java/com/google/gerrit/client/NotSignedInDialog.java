@@ -365,6 +365,11 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
+name|Gerrit
+operator|.
+name|deleteSessionCookie
+argument_list|()
+expr_stmt|;
 name|hide
 argument_list|()
 expr_stmt|;
