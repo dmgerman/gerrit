@@ -76,6 +76,16 @@ name|TestCase
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
 begin_class
 DECL|class|AddressTest
 specifier|public
@@ -550,6 +560,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testToHeaderString_NameEmail6 ()
+specifier|public
+name|void
+name|testToHeaderString_NameEmail6
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"=?UTF-8?Q?A_=E2=82=AC_B?=<a@a>"
+argument_list|,
+name|format
+argument_list|(
+literal|"A \u20ac B"
+argument_list|,
+literal|"a@a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|testToHeaderString_Email1 ()
 specifier|public
 name|void
@@ -603,6 +632,8 @@ name|String
 name|email
 parameter_list|)
 block|{
+try|try
+block|{
 return|return
 operator|new
 name|Address
@@ -615,6 +646,23 @@ operator|.
 name|toHeaderString
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Cannot encode address"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class
