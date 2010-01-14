@@ -180,6 +180,16 @@ name|String
 name|chunkNext
 parameter_list|()
 function_decl|;
+DECL|method|commentPrev ()
+name|String
+name|commentPrev
+parameter_list|()
+function_decl|;
+DECL|method|commentNext ()
+name|String
+name|commentNext
+parameter_list|()
+function_decl|;
 DECL|method|fileList ()
 name|String
 name|fileList
