@@ -1242,7 +1242,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|sysInjector
+name|webInjector
 operator|.
 name|createChildInjector
 argument_list|(
