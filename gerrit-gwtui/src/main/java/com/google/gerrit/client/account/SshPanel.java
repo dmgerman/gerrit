@@ -926,7 +926,7 @@ operator|.
 name|addKeyPressHandler
 argument_list|(
 operator|new
-name|SshUserNameValidator
+name|UserNameValidator
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -957,7 +957,7 @@ operator|.
 name|setReadOnly
 argument_list|(
 operator|!
-name|canEditSshUserName
+name|canEditUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -970,7 +970,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|buttonChangeSshUserName
+name|buttonChangeUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -978,7 +978,7 @@ name|changeUserName
 operator|.
 name|setVisible
 argument_list|(
-name|canEditSshUserName
+name|canEditUserName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1104,7 +1104,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|sshUserName
+name|userName
 argument_list|()
 argument_list|,
 name|userNameRow
@@ -1695,10 +1695,10 @@ name|body
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|canEditSshUserName ()
+DECL|method|canEditUserName ()
 specifier|private
 name|boolean
-name|canEditSshUserName
+name|canEditUserName
 parameter_list|()
 block|{
 return|return
@@ -1823,7 +1823,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|canEditSshUserName
+name|canEditUserName
 argument_list|()
 condition|)
 block|{
@@ -2021,7 +2021,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|invalidSshUserName
+name|invalidUserName
 argument_list|()
 argument_list|)
 operator|.
@@ -2935,11 +2935,11 @@ name|show
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|SshUserNameValidator
+DECL|class|UserNameValidator
 specifier|private
 specifier|final
 class|class
-name|SshUserNameValidator
+name|UserNameValidator
 implements|implements
 name|KeyPressHandler
 block|{

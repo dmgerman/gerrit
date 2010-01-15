@@ -205,19 +205,19 @@ name|String
 name|buttonAddSshKey
 parameter_list|()
 function_decl|;
-DECL|method|sshUserName ()
+DECL|method|userName ()
 name|String
-name|sshUserName
+name|userName
 parameter_list|()
 function_decl|;
-DECL|method|buttonChangeSshUserName ()
+DECL|method|buttonChangeUserName ()
 name|String
-name|buttonChangeSshUserName
+name|buttonChangeUserName
 parameter_list|()
 function_decl|;
-DECL|method|invalidSshUserName ()
+DECL|method|invalidUserName ()
 name|String
-name|invalidSshUserName
+name|invalidUserName
 parameter_list|()
 function_decl|;
 DECL|method|sshKeyInvalid ()
