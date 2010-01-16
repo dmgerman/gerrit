@@ -344,6 +344,22 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
+name|args4j
+operator|.
+name|SocketAddressHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
 name|commands
 operator|.
 name|DefaultCommandModule
@@ -558,15 +574,6 @@ name|SshModule
 extends|extends
 name|FactoryModule
 block|{
-DECL|field|NAME
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|NAME
-init|=
-literal|"Gerrit Code Review"
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|configure ()
@@ -672,7 +679,7 @@ argument_list|(
 operator|new
 name|DispatchCommandProvider
 argument_list|(
-name|NAME
+literal|""
 argument_list|,
 name|Commands
 operator|.
@@ -1007,6 +1014,17 @@ operator|.
 name|class
 argument_list|,
 name|ProjectControlHandler
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|registerOptionHandler
+argument_list|(
+name|SocketAddress
+operator|.
+name|class
+argument_list|,
+name|SocketAddressHandler
 operator|.
 name|class
 argument_list|)

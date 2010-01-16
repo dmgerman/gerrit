@@ -122,6 +122,20 @@ name|DispatchCommandProvider
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|SuExec
+import|;
+end_import
+
 begin_comment
 comment|/** Register the basic commands any Gerrit server should support. */
 end_comment
@@ -386,6 +400,18 @@ name|git
 argument_list|,
 literal|"receive-pack"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|command
+argument_list|(
+literal|"suexec"
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|SuExec
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}

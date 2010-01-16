@@ -481,6 +481,8 @@ operator|new
 name|Context
 argument_list|(
 name|sd
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|Context
@@ -546,6 +548,8 @@ operator|new
 name|Context
 argument_list|(
 name|sd
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 specifier|final

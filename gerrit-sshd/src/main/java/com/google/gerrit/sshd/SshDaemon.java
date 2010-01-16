@@ -1072,7 +1072,7 @@ init|=
 literal|22
 decl_stmt|;
 DECL|field|DEFAULT_PORT
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int

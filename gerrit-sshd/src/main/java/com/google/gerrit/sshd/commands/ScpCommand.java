@@ -287,35 +287,17 @@ name|error
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|setCommandLine (final String line)
+DECL|method|setArguments (final String[] args)
 specifier|public
 name|void
-name|setCommandLine
+name|setArguments
 parameter_list|(
-specifier|final
-name|String
-name|line
-parameter_list|)
-block|{
-name|super
-operator|.
-name|setCommandLine
-argument_list|(
-name|line
-argument_list|)
-expr_stmt|;
 specifier|final
 name|String
 index|[]
 name|args
-init|=
-name|line
-operator|.
-name|split
-argument_list|(
-literal|" "
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 name|root
 operator|=
 literal|""
