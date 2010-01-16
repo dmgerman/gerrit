@@ -603,6 +603,11 @@ name|String
 name|noLineLineNumber
 parameter_list|()
 function_decl|;
+DECL|method|noborder ()
+name|String
+name|noborder
+parameter_list|()
+function_decl|;
 DECL|method|patchBrowserPopup ()
 name|String
 name|patchBrowserPopup
@@ -801,6 +806,11 @@ function_decl|;
 DECL|method|sshPanelUsername ()
 name|String
 name|sshPanelUsername
+parameter_list|()
+function_decl|;
+DECL|method|sshPanelPassword ()
+name|String
+name|sshPanelPassword
 parameter_list|()
 function_decl|;
 DECL|method|topmenu ()

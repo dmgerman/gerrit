@@ -327,6 +327,22 @@ specifier|protected
 name|String
 name|emailAddress
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|4
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|password
+specifier|protected
+name|String
+name|password
+decl_stmt|;
 comment|/**<i>computed value</i> is this identity trusted by the site administrator? */
 DECL|field|trusted
 specifier|protected
@@ -501,6 +517,30 @@ argument_list|)
 else|:
 literal|null
 return|;
+block|}
+DECL|method|getPassword ()
+specifier|public
+name|String
+name|getPassword
+parameter_list|()
+block|{
+return|return
+name|password
+return|;
+block|}
+DECL|method|setPassword (String p)
+specifier|public
+name|void
+name|setPassword
+parameter_list|(
+name|String
+name|p
+parameter_list|)
+block|{
+name|password
+operator|=
+name|p
+expr_stmt|;
 block|}
 DECL|method|isTrusted ()
 specifier|public

@@ -210,9 +210,19 @@ name|String
 name|userName
 parameter_list|()
 function_decl|;
+DECL|method|password ()
+name|String
+name|password
+parameter_list|()
+function_decl|;
 DECL|method|buttonChangeUserName ()
 name|String
 name|buttonChangeUserName
+parameter_list|()
+function_decl|;
+DECL|method|buttonGeneratePassword ()
+name|String
+name|buttonGeneratePassword
 parameter_list|()
 function_decl|;
 DECL|method|invalidUserName ()

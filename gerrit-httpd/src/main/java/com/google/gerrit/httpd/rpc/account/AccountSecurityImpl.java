@@ -428,6 +428,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|GeneratePassword
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|Realm
 import|;
 end_import
@@ -772,6 +788,14 @@ specifier|final
 name|boolean
 name|useContactInfo
 decl_stmt|;
+DECL|field|generatePasswordFactory
+specifier|private
+specifier|final
+name|GeneratePassword
+operator|.
+name|Factory
+name|generatePasswordFactory
+decl_stmt|;
 DECL|field|changeUserNameFactory
 specifier|private
 specifier|final
@@ -806,7 +830,7 @@ name|myGroupsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final Realm r, final Provider<IdentifiedUser> u, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final AccountManager am, final ChangeUserName.CurrentUser changeUserNameFactory, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final MyGroupsFactory.Factory myGroupsFactory)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final Realm r, final Provider<IdentifiedUser> u, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final AccountManager am, final GeneratePassword.Factory generatePasswordFactory, final ChangeUserName.CurrentUser changeUserNameFactory, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final MyGroupsFactory.Factory myGroupsFactory)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -863,6 +887,12 @@ parameter_list|,
 specifier|final
 name|AccountManager
 name|am
+parameter_list|,
+specifier|final
+name|GeneratePassword
+operator|.
+name|Factory
+name|generatePasswordFactory
 parameter_list|,
 specifier|final
 name|ChangeUserName
@@ -942,6 +972,12 @@ name|contactStore
 operator|.
 name|isEnabled
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|generatePasswordFactory
+operator|=
+name|generatePasswordFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1343,10 +1379,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|changeSshUserName (final String newName, final AsyncCallback<VoidResult> callback)
+DECL|method|changeUserName (final String newName, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void
-name|changeSshUserName
+name|changeUserName
 parameter_list|(
 specifier|final
 name|String
@@ -1404,6 +1440,43 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|generatePassword (AccountExternalId.Key key, AsyncCallback<AccountExternalId> callback)
+specifier|public
+name|void
+name|generatePassword
+parameter_list|(
+name|AccountExternalId
+operator|.
+name|Key
+name|key
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|callback
+parameter_list|)
+block|{
+name|Handler
+operator|.
+name|wrap
+argument_list|(
+name|generatePasswordFactory
+operator|.
+name|create
+argument_list|(
+name|key
+argument_list|)
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|callback
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|myExternalIds (AsyncCallback<List<AccountExternalId>> callback)
 specifier|public

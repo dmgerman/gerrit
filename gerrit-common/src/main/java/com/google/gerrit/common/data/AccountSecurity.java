@@ -334,9 +334,9 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|changeSshUserName (String newName, AsyncCallback<VoidResult> callback)
+DECL|method|changeUserName (String newName, AsyncCallback<VoidResult> callback)
 name|void
-name|changeSshUserName
+name|changeUserName
 parameter_list|(
 name|String
 name|newName
@@ -344,6 +344,24 @@ parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|generatePassword (AccountExternalId.Key key, AsyncCallback<AccountExternalId> callback)
+name|void
+name|generatePassword
+parameter_list|(
+name|AccountExternalId
+operator|.
+name|Key
+name|key
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|AccountExternalId
 argument_list|>
 name|callback
 parameter_list|)

@@ -455,6 +455,15 @@ operator|new
 name|FlowPanel
 argument_list|()
 decl_stmt|;
+name|body
+operator|.
+name|add
+argument_list|(
+operator|new
+name|UsernamePanel
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|identites
 operator|=
 operator|new
@@ -629,16 +638,6 @@ operator|.
 name|onLoad
 argument_list|()
 expr_stmt|;
-name|refresh
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|refresh ()
-specifier|private
-name|void
-name|refresh
-parameter_list|()
-block|{
 name|Util
 operator|.
 name|ACCOUNT_SEC
