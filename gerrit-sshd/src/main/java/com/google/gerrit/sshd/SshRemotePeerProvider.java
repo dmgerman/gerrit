@@ -70,20 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -114,16 +100,26 @@ name|Singleton
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketAddress
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
-DECL|class|SshCurrentUserProvider
+DECL|class|SshRemotePeerProvider
 class|class
-name|SshCurrentUserProvider
+name|SshRemotePeerProvider
 implements|implements
 name|Provider
 argument_list|<
-name|CurrentUser
+name|SocketAddress
 argument_list|>
 block|{
 DECL|field|session
@@ -137,8 +133,8 @@ name|session
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshCurrentUserProvider (final Provider<SshSession> s)
-name|SshCurrentUserProvider
+DECL|method|SshRemotePeerProvider (final Provider<SshSession> s)
+name|SshRemotePeerProvider
 parameter_list|(
 specifier|final
 name|Provider
@@ -157,7 +153,7 @@ annotation|@
 name|Override
 DECL|method|get ()
 specifier|public
-name|CurrentUser
+name|SocketAddress
 name|get
 parameter_list|()
 block|{
@@ -167,7 +163,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getCurrentUser
+name|getRemoteAddress
 argument_list|()
 return|;
 block|}
