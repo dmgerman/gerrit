@@ -240,6 +240,11 @@ name|String
 name|sshKeyComment
 parameter_list|()
 function_decl|;
+DECL|method|sshKeyStatus ()
+name|String
+name|sshKeyStatus
+parameter_list|()
+function_decl|;
 DECL|method|addSshKeyPanelHeader ()
 name|String
 name|addSshKeyPanelHeader
