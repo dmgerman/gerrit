@@ -1167,6 +1167,21 @@ name|AccountExternalId
 name|k
 parameter_list|)
 block|{
+if|if
+condition|(
+name|k
+operator|.
+name|isScheme
+argument_list|(
+name|AccountExternalId
+operator|.
+name|SCHEME_USERNAME
+argument_list|)
+condition|)
+block|{
+comment|// Don't display the username as an identity here.
+return|return;
+block|}
 specifier|final
 name|FlexCellFormatter
 name|fmt
