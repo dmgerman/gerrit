@@ -288,9 +288,14 @@ name|Constants
 operator|.
 name|encodeASCII
 argument_list|(
-literal|"gerrit: no shell available\n"
+literal|"gerrit: no shell available\r\n"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|err
+operator|.
+name|flush
+argument_list|()
 expr_stmt|;
 name|in
 operator|.
