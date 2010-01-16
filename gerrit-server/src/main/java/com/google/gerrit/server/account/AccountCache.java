@@ -101,6 +101,15 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
+DECL|method|getByUsername (String username)
+specifier|public
+name|AccountState
+name|getByUsername
+parameter_list|(
+name|String
+name|username
+parameter_list|)
+function_decl|;
 DECL|method|evict (Account.Id accountId)
 specifier|public
 name|void
@@ -110,6 +119,15 @@ name|Account
 operator|.
 name|Id
 name|accountId
+parameter_list|)
+function_decl|;
+DECL|method|evictByUsername (String username)
+specifier|public
+name|void
+name|evictByUsername
+parameter_list|(
+name|String
+name|username
 parameter_list|)
 function_decl|;
 block|}

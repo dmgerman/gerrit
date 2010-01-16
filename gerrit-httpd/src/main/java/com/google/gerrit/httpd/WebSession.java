@@ -900,6 +900,42 @@ name|saveCookie
 argument_list|()
 expr_stmt|;
 block|}
+comment|/** Set the user account for this current request only. */
+DECL|method|setUserAccountId (Account.Id id)
+name|void
+name|setUserAccountId
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|key
+operator|=
+operator|new
+name|Key
+argument_list|(
+literal|"id:"
+operator|+
+name|id
+argument_list|)
+expr_stmt|;
+name|val
+operator|=
+operator|new
+name|Val
+argument_list|(
+name|id
+argument_list|,
+literal|0
+argument_list|,
+literal|false
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|logout ()
 specifier|public
 name|void

@@ -732,6 +732,20 @@ name|sshd
 operator|.
 name|server
 operator|.
+name|PasswordAuthenticator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
 name|PublickeyAuthenticator
 import|;
 end_import
@@ -747,6 +761,22 @@ operator|.
 name|server
 operator|.
 name|UserAuth
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|sshd
+operator|.
+name|server
+operator|.
+name|auth
+operator|.
+name|UserAuthPassword
 import|;
 end_import
 
@@ -1120,12 +1150,16 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshDaemon (final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, final IdGenerator idGenerator, @GerritServerConfig final Config cfg, final SshLog sshLog)
+DECL|method|SshDaemon (final CommandFactory commandFactory, final PasswordAuthenticator passAuth, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, final IdGenerator idGenerator, @GerritServerConfig final Config cfg, final SshLog sshLog)
 name|SshDaemon
 parameter_list|(
 specifier|final
 name|CommandFactory
 name|commandFactory
+parameter_list|,
+specifier|final
+name|PasswordAuthenticator
+name|passAuth
 parameter_list|,
 specifier|final
 name|PublickeyAuthenticator
@@ -1234,6 +1268,8 @@ argument_list|()
 expr_stmt|;
 name|initUserAuth
 argument_list|(
+name|passAuth
+argument_list|,
 name|userAuth
 argument_list|)
 expr_stmt|;
@@ -3128,11 +3164,15 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|initUserAuth (final PublickeyAuthenticator pubkey)
+DECL|method|initUserAuth (final PasswordAuthenticator pass, final PublickeyAuthenticator pubkey)
 specifier|private
 name|void
 name|initUserAuth
 parameter_list|(
+specifier|final
+name|PasswordAuthenticator
+name|pass
+parameter_list|,
 specifier|final
 name|PublickeyAuthenticator
 name|pubkey
@@ -3155,7 +3195,18 @@ name|UserAuthPublicKey
 operator|.
 name|Factory
 argument_list|()
+argument_list|,
+operator|new
+name|UserAuthPassword
+operator|.
+name|Factory
+argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|setPasswordAuthenticator
+argument_list|(
+name|pass
 argument_list|)
 expr_stmt|;
 name|setPublickeyAuthenticator
