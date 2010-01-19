@@ -1463,7 +1463,6 @@ argument_list|(
 name|rememberId
 argument_list|)
 expr_stmt|;
-specifier|final
 name|String
 name|last
 init|=
@@ -1491,6 +1490,44 @@ name|last
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|last
+operator|.
+name|startsWith
+argument_list|(
+literal|"\""
+argument_list|)
+operator|&&
+name|last
+operator|.
+name|endsWith
+argument_list|(
+literal|"\""
+argument_list|)
+condition|)
+block|{
+comment|// Dequote the value. We shouldn't have to do this, but
+comment|// something is causing some Google Account tokens to get
+comment|// wrapped up in double quotes when obtained from the cookie.
+comment|//
+name|last
+operator|=
+name|last
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|,
+name|last
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|2
+argument_list|)
+expr_stmt|;
+block|}
 name|providerId
 operator|.
 name|setText
