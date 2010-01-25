@@ -265,6 +265,11 @@ name|String
 name|reviewed
 parameter_list|()
 function_decl|;
+DECL|method|download ()
+name|String
+name|download
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
