@@ -108,7 +108,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|Dispatcher
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Dispatcher
+name|Gerrit
 import|;
 end_import
 
@@ -565,22 +565,6 @@ operator|.
 name|shared
 operator|.
 name|HandlerRegistration
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|History
 import|;
 end_import
 
