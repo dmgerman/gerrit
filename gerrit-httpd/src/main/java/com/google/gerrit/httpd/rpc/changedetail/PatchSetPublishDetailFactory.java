@@ -270,7 +270,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -411,6 +411,22 @@ operator|.
 name|project
 operator|.
 name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|RefControl
 import|;
 end_import
 
@@ -1030,7 +1046,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|computeAllowed (final Set<AccountGroup.Id> am, final Collection<ProjectRight> list)
+DECL|method|computeAllowed (final Set<AccountGroup.Id> am, final Collection<RefRight> list)
 specifier|private
 name|void
 name|computeAllowed
@@ -1047,7 +1063,7 @@ parameter_list|,
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|list
 parameter_list|)
@@ -1055,7 +1071,7 @@ block|{
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 name|r
 range|:
 name|list
@@ -1071,6 +1087,30 @@ argument_list|(
 name|r
 operator|.
 name|getAccountGroupId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|RefControl
+operator|.
+name|matches
+argument_list|(
+name|change
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|r
+operator|.
+name|getRefPattern
 argument_list|()
 argument_list|)
 condition|)

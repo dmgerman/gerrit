@@ -290,6 +290,11 @@ name|String
 name|columnRightRange
 parameter_list|()
 function_decl|;
+DECL|method|columnRefName ()
+name|String
+name|columnRefName
+parameter_list|()
+function_decl|;
 DECL|method|columnBranchName ()
 name|String
 name|columnBranchName

@@ -118,7 +118,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -247,7 +247,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project project, Collection<ProjectRight> localRights, InheritedRights inheritedRights)
+DECL|method|create (Project project, Collection<RefRight> localRights, InheritedRights inheritedRights)
 name|ProjectState
 name|create
 parameter_list|(
@@ -256,7 +256,7 @@ name|project
 parameter_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|localRights
 parameter_list|,
@@ -273,7 +273,7 @@ block|{
 DECL|method|get ()
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|get
 parameter_list|()
@@ -304,7 +304,7 @@ specifier|private
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|localRights
 decl_stmt|;
@@ -327,7 +327,7 @@ name|owners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState (final AnonymousUser anonymousUser, @WildProjectName final Project.NameKey wildProject, @Assisted final Project project, @Assisted final Collection<ProjectRight> rights, @Assisted final InheritedRights inheritedRights)
+DECL|method|ProjectState (final AnonymousUser anonymousUser, @WildProjectName final Project.NameKey wildProject, @Assisted final Project project, @Assisted final Collection<RefRight> rights, @Assisted final InheritedRights inheritedRights)
 specifier|protected
 name|ProjectState
 parameter_list|(
@@ -354,7 +354,7 @@ name|Assisted
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|rights
 parameter_list|,
@@ -416,7 +416,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 name|right
 range|:
 name|rights
@@ -481,7 +481,7 @@ DECL|method|getLocalRights ()
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|getLocalRights
 parameter_list|()
@@ -495,7 +495,7 @@ DECL|method|getInheritedRights ()
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|getInheritedRights
 parameter_list|()

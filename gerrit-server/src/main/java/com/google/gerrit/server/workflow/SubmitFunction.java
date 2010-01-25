@@ -120,7 +120,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -222,7 +222,7 @@ block|{
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 name|pr
 range|:
 name|state

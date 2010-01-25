@@ -132,7 +132,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -2015,6 +2015,8 @@ argument_list|()
 decl_stmt|;
 name|assertDefaultRight
 argument_list|(
+literal|"refs/*"
+argument_list|,
 name|config
 operator|.
 name|anonymousGroupId
@@ -2053,6 +2055,8 @@ argument_list|()
 decl_stmt|;
 name|assertDefaultRight
 argument_list|(
+literal|"refs/*"
+argument_list|,
 name|config
 operator|.
 name|registeredGroupId
@@ -2068,6 +2072,8 @@ argument_list|)
 expr_stmt|;
 name|assertDefaultRight
 argument_list|(
+literal|"refs/heads/*"
+argument_list|,
 name|config
 operator|.
 name|registeredGroupId
@@ -2105,6 +2111,8 @@ argument_list|()
 decl_stmt|;
 name|assertDefaultRight
 argument_list|(
+literal|"refs/*"
+argument_list|,
 name|config
 operator|.
 name|adminGroupId
@@ -2119,11 +2127,15 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertDefaultRight (final AccountGroup.Id group, final ApprovalCategory.Id category, int min, int max)
+DECL|method|assertDefaultRight (final String pattern, final AccountGroup.Id group, final ApprovalCategory.Id category, int min, int max)
 specifier|private
 name|void
 name|assertDefaultRight
 parameter_list|(
+specifier|final
+name|String
+name|pattern
+parameter_list|,
 specifier|final
 name|AccountGroup
 operator|.
@@ -2165,7 +2177,7 @@ name|Project
 name|all
 decl_stmt|;
 specifier|final
-name|ProjectRight
+name|RefRight
 name|right
 decl_stmt|;
 name|cfg
@@ -2202,14 +2214,13 @@ name|right
 operator|=
 name|c
 operator|.
-name|projectRights
+name|refRights
 argument_list|()
 operator|.
 name|get
 argument_list|(
-comment|//
 operator|new
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|(
@@ -2217,6 +2228,14 @@ name|all
 operator|.
 name|getNameKey
 argument_list|()
+argument_list|,
+operator|new
+name|RefRight
+operator|.
+name|RefPattern
+argument_list|(
+name|pattern
+argument_list|)
 argument_list|,
 name|category
 argument_list|,

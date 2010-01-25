@@ -455,11 +455,11 @@ name|c
 return|;
 block|}
 block|}
-DECL|field|projectControl
+DECL|field|refControl
 specifier|private
 specifier|final
-name|ProjectControl
-name|projectControl
+name|RefControl
+name|refControl
 decl_stmt|;
 DECL|field|change
 specifier|private
@@ -467,12 +467,12 @@ specifier|final
 name|Change
 name|change
 decl_stmt|;
-DECL|method|ChangeControl (final ProjectControl p, final Change c)
+DECL|method|ChangeControl (final RefControl r, final Change c)
 name|ChangeControl
 parameter_list|(
 specifier|final
-name|ProjectControl
-name|p
+name|RefControl
+name|r
 parameter_list|,
 specifier|final
 name|Change
@@ -481,9 +481,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|projectControl
+name|refControl
 operator|=
-name|p
+name|r
 expr_stmt|;
 name|this
 operator|.
@@ -502,12 +502,14 @@ return|return
 operator|new
 name|ChangeControl
 argument_list|(
-name|projectControl
+name|getRefControl
+argument_list|()
 operator|.
 name|forAnonymousUser
 argument_list|()
 argument_list|,
-name|change
+name|getChange
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -525,15 +527,27 @@ return|return
 operator|new
 name|ChangeControl
 argument_list|(
-name|projectControl
+name|getRefControl
+argument_list|()
 operator|.
 name|forUser
 argument_list|(
 name|who
 argument_list|)
 argument_list|,
-name|change
+name|getChange
+argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|getRefControl ()
+specifier|public
+name|RefControl
+name|getRefControl
+parameter_list|()
+block|{
+return|return
+name|refControl
 return|;
 block|}
 DECL|method|getCurrentUser ()
@@ -543,7 +557,7 @@ name|getCurrentUser
 parameter_list|()
 block|{
 return|return
-name|getProjectControl
+name|getRefControl
 argument_list|()
 operator|.
 name|getCurrentUser
@@ -557,7 +571,11 @@ name|getProjectControl
 parameter_list|()
 block|{
 return|return
-name|projectControl
+name|getRefControl
+argument_list|()
+operator|.
+name|getProjectControl
+argument_list|()
 return|;
 block|}
 DECL|method|getProject ()
@@ -592,7 +610,7 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
-name|getProjectControl
+name|getRefControl
 argument_list|()
 operator|.
 name|isVisible
@@ -611,6 +629,13 @@ name|isOwner
 argument_list|()
 comment|// owner (aka creator) of the change can abandon
 operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// branch owner can abandon
+operator|||
 name|getProjectControl
 argument_list|()
 operator|.
@@ -624,6 +649,21 @@ operator|.
 name|isAdministrator
 argument_list|()
 comment|// site administers are god
+return|;
+block|}
+comment|/** Can this user add a patch set to this change? */
+DECL|method|canAddPatchSet ()
+specifier|public
+name|boolean
+name|canAddPatchSet
+parameter_list|()
+block|{
+return|return
+name|getRefControl
+argument_list|()
+operator|.
+name|canUpload
+argument_list|()
 return|;
 block|}
 comment|/** Is this user the owner of the change? */

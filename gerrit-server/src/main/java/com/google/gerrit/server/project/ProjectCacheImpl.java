@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -542,7 +542,7 @@ name|Override
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|get
 parameter_list|()
@@ -617,7 +617,7 @@ block|}
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|rights
 init|=
@@ -627,7 +627,7 @@ name|unmodifiableCollection
 argument_list|(
 name|db
 operator|.
-name|projectRights
+name|refRights
 argument_list|()
 operator|.
 name|byProject

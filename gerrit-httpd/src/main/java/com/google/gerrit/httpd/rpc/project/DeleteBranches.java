@@ -532,13 +532,13 @@ condition|(
 operator|!
 name|projectControl
 operator|.
-name|canDeleteRef
+name|controlForRef
 argument_list|(
 name|k
-operator|.
-name|get
-argument_list|()
 argument_list|)
+operator|.
+name|canDelete
+argument_list|()
 condition|)
 block|{
 throw|throw

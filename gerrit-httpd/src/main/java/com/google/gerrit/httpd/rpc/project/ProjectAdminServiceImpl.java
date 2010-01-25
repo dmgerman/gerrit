@@ -152,7 +152,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -235,14 +235,6 @@ operator|.
 name|Factory
 name|addBranchFactory
 decl_stmt|;
-DECL|field|addProjectRightFactory
-specifier|private
-specifier|final
-name|AddProjectRight
-operator|.
-name|Factory
-name|addProjectRightFactory
-decl_stmt|;
 DECL|field|changeProjectSettingsFactory
 specifier|private
 specifier|final
@@ -258,14 +250,6 @@ name|DeleteBranches
 operator|.
 name|Factory
 name|deleteBranchesFactory
-decl_stmt|;
-DECL|field|deleteProjectRightsFactory
-specifier|private
-specifier|final
-name|DeleteProjectRights
-operator|.
-name|Factory
-name|deleteProjectRightsFactory
 decl_stmt|;
 DECL|field|listBranchesFactory
 specifier|private
@@ -291,9 +275,25 @@ operator|.
 name|Factory
 name|projectDetailFactory
 decl_stmt|;
+DECL|field|addRefRightFactory
+specifier|private
+specifier|final
+name|AddRefRight
+operator|.
+name|Factory
+name|addRefRightFactory
+decl_stmt|;
+DECL|field|deleteRefRightsFactory
+specifier|private
+specifier|final
+name|DeleteRefRights
+operator|.
+name|Factory
+name|deleteRefRightsFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final AddBranch.Factory addBranchFactory, final AddProjectRight.Factory addProjectRightFactory, final ChangeProjectSettings.Factory changeProjectSettingsFactory, final DeleteBranches.Factory deleteBranchesFactory, final DeleteProjectRights.Factory deleteProjectRightFactory, final ListBranches.Factory listBranchesFactory, final OwnedProjects.Factory ownedProjectsFactory, final ProjectDetailFactory.Factory projectDetailFactory)
+DECL|method|ProjectAdminServiceImpl (final AddBranch.Factory addBranchFactory, final ChangeProjectSettings.Factory changeProjectSettingsFactory, final DeleteBranches.Factory deleteBranchesFactory, final ListBranches.Factory listBranchesFactory, final OwnedProjects.Factory ownedProjectsFactory, final ProjectDetailFactory.Factory projectDetailFactory, final AddRefRight.Factory addRefRightFactory, final DeleteRefRights.Factory deleteRefRightsFactory)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -301,12 +301,6 @@ name|AddBranch
 operator|.
 name|Factory
 name|addBranchFactory
-parameter_list|,
-specifier|final
-name|AddProjectRight
-operator|.
-name|Factory
-name|addProjectRightFactory
 parameter_list|,
 specifier|final
 name|ChangeProjectSettings
@@ -319,12 +313,6 @@ name|DeleteBranches
 operator|.
 name|Factory
 name|deleteBranchesFactory
-parameter_list|,
-specifier|final
-name|DeleteProjectRights
-operator|.
-name|Factory
-name|deleteProjectRightFactory
 parameter_list|,
 specifier|final
 name|ListBranches
@@ -343,6 +331,18 @@ name|ProjectDetailFactory
 operator|.
 name|Factory
 name|projectDetailFactory
+parameter_list|,
+specifier|final
+name|AddRefRight
+operator|.
+name|Factory
+name|addRefRightFactory
+parameter_list|,
+specifier|final
+name|DeleteRefRights
+operator|.
+name|Factory
+name|deleteRefRightsFactory
 parameter_list|)
 block|{
 name|this
@@ -353,12 +353,6 @@ name|addBranchFactory
 expr_stmt|;
 name|this
 operator|.
-name|addProjectRightFactory
-operator|=
-name|addProjectRightFactory
-expr_stmt|;
-name|this
-operator|.
 name|changeProjectSettingsFactory
 operator|=
 name|changeProjectSettingsFactory
@@ -368,12 +362,6 @@ operator|.
 name|deleteBranchesFactory
 operator|=
 name|deleteBranchesFactory
-expr_stmt|;
-name|this
-operator|.
-name|deleteProjectRightsFactory
-operator|=
-name|deleteProjectRightFactory
 expr_stmt|;
 name|this
 operator|.
@@ -392,8 +380,22 @@ operator|.
 name|projectDetailFactory
 operator|=
 name|projectDetailFactory
+expr_stmt|;
+name|this
+operator|.
+name|addRefRightFactory
+operator|=
+name|addRefRightFactory
+expr_stmt|;
+name|this
+operator|.
+name|deleteRefRightsFactory
+operator|=
+name|deleteRefRightsFactory
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|ownedProjects (final AsyncCallback<List<Project>> callback)
 specifier|public
 name|void
@@ -421,6 +423,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|projectDetail (final Project.NameKey projectName, final AsyncCallback<ProjectDetail> callback)
 specifier|public
 name|void
@@ -453,6 +457,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|changeProjectSettings (final Project update, final AsyncCallback<ProjectDetail> callback)
 specifier|public
 name|void
@@ -483,7 +489,9 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteRight (final Project.NameKey projectName, final Set<ProjectRight.Key> toRemove, final AsyncCallback<VoidResult> callback)
+annotation|@
+name|Override
+DECL|method|deleteRight (final Project.NameKey projectName, final Set<RefRight.Key> toRemove, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void
 name|deleteRight
@@ -497,7 +505,7 @@ parameter_list|,
 specifier|final
 name|Set
 argument_list|<
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|>
@@ -511,7 +519,7 @@ argument_list|>
 name|callback
 parameter_list|)
 block|{
-name|deleteProjectRightsFactory
+name|deleteRefRightsFactory
 operator|.
 name|create
 argument_list|(
@@ -526,7 +534,9 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addRight (final Project.NameKey projectName, final ApprovalCategory.Id categoryId, final String groupName, final short min, final short max, final AsyncCallback<ProjectDetail> callback)
+annotation|@
+name|Override
+DECL|method|addRight (final Project.NameKey projectName, final ApprovalCategory.Id categoryId, final String groupName, final String refPattern, final short min, final short max, final AsyncCallback<ProjectDetail> callback)
 specifier|public
 name|void
 name|addRight
@@ -548,6 +558,10 @@ name|String
 name|groupName
 parameter_list|,
 specifier|final
+name|String
+name|refPattern
+parameter_list|,
+specifier|final
 name|short
 name|min
 parameter_list|,
@@ -563,7 +577,7 @@ argument_list|>
 name|callback
 parameter_list|)
 block|{
-name|addProjectRightFactory
+name|addRefRightFactory
 operator|.
 name|create
 argument_list|(
@@ -572,6 +586,8 @@ argument_list|,
 name|categoryId
 argument_list|,
 name|groupName
+argument_list|,
+name|refPattern
 argument_list|,
 name|min
 argument_list|,
@@ -584,6 +600,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|listBranches (final Project.NameKey projectName, final AsyncCallback<List<Branch>> callback)
 specifier|public
 name|void
@@ -619,6 +637,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|deleteBranch (final Project.NameKey projectName, final Set<Branch.NameKey> toRemove, final AsyncCallback<Set<Branch.NameKey>> callback)
 specifier|public
 name|void
@@ -667,6 +687,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addBranch (final Project.NameKey projectName, final String branchName, final String startingRevision, final AsyncCallback<List<Branch>> callback)
 specifier|public
 name|void

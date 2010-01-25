@@ -136,7 +136,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -446,12 +446,12 @@ block|{
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 name|r
 range|:
 name|db
 operator|.
-name|projectRights
+name|refRights
 argument_list|()
 operator|.
 name|byCategoryGroup

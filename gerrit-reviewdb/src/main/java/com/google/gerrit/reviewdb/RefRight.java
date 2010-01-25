@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -70,6 +70,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Project
+operator|.
+name|NameKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -92,17 +108,126 @@ name|CompoundKey
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|StringKey
+import|;
+end_import
+
 begin_comment
-comment|/** Grant to use an {@link ApprovalCategory} in the scope of a {@link Project}. */
+comment|/** Grant to use an {@link ApprovalCategory} in the scope of a git ref. */
 end_comment
 
 begin_class
-DECL|class|ProjectRight
+DECL|class|RefRight
 specifier|public
 specifier|final
 class|class
-name|ProjectRight
+name|RefRight
 block|{
+DECL|class|RefPattern
+specifier|public
+specifier|static
+class|class
+name|RefPattern
+extends|extends
+name|StringKey
+argument_list|<
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Key
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|)
+DECL|field|pattern
+specifier|protected
+name|String
+name|pattern
+decl_stmt|;
+DECL|method|RefPattern ()
+specifier|protected
+name|RefPattern
+parameter_list|()
+block|{     }
+DECL|method|RefPattern (final String pattern)
+specifier|public
+name|RefPattern
+parameter_list|(
+specifier|final
+name|String
+name|pattern
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pattern
+operator|=
+name|pattern
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|String
+name|get
+parameter_list|()
+block|{
+return|return
+name|pattern
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|set (String pattern)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|pattern
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pattern
+operator|=
+name|pattern
+expr_stmt|;
+block|}
+block|}
 DECL|class|Key
 specifier|public
 specifier|static
@@ -146,6 +271,18 @@ name|id
 operator|=
 literal|2
 argument_list|)
+DECL|field|refPattern
+specifier|protected
+name|RefPattern
+name|refPattern
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|3
+argument_list|)
 DECL|field|categoryId
 specifier|protected
 name|ApprovalCategory
@@ -158,7 +295,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|3
+literal|4
 argument_list|)
 DECL|field|groupId
 specifier|protected
@@ -180,6 +317,12 @@ operator|.
 name|NameKey
 argument_list|()
 expr_stmt|;
+name|refPattern
+operator|=
+operator|new
+name|RefPattern
+argument_list|()
+expr_stmt|;
 name|categoryId
 operator|=
 operator|new
@@ -197,7 +340,7 @@ name|Id
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Key (final Project.NameKey p, final ApprovalCategory.Id a, final AccountGroup.Id g)
+DECL|method|Key (final Project.NameKey projectName, final RefPattern refPattern, final ApprovalCategory.Id categoryId, final AccountGroup.Id groupId)
 specifier|public
 name|Key
 parameter_list|(
@@ -205,32 +348,48 @@ specifier|final
 name|Project
 operator|.
 name|NameKey
-name|p
+name|projectName
+parameter_list|,
+specifier|final
+name|RefPattern
+name|refPattern
 parameter_list|,
 specifier|final
 name|ApprovalCategory
 operator|.
 name|Id
-name|a
+name|categoryId
 parameter_list|,
 specifier|final
 name|AccountGroup
 operator|.
 name|Id
-name|g
+name|groupId
 parameter_list|)
 block|{
+name|this
+operator|.
 name|projectName
 operator|=
-name|p
+name|projectName
 expr_stmt|;
+name|this
+operator|.
+name|refPattern
+operator|=
+name|refPattern
+expr_stmt|;
+name|this
+operator|.
 name|categoryId
 operator|=
-name|a
+name|categoryId
 expr_stmt|;
+name|this
+operator|.
 name|groupId
 operator|=
-name|g
+name|groupId
 expr_stmt|;
 block|}
 annotation|@
@@ -295,6 +454,8 @@ name|?
 argument_list|>
 index|[]
 block|{
+name|refPattern
+operator|,
 name|categoryId
 operator|,
 name|groupId
@@ -344,30 +505,31 @@ specifier|protected
 name|short
 name|maxValue
 decl_stmt|;
-DECL|method|ProjectRight ()
+DECL|method|RefRight ()
 specifier|protected
-name|ProjectRight
+name|RefRight
 parameter_list|()
 block|{   }
-DECL|method|ProjectRight (final ProjectRight.Key k)
+DECL|method|RefRight (RefRight.Key key)
 specifier|public
-name|ProjectRight
+name|RefRight
 parameter_list|(
-specifier|final
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
-name|k
+name|key
 parameter_list|)
 block|{
+name|this
+operator|.
 name|key
 operator|=
-name|k
+name|key
 expr_stmt|;
 block|}
 DECL|method|getKey ()
 specifier|public
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 name|getKey
@@ -375,6 +537,21 @@ parameter_list|()
 block|{
 return|return
 name|key
+return|;
+block|}
+DECL|method|getRefPattern ()
+specifier|public
+name|String
+name|getRefPattern
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|refPattern
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 DECL|method|getProjectNameKey ()
@@ -386,9 +563,11 @@ name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
-name|key
+name|getKey
+argument_list|()
 operator|.
-name|projectName
+name|getProjectNameKey
+argument_list|()
 return|;
 block|}
 DECL|method|getApprovalCategoryId ()

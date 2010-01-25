@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -108,7 +108,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -249,9 +249,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|DeleteProjectRights
+DECL|class|DeleteRefRights
 class|class
-name|DeleteProjectRights
+name|DeleteRefRights
 extends|extends
 name|Handler
 argument_list|<
@@ -262,8 +262,8 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (@ssisted Project.NameKey projectName, @Assisted Set<ProjectRight.Key> toRemove)
-name|DeleteProjectRights
+DECL|method|create (@ssisted Project.NameKey projectName, @Assisted Set<RefRight.Key> toRemove)
+name|DeleteRefRights
 name|create
 parameter_list|(
 annotation|@
@@ -277,7 +277,7 @@ annotation|@
 name|Assisted
 name|Set
 argument_list|<
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|>
@@ -318,7 +318,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|>
@@ -326,8 +326,8 @@ name|toRemove
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteProjectRights (final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.NameKey projectName, @Assisted final Set<ProjectRight.Key> toRemove)
-name|DeleteProjectRights
+DECL|method|DeleteRefRights (final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.NameKey projectName, @Assisted final Set<RefRight.Key> toRemove)
+name|DeleteRefRights
 parameter_list|(
 specifier|final
 name|ProjectControl
@@ -356,7 +356,7 @@ name|Assisted
 specifier|final
 name|Set
 argument_list|<
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|>
@@ -420,7 +420,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 name|k
@@ -454,7 +454,7 @@ block|}
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 name|k
@@ -463,12 +463,12 @@ name|toRemove
 control|)
 block|{
 specifier|final
-name|ProjectRight
+name|RefRight
 name|m
 init|=
 name|db
 operator|.
-name|projectRights
+name|refRights
 argument_list|()
 operator|.
 name|get
@@ -485,7 +485,7 @@ condition|)
 block|{
 name|db
 operator|.
-name|projectRights
+name|refRights
 argument_list|()
 operator|.
 name|delete

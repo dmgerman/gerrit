@@ -169,7 +169,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|AddProjectRight
+name|AddRefRight
 operator|.
 name|Factory
 operator|.
@@ -196,7 +196,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|DeleteProjectRights
+name|DeleteRefRights
 operator|.
 name|Factory
 operator|.

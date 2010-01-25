@@ -206,7 +206,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -285,6 +285,22 @@ operator|.
 name|project
 operator|.
 name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|RefControl
 import|;
 end_import
 
@@ -520,7 +536,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
 name|allRights
@@ -534,12 +550,12 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|projectRights
+DECL|field|RefRights
 specifier|private
 name|Map
 argument_list|<
@@ -549,10 +565,10 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
-name|projectRights
+name|RefRights
 decl_stmt|;
 DECL|field|inheritedRights
 specifier|private
@@ -564,7 +580,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
 name|inheritedRights
@@ -975,13 +991,13 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-DECL|method|getProjectRights (final ApprovalType at)
+DECL|method|getRefRights (final ApprovalType at)
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
-name|getProjectRights
+name|getRefRights
 parameter_list|(
 specifier|final
 name|ApprovalType
@@ -989,7 +1005,7 @@ name|at
 parameter_list|)
 block|{
 return|return
-name|getProjectRights
+name|getRefRights
 argument_list|(
 name|id
 argument_list|(
@@ -998,13 +1014,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getProjectRights (final ApprovalCategory.Id id)
+DECL|method|getRefRights (final ApprovalCategory.Id id)
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
-name|getProjectRights
+name|getRefRights
 parameter_list|(
 specifier|final
 name|ApprovalCategory
@@ -1015,12 +1031,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|projectRights
+name|RefRights
 operator|==
 literal|null
 condition|)
 block|{
-name|projectRights
+name|RefRights
 operator|=
 name|index
 argument_list|(
@@ -1034,11 +1050,11 @@ block|}
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|l
 init|=
-name|projectRights
+name|RefRights
 operator|.
 name|get
 argument_list|(
@@ -1055,7 +1071,7 @@ else|:
 name|Collections
 operator|.
 expr|<
-name|ProjectRight
+name|RefRight
 operator|>
 name|emptySet
 argument_list|()
@@ -1065,7 +1081,7 @@ DECL|method|getWildcardRights (final ApprovalType at)
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|getWildcardRights
 parameter_list|(
@@ -1088,7 +1104,7 @@ DECL|method|getWildcardRights (final ApprovalCategory.Id id)
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|getWildcardRights
 parameter_list|(
@@ -1120,7 +1136,7 @@ block|}
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|l
 init|=
@@ -1141,7 +1157,7 @@ else|:
 name|Collections
 operator|.
 expr|<
-name|ProjectRight
+name|RefRight
 operator|>
 name|emptySet
 argument_list|()
@@ -1151,7 +1167,7 @@ DECL|method|getAllRights (final ApprovalType at)
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|getAllRights
 parameter_list|(
@@ -1174,7 +1190,7 @@ DECL|method|getAllRights (final ApprovalCategory.Id id)
 specifier|public
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|getAllRights
 parameter_list|(
@@ -1187,7 +1203,7 @@ parameter_list|)
 block|{
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|l
 init|=
@@ -1210,7 +1226,7 @@ operator|=
 operator|new
 name|ArrayList
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|()
 expr_stmt|;
@@ -1218,7 +1234,7 @@ name|l
 operator|.
 name|addAll
 argument_list|(
-name|getProjectRights
+name|getRefRights
 argument_list|(
 name|id
 argument_list|)
@@ -1257,16 +1273,15 @@ return|return
 name|l
 return|;
 block|}
-DECL|method|index ( final Collection<ProjectRight> rights)
+DECL|method|index (final Collection<RefRight> rights)
 specifier|private
-specifier|static
 name|Map
 argument_list|<
 name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
 name|index
@@ -1274,7 +1289,7 @@ parameter_list|(
 specifier|final
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|rights
 parameter_list|)
@@ -1288,7 +1303,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
 name|r
@@ -1304,7 +1319,7 @@ name|Id
 argument_list|,
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|>
 argument_list|()
@@ -1312,15 +1327,36 @@ expr_stmt|;
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 name|pr
 range|:
 name|rights
 control|)
 block|{
+if|if
+condition|(
+name|RefControl
+operator|.
+name|matches
+argument_list|(
+name|change
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|pr
+operator|.
+name|getRefPattern
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|Collection
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|l
 init|=
@@ -1346,7 +1382,7 @@ operator|=
 operator|new
 name|ArrayList
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 argument_list|()
 expr_stmt|;
@@ -1370,6 +1406,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|r
@@ -1475,7 +1512,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Normalize the approval record to be inside the maximum range permitted by    * the ProjectRights granted to groups the account is a member of.    *<p>    * If multiple ProjectRights are matched (assigned to different groups the    * account is a member of) the lowest minValue and the highest maxValue of the    * union of them is used.    *<p>    * If the record's value was modified, its automatically marked as dirty.    */
+comment|/**    * Normalize the approval record to be inside the maximum range permitted by    * the RefRights granted to groups the account is a member of.    *<p>    * If multiple RefRights are matched (assigned to different groups the account    * is a member of) the lowest minValue and the highest maxValue of the union    * of them is used.    *<p>    * If the record's value was modified, its automatically marked as dirty.    */
 DECL|method|applyRightFloor (final PatchSetApproval a)
 specifier|public
 name|void
@@ -1514,7 +1551,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|ProjectRight
+name|RefRight
 name|r
 range|:
 name|getAllRights

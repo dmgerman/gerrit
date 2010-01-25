@@ -134,7 +134,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -303,7 +303,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|deleteRight (Project.NameKey projectName, Set<ProjectRight.Key> ids, AsyncCallback<VoidResult> callback)
+DECL|method|deleteRight (Project.NameKey projectName, Set<RefRight.Key> ids, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteRight
 parameter_list|(
@@ -314,7 +314,7 @@ name|projectName
 parameter_list|,
 name|Set
 argument_list|<
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|>
@@ -329,7 +329,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addRight (Project.NameKey projectName, ApprovalCategory.Id categoryId, String groupName, short min, short max, AsyncCallback<ProjectDetail> callback)
+DECL|method|addRight (Project.NameKey projectName, ApprovalCategory.Id categoryId, String groupName, String refName, short min, short max, AsyncCallback<ProjectDetail> callback)
 name|void
 name|addRight
 parameter_list|(
@@ -345,6 +345,9 @@ name|categoryId
 parameter_list|,
 name|String
 name|groupName
+parameter_list|,
+name|String
+name|refName
 parameter_list|,
 name|short
 name|min

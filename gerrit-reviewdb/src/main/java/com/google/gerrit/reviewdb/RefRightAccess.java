@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -135,16 +135,16 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|ProjectRightAccess
+DECL|interface|RefRightAccess
 specifier|public
 interface|interface
-name|ProjectRightAccess
+name|RefRightAccess
 extends|extends
 name|Access
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|,
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
 argument_list|>
@@ -154,14 +154,14 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (ProjectRight.Key key)
-name|ProjectRight
+DECL|method|get (RefRight.Key refRight)
+name|RefRight
 name|get
 parameter_list|(
-name|ProjectRight
+name|RefRight
 operator|.
 name|Key
-name|key
+name|refRight
 parameter_list|)
 throws|throws
 name|OrmException
@@ -171,17 +171,17 @@ name|Query
 argument_list|(
 literal|"WHERE key.projectName = ?"
 argument_list|)
-DECL|method|byProject (Project.NameKey name)
+DECL|method|byProject (Project.NameKey project)
 name|ResultSet
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|byProject
 parameter_list|(
 name|Project
 operator|.
 name|NameKey
-name|name
+name|project
 parameter_list|)
 throws|throws
 name|OrmException
@@ -194,7 +194,7 @@ argument_list|)
 DECL|method|byCategoryGroup (ApprovalCategory.Id cat, AccountGroup.Id group)
 name|ResultSet
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|byCategoryGroup
 parameter_list|(

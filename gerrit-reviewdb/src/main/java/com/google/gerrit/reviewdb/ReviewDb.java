@@ -261,13 +261,6 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
-DECL|method|projectRights ()
-name|ProjectRightAccess
-name|projectRights
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
 DECL|method|changes ()
 name|ChangeAccess
 name|changes
@@ -306,6 +299,13 @@ name|Relation
 DECL|method|patchComments ()
 name|PatchLineCommentAccess
 name|patchComments
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|refRights ()
+name|RefRightAccess
+name|refRights
 parameter_list|()
 function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */

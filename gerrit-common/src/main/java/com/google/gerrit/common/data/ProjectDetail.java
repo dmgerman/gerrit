@@ -104,7 +104,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ProjectRight
+name|RefRight
 import|;
 end_import
 
@@ -155,7 +155,7 @@ DECL|field|rights
 specifier|public
 name|List
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|rights
 decl_stmt|;
@@ -201,7 +201,7 @@ operator|=
 name|g
 expr_stmt|;
 block|}
-DECL|method|setRights (final List<ProjectRight> r)
+DECL|method|setRights (final List<RefRight> r)
 specifier|public
 name|void
 name|setRights
@@ -209,7 +209,7 @@ parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|ProjectRight
+name|RefRight
 argument_list|>
 name|r
 parameter_list|)
