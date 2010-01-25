@@ -833,8 +833,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Comment Added Hook.      *      * @param change The change itself.      * @param account The gerrit user who commited the change.      * @param comment The comment given.      * @param approvals Map of Approval Categories and Scores      */
-DECL|method|doCommentAddedHook (final Change change, final Account account, final String comment, final Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals)
+comment|/**      * Fire the Comment Added Hook.      *      * @param change The change itself.      * @param patchSet The patchset this comment is related to.      * @param account The gerrit user who commited the change.      * @param comment The comment given.      * @param approvals Map of Approval Categories and Scores      */
+DECL|method|doCommentAddedHook (final Change change, final Account account, final PatchSet patchSet, final String comment, final Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals)
 specifier|public
 name|void
 name|doCommentAddedHook
@@ -846,6 +846,10 @@ parameter_list|,
 specifier|final
 name|Account
 name|account
+parameter_list|,
+specifier|final
+name|PatchSet
+name|patchSet
 parameter_list|,
 specifier|final
 name|String
@@ -964,6 +968,26 @@ name|getDisplayName
 argument_list|(
 name|account
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|args
+operator|.
+name|add
+argument_list|(
+literal|"--commit"
+argument_list|)
+expr_stmt|;
+name|args
+operator|.
+name|add
+argument_list|(
+name|patchSet
+operator|.
+name|getRevision
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|args

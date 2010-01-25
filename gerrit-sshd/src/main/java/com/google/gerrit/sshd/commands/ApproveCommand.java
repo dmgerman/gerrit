@@ -1425,6 +1425,16 @@ operator|.
 name|getAccount
 argument_list|()
 argument_list|,
+name|db
+operator|.
+name|patchSets
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|patchSetId
+argument_list|)
+argument_list|,
 name|changeComment
 argument_list|,
 name|approvalsMap
