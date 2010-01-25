@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|Dispatcher
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Dispatcher
+name|Gerrit
 import|;
 end_import
 

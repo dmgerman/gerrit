@@ -80,7 +80,23 @@ name|reviewdb
 operator|.
 name|AccountExternalId
 operator|.
-name|*
+name|SCHEME_GERRIT
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|ParamertizedString
 import|;
 end_import
 
@@ -151,22 +167,6 @@ operator|.
 name|reviewdb
 operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|ParamertizedString
 import|;
 end_import
 
