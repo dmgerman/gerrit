@@ -110,22 +110,6 @@ name|Patch
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|History
-import|;
-end_import
-
 begin_class
 DECL|class|PatchLink
 specifier|public
