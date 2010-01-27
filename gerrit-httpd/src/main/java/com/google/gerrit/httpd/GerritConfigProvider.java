@@ -294,6 +294,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ProvisionException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -343,6 +355,30 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|PatternSyntaxException
 import|;
 end_import
 
@@ -829,6 +865,48 @@ argument_list|,
 literal|"match"
 argument_list|)
 decl_stmt|;
+comment|// Unfortunately this validation isn't entirely complete. Clients
+comment|// can have exceptions trying to evaluate the pattern if they don't
+comment|// support a token used, even if the server does support the token.
+comment|//
+comment|// At the minimum, we can trap problems related to unmatched groups.
+try|try
+block|{
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+name|match
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|PatternSyntaxException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Invalid pattern \""
+operator|+
+name|match
+operator|+
+literal|"\" in commentlink."
+operator|+
+name|name
+operator|+
+literal|".match: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|String
 name|link
 init|=
