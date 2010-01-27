@@ -270,6 +270,16 @@ name|String
 name|download
 parameter_list|()
 function_decl|;
+DECL|method|buttonReplyDone ()
+name|String
+name|buttonReplyDone
+parameter_list|()
+function_decl|;
+DECL|method|cannedReplyDone ()
+name|String
+name|cannedReplyDone
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
