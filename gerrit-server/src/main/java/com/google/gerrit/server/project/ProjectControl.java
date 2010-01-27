@@ -664,6 +664,33 @@ name|isAdministrator
 argument_list|()
 return|;
 block|}
+comment|/** Does this user have ownership on at least one reference name? */
+DECL|method|isOwnerAnyRef ()
+specifier|public
+name|boolean
+name|isOwnerAnyRef
+parameter_list|()
+block|{
+return|return
+name|canPerformOnAnyRef
+argument_list|(
+name|ApprovalCategory
+operator|.
+name|OWN
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|1
+argument_list|)
+operator|||
+name|getCurrentUser
+argument_list|()
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
 comment|/** @return true if the user can upload to at least one reference */
 DECL|method|canUploadToAtLeastOneRef ()
 specifier|public

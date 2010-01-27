@@ -402,6 +402,19 @@ return|return
 name|projectName
 return|;
 block|}
+DECL|method|getRefPattern ()
+specifier|public
+name|String
+name|getRefPattern
+parameter_list|()
+block|{
+return|return
+name|refPattern
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()
