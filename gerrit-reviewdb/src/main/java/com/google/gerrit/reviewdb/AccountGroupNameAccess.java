@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -106,6 +106,34 @@ name|PrimaryKey
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Query
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|ResultSet
+import|;
+end_import
+
 begin_interface
 DECL|interface|AccountGroupNameAccess
 specifier|public
@@ -134,6 +162,43 @@ name|AccountGroup
 operator|.
 name|NameKey
 name|name
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"ORDER BY name"
+argument_list|)
+DECL|method|all ()
+name|ResultSet
+argument_list|<
+name|AccountGroupName
+argument_list|>
+name|all
+parameter_list|()
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE name.name>= ? AND name.name<= ? ORDER BY name LIMIT ?"
+argument_list|)
+DECL|method|suggestByName (String nameA, String nameB, int limit)
+name|ResultSet
+argument_list|<
+name|AccountGroupName
+argument_list|>
+name|suggestByName
+parameter_list|(
+name|String
+name|nameA
+parameter_list|,
+name|String
+name|nameB
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 throws|throws
 name|OrmException

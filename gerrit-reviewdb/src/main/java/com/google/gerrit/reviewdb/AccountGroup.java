@@ -155,10 +155,6 @@ argument_list|(
 name|id
 operator|=
 literal|1
-argument_list|,
-name|length
-operator|=
-literal|40
 argument_list|)
 DECL|field|name
 specifier|protected

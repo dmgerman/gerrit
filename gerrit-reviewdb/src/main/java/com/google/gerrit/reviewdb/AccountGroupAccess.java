@@ -188,9 +188,6 @@ name|OrmException
 function_decl|;
 annotation|@
 name|Query
-argument_list|(
-literal|"ORDER BY name"
-argument_list|)
 DECL|method|all ()
 name|ResultSet
 argument_list|<
@@ -217,30 +214,6 @@ name|AccountGroup
 operator|.
 name|Id
 name|groupId
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE name.name>= ? AND name.name<= ? ORDER BY name LIMIT ?"
-argument_list|)
-DECL|method|suggestByName (String nameA, String nameB, int limit)
-name|ResultSet
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|suggestByName
-parameter_list|(
-name|String
-name|nameA
-parameter_list|,
-name|String
-name|nameB
-parameter_list|,
-name|int
-name|limit
 parameter_list|)
 throws|throws
 name|OrmException

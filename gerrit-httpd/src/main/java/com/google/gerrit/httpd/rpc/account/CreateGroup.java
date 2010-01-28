@@ -489,9 +489,7 @@ init|=
 operator|new
 name|AccountGroupName
 argument_list|(
-name|key
-argument_list|,
-name|id
+name|group
 argument_list|)
 decl_stmt|;
 name|db

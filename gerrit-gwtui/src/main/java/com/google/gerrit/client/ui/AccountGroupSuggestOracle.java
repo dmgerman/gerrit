@@ -106,7 +106,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountGroup
+name|AccountGroupName
 import|;
 end_import
 
@@ -226,7 +226,7 @@ name|GerritCallback
 argument_list|<
 name|List
 argument_list|<
-name|AccountGroup
+name|AccountGroupName
 argument_list|>
 argument_list|>
 argument_list|()
@@ -238,7 +238,7 @@ parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|AccountGroup
+name|AccountGroupName
 argument_list|>
 name|result
 parameter_list|)
@@ -265,7 +265,7 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|AccountGroup
+name|AccountGroupName
 name|p
 range|:
 name|result
@@ -318,14 +318,14 @@ block|{
 DECL|field|info
 specifier|private
 specifier|final
-name|AccountGroup
+name|AccountGroupName
 name|info
 decl_stmt|;
-DECL|method|AccountGroupSuggestion (final AccountGroup k)
+DECL|method|AccountGroupSuggestion (final AccountGroupName k)
 name|AccountGroupSuggestion
 parameter_list|(
 specifier|final
-name|AccountGroup
+name|AccountGroupName
 name|k
 parameter_list|)
 block|{

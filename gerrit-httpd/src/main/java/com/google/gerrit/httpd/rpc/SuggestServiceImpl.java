@@ -136,7 +136,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountGroup
+name|AccountGroupName
 import|;
 end_import
 
@@ -930,7 +930,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|suggestAccountGroup (final String query, final int limit, final AsyncCallback<List<AccountGroup>> callback)
+DECL|method|suggestAccountGroup (final String query, final int limit, final AsyncCallback<List<AccountGroupName>> callback)
 specifier|public
 name|void
 name|suggestAccountGroup
@@ -948,7 +948,7 @@ name|AsyncCallback
 argument_list|<
 name|List
 argument_list|<
-name|AccountGroup
+name|AccountGroupName
 argument_list|>
 argument_list|>
 name|callback
@@ -963,7 +963,7 @@ name|Action
 argument_list|<
 name|List
 argument_list|<
-name|AccountGroup
+name|AccountGroupName
 argument_list|>
 argument_list|>
 argument_list|()
@@ -971,7 +971,7 @@ block|{
 specifier|public
 name|List
 argument_list|<
-name|AccountGroup
+name|AccountGroupName
 argument_list|>
 name|run
 parameter_list|(
@@ -1024,7 +1024,7 @@ decl_stmt|;
 return|return
 name|db
 operator|.
-name|accountGroups
+name|accountGroupNames
 argument_list|()
 operator|.
 name|suggestByName

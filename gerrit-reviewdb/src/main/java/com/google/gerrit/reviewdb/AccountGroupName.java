@@ -149,6 +149,42 @@ operator|=
 name|groupId
 expr_stmt|;
 block|}
+DECL|method|AccountGroupName (AccountGroup group)
+specifier|public
+name|AccountGroupName
+parameter_list|(
+name|AccountGroup
+name|group
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|group
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|getNameKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|getNameKey ()
 specifier|public
 name|AccountGroup
@@ -172,6 +208,22 @@ block|{
 return|return
 name|groupId
 return|;
+block|}
+DECL|method|setId (AccountGroup.Id id)
+specifier|public
+name|void
+name|setId
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|groupId
+operator|=
+name|id
+expr_stmt|;
 block|}
 block|}
 end_class
