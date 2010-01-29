@@ -503,34 +503,29 @@ name|HEAD
 argument_list|)
 condition|)
 block|{
-comment|// The branch pointed to by HEAD doesn't exist yet. Fake
-comment|// that it exists by returning a Ref with no ObjectId.
+comment|// The branch pointed to by HEAD doesn't exist yet, so getAllRefs
+comment|// filtered it out. If we ask for it individually we can find the
+comment|// underlying target and put it into the map anyway.
 comment|//
 try|try
 block|{
-specifier|final
-name|String
+name|Ref
 name|head
 init|=
 name|db
 operator|.
-name|getFullBranch
-argument_list|()
+name|getRef
+argument_list|(
+name|Constants
+operator|.
+name|HEAD
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|head
 operator|!=
 literal|null
-operator|&&
-name|head
-operator|.
-name|startsWith
-argument_list|(
-name|Constants
-operator|.
-name|R_REFS
-argument_list|)
 condition|)
 block|{
 name|all
@@ -541,23 +536,7 @@ name|Constants
 operator|.
 name|HEAD
 argument_list|,
-operator|new
-name|Ref
-argument_list|(
-name|Ref
-operator|.
-name|Storage
-operator|.
-name|LOOSE
-argument_list|,
-name|Constants
-operator|.
-name|HEAD
-argument_list|,
 name|head
-argument_list|,
-literal|null
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -593,23 +572,14 @@ name|equals
 argument_list|(
 name|ref
 operator|.
-name|getOrigName
-argument_list|()
-argument_list|)
-operator|&&
-operator|!
-name|ref
-operator|.
-name|getOrigName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|ref
-operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|&&
+name|ref
+operator|.
+name|isSymbolic
+argument_list|()
 condition|)
 block|{
 comment|// HEAD is a symbolic reference to another branch, instead of
@@ -628,6 +598,9 @@ name|String
 name|target
 init|=
 name|ref
+operator|.
+name|getTarget
+argument_list|()
 operator|.
 name|getName
 argument_list|()
