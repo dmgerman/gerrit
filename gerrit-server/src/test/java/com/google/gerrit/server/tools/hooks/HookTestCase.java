@@ -196,7 +196,7 @@ comment|// ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd.scproot.hooks
+DECL|package|com.google.gerrit.server.tools.hooks
 package|package
 name|com
 operator|.
@@ -204,9 +204,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|scproot
+name|tools
 operator|.
 name|hooks
 package|;
@@ -319,7 +319,7 @@ specifier|final
 name|String
 name|scproot
 init|=
-literal|"com/google/gerrit/sshd/scproot"
+literal|"com/google/gerrit/server/tools/root"
 decl_stmt|;
 specifier|final
 name|String

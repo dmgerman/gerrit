@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd.scproot.hooks
+DECL|package|com.google.gerrit.server.tools.hooks
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|scproot
+name|tools
 operator|.
 name|hooks
 package|;

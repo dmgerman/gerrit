@@ -878,6 +878,41 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Construct a new empty document. */
+DECL|method|newDocument ()
+specifier|public
+specifier|static
+name|Document
+name|newDocument
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+name|newBuilder
+argument_list|()
+operator|.
+name|newDocument
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|ParserConfigurationException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Cannot create new document"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/** Clone a document so it can be safely modified on a per-request basis. */
 DECL|method|clone (final Document doc)
 specifier|public
