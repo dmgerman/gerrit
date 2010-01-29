@@ -1490,7 +1490,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Push Annotated Tag"
+literal|"Push Tag"
 argument_list|,
 name|cat
 operator|.
@@ -1550,11 +1550,6 @@ comment|//
 name|ApprovalCategory
 operator|.
 name|PUSH_TAG_ANNOTATED
-argument_list|,
-comment|//
-name|ApprovalCategory
-operator|.
-name|PUSH_TAG_ANY
 argument_list|)
 expr_stmt|;
 block|}
