@@ -78,13 +78,17 @@ comment|/** An unknown access path, probably should not be special. */
 DECL|enumConstant|UNKNOWN
 name|UNKNOWN
 block|,
-comment|/** Access through the web interface. */
-DECL|enumConstant|WEB
-name|WEB
+comment|/** Access through the web UI. */
+DECL|enumConstant|WEB_UI
+name|WEB_UI
 block|,
-comment|/** Access through an SSH command, e.g. git fetch or push. */
-DECL|enumConstant|SSH
-name|SSH
+comment|/** Access through an SSH command that is not invoked by Git. */
+DECL|enumConstant|SSH_COMMAND
+name|SSH_COMMAND
+block|,
+comment|/** Access from a Git client using any Git protocol. */
+DECL|enumConstant|GIT
+name|GIT
 block|,
 comment|/** Access through replication */
 DECL|enumConstant|REPLICATION

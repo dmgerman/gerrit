@@ -248,7 +248,7 @@ name|super
 argument_list|(
 name|AccessPath
 operator|.
-name|SSH
+name|SSH_COMMAND
 argument_list|,
 name|authConfig
 argument_list|)

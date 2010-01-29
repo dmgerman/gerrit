@@ -719,7 +719,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|WEB
+name|WEB_UI
 case|:
 name|owner
 operator|=
@@ -943,7 +943,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|WEB
+name|WEB_UI
 case|:
 return|return
 name|isOwner
@@ -957,7 +957,7 @@ name|PUSH_HEAD_REPLACE
 argument_list|)
 return|;
 case|case
-name|SSH
+name|GIT
 case|:
 return|return
 name|canPerform

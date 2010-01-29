@@ -611,7 +611,7 @@ name|create
 argument_list|(
 name|AccessPath
 operator|.
-name|SSH
+name|SSH_COMMAND
 argument_list|,
 operator|new
 name|Provider

@@ -500,6 +500,15 @@ operator|.
 name|RequestFactory
 name|identified
 decl_stmt|;
+DECL|field|accessPath
+specifier|private
+name|AccessPath
+name|accessPath
+init|=
+name|AccessPath
+operator|.
+name|WEB_UI
+decl_stmt|;
 DECL|field|outCookie
 specifier|private
 name|Cookie
@@ -818,9 +827,7 @@ name|identified
 operator|.
 name|create
 argument_list|(
-name|AccessPath
-operator|.
-name|WEB
+name|accessPath
 argument_list|,
 name|val
 operator|.
@@ -898,6 +905,20 @@ argument_list|)
 expr_stmt|;
 name|saveCookie
 argument_list|()
+expr_stmt|;
+block|}
+comment|/** Change the access path from the default of {@link AccessPath#WEB_UI}. */
+DECL|method|setAccessPath (AccessPath path)
+name|void
+name|setAccessPath
+parameter_list|(
+name|AccessPath
+name|path
+parameter_list|)
+block|{
+name|accessPath
+operator|=
+name|path
 expr_stmt|;
 block|}
 comment|/** Set the user account for this current request only. */
