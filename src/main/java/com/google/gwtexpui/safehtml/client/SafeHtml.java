@@ -1247,6 +1247,7 @@ return|;
 block|}
 comment|/** @return a clean HTML string safe for inclusion in any context. */
 DECL|method|asString ()
+specifier|public
 specifier|abstract
 name|String
 name|asString

@@ -95,6 +95,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|asString ()
+specifier|public
 name|String
 name|asString
 parameter_list|()
