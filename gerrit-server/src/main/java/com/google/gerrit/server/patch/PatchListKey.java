@@ -290,7 +290,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|9L
+literal|10L
 decl_stmt|;
 DECL|field|oldId
 specifier|private

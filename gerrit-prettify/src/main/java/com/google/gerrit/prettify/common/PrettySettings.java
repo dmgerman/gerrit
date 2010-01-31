@@ -108,7 +108,7 @@ parameter_list|()
 block|{
 name|showWhiteSpaceErrors
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 name|lineLength
 operator|=
