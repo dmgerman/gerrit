@@ -2366,6 +2366,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|reuse
+operator|&&
 name|displayMethod
 operator|==
 name|DisplayMethod
