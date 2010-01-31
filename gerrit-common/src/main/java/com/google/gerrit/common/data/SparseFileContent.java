@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|SafeHtml
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -183,7 +199,7 @@ expr_stmt|;
 block|}
 DECL|method|get (final int idx)
 specifier|public
-name|String
+name|SafeHtml
 name|get
 parameter_list|(
 specifier|final
@@ -216,7 +232,12 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|SafeHtml
+operator|.
+name|asis
+argument_list|(
 name|line
+argument_list|)
 return|;
 block|}
 DECL|method|contains (final int idx)
@@ -420,6 +441,31 @@ do|;
 return|return
 literal|null
 return|;
+block|}
+DECL|method|addLine (final int i, final SafeHtml content)
+specifier|public
+name|void
+name|addLine
+parameter_list|(
+specifier|final
+name|int
+name|i
+parameter_list|,
+specifier|final
+name|SafeHtml
+name|content
+parameter_list|)
+block|{
+name|addLine
+argument_list|(
+name|i
+argument_list|,
+name|content
+operator|.
+name|asString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|addLine (final int i, final String content)
 specifier|public

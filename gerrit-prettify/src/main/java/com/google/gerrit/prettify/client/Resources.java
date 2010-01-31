@@ -52,19 +52,17 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.safehtml.client.prettify
+DECL|package|com.google.gerrit.prettify.client
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
-operator|.
-name|safehtml
-operator|.
-name|client
+name|gerrit
 operator|.
 name|prettify
+operator|.
+name|client
 package|;
 end_package
 
@@ -132,16 +130,18 @@ name|TextResource
 import|;
 end_import
 
+begin_comment
+comment|/** Loads the minimized form of prettify into the client. */
+end_comment
+
 begin_interface
 DECL|interface|Resources
-specifier|public
 interface|interface
 name|Resources
 extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|public
 specifier|static
 specifier|final
 name|Resources
@@ -171,9 +171,9 @@ name|Source
 argument_list|(
 literal|"gerrit.css"
 argument_list|)
-DECL|method|css ()
-name|PrettyCss
-name|css
+DECL|method|gerrit_css ()
+name|CssResource
+name|gerrit_css
 parameter_list|()
 function_decl|;
 annotation|@

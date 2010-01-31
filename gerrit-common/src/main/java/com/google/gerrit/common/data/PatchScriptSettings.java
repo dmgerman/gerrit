@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|prettify
+operator|.
+name|common
+operator|.
+name|PrettySettings
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|AccountGeneralPreferences
@@ -176,6 +192,11 @@ specifier|protected
 name|Whitespace
 name|whitespace
 decl_stmt|;
+DECL|field|pretty
+specifier|protected
+name|PrettySettings
+name|pretty
+decl_stmt|;
 DECL|method|PatchScriptSettings ()
 specifier|public
 name|PatchScriptSettings
@@ -192,6 +213,12 @@ operator|=
 name|Whitespace
 operator|.
 name|IGNORE_NONE
+expr_stmt|;
+name|pretty
+operator|=
+operator|new
+name|PrettySettings
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|PatchScriptSettings (final PatchScriptSettings s)
@@ -214,6 +241,40 @@ operator|=
 name|s
 operator|.
 name|whitespace
+expr_stmt|;
+name|pretty
+operator|=
+operator|new
+name|PrettySettings
+argument_list|(
+name|s
+operator|.
+name|pretty
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getPrettySettings ()
+specifier|public
+name|PrettySettings
+name|getPrettySettings
+parameter_list|()
+block|{
+return|return
+name|pretty
+return|;
+block|}
+DECL|method|setPrettySettings (PrettySettings s)
+specifier|public
+name|void
+name|setPrettySettings
+parameter_list|(
+name|PrettySettings
+name|s
+parameter_list|)
+block|{
+name|pretty
+operator|=
+name|s
 expr_stmt|;
 block|}
 DECL|method|getContext ()

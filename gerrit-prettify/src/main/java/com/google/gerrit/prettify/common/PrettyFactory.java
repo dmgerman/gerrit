@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,54 +52,33 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gwtexpui.safehtml.client.prettify
+DECL|package|com.google.gerrit.prettify.common
 package|package
 name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
-operator|.
-name|safehtml
-operator|.
-name|client
+name|gerrit
 operator|.
 name|prettify
+operator|.
+name|common
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|CssResource
-import|;
-end_import
+begin_comment
+comment|/** Creates a new PrettyFormatter instance for one formatting run. */
+end_comment
 
 begin_interface
-DECL|interface|PrettyCss
+DECL|interface|PrettyFactory
 specifier|public
 interface|interface
-name|PrettyCss
-extends|extends
-name|CssResource
+name|PrettyFactory
 block|{
-DECL|method|visualtab ()
-name|String
-name|visualtab
-parameter_list|()
-function_decl|;
-DECL|method|whitespaceerror ()
-name|String
-name|whitespaceerror
+DECL|method|get ()
+name|PrettyFormatter
+name|get
 parameter_list|()
 function_decl|;
 block|}
