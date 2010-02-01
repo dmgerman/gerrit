@@ -917,11 +917,18 @@ literal|80
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|String
+name|badname
+init|=
+literal|"this-name-is-not-supposed-to-resolve-on-your-network"
+decl_stmt|;
 try|try
 block|{
 name|resolve
 argument_list|(
-literal|"invalid.name.localdomain:12"
+name|badname
+operator|+
+literal|":12"
 argument_list|,
 literal|80
 argument_list|)
@@ -940,7 +947,11 @@ parameter_list|)
 block|{
 name|assertEquals
 argument_list|(
-literal|"unknown host: invalid.name.localdomain:12"
+literal|"unknown host: "
+operator|+
+name|badname
+operator|+
+literal|":12"
 argument_list|,
 name|e
 operator|.
