@@ -395,7 +395,7 @@ name|execute
 argument_list|(
 literal|"ALTER TABLE account_group_names"
 operator|+
-literal|" ALTER COLUMN name VARCHAR(255)"
+literal|" ALTER COLUMN name VARCHAR(255) NOT NULL"
 argument_list|)
 expr_stmt|;
 block|}
