@@ -410,9 +410,9 @@ name|String
 name|abandonChangeTitle
 parameter_list|()
 function_decl|;
-DECL|method|buttonPublishCommentsBegin ()
+DECL|method|buttonReview ()
 name|String
-name|buttonPublishCommentsBegin
+name|buttonReview
 parameter_list|()
 function_decl|;
 DECL|method|buttonPublishCommentsSend ()

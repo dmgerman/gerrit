@@ -1035,7 +1035,7 @@ name|isSignedIn
 argument_list|()
 condition|)
 block|{
-name|populateCommentAction
+name|populateReviewAction
 argument_list|()
 expr_stmt|;
 if|if
@@ -2277,10 +2277,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populateCommentAction ()
+DECL|method|populateReviewAction ()
 specifier|private
 name|void
-name|populateCommentAction
+name|populateReviewAction
 parameter_list|()
 block|{
 specifier|final
@@ -2294,7 +2294,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|buttonPublishCommentsBegin
+name|buttonReview
 argument_list|()
 argument_list|)
 decl_stmt|;
