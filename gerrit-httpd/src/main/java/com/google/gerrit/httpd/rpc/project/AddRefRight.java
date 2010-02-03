@@ -721,6 +721,15 @@ operator|.
 name|refPattern
 operator|=
 name|refPattern
+operator|!=
+literal|null
+condition|?
+name|refPattern
+operator|.
+name|trim
+argument_list|()
+else|:
+literal|null
 expr_stmt|;
 if|if
 condition|(
