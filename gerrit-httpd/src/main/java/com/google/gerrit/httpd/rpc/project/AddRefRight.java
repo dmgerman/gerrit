@@ -1036,6 +1036,14 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+literal|"refs"
+operator|.
+name|equals
+argument_list|(
+name|prefix
+argument_list|)
+operator|&&
+operator|!
 name|Repository
 operator|.
 name|isValidRefName
