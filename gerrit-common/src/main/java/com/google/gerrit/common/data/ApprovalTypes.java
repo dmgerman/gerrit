@@ -110,6 +110,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 DECL|class|ApprovalTypes
 specifier|public
@@ -227,6 +237,25 @@ name|get
 argument_list|(
 name|id
 argument_list|)
+return|;
+block|}
+DECL|method|getApprovalCategories ()
+specifier|public
+name|Set
+argument_list|<
+name|ApprovalCategory
+operator|.
+name|Id
+argument_list|>
+name|getApprovalCategories
+parameter_list|()
+block|{
+return|return
+name|byCategory
+argument_list|()
+operator|.
+name|keySet
+argument_list|()
 return|;
 block|}
 DECL|method|byCategory ()
