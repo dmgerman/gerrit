@@ -1276,13 +1276,10 @@ literal|null
 condition|?
 name|rw
 operator|.
-name|parseCommit
+name|parseTree
 argument_list|(
 name|a
 argument_list|)
-operator|.
-name|getTree
-argument_list|()
 else|:
 literal|null
 decl_stmt|;
