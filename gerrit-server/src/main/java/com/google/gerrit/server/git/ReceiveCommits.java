@@ -1181,45 +1181,6 @@ name|repository
 parameter_list|)
 function_decl|;
 block|}
-DECL|interface|MessageListener
-specifier|public
-interface|interface
-name|MessageListener
-block|{
-DECL|field|DISABLED
-specifier|public
-specifier|static
-specifier|final
-name|MessageListener
-name|DISABLED
-init|=
-operator|new
-name|MessageListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|warn
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{       }
-block|}
-decl_stmt|;
-DECL|method|warn (String msg)
-name|void
-name|warn
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-block|}
 DECL|class|Capable
 specifier|public
 specifier|static
@@ -1268,15 +1229,6 @@ name|message
 return|;
 block|}
 block|}
-DECL|field|messages
-specifier|private
-name|MessageListener
-name|messages
-init|=
-name|MessageListener
-operator|.
-name|DISABLED
-decl_stmt|;
 DECL|field|reviewerId
 specifier|private
 specifier|final
@@ -1736,23 +1688,6 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Set the logger where warning messages are sent to the user. */
-DECL|method|setMessageListener (MessageListener logger)
-specifier|public
-name|void
-name|setMessageListener
-parameter_list|(
-name|MessageListener
-name|logger
-parameter_list|)
-block|{
-name|this
-operator|.
-name|messages
-operator|=
-name|logger
-expr_stmt|;
-block|}
 comment|/** Add reviewers for new (or updated) changes. */
 DECL|method|addReviewers (Collection<Account.Id> who)
 specifier|public
@@ -1893,22 +1828,6 @@ operator|.
 name|OK
 return|;
 block|}
-block|}
-comment|/** @return the set of new changes, if any were created during receive. */
-DECL|method|getNewChanges ()
-specifier|public
-name|List
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
-name|getNewChanges
-parameter_list|()
-block|{
-return|return
-name|allNewChanges
-return|;
 block|}
 DECL|method|onPreReceive (final ReceivePack arg0, final Collection<ReceiveCommand> commands)
 specifier|public
@@ -2072,6 +1991,73 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+if|if
+condition|(
+operator|!
+name|allNewChanges
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|canonicalWebUrl
+operator|!=
+literal|null
+condition|)
+block|{
+specifier|final
+name|String
+name|url
+init|=
+name|canonicalWebUrl
+decl_stmt|;
+name|rp
+operator|.
+name|sendMessage
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|rp
+operator|.
+name|sendMessage
+argument_list|(
+literal|"New Changes:"
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+specifier|final
+name|Change
+operator|.
+name|Id
+name|c
+range|:
+name|allNewChanges
+control|)
+block|{
+name|rp
+operator|.
+name|sendMessage
+argument_list|(
+literal|"  "
+operator|+
+name|url
+operator|+
+name|c
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|rp
+operator|.
+name|sendMessage
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|verifyActiveContributorAgreement ()
@@ -6250,10 +6236,12 @@ return|;
 block|}
 else|else
 block|{
-name|messages
+name|rp
 operator|.
-name|warn
+name|sendMessage
 argument_list|(
+literal|"warning: "
+operator|+
 name|change
 operator|.
 name|getKey
