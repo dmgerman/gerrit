@@ -1865,15 +1865,29 @@ name|SafeHtml
 name|src
 parameter_list|)
 block|{
+specifier|final
+name|String
+name|m
+init|=
+literal|"( ( |<span[^>]*>|</span>)*\t)"
+decl_stmt|;
+specifier|final
+name|String
+name|r
+init|=
+literal|"<span class=\"wse\">$1</span>"
+decl_stmt|;
 name|src
 operator|=
 name|src
 operator|.
 name|replaceFirst
 argument_list|(
-literal|"^(  *\t)"
+literal|"^"
+operator|+
+name|m
 argument_list|,
-literal|"<span class=\"wse\">$1</span>"
+name|r
 argument_list|)
 expr_stmt|;
 name|src
@@ -1882,9 +1896,13 @@ name|src
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\n(  *\t)"
+literal|"\n"
+operator|+
+name|m
 argument_list|,
-literal|"\n<span class=\"wse\">$1</span>"
+literal|"\n"
+operator|+
+name|r
 argument_list|)
 expr_stmt|;
 return|return
@@ -1912,7 +1930,7 @@ name|src
 operator|.
 name|replaceAll
 argument_list|(
-literal|"([ \t][ \t]*)(\r?\n)"
+literal|"([ \t][ \t]*)(\r?(</span>)?\n)"
 argument_list|,
 name|r
 argument_list|)
@@ -1923,7 +1941,7 @@ name|src
 operator|.
 name|replaceFirst
 argument_list|(
-literal|"([ \t][ \t]*)(\r?\n?)$"
+literal|"([ \t][ \t]*)(\r?(</span>)?\n?)$"
 argument_list|,
 name|r
 argument_list|)
