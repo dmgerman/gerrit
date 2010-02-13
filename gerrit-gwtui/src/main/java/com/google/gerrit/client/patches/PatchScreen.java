@@ -985,6 +985,16 @@ argument_list|,
 name|patchTable
 argument_list|)
 expr_stmt|;
+name|scriptSettings
+operator|.
+name|getPrettySettings
+argument_list|()
+operator|.
+name|setSyntaxHighlighting
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override

@@ -101,6 +101,11 @@ specifier|protected
 name|boolean
 name|showTabs
 decl_stmt|;
+DECL|field|syntaxHighlighting
+specifier|protected
+name|boolean
+name|syntaxHighlighting
+decl_stmt|;
 DECL|method|PrettySettings ()
 specifier|public
 name|PrettySettings
@@ -119,6 +124,10 @@ operator|=
 literal|2
 expr_stmt|;
 name|showTabs
+operator|=
+literal|true
+expr_stmt|;
+name|syntaxHighlighting
 operator|=
 literal|true
 expr_stmt|;
@@ -160,6 +169,12 @@ operator|=
 name|pretty
 operator|.
 name|showTabs
+expr_stmt|;
+name|syntaxHighlighting
+operator|=
+name|pretty
+operator|.
+name|syntaxHighlighting
 expr_stmt|;
 block|}
 DECL|method|getFilename ()
@@ -301,6 +316,31 @@ expr_stmt|;
 return|return
 name|this
 return|;
+block|}
+DECL|method|isSyntaxHighlighting ()
+specifier|public
+name|boolean
+name|isSyntaxHighlighting
+parameter_list|()
+block|{
+return|return
+name|syntaxHighlighting
+return|;
+block|}
+DECL|method|setSyntaxHighlighting (final boolean on)
+specifier|public
+name|void
+name|setSyntaxHighlighting
+parameter_list|(
+specifier|final
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|syntaxHighlighting
+operator|=
+name|on
+expr_stmt|;
 block|}
 block|}
 end_class
