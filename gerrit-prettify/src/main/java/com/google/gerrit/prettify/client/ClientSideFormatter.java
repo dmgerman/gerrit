@@ -308,13 +308,16 @@ comment|/*-{ eval(js); }-*/
 function_decl|;
 annotation|@
 name|Override
-DECL|method|prettify (String html)
+DECL|method|prettify (String html, String type)
 specifier|protected
 name|String
 name|prettify
 parameter_list|(
 name|String
 name|html
+parameter_list|,
+name|String
+name|type
 parameter_list|)
 block|{
 return|return
@@ -322,10 +325,7 @@ name|go
 argument_list|(
 name|html
 argument_list|,
-name|settings
-operator|.
-name|getFilename
-argument_list|()
+name|type
 argument_list|,
 name|settings
 operator|.

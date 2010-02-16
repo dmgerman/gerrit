@@ -264,9 +264,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|prettify
 operator|.
-name|data
+name|common
 operator|.
 name|SparseFileContent
 import|;

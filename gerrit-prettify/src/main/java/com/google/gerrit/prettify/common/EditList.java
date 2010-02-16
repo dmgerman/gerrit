@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.prettify.common
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|prettify
 operator|.
-name|data
+name|common
 package|;
 end_package
 
@@ -193,6 +193,26 @@ parameter_list|()
 block|{
 return|return
 name|edits
+return|;
+block|}
+DECL|method|getFullContext ()
+specifier|public
+name|EditList
+name|getFullContext
+parameter_list|()
+block|{
+return|return
+operator|new
+name|EditList
+argument_list|(
+name|edits
+argument_list|,
+literal|5000000
+argument_list|,
+name|aSize
+argument_list|,
+name|bSize
+argument_list|)
 return|;
 block|}
 DECL|method|getHunks ()
@@ -617,6 +637,16 @@ parameter_list|()
 block|{
 return|return
 name|bCur
+return|;
+block|}
+DECL|method|getCurEdit ()
+specifier|public
+name|Edit
+name|getCurEdit
+parameter_list|()
+block|{
+return|return
+name|curEdit
 return|;
 block|}
 DECL|method|getEndA ()
