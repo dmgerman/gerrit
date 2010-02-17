@@ -148,6 +148,22 @@ name|schema
 operator|.
 name|sql
 operator|.
+name|DialectH2
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|schema
+operator|.
+name|sql
+operator|.
 name|DialectMySQL
 import|;
 end_import
@@ -366,6 +382,27 @@ operator|.
 name|execute
 argument_list|(
 literal|"DROP FUNCTION nextval_project_id"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|jdbc
+operator|.
+name|getDialect
+argument_list|()
+operator|instanceof
+name|DialectH2
+condition|)
+block|{
+name|s
+operator|.
+name|execute
+argument_list|(
+literal|"ALTER TABLE projects DROP CONSTRAINT"
+operator|+
+literal|" IF EXISTS CONSTRAINT_F3"
 argument_list|)
 expr_stmt|;
 block|}
