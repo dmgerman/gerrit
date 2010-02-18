@@ -686,6 +686,9 @@ case|:
 case|case
 name|LDAP
 case|:
+case|case
+name|LDAP_BIND
+case|:
 comment|// Its safe to assume yes for an HTTP authentication type, as the
 comment|// only way in is through some external system that the admin trusts
 comment|//

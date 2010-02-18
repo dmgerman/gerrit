@@ -1264,6 +1264,9 @@ break|break;
 case|case
 name|LDAP
 case|:
+case|case
+name|LDAP_BIND
+case|:
 operator|new
 name|UserPassSignInDialog
 argument_list|(
@@ -2771,6 +2774,9 @@ expr_stmt|;
 break|break;
 case|case
 name|LDAP
+case|:
+case|case
+name|LDAP_BIND
 case|:
 if|if
 condition|(

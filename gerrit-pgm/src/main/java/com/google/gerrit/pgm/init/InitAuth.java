@@ -331,6 +331,9 @@ case|case
 name|LDAP
 case|:
 case|case
+name|LDAP_BIND
+case|:
+case|case
 name|HTTP_LDAP
 case|:
 block|{

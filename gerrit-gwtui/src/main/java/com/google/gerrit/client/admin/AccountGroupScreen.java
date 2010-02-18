@@ -1585,6 +1585,9 @@ case|:
 case|case
 name|LDAP
 case|:
+case|case
+name|LDAP_BIND
+case|:
 break|break;
 default|default:
 return|return;

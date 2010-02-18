@@ -570,6 +570,9 @@ block|{
 case|case
 name|LDAP
 case|:
+case|case
+name|LDAP_BIND
+case|:
 name|config
 operator|.
 name|setRegisterUrl

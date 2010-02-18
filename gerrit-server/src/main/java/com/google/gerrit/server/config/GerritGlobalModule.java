@@ -899,6 +899,9 @@ case|:
 case|case
 name|LDAP
 case|:
+case|case
+name|LDAP_BIND
+case|:
 name|install
 argument_list|(
 operator|new

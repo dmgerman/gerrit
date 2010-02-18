@@ -103,7 +103,7 @@ specifier|final
 class|class
 name|AccountExternalId
 block|{
-comment|/**    * Scheme used for {@link AuthType#LDAP}, {@link AuthType#HTTP}, and    * {@link AuthType#HTTP_LDAP} usernames.    *<p>    * The name {@code gerrit:} was a very poor choice.    */
+comment|/**    * Scheme used for {@link AuthType#LDAP}, {@link AuthType#HTTP},    * {@link AuthType#HTTP_LDAP}, and {@link AuthType#LDAP_BIND} usernames.    *<p>    * The name {@code gerrit:} was a very poor choice.    */
 DECL|field|SCHEME_GERRIT
 specifier|public
 specifier|static

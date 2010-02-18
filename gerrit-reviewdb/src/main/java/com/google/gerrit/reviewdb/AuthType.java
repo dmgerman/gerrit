@@ -86,6 +86,10 @@ comment|/**    * Login collects username and password through a web form, and bi
 DECL|enumConstant|LDAP
 name|LDAP
 block|,
+comment|/**    * Login collects username and password through a web form, and binds to LDAP.    *<p>    * Unlike {@link #HTTP_LDAP}, Gerrit presents a sign-in dialog to the user and    * makes the connection to the LDAP server on their behalf.    *<p>    * Unlike the more generic {@link #LDAP} mode, Gerrit can only query the    * directory via an actual authenticated user account.    */
+DECL|enumConstant|LDAP_BIND
+name|LDAP_BIND
+block|,
 comment|/** Development mode to enable becoming anyone you want. */
 DECL|enumConstant|DEVELOPMENT_BECOME_ANY_ACCOUNT
 name|DEVELOPMENT_BECOME_ANY_ACCOUNT
