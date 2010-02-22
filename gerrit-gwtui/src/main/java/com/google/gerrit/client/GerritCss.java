@@ -253,11 +253,6 @@ name|String
 name|closedstate
 parameter_list|()
 function_decl|;
-DECL|method|command ()
-name|String
-name|command
-parameter_list|()
-function_decl|;
 DECL|method|commentCell ()
 name|String
 name|commentCell
@@ -406,6 +401,41 @@ function_decl|;
 DECL|method|diffTextNoLF ()
 name|String
 name|diffTextNoLF
+parameter_list|()
+function_decl|;
+DECL|method|downloadLink ()
+name|String
+name|downloadLink
+parameter_list|()
+function_decl|;
+DECL|method|downloadLink_Active ()
+name|String
+name|downloadLink_Active
+parameter_list|()
+function_decl|;
+DECL|method|downloadLinkListCell ()
+name|String
+name|downloadLinkListCell
+parameter_list|()
+function_decl|;
+DECL|method|downloadLinkCopyLabel ()
+name|String
+name|downloadLinkCopyLabel
+parameter_list|()
+function_decl|;
+DECL|method|downloadLinkHeader ()
+name|String
+name|downloadLinkHeader
+parameter_list|()
+function_decl|;
+DECL|method|downloadLinkHeaderGap ()
+name|String
+name|downloadLinkHeaderGap
+parameter_list|()
+function_decl|;
+DECL|method|downloadLinkList ()
+name|String
+name|downloadLinkList
 parameter_list|()
 function_decl|;
 DECL|method|drafts ()

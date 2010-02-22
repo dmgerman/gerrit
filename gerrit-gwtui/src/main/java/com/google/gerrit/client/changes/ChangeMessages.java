@@ -287,6 +287,14 @@ name|String
 name|who
 parameter_list|)
 function_decl|;
+DECL|method|anonymousDownload (String protocol)
+name|String
+name|anonymousDownload
+parameter_list|(
+name|String
+name|protocol
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
