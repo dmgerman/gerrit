@@ -227,6 +227,11 @@ name|RegexFindReplace
 argument_list|>
 name|commentLinks
 decl_stmt|;
+DECL|field|documentationAvailable
+specifier|protected
+name|boolean
+name|documentationAvailable
+decl_stmt|;
 DECL|method|getRegisterUrl ()
 specifier|public
 name|String
@@ -585,6 +590,31 @@ block|{
 name|commentLinks
 operator|=
 name|cl
+expr_stmt|;
+block|}
+DECL|method|isDocumentationAvailable ()
+specifier|public
+name|boolean
+name|isDocumentationAvailable
+parameter_list|()
+block|{
+return|return
+name|documentationAvailable
+return|;
+block|}
+DECL|method|setDocumentationAvailable (final boolean available)
+specifier|public
+name|void
+name|setDocumentationAvailable
+parameter_list|(
+specifier|final
+name|boolean
+name|available
+parameter_list|)
+block|{
+name|documentationAvailable
+operator|=
+name|available
 expr_stmt|;
 block|}
 block|}

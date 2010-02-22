@@ -233,6 +233,26 @@ name|String
 name|menuProjects
 parameter_list|()
 function_decl|;
+DECL|method|menuDocumentation ()
+name|String
+name|menuDocumentation
+parameter_list|()
+function_decl|;
+DECL|method|menuDocumentationIndex ()
+name|String
+name|menuDocumentationIndex
+parameter_list|()
+function_decl|;
+DECL|method|menuDocumentationUpload ()
+name|String
+name|menuDocumentationUpload
+parameter_list|()
+function_decl|;
+DECL|method|menuDocumentationAccess ()
+name|String
+name|menuDocumentationAccess
+parameter_list|()
+function_decl|;
 DECL|method|searchHint ()
 name|String
 name|searchHint
