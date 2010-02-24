@@ -1186,6 +1186,11 @@ specifier|private
 name|HistoryTable
 name|historyTable
 decl_stmt|;
+DECL|field|reviewedFlag
+specifier|private
+name|CheckBox
+name|reviewedFlag
+decl_stmt|;
 DECL|field|contentPanel
 specifier|private
 name|FlowPanel
@@ -1956,10 +1961,8 @@ name|isSignedIn
 argument_list|()
 condition|)
 block|{
-specifier|final
-name|CheckBox
-name|ku
-init|=
+name|reviewedFlag
+operator|=
 operator|new
 name|CheckBox
 argument_list|(
@@ -1970,8 +1973,8 @@ operator|.
 name|reviewed
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|ku
+expr_stmt|;
+name|reviewedFlag
 operator|.
 name|addValueChangeHandler
 argument_list|(
@@ -2007,14 +2010,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// Checked by default
-name|ku
-operator|.
-name|setValue
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|parent
 operator|.
 name|setWidget
@@ -2025,7 +2020,7 @@ name|col
 operator|+
 literal|2
 argument_list|,
-name|ku
+name|reviewedFlag
 argument_list|)
 expr_stmt|;
 block|}
@@ -2617,24 +2612,6 @@ name|comments
 operator|=
 literal|null
 expr_stmt|;
-comment|// Mark this file reviewed as soon we display the diff screen
-if|if
-condition|(
-name|Gerrit
-operator|.
-name|isSignedIn
-argument_list|()
-operator|&&
-name|isFirst
-condition|)
-block|{
-name|setReviewedByCurrentUser
-argument_list|(
-literal|true
-comment|/* reviewed */
-argument_list|)
-expr_stmt|;
-block|}
 name|PatchUtil
 operator|.
 name|DETAIL_SVC
@@ -2677,7 +2654,9 @@ operator|=
 name|result
 expr_stmt|;
 name|onResult
-argument_list|()
+argument_list|(
+name|isFirst
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2751,7 +2730,9 @@ operator|=
 name|result
 expr_stmt|;
 name|onResult
-argument_list|()
+argument_list|(
+name|isFirst
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2794,11 +2775,15 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onResult ()
+DECL|method|onResult (final boolean isFirst)
 specifier|private
 name|void
 name|onResult
-parameter_list|()
+parameter_list|(
+specifier|final
+name|boolean
+name|isFirst
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -3050,6 +3035,31 @@ name|comments
 operator|=
 literal|null
 expr_stmt|;
+comment|// Mark this file reviewed as soon we display the diff screen
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|isSignedIn
+argument_list|()
+operator|&&
+name|isFirst
+condition|)
+block|{
+name|reviewedFlag
+operator|.
+name|setValue
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|setReviewedByCurrentUser
+argument_list|(
+literal|true
+comment|/* reviewed */
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
