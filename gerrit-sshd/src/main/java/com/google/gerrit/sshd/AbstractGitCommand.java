@@ -346,12 +346,12 @@ name|Environment
 name|env
 parameter_list|)
 block|{
-specifier|final
 name|Context
 name|ctx
 init|=
-operator|new
-name|Context
+name|context
+operator|.
+name|subContext
 argument_list|(
 name|newSession
 argument_list|()

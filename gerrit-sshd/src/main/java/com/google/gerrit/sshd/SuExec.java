@@ -308,6 +308,13 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
+DECL|field|callingContext
+specifier|private
+name|SshScope
+operator|.
+name|Context
+name|callingContext
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -375,7 +382,7 @@ name|cmd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuExec (@ommandNameCommands.ROOT) final DispatchCommandProvider dispatcher, final Provider<CurrentUser> caller, final Provider<SshSession> session, final IdentifiedUser.GenericFactory userFactory)
+DECL|method|SuExec (@ommandNameCommands.ROOT) final DispatchCommandProvider dispatcher, final Provider<CurrentUser> caller, final Provider<SshSession> session, final IdentifiedUser.GenericFactory userFactory, final SshScope.Context callingContext)
 name|SuExec
 parameter_list|(
 annotation|@
@@ -408,6 +415,12 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
+parameter_list|,
+specifier|final
+name|SshScope
+operator|.
+name|Context
+name|callingContext
 parameter_list|)
 block|{
 name|this
@@ -433,6 +446,12 @@ operator|.
 name|userFactory
 operator|=
 name|userFactory
+expr_stmt|;
+name|this
+operator|.
+name|callingContext
+operator|=
+name|callingContext
 expr_stmt|;
 block|}
 annotation|@
@@ -479,8 +498,9 @@ specifier|final
 name|Context
 name|ctx
 init|=
-operator|new
-name|Context
+name|callingContext
+operator|.
+name|subContext
 argument_list|(
 name|newSession
 argument_list|()
