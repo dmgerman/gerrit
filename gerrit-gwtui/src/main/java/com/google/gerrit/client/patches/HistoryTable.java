@@ -306,6 +306,13 @@ name|parent
 expr_stmt|;
 name|table
 operator|.
+name|setWidth
+argument_list|(
+literal|"98%"
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
 name|addStyleName
 argument_list|(
 name|Gerrit

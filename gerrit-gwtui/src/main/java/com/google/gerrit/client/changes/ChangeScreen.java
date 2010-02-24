@@ -1238,6 +1238,17 @@ operator|=
 operator|new
 name|ChangeTable
 argument_list|()
+block|{
+block|{
+name|table
+operator|.
+name|setWidth
+argument_list|(
+literal|"98%"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 expr_stmt|;
 name|dependsOn
 operator|=
