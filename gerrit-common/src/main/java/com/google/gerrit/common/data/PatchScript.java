@@ -210,6 +210,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Patch
+operator|.
+name|ChangeType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -259,6 +275,21 @@ name|Change
 operator|.
 name|Key
 name|changeId
+decl_stmt|;
+DECL|field|changeType
+specifier|protected
+name|ChangeType
+name|changeType
+decl_stmt|;
+DECL|field|oldName
+specifier|protected
+name|String
+name|oldName
+decl_stmt|;
+DECL|field|newName
+specifier|protected
+name|String
+name|newName
 decl_stmt|;
 DECL|field|header
 specifier|protected
@@ -314,7 +345,7 @@ name|Patch
 argument_list|>
 name|history
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist)
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -323,6 +354,18 @@ name|Change
 operator|.
 name|Key
 name|ck
+parameter_list|,
+specifier|final
+name|ChangeType
+name|ct
+parameter_list|,
+specifier|final
+name|String
+name|on
+parameter_list|,
+specifier|final
+name|String
+name|nn
 parameter_list|,
 specifier|final
 name|List
@@ -373,6 +416,18 @@ block|{
 name|changeId
 operator|=
 name|ck
+expr_stmt|;
+name|changeType
+operator|=
+name|ct
+expr_stmt|;
+name|oldName
+operator|=
+name|on
+expr_stmt|;
+name|newName
+operator|=
+name|nn
 expr_stmt|;
 name|header
 operator|=
@@ -459,6 +514,36 @@ parameter_list|()
 block|{
 return|return
 name|header
+return|;
+block|}
+DECL|method|getChangeType ()
+specifier|public
+name|ChangeType
+name|getChangeType
+parameter_list|()
+block|{
+return|return
+name|changeType
+return|;
+block|}
+DECL|method|getOldName ()
+specifier|public
+name|String
+name|getOldName
+parameter_list|()
+block|{
+return|return
+name|oldName
+return|;
+block|}
+DECL|method|getNewName ()
+specifier|public
+name|String
+name|getNewName
+parameter_list|()
+block|{
+return|return
+name|newName
 return|;
 block|}
 DECL|method|getCommentDetail ()
