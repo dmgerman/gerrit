@@ -484,17 +484,14 @@ return|return
 name|history
 return|;
 block|}
-DECL|method|getContext ()
+DECL|method|getSettings ()
 specifier|public
-name|int
-name|getContext
+name|PatchScriptSettings
+name|getSettings
 parameter_list|()
 block|{
 return|return
 name|settings
-operator|.
-name|getContext
-argument_list|()
 return|;
 block|}
 DECL|method|isIgnoreWhitespace ()
@@ -746,14 +743,22 @@ argument_list|>
 name|getHunks
 parameter_list|()
 block|{
+specifier|final
+name|int
+name|ctx
+init|=
+name|settings
+operator|.
+name|getContext
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|EditList
 argument_list|(
 name|edits
 argument_list|,
-name|getContext
-argument_list|()
+name|ctx
 argument_list|,
 name|a
 operator|.

@@ -210,6 +210,12 @@ name|RpcStartHandler
 implements|,
 name|RpcCompleteHandler
 block|{
+DECL|field|INSTANCE
+specifier|public
+specifier|static
+name|RpcStatus
+name|INSTANCE
+decl_stmt|;
 DECL|field|hideDepth
 specifier|private
 specifier|static
