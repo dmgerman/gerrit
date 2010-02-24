@@ -573,11 +573,6 @@ name|String
 name|leftMostCell
 parameter_list|()
 function_decl|;
-DECL|method|leftmost ()
-name|String
-name|leftmost
-parameter_list|()
-function_decl|;
 DECL|method|lineHeader ()
 name|String
 name|lineHeader
