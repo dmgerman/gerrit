@@ -2497,6 +2497,22 @@ literal|"Forge Committer or Tagger Identity"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|values
+operator|.
+name|add
+argument_list|(
+name|value
+argument_list|(
+name|cat
+argument_list|,
+name|ApprovalCategory
+operator|.
+name|FORGE_SERVER
+argument_list|,
+literal|"Forge Gerrit Code Review Server Identity"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|c
 operator|.
 name|approvalCategories

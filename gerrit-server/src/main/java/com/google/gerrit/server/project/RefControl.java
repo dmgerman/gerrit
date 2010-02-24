@@ -126,6 +126,22 @@ name|reviewdb
 operator|.
 name|ApprovalCategory
 operator|.
+name|FORGE_SERVER
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|ApprovalCategory
+operator|.
 name|OWN
 import|;
 end_import
@@ -1027,6 +1043,22 @@ expr_stmt|;
 block|}
 return|return
 name|canForgeCommitter
+return|;
+block|}
+comment|/** @return true if this user can forge the server on the committer line. */
+DECL|method|canForgeGerritServerIdentity ()
+specifier|public
+name|boolean
+name|canForgeGerritServerIdentity
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|FORGE_IDENTITY
+argument_list|,
+name|FORGE_SERVER
+argument_list|)
 return|;
 block|}
 DECL|method|canPerform (ApprovalCategory.Id actionId, short level)

@@ -8110,6 +8110,12 @@ operator|.
 name|getEmailAddress
 argument_list|()
 argument_list|)
+operator|&&
+operator|!
+name|ctl
+operator|.
+name|canForgeGerritServerIdentity
+argument_list|()
 condition|)
 block|{
 name|reject

@@ -288,6 +288,15 @@ name|FORGE_COMMITTER
 init|=
 literal|2
 decl_stmt|;
+DECL|field|FORGE_SERVER
+specifier|public
+specifier|static
+specifier|final
+name|short
+name|FORGE_SERVER
+init|=
+literal|3
+decl_stmt|;
 DECL|class|Id
 specifier|public
 specifier|static
