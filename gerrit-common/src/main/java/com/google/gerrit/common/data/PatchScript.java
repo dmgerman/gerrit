@@ -530,8 +530,7 @@ name|f
 operator|.
 name|setEditList
 argument_list|(
-name|getEditList
-argument_list|()
+name|edits
 argument_list|)
 expr_stmt|;
 name|f
@@ -603,8 +602,7 @@ name|f
 operator|.
 name|setEditList
 argument_list|(
-name|getEditList
-argument_list|()
+name|edits
 argument_list|)
 expr_stmt|;
 if|if
@@ -632,12 +630,11 @@ name|format
 argument_list|(
 name|b
 operator|.
-name|completeWithContext
+name|apply
 argument_list|(
 name|a
 argument_list|,
-name|getEditList
-argument_list|()
+name|edits
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -681,20 +678,6 @@ name|getHunks
 parameter_list|()
 block|{
 return|return
-name|getEditList
-argument_list|()
-operator|.
-name|getHunks
-argument_list|()
-return|;
-block|}
-DECL|method|getEditList ()
-specifier|private
-name|EditList
-name|getEditList
-parameter_list|()
-block|{
-return|return
 operator|new
 name|EditList
 argument_list|(
@@ -713,6 +696,9 @@ operator|.
 name|size
 argument_list|()
 argument_list|)
+operator|.
+name|getHunks
+argument_list|()
 return|;
 block|}
 block|}

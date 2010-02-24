@@ -195,26 +195,6 @@ return|return
 name|edits
 return|;
 block|}
-DECL|method|getFullContext ()
-specifier|public
-name|EditList
-name|getFullContext
-parameter_list|()
-block|{
-return|return
-operator|new
-name|EditList
-argument_list|(
-name|edits
-argument_list|,
-literal|5000000
-argument_list|,
-name|aSize
-argument_list|,
-name|bSize
-argument_list|)
-return|;
-block|}
 DECL|method|getHunks ()
 specifier|public
 name|Iterable
