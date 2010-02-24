@@ -550,6 +550,14 @@ name|name
 argument_list|)
 comment|//
 operator|||
+literal|"gerrit.run"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+comment|//
+operator|||
 name|name
 operator|.
 name|endsWith
