@@ -208,6 +208,20 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|Patch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|PatchLineComment
 import|;
 end_import
@@ -769,7 +783,7 @@ operator|=
 name|b
 expr_stmt|;
 block|}
-DECL|method|toPatchScript (final PatchListEntry content, final CommentDetail comments)
+DECL|method|toPatchScript (final PatchListEntry content, final CommentDetail comments, final List<Patch> history)
 name|PatchScript
 name|toPatchScript
 parameter_list|(
@@ -780,6 +794,13 @@ parameter_list|,
 specifier|final
 name|CommentDetail
 name|comments
+parameter_list|,
+specifier|final
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|history
 parameter_list|)
 throws|throws
 name|IOException
@@ -838,6 +859,10 @@ argument_list|,
 name|b
 operator|.
 name|displayMethod
+argument_list|,
+name|comments
+argument_list|,
+name|history
 argument_list|)
 return|;
 block|}
@@ -1134,6 +1159,10 @@ argument_list|,
 name|b
 operator|.
 name|displayMethod
+argument_list|,
+name|comments
+argument_list|,
+name|history
 argument_list|)
 return|;
 block|}

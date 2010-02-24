@@ -324,32 +324,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-DECL|method|patchComments (Patch.Key key, PatchSet.Id a, PatchSet.Id b, AsyncCallback<CommentDetail> callback)
-name|void
-name|patchComments
-parameter_list|(
-name|Patch
-operator|.
-name|Key
-name|key
-parameter_list|,
-name|PatchSet
-operator|.
-name|Id
-name|a
-parameter_list|,
-name|PatchSet
-operator|.
-name|Id
-name|b
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|CommentDetail
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 annotation|@
 name|SignInRequired
 DECL|method|saveDraft (PatchLineComment comment, AsyncCallback<PatchLineComment> callback)

@@ -196,6 +196,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Patch
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -287,7 +301,20 @@ specifier|protected
 name|DisplayMethod
 name|displayMethodB
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb)
+DECL|field|comments
+specifier|protected
+name|CommentDetail
+name|comments
+decl_stmt|;
+DECL|field|history
+specifier|protected
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|history
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -330,6 +357,17 @@ parameter_list|,
 specifier|final
 name|DisplayMethod
 name|mb
+parameter_list|,
+specifier|final
+name|CommentDetail
+name|cd
+parameter_list|,
+specifier|final
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|hist
 parameter_list|)
 block|{
 name|changeId
@@ -363,6 +401,14 @@ expr_stmt|;
 name|displayMethodB
 operator|=
 name|mb
+expr_stmt|;
+name|comments
+operator|=
+name|cd
+expr_stmt|;
+name|history
+operator|=
+name|hist
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -413,6 +459,29 @@ parameter_list|()
 block|{
 return|return
 name|header
+return|;
+block|}
+DECL|method|getCommentDetail ()
+specifier|public
+name|CommentDetail
+name|getCommentDetail
+parameter_list|()
+block|{
+return|return
+name|comments
+return|;
+block|}
+DECL|method|getHistory ()
+specifier|public
+name|List
+argument_list|<
+name|Patch
+argument_list|>
+name|getHistory
+parameter_list|()
+block|{
+return|return
+name|history
 return|;
 block|}
 DECL|method|getContext ()

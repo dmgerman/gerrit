@@ -76,20 +76,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Patch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|PatchLineComment
 import|;
 end_import
@@ -164,29 +150,21 @@ specifier|public
 class|class
 name|CommentDetail
 block|{
-DECL|field|commentsA
+DECL|field|a
 specifier|protected
 name|List
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|commentsA
+name|a
 decl_stmt|;
-DECL|field|commentsB
+DECL|field|b
 specifier|protected
 name|List
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|commentsB
-decl_stmt|;
-DECL|field|history
-specifier|protected
-name|List
-argument_list|<
-name|Patch
-argument_list|>
-name|history
+name|b
 decl_stmt|;
 DECL|field|accounts
 specifier|protected
@@ -237,7 +215,7 @@ argument_list|>
 argument_list|>
 name|forB
 decl_stmt|;
-DECL|method|CommentDetail (final PatchSet.Id a, final PatchSet.Id b)
+DECL|method|CommentDetail (final PatchSet.Id idA, final PatchSet.Id idB)
 specifier|public
 name|CommentDetail
 parameter_list|(
@@ -245,16 +223,18 @@ specifier|final
 name|PatchSet
 operator|.
 name|Id
-name|a
+name|idA
 parameter_list|,
 specifier|final
 name|PatchSet
 operator|.
 name|Id
-name|b
+name|idB
 parameter_list|)
 block|{
-name|commentsA
+name|this
+operator|.
+name|a
 operator|=
 operator|new
 name|ArrayList
@@ -263,7 +243,9 @@ name|PatchLineComment
 argument_list|>
 argument_list|()
 expr_stmt|;
-name|commentsB
+name|this
+operator|.
+name|b
 operator|=
 operator|new
 name|ArrayList
@@ -272,13 +254,17 @@ name|PatchLineComment
 argument_list|>
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
 name|idA
 operator|=
-name|a
+name|idA
 expr_stmt|;
+name|this
+operator|.
 name|idB
 operator|=
-name|b
+name|idB
 expr_stmt|;
 block|}
 DECL|method|CommentDetail ()
@@ -338,7 +324,7 @@ name|psId
 argument_list|)
 condition|)
 block|{
-name|commentsA
+name|a
 operator|.
 name|add
 argument_list|(
@@ -367,7 +353,7 @@ name|psId
 argument_list|)
 condition|)
 block|{
-name|commentsA
+name|a
 operator|.
 name|add
 argument_list|(
@@ -388,7 +374,7 @@ name|psId
 argument_list|)
 condition|)
 block|{
-name|commentsB
+name|b
 operator|.
 name|add
 argument_list|(
@@ -420,24 +406,6 @@ operator|=
 name|a
 expr_stmt|;
 block|}
-DECL|method|setHistory (final List<Patch> h)
-specifier|public
-name|void
-name|setHistory
-parameter_list|(
-specifier|final
-name|List
-argument_list|<
-name|Patch
-argument_list|>
-name|h
-parameter_list|)
-block|{
-name|history
-operator|=
-name|h
-expr_stmt|;
-block|}
 DECL|method|getAccounts ()
 specifier|public
 name|AccountInfoCache
@@ -446,19 +414,6 @@ parameter_list|()
 block|{
 return|return
 name|accounts
-return|;
-block|}
-DECL|method|getHistory ()
-specifier|public
-name|List
-argument_list|<
-name|Patch
-argument_list|>
-name|getHistory
-parameter_list|()
-block|{
-return|return
-name|history
 return|;
 block|}
 DECL|method|getCommentsA ()
@@ -471,7 +426,7 @@ name|getCommentsA
 parameter_list|()
 block|{
 return|return
-name|commentsA
+name|a
 return|;
 block|}
 DECL|method|getCommentsB ()
@@ -484,7 +439,7 @@ name|getCommentsB
 parameter_list|()
 block|{
 return|return
-name|commentsB
+name|b
 return|;
 block|}
 DECL|method|isEmpty ()
@@ -494,12 +449,12 @@ name|isEmpty
 parameter_list|()
 block|{
 return|return
-name|commentsA
+name|a
 operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-name|commentsB
+name|b
 operator|.
 name|isEmpty
 argument_list|()
@@ -543,7 +498,7 @@ name|forA
 operator|=
 name|index
 argument_list|(
-name|commentsA
+name|a
 argument_list|)
 expr_stmt|;
 block|}
@@ -594,7 +549,7 @@ name|forB
 operator|=
 name|index
 argument_list|(
-name|commentsB
+name|b
 argument_list|)
 expr_stmt|;
 block|}
