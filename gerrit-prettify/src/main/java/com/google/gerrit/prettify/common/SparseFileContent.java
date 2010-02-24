@@ -740,6 +740,18 @@ block|}
 block|}
 comment|// Binary search for the range, since we know its a sorted list.
 comment|//
+if|if
+condition|(
+name|ranges
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|int
 name|low
 init|=
