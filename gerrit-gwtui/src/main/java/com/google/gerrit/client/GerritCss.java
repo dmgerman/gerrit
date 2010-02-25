@@ -273,6 +273,11 @@ name|String
 name|commentPanel
 parameter_list|()
 function_decl|;
+DECL|method|commentPanelBorder ()
+name|String
+name|commentPanelBorder
+parameter_list|()
+function_decl|;
 DECL|method|commentPanelAuthorCell ()
 name|String
 name|commentPanelAuthorCell
