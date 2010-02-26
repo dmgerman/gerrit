@@ -115,8 +115,28 @@ argument_list|(
 name|s
 argument_list|,
 name|e
+argument_list|,
+literal|false
+comment|/* keep LF */
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|charAt (int idx)
+name|char
+name|charAt
+parameter_list|(
+name|int
+name|idx
+parameter_list|)
+block|{
+return|return
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|idx
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override

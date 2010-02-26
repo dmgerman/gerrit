@@ -305,10 +305,12 @@ argument_list|,
 name|i
 operator|+
 literal|1
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|getLines (final int begin, final int end)
+DECL|method|getLines (final int begin, final int end, boolean dropLF)
 specifier|public
 name|String
 name|getLines
@@ -320,6 +322,9 @@ parameter_list|,
 specifier|final
 name|int
 name|end
+parameter_list|,
+name|boolean
+name|dropLF
 parameter_list|)
 block|{
 if|if
@@ -354,6 +359,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|dropLF
+operator|&&
 name|content
 index|[
 name|e
