@@ -6897,6 +6897,7 @@ name|doChangeMergedHook
 argument_list|(
 name|c
 argument_list|,
+comment|//
 name|accountCache
 operator|.
 name|get
@@ -6910,6 +6911,7 @@ operator|.
 name|getAccount
 argument_list|()
 argument_list|,
+comment|//
 name|schema
 operator|.
 name|patchSets
