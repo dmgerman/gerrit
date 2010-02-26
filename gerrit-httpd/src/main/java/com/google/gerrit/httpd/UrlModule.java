@@ -620,7 +620,7 @@ comment|//
 literal|"^/([1-9][0-9]*)/?$"
 argument_list|,
 comment|//
-literal|"^/r/([0-9a-fA-F]{4,"
+literal|"^/r/(I?[0-9a-fA-F]{4,"
 operator|+
 name|RevId
 operator|.
