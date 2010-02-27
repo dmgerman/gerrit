@@ -1174,9 +1174,9 @@ name|p
 operator|.
 name|setShowTabs
 argument_list|(
-name|p
+name|showTabs
 operator|.
-name|isShowTabs
+name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
