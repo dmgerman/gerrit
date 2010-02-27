@@ -140,16 +140,6 @@ name|String
 name|patchHeaderNew
 parameter_list|()
 function_decl|;
-DECL|method|showFullFiles ()
-name|String
-name|showFullFiles
-parameter_list|()
-function_decl|;
-DECL|method|ignoreWhitespace ()
-name|String
-name|ignoreWhitespace
-parameter_list|()
-function_decl|;
 DECL|method|patchHistoryTitle ()
 name|String
 name|patchHistoryTitle
@@ -223,11 +213,6 @@ function_decl|;
 DECL|method|commentCancelEdit ()
 name|String
 name|commentCancelEdit
-parameter_list|()
-function_decl|;
-DECL|method|whitespaceIgnoreLabel ()
-name|String
-name|whitespaceIgnoreLabel
 parameter_list|()
 function_decl|;
 DECL|method|whitespaceIGNORE_NONE ()

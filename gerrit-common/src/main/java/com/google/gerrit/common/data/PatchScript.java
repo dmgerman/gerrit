@@ -248,6 +248,22 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountGeneralPreferences
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|PatchScript
 specifier|public
@@ -579,6 +595,20 @@ return|return
 name|settings
 return|;
 block|}
+DECL|method|setSettings (PatchScriptSettings s)
+specifier|public
+name|void
+name|setSettings
+parameter_list|(
+name|PatchScriptSettings
+name|s
+parameter_list|)
+block|{
+name|settings
+operator|=
+name|s
+expr_stmt|;
+block|}
 DECL|method|isIgnoreWhitespace ()
 specifier|public
 name|boolean
@@ -828,7 +858,6 @@ argument_list|>
 name|getHunks
 parameter_list|()
 block|{
-specifier|final
 name|int
 name|ctx
 init|=
@@ -837,6 +866,31 @@ operator|.
 name|getContext
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|ctx
+operator|==
+name|WHOLE_FILE_CONTEXT
+condition|)
+block|{
+name|ctx
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|a
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|b
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 operator|new
 name|EditList

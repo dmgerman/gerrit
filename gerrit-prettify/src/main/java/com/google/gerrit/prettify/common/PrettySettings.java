@@ -106,6 +106,11 @@ specifier|protected
 name|boolean
 name|syntaxHighlighting
 decl_stmt|;
+DECL|field|intralineDifference
+specifier|protected
+name|boolean
+name|intralineDifference
+decl_stmt|;
 DECL|method|PrettySettings ()
 specifier|public
 name|PrettySettings
@@ -128,6 +133,10 @@ operator|=
 literal|true
 expr_stmt|;
 name|syntaxHighlighting
+operator|=
+literal|true
+expr_stmt|;
+name|intralineDifference
 operator|=
 literal|true
 expr_stmt|;
@@ -175,6 +184,12 @@ operator|=
 name|pretty
 operator|.
 name|syntaxHighlighting
+expr_stmt|;
+name|intralineDifference
+operator|=
+name|pretty
+operator|.
+name|intralineDifference
 expr_stmt|;
 block|}
 DECL|method|getFilename ()
@@ -338,6 +353,31 @@ name|on
 parameter_list|)
 block|{
 name|syntaxHighlighting
+operator|=
+name|on
+expr_stmt|;
+block|}
+DECL|method|isIntralineDifference ()
+specifier|public
+name|boolean
+name|isIntralineDifference
+parameter_list|()
+block|{
+return|return
+name|intralineDifference
+return|;
+block|}
+DECL|method|setIntralineDifference (final boolean on)
+specifier|public
+name|void
+name|setIntralineDifference
+parameter_list|(
+specifier|final
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|intralineDifference
 operator|=
 name|on
 expr_stmt|;
