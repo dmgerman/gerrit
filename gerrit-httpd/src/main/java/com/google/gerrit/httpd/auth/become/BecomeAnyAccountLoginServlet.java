@@ -768,7 +768,7 @@ name|req
 operator|.
 name|getParameter
 argument_list|(
-literal|"ssh_user_name"
+literal|"user_name"
 argument_list|)
 operator|!=
 literal|null
@@ -776,7 +776,7 @@ condition|)
 block|{
 name|res
 operator|=
-name|bySshUserName
+name|byUserName
 argument_list|(
 name|rsp
 argument_list|,
@@ -784,7 +784,7 @@ name|req
 operator|.
 name|getParameter
 argument_list|(
-literal|"ssh_user_name"
+literal|"user_name"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1131,10 +1131,10 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|bySshUserName (final HttpServletResponse rsp, final String userName)
+DECL|method|byUserName (final HttpServletResponse rsp, final String userName)
 specifier|private
 name|AuthResult
-name|bySshUserName
+name|byUserName
 parameter_list|(
 specifier|final
 name|HttpServletResponse
