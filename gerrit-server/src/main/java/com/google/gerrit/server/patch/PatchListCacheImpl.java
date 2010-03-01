@@ -2048,6 +2048,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|lf
+operator|<
+name|ab
+operator|&&
 name|a
 operator|.
 name|charAt
@@ -2219,6 +2223,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|lf
+operator|<
+name|bb
+operator|&&
 name|b
 operator|.
 name|charAt
