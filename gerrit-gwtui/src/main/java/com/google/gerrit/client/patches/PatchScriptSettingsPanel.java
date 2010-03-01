@@ -862,6 +862,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|getSyntaxHighlightingCheckBox ()
+specifier|public
+name|CheckBox
+name|getSyntaxHighlightingCheckBox
+parameter_list|()
+block|{
+return|return
+name|syntaxHighlighting
+return|;
+block|}
 DECL|method|getReviewedCheckBox ()
 specifier|public
 name|CheckBox
