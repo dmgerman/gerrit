@@ -810,6 +810,8 @@ class|class
 name|PatchScreen
 extends|extends
 name|Screen
+implements|implements
+name|CommentEditorContainer
 block|{
 DECL|field|PRETTY
 specifier|static
@@ -1424,6 +1426,38 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|notifyDraftDelta (int delta)
+specifier|public
+name|void
+name|notifyDraftDelta
+parameter_list|(
+name|int
+name|delta
+parameter_list|)
+block|{
+name|lastScript
+operator|=
+literal|null
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|remove (CommentEditorPanel panel)
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|CommentEditorPanel
+name|panel
+parameter_list|)
+block|{
+name|lastScript
+operator|=
+literal|null
 expr_stmt|;
 block|}
 DECL|method|update (PatchScriptSettings s)
