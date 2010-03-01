@@ -126,7 +126,7 @@ literal|100
 expr_stmt|;
 name|tabSize
 operator|=
-literal|2
+literal|8
 expr_stmt|;
 name|showTabs
 operator|=
