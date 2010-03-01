@@ -2224,7 +2224,22 @@ specifier|final
 name|String
 name|r
 init|=
-literal|"<span class=\"wse\">$1</span>"
+literal|"<span class=\"wse\""
+comment|//
+operator|+
+literal|" title=\""
+operator|+
+name|PrettifyConstants
+operator|.
+name|C
+operator|.
+name|wseTabAfterSpace
+argument_list|()
+operator|+
+literal|"\""
+comment|//
+operator|+
+literal|">$1</span>"
 decl_stmt|;
 name|src
 operator|=
@@ -2271,7 +2286,22 @@ specifier|final
 name|String
 name|r
 init|=
-literal|"<span class=\"wse\">$1</span>$2"
+literal|"<span class=\"wse\""
+comment|//
+operator|+
+literal|" title=\""
+operator|+
+name|PrettifyConstants
+operator|.
+name|C
+operator|.
+name|wseTrailingSpace
+argument_list|()
+operator|+
+literal|"\""
+comment|//
+operator|+
+literal|">$1</span>$2"
 decl_stmt|;
 name|src
 operator|=
