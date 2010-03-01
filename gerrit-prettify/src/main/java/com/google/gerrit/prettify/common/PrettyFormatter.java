@@ -1610,7 +1610,7 @@ name|replaceAll
 argument_list|(
 literal|"\t"
 argument_list|,
-literal|"<span class=\"vt\">&nbsp;</span>"
+literal|"<span class=\"vt\">&#187;</span>"
 operator|+
 name|t
 argument_list|)
