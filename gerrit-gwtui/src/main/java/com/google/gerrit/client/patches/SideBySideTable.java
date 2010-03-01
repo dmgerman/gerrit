@@ -756,6 +756,8 @@ argument_list|,
 name|ctx
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 if|if
@@ -790,6 +792,8 @@ name|hunk
 operator|.
 name|getCurB
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -807,6 +811,8 @@ argument_list|,
 name|CONTEXT
 argument_list|,
 name|ctx
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -871,6 +877,35 @@ operator|.
 name|isInsertedB
 argument_list|()
 decl_stmt|;
+specifier|final
+name|boolean
+name|full
+init|=
+name|script
+operator|.
+name|getSettings
+argument_list|()
+operator|.
+name|getPrettySettings
+argument_list|()
+operator|.
+name|isIntralineDifference
+argument_list|()
+operator|&&
+name|hunk
+operator|.
+name|getCurEdit
+argument_list|()
+operator|.
+name|getType
+argument_list|()
+operator|!=
+name|Edit
+operator|.
+name|Type
+operator|.
+name|REPLACE
+decl_stmt|;
 name|openLine
 argument_list|(
 name|nc
@@ -898,6 +933,8 @@ name|hunk
 operator|.
 name|getCurA
 argument_list|()
+argument_list|,
+name|full
 argument_list|)
 expr_stmt|;
 name|hunk
@@ -964,6 +1001,8 @@ name|hunk
 operator|.
 name|getCurB
 argument_list|()
+argument_list|,
+name|full
 argument_list|)
 expr_stmt|;
 name|hunk
@@ -2180,7 +2219,7 @@ name|closeTd
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|appendLineText (final SafeHtmlBuilder m, final int lineNumberMinusOne, final PatchLine.Type type, final SparseHtmlFile src, final int i)
+DECL|method|appendLineText (final SafeHtmlBuilder m, final int lineNumberMinusOne, final PatchLine.Type type, final SparseHtmlFile src, final int i, final boolean fullBlock)
 specifier|private
 name|void
 name|appendLineText
@@ -2206,6 +2245,10 @@ parameter_list|,
 specifier|final
 name|int
 name|i
+parameter_list|,
+specifier|final
+name|boolean
+name|fullBlock
 parameter_list|)
 block|{
 name|appendLineText
@@ -2230,10 +2273,12 @@ name|hasTrailingEdit
 argument_list|(
 name|i
 argument_list|)
+argument_list|,
+name|fullBlock
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|appendLineText (final SafeHtmlBuilder m, final int lineNumberMinusOne, final PatchLine.Type type, final SafeHtml lineHtml, final boolean trailingEdit)
+DECL|method|appendLineText (final SafeHtmlBuilder m, final int lineNumberMinusOne, final PatchLine.Type type, final SafeHtml lineHtml, final boolean trailingEdit, final boolean fullBlock)
 specifier|private
 name|void
 name|appendLineText
@@ -2259,6 +2304,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|trailingEdit
+parameter_list|,
+specifier|final
+name|boolean
+name|fullBlock
 parameter_list|)
 block|{
 name|m
@@ -2360,6 +2409,8 @@ expr_stmt|;
 if|if
 condition|(
 name|trailingEdit
+operator|||
+name|fullBlock
 condition|)
 block|{
 name|m
@@ -2392,6 +2443,8 @@ expr_stmt|;
 if|if
 condition|(
 name|trailingEdit
+operator|||
+name|fullBlock
 condition|)
 block|{
 name|m
