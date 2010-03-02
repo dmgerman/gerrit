@@ -196,11 +196,14 @@ block|{
 DECL|enumConstant|REPO_DOWNLOAD
 DECL|enumConstant|PULL
 DECL|enumConstant|CHERRY_PICK
+DECL|enumConstant|FORMAT_PATCH
 name|REPO_DOWNLOAD
 block|,
 name|PULL
 block|,
 name|CHERRY_PICK
+block|,
+name|FORMAT_PATCH
 block|;   }
 comment|/** Default number of lines of context when viewing a patch. */
 annotation|@
