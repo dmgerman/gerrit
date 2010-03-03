@@ -823,6 +823,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 name|dbInjector
 operator|=
 name|createDbInjector
@@ -1015,6 +1017,26 @@ expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|err
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Unable to start daemon"
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
 block|}
 DECL|method|myVersion ()
 specifier|private
