@@ -2726,6 +2726,16 @@ argument_list|)
 expr_stmt|;
 name|settingsPanel
 operator|.
+name|setEnableIntralineDifference
+argument_list|(
+name|script
+operator|.
+name|hasIntralineDifference
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|settingsPanel
+operator|.
 name|setEnabled
 argument_list|(
 literal|true
