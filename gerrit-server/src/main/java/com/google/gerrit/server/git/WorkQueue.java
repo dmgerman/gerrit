@@ -1057,6 +1057,11 @@ argument_list|)
 throw|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|afterExecute (Runnable r, Throwable t)
 specifier|protected
@@ -1069,6 +1074,13 @@ parameter_list|,
 name|Throwable
 name|t
 parameter_list|)
+block|{
+if|if
+condition|(
+name|r
+operator|instanceof
+name|Task
+condition|)
 block|{
 specifier|final
 name|Task
@@ -1097,6 +1109,26 @@ block|{
 name|remove
 argument_list|(
 name|task
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Non task object in queue: "
+operator|+
+name|r
+operator|.
+name|getClass
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|r
 argument_list|)
 expr_stmt|;
 block|}
