@@ -925,6 +925,36 @@ literal|"rpc/SystemInfoService"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|upgradeUI (String token)
+specifier|static
+name|void
+name|upgradeUI
+parameter_list|(
+name|String
+name|token
+parameter_list|)
+block|{
+name|History
+operator|.
+name|newItem
+argument_list|(
+name|Dispatcher
+operator|.
+name|RELOAD_UI
+operator|+
+name|token
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|Window
+operator|.
+name|Location
+operator|.
+name|reload
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**    * Load the screen at the given location, displaying when ready.    *<p>    * If the URL is not already pointing at this location, a new item will be    * added to the browser's history when the screen is fully loaded and    * displayed on the UI.    *    * @param token location to parse, load, and render.    */
 DECL|method|display (final String token)
 specifier|public
