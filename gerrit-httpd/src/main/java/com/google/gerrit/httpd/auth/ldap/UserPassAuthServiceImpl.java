@@ -278,12 +278,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|authenticate (final String username, final String password, final AsyncCallback<LoginResult> callback)
+DECL|method|authenticate (String username, final String password, final AsyncCallback<LoginResult> callback)
 specifier|public
 name|void
 name|authenticate
 parameter_list|(
-specifier|final
 name|String
 name|username
 parameter_list|,
@@ -317,6 +316,9 @@ operator|.
 name|equals
 argument_list|(
 name|username
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 comment|//
 operator|||
@@ -347,6 +349,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|username
+operator|=
+name|username
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 specifier|final
 name|AuthRequest
 name|req
