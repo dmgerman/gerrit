@@ -145,6 +145,11 @@ name|String
 name|patchHistoryTitle
 parameter_list|()
 function_decl|;
+DECL|method|disabledOnLargeFiles ()
+name|String
+name|disabledOnLargeFiles
+parameter_list|()
+function_decl|;
 DECL|method|upToChange ()
 name|String
 name|upToChange

@@ -901,6 +901,8 @@ argument_list|,
 name|comments
 argument_list|,
 name|history
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -959,6 +961,11 @@ argument_list|(
 name|comments
 argument_list|)
 expr_stmt|;
+name|boolean
+name|hugeFile
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|a
@@ -1122,6 +1129,10 @@ operator|.
 name|getContext
 argument_list|()
 expr_stmt|;
+name|hugeFile
+operator|=
+literal|true
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1209,6 +1220,8 @@ argument_list|,
 name|comments
 argument_list|,
 name|history
+argument_list|,
+name|hugeFile
 argument_list|)
 return|;
 block|}

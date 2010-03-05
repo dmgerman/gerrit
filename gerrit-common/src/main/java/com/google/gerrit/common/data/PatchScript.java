@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountGeneralPreferences
+operator|.
+name|WHOLE_FILE_CONTEXT
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -248,22 +264,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|AccountGeneralPreferences
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 DECL|class|PatchScript
 specifier|public
@@ -361,7 +361,12 @@ name|Patch
 argument_list|>
 name|history
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist)
+DECL|field|hugeFile
+specifier|protected
+name|boolean
+name|hugeFile
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -427,6 +432,10 @@ argument_list|<
 name|Patch
 argument_list|>
 name|hist
+parameter_list|,
+specifier|final
+name|boolean
+name|hf
 parameter_list|)
 block|{
 name|changeId
@@ -480,6 +489,10 @@ expr_stmt|;
 name|history
 operator|=
 name|hist
+expr_stmt|;
+name|hugeFile
+operator|=
+name|hf
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -608,6 +621,16 @@ name|settings
 operator|=
 name|s
 expr_stmt|;
+block|}
+DECL|method|isHugeFile ()
+specifier|public
+name|boolean
+name|isHugeFile
+parameter_list|()
+block|{
+return|return
+name|hugeFile
+return|;
 block|}
 DECL|method|isIgnoreWhitespace ()
 specifier|public

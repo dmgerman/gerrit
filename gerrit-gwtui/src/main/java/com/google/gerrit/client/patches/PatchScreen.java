@@ -2715,6 +2715,17 @@ argument_list|)
 expr_stmt|;
 name|settingsPanel
 operator|.
+name|setEnableSmallFileFeatures
+argument_list|(
+operator|!
+name|script
+operator|.
+name|isHugeFile
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|settingsPanel
+operator|.
 name|setEnabled
 argument_list|(
 literal|true
