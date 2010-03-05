@@ -1054,28 +1054,6 @@ operator|.
 name|getChange
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isClosed
-argument_list|()
-condition|)
-block|{
-throw|throw
-name|error
-argument_list|(
-literal|"change "
-operator|+
-name|changeId
-operator|+
-literal|" is closed"
-argument_list|)
-throw|;
-block|}
 specifier|final
 name|StringBuffer
 name|msgBuf
@@ -1134,6 +1112,17 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+condition|)
+block|{
 for|for
 control|(
 name|ApproveOption
@@ -1301,6 +1290,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|msgBuf
 operator|.
