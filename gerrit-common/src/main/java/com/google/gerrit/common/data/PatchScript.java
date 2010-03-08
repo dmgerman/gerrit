@@ -366,7 +366,12 @@ specifier|protected
 name|boolean
 name|hugeFile
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf)
+DECL|field|intralineDifference
+specifier|protected
+name|boolean
+name|intralineDifference
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final List<String> h, final PatchScriptSettings s, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -436,6 +441,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|hf
+parameter_list|,
+specifier|final
+name|boolean
+name|id
 parameter_list|)
 block|{
 name|changeId
@@ -493,6 +502,10 @@ expr_stmt|;
 name|hugeFile
 operator|=
 name|hf
+expr_stmt|;
+name|intralineDifference
+operator|=
+name|id
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -647,6 +660,16 @@ operator|!=
 name|Whitespace
 operator|.
 name|IGNORE_NONE
+return|;
+block|}
+DECL|method|hasIntralineDifference ()
+specifier|public
+name|boolean
+name|hasIntralineDifference
+parameter_list|()
+block|{
+return|return
+name|intralineDifference
 return|;
 block|}
 DECL|method|getA ()

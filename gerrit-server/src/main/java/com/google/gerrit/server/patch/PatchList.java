@@ -484,6 +484,12 @@ specifier|transient
 name|ObjectId
 name|newId
 decl_stmt|;
+DECL|field|intralineDifference
+specifier|private
+specifier|transient
+name|boolean
+name|intralineDifference
+decl_stmt|;
 DECL|field|patches
 specifier|private
 specifier|transient
@@ -491,7 +497,7 @@ name|PatchListEntry
 index|[]
 name|patches
 decl_stmt|;
-DECL|method|PatchList (@ullable final AnyObjectId oldId, final AnyObjectId newId, final PatchListEntry[] patches)
+DECL|method|PatchList (@ullable final AnyObjectId oldId, final AnyObjectId newId, final boolean intralineDifference, final PatchListEntry[] patches)
 name|PatchList
 parameter_list|(
 annotation|@
@@ -503,6 +509,10 @@ parameter_list|,
 specifier|final
 name|AnyObjectId
 name|newId
+parameter_list|,
+specifier|final
+name|boolean
+name|intralineDifference
 parameter_list|,
 specifier|final
 name|PatchListEntry
@@ -533,6 +543,12 @@ name|newId
 operator|.
 name|copy
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|intralineDifference
+operator|=
+name|intralineDifference
 expr_stmt|;
 name|Arrays
 operator|.
@@ -596,6 +612,17 @@ argument_list|(
 name|patches
 argument_list|)
 argument_list|)
+return|;
+block|}
+comment|/** @return true if this list was computed with intraline difference enabled. */
+DECL|method|hasIntralineDifference ()
+specifier|public
+name|boolean
+name|hasIntralineDifference
+parameter_list|()
+block|{
+return|return
+name|intralineDifference
 return|;
 block|}
 comment|/**    * Get a sorted, modifiable list of all files in this list.    *<p>    * The returned list items do not populate:    *<ul>    *<li>{@link Patch#getCommentCount()}    *<li>{@link Patch#getDraftCount()}    *<li>{@link Patch#isReviewedByCurrentUser()}    *</ul>    *    * @param setId the patch set identity these patches belong to. This really    *        should not need to be specified, but is a current legacy artifact of    *        how the cache is keyed versus how the database is keyed.    */
@@ -841,6 +868,17 @@ name|writeVarInt32
 argument_list|(
 name|out
 argument_list|,
+name|intralineDifference
+condition|?
+literal|1
+else|:
+literal|0
+argument_list|)
+expr_stmt|;
+name|writeVarInt32
+argument_list|(
+name|out
+argument_list|,
 name|patches
 operator|.
 name|length
@@ -932,6 +970,15 @@ name|readNotNull
 argument_list|(
 name|in
 argument_list|)
+expr_stmt|;
+name|intralineDifference
+operator|=
+name|readVarInt32
+argument_list|(
+name|in
+argument_list|)
+operator|!=
+literal|0
 expr_stmt|;
 specifier|final
 name|int

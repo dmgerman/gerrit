@@ -806,13 +806,17 @@ operator|=
 name|b
 expr_stmt|;
 block|}
-DECL|method|toPatchScript (final PatchListEntry content, final CommentDetail comments, final List<Patch> history)
+DECL|method|toPatchScript (final PatchListEntry content, final boolean intralineDifference, final CommentDetail comments, final List<Patch> history)
 name|PatchScript
 name|toPatchScript
 parameter_list|(
 specifier|final
 name|PatchListEntry
 name|content
+parameter_list|,
+specifier|final
+name|boolean
+name|intralineDifference
 parameter_list|,
 specifier|final
 name|CommentDetail
@@ -901,6 +905,8 @@ argument_list|,
 name|comments
 argument_list|,
 name|history
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -1222,6 +1228,8 @@ argument_list|,
 name|history
 argument_list|,
 name|hugeFile
+argument_list|,
+name|intralineDifference
 argument_list|)
 return|;
 block|}
