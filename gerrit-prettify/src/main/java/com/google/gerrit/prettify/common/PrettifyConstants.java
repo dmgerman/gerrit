@@ -131,6 +131,11 @@ name|String
 name|wseTrailingSpace
 parameter_list|()
 function_decl|;
+DECL|method|wseBareCR ()
+name|String
+name|wseBareCR
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
