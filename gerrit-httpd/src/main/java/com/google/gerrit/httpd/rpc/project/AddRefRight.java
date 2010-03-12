@@ -1126,39 +1126,6 @@ name|refPattern
 argument_list|)
 throw|;
 block|}
-comment|// TODO Support per-branch READ access.
-if|if
-condition|(
-name|ApprovalCategory
-operator|.
-name|READ
-operator|.
-name|equals
-argument_list|(
-name|categoryId
-argument_list|)
-operator|&&
-operator|!
-name|refPattern
-operator|.
-name|equals
-argument_list|(
-literal|"refs/*"
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"READ on "
-operator|+
-name|refPattern
-operator|+
-literal|" not yet supported."
-argument_list|)
-throw|;
-block|}
 specifier|final
 name|AccountGroup
 name|group

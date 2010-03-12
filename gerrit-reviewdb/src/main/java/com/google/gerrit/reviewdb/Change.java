@@ -264,6 +264,31 @@ return|return
 name|r
 return|;
 block|}
+DECL|method|fromRef (final String ref)
+specifier|public
+specifier|static
+name|Id
+name|fromRef
+parameter_list|(
+specifier|final
+name|String
+name|ref
+parameter_list|)
+block|{
+return|return
+name|PatchSet
+operator|.
+name|Id
+operator|.
+name|fromRef
+argument_list|(
+name|ref
+argument_list|)
+operator|.
+name|getParentKey
+argument_list|()
+return|;
+block|}
 block|}
 comment|/** Globally unique identification of this change. */
 DECL|class|Key

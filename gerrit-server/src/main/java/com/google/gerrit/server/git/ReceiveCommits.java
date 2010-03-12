@@ -1673,6 +1673,38 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|projectControl
+operator|.
+name|allRefsAreVisible
+argument_list|()
+condition|)
+block|{
+name|rp
+operator|.
+name|setCheckReferencedObjectsAreReachable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|rp
+operator|.
+name|setRefFilter
+argument_list|(
+operator|new
+name|VisibleRefFilter
+argument_list|(
+name|repo
+argument_list|,
+name|projectControl
+argument_list|,
+name|db
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|rp
 operator|.
 name|setPreReceiveHook
@@ -1829,6 +1861,8 @@ name|OK
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|onPreReceive (final ReceivePack arg0, final Collection<ReceiveCommand> commands)
 specifier|public
 name|void
@@ -1877,6 +1911,8 @@ name|doReplaces
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|onPostReceive (final ReceivePack arg0, final Collection<ReceiveCommand> commands)
 specifier|public
 name|void

@@ -239,6 +239,26 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE dest.projectName = ?"
+argument_list|)
+DECL|method|byProject (Project.NameKey p)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byProject
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE owner = ? AND open = true ORDER BY createdOn, changeId"
 argument_list|)
 DECL|method|byOwnerOpen (Account.Id id)

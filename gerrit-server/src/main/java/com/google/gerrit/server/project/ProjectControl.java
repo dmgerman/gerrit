@@ -647,6 +647,27 @@ literal|1
 argument_list|)
 return|;
 block|}
+comment|/** Can this user see all the refs in this projects? */
+DECL|method|allRefsAreVisible ()
+specifier|public
+name|boolean
+name|allRefsAreVisible
+parameter_list|()
+block|{
+return|return
+name|canPerformOnAllRefs
+argument_list|(
+name|ApprovalCategory
+operator|.
+name|READ
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|1
+argument_list|)
+return|;
+block|}
 comment|/** Is this user a project owner? Ownership does not imply {@link #isVisible()} */
 DECL|method|isOwner ()
 specifier|public

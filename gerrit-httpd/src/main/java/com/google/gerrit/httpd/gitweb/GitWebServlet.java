@@ -1959,6 +1959,24 @@ argument_list|(
 name|nameKey
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|project
+operator|.
+name|allRefsAreVisible
+argument_list|()
+condition|)
+block|{
+comment|// Pretend the project doesn't exist
+throw|throw
+operator|new
+name|NoSuchProjectException
+argument_list|(
+name|nameKey
+argument_list|)
+throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(
