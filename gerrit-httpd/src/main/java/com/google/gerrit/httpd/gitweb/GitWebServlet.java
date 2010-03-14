@@ -160,6 +160,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|launcher
+operator|.
+name|GerritLauncher
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|Project
@@ -832,11 +846,11 @@ specifier|final
 name|File
 name|myconf
 init|=
-name|File
+name|GerritLauncher
 operator|.
 name|createTempFile
 argument_list|(
-literal|"gitweb_config_"
+literal|"gitweb_config"
 argument_list|,
 literal|".perl"
 argument_list|)
@@ -893,11 +907,6 @@ argument_list|,
 literal|true
 comment|/* owner only */
 argument_list|)
-expr_stmt|;
-name|myconf
-operator|.
-name|deleteOnExit
-argument_list|()
 expr_stmt|;
 name|_env
 operator|.

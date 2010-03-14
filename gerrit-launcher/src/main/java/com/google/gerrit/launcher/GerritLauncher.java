@@ -1992,6 +1992,7 @@ comment|/**    * Creates a temporary file within the application's unpack locati
 DECL|method|createTempFile (String prefix, String suffix)
 specifier|public
 specifier|static
+specifier|synchronized
 name|File
 name|createTempFile
 parameter_list|(
