@@ -2561,6 +2561,11 @@ literal|"SCRIPT_NAME"
 argument_list|,
 name|req
 operator|.
+name|getContextPath
+argument_list|()
+operator|+
+name|req
+operator|.
 name|getServletPath
 argument_list|()
 argument_list|)
