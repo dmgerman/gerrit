@@ -1116,8 +1116,100 @@ argument_list|(
 literal|"$prevent_xss = 1;\n"
 argument_list|)
 expr_stmt|;
-comment|// Generate URLs using the anonymous git:// and secured ssh:// scheme,
-comment|// this matches the pull URLs we publish on each change screen.
+comment|// Generate URLs using smart http://
+comment|//
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"{\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  my $secure = $ENV{'HTTPS'} =~ /^ON$/i;\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  my $http_url = $secure ? 'https://' : 'http://';\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  $http_url .= qq{$ENV{'GERRIT_USER_NAME'}@}\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    unless $ENV{'GERRIT_ANONYMOUS_READ'};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  $http_url .= $ENV{'SERVER_NAME'};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  $http_url .= qq{:$ENV{'SERVER_PORT'}}\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    if (( $secure&& $ENV{'SERVER_PORT'} != 443)\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"     || (!$secure&& $ENV{'SERVER_PORT'} != 80)\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    );\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  $http_url .= qq{$ENV{'GERRIT_CONTEXT_PATH'}p};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  push @git_base_url_list, $http_url;\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"}\n"
+argument_list|)
+expr_stmt|;
+comment|// Generate URLs using anonymous git://
 comment|//
 if|if
 condition|(
@@ -1203,6 +1295,8 @@ literal|"}\n"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Generate URLs using authenticated ssh://
+comment|//
 if|if
 condition|(
 name|gerritConfig
