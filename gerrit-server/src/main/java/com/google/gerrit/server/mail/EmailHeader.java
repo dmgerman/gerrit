@@ -406,6 +406,10 @@ if|if
 condition|(
 name|b
 operator|==
+literal|','
+operator|||
+name|b
+operator|==
 literal|'='
 operator|||
 name|b
