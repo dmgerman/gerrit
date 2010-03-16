@@ -237,13 +237,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|migrateData (ReviewDb db)
+DECL|method|migrateData (ReviewDb db, UpdateUI ui)
 specifier|protected
 name|void
 name|migrateData
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|UpdateUI
+name|ui
 parameter_list|)
 throws|throws
 name|OrmException

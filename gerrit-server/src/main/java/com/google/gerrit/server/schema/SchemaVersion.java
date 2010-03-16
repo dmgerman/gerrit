@@ -576,6 +576,8 @@ expr_stmt|;
 name|migrateData
 argument_list|(
 name|db
+argument_list|,
+name|ui
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -675,13 +677,16 @@ name|SuppressWarnings
 argument_list|(
 literal|"unused"
 argument_list|)
-DECL|method|migrateData (ReviewDb db)
+DECL|method|migrateData (ReviewDb db, UpdateUI ui)
 specifier|protected
 name|void
 name|migrateData
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|UpdateUI
+name|ui
 parameter_list|)
 throws|throws
 name|OrmException

@@ -259,13 +259,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|migrateData (ReviewDb db)
+DECL|method|migrateData (ReviewDb db, UpdateUI ui)
 specifier|protected
 name|void
 name|migrateData
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|UpdateUI
+name|ui
 parameter_list|)
 throws|throws
 name|OrmException
@@ -377,6 +380,8 @@ operator|instanceof
 name|DialectMySQL
 condition|)
 block|{
+try|try
+block|{
 name|s
 operator|.
 name|execute
@@ -384,6 +389,21 @@ argument_list|(
 literal|"DROP FUNCTION nextval_project_id"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|se
+parameter_list|)
+block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"warning: could not delete function nextval_project_id"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
