@@ -665,6 +665,11 @@ specifier|public
 name|String
 name|revision
 decl_stmt|;
+DECL|field|ref
+specifier|public
+name|String
+name|ref
+decl_stmt|;
 block|}
 DECL|class|CommentAddedEvent
 specifier|public
@@ -2648,6 +2653,15 @@ operator|.
 name|getPatchSetId
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|ref
+operator|=
+name|patchSet
+operator|.
+name|getRefName
+argument_list|()
 expr_stmt|;
 return|return
 name|p
