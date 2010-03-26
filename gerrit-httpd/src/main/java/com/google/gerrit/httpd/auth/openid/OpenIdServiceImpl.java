@@ -1236,6 +1236,17 @@ name|DiscoveryException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot discover OpenID "
+operator|+
+name|url
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
