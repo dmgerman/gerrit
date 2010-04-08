@@ -389,7 +389,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addReviewers (Change.Id id, List<String> reviewers, AsyncCallback<AddReviewerResult> callback)
+DECL|method|addReviewers (Change.Id id, List<String> reviewers, AsyncCallback<ReviewerResult> callback)
 name|void
 name|addReviewers
 parameter_list|(
@@ -406,7 +406,30 @@ name|reviewers
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|AddReviewerResult
+name|ReviewerResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|removeReviewer (Change.Id id, Account.Id reviewerId, AsyncCallback<ReviewerResult> callback)
+name|void
+name|removeReviewer
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|reviewerId
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ReviewerResult
 argument_list|>
 name|callback
 parameter_list|)

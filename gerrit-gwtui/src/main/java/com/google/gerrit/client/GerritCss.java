@@ -138,6 +138,11 @@ name|String
 name|addReviewer
 parameter_list|()
 function_decl|;
+DECL|method|removeReviewer ()
+name|String
+name|removeReviewer
+parameter_list|()
+function_decl|;
 DECL|method|addSshKeyPanel ()
 name|String
 name|addSshKeyPanel
