@@ -1398,6 +1398,131 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testWithEndingURL ()
+specifier|public
+name|void
+name|testWithEndingURL
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"http://example.com/ fixes this\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I3b7e4e16b503ce00f07ba6ad01d97a356dad7701\n"
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"http://example.com/ fixes this\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"https://example.com/ fixes this\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I62b9039e2fc0dce274af55e8f99312a8a80a805d\n"
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"https://example.com/ fixes this\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"ftp://example.com/ fixes this\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I71b05dc1f6b9a5540a53a693e64d58b65a8910e8\n"
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"ftp://example.com/ fixes this\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"git://example.com/ fixes this\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: Id34e942baa68d790633737d815ddf11bac9183e5\n"
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"a\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"git://example.com/ fixes this\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|hookDoesNotModify (final String in)
 specifier|private
 name|void
