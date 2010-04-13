@@ -2281,10 +2281,14 @@ name|params
 argument_list|)
 control|)
 block|{
-name|groupDNs
-operator|.
-name|add
+name|recursivelyExpandGroups
 argument_list|(
+name|groupDNs
+argument_list|,
+name|schema
+argument_list|,
+name|ctx
+argument_list|,
 name|r
 operator|.
 name|getDN
