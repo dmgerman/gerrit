@@ -1418,6 +1418,14 @@ name|Id
 name|actionId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|actionId
+operator|.
+name|canInheritFromWildProject
+argument_list|()
+condition|)
+block|{
 return|return
 name|filter
 argument_list|(
@@ -1432,6 +1440,16 @@ argument_list|,
 name|actionId
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+return|;
+block|}
 block|}
 DECL|method|getAllRights (final ApprovalCategory.Id id)
 specifier|public
