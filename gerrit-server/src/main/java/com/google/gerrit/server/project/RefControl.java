@@ -618,7 +618,8 @@ name|boolean
 name|isOwner
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
 name|canPerform
 argument_list|(
 name|OWN
@@ -628,12 +629,42 @@ name|short
 operator|)
 literal|1
 argument_list|)
-operator|||
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+comment|// We have to prevent infinite recursion here, the project control
+comment|// calls us to find out if there is ownership of all references in
+comment|// order to determine project level ownership.
+comment|//
+if|if
+condition|(
+operator|!
+name|RefRight
+operator|.
+name|ALL
+operator|.
+name|equals
+argument_list|(
+name|getRefName
+argument_list|()
+argument_list|)
+operator|&&
 name|getProjectControl
 argument_list|()
 operator|.
 name|isOwner
 argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 comment|/** Can this user see this reference exists? */
