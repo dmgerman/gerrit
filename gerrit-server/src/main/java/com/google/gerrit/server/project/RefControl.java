@@ -1093,7 +1093,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|canPerform (ApprovalCategory.Id actionId, short level)
-specifier|private
 name|boolean
 name|canPerform
 parameter_list|(
