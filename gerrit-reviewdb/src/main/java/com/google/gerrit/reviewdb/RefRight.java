@@ -127,6 +127,16 @@ specifier|final
 class|class
 name|RefRight
 block|{
+comment|/** Pattern that matches all references in a project. */
+DECL|field|ALL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ALL
+init|=
+literal|"refs/*"
+decl_stmt|;
 DECL|class|RefPattern
 specifier|public
 specifier|static

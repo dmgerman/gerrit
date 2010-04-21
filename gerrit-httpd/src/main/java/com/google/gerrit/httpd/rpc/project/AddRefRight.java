@@ -893,7 +893,11 @@ block|{
 comment|// Explicitly related to a branch head.
 name|refPattern
 operator|=
-literal|"refs/heads/*"
+name|Constants
+operator|.
+name|R_HEADS
+operator|+
+literal|"*"
 expr_stmt|;
 block|}
 elseif|else
@@ -913,7 +917,11 @@ comment|// Non actions are approval votes on a change, assume these apply
 comment|// to branch heads only.
 name|refPattern
 operator|=
-literal|"refs/heads/*"
+name|Constants
+operator|.
+name|R_HEADS
+operator|+
+literal|"*"
 expr_stmt|;
 block|}
 elseif|else
@@ -932,7 +940,11 @@ block|{
 comment|// Explicitly related to the tag namespace.
 name|refPattern
 operator|=
-literal|"refs/tags/*"
+name|Constants
+operator|.
+name|R_TAGS
+operator|+
+literal|"*"
 expr_stmt|;
 block|}
 elseif|else
@@ -960,7 +972,9 @@ block|{
 comment|// Currently these are project-wide rights, so apply that way.
 name|refPattern
 operator|=
-literal|"refs/*"
+name|RefRight
+operator|.
+name|ALL
 expr_stmt|;
 block|}
 else|else
@@ -968,7 +982,9 @@ block|{
 comment|// Assume project wide for the default.
 name|refPattern
 operator|=
-literal|"refs/*"
+name|RefRight
+operator|.
+name|ALL
 expr_stmt|;
 block|}
 block|}

@@ -1837,7 +1837,9 @@ name|RefRight
 operator|.
 name|RefPattern
 argument_list|(
-literal|"refs/*"
+name|RefRight
+operator|.
+name|ALL
 argument_list|)
 decl_stmt|;
 block|{
@@ -2558,7 +2560,9 @@ name|RefRight
 operator|.
 name|RefPattern
 argument_list|(
-literal|"refs/*"
+name|RefRight
+operator|.
+name|ALL
 argument_list|)
 argument_list|,
 name|ApprovalCategory
