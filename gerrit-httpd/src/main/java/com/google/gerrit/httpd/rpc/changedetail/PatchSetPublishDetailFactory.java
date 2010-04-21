@@ -1080,9 +1080,9 @@ argument_list|(
 name|pe
 operator|.
 name|getLocalRights
-argument_list|()
-argument_list|,
+argument_list|(
 name|category
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1095,9 +1095,9 @@ argument_list|(
 name|pe
 operator|.
 name|getInheritedRights
-argument_list|()
-argument_list|,
+argument_list|(
 name|category
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1132,7 +1132,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|filterMatching (Collection<RefRight> rights, ApprovalCategory.Id category)
+DECL|method|filterMatching (Collection<RefRight> rights)
 specifier|private
 name|List
 argument_list|<
@@ -1145,11 +1145,6 @@ argument_list|<
 name|RefRight
 argument_list|>
 name|rights
-parameter_list|,
-name|ApprovalCategory
-operator|.
-name|Id
-name|category
 parameter_list|)
 block|{
 name|List
@@ -1190,16 +1185,6 @@ argument_list|,
 name|right
 operator|.
 name|getRefPattern
-argument_list|()
-argument_list|)
-operator|&&
-name|category
-operator|.
-name|equals
-argument_list|(
-name|right
-operator|.
-name|getApprovalCategoryId
 argument_list|()
 argument_list|)
 condition|)

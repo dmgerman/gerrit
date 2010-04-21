@@ -1392,15 +1392,13 @@ block|{
 return|return
 name|filter
 argument_list|(
-name|projectControl
-operator|.
 name|getProjectState
 argument_list|()
 operator|.
 name|getLocalRights
-argument_list|()
-argument_list|,
+argument_list|(
 name|actionId
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1418,38 +1416,18 @@ name|Id
 name|actionId
 parameter_list|)
 block|{
-if|if
-condition|(
-name|actionId
-operator|.
-name|canInheritFromWildProject
-argument_list|()
-condition|)
-block|{
 return|return
 name|filter
 argument_list|(
-name|projectControl
-operator|.
 name|getProjectState
 argument_list|()
 operator|.
 name|getInheritedRights
-argument_list|()
-argument_list|,
+argument_list|(
 name|actionId
 argument_list|)
+argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
-block|}
 block|}
 DECL|method|getAllRights (final ApprovalCategory.Id id)
 specifier|public
@@ -1524,7 +1502,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|filter (Collection<RefRight> all, ApprovalCategory.Id actionId)
+DECL|method|filter (Collection<RefRight> all)
 specifier|private
 name|List
 argument_list|<
@@ -1537,11 +1515,6 @@ argument_list|<
 name|RefRight
 argument_list|>
 name|all
-parameter_list|,
-name|ApprovalCategory
-operator|.
-name|Id
-name|actionId
 parameter_list|)
 block|{
 name|List
@@ -1582,16 +1555,6 @@ operator|.
 name|getRefPattern
 argument_list|()
 argument_list|)
-operator|&&
-name|right
-operator|.
-name|getApprovalCategoryId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|actionId
-argument_list|)
 condition|)
 block|{
 name|mine
@@ -1605,6 +1568,19 @@ block|}
 block|}
 return|return
 name|mine
+return|;
+block|}
+DECL|method|getProjectState ()
+specifier|private
+name|ProjectState
+name|getProjectState
+parameter_list|()
+block|{
+return|return
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
 return|;
 block|}
 DECL|method|matches (String refName, String refPattern)
