@@ -176,7 +176,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminCreateProject
+name|CreateProject
 operator|.
 name|class
 argument_list|)
