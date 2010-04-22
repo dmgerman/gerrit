@@ -96,20 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|RefRight
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -155,7 +141,7 @@ DECL|field|rights
 specifier|public
 name|List
 argument_list|<
-name|RefRight
+name|InheritedRefRight
 argument_list|>
 name|rights
 decl_stmt|;
@@ -201,7 +187,7 @@ operator|=
 name|g
 expr_stmt|;
 block|}
-DECL|method|setRights (final List<RefRight> r)
+DECL|method|setRights (final List<InheritedRefRight> r)
 specifier|public
 name|void
 name|setRights
@@ -209,7 +195,7 @@ parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|RefRight
+name|InheritedRefRight
 argument_list|>
 name|r
 parameter_list|)

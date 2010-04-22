@@ -499,6 +499,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Remove all cached items, forcing them to be created again on demand. */
+DECL|method|removeAll ()
+specifier|public
+name|void
+name|removeAll
+parameter_list|()
+block|{
+name|self
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|put (K key, V value)
 specifier|public
 name|void

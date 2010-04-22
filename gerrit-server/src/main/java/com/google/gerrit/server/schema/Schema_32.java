@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|schema
 package|;
 end_package
 
@@ -72,55 +72,52 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|reviewdb
-operator|.
-name|Project
+name|Inject
 import|;
 end_import
 
-begin_comment
-comment|/** Cache of project information, including access rights. */
-end_comment
-
-begin_interface
-DECL|interface|ProjectCache
-specifier|public
-interface|interface
-name|ProjectCache
-block|{
-comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists.    */
-DECL|method|get (Project.NameKey projectName)
-specifier|public
-name|ProjectState
-name|get
-parameter_list|(
-name|Project
+begin_import
+import|import
+name|com
 operator|.
-name|NameKey
-name|projectName
-parameter_list|)
-function_decl|;
-comment|/** Invalidate the cached information about the given project. */
-DECL|method|evict (Project p)
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_class
+DECL|class|Schema_32
 specifier|public
-name|void
-name|evict
+class|class
+name|Schema_32
+extends|extends
+name|SchemaVersion
+block|{
+annotation|@
+name|Inject
+DECL|method|Schema_32 (Provider<Schema_31> prior)
+name|Schema_32
 parameter_list|(
-name|Project
-name|p
+name|Provider
+argument_list|<
+name|Schema_31
+argument_list|>
+name|prior
 parameter_list|)
-function_decl|;
-comment|/** Invalidate the cached information about all projects. */
-DECL|method|evictAll ()
-specifier|public
-name|void
-name|evictAll
-parameter_list|()
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|prior
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

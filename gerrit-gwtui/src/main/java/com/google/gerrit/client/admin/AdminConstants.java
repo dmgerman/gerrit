@@ -175,6 +175,11 @@ name|String
 name|headingOwner
 parameter_list|()
 function_decl|;
+DECL|method|headingParentProjectName ()
+name|String
+name|headingParentProjectName
+parameter_list|()
+function_decl|;
 DECL|method|headingDescription ()
 name|String
 name|headingDescription

@@ -1273,13 +1273,8 @@ expr_stmt|;
 block|}
 name|projectCache
 operator|.
-name|evict
-argument_list|(
-name|projectControl
-operator|.
-name|getProject
+name|evictAll
 argument_list|()
-argument_list|)
 expr_stmt|;
 return|return
 name|projectDetailFactory
