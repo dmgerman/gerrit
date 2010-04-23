@@ -447,6 +447,11 @@ name|urlProvider
 operator|.
 name|get
 argument_list|()
+operator|+
+name|req
+operator|.
+name|getServletPath
+argument_list|()
 expr_stmt|;
 block|}
 name|rsp

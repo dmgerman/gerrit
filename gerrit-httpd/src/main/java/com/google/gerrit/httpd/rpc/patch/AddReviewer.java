@@ -80,7 +80,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|AddReviewerResult
+name|ReviewerResult
 import|;
 end_import
 
@@ -393,7 +393,7 @@ name|AddReviewer
 extends|extends
 name|Handler
 argument_list|<
-name|AddReviewerResult
+name|ReviewerResult
 argument_list|>
 block|{
 DECL|interface|Factory
@@ -646,7 +646,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|AddReviewerResult
+name|ReviewerResult
 name|call
 parameter_list|()
 throws|throws
@@ -682,11 +682,11 @@ name|changeId
 argument_list|)
 decl_stmt|;
 specifier|final
-name|AddReviewerResult
+name|ReviewerResult
 name|result
 init|=
 operator|new
-name|AddReviewerResult
+name|ReviewerResult
 argument_list|()
 decl_stmt|;
 for|for
@@ -721,11 +721,11 @@ operator|.
 name|addError
 argument_list|(
 operator|new
-name|AddReviewerResult
+name|ReviewerResult
 operator|.
 name|Error
 argument_list|(
-name|AddReviewerResult
+name|ReviewerResult
 operator|.
 name|Error
 operator|.
@@ -772,11 +772,11 @@ operator|.
 name|addError
 argument_list|(
 operator|new
-name|AddReviewerResult
+name|ReviewerResult
 operator|.
 name|Error
 argument_list|(
-name|AddReviewerResult
+name|ReviewerResult
 operator|.
 name|Error
 operator|.

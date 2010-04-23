@@ -80,7 +80,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|AddReviewerResult
+name|ReviewerResult
 import|;
 end_import
 
@@ -637,6 +637,14 @@ operator|.
 name|Factory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|removeReviewerFactory
+specifier|private
+specifier|final
+name|RemoveReviewer
+operator|.
+name|Factory
+name|removeReviewerFactory
+decl_stmt|;
 DECL|field|functionStateFactory
 specifier|private
 specifier|final
@@ -671,7 +679,7 @@ name|saveDraftFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ApprovalTypes approvalTypes, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final AddReviewer.Factory addReviewerFactory, final ChangeControl.Factory changeControlFactory, final FunctionState.Factory functionStateFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final PublishComments.Factory publishCommentsFactory, final SaveDraft.Factory saveDraftFactory)
+DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ApprovalTypes approvalTypes, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final AddReviewer.Factory addReviewerFactory, final RemoveReviewer.Factory removeReviewerFactory, final ChangeControl.Factory changeControlFactory, final FunctionState.Factory functionStateFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final PublishComments.Factory publishCommentsFactory, final SaveDraft.Factory saveDraftFactory)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -703,6 +711,12 @@ name|AddReviewer
 operator|.
 name|Factory
 name|addReviewerFactory
+parameter_list|,
+specifier|final
+name|RemoveReviewer
+operator|.
+name|Factory
+name|removeReviewerFactory
 parameter_list|,
 specifier|final
 name|ChangeControl
@@ -759,6 +773,12 @@ operator|.
 name|addReviewerFactory
 operator|=
 name|addReviewerFactory
+expr_stmt|;
+name|this
+operator|.
+name|removeReviewerFactory
+operator|=
+name|removeReviewerFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1242,7 +1262,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewers (final Change.Id id, final List<String> reviewers, final AsyncCallback<AddReviewerResult> callback)
+DECL|method|addReviewers (final Change.Id id, final List<String> reviewers, final AsyncCallback<ReviewerResult> callback)
 specifier|public
 name|void
 name|addReviewers
@@ -1263,7 +1283,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|AddReviewerResult
+name|ReviewerResult
 argument_list|>
 name|callback
 parameter_list|)
@@ -1275,6 +1295,46 @@ argument_list|(
 name|id
 argument_list|,
 name|reviewers
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|callback
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeReviewer (final Change.Id id, final Account.Id reviewerId, final AsyncCallback<ReviewerResult> callback)
+specifier|public
+name|void
+name|removeReviewer
+parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+specifier|final
+name|Account
+operator|.
+name|Id
+name|reviewerId
+parameter_list|,
+specifier|final
+name|AsyncCallback
+argument_list|<
+name|ReviewerResult
+argument_list|>
+name|callback
+parameter_list|)
+block|{
+name|removeReviewerFactory
+operator|.
+name|create
+argument_list|(
+name|id
+argument_list|,
+name|reviewerId
 argument_list|)
 operator|.
 name|to

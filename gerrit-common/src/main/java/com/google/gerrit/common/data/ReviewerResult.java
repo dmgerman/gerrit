@@ -87,14 +87,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Result from adding a reviewer to a change. */
+comment|/**  * Result from adding or removing a reviewer from a change.  */
 end_comment
 
 begin_class
-DECL|class|AddReviewerResult
+DECL|class|ReviewerResult
 specifier|public
 class|class
-name|AddReviewerResult
+name|ReviewerResult
 block|{
 DECL|field|errors
 specifier|protected
@@ -109,9 +109,9 @@ specifier|protected
 name|ChangeDetail
 name|change
 decl_stmt|;
-DECL|method|AddReviewerResult ()
+DECL|method|ReviewerResult ()
 specifier|public
-name|AddReviewerResult
+name|ReviewerResult
 parameter_list|()
 block|{
 name|errors
@@ -199,6 +199,10 @@ block|,
 comment|/** The account is not permitted to see the change. */
 DECL|enumConstant|CHANGE_NOT_VISIBLE
 name|CHANGE_NOT_VISIBLE
+block|,
+comment|/** Could not remove this reviewer from the change. */
+DECL|enumConstant|COULD_NOT_REMOVE
+name|COULD_NOT_REMOVE
 block|}
 DECL|field|type
 specifier|protected
