@@ -2524,6 +2524,12 @@ name|add
 argument_list|(
 name|groupDN
 argument_list|)
+operator|&&
+name|schema
+operator|.
+name|accountMemberField
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// Recursively identify the groups it is a member of.
