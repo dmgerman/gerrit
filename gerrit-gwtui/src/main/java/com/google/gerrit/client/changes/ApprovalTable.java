@@ -1348,6 +1348,8 @@ name|get
 argument_list|(
 name|i
 argument_list|)
+argument_list|,
+name|change
 argument_list|)
 expr_stmt|;
 block|}
@@ -1834,7 +1836,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|displayRow (final int row, final ApprovalDetail ad)
+DECL|method|displayRow (final int row, final ApprovalDetail ad, final Change change)
 specifier|private
 name|void
 name|displayRow
@@ -1846,6 +1848,10 @@ parameter_list|,
 specifier|final
 name|ApprovalDetail
 name|ad
+parameter_list|,
+specifier|final
+name|Change
+name|change
 parameter_list|)
 block|{
 specifier|final
@@ -2211,6 +2217,14 @@ comment|// Remove button
 comment|//
 if|if
 condition|(
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+operator|&&
 name|Gerrit
 operator|.
 name|isSignedIn
