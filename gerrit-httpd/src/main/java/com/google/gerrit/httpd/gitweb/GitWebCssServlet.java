@@ -51,62 +51,6 @@ begin_comment
 comment|// limitations under the License.
 end_comment
 
-begin_comment
-comment|// CGI environment and execution management portions are:
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// ========================================================================
-end_comment
-
-begin_comment
-comment|// Copyright (c) 2006-2009 Mort Bay Consulting Pty. Ltd.
-end_comment
-
-begin_comment
-comment|// ------------------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|// All rights reserved. This program and the accompanying materials
-end_comment
-
-begin_comment
-comment|// are made available under the terms of the Eclipse Public License v1.0
-end_comment
-
-begin_comment
-comment|// and Apache License v2.0 which accompanies this distribution.
-end_comment
-
-begin_comment
-comment|// The Eclipse Public License is available at
-end_comment
-
-begin_comment
-comment|// http://www.eclipse.org/legal/epl-v10.html
-end_comment
-
-begin_comment
-comment|// The Apache License v2.0 is available at
-end_comment
-
-begin_comment
-comment|// http://www.opensource.org/licenses/apache2.0.php
-end_comment
-
-begin_comment
-comment|// You may elect to redistribute this code under either of these licenses.
-end_comment
-
-begin_comment
-comment|// ========================================================================
-end_comment
-
 begin_package
 DECL|package|com.google.gerrit.httpd.gitweb
 package|package
