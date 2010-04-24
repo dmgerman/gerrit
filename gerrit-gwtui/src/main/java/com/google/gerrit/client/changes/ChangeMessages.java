@@ -190,6 +190,14 @@ name|int
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|removeReviewer (String fullName)
+name|String
+name|removeReviewer
+parameter_list|(
+name|String
+name|fullName
+parameter_list|)
+function_decl|;
 DECL|method|messageWrittenOn (String date)
 name|String
 name|messageWrittenOn

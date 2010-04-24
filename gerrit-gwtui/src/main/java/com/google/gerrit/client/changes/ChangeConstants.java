@@ -310,11 +310,6 @@ name|String
 name|approvalTableReviewer
 parameter_list|()
 function_decl|;
-DECL|method|removeReviewer ()
-name|String
-name|removeReviewer
-parameter_list|()
-function_decl|;
 DECL|method|approvalTableAddReviewer ()
 name|String
 name|approvalTableAddReviewer

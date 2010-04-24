@@ -143,6 +143,11 @@ name|String
 name|removeReviewer
 parameter_list|()
 function_decl|;
+DECL|method|removeReviewerCell ()
+name|String
+name|removeReviewerCell
+parameter_list|()
+function_decl|;
 DECL|method|addSshKeyPanel ()
 name|String
 name|addSshKeyPanel
