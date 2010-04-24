@@ -282,6 +282,11 @@ name|PatchSetApproval
 argument_list|>
 name|approvals
 decl_stmt|;
+DECL|field|canRemove
+specifier|protected
+name|boolean
+name|canRemove
+decl_stmt|;
 DECL|field|hasNonZero
 specifier|private
 specifier|transient
@@ -337,6 +342,30 @@ block|{
 return|return
 name|account
 return|;
+block|}
+DECL|method|canRemove ()
+specifier|public
+name|boolean
+name|canRemove
+parameter_list|()
+block|{
+return|return
+name|canRemove
+return|;
+block|}
+DECL|method|setCanRemove (boolean removeable)
+specifier|public
+name|void
+name|setCanRemove
+parameter_list|(
+name|boolean
+name|removeable
+parameter_list|)
+block|{
+name|canRemove
+operator|=
+name|removeable
+expr_stmt|;
 block|}
 DECL|method|getApprovalMap ()
 specifier|public
