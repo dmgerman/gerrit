@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -214,9 +214,9 @@ literal|"serial"
 argument_list|)
 annotation|@
 name|Singleton
-DECL|class|GitLogoServlet
+DECL|class|GitWebJavaScriptServlet
 class|class
-name|GitLogoServlet
+name|GitWebJavaScriptServlet
 extends|extends
 name|HttpServlet
 block|{
@@ -270,8 +270,8 @@ name|raw
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitLogoServlet (final GitWebConfig gitWebConfig)
-name|GitLogoServlet
+DECL|method|GitWebJavaScriptServlet (final GitWebConfig gitWebConfig)
+name|GitWebJavaScriptServlet
 parameter_list|(
 specifier|final
 name|GitWebConfig
@@ -290,7 +290,7 @@ name|src
 init|=
 name|gitWebConfig
 operator|.
-name|getGitLogoPNG
+name|getGitwebJS
 argument_list|()
 decl_stmt|;
 if|if
@@ -350,6 +350,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|getLastModified (final HttpServletRequest req)
+specifier|protected
+name|long
+name|getLastModified
+parameter_list|(
+specifier|final
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+return|return
+name|modified
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|doGet (final HttpServletRequest req, final HttpServletResponse rsp)
 specifier|protected
 name|void
@@ -386,7 +402,7 @@ name|rsp
 operator|.
 name|setContentType
 argument_list|(
-literal|"image/png"
+literal|"text/javascript"
 argument_list|)
 expr_stmt|;
 name|rsp

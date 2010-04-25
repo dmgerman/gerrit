@@ -51,62 +51,6 @@ begin_comment
 comment|// limitations under the License.
 end_comment
 
-begin_comment
-comment|// CGI environment and execution management portions are:
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// ========================================================================
-end_comment
-
-begin_comment
-comment|// Copyright (c) 2006-2009 Mort Bay Consulting Pty. Ltd.
-end_comment
-
-begin_comment
-comment|// ------------------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|// All rights reserved. This program and the accompanying materials
-end_comment
-
-begin_comment
-comment|// are made available under the terms of the Eclipse Public License v1.0
-end_comment
-
-begin_comment
-comment|// and Apache License v2.0 which accompanies this distribution.
-end_comment
-
-begin_comment
-comment|// The Eclipse Public License is available at
-end_comment
-
-begin_comment
-comment|// http://www.eclipse.org/legal/epl-v10.html
-end_comment
-
-begin_comment
-comment|// The Apache License v2.0 is available at
-end_comment
-
-begin_comment
-comment|// http://www.opensource.org/licenses/apache2.0.php
-end_comment
-
-begin_comment
-comment|// You may elect to redistribute this code under either of these licenses.
-end_comment
-
-begin_comment
-comment|// ========================================================================
-end_comment
-
 begin_package
 DECL|package|com.google.gerrit.httpd.gitweb
 package|package
@@ -225,6 +169,18 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
@@ -372,6 +328,47 @@ name|ENC
 init|=
 literal|"UTF-8"
 decl_stmt|;
+DECL|field|MAX_AGE
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|MAX_AGE
+init|=
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|convert
+argument_list|(
+literal|5
+argument_list|,
+name|TimeUnit
+operator|.
+name|MINUTES
+argument_list|)
+decl_stmt|;
+DECL|field|CACHE_CTRL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CACHE_CTRL
+init|=
+literal|"public, max-age="
+operator|+
+operator|(
+name|MAX_AGE
+operator|/
+literal|1000L
+operator|)
+decl_stmt|;
+DECL|field|modified
+specifier|private
+specifier|final
+name|long
+name|modified
+decl_stmt|;
 DECL|field|raw_css
 specifier|private
 specifier|final
@@ -445,6 +442,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|modified
+operator|=
+name|src
+operator|.
+name|lastModified
+argument_list|()
+expr_stmt|;
 name|raw_css
 operator|=
 name|raw
@@ -466,6 +470,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|modified
+operator|=
+operator|-
+literal|1L
+expr_stmt|;
 name|raw_css
 operator|=
 literal|null
@@ -478,6 +487,11 @@ block|}
 block|}
 else|else
 block|{
+name|modified
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 name|raw_css
 operator|=
 literal|null
@@ -487,6 +501,22 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getLastModified (final HttpServletRequest req)
+specifier|protected
+name|long
+name|getLastModified
+parameter_list|(
+specifier|final
+name|HttpServletRequest
+name|req
+parameter_list|)
+block|{
+return|return
+name|modified
+return|;
 block|}
 annotation|@
 name|Override
@@ -513,6 +543,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+specifier|final
+name|long
+name|now
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 name|rsp
 operator|.
 name|setContentType
@@ -570,6 +609,44 @@ argument_list|(
 name|toSend
 operator|.
 name|length
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setHeader
+argument_list|(
+literal|"Cache-Control"
+argument_list|,
+name|CACHE_CTRL
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setDateHeader
+argument_list|(
+literal|"Date"
+argument_list|,
+name|now
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setDateHeader
+argument_list|(
+literal|"Expires"
+argument_list|,
+name|now
+operator|+
+name|MAX_AGE
+argument_list|)
+expr_stmt|;
+name|rsp
+operator|.
+name|setDateHeader
+argument_list|(
+literal|"Last-Modified"
+argument_list|,
+name|modified
 argument_list|)
 expr_stmt|;
 specifier|final

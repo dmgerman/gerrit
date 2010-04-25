@@ -208,6 +208,12 @@ specifier|final
 name|File
 name|gitweb_css
 decl_stmt|;
+DECL|field|gitweb_js
+specifier|private
+specifier|final
+name|File
+name|gitweb_js
+decl_stmt|;
 DECL|field|git_logo_png
 specifier|private
 specifier|final
@@ -443,6 +449,10 @@ name|gitweb_css
 operator|=
 literal|null
 expr_stmt|;
+name|gitweb_js
+operator|=
+literal|null
+expr_stmt|;
 name|git_logo_png
 operator|=
 literal|null
@@ -467,6 +477,10 @@ operator|=
 literal|null
 expr_stmt|;
 name|gitweb_css
+operator|=
+literal|null
+expr_stmt|;
+name|gitweb_js
 operator|=
 literal|null
 expr_stmt|;
@@ -647,6 +661,10 @@ name|css
 init|=
 literal|null
 decl_stmt|,
+name|js
+init|=
+literal|null
+decl_stmt|,
 name|logo
 init|=
 literal|null
@@ -676,6 +694,16 @@ argument_list|(
 name|dir
 argument_list|,
 literal|"gitweb.css"
+argument_list|)
+expr_stmt|;
+name|js
+operator|=
+operator|new
+name|File
+argument_list|(
+name|dir
+argument_list|,
+literal|"gitweb.js"
 argument_list|)
 expr_stmt|;
 name|logo
@@ -721,6 +749,10 @@ expr_stmt|;
 name|gitweb_css
 operator|=
 name|css
+expr_stmt|;
+name|gitweb_js
+operator|=
+name|js
 expr_stmt|;
 name|git_logo_png
 operator|=
@@ -769,6 +801,17 @@ parameter_list|()
 block|{
 return|return
 name|gitweb_css
+return|;
+block|}
+comment|/** @return local path of the {@code gitweb.js} for the CGI. */
+DECL|method|getGitwebJS ()
+specifier|public
+name|File
+name|getGitwebJS
+parameter_list|()
+block|{
+return|return
+name|gitweb_js
 return|;
 block|}
 comment|/** @return local path of the {@code git-logo.png} for the CGI. */
