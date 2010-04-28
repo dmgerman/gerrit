@@ -195,11 +195,14 @@ name|DownloadCommand
 block|{
 DECL|enumConstant|REPO_DOWNLOAD
 DECL|enumConstant|PULL
+DECL|enumConstant|CHECKOUT
 DECL|enumConstant|CHERRY_PICK
 DECL|enumConstant|FORMAT_PATCH
 name|REPO_DOWNLOAD
 block|,
 name|PULL
+block|,
+name|CHECKOUT
 block|,
 name|CHERRY_PICK
 block|,
