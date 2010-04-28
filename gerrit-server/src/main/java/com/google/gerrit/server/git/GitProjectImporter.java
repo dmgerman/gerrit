@@ -560,18 +560,29 @@ name|prefix
 operator|+
 name|name
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|have
+operator|.
+name|contains
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
 name|messages
 operator|.
 name|warning
 argument_list|(
-literal|"Ignoring non-standard name '"
+literal|"Importing non-standard name '"
 operator|+
 name|name
 operator|+
 literal|"'"
 argument_list|)
 expr_stmt|;
-continue|continue;
+block|}
 block|}
 if|if
 condition|(
