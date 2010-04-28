@@ -110,18 +110,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|h2
-operator|.
-name|util
-operator|.
-name|StartBrowser
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -480,9 +468,15 @@ argument_list|(
 literal|"Opening browser ..."
 argument_list|)
 expr_stmt|;
-name|StartBrowser
+name|org
 operator|.
-name|openURL
+name|h2
+operator|.
+name|tools
+operator|.
+name|Server
+operator|.
+name|openBrowser
 argument_list|(
 name|url
 argument_list|)
