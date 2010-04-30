@@ -72,6 +72,36 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Project
+operator|.
+name|NameKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -103,6 +133,22 @@ operator|.
 name|server
 operator|.
 name|RequestCleanup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|ProjectRunnable
 import|;
 end_import
 
@@ -1544,6 +1590,8 @@ class|class
 name|TaskThunk
 implements|implements
 name|CancelableRunnable
+implements|,
+name|ProjectRunnable
 block|{
 DECL|field|thunk
 specifier|private
@@ -1562,6 +1610,13 @@ specifier|private
 specifier|final
 name|String
 name|taskName
+decl_stmt|;
+DECL|field|projectName
+specifier|private
+name|Project
+operator|.
+name|NameKey
+name|projectName
 decl_stmt|;
 DECL|method|TaskThunk (final CommandRunnable thunk)
 specifier|private
@@ -1753,6 +1808,36 @@ operator|+
 name|taskName
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|thunk
+operator|instanceof
+name|ProjectCommandRunnable
+condition|)
+block|{
+operator|(
+operator|(
+name|ProjectCommandRunnable
+operator|)
+name|thunk
+operator|)
+operator|.
+name|executeParseCommand
+argument_list|()
+expr_stmt|;
+name|projectName
+operator|=
+operator|(
+operator|(
+name|ProjectCommandRunnable
+operator|)
+name|thunk
+operator|)
+operator|.
+name|getProjectName
+argument_list|()
+expr_stmt|;
+block|}
 try|try
 block|{
 name|thunk
@@ -1897,6 +1982,42 @@ return|return
 name|taskName
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getProjectNameKey ()
+specifier|public
+name|NameKey
+name|getProjectNameKey
+parameter_list|()
+block|{
+return|return
+name|projectName
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getRemoteName ()
+specifier|public
+name|String
+name|getRemoteName
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hasCustomizedPrint ()
+specifier|public
+name|boolean
+name|hasCustomizedPrint
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/** Runnable function which can throw an exception. */
 DECL|interface|CommandRunnable
@@ -1912,6 +2033,34 @@ name|run
 parameter_list|()
 throws|throws
 name|Exception
+function_decl|;
+block|}
+comment|/** Runnable function which can retrieve a project name related to the task */
+DECL|interface|ProjectCommandRunnable
+specifier|public
+specifier|static
+interface|interface
+name|ProjectCommandRunnable
+extends|extends
+name|CommandRunnable
+block|{
+comment|// execute parser command before running, in order to be able to retrieve
+comment|// project name
+DECL|method|executeParseCommand ()
+specifier|public
+name|void
+name|executeParseCommand
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+DECL|method|getProjectName ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProjectName
+parameter_list|()
 function_decl|;
 block|}
 comment|/** Thrown from {@link CommandRunnable#run()} with client message and code. */

@@ -261,7 +261,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminShowQueue
+name|ShowQueue
 operator|.
 name|class
 argument_list|)
