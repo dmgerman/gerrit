@@ -118,6 +118,17 @@ name|String
 name|msg
 parameter_list|)
 function_decl|;
+DECL|method|yesno (boolean def, String msg)
+name|boolean
+name|yesno
+parameter_list|(
+name|boolean
+name|def
+parameter_list|,
+name|String
+name|msg
+parameter_list|)
+function_decl|;
 DECL|method|pruneSchema (StatementExecutor e, List<String> pruneList)
 name|void
 name|pruneSchema

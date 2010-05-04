@@ -3363,7 +3363,7 @@ literal|4
 argument_list|,
 name|right
 operator|.
-name|getRefPattern
+name|getRefPatternForDisplay
 argument_list|()
 argument_list|)
 expr_stmt|;

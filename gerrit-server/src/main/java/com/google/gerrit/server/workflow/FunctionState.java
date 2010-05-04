@@ -985,7 +985,7 @@ name|r
 range|:
 name|rc
 operator|.
-name|getAllRights
+name|getApplicableRights
 argument_list|(
 name|a
 operator|.
@@ -1054,8 +1054,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Normalize the value into that range, returning true if we changed
-comment|// the value.
+comment|// Normalize the value into that range.
 comment|//
 if|if
 condition|(

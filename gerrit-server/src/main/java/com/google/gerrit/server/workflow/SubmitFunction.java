@@ -253,7 +253,7 @@ name|pr
 range|:
 name|rc
 operator|.
-name|getAllRights
+name|getApplicableRights
 argument_list|(
 name|at
 operator|.
