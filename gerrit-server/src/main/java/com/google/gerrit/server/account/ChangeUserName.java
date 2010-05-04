@@ -320,6 +320,16 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/** Operation to change the username of an account. */
 end_comment
@@ -504,7 +514,7 @@ name|newUsername
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUserName (final AccountCache accountCache, final SshKeyCache sshKeyCache, @Assisted final ReviewDb db, @Assisted final IdentifiedUser user, @Assisted final String newUsername)
+DECL|method|ChangeUserName (final AccountCache accountCache, final SshKeyCache sshKeyCache, @Assisted final ReviewDb db, @Assisted final IdentifiedUser user, @Nullable @Assisted final String newUsername)
 name|ChangeUserName
 parameter_list|(
 specifier|final
@@ -527,6 +537,8 @@ specifier|final
 name|IdentifiedUser
 name|user
 parameter_list|,
+annotation|@
+name|Nullable
 annotation|@
 name|Assisted
 specifier|final
