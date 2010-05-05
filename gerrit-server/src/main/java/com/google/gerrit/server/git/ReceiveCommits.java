@@ -2723,7 +2723,7 @@ name|a
 init|=
 name|accountResolver
 operator|.
-name|find
+name|findByNameOrEmail
 argument_list|(
 name|nameOrEmail
 argument_list|)

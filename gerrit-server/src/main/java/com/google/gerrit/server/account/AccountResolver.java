@@ -273,7 +273,7 @@ operator|=
 name|schema
 expr_stmt|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", or just the email address    *        ("email@example"), or a full name, or an account id.    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), or an account id    *        ("18419").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
 DECL|method|find (final String nameOrEmail)
 specifier|public
 name|Account
@@ -362,6 +362,26 @@ name|getAccount
 argument_list|()
 return|;
 block|}
+return|return
+name|findByNameOrEmail
+argument_list|(
+name|nameOrEmail
+argument_list|)
+return|;
+block|}
+comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name").    * @return the single account that matches; null if no account matches or    *         there are multiple candidates.    */
+DECL|method|findByNameOrEmail (final String nameOrEmail)
+specifier|public
+name|Account
+name|findByNameOrEmail
+parameter_list|(
+specifier|final
+name|String
+name|nameOrEmail
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
 specifier|final
 name|int
 name|lt
