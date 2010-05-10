@@ -637,6 +637,18 @@ operator|<
 literal|0
 return|;
 block|}
+DECL|method|isRange ()
+specifier|public
+name|boolean
+name|isRange
+parameter_list|()
+block|{
+return|return
+operator|!
+name|isAction
+argument_list|()
+return|;
+block|}
 DECL|method|getFunctionName ()
 specifier|public
 name|String
