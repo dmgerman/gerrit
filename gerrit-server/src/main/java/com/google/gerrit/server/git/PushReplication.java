@@ -2448,9 +2448,6 @@ operator|.
 name|create
 argument_list|(
 name|project
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|uri
 argument_list|)

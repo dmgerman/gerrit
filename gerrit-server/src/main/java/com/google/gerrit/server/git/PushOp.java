@@ -429,11 +429,13 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (String d, URIish u)
+DECL|method|create (Project.NameKey d, URIish u)
 name|PushOp
 name|create
 parameter_list|(
-name|String
+name|Project
+operator|.
+name|NameKey
 name|d
 parameter_list|,
 name|URIish
@@ -499,7 +501,9 @@ decl_stmt|;
 DECL|field|projectName
 specifier|private
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|projectName
 decl_stmt|;
 DECL|field|uri
@@ -520,7 +524,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PushOp (final GitRepositoryManager grm, final PushReplication.ReplicationConfig p, final RemoteConfig c, @Assisted final String d, @Assisted final URIish u)
+DECL|method|PushOp (final GitRepositoryManager grm, final PushReplication.ReplicationConfig p, final RemoteConfig c, @Assisted final Project.NameKey d, @Assisted final URIish u)
 name|PushOp
 parameter_list|(
 specifier|final
@@ -540,7 +544,9 @@ parameter_list|,
 annotation|@
 name|Assisted
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|d
 parameter_list|,
 annotation|@
@@ -651,6 +657,9 @@ operator|.
 name|openRepository
 argument_list|(
 name|projectName
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|runImpl
@@ -1653,13 +1662,7 @@ name|getProjectNameKey
 parameter_list|()
 block|{
 return|return
-operator|new
-name|Project
-operator|.
-name|NameKey
-argument_list|(
 name|projectName
-argument_list|)
 return|;
 block|}
 annotation|@
