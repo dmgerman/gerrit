@@ -675,6 +675,12 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|visibleForReplication
+argument_list|()
+operator|||
 name|canPerform
 argument_list|(
 name|READ

@@ -170,6 +170,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ReplicationUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -634,6 +648,9 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
+name|visibleForReplication
+argument_list|()
+operator|||
 name|canPerformOnAnyRef
 argument_list|(
 name|ApprovalCategory
@@ -655,6 +672,9 @@ name|allRefsAreVisible
 parameter_list|()
 block|{
 return|return
+name|visibleForReplication
+argument_list|()
+operator|||
 name|canPerformOnAllRefs
 argument_list|(
 name|ApprovalCategory
@@ -666,6 +686,30 @@ name|short
 operator|)
 literal|1
 argument_list|)
+return|;
+block|}
+comment|/** Is this project completely visible for replication? */
+DECL|method|visibleForReplication ()
+name|boolean
+name|visibleForReplication
+parameter_list|()
+block|{
+return|return
+name|getCurrentUser
+argument_list|()
+operator|instanceof
+name|ReplicationUser
+operator|&&
+operator|(
+operator|(
+name|ReplicationUser
+operator|)
+name|getCurrentUser
+argument_list|()
+operator|)
+operator|.
+name|isEverythingVisible
+argument_list|()
 return|;
 block|}
 comment|/** Is this user a project owner? Ownership does not imply {@link #isVisible()} */
