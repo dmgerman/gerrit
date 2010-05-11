@@ -112,9 +112,19 @@ name|String
 name|rememberMe
 parameter_list|()
 function_decl|;
-DECL|method|notSupported ()
+DECL|method|notAllowed ()
 name|String
-name|notSupported
+name|notAllowed
+parameter_list|()
+function_decl|;
+DECL|method|noProvider ()
+name|String
+name|noProvider
+parameter_list|()
+function_decl|;
+DECL|method|error ()
+name|String
+name|error
 parameter_list|()
 function_decl|;
 DECL|method|nameGoogle ()

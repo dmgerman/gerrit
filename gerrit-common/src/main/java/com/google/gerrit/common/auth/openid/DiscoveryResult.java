@@ -85,10 +85,32 @@ specifier|final
 class|class
 name|DiscoveryResult
 block|{
-DECL|field|validProvider
+DECL|enum|Status
 specifier|public
-name|boolean
-name|validProvider
+specifier|static
+enum|enum
+name|Status
+block|{
+comment|/** Provider was discovered and {@code providerUrl} is valid. */
+DECL|enumConstant|VALID
+name|VALID
+block|,
+comment|/** The identifier is not allowed to be used, by site configuration. */
+DECL|enumConstant|NOT_ALLOWED
+name|NOT_ALLOWED
+block|,
+comment|/** Identifier isn't for an OpenID provider. */
+DECL|enumConstant|NO_PROVIDER
+name|NO_PROVIDER
+block|,
+comment|/** The provider was discovered, but something else failed. */
+DECL|enumConstant|ERROR
+name|ERROR
+block|;   }
+DECL|field|status
+specifier|public
+name|Status
+name|status
 decl_stmt|;
 DECL|field|providerUrl
 specifier|public
@@ -110,14 +132,10 @@ specifier|protected
 name|DiscoveryResult
 parameter_list|()
 block|{   }
-DECL|method|DiscoveryResult (final boolean valid, final String redirect, final Map<String, String> args)
+DECL|method|DiscoveryResult (final String redirect, final Map<String, String> args)
 specifier|public
 name|DiscoveryResult
 parameter_list|(
-specifier|final
-name|boolean
-name|valid
-parameter_list|,
 specifier|final
 name|String
 name|redirect
@@ -132,9 +150,11 @@ argument_list|>
 name|args
 parameter_list|)
 block|{
-name|validProvider
+name|status
 operator|=
-name|valid
+name|Status
+operator|.
+name|VALID
 expr_stmt|;
 name|providerUrl
 operator|=
@@ -145,23 +165,18 @@ operator|=
 name|args
 expr_stmt|;
 block|}
-DECL|method|DiscoveryResult (final boolean fail)
+DECL|method|DiscoveryResult (final Status s)
 specifier|public
 name|DiscoveryResult
 parameter_list|(
 specifier|final
-name|boolean
-name|fail
+name|Status
+name|s
 parameter_list|)
 block|{
-name|this
-argument_list|(
-literal|false
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|)
+name|status
+operator|=
+name|s
 expr_stmt|;
 block|}
 block|}
