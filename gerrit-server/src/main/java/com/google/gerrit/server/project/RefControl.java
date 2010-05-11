@@ -1211,38 +1211,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|val
-argument_list|<
-literal|0
-operator|&&
-name|right
-operator|.
-name|getMaxValue
-operator|(
-operator|)
-argument_list|>
-literal|0
-condition|)
-block|{
-comment|// If one of the user's groups had denied them access, but
-comment|// this group grants them access, prefer the grant over
-comment|// the denial. We have to break the tie somehow and we
-comment|// prefer being "more open" to being "more closed".
-comment|//
-name|val
-operator|=
-name|right
-operator|.
-name|getMaxValue
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Otherwise we use the largest value we can get.
-comment|//
 name|val
 operator|=
 name|Math
@@ -1257,7 +1225,6 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return
