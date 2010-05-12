@@ -664,6 +664,30 @@ literal|1
 argument_list|)
 return|;
 block|}
+DECL|method|canAddRefs ()
+specifier|public
+name|boolean
+name|canAddRefs
+parameter_list|()
+block|{
+return|return
+operator|(
+name|canPerformOnAnyRef
+argument_list|(
+name|ApprovalCategory
+operator|.
+name|PUSH_HEAD
+argument_list|,
+name|ApprovalCategory
+operator|.
+name|PUSH_HEAD_CREATE
+argument_list|)
+operator|||
+name|isOwnerAnyRef
+argument_list|()
+operator|)
+return|;
+block|}
 comment|/** Can this user see all the refs in this projects? */
 DECL|method|allRefsAreVisible ()
 specifier|public

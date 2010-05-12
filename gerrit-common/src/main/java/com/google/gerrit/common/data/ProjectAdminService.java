@@ -194,20 +194,6 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|VoidResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
 name|RpcImpl
 operator|.
 name|Version
@@ -253,9 +239,9 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|SignInRequired
-DECL|method|ownedProjects (AsyncCallback<List<Project>> callback)
+DECL|method|visibleProjects (AsyncCallback<List<Project>> callback)
 name|void
-name|ownedProjects
+name|visibleProjects
 parameter_list|(
 name|AsyncCallback
 argument_list|<
@@ -303,7 +289,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|deleteRight (Project.NameKey projectName, Set<RefRight.Key> ids, AsyncCallback<VoidResult> callback)
+DECL|method|deleteRight (Project.NameKey projectName, Set<RefRight.Key> ids, AsyncCallback<ProjectDetail> callback)
 name|void
 name|deleteRight
 parameter_list|(
@@ -322,7 +308,7 @@ name|ids
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|ProjectDetail
 argument_list|>
 name|callback
 parameter_list|)
@@ -364,7 +350,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|listBranches (Project.NameKey projectName, AsyncCallback<List<Branch>> callback)
+DECL|method|listBranches (Project.NameKey projectName, AsyncCallback<ListBranchesResult> callback)
 name|void
 name|listBranches
 parameter_list|(
@@ -375,17 +361,14 @@ name|projectName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|Branch
-argument_list|>
+name|ListBranchesResult
 argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<List<Branch>> callback)
+DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<ListBranchesResult> callback)
 name|void
 name|addBranch
 parameter_list|(
@@ -402,10 +385,7 @@ name|startingRevision
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|Branch
-argument_list|>
+name|ListBranchesResult
 argument_list|>
 name|callback
 parameter_list|)

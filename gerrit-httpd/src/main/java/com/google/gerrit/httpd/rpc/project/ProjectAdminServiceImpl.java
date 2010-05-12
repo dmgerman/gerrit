@@ -80,6 +80,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|ListBranchesResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|ProjectAdminService
 import|;
 end_import
@@ -180,20 +196,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
-name|VoidResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -259,13 +261,13 @@ operator|.
 name|Factory
 name|listBranchesFactory
 decl_stmt|;
-DECL|field|ownedProjectsFactory
+DECL|field|visibleProjectsFactory
 specifier|private
 specifier|final
-name|OwnedProjects
+name|VisibleProjects
 operator|.
 name|Factory
-name|ownedProjectsFactory
+name|visibleProjectsFactory
 decl_stmt|;
 DECL|field|projectDetailFactory
 specifier|private
@@ -293,7 +295,7 @@ name|deleteRefRightsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final AddBranch.Factory addBranchFactory, final ChangeProjectSettings.Factory changeProjectSettingsFactory, final DeleteBranches.Factory deleteBranchesFactory, final ListBranches.Factory listBranchesFactory, final OwnedProjects.Factory ownedProjectsFactory, final ProjectDetailFactory.Factory projectDetailFactory, final AddRefRight.Factory addRefRightFactory, final DeleteRefRights.Factory deleteRefRightsFactory)
+DECL|method|ProjectAdminServiceImpl (final AddBranch.Factory addBranchFactory, final ChangeProjectSettings.Factory changeProjectSettingsFactory, final DeleteBranches.Factory deleteBranchesFactory, final ListBranches.Factory listBranchesFactory, final VisibleProjects.Factory visibleProjectsFactory, final ProjectDetailFactory.Factory projectDetailFactory, final AddRefRight.Factory addRefRightFactory, final DeleteRefRights.Factory deleteRefRightsFactory)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -321,10 +323,10 @@ name|Factory
 name|listBranchesFactory
 parameter_list|,
 specifier|final
-name|OwnedProjects
+name|VisibleProjects
 operator|.
 name|Factory
-name|ownedProjectsFactory
+name|visibleProjectsFactory
 parameter_list|,
 specifier|final
 name|ProjectDetailFactory
@@ -371,9 +373,9 @@ name|listBranchesFactory
 expr_stmt|;
 name|this
 operator|.
-name|ownedProjectsFactory
+name|visibleProjectsFactory
 operator|=
-name|ownedProjectsFactory
+name|visibleProjectsFactory
 expr_stmt|;
 name|this
 operator|.
@@ -396,10 +398,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|ownedProjects (final AsyncCallback<List<Project>> callback)
+DECL|method|visibleProjects (final AsyncCallback<List<Project>> callback)
 specifier|public
 name|void
-name|ownedProjects
+name|visibleProjects
 parameter_list|(
 specifier|final
 name|AsyncCallback
@@ -412,7 +414,7 @@ argument_list|>
 name|callback
 parameter_list|)
 block|{
-name|ownedProjectsFactory
+name|visibleProjectsFactory
 operator|.
 name|create
 argument_list|()
@@ -491,7 +493,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|deleteRight (final Project.NameKey projectName, final Set<RefRight.Key> toRemove, final AsyncCallback<VoidResult> callback)
+DECL|method|deleteRight (final Project.NameKey projectName, final Set<RefRight.Key> toRemove, final AsyncCallback<ProjectDetail> callback)
 specifier|public
 name|void
 name|deleteRight
@@ -514,7 +516,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|ProjectDetail
 argument_list|>
 name|callback
 parameter_list|)
@@ -602,7 +604,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|listBranches (final Project.NameKey projectName, final AsyncCallback<List<Branch>> callback)
+DECL|method|listBranches (final Project.NameKey projectName, final AsyncCallback<ListBranchesResult> callback)
 specifier|public
 name|void
 name|listBranches
@@ -616,10 +618,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|Branch
-argument_list|>
+name|ListBranchesResult
 argument_list|>
 name|callback
 parameter_list|)
@@ -689,7 +688,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addBranch (final Project.NameKey projectName, final String branchName, final String startingRevision, final AsyncCallback<List<Branch>> callback)
+DECL|method|addBranch (final Project.NameKey projectName, final String branchName, final String startingRevision, final AsyncCallback<ListBranchesResult> callback)
 specifier|public
 name|void
 name|addBranch
@@ -711,10 +710,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|Branch
-argument_list|>
+name|ListBranchesResult
 argument_list|>
 name|callback
 parameter_list|)

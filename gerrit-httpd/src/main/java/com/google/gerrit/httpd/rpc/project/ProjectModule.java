@@ -214,7 +214,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|OwnedProjects
+name|VisibleProjects
 operator|.
 name|Factory
 operator|.

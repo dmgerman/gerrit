@@ -370,7 +370,7 @@ name|Util
 operator|.
 name|PROJECT_SVC
 operator|.
-name|ownedProjects
+name|visibleProjects
 argument_list|(
 operator|new
 name|ScreenLoadCallback

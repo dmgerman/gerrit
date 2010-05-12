@@ -100,14 +100,19 @@ specifier|private
 name|boolean
 name|inherited
 decl_stmt|;
+DECL|field|owner
+specifier|private
+name|boolean
+name|owner
+decl_stmt|;
 comment|/**    * Creates a instance of a {@link RefRight} with data about inheritance    */
 DECL|method|InheritedRefRight ()
 specifier|protected
 name|InheritedRefRight
 parameter_list|()
 block|{   }
-comment|/**    * Creates a instance of a {@link RefRight} with data about inheritance    *    * @param right the right    * @param inherited true if the right is inherited, false otherwise    */
-DECL|method|InheritedRefRight (RefRight right, boolean inherited)
+comment|/**    * Creates a instance of a {@link RefRight} with data about inheritance    *    * @param right the right    * @param inherited true if the right is inherited, false otherwise    * @param owner true if right is owned by current user, false otherwise    */
+DECL|method|InheritedRefRight (RefRight right, boolean inherited, boolean owner)
 specifier|public
 name|InheritedRefRight
 parameter_list|(
@@ -116,6 +121,9 @@ name|right
 parameter_list|,
 name|boolean
 name|inherited
+parameter_list|,
+name|boolean
+name|owner
 parameter_list|)
 block|{
 name|this
@@ -129,6 +137,12 @@ operator|.
 name|inherited
 operator|=
 name|inherited
+expr_stmt|;
+name|this
+operator|.
+name|owner
+operator|=
+name|owner
 expr_stmt|;
 block|}
 DECL|method|getRight ()
@@ -149,6 +163,16 @@ parameter_list|()
 block|{
 return|return
 name|inherited
+return|;
+block|}
+DECL|method|isOwner ()
+specifier|public
+name|boolean
+name|isOwner
+parameter_list|()
+block|{
+return|return
+name|owner
 return|;
 block|}
 annotation|@

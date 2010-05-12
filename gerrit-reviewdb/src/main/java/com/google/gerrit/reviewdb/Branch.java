@@ -302,6 +302,11 @@ specifier|protected
 name|RevId
 name|revision
 decl_stmt|;
+DECL|field|canDelete
+specifier|protected
+name|boolean
+name|canDelete
+decl_stmt|;
 DECL|method|Branch ()
 specifier|protected
 name|Branch
@@ -384,6 +389,32 @@ block|{
 name|revision
 operator|=
 name|id
+expr_stmt|;
+block|}
+DECL|method|getCanDelete ()
+specifier|public
+name|boolean
+name|getCanDelete
+parameter_list|()
+block|{
+return|return
+name|canDelete
+return|;
+block|}
+DECL|method|setCanDelete (boolean canDelete)
+specifier|public
+name|void
+name|setCanDelete
+parameter_list|(
+name|boolean
+name|canDelete
+parameter_list|)
+block|{
+name|this
+operator|.
+name|canDelete
+operator|=
+name|canDelete
 expr_stmt|;
 block|}
 block|}

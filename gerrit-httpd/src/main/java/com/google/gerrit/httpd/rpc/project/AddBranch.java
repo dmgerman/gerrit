@@ -78,6 +78,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|data
+operator|.
+name|ListBranchesResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|errors
 operator|.
 name|InvalidNameException
@@ -434,16 +450,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 DECL|class|AddBranch
 class|class
@@ -451,10 +457,7 @@ name|AddBranch
 extends|extends
 name|Handler
 argument_list|<
-name|List
-argument_list|<
-name|Branch
-argument_list|>
+name|ListBranchesResult
 argument_list|>
 block|{
 DECL|field|log
@@ -666,10 +669,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|List
-argument_list|<
-name|Branch
-argument_list|>
+name|ListBranchesResult
 name|call
 parameter_list|()
 throws|throws

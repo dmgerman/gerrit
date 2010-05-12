@@ -76,6 +76,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|ProjectDetail
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|rpc
@@ -212,20 +228,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
-name|VoidResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -287,7 +289,7 @@ name|DeleteRefRights
 extends|extends
 name|Handler
 argument_list|<
-name|VoidResult
+name|ProjectDetail
 argument_list|>
 block|{
 DECL|interface|Factory
@@ -317,6 +319,14 @@ name|toRemove
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|projectDetailFactory
+specifier|private
+specifier|final
+name|ProjectDetailFactory
+operator|.
+name|Factory
+name|projectDetailFactory
+decl_stmt|;
 DECL|field|projectControlFactory
 specifier|private
 specifier|final
@@ -358,9 +368,15 @@ name|toRemove
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteRefRights (final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.NameKey projectName, @Assisted final Set<RefRight.Key> toRemove)
+DECL|method|DeleteRefRights (final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final ReviewDb db, @Assisted final Project.NameKey projectName, @Assisted final Set<RefRight.Key> toRemove)
 name|DeleteRefRights
 parameter_list|(
+specifier|final
+name|ProjectDetailFactory
+operator|.
+name|Factory
+name|projectDetailFactory
+parameter_list|,
 specifier|final
 name|ProjectControl
 operator|.
@@ -397,6 +413,12 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|projectDetailFactory
+operator|=
+name|projectDetailFactory
+expr_stmt|;
+name|this
+operator|.
 name|projectControlFactory
 operator|=
 name|projectControlFactory
@@ -430,7 +452,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|VoidResult
+name|ProjectDetail
 name|call
 parameter_list|()
 throws|throws
@@ -568,9 +590,15 @@ name|evictAll
 argument_list|()
 expr_stmt|;
 return|return
-name|VoidResult
+name|projectDetailFactory
 operator|.
-name|INSTANCE
+name|create
+argument_list|(
+name|projectName
+argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 DECL|method|controlForRef (ProjectControl p, String ref)
