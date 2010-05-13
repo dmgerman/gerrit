@@ -811,6 +811,13 @@ argument_list|(
 name|SINGLETON
 argument_list|)
 expr_stmt|;
+name|bind
+argument_list|(
+name|TransferConfig
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|install
 argument_list|(
 operator|new
