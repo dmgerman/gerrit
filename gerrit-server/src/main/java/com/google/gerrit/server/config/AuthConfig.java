@@ -350,6 +350,14 @@ name|Id
 argument_list|>
 name|registeredGroups
 decl_stmt|;
+DECL|field|batchUsersGroup
+specifier|private
+specifier|final
+name|AccountGroup
+operator|.
+name|Id
+name|batchUsersGroup
+decl_stmt|;
 DECL|field|allowGoogleAccountUpgrade
 specifier|private
 specifier|final
@@ -506,6 +514,12 @@ operator|=
 name|s
 operator|.
 name|adminGroupId
+expr_stmt|;
+name|batchUsersGroup
+operator|=
+name|s
+operator|.
+name|batchUsersGroupId
 expr_stmt|;
 if|if
 condition|(
@@ -725,6 +739,19 @@ parameter_list|()
 block|{
 return|return
 name|administratorGroup
+return|;
+block|}
+comment|/** Identity of the group whose service is degraded to lower priority. */
+DECL|method|getBatchUsersGroup ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getBatchUsersGroup
+parameter_list|()
+block|{
+return|return
+name|batchUsersGroup
 return|;
 block|}
 comment|/** Groups that all users, including anonymous users, belong to. */

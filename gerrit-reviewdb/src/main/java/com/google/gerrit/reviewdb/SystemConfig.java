@@ -70,6 +70,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountGroup
+operator|.
+name|Id
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -339,6 +355,21 @@ name|Project
 operator|.
 name|NameKey
 name|wildProjectName
+decl_stmt|;
+comment|/** Identity of the batch users group */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|)
+DECL|field|batchUsersGroupId
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|batchUsersGroupId
 decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected

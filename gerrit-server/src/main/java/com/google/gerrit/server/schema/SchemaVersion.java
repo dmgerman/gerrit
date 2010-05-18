@@ -248,7 +248,7 @@ name|SchemaVersion
 argument_list|>
 name|C
 init|=
-name|Schema_32
+name|Schema_33
 operator|.
 name|class
 decl_stmt|;

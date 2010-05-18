@@ -219,6 +219,26 @@ argument_list|>
 name|getStarredChanges
 parameter_list|()
 function_decl|;
+comment|/** Is the user a non-interactive user? */
+DECL|method|isBatchUser ()
+specifier|public
+name|boolean
+name|isBatchUser
+parameter_list|()
+block|{
+return|return
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|authConfig
+operator|.
+name|getBatchUsersGroup
+argument_list|()
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Deprecated
 DECL|method|isAdministrator ()
