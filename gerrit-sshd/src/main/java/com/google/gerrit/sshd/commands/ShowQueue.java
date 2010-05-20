@@ -204,6 +204,20 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
+name|AdminHighPriorityCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
 name|BaseCommand
 import|;
 end_import
@@ -323,6 +337,8 @@ comment|/** Display the current work queue. */
 end_comment
 
 begin_class
+annotation|@
+name|AdminHighPriorityCommand
 DECL|class|ShowQueue
 specifier|final
 class|class
