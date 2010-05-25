@@ -285,6 +285,11 @@ name|String
 name|nextPatchLinkIcon
 parameter_list|()
 function_decl|;
+DECL|method|changeScreenIncludedIn ()
+name|String
+name|changeScreenIncludedIn
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenDependencies ()
 name|String
 name|changeScreenDependencies
@@ -348,6 +353,16 @@ function_decl|;
 DECL|method|changePermalink ()
 name|String
 name|changePermalink
+parameter_list|()
+function_decl|;
+DECL|method|includedInTableBranch ()
+name|String
+name|includedInTableBranch
+parameter_list|()
+function_decl|;
+DECL|method|includedInTableTag ()
+name|String
+name|includedInTableTag
 parameter_list|()
 function_decl|;
 DECL|method|messageNoAuthor ()

@@ -205,6 +205,22 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+DECL|method|includedInDetail (Change.Id id, AsyncCallback<IncludedInDetail> callback)
+name|void
+name|includedInDetail
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|IncludedInDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 DECL|method|patchSetDetail (PatchSet.Id key, AsyncCallback<PatchSetDetail> callback)
 name|void
 name|patchSetDetail
