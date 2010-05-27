@@ -237,8 +237,6 @@ name|ProjectAdminService
 extends|extends
 name|RemoteJsonService
 block|{
-annotation|@
-name|SignInRequired
 DECL|method|visibleProjects (AsyncCallback<List<Project>> callback)
 name|void
 name|visibleProjects
@@ -253,8 +251,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|SignInRequired
 DECL|method|projectDetail (Project.NameKey projectName, AsyncCallback<ProjectDetail> callback)
 name|void
 name|projectDetail
@@ -348,8 +344,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|SignInRequired
 DECL|method|listBranches (Project.NameKey projectName, AsyncCallback<ListBranchesResult> callback)
 name|void
 name|listBranches

@@ -122,7 +122,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountScreen
+name|Screen
 import|;
 end_import
 
@@ -254,7 +254,7 @@ specifier|public
 class|class
 name|ProjectAdminScreen
 extends|extends
-name|AccountScreen
+name|Screen
 block|{
 DECL|field|INFO_TAB
 specifier|static

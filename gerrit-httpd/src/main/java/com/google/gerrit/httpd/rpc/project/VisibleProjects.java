@@ -122,7 +122,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -258,7 +258,7 @@ decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
-name|IdentifiedUser
+name|CurrentUser
 name|user
 decl_stmt|;
 DECL|field|db
@@ -269,7 +269,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|VisibleProjects (final ProjectControl.Factory projectControlFactory, final IdentifiedUser user, final ReviewDb db)
+DECL|method|VisibleProjects (final ProjectControl.Factory projectControlFactory, final CurrentUser user, final ReviewDb db)
 name|VisibleProjects
 parameter_list|(
 specifier|final
@@ -279,7 +279,7 @@ name|Factory
 name|projectControlFactory
 parameter_list|,
 specifier|final
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|,
 specifier|final
