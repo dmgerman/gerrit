@@ -1133,6 +1133,44 @@ break|break;
 case|case
 name|REJECTED_OTHER_REASON
 case|:
+if|if
+condition|(
+literal|"non-fast-forward"
+operator|.
+name|equals
+argument_list|(
+name|u
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed replicate of "
+operator|+
+name|u
+operator|.
+name|getRemoteName
+argument_list|()
+operator|+
+literal|" to "
+operator|+
+name|uri
+operator|+
+literal|", remote rejected non-fast-forward push."
+operator|+
+literal|"  Check receive.denyNonFastForwards variable in config file"
+operator|+
+literal|" of destination repository."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|log
 operator|.
 name|error
@@ -1156,6 +1194,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 block|}
 block|}
