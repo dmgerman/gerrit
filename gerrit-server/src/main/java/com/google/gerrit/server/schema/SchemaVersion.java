@@ -444,7 +444,7 @@ return|return
 name|versionNbr
 return|;
 block|}
-DECL|method|check (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
+DECL|method|check (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db, boolean toTargetVersion)
 specifier|public
 specifier|final
 name|void
@@ -458,6 +458,9 @@ name|curr
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|boolean
+name|toTargetVersion
 parameter_list|)
 throws|throws
 name|OrmException
@@ -485,12 +488,14 @@ argument_list|,
 name|curr
 argument_list|,
 name|db
+argument_list|,
+name|toTargetVersion
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 comment|/** Runs check on the prior schema version, and then upgrades. */
-DECL|method|upgradeFrom (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
+DECL|method|upgradeFrom (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db, boolean toTargetVersion)
 specifier|protected
 name|void
 name|upgradeFrom
@@ -503,6 +508,9 @@ name|curr
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|boolean
+name|toTargetVersion
 parameter_list|)
 throws|throws
 name|OrmException
@@ -530,6 +538,8 @@ argument_list|,
 name|curr
 argument_list|,
 name|db
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|ui
@@ -580,6 +590,11 @@ argument_list|,
 name|ui
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|toTargetVersion
+condition|)
+block|{
 specifier|final
 name|List
 argument_list|<
@@ -639,6 +654,7 @@ argument_list|,
 name|pruneList
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally

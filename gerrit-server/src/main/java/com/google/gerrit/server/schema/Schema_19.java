@@ -185,7 +185,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|upgradeFrom (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db)
+DECL|method|upgradeFrom (UpdateUI ui, CurrentSchemaVersion curr, ReviewDb db, boolean toTargetVersion)
 specifier|protected
 name|void
 name|upgradeFrom
@@ -198,6 +198,9 @@ name|curr
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|boolean
+name|toTargetVersion
 parameter_list|)
 throws|throws
 name|OrmException

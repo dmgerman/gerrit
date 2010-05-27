@@ -370,6 +370,8 @@ argument_list|,
 name|version
 argument_list|,
 name|db
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
