@@ -169,7 +169,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.accountId = ? ORDER BY acceptedOn DESC"
+literal|"WHERE key.accountId = ? ORDER BY acceptedOn"
 argument_list|)
 DECL|method|byAccount (Account.Id id)
 name|ResultSet
