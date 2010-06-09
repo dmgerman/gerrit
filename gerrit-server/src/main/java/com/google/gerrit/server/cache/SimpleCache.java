@@ -388,6 +388,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|removeAll ()
+specifier|public
+name|void
+name|removeAll
+parameter_list|()
+block|{
+name|self
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getTimeToLive (final TimeUnit unit)

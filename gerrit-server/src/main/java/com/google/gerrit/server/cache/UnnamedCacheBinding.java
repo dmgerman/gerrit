@@ -75,11 +75,21 @@ DECL|interface|UnnamedCacheBinding
 specifier|public
 interface|interface
 name|UnnamedCacheBinding
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|>
 block|{
 comment|/** Set the name of the cache. */
 DECL|method|name (String cacheName)
 specifier|public
 name|NamedCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|name
 parameter_list|(
 name|String

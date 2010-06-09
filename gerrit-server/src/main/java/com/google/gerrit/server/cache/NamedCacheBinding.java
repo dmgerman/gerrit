@@ -87,11 +87,21 @@ DECL|interface|NamedCacheBinding
 specifier|public
 interface|interface
 name|NamedCacheBinding
+parameter_list|<
+name|K
+parameter_list|,
+name|V
+parameter_list|>
 block|{
 comment|/** Set the number of objects to cache in memory. */
 DECL|method|memoryLimit (int objects)
 specifier|public
 name|NamedCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|memoryLimit
 parameter_list|(
 name|int
@@ -102,6 +112,11 @@ comment|/** Set the number of objects to cache in memory. */
 DECL|method|diskLimit (int objects)
 specifier|public
 name|NamedCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|diskLimit
 parameter_list|(
 name|int
@@ -112,6 +127,11 @@ comment|/** Set the time an element lives before being expired. */
 DECL|method|maxAge (long duration, TimeUnit durationUnits)
 specifier|public
 name|NamedCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|maxAge
 parameter_list|(
 name|long
@@ -125,10 +145,40 @@ comment|/** Set the eviction policy for elements when the cache is full. */
 DECL|method|evictionPolicy (EvictionPolicy policy)
 specifier|public
 name|NamedCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|evictionPolicy
 parameter_list|(
 name|EvictionPolicy
 name|policy
+parameter_list|)
+function_decl|;
+comment|/** Populate the cache with items from the EntryCreator. */
+DECL|method|populateWith (Class<? extends EntryCreator<K, V>> creator)
+specifier|public
+name|NamedCacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|populateWith
+parameter_list|(
+name|Class
+argument_list|<
+name|?
+extends|extends
+name|EntryCreator
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+argument_list|>
+name|creator
 parameter_list|)
 function_decl|;
 block|}

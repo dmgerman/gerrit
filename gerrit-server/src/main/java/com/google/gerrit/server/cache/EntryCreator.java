@@ -66,85 +66,51 @@ name|cache
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
-comment|/**  * A fast in-memory and/or on-disk based cache.  *  * @type<K> type of key used to lookup entries in the cache.  * @type<V> type of value stored within each cache entry.  */
+comment|/**  * Creates a cache entry on demand when its not found.  *  * @param<K> type of the cache's key.  * @param<V> type of the cache's value element.  */
 end_comment
 
-begin_interface
-DECL|interface|Cache
+begin_class
+DECL|class|EntryCreator
 specifier|public
-interface|interface
-name|Cache
+specifier|abstract
+class|class
+name|EntryCreator
 parameter_list|<
 name|K
 parameter_list|,
 name|V
 parameter_list|>
 block|{
-comment|/** Get the element from the cache, or null if not stored in the cache. */
-DECL|method|get (K key)
+comment|/**    * Invoked on a cache miss, to compute the cache entry.    *    * @param key entry whose content needs to be obtained.    * @return new cache content. The caller will automatically put this object    *         into the cache.    * @throws Exception the cache content cannot be computed. No entry will be    *         stored in the cache, and {@link #missing(Object)} will be invoked    *         instead. Future requests for the same key will retry this method.    */
+DECL|method|createEntry (K key)
+specifier|public
+specifier|abstract
+name|V
+name|createEntry
+parameter_list|(
+name|K
+name|key
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/** Invoked when {@link #createEntry(Object)} fails, by default return null. */
+DECL|method|missing (K key)
 specifier|public
 name|V
-name|get
+name|missing
 parameter_list|(
 name|K
 name|key
 parameter_list|)
-function_decl|;
-comment|/** Put one element into the cache, replacing any existing value. */
-DECL|method|put (K key, V value)
-specifier|public
-name|void
-name|put
-parameter_list|(
-name|K
-name|key
-parameter_list|,
-name|V
-name|value
-parameter_list|)
-function_decl|;
-comment|/** Remove any existing value from the cache, no-op if not present. */
-DECL|method|remove (K key)
-specifier|public
-name|void
-name|remove
-parameter_list|(
-name|K
-name|key
-parameter_list|)
-function_decl|;
-comment|/** Remove all cached items. */
-DECL|method|removeAll ()
-specifier|public
-name|void
-name|removeAll
-parameter_list|()
-function_decl|;
-comment|/**    * Get the time an element will survive in the cache.    *    * @param unit desired units of the return value.    * @return time an item can live before being purged.    */
-DECL|method|getTimeToLive (TimeUnit unit)
-specifier|public
-name|long
-name|getTimeToLive
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
-function_decl|;
+block|{
+return|return
+literal|null
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

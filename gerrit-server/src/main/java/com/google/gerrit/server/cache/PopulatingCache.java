@@ -165,15 +165,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A decorator for {@link Cache} which automatically constructs missing entries.  *<p>  * On a cache miss {@link #createEntry(Object)} is invoked, allowing the  * application specific subclass to compute the entry and return it for caching.  * During a miss the cache takes a lock related to the missing key, ensuring  * that at most one thread performs the creation work, and other threads wait  * for the result. Concurrent creations are possible if two different keys miss  * and hash to different locks in the internal lock table.  *  * @param<K> type of key used to name cache entries.  * @param<V> type of value stored within a cache entry.  */
+comment|/**  * A decorator for {@link Cache} which automatically constructs missing entries.  *<p>  * On a cache miss {@link EntryCreator#createEntry(Object)} is invoked, allowing  * the application specific subclass to compute the entry and return it for  * caching. During a miss the cache takes a lock related to the missing key,  * ensuring that at most one thread performs the creation work, and other  * threads wait for the result. Concurrent creations are possible if two  * different keys miss and hash to different locks in the internal lock table.  *  * @param<K> type of key used to name cache entries.  * @param<V> type of value stored within a cache entry.  */
 end_comment
 
 begin_class
-DECL|class|SelfPopulatingCache
-specifier|public
-specifier|abstract
+DECL|class|PopulatingCache
 class|class
-name|SelfPopulatingCache
+name|PopulatingCache
 parameter_list|<
 name|K
 parameter_list|,
@@ -198,7 +196,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|SelfPopulatingCache
+name|PopulatingCache
 operator|.
 name|class
 argument_list|)
@@ -219,40 +217,36 @@ operator|.
 name|SelfPopulatingCache
 name|self
 decl_stmt|;
-comment|/**    * Create a new cache which uses another cache to store entries.    *    * @param backingStore cache which will store the entries for this cache.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|SelfPopulatingCache (final Cache<K, V> backingStore)
-specifier|public
-name|SelfPopulatingCache
-parameter_list|(
+DECL|field|creator
+specifier|private
 specifier|final
-name|Cache
+name|EntryCreator
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-name|backingStore
-parameter_list|)
-block|{
-specifier|final
+name|creator
+decl_stmt|;
+DECL|method|PopulatingCache (Ehcache s, EntryCreator<K, V> entryCreator)
+name|PopulatingCache
+parameter_list|(
 name|Ehcache
 name|s
-init|=
-operator|(
-operator|(
-name|SimpleCache
-operator|)
-name|backingStore
-operator|)
-operator|.
-name|getEhcache
-argument_list|()
-decl_stmt|;
+parameter_list|,
+name|EntryCreator
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|entryCreator
+parameter_list|)
+block|{
+name|creator
+operator|=
+name|entryCreator
+expr_stmt|;
 specifier|final
 name|CacheEntryFactory
 name|f
@@ -279,9 +273,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|SelfPopulatingCache
-operator|.
-name|this
+name|creator
 operator|.
 name|createEntry
 argument_list|(
@@ -315,34 +307,7 @@ name|f
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Invoked on a cache miss, to compute the cache entry.    *    * @param key entry whose content needs to be obtained.    * @return new cache content. The caller will automatically put this object    *         into the cache.    * @throws Exception the cache content cannot be computed. No entry will be    *         stored in the cache, and {@link #missing(Object)} will be invoked    *         instead. Future requests for the same key will retry this method.    */
-DECL|method|createEntry (K key)
-specifier|protected
-specifier|abstract
-name|V
-name|createEntry
-parameter_list|(
-name|K
-name|key
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-comment|/** Invoked when {@link #createEntry(Object)} fails, by default return null. */
-DECL|method|missing (K key)
-specifier|protected
-name|V
-name|missing
-parameter_list|(
-name|K
-name|key
-parameter_list|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-comment|/**    * Get the element from the cache, or {@link #missing(Object)} if not found.    *<p>    * The {@link #missing(Object)} method is only invoked if:    *<ul>    *<li>{@code key == null}, in which case the application should return a    * suitable return value that callers can accept, or throw a RuntimeException.    *<li>{@code createEntry(key)} threw an exception, in which case the entry    * was not stored in the cache. An entry was recorded in the application log,    * but a return value is still required.    *<li>The cache has been shutdown, and access is forbidden.    *</ul>    *    * @param key key to locate.    * @return either the cached entry, or {@code missing(key)} if not found.    */
+comment|/**    * Get the element from the cache, or {@link EntryCreator#missing(Object)} if not found.    *<p>    * The {@link EntryCreator#missing(Object)} method is only invoked if:    *<ul>    *<li>{@code key == null}, in which case the application should return a    * suitable return value that callers can accept, or throw a RuntimeException.    *<li>{@code createEntry(key)} threw an exception, in which case the entry    * was not stored in the cache. An entry was recorded in the application log,    * but a return value is still required.    *<li>The cache has been shutdown, and access is forbidden.    *</ul>    *    * @param key key to locate.    * @return either the cached entry, or {@code missing(key)} if not found.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -366,6 +331,8 @@ literal|null
 condition|)
 block|{
 return|return
+name|creator
+operator|.
 name|missing
 argument_list|(
 name|key
@@ -415,6 +382,8 @@ name|err
 argument_list|)
 expr_stmt|;
 return|return
+name|creator
+operator|.
 name|missing
 argument_list|(
 name|key
@@ -448,6 +417,8 @@ name|err
 argument_list|)
 expr_stmt|;
 return|return
+name|creator
+operator|.
 name|missing
 argument_list|(
 name|key
@@ -467,6 +438,8 @@ operator|.
 name|getObjectValue
 argument_list|()
 else|:
+name|creator
+operator|.
 name|missing
 argument_list|(
 name|key
