@@ -348,6 +348,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
+name|ssh
+operator|.
+name|NoSshModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|sshd
 operator|.
 name|SshModule
@@ -857,22 +873,6 @@ throw|;
 block|}
 if|if
 condition|(
-name|httpd
-operator|&&
-operator|!
-name|sshd
-condition|)
-block|{
-comment|// TODO Support HTTP without SSH.
-throw|throw
-name|die
-argument_list|(
-literal|"--enable-httpd currently requires --enable-sshd"
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
 name|consoleLog
 condition|)
 block|{     }
@@ -1358,6 +1358,11 @@ name|Module
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|sshd
+condition|)
+block|{
 name|modules
 operator|.
 name|add
@@ -1390,6 +1395,19 @@ name|add
 argument_list|(
 operator|new
 name|MasterCommandModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|modules
+operator|.
+name|add
+argument_list|(
+operator|new
+name|NoSshModule
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1484,6 +1502,11 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|sshd
+condition|)
+block|{
 name|modules
 operator|.
 name|add
@@ -1500,6 +1523,7 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|sysInjector
 operator|.
