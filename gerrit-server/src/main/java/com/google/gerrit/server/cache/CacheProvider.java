@@ -150,18 +150,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|ehcache
-operator|.
-name|Ehcache
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -174,6 +162,7 @@ end_import
 
 begin_class
 DECL|class|CacheProvider
+specifier|public
 specifier|final
 class|class
 name|CacheProvider
@@ -246,7 +235,12 @@ name|cacheName
 decl_stmt|;
 DECL|field|cache
 specifier|private
-name|ProxyEhcache
+name|ProxyCache
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
 name|cache
 decl_stmt|;
 DECL|field|entryCreator
@@ -337,24 +331,69 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|bind (final Ehcache ehcache)
+DECL|method|bind (Cache<K, V> impl)
+specifier|public
 name|void
 name|bind
 parameter_list|(
-specifier|final
-name|Ehcache
-name|ehcache
+name|Cache
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|impl
 parameter_list|)
 block|{
+if|if
+condition|(
+name|cache
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Cache was never registered"
+argument_list|)
+throw|;
+block|}
 name|cache
 operator|.
 name|bind
 argument_list|(
-name|ehcache
+name|impl
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getEntryCreator ()
+specifier|public
+name|EntryCreator
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|getEntryCreator
+parameter_list|()
+block|{
+return|return
+name|entryCreator
+operator|!=
+literal|null
+condition|?
+name|entryCreator
+operator|.
+name|get
+argument_list|()
+else|:
+literal|null
+return|;
+block|}
 DECL|method|getName ()
+specifier|public
 name|String
 name|getName
 parameter_list|()
@@ -379,6 +418,7 @@ name|cacheName
 return|;
 block|}
 DECL|method|disk ()
+specifier|public
 name|boolean
 name|disk
 parameter_list|()
@@ -388,6 +428,7 @@ name|disk
 return|;
 block|}
 DECL|method|memoryLimit ()
+specifier|public
 name|int
 name|memoryLimit
 parameter_list|()
@@ -397,6 +438,7 @@ name|memoryLimit
 return|;
 block|}
 DECL|method|diskLimit ()
+specifier|public
 name|int
 name|diskLimit
 parameter_list|()
@@ -406,6 +448,7 @@ name|diskLimit
 return|;
 block|}
 DECL|method|maxAge ()
+specifier|public
 name|long
 name|maxAge
 parameter_list|()
@@ -415,6 +458,7 @@ name|maxAge
 return|;
 block|}
 DECL|method|evictionPolicy ()
+specifier|public
 name|EvictionPolicy
 name|evictionPolicy
 parameter_list|()
@@ -653,42 +697,8 @@ literal|"\" not available"
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-name|entryCreator
-operator|!=
-literal|null
-condition|)
-block|{
 return|return
-operator|new
-name|PopulatingCache
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-argument_list|(
 name|cache
-argument_list|,
-name|entryCreator
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
-block|}
-return|return
-operator|new
-name|SimpleCache
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-argument_list|(
-name|cache
-argument_list|)
 return|;
 block|}
 block|}

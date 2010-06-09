@@ -78,7 +78,7 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CachePool
+name|EhcachePoolImpl
 import|;
 end_import
 
@@ -174,7 +174,7 @@ annotation|@
 name|Inject
 DECL|field|cachePool
 specifier|protected
-name|CachePool
+name|EhcachePoolImpl
 name|cachePool
 decl_stmt|;
 DECL|method|cacheNames ()
