@@ -238,6 +238,11 @@ name|PatchSetApproval
 argument_list|>
 name|given
 decl_stmt|;
+DECL|field|isSubmitAllowed
+specifier|protected
+name|boolean
+name|isSubmitAllowed
+decl_stmt|;
 DECL|method|getAllowed ()
 specifier|public
 name|Map
@@ -395,6 +400,20 @@ operator|=
 name|drafts
 expr_stmt|;
 block|}
+DECL|method|setSubmitAllowed (boolean allowed)
+specifier|public
+name|void
+name|setSubmitAllowed
+parameter_list|(
+name|boolean
+name|allowed
+parameter_list|)
+block|{
+name|isSubmitAllowed
+operator|=
+name|allowed
+expr_stmt|;
+block|}
 DECL|method|getAccounts ()
 specifier|public
 name|AccountInfoCache
@@ -521,6 +540,16 @@ name|get
 argument_list|(
 name|id
 argument_list|)
+return|;
+block|}
+DECL|method|isSubmitAllowed ()
+specifier|public
+name|boolean
+name|isSubmitAllowed
+parameter_list|()
+block|{
+return|return
+name|isSubmitAllowed
 return|;
 block|}
 block|}

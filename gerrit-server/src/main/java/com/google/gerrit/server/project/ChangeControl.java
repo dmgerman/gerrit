@@ -970,7 +970,7 @@ literal|false
 return|;
 block|}
 comment|/** @return {@link CanSubmitResult#OK}, or a result with an error message. */
-DECL|method|canSubmit (final PatchSet.Id patchSetId, final ReviewDb db, final ApprovalTypes approvalTypes, FunctionState.Factory functionStateFactory)
+DECL|method|canSubmit (final PatchSet.Id patchSetId)
 specifier|public
 name|CanSubmitResult
 name|canSubmit
@@ -980,22 +980,7 @@ name|PatchSet
 operator|.
 name|Id
 name|patchSetId
-parameter_list|,
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|,
-specifier|final
-name|ApprovalTypes
-name|approvalTypes
-parameter_list|,
-name|FunctionState
-operator|.
-name|Factory
-name|functionStateFactory
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -1084,6 +1069,61 @@ name|CanSubmitResult
 argument_list|(
 literal|"User is not signed-in"
 argument_list|)
+return|;
+block|}
+return|return
+name|CanSubmitResult
+operator|.
+name|OK
+return|;
+block|}
+comment|/** @return {@link CanSubmitResult#OK}, or a result with an error message. */
+DECL|method|canSubmit (final PatchSet.Id patchSetId, final ReviewDb db, final ApprovalTypes approvalTypes, FunctionState.Factory functionStateFactory)
+specifier|public
+name|CanSubmitResult
+name|canSubmit
+parameter_list|(
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
+parameter_list|,
+specifier|final
+name|ApprovalTypes
+name|approvalTypes
+parameter_list|,
+name|FunctionState
+operator|.
+name|Factory
+name|functionStateFactory
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+name|CanSubmitResult
+name|result
+init|=
+name|canSubmit
+argument_list|(
+name|patchSetId
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+name|CanSubmitResult
+operator|.
+name|OK
+condition|)
+block|{
+return|return
+name|result
 return|;
 block|}
 specifier|final
