@@ -78,10 +78,12 @@ end_import
 
 begin_class
 DECL|class|Address
+specifier|public
 class|class
 name|Address
 block|{
 DECL|method|parse (final String in)
+specifier|public
 specifier|static
 name|Address
 name|parse
@@ -253,6 +255,7 @@ name|String
 name|email
 decl_stmt|;
 DECL|method|Address (String email)
+specifier|public
 name|Address
 parameter_list|(
 name|String
@@ -268,6 +271,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|Address (String name, String email)
+specifier|public
 name|Address
 parameter_list|(
 name|String
@@ -289,6 +293,26 @@ name|email
 operator|=
 name|email
 expr_stmt|;
+block|}
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+DECL|method|getEmail ()
+specifier|public
+name|String
+name|getEmail
+parameter_list|()
+block|{
+return|return
+name|email
+return|;
 block|}
 annotation|@
 name|Override
@@ -323,6 +347,7 @@ throw|;
 block|}
 block|}
 DECL|method|toHeaderString ()
+specifier|public
 name|String
 name|toHeaderString
 parameter_list|()
