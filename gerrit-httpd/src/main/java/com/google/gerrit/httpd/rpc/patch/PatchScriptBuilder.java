@@ -142,24 +142,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|PatchScriptSettings
-operator|.
-name|Whitespace
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|prettify
 operator|.
 name|common
@@ -194,7 +176,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountGeneralPreferences
+name|AccountDiffPreference
 import|;
 end_import
 
@@ -237,6 +219,22 @@ operator|.
 name|reviewdb
 operator|.
 name|PatchLineComment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountDiffPreference
+operator|.
+name|Whitespace
 import|;
 end_import
 
@@ -760,7 +758,7 @@ if|if
 condition|(
 name|context
 operator|==
-name|AccountGeneralPreferences
+name|AccountDiffPreference
 operator|.
 name|WHOLE_FILE_CONTEXT
 condition|)

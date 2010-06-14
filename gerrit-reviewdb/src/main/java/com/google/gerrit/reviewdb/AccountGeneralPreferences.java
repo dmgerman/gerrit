@@ -89,52 +89,6 @@ specifier|final
 class|class
 name|AccountGeneralPreferences
 block|{
-comment|/** Default number of lines of context. */
-DECL|field|DEFAULT_CONTEXT
-specifier|public
-specifier|static
-specifier|final
-name|short
-name|DEFAULT_CONTEXT
-init|=
-literal|10
-decl_stmt|;
-comment|/** Context setting to display the entire file. */
-DECL|field|WHOLE_FILE_CONTEXT
-specifier|public
-specifier|static
-specifier|final
-name|short
-name|WHOLE_FILE_CONTEXT
-init|=
-operator|-
-literal|1
-decl_stmt|;
-comment|/** Typical valid choices for the default context setting. */
-DECL|field|CONTEXT_CHOICES
-specifier|public
-specifier|static
-specifier|final
-name|short
-index|[]
-name|CONTEXT_CHOICES
-init|=
-block|{
-literal|3
-block|,
-literal|10
-block|,
-literal|25
-block|,
-literal|50
-block|,
-literal|75
-block|,
-literal|100
-block|,
-name|WHOLE_FILE_CONTEXT
-block|}
-decl_stmt|;
 comment|/** Default number of items to display per page. */
 DECL|field|DEFAULT_PAGESIZE
 specifier|public
@@ -208,19 +162,6 @@ name|CHERRY_PICK
 block|,
 name|FORMAT_PATCH
 block|;   }
-comment|/** Default number of lines of context when viewing a patch. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
-DECL|field|defaultContext
-specifier|protected
-name|short
-name|defaultContext
-decl_stmt|;
 comment|/** Number of changes to show in a screen. */
 annotation|@
 name|Column
@@ -320,33 +261,6 @@ specifier|public
 name|AccountGeneralPreferences
 parameter_list|()
 block|{   }
-comment|/** Get the default number of lines of context when viewing a patch. */
-DECL|method|getDefaultContext ()
-specifier|public
-name|short
-name|getDefaultContext
-parameter_list|()
-block|{
-return|return
-name|defaultContext
-return|;
-block|}
-comment|/** Set the number of lines of context when viewing a patch. */
-DECL|method|setDefaultContext (final short s)
-specifier|public
-name|void
-name|setDefaultContext
-parameter_list|(
-specifier|final
-name|short
-name|s
-parameter_list|)
-block|{
-name|defaultContext
-operator|=
-name|s
-expr_stmt|;
-block|}
 DECL|method|getMaximumPageSize ()
 specifier|public
 name|short
@@ -568,10 +482,6 @@ name|void
 name|resetToDefaults
 parameter_list|()
 block|{
-name|defaultContext
-operator|=
-name|DEFAULT_CONTEXT
-expr_stmt|;
 name|maximumPageSize
 operator|=
 name|DEFAULT_PAGESIZE

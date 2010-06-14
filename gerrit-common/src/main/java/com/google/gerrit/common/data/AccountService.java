@@ -106,6 +106,20 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|AccountDiffPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|AccountGeneralPreferences
 import|;
 end_import
@@ -252,6 +266,19 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|myDiffPreferences (AsyncCallback<AccountDiffPreference> callback)
+name|void
+name|myDiffPreferences
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|AccountDiffPreference
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|changePreferences (AccountGeneralPreferences pref, AsyncCallback<VoidResult> gerritCallback)
 name|void
 name|changePreferences
@@ -264,6 +291,22 @@ argument_list|<
 name|VoidResult
 argument_list|>
 name|gerritCallback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|changeDiffPreferences (AccountDiffPreference diffPref, AsyncCallback<VoidResult> callback)
+name|void
+name|changeDiffPreferences
+parameter_list|(
+name|AccountDiffPreference
+name|diffPref
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
 parameter_list|)
 function_decl|;
 annotation|@

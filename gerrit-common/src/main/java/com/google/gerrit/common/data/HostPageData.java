@@ -80,6 +80,20 @@ name|Account
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountDiffPreference
+import|;
+end_import
+
 begin_comment
 comment|/** Data sent as part of the host page, to bootstrap the UI. */
 end_comment
@@ -94,6 +108,11 @@ DECL|field|account
 specifier|public
 name|Account
 name|account
+decl_stmt|;
+DECL|field|accountDiffPref
+specifier|public
+name|AccountDiffPreference
+name|accountDiffPref
 decl_stmt|;
 DECL|field|config
 specifier|public

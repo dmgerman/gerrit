@@ -233,6 +233,13 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountDiffPreferences ()
+name|AccountDiffPreferenceAccess
+name|accountDiffPreferences
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|starredChanges ()
 name|StarredChangeAccess
 name|starredChanges

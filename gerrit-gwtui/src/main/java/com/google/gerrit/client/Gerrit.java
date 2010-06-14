@@ -280,6 +280,20 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|AccountDiffPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|AccountGeneralPreferences
 import|;
 end_import
@@ -852,6 +866,12 @@ specifier|static
 name|Account
 name|myAccount
 decl_stmt|;
+DECL|field|myAccountDiffPref
+specifier|private
+specifier|static
+name|AccountDiffPreference
+name|myAccountDiffPref
+decl_stmt|;
 DECL|field|menuLeft
 specifier|private
 specifier|static
@@ -1200,6 +1220,33 @@ return|return
 name|myAccount
 return|;
 block|}
+comment|/** @return the currently signed in users's diff preferences; null if no diff preferences defined for the account */
+DECL|method|getAccountDiffPreference ()
+specifier|public
+specifier|static
+name|AccountDiffPreference
+name|getAccountDiffPreference
+parameter_list|()
+block|{
+return|return
+name|myAccountDiffPref
+return|;
+block|}
+DECL|method|setAccountDiffPreference (AccountDiffPreference accountDiffPref)
+specifier|public
+specifier|static
+name|void
+name|setAccountDiffPreference
+parameter_list|(
+name|AccountDiffPreference
+name|accountDiffPref
+parameter_list|)
+block|{
+name|myAccountDiffPref
+operator|=
+name|accountDiffPref
+expr_stmt|;
+block|}
 comment|/** @return true if the user is currently authenticated */
 DECL|method|isSignedIn ()
 specifier|public
@@ -1325,6 +1372,10 @@ name|SESSION_COOKIE
 argument_list|)
 expr_stmt|;
 name|myAccount
+operator|=
+literal|null
+expr_stmt|;
+name|myAccountDiffPref
 operator|=
 literal|null
 expr_stmt|;
@@ -1477,6 +1528,22 @@ operator|=
 name|result
 operator|.
 name|account
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|result
+operator|.
+name|accountDiffPref
+operator|!=
+literal|null
+condition|)
+block|{
+name|myAccountDiffPref
+operator|=
+name|result
+operator|.
+name|accountDiffPref
 expr_stmt|;
 block|}
 name|onModuleLoad2

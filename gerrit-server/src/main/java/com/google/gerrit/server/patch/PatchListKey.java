@@ -174,13 +174,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|data
-operator|.
-name|PatchScriptSettings
-operator|.
-name|Whitespace
+name|Project
 import|;
 end_import
 
@@ -194,7 +190,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Project
+name|AccountDiffPreference
+operator|.
+name|Whitespace
 import|;
 end_import
 

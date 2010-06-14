@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|AccountGeneralPreferences
-operator|.
-name|WHOLE_FILE_CONTEXT
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -343,6 +327,20 @@ operator|.
 name|common
 operator|.
 name|PrettyFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountDiffPreference
 import|;
 end_import
 
@@ -1571,6 +1569,8 @@ if|if
 condition|(
 name|ctx
 operator|==
+name|AccountDiffPreference
+operator|.
 name|WHOLE_FILE_CONTEXT
 operator|&&
 operator|!

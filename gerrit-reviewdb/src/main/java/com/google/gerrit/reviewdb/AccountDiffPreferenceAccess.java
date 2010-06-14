@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.patch
+DECL|package|com.google.gerrit.reviewdb
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|patch
+name|reviewdb
 package|;
 end_package
 
@@ -72,11 +70,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|reviewdb
+name|client
 operator|.
-name|Change
+name|Access
 import|;
 end_import
 
@@ -86,11 +84,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|reviewdb
+name|client
 operator|.
-name|PatchSet
+name|OrmException
 import|;
 end_import
 
@@ -100,61 +98,45 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|reviewdb
+name|client
 operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
+name|PrimaryKey
 import|;
 end_import
-
-begin_comment
-comment|/** Provides a cached list of {@link PatchListEntry}. */
-end_comment
 
 begin_interface
-DECL|interface|PatchListCache
+DECL|interface|AccountDiffPreferenceAccess
 specifier|public
 interface|interface
-name|PatchListCache
+name|AccountDiffPreferenceAccess
+extends|extends
+name|Access
+argument_list|<
+name|AccountDiffPreference
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
 block|{
-DECL|method|get (PatchListKey key)
-specifier|public
-name|PatchList
+annotation|@
+name|PrimaryKey
+argument_list|(
+literal|"accountId"
+argument_list|)
+DECL|method|get (Account.Id key)
+name|AccountDiffPreference
 name|get
 parameter_list|(
-name|PatchListKey
+name|Account
+operator|.
+name|Id
 name|key
 parameter_list|)
-function_decl|;
-DECL|method|get (Change change, PatchSet patchSet)
-specifier|public
-name|PatchList
-name|get
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|)
-function_decl|;
-DECL|method|get (Change change, PatchSet patchSet, Whitespace whitespace)
-specifier|public
-name|PatchList
-name|get
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|,
-name|Whitespace
-name|whitespace
-parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
