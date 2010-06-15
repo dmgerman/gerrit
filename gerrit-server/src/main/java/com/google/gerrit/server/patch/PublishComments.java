@@ -1356,6 +1356,26 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|a
+operator|.
+name|getValue
+argument_list|()
+operator|==
+literal|0
+operator|&&
+name|ins
+operator|.
+name|contains
+argument_list|(
+name|a
+argument_list|)
+condition|)
+block|{
+comment|// Don't say "no score" for an initial entry.
+continue|continue;
+block|}
 specifier|final
 name|ApprovalCategoryValue
 name|val
