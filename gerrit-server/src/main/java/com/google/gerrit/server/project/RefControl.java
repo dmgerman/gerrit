@@ -1675,7 +1675,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns all applicable rights for a given approval category.    *    * Applicable rights are defined as the list of {@code RefRight}s which match    * the ref for which this object was created, stopping the ref wildcard    * matching when an exclusive ref right was encountered, for the given    * approval category.    * @param id The {@link ApprovalCategory.Id}.    * @return All applicalbe rights.    */
+comment|/**    * Returns all applicable rights for a given approval category.    *    * Applicable rights are defined as the list of {@code RefRight}s which match    * the ref for which this object was created, stopping the ref wildcard    * matching when an exclusive ref right was encountered, for the given    * approval category.    * @param id The {@link ApprovalCategory.Id}.    * @return All applicable rights.    */
 DECL|method|getApplicableRights (final ApprovalCategory.Id id)
 specifier|public
 name|List
