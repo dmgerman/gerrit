@@ -421,16 +421,6 @@ range|:
 name|pr
 control|)
 block|{
-name|ui
-operator|.
-name|message
-argument_list|(
-name|right
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|ApprovalCategory
 operator|.
 name|Id
