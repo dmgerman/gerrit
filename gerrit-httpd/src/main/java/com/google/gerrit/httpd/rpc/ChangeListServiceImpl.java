@@ -2133,6 +2133,13 @@ name|query
 operator|.
 name|contains
 argument_list|(
+literal|"bug:"
+argument_list|)
+operator|||
+name|query
+operator|.
+name|contains
+argument_list|(
 literal|"tr:"
 argument_list|)
 condition|)
