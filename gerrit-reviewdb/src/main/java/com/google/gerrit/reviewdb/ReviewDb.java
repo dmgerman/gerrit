@@ -308,6 +308,13 @@ name|RefRightAccess
 name|refRights
 parameter_list|()
 function_decl|;
+annotation|@
+name|Relation
+DECL|method|trackingIds ()
+name|TrackingIdAccess
+name|trackingIds
+parameter_list|()
+function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */
 annotation|@
 name|Sequence
