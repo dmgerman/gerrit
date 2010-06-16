@@ -618,6 +618,13 @@ argument_list|(
 name|repo
 argument_list|)
 decl_stmt|;
+name|rw
+operator|.
+name|setRetainBody
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 specifier|final
 name|RevCommit
 name|rev
