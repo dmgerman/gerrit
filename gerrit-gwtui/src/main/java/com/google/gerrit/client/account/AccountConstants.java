@@ -400,6 +400,11 @@ name|String
 name|buttonSendRegisterNewEmail
 parameter_list|()
 function_decl|;
+DECL|method|buttonCancel ()
+name|String
+name|buttonCancel
+parameter_list|()
+function_decl|;
 DECL|method|titleRegisterNewEmail ()
 name|String
 name|titleRegisterNewEmail
