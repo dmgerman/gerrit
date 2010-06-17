@@ -2982,6 +2982,13 @@ name|isUseFlashClipboard
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|siteHeader
+operator|!=
+literal|null
+condition|)
+block|{
 name|siteHeader
 operator|.
 name|setVisible
@@ -2992,6 +2999,14 @@ name|isShowSiteHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|siteFooter
+operator|!=
+literal|null
+condition|)
+block|{
 name|siteFooter
 operator|.
 name|setVisible
@@ -3002,6 +3017,7 @@ name|isShowSiteHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|whoAmI ()
