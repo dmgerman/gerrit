@@ -137,6 +137,16 @@ name|ALL
 init|=
 literal|"refs/*"
 decl_stmt|;
+comment|/** Prefix that triggers a regular expression pattern. */
+DECL|field|REGEX_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REGEX_PREFIX
+init|=
+literal|"^"
+decl_stmt|;
 DECL|class|RefPattern
 specifier|public
 specifier|static
