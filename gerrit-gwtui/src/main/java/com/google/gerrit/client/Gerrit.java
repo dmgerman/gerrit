@@ -2561,7 +2561,7 @@ name|m
 argument_list|,
 name|C
 operator|.
-name|menyMyDrafts
+name|menuMyDrafts
 argument_list|()
 argument_list|,
 name|PageLinks

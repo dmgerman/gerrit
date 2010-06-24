@@ -134,7 +134,7 @@ name|Gerrit
 operator|.
 name|C
 operator|.
-name|menyMyDrafts
+name|menuMyDrafts
 argument_list|()
 argument_list|)
 expr_stmt|;

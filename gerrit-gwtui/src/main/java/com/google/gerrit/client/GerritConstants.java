@@ -203,9 +203,9 @@ name|String
 name|menuMyChanges
 parameter_list|()
 function_decl|;
-DECL|method|menyMyDrafts ()
+DECL|method|menuMyDrafts ()
 name|String
-name|menyMyDrafts
+name|menuMyDrafts
 parameter_list|()
 function_decl|;
 DECL|method|menuMyStarredChanges ()
