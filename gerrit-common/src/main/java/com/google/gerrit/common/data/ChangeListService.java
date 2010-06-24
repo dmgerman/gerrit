@@ -263,6 +263,44 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|myWatchedOpenPrev (String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|myWatchedOpenPrev
+parameter_list|(
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|myWatchedOpenNext (String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
+name|void
+name|myWatchedOpenNext
+parameter_list|(
+name|String
+name|pos
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SingleListChangeInfo
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 comment|/** Get all open changes more recent than pos, fetching at most limit rows. */
 DECL|method|byProjectOpenPrev (Project.NameKey project, String pos, int limit, AsyncCallback<SingleListChangeInfo> callback)
 name|void

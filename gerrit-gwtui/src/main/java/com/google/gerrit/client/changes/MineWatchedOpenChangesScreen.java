@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -80,31 +80,17 @@ name|Gerrit
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|Change
-import|;
-end_import
-
 begin_class
-DECL|class|AllMergedChangesScreen
+DECL|class|MineWatchedOpenChangesScreen
 specifier|public
 class|class
-name|AllMergedChangesScreen
+name|MineWatchedOpenChangesScreen
 extends|extends
 name|PagedSingleListScreen
 block|{
-DECL|method|AllMergedChangesScreen (final String positionToken)
+DECL|method|MineWatchedOpenChangesScreen (final String positionToken)
 specifier|public
-name|AllMergedChangesScreen
+name|MineWatchedOpenChangesScreen
 parameter_list|(
 specifier|final
 name|String
@@ -113,9 +99,14 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"all,merged"
+literal|"mine,watched"
 argument_list|,
 name|positionToken
+argument_list|)
+expr_stmt|;
+name|setRequiresSignIn
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -138,7 +129,7 @@ name|Gerrit
 operator|.
 name|C
 operator|.
-name|menuAllMerged
+name|menuMyWatchedChanges
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -148,7 +139,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|allMergedChanges
+name|watchedHeading
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -165,14 +156,8 @@ name|Util
 operator|.
 name|LIST_SVC
 operator|.
-name|allClosedPrev
+name|myWatchedOpenPrev
 argument_list|(
-name|Change
-operator|.
-name|Status
-operator|.
-name|MERGED
-argument_list|,
 name|pos
 argument_list|,
 name|pageSize
@@ -194,14 +179,8 @@ name|Util
 operator|.
 name|LIST_SVC
 operator|.
-name|allClosedNext
+name|myWatchedOpenNext
 argument_list|(
-name|Change
-operator|.
-name|Status
-operator|.
-name|MERGED
-argument_list|,
 name|pos
 argument_list|,
 name|pageSize

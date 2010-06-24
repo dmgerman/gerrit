@@ -100,7 +100,7 @@ specifier|public
 class|class
 name|ByProjectAbandonedChangesScreen
 extends|extends
-name|AllSingleListScreen
+name|PagedSingleListScreen
 block|{
 DECL|field|projectKey
 specifier|private

@@ -180,7 +180,7 @@ specifier|public
 class|class
 name|ChangeQueryResultsScreen
 extends|extends
-name|AllSingleListScreen
+name|PagedSingleListScreen
 block|{
 DECL|field|query
 specifier|private

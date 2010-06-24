@@ -86,7 +86,7 @@ specifier|public
 class|class
 name|AllOpenChangesScreen
 extends|extends
-name|AllSingleListScreen
+name|PagedSingleListScreen
 block|{
 DECL|method|AllOpenChangesScreen (final String positionToken)
 specifier|public

@@ -100,7 +100,7 @@ specifier|public
 class|class
 name|AllAbandonedChangesScreen
 extends|extends
-name|AllSingleListScreen
+name|PagedSingleListScreen
 block|{
 DECL|method|AllAbandonedChangesScreen (final String positionToken)
 specifier|public

@@ -289,11 +289,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|AllSingleListScreen
+DECL|class|PagedSingleListScreen
 specifier|public
 specifier|abstract
 class|class
-name|AllSingleListScreen
+name|PagedSingleListScreen
 extends|extends
 name|Screen
 block|{
@@ -367,9 +367,9 @@ specifier|protected
 name|String
 name|pos
 decl_stmt|;
-DECL|method|AllSingleListScreen (final String anchorToken, final String positionToken)
+DECL|method|PagedSingleListScreen (final String anchorToken, final String positionToken)
 specifier|protected
-name|AllSingleListScreen
+name|PagedSingleListScreen
 parameter_list|(
 specifier|final
 name|String

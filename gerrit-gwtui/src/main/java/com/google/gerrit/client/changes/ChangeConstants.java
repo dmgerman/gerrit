@@ -120,6 +120,11 @@ name|String
 name|starredHeading
 parameter_list|()
 function_decl|;
+DECL|method|watchedHeading ()
+name|String
+name|watchedHeading
+parameter_list|()
+function_decl|;
 DECL|method|draftsHeading ()
 name|String
 name|draftsHeading

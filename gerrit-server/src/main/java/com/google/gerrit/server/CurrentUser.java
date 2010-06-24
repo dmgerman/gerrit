@@ -100,6 +100,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -217,6 +231,19 @@ operator|.
 name|Id
 argument_list|>
 name|getStarredChanges
+parameter_list|()
+function_decl|;
+comment|/** Set of project that are watched by this user */
+DECL|method|getWatchedProjects ()
+specifier|public
+specifier|abstract
+name|Set
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|getWatchedProjects
 parameter_list|()
 function_decl|;
 comment|/** Is the user a non-interactive user? */

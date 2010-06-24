@@ -208,6 +208,11 @@ name|String
 name|menuMyDrafts
 parameter_list|()
 function_decl|;
+DECL|method|menuMyWatchedChanges ()
+name|String
+name|menuMyWatchedChanges
+parameter_list|()
+function_decl|;
 DECL|method|menuMyStarredChanges ()
 name|String
 name|menuMyStarredChanges
@@ -316,6 +321,11 @@ function_decl|;
 DECL|method|jumpMineDrafts ()
 name|String
 name|jumpMineDrafts
+parameter_list|()
+function_decl|;
+DECL|method|jumpMineWatched ()
+name|String
+name|jumpMineWatched
 parameter_list|()
 function_decl|;
 DECL|method|jumpMineStarred ()
