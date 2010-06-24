@@ -313,6 +313,11 @@ name|String
 name|jumpAllMerged
 parameter_list|()
 function_decl|;
+DECL|method|jumpAllAbandoned ()
+name|String
+name|jumpAllAbandoned
+parameter_list|()
+function_decl|;
 DECL|method|jumpMine ()
 name|String
 name|jumpMine
