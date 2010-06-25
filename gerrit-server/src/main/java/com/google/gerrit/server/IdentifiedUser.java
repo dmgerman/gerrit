@@ -1286,22 +1286,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|ProvisionException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot query starred by user changes"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|OrmException
 name|e
 parameter_list|)
