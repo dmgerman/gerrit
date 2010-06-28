@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
+operator|.
+name|schema
 package|;
 end_package
 
@@ -70,11 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|client
+name|reviewdb
 operator|.
-name|Access
+name|ReviewDb
 import|;
 end_import
 
@@ -86,9 +88,9 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|jdbc
 operator|.
-name|OrmException
+name|JdbcSchema
 import|;
 end_import
 
@@ -98,11 +100,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|client
-operator|.
-name|PrimaryKey
+name|Inject
 import|;
 end_import
 
@@ -112,102 +112,134 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|client
-operator|.
-name|Query
+name|Provider
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|sql
 operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|ResultSet
+name|SQLException
 import|;
 end_import
 
-begin_interface
-DECL|interface|AccountProjectWatchAccess
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
+begin_class
+DECL|class|Schema_36
 specifier|public
-interface|interface
-name|AccountProjectWatchAccess
+class|class
+name|Schema_36
 extends|extends
-name|Access
-argument_list|<
-name|AccountProjectWatch
-argument_list|,
-name|AccountProjectWatch
-operator|.
-name|Key
-argument_list|>
+name|SchemaVersion
 block|{
 annotation|@
-name|PrimaryKey
-argument_list|(
-literal|"key"
-argument_list|)
-DECL|method|get (AccountProjectWatch.Key key)
-name|AccountProjectWatch
-name|get
+name|Inject
+DECL|method|Schema_36 (Provider<Schema_35> prior)
+name|Schema_36
 parameter_list|(
-name|AccountProjectWatch
-operator|.
-name|Key
-name|key
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE key.accountId = ?"
-argument_list|)
-DECL|method|byAccount (Account.Id id)
-name|ResultSet
+name|Provider
 argument_list|<
-name|AccountProjectWatch
+name|Schema_35
 argument_list|>
-name|byAccount
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
+name|prior
 parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
+block|{
+name|super
 argument_list|(
-literal|"WHERE key.projectName = ?"
+name|prior
 argument_list|)
-DECL|method|byProject (Project.NameKey name)
-name|ResultSet
-argument_list|<
-name|AccountProjectWatch
-argument_list|>
-name|byProject
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
+expr_stmt|;
 block|}
-end_interface
+annotation|@
+name|Override
+DECL|method|migrateData (ReviewDb db, UpdateUI ui)
+specifier|protected
+name|void
+name|migrateData
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|UpdateUI
+name|ui
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+name|Statement
+name|stmt
+init|=
+operator|(
+operator|(
+name|JdbcSchema
+operator|)
+name|db
+operator|)
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|createStatement
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"DROP INDEX account_project_watches_ntNew"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"DROP INDEX account_project_watches_ntCmt"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"DROP INDEX account_project_watches_ntSub"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"CREATE INDEX account_project_watches_byProject"
+operator|+
+literal|" ON account_project_watches (project_name)"
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|stmt
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+end_class
 
 end_unit
 
