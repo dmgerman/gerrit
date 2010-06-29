@@ -118,18 +118,20 @@ block|,
 literal|100
 block|}
 decl_stmt|;
-comment|/** Preferred URL type to download a change. */
-DECL|enum|DownloadUrl
+comment|/** Preferred scheme type to download a change. */
+DECL|enum|DownloadScheme
 specifier|public
 specifier|static
 enum|enum
-name|DownloadUrl
+name|DownloadScheme
 block|{
 DECL|enumConstant|ANON_GIT
 DECL|enumConstant|ANON_HTTP
 DECL|enumConstant|ANON_SSH
 DECL|enumConstant|HTTP
 DECL|enumConstant|SSH
+DECL|enumConstant|REPO_DOWNLOAD
+DECL|enumConstant|DEFAULT_DOWNLOADS
 name|ANON_GIT
 block|,
 name|ANON_HTTP
@@ -139,6 +141,10 @@ block|,
 name|HTTP
 block|,
 name|SSH
+block|,
+name|REPO_DOWNLOAD
+block|,
+name|DEFAULT_DOWNLOADS
 block|;   }
 comment|/** Preferred method to download a change. */
 DECL|enum|DownloadCommand
@@ -338,7 +344,7 @@ expr_stmt|;
 block|}
 DECL|method|getDownloadUrl ()
 specifier|public
-name|DownloadUrl
+name|DownloadScheme
 name|getDownloadUrl
 parameter_list|()
 block|{
@@ -354,7 +360,7 @@ literal|null
 return|;
 block|}
 return|return
-name|DownloadUrl
+name|DownloadScheme
 operator|.
 name|valueOf
 argument_list|(
@@ -362,12 +368,12 @@ name|downloadUrl
 argument_list|)
 return|;
 block|}
-DECL|method|setDownloadUrl (DownloadUrl url)
+DECL|method|setDownloadUrl (DownloadScheme url)
 specifier|public
 name|void
 name|setDownloadUrl
 parameter_list|(
-name|DownloadUrl
+name|DownloadScheme
 name|url
 parameter_list|)
 block|{

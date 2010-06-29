@@ -213,13 +213,13 @@ operator|==
 literal|0
 return|;
 block|}
-DECL|method|select (AccountGeneralPreferences.DownloadUrl urlType)
+DECL|method|select (AccountGeneralPreferences.DownloadScheme urlType)
 name|void
 name|select
 parameter_list|(
 name|AccountGeneralPreferences
 operator|.
-name|DownloadUrl
+name|DownloadScheme
 name|urlType
 parameter_list|)
 block|{
