@@ -532,6 +532,48 @@ name|jgit
 operator|.
 name|diff
 operator|.
+name|RawTextIgnoreAllWhitespace
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
+name|RawTextIgnoreTrailingWhitespace
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
+name|RawTextIgnoreWhitespaceChange
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|diff
+operator|.
 name|ReplaceEdit
 import|;
 end_import
@@ -1273,7 +1315,6 @@ name|IOException
 block|{
 comment|// TODO(jeffschu) correctly handle file renames
 comment|// TODO(jeffschu) correctly handle merge commits
-comment|// TODO(jeffschu) implement whitespace ignore
 specifier|final
 name|RevWalk
 name|rw
@@ -1465,6 +1506,11 @@ literal|1
 argument_list|)
 argument_list|,
 name|repo
+argument_list|,
+name|key
+operator|.
+name|getWhitespace
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1587,7 +1633,7 @@ name|entries
 argument_list|)
 return|;
 block|}
-DECL|method|outputDiff (PrintStream out, String path, ObjectId id1, FileMode mode1, ObjectId id2, FileMode mode2, Repository repo)
+DECL|method|outputDiff (PrintStream out, String path, ObjectId id1, FileMode mode1, ObjectId id2, FileMode mode2, Repository repo, Whitespace ws)
 specifier|private
 name|void
 name|outputDiff
@@ -1612,6 +1658,9 @@ name|mode2
 parameter_list|,
 name|Repository
 name|repo
+parameter_list|,
+name|Whitespace
+name|ws
 parameter_list|)
 throws|throws
 name|IOException
@@ -1878,6 +1927,8 @@ argument_list|(
 name|id1
 argument_list|,
 name|repo
+argument_list|,
+name|ws
 argument_list|)
 decl_stmt|;
 name|RawText
@@ -1888,6 +1939,8 @@ argument_list|(
 name|id2
 argument_list|,
 name|repo
+argument_list|,
+name|ws
 argument_list|)
 decl_stmt|;
 name|MyersDiff
@@ -1953,7 +2006,7 @@ literal|'"'
 argument_list|)
 return|;
 block|}
-DECL|method|getRawText (ObjectId id, Repository repo)
+DECL|method|getRawText (ObjectId id, Repository repo, Whitespace ws)
 specifier|private
 name|RawText
 name|getRawText
@@ -1963,6 +2016,9 @@ name|id
 parameter_list|,
 name|Repository
 name|repo
+parameter_list|,
+name|Whitespace
+name|ws
 parameter_list|)
 throws|throws
 name|IOException
@@ -1991,10 +2047,10 @@ block|{}
 argument_list|)
 return|;
 block|}
-return|return
-operator|new
-name|RawText
-argument_list|(
+name|byte
+index|[]
+name|raw
+init|=
 name|repo
 operator|.
 name|openBlob
@@ -2004,8 +2060,54 @@ argument_list|)
 operator|.
 name|getCachedBytes
 argument_list|()
+decl_stmt|;
+switch|switch
+condition|(
+name|ws
+condition|)
+block|{
+case|case
+name|IGNORE_ALL_SPACE
+case|:
+return|return
+operator|new
+name|RawTextIgnoreAllWhitespace
+argument_list|(
+name|raw
 argument_list|)
 return|;
+case|case
+name|IGNORE_SPACE_AT_EOL
+case|:
+return|return
+operator|new
+name|RawTextIgnoreTrailingWhitespace
+argument_list|(
+name|raw
+argument_list|)
+return|;
+case|case
+name|IGNORE_SPACE_CHANGE
+case|:
+return|return
+operator|new
+name|RawTextIgnoreWhitespaceChange
+argument_list|(
+name|raw
+argument_list|)
+return|;
+case|case
+name|IGNORE_NONE
+case|:
+default|default:
+return|return
+operator|new
+name|RawText
+argument_list|(
+name|raw
+argument_list|)
+return|;
+block|}
 block|}
 DECL|method|newEntry (Repository repo, RevTree aTree, RevTree bTree, FileHeader fileHeader)
 specifier|private
