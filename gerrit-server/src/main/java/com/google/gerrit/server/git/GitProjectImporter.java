@@ -168,6 +168,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|FS
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -492,6 +506,10 @@ operator|.
 name|isGitRepository
 argument_list|(
 name|f
+argument_list|,
+name|FS
+operator|.
+name|DETECTED
 argument_list|)
 condition|)
 block|{
