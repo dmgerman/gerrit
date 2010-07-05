@@ -956,6 +956,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|PatchSetDetail
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -1337,6 +1353,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
@@ -2214,7 +2232,7 @@ name|onSuccess
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|patch (String token, final Patch.Key id, final int patchIndex, final PatchTable patchTable)
+DECL|method|patch (String token, final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable)
 specifier|public
 specifier|static
 name|void
@@ -2232,6 +2250,10 @@ parameter_list|,
 specifier|final
 name|int
 name|patchIndex
+parameter_list|,
+specifier|final
+name|PatchSetDetail
+name|patchSetDetail
 parameter_list|,
 specifier|final
 name|PatchTable
@@ -2317,6 +2339,9 @@ comment|//
 name|patchIndex
 argument_list|,
 comment|//
+name|patchSetDetail
+argument_list|,
+comment|//
 name|patchTable
 comment|//
 argument_list|)
@@ -2365,6 +2390,9 @@ argument_list|)
 argument_list|,
 comment|//
 name|patchIndex
+argument_list|,
+comment|//
+name|patchSetDetail
 argument_list|,
 comment|//
 name|patchTable

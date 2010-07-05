@@ -104,6 +104,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|PatchSetDetail
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|Patch
@@ -131,13 +147,18 @@ specifier|protected
 name|int
 name|patchIndex
 decl_stmt|;
+DECL|field|patchSetDetail
+specifier|protected
+name|PatchSetDetail
+name|patchSetDetail
+decl_stmt|;
 DECL|field|parentPatchTable
 specifier|protected
 name|PatchTable
 name|parentPatchTable
 decl_stmt|;
-comment|/**    * @param text The text of this link    * @param patchKey The key for this patch    * @param patchIndex The index of the current patch in the patch set    * @param historyToken The history token    * @param parentPatchTable The table used to display this link    */
-DECL|method|PatchLink (final String text, final Patch.Key patchKey, final int patchIndex, final String historyToken, PatchTable parentPatchTable)
+comment|/**    * @param text The text of this link    * @param patchKey The key for this patch    * @param patchIndex The index of the current patch in the patch set    * @param historyToken The history token    * @parma patchSetDetail Detailed information about the patch set.    * @param parentPatchTable The table used to display this link    */
+DECL|method|PatchLink (final String text, final Patch.Key patchKey, final int patchIndex, final String historyToken, final PatchSetDetail patchSetDetail, final PatchTable parentPatchTable)
 specifier|public
 name|PatchLink
 parameter_list|(
@@ -159,6 +180,11 @@ specifier|final
 name|String
 name|historyToken
 parameter_list|,
+specifier|final
+name|PatchSetDetail
+name|patchSetDetail
+parameter_list|,
+specifier|final
 name|PatchTable
 name|parentPatchTable
 parameter_list|)
@@ -181,6 +207,12 @@ operator|.
 name|patchIndex
 operator|=
 name|patchIndex
+expr_stmt|;
+name|this
+operator|.
+name|patchSetDetail
+operator|=
+name|patchSetDetail
 expr_stmt|;
 name|this
 operator|.
@@ -212,6 +244,9 @@ comment|//
 name|patchIndex
 argument_list|,
 comment|//
+name|patchSetDetail
+argument_list|,
+comment|//
 name|parentPatchTable
 comment|//
 argument_list|)
@@ -225,7 +260,7 @@ name|SideBySide
 extends|extends
 name|PatchLink
 block|{
-DECL|method|SideBySide (final String text, final Patch.Key patchKey, final int patchIndex, PatchTable parentPatchTable)
+DECL|method|SideBySide (final String text, final Patch.Key patchKey, final int patchIndex, PatchSetDetail patchSetDetail, PatchTable parentPatchTable)
 specifier|public
 name|SideBySide
 parameter_list|(
@@ -242,6 +277,9 @@ parameter_list|,
 specifier|final
 name|int
 name|patchIndex
+parameter_list|,
+name|PatchSetDetail
+name|patchSetDetail
 parameter_list|,
 name|PatchTable
 name|parentPatchTable
@@ -262,6 +300,8 @@ argument_list|(
 name|patchKey
 argument_list|)
 argument_list|,
+name|patchSetDetail
+argument_list|,
 name|parentPatchTable
 argument_list|)
 expr_stmt|;
@@ -275,7 +315,7 @@ name|Unified
 extends|extends
 name|PatchLink
 block|{
-DECL|method|Unified (final String text, final Patch.Key patchKey, final int patchIndex, PatchTable parentPatchTable)
+DECL|method|Unified (final String text, final Patch.Key patchKey, final int patchIndex, PatchSetDetail patchSetDetail, PatchTable parentPatchTable)
 specifier|public
 name|Unified
 parameter_list|(
@@ -292,6 +332,9 @@ parameter_list|,
 specifier|final
 name|int
 name|patchIndex
+parameter_list|,
+name|PatchSetDetail
+name|patchSetDetail
 parameter_list|,
 name|PatchTable
 name|parentPatchTable
@@ -311,6 +354,8 @@ name|toPatchUnified
 argument_list|(
 name|patchKey
 argument_list|)
+argument_list|,
+name|patchSetDetail
 argument_list|,
 name|parentPatchTable
 argument_list|)
