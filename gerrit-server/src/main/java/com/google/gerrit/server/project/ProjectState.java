@@ -302,6 +302,14 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|projectControlFactory
+specifier|private
+specifier|final
+name|ProjectControl
+operator|.
+name|AssistedFactory
+name|projectControlFactory
+decl_stmt|;
 DECL|field|project
 specifier|private
 specifier|final
@@ -339,7 +347,7 @@ name|inheritedRights
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState (final AnonymousUser anonymousUser, final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, @Assisted final Project project, @Assisted final Collection<RefRight> rights)
+DECL|method|ProjectState (final AnonymousUser anonymousUser, final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, final ProjectControl.AssistedFactory projectControlFactory, @Assisted final Project project, @Assisted final Collection<RefRight> rights)
 specifier|protected
 name|ProjectState
 parameter_list|(
@@ -358,6 +366,12 @@ name|Project
 operator|.
 name|NameKey
 name|wildProject
+parameter_list|,
+specifier|final
+name|ProjectControl
+operator|.
+name|AssistedFactory
+name|projectControlFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -392,6 +406,12 @@ operator|.
 name|wildProject
 operator|=
 name|wildProject
+expr_stmt|;
+name|this
+operator|.
+name|projectControlFactory
+operator|=
+name|projectControlFactory
 expr_stmt|;
 name|this
 operator|.
@@ -850,8 +870,9 @@ name|user
 parameter_list|)
 block|{
 return|return
-operator|new
-name|ProjectControl
+name|projectControlFactory
+operator|.
+name|create
 argument_list|(
 name|user
 argument_list|,

@@ -48,7 +48,7 @@ comment|// See the License for the specific language governing permissions and
 end_comment
 
 begin_comment
-comment|// limitations under the License.
+comment|// limitations under the License
 end_comment
 
 begin_package
@@ -140,46 +140,42 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Collections
 import|;
 end_import
 
-begin_comment
-comment|/**  * Provider of the group(s) which should become owners of a newly created  * project. Currently only supports {@code ownerGroup} declarations in the  * {@code "*"} repository, like so:  *  *<pre>  * [repository&quot;*&quot;]  *     ownerGroup = Registered Users  *     ownerGroup = Administrators  *</pre>  */
-end_comment
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
 
 begin_class
-DECL|class|ProjectOwnerGroupsProvider
+DECL|class|GitUploadPackGroupsProvider
 specifier|public
 class|class
-name|ProjectOwnerGroupsProvider
+name|GitUploadPackGroupsProvider
 extends|extends
 name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|ProjectOwnerGroupsProvider ( @rojectCreatorGroups final Set<AccountGroup.Id> creatorGroups, @GerritServerConfig final Config config, final SchemaFactory<ReviewDb> db)
+DECL|method|GitUploadPackGroupsProvider (@erritServerConfig Config config, AuthConfig authConfig, SchemaFactory<ReviewDb> db)
 specifier|public
-name|ProjectOwnerGroupsProvider
+name|GitUploadPackGroupsProvider
 parameter_list|(
 annotation|@
-name|ProjectCreatorGroups
-specifier|final
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|Id
-argument_list|>
-name|creatorGroups
-parameter_list|,
-annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
+name|AuthConfig
+name|authConfig
+parameter_list|,
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -193,13 +189,15 @@ name|config
 argument_list|,
 name|db
 argument_list|,
-literal|"repository"
+literal|"upload"
 argument_list|,
-literal|"*"
+literal|null
 argument_list|,
-literal|"ownerGroup"
+literal|"allowGroup"
 argument_list|)
 expr_stmt|;
+comment|// If no group was set, default to "registered users" and "anonymous"
+comment|//
 if|if
 condition|(
 name|groupIds
@@ -208,9 +206,51 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|HashSet
+argument_list|<
+name|AccountGroup
+operator|.
+name|Id
+argument_list|>
+name|all
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|AccountGroup
+operator|.
+name|Id
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|all
+operator|.
+name|addAll
+argument_list|(
+name|authConfig
+operator|.
+name|getRegisteredGroups
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|all
+operator|.
+name|addAll
+argument_list|(
+name|authConfig
+operator|.
+name|getAnonymousGroups
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|groupIds
 operator|=
-name|creatorGroups
+name|Collections
+operator|.
+name|unmodifiableSet
+argument_list|(
+name|all
+argument_list|)
 expr_stmt|;
 block|}
 block|}

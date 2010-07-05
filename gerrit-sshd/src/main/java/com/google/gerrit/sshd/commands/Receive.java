@@ -400,6 +400,25 @@ name|IOException
 throws|,
 name|Failure
 block|{
+if|if
+condition|(
+operator|!
+name|projectControl
+operator|.
+name|canRunReceivePack
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|Failure
+argument_list|(
+literal|1
+argument_list|,
+literal|"fatal: receive-pack not permitted on this server"
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|ReceiveCommits
 name|receive

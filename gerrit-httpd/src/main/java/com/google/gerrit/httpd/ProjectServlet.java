@@ -1253,9 +1253,9 @@ name|repo
 parameter_list|)
 throws|throws
 name|ServiceNotEnabledException
+throws|,
+name|ServiceNotAuthorizedException
 block|{
-comment|// The Resolver above already checked READ access for us.
-comment|//
 name|ProjectControl
 name|pc
 init|=
@@ -1264,6 +1264,23 @@ argument_list|(
 name|req
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|pc
+operator|.
+name|canRunUploadPack
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ServiceNotAuthorizedException
+argument_list|()
+throw|;
+block|}
+comment|// The Resolver above already checked READ access for us.
+comment|//
 name|UploadPack
 name|up
 init|=
@@ -1374,6 +1391,21 @@ argument_list|(
 name|req
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|pc
+operator|.
+name|canRunReceivePack
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ServiceNotAuthorizedException
+argument_list|()
+throw|;
+block|}
 if|if
 condition|(
 name|pc
