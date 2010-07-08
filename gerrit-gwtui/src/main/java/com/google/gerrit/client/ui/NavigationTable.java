@@ -1041,6 +1041,11 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|pointer
+operator|.
+name|removeFromParent
+argument_list|()
+expr_stmt|;
 block|}
 name|currentRow
 operator|=

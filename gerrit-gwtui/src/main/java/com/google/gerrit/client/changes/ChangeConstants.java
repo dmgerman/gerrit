@@ -220,6 +220,21 @@ name|String
 name|upToDashboard
 parameter_list|()
 function_decl|;
+DECL|method|expandCollapseDependencies ()
+name|String
+name|expandCollapseDependencies
+parameter_list|()
+function_decl|;
+DECL|method|previousPatchSet ()
+name|String
+name|previousPatchSet
+parameter_list|()
+function_decl|;
+DECL|method|nextPatchSet ()
+name|String
+name|nextPatchSet
+parameter_list|()
+function_decl|;
 DECL|method|keyPublishComments ()
 name|String
 name|keyPublishComments
@@ -270,9 +285,14 @@ name|String
 name|patchTableNext
 parameter_list|()
 function_decl|;
-DECL|method|patchTableOpen ()
+DECL|method|patchTableOpenDiff ()
 name|String
-name|patchTableOpen
+name|patchTableOpenDiff
+parameter_list|()
+function_decl|;
+DECL|method|patchTableOpenUnifiedDiff ()
+name|String
+name|patchTableOpenUnifiedDiff
 parameter_list|()
 function_decl|;
 DECL|method|upToChangeIconLink ()
