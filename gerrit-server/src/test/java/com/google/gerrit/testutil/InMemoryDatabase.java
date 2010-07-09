@@ -323,14 +323,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An in-memory test instance of {@link ReviewDb} database.  *<p>  * Test classes should create one instance of this class for each unique test  * database they want to use. When the tests needing this instance are complete,  * ensure that {@link #drop(TestDatabase)} is called to free the resources so  * the JVM running the unit tests doesn't run out of heap space.  */
+comment|/**  * An in-memory test instance of {@link ReviewDb} database.  *<p>  * Test classes should create one instance of this class for each unique test  * database they want to use. When the tests needing this instance are complete,  * ensure that {@link #drop(InMemoryDatabase)} is called to free the resources so  * the JVM running the unit tests doesn't run out of heap space.  */
 end_comment
 
 begin_class
-DECL|class|TestDatabase
+DECL|class|InMemoryDatabase
 specifier|public
 class|class
-name|TestDatabase
+name|InMemoryDatabase
 implements|implements
 name|SchemaFactory
 argument_list|<
@@ -410,14 +410,14 @@ name|dataSource
 return|;
 block|}
 comment|/** Drop the database from memory; does nothing if the instance was null. */
-DECL|method|drop (final TestDatabase db)
+DECL|method|drop (final InMemoryDatabase db)
 specifier|public
 specifier|static
 name|void
 name|drop
 parameter_list|(
 specifier|final
-name|TestDatabase
+name|InMemoryDatabase
 name|db
 parameter_list|)
 block|{
@@ -458,9 +458,9 @@ specifier|private
 name|SchemaVersion
 name|schemaVersion
 decl_stmt|;
-DECL|method|TestDatabase ()
+DECL|method|InMemoryDatabase ()
 specifier|public
-name|TestDatabase
+name|InMemoryDatabase
 parameter_list|()
 throws|throws
 name|OrmException
@@ -587,7 +587,7 @@ block|}
 comment|/** Ensure the database schema has been created and initialized. */
 DECL|method|create ()
 specifier|public
-name|TestDatabase
+name|InMemoryDatabase
 name|create
 parameter_list|()
 throws|throws

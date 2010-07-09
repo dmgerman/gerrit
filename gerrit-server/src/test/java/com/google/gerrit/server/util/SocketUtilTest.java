@@ -80,24 +80,6 @@ name|util
 operator|.
 name|SocketUtil
 operator|.
-name|format
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|SocketUtil
-operator|.
 name|hostname
 import|;
 end_import
@@ -369,6 +351,8 @@ name|assertEquals
 argument_list|(
 literal|"*:1234"
 argument_list|,
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 operator|new
@@ -385,6 +369,8 @@ name|assertEquals
 argument_list|(
 literal|"*"
 argument_list|,
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 operator|new
@@ -401,6 +387,8 @@ name|assertEquals
 argument_list|(
 literal|"foo:1234"
 argument_list|,
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 name|createUnresolved
@@ -418,6 +406,8 @@ name|assertEquals
 argument_list|(
 literal|"foo"
 argument_list|,
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 name|createUnresolved
@@ -436,6 +426,8 @@ argument_list|(
 literal|"[1:2:3:4:5:6:7:8]:1234"
 argument_list|,
 comment|//
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 operator|new
@@ -458,6 +450,8 @@ argument_list|(
 literal|"[1:2:3:4:5:6:7:8]"
 argument_list|,
 comment|//
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 operator|new
@@ -480,6 +474,8 @@ argument_list|(
 literal|"localhost:1234"
 argument_list|,
 comment|//
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 operator|new
@@ -499,6 +495,8 @@ argument_list|(
 literal|"localhost"
 argument_list|,
 comment|//
+name|SocketUtil
+operator|.
 name|format
 argument_list|(
 operator|new

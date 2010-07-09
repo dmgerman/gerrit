@@ -206,7 +206,7 @@ name|gerrit
 operator|.
 name|testutil
 operator|.
-name|TestDatabase
+name|InMemoryDatabase
 import|;
 end_import
 
@@ -313,7 +313,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|db
 specifier|private
-name|TestDatabase
+name|InMemoryDatabase
 name|db
 decl_stmt|;
 annotation|@
@@ -334,7 +334,7 @@ expr_stmt|;
 name|db
 operator|=
 operator|new
-name|TestDatabase
+name|InMemoryDatabase
 argument_list|()
 expr_stmt|;
 block|}
@@ -348,7 +348,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TestDatabase
+name|InMemoryDatabase
 operator|.
 name|drop
 argument_list|(
