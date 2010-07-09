@@ -72,8 +72,6 @@ name|org
 operator|.
 name|easymock
 operator|.
-name|classextension
-operator|.
 name|EasyMock
 operator|.
 name|createStrictMock
@@ -86,8 +84,6 @@ name|org
 operator|.
 name|easymock
 operator|.
-name|classextension
-operator|.
 name|EasyMock
 operator|.
 name|replay
@@ -99,8 +95,6 @@ import|import static
 name|org
 operator|.
 name|easymock
-operator|.
-name|classextension
 operator|.
 name|EasyMock
 operator|.
