@@ -485,6 +485,16 @@ name|String
 name|buttonClose
 parameter_list|()
 function_decl|;
+DECL|method|buttonDiffAllSideBySide ()
+name|String
+name|buttonDiffAllSideBySide
+parameter_list|()
+function_decl|;
+DECL|method|buttonDiffAllUnified ()
+name|String
+name|buttonDiffAllUnified
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
