@@ -143,6 +143,26 @@ name|String
 name|errorDialogContinue
 parameter_list|()
 function_decl|;
+DECL|method|confirmationDialogOk ()
+name|String
+name|confirmationDialogOk
+parameter_list|()
+function_decl|;
+DECL|method|confirmationDialogCancel ()
+name|String
+name|confirmationDialogCancel
+parameter_list|()
+function_decl|;
+DECL|method|branchDeletionDialogTitle ()
+name|String
+name|branchDeletionDialogTitle
+parameter_list|()
+function_decl|;
+DECL|method|branchDeletionConfirmationMessage ()
+name|String
+name|branchDeletionConfirmationMessage
+parameter_list|()
+function_decl|;
 DECL|method|notSignedInTitle ()
 name|String
 name|notSignedInTitle
