@@ -758,6 +758,8 @@ init|=
 operator|new
 name|TaskThunk
 argument_list|(
+name|executor
+argument_list|,
 name|cont
 argument_list|,
 name|req
@@ -1005,6 +1007,14 @@ name|CancelableRunnable
 implements|,
 name|ContinuationListener
 block|{
+DECL|field|executor
+specifier|private
+specifier|final
+name|WorkQueue
+operator|.
+name|Executor
+name|executor
+decl_stmt|;
 DECL|field|cont
 specifier|private
 specifier|final
@@ -1037,9 +1047,15 @@ specifier|private
 name|Thread
 name|worker
 decl_stmt|;
-DECL|method|TaskThunk (final Continuation cont, final HttpServletRequest req)
+DECL|method|TaskThunk (final WorkQueue.Executor executor, final Continuation cont, final HttpServletRequest req)
 name|TaskThunk
 parameter_list|(
+specifier|final
+name|WorkQueue
+operator|.
+name|Executor
+name|executor
+parameter_list|,
 specifier|final
 name|Continuation
 name|cont
@@ -1049,6 +1065,12 @@ name|HttpServletRequest
 name|req
 parameter_list|)
 block|{
+name|this
+operator|.
+name|executor
+operator|=
+name|executor
+expr_stmt|;
 name|this
 operator|.
 name|cont
@@ -1215,14 +1237,6 @@ name|Continuation
 name|self
 parameter_list|)
 block|{
-name|WorkQueue
-operator|.
-name|Executor
-name|executor
-init|=
-name|getExecutor
-argument_list|()
-decl_stmt|;
 name|executor
 operator|.
 name|remove
