@@ -302,6 +302,19 @@ specifier|protected
 name|String
 name|downloadCommand
 decl_stmt|;
+comment|/** If true we CC the user on their own changes. */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|)
+DECL|field|copySelfOnEmail
+specifier|protected
+name|boolean
+name|copySelfOnEmail
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -525,6 +538,30 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+DECL|method|isCopySelfOnEmails ()
+specifier|public
+name|boolean
+name|isCopySelfOnEmails
+parameter_list|()
+block|{
+return|return
+name|copySelfOnEmail
+return|;
+block|}
+DECL|method|setCopySelfOnEmails (boolean includeSelfOnEmail)
+specifier|public
+name|void
+name|setCopySelfOnEmails
+parameter_list|(
+name|boolean
+name|includeSelfOnEmail
+parameter_list|)
+block|{
+name|copySelfOnEmail
+operator|=
+name|includeSelfOnEmail
+expr_stmt|;
+block|}
 DECL|method|resetToDefaults ()
 specifier|public
 name|void
@@ -546,6 +583,10 @@ expr_stmt|;
 name|useFlashClipboard
 operator|=
 literal|true
+expr_stmt|;
+name|copySelfOnEmail
+operator|=
+literal|false
 expr_stmt|;
 name|downloadUrl
 operator|=

@@ -140,6 +140,11 @@ name|String
 name|useFlashClipboard
 parameter_list|()
 function_decl|;
+DECL|method|copySelfOnEmails ()
+name|String
+name|copySelfOnEmails
+parameter_list|()
+function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
