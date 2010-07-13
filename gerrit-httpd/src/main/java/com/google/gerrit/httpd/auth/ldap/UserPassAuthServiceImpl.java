@@ -435,7 +435,8 @@ name|login
 argument_list|(
 name|res
 argument_list|,
-literal|false
+literal|true
+comment|/* persistent cookie */
 argument_list|)
 expr_stmt|;
 name|callback
