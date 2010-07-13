@@ -114,6 +114,42 @@ name|TextResource
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|NamedFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|RootPanel
+import|;
+end_import
+
 begin_comment
 comment|/** Evaluates prettify using the host browser's JavaScript engine. */
 end_comment
@@ -172,6 +208,9 @@ name|gerrit_css
 argument_list|()
 operator|.
 name|ensureInjected
+argument_list|()
+expr_stmt|;
+name|createFrame
 argument_list|()
 expr_stmt|;
 name|compile
@@ -275,6 +314,47 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|createFrame ()
+specifier|private
+specifier|static
+name|void
+name|createFrame
+parameter_list|()
+block|{
+name|NamedFrame
+name|frame
+init|=
+operator|new
+name|NamedFrame
+argument_list|(
+literal|"_prettify"
+argument_list|)
+decl_stmt|;
+name|frame
+operator|.
+name|setUrl
+argument_list|(
+literal|"javascript:"
+argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|RootPanel
+operator|.
+name|get
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|frame
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|compile (TextResource core)
 specifier|private
 specifier|static
@@ -304,7 +384,7 @@ parameter_list|(
 name|String
 name|js
 parameter_list|)
-comment|/*-{ eval(js); }-*/
+comment|/*-{ $wnd._prettify.eval(js); }-*/
 function_decl|;
 annotation|@
 name|Override
@@ -350,7 +430,7 @@ parameter_list|,
 name|int
 name|tabSize
 parameter_list|)
-comment|/*-{      window['PR_TAB_WIDTH'] = tabSize;      return window.prettyPrintOne(srcText, srcType);   }-*/
+comment|/*-{      $wnd._prettify.PR_TAB_WIDTH = tabSize;      return $wnd._prettify.prettyPrintOne(srcText, srcType);   }-*/
 function_decl|;
 block|}
 end_class
