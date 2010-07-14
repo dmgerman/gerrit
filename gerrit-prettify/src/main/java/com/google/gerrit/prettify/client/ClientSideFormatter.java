@@ -106,11 +106,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|resources
+name|core
 operator|.
 name|client
 operator|.
-name|TextResource
+name|GWT
 import|;
 end_import
 
@@ -122,13 +122,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|core
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|NamedFrame
+name|JavaScriptObject
 import|;
 end_import
 
@@ -188,6 +186,13 @@ return|;
 block|}
 block|}
 decl_stmt|;
+DECL|field|prettify
+specifier|private
+specifier|static
+specifier|final
+name|PrivateScopeImpl
+name|prettify
+decl_stmt|;
 static|static
 block|{
 name|Resources
@@ -210,9 +215,29 @@ operator|.
 name|ensureInjected
 argument_list|()
 expr_stmt|;
-name|createFrame
-argument_list|()
+name|prettify
+operator|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|PrivateScopeImpl
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
+name|RootPanel
+operator|.
+name|get
+argument_list|()
+operator|.
+name|add
+argument_list|(
+name|prettify
+argument_list|)
+expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -223,6 +248,8 @@ name|core
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -233,6 +260,8 @@ name|lang_css
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -243,6 +272,8 @@ name|lang_hs
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -253,6 +284,8 @@ name|lang_lisp
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -263,6 +296,8 @@ name|lang_lua
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -273,6 +308,8 @@ name|lang_ml
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -283,6 +320,8 @@ name|lang_proto
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -293,6 +332,8 @@ name|lang_sql
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -303,6 +344,8 @@ name|lang_vb
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|prettify
+operator|.
 name|compile
 argument_list|(
 name|Resources
@@ -314,78 +357,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createFrame ()
-specifier|private
-specifier|static
-name|void
-name|createFrame
-parameter_list|()
-block|{
-name|NamedFrame
-name|frame
-init|=
-operator|new
-name|NamedFrame
-argument_list|(
-literal|"_prettify"
-argument_list|)
-decl_stmt|;
-name|frame
-operator|.
-name|setUrl
-argument_list|(
-literal|"javascript:"
-argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|setVisible
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|RootPanel
-operator|.
-name|get
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|frame
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|compile (TextResource core)
-specifier|private
-specifier|static
-name|void
-name|compile
-parameter_list|(
-name|TextResource
-name|core
-parameter_list|)
-block|{
-name|eval
-argument_list|(
-name|core
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|eval (String js)
-specifier|private
-specifier|static
-specifier|native
-name|void
-name|eval
-parameter_list|(
-name|String
-name|js
-parameter_list|)
-comment|/*-{ $wnd._prettify.eval(js); }-*/
-function_decl|;
 annotation|@
 name|Override
 DECL|method|prettify (String html, String type)
@@ -403,6 +374,11 @@ block|{
 return|return
 name|go
 argument_list|(
+name|prettify
+operator|.
+name|getContext
+argument_list|()
+argument_list|,
 name|html
 argument_list|,
 name|type
@@ -414,13 +390,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|go (String srcText, String srcType, int tabSize)
+DECL|method|go (JavaScriptObject ctx, String srcText, String srcType, int tabSize)
 specifier|private
 specifier|static
 specifier|native
 name|String
 name|go
 parameter_list|(
+name|JavaScriptObject
+name|ctx
+parameter_list|,
 name|String
 name|srcText
 parameter_list|,
@@ -430,7 +409,7 @@ parameter_list|,
 name|int
 name|tabSize
 parameter_list|)
-comment|/*-{      $wnd._prettify.PR_TAB_WIDTH = tabSize;      return $wnd._prettify.prettyPrintOne(srcText, srcType);   }-*/
+comment|/*-{      ctx.PR_TAB_WIDTH = tabSize;      return ctx.prettyPrintOne(srcText, srcType);   }-*/
 function_decl|;
 block|}
 end_class
