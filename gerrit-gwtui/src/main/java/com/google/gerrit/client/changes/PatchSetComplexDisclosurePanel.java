@@ -1428,6 +1428,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|populateDiffAllActions
+argument_list|(
+name|detail
+argument_list|)
+expr_stmt|;
 name|body
 operator|.
 name|add
@@ -3134,6 +3139,17 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|populateDiffAllActions (final PatchSetDetail detail)
+specifier|private
+name|void
+name|populateDiffAllActions
+parameter_list|(
+specifier|final
+name|PatchSetDetail
+name|detail
+parameter_list|)
+block|{
 specifier|final
 name|Button
 name|diffAllSideBySide
