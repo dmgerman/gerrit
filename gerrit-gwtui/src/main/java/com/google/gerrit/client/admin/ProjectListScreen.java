@@ -825,9 +825,9 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
-name|ProjectAdminScreen
+name|ProjectScreen
 operator|.
-name|INFO_TAB
+name|INFO
 argument_list|)
 return|;
 block|}

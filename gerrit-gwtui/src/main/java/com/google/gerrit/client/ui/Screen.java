@@ -431,7 +431,6 @@ expr_stmt|;
 block|}
 DECL|method|add (final Widget w)
 specifier|protected
-specifier|final
 name|void
 name|add
 parameter_list|(

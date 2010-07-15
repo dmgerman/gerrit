@@ -183,6 +183,15 @@ name|SETTINGS
 init|=
 literal|"settings"
 decl_stmt|;
+DECL|field|SETTINGS_PREFERENCES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_PREFERENCES
+init|=
+literal|"settings,preferences"
+decl_stmt|;
 DECL|field|SETTINGS_SSHKEYS
 specifier|public
 specifier|static

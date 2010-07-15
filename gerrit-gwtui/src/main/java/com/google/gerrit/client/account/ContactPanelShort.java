@@ -527,10 +527,6 @@ name|ContactPanelShort
 extends|extends
 name|Composite
 block|{
-DECL|field|accountSettings
-name|AccountSettings
-name|accountSettings
-decl_stmt|;
 DECL|field|body
 specifier|protected
 specifier|final
@@ -1545,7 +1541,15 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|display
+argument_list|()
+expr_stmt|;
 block|}
+DECL|method|display ()
+name|void
+name|display
+parameter_list|()
+block|{   }
 DECL|method|row (final Grid info, final int row, final String name, final Widget field)
 specifier|protected
 name|void
@@ -2274,21 +2278,6 @@ operator|.
 name|refreshMenuBar
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|accountSettings
-operator|!=
-literal|null
-condition|)
-block|{
-name|accountSettings
-operator|.
-name|display
-argument_list|(
-name|me
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|toContactInformation ()
 name|ContactInformation

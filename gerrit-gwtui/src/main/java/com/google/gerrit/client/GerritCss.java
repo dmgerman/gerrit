@@ -618,6 +618,11 @@ name|String
 name|menuItem
 parameter_list|()
 function_decl|;
+DECL|method|menuScreenMenuBar ()
+name|String
+name|menuScreenMenuBar
+parameter_list|()
+function_decl|;
 DECL|method|missingApproval ()
 name|String
 name|missingApproval
