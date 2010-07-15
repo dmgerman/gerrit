@@ -360,6 +360,11 @@ name|String
 name|changeInfoBlockBranch
 parameter_list|()
 function_decl|;
+DECL|method|changeInfoBlockTopic ()
+name|String
+name|changeInfoBlockTopic
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockUploaded ()
 name|String
 name|changeInfoBlockUploaded

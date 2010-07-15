@@ -976,6 +976,29 @@ name|subject
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/** Topic name assigned by the user, if any. */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|14
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|topic
+specifier|protected
+name|String
+name|topic
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|Change ()
 specifier|protected
@@ -1427,6 +1450,38 @@ name|newStatus
 operator|.
 name|getCode
 argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getTopic ()
+specifier|public
+name|String
+name|getTopic
+parameter_list|()
+block|{
+return|return
+name|topic
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|setTopic (String topic)
+specifier|public
+name|void
+name|setTopic
+parameter_list|(
+name|String
+name|topic
+parameter_list|)
+block|{
+name|this
+operator|.
+name|topic
+operator|=
+name|topic
 expr_stmt|;
 block|}
 end_function

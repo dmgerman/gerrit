@@ -153,6 +153,11 @@ specifier|protected
 name|String
 name|branch
 decl_stmt|;
+DECL|field|topic
+specifier|protected
+name|String
+name|topic
+decl_stmt|;
 DECL|field|starred
 specifier|protected
 name|boolean
@@ -236,6 +241,13 @@ name|getDest
 argument_list|()
 operator|.
 name|getShortName
+argument_list|()
+expr_stmt|;
+name|topic
+operator|=
+name|c
+operator|.
+name|getTopic
 argument_list|()
 expr_stmt|;
 name|lastUpdatedOn
@@ -329,6 +341,16 @@ parameter_list|()
 block|{
 return|return
 name|branch
+return|;
+block|}
+DECL|method|getTopic ()
+specifier|public
+name|String
+name|getTopic
+parameter_list|()
+block|{
+return|return
+name|topic
 return|;
 block|}
 DECL|method|isStarred ()
