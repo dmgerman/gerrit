@@ -3741,7 +3741,7 @@ name|split
 operator|<=
 name|Constants
 operator|.
-name|R_HEADS
+name|R_REFS
 operator|.
 name|length
 argument_list|()
