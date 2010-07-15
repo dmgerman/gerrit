@@ -788,7 +788,6 @@ comment|// order to determine project level ownership.
 comment|//
 if|if
 condition|(
-operator|!
 name|getRefName
 argument_list|()
 operator|.
@@ -812,21 +811,26 @@ operator|-
 literal|1
 argument_list|)
 argument_list|)
-operator|&&
+condition|)
+block|{
+return|return
+name|getCurrentUser
+argument_list|()
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+return|return
 name|getProjectControl
 argument_list|()
 operator|.
 name|isOwner
 argument_list|()
-condition|)
-block|{
-return|return
-literal|true
 return|;
 block|}
-return|return
-literal|false
-return|;
 block|}
 comment|/** Can this user see this reference exists? */
 DECL|method|isVisible ()
