@@ -100,6 +100,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|schema
+operator|.
+name|sql
+operator|.
+name|DialectMySQL
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -198,6 +214,45 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|(
+operator|(
+name|JdbcSchema
+operator|)
+name|db
+operator|)
+operator|.
+name|getDialect
+argument_list|()
+operator|instanceof
+name|DialectMySQL
+condition|)
+block|{
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"DROP INDEX account_project_watches_ntNew ON account_project_watches"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"DROP INDEX account_project_watches_ntCmt ON account_project_watches"
+argument_list|)
+expr_stmt|;
+name|stmt
+operator|.
+name|execute
+argument_list|(
+literal|"DROP INDEX account_project_watches_ntSub ON account_project_watches"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|stmt
 operator|.
 name|execute
@@ -219,6 +274,7 @@ argument_list|(
 literal|"DROP INDEX account_project_watches_ntSub"
 argument_list|)
 expr_stmt|;
+block|}
 name|stmt
 operator|.
 name|execute
