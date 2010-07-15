@@ -756,6 +756,7 @@ comment|// order to determine project level ownership.
 comment|//
 if|if
 condition|(
+operator|!
 name|getRefName
 argument_list|()
 operator|.
