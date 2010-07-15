@@ -2760,7 +2760,7 @@ name|CopyableLabel
 argument_list|(
 name|k
 operator|.
-name|getEncodedKey
+name|getSshPublicKey
 argument_list|()
 argument_list|)
 decl_stmt|;
