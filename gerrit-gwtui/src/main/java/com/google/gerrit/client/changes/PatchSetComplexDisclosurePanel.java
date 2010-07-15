@@ -1354,15 +1354,7 @@ name|patchTable
 operator|.
 name|display
 argument_list|(
-name|info
-operator|.
-name|getKey
-argument_list|()
-argument_list|,
 name|detail
-operator|.
-name|getPatches
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|body
@@ -3215,6 +3207,8 @@ argument_list|,
 literal|0
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|Window
@@ -3312,6 +3306,8 @@ name|getKey
 argument_list|()
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)

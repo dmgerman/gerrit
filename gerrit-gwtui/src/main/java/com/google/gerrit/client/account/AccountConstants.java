@@ -90,9 +90,9 @@ name|AccountConstants
 extends|extends
 name|Constants
 block|{
-DECL|method|accountSettingsHeading ()
+DECL|method|settingsHeading ()
 name|String
-name|accountSettingsHeading
+name|settingsHeading
 parameter_list|()
 function_decl|;
 DECL|method|fullName ()
@@ -145,9 +145,19 @@ name|String
 name|buttonSaveChanges
 parameter_list|()
 function_decl|;
+DECL|method|tabAccountSummary ()
+name|String
+name|tabAccountSummary
+parameter_list|()
+function_decl|;
 DECL|method|tabPreferences ()
 name|String
 name|tabPreferences
+parameter_list|()
+function_decl|;
+DECL|method|tabWatchedProjects ()
+name|String
+name|tabWatchedProjects
 parameter_list|()
 function_decl|;
 DECL|method|tabContactInformation ()
@@ -158,6 +168,11 @@ function_decl|;
 DECL|method|tabSshKeys ()
 name|String
 name|tabSshKeys
+parameter_list|()
+function_decl|;
+DECL|method|tabHttpAccess ()
+name|String
+name|tabHttpAccess
 parameter_list|()
 function_decl|;
 DECL|method|tabWebIdentities ()
@@ -215,9 +230,19 @@ name|String
 name|password
 parameter_list|()
 function_decl|;
+DECL|method|buttonSetUserName ()
+name|String
+name|buttonSetUserName
+parameter_list|()
+function_decl|;
 DECL|method|buttonChangeUserName ()
 name|String
 name|buttonChangeUserName
+parameter_list|()
+function_decl|;
+DECL|method|buttonClearPassword ()
+name|String
+name|buttonClearPassword
 parameter_list|()
 function_decl|;
 DECL|method|buttonGeneratePassword ()
@@ -318,11 +343,6 @@ function_decl|;
 DECL|method|buttonLinkIdentity ()
 name|String
 name|buttonLinkIdentity
-parameter_list|()
-function_decl|;
-DECL|method|watchedProjects ()
-name|String
-name|watchedProjects
 parameter_list|()
 function_decl|;
 DECL|method|buttonWatchProject ()
@@ -513,6 +533,11 @@ function_decl|;
 DECL|method|welcomeContactFrom ()
 name|String
 name|welcomeContactFrom
+parameter_list|()
+function_decl|;
+DECL|method|welcomeUsernameHeading ()
+name|String
+name|welcomeUsernameHeading
 parameter_list|()
 function_decl|;
 DECL|method|welcomeSshKeyHeading ()
