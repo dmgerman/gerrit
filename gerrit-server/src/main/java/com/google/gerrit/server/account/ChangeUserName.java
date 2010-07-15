@@ -601,6 +601,23 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|old
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Username cannot be changed."
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|newUsername
 operator|!=
 literal|null

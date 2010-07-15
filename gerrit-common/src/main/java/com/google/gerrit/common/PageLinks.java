@@ -201,6 +201,15 @@ name|SETTINGS_SSHKEYS
 init|=
 literal|"settings,ssh-keys"
 decl_stmt|;
+DECL|field|SETTINGS_HTTP_PASSWORD
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_HTTP_PASSWORD
+init|=
+literal|"settings,http-password"
+decl_stmt|;
 DECL|field|SETTINGS_WEBIDENT
 specifier|public
 specifier|static

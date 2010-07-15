@@ -170,6 +170,11 @@ name|String
 name|tabSshKeys
 parameter_list|()
 function_decl|;
+DECL|method|tabHttpAccess ()
+name|String
+name|tabHttpAccess
+parameter_list|()
+function_decl|;
 DECL|method|tabWebIdentities ()
 name|String
 name|tabWebIdentities
@@ -225,9 +230,19 @@ name|String
 name|password
 parameter_list|()
 function_decl|;
+DECL|method|buttonSetUserName ()
+name|String
+name|buttonSetUserName
+parameter_list|()
+function_decl|;
 DECL|method|buttonChangeUserName ()
 name|String
 name|buttonChangeUserName
+parameter_list|()
+function_decl|;
+DECL|method|buttonClearPassword ()
+name|String
+name|buttonClearPassword
 parameter_list|()
 function_decl|;
 DECL|method|buttonGeneratePassword ()
@@ -518,6 +533,11 @@ function_decl|;
 DECL|method|welcomeContactFrom ()
 name|String
 name|welcomeContactFrom
+parameter_list|()
+function_decl|;
+DECL|method|welcomeUsernameHeading ()
+name|String
+name|welcomeUsernameHeading
 parameter_list|()
 function_decl|;
 DECL|method|welcomeSshKeyHeading ()

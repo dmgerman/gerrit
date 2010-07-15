@@ -128,6 +128,16 @@ name|String
 name|accountName
 parameter_list|()
 function_decl|;
+DECL|method|accountUsername ()
+name|String
+name|accountUsername
+parameter_list|()
+function_decl|;
+DECL|method|accountPassword ()
+name|String
+name|accountPassword
+parameter_list|()
+function_decl|;
 DECL|method|activeRow ()
 name|String
 name|activeRow
@@ -848,16 +858,6 @@ name|String
 name|sshKeyPanelInvalid
 parameter_list|()
 function_decl|;
-DECL|method|sshPanelUsername ()
-name|String
-name|sshPanelUsername
-parameter_list|()
-function_decl|;
-DECL|method|sshPanelPassword ()
-name|String
-name|sshPanelPassword
-parameter_list|()
-function_decl|;
 DECL|method|topmenu ()
 name|String
 name|topmenu
@@ -891,6 +891,11 @@ function_decl|;
 DECL|method|useridentity ()
 name|String
 name|useridentity
+parameter_list|()
+function_decl|;
+DECL|method|usernameField ()
+name|String
+name|usernameField
 parameter_list|()
 function_decl|;
 DECL|method|version ()

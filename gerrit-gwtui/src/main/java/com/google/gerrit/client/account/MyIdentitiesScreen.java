@@ -437,13 +437,6 @@ operator|.
 name|onInitUI
 argument_list|()
 expr_stmt|;
-name|add
-argument_list|(
-operator|new
-name|UsernamePanel
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|identites
 operator|=
 operator|new
