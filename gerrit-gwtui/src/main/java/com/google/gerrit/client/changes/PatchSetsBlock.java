@@ -511,6 +511,11 @@ name|void
 name|clear
 parameter_list|()
 block|{
+name|setRegisterKeys
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|body
 operator|.
 name|clear
@@ -520,11 +525,6 @@ name|patchSetPanels
 operator|.
 name|clear
 argument_list|()
-expr_stmt|;
-name|setRegisterKeys
-argument_list|(
-literal|false
-argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Adds the given patch set panel to this composite and ensures that handler    * to activate / deactivate keyboard navigation for the patch set panel are    * registered.    */
