@@ -627,6 +627,36 @@ operator|.
 name|changeId
 return|;
 block|}
+DECL|method|getTrackingId ()
+specifier|public
+name|String
+name|getTrackingId
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|trackingId
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+DECL|method|getSystem ()
+specifier|public
+name|String
+name|getSystem
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|trackingSystem
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|hashCode ()

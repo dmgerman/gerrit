@@ -169,6 +169,26 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
+literal|"WHERE key.patchKey.patchSetId.changeId = ?"
+argument_list|)
+DECL|method|byChange (Change.Id id)
+name|ResultSet
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|byChange
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
 literal|"WHERE key.patchKey = ? AND status = '"
 operator|+
 name|PatchLineComment

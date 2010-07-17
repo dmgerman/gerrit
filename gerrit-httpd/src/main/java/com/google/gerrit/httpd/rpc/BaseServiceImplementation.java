@@ -94,6 +94,22 @@ name|common
 operator|.
 name|errors
 operator|.
+name|InvalidQueryException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|errors
+operator|.
 name|NoSuchEntityException
 import|;
 end_import
@@ -409,6 +425,20 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|InvalidQueryException
+name|e
+parameter_list|)
+block|{
+name|callback
+operator|.
+name|onFailure
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|NoSuchProjectException
 name|e
 parameter_list|)
@@ -625,7 +655,7 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      * @throws NoSuchProjectException      * @throws NoSuchGroupException      */
+comment|/**      * Perform this action, returning the onSuccess value.      *      * @param db an open database handle to be used by this connection.      * @return he value to pass to {@link AsyncCallback#onSuccess(Object)}.      * @throws OrmException any schema based action failed.      * @throws Failure cause is given to      *         {@link AsyncCallback#onFailure(Throwable)}.      * @throws NoSuchProjectException      * @throws NoSuchGroupException      * @throws InvalidQueryException      */
 DECL|method|run (ReviewDb db)
 name|T
 name|run
@@ -641,6 +671,8 @@ throws|,
 name|NoSuchProjectException
 throws|,
 name|NoSuchGroupException
+throws|,
+name|InvalidQueryException
 function_decl|;
 block|}
 block|}

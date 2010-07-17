@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.server.query.change
 package|package
 name|com
 operator|.
@@ -60,9 +60,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|changes
+name|query
+operator|.
+name|change
 package|;
 end_package
 
@@ -72,11 +74,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|OrmException
 import|;
 end_import
 
@@ -86,95 +88,39 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|common
+name|client
 operator|.
-name|PageLinks
+name|ResultSet
 import|;
 end_import
 
-begin_class
-DECL|class|MineStarredScreen
-specifier|public
-class|class
-name|MineStarredScreen
-extends|extends
-name|MineSingleListScreen
+begin_interface
+DECL|interface|Paginated
+interface|interface
+name|Paginated
 block|{
-DECL|method|MineStarredScreen ()
-specifier|public
-name|MineStarredScreen
+DECL|method|limit ()
+name|int
+name|limit
 parameter_list|()
-block|{
-name|super
-argument_list|(
-name|PageLinks
-operator|.
-name|MINE_STARRED
-argument_list|)
-expr_stmt|;
+function_decl|;
+DECL|method|restart (ChangeData last)
+name|ResultSet
+argument_list|<
+name|ChangeData
+argument_list|>
+name|restart
+parameter_list|(
+name|ChangeData
+name|last
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
-annotation|@
-name|Override
-DECL|method|onInitUI ()
-specifier|protected
-name|void
-name|onInitUI
-parameter_list|()
-block|{
-name|super
-operator|.
-name|onInitUI
-argument_list|()
-expr_stmt|;
-name|setWindowTitle
-argument_list|(
-name|Gerrit
-operator|.
-name|C
-operator|.
-name|menuMyStarredChanges
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|setPageTitle
-argument_list|(
-name|Util
-operator|.
-name|C
-operator|.
-name|starredHeading
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|onLoad ()
-specifier|protected
-name|void
-name|onLoad
-parameter_list|()
-block|{
-name|super
-operator|.
-name|onLoad
-argument_list|()
-expr_stmt|;
-name|Util
-operator|.
-name|LIST_SVC
-operator|.
-name|myStarredChanges
-argument_list|(
-name|loadCallback
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

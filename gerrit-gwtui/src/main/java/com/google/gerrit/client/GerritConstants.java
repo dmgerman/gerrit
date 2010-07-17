@@ -268,6 +268,11 @@ name|String
 name|menuDocumentationIndex
 parameter_list|()
 function_decl|;
+DECL|method|menuDocumentationSearch ()
+name|String
+name|menuDocumentationSearch
+parameter_list|()
+function_decl|;
 DECL|method|menuDocumentationUpload ()
 name|String
 name|menuDocumentationUpload
