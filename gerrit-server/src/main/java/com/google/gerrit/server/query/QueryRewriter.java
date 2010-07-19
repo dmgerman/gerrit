@@ -717,6 +717,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|old
+operator|.
+name|equals
+argument_list|(
+name|in
+argument_list|)
+operator|&&
 name|in
 operator|.
 name|getChildCount
@@ -1090,6 +1097,19 @@ literal|null
 condition|)
 block|{
 continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|r
+operator|.
+name|useBestCost
+argument_list|()
+condition|)
+block|{
+return|return
+name|n
+return|;
 block|}
 if|if
 condition|(
@@ -1855,6 +1875,25 @@ name|value
 parameter_list|()
 function_decl|;
 block|}
+annotation|@
+name|Retention
+argument_list|(
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+argument_list|)
+annotation|@
+name|Target
+argument_list|(
+name|ElementType
+operator|.
+name|METHOD
+argument_list|)
+DECL|annotation|NoCostComputation
+specifier|protected
+annotation_defn|@interface
+name|NoCostComputation
+block|{   }
 comment|/** Applies a rewrite rule to a Predicate. */
 DECL|interface|RewriteRule
 specifier|protected
@@ -1884,6 +1923,12 @@ name|T
 argument_list|>
 name|input
 parameter_list|)
+function_decl|;
+comment|/** @return true if the best cost should be selected. */
+DECL|method|useBestCost ()
+name|boolean
+name|useBestCost
+parameter_list|()
 function_decl|;
 block|}
 comment|/** Implements the magic behind {@link Rewrite} annotations. */
@@ -1938,6 +1983,12 @@ argument_list|>
 index|[]
 name|argTypes
 decl_stmt|;
+DECL|field|useBestCost
+specifier|private
+specifier|final
+name|boolean
+name|useBestCost
+decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1962,6 +2013,19 @@ block|{
 name|method
 operator|=
 name|m
+expr_stmt|;
+name|useBestCost
+operator|=
+name|m
+operator|.
+name|getAnnotation
+argument_list|(
+name|NoCostComputation
+operator|.
+name|class
+argument_list|)
+operator|==
+literal|null
 expr_stmt|;
 name|Predicate
 argument_list|<
@@ -2265,6 +2329,18 @@ name|i
 index|]
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|useBestCost ()
+specifier|public
+name|boolean
+name|useBestCost
+parameter_list|()
+block|{
+return|return
+name|useBestCost
+return|;
 block|}
 annotation|@
 name|SuppressWarnings
