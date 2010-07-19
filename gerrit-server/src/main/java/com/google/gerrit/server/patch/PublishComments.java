@@ -1959,13 +1959,6 @@ argument_list|)
 expr_stmt|;
 name|cm
 operator|.
-name|setReviewDb
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
 name|send
 argument_list|()
 expr_stmt|;

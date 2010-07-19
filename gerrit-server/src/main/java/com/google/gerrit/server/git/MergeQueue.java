@@ -98,10 +98,15 @@ specifier|public
 interface|interface
 name|MergeQueue
 block|{
-DECL|method|merge (Branch.NameKey branch)
+DECL|method|merge (MergeOp.Factory mof, Branch.NameKey branch)
 name|void
 name|merge
 parameter_list|(
+name|MergeOp
+operator|.
+name|Factory
+name|mof
+parameter_list|,
 name|Branch
 operator|.
 name|NameKey

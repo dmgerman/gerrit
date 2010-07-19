@@ -355,6 +355,21 @@ name|String
 name|defaultProjectName
 parameter_list|()
 function_decl|;
+DECL|method|defaultFilter ()
+name|String
+name|defaultFilter
+parameter_list|()
+function_decl|;
+DECL|method|watchedProjectName ()
+name|String
+name|watchedProjectName
+parameter_list|()
+function_decl|;
+DECL|method|watchedProjectFilter ()
+name|String
+name|watchedProjectFilter
+parameter_list|()
+function_decl|;
 DECL|method|watchedProjectColumnEmailNotifications ()
 name|String
 name|watchedProjectColumnEmailNotifications

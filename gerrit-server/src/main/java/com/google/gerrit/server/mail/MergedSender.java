@@ -300,6 +300,12 @@ name|change
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|approvalTypes
+specifier|private
+specifier|final
+name|ApprovalTypes
+name|approvalTypes
+decl_stmt|;
 DECL|field|dest
 specifier|private
 name|Branch
@@ -309,17 +315,16 @@ name|dest
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|approvalTypes
-specifier|private
-name|ApprovalTypes
-name|approvalTypes
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|MergedSender (@ssisted Change c)
+DECL|method|MergedSender (EmailArguments ea, ApprovalTypes at, @Assisted Change c)
 specifier|public
 name|MergedSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
+name|ApprovalTypes
+name|at
+parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -328,6 +333,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 name|c
 argument_list|,
 literal|"merged"
@@ -339,6 +346,10 @@ name|c
 operator|.
 name|getDest
 argument_list|()
+expr_stmt|;
+name|approvalTypes
+operator|=
+name|at
 expr_stmt|;
 block|}
 DECL|method|setDest (final Branch.NameKey key)
@@ -479,10 +490,6 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|db
-operator|!=
-literal|null
-operator|&&
 name|patchSet
 operator|!=
 literal|null
@@ -567,7 +574,12 @@ control|(
 name|PatchSetApproval
 name|ca
 range|:
+name|args
+operator|.
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchSetApprovals
 argument_list|()
@@ -999,38 +1011,17 @@ name|void
 name|bccWatchesNotifySubmittedChanges
 parameter_list|()
 block|{
-if|if
-condition|(
-name|db
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 comment|// BCC anyone else who has interest in this project's changes
 comment|//
-specifier|final
-name|ProjectState
-name|ps
-init|=
-name|getProjectState
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|ps
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 specifier|final
 name|AccountProjectWatch
 name|w
 range|:
-name|getProjectWatches
+name|getWatches
 argument_list|()
 control|)
 block|{
@@ -1057,7 +1048,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|OrmException
@@ -1067,7 +1057,6 @@ block|{
 comment|// Just don't CC everyone. Better to send a partial message to those
 comment|// we already have queued up then to fail deliver entirely to people
 comment|// who have a lower interest in the change.
-block|}
 block|}
 block|}
 block|}

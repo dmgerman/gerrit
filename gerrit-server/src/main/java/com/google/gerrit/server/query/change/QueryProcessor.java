@@ -498,12 +498,6 @@ argument_list|(
 literal|"yyyy-MM-dd HH:mm:ss zzz"
 argument_list|)
 decl_stmt|;
-DECL|field|currentUser
-specifier|private
-specifier|final
-name|CurrentUser
-name|currentUser
-decl_stmt|;
 DECL|field|eventFactory
 specifier|private
 specifier|final
@@ -573,17 +567,19 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (CurrentUser currentUser, EventFactory eventFactory, ChangeQueryBuilder queryBuilder, ChangeQueryRewriter queryRewriter, Provider<ReviewDb> db)
+DECL|method|QueryProcessor (EventFactory eventFactory, ChangeQueryBuilder.Factory queryBuilder, CurrentUser currentUser, ChangeQueryRewriter queryRewriter, Provider<ReviewDb> db)
 name|QueryProcessor
 parameter_list|(
-name|CurrentUser
-name|currentUser
-parameter_list|,
 name|EventFactory
 name|eventFactory
 parameter_list|,
 name|ChangeQueryBuilder
+operator|.
+name|Factory
 name|queryBuilder
+parameter_list|,
+name|CurrentUser
+name|currentUser
 parameter_list|,
 name|ChangeQueryRewriter
 name|queryRewriter
@@ -597,12 +593,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|currentUser
-operator|=
-name|currentUser
-expr_stmt|;
-name|this
-operator|.
 name|eventFactory
 operator|=
 name|eventFactory
@@ -612,6 +602,11 @@ operator|.
 name|queryBuilder
 operator|=
 name|queryBuilder
+operator|.
+name|create
+argument_list|(
+name|currentUser
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -740,10 +735,8 @@ name|visibleToMe
 init|=
 name|queryBuilder
 operator|.
-name|visibleto
-argument_list|(
-name|currentUser
-argument_list|)
+name|is_visible
+argument_list|()
 decl_stmt|;
 name|Predicate
 argument_list|<

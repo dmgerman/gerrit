@@ -851,10 +851,9 @@ decl_stmt|;
 DECL|field|queryBuilder
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ChangeQueryBuilder
-argument_list|>
+operator|.
+name|Factory
 name|queryBuilder
 decl_stmt|;
 DECL|field|queryRewriter
@@ -868,7 +867,7 @@ name|queryRewriter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeListServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final Provider<ChangeQueryBuilder> queryBuilder, final Provider<ChangeQueryRewriter> queryRewriter)
+DECL|method|ChangeListServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeQueryBuilder.Factory queryBuilder, final Provider<ChangeQueryRewriter> queryRewriter)
 name|ChangeListServiceImpl
 parameter_list|(
 specifier|final
@@ -898,10 +897,9 @@ name|Factory
 name|accountInfoCacheFactory
 parameter_list|,
 specifier|final
-name|Provider
-argument_list|<
 name|ChangeQueryBuilder
-argument_list|>
+operator|.
+name|Factory
 name|queryBuilder
 parameter_list|,
 specifier|final
@@ -1193,8 +1191,13 @@ name|builder
 init|=
 name|queryBuilder
 operator|.
+name|create
+argument_list|(
+name|currentUser
+operator|.
 name|get
 argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
@@ -1205,13 +1208,8 @@ name|visibleToMe
 init|=
 name|builder
 operator|.
-name|visibleto
-argument_list|(
-name|currentUser
-operator|.
-name|get
+name|is_visible
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|Predicate
 argument_list|<

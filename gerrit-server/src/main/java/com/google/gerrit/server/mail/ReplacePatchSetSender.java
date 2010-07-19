@@ -226,13 +226,6 @@ name|change
 parameter_list|)
 function_decl|;
 block|}
-annotation|@
-name|Inject
-DECL|field|sshInfo
-specifier|private
-name|SshInfo
-name|sshInfo
-decl_stmt|;
 DECL|field|reviewers
 specifier|private
 specifier|final
@@ -273,12 +266,24 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|sshInfo
+specifier|private
+specifier|final
+name|SshInfo
+name|sshInfo
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplacePatchSetSender (@ssisted Change c)
+DECL|method|ReplacePatchSetSender (EmailArguments ea, SshInfo si, @Assisted Change c)
 specifier|public
 name|ReplacePatchSetSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
+name|SshInfo
+name|si
+parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -287,10 +292,16 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 name|c
 argument_list|,
 literal|"newpatchset"
 argument_list|)
+expr_stmt|;
+name|sshInfo
+operator|=
+name|si
 expr_stmt|;
 block|}
 DECL|method|addReviewers (final Collection<Account.Id> cc)

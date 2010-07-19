@@ -194,6 +194,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|MergeOp
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MergeQueue
 import|;
 end_import
@@ -846,12 +862,17 @@ name|toDelete
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submit (PatchSet.Id patchSetId, IdentifiedUser user, ReviewDb db, MergeQueue merger)
+DECL|method|submit (MergeOp.Factory opFactory, PatchSet.Id patchSetId, IdentifiedUser user, ReviewDb db, MergeQueue merger)
 specifier|public
 specifier|static
 name|void
 name|submit
 parameter_list|(
+name|MergeOp
+operator|.
+name|Factory
+name|opFactory
+parameter_list|,
 name|PatchSet
 operator|.
 name|Id
@@ -996,6 +1017,8 @@ name|merger
 operator|.
 name|merge
 argument_list|(
+name|opFactory
+argument_list|,
 name|change
 operator|.
 name|getDest

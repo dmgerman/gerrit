@@ -114,18 +114,6 @@ begin_import
 import|import
 name|com
 operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
 name|jcraft
 operator|.
 name|jsch
@@ -197,10 +185,9 @@ name|NewChangeSender
 extends|extends
 name|OutgoingEmail
 block|{
-annotation|@
-name|Inject
 DECL|field|sshInfo
 specifier|private
+specifier|final
 name|SshInfo
 name|sshInfo
 decl_stmt|;
@@ -244,20 +231,34 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|NewChangeSender (Change c)
+DECL|method|NewChangeSender (EmailArguments ea, SshInfo sshInfo, Change c)
 specifier|protected
 name|NewChangeSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
+name|SshInfo
+name|sshInfo
+parameter_list|,
 name|Change
 name|c
 parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 name|c
 argument_list|,
 literal|"newchange"
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|sshInfo
+operator|=
+name|sshInfo
 expr_stmt|;
 block|}
 DECL|method|addReviewers (final Collection<Account.Id> cc)

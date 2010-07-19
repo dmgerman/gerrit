@@ -163,6 +163,11 @@ name|String
 name|addSshKeyPanel
 parameter_list|()
 function_decl|;
+DECL|method|addWatchPanel ()
+name|String
+name|addWatchPanel
+parameter_list|()
+function_decl|;
 DECL|method|approvalCategoryList ()
 name|String
 name|approvalCategoryList
@@ -901,6 +906,11 @@ function_decl|;
 DECL|method|version ()
 name|String
 name|version
+parameter_list|()
+function_decl|;
+DECL|method|watchedProjectFilter ()
+name|String
+name|watchedProjectFilter
 parameter_list|()
 function_decl|;
 block|}

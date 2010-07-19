@@ -267,10 +267,13 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender (@ssisted Change c)
+DECL|method|CommentSender (EmailArguments ea, @Assisted Change c)
 specifier|public
 name|CommentSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -279,6 +282,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 name|c
 argument_list|,
 literal|"comment"
@@ -660,6 +665,8 @@ block|{
 try|try
 block|{
 return|return
+name|args
+operator|.
 name|server
 operator|.
 name|openRepository

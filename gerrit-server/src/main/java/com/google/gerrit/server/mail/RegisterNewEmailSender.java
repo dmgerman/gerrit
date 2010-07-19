@@ -169,6 +169,12 @@ name|address
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 DECL|field|addr
 specifier|private
 specifier|final
@@ -177,17 +183,16 @@ name|addr
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|authConfig
-specifier|private
-name|AuthConfig
-name|authConfig
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|RegisterNewEmailSender (@ssisted final String address)
+DECL|method|RegisterNewEmailSender (EmailArguments ea, AuthConfig ac, @Assisted final String address)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
+name|AuthConfig
+name|ac
+parameter_list|,
 annotation|@
 name|Assisted
 specifier|final
@@ -197,8 +202,14 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 literal|"registernewemail"
 argument_list|)
+expr_stmt|;
+name|authConfig
+operator|=
+name|ac
 expr_stmt|;
 name|addr
 operator|=

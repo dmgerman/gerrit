@@ -135,10 +135,13 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AbandonedSender (@ssisted Change c)
+DECL|method|AbandonedSender (EmailArguments ea, @Assisted Change c)
 specifier|public
 name|AbandonedSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -147,6 +150,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 name|c
 argument_list|,
 literal|"abandon"

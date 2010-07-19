@@ -6818,13 +6818,6 @@ expr_stmt|;
 block|}
 name|cm
 operator|.
-name|setReviewDb
-argument_list|(
-name|schema
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
 name|setPatchSet
 argument_list|(
 name|schema
@@ -7210,13 +7203,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|cm
-operator|.
-name|setReviewDb
-argument_list|(
-name|schema
-argument_list|)
-expr_stmt|;
 name|cm
 operator|.
 name|setPatchSet

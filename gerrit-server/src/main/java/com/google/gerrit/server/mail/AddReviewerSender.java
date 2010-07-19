@@ -86,6 +86,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ssh
+operator|.
+name|SshInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -135,10 +151,16 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AddReviewerSender (@ssisted Change c)
+DECL|method|AddReviewerSender (EmailArguments ea, SshInfo sshInfo, @Assisted Change c)
 specifier|public
 name|AddReviewerSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
+name|SshInfo
+name|sshInfo
+parameter_list|,
 annotation|@
 name|Assisted
 name|Change
@@ -147,6 +169,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
+name|sshInfo
+argument_list|,
 name|c
 argument_list|)
 expr_stmt|;

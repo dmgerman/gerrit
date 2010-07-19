@@ -92,6 +92,20 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|AccountProjectWatch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|Change
 import|;
 end_import
@@ -151,6 +165,16 @@ operator|.
 name|config
 operator|.
 name|AuthConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -288,15 +312,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getWatchedProjects ()
+DECL|method|getNotificationFilters ()
 specifier|public
-name|Set
+name|Collection
 argument_list|<
-name|Project
-operator|.
-name|NameKey
+name|AccountProjectWatch
 argument_list|>
-name|getWatchedProjects
+name|getNotificationFilters
 parameter_list|()
 block|{
 return|return

@@ -93,10 +93,13 @@ name|ReplyToChangeSender
 extends|extends
 name|OutgoingEmail
 block|{
-DECL|method|ReplyToChangeSender (Change c, String mc)
+DECL|method|ReplyToChangeSender (EmailArguments ea, Change c, String mc)
 specifier|protected
 name|ReplyToChangeSender
 parameter_list|(
+name|EmailArguments
+name|ea
+parameter_list|,
 name|Change
 name|c
 parameter_list|,
@@ -106,6 +109,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ea
+argument_list|,
 name|c
 argument_list|,
 name|mc

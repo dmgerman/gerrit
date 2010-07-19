@@ -88,7 +88,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Change
+name|AccountProjectWatch
 import|;
 end_import
 
@@ -102,7 +102,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Project
+name|Change
 import|;
 end_import
 
@@ -133,6 +133,16 @@ operator|.
 name|servlet
 operator|.
 name|RequestScoped
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -233,17 +243,15 @@ argument_list|>
 name|getStarredChanges
 parameter_list|()
 function_decl|;
-comment|/** Set of project that are watched by this user */
-DECL|method|getWatchedProjects ()
+comment|/** Filters selecting changes the user wants to monitor. */
+DECL|method|getNotificationFilters ()
 specifier|public
 specifier|abstract
-name|Set
+name|Collection
 argument_list|<
-name|Project
-operator|.
-name|NameKey
+name|AccountProjectWatch
 argument_list|>
-name|getWatchedProjects
+name|getNotificationFilters
 parameter_list|()
 function_decl|;
 comment|/** Is the user a non-interactive user? */

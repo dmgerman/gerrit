@@ -327,12 +327,15 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addProjectWatch (String projectName, AsyncCallback<AccountProjectWatchInfo> callback)
+DECL|method|addProjectWatch (String projectName, String filter, AsyncCallback<AccountProjectWatchInfo> callback)
 name|void
 name|addProjectWatch
 parameter_list|(
 name|String
 name|projectName
+parameter_list|,
+name|String
+name|filter
 parameter_list|,
 name|AsyncCallback
 argument_list|<
