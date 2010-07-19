@@ -66,6 +66,16 @@ name|events
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|PatchSetAttribute
 specifier|public
@@ -91,6 +101,14 @@ DECL|field|uploader
 specifier|public
 name|AccountAttribute
 name|uploader
+decl_stmt|;
+DECL|field|approvals
+specifier|public
+name|List
+argument_list|<
+name|ApprovalAttribute
+argument_list|>
+name|approvals
 decl_stmt|;
 block|}
 end_class
