@@ -102,11 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
 operator|.
-name|ChangeHookRunner
-operator|.
-name|ChangeEvent
+name|IdentifiedUser
 import|;
 end_import
 
@@ -120,7 +118,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|events
+operator|.
+name|ChangeEvent
 import|;
 end_import
 

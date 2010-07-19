@@ -52,20 +52,8 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common
+DECL|package|com.google.gerrit.server.events
 package|package
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-package|;
-end_package
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -75,28 +63,37 @@ operator|.
 name|server
 operator|.
 name|events
-operator|.
-name|ChangeEvent
-import|;
-end_import
+package|;
+end_package
 
-begin_interface
-DECL|interface|ChangeListener
+begin_class
+DECL|class|PatchSetAttribute
 specifier|public
-interface|interface
-name|ChangeListener
+class|class
+name|PatchSetAttribute
 block|{
-DECL|method|onChangeEvent (ChangeEvent event)
+DECL|field|number
 specifier|public
-name|void
-name|onChangeEvent
-parameter_list|(
-name|ChangeEvent
-name|event
-parameter_list|)
-function_decl|;
+name|String
+name|number
+decl_stmt|;
+DECL|field|revision
+specifier|public
+name|String
+name|revision
+decl_stmt|;
+DECL|field|ref
+specifier|public
+name|String
+name|ref
+decl_stmt|;
+DECL|field|uploader
+specifier|public
+name|AccountAttribute
+name|uploader
+decl_stmt|;
 block|}
-end_interface
+end_class
 
 end_unit
 
