@@ -168,6 +168,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|WildProjectName
 import|;
 end_import
@@ -391,9 +407,14 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|site
+specifier|final
+name|SitePaths
+name|site
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, @WildProjectName Project.NameKey wildProject, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, @WildProjectName Project.NameKey wildProject, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, SitePaths site)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -453,6 +474,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|SitePaths
+name|site
 parameter_list|)
 block|{
 name|this
@@ -532,6 +556,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|site
+operator|=
+name|site
 expr_stmt|;
 block|}
 block|}
