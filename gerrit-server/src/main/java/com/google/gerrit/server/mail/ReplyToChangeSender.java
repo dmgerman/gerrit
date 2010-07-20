@@ -91,7 +91,7 @@ specifier|abstract
 class|class
 name|ReplyToChangeSender
 extends|extends
-name|OutgoingEmail
+name|ChangeEmail
 block|{
 DECL|method|ReplyToChangeSender (EmailArguments ea, Change c, String mc)
 specifier|protected

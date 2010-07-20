@@ -183,7 +183,7 @@ specifier|abstract
 class|class
 name|NewChangeSender
 extends|extends
-name|OutgoingEmail
+name|ChangeEmail
 block|{
 DECL|field|sshInfo
 specifier|private
@@ -356,10 +356,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|format ()
+DECL|method|formatChange ()
 specifier|protected
 name|void
-name|format
+name|formatChange
 parameter_list|()
 block|{
 name|formatSalutation
