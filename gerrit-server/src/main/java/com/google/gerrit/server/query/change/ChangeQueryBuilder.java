@@ -778,6 +778,13 @@ operator|.
 name|Factory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|changeControlGenericFactory
+specifier|final
+name|ChangeControl
+operator|.
+name|GenericFactory
+name|changeControlGenericFactory
+decl_stmt|;
 DECL|field|accountResolver
 specifier|final
 name|AccountResolver
@@ -807,7 +814,7 @@ name|wildProjectName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, ChangeControl.Factory changeControlFactory, AccountResolver accountResolver, GroupCache groupCache, AuthConfig authConfig, ApprovalTypes approvalTypes, @WildProjectName Project.NameKey wildProjectName)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, ChangeControl.Factory changeControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupCache groupCache, AuthConfig authConfig, ApprovalTypes approvalTypes, @WildProjectName Project.NameKey wildProjectName)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -831,6 +838,11 @@ name|ChangeControl
 operator|.
 name|Factory
 name|changeControlFactory
+parameter_list|,
+name|ChangeControl
+operator|.
+name|GenericFactory
+name|changeControlGenericFactory
 parameter_list|,
 name|AccountResolver
 name|accountResolver
@@ -875,6 +887,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeControlGenericFactory
+operator|=
+name|changeControlGenericFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1548,6 +1566,14 @@ return|return
 operator|new
 name|LabelPredicate
 argument_list|(
+name|args
+operator|.
+name|changeControlGenericFactory
+argument_list|,
+name|args
+operator|.
+name|userFactory
+argument_list|,
 name|args
 operator|.
 name|dbProvider
