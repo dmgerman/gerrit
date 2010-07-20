@@ -883,6 +883,20 @@ name|fromId
 argument_list|)
 condition|)
 block|{
+name|appendText
+argument_list|(
+name|getFromLine
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|getFromLine ()
+specifier|protected
+name|String
+name|getFromLine
+parameter_list|()
+block|{
 specifier|final
 name|Account
 name|account
@@ -917,6 +931,13 @@ operator|.
 name|getPreferredEmail
 argument_list|()
 decl_stmt|;
+name|StringBuilder
+name|f
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -944,7 +965,7 @@ argument_list|()
 operator|)
 condition|)
 block|{
-name|body
+name|f
 operator|.
 name|append
 argument_list|(
@@ -964,7 +985,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|body
+name|f
 operator|.
 name|append
 argument_list|(
@@ -990,7 +1011,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|body
+name|f
 operator|.
 name|append
 argument_list|(
@@ -1008,7 +1029,7 @@ literal|">"
 argument_list|)
 expr_stmt|;
 block|}
-name|body
+name|f
 operator|.
 name|append
 argument_list|(
@@ -1016,7 +1037,12 @@ literal|":\n\n"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+return|return
+name|f
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 DECL|method|getGerritHost ()
 specifier|public
