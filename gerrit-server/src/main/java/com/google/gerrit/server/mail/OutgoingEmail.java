@@ -1019,7 +1019,7 @@ block|}
 block|}
 block|}
 DECL|method|getGerritHost ()
-specifier|protected
+specifier|public
 name|String
 name|getGerritHost
 parameter_list|()
@@ -1118,7 +1118,7 @@ literal|null
 return|;
 block|}
 DECL|method|getGerritUrl ()
-specifier|protected
+specifier|public
 name|String
 name|getGerritUrl
 parameter_list|()
@@ -1330,7 +1330,7 @@ name|name
 return|;
 block|}
 DECL|method|getNameEmailFor (Account.Id accountId)
-specifier|protected
+specifier|public
 name|String
 name|getNameEmailFor
 parameter_list|(

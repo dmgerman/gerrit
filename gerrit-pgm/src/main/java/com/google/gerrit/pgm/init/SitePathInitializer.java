@@ -622,6 +622,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"ChangeFooter.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"ChangeSubject.vm"
 argument_list|)
 expr_stmt|;
