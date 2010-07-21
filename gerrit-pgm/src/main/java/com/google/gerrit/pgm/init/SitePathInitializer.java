@@ -622,6 +622,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"Abandoned.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"ChangeFooter.vm"
 argument_list|)
 expr_stmt|;
@@ -638,6 +643,11 @@ expr_stmt|;
 name|extractMailExample
 argument_list|(
 literal|"Merged.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"MergeFail.vm"
 argument_list|)
 expr_stmt|;
 if|if
