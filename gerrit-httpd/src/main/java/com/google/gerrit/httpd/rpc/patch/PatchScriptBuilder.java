@@ -112,22 +112,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|PatchScriptSettings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|PatchScript
 operator|.
 name|DisplayMethod
@@ -631,10 +615,10 @@ specifier|private
 name|Change
 name|change
 decl_stmt|;
-DECL|field|settings
+DECL|field|diffPrefs
 specifier|private
-name|PatchScriptSettings
-name|settings
+name|AccountDiffPreference
+name|diffPrefs
 decl_stmt|;
 DECL|field|aId
 specifier|private
@@ -734,22 +718,22 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|setSettings (final PatchScriptSettings s)
+DECL|method|setDiffPrefs (final AccountDiffPreference dp)
 name|void
-name|setSettings
+name|setDiffPrefs
 parameter_list|(
 specifier|final
-name|PatchScriptSettings
-name|s
+name|AccountDiffPreference
+name|dp
 parameter_list|)
 block|{
-name|settings
+name|diffPrefs
 operator|=
-name|s
+name|dp
 expr_stmt|;
 name|context
 operator|=
-name|settings
+name|diffPrefs
 operator|.
 name|getContext
 argument_list|()
@@ -874,7 +858,7 @@ operator|.
 name|getHeaderLines
 argument_list|()
 argument_list|,
-name|settings
+name|diffPrefs
 argument_list|,
 name|a
 operator|.
@@ -1102,10 +1086,13 @@ block|{
 comment|// IF the file is really large, we disable things to avoid choking
 comment|// the browser client.
 comment|//
-name|settings
+name|diffPrefs
 operator|.
 name|setContext
 argument_list|(
+operator|(
+name|short
+operator|)
 name|Math
 operator|.
 name|min
@@ -1116,10 +1103,7 @@ name|context
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|settings
-operator|.
-name|getPrettySettings
-argument_list|()
+name|diffPrefs
 operator|.
 name|setSyntaxHighlighting
 argument_list|(
@@ -1128,7 +1112,7 @@ argument_list|)
 expr_stmt|;
 name|context
 operator|=
-name|settings
+name|diffPrefs
 operator|.
 name|getContext
 argument_list|()
@@ -1141,10 +1125,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|settings
-operator|.
-name|getPrettySettings
-argument_list|()
+name|diffPrefs
 operator|.
 name|isSyntaxHighlighting
 argument_list|()
@@ -1161,9 +1142,9 @@ expr_stmt|;
 block|}
 name|packContent
 argument_list|(
-name|settings
+name|diffPrefs
 operator|.
-name|getWhitespace
+name|getIgnoreWhitespace
 argument_list|()
 operator|!=
 name|Whitespace
@@ -1201,7 +1182,7 @@ operator|.
 name|getHeaderLines
 argument_list|()
 argument_list|,
-name|settings
+name|diffPrefs
 argument_list|,
 name|a
 operator|.

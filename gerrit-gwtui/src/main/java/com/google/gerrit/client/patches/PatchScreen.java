@@ -278,22 +278,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|PatchScriptSettings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|PatchSetDetail
 import|;
 end_import
@@ -870,18 +854,15 @@ name|patchTable
 argument_list|)
 expr_stmt|;
 specifier|final
-name|PatchScriptSettings
-name|s
+name|AccountDiffPreference
+name|dp
 init|=
 name|settingsPanel
 operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
-name|s
-operator|.
-name|getPrettySettings
-argument_list|()
+name|dp
 operator|.
 name|setSyntaxHighlighting
 argument_list|(
@@ -892,7 +873,7 @@ name|settingsPanel
 operator|.
 name|setValue
 argument_list|(
-name|s
+name|dp
 argument_list|)
 expr_stmt|;
 block|}
@@ -1292,7 +1273,7 @@ argument_list|(
 operator|new
 name|ValueChangeHandler
 argument_list|<
-name|PatchScriptSettings
+name|AccountDiffPreference
 argument_list|>
 argument_list|()
 block|{
@@ -1304,7 +1285,7 @@ name|onValueChange
 parameter_list|(
 name|ValueChangeEvent
 argument_list|<
-name|PatchScriptSettings
+name|AccountDiffPreference
 argument_list|>
 name|event
 parameter_list|)
@@ -1393,13 +1374,13 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|update (PatchScriptSettings s)
+DECL|method|update (AccountDiffPreference dp)
 specifier|private
 name|void
 name|update
 parameter_list|(
-name|PatchScriptSettings
-name|s
+name|AccountDiffPreference
+name|dp
 parameter_list|)
 block|{
 if|if
@@ -1410,7 +1391,7 @@ literal|null
 operator|&&
 name|canReuse
 argument_list|(
-name|s
+name|dp
 argument_list|,
 name|lastScript
 argument_list|)
@@ -1418,9 +1399,9 @@ condition|)
 block|{
 name|lastScript
 operator|.
-name|setSettings
+name|setDiffPrefs
 argument_list|(
-name|s
+name|dp
 argument_list|)
 expr_stmt|;
 name|RpcStatus
@@ -1491,13 +1472,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|canReuse (PatchScriptSettings s, PatchScript last)
+DECL|method|canReuse (AccountDiffPreference dp, PatchScript last)
 specifier|private
 name|boolean
 name|canReuse
 parameter_list|(
-name|PatchScriptSettings
-name|s
+name|AccountDiffPreference
+name|dp
 parameter_list|,
 name|PatchScript
 name|last
@@ -1507,15 +1488,15 @@ if|if
 condition|(
 name|last
 operator|.
-name|getSettings
+name|getDiffPrefs
 argument_list|()
 operator|.
-name|getWhitespace
+name|getIgnoreWhitespace
 argument_list|()
 operator|!=
-name|s
+name|dp
 operator|.
-name|getWhitespace
+name|getIgnoreWhitespace
 argument_list|()
 condition|)
 block|{
@@ -1528,7 +1509,7 @@ specifier|final
 name|int
 name|ctx
 init|=
-name|s
+name|dp
 operator|.
 name|getContext
 argument_list|()
@@ -1560,7 +1541,7 @@ if|if
 condition|(
 name|last
 operator|.
-name|getSettings
+name|getDiffPrefs
 argument_list|()
 operator|.
 name|getContext
@@ -1585,10 +1566,7 @@ return|;
 block|}
 if|if
 condition|(
-name|s
-operator|.
-name|getPrettySettings
-argument_list|()
+name|dp
 operator|.
 name|isSyntaxHighlighting
 argument_list|()

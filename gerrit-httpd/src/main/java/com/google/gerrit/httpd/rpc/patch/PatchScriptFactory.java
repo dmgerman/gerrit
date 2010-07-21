@@ -108,22 +108,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|PatchScriptSettings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|httpd
 operator|.
 name|rpc
@@ -143,6 +127,20 @@ operator|.
 name|reviewdb
 operator|.
 name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountDiffPreference
 import|;
 end_import
 
@@ -606,7 +604,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Patch.Key patchKey, @Assisted(R) PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, PatchScriptSettings settings)
+DECL|method|create (Patch.Key patchKey, @Assisted(R) PatchSet.Id patchSetA, @Assisted(R) PatchSet.Id patchSetB, AccountDiffPreference diffPrefs)
 name|PatchScriptFactory
 name|create
 parameter_list|(
@@ -635,8 +633,8 @@ operator|.
 name|Id
 name|patchSetB
 parameter_list|,
-name|PatchScriptSettings
-name|settings
+name|AccountDiffPreference
+name|diffPrefs
 parameter_list|)
 function_decl|;
 block|}
@@ -725,11 +723,11 @@ operator|.
 name|Id
 name|psb
 decl_stmt|;
-DECL|field|settings
+DECL|field|diffPrefs
 specifier|private
 specifier|final
-name|PatchScriptSettings
-name|settings
+name|AccountDiffPreference
+name|diffPrefs
 decl_stmt|;
 DECL|field|patchSetId
 specifier|private
@@ -794,7 +792,7 @@ name|comments
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchScriptFactory (final GitRepositoryManager grm, Provider<PatchScriptBuilder> builderFactory, final PatchListCache patchListCache, final ReviewDb db, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory aicFactory, @Assisted final Patch.Key patchKey, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted final PatchScriptSettings settings)
+DECL|method|PatchScriptFactory (final GitRepositoryManager grm, Provider<PatchScriptBuilder> builderFactory, final PatchListCache patchListCache, final ReviewDb db, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory aicFactory, @Assisted final Patch.Key patchKey, @Assisted(R) @Nullable final PatchSet.Id patchSetA, @Assisted(R) final PatchSet.Id patchSetB, @Assisted final AccountDiffPreference diffPrefs)
 name|PatchScriptFactory
 parameter_list|(
 specifier|final
@@ -862,8 +860,8 @@ parameter_list|,
 annotation|@
 name|Assisted
 specifier|final
-name|PatchScriptSettings
-name|settings
+name|AccountDiffPreference
+name|diffPrefs
 parameter_list|)
 block|{
 name|this
@@ -922,9 +920,9 @@ name|patchSetB
 expr_stmt|;
 name|this
 operator|.
-name|settings
+name|diffPrefs
 operator|=
-name|settings
+name|diffPrefs
 expr_stmt|;
 name|patchSetId
 operator|=
@@ -1095,9 +1093,9 @@ name|listFor
 argument_list|(
 name|keyFor
 argument_list|(
-name|settings
+name|diffPrefs
 operator|.
-name|getWhitespace
+name|getIgnoreWhitespace
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1265,13 +1263,13 @@ name|git
 parameter_list|)
 block|{
 specifier|final
-name|PatchScriptSettings
-name|s
+name|AccountDiffPreference
+name|dp
 init|=
 operator|new
-name|PatchScriptSettings
+name|AccountDiffPreference
 argument_list|(
-name|settings
+name|diffPrefs
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1299,9 +1297,9 @@ argument_list|)
 expr_stmt|;
 name|b
 operator|.
-name|setSettings
+name|setDiffPrefs
 argument_list|(
-name|s
+name|dp
 argument_list|)
 expr_stmt|;
 name|b

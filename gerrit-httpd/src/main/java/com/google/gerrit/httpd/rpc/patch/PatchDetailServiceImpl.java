@@ -174,22 +174,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|data
-operator|.
-name|PatchScriptSettings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|errors
 operator|.
 name|NoSuchEntityException
@@ -239,6 +223,20 @@ operator|.
 name|reviewdb
 operator|.
 name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountDiffPreference
 import|;
 end_import
 
@@ -811,7 +809,7 @@ operator|=
 name|saveDraftFactory
 expr_stmt|;
 block|}
-DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final PatchScriptSettings s, final AsyncCallback<PatchScript> callback)
+DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final AccountDiffPreference dp, final AsyncCallback<PatchScript> callback)
 specifier|public
 name|void
 name|patchScript
@@ -835,8 +833,8 @@ name|Id
 name|psb
 parameter_list|,
 specifier|final
-name|PatchScriptSettings
-name|s
+name|AccountDiffPreference
+name|dp
 parameter_list|,
 specifier|final
 name|AsyncCallback
@@ -874,7 +872,7 @@ name|psa
 argument_list|,
 name|psb
 argument_list|,
-name|s
+name|dp
 argument_list|)
 operator|.
 name|to

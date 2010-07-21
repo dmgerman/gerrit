@@ -106,6 +106,20 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|AccountDiffPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|ApprovalCategoryValue
 import|;
 end_import
@@ -295,7 +309,7 @@ name|PatchDetailService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, PatchScriptSettings settings, AsyncCallback<PatchScript> callback)
+DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, AccountDiffPreference diffPrefs, AsyncCallback<PatchScript> callback)
 name|void
 name|patchScript
 parameter_list|(
@@ -314,8 +328,8 @@ operator|.
 name|Id
 name|b
 parameter_list|,
-name|PatchScriptSettings
-name|settings
+name|AccountDiffPreference
+name|diffPrefs
 parameter_list|,
 name|AsyncCallback
 argument_list|<

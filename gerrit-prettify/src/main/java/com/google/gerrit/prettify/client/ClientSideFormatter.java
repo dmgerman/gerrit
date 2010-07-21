@@ -383,7 +383,7 @@ name|html
 argument_list|,
 name|type
 argument_list|,
-name|settings
+name|diffPrefs
 operator|.
 name|getTabSize
 argument_list|()

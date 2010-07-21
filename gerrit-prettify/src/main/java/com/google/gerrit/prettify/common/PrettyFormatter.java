@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AccountDiffPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtexpui
 operator|.
 name|safehtml
@@ -335,10 +349,15 @@ name|Edit
 argument_list|>
 name|edits
 decl_stmt|;
-DECL|field|settings
+DECL|field|diffPrefs
 specifier|protected
-name|PrettySettings
-name|settings
+name|AccountDiffPreference
+name|diffPrefs
+decl_stmt|;
+DECL|field|fileName
+specifier|protected
+name|String
+name|fileName
 decl_stmt|;
 DECL|field|trailingEdits
 specifier|protected
@@ -475,18 +494,34 @@ operator|=
 name|all
 expr_stmt|;
 block|}
-DECL|method|setPrettySettings (PrettySettings how)
+DECL|method|setDiffPrefs (AccountDiffPreference how)
 specifier|public
 name|void
-name|setPrettySettings
+name|setDiffPrefs
 parameter_list|(
-name|PrettySettings
+name|AccountDiffPreference
 name|how
 parameter_list|)
 block|{
-name|settings
+name|diffPrefs
 operator|=
 name|how
+expr_stmt|;
+block|}
+DECL|method|setFileName (String fileName)
+specifier|public
+name|void
+name|setFileName
+parameter_list|(
+name|String
+name|fileName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|fileName
+operator|=
+name|fileName
 expr_stmt|;
 block|}
 comment|/**    * Parse and format a complete source code file.    *    * @param src raw content of the file to format. The line strings will be HTML    *        escaped before processing, so it must be the raw text.    */
@@ -534,7 +569,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|settings
+name|diffPrefs
 operator|.
 name|isSyntaxHighlighting
 argument_list|()
@@ -968,7 +1003,7 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
-name|settings
+name|diffPrefs
 operator|.
 name|getLineLength
 argument_list|()
@@ -1044,7 +1079,7 @@ block|{
 name|int
 name|free
 init|=
-name|settings
+name|diffPrefs
 operator|.
 name|getLineLength
 argument_list|()
@@ -1074,7 +1109,7 @@ literal|0
 expr_stmt|;
 name|free
 operator|=
-name|settings
+name|diffPrefs
 operator|.
 name|getLineLength
 argument_list|()
@@ -1479,7 +1514,7 @@ name|html
 decl_stmt|;
 if|if
 condition|(
-name|settings
+name|diffPrefs
 operator|.
 name|isIntralineDifference
 argument_list|()
@@ -1588,9 +1623,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|settings
+name|diffPrefs
 operator|.
-name|isShowWhiteSpaceErrors
+name|isShowWhitespaceErrors
 argument_list|()
 condition|)
 block|{
@@ -1614,7 +1649,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|settings
+name|diffPrefs
 operator|.
 name|isShowTabs
 argument_list|()
@@ -1625,7 +1660,7 @@ name|t
 init|=
 literal|1
 operator|<
-name|settings
+name|diffPrefs
 operator|.
 name|getTabSize
 argument_list|()
@@ -2604,7 +2639,7 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
-name|settings
+name|diffPrefs
 operator|.
 name|isShowTabs
 argument_list|()
@@ -2620,7 +2655,7 @@ control|(
 init|;
 name|i
 operator|<
-name|settings
+name|diffPrefs
 operator|.
 name|getTabSize
 argument_list|()
@@ -2660,10 +2695,7 @@ block|{
 name|String
 name|srcType
 init|=
-name|settings
-operator|.
-name|getFilename
-argument_list|()
+name|fileName
 decl_stmt|;
 if|if
 condition|(

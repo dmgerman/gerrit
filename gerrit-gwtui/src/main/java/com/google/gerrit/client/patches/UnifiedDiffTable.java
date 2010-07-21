@@ -969,10 +969,7 @@ name|syntaxHighlighting
 init|=
 name|script
 operator|.
-name|getSettings
-argument_list|()
-operator|.
-name|getPrettySettings
+name|getDiffPrefs
 argument_list|()
 operator|.
 name|isSyntaxHighlighting
