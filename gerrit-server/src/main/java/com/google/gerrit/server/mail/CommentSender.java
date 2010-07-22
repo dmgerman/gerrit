@@ -405,10 +405,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|format ()
+DECL|method|formatChange ()
 specifier|protected
 name|void
-name|format
+name|formatChange
 parameter_list|()
 block|{
 if|if
