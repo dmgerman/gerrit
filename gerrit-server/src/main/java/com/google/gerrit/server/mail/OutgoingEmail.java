@@ -1296,7 +1296,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getSettingsUrl ()
-specifier|private
+specifier|public
 name|String
 name|getSettingsUrl
 parameter_list|()
@@ -1733,7 +1733,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|add (final RecipientType rt, final UserIdentity who)
-specifier|private
+specifier|protected
 name|void
 name|add
 parameter_list|(
