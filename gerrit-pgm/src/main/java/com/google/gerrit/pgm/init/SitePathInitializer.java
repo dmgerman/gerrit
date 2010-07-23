@@ -625,6 +625,11 @@ argument_list|(
 literal|"ChangeSubject.vm"
 argument_list|)
 expr_stmt|;
+name|extractMailExample
+argument_list|(
+literal|"Merged.vm"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

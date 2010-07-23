@@ -1521,6 +1521,27 @@ name|void
 name|formatChangeDetail
 parameter_list|()
 block|{
+name|appendText
+argument_list|(
+name|getChangeDetail
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Create the change message and the affected file list. */
+DECL|method|getChangeDetail ()
+specifier|public
+name|String
+name|getChangeDetail
+parameter_list|()
+block|{
+name|StringBuilder
+name|detail
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|patchSetInfo
@@ -1528,7 +1549,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|appendText
+name|detail
+operator|.
+name|append
 argument_list|(
 name|patchSetInfo
 operator|.
@@ -1537,17 +1560,16 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
+operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|appendText
+name|detail
+operator|.
+name|append
 argument_list|(
 name|change
 operator|.
@@ -1556,10 +1578,7 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|appendText
-argument_list|(
+operator|+
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1571,7 +1590,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|appendText
+name|detail
+operator|.
+name|append
 argument_list|(
 literal|"---\n"
 argument_list|)
@@ -1588,7 +1609,9 @@ name|getPatches
 argument_list|()
 control|)
 block|{
-name|appendText
+name|detail
+operator|.
+name|append
 argument_list|(
 name|p
 operator|.
@@ -1609,12 +1632,20 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-name|appendText
+name|detail
+operator|.
+name|append
 argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|detail
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 comment|/** Get the patch list corresponding to this patch set. */
 DECL|method|getPatchList ()
