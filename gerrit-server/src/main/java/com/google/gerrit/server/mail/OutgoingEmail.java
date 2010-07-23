@@ -729,6 +729,8 @@ specifier|protected
 name|void
 name|init
 parameter_list|()
+throws|throws
+name|EmailException
 block|{
 name|setupVelocityContext
 argument_list|()

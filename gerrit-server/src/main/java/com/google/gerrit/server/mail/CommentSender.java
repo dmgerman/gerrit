@@ -387,6 +387,8 @@ specifier|protected
 name|void
 name|init
 parameter_list|()
+throws|throws
+name|EmailException
 block|{
 name|super
 operator|.
@@ -410,6 +412,8 @@ specifier|protected
 name|void
 name|formatChange
 parameter_list|()
+throws|throws
+name|EmailException
 block|{
 if|if
 condition|(

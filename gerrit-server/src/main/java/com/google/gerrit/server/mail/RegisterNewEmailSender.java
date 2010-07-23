@@ -223,6 +223,8 @@ specifier|protected
 name|void
 name|init
 parameter_list|()
+throws|throws
+name|EmailException
 block|{
 name|super
 operator|.
@@ -269,6 +271,8 @@ specifier|protected
 name|void
 name|format
 parameter_list|()
+throws|throws
+name|EmailException
 block|{
 specifier|final
 name|StringBuilder
