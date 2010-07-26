@@ -430,7 +430,7 @@ name|searchBox
 operator|.
 name|setVisibleLength
 argument_list|(
-literal|46
+literal|70
 argument_list|)
 expr_stmt|;
 name|searchBox
