@@ -321,6 +321,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|PageLinks
+operator|.
+name|op
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1722,8 +1738,6 @@ argument_list|(
 comment|//
 literal|"status:open "
 operator|+
-name|QueryScreen
-operator|.
 name|op
 argument_list|(
 literal|"project"
@@ -1811,8 +1825,6 @@ argument_list|(
 comment|//
 literal|"status:merged "
 operator|+
-name|QueryScreen
-operator|.
 name|op
 argument_list|(
 literal|"project"
@@ -1900,8 +1912,6 @@ argument_list|(
 comment|//
 literal|"status:abandoned "
 operator|+
-name|QueryScreen
-operator|.
 name|op
 argument_list|(
 literal|"project"

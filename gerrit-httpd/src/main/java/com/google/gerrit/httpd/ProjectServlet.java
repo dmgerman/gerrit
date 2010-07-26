@@ -893,7 +893,11 @@ name|append
 argument_list|(
 name|PageLinks
 operator|.
-name|toProject
+name|toChangeQuery
+argument_list|(
+name|PageLinks
+operator|.
+name|projectQuery
 argument_list|(
 name|dst
 argument_list|,
@@ -902,6 +906,7 @@ operator|.
 name|Status
 operator|.
 name|NEW
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
