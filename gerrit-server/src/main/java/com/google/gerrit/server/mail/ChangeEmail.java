@@ -1139,7 +1139,7 @@ expr_stmt|;
 block|}
 comment|/** Get a link to the change; null if the server doesn't know its own address. */
 DECL|method|getChangeUrl ()
-specifier|protected
+specifier|public
 name|String
 name|getChangeUrl
 parameter_list|()
@@ -1329,7 +1329,7 @@ block|}
 block|}
 comment|/** Get the text of the "cover letter", from {@link ChangeMessage}. */
 DECL|method|getCoverLetter ()
-specifier|protected
+specifier|public
 name|String
 name|getCoverLetter
 parameter_list|()
