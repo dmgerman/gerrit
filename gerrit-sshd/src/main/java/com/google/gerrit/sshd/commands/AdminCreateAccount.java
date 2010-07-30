@@ -1067,27 +1067,6 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|die (String msg)
-specifier|private
-name|UnloggedFailure
-name|die
-parameter_list|(
-name|String
-name|msg
-parameter_list|)
-block|{
-return|return
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: "
-operator|+
-name|msg
-argument_list|)
-return|;
-block|}
 DECL|method|getEmailKey ()
 specifier|private
 name|AccountExternalId
