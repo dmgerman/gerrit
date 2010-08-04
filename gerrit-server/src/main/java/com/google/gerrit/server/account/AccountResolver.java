@@ -651,8 +651,6 @@ specifier|final
 name|String
 name|userName
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|AccountState
 name|as
