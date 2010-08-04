@@ -490,6 +490,31 @@ name|String
 name|headingPatchComments
 parameter_list|()
 function_decl|;
+DECL|method|buttonRestoreChangeBegin ()
+name|String
+name|buttonRestoreChangeBegin
+parameter_list|()
+function_decl|;
+DECL|method|restoreChangeTitle ()
+name|String
+name|restoreChangeTitle
+parameter_list|()
+function_decl|;
+DECL|method|buttonRestoreChangeCancel ()
+name|String
+name|buttonRestoreChangeCancel
+parameter_list|()
+function_decl|;
+DECL|method|headingRestoreMessage ()
+name|String
+name|headingRestoreMessage
+parameter_list|()
+function_decl|;
+DECL|method|buttonRestoreChangeSend ()
+name|String
+name|buttonRestoreChangeSend
+parameter_list|()
+function_decl|;
 DECL|method|pagedChangeListPrev ()
 name|String
 name|pagedChangeListPrev

@@ -214,6 +214,27 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|restoreChange (PatchSet.Id patchSetId, String message, AsyncCallback<ChangeDetail> callback)
+name|void
+name|restoreChange
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+name|String
+name|message
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ChangeDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
