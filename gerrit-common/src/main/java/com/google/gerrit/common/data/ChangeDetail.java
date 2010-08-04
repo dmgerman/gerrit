@@ -197,6 +197,11 @@ specifier|protected
 name|boolean
 name|canAbandon
 decl_stmt|;
+DECL|field|canRestore
+specifier|protected
+name|boolean
+name|canRestore
+decl_stmt|;
 DECL|field|change
 specifier|protected
 name|Change
@@ -354,6 +359,31 @@ name|a
 parameter_list|)
 block|{
 name|canAbandon
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canRestore ()
+specifier|public
+name|boolean
+name|canRestore
+parameter_list|()
+block|{
+return|return
+name|canRestore
+return|;
+block|}
+DECL|method|setCanRestore (final boolean a)
+specifier|public
+name|void
+name|setCanRestore
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canRestore
 operator|=
 name|a
 expr_stmt|;

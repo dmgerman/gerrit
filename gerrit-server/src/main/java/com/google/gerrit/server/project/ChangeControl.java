@@ -885,6 +885,19 @@ argument_list|()
 comment|// site administers are god
 return|;
 block|}
+comment|/** Can this user restore this change? */
+DECL|method|canRestore ()
+specifier|public
+name|boolean
+name|canRestore
+parameter_list|()
+block|{
+return|return
+name|canAbandon
+argument_list|()
+return|;
+comment|// Anyone who can abandon the change can restore it back
+block|}
 DECL|method|normalize (ApprovalCategory.Id category, short score)
 specifier|public
 name|short
