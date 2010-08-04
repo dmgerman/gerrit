@@ -2139,7 +2139,7 @@ argument_list|,
 comment|//
 name|args
 operator|.
-name|changeControlFactory
+name|changeControlGenericFactory
 argument_list|,
 comment|//
 name|user

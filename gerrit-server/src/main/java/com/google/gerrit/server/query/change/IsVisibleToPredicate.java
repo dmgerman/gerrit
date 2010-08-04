@@ -292,7 +292,7 @@ specifier|private
 specifier|final
 name|ChangeControl
 operator|.
-name|Factory
+name|GenericFactory
 name|changeControl
 decl_stmt|;
 DECL|field|user
@@ -301,7 +301,7 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|IsVisibleToPredicate (Provider<ReviewDb> db, ChangeControl.Factory changeControlFactory, CurrentUser user)
+DECL|method|IsVisibleToPredicate (Provider<ReviewDb> db, ChangeControl.GenericFactory changeControlFactory, CurrentUser user)
 name|IsVisibleToPredicate
 parameter_list|(
 name|Provider
@@ -312,7 +312,7 @@ name|db
 parameter_list|,
 name|ChangeControl
 operator|.
-name|Factory
+name|GenericFactory
 name|changeControlFactory
 parameter_list|,
 name|CurrentUser
@@ -401,10 +401,7 @@ operator|.
 name|controlFor
 argument_list|(
 name|c
-argument_list|)
-operator|.
-name|forUser
-argument_list|(
+argument_list|,
 name|user
 argument_list|)
 operator|.
