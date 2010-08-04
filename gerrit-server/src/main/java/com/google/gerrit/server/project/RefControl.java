@@ -1739,12 +1739,12 @@ name|cmp
 init|=
 name|distance
 argument_list|(
-name|pattern2
+name|pattern1
 argument_list|)
 operator|-
 name|distance
 argument_list|(
-name|pattern1
+name|pattern2
 argument_list|)
 decl_stmt|;
 if|if
