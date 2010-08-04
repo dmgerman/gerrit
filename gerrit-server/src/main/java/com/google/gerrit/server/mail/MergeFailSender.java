@@ -155,7 +155,7 @@ name|ea
 argument_list|,
 name|c
 argument_list|,
-literal|"comment"
+literal|"merge-failed"
 argument_list|)
 expr_stmt|;
 block|}
