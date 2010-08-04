@@ -2029,6 +2029,11 @@ block|}
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:merged S=(sortkey_after:*) L=(limit:*)"
@@ -2082,6 +2087,17 @@ name|intValue
 argument_list|()
 argument_list|)
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r20_byMergedPrev"
+argument_list|,
+name|s
+argument_list|,
+name|l
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 name|ResultSet
@@ -2163,6 +2179,11 @@ block|}
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:merged S=(sortkey_before:*) L=(limit:*)"
@@ -2216,6 +2237,17 @@ name|intValue
 argument_list|()
 argument_list|)
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r20_byMergedNext"
+argument_list|,
+name|s
+argument_list|,
+name|l
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 name|ResultSet
@@ -2297,6 +2329,11 @@ block|}
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:abandoned S=(sortkey_after:*) L=(limit:*)"
@@ -2350,6 +2387,17 @@ name|intValue
 argument_list|()
 argument_list|)
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r20_byAbandonedPrev"
+argument_list|,
+name|s
+argument_list|,
+name|l
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 name|ResultSet
@@ -2431,6 +2479,11 @@ block|}
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:abandoned S=(sortkey_before:*) L=(limit:*)"
@@ -2484,6 +2537,17 @@ name|intValue
 argument_list|()
 argument_list|)
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r20_byAbandonedNext"
+argument_list|,
+name|s
+argument_list|,
+name|l
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 name|ResultSet
@@ -2687,6 +2751,11 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:open O=(owner:*)"
@@ -2716,6 +2785,15 @@ argument_list|(
 literal|50
 argument_list|)
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r25_byOwnerOpen"
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 name|ResultSet
@@ -2780,6 +2858,11 @@ block|}
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:closed O=(owner:*)"
@@ -2809,6 +2892,15 @@ argument_list|(
 literal|5000
 argument_list|)
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r25_byOwnerClosed"
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 name|ResultSet
@@ -2915,6 +3007,11 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:open R=(reviewer:*)"
@@ -2942,6 +3039,15 @@ operator|new
 name|Source
 argument_list|()
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r30_byReviewerOpen"
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -3056,6 +3162,11 @@ block|}
 return|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Rewrite
 argument_list|(
 literal|"status:closed R=(reviewer:*)"
@@ -3083,6 +3194,15 @@ operator|new
 name|Source
 argument_list|()
 block|{
+block|{
+name|init
+argument_list|(
+literal|"r30_byReviewerClosed"
+argument_list|,
+name|r
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
