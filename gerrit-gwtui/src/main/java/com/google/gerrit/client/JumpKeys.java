@@ -237,7 +237,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|ALL_OPEN
+name|toChangeQuery
+argument_list|(
+literal|"status:open"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -280,7 +283,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|ALL_MERGED
+name|toChangeQuery
+argument_list|(
+literal|"status:merged"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -323,7 +329,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|ALL_ABANDONED
+name|toChangeQuery
+argument_list|(
+literal|"status:abandoned"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -417,7 +426,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|MINE_DRAFTS
+name|toChangeQuery
+argument_list|(
+literal|"has:draft"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -460,7 +472,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|MINE_WATCHED
+name|toChangeQuery
+argument_list|(
+literal|"is:watched status:open"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -503,7 +518,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|MINE_STARRED
+name|toChangeQuery
+argument_list|(
+literal|"is:starred"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

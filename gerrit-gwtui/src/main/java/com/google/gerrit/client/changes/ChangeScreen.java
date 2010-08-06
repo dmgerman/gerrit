@@ -2380,7 +2380,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|ALL_OPEN
+name|toChangeQuery
+argument_list|(
+literal|"status:open"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
