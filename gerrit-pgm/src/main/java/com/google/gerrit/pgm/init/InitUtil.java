@@ -104,7 +104,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|storage
+operator|.
+name|file
 operator|.
 name|FileBasedConfig
 import|;
@@ -118,7 +120,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|storage
+operator|.
+name|file
 operator|.
 name|LockFile
 import|;
@@ -134,17 +138,21 @@ name|jgit
 operator|.
 name|util
 operator|.
-name|SystemReader
+name|FS
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|eclipse
 operator|.
-name|OutputStream
+name|jgit
+operator|.
+name|util
+operator|.
+name|SystemReader
 import|;
 end_import
 
@@ -185,6 +193,16 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
 import|;
 end_import
 
@@ -338,6 +356,10 @@ operator|new
 name|LockFile
 argument_list|(
 name|path
+argument_list|,
+name|FS
+operator|.
+name|DETECTED
 argument_list|)
 decl_stmt|;
 if|if
@@ -1063,6 +1085,10 @@ operator|new
 name|LockFile
 argument_list|(
 name|dst
+argument_list|,
+name|FS
+operator|.
+name|DETECTED
 argument_list|)
 decl_stmt|;
 if|if

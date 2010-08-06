@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
+operator|.
+name|git
 package|;
 end_package
 
@@ -136,6 +138,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|storage
+operator|.
+name|pack
+operator|.
+name|PackConfig
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -159,6 +177,12 @@ specifier|private
 specifier|final
 name|int
 name|timeout
+decl_stmt|;
+DECL|field|packConfig
+specifier|private
+specifier|final
+name|PackConfig
+name|packConfig
 decl_stmt|;
 annotation|@
 name|Inject
@@ -197,6 +221,33 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+name|packConfig
+operator|=
+operator|new
+name|PackConfig
+argument_list|()
+expr_stmt|;
+name|packConfig
+operator|.
+name|setDeltaCompress
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|packConfig
+operator|.
+name|setThreads
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|packConfig
+operator|.
+name|fromConfig
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** @return configured timeout, in seconds. 0 if the timeout is infinite. */
 DECL|method|getTimeout ()
@@ -207,6 +258,16 @@ parameter_list|()
 block|{
 return|return
 name|timeout
+return|;
+block|}
+DECL|method|getPackConfig ()
+specifier|public
+name|PackConfig
+name|getPackConfig
+parameter_list|()
+block|{
+return|return
+name|packConfig
 return|;
 block|}
 block|}

@@ -360,7 +360,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|storage
+operator|.
+name|file
 operator|.
 name|FileBasedConfig
 import|;
@@ -1002,6 +1004,10 @@ argument_list|(
 name|site
 operator|.
 name|replication_config
+argument_list|,
+name|FS
+operator|.
+name|DETECTED
 argument_list|)
 decl_stmt|;
 if|if

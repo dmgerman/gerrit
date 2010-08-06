@@ -124,7 +124,7 @@ argument_list|(
 name|createWorkRepository
 argument_list|()
 operator|.
-name|getWorkDir
+name|getWorkTree
 argument_list|()
 argument_list|,
 literal|"test_site"
