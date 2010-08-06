@@ -124,38 +124,6 @@ name|common
 operator|.
 name|PageLinks
 operator|.
-name|MINE_DRAFTS
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|PageLinks
-operator|.
-name|MINE_STARRED
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|PageLinks
-operator|.
 name|REGISTER
 import|;
 end_import
@@ -1472,7 +1440,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|MINE_STARRED
+literal|"mine,starred"
 operator|.
 name|equals
 argument_list|(
@@ -1492,7 +1460,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|MINE_DRAFTS
+literal|"mine,drafts"
 operator|.
 name|equals
 argument_list|(
