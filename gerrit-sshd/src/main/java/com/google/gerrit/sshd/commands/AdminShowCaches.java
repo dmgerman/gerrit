@@ -140,7 +140,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|storage
+operator|.
+name|file
 operator|.
 name|WindowCacheStatAccessor
 import|;

@@ -118,9 +118,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|AbstractGitCommand
+name|git
+operator|.
+name|TransferConfig
 import|;
 end_import
 
@@ -134,7 +136,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|TransferConfig
+name|AbstractGitCommand
 import|;
 end_import
 

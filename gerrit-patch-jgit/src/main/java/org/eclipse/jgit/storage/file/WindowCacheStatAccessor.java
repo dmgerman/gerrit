@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|org.eclipse.jgit.lib
+DECL|package|org.eclipse.jgit.storage.file
 package|package
 name|org
 operator|.
@@ -60,7 +60,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|storage
+operator|.
+name|file
 package|;
 end_package
 

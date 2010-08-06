@@ -590,7 +590,7 @@ name|newName
 operator|=
 name|hdr
 operator|.
-name|getOldName
+name|getOldPath
 argument_list|()
 expr_stmt|;
 break|break;
@@ -608,7 +608,7 @@ name|newName
 operator|=
 name|hdr
 operator|.
-name|getNewName
+name|getNewPath
 argument_list|()
 expr_stmt|;
 break|break;
@@ -622,14 +622,14 @@ name|oldName
 operator|=
 name|hdr
 operator|.
-name|getOldName
+name|getOldPath
 argument_list|()
 expr_stmt|;
 name|newName
 operator|=
 name|hdr
 operator|.
-name|getNewName
+name|getNewPath
 argument_list|()
 expr_stmt|;
 break|break;
