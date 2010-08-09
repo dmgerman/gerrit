@@ -196,6 +196,10 @@ comment|/** Name supplied does not match to a registered account. */
 DECL|enumConstant|ACCOUNT_NOT_FOUND
 name|ACCOUNT_NOT_FOUND
 block|,
+comment|/** The account is inactive. */
+DECL|enumConstant|ACCOUNT_INACTIVE
+name|ACCOUNT_INACTIVE
+block|,
 comment|/** The account is not permitted to see the change. */
 DECL|enumConstant|CHANGE_NOT_VISIBLE
 name|CHANGE_NOT_VISIBLE

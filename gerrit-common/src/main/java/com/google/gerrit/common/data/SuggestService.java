@@ -205,12 +205,15 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-DECL|method|suggestAccount (String query, int limit, AsyncCallback<List<AccountInfo>> callback)
+DECL|method|suggestAccount (String query, Boolean enabled, int limit, AsyncCallback<List<AccountInfo>> callback)
 name|void
 name|suggestAccount
 parameter_list|(
 name|String
 name|query
+parameter_list|,
+name|Boolean
+name|enabled
 parameter_list|,
 name|int
 name|limit

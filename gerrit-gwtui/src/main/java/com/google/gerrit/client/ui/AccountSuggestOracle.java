@@ -232,6 +232,10 @@ operator|.
 name|getQuery
 argument_list|()
 argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|,
 name|req
 operator|.
 name|getLimit

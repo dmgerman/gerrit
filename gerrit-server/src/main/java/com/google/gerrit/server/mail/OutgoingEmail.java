@@ -2008,6 +2008,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|a
+operator|.
+name|isActive
+argument_list|()
+operator|||
 name|e
 operator|==
 literal|null

@@ -193,6 +193,11 @@ name|String
 name|noSuchAccountTitle
 parameter_list|()
 function_decl|;
+DECL|method|inactiveAccountBody ()
+name|String
+name|inactiveAccountBody
+parameter_list|()
+function_decl|;
 DECL|method|menuAll ()
 name|String
 name|menuAll

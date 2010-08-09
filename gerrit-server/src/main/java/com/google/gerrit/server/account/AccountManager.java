@@ -649,7 +649,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Authenticate the user, potentially creating a new account if they are new.    *    * @param who identity of the user, with any details we received about them.    * @return the result of authenticating the user.    * @throws AccountException the account does not exist, and cannot be created,    *         or exists, but cannot be located.    */
+comment|/**    * Authenticate the user, potentially creating a new account if they are new.    *    * @param who identity of the user, with any details we received about them.    * @return the result of authenticating the user.    * @throws AccountException the account does not exist, and cannot be created,    *         or exists, but cannot be located, or is inactive.    */
 DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthResult
@@ -728,8 +728,45 @@ return|;
 block|}
 else|else
 block|{
-comment|// Account exists, return the identity to the caller.
-comment|//
+comment|// Account exists
+name|Account
+name|act
+init|=
+name|db
+operator|.
+name|accounts
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|id
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|act
+operator|==
+literal|null
+operator|||
+operator|!
+name|act
+operator|.
+name|isActive
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|AccountException
+argument_list|(
+literal|"Authentication error, account inactive"
+argument_list|)
+throw|;
+block|}
+comment|// return the identity to the caller.
 name|update
 argument_list|(
 name|db

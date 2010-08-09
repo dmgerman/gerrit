@@ -879,6 +879,15 @@ condition|(
 name|who
 operator|==
 literal|null
+operator|||
+operator|!
+name|who
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|isActive
+argument_list|()
 condition|)
 block|{
 name|rsp

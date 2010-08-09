@@ -399,6 +399,19 @@ specifier|protected
 name|AccountGeneralPreferences
 name|generalPreferences
 decl_stmt|;
+comment|/** Is this user active */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|)
+DECL|field|inactive
+specifier|protected
+name|boolean
+name|inactive
+decl_stmt|;
 comment|/**<i>computed</i> the username selected from the identities. */
 DECL|field|userName
 specifier|protected
@@ -590,6 +603,32 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|isActive ()
+specifier|public
+name|boolean
+name|isActive
+parameter_list|()
+block|{
+return|return
+operator|!
+name|inactive
+return|;
+block|}
+DECL|method|setActive (boolean active)
+specifier|public
+name|void
+name|setActive
+parameter_list|(
+name|boolean
+name|active
+parameter_list|)
+block|{
+name|inactive
+operator|=
+operator|!
+name|active
 expr_stmt|;
 block|}
 comment|/** @return the computed user name for this account */

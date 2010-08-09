@@ -287,6 +287,14 @@ name|String
 name|who
 parameter_list|)
 function_decl|;
+DECL|method|accountInactive (String who)
+name|String
+name|accountInactive
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
 DECL|method|changeNotVisibleTo (String who)
 name|String
 name|changeNotVisibleTo
