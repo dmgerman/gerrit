@@ -343,7 +343,12 @@ operator|new
 name|DisclosurePanel
 argument_list|(
 name|text
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|main
+operator|.
+name|setOpen
+argument_list|(
 name|isOpen
 argument_list|)
 expr_stmt|;
