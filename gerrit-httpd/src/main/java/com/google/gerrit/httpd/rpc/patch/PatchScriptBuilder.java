@@ -2772,6 +2772,10 @@ condition|(
 name|path
 operator|==
 literal|null
+operator|||
+name|within
+operator|==
+literal|null
 condition|)
 block|{
 return|return
