@@ -211,6 +211,8 @@ class|class
 name|AccountDashboardScreen
 extends|extends
 name|Screen
+implements|implements
+name|ChangeListScreen
 block|{
 DECL|field|ownerId
 specifier|private

@@ -215,9 +215,9 @@ name|String
 name|changeTablePageNext
 parameter_list|()
 function_decl|;
-DECL|method|upToDashboard ()
+DECL|method|upToChangeList ()
 name|String
-name|upToDashboard
+name|upToChangeList
 parameter_list|()
 function_decl|;
 DECL|method|expandCollapseDependencies ()
