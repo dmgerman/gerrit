@@ -155,6 +155,11 @@ name|String
 name|buttonAddProjectRight
 parameter_list|()
 function_decl|;
+DECL|method|buttonClearProjectRight ()
+name|String
+name|buttonClearProjectRight
+parameter_list|()
+function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
