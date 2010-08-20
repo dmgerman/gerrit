@@ -663,6 +663,11 @@ condition|)
 block|{
 name|event
 operator|.
+name|preventDefault
+argument_list|()
+expr_stmt|;
+name|event
+operator|.
 name|stopPropagation
 argument_list|()
 expr_stmt|;
