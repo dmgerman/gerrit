@@ -229,7 +229,7 @@ DECL|field|urlType
 specifier|final
 name|AccountGeneralPreferences
 operator|.
-name|DownloadUrl
+name|DownloadScheme
 name|urlType
 decl_stmt|;
 DECL|field|urlData
@@ -237,12 +237,12 @@ specifier|final
 name|String
 name|urlData
 decl_stmt|;
-DECL|method|DownloadUrlLink (AccountGeneralPreferences.DownloadUrl urlType, String text, String urlData)
+DECL|method|DownloadUrlLink (AccountGeneralPreferences.DownloadScheme urlType, String text, String urlData)
 name|DownloadUrlLink
 parameter_list|(
 name|AccountGeneralPreferences
 operator|.
-name|DownloadUrl
+name|DownloadScheme
 name|urlType
 parameter_list|,
 name|String

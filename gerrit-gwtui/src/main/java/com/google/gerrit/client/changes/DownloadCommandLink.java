@@ -389,6 +389,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getCmdType ()
+specifier|public
+name|AccountGeneralPreferences
+operator|.
+name|DownloadCommand
+name|getCmdType
+parameter_list|()
+block|{
+return|return
+name|cmdType
+return|;
+block|}
 DECL|method|select ()
 name|void
 name|select
