@@ -103,6 +103,16 @@ specifier|final
 class|class
 name|Patch
 block|{
+comment|/** Magical file name which represents the commit message. */
+DECL|field|COMMIT_MSG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COMMIT_MSG
+init|=
+literal|"/COMMIT_MSG"
+decl_stmt|;
 DECL|class|Key
 specifier|public
 specifier|static

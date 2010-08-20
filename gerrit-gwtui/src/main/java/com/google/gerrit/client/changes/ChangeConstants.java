@@ -275,6 +275,11 @@ name|String
 name|patchTableDownloadPostImage
 parameter_list|()
 function_decl|;
+DECL|method|commitMessage ()
+name|String
+name|commitMessage
+parameter_list|()
+function_decl|;
 DECL|method|patchTablePrev ()
 name|String
 name|patchTablePrev

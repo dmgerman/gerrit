@@ -2374,10 +2374,12 @@ specifier|final
 name|String
 name|path
 init|=
-name|patchKey
+name|PatchTable
 operator|.
-name|get
-argument_list|()
+name|getDisplayFileName
+argument_list|(
+name|patchKey
+argument_list|)
 decl_stmt|;
 name|String
 name|fileName

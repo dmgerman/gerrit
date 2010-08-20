@@ -575,6 +575,29 @@ argument_list|(
 literal|"....................................................\n"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Patch
+operator|.
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|pk
+operator|.
+name|get
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|appendText
+argument_list|(
+literal|"Commit Message\n"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|appendText
 argument_list|(
 literal|"File "
@@ -593,6 +616,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|currentFileKey
 operator|=
 name|pk
