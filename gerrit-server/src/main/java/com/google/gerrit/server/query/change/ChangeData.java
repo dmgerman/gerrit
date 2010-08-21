@@ -270,6 +270,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
 import|;
 end_import
@@ -339,10 +349,8 @@ name|currentApprovals
 decl_stmt|;
 DECL|field|currentFiles
 specifier|private
-name|Collection
-argument_list|<
 name|String
-argument_list|>
+index|[]
 name|currentFiles
 decl_stmt|;
 DECL|field|comments
@@ -403,15 +411,13 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|setCurrentFilePaths (Collection<String> filePaths)
+DECL|method|setCurrentFilePaths (String[] filePaths)
 specifier|public
 name|void
 name|setCurrentFilePaths
 parameter_list|(
-name|Collection
-argument_list|<
 name|String
-argument_list|>
+index|[]
 name|filePaths
 parameter_list|)
 block|{
@@ -422,10 +428,8 @@ expr_stmt|;
 block|}
 DECL|method|currentFilePaths (Provider<ReviewDb> db, PatchListCache cache)
 specifier|public
-name|Collection
-argument_list|<
 name|String
-argument_list|>
+index|[]
 name|currentFilePaths
 parameter_list|(
 name|Provider
@@ -606,6 +610,25 @@ block|}
 name|currentFiles
 operator|=
 name|r
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+name|r
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
+expr_stmt|;
+name|Arrays
+operator|.
+name|sort
+argument_list|(
+name|currentFiles
+argument_list|)
 expr_stmt|;
 block|}
 return|return
