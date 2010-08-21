@@ -2779,6 +2779,10 @@ operator|new
 name|RegExp
 argument_list|(
 name|refPattern
+argument_list|,
+name|RegExp
+operator|.
+name|NONE
 argument_list|)
 return|;
 block|}
