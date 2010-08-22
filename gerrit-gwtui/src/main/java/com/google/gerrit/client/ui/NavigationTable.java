@@ -828,16 +828,7 @@ name|row
 operator|--
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|getRowItem
-argument_list|(
-name|row
-argument_list|)
-operator|!=
-literal|null
-condition|)
+else|else
 block|{
 break|break;
 block|}

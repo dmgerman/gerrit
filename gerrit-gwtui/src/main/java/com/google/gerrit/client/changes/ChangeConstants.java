@@ -250,6 +250,11 @@ name|String
 name|patchTableColumnComments
 parameter_list|()
 function_decl|;
+DECL|method|patchTableColumnSize ()
+name|String
+name|patchTableColumnSize
+parameter_list|()
+function_decl|;
 DECL|method|patchTableColumnDiff ()
 name|String
 name|patchTableColumnDiff
