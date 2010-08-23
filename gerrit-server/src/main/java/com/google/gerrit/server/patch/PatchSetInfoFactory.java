@@ -600,6 +600,8 @@ argument_list|(
 name|repo
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 specifier|final
 name|RevCommit
 name|src
@@ -630,6 +632,15 @@ argument_list|,
 name|patchSetId
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+name|rw
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

@@ -860,6 +860,8 @@ argument_list|(
 name|db
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 specifier|final
 name|RevFlag
 name|VISIBLE
@@ -931,6 +933,15 @@ name|tag
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+finally|finally
+block|{
+name|rw
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 DECL|method|lookupVisibleCommits (final Map<String, Ref> result, final RevWalk rw, final RevFlag VISIBLE)

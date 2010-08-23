@@ -742,6 +742,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|Repository
 import|;
 end_import
@@ -1412,13 +1426,24 @@ expr_stmt|;
 break|break;
 block|}
 specifier|final
+name|ObjectReader
+name|reader
+init|=
+name|repo
+operator|.
+name|newObjectReader
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+specifier|final
 name|RevWalk
 name|rw
 init|=
 operator|new
 name|RevWalk
 argument_list|(
-name|repo
+name|reader
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1480,6 +1505,8 @@ argument_list|(
 name|rawTextFactory
 argument_list|,
 name|repo
+argument_list|,
+name|reader
 argument_list|,
 literal|null
 argument_list|,
@@ -1600,7 +1627,7 @@ init|=
 operator|new
 name|TreeWalk
 argument_list|(
-name|repo
+name|reader
 argument_list|)
 decl_stmt|;
 name|walk
@@ -1728,6 +1755,8 @@ name|rawTextFactory
 argument_list|,
 name|repo
 argument_list|,
+name|reader
+argument_list|,
 comment|//
 name|againstParent
 condition|?
@@ -1777,7 +1806,7 @@ index|]
 operator|=
 name|newEntry
 argument_list|(
-name|repo
+name|reader
 argument_list|,
 name|aTree
 argument_list|,
@@ -1803,7 +1832,16 @@ name|entries
 argument_list|)
 return|;
 block|}
-DECL|method|newCommitMessage ( final RawText.Factory rawTextFactory, final Repository repo, final RevCommit aCommit, final RevCommit bCommit)
+finally|finally
+block|{
+name|reader
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|newCommitMessage ( final RawText.Factory rawTextFactory, final Repository db, final ObjectReader reader, final RevCommit aCommit, final RevCommit bCommit)
 specifier|private
 name|PatchListEntry
 name|newCommitMessage
@@ -1816,7 +1854,11 @@ name|rawTextFactory
 parameter_list|,
 specifier|final
 name|Repository
-name|repo
+name|db
+parameter_list|,
+specifier|final
+name|ObjectReader
+name|reader
 parameter_list|,
 specifier|final
 name|RevCommit
@@ -1955,7 +1997,9 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|repo
+name|db
+argument_list|,
+name|reader
 argument_list|,
 name|aCommit
 argument_list|)
@@ -1971,7 +2015,9 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|repo
+name|db
+argument_list|,
+name|reader
 argument_list|,
 name|bCommit
 argument_list|)
@@ -2048,7 +2094,7 @@ decl_stmt|;
 return|return
 name|newEntry
 argument_list|(
-name|repo
+name|reader
 argument_list|,
 name|aText
 argument_list|,
@@ -2064,13 +2110,13 @@ name|fh
 argument_list|)
 return|;
 block|}
-DECL|method|newEntry (Repository repo, RevTree aTree, RevTree bTree, FileHeader fileHeader)
+DECL|method|newEntry (ObjectReader reader, RevTree aTree, RevTree bTree, FileHeader fileHeader)
 specifier|private
 name|PatchListEntry
 name|newEntry
 parameter_list|(
-name|Repository
-name|repo
+name|ObjectReader
+name|reader
 parameter_list|,
 name|RevTree
 name|aTree
@@ -2252,7 +2298,7 @@ block|}
 return|return
 name|newEntry
 argument_list|(
-name|repo
+name|reader
 argument_list|,
 literal|null
 argument_list|,
@@ -2268,13 +2314,13 @@ name|fileHeader
 argument_list|)
 return|;
 block|}
-DECL|method|newEntry (Repository repo, Text aContent, Text bContent, List<Edit> edits, RevTree aTree, RevTree bTree, FileHeader fileHeader)
+DECL|method|newEntry (ObjectReader reader, Text aContent, Text bContent, List<Edit> edits, RevTree aTree, RevTree bTree, FileHeader fileHeader)
 specifier|private
 name|PatchListEntry
 name|newEntry
 parameter_list|(
-name|Repository
-name|repo
+name|ObjectReader
+name|reader
 parameter_list|,
 name|Text
 name|aContent
@@ -2364,7 +2410,7 @@ name|aContent
 operator|=
 name|read
 argument_list|(
-name|repo
+name|reader
 argument_list|,
 name|fileHeader
 operator|.
@@ -2378,7 +2424,7 @@ name|bContent
 operator|=
 name|read
 argument_list|(
-name|repo
+name|reader
 argument_list|,
 name|fileHeader
 operator|.
@@ -3997,14 +4043,14 @@ operator|<
 name|e
 return|;
 block|}
-DECL|method|read (Repository repo, String path, RevTree tree)
+DECL|method|read (ObjectReader reader, String path, RevTree tree)
 specifier|private
 specifier|static
 name|Text
 name|read
 parameter_list|(
-name|Repository
-name|repo
+name|ObjectReader
+name|reader
 parameter_list|,
 name|String
 name|path
@@ -4022,7 +4068,7 @@ name|TreeWalk
 operator|.
 name|forPath
 argument_list|(
-name|repo
+name|reader
 argument_list|,
 name|path
 argument_list|,
@@ -4063,7 +4109,7 @@ try|try
 block|{
 name|ldr
 operator|=
-name|repo
+name|reader
 operator|.
 name|open
 argument_list|(

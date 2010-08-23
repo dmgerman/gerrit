@@ -981,12 +981,19 @@ name|IncorrectObjectTypeException
 throws|,
 name|IOException
 block|{
-return|return
+name|RevWalk
+name|rw
+init|=
 operator|new
 name|RevWalk
 argument_list|(
 name|git
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+return|return
+name|rw
 operator|.
 name|parseCommit
 argument_list|(
@@ -1004,6 +1011,15 @@ argument_list|()
 argument_list|)
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+name|rw
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|next ()
 specifier|private

@@ -618,6 +618,8 @@ argument_list|(
 name|repo
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|rw
 operator|.
 name|setRetainBody
@@ -721,6 +723,15 @@ expr_stmt|;
 return|return
 name|detail
 return|;
+block|}
+finally|finally
+block|{
+name|rw
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{

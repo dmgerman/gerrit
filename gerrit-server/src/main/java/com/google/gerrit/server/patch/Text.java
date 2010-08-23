@@ -146,6 +146,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -392,7 +406,7 @@ argument_list|(
 name|NO_BYTES
 argument_list|)
 decl_stmt|;
-DECL|method|forCommit (Repository db, AnyObjectId commitId)
+DECL|method|forCommit (Repository db, ObjectReader reader, AnyObjectId commitId)
 specifier|public
 specifier|static
 name|Text
@@ -400,6 +414,9 @@ name|forCommit
 parameter_list|(
 name|Repository
 name|db
+parameter_list|,
+name|ObjectReader
+name|reader
 parameter_list|,
 name|AnyObjectId
 name|commitId
@@ -413,11 +430,9 @@ init|=
 operator|new
 name|RevWalk
 argument_list|(
-name|db
+name|reader
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|RevCommit
 name|c
 decl_stmt|;
@@ -686,15 +701,6 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|appendPersonIdent (StringBuilder b, String field, PersonIdent person)
 specifier|private
