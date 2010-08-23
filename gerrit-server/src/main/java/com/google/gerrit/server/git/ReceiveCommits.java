@@ -3812,16 +3812,25 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|destTopicName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|destTopicName
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
-comment|// We use empty string here to denote the topic wasn't
-comment|// supplied, but the caller used the syntax that allows
-comment|// for a topic to be given.
-comment|//
 name|destTopicName
 operator|=
-literal|""
+literal|null
 expr_stmt|;
 block|}
 name|destBranch
@@ -5249,13 +5258,6 @@ name|change
 operator|.
 name|setTopic
 argument_list|(
-name|destTopicName
-operator|.
-name|isEmpty
-argument_list|()
-condition|?
-literal|null
-else|:
 name|destTopicName
 argument_list|)
 expr_stmt|;
@@ -7359,15 +7361,6 @@ name|change
 operator|.
 name|setTopic
 argument_list|(
-name|destTopicName
-operator|.
-name|isEmpty
-argument_list|()
-comment|//
-condition|?
-literal|null
-comment|//
-else|:
 name|destTopicName
 argument_list|)
 expr_stmt|;

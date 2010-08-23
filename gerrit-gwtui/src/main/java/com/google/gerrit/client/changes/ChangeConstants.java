@@ -215,9 +215,9 @@ name|String
 name|changeTablePageNext
 parameter_list|()
 function_decl|;
-DECL|method|upToDashboard ()
+DECL|method|upToChangeList ()
 name|String
-name|upToDashboard
+name|upToChangeList
 parameter_list|()
 function_decl|;
 DECL|method|expandCollapseDependencies ()
@@ -250,6 +250,11 @@ name|String
 name|patchTableColumnComments
 parameter_list|()
 function_decl|;
+DECL|method|patchTableColumnSize ()
+name|String
+name|patchTableColumnSize
+parameter_list|()
+function_decl|;
 DECL|method|patchTableColumnDiff ()
 name|String
 name|patchTableColumnDiff
@@ -273,6 +278,11 @@ function_decl|;
 DECL|method|patchTableDownloadPostImage ()
 name|String
 name|patchTableDownloadPostImage
+parameter_list|()
+function_decl|;
+DECL|method|commitMessage ()
+name|String
+name|commitMessage
 parameter_list|()
 function_decl|;
 DECL|method|patchTablePrev ()

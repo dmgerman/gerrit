@@ -552,6 +552,22 @@ return|return
 name|inheritedRights
 return|;
 block|}
+DECL|method|setInheritedRights (Collection<RefRight> all)
+name|void
+name|setInheritedRights
+parameter_list|(
+name|Collection
+argument_list|<
+name|RefRight
+argument_list|>
+name|all
+parameter_list|)
+block|{
+name|inheritedRights
+operator|=
+name|all
+expr_stmt|;
+block|}
 DECL|method|computeInheritedRights ()
 specifier|private
 name|Collection

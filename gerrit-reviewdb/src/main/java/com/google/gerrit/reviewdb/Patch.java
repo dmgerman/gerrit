@@ -103,6 +103,16 @@ specifier|final
 class|class
 name|Patch
 block|{
+comment|/** Magical file name which represents the commit message. */
+DECL|field|COMMIT_MSG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COMMIT_MSG
+init|=
+literal|"/COMMIT_MSG"
+decl_stmt|;
 DECL|class|Key
 specifier|public
 specifier|static
@@ -531,6 +541,18 @@ specifier|protected
 name|int
 name|nbrDrafts
 decl_stmt|;
+comment|/** Number of lines added to the file. */
+DECL|field|insertions
+specifier|protected
+name|int
+name|insertions
+decl_stmt|;
+comment|/** Number of lines deleted from the file. */
+DECL|field|deletions
+specifier|protected
+name|int
+name|deletions
+decl_stmt|;
 comment|/**    * Original if {@link #changeType} is {@link ChangeType#COPIED} or    * {@link ChangeType#RENAMED}.    */
 DECL|field|sourceFileName
 specifier|protected
@@ -636,6 +658,54 @@ name|n
 parameter_list|)
 block|{
 name|nbrDrafts
+operator|=
+name|n
+expr_stmt|;
+block|}
+DECL|method|getInsertions ()
+specifier|public
+name|int
+name|getInsertions
+parameter_list|()
+block|{
+return|return
+name|insertions
+return|;
+block|}
+DECL|method|setInsertions (int n)
+specifier|public
+name|void
+name|setInsertions
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+block|{
+name|insertions
+operator|=
+name|n
+expr_stmt|;
+block|}
+DECL|method|getDeletions ()
+specifier|public
+name|int
+name|getDeletions
+parameter_list|()
+block|{
+return|return
+name|deletions
+return|;
+block|}
+DECL|method|setDeletions (int n)
+specifier|public
+name|void
+name|setDeletions
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+block|{
+name|deletions
 operator|=
 name|n
 expr_stmt|;

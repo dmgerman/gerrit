@@ -195,6 +195,8 @@ class|class
 name|QueryScreen
 extends|extends
 name|PagedSingleListScreen
+implements|implements
+name|ChangeListScreen
 block|{
 DECL|method|forQuery (String query)
 specifier|public

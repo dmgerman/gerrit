@@ -5146,6 +5146,11 @@ name|MergeException
 block|{
 if|if
 condition|(
+name|mergeTip
+operator|!=
+literal|null
+operator|&&
+operator|(
 name|branchTip
 operator|==
 literal|null
@@ -5153,6 +5158,7 @@ operator|||
 name|branchTip
 operator|!=
 name|mergeTip
+operator|)
 condition|)
 block|{
 name|branchUpdate

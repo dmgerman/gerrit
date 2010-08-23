@@ -728,6 +728,11 @@ name|String
 name|patchSetUserIdentity
 parameter_list|()
 function_decl|;
+DECL|method|patchSizeCell ()
+name|String
+name|patchSizeCell
+parameter_list|()
+function_decl|;
 DECL|method|permalink ()
 name|String
 name|permalink

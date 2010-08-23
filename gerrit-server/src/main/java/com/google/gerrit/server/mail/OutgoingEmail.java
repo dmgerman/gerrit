@@ -150,6 +150,18 @@ name|apache
 operator|.
 name|velocity
 operator|.
+name|VelocityContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|velocity
+operator|.
 name|app
 operator|.
 name|Velocity
@@ -167,18 +179,6 @@ operator|.
 name|exception
 operator|.
 name|ResourceNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|velocity
-operator|.
-name|VelocityContext
 import|;
 end_import
 

@@ -190,6 +190,27 @@ name|int
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|patchTableSize_Modify (int insertions, int deletions)
+name|String
+name|patchTableSize_Modify
+parameter_list|(
+name|int
+name|insertions
+parameter_list|,
+name|int
+name|deletions
+parameter_list|)
+function_decl|;
+DECL|method|patchTableSize_Lines (@luralCount int insertions)
+name|String
+name|patchTableSize_Lines
+parameter_list|(
+annotation|@
+name|PluralCount
+name|int
+name|insertions
+parameter_list|)
+function_decl|;
 DECL|method|removeReviewer (String fullName)
 name|String
 name|removeReviewer
