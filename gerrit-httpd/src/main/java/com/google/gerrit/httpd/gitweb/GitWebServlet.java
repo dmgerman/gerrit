@@ -2126,7 +2126,7 @@ argument_list|()
 operator|.
 name|split
 argument_list|(
-literal|";"
+literal|"[&;]"
 argument_list|)
 control|)
 block|{
