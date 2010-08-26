@@ -370,6 +370,46 @@ name|String
 name|defaultFilter
 parameter_list|()
 function_decl|;
+DECL|method|buttonBrowseProjects ()
+name|String
+name|buttonBrowseProjects
+parameter_list|()
+function_decl|;
+DECL|method|projects ()
+name|String
+name|projects
+parameter_list|()
+function_decl|;
+DECL|method|projectsClose ()
+name|String
+name|projectsClose
+parameter_list|()
+function_decl|;
+DECL|method|projectName ()
+name|String
+name|projectName
+parameter_list|()
+function_decl|;
+DECL|method|projectDescription ()
+name|String
+name|projectDescription
+parameter_list|()
+function_decl|;
+DECL|method|projectListOpen ()
+name|String
+name|projectListOpen
+parameter_list|()
+function_decl|;
+DECL|method|projectListPrev ()
+name|String
+name|projectListPrev
+parameter_list|()
+function_decl|;
+DECL|method|projectListNext ()
+name|String
+name|projectListNext
+parameter_list|()
+function_decl|;
 DECL|method|watchedProjectName ()
 name|String
 name|watchedProjectName
