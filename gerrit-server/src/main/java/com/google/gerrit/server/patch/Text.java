@@ -514,11 +514,11 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|p
+name|reader
 operator|.
 name|abbreviate
 argument_list|(
-name|db
+name|p
 argument_list|,
 literal|8
 argument_list|)
@@ -606,11 +606,11 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|p
+name|reader
 operator|.
 name|abbreviate
 argument_list|(
-name|db
+name|p
 argument_list|,
 literal|8
 argument_list|)

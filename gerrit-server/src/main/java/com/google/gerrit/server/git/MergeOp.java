@@ -658,7 +658,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Commit
+name|CommitBuilder
 import|;
 end_import
 
@@ -3521,14 +3521,12 @@ name|myIdent
 expr_stmt|;
 block|}
 specifier|final
-name|Commit
+name|CommitBuilder
 name|mergeCommit
 init|=
 operator|new
-name|Commit
-argument_list|(
-name|db
-argument_list|)
+name|CommitBuilder
+argument_list|()
 decl_stmt|;
 name|mergeCommit
 operator|.
@@ -3544,14 +3542,9 @@ name|mergeCommit
 operator|.
 name|setParentIds
 argument_list|(
-operator|new
-name|ObjectId
-index|[]
-block|{
 name|mergeTip
-block|,
+argument_list|,
 name|n
-block|}
 argument_list|)
 expr_stmt|;
 name|mergeCommit
@@ -4787,14 +4780,12 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|final
-name|Commit
+name|CommitBuilder
 name|mergeCommit
 init|=
 operator|new
-name|Commit
-argument_list|(
-name|db
-argument_list|)
+name|CommitBuilder
+argument_list|()
 decl_stmt|;
 name|mergeCommit
 operator|.
@@ -4808,14 +4799,9 @@ argument_list|)
 expr_stmt|;
 name|mergeCommit
 operator|.
-name|setParentIds
+name|setParentId
 argument_list|(
-operator|new
-name|ObjectId
-index|[]
-block|{
 name|mergeTip
-block|}
 argument_list|)
 expr_stmt|;
 name|mergeCommit
@@ -4915,7 +4901,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|commit (final Merger m, final Commit mergeCommit)
+DECL|method|commit (final Merger m, final CommitBuilder mergeCommit)
 specifier|private
 name|ObjectId
 name|commit
@@ -4925,7 +4911,7 @@ name|Merger
 name|m
 parameter_list|,
 specifier|final
-name|Commit
+name|CommitBuilder
 name|mergeCommit
 parameter_list|)
 throws|throws
@@ -4950,16 +4936,7 @@ name|oi
 operator|.
 name|insert
 argument_list|(
-name|Constants
-operator|.
-name|OBJ_COMMIT
-argument_list|,
-name|oi
-operator|.
-name|format
-argument_list|(
 name|mergeCommit
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|oi
