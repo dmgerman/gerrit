@@ -764,6 +764,8 @@ argument_list|(
 name|projectName
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|repo
 operator|.
 name|create
@@ -822,6 +824,15 @@ argument_list|,
 name|branch
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|repo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

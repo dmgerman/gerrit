@@ -2038,6 +2038,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+try|try
+block|{
 name|rsp
 operator|.
 name|setHeader
@@ -2076,6 +2078,15 @@ argument_list|,
 name|repo
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|repo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|getParameters (final HttpServletRequest req)
 specifier|private

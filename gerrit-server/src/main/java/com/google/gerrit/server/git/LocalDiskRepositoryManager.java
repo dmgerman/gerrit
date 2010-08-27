@@ -820,6 +820,8 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 specifier|final
 name|File
 name|d
@@ -912,6 +914,15 @@ return|return
 name|description
 return|;
 block|}
+finally|finally
+block|{
+name|e
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 DECL|method|setProjectDescription (final String name, final String description)
 specifier|public
 name|void
@@ -945,6 +956,8 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|f
 operator|=
 operator|new
@@ -1034,11 +1047,15 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|e
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
