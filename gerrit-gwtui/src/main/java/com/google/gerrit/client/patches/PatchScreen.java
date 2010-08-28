@@ -1105,18 +1105,6 @@ specifier|private
 name|HandlerRegistration
 name|regNavigation
 decl_stmt|;
-comment|/** Link to the screen for the previous file, null if not applicable */
-DECL|field|previousFileLink
-specifier|private
-name|InlineHyperlink
-name|previousFileLink
-decl_stmt|;
-comment|/** Link to the screen for the next file, null if not applicable */
-DECL|field|nextFileLink
-specifier|private
-name|InlineHyperlink
-name|nextFileLink
-decl_stmt|;
 comment|/**    * How this patch should be displayed in the patch screen.    */
 DECL|enum|Type
 specifier|public
