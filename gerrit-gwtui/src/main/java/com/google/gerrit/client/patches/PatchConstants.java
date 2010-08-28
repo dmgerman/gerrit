@@ -270,6 +270,16 @@ name|String
 name|cannedReplyDone
 parameter_list|()
 function_decl|;
+DECL|method|fileTypeSymlink ()
+name|String
+name|fileTypeSymlink
+parameter_list|()
+function_decl|;
+DECL|method|fileTypeGitlink ()
+name|String
+name|fileTypeGitlink
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

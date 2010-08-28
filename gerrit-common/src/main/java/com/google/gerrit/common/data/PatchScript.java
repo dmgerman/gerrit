@@ -265,6 +265,21 @@ name|DIFF
 block|,
 name|IMG
 block|}
+DECL|enum|FileMode
+specifier|public
+specifier|static
+enum|enum
+name|FileMode
+block|{
+DECL|enumConstant|FILE
+DECL|enumConstant|SYMLINK
+DECL|enumConstant|GITLINK
+name|FILE
+block|,
+name|SYMLINK
+block|,
+name|GITLINK
+block|}
 DECL|field|changeId
 specifier|protected
 name|Change
@@ -286,6 +301,16 @@ DECL|field|newName
 specifier|protected
 name|String
 name|newName
+decl_stmt|;
+DECL|field|oldMode
+specifier|protected
+name|FileMode
+name|oldMode
+decl_stmt|;
+DECL|field|newMode
+specifier|protected
+name|FileMode
+name|newMode
 decl_stmt|;
 DECL|field|header
 specifier|protected
@@ -351,7 +376,7 @@ specifier|protected
 name|boolean
 name|intralineDifference
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id)
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -372,6 +397,14 @@ parameter_list|,
 specifier|final
 name|String
 name|nn
+parameter_list|,
+specifier|final
+name|FileMode
+name|om
+parameter_list|,
+specifier|final
+name|FileMode
+name|nm
 parameter_list|,
 specifier|final
 name|List
@@ -442,6 +475,14 @@ expr_stmt|;
 name|newName
 operator|=
 name|nn
+expr_stmt|;
+name|oldMode
+operator|=
+name|om
+expr_stmt|;
+name|newMode
+operator|=
+name|nm
 expr_stmt|;
 name|header
 operator|=
@@ -523,6 +564,26 @@ parameter_list|()
 block|{
 return|return
 name|displayMethodB
+return|;
+block|}
+DECL|method|getFileModeA ()
+specifier|public
+name|FileMode
+name|getFileModeA
+parameter_list|()
+block|{
+return|return
+name|oldMode
+return|;
+block|}
+DECL|method|getFileModeB ()
+specifier|public
+name|FileMode
+name|getFileModeB
+parameter_list|()
+block|{
+return|return
+name|newMode
 return|;
 block|}
 DECL|method|getPatchHeader ()

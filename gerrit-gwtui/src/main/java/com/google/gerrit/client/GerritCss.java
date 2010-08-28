@@ -528,6 +528,11 @@ name|String
 name|fileLineINSERT
 parameter_list|()
 function_decl|;
+DECL|method|fileLineMode ()
+name|String
+name|fileLineMode
+parameter_list|()
+function_decl|;
 DECL|method|fileLineNone ()
 name|String
 name|fileLineNone
