@@ -1892,6 +1892,115 @@ literal|"'"
 argument_list|)
 return|;
 block|}
+comment|// Don't permit receive-pack to be executed if a refs/for/branch_name
+comment|// reference exists in the destination repository. These block the
+comment|// client from being able to even send us a pack file, as it is very
+comment|// unlikely the user passed the --force flag and the new commit is
+comment|// probably not going to fast-forward the branch.
+comment|//
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Ref
+argument_list|>
+name|blockingFors
+decl_stmt|;
+try|try
+block|{
+name|blockingFors
+operator|=
+name|repo
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getRefs
+argument_list|(
+literal|"refs/for/"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|err
+parameter_list|)
+block|{
+name|String
+name|projName
+init|=
+name|project
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot scan refs in '"
+operator|+
+name|projName
+operator|+
+literal|"'"
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|Capable
+argument_list|(
+literal|"Server process cannot read '"
+operator|+
+name|projName
+operator|+
+literal|"'"
+argument_list|)
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|blockingFors
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|String
+name|projName
+init|=
+name|project
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Repository '"
+operator|+
+name|projName
+operator|+
+literal|"' needs the following refs removed to receive changes: "
+operator|+
+name|blockingFors
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+operator|new
+name|Capable
+argument_list|(
+literal|"One or more refs/for/ names blocks change upload"
+argument_list|)
+return|;
+block|}
 if|if
 condition|(
 name|project
