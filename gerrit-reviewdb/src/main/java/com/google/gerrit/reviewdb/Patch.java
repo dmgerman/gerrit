@@ -432,13 +432,6 @@ name|BINARY
 argument_list|(
 literal|'B'
 argument_list|)
-block|,
-comment|/**      * Difference of three or more textual contents.      *      *<p>      * Git can produce an n-way unified diff, showing how a merge conflict was      * resolved when two or more conflicting branches were merged together in a      * single merge commit.      *      *<p>      * This type of patch can only appear if there are two or more      * {@link PatchSetAncestor} entities for the same parent {@link PatchSet},      * as that denotes that the patch set is a merge commit.      *      *<p>      * Gerrit can only render an N_WAY file in a PatchScreen.Unified view, as it      * does not have code to split the n-way unified diff into multiple edit      * lists, one per pre-image. However, a logical way to display this format      * would be an n-way table, with n+1 columns displayed (n pre-images, +1      * post-image).      */
-DECL|enumConstant|N_WAY
-name|N_WAY
-argument_list|(
-literal|'N'
-argument_list|)
 block|;
 DECL|field|code
 specifier|private
