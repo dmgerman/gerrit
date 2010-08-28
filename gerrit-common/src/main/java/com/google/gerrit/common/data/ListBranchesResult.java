@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * It holds list of branches and boolean to indicate  * if it is allowed to add new branches.  */
+comment|/**  * It holds list of branches and boolean to indicate if it is allowed to add new  * branches.  */
 end_comment
 
 begin_class
@@ -101,6 +101,11 @@ specifier|final
 class|class
 name|ListBranchesResult
 block|{
+DECL|field|noRepository
+specifier|protected
+name|boolean
+name|noRepository
+decl_stmt|;
 DECL|field|canAdd
 specifier|protected
 name|boolean
@@ -119,11 +124,10 @@ specifier|protected
 name|ListBranchesResult
 parameter_list|()
 block|{   }
-DECL|method|ListBranchesResult (final List<Branch> branches, boolean canAdd)
+DECL|method|ListBranchesResult (List<Branch> branches, boolean canAdd, boolean noRepository)
 specifier|public
 name|ListBranchesResult
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|Branch
@@ -132,6 +136,9 @@ name|branches
 parameter_list|,
 name|boolean
 name|canAdd
+parameter_list|,
+name|boolean
+name|noRepository
 parameter_list|)
 block|{
 name|this
@@ -146,6 +153,22 @@ name|canAdd
 operator|=
 name|canAdd
 expr_stmt|;
+name|this
+operator|.
+name|noRepository
+operator|=
+name|noRepository
+expr_stmt|;
+block|}
+DECL|method|getNoRepository ()
+specifier|public
+name|boolean
+name|getNoRepository
+parameter_list|()
+block|{
+return|return
+name|noRepository
+return|;
 block|}
 DECL|method|getCanAdd ()
 specifier|public
@@ -156,22 +179,6 @@ block|{
 return|return
 name|canAdd
 return|;
-block|}
-DECL|method|setCanAdd (boolean canAdd)
-specifier|public
-name|void
-name|setCanAdd
-parameter_list|(
-name|boolean
-name|canAdd
-parameter_list|)
-block|{
-name|this
-operator|.
-name|canAdd
-operator|=
-name|canAdd
-expr_stmt|;
 block|}
 DECL|method|getBranches ()
 specifier|public
@@ -185,25 +192,6 @@ block|{
 return|return
 name|branches
 return|;
-block|}
-DECL|method|setBranches (List<Branch> branches)
-specifier|public
-name|void
-name|setBranches
-parameter_list|(
-name|List
-argument_list|<
-name|Branch
-argument_list|>
-name|branches
-parameter_list|)
-block|{
-name|this
-operator|.
-name|branches
-operator|=
-name|branches
-expr_stmt|;
 block|}
 block|}
 end_class

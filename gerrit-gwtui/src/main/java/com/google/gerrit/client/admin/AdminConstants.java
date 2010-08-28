@@ -395,6 +395,11 @@ name|String
 name|errorNoMatchingGroups
 parameter_list|()
 function_decl|;
+DECL|method|errorNoGitRepository ()
+name|String
+name|errorNoGitRepository
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
