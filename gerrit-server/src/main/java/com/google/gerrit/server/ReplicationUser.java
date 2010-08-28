@@ -114,22 +114,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|Project
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|config
@@ -323,17 +307,11 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Only include the registered groups if no specific groups
-comment|// were provided. This allows an administrator to configure
-comment|// a replication user with a narrower view of the system than
-comment|// all other users, such as when replicating from an internal
-comment|// company server to a public open source distribution site.
-comment|//
 name|effectiveGroups
 operator|=
-name|authConfig
+name|Collections
 operator|.
-name|getRegisteredGroups
+name|emptySet
 argument_list|()
 expr_stmt|;
 block|}
