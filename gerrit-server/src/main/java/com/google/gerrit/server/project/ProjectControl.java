@@ -1004,10 +1004,10 @@ argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can upload to at least one reference */
-DECL|method|canUploadToAtLeastOneRef ()
+DECL|method|canPushToAtLeastOneRef ()
 specifier|public
 name|boolean
-name|canUploadToAtLeastOneRef
+name|canPushToAtLeastOneRef
 parameter_list|()
 block|{
 return|return
@@ -1021,6 +1021,30 @@ operator|(
 name|short
 operator|)
 literal|2
+argument_list|)
+operator|||
+name|canPerformOnAnyRef
+argument_list|(
+name|ApprovalCategory
+operator|.
+name|PUSH_HEAD
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|1
+argument_list|)
+operator|||
+name|canPerformOnAnyRef
+argument_list|(
+name|ApprovalCategory
+operator|.
+name|PUSH_TAG
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|1
 argument_list|)
 return|;
 block|}

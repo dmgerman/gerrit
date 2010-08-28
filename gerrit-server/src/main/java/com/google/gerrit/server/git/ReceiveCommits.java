@@ -1868,7 +1868,7 @@ condition|(
 operator|!
 name|projectControl
 operator|.
-name|canUploadToAtLeastOneRef
+name|canPushToAtLeastOneRef
 argument_list|()
 condition|)
 block|{

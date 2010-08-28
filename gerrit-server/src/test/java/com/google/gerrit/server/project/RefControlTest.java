@@ -855,7 +855,7 @@ literal|"can upload"
 argument_list|,
 name|u
 operator|.
-name|canUploadToAtLeastOneRef
+name|canPushToAtLeastOneRef
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -946,7 +946,7 @@ literal|"can upload"
 argument_list|,
 name|u
 operator|.
-name|canUploadToAtLeastOneRef
+name|canPushToAtLeastOneRef
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1037,7 +1037,7 @@ literal|"cannot upload"
 argument_list|,
 name|u
 operator|.
-name|canUploadToAtLeastOneRef
+name|canPushToAtLeastOneRef
 argument_list|()
 argument_list|)
 expr_stmt|;
