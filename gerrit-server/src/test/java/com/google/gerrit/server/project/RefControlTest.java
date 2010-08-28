@@ -709,6 +709,13 @@ argument_list|,
 name|uDev
 argument_list|)
 expr_stmt|;
+name|assertOwner
+argument_list|(
+literal|"refs/heads/x/y/*"
+argument_list|,
+name|uDev
+argument_list|)
+expr_stmt|;
 name|assertNotOwner
 argument_list|(
 literal|"refs/*"
@@ -719,13 +726,6 @@ expr_stmt|;
 name|assertNotOwner
 argument_list|(
 literal|"refs/heads/master"
-argument_list|,
-name|uDev
-argument_list|)
-expr_stmt|;
-name|assertNotOwner
-argument_list|(
-literal|"refs/heads/x/y/*"
 argument_list|,
 name|uDev
 argument_list|)
