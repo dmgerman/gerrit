@@ -140,6 +140,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -204,9 +218,15 @@ operator|.
 name|Factory
 name|submit
 decl_stmt|;
+DECL|field|replicateOnStartup
+specifier|private
+specifier|final
+name|boolean
+name|replicateOnStartup
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OnStart (final PushAllProjectsOp.Factory pushAll, final ReloadSubmitQueueOp.Factory submit)
+DECL|method|OnStart (final PushAllProjectsOp.Factory pushAll, final ReloadSubmitQueueOp.Factory submit, final @GerritServerConfig Config cfg)
 name|OnStart
 parameter_list|(
 specifier|final
@@ -220,6 +240,12 @@ name|ReloadSubmitQueueOp
 operator|.
 name|Factory
 name|submit
+parameter_list|,
+specifier|final
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
 parameter_list|)
 block|{
 name|this
@@ -234,6 +260,19 @@ name|submit
 operator|=
 name|submit
 expr_stmt|;
+name|replicateOnStartup
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"gerrit"
+argument_list|,
+literal|"replicateOnStartup"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -242,6 +281,11 @@ specifier|public
 name|void
 name|start
 parameter_list|()
+block|{
+if|if
+condition|(
+name|replicateOnStartup
+condition|)
 block|{
 name|pushAll
 operator|.
@@ -259,6 +303,7 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+block|}
 name|submit
 operator|.
 name|create
