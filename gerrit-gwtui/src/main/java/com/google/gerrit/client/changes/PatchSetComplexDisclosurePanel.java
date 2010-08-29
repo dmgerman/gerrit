@@ -3138,7 +3138,7 @@ parameter_list|)
 block|{
 name|changeScreen
 operator|.
-name|display
+name|update
 argument_list|(
 name|result
 argument_list|)
@@ -3245,7 +3245,7 @@ parameter_list|)
 block|{
 name|changeScreen
 operator|.
-name|display
+name|update
 argument_list|(
 name|result
 argument_list|)
@@ -3790,7 +3790,7 @@ block|}
 block|}
 name|changeScreen
 operator|.
-name|display
+name|update
 argument_list|(
 name|result
 argument_list|)

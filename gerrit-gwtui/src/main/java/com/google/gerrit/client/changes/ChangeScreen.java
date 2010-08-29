@@ -865,13 +865,6 @@ argument_list|,
 name|keysAction
 argument_list|)
 expr_stmt|;
-name|patchSetsBlock
-operator|.
-name|setRegisterKeys
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|refresh ()
 specifier|public
@@ -910,6 +903,21 @@ block|{
 name|display
 argument_list|(
 name|r
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|postDisplay
+parameter_list|()
+block|{
+name|patchSetsBlock
+operator|.
+name|setRegisterKeys
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1489,7 +1497,30 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|update (final ChangeDetail detail)
+name|void
+name|update
+parameter_list|(
+specifier|final
+name|ChangeDetail
+name|detail
+parameter_list|)
+block|{
+name|display
+argument_list|(
+name|detail
+argument_list|)
+expr_stmt|;
+name|patchSetsBlock
+operator|.
+name|setRegisterKeys
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|display (final ChangeDetail detail)
+specifier|private
 name|void
 name|display
 parameter_list|(
