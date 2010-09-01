@@ -385,29 +385,9 @@ name|String
 name|projectsClose
 parameter_list|()
 function_decl|;
-DECL|method|projectName ()
-name|String
-name|projectName
-parameter_list|()
-function_decl|;
-DECL|method|projectDescription ()
-name|String
-name|projectDescription
-parameter_list|()
-function_decl|;
 DECL|method|projectListOpen ()
 name|String
 name|projectListOpen
-parameter_list|()
-function_decl|;
-DECL|method|projectListPrev ()
-name|String
-name|projectListPrev
-parameter_list|()
-function_decl|;
-DECL|method|projectListNext ()
-name|String
-name|projectListNext
 parameter_list|()
 function_decl|;
 DECL|method|watchedProjectName ()

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.account
+DECL|package|com.google.gerrit.client.ui
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|ui
 package|;
 end_package
 
@@ -93,20 +93,6 @@ operator|.
 name|ui
 operator|.
 name|NavigationTable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|PageLinks
 import|;
 end_import
 
@@ -236,13 +222,6 @@ specifier|public
 name|ProjectsTable
 parameter_list|()
 block|{
-name|setSavePointerId
-argument_list|(
-name|PageLinks
-operator|.
-name|SETTINGS_PROJECTS
-argument_list|)
-expr_stmt|;
 name|keysNavigation
 operator|.
 name|add
@@ -279,6 +258,26 @@ operator|.
 name|C
 operator|.
 name|projectListNext
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|keysNavigation
+operator|.
+name|add
+argument_list|(
+operator|new
+name|OpenKeyCommand
+argument_list|(
+literal|0
+argument_list|,
+literal|'o'
+argument_list|,
+name|Util
+operator|.
+name|C
+operator|.
+name|projectListOpen
 argument_list|()
 argument_list|)
 argument_list|)
@@ -584,7 +583,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|display (final List<Project> projects)
-specifier|protected
+specifier|public
 name|void
 name|display
 parameter_list|(
