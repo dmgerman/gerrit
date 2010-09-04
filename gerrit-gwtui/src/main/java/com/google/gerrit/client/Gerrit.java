@@ -3239,6 +3239,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|FormatUtil
+operator|.
+name|setPreferences
+argument_list|(
+name|myAccount
+operator|.
+name|getGeneralPreferences
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|whoAmI ()

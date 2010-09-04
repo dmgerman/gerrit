@@ -120,6 +120,11 @@ name|String
 name|maximumPageSizeFieldLabel
 parameter_list|()
 function_decl|;
+DECL|method|dateFormatLabel ()
+name|String
+name|dateFormatLabel
+parameter_list|()
+function_decl|;
 DECL|method|contextWholeFile ()
 name|String
 name|contextWholeFile
