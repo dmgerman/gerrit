@@ -9382,31 +9382,6 @@ name|newCommit
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Replacement of Change-Id "
-operator|+
-name|req
-operator|.
-name|ontoChange
-operator|+
-literal|" with commit "
-operator|+
-name|req
-operator|.
-name|newCommit
-operator|.
-name|name
-argument_list|()
-operator|+
-literal|" did not import the new patch set."
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 catch|catch
