@@ -566,16 +566,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -2013,6 +2003,12 @@ specifier|final
 name|int
 name|delay
 decl_stmt|;
+DECL|field|retryDelay
+specifier|private
+specifier|final
+name|int
+name|retryDelay
+decl_stmt|;
 DECL|field|pool
 specifier|private
 specifier|final
@@ -2110,6 +2106,26 @@ argument_list|,
 literal|"replicationdelay"
 argument_list|,
 literal|15
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|retryDelay
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|getInt
+argument_list|(
+name|rc
+argument_list|,
+name|cfg
+argument_list|,
+literal|"replicationretry"
+argument_list|,
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2518,6 +2534,198 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * It schedules again a PushOp instance.      *<p>      * It is assumed to be previously scheduled and found a      * transport exception. It will schedule it as a push      * operation to be retried after the minutes count      * determined by class attribute retryDelay.      *<p>      * In case the PushOp instance to be scheduled has same      * URI than one also pending for retry, it adds to the one      * pending the refs list of the parameter instance.      *<p>      * In case the PushOp instance to be scheduled has same      * URI than one pending, but not pending for retry, it      * indicates the one pending should be canceled when it      * starts executing, removes it from pending list, and      * adds its refs to the parameter instance. The parameter      * instance is scheduled for retry.      *<p>      * Notice all operations to indicate a PushOp should be      * canceled, or it is retrying, or remove/add it from/to      * pending Map should be protected by the lock on pending      * Map class instance attribute.      *      * @param pushOp The PushOp instance to be scheduled.      */
+DECL|method|reschedule (final PushOp pushOp)
+name|void
+name|reschedule
+parameter_list|(
+specifier|final
+name|PushOp
+name|pushOp
+parameter_list|)
+block|{
+try|try
+block|{
+if|if
+condition|(
+operator|!
+name|controlFor
+argument_list|(
+name|pushOp
+operator|.
+name|getProjectNameKey
+argument_list|()
+argument_list|)
+operator|.
+name|isVisible
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchProjectException
+name|e1
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Internal error: project "
+operator|+
+name|pushOp
+operator|.
+name|getProjectNameKey
+argument_list|()
+operator|+
+literal|" not found during replication"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+comment|// It locks access to pending variable.
+synchronized|synchronized
+init|(
+name|pending
+init|)
+block|{
+name|PushOp
+name|pendingPushOp
+init|=
+name|pending
+operator|.
+name|get
+argument_list|(
+name|pushOp
+operator|.
+name|getURI
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|pendingPushOp
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// There is one PushOp instance already pending to same URI.
+if|if
+condition|(
+name|pendingPushOp
+operator|.
+name|isRetrying
+argument_list|()
+condition|)
+block|{
+comment|// The one pending is one already retrying, so it should
+comment|// maintain it and add to it the refs of the one passed
+comment|// as parameter to the method.
+comment|// This scenario would happen if a PushOp has started running
+comment|// and then before it failed due transport exception, another
+comment|// one to same URI started. The first one would fail and would
+comment|// be rescheduled, being present in pending list. When the
+comment|// second one fails, it will also be rescheduled and then,
+comment|// here, find out replication to its URI is already pending
+comment|// for retry (blocking).
+name|pendingPushOp
+operator|.
+name|addRefs
+argument_list|(
+name|pushOp
+operator|.
+name|getRefs
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// The one pending is one that is NOT retrying, it was just
+comment|// scheduled believing no problem would happen. The one pending
+comment|// should be canceled, and this is done by setting its canceled
+comment|// flag, removing it from pending list, and adding its refs to
+comment|// the pushOp instance that should then, later, in this method,
+comment|// be scheduled for retry.
+comment|// Notice that the PushOp found pending will start running and,
+comment|// when notifying it is starting (with pending lock protection),
+comment|// it will see it was canceled and then it will do nothing with
+comment|// pending list and it will not execute its run implementation.
+name|pendingPushOp
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
+name|pending
+operator|.
+name|remove
+argument_list|(
+name|pendingPushOp
+argument_list|)
+expr_stmt|;
+name|pushOp
+operator|.
+name|addRefs
+argument_list|(
+name|pendingPushOp
+operator|.
+name|getRefs
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|pendingPushOp
+operator|==
+literal|null
+operator|||
+operator|!
+name|pendingPushOp
+operator|.
+name|isRetrying
+argument_list|()
+condition|)
+block|{
+comment|// The PushOp method param instance should be scheduled for retry.
+comment|// Remember when retrying it should be used different delay.
+name|pushOp
+operator|.
+name|setToRetry
+argument_list|()
+expr_stmt|;
+name|pending
+operator|.
+name|put
+argument_list|(
+name|pushOp
+operator|.
+name|getURI
+argument_list|()
+argument_list|,
+name|pushOp
+argument_list|)
+expr_stmt|;
+name|pool
+operator|.
+name|schedule
+argument_list|(
+name|pushOp
+argument_list|,
+name|retryDelay
+argument_list|,
+name|TimeUnit
+operator|.
+name|MINUTES
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 DECL|method|controlFor (final Project.NameKey project)
 name|ProjectControl
 name|controlFor
@@ -2554,6 +2762,15 @@ init|(
 name|pending
 init|)
 block|{
+if|if
+condition|(
+operator|!
+name|op
+operator|.
+name|wasCanceled
+argument_list|()
+condition|)
+block|{
 name|pending
 operator|.
 name|remove
@@ -2564,6 +2781,7 @@ name|getURI
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|wouldPushRef (final String ref)

@@ -625,6 +625,17 @@ specifier|private
 name|Repository
 name|db
 decl_stmt|;
+comment|/**    * It indicates if the current instance is in fact retrying to push.    */
+DECL|field|retrying
+specifier|private
+name|boolean
+name|retrying
+decl_stmt|;
+DECL|field|canceled
+specifier|private
+name|boolean
+name|canceled
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PushOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> s, final PushReplication.ReplicationConfig p, final RemoteConfig c, @Assisted final Project.NameKey d, @Assisted final URIish u)
@@ -691,6 +702,48 @@ operator|=
 name|u
 expr_stmt|;
 block|}
+DECL|method|isRetrying ()
+specifier|public
+name|boolean
+name|isRetrying
+parameter_list|()
+block|{
+return|return
+name|retrying
+return|;
+block|}
+DECL|method|setToRetry ()
+specifier|public
+name|void
+name|setToRetry
+parameter_list|()
+block|{
+name|retrying
+operator|=
+literal|true
+expr_stmt|;
+block|}
+DECL|method|cancel ()
+specifier|public
+name|void
+name|cancel
+parameter_list|()
+block|{
+name|canceled
+operator|=
+literal|true
+expr_stmt|;
+block|}
+DECL|method|wasCanceled ()
+specifier|public
+name|boolean
+name|wasCanceled
+parameter_list|()
+block|{
+return|return
+name|canceled
+return|;
+block|}
 DECL|method|getURI ()
 name|URIish
 name|getURI
@@ -745,13 +798,96 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getRefs ()
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getRefs
+parameter_list|()
+block|{
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|refs
+decl_stmt|;
+if|if
+condition|(
+name|mirror
+condition|)
+block|{
+name|refs
+operator|=
+operator|new
+name|HashSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|refs
+operator|.
+name|add
+argument_list|(
+name|MIRROR_ALL
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|refs
+operator|=
+name|delta
+expr_stmt|;
+block|}
+return|return
+name|refs
+return|;
+block|}
+DECL|method|addRefs (Set<String> refs)
+specifier|public
+name|void
+name|addRefs
+parameter_list|(
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|refs
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|mirror
+condition|)
+block|{
+for|for
+control|(
+name|String
+name|ref
+range|:
+name|refs
+control|)
+block|{
+name|addRef
+argument_list|(
+name|ref
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 DECL|method|run ()
 specifier|public
 name|void
 name|run
 parameter_list|()
-block|{
-try|try
 block|{
 comment|// Lock the queue, and remove ourselves, so we can't be modified once
 comment|// we start replication (instead a new instance, with the same URI, is
@@ -764,6 +900,16 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+comment|// It should only verify if it was canceled after calling notifyStarting,
+comment|// since the canceled flag would be set locking the queue.
+if|if
+condition|(
+operator|!
+name|canceled
+condition|)
+block|{
+try|try
+block|{
 name|db
 operator|=
 name|repoManager
@@ -902,6 +1048,14 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+comment|// The remote push operation should be retried.
+name|pool
+operator|.
+name|reschedule
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -971,6 +1125,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
