@@ -338,6 +338,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * Composite that displays the patch sets of a change. This composite ensures  * that keyboard navigation to each changed file in all patch sets is possible.  */
 end_comment
@@ -353,7 +363,7 @@ block|{
 DECL|field|patchSetPanels
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|PatchSet
 operator|.
