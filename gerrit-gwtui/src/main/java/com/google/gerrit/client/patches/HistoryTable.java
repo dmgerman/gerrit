@@ -308,7 +308,7 @@ name|table
 operator|.
 name|setWidth
 argument_list|(
-literal|"98%"
+literal|"auto"
 argument_list|)
 expr_stmt|;
 name|table

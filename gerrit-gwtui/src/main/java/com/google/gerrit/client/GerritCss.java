@@ -338,6 +338,11 @@ name|String
 name|commentPanelMessage
 parameter_list|()
 function_decl|;
+DECL|method|commentPanelMenuBar ()
+name|String
+name|commentPanelMenuBar
+parameter_list|()
+function_decl|;
 DECL|method|commentPanelSummary ()
 name|String
 name|commentPanelSummary
