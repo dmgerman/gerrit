@@ -4119,9 +4119,6 @@ operator|new
 name|Text
 argument_list|(
 name|ldr
-operator|.
-name|getCachedBytes
-argument_list|()
 argument_list|)
 return|;
 block|}
