@@ -856,35 +856,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|asString (byte[] content, String encoding)
-specifier|public
-specifier|static
-name|String
-name|asString
-parameter_list|(
-name|byte
-index|[]
-name|content
-parameter_list|,
-name|String
-name|encoding
-parameter_list|)
-block|{
-return|return
-operator|new
-name|String
-argument_list|(
-name|content
-argument_list|,
-name|charset
-argument_list|(
-name|content
-argument_list|,
-name|encoding
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|asByteArray (ObjectLoader ldr)
 specifier|public
 specifier|static
