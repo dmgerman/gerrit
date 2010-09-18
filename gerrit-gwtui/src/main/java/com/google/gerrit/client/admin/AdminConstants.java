@@ -175,6 +175,11 @@ name|String
 name|useSignedOffBy
 parameter_list|()
 function_decl|;
+DECL|method|requireChangeID ()
+name|String
+name|requireChangeID
+parameter_list|()
+function_decl|;
 DECL|method|headingOwner ()
 name|String
 name|headingOwner
@@ -190,9 +195,9 @@ name|String
 name|headingDescription
 parameter_list|()
 function_decl|;
-DECL|method|headingSubmitType ()
+DECL|method|headingProjectOptions ()
 name|String
-name|headingSubmitType
+name|headingProjectOptions
 parameter_list|()
 function_decl|;
 DECL|method|headingGroupType ()

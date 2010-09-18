@@ -418,6 +418,18 @@ specifier|protected
 name|NameKey
 name|parent
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|)
+DECL|field|requireChangeID
+specifier|protected
+name|boolean
+name|requireChangeID
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -535,6 +547,16 @@ return|return
 name|useSignedOffBy
 return|;
 block|}
+DECL|method|isRequireChangeID ()
+specifier|public
+name|boolean
+name|isRequireChangeID
+parameter_list|()
+block|{
+return|return
+name|requireChangeID
+return|;
+block|}
 DECL|method|setUseSignedOffBy (final boolean sbo)
 specifier|public
 name|void
@@ -548,6 +570,21 @@ block|{
 name|useSignedOffBy
 operator|=
 name|sbo
+expr_stmt|;
+block|}
+DECL|method|setRequireChangeID (final boolean cid)
+specifier|public
+name|void
+name|setRequireChangeID
+parameter_list|(
+specifier|final
+name|boolean
+name|cid
+parameter_list|)
+block|{
+name|requireChangeID
+operator|=
+name|cid
 expr_stmt|;
 block|}
 DECL|method|getSubmitType ()
@@ -610,6 +647,12 @@ operator|=
 name|update
 operator|.
 name|useSignedOffBy
+expr_stmt|;
+name|requireChangeID
+operator|=
+name|update
+operator|.
+name|requireChangeID
 expr_stmt|;
 name|submitType
 operator|=
