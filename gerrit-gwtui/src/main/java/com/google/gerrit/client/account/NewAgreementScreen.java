@@ -138,7 +138,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|SmallHeading
+name|OnEditEnabler
 import|;
 end_import
 
@@ -154,7 +154,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextSaveButtonListener
+name|SmallHeading
 import|;
 end_import
 
@@ -1131,11 +1131,11 @@ name|finalGroup
 argument_list|)
 expr_stmt|;
 operator|new
-name|TextSaveButtonListener
+name|OnEditEnabler
 argument_list|(
-name|yesIAgreeBox
-argument_list|,
 name|submit
+argument_list|,
+name|yesIAgreeBox
 argument_list|)
 expr_stmt|;
 specifier|final

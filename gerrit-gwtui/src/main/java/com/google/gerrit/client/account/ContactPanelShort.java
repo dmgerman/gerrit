@@ -108,7 +108,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextSaveButtonListener
+name|OnEditEnabler
 import|;
 end_import
 
@@ -997,21 +997,12 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-specifier|final
-name|TextSaveButtonListener
-name|sbl
-init|=
 operator|new
-name|TextSaveButtonListener
+name|OnEditEnabler
 argument_list|(
 name|save
-argument_list|)
-decl_stmt|;
+argument_list|,
 name|nameTxt
-operator|.
-name|addKeyPressHandler
-argument_list|(
-name|sbl
 argument_list|)
 expr_stmt|;
 name|emailPick

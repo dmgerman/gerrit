@@ -122,7 +122,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|TextSaveButtonListener
+name|OnEditEnabler
 import|;
 end_import
 
@@ -605,11 +605,11 @@ block|}
 argument_list|)
 expr_stmt|;
 operator|new
-name|TextSaveButtonListener
+name|OnEditEnabler
 argument_list|(
-name|userNameTxt
-argument_list|,
 name|setUserName
+argument_list|,
+name|userNameTxt
 argument_list|)
 expr_stmt|;
 name|userNameLbl
