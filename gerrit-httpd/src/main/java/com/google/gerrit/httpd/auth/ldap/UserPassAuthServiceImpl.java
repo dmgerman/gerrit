@@ -162,6 +162,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AccountUserNameException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|AuthRequest
 import|;
 end_import
@@ -389,6 +405,24 @@ argument_list|(
 name|req
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AccountUserNameException
+name|e
+parameter_list|)
+block|{
+comment|// entered user name and password were correct, but user name could not be
+comment|// set for the newly created account and this is why the login fails,
+comment|// error screen with error message should be shown to the user
+name|callback
+operator|.
+name|onFailure
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
 catch|catch
 parameter_list|(
