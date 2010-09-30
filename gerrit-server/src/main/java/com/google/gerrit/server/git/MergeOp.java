@@ -2802,9 +2802,40 @@ throws|throws
 name|MergeException
 block|{
 specifier|final
-name|Merger
+name|ThreeWayMerger
 name|m
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|destProject
+operator|.
+name|isUseContentMerge
+argument_list|()
+condition|)
+block|{
+comment|// Settings for this project allow us to try and
+comment|// automatically resolve conflicts within files if needed.
+comment|// Use ResolveMerge and instruct to operate in core.
+name|m
+operator|=
+name|MergeStrategy
+operator|.
+name|RESOLVE
+operator|.
+name|newMerger
+argument_list|(
+name|db
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// No auto conflict resolving allowed. If any of the
+comment|// affected files was modified, merge will fail.
+name|m
+operator|=
 name|MergeStrategy
 operator|.
 name|SIMPLE_TWO_WAY_IN_CORE
@@ -2813,7 +2844,8 @@ name|newMerger
 argument_list|(
 name|db
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 try|try
 block|{
 if|if
@@ -3816,6 +3848,35 @@ specifier|final
 name|ThreeWayMerger
 name|m
 decl_stmt|;
+if|if
+condition|(
+name|destProject
+operator|.
+name|isUseContentMerge
+argument_list|()
+condition|)
+block|{
+comment|// Settings for this project allow us to try and
+comment|// automatically resolve conflicts within files if needed.
+comment|// Use ResolveMerge and instruct to operate in core.
+name|m
+operator|=
+name|MergeStrategy
+operator|.
+name|RESOLVE
+operator|.
+name|newMerger
+argument_list|(
+name|db
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// No auto conflict resolving allowed. If any of the
+comment|// affected files was modified, merge will fail.
 name|m
 operator|=
 name|MergeStrategy
@@ -3827,6 +3888,7 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 if|if

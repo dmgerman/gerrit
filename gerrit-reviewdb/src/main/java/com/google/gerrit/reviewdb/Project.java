@@ -430,6 +430,18 @@ specifier|protected
 name|boolean
 name|requireChangeID
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|)
+DECL|field|useContentMerge
+specifier|protected
+name|boolean
+name|useContentMerge
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -547,6 +559,16 @@ return|return
 name|useSignedOffBy
 return|;
 block|}
+DECL|method|isUseContentMerge ()
+specifier|public
+name|boolean
+name|isUseContentMerge
+parameter_list|()
+block|{
+return|return
+name|useContentMerge
+return|;
+block|}
 DECL|method|isRequireChangeID ()
 specifier|public
 name|boolean
@@ -570,6 +592,21 @@ block|{
 name|useSignedOffBy
 operator|=
 name|sbo
+expr_stmt|;
+block|}
+DECL|method|setUseContentMerge (final boolean cm)
+specifier|public
+name|void
+name|setUseContentMerge
+parameter_list|(
+specifier|final
+name|boolean
+name|cm
+parameter_list|)
+block|{
+name|useContentMerge
+operator|=
+name|cm
 expr_stmt|;
 block|}
 DECL|method|setRequireChangeID (final boolean cid)
@@ -647,6 +684,12 @@ operator|=
 name|update
 operator|.
 name|useSignedOffBy
+expr_stmt|;
+name|useContentMerge
+operator|=
+name|update
+operator|.
+name|useContentMerge
 expr_stmt|;
 name|requireChangeID
 operator|=

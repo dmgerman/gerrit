@@ -644,6 +644,22 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--use-content-merge"
+argument_list|,
+name|usage
+operator|=
+literal|"allow automatic conflict resolving within files"
+argument_list|)
+DECL|field|contentMerge
+specifier|private
+name|boolean
+name|contentMerge
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--require-change-id"
 argument_list|,
 name|aliases
@@ -1069,6 +1085,13 @@ operator|.
 name|setUseSignedOffBy
 argument_list|(
 name|signedOffBy
+argument_list|)
+expr_stmt|;
+name|newProject
+operator|.
+name|setUseContentMerge
+argument_list|(
+name|contentMerge
 argument_list|)
 expr_stmt|;
 name|newProject

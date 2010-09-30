@@ -165,6 +165,11 @@ name|String
 name|buttonSaveChanges
 parameter_list|()
 function_decl|;
+DECL|method|useContentMerge ()
+name|String
+name|useContentMerge
+parameter_list|()
+function_decl|;
 DECL|method|useContributorAgreements ()
 name|String
 name|useContributorAgreements
