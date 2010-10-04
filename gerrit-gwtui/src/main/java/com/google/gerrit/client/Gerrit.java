@@ -3004,6 +3004,9 @@ case|:
 case|case
 name|HTTP_LDAP
 case|:
+case|case
+name|CLIENT_SSL_CERT_LDAP
+case|:
 break|break;
 case|case
 name|OPENID

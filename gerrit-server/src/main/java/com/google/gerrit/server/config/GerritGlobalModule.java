@@ -1157,6 +1157,9 @@ case|:
 case|case
 name|LDAP_BIND
 case|:
+case|case
+name|CLIENT_SSL_CERT_LDAP
+case|:
 name|install
 argument_list|(
 operator|new

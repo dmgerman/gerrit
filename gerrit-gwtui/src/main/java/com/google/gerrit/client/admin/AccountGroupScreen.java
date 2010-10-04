@@ -1608,6 +1608,9 @@ case|:
 case|case
 name|LDAP_BIND
 case|:
+case|case
+name|CLIENT_SSL_CERT_LDAP
+case|:
 break|break;
 default|default:
 return|return;
