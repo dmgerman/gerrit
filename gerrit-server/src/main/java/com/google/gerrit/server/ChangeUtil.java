@@ -982,28 +982,33 @@ name|toDelete
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|submit (MergeOp.Factory opFactory, PatchSet.Id patchSetId, IdentifiedUser user, ReviewDb db, MergeQueue merger)
+DECL|method|submit (final PatchSet.Id patchSetId, final IdentifiedUser user, final ReviewDb db, final MergeOp.Factory opFactory, final MergeQueue merger)
 specifier|public
 specifier|static
 name|void
 name|submit
 parameter_list|(
-name|MergeOp
-operator|.
-name|Factory
-name|opFactory
-parameter_list|,
+specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|patchSetId
 parameter_list|,
+specifier|final
 name|IdentifiedUser
 name|user
 parameter_list|,
+specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
+specifier|final
+name|MergeOp
+operator|.
+name|Factory
+name|opFactory
+parameter_list|,
+specifier|final
 name|MergeQueue
 name|merger
 parameter_list|)
@@ -1051,7 +1056,7 @@ argument_list|)
 expr_stmt|;
 specifier|final
 name|Change
-name|change
+name|updatedChange
 init|=
 name|db
 operator|.
@@ -1121,7 +1126,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|change
+name|updatedChange
 operator|.
 name|getStatus
 argument_list|()
@@ -1139,7 +1144,7 @@ name|merge
 argument_list|(
 name|opFactory
 argument_list|,
-name|change
+name|updatedChange
 operator|.
 name|getDest
 argument_list|()
@@ -1147,20 +1152,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|createSubmitApproval (PatchSet.Id patchSetId, IdentifiedUser user, ReviewDb db)
+DECL|method|createSubmitApproval ( final PatchSet.Id patchSetId, final IdentifiedUser user, final ReviewDb db )
 specifier|public
 specifier|static
 name|PatchSetApproval
 name|createSubmitApproval
 parameter_list|(
+specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|patchSetId
 parameter_list|,
+specifier|final
 name|IdentifiedUser
 name|user
 parameter_list|,
+specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
@@ -1437,7 +1445,7 @@ argument_list|)
 expr_stmt|;
 specifier|final
 name|Change
-name|change
+name|updatedChange
 init|=
 name|db
 operator|.
@@ -1520,7 +1528,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|change
+name|updatedChange
 operator|!=
 literal|null
 condition|)
@@ -1572,7 +1580,7 @@ name|a
 operator|.
 name|cache
 argument_list|(
-name|change
+name|updatedChange
 argument_list|)
 expr_stmt|;
 block|}
@@ -1595,7 +1603,7 @@ name|abandonedSenderFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|updatedChange
 argument_list|)
 decl_stmt|;
 name|cm
@@ -1625,7 +1633,7 @@ name|hooks
 operator|.
 name|doChangeAbandonedHook
 argument_list|(
-name|change
+name|updatedChange
 argument_list|,
 name|user
 operator|.
@@ -1801,8 +1809,9 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+specifier|final
 name|Change
-name|change
+name|updatedChange
 init|=
 name|db
 operator|.
@@ -1888,7 +1897,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|change
+name|updatedChange
 operator|!=
 literal|null
 condition|)
@@ -1940,7 +1949,7 @@ name|a
 operator|.
 name|cache
 argument_list|(
-name|change
+name|updatedChange
 argument_list|)
 expr_stmt|;
 block|}
@@ -1963,7 +1972,7 @@ name|abandonedSenderFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|updatedChange
 argument_list|)
 decl_stmt|;
 name|cm
@@ -1993,7 +2002,7 @@ name|hooks
 operator|.
 name|doChangeRestoreHook
 argument_list|(
-name|change
+name|updatedChange
 argument_list|,
 name|user
 operator|.

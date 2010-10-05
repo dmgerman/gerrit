@@ -1218,13 +1218,13 @@ name|ChangeUtil
 operator|.
 name|submit
 argument_list|(
-name|opFactory
-argument_list|,
 name|patchSetId
 argument_list|,
 name|currentUser
 argument_list|,
 name|db
+argument_list|,
+name|opFactory
 argument_list|,
 operator|new
 name|MergeQueue
