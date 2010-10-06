@@ -757,10 +757,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|getButtonPanel
-argument_list|()
-operator|.
-name|add
+name|addButton
 argument_list|(
 name|edit
 argument_list|)
@@ -790,10 +787,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|getButtonPanel
-argument_list|()
-operator|.
-name|add
+name|addButton
 argument_list|(
 name|save
 argument_list|)
@@ -823,10 +817,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|getButtonPanel
-argument_list|()
-operator|.
-name|add
+name|addButton
 argument_list|(
 name|cancel
 argument_list|)
@@ -856,10 +847,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|getButtonPanel
-argument_list|()
-operator|.
-name|add
+name|addButton
 argument_list|(
 name|discard
 argument_list|)
