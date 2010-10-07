@@ -78,6 +78,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|ChangeHookRunner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|ListBranchesResult
@@ -543,6 +557,12 @@ specifier|final
 name|ReplicationQueue
 name|replication
 decl_stmt|;
+DECL|field|hooks
+specifier|private
+specifier|final
+name|ChangeHookRunner
+name|hooks
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 specifier|final
@@ -565,7 +585,7 @@ name|startingRevision
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, final ReplicationQueue replication, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
+DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, final ReplicationQueue replication, final ChangeHookRunner hooks, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
 name|AddBranch
 parameter_list|(
 specifier|final
@@ -591,6 +611,10 @@ parameter_list|,
 specifier|final
 name|ReplicationQueue
 name|replication
+parameter_list|,
+specifier|final
+name|ChangeHookRunner
+name|hooks
 parameter_list|,
 annotation|@
 name|Assisted
@@ -645,6 +669,12 @@ operator|.
 name|replication
 operator|=
 name|replication
+expr_stmt|;
+name|this
+operator|.
+name|hooks
+operator|=
+name|hooks
 expr_stmt|;
 name|this
 operator|.
@@ -987,6 +1017,20 @@ name|getParentKey
 argument_list|()
 argument_list|,
 name|refname
+argument_list|)
+expr_stmt|;
+name|hooks
+operator|.
+name|doRefUpdatedHook
+argument_list|(
+name|name
+argument_list|,
+name|u
+argument_list|,
+name|identifiedUser
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
