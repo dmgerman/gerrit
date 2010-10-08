@@ -2451,6 +2451,13 @@ parameter_list|)
 block|{
 name|commitMessageBlock
 operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|commitMessageBlock
+operator|.
 name|display
 argument_list|(
 name|result
