@@ -654,6 +654,14 @@ name|Id
 argument_list|>
 name|receiveGroups
 decl_stmt|;
+DECL|field|refControlFactory
+specifier|private
+specifier|final
+name|RefControl
+operator|.
+name|Factory
+name|refControlFactory
+decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -668,7 +676,7 @@ name|state
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.Id> uploadGroups, @GitReceivePackGroups Set<AccountGroup.Id> receiveGroups, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.Id> uploadGroups, @GitReceivePackGroups Set<AccountGroup.Id> receiveGroups, final RefControl.Factory refControlFactory, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -690,6 +698,12 @@ operator|.
 name|Id
 argument_list|>
 name|receiveGroups
+parameter_list|,
+specifier|final
+name|RefControl
+operator|.
+name|Factory
+name|refControlFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -713,6 +727,12 @@ operator|.
 name|receiveGroups
 operator|=
 name|receiveGroups
+expr_stmt|;
+name|this
+operator|.
+name|refControlFactory
+operator|=
+name|refControlFactory
 expr_stmt|;
 name|user
 operator|=
@@ -812,8 +832,9 @@ name|refName
 parameter_list|)
 block|{
 return|return
-operator|new
-name|RefControl
+name|refControlFactory
+operator|.
+name|create
 argument_list|(
 name|this
 argument_list|,

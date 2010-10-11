@@ -70,22 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|AccountGroup
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -370,6 +354,21 @@ name|AccountGroup
 operator|.
 name|Id
 name|batchUsersGroupId
+decl_stmt|;
+comment|/** Identity of the owner group, which permits any project owner. */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|9
+argument_list|)
+DECL|field|ownerGroupId
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|ownerGroupId
 decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
