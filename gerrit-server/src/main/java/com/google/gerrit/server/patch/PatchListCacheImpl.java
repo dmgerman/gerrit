@@ -2011,8 +2011,11 @@ decl_stmt|;
 name|EditList
 name|edits
 init|=
-operator|new
 name|MyersDiff
+operator|.
+name|INSTANCE
+operator|.
+name|diff
 argument_list|(
 name|cmp
 argument_list|,
@@ -2020,9 +2023,6 @@ name|aRawText
 argument_list|,
 name|bRawText
 argument_list|)
-operator|.
-name|getEdits
-argument_list|()
 decl_stmt|;
 name|FileHeader
 name|fh
@@ -2450,8 +2450,11 @@ name|Edit
 argument_list|>
 name|wordEdits
 init|=
-operator|new
 name|MyersDiff
+operator|.
+name|INSTANCE
+operator|.
+name|diff
 argument_list|(
 name|cmp
 argument_list|,
@@ -2459,9 +2462,6 @@ name|a
 argument_list|,
 name|b
 argument_list|)
-operator|.
-name|getEdits
-argument_list|()
 decl_stmt|;
 comment|// Combine edits that are really close together. If they are
 comment|// just a few characters apart we tend to get better results
