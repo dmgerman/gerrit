@@ -153,8 +153,8 @@ operator|=
 operator|new
 name|GroupTable
 argument_list|(
-literal|false
-comment|/* do not hyperlink to admin */
+literal|true
+comment|/* hyperlink to admin */
 argument_list|)
 expr_stmt|;
 name|add
