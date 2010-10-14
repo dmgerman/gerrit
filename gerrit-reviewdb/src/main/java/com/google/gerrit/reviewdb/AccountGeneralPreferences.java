@@ -442,6 +442,19 @@ specifier|protected
 name|String
 name|timeFormat
 decl_stmt|;
+comment|/**    * If true display the patch sets in the ChangeScreen in reverse order    * (show latest patch set on top).    */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|10
+argument_list|)
+DECL|field|displayPatchSetsInReverseOrder
+specifier|protected
+name|boolean
+name|displayPatchSetsInReverseOrder
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -662,6 +675,33 @@ operator|=
 name|includeSelfOnEmail
 expr_stmt|;
 block|}
+DECL|method|isDisplayPatchSetsInReverseOrder ()
+specifier|public
+name|boolean
+name|isDisplayPatchSetsInReverseOrder
+parameter_list|()
+block|{
+return|return
+name|displayPatchSetsInReverseOrder
+return|;
+block|}
+DECL|method|setDisplayPatchSetsInReverseOrder (final boolean displayPatchSetsInReverseOrder)
+specifier|public
+name|void
+name|setDisplayPatchSetsInReverseOrder
+parameter_list|(
+specifier|final
+name|boolean
+name|displayPatchSetsInReverseOrder
+parameter_list|)
+block|{
+name|this
+operator|.
+name|displayPatchSetsInReverseOrder
+operator|=
+name|displayPatchSetsInReverseOrder
+expr_stmt|;
+block|}
 DECL|method|getDateFormat ()
 specifier|public
 name|DateFormat
@@ -771,6 +811,10 @@ operator|=
 literal|true
 expr_stmt|;
 name|copySelfOnEmail
+operator|=
+literal|false
+expr_stmt|;
+name|displayPatchSetsInReverseOrder
 operator|=
 literal|false
 expr_stmt|;

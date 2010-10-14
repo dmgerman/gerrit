@@ -145,6 +145,11 @@ name|String
 name|copySelfOnEmails
 parameter_list|()
 function_decl|;
+DECL|method|displayPatchSetsInReverseOrder ()
+name|String
+name|displayPatchSetsInReverseOrder
+parameter_list|()
+function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
