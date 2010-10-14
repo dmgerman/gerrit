@@ -120,11 +120,6 @@ name|String
 name|buttonDiscard
 parameter_list|()
 function_decl|;
-DECL|method|confirmDiscard ()
-name|String
-name|confirmDiscard
-parameter_list|()
-function_decl|;
 DECL|method|noDifference ()
 name|String
 name|noDifference
@@ -208,11 +203,6 @@ function_decl|;
 DECL|method|commentSaveDraft ()
 name|String
 name|commentSaveDraft
-parameter_list|()
-function_decl|;
-DECL|method|commentDiscard ()
-name|String
-name|commentDiscard
 parameter_list|()
 function_decl|;
 DECL|method|commentCancelEdit ()
