@@ -1972,7 +1972,7 @@ name|a
 operator|.
 name|src
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|hunk
 operator|.
@@ -2010,7 +2010,7 @@ name|b
 operator|.
 name|src
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|hunk
 operator|.
@@ -2200,7 +2200,7 @@ name|line
 argument_list|,
 name|src
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|line
 argument_list|)

@@ -110,7 +110,7 @@ name|content
 operator|=
 name|text
 operator|.
-name|getLines
+name|getString
 argument_list|(
 name|s
 argument_list|,

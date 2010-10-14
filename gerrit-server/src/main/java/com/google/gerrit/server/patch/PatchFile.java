@@ -598,7 +598,7 @@ block|}
 return|return
 name|a
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|line
 operator|-
@@ -631,7 +631,7 @@ block|}
 return|return
 name|b
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|line
 operator|-

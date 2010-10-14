@@ -1986,8 +1986,6 @@ init|=
 operator|new
 name|RawText
 argument_list|(
-name|cmp
-argument_list|,
 name|aText
 operator|.
 name|getContent
@@ -2000,8 +1998,6 @@ init|=
 operator|new
 name|RawText
 argument_list|(
-name|cmp
-argument_list|,
 name|bText
 operator|.
 name|getContent
@@ -3784,7 +3780,7 @@ name|matcher
 argument_list|(
 name|a
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|b
 argument_list|)
@@ -3822,7 +3818,7 @@ name|l
 init|=
 name|a
 operator|.
-name|getLine
+name|getString
 argument_list|(
 name|idx
 argument_list|)
