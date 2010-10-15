@@ -1036,28 +1036,6 @@ expr_stmt|;
 break|break;
 default|default:
 block|{
-specifier|final
-name|String
-name|msg
-init|=
-literal|"Cannot create branch "
-operator|+
-name|name
-operator|+
-literal|": "
-operator|+
-name|result
-operator|.
-name|name
-argument_list|()
-decl_stmt|;
-name|log
-operator|.
-name|error
-argument_list|(
-name|msg
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|IOException
