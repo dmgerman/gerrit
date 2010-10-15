@@ -592,17 +592,6 @@ argument_list|(
 name|canModifyMergeType
 argument_list|)
 expr_stmt|;
-name|saveProject
-operator|.
-name|setEnabled
-argument_list|(
-name|canModifyAgreements
-operator|||
-name|canModifyDescription
-operator|||
-name|canModifyMergeType
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|initDescription ()
 specifier|private
