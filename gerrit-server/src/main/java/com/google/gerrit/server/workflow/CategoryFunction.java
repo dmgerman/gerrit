@@ -259,6 +259,19 @@ name|NoOpFunction
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|all
+operator|.
+name|put
+argument_list|(
+name|NoBlock
+operator|.
+name|NAME
+argument_list|,
+operator|new
+name|NoBlock
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**    * Locate a function by category.    *    * @param category the category the function is for.    * @return the function implementation; {@link NoOpFunction} if the function    *         is not known to Gerrit and thus cannot be executed.    */
 DECL|method|forCategory (final ApprovalCategory category)
