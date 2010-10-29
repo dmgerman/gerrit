@@ -1392,7 +1392,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|enableButtons (final boolean on)
-specifier|protected
+specifier|public
 name|void
 name|enableButtons
 parameter_list|(
