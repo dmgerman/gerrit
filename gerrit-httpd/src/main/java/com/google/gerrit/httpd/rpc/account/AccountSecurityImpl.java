@@ -78,6 +78,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|ChangeHookRunner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|data
 operator|.
 name|AccountSecurity
@@ -335,6 +349,20 @@ operator|.
 name|reviewdb
 operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Project
 import|;
 end_import
 
@@ -932,9 +960,15 @@ operator|.
 name|Factory
 name|groupDetailFactory
 decl_stmt|;
+DECL|field|hooks
+specifier|private
+specifier|final
+name|ChangeHookRunner
+name|hooks
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final Realm r, final Provider<IdentifiedUser> u, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final AccountManager am, final ClearPassword.Factory clearPasswordFactory, final GeneratePassword.Factory generatePasswordFactory, final ChangeUserName.CurrentUser changeUserNameFactory, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final MyGroupsFactory.Factory myGroupsFactory, final GroupDetailFactory.Factory groupDetailFactory)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final Realm r, final Provider<IdentifiedUser> u, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final AccountManager am, final ClearPassword.Factory clearPasswordFactory, final GeneratePassword.Factory generatePasswordFactory, final ChangeUserName.CurrentUser changeUserNameFactory, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final MyGroupsFactory.Factory myGroupsFactory, final GroupDetailFactory.Factory groupDetailFactory, final ChangeHookRunner hooks)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -1033,6 +1067,10 @@ name|GroupDetailFactory
 operator|.
 name|Factory
 name|groupDetailFactory
+parameter_list|,
+specifier|final
+name|ChangeHookRunner
+name|hooks
 parameter_list|)
 block|{
 name|super
@@ -1130,6 +1168,12 @@ operator|.
 name|groupDetailFactory
 operator|=
 name|groupDetailFactory
+expr_stmt|;
+name|this
+operator|.
+name|hooks
+operator|=
+name|hooks
 expr_stmt|;
 block|}
 DECL|method|mySshKeys (final AsyncCallback<List<AccountSshKey>> callback)
@@ -2235,6 +2279,21 @@ operator|.
 name|VERIFIED
 argument_list|,
 literal|null
+argument_list|)
+expr_stmt|;
+name|hooks
+operator|.
+name|doClaSignupHook
+argument_list|(
+name|user
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getAccount
+argument_list|()
+argument_list|,
+name|cla
 argument_list|)
 expr_stmt|;
 block|}
