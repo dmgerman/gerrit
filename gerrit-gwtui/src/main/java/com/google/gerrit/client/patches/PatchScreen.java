@@ -2716,9 +2716,6 @@ name|fileList
 argument_list|)
 expr_stmt|;
 block|}
-name|registerKeys
-argument_list|()
-expr_stmt|;
 comment|// Mark this file reviewed as soon we display the diff screen
 if|if
 condition|(
