@@ -1198,12 +1198,16 @@ name|acceptor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshDaemon (final CommandFactory commandFactory, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, final IdGenerator idGenerator, @GerritServerConfig final Config cfg, final SshLog sshLog)
+DECL|method|SshDaemon (final CommandFactory commandFactory, final NoShell noShell, final PublickeyAuthenticator userAuth, final KeyPairProvider hostKeyProvider, final IdGenerator idGenerator, @GerritServerConfig final Config cfg, final SshLog sshLog)
 name|SshDaemon
 parameter_list|(
 specifier|final
 name|CommandFactory
 name|commandFactory
+parameter_list|,
+specifier|final
+name|NoShell
+name|noShell
 parameter_list|,
 specifier|final
 name|PublickeyAuthenticator
@@ -1454,9 +1458,7 @@ argument_list|)
 expr_stmt|;
 name|setShellFactory
 argument_list|(
-operator|new
-name|NoShell
-argument_list|()
+name|noShell
 argument_list|)
 expr_stmt|;
 name|setSessionFactory
