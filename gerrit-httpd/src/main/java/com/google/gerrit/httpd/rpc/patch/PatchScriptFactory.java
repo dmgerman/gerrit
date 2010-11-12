@@ -1101,15 +1101,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|final
-name|boolean
-name|intraline
-init|=
-name|list
-operator|.
-name|hasIntralineDifference
-argument_list|()
-decl_stmt|;
-specifier|final
 name|PatchScriptBuilder
 name|b
 init|=
@@ -1162,8 +1153,6 @@ operator|.
 name|toPatchScript
 argument_list|(
 name|content
-argument_list|,
-name|intraline
 argument_list|,
 name|comments
 argument_list|,

@@ -484,12 +484,6 @@ specifier|transient
 name|ObjectId
 name|newId
 decl_stmt|;
-DECL|field|intralineDifference
-specifier|private
-specifier|transient
-name|boolean
-name|intralineDifference
-decl_stmt|;
 DECL|field|againstParent
 specifier|private
 specifier|transient
@@ -515,7 +509,7 @@ name|PatchListEntry
 index|[]
 name|patches
 decl_stmt|;
-DECL|method|PatchList (@ullable final AnyObjectId oldId, final AnyObjectId newId, final boolean intralineDifference, final boolean againstParent, final PatchListEntry[] patches)
+DECL|method|PatchList (@ullable final AnyObjectId oldId, final AnyObjectId newId, final boolean againstParent, final PatchListEntry[] patches)
 name|PatchList
 parameter_list|(
 annotation|@
@@ -527,10 +521,6 @@ parameter_list|,
 specifier|final
 name|AnyObjectId
 name|newId
-parameter_list|,
-specifier|final
-name|boolean
-name|intralineDifference
 parameter_list|,
 specifier|final
 name|boolean
@@ -565,12 +555,6 @@ name|newId
 operator|.
 name|copy
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|intralineDifference
-operator|=
-name|intralineDifference
 expr_stmt|;
 name|this
 operator|.
@@ -695,17 +679,6 @@ argument_list|(
 name|patches
 argument_list|)
 argument_list|)
-return|;
-block|}
-comment|/** @return true if this list was computed with intraline difference enabled. */
-DECL|method|hasIntralineDifference ()
-specifier|public
-name|boolean
-name|hasIntralineDifference
-parameter_list|()
-block|{
-return|return
-name|intralineDifference
 return|;
 block|}
 comment|/** @return true if {@link #getOldId} is {@link #getNewId}'s ancestor. */
@@ -984,17 +957,6 @@ name|writeVarInt32
 argument_list|(
 name|out
 argument_list|,
-name|intralineDifference
-condition|?
-literal|1
-else|:
-literal|0
-argument_list|)
-expr_stmt|;
-name|writeVarInt32
-argument_list|(
-name|out
-argument_list|,
 name|againstParent
 condition|?
 literal|1
@@ -1111,15 +1073,6 @@ name|readNotNull
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
-name|intralineDifference
-operator|=
-name|readVarInt32
-argument_list|(
-name|in
-argument_list|)
-operator|!=
-literal|0
 expr_stmt|;
 name|againstParent
 operator|=
