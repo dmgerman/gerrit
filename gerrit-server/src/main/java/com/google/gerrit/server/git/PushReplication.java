@@ -1644,6 +1644,8 @@ operator|.
 name|getPort
 argument_list|()
 argument_list|,
+literal|null
+argument_list|,
 name|FS
 operator|.
 name|DETECTED
