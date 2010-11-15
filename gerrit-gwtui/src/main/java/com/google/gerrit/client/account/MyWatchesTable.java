@@ -1166,7 +1166,7 @@ name|addNotifyButton
 argument_list|(
 name|AccountProjectWatch
 operator|.
-name|Type
+name|NotifyType
 operator|.
 name|NEW_CHANGES
 argument_list|,
@@ -1181,9 +1181,9 @@ name|addNotifyButton
 argument_list|(
 name|AccountProjectWatch
 operator|.
-name|Type
+name|NotifyType
 operator|.
-name|COMMENTS
+name|ALL_COMMENTS
 argument_list|,
 name|info
 argument_list|,
@@ -1196,9 +1196,9 @@ name|addNotifyButton
 argument_list|(
 name|AccountProjectWatch
 operator|.
-name|Type
+name|NotifyType
 operator|.
-name|SUBMITS
+name|SUBMITTED_CHANGES
 argument_list|,
 name|info
 argument_list|,
@@ -1319,7 +1319,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addNotifyButton (final AccountProjectWatch.Type type, final AccountProjectWatchInfo info, final int row, final int col)
+DECL|method|addNotifyButton (final AccountProjectWatch.NotifyType type, final AccountProjectWatchInfo info, final int row, final int col)
 specifier|protected
 name|void
 name|addNotifyButton
@@ -1327,7 +1327,7 @@ parameter_list|(
 specifier|final
 name|AccountProjectWatch
 operator|.
-name|Type
+name|NotifyType
 name|type
 parameter_list|,
 specifier|final
@@ -1399,6 +1399,13 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|cbox
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|Util
 operator|.
 name|ACCOUNT_SVC
@@ -1425,7 +1432,15 @@ specifier|final
 name|VoidResult
 name|result
 parameter_list|)
-block|{               }
+block|{
+name|cbox
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1437,6 +1452,13 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{
+name|cbox
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|info
 operator|.
 name|getWatch
