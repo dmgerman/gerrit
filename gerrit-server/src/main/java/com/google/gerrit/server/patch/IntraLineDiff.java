@@ -240,6 +240,7 @@ name|serialVersionUID
 decl_stmt|;
 DECL|field|edits
 specifier|private
+specifier|transient
 name|List
 argument_list|<
 name|Edit
@@ -260,7 +261,12 @@ name|this
 operator|.
 name|edits
 operator|=
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
 name|edits
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getEdits ()
@@ -467,6 +473,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|inner
 index|[
 name|j
@@ -477,6 +484,7 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+block|}
 name|editArray
 index|[
 name|i
@@ -498,6 +506,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|edits
+operator|=
+name|toList
+argument_list|(
+name|editArray
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|writeEdit (OutputStream out, Edit e)
 specifier|private
