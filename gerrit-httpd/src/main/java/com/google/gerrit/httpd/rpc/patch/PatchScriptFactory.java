@@ -1275,6 +1275,8 @@ operator|.
 name|setRepository
 argument_list|(
 name|git
+argument_list|,
+name|projectKey
 argument_list|)
 expr_stmt|;
 name|b

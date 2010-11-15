@@ -145,6 +145,11 @@ name|String
 name|disabledOnLargeFiles
 parameter_list|()
 function_decl|;
+DECL|method|intralineFailure ()
+name|String
+name|intralineFailure
+parameter_list|()
+function_decl|;
 DECL|method|upToChange ()
 name|String
 name|upToChange

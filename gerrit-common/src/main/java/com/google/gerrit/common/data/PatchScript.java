@@ -376,7 +376,12 @@ specifier|protected
 name|boolean
 name|intralineDifference
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id)
+DECL|field|intralineFailure
+specifier|protected
+name|boolean
+name|intralineFailure
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -458,6 +463,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|id
+parameter_list|,
+specifier|final
+name|boolean
+name|idf
 parameter_list|)
 block|{
 name|changeId
@@ -527,6 +536,10 @@ expr_stmt|;
 name|intralineDifference
 operator|=
 name|id
+expr_stmt|;
+name|intralineFailure
+operator|=
+name|idf
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -711,6 +724,16 @@ parameter_list|()
 block|{
 return|return
 name|intralineDifference
+return|;
+block|}
+DECL|method|hasIntralineFailure ()
+specifier|public
+name|boolean
+name|hasIntralineFailure
+parameter_list|()
+block|{
+return|return
+name|intralineFailure
 return|;
 block|}
 DECL|method|getA ()

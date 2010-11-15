@@ -100,6 +100,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -190,7 +204,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|2L
+literal|3L
 decl_stmt|;
 DECL|field|aId
 specifier|private
@@ -226,7 +240,28 @@ name|Edit
 argument_list|>
 name|edits
 decl_stmt|;
-DECL|method|IntraLineDiffKey (ObjectId aId, Text aText, ObjectId bId, Text bText, List<Edit> edits)
+DECL|field|projectKey
+specifier|private
+specifier|transient
+name|Project
+operator|.
+name|NameKey
+name|projectKey
+decl_stmt|;
+DECL|field|commit
+specifier|private
+specifier|transient
+name|ObjectId
+name|commit
+decl_stmt|;
+DECL|field|path
+specifier|private
+specifier|transient
+name|String
+name|path
+decl_stmt|;
+DECL|method|IntraLineDiffKey (ObjectId aId, Text aText, ObjectId bId, Text bText, List<Edit> edits, Project.NameKey projectKey, ObjectId commit, String path)
+specifier|public
 name|IntraLineDiffKey
 parameter_list|(
 name|ObjectId
@@ -246,6 +281,17 @@ argument_list|<
 name|Edit
 argument_list|>
 name|edits
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|projectKey
+parameter_list|,
+name|ObjectId
+name|commit
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 name|this
@@ -278,6 +324,24 @@ name|edits
 operator|=
 name|edits
 expr_stmt|;
+name|this
+operator|.
+name|projectKey
+operator|=
+name|projectKey
+expr_stmt|;
+name|this
+operator|.
+name|commit
+operator|=
+name|commit
+expr_stmt|;
+name|this
+operator|.
+name|path
+operator|=
+name|path
+expr_stmt|;
 block|}
 DECL|method|getTextA ()
 name|Text
@@ -307,6 +371,53 @@ parameter_list|()
 block|{
 return|return
 name|edits
+return|;
+block|}
+DECL|method|getBlobA ()
+name|ObjectId
+name|getBlobA
+parameter_list|()
+block|{
+return|return
+name|aId
+return|;
+block|}
+DECL|method|getBlobB ()
+name|ObjectId
+name|getBlobB
+parameter_list|()
+block|{
+return|return
+name|bId
+return|;
+block|}
+DECL|method|getProject ()
+name|Project
+operator|.
+name|NameKey
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|projectKey
+return|;
+block|}
+DECL|method|getCommit ()
+name|ObjectId
+name|getCommit
+parameter_list|()
+block|{
+return|return
+name|commit
+return|;
+block|}
+DECL|method|getPath ()
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
 return|;
 block|}
 annotation|@
