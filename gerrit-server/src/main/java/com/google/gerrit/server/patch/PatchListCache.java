@@ -96,22 +96,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -179,25 +163,10 @@ name|PatchSet
 name|patchSet
 parameter_list|)
 function_decl|;
-DECL|method|get (Change change, PatchSet patchSet, Whitespace whitespace)
-specifier|public
-name|PatchList
-name|get
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|PatchSet
-name|patchSet
-parameter_list|,
-name|Whitespace
-name|whitespace
-parameter_list|)
-function_decl|;
-DECL|method|get (ObjectId aId, Text aText, ObjectId bId, Text bText, List<Edit> edits)
+DECL|method|getIntraLineDiff (ObjectId aId, Text aText, ObjectId bId, Text bText, List<Edit> edits)
 specifier|public
 name|IntraLineDiff
-name|get
+name|getIntraLineDiff
 parameter_list|(
 name|ObjectId
 name|aId

@@ -986,7 +986,7 @@ name|d
 init|=
 name|patchListCache
 operator|.
-name|get
+name|getIntraLineDiff
 argument_list|(
 name|a
 operator|.
