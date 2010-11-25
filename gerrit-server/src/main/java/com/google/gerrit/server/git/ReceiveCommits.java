@@ -2213,18 +2213,19 @@ block|}
 block|}
 if|if
 condition|(
-name|isHead
-argument_list|(
+operator|!
 name|c
-argument_list|)
-operator|||
-name|isTag
+operator|.
+name|getRefName
+argument_list|()
+operator|.
+name|startsWith
 argument_list|(
-name|c
+name|NEW_CHANGE
 argument_list|)
 condition|)
 block|{
-comment|// We only schedule heads and tags for replication.
+comment|// We only schedule direct refs updates for replication.
 comment|// Change refs are scheduled when they are created.
 comment|//
 name|replication
