@@ -4390,11 +4390,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|String
-name|rejectNotes
-init|=
-literal|"refs/meta/reject-commits"
-decl_stmt|;
 try|try
 block|{
 name|Ref
@@ -4404,7 +4399,9 @@ name|repo
 operator|.
 name|getRef
 argument_list|(
-name|rejectNotes
+name|GitRepositoryManager
+operator|.
+name|REF_REJECT_COMMITS
 argument_list|)
 decl_stmt|;
 if|if
@@ -4468,7 +4465,9 @@ name|IOException
 argument_list|(
 literal|"Cannot load "
 operator|+
-name|rejectNotes
+name|GitRepositoryManager
+operator|.
+name|REF_REJECT_COMMITS
 argument_list|,
 name|badMap
 argument_list|)

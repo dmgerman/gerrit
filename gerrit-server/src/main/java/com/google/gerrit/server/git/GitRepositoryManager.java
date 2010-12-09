@@ -126,6 +126,16 @@ specifier|public
 interface|interface
 name|GitRepositoryManager
 block|{
+comment|/** Note tree listing commits we refuse {@code refs/meta/reject-commits} */
+DECL|field|REF_REJECT_COMMITS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REF_REJECT_COMMITS
+init|=
+literal|"refs/meta/reject-commits"
+decl_stmt|;
 comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
 DECL|method|openRepository (String name)
 specifier|public
