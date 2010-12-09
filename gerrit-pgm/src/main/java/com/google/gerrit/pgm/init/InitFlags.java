@@ -178,12 +178,6 @@ specifier|public
 name|boolean
 name|deleteOnFailure
 decl_stmt|;
-comment|/** Run the Git project importer after initialization. */
-DECL|field|importProjects
-specifier|public
-name|boolean
-name|importProjects
-decl_stmt|;
 comment|/** Run the daemon (and open the web UI in a browser) after initialization. */
 DECL|field|autoStart
 specifier|public
