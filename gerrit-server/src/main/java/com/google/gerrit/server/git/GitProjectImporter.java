@@ -523,6 +523,33 @@ literal|".git"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+literal|""
+operator|.
+name|equals
+argument_list|(
+name|prefix
+argument_list|)
+condition|)
+block|{
+comment|// If the git base path is itself a git repository working
+comment|// directory, this is a bit nonsensical for Gerrit Code Review.
+comment|// Skip the path and do the next one.
+name|messages
+operator|.
+name|warning
+argument_list|(
+literal|"Skipping "
+operator|+
+name|f
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|name
 operator|=
 name|prefix
