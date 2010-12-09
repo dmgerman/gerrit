@@ -1260,7 +1260,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|renameGroup (final AccountGroup.Id groupId, final String newName, final AsyncCallback<VoidResult> callback)
+DECL|method|renameGroup (final AccountGroup.Id groupId, final String newName, final AsyncCallback<GroupDetail> callback)
 specifier|public
 name|void
 name|renameGroup
@@ -1278,7 +1278,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|GroupDetail
 argument_list|>
 name|callback
 parameter_list|)

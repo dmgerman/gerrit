@@ -78,6 +78,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|data
+operator|.
+name|GroupDetail
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|errors
 operator|.
 name|NameAlreadyUsedException
@@ -196,20 +212,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtjsonrpc
-operator|.
-name|client
-operator|.
-name|VoidResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -275,7 +277,7 @@ name|RenameGroup
 extends|extends
 name|Handler
 argument_list|<
-name|VoidResult
+name|GroupDetail
 argument_list|>
 block|{
 DECL|interface|Factory
@@ -316,6 +318,14 @@ operator|.
 name|Factory
 name|groupControlFactory
 decl_stmt|;
+DECL|field|groupDetailFactory
+specifier|private
+specifier|final
+name|GroupDetailFactory
+operator|.
+name|Factory
+name|groupDetailFactory
+decl_stmt|;
 DECL|field|groupId
 specifier|private
 specifier|final
@@ -332,7 +342,7 @@ name|newName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RenameGroup (final ReviewDb db, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, @Assisted final AccountGroup.Id groupId, @Assisted final String newName)
+DECL|method|RenameGroup (final ReviewDb db, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupDetailFactory.Factory groupDetailFactory, @Assisted final AccountGroup.Id groupId, @Assisted final String newName)
 name|RenameGroup
 parameter_list|(
 specifier|final
@@ -348,6 +358,12 @@ name|GroupControl
 operator|.
 name|Factory
 name|groupControlFactory
+parameter_list|,
+specifier|final
+name|GroupDetailFactory
+operator|.
+name|Factory
+name|groupDetailFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -384,6 +400,12 @@ name|groupControlFactory
 expr_stmt|;
 name|this
 operator|.
+name|groupDetailFactory
+operator|=
+name|groupDetailFactory
+expr_stmt|;
+name|this
+operator|.
 name|groupId
 operator|=
 name|groupId
@@ -399,7 +421,7 @@ annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|VoidResult
+name|GroupDetail
 name|call
 parameter_list|()
 throws|throws
@@ -549,9 +571,15 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|VoidResult
+name|groupDetailFactory
 operator|.
-name|INSTANCE
+name|create
+argument_list|(
+name|groupId
+argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 comment|// Otherwise, someone else has this identity.
@@ -635,9 +663,15 @@ name|old
 argument_list|)
 expr_stmt|;
 return|return
-name|VoidResult
+name|groupDetailFactory
 operator|.
-name|INSTANCE
+name|create
+argument_list|(
+name|groupId
+argument_list|)
+operator|.
+name|call
+argument_list|()
 return|;
 block|}
 block|}

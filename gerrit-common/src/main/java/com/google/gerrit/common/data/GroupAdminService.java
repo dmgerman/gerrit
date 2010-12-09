@@ -319,7 +319,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|renameGroup (AccountGroup.Id groupId, String newName, AsyncCallback<VoidResult> callback)
+DECL|method|renameGroup (AccountGroup.Id groupId, String newName, AsyncCallback<GroupDetail> callback)
 name|void
 name|renameGroup
 parameter_list|(
@@ -333,7 +333,7 @@ name|newName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|GroupDetail
 argument_list|>
 name|callback
 parameter_list|)
