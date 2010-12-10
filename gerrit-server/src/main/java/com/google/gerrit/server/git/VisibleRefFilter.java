@@ -462,7 +462,13 @@ specifier|final
 name|ReviewDb
 name|reviewDb
 decl_stmt|;
-DECL|method|VisibleRefFilter (final Repository db, final ProjectControl projectControl, final ReviewDb reviewDb)
+DECL|field|showChanges
+specifier|private
+specifier|final
+name|boolean
+name|showChanges
+decl_stmt|;
+DECL|method|VisibleRefFilter (final Repository db, final ProjectControl projectControl, final ReviewDb reviewDb, final boolean showChanges)
 specifier|public
 name|VisibleRefFilter
 parameter_list|(
@@ -477,6 +483,10 @@ parameter_list|,
 specifier|final
 name|ReviewDb
 name|reviewDb
+parameter_list|,
+specifier|final
+name|boolean
+name|showChanges
 parameter_list|)
 block|{
 name|this
@@ -496,6 +506,12 @@ operator|.
 name|reviewDb
 operator|=
 name|reviewDb
+expr_stmt|;
+name|this
+operator|.
+name|showChanges
+operator|=
+name|showChanges
 expr_stmt|;
 block|}
 annotation|@
@@ -721,6 +737,19 @@ argument_list|>
 name|visibleChanges
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|showChanges
+condition|)
+block|{
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
 specifier|final
 name|Project
 name|project
