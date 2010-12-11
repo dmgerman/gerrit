@@ -300,6 +300,11 @@ name|String
 name|columnProjectDescription
 parameter_list|()
 function_decl|;
+DECL|method|columnRightOrigin ()
+name|String
+name|columnRightOrigin
+parameter_list|()
+function_decl|;
 DECL|method|columnApprovalCategory ()
 name|String
 name|columnApprovalCategory
