@@ -4415,7 +4415,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|NoteMap
+operator|.
+name|newEmptyMap
+argument_list|()
 return|;
 block|}
 name|RevWalk
@@ -9428,10 +9431,6 @@ block|}
 comment|// Check for banned commits to prevent them from entering the tree again.
 if|if
 condition|(
-name|rejectCommits
-operator|!=
-literal|null
-operator|&&
 name|rejectCommits
 operator|.
 name|contains
