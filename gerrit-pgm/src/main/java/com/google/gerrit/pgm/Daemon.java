@@ -1452,9 +1452,7 @@ name|sshInjector
 operator|.
 name|getInstance
 argument_list|(
-name|ProjectQoSFilter
-operator|.
-name|Module
+name|WebModule
 operator|.
 name|class
 argument_list|)
@@ -1468,7 +1466,9 @@ name|sshInjector
 operator|.
 name|getInstance
 argument_list|(
-name|WebModule
+name|ProjectQoSFilter
+operator|.
+name|Module
 operator|.
 name|class
 argument_list|)
