@@ -383,11 +383,11 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
-comment|/** True if the right can inherit from the magical "-- All Projects --". */
-DECL|method|canInheritFromWildProject ()
+comment|/** True if the right can be assigned on the wild project. */
+DECL|method|canBeOnWildProject ()
 specifier|public
 name|boolean
-name|canInheritFromWildProject
+name|canBeOnWildProject
 parameter_list|()
 block|{
 if|if
@@ -404,9 +404,12 @@ return|return
 literal|false
 return|;
 block|}
+else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 comment|/** Internal short unique identifier for this category. */

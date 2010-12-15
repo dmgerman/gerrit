@@ -2086,7 +2086,13 @@ operator|.
 name|NameKey
 name|wildProject
 init|=
-literal|null
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+literal|"-- All Projects --"
+argument_list|)
 decl_stmt|;
 name|ProjectControl
 operator|.
