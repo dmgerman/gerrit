@@ -295,6 +295,20 @@ operator|.
 name|Id
 name|adminGroupId
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|10
+argument_list|)
+DECL|field|adminGroupUUID
+specifier|public
+name|AccountGroup
+operator|.
+name|UUID
+name|adminGroupUUID
+decl_stmt|;
 comment|/** Identity of the anonymous group, which permits anyone. */
 annotation|@
 name|Column
@@ -354,6 +368,20 @@ name|AccountGroup
 operator|.
 name|Id
 name|batchUsersGroupId
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|11
+argument_list|)
+DECL|field|batchUsersGroupUUID
+specifier|public
+name|AccountGroup
+operator|.
+name|UUID
+name|batchUsersGroupUUID
 decl_stmt|;
 comment|/** Identity of the owner group, which permits any project owner. */
 annotation|@

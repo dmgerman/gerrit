@@ -209,6 +209,102 @@ name|newValue
 expr_stmt|;
 block|}
 block|}
+comment|/** Globally unique identifier. */
+DECL|class|UUID
+specifier|public
+specifier|static
+class|class
+name|UUID
+extends|extends
+name|StringKey
+argument_list|<
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|Key
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|1
+argument_list|,
+name|length
+operator|=
+literal|40
+argument_list|)
+DECL|field|uuid
+specifier|protected
+name|String
+name|uuid
+decl_stmt|;
+DECL|method|UUID ()
+specifier|protected
+name|UUID
+parameter_list|()
+block|{     }
+DECL|method|UUID (final String n)
+specifier|public
+name|UUID
+parameter_list|(
+specifier|final
+name|String
+name|n
+parameter_list|)
+block|{
+name|uuid
+operator|=
+name|n
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|String
+name|get
+parameter_list|()
+block|{
+return|return
+name|uuid
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|set (String newValue)
+specifier|protected
+name|void
+name|set
+parameter_list|(
+name|String
+name|newValue
+parameter_list|)
+block|{
+name|uuid
+operator|=
+name|newValue
+expr_stmt|;
+block|}
+block|}
 comment|/** Distinguished name, within organization directory server. */
 DECL|class|ExternalNameKey
 specifier|public
@@ -444,6 +540,60 @@ comment|/**      * Group defined by external LDAP database.      *<p>      * A g
 DECL|enumConstant|LDAP
 name|LDAP
 block|;   }
+comment|/** Common UUID assigned to the "Project Owners" placeholder group. */
+DECL|field|PROJECT_OWNERS
+specifier|public
+specifier|static
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|PROJECT_OWNERS
+init|=
+operator|new
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|(
+literal|"global:Project-Owners"
+argument_list|)
+decl_stmt|;
+comment|/** Common UUID assigned to the "Anonymous Users" group. */
+DECL|field|ANONYMOUS_USERS
+specifier|public
+specifier|static
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|ANONYMOUS_USERS
+init|=
+operator|new
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|(
+literal|"global:Anonymous-Users"
+argument_list|)
+decl_stmt|;
+comment|/** Common UUID assigned to the "Registered Users" group. */
+DECL|field|REGISTERED_USERS
+specifier|public
+specifier|static
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|REGISTERED_USERS
+init|=
+operator|new
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|(
+literal|"global:Registered-Users"
+argument_list|)
+decl_stmt|;
 comment|/** Unique name of this group within the system. */
 annotation|@
 name|Column
@@ -565,12 +715,25 @@ specifier|protected
 name|boolean
 name|emailOnlyAuthors
 decl_stmt|;
+comment|/** Globally unique identifier name for this group. */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|9
+argument_list|)
+DECL|field|groupUUID
+specifier|protected
+name|UUID
+name|groupUUID
+decl_stmt|;
 DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
 parameter_list|()
 block|{   }
-DECL|method|AccountGroup (final AccountGroup.NameKey newName, final AccountGroup.Id newId)
+DECL|method|AccountGroup (final AccountGroup.NameKey newName, final AccountGroup.Id newId, final AccountGroup.UUID uuid)
 specifier|public
 name|AccountGroup
 parameter_list|(
@@ -585,6 +748,12 @@ name|AccountGroup
 operator|.
 name|Id
 name|newId
+parameter_list|,
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 name|name
@@ -602,6 +771,10 @@ expr_stmt|;
 name|visibleToAll
 operator|=
 literal|false
+expr_stmt|;
+name|groupUUID
+operator|=
+name|uuid
 expr_stmt|;
 name|setType
 argument_list|(
@@ -828,6 +1001,34 @@ operator|.
 name|emailOnlyAuthors
 operator|=
 name|emailOnlyAuthors
+expr_stmt|;
+block|}
+DECL|method|getGroupUUID ()
+specifier|public
+name|AccountGroup
+operator|.
+name|UUID
+name|getGroupUUID
+parameter_list|()
+block|{
+return|return
+name|groupUUID
+return|;
+block|}
+DECL|method|setGroupUUID (AccountGroup.UUID uuid)
+specifier|public
+name|void
+name|setGroupUUID
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+name|groupUUID
+operator|=
+name|uuid
 expr_stmt|;
 block|}
 block|}

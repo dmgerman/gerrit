@@ -122,6 +122,17 @@ name|NameKey
 name|name
 parameter_list|)
 function_decl|;
+DECL|method|get (AccountGroup.UUID uuid)
+specifier|public
+name|AccountGroup
+name|get
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+function_decl|;
 DECL|method|get (AccountGroup.ExternalNameKey externalName)
 specifier|public
 name|Collection
