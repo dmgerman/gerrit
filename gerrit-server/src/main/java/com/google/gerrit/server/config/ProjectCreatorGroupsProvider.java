@@ -86,20 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|client
@@ -158,7 +144,7 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|ProjectCreatorGroupsProvider (@erritServerConfig final Config config, final SystemConfig systemConfig, final SchemaFactory<ReviewDb> db)
+DECL|method|ProjectCreatorGroupsProvider (@erritServerConfig final Config config, final AuthConfig authConfig, final SchemaFactory<ReviewDb> db)
 specifier|public
 name|ProjectCreatorGroupsProvider
 parameter_list|(
@@ -169,8 +155,8 @@ name|Config
 name|config
 parameter_list|,
 specifier|final
-name|SystemConfig
-name|systemConfig
+name|AuthConfig
+name|authConfig
 parameter_list|,
 specifier|final
 name|SchemaFactory
@@ -207,9 +193,10 @@ name|Collections
 operator|.
 name|singleton
 argument_list|(
-name|systemConfig
+name|authConfig
 operator|.
-name|adminGroupId
+name|getAdministratorsGroup
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -550,6 +550,14 @@ specifier|protected
 name|short
 name|maxValue
 decl_stmt|;
+DECL|field|groupUUID
+specifier|protected
+specifier|transient
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUUID
+decl_stmt|;
 DECL|method|RefRight ()
 specifier|protected
 name|RefRight
@@ -572,7 +580,7 @@ operator|=
 name|key
 expr_stmt|;
 block|}
-DECL|method|RefRight (final RefRight refRight, final AccountGroup.Id groupId)
+DECL|method|RefRight (final RefRight refRight, final AccountGroup.UUID groupId)
 specifier|public
 name|RefRight
 parameter_list|(
@@ -583,7 +591,7 @@ parameter_list|,
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|groupId
 parameter_list|)
 block|{
@@ -615,7 +623,7 @@ argument_list|()
 operator|.
 name|categoryId
 argument_list|,
-name|groupId
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -633,6 +641,11 @@ name|refRight
 operator|.
 name|getMaxValue
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|setAccountGroupUUID
+argument_list|(
+name|groupId
 argument_list|)
 expr_stmt|;
 block|}
@@ -761,6 +774,34 @@ name|key
 operator|.
 name|groupId
 return|;
+block|}
+DECL|method|getAccountGroupUUID ()
+specifier|public
+name|AccountGroup
+operator|.
+name|UUID
+name|getAccountGroupUUID
+parameter_list|()
+block|{
+return|return
+name|groupUUID
+return|;
+block|}
+DECL|method|setAccountGroupUUID (AccountGroup.UUID uuid)
+specifier|public
+name|void
+name|setAccountGroupUUID
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+name|groupUUID
+operator|=
+name|uuid
+expr_stmt|;
 block|}
 DECL|method|getMinValue ()
 specifier|public

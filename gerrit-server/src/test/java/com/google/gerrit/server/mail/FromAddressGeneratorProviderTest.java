@@ -1678,7 +1678,7 @@ operator|.
 expr|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 operator|>
 name|emptySet
 argument_list|()

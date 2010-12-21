@@ -173,7 +173,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|internalGroups
 decl_stmt|;
@@ -186,7 +186,7 @@ name|AccountExternalId
 argument_list|>
 name|externalIds
 decl_stmt|;
-DECL|method|AccountState (final Account account, final Set<AccountGroup.Id> actualGroups, final Collection<AccountExternalId> externalIds)
+DECL|method|AccountState (final Account account, final Set<AccountGroup.UUID> actualGroups, final Collection<AccountExternalId> externalIds)
 specifier|public
 name|AccountState
 parameter_list|(
@@ -199,7 +199,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|actualGroups
 parameter_list|,
@@ -409,7 +409,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getInternalGroups
 parameter_list|()

@@ -2241,7 +2241,7 @@ name|authConfig
 argument_list|,
 name|g
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2285,7 +2285,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|ids
 init|=
@@ -2294,7 +2294,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -2312,7 +2312,7 @@ name|add
 argument_list|(
 name|group
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;

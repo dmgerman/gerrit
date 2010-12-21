@@ -997,12 +997,12 @@ block|{
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|grp
 init|=
 name|r
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 decl_stmt|;
 if|if

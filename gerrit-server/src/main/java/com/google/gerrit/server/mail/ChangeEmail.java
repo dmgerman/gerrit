@@ -605,7 +605,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|gids
 init|=
@@ -619,7 +619,7 @@ control|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|gid
 range|:
 name|gids
@@ -1604,7 +1604,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getProjectOwners
 parameter_list|()
@@ -1642,7 +1642,7 @@ operator|.
 expr|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 operator|>
 name|emptySet
 argument_list|()

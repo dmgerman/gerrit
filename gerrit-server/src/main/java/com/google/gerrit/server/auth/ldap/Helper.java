@@ -975,7 +975,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|queryForGroups
 parameter_list|(
@@ -1263,7 +1263,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|actual
 init|=
@@ -1272,7 +1272,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1323,7 +1323,7 @@ name|add
 argument_list|(
 name|group
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;

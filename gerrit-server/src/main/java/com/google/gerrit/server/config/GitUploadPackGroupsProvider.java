@@ -164,7 +164,7 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|GitUploadPackGroupsProvider (@erritServerConfig Config config, AuthConfig authConfig, SchemaFactory<ReviewDb> db)
+DECL|method|GitUploadPackGroupsProvider (@erritServerConfig Config config, SchemaFactory<ReviewDb> db)
 specifier|public
 name|GitUploadPackGroupsProvider
 parameter_list|(
@@ -172,9 +172,6 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|config
-parameter_list|,
-name|AuthConfig
-name|authConfig
 parameter_list|,
 name|SchemaFactory
 argument_list|<
@@ -210,7 +207,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|all
 init|=
@@ -219,28 +216,26 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
 name|all
 operator|.
-name|addAll
+name|add
 argument_list|(
-name|authConfig
+name|AccountGroup
 operator|.
-name|getRegisteredGroups
-argument_list|()
+name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 name|all
 operator|.
-name|addAll
+name|add
 argument_list|(
-name|authConfig
+name|AccountGroup
 operator|.
-name|getAnonymousGroups
-argument_list|()
+name|ANONYMOUS_USERS
 argument_list|)
 expr_stmt|;
 name|groupIds

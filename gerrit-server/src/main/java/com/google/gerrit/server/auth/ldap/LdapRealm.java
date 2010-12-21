@@ -654,14 +654,14 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|>
 name|membershipCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LdapRealm ( final Helper helper, final AuthConfig authConfig, final EmailExpander emailExpander, @Named(LdapModule.GROUP_CACHE) final Cache<String, Set<AccountGroup.Id>> membershipCache, @Named(LdapModule.USERNAME_CACHE) final Cache<String, Account.Id> usernameCache, @GerritServerConfig final Config config)
+DECL|method|LdapRealm ( final Helper helper, final AuthConfig authConfig, final EmailExpander emailExpander, @Named(LdapModule.GROUP_CACHE) final Cache<String, Set<AccountGroup.UUID>> membershipCache, @Named(LdapModule.USERNAME_CACHE) final Cache<String, Account.Id> usernameCache, @GerritServerConfig final Config config)
 name|LdapRealm
 parameter_list|(
 specifier|final
@@ -692,7 +692,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|>
 name|membershipCache
@@ -1687,7 +1687,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 parameter_list|(
@@ -1701,7 +1701,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|r
 init|=
@@ -1710,7 +1710,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -2185,7 +2185,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|>
 block|{
@@ -2220,7 +2220,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|createEntry
 parameter_list|(
@@ -2291,7 +2291,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|missing
 parameter_list|(

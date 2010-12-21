@@ -100,30 +100,30 @@ specifier|public
 interface|interface
 name|GroupIncludeCache
 block|{
-DECL|method|getByInclude (AccountGroup.Id groupId)
+DECL|method|getByInclude (AccountGroup.UUID groupId)
 specifier|public
 name|Collection
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getByInclude
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|groupId
 parameter_list|)
 function_decl|;
-DECL|method|evictInclude (AccountGroup.Id groupId)
+DECL|method|evictInclude (AccountGroup.UUID groupId)
 specifier|public
 name|void
 name|evictInclude
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|groupId
 parameter_list|)
 function_decl|;

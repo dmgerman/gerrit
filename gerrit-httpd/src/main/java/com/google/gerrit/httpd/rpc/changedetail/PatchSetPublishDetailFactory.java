@@ -1030,7 +1030,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|am
 init|=
@@ -1108,7 +1108,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|computeAllowed (final Set<AccountGroup.Id> am, final List<RefRight> list, ApprovalCategory.Id category)
+DECL|method|computeAllowed (final Set<AccountGroup.UUID> am, final List<RefRight> list, ApprovalCategory.Id category)
 specifier|private
 name|void
 name|computeAllowed
@@ -1118,7 +1118,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|am
 parameter_list|,
@@ -1196,7 +1196,7 @@ name|contains
 argument_list|(
 name|r
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 condition|)

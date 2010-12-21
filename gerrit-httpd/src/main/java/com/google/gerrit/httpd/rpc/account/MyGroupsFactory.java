@@ -270,7 +270,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|effective
 init|=
@@ -309,7 +309,7 @@ control|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|groupId
 range|:
 name|effective

@@ -158,7 +158,7 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|ProjectOwnerGroupsProvider ( @rojectCreatorGroups final Set<AccountGroup.Id> creatorGroups, @GerritServerConfig final Config config, final SchemaFactory<ReviewDb> db)
+DECL|method|ProjectOwnerGroupsProvider ( @rojectCreatorGroups final Set<AccountGroup.UUID> creatorGroups, @GerritServerConfig final Config config, final SchemaFactory<ReviewDb> db)
 specifier|public
 name|ProjectOwnerGroupsProvider
 parameter_list|(
@@ -169,7 +169,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|creatorGroups
 parameter_list|,

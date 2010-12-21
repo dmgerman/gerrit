@@ -655,12 +655,6 @@ name|ref
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|systemConfig
-specifier|private
-specifier|final
-name|SystemConfig
-name|systemConfig
-decl_stmt|;
 DECL|field|projectControl
 specifier|private
 specifier|final
@@ -685,14 +679,10 @@ name|canForgeCommitter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RefControl (final SystemConfig systemConfig, @Assisted final ProjectControl projectControl, @Assisted String ref)
+DECL|method|RefControl (@ssisted final ProjectControl projectControl, @Assisted String ref)
 specifier|protected
 name|RefControl
 parameter_list|(
-specifier|final
-name|SystemConfig
-name|systemConfig
-parameter_list|,
 annotation|@
 name|Assisted
 specifier|final
@@ -705,12 +695,6 @@ name|String
 name|ref
 parameter_list|)
 block|{
-name|this
-operator|.
-name|systemConfig
-operator|=
-name|systemConfig
-expr_stmt|;
 if|if
 condition|(
 name|isRE
@@ -1439,7 +1423,7 @@ name|contains
 argument_list|(
 name|r
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 condition|)
@@ -1608,7 +1592,7 @@ name|containsExclusive
 return|;
 block|}
 comment|/**      * Returns The max allowed value for this ref pattern for all specified      * groups.      *      * @param groups The groups of the user      * @return The allowed value for this ref for all the specified groups      */
-DECL|method|allowedValueForRef (Set<AccountGroup.Id> groups, short level)
+DECL|method|allowedValueForRef (Set<AccountGroup.UUID> groups, short level)
 specifier|private
 name|boolean
 name|allowedValueForRef
@@ -1617,7 +1601,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 parameter_list|,
@@ -1641,7 +1625,7 @@ name|contains
 argument_list|(
 name|right
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 operator|&&
@@ -1681,7 +1665,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 init|=
@@ -2472,16 +2456,16 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|refRight
+name|AccountGroup
 operator|.
-name|getAccountGroupId
-argument_list|()
+name|PROJECT_OWNERS
 operator|.
 name|equals
 argument_list|(
-name|systemConfig
+name|refRight
 operator|.
-name|ownerGroupId
+name|getAccountGroupUUID
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2490,7 +2474,7 @@ control|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|ownerGroup
 range|:
 name|getProjectState
@@ -2503,13 +2487,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|ownerGroup
+name|AccountGroup
+operator|.
+name|PROJECT_OWNERS
 operator|.
 name|equals
 argument_list|(
-name|systemConfig
-operator|.
-name|ownerGroupId
+name|ownerGroup
 argument_list|)
 condition|)
 block|{

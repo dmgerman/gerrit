@@ -403,7 +403,7 @@ name|contains
 argument_list|(
 name|pr
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 operator|&&

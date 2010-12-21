@@ -639,7 +639,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|uploadGroups
 decl_stmt|;
@@ -650,7 +650,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|receiveGroups
 decl_stmt|;
@@ -676,7 +676,7 @@ name|state
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.Id> uploadGroups, @GitReceivePackGroups Set<AccountGroup.Id> receiveGroups, final RefControl.Factory refControlFactory, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, final RefControl.Factory refControlFactory, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -685,7 +685,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|uploadGroups
 parameter_list|,
@@ -695,7 +695,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|receiveGroups
 parameter_list|,
@@ -1089,7 +1089,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 init|=
@@ -1122,7 +1122,7 @@ name|contains
 argument_list|(
 name|pr
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 operator|&&

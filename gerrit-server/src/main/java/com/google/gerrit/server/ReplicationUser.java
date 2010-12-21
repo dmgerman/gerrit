@@ -205,7 +205,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|EVERYTHING_VISIBLE
 init|=
@@ -218,7 +218,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|(
 literal|0
@@ -230,7 +230,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (@ssisted Set<AccountGroup.Id> authGroups)
+DECL|method|create (@ssisted Set<AccountGroup.UUID> authGroups)
 name|ReplicationUser
 name|create
 parameter_list|(
@@ -240,7 +240,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|authGroups
 parameter_list|)
@@ -253,13 +253,13 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|effectiveGroups
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplicationUser (AuthConfig authConfig, @Assisted Set<AccountGroup.Id> authGroups)
+DECL|method|ReplicationUser (AuthConfig authConfig, @Assisted Set<AccountGroup.UUID> authGroups)
 specifier|protected
 name|ReplicationUser
 parameter_list|(
@@ -272,7 +272,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|authGroups
 parameter_list|)
@@ -326,14 +326,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|copy (Set<AccountGroup.Id> groups)
+DECL|method|copy (Set<AccountGroup.UUID> groups)
 specifier|private
 specifier|static
 name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|copy
 parameter_list|(
@@ -341,7 +341,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 parameter_list|)
@@ -356,7 +356,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|(
 name|groups
@@ -372,7 +372,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getEffectiveGroups
 parameter_list|()

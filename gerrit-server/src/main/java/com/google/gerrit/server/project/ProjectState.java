@@ -352,7 +352,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|localOwners
 decl_stmt|;
@@ -525,7 +525,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 init|=
@@ -534,7 +534,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -587,7 +587,7 @@ name|add
 argument_list|(
 name|right
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1178,7 +1178,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getOwners
 parameter_list|()
@@ -1248,7 +1248,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getAllOwners
 parameter_list|()
@@ -1258,7 +1258,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|owners
 init|=
@@ -1267,7 +1267,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1315,7 +1315,7 @@ name|add
 argument_list|(
 name|right
 operator|.
-name|getAccountGroupId
+name|getAccountGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
