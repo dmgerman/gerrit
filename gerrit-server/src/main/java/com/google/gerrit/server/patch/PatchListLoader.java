@@ -545,9 +545,6 @@ argument_list|(
 name|key
 operator|.
 name|projectKey
-operator|.
-name|get
-argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

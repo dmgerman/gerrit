@@ -489,9 +489,6 @@ operator|.
 name|setProjectDescription
 argument_list|(
 name|projectName
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|update
 operator|.

@@ -602,7 +602,7 @@ operator|.
 name|getProject
 argument_list|()
 operator|.
-name|getName
+name|getNameKey
 argument_list|()
 argument_list|)
 decl_stmt|;

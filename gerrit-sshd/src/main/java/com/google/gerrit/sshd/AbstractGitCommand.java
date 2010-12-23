@@ -529,15 +529,6 @@ operator|.
 name|getProject
 argument_list|()
 expr_stmt|;
-specifier|final
-name|String
-name|name
-init|=
-name|project
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 name|repo
@@ -546,7 +537,10 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|name
+name|project
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -564,7 +558,10 @@ literal|1
 argument_list|,
 literal|"fatal: '"
 operator|+
-name|name
+name|project
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|"': not a git archive"
 argument_list|,
