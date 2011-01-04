@@ -326,6 +326,16 @@ name|javax
 operator|.
 name|naming
 operator|.
+name|PartialResultException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|naming
+operator|.
 name|directory
 operator|.
 name|Attribute
@@ -1224,6 +1234,8 @@ operator|.
 name|getAll
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 while|while
 condition|(
 name|groups
@@ -1256,6 +1268,13 @@ name|nextDN
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|PartialResultException
+name|e
+parameter_list|)
+block|{         }
 block|}
 block|}
 specifier|final
@@ -1452,6 +1471,8 @@ operator|.
 name|getAll
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 while|while
 condition|(
 name|groups
@@ -1484,6 +1505,13 @@ name|nextDN
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|PartialResultException
+name|e
+parameter_list|)
+block|{           }
 block|}
 block|}
 catch|catch
