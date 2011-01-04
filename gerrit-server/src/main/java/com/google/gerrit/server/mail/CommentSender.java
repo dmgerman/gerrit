@@ -800,7 +800,13 @@ name|server
 operator|.
 name|openRepository
 argument_list|(
-name|projectName
+name|projectState
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
 argument_list|)
 return|;
 block|}

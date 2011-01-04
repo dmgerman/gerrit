@@ -991,9 +991,6 @@ name|project
 operator|.
 name|getNameKey
 argument_list|()
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

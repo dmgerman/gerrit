@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -541,12 +555,39 @@ return|return
 name|basePath
 return|;
 block|}
-DECL|method|openRepository (String name)
+DECL|method|gitDirOf (Project.NameKey name)
+specifier|private
+name|File
+name|gitDirOf
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|File
+argument_list|(
+name|getBasePath
+argument_list|()
+argument_list|,
+name|name
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|openRepository (Project.NameKey name)
 specifier|public
 name|Repository
 name|openRepository
 parameter_list|(
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|)
 throws|throws
@@ -580,11 +621,8 @@ name|FileKey
 operator|.
 name|lenient
 argument_list|(
-operator|new
-name|File
+name|gitDirOf
 argument_list|(
-name|basePath
-argument_list|,
 name|name
 argument_list|)
 argument_list|,
@@ -634,12 +672,15 @@ name|e2
 throw|;
 block|}
 block|}
-DECL|method|createRepository (String name)
+DECL|method|createRepository (final Project.NameKey name)
 specifier|public
 name|Repository
 name|createRepository
 parameter_list|(
-name|String
+specifier|final
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|)
 throws|throws
@@ -672,11 +713,8 @@ name|FileKey
 operator|.
 name|resolve
 argument_list|(
-operator|new
-name|File
+name|gitDirOf
 argument_list|(
-name|basePath
-argument_list|,
 name|name
 argument_list|)
 argument_list|,
@@ -716,22 +754,34 @@ block|{
 comment|// It doesn't exist under any of the standard permutations
 comment|// of the repository name, so prefer the standard bare name.
 comment|//
+name|String
+name|n
+init|=
+name|name
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
-name|name
+name|n
 operator|.
 name|endsWith
 argument_list|(
-literal|".git"
+name|Constants
+operator|.
+name|DOT_GIT_EXT
 argument_list|)
 condition|)
 block|{
-name|name
+name|n
 operator|=
-name|name
+name|n
 operator|+
-literal|".git"
+name|Constants
+operator|.
+name|DOT_GIT_EXT
 expr_stmt|;
 block|}
 name|loc
@@ -745,7 +795,7 @@ name|File
 argument_list|(
 name|basePath
 argument_list|,
-name|name
+name|n
 argument_list|)
 argument_list|,
 name|FS
@@ -797,13 +847,15 @@ name|e2
 throw|;
 block|}
 block|}
-DECL|method|getProjectDescription (final String name)
+DECL|method|getProjectDescription (final Project.NameKey name)
 specifier|public
 name|String
 name|getProjectDescription
 parameter_list|(
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|)
 throws|throws
@@ -923,13 +975,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|setProjectDescription (final String name, final String description)
+DECL|method|setProjectDescription (final Project.NameKey name, final String description)
 specifier|public
 name|void
 name|setProjectDescription
 parameter_list|(
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|,
 specifier|final
@@ -1094,16 +1148,27 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isUnreasonableName (final String name)
+DECL|method|isUnreasonableName (final Project.NameKey nameKey)
 specifier|private
 name|boolean
 name|isUnreasonableName
 parameter_list|(
 specifier|final
-name|String
-name|name
+name|Project
+operator|.
+name|NameKey
+name|nameKey
 parameter_list|)
 block|{
+specifier|final
+name|String
+name|name
+init|=
+name|nameKey
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|name

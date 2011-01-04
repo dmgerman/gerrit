@@ -673,7 +673,7 @@ name|repositoryManager
 operator|.
 name|getProjectDescription
 argument_list|(
-name|name
+name|nameKey
 argument_list|)
 argument_list|)
 expr_stmt|;

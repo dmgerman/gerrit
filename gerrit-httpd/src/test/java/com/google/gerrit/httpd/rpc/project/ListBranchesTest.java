@@ -915,9 +915,6 @@ argument_list|(
 name|eq
 argument_list|(
 name|name
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1881,9 +1878,6 @@ argument_list|(
 name|eq
 argument_list|(
 name|name
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2130,9 +2124,6 @@ argument_list|(
 name|eq
 argument_list|(
 name|name
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2349,9 +2340,6 @@ argument_list|(
 name|eq
 argument_list|(
 name|name
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)

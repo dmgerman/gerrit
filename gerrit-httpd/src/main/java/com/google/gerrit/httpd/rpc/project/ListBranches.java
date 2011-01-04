@@ -503,9 +503,6 @@ operator|.
 name|openRepository
 argument_list|(
 name|projectName
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

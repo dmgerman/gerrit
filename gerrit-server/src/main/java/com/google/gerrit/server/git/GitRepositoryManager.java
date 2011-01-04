@@ -72,6 +72,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Singleton
@@ -137,40 +151,45 @@ init|=
 literal|"refs/meta/reject-commits"
 decl_stmt|;
 comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
-DECL|method|openRepository (String name)
+DECL|method|openRepository (Project.NameKey name)
 specifier|public
 specifier|abstract
 name|Repository
 name|openRepository
 parameter_list|(
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
 function_decl|;
 comment|/**    * Create (and open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
-DECL|method|createRepository (String name)
+DECL|method|createRepository (Project.NameKey name)
 specifier|public
 specifier|abstract
 name|Repository
 name|createRepository
 parameter_list|(
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
 function_decl|;
 comment|/**    * Read the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @return description text; null if no description has been configured.    * @throws RepositoryNotFoundException the named repository does not exist.    * @throws IOException the description file exists, but is not readable by    *         this process.    */
-DECL|method|getProjectDescription (final String name)
+DECL|method|getProjectDescription (Project.NameKey name)
 specifier|public
 specifier|abstract
 name|String
 name|getProjectDescription
 parameter_list|(
-specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|)
 throws|throws
@@ -179,14 +198,15 @@ throws|,
 name|IOException
 function_decl|;
 comment|/**    * Set the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @param description new description text for the repository.    */
-DECL|method|setProjectDescription (final String name, final String description)
+DECL|method|setProjectDescription (Project.NameKey name, final String description)
 specifier|public
 specifier|abstract
 name|void
 name|setProjectDescription
 parameter_list|(
-specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 parameter_list|,
 specifier|final

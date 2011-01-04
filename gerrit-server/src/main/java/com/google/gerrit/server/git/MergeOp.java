@@ -1767,15 +1767,14 @@ throws|throws
 name|MergeException
 block|{
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|name
 init|=
 name|destBranch
 operator|.
 name|getParentKey
-argument_list|()
-operator|.
-name|get
 argument_list|()
 decl_stmt|;
 try|try
@@ -1803,6 +1802,9 @@ init|=
 literal|"Repository \""
 operator|+
 name|name
+operator|.
+name|get
+argument_list|()
 operator|+
 literal|"\" unknown."
 decl_stmt|;

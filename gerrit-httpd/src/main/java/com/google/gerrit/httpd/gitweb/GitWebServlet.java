@@ -1931,12 +1931,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|final
-name|ProjectControl
-name|project
-decl_stmt|;
-try|try
-block|{
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -1950,6 +1944,12 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+specifier|final
+name|ProjectControl
+name|project
+decl_stmt|;
+try|try
+block|{
 name|project
 operator|=
 name|projectControl
@@ -2007,7 +2007,7 @@ name|repoManager
 operator|.
 name|openRepository
 argument_list|(
-name|name
+name|nameKey
 argument_list|)
 expr_stmt|;
 block|}
