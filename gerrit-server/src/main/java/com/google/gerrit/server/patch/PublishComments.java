@@ -1242,7 +1242,7 @@ name|normalize
 argument_list|(
 name|types
 operator|.
-name|getApprovalType
+name|byId
 argument_list|(
 name|a
 operator|.

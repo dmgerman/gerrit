@@ -1224,7 +1224,7 @@ name|at
 init|=
 name|approvalTypes
 operator|.
-name|getApprovalType
+name|byId
 argument_list|(
 name|approval
 operator|.

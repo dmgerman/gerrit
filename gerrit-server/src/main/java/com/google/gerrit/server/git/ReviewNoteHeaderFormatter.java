@@ -288,22 +288,14 @@ name|Account
 name|user
 parameter_list|)
 block|{
-comment|// TODO: use category.getLabel() when available
 name|sb
 operator|.
 name|append
 argument_list|(
 name|category
 operator|.
-name|getName
+name|getLabelName
 argument_list|()
-operator|.
-name|replace
-argument_list|(
-literal|' '
-argument_list|,
-literal|'-'
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|sb

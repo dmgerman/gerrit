@@ -8327,7 +8327,7 @@ name|type
 init|=
 name|approvalTypes
 operator|.
-name|getApprovalType
+name|byId
 argument_list|(
 name|a
 operator|.

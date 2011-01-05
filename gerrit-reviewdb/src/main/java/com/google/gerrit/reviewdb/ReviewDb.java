@@ -317,13 +317,6 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
-DECL|method|refRights ()
-name|RefRightAccess
-name|refRights
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
 DECL|method|trackingIds ()
 name|TrackingIdAccess
 name|trackingIds

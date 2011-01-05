@@ -522,6 +522,56 @@ name|copy
 argument_list|()
 return|;
 block|}
+comment|/** Initialize in-memory as though the repository branch doesn't exist. */
+DECL|method|createInMemory ()
+specifier|public
+name|void
+name|createInMemory
+parameter_list|()
+block|{
+try|try
+block|{
+name|revision
+operator|=
+literal|null
+expr_stmt|;
+name|onLoad
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|err
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unexpected IOException"
+argument_list|,
+name|err
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|ConfigInvalidException
+name|err
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unexpected ConfigInvalidException"
+argument_list|,
+name|err
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**    * Load the current version from the branch.    *<p>    * The repository is not held after the call completes, allowing the    * application to retain this object for long periods of time.    *    * @param db repository to access.    * @throws IOException    * @throws ConfigInvalidException    */
 DECL|method|load (Repository db)
 specifier|public

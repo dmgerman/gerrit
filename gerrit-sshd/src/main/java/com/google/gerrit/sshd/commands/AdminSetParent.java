@@ -861,13 +861,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|// Invalidate all projects in cache since inherited rights were changed.
-comment|//
-name|projectCache
-operator|.
-name|evictAll
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|err

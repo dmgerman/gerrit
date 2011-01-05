@@ -1559,7 +1559,7 @@ name|normalize
 argument_list|(
 name|approvalTypes
 operator|.
-name|getApprovalType
+name|byId
 argument_list|(
 name|category
 argument_list|)
@@ -1844,7 +1844,7 @@ name|normalize
 argument_list|(
 name|approvalTypes
 operator|.
-name|getApprovalType
+name|byId
 argument_list|(
 name|category
 argument_list|)

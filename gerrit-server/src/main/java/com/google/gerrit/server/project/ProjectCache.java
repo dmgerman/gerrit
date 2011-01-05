@@ -112,13 +112,6 @@ name|Project
 name|p
 parameter_list|)
 function_decl|;
-comment|/** Invalidate the cached information about all projects. */
-DECL|method|evictAll ()
-specifier|public
-name|void
-name|evictAll
-parameter_list|()
-function_decl|;
 comment|/** @return sorted iteration of projects. */
 DECL|method|all ()
 specifier|public
