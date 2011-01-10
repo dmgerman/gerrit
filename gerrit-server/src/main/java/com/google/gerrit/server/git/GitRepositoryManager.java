@@ -130,6 +130,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
+import|;
+end_import
+
 begin_comment
 comment|/**  * Manages Git repositories for the Gerrit server process.  *<p>  * Implementations of this interface should be a {@link Singleton} and  * registered in Guice so they are globally available within the server  * environment.  */
 end_comment
@@ -179,6 +189,19 @@ name|name
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
+function_decl|;
+comment|/** @return set of all known projects, sorted by natural NameKey order. */
+DECL|method|list ()
+specifier|public
+specifier|abstract
+name|SortedSet
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|list
+parameter_list|()
 function_decl|;
 comment|/**    * Read the {@code GIT_DIR/description} file for gitweb.    *<p>    * NB: This code should really be in JGit, as a member of the Repository    * object. Until it moves there, its here.    *    * @param name the repository name, relative to the base directory.    * @return description text; null if no description has been configured.    * @throws RepositoryNotFoundException the named repository does not exist.    * @throws IOException the description file exists, but is not readable by    *         this process.    */
 DECL|method|getProjectDescription (Project.NameKey name)

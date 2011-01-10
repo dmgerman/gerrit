@@ -125,6 +125,11 @@ argument_list|<
 name|?
 argument_list|>
 argument_list|>
+implements|implements
+name|Comparable
+argument_list|<
+name|NameKey
+argument_list|>
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -193,6 +198,30 @@ name|name
 operator|=
 name|newValue
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|compareTo (NameKey other)
+specifier|public
+name|int
+name|compareTo
+parameter_list|(
+name|NameKey
+name|other
+parameter_list|)
+block|{
+return|return
+name|get
+argument_list|()
+operator|.
+name|compareTo
+argument_list|(
+name|other
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
 block|}
 comment|/** Parse a Project.NameKey out of a string representation. */
 DECL|method|parse (final String str)

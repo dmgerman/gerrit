@@ -119,6 +119,47 @@ name|void
 name|evictAll
 parameter_list|()
 function_decl|;
+comment|/** @return sorted iteration of projects. */
+DECL|method|all ()
+specifier|public
+specifier|abstract
+name|Iterable
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|all
+parameter_list|()
+function_decl|;
+comment|/**    * Filter the set of registered project names by common prefix.    *    * @param prefix common prefix.    * @return sorted iteration of projects sharing the same prefix.    */
+DECL|method|byName (String prefix)
+specifier|public
+specifier|abstract
+name|Iterable
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|byName
+parameter_list|(
+name|String
+name|prefix
+parameter_list|)
+function_decl|;
+comment|/** Notify the cache that a new project was constructed. */
+DECL|method|onCreateProject (Project.NameKey newProjectName)
+specifier|public
+name|void
+name|onCreateProject
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|newProjectName
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

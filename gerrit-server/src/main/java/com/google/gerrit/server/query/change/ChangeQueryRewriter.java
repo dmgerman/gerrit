@@ -354,6 +354,9 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+comment|//
+literal|null
+argument_list|,
 literal|null
 argument_list|,
 literal|null
