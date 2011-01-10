@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.config
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|git
 package|;
 end_package
 
@@ -76,120 +76,83 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
+name|Project
 import|;
 end_import
 
 begin_comment
-comment|/** Provides {@link java.io.File} annotated with {@link SitePath}. */
+comment|/** A disabled {@link ReplicationQueue}. */
 end_comment
 
 begin_class
-DECL|class|SitePathFromSystemConfigProvider
+DECL|class|NoReplication
 specifier|public
+specifier|final
 class|class
-name|SitePathFromSystemConfigProvider
+name|NoReplication
 implements|implements
-name|Provider
-argument_list|<
-name|File
-argument_list|>
+name|ReplicationQueue
 block|{
-DECL|field|path
-specifier|private
-specifier|final
-name|File
-name|path
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|SitePathFromSystemConfigProvider (final SystemConfig config)
-name|SitePathFromSystemConfigProvider
-parameter_list|(
-specifier|final
-name|SystemConfig
-name|config
-parameter_list|)
-block|{
-specifier|final
-name|String
-name|p
-init|=
-name|config
-operator|.
-name|sitePath
-decl_stmt|;
-name|path
-operator|=
-operator|new
-name|File
-argument_list|(
-name|p
-operator|!=
-literal|null
-operator|&&
-name|p
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|?
-name|p
-else|:
-literal|"."
-argument_list|)
-operator|.
-name|getAbsoluteFile
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
-DECL|method|get ()
+DECL|method|isEnabled ()
 specifier|public
-name|File
-name|get
+name|boolean
+name|isEnabled
 parameter_list|()
 block|{
 return|return
-name|path
+literal|false
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|scheduleUpdate (Project.NameKey project, String ref)
+specifier|public
+name|void
+name|scheduleUpdate
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|String
+name|ref
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
+DECL|method|scheduleFullSync (Project.NameKey project, String urlMatch)
+specifier|public
+name|void
+name|scheduleFullSync
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|String
+name|urlMatch
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
+DECL|method|replicateNewProject (Project.NameKey project, String head)
+specifier|public
+name|void
+name|replicateNewProject
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|String
+name|head
+parameter_list|)
+block|{   }
 block|}
 end_class
 

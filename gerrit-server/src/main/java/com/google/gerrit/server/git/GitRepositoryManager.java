@@ -160,6 +160,16 @@ name|REF_REJECT_COMMITS
 init|=
 literal|"refs/meta/reject-commits"
 decl_stmt|;
+comment|/** Configuration settings for a project {@code refs/meta/config} */
+DECL|field|REF_CONFIG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REF_CONFIG
+init|=
+literal|"refs/meta/config"
+decl_stmt|;
 comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
 DECL|method|openRepository (Project.NameKey name)
 specifier|public

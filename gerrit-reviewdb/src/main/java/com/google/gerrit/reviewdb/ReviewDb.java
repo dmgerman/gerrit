@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The review service database schema.  *<p>  * Root entities that are at the top level of some important data graph:  *<ul>  *<li>{@link Project}: Configuration for a single Git repository.</li>  *<li>{@link Account}: Per-user account registration, preferences, identity.</li>  *<li>{@link Change}: All review information about a single proposed change.</li>  *<li>{@link SystemConfig}: Server-wide settings, managed by administrator.</li>  *</ul>  */
+comment|/**  * The review service database schema.  *<p>  * Root entities that are at the top level of some important data graph:  *<ul>  *<li>{@link Account}: Per-user account registration, preferences, identity.</li>  *<li>{@link Change}: All review information about a single proposed change.</li>  *<li>{@link SystemConfig}: Server-wide settings, managed by administrator.</li>  *</ul>  */
 end_comment
 
 begin_interface
@@ -271,13 +271,6 @@ name|Relation
 DECL|method|accountPatchReviews ()
 name|AccountPatchReviewAccess
 name|accountPatchReviews
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-DECL|method|projects ()
-name|ProjectAccess
-name|projects
 parameter_list|()
 function_decl|;
 annotation|@

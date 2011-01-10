@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
+operator|.
+name|git
 package|;
 end_package
 
@@ -70,119 +72,57 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|Access
+name|config
+operator|.
+name|FactoryModule
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|OrmException
-import|;
-end_import
+begin_comment
+comment|/** Configures the Git support. */
+end_comment
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|PrimaryKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Query
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|ResultSet
-import|;
-end_import
-
-begin_interface
-DECL|interface|ProjectAccess
+begin_class
+DECL|class|GitModule
 specifier|public
-interface|interface
-name|ProjectAccess
+class|class
+name|GitModule
 extends|extends
-name|Access
-argument_list|<
-name|Project
-argument_list|,
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+name|FactoryModule
 block|{
 annotation|@
-name|PrimaryKey
-argument_list|(
-literal|"name"
-argument_list|)
-DECL|method|get (Project.NameKey name)
-name|Project
-name|get
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|name
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"ORDER BY name"
-argument_list|)
-DECL|method|all ()
-name|ResultSet
-argument_list|<
-name|Project
-argument_list|>
-name|all
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
 parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
+block|{
+name|factory
+argument_list|(
+name|MetaDataUpdate
+operator|.
+name|InternalFactory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|MetaDataUpdate
+operator|.
+name|Server
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 
