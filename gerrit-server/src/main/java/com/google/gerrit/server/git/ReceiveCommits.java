@@ -9340,14 +9340,6 @@ literal|false
 return|;
 block|}
 block|}
-if|if
-condition|(
-name|project
-operator|.
-name|isRequireChangeID
-argument_list|()
-condition|)
-block|{
 specifier|final
 name|List
 argument_list|<
@@ -9370,17 +9362,27 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|project
+operator|.
+name|isRequireChangeID
+argument_list|()
+condition|)
+block|{
 name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"missing Change-Id in commit message "
+literal|"missing Change-Id in commit message"
 argument_list|)
 expr_stmt|;
 return|return
 literal|false
 return|;
 block|}
+block|}
+elseif|else
 if|if
 condition|(
 name|idList
@@ -9395,13 +9397,15 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"multiple Change-Id lines in commit message "
+literal|"multiple Change-Id lines in commit message"
 argument_list|)
 expr_stmt|;
 return|return
 literal|false
 return|;
 block|}
+else|else
+block|{
 specifier|final
 name|String
 name|v
