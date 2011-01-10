@@ -4676,7 +4676,7 @@ expr_stmt|;
 block|}
 DECL|method|requestReplace (final ReceiveCommand cmd, final Change change, final RevCommit newCommit)
 specifier|private
-name|void
+name|boolean
 name|requestReplace
 parameter_list|(
 specifier|final
@@ -4717,7 +4717,9 @@ operator|+
 literal|" closed"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 specifier|final
 name|ReplaceRequest
@@ -4755,7 +4757,9 @@ argument_list|,
 literal|"duplicate request"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -4776,7 +4780,9 @@ argument_list|,
 literal|"duplicate request"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|replaceByChange
 operator|.
@@ -4800,6 +4806,9 @@ argument_list|,
 name|req
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 DECL|method|createNewChanges ()
 specifier|private
@@ -5082,6 +5091,8 @@ condition|)
 block|{
 comment|// Schedule as a replacement to this one matching change.
 comment|//
+if|if
+condition|(
 name|requestReplace
 argument_list|(
 name|newChange
@@ -5095,8 +5106,14 @@ argument_list|)
 argument_list|,
 name|c
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 continue|continue;
+block|}
+else|else
+block|{
+return|return;
+block|}
 block|}
 block|}
 name|toCreate
