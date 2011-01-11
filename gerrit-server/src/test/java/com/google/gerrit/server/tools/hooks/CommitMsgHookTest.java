@@ -69,6 +69,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -81,20 +129,6 @@ operator|.
 name|util
 operator|.
 name|HostPlatform
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|dircache
-operator|.
-name|DirCache
 import|;
 end_import
 
@@ -226,6 +260,48 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TestName
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -288,63 +364,22 @@ name|SOB2
 init|=
 literal|"Signed-off-by: J Committer<jc@example.com>\n"
 decl_stmt|;
+DECL|field|test
 annotation|@
-name|Override
-DECL|method|runBare ()
+name|Rule
 specifier|public
-name|void
-name|runBare
-parameter_list|()
-throws|throws
-name|Throwable
-block|{
-try|try
-block|{
-name|super
-operator|.
-name|runBare
+name|TestName
+name|test
+init|=
+operator|new
+name|TestName
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SkipTestOnThisPlatform
-name|e
-parameter_list|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|" - Skipping "
-operator|+
-name|getName
-argument_list|()
-operator|+
-literal|" on this system"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|class|SkipTestOnThisPlatform
+decl_stmt|;
+DECL|method|skipIfWin32Platform ()
 specifier|private
-specifier|static
-class|class
-name|SkipTestOnThisPlatform
-extends|extends
-name|RuntimeException
-block|{   }
-annotation|@
-name|Override
-DECL|method|setUp ()
-specifier|protected
 name|void
-name|setUp
+name|skipIfWin32Platform
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 if|if
 condition|(
@@ -354,12 +389,44 @@ name|isWin32
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|SkipTestOnThisPlatform
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|" - Skipping "
+operator|+
+name|test
+operator|.
+name|getMethodName
 argument_list|()
-throw|;
+operator|+
+literal|" on this system"
+argument_list|)
+expr_stmt|;
+name|assumeTrue
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|skipIfWin32Platform
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|setUp
@@ -428,6 +495,8 @@ name|tz
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testEmptyMessages ()
 specifier|public
 name|void
@@ -497,6 +566,8 @@ literal|"new file mode 100644\nindex 0000000..c78b7f0\n"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testChangeIdAlreadySet ()
 specifier|public
 name|void
@@ -564,6 +635,8 @@ literal|"Change-Id: I4f4e2e1e8568ddc1509baecb8c1270a1fb4b6da7\n"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTimeAltersId ()
 specifier|public
 name|void
@@ -630,6 +703,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFirstParentAltersId ()
 specifier|public
 name|void
@@ -676,6 +751,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDirCacheAltersId ()
 specifier|public
 name|void
@@ -749,6 +826,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSingleLineMessages ()
 specifier|public
 name|void
@@ -843,6 +922,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMultiLineMessagesWithoutFooter ()
 specifier|public
 name|void
@@ -943,6 +1024,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSingleLineMessagesWithSignedOffBy ()
 specifier|public
 name|void
@@ -1005,6 +1088,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMultiLineMessagesWithSignedOffBy ()
 specifier|public
 name|void
@@ -1170,6 +1255,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testNoteInMiddle ()
 specifier|public
 name|void
@@ -1214,6 +1301,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testKernelStyleFooter ()
 specifier|public
 name|void
@@ -1267,6 +1356,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testChangeIdAfterBugOrIssue ()
 specifier|public
 name|void
@@ -1340,6 +1431,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCommitDashV ()
 specifier|public
 name|void
@@ -1396,6 +1489,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testWithEndingURL ()
 specifier|public
 name|void
