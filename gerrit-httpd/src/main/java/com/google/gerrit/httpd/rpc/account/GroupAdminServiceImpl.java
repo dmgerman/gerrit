@@ -1145,6 +1145,16 @@ name|isVisibleToAll
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|group
+operator|.
+name|setEmailOnlyAuthors
+argument_list|(
+name|groupOptions
+operator|.
+name|isEmailOnlyAuthors
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|accountGroups

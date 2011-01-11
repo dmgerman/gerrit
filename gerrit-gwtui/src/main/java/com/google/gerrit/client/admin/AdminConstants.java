@@ -195,6 +195,16 @@ name|String
 name|isVisibleToAll
 parameter_list|()
 function_decl|;
+DECL|method|emailOnlyAuthors ()
+name|String
+name|emailOnlyAuthors
+parameter_list|()
+function_decl|;
+DECL|method|descriptionNotifications ()
+name|String
+name|descriptionNotifications
+parameter_list|()
+function_decl|;
 DECL|method|buttonSaveGroupOptions ()
 name|String
 name|buttonSaveGroupOptions

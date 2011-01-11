@@ -150,6 +150,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|GroupCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|CanonicalWebUrl
@@ -337,6 +353,11 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|groupCache
+specifier|final
+name|GroupCache
+name|groupCache
+decl_stmt|;
 DECL|field|accountCache
 specifier|final
 name|AccountCache
@@ -414,7 +435,7 @@ name|site
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, @WildProjectName Project.NameKey wildProject, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, SitePaths site)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupCache groupCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, @WildProjectName Project.NameKey wildProject, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, SitePaths site)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -422,6 +443,9 @@ name|server
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|GroupCache
+name|groupCache
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -490,6 +514,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|groupCache
+operator|=
+name|groupCache
 expr_stmt|;
 name|this
 operator|.
