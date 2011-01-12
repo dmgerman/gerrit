@@ -104,6 +104,15 @@ parameter_list|()
 block|{
 name|factory
 argument_list|(
+name|RenameGroupOp
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|MetaDataUpdate
 operator|.
 name|InternalFactory

@@ -862,6 +862,27 @@ return|return
 name|group
 return|;
 block|}
+comment|/** @return the group reference, if the group is used by at least one rule. */
+DECL|method|getGroup (AccountGroup.UUID uuid)
+specifier|public
+name|GroupReference
+name|getGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+return|return
+name|groupsByUUID
+operator|.
+name|get
+argument_list|(
+name|uuid
+argument_list|)
+return|;
+block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupCache cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupCache groupCache)
 specifier|public
