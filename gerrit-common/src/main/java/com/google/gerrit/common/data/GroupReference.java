@@ -199,9 +199,15 @@ block|{
 name|uuid
 operator|=
 name|newUUID
+operator|!=
+literal|null
+condition|?
+name|newUUID
 operator|.
 name|get
 argument_list|()
+else|:
+literal|null
 expr_stmt|;
 block|}
 DECL|method|getName ()

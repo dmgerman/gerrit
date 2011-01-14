@@ -532,7 +532,7 @@ return|;
 block|}
 DECL|method|getExclusiveGroup ()
 specifier|public
-name|boolean
+name|Boolean
 name|getExclusiveGroup
 parameter_list|()
 block|{
@@ -552,12 +552,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|setExclusiveGroup (boolean newExclusiveGroup)
+DECL|method|setExclusiveGroup (Boolean newExclusiveGroup)
 specifier|public
 name|void
 name|setExclusiveGroup
 parameter_list|(
-name|boolean
+name|Boolean
 name|newExclusiveGroup
 parameter_list|)
 block|{
@@ -789,6 +789,61 @@ block|{
 return|return
 literal|null
 return|;
+block|}
+block|}
+DECL|method|mergeFrom (Permission src)
+name|void
+name|mergeFrom
+parameter_list|(
+name|Permission
+name|src
+parameter_list|)
+block|{
+for|for
+control|(
+name|PermissionRule
+name|srcRule
+range|:
+name|src
+operator|.
+name|getRules
+argument_list|()
+control|)
+block|{
+name|PermissionRule
+name|dstRule
+init|=
+name|getRule
+argument_list|(
+name|srcRule
+operator|.
+name|getGroup
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|dstRule
+operator|!=
+literal|null
+condition|)
+block|{
+name|dstRule
+operator|.
+name|mergeFrom
+argument_list|(
+name|srcRule
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|add
+argument_list|(
+name|srcRule
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|sameGroup (PermissionRule rule, GroupReference group)

@@ -236,6 +236,16 @@ argument_list|,
 literal|"rpc/ProjectAdminService"
 argument_list|)
 expr_stmt|;
+name|AdminResources
+operator|.
+name|I
+operator|.
+name|css
+argument_list|()
+operator|.
+name|ensureInjected
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|toLongString (final Project.SubmitType type)
 specifier|public

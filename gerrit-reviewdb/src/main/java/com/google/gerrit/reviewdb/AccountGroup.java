@@ -304,6 +304,37 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+comment|/** Parse an AccountGroup.UUID out of a string representation. */
+DECL|method|parse (final String str)
+specifier|public
+specifier|static
+name|UUID
+name|parse
+parameter_list|(
+specifier|final
+name|String
+name|str
+parameter_list|)
+block|{
+specifier|final
+name|UUID
+name|r
+init|=
+operator|new
+name|UUID
+argument_list|()
+decl_stmt|;
+name|r
+operator|.
+name|fromString
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
+return|return
+name|r
+return|;
+block|}
 block|}
 comment|/** Distinguished name, within organization directory server. */
 DECL|class|ExternalNameKey

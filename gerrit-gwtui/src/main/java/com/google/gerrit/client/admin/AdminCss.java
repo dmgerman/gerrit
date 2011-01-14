@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,53 +74,46 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|i18n
+name|resources
 operator|.
 name|client
 operator|.
-name|Messages
+name|CssResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|AdminMessages
+DECL|interface|AdminCss
 specifier|public
 interface|interface
-name|AdminMessages
+name|AdminCss
 extends|extends
-name|Messages
+name|CssResource
 block|{
-DECL|method|group (String name)
+DECL|method|deleteIcon ()
 name|String
-name|group
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|deleteIcon
+parameter_list|()
 function_decl|;
-DECL|method|label (String name)
+DECL|method|undoIcon ()
 name|String
-name|label
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|undoIcon
+parameter_list|()
 function_decl|;
-DECL|method|project (String name)
+DECL|method|deleted ()
 name|String
-name|project
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|deleted
+parameter_list|()
 function_decl|;
-DECL|method|deletedGroup (int id)
+DECL|method|deletedBorder ()
 name|String
-name|deletedGroup
-parameter_list|(
-name|int
-name|id
-parameter_list|)
+name|deletedBorder
+parameter_list|()
+function_decl|;
+DECL|method|deleteSectionHover ()
+name|String
+name|deleteSectionHover
+parameter_list|()
 function_decl|;
 block|}
 end_interface

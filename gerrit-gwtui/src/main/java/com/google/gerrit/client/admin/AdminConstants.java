@@ -82,6 +82,16 @@ name|Constants
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_interface
 DECL|interface|AdminConstants
 specifier|public
@@ -458,6 +468,51 @@ function_decl|;
 DECL|method|errorNoGitRepository ()
 name|String
 name|errorNoGitRepository
+parameter_list|()
+function_decl|;
+DECL|method|addPermission ()
+name|String
+name|addPermission
+parameter_list|()
+function_decl|;
+DECL|method|permissionNames ()
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|permissionNames
+parameter_list|()
+function_decl|;
+DECL|method|refErrorEmpty ()
+name|String
+name|refErrorEmpty
+parameter_list|()
+function_decl|;
+DECL|method|refErrorBeginSlash ()
+name|String
+name|refErrorBeginSlash
+parameter_list|()
+function_decl|;
+DECL|method|refErrorDoubleSlash ()
+name|String
+name|refErrorDoubleSlash
+parameter_list|()
+function_decl|;
+DECL|method|refErrorNoSpace ()
+name|String
+name|refErrorNoSpace
+parameter_list|()
+function_decl|;
+DECL|method|refErrorPrintable ()
+name|String
+name|refErrorPrintable
+parameter_list|()
+function_decl|;
+DECL|method|errorsMustBeFixed ()
+name|String
+name|errorsMustBeFixed
 parameter_list|()
 function_decl|;
 block|}

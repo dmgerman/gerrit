@@ -180,7 +180,9 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|VoidResult
+name|RpcImpl
+operator|.
+name|Version
 import|;
 end_import
 
@@ -194,9 +196,7 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|RpcImpl
-operator|.
-name|Version
+name|VoidResult
 import|;
 end_import
 
@@ -273,7 +273,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|groupDetail (AccountGroup.Id groupId, AsyncCallback<GroupDetail> callback)
+DECL|method|groupDetail (AccountGroup.Id groupId, AccountGroup.UUID uuid, AsyncCallback<GroupDetail> callback)
 name|void
 name|groupDetail
 parameter_list|(
@@ -281,6 +281,11 @@ name|AccountGroup
 operator|.
 name|Id
 name|groupId
+parameter_list|,
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
 parameter_list|,
 name|AsyncCallback
 argument_list|<
