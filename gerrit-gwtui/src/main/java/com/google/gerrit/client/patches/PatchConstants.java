@@ -150,6 +150,11 @@ name|String
 name|intralineFailure
 parameter_list|()
 function_decl|;
+DECL|method|illegalNumberOfColumns ()
+name|String
+name|illegalNumberOfColumns
+parameter_list|()
+function_decl|;
 DECL|method|upToChange ()
 name|String
 name|upToChange
