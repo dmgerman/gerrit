@@ -1175,7 +1175,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|NEW_CHANGE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
