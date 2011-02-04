@@ -6710,6 +6710,20 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Patch set "
+operator|+
+name|ps
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" has no revision"
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|request
