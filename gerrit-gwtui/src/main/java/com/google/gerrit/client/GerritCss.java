@@ -833,6 +833,11 @@ name|String
 name|sideBySideScreenSideBySideTable
 parameter_list|()
 function_decl|;
+DECL|method|singleLine ()
+name|String
+name|singleLine
+parameter_list|()
+function_decl|;
 DECL|method|skipLine ()
 name|String
 name|skipLine

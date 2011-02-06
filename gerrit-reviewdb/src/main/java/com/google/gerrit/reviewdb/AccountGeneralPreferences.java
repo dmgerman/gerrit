@@ -455,6 +455,18 @@ specifier|protected
 name|boolean
 name|displayPatchSetsInReverseOrder
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|11
+argument_list|)
+DECL|field|displayPersonNameInReviewCategory
+specifier|protected
+name|boolean
+name|displayPersonNameInReviewCategory
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -702,6 +714,33 @@ operator|=
 name|displayPatchSetsInReverseOrder
 expr_stmt|;
 block|}
+DECL|method|isDisplayPersonNameInReviewCategory ()
+specifier|public
+name|boolean
+name|isDisplayPersonNameInReviewCategory
+parameter_list|()
+block|{
+return|return
+name|displayPersonNameInReviewCategory
+return|;
+block|}
+DECL|method|setDisplayPersonNameInReviewCategory (final boolean displayPersonNameInReviewCategory)
+specifier|public
+name|void
+name|setDisplayPersonNameInReviewCategory
+parameter_list|(
+specifier|final
+name|boolean
+name|displayPersonNameInReviewCategory
+parameter_list|)
+block|{
+name|this
+operator|.
+name|displayPersonNameInReviewCategory
+operator|=
+name|displayPersonNameInReviewCategory
+expr_stmt|;
+block|}
 DECL|method|getDateFormat ()
 specifier|public
 name|DateFormat
@@ -815,6 +854,10 @@ operator|=
 literal|false
 expr_stmt|;
 name|displayPatchSetsInReverseOrder
+operator|=
+literal|false
+expr_stmt|;
+name|displayPersonNameInReviewCategory
 operator|=
 literal|false
 expr_stmt|;

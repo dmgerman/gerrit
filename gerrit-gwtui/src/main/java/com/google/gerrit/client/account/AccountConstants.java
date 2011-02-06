@@ -150,6 +150,11 @@ name|String
 name|displayPatchSetsInReverseOrder
 parameter_list|()
 function_decl|;
+DECL|method|displayPersonNameInReviewCategory ()
+name|String
+name|displayPersonNameInReviewCategory
+parameter_list|()
+function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
