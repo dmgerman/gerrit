@@ -597,7 +597,7 @@ name|write
 argument_list|(
 name|Constants
 operator|.
-name|encodeASCII
+name|encode
 argument_list|(
 name|message
 operator|.
