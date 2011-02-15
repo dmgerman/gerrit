@@ -5927,8 +5927,6 @@ name|txt
 argument_list|)
 argument_list|,
 literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -7151,15 +7149,13 @@ argument_list|,
 name|msg
 argument_list|,
 literal|true
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
 end_function
 
 begin_function
-DECL|method|sendMergeFail (Change c, ChangeMessage msg, final boolean makeNew, final boolean useSubmitter)
+DECL|method|sendMergeFail (Change c, ChangeMessage msg, final boolean makeNew)
 specifier|private
 name|void
 name|sendMergeFail
@@ -7173,10 +7169,6 @@ parameter_list|,
 specifier|final
 name|boolean
 name|makeNew
-parameter_list|,
-specifier|final
-name|boolean
-name|useSubmitter
 parameter_list|)
 block|{
 try|try
@@ -7354,11 +7346,6 @@ argument_list|(
 name|c
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|useSubmitter
-condition|)
-block|{
 specifier|final
 name|PatchSetApproval
 name|submitter
@@ -7388,7 +7375,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|cm
 operator|.
