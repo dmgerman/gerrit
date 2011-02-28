@@ -1424,6 +1424,191 @@ literal|"}\n"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Link back to Gerrit (when possible, to matching review record).
+comment|// Supported Gitweb's hash values are:
+comment|// - (missing),
+comment|// - HEAD,
+comment|// - refs/heads/<branch>,
+comment|// - refs/changes/*/<change>/*,
+comment|// -<revision>.
+comment|//
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"sub add_review_link {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  my $h = shift;\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  my $q;\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  if (!$h || $h eq 'HEAD') {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    $q = qq{#q,project:$ENV{'GERRIT_PROJECT_NAME'},n,z};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  } elsif ($h =~ /^refs\\/heads\\/([-\\w]+)$/) {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    $q = qq{#q,project:$ENV{'GERRIT_PROJECT_NAME'}"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"+branch:$1,n,z};\n"
+argument_list|)
+expr_stmt|;
+comment|// wrapped
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  } elsif ($h =~ /^refs\\/changes\\/\\d{2}\\/(\\d+)\\/\\d+$/) "
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"{\n"
+argument_list|)
+expr_stmt|;
+comment|// wrapped
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    $q = qq{#change,$1};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  } else {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"    $q = qq{#q,$h,n,z};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  }\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  my $r = qq{$ENV{'GERRIT_CONTEXT_PATH'}$q};\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  push @{$feature{'actions'}{'default'}},\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"      ('review',$r,'commitdiff');\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"}\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"if ($cgi->param('hb')) {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  add_review_link($cgi->param('hb'));\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"} elsif ($cgi->param('h')) {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  add_review_link($cgi->param('h'));\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"} else {\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"  add_review_link();\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"}\n"
+argument_list|)
+expr_stmt|;
 comment|// If the administrator has created a site-specific gitweb_config,
 comment|// load that before we perform any final overrides.
 comment|//
@@ -1507,85 +1692,6 @@ name|root
 argument_list|)
 operator|+
 literal|";\n"
-argument_list|)
-expr_stmt|;
-comment|// Link from commits to their matching review record.
-comment|//
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"if ($cgi->param('a') =~ /^(commit|commitdiff)$/) {\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"  my $h = $cgi->param('h');\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"  my $r = qq{$ENV{'GERRIT_CONTEXT_PATH'}#q,$h,n,z};"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"  push @{$feature{'actions'}{'default'}},\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"    ('review',$r,'commitdiff');\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"} elsif ($cgi->param('a') =~ /^(tree|blob)$/) {\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"  my $h = $cgi->param('hb');\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"  my $r = qq{$ENV{'GERRIT_CONTEXT_PATH'}#q,$h,n,z};"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"  push @{$feature{'actions'}{'default'}},\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"    ('review',$r,'commitdiff');\n"
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|print
-argument_list|(
-literal|"}\n"
 argument_list|)
 expr_stmt|;
 comment|// Permit exporting only the project we were started for.
