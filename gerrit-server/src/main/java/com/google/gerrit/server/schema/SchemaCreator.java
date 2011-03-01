@@ -1962,6 +1962,20 @@ name|value
 argument_list|(
 name|cat
 argument_list|,
+literal|3
+argument_list|,
+literal|"Upload merges permission"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|vals
+operator|.
+name|add
+argument_list|(
+name|value
+argument_list|(
+name|cat
+argument_list|,
 literal|2
 argument_list|,
 literal|"Upload permission"
