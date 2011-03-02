@@ -154,7 +154,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Change
+name|PatchSet
 import|;
 end_import
 
@@ -410,13 +410,13 @@ name|i
 expr_stmt|;
 block|}
 block|}
-DECL|field|changeId
+DECL|field|patchSetId
 specifier|private
 specifier|final
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|patchSetId
 decl_stmt|;
 DECL|field|keys
 specifier|private
@@ -442,21 +442,21 @@ index|[
 literal|2
 index|]
 decl_stmt|;
-DECL|method|NavLinks (KeyCommandSet kcs, Change.Id forChange)
+DECL|method|NavLinks (KeyCommandSet kcs, PatchSet.Id forPatch)
 name|NavLinks
 parameter_list|(
 name|KeyCommandSet
 name|kcs
 parameter_list|,
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|forChange
+name|forPatch
 parameter_list|)
 block|{
-name|changeId
+name|patchSetId
 operator|=
-name|forChange
+name|forPatch
 expr_stmt|;
 name|keys
 operator|=
@@ -549,7 +549,7 @@ name|ChangeLink
 argument_list|(
 literal|""
 argument_list|,
-name|changeId
+name|patchSetId
 argument_list|)
 decl_stmt|;
 name|SafeHtml
@@ -803,7 +803,7 @@ operator|=
 operator|new
 name|UpToChangeCommand
 argument_list|(
-name|changeId
+name|patchSetId
 argument_list|,
 literal|0
 argument_list|,

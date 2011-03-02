@@ -120,7 +120,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Change
+name|PatchSet
 import|;
 end_import
 
@@ -165,21 +165,21 @@ name|UpToChangeCommand
 extends|extends
 name|KeyCommand
 block|{
-DECL|field|changeId
+DECL|field|patchSetId
 specifier|private
 specifier|final
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|patchSetId
 decl_stmt|;
-DECL|method|UpToChangeCommand (Change.Id changeId, int mask, int key)
+DECL|method|UpToChangeCommand (PatchSet.Id patchSetId, int mask, int key)
 name|UpToChangeCommand
 parameter_list|(
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|patchSetId
 parameter_list|,
 name|int
 name|mask
@@ -204,9 +204,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|changeId
+name|patchSetId
 operator|=
-name|changeId
+name|patchSetId
 expr_stmt|;
 block|}
 annotation|@
@@ -229,13 +229,13 @@ name|PageLinks
 operator|.
 name|toChange
 argument_list|(
-name|changeId
+name|patchSetId
 argument_list|)
 argument_list|,
 operator|new
 name|ChangeScreen
 argument_list|(
-name|changeId
+name|patchSetId
 argument_list|)
 argument_list|)
 expr_stmt|;
