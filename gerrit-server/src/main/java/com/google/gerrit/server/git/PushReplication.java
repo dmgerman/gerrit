@@ -2594,6 +2594,14 @@ init|(
 name|pending
 init|)
 block|{
+name|URIish
+name|uri
+init|=
+name|pushOp
+operator|.
+name|getURI
+argument_list|()
+decl_stmt|;
 name|PushOp
 name|pendingPushOp
 init|=
@@ -2601,10 +2609,7 @@ name|pending
 operator|.
 name|get
 argument_list|(
-name|pushOp
-operator|.
-name|getURI
-argument_list|()
+name|uri
 argument_list|)
 decl_stmt|;
 if|if
@@ -2665,7 +2670,7 @@ name|pending
 operator|.
 name|remove
 argument_list|(
-name|pendingPushOp
+name|uri
 argument_list|)
 expr_stmt|;
 name|pushOp
@@ -2704,10 +2709,7 @@ name|pending
 operator|.
 name|put
 argument_list|(
-name|pushOp
-operator|.
-name|getURI
-argument_list|()
+name|uri
 argument_list|,
 name|pushOp
 argument_list|)
