@@ -169,6 +169,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|other
+operator|==
+literal|null
+condition|)
+return|return
+literal|false
+return|;
+if|if
+condition|(
 name|getClass
 argument_list|()
 operator|==

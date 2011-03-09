@@ -531,6 +531,15 @@ name|Object
 name|other
 parameter_list|)
 block|{
+if|if
+condition|(
+name|other
+operator|==
+literal|null
+condition|)
+return|return
+literal|false
+return|;
 return|return
 name|getClass
 argument_list|()

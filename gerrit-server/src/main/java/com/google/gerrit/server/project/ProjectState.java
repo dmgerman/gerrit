@@ -923,6 +923,15 @@ name|Object
 name|o
 parameter_list|)
 block|{
+if|if
+condition|(
+name|o
+operator|==
+literal|null
+condition|)
+return|return
+literal|false
+return|;
 name|Grant
 name|grant
 init|=
