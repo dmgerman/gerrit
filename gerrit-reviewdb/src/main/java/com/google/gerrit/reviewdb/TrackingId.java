@@ -701,8 +701,6 @@ operator|)
 name|obj
 decl_stmt|;
 return|return
-name|tr
-operator|.
 name|key
 operator|.
 name|equals
