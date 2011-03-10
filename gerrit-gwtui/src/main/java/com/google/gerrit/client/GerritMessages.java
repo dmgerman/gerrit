@@ -123,6 +123,14 @@ name|String
 name|who
 parameter_list|)
 function_decl|;
+DECL|method|noSuchGroupMessage (String who)
+name|String
+name|noSuchGroupMessage
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
