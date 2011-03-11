@@ -3085,6 +3085,13 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
+name|b
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 operator|new
 name|AbandonChangeDialog
 argument_list|(
@@ -3192,6 +3199,13 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
+name|b
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 operator|new
 name|RestoreChangeDialog
 argument_list|(
