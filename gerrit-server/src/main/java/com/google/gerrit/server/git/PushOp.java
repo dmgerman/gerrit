@@ -1726,6 +1726,8 @@ argument_list|(
 name|cmds
 argument_list|,
 name|spec
+argument_list|,
+name|src
 argument_list|)
 expr_stmt|;
 block|}
@@ -1831,14 +1833,21 @@ condition|)
 block|{
 comment|// If the ref still exists locally, send it, otherwise delete it.
 comment|//
-if|if
-condition|(
+name|Ref
+name|srcRef
+init|=
 name|local
 operator|.
-name|containsKey
+name|get
 argument_list|(
 name|src
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|srcRef
+operator|!=
+literal|null
 condition|)
 block|{
 name|send
@@ -1846,6 +1855,8 @@ argument_list|(
 name|cmds
 argument_list|,
 name|spec
+argument_list|,
+name|srcRef
 argument_list|)
 expr_stmt|;
 block|}
@@ -2004,7 +2015,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|send (final List<RemoteRefUpdate> cmds, final RefSpec spec)
+DECL|method|send (final List<RemoteRefUpdate> cmds, final RefSpec spec, final Ref src)
 specifier|private
 name|void
 name|send
@@ -2019,19 +2030,14 @@ parameter_list|,
 specifier|final
 name|RefSpec
 name|spec
+parameter_list|,
+specifier|final
+name|Ref
+name|src
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
-name|String
-name|src
-init|=
-name|spec
-operator|.
-name|getSource
-argument_list|()
-decl_stmt|;
 specifier|final
 name|String
 name|dst
@@ -2118,6 +2124,9 @@ name|RemoteRefUpdate
 argument_list|(
 name|db
 argument_list|,
+operator|(
+name|Ref
+operator|)
 literal|null
 argument_list|,
 name|dst
