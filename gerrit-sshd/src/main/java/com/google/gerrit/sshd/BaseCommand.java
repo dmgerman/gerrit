@@ -1638,6 +1638,32 @@ name|msg
 argument_list|)
 return|;
 block|}
+DECL|method|die (Throwable why)
+specifier|protected
+name|UnloggedFailure
+name|die
+parameter_list|(
+name|Throwable
+name|why
+parameter_list|)
+block|{
+return|return
+operator|new
+name|UnloggedFailure
+argument_list|(
+literal|1
+argument_list|,
+literal|"fatal: "
+operator|+
+name|why
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|why
+argument_list|)
+return|;
+block|}
 DECL|class|TaskThunk
 specifier|private
 specifier|final
