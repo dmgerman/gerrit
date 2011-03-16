@@ -1099,6 +1099,9 @@ argument_list|,
 name|projectDescription
 argument_list|)
 expr_stmt|;
+name|createProject
+argument_list|()
+expr_stmt|;
 name|rq
 operator|.
 name|replicateNewProject
@@ -1133,9 +1136,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
 name|createProject
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
