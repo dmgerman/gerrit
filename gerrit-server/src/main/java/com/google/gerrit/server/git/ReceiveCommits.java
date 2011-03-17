@@ -4659,7 +4659,12 @@ literal|"change "
 operator|+
 name|changeId
 operator|+
-literal|" not found"
+literal|" does not belong to project "
+operator|+
+name|project
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
