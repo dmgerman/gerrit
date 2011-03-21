@@ -235,6 +235,11 @@ name|String
 name|headingAgreements
 parameter_list|()
 function_decl|;
+DECL|method|headingShowInherited ()
+name|String
+name|headingShowInherited
+parameter_list|()
+function_decl|;
 DECL|method|projectSubmitType_FAST_FORWARD_ONLY ()
 name|String
 name|projectSubmitType_FAST_FORWARD_ONLY
