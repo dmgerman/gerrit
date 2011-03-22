@@ -214,6 +214,16 @@ name|Assisted
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
 begin_class
 DECL|class|CreateGroup
 class|class
@@ -347,7 +357,14 @@ literal|false
 argument_list|,
 literal|null
 argument_list|,
+name|Collections
+operator|.
+name|singleton
+argument_list|(
 name|me
+argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}

@@ -575,13 +575,6 @@ name|getCause
 argument_list|()
 operator|instanceof
 name|NoSuchChangeException
-operator|||
-name|e
-operator|.
-name|getCause
-argument_list|()
-operator|instanceof
-name|NoSuchGroupException
 condition|)
 block|{
 name|callback

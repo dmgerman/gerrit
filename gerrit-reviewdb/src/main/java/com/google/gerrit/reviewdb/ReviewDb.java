@@ -226,6 +226,20 @@ parameter_list|()
 function_decl|;
 annotation|@
 name|Relation
+DECL|method|accountGroupIncludes ()
+name|AccountGroupIncludeAccess
+name|accountGroupIncludes
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
+DECL|method|accountGroupIncludesAudit ()
+name|AccountGroupIncludeAuditAccess
+name|accountGroupIncludesAudit
+parameter_list|()
+function_decl|;
+annotation|@
+name|Relation
 DECL|method|accountGroupAgreements ()
 name|AccountGroupAgreementAccess
 name|accountGroupAgreements

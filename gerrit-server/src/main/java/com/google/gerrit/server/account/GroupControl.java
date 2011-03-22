@@ -432,10 +432,10 @@ name|isAdministrator
 argument_list|()
 return|;
 block|}
-DECL|method|canAdd (final Account.Id id)
+DECL|method|canAddMember (final Account.Id id)
 specifier|public
 name|boolean
-name|canAdd
+name|canAddMember
 parameter_list|(
 specifier|final
 name|Account
@@ -449,10 +449,10 @@ name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canRemove (final Account.Id id)
+DECL|method|canRemoveMember (final Account.Id id)
 specifier|public
 name|boolean
-name|canRemove
+name|canRemoveMember
 parameter_list|(
 specifier|final
 name|Account
@@ -466,12 +466,62 @@ name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canSee (Account.Id id)
+DECL|method|canSeeMember (Account.Id id)
 specifier|public
 name|boolean
-name|canSee
+name|canSeeMember
 parameter_list|(
 name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|isVisible
+argument_list|()
+return|;
+block|}
+DECL|method|canAddGroup (final AccountGroup.Id id)
+specifier|public
+name|boolean
+name|canAddGroup
+parameter_list|(
+specifier|final
+name|AccountGroup
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|isOwner
+argument_list|()
+return|;
+block|}
+DECL|method|canRemoveGroup (final AccountGroup.Id id)
+specifier|public
+name|boolean
+name|canRemoveGroup
+parameter_list|(
+specifier|final
+name|AccountGroup
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|isOwner
+argument_list|()
+return|;
+block|}
+DECL|method|canSeeGroup (AccountGroup.Id id)
+specifier|public
+name|boolean
+name|canSeeGroup
+parameter_list|(
+name|AccountGroup
 operator|.
 name|Id
 name|id

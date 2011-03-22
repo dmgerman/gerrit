@@ -204,6 +204,44 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|NoSuchGroupException (String who)
+specifier|public
+name|NoSuchGroupException
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|who
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|NoSuchGroupException (String who, final Throwable why)
+specifier|public
+name|NoSuchGroupException
+parameter_list|(
+name|String
+name|who
+parameter_list|,
+specifier|final
+name|Throwable
+name|why
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+operator|+
+name|who
+argument_list|,
+name|why
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

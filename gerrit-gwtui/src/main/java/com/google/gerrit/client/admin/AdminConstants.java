@@ -110,6 +110,16 @@ name|String
 name|defaultRevisionSpec
 parameter_list|()
 function_decl|;
+DECL|method|buttonDeleteIncludedGroup ()
+name|String
+name|buttonDeleteIncludedGroup
+parameter_list|()
+function_decl|;
+DECL|method|buttonAddIncludedGroup ()
+name|String
+name|buttonAddIncludedGroup
+parameter_list|()
+function_decl|;
 DECL|method|buttonDeleteGroupMembers ()
 name|String
 name|buttonDeleteGroupMembers
@@ -228,6 +238,11 @@ function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
+parameter_list|()
+function_decl|;
+DECL|method|headingIncludedGroups ()
+name|String
+name|headingIncludedGroups
 parameter_list|()
 function_decl|;
 DECL|method|headingExternalGroup ()
