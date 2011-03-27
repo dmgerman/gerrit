@@ -621,6 +621,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|cancelButton
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|Util
 operator|.
 name|MANAGE_SVC
@@ -686,6 +693,13 @@ name|caught
 parameter_list|)
 block|{
 name|sendButton
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|cancelButton
 operator|.
 name|setEnabled
 argument_list|(
