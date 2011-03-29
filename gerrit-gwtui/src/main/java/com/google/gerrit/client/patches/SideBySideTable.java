@@ -1425,7 +1425,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|display (final CommentDetail cd)
+DECL|method|display (final CommentDetail cd, boolean expandComments)
 specifier|public
 name|void
 name|display
@@ -1433,6 +1433,9 @@ parameter_list|(
 specifier|final
 name|CommentDetail
 name|cd
+parameter_list|,
+name|boolean
+name|expandComments
 parameter_list|)
 block|{
 if|if
@@ -1601,6 +1604,8 @@ name|ai
 operator|.
 name|hasNext
 argument_list|()
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 name|bindComment
@@ -1616,6 +1621,8 @@ name|bi
 operator|.
 name|hasNext
 argument_list|()
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 name|row
@@ -1631,6 +1638,8 @@ argument_list|,
 name|row
 argument_list|,
 name|COL_A
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 name|row
@@ -1642,6 +1651,8 @@ argument_list|,
 name|row
 argument_list|,
 name|COL_B
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -1762,7 +1773,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|finish (final Iterator<PatchLineComment> i, int row, final int col)
+DECL|method|finish (final Iterator<PatchLineComment> i, int row, final int col, boolean expandComment)
 specifier|private
 name|int
 name|finish
@@ -1780,6 +1791,9 @@ parameter_list|,
 specifier|final
 name|int
 name|col
+parameter_list|,
+name|boolean
+name|expandComment
 parameter_list|)
 block|{
 while|while
@@ -1817,6 +1831,8 @@ name|i
 operator|.
 name|hasNext
 argument_list|()
+argument_list|,
+name|expandComment
 argument_list|)
 expr_stmt|;
 name|row

@@ -1521,7 +1521,7 @@ name|PatchLine
 name|pl
 parameter_list|)
 function_decl|;
-DECL|method|display (CommentDetail comments)
+DECL|method|display (CommentDetail comments, boolean expandComments)
 specifier|public
 specifier|abstract
 name|void
@@ -1529,6 +1529,9 @@ name|display
 parameter_list|(
 name|CommentDetail
 name|comments
+parameter_list|,
+name|boolean
+name|expandComments
 parameter_list|)
 function_decl|;
 annotation|@
@@ -3451,7 +3454,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|bindComment (final int row, final int col, final PatchLineComment line, final boolean isLast)
+DECL|method|bindComment (final int row, final int col, final PatchLineComment line, final boolean isLast, boolean expandComment)
 specifier|protected
 name|void
 name|bindComment
@@ -3471,6 +3474,9 @@ parameter_list|,
 specifier|final
 name|boolean
 name|isLast
+parameter_list|,
+name|boolean
+name|expandComment
 parameter_list|)
 block|{
 if|if
@@ -3558,6 +3564,13 @@ argument_list|,
 name|line
 argument_list|)
 decl_stmt|;
+name|panel
+operator|.
+name|setOpen
+argument_list|(
+name|expandComment
+argument_list|)
+expr_stmt|;
 name|panel
 operator|.
 name|addFocusHandler

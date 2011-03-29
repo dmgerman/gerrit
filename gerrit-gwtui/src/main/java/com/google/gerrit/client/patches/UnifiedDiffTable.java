@@ -1459,7 +1459,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|display (final CommentDetail cd)
+DECL|method|display (final CommentDetail cd, boolean expandComments)
 specifier|public
 name|void
 name|display
@@ -1467,6 +1467,9 @@ parameter_list|(
 specifier|final
 name|CommentDetail
 name|cd
+parameter_list|,
+name|boolean
+name|expandComments
 parameter_list|)
 block|{
 if|if
@@ -1626,6 +1629,8 @@ argument_list|(
 name|all
 argument_list|,
 name|row
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -1646,6 +1651,8 @@ argument_list|(
 name|fora
 argument_list|,
 name|row
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -1666,6 +1673,8 @@ argument_list|(
 name|forb
 argument_list|,
 name|row
+argument_list|,
+name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -1768,7 +1777,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insert (final List<PatchLineComment> in, int row)
+DECL|method|insert (final List<PatchLineComment> in, int row, boolean expandComment)
 specifier|private
 name|int
 name|insert
@@ -1782,6 +1791,9 @@ name|in
 parameter_list|,
 name|int
 name|row
+parameter_list|,
+name|boolean
+name|expandComment
 parameter_list|)
 block|{
 for|for
@@ -1831,6 +1843,8 @@ name|ci
 operator|.
 name|hasNext
 argument_list|()
+argument_list|,
+name|expandComment
 argument_list|)
 expr_stmt|;
 name|row

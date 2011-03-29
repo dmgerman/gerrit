@@ -465,6 +465,18 @@ specifier|protected
 name|boolean
 name|skipUncommented
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|12
+argument_list|)
+DECL|field|expandAllComments
+specifier|protected
+name|boolean
+name|expandAllComments
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -574,6 +586,14 @@ operator|=
 name|p
 operator|.
 name|skipUncommented
+expr_stmt|;
+name|this
+operator|.
+name|expandAllComments
+operator|=
+name|p
+operator|.
+name|expandAllComments
 expr_stmt|;
 name|this
 operator|.
@@ -870,6 +890,30 @@ block|{
 name|skipUncommented
 operator|=
 name|skip
+expr_stmt|;
+block|}
+DECL|method|isExpandAllComments ()
+specifier|public
+name|boolean
+name|isExpandAllComments
+parameter_list|()
+block|{
+return|return
+name|expandAllComments
+return|;
+block|}
+DECL|method|setExpandAllComments (boolean expand)
+specifier|public
+name|void
+name|setExpandAllComments
+parameter_list|(
+name|boolean
+name|expand
+parameter_list|)
+block|{
+name|expandAllComments
+operator|=
+name|expand
 expr_stmt|;
 block|}
 block|}

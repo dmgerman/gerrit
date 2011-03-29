@@ -736,6 +736,19 @@ return|return
 name|intralineFailure
 return|;
 block|}
+DECL|method|isExpandAllComments ()
+specifier|public
+name|boolean
+name|isExpandAllComments
+parameter_list|()
+block|{
+return|return
+name|diffPrefs
+operator|.
+name|isExpandAllComments
+argument_list|()
+return|;
+block|}
 DECL|method|getA ()
 specifier|public
 name|SparseFileContent
