@@ -166,6 +166,9 @@ init|=
 literal|"^"
 operator|+
 comment|//
+literal|"("
+operator|+
+comment|//
 name|USER_NAME_PATTERN_FIRST
 operator|+
 comment|//
@@ -175,6 +178,15 @@ literal|"*"
 operator|+
 comment|//
 name|USER_NAME_PATTERN_LAST
+operator|+
+comment|//
+literal|"|"
+operator|+
+comment|//
+name|USER_NAME_PATTERN_FIRST
+operator|+
+comment|//
+literal|")"
 operator|+
 comment|//
 literal|"$"
