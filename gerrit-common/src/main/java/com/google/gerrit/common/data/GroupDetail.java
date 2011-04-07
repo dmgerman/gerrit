@@ -133,6 +133,11 @@ specifier|public
 name|AccountGroup
 name|ownerGroup
 decl_stmt|;
+DECL|field|canModify
+specifier|public
+name|boolean
+name|canModify
+decl_stmt|;
 DECL|method|GroupDetail ()
 specifier|public
 name|GroupDetail
@@ -195,6 +200,23 @@ block|{
 name|ownerGroup
 operator|=
 name|g
+expr_stmt|;
+block|}
+DECL|method|setCanModify (final boolean canModify)
+specifier|public
+name|void
+name|setCanModify
+parameter_list|(
+specifier|final
+name|boolean
+name|canModify
+parameter_list|)
+block|{
+name|this
+operator|.
+name|canModify
+operator|=
+name|canModify
 expr_stmt|;
 block|}
 block|}

@@ -185,6 +185,21 @@ name|String
 name|requireChangeID
 parameter_list|()
 function_decl|;
+DECL|method|headingGroupOptions ()
+name|String
+name|headingGroupOptions
+parameter_list|()
+function_decl|;
+DECL|method|isVisibleToAll ()
+name|String
+name|isVisibleToAll
+parameter_list|()
+function_decl|;
+DECL|method|buttonSaveGroupOptions ()
+name|String
+name|buttonSaveGroupOptions
+parameter_list|()
+function_decl|;
 DECL|method|headingOwner ()
 name|String
 name|headingOwner

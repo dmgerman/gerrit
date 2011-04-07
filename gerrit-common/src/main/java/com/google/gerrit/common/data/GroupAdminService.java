@@ -225,9 +225,9 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|SignInRequired
-DECL|method|ownedGroups (AsyncCallback<List<AccountGroup>> callback)
+DECL|method|visibleGroups (AsyncCallback<List<AccountGroup>> callback)
 name|void
-name|ownedGroups
+name|visibleGroups
 parameter_list|(
 name|AsyncCallback
 argument_list|<
@@ -288,6 +288,27 @@ name|groupId
 parameter_list|,
 name|String
 name|description
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|changeGroupOptions (AccountGroup.Id groupId, GroupOptions groupOptions, AsyncCallback<VoidResult> callback)
+name|void
+name|changeGroupOptions
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|,
+name|GroupOptions
+name|groupOptions
 parameter_list|,
 name|AsyncCallback
 argument_list|<

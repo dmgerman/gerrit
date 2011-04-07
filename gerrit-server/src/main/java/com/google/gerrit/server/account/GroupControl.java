@@ -258,6 +258,29 @@ name|group
 argument_list|)
 return|;
 block|}
+DECL|method|controlFor (final AccountGroup group)
+specifier|public
+name|GroupControl
+name|controlFor
+parameter_list|(
+specifier|final
+name|AccountGroup
+name|group
+parameter_list|)
+block|{
+return|return
+operator|new
+name|GroupControl
+argument_list|(
+name|user
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|group
+argument_list|)
+return|;
+block|}
 DECL|method|validateFor (final AccountGroup.Id groupId)
 specifier|public
 name|GroupControl
@@ -364,6 +387,11 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
+name|group
+operator|.
+name|isVisibleToAll
+argument_list|()
+operator|||
 name|isOwner
 argument_list|()
 return|;
@@ -450,7 +478,7 @@ name|id
 parameter_list|)
 block|{
 return|return
-name|isOwner
+name|isVisible
 argument_list|()
 return|;
 block|}
