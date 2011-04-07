@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.account
+DECL|package|com.google.gerrit.common.errors
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|common
 operator|.
-name|account
+name|errors
 package|;
 end_package
 
@@ -101,6 +101,15 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+DECL|field|MESSAGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MESSAGE
+init|=
+literal|"Group Not Found: "
+decl_stmt|;
 DECL|method|NoSuchGroupException (final AccountGroup.Id key)
 specifier|public
 name|NoSuchGroupException
@@ -137,6 +146,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|key
 operator|.
 name|toString
@@ -182,6 +193,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|k
 operator|.
 name|toString
