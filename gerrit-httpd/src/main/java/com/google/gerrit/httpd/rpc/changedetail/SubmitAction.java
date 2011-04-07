@@ -621,13 +621,13 @@ name|ChangeUtil
 operator|.
 name|submit
 argument_list|(
-name|opFactory
-argument_list|,
 name|patchSetId
 argument_list|,
 name|user
 argument_list|,
 name|db
+argument_list|,
+name|opFactory
 argument_list|,
 name|merger
 argument_list|)
