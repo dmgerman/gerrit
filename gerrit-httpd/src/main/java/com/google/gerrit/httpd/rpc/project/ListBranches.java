@@ -687,9 +687,10 @@ name|b
 init|=
 name|createBranch
 argument_list|(
-name|Constants
+name|ref
 operator|.
-name|HEAD
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|b
