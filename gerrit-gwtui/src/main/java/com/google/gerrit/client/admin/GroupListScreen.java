@@ -482,7 +482,7 @@ name|Util
 operator|.
 name|GROUP_SVC
 operator|.
-name|ownedGroups
+name|visibleGroups
 argument_list|(
 operator|new
 name|ScreenLoadCallback

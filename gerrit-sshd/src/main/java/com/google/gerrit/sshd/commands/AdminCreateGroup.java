@@ -419,6 +419,22 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--visible-to-all"
+argument_list|,
+name|usage
+operator|=
+literal|"to make the group visible to all registered users"
+argument_list|)
+DECL|field|visibleToAll
+specifier|private
+name|boolean
+name|visibleToAll
+decl_stmt|;
+annotation|@
 name|Inject
 DECL|field|performCreateGroupFactory
 specifier|private
@@ -494,6 +510,8 @@ argument_list|(
 name|groupName
 argument_list|,
 name|groupDescription
+argument_list|,
+name|visibleToAll
 argument_list|,
 name|ownerGroupId
 argument_list|,

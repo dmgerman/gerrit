@@ -540,6 +540,18 @@ specifier|protected
 name|ExternalNameKey
 name|externalName
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|7
+argument_list|)
+DECL|field|visibleToAll
+specifier|protected
+name|boolean
+name|visibleToAll
+decl_stmt|;
 DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
@@ -573,6 +585,10 @@ expr_stmt|;
 name|ownerGroupId
 operator|=
 name|groupId
+expr_stmt|;
+name|visibleToAll
+operator|=
+literal|false
 expr_stmt|;
 name|setType
 argument_list|(
@@ -747,6 +763,33 @@ name|externalName
 operator|=
 name|k
 expr_stmt|;
+block|}
+DECL|method|setVisibleToAll (final boolean visibleToAll)
+specifier|public
+name|void
+name|setVisibleToAll
+parameter_list|(
+specifier|final
+name|boolean
+name|visibleToAll
+parameter_list|)
+block|{
+name|this
+operator|.
+name|visibleToAll
+operator|=
+name|visibleToAll
+expr_stmt|;
+block|}
+DECL|method|isVisibleToAll ()
+specifier|public
+name|boolean
+name|isVisibleToAll
+parameter_list|()
+block|{
+return|return
+name|visibleToAll
+return|;
 block|}
 block|}
 end_class

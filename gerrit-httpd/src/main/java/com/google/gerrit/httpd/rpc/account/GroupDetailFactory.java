@@ -523,6 +523,16 @@ name|create
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|detail
+operator|.
+name|setCanModify
+argument_list|(
+name|control
+operator|.
+name|isOwner
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|detail
 return|;

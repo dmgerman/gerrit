@@ -322,8 +322,8 @@ operator|=
 name|currentUser
 expr_stmt|;
 block|}
-comment|/**    * Creates a new group.    *    * @param groupName the name for the new group    * @param groupDescription the description of the new group,<code>null</code>    *        if no description    * @param ownerGroupId the group that should own the new group, if    *<code>null</code> the new group will own itself    * @param initialMembers initial members to be added to the new group    * @return the id of the new group    * @throws OrmException is thrown in case of any data store read or write    *         error    * @throws NameAlreadyUsedException is thrown in case a group with the given    *         name already exists    */
-DECL|method|createGroup (final String groupName, final String groupDescription, final AccountGroup.Id ownerGroupId, final Account.Id... initialMembers)
+comment|/**    * Creates a new group.    *    * @param groupName the name for the new group    * @param groupDescription the description of the new group,<code>null</code>    *        if no description    * @param visibleToAll<code>true</code> to make the group visible to all    *        registered users, if<code>false</code> the group is only visible to    *        the group owners and Gerrit administrators    * @param ownerGroupId the group that should own the new group, if    *<code>null</code> the new group will own itself    * @param initialMembers initial members to be added to the new group    * @return the id of the new group    * @throws OrmException is thrown in case of any data store read or write    *         error    * @throws NameAlreadyUsedException is thrown in case a group with the given    *         name already exists    */
+DECL|method|createGroup (final String groupName, final String groupDescription, final boolean visibleToAll, final AccountGroup.Id ownerGroupId, final Account.Id... initialMembers)
 specifier|public
 name|AccountGroup
 operator|.
@@ -337,6 +337,10 @@ parameter_list|,
 specifier|final
 name|String
 name|groupDescription
+parameter_list|,
+specifier|final
+name|boolean
+name|visibleToAll
 parameter_list|,
 specifier|final
 name|AccountGroup
@@ -399,6 +403,13 @@ argument_list|,
 name|groupId
 argument_list|)
 decl_stmt|;
+name|group
+operator|.
+name|setVisibleToAll
+argument_list|(
+name|visibleToAll
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|ownerGroupId
