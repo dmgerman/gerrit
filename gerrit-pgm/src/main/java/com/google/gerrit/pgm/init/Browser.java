@@ -189,7 +189,7 @@ name|void
 name|open
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|open
 argument_list|(
@@ -208,7 +208,7 @@ name|String
 name|link
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|String
 name|url

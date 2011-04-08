@@ -268,6 +268,60 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|ehcache
+operator|.
+name|transaction
+operator|.
+name|manager
+operator|.
+name|TransactionManagerLookup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|ehcache
+operator|.
+name|writer
+operator|.
+name|CacheWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|ehcache
+operator|.
+name|writer
+operator|.
+name|CacheWriterManager
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|beans
+operator|.
+name|PropertyChangeListener
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -419,6 +473,8 @@ block|}
 comment|//
 comment|// Everything else delegates through self.
 comment|//
+annotation|@
+name|Override
 DECL|method|bootstrap ()
 specifier|public
 name|void
@@ -432,6 +488,8 @@ name|bootstrap
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|calculateInMemorySize ()
 specifier|public
 name|long
@@ -450,6 +508,8 @@ name|calculateInMemorySize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|clearStatistics ()
 specifier|public
 name|void
@@ -463,6 +523,8 @@ name|clearStatistics
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|dispose ()
 specifier|public
 name|void
@@ -478,6 +540,8 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|evictExpiredElements ()
 specifier|public
 name|void
@@ -491,6 +555,8 @@ name|evictExpiredElements
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|flush ()
 specifier|public
 name|void
@@ -508,6 +574,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|get (Object key)
 specifier|public
 name|Element
@@ -531,6 +599,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|get (Serializable key)
 specifier|public
 name|Element
@@ -559,6 +629,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Override
 DECL|method|getAllWithLoader (Collection keys, Object loaderArgument)
 specifier|public
 name|Map
@@ -585,6 +657,8 @@ name|loaderArgument
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getAverageGetTime ()
 specifier|public
 name|float
@@ -599,6 +673,8 @@ name|getAverageGetTime
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getBootstrapCacheLoader ()
 specifier|public
 name|BootstrapCacheLoader
@@ -613,6 +689,8 @@ name|getBootstrapCacheLoader
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCacheConfiguration ()
 specifier|public
 name|CacheConfiguration
@@ -645,6 +723,8 @@ name|getCacheConfiguration
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCacheEventNotificationService ()
 specifier|public
 name|RegisteredEventListeners
@@ -659,6 +739,8 @@ name|getCacheEventNotificationService
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCacheExceptionHandler ()
 specifier|public
 name|CacheExceptionHandler
@@ -673,6 +755,8 @@ name|getCacheExceptionHandler
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCacheManager ()
 specifier|public
 name|CacheManager
@@ -687,6 +771,8 @@ name|getCacheManager
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDiskStoreSize ()
 specifier|public
 name|int
@@ -703,6 +789,8 @@ name|getDiskStoreSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getGuid ()
 specifier|public
 name|String
@@ -722,6 +810,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Override
 DECL|method|getKeys ()
 specifier|public
 name|List
@@ -745,6 +835,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Override
 DECL|method|getKeysNoDuplicateCheck ()
 specifier|public
 name|List
@@ -766,6 +858,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Override
 DECL|method|getKeysWithExpiryCheck ()
 specifier|public
 name|List
@@ -784,6 +878,8 @@ name|getKeysWithExpiryCheck
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMemoryStoreSize ()
 specifier|public
 name|long
@@ -800,6 +896,8 @@ name|getMemoryStoreSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getQuiet (Object key)
 specifier|public
 name|Element
@@ -823,6 +921,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getQuiet (Serializable key)
 specifier|public
 name|Element
@@ -846,6 +946,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRegisteredCacheExtensions ()
 specifier|public
 name|List
@@ -863,6 +965,8 @@ name|getRegisteredCacheExtensions
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRegisteredCacheLoaders ()
 specifier|public
 name|List
@@ -880,6 +984,8 @@ name|getRegisteredCacheLoaders
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSize ()
 specifier|public
 name|int
@@ -898,6 +1004,8 @@ name|getSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getStatistics ()
 specifier|public
 name|Statistics
@@ -914,6 +1022,8 @@ name|getStatistics
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getStatisticsAccuracy ()
 specifier|public
 name|int
@@ -928,6 +1038,8 @@ name|getStatisticsAccuracy
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getStatus ()
 specifier|public
 name|Status
@@ -942,6 +1054,8 @@ name|getStatus
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getWithLoader (Object key, CacheLoader loader, Object loaderArgument)
 specifier|public
 name|Element
@@ -973,6 +1087,8 @@ name|loaderArgument
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|initialise ()
 specifier|public
 name|void
@@ -986,6 +1102,8 @@ name|initialise
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDisabled ()
 specifier|public
 name|boolean
@@ -1000,6 +1118,8 @@ name|isDisabled
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isElementInMemory (Object key)
 specifier|public
 name|boolean
@@ -1019,6 +1139,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isElementInMemory (Serializable key)
 specifier|public
 name|boolean
@@ -1038,6 +1160,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isElementOnDisk (Object key)
 specifier|public
 name|boolean
@@ -1057,6 +1181,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isElementOnDisk (Serializable key)
 specifier|public
 name|boolean
@@ -1076,6 +1202,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isExpired (Element element)
 specifier|public
 name|boolean
@@ -1099,6 +1227,8 @@ name|element
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isKeyInCache (Object key)
 specifier|public
 name|boolean
@@ -1118,6 +1248,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isValueInCache (Object value)
 specifier|public
 name|boolean
@@ -1137,6 +1269,8 @@ name|value
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|load (Object key)
 specifier|public
 name|void
@@ -1162,6 +1296,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+annotation|@
+name|Override
 DECL|method|loadAll (Collection keys, Object argument)
 specifier|public
 name|void
@@ -1187,6 +1323,8 @@ name|argument
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|put (Element element, boolean doNotNotifyCacheReplicators)
 specifier|public
 name|void
@@ -1216,6 +1354,8 @@ name|doNotNotifyCacheReplicators
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|put (Element element)
 specifier|public
 name|void
@@ -1240,6 +1380,8 @@ name|element
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|putQuiet (Element element)
 specifier|public
 name|void
@@ -1264,6 +1406,8 @@ name|element
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|registerCacheExtension (CacheExtension cacheExtension)
 specifier|public
 name|void
@@ -1282,6 +1426,8 @@ name|cacheExtension
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|registerCacheLoader (CacheLoader cacheLoader)
 specifier|public
 name|void
@@ -1300,6 +1446,8 @@ name|cacheLoader
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (Object key, boolean doNotNotifyCacheReplicators)
 specifier|public
 name|boolean
@@ -1326,6 +1474,8 @@ name|doNotNotifyCacheReplicators
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (Object key)
 specifier|public
 name|boolean
@@ -1347,6 +1497,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (Serializable key, boolean doNotNotifyCacheReplicators)
 specifier|public
 name|boolean
@@ -1373,6 +1525,8 @@ name|doNotNotifyCacheReplicators
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (Serializable key)
 specifier|public
 name|boolean
@@ -1394,6 +1548,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeAll ()
 specifier|public
 name|void
@@ -1411,6 +1567,8 @@ name|removeAll
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeAll (boolean doNotNotifyCacheReplicators)
 specifier|public
 name|void
@@ -1433,6 +1591,8 @@ name|doNotNotifyCacheReplicators
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeQuiet (Object key)
 specifier|public
 name|boolean
@@ -1454,6 +1614,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeQuiet (Serializable key)
 specifier|public
 name|boolean
@@ -1475,6 +1637,8 @@ name|key
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setBootstrapCacheLoader (BootstrapCacheLoader bootstrapCacheLoader)
 specifier|public
 name|void
@@ -1495,6 +1659,8 @@ name|bootstrapCacheLoader
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setCacheExceptionHandler ( CacheExceptionHandler cacheExceptionHandler)
 specifier|public
 name|void
@@ -1513,6 +1679,8 @@ name|cacheExceptionHandler
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setCacheManager (CacheManager cacheManager)
 specifier|public
 name|void
@@ -1531,6 +1699,8 @@ name|cacheManager
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setDisabled (boolean disabled)
 specifier|public
 name|void
@@ -1549,6 +1719,8 @@ name|disabled
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setDiskStorePath (String diskStorePath)
 specifier|public
 name|void
@@ -1569,6 +1741,8 @@ name|diskStorePath
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatisticsAccuracy (int statisticsAccuracy)
 specifier|public
 name|void
@@ -1587,6 +1761,8 @@ name|statisticsAccuracy
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|unregisterCacheExtension (CacheExtension cacheExtension)
 specifier|public
 name|void
@@ -1605,6 +1781,8 @@ name|cacheExtension
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|unregisterCacheLoader (CacheLoader cacheLoader)
 specifier|public
 name|void
@@ -1623,6 +1801,8 @@ name|cacheLoader
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getInternalContext ()
 specifier|public
 name|Object
@@ -1631,11 +1811,14 @@ parameter_list|()
 block|{
 return|return
 name|self
+argument_list|()
 operator|.
 name|getInternalContext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getLiveCacheStatistics ()
 specifier|public
 name|LiveCacheStatistics
@@ -1646,11 +1829,14 @@ name|IllegalStateException
 block|{
 return|return
 name|self
+argument_list|()
 operator|.
 name|getLiveCacheStatistics
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSampledCacheStatistics ()
 specifier|public
 name|SampledCacheStatistics
@@ -1659,11 +1845,14 @@ parameter_list|()
 block|{
 return|return
 name|self
+argument_list|()
 operator|.
 name|getSampledCacheStatistics
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSizeBasedOnAccuracy (int statisticsAccuracy)
 specifier|public
 name|int
@@ -1681,6 +1870,7 @@ name|CacheException
 block|{
 return|return
 name|self
+argument_list|()
 operator|.
 name|getSizeBasedOnAccuracy
 argument_list|(
@@ -1688,6 +1878,8 @@ name|statisticsAccuracy
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSampledStatisticsEnabled ()
 specifier|public
 name|boolean
@@ -1696,11 +1888,14 @@ parameter_list|()
 block|{
 return|return
 name|self
+argument_list|()
 operator|.
 name|isSampledStatisticsEnabled
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isStatisticsEnabled ()
 specifier|public
 name|boolean
@@ -1709,11 +1904,14 @@ parameter_list|()
 block|{
 return|return
 name|self
+argument_list|()
 operator|.
 name|isStatisticsEnabled
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|registerCacheUsageListener (CacheUsageListener cacheUsageListener)
 specifier|public
 name|void
@@ -1726,6 +1924,7 @@ throws|throws
 name|IllegalStateException
 block|{
 name|self
+argument_list|()
 operator|.
 name|registerCacheUsageListener
 argument_list|(
@@ -1733,6 +1932,8 @@ name|cacheUsageListener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeCacheUsageListener (CacheUsageListener cacheUsageListener)
 specifier|public
 name|void
@@ -1745,6 +1946,7 @@ throws|throws
 name|IllegalStateException
 block|{
 name|self
+argument_list|()
 operator|.
 name|removeCacheUsageListener
 argument_list|(
@@ -1752,6 +1954,8 @@ name|cacheUsageListener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setSampledStatisticsEnabled (boolean enableStatistics)
 specifier|public
 name|void
@@ -1762,6 +1966,7 @@ name|enableStatistics
 parameter_list|)
 block|{
 name|self
+argument_list|()
 operator|.
 name|setSampledStatisticsEnabled
 argument_list|(
@@ -1769,6 +1974,8 @@ name|enableStatistics
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatisticsEnabled (boolean enableStatistics)
 specifier|public
 name|void
@@ -1779,10 +1986,412 @@ name|enableStatistics
 parameter_list|)
 block|{
 name|self
+argument_list|()
 operator|.
 name|setStatisticsEnabled
 argument_list|(
 name|enableStatistics
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|putWithWriter (Element element)
+specifier|public
+name|void
+name|putWithWriter
+parameter_list|(
+name|Element
+name|element
+parameter_list|)
+throws|throws
+name|IllegalArgumentException
+throws|,
+name|IllegalStateException
+throws|,
+name|CacheException
+block|{
+name|self
+argument_list|()
+operator|.
+name|putWithWriter
+argument_list|(
+name|element
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|putIfAbsent (Element element)
+specifier|public
+name|Element
+name|putIfAbsent
+parameter_list|(
+name|Element
+name|element
+parameter_list|)
+throws|throws
+name|NullPointerException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|putIfAbsent
+argument_list|(
+name|element
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|removeElement (Element element)
+specifier|public
+name|boolean
+name|removeElement
+parameter_list|(
+name|Element
+name|element
+parameter_list|)
+throws|throws
+name|NullPointerException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|removeElement
+argument_list|(
+name|element
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|replace (Element element, Element element1)
+specifier|public
+name|boolean
+name|replace
+parameter_list|(
+name|Element
+name|element
+parameter_list|,
+name|Element
+name|element1
+parameter_list|)
+throws|throws
+name|NullPointerException
+throws|,
+name|IllegalArgumentException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+name|element
+argument_list|,
+name|element1
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|replace (Element element)
+specifier|public
+name|Element
+name|replace
+parameter_list|(
+name|Element
+name|element
+parameter_list|)
+throws|throws
+name|NullPointerException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+name|element
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|removeWithWriter (Object o)
+specifier|public
+name|boolean
+name|removeWithWriter
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+throws|throws
+name|IllegalStateException
+throws|,
+name|CacheException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|removeWithWriter
+argument_list|(
+name|o
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|calculateOffHeapSize ()
+specifier|public
+name|long
+name|calculateOffHeapSize
+parameter_list|()
+throws|throws
+name|IllegalStateException
+throws|,
+name|CacheException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|calculateOffHeapSize
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getOffHeapStoreSize ()
+specifier|public
+name|long
+name|getOffHeapStoreSize
+parameter_list|()
+throws|throws
+name|IllegalStateException
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|getOffHeapStoreSize
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|registerCacheWriter (CacheWriter cacheWriter)
+specifier|public
+name|void
+name|registerCacheWriter
+parameter_list|(
+name|CacheWriter
+name|cacheWriter
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|registerCacheWriter
+argument_list|(
+name|cacheWriter
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|unregisterCacheWriter ()
+specifier|public
+name|void
+name|unregisterCacheWriter
+parameter_list|()
+block|{
+name|self
+argument_list|()
+operator|.
+name|unregisterCacheWriter
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getRegisteredCacheWriter ()
+specifier|public
+name|CacheWriter
+name|getRegisteredCacheWriter
+parameter_list|()
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|getRegisteredCacheWriter
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|disableDynamicFeatures ()
+specifier|public
+name|void
+name|disableDynamicFeatures
+parameter_list|()
+block|{
+name|self
+argument_list|()
+operator|.
+name|disableDynamicFeatures
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getWriterManager ()
+specifier|public
+name|CacheWriterManager
+name|getWriterManager
+parameter_list|()
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|getWriterManager
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isClusterCoherent ()
+specifier|public
+name|boolean
+name|isClusterCoherent
+parameter_list|()
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|isClusterCoherent
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isNodeCoherent ()
+specifier|public
+name|boolean
+name|isNodeCoherent
+parameter_list|()
+block|{
+return|return
+name|self
+argument_list|()
+operator|.
+name|isNodeCoherent
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|setNodeCoherent (boolean b)
+specifier|public
+name|void
+name|setNodeCoherent
+parameter_list|(
+name|boolean
+name|b
+parameter_list|)
+throws|throws
+name|UnsupportedOperationException
+block|{
+name|self
+argument_list|()
+operator|.
+name|setNodeCoherent
+argument_list|(
+name|b
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|waitUntilClusterCoherent ()
+specifier|public
+name|void
+name|waitUntilClusterCoherent
+parameter_list|()
+throws|throws
+name|UnsupportedOperationException
+block|{
+name|self
+argument_list|()
+operator|.
+name|waitUntilClusterCoherent
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|setTransactionManagerLookup (TransactionManagerLookup transactionManagerLookup)
+specifier|public
+name|void
+name|setTransactionManagerLookup
+parameter_list|(
+name|TransactionManagerLookup
+name|transactionManagerLookup
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|setTransactionManagerLookup
+argument_list|(
+name|transactionManagerLookup
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|addPropertyChangeListener (PropertyChangeListener propertyChangeListener)
+specifier|public
+name|void
+name|addPropertyChangeListener
+parameter_list|(
+name|PropertyChangeListener
+name|propertyChangeListener
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|addPropertyChangeListener
+argument_list|(
+name|propertyChangeListener
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|removePropertyChangeListener (PropertyChangeListener propertyChangeListener)
+specifier|public
+name|void
+name|removePropertyChangeListener
+parameter_list|(
+name|PropertyChangeListener
+name|propertyChangeListener
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|removePropertyChangeListener
+argument_list|(
+name|propertyChangeListener
 argument_list|)
 expr_stmt|;
 block|}

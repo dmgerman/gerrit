@@ -1690,7 +1690,7 @@ name|void
 name|start
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 if|if
 condition|(
