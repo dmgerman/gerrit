@@ -961,7 +961,10 @@ name|useContentMerge
 operator|.
 name|setEnabled
 argument_list|(
-literal|true
+name|submitType
+operator|.
+name|isEnabled
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
