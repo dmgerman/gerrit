@@ -1065,6 +1065,13 @@ name|p
 operator|.
 name|print
 argument_list|(
+literal|"$javascript = 'gitweb.js';\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
 literal|"@stylesheets = ('gitweb-default.css');\n"
 argument_list|)
 expr_stmt|;

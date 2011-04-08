@@ -505,7 +505,11 @@ index|[]
 name|resourcePaths
 init|=
 block|{
+literal|"/usr/share/gitweb/static"
+block|,
 literal|"/usr/share/gitweb"
+block|,
+literal|"/var/www/static"
 block|,
 literal|"/var/www"
 block|}
@@ -584,12 +588,9 @@ block|{
 comment|// Assume the administrator pointed us to the distribution,
 comment|// which also has the corresponding CSS and logo file.
 comment|//
-name|resourcePaths
-operator|=
-operator|new
 name|String
-index|[]
-block|{
+name|absPath
+init|=
 name|cgi
 operator|.
 name|getParentFile
@@ -597,6 +598,18 @@ argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
+decl_stmt|;
+name|resourcePaths
+operator|=
+operator|new
+name|String
+index|[]
+block|{
+name|absPath
+operator|+
+literal|"/static"
+block|,
+name|absPath
 block|}
 expr_stmt|;
 block|}
