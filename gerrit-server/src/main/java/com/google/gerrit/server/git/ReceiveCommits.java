@@ -9556,6 +9556,34 @@ operator|.
 name|getAuthorIdent
 argument_list|()
 decl_stmt|;
+comment|// Require permission to upload merges.
+if|if
+condition|(
+name|c
+operator|.
+name|getParentCount
+argument_list|()
+operator|>
+literal|1
+operator|&&
+operator|!
+name|ctl
+operator|.
+name|canUploadMerges
+argument_list|()
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"you are not allowed to upload merges"
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 comment|// Don't allow the user to amend a merge created by Gerrit Code Review.
 comment|// This seems to happen all too often, due to users not paying any
 comment|// attention to what they are doing.

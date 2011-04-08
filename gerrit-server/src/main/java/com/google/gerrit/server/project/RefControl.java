@@ -966,6 +966,25 @@ literal|2
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can submit merge patch sets to this ref */
+DECL|method|canUploadMerges ()
+specifier|public
+name|boolean
+name|canUploadMerges
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|READ
+argument_list|,
+operator|(
+name|short
+operator|)
+literal|3
+argument_list|)
+return|;
+block|}
 comment|/** @return true if this user can submit patch sets to this ref */
 DECL|method|canSubmit ()
 specifier|public
