@@ -941,12 +941,19 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addSuggestion (Map map, Account account, AccountInfo info, Boolean active)
+DECL|method|addSuggestion (Map<Account.Id, AccountInfo> map, Account account, AccountInfo info, Boolean active)
 specifier|private
 name|void
 name|addSuggestion
 parameter_list|(
 name|Map
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|,
+name|AccountInfo
+argument_list|>
 name|map
 parameter_list|,
 name|Account
