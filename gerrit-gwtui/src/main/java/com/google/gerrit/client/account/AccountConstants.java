@@ -225,11 +225,6 @@ name|String
 name|buttonClearSshKeyInput
 parameter_list|()
 function_decl|;
-DECL|method|buttonOpenSshKey ()
-name|String
-name|buttonOpenSshKey
-parameter_list|()
-function_decl|;
 DECL|method|buttonAddSshKey ()
 name|String
 name|buttonAddSshKey
