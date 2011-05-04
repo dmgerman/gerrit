@@ -943,6 +943,16 @@ name|String
 name|watchedProjectFilter
 parameter_list|()
 function_decl|;
+DECL|method|selectPatchSetOldVersion ()
+name|String
+name|selectPatchSetOldVersion
+parameter_list|()
+function_decl|;
+DECL|method|patchCellReverseDiff ()
+name|String
+name|patchCellReverseDiff
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

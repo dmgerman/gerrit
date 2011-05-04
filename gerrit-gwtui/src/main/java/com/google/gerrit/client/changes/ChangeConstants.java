@@ -475,6 +475,16 @@ name|String
 name|abandonChangeTitle
 parameter_list|()
 function_decl|;
+DECL|method|oldVersionHistory ()
+name|String
+name|oldVersionHistory
+parameter_list|()
+function_decl|;
+DECL|method|baseDiffItem ()
+name|String
+name|baseDiffItem
+parameter_list|()
+function_decl|;
 DECL|method|buttonReview ()
 name|String
 name|buttonReview
