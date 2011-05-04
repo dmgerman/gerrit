@@ -158,6 +158,20 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|AccountDiffPreference
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|Change
 import|;
 end_import
@@ -364,7 +378,7 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|patchSetDetail (final PatchSet.Id id, final AsyncCallback<PatchSetDetail> callback)
+DECL|method|patchSetDetail (final PatchSet.Id idA, final PatchSet.Id idB, final AccountDiffPreference diffPrefs, final AsyncCallback<PatchSetDetail> callback)
 specifier|public
 name|void
 name|patchSetDetail
@@ -373,7 +387,17 @@ specifier|final
 name|PatchSet
 operator|.
 name|Id
-name|id
+name|idA
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|idB
+parameter_list|,
+specifier|final
+name|AccountDiffPreference
+name|diffPrefs
 parameter_list|,
 specifier|final
 name|AsyncCallback
@@ -387,7 +411,11 @@ name|patchSetDetail
 operator|.
 name|create
 argument_list|(
-name|id
+name|idA
+argument_list|,
+name|idB
+argument_list|,
+name|diffPrefs
 argument_list|)
 operator|.
 name|to
