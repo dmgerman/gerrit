@@ -385,6 +385,15 @@ return|return
 name|commandLine
 return|;
 block|}
+DECL|method|getSession ()
+name|SshSession
+name|getSession
+parameter_list|()
+block|{
+return|return
+name|session
+return|;
+block|}
 DECL|method|get (Key<T> key, Provider<T> creator)
 specifier|synchronized
 parameter_list|<
@@ -523,7 +532,8 @@ return|return
 name|getContext
 argument_list|()
 operator|.
-name|session
+name|getSession
+argument_list|()
 return|;
 block|}
 block|}
