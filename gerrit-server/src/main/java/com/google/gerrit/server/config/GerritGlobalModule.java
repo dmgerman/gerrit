@@ -134,20 +134,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|AuthType
 import|;
 end_import
@@ -372,7 +358,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupInfoCacheFactory
+name|GroupIncludeCacheImpl
 import|;
 end_import
 
@@ -388,7 +374,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupIncludeCacheImpl
+name|GroupInfoCacheFactory
 import|;
 end_import
 
@@ -439,22 +425,6 @@ operator|.
 name|cache
 operator|.
 name|CachePool
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|SitePaths
 import|;
 end_import
 
@@ -599,6 +569,22 @@ operator|.
 name|git
 operator|.
 name|ReplicationQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|SecureCredentialsProvider
 import|;
 end_import
 
@@ -888,18 +874,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|TypeLiteral
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -961,16 +935,6 @@ operator|.
 name|util
 operator|.
 name|Properties
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -1505,6 +1469,15 @@ operator|.
 name|in
 argument_list|(
 name|SINGLETON
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
+name|SecureCredentialsProvider
+operator|.
+name|Factory
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 name|factory

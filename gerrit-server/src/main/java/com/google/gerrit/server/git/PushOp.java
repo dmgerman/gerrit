@@ -90,7 +90,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|Project
+operator|.
+name|NameKey
 import|;
 end_import
 
@@ -104,9 +106,7 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Project
-operator|.
-name|NameKey
+name|ReviewDb
 import|;
 end_import
 
@@ -317,6 +317,20 @@ operator|.
 name|lib
 operator|.
 name|Repository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|transport
+operator|.
+name|CredentialsProvider
 import|;
 end_import
 
@@ -585,6 +599,12 @@ specifier|final
 name|RemoteConfig
 name|config
 decl_stmt|;
+DECL|field|credentialsProvider
+specifier|private
+specifier|final
+name|CredentialsProvider
+name|credentialsProvider
+decl_stmt|;
 DECL|field|delta
 specifier|private
 specifier|final
@@ -638,7 +658,7 @@ name|canceled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PushOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> s, final PushReplication.ReplicationConfig p, final RemoteConfig c, @Assisted final Project.NameKey d, @Assisted final URIish u)
+DECL|method|PushOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> s, final PushReplication.ReplicationConfig p, final RemoteConfig c, final SecureCredentialsProvider.Factory cpFactory, @Assisted final Project.NameKey d, @Assisted final URIish u)
 name|PushOp
 parameter_list|(
 specifier|final
@@ -661,6 +681,12 @@ parameter_list|,
 specifier|final
 name|RemoteConfig
 name|c
+parameter_list|,
+specifier|final
+name|SecureCredentialsProvider
+operator|.
+name|Factory
+name|cpFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -692,6 +718,18 @@ expr_stmt|;
 name|config
 operator|=
 name|c
+expr_stmt|;
+name|credentialsProvider
+operator|=
+name|cpFactory
+operator|.
+name|create
+argument_list|(
+name|c
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|projectName
 operator|=
@@ -1372,6 +1410,13 @@ operator|.
 name|applyConfig
 argument_list|(
 name|config
+argument_list|)
+expr_stmt|;
+name|tn
+operator|.
+name|setCredentialsProvider
+argument_list|(
+name|credentialsProvider
 argument_list|)
 expr_stmt|;
 specifier|final
