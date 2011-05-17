@@ -214,16 +214,16 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE dest.projectName = ? AND changeKey = ?"
+literal|"WHERE dest = ? AND changeKey = ?"
 argument_list|)
-DECL|method|byProjectKey (Project.NameKey p, Change.Key key)
+DECL|method|byBranchKey (Branch.NameKey p, Change.Key key)
 name|ResultSet
 argument_list|<
 name|Change
 argument_list|>
-name|byProjectKey
+name|byBranchKey
 parameter_list|(
-name|Project
+name|Branch
 operator|.
 name|NameKey
 name|p

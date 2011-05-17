@@ -5513,12 +5513,9 @@ operator|.
 name|changes
 argument_list|()
 operator|.
-name|byProjectKey
+name|byBranchKey
 argument_list|(
-name|project
-operator|.
-name|getNameKey
-argument_list|()
+name|destBranch
 argument_list|,
 name|key
 argument_list|)
