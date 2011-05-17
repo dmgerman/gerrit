@@ -10572,7 +10572,23 @@ argument_list|>
 name|byKey
 init|=
 name|openChangesByKey
+argument_list|(
+operator|new
+name|Branch
+operator|.
+name|NameKey
+argument_list|(
+name|project
+operator|.
+name|getNameKey
 argument_list|()
+argument_list|,
+name|cmd
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+argument_list|)
 decl_stmt|;
 specifier|final
 name|List
@@ -11052,7 +11068,7 @@ return|return
 name|refsById
 return|;
 block|}
-DECL|method|openChangesByKey ()
+DECL|method|openChangesByKey (Branch.NameKey branch)
 specifier|private
 name|Map
 argument_list|<
@@ -11065,7 +11081,12 @@ operator|.
 name|Id
 argument_list|>
 name|openChangesByKey
-parameter_list|()
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|branch
+parameter_list|)
 throws|throws
 name|OrmException
 block|{
@@ -11105,12 +11126,9 @@ operator|.
 name|changes
 argument_list|()
 operator|.
-name|byProjectOpenAll
+name|byBranchOpenAll
 argument_list|(
-name|project
-operator|.
-name|getNameKey
-argument_list|()
+name|branch
 argument_list|)
 control|)
 block|{
