@@ -644,6 +644,13 @@ name|contains
 argument_list|(
 name|key
 argument_list|)
+operator|||
+name|key
+operator|.
+name|equals
+argument_list|(
+name|newParentKey
+argument_list|)
 condition|)
 block|{
 comment|// Try to avoid creating a cycle in the parent pointers.
