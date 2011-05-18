@@ -64,6 +64,16 @@ name|reviewdb
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Additional data about a {@link PatchSet} not normally loaded.  */
 end_comment
@@ -75,6 +85,54 @@ specifier|final
 class|class
 name|PatchSetInfo
 block|{
+DECL|class|ParentInfo
+specifier|public
+specifier|static
+class|class
+name|ParentInfo
+block|{
+DECL|field|id
+specifier|public
+name|RevId
+name|id
+decl_stmt|;
+DECL|field|shortMessage
+specifier|public
+name|String
+name|shortMessage
+decl_stmt|;
+DECL|method|ParentInfo (final RevId id, final String shortMessage)
+specifier|public
+name|ParentInfo
+parameter_list|(
+specifier|final
+name|RevId
+name|id
+parameter_list|,
+specifier|final
+name|String
+name|shortMessage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|id
+operator|=
+name|id
+expr_stmt|;
+name|this
+operator|.
+name|shortMessage
+operator|=
+name|shortMessage
+expr_stmt|;
+block|}
+DECL|method|ParentInfo ()
+specifier|protected
+name|ParentInfo
+parameter_list|()
+block|{     }
+block|}
 DECL|field|key
 specifier|protected
 name|PatchSet
@@ -105,6 +163,15 @@ DECL|field|committer
 specifier|protected
 name|UserIdentity
 name|committer
+decl_stmt|;
+comment|/** List of parents of the patch set. */
+DECL|field|parents
+specifier|protected
+name|List
+argument_list|<
+name|ParentInfo
+argument_list|>
+name|parents
 decl_stmt|;
 DECL|method|PatchSetInfo ()
 specifier|protected
@@ -267,6 +334,37 @@ name|committer
 operator|=
 name|u
 expr_stmt|;
+block|}
+DECL|method|setParents (final List<ParentInfo> p)
+specifier|public
+name|void
+name|setParents
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|ParentInfo
+argument_list|>
+name|p
+parameter_list|)
+block|{
+name|parents
+operator|=
+name|p
+expr_stmt|;
+block|}
+DECL|method|getParents ()
+specifier|public
+name|List
+argument_list|<
+name|ParentInfo
+argument_list|>
+name|getParents
+parameter_list|()
+block|{
+return|return
+name|parents
+return|;
 block|}
 block|}
 end_class

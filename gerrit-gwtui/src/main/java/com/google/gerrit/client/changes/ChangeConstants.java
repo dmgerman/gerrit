@@ -440,6 +440,16 @@ name|String
 name|patchSetInfoDownload
 parameter_list|()
 function_decl|;
+DECL|method|patchSetInfoParents ()
+name|String
+name|patchSetInfoParents
+parameter_list|()
+function_decl|;
+DECL|method|initialCommit ()
+name|String
+name|initialCommit
+parameter_list|()
+function_decl|;
 DECL|method|buttonAbandonChangeBegin ()
 name|String
 name|buttonAbandonChangeBegin

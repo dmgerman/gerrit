@@ -658,6 +658,11 @@ name|String
 name|missingApprovalList
 parameter_list|()
 function_decl|;
+DECL|method|monospace ()
+name|String
+name|monospace
+parameter_list|()
+function_decl|;
 DECL|method|needsReview ()
 name|String
 name|needsReview
@@ -676,6 +681,11 @@ function_decl|;
 DECL|method|noborder ()
 name|String
 name|noborder
+parameter_list|()
+function_decl|;
+DECL|method|parentsTable ()
+name|String
+name|parentsTable
 parameter_list|()
 function_decl|;
 DECL|method|patchBrowserPopup ()
