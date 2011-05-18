@@ -956,6 +956,26 @@ argument_list|)
 expr_stmt|;
 comment|// Email the reviewers
 comment|//
+comment|// The user knows they added themselves, don't bother emailing them.
+name|added
+operator|.
+name|remove
+argument_list|(
+name|currentUser
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|added
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 specifier|final
 name|AddReviewerSender
 name|cm
@@ -994,6 +1014,7 @@ operator|.
 name|send
 argument_list|()
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|setChange
