@@ -4508,12 +4508,11 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// Validate that the new commits are connected with the existing heads
-comment|// or tags of this repository. If they aren't, we want to abort. We do
-comment|// this check by coloring the tip CONNECTED and letting a RevWalk push
-comment|// that color through the graph until it reaches at least one of our
-comment|// already existing heads or tags. We then test to see if that color
-comment|// made it back onto that set.
+comment|// Validate that the new commits are connected with the target branch.
+comment|// If they aren't, we want to abort. We do this check by coloring the
+comment|// tip CONNECTED and letting a RevWalk push that color through the graph
+comment|// until it reaches the head of the target branch. We then test to see
+comment|// if that color made it back onto that set.
 comment|//
 try|try
 block|{
@@ -4630,41 +4629,19 @@ argument_list|(
 name|tip
 argument_list|)
 expr_stmt|;
-name|boolean
-name|haveHeads
-init|=
-literal|false
-decl_stmt|;
-for|for
-control|(
-specifier|final
 name|Ref
-name|r
-range|:
+name|targetRef
+init|=
 name|rp
 operator|.
 name|getAdvertisedRefs
 argument_list|()
 operator|.
-name|values
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|isHead
+name|get
 argument_list|(
-name|r
+name|destBranchName
 argument_list|)
-operator|||
-name|isTag
-argument_list|(
-name|r
-argument_list|)
-condition|)
-block|{
-try|try
-block|{
+decl_stmt|;
 specifier|final
 name|RevCommit
 name|h
@@ -4673,7 +4650,7 @@ name|walk
 operator|.
 name|parseCommit
 argument_list|(
-name|r
+name|targetRef
 operator|.
 name|getObjectId
 argument_list|()
@@ -4693,26 +4670,6 @@ argument_list|(
 name|h
 argument_list|)
 expr_stmt|;
-name|haveHeads
-operator|=
-literal|true
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-continue|continue;
-block|}
-block|}
-block|}
-if|if
-condition|(
-name|haveHeads
-condition|)
-block|{
 name|boolean
 name|isConnected
 init|=
@@ -4766,7 +4723,6 @@ literal|"no common ancestry"
 argument_list|)
 expr_stmt|;
 return|return;
-block|}
 block|}
 block|}
 catch|catch
