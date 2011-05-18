@@ -2857,7 +2857,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-specifier|final
 name|ApprovalType
 name|at
 init|=
@@ -2871,6 +2870,13 @@ name|getKey
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|at
+operator|!=
+literal|null
+condition|)
+block|{
 name|a
 operator|.
 name|description
@@ -2883,6 +2889,7 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+block|}
 name|a
 operator|.
 name|value
