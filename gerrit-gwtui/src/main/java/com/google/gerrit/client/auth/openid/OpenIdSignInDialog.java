@@ -1359,7 +1359,10 @@ if|if
 condition|(
 name|event
 operator|.
-name|getCharCode
+name|getNativeEvent
+argument_list|()
+operator|.
+name|getKeyCode
 argument_list|()
 operator|==
 name|KeyCodes
