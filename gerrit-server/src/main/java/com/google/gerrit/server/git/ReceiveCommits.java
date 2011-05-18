@@ -4506,6 +4506,7 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 comment|// Validate that the new commits are connected with the existing heads
 comment|// or tags of this repository. If they aren't, we want to abort. We do
