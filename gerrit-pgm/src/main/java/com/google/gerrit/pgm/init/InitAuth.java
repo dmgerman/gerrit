@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|init
+operator|.
+name|InitUtil
+operator|.
+name|dnOf
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -414,6 +432,34 @@ argument_list|(
 literal|"username"
 argument_list|,
 literal|"password"
+argument_list|)
+expr_stmt|;
+name|String
+name|aBase
+init|=
+name|ldap
+operator|.
+name|string
+argument_list|(
+literal|"Account BaseDN"
+argument_list|,
+literal|"accountBase"
+argument_list|,
+name|dnOf
+argument_list|(
+name|server
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|ldap
+operator|.
+name|string
+argument_list|(
+literal|"Group BaseDN"
+argument_list|,
+literal|"groupBase"
+argument_list|,
+name|aBase
 argument_list|)
 expr_stmt|;
 break|break;
