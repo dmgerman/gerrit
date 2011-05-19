@@ -507,6 +507,14 @@ name|unmodifiableMap
 argument_list|(
 operator|new
 name|LinkedHashMap
+argument_list|<
+name|String
+argument_list|,
+name|Provider
+argument_list|<
+name|Command
+argument_list|>
+argument_list|>
 argument_list|(
 name|m
 argument_list|)

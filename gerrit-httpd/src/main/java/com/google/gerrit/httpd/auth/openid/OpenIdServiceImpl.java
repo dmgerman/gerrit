@@ -1259,6 +1259,11 @@ name|SECONDS
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|discover (final String openidIdentifier, final SignInMode mode, final boolean remember, final String returnToken, final AsyncCallback<DiscoveryResult> cb)
 specifier|public
 name|void

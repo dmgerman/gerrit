@@ -243,6 +243,9 @@ name|RewritePredicate
 condition|)
 block|{
 name|RewritePredicate
+argument_list|<
+name|T
+argument_list|>
 name|that
 init|=
 operator|(

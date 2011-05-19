@@ -558,7 +558,11 @@ block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
 argument_list|)
 annotation|@
 name|Override
@@ -708,18 +712,18 @@ operator|.
 name|class
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|isEnum (final Setter setter)
+DECL|method|isEnum (Setter<T> setter)
 specifier|private
+parameter_list|<
+name|T
+parameter_list|>
 name|boolean
 name|isEnum
 parameter_list|(
-specifier|final
 name|Setter
+argument_list|<
+name|T
+argument_list|>
 name|setter
 parameter_list|)
 block|{
@@ -737,18 +741,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-DECL|method|isPrimitive (final Setter setter)
+DECL|method|isPrimitive (Setter<T> setter)
 specifier|private
+parameter_list|<
+name|T
+parameter_list|>
 name|boolean
 name|isPrimitive
 parameter_list|(
-specifier|final
 name|Setter
+argument_list|<
+name|T
+argument_list|>
 name|setter
 parameter_list|)
 block|{

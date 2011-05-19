@@ -441,6 +441,9 @@ implements|,
 name|ChangeHandler
 implements|,
 name|ValueChangeHandler
+argument_list|<
+name|Object
+argument_list|>
 block|{
 DECL|field|widget
 specifier|private
@@ -660,6 +663,15 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
+argument_list|)
 DECL|method|listenTo (final CheckBox cb)
 specifier|public
 name|void
@@ -674,6 +686,9 @@ name|cb
 operator|.
 name|addValueChangeHandler
 argument_list|(
+operator|(
+name|ValueChangeHandler
+operator|)
 name|this
 argument_list|)
 expr_stmt|;
@@ -752,6 +767,11 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|onValueChange (final ValueChangeEvent e)
 specifier|public
@@ -769,13 +789,16 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|on (final GwtEvent e)
+DECL|method|on (final GwtEvent<?> e)
 specifier|private
 name|void
 name|on
 parameter_list|(
 specifier|final
 name|GwtEvent
+argument_list|<
+name|?
+argument_list|>
 name|e
 parameter_list|)
 block|{

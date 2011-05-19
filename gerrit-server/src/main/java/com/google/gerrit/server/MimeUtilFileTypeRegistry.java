@@ -379,6 +379,11 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getMimeType (final String path, final byte[] content)
 specifier|public
 name|MimeType

@@ -3052,6 +3052,9 @@ return|return
 operator|(
 operator|(
 name|IntPredicate
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|find
 argument_list|(

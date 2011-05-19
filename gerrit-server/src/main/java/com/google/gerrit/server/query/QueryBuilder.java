@@ -636,6 +636,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 DECL|field|opFactories
 specifier|private
 specifier|final
@@ -650,7 +655,11 @@ decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
+block|{
 literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
 argument_list|)
 DECL|method|QueryBuilder (Definition<T, ? extends QueryBuilder<T>> def)
 specifier|protected
@@ -1147,7 +1156,11 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
-specifier|final
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|OperatorFactory
 name|f
 init|=
@@ -1418,6 +1431,9 @@ operator|&&
 operator|(
 operator|(
 name|OperatorPredicate
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|p
 operator|)

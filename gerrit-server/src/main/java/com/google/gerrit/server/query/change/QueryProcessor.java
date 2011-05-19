@@ -1809,6 +1809,9 @@ range|:
 operator|(
 operator|(
 name|Collection
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|value
 operator|)

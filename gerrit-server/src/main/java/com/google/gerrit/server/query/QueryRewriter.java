@@ -473,6 +473,9 @@ name|add
 argument_list|(
 operator|new
 name|MethodRewrite
+argument_list|<
+name|T
+argument_list|>
 argument_list|(
 name|qb
 argument_list|,
@@ -2419,6 +2422,9 @@ return|;
 block|}
 specifier|final
 name|Predicate
+argument_list|<
+name|T
+argument_list|>
 index|[]
 name|argList
 init|=
@@ -2603,6 +2609,9 @@ block|{
 operator|(
 operator|(
 name|RewritePredicate
+argument_list|<
+name|T
+argument_list|>
 operator|)
 name|rep
 operator|)
