@@ -136,6 +136,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|AccountProjectWatch
+operator|.
+name|NotifyType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|ApprovalCategory
 import|;
 end_import
@@ -164,20 +180,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Branch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|Change
 import|;
 end_import
@@ -193,22 +195,6 @@ operator|.
 name|reviewdb
 operator|.
 name|PatchSetApproval
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|AccountProjectWatch
-operator|.
-name|NotifyType
 import|;
 end_import
 
@@ -338,18 +324,6 @@ operator|=
 name|at
 expr_stmt|;
 block|}
-DECL|method|setDest (final Branch.NameKey key)
-specifier|public
-name|void
-name|setDest
-parameter_list|(
-specifier|final
-name|Branch
-operator|.
-name|NameKey
-name|key
-parameter_list|)
-block|{   }
 annotation|@
 name|Override
 DECL|method|init ()
