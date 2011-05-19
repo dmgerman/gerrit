@@ -838,14 +838,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|Account
-operator|.
-name|Id
-name|accountId
-init|=
-name|getAccountId
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|!

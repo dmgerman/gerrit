@@ -326,12 +326,6 @@ name|ActiveDirectory
 extends|extends
 name|LdapType
 block|{
-DECL|field|defaultDomain
-specifier|private
-specifier|final
-name|String
-name|defaultDomain
-decl_stmt|;
 DECL|method|ActiveDirectory (final Attributes atts)
 name|ActiveDirectory
 parameter_list|(
@@ -454,13 +448,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|defaultDomain
-operator|=
-name|b
-operator|.
-name|toString
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override

@@ -1414,24 +1414,15 @@ operator|.
 name|getContextClassLoader
 argument_list|()
 decl_stmt|;
-DECL|field|logger
-specifier|private
-specifier|final
-name|TreeLogger
-name|logger
-decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|MyWebAppContext (TreeLogger logger, String webApp, String contextPath)
+DECL|method|MyWebAppContext (String webApp, String contextPath)
 specifier|private
 name|MyWebAppContext
 parameter_list|(
-name|TreeLogger
-name|logger
-parameter_list|,
 name|String
 name|webApp
 parameter_list|,
@@ -1445,12 +1436,6 @@ name|webApp
 argument_list|,
 name|contextPath
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|logger
-operator|=
-name|logger
 expr_stmt|;
 comment|// Prevent file locking on Windows; pick up file changes.
 name|getInitParams
@@ -1966,8 +1951,6 @@ init|=
 operator|new
 name|MyWebAppContext
 argument_list|(
-name|logger
-argument_list|,
 name|warDir
 operator|.
 name|getAbsolutePath

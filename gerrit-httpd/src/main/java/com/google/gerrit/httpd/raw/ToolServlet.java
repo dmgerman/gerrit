@@ -525,28 +525,6 @@ argument_list|,
 literal|"no-cache, must-revalidate"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-literal|false
-condition|)
-block|{
-name|rsp
-operator|.
-name|setHeader
-argument_list|(
-literal|"Content-Disposition"
-argument_list|,
-literal|"attachment; filename=\""
-operator|+
-name|ent
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
-block|}
 name|rsp
 operator|.
 name|setContentType

@@ -306,13 +306,6 @@ specifier|final
 name|ApprovalTypes
 name|approvalTypes
 decl_stmt|;
-DECL|field|dest
-specifier|private
-name|Branch
-operator|.
-name|NameKey
-name|dest
-decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MergedSender (EmailArguments ea, ApprovalTypes at, @Assisted Change c)
@@ -340,13 +333,6 @@ argument_list|,
 literal|"merged"
 argument_list|)
 expr_stmt|;
-name|dest
-operator|=
-name|c
-operator|.
-name|getDest
-argument_list|()
-expr_stmt|;
 name|approvalTypes
 operator|=
 name|at
@@ -363,12 +349,7 @@ operator|.
 name|NameKey
 name|key
 parameter_list|)
-block|{
-name|dest
-operator|=
-name|key
-expr_stmt|;
-block|}
+block|{   }
 annotation|@
 name|Override
 DECL|method|init ()

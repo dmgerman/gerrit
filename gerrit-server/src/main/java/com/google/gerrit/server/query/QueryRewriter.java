@@ -1443,15 +1443,6 @@ argument_list|()
 return|;
 block|}
 block|}
-specifier|final
-name|int
-name|cnt
-init|=
-name|pattern
-operator|.
-name|getChildCount
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|(
