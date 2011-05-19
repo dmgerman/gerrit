@@ -4642,6 +4642,25 @@ argument_list|(
 name|destBranchName
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|targetRef
+operator|==
+literal|null
+operator|||
+name|targetRef
+operator|.
+name|getObjectId
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+comment|// The destination branch does not yet exist. Assume the
+comment|// history being sent for review will start it and thus
+comment|// is "connected" to the branch.
+return|return;
+block|}
 specifier|final
 name|RevCommit
 name|h
