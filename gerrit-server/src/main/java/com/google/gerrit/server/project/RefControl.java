@@ -2496,7 +2496,7 @@ range|:
 name|getProjectState
 argument_list|()
 operator|.
-name|getOwners
+name|getAllOwners
 argument_list|()
 control|)
 block|{
