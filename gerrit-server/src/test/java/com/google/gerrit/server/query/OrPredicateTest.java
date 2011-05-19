@@ -216,6 +216,11 @@ name|value
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testChildren ()
 specifier|public
 name|void
@@ -246,6 +251,9 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|n
 init|=
 name|or
@@ -290,6 +298,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testChildrenUnmodifiable ()
 specifier|public
 name|void
@@ -320,6 +333,9 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|n
 init|=
 name|or
@@ -428,7 +444,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertChildren (String o, Predicate p, final List<Predicate> l)
+DECL|method|assertChildren (String o, Predicate<String> p, final List<Predicate<String>> l)
 specifier|private
 specifier|static
 name|void
@@ -438,12 +454,18 @@ name|String
 name|o
 parameter_list|,
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|p
 parameter_list|,
 specifier|final
 name|List
 argument_list|<
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|l
 parameter_list|)
@@ -463,6 +485,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testToString ()
 specifier|public
 name|void
@@ -535,6 +562,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testEquals ()
 specifier|public
 name|void
@@ -674,6 +706,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testHashCode ()
 specifier|public
 name|void
@@ -787,6 +824,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testCopy ()
 specifier|public
 name|void
@@ -830,6 +872,9 @@ specifier|final
 name|List
 argument_list|<
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|s2
 init|=
@@ -844,6 +889,9 @@ specifier|final
 name|List
 argument_list|<
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|s3
 init|=
@@ -858,6 +906,9 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|n2
 init|=
 name|or
@@ -919,6 +970,9 @@ name|Collections
 operator|.
 expr|<
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 operator|>
 name|emptyList
 argument_list|()
@@ -943,17 +997,26 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|list (final Predicate... predicates)
+DECL|method|list (final Predicate<T>... predicates)
 specifier|private
 specifier|static
+parameter_list|<
+name|T
+parameter_list|>
 name|List
 argument_list|<
 name|Predicate
+argument_list|<
+name|T
+argument_list|>
 argument_list|>
 name|list
 parameter_list|(
 specifier|final
 name|Predicate
+argument_list|<
+name|T
+argument_list|>
 modifier|...
 name|predicates
 parameter_list|)

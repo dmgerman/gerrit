@@ -243,6 +243,9 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|n
 init|=
 name|not
@@ -294,6 +297,9 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|n
 init|=
 name|not
@@ -343,6 +349,9 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|n
 init|=
 name|not
@@ -434,7 +443,7 @@ name|n
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertOnlyChild (String o, Predicate c, Predicate p)
+DECL|method|assertOnlyChild (String o, Predicate<String> c, Predicate<String> p)
 specifier|private
 specifier|static
 name|void
@@ -444,9 +453,15 @@ name|String
 name|o
 parameter_list|,
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|c
 parameter_list|,
 name|Predicate
+argument_list|<
+name|String
+argument_list|>
 name|p
 parameter_list|)
 block|{
@@ -671,6 +686,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"rawtypes"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 DECL|method|testCopy ()
 specifier|public
 name|void
