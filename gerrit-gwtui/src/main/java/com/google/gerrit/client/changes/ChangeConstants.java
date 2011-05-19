@@ -440,6 +440,31 @@ name|String
 name|patchSetInfoDownload
 parameter_list|()
 function_decl|;
+DECL|method|buttonRevertChangeBegin ()
+name|String
+name|buttonRevertChangeBegin
+parameter_list|()
+function_decl|;
+DECL|method|buttonRevertChangeSend ()
+name|String
+name|buttonRevertChangeSend
+parameter_list|()
+function_decl|;
+DECL|method|buttonRevertChangeCancel ()
+name|String
+name|buttonRevertChangeCancel
+parameter_list|()
+function_decl|;
+DECL|method|headingRevertMessage ()
+name|String
+name|headingRevertMessage
+parameter_list|()
+function_decl|;
+DECL|method|revertChangeTitle ()
+name|String
+name|revertChangeTitle
+parameter_list|()
+function_decl|;
 DECL|method|buttonAbandonChangeBegin ()
 name|String
 name|buttonAbandonChangeBegin

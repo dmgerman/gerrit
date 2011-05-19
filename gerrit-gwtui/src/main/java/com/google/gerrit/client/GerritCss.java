@@ -103,6 +103,16 @@ name|String
 name|abandonMessage
 parameter_list|()
 function_decl|;
+DECL|method|revertChangeDialog ()
+name|String
+name|revertChangeDialog
+parameter_list|()
+function_decl|;
+DECL|method|revertMessage ()
+name|String
+name|revertMessage
+parameter_list|()
+function_decl|;
 DECL|method|accountContactOnFile ()
 name|String
 name|accountContactOnFile
