@@ -11581,7 +11581,7 @@ name|msgBuf
 operator|.
 name|append
 argument_list|(
-name|repo
+name|Repository
 operator|.
 name|shortenRefName
 argument_list|(
