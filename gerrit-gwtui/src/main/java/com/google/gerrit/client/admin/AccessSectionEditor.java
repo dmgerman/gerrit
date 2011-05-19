@@ -704,6 +704,11 @@ specifier|private
 name|AccessSection
 name|value
 decl_stmt|;
+DECL|field|editing
+specifier|private
+name|boolean
+name|editing
+decl_stmt|;
 DECL|field|readOnly
 specifier|private
 name|boolean
@@ -1099,6 +1104,9 @@ operator|.
 name|readOnly
 operator|=
 operator|!
+name|editing
+operator|||
+operator|!
 name|projectAccess
 operator|.
 name|isOwnerOf
@@ -1146,6 +1154,22 @@ name|enableEditing
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|setEditing (final boolean editing)
+name|void
+name|setEditing
+parameter_list|(
+specifier|final
+name|boolean
+name|editing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|editing
+operator|=
+name|editing
+expr_stmt|;
 block|}
 DECL|method|rebuildPermissionSelector ()
 specifier|private

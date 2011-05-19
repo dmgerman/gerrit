@@ -517,6 +517,11 @@ specifier|private
 name|ProjectAccess
 name|value
 decl_stmt|;
+DECL|field|editing
+specifier|private
+name|boolean
+name|editing
+decl_stmt|;
 DECL|method|ProjectAccessEditor ()
 specifier|public
 name|ProjectAccessEditor
@@ -705,6 +710,8 @@ name|value
 operator|!=
 literal|null
 operator|&&
+name|editing
+operator|&&
 operator|!
 name|value
 operator|.
@@ -841,6 +848,29 @@ argument_list|>
 name|delegate
 parameter_list|)
 block|{   }
+DECL|method|setEditing (final boolean editing)
+name|void
+name|setEditing
+parameter_list|(
+specifier|final
+name|boolean
+name|editing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|editing
+operator|=
+name|editing
+expr_stmt|;
+name|addSection
+operator|.
+name|setVisible
+argument_list|(
+name|editing
+argument_list|)
+expr_stmt|;
+block|}
 DECL|class|Source
 specifier|private
 class|class
@@ -891,6 +921,13 @@ argument_list|(
 name|value
 argument_list|)
 decl_stmt|;
+name|subEditor
+operator|.
+name|setEditing
+argument_list|(
+name|editing
+argument_list|)
+expr_stmt|;
 name|container
 operator|.
 name|insert

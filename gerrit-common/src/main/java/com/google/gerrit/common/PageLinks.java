@@ -398,6 +398,30 @@ name|get
 argument_list|()
 return|;
 block|}
+DECL|method|toProjectAcceess (final Project.NameKey p)
+specifier|public
+specifier|static
+name|String
+name|toProjectAcceess
+parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
+return|return
+literal|"admin,project,"
+operator|+
+name|p
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|",access"
+return|;
+block|}
 DECL|method|toAccountDashboard (final AccountInfo acct)
 specifier|public
 specifier|static
