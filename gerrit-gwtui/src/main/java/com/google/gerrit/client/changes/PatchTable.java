@@ -1749,13 +1749,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|field|patchSetIdToCompareWith
-specifier|private
-name|PatchSet
-operator|.
-name|Id
-name|patchSetIdToCompareWith
-decl_stmt|;
 DECL|method|MyTable ()
 name|MyTable
 parameter_list|()

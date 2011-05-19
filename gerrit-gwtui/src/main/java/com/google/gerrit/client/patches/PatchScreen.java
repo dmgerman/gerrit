@@ -976,17 +976,6 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-comment|// The change id for which the above patch set id's are valid
-DECL|field|currentChangeId
-specifier|private
-specifier|static
-name|Change
-operator|.
-name|Id
-name|currentChangeId
-init|=
-literal|null
-decl_stmt|;
 DECL|field|patchKey
 specifier|protected
 specifier|final
