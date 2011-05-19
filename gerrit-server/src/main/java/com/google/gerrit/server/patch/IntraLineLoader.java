@@ -822,6 +822,27 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|forcefullyKillThreadInAnUglyWay
+argument_list|()
+expr_stmt|;
+return|return
+name|Result
+operator|.
+name|TIMEOUT
+return|;
+block|}
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+DECL|method|forcefullyKillThreadInAnUglyWay ()
+specifier|private
+name|void
+name|forcefullyKillThreadInAnUglyWay
+parameter_list|()
+block|{
 try|try
 block|{
 name|thread
@@ -851,12 +872,6 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
-block|}
-return|return
-name|Result
-operator|.
-name|TIMEOUT
-return|;
 block|}
 block|}
 DECL|method|end ()
