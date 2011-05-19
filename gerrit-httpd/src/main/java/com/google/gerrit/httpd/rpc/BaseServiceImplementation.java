@@ -326,8 +326,6 @@ operator|=
 name|currentUser
 expr_stmt|;
 block|}
-annotation|@
-name|Deprecated
 DECL|method|getAccountId ()
 specifier|protected
 name|Account
@@ -603,8 +601,6 @@ block|}
 block|}
 block|}
 comment|/** Exception whose cause is passed into onFailure. */
-annotation|@
-name|Deprecated
 DECL|class|Failure
 specifier|public
 specifier|static

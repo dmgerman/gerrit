@@ -1083,8 +1083,6 @@ comment|/** Legacy 32 bit integer identity for a change. */
 end_comment
 
 begin_function
-annotation|@
-name|Deprecated
 DECL|method|getId ()
 specifier|public
 name|Change
@@ -1104,8 +1102,6 @@ comment|/** Legacy 32 bit integer identity for a change. */
 end_comment
 
 begin_function
-annotation|@
-name|Deprecated
 DECL|method|getChangeId ()
 specifier|public
 name|int

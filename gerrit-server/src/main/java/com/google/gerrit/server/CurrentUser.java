@@ -274,8 +274,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Deprecated
 DECL|method|isAdministrator ()
 specifier|public
 specifier|final
