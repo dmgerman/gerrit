@@ -717,7 +717,7 @@ argument_list|()
 expr_stmt|;
 name|showInherited
 operator|.
-name|setChecked
+name|setValue
 argument_list|(
 literal|true
 argument_list|)
@@ -744,7 +744,7 @@ name|showInherited
 argument_list|(
 name|showInherited
 operator|.
-name|isChecked
+name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1645,7 +1645,7 @@ condition|(
 operator|!
 name|showInherited
 operator|.
-name|isChecked
+name|getValue
 argument_list|()
 operator|&&
 name|r
