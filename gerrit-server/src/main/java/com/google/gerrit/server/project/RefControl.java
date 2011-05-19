@@ -208,6 +208,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -817,6 +833,31 @@ name|boolean
 name|canSubmit
 parameter_list|()
 block|{
+if|if
+condition|(
+name|GitRepositoryManager
+operator|.
+name|REF_CONFIG
+operator|.
+name|equals
+argument_list|(
+name|refName
+argument_list|)
+condition|)
+block|{
+comment|// Always allow project owners to submit configuration changes.
+comment|// Submitting configuration changes modifies the access control
+comment|// rules. Allowing this to be done by a non-project-owner opens
+comment|// a security hole enabling editing of access rules, and thus
+comment|// granting of powers beyond submitting to the configuration.
+return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+return|;
+block|}
 return|return
 name|canPerform
 argument_list|(
@@ -833,6 +874,34 @@ name|boolean
 name|canUpdate
 parameter_list|()
 block|{
+if|if
+condition|(
+name|GitRepositoryManager
+operator|.
+name|REF_CONFIG
+operator|.
+name|equals
+argument_list|(
+name|refName
+argument_list|)
+operator|&&
+operator|!
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+condition|)
+block|{
+comment|// Pushing requires being at least project owner, in addition to push.
+comment|// Pushing configuration changes modifies the access control
+comment|// rules. Allowing this to be done by a non-project-owner opens
+comment|// a security hole enabling editing of access rules, and thus
+comment|// granting of powers beyond pushing to the configuration.
+return|return
+literal|false
+return|;
+block|}
 return|return
 name|canPerform
 argument_list|(
@@ -863,6 +932,34 @@ name|boolean
 name|canPushWithForce
 parameter_list|()
 block|{
+if|if
+condition|(
+name|GitRepositoryManager
+operator|.
+name|REF_CONFIG
+operator|.
+name|equals
+argument_list|(
+name|refName
+argument_list|)
+operator|&&
+operator|!
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+condition|)
+block|{
+comment|// Pushing requires being at least project owner, in addition to push.
+comment|// Pushing configuration changes modifies the access control
+comment|// rules. Allowing this to be done by a non-project-owner opens
+comment|// a security hole enabling editing of access rules, and thus
+comment|// granting of powers beyond pushing to the configuration.
+return|return
+literal|false
+return|;
+block|}
 for|for
 control|(
 name|PermissionRule
@@ -1129,6 +1226,27 @@ name|boolean
 name|canDelete
 parameter_list|()
 block|{
+if|if
+condition|(
+name|GitRepositoryManager
+operator|.
+name|REF_CONFIG
+operator|.
+name|equals
+argument_list|(
+name|refName
+argument_list|)
+condition|)
+block|{
+comment|// Never allow removal of the refs/meta/config branch.
+comment|// Deleting the branch would destroy all Gerrit specific
+comment|// metadata about the project, including its access rules.
+comment|// If a project is to be removed from Gerrit, its repository
+comment|// should be removed first.
+return|return
+literal|false
+return|;
+block|}
 switch|switch
 condition|(
 name|getCurrentUser
