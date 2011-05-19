@@ -12440,31 +12440,6 @@ name|R_HEADS
 argument_list|)
 return|;
 block|}
-DECL|method|isConfig (final Ref ref)
-specifier|private
-specifier|static
-name|boolean
-name|isConfig
-parameter_list|(
-specifier|final
-name|Ref
-name|ref
-parameter_list|)
-block|{
-return|return
-name|ref
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|GitRepositoryManager
-operator|.
-name|REF_CONFIG
-argument_list|)
-return|;
-block|}
 DECL|method|isConfig (final ReceiveCommand cmd)
 specifier|private
 specifier|static
