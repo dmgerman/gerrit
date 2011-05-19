@@ -618,11 +618,6 @@ name|long
 name|maxWait
 decl_stmt|;
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Inject
 DECL|method|ProjectQoSFilter (final Provider<CurrentUser> userProvider, QueueProvider queue, final ServletContext context, @GerritServerConfig final Config cfg)
 name|ProjectQoSFilter

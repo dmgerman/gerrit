@@ -244,11 +244,6 @@ extends|extends
 name|HttpServlet
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-annotation|@
 name|Singleton
 DECL|class|Site
 specifier|static
@@ -282,11 +277,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 annotation|@
 name|Singleton
 DECL|class|Default

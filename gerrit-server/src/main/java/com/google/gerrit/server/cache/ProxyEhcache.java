@@ -554,11 +554,6 @@ name|key
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getAllWithLoader (Collection keys, Object loaderArgument)
 specifier|public
 name|Map
@@ -717,11 +712,6 @@ name|getGuid
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getKeys ()
 specifier|public
 name|List
@@ -740,11 +730,6 @@ name|getKeys
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getKeysNoDuplicateCheck ()
 specifier|public
 name|List
@@ -761,11 +746,6 @@ name|getKeysNoDuplicateCheck
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getKeysWithExpiryCheck ()
 specifier|public
 name|List
@@ -1157,11 +1137,6 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|loadAll (Collection keys, Object argument)
 specifier|public
 name|void

@@ -3069,11 +3069,6 @@ name|intValue
 argument_list|()
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|hasSortKey (Predicate<ChangeData> p)
 specifier|public
 name|boolean

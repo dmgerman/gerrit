@@ -265,11 +265,6 @@ argument_list|)
 return|;
 block|}
 comment|/** Invert the passed node. */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|not (final Predicate<T> that)
 specifier|public
 specifier|static

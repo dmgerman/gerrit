@@ -688,11 +688,6 @@ throws|,
 name|SQLException
 block|{   }
 comment|/**    * Invoked between updateSchema (adds new columns/tables) and pruneSchema    * (removes deleted columns/tables).    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|migrateData (ReviewDb db, UpdateUI ui)
 specifier|protected
 name|void

@@ -3069,11 +3069,6 @@ block|}
 block|}
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|isAND (final Predicate<T> p)
 specifier|private
 specifier|static
@@ -3097,11 +3092,6 @@ operator|instanceof
 name|AndPredicate
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|isOR (final Predicate<T> p)
 specifier|private
 specifier|static
@@ -3125,11 +3115,6 @@ operator|instanceof
 name|OrPredicate
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|isNOT (final Predicate<T> p)
 specifier|private
 specifier|static

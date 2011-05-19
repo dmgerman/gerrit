@@ -745,11 +745,6 @@ argument_list|)
 throw|;
 block|}
 comment|/**    * Parse a Java enumeration list from the configuration.    *    * @param<T> type of the enumeration object.    * @param config the configuration file to read.    * @param section section the key is in.    * @param subsection subsection the key is in, or null if not in a subsection.    * @param setting name of the setting to read.    * @param defaultValue default value to return if the setting was not set.    *        Must not be null as the enumeration values are derived from this.    * @return the selected enumeration values list, or {@code defaultValue}.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getEnumList (final Config config, final String section, final String subsection, final String setting, final T defaultValue)
 specifier|public
 specifier|static

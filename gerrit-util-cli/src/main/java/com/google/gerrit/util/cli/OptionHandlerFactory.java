@@ -119,11 +119,6 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|create (org.kohsuke.args4j.CmdLineParser cmdLineParser, OptionDef optionDef, Setter setter)
 name|OptionHandler
 name|create

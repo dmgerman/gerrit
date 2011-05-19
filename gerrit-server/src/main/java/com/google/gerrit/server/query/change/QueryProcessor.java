@@ -1744,15 +1744,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"cast"
-block|,
-literal|"unchecked"
-block|}
-argument_list|)
 DECL|method|showTextValue (Object value, int depth)
 specifier|private
 name|void
@@ -1894,11 +1885,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|isPrimitive (Object value)
 specifier|private
 specifier|static
