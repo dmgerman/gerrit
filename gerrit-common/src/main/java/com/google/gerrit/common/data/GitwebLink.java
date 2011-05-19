@@ -245,7 +245,7 @@ literal|"project"
 argument_list|,
 name|URL
 operator|.
-name|encodeComponent
+name|encodeQueryString
 argument_list|(
 name|project
 operator|.
@@ -262,7 +262,7 @@ literal|"commit"
 argument_list|,
 name|URL
 operator|.
-name|encodeComponent
+name|encodeQueryString
 argument_list|(
 name|ps
 operator|.
@@ -335,7 +335,7 @@ literal|"project"
 argument_list|,
 name|URL
 operator|.
-name|encodeComponent
+name|encodeQueryString
 argument_list|(
 name|project
 operator|.
@@ -405,7 +405,7 @@ literal|"project"
 argument_list|,
 name|URL
 operator|.
-name|encodeComponent
+name|encodeQueryString
 argument_list|(
 name|branch
 operator|.
@@ -425,7 +425,7 @@ literal|"branch"
 argument_list|,
 name|URL
 operator|.
-name|encodeComponent
+name|encodeQueryString
 argument_list|(
 name|branch
 operator|.

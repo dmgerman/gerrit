@@ -1506,7 +1506,7 @@ name|e
 operator|=
 name|URL
 operator|.
-name|encodeComponent
+name|encodeQueryString
 argument_list|(
 name|e
 argument_list|)
@@ -1543,7 +1543,7 @@ block|{
 return|return
 name|URL
 operator|.
-name|decodeComponent
+name|decodeQueryString
 argument_list|(
 name|e
 argument_list|)
