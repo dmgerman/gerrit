@@ -138,6 +138,17 @@ name|String
 name|string
 parameter_list|)
 function_decl|;
+DECL|method|revertChangeDefaultMessage (String commitMsg, String commitId)
+name|String
+name|revertChangeDefaultMessage
+parameter_list|(
+name|String
+name|commitMsg
+parameter_list|,
+name|String
+name|commitId
+parameter_list|)
+function_decl|;
 DECL|method|changeScreenTitleId (String changeId)
 name|String
 name|changeScreenTitleId

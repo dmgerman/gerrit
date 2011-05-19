@@ -202,6 +202,11 @@ specifier|protected
 name|boolean
 name|canRestore
 decl_stmt|;
+DECL|field|canRevert
+specifier|protected
+name|boolean
+name|canRevert
+decl_stmt|;
 DECL|field|change
 specifier|protected
 name|Change
@@ -384,6 +389,30 @@ name|a
 parameter_list|)
 block|{
 name|canRestore
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canRevert ()
+specifier|public
+name|boolean
+name|canRevert
+parameter_list|()
+block|{
+return|return
+name|canRevert
+return|;
+block|}
+DECL|method|setCanRevert (boolean a)
+specifier|public
+name|void
+name|setCanRevert
+parameter_list|(
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canRevert
 operator|=
 name|a
 expr_stmt|;
