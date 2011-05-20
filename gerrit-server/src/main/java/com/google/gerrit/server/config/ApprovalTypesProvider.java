@@ -236,6 +236,7 @@ end_import
 
 begin_class
 DECL|class|ApprovalTypesProvider
+specifier|public
 class|class
 name|ApprovalTypesProvider
 implements|implements

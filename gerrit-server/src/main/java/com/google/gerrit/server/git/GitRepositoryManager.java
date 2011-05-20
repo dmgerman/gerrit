@@ -140,6 +140,16 @@ specifier|public
 interface|interface
 name|GitRepositoryManager
 block|{
+comment|/** Notes branch successful reviews are written to after being merged. */
+DECL|field|REFS_NOTES_REVIEW
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_NOTES_REVIEW
+init|=
+literal|"refs/notes/review"
+decl_stmt|;
 comment|/** Note tree listing commits we refuse {@code refs/meta/reject-commits} */
 DECL|field|REF_REJECT_COMMITS
 specifier|public
