@@ -890,6 +890,14 @@ specifier|static
 name|GerritConfig
 name|myConfig
 decl_stmt|;
+DECL|field|myTheme
+specifier|private
+specifier|static
+name|HostPageData
+operator|.
+name|Theme
+name|myTheme
+decl_stmt|;
 DECL|field|myAccount
 specifier|private
 specifier|static
@@ -1293,6 +1301,20 @@ return|return
 name|myConfig
 return|;
 block|}
+comment|/** Site theme information (site specific colors)/ */
+DECL|method|getTheme ()
+specifier|public
+specifier|static
+name|HostPageData
+operator|.
+name|Theme
+name|getTheme
+parameter_list|()
+block|{
+return|return
+name|myTheme
+return|;
+block|}
 comment|/** @return the currently signed in user's account data; null if no account */
 DECL|method|getUserAccount ()
 specifier|public
@@ -1625,6 +1647,12 @@ operator|=
 name|result
 operator|.
 name|config
+expr_stmt|;
+name|myTheme
+operator|=
+name|result
+operator|.
+name|theme
 expr_stmt|;
 if|if
 condition|(
