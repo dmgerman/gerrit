@@ -1617,6 +1617,7 @@ argument_list|()
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|allowedSchemes
 operator|.
 name|contains
@@ -1625,6 +1626,16 @@ name|DownloadScheme
 operator|.
 name|ANON_GIT
 argument_list|)
+operator|||
+name|allowedSchemes
+operator|.
+name|contains
+argument_list|(
+name|DownloadScheme
+operator|.
+name|DEFAULT_DOWNLOADS
+argument_list|)
+operator|)
 condition|)
 block|{
 name|StringBuilder
