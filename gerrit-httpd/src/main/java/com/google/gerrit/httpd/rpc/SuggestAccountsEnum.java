@@ -78,6 +78,9 @@ block|,
 DECL|enumConstant|SAME_GROUP
 name|SAME_GROUP
 block|,
+DECL|enumConstant|VISIBLE_GROUP
+name|VISIBLE_GROUP
+block|,
 DECL|enumConstant|OFF
 name|OFF
 block|; }
