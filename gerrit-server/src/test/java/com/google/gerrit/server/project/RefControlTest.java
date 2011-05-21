@@ -326,6 +326,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|ProjectConfig
 import|;
 end_import
@@ -2179,6 +2195,11 @@ parameter_list|)
 block|{       }
 block|}
 decl_stmt|;
+name|GitRepositoryManager
+name|mgr
+init|=
+literal|null
+decl_stmt|;
 name|Project
 operator|.
 name|NameKey
@@ -2222,6 +2243,8 @@ name|wildProject
 argument_list|,
 name|projectControlFactory
 argument_list|,
+name|mgr
+argument_list|,
 name|local
 argument_list|)
 argument_list|)
@@ -2248,6 +2271,8 @@ argument_list|,
 name|wildProject
 argument_list|,
 name|projectControlFactory
+argument_list|,
+name|mgr
 argument_list|,
 name|parent
 argument_list|)
