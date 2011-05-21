@@ -5848,6 +5848,8 @@ name|codeReviewNotesFactory
 operator|.
 name|create
 argument_list|(
+name|schema
+argument_list|,
 name|db
 argument_list|)
 decl_stmt|;
@@ -5892,7 +5894,7 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|,
-name|CreateCodeReviewNotes
+name|GitRepositoryManager
 operator|.
 name|REFS_NOTES_REVIEW
 argument_list|)

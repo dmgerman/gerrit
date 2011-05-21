@@ -66,6 +66,20 @@ name|git
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
 begin_comment
 comment|/**  * Thrown when creation of a code review note fails.  */
 end_comment
@@ -117,12 +131,12 @@ name|why
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CodeReviewNoteCreationException (final CodeReviewCommit commit, final Throwable cause)
+DECL|method|CodeReviewNoteCreationException (final RevCommit commit, final Throwable cause)
 specifier|public
 name|CodeReviewNoteCreationException
 parameter_list|(
 specifier|final
-name|CodeReviewCommit
+name|RevCommit
 name|commit
 parameter_list|,
 specifier|final
@@ -135,6 +149,9 @@ argument_list|(
 literal|"Couldn't create code review note for the following commit: "
 operator|+
 name|commit
+operator|.
+name|name
+argument_list|()
 argument_list|,
 name|cause
 argument_list|)
