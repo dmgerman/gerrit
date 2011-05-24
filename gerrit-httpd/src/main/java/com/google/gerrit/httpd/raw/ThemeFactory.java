@@ -213,7 +213,7 @@ name|name
 argument_list|,
 literal|"backgroundColor"
 argument_list|,
-literal|"#FFFFFF"
+literal|"#FCFEEF"
 argument_list|)
 expr_stmt|;
 name|theme
@@ -359,7 +359,7 @@ condition|)
 block|{
 name|v
 operator|=
-literal|"#FCFEEF"
+literal|"#FFFFFF"
 expr_stmt|;
 block|}
 else|else
