@@ -360,6 +360,22 @@ name|server
 operator|.
 name|project
 operator|.
+name|InvalidChangeOperationException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
 name|NoSuchChangeException
 import|;
 end_import
@@ -1557,6 +1573,8 @@ parameter_list|)
 throws|throws
 name|NoSuchChangeException
 throws|,
+name|InvalidChangeOperationException
+throws|,
 name|EmailException
 throws|,
 name|OrmException
@@ -1771,10 +1789,18 @@ decl_stmt|;
 if|if
 condition|(
 name|updatedChange
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+throw|throw
+operator|new
+name|InvalidChangeOperationException
+argument_list|(
+literal|"Change is no longer open or patchset is not latest"
+argument_list|)
+throw|;
+block|}
 name|db
 operator|.
 name|changeMessages
@@ -1870,7 +1896,6 @@ operator|.
 name|send
 argument_list|()
 expr_stmt|;
-block|}
 name|hooks
 operator|.
 name|doChangeAbandonedHook
@@ -2633,6 +2658,8 @@ parameter_list|)
 throws|throws
 name|NoSuchChangeException
 throws|,
+name|InvalidChangeOperationException
+throws|,
 name|EmailException
 throws|,
 name|OrmException
@@ -2850,10 +2877,18 @@ decl_stmt|;
 if|if
 condition|(
 name|updatedChange
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+throw|throw
+operator|new
+name|InvalidChangeOperationException
+argument_list|(
+literal|"Change is not abandoned or patchset is not latest"
+argument_list|)
+throw|;
+block|}
 name|db
 operator|.
 name|changeMessages
@@ -2949,7 +2984,6 @@ operator|.
 name|send
 argument_list|()
 expr_stmt|;
-block|}
 name|hooks
 operator|.
 name|doChangeRestoreHook
