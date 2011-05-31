@@ -687,14 +687,6 @@ name|int
 name|threads
 init|=
 literal|2
-operator|*
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|availableProcessors
-argument_list|()
 decl_stmt|;
 DECL|field|manager
 specifier|private
