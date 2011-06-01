@@ -859,6 +859,15 @@ name|h
 operator|.
 name|setAttribute
 argument_list|(
+literal|"wmode"
+argument_list|,
+literal|"transparent"
+argument_list|)
+expr_stmt|;
+name|h
+operator|.
+name|setAttribute
+argument_list|(
 literal|"type"
 argument_list|,
 literal|"application/x-shockwave-flash"
