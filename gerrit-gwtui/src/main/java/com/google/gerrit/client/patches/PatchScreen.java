@@ -2837,6 +2837,21 @@ name|diffSideA
 operator|=
 name|patchSetId
 expr_stmt|;
+if|if
+condition|(
+name|fileList
+operator|!=
+literal|null
+condition|)
+block|{
+name|fileList
+operator|.
+name|setPatchSetIdToCompareWith
+argument_list|(
+name|patchSetId
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|setSideB (PatchSet.Id patchSetId)
 specifier|public
