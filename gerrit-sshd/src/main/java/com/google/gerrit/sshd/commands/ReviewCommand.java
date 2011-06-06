@@ -1598,13 +1598,9 @@ name|changeControl
 operator|.
 name|canSubmit
 argument_list|(
-name|patchSetId
-argument_list|,
 name|db
 argument_list|,
-name|approvalTypes
-argument_list|,
-name|functionStateFactory
+name|patchSetId
 argument_list|)
 decl_stmt|;
 if|if

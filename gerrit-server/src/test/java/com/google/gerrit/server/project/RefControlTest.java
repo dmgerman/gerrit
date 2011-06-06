@@ -248,6 +248,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|rules
+operator|.
+name|PrologEnvironment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|AccessPath
@@ -2195,6 +2209,13 @@ parameter_list|)
 block|{       }
 block|}
 decl_stmt|;
+name|PrologEnvironment
+operator|.
+name|Factory
+name|envFactory
+init|=
+literal|null
+decl_stmt|;
 name|GitRepositoryManager
 name|mgr
 init|=
@@ -2243,6 +2264,8 @@ name|wildProject
 argument_list|,
 name|projectControlFactory
 argument_list|,
+name|envFactory
+argument_list|,
 name|mgr
 argument_list|,
 name|local
@@ -2271,6 +2294,8 @@ argument_list|,
 name|wildProject
 argument_list|,
 name|projectControlFactory
+argument_list|,
+name|envFactory
 argument_list|,
 name|mgr
 argument_list|,

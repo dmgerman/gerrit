@@ -166,6 +166,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|rules
+operator|.
+name|PrologEnvironment
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|AnonymousUser
@@ -410,6 +424,14 @@ operator|.
 name|AssistedFactory
 name|projectControlFactory
 decl_stmt|;
+DECL|field|envFactory
+specifier|private
+specifier|final
+name|PrologEnvironment
+operator|.
+name|Factory
+name|envFactory
+decl_stmt|;
 DECL|field|gitMgr
 specifier|private
 specifier|final
@@ -442,7 +464,7 @@ name|lastCheckTime
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState (final AnonymousUser anonymousUser, final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, final ProjectControl.AssistedFactory projectControlFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
+DECL|method|ProjectState (final AnonymousUser anonymousUser, final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
 specifier|protected
 name|ProjectState
 parameter_list|(
@@ -467,6 +489,12 @@ name|ProjectControl
 operator|.
 name|AssistedFactory
 name|projectControlFactory
+parameter_list|,
+specifier|final
+name|PrologEnvironment
+operator|.
+name|Factory
+name|envFactory
 parameter_list|,
 specifier|final
 name|GitRepositoryManager
@@ -502,6 +530,12 @@ operator|.
 name|projectControlFactory
 operator|=
 name|projectControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|envFactory
+operator|=
+name|envFactory
 expr_stmt|;
 name|this
 operator|.
@@ -761,6 +795,27 @@ return|return
 literal|true
 return|;
 block|}
+block|}
+comment|/** @return Construct a new PrologEnvironment for the calling thread. */
+DECL|method|newPrologEnvironment ()
+specifier|public
+name|PrologEnvironment
+name|newPrologEnvironment
+parameter_list|()
+block|{
+comment|// TODO Replace this with a per-project ClassLoader to isolate rules.
+return|return
+name|envFactory
+operator|.
+name|create
+argument_list|(
+name|getClass
+argument_list|()
+operator|.
+name|getClassLoader
+argument_list|()
+argument_list|)
+return|;
 block|}
 DECL|method|getProject ()
 specifier|public
