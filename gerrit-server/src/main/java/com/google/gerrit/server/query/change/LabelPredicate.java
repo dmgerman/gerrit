@@ -976,6 +976,9 @@ operator|.
 name|equals
 argument_list|(
 name|category
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 condition|)
 block|{
