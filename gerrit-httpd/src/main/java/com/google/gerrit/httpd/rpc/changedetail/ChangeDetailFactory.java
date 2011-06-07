@@ -1484,9 +1484,9 @@ name|patchSetDetail
 operator|.
 name|create
 argument_list|(
-name|psId
-argument_list|,
 literal|null
+argument_list|,
+name|psId
 argument_list|,
 literal|null
 argument_list|)
