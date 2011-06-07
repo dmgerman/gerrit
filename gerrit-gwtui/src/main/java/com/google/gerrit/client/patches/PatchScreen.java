@@ -2629,6 +2629,11 @@ name|script
 operator|.
 name|getCommentDetail
 argument_list|()
+argument_list|,
+name|script
+operator|.
+name|isExpandAllComments
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|contentTable
