@@ -744,6 +744,32 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|ownerOf
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|pc
+operator|.
+name|isOwnerAnyRef
+argument_list|()
+condition|)
+block|{
+comment|// Special case: If the section list is empty, this project has no current
+comment|// access control information. Rely on what ProjectControl determines
+comment|// is ownership, which probably means falling back to site administrators.
+name|ownerOf
+operator|.
+name|add
+argument_list|(
+name|AccessSection
+operator|.
+name|ALL
+argument_list|)
+expr_stmt|;
+block|}
 specifier|final
 name|ProjectAccess
 name|detail
