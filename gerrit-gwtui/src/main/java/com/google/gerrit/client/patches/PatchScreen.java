@@ -1997,10 +1997,6 @@ name|patchSetDetail
 argument_list|(
 name|idSideB
 argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
@@ -2450,10 +2446,6 @@ operator|.
 name|patchSetDetail
 argument_list|(
 name|idSideB
-argument_list|,
-literal|null
-argument_list|,
-literal|null
 argument_list|,
 operator|new
 name|GerritCallback
@@ -2963,10 +2955,6 @@ operator|.
 name|patchSetDetail
 argument_list|(
 name|psid
-argument_list|,
-literal|null
-argument_list|,
-literal|null
 argument_list|,
 operator|new
 name|GerritCallback
