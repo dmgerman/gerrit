@@ -618,7 +618,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|(
-literal|"-- All Projects --"
+literal|"All-Projects"
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -1604,7 +1604,7 @@ name|notFound
 parameter_list|)
 block|{
 comment|// A repository may be missing if this project existed only to store
-comment|// inheritable permissions. For example '-- All Projects --'.
+comment|// inheritable permissions. For example 'All-Projects'.
 try|try
 block|{
 name|git

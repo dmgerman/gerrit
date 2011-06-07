@@ -2210,7 +2210,7 @@ name|Project
 operator|.
 name|NameKey
 argument_list|(
-literal|"-- All Projects --"
+literal|"All-Projects"
 argument_list|)
 decl_stmt|;
 name|ProjectControl
