@@ -1997,10 +1997,6 @@ name|patchSetDetail
 argument_list|(
 name|idSideB
 argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
@@ -2451,10 +2447,6 @@ name|patchSetDetail
 argument_list|(
 name|idSideB
 argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
@@ -2842,6 +2834,21 @@ name|diffSideA
 operator|=
 name|patchSetId
 expr_stmt|;
+if|if
+condition|(
+name|fileList
+operator|!=
+literal|null
+condition|)
+block|{
+name|fileList
+operator|.
+name|setPatchSetIdToCompareWith
+argument_list|(
+name|patchSetId
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|setSideB (PatchSet.Id patchSetId)
 specifier|public
@@ -2953,10 +2960,6 @@ operator|.
 name|patchSetDetail
 argument_list|(
 name|psid
-argument_list|,
-literal|null
-argument_list|,
-literal|null
 argument_list|,
 operator|new
 name|GerritCallback

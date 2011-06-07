@@ -235,19 +235,35 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-DECL|method|patchSetDetail (PatchSet.Id keyA, PatchSet.Id keyB, AccountDiffPreference diffPrefs, AsyncCallback<PatchSetDetail> callback)
+DECL|method|patchSetDetail (PatchSet.Id key, AsyncCallback<PatchSetDetail> callback)
 name|void
 name|patchSetDetail
 parameter_list|(
 name|PatchSet
 operator|.
 name|Id
-name|keyA
+name|key
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|PatchSetDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+DECL|method|patchSetDetail2 (PatchSet.Id baseId, PatchSet.Id key, AccountDiffPreference diffPrefs, AsyncCallback<PatchSetDetail> callback)
+name|void
+name|patchSetDetail2
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|baseId
 parameter_list|,
 name|PatchSet
 operator|.
 name|Id
-name|keyB
+name|key
 parameter_list|,
 name|AccountDiffPreference
 name|diffPrefs
