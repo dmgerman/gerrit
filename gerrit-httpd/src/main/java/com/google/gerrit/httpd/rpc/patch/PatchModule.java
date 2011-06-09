@@ -160,7 +160,7 @@ parameter_list|()
 block|{
 name|factory
 argument_list|(
-name|AddReviewer
+name|AddReviewerHandler
 operator|.
 name|Factory
 operator|.
@@ -169,7 +169,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|RemoveReviewer
+name|RemoveReviewerHandler
 operator|.
 name|Factory
 operator|.
