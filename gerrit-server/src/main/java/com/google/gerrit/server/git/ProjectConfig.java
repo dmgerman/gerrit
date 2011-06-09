@@ -579,6 +579,11 @@ name|ValidationError
 argument_list|>
 name|validationErrors
 decl_stmt|;
+DECL|field|prologRules
+specifier|private
+name|String
+name|prologRules
+decl_stmt|;
 DECL|method|read (MetaDataUpdate update)
 specifier|public
 specifier|static
@@ -961,6 +966,31 @@ name|uuid
 argument_list|)
 return|;
 block|}
+comment|/**    * @return the project's Prolog based rules.pl script,    *    if present in the branch. Null if there are no rules.    */
+DECL|method|getPrologRules ()
+specifier|public
+name|String
+name|getPrologRules
+parameter_list|()
+block|{
+if|if
+condition|(
+name|prologRules
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|prologRules
+return|;
+block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupCache cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupCache groupCache)
 specifier|public
@@ -1114,6 +1144,13 @@ init|=
 name|readGroupList
 argument_list|()
 decl_stmt|;
+name|prologRules
+operator|=
+name|readUTF8
+argument_list|(
+literal|"rules.pl"
+argument_list|)
+expr_stmt|;
 name|Config
 name|rc
 init|=
