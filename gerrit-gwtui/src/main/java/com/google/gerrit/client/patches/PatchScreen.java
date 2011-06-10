@@ -781,7 +781,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getPatchScreenType ()
-specifier|protected
+specifier|public
 name|PatchScreen
 operator|.
 name|Type
@@ -857,7 +857,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|getPatchScreenType ()
-specifier|protected
+specifier|public
 name|PatchScreen
 operator|.
 name|Type
@@ -2075,7 +2075,7 @@ name|createContentTable
 parameter_list|()
 function_decl|;
 DECL|method|getPatchScreenType ()
-specifier|protected
+specifier|public
 specifier|abstract
 name|PatchScreen
 operator|.
@@ -2083,6 +2083,18 @@ name|Type
 name|getPatchScreenType
 parameter_list|()
 function_decl|;
+DECL|method|getPatchKey ()
+specifier|public
+name|Patch
+operator|.
+name|Key
+name|getPatchKey
+parameter_list|()
+block|{
+return|return
+name|patchKey
+return|;
+block|}
 DECL|method|refresh (final boolean isFirst)
 specifier|protected
 name|void

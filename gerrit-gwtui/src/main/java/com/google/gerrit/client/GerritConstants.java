@@ -253,11 +253,6 @@ name|String
 name|menuDiff
 parameter_list|()
 function_decl|;
-DECL|method|menuDiffMain ()
-name|String
-name|menuDiffMain
-parameter_list|()
-function_decl|;
 DECL|method|menuDiffCommit ()
 name|String
 name|menuDiffCommit
