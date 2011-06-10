@@ -564,6 +564,36 @@ block|}
 block|}
 annotation|@
 name|Override
+DECL|method|onCellSingleClick (int row, int column)
+specifier|protected
+name|void
+name|onCellSingleClick
+parameter_list|(
+name|int
+name|row
+parameter_list|,
+name|int
+name|column
+parameter_list|)
+block|{
+if|if
+condition|(
+name|column
+operator|==
+literal|2
+condition|)
+block|{
+name|onCellDoubleClick
+argument_list|(
+name|row
+argument_list|,
+name|column
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
 DECL|method|onInsertComment (final PatchLine pl)
 specifier|protected
 name|void

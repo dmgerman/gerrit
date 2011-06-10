@@ -2293,12 +2293,26 @@ operator|instanceof
 name|CommentList
 return|;
 block|}
-comment|/** Invoked when the user clicks on a table cell. */
+comment|/** Invoked when the user double clicks on a table cell. */
 DECL|method|onCellDoubleClick (int row, int column)
 specifier|protected
 specifier|abstract
 name|void
 name|onCellDoubleClick
+parameter_list|(
+name|int
+name|row
+parameter_list|,
+name|int
+name|column
+parameter_list|)
+function_decl|;
+comment|/** Invoked when the user clicks on a table cell. */
+DECL|method|onCellSingleClick (int row, int column)
+specifier|protected
+specifier|abstract
+name|void
+name|onCellSingleClick
 parameter_list|(
 name|int
 name|row
@@ -4003,6 +4017,19 @@ block|{
 name|movePointerTo
 argument_list|(
 name|row
+argument_list|)
+expr_stmt|;
+name|onCellSingleClick
+argument_list|(
+name|rowOf
+argument_list|(
+name|td
+argument_list|)
+argument_list|,
+name|columnOf
+argument_list|(
+name|td
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
