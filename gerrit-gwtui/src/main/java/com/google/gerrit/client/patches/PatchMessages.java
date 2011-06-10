@@ -100,28 +100,6 @@ name|PatchMessages
 extends|extends
 name|Messages
 block|{
-DECL|method|patchWindowTitle (String changeId, String file)
-name|String
-name|patchWindowTitle
-parameter_list|(
-name|String
-name|changeId
-parameter_list|,
-name|String
-name|file
-parameter_list|)
-function_decl|;
-DECL|method|patchPageTitle (String changeId, String path)
-name|String
-name|patchPageTitle
-parameter_list|(
-name|String
-name|changeId
-parameter_list|,
-name|String
-name|path
-parameter_list|)
-function_decl|;
 DECL|method|patchSkipRegion (@luralCount int lineCnt)
 name|String
 name|patchSkipRegion
