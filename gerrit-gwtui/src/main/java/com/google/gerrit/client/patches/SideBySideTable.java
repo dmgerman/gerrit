@@ -2601,9 +2601,20 @@ name|m
 operator|.
 name|append
 argument_list|(
+name|SafeHtml
+operator|.
+name|asis
+argument_list|(
+literal|"<a href=\"javascript:void(0)\">"
+operator|+
+operator|(
 name|lineNumberMinusOne
 operator|+
 literal|1
+operator|)
+operator|+
+literal|"</a>"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|m
