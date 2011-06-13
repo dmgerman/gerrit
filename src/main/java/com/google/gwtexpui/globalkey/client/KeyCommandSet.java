@@ -303,6 +303,18 @@ name|k
 operator|.
 name|keyMask
 argument_list|)
+operator|:
+literal|"Key "
+operator|+
+name|k
+operator|.
+name|describeKeyStroke
+argument_list|()
+operator|.
+name|asString
+argument_list|()
+operator|+
+literal|" already registered"
 assert|;
 if|if
 condition|(
