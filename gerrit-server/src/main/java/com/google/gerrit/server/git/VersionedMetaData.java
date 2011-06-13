@@ -517,9 +517,15 @@ parameter_list|()
 block|{
 return|return
 name|revision
+operator|!=
+literal|null
+condition|?
+name|revision
 operator|.
 name|copy
 argument_list|()
+else|:
+literal|null
 return|;
 block|}
 comment|/** Initialize in-memory as though the repository branch doesn't exist. */
