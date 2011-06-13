@@ -174,16 +174,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InterruptedIOException
-import|;
-end_import
-
 begin_comment
 comment|/** Publishes Git repositories over SSH using the Git upload-pack protocol. */
 end_comment
@@ -304,8 +294,6 @@ name|getTimeout
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|up
 operator|.
 name|upload
@@ -317,25 +305,6 @@ argument_list|,
 name|err
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedIOException
-name|err
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|Failure
-argument_list|(
-literal|128
-argument_list|,
-literal|"fatal: client IO read/write timeout"
-argument_list|,
-name|err
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 end_class

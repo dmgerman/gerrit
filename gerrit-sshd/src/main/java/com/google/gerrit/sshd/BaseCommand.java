@@ -438,6 +438,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|InterruptedIOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|OutputStream
 import|;
 end_import
@@ -1315,6 +1325,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClass
@@ -1333,18 +1344,10 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
-condition|)
-block|{
-comment|// This is sshd telling us the client just dropped off while
-comment|// we were waiting for a read or a write to complete. Either
-comment|// way its not really a fatal error. Don't log it.
+operator|)
+operator|||
 comment|//
-return|return
-literal|127
-return|;
-block|}
-if|if
-condition|(
+operator|(
 name|e
 operator|.
 name|getClass
@@ -1363,6 +1366,17 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+operator|)
+operator|||
+comment|//
+name|e
+operator|.
+name|getClass
+argument_list|()
+operator|==
+name|InterruptedIOException
+operator|.
+name|class
 condition|)
 block|{
 comment|// This is sshd telling us the client just dropped off while
