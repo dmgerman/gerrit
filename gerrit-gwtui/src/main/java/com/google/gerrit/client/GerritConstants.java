@@ -248,6 +248,31 @@ name|String
 name|menuMyStarredChanges
 parameter_list|()
 function_decl|;
+DECL|method|menuDiff ()
+name|String
+name|menuDiff
+parameter_list|()
+function_decl|;
+DECL|method|menuDiffCommit ()
+name|String
+name|menuDiffCommit
+parameter_list|()
+function_decl|;
+DECL|method|menuDiffPreferences ()
+name|String
+name|menuDiffPreferences
+parameter_list|()
+function_decl|;
+DECL|method|menuDiffPatchSets ()
+name|String
+name|menuDiffPatchSets
+parameter_list|()
+function_decl|;
+DECL|method|menuDiffFiles ()
+name|String
+name|menuDiffFiles
+parameter_list|()
+function_decl|;
 DECL|method|menuAdmin ()
 name|String
 name|menuAdmin

@@ -618,6 +618,13 @@ name|windowTitle
 argument_list|)
 expr_stmt|;
 block|}
+name|Gerrit
+operator|.
+name|updateMenus
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|registerKeys
 argument_list|()
 expr_stmt|;
