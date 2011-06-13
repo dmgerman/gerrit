@@ -130,6 +130,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -467,6 +481,19 @@ operator|.
 name|isVisibleToAll
 argument_list|()
 operator|||
+name|user
+operator|.
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|)
+operator|||
 name|isOwner
 argument_list|()
 return|;
@@ -537,12 +564,11 @@ return|return
 name|isOwner
 return|;
 block|}
-DECL|method|canAddMember (final Account.Id id)
+DECL|method|canAddMember (Account.Id id)
 specifier|public
 name|boolean
 name|canAddMember
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -554,12 +580,11 @@ name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canRemoveMember (final Account.Id id)
+DECL|method|canRemoveMember (Account.Id id)
 specifier|public
 name|boolean
 name|canRemoveMember
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -582,17 +607,42 @@ name|Id
 name|id
 parameter_list|)
 block|{
+if|if
+condition|(
+name|user
+operator|instanceof
+name|IdentifiedUser
+operator|&&
+operator|(
+operator|(
+name|IdentifiedUser
+operator|)
+name|user
+operator|)
+operator|.
+name|getAccountId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|id
+argument_list|)
+condition|)
+block|{
 return|return
-name|isVisible
+literal|true
+return|;
+block|}
+return|return
+name|canSeeMembers
 argument_list|()
 return|;
 block|}
-DECL|method|canAddGroup (final AccountGroup.Id id)
+DECL|method|canAddGroup (AccountGroup.Id id)
 specifier|public
 name|boolean
 name|canAddGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -604,12 +654,11 @@ name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canRemoveGroup (final AccountGroup.Id id)
+DECL|method|canRemoveGroup (AccountGroup.Id id)
 specifier|public
 name|boolean
 name|canRemoveGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -633,7 +682,23 @@ name|id
 parameter_list|)
 block|{
 return|return
-name|isVisible
+name|canSeeMembers
+argument_list|()
+return|;
+block|}
+DECL|method|canSeeMembers ()
+specifier|private
+name|boolean
+name|canSeeMembers
+parameter_list|()
+block|{
+return|return
+name|group
+operator|.
+name|isVisibleToAll
+argument_list|()
+operator|||
+name|isOwner
 argument_list|()
 return|;
 block|}

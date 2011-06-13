@@ -1687,16 +1687,6 @@ try|try
 block|{
 if|if
 condition|(
-name|memberOf
-operator|.
-name|contains
-argument_list|(
-name|group
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-operator|||
 name|groupControlFactory
 operator|.
 name|controlFor
