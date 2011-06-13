@@ -1240,10 +1240,6 @@ name|int
 name|prior
 init|=
 literal|0
-init|,
-name|r
-init|=
-name|initialRow
 init|;
 name|prior
 operator|<
@@ -1270,6 +1266,14 @@ name|k
 argument_list|)
 condition|)
 block|{
+specifier|final
+name|int
+name|r
+init|=
+name|initialRow
+operator|+
+name|prior
+decl_stmt|;
 specifier|final
 name|SafeHtmlBuilder
 name|b
