@@ -204,9 +204,13 @@ comment|/** The account is not permitted to see the change. */
 DECL|enumConstant|CHANGE_NOT_VISIBLE
 name|CHANGE_NOT_VISIBLE
 block|,
-comment|/** Could not remove this reviewer from the change. */
+comment|/** Could not remove this reviewer from the change due to ORMException. */
 DECL|enumConstant|COULD_NOT_REMOVE
 name|COULD_NOT_REMOVE
+block|,
+comment|/** Not permitted to remove this reviewer from the change. */
+DECL|enumConstant|REMOVE_NOT_PERMITTED
+name|REMOVE_NOT_PERMITTED
 block|}
 DECL|field|type
 specifier|protected
