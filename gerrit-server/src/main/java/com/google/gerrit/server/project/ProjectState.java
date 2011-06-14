@@ -509,6 +509,12 @@ name|UUID
 argument_list|>
 name|localOwners
 decl_stmt|;
+DECL|field|ruleLoader
+specifier|private
+specifier|final
+name|ClassLoader
+name|ruleLoader
+decl_stmt|;
 comment|/** Last system time the configuration's revision was examined. */
 DECL|field|lastCheckTime
 specifier|private
@@ -518,7 +524,7 @@ name|lastCheckTime
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, @Assisted final ProjectConfig config)
 specifier|protected
 name|ProjectState
 parameter_list|(
@@ -545,6 +551,10 @@ parameter_list|,
 specifier|final
 name|GitRepositoryManager
 name|gitMgr
+parameter_list|,
+specifier|final
+name|RulesCache
+name|rulesCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -609,6 +619,33 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|rulesCache
+operator|!=
+literal|null
+condition|)
+block|{
+name|ruleLoader
+operator|=
+name|rulesCache
+operator|.
+name|getClassLoader
+argument_list|(
+name|config
+operator|.
+name|getRulesId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|ruleLoader
+operator|=
+literal|null
+expr_stmt|;
+block|}
 name|HashSet
 argument_list|<
 name|AccountGroup
@@ -856,7 +893,22 @@ parameter_list|()
 throws|throws
 name|CompileException
 block|{
-comment|// TODO Replace this with a per-project ClassLoader to isolate rules.
+if|if
+condition|(
+name|ruleLoader
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|envFactory
+operator|.
+name|create
+argument_list|(
+name|ruleLoader
+argument_list|)
+return|;
+block|}
 name|PrologEnvironment
 name|env
 init|=

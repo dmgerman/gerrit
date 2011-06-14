@@ -609,6 +609,11 @@ specifier|private
 name|String
 name|prologRules
 decl_stmt|;
+DECL|field|rulesId
+specifier|private
+name|ObjectId
+name|rulesId
+decl_stmt|;
 DECL|method|read (MetaDataUpdate update)
 specifier|public
 specifier|static
@@ -1016,6 +1021,17 @@ return|return
 name|prologRules
 return|;
 block|}
+comment|/**    * @return the project's rules.pl ObjectId, if present in the branch.    *    Null if it doesn't exist.    */
+DECL|method|getRulesId ()
+specifier|public
+name|ObjectId
+name|getRulesId
+parameter_list|()
+block|{
+return|return
+name|rulesId
+return|;
+block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupCache cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupCache groupCache)
 specifier|public
@@ -1172,6 +1188,13 @@ decl_stmt|;
 name|prologRules
 operator|=
 name|readUTF8
+argument_list|(
+literal|"rules.pl"
+argument_list|)
+expr_stmt|;
+name|rulesId
+operator|=
+name|getObjectId
 argument_list|(
 literal|"rules.pl"
 argument_list|)

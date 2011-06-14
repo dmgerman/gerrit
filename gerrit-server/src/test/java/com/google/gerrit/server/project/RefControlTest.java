@@ -2172,6 +2172,11 @@ name|projectControlFactory
 init|=
 literal|null
 decl_stmt|;
+name|RulesCache
+name|rulesCache
+init|=
+literal|null
+decl_stmt|;
 name|all
 operator|.
 name|put
@@ -2196,6 +2201,8 @@ argument_list|,
 name|envFactory
 argument_list|,
 name|mgr
+argument_list|,
+name|rulesCache
 argument_list|,
 name|local
 argument_list|)
@@ -2225,6 +2232,8 @@ argument_list|,
 name|envFactory
 argument_list|,
 name|mgr
+argument_list|,
+name|rulesCache
 argument_list|,
 name|parent
 argument_list|)
