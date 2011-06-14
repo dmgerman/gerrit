@@ -355,6 +355,16 @@ name|String
 name|approvalTableAddReviewer
 parameter_list|()
 function_decl|;
+DECL|method|approvalTableRemoveNotPermitted ()
+name|String
+name|approvalTableRemoveNotPermitted
+parameter_list|()
+function_decl|;
+DECL|method|approvalTableCouldNotRemove ()
+name|String
+name|approvalTableCouldNotRemove
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockOwner ()
 name|String
 name|changeInfoBlockOwner

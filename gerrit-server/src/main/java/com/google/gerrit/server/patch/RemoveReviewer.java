@@ -522,9 +522,10 @@ name|Type
 operator|.
 name|COULD_NOT_REMOVE
 argument_list|,
-literal|"Could not remove reviewer "
-operator|+
 name|reviewerId
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -547,11 +548,12 @@ name|Error
 operator|.
 name|Type
 operator|.
-name|COULD_NOT_REMOVE
+name|REMOVE_NOT_PERMITTED
 argument_list|,
-literal|"Not allowed to remove reviewer "
-operator|+
 name|reviewerId
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
