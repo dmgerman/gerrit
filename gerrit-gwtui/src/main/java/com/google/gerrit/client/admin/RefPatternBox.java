@@ -355,10 +355,8 @@ literal|0
 argument_list|)
 throw|;
 block|}
-specifier|final
-name|boolean
-name|re
-init|=
+if|if
+condition|(
 name|ref
 operator|.
 name|charAt
@@ -367,11 +365,10 @@ literal|0
 argument_list|)
 operator|==
 literal|'^'
-decl_stmt|;
+condition|)
+block|{
 if|if
 condition|(
-name|re
-operator|&&
 operator|!
 name|ref
 operator|.
@@ -392,6 +389,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
