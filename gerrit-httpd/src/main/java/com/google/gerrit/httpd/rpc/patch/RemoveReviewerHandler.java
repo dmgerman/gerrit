@@ -188,6 +188,16 @@ name|Assisted
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implement the remote logic that removes a reviewer from a change.  */
 end_comment
@@ -330,7 +340,12 @@ name|create
 argument_list|(
 name|changeId
 argument_list|,
+name|Collections
+operator|.
+name|singleton
+argument_list|(
 name|reviewerId
+argument_list|)
 argument_list|)
 operator|.
 name|call
