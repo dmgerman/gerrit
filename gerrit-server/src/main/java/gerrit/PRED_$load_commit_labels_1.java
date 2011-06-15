@@ -288,7 +288,7 @@ name|sym_commit_label
 init|=
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 literal|"commit_label"
 argument_list|,
@@ -304,7 +304,7 @@ name|sym_label
 init|=
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 literal|"label"
 argument_list|,
@@ -320,7 +320,7 @@ name|sym_user
 init|=
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 literal|"user"
 argument_list|,
@@ -492,7 +492,7 @@ name|sym_label
 argument_list|,
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 name|t
 operator|.

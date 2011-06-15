@@ -172,6 +172,16 @@ name|Term
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
 begin_comment
 comment|/**  * Per-thread Prolog interpreter.  *<p>  * This class is not thread safe.  *<p>  * A single copy of the Prolog interpreter, for the current thread.  */
 end_comment
@@ -264,8 +274,19 @@ argument_list|(
 literal|64
 argument_list|)
 expr_stmt|;
-name|setEnableReflection
+name|setEnabled
 argument_list|(
+name|EnumSet
+operator|.
+name|allOf
+argument_list|(
+name|Prolog
+operator|.
+name|Feature
+operator|.
+name|class
+argument_list|)
+argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;

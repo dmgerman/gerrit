@@ -954,7 +954,7 @@ literal|"consult_stream"
 argument_list|,
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 literal|"rules.pl"
 argument_list|)

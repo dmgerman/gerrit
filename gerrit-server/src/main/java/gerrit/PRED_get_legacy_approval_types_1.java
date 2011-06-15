@@ -414,7 +414,7 @@ name|symApprovalType
 init|=
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 literal|"approval_type"
 argument_list|,
@@ -438,7 +438,7 @@ name|symApprovalType
 argument_list|,
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 name|type
 operator|.
@@ -451,7 +451,7 @@ argument_list|)
 argument_list|,
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 name|type
 operator|.
@@ -467,7 +467,7 @@ argument_list|)
 argument_list|,
 name|SymbolTerm
 operator|.
-name|makeSymbol
+name|intern
 argument_list|(
 name|type
 operator|.
