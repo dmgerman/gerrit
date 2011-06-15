@@ -1464,6 +1464,12 @@ operator|==
 name|AuthType
 operator|.
 name|LDAP
+operator|&&
+operator|!
+name|who
+operator|.
+name|isSkipAuthentication
+argument_list|()
 condition|)
 block|{
 comment|// We found the user account, but we need to verify

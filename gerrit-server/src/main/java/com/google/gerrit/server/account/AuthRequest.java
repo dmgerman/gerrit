@@ -252,6 +252,11 @@ specifier|private
 name|String
 name|userName
 decl_stmt|;
+DECL|field|skipAuthentication
+specifier|private
+name|boolean
+name|skipAuthentication
+decl_stmt|;
 DECL|method|AuthRequest (final String externalId)
 specifier|public
 name|AuthRequest
@@ -453,6 +458,30 @@ block|{
 name|userName
 operator|=
 name|user
+expr_stmt|;
+block|}
+DECL|method|isSkipAuthentication ()
+specifier|public
+name|boolean
+name|isSkipAuthentication
+parameter_list|()
+block|{
+return|return
+name|skipAuthentication
+return|;
+block|}
+DECL|method|setSkipAuthentication (boolean skip)
+specifier|public
+name|void
+name|setSkipAuthentication
+parameter_list|(
+name|boolean
+name|skip
+parameter_list|)
+block|{
+name|skipAuthentication
+operator|=
+name|skip
 expr_stmt|;
 block|}
 block|}
