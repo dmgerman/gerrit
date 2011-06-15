@@ -197,7 +197,7 @@ name|Prolog
 operator|.
 name|BUILTIN
 block|,
-literal|"com.google.gerrit.rules.common"
+literal|"gerrit"
 block|,     }
 decl_stmt|;
 DECL|interface|Factory

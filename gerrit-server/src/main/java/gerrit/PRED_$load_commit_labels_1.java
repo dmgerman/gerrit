@@ -4,17 +4,9 @@ comment|// Copyright 2011 Google Inc. All Rights Reserved.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.rules.common
+DECL|package|gerrit
 package|package
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
-operator|.
-name|rules
-operator|.
-name|common
 package|;
 end_package
 

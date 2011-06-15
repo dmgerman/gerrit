@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.rules.common
+DECL|package|com.google.gerrit.rules
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|rules
-operator|.
-name|common
 package|;
 end_package
 
@@ -132,20 +130,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|rules
-operator|.
-name|PrologTestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|AbstractModule
@@ -183,10 +167,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CommonRulesTest
+DECL|class|GerritCommonTest
 specifier|public
 class|class
-name|CommonRulesTest
+name|GerritCommonTest
 extends|extends
 name|PrologTestCase
 block|{
@@ -226,7 +210,7 @@ argument_list|)
 decl_stmt|;
 name|load
 argument_list|(
-literal|"common_rules_test.pl"
+literal|"gerrit_common_test.pl"
 argument_list|,
 operator|new
 name|AbstractModule
