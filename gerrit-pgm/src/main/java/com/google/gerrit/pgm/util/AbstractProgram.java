@@ -202,7 +202,7 @@ operator|=
 literal|"display stack trace on failure"
 argument_list|)
 DECL|field|showStackTrace
-specifier|private
+specifier|protected
 name|boolean
 name|showStackTrace
 decl_stmt|;
