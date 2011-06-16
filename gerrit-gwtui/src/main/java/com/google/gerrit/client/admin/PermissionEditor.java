@@ -1136,6 +1136,15 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
+name|beginAddRule
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|beginAddRule ()
+name|void
+name|beginAddRule
+parameter_list|()
+block|{
 name|addStage1
 operator|.
 name|getStyle
