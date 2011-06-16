@@ -90,6 +90,13 @@ specifier|public
 interface|interface
 name|ProjectCache
 block|{
+comment|/** @return the parent state for all projects on this server. */
+DECL|method|getAllProjects ()
+specifier|public
+name|ProjectState
+name|getAllProjects
+parameter_list|()
+function_decl|;
 comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists.    */
 DECL|method|get (Project.NameKey projectName)
 specifier|public

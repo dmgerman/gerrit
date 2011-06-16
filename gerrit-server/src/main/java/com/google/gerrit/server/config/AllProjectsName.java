@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -72,56 +72,49 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|BindingAnnotation
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|reviewdb
 operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Retention
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|RetentionPolicy
-operator|.
-name|RUNTIME
+name|Project
 import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on a {@code Set&lt;AccountGroup.Id>} for the configured groups with  * permission to create projects.  */
+comment|/** Special name of the project that all projects derive from. */
 end_comment
 
-begin_annotation_defn
+begin_class
 annotation|@
-name|Retention
+name|SuppressWarnings
 argument_list|(
-name|RUNTIME
+literal|"serial"
 argument_list|)
-annotation|@
-name|BindingAnnotation
-DECL|annotation|ProjectCreatorGroups
+DECL|class|AllProjectsName
 specifier|public
-annotation_defn|@interface
-name|ProjectCreatorGroups
-block|{ }
-end_annotation_defn
+class|class
+name|AllProjectsName
+extends|extends
+name|Project
+operator|.
+name|NameKey
+block|{
+DECL|method|AllProjectsName (String name)
+specifier|public
+name|AllProjectsName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 

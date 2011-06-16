@@ -582,7 +582,7 @@ name|get
 argument_list|(
 name|args
 operator|.
-name|wildProjectName
+name|allProjectsName
 argument_list|)
 expr_stmt|;
 block|}

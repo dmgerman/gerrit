@@ -140,6 +140,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllProjectsName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|ConfigUtil
 import|;
 end_import
@@ -566,6 +582,12 @@ block|}
 block|}
 return|;
 block|}
+DECL|field|allProjectsName
+specifier|private
+specifier|final
+name|AllProjectsName
+name|allProjectsName
+decl_stmt|;
 DECL|field|byName
 specifier|private
 specifier|final
@@ -609,9 +631,13 @@ name|generation
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectCacheImpl ( @amedCACHE_NAME) final Cache<Project.NameKey, ProjectState> byName, @Named(CACHE_LIST) final Cache<ListKey, SortedSet<Project.NameKey>> list, @GerritServerConfig final Config serverConfig)
+DECL|method|ProjectCacheImpl ( final AllProjectsName allProjectsName, @Named(CACHE_NAME) final Cache<Project.NameKey, ProjectState> byName, @Named(CACHE_LIST) final Cache<ListKey, SortedSet<Project.NameKey>> list, @GerritServerConfig final Config serverConfig)
 name|ProjectCacheImpl
 parameter_list|(
+specifier|final
+name|AllProjectsName
+name|allProjectsName
+parameter_list|,
 annotation|@
 name|Named
 argument_list|(
@@ -654,6 +680,12 @@ name|Config
 name|serverConfig
 parameter_list|)
 block|{
+name|this
+operator|.
+name|allProjectsName
+operator|=
+name|allProjectsName
+expr_stmt|;
 name|this
 operator|.
 name|byName
@@ -772,6 +804,45 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getAllProjects ()
+specifier|public
+name|ProjectState
+name|getAllProjects
+parameter_list|()
+block|{
+name|ProjectState
+name|state
+init|=
+name|get
+argument_list|(
+name|allProjectsName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|state
+operator|==
+literal|null
+condition|)
+block|{
+comment|// This should never occur, the server must have this
+comment|// project to process anything.
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Missing project "
+operator|+
+name|allProjectsName
+argument_list|)
+throw|;
+block|}
+return|return
+name|state
+return|;
 block|}
 comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists.    */
 DECL|method|get (final Project.NameKey projectName)

@@ -312,14 +312,6 @@ specifier|final
 name|SignedToken
 name|emailReg
 decl_stmt|;
-DECL|field|administratorGroup
-specifier|private
-specifier|final
-name|AccountGroup
-operator|.
-name|UUID
-name|administratorGroup
-decl_stmt|;
 DECL|field|batchUsersGroup
 specifier|private
 specifier|final
@@ -446,12 +438,6 @@ name|s
 operator|.
 name|registerEmailPrivateKey
 argument_list|)
-expr_stmt|;
-name|administratorGroup
-operator|=
-name|s
-operator|.
-name|adminGroupUUID
 expr_stmt|;
 name|batchUsersGroup
 operator|=
@@ -684,19 +670,6 @@ parameter_list|()
 block|{
 return|return
 name|allowGoogleAccountUpgrade
-return|;
-block|}
-comment|/** Identity of the magic group with full powers. */
-DECL|method|getAdministratorsGroup ()
-specifier|public
-name|AccountGroup
-operator|.
-name|UUID
-name|getAdministratorsGroup
-parameter_list|()
-block|{
-return|return
-name|administratorGroup
 return|;
 block|}
 comment|/** Identity of the group whose service is degraded to lower priority. */

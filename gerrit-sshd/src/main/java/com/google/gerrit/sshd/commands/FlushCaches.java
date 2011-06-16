@@ -375,7 +375,10 @@ operator|&&
 operator|!
 name|currentUser
 operator|.
-name|isAdministrator
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
 argument_list|()
 condition|)
 block|{

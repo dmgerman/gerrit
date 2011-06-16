@@ -236,7 +236,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|WildProjectName
+name|AllProjectsName
 import|;
 end_import
 
@@ -509,13 +509,11 @@ operator|.
 name|Server
 name|metaDataUpdateFactory
 decl_stmt|;
-DECL|field|wildProject
+DECL|field|allProjectsName
 specifier|private
 specifier|final
-name|Project
-operator|.
-name|NameKey
-name|wildProject
+name|AllProjectsName
+name|allProjectsName
 decl_stmt|;
 DECL|field|projectName
 specifier|private
@@ -532,7 +530,7 @@ name|pc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAccessFactory (final GroupCache groupCache, final ProjectCache projectCache, final ProjectControl.Factory projectControlFactory, final GroupControl.Factory groupControlFactory, final MetaDataUpdate.Server metaDataUpdateFactory, @WildProjectName final Project.NameKey wildProject, @Assisted final Project.NameKey name)
+DECL|method|ProjectAccessFactory (final GroupCache groupCache, final ProjectCache projectCache, final ProjectControl.Factory projectControlFactory, final GroupControl.Factory groupControlFactory, final MetaDataUpdate.Server metaDataUpdateFactory, final AllProjectsName allProjectsName, @Assisted final Project.NameKey name)
 name|ProjectAccessFactory
 parameter_list|(
 specifier|final
@@ -561,13 +559,9 @@ operator|.
 name|Server
 name|metaDataUpdateFactory
 parameter_list|,
-annotation|@
-name|WildProjectName
 specifier|final
-name|Project
-operator|.
-name|NameKey
-name|wildProject
+name|AllProjectsName
+name|allProjectsName
 parameter_list|,
 annotation|@
 name|Assisted
@@ -610,9 +604,9 @@ name|metaDataUpdateFactory
 expr_stmt|;
 name|this
 operator|.
-name|wildProject
+name|allProjectsName
 operator|=
-name|wildProject
+name|allProjectsName
 expr_stmt|;
 name|this
 operator|.
@@ -1152,7 +1146,7 @@ name|projectName
 operator|.
 name|equals
 argument_list|(
-name|wildProject
+name|allProjectsName
 argument_list|)
 condition|)
 block|{
@@ -1216,7 +1210,7 @@ name|detail
 operator|.
 name|setInheritsFrom
 argument_list|(
-name|wildProject
+name|allProjectsName
 argument_list|)
 expr_stmt|;
 block|}

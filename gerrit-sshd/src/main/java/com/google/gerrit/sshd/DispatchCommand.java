@@ -476,7 +476,10 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|isAdministrator
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
 argument_list|()
 condition|)
 block|{

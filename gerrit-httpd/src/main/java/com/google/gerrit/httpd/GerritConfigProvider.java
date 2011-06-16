@@ -134,9 +134,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|Project
+name|account
+operator|.
+name|Realm
 import|;
 end_import
 
@@ -150,9 +152,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|config
 operator|.
-name|Realm
+name|AllProjectsName
 import|;
 end_import
 
@@ -201,22 +203,6 @@ operator|.
 name|config
 operator|.
 name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|WildProjectName
 import|;
 end_import
 
@@ -461,9 +447,7 @@ decl_stmt|;
 DECL|field|wildProject
 specifier|private
 specifier|final
-name|Project
-operator|.
-name|NameKey
+name|AllProjectsName
 name|wildProject
 decl_stmt|;
 DECL|field|sshInfo
@@ -497,7 +481,7 @@ name|servletContext
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, @WildProjectName final Project.NameKey wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs, final ServletContext sc, final DownloadSchemeConfig dc)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs, final ServletContext sc, final DownloadSchemeConfig dc)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -518,12 +502,8 @@ specifier|final
 name|GitWebConfig
 name|gwc
 parameter_list|,
-annotation|@
-name|WildProjectName
 specifier|final
-name|Project
-operator|.
-name|NameKey
+name|AllProjectsName
 name|wp
 parameter_list|,
 specifier|final

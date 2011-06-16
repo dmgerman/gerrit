@@ -832,7 +832,10 @@ if|if
 condition|(
 name|user
 operator|.
-name|isAdministrator
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
 argument_list|()
 condition|)
 block|{

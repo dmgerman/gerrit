@@ -931,7 +931,10 @@ operator|||
 name|getCurrentUser
 argument_list|()
 operator|.
-name|isAdministrator
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
 argument_list|()
 comment|// site administers are god
 return|;
@@ -1150,7 +1153,10 @@ operator|||
 name|getCurrentUser
 argument_list|()
 operator|.
-name|isAdministrator
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
 argument_list|()
 condition|)
 block|{

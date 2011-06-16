@@ -140,6 +140,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|CapabilityControl
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -187,9 +203,14 @@ name|UUID
 argument_list|>
 name|groups
 decl_stmt|;
-DECL|method|SingleGroupUser (AccountGroup.UUID groupId)
+DECL|method|SingleGroupUser (CapabilityControl.Factory capabilityControlFactory, AccountGroup.UUID groupId)
 name|SingleGroupUser
 parameter_list|(
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
@@ -198,6 +219,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|capabilityControlFactory
+argument_list|,
 name|Collections
 operator|.
 name|singleton
@@ -207,9 +230,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SingleGroupUser (Set<AccountGroup.UUID> groups)
+DECL|method|SingleGroupUser (CapabilityControl.Factory capabilityControlFactory, Set<AccountGroup.UUID> groups)
 name|SingleGroupUser
 parameter_list|(
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+parameter_list|,
 name|Set
 argument_list|<
 name|AccountGroup
@@ -221,7 +249,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|null
+name|capabilityControlFactory
 argument_list|,
 name|AccessPath
 operator|.
@@ -298,18 +326,6 @@ DECL|method|isBatchUser ()
 specifier|public
 name|boolean
 name|isBatchUser
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|isAdministrator ()
-specifier|public
-name|boolean
-name|isAdministrator
 parameter_list|()
 block|{
 return|return

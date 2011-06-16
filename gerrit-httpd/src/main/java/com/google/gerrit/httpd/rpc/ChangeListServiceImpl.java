@@ -2278,7 +2278,7 @@ decl_stmt|;
 if|if
 condition|(
 name|maxLimit
-operator|==
+operator|<=
 literal|0
 condition|)
 block|{

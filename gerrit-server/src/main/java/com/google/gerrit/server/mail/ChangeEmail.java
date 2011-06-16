@@ -1916,7 +1916,7 @@ name|byProject
 argument_list|(
 name|args
 operator|.
-name|wildProject
+name|allProjectsName
 argument_list|)
 control|)
 block|{

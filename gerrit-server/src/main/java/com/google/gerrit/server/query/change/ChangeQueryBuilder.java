@@ -224,6 +224,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|CapabilityControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|GroupCache
 import|;
 end_import
@@ -240,7 +256,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|WildProjectName
+name|AllProjectsName
 import|;
 end_import
 
@@ -869,6 +885,13 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
+DECL|field|capabilityControlFactory
+specifier|final
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+decl_stmt|;
 DECL|field|changeControlFactory
 specifier|final
 name|ChangeControl
@@ -898,12 +921,10 @@ specifier|final
 name|ApprovalTypes
 name|approvalTypes
 decl_stmt|;
-DECL|field|wildProjectName
+DECL|field|allProjectsName
 specifier|final
-name|Project
-operator|.
-name|NameKey
-name|wildProjectName
+name|AllProjectsName
+name|allProjectsName
 decl_stmt|;
 DECL|field|patchListCache
 specifier|final
@@ -922,7 +943,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, ChangeControl.Factory changeControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupCache groupCache, ApprovalTypes approvalTypes, @WildProjectName Project.NameKey wildProjectName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.Factory changeControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupCache groupCache, ApprovalTypes approvalTypes, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -941,6 +962,11 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
+parameter_list|,
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -961,12 +987,8 @@ parameter_list|,
 name|ApprovalTypes
 name|approvalTypes
 parameter_list|,
-annotation|@
-name|WildProjectName
-name|Project
-operator|.
-name|NameKey
-name|wildProjectName
+name|AllProjectsName
+name|allProjectsName
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -998,6 +1020,12 @@ name|userFactory
 expr_stmt|;
 name|this
 operator|.
+name|capabilityControlFactory
+operator|=
+name|capabilityControlFactory
+expr_stmt|;
+name|this
+operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
@@ -1028,9 +1056,9 @@ name|approvalTypes
 expr_stmt|;
 name|this
 operator|.
-name|wildProjectName
+name|allProjectsName
 operator|=
-name|wildProjectName
+name|allProjectsName
 expr_stmt|;
 name|this
 operator|.
@@ -2205,6 +2233,10 @@ argument_list|(
 operator|new
 name|SingleGroupUser
 argument_list|(
+name|args
+operator|.
+name|capabilityControlFactory
+argument_list|,
 name|g
 operator|.
 name|getGroupUUID
@@ -2289,6 +2321,10 @@ argument_list|(
 operator|new
 name|SingleGroupUser
 argument_list|(
+name|args
+operator|.
+name|capabilityControlFactory
+argument_list|,
 name|ids
 argument_list|)
 argument_list|)

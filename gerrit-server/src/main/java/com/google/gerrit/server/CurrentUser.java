@@ -312,25 +312,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|isAdministrator ()
-specifier|public
-name|boolean
-name|isAdministrator
-parameter_list|()
-block|{
-return|return
-name|getEffectiveGroups
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|authConfig
-operator|.
-name|getAdministratorsGroup
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/** Capabilities available to this user account. */
 DECL|method|getCapabilities ()
 specifier|public

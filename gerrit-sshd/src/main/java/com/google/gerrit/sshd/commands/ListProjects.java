@@ -106,7 +106,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|WildProjectName
+name|AllProjectsName
 import|;
 end_import
 
@@ -560,13 +560,9 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-annotation|@
-name|WildProjectName
 DECL|field|allProjectsName
 specifier|private
-name|Project
-operator|.
-name|NameKey
+name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
 annotation|@

@@ -76,20 +76,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|ReviewDb
 import|;
 end_import
@@ -134,16 +120,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_comment
 comment|/**  * Provider of the group(s) which should become owners of a newly created  * project. Currently only supports {@code ownerGroup} declarations in the  * {@code "*"} repository, like so:  *  *<pre>  * [repository&quot;*&quot;]  *     ownerGroup = Registered Users  *     ownerGroup = Administrators  *</pre>  */
 end_comment
@@ -158,21 +134,10 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|ProjectOwnerGroupsProvider ( @rojectCreatorGroups final Set<AccountGroup.UUID> creatorGroups, @GerritServerConfig final Config config, final SchemaFactory<ReviewDb> db)
+DECL|method|ProjectOwnerGroupsProvider ( @erritServerConfig final Config config, final SchemaFactory<ReviewDb> db)
 specifier|public
 name|ProjectOwnerGroupsProvider
 parameter_list|(
-annotation|@
-name|ProjectCreatorGroups
-specifier|final
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|creatorGroups
-parameter_list|,
 annotation|@
 name|GerritServerConfig
 specifier|final
@@ -200,19 +165,6 @@ argument_list|,
 literal|"ownerGroup"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|groupIds
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|groupIds
-operator|=
-name|creatorGroups
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class

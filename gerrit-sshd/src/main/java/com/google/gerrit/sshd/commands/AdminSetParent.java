@@ -92,7 +92,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|WildProjectName
+name|AllProjectsName
 import|;
 end_import
 
@@ -424,14 +424,10 @@ name|metaDataUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-annotation|@
-name|WildProjectName
-DECL|field|wildProject
+DECL|field|allProjectsName
 specifier|private
-name|Project
-operator|.
-name|NameKey
-name|wildProject
+name|AllProjectsName
+name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Override
@@ -514,7 +510,7 @@ name|grandParents
 operator|.
 name|add
 argument_list|(
-name|wildProject
+name|allProjectsName
 argument_list|)
 expr_stmt|;
 if|if
@@ -645,7 +641,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|wildProject
+name|allProjectsName
 operator|.
 name|equals
 argument_list|(
@@ -707,7 +703,7 @@ operator|.
 name|get
 argument_list|()
 else|:
-name|wildProject
+name|allProjectsName
 operator|.
 name|get
 argument_list|()

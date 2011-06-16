@@ -198,7 +198,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|WildProjectName
+name|AllProjectsName
 import|;
 end_import
 
@@ -458,13 +458,11 @@ name|config
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|wildProject
+DECL|field|isAllProjects
 specifier|private
 specifier|final
-name|Project
-operator|.
-name|NameKey
-name|wildProject
+name|boolean
+name|isAllProjects
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
@@ -520,7 +518,7 @@ name|lastCheckTime
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
 specifier|protected
 name|ProjectState
 parameter_list|(
@@ -528,13 +526,9 @@ specifier|final
 name|ProjectCache
 name|projectCache
 parameter_list|,
-annotation|@
-name|WildProjectName
 specifier|final
-name|Project
-operator|.
-name|NameKey
-name|wildProject
+name|AllProjectsName
+name|allProjectsName
 parameter_list|,
 specifier|final
 name|ProjectControl
@@ -567,9 +561,20 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|wildProject
+name|isAllProjects
 operator|=
-name|wildProject
+name|config
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|allProjectsName
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1014,8 +1019,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|isWildProject
-argument_list|()
+name|isAllProjects
 condition|)
 block|{
 return|return
@@ -1123,7 +1127,7 @@ block|{
 break|break;
 block|}
 block|}
-comment|// Wild project is the parent, or the root of the tree
+comment|// The root of the tree is the special "All-Projects" case.
 if|if
 condition|(
 name|parent
@@ -1131,34 +1135,19 @@ operator|==
 literal|null
 condition|)
 block|{
-name|ProjectState
-name|s
-init|=
-name|projectCache
-operator|.
-name|get
-argument_list|(
-name|wildProject
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|s
-operator|!=
-literal|null
-condition|)
-block|{
 name|inherited
 operator|.
 name|addAll
 argument_list|(
-name|s
+name|projectCache
+operator|.
+name|getAllProjects
+argument_list|()
 operator|.
 name|getLocalAccessSections
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|inherited
@@ -1242,8 +1231,7 @@ name|parentName
 operator|==
 literal|null
 operator|||
-name|isWildProject
-argument_list|()
+name|isAllProjects
 condition|)
 block|{
 return|return
@@ -1428,25 +1416,6 @@ argument_list|(
 name|user
 argument_list|,
 name|this
-argument_list|)
-return|;
-block|}
-DECL|method|isWildProject ()
-specifier|private
-name|boolean
-name|isWildProject
-parameter_list|()
-block|{
-return|return
-name|wildProject
-operator|.
-name|equals
-argument_list|(
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
 argument_list|)
 return|;
 block|}

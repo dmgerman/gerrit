@@ -96,15 +96,15 @@ specifier|public
 class|class
 name|GlobalCapability
 block|{
-comment|/** Can create any group on the server. */
-DECL|field|CREATE_GROUP
+comment|/**    * Denotes the server's administrators.    *<p>    * This is similar to UNIX root, or Windows SYSTEM account. Any user that    * has this capability can perform almost any other action, or can grant    * themselves the power to perform any other action on the site. Most of    * the other capabilities and permissions fall-back to the predicate    * "OR user has capablity ADMINISTRATE_SERVER".    */
+DECL|field|ADMINISTRATE_SERVER
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|CREATE_GROUP
+name|ADMINISTRATE_SERVER
 init|=
-literal|"createGroup"
+literal|"administrateServer"
 decl_stmt|;
 comment|/** Can create any account on the server. */
 DECL|field|CREATE_ACCOUNT
@@ -115,6 +115,26 @@ name|String
 name|CREATE_ACCOUNT
 init|=
 literal|"createAccount"
+decl_stmt|;
+comment|/** Can create any group on the server. */
+DECL|field|CREATE_GROUP
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CREATE_GROUP
+init|=
+literal|"createGroup"
+decl_stmt|;
+comment|/** Can create any project on the server. */
+DECL|field|CREATE_PROJECT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CREATE_PROJECT
+init|=
+literal|"createProject"
 decl_stmt|;
 comment|/** Can flush any cache except the active web_sessions cache. */
 DECL|field|FLUSH_CACHES
@@ -211,7 +231,7 @@ name|NAMES_LC
 operator|.
 name|add
 argument_list|(
-name|CREATE_GROUP
+name|ADMINISTRATE_SERVER
 operator|.
 name|toLowerCase
 argument_list|()
@@ -222,6 +242,26 @@ operator|.
 name|add
 argument_list|(
 name|CREATE_ACCOUNT
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|NAMES_LC
+operator|.
+name|add
+argument_list|(
+name|CREATE_GROUP
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|NAMES_LC
+operator|.
+name|add
+argument_list|(
+name|CREATE_PROJECT
 operator|.
 name|toLowerCase
 argument_list|()
