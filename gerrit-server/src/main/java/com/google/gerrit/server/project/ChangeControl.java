@@ -1419,7 +1419,7 @@ name|env
 operator|.
 name|once
 argument_list|(
-literal|"com.google.gerrit.rules.common"
+literal|"gerrit"
 argument_list|,
 literal|"locate_submit_rule"
 argument_list|,
@@ -1475,7 +1475,7 @@ name|env
 operator|.
 name|all
 argument_list|(
-literal|"com.google.gerrit.rules.common"
+literal|"gerrit"
 argument_list|,
 literal|"can_submit"
 argument_list|,
