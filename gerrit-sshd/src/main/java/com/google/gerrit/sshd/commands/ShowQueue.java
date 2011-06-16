@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
+name|IdentifiedUser
 import|;
 end_import
 
@@ -378,10 +378,10 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|userProvider
+DECL|field|currentUser
 specifier|private
-name|CurrentUser
-name|userProvider
+name|IdentifiedUser
+name|currentUser
 decl_stmt|;
 DECL|field|p
 specifier|private
@@ -728,11 +728,14 @@ argument_list|()
 decl_stmt|;
 specifier|final
 name|boolean
-name|isAdministrator
+name|viewAll
 init|=
-name|userProvider
+name|currentUser
 operator|.
-name|isAdministrator
+name|getCapabilities
+argument_list|()
+operator|.
+name|canViewQueue
 argument_list|()
 decl_stmt|;
 for|for
@@ -839,7 +842,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|isAdministrator
+name|viewAll
 condition|)
 block|{
 if|if
@@ -930,7 +933,7 @@ name|e
 operator|.
 name|controlFor
 argument_list|(
-name|userProvider
+name|currentUser
 argument_list|)
 operator|.
 name|isVisible
@@ -949,7 +952,7 @@ block|}
 comment|// Shows information about tasks depending on the user rights
 if|if
 condition|(
-name|isAdministrator
+name|viewAll
 operator|||
 operator|(
 operator|!
@@ -1062,7 +1065,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|isAdministrator
+name|viewAll
 condition|)
 block|{
 name|numberOfPendingTasks

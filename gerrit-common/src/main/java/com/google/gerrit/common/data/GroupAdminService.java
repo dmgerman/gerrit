@@ -180,9 +180,7 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|RpcImpl
-operator|.
-name|Version
+name|VoidResult
 import|;
 end_import
 
@@ -196,7 +194,9 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|VoidResult
+name|RpcImpl
+operator|.
+name|Version
 import|;
 end_import
 
@@ -239,16 +239,13 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|SignInRequired
-DECL|method|visibleGroups (AsyncCallback<List<AccountGroup>> callback)
+DECL|method|visibleGroups (AsyncCallback<GroupList> callback)
 name|void
 name|visibleGroups
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|List
-argument_list|<
-name|AccountGroup
-argument_list|>
+name|GroupList
 argument_list|>
 name|callback
 parameter_list|)

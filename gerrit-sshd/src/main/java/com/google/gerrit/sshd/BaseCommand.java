@@ -570,6 +570,7 @@ operator||
 literal|2
 decl_stmt|;
 DECL|field|STATUS_NOT_ADMIN
+specifier|public
 specifier|static
 specifier|final
 name|int

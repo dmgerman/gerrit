@@ -468,6 +468,174 @@ return|return
 name|user
 return|;
 block|}
+comment|/** @return true if the user can create an account for another user. */
+DECL|method|canCreateAccount ()
+specifier|public
+name|boolean
+name|canCreateAccount
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|CREATE_ACCOUNT
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can create a group. */
+DECL|method|canCreateGroup ()
+specifier|public
+name|boolean
+name|canCreateGroup
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|CREATE_GROUP
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can kill any running task. */
+DECL|method|canKillTask ()
+specifier|public
+name|boolean
+name|canKillTask
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|KILL_TASK
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can view the server caches. */
+DECL|method|canViewCaches ()
+specifier|public
+name|boolean
+name|canViewCaches
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|VIEW_CACHES
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can flush the server's caches. */
+DECL|method|canFlushCaches ()
+specifier|public
+name|boolean
+name|canFlushCaches
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|FLUSH_CACHES
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can view open connections. */
+DECL|method|canViewConnections ()
+specifier|public
+name|boolean
+name|canViewConnections
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|VIEW_CONNECTIONS
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can view the entire queue. */
+DECL|method|canViewQueue ()
+specifier|public
+name|boolean
+name|canViewQueue
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|VIEW_QUEUE
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can force replication to any configured destination. */
+DECL|method|canStartReplication ()
+specifier|public
+name|boolean
+name|canStartReplication
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|START_REPLICATION
+argument_list|)
+operator|||
+name|user
+operator|.
+name|isAdministrator
+argument_list|()
+return|;
+block|}
 comment|/** True if the user has this permission. Works only for non labels. */
 DECL|method|canPerform (String permissionName)
 specifier|public

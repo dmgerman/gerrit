@@ -205,7 +205,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminFlushCaches
+name|FlushCaches
 operator|.
 name|class
 argument_list|)
@@ -247,7 +247,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminShowCaches
+name|ShowCaches
 operator|.
 name|class
 argument_list|)
@@ -261,7 +261,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminShowConnections
+name|ShowConnections
 operator|.
 name|class
 argument_list|)
@@ -374,7 +374,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminKill
+name|KillCommand
 operator|.
 name|class
 argument_list|)

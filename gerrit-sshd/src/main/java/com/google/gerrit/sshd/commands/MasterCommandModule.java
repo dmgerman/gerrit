@@ -162,7 +162,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminCreateAccount
+name|CreateAccountCommand
 operator|.
 name|class
 argument_list|)
@@ -176,7 +176,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminCreateGroup
+name|CreateGroupCommand
 operator|.
 name|class
 argument_list|)
@@ -246,7 +246,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|AdminReplicate
+name|Replicate
 operator|.
 name|class
 argument_list|)
