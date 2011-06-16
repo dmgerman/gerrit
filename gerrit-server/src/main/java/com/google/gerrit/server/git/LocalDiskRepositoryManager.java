@@ -1339,6 +1339,26 @@ if|if
 condition|(
 name|name
 operator|.
+name|charAt
+argument_list|(
+name|name
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+operator|==
+literal|'/'
+condition|)
+return|return
+literal|true
+return|;
+comment|// no suffix
+if|if
+condition|(
+name|name
+operator|.
 name|indexOf
 argument_list|(
 literal|'\\'
