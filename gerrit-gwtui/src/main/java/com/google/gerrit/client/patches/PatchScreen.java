@@ -1644,9 +1644,7 @@ name|commitMessageBlock
 operator|=
 operator|new
 name|CommitMessageBlock
-argument_list|(
-literal|"6em"
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|topPanel
 operator|=
