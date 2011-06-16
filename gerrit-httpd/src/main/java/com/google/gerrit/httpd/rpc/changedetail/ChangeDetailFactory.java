@@ -316,6 +316,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AnonymousUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -619,6 +633,12 @@ specifier|final
 name|AccountInfoCacheFactory
 name|aic
 decl_stmt|;
+DECL|field|anonymousUser
+specifier|private
+specifier|final
+name|AnonymousUser
+name|anonymousUser
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -645,7 +665,7 @@ name|control
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeDetailFactory (final ApprovalTypes approvalTypes, final FunctionState.Factory functionState, final PatchSetDetailFactory.Factory patchSetDetail, final ReviewDb db, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, @Assisted final Change.Id id)
+DECL|method|ChangeDetailFactory (final ApprovalTypes approvalTypes, final FunctionState.Factory functionState, final PatchSetDetailFactory.Factory patchSetDetail, final ReviewDb db, final ChangeControl.Factory changeControlFactory, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final AnonymousUser anonymousUser, @Assisted final Change.Id id)
 name|ChangeDetailFactory
 parameter_list|(
 specifier|final
@@ -679,6 +699,10 @@ name|AccountInfoCacheFactory
 operator|.
 name|Factory
 name|accountInfoCacheFactory
+parameter_list|,
+specifier|final
+name|AnonymousUser
+name|anonymousUser
 parameter_list|,
 annotation|@
 name|Assisted
@@ -718,6 +742,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|anonymousUser
+operator|=
+name|anonymousUser
 expr_stmt|;
 name|this
 operator|.
@@ -842,8 +872,10 @@ name|setAllowsAnonymous
 argument_list|(
 name|control
 operator|.
-name|forAnonymousUser
-argument_list|()
+name|forUser
+argument_list|(
+name|anonymousUser
+argument_list|)
 operator|.
 name|isVisible
 argument_list|()

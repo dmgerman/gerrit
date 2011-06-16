@@ -791,19 +791,6 @@ operator|=
 name|ps
 expr_stmt|;
 block|}
-DECL|method|forAnonymousUser ()
-specifier|public
-name|ProjectControl
-name|forAnonymousUser
-parameter_list|()
-block|{
-return|return
-name|state
-operator|.
-name|controlForAnonymousUser
-argument_list|()
-return|;
-block|}
 DECL|method|forUser (final CurrentUser who)
 specifier|public
 name|ProjectControl

@@ -206,6 +206,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|CapabilityControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|GroupIncludeCache
 import|;
 end_import
@@ -569,6 +585,14 @@ specifier|static
 class|class
 name|GenericFactory
 block|{
+DECL|field|capabilityControlFactory
+specifier|private
+specifier|final
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+decl_stmt|;
 DECL|field|authConfig
 specifier|private
 specifier|final
@@ -604,9 +628,14 @@ name|groupIncludeCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory (final AuthConfig authConfig, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache)
+DECL|method|GenericFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache)
 name|GenericFactory
 parameter_list|(
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
@@ -633,6 +662,12 @@ name|GroupIncludeCache
 name|groupIncludeCache
 parameter_list|)
 block|{
+name|this
+operator|.
+name|capabilityControlFactory
+operator|=
+name|capabilityControlFactory
+expr_stmt|;
 name|this
 operator|.
 name|authConfig
@@ -710,6 +745,8 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
+name|capabilityControlFactory
+argument_list|,
 name|AccessPath
 operator|.
 name|UNKNOWN
@@ -756,6 +793,8 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
+name|capabilityControlFactory
+argument_list|,
 name|accessPath
 argument_list|,
 name|authConfig
@@ -786,6 +825,14 @@ specifier|static
 class|class
 name|RequestFactory
 block|{
+DECL|field|capabilityControlFactory
+specifier|private
+specifier|final
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+decl_stmt|;
 DECL|field|authConfig
 specifier|private
 specifier|final
@@ -839,9 +886,14 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory (final AuthConfig authConfig, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
@@ -884,6 +936,12 @@ argument_list|>
 name|dbProvider
 parameter_list|)
 block|{
+name|this
+operator|.
+name|capabilityControlFactory
+operator|=
+name|capabilityControlFactory
+expr_stmt|;
 name|this
 operator|.
 name|authConfig
@@ -947,6 +1005,8 @@ return|return
 operator|new
 name|IdentifiedUser
 argument_list|(
+name|capabilityControlFactory
+argument_list|,
 name|accessPath
 argument_list|,
 name|authConfig
@@ -1192,10 +1252,15 @@ name|AccountProjectWatch
 argument_list|>
 name|notificationFilters
 decl_stmt|;
-DECL|method|IdentifiedUser (final AccessPath accessPath, final AuthConfig authConfig, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
+DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AccessPath accessPath, final AuthConfig authConfig, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+parameter_list|,
 specifier|final
 name|AccessPath
 name|accessPath
@@ -1250,6 +1315,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|capabilityControlFactory
+argument_list|,
 name|accessPath
 argument_list|,
 name|authConfig

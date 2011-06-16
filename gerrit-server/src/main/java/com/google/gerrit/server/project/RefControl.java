@@ -618,26 +618,6 @@ name|getCurrentUser
 argument_list|()
 return|;
 block|}
-DECL|method|forAnonymousUser ()
-specifier|public
-name|RefControl
-name|forAnonymousUser
-parameter_list|()
-block|{
-return|return
-name|getProjectControl
-argument_list|()
-operator|.
-name|forAnonymousUser
-argument_list|()
-operator|.
-name|controlForRef
-argument_list|(
-name|getRefName
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|forUser (final CurrentUser who)
 specifier|public
 name|RefControl

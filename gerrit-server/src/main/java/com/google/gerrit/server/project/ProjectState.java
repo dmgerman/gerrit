@@ -182,20 +182,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|AnonymousUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
 import|;
 end_import
@@ -472,12 +458,6 @@ name|config
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|anonymousUser
-specifier|private
-specifier|final
-name|AnonymousUser
-name|anonymousUser
-decl_stmt|;
 DECL|field|wildProject
 specifier|private
 specifier|final
@@ -540,14 +520,10 @@ name|lastCheckTime
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState (final AnonymousUser anonymousUser, final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final ProjectCache projectCache, @WildProjectName final Project.NameKey wildProject, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, @Assisted final ProjectConfig config)
 specifier|protected
 name|ProjectState
 parameter_list|(
-specifier|final
-name|AnonymousUser
-name|anonymousUser
-parameter_list|,
 specifier|final
 name|ProjectCache
 name|projectCache
@@ -583,12 +559,6 @@ name|ProjectConfig
 name|config
 parameter_list|)
 block|{
-name|this
-operator|.
-name|anonymousUser
-operator|=
-name|anonymousUser
-expr_stmt|;
 name|this
 operator|.
 name|projectCache
@@ -1437,19 +1407,6 @@ operator|.
 name|unmodifiableSet
 argument_list|(
 name|owners
-argument_list|)
-return|;
-block|}
-DECL|method|controlForAnonymousUser ()
-specifier|public
-name|ProjectControl
-name|controlForAnonymousUser
-parameter_list|()
-block|{
-return|return
-name|controlFor
-argument_list|(
-name|anonymousUser
 argument_list|)
 return|;
 block|}

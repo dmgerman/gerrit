@@ -798,27 +798,6 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|forAnonymousUser ()
-specifier|public
-name|ChangeControl
-name|forAnonymousUser
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ChangeControl
-argument_list|(
-name|getRefControl
-argument_list|()
-operator|.
-name|forAnonymousUser
-argument_list|()
-argument_list|,
-name|getChange
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|forUser (final CurrentUser who)
 specifier|public
 name|ChangeControl

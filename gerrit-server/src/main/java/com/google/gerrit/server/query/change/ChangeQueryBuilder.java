@@ -240,22 +240,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|WildProjectName
 import|;
 end_import
@@ -909,11 +893,6 @@ specifier|final
 name|GroupCache
 name|groupCache
 decl_stmt|;
-DECL|field|authConfig
-specifier|final
-name|AuthConfig
-name|authConfig
-decl_stmt|;
 DECL|field|approvalTypes
 specifier|final
 name|ApprovalTypes
@@ -943,7 +922,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, ChangeControl.Factory changeControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupCache groupCache, AuthConfig authConfig, ApprovalTypes approvalTypes, @WildProjectName Project.NameKey wildProjectName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, ChangeControl.Factory changeControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupCache groupCache, ApprovalTypes approvalTypes, @WildProjectName Project.NameKey wildProjectName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -978,9 +957,6 @@ name|accountResolver
 parameter_list|,
 name|GroupCache
 name|groupCache
-parameter_list|,
-name|AuthConfig
-name|authConfig
 parameter_list|,
 name|ApprovalTypes
 name|approvalTypes
@@ -1043,12 +1019,6 @@ operator|.
 name|groupCache
 operator|=
 name|groupCache
-expr_stmt|;
-name|this
-operator|.
-name|authConfig
-operator|=
-name|authConfig
 expr_stmt|;
 name|this
 operator|.
@@ -2235,10 +2205,6 @@ argument_list|(
 operator|new
 name|SingleGroupUser
 argument_list|(
-name|args
-operator|.
-name|authConfig
-argument_list|,
 name|g
 operator|.
 name|getGroupUUID
@@ -2323,10 +2289,6 @@ argument_list|(
 operator|new
 name|SingleGroupUser
 argument_list|(
-name|args
-operator|.
-name|authConfig
-argument_list|,
 name|ids
 argument_list|)
 argument_list|)

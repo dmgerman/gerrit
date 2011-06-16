@@ -190,6 +190,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AnonymousUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -267,6 +281,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -633,6 +659,15 @@ operator|.
 name|Factory
 name|projectControl
 decl_stmt|;
+DECL|field|anonymousUserProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|AnonymousUser
+argument_list|>
+name|anonymousUserProvider
+decl_stmt|;
 DECL|field|_env
 specifier|private
 specifier|final
@@ -641,7 +676,7 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebServlet (final LocalDiskRepositoryManager repoManager, final ProjectControl.Factory projectControl, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
+DECL|method|GitWebServlet (final LocalDiskRepositoryManager repoManager, final ProjectControl.Factory projectControl, final Provider<AnonymousUser> anonymousUserProvider, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
 name|GitWebServlet
 parameter_list|(
 specifier|final
@@ -653,6 +688,13 @@ name|ProjectControl
 operator|.
 name|Factory
 name|projectControl
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|AnonymousUser
+argument_list|>
+name|anonymousUserProvider
 parameter_list|,
 specifier|final
 name|SitePaths
@@ -680,6 +722,12 @@ operator|.
 name|projectControl
 operator|=
 name|projectControl
+expr_stmt|;
+name|this
+operator|.
+name|anonymousUserProvider
+operator|=
+name|anonymousUserProvider
 expr_stmt|;
 name|this
 operator|.
@@ -3074,8 +3122,13 @@ if|if
 condition|(
 name|project
 operator|.
-name|forAnonymousUser
+name|forUser
+argument_list|(
+name|anonymousUserProvider
+operator|.
+name|get
 argument_list|()
+argument_list|)
 operator|.
 name|isVisible
 argument_list|()

@@ -306,6 +306,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|TypeLiteral
 import|;
 end_import
@@ -508,11 +520,14 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
-DECL|field|anonymous
+DECL|field|anonymousProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|AnonymousUser
-name|anonymous
+argument_list|>
+name|anonymousProvider
 decl_stmt|;
 DECL|field|identified
 specifier|private
@@ -548,7 +563,7 @@ name|val
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebSession (final HttpServletRequest request, final HttpServletResponse response, final WebSessionManager manager, final AuthConfig authConfig, final AnonymousUser anonymous, final IdentifiedUser.RequestFactory identified)
+DECL|method|WebSession (final HttpServletRequest request, final HttpServletResponse response, final WebSessionManager manager, final AuthConfig authConfig, final Provider<AnonymousUser> anonymousProvider, final IdentifiedUser.RequestFactory identified)
 name|WebSession
 parameter_list|(
 specifier|final
@@ -568,8 +583,11 @@ name|AuthConfig
 name|authConfig
 parameter_list|,
 specifier|final
+name|Provider
+argument_list|<
 name|AnonymousUser
-name|anonymous
+argument_list|>
+name|anonymousProvider
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -604,9 +622,9 @@ name|authConfig
 expr_stmt|;
 name|this
 operator|.
-name|anonymous
+name|anonymousProvider
 operator|=
-name|anonymous
+name|anonymousProvider
 expr_stmt|;
 name|this
 operator|.
@@ -869,7 +887,10 @@ argument_list|)
 return|;
 block|}
 return|return
-name|anonymous
+name|anonymousProvider
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 DECL|method|login (final AuthResult res, final boolean rememberMe)

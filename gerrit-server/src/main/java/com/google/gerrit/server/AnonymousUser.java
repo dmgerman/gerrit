@@ -116,6 +116,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|CapabilityControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|AuthConfig
@@ -131,18 +147,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
 import|;
 end_import
 
@@ -181,8 +185,6 @@ comment|/** An anonymous user who has not yet authenticated. */
 end_comment
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|AnonymousUser
 specifier|public
 class|class
@@ -192,16 +194,22 @@ name|CurrentUser
 block|{
 annotation|@
 name|Inject
-DECL|method|AnonymousUser (final AuthConfig auth)
+DECL|method|AnonymousUser (CapabilityControl.Factory capabilityControlFactory, AuthConfig auth)
 name|AnonymousUser
 parameter_list|(
-specifier|final
+name|CapabilityControl
+operator|.
+name|Factory
+name|capabilityControlFactory
+parameter_list|,
 name|AuthConfig
 name|auth
 parameter_list|)
 block|{
 name|super
 argument_list|(
+name|capabilityControlFactory
+argument_list|,
 name|AccessPath
 operator|.
 name|UNKNOWN

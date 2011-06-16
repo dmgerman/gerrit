@@ -140,22 +140,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -203,12 +187,9 @@ name|UUID
 argument_list|>
 name|groups
 decl_stmt|;
-DECL|method|SingleGroupUser (AuthConfig authConfig, AccountGroup.UUID groupId)
+DECL|method|SingleGroupUser (AccountGroup.UUID groupId)
 name|SingleGroupUser
 parameter_list|(
-name|AuthConfig
-name|authConfig
-parameter_list|,
 name|AccountGroup
 operator|.
 name|UUID
@@ -217,8 +198,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|authConfig
-argument_list|,
 name|Collections
 operator|.
 name|singleton
@@ -228,12 +207,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SingleGroupUser (AuthConfig authConfig, Set<AccountGroup.UUID> groups)
+DECL|method|SingleGroupUser (Set<AccountGroup.UUID> groups)
 name|SingleGroupUser
 parameter_list|(
-name|AuthConfig
-name|authConfig
-parameter_list|,
 name|Set
 argument_list|<
 name|AccountGroup
@@ -245,11 +221,13 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+literal|null
+argument_list|,
 name|AccessPath
 operator|.
 name|UNKNOWN
 argument_list|,
-name|authConfig
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -312,6 +290,30 @@ name|Collections
 operator|.
 name|emptySet
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isBatchUser ()
+specifier|public
+name|boolean
+name|isBatchUser
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|isAdministrator ()
+specifier|public
+name|boolean
+name|isAdministrator
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 block|}
