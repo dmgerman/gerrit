@@ -860,7 +860,7 @@ name|range
 operator|.
 name|matches
 argument_list|(
-literal|"^([+-]\\d+)\\.\\.([+-]\\d)$"
+literal|"^([+-]?\\d+)\\.\\.([+-]?\\d+)$"
 argument_list|)
 condition|)
 block|{

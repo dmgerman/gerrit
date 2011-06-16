@@ -592,6 +592,16 @@ name|T
 argument_list|>
 name|editProxy
 decl_stmt|;
+DECL|field|ignoreEditorValue
+specifier|private
+name|boolean
+name|ignoreEditorValue
+decl_stmt|;
+DECL|field|value
+specifier|private
+name|T
+name|value
+decl_stmt|;
 DECL|method|ValueEditor ()
 specifier|public
 name|ValueEditor
@@ -704,6 +714,10 @@ name|getValue
 parameter_list|()
 block|{
 return|return
+name|ignoreEditorValue
+condition|?
+name|value
+else|:
 name|asEditor
 argument_list|()
 operator|.
@@ -722,6 +736,12 @@ name|T
 name|value
 parameter_list|)
 block|{
+name|this
+operator|.
+name|value
+operator|=
+name|value
+expr_stmt|;
 name|asEditor
 argument_list|()
 operator|.
@@ -729,6 +749,19 @@ name|setValue
 argument_list|(
 name|value
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setIgnoreEditorValue (boolean off)
+name|void
+name|setIgnoreEditorValue
+parameter_list|(
+name|boolean
+name|off
+parameter_list|)
+block|{
+name|ignoreEditorValue
+operator|=
+name|off
 expr_stmt|;
 block|}
 DECL|method|setEditTitle (String title)

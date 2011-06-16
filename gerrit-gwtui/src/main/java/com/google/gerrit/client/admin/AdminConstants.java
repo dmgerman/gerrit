@@ -515,6 +515,36 @@ name|String
 name|errorsMustBeFixed
 parameter_list|()
 function_decl|;
+DECL|method|capabilityNames ()
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|capabilityNames
+parameter_list|()
+function_decl|;
+DECL|method|sectionTypeReference ()
+name|String
+name|sectionTypeReference
+parameter_list|()
+function_decl|;
+DECL|method|sectionTypeSection ()
+name|String
+name|sectionTypeSection
+parameter_list|()
+function_decl|;
+DECL|method|sectionNames ()
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|sectionNames
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

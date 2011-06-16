@@ -145,6 +145,16 @@ argument_list|<
 name|AccessSection
 argument_list|>
 block|{
+comment|/** Special name given to the global capabilities; not a valid reference. */
+DECL|field|GLOBAL_CAPABILITIES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|GLOBAL_CAPABILITIES
+init|=
+literal|"GLOBAL_CAPABILITIES"
+decl_stmt|;
 comment|/** Pattern that matches all references in a project. */
 DECL|field|ALL
 specifier|public
@@ -202,10 +212,10 @@ literal|"^refs/"
 argument_list|)
 return|;
 block|}
-DECL|field|refPattern
+DECL|field|name
 specifier|protected
 name|String
-name|refPattern
+name|name
 decl_stmt|;
 DECL|field|permissions
 specifier|protected
@@ -228,36 +238,36 @@ name|String
 name|refPattern
 parameter_list|)
 block|{
-name|setRefPattern
+name|setName
 argument_list|(
 name|refPattern
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getRefPattern ()
+DECL|method|getName ()
 specifier|public
 name|String
-name|getRefPattern
+name|getName
 parameter_list|()
 block|{
 return|return
-name|refPattern
+name|name
 return|;
 block|}
-DECL|method|setRefPattern (String refPattern)
+DECL|method|setName (String name)
 specifier|public
 name|void
-name|setRefPattern
+name|setName
 parameter_list|(
 name|String
-name|refPattern
+name|name
 parameter_list|)
 block|{
 name|this
 operator|.
-name|refPattern
+name|name
 operator|=
-name|refPattern
+name|name
 expr_stmt|;
 block|}
 DECL|method|getPermissions ()
@@ -618,7 +628,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|getRefPattern
+name|getName
 argument_list|()
 operator|.
 name|startsWith
@@ -628,7 +638,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|getRefPattern
+name|getName
 argument_list|()
 operator|.
 name|substring
@@ -641,7 +651,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|getRefPattern
+name|getName
 argument_list|()
 return|;
 block|}
@@ -656,7 +666,7 @@ block|{
 return|return
 literal|"AccessSection["
 operator|+
-name|getRefPattern
+name|getName
 argument_list|()
 operator|+
 literal|"]"

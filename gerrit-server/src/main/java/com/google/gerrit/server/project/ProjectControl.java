@@ -1258,7 +1258,7 @@ name|controlForRef
 argument_list|(
 name|section
 operator|.
-name|getRefPattern
+name|getName
 argument_list|()
 argument_list|)
 operator|.
@@ -1415,7 +1415,7 @@ name|add
 argument_list|(
 name|section
 operator|.
-name|getRefPattern
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;

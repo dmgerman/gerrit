@@ -1909,7 +1909,7 @@ name|refPattern
 init|=
 name|section
 operator|.
-name|getRefPattern
+name|getName
 argument_list|()
 decl_stmt|;
 if|if
@@ -2391,7 +2391,7 @@ name|refPattern
 operator|=
 name|section
 operator|.
-name|getRefPattern
+name|getName
 argument_list|()
 expr_stmt|;
 name|permissionName
@@ -2618,12 +2618,12 @@ name|compare
 argument_list|(
 name|a
 operator|.
-name|getRefPattern
+name|getName
 argument_list|()
 argument_list|,
 name|b
 operator|.
-name|getRefPattern
+name|getName
 argument_list|()
 argument_list|)
 return|;

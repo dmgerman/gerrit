@@ -87,6 +87,20 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+DECL|method|InvalidQueryException (String message)
+specifier|public
+name|InvalidQueryException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|InvalidQueryException (String message, String query)
 specifier|public
 name|InvalidQueryException

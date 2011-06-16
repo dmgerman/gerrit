@@ -122,6 +122,22 @@ name|int
 name|id
 parameter_list|)
 function_decl|;
+DECL|method|deletedReference (String name)
+name|String
+name|deletedReference
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
+DECL|method|deletedSection (String name)
+name|String
+name|deletedSection
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
