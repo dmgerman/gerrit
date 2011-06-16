@@ -289,11 +289,14 @@ specifier|protected
 name|PrologEnvironment
 name|env
 decl_stmt|;
-DECL|method|load (String prologResource, Module... modules)
+DECL|method|load (String pkg, String prologResource, Module... modules)
 specifier|protected
 name|void
 name|load
 parameter_list|(
+name|String
+name|pkg
+parameter_list|,
 name|String
 name|prologResource
 parameter_list|,
@@ -404,10 +407,11 @@ argument_list|,
 name|prologResource
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|pkg
 operator|=
-name|myPackage
-argument_list|()
+name|pkg
 expr_stmt|;
 name|hasSetup
 operator|=
@@ -493,6 +497,18 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"has tests"
+argument_list|,
+name|tests
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|consult (Class<?> clazz, String prologResource)
 specifier|protected
@@ -578,37 +594,6 @@ name|path
 argument_list|)
 throw|;
 block|}
-block|}
-DECL|method|myPackage ()
-specifier|private
-name|String
-name|myPackage
-parameter_list|()
-block|{
-name|String
-name|pkg
-init|=
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
-return|return
-name|pkg
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|pkg
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'.'
-argument_list|)
-argument_list|)
-return|;
 block|}
 DECL|method|has (String name)
 specifier|private

@@ -210,6 +210,8 @@ argument_list|)
 decl_stmt|;
 name|load
 argument_list|(
+literal|"gerrit"
+argument_list|,
 literal|"gerrit_common_test.pl"
 argument_list|,
 operator|new
