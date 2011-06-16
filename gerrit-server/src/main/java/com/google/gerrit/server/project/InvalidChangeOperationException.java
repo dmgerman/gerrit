@@ -66,20 +66,6 @@ name|project
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|Change
-import|;
-end_import
-
 begin_comment
 comment|/** Indicates the change operation is not currently valid. */
 end_comment

@@ -796,16 +796,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|ChangeControl
-name|changeControl
-init|=
 name|changeControlFactory
 operator|.
 name|validateFor
 argument_list|(
 name|changeId
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|ReviewerResult
 name|result
 decl_stmt|;

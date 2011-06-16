@@ -253,6 +253,15 @@ name|Predicate
 operator|.
 name|P1
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|PRED_get_legacy_approval_types_1 (Term a1, Operation n)
 name|PRED_get_legacy_approval_types_1
 parameter_list|(

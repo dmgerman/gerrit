@@ -273,6 +273,15 @@ name|Predicate
 operator|.
 name|P4
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|PRED_$user_label_range_4 (Term a1, Term a2, Term a3, Term a4, Operation n)
 name|PRED_$user_label_range_4
 parameter_list|(

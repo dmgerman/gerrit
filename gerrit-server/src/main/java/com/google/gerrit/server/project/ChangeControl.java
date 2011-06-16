@@ -1596,16 +1596,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|Term
-name|solution
-init|=
-name|last
-operator|.
-name|arg
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
+comment|// Term solution = last.arg(0);
 return|return
 name|CanSubmitResult
 operator|.
