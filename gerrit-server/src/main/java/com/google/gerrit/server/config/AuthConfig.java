@@ -118,20 +118,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtjsonrpc
 operator|.
 name|server
@@ -318,7 +304,7 @@ name|allowGoogleAccountUpgrade
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AuthConfig (@erritServerConfig final Config cfg, final SystemConfig s)
+DECL|method|AuthConfig (@erritServerConfig final Config cfg)
 name|AuthConfig
 parameter_list|(
 annotation|@
@@ -326,10 +312,6 @@ name|GerritServerConfig
 specifier|final
 name|Config
 name|cfg
-parameter_list|,
-specifier|final
-name|SystemConfig
-name|s
 parameter_list|)
 throws|throws
 name|XsrfException

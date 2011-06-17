@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.config
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -62,9 +62,37 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|schema
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|lifecycle
+operator|.
+name|LifecycleListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|lifecycle
+operator|.
+name|LifecycleModule
+import|;
+end_import
 
 begin_import
 import|import
@@ -91,52 +119,6 @@ operator|.
 name|reviewdb
 operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|Current
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|SchemaVersion
 import|;
 end_import
 
@@ -188,6 +170,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Module
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -204,31 +198,51 @@ name|ProvisionException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
-comment|/** Loads the {@link SystemConfig} from the database. */
+comment|/** Validates the current schema version. */
 end_comment
 
 begin_class
-DECL|class|SystemConfigProvider
+DECL|class|SchemaVersionCheck
 specifier|public
 class|class
-name|SystemConfigProvider
+name|SchemaVersionCheck
 implements|implements
-name|Provider
-argument_list|<
-name|SystemConfig
-argument_list|>
+name|LifecycleListener
 block|{
+DECL|method|module ()
+specifier|public
+specifier|static
+name|Module
+name|module
+parameter_list|()
+block|{
+return|return
+operator|new
+name|LifecycleModule
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|configure
+parameter_list|()
+block|{
+name|listener
+argument_list|()
+operator|.
+name|to
+argument_list|(
+name|SchemaVersionCheck
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|;
+block|}
 DECL|field|schema
 specifier|private
 specifier|final
@@ -251,11 +265,10 @@ name|version
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SystemConfigProvider (final SchemaFactory<ReviewDb> schemaFactory, @Current final Provider<SchemaVersion> version)
+DECL|method|SchemaVersionCheck (SchemaFactory<ReviewDb> schemaFactory, @Current Provider<SchemaVersion> version)
 specifier|public
-name|SystemConfigProvider
+name|SchemaVersionCheck
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -264,7 +277,6 @@ name|schemaFactory
 parameter_list|,
 annotation|@
 name|Current
-specifier|final
 name|Provider
 argument_list|<
 name|SchemaVersion
@@ -285,12 +297,10 @@ operator|=
 name|version
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|get ()
+DECL|method|start ()
 specifier|public
-name|SystemConfig
-name|get
+name|void
+name|start
 parameter_list|()
 block|{
 try|try
@@ -336,7 +346,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|ProvisionException
 argument_list|(
 literal|"Schema not yet initialized."
 operator|+
@@ -355,7 +365,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|ProvisionException
 argument_list|(
 literal|"Unsupported schema version "
 operator|+
@@ -368,71 +378,6 @@ operator|+
 name|eVer
 operator|+
 literal|".  Run init to upgrade."
-argument_list|)
-throw|;
-block|}
-specifier|final
-name|List
-argument_list|<
-name|SystemConfig
-argument_list|>
-name|all
-init|=
-name|db
-operator|.
-name|systemConfig
-argument_list|()
-operator|.
-name|all
-argument_list|()
-operator|.
-name|toList
-argument_list|()
-decl_stmt|;
-switch|switch
-condition|(
-name|all
-operator|.
-name|size
-argument_list|()
-condition|)
-block|{
-case|case
-literal|1
-case|:
-return|return
-name|all
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-return|;
-case|case
-literal|0
-case|:
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"system_config table is empty"
-argument_list|)
-throw|;
-default|default:
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"system_config must have exactly 1 row;"
-operator|+
-literal|" found "
-operator|+
-name|all
-operator|.
-name|size
-argument_list|()
-operator|+
-literal|" rows instead"
 argument_list|)
 throw|;
 block|}
@@ -456,13 +401,19 @@ throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
-literal|"Cannot read system_config"
+literal|"Cannot read schema_version"
 argument_list|,
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
+DECL|method|stop ()
+specifier|public
+name|void
+name|stop
+parameter_list|()
+block|{   }
 DECL|method|getSchemaVersion (final ReviewDb db)
 specifier|private
 name|CurrentSchemaVersion
