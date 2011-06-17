@@ -610,15 +610,6 @@ name|config
 operator|=
 name|config
 expr_stmt|;
-name|this
-operator|.
-name|lastCheckTime
-operator|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|rulesCache
