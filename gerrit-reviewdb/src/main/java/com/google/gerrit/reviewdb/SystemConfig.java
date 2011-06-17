@@ -244,24 +244,6 @@ specifier|protected
 name|Key
 name|singleton
 decl_stmt|;
-comment|/** Private key to sign account identification cookies. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|,
-name|length
-operator|=
-literal|36
-argument_list|)
-DECL|field|registerEmailPrivateKey
-specifier|public
-specifier|transient
-name|String
-name|registerEmailPrivateKey
-decl_stmt|;
 comment|/**    * Local filesystem location of header/footer/CSS configuration files    */
 annotation|@
 name|Column
@@ -282,6 +264,28 @@ name|sitePath
 decl_stmt|;
 comment|// DO NOT LOOK BELOW THIS LINE. These fields have all been deleted,
 comment|// but survive to support schema upgrade code.
+comment|/** DEPRECATED DO NOT USE */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|2
+argument_list|,
+name|length
+operator|=
+literal|36
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|registerEmailPrivateKey
+specifier|public
+specifier|transient
+name|String
+name|registerEmailPrivateKey
+decl_stmt|;
 comment|/** DEPRECATED DO NOT USE */
 annotation|@
 name|Column

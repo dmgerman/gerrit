@@ -1284,6 +1284,12 @@ argument_list|(
 literal|"DELETED"
 argument_list|)
 expr_stmt|;
+name|sc
+operator|.
+name|registerEmailPrivateKey
+operator|=
+literal|"DELETED"
+expr_stmt|;
 name|db
 operator|.
 name|systemConfig

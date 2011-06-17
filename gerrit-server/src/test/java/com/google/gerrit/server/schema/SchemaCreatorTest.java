@@ -450,27 +450,6 @@ operator|.
 name|sitePath
 argument_list|)
 expr_stmt|;
-comment|// This is randomly generated and should be at least 20 bytes long.
-comment|//
-name|assertNotNull
-argument_list|(
-name|config
-operator|.
-name|registerEmailPrivateKey
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|20
-operator|<
-name|config
-operator|.
-name|registerEmailPrivateKey
-operator|.
-name|length
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|testSubsequentGetReads ()
 specifier|public
@@ -519,17 +498,6 @@ argument_list|,
 name|act
 operator|.
 name|sitePath
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|exp
-operator|.
-name|registerEmailPrivateKey
-argument_list|,
-name|act
-operator|.
-name|registerEmailPrivateKey
 argument_list|)
 expr_stmt|;
 block|}
