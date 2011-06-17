@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.rules
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|project
+name|rules
 package|;
 end_package
 
@@ -95,6 +93,22 @@ operator|.
 name|config
 operator|.
 name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -266,6 +280,10 @@ name|Map
 import|;
 end_import
 
+begin_comment
+comment|/**  * Manages a cache of compiled Prolog rules.  *<p>  * Rules are loaded from the {@code site_path/cache/rules/rules-SHA1.jar}, where  * {@code SHA1} is the SHA1 of the Prolog {@code rules.pl} in a project's  * {@link GitRepositoryManager#REF_CONFIG} branch.  */
+end_comment
+
 begin_class
 annotation|@
 name|Singleton
@@ -412,15 +430,12 @@ literal|"directory"
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|rulesDir
+operator|=
 name|cacheDir
 operator|!=
 literal|null
-condition|)
-block|{
-name|rulesDir
-operator|=
+condition|?
 operator|new
 name|File
 argument_list|(
@@ -428,17 +443,11 @@ name|cacheDir
 argument_list|,
 literal|"rules"
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|rulesDir
-operator|=
+else|:
 literal|null
 expr_stmt|;
 block|}
-block|}
-comment|/** @return URLClassLoader with precompiled rules jar from rules.pl if it exists,    *  null otherwise    */
+comment|/**    * @return ClassLoader with compiled rules jar from rules.pl if it exists;    *         null otherwise.    */
 DECL|method|getClassLoader (ObjectId rulesId)
 specifier|public
 specifier|synchronized
