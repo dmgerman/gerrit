@@ -128,22 +128,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -250,7 +234,7 @@ name|peer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PeerDaemonUser (CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @Assisted SocketAddress peer)
+DECL|method|PeerDaemonUser (CapabilityControl.Factory capabilityControlFactory, @Assisted SocketAddress peer)
 specifier|protected
 name|PeerDaemonUser
 parameter_list|(
@@ -258,9 +242,6 @@ name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-name|AuthConfig
-name|authConfig
 parameter_list|,
 annotation|@
 name|Assisted
@@ -275,8 +256,6 @@ argument_list|,
 name|AccessPath
 operator|.
 name|SSH_COMMAND
-argument_list|,
-name|authConfig
 argument_list|)
 expr_stmt|;
 name|this

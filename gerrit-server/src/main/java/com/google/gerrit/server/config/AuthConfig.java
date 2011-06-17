@@ -108,20 +108,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|AuthType
 import|;
 end_import
@@ -312,14 +298,6 @@ specifier|final
 name|SignedToken
 name|emailReg
 decl_stmt|;
-DECL|field|batchUsersGroup
-specifier|private
-specifier|final
-name|AccountGroup
-operator|.
-name|UUID
-name|batchUsersGroup
-decl_stmt|;
 DECL|field|allowGoogleAccountUpgrade
 specifier|private
 specifier|final
@@ -438,12 +416,6 @@ name|s
 operator|.
 name|registerEmailPrivateKey
 argument_list|)
-expr_stmt|;
-name|batchUsersGroup
-operator|=
-name|s
-operator|.
-name|batchUsersGroupUUID
 expr_stmt|;
 if|if
 condition|(
@@ -670,19 +642,6 @@ parameter_list|()
 block|{
 return|return
 name|allowGoogleAccountUpgrade
-return|;
-block|}
-comment|/** Identity of the group whose service is degraded to lower priority. */
-DECL|method|getBatchUsersGroup ()
-specifier|public
-name|AccountGroup
-operator|.
-name|UUID
-name|getBatchUsersGroup
-parameter_list|()
-block|{
-return|return
-name|batchUsersGroup
 return|;
 block|}
 comment|/** OpenID identities which the server permits for authentication. */

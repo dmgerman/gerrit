@@ -128,22 +128,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -194,16 +178,13 @@ name|CurrentUser
 block|{
 annotation|@
 name|Inject
-DECL|method|AnonymousUser (CapabilityControl.Factory capabilityControlFactory, AuthConfig auth)
+DECL|method|AnonymousUser (CapabilityControl.Factory capabilityControlFactory)
 name|AnonymousUser
 parameter_list|(
 name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-name|AuthConfig
-name|auth
 parameter_list|)
 block|{
 name|super
@@ -213,8 +194,6 @@ argument_list|,
 name|AccessPath
 operator|.
 name|UNKNOWN
-argument_list|,
-name|auth
 argument_list|)
 expr_stmt|;
 block|}

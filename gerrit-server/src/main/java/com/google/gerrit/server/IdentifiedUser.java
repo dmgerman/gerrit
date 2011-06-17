@@ -1181,6 +1181,12 @@ specifier|final
 name|GroupIncludeCache
 name|groupIncludeCache
 decl_stmt|;
+DECL|field|authConfig
+specifier|private
+specifier|final
+name|AuthConfig
+name|authConfig
+decl_stmt|;
 annotation|@
 name|Nullable
 DECL|field|remotePeerProvider
@@ -1318,8 +1324,6 @@ argument_list|(
 name|capabilityControlFactory
 argument_list|,
 name|accessPath
-argument_list|,
-name|authConfig
 argument_list|)
 expr_stmt|;
 name|this
@@ -1345,6 +1349,12 @@ operator|.
 name|groupIncludeCache
 operator|=
 name|groupIncludeCache
+expr_stmt|;
+name|this
+operator|.
+name|authConfig
+operator|=
+name|authConfig
 expr_stmt|;
 name|this
 operator|.

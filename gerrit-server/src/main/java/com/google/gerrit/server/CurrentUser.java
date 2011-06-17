@@ -128,22 +128,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|servlet
@@ -197,18 +181,12 @@ specifier|final
 name|AccessPath
 name|accessPath
 decl_stmt|;
-DECL|field|authConfig
-specifier|protected
-specifier|final
-name|AuthConfig
-name|authConfig
-decl_stmt|;
 DECL|field|capabilities
 specifier|private
 name|CapabilityControl
 name|capabilities
 decl_stmt|;
-DECL|method|CurrentUser ( CapabilityControl.Factory capabilityControlFactory, AccessPath accessPath, AuthConfig authConfig)
+DECL|method|CurrentUser ( CapabilityControl.Factory capabilityControlFactory, AccessPath accessPath)
 specifier|protected
 name|CurrentUser
 parameter_list|(
@@ -219,9 +197,6 @@ name|capabilityControlFactory
 parameter_list|,
 name|AccessPath
 name|accessPath
-parameter_list|,
-name|AuthConfig
-name|authConfig
 parameter_list|)
 block|{
 name|this
@@ -235,12 +210,6 @@ operator|.
 name|accessPath
 operator|=
 name|accessPath
-expr_stmt|;
-name|this
-operator|.
-name|authConfig
-operator|=
-name|authConfig
 expr_stmt|;
 block|}
 comment|/** How this user is accessing the Gerrit Code Review application. */
@@ -292,26 +261,6 @@ argument_list|>
 name|getNotificationFilters
 parameter_list|()
 function_decl|;
-comment|/** Is the user a non-interactive user? */
-DECL|method|isBatchUser ()
-specifier|public
-name|boolean
-name|isBatchUser
-parameter_list|()
-block|{
-return|return
-name|getEffectiveGroups
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-name|authConfig
-operator|.
-name|getBatchUsersGroup
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/** Capabilities available to this user account. */
 DECL|method|getCapabilities ()
 specifier|public

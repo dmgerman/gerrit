@@ -254,8 +254,6 @@ argument_list|,
 name|AccessPath
 operator|.
 name|UNKNOWN
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -318,18 +316,6 @@ name|Collections
 operator|.
 name|emptySet
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|isBatchUser ()
-specifier|public
-name|boolean
-name|isBatchUser
-parameter_list|()
-block|{
-return|return
-literal|false
 return|;
 block|}
 block|}

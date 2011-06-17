@@ -156,6 +156,16 @@ name|KILL_TASK
 init|=
 literal|"killTask"
 decl_stmt|;
+comment|/** Queue a user can access to submit their tasks to. */
+DECL|field|PRIORITY
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRIORITY
+init|=
+literal|"priority"
+decl_stmt|;
 comment|/** Maximum result limit per executed query. */
 DECL|field|QUERY_LIMIT
 specifier|public
@@ -282,6 +292,16 @@ operator|.
 name|add
 argument_list|(
 name|KILL_TASK
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|NAMES_LC
+operator|.
+name|add
+argument_list|(
+name|PRIORITY
 operator|.
 name|toLowerCase
 argument_list|()

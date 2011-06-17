@@ -128,22 +128,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -275,7 +259,7 @@ name|effectiveGroups
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplicationUser (CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @Assisted Set<AccountGroup.UUID> authGroups)
+DECL|method|ReplicationUser (CapabilityControl.Factory capabilityControlFactory, @Assisted Set<AccountGroup.UUID> authGroups)
 specifier|protected
 name|ReplicationUser
 parameter_list|(
@@ -283,9 +267,6 @@ name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-name|AuthConfig
-name|authConfig
 parameter_list|,
 annotation|@
 name|Assisted
@@ -305,8 +286,6 @@ argument_list|,
 name|AccessPath
 operator|.
 name|REPLICATION
-argument_list|,
-name|authConfig
 argument_list|)
 expr_stmt|;
 if|if

@@ -280,34 +280,6 @@ specifier|transient
 name|String
 name|sitePath
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|8
-argument_list|)
-DECL|field|batchUsersGroupId
-specifier|public
-name|AccountGroup
-operator|.
-name|Id
-name|batchUsersGroupId
-decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|11
-argument_list|)
-DECL|field|batchUsersGroupUUID
-specifier|public
-name|AccountGroup
-operator|.
-name|UUID
-name|batchUsersGroupUUID
-decl_stmt|;
 comment|// DO NOT LOOK BELOW THIS LINE. These fields have all been deleted,
 comment|// but survive to support schema upgrade code.
 comment|/** DEPRECATED DO NOT USE */
@@ -423,6 +395,44 @@ name|AccountGroup
 operator|.
 name|Id
 name|ownerGroupId
+decl_stmt|;
+comment|/** DEPRECATED DO NOT USE */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|batchUsersGroupId
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|batchUsersGroupId
+decl_stmt|;
+comment|/** DEPRECATED DO NOT USE */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|11
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|batchUsersGroupUUID
+specifier|public
+name|AccountGroup
+operator|.
+name|UUID
+name|batchUsersGroupUUID
 decl_stmt|;
 DECL|method|SystemConfig ()
 specifier|protected
