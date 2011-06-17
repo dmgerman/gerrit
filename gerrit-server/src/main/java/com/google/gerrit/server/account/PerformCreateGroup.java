@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|errors
+operator|.
+name|PermissionDeniedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -432,7 +448,7 @@ operator|=
 name|serverIdent
 expr_stmt|;
 block|}
-comment|/**    * Creates a new group.    *    * @param groupName the name for the new group    * @param groupDescription the description of the new group,<code>null</code>    *        if no description    * @param visibleToAll<code>true</code> to make the group visible to all    *        registered users, if<code>false</code> the group is only visible to    *        the group owners and Gerrit administrators    * @param ownerGroupId the group that should own the new group, if    *<code>null</code> the new group will own itself    * @param initialMembers initial members to be added to the new group    * @param initialGroups initial groups to include in the new group    * @return the id of the new group    * @throws OrmException is thrown in case of any data store read or write    *         error    * @throws NameAlreadyUsedException is thrown in case a group with the given    *         name already exists    */
+comment|/**    * Creates a new group.    *    * @param groupName the name for the new group    * @param groupDescription the description of the new group,<code>null</code>    *        if no description    * @param visibleToAll<code>true</code> to make the group visible to all    *        registered users, if<code>false</code> the group is only visible to    *        the group owners and Gerrit administrators    * @param ownerGroupId the group that should own the new group, if    *<code>null</code> the new group will own itself    * @param initialMembers initial members to be added to the new group    * @param initialGroups initial groups to include in the new group    * @return the id of the new group    * @throws OrmException is thrown in case of any data store read or write    *         error    * @throws NameAlreadyUsedException is thrown in case a group with the given    *         name already exists    * @throws PermissionDeniedException user cannot create a group.    */
 DECL|method|createGroup (final String groupName, final String groupDescription, final boolean visibleToAll, final AccountGroup.Id ownerGroupId, final Collection<? extends Account.Id> initialMembers, final Collection<? extends AccountGroup.Id> initialGroups)
 specifier|public
 name|AccountGroup
@@ -484,7 +500,39 @@ throws|throws
 name|OrmException
 throws|,
 name|NameAlreadyUsedException
+throws|,
+name|PermissionDeniedException
 block|{
+if|if
+condition|(
+operator|!
+name|currentUser
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canCreateGroup
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|PermissionDeniedException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s does not have \"Create Group\" capability."
+argument_list|,
+name|currentUser
+operator|.
+name|getUserName
+argument_list|()
+argument_list|)
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|AccountGroup
 operator|.
