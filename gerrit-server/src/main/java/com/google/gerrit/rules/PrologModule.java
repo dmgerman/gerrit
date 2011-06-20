@@ -96,6 +96,13 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|bind
+argument_list|(
+name|RulesCache
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|factory
 argument_list|(
 name|PrologEnvironment

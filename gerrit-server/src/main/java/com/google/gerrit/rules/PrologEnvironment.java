@@ -140,7 +140,7 @@ name|prolog_cafe
 operator|.
 name|lang
 operator|.
-name|PrologClassLoader
+name|PrologMachineCopy
 import|;
 end_import
 
@@ -194,6 +194,14 @@ name|PrologEnvironment
 extends|extends
 name|BufferingPrologControl
 block|{
+DECL|field|MAX_ARITY
+specifier|static
+specifier|final
+name|int
+name|MAX_ARITY
+init|=
+literal|8
+decl_stmt|;
 DECL|field|PACKAGE_LIST
 specifier|private
 specifier|static
@@ -216,13 +224,13 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-comment|/**      * Construct a new Prolog interpreter.      *      * @param cl ClassLoader to dynamically load predicates from.      * @return the new interpreter.      */
-DECL|method|create (ClassLoader cl)
+comment|/**      * Construct a new Prolog interpreter.      *      * @param src the machine to template the new environment from.      * @return the new interpreter.      */
+DECL|method|create (PrologMachineCopy src)
 name|PrologEnvironment
 name|create
 parameter_list|(
-name|ClassLoader
-name|cl
+name|PrologMachineCopy
+name|src
 parameter_list|)
 function_decl|;
 block|}
@@ -239,7 +247,7 @@ name|intialized
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PrologEnvironment (Injector i, @Assisted ClassLoader newCL)
+DECL|method|PrologEnvironment (Injector i, @Assisted PrologMachineCopy src)
 name|PrologEnvironment
 parameter_list|(
 name|Injector
@@ -247,31 +255,22 @@ name|i
 parameter_list|,
 annotation|@
 name|Assisted
-name|ClassLoader
-name|newCL
+name|PrologMachineCopy
+name|src
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|src
+argument_list|)
+expr_stmt|;
 name|injector
 operator|=
 name|i
 expr_stmt|;
-name|setPrologClassLoader
-argument_list|(
-operator|new
-name|PrologClassLoader
-argument_list|(
-name|newCL
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|setMaxArity
 argument_list|(
-literal|8
-argument_list|)
-expr_stmt|;
-name|setMaxDatabaseSize
-argument_list|(
-literal|64
+name|MAX_ARITY
 argument_list|)
 expr_stmt|;
 name|setEnabled

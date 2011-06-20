@@ -604,11 +604,6 @@ name|ValidationError
 argument_list|>
 name|validationErrors
 decl_stmt|;
-DECL|field|prologRules
-specifier|private
-name|String
-name|prologRules
-decl_stmt|;
 DECL|field|rulesId
 specifier|private
 name|ObjectId
@@ -996,31 +991,6 @@ name|uuid
 argument_list|)
 return|;
 block|}
-comment|/**    * @return the project's Prolog based rules.pl script,    *    if present in the branch. Null if there are no rules.    */
-DECL|method|getPrologRules ()
-specifier|public
-name|String
-name|getPrologRules
-parameter_list|()
-block|{
-if|if
-condition|(
-name|prologRules
-operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-return|return
-name|prologRules
-return|;
-block|}
 comment|/**    * @return the project's rules.pl ObjectId, if present in the branch.    *    Null if it doesn't exist.    */
 DECL|method|getRulesId ()
 specifier|public
@@ -1185,13 +1155,6 @@ init|=
 name|readGroupList
 argument_list|()
 decl_stmt|;
-name|prologRules
-operator|=
-name|readUTF8
-argument_list|(
-literal|"rules.pl"
-argument_list|)
-expr_stmt|;
 name|rulesId
 operator|=
 name|getObjectId
