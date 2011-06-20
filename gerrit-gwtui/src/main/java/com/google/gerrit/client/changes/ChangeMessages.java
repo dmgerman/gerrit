@@ -262,18 +262,12 @@ name|String
 name|sourcePath
 parameter_list|)
 function_decl|;
-DECL|method|needApproval (String categoryName, String value, String valueName)
+DECL|method|needApproval (String labelName)
 name|String
 name|needApproval
 parameter_list|(
 name|String
-name|categoryName
-parameter_list|,
-name|String
-name|value
-parameter_list|,
-name|String
-name|valueName
+name|labelName
 parameter_list|)
 function_decl|;
 DECL|method|publishComments (String changeId, int ps)
