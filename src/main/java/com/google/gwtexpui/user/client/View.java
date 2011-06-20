@@ -168,6 +168,9 @@ condition|(
 name|p
 operator|instanceof
 name|ViewSite
+argument_list|<
+name|?
+argument_list|>
 condition|)
 block|{
 return|return
