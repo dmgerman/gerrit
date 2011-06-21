@@ -728,6 +728,11 @@ name|String
 name|patchHistoryTable
 parameter_list|()
 function_decl|;
+DECL|method|patchHistoryTablePatchSetHeader ()
+name|String
+name|patchHistoryTablePatchSetHeader
+parameter_list|()
+function_decl|;
 DECL|method|patchNoDifference ()
 name|String
 name|patchNoDifference
@@ -936,6 +941,11 @@ function_decl|;
 DECL|method|topmost ()
 name|String
 name|topmost
+parameter_list|()
+function_decl|;
+DECL|method|topMostCell ()
+name|String
+name|topMostCell
 parameter_list|()
 function_decl|;
 DECL|method|useridentity ()
