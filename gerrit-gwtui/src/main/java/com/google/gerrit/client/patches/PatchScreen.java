@@ -1859,6 +1859,36 @@ return|return
 name|patchKey
 return|;
 block|}
+DECL|method|getPatchIndex ()
+specifier|public
+name|int
+name|getPatchIndex
+parameter_list|()
+block|{
+return|return
+name|patchIndex
+return|;
+block|}
+DECL|method|getPatchSetDetail ()
+specifier|public
+name|PatchSetDetail
+name|getPatchSetDetail
+parameter_list|()
+block|{
+return|return
+name|patchSetDetail
+return|;
+block|}
+DECL|method|getFileList ()
+specifier|public
+name|PatchTable
+name|getFileList
+parameter_list|()
+block|{
+return|return
+name|fileList
+return|;
+block|}
 DECL|method|refresh (final boolean isFirst)
 specifier|protected
 name|void
