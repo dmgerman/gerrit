@@ -1417,6 +1417,8 @@ name|accountId
 return|;
 block|}
 comment|/** @return the user's user name; null if one has not been selected/assigned. */
+annotation|@
+name|Override
 DECL|method|getUserName ()
 specifier|public
 name|String
