@@ -1456,6 +1456,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+try|try
+block|{
 name|publishCommentsFactory
 operator|.
 name|create
@@ -1470,8 +1472,6 @@ operator|.
 name|call
 argument_list|()
 expr_stmt|;
-try|try
-block|{
 if|if
 condition|(
 name|abandonChange
