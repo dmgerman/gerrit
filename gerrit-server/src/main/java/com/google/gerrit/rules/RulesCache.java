@@ -546,6 +546,22 @@ name|DB_MAX
 init|=
 literal|256
 decl_stmt|;
+DECL|field|PACKAGE_LIST
+specifier|private
+specifier|static
+specifier|final
+name|String
+index|[]
+name|PACKAGE_LIST
+init|=
+block|{
+name|Prolog
+operator|.
+name|BUILTIN
+block|,
+literal|"gerrit"
+block|,     }
+decl_stmt|;
 DECL|field|machineCache
 specifier|private
 specifier|final
@@ -1296,6 +1312,14 @@ name|class
 argument_list|)
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+comment|// Bootstrap the interpreter and ensure there is clean state.
+name|ctl
+operator|.
+name|initialize
+argument_list|(
+name|PACKAGE_LIST
 argument_list|)
 expr_stmt|;
 return|return
