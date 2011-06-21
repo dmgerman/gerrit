@@ -544,7 +544,7 @@ specifier|final
 name|int
 name|DB_MAX
 init|=
-literal|64
+literal|256
 decl_stmt|;
 DECL|field|machineCache
 specifier|private
