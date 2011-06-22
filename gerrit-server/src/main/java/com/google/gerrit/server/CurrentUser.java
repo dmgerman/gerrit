@@ -261,6 +261,17 @@ argument_list|>
 name|getNotificationFilters
 parameter_list|()
 function_decl|;
+comment|/** Unique name of the user on this server, if one has been assigned. */
+DECL|method|getUserName ()
+specifier|public
+name|String
+name|getUserName
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|/** Capabilities available to this user account. */
 DECL|method|getCapabilities ()
 specifier|public
