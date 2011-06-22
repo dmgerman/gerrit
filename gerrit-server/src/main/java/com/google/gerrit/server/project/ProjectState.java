@@ -210,6 +210,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|CapabilityCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|AllProjectsName
@@ -495,6 +511,13 @@ specifier|volatile
 name|long
 name|lastCheckTime
 decl_stmt|;
+comment|/** If this is all projects, the capabilities used by the server. */
+DECL|field|capabilities
+specifier|private
+specifier|final
+name|CapabilityCollection
+name|capabilities
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, @Assisted final ProjectConfig config)
@@ -588,6 +611,27 @@ operator|.
 name|config
 operator|=
 name|config
+expr_stmt|;
+name|this
+operator|.
+name|capabilities
+operator|=
+name|isAllProjects
+condition|?
+operator|new
+name|CapabilityCollection
+argument_list|(
+name|config
+operator|.
+name|getAccessSection
+argument_list|(
+name|AccessSection
+operator|.
+name|GLOBAL_CAPABILITIES
+argument_list|)
+argument_list|)
+else|:
+literal|null
 expr_stmt|;
 name|HashSet
 argument_list|<
@@ -826,6 +870,17 @@ return|return
 literal|true
 return|;
 block|}
+block|}
+comment|/**    * @return cached computation of all global capabilities. This should only be    *         invoked on the state from {@link ProjectCache#getAllProjects()}.    *         Null on any other project.    */
+DECL|method|getCapabilityCollection ()
+specifier|public
+name|CapabilityCollection
+name|getCapabilityCollection
+parameter_list|()
+block|{
+return|return
+name|capabilities
+return|;
 block|}
 comment|/** @return Construct a new PrologEnvironment for the calling thread. */
 DECL|method|newPrologEnvironment ()
