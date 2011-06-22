@@ -1788,17 +1788,6 @@ name|Gerrit
 operator|.
 name|isSignedIn
 argument_list|()
-operator|&&
-name|detail
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
