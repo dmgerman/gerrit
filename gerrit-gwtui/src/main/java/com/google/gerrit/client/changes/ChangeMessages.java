@@ -157,6 +157,14 @@ name|String
 name|changeId
 parameter_list|)
 function_decl|;
+DECL|method|outdatedHeader (int outdated)
+name|String
+name|outdatedHeader
+parameter_list|(
+name|int
+name|outdated
+parameter_list|)
+function_decl|;
 DECL|method|patchSetHeader (int id)
 name|String
 name|patchSetHeader

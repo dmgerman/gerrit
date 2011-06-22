@@ -96,6 +96,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|sql
@@ -173,18 +187,36 @@ specifier|protected
 name|String
 name|sortKey
 decl_stmt|;
+DECL|field|patchSetId
+specifier|protected
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+decl_stmt|;
+DECL|field|latest
+specifier|protected
+name|boolean
+name|latest
+decl_stmt|;
 DECL|method|ChangeInfo ()
 specifier|protected
 name|ChangeInfo
 parameter_list|()
 block|{   }
-DECL|method|ChangeInfo (final Change c)
+DECL|method|ChangeInfo (final Change c, final PatchSet.Id patchId)
 specifier|public
 name|ChangeInfo
 parameter_list|(
 specifier|final
 name|Change
 name|c
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|patchId
 parameter_list|)
 block|{
 name|id
@@ -263,6 +295,43 @@ name|c
 operator|.
 name|getSortKey
 argument_list|()
+expr_stmt|;
+name|patchSetId
+operator|=
+name|patchId
+expr_stmt|;
+name|latest
+operator|=
+name|patchSetId
+operator|==
+literal|null
+operator|||
+name|c
+operator|.
+name|currPatchSetId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|patchSetId
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ChangeInfo (final Change c)
+specifier|public
+name|ChangeInfo
+parameter_list|(
+specifier|final
+name|Change
+name|c
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|c
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getId ()
@@ -377,6 +446,28 @@ name|starred
 operator|=
 name|s
 expr_stmt|;
+block|}
+DECL|method|getPatchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchSetId
+parameter_list|()
+block|{
+return|return
+name|patchSetId
+return|;
+block|}
+DECL|method|isLatest ()
+specifier|public
+name|boolean
+name|isLatest
+parameter_list|()
+block|{
+return|return
+name|latest
+return|;
 block|}
 DECL|method|getLastUpdatedOn ()
 specifier|public

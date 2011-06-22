@@ -693,6 +693,11 @@ name|String
 name|noborder
 parameter_list|()
 function_decl|;
+DECL|method|outdated ()
+name|String
+name|outdated
+parameter_list|()
+function_decl|;
 DECL|method|parentsTable ()
 name|String
 name|parentsTable
