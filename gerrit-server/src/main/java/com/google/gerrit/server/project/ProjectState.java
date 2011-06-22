@@ -484,14 +484,14 @@ decl_stmt|;
 comment|/** Prolog rule state. */
 DECL|field|rulesMachine
 specifier|private
-specifier|transient
+specifier|volatile
 name|PrologMachineCopy
 name|rulesMachine
 decl_stmt|;
 comment|/** Last system time the configuration's revision was examined. */
 DECL|field|lastCheckTime
 specifier|private
-specifier|transient
+specifier|volatile
 name|long
 name|lastCheckTime
 decl_stmt|;
