@@ -4610,13 +4610,15 @@ name|requestReplace
 argument_list|(
 name|cmd
 argument_list|,
+literal|true
+argument_list|,
 name|changeEnt
 argument_list|,
 name|newCommit
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|requestReplace (final ReceiveCommand cmd, final Change change, final RevCommit newCommit)
+DECL|method|requestReplace (final ReceiveCommand cmd, final boolean checkMergedInto, final Change change, final RevCommit newCommit)
 specifier|private
 name|boolean
 name|requestReplace
@@ -4624,6 +4626,10 @@ parameter_list|(
 specifier|final
 name|ReceiveCommand
 name|cmd
+parameter_list|,
+specifier|final
+name|boolean
+name|checkMergedInto
 parameter_list|,
 specifier|final
 name|Change
@@ -4678,6 +4684,8 @@ argument_list|,
 name|newCommit
 argument_list|,
 name|cmd
+argument_list|,
+name|checkMergedInto
 argument_list|)
 decl_stmt|;
 if|if
@@ -5092,6 +5100,8 @@ condition|(
 name|requestReplace
 argument_list|(
 name|newChange
+argument_list|,
+literal|false
 argument_list|,
 name|changes
 operator|.
@@ -7327,6 +7337,13 @@ name|ps
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|request
+operator|.
+name|checkMergedInto
+condition|)
+block|{
 specifier|final
 name|Ref
 name|mergedInto
@@ -7359,6 +7376,7 @@ argument_list|()
 else|:
 literal|null
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|change
@@ -8827,7 +8845,12 @@ specifier|final
 name|ReceiveCommand
 name|cmd
 decl_stmt|;
-DECL|method|ReplaceRequest (final Change.Id toChange, final RevCommit newCommit, final ReceiveCommand cmd)
+DECL|field|checkMergedInto
+specifier|final
+name|boolean
+name|checkMergedInto
+decl_stmt|;
+DECL|method|ReplaceRequest (final Change.Id toChange, final RevCommit newCommit, final ReceiveCommand cmd, final boolean checkMergedInto)
 name|ReplaceRequest
 parameter_list|(
 specifier|final
@@ -8843,6 +8866,10 @@ parameter_list|,
 specifier|final
 name|ReceiveCommand
 name|cmd
+parameter_list|,
+specifier|final
+name|boolean
+name|checkMergedInto
 parameter_list|)
 block|{
 name|this
@@ -8862,6 +8889,12 @@ operator|.
 name|cmd
 operator|=
 name|cmd
+expr_stmt|;
+name|this
+operator|.
+name|checkMergedInto
+operator|=
+name|checkMergedInto
 expr_stmt|;
 block|}
 block|}
@@ -10750,6 +10783,8 @@ argument_list|,
 name|c
 argument_list|,
 name|cmd
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
