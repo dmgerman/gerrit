@@ -912,7 +912,9 @@ argument_list|()
 condition|)
 block|{
 name|publishApprovals
-argument_list|()
+argument_list|(
+name|ctl
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -999,11 +1001,14 @@ name|drafts
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|publishApprovals ()
+DECL|method|publishApprovals (ChangeControl ctl)
 specifier|private
 name|void
 name|publishApprovals
-parameter_list|()
+parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|)
 throws|throws
 name|OrmException
 block|{
@@ -1214,7 +1219,7 @@ name|functionStateFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|ctl
 argument_list|,
 name|patchSetId
 argument_list|,

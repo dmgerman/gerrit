@@ -2383,9 +2383,6 @@ operator|.
 name|create
 argument_list|(
 name|changeControl
-operator|.
-name|getChange
-argument_list|()
 argument_list|,
 name|patchSetId
 argument_list|,

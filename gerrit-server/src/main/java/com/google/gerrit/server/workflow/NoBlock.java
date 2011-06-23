@@ -82,20 +82,6 @@ name|ApprovalType
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|CurrentUser
-import|;
-end_import
-
 begin_comment
 comment|/** A function that does nothing. */
 end_comment
@@ -141,30 +127,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|isValid (final CurrentUser user, final ApprovalType at, final FunctionState state)
-specifier|public
-name|boolean
-name|isValid
-parameter_list|(
-specifier|final
-name|CurrentUser
-name|user
-parameter_list|,
-specifier|final
-name|ApprovalType
-name|at
-parameter_list|,
-specifier|final
-name|FunctionState
-name|state
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
 block|}
 block|}
 end_class

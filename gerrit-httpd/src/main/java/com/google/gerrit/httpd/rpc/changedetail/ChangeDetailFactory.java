@@ -1219,10 +1219,7 @@ name|functionState
 operator|.
 name|create
 argument_list|(
-name|detail
-operator|.
-name|getChange
-argument_list|()
+name|control
 argument_list|,
 name|psId
 argument_list|,
