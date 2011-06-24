@@ -910,6 +910,14 @@ specifier|final
 name|GroupCache
 name|groupCache
 decl_stmt|;
+DECL|field|permissionFilter
+specifier|private
+specifier|final
+name|PermissionCollection
+operator|.
+name|Factory
+name|permissionFilter
+decl_stmt|;
 DECL|field|allSections
 specifier|private
 name|List
@@ -935,7 +943,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, final SchemaFactory<ReviewDb> schema, final GroupCache groupCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, final SchemaFactory<ReviewDb> schema, final GroupCache groupCache, final PermissionCollection.Factory permissionFilter, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -968,6 +976,12 @@ parameter_list|,
 specifier|final
 name|GroupCache
 name|groupCache
+parameter_list|,
+specifier|final
+name|PermissionCollection
+operator|.
+name|Factory
+name|permissionFilter
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -1011,6 +1025,12 @@ operator|.
 name|groupCache
 operator|=
 name|groupCache
+expr_stmt|;
+name|this
+operator|.
+name|permissionFilter
+operator|=
+name|permissionFilter
 expr_stmt|;
 name|this
 operator|.
@@ -1152,7 +1172,7 @@ block|{
 name|PermissionCollection
 name|relevant
 init|=
-name|PermissionCollection
+name|permissionFilter
 operator|.
 name|filter
 argument_list|(
