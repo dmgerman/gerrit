@@ -4182,6 +4182,11 @@ finally|finally
 block|{
 name|walk
 operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|walk
+operator|.
 name|setRevFilter
 argument_list|(
 name|oldRevFilter
