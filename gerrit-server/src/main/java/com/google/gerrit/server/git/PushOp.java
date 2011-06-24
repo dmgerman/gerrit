@@ -941,6 +941,46 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|PerThreadRequestScope
+name|ctx
+init|=
+operator|new
+name|PerThreadRequestScope
+argument_list|()
+decl_stmt|;
+name|PerThreadRequestScope
+name|old
+init|=
+name|PerThreadRequestScope
+operator|.
+name|set
+argument_list|(
+name|ctx
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|runPushOperation
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|PerThreadRequestScope
+operator|.
+name|set
+argument_list|(
+name|old
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|runPushOperation ()
+specifier|private
+name|void
+name|runPushOperation
+parameter_list|()
+block|{
 comment|// Lock the queue, and remove ourselves, so we can't be modified once
 comment|// we start replication (instead a new instance, with the same URI, is
 comment|// created and scheduled for a future point in time.)
