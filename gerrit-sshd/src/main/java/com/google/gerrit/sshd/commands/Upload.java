@@ -92,6 +92,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|TagCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|TransferConfig
 import|;
 end_import
@@ -204,6 +220,13 @@ name|TransferConfig
 name|config
 decl_stmt|;
 annotation|@
+name|Inject
+DECL|field|tagCache
+specifier|private
+name|TagCache
+name|tagCache
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|runImpl ()
 specifier|protected
@@ -260,6 +283,8 @@ argument_list|(
 operator|new
 name|VisibleRefFilter
 argument_list|(
+name|tagCache
+argument_list|,
 name|repo
 argument_list|,
 name|projectControl
