@@ -180,6 +180,16 @@ name|REF_CONFIG
 init|=
 literal|"refs/meta/config"
 decl_stmt|;
+comment|/**    * Prefix applied to merge commit base nodes.    *<p>    * References in this directory should take the form    * {@code refs/cache-automerge/xx/yyyy...} where xx is    * the first two digits of the merge commit's object    * name, and yyyyy... is the remaining 38. The reference    * should point to a treeish that is the automatic merge    * result of the merge commit's parents.    */
+DECL|field|REFS_CACHE_AUTOMERGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_CACHE_AUTOMERGE
+init|=
+literal|"refs/cache-automerge/"
+decl_stmt|;
 comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
 DECL|method|openRepository (Project.NameKey name)
 specifier|public
