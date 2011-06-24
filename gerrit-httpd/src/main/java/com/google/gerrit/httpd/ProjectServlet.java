@@ -240,6 +240,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|TagCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|TransferConfig
 import|;
 end_import
@@ -1489,9 +1505,15 @@ specifier|final
 name|PackConfig
 name|packConfig
 decl_stmt|;
+DECL|field|tagCache
+specifier|private
+specifier|final
+name|TagCache
+name|tagCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Upload (final Provider<ReviewDb> db, final TransferConfig tc)
+DECL|method|Upload (final Provider<ReviewDb> db, final TransferConfig tc, final TagCache tagCache)
 name|Upload
 parameter_list|(
 specifier|final
@@ -1504,6 +1526,10 @@ parameter_list|,
 specifier|final
 name|TransferConfig
 name|tc
+parameter_list|,
+specifier|final
+name|TagCache
+name|tagCache
 parameter_list|)
 block|{
 name|this
@@ -1520,6 +1546,12 @@ name|tc
 operator|.
 name|getPackConfig
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|tagCache
+operator|=
+name|tagCache
 expr_stmt|;
 block|}
 annotation|@
@@ -1597,6 +1629,8 @@ argument_list|(
 operator|new
 name|VisibleRefFilter
 argument_list|(
+name|tagCache
+argument_list|,
 name|repo
 argument_list|,
 name|pc

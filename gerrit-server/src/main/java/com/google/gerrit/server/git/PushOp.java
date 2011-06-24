@@ -605,6 +605,12 @@ specifier|final
 name|CredentialsProvider
 name|credentialsProvider
 decl_stmt|;
+DECL|field|tagCache
+specifier|private
+specifier|final
+name|TagCache
+name|tagCache
+decl_stmt|;
 DECL|field|delta
 specifier|private
 specifier|final
@@ -658,7 +664,7 @@ name|canceled
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PushOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> s, final PushReplication.ReplicationConfig p, final RemoteConfig c, final SecureCredentialsProvider.Factory cpFactory, @Assisted final Project.NameKey d, @Assisted final URIish u)
+DECL|method|PushOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> s, final PushReplication.ReplicationConfig p, final RemoteConfig c, final SecureCredentialsProvider.Factory cpFactory, final TagCache tc, @Assisted final Project.NameKey d, @Assisted final URIish u)
 name|PushOp
 parameter_list|(
 specifier|final
@@ -687,6 +693,10 @@ name|SecureCredentialsProvider
 operator|.
 name|Factory
 name|cpFactory
+parameter_list|,
+specifier|final
+name|TagCache
+name|tc
 parameter_list|,
 annotation|@
 name|Assisted
@@ -730,6 +740,10 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|tagCache
+operator|=
+name|tc
 expr_stmt|;
 name|projectName
 operator|=
@@ -1641,6 +1655,8 @@ operator|=
 operator|new
 name|VisibleRefFilter
 argument_list|(
+name|tagCache
+argument_list|,
 name|db
 argument_list|,
 name|pc
