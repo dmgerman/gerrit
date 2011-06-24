@@ -265,6 +265,11 @@ name|String
 name|headingIncludedGroups
 parameter_list|()
 function_decl|;
+DECL|method|noMembersInfo ()
+name|String
+name|noMembersInfo
+parameter_list|()
+function_decl|;
 DECL|method|headingExternalGroup ()
 name|String
 name|headingExternalGroup
@@ -433,6 +438,16 @@ function_decl|;
 DECL|method|groupListTitle ()
 name|String
 name|groupListTitle
+parameter_list|()
+function_decl|;
+DECL|method|groupTabGeneral ()
+name|String
+name|groupTabGeneral
+parameter_list|()
+function_decl|;
+DECL|method|groupTabMembers ()
+name|String
+name|groupTabMembers
 parameter_list|()
 function_decl|;
 DECL|method|projectListTitle ()

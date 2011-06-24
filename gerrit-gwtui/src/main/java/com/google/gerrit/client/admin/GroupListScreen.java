@@ -908,7 +908,7 @@ name|newItem
 argument_list|(
 name|Dispatcher
 operator|.
-name|toAccountGroup
+name|toGroup
 argument_list|(
 name|result
 argument_list|)

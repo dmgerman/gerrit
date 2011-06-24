@@ -583,7 +583,7 @@ name|newItem
 argument_list|(
 name|Dispatcher
 operator|.
-name|toAccountGroup
+name|toGroup
 argument_list|(
 name|getRowItem
 argument_list|(
@@ -705,7 +705,7 @@ argument_list|()
 argument_list|,
 name|Dispatcher
 operator|.
-name|toAccountGroup
+name|toGroup
 argument_list|(
 name|k
 operator|.
