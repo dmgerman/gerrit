@@ -610,13 +610,6 @@ case|case
 name|NOT_READY
 case|:
 block|{
-name|StringBuilder
-name|msg
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|SubmitRecord

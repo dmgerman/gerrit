@@ -1360,11 +1360,6 @@ name|oldest
 init|=
 name|now
 decl_stmt|;
-name|double
-name|writeThroughput
-init|=
-literal|0.0
-decl_stmt|;
 for|for
 control|(
 name|IoSession
