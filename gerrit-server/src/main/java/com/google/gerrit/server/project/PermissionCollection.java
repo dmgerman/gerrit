@@ -651,8 +651,6 @@ return|return
 operator|new
 name|PermissionCollection
 argument_list|(
-name|ref
-argument_list|,
 name|permissions
 argument_list|,
 name|perUser
@@ -664,12 +662,6 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|ref
-specifier|private
-specifier|final
-name|String
-name|ref
-decl_stmt|;
 DECL|field|rules
 specifier|private
 specifier|final
@@ -690,13 +682,10 @@ specifier|final
 name|String
 name|username
 decl_stmt|;
-DECL|method|PermissionCollection (String ref, Map<String, List<PermissionRule>> rules, String username)
+DECL|method|PermissionCollection (Map<String, List<PermissionRule>> rules, String username)
 specifier|private
 name|PermissionCollection
 parameter_list|(
-name|String
-name|ref
-parameter_list|,
 name|Map
 argument_list|<
 name|String
@@ -712,12 +701,6 @@ name|String
 name|username
 parameter_list|)
 block|{
-name|this
-operator|.
-name|ref
-operator|=
-name|ref
-expr_stmt|;
 name|this
 operator|.
 name|rules

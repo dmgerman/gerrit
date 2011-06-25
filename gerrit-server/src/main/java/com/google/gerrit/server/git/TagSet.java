@@ -2100,6 +2100,15 @@ argument_list|<
 name|ObjectId
 argument_list|>
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|flag
 specifier|final
 name|int
