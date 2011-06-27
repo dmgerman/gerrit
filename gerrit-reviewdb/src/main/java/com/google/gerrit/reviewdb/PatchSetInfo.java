@@ -173,6 +173,12 @@ name|ParentInfo
 argument_list|>
 name|parents
 decl_stmt|;
+comment|/** SHA-1 of commit */
+DECL|field|revId
+specifier|protected
+name|String
+name|revId
+decl_stmt|;
 DECL|method|PatchSetInfo ()
 specifier|protected
 name|PatchSetInfo
@@ -364,6 +370,31 @@ parameter_list|()
 block|{
 return|return
 name|parents
+return|;
+block|}
+DECL|method|setRevId (final String s)
+specifier|public
+name|void
+name|setRevId
+parameter_list|(
+specifier|final
+name|String
+name|s
+parameter_list|)
+block|{
+name|revId
+operator|=
+name|s
+expr_stmt|;
+block|}
+DECL|method|getRevId ()
+specifier|public
+name|String
+name|getRevId
+parameter_list|()
+block|{
+return|return
+name|revId
 return|;
 block|}
 block|}

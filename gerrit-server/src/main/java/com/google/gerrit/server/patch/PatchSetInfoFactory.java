@@ -539,6 +539,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|info
+operator|.
+name|setRevId
+argument_list|(
+name|src
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|info
 return|;
