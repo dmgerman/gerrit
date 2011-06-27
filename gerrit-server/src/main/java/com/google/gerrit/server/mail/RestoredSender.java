@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -107,14 +107,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Send notice about a change being abandoned by its owner. */
+comment|/** Send notice about a change being restored by its owner. */
 end_comment
 
 begin_class
-DECL|class|AbandonedSender
+DECL|class|RestoredSender
 specifier|public
 class|class
-name|AbandonedSender
+name|RestoredSender
 extends|extends
 name|ReplyToChangeSender
 block|{
@@ -128,11 +128,11 @@ name|ReplyToChangeSender
 operator|.
 name|Factory
 argument_list|<
-name|AbandonedSender
+name|RestoredSender
 argument_list|>
 block|{
 DECL|method|create (Change change)
-name|AbandonedSender
+name|RestoredSender
 name|create
 parameter_list|(
 name|Change
@@ -142,9 +142,9 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AbandonedSender (EmailArguments ea, @Assisted Change c)
+DECL|method|RestoredSender (EmailArguments ea, @Assisted Change c)
 specifier|public
-name|AbandonedSender
+name|RestoredSender
 parameter_list|(
 name|EmailArguments
 name|ea
@@ -161,7 +161,7 @@ name|ea
 argument_list|,
 name|c
 argument_list|,
-literal|"abandon"
+literal|"restore"
 argument_list|)
 expr_stmt|;
 block|}
@@ -204,7 +204,7 @@ name|appendText
 argument_list|(
 name|velocifyFile
 argument_list|(
-literal|"Abandoned.vm"
+literal|"Restored.vm"
 argument_list|)
 argument_list|)
 expr_stmt|;

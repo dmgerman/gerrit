@@ -394,13 +394,13 @@ specifier|final
 name|IdentifiedUser
 name|currentUser
 decl_stmt|;
-DECL|field|abandonedSenderFactory
+DECL|field|senderFactory
 specifier|private
 specifier|final
 name|AbandonedSender
 operator|.
 name|Factory
-name|abandonedSenderFactory
+name|senderFactory
 decl_stmt|;
 DECL|field|changeDetailFactory
 specifier|private
@@ -434,7 +434,7 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final AbandonedSender.Factory abandonedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHookRunner hooks)
+DECL|method|AbandonChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final AbandonedSender.Factory senderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHookRunner hooks)
 name|AbandonChange
 parameter_list|(
 specifier|final
@@ -455,7 +455,7 @@ specifier|final
 name|AbandonedSender
 operator|.
 name|Factory
-name|abandonedSenderFactory
+name|senderFactory
 parameter_list|,
 specifier|final
 name|ChangeDetailFactory
@@ -504,9 +504,9 @@ name|currentUser
 expr_stmt|;
 name|this
 operator|.
-name|abandonedSenderFactory
+name|senderFactory
 operator|=
-name|abandonedSenderFactory
+name|senderFactory
 expr_stmt|;
 name|this
 operator|.
@@ -604,7 +604,7 @@ name|message
 argument_list|,
 name|db
 argument_list|,
-name|abandonedSenderFactory
+name|senderFactory
 argument_list|,
 name|hooks
 argument_list|)
