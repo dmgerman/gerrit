@@ -195,7 +195,7 @@ specifier|final
 name|String
 name|SETTINGS
 init|=
-literal|"settings"
+literal|"/settings/"
 decl_stmt|;
 DECL|field|SETTINGS_PREFERENCES
 specifier|public
@@ -204,7 +204,7 @@ specifier|final
 name|String
 name|SETTINGS_PREFERENCES
 init|=
-literal|"settings,preferences"
+literal|"/settings/preferences"
 decl_stmt|;
 DECL|field|SETTINGS_SSHKEYS
 specifier|public
@@ -213,7 +213,7 @@ specifier|final
 name|String
 name|SETTINGS_SSHKEYS
 init|=
-literal|"settings,ssh-keys"
+literal|"/settings/ssh-keys"
 decl_stmt|;
 DECL|field|SETTINGS_HTTP_PASSWORD
 specifier|public
@@ -222,7 +222,7 @@ specifier|final
 name|String
 name|SETTINGS_HTTP_PASSWORD
 init|=
-literal|"settings,http-password"
+literal|"/settings/http-password"
 decl_stmt|;
 DECL|field|SETTINGS_WEBIDENT
 specifier|public
@@ -231,7 +231,7 @@ specifier|final
 name|String
 name|SETTINGS_WEBIDENT
 init|=
-literal|"settings,web-identities"
+literal|"/settings/web-identities"
 decl_stmt|;
 DECL|field|SETTINGS_MYGROUPS
 specifier|public
@@ -240,7 +240,7 @@ specifier|final
 name|String
 name|SETTINGS_MYGROUPS
 init|=
-literal|"settings,group-memberships"
+literal|"/settings/group-memberships"
 decl_stmt|;
 DECL|field|SETTINGS_AGREEMENTS
 specifier|public
@@ -249,7 +249,7 @@ specifier|final
 name|String
 name|SETTINGS_AGREEMENTS
 init|=
-literal|"settings,agreements"
+literal|"/settings/agreements"
 decl_stmt|;
 DECL|field|SETTINGS_CONTACT
 specifier|public
@@ -258,7 +258,7 @@ specifier|final
 name|String
 name|SETTINGS_CONTACT
 init|=
-literal|"settings,contact"
+literal|"/settings/contact"
 decl_stmt|;
 DECL|field|SETTINGS_PROJECTS
 specifier|public
@@ -267,7 +267,7 @@ specifier|final
 name|String
 name|SETTINGS_PROJECTS
 init|=
-literal|"settings,projects"
+literal|"/settings/projects"
 decl_stmt|;
 DECL|field|SETTINGS_NEW_AGREEMENT
 specifier|public
@@ -276,7 +276,7 @@ specifier|final
 name|String
 name|SETTINGS_NEW_AGREEMENT
 init|=
-literal|"settings,new-agreement"
+literal|"/settings/new-agreement"
 decl_stmt|;
 DECL|field|REGISTER
 specifier|public
@@ -285,7 +285,7 @@ specifier|final
 name|String
 name|REGISTER
 init|=
-literal|"register"
+literal|"/register"
 decl_stmt|;
 DECL|field|TOP
 specifier|public
@@ -303,7 +303,7 @@ specifier|final
 name|String
 name|MINE
 init|=
-literal|"mine"
+literal|"/"
 decl_stmt|;
 DECL|field|ADMIN_GROUPS
 specifier|public
@@ -312,7 +312,7 @@ specifier|final
 name|String
 name|ADMIN_GROUPS
 init|=
-literal|"admin,groups"
+literal|"/admin/groups/"
 decl_stmt|;
 DECL|field|ADMIN_PROJECTS
 specifier|public
@@ -321,7 +321,7 @@ specifier|final
 name|String
 name|ADMIN_PROJECTS
 init|=
-literal|"admin,projects"
+literal|"/admin/projects/"
 decl_stmt|;
 DECL|method|toChange (final ChangeInfo c)
 specifier|public
@@ -358,12 +358,11 @@ name|c
 parameter_list|)
 block|{
 return|return
-literal|"change,"
+literal|"/c/"
 operator|+
 name|c
-operator|.
-name|toString
-argument_list|()
+operator|+
+literal|"/"
 return|;
 block|}
 DECL|method|toChange (final PatchSet.Id ps)
@@ -380,17 +379,14 @@ name|ps
 parameter_list|)
 block|{
 return|return
-literal|"change,"
+literal|"/c/"
 operator|+
 name|ps
 operator|.
 name|getParentKey
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 operator|+
-literal|",patchset="
+literal|"/"
 operator|+
 name|ps
 operator|.
@@ -412,7 +408,7 @@ name|p
 parameter_list|)
 block|{
 return|return
-literal|"admin,project,"
+literal|"/admin/projects/"
 operator|+
 name|p
 operator|.
@@ -457,7 +453,7 @@ name|acct
 parameter_list|)
 block|{
 return|return
-literal|"dashboard,"
+literal|"/dashboard/"
 operator|+
 name|acct
 operator|.
@@ -477,18 +473,51 @@ name|query
 parameter_list|)
 block|{
 return|return
-literal|"q,"
-operator|+
+name|toChangeQuery
+argument_list|(
+name|query
+argument_list|,
+name|TOP
+argument_list|)
+return|;
+block|}
+DECL|method|toChangeQuery (String query, String page)
+specifier|public
+specifier|static
+name|String
+name|toChangeQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|String
+name|page
+parameter_list|)
+block|{
+name|query
+operator|=
 name|KeyUtil
 operator|.
 name|encode
 argument_list|(
 name|query
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"%3[Aa]"
+argument_list|,
+literal|":"
+argument_list|)
+expr_stmt|;
+return|return
+literal|"/q/"
+operator|+
+name|query
 operator|+
 literal|","
 operator|+
-name|TOP
+name|page
 return|;
 block|}
 DECL|method|projectQuery (Project.NameKey proj, Status status)

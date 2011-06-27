@@ -268,7 +268,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"q,"
+literal|"/q/"
 operator|+
 name|encQuery
 argument_list|,

@@ -1661,7 +1661,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"    $q = qq{#change,$1};\n"
+literal|"    $q = qq{#/c/$1};\n"
 argument_list|)
 expr_stmt|;
 name|p
@@ -1675,7 +1675,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"    $q = qq{#q,$h,n,z};\n"
+literal|"    $q = qq{#/q/$h,n,z};\n"
 argument_list|)
 expr_stmt|;
 name|p

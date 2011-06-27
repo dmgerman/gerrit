@@ -1024,13 +1024,6 @@ operator|.
 name|REGISTER
 argument_list|)
 expr_stmt|;
-name|rdr
-operator|.
-name|append
-argument_list|(
-literal|','
-argument_list|)
-expr_stmt|;
 block|}
 name|rdr
 operator|.

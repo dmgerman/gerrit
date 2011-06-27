@@ -3051,7 +3051,7 @@ name|token
 operator|.
 name|startsWith
 argument_list|(
-literal|"SignInFailure,"
+literal|"/SignInFailure,"
 argument_list|)
 condition|)
 block|{
@@ -3100,7 +3100,7 @@ name|PageLinks
 operator|.
 name|REGISTER
 operator|+
-literal|","
+literal|"/"
 argument_list|)
 condition|)
 block|{
@@ -3111,13 +3111,6 @@ argument_list|(
 name|PageLinks
 operator|.
 name|REGISTER
-argument_list|)
-expr_stmt|;
-name|rdr
-operator|.
-name|append
-argument_list|(
-literal|','
 argument_list|)
 expr_stmt|;
 block|}

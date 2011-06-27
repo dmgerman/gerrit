@@ -1384,12 +1384,30 @@ name|token
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|to
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|to
+operator|=
+literal|"/"
+operator|+
+name|to
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|result
 operator|.
 name|isNew
 operator|&&
 operator|!
-name|to
+name|token
 operator|.
 name|startsWith
 argument_list|(
@@ -1397,7 +1415,7 @@ name|PageLinks
 operator|.
 name|REGISTER
 operator|+
-literal|","
+literal|"/"
 argument_list|)
 condition|)
 block|{
@@ -1407,16 +1425,9 @@ name|PageLinks
 operator|.
 name|REGISTER
 operator|+
-literal|","
-operator|+
 name|to
 expr_stmt|;
 block|}
-comment|// Unfortunately we no longer support updating the web UI when the
-comment|// user signs in. Instead we must force a reload of the page, but
-comment|// that isn't easy because we might need to change the anchor. So
-comment|// we bounce through a little redirection servlet on the server.
-comment|//
 name|Location
 operator|.
 name|replace
@@ -1426,7 +1437,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"login/"
+literal|"login"
 operator|+
 name|to
 argument_list|)
