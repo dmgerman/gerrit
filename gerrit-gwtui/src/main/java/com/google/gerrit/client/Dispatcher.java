@@ -1827,6 +1827,13 @@ literal|"register,"
 argument_list|,
 name|token
 argument_list|)
+operator|||
+name|matchPrefix
+argument_list|(
+literal|"q,"
+argument_list|,
+name|token
+argument_list|)
 condition|)
 block|{
 name|redirectFromLegacyToken
