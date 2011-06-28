@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GroupDetail
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|Account
@@ -107,20 +123,6 @@ operator|.
 name|reviewdb
 operator|.
 name|AccountExternalId
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|AccountGroup
 import|;
 end_import
 
@@ -402,7 +404,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|myGroups (AsyncCallback<List<AccountGroup>> callback)
+DECL|method|myGroups (AsyncCallback<List<GroupDetail>> callback)
 name|void
 name|myGroups
 parameter_list|(
@@ -410,7 +412,7 @@ name|AsyncCallback
 argument_list|<
 name|List
 argument_list|<
-name|AccountGroup
+name|GroupDetail
 argument_list|>
 argument_list|>
 name|callback

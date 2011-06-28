@@ -262,8 +262,6 @@ name|AccountGroup
 argument_list|>
 name|call
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 specifier|final
 name|Set

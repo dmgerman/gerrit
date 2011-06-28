@@ -106,9 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|AccountGroup
+name|data
+operator|.
+name|GroupDetail
 import|;
 end_import
 
@@ -187,7 +189,7 @@ name|ScreenLoadCallback
 argument_list|<
 name|List
 argument_list|<
-name|AccountGroup
+name|GroupDetail
 argument_list|>
 argument_list|>
 argument_list|(
@@ -201,7 +203,7 @@ parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|AccountGroup
+name|GroupDetail
 argument_list|>
 name|result
 parameter_list|)

@@ -74,9 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|AccountGroup
+name|data
+operator|.
+name|GroupDetail
 import|;
 end_import
 
@@ -100,7 +102,7 @@ DECL|field|groups
 specifier|protected
 name|List
 argument_list|<
-name|AccountGroup
+name|GroupDetail
 argument_list|>
 name|groups
 decl_stmt|;
@@ -113,7 +115,7 @@ DECL|method|getGroups ()
 specifier|public
 name|List
 argument_list|<
-name|AccountGroup
+name|GroupDetail
 argument_list|>
 name|getGroups
 parameter_list|()
@@ -122,14 +124,14 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|setGroups (List<AccountGroup> groups)
+DECL|method|setGroups (List<GroupDetail> groups)
 specifier|public
 name|void
 name|setGroups
 parameter_list|(
 name|List
 argument_list|<
-name|AccountGroup
+name|GroupDetail
 argument_list|>
 name|groups
 parameter_list|)
