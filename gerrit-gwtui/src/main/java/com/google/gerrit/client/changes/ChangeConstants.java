@@ -365,6 +365,11 @@ name|String
 name|approvalTableCouldNotRemove
 parameter_list|()
 function_decl|;
+DECL|method|approvalTableAddReviewerHint ()
+name|String
+name|approvalTableAddReviewerHint
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockOwner ()
 name|String
 name|changeInfoBlockOwner

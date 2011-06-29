@@ -138,7 +138,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AddIncludedGroupBox
+name|AccountGroupSuggestOracle
 import|;
 end_import
 
@@ -548,7 +548,7 @@ name|includePanel
 decl_stmt|;
 DECL|field|addIncludeBox
 specifier|private
-name|AddIncludedGroupBox
+name|AddMemberBox
 name|addIncludeBox
 decl_stmt|;
 DECL|field|delInclude
@@ -787,8 +787,26 @@ block|{
 name|addIncludeBox
 operator|=
 operator|new
-name|AddIncludedGroupBox
+name|AddMemberBox
+argument_list|(
+name|Util
+operator|.
+name|C
+operator|.
+name|buttonAddIncludedGroup
 argument_list|()
+argument_list|,
+name|Util
+operator|.
+name|C
+operator|.
+name|defaultAccountGroupName
+argument_list|()
+argument_list|,
+operator|new
+name|AccountGroupSuggestOracle
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|addIncludeBox
 operator|.
