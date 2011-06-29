@@ -477,6 +477,18 @@ specifier|protected
 name|boolean
 name|expandAllComments
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|13
+argument_list|)
+DECL|field|retainHeader
+specifier|protected
+name|boolean
+name|retainHeader
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -602,6 +614,14 @@ operator|=
 name|p
 operator|.
 name|context
+expr_stmt|;
+name|this
+operator|.
+name|retainHeader
+operator|=
+name|p
+operator|.
+name|retainHeader
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -914,6 +934,30 @@ block|{
 name|expandAllComments
 operator|=
 name|expand
+expr_stmt|;
+block|}
+DECL|method|isRetainHeader ()
+specifier|public
+name|boolean
+name|isRetainHeader
+parameter_list|()
+block|{
+return|return
+name|retainHeader
+return|;
+block|}
+DECL|method|setRetainHeader (boolean retain)
+specifier|public
+name|void
+name|setRetainHeader
+parameter_list|(
+name|boolean
+name|retain
+parameter_list|)
+block|{
+name|retainHeader
+operator|=
+name|retain
 expr_stmt|;
 block|}
 block|}

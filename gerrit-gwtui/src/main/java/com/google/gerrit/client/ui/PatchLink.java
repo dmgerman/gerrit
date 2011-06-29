@@ -172,8 +172,15 @@ specifier|protected
 name|PatchTable
 name|parentPatchTable
 decl_stmt|;
+DECL|field|topView
+specifier|protected
+name|PatchScreen
+operator|.
+name|TopView
+name|topView
+decl_stmt|;
 comment|/**    * @param text The text of this link    * @param patchKey The key for this patch    * @param patchIndex The index of the current patch in the patch set    * @param historyToken The history token    * @param patchSetDetail Detailed information about the patch set.    * @param parentPatchTable The table used to display this link    */
-DECL|method|PatchLink (final String text, final Patch.Key patchKey, final int patchIndex, final String historyToken, final PatchSetDetail patchSetDetail, final PatchTable parentPatchTable)
+DECL|method|PatchLink (final String text, final Patch.Key patchKey, final int patchIndex, final String historyToken, final PatchSetDetail patchSetDetail, final PatchTable parentPatchTable, final PatchScreen.TopView topView)
 specifier|protected
 name|PatchLink
 parameter_list|(
@@ -202,6 +209,12 @@ parameter_list|,
 specifier|final
 name|PatchTable
 name|parentPatchTable
+parameter_list|,
+specifier|final
+name|PatchScreen
+operator|.
+name|TopView
+name|topView
 parameter_list|)
 block|{
 name|super
@@ -234,6 +247,18 @@ operator|.
 name|parentPatchTable
 operator|=
 name|parentPatchTable
+expr_stmt|;
+name|this
+operator|.
+name|parentPatchTable
+operator|=
+name|parentPatchTable
+expr_stmt|;
+name|this
+operator|.
+name|topView
+operator|=
+name|topView
 expr_stmt|;
 block|}
 comment|/**    * @param text The text of this link    * @param type The type of the link to create (unified/side-by-side)    * @param patchScreen The patchScreen to grab contents to link to from    */
@@ -296,6 +321,12 @@ name|patchScreen
 operator|.
 name|getFileList
 argument_list|()
+argument_list|,
+comment|//
+name|patchScreen
+operator|.
+name|getTopView
+argument_list|()
 comment|//
 argument_list|)
 expr_stmt|;
@@ -327,6 +358,8 @@ name|patchSetDetail
 argument_list|,
 comment|//
 name|parentPatchTable
+argument_list|,
+name|topView
 comment|//
 argument_list|)
 expr_stmt|;
@@ -382,6 +415,8 @@ argument_list|,
 name|patchSetDetail
 argument_list|,
 name|parentPatchTable
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -437,6 +472,8 @@ argument_list|,
 name|patchSetDetail
 argument_list|,
 name|parentPatchTable
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
