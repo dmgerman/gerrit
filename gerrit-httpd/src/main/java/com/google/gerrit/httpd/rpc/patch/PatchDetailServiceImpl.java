@@ -1260,7 +1260,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewers (final Change.Id id, final List<String> reviewers, final AsyncCallback<ReviewerResult> callback)
+DECL|method|addReviewers (final Change.Id id, final List<String> reviewers, final boolean confirmed, final AsyncCallback<ReviewerResult> callback)
 specifier|public
 name|void
 name|addReviewers
@@ -1279,6 +1279,10 @@ argument_list|>
 name|reviewers
 parameter_list|,
 specifier|final
+name|boolean
+name|confirmed
+parameter_list|,
+specifier|final
 name|AsyncCallback
 argument_list|<
 name|ReviewerResult
@@ -1293,6 +1297,8 @@ argument_list|(
 name|id
 argument_list|,
 name|reviewers
+argument_list|,
+name|confirmed
 argument_list|)
 operator|.
 name|to

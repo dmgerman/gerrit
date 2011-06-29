@@ -196,7 +196,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|GroupDetailFactory
+name|GroupDetailHandler
 operator|.
 name|Factory
 operator|.

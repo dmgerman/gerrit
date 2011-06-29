@@ -230,6 +230,11 @@ name|String
 name|buttonSaveGroupOptions
 parameter_list|()
 function_decl|;
+DECL|method|suggestedGroupLabel ()
+name|String
+name|suggestedGroupLabel
+parameter_list|()
+function_decl|;
 DECL|method|headingOwner ()
 name|String
 name|headingOwner

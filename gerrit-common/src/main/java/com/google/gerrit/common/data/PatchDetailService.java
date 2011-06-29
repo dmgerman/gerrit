@@ -403,7 +403,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|addReviewers (Change.Id id, List<String> reviewers, AsyncCallback<ReviewerResult> callback)
+DECL|method|addReviewers (Change.Id id, List<String> reviewers, boolean confirmed, AsyncCallback<ReviewerResult> callback)
 name|void
 name|addReviewers
 parameter_list|(
@@ -417,6 +417,9 @@ argument_list|<
 name|String
 argument_list|>
 name|reviewers
+parameter_list|,
+name|boolean
+name|confirmed
 parameter_list|,
 name|AsyncCallback
 argument_list|<

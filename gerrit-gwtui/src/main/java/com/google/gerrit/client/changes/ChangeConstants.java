@@ -370,6 +370,11 @@ name|String
 name|approvalTableAddReviewerHint
 parameter_list|()
 function_decl|;
+DECL|method|approvalTableAddManyReviewersConfirmationDialogTitle ()
+name|String
+name|approvalTableAddManyReviewersConfirmationDialogTitle
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockOwner ()
 name|String
 name|changeInfoBlockOwner
