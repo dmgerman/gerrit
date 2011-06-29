@@ -676,6 +676,12 @@ DECL|field|update
 name|Button
 name|update
 decl_stmt|;
+annotation|@
+name|UiField
+DECL|field|save
+name|Button
+name|save
+decl_stmt|;
 comment|/**    * Counts +1 for every setEnabled(true) and -1 for every setEnabled(false)    *    * The purpose is to prevent enabling widgets too early. It might happen that    * setEnabled(false) is called from this class and from an event handler    * of ValueChangeEvent in another class. The first setEnabled(true) would then    * enable widgets too early i.e. before the second setEnabled(true) is called.    *    * With this counter the setEnabled(true) will enable widgets only when    * setEnabledCounter == 0. Until it is less than zero setEnabled(true) will    * not enable the widgets.    */
 DECL|field|setEnabledCounter
 specifier|private
@@ -730,6 +736,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|save
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 name|KeyPressHandler
 name|onEnter
@@ -763,7 +776,7 @@ operator|.
 name|KEY_ENTER
 condition|)
 block|{
-name|update
+name|save
 argument_list|()
 expr_stmt|;
 block|}
@@ -937,7 +950,7 @@ expr_stmt|;
 block|}
 name|toggleEnabledStatus
 argument_list|(
-name|update
+name|save
 operator|.
 name|isEnabled
 argument_list|()
@@ -987,7 +1000,7 @@ expr_stmt|;
 block|}
 name|toggleEnabledStatus
 argument_list|(
-name|update
+name|save
 operator|.
 name|isEnabled
 argument_list|()
@@ -1252,6 +1265,23 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|UiHandler
+argument_list|(
+literal|"save"
+argument_list|)
+DECL|method|onSave (ClickEvent event)
+name|void
+name|onSave
+parameter_list|(
+name|ClickEvent
+name|event
+parameter_list|)
+block|{
+name|save
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|update ()
 specifier|private
 name|void
@@ -1417,6 +1447,16 @@ argument_list|(
 name|dp
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|save ()
+specifier|private
+name|void
+name|save
+parameter_list|()
+block|{
+name|update
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|Gerrit
@@ -1441,15 +1481,10 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|Util
+name|listenablePrefs
 operator|.
-name|ACCOUNT_SVC
-operator|.
-name|changeDiffPreferences
+name|save
 argument_list|(
-name|getValue
-argument_list|()
-argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
@@ -1467,14 +1502,6 @@ name|VoidResult
 name|result
 parameter_list|)
 block|{
-name|Gerrit
-operator|.
-name|setAccountDiffPreference
-argument_list|(
-name|getValue
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|setEnabled
 argument_list|(
 literal|true
