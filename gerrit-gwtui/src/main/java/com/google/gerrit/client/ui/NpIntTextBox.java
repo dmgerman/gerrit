@@ -283,6 +283,11 @@ name|KeyCodes
 operator|.
 name|KEY_TAB
 case|:
+case|case
+name|KeyCodes
+operator|.
+name|KEY_DELETE
+case|:
 break|break;
 default|default:
 if|if
