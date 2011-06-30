@@ -566,7 +566,7 @@ operator|&&
 operator|!
 name|rule
 operator|.
-name|getDeny
+name|isDeny
 argument_list|()
 condition|)
 block|{
