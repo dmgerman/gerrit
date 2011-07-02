@@ -184,7 +184,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|AbandonedSender
+name|EmailException
 import|;
 end_import
 
@@ -200,7 +200,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|EmailException
+name|RestoredSender
 import|;
 end_import
 
@@ -366,13 +366,13 @@ specifier|final
 name|IdentifiedUser
 name|currentUser
 decl_stmt|;
-DECL|field|abandonedSenderFactory
+DECL|field|senderFactory
 specifier|private
 specifier|final
-name|AbandonedSender
+name|RestoredSender
 operator|.
 name|Factory
-name|abandonedSenderFactory
+name|senderFactory
 decl_stmt|;
 DECL|field|changeDetailFactory
 specifier|private
@@ -406,7 +406,7 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RestoreChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final AbandonedSender.Factory abandonedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHookRunner hooks)
+DECL|method|RestoreChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RestoredSender.Factory senderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHookRunner hooks)
 name|RestoreChange
 parameter_list|(
 specifier|final
@@ -424,10 +424,10 @@ name|IdentifiedUser
 name|currentUser
 parameter_list|,
 specifier|final
-name|AbandonedSender
+name|RestoredSender
 operator|.
 name|Factory
-name|abandonedSenderFactory
+name|senderFactory
 parameter_list|,
 specifier|final
 name|ChangeDetailFactory
@@ -476,9 +476,9 @@ name|currentUser
 expr_stmt|;
 name|this
 operator|.
-name|abandonedSenderFactory
+name|senderFactory
 operator|=
-name|abandonedSenderFactory
+name|senderFactory
 expr_stmt|;
 name|this
 operator|.
@@ -576,7 +576,7 @@ name|message
 argument_list|,
 name|db
 argument_list|,
-name|abandonedSenderFactory
+name|senderFactory
 argument_list|,
 name|hooks
 argument_list|)

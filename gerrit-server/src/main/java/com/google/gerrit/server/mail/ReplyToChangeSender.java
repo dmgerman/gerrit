@@ -93,6 +93,27 @@ name|ReplyToChangeSender
 extends|extends
 name|ChangeEmail
 block|{
+DECL|interface|Factory
+specifier|public
+specifier|static
+interface|interface
+name|Factory
+parameter_list|<
+name|T
+extends|extends
+name|ReplyToChangeSender
+parameter_list|>
+block|{
+DECL|method|create (Change change)
+specifier|public
+name|T
+name|create
+parameter_list|(
+name|Change
+name|change
+parameter_list|)
+function_decl|;
+block|}
 DECL|method|ReplyToChangeSender (EmailArguments ea, Change c, String mc)
 specifier|protected
 name|ReplyToChangeSender
