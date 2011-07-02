@@ -199,14 +199,11 @@ operator|.
 name|DENY
 return|;
 block|}
-DECL|method|setDeny (boolean newDeny)
+DECL|method|setDeny ()
 specifier|public
 name|void
 name|setDeny
-parameter_list|(
-name|boolean
-name|newDeny
-parameter_list|)
+parameter_list|()
 block|{
 name|action
 operator|=

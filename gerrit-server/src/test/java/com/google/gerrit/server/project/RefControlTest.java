@@ -1151,9 +1151,7 @@ literal|"refs/*"
 argument_list|)
 operator|.
 name|setDeny
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -1201,9 +1199,7 @@ literal|"refs/heads/*"
 argument_list|)
 operator|.
 name|setDeny
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -1296,9 +1292,7 @@ literal|"refs/*"
 argument_list|)
 operator|.
 name|setDeny
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|grant
 argument_list|(
@@ -1402,9 +1396,7 @@ literal|"refs/*"
 argument_list|)
 operator|.
 name|setDeny
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|grant
 argument_list|(
