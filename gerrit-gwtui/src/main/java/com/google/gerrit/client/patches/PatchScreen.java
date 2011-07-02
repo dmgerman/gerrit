@@ -589,7 +589,7 @@ name|SideBySide
 extends|extends
 name|PatchScreen
 block|{
-DECL|method|SideBySide (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable)
+DECL|method|SideBySide (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable, final TopView topView)
 specifier|public
 name|SideBySide
 parameter_list|(
@@ -610,6 +610,10 @@ parameter_list|,
 specifier|final
 name|PatchTable
 name|patchTable
+parameter_list|,
+specifier|final
+name|TopView
+name|topView
 parameter_list|)
 block|{
 name|super
@@ -621,6 +625,8 @@ argument_list|,
 name|patchSetDetail
 argument_list|,
 name|patchTable
+argument_list|,
+name|topView
 argument_list|)
 expr_stmt|;
 block|}
@@ -665,7 +671,7 @@ name|Unified
 extends|extends
 name|PatchScreen
 block|{
-DECL|method|Unified (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable)
+DECL|method|Unified (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable, final TopView topView)
 specifier|public
 name|Unified
 parameter_list|(
@@ -686,6 +692,10 @@ parameter_list|,
 specifier|final
 name|PatchTable
 name|patchTable
+parameter_list|,
+specifier|final
+name|TopView
+name|topView
 parameter_list|)
 block|{
 name|super
@@ -697,6 +707,8 @@ argument_list|,
 name|patchSetDetail
 argument_list|,
 name|patchTable
+argument_list|,
+name|topView
 argument_list|)
 expr_stmt|;
 block|}
@@ -813,6 +825,11 @@ specifier|protected
 name|PatchScriptSettingsPanel
 name|settingsPanel
 decl_stmt|;
+DECL|field|topView
+specifier|protected
+name|TopView
+name|topView
+decl_stmt|;
 DECL|field|historyTable
 specifier|private
 name|HistoryTable
@@ -903,7 +920,7 @@ name|UNIFIED
 block|,
 name|SIDE_BY_SIDE
 block|}
-DECL|method|PatchScreen (final Patch.Key id, final int patchIndex, final PatchSetDetail detail, final PatchTable patchTable)
+DECL|method|PatchScreen (final Patch.Key id, final int patchIndex, final PatchSetDetail detail, final PatchTable patchTable, final TopView top)
 specifier|protected
 name|PatchScreen
 parameter_list|(
@@ -924,6 +941,10 @@ parameter_list|,
 specifier|final
 name|PatchTable
 name|patchTable
+parameter_list|,
+specifier|final
+name|TopView
+name|top
 parameter_list|)
 block|{
 name|patchKey
@@ -937,6 +958,10 @@ expr_stmt|;
 name|fileList
 operator|=
 name|patchTable
+expr_stmt|;
+name|topView
+operator|=
+name|top
 expr_stmt|;
 if|if
 condition|(
@@ -1889,6 +1914,16 @@ return|return
 name|fileList
 return|;
 block|}
+DECL|method|getTopView ()
+specifier|public
+name|TopView
+name|getTopView
+parameter_list|()
+block|{
+return|return
+name|topView
+return|;
+block|}
 DECL|method|refresh (final boolean isFirst)
 specifier|protected
 name|void
@@ -2457,6 +2492,27 @@ name|show
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|topView
+operator|!=
+literal|null
+operator|&&
+name|prefs
+operator|.
+name|get
+argument_list|()
+operator|.
+name|isRetainHeader
+argument_list|()
+condition|)
+block|{
+name|setTopView
+argument_list|(
+name|topView
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|showPatch (final boolean showPatch)
 specifier|private
@@ -2558,6 +2614,10 @@ name|TopView
 name|tv
 parameter_list|)
 block|{
+name|topView
+operator|=
+name|tv
+expr_stmt|;
 name|topPanel
 operator|.
 name|clear
