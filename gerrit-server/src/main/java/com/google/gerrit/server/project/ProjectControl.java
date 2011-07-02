@@ -2270,7 +2270,7 @@ if|if
 condition|(
 name|rule
 operator|.
-name|getDeny
+name|isDeny
 argument_list|()
 operator|||
 operator|!

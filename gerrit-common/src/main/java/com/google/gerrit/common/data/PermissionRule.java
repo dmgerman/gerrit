@@ -185,10 +185,10 @@ operator|=
 name|action
 expr_stmt|;
 block|}
-DECL|method|getDeny ()
+DECL|method|isDeny ()
 specifier|public
 name|boolean
-name|getDeny
+name|isDeny
 parameter_list|()
 block|{
 return|return
