@@ -968,6 +968,12 @@ operator|.
 name|Action
 operator|.
 name|DENY
+argument_list|,
+name|PermissionRule
+operator|.
+name|Action
+operator|.
+name|BLOCK
 argument_list|)
 argument_list|)
 expr_stmt|;
