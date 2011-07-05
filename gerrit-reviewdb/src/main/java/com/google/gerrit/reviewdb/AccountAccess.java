@@ -270,6 +270,24 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"ORDER BY accountId LIMIT ?"
+argument_list|)
+DECL|method|firstNById (int n)
+name|ResultSet
+argument_list|<
+name|Account
+argument_list|>
+name|firstNById
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
