@@ -145,6 +145,13 @@ argument_list|(
 literal|"?p=${project}.git;a=shortlog;h=${branch}"
 argument_list|)
 expr_stmt|;
+name|type
+operator|.
+name|setFileHistory
+argument_list|(
+literal|"?p=${project}.git;a=history;hb=${branch};f=${file}"
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -189,6 +196,13 @@ operator|.
 name|setBranch
 argument_list|(
 literal|"${project}/log/?h=${branch}"
+argument_list|)
+expr_stmt|;
+name|type
+operator|.
+name|setFileHistory
+argument_list|(
+literal|"${project}/log/${file}?h=${branch}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -269,6 +283,12 @@ specifier|private
 name|String
 name|branch
 decl_stmt|;
+comment|/** ParamertizedString for file history view url. */
+DECL|field|fileHistory
+specifier|private
+name|String
+name|fileHistory
+decl_stmt|;
 comment|/** Private default constructor for gson. */
 DECL|method|GitWebType ()
 specifier|protected
@@ -317,6 +337,17 @@ parameter_list|()
 block|{
 return|return
 name|revision
+return|;
+block|}
+comment|/**    * Get the String for file history view.    *    * @return The String for file history view    */
+DECL|method|getFileHistory ()
+specifier|public
+name|String
+name|getFileHistory
+parameter_list|()
+block|{
+return|return
+name|fileHistory
 return|;
 block|}
 comment|/**    * Set the pattern for branch view.    *    * @param pattern The pattern for branch view    */
@@ -436,6 +467,36 @@ argument_list|()
 condition|)
 block|{
 name|revision
+operator|=
+name|pattern
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Set the pattern for file history view.    *    * @param pattern The pattern for file history view    */
+DECL|method|setFileHistory (final String pattern)
+specifier|public
+name|void
+name|setFileHistory
+parameter_list|(
+specifier|final
+name|String
+name|pattern
+parameter_list|)
+block|{
+if|if
+condition|(
+name|pattern
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|pattern
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|fileHistory
 operator|=
 name|pattern
 expr_stmt|;

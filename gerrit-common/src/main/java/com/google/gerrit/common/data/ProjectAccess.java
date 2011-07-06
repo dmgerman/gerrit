@@ -106,6 +106,13 @@ specifier|public
 class|class
 name|ProjectAccess
 block|{
+DECL|field|projectName
+specifier|protected
+name|Project
+operator|.
+name|NameKey
+name|projectName
+decl_stmt|;
 DECL|field|revision
 specifier|protected
 name|String
@@ -134,11 +141,46 @@ name|String
 argument_list|>
 name|ownerOf
 decl_stmt|;
+DECL|field|isConfigVisible
+specifier|protected
+name|boolean
+name|isConfigVisible
+decl_stmt|;
 DECL|method|ProjectAccess ()
 specifier|public
 name|ProjectAccess
 parameter_list|()
 block|{   }
+DECL|method|getProjectName ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProjectName
+parameter_list|()
+block|{
+return|return
+name|projectName
+return|;
+block|}
+DECL|method|setProjectName (Project.NameKey projectName)
+specifier|public
+name|void
+name|setProjectName
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|projectName
+operator|=
+name|projectName
+expr_stmt|;
+block|}
 DECL|method|getRevision ()
 specifier|public
 name|String
@@ -325,6 +367,32 @@ block|{
 name|ownerOf
 operator|=
 name|refs
+expr_stmt|;
+block|}
+DECL|method|isConfigVisible ()
+specifier|public
+name|boolean
+name|isConfigVisible
+parameter_list|()
+block|{
+return|return
+name|isConfigVisible
+return|;
+block|}
+DECL|method|setConfigVisible (boolean isConfigVisible)
+specifier|public
+name|void
+name|setConfigVisible
+parameter_list|(
+name|boolean
+name|isConfigVisible
+parameter_list|)
+block|{
+name|this
+operator|.
+name|isConfigVisible
+operator|=
+name|isConfigVisible
 expr_stmt|;
 block|}
 block|}
