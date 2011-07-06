@@ -170,16 +170,6 @@ name|String
 name|buttonSelectGroup
 parameter_list|()
 function_decl|;
-DECL|method|buttonAddProjectRight ()
-name|String
-name|buttonAddProjectRight
-parameter_list|()
-function_decl|;
-DECL|method|buttonClearProjectRight ()
-name|String
-name|buttonClearProjectRight
-parameter_list|()
-function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
@@ -235,11 +225,6 @@ name|String
 name|headingOwner
 parameter_list|()
 function_decl|;
-DECL|method|headingParentProjectName ()
-name|String
-name|headingParentProjectName
-parameter_list|()
-function_decl|;
 DECL|method|headingDescription ()
 name|String
 name|headingDescription
@@ -280,19 +265,9 @@ name|String
 name|headingCreateGroup
 parameter_list|()
 function_decl|;
-DECL|method|headingAccessRights ()
-name|String
-name|headingAccessRights
-parameter_list|()
-function_decl|;
 DECL|method|headingAgreements ()
 name|String
 name|headingAgreements
-parameter_list|()
-function_decl|;
-DECL|method|headingShowInherited ()
-name|String
-name|headingShowInherited
 parameter_list|()
 function_decl|;
 DECL|method|projectSubmitType_FAST_FORWARD_ONLY ()
@@ -345,39 +320,9 @@ name|String
 name|columnGroupName
 parameter_list|()
 function_decl|;
-DECL|method|columnProjectName ()
-name|String
-name|columnProjectName
-parameter_list|()
-function_decl|;
 DECL|method|columnGroupDescription ()
 name|String
 name|columnGroupDescription
-parameter_list|()
-function_decl|;
-DECL|method|columnProjectDescription ()
-name|String
-name|columnProjectDescription
-parameter_list|()
-function_decl|;
-DECL|method|columnRightOrigin ()
-name|String
-name|columnRightOrigin
-parameter_list|()
-function_decl|;
-DECL|method|columnApprovalCategory ()
-name|String
-name|columnApprovalCategory
-parameter_list|()
-function_decl|;
-DECL|method|columnRightRange ()
-name|String
-name|columnRightRange
-parameter_list|()
-function_decl|;
-DECL|method|columnRefName ()
-name|String
-name|columnRefName
 parameter_list|()
 function_decl|;
 DECL|method|columnBranchName ()
@@ -403,21 +348,6 @@ function_decl|;
 DECL|method|buttonDeleteBranch ()
 name|String
 name|buttonDeleteBranch
-parameter_list|()
-function_decl|;
-DECL|method|projectListPrev ()
-name|String
-name|projectListPrev
-parameter_list|()
-function_decl|;
-DECL|method|projectListNext ()
-name|String
-name|projectListNext
-parameter_list|()
-function_decl|;
-DECL|method|projectListOpen ()
-name|String
-name|projectListOpen
 parameter_list|()
 function_decl|;
 DECL|method|groupListPrev ()
