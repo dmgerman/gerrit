@@ -125,6 +125,16 @@ name|String
 name|noDifference
 parameter_list|()
 function_decl|;
+DECL|method|patchBase ()
+name|String
+name|patchBase
+parameter_list|()
+function_decl|;
+DECL|method|patchHeaderPatchSet ()
+name|String
+name|patchHeaderPatchSet
+parameter_list|()
+function_decl|;
 DECL|method|patchHeaderOld ()
 name|String
 name|patchHeaderOld
