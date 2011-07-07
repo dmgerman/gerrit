@@ -225,6 +225,11 @@ name|String
 name|suggestedGroupLabel
 parameter_list|()
 function_decl|;
+DECL|method|headingGroupUUID ()
+name|String
+name|headingGroupUUID
+parameter_list|()
+function_decl|;
 DECL|method|headingOwner ()
 name|String
 name|headingOwner
