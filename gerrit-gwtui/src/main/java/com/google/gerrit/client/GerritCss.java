@@ -153,6 +153,11 @@ name|String
 name|activeRow
 parameter_list|()
 function_decl|;
+DECL|method|addMemberTextBox ()
+name|String
+name|addMemberTextBox
+parameter_list|()
+function_decl|;
 DECL|method|addReviewer ()
 name|String
 name|addReviewer
@@ -568,9 +573,69 @@ name|String
 name|gerritBody
 parameter_list|()
 function_decl|;
+DECL|method|groupDescriptionPanel ()
+name|String
+name|groupDescriptionPanel
+parameter_list|()
+function_decl|;
+DECL|method|groupExternalNameFilterTextBox ()
+name|String
+name|groupExternalNameFilterTextBox
+parameter_list|()
+function_decl|;
+DECL|method|groupIncludesTable ()
+name|String
+name|groupIncludesTable
+parameter_list|()
+function_decl|;
+DECL|method|groupMembersTable ()
+name|String
+name|groupMembersTable
+parameter_list|()
+function_decl|;
 DECL|method|groupName ()
 name|String
 name|groupName
+parameter_list|()
+function_decl|;
+DECL|method|groupNamePanel ()
+name|String
+name|groupNamePanel
+parameter_list|()
+function_decl|;
+DECL|method|groupNameTextBox ()
+name|String
+name|groupNameTextBox
+parameter_list|()
+function_decl|;
+DECL|method|groupOptionsPanel ()
+name|String
+name|groupOptionsPanel
+parameter_list|()
+function_decl|;
+DECL|method|groupOptionsNotificationsDescriptionPanel ()
+name|String
+name|groupOptionsNotificationsDescriptionPanel
+parameter_list|()
+function_decl|;
+DECL|method|groupOwnerPanel ()
+name|String
+name|groupOwnerPanel
+parameter_list|()
+function_decl|;
+DECL|method|groupOwnerTextBox ()
+name|String
+name|groupOwnerTextBox
+parameter_list|()
+function_decl|;
+DECL|method|groupTypePanel ()
+name|String
+name|groupTypePanel
+parameter_list|()
+function_decl|;
+DECL|method|groupTypeSelectListBox ()
+name|String
+name|groupTypeSelectListBox
 parameter_list|()
 function_decl|;
 DECL|method|groupUUIDPanel ()
