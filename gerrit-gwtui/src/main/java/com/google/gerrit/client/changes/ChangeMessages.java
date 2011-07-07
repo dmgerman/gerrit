@@ -313,9 +313,9 @@ name|String
 name|query
 parameter_list|)
 function_decl|;
-DECL|method|accountNotFound (String who)
+DECL|method|reviewerNotFound (String who)
 name|String
-name|accountNotFound
+name|reviewerNotFound
 parameter_list|(
 name|String
 name|who
@@ -335,6 +335,41 @@ name|changeNotVisibleTo
 parameter_list|(
 name|String
 name|who
+parameter_list|)
+function_decl|;
+DECL|method|groupIsEmpty (String group)
+name|String
+name|groupIsEmpty
+parameter_list|(
+name|String
+name|group
+parameter_list|)
+function_decl|;
+DECL|method|groupIsNotAllowed (String group)
+name|String
+name|groupIsNotAllowed
+parameter_list|(
+name|String
+name|group
+parameter_list|)
+function_decl|;
+DECL|method|groupHasTooManyMembers (String group)
+name|String
+name|groupHasTooManyMembers
+parameter_list|(
+name|String
+name|group
+parameter_list|)
+function_decl|;
+DECL|method|groupManyMembersConfirmation (String group, int memberCount)
+name|String
+name|groupManyMembersConfirmation
+parameter_list|(
+name|String
+name|group
+parameter_list|,
+name|int
+name|memberCount
 parameter_list|)
 function_decl|;
 DECL|method|anonymousDownload (String protocol)

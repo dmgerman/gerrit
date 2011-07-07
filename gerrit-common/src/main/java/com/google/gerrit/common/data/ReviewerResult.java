@@ -109,6 +109,16 @@ specifier|protected
 name|ChangeDetail
 name|change
 decl_stmt|;
+DECL|field|memberCount
+specifier|protected
+name|int
+name|memberCount
+decl_stmt|;
+DECL|field|askForConfirmation
+specifier|protected
+name|boolean
+name|askForConfirmation
+decl_stmt|;
 DECL|method|ReviewerResult ()
 specifier|public
 name|ReviewerResult
@@ -180,6 +190,60 @@ operator|=
 name|d
 expr_stmt|;
 block|}
+DECL|method|getMemberCount ()
+specifier|public
+name|int
+name|getMemberCount
+parameter_list|()
+block|{
+return|return
+name|memberCount
+return|;
+block|}
+DECL|method|setMemberCount (final int memberCount)
+specifier|public
+name|void
+name|setMemberCount
+parameter_list|(
+specifier|final
+name|int
+name|memberCount
+parameter_list|)
+block|{
+name|this
+operator|.
+name|memberCount
+operator|=
+name|memberCount
+expr_stmt|;
+block|}
+DECL|method|askForConfirmation ()
+specifier|public
+name|boolean
+name|askForConfirmation
+parameter_list|()
+block|{
+return|return
+name|askForConfirmation
+return|;
+block|}
+DECL|method|setAskForConfirmation (final boolean askForConfirmation)
+specifier|public
+name|void
+name|setAskForConfirmation
+parameter_list|(
+specifier|final
+name|boolean
+name|askForConfirmation
+parameter_list|)
+block|{
+name|this
+operator|.
+name|askForConfirmation
+operator|=
+name|askForConfirmation
+expr_stmt|;
+block|}
 DECL|class|Error
 specifier|public
 specifier|static
@@ -192,9 +256,9 @@ specifier|static
 enum|enum
 name|Type
 block|{
-comment|/** Name supplied does not match to a registered account. */
-DECL|enumConstant|ACCOUNT_NOT_FOUND
-name|ACCOUNT_NOT_FOUND
+comment|/** Name supplied does not match to a registered account or account group. */
+DECL|enumConstant|REVIEWER_NOT_FOUND
+name|REVIEWER_NOT_FOUND
 block|,
 comment|/** The account is inactive. */
 DECL|enumConstant|ACCOUNT_INACTIVE
@@ -203,6 +267,18 @@ block|,
 comment|/** The account is not permitted to see the change. */
 DECL|enumConstant|CHANGE_NOT_VISIBLE
 name|CHANGE_NOT_VISIBLE
+block|,
+comment|/** The groups has no members. */
+DECL|enumConstant|GROUP_EMPTY
+name|GROUP_EMPTY
+block|,
+comment|/** The groups has too many members. */
+DECL|enumConstant|GROUP_HAS_TOO_MANY_MEMBERS
+name|GROUP_HAS_TOO_MANY_MEMBERS
+block|,
+comment|/** The group is not allowed to be added as reviewer. */
+DECL|enumConstant|GROUP_NOT_ALLOWED
+name|GROUP_NOT_ALLOWED
 block|,
 comment|/** Could not remove this reviewer from the change due to ORMException. */
 DECL|enumConstant|COULD_NOT_REMOVE

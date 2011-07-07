@@ -641,14 +641,14 @@ decl_stmt|;
 DECL|field|groupDetailFactory
 specifier|private
 specifier|final
-name|GroupDetailFactory
+name|GroupDetailHandler
 operator|.
 name|Factory
 name|groupDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final AccountResolver accountResolver, final Realm accountRealm, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final CreateGroup.Factory createGroupFactory, final RenameGroup.Factory renameGroupFactory, final GroupDetailFactory.Factory groupDetailFactory)
+DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final AccountResolver accountResolver, final Realm accountRealm, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final CreateGroup.Factory createGroupFactory, final RenameGroup.Factory renameGroupFactory, final GroupDetailHandler.Factory groupDetailFactory)
 name|GroupAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -704,7 +704,7 @@ name|Factory
 name|renameGroupFactory
 parameter_list|,
 specifier|final
-name|GroupDetailFactory
+name|GroupDetailHandler
 operator|.
 name|Factory
 name|groupDetailFactory
