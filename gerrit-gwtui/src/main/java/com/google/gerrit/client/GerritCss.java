@@ -573,6 +573,11 @@ name|String
 name|groupName
 parameter_list|()
 function_decl|;
+DECL|method|groupUUIDPanel ()
+name|String
+name|groupUUIDPanel
+parameter_list|()
+function_decl|;
 DECL|method|header ()
 name|String
 name|header
