@@ -953,6 +953,16 @@ name|String
 name|sourceFilePath
 parameter_list|()
 function_decl|;
+DECL|method|specialBranchDataCell ()
+name|String
+name|specialBranchDataCell
+parameter_list|()
+function_decl|;
+DECL|method|specialBranchIconCell ()
+name|String
+name|specialBranchIconCell
+parameter_list|()
+function_decl|;
 DECL|method|sshHostKeyPanel ()
 name|String
 name|sshHostKeyPanel
