@@ -405,10 +405,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ModifyReviewersCommand
+DECL|class|SetReviewersCommand
 specifier|public
 class|class
-name|ModifyReviewersCommand
+name|SetReviewersCommand
 extends|extends
 name|BaseCommand
 block|{
@@ -423,7 +423,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ModifyReviewersCommand
+name|SetReviewersCommand
 operator|.
 name|class
 argument_list|)
