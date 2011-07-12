@@ -204,7 +204,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|CreateProject
+name|CreateProjectCommand
 operator|.
 name|class
 argument_list|)
