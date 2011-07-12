@@ -370,7 +370,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -443,30 +463,27 @@ block|}
 argument_list|,
 name|metaVar
 operator|=
-literal|"EMAIL"
+literal|"REVIEWER"
 argument_list|,
 name|usage
 operator|=
-literal|"reviewer to add"
+literal|"user or group that should be added as reviewer"
 argument_list|)
-DECL|method|optionAdd (Account.Id who)
-name|void
-name|optionAdd
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|who
-parameter_list|)
-block|{
+DECL|field|toAdd
+specifier|private
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|toAdd
-operator|.
-name|add
-argument_list|(
-name|who
-argument_list|)
-expr_stmt|;
-block|}
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -482,11 +499,11 @@ block|}
 argument_list|,
 name|metaVar
 operator|=
-literal|"EMAIL"
+literal|"REVIEWER"
 argument_list|,
 name|usage
 operator|=
-literal|"reviewer to remove"
+literal|"user that should be removed from the reviewer list"
 argument_list|)
 DECL|method|optionRemove (Account.Id who)
 name|void
@@ -619,25 +636,6 @@ name|ChangeControl
 operator|.
 name|Factory
 name|changeControlFactory
-decl_stmt|;
-DECL|field|toAdd
-specifier|private
-name|Set
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
-name|toAdd
-init|=
-operator|new
-name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
-argument_list|()
 decl_stmt|;
 DECL|field|toRemove
 specifier|private
@@ -918,12 +916,9 @@ name|create
 argument_list|(
 name|changeId
 argument_list|,
-name|stringSet
-argument_list|(
 name|toAdd
-argument_list|)
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 operator|.
 name|call
@@ -968,7 +963,7 @@ name|REVIEWER_NOT_FOUND
 case|:
 name|message
 operator|=
-literal|"account {0} not found"
+literal|"account or group {0} not found"
 expr_stmt|;
 break|break;
 case|case
@@ -985,6 +980,30 @@ case|:
 name|message
 operator|=
 literal|"change {1} not visible to {0}"
+expr_stmt|;
+break|break;
+case|case
+name|GROUP_EMPTY
+case|:
+name|message
+operator|=
+literal|"group {0} is empty"
+expr_stmt|;
+break|break;
+case|case
+name|GROUP_HAS_TOO_MANY_MEMBERS
+case|:
+name|message
+operator|=
+literal|"group {0} has too many members"
+expr_stmt|;
+break|break;
+case|case
+name|GROUP_NOT_ALLOWED
+case|:
+name|message
+operator|=
+literal|"group {0} is not allowed as reviewer"
 expr_stmt|;
 break|break;
 default|default:
@@ -1020,67 +1039,6 @@ expr_stmt|;
 block|}
 return|return
 name|ok
-return|;
-block|}
-DECL|method|stringSet (Set<Account.Id> ids)
-specifier|private
-specifier|static
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|stringSet
-parameter_list|(
-name|Set
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
-name|ids
-parameter_list|)
-block|{
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|res
-init|=
-operator|new
-name|HashSet
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|Account
-operator|.
-name|Id
-name|id
-range|:
-name|ids
-control|)
-block|{
-name|res
-operator|.
-name|add
-argument_list|(
-name|Integer
-operator|.
-name|toString
-argument_list|(
-name|id
-operator|.
-name|get
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|res
 return|;
 block|}
 DECL|method|parseChangeId (String idstr)
