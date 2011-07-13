@@ -258,6 +258,11 @@ specifier|protected
 name|PatchSetDetail
 name|currentDetail
 decl_stmt|;
+DECL|field|canEdit
+specifier|protected
+name|boolean
+name|canEdit
+decl_stmt|;
 DECL|method|ChangeDetail ()
 specifier|public
 name|ChangeDetail
@@ -812,6 +817,30 @@ name|getMessage
 argument_list|()
 else|:
 literal|""
+return|;
+block|}
+DECL|method|setCanEdit (boolean a)
+specifier|public
+name|void
+name|setCanEdit
+parameter_list|(
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canEdit
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canEdit ()
+specifier|public
+name|boolean
+name|canEdit
+parameter_list|()
+block|{
+return|return
+name|canEdit
 return|;
 block|}
 block|}

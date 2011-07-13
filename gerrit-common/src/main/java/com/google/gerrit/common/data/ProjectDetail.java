@@ -111,6 +111,11 @@ specifier|public
 name|boolean
 name|canModifyAccess
 decl_stmt|;
+DECL|field|canModifyState
+specifier|public
+name|boolean
+name|canModifyState
+decl_stmt|;
 DECL|method|ProjectDetail ()
 specifier|public
 name|ProjectDetail
@@ -159,6 +164,21 @@ block|{
 name|canModifyMergeType
 operator|=
 name|cmmt
+expr_stmt|;
+block|}
+DECL|method|setCanModifyState (final boolean cms)
+specifier|public
+name|void
+name|setCanModifyState
+parameter_list|(
+specifier|final
+name|boolean
+name|cms
+parameter_list|)
+block|{
+name|canModifyState
+operator|=
+name|cms
 expr_stmt|;
 block|}
 DECL|method|setCanModifyAgreements (final boolean cma)

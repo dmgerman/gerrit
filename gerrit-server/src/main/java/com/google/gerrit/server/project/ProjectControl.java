@@ -1262,6 +1262,29 @@ name|getProject
 argument_list|()
 return|;
 block|}
+DECL|method|isHidden ()
+specifier|private
+name|boolean
+name|isHidden
+parameter_list|()
+block|{
+return|return
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|Project
+operator|.
+name|State
+operator|.
+name|HIDDEN
+argument_list|)
+return|;
+block|}
 comment|/** Can this user see this project exists? */
 DECL|method|isVisible ()
 specifier|public
@@ -1270,6 +1293,7 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
+operator|(
 name|visibleForReplication
 argument_list|()
 operator|||
@@ -1279,6 +1303,11 @@ name|Permission
 operator|.
 name|READ
 argument_list|)
+operator|)
+operator|&&
+operator|!
+name|isHidden
+argument_list|()
 return|;
 block|}
 DECL|method|canAddRefs ()

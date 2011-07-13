@@ -138,6 +138,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -561,6 +575,7 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
+operator|(
 name|projectControl
 operator|.
 name|visibleForReplication
@@ -572,6 +587,10 @@ name|Permission
 operator|.
 name|READ
 argument_list|)
+operator|)
+operator|&&
+name|canRead
+argument_list|()
 return|;
 block|}
 comment|/**    * Determines whether the user can upload a change to the ref controlled by    * this object.    *    * @return {@code true} if the user specified can upload a change to the Git    *         ref    */
@@ -598,6 +617,9 @@ name|Permission
 operator|.
 name|PUSH
 argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can submit merge patch sets to this ref */
@@ -624,6 +646,9 @@ name|Permission
 operator|.
 name|PUSH_MERGE
 argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
 return|;
 block|}
 comment|/** @return true if this user can submit patch sets to this ref */
@@ -664,6 +689,9 @@ name|Permission
 operator|.
 name|SUBMIT
 argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can update the reference as a fast-forward. */
@@ -707,6 +735,9 @@ name|Permission
 operator|.
 name|PUSH
 argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
 return|;
 block|}
 comment|/** @return true if the user can rewind (force push) the reference. */
@@ -717,10 +748,70 @@ name|canForceUpdate
 parameter_list|()
 block|{
 return|return
+operator|(
 name|canPushWithForce
 argument_list|()
 operator|||
 name|canDelete
+argument_list|()
+operator|)
+operator|&&
+name|canWrite
+argument_list|()
+return|;
+block|}
+DECL|method|canWrite ()
+specifier|public
+name|boolean
+name|canWrite
+parameter_list|()
+block|{
+return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|Project
+operator|.
+name|State
+operator|.
+name|ACTIVE
+argument_list|)
+return|;
+block|}
+DECL|method|canRead ()
+specifier|public
+name|boolean
+name|canRead
+parameter_list|()
+block|{
+return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|Project
+operator|.
+name|State
+operator|.
+name|READ_ONLY
+argument_list|)
+operator|||
+name|canWrite
 argument_list|()
 return|;
 block|}
@@ -732,6 +823,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
+name|canWrite
+argument_list|()
+operator|||
+operator|(
 name|GitRepositoryManager
 operator|.
 name|REF_CONFIG
@@ -746,6 +842,7 @@ name|projectControl
 operator|.
 name|isOwner
 argument_list|()
+operator|)
 condition|)
 block|{
 comment|// Pushing requires being at least project owner, in addition to push.
@@ -818,6 +915,17 @@ name|RevObject
 name|object
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|canWrite
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|boolean
 name|owner
 decl_stmt|;
@@ -1043,6 +1151,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
+name|canWrite
+argument_list|()
+operator|||
+operator|(
 name|GitRepositoryManager
 operator|.
 name|REF_CONFIG
@@ -1051,6 +1164,7 @@ name|equals
 argument_list|(
 name|refName
 argument_list|)
+operator|)
 condition|)
 block|{
 comment|// Never allow removal of the refs/meta/config branch.

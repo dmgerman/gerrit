@@ -1456,6 +1456,14 @@ name|isSignedIn
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|changeDetail
+operator|.
+name|canEdit
+argument_list|()
+condition|)
+block|{
 name|populateReviewAction
 argument_list|()
 expr_stmt|;
@@ -1474,6 +1482,7 @@ argument_list|(
 name|detail
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|populateDiffAllActions
