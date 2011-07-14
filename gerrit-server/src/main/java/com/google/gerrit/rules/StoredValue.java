@@ -74,20 +74,6 @@ name|prolog_cafe
 operator|.
 name|lang
 operator|.
-name|JavaObjectTerm
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|googlecode
-operator|.
-name|prolog_cafe
-operator|.
-name|lang
-operator|.
 name|Prolog
 import|;
 end_import
@@ -103,20 +89,6 @@ operator|.
 name|lang
 operator|.
 name|SystemException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|googlecode
-operator|.
-name|prolog_cafe
-operator|.
-name|lang
-operator|.
-name|Term
 import|;
 end_import
 
@@ -153,15 +125,7 @@ name|StoredValue
 argument_list|<
 name|T
 argument_list|>
-argument_list|(
-operator|new
-name|JavaObjectTerm
-argument_list|(
-operator|new
-name|Object
 argument_list|()
-argument_list|)
-argument_list|)
 return|;
 block|}
 comment|/** Construct a key based on a Java Class object, useful for singletons. */
@@ -191,26 +155,22 @@ argument_list|<
 name|T
 argument_list|>
 argument_list|(
-operator|new
-name|JavaObjectTerm
-argument_list|(
 name|clazz
-argument_list|)
 argument_list|)
 return|;
 block|}
 DECL|field|key
 specifier|private
 specifier|final
-name|Term
+name|Object
 name|key
 decl_stmt|;
-comment|/**    * Initialize a stored value key using a Prolog term.    *    * @param key unique identity of the stored value. This will be the hash key    *        in the interpreter's hash manager.    */
-DECL|method|StoredValue (Term key)
+comment|/**    * Initialize a stored value key using any Java Object.    *    * @param key unique identity of the stored value. This will be the hash key    *        in the Prolog Environments's hash map.    */
+DECL|method|StoredValue (Object key)
 specifier|public
 name|StoredValue
 parameter_list|(
-name|Term
+name|Object
 name|key
 parameter_list|)
 block|{
@@ -219,6 +179,17 @@ operator|.
 name|key
 operator|=
 name|key
+expr_stmt|;
+block|}
+comment|/**    * Initializes a stored value key with a new unique key.    */
+DECL|method|StoredValue ()
+specifier|public
+name|StoredValue
+parameter_list|()
+block|{
+name|key
+operator|=
+name|this
 expr_stmt|;
 block|}
 comment|/** Look up the value in the engine, or return null. */
@@ -254,7 +225,7 @@ name|engine
 parameter_list|)
 block|{
 name|T
-name|r
+name|obj
 init|=
 name|getOrNull
 argument_list|(
@@ -263,75 +234,48 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|r
+name|obj
 operator|==
 literal|null
 condition|)
 block|{
-name|String
-name|msg
-decl_stmt|;
+comment|//unless createValue() is overridden, will return null
+name|obj
+operator|=
+name|createValue
+argument_list|(
+name|engine
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
-name|key
-operator|.
-name|isJavaObject
-argument_list|()
-operator|&&
-name|key
-operator|.
-name|toJava
-argument_list|()
-operator|instanceof
-name|Class
-argument_list|<
-name|?
-argument_list|>
+name|obj
+operator|==
+literal|null
 condition|)
 block|{
-name|msg
-operator|=
-literal|"No "
-operator|+
-operator|(
-operator|(
-name|Class
-argument_list|<
-name|?
-argument_list|>
-operator|)
-name|key
-operator|.
-name|toJava
-argument_list|()
-operator|)
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" avaliable"
-expr_stmt|;
-block|}
-else|else
-block|{
-name|msg
-operator|=
-name|key
-operator|.
-name|toString
-argument_list|()
-expr_stmt|;
-block|}
 throw|throw
 operator|new
 name|SystemException
 argument_list|(
-name|msg
+literal|"No "
+operator|+
+name|key
+operator|+
+literal|" available"
 argument_list|)
 throw|;
 block|}
+name|set
+argument_list|(
+name|engine
+argument_list|,
+name|obj
+argument_list|)
+expr_stmt|;
+block|}
 return|return
-name|r
+name|obj
 return|;
 block|}
 DECL|method|set (Prolog engine, T obj)
@@ -400,6 +344,20 @@ argument_list|,
 name|obj
 argument_list|)
 expr_stmt|;
+block|}
+comment|/** Creates a value to store, returns null by default. */
+DECL|method|createValue (Prolog engine)
+specifier|protected
+name|T
+name|createValue
+parameter_list|(
+name|Prolog
+name|engine
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
 block|}
 block|}
 end_class
