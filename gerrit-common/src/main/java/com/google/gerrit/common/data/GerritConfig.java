@@ -277,6 +277,11 @@ specifier|protected
 name|boolean
 name|documentationAvailable
 decl_stmt|;
+DECL|field|testChangeMerge
+specifier|protected
+name|boolean
+name|testChangeMerge
+decl_stmt|;
 DECL|method|getRegisterUrl ()
 specifier|public
 name|String
@@ -696,6 +701,31 @@ block|{
 name|documentationAvailable
 operator|=
 name|available
+expr_stmt|;
+block|}
+DECL|method|testChangeMerge ()
+specifier|public
+name|boolean
+name|testChangeMerge
+parameter_list|()
+block|{
+return|return
+name|testChangeMerge
+return|;
+block|}
+DECL|method|setTestChangeMerge (final boolean test)
+specifier|public
+name|void
+name|setTestChangeMerge
+parameter_list|(
+specifier|final
+name|boolean
+name|test
+parameter_list|)
+block|{
+name|testChangeMerge
+operator|=
+name|test
 expr_stmt|;
 block|}
 block|}
