@@ -302,6 +302,33 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--comments"
+argument_list|,
+name|usage
+operator|=
+literal|"Include patch set and inline comments"
+argument_list|)
+DECL|method|setComments (boolean on)
+name|void
+name|setComments
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setIncludeComments
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Argument
 argument_list|(
 name|index
