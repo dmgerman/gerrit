@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ParamertizedString
+name|ParameterizedString
 import|;
 end_import
 
@@ -289,11 +289,11 @@ name|from
 argument_list|)
 condition|)
 block|{
-name|ParamertizedString
+name|ParameterizedString
 name|name
 init|=
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 literal|"${user} (Code Review)"
 argument_list|)
@@ -371,7 +371,7 @@ name|from
 argument_list|)
 decl_stmt|;
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|name
 init|=
 name|a
@@ -381,7 +381,7 @@ operator|!=
 literal|null
 condition|?
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 name|a
 operator|.
@@ -694,10 +694,10 @@ decl_stmt|;
 DECL|field|namePattern
 specifier|private
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|namePattern
 decl_stmt|;
-DECL|method|PatternGen (final Address serverAddress, final AccountCache accountCache, final ParamertizedString namePattern, final String senderEmail)
+DECL|method|PatternGen (final Address serverAddress, final AccountCache accountCache, final ParameterizedString namePattern, final String senderEmail)
 name|PatternGen
 parameter_list|(
 specifier|final
@@ -709,7 +709,7 @@ name|AccountCache
 name|accountCache
 parameter_list|,
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|namePattern
 parameter_list|,
 specifier|final

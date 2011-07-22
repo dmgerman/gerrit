@@ -121,16 +121,16 @@ comment|/** Performs replacements on strings such as<code>Hello ${user}</code>. 
 end_comment
 
 begin_class
-DECL|class|ParamertizedString
+DECL|class|ParameterizedString
 specifier|public
 class|class
-name|ParamertizedString
+name|ParameterizedString
 block|{
 comment|/** Obtain a string which has no parameters and always produces the value. */
 DECL|method|asis (final String constant)
 specifier|public
 specifier|static
-name|ParamertizedString
+name|ParameterizedString
 name|asis
 parameter_list|(
 specifier|final
@@ -140,7 +140,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 operator|new
 name|Constant
@@ -180,9 +180,9 @@ name|Parameter
 argument_list|>
 name|parameters
 decl_stmt|;
-DECL|method|ParamertizedString ()
+DECL|method|ParameterizedString ()
 specifier|protected
-name|ParamertizedString
+name|ParameterizedString
 parameter_list|()
 block|{
 name|this
@@ -195,9 +195,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParamertizedString (final Constant c)
+DECL|method|ParameterizedString (final Constant c)
 specifier|private
-name|ParamertizedString
+name|ParameterizedString
 parameter_list|(
 specifier|final
 name|Constant
@@ -236,9 +236,9 @@ name|emptyList
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|ParamertizedString (final String pattern)
+DECL|method|ParameterizedString (final String pattern)
 specifier|public
-name|ParamertizedString
+name|ParameterizedString
 parameter_list|(
 specifier|final
 name|String
@@ -901,7 +901,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|ParamertizedString
+name|ParameterizedString
 operator|.
 name|this
 operator|.

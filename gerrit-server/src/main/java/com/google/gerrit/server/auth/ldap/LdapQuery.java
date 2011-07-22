@@ -80,7 +80,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ParamertizedString
+name|ParameterizedString
 import|;
 end_import
 
@@ -269,7 +269,7 @@ decl_stmt|;
 DECL|field|pattern
 specifier|private
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|pattern
 decl_stmt|;
 DECL|field|returnAttributes
@@ -279,7 +279,7 @@ name|String
 index|[]
 name|returnAttributes
 decl_stmt|;
-DECL|method|LdapQuery (final String base, final SearchScope searchScope, final ParamertizedString pattern, final Set<String> returnAttributes)
+DECL|method|LdapQuery (final String base, final SearchScope searchScope, final ParameterizedString pattern, final Set<String> returnAttributes)
 name|LdapQuery
 parameter_list|(
 specifier|final
@@ -291,7 +291,7 @@ name|SearchScope
 name|searchScope
 parameter_list|,
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|pattern
 parameter_list|,
 specifier|final

@@ -112,7 +112,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ParamertizedString
+name|ParameterizedString
 import|;
 end_import
 
@@ -520,7 +520,7 @@ block|{
 DECL|field|template
 specifier|private
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|template
 decl_stmt|;
 DECL|field|prefix
@@ -547,7 +547,7 @@ expr_stmt|;
 name|template
 operator|=
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 name|pattern
 argument_list|)

@@ -96,7 +96,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ParamertizedString
+name|ParameterizedString
 import|;
 end_import
 
@@ -1170,7 +1170,7 @@ return|;
 block|}
 DECL|method|paramString (Config c, String n, String d)
 specifier|static
-name|ParamertizedString
+name|ParameterizedString
 name|paramString
 parameter_list|(
 name|Config
@@ -1219,7 +1219,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 name|expression
 argument_list|)
@@ -1229,7 +1229,7 @@ else|else
 block|{
 return|return
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 literal|"${"
 operator|+
@@ -1264,13 +1264,13 @@ name|field
 argument_list|)
 return|;
 block|}
-DECL|method|apply (ParamertizedString p, LdapQuery.Result m)
+DECL|method|apply (ParameterizedString p, LdapQuery.Result m)
 specifier|private
 specifier|static
 name|String
 name|apply
 parameter_list|(
-name|ParamertizedString
+name|ParameterizedString
 name|p
 parameter_list|,
 name|LdapQuery
@@ -1902,10 +1902,10 @@ name|ctx
 argument_list|)
 decl_stmt|;
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|filter
 init|=
-name|ParamertizedString
+name|ParameterizedString
 operator|.
 name|asis
 argument_list|(

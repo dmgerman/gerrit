@@ -80,7 +80,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ParamertizedString
+name|ParameterizedString
 import|;
 end_import
 
@@ -1547,17 +1547,17 @@ name|type
 decl_stmt|;
 DECL|field|accountFullName
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|accountFullName
 decl_stmt|;
 DECL|field|accountEmailAddress
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|accountEmailAddress
 decl_stmt|;
 DECL|field|accountSshUserName
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|accountSshUserName
 decl_stmt|;
 DECL|field|accountMemberField
@@ -1592,7 +1592,7 @@ name|groupScope
 decl_stmt|;
 DECL|field|groupPattern
 specifier|final
-name|ParamertizedString
+name|ParameterizedString
 name|groupPattern
 decl_stmt|;
 DECL|field|groupMemberQueryList
@@ -1735,7 +1735,7 @@ argument_list|,
 name|groupScope
 argument_list|,
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 name|groupMemberPattern
 argument_list|)
@@ -2008,7 +2008,7 @@ argument_list|,
 name|accountScope
 argument_list|,
 operator|new
-name|ParamertizedString
+name|ParameterizedString
 argument_list|(
 name|accountPattern
 argument_list|)
