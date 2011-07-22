@@ -110,6 +110,11 @@ name|String
 name|statusLongAbandoned
 parameter_list|()
 function_decl|;
+DECL|method|statusLongDraft ()
+name|String
+name|statusLongDraft
+parameter_list|()
+function_decl|;
 DECL|method|changesRecentlyClosed ()
 name|String
 name|changesRecentlyClosed
@@ -613,6 +618,11 @@ function_decl|;
 DECL|method|pagedChangeListNext ()
 name|String
 name|pagedChangeListNext
+parameter_list|()
+function_decl|;
+DECL|method|draftPatchSetLabel ()
+name|String
+name|draftPatchSetLabel
 parameter_list|()
 function_decl|;
 DECL|method|reviewed ()
