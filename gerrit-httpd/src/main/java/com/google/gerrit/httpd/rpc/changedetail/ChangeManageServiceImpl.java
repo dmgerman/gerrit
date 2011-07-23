@@ -183,9 +183,17 @@ operator|.
 name|Factory
 name|revertChangeFactory
 decl_stmt|;
+DECL|field|publishAction
+specifier|private
+specifier|final
+name|PublishAction
+operator|.
+name|Factory
+name|publishAction
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChange.Factory abandonChangeFactory, final RestoreChange.Factory restoreChangeFactory, final RevertChange.Factory revertChangeFactory)
+DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChange.Factory abandonChangeFactory, final RestoreChange.Factory restoreChangeFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
@@ -211,6 +219,12 @@ name|RevertChange
 operator|.
 name|Factory
 name|revertChangeFactory
+parameter_list|,
+specifier|final
+name|PublishAction
+operator|.
+name|Factory
+name|publishAction
 parameter_list|)
 block|{
 name|this
@@ -236,6 +250,12 @@ operator|.
 name|revertChangeFactory
 operator|=
 name|revertChangeFactory
+expr_stmt|;
+name|this
+operator|.
+name|publishAction
+operator|=
+name|publishAction
 expr_stmt|;
 block|}
 DECL|method|submit (final PatchSet.Id patchSetId, final AsyncCallback<ChangeDetail> cb)
@@ -376,6 +396,38 @@ argument_list|(
 name|patchSetId
 argument_list|,
 name|message
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|callback
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|publish (final PatchSet.Id patchSetId, final AsyncCallback<ChangeDetail> callback)
+specifier|public
+name|void
+name|publish
+parameter_list|(
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+specifier|final
+name|AsyncCallback
+argument_list|<
+name|ChangeDetail
+argument_list|>
+name|callback
+parameter_list|)
+block|{
+name|publishAction
+operator|.
+name|create
+argument_list|(
+name|patchSetId
 argument_list|)
 operator|.
 name|to

@@ -610,6 +610,11 @@ name|String
 name|buttonRestoreChangeSend
 parameter_list|()
 function_decl|;
+DECL|method|buttonPublishPatchSet ()
+name|String
+name|buttonPublishPatchSet
+parameter_list|()
+function_decl|;
 DECL|method|pagedChangeListPrev ()
 name|String
 name|pagedChangeListPrev
