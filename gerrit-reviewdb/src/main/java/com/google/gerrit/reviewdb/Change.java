@@ -533,6 +533,16 @@ name|STATUS_SUBMITTED
 init|=
 literal|'s'
 decl_stmt|;
+comment|/** Database constant for {@link Status#DRAFT}. */
+DECL|field|STATUS_DRAFT
+specifier|protected
+specifier|static
+specifier|final
+name|char
+name|STATUS_DRAFT
+init|=
+literal|'d'
+decl_stmt|;
 comment|/** Maximum database status constant for an open change. */
 DECL|field|MAX_OPEN
 specifier|private
@@ -572,18 +582,25 @@ DECL|enumConstant|SUBMITTED
 constructor|SUBMITTED(STATUS_SUBMITTED
 block|)
 enum|,
+comment|/**      * Change is a draft change that only consists of draft patchsets.      *      *<p>      * This is a change that is not meant to be submitted or reviewed yet. If      * the uploader publishes the change, it becomes a NEW change.      * Publishing is a one-way action, a change cannot return to DRAFT status.      * Draft changes are only visible to the uploader and those explicitly      * added as reviewers.      *      *<p>      * Changes in the DRAFT state can be moved to:      *<ul>      *<li>{@link #NEW} - when the change is published, it becomes a new change;      *</ul>      */
+DECL|enumConstant|DRAFT
+name|DRAFT
+parameter_list|(
+name|STATUS_DRAFT
+parameter_list|)
+operator|,
 comment|/**      * Change is closed, and submitted to its destination branch.      *      *<p>      * Once a change has been merged, it cannot be further modified by adding a      * replacement patch set. Draft comments however may be published,      * supporting a post-submit review.      */
 DECL|enumConstant|MERGED
-name|MERGED
-parameter_list|(
-name|STATUS_MERGED
-parameter_list|)
+constructor|MERGED(STATUS_MERGED
+block|)
 operator|,
 comment|/**      * Change is closed, but was not submitted to its destination branch.      *      *<p>      * Once a change has been abandoned, it cannot be further modified by adding      * a replacement patch set, and it cannot be merged. Draft comments however      * may be published, permitting reviewers to send constructive feedback.      */
 DECL|enumConstant|ABANDONED
-constructor|ABANDONED('A'
-block|)
-class|;
+name|ABANDONED
+argument_list|(
+literal|'A'
+argument_list|)
+expr_stmt|;
 end_class
 
 begin_decl_stmt
