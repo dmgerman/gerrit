@@ -7476,6 +7476,11 @@ name|uuid
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+name|c
+operator|.
+name|currentPatchSetId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|m

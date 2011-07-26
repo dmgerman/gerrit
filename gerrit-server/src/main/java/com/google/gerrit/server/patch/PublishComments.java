@@ -1840,6 +1840,8 @@ name|user
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|,
+name|patchSetId
 argument_list|)
 expr_stmt|;
 name|message

@@ -351,7 +351,7 @@ specifier|protected
 name|ChangeMessage
 parameter_list|()
 block|{   }
-DECL|method|ChangeMessage (final ChangeMessage.Key k, final Account.Id a)
+DECL|method|ChangeMessage (final ChangeMessage.Key k, final Account.Id a, final PatchSet.Id psid)
 specifier|public
 name|ChangeMessage
 parameter_list|(
@@ -366,6 +366,12 @@ name|Account
 operator|.
 name|Id
 name|a
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|psid
 parameter_list|)
 block|{
 name|this
@@ -382,10 +388,12 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 argument_list|)
+argument_list|,
+name|psid
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeMessage (final ChangeMessage.Key k, final Account.Id a, final Timestamp wo)
+DECL|method|ChangeMessage (final ChangeMessage.Key k, final Account.Id a, final Timestamp wo, final PatchSet.Id psid)
 specifier|public
 name|ChangeMessage
 parameter_list|(
@@ -404,6 +412,12 @@ parameter_list|,
 specifier|final
 name|Timestamp
 name|wo
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|psid
 parameter_list|)
 block|{
 name|key
@@ -417,6 +431,10 @@ expr_stmt|;
 name|writtenOn
 operator|=
 name|wo
+expr_stmt|;
+name|patchset
+operator|=
+name|psid
 expr_stmt|;
 block|}
 DECL|method|getKey ()

@@ -1694,6 +1694,8 @@ name|user
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|,
+name|patchSetId
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -2457,6 +2459,8 @@ name|user
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|,
+name|patchSetId
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -2692,6 +2696,8 @@ name|user
 operator|.
 name|getAccountId
 argument_list|()
+argument_list|,
+name|patchSetId
 argument_list|)
 decl_stmt|;
 specifier|final
