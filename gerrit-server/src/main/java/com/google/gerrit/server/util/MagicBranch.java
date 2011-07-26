@@ -409,6 +409,28 @@ operator|.
 name|OK
 return|;
 block|}
+comment|/** Checks if ref name matches the draft magic branch */
+DECL|method|isDraft (String refName)
+specifier|public
+specifier|static
+name|boolean
+name|isDraft
+parameter_list|(
+name|String
+name|refName
+parameter_list|)
+block|{
+return|return
+name|refName
+operator|.
+name|startsWith
+argument_list|(
+name|MagicBranch
+operator|.
+name|NEW_DRAFT_CHANGE
+argument_list|)
+return|;
+block|}
 DECL|method|checkMagicBranchRef (String branchName, Repository repo, Project project)
 specifier|private
 specifier|static
