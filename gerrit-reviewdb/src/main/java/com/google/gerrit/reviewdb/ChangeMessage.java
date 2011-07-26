@@ -327,6 +327,25 @@ specifier|protected
 name|String
 name|message
 decl_stmt|;
+comment|/** Which patchset (if any) was this message generated from? */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|patchset
+specifier|protected
+name|PatchSet
+operator|.
+name|Id
+name|patchset
+decl_stmt|;
 DECL|method|ChangeMessage ()
 specifier|protected
 name|ChangeMessage
@@ -490,6 +509,34 @@ block|{
 name|message
 operator|=
 name|s
+expr_stmt|;
+block|}
+DECL|method|getPatchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchSetId
+parameter_list|()
+block|{
+return|return
+name|patchset
+return|;
+block|}
+DECL|method|setPatchSetId (PatchSet.Id id)
+specifier|public
+name|void
+name|setPatchSetId
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|patchset
+operator|=
+name|id
 expr_stmt|;
 block|}
 block|}

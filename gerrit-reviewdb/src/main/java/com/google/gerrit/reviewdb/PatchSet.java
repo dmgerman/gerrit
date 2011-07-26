@@ -499,6 +499,18 @@ specifier|protected
 name|Timestamp
 name|createdOn
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|5
+argument_list|)
+DECL|field|draft
+specifier|protected
+name|boolean
+name|draft
+decl_stmt|;
 DECL|method|PatchSet ()
 specifier|protected
 name|PatchSet
@@ -622,6 +634,30 @@ block|{
 name|createdOn
 operator|=
 name|ts
+expr_stmt|;
+block|}
+DECL|method|isDraft ()
+specifier|public
+name|boolean
+name|isDraft
+parameter_list|()
+block|{
+return|return
+name|draft
+return|;
+block|}
+DECL|method|setDraft (boolean draftStatus)
+specifier|public
+name|void
+name|setDraft
+parameter_list|(
+name|boolean
+name|draftStatus
+parameter_list|)
+block|{
+name|draft
+operator|=
+name|draftStatus
 expr_stmt|;
 block|}
 DECL|method|getRefName ()
