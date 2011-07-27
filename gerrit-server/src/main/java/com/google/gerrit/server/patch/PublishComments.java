@@ -1966,6 +1966,13 @@ parameter_list|()
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|message
+operator|!=
+literal|null
+condition|)
+block|{
 specifier|final
 name|CommentSender
 name|cm
@@ -2020,6 +2027,7 @@ operator|.
 name|send
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
