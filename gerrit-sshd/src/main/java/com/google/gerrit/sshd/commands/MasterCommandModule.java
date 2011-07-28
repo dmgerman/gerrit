@@ -213,12 +213,12 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
-literal|"modify-reviewers"
+literal|"set-reviewers"
 argument_list|)
 operator|.
 name|to
 argument_list|(
-name|ModifyReviewersCommand
+name|SetReviewersCommand
 operator|.
 name|class
 argument_list|)
