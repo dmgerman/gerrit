@@ -102,6 +102,11 @@ specifier|public
 name|AccountAttribute
 name|uploader
 decl_stmt|;
+DECL|field|createdOn
+specifier|public
+name|Long
+name|createdOn
+decl_stmt|;
 DECL|field|approvals
 specifier|public
 name|List

@@ -2172,6 +2172,14 @@ name|equals
 argument_list|(
 name|name
 argument_list|)
+comment|//
+operator|||
+literal|"createdOn"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
 return|;
 block|}
 DECL|method|fieldsOf (Class<?> type)
