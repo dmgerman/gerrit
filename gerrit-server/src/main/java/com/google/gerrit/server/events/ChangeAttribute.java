@@ -158,6 +158,14 @@ operator|.
 name|Status
 name|status
 decl_stmt|;
+DECL|field|comments
+specifier|public
+name|List
+argument_list|<
+name|MessageAttribute
+argument_list|>
+name|comments
+decl_stmt|;
 DECL|field|trackingIds
 specifier|public
 name|List
