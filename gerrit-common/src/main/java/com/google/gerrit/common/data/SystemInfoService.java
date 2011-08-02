@@ -259,6 +259,19 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+DECL|method|gerritConfig (final AsyncCallback<GerritConfig> callback)
+specifier|public
+name|void
+name|gerritConfig
+parameter_list|(
+specifier|final
+name|AsyncCallback
+argument_list|<
+name|GerritConfig
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
