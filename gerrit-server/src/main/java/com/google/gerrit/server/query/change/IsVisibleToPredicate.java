@@ -406,7 +406,12 @@ name|user
 argument_list|)
 operator|.
 name|isVisible
+argument_list|(
+name|db
+operator|.
+name|get
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|cd

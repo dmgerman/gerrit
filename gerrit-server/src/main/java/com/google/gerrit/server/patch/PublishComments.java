@@ -2123,6 +2123,8 @@ specifier|private
 name|void
 name|fireHook
 parameter_list|()
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|Map
@@ -2189,6 +2191,8 @@ argument_list|,
 name|messageText
 argument_list|,
 name|changed
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 block|}

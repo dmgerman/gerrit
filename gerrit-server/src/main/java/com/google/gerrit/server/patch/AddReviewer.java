@@ -1164,6 +1164,8 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Does not account for draft status as a user might want to let a
+comment|// reviewer see a draft.
 if|if
 condition|(
 name|control
@@ -1173,7 +1175,7 @@ argument_list|(
 name|user
 argument_list|)
 operator|.
-name|isVisible
+name|isRefVisible
 argument_list|()
 condition|)
 block|{
@@ -1243,6 +1245,8 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Does not account for draft status as a user might want to let a
+comment|// reviewer see a draft.
 if|if
 condition|(
 operator|!
@@ -1253,7 +1257,7 @@ argument_list|(
 name|user
 argument_list|)
 operator|.
-name|isVisible
+name|isRefVisible
 argument_list|()
 condition|)
 block|{

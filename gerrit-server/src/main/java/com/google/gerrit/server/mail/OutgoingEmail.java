@@ -130,6 +130,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1677,6 +1691,8 @@ name|Id
 name|to
 parameter_list|)
 block|{
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -1712,6 +1728,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error reading database for account: "
+operator|+
+name|to
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|isVisibleTo (final Account.Id to)
 specifier|protected
 name|boolean
@@ -1723,6 +1758,8 @@ operator|.
 name|Id
 name|to
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 literal|true

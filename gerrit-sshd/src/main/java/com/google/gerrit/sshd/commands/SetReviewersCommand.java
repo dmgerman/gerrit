@@ -1513,7 +1513,9 @@ name|change
 argument_list|)
 operator|.
 name|isVisible
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 condition|)
 block|{
 name|matched
@@ -1535,6 +1537,27 @@ name|e
 parameter_list|)
 block|{
 comment|// Ignore this change.
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error reading change "
+operator|+
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|inProject (Change change)

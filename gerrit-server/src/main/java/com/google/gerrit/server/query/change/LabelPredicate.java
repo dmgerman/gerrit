@@ -1040,7 +1040,12 @@ operator|!
 name|cc
 operator|.
 name|isVisible
+argument_list|(
+name|dbProvider
+operator|.
+name|get
 argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// The user can't see the change anymore.

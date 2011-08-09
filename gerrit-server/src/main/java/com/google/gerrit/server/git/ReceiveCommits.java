@@ -6096,6 +6096,8 @@ argument_list|(
 name|change
 argument_list|,
 name|ps
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 block|}
@@ -8180,6 +8182,8 @@ operator|.
 name|change
 argument_list|,
 name|ps
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 name|request
@@ -11653,6 +11657,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 name|hooks
 operator|.
 name|doChangeMergedHook
@@ -11669,8 +11675,34 @@ argument_list|,
 name|result
 operator|.
 name|patchSet
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|err
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot open change: "
+operator|+
+name|result
+operator|.
+name|change
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|insertAncestors (PatchSet.Id id, RevCommit src)

@@ -956,7 +956,9 @@ name|anonymousUser
 argument_list|)
 operator|.
 name|isVisible
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|detail

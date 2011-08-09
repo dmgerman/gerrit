@@ -1864,6 +1864,8 @@ name|getAccount
 argument_list|()
 argument_list|,
 name|message
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 block|}
@@ -2564,6 +2566,8 @@ argument_list|(
 name|change
 argument_list|,
 name|ps
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 return|return
@@ -2869,6 +2873,8 @@ name|getAccount
 argument_list|()
 argument_list|,
 name|message
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 block|}

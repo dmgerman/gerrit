@@ -930,7 +930,7 @@ operator|=
 name|queryRewriter
 expr_stmt|;
 block|}
-DECL|method|canRead (final Change c)
+DECL|method|canRead (final Change c, final ReviewDb db)
 specifier|private
 name|boolean
 name|canRead
@@ -938,7 +938,13 @@ parameter_list|(
 specifier|final
 name|Change
 name|c
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 try|try
 block|{
@@ -951,7 +957,9 @@ name|c
 argument_list|)
 operator|.
 name|isVisible
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -1468,6 +1476,8 @@ condition|(
 name|canRead
 argument_list|(
 name|c
+argument_list|,
+name|db
 argument_list|)
 condition|)
 block|{
@@ -1810,6 +1820,8 @@ argument_list|,
 name|stars
 argument_list|,
 name|ac
+argument_list|,
+name|db
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1829,6 +1841,8 @@ argument_list|,
 name|stars
 argument_list|,
 name|ac
+argument_list|,
+name|db
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1871,6 +1885,8 @@ argument_list|,
 name|stars
 argument_list|,
 name|ac
+argument_list|,
+name|db
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1937,6 +1953,8 @@ argument_list|,
 name|stars
 argument_list|,
 name|ac
+argument_list|,
+name|db
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2288,7 +2306,7 @@ else|:
 name|maxLimit
 return|;
 block|}
-DECL|method|filter (final ResultSet<Change> rs, final Set<Change.Id> starred, final AccountInfoCacheFactory accts)
+DECL|method|filter (final ResultSet<Change> rs, final Set<Change.Id> starred, final AccountInfoCacheFactory accts, final ReviewDb db)
 specifier|private
 name|List
 argument_list|<
@@ -2315,7 +2333,13 @@ parameter_list|,
 specifier|final
 name|AccountInfoCacheFactory
 name|accts
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|ArrayList
@@ -2345,6 +2369,8 @@ condition|(
 name|canRead
 argument_list|(
 name|c
+argument_list|,
+name|db
 argument_list|)
 condition|)
 block|{

@@ -216,6 +216,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|IdentifiedUser
@@ -523,6 +537,20 @@ operator|.
 name|project
 operator|.
 name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|client
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -1433,8 +1461,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fire the Patchset Created Hook.      *      * @param change The change itself.      * @param patchSet The Patchset that was created.      */
-DECL|method|doPatchsetCreatedHook (final Change change, final PatchSet patchSet)
+comment|/**      * Fire the Patchset Created Hook.      *      * @param change The change itself.      * @param patchSet The Patchset that was created.      * @throws OrmException      */
+DECL|method|doPatchsetCreatedHook (final Change change, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
 name|doPatchsetCreatedHook
@@ -1446,7 +1474,13 @@ parameter_list|,
 specifier|final
 name|PatchSet
 name|patchSet
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|PatchSetCreatedEvent
@@ -1511,6 +1545,8 @@ argument_list|(
 name|change
 argument_list|,
 name|event
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -1633,8 +1669,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Comment Added Hook.      *      * @param change The change itself.      * @param patchSet The patchset this comment is related to.      * @param account The gerrit user who commited the change.      * @param comment The comment given.      * @param approvals Map of Approval Categories and Scores      */
-DECL|method|doCommentAddedHook (final Change change, final Account account, final PatchSet patchSet, final String comment, final Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals)
+comment|/**      * Fire the Comment Added Hook.      *      * @param change The change itself.      * @param patchSet The patchset this comment is related to.      * @param account The gerrit user who commited the change.      * @param comment The comment given.      * @param approvals Map of Approval Categories and Scores      * @throws OrmException      */
+DECL|method|doCommentAddedHook (final Change change, final Account account, final PatchSet patchSet, final String comment, final Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals, final ReviewDb db)
 specifier|public
 name|void
 name|doCommentAddedHook
@@ -1667,7 +1703,13 @@ operator|.
 name|Id
 argument_list|>
 name|approvals
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|CommentAddedEvent
@@ -1786,6 +1828,8 @@ argument_list|(
 name|change
 argument_list|,
 name|event
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -1958,8 +2002,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Change Merged Hook.      *      * @param change The change itself.      * @param account The gerrit user who commited the change.      * @param patchSet The patchset that was merged.      */
-DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet)
+comment|/**      * Fire the Change Merged Hook.      *      * @param change The change itself.      * @param account The gerrit user who commited the change.      * @param patchSet The patchset that was merged.      * @throws OrmException      */
+DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
 name|doChangeMergedHook
@@ -1975,7 +2019,13 @@ parameter_list|,
 specifier|final
 name|PatchSet
 name|patchSet
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|ChangeMergedEvent
@@ -2023,6 +2073,8 @@ argument_list|(
 name|change
 argument_list|,
 name|event
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2129,8 +2181,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Change Abandoned Hook.      *      * @param change The change itself.      * @param account The gerrit user who abandoned the change.      * @param reason Reason for abandoning the change.      */
-DECL|method|doChangeAbandonedHook (final Change change, final Account account, final String reason)
+comment|/**      * Fire the Change Abandoned Hook.      *      * @param change The change itself.      * @param account The gerrit user who abandoned the change.      * @param reason Reason for abandoning the change.      * @throws OrmException      */
+DECL|method|doChangeAbandonedHook (final Change change, final Account account, final String reason, final ReviewDb db)
 specifier|public
 name|void
 name|doChangeAbandonedHook
@@ -2146,7 +2198,13 @@ parameter_list|,
 specifier|final
 name|String
 name|reason
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|ChangeAbandonedEvent
@@ -2189,6 +2247,8 @@ argument_list|(
 name|change
 argument_list|,
 name|event
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2297,8 +2357,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Change Restored Hook.      *      * @param change The change itself.      * @param account The gerrit user who restored the change.      * @param reason Reason for restoring the change.      */
-DECL|method|doChangeRestoreHook (final Change change, final Account account, final String reason)
+comment|/**      * Fire the Change Restored Hook.      *      * @param change The change itself.      * @param account The gerrit user who restored the change.      * @param reason Reason for restoring the change.      * @throws OrmException      */
+DECL|method|doChangeRestoreHook (final Change change, final Account account, final String reason, final ReviewDb db)
 specifier|public
 name|void
 name|doChangeRestoreHook
@@ -2314,7 +2374,13 @@ parameter_list|,
 specifier|final
 name|String
 name|reason
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|ChangeRestoreEvent
@@ -2357,6 +2423,8 @@ argument_list|(
 name|change
 argument_list|,
 name|event
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2764,7 +2832,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireEvent (final Change change, final ChangeEvent event)
+DECL|method|fireEvent (final Change change, final ChangeEvent event, final ReviewDb db)
 specifier|private
 name|void
 name|fireEvent
@@ -2776,7 +2844,13 @@ parameter_list|,
 specifier|final
 name|ChangeEvent
 name|event
+parameter_list|,
+specifier|final
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 for|for
 control|(
@@ -2798,6 +2872,8 @@ argument_list|,
 name|holder
 operator|.
 name|user
+argument_list|,
+name|db
 argument_list|)
 condition|)
 block|{
@@ -2863,7 +2939,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|isVisibleTo (Change change, IdentifiedUser user)
+DECL|method|isVisibleTo (Change change, IdentifiedUser user, ReviewDb db)
 specifier|private
 name|boolean
 name|isVisibleTo
@@ -2873,7 +2949,12 @@ name|change
 parameter_list|,
 name|IdentifiedUser
 name|user
+parameter_list|,
+name|ReviewDb
+name|db
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 specifier|final
 name|ProjectState
@@ -2920,7 +3001,9 @@ name|change
 argument_list|)
 operator|.
 name|isVisible
-argument_list|()
+argument_list|(
+name|db
+argument_list|)
 return|;
 block|}
 DECL|method|isVisibleTo (Branch.NameKey branchName, IdentifiedUser user)

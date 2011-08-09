@@ -826,7 +826,9 @@ name|change
 argument_list|)
 operator|.
 name|isVisible
-argument_list|()
+argument_list|(
+name|reviewDb
+argument_list|)
 condition|)
 block|{
 name|visibleChanges

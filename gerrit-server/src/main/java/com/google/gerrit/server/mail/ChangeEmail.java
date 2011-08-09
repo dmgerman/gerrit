@@ -2289,6 +2289,8 @@ operator|.
 name|Id
 name|to
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 return|return
 name|projectState
@@ -2319,7 +2321,14 @@ name|change
 argument_list|)
 operator|.
 name|isVisible
+argument_list|(
+name|args
+operator|.
+name|db
+operator|.
+name|get
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/** Find all users who are authors of any part of this change. */
