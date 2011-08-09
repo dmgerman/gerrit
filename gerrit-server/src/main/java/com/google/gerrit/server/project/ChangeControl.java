@@ -1067,6 +1067,46 @@ name|isVisible
 argument_list|()
 return|;
 block|}
+comment|/** Can this user see the given patchset? */
+DECL|method|isPatchVisible (PatchSet ps, ReviewDb db)
+specifier|public
+name|boolean
+name|isPatchVisible
+parameter_list|(
+name|PatchSet
+name|ps
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+if|if
+condition|(
+name|ps
+operator|.
+name|isDraft
+argument_list|()
+operator|&&
+operator|!
+name|isDraftVisible
+argument_list|(
+name|db
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+name|isVisible
+argument_list|(
+name|db
+argument_list|)
+return|;
+block|}
 comment|/** Can this user abandon this change? */
 DECL|method|canAbandon ()
 specifier|public

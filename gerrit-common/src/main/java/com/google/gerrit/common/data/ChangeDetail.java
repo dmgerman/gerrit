@@ -797,6 +797,23 @@ operator|=
 name|d
 expr_stmt|;
 block|}
+DECL|method|setCurrentPatchSetId (final PatchSet.Id id)
+specifier|public
+name|void
+name|setCurrentPatchSetId
+parameter_list|(
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|currentPatchSetId
+operator|=
+name|id
+expr_stmt|;
+block|}
 DECL|method|getDescription ()
 specifier|public
 name|String
