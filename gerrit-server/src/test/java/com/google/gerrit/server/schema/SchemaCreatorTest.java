@@ -174,6 +174,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|sql
 operator|.
 name|ResultSet
@@ -282,6 +292,8 @@ throws|throws
 name|OrmException
 throws|,
 name|SQLException
+throws|,
+name|IOException
 block|{
 comment|// Initially the schema should be empty.
 comment|//
@@ -414,7 +426,7 @@ name|assertEquals
 argument_list|(
 name|sitePath
 operator|.
-name|getAbsolutePath
+name|getCanonicalPath
 argument_list|()
 argument_list|,
 name|db
