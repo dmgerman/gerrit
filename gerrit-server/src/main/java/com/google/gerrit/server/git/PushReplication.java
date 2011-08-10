@@ -944,7 +944,7 @@ name|project
 argument_list|,
 name|PushOp
 operator|.
-name|MIRROR_ALL
+name|ALL_REFS
 argument_list|,
 name|uri
 argument_list|)

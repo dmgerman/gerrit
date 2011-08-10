@@ -562,11 +562,11 @@ name|PushReplication
 operator|.
 name|log
 decl_stmt|;
-DECL|field|MIRROR_ALL
+DECL|field|ALL_REFS
 specifier|static
 specifier|final
 name|String
-name|MIRROR_ALL
+name|ALL_REFS
 init|=
 literal|"..all.."
 decl_stmt|;
@@ -641,10 +641,10 @@ specifier|final
 name|URIish
 name|uri
 decl_stmt|;
-DECL|field|mirror
+DECL|field|pushAllRefs
 specifier|private
 name|boolean
-name|mirror
+name|pushAllRefs
 decl_stmt|;
 DECL|field|db
 specifier|private
@@ -816,7 +816,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|MIRROR_ALL
+name|ALL_REFS
 operator|.
 name|equals
 argument_list|(
@@ -829,7 +829,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|mirror
+name|pushAllRefs
 operator|=
 literal|true
 expr_stmt|;
@@ -838,7 +838,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|mirror
+name|pushAllRefs
 condition|)
 block|{
 name|delta
@@ -868,7 +868,7 @@ name|refs
 decl_stmt|;
 if|if
 condition|(
-name|mirror
+name|pushAllRefs
 condition|)
 block|{
 name|refs
@@ -886,7 +886,7 @@ name|refs
 operator|.
 name|add
 argument_list|(
-name|MIRROR_ALL
+name|ALL_REFS
 argument_list|)
 expr_stmt|;
 block|}
@@ -916,7 +916,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|mirror
+name|pushAllRefs
 condition|)
 block|{
 for|for
@@ -1227,13 +1227,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-operator|(
-name|mirror
-condition|?
-literal|"mirror "
-else|:
 literal|"push "
-operator|)
 operator|+
 name|uri
 return|;
@@ -1586,7 +1580,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|mirror
+name|pushAllRefs
 condition|)
 block|{
 comment|// If we aren't mirroring, reduce the space we need to filter
@@ -1747,7 +1741,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|mirror
+name|pushAllRefs
 condition|)
 block|{
 specifier|final
