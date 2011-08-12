@@ -183,6 +183,11 @@ specifier|protected
 name|boolean
 name|canRevert
 decl_stmt|;
+DECL|field|canDeleteDraft
+specifier|protected
+name|boolean
+name|canDeleteDraft
+decl_stmt|;
 DECL|field|change
 specifier|protected
 name|Change
@@ -411,6 +416,30 @@ name|a
 parameter_list|)
 block|{
 name|canSubmit
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canDeleteDraft ()
+specifier|public
+name|boolean
+name|canDeleteDraft
+parameter_list|()
+block|{
+return|return
+name|canDeleteDraft
+return|;
+block|}
+DECL|method|setCanDeleteDraft (boolean a)
+specifier|public
+name|void
+name|setCanDeleteDraft
+parameter_list|(
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canDeleteDraft
 operator|=
 name|a
 expr_stmt|;

@@ -191,6 +191,26 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.patchKey.patchSetId = ?"
+argument_list|)
+DECL|method|byPatchSet (PatchSet.Id ps)
+name|ResultSet
+argument_list|<
+name|AccountPatchReview
+argument_list|>
+name|byPatchSet
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|ps
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 

@@ -158,6 +158,20 @@ name|Version
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtjsonrpc
+operator|.
+name|client
+operator|.
+name|VoidResult
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|RpcImpl
@@ -270,6 +284,24 @@ parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ChangeDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
+DECL|method|deleteDraftChange (PatchSet.Id patchSetId, AsyncCallback<VoidResult> callback)
+name|void
+name|deleteDraftChange
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
 argument_list|>
 name|callback
 parameter_list|)

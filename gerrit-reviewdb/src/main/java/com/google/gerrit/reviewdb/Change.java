@@ -1441,6 +1441,23 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/**    * Reverts to an older PatchSet id within this change.    *<p>    *<b>Note: This makes the change dirty. Call update() after.</b>    */
+end_comment
+
+begin_function
+DECL|method|removeLastPatchSetId ()
+specifier|public
+name|void
+name|removeLastPatchSetId
+parameter_list|()
+block|{
+operator|--
+name|nbrPatchSets
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|method|currPatchSetId ()
 specifier|public

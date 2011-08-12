@@ -615,6 +615,16 @@ name|String
 name|buttonPublishPatchSet
 parameter_list|()
 function_decl|;
+DECL|method|buttonDeleteDraftChange ()
+name|String
+name|buttonDeleteDraftChange
+parameter_list|()
+function_decl|;
+DECL|method|buttonDeleteDraftPatchSet ()
+name|String
+name|buttonDeleteDraftPatchSet
+parameter_list|()
+function_decl|;
 DECL|method|pagedChangeListPrev ()
 name|String
 name|pagedChangeListPrev

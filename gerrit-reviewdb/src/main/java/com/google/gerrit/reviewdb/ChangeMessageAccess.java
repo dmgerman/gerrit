@@ -188,6 +188,26 @@ name|OrmException
 function_decl|;
 annotation|@
 name|Query
+argument_list|(
+literal|"WHERE patchset = ?"
+argument_list|)
+DECL|method|byPatchSet (PatchSet.Id id)
+name|ResultSet
+argument_list|<
+name|ChangeMessage
+argument_list|>
+name|byPatchSet
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
 DECL|method|all ()
 name|ResultSet
 argument_list|<

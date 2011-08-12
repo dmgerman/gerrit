@@ -374,6 +374,24 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
+DECL|method|deleteDraftPatchSet (PatchSet.Id psid, AsyncCallback<VoidResult> callback)
+name|void
+name|deleteDraftPatchSet
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|psid
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|SignInRequired
 DECL|method|publishComments (PatchSet.Id psid, String message, Set<ApprovalCategoryValue.Id> approvals, AsyncCallback<VoidResult> callback)
 name|void
 name|publishComments
