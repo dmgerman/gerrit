@@ -265,6 +265,11 @@ name|String
 name|invalidUserName
 parameter_list|()
 function_decl|;
+DECL|method|invalidUserEmail ()
+name|String
+name|invalidUserEmail
+parameter_list|()
+function_decl|;
 DECL|method|sshKeyInvalid ()
 name|String
 name|sshKeyInvalid

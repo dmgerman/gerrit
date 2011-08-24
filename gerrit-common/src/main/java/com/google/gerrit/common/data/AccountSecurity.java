@@ -484,7 +484,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|registerEmail (String address, AsyncCallback<VoidResult> callback)
+DECL|method|registerEmail (String address, AsyncCallback<Account> callback)
 name|void
 name|registerEmail
 parameter_list|(
@@ -493,7 +493,7 @@ name|address
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|Account
 argument_list|>
 name|callback
 parameter_list|)
