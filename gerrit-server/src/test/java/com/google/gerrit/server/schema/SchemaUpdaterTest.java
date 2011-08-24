@@ -356,6 +356,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -439,6 +449,8 @@ throws|throws
 name|OrmException
 throws|,
 name|FileNotFoundException
+throws|,
+name|IOException
 block|{
 name|db
 operator|.
@@ -754,7 +766,7 @@ name|paths
 operator|.
 name|site_path
 operator|.
-name|getAbsolutePath
+name|getCanonicalPath
 argument_list|()
 argument_list|,
 name|sc
