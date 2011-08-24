@@ -415,6 +415,21 @@ name|String
 name|changePermalink
 parameter_list|()
 function_decl|;
+DECL|method|changeInfoBlockCanMerge ()
+name|String
+name|changeInfoBlockCanMerge
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockCanMergeYes ()
+name|String
+name|changeInfoBlockCanMergeYes
+parameter_list|()
+function_decl|;
+DECL|method|changeInfoBlockCanMergeNo ()
+name|String
+name|changeInfoBlockCanMergeNo
+parameter_list|()
+function_decl|;
 DECL|method|includedInTableBranch ()
 name|String
 name|includedInTableBranch
@@ -443,6 +458,11 @@ function_decl|;
 DECL|method|messageCollapseAll ()
 name|String
 name|messageCollapseAll
+parameter_list|()
+function_decl|;
+DECL|method|messageNeedsRebaseOrHasDependency ()
+name|String
+name|messageNeedsRebaseOrHasDependency
 parameter_list|()
 function_decl|;
 DECL|method|patchSetInfoAuthor ()
