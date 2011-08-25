@@ -136,6 +136,11 @@ specifier|public
 name|String
 name|url
 decl_stmt|;
+DECL|field|createdOn
+specifier|public
+name|Long
+name|createdOn
+decl_stmt|;
 DECL|field|lastUpdated
 specifier|public
 name|Long
