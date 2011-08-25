@@ -335,6 +335,21 @@ name|String
 name|columnGroupDescription
 parameter_list|()
 function_decl|;
+DECL|method|columnGroupType ()
+name|String
+name|columnGroupType
+parameter_list|()
+function_decl|;
+DECL|method|columnGroupNotifications ()
+name|String
+name|columnGroupNotifications
+parameter_list|()
+function_decl|;
+DECL|method|columnGroupVisibleToAll ()
+name|String
+name|columnGroupVisibleToAll
+parameter_list|()
+function_decl|;
 DECL|method|columnBranchName ()
 name|String
 name|columnBranchName
