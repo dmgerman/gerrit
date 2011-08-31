@@ -254,6 +254,12 @@ specifier|final
 name|String
 name|httpHeader
 decl_stmt|;
+DECL|field|trustContainerAuth
+specifier|private
+specifier|final
+name|boolean
+name|trustContainerAuth
+decl_stmt|;
 DECL|field|logoutUrl
 specifier|private
 specifier|final
@@ -389,6 +395,19 @@ argument_list|(
 literal|"auth"
 argument_list|,
 literal|"cookiesecure"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|trustContainerAuth
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|"trustContainerAuth"
 argument_list|,
 literal|false
 argument_list|)
@@ -713,6 +732,17 @@ parameter_list|()
 block|{
 return|return
 name|allowedOpenIDs
+return|;
+block|}
+comment|/** Whether git-over-http should trust authentication done by container. */
+DECL|method|isTrustContainerAuth ()
+specifier|public
+name|boolean
+name|isTrustContainerAuth
+parameter_list|()
+block|{
+return|return
+name|trustContainerAuth
 return|;
 block|}
 DECL|method|isIdentityTrustable (final Collection<AccountExternalId> ids)

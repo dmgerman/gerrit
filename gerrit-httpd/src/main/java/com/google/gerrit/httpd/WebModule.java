@@ -598,11 +598,11 @@ name|SshKeyCache
 argument_list|>
 name|sshKeyCacheProvider
 decl_stmt|;
-DECL|field|authType
+DECL|field|authConfig
 specifier|private
 specifier|final
-name|AuthType
-name|authType
+name|AuthConfig
+name|authConfig
 decl_stmt|;
 DECL|field|wantSSL
 specifier|private
@@ -666,12 +666,9 @@ name|sshKeyCacheProvider
 expr_stmt|;
 name|this
 operator|.
-name|authType
+name|authConfig
 operator|=
 name|authConfig
-operator|.
-name|getAuthType
-argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -780,7 +777,10 @@ expr_stmt|;
 block|}
 switch|switch
 condition|(
-name|authType
+name|authConfig
+operator|.
+name|getAuthType
+argument_list|()
 condition|)
 block|{
 case|case
@@ -873,7 +873,10 @@ name|ProvisionException
 argument_list|(
 literal|"Unsupported loginType: "
 operator|+
-name|authType
+name|authConfig
+operator|.
+name|getAuthType
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -881,7 +884,9 @@ name|install
 argument_list|(
 operator|new
 name|UrlModule
-argument_list|()
+argument_list|(
+name|authConfig
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|install
