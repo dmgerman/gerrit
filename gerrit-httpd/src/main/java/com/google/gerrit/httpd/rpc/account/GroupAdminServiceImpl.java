@@ -640,14 +640,14 @@ decl_stmt|;
 DECL|field|visibleGroupsFactory
 specifier|private
 specifier|final
-name|VisibleGroups
+name|VisibleGroupsHandler
 operator|.
 name|Factory
 name|visibleGroupsFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final AccountResolver accountResolver, final Realm accountRealm, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final CreateGroup.Factory createGroupFactory, final RenameGroup.Factory renameGroupFactory, final GroupDetailHandler.Factory groupDetailFactory, final VisibleGroups.Factory visibleGroupsFactory)
+DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final AccountResolver accountResolver, final Realm accountRealm, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final CreateGroup.Factory createGroupFactory, final RenameGroup.Factory renameGroupFactory, final GroupDetailHandler.Factory groupDetailFactory, final VisibleGroupsHandler.Factory visibleGroupsFactory)
 name|GroupAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -709,7 +709,7 @@ name|Factory
 name|groupDetailFactory
 parameter_list|,
 specifier|final
-name|VisibleGroups
+name|VisibleGroupsHandler
 operator|.
 name|Factory
 name|visibleGroupsFactory

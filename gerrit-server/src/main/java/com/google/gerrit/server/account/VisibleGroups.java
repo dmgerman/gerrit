@@ -48,11 +48,11 @@ comment|// See the License for the specific language governing permissions and
 end_comment
 
 begin_comment
-comment|// limitations under the License.
+comment|// limitations under the License
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.rpc.account
+DECL|package|com.google.gerrit.server.account
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
-operator|.
-name|rpc
+name|server
 operator|.
 name|account
 package|;
@@ -108,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|common
 operator|.
-name|rpc
+name|errors
 operator|.
-name|Handler
+name|NoSuchGroupException
 import|;
 end_import
 
@@ -150,29 +148,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|server
+name|client
 operator|.
-name|account
-operator|.
-name|GroupCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|GroupControl
+name|OrmException
 import|;
 end_import
 
@@ -239,13 +219,9 @@ DECL|class|VisibleGroups
 specifier|public
 class|class
 name|VisibleGroups
-extends|extends
-name|Handler
-argument_list|<
-name|GroupList
-argument_list|>
 block|{
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{
@@ -281,14 +257,14 @@ decl_stmt|;
 DECL|field|groupDetailFactory
 specifier|private
 specifier|final
-name|GroupDetailHandler
+name|GroupDetailFactory
 operator|.
 name|Factory
 name|groupDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|VisibleGroups (final Provider<IdentifiedUser> currentUser, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupDetailHandler.Factory groupDetailFactory)
+DECL|method|VisibleGroups (final Provider<IdentifiedUser> currentUser, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupDetailFactory.Factory groupDetailFactory)
 name|VisibleGroups
 parameter_list|(
 specifier|final
@@ -309,7 +285,7 @@ name|Factory
 name|groupControlFactory
 parameter_list|,
 specifier|final
-name|GroupDetailHandler
+name|GroupDetailFactory
 operator|.
 name|Factory
 name|groupDetailFactory
@@ -340,15 +316,15 @@ operator|=
 name|groupDetailFactory
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|call ()
+DECL|method|get ()
 specifier|public
 name|GroupList
-name|call
+name|get
 parameter_list|()
 throws|throws
-name|Exception
+name|OrmException
+throws|,
+name|NoSuchGroupException
 block|{
 specifier|final
 name|IdentifiedUser
