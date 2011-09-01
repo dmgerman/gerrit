@@ -147,6 +147,29 @@ name|ExternalNameKey
 name|externalName
 parameter_list|)
 function_decl|;
+comment|/** @return sorted iteration of groups. */
+DECL|method|all ()
+specifier|public
+specifier|abstract
+name|Iterable
+argument_list|<
+name|AccountGroup
+argument_list|>
+name|all
+parameter_list|()
+function_decl|;
+comment|/** Notify the cache that a new group was constructed. */
+DECL|method|onCreateGroup (AccountGroup.NameKey newGroupName)
+specifier|public
+name|void
+name|onCreateGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|NameKey
+name|newGroupName
+parameter_list|)
+function_decl|;
 DECL|method|evict (AccountGroup group)
 specifier|public
 name|void
@@ -156,15 +179,22 @@ name|AccountGroup
 name|group
 parameter_list|)
 function_decl|;
-DECL|method|evictAfterRename (AccountGroup.NameKey oldName)
+DECL|method|evictAfterRename (final AccountGroup.NameKey oldName, final AccountGroup.NameKey newName)
 specifier|public
 name|void
 name|evictAfterRename
 parameter_list|(
+specifier|final
 name|AccountGroup
 operator|.
 name|NameKey
 name|oldName
+parameter_list|,
+specifier|final
+name|AccountGroup
+operator|.
+name|NameKey
+name|newName
 parameter_list|)
 function_decl|;
 block|}
