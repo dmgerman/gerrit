@@ -338,6 +338,11 @@ name|ProjectControl
 argument_list|>
 name|projects
 decl_stmt|;
+DECL|field|onlyVisibleToAll
+specifier|private
+name|boolean
+name|onlyVisibleToAll
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|VisibleGroups (final Provider<IdentifiedUser> currentUser, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupDetailFactory.Factory groupDetailFactory)
@@ -410,6 +415,23 @@ operator|.
 name|projects
 operator|=
 name|projects
+expr_stmt|;
+block|}
+DECL|method|setOnlyVisibleToAll (final boolean onlyVisibleToAll)
+specifier|public
+name|void
+name|setOnlyVisibleToAll
+parameter_list|(
+specifier|final
+name|boolean
+name|onlyVisibleToAll
+parameter_list|)
+block|{
+name|this
+operator|.
+name|onlyVisibleToAll
+operator|=
+name|onlyVisibleToAll
 expr_stmt|;
 block|}
 DECL|method|get ()
@@ -654,6 +676,19 @@ condition|)
 block|{
 continue|continue;
 block|}
+block|}
+if|if
+condition|(
+name|onlyVisibleToAll
+operator|&&
+operator|!
+name|group
+operator|.
+name|isVisibleToAll
+argument_list|()
+condition|)
+block|{
+continue|continue;
 block|}
 name|filteredGroups
 operator|.

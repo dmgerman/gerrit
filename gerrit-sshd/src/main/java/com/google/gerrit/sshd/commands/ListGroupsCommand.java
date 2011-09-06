@@ -303,6 +303,22 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--visible-to-all"
+argument_list|,
+name|usage
+operator|=
+literal|"to list only groups that are visible to all registered users"
+argument_list|)
+DECL|field|visibleToAll
+specifier|private
+name|boolean
+name|visibleToAll
+decl_stmt|;
+annotation|@
 name|Override
 DECL|method|start (final Environment env)
 specifier|public
@@ -379,6 +395,13 @@ operator|.
 name|setProjects
 argument_list|(
 name|projects
+argument_list|)
+expr_stmt|;
+name|visibleGroups
+operator|.
+name|setOnlyVisibleToAll
+argument_list|(
+name|visibleToAll
 argument_list|)
 expr_stmt|;
 specifier|final
