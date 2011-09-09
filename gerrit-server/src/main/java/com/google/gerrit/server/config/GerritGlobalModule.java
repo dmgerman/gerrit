@@ -1138,6 +1138,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|CUSTOM_EXTENSION
+case|:
+break|break;
 default|default:
 name|bind
 argument_list|(

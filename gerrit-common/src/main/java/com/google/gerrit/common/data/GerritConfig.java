@@ -191,6 +191,11 @@ specifier|protected
 name|String
 name|registerUrl
 decl_stmt|;
+DECL|field|httpPasswordUrl
+specifier|protected
+name|String
+name|httpPasswordUrl
+decl_stmt|;
 DECL|field|allowedOpenIDs
 specifier|protected
 name|List
@@ -310,6 +315,30 @@ block|{
 name|registerUrl
 operator|=
 name|u
+expr_stmt|;
+block|}
+DECL|method|getHttpPasswordUrl ()
+specifier|public
+name|String
+name|getHttpPasswordUrl
+parameter_list|()
+block|{
+return|return
+name|httpPasswordUrl
+return|;
+block|}
+DECL|method|setHttpPasswordUrl (String url)
+specifier|public
+name|void
+name|setHttpPasswordUrl
+parameter_list|(
+name|String
+name|url
+parameter_list|)
+block|{
+name|httpPasswordUrl
+operator|=
+name|url
 expr_stmt|;
 block|}
 DECL|method|getAllowedOpenIDs ()

@@ -94,6 +94,10 @@ comment|/**    * Login collects username and password through a web form, and bi
 DECL|enumConstant|LDAP_BIND
 name|LDAP_BIND
 block|,
+comment|/** Login is managed by additional, unspecified code. */
+DECL|enumConstant|CUSTOM_EXTENSION
+name|CUSTOM_EXTENSION
+block|,
 comment|/** Development mode to enable becoming anyone you want. */
 DECL|enumConstant|DEVELOPMENT_BECOME_ANY_ACCOUNT
 name|DEVELOPMENT_BECOME_ANY_ACCOUNT

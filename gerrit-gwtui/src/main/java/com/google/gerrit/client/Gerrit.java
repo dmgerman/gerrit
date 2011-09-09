@@ -1602,6 +1602,9 @@ case|:
 case|case
 name|CLIENT_SSL_CERT_LDAP
 case|:
+case|case
+name|CUSTOM_EXTENSION
+case|:
 if|if
 condition|(
 operator|!
@@ -3502,6 +3505,9 @@ name|LDAP
 case|:
 case|case
 name|LDAP_BIND
+case|:
+case|case
+name|CUSTOM_EXTENSION
 case|:
 if|if
 condition|(
