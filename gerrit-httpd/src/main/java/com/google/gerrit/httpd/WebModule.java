@@ -951,14 +951,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|install
-argument_list|(
-name|WebSession
-operator|.
-name|module
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|bind
 argument_list|(
 name|CurrentUser

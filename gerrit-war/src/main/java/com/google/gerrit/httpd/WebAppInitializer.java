@@ -1445,6 +1445,16 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+name|CacheBasedWebSession
+operator|.
+name|module
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|sysInjector
 operator|.
