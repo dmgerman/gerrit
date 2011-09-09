@@ -270,7 +270,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupMembersFactory
+name|GroupMembers
 import|;
 end_import
 
@@ -515,7 +515,7 @@ decl_stmt|;
 DECL|field|groupMembersFactory
 specifier|private
 specifier|final
-name|GroupMembersFactory
+name|GroupMembers
 operator|.
 name|Factory
 name|groupMembersFactory
@@ -587,7 +587,7 @@ name|confirmed
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddReviewer (final AddReviewerSender.Factory addReviewerSenderFactory, final AccountResolver accountResolver, final GroupCache groupCache, final GroupMembersFactory.Factory groupMembersFactory, final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser.GenericFactory identifiedUserFactory, final IdentifiedUser currentUser, final ApprovalTypes approvalTypes, final @GerritServerConfig Config cfg, @Assisted final Change.Id changeId, @Assisted final Collection<String> reviewers, @Assisted final boolean confirmed)
+DECL|method|AddReviewer (final AddReviewerSender.Factory addReviewerSenderFactory, final AccountResolver accountResolver, final GroupCache groupCache, final GroupMembers.Factory groupMembersFactory, final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser.GenericFactory identifiedUserFactory, final IdentifiedUser currentUser, final ApprovalTypes approvalTypes, final @GerritServerConfig Config cfg, @Assisted final Change.Id changeId, @Assisted final Collection<String> reviewers, @Assisted final boolean confirmed)
 name|AddReviewer
 parameter_list|(
 specifier|final
@@ -605,7 +605,7 @@ name|GroupCache
 name|groupCache
 parameter_list|,
 specifier|final
-name|GroupMembersFactory
+name|GroupMembers
 operator|.
 name|Factory
 name|groupMembersFactory
@@ -934,7 +934,15 @@ init|=
 name|groupMembersFactory
 operator|.
 name|create
+argument_list|()
+operator|.
+name|listAccounts
 argument_list|(
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|,
 name|control
 operator|.
 name|getProject
@@ -942,15 +950,7 @@ argument_list|()
 operator|.
 name|getNameKey
 argument_list|()
-argument_list|,
-name|group
-operator|.
-name|getGroupUUID
-argument_list|()
 argument_list|)
-operator|.
-name|call
-argument_list|()
 decl_stmt|;
 if|if
 condition|(

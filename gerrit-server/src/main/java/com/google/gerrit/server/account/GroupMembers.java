@@ -242,20 +242,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -284,55 +270,26 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Callable
-import|;
-end_import
-
 begin_class
-DECL|class|GroupMembersFactory
+DECL|class|GroupMembers
 specifier|public
 class|class
-name|GroupMembersFactory
-implements|implements
-name|Callable
-argument_list|<
-name|Set
-argument_list|<
-name|Account
-argument_list|>
-argument_list|>
+name|GroupMembers
 block|{
 DECL|interface|Factory
 specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Project.NameKey project, AccountGroup.UUID groupUUID)
-name|GroupMembersFactory
+DECL|method|create ()
+name|GroupMembers
 name|create
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|AccountGroup
-operator|.
-name|UUID
-name|groupUUID
-parameter_list|)
+parameter_list|()
 function_decl|;
 block|}
 DECL|field|groupCache
 specifier|private
+specifier|final
 name|GroupCache
 name|groupCache
 decl_stmt|;
@@ -364,26 +321,10 @@ specifier|final
 name|IdentifiedUser
 name|currentUser
 decl_stmt|;
-DECL|field|project
-specifier|private
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|project
-decl_stmt|;
-DECL|field|groupUUID
-specifier|private
-specifier|final
-name|AccountGroup
-operator|.
-name|UUID
-name|groupUUID
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupMembersFactory (final GroupCache groupCache, final GroupDetailFactory.Factory groupDetailFactory, final AccountCache accountCache, final ProjectControl.GenericFactory projectControl, final IdentifiedUser currentUser, @Assisted final Project.NameKey project, @Assisted final AccountGroup.UUID groupUUID)
-name|GroupMembersFactory
+DECL|method|GroupMembers (final GroupCache groupCache, final GroupDetailFactory.Factory groupDetailFactory, final AccountCache accountCache, final ProjectControl.GenericFactory projectControl, final IdentifiedUser currentUser)
+name|GroupMembers
 parameter_list|(
 specifier|final
 name|GroupCache
@@ -408,22 +349,6 @@ parameter_list|,
 specifier|final
 name|IdentifiedUser
 name|currentUser
-parameter_list|,
-annotation|@
-name|Assisted
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-annotation|@
-name|Assisted
-specifier|final
-name|AccountGroup
-operator|.
-name|UUID
-name|groupUUID
 parameter_list|)
 block|{
 name|this
@@ -456,29 +381,27 @@ name|currentUser
 operator|=
 name|currentUser
 expr_stmt|;
-name|this
-operator|.
-name|project
-operator|=
-name|project
-expr_stmt|;
-name|this
-operator|.
-name|groupUUID
-operator|=
-name|groupUUID
-expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|call ()
+DECL|method|listAccounts (final AccountGroup.UUID groupUUID, final Project.NameKey project)
 specifier|public
 name|Set
 argument_list|<
 name|Account
 argument_list|>
-name|call
-parameter_list|()
+name|listAccounts
+parameter_list|(
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|groupUUID
+parameter_list|,
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|)
 throws|throws
 name|NoSuchGroupException
 throws|,
@@ -491,6 +414,8 @@ name|listAccounts
 argument_list|(
 name|groupUUID
 argument_list|,
+name|project
+argument_list|,
 operator|new
 name|HashSet
 argument_list|<
@@ -502,7 +427,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|listAccounts (final AccountGroup.UUID groupUUID, final Set<AccountGroup.UUID> seen)
+DECL|method|listAccounts (final AccountGroup.UUID groupUUID, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -515,6 +440,12 @@ name|AccountGroup
 operator|.
 name|UUID
 name|groupUUID
+parameter_list|,
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 specifier|final
 name|Set
@@ -547,6 +478,8 @@ block|{
 return|return
 name|getProjectOwners
 argument_list|(
+name|project
+argument_list|,
 name|seen
 argument_list|)
 return|;
@@ -563,12 +496,14 @@ argument_list|(
 name|groupUUID
 argument_list|)
 argument_list|,
+name|project
+argument_list|,
 name|seen
 argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getProjectOwners (final Set<AccountGroup.UUID> seen)
+DECL|method|getProjectOwners (final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -576,6 +511,12 @@ name|Account
 argument_list|>
 name|getProjectOwners
 parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 specifier|final
 name|Set
 argument_list|<
@@ -683,6 +624,8 @@ name|listAccounts
 argument_list|(
 name|ownerGroup
 argument_list|,
+name|project
+argument_list|,
 name|seen
 argument_list|)
 argument_list|)
@@ -693,7 +636,7 @@ return|return
 name|projectOwners
 return|;
 block|}
-DECL|method|getGroupMembers (final AccountGroup group, final Set<AccountGroup.UUID> seen)
+DECL|method|getGroupMembers (final AccountGroup group, final Project.NameKey project, final Set<AccountGroup.UUID> seen)
 specifier|private
 name|Set
 argument_list|<
@@ -704,6 +647,12 @@ parameter_list|(
 specifier|final
 name|AccountGroup
 name|group
+parameter_list|,
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 specifier|final
 name|Set
@@ -860,6 +809,8 @@ name|includedGroup
 operator|.
 name|getGroupUUID
 argument_list|()
+argument_list|,
+name|project
 argument_list|,
 name|seen
 argument_list|)
