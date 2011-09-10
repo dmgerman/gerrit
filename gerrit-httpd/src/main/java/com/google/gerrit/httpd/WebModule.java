@@ -782,9 +782,7 @@ name|install
 argument_list|(
 operator|new
 name|UrlModule
-argument_list|(
-name|authConfig
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|install
