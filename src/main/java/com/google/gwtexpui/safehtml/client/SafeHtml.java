@@ -593,7 +593,7 @@ name|part
 init|=
 literal|"(?:"
 operator|+
-literal|"[a-zA-Z0-9$_.+!*',%;:@=?#/-~]"
+literal|"[a-zA-Z0-9$_.+!*',%;:@=?#/~-]"
 operator|+
 literal|"|&(?!lt;|gt;)"
 operator|+
