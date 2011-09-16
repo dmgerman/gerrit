@@ -114,12 +114,15 @@ name|change
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|ReplyToChangeSender (EmailArguments ea, Change c, String mc)
+DECL|method|ReplyToChangeSender (EmailArguments ea, String anonymousCowardName, Change c, String mc)
 specifier|protected
 name|ReplyToChangeSender
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|Change
 name|c
@@ -131,6 +134,8 @@ block|{
 name|super
 argument_list|(
 name|ea
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

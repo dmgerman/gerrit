@@ -521,12 +521,16 @@ specifier|protected
 name|boolean
 name|emailOnlyAuthors
 decl_stmt|;
-DECL|method|ChangeEmail (EmailArguments ea, final Change c, final String mc)
+DECL|method|ChangeEmail (EmailArguments ea, final String anonymousCowardName, final Change c, final String mc)
 specifier|protected
 name|ChangeEmail
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+specifier|final
+name|String
+name|anonymousCowardName
 parameter_list|,
 specifier|final
 name|Change
@@ -540,6 +544,8 @@ block|{
 name|super
 argument_list|(
 name|ea
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|mc
 argument_list|)

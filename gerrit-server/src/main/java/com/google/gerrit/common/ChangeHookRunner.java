@@ -266,6 +266,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -853,6 +869,12 @@ specifier|final
 name|File
 name|claSignedHook
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 comment|/** Repository Manager. */
 DECL|field|repoManager
 specifier|private
@@ -896,7 +918,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, @GerritServerConfig final Config config, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final ApprovalTypes approvalTypes, final EventFactory eventFactory)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final ApprovalTypes approvalTypes, final EventFactory eventFactory)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -908,11 +930,17 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
+specifier|final
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
+parameter_list|,
+specifier|final
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 specifier|final
 name|SitePaths
@@ -935,6 +963,12 @@ name|EventFactory
 name|eventFactory
 parameter_list|)
 block|{
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
+expr_stmt|;
 name|this
 operator|.
 name|repoManager
@@ -3073,7 +3107,7 @@ operator|==
 literal|null
 operator|)
 condition|?
-literal|"Anonymous Coward"
+name|anonymousCowardName
 else|:
 name|account
 operator|.
@@ -3107,7 +3141,7 @@ name|result
 return|;
 block|}
 return|return
-literal|"Anonymous Coward"
+name|anonymousCowardName
 return|;
 block|}
 comment|/**    * Run a hook.    *    * @param repo repository to run the hook for.    * @param hook the hook to execute.    * @param args Arguments to use to run the hook.    */

@@ -197,6 +197,12 @@ specifier|final
 name|DateFormat
 name|rfc2822DateFormatter
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|field|sb
 specifier|private
 specifier|final
@@ -207,11 +213,14 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-DECL|method|ReviewNoteHeaderFormatter (TimeZone tz)
+DECL|method|ReviewNoteHeaderFormatter (TimeZone tz, String anonymousCowardName)
 name|ReviewNoteHeaderFormatter
 parameter_list|(
 name|TimeZone
 name|tz
+parameter_list|,
+name|String
+name|anonymousCowardName
 parameter_list|)
 block|{
 name|rfc2822DateFormatter
@@ -241,6 +250,12 @@ operator|.
 name|US
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 block|}
 DECL|method|appendChangeId (Change.Key changeKey)
@@ -463,7 +478,12 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Anonymous Coward #"
+name|anonymousCowardName
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" #"
 argument_list|)
 operator|.
 name|append

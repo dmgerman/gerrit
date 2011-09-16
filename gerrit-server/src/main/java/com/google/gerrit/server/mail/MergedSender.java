@@ -204,6 +204,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|client
@@ -294,12 +310,17 @@ name|approvalTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedSender (EmailArguments ea, ApprovalTypes at, @Assisted Change c)
+DECL|method|MergedSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, ApprovalTypes at, @Assisted Change c)
 specifier|public
 name|MergedSender
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|ApprovalTypes
 name|at
@@ -313,6 +334,8 @@ block|{
 name|super
 argument_list|(
 name|ea
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

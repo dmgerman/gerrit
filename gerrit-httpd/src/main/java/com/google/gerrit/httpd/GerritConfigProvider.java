@@ -170,6 +170,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|AuthConfig
 import|;
 end_import
@@ -479,9 +495,15 @@ specifier|final
 name|ServletContext
 name|servletContext
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs, final ServletContext sc, final DownloadSchemeConfig dc)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs, final ServletContext sc, final DownloadSchemeConfig dc, final @AnonymousCowardName String acn)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -525,6 +547,12 @@ parameter_list|,
 specifier|final
 name|DownloadSchemeConfig
 name|dc
+parameter_list|,
+specifier|final
+annotation|@
+name|AnonymousCowardName
+name|String
+name|acn
 parameter_list|)
 block|{
 name|realm
@@ -566,6 +594,10 @@ expr_stmt|;
 name|servletContext
 operator|=
 name|sc
+expr_stmt|;
+name|anonymousCowardName
+operator|=
+name|acn
 expr_stmt|;
 block|}
 annotation|@
@@ -759,6 +791,13 @@ literal|"test"
 argument_list|,
 literal|false
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|config
+operator|.
+name|setAnonymousCowardName
+argument_list|(
+name|anonymousCowardName
 argument_list|)
 expr_stmt|;
 specifier|final

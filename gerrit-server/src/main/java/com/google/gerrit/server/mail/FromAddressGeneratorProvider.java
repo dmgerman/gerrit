@@ -138,6 +138,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -231,7 +247,7 @@ name|generator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FromAddressGeneratorProvider (@erritServerConfig final Config cfg, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
+DECL|method|FromAddressGeneratorProvider (@erritServerConfig final Config cfg, final @AnonymousCowardName String anonymousCowardName, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
 name|FromAddressGeneratorProvider
 parameter_list|(
 annotation|@
@@ -239,6 +255,12 @@ name|GerritServerConfig
 specifier|final
 name|Config
 name|cfg
+parameter_list|,
+specifier|final
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -306,6 +328,8 @@ argument_list|(
 name|srvAddr
 argument_list|,
 name|accountCache
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|name
 argument_list|,
@@ -424,6 +448,8 @@ argument_list|(
 name|srvAddr
 argument_list|,
 name|accountCache
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|name
 argument_list|,
@@ -691,13 +717,19 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|field|namePattern
 specifier|private
 specifier|final
 name|ParameterizedString
 name|namePattern
 decl_stmt|;
-DECL|method|PatternGen (final Address serverAddress, final AccountCache accountCache, final ParameterizedString namePattern, final String senderEmail)
+DECL|method|PatternGen (final Address serverAddress, final AccountCache accountCache, final String anonymousCowardName, final ParameterizedString namePattern, final String senderEmail)
 name|PatternGen
 parameter_list|(
 specifier|final
@@ -707,6 +739,10 @@ parameter_list|,
 specifier|final
 name|AccountCache
 name|accountCache
+parameter_list|,
+specifier|final
+name|String
+name|anonymousCowardName
 parameter_list|,
 specifier|final
 name|ParameterizedString
@@ -734,6 +770,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -822,7 +864,7 @@ condition|)
 block|{
 name|fullName
 operator|=
-literal|"Anonymous Coward"
+name|anonymousCowardName
 expr_stmt|;
 block|}
 name|senderName
