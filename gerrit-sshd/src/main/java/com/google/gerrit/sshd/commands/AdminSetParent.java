@@ -746,9 +746,6 @@ operator|.
 name|setParentName
 argument_list|(
 name|newParentKey
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|md
@@ -757,10 +754,21 @@ name|setMessage
 argument_list|(
 literal|"Inherit access from "
 operator|+
+operator|(
+name|newParentKey
+operator|!=
+literal|null
+condition|?
 name|newParentKey
 operator|.
 name|get
 argument_list|()
+else|:
+name|allProjectsName
+operator|.
+name|get
+argument_list|()
+operator|)
 operator|+
 literal|"\n"
 argument_list|)

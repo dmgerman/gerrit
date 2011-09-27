@@ -678,6 +678,20 @@ else|:
 literal|null
 expr_stmt|;
 block|}
+DECL|method|setParentName (NameKey n)
+specifier|public
+name|void
+name|setParentName
+parameter_list|(
+name|NameKey
+name|n
+parameter_list|)
+block|{
+name|parent
+operator|=
+name|n
+expr_stmt|;
+block|}
 block|}
 end_class
 
