@@ -1575,13 +1575,12 @@ literal|null
 return|;
 block|}
 comment|/** Sign the user into the application. */
-DECL|method|doSignIn (final String token)
+DECL|method|doSignIn (String token)
 specifier|public
 specifier|static
 name|void
 name|doSignIn
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1603,6 +1602,24 @@ case|:
 case|case
 name|CLIENT_SSL_CERT_LDAP
 case|:
+if|if
+condition|(
+operator|!
+name|token
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|token
+operator|=
+literal|"/"
+operator|+
+name|token
+expr_stmt|;
+block|}
 name|Location
 operator|.
 name|assign
@@ -1612,7 +1629,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"login/"
+literal|"login"
 operator|+
 name|token
 argument_list|)
