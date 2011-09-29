@@ -550,20 +550,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -2246,9 +2232,7 @@ name|getShortName
 argument_list|()
 argument_list|)
 operator|||
-name|Constants
-operator|.
-name|HEAD
+literal|"HEAD"
 operator|.
 name|equals
 argument_list|(
