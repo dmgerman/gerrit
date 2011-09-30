@@ -1386,6 +1386,11 @@ name|myca
 init|=
 name|dummyApproval
 argument_list|(
+name|control
+operator|.
+name|getChange
+argument_list|()
+argument_list|,
 name|psid
 argument_list|,
 name|reviewer
@@ -1562,11 +1567,15 @@ name|hasNext
 argument_list|()
 return|;
 block|}
-DECL|method|dummyApproval (final PatchSet.Id patchSetId, final Account.Id reviewerId)
+DECL|method|dummyApproval (final Change change, final PatchSet.Id patchSetId, final Account.Id reviewerId)
 specifier|private
 name|PatchSetApproval
 name|dummyApproval
 parameter_list|(
+specifier|final
+name|Change
+name|change
+parameter_list|,
 specifier|final
 name|PatchSet
 operator|.
@@ -1580,7 +1589,10 @@ name|Id
 name|reviewerId
 parameter_list|)
 block|{
-return|return
+specifier|final
+name|PatchSetApproval
+name|dummyApproval
+init|=
 operator|new
 name|PatchSetApproval
 argument_list|(
@@ -1601,6 +1613,16 @@ name|short
 operator|)
 literal|0
 argument_list|)
+decl_stmt|;
+name|dummyApproval
+operator|.
+name|cache
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
+return|return
+name|dummyApproval
 return|;
 block|}
 DECL|method|isLegalReviewerGroup (final AccountGroup.UUID groupUUID)
