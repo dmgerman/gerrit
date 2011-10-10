@@ -625,8 +625,9 @@ range|:
 name|gids
 control|)
 block|{
-if|if
-condition|(
+name|AccountGroup
+name|group
+init|=
 name|args
 operator|.
 name|groupCache
@@ -635,6 +636,14 @@ name|get
 argument_list|(
 name|gid
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|group
+operator|!=
+literal|null
+operator|&&
+name|group
 operator|.
 name|isEmailOnlyAuthors
 argument_list|()
