@@ -10978,6 +10978,17 @@ operator|.
 name|Status
 operator|.
 name|MERGED
+operator|||
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|ABANDONED
 condition|)
 block|{
 comment|// If its already merged, don't make further updates, it
