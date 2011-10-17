@@ -77,6 +77,15 @@ argument_list|<
 name|PermissionRule
 argument_list|>
 block|{
+DECL|field|FORCE_PUSH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FORCE_PUSH
+init|=
+literal|"Force Push"
+decl_stmt|;
 DECL|enum|Action
 specifier|public
 specifier|static
