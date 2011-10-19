@@ -959,7 +959,7 @@ operator|.
 name|patchComments
 argument_list|()
 operator|.
-name|published
+name|publishedByPatchSet
 argument_list|(
 name|psIdNew
 argument_list|)
@@ -1082,7 +1082,7 @@ operator|.
 name|patchComments
 argument_list|()
 operator|.
-name|draft
+name|draftByPatchSetAuthor
 argument_list|(
 name|psIdNew
 argument_list|,

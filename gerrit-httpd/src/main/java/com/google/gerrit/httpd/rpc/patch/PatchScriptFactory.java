@@ -1902,7 +1902,7 @@ operator|.
 name|patchComments
 argument_list|()
 operator|.
-name|published
+name|publishedByChangeFile
 argument_list|(
 name|changeId
 argument_list|,
@@ -2021,7 +2021,7 @@ operator|.
 name|patchComments
 argument_list|()
 operator|.
-name|draft
+name|draftByChangeFileAuthor
 argument_list|(
 name|changeId
 argument_list|,

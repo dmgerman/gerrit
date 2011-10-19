@@ -1944,7 +1944,7 @@ operator|.
 name|patchComments
 argument_list|()
 operator|.
-name|draft
+name|draftByPatchSetAuthor
 argument_list|(
 name|patchSetId
 argument_list|,
