@@ -269,6 +269,30 @@ return|return
 name|patchSetId
 return|;
 block|}
+DECL|method|getAccountId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getAccountId
+parameter_list|()
+block|{
+return|return
+name|accountId
+return|;
+block|}
+DECL|method|getCategoryId ()
+specifier|public
+name|ApprovalCategory
+operator|.
+name|Id
+name|getCategoryId
+parameter_list|()
+block|{
+return|return
+name|categoryId
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()

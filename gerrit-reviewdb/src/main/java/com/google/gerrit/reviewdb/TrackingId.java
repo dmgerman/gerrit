@@ -467,6 +467,30 @@ return|return
 name|changeId
 return|;
 block|}
+DECL|method|getTrackingId ()
+specifier|public
+name|TrackingId
+operator|.
+name|Id
+name|getTrackingId
+parameter_list|()
+block|{
+return|return
+name|trackingId
+return|;
+block|}
+DECL|method|getTrackingSystem ()
+specifier|public
+name|TrackingId
+operator|.
+name|System
+name|getTrackingSystem
+parameter_list|()
+block|{
+return|return
+name|trackingSystem
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()
@@ -612,6 +636,18 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getKey ()
+specifier|public
+name|TrackingId
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
 block|}
 DECL|method|getChangeId ()
 specifier|public
