@@ -116,9 +116,9 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|jdbc
+name|client
 operator|.
-name|Database
+name|SchemaFactory
 import|;
 end_import
 
@@ -190,7 +190,7 @@ block|{
 DECL|field|schema
 specifier|private
 specifier|final
-name|Database
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
@@ -207,11 +207,11 @@ name|cleanup
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestScopedReviewDbProvider (final Database<ReviewDb> schema, final Provider<RequestCleanup> cleanup)
+DECL|method|RequestScopedReviewDbProvider (final SchemaFactory<ReviewDb> schema, final Provider<RequestCleanup> cleanup)
 name|RequestScopedReviewDbProvider
 parameter_list|(
 specifier|final
-name|Database
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
