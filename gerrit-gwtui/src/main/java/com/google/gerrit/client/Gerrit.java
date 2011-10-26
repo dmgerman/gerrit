@@ -1893,6 +1893,9 @@ name|result
 operator|.
 name|accountDiffPref
 expr_stmt|;
+name|applyUserPreferences
+argument_list|()
+expr_stmt|;
 block|}
 name|onModuleLoad2
 argument_list|()
