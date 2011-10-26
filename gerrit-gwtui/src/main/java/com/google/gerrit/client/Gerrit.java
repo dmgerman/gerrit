@@ -947,15 +947,6 @@ specifier|final
 name|SystemInfoService
 name|SYSTEM_SVC
 decl_stmt|;
-DECL|field|SESSION_COOKIE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|SESSION_COOKIE
-init|=
-literal|"GerritAccount"
-decl_stmt|;
 DECL|field|myHost
 specifier|private
 specifier|static
@@ -987,6 +978,12 @@ specifier|private
 specifier|static
 name|AccountDiffPreference
 name|myAccountDiffPref
+decl_stmt|;
+DECL|field|xsrfToken
+specifier|private
+specifier|static
+name|String
+name|xsrfToken
 decl_stmt|;
 DECL|field|menuLeft
 specifier|private
@@ -1682,13 +1679,6 @@ name|void
 name|deleteSessionCookie
 parameter_list|()
 block|{
-name|Cookies
-operator|.
-name|removeCookie
-argument_list|(
-name|SESSION_COOKIE
-argument_list|)
-expr_stmt|;
 name|myAccount
 operator|=
 literal|null
@@ -1697,8 +1687,22 @@ name|myAccountDiffPref
 operator|=
 literal|null
 expr_stmt|;
+name|xsrfToken
+operator|=
+literal|null
+expr_stmt|;
 name|refreshMenuBar
 argument_list|()
+expr_stmt|;
+comment|// If the cookie was HttpOnly, this request to delete it will
+comment|// most likely not be successful.  We can try anyway though.
+comment|//
+name|Cookies
+operator|.
+name|removeCookie
+argument_list|(
+literal|"GerritAccount"
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|onModuleLoad ()
@@ -1876,6 +1880,12 @@ operator|=
 name|result
 operator|.
 name|account
+expr_stmt|;
+name|xsrfToken
+operator|=
+name|result
+operator|.
+name|xsrfToken
 expr_stmt|;
 block|}
 if|if
@@ -2711,12 +2721,7 @@ name|proxy
 parameter_list|)
 block|{
 return|return
-name|Cookies
-operator|.
-name|getCookie
-argument_list|(
-name|SESSION_COOKIE
-argument_list|)
+name|xsrfToken
 return|;
 block|}
 annotation|@

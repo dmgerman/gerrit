@@ -114,6 +114,11 @@ specifier|public
 name|AccountDiffPreference
 name|accountDiffPref
 decl_stmt|;
+DECL|field|xsrfToken
+specifier|public
+name|String
+name|xsrfToken
+decl_stmt|;
 DECL|field|config
 specifier|public
 name|GerritConfig

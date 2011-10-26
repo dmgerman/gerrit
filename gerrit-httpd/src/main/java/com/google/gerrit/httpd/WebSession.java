@@ -799,6 +799,7 @@ literal|null
 return|;
 block|}
 DECL|method|getToken ()
+specifier|public
 name|String
 name|getToken
 parameter_list|()
@@ -807,9 +808,9 @@ return|return
 name|isSignedIn
 argument_list|()
 condition|?
-name|key
+name|val
 operator|.
-name|getToken
+name|getXsrfToken
 argument_list|()
 else|:
 literal|null
@@ -828,10 +829,19 @@ block|{
 return|return
 name|isSignedIn
 argument_list|()
+comment|//
 operator|&&
-name|key
+name|val
 operator|.
-name|getToken
+name|getXsrfToken
+argument_list|()
+operator|!=
+literal|null
+comment|//
+operator|&&
+name|val
+operator|.
+name|getXsrfToken
 argument_list|()
 operator|.
 name|equals
@@ -966,6 +976,8 @@ argument_list|,
 name|rememberMe
 argument_list|,
 name|identity
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|saveCookie
@@ -1019,6 +1031,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
