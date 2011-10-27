@@ -864,6 +864,16 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|projectCache
+operator|.
+name|evict
+argument_list|(
+name|pc
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
