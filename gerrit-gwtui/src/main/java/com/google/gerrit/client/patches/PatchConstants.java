@@ -290,6 +290,16 @@ name|String
 name|fileTypeGitlink
 parameter_list|()
 function_decl|;
+DECL|method|patchSkipRegionStart ()
+name|String
+name|patchSkipRegionStart
+parameter_list|()
+function_decl|;
+DECL|method|patchSkipRegionEnd ()
+name|String
+name|patchSkipRegionEnd
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
