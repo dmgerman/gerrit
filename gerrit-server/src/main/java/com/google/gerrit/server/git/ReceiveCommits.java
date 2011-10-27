@@ -3417,6 +3417,8 @@ block|{
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"can not create new references"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3482,6 +3484,8 @@ block|{
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"can not update the reference as a fast forward"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3621,6 +3625,8 @@ block|{
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"can not delete references"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4103,6 +4109,8 @@ block|{
 name|reject
 argument_list|(
 name|cmd
+argument_list|,
+literal|"can not upload a change to this reference"
 argument_list|)
 expr_stmt|;
 return|return;
