@@ -380,6 +380,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
+comment|// + 1 to prevent '... skipping 1 common line ...' messages.
 return|return
 name|s
 operator|.
@@ -394,6 +395,8 @@ operator|<=
 literal|2
 operator|*
 name|context
+operator|+
+literal|1
 return|;
 block|}
 DECL|method|combineB (final int i)
@@ -436,6 +439,7 @@ operator|.
 name|getEndB
 argument_list|()
 decl_stmt|;
+comment|// + 1 to prevent '... skipping 1 common line ...' messages.
 return|return
 name|s
 operator|-
@@ -444,6 +448,8 @@ operator|<=
 literal|2
 operator|*
 name|context
+operator|+
+literal|1
 return|;
 block|}
 DECL|class|Hunk
