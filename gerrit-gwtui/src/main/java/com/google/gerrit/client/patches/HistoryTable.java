@@ -879,10 +879,15 @@ literal|3
 argument_list|,
 name|col
 argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|k
 operator|.
 name|getCommentCount
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
