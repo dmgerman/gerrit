@@ -1950,6 +1950,17 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|IncorrectObjectTypeException
+name|notCommit
+parameter_list|)
+block|{
+comment|// No need to spam the logs.
+comment|// Quite many refs will point to non-commits.
+comment|// For instance, refs from refs/cache-automerge
+comment|// will often end up here.
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
