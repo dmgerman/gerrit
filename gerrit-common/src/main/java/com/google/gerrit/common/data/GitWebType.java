@@ -119,6 +119,13 @@ argument_list|()
 expr_stmt|;
 name|type
 operator|.
+name|setLinkName
+argument_list|(
+literal|"gitweb"
+argument_list|)
+expr_stmt|;
+name|type
+operator|.
 name|setProject
 argument_list|(
 literal|"?p=${project}.git;a=summary"
@@ -155,6 +162,13 @@ operator|=
 operator|new
 name|GitWebType
 argument_list|()
+expr_stmt|;
+name|type
+operator|.
+name|setLinkName
+argument_list|(
+literal|"cgit"
+argument_list|)
 expr_stmt|;
 name|type
 operator|.
@@ -195,6 +209,14 @@ operator|new
 name|GitWebType
 argument_list|()
 expr_stmt|;
+comment|// The custom name is not defined, let's keep the old style of using GitWeb
+name|type
+operator|.
+name|setLinkName
+argument_list|(
+literal|"gitweb"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -207,6 +229,12 @@ return|return
 name|type
 return|;
 block|}
+comment|/** name of the type. */
+DECL|field|name
+specifier|private
+name|String
+name|name
+decl_stmt|;
 comment|/** String for revision view url. */
 DECL|field|revision
 specifier|private
@@ -240,6 +268,17 @@ parameter_list|()
 block|{
 return|return
 name|branch
+return|;
+block|}
+comment|/**    * Get the String for link-name of the type.    *    * @return The String for link-name of the type    */
+DECL|method|getLinkName ()
+specifier|public
+name|String
+name|getLinkName
+parameter_list|()
+block|{
+return|return
+name|name
 return|;
 block|}
 comment|/**    * Get the String for project view.    *    * @return The String for project view    */
@@ -291,6 +330,38 @@ block|{
 name|branch
 operator|=
 name|pattern
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Set the pattern for link-name type.    *    * @param pattern The pattern for link-name type    */
+DECL|method|setLinkName (final String name)
+specifier|public
+name|void
+name|setLinkName
+parameter_list|(
+specifier|final
+name|String
+name|name
+parameter_list|)
+block|{
+if|if
+condition|(
+name|name
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|name
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
 expr_stmt|;
 block|}
 block|}

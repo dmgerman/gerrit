@@ -2182,7 +2182,10 @@ argument_list|,
 operator|new
 name|Anchor
 argument_list|(
-literal|"(gitweb)"
+name|c
+operator|.
+name|getLinkName
+argument_list|()
 argument_list|,
 literal|false
 argument_list|,

@@ -1023,7 +1023,10 @@ init|=
 operator|new
 name|Anchor
 argument_list|(
-literal|"(gitweb)"
+name|gw
+operator|.
+name|getLinkName
+argument_list|()
 argument_list|,
 literal|false
 argument_list|,
