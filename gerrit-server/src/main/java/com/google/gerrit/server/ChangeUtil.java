@@ -1868,7 +1868,9 @@ block|}
 DECL|method|revert (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHookRunner hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, PersonIdent myIdent)
 specifier|public
 specifier|static
-name|void
+name|Change
+operator|.
+name|Id
 name|revert
 parameter_list|(
 specifier|final
@@ -2560,6 +2562,12 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
+return|return
+name|change
+operator|.
+name|getId
+argument_list|()
+return|;
 block|}
 finally|finally
 block|{

@@ -760,6 +760,11 @@ name|changeId
 argument_list|)
 throw|;
 block|}
+name|Change
+operator|.
+name|Id
+name|revertedChangeId
+init|=
 name|ChangeUtil
 operator|.
 name|revert
@@ -784,13 +789,13 @@ name|replication
 argument_list|,
 name|myIdent
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
 name|changeDetailFactory
 operator|.
 name|create
 argument_list|(
-name|changeId
+name|revertedChangeId
 argument_list|)
 operator|.
 name|call
