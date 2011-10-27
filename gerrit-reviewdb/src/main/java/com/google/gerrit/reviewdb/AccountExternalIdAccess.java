@@ -279,6 +279,18 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+DECL|method|all ()
+name|ResultSet
+argument_list|<
+name|AccountExternalId
+argument_list|>
+name|all
+parameter_list|()
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
