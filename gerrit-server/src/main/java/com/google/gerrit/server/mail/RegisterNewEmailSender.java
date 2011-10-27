@@ -78,6 +78,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|AuthConfig
 import|;
 end_import
@@ -183,7 +199,7 @@ name|addr
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RegisterNewEmailSender (EmailArguments ea, AuthConfig ac, @Assisted final String address)
+DECL|method|RegisterNewEmailSender (EmailArguments ea, AuthConfig ac, @AnonymousCowardName String anonymousCowardName, @Assisted final String address)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(
@@ -192,6 +208,11 @@ name|ea
 parameter_list|,
 name|AuthConfig
 name|ac
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|Assisted
@@ -203,6 +224,8 @@ block|{
 name|super
 argument_list|(
 name|ea
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 literal|"registernewemail"
 argument_list|)

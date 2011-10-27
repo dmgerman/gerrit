@@ -572,9 +572,10 @@ name|name
 operator|=
 name|Gerrit
 operator|.
-name|C
+name|getConfig
+argument_list|()
 operator|.
-name|anonymousCoward
+name|getAnonymousCowardName
 argument_list|()
 expr_stmt|;
 block|}

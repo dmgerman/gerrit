@@ -254,6 +254,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|AuthConfig
 import|;
 end_import
@@ -599,6 +615,12 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|field|canonicalUrl
 specifier|private
 specifier|final
@@ -628,7 +650,7 @@ name|groupIncludeCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache)
+DECL|method|GenericFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache)
 name|GenericFactory
 parameter_list|(
 name|CapabilityControl
@@ -639,6 +661,12 @@ parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
+parameter_list|,
+specifier|final
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 specifier|final
 annotation|@
@@ -673,6 +701,12 @@ operator|.
 name|authConfig
 operator|=
 name|authConfig
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -753,6 +787,8 @@ name|UNKNOWN
 argument_list|,
 name|authConfig
 argument_list|,
+name|anonymousCowardName
+argument_list|,
 name|canonicalUrl
 argument_list|,
 name|realm
@@ -799,6 +835,8 @@ name|accessPath
 argument_list|,
 name|authConfig
 argument_list|,
+name|anonymousCowardName
+argument_list|,
 name|canonicalUrl
 argument_list|,
 name|realm
@@ -838,6 +876,12 @@ specifier|private
 specifier|final
 name|AuthConfig
 name|authConfig
+decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
 decl_stmt|;
 DECL|field|canonicalUrl
 specifier|private
@@ -886,7 +930,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
 name|CapabilityControl
@@ -897,6 +941,12 @@ parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
+parameter_list|,
+specifier|final
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 specifier|final
 annotation|@
@@ -947,6 +997,12 @@ operator|.
 name|authConfig
 operator|=
 name|authConfig
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -1010,6 +1066,8 @@ argument_list|,
 name|accessPath
 argument_list|,
 name|authConfig
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
 argument_list|,
@@ -1187,6 +1245,12 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|private
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 annotation|@
 name|Nullable
 DECL|field|remotePeerProvider
@@ -1258,7 +1322,7 @@ name|AccountProjectWatch
 argument_list|>
 name|notificationFilters
 decl_stmt|;
-DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AccessPath accessPath, final AuthConfig authConfig, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
+DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AccessPath accessPath, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -1274,6 +1338,10 @@ parameter_list|,
 specifier|final
 name|AuthConfig
 name|authConfig
+parameter_list|,
+specifier|final
+name|String
+name|anonymousCowardName
 parameter_list|,
 specifier|final
 name|Provider
@@ -1355,6 +1423,12 @@ operator|.
 name|authConfig
 operator|=
 name|authConfig
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -2046,7 +2120,7 @@ condition|)
 block|{
 name|name
 operator|=
-literal|"Anonymous Coward"
+name|anonymousCowardName
 expr_stmt|;
 block|}
 name|String
@@ -2382,7 +2456,7 @@ else|else
 block|{
 name|name
 operator|=
-literal|"Anonymous Coward"
+name|anonymousCowardName
 expr_stmt|;
 block|}
 block|}

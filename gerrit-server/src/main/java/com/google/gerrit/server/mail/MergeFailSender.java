@@ -86,6 +86,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -136,12 +152,17 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|MergeFailSender (EmailArguments ea, @Assisted Change c)
+DECL|method|MergeFailSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, @Assisted Change c)
 specifier|public
 name|MergeFailSender
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|Assisted
@@ -152,6 +173,8 @@ block|{
 name|super
 argument_list|(
 name|ea
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

@@ -282,6 +282,11 @@ specifier|protected
 name|boolean
 name|testChangeMerge
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|protected
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|method|getRegisterUrl ()
 specifier|public
 name|String
@@ -726,6 +731,33 @@ block|{
 name|testChangeMerge
 operator|=
 name|test
+expr_stmt|;
+block|}
+DECL|method|getAnonymousCowardName ()
+specifier|public
+name|String
+name|getAnonymousCowardName
+parameter_list|()
+block|{
+return|return
+name|anonymousCowardName
+return|;
+block|}
+DECL|method|setAnonymousCowardName (final String anonymousCowardName)
+specifier|public
+name|void
+name|setAnonymousCowardName
+parameter_list|(
+specifier|final
+name|String
+name|anonymousCowardName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 block|}
 block|}

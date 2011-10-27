@@ -328,6 +328,8 @@ name|FromAddressGeneratorProvider
 argument_list|(
 name|config
 argument_list|,
+literal|"Anonymous Coward"
+argument_list|,
 name|ident
 argument_list|,
 name|accountCache
