@@ -191,6 +191,23 @@ operator|=
 name|gitWebType
 expr_stmt|;
 block|}
+DECL|method|getLinkName ()
+specifier|public
+name|String
+name|getLinkName
+parameter_list|()
+block|{
+return|return
+literal|"("
+operator|+
+name|type
+operator|.
+name|getLinkName
+argument_list|()
+operator|+
+literal|")"
+return|;
+block|}
 DECL|method|toRevision (final Project.NameKey project, final PatchSet ps)
 specifier|public
 name|String
