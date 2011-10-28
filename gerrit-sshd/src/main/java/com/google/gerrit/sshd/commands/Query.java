@@ -356,6 +356,33 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--commit-message"
+argument_list|,
+name|usage
+operator|=
+literal|"Include the full commit message for a change"
+argument_list|)
+DECL|method|setCommitMessage (boolean on)
+name|void
+name|setCommitMessage
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setIncludeCommitMessage
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Argument
 argument_list|(
 name|index

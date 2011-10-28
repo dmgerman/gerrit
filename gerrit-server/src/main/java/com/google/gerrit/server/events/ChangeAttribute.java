@@ -136,6 +136,11 @@ specifier|public
 name|String
 name|url
 decl_stmt|;
+DECL|field|commitMessage
+specifier|public
+name|String
+name|commitMessage
+decl_stmt|;
 DECL|field|createdOn
 specifier|public
 name|Long

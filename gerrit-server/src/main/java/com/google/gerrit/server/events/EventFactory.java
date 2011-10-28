@@ -804,6 +804,25 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|addCommitMessage (ChangeAttribute a, String commitMessage)
+specifier|public
+name|void
+name|addCommitMessage
+parameter_list|(
+name|ChangeAttribute
+name|a
+parameter_list|,
+name|String
+name|commitMessage
+parameter_list|)
+block|{
+name|a
+operator|.
+name|commitMessage
+operator|=
+name|commitMessage
+expr_stmt|;
+block|}
 DECL|method|addPatchSets (ChangeAttribute a, Collection<PatchSet> ps)
 specifier|public
 name|void
