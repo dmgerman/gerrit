@@ -659,6 +659,8 @@ name|infoFactory
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|patchSetId
 argument_list|)
 expr_stmt|;

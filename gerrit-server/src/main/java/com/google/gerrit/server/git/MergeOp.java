@@ -7336,6 +7336,8 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
+name|schema
+argument_list|,
 name|merged
 argument_list|)
 argument_list|)

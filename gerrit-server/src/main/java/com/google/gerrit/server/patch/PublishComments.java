@@ -2004,6 +2004,8 @@ name|patchSetInfoFactory
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|patchSetId
 argument_list|)
 argument_list|)

@@ -1024,6 +1024,8 @@ name|infoFactory
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|psIdNew
 argument_list|)
 argument_list|)
