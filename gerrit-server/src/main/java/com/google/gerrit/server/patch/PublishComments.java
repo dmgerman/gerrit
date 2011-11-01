@@ -546,7 +546,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (PatchSet.Id patchSetId, String messageText, Set<ApprovalCategoryValue.Id> approvals)
+DECL|method|create (PatchSet.Id patchSetId, String messageText, Set<ApprovalCategoryValue.Id> approvals, boolean forceMessage)
 name|PublishComments
 name|create
 parameter_list|(
@@ -565,6 +565,9 @@ operator|.
 name|Id
 argument_list|>
 name|approvals
+parameter_list|,
+name|boolean
+name|forceMessage
 parameter_list|)
 function_decl|;
 block|}
@@ -647,6 +650,12 @@ name|Id
 argument_list|>
 name|approvals
 decl_stmt|;
+DECL|field|forceMessage
+specifier|private
+specifier|final
+name|boolean
+name|forceMessage
+decl_stmt|;
 DECL|field|change
 specifier|private
 name|Change
@@ -672,7 +681,7 @@ name|drafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishComments (final ReviewDb db, final IdentifiedUser user, final ApprovalTypes approvalTypes, final CommentSender.Factory commentSenderFactory, final PatchSetInfoFactory patchSetInfoFactory, final ChangeControl.Factory changeControlFactory, final FunctionState.Factory functionStateFactory, final ChangeHookRunner hooks, @Assisted final PatchSet.Id patchSetId, @Assisted final String messageText, @Assisted final Set<ApprovalCategoryValue.Id> approvals)
+DECL|method|PublishComments (final ReviewDb db, final IdentifiedUser user, final ApprovalTypes approvalTypes, final CommentSender.Factory commentSenderFactory, final PatchSetInfoFactory patchSetInfoFactory, final ChangeControl.Factory changeControlFactory, final FunctionState.Factory functionStateFactory, final ChangeHookRunner hooks, @Assisted final PatchSet.Id patchSetId, @Assisted final String messageText, @Assisted final Set<ApprovalCategoryValue.Id> approvals, @Assisted final boolean forceMessage)
 name|PublishComments
 parameter_list|(
 specifier|final
@@ -737,6 +746,12 @@ operator|.
 name|Id
 argument_list|>
 name|approvals
+parameter_list|,
+annotation|@
+name|Assisted
+specifier|final
+name|boolean
+name|forceMessage
 parameter_list|)
 block|{
 name|this
@@ -804,6 +819,12 @@ operator|.
 name|approvals
 operator|=
 name|approvals
+expr_stmt|;
+name|this
+operator|.
+name|forceMessage
+operator|=
+name|forceMessage
 expr_stmt|;
 block|}
 annotation|@
@@ -932,12 +953,19 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
 name|approvals
 operator|.
 name|isEmpty
 argument_list|()
+operator|||
+name|forceMessage
 condition|)
+block|{
+name|publishMessageOnly
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 throw|throw
 operator|new
@@ -946,12 +974,6 @@ argument_list|(
 literal|"Change is closed"
 argument_list|)
 throw|;
-block|}
-else|else
-block|{
-name|publishMessageOnly
-argument_list|()
-expr_stmt|;
 block|}
 name|touchChange
 argument_list|()
