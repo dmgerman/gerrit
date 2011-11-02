@@ -185,6 +185,19 @@ operator|.
 name|SETTINGS_CONTACT
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|getSshdAddress
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|link
 argument_list|(
 name|Util
@@ -199,6 +212,7 @@ operator|.
 name|SETTINGS_SSHKEYS
 argument_list|)
 expr_stmt|;
+block|}
 name|link
 argument_list|(
 name|Util

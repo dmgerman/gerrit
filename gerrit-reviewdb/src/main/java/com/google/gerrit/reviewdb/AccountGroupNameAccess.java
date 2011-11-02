@@ -178,6 +178,8 @@ name|AccountGroupName
 argument_list|>
 name|all
 parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 annotation|@
 name|Query

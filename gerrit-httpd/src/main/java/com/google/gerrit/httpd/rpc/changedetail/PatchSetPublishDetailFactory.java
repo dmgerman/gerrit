@@ -659,6 +659,8 @@ name|infoFactory
 operator|.
 name|get
 argument_list|(
+name|db
+argument_list|,
 name|patchSetId
 argument_list|)
 expr_stmt|;
@@ -669,7 +671,7 @@ operator|.
 name|patchComments
 argument_list|()
 operator|.
-name|draft
+name|draftByPatchSetAuthor
 argument_list|(
 name|patchSetId
 argument_list|,

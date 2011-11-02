@@ -214,6 +214,18 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|getChangeId ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|getChangeId
+parameter_list|()
+block|{
+return|return
+name|changeId
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()
@@ -293,6 +305,18 @@ name|key
 operator|=
 name|k
 expr_stmt|;
+block|}
+DECL|method|getKey ()
+specifier|public
+name|StarredChange
+operator|.
+name|Key
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
 block|}
 DECL|method|getAccountId ()
 specifier|public

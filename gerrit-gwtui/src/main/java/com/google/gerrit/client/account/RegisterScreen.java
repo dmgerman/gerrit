@@ -800,6 +800,19 @@ name|fp
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|getSshdAddress
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 specifier|final
 name|FlowPanel
 name|sshKeyGroup
@@ -901,6 +914,7 @@ argument_list|(
 name|sshKeyGroup
 argument_list|)
 expr_stmt|;
+block|}
 specifier|final
 name|FlowPanel
 name|choices

@@ -500,6 +500,13 @@ name|patchInfoFactory
 operator|.
 name|get
 argument_list|(
+name|REVIEW_DB
+operator|.
+name|get
+argument_list|(
+name|engine
+argument_list|)
+argument_list|,
 name|patchSetId
 argument_list|)
 return|;

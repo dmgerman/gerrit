@@ -279,6 +279,28 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|getProjectName ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProjectName
+parameter_list|()
+block|{
+return|return
+name|projectName
+return|;
+block|}
+DECL|method|getFilter ()
+specifier|public
+name|Filter
+name|getFilter
+parameter_list|()
+block|{
+return|return
+name|filter
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()

@@ -607,6 +607,15 @@ operator|.
 name|getExternalId
 argument_list|()
 decl_stmt|;
+specifier|final
+name|String
+name|xsrfToken
+init|=
+name|val
+operator|.
+name|getXsrfToken
+argument_list|()
+decl_stmt|;
 return|return
 name|createVal
 argument_list|(
@@ -617,10 +626,12 @@ argument_list|,
 name|remember
 argument_list|,
 name|lastLogin
+argument_list|,
+name|xsrfToken
 argument_list|)
 return|;
 block|}
-DECL|method|createVal (final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin)
+DECL|method|createVal (final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin, String xsrfToken)
 name|Val
 name|createVal
 parameter_list|(
@@ -643,6 +654,9 @@ name|AccountExternalId
 operator|.
 name|Key
 name|lastLogin
+parameter_list|,
+name|String
+name|xsrfToken
 parameter_list|)
 block|{
 comment|// Refresh the cookie every hour or when it is half-expired.
@@ -698,7 +712,53 @@ argument_list|()
 operator|+
 name|refresh
 decl_stmt|;
+if|if
+condition|(
+name|xsrfToken
+operator|==
+literal|null
+condition|)
+block|{
+comment|// If we don't yet have a token for this session, establish one.
+comment|//
 specifier|final
+name|int
+name|nonceLen
+init|=
+literal|20
+decl_stmt|;
+specifier|final
+name|ByteArrayOutputStream
+name|buf
+decl_stmt|;
+specifier|final
+name|byte
+index|[]
+name|rnd
+init|=
+operator|new
+name|byte
+index|[
+name|nonceLen
+index|]
+decl_stmt|;
+name|prng
+operator|.
+name|nextBytes
+argument_list|(
+name|rnd
+argument_list|)
+expr_stmt|;
+name|xsrfToken
+operator|=
+name|CookieBase64
+operator|.
+name|encode
+argument_list|(
+name|rnd
+argument_list|)
+expr_stmt|;
+block|}
 name|Val
 name|val
 init|=
@@ -712,6 +772,8 @@ argument_list|,
 name|remember
 argument_list|,
 name|lastLogin
+argument_list|,
+name|xsrfToken
 argument_list|)
 decl_stmt|;
 name|self
@@ -984,7 +1046,13 @@ operator|.
 name|Key
 name|externalId
 decl_stmt|;
-DECL|method|Val (final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId)
+DECL|field|xsrfToken
+specifier|private
+specifier|transient
+name|String
+name|xsrfToken
+decl_stmt|;
+DECL|method|Val (final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId, final String xsrfToken)
 name|Val
 parameter_list|(
 specifier|final
@@ -1006,6 +1074,10 @@ name|AccountExternalId
 operator|.
 name|Key
 name|externalId
+parameter_list|,
+specifier|final
+name|String
+name|xsrfToken
 parameter_list|)
 block|{
 name|this
@@ -1031,6 +1103,12 @@ operator|.
 name|externalId
 operator|=
 name|externalId
+expr_stmt|;
+name|this
+operator|.
+name|xsrfToken
+operator|=
+name|xsrfToken
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -1074,6 +1152,15 @@ parameter_list|()
 block|{
 return|return
 name|persistentCookie
+return|;
+block|}
+DECL|method|getXsrfToken ()
+name|String
+name|getXsrfToken
+parameter_list|()
+block|{
+return|return
+name|xsrfToken
 return|;
 block|}
 DECL|method|writeObject (final ObjectOutputStream out)
@@ -1162,6 +1249,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|writeVarInt32
+argument_list|(
+name|out
+argument_list|,
+literal|5
+argument_list|)
+expr_stmt|;
+name|writeString
+argument_list|(
+name|out
+argument_list|,
+name|xsrfToken
+argument_list|)
+expr_stmt|;
 name|writeVarInt32
 argument_list|(
 name|out
@@ -1265,6 +1366,17 @@ name|readString
 argument_list|(
 name|in
 argument_list|)
+argument_list|)
+expr_stmt|;
+continue|continue;
+case|case
+literal|5
+case|:
+name|xsrfToken
+operator|=
+name|readString
+argument_list|(
+name|in
 argument_list|)
 expr_stmt|;
 continue|continue;

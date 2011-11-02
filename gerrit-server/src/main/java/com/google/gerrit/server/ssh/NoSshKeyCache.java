@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.server.ssh
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
 operator|.
-name|data
+name|ssh
 package|;
 end_package
 
@@ -74,9 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|Account
+name|errors
+operator|.
+name|InvalidSshKeyException
 import|;
 end_import
 
@@ -90,76 +92,51 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|AccountDiffPreference
+name|AccountSshKey
 import|;
 end_import
 
-begin_comment
-comment|/** Data sent as part of the host page, to bootstrap the UI. */
-end_comment
-
 begin_class
-DECL|class|HostPageData
-specifier|public
+DECL|class|NoSshKeyCache
 class|class
-name|HostPageData
+name|NoSshKeyCache
+implements|implements
+name|SshKeyCache
 block|{
-DECL|field|account
+annotation|@
+name|Override
+DECL|method|evict (String username)
 specifier|public
-name|Account
-name|account
-decl_stmt|;
-DECL|field|accountDiffPref
-specifier|public
-name|AccountDiffPreference
-name|accountDiffPref
-decl_stmt|;
-DECL|field|xsrfToken
-specifier|public
+name|void
+name|evict
+parameter_list|(
 name|String
-name|xsrfToken
-decl_stmt|;
-DECL|field|config
+name|username
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
+DECL|method|create (AccountSshKey.Id id, String encoded)
 specifier|public
-name|GerritConfig
-name|config
-decl_stmt|;
-DECL|field|theme
-specifier|public
-name|Theme
-name|theme
-decl_stmt|;
-DECL|class|Theme
-specifier|public
-specifier|static
-class|class
-name|Theme
+name|AccountSshKey
+name|create
+parameter_list|(
+name|AccountSshKey
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|encoded
+parameter_list|)
+throws|throws
+name|InvalidSshKeyException
 block|{
-DECL|field|backgroundColor
-specifier|public
-name|String
-name|backgroundColor
-decl_stmt|;
-DECL|field|topMenuColor
-specifier|public
-name|String
-name|topMenuColor
-decl_stmt|;
-DECL|field|textColor
-specifier|public
-name|String
-name|textColor
-decl_stmt|;
-DECL|field|trimColor
-specifier|public
-name|String
-name|trimColor
-decl_stmt|;
-DECL|field|selectionColor
-specifier|public
-name|String
-name|selectionColor
-decl_stmt|;
+throw|throw
+operator|new
+name|InvalidSshKeyException
+argument_list|()
+throw|;
 block|}
 block|}
 end_class

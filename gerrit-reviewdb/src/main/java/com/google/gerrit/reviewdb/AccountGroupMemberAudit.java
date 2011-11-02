@@ -245,6 +245,28 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|getGroupId ()
+specifier|public
+name|AccountGroup
+operator|.
+name|Id
+name|getGroupId
+parameter_list|()
+block|{
+return|return
+name|groupId
+return|;
+block|}
+DECL|method|getAddedOn ()
+specifier|public
+name|Timestamp
+name|getAddedOn
+parameter_list|()
+block|{
+return|return
+name|addedOn
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()

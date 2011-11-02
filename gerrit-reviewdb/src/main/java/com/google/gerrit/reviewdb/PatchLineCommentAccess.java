@@ -189,32 +189,6 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.patchKey = ? AND status = '"
-operator|+
-name|PatchLineComment
-operator|.
-name|STATUS_PUBLISHED
-operator|+
-literal|"' ORDER BY lineNbr,writtenOn"
-argument_list|)
-DECL|method|published (Patch.Key patch)
-name|ResultSet
-argument_list|<
-name|PatchLineComment
-argument_list|>
-name|published
-parameter_list|(
-name|Patch
-operator|.
-name|Key
-name|patch
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
 literal|"WHERE key.patchKey.patchSetId.changeId = ?"
 operator|+
 literal|" AND key.patchKey.fileName = ? AND status = '"
@@ -225,12 +199,12 @@ name|STATUS_PUBLISHED
 operator|+
 literal|"' ORDER BY lineNbr,writtenOn"
 argument_list|)
-DECL|method|published (Change.Id id, String file)
+DECL|method|publishedByChangeFile (Change.Id id, String file)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|published
+name|publishedByChangeFile
 parameter_list|(
 name|Change
 operator|.
@@ -254,12 +228,12 @@ name|STATUS_PUBLISHED
 operator|+
 literal|"'"
 argument_list|)
-DECL|method|published (PatchSet.Id patchset)
+DECL|method|publishedByPatchSet (PatchSet.Id patchset)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|published
+name|publishedByPatchSet
 parameter_list|(
 name|PatchSet
 operator|.
@@ -280,48 +254,17 @@ name|STATUS_DRAFT
 operator|+
 literal|"' AND author = ? ORDER BY key.patchKey,lineNbr,writtenOn"
 argument_list|)
-DECL|method|draft (PatchSet.Id patchset, Account.Id author)
+DECL|method|draftByPatchSetAuthor (PatchSet.Id patchset, Account.Id author)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|draft
+name|draftByPatchSetAuthor
 parameter_list|(
 name|PatchSet
 operator|.
 name|Id
 name|patchset
-parameter_list|,
-name|Account
-operator|.
-name|Id
-name|author
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE key.patchKey = ? AND status = '"
-operator|+
-name|PatchLineComment
-operator|.
-name|STATUS_DRAFT
-operator|+
-literal|"' AND author = ? ORDER BY lineNbr,writtenOn"
-argument_list|)
-DECL|method|draft (Patch.Key patch, Account.Id author)
-name|ResultSet
-argument_list|<
-name|PatchLineComment
-argument_list|>
-name|draft
-parameter_list|(
-name|Patch
-operator|.
-name|Key
-name|patch
 parameter_list|,
 name|Account
 operator|.
@@ -344,12 +287,12 @@ name|STATUS_DRAFT
 operator|+
 literal|"' ORDER BY lineNbr,writtenOn"
 argument_list|)
-DECL|method|draft (Change.Id id, String file, Account.Id author)
+DECL|method|draftByChangeFileAuthor (Change.Id id, String file, Account.Id author)
 name|ResultSet
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|draft
+name|draftByChangeFileAuthor
 parameter_list|(
 name|Change
 operator|.

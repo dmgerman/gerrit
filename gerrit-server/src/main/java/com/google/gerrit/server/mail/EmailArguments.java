@@ -184,22 +184,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|SitePaths
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -316,6 +300,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|velocity
+operator|.
+name|runtime
+operator|.
+name|RuntimeInstance
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|annotation
@@ -412,14 +410,14 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|site
+DECL|field|velocityRuntime
 specifier|final
-name|SitePaths
-name|site
+name|RuntimeInstance
+name|velocityRuntime
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupCache groupCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, SitePaths site)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupCache groupCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -479,8 +477,8 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|SitePaths
-name|site
+name|RuntimeInstance
+name|velocityRuntime
 parameter_list|)
 block|{
 name|this
@@ -569,9 +567,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|site
+name|velocityRuntime
 operator|=
-name|site
+name|velocityRuntime
 expr_stmt|;
 block|}
 block|}

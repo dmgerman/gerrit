@@ -129,7 +129,6 @@ end_import
 begin_class
 DECL|class|DefaultRealm
 specifier|public
-specifier|final
 class|class
 name|DefaultRealm
 implements|implements

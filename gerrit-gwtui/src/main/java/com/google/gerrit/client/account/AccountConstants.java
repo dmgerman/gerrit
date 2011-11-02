@@ -260,6 +260,11 @@ name|String
 name|buttonGeneratePassword
 parameter_list|()
 function_decl|;
+DECL|method|linkObtainPassword ()
+name|String
+name|linkObtainPassword
+parameter_list|()
+function_decl|;
 DECL|method|invalidUserName ()
 name|String
 name|invalidUserName

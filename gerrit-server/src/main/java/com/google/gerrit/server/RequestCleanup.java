@@ -174,6 +174,11 @@ name|Runnable
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|ran
+specifier|private
+name|boolean
+name|ran
+decl_stmt|;
 comment|/** Register a task to be completed after the request ends. */
 DECL|method|add (final Runnable task)
 specifier|public
@@ -190,6 +195,19 @@ init|(
 name|cleanup
 init|)
 block|{
+if|if
+condition|(
+name|ran
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Request has already been cleaned up"
+argument_list|)
+throw|;
+block|}
 name|cleanup
 operator|.
 name|add
@@ -210,6 +228,10 @@ init|(
 name|cleanup
 init|)
 block|{
+name|ran
+operator|=
+literal|true
+expr_stmt|;
 for|for
 control|(
 specifier|final

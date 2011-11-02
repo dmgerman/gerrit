@@ -231,6 +231,18 @@ return|return
 name|accountId
 return|;
 block|}
+DECL|method|getContributorAgreementId ()
+specifier|public
+name|ContributorAgreement
+operator|.
+name|Id
+name|getContributorAgreementId
+parameter_list|()
+block|{
+return|return
+name|claId
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|members ()

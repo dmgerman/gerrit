@@ -132,6 +132,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -148,17 +158,20 @@ end_import
 
 begin_class
 DECL|class|EmailHeader
+specifier|public
 specifier|abstract
 class|class
 name|EmailHeader
 block|{
 DECL|method|isEmpty ()
+specifier|public
 specifier|abstract
 name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
 DECL|method|write (Writer w)
+specifier|public
 specifier|abstract
 name|void
 name|write
@@ -170,6 +183,7 @@ throws|throws
 name|IOException
 function_decl|;
 DECL|class|String
+specifier|public
 specifier|static
 class|class
 name|String
@@ -186,6 +200,7 @@ name|String
 name|value
 decl_stmt|;
 DECL|method|String (java.lang.String v)
+specifier|public
 name|String
 parameter_list|(
 name|java
@@ -201,9 +216,24 @@ operator|=
 name|v
 expr_stmt|;
 block|}
+DECL|method|getString ()
+specifier|public
+name|java
+operator|.
+name|lang
+operator|.
+name|String
+name|getString
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|isEmpty ()
+specifier|public
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -224,6 +254,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|write (Writer w)
+specifier|public
 name|void
 name|write
 parameter_list|(
@@ -514,6 +545,7 @@ argument_list|()
 return|;
 block|}
 DECL|class|Date
+specifier|public
 specifier|static
 class|class
 name|Date
@@ -530,6 +562,7 @@ name|Date
 name|value
 decl_stmt|;
 DECL|method|Date (java.util.Date v)
+specifier|public
 name|Date
 parameter_list|(
 name|java
@@ -545,9 +578,24 @@ operator|=
 name|v
 expr_stmt|;
 block|}
+DECL|method|getDate ()
+specifier|public
+name|java
+operator|.
+name|util
+operator|.
+name|Date
+name|getDate
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|isEmpty ()
+specifier|public
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -561,6 +609,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|write (Writer w)
+specifier|public
 name|void
 name|write
 parameter_list|(
@@ -602,6 +651,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|AddressList
+specifier|public
 specifier|static
 class|class
 name|AddressList
@@ -625,10 +675,12 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|AddressList ()
+specifier|public
 name|AddressList
 parameter_list|()
 block|{     }
 DECL|method|AddressList (Address addr)
+specifier|public
 name|AddressList
 parameter_list|(
 name|Address
@@ -641,7 +693,26 @@ name|addr
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getAddressList ()
+specifier|public
+name|List
+argument_list|<
+name|Address
+argument_list|>
+name|getAddressList
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
+name|list
+argument_list|)
+return|;
+block|}
 DECL|method|add (Address addr)
+specifier|public
 name|void
 name|add
 parameter_list|(
@@ -715,6 +786,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|isEmpty ()
+specifier|public
 name|boolean
 name|isEmpty
 parameter_list|()
@@ -729,6 +801,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|write (Writer w)
+specifier|public
 name|void
 name|write
 parameter_list|(

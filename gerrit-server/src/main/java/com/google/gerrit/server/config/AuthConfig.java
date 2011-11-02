@@ -782,6 +782,9 @@ case|:
 case|case
 name|CLIENT_SSL_CERT_LDAP
 case|:
+case|case
+name|CUSTOM_EXTENSION
+case|:
 comment|// Its safe to assume yes for an HTTP authentication type, as the
 comment|// only way in is through some external system that the admin trusts
 comment|//

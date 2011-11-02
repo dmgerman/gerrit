@@ -947,15 +947,6 @@ specifier|final
 name|SystemInfoService
 name|SYSTEM_SVC
 decl_stmt|;
-DECL|field|SESSION_COOKIE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|SESSION_COOKIE
-init|=
-literal|"GerritAccount"
-decl_stmt|;
 DECL|field|myHost
 specifier|private
 specifier|static
@@ -987,6 +978,12 @@ specifier|private
 specifier|static
 name|AccountDiffPreference
 name|myAccountDiffPref
+decl_stmt|;
+DECL|field|xsrfToken
+specifier|private
+specifier|static
+name|String
+name|xsrfToken
 decl_stmt|;
 DECL|field|menuLeft
 specifier|private
@@ -1578,13 +1575,12 @@ literal|null
 return|;
 block|}
 comment|/** Sign the user into the application. */
-DECL|method|doSignIn (final String token)
+DECL|method|doSignIn (String token)
 specifier|public
 specifier|static
 name|void
 name|doSignIn
 parameter_list|(
-specifier|final
 name|String
 name|token
 parameter_list|)
@@ -1606,6 +1602,27 @@ case|:
 case|case
 name|CLIENT_SSL_CERT_LDAP
 case|:
+case|case
+name|CUSTOM_EXTENSION
+case|:
+if|if
+condition|(
+operator|!
+name|token
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|token
+operator|=
+literal|"/"
+operator|+
+name|token
+expr_stmt|;
+block|}
 name|Location
 operator|.
 name|assign
@@ -1615,7 +1632,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"login/"
+literal|"login"
 operator|+
 name|token
 argument_list|)
@@ -1682,13 +1699,6 @@ name|void
 name|deleteSessionCookie
 parameter_list|()
 block|{
-name|Cookies
-operator|.
-name|removeCookie
-argument_list|(
-name|SESSION_COOKIE
-argument_list|)
-expr_stmt|;
 name|myAccount
 operator|=
 literal|null
@@ -1697,8 +1707,22 @@ name|myAccountDiffPref
 operator|=
 literal|null
 expr_stmt|;
+name|xsrfToken
+operator|=
+literal|null
+expr_stmt|;
 name|refreshMenuBar
 argument_list|()
+expr_stmt|;
+comment|// If the cookie was HttpOnly, this request to delete it will
+comment|// most likely not be successful.  We can try anyway though.
+comment|//
+name|Cookies
+operator|.
+name|removeCookie
+argument_list|(
+literal|"GerritAccount"
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|onModuleLoad ()
@@ -1877,6 +1901,12 @@ name|result
 operator|.
 name|account
 expr_stmt|;
+name|xsrfToken
+operator|=
+name|result
+operator|.
+name|xsrfToken
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1892,6 +1922,9 @@ operator|=
 name|result
 operator|.
 name|accountDiffPref
+expr_stmt|;
+name|applyUserPreferences
+argument_list|()
 expr_stmt|;
 block|}
 name|onModuleLoad2
@@ -2708,12 +2741,7 @@ name|proxy
 parameter_list|)
 block|{
 return|return
-name|Cookies
-operator|.
-name|getCookie
-argument_list|(
-name|SESSION_COOKIE
-argument_list|)
+name|xsrfToken
 return|;
 block|}
 annotation|@
@@ -3477,6 +3505,9 @@ name|LDAP
 case|:
 case|case
 name|LDAP_BIND
+case|:
+case|case
+name|CUSTOM_EXTENSION
 case|:
 if|if
 condition|(
