@@ -329,6 +329,33 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--files"
+argument_list|,
+name|usage
+operator|=
+literal|"Include file list on patch sets"
+argument_list|)
+DECL|method|setFiles (boolean on)
+name|void
+name|setFiles
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setIncludeFiles
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Argument
 argument_list|(
 name|index
