@@ -728,10 +728,6 @@ init|=
 literal|20
 decl_stmt|;
 specifier|final
-name|ByteArrayOutputStream
-name|buf
-decl_stmt|;
-specifier|final
 name|byte
 index|[]
 name|rnd

@@ -384,6 +384,11 @@ name|injector
 return|;
 block|}
 comment|/**    * Lookup a stored value in the interpreter's hash manager.    *    * @param<T> type of stored Java object.    * @param sv unique key.    * @return the value; null if not stored.    */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|get (StoredValue<T> sv)
 specifier|public
 parameter_list|<
@@ -412,6 +417,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Set a stored value on the interpreter's hash manager.    *    * @param<T> type of stored Java object.    * @param sv unique key.    * @param obj the value to store under {@code sv}.    */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|set (StoredValue<T> sv, T obj)
 specifier|public
 parameter_list|<

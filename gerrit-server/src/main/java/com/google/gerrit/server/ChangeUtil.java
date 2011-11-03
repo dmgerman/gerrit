@@ -2866,9 +2866,14 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updatedChange (final ReviewDb db, final IdentifiedUser user, final Change change, final ChangeMessage cmsg, ReplyToChangeSender.Factory senderFactory, final String err)
+DECL|method|updatedChange ( final ReviewDb db, final IdentifiedUser user, final Change change, final ChangeMessage cmsg, ReplyToChangeSender.Factory<T> senderFactory, final String err)
 specifier|private
 specifier|static
+parameter_list|<
+name|T
+extends|extends
+name|ReplyToChangeSender
+parameter_list|>
 name|void
 name|updatedChange
 parameter_list|(
@@ -2891,6 +2896,9 @@ parameter_list|,
 name|ReplyToChangeSender
 operator|.
 name|Factory
+argument_list|<
+name|T
+argument_list|>
 name|senderFactory
 parameter_list|,
 specifier|final

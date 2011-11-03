@@ -2374,12 +2374,6 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|String
-name|q
-init|=
-literal|"patchset="
-decl_stmt|;
-specifier|final
-name|String
 name|t
 index|[]
 init|=
