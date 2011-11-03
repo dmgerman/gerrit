@@ -294,6 +294,33 @@ return|return
 name|ctl
 return|;
 block|}
+DECL|method|evict (Project project)
+specifier|public
+name|void
+name|evict
+parameter_list|(
+name|Project
+name|project
+parameter_list|)
+block|{
+name|projectCache
+operator|.
+name|evict
+argument_list|(
+name|project
+argument_list|)
+expr_stmt|;
+name|controls
+operator|.
+name|remove
+argument_list|(
+name|project
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
