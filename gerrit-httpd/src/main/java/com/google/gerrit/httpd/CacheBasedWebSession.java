@@ -1162,6 +1162,10 @@ expr_stmt|;
 if|if
 condition|(
 name|path
+operator|==
+literal|null
+operator|||
+name|path
 operator|.
 name|isEmpty
 argument_list|()
