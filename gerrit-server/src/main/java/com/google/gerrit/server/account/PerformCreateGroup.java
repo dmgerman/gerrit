@@ -389,9 +389,15 @@ specifier|final
 name|PersonIdent
 name|serverIdent
 decl_stmt|;
+DECL|field|groupCache
+specifier|private
+specifier|final
+name|GroupCache
+name|groupCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PerformCreateGroup (final ReviewDb db, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final IdentifiedUser currentUser, @GerritPersonIdent final PersonIdent serverIdent)
+DECL|method|PerformCreateGroup (final ReviewDb db, final AccountCache accountCache, final GroupIncludeCache groupIncludeCache, final IdentifiedUser currentUser, @GerritPersonIdent final PersonIdent serverIdent, final GroupCache groupCache)
 name|PerformCreateGroup
 parameter_list|(
 specifier|final
@@ -415,6 +421,10 @@ name|GerritPersonIdent
 specifier|final
 name|PersonIdent
 name|serverIdent
+parameter_list|,
+specifier|final
+name|GroupCache
+name|groupCache
 parameter_list|)
 block|{
 name|this
@@ -446,6 +456,12 @@ operator|.
 name|serverIdent
 operator|=
 name|serverIdent
+expr_stmt|;
+name|this
+operator|.
+name|groupCache
+operator|=
+name|groupCache
 expr_stmt|;
 block|}
 comment|/**    * Creates a new group.    *    * @param groupName the name for the new group    * @param groupDescription the description of the new group,<code>null</code>    *        if no description    * @param visibleToAll<code>true</code> to make the group visible to all    *        registered users, if<code>false</code> the group is only visible to    *        the group owners and Gerrit administrators    * @param ownerGroupId the group that should own the new group, if    *<code>null</code> the new group will own itself    * @param initialMembers initial members to be added to the new group    * @param initialGroups initial groups to include in the new group    * @return the id of the new group    * @throws OrmException is thrown in case of any data store read or write    *         error    * @throws NameAlreadyUsedException is thrown in case a group with the given    *         name already exists    * @throws PermissionDeniedException user cannot create a group.    */
@@ -722,6 +738,13 @@ name|initialGroups
 argument_list|)
 expr_stmt|;
 block|}
+name|groupCache
+operator|.
+name|onCreateGroup
+argument_list|(
+name|nameKey
+argument_list|)
+expr_stmt|;
 return|return
 name|groupId
 return|;

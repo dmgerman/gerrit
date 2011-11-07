@@ -111,6 +111,40 @@ specifier|protected
 name|boolean
 name|canCreateGroup
 decl_stmt|;
+DECL|method|GroupList ()
+specifier|public
+name|GroupList
+parameter_list|()
+block|{   }
+DECL|method|GroupList (final List<GroupDetail> groups, final boolean canCreateGroup)
+specifier|public
+name|GroupList
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|GroupDetail
+argument_list|>
+name|groups
+parameter_list|,
+specifier|final
+name|boolean
+name|canCreateGroup
+parameter_list|)
+block|{
+name|this
+operator|.
+name|groups
+operator|=
+name|groups
+expr_stmt|;
+name|this
+operator|.
+name|canCreateGroup
+operator|=
+name|canCreateGroup
+expr_stmt|;
+block|}
 DECL|method|getGroups ()
 specifier|public
 name|List

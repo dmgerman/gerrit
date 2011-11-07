@@ -723,6 +723,8 @@ operator|.
 name|evictAfterRename
 argument_list|(
 name|old
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 name|renameGroupOpFactory
