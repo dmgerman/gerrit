@@ -223,7 +223,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|VisibleGroups
+name|VisibleGroupsHandler
 operator|.
 name|Factory
 operator|.
