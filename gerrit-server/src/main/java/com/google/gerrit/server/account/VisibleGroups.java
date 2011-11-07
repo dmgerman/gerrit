@@ -343,6 +343,13 @@ specifier|private
 name|boolean
 name|onlyVisibleToAll
 decl_stmt|;
+DECL|field|groupType
+specifier|private
+name|AccountGroup
+operator|.
+name|Type
+name|groupType
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|VisibleGroups (final Provider<IdentifiedUser> currentUser, final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupDetailFactory.Factory groupDetailFactory)
@@ -432,6 +439,25 @@ operator|.
 name|onlyVisibleToAll
 operator|=
 name|onlyVisibleToAll
+expr_stmt|;
+block|}
+DECL|method|setGroupType (final AccountGroup.Type groupType)
+specifier|public
+name|void
+name|setGroupType
+parameter_list|(
+specifier|final
+name|AccountGroup
+operator|.
+name|Type
+name|groupType
+parameter_list|)
+block|{
+name|this
+operator|.
+name|groupType
+operator|=
+name|groupType
 expr_stmt|;
 block|}
 DECL|method|get ()
@@ -679,6 +705,7 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|onlyVisibleToAll
 operator|&&
 operator|!
@@ -686,6 +713,24 @@ name|group
 operator|.
 name|isVisibleToAll
 argument_list|()
+operator|)
+operator|||
+operator|(
+name|groupType
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|groupType
+operator|.
+name|equals
+argument_list|(
+name|group
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+operator|)
 condition|)
 block|{
 continue|continue;
