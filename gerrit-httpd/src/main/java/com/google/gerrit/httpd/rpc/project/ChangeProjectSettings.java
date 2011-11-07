@@ -190,7 +190,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectCache
+name|PerRequestProjectControlCache
 import|;
 end_import
 
@@ -247,6 +247,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
@@ -343,12 +355,6 @@ operator|.
 name|Factory
 name|projectControlFactory
 decl_stmt|;
-DECL|field|projectCache
-specifier|private
-specifier|final
-name|ProjectCache
-name|projectCache
-decl_stmt|;
 DECL|field|mgr
 specifier|private
 specifier|final
@@ -363,6 +369,15 @@ operator|.
 name|User
 name|metaDataUpdateFactory
 decl_stmt|;
+DECL|field|userCache
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|PerRequestProjectControlCache
+argument_list|>
+name|userCache
+decl_stmt|;
 DECL|field|update
 specifier|private
 specifier|final
@@ -371,7 +386,7 @@ name|update
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectSettings ( final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final GitRepositoryManager mgr, final MetaDataUpdate.User metaDataUpdateFactory, @Assisted final Project update)
+DECL|method|ChangeProjectSettings ( final ProjectDetailFactory.Factory projectDetailFactory, final ProjectControl.Factory projectControlFactory, final GitRepositoryManager mgr, final MetaDataUpdate.User metaDataUpdateFactory, final Provider<PerRequestProjectControlCache> uc, @Assisted final Project update)
 name|ChangeProjectSettings
 parameter_list|(
 specifier|final
@@ -387,10 +402,6 @@ name|Factory
 name|projectControlFactory
 parameter_list|,
 specifier|final
-name|ProjectCache
-name|projectCache
-parameter_list|,
-specifier|final
 name|GitRepositoryManager
 name|mgr
 parameter_list|,
@@ -399,6 +410,13 @@ name|MetaDataUpdate
 operator|.
 name|User
 name|metaDataUpdateFactory
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|PerRequestProjectControlCache
+argument_list|>
+name|uc
 parameter_list|,
 annotation|@
 name|Assisted
@@ -421,15 +439,15 @@ name|projectControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|projectCache
+name|mgr
 operator|=
-name|projectCache
+name|mgr
 expr_stmt|;
 name|this
 operator|.
-name|mgr
+name|userCache
 operator|=
-name|mgr
+name|uc
 expr_stmt|;
 name|this
 operator|.
@@ -558,7 +576,10 @@ name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|projectCache
+name|userCache
+operator|.
+name|get
+argument_list|()
 operator|.
 name|evict
 argument_list|(
