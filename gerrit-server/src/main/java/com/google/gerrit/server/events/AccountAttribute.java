@@ -82,6 +82,11 @@ specifier|public
 name|String
 name|email
 decl_stmt|;
+DECL|field|username
+specifier|public
+name|String
+name|username
+decl_stmt|;
 block|}
 end_class
 

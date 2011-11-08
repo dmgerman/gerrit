@@ -2252,6 +2252,15 @@ operator|.
 name|getPreferredEmail
 argument_list|()
 expr_stmt|;
+name|who
+operator|.
+name|username
+operator|=
+name|account
+operator|.
+name|getUserName
+argument_list|()
+expr_stmt|;
 return|return
 name|who
 return|;
