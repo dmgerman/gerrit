@@ -289,6 +289,14 @@ specifier|private
 name|String
 name|fileHistory
 decl_stmt|;
+comment|/** Character to substitute the standard path separator '/' in branch and     * project names */
+DECL|field|pathSeparator
+specifier|private
+name|char
+name|pathSeparator
+init|=
+literal|'/'
+decl_stmt|;
 comment|/** Private default constructor for gson. */
 DECL|method|GitWebType ()
 specifier|protected
@@ -501,6 +509,55 @@ operator|=
 name|pattern
 expr_stmt|;
 block|}
+block|}
+comment|/**    * Replace the standard path separator ('/') in a branch name or project    * name with a custom path separator configured by the property    * gitweb.pathSeparator.    * @param urlSegment The branch or project to replace the path separator in    * @return the urlSegment with the standard path separator replaced by the    * custom path separator    */
+DECL|method|replacePathSeparator (String urlSegment)
+specifier|public
+name|String
+name|replacePathSeparator
+parameter_list|(
+name|String
+name|urlSegment
+parameter_list|)
+block|{
+if|if
+condition|(
+literal|'/'
+operator|!=
+name|pathSeparator
+condition|)
+block|{
+return|return
+name|urlSegment
+operator|.
+name|replace
+argument_list|(
+literal|'/'
+argument_list|,
+name|pathSeparator
+argument_list|)
+return|;
+block|}
+return|return
+name|urlSegment
+return|;
+block|}
+comment|/**    * Set the custom path separator    * @param separator The custom path separator    */
+DECL|method|setPathSeparator (char separator)
+specifier|public
+name|void
+name|setPathSeparator
+parameter_list|(
+name|char
+name|separator
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pathSeparator
+operator|=
+name|separator
+expr_stmt|;
 block|}
 block|}
 end_class
