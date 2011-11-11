@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.userpass
+DECL|package|com.google.gerrit.server.auth
 package|package
 name|com
 operator|.
@@ -60,11 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
 name|auth
-operator|.
-name|userpass
 package|;
 end_package
 
@@ -76,54 +74,58 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|AuthType
+name|account
+operator|.
+name|AccountException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
-import|;
-end_import
+begin_comment
+comment|/** A query to the authentication server failed */
+end_comment
 
-begin_interface
-DECL|interface|UserPassMessages
+begin_class
+DECL|class|AuthenticationUnavailableException
 specifier|public
-interface|interface
-name|UserPassMessages
+class|class
+name|AuthenticationUnavailableException
 extends|extends
-name|Messages
+name|AccountException
 block|{
-DECL|method|signInAt (String hostname)
-name|String
-name|signInAt
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|AuthenticationUnavailableException (final String message, final Throwable why)
+specifier|public
+name|AuthenticationUnavailableException
 parameter_list|(
+specifier|final
 name|String
-name|hostname
+name|message
+parameter_list|,
+specifier|final
+name|Throwable
+name|why
 parameter_list|)
-function_decl|;
-DECL|method|authenticationUnavailable (AuthType authType)
-name|String
-name|authenticationUnavailable
-parameter_list|(
-name|AuthType
-name|authType
-parameter_list|)
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|why
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

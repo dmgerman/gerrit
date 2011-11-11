@@ -262,6 +262,22 @@ name|server
 operator|.
 name|auth
 operator|.
+name|AuthenticationUnavailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|auth
+operator|.
 name|ldap
 operator|.
 name|Helper
@@ -1698,7 +1714,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|AccountException
+name|AuthenticationUnavailableException
 argument_list|(
 literal|"Cannot query LDAP for account"
 argument_list|,

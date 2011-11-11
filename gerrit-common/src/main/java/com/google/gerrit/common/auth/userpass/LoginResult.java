@@ -68,6 +68,20 @@ name|userpass
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|AuthType
+import|;
+end_import
+
 begin_class
 DECL|class|LoginResult
 specifier|public
@@ -84,6 +98,94 @@ specifier|public
 name|boolean
 name|isNew
 decl_stmt|;
+DECL|field|authType
+specifier|protected
+name|AuthType
+name|authType
+decl_stmt|;
+DECL|field|error
+specifier|protected
+name|Error
+name|error
+decl_stmt|;
+DECL|method|LoginResult ()
+specifier|protected
+name|LoginResult
+parameter_list|()
+block|{   }
+DECL|method|LoginResult (final AuthType authType)
+specifier|public
+name|LoginResult
+parameter_list|(
+specifier|final
+name|AuthType
+name|authType
+parameter_list|)
+block|{
+name|this
+operator|.
+name|authType
+operator|=
+name|authType
+expr_stmt|;
+block|}
+DECL|method|getAuthType ()
+specifier|public
+name|AuthType
+name|getAuthType
+parameter_list|()
+block|{
+return|return
+name|authType
+return|;
+block|}
+DECL|method|setError (final Error error)
+specifier|public
+name|void
+name|setError
+parameter_list|(
+specifier|final
+name|Error
+name|error
+parameter_list|)
+block|{
+name|this
+operator|.
+name|error
+operator|=
+name|error
+expr_stmt|;
+name|success
+operator|=
+name|error
+operator|==
+literal|null
+expr_stmt|;
+block|}
+DECL|method|getError ()
+specifier|public
+name|Error
+name|getError
+parameter_list|()
+block|{
+return|return
+name|error
+return|;
+block|}
+DECL|enum|Error
+specifier|public
+specifier|static
+enum|enum
+name|Error
+block|{
+comment|/** Username or password are invalid */
+DECL|enumConstant|INVALID_LOGIN
+name|INVALID_LOGIN
+block|,
+comment|/** The authentication server is unavailable or the query to it timed out */
+DECL|enumConstant|AUTHENTICATION_UNAVAILABLE
+name|AUTHENTICATION_UNAVAILABLE
+block|}
 block|}
 end_class
 
