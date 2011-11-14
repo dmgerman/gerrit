@@ -196,7 +196,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupMembersFactory
+name|GroupMembers
 import|;
 end_import
 
@@ -981,7 +981,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|GroupMembersFactory
+name|GroupMembers
 operator|.
 name|Factory
 operator|.

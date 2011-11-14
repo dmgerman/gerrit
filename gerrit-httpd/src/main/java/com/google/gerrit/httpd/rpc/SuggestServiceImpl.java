@@ -318,25 +318,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupMembersFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|GroupMembersFactory
-operator|.
-name|Factory
+name|GroupMembers
 import|;
 end_import
 
@@ -609,6 +591,8 @@ decl_stmt|;
 DECL|field|groupMembersFactory
 specifier|private
 specifier|final
+name|GroupMembers
+operator|.
 name|Factory
 name|groupMembersFactory
 decl_stmt|;
@@ -649,7 +633,7 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuggestServiceImpl (final Provider<ReviewDb> schema, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final AccountCache accountCache, final GroupControl.Factory groupControlFactory, final GroupMembersFactory.Factory groupMembersFactory, final IdentifiedUser.GenericFactory userFactory, final Provider<CurrentUser> currentUser, @GerritServerConfig final Config cfg, final GroupCache groupCache)
+DECL|method|SuggestServiceImpl (final Provider<ReviewDb> schema, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final AccountCache accountCache, final GroupControl.Factory groupControlFactory, final GroupMembers.Factory groupMembersFactory, final IdentifiedUser.GenericFactory userFactory, final Provider<CurrentUser> currentUser, @GerritServerConfig final Config cfg, final GroupCache groupCache)
 name|SuggestServiceImpl
 parameter_list|(
 specifier|final
@@ -680,7 +664,7 @@ name|Factory
 name|groupControlFactory
 parameter_list|,
 specifier|final
-name|GroupMembersFactory
+name|GroupMembers
 operator|.
 name|Factory
 name|groupMembersFactory
@@ -2112,17 +2096,17 @@ init|=
 name|groupMembersFactory
 operator|.
 name|create
+argument_list|()
+operator|.
+name|listAccounts
 argument_list|(
-name|project
-argument_list|,
 name|group
 operator|.
 name|getUUID
 argument_list|()
+argument_list|,
+name|project
 argument_list|)
-operator|.
-name|call
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
