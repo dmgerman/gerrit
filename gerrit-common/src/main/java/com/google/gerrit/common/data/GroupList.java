@@ -112,7 +112,7 @@ name|boolean
 name|canCreateGroup
 decl_stmt|;
 DECL|method|GroupList ()
-specifier|public
+specifier|protected
 name|GroupList
 parameter_list|()
 block|{   }
