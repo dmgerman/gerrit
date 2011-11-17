@@ -300,6 +300,21 @@ name|String
 name|projectSubmitType_CHERRY_PICK
 parameter_list|()
 function_decl|;
+DECL|method|projectState_ACTIVE ()
+name|String
+name|projectState_ACTIVE
+parameter_list|()
+function_decl|;
+DECL|method|projectState_READ_ONLY ()
+name|String
+name|projectState_READ_ONLY
+parameter_list|()
+function_decl|;
+DECL|method|projectState_HIDDEN ()
+name|String
+name|projectState_HIDDEN
+parameter_list|()
+function_decl|;
 DECL|method|groupType_SYSTEM ()
 name|String
 name|groupType_SYSTEM

@@ -850,6 +850,12 @@ literal|"  upload = group Developers\n"
 comment|//
 operator|+
 literal|"  read = group Developers\n"
+comment|//
+operator|+
+literal|"[project]\n"
+comment|//
+operator|+
+literal|"\tstate = active\n"
 argument_list|,
 name|text
 argument_list|(
@@ -1011,6 +1017,12 @@ literal|"  upload = group Developers\n"
 comment|//
 operator|+
 literal|"  read = group Developers\n"
+comment|//
+operator|+
+literal|"[project]\n"
+comment|//
+operator|+
+literal|"\tstate = active\n"
 argument_list|,
 name|text
 argument_list|(

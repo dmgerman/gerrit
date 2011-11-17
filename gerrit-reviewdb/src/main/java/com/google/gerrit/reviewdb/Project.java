@@ -300,6 +300,21 @@ block|,
 DECL|enumConstant|CHERRY_PICK
 name|CHERRY_PICK
 block|;   }
+DECL|enum|State
+specifier|public
+specifier|static
+enum|enum
+name|State
+block|{
+DECL|enumConstant|ACTIVE
+name|ACTIVE
+block|,
+DECL|enumConstant|READ_ONLY
+name|READ_ONLY
+block|,
+DECL|enumConstant|HIDDEN
+name|HIDDEN
+block|;   }
 DECL|field|name
 specifier|protected
 name|NameKey
@@ -324,6 +339,11 @@ DECL|field|submitType
 specifier|protected
 name|SubmitType
 name|submitType
+decl_stmt|;
+DECL|field|state
+specifier|protected
+name|State
+name|state
 decl_stmt|;
 DECL|field|parent
 specifier|protected
@@ -364,6 +384,12 @@ operator|=
 name|SubmitType
 operator|.
 name|MERGE_IF_NECESSARY
+expr_stmt|;
+name|state
+operator|=
+name|State
+operator|.
+name|ACTIVE
 expr_stmt|;
 block|}
 DECL|method|getNameKey ()
@@ -547,6 +573,31 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+DECL|method|getState ()
+specifier|public
+name|State
+name|getState
+parameter_list|()
+block|{
+return|return
+name|state
+return|;
+block|}
+DECL|method|setState (final State newState)
+specifier|public
+name|void
+name|setState
+parameter_list|(
+specifier|final
+name|State
+name|newState
+parameter_list|)
+block|{
+name|state
+operator|=
+name|newState
+expr_stmt|;
+block|}
 DECL|method|copySettingsFrom (final Project update)
 specifier|public
 name|void
@@ -592,6 +643,12 @@ operator|=
 name|update
 operator|.
 name|submitType
+expr_stmt|;
+name|state
+operator|=
+name|update
+operator|.
+name|state
 expr_stmt|;
 block|}
 DECL|method|getParent ()

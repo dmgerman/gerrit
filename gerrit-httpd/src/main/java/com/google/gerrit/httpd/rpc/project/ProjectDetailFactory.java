@@ -366,6 +366,13 @@ argument_list|(
 name|userIsOwner
 argument_list|)
 expr_stmt|;
+name|detail
+operator|.
+name|setCanModifyState
+argument_list|(
+name|userIsOwner
+argument_list|)
+expr_stmt|;
 return|return
 name|detail
 return|;
