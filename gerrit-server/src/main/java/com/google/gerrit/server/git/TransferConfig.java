@@ -184,6 +184,12 @@ specifier|final
 name|PackConfig
 name|packConfig
 decl_stmt|;
+DECL|field|maxObjectSizeLimit
+specifier|private
+specifier|final
+name|long
+name|maxObjectSizeLimit
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|TransferConfig (@erritServerConfig final Config cfg)
@@ -219,6 +225,19 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+argument_list|)
+expr_stmt|;
+name|maxObjectSizeLimit
+operator|=
+name|cfg
+operator|.
+name|getLong
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"maxObjectSizeLimit"
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|packConfig
@@ -268,6 +287,16 @@ parameter_list|()
 block|{
 return|return
 name|packConfig
+return|;
+block|}
+DECL|method|getMaxObjectSizeLimit ()
+specifier|public
+name|long
+name|getMaxObjectSizeLimit
+parameter_list|()
+block|{
+return|return
+name|maxObjectSizeLimit
 return|;
 block|}
 block|}

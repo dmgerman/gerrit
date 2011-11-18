@@ -615,6 +615,16 @@ name|getTimeout
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|rp
+operator|.
+name|setMaxObjectSizeLimit
+argument_list|(
+name|config
+operator|.
+name|getMaxObjectSizeLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|receive
