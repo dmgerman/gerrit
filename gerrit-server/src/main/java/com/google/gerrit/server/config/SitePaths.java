@@ -110,6 +110,16 @@ name|FileNotFoundException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/** Important paths within a {@link SitePath}. */
 end_comment
@@ -628,9 +638,28 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 return|return
 name|loc
+operator|.
+name|getCanonicalFile
+argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+return|return
+name|loc
+operator|.
+name|getAbsoluteFile
+argument_list|()
+return|;
+block|}
 block|}
 return|return
 literal|null

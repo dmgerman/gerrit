@@ -421,7 +421,7 @@ name|void
 name|testResolve
 parameter_list|()
 throws|throws
-name|FileNotFoundException
+name|IOException
 block|{
 specifier|final
 name|File
@@ -479,6 +479,9 @@ name|root
 argument_list|,
 literal|"a"
 argument_list|)
+operator|.
+name|getCanonicalFile
+argument_list|()
 argument_list|,
 name|site
 operator|.
@@ -522,6 +525,9 @@ name|pfx
 operator|+
 literal|"a"
 argument_list|)
+operator|.
+name|getCanonicalFile
+argument_list|()
 argument_list|,
 name|site
 operator|.
