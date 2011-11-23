@@ -320,6 +320,13 @@ argument_list|(
 name|DEFAULT_CONTEXT
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|setManualReview
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -489,6 +496,18 @@ specifier|protected
 name|boolean
 name|retainHeader
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|14
+argument_list|)
+DECL|field|manualReview
+specifier|protected
+name|boolean
+name|manualReview
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -622,6 +641,14 @@ operator|=
 name|p
 operator|.
 name|retainHeader
+expr_stmt|;
+name|this
+operator|.
+name|manualReview
+operator|=
+name|p
+operator|.
+name|manualReview
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -958,6 +985,30 @@ block|{
 name|retainHeader
 operator|=
 name|retain
+expr_stmt|;
+block|}
+DECL|method|isManualReview ()
+specifier|public
+name|boolean
+name|isManualReview
+parameter_list|()
+block|{
+return|return
+name|manualReview
+return|;
+block|}
+DECL|method|setManualReview (boolean manual)
+specifier|public
+name|void
+name|setManualReview
+parameter_list|(
+name|boolean
+name|manual
+parameter_list|)
+block|{
+name|manualReview
+operator|=
+name|manual
 expr_stmt|;
 block|}
 block|}

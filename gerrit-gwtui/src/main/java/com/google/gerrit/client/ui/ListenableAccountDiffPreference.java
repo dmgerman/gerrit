@@ -146,7 +146,7 @@ specifier|public
 class|class
 name|ListenableAccountDiffPreference
 extends|extends
-name|ListenableValue
+name|ListenableOldValue
 argument_list|<
 name|AccountDiffPreference
 argument_list|>

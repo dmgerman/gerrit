@@ -242,11 +242,11 @@ specifier|static
 specifier|final
 name|Class
 argument_list|<
-name|Schema_61
+name|Schema_62
 argument_list|>
 name|C
 init|=
-name|Schema_61
+name|Schema_62
 operator|.
 name|class
 decl_stmt|;
