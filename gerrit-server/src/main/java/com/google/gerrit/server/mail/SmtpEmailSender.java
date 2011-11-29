@@ -955,6 +955,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|StringBuffer
+name|rejected
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 specifier|final
@@ -995,6 +1002,7 @@ name|email
 argument_list|)
 throw|;
 block|}
+comment|/* Do not prevent the email from being sent to "good" users simply          * because some users get rejected.  If not, a single rejected          * project watcher could prevent email for most actions on a project          * from being sent to any user!  Instead, queue up the errors, and          * throw an exception after sending the email to get the rejected          * error(s) logged.          */
 for|for
 control|(
 name|Address
@@ -1024,9 +1032,9 @@ operator|.
 name|getReplyString
 argument_list|()
 decl_stmt|;
-throw|throw
-operator|new
-name|EmailException
+name|rejected
+operator|.
+name|append
 argument_list|(
 literal|"Server "
 operator|+
@@ -1040,7 +1048,7 @@ literal|": "
 operator|+
 name|error
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 block|}
 name|Writer
@@ -1194,6 +1202,27 @@ operator|.
 name|logout
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|rejected
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|EmailException
+argument_list|(
+name|rejected
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 finally|finally
 block|{
