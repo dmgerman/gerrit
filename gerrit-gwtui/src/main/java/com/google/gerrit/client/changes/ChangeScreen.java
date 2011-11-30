@@ -1420,7 +1420,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|insertTitleWidget
+name|setTitleWest
 argument_list|(
 name|starChange
 argument_list|)
