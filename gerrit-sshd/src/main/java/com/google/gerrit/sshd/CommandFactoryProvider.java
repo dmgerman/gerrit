@@ -668,6 +668,14 @@ name|env
 operator|=
 name|env
 expr_stmt|;
+specifier|final
+name|Context
+name|ctx
+init|=
+name|this
+operator|.
+name|ctx
+decl_stmt|;
 name|startExecutor
 operator|.
 name|execute
