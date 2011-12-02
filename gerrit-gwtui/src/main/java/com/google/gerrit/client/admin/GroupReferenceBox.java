@@ -555,7 +555,7 @@ argument_list|(
 name|suggestBox
 argument_list|)
 expr_stmt|;
-name|suggestBox
+name|textBox
 operator|.
 name|addKeyPressHandler
 argument_list|(
