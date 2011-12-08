@@ -2111,6 +2111,8 @@ name|HttpServletResponse
 operator|.
 name|SC_FORBIDDEN
 argument_list|,
+literal|"\n"
+operator|+
 name|s
 operator|.
 name|getMessage
