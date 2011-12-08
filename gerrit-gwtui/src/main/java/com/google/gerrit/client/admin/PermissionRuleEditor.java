@@ -1048,6 +1048,15 @@ expr_stmt|;
 block|}
 name|force
 operator|.
+name|setText
+argument_list|(
+name|PermissionRule
+operator|.
+name|FORCE_PUSH
+argument_list|)
+expr_stmt|;
+name|force
+operator|.
 name|setVisible
 argument_list|(
 name|canForce

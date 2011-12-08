@@ -152,6 +152,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|data
+operator|.
+name|PermissionRule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|errors
 operator|.
 name|NoSuchAccountException
@@ -3779,6 +3795,14 @@ operator|.
 name|Result
 operator|.
 name|REJECTED_NONFASTFORWARD
+argument_list|,
+literal|" need '"
+operator|+
+name|PermissionRule
+operator|.
+name|FORCE_PUSH
+operator|+
+literal|"' privilege."
 argument_list|)
 expr_stmt|;
 block|}
