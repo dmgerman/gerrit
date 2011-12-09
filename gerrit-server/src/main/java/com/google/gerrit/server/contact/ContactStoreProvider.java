@@ -278,9 +278,17 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|connFactory
+specifier|private
+specifier|final
+name|ContactStoreConnection
+operator|.
+name|Factory
+name|connFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ContactStoreProvider (@erritServerConfig final Config config, final SitePaths site, final SchemaFactory<ReviewDb> schema)
+DECL|method|ContactStoreProvider (@erritServerConfig final Config config, final SitePaths site, final SchemaFactory<ReviewDb> schema, final ContactStoreConnection.Factory connFactory)
 name|ContactStoreProvider
 parameter_list|(
 annotation|@
@@ -299,6 +307,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+parameter_list|,
+specifier|final
+name|ContactStoreConnection
+operator|.
+name|Factory
+name|connFactory
 parameter_list|)
 block|{
 name|this
@@ -318,6 +332,12 @@ operator|.
 name|schema
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|connFactory
+operator|=
+name|connFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -464,6 +484,8 @@ argument_list|,
 name|pubkey
 argument_list|,
 name|schema
+argument_list|,
+name|connFactory
 argument_list|)
 return|;
 block|}
