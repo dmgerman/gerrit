@@ -295,6 +295,14 @@ operator|.
 name|Factory
 name|visibleProjectsFactory
 decl_stmt|;
+DECL|field|visibleProjectDetailsFactory
+specifier|private
+specifier|final
+name|VisibleProjectDetails
+operator|.
+name|Factory
+name|visibleProjectDetailsFactory
+decl_stmt|;
 DECL|field|projectAccessFactory
 specifier|private
 specifier|final
@@ -313,7 +321,7 @@ name|projectDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAdminServiceImpl (final AddBranch.Factory addBranchFactory, final ChangeProjectAccess.Factory changeProjectAccessFactory, final ChangeProjectSettings.Factory changeProjectSettingsFactory, final DeleteBranches.Factory deleteBranchesFactory, final ListBranches.Factory listBranchesFactory, final VisibleProjects.Factory visibleProjectsFactory, final ProjectAccessFactory.Factory projectAccessFactory, final ProjectDetailFactory.Factory projectDetailFactory)
+DECL|method|ProjectAdminServiceImpl (final AddBranch.Factory addBranchFactory, final ChangeProjectAccess.Factory changeProjectAccessFactory, final ChangeProjectSettings.Factory changeProjectSettingsFactory, final DeleteBranches.Factory deleteBranchesFactory, final ListBranches.Factory listBranchesFactory, final VisibleProjects.Factory visibleProjectsFactory, final VisibleProjectDetails.Factory visibleProjectDetailsFactory, final ProjectAccessFactory.Factory projectAccessFactory, final ProjectDetailFactory.Factory projectDetailFactory)
 name|ProjectAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -353,6 +361,12 @@ name|Factory
 name|visibleProjectsFactory
 parameter_list|,
 specifier|final
+name|VisibleProjectDetails
+operator|.
+name|Factory
+name|visibleProjectDetailsFactory
+parameter_list|,
+specifier|final
 name|ProjectAccessFactory
 operator|.
 name|Factory
@@ -403,6 +417,12 @@ name|visibleProjectsFactory
 expr_stmt|;
 name|this
 operator|.
+name|visibleProjectDetailsFactory
+operator|=
+name|visibleProjectDetailsFactory
+expr_stmt|;
+name|this
+operator|.
 name|projectAccessFactory
 operator|=
 name|projectAccessFactory
@@ -433,6 +453,35 @@ name|callback
 parameter_list|)
 block|{
 name|visibleProjectsFactory
+operator|.
+name|create
+argument_list|()
+operator|.
+name|to
+argument_list|(
+name|callback
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|visibleProjectDetails (final AsyncCallback<List<ProjectDetail>> callback)
+specifier|public
+name|void
+name|visibleProjectDetails
+parameter_list|(
+specifier|final
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|ProjectDetail
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+block|{
+name|visibleProjectDetailsFactory
 operator|.
 name|create
 argument_list|()

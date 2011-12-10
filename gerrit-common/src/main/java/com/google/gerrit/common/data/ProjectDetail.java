@@ -116,6 +116,11 @@ specifier|public
 name|boolean
 name|canModifyState
 decl_stmt|;
+DECL|field|isPermissionOnly
+specifier|public
+name|boolean
+name|isPermissionOnly
+decl_stmt|;
 DECL|method|ProjectDetail ()
 specifier|public
 name|ProjectDetail
@@ -209,6 +214,21 @@ block|{
 name|canModifyAccess
 operator|=
 name|cma
+expr_stmt|;
+block|}
+DECL|method|setPermissionOnly (final boolean ipo)
+specifier|public
+name|void
+name|setPermissionOnly
+parameter_list|(
+specifier|final
+name|boolean
+name|ipo
+parameter_list|)
+block|{
+name|isPermissionOnly
+operator|=
+name|ipo
 expr_stmt|;
 block|}
 block|}

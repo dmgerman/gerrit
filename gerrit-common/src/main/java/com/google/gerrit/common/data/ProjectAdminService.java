@@ -223,6 +223,20 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+DECL|method|visibleProjectDetails (AsyncCallback<List<ProjectDetail>> callback)
+name|void
+name|visibleProjectDetails
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|ProjectDetail
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 DECL|method|projectDetail (Project.NameKey projectName, AsyncCallback<ProjectDetail> callback)
 name|void
 name|projectDetail
