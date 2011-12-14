@@ -198,9 +198,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|Project
+name|data
+operator|.
+name|ProjectList
 import|;
 end_import
 
@@ -2227,10 +2229,7 @@ argument_list|(
 operator|new
 name|GerritCallback
 argument_list|<
-name|List
-argument_list|<
-name|Project
-argument_list|>
+name|ProjectList
 argument_list|>
 argument_list|()
 block|{
@@ -2241,10 +2240,7 @@ name|void
 name|onSuccess
 parameter_list|(
 specifier|final
-name|List
-argument_list|<
-name|Project
-argument_list|>
+name|ProjectList
 name|result
 parameter_list|)
 block|{
@@ -2253,6 +2249,9 @@ operator|.
 name|display
 argument_list|(
 name|result
+operator|.
+name|getProjects
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

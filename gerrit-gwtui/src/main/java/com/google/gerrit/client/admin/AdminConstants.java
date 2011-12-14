@@ -155,6 +155,11 @@ name|String
 name|buttonCreateGroup
 parameter_list|()
 function_decl|;
+DECL|method|buttonCreateProject ()
+name|String
+name|buttonCreateProject
+parameter_list|()
+function_decl|;
 DECL|method|buttonChangeGroupOwner ()
 name|String
 name|buttonChangeGroupOwner
@@ -173,6 +178,16 @@ function_decl|;
 DECL|method|buttonSaveChanges ()
 name|String
 name|buttonSaveChanges
+parameter_list|()
+function_decl|;
+DECL|method|checkBoxEmptyCommit ()
+name|String
+name|checkBoxEmptyCommit
+parameter_list|()
+function_decl|;
+DECL|method|checkBoxPermissionsOnly ()
+name|String
+name|checkBoxPermissionsOnly
 parameter_list|()
 function_decl|;
 DECL|method|useContentMerge ()
@@ -273,6 +288,21 @@ function_decl|;
 DECL|method|headingCreateGroup ()
 name|String
 name|headingCreateGroup
+parameter_list|()
+function_decl|;
+DECL|method|headingCreateProject ()
+name|String
+name|headingCreateProject
+parameter_list|()
+function_decl|;
+DECL|method|headingParentProjectName ()
+name|String
+name|headingParentProjectName
+parameter_list|()
+function_decl|;
+DECL|method|columnProjectName ()
+name|String
+name|columnProjectName
 parameter_list|()
 function_decl|;
 DECL|method|headingAgreements ()
@@ -423,6 +453,11 @@ function_decl|;
 DECL|method|projectListTitle ()
 name|String
 name|projectListTitle
+parameter_list|()
+function_decl|;
+DECL|method|createProjectTitle ()
+name|String
+name|createProjectTitle
 parameter_list|()
 function_decl|;
 DECL|method|projectAdminTabGeneral ()

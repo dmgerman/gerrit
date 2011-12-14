@@ -403,6 +403,16 @@ name|String
 name|coverMessage
 parameter_list|()
 function_decl|;
+DECL|method|createProjectLink ()
+name|String
+name|createProjectLink
+parameter_list|()
+function_decl|;
+DECL|method|createProjectPanel ()
+name|String
+name|createProjectPanel
+parameter_list|()
+function_decl|;
 DECL|method|dataCell ()
 name|String
 name|dataCell
