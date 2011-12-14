@@ -248,6 +248,20 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+DECL|method|suggestParentCandidates (AsyncCallback<List<Project>> callback)
+name|void
+name|suggestParentCandidates
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|Project
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 DECL|method|projectDetail (Project.NameKey projectName, AsyncCallback<ProjectDetail> callback)
 name|void
 name|projectDetail

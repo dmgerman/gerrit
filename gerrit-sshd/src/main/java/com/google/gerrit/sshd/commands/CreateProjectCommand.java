@@ -200,7 +200,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RetrieveParentCandidates
+name|SuggestParentCandidates
 import|;
 end_import
 
@@ -299,16 +299,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -724,12 +714,12 @@ name|CreateProjectFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|retrieveParentCandidatesFactory
+DECL|field|suggestParentCandidatesFactory
 specifier|private
-name|RetrieveParentCandidates
+name|SuggestParentCandidates
 operator|.
 name|Factory
-name|retrieveParentCandidatesFactory
+name|suggestParentCandidatesFactory
 decl_stmt|;
 annotation|@
 name|Override
@@ -933,7 +923,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Set
+name|List
 argument_list|<
 name|Project
 operator|.
@@ -941,12 +931,12 @@ name|NameKey
 argument_list|>
 name|parentCandidates
 init|=
-name|retrieveParentCandidatesFactory
+name|suggestParentCandidatesFactory
 operator|.
 name|create
 argument_list|()
 operator|.
-name|get
+name|getNameKeys
 argument_list|()
 decl_stmt|;
 for|for
