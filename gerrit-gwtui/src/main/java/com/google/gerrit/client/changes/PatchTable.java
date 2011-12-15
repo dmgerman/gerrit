@@ -632,6 +632,13 @@ specifier|private
 name|String
 name|savePointerId
 decl_stmt|;
+DECL|field|base
+specifier|private
+name|PatchSet
+operator|.
+name|Id
+name|base
+decl_stmt|;
 DECL|field|patchList
 specifier|private
 name|List
@@ -662,13 +669,6 @@ DECL|field|registerKeys
 specifier|private
 name|boolean
 name|registerKeys
-decl_stmt|;
-DECL|field|patchSetIdToCompareWith
-specifier|private
-name|PatchSet
-operator|.
-name|Id
-name|patchSetIdToCompareWith
 decl_stmt|;
 DECL|method|PatchTable (ListenableAccountDiffPreference prefs)
 specifier|public
@@ -764,15 +764,26 @@ operator|-
 literal|1
 return|;
 block|}
-DECL|method|display (PatchSetDetail detail)
+DECL|method|display (PatchSet.Id base, PatchSetDetail detail)
 specifier|public
 name|void
 name|display
 parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|base
+parameter_list|,
 name|PatchSetDetail
 name|detail
 parameter_list|)
 block|{
+name|this
+operator|.
+name|base
+operator|=
+name|base
+expr_stmt|;
 name|this
 operator|.
 name|detail
@@ -801,7 +812,7 @@ name|DisplayCommand
 argument_list|(
 name|patchList
 argument_list|,
-name|patchSetIdToCompareWith
+name|base
 argument_list|)
 decl_stmt|;
 if|if
@@ -1417,6 +1428,8 @@ name|SideBySide
 argument_list|(
 literal|""
 argument_list|,
+name|base
+argument_list|,
 name|thisKey
 argument_list|,
 name|index
@@ -1437,6 +1450,8 @@ operator|.
 name|Unified
 argument_list|(
 literal|""
+argument_list|,
+name|base
 argument_list|,
 name|thisKey
 argument_list|,
@@ -1664,35 +1679,6 @@ block|{
 name|listenablePrefs
 operator|=
 name|prefs
-expr_stmt|;
-block|}
-DECL|method|getPatchSetIdToCompareWith ()
-specifier|public
-name|PatchSet
-operator|.
-name|Id
-name|getPatchSetIdToCompareWith
-parameter_list|()
-block|{
-return|return
-name|patchSetIdToCompareWith
-return|;
-block|}
-DECL|method|setPatchSetIdToCompareWith (final PatchSet.Id psId)
-specifier|public
-name|void
-name|setPatchSetIdToCompareWith
-parameter_list|(
-specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|psId
-parameter_list|)
-block|{
-name|patchSetIdToCompareWith
-operator|=
-name|psId
 expr_stmt|;
 block|}
 DECL|class|MyTable
@@ -2323,6 +2309,8 @@ argument_list|(
 name|patch
 argument_list|)
 argument_list|,
+name|base
+argument_list|,
 name|patch
 operator|.
 name|getKey
@@ -2353,6 +2341,8 @@ name|getDisplayFileName
 argument_list|(
 name|patch
 argument_list|)
+argument_list|,
+name|base
 argument_list|,
 name|patch
 operator|.
@@ -2565,6 +2555,8 @@ operator|.
 name|patchTableDiffSideBySide
 argument_list|()
 argument_list|,
+name|base
+argument_list|,
 name|patch
 operator|.
 name|getKey
@@ -2624,6 +2616,8 @@ name|C
 operator|.
 name|patchTableDiffUnified
 argument_list|()
+argument_list|,
+name|base
 argument_list|,
 name|patch
 operator|.
