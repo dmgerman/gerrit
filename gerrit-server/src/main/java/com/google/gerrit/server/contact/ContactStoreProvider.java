@@ -168,6 +168,20 @@ name|org
 operator|.
 name|bouncycastle
 operator|.
+name|jce
+operator|.
+name|provider
+operator|.
+name|BouncyCastleProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|bouncycastle
+operator|.
 name|openpgp
 operator|.
 name|PGPPublicKey
@@ -218,6 +232,16 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|Security
+import|;
+end_import
+
 begin_comment
 comment|/** Creates the {@link ContactStore} based on the configuration. */
 end_comment
@@ -254,9 +278,17 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|connFactory
+specifier|private
+specifier|final
+name|ContactStoreConnection
+operator|.
+name|Factory
+name|connFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ContactStoreProvider (@erritServerConfig final Config config, final SitePaths site, final SchemaFactory<ReviewDb> schema)
+DECL|method|ContactStoreProvider (@erritServerConfig final Config config, final SitePaths site, final SchemaFactory<ReviewDb> schema, final ContactStoreConnection.Factory connFactory)
 name|ContactStoreProvider
 parameter_list|(
 annotation|@
@@ -275,6 +307,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
+parameter_list|,
+specifier|final
+name|ContactStoreConnection
+operator|.
+name|Factory
+name|connFactory
 parameter_list|)
 block|{
 name|this
@@ -294,6 +332,12 @@ operator|.
 name|schema
 operator|=
 name|schema
+expr_stmt|;
+name|this
+operator|.
+name|connFactory
+operator|=
+name|connFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -440,6 +484,8 @@ argument_list|,
 name|pubkey
 argument_list|,
 name|schema
+argument_list|,
+name|connFactory
 argument_list|)
 return|;
 block|}
@@ -461,6 +507,15 @@ operator|.
 name|class
 operator|.
 name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Security
+operator|.
+name|addProvider
+argument_list|(
+operator|new
+name|BouncyCastleProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
