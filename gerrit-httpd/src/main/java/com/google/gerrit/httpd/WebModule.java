@@ -800,6 +800,9 @@ break|break;
 case|case
 name|OPENID
 case|:
+case|case
+name|OPENID_SSO
+case|:
 comment|// OpenID support is bound in WebAppInitializer and Daemon.
 case|case
 name|CUSTOM_EXTENSION

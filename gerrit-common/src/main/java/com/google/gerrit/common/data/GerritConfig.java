@@ -222,6 +222,11 @@ specifier|protected
 name|String
 name|httpPasswordUrl
 decl_stmt|;
+DECL|field|openIdSsoUrl
+specifier|protected
+name|String
+name|openIdSsoUrl
+decl_stmt|;
 DECL|field|allowedOpenIDs
 specifier|protected
 name|List
@@ -399,6 +404,31 @@ block|{
 name|httpPasswordUrl
 operator|=
 name|url
+expr_stmt|;
+block|}
+DECL|method|getOpenIdSsoUrl ()
+specifier|public
+name|String
+name|getOpenIdSsoUrl
+parameter_list|()
+block|{
+return|return
+name|openIdSsoUrl
+return|;
+block|}
+DECL|method|setOpenIdSsoUrl (final String u)
+specifier|public
+name|void
+name|setOpenIdSsoUrl
+parameter_list|(
+specifier|final
+name|String
+name|u
+parameter_list|)
+block|{
+name|openIdSsoUrl
+operator|=
+name|u
 expr_stmt|;
 block|}
 DECL|method|getAllowedOpenIDs ()

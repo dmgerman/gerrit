@@ -2510,6 +2510,15 @@ operator|==
 name|AuthType
 operator|.
 name|OPENID
+operator|||
+name|authConfig
+operator|.
+name|getAuthType
+argument_list|()
+operator|==
+name|AuthType
+operator|.
+name|OPENID_SSO
 condition|)
 block|{
 name|modules

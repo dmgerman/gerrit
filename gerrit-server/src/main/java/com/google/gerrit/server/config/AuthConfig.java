@@ -270,6 +270,12 @@ specifier|final
 name|String
 name|logoutUrl
 decl_stmt|;
+DECL|field|openIdSsoUrl
+specifier|private
+specifier|final
+name|String
+name|openIdSsoUrl
+decl_stmt|;
 DECL|field|trustedOpenIDs
 specifier|private
 specifier|final
@@ -357,6 +363,19 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"logouturl"
+argument_list|)
+expr_stmt|;
+name|openIdSsoUrl
+operator|=
+name|cfg
+operator|.
+name|getString
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"openidssourl"
 argument_list|)
 expr_stmt|;
 name|trustedOpenIDs
@@ -684,6 +703,16 @@ return|return
 name|logoutUrl
 return|;
 block|}
+DECL|method|getOpenIdSsoUrl ()
+specifier|public
+name|String
+name|getOpenIdSsoUrl
+parameter_list|()
+block|{
+return|return
+name|openIdSsoUrl
+return|;
+block|}
 DECL|method|getCookiePath ()
 specifier|public
 name|String
@@ -792,6 +821,13 @@ case|:
 comment|// Its safe to assume yes for an HTTP authentication type, as the
 comment|// only way in is through some external system that the admin trusts
 comment|//
+return|return
+literal|true
+return|;
+case|case
+name|OPENID_SSO
+case|:
+comment|// There's only one provider in SSO mode, so it must be okay.
 return|return
 literal|true
 return|;
