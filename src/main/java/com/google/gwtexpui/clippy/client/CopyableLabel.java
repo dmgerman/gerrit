@@ -972,6 +972,13 @@ name|text
 operator|=
 name|newText
 expr_stmt|;
+name|visibleLen
+operator|=
+name|newText
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|textLabel
