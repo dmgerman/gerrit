@@ -653,6 +653,7 @@ operator|.
 name|state
 expr_stmt|;
 block|}
+comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project,<code>null</code> if this project    *         is the wild project,<code>null</code> or the name key of the wild    *         project if this project is a direct child of the wild project    */
 DECL|method|getParent ()
 specifier|public
 name|Project
@@ -663,6 +664,50 @@ parameter_list|()
 block|{
 return|return
 name|parent
+return|;
+block|}
+comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project,<code>null</code> if this project    *         is the wild project    */
+DECL|method|getParent (final Project.NameKey allProjectsName)
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getParent
+parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|allProjectsName
+parameter_list|)
+block|{
+if|if
+condition|(
+name|parent
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|parent
+return|;
+block|}
+if|if
+condition|(
+name|name
+operator|.
+name|equals
+argument_list|(
+name|allProjectsName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|allProjectsName
 return|;
 block|}
 DECL|method|getParentName ()
