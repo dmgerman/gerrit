@@ -200,6 +200,15 @@ literal|"MM-dd"
 argument_list|,
 literal|"yyyy-MM-dd"
 argument_list|)
+block|,
+comment|/** European style dates: 27. Apr, 27.04.2010 */
+DECL|enumConstant|EURO
+name|EURO
+argument_list|(
+literal|"d. MMM"
+argument_list|,
+literal|"dd.MM.yyyy"
+argument_list|)
 block|;
 DECL|field|shortFormat
 specifier|private
