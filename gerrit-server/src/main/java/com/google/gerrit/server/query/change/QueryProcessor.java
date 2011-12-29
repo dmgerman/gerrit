@@ -736,6 +736,16 @@ operator|=
 name|on
 expr_stmt|;
 block|}
+DECL|method|getIncludePatchSets ()
+specifier|public
+name|boolean
+name|getIncludePatchSets
+parameter_list|()
+block|{
+return|return
+name|includePatchSets
+return|;
+block|}
 DECL|method|setIncludeCurrentPatchSet (boolean on)
 specifier|public
 name|void
@@ -749,6 +759,16 @@ name|includeCurrentPatchSet
 operator|=
 name|on
 expr_stmt|;
+block|}
+DECL|method|getIncludeCurrentPatchSet ()
+specifier|public
+name|boolean
+name|getIncludeCurrentPatchSet
+parameter_list|()
+block|{
+return|return
+name|includeCurrentPatchSet
+return|;
 block|}
 DECL|method|setIncludeApprovals (boolean on)
 specifier|public
@@ -791,6 +811,16 @@ name|includeFiles
 operator|=
 name|on
 expr_stmt|;
+block|}
+DECL|method|getIncludeFiles ()
+specifier|public
+name|boolean
+name|getIncludeFiles
+parameter_list|()
+block|{
+return|return
+name|includeFiles
+return|;
 block|}
 DECL|method|setIncludeCommitMessage (boolean on)
 specifier|public
