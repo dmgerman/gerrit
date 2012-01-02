@@ -141,6 +141,8 @@ DECL|class|AccessSection
 specifier|public
 class|class
 name|AccessSection
+extends|extends
+name|RefConfigSection
 implements|implements
 name|Comparable
 argument_list|<
@@ -156,68 +158,6 @@ name|String
 name|GLOBAL_CAPABILITIES
 init|=
 literal|"GLOBAL_CAPABILITIES"
-decl_stmt|;
-comment|/** Pattern that matches all references in a project. */
-DECL|field|ALL
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ALL
-init|=
-literal|"refs/*"
-decl_stmt|;
-comment|/** Pattern that matches all branches in a project. */
-DECL|field|HEADS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|HEADS
-init|=
-literal|"refs/heads/*"
-decl_stmt|;
-comment|/** Prefix that triggers a regular expression pattern. */
-DECL|field|REGEX_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|REGEX_PREFIX
-init|=
-literal|"^"
-decl_stmt|;
-comment|/** @return true if the name is likely to be a valid access section name. */
-DECL|method|isAccessSection (String name)
-specifier|public
-specifier|static
-name|boolean
-name|isAccessSection
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-name|name
-operator|.
-name|startsWith
-argument_list|(
-literal|"refs/"
-argument_list|)
-operator|||
-name|name
-operator|.
-name|startsWith
-argument_list|(
-literal|"^refs/"
-argument_list|)
-return|;
-block|}
-DECL|field|name
-specifier|protected
-name|String
-name|name
 decl_stmt|;
 DECL|field|permissions
 specifier|protected
@@ -240,36 +180,10 @@ name|String
 name|refPattern
 parameter_list|)
 block|{
-name|setName
+name|super
 argument_list|(
 name|refPattern
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|getName ()
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
-DECL|method|setName (String name)
-specifier|public
-name|void
-name|setName
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
 expr_stmt|;
 block|}
 DECL|method|getPermissions ()
