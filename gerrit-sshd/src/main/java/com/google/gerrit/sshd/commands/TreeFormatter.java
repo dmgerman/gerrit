@@ -455,8 +455,10 @@ expr_stmt|;
 block|}
 name|stdout
 operator|.
-name|println
-argument_list|()
+name|print
+argument_list|(
+literal|"\n"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
