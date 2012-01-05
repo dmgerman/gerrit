@@ -264,6 +264,18 @@ specifier|final
 name|boolean
 name|trustContainerAuth
 decl_stmt|;
+DECL|field|userNameToLowerCase
+specifier|private
+specifier|final
+name|boolean
+name|userNameToLowerCase
+decl_stmt|;
+DECL|field|gitBasicAuth
+specifier|private
+specifier|final
+name|boolean
+name|gitBasicAuth
+decl_stmt|;
 DECL|field|logoutUrl
 specifier|private
 specifier|final
@@ -412,6 +424,32 @@ argument_list|(
 literal|"auth"
 argument_list|,
 literal|"trustContainerAuth"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|gitBasicAuth
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|"gitBasicAuth"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|userNameToLowerCase
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|"userNameToLowerCase"
 argument_list|,
 literal|false
 argument_list|)
@@ -747,6 +785,28 @@ parameter_list|()
 block|{
 return|return
 name|trustContainerAuth
+return|;
+block|}
+comment|/** Whether user name should be converted to lower-case before validation */
+DECL|method|isUserNameToLowerCase ()
+specifier|public
+name|boolean
+name|isUserNameToLowerCase
+parameter_list|()
+block|{
+return|return
+name|userNameToLowerCase
+return|;
+block|}
+comment|/** Whether git-over-http should use Gerrit basic authentication scheme. */
+DECL|method|isGitBasichAuth ()
+specifier|public
+name|boolean
+name|isGitBasichAuth
+parameter_list|()
+block|{
+return|return
+name|gitBasicAuth
 return|;
 block|}
 DECL|method|isIdentityTrustable (final Collection<AccountExternalId> ids)
