@@ -204,6 +204,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|util
+operator|.
+name|StringUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -389,9 +403,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|StringUtils
+operator|.
+name|isEmptyOrNull
+argument_list|(
 name|url
-operator|==
-literal|null
+argument_list|)
 condition|)
 block|{
 return|return
