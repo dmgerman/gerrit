@@ -199,6 +199,11 @@ specifier|private
 name|ChangeDetailCache
 name|detail
 decl_stmt|;
+DECL|field|starred
+specifier|private
+name|StarCache
+name|starred
+decl_stmt|;
 DECL|method|ChangeCache (Change.Id chg)
 specifier|protected
 name|ChangeCache
@@ -250,6 +255,32 @@ expr_stmt|;
 block|}
 return|return
 name|detail
+return|;
+block|}
+DECL|method|getStarCache ()
+specifier|public
+name|StarCache
+name|getStarCache
+parameter_list|()
+block|{
+if|if
+condition|(
+name|starred
+operator|==
+literal|null
+condition|)
+block|{
+name|starred
+operator|=
+operator|new
+name|StarCache
+argument_list|(
+name|changeId
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|starred
 return|;
 block|}
 block|}
