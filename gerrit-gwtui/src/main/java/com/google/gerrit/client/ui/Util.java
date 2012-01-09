@@ -92,14 +92,14 @@ DECL|field|C
 specifier|public
 specifier|static
 specifier|final
-name|ProjectConstants
+name|UIConstants
 name|C
 init|=
 name|GWT
 operator|.
 name|create
 argument_list|(
-name|ProjectConstants
+name|UIConstants
 operator|.
 name|class
 argument_list|)

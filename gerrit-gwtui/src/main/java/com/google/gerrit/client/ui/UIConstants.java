@@ -83,13 +83,23 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|ProjectConstants
+DECL|interface|UIConstants
 specifier|public
 interface|interface
-name|ProjectConstants
+name|UIConstants
 extends|extends
 name|Constants
 block|{
+DECL|method|commentedActionButtonSend ()
+name|String
+name|commentedActionButtonSend
+parameter_list|()
+function_decl|;
+DECL|method|commentedActionButtonCancel ()
+name|String
+name|commentedActionButtonCancel
+parameter_list|()
+function_decl|;
 DECL|method|projectName ()
 name|String
 name|projectName

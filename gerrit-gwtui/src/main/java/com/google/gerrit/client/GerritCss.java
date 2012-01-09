@@ -93,26 +93,6 @@ name|String
 name|greenCheckClass
 parameter_list|()
 function_decl|;
-DECL|method|abandonChangeDialog ()
-name|String
-name|abandonChangeDialog
-parameter_list|()
-function_decl|;
-DECL|method|abandonMessage ()
-name|String
-name|abandonMessage
-parameter_list|()
-function_decl|;
-DECL|method|revertChangeDialog ()
-name|String
-name|revertChangeDialog
-parameter_list|()
-function_decl|;
-DECL|method|revertMessage ()
-name|String
-name|revertMessage
-parameter_list|()
-function_decl|;
 DECL|method|accountContactOnFile ()
 name|String
 name|accountContactOnFile
@@ -291,6 +271,16 @@ function_decl|;
 DECL|method|closedstate ()
 name|String
 name|closedstate
+parameter_list|()
+function_decl|;
+DECL|method|commentedActionDialog ()
+name|String
+name|commentedActionDialog
+parameter_list|()
+function_decl|;
+DECL|method|commentedActionMessage ()
+name|String
+name|commentedActionMessage
 parameter_list|()
 function_decl|;
 DECL|method|commentCell ()
