@@ -1150,6 +1150,16 @@ argument_list|(
 name|projectName
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|config
+operator|.
+name|getRevision
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|detail
 operator|.
 name|setRevision
@@ -1163,6 +1173,7 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|projectName

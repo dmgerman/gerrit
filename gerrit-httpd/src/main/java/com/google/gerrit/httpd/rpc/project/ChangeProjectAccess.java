@@ -526,7 +526,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (@ssisted Project.NameKey projectName, @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted String message)
+DECL|method|create (@ssisted Project.NameKey projectName, @Nullable @Assisted ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 name|create
 parameter_list|(
@@ -537,6 +537,8 @@ operator|.
 name|NameKey
 name|projectName
 parameter_list|,
+annotation|@
+name|Nullable
 annotation|@
 name|Assisted
 name|ObjectId
@@ -624,7 +626,7 @@ name|message
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeProjectAccess (final ProjectAccessFactory.Factory projectAccessFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final GroupCache groupCache, final MetaDataUpdate.User metaDataUpdateFactory, @Assisted final Project.NameKey projectName, @Assisted final ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted String message)
+DECL|method|ChangeProjectAccess (final ProjectAccessFactory.Factory projectAccessFactory, final ProjectControl.Factory projectControlFactory, final ProjectCache projectCache, final GroupCache groupCache, final MetaDataUpdate.User metaDataUpdateFactory, @Assisted final Project.NameKey projectName, @Nullable @Assisted final ObjectId base, @Assisted List<AccessSection> sectionList, @Nullable @Assisted String message)
 name|ChangeProjectAccess
 parameter_list|(
 specifier|final
@@ -661,6 +663,8 @@ operator|.
 name|NameKey
 name|projectName
 parameter_list|,
+annotation|@
+name|Nullable
 annotation|@
 name|Assisted
 specifier|final
