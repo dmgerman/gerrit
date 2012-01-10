@@ -272,6 +272,17 @@ name|setProperty
 argument_list|(
 name|RuntimeConstants
 operator|.
+name|VM_PERM_INLINE_LOCAL
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setProperty
+argument_list|(
+name|RuntimeConstants
+operator|.
 name|RUNTIME_LOG_LOGSYSTEM_CLASS
 argument_list|,
 name|Slf4jLogChute
