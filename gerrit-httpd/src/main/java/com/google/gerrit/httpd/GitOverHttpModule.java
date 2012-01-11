@@ -148,6 +148,15 @@ name|void
 name|configureServlets
 parameter_list|()
 block|{
+name|install
+argument_list|(
+operator|new
+name|ProjectServlet
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|filter
 argument_list|(
 literal|"/p/*"
