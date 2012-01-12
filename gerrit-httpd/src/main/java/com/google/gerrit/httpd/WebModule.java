@@ -966,13 +966,6 @@ name|HttpCurrentUserProvider
 operator|.
 name|class
 argument_list|)
-operator|.
-name|in
-argument_list|(
-name|RequestScoped
-operator|.
-name|class
-argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
@@ -984,13 +977,6 @@ operator|.
 name|toProvider
 argument_list|(
 name|HttpIdentifiedUserProvider
-operator|.
-name|class
-argument_list|)
-operator|.
-name|in
-argument_list|(
-name|RequestScoped
 operator|.
 name|class
 argument_list|)

@@ -102,23 +102,7 @@ name|Provider
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|servlet
-operator|.
-name|RequestScoped
-import|;
-end_import
-
 begin_class
-annotation|@
-name|RequestScoped
 DECL|class|HttpCurrentUserProvider
 class|class
 name|HttpCurrentUserProvider
