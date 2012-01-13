@@ -323,6 +323,15 @@ name|ADMIN_PROJECTS
 init|=
 literal|"/admin/projects/"
 decl_stmt|;
+DECL|field|ADMIN_CREATE_PROJECT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ADMIN_CREATE_PROJECT
+init|=
+literal|"/admin/create-project/"
+decl_stmt|;
 DECL|method|toChange (final ChangeInfo c)
 specifier|public
 specifier|static
