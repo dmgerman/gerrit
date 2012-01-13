@@ -803,6 +803,15 @@ name|GerritRequestModule
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|install
+argument_list|(
+operator|new
+name|ProjectServlet
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|GitWebConfig
