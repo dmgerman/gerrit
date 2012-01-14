@@ -806,7 +806,7 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
-name|ProjectServlet
+name|GitOverHttpFilter
 operator|.
 name|Module
 argument_list|()

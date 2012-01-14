@@ -270,6 +270,22 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|http
+operator|.
+name|server
+operator|.
+name|GitSmartHttpTools
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Config
@@ -473,7 +489,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Authenticates the current user by HTTP digest authentication.  *<p>  * The current HTTP request is authenticated by looking up the username from the  * Authorization header and checking the digest response against the stored  * password. This filter is intended only to protect the {@link ProjectServlet}  * and its handled URLs, which provide remote repository access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
+comment|/**  * Authenticates the current user by HTTP digest authentication.  *<p>  * The current HTTP request is authenticated by looking up the username from the  * Authorization header and checking the digest response against the stored  * password. This filter is intended only to protect the {@link GitOverHttpFilter}  * and its handled URLs, which provide remote repository access over HTTP.  *  * @see<a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617</a>  */
 end_comment
 
 begin_class
@@ -677,6 +693,28 @@ name|HttpServletRequest
 operator|)
 name|request
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|GitSmartHttpTools
+operator|.
+name|isGitClient
+argument_list|(
+name|req
+argument_list|)
+condition|)
+block|{
+name|chain
+operator|.
+name|doFilter
+argument_list|(
+name|request
+argument_list|,
+name|response
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|Response
 name|rsp
 init|=

@@ -198,6 +198,22 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|http
+operator|.
+name|server
+operator|.
+name|GitSmartHttpTools
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Config
@@ -321,7 +337,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Trust the authentication which is done by the container.  *<p>  * Check whether the container has already authenticated the user. If yes, then  * lookup the account and set the account ID in our current session.  *<p>  * This filter should only be configured to run, when authentication is  * configured to trust container authentication. This filter is intended only to  * protect the {@link ProjectServlet} and its handled URLs, which provide remote  * repository access over HTTP.  */
+comment|/**  * Trust the authentication which is done by the container.  *<p>  * Check whether the container has already authenticated the user. If yes, then  * lookup the account and set the account ID in our current session.  *<p>  * This filter should only be configured to run, when authentication is  * configured to trust container authentication. This filter is intended only to  * protect the {@link GitOverHttpFilter} and its handled URLs, which provide remote  * repository access over HTTP.  */
 end_comment
 
 begin_class
@@ -452,6 +468,28 @@ name|HttpServletRequest
 operator|)
 name|request
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|GitSmartHttpTools
+operator|.
+name|isGitClient
+argument_list|(
+name|req
+argument_list|)
+condition|)
+block|{
+name|chain
+operator|.
+name|doFilter
+argument_list|(
+name|request
+argument_list|,
+name|response
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|HttpServletResponseWrapper
 name|rsp
 init|=
