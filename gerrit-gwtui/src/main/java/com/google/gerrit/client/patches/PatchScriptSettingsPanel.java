@@ -642,12 +642,6 @@ name|showTabs
 decl_stmt|;
 annotation|@
 name|UiField
-DECL|field|reviewed
-name|CheckBox
-name|reviewed
-decl_stmt|;
-annotation|@
-name|UiField
 DECL|field|skipDeleted
 name|CheckBox
 name|skipDeleted
@@ -729,13 +723,6 @@ name|isSignedIn
 argument_list|()
 condition|)
 block|{
-name|reviewed
-operator|.
-name|setVisible
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|save
 operator|.
 name|setVisible
@@ -1057,16 +1044,6 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|getReviewedCheckBox ()
-specifier|public
-name|CheckBox
-name|getReviewedCheckBox
-parameter_list|()
-block|{
-return|return
-name|reviewed
-return|;
 block|}
 DECL|method|getValue ()
 specifier|public
