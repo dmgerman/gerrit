@@ -457,6 +457,18 @@ name|TrackingIdAccess
 name|trackingIds
 parameter_list|()
 function_decl|;
+annotation|@
+name|Relation
+argument_list|(
+name|id
+operator|=
+literal|28
+argument_list|)
+DECL|method|submoduleSubscriptions ()
+name|SubmoduleSubscriptionAccess
+name|submoduleSubscriptions
+parameter_list|()
+function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */
 annotation|@
 name|Sequence
