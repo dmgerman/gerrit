@@ -169,21 +169,6 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"ORDER BY key.superProject.projectName"
-argument_list|)
-DECL|method|all ()
-name|ResultSet
-argument_list|<
-name|SubmoduleSubscription
-argument_list|>
-name|all
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
 literal|"WHERE key.superProject = ?"
 argument_list|)
 DECL|method|bySuperProject (Branch.NameKey superProject)
@@ -204,7 +189,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.submodule = ?"
+literal|"WHERE submodule = ?"
 argument_list|)
 DECL|method|bySubmodule (Branch.NameKey submodule)
 name|ResultSet
