@@ -237,14 +237,12 @@ name|SchemaVersion
 block|{
 comment|/** The current schema version. */
 DECL|field|C
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Class
 argument_list|<
-name|?
-extends|extends
-name|SchemaVersion
+name|Schema_61
 argument_list|>
 name|C
 init|=
