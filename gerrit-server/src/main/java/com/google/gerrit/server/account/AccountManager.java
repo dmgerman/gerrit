@@ -2356,7 +2356,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Link another authentication identity to an existing account.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws AccountException the identity belongs to a different account, or it    *         cannot be linked at this time.    */
-DECL|method|link (final Account.Id to, final AuthRequest who)
+DECL|method|link (final Account.Id to, AuthRequest who)
 specifier|public
 name|AuthResult
 name|link
@@ -2367,7 +2367,6 @@ operator|.
 name|Id
 name|to
 parameter_list|,
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|)
@@ -2387,6 +2386,19 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|who
+operator|=
+name|realm
+operator|.
+name|link
+argument_list|(
+name|db
+argument_list|,
+name|to
+argument_list|,
+name|who
+argument_list|)
+expr_stmt|;
 specifier|final
 name|AccountExternalId
 operator|.

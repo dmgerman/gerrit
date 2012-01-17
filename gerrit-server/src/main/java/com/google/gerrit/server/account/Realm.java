@@ -96,6 +96,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -127,6 +141,25 @@ specifier|public
 name|AuthRequest
 name|authenticate
 parameter_list|(
+name|AuthRequest
+name|who
+parameter_list|)
+throws|throws
+name|AccountException
+function_decl|;
+DECL|method|link (ReviewDb db, Account.Id to, AuthRequest who)
+specifier|public
+name|AuthRequest
+name|link
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|to
+parameter_list|,
 name|AuthRequest
 name|who
 parameter_list|)

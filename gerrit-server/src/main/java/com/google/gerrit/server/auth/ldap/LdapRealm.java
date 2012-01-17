@@ -1725,6 +1725,29 @@ block|}
 block|}
 annotation|@
 name|Override
+DECL|method|link (ReviewDb db, Account.Id to, AuthRequest who)
+specifier|public
+name|AuthRequest
+name|link
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|to
+parameter_list|,
+name|AuthRequest
+name|who
+parameter_list|)
+block|{
+return|return
+name|who
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|onCreateAccount (final AuthRequest who, final Account account)
 specifier|public
 name|void
