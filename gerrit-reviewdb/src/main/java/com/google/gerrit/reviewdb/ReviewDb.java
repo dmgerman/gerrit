@@ -484,16 +484,6 @@ parameter_list|()
 throws|throws
 name|OrmException
 function_decl|;
-comment|/** Create the next unique id for a {@link ContributorAgreement}. */
-annotation|@
-name|Sequence
-DECL|method|nextContributorAgreementId ()
-name|int
-name|nextContributorAgreementId
-parameter_list|()
-throws|throws
-name|OrmException
-function_decl|;
 comment|/** Next unique id for a {@link AccountGroup}. */
 annotation|@
 name|Sequence
