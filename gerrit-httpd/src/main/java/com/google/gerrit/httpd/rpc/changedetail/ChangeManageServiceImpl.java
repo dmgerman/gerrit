@@ -173,13 +173,13 @@ operator|.
 name|Factory
 name|submitAction
 decl_stmt|;
-DECL|field|abandonChangeFactory
+DECL|field|abandonChangeHandlerFactory
 specifier|private
 specifier|final
-name|AbandonChange
+name|AbandonChangeHandler
 operator|.
 name|Factory
-name|abandonChangeFactory
+name|abandonChangeHandlerFactory
 decl_stmt|;
 DECL|field|restoreChangeFactory
 specifier|private
@@ -215,7 +215,7 @@ name|deleteDraftChangeFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChange.Factory abandonChangeFactory, final RestoreChange.Factory restoreChangeFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory)
+DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChangeHandler.Factory abandonChangeHandlerFactory, final RestoreChange.Factory restoreChangeFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
@@ -225,10 +225,10 @@ name|Factory
 name|patchSetAction
 parameter_list|,
 specifier|final
-name|AbandonChange
+name|AbandonChangeHandler
 operator|.
 name|Factory
-name|abandonChangeFactory
+name|abandonChangeHandlerFactory
 parameter_list|,
 specifier|final
 name|RestoreChange
@@ -263,9 +263,9 @@ name|patchSetAction
 expr_stmt|;
 name|this
 operator|.
-name|abandonChangeFactory
+name|abandonChangeHandlerFactory
 operator|=
-name|abandonChangeFactory
+name|abandonChangeHandlerFactory
 expr_stmt|;
 name|this
 operator|.
@@ -347,7 +347,7 @@ argument_list|>
 name|callback
 parameter_list|)
 block|{
-name|abandonChangeFactory
+name|abandonChangeHandlerFactory
 operator|.
 name|create
 argument_list|(
