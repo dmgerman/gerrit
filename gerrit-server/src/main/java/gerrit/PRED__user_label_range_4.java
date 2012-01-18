@@ -265,9 +265,9 @@ comment|/**  * Resolves the valid range for a label on a CurrentUser.  *  *<pre>
 end_comment
 
 begin_class
-DECL|class|PRED_$user_label_range_4
+DECL|class|PRED__user_label_range_4
 class|class
-name|PRED_$user_label_range_4
+name|PRED__user_label_range_4
 extends|extends
 name|Predicate
 operator|.
@@ -282,8 +282,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|PRED_$user_label_range_4 (Term a1, Term a2, Term a3, Term a4, Operation n)
-name|PRED_$user_label_range_4
+DECL|method|PRED__user_label_range_4 (Term a1, Term a2, Term a3, Term a4, Operation n)
+name|PRED__user_label_range_4
 parameter_list|(
 name|Term
 name|a1
