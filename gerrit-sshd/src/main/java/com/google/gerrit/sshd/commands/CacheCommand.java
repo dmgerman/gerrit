@@ -74,9 +74,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|cache
+name|ehcache
 operator|.
 name|EhcachePoolImpl
 import|;
