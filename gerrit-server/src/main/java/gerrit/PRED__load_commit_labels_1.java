@@ -271,9 +271,9 @@ comment|/** Exports list of {@code commit_label( label('Code-Review', 2), user(1
 end_comment
 
 begin_class
-DECL|class|PRED_$load_commit_labels_1
+DECL|class|PRED__load_commit_labels_1
 class|class
-name|PRED_$load_commit_labels_1
+name|PRED__load_commit_labels_1
 extends|extends
 name|Predicate
 operator|.
@@ -336,8 +336,8 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
-DECL|method|PRED_$load_commit_labels_1 (Term a1, Operation n)
-name|PRED_$load_commit_labels_1
+DECL|method|PRED__load_commit_labels_1 (Term a1, Operation n)
+name|PRED__load_commit_labels_1
 parameter_list|(
 name|Term
 name|a1
