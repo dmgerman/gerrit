@@ -216,6 +216,10 @@ block|{
 comment|/** Not permitted to abandon this change. */
 DECL|enumConstant|ABANDON_NOT_PERMITTED
 name|ABANDON_NOT_PERMITTED
+block|,
+comment|/** Not permitted to restore this change. */
+DECL|enumConstant|RESTORE_NOT_PERMITTED
+name|RESTORE_NOT_PERMITTED
 block|}
 DECL|field|type
 specifier|protected
