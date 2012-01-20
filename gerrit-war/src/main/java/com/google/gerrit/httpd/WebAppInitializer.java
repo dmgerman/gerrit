@@ -1491,11 +1491,11 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|sshInjector
+name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
-name|WebModule
+name|GitOverHttpModule
 operator|.
 name|class
 argument_list|)
@@ -1505,11 +1505,11 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|sysInjector
+name|sshInjector
 operator|.
 name|getInstance
 argument_list|(
-name|GitOverHttpModule
+name|WebModule
 operator|.
 name|class
 argument_list|)

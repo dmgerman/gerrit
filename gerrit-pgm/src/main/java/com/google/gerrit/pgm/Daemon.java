@@ -1655,7 +1655,7 @@ name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
-name|WebModule
+name|GitOverHttpModule
 operator|.
 name|class
 argument_list|)
@@ -1669,7 +1669,7 @@ name|sysInjector
 operator|.
 name|getInstance
 argument_list|(
-name|GitOverHttpModule
+name|WebModule
 operator|.
 name|class
 argument_list|)

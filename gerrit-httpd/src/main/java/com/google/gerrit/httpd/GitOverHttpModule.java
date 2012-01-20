@@ -193,7 +193,7 @@ block|}
 name|String
 name|git
 init|=
-name|GitOverHttpFilter
+name|GitOverHttpServlet
 operator|.
 name|URL_REGEX
 decl_stmt|;
@@ -207,14 +207,14 @@ argument_list|(
 name|authFilter
 argument_list|)
 expr_stmt|;
-name|filterRegex
+name|serveRegex
 argument_list|(
 name|git
 argument_list|)
 operator|.
-name|through
+name|with
 argument_list|(
-name|GitOverHttpFilter
+name|GitOverHttpServlet
 operator|.
 name|class
 argument_list|)
