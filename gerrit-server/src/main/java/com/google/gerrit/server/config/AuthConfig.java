@@ -463,11 +463,11 @@ name|SECONDS
 operator|.
 name|convert
 argument_list|(
-literal|5
+literal|12
 argument_list|,
 name|TimeUnit
 operator|.
-name|DAYS
+name|HOURS
 argument_list|)
 argument_list|,
 name|TimeUnit
