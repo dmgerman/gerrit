@@ -220,11 +220,32 @@ block|,
 comment|/** Not permitted to restore this change. */
 DECL|enumConstant|RESTORE_NOT_PERMITTED
 name|RESTORE_NOT_PERMITTED
+block|,
+comment|/** Not permitted to submit this change. */
+DECL|enumConstant|SUBMIT_NOT_PERMITTED
+name|SUBMIT_NOT_PERMITTED
+block|,
+comment|/** Approvals or dependencies are lacking for submission. */
+DECL|enumConstant|SUBMIT_NOT_READY
+name|SUBMIT_NOT_READY
+block|,
+comment|/** Review operation invalid because change is closed. */
+DECL|enumConstant|CHANGE_IS_CLOSED
+name|CHANGE_IS_CLOSED
+block|,
+comment|/** Review operation not permitted by rule. */
+DECL|enumConstant|RULE_ERROR
+name|RULE_ERROR
 block|}
 DECL|field|type
 specifier|protected
 name|Type
 name|type
+decl_stmt|;
+DECL|field|message
+specifier|protected
+name|String
+name|message
 decl_stmt|;
 DECL|method|Error ()
 specifier|protected
@@ -246,6 +267,38 @@ name|type
 operator|=
 name|type
 expr_stmt|;
+name|this
+operator|.
+name|message
+operator|=
+literal|null
+expr_stmt|;
+block|}
+DECL|method|Error (final Type type, final String message)
+specifier|public
+name|Error
+parameter_list|(
+specifier|final
+name|Type
+name|type
+parameter_list|,
+specifier|final
+name|String
+name|message
+parameter_list|)
+block|{
+name|this
+operator|.
+name|type
+operator|=
+name|type
+expr_stmt|;
+name|this
+operator|.
+name|message
+operator|=
+name|message
+expr_stmt|;
 block|}
 DECL|method|getType ()
 specifier|public
@@ -257,6 +310,39 @@ return|return
 name|type
 return|;
 block|}
+DECL|method|getMessage ()
+specifier|public
+name|String
+name|getMessage
+parameter_list|()
+block|{
+return|return
+name|message
+return|;
+block|}
+DECL|method|getMessageOrType ()
+specifier|public
+name|String
+name|getMessageOrType
+parameter_list|()
+block|{
+if|if
+condition|(
+name|message
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|message
+return|;
+block|}
+return|return
+literal|""
+operator|+
+name|type
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -265,10 +351,29 @@ name|String
 name|toString
 parameter_list|()
 block|{
-return|return
+name|String
+name|ret
+init|=
 name|type
 operator|+
 literal|""
+decl_stmt|;
+if|if
+condition|(
+name|message
+operator|!=
+literal|null
+condition|)
+block|{
+name|ret
+operator|+=
+literal|" "
+operator|+
+name|message
+expr_stmt|;
+block|}
+return|return
+name|ret
 return|;
 block|}
 block|}
