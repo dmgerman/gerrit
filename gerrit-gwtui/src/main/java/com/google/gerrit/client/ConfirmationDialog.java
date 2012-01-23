@@ -166,7 +166,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|HTML
+name|Widget
 import|;
 end_import
 
@@ -183,6 +183,22 @@ operator|.
 name|client
 operator|.
 name|GlobalKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|SafeHtml
 import|;
 end_import
 
@@ -215,7 +231,7 @@ specifier|private
 name|Button
 name|cancelButton
 decl_stmt|;
-DECL|method|ConfirmationDialog (final String dialogTitle, final HTML message, final ConfirmationCallback callback)
+DECL|method|ConfirmationDialog (final String dialogTitle, final SafeHtml message, final ConfirmationCallback callback)
 specifier|public
 name|ConfirmationDialog
 parameter_list|(
@@ -224,7 +240,7 @@ name|String
 name|dialogTitle
 parameter_list|,
 specifier|final
-name|HTML
+name|SafeHtml
 name|message
 parameter_list|,
 specifier|final
@@ -388,11 +404,20 @@ operator|new
 name|FlowPanel
 argument_list|()
 decl_stmt|;
+specifier|final
+name|Widget
+name|msgWidget
+init|=
+name|message
+operator|.
+name|toBlockWidget
+argument_list|()
+decl_stmt|;
 name|center
 operator|.
 name|add
 argument_list|(
-name|message
+name|msgWidget
 argument_list|)
 expr_stmt|;
 name|center
@@ -407,7 +432,7 @@ argument_list|(
 name|center
 argument_list|)
 expr_stmt|;
-name|message
+name|msgWidget
 operator|.
 name|setWidth
 argument_list|(
