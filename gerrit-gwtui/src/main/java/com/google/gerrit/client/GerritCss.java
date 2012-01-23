@@ -523,6 +523,11 @@ name|String
 name|errorDialogErrorType
 parameter_list|()
 function_decl|;
+DECL|method|errorDialogText ()
+name|String
+name|errorDialogText
+parameter_list|()
+function_decl|;
 DECL|method|fileColumnHeader ()
 name|String
 name|fileColumnHeader

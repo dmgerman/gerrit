@@ -425,6 +425,11 @@ name|String
 name|buttonDeleteBranch
 parameter_list|()
 function_decl|;
+DECL|method|branchDeletionOpenChanges ()
+name|String
+name|branchDeletionOpenChanges
+parameter_list|()
+function_decl|;
 DECL|method|groupListPrev ()
 name|String
 name|groupListPrev
