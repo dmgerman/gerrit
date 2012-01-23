@@ -233,6 +233,10 @@ comment|/** Review operation invalid because change is closed. */
 DECL|enumConstant|CHANGE_IS_CLOSED
 name|CHANGE_IS_CLOSED
 block|,
+comment|/** Not permitted to publish this draft patch set */
+DECL|enumConstant|PUBLISH_NOT_PERMITTED
+name|PUBLISH_NOT_PERMITTED
+block|,
 comment|/** Review operation not permitted by rule. */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
