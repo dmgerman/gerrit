@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -533,7 +533,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|gitManager
@@ -556,7 +556,7 @@ name|myIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevertChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RevertedSender.Factory revertedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHookRunner hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, @GerritPersonIdent final PersonIdent myIdent)
+DECL|method|RevertChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RevertedSender.Factory revertedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, @GerritPersonIdent final PersonIdent myIdent)
 name|RevertChange
 parameter_list|(
 specifier|final
@@ -602,7 +602,7 @@ name|String
 name|message
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 specifier|final

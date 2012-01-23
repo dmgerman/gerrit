@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -409,7 +409,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|projectName
@@ -433,7 +433,7 @@ name|toRemove
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final ReplicationQueue replication, final IdentifiedUser identifiedUser, final ChangeHookRunner hooks, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
+DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final ReplicationQueue replication, final IdentifiedUser identifiedUser, final ChangeHooks hooks, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
 name|DeleteBranches
 parameter_list|(
 specifier|final
@@ -455,7 +455,7 @@ name|IdentifiedUser
 name|identifiedUser
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 annotation|@

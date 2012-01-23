@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -387,7 +387,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|patchSetId
@@ -406,7 +406,7 @@ name|changeComment
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AbandonChange (final AbandonedSender.Factory abandonedSenderFactory, final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeHookRunner hooks, @Assisted final PatchSet.Id patchSetId, @Assisted final String changeComment)
+DECL|method|AbandonChange (final AbandonedSender.Factory abandonedSenderFactory, final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeHooks hooks, @Assisted final PatchSet.Id patchSetId, @Assisted final String changeComment)
 name|AbandonChange
 parameter_list|(
 specifier|final
@@ -430,7 +430,7 @@ name|IdentifiedUser
 name|currentUser
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 annotation|@

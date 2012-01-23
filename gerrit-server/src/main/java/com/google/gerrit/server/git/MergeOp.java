@@ -104,7 +104,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -1441,7 +1441,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|accountCache
@@ -1474,7 +1474,7 @@ name|subOpFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, @GerritPersonIdent final PersonIdent myIdent, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHookRunner hooks, final AccountCache accountCache, final TagCache tagCache, final CreateCodeReviewNotes.Factory crnf, final SubmoduleOp.Factory subOpFactory)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, @GerritPersonIdent final PersonIdent myIdent, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final CreateCodeReviewNotes.Factory crnf, final SubmoduleOp.Factory subOpFactory)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1564,7 +1564,7 @@ name|NameKey
 name|branch
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 specifier|final

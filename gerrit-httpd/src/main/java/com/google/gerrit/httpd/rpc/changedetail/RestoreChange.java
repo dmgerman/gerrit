@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -429,12 +429,12 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RestoreChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RestoredSender.Factory senderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHookRunner hooks)
+DECL|method|RestoreChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RestoredSender.Factory senderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks)
 name|RestoreChange
 parameter_list|(
 specifier|final
@@ -480,7 +480,7 @@ name|String
 name|message
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|)
 block|{

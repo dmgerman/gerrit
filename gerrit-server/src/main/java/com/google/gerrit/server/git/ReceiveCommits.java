@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -1345,7 +1345,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|repoManager
@@ -1524,7 +1524,7 @@ name|subOpFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final ApprovalTypes approvalTypes, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ReplicationQueue replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHookRunner hooks, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final ApprovalTypes approvalTypes, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ReplicationQueue replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -1566,7 +1566,7 @@ name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 specifier|final

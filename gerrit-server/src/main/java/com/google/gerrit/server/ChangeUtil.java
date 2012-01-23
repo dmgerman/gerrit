@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -1585,7 +1585,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-DECL|method|revert (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHookRunner hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, PersonIdent myIdent)
+DECL|method|revert (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHooks hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, PersonIdent myIdent)
 specifier|public
 specifier|static
 name|Change
@@ -1618,7 +1618,7 @@ name|Factory
 name|revertedSenderFactory
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 name|GitRepositoryManager
@@ -2307,7 +2307,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|restore (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RestoredSender.Factory senderFactory, final ChangeHookRunner hooks)
+DECL|method|restore (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RestoredSender.Factory senderFactory, final ChangeHooks hooks)
 specifier|public
 specifier|static
 name|void
@@ -2338,7 +2338,7 @@ name|Factory
 name|senderFactory
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|)
 throws|throws

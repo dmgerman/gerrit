@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -871,12 +871,12 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final Realm r, final Provider<IdentifiedUser> u, final EmailTokenVerifier etv, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final AccountManager am, final ClearPassword.Factory clearPasswordFactory, final GeneratePassword.Factory generatePasswordFactory, final ChangeUserName.CurrentUser changeUserNameFactory, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final MyGroupsFactory.Factory myGroupsFactory, final ChangeHookRunner hooks)
+DECL|method|AccountSecurityImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ContactStore cs, final AuthConfig ac, final Realm r, final Provider<IdentifiedUser> u, final EmailTokenVerifier etv, final RegisterNewEmailSender.Factory esf, final SshKeyCache skc, final AccountByEmailCache abec, final AccountCache uac, final AccountManager am, final ClearPassword.Factory clearPasswordFactory, final GeneratePassword.Factory generatePasswordFactory, final ChangeUserName.CurrentUser changeUserNameFactory, final DeleteExternalIds.Factory deleteExternalIdsFactory, final ExternalIdDetailFactory.Factory externalIdDetailFactory, final MyGroupsFactory.Factory myGroupsFactory, final ChangeHooks hooks)
 name|AccountSecurityImpl
 parameter_list|(
 specifier|final
@@ -975,7 +975,7 @@ name|Factory
 name|myGroupsFactory
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|)
 block|{

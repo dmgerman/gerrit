@@ -562,6 +562,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|AbstractModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Inject
 import|;
 end_import
@@ -763,7 +775,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class implements hooks for certain gerrit events.  */
+comment|/** Spawns local executables when a hook action occurs. */
 end_comment
 
 begin_class
@@ -773,6 +785,8 @@ DECL|class|ChangeHookRunner
 specifier|public
 class|class
 name|ChangeHookRunner
+implements|implements
+name|ChangeHooks
 block|{
 comment|/** A logger for this class. */
 DECL|field|log
@@ -791,6 +805,45 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|class|Module
+specifier|public
+specifier|static
+class|class
+name|Module
+extends|extends
+name|AbstractModule
+block|{
+annotation|@
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
+parameter_list|()
+block|{
+name|bind
+argument_list|(
+name|ChangeHookRunner
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|ChangeHooks
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|ChangeHookRunner
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|class|ChangeListenerHolder
 specifier|private
 specifier|static
@@ -1461,7 +1514,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fire the Patchset Created Hook.      *      * @param change The change itself.      * @param patchSet The Patchset that was created.      * @throws OrmException      */
 DECL|method|doPatchsetCreatedHook (final Change change, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
@@ -1669,7 +1721,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Comment Added Hook.      *      * @param change The change itself.      * @param patchSet The patchset this comment is related to.      * @param account The gerrit user who commited the change.      * @param comment The comment given.      * @param approvals Map of Approval Categories and Scores      * @throws OrmException      */
 DECL|method|doCommentAddedHook (final Change change, final Account account, final PatchSet patchSet, final String comment, final Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals, final ReviewDb db)
 specifier|public
 name|void
@@ -2002,7 +2053,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Change Merged Hook.      *      * @param change The change itself.      * @param account The gerrit user who commited the change.      * @param patchSet The patchset that was merged.      * @throws OrmException      */
 DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
@@ -2181,7 +2231,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Change Abandoned Hook.      *      * @param change The change itself.      * @param account The gerrit user who abandoned the change.      * @param reason Reason for abandoning the change.      * @throws OrmException      */
 DECL|method|doChangeAbandonedHook (final Change change, final Account account, final String reason, final ReviewDb db)
 specifier|public
 name|void
@@ -2357,7 +2406,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Change Restored Hook.      *      * @param change The change itself.      * @param account The gerrit user who restored the change.      * @param reason Reason for restoring the change.      * @throws OrmException      */
 DECL|method|doChangeRestoreHook (final Change change, final Account account, final String reason, final ReviewDb db)
 specifier|public
 name|void
@@ -2533,7 +2581,6 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Ref Updated Hook      * @param project The project the ref update occured on      * @param refUpdate An actual RefUpdate object      * @param account The gerrit user who moved the ref      */
 DECL|method|doRefUpdatedHook (final Branch.NameKey refName, final RefUpdate refUpdate, final Account account)
 specifier|public
 name|void
@@ -2572,7 +2619,6 @@ name|account
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Fire the Ref Updated Hook      * @param refName The Branch.NameKey of the ref that was updated      * @param oldId The ref's old id      * @param newId The ref's new id      * @param account The gerrit user who moved the ref      */
 DECL|method|doRefUpdatedHook (final Branch.NameKey refName, final ObjectId oldId, final ObjectId newId, final Account account)
 specifier|public
 name|void

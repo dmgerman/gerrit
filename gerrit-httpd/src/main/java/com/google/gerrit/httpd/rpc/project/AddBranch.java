@@ -78,7 +78,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -576,7 +576,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|projectName
@@ -601,7 +601,7 @@ name|startingRevision
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, final ReplicationQueue replication, final ChangeHookRunner hooks, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
+DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, final ReplicationQueue replication, final ChangeHooks hooks, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
 name|AddBranch
 parameter_list|(
 specifier|final
@@ -629,7 +629,7 @@ name|ReplicationQueue
 name|replication
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 annotation|@

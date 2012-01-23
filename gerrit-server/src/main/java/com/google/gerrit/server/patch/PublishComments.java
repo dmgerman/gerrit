@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -622,7 +622,7 @@ decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 DECL|field|patchSetId
@@ -681,7 +681,7 @@ name|drafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishComments (final ReviewDb db, final IdentifiedUser user, final ApprovalTypes approvalTypes, final CommentSender.Factory commentSenderFactory, final PatchSetInfoFactory patchSetInfoFactory, final ChangeControl.Factory changeControlFactory, final FunctionState.Factory functionStateFactory, final ChangeHookRunner hooks, @Assisted final PatchSet.Id patchSetId, @Assisted final String messageText, @Assisted final Set<ApprovalCategoryValue.Id> approvals, @Assisted final boolean forceMessage)
+DECL|method|PublishComments (final ReviewDb db, final IdentifiedUser user, final ApprovalTypes approvalTypes, final CommentSender.Factory commentSenderFactory, final PatchSetInfoFactory patchSetInfoFactory, final ChangeControl.Factory changeControlFactory, final FunctionState.Factory functionStateFactory, final ChangeHooks hooks, @Assisted final PatchSet.Id patchSetId, @Assisted final String messageText, @Assisted final Set<ApprovalCategoryValue.Id> approvals, @Assisted final boolean forceMessage)
 name|PublishComments
 parameter_list|(
 specifier|final
@@ -719,7 +719,7 @@ name|Factory
 name|functionStateFactory
 parameter_list|,
 specifier|final
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 parameter_list|,
 annotation|@

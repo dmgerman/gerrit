@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHookRunner
+name|ChangeHooks
 import|;
 end_import
 
@@ -1148,7 +1148,7 @@ annotation|@
 name|Inject
 DECL|field|hooks
 specifier|private
-name|ChangeHookRunner
+name|ChangeHooks
 name|hooks
 decl_stmt|;
 annotation|@
