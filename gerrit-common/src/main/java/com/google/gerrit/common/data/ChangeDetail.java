@@ -184,6 +184,11 @@ specifier|protected
 name|boolean
 name|canPublish
 decl_stmt|;
+DECL|field|canRebase
+specifier|protected
+name|boolean
+name|canRebase
+decl_stmt|;
 DECL|field|canRestore
 specifier|protected
 name|boolean
@@ -379,6 +384,31 @@ name|a
 parameter_list|)
 block|{
 name|canPublish
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canRebase ()
+specifier|public
+name|boolean
+name|canRebase
+parameter_list|()
+block|{
+return|return
+name|canRebase
+return|;
+block|}
+DECL|method|setCanRebase (final boolean a)
+specifier|public
+name|void
+name|setCanRebase
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canRebase
 operator|=
 name|a
 expr_stmt|;

@@ -1266,6 +1266,19 @@ block|}
 end_function
 
 begin_function
+DECL|method|getNumberOfPatchSets ()
+specifier|public
+name|int
+name|getNumberOfPatchSets
+parameter_list|()
+block|{
+return|return
+name|nbrPatchSets
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|getSortKey ()
 specifier|public
 name|String

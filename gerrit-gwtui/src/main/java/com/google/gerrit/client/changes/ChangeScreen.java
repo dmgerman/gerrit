@@ -2113,6 +2113,14 @@ argument_list|(
 name|depsOpen
 argument_list|)
 expr_stmt|;
+name|dependenciesPanel
+operator|.
+name|getHeader
+argument_list|()
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|outdated

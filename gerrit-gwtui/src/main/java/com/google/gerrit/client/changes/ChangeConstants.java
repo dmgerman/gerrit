@@ -495,6 +495,11 @@ name|String
 name|initialCommit
 parameter_list|()
 function_decl|;
+DECL|method|buttonRebaseChange ()
+name|String
+name|buttonRebaseChange
+parameter_list|()
+function_decl|;
 DECL|method|buttonRevertChangeBegin ()
 name|String
 name|buttonRevertChangeBegin
