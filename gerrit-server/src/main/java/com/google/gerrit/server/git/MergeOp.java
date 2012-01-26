@@ -6130,6 +6130,13 @@ argument_list|(
 name|c
 argument_list|,
 name|txt
+operator|+
+literal|" as "
+operator|+
+name|commit
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
