@@ -254,6 +254,10 @@ block|,
 comment|/** Error writing change to git repository */
 DECL|enumConstant|GIT_ERROR
 name|GIT_ERROR
+block|,
+comment|/** The destination branch does not exist */
+DECL|enumConstant|DEST_BRANCH_NOT_FOUND
+name|DEST_BRANCH_NOT_FOUND
 block|}
 DECL|field|type
 specifier|protected
