@@ -169,7 +169,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|RestoreChange
+name|RestoreChangeHandler
 operator|.
 name|Factory
 operator|.

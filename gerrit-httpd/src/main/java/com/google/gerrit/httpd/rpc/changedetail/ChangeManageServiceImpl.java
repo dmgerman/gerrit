@@ -181,13 +181,13 @@ operator|.
 name|Factory
 name|abandonChangeHandlerFactory
 decl_stmt|;
-DECL|field|restoreChangeFactory
+DECL|field|restoreChangeHandlerFactory
 specifier|private
 specifier|final
-name|RestoreChange
+name|RestoreChangeHandler
 operator|.
 name|Factory
-name|restoreChangeFactory
+name|restoreChangeHandlerFactory
 decl_stmt|;
 DECL|field|revertChangeFactory
 specifier|private
@@ -215,7 +215,7 @@ name|deleteDraftChangeFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChangeHandler.Factory abandonChangeHandlerFactory, final RestoreChange.Factory restoreChangeFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory)
+DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChangeHandler.Factory abandonChangeHandlerFactory, final RestoreChangeHandler.Factory restoreChangeHandlerFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
@@ -231,10 +231,10 @@ name|Factory
 name|abandonChangeHandlerFactory
 parameter_list|,
 specifier|final
-name|RestoreChange
+name|RestoreChangeHandler
 operator|.
 name|Factory
-name|restoreChangeFactory
+name|restoreChangeHandlerFactory
 parameter_list|,
 specifier|final
 name|RevertChange
@@ -269,9 +269,9 @@ name|abandonChangeHandlerFactory
 expr_stmt|;
 name|this
 operator|.
-name|restoreChangeFactory
+name|restoreChangeHandlerFactory
 operator|=
-name|restoreChangeFactory
+name|restoreChangeHandlerFactory
 expr_stmt|;
 name|this
 operator|.
@@ -423,7 +423,7 @@ argument_list|>
 name|callback
 parameter_list|)
 block|{
-name|restoreChangeFactory
+name|restoreChangeHandlerFactory
 operator|.
 name|create
 argument_list|(
