@@ -455,6 +455,9 @@ expr_stmt|;
 name|parseCommandLine
 argument_list|()
 expr_stmt|;
+name|verifyCommandLine
+argument_list|()
+expr_stmt|;
 name|processor
 operator|.
 name|query
@@ -471,6 +474,46 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|verifyCommandLine ()
+specifier|private
+name|void
+name|verifyCommandLine
+parameter_list|()
+throws|throws
+name|UnloggedFailure
+block|{
+if|if
+condition|(
+name|processor
+operator|.
+name|getIncludeFiles
+argument_list|()
+operator|&&
+operator|!
+operator|(
+name|processor
+operator|.
+name|getIncludePatchSets
+argument_list|()
+operator|||
+name|processor
+operator|.
+name|getIncludeCurrentPatchSet
+argument_list|()
+operator|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|UnloggedFailure
+argument_list|(
+literal|1
+argument_list|,
+literal|"--files option needs --patch-sets or --current-patch-set"
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|join (List<String> list, String sep)
 specifier|private
