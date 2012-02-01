@@ -66,18 +66,6 @@ name|cache
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
 comment|/**  * A fast in-memory and/or on-disk based cache.  *  * @type<K> type of key used to lookup entries in the cache.  * @type<V> type of value stored within each cache entry.  */
 end_comment
@@ -132,16 +120,6 @@ specifier|public
 name|void
 name|removeAll
 parameter_list|()
-function_decl|;
-comment|/**    * Get the time an element will survive in the cache.    *    * @param unit desired units of the return value.    * @return time an item can live before being purged.    */
-DECL|method|getTimeToLive (TimeUnit unit)
-specifier|public
-name|long
-name|getTimeToLive
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
 function_decl|;
 block|}
 end_interface

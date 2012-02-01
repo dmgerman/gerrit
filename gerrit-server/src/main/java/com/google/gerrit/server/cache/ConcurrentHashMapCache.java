@@ -78,18 +78,6 @@ name|ConcurrentHashMap
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
 comment|/**  * An infinitely sized cache backed by java.util.ConcurrentHashMap.  *<p>  * This cache type is only suitable for unit tests, as it has no upper limit on  * number of items held in the cache. No upper limit can result in memory leaks  * in production servers.  */
 end_comment
@@ -208,21 +196,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getTimeToLive (TimeUnit unit)
-specifier|public
-name|long
-name|getTimeToLive
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
-block|{
-return|return
-literal|0
-return|;
 block|}
 block|}
 end_class

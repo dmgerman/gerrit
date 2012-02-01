@@ -66,18 +66,6 @@ name|cache
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-import|;
-end_import
-
 begin_comment
 comment|/** Proxy around a cache which has not yet been created. */
 end_comment
@@ -148,24 +136,6 @@ operator|.
 name|get
 argument_list|(
 name|key
-argument_list|)
-return|;
-block|}
-DECL|method|getTimeToLive (TimeUnit unit)
-specifier|public
-name|long
-name|getTimeToLive
-parameter_list|(
-name|TimeUnit
-name|unit
-parameter_list|)
-block|{
-return|return
-name|self
-operator|.
-name|getTimeToLive
-argument_list|(
-name|unit
 argument_list|)
 return|;
 block|}

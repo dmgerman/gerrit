@@ -79,6 +79,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -392,6 +406,19 @@ name|ACCOUNT_COOKIE
 init|=
 literal|"GerritAccount"
 decl_stmt|;
+DECL|field|MAX_AGE_MINUTES
+specifier|static
+specifier|final
+name|long
+name|MAX_AGE_MINUTES
+init|=
+name|HOURS
+operator|.
+name|toMinutes
+argument_list|(
+literal|12
+argument_list|)
+decl_stmt|;
 DECL|method|module ()
 specifier|public
 specifier|static
@@ -460,9 +487,9 @@ comment|// reasonable default for many sites
 operator|.
 name|maxAge
 argument_list|(
-literal|12
+name|MAX_AGE_MINUTES
 argument_list|,
-name|HOURS
+name|MINUTES
 argument_list|)
 comment|// expire sessions if they are inactive
 operator|.
