@@ -173,6 +173,11 @@ specifier|protected
 name|boolean
 name|canAbandon
 decl_stmt|;
+DECL|field|canPublish
+specifier|protected
+name|boolean
+name|canPublish
+decl_stmt|;
 DECL|field|canRestore
 specifier|protected
 name|boolean
@@ -343,6 +348,31 @@ name|a
 parameter_list|)
 block|{
 name|canAbandon
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canPublish ()
+specifier|public
+name|boolean
+name|canPublish
+parameter_list|()
+block|{
+return|return
+name|canPublish
+return|;
+block|}
+DECL|method|setCanPublish (final boolean a)
+specifier|public
+name|void
+name|setCanPublish
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canPublish
 operator|=
 name|a
 expr_stmt|;

@@ -1144,6 +1144,28 @@ argument_list|()
 comment|// site administers are god
 return|;
 block|}
+DECL|method|canPublish (final ReviewDb db)
+specifier|public
+name|boolean
+name|canPublish
+parameter_list|(
+specifier|final
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+return|return
+name|isOwner
+argument_list|()
+operator|&&
+name|isVisible
+argument_list|(
+name|db
+argument_list|)
+return|;
+block|}
 comment|/** Can this user restore this change? */
 DECL|method|canRestore ()
 specifier|public
