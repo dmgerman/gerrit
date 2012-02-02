@@ -2601,7 +2601,7 @@ name|userFactory
 argument_list|,
 name|g
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 return|;
@@ -2820,7 +2820,7 @@ name|userFactory
 argument_list|,
 name|g
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 return|;
