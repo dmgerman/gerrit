@@ -415,13 +415,7 @@ condition|(
 operator|!
 name|changeControl
 operator|.
-name|isOwner
-argument_list|()
-operator|&&
-operator|!
-name|changeControl
-operator|.
-name|isVisible
+name|canPublish
 argument_list|(
 name|db
 argument_list|)

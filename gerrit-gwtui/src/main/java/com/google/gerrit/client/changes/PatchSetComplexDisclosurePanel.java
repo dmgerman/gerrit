@@ -1570,6 +1570,11 @@ argument_list|()
 operator|.
 name|isDraft
 argument_list|()
+operator|&&
+name|changeDetail
+operator|.
+name|canPublish
+argument_list|()
 condition|)
 block|{
 name|populatePublishAction
