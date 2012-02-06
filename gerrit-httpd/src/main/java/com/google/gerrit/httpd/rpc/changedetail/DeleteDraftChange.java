@@ -431,8 +431,10 @@ condition|(
 operator|!
 name|control
 operator|.
-name|isOwner
-argument_list|()
+name|canDelete
+argument_list|(
+name|db
+argument_list|)
 condition|)
 block|{
 throw|throw
