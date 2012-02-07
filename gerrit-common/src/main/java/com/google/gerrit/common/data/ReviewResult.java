@@ -240,7 +240,11 @@ block|,
 comment|/** Review operation not permitted by rule. */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
-block|}
+block|,
+comment|/** Review operation invalid because patch set is not a draft. */
+DECL|enumConstant|NOT_A_DRAFT
+name|NOT_A_DRAFT
+block|,     }
 DECL|field|type
 specifier|protected
 name|Type
