@@ -193,15 +193,15 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
-DECL|field|id
+DECL|field|uuid
 specifier|private
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 decl_stmt|;
-DECL|method|OwnerinPredicate (Provider<ReviewDb> dbProvider, IdentifiedUser.GenericFactory userFactory, AccountGroup.Id id)
+DECL|method|OwnerinPredicate (Provider<ReviewDb> dbProvider, IdentifiedUser.GenericFactory userFactory, AccountGroup.UUID uuid)
 name|OwnerinPredicate
 parameter_list|(
 name|Provider
@@ -217,8 +217,8 @@ name|userFactory
 parameter_list|,
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 name|super
@@ -227,7 +227,7 @@ name|ChangeQueryBuilder
 operator|.
 name|FIELD_OWNERIN
 argument_list|,
-name|id
+name|uuid
 operator|.
 name|toString
 argument_list|()
@@ -247,20 +247,20 @@ name|userFactory
 expr_stmt|;
 name|this
 operator|.
-name|id
+name|uuid
 operator|=
-name|id
+name|uuid
 expr_stmt|;
 block|}
-DECL|method|getAccountGroupId ()
+DECL|method|getAccountGroupUUID ()
 name|AccountGroup
 operator|.
-name|Id
-name|getAccountGroupId
+name|UUID
+name|getAccountGroupUUID
 parameter_list|()
 block|{
 return|return
-name|id
+name|uuid
 return|;
 block|}
 annotation|@
@@ -323,7 +323,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 return|;
 block|}
