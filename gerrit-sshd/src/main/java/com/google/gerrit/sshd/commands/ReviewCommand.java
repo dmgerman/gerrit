@@ -1612,12 +1612,7 @@ if|if
 condition|(
 name|changeControl
 operator|.
-name|isOwner
-argument_list|()
-operator|&&
-name|changeControl
-operator|.
-name|isVisible
+name|canDelete
 argument_list|(
 name|db
 argument_list|)
