@@ -1777,6 +1777,14 @@ operator|+=
 literal|"rule error"
 expr_stmt|;
 break|break;
+case|case
+name|NOT_A_DRAFT
+case|:
+name|errMsg
+operator|+=
+literal|"change is not a draft"
+expr_stmt|;
+break|break;
 default|default:
 name|errMsg
 operator|+=
