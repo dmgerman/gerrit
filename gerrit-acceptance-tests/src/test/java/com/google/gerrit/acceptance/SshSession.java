@@ -159,6 +159,11 @@ specifier|private
 name|Session
 name|session
 decl_stmt|;
+DECL|field|error
+specifier|private
+name|String
+name|error
+decl_stmt|;
 DECL|method|SshSession (TestAccount account)
 specifier|public
 name|SshSession
@@ -236,7 +241,10 @@ init|=
 operator|new
 name|Scanner
 argument_list|(
-name|in
+name|channel
+operator|.
+name|getErrStream
+argument_list|()
 argument_list|)
 operator|.
 name|useDelimiter
@@ -244,6 +252,33 @@ argument_list|(
 literal|"\\A"
 argument_list|)
 decl_stmt|;
+name|error
+operator|=
+name|s
+operator|.
+name|hasNext
+argument_list|()
+condition|?
+name|s
+operator|.
+name|next
+argument_list|()
+else|:
+literal|null
+expr_stmt|;
+name|s
+operator|=
+operator|new
+name|Scanner
+argument_list|(
+name|in
+argument_list|)
+operator|.
+name|useDelimiter
+argument_list|(
+literal|"\\A"
+argument_list|)
+expr_stmt|;
 return|return
 name|s
 operator|.
@@ -266,6 +301,28 @@ name|disconnect
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|hasError ()
+specifier|public
+name|boolean
+name|hasError
+parameter_list|()
+block|{
+return|return
+name|error
+operator|!=
+literal|null
+return|;
+block|}
+DECL|method|getError ()
+specifier|public
+name|String
+name|getError
+parameter_list|()
+block|{
+return|return
+name|error
+return|;
 block|}
 DECL|method|close ()
 specifier|public

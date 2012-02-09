@@ -738,6 +738,25 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can run the Git garbage collection. */
+DECL|method|canRunGC ()
+specifier|public
+name|boolean
+name|canRunGC
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|RUN_GC
+argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
 comment|/** @return which priority queue the user's tasks should be submitted to. */
 DECL|method|getQueueType ()
 specifier|public

@@ -216,6 +216,16 @@ name|QUERY_LIMIT
 init|=
 literal|"queryLimit"
 decl_stmt|;
+comment|/** Can run the Git garbage collection. */
+DECL|field|RUN_GC
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|RUN_GC
+init|=
+literal|"runGC"
+decl_stmt|;
 comment|/** Forcefully restart replication to any configured destination. */
 DECL|field|START_REPLICATION
 specifier|public
@@ -355,6 +365,13 @@ operator|.
 name|add
 argument_list|(
 name|QUERY_LIMIT
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|RUN_GC
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
