@@ -584,16 +584,6 @@ operator|.
 name|Status
 operator|.
 name|DRAFT
-operator|&&
-name|change
-operator|.
-name|currentPatchSetId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|patchSetId
-argument_list|)
 condition|)
 block|{
 name|change
