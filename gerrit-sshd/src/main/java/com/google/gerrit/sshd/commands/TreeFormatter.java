@@ -92,6 +92,36 @@ specifier|public
 class|class
 name|TreeFormatter
 block|{
+DECL|interface|TreeNode
+specifier|public
+specifier|static
+interface|interface
+name|TreeNode
+block|{
+DECL|method|getDisplayName ()
+specifier|public
+name|String
+name|getDisplayName
+parameter_list|()
+function_decl|;
+DECL|method|isVisible ()
+specifier|public
+name|boolean
+name|isVisible
+parameter_list|()
+function_decl|;
+DECL|method|getChildren ()
+specifier|public
+name|SortedSet
+argument_list|<
+name|?
+extends|extends
+name|TreeNode
+argument_list|>
+name|getChildren
+parameter_list|()
+function_decl|;
+block|}
 DECL|field|NOT_VISIBLE_NODE
 specifier|public
 specifier|static
