@@ -964,20 +964,6 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|PostReceiveHook
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
 name|PreReceiveHook
 import|;
 end_import
@@ -1191,8 +1177,6 @@ class|class
 name|ReceiveCommits
 implements|implements
 name|PreReceiveHook
-implements|,
-name|PostReceiveHook
 block|{
 DECL|field|log
 specifier|private
@@ -1889,13 +1873,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|rp
-operator|.
-name|setPostReceiveHook
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 block|}
 comment|/** Add reviewers for new (or updated) changes. */
 DECL|method|addReviewers (Collection<Account.Id> who)
@@ -2456,26 +2433,6 @@ block|}
 name|doReplaces
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|onPostReceive (final ReceivePack arg0, final Collection<ReceiveCommand> commands)
-specifier|public
-name|void
-name|onPostReceive
-parameter_list|(
-specifier|final
-name|ReceivePack
-name|arg0
-parameter_list|,
-specifier|final
-name|Collection
-argument_list|<
-name|ReceiveCommand
-argument_list|>
-name|commands
-parameter_list|)
-block|{
 for|for
 control|(
 specifier|final
@@ -3415,7 +3372,13 @@ argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
-comment|// Let the core receive process handle it
+name|cmd
+operator|.
+name|execute
+argument_list|(
+name|rp
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -3482,7 +3445,13 @@ argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
-comment|// Let the core receive process handle it
+name|cmd
+operator|.
+name|execute
+argument_list|(
+name|rp
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -3623,7 +3592,13 @@ name|canDelete
 argument_list|()
 condition|)
 block|{
-comment|// Let the core receive process handle it
+name|cmd
+operator|.
+name|execute
+argument_list|(
+name|rp
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -3771,7 +3746,13 @@ name|canForceUpdate
 argument_list|()
 condition|)
 block|{
-comment|// Let the core receive process handle it
+name|cmd
+operator|.
+name|execute
+argument_list|(
+name|rp
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
