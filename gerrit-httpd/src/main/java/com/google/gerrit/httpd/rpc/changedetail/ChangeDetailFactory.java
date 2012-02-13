@@ -1069,7 +1069,7 @@ name|setCanDeleteDraft
 argument_list|(
 name|control
 operator|.
-name|canDelete
+name|canDeleteDraft
 argument_list|(
 name|db
 argument_list|)
