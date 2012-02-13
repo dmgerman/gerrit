@@ -1541,7 +1541,7 @@ condition|)
 block|{
 name|up
 operator|.
-name|setRefFilter
+name|setAdvertiseRefsHook
 argument_list|(
 operator|new
 name|VisibleRefFilter

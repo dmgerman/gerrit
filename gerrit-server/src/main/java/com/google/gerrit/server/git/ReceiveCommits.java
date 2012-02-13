@@ -1850,7 +1850,7 @@ argument_list|)
 expr_stmt|;
 name|rp
 operator|.
-name|setRefFilter
+name|setAdvertiseRefsHook
 argument_list|(
 operator|new
 name|VisibleRefFilter
@@ -1870,14 +1870,14 @@ expr_stmt|;
 block|}
 name|rp
 operator|.
-name|setRefFilter
+name|setAdvertiseRefsHook
 argument_list|(
 operator|new
-name|ReceiveCommitsRefFilter
+name|ReceiveCommitsAdvertiseRefsHook
 argument_list|(
 name|rp
 operator|.
-name|getRefFilter
+name|getAdvertiseRefsHook
 argument_list|()
 argument_list|)
 argument_list|)
