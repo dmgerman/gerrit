@@ -237,6 +237,10 @@ comment|/** Not permitted to publish this draft patch set */
 DECL|enumConstant|PUBLISH_NOT_PERMITTED
 name|PUBLISH_NOT_PERMITTED
 block|,
+comment|/** Not permitted to delete this draft patch set */
+DECL|enumConstant|DELETE_NOT_PERMITTED
+name|DELETE_NOT_PERMITTED
+block|,
 comment|/** Review operation not permitted by rule. */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
@@ -244,7 +248,11 @@ block|,
 comment|/** Review operation invalid because patch set is not a draft. */
 DECL|enumConstant|NOT_A_DRAFT
 name|NOT_A_DRAFT
-block|,     }
+block|,
+comment|/** Error writing change to git repository */
+DECL|enumConstant|GIT_ERROR
+name|GIT_ERROR
+block|}
 DECL|field|type
 specifier|protected
 name|Type
