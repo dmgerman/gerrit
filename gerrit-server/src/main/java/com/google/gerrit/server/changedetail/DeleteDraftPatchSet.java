@@ -566,7 +566,7 @@ condition|(
 operator|!
 name|control
 operator|.
-name|canDelete
+name|canDeleteDraft
 argument_list|(
 name|db
 argument_list|)

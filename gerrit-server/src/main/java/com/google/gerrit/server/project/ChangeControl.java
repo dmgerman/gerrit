@@ -1144,7 +1144,7 @@ argument_list|()
 comment|// site administers are god
 return|;
 block|}
-comment|/** Can this user publish this change? */
+comment|/** Can this user publish this draft change or any draft patch set of this change? */
 DECL|method|canPublish (final ReviewDb db)
 specifier|public
 name|boolean
@@ -1158,17 +1158,6 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-operator|&&
 name|isOwner
 argument_list|()
 operator|&&
@@ -1178,11 +1167,11 @@ name|db
 argument_list|)
 return|;
 block|}
-comment|/** Can this user delete this change? */
-DECL|method|canDelete (final ReviewDb db)
+comment|/** Can this user delete this draft change or any draft patch set of this change? */
+DECL|method|canDeleteDraft (final ReviewDb db)
 specifier|public
 name|boolean
-name|canDelete
+name|canDeleteDraft
 parameter_list|(
 specifier|final
 name|ReviewDb
@@ -1192,17 +1181,6 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|change
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-name|Change
-operator|.
-name|Status
-operator|.
-name|DRAFT
-operator|&&
 name|isOwner
 argument_list|()
 operator|&&
