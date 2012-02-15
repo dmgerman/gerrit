@@ -162,6 +162,7 @@ end_comment
 
 begin_class
 DECL|class|ReceiveCommitsAdvertiseRefsHook
+specifier|public
 class|class
 name|ReceiveCommitsAdvertiseRefsHook
 implements|implements
