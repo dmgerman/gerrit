@@ -1710,10 +1710,10 @@ argument_list|)
 expr_stmt|;
 name|runHook
 argument_list|(
-name|openRepository
-argument_list|(
 name|change
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|patchsetCreatedHook
 argument_list|,
@@ -2042,10 +2042,10 @@ expr_stmt|;
 block|}
 name|runHook
 argument_list|(
-name|openRepository
-argument_list|(
 name|change
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|commentAddedHook
 argument_list|,
@@ -2220,10 +2220,10 @@ argument_list|)
 expr_stmt|;
 name|runHook
 argument_list|(
-name|openRepository
-argument_list|(
 name|change
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|changeMergedHook
 argument_list|,
@@ -2395,10 +2395,10 @@ argument_list|)
 expr_stmt|;
 name|runHook
 argument_list|(
-name|openRepository
-argument_list|(
 name|change
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|changeAbandonedHook
 argument_list|,
@@ -2570,10 +2570,10 @@ argument_list|)
 expr_stmt|;
 name|runHook
 argument_list|(
-name|openRepository
-argument_list|(
 name|change
-argument_list|)
+operator|.
+name|getProject
+argument_list|()
 argument_list|,
 name|changeRestoredHook
 argument_list|,
@@ -2780,13 +2780,10 @@ expr_stmt|;
 block|}
 name|runHook
 argument_list|(
-name|openRepository
-argument_list|(
 name|refName
 operator|.
 name|getParentKey
 argument_list|()
-argument_list|)
 argument_list|,
 name|refUpdatedHook
 argument_list|,
@@ -3273,15 +3270,17 @@ return|return
 name|anonymousCowardName
 return|;
 block|}
-comment|/**    * Run a hook.    *    * @param repo repository to run the hook for.    * @param hook the hook to execute.    * @param args Arguments to use to run the hook.    */
-DECL|method|runHook (Repository repo, File hook, List<String> args)
+comment|/**    * Run a hook.    *    * @param project used to open repository to run the hook for.    * @param hook the hook to execute.    * @param args Arguments to use to run the hook.    */
+DECL|method|runHook (Project.NameKey project, File hook, List<String> args)
 specifier|private
 specifier|synchronized
 name|void
 name|runHook
 parameter_list|(
-name|Repository
-name|repo
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|File
 name|hook
@@ -3295,13 +3294,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|repo
+name|project
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|hook
 operator|.
 name|exists
@@ -3315,7 +3311,7 @@ argument_list|(
 operator|new
 name|HookTask
 argument_list|(
-name|repo
+name|project
 argument_list|,
 name|hook
 argument_list|,
@@ -3323,15 +3319,6 @@ name|args
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|runHook (File hook, List<String> args)
@@ -3383,11 +3370,13 @@ name|HookTask
 implements|implements
 name|Runnable
 block|{
-DECL|field|repo
+DECL|field|project
 specifier|private
 specifier|final
-name|Repository
-name|repo
+name|Project
+operator|.
+name|NameKey
+name|project
 decl_stmt|;
 DECL|field|hook
 specifier|private
@@ -3404,12 +3393,14 @@ name|String
 argument_list|>
 name|args
 decl_stmt|;
-DECL|method|HookTask (Repository repo, File hook, List<String> args)
+DECL|method|HookTask (Project.NameKey project, File hook, List<String> args)
 specifier|private
 name|HookTask
 parameter_list|(
-name|Repository
-name|repo
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|File
 name|hook
@@ -3423,9 +3414,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|repo
+name|project
 operator|=
-name|repo
+name|project
 expr_stmt|;
 name|this
 operator|.
@@ -3448,6 +3439,11 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|Repository
+name|repo
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 specifier|final
@@ -3505,6 +3501,21 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|project
+operator|!=
+literal|null
+condition|)
+block|{
+name|repo
+operator|=
+name|openRepository
+argument_list|(
+name|project
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|repo
