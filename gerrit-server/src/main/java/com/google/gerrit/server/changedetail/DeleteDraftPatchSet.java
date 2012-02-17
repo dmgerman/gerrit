@@ -697,6 +697,13 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
+name|result
+operator|.
+name|setChangeId
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
