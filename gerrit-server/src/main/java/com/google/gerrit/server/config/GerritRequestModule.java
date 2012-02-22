@@ -676,7 +676,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RetrieveParentCandidates
+name|SuggestParentCandidates
 import|;
 end_import
 
@@ -1156,7 +1156,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|RetrieveParentCandidates
+name|SuggestParentCandidates
 operator|.
 name|Factory
 operator|.

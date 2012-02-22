@@ -240,6 +240,11 @@ name|String
 name|suggestedGroupLabel
 parameter_list|()
 function_decl|;
+DECL|method|parentSuggestions ()
+name|String
+name|parentSuggestions
+parameter_list|()
+function_decl|;
 DECL|method|headingGroupUUID ()
 name|String
 name|headingGroupUUID
