@@ -630,6 +630,11 @@ specifier|private
 name|boolean
 name|includeCommitMessage
 decl_stmt|;
+DECL|field|includeDependencies
+specifier|private
+name|boolean
+name|includeDependencies
+decl_stmt|;
 DECL|field|outputStream
 specifier|private
 name|OutputStream
@@ -826,6 +831,30 @@ parameter_list|()
 block|{
 return|return
 name|includeFiles
+return|;
+block|}
+DECL|method|setIncludeDependencies (boolean on)
+specifier|public
+name|void
+name|setIncludeDependencies
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|includeDependencies
+operator|=
+name|on
+expr_stmt|;
+block|}
+DECL|method|getIncludeDependencies ()
+specifier|public
+name|boolean
+name|getIncludeDependencies
+parameter_list|()
+block|{
+return|return
+name|includeDependencies
 return|;
 block|}
 DECL|method|setIncludeCommitMessage (boolean on)
@@ -1510,6 +1539,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+if|if
+condition|(
+name|includeDependencies
+condition|)
+block|{
+name|eventFactory
+operator|.
+name|addDependencies
+argument_list|(
+name|c
+argument_list|,
+name|d
+operator|.
+name|getChange
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 name|show
 argument_list|(
@@ -2259,6 +2306,11 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+name|boolean
+name|firstElement
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|Object
@@ -2275,6 +2327,45 @@ name|value
 operator|)
 control|)
 block|{
+comment|// The name of the collection was initially printed at the beginning
+comment|// of this routine.  Beginning at the second sub-element, reprint
+comment|// the collection name so humans can separate individual elements
+comment|// with less strain and error.
+comment|//
+if|if
+condition|(
+name|firstElement
+condition|)
+block|{
+name|firstElement
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
+block|{
+name|out
+operator|.
+name|print
+argument_list|(
+name|indent
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+name|field
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|print
+argument_list|(
+literal|":\n"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|isPrimitive

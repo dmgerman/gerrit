@@ -199,6 +199,22 @@ name|PatchSetAttribute
 argument_list|>
 name|patchSets
 decl_stmt|;
+DECL|field|dependsOn
+specifier|public
+name|List
+argument_list|<
+name|DependencyAttribute
+argument_list|>
+name|dependsOn
+decl_stmt|;
+DECL|field|neededBy
+specifier|public
+name|List
+argument_list|<
+name|DependencyAttribute
+argument_list|>
+name|neededBy
+decl_stmt|;
 block|}
 end_class
 
