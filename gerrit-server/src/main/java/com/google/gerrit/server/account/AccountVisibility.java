@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.rpc
+DECL|package|com.google.gerrit.server.account
 package|package
 name|com
 operator|.
@@ -60,29 +60,37 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|server
 operator|.
-name|rpc
+name|account
 package|;
 end_package
 
+begin_comment
+comment|/** Visibility level of other accounts to a given user. */
+end_comment
+
 begin_enum
-DECL|enum|SuggestAccountsEnum
+DECL|enum|AccountVisibility
 specifier|public
 enum|enum
-name|SuggestAccountsEnum
+name|AccountVisibility
 block|{
+comment|/** All accounts are visible to all users. */
 DECL|enumConstant|ALL
 name|ALL
 block|,
+comment|/** Accounts sharing a group with the given user. */
 DECL|enumConstant|SAME_GROUP
 name|SAME_GROUP
 block|,
+comment|/** Accounts in a group that is visible to the given user. */
 DECL|enumConstant|VISIBLE_GROUP
 name|VISIBLE_GROUP
 block|,
-DECL|enumConstant|OFF
-name|OFF
+comment|/**    * Other accounts are not visible to the given user unless they are explicitly    * collaborating on a change.    */
+DECL|enumConstant|NONE
+name|NONE
 block|; }
 end_enum
 
