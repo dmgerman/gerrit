@@ -1008,20 +1008,6 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|PreReceiveHook
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
 name|ReceiveCommand
 import|;
 end_import
@@ -1219,8 +1205,6 @@ DECL|class|ReceiveCommits
 specifier|public
 class|class
 name|ReceiveCommits
-implements|implements
-name|PreReceiveHook
 block|{
 DECL|field|log
 specifier|private
@@ -1292,7 +1276,6 @@ literal|"Change-Id"
 argument_list|)
 decl_stmt|;
 DECL|interface|Factory
-specifier|public
 interface|interface
 name|Factory
 block|{
@@ -2157,13 +2140,6 @@ name|advHooks
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rp
-operator|.
-name|setPreReceiveHook
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 block|}
 comment|/** Add reviewers for new (or updated) changes. */
 DECL|method|addReviewers (Collection<Account.Id> who)
@@ -2234,6 +2210,37 @@ operator|new
 name|ReceivePackMessageSender
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getMessageSender ()
+name|MessageSender
+name|getMessageSender
+parameter_list|()
+block|{
+if|if
+condition|(
+name|messageSender
+operator|==
+literal|null
+condition|)
+block|{
+name|setMessageSender
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|messageSender
+return|;
+block|}
+DECL|method|getProject ()
+name|Project
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|project
+return|;
 block|}
 comment|/** @return the ReceivePack instance to speak the native Git protocol. */
 DECL|method|getReceivePack ()
@@ -2699,17 +2706,10 @@ name|project
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|onPreReceive (final ReceivePack arg0, final Collection<ReceiveCommand> commands)
-specifier|public
+DECL|method|processCommands (final Collection<ReceiveCommand> commands)
 name|void
-name|onPreReceive
+name|processCommands
 parameter_list|(
-specifier|final
-name|ReceivePack
-name|arg0
-parameter_list|,
 specifier|final
 name|Collection
 argument_list|<
@@ -12483,7 +12483,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|reject (final ReceiveCommand cmd, final String why)
-specifier|private
 specifier|static
 name|void
 name|reject

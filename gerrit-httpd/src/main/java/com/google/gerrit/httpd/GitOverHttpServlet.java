@@ -198,6 +198,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|AsyncReceiveCommits
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|GitRepositoryManager
 import|;
 end_import
@@ -1605,7 +1621,7 @@ block|{
 DECL|field|factory
 specifier|private
 specifier|final
-name|ReceiveCommits
+name|AsyncReceiveCommits
 operator|.
 name|Factory
 name|factory
@@ -1621,10 +1637,10 @@ name|session
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveFactory (ReceiveCommits.Factory factory, Provider<WebSession> session)
+DECL|method|ReceiveFactory (AsyncReceiveCommits.Factory factory, Provider<WebSession> session)
 name|ReceiveFactory
 parameter_list|(
-name|ReceiveCommits
+name|AsyncReceiveCommits
 operator|.
 name|Factory
 name|factory
@@ -1723,6 +1739,9 @@ name|pc
 argument_list|,
 name|db
 argument_list|)
+operator|.
+name|getReceiveCommits
+argument_list|()
 decl_stmt|;
 name|rc
 operator|.
