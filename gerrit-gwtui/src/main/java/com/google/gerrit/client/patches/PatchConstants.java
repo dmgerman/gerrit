@@ -130,6 +130,11 @@ name|String
 name|patchBase
 parameter_list|()
 function_decl|;
+DECL|method|patchBaseAutoMerge ()
+name|String
+name|patchBaseAutoMerge
+parameter_list|()
+function_decl|;
 DECL|method|patchHeaderPatchSet ()
 name|String
 name|patchHeaderPatchSet

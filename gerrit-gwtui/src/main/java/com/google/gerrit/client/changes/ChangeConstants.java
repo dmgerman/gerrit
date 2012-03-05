@@ -555,6 +555,11 @@ name|String
 name|baseDiffItem
 parameter_list|()
 function_decl|;
+DECL|method|autoMerge ()
+name|String
+name|autoMerge
+parameter_list|()
+function_decl|;
 DECL|method|buttonReview ()
 name|String
 name|buttonReview
