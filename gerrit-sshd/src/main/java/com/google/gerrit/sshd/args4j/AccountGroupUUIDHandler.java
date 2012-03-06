@@ -220,17 +220,8 @@ name|GroupCache
 name|groupCache
 decl_stmt|;
 annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"unchecked"
-block|,
-literal|"rawtypes"
-block|}
-argument_list|)
-annotation|@
 name|Inject
-DECL|method|AccountGroupUUIDHandler (final GroupCache groupCache, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|AccountGroupUUIDHandler (final GroupCache groupCache, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<AccountGroup.UUID> setter)
 specifier|public
 name|AccountGroupUUIDHandler
 parameter_list|(
@@ -254,6 +245,11 @@ annotation|@
 name|Assisted
 specifier|final
 name|Setter
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
 name|setter
 parameter_list|)
 block|{

@@ -119,13 +119,11 @@ parameter_list|<
 name|T
 parameter_list|>
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
-DECL|method|create (org.kohsuke.args4j.CmdLineParser cmdLineParser, OptionDef optionDef, Setter setter)
+DECL|method|create (org.kohsuke.args4j.CmdLineParser cmdLineParser, OptionDef optionDef, Setter<T> setter)
 name|OptionHandler
+argument_list|<
+name|T
+argument_list|>
 name|create
 parameter_list|(
 name|org
@@ -141,6 +139,9 @@ name|OptionDef
 name|optionDef
 parameter_list|,
 name|Setter
+argument_list|<
+name|T
+argument_list|>
 name|setter
 parameter_list|)
 function_decl|;

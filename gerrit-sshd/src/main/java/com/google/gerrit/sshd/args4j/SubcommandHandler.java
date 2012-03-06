@@ -182,17 +182,8 @@ name|String
 argument_list|>
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"unchecked"
-block|,
-literal|"rawtypes"
-block|}
-argument_list|)
-annotation|@
 name|Inject
-DECL|method|SubcommandHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|SubcommandHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<String> setter)
 specifier|public
 name|SubcommandHandler
 parameter_list|(
@@ -212,6 +203,9 @@ annotation|@
 name|Assisted
 specifier|final
 name|Setter
+argument_list|<
+name|String
+argument_list|>
 name|setter
 parameter_list|)
 block|{

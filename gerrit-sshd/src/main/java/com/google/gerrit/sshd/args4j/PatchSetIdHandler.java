@@ -198,17 +198,8 @@ name|Id
 argument_list|>
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"unchecked"
-block|,
-literal|"rawtypes"
-block|}
-argument_list|)
-annotation|@
 name|Inject
-DECL|method|PatchSetIdHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|PatchSetIdHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<PatchSet.Id> setter)
 specifier|public
 name|PatchSetIdHandler
 parameter_list|(
@@ -228,6 +219,11 @@ annotation|@
 name|Assisted
 specifier|final
 name|Setter
+argument_list|<
+name|PatchSet
+operator|.
+name|Id
+argument_list|>
 name|setter
 parameter_list|)
 block|{

@@ -208,17 +208,8 @@ name|SocketAddress
 argument_list|>
 block|{
 annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"unchecked"
-block|,
-literal|"rawtypes"
-block|}
-argument_list|)
-annotation|@
 name|Inject
-DECL|method|SocketAddressHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|SocketAddressHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<SocketAddress> setter)
 specifier|public
 name|SocketAddressHandler
 parameter_list|(
@@ -238,6 +229,9 @@ annotation|@
 name|Assisted
 specifier|final
 name|Setter
+argument_list|<
+name|SocketAddress
+argument_list|>
 name|setter
 parameter_list|)
 block|{

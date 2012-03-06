@@ -236,17 +236,8 @@ name|Factory
 name|projectControlFactory
 decl_stmt|;
 annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"unchecked"
-block|,
-literal|"rawtypes"
-block|}
-argument_list|)
-annotation|@
 name|Inject
-DECL|method|ProjectControlHandler ( final ProjectControl.Factory projectControlFactory, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|ProjectControlHandler ( final ProjectControl.Factory projectControlFactory, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<ProjectControl> setter)
 specifier|public
 name|ProjectControlHandler
 parameter_list|(
@@ -272,6 +263,9 @@ annotation|@
 name|Assisted
 specifier|final
 name|Setter
+argument_list|<
+name|ProjectControl
+argument_list|>
 name|setter
 parameter_list|)
 block|{
