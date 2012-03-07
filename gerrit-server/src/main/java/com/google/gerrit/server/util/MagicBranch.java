@@ -203,7 +203,7 @@ specifier|final
 name|String
 name|NEW_DRAFT_CHANGE
 init|=
-literal|"refs/draft/"
+literal|"refs/drafts/"
 decl_stmt|;
 DECL|field|NEW_PUBLISH_CHANGE
 specifier|public
