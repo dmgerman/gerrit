@@ -607,7 +607,7 @@ name|SideBySide
 extends|extends
 name|PatchScreen
 block|{
-DECL|method|SideBySide (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable, final TopView topView)
+DECL|method|SideBySide (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable, final TopView topView, final PatchSet.Id baseId)
 specifier|public
 name|SideBySide
 parameter_list|(
@@ -632,6 +632,12 @@ parameter_list|,
 specifier|final
 name|TopView
 name|topView
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|baseId
 parameter_list|)
 block|{
 name|super
@@ -645,6 +651,8 @@ argument_list|,
 name|patchTable
 argument_list|,
 name|topView
+argument_list|,
+name|baseId
 argument_list|)
 expr_stmt|;
 block|}
@@ -689,7 +697,7 @@ name|Unified
 extends|extends
 name|PatchScreen
 block|{
-DECL|method|Unified (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable, final TopView topView)
+DECL|method|Unified (final Patch.Key id, final int patchIndex, final PatchSetDetail patchSetDetail, final PatchTable patchTable, final TopView topView, final PatchSet.Id baseId)
 specifier|public
 name|Unified
 parameter_list|(
@@ -714,6 +722,12 @@ parameter_list|,
 specifier|final
 name|TopView
 name|topView
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|baseId
 parameter_list|)
 block|{
 name|super
@@ -727,6 +741,8 @@ argument_list|,
 name|patchTable
 argument_list|,
 name|topView
+argument_list|,
+name|baseId
 argument_list|)
 expr_stmt|;
 block|}
@@ -763,27 +779,6 @@ name|UNIFIED
 return|;
 block|}
 block|}
-comment|// Which patch set id's are being diff'ed
-DECL|field|diffSideA
-specifier|private
-specifier|static
-name|PatchSet
-operator|.
-name|Id
-name|diffSideA
-init|=
-literal|null
-decl_stmt|;
-DECL|field|diffSideB
-specifier|private
-specifier|static
-name|PatchSet
-operator|.
-name|Id
-name|diffSideB
-init|=
-literal|null
-decl_stmt|;
 comment|/**    * What should be displayed in the top of the screen    */
 DECL|enum|TopView
 specifier|public
@@ -943,7 +938,7 @@ name|UNIFIED
 block|,
 name|SIDE_BY_SIDE
 block|}
-DECL|method|PatchScreen (final Patch.Key id, final int patchIndex, final PatchSetDetail detail, final PatchTable patchTable, final TopView top)
+DECL|method|PatchScreen (final Patch.Key id, final int patchIndex, final PatchSetDetail detail, final PatchTable patchTable, final TopView top, final PatchSet.Id baseId)
 specifier|protected
 name|PatchScreen
 parameter_list|(
@@ -968,6 +963,12 @@ parameter_list|,
 specifier|final
 name|TopView
 name|top
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|baseId
 parameter_list|)
 block|{
 name|patchKey
@@ -986,41 +987,13 @@ name|topView
 operator|=
 name|top
 expr_stmt|;
-if|if
-condition|(
-name|patchTable
-operator|!=
-literal|null
-condition|)
-block|{
-name|diffSideA
-operator|=
-name|patchTable
-operator|.
-name|getPatchSetIdToCompareWith
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|diffSideA
-operator|=
-literal|null
-expr_stmt|;
-block|}
 name|idSideA
 operator|=
-name|diffSideA
+name|baseId
 expr_stmt|;
 comment|// null here means we're diff'ing from the Base
 name|idSideB
 operator|=
-name|diffSideB
-operator|!=
-literal|null
-condition|?
-name|diffSideB
-else|:
 name|id
 operator|.
 name|getParentKey
@@ -1839,6 +1812,8 @@ name|fileList
 operator|.
 name|display
 argument_list|(
+name|idSideA
+argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
@@ -1970,6 +1945,18 @@ name|Type
 name|getPatchScreenType
 parameter_list|()
 function_decl|;
+DECL|method|getSideA ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getSideA
+parameter_list|()
+block|{
+return|return
+name|idSideA
+return|;
+block|}
 DECL|method|getPatchKey ()
 specifier|public
 name|Patch
@@ -2402,6 +2389,8 @@ name|Dispatcher
 operator|.
 name|toPatchUnified
 argument_list|(
+name|idSideA
+argument_list|,
 name|patchKey
 argument_list|)
 argument_list|)
@@ -2702,61 +2691,6 @@ name|showPatch
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setSideA (PatchSet.Id patchSetId)
-specifier|public
-name|void
-name|setSideA
-parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
-parameter_list|)
-block|{
-name|idSideA
-operator|=
-name|patchSetId
-expr_stmt|;
-name|diffSideA
-operator|=
-name|patchSetId
-expr_stmt|;
-if|if
-condition|(
-name|fileList
-operator|!=
-literal|null
-condition|)
-block|{
-name|fileList
-operator|.
-name|setPatchSetIdToCompareWith
-argument_list|(
-name|patchSetId
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|method|setSideB (PatchSet.Id patchSetId)
-specifier|public
-name|void
-name|setSideB
-parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
-parameter_list|)
-block|{
-name|idSideB
-operator|=
-name|patchSetId
-expr_stmt|;
-name|diffSideB
-operator|=
-name|patchSetId
-expr_stmt|;
-block|}
 DECL|method|setTopView (TopView tv)
 specifier|public
 name|void
@@ -2937,6 +2871,8 @@ name|fileList
 operator|.
 name|display
 argument_list|(
+name|idSideA
+argument_list|,
 name|result
 argument_list|)
 expr_stmt|;

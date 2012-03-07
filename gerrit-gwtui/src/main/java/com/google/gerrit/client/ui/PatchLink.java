@@ -142,6 +142,20 @@ name|Patch
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|PatchSet
+import|;
+end_import
+
 begin_class
 DECL|class|PatchLink
 specifier|public
@@ -150,6 +164,13 @@ name|PatchLink
 extends|extends
 name|InlineHyperlink
 block|{
+DECL|field|base
+specifier|protected
+name|PatchSet
+operator|.
+name|Id
+name|base
+decl_stmt|;
 DECL|field|patchKey
 specifier|protected
 name|Patch
@@ -179,38 +200,36 @@ operator|.
 name|TopView
 name|topView
 decl_stmt|;
-comment|/**    * @param text The text of this link    * @param patchKey The key for this patch    * @param patchIndex The index of the current patch in the patch set    * @param historyToken The history token    * @param patchSetDetail Detailed information about the patch set.    * @param parentPatchTable The table used to display this link    */
-DECL|method|PatchLink (final String text, final Patch.Key patchKey, final int patchIndex, final String historyToken, final PatchSetDetail patchSetDetail, final PatchTable parentPatchTable, final PatchScreen.TopView topView)
+comment|/**    * @param text The text of this link    * @param base optional base to compare against.    * @param patchKey The key for this patch    * @param patchIndex The index of the current patch in the patch set    * @param historyToken The history token    * @param patchSetDetail Detailed information about the patch set.    * @param parentPatchTable The table used to display this link    */
+DECL|method|PatchLink (String text, PatchSet.Id base, Patch.Key patchKey, int patchIndex, String historyToken, PatchSetDetail patchSetDetail, PatchTable parentPatchTable, PatchScreen.TopView topView)
 specifier|protected
 name|PatchLink
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|base
+parameter_list|,
 name|Patch
 operator|.
 name|Key
 name|patchKey
 parameter_list|,
-specifier|final
 name|int
 name|patchIndex
 parameter_list|,
-specifier|final
 name|String
 name|historyToken
 parameter_list|,
-specifier|final
 name|PatchSetDetail
 name|patchSetDetail
 parameter_list|,
-specifier|final
 name|PatchTable
 name|parentPatchTable
 parameter_list|,
-specifier|final
 name|PatchScreen
 operator|.
 name|TopView
@@ -223,6 +242,12 @@ name|text
 argument_list|,
 name|historyToken
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|base
+operator|=
+name|base
 expr_stmt|;
 name|this
 operator|.
@@ -262,21 +287,18 @@ name|topView
 expr_stmt|;
 block|}
 comment|/**    * @param text The text of this link    * @param type The type of the link to create (unified/side-by-side)    * @param patchScreen The patchScreen to grab contents to link to from    */
-DECL|method|PatchLink (final String text, final PatchScreen.Type type, final PatchScreen patchScreen)
+DECL|method|PatchLink (String text, PatchScreen.Type type, PatchScreen patchScreen)
 specifier|public
 name|PatchLink
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
 name|PatchScreen
 operator|.
 name|Type
 name|type
 parameter_list|,
-specifier|final
 name|PatchScreen
 name|patchScreen
 parameter_list|)
@@ -284,6 +306,12 @@ block|{
 name|this
 argument_list|(
 name|text
+argument_list|,
+comment|//
+name|patchScreen
+operator|.
+name|getSideA
+argument_list|()
 argument_list|,
 comment|//
 name|patchScreen
@@ -348,6 +376,9 @@ name|getTargetHistoryToken
 argument_list|()
 argument_list|,
 comment|//
+name|base
+argument_list|,
+comment|//
 name|patchKey
 argument_list|,
 comment|//
@@ -372,21 +403,23 @@ name|SideBySide
 extends|extends
 name|PatchLink
 block|{
-DECL|method|SideBySide (final String text, final Patch.Key patchKey, final int patchIndex, PatchSetDetail patchSetDetail, PatchTable parentPatchTable)
+DECL|method|SideBySide (String text, PatchSet.Id base, Patch.Key patchKey, int patchIndex, PatchSetDetail patchSetDetail, PatchTable parentPatchTable)
 specifier|public
 name|SideBySide
 parameter_list|(
-specifier|final
 name|String
 name|text
 parameter_list|,
-specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|base
+parameter_list|,
 name|Patch
 operator|.
 name|Key
 name|patchKey
 parameter_list|,
-specifier|final
 name|int
 name|patchIndex
 parameter_list|,
@@ -401,6 +434,8 @@ name|super
 argument_list|(
 name|text
 argument_list|,
+name|base
+argument_list|,
 name|patchKey
 argument_list|,
 name|patchIndex
@@ -409,6 +444,8 @@ name|Dispatcher
 operator|.
 name|toPatchSideBySide
 argument_list|(
+name|base
+argument_list|,
 name|patchKey
 argument_list|)
 argument_list|,
@@ -429,13 +466,17 @@ name|Unified
 extends|extends
 name|PatchLink
 block|{
-DECL|method|Unified (final String text, final Patch.Key patchKey, final int patchIndex, PatchSetDetail patchSetDetail, PatchTable parentPatchTable)
+DECL|method|Unified (String text, PatchSet.Id base, final Patch.Key patchKey, int patchIndex, PatchSetDetail patchSetDetail, PatchTable parentPatchTable)
 specifier|public
 name|Unified
 parameter_list|(
-specifier|final
 name|String
 name|text
+parameter_list|,
+name|PatchSet
+operator|.
+name|Id
+name|base
 parameter_list|,
 specifier|final
 name|Patch
@@ -443,7 +484,6 @@ operator|.
 name|Key
 name|patchKey
 parameter_list|,
-specifier|final
 name|int
 name|patchIndex
 parameter_list|,
@@ -458,6 +498,8 @@ name|super
 argument_list|(
 name|text
 argument_list|,
+name|base
+argument_list|,
 name|patchKey
 argument_list|,
 name|patchIndex
@@ -466,6 +508,8 @@ name|Dispatcher
 operator|.
 name|toPatchUnified
 argument_list|(
+name|base
+argument_list|,
 name|patchKey
 argument_list|)
 argument_list|,
