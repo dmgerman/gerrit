@@ -1616,6 +1616,67 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testWithFalseTags ()
+specifier|public
+name|void
+name|testWithFalseTags
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"foo\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"FakeLine:\n"
+operator|+
+comment|//
+literal|"  foo\n"
+operator|+
+comment|//
+literal|"  bar\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"Change-Id: I67632a37fd2e08a35f766f52fc9a47f4ea868c55\n"
+operator|+
+comment|//
+literal|"RealTag: abc\n"
+argument_list|,
+comment|//
+name|call
+argument_list|(
+literal|"foo\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"FakeLine:\n"
+operator|+
+comment|//
+literal|"  foo\n"
+operator|+
+comment|//
+literal|"  bar\n"
+operator|+
+comment|//
+literal|"\n"
+operator|+
+comment|//
+literal|"RealTag: abc\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|hookDoesNotModify (final String in)
 specifier|private
 name|void
