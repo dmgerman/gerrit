@@ -92,6 +92,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountExternalId
 import|;
 end_import
@@ -105,6 +107,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|server
 operator|.
 name|ReviewDb
 import|;
@@ -132,7 +136,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;

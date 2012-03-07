@@ -76,21 +76,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|server
+operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|OrmException
 import|;
 end_import
 
@@ -105,6 +93,20 @@ operator|.
 name|jdbc
 operator|.
 name|Database
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 

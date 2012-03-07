@@ -78,6 +78,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountExternalId
 import|;
 end_import

@@ -90,6 +90,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|server
+operator|.
 name|ReviewDb
 import|;
 end_import
@@ -118,9 +120,9 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|jdbc
 operator|.
-name|SchemaFactory
+name|Database
 import|;
 end_import
 
@@ -132,9 +134,9 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|jdbc
+name|server
 operator|.
-name|Database
+name|SchemaFactory
 import|;
 end_import
 

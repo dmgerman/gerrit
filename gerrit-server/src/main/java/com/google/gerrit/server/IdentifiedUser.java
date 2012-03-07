@@ -74,6 +74,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Account
 import|;
 end_import
@@ -87,6 +89,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountDiffPreference
 import|;
@@ -102,6 +106,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -115,6 +121,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountProjectWatch
 import|;
@@ -130,6 +138,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Change
 import|;
 end_import
@@ -144,7 +154,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|client
+operator|.
+name|StarredChange
 import|;
 end_import
 
@@ -158,7 +170,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|StarredChange
+name|server
+operator|.
+name|ReviewDb
 import|;
 end_import
 
@@ -298,7 +312,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;
@@ -516,7 +530,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|Iterator
 import|;
 end_import
 
@@ -526,7 +540,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|LinkedList
 import|;
 end_import
 

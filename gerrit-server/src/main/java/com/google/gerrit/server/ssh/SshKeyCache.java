@@ -92,6 +92,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountSshKey
 import|;
 end_import

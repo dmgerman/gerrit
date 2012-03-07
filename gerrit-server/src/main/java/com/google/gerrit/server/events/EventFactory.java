@@ -108,6 +108,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Account
 import|;
 end_import
@@ -121,6 +123,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|Branch
 import|;
@@ -136,6 +140,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Change
 import|;
 end_import
@@ -149,6 +155,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|ChangeMessage
 import|;
@@ -164,6 +172,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchLineComment
 import|;
 end_import
@@ -177,6 +187,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|PatchSet
 import|;
@@ -192,6 +204,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchSetApproval
 import|;
 end_import
@@ -205,6 +219,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|TrackingId
 import|;

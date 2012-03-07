@@ -228,13 +228,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gwt
 operator|.
-name|globalkey
+name|user
 operator|.
 name|client
 operator|.
-name|NpTextBox
+name|ui
+operator|.
+name|SuggestBox
 import|;
 end_import
 
@@ -253,6 +255,8 @@ operator|.
 name|ui
 operator|.
 name|SuggestBox
+operator|.
+name|DefaultSuggestionDisplay
 import|;
 end_import
 
@@ -280,17 +284,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtexpui
 operator|.
-name|user
+name|globalkey
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|SuggestBox
-operator|.
-name|DefaultSuggestionDisplay
+name|NpTextBox
 import|;
 end_import
 

@@ -80,6 +80,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Patch
 import|;
 end_import
@@ -93,6 +95,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountDiffPreference
 operator|.

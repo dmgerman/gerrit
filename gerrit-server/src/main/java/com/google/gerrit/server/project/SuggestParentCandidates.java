@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -104,7 +106,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;

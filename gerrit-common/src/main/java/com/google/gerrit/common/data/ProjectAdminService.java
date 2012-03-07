@@ -92,6 +92,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Branch
 import|;
 end_import
@@ -105,6 +107,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|Project
 import|;
@@ -166,7 +170,9 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|VoidResult
+name|RpcImpl
+operator|.
+name|Version
 import|;
 end_import
 
@@ -180,9 +186,7 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|RpcImpl
-operator|.
-name|Version
+name|VoidResult
 import|;
 end_import
 

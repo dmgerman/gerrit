@@ -142,6 +142,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -155,6 +157,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountGroupName
 import|;
@@ -170,6 +174,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -184,7 +190,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|client
+operator|.
+name|SystemConfig
 import|;
 end_import
 
@@ -198,7 +206,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|SystemConfig
+name|server
+operator|.
+name|ReviewDb
 import|;
 end_import
 
@@ -320,7 +330,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;

@@ -218,7 +218,9 @@ name|prettify
 operator|.
 name|common
 operator|.
-name|SparseHtmlFile
+name|EditList
+operator|.
+name|Hunk
 import|;
 end_import
 
@@ -234,9 +236,7 @@ name|prettify
 operator|.
 name|common
 operator|.
-name|EditList
-operator|.
-name|Hunk
+name|SparseHtmlFile
 import|;
 end_import
 
@@ -249,6 +249,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|Patch
 import|;
@@ -263,6 +265,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|PatchLineComment
 import|;

@@ -92,6 +92,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Account
 import|;
 end_import
@@ -105,6 +107,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountDiffPreference
 import|;
@@ -120,6 +124,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|ApprovalCategoryValue
 import|;
 end_import
@@ -133,6 +139,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|Change
 import|;
@@ -148,6 +156,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Patch
 import|;
 end_import
@@ -161,6 +171,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|PatchLineComment
 import|;
@@ -176,6 +188,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -189,6 +203,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|Patch
 operator|.
@@ -252,7 +268,9 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|VoidResult
+name|RpcImpl
+operator|.
+name|Version
 import|;
 end_import
 
@@ -266,9 +284,7 @@ name|gwtjsonrpc
 operator|.
 name|client
 operator|.
-name|RpcImpl
-operator|.
-name|Version
+name|VoidResult
 import|;
 end_import
 

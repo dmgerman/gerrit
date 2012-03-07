@@ -136,6 +136,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|CodedEnum
 import|;
 end_import

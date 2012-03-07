@@ -78,6 +78,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountExternalId
 operator|.
 name|SCHEME_GERRIT
@@ -110,6 +112,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Account
 import|;
 end_import
@@ -123,6 +127,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountExternalId
 import|;
@@ -138,6 +144,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -152,6 +160,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AuthType
 import|;
 end_import
@@ -165,6 +175,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|server
 operator|.
 name|ReviewDb
 import|;
@@ -374,7 +386,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;
@@ -388,7 +400,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|SchemaFactory
 import|;

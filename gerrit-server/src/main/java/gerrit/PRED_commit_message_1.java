@@ -68,6 +68,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchSetInfo
 import|;
 end_import

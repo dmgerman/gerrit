@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|OperatorPredicate
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse

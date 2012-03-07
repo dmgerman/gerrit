@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountAgreement
 import|;
 end_import
@@ -90,6 +92,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountGroupAgreement
 import|;
 end_import
@@ -103,6 +107,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|ContributorAgreement
 import|;

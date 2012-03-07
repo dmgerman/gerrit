@@ -154,6 +154,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -226,7 +228,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|HasHorizontalAlignment
+name|HTMLTable
+operator|.
+name|CellFormatter
 import|;
 end_import
 
@@ -244,9 +248,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|HTMLTable
-operator|.
-name|CellFormatter
+name|HasHorizontalAlignment
 import|;
 end_import
 

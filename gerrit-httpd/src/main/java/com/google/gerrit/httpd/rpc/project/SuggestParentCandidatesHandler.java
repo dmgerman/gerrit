@@ -94,6 +94,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import

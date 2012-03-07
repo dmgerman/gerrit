@@ -82,7 +82,27 @@ name|PushReplication
 operator|.
 name|ReplicationConfig
 operator|.
-name|*
+name|encode
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|PushReplication
+operator|.
+name|ReplicationConfig
+operator|.
+name|needsUrlEncoding
 import|;
 end_import
 

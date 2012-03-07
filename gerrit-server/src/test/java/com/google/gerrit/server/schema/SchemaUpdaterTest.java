@@ -76,7 +76,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|client
+operator|.
+name|SystemConfig
 import|;
 end_import
 
@@ -90,7 +92,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|SystemConfig
+name|server
+operator|.
+name|ReviewDb
 import|;
 end_import
 
@@ -224,7 +228,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;
@@ -238,7 +242,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|SchemaFactory
 import|;
@@ -252,7 +256,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|StatementExecutor
 import|;

@@ -122,6 +122,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Patch
 import|;
 end_import
@@ -242,7 +244,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|ScrollPanel
+name|PopupPanel
+operator|.
+name|PositionCallback
 import|;
 end_import
 
@@ -260,9 +264,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|PopupPanel
-operator|.
-name|PositionCallback
+name|ScrollPanel
 import|;
 end_import
 

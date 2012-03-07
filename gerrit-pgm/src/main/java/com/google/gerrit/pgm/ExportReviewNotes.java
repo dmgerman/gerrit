@@ -168,6 +168,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Change
 import|;
 end_import
@@ -181,6 +183,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|PatchSet
 import|;
@@ -196,6 +200,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -209,6 +215,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|server
 operator|.
 name|ReviewDb
 import|;
@@ -414,7 +422,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;
@@ -428,7 +436,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|SchemaFactory
 import|;

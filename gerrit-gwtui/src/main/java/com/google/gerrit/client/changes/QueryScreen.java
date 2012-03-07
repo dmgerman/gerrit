@@ -152,6 +152,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|RevId
 import|;
 end_import

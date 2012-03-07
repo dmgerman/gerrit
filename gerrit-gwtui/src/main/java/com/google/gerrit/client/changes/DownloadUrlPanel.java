@@ -90,6 +90,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountGeneralPreferences
 import|;
 end_import

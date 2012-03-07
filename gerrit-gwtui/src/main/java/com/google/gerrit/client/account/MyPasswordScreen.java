@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountExternalId
 operator|.
 name|SCHEME_USERNAME
@@ -137,6 +139,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|AccountExternalId
 import|;

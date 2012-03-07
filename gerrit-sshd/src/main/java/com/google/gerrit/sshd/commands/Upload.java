@@ -76,6 +76,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|server
+operator|.
 name|ReviewDb
 import|;
 end_import

@@ -67,6 +67,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -87,20 +101,6 @@ operator|.
 name|annotation
 operator|.
 name|Retention
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|RetentionPolicy
-operator|.
-name|RUNTIME
 import|;
 end_import
 

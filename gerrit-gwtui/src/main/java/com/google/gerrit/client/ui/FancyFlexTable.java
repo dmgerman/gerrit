@@ -194,7 +194,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Widget
+name|HTMLTable
+operator|.
+name|CellFormatter
 import|;
 end_import
 
@@ -212,9 +214,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|HTMLTable
-operator|.
-name|CellFormatter
+name|Widget
 import|;
 end_import
 

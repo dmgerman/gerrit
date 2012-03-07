@@ -74,6 +74,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Account
 import|;
 end_import
@@ -87,6 +89,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|ApprovalCategory
 import|;
@@ -102,6 +106,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|ApprovalCategoryValue
 import|;
 end_import
@@ -115,6 +121,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|Change
 import|;
@@ -130,6 +138,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|ContributorAgreement
 import|;
 end_import
@@ -143,6 +153,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|PatchSet
 import|;
@@ -158,7 +170,11 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|client
+operator|.
+name|Branch
+operator|.
+name|NameKey
 import|;
 end_import
 
@@ -172,9 +188,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|Branch
+name|server
 operator|.
-name|NameKey
+name|ReviewDb
 import|;
 end_import
 

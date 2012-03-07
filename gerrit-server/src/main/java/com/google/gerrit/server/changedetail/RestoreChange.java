@@ -106,6 +106,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Change
 import|;
 end_import
@@ -119,6 +121,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|ChangeMessage
 import|;
@@ -134,6 +138,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -147,6 +153,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|server
 operator|.
 name|ReviewDb
 import|;
@@ -192,7 +200,7 @@ name|server
 operator|.
 name|mail
 operator|.
-name|RestoredSender
+name|EmailException
 import|;
 end_import
 
@@ -208,7 +216,23 @@ name|server
 operator|.
 name|mail
 operator|.
-name|EmailException
+name|RestoredSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ChangeControl
 import|;
 end_import
 
@@ -250,25 +274,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|AtomicUpdate
 import|;
@@ -282,7 +290,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;

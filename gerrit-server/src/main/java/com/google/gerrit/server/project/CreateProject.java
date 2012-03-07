@@ -156,6 +156,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AccountGroup
 import|;
 end_import
@@ -170,6 +172,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -183,6 +187,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|server
 operator|.
 name|ReviewDb
 import|;
@@ -309,6 +315,22 @@ operator|.
 name|git
 operator|.
 name|ReplicationQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|RepositoryCaseMismatchException
 import|;
 end_import
 
@@ -460,7 +482,9 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|Repository
+name|RefUpdate
+operator|.
+name|Result
 import|;
 end_import
 
@@ -474,9 +498,7 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|RefUpdate
-operator|.
-name|Result
+name|Repository
 import|;
 end_import
 
@@ -527,38 +549,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|RepositoryCaseMismatchException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|ProjectCache
 import|;
 end_import
 

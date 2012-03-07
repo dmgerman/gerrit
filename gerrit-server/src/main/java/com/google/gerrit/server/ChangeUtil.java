@@ -88,6 +88,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|Change
 import|;
 end_import
@@ -101,6 +103,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|ChangeMessage
 import|;
@@ -116,6 +120,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -129,6 +135,8 @@ operator|.
 name|gerrit
 operator|.
 name|reviewdb
+operator|.
+name|client
 operator|.
 name|PatchSetInfo
 import|;
@@ -144,6 +152,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|RevId
 import|;
 end_import
@@ -158,7 +168,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|ReviewDb
+name|client
+operator|.
+name|TrackingId
 import|;
 end_import
 
@@ -172,7 +184,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|TrackingId
+name|server
+operator|.
+name|ReviewDb
 import|;
 end_import
 
@@ -376,7 +390,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmConcurrencyException
 import|;
@@ -390,7 +404,7 @@ name|google
 operator|.
 name|gwtorm
 operator|.
-name|client
+name|server
 operator|.
 name|OrmException
 import|;

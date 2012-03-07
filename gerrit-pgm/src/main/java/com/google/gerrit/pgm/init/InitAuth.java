@@ -110,6 +110,8 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
 name|AuthType
 import|;
 end_import

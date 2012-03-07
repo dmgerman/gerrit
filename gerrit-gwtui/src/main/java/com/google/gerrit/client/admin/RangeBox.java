@@ -182,7 +182,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|ValueListBox
+name|ValueBoxBase
+operator|.
+name|TextAlignment
 import|;
 end_import
 
@@ -200,9 +202,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|ValueBoxBase
-operator|.
-name|TextAlignment
+name|ValueListBox
 import|;
 end_import
 
