@@ -324,17 +324,8 @@ name|AuthType
 name|authType
 decl_stmt|;
 annotation|@
-name|SuppressWarnings
-argument_list|(
-block|{
-literal|"unchecked"
-block|,
-literal|"rawtypes"
-block|}
-argument_list|)
-annotation|@
 name|Inject
-DECL|method|AccountIdHandler (final AccountResolver accountResolver, final AccountManager accountManager, final AuthConfig authConfig, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter setter)
+DECL|method|AccountIdHandler (final AccountResolver accountResolver, final AccountManager accountManager, final AuthConfig authConfig, @Assisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<Account.Id> setter)
 specifier|public
 name|AccountIdHandler
 parameter_list|(
@@ -366,6 +357,11 @@ annotation|@
 name|Assisted
 specifier|final
 name|Setter
+argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
 name|setter
 parameter_list|)
 block|{
