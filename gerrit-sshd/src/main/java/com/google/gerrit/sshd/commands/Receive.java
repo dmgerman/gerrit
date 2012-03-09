@@ -224,7 +224,7 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|ReceivePack
+name|AdvertiseRefsHook
 import|;
 end_import
 
@@ -238,7 +238,7 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|RefFilter
+name|ReceivePack
 import|;
 end_import
 
@@ -683,11 +683,11 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"  RefFilter: "
+literal|"  AdvertiseRefsHook: "
 operator|+
 name|rp
 operator|.
-name|getRefFilter
+name|getAdvertiseRefsHook
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -695,10 +695,10 @@ if|if
 condition|(
 name|rp
 operator|.
-name|getRefFilter
+name|getAdvertiseRefsHook
 argument_list|()
 operator|==
-name|RefFilter
+name|AdvertiseRefsHook
 operator|.
 name|DEFAULT
 condition|)
@@ -716,7 +716,7 @@ if|if
 condition|(
 name|rp
 operator|.
-name|getRefFilter
+name|getAdvertiseRefsHook
 argument_list|()
 operator|instanceof
 name|VisibleRefFilter
@@ -738,7 +738,7 @@ name|append
 argument_list|(
 name|rp
 operator|.
-name|getRefFilter
+name|getAdvertiseRefsHook
 argument_list|()
 operator|.
 name|getClass
@@ -757,7 +757,7 @@ if|if
 condition|(
 name|rp
 operator|.
-name|getRefFilter
+name|getAdvertiseRefsHook
 argument_list|()
 operator|instanceof
 name|VisibleRefFilter
