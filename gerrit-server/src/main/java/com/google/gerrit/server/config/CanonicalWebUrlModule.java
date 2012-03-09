@@ -67,20 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Scopes
-operator|.
-name|SINGLETON
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -147,16 +133,6 @@ init|=
 name|provider
 argument_list|()
 decl_stmt|;
-name|bind
-argument_list|(
-name|provider
-argument_list|)
-operator|.
-name|in
-argument_list|(
-name|SINGLETON
-argument_list|)
-expr_stmt|;
 name|bind
 argument_list|(
 name|String
