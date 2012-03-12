@@ -92,6 +92,16 @@ name|Collection
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/** Tracks group objects in memory for efficient access. */
 end_comment
@@ -124,6 +134,9 @@ name|NameKey
 name|name
 parameter_list|)
 function_decl|;
+comment|/**    * Lookup a group definition by its UUID. The returned definition may be null    * if the group has been deleted and the UUID reference is stale, or was    * copied from another server.    */
+annotation|@
+name|Nullable
 DECL|method|get (AccountGroup.UUID uuid)
 specifier|public
 name|AccountGroup

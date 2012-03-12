@@ -1129,6 +1129,13 @@ argument_list|(
 name|ownerId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|accountGroup
+operator|!=
+literal|null
+condition|)
+block|{
 name|GroupReference
 name|group
 init|=
@@ -1159,6 +1166,7 @@ name|group
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|md
