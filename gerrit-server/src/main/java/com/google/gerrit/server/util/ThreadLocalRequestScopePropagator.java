@@ -288,7 +288,7 @@ return|return
 name|context
 return|;
 block|}
-comment|/**    * Returns a new context object based on the passed in context that has no    * request scoped objects initialized.    *    * @param ctx the context to continue.    * @return a new context.    */
+comment|/**    * Returns a new context object based on the passed in context that has no    * request scoped objects initialized.    *<p>    * Note that some code paths expect request-scoped objects like    * {@code CurrentUser} to be constructible starting from just the context    * object returned by this method. For example, in the SSH scope, the context    * includes the {@code SshSession}, which is used by    * {@code SshCurrentUserProvider} to construct a new {@code CurrentUser} in    * the new thread.    *    * @param ctx the context to continue.    * @return a new context.    */
 DECL|method|continuingContext (C ctx)
 specifier|protected
 specifier|abstract
