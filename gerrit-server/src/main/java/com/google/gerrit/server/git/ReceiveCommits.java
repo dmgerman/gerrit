@@ -2870,7 +2870,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addError (String error)
-specifier|private
 name|void
 name|addError
 parameter_list|(
@@ -2893,7 +2892,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|sendMessages ()
-specifier|private
 name|void
 name|sendMessages
 parameter_list|()
@@ -2952,8 +2950,6 @@ specifier|final
 name|MultiProgressMonitor
 name|progress
 parameter_list|)
-block|{
-try|try
 block|{
 name|newProgress
 operator|=
@@ -3387,13 +3383,6 @@ name|addMessage
 argument_list|(
 literal|""
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|sendMessages
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -12803,6 +12792,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|reject (final ReceiveCommand cmd, final String why)
+specifier|private
 name|void
 name|reject
 parameter_list|(
