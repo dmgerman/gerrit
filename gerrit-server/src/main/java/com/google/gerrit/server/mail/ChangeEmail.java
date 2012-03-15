@@ -1758,6 +1758,8 @@ argument_list|()
 argument_list|)
 control|)
 block|{
+name|super
+operator|.
 name|add
 argument_list|(
 name|RecipientType
