@@ -383,6 +383,33 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--dependencies"
+argument_list|,
+name|usage
+operator|=
+literal|"Include depends-on and needed-by information"
+argument_list|)
+DECL|method|setDependencies (boolean on)
+name|void
+name|setDependencies
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setIncludeDependencies
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Argument
 argument_list|(
 name|index
