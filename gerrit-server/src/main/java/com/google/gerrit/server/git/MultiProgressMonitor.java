@@ -969,7 +969,7 @@ name|s
 operator|.
 name|append
 argument_list|(
-literal|", "
+literal|","
 argument_list|)
 expr_stmt|;
 block|}
@@ -977,7 +977,7 @@ name|s
 operator|.
 name|append
 argument_list|(
-literal|"done    \n"
+literal|" done    \n"
 argument_list|)
 expr_stmt|;
 name|send
