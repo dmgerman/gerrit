@@ -1726,9 +1726,7 @@ name|patchSetsBlock
 operator|=
 operator|new
 name|PatchSetsBlock
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|add
 argument_list|(
@@ -1917,23 +1915,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|update (final ChangeDetail detail)
-name|void
-name|update
-parameter_list|(
-specifier|final
-name|ChangeDetail
-name|detail
-parameter_list|)
-block|{
-name|detailCache
-operator|.
-name|set
-argument_list|(
-name|detail
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|display (final ChangeDetail detail)
 specifier|private
