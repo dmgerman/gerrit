@@ -505,11 +505,6 @@ name|String
 name|buttonRevertChangeSend
 parameter_list|()
 function_decl|;
-DECL|method|buttonRevertChangeCancel ()
-name|String
-name|buttonRevertChangeCancel
-parameter_list|()
-function_decl|;
 DECL|method|headingRevertMessage ()
 name|String
 name|headingRevertMessage
@@ -528,11 +523,6 @@ function_decl|;
 DECL|method|buttonAbandonChangeSend ()
 name|String
 name|buttonAbandonChangeSend
-parameter_list|()
-function_decl|;
-DECL|method|buttonAbandonChangeCancel ()
-name|String
-name|buttonAbandonChangeCancel
 parameter_list|()
 function_decl|;
 DECL|method|headingAbandonMessage ()
@@ -598,11 +588,6 @@ function_decl|;
 DECL|method|restoreChangeTitle ()
 name|String
 name|restoreChangeTitle
-parameter_list|()
-function_decl|;
-DECL|method|buttonRestoreChangeCancel ()
-name|String
-name|buttonRestoreChangeCancel
 parameter_list|()
 function_decl|;
 DECL|method|headingRestoreMessage ()
