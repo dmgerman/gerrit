@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb.server
+DECL|package|com.google.gerrit.server.account
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
+operator|.
+name|account
 package|;
 end_package
 
@@ -84,157 +84,90 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|Access
+name|Collections
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
+name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|PrimaryKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|Query
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|ResultSet
-import|;
-end_import
+begin_comment
+comment|/**  * Implementations of GroupMembership provide methods to test  * the presence of a user in a particular group.  */
+end_comment
 
 begin_interface
-DECL|interface|AccountGroupAccess
+DECL|interface|GroupMembership
 specifier|public
 interface|interface
-name|AccountGroupAccess
-extends|extends
-name|Access
-argument_list|<
-name|AccountGroup
-argument_list|,
-name|AccountGroup
-operator|.
-name|Id
-argument_list|>
+name|GroupMembership
 block|{
-annotation|@
-name|PrimaryKey
+DECL|field|EMPTY
+specifier|public
+specifier|static
+specifier|final
+name|GroupMembership
+name|EMPTY
+init|=
+operator|new
+name|ListGroupMembership
 argument_list|(
-literal|"groupId"
-argument_list|)
-DECL|method|get (AccountGroup.Id id)
-name|AccountGroup
-name|get
-parameter_list|(
+name|Collections
+operator|.
+expr|<
 name|AccountGroup
 operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE groupUUID = ?"
+name|UUID
+operator|>
+name|emptySet
+argument_list|()
 argument_list|)
-DECL|method|byUUID (AccountGroup.UUID uuid)
-name|ResultSet
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|byUUID
+decl_stmt|;
+comment|/**    * Returns {@code true} when the user this object was created for is a member    * of the specified group.    */
+DECL|method|contains (AccountGroup.UUID groupId)
+name|boolean
+name|contains
 parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|uuid
+name|groupId
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE externalName = ?"
-argument_list|)
-DECL|method|byExternalName (AccountGroup.ExternalNameKey name)
-name|ResultSet
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|byExternalName
+comment|/**    * Returns {@code true} when the user this object was created for is a member    * of any of the specified group.    */
+DECL|method|containsAnyOf (Iterable<AccountGroup.UUID> groupIds)
+name|boolean
+name|containsAnyOf
 parameter_list|(
+name|Iterable
+argument_list|<
 name|AccountGroup
 operator|.
-name|ExternalNameKey
-name|name
+name|UUID
+argument_list|>
+name|groupIds
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
-annotation|@
-name|Query
-DECL|method|all ()
-name|ResultSet
+comment|/**    * Returns the set of groups that can be determined by the implementation.    * This may not return all groups the {@link #contains(AccountGroup.UUID)}    * would return {@code true} for, but will at least contain all top level    * groups. This restriction stems from the API of some group systems, which    * make it expensive to enumate the members of a group.    */
+DECL|method|getKnownGroups ()
+name|Set
 argument_list|<
 name|AccountGroup
+operator|.
+name|UUID
 argument_list|>
-name|all
+name|getKnownGroups
 parameter_list|()
-throws|throws
-name|OrmException
 function_decl|;
 block|}
 end_interface

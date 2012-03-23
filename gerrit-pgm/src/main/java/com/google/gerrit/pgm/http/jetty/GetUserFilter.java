@@ -243,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores as a request attribute, so the {@link HttpLog} can include the the  * user for the request outside of the request scope.  *  * @author cranger@google.com (Colby Ranger)  */
+comment|/**  * Stores as a request attribute, so the {@link HttpLog} can include the the  * user for the request outside of the request scope.  */
 end_comment
 
 begin_class
