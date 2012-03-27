@@ -142,6 +142,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -166,9 +176,17 @@ specifier|final
 name|AccountByEmailCache
 name|byEmail
 decl_stmt|;
+DECL|field|groupMembershipFactory
+specifier|private
+specifier|final
+name|MaterializedGroupMembership
+operator|.
+name|Factory
+name|groupMembershipFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultRealm (final EmailExpander emailExpander, final AccountByEmailCache byEmail)
+DECL|method|DefaultRealm (final EmailExpander emailExpander, final AccountByEmailCache byEmail, final MaterializedGroupMembership.Factory groupMembershipFactory)
 name|DefaultRealm
 parameter_list|(
 specifier|final
@@ -178,6 +196,12 @@ parameter_list|,
 specifier|final
 name|AccountByEmailCache
 name|byEmail
+parameter_list|,
+specifier|final
+name|MaterializedGroupMembership
+operator|.
+name|Factory
+name|groupMembershipFactory
 parameter_list|)
 block|{
 name|this
@@ -191,6 +215,12 @@ operator|.
 name|byEmail
 operator|=
 name|byEmail
+expr_stmt|;
+name|this
+operator|.
+name|groupMembershipFactory
+operator|=
+name|groupMembershipFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -313,12 +343,7 @@ annotation|@
 name|Override
 DECL|method|groups (final AccountState who)
 specifier|public
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+name|GroupMembership
 name|groups
 parameter_list|(
 specifier|final
@@ -327,10 +352,15 @@ name|who
 parameter_list|)
 block|{
 return|return
+name|groupMembershipFactory
+operator|.
+name|create
+argument_list|(
 name|who
 operator|.
 name|getInternalGroups
 argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@

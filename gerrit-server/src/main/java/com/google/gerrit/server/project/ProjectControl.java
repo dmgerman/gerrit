@@ -1716,6 +1716,9 @@ name|iUser
 operator|.
 name|getEffectiveGroups
 argument_list|()
+operator|.
+name|getKnownGroups
+argument_list|()
 control|)
 block|{
 name|AccountGroup

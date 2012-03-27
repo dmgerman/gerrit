@@ -186,12 +186,7 @@ parameter_list|)
 function_decl|;
 DECL|method|groups (AccountState who)
 specifier|public
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+name|GroupMembership
 name|groups
 parameter_list|(
 name|AccountState

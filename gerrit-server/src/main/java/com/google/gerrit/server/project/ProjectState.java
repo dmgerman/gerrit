@@ -244,6 +244,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|GroupMembership
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|AllProjectsName
@@ -1306,16 +1322,11 @@ argument_list|()
 return|;
 block|}
 comment|/**    * @return true if any of the groups listed in {@code groups} was declared to    *         be an owner of this project, or one of its parent projects..    */
-DECL|method|isOwner (Set<AccountGroup.UUID> groups)
+DECL|method|isOwner (GroupMembership groups)
 name|boolean
 name|isOwner
 parameter_list|(
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+name|GroupMembership
 name|groups
 parameter_list|)
 block|{
@@ -1356,15 +1367,13 @@ do|do
 block|{
 if|if
 condition|(
-name|CollectionsUtil
+name|groups
 operator|.
-name|isAnyIncludedIn
+name|containsAnyOf
 argument_list|(
 name|s
 operator|.
 name|localOwners
-argument_list|,
-name|groups
 argument_list|)
 condition|)
 block|{

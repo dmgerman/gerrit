@@ -629,6 +629,9 @@ name|user
 operator|.
 name|getEffectiveGroups
 argument_list|()
+operator|.
+name|getKnownGroups
+argument_list|()
 decl_stmt|;
 specifier|final
 name|Set

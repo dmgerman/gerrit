@@ -263,6 +263,9 @@ operator|)
 operator|.
 name|getEffectiveGroups
 argument_list|()
+operator|.
+name|getKnownGroups
+argument_list|()
 comment|//
 operator|.
 name|iterator
