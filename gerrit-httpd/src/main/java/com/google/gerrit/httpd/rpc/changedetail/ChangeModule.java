@@ -187,6 +187,15 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
+name|RebaseChange
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|ChangeDetailFactory
 operator|.
 name|Factory

@@ -1202,6 +1202,18 @@ name|db
 argument_list|)
 return|;
 block|}
+comment|/** Can this user rebase this change? */
+DECL|method|canRebase ()
+specifier|public
+name|boolean
+name|canRebase
+parameter_list|()
+block|{
+return|return
+name|canAddPatchSet
+argument_list|()
+return|;
+block|}
 comment|/** Can this user restore this change? */
 DECL|method|canRestore ()
 specifier|public
