@@ -177,12 +177,6 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|shortName
-specifier|private
-specifier|final
-name|String
-name|shortName
-decl_stmt|;
 DECL|method|BranchPredicate (Provider<ReviewDb> dbProvider, String branch)
 name|BranchPredicate
 parameter_list|(
@@ -203,6 +197,21 @@ operator|.
 name|FIELD_BRANCH
 argument_list|,
 name|branch
+operator|.
+name|startsWith
+argument_list|(
+name|Branch
+operator|.
+name|R_HEADS
+argument_list|)
+condition|?
+name|branch
+else|:
+name|Branch
+operator|.
+name|R_HEADS
+operator|+
+name|branch
 argument_list|)
 expr_stmt|;
 name|this
@@ -210,12 +219,6 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
-expr_stmt|;
-name|this
-operator|.
-name|shortName
-operator|=
-name|branch
 expr_stmt|;
 block|}
 annotation|@
@@ -269,7 +272,8 @@ operator|.
 name|R_HEADS
 argument_list|)
 operator|&&
-name|shortName
+name|getValue
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -278,7 +282,7 @@ operator|.
 name|getDest
 argument_list|()
 operator|.
-name|getShortName
+name|get
 argument_list|()
 argument_list|)
 return|;
