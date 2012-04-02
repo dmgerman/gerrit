@@ -733,6 +733,68 @@ name|OrmException
 function_decl|;
 annotation|@
 name|Query
+argument_list|(
+literal|"WHERE open = false AND status = ? AND dest = ? AND sortKey> ?"
+operator|+
+literal|" ORDER BY sortKey LIMIT ?"
+argument_list|)
+DECL|method|byBranchClosedPrev (char status, Branch.NameKey p, String sortKey, int limit)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byBranchClosedPrev
+parameter_list|(
+name|char
+name|status
+parameter_list|,
+name|Branch
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|String
+name|sortKey
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE open = false AND status = ? AND dest = ? AND sortKey< ?"
+operator|+
+literal|" ORDER BY sortKey DESC LIMIT ?"
+argument_list|)
+DECL|method|byBranchClosedNext (char status, Branch.NameKey p, String sortKey, int limit)
+name|ResultSet
+argument_list|<
+name|Change
+argument_list|>
+name|byBranchClosedNext
+parameter_list|(
+name|char
+name|status
+parameter_list|,
+name|Branch
+operator|.
+name|NameKey
+name|p
+parameter_list|,
+name|String
+name|sortKey
+parameter_list|,
+name|int
+name|limit
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
 DECL|method|all ()
 name|ResultSet
 argument_list|<
