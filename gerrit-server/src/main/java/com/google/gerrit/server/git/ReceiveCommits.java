@@ -6923,6 +6923,8 @@ block|{
 name|doReplace
 argument_list|(
 name|request
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|replaceProgress
@@ -7061,7 +7063,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|doReplace (final ReplaceRequest request)
+DECL|method|doReplace (final ReplaceRequest request, boolean ignoreNoChanges)
 specifier|private
 name|PatchSet
 operator|.
@@ -7071,6 +7073,9 @@ parameter_list|(
 specifier|final
 name|ReplaceRequest
 name|request
+parameter_list|,
+name|boolean
+name|ignoreNoChanges
 parameter_list|)
 throws|throws
 name|IOException
@@ -7717,6 +7722,9 @@ operator|&&
 name|parentsEq
 operator|&&
 name|authorEq
+operator|&&
+operator|!
+name|ignoreNoChanges
 condition|)
 block|{
 name|reject
@@ -11562,7 +11570,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-continue|continue;
 block|}
 name|rw
 operator|.
@@ -11653,6 +11660,8 @@ init|=
 name|doReplace
 argument_list|(
 name|req
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 if|if
