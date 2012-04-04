@@ -233,7 +233,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|ListProjects
+name|ListProjectsCommand
 operator|.
 name|class
 argument_list|)

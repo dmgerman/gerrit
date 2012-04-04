@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd.commands
+DECL|package|com.google.gerrit.server.util
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|commands
+name|util
 package|;
 end_package
 
