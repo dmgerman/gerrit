@@ -885,12 +885,32 @@ parameter_list|()
 throws|throws
 name|UnloggedFailure
 block|{
+name|parseCommandLine
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Parses the command line argument, injecting parsed values into fields.    *<p>    * This method must be explicitly invoked to cause a parse.    *    * @param options object whose fields declare Option and Argument annotations    *        to describe the parameters of the command. Usually {@code this}.    * @throws UnloggedFailure if the command line arguments were invalid.    * @see Option    * @see Argument    */
+DECL|method|parseCommandLine (Object options)
+specifier|protected
+name|void
+name|parseCommandLine
+parameter_list|(
+name|Object
+name|options
+parameter_list|)
+throws|throws
+name|UnloggedFailure
+block|{
 specifier|final
 name|CmdLineParser
 name|clp
 init|=
 name|newCmdLineParser
-argument_list|()
+argument_list|(
+name|options
+argument_list|)
 decl_stmt|;
 try|try
 block|{
@@ -1021,18 +1041,21 @@ literal|""
 return|;
 block|}
 comment|/** Construct a new parser for this command's received command line. */
-DECL|method|newCmdLineParser ()
+DECL|method|newCmdLineParser (Object options)
 specifier|protected
 name|CmdLineParser
 name|newCmdLineParser
-parameter_list|()
+parameter_list|(
+name|Object
+name|options
+parameter_list|)
 block|{
 return|return
 name|cmdLineParserFactory
 operator|.
 name|create
 argument_list|(
-name|this
+name|options
 argument_list|)
 return|;
 block|}

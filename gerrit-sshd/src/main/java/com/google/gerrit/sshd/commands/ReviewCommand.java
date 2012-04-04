@@ -584,12 +584,15 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|newCmdLineParser ()
+DECL|method|newCmdLineParser (Object options)
 specifier|protected
 specifier|final
 name|CmdLineParser
 name|newCmdLineParser
-parameter_list|()
+parameter_list|(
+name|Object
+name|options
+parameter_list|)
 block|{
 specifier|final
 name|CmdLineParser
@@ -598,7 +601,9 @@ init|=
 name|super
 operator|.
 name|newCmdLineParser
-argument_list|()
+argument_list|(
+name|options
+argument_list|)
 decl_stmt|;
 for|for
 control|(
