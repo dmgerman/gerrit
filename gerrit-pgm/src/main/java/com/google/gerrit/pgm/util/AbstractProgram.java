@@ -206,28 +206,6 @@ specifier|protected
 name|boolean
 name|showStackTrace
 decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
-literal|"--help"
-argument_list|,
-name|usage
-operator|=
-literal|"display this help text"
-argument_list|,
-name|aliases
-operator|=
-block|{
-literal|"-h"
-block|}
-argument_list|)
-DECL|field|help
-specifier|private
-name|boolean
-name|help
-decl_stmt|;
 DECL|method|getName ()
 specifier|private
 name|String
@@ -331,7 +309,10 @@ block|{
 if|if
 condition|(
 operator|!
-name|help
+name|clp
+operator|.
+name|wasHelpRequestedByOption
+argument_list|()
 condition|)
 block|{
 name|System
@@ -355,7 +336,10 @@ block|}
 block|}
 if|if
 condition|(
-name|help
+name|clp
+operator|.
+name|wasHelpRequestedByOption
+argument_list|()
 condition|)
 block|{
 specifier|final
