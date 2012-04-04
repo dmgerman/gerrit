@@ -78,22 +78,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Project
 import|;
 end_import
@@ -155,6 +139,22 @@ operator|.
 name|account
 operator|.
 name|GroupMembership
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|ListGroupMembership
 import|;
 end_import
 
@@ -731,16 +731,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -2355,8 +2345,6 @@ specifier|final
 name|int
 name|b
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(
@@ -2722,6 +2710,9 @@ condition|)
 block|{
 name|authGroups
 operator|=
+operator|new
+name|ListGroupMembership
+argument_list|(
 name|ConfigUtil
 operator|.
 name|groupsFor
@@ -2734,6 +2725,7 @@ comment|//
 name|log
 argument_list|,
 literal|"Group \"{0}\" not in database, removing from authGroup"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
