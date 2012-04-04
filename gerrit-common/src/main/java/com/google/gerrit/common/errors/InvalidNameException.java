@@ -107,6 +107,24 @@ name|MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|InvalidNameException (String invalidName)
+specifier|public
+name|InvalidNameException
+parameter_list|(
+name|String
+name|invalidName
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+operator|+
+literal|": "
+operator|+
+name|invalidName
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
