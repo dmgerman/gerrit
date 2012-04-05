@@ -376,6 +376,16 @@ name|RpcStartEvent
 name|event
 parameter_list|)
 block|{
+name|onRpcStart
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|onRpcStart ()
+specifier|public
+name|void
+name|onRpcStart
+parameter_list|()
+block|{
 if|if
 condition|(
 operator|++
@@ -412,6 +422,16 @@ specifier|final
 name|RpcCompleteEvent
 name|event
 parameter_list|)
+block|{
+name|onRpcComplete
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|onRpcComplete ()
+specifier|public
+name|void
+name|onRpcComplete
+parameter_list|()
 block|{
 if|if
 condition|(
