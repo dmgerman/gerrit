@@ -170,7 +170,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
+name|Change
 import|;
 end_import
 
@@ -240,12 +240,12 @@ name|ReviewerSuggestOracle
 extends|extends
 name|HighlightSuggestOracle
 block|{
-DECL|field|project
+DECL|field|changeId
 specifier|private
-name|Project
+name|Change
 operator|.
-name|NameKey
-name|project
+name|Id
+name|changeId
 decl_stmt|;
 annotation|@
 name|Override
@@ -280,9 +280,9 @@ name|SuggestUtil
 operator|.
 name|SVC
 operator|.
-name|suggestReviewer
+name|suggestChangeReviewer
 argument_list|(
-name|project
+name|changeId
 argument_list|,
 name|req
 operator|.
@@ -378,23 +378,22 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setProject (final Project.NameKey project)
+DECL|method|setChange (Change.Id changeId)
 specifier|public
 name|void
-name|setProject
+name|setChange
 parameter_list|(
-specifier|final
-name|Project
+name|Change
 operator|.
-name|NameKey
-name|project
+name|Id
+name|changeId
 parameter_list|)
 block|{
 name|this
 operator|.
-name|project
+name|changeId
 operator|=
-name|project
+name|changeId
 expr_stmt|;
 block|}
 DECL|class|ReviewerSuggestion

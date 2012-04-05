@@ -94,6 +94,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -252,7 +268,9 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-comment|/**    * Suggests reviewers. A reviewer can be a user or a group. Inactive users,    * the system groups {@link AccountGroup#ANONYMOUS_USERS} and    * {@link AccountGroup#REGISTERED_USERS} and groups that have more than the    * configured<code>addReviewer.maxAllowed</code> members are not suggested as    * reviewers.    * @param project the project for which reviewers should be suggested    */
+comment|/**    * @see #suggestChangeReviewer(com.google.gerrit.reviewdb.client.Change.Id, String, int, AsyncCallback)    */
+annotation|@
+name|Deprecated
 DECL|method|suggestReviewer (Project.NameKey project, String query, int limit, AsyncCallback<List<ReviewerInfo>> callback)
 name|void
 name|suggestReviewer
@@ -261,6 +279,32 @@ name|Project
 operator|.
 name|NameKey
 name|project
+parameter_list|,
+name|String
+name|query
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|ReviewerInfo
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+comment|/**    * Suggests reviewers. A reviewer can be a user or a group. Inactive users,    * the system groups {@link AccountGroup#ANONYMOUS_USERS} and    * {@link AccountGroup#REGISTERED_USERS} and groups that have more than the    * configured<code>addReviewer.maxAllowed</code> members are not suggested as    * reviewers.    * @param changeId the change for which reviewers should be suggested    */
+DECL|method|suggestChangeReviewer (Change.Id changeId, String query, int limit, AsyncCallback<List<ReviewerInfo>> callback)
+name|void
+name|suggestChangeReviewer
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|String
 name|query
