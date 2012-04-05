@@ -219,6 +219,16 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|filter
+argument_list|(
+literal|"/a/*"
+argument_list|)
+operator|.
+name|through
+argument_list|(
+name|authFilter
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
