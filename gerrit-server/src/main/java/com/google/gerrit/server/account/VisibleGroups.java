@@ -572,6 +572,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns visible list of known groups for the user. Depending on the group    * membership realms supported, this may only return a subset of the effective    * groups.    * @See GroupMembership#getKnownGroups()    */
 DECL|method|get (final IdentifiedUser user)
 specifier|public
 name|GroupList
