@@ -558,6 +558,14 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
+DECL|field|urlConfig
+specifier|private
+specifier|final
+name|UrlModule
+operator|.
+name|UrlConfig
+name|urlConfig
+decl_stmt|;
 DECL|field|wantSSL
 specifier|private
 specifier|final
@@ -572,12 +580,18 @@ name|gitWebConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebModule (final AuthConfig authConfig, @CanonicalWebUrl @Nullable final String canonicalUrl, final Injector creatingInjector)
+DECL|method|WebModule (final AuthConfig authConfig, final UrlModule.UrlConfig urlConfig, @CanonicalWebUrl @Nullable final String canonicalUrl, final Injector creatingInjector)
 name|WebModule
 parameter_list|(
 specifier|final
 name|AuthConfig
 name|authConfig
+parameter_list|,
+specifier|final
+name|UrlModule
+operator|.
+name|UrlConfig
+name|urlConfig
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -597,6 +611,12 @@ operator|.
 name|authConfig
 operator|=
 name|authConfig
+expr_stmt|;
+name|this
+operator|.
+name|urlConfig
+operator|=
+name|urlConfig
 expr_stmt|;
 name|this
 operator|.
@@ -823,7 +843,9 @@ name|install
 argument_list|(
 operator|new
 name|UrlModule
-argument_list|()
+argument_list|(
+name|urlConfig
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|install

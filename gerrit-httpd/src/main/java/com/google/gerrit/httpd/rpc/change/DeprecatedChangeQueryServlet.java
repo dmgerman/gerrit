@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd
+DECL|package|com.google.gerrit.httpd.rpc.change
 package|package
 name|com
 operator|.
@@ -61,6 +61,10 @@ operator|.
 name|gerrit
 operator|.
 name|httpd
+operator|.
+name|rpc
+operator|.
+name|change
 package|;
 end_package
 
@@ -209,10 +213,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|ChangeQueryServlet
+DECL|class|DeprecatedChangeQueryServlet
 specifier|public
 class|class
-name|ChangeQueryServlet
+name|DeprecatedChangeQueryServlet
 extends|extends
 name|HttpServlet
 block|{
@@ -236,8 +240,8 @@ name|processor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeQueryServlet (Provider<QueryProcessor> processor)
-name|ChangeQueryServlet
+DECL|method|DeprecatedChangeQueryServlet (Provider<QueryProcessor> processor)
+name|DeprecatedChangeQueryServlet
 parameter_list|(
 name|Provider
 argument_list|<
