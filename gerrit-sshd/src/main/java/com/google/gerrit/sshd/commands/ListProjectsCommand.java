@@ -171,6 +171,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|impl
+operator|.
+name|getFormat
+argument_list|()
+operator|.
+name|isJson
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|impl
 operator|.
 name|isShowTree
@@ -218,6 +230,7 @@ argument_list|,
 literal|"fatal: --tree and --description options are not compatible."
 argument_list|)
 throw|;
+block|}
 block|}
 name|impl
 operator|.
