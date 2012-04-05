@@ -223,17 +223,6 @@ name|ProjectAdminService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|visibleProjects (AsyncCallback<ProjectList> callback)
-name|void
-name|visibleProjects
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|ProjectList
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 DECL|method|visibleProjectDetails (AsyncCallback<List<ProjectDetail>> callback)
 name|void
 name|visibleProjectDetails
@@ -243,20 +232,6 @@ argument_list|<
 name|List
 argument_list|<
 name|ProjectDetail
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-DECL|method|suggestParentCandidates (AsyncCallback<List<Project>> callback)
-name|void
-name|suggestParentCandidates
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|Project
 argument_list|>
 argument_list|>
 name|callback
