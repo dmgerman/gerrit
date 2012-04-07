@@ -728,7 +728,7 @@ argument_list|)
 expr_stmt|;
 name|serveRegex
 argument_list|(
-literal|"^/(a/)?projects/$"
+literal|"^/(?:a/)?projects/(.*)?$"
 argument_list|)
 operator|.
 name|with

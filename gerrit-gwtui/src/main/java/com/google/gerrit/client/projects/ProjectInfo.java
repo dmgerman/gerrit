@@ -98,6 +98,24 @@ name|JavaScriptObject
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|SuggestOracle
+import|;
+end_import
+
 begin_class
 DECL|class|ProjectInfo
 specifier|public
@@ -105,6 +123,10 @@ class|class
 name|ProjectInfo
 extends|extends
 name|JavaScriptObject
+implements|implements
+name|SuggestOracle
+operator|.
+name|Suggestion
 block|{
 DECL|method|name_key ()
 specifier|public
@@ -144,6 +166,54 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
+annotation|@
+name|Override
+DECL|method|getDisplayString ()
+specifier|public
+specifier|final
+name|String
+name|getDisplayString
+parameter_list|()
+block|{
+if|if
+condition|(
+name|description
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|name
+argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|description
+argument_list|()
+operator|+
+literal|")"
+return|;
+block|}
+return|return
+name|name
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getReplacementString ()
+specifier|public
+specifier|final
+name|String
+name|getReplacementString
+parameter_list|()
+block|{
+return|return
+name|name
+argument_list|()
+return|;
+block|}
 DECL|method|ProjectInfo ()
 specifier|protected
 name|ProjectInfo
