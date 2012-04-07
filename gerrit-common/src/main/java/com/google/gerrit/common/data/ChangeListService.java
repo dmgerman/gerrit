@@ -88,22 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtjsonrpc
 operator|.
 name|common
@@ -187,23 +171,6 @@ name|ChangeListService
 extends|extends
 name|RemoteJsonService
 block|{
-comment|/** Get the data to show AccountDashboardScreen for an account. */
-DECL|method|forAccount (Account.Id id, AsyncCallback<AccountDashboardInfo> callback)
-name|void
-name|forAccount
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|AccountDashboardInfo
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 comment|/**    * Add and/or remove changes from the set of starred changes of the caller.    *    * @param req the add and remove cluster.    */
 annotation|@
 name|SignInRequired
