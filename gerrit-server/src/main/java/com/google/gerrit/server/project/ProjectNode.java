@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd.commands
+DECL|package|com.google.gerrit.server.project
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|commands
+name|project
 package|;
 end_package
 
@@ -106,9 +106,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|commands
+name|util
 operator|.
 name|TreeFormatter
 operator|.
@@ -161,6 +161,10 @@ operator|.
 name|TreeSet
 import|;
 end_import
+
+begin_comment
+comment|/** Node of a Project in a tree formatted by {@link ListProjects}. */
+end_comment
 
 begin_class
 DECL|class|ProjectNode
@@ -231,7 +235,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ProjectNode (final AllProjectsName allProjectsName, @Assisted final Project project, @Assisted final boolean isVisible)
-specifier|public
+specifier|protected
 name|ProjectNode
 parameter_list|(
 specifier|final
