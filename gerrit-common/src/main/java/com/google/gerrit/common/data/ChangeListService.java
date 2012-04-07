@@ -104,22 +104,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtjsonrpc
 operator|.
 name|common
@@ -183,16 +167,6 @@ operator|.
 name|RpcImpl
 operator|.
 name|Version
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -268,25 +242,6 @@ parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|AccountDashboardInfo
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-comment|/** Get the ids of all changes starred by the caller. */
-annotation|@
-name|SignInRequired
-DECL|method|myStarredChangeIds (AsyncCallback<Set<Change.Id>> callback)
-name|void
-name|myStarredChangeIds
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|Set
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
 argument_list|>
 name|callback
 parameter_list|)
