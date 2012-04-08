@@ -460,6 +460,33 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|addParameter (String name, Enum<?> value)
+specifier|public
+name|RestApi
+name|addParameter
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|Enum
+argument_list|<
+name|?
+argument_list|>
+name|value
+parameter_list|)
+block|{
+return|return
+name|addParameterRaw
+argument_list|(
+name|name
+argument_list|,
+name|value
+operator|.
+name|name
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|addParameterRaw (String name, String value)
 specifier|public
 name|RestApi

@@ -339,6 +339,13 @@ name|COPIED
 argument_list|(
 literal|'C'
 argument_list|)
+block|,
+comment|/** Sufficient amount of content changed to claim the file was written. */
+DECL|enumConstant|REWRITE
+name|REWRITE
+argument_list|(
+literal|'W'
+argument_list|)
 block|;
 DECL|field|code
 specifier|private
