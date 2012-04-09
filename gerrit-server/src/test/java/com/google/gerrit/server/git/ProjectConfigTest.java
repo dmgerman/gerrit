@@ -166,6 +166,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|ContributorAgreement
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|GroupReference
 import|;
 end_import
@@ -418,6 +434,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
 begin_class
 DECL|class|ProjectConfigTest
 specifier|public
@@ -579,6 +605,27 @@ literal|"  push = group Developers\n"
 comment|//
 operator|+
 literal|"  read = group Developers\n"
+comment|//
+operator|+
+literal|"[contributor-agreement \"Individual\"]\n"
+comment|//
+operator|+
+literal|"  description = A simple description\n"
+comment|//
+operator|+
+literal|"  accepted = group Developers\n"
+comment|//
+operator|+
+literal|"  accepted = group Staff\n"
+comment|//
+operator|+
+literal|"  requireContactInformation = true\n"
+comment|//
+operator|+
+literal|"  autoVerify = group Developers\n"
+comment|//
+operator|+
+literal|"  agreementUrl = http://www.example.com/agree\n"
 argument_list|)
 argument_list|)
 comment|//
@@ -593,6 +640,119 @@ argument_list|(
 name|rev
 argument_list|)
 decl_stmt|;
+name|ContributorAgreement
+name|ca
+init|=
+name|cfg
+operator|.
+name|getContributorAgreement
+argument_list|(
+literal|"Individual"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Individual"
+argument_list|,
+name|ca
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A simple description"
+argument_list|,
+name|ca
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"http://www.example.com/agree"
+argument_list|,
+name|ca
+operator|.
+name|getAgreementUrl
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|ca
+operator|.
+name|getAccepted
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|developers
+argument_list|,
+name|ca
+operator|.
+name|getAccepted
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|getGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Staff"
+argument_list|,
+name|ca
+operator|.
+name|getAccepted
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|getGroup
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Developers"
+argument_list|,
+name|ca
+operator|.
+name|getAutoVerify
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|ca
+operator|.
+name|isRequireContactInformation
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|AccessSection
 name|section
 init|=
@@ -769,6 +929,24 @@ literal|"  upload = group Developers\n"
 comment|//
 operator|+
 literal|"  read = group Developers\n"
+comment|//
+operator|+
+literal|"[contributor-agreement \"Individual\"]\n"
+comment|//
+operator|+
+literal|"  description = A simple description\n"
+comment|//
+operator|+
+literal|"  accepted = group Developers\n"
+comment|//
+operator|+
+literal|"  requireContactInformation = true\n"
+comment|//
+operator|+
+literal|"  autoVerify = group Developers\n"
+comment|//
+operator|+
+literal|"  agreementUrl = http://www.example.com/agree\n"
 argument_list|)
 argument_list|)
 comment|//
@@ -826,6 +1004,58 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ContributorAgreement
+name|ca
+init|=
+name|cfg
+operator|.
+name|getContributorAgreement
+argument_list|(
+literal|"Individual"
+argument_list|)
+decl_stmt|;
+name|ca
+operator|.
+name|setRequireContactInformation
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|ca
+operator|.
+name|setAccepted
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+operator|new
+name|PermissionRule
+argument_list|(
+name|cfg
+operator|.
+name|resolve
+argument_list|(
+name|staff
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|ca
+operator|.
+name|setAutoVerify
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|ca
+operator|.
+name|setDescription
+argument_list|(
+literal|"A new description"
+argument_list|)
+expr_stmt|;
 name|rev
 operator|=
 name|commit
@@ -854,6 +1084,18 @@ literal|"  upload = group Developers\n"
 comment|//
 operator|+
 literal|"  read = group Developers\n"
+comment|//
+operator|+
+literal|"[contributor-agreement \"Individual\"]\n"
+comment|//
+operator|+
+literal|"  description = A new description\n"
+comment|//
+operator|+
+literal|"  accepted = group Staff\n"
+comment|//
+operator|+
+literal|"  agreementUrl = http://www.example.com/agree\n"
 comment|//
 operator|+
 literal|"[project]\n"
