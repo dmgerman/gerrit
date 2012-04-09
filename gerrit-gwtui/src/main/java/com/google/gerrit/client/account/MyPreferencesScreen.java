@@ -382,7 +382,7 @@ name|google
 operator|.
 name|gwtjsonrpc
 operator|.
-name|client
+name|common
 operator|.
 name|VoidResult
 import|;

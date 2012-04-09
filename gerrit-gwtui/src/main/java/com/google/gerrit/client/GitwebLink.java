@@ -52,8 +52,20 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.client
 package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+package|;
+end_package
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -63,8 +75,26 @@ operator|.
 name|common
 operator|.
 name|data
-package|;
-end_package
+operator|.
+name|GitWebType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|ParameterizedString
+import|;
+end_import
 
 begin_import
 import|import
@@ -170,31 +200,35 @@ specifier|protected
 name|GitWebType
 name|type
 decl_stmt|;
-DECL|method|GitwebLink ()
-specifier|protected
-name|GitwebLink
-parameter_list|()
-block|{   }
-DECL|method|GitwebLink (final String base, final GitWebType gitWebType)
+DECL|method|GitwebLink (com.google.gerrit.common.data.GitwebConfig link)
 specifier|public
 name|GitwebLink
 parameter_list|(
-specifier|final
-name|String
-name|base
-parameter_list|,
-specifier|final
-name|GitWebType
-name|gitWebType
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GitwebConfig
+name|link
 parameter_list|)
 block|{
 name|baseUrl
 operator|=
-name|base
+name|link
+operator|.
+name|baseUrl
 expr_stmt|;
 name|type
 operator|=
-name|gitWebType
+name|link
+operator|.
+name|type
 expr_stmt|;
 block|}
 DECL|method|getLinkName ()

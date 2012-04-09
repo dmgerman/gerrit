@@ -138,13 +138,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gwtjsonrpc
 operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|rpc
+name|common
 operator|.
 name|AsyncCallback
 import|;
@@ -212,7 +208,7 @@ name|google
 operator|.
 name|gwtjsonrpc
 operator|.
-name|client
+name|common
 operator|.
 name|VoidResult
 import|;

@@ -116,13 +116,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
-operator|.
-name|user
+name|gwtjsonrpc
 operator|.
 name|server
-operator|.
-name|rpc
 operator|.
 name|RPCServletUtils
 import|;

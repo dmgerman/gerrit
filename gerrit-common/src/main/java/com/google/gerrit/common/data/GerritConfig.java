@@ -214,7 +214,7 @@ name|allowedOpenIDs
 decl_stmt|;
 DECL|field|gitweb
 specifier|protected
-name|GitwebLink
+name|GitwebConfig
 name|gitweb
 decl_stmt|;
 DECL|field|useContributorAgreements
@@ -442,7 +442,7 @@ expr_stmt|;
 block|}
 DECL|method|getGitwebLink ()
 specifier|public
-name|GitwebLink
+name|GitwebConfig
 name|getGitwebLink
 parameter_list|()
 block|{
@@ -450,13 +450,13 @@ return|return
 name|gitweb
 return|;
 block|}
-DECL|method|setGitwebLink (final GitwebLink w)
+DECL|method|setGitwebLink (final GitwebConfig w)
 specifier|public
 name|void
 name|setGitwebLink
 parameter_list|(
 specifier|final
-name|GitwebLink
+name|GitwebConfig
 name|w
 parameter_list|)
 block|{

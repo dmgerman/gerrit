@@ -108,7 +108,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|GitwebLink
+name|GitwebConfig
 import|;
 end_import
 
@@ -953,7 +953,7 @@ operator|.
 name|setGitwebLink
 argument_list|(
 operator|new
-name|GitwebLink
+name|GitwebConfig
 argument_list|(
 name|gitWebConfig
 operator|.
