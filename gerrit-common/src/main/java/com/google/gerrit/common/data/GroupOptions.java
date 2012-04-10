@@ -97,27 +97,18 @@ specifier|private
 name|boolean
 name|visibleToAll
 decl_stmt|;
-DECL|field|emailOnlyAuthors
-specifier|private
-name|boolean
-name|emailOnlyAuthors
-decl_stmt|;
 DECL|method|GroupOptions ()
 specifier|protected
 name|GroupOptions
 parameter_list|()
 block|{   }
-DECL|method|GroupOptions (final boolean visibleToAll, final boolean emailOnlyAuthors)
+DECL|method|GroupOptions (final boolean visibleToAll)
 specifier|public
 name|GroupOptions
 parameter_list|(
 specifier|final
 name|boolean
 name|visibleToAll
-parameter_list|,
-specifier|final
-name|boolean
-name|emailOnlyAuthors
 parameter_list|)
 block|{
 name|this
@@ -125,12 +116,6 @@ operator|.
 name|visibleToAll
 operator|=
 name|visibleToAll
-expr_stmt|;
-name|this
-operator|.
-name|emailOnlyAuthors
-operator|=
-name|emailOnlyAuthors
 expr_stmt|;
 block|}
 DECL|method|isVisibleToAll ()
@@ -141,16 +126,6 @@ parameter_list|()
 block|{
 return|return
 name|visibleToAll
-return|;
-block|}
-DECL|method|isEmailOnlyAuthors ()
-specifier|public
-name|boolean
-name|isEmailOnlyAuthors
-parameter_list|()
-block|{
-return|return
-name|emailOnlyAuthors
 return|;
 block|}
 block|}

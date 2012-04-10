@@ -613,11 +613,6 @@ name|String
 name|groupOptionsPanel
 parameter_list|()
 function_decl|;
-DECL|method|groupOptionsNotificationsDescriptionPanel ()
-name|String
-name|groupOptionsNotificationsDescriptionPanel
-parameter_list|()
-function_decl|;
 DECL|method|groupOwnerPanel ()
 name|String
 name|groupOwnerPanel

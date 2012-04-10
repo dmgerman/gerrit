@@ -735,19 +735,6 @@ specifier|protected
 name|boolean
 name|visibleToAll
 decl_stmt|;
-comment|/** Comment and action email notifications by users in this group are only    *  sent to change authors. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|8
-argument_list|)
-DECL|field|emailOnlyAuthors
-specifier|protected
-name|boolean
-name|emailOnlyAuthors
-decl_stmt|;
 comment|/** Globally unique identifier name for this group. */
 annotation|@
 name|Column
@@ -1009,32 +996,6 @@ block|{
 return|return
 name|visibleToAll
 return|;
-block|}
-DECL|method|isEmailOnlyAuthors ()
-specifier|public
-name|boolean
-name|isEmailOnlyAuthors
-parameter_list|()
-block|{
-return|return
-name|emailOnlyAuthors
-return|;
-block|}
-DECL|method|setEmailOnlyAuthors (boolean emailOnlyAuthors)
-specifier|public
-name|void
-name|setEmailOnlyAuthors
-parameter_list|(
-name|boolean
-name|emailOnlyAuthors
-parameter_list|)
-block|{
-name|this
-operator|.
-name|emailOnlyAuthors
-operator|=
-name|emailOnlyAuthors
-expr_stmt|;
 block|}
 DECL|method|getGroupUUID ()
 specifier|public
