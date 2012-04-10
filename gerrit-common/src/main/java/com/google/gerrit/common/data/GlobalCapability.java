@@ -136,6 +136,16 @@ name|CREATE_PROJECT
 init|=
 literal|"createProject"
 decl_stmt|;
+comment|/**    * Denotes who may email change reviewers.    *<p>    * This can be used to deny build bots from emailing reviewers and people who    * have starred the changed. Instead, only the authors of the change will be    * emailed. The allow rules are evaluated before deny rules, however the    * default is to allow emailing, if no explicit rule is matched.    */
+DECL|field|EMAIL_REVIEWERS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EMAIL_REVIEWERS
+init|=
+literal|"emailReviewers"
+decl_stmt|;
 comment|/** Can flush any cache except the active web_sessions cache. */
 DECL|field|FLUSH_CACHES
 specifier|public
@@ -272,6 +282,16 @@ operator|.
 name|add
 argument_list|(
 name|CREATE_PROJECT
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|NAMES_LC
+operator|.
+name|add
+argument_list|(
+name|EMAIL_REVIEWERS
 operator|.
 name|toLowerCase
 argument_list|()

@@ -628,6 +628,26 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|user
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canEmailReviewers
+argument_list|()
+condition|)
+block|{
+name|emailOnlyAuthors
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// TODO(cranger): remove once the schema is migrated in the next patch.
 specifier|final
 name|Set
 argument_list|<
@@ -685,6 +705,7 @@ operator|=
 literal|true
 expr_stmt|;
 break|break;
+block|}
 block|}
 block|}
 block|}
