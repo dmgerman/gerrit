@@ -707,6 +707,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|createStar ()
 specifier|public
 name|Image
@@ -764,6 +769,11 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 name|ValueChangeHandler
 name|starUpdater
 init|=
