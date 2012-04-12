@@ -510,24 +510,9 @@ name|String
 name|agreementDescription
 parameter_list|()
 function_decl|;
-DECL|method|agreementAccepted ()
-name|String
-name|agreementAccepted
-parameter_list|()
-function_decl|;
 DECL|method|agreementStatus_EXPIRED ()
 name|String
 name|agreementStatus_EXPIRED
-parameter_list|()
-function_decl|;
-DECL|method|agreementStatus_NEW ()
-name|String
-name|agreementStatus_NEW
-parameter_list|()
-function_decl|;
-DECL|method|agreementStatus_REJECTED ()
-name|String
-name|agreementStatus_REJECTED
 parameter_list|()
 function_decl|;
 DECL|method|agreementStatus_VERIFIED ()

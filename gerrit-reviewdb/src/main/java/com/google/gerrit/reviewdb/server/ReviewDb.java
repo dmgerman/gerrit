@@ -268,18 +268,6 @@ name|Relation
 argument_list|(
 name|id
 operator|=
-literal|5
-argument_list|)
-DECL|method|contributorAgreements ()
-name|ContributorAgreementAccess
-name|contributorAgreements
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
 literal|6
 argument_list|)
 DECL|method|accounts ()
@@ -309,18 +297,6 @@ argument_list|)
 DECL|method|accountSshKeys ()
 name|AccountSshKeyAccess
 name|accountSshKeys
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|9
-argument_list|)
-DECL|method|accountAgreements ()
-name|AccountAgreementAccess
-name|accountAgreements
 parameter_list|()
 function_decl|;
 annotation|@
@@ -393,18 +369,6 @@ argument_list|)
 DECL|method|accountGroupIncludesAudit ()
 name|AccountGroupIncludeAuditAccess
 name|accountGroupIncludesAudit
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|16
-argument_list|)
-DECL|method|accountGroupAgreements ()
-name|AccountGroupAgreementAccess
-name|accountGroupAgreements
 parameter_list|()
 function_decl|;
 annotation|@

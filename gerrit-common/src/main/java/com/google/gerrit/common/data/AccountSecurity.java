@@ -152,22 +152,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ContributorAgreement
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtjsonrpc
 operator|.
 name|common
@@ -458,14 +442,12 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|enterAgreement (ContributorAgreement.Id id, AsyncCallback<VoidResult> callback)
+DECL|method|enterAgreement (String agreementName, AsyncCallback<VoidResult> callback)
 name|void
 name|enterAgreement
 parameter_list|(
-name|ContributorAgreement
-operator|.
-name|Id
-name|id
+name|String
+name|agreementName
 parameter_list|,
 name|AsyncCallback
 argument_list|<

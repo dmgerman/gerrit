@@ -2789,9 +2789,7 @@ operator|>
 name|emptySet
 argument_list|()
 argument_list|,
-name|schema
-argument_list|,
-name|groupCache
+name|projectCache
 argument_list|,
 name|sectionSorter
 argument_list|,
