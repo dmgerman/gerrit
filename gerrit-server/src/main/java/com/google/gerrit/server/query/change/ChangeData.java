@@ -296,6 +296,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -541,6 +557,11 @@ DECL|field|visibleTo
 specifier|private
 name|CurrentUser
 name|visibleTo
+decl_stmt|;
+DECL|field|changeControl
+specifier|private
+name|ChangeControl
+name|changeControl
 decl_stmt|;
 DECL|field|messages
 specifier|private
@@ -859,17 +880,33 @@ operator|==
 name|user
 return|;
 block|}
-DECL|method|cacheVisibleTo (CurrentUser user)
+DECL|method|changeControl ()
+name|ChangeControl
+name|changeControl
+parameter_list|()
+block|{
+return|return
+name|changeControl
+return|;
+block|}
+DECL|method|cacheVisibleTo (ChangeControl ctl)
 name|void
 name|cacheVisibleTo
 parameter_list|(
-name|CurrentUser
-name|user
+name|ChangeControl
+name|ctl
 parameter_list|)
 block|{
 name|visibleTo
 operator|=
-name|user
+name|ctl
+operator|.
+name|getCurrentUser
+argument_list|()
+expr_stmt|;
+name|changeControl
+operator|=
+name|ctl
 expr_stmt|;
 block|}
 DECL|method|change (Provider<ReviewDb> db)
