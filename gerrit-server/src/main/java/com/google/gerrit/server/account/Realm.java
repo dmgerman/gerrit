@@ -172,6 +172,25 @@ parameter_list|)
 throws|throws
 name|AccountException
 function_decl|;
+DECL|method|unlink (ReviewDb db, Account.Id to, AuthRequest who)
+specifier|public
+name|AuthRequest
+name|unlink
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Account
+operator|.
+name|Id
+name|to
+parameter_list|,
+name|AuthRequest
+name|who
+parameter_list|)
+throws|throws
+name|AccountException
+function_decl|;
 DECL|method|onCreateAccount (AuthRequest who, Account account)
 specifier|public
 name|void
