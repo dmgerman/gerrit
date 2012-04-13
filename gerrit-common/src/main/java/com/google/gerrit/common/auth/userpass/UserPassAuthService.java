@@ -74,6 +74,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtjsonrpc
 operator|.
 name|common
@@ -157,6 +173,19 @@ name|UserPassAuthService
 extends|extends
 name|RemoteJsonService
 block|{
+annotation|@
+name|Audit
+argument_list|(
+name|action
+operator|=
+literal|"sign in"
+argument_list|,
+name|obfuscate
+operator|=
+block|{
+literal|1
+block|}
+argument_list|)
 annotation|@
 name|AllowCrossSiteRequest
 DECL|method|authenticate (String username, String password, AsyncCallback<LoginResult> callback)

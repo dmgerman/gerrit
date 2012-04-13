@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -188,6 +204,8 @@ extends|extends
 name|RemoteJsonService
 block|{
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|submit (PatchSet.Id patchSetId, AsyncCallback<ChangeDetail> callback)
 name|void
@@ -205,6 +223,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|abandonChange (PatchSet.Id patchSetId, String message, AsyncCallback<ChangeDetail> callback)
@@ -227,6 +247,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|revertChange (PatchSet.Id patchSetId, String message, AsyncCallback<ChangeDetail> callback)
 name|void
@@ -247,6 +269,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|restoreChange (PatchSet.Id patchSetId, String message, AsyncCallback<ChangeDetail> callback)
@@ -269,6 +293,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|publish (PatchSet.Id patchSetId, AsyncCallback<ChangeDetail> callback)
 name|void
@@ -287,6 +313,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|deleteDraftChange (PatchSet.Id patchSetId, AsyncCallback<VoidResult> callback)
 name|void
@@ -304,6 +332,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|rebaseChange (PatchSet.Id patchSetId, AsyncCallback<ChangeDetail> callback)

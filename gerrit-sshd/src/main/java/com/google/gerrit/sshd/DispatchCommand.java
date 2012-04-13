@@ -1017,6 +1017,16 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|getCommandName ()
+specifier|public
+name|String
+name|getCommandName
+parameter_list|()
+block|{
+return|return
+name|commandName
+return|;
+block|}
 block|}
 end_class
 

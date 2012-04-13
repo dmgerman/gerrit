@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -272,6 +288,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|addSshKey (String keyText, AsyncCallback<AccountSshKey> callback)
 name|void
@@ -287,6 +305,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|deleteSshKeys (Set<AccountSshKey.Id> ids, AsyncCallback<VoidResult> callback)
@@ -309,6 +329,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|changeUserName (String newName, AsyncCallback<VoidResult> callback)
 name|void
@@ -324,6 +346,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|generatePassword (AccountExternalId.Key key, AsyncCallback<AccountExternalId> callback)
@@ -342,6 +366,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|clearPassword (AccountExternalId.Key key, AsyncCallback<AccountExternalId> gerritCallback)
@@ -393,6 +419,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|deleteExternalIds (Set<AccountExternalId.Key> keys, AsyncCallback<Set<AccountExternalId.Key>> callback)
 name|void
@@ -419,6 +447,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|updateContact (String fullName, String emailAddr, ContactInformation info, AsyncCallback<Account> callback)
 name|void
@@ -441,6 +471,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|enterAgreement (String agreementName, AsyncCallback<VoidResult> callback)
 name|void
@@ -457,6 +489,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|registerEmail (String address, AsyncCallback<Account> callback)
 name|void
@@ -472,6 +506,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|validateEmail (String token, AsyncCallback<VoidResult> callback)

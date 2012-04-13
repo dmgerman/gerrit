@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -230,6 +246,8 @@ extends|extends
 name|RemoteJsonService
 block|{
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|visibleGroups (AsyncCallback<GroupList> callback)
 name|void
@@ -242,6 +260,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|createGroup (String newName, AsyncCallback<AccountGroup.Id> callback)
@@ -260,6 +280,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|groupDetail (AccountGroup.Id groupId, AccountGroup.UUID uuid, AsyncCallback<GroupDetail> callback)
@@ -284,6 +306,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|changeGroupDescription (AccountGroup.Id groupId, String description, AsyncCallback<VoidResult> callback)
 name|void
@@ -304,6 +328,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|changeGroupOptions (AccountGroup.Id groupId, GroupOptions groupOptions, AsyncCallback<VoidResult> callback)
@@ -326,6 +352,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|changeGroupOwner (AccountGroup.Id groupId, String newOwnerName, AsyncCallback<VoidResult> callback)
 name|void
@@ -347,6 +375,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|renameGroup (AccountGroup.Id groupId, String newName, AsyncCallback<GroupDetail> callback)
 name|void
@@ -367,6 +397,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|changeGroupType (AccountGroup.Id groupId, AccountGroup.Type newType, AsyncCallback<VoidResult> callback)
@@ -391,6 +423,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|addGroupMember (AccountGroup.Id groupId, String nameOrEmail, AsyncCallback<GroupDetail> callback)
 name|void
@@ -412,6 +446,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|addGroupInclude (AccountGroup.Id groupId, String groupName, AsyncCallback<GroupDetail> callback)
 name|void
@@ -432,6 +468,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|deleteGroupMembers (AccountGroup.Id groupId, Set<AccountGroupMember.Key> keys, AsyncCallback<VoidResult> callback)
@@ -458,6 +496,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|deleteGroupIncludes (AccountGroup.Id groupId, Set<AccountGroupInclude.Key> keys, AsyncCallback<VoidResult> callback)
