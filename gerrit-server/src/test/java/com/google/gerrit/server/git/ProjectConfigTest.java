@@ -607,6 +607,15 @@ operator|+
 literal|"  read = group Developers\n"
 comment|//
 operator|+
+literal|"[accounts]\n"
+comment|//
+operator|+
+literal|"  sameGroupVisibility = deny group Developers\n"
+comment|//
+operator|+
+literal|"  sameGroupVisibility = block group Staff\n"
+comment|//
+operator|+
 literal|"[contributor-agreement \"Individual\"]\n"
 comment|//
 operator|+
@@ -640,6 +649,22 @@ argument_list|(
 name|rev
 argument_list|)
 decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|cfg
+operator|.
+name|getAccountsSection
+argument_list|()
+operator|.
+name|getSameGroupVisibility
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ContributorAgreement
 name|ca
 init|=
@@ -931,6 +956,15 @@ operator|+
 literal|"  read = group Developers\n"
 comment|//
 operator|+
+literal|"[accounts]\n"
+comment|//
+operator|+
+literal|"  sameGroupVisibility = deny group Developers\n"
+comment|//
+operator|+
+literal|"  sameGroupVisibility = block group Staff\n"
+comment|//
+operator|+
 literal|"[contributor-agreement \"Individual\"]\n"
 comment|//
 operator|+
@@ -976,6 +1010,30 @@ argument_list|(
 literal|"refs/heads/*"
 argument_list|)
 decl_stmt|;
+name|cfg
+operator|.
+name|getAccountsSection
+argument_list|()
+operator|.
+name|setSameGroupVisibility
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+operator|new
+name|PermissionRule
+argument_list|(
+name|cfg
+operator|.
+name|resolve
+argument_list|(
+name|staff
+argument_list|)
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|Permission
 name|submit
 init|=
@@ -1084,6 +1142,12 @@ literal|"  upload = group Developers\n"
 comment|//
 operator|+
 literal|"  read = group Developers\n"
+comment|//
+operator|+
+literal|"[accounts]\n"
+comment|//
+operator|+
+literal|"  sameGroupVisibility = group Staff\n"
 comment|//
 operator|+
 literal|"[contributor-agreement \"Individual\"]\n"
