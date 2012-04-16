@@ -810,6 +810,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|table
+operator|.
+name|updateColumnsForLabels
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
 name|section
 operator|.
 name|display

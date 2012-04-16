@@ -98,22 +98,6 @@ name|String
 name|fullName
 parameter_list|)
 function_decl|;
-DECL|method|changesStartedBy (String fullName)
-name|String
-name|changesStartedBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
-DECL|method|changesReviewableBy (String fullName)
-name|String
-name|changesReviewableBy
-parameter_list|(
-name|String
-name|fullName
-parameter_list|)
-function_decl|;
 DECL|method|changesOpenInProject (String string)
 name|String
 name|changesOpenInProject

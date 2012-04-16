@@ -115,9 +115,29 @@ name|String
 name|statusLongDraft
 parameter_list|()
 function_decl|;
-DECL|method|changesRecentlyClosed ()
+DECL|method|myDashboardTitle ()
 name|String
-name|changesRecentlyClosed
+name|myDashboardTitle
+parameter_list|()
+function_decl|;
+DECL|method|unknownDashboardTitle ()
+name|String
+name|unknownDashboardTitle
+parameter_list|()
+function_decl|;
+DECL|method|incomingReviews ()
+name|String
+name|incomingReviews
+parameter_list|()
+function_decl|;
+DECL|method|outgoingReviews ()
+name|String
+name|outgoingReviews
+parameter_list|()
+function_decl|;
+DECL|method|recentlyClosed ()
+name|String
+name|recentlyClosed
 parameter_list|()
 function_decl|;
 DECL|method|starredHeading ()
