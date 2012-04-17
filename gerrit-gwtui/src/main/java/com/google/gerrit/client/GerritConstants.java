@@ -328,9 +328,9 @@ name|String
 name|searchButton
 parameter_list|()
 function_decl|;
-DECL|method|rpcStatusLoading ()
+DECL|method|rpcStatusWorking ()
 name|String
-name|rpcStatusLoading
+name|rpcStatusWorking
 parameter_list|()
 function_decl|;
 DECL|method|sectionNavigation ()

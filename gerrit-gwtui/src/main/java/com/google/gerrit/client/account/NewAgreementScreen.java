@@ -1729,7 +1729,7 @@ name|Gerrit
 operator|.
 name|C
 operator|.
-name|rpcStatusLoading
+name|rpcStatusWorking
 argument_list|()
 argument_list|)
 expr_stmt|;
