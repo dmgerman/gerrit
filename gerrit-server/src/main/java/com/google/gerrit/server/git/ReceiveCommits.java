@@ -2992,10 +2992,7 @@ name|beginSubTask
 argument_list|(
 literal|"refs"
 argument_list|,
-name|commands
-operator|.
-name|size
-argument_list|()
+name|UNKNOWN
 argument_list|)
 expr_stmt|;
 name|parseCommands
@@ -3271,7 +3268,6 @@ name|getAccount
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|commandProgress
 operator|.
 name|update
@@ -3279,6 +3275,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|closeProgress

@@ -903,7 +903,7 @@ operator|new
 name|MessageSenderOutputStream
 argument_list|()
 argument_list|,
-literal|"Updating changes"
+literal|"Processing changes"
 argument_list|)
 expr_stmt|;
 name|this
