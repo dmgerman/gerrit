@@ -1600,6 +1600,16 @@ name|psa
 operator|.
 name|getValue
 argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|psa
+operator|.
+name|getValue
+argument_list|()
 operator|==
 name|legacyType
 operator|.
@@ -1642,6 +1652,7 @@ argument_list|(
 name|labelName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
