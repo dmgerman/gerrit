@@ -92,6 +92,14 @@ specifier|public
 name|String
 name|revision
 decl_stmt|;
+DECL|field|parents
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|parents
+decl_stmt|;
 DECL|field|ref
 specifier|public
 name|String
