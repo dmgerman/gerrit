@@ -199,28 +199,6 @@ name|SuggestService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|suggestProjectNameKey (String query, int limit, AsyncCallback<List<Project.NameKey>> callback)
-name|void
-name|suggestProjectNameKey
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|int
-name|limit
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 DECL|method|suggestAccount (String query, Boolean enabled, int limit, AsyncCallback<List<AccountInfo>> callback)
 name|void
 name|suggestAccount
