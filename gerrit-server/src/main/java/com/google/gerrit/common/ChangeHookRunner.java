@@ -1421,27 +1421,6 @@ else|:
 name|result
 return|;
 block|}
-comment|/**      * Get the Repository for the given change, or null on error.      *      * @param change Change to get repo for,      * @return Repository or null.      */
-DECL|method|openRepository (final Change change)
-specifier|private
-name|Repository
-name|openRepository
-parameter_list|(
-specifier|final
-name|Change
-name|change
-parameter_list|)
-block|{
-return|return
-name|openRepository
-argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/**      * Get the Repository for the given project name, or null on error.      *      * @param name Project to get repo for,      * @return Repository or null.      */
 DECL|method|openRepository (final Project.NameKey name)
 specifier|private

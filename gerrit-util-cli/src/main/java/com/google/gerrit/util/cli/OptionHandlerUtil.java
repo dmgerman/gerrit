@@ -278,11 +278,6 @@ name|handlerType
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|moduleFor (final Class<T> type, Class<? extends OptionHandler<T>> impl)
 specifier|public
 specifier|static
