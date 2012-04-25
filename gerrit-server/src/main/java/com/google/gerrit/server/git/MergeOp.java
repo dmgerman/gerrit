@@ -418,22 +418,6 @@ name|server
 operator|.
 name|mail
 operator|.
-name|EmailException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|mail
-operator|.
 name|MergeFailSender
 import|;
 end_import
@@ -6391,8 +6375,6 @@ parameter_list|(
 name|Change
 name|c
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 specifier|final
 name|CodeReviewCommit
@@ -6480,8 +6462,6 @@ specifier|private
 name|void
 name|updateChangeStatus
 parameter_list|()
-throws|throws
-name|MergeException
 block|{
 name|List
 argument_list|<
@@ -6791,8 +6771,6 @@ specifier|private
 name|void
 name|updateSubscriptions
 parameter_list|()
-throws|throws
-name|MergeException
 block|{
 if|if
 condition|(
@@ -8344,7 +8322,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -8410,7 +8388,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|EmailException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -8794,7 +8772,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -8862,7 +8840,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|EmailException
+name|Exception
 name|e
 parameter_list|)
 block|{
