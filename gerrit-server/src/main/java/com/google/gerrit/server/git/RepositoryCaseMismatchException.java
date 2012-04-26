@@ -135,14 +135,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|field|nameOfExistingProject
-specifier|private
-specifier|final
-name|NameKey
-name|nameOfExistingProject
-decl_stmt|;
-comment|/**    * @param projectName name of the project that cannot be created    * @param nameOfExistingProject name of the project that already exists and    *        occupies the name for the git repository in the file system    */
-DECL|method|RepositoryCaseMismatchException (final Project.NameKey projectName, final Project.NameKey nameOfExistingProject)
+comment|/**    * @param projectName name of the project that cannot be created    */
+DECL|method|RepositoryCaseMismatchException (final Project.NameKey projectName)
 specifier|public
 name|RepositoryCaseMismatchException
 parameter_list|(
@@ -151,49 +145,20 @@ name|Project
 operator|.
 name|NameKey
 name|projectName
-parameter_list|,
-specifier|final
-name|Project
-operator|.
-name|NameKey
-name|nameOfExistingProject
 parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Name occupied in other case: "
+literal|"Name occupied in other case. Project "
 operator|+
 name|projectName
 operator|.
 name|get
 argument_list|()
 operator|+
-literal|"; project "
-operator|+
-name|nameOfExistingProject
-operator|.
-name|get
-argument_list|()
-operator|+
-literal|" exists"
+literal|" cannot be created."
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|nameOfExistingProject
-operator|=
-name|nameOfExistingProject
-expr_stmt|;
-block|}
-DECL|method|getNameOfExistingProject ()
-specifier|public
-name|NameKey
-name|getNameOfExistingProject
-parameter_list|()
-block|{
-return|return
-name|nameOfExistingProject
-return|;
 block|}
 block|}
 end_class
