@@ -224,6 +224,7 @@ end_import
 
 begin_class
 DECL|class|SingleGroupUser
+specifier|public
 specifier|final
 class|class
 name|SingleGroupUser
@@ -237,6 +238,7 @@ name|GroupMembership
 name|groups
 decl_stmt|;
 DECL|method|SingleGroupUser (CapabilityControl.Factory capabilityControlFactory, AccountGroup.UUID groupId)
+specifier|public
 name|SingleGroupUser
 parameter_list|(
 name|CapabilityControl
@@ -264,6 +266,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|SingleGroupUser (CapabilityControl.Factory capabilityControlFactory, Set<AccountGroup.UUID> groups)
+specifier|public
 name|SingleGroupUser
 parameter_list|(
 name|CapabilityControl
