@@ -563,7 +563,7 @@ if|if
 condition|(
 name|p
 operator|.
-name|isDisplayPatchSetsInReverseOrder
+name|isReversePatchSetOrder
 argument_list|()
 condition|)
 block|{

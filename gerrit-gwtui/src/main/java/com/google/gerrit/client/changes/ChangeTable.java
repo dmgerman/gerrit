@@ -2514,7 +2514,7 @@ init|=
 literal|false
 decl_stmt|;
 name|boolean
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 init|=
 literal|false
 decl_stmt|;
@@ -2541,11 +2541,11 @@ if|if
 condition|(
 name|prefs
 operator|.
-name|isDisplayPersonNameInReviewCategory
+name|isShowUsernameInReviewCategory
 argument_list|()
 condition|)
 block|{
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 operator|=
 literal|true
 expr_stmt|;
@@ -2701,7 +2701,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 condition|)
 block|{
 name|FlowPanel
@@ -2792,7 +2792,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 condition|)
 block|{
 name|FlowPanel
@@ -2887,7 +2887,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 condition|)
 block|{
 name|vstr
