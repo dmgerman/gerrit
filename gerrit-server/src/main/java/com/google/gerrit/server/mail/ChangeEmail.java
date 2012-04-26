@@ -406,6 +406,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|text
@@ -497,6 +517,22 @@ name|ChangeEmail
 extends|extends
 name|OutgoingEmail
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ChangeEmail
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|change
 specifier|protected
 specifier|final
@@ -1374,6 +1410,8 @@ name|String
 name|getChangeDetail
 parameter_list|()
 block|{
+try|try
+block|{
 name|StringBuilder
 name|detail
 init|=
@@ -1553,6 +1591,26 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|err
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot format change detail"
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+return|return
+literal|""
+return|;
+block|}
 block|}
 comment|/** Get the patch list corresponding to this patch set. */
 DECL|method|getPatchList ()
