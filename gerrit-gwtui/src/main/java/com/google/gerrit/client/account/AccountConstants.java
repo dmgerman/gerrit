@@ -145,14 +145,14 @@ name|String
 name|copySelfOnEmails
 parameter_list|()
 function_decl|;
-DECL|method|displayPatchSetsInReverseOrder ()
+DECL|method|reversePatchSetOrder ()
 name|String
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 parameter_list|()
 function_decl|;
-DECL|method|displayPersonNameInReviewCategory ()
+DECL|method|showUsernameInReviewCategory ()
 name|String
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 parameter_list|()
 function_decl|;
 DECL|method|buttonSaveChanges ()

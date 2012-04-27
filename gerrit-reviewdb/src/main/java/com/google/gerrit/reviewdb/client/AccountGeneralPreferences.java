@@ -461,10 +461,10 @@ name|id
 operator|=
 literal|10
 argument_list|)
-DECL|field|displayPatchSetsInReverseOrder
+DECL|field|reversePatchSetOrder
 specifier|protected
 name|boolean
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 decl_stmt|;
 annotation|@
 name|Column
@@ -473,10 +473,10 @@ name|id
 operator|=
 literal|11
 argument_list|)
-DECL|field|displayPersonNameInReviewCategory
+DECL|field|showUsernameInReviewCategory
 specifier|protected
 name|boolean
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
@@ -698,58 +698,58 @@ operator|=
 name|includeSelfOnEmail
 expr_stmt|;
 block|}
-DECL|method|isDisplayPatchSetsInReverseOrder ()
+DECL|method|isReversePatchSetOrder ()
 specifier|public
 name|boolean
-name|isDisplayPatchSetsInReverseOrder
+name|isReversePatchSetOrder
 parameter_list|()
 block|{
 return|return
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 return|;
 block|}
-DECL|method|setDisplayPatchSetsInReverseOrder (final boolean displayPatchSetsInReverseOrder)
+DECL|method|setReversePatchSetOrder (final boolean reversePatchSetOrder)
 specifier|public
 name|void
-name|setDisplayPatchSetsInReverseOrder
+name|setReversePatchSetOrder
 parameter_list|(
 specifier|final
 name|boolean
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 parameter_list|)
 block|{
 name|this
 operator|.
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 operator|=
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 expr_stmt|;
 block|}
-DECL|method|isDisplayPersonNameInReviewCategory ()
+DECL|method|isShowUsernameInReviewCategory ()
 specifier|public
 name|boolean
-name|isDisplayPersonNameInReviewCategory
+name|isShowUsernameInReviewCategory
 parameter_list|()
 block|{
 return|return
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 return|;
 block|}
-DECL|method|setDisplayPersonNameInReviewCategory (final boolean displayPersonNameInReviewCategory)
+DECL|method|setShowUsernameInReviewCategory (final boolean showUsernameInReviewCategory)
 specifier|public
 name|void
-name|setDisplayPersonNameInReviewCategory
+name|setShowUsernameInReviewCategory
 parameter_list|(
 specifier|final
 name|boolean
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 parameter_list|)
 block|{
 name|this
 operator|.
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 operator|=
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 expr_stmt|;
 block|}
 DECL|method|getDateFormat ()
@@ -864,11 +864,11 @@ name|copySelfOnEmail
 operator|=
 literal|false
 expr_stmt|;
-name|displayPatchSetsInReverseOrder
+name|reversePatchSetOrder
 operator|=
 literal|false
 expr_stmt|;
-name|displayPersonNameInReviewCategory
+name|showUsernameInReviewCategory
 operator|=
 literal|false
 expr_stmt|;
