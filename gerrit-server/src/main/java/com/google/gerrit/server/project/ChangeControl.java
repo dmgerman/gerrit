@@ -1210,7 +1210,13 @@ name|canRebase
 parameter_list|()
 block|{
 return|return
-name|canAddPatchSet
+name|isOwner
+argument_list|()
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|canSubmit
 argument_list|()
 return|;
 block|}
