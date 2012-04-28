@@ -1671,6 +1671,12 @@ specifier|final
 name|ChangeHooks
 name|hooks
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -1900,7 +1906,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final ApprovalTypes approvalTypes, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ReplicationQueue replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final ApprovalTypes approvalTypes, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ReplicationQueue replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -1944,6 +1950,10 @@ parameter_list|,
 specifier|final
 name|ChangeHooks
 name|hooks
+parameter_list|,
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 specifier|final
 name|ProjectCache
@@ -2069,6 +2079,12 @@ operator|.
 name|hooks
 operator|=
 name|hooks
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -12223,12 +12239,10 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
-name|ApprovalsUtil
+name|approvalsUtil
 operator|.
 name|syncChangeStatus
 argument_list|(
-name|db
-argument_list|,
 name|change
 argument_list|)
 expr_stmt|;

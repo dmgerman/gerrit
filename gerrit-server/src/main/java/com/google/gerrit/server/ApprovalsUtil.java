@@ -192,6 +192,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -226,17 +238,49 @@ specifier|public
 class|class
 name|ApprovalsUtil
 block|{
-comment|/* Resync the changeOpen status which is cached in the approvals table for      performance reasons*/
-DECL|method|syncChangeStatus (final ReviewDb db, final Change change)
-specifier|public
-specifier|static
-name|void
-name|syncChangeStatus
-parameter_list|(
+DECL|field|db
+specifier|private
 specifier|final
 name|ReviewDb
 name|db
+decl_stmt|;
+DECL|field|approvalTypes
+specifier|private
+specifier|final
+name|ApprovalTypes
+name|approvalTypes
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|ApprovalsUtil (ReviewDb db, ApprovalTypes approvalTypes)
+name|ApprovalsUtil
+parameter_list|(
+name|ReviewDb
+name|db
 parameter_list|,
+name|ApprovalTypes
+name|approvalTypes
+parameter_list|)
+block|{
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
+name|approvalTypes
+operator|=
+name|approvalTypes
+expr_stmt|;
+block|}
+comment|/**    * Resync the changeOpen status which is cached in the approvals table for    * performance reasons    */
+DECL|method|syncChangeStatus (final Change change)
+specifier|public
+name|void
+name|syncChangeStatus
+parameter_list|(
 specifier|final
 name|Change
 name|change
@@ -294,22 +338,14 @@ name|approvals
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param db The review database    * @param change Change to update    * @param approvalTypes The approval types    * @throws OrmException    * @throws IOException    */
-DECL|method|copyVetosToLatestPatchSet (final ReviewDb db, Change change, ApprovalTypes approvalTypes)
+comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param change Change to update    * @throws OrmException    * @throws IOException    */
+DECL|method|copyVetosToLatestPatchSet (Change change)
 specifier|public
-specifier|static
 name|void
 name|copyVetosToLatestPatchSet
 parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
-parameter_list|,
-name|ApprovalTypes
-name|approvalTypes
 parameter_list|)
 throws|throws
 name|OrmException
