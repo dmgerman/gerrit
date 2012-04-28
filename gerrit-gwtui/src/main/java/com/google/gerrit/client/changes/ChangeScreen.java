@@ -924,35 +924,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onSignOut ()
-specifier|public
-name|void
-name|onSignOut
-parameter_list|()
-block|{
-name|super
-operator|.
-name|onSignOut
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|starChange
-operator|!=
-literal|null
-condition|)
-block|{
-name|starChange
-operator|.
-name|setVisible
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Override
 DECL|method|onLoad ()
 specifier|protected
 name|void
