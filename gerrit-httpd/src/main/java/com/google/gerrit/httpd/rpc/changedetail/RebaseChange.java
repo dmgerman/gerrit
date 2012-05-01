@@ -94,22 +94,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|ChangeDetail
 import|;
 end_import
@@ -175,6 +159,20 @@ operator|.
 name|server
 operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ApprovalsUtil
 import|;
 end_import
 
@@ -555,15 +553,15 @@ specifier|final
 name|PersonIdent
 name|myIdent
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|approvalsUtil
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|ApprovalsUtil
+name|approvalsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, final ChangeHookRunner hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, @GerritPersonIdent final PersonIdent myIdent, final ApprovalTypes approvalTypes)
+DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, final ChangeHookRunner hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, @GerritPersonIdent final PersonIdent myIdent, final ApprovalsUtil approvalsUtil)
 name|RebaseChange
 parameter_list|(
 specifier|final
@@ -623,8 +621,8 @@ name|PersonIdent
 name|myIdent
 parameter_list|,
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|)
 block|{
 name|this
@@ -695,9 +693,9 @@ name|myIdent
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|approvalsUtil
 operator|=
-name|approvalTypes
+name|approvalsUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -750,7 +748,7 @@ name|myIdent
 argument_list|,
 name|changeControlFactory
 argument_list|,
-name|approvalTypes
+name|approvalsUtil
 argument_list|)
 expr_stmt|;
 return|return
