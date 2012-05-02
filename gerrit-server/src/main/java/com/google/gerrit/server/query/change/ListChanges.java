@@ -976,6 +976,15 @@ argument_list|,
 name|changes
 argument_list|)
 expr_stmt|;
+name|ChangeData
+operator|.
+name|ensureCurrentApprovalsLoaded
+argument_list|(
+name|db
+argument_list|,
+name|changes
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|ChangeInfo
