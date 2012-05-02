@@ -1641,10 +1641,12 @@ argument_list|,
 name|patchSet
 argument_list|,
 literal|null
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|canSubmit (ReviewDb db, PatchSet patchSet, @Nullable ChangeData cd)
+DECL|method|canSubmit (ReviewDb db, PatchSet patchSet, @Nullable ChangeData cd, boolean fastEvalLabels)
 specifier|public
 name|List
 argument_list|<
@@ -1662,6 +1664,9 @@ annotation|@
 name|Nullable
 name|ChangeData
 name|cd
+parameter_list|,
+name|boolean
+name|fastEvalLabels
 parameter_list|)
 block|{
 if|if
@@ -1998,6 +2003,21 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
+name|fastEvalLabels
+condition|)
+block|{
+name|env
+operator|.
+name|once
+argument_list|(
+literal|"gerrit"
+argument_list|,
+literal|"assume_range_from_label"
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 for|for
@@ -2234,6 +2254,21 @@ condition|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|fastEvalLabels
+condition|)
+block|{
+name|env
+operator|.
+name|once
+argument_list|(
+literal|"gerrit"
+argument_list|,
+literal|"assume_range_from_label"
+argument_list|)
+expr_stmt|;
+block|}
 name|Term
 name|resultsTerm
 init|=

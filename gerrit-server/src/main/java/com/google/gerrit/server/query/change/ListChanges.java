@@ -1667,6 +1667,8 @@ argument_list|,
 name|ps
 argument_list|,
 name|cd
+argument_list|,
+literal|true
 argument_list|)
 control|)
 block|{
