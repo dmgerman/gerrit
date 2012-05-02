@@ -622,7 +622,7 @@ name|canSubmit
 argument_list|(
 name|db
 argument_list|,
-name|patchSetId
+name|patch
 argument_list|)
 decl_stmt|;
 if|if

@@ -1177,9 +1177,6 @@ argument_list|(
 name|db
 argument_list|,
 name|patch
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 decl_stmt|;
 for|for

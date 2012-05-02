@@ -419,13 +419,11 @@ name|engine
 argument_list|)
 decl_stmt|;
 name|PatchSet
-operator|.
-name|Id
-name|patchSetId
+name|patchSet
 init|=
 name|StoredValues
 operator|.
-name|PATCH_SET_ID
+name|PATCH_SET
 operator|.
 name|get
 argument_list|(
@@ -459,7 +457,10 @@ argument_list|()
 operator|.
 name|byPatchSet
 argument_list|(
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 control|)
 block|{

@@ -1533,7 +1533,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|canSubmit (ReviewDb db, PatchSet.Id patchSetId)
+DECL|method|canSubmit (ReviewDb db, PatchSet patchSet)
 specifier|public
 name|List
 argument_list|<
@@ -1545,9 +1545,7 @@ name|ReviewDb
 name|db
 parameter_list|,
 name|PatchSet
-operator|.
-name|Id
-name|patchSetId
+name|patchSet
 parameter_list|)
 block|{
 if|if
@@ -1590,7 +1588,10 @@ block|}
 if|if
 condition|(
 operator|!
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -1606,7 +1607,10 @@ name|ruleError
 argument_list|(
 literal|"Patch set "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getPatchSetId
+argument_list|()
 operator|+
 literal|" is not current"
 argument_list|)
@@ -1642,7 +1646,10 @@ name|ruleError
 argument_list|(
 literal|"Patch set "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getPatchSetId
+argument_list|()
 operator|+
 literal|" not found"
 argument_list|)
@@ -1660,12 +1667,10 @@ block|}
 block|}
 if|if
 condition|(
-name|isDraftPatchSet
-argument_list|(
-name|patchSetId
-argument_list|,
-name|db
-argument_list|)
+name|patchSet
+operator|.
+name|isDraft
+argument_list|()
 condition|)
 block|{
 if|if
@@ -1682,7 +1687,10 @@ name|ruleError
 argument_list|(
 literal|"Patch set "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getPatchSetId
+argument_list|()
 operator|+
 literal|" not found"
 argument_list|)
@@ -1710,7 +1718,10 @@ name|logRuleError
 argument_list|(
 literal|"Cannot read patch set "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|err
 argument_list|)
@@ -1805,9 +1816,9 @@ name|set
 argument_list|(
 name|StoredValues
 operator|.
-name|PATCH_SET_ID
+name|PATCH_SET
 argument_list|,
-name|patchSetId
+name|patchSet
 argument_list|)
 expr_stmt|;
 name|env
