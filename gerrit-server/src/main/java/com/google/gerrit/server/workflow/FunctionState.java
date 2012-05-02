@@ -266,22 +266,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|GroupCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -491,7 +475,7 @@ name|change
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ApprovalTypes approvalTypes, final IdentifiedUser.GenericFactory userFactory, final GroupCache egc, @Assisted final ChangeControl c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
+DECL|method|FunctionState (final ApprovalTypes approvalTypes, final IdentifiedUser.GenericFactory userFactory, @Assisted final ChangeControl c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
 specifier|final
@@ -503,10 +487,6 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
-parameter_list|,
-specifier|final
-name|GroupCache
-name|egc
 parameter_list|,
 annotation|@
 name|Assisted

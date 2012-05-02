@@ -92,22 +92,6 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
-operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -123,16 +107,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
 import|;
 end_import
 
@@ -166,17 +140,9 @@ specifier|final
 name|AccountByEmailCache
 name|byEmail
 decl_stmt|;
-DECL|field|groupMembershipFactory
-specifier|private
-specifier|final
-name|MaterializedGroupMembership
-operator|.
-name|Factory
-name|groupMembershipFactory
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DefaultRealm (final EmailExpander emailExpander, final AccountByEmailCache byEmail, final MaterializedGroupMembership.Factory groupMembershipFactory)
+DECL|method|DefaultRealm (final EmailExpander emailExpander, final AccountByEmailCache byEmail)
 name|DefaultRealm
 parameter_list|(
 specifier|final
@@ -186,12 +152,6 @@ parameter_list|,
 specifier|final
 name|AccountByEmailCache
 name|byEmail
-parameter_list|,
-specifier|final
-name|MaterializedGroupMembership
-operator|.
-name|Factory
-name|groupMembershipFactory
 parameter_list|)
 block|{
 name|this
@@ -205,12 +165,6 @@ operator|.
 name|byEmail
 operator|=
 name|byEmail
-expr_stmt|;
-name|this
-operator|.
-name|groupMembershipFactory
-operator|=
-name|groupMembershipFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -352,30 +306,6 @@ name|Account
 name|account
 parameter_list|)
 block|{   }
-annotation|@
-name|Override
-DECL|method|groups (final AccountState who)
-specifier|public
-name|GroupMembership
-name|groups
-parameter_list|(
-specifier|final
-name|AccountState
-name|who
-parameter_list|)
-block|{
-return|return
-name|groupMembershipFactory
-operator|.
-name|create
-argument_list|(
-name|who
-operator|.
-name|getInternalGroups
-argument_list|()
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|lookup (final String accountName)

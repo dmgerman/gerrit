@@ -167,14 +167,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates a GroupMembership object from materialized collection of groups.  */
+comment|/**  * Creates a GroupMembership checker for the internal group system, which  * starts with the seed groups and includes all child groups.  */
 end_comment
 
 begin_class
-DECL|class|MaterializedGroupMembership
+DECL|class|IncludingGroupMembership
 specifier|public
 class|class
-name|MaterializedGroupMembership
+name|IncludingGroupMembership
 implements|implements
 name|GroupMembership
 block|{
@@ -184,7 +184,7 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (Iterable<AccountGroup.UUID> groupIds)
-name|MaterializedGroupMembership
+name|IncludingGroupMembership
 name|create
 parameter_list|(
 name|Iterable
@@ -227,8 +227,8 @@ name|groupQueue
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MaterializedGroupMembership ( GroupIncludeCache groupIncludeCache, @Assisted Iterable<AccountGroup.UUID> seedGroups)
-name|MaterializedGroupMembership
+DECL|method|IncludingGroupMembership ( GroupIncludeCache groupIncludeCache, @Assisted Iterable<AccountGroup.UUID> seedGroups)
+name|IncludingGroupMembership
 parameter_list|(
 name|GroupIncludeCache
 name|groupIncludeCache

@@ -172,6 +172,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|GroupDescription
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|GroupReference
 import|;
 end_import
@@ -340,7 +356,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -357,6 +373,22 @@ operator|.
 name|config
 operator|.
 name|ConfigUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|RefConfigSection
 import|;
 end_import
 
@@ -1508,14 +1540,14 @@ return|return
 name|rulesId
 return|;
 block|}
-comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupCache cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
-DECL|method|updateGroupNames (GroupCache groupCache)
+comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupBackend cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
+DECL|method|updateGroupNames (GroupBackend groupBackend)
 specifier|public
 name|boolean
 name|updateGroupNames
 parameter_list|(
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 parameter_list|)
 block|{
 name|boolean
@@ -1534,10 +1566,12 @@ name|values
 argument_list|()
 control|)
 block|{
-name|AccountGroup
+name|GroupDescription
+operator|.
+name|Basic
 name|g
 init|=
-name|groupCache
+name|groupBackend
 operator|.
 name|get
 argument_list|(

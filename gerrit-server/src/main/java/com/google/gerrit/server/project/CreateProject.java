@@ -94,6 +94,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|GroupDescription
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|GroupReference
 import|;
 end_import
@@ -266,7 +282,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -700,10 +716,10 @@ specifier|private
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|groupCache
+DECL|field|groupBackend
 specifier|private
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 decl_stmt|;
 DECL|field|metaDataUpdateFactory
 specifier|private
@@ -714,7 +730,7 @@ name|metaDataUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject (@rojectOwnerGroups Set<AccountGroup.UUID> pOwnerGroups, IdentifiedUser identifiedUser, GitRepositoryManager gitRepoManager, GitReferenceUpdated referenceUpdated, DynamicSet<NewProjectCreatedListener> createdListener, ReviewDb db, @GerritPersonIdent PersonIdent personIdent, final GroupCache groupCache, final MetaDataUpdate.User metaDataUpdateFactory, @Assisted CreateProjectArgs createPArgs, ProjectCache pCache)
+DECL|method|CreateProject (@rojectOwnerGroups Set<AccountGroup.UUID> pOwnerGroups, IdentifiedUser identifiedUser, GitRepositoryManager gitRepoManager, GitReferenceUpdated referenceUpdated, DynamicSet<NewProjectCreatedListener> createdListener, ReviewDb db, @GerritPersonIdent PersonIdent personIdent, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, @Assisted CreateProjectArgs createPArgs, ProjectCache pCache)
 name|CreateProject
 parameter_list|(
 annotation|@
@@ -750,11 +766,9 @@ name|GerritPersonIdent
 name|PersonIdent
 name|personIdent
 parameter_list|,
-specifier|final
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 parameter_list|,
-specifier|final
 name|MetaDataUpdate
 operator|.
 name|User
@@ -819,9 +833,9 @@ name|pCache
 expr_stmt|;
 name|this
 operator|.
-name|groupCache
+name|groupBackend
 operator|=
-name|groupCache
+name|groupBackend
 expr_stmt|;
 name|this
 operator|.
@@ -1340,10 +1354,12 @@ operator|.
 name|ownerIds
 control|)
 block|{
-name|AccountGroup
-name|accountGroup
+name|GroupDescription
+operator|.
+name|Basic
+name|g
 init|=
-name|groupCache
+name|groupBackend
 operator|.
 name|get
 argument_list|(
@@ -1352,7 +1368,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|accountGroup
+name|g
 operator|!=
 literal|null
 condition|)
@@ -1364,7 +1380,12 @@ name|config
 operator|.
 name|resolve
 argument_list|(
-name|accountGroup
+name|GroupReference
+operator|.
+name|forGroup
+argument_list|(
+name|g
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|all

@@ -158,7 +158,7 @@ argument_list|>
 name|groupIds
 parameter_list|)
 function_decl|;
-comment|/**    * Returns the set of groups that can be determined by the implementation.    * This may not return all groups the {@link #contains(AccountGroup.UUID)}    * would return {@code true} for, but will at least contain all top level    * groups. This restriction stems from the API of some group systems, which    * make it expensive to enumate the members of a group.    */
+comment|/**    * Returns the set of groups that can be determined by the implementation.    * This may not return all groups the {@link #contains(AccountGroup.UUID)}    * would return {@code true} for, but will at least contain all top level    * groups. This restriction stems from the API of some group systems, which    * make it expensive to enumerate the members of a group.    */
 DECL|method|getKnownGroups ()
 name|Set
 argument_list|<

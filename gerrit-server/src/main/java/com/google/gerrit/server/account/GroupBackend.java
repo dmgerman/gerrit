@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,11 +74,27 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 operator|.
-name|Account
+name|GroupDescription
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GroupReference
 import|;
 end_import
 
@@ -92,101 +108,101 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|server
+name|client
 operator|.
-name|ReviewDb
+name|AccountGroup
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_comment
+comment|/**  * Implementations of GroupBackend provide lookup and membership accessors  * to a group system.  */
+end_comment
+
 begin_interface
-DECL|interface|Realm
+DECL|interface|GroupBackend
 specifier|public
 interface|interface
-name|Realm
+name|GroupBackend
 block|{
-comment|/** Can the end-user modify this field of their own account? */
-DECL|method|allowsEdit (Account.FieldName field)
-specifier|public
+comment|/** @return {@code true} if the backend can operate on the UUID. */
+DECL|method|handles (AccountGroup.UUID uuid)
 name|boolean
-name|allowsEdit
+name|handles
 parameter_list|(
-name|Account
+name|AccountGroup
 operator|.
-name|FieldName
-name|field
+name|UUID
+name|uuid
 parameter_list|)
 function_decl|;
-DECL|method|authenticate (AuthRequest who)
-specifier|public
-name|AuthRequest
-name|authenticate
-parameter_list|(
-name|AuthRequest
-name|who
-parameter_list|)
-throws|throws
-name|AccountException
-function_decl|;
-DECL|method|link (ReviewDb db, Account.Id to, AuthRequest who)
-specifier|public
-name|AuthRequest
-name|link
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|Account
+comment|/**    * Looks up a group in the backend. If the group does not exist, null is    * returned.    *    * @param uuid the group identifier    * @return the group    */
+annotation|@
+name|Nullable
+DECL|method|get (AccountGroup.UUID uuid)
+name|GroupDescription
 operator|.
-name|Id
-name|to
-parameter_list|,
-name|AuthRequest
-name|who
-parameter_list|)
-throws|throws
-name|AccountException
-function_decl|;
-DECL|method|unlink (ReviewDb db, Account.Id to, AuthRequest who)
-specifier|public
-name|AuthRequest
-name|unlink
+name|Basic
+name|get
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|Account
+name|AccountGroup
 operator|.
-name|Id
-name|to
-parameter_list|,
-name|AuthRequest
-name|who
-parameter_list|)
-throws|throws
-name|AccountException
-function_decl|;
-DECL|method|onCreateAccount (AuthRequest who, Account account)
-specifier|public
-name|void
-name|onCreateAccount
-parameter_list|(
-name|AuthRequest
-name|who
-parameter_list|,
-name|Account
-name|account
+name|UUID
+name|uuid
 parameter_list|)
 function_decl|;
-comment|/**    * Locate an account whose local username is the given account name.    *<p>    * Generally this only works for local realms, such as one backed by an LDAP    * directory, or where there is an {@link EmailExpander} configured that knows    * how to convert the accountName into an email address, and then locate the    * user by that email address.    */
-DECL|method|lookup (String accountName)
-specifier|public
-name|Account
-operator|.
-name|Id
-name|lookup
+comment|/** @return suggestions for the group name sorted by name. */
+DECL|method|suggest (String name)
+name|Collection
+argument_list|<
+name|GroupReference
+argument_list|>
+name|suggest
 parameter_list|(
 name|String
-name|accountName
+name|name
+parameter_list|)
+function_decl|;
+comment|/** @return the group membership checker for the backend. */
+DECL|method|membershipsOf (IdentifiedUser user)
+name|GroupMembership
+name|membershipsOf
+parameter_list|(
+name|IdentifiedUser
+name|user
 parameter_list|)
 function_decl|;
 block|}

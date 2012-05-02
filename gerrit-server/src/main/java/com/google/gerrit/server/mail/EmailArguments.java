@@ -170,7 +170,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -369,10 +369,10 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|groupCache
+DECL|field|groupBackend
 specifier|final
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 decl_stmt|;
 DECL|field|accountCache
 specifier|final
@@ -461,7 +461,7 @@ name|velocityRuntime
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupCache groupCache, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -470,8 +470,8 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -547,9 +547,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|groupCache
+name|groupBackend
 operator|=
-name|groupCache
+name|groupBackend
 expr_stmt|;
 name|this
 operator|.

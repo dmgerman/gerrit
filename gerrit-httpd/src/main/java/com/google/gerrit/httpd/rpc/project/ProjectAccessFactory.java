@@ -224,7 +224,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -509,11 +509,11 @@ name|name
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|groupCache
+DECL|field|groupBackend
 specifier|private
 specifier|final
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
@@ -566,12 +566,12 @@ name|pc
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectAccessFactory (final GroupCache groupCache, final ProjectCache projectCache, final ProjectControl.Factory projectControlFactory, final GroupControl.Factory groupControlFactory, final MetaDataUpdate.Server metaDataUpdateFactory, final AllProjectsName allProjectsName, @Assisted final Project.NameKey name)
+DECL|method|ProjectAccessFactory (final GroupBackend groupBackend, final ProjectCache projectCache, final ProjectControl.Factory projectControlFactory, final GroupControl.Factory groupControlFactory, final MetaDataUpdate.Server metaDataUpdateFactory, final AllProjectsName allProjectsName, @Assisted final Project.NameKey name)
 name|ProjectAccessFactory
 parameter_list|(
 specifier|final
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 parameter_list|,
 specifier|final
 name|ProjectCache
@@ -610,9 +610,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|groupCache
+name|groupBackend
 operator|=
-name|groupCache
+name|groupBackend
 expr_stmt|;
 name|this
 operator|.
@@ -704,7 +704,7 @@ name|config
 operator|.
 name|updateGroupNames
 argument_list|(
-name|groupCache
+name|groupBackend
 argument_list|)
 condition|)
 block|{

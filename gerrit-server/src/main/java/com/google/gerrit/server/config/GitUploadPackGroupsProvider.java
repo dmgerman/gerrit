@@ -94,7 +94,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -154,12 +154,12 @@ name|GroupSetProvider
 block|{
 annotation|@
 name|Inject
-DECL|method|GitUploadPackGroupsProvider (GroupCache gc, @GerritServerConfig Config config)
+DECL|method|GitUploadPackGroupsProvider (GroupBackend gb, @GerritServerConfig Config config)
 specifier|public
 name|GitUploadPackGroupsProvider
 parameter_list|(
-name|GroupCache
-name|gc
+name|GroupBackend
+name|gb
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -169,7 +169,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|gc
+name|gb
 argument_list|,
 name|config
 argument_list|,
