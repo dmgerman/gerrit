@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,15 +66,11 @@ name|git
 package|;
 end_package
 
-begin_comment
-comment|/** Indicates the current branch's queue cannot be processed at this time. */
-end_comment
-
 begin_class
-DECL|class|MergeException
+DECL|class|IncompleteUserInfoException
 specifier|public
 class|class
-name|MergeException
+name|IncompleteUserInfoException
 extends|extends
 name|Exception
 block|{
@@ -87,39 +83,30 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|MergeException (final String msg)
-name|MergeException
+DECL|method|IncompleteUserInfoException (final String userName, final String missingInfo)
+specifier|public
+name|IncompleteUserInfoException
 parameter_list|(
 specifier|final
 name|String
-name|msg
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|msg
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|MergeException (final String msg, final Throwable why)
-name|MergeException
-parameter_list|(
-specifier|final
-name|String
-name|msg
+name|userName
 parameter_list|,
 specifier|final
-name|Throwable
-name|why
+name|String
+name|missingInfo
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|msg
-argument_list|,
-name|why
+literal|"For the user \""
+operator|+
+name|userName
+operator|+
+literal|"\" "
+operator|+
+name|missingInfo
+operator|+
+literal|" is not set."
 argument_list|)
 expr_stmt|;
 block|}
