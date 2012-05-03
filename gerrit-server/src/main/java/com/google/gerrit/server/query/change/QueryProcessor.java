@@ -1628,14 +1628,9 @@ argument_list|,
 comment|//
 name|d
 operator|.
-name|approvalsFor
+name|currentApprovals
 argument_list|(
 name|db
-argument_list|,
-name|current
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
