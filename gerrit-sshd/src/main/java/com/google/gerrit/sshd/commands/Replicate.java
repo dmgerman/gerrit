@@ -456,7 +456,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
@@ -556,7 +556,7 @@ else|else
 block|{
 throw|throw
 operator|new
-name|Failure
+name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
