@@ -627,12 +627,11 @@ literal|"(default: master)"
 argument_list|)
 DECL|field|branch
 specifier|private
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|branch
-init|=
-name|Constants
-operator|.
-name|MASTER
 decl_stmt|;
 annotation|@
 name|Option

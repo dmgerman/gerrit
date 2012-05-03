@@ -252,6 +252,16 @@ name|Constants
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
 begin_class
 DECL|class|CreateProjectHandler
 specifier|public
@@ -540,9 +550,10 @@ name|args
 operator|.
 name|branch
 operator|=
-name|Constants
+name|Collections
 operator|.
-name|MASTER
+name|emptyList
+argument_list|()
 expr_stmt|;
 name|args
 operator|.
