@@ -12537,7 +12537,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s (from plugin %s)"
+literal|"(W) %s (from plugin %s)"
 argument_list|,
 name|message
 argument_list|,
