@@ -586,7 +586,7 @@ specifier|native
 name|short
 name|_value
 parameter_list|()
-comment|/*-{       if (this.value) return this.value;       if (this.recommended) return 1;       if (this.disliked) return -1;       return 0;     }-*/
+comment|/*-{       if (this.value) return this.value;       if (this.disliked) return -1;       if (this.recommended) return 1;       return 0;     }-*/
 function_decl|;
 DECL|method|LabelInfo ()
 specifier|protected
