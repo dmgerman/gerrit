@@ -318,6 +318,20 @@ name|Executor
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
 begin_comment
 comment|/**  * Creates a CommandFactory using commands registered by {@link CommandModule}.  */
 end_comment
@@ -523,7 +537,8 @@ name|cmd
 decl_stmt|;
 DECL|field|logged
 specifier|private
-name|boolean
+specifier|final
+name|AtomicBoolean
 name|logged
 decl_stmt|;
 DECL|method|Trampoline (final String cmdLine)
@@ -544,6 +559,12 @@ name|split
 argument_list|(
 name|cmdLine
 argument_list|)
+expr_stmt|;
+name|logged
+operator|=
+operator|new
+name|AtomicBoolean
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setInputStream (final InputStream in)
@@ -958,15 +979,16 @@ name|int
 name|rc
 parameter_list|)
 block|{
-synchronized|synchronized
-init|(
-name|this
-init|)
-block|{
 if|if
 condition|(
-operator|!
 name|logged
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
 condition|)
 block|{
 name|log
@@ -976,11 +998,6 @@ argument_list|(
 name|rc
 argument_list|)
 expr_stmt|;
-name|logged
-operator|=
-literal|true
-expr_stmt|;
-block|}
 block|}
 block|}
 annotation|@
