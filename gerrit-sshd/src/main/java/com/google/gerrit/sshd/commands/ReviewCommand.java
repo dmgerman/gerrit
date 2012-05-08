@@ -380,7 +380,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|BaseCommand
+name|SshCommand
 import|;
 end_import
 
@@ -437,20 +437,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Environment
 import|;
 end_import
 
@@ -564,7 +550,7 @@ specifier|public
 class|class
 name|ReviewCommand
 extends|extends
-name|BaseCommand
+name|SshCommand
 block|{
 DECL|field|log
 specifier|private
@@ -954,38 +940,14 @@ name|optionList
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
-specifier|public
-specifier|final
-name|void
-name|start
-parameter_list|(
-specifier|final
-name|Environment
-name|env
-parameter_list|)
-block|{
-name|startThread
-argument_list|(
-operator|new
-name|CommandRunnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
+DECL|method|run ()
+specifier|protected
 name|void
 name|run
 parameter_list|()
 throws|throws
-name|Failure
+name|UnloggedFailure
 block|{
-name|initOptionList
-argument_list|()
-expr_stmt|;
-name|parseCommandLine
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|abandonChange
@@ -1203,10 +1165,6 @@ literal|" review output above"
 argument_list|)
 throw|;
 block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|approveOne (final PatchSet.Id patchSetId)
 specifier|private
@@ -2032,11 +1990,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|initOptionList ()
-specifier|private
+annotation|@
+name|Override
+DECL|method|parseCommandLine ()
+specifier|protected
 name|void
-name|initOptionList
+name|parseCommandLine
 parameter_list|()
+throws|throws
+name|UnloggedFailure
 block|{
 name|optionList
 operator|=
@@ -2141,6 +2103,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|parseCommandLine
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|writeError (final String msg)
 specifier|private

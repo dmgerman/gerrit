@@ -94,7 +94,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|BaseCommand
+name|SshCommand
 import|;
 end_import
 
@@ -107,20 +107,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Environment
 import|;
 end_import
 
@@ -163,7 +149,7 @@ DECL|class|Query
 class|class
 name|Query
 extends|extends
-name|BaseCommand
+name|SshCommand
 block|{
 annotation|@
 name|Inject
@@ -442,29 +428,36 @@ name|query
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (Environment env)
-specifier|public
-name|void
-name|start
-parameter_list|(
-name|Environment
-name|env
-parameter_list|)
-block|{
-name|startThread
-argument_list|(
-operator|new
-name|CommandRunnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
+DECL|method|run ()
+specifier|protected
 name|void
 name|run
 parameter_list|()
 throws|throws
 name|Exception
+block|{
+name|processor
+operator|.
+name|query
+argument_list|(
+name|join
+argument_list|(
+name|query
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|parseCommandLine ()
+specifier|protected
+name|void
+name|parseCommandLine
+parameter_list|()
+throws|throws
+name|UnloggedFailure
 block|{
 name|processor
 operator|.
@@ -479,37 +472,11 @@ operator|.
 name|TEXT
 argument_list|)
 expr_stmt|;
+name|super
+operator|.
 name|parseCommandLine
 argument_list|()
 expr_stmt|;
-name|verifyCommandLine
-argument_list|()
-expr_stmt|;
-name|processor
-operator|.
-name|query
-argument_list|(
-name|join
-argument_list|(
-name|query
-argument_list|,
-literal|" "
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|verifyCommandLine ()
-specifier|private
-name|void
-name|verifyCommandLine
-parameter_list|()
-throws|throws
-name|UnloggedFailure
-block|{
 if|if
 condition|(
 name|processor

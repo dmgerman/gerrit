@@ -1119,10 +1119,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|isAdminCommand
-argument_list|()
-operator|||
-operator|(
 name|isAdminHighPriorityCommand
 argument_list|()
 operator|&&
@@ -1136,7 +1132,6 @@ argument_list|()
 operator|.
 name|canAdministrateServer
 argument_list|()
-operator|)
 condition|)
 block|{
 comment|// Admin commands should not block the main work threads (there
@@ -1170,27 +1165,6 @@ name|tt
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|isAdminCommand ()
-specifier|private
-specifier|final
-name|boolean
-name|isAdminCommand
-parameter_list|()
-block|{
-return|return
-name|getClass
-argument_list|()
-operator|.
-name|getAnnotation
-argument_list|(
-name|AdminCommand
-operator|.
-name|class
-argument_list|)
-operator|!=
-literal|null
-return|;
 block|}
 DECL|method|isAdminHighPriorityCommand ()
 specifier|private

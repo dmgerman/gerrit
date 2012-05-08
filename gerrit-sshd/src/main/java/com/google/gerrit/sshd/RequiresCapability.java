@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation tagged on a concrete Command that requires administrator access.  *<p>  * Currently this annotation is only enforced by DispatchCommand after it has  * created the command object, but before it populates it or starts execution.  */
+comment|/**  * Annotation on {@link SshCommand} declaring a capability must be granted.  */
 end_comment
 
 begin_annotation_defn
@@ -133,11 +133,17 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
-DECL|annotation|AdminCommand
+DECL|annotation|RequiresCapability
 specifier|public
 annotation_defn|@interface
-name|AdminCommand
-block|{ }
+name|RequiresCapability
+block|{
+DECL|method|value ()
+name|String
+name|value
+parameter_list|()
+function_decl|;
+block|}
 end_annotation_defn
 
 end_unit

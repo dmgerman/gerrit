@@ -90,7 +90,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|BaseCommand
+name|SshCommand
 import|;
 end_import
 
@@ -166,7 +166,7 @@ specifier|abstract
 class|class
 name|CacheCommand
 extends|extends
-name|BaseCommand
+name|SshCommand
 block|{
 annotation|@
 name|Inject
