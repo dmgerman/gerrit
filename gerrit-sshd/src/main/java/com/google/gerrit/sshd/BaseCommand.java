@@ -1827,6 +1827,11 @@ name|void
 name|cancel
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 specifier|final
 name|Context
 name|old
@@ -1857,6 +1862,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 annotation|@
 name|Override
 DECL|method|run ()
@@ -1864,6 +1870,11 @@ specifier|public
 name|void
 name|run
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
 block|{
 specifier|final
 name|Thread
@@ -2029,7 +2040,7 @@ parameter_list|(
 name|Throwable
 name|e2
 parameter_list|)
-block|{         }
+block|{           }
 try|try
 block|{
 name|err
@@ -2043,7 +2054,7 @@ parameter_list|(
 name|Throwable
 name|e2
 parameter_list|)
-block|{         }
+block|{           }
 name|rc
 operator|=
 name|handleError
@@ -2078,6 +2089,7 @@ argument_list|(
 name|thisName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
