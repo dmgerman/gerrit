@@ -220,7 +220,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|BaseCommand
+name|SshCommand
 import|;
 end_import
 
@@ -268,7 +268,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|PrintWriter
+name|IOException
 import|;
 end_import
 
@@ -346,7 +346,7 @@ specifier|final
 class|class
 name|ShowQueue
 extends|extends
-name|BaseCommand
+name|SshCommand
 block|{
 annotation|@
 name|Option
@@ -385,11 +385,6 @@ specifier|private
 name|IdentifiedUser
 name|currentUser
 decl_stmt|;
-DECL|field|p
-specifier|private
-name|PrintWriter
-name|p
-decl_stmt|;
 DECL|field|columns
 specifier|private
 name|int
@@ -413,6 +408,8 @@ specifier|final
 name|Environment
 name|env
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|String
 name|s
@@ -466,49 +463,22 @@ literal|80
 expr_stmt|;
 block|}
 block|}
-name|startThread
+name|super
+operator|.
+name|start
 argument_list|(
-operator|new
-name|CommandRunnable
-argument_list|()
-block|{
+name|env
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
-specifier|public
+DECL|method|run ()
+specifier|protected
 name|void
 name|run
 parameter_list|()
-throws|throws
-name|Exception
 block|{
-name|parseCommandLine
-argument_list|()
-expr_stmt|;
-name|ShowQueue
-operator|.
-name|this
-operator|.
-name|display
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|display ()
-specifier|private
-name|void
-name|display
-parameter_list|()
-block|{
-name|p
-operator|=
-name|toPrintWriter
-argument_list|(
-name|out
-argument_list|)
-expr_stmt|;
 specifier|final
 name|List
 argument_list|<
@@ -684,7 +654,7 @@ literal|8
 operator|-
 literal|4
 expr_stmt|;
-name|p
+name|stdout
 operator|.
 name|print
 argument_list|(
@@ -705,7 +675,7 @@ literal|"Command"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|p
+name|stdout
 operator|.
 name|print
 argument_list|(
@@ -964,7 +934,7 @@ name|regularUserCanSee
 operator|)
 condition|)
 block|{
-name|p
+name|stdout
 operator|.
 name|print
 argument_list|(
@@ -1027,7 +997,7 @@ operator|+
 name|projectName
 expr_stmt|;
 block|}
-name|p
+name|stdout
 operator|.
 name|print
 argument_list|(
@@ -1056,7 +1026,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|p
+name|stdout
 operator|.
 name|print
 argument_list|(
@@ -1078,7 +1048,7 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
-name|p
+name|stdout
 operator|.
 name|print
 argument_list|(
@@ -1089,11 +1059,6 @@ operator|+
 literal|" tasks\n"
 argument_list|)
 expr_stmt|;
-name|p
-operator|.
-name|flush
-parameter_list|()
-constructor_decl|;
 block|}
 end_class
 
