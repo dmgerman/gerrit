@@ -224,21 +224,6 @@ name|String
 name|accountName
 parameter_list|)
 function_decl|;
-comment|/**    * Search for matching external groups.    */
-DECL|method|lookupGroups (String name)
-specifier|public
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|ExternalNameKey
-argument_list|>
-name|lookupGroups
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 

@@ -334,98 +334,6 @@ name|r
 return|;
 block|}
 block|}
-comment|/** Distinguished name, within organization directory server. */
-DECL|class|ExternalNameKey
-specifier|public
-specifier|static
-class|class
-name|ExternalNameKey
-extends|extends
-name|StringKey
-argument_list|<
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|client
-operator|.
-name|Key
-argument_list|<
-name|?
-argument_list|>
-argument_list|>
-block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
-DECL|field|name
-specifier|protected
-name|String
-name|name
-decl_stmt|;
-DECL|method|ExternalNameKey ()
-specifier|protected
-name|ExternalNameKey
-parameter_list|()
-block|{     }
-DECL|method|ExternalNameKey (final String n)
-specifier|public
-name|ExternalNameKey
-parameter_list|(
-specifier|final
-name|String
-name|n
-parameter_list|)
-block|{
-name|name
-operator|=
-name|n
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|get ()
-specifier|public
-name|String
-name|get
-parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|set (String newValue)
-specifier|protected
-name|void
-name|set
-parameter_list|(
-name|String
-name|newValue
-parameter_list|)
-block|{
-name|name
-operator|=
-name|newValue
-expr_stmt|;
-block|}
-block|}
 comment|/** Synthetic key to link to within the database */
 DECL|class|Id
 specifier|public
@@ -564,10 +472,6 @@ block|,
 comment|/**      * Group defined within our database.      *<p>      * An internal group has its membership fully enumerated in the database.      * The membership can be viewed and edited through the web UI by any user      * who is a member of the owner group. These groups are not treated special      * in the code.      */
 DECL|enumConstant|INTERNAL
 name|INTERNAL
-block|,
-comment|/**      * Group defined by external LDAP database.      *<p>      * A group whose membership is determined by the LDAP directory that we      * connect to for user and group information. In UI contexts the membership      * of the group is not displayed, as it may be exceedingly large, or might      * contain users who have never logged into this server before (and thus      * have no matching account record). Adding or removing users from an LDAP      * group requires making edits through the LDAP directory, and cannot be      * done through our UI.      */
-DECL|enumConstant|LDAP
-name|LDAP
 block|;   }
 comment|/** Common UUID assigned to the "Project Owners" placeholder group. */
 DECL|field|PROJECT_OWNERS
@@ -688,23 +592,6 @@ DECL|field|groupType
 specifier|protected
 name|String
 name|groupType
-decl_stmt|;
-comment|/** Distinguished name in the directory server. */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|6
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|externalName
-specifier|protected
-name|ExternalNameKey
-name|externalName
 decl_stmt|;
 annotation|@
 name|Column
@@ -939,31 +826,6 @@ name|t
 operator|.
 name|name
 argument_list|()
-expr_stmt|;
-block|}
-DECL|method|getExternalNameKey ()
-specifier|public
-name|ExternalNameKey
-name|getExternalNameKey
-parameter_list|()
-block|{
-return|return
-name|externalName
-return|;
-block|}
-DECL|method|setExternalNameKey (final ExternalNameKey k)
-specifier|public
-name|void
-name|setExternalNameKey
-parameter_list|(
-specifier|final
-name|ExternalNameKey
-name|k
-parameter_list|)
-block|{
-name|externalName
-operator|=
-name|k
 expr_stmt|;
 block|}
 DECL|method|setVisibleToAll (final boolean visibleToAll)

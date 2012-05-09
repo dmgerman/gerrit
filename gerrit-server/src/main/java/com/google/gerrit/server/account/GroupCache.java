@@ -84,16 +84,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|annotation
@@ -146,20 +136,6 @@ name|AccountGroup
 operator|.
 name|UUID
 name|uuid
-parameter_list|)
-function_decl|;
-DECL|method|get (AccountGroup.ExternalNameKey externalName)
-specifier|public
-name|Collection
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|get
-parameter_list|(
-name|AccountGroup
-operator|.
-name|ExternalNameKey
-name|externalName
 parameter_list|)
 function_decl|;
 comment|/** @return sorted iteration of groups. */

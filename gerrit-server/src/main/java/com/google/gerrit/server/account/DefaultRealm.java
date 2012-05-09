@@ -446,29 +446,6 @@ return|return
 literal|null
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|lookupGroups (String name)
-specifier|public
-name|Set
-argument_list|<
-name|AccountGroup
-operator|.
-name|ExternalNameKey
-argument_list|>
-name|lookupGroups
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

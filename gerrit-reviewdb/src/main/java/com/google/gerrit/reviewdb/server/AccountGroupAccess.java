@@ -206,26 +206,6 @@ name|OrmException
 function_decl|;
 annotation|@
 name|Query
-argument_list|(
-literal|"WHERE externalName = ?"
-argument_list|)
-DECL|method|byExternalName (AccountGroup.ExternalNameKey name)
-name|ResultSet
-argument_list|<
-name|AccountGroup
-argument_list|>
-name|byExternalName
-parameter_list|(
-name|AccountGroup
-operator|.
-name|ExternalNameKey
-name|name
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
 DECL|method|all ()
 name|ResultSet
 argument_list|<
