@@ -675,7 +675,7 @@ name|setDateText
 argument_list|(
 name|FormatUtil
 operator|.
-name|shortFormat
+name|shortFormatDayTime
 argument_list|(
 name|when
 argument_list|)
