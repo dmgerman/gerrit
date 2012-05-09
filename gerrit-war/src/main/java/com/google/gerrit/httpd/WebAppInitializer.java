@@ -146,6 +146,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|httpd
+operator|.
+name|plugins
+operator|.
+name|HttpPluginModule
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|lifecycle
 operator|.
 name|LifecycleManager
@@ -1047,6 +1063,13 @@ argument_list|(
 name|sshInjector
 argument_list|)
 expr_stmt|;
+name|env
+operator|.
+name|setHttpInjector
+argument_list|(
+name|webInjector
+argument_list|)
+expr_stmt|;
 comment|// Push the Provider<HttpServletRequest> down into the canonical
 comment|// URL provider. Its optional for that provider, but since we can
 comment|// supply one we should do so, in case the administrator has not
@@ -1765,6 +1788,15 @@ argument_list|(
 name|HttpContactStoreConnection
 operator|.
 name|module
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+operator|new
+name|HttpPluginModule
 argument_list|()
 argument_list|)
 expr_stmt|;
