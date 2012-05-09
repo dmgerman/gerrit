@@ -274,6 +274,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|ResultSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -426,10 +440,13 @@ name|approvals
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param change Change to update    * @throws OrmException    * @throws IOException    */
+comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param change Change to update    * @throws OrmException    * @throws IOException    * @return List<PatchSetApproval> The previous approvals    */
 DECL|method|copyVetosToLatestPatchSet (Change change)
 specifier|public
-name|void
+name|List
+argument_list|<
+name|PatchSetApproval
+argument_list|>
 name|copyVetosToLatestPatchSet
 parameter_list|(
 name|Change
@@ -496,20 +513,34 @@ operator|.
 name|currPatchSetId
 argument_list|()
 decl_stmt|;
-for|for
-control|(
+name|List
+argument_list|<
 name|PatchSetApproval
-name|a
-range|:
+argument_list|>
+name|patchSetApprovals
+init|=
 name|db
 operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
-name|byPatchSet
+name|byChange
 argument_list|(
-name|source
+name|change
+operator|.
+name|getId
+argument_list|()
 argument_list|)
+operator|.
+name|toList
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|PatchSetApproval
+name|a
+range|:
+name|patchSetApprovals
 control|)
 block|{
 comment|// ApprovalCategory.SUBMIT is still in db but not relevant in git-store
@@ -545,6 +576,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|a
+operator|.
+name|getPatchSetId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|source
+argument_list|)
+operator|&&
 name|type
 operator|.
 name|getCategory
@@ -585,6 +626,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+return|return
+name|patchSetApprovals
+return|;
 block|}
 comment|/** Attach reviewers to a change. */
 DECL|method|addReviewers (Change change, PatchSet ps, PatchSetInfo info, Set<Account.Id> wantReviewers)
