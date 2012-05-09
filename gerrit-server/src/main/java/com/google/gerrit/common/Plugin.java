@@ -88,7 +88,7 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|field|moduleClass
+DECL|field|sshModule
 specifier|public
 specifier|final
 name|Class
@@ -97,9 +97,9 @@ name|?
 extends|extends
 name|Module
 argument_list|>
-name|moduleClass
+name|sshModule
 decl_stmt|;
-DECL|method|Plugin (String name, Class<? extends Module> moduleClass)
+DECL|method|Plugin (String name, Class<? extends Module> sshModule)
 specifier|public
 name|Plugin
 parameter_list|(
@@ -112,7 +112,7 @@ name|?
 extends|extends
 name|Module
 argument_list|>
-name|moduleClass
+name|sshModule
 parameter_list|)
 block|{
 name|this
@@ -123,9 +123,9 @@ name|name
 expr_stmt|;
 name|this
 operator|.
-name|moduleClass
+name|sshModule
 operator|=
-name|moduleClass
+name|sshModule
 expr_stmt|;
 block|}
 annotation|@
@@ -141,12 +141,14 @@ literal|"Plugin ["
 operator|+
 name|name
 operator|+
-literal|"]: ModuleClass="
+literal|"; SshModule="
 operator|+
-name|moduleClass
+name|sshModule
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|"]"
 return|;
 block|}
 block|}

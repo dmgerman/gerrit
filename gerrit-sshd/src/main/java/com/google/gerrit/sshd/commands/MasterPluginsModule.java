@@ -230,7 +230,7 @@ name|isAssignableFrom
 argument_list|(
 name|p
 operator|.
-name|moduleClass
+name|sshModule
 argument_list|)
 condition|)
 block|{
@@ -253,7 +253,7 @@ argument_list|>
 operator|)
 name|p
 operator|.
-name|moduleClass
+name|sshModule
 decl_stmt|;
 try|try
 block|{
