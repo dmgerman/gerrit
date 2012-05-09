@@ -437,6 +437,32 @@ operator|+
 literal|",access"
 return|;
 block|}
+DECL|method|toAccountQuery (final String fullname)
+specifier|public
+specifier|static
+name|String
+name|toAccountQuery
+parameter_list|(
+specifier|final
+name|String
+name|fullname
+parameter_list|)
+block|{
+return|return
+literal|"/q/owner:\""
+operator|+
+name|KeyUtil
+operator|.
+name|encode
+argument_list|(
+name|fullname
+argument_list|)
+operator|+
+literal|"\","
+operator|+
+name|TOP
+return|;
+block|}
 DECL|method|toAccountDashboard (final AccountInfo acct)
 specifier|public
 specifier|static
