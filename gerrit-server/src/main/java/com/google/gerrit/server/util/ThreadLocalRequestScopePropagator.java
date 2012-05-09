@@ -127,7 +127,7 @@ name|C
 argument_list|>
 name|threadLocal
 decl_stmt|;
-DECL|method|ThreadLocalRequestScopePropagator (Scope scope, ThreadLocal<C> threadLocal)
+DECL|method|ThreadLocalRequestScopePropagator (Scope scope, ThreadLocal<C> threadLocal, ThreadLocalRequestContext local)
 specifier|protected
 name|ThreadLocalRequestScopePropagator
 parameter_list|(
@@ -139,11 +139,16 @@ argument_list|<
 name|C
 argument_list|>
 name|threadLocal
+parameter_list|,
+name|ThreadLocalRequestContext
+name|local
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|scope
+argument_list|,
+name|local
 argument_list|)
 expr_stmt|;
 name|this

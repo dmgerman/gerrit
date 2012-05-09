@@ -807,8 +807,9 @@ name|this
 operator|.
 name|ctx
 operator|=
-operator|new
-name|Context
+name|sshScope
+operator|.
+name|newContext
 argument_list|(
 name|s
 argument_list|,

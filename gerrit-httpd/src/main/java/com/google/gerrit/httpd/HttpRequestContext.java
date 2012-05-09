@@ -84,6 +84,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -103,14 +119,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|HttpCurrentUserProvider
+DECL|class|HttpRequestContext
 class|class
-name|HttpCurrentUserProvider
+name|HttpRequestContext
 implements|implements
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
+name|RequestContext
 block|{
 DECL|field|session
 specifier|private
@@ -120,8 +133,8 @@ name|session
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpCurrentUserProvider (final WebSession session)
-name|HttpCurrentUserProvider
+DECL|method|HttpRequestContext (final WebSession session)
+name|HttpRequestContext
 parameter_list|(
 specifier|final
 name|WebSession
@@ -137,10 +150,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|get ()
+DECL|method|getCurrentUser ()
 specifier|public
 name|CurrentUser
-name|get
+name|getCurrentUser
 parameter_list|()
 block|{
 return|return

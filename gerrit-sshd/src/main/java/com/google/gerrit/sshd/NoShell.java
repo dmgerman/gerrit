@@ -544,8 +544,9 @@ name|this
 operator|.
 name|context
 operator|=
-operator|new
-name|Context
+name|sshScope
+operator|.
+name|newContext
 argument_list|(
 name|session
 operator|.

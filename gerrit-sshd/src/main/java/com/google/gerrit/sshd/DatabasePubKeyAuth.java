@@ -1186,8 +1186,9 @@ comment|//
 name|Context
 name|ctx
 init|=
-operator|new
-name|Context
+name|sshScope
+operator|.
+name|newContext
 argument_list|(
 name|sd
 argument_list|,
@@ -1253,8 +1254,9 @@ specifier|final
 name|Context
 name|ctx
 init|=
-operator|new
-name|Context
+name|sshScope
+operator|.
+name|newContext
 argument_list|(
 name|sd
 argument_list|,
