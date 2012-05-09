@@ -1098,27 +1098,13 @@ argument_list|(
 literal|"Upgrade to Gerrit Code Review schema 57\n"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
 name|config
 operator|.
 name|commit
 argument_list|(
 name|md
 argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Cannot update "
-operator|+
-name|allProjects
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 block|}
 finally|finally
 block|{

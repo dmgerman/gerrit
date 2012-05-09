@@ -1462,16 +1462,11 @@ argument_list|(
 literal|"Edit\n"
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"commit finished"
-argument_list|,
 name|cfg
 operator|.
 name|commit
 argument_list|(
 name|md
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Ref

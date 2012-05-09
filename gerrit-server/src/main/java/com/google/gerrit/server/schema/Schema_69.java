@@ -1269,27 +1269,13 @@ argument_list|(
 literal|"Switch LDAP group UUIDs to DNs\n"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
 name|config
 operator|.
 name|commit
 argument_list|(
 name|md
 argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Cannot update "
-operator|+
-name|name
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

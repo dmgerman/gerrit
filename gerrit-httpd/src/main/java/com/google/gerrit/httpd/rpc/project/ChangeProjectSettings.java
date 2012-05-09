@@ -572,16 +572,15 @@ argument_list|(
 literal|"Modified project settings\n"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+try|try
+block|{
 name|config
 operator|.
 name|commit
 argument_list|(
 name|md
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 name|mgr
 operator|.
 name|setProjectDescription
@@ -608,7 +607,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
 block|{
 throw|throw
 operator|new

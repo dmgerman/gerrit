@@ -901,6 +901,7 @@ literal|null
 operator|&&
 name|editing
 operator|&&
+operator|(
 operator|!
 name|value
 operator|.
@@ -909,6 +910,12 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
+operator|||
+name|value
+operator|.
+name|canUpload
+argument_list|()
+operator|)
 argument_list|)
 expr_stmt|;
 block|}
