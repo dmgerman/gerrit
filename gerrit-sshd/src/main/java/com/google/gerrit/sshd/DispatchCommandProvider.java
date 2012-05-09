@@ -88,7 +88,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|guice
+name|plugins
 operator|.
 name|RegistrationHandle
 import|;

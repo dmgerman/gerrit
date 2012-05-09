@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.guice
+DECL|package|com.google.gerrit.server.plugins
 package|package
 name|com
 operator|.
@@ -62,26 +62,28 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|guice
+name|plugins
 package|;
 end_package
 
 begin_comment
-comment|/** Handle for registered information. */
+comment|/** Broadcasts event indicating a plugin was loaded. */
 end_comment
 
 begin_interface
-DECL|interface|RegistrationHandle
+DECL|interface|StartPluginListener
 specifier|public
 interface|interface
-name|RegistrationHandle
+name|StartPluginListener
 block|{
-comment|/** Delete this registration. */
-DECL|method|remove ()
+DECL|method|onStartPlugin (Plugin plugin)
 specifier|public
 name|void
-name|remove
-parameter_list|()
+name|onStartPlugin
+parameter_list|(
+name|Plugin
+name|plugin
+parameter_list|)
 function_decl|;
 block|}
 end_interface

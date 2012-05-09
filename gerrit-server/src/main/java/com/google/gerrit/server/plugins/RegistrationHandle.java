@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common
+DECL|package|com.google.gerrit.server.plugins
 package|package
 name|com
 operator|.
@@ -60,99 +60,31 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|server
+operator|.
+name|plugins
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Module
-import|;
-end_import
+begin_comment
+comment|/** Handle for registered information. */
+end_comment
 
-begin_class
-DECL|class|Plugin
+begin_interface
+DECL|interface|RegistrationHandle
 specifier|public
-class|class
-name|Plugin
+interface|interface
+name|RegistrationHandle
 block|{
-DECL|field|name
+comment|/** Delete this registration. */
+DECL|method|remove ()
 specifier|public
-specifier|final
-name|String
-name|name
-decl_stmt|;
-DECL|field|sshModule
-specifier|public
-specifier|final
-name|Class
-argument_list|<
-name|?
-extends|extends
-name|Module
-argument_list|>
-name|sshModule
-decl_stmt|;
-DECL|method|Plugin (String name, Class<? extends Module> sshModule)
-specifier|public
-name|Plugin
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|Class
-argument_list|<
-name|?
-extends|extends
-name|Module
-argument_list|>
-name|sshModule
-parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-name|this
-operator|.
-name|sshModule
-operator|=
-name|sshModule
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|toString ()
-specifier|public
-name|String
-name|toString
+name|void
+name|remove
 parameter_list|()
-block|{
-return|return
-literal|"Plugin ["
-operator|+
-name|name
-operator|+
-literal|"; SshModule="
-operator|+
-name|sshModule
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"]"
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

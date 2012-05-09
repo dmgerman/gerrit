@@ -72,6 +72,36 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
+name|PluginName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|sshd
@@ -148,6 +178,16 @@ name|Command
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
 begin_class
 DECL|class|PluginCommandModule
 specifier|public
@@ -162,22 +202,27 @@ specifier|private
 name|CommandName
 name|command
 decl_stmt|;
-DECL|method|initSshModule (String pluginName)
-specifier|public
+annotation|@
+name|Inject
+DECL|method|setPluginName (@luginName String name)
 name|void
-name|initSshModule
+name|setPluginName
 parameter_list|(
+annotation|@
+name|PluginName
 name|String
-name|pluginName
+name|name
 parameter_list|)
 block|{
+name|this
+operator|.
 name|command
 operator|=
 name|Commands
 operator|.
 name|named
 argument_list|(
-name|pluginName
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -190,6 +235,17 @@ name|void
 name|configure
 parameter_list|()
 block|{
+name|Preconditions
+operator|.
+name|checkState
+argument_list|(
+name|command
+operator|!=
+literal|null
+argument_list|,
+literal|"@PluginName must be provided"
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|Commands
@@ -209,15 +265,15 @@ name|command
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|configureCmds
+name|configureCommands
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|configureCmds ()
+DECL|method|configureCommands ()
 specifier|protected
 specifier|abstract
 name|void
-name|configureCmds
+name|configureCommands
 parameter_list|()
 function_decl|;
 DECL|method|command (String subCmd)
