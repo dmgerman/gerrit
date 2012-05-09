@@ -551,6 +551,13 @@ operator|.
 name|static_dir
 argument_list|)
 expr_stmt|;
+name|mkdir
+argument_list|(
+name|site
+operator|.
+name|plugins_dir
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|InitStep
