@@ -2356,6 +2356,44 @@ name|File
 name|tmproot
 parameter_list|()
 block|{
+name|File
+name|tmp
+decl_stmt|;
+name|String
+name|gerritTemp
+init|=
+name|System
+operator|.
+name|getenv
+argument_list|(
+literal|"GERRIT_TMP"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|gerritTemp
+operator|!=
+literal|null
+operator|&&
+name|gerritTemp
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|tmp
+operator|=
+operator|new
+name|File
+argument_list|(
+name|gerritTemp
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|// Try to find the user's home directory. If we can't find it
 comment|// return null so the JVM's default temporary directory is used
 comment|// instead. This is probably /tmp or /var/tmp.
@@ -2508,10 +2546,8 @@ block|}
 block|}
 comment|// Use $HOME/.gerritcodereview/tmp for our temporary file area.
 comment|//
-specifier|final
-name|File
 name|tmp
-init|=
+operator|=
 operator|new
 name|File
 argument_list|(
@@ -2525,7 +2561,8 @@ argument_list|)
 argument_list|,
 literal|"tmp"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
