@@ -454,6 +454,9 @@ operator|.
 name|create
 argument_list|(
 name|patchSetId
+operator|.
+name|getParentKey
+argument_list|()
 argument_list|,
 name|message
 argument_list|)

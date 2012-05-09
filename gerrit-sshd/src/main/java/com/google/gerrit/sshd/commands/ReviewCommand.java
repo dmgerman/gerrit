@@ -1308,6 +1308,9 @@ operator|.
 name|create
 argument_list|(
 name|patchSetId
+operator|.
+name|getParentKey
+argument_list|()
 argument_list|,
 name|changeComment
 argument_list|)
@@ -1336,6 +1339,9 @@ operator|.
 name|create
 argument_list|(
 name|patchSetId
+operator|.
+name|getParentKey
+argument_list|()
 argument_list|,
 name|changeComment
 argument_list|)
