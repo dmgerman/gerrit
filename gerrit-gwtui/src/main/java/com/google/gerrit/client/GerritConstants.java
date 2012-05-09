@@ -408,6 +408,11 @@ name|String
 name|jumpMineDraftComments
 parameter_list|()
 function_decl|;
+DECL|method|projectAccessError ()
+name|String
+name|projectAccessError
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
