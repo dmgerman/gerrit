@@ -444,6 +444,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|RepositoryNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|kohsuke
 operator|.
 name|args4j
@@ -1185,6 +1199,10 @@ throws|,
 name|EmailException
 throws|,
 name|Failure
+throws|,
+name|RepositoryNotFoundException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -1562,6 +1580,14 @@ case|:
 name|errMsg
 operator|+=
 literal|"error writing change to git repository"
+expr_stmt|;
+break|break;
+case|case
+name|DEST_BRANCH_NOT_FOUND
+case|:
+name|errMsg
+operator|+=
+literal|"destination branch not found"
 expr_stmt|;
 break|break;
 default|default:
