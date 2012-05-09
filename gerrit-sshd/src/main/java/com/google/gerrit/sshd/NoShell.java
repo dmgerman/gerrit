@@ -403,6 +403,12 @@ name|MessageFactory
 argument_list|>
 name|messageFactory
 decl_stmt|;
+DECL|field|sshScope
+specifier|private
+specifier|final
+name|SshScope
+name|sshScope
+decl_stmt|;
 DECL|field|in
 specifier|private
 name|InputStream
@@ -430,7 +436,7 @@ name|context
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SendMessage (Provider<MessageFactory> messageFactory)
+DECL|method|SendMessage (Provider<MessageFactory> messageFactory, SshScope sshScope)
 name|SendMessage
 parameter_list|(
 name|Provider
@@ -438,6 +444,9 @@ argument_list|<
 name|MessageFactory
 argument_list|>
 name|messageFactory
+parameter_list|,
+name|SshScope
+name|sshScope
 parameter_list|)
 block|{
 name|this
@@ -445,6 +454,12 @@ operator|.
 name|messageFactory
 operator|=
 name|messageFactory
+expr_stmt|;
+name|this
+operator|.
+name|sshScope
+operator|=
+name|sshScope
 expr_stmt|;
 block|}
 DECL|method|setInputStream (final InputStream in)
@@ -560,7 +575,7 @@ block|{
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -585,7 +600,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(

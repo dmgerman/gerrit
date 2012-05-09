@@ -569,6 +569,12 @@ specifier|final
 name|Config
 name|config
 decl_stmt|;
+DECL|field|sshScope
+specifier|private
+specifier|final
+name|SshScope
+name|sshScope
+decl_stmt|;
 DECL|field|myHostKeys
 specifier|private
 specifier|final
@@ -586,7 +592,7 @@ name|peerKeyCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DatabasePubKeyAuth (final SshKeyCacheImpl skc, final SshLog l, final IdentifiedUser.GenericFactory uf, final PeerDaemonUser.Factory pf, final SitePaths site, final KeyPairProvider hostKeyProvider, final @GerritServerConfig Config cfg)
+DECL|method|DatabasePubKeyAuth (final SshKeyCacheImpl skc, final SshLog l, final IdentifiedUser.GenericFactory uf, final PeerDaemonUser.Factory pf, final SitePaths site, final KeyPairProvider hostKeyProvider, final @GerritServerConfig Config cfg, final SshScope s)
 name|DatabasePubKeyAuth
 parameter_list|(
 specifier|final
@@ -622,6 +628,10 @@ annotation|@
 name|GerritServerConfig
 name|Config
 name|cfg
+parameter_list|,
+specifier|final
+name|SshScope
+name|s
 parameter_list|)
 block|{
 name|sshKeyCache
@@ -643,6 +653,10 @@ expr_stmt|;
 name|config
 operator|=
 name|cfg
+expr_stmt|;
+name|sshScope
+operator|=
+name|s
 expr_stmt|;
 name|myHostKeys
 operator|=
@@ -1183,7 +1197,7 @@ decl_stmt|;
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -1200,7 +1214,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -1251,7 +1265,7 @@ specifier|final
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -1268,7 +1282,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(

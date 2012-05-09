@@ -650,7 +650,6 @@ name|ctx
 return|;
 block|}
 DECL|method|set (Context ctx)
-specifier|static
 name|Context
 name|set
 parameter_list|(
@@ -774,11 +773,6 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|method|SshScope ()
-specifier|private
-name|SshScope
-parameter_list|()
-block|{   }
 block|}
 end_class
 

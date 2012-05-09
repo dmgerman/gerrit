@@ -311,6 +311,12 @@ name|SuExec
 extends|extends
 name|BaseCommand
 block|{
+DECL|field|sshScope
+specifier|private
+specifier|final
+name|SshScope
+name|sshScope
+decl_stmt|;
 DECL|field|dispatcher
 specifier|private
 specifier|final
@@ -418,9 +424,13 @@ name|atomicCmd
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SuExec (@ommandNameCommands.ROOT) final DispatchCommandProvider dispatcher, final Provider<CurrentUser> caller, final Provider<SshSession> session, final IdentifiedUser.GenericFactory userFactory, final SshScope.Context callingContext)
+DECL|method|SuExec (final SshScope sshScope, @CommandName(Commands.ROOT) final DispatchCommandProvider dispatcher, final Provider<CurrentUser> caller, final Provider<SshSession> session, final IdentifiedUser.GenericFactory userFactory, final SshScope.Context callingContext)
 name|SuExec
 parameter_list|(
+specifier|final
+name|SshScope
+name|sshScope
+parameter_list|,
 annotation|@
 name|CommandName
 argument_list|(
@@ -459,6 +469,12 @@ name|Context
 name|callingContext
 parameter_list|)
 block|{
+name|this
+operator|.
+name|sshScope
+operator|=
+name|sshScope
+expr_stmt|;
 name|this
 operator|.
 name|dispatcher
@@ -546,7 +562,7 @@ specifier|final
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -605,7 +621,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(

@@ -289,6 +289,13 @@ name|projectControl
 decl_stmt|;
 annotation|@
 name|Inject
+DECL|field|sshScope
+specifier|private
+name|SshScope
+name|sshScope
+decl_stmt|;
+annotation|@
+name|Inject
 DECL|field|repoManager
 specifier|private
 name|GitRepositoryManager
@@ -368,7 +375,7 @@ specifier|final
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -446,7 +453,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(

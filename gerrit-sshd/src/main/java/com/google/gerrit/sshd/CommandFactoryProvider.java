@@ -456,6 +456,12 @@ specifier|final
 name|SshLog
 name|log
 decl_stmt|;
+DECL|field|sshScope
+specifier|private
+specifier|final
+name|SshScope
+name|sshScope
+decl_stmt|;
 DECL|field|startExecutor
 specifier|private
 specifier|final
@@ -470,7 +476,7 @@ name|destroyExecutor
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) final DispatchCommandProvider d, @GerritServerConfig final Config cfg, final WorkQueue workQueue, final SshLog l)
+DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) final DispatchCommandProvider d, @GerritServerConfig final Config cfg, final WorkQueue workQueue, final SshLog l, final SshScope s)
 name|CommandFactoryProvider
 parameter_list|(
 annotation|@
@@ -497,6 +503,10 @@ parameter_list|,
 specifier|final
 name|SshLog
 name|l
+parameter_list|,
+specifier|final
+name|SshScope
+name|s
 parameter_list|)
 block|{
 name|dispatcher
@@ -506,6 +516,10 @@ expr_stmt|;
 name|log
 operator|=
 name|l
+expr_stmt|;
+name|sshScope
+operator|=
+name|s
 expr_stmt|;
 name|int
 name|threads
@@ -926,7 +940,7 @@ specifier|final
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -1048,7 +1062,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -1217,7 +1231,7 @@ specifier|final
 name|Context
 name|old
 init|=
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
@@ -1249,7 +1263,7 @@ name|cmd
 operator|=
 literal|null
 expr_stmt|;
-name|SshScope
+name|sshScope
 operator|.
 name|set
 argument_list|(
