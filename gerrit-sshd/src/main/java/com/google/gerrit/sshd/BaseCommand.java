@@ -2272,6 +2272,24 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+comment|/**      * Create a new failure.      *      * @param msg message to also send to the client's stderr.      */
+DECL|method|UnloggedFailure (final String msg)
+specifier|public
+name|UnloggedFailure
+parameter_list|(
+specifier|final
+name|String
+name|msg
+parameter_list|)
+block|{
+name|this
+argument_list|(
+literal|1
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Create a new failure.      *      * @param exitCode exit code to return the client, which indicates the      *        failure status of this command. Should be between 1 and 255,      *        inclusive.      * @param msg message to also send to the client's stderr.      */
 DECL|method|UnloggedFailure (final int exitCode, final String msg)
 specifier|public
