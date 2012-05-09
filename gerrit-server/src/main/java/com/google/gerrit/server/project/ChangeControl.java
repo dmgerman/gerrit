@@ -1250,6 +1250,12 @@ argument_list|()
 operator|.
 name|canSubmit
 argument_list|()
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|canRebase
+argument_list|()
 return|;
 block|}
 comment|/** Can this user restore this change? */
