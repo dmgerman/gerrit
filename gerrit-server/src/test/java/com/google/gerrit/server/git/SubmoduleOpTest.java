@@ -667,6 +667,11 @@ name|ReplicationQueue
 name|replication
 decl_stmt|;
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
 name|Override
 annotation|@
 name|Before
