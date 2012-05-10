@@ -122,7 +122,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountDashboardLink
+name|AccountGroupSuggestOracle
 import|;
 end_import
 
@@ -138,7 +138,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountGroupSuggestOracle
+name|AccountLink
 import|;
 end_import
 
@@ -1898,7 +1898,7 @@ name|row
 argument_list|,
 literal|2
 argument_list|,
-name|AccountDashboardLink
+name|AccountLink
 operator|.
 name|link
 argument_list|(

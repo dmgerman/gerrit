@@ -108,7 +108,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountDashboardLink
+name|AccountLink
 import|;
 end_import
 
@@ -856,7 +856,7 @@ name|R_OWNER
 argument_list|,
 literal|1
 argument_list|,
-name|AccountDashboardLink
+name|AccountLink
 operator|.
 name|link
 argument_list|(

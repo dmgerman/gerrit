@@ -180,7 +180,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountDashboardLink
+name|AccountLink
 import|;
 end_import
 
@@ -1136,7 +1136,7 @@ expr_stmt|;
 block|}
 DECL|method|link (final Account.Id id)
 specifier|private
-name|AccountDashboardLink
+name|AccountLink
 name|link
 parameter_list|(
 specifier|final
@@ -1147,7 +1147,7 @@ name|id
 parameter_list|)
 block|{
 return|return
-name|AccountDashboardLink
+name|AccountLink
 operator|.
 name|link
 argument_list|(

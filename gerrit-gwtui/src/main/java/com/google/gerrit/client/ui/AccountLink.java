@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -106,7 +106,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|AccountDashboardScreen
+name|QueryScreen
 import|;
 end_import
 
@@ -177,10 +177,10 @@ comment|/** Link to any user's account dashboard. */
 end_comment
 
 begin_class
-DECL|class|AccountDashboardLink
+DECL|class|AccountLink
 specifier|public
 class|class
-name|AccountDashboardLink
+name|AccountLink
 extends|extends
 name|InlineHyperlink
 block|{
@@ -188,7 +188,7 @@ comment|/** Create a link after locating account details from an active cache. *
 DECL|method|link (final AccountInfoCache cache, final Account.Id id)
 specifier|public
 specifier|static
-name|AccountDashboardLink
+name|AccountLink
 name|link
 parameter_list|(
 specifier|final
@@ -219,7 +219,7 @@ operator|!=
 literal|null
 condition|?
 operator|new
-name|AccountDashboardLink
+name|AccountLink
 argument_list|(
 name|ai
 argument_list|)
@@ -227,16 +227,15 @@ else|:
 literal|null
 return|;
 block|}
-DECL|field|accountId
+DECL|field|query
 specifier|private
-name|Account
-operator|.
-name|Id
-name|accountId
+specifier|final
+name|String
+name|query
 decl_stmt|;
-DECL|method|AccountDashboardLink (final AccountInfo ai)
+DECL|method|AccountLink (final AccountInfo ai)
 specifier|public
-name|AccountDashboardLink
+name|AccountLink
 parameter_list|(
 specifier|final
 name|AccountInfo
@@ -256,9 +255,9 @@ name|ai
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AccountDashboardLink (final String text, final AccountInfo ai)
+DECL|method|AccountLink (final String text, final AccountInfo ai)
 specifier|public
-name|AccountDashboardLink
+name|AccountLink
 parameter_list|(
 specifier|final
 name|String
@@ -269,14 +268,21 @@ name|AccountInfo
 name|ai
 parameter_list|)
 block|{
-name|this
+name|super
 argument_list|(
 name|text
 argument_list|,
-name|ai
+name|PageLinks
 operator|.
-name|getId
-argument_list|()
+name|toAccountQuery
+argument_list|(
+name|FormatUtil
+operator|.
+name|name
+argument_list|(
+name|ai
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|setTitle
@@ -289,51 +295,36 @@ name|ai
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|AccountDashboardLink (final String text, final Account.Id ai)
-specifier|public
-name|AccountDashboardLink
-parameter_list|(
-specifier|final
-name|String
-name|text
-parameter_list|,
-specifier|final
-name|Account
+name|this
 operator|.
-name|Id
-name|ai
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|text
-argument_list|,
-name|PageLinks
-operator|.
-name|toAccountDashboard
-argument_list|(
-name|ai
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|addStyleName
-argument_list|(
-name|Gerrit
-operator|.
-name|RESOURCES
-operator|.
-name|css
-argument_list|()
-operator|.
-name|accountName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|accountId
+name|query
 operator|=
+literal|"owner:\""
+operator|+
+name|FormatUtil
+operator|.
+name|name
+argument_list|(
 name|ai
+argument_list|)
+operator|+
+literal|"\""
 expr_stmt|;
+block|}
+DECL|method|createScreen ()
+specifier|private
+name|Screen
+name|createScreen
+parameter_list|()
+block|{
+return|return
+name|QueryScreen
+operator|.
+name|forQuery
+argument_list|(
+name|query
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
@@ -350,12 +341,8 @@ argument_list|(
 name|getTargetHistoryToken
 argument_list|()
 argument_list|,
-comment|//
-operator|new
-name|AccountDashboardScreen
-argument_list|(
-name|accountId
-argument_list|)
+name|createScreen
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
