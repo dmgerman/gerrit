@@ -2965,11 +2965,11 @@ name|Util
 operator|.
 name|M
 operator|.
-name|deletedGroup
+name|deletedReference
 argument_list|(
 name|group
 operator|.
-name|getOwnerGroupId
+name|getOwnerGroupUUID
 argument_list|()
 operator|.
 name|get

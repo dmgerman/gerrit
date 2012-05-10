@@ -163,7 +163,7 @@ name|includes
 decl_stmt|;
 DECL|field|ownerGroup
 specifier|public
-name|AccountGroup
+name|GroupReference
 name|ownerGroup
 decl_stmt|;
 DECL|field|canModify
@@ -252,12 +252,12 @@ operator|=
 name|i
 expr_stmt|;
 block|}
-DECL|method|setOwnerGroup (AccountGroup g)
+DECL|method|setOwnerGroup (GroupReference g)
 specifier|public
 name|void
 name|setOwnerGroup
 parameter_list|(
-name|AccountGroup
+name|GroupReference
 name|g
 parameter_list|)
 block|{

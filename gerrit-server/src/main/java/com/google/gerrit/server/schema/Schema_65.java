@@ -895,9 +895,9 @@ name|List
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
-name|adminGroupIds
+name|adminGroupUUIDs
 init|=
 name|getAdministrateServerGroups
 argument_list|(
@@ -933,7 +933,7 @@ name|db
 argument_list|,
 name|config
 argument_list|,
-name|adminGroupIds
+name|adminGroupUUIDs
 argument_list|,
 name|agreement
 argument_list|)
@@ -950,7 +950,7 @@ name|db
 argument_list|,
 name|config
 argument_list|,
-name|adminGroupIds
+name|adminGroupUUIDs
 argument_list|,
 name|agreements
 argument_list|)
@@ -1837,7 +1837,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|createGroup (ReviewDb db, String groupName, AccountGroup.Id adminGroupId, String description)
+DECL|method|createGroup (ReviewDb db, String groupName, AccountGroup.UUID adminGroupUUID, String description)
 specifier|private
 name|AccountGroup
 name|createGroup
@@ -1850,8 +1850,8 @@ name|groupName
 parameter_list|,
 name|AccountGroup
 operator|.
-name|Id
-name|adminGroupId
+name|UUID
+name|adminGroupUUID
 parameter_list|,
 name|String
 name|description
@@ -1921,9 +1921,9 @@ argument_list|)
 decl_stmt|;
 name|group
 operator|.
-name|setOwnerGroupId
+name|setOwnerGroupUUID
 argument_list|(
-name|adminGroupId
+name|adminGroupUUID
 argument_list|)
 expr_stmt|;
 name|group
@@ -1985,7 +1985,7 @@ name|List
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|getAdministrateServerGroups
 parameter_list|(
@@ -1995,8 +1995,6 @@ parameter_list|,
 name|ProjectConfig
 name|cfg
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -2027,7 +2025,7 @@ name|List
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|groups
 init|=
@@ -2065,31 +2063,12 @@ name|groups
 operator|.
 name|add
 argument_list|(
-name|db
-operator|.
-name|accountGroups
-argument_list|()
-operator|.
-name|byUUID
-argument_list|(
 name|rule
 operator|.
 name|getGroup
 argument_list|()
 operator|.
 name|getUUID
-argument_list|()
-argument_list|)
-operator|.
-name|toList
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2115,7 +2094,7 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|getOrCreateGroupForIndividuals (ReviewDb db, ProjectConfig config, List<AccountGroup.Id> adminGroupIds, ContributorAgreement agreement)
+DECL|method|getOrCreateGroupForIndividuals (ReviewDb db, ProjectConfig config, List<AccountGroup.UUID> adminGroupUUIDs, ContributorAgreement agreement)
 specifier|private
 name|GroupReference
 name|getOrCreateGroupForIndividuals
@@ -2130,9 +2109,9 @@ name|List
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
-name|adminGroupIds
+name|adminGroupUUIDs
 parameter_list|,
 name|ContributorAgreement
 name|agreement
@@ -2241,13 +2220,13 @@ block|}
 if|if
 condition|(
 operator|!
-name|adminGroupIds
+name|adminGroupUUIDs
 operator|.
 name|contains
 argument_list|(
 name|ag
 operator|.
-name|getOwnerGroupId
+name|getOwnerGroupUUID
 argument_list|()
 argument_list|)
 condition|)
@@ -2273,7 +2252,7 @@ name|db
 argument_list|,
 name|name
 argument_list|,
-name|adminGroupIds
+name|adminGroupUUIDs
 operator|.
 name|get
 argument_list|(
@@ -2391,7 +2370,7 @@ return|return
 name|group
 return|;
 block|}
-DECL|method|addAccountAgreements (ReviewDb db, ProjectConfig config, List<AccountGroup.Id> adminGroupIds, Map<Integer, ContributorAgreement> agreements)
+DECL|method|addAccountAgreements (ReviewDb db, ProjectConfig config, List<AccountGroup.UUID> adminGroupUUIDs, Map<Integer, ContributorAgreement> agreements)
 specifier|private
 name|long
 name|addAccountAgreements
@@ -2406,9 +2385,9 @@ name|List
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
-name|adminGroupIds
+name|adminGroupUUIDs
 parameter_list|,
 name|Map
 argument_list|<
@@ -2586,7 +2565,7 @@ name|db
 argument_list|,
 name|config
 argument_list|,
-name|adminGroupIds
+name|adminGroupUUIDs
 argument_list|,
 name|agreement
 argument_list|)

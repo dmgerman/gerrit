@@ -1206,7 +1206,6 @@ argument_list|,
 name|group
 argument_list|)
 expr_stmt|;
-specifier|final
 name|AccountGroup
 name|owner
 init|=
@@ -1242,11 +1241,11 @@ throw|;
 block|}
 name|group
 operator|.
-name|setOwnerGroupId
+name|setOwnerGroupUUID
 argument_list|(
 name|owner
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -249,10 +249,6 @@ argument_list|(
 name|id
 operator|=
 literal|1
-argument_list|,
-name|length
-operator|=
-literal|40
 argument_list|)
 DECL|field|uuid
 specifier|protected
@@ -653,19 +649,6 @@ specifier|protected
 name|Id
 name|groupId
 decl_stmt|;
-comment|/**    * Identity of the group whose members can manage this group.    *<p>    * This can be a self-reference to indicate the group's members manage itself.    */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|3
-argument_list|)
-DECL|field|ownerGroupId
-specifier|protected
-name|Id
-name|ownerGroupId
-decl_stmt|;
 comment|/** A textual description of the group's purpose. */
 annotation|@
 name|Column
@@ -748,6 +731,19 @@ specifier|protected
 name|UUID
 name|groupUUID
 decl_stmt|;
+comment|/**    * Identity of the group whose members can manage this group.    *<p>    * This can be a self-reference to indicate the group's members manage itself.    */
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|10
+argument_list|)
+DECL|field|ownerGroupUUID
+specifier|protected
+name|UUID
+name|ownerGroupUUID
+decl_stmt|;
 DECL|method|AccountGroup ()
 specifier|protected
 name|AccountGroup
@@ -784,10 +780,6 @@ name|groupId
 operator|=
 name|newId
 expr_stmt|;
-name|ownerGroupId
-operator|=
-name|groupId
-expr_stmt|;
 name|visibleToAll
 operator|=
 literal|false
@@ -795,6 +787,10 @@ expr_stmt|;
 name|groupUUID
 operator|=
 name|uuid
+expr_stmt|;
+name|ownerGroupUUID
+operator|=
+name|groupUUID
 expr_stmt|;
 name|setType
 argument_list|(
@@ -883,33 +879,33 @@ operator|=
 name|d
 expr_stmt|;
 block|}
-DECL|method|getOwnerGroupId ()
+DECL|method|getOwnerGroupUUID ()
 specifier|public
 name|AccountGroup
 operator|.
-name|Id
-name|getOwnerGroupId
+name|UUID
+name|getOwnerGroupUUID
 parameter_list|()
 block|{
 return|return
-name|ownerGroupId
+name|ownerGroupUUID
 return|;
 block|}
-DECL|method|setOwnerGroupId (final AccountGroup.Id id)
+DECL|method|setOwnerGroupUUID (final AccountGroup.UUID uuid)
 specifier|public
 name|void
-name|setOwnerGroupId
+name|setOwnerGroupUUID
 parameter_list|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
-name|ownerGroupId
+name|ownerGroupUUID
 operator|=
-name|id
+name|uuid
 expr_stmt|;
 block|}
 DECL|method|getType ()
