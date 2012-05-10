@@ -492,7 +492,15 @@ literal|"pluginName must be provided"
 argument_list|)
 expr_stmt|;
 return|return
+operator|!
+name|commands
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
 name|this
+else|:
+literal|null
 return|;
 block|}
 block|}
