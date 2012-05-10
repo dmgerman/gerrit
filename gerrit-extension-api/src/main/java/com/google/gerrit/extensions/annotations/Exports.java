@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.plugins
+DECL|package|com.google.gerrit.extensions.annotations
 package|package
 name|com
 operator|.
@@ -60,101 +60,49 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|plugins
+name|annotations
 package|;
 end_package
 
-begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|RetentionPolicy
-operator|.
-name|RUNTIME
-import|;
-end_import
+begin_comment
+comment|/** Static constructors for {@link Export} annotations. */
+end_comment
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|BindingAnnotation
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|ElementType
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Retention
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Target
-import|;
-end_import
-
-begin_annotation_defn
-annotation|@
-name|Target
-argument_list|(
-block|{
-name|ElementType
-operator|.
-name|PARAMETER
-block|,
-name|ElementType
-operator|.
-name|FIELD
-block|}
-argument_list|)
-annotation|@
-name|Retention
-argument_list|(
-name|RUNTIME
-argument_list|)
-annotation|@
-name|BindingAnnotation
-DECL|annotation|PluginName
+begin_class
+DECL|class|Exports
 specifier|public
-annotation_defn|@interface
-name|PluginName
-block|{ }
-end_annotation_defn
+specifier|final
+class|class
+name|Exports
+block|{
+comment|/** Create an annotation to export under a specific name. */
+DECL|method|named (String name)
+specifier|public
+specifier|static
+name|Export
+name|named
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ExportImpl
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+DECL|method|Exports ()
+specifier|private
+name|Exports
+parameter_list|()
+block|{   }
+block|}
+end_class
 
 end_unit
 
