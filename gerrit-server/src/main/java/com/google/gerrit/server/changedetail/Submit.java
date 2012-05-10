@@ -796,6 +796,11 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
+name|MAY
+case|:
+comment|// The MAY label didn't cause the NOT_READY status
+break|break;
+case|case
 name|IMPOSSIBLE
 case|:
 if|if

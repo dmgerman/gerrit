@@ -522,6 +522,23 @@ operator|.
 name|REJECT
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|optional
+argument_list|()
+condition|)
+block|{
+return|return
+name|SubmitRecord
+operator|.
+name|Label
+operator|.
+name|Status
+operator|.
+name|MAY
+return|;
+block|}
 else|else
 block|{
 return|return
@@ -579,6 +596,15 @@ name|AccountInfo
 name|disliked
 parameter_list|()
 comment|/*-{ return this.disliked; }-*/
+function_decl|;
+DECL|method|optional ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|optional
+parameter_list|()
+comment|/*-{ return this.optional ? true : false; }-*/
 function_decl|;
 DECL|method|_value ()
 specifier|final

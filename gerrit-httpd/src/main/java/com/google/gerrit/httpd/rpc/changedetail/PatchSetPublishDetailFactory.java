@@ -1040,6 +1040,9 @@ block|{
 case|case
 name|OK
 case|:
+case|case
+name|MAY
+case|:
 name|ok
 operator|++
 expr_stmt|;
