@@ -86,9 +86,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|plugins
+name|registration
 operator|.
 name|RegistrationHandle
 import|;

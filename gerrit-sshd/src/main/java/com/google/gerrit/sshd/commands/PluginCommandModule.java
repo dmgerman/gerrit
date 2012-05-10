@@ -88,9 +88,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|plugins
+name|annotations
 operator|.
 name|PluginName
 import|;

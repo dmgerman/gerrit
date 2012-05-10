@@ -2105,6 +2105,8 @@ name|jarFile
 argument_list|,
 name|manifest
 argument_list|,
+name|pluginLoader
+argument_list|,
 name|sysModule
 argument_list|,
 name|sshModule

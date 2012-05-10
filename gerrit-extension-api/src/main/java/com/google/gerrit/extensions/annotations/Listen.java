@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.plugins
+DECL|package|com.google.gerrit.extensions.annotations
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|plugins
+name|annotations
 package|;
 end_package
 
@@ -128,6 +128,10 @@ name|Target
 import|;
 end_import
 
+begin_comment
+comment|/**  * Annotation for auto-registered extension point implementations.  *<p>  * Plugins or extensions using auto-registration should apply this annotation to  * any non-abstract class that implements an unnamed extension point, such as a  * notification listener. Gerrit will automatically determine which extension  * points to apply based on the interfaces the type implements.  *  * @see Export  */
+end_comment
+
 begin_annotation_defn
 annotation|@
 name|Target
@@ -135,11 +139,7 @@ argument_list|(
 block|{
 name|ElementType
 operator|.
-name|PARAMETER
-block|,
-name|ElementType
-operator|.
-name|FIELD
+name|TYPE
 block|}
 argument_list|)
 annotation|@
@@ -149,10 +149,10 @@ name|RUNTIME
 argument_list|)
 annotation|@
 name|BindingAnnotation
-DECL|annotation|PluginName
+DECL|annotation|Listen
 specifier|public
 annotation_defn|@interface
-name|PluginName
+name|Listen
 block|{ }
 end_annotation_defn
 
