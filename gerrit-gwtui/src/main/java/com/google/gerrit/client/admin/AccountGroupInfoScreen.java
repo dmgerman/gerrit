@@ -2473,6 +2473,8 @@ argument_list|>
 name|result
 parameter_list|)
 block|{
+try|try
+block|{
 specifier|final
 name|CellFormatter
 name|fmt
@@ -2739,6 +2741,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|externalMatches
 operator|.
 name|setVisible
@@ -2760,6 +2765,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
