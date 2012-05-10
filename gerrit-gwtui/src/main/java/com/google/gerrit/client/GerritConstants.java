@@ -248,6 +248,11 @@ name|String
 name|menuMyStarredChanges
 parameter_list|()
 function_decl|;
+DECL|method|menuMyDraftComments ()
+name|String
+name|menuMyDraftComments
+parameter_list|()
+function_decl|;
 DECL|method|menuDiff ()
 name|String
 name|menuDiff
@@ -391,6 +396,11 @@ function_decl|;
 DECL|method|jumpMineStarred ()
 name|String
 name|jumpMineStarred
+parameter_list|()
+function_decl|;
+DECL|method|jumpMineDraftComments ()
+name|String
+name|jumpMineDraftComments
 parameter_list|()
 function_decl|;
 block|}
