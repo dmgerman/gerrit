@@ -759,10 +759,7 @@ name|filterTagsSeperately
 condition|?
 name|filter
 argument_list|(
-name|db
-operator|.
-name|getAllRefs
-argument_list|()
+name|refs
 argument_list|)
 operator|.
 name|values
