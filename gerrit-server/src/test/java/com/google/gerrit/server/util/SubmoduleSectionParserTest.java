@@ -1685,7 +1685,13 @@ argument_list|>
 argument_list|(
 name|Collections
 operator|.
-name|EMPTY_LIST
+expr|<
+name|Project
+operator|.
+name|NameKey
+operator|>
+name|emptyList
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
