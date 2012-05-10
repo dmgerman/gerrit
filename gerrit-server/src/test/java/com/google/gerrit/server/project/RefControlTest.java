@@ -2148,6 +2148,16 @@ block|{       }
 annotation|@
 name|Override
 specifier|public
+name|void
+name|remove
+parameter_list|(
+name|Project
+name|p
+parameter_list|)
+block|{       }
+annotation|@
+name|Override
+specifier|public
 name|Iterable
 argument_list|<
 name|Project
