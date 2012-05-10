@@ -699,6 +699,25 @@ name|canWrite
 argument_list|()
 return|;
 block|}
+comment|/** @return true if this user can rebase changes on this ref */
+DECL|method|canRebase ()
+specifier|public
+name|boolean
+name|canRebase
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|REBASE
+argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
+return|;
+block|}
 comment|/** @return true if this user can submit patch sets to this ref */
 DECL|method|canSubmit ()
 specifier|public
