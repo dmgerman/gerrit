@@ -819,6 +819,15 @@ operator|=
 name|callback
 expr_stmt|;
 block|}
+DECL|method|getName ()
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|commandName
+return|;
+block|}
 DECL|method|setName (final String prefix)
 name|void
 name|setName
@@ -834,6 +843,16 @@ name|commandName
 operator|=
 name|prefix
 expr_stmt|;
+block|}
+DECL|method|getArguments ()
+name|String
+index|[]
+name|getArguments
+parameter_list|()
+block|{
+return|return
+name|argv
+return|;
 block|}
 DECL|method|setArguments (final String[] argv)
 specifier|public
@@ -1267,11 +1286,19 @@ argument_list|(
 name|rc
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|cleanup
+operator|!=
+literal|null
+condition|)
+block|{
 name|cleanup
 operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/** Wrap the supplied output stream in a UTF-8 encoded PrintWriter. */
 DECL|method|toPrintWriter (final OutputStream o)

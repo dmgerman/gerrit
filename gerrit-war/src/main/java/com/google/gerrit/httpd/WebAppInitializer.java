@@ -1686,9 +1686,14 @@ name|modules
 operator|.
 name|add
 argument_list|(
-operator|new
+name|sysInjector
+operator|.
+name|getInstance
+argument_list|(
 name|SshModule
-argument_list|()
+operator|.
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|modules
