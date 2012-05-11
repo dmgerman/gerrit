@@ -90,20 +90,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Lists
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Maps
 import|;
 end_import
@@ -538,7 +524,7 @@ decl_stmt|;
 DECL|field|running
 specifier|private
 specifier|final
-name|Map
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -621,7 +607,7 @@ name|running
 operator|=
 name|Maps
 operator|.
-name|newHashMap
+name|newConcurrentMap
 argument_list|()
 expr_stmt|;
 name|broken
@@ -704,8 +690,7 @@ block|}
 block|}
 DECL|method|getPlugins ()
 specifier|public
-specifier|synchronized
-name|List
+name|Iterable
 argument_list|<
 name|Plugin
 argument_list|>
@@ -713,15 +698,10 @@ name|getPlugins
 parameter_list|()
 block|{
 return|return
-name|Lists
-operator|.
-name|newArrayList
-argument_list|(
 name|running
 operator|.
 name|values
 argument_list|()
-argument_list|)
 return|;
 block|}
 DECL|method|installPluginFromStream (String name, InputStream in)
