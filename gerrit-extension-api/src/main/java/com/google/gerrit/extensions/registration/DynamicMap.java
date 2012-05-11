@@ -648,6 +648,8 @@ operator|.
 name|equals
 argument_list|(
 name|np
+operator|.
+name|pluginName
 argument_list|)
 operator|&&
 name|exportName
@@ -655,6 +657,8 @@ operator|.
 name|equals
 argument_list|(
 name|np
+operator|.
+name|exportName
 argument_list|)
 return|;
 block|}
