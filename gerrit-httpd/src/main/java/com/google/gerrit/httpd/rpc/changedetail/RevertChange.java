@@ -230,9 +230,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|extensions
 operator|.
-name|GitRepositoryManager
+name|events
+operator|.
+name|GitReferenceUpdated
 import|;
 end_import
 
@@ -248,7 +250,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -517,7 +519,7 @@ decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 decl_stmt|;
 DECL|field|patchSetId
@@ -562,7 +564,7 @@ name|myIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevertChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RevertedSender.Factory revertedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, @GerritPersonIdent final PersonIdent myIdent)
+DECL|method|RevertChange (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final RevertedSender.Factory revertedSenderFactory, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, @GerritPersonIdent final PersonIdent myIdent)
 name|RevertChange
 parameter_list|(
 specifier|final
@@ -620,7 +622,7 @@ name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 annotation|@

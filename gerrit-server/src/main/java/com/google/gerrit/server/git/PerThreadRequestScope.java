@@ -166,6 +166,7 @@ end_import
 
 begin_class
 DECL|class|PerThreadRequestScope
+specifier|public
 class|class
 name|PerThreadRequestScope
 block|{
@@ -262,6 +263,7 @@ name|ctx
 return|;
 block|}
 DECL|method|set (PerThreadRequestScope ctx)
+specifier|public
 specifier|static
 name|PerThreadRequestScope
 name|set
@@ -290,6 +292,7 @@ name|old
 return|;
 block|}
 DECL|field|REQUEST
+specifier|public
 specifier|static
 specifier|final
 name|Scope
@@ -424,6 +427,7 @@ argument_list|>
 name|map
 decl_stmt|;
 DECL|method|PerThreadRequestScope ()
+specifier|public
 name|PerThreadRequestScope
 parameter_list|()
 block|{

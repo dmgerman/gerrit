@@ -170,9 +170,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|extensions
 operator|.
-name|GitRepositoryManager
+name|events
+operator|.
+name|GitReferenceUpdated
 import|;
 end_import
 
@@ -188,7 +190,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -441,7 +443,7 @@ decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 decl_stmt|;
 DECL|field|identifiedUser
@@ -483,7 +485,7 @@ name|toRemove
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final ReplicationQueue replication, final IdentifiedUser identifiedUser, final ChangeHooks hooks, final ReviewDb db, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
+DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final GitReferenceUpdated replication, final IdentifiedUser identifiedUser, final ChangeHooks hooks, final ReviewDb db, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
 name|DeleteBranches
 parameter_list|(
 specifier|final
@@ -497,7 +499,7 @@ name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 specifier|final
@@ -851,7 +853,7 @@ argument_list|)
 expr_stmt|;
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|projectName
 argument_list|,

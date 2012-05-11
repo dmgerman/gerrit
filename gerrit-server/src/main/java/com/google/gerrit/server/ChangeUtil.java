@@ -312,6 +312,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -331,22 +349,6 @@ operator|.
 name|git
 operator|.
 name|MergeOp
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|ReplicationQueue
 import|;
 end_import
 
@@ -1728,7 +1730,7 @@ return|return
 name|rebasedCommitBuilder
 return|;
 block|}
-DECL|method|rebaseChange (final PatchSet.Id patchSetId, final IdentifiedUser user, final ReviewDb db, RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, PersonIdent myIdent, final ChangeControl.Factory changeControlFactory, final ApprovalsUtil approvalsUtil)
+DECL|method|rebaseChange (final PatchSet.Id patchSetId, final IdentifiedUser user, final ReviewDb db, RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, PersonIdent myIdent, final ChangeControl.Factory changeControlFactory, final ApprovalsUtil approvalsUtil)
 specifier|public
 specifier|static
 name|void
@@ -1765,7 +1767,7 @@ name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 name|PersonIdent
@@ -2566,7 +2568,7 @@ throw|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|change
 operator|.
@@ -2807,7 +2809,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|revert (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHooks hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final ReplicationQueue replication, PersonIdent myIdent)
+DECL|method|revert (final PatchSet.Id patchSetId, final IdentifiedUser user, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHooks hooks, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, PersonIdent myIdent)
 specifier|public
 specifier|static
 name|Change
@@ -2851,7 +2853,7 @@ name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 name|PersonIdent
@@ -3352,7 +3354,7 @@ throw|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|db
 operator|.
@@ -3529,7 +3531,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|deleteDraftChange (final PatchSet.Id patchSetId, GitRepositoryManager gitManager, final ReplicationQueue replication, final ReviewDb db)
+DECL|method|deleteDraftChange (final PatchSet.Id patchSetId, GitRepositoryManager gitManager, final GitReferenceUpdated replication, final ReviewDb db)
 specifier|public
 specifier|static
 name|void
@@ -3545,7 +3547,7 @@ name|GitRepositoryManager
 name|gitManager
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 specifier|final
@@ -3711,7 +3713,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteOnlyDraftPatchSet (final PatchSet patch, final Change change, GitRepositoryManager gitManager, final ReplicationQueue replication, final ReviewDb db)
+DECL|method|deleteOnlyDraftPatchSet (final PatchSet patch, final Change change, GitRepositoryManager gitManager, final GitReferenceUpdated replication, final ReviewDb db)
 specifier|public
 specifier|static
 name|void
@@ -3729,7 +3731,7 @@ name|GitRepositoryManager
 name|gitManager
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 specifier|final
@@ -3870,7 +3872,7 @@ throw|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|change
 operator|.

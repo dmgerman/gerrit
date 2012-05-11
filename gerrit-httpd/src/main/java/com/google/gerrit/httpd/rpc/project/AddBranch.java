@@ -202,9 +202,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|extensions
 operator|.
-name|GitRepositoryManager
+name|events
+operator|.
+name|GitReferenceUpdated
 import|;
 end_import
 
@@ -220,7 +222,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -571,11 +573,11 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|replication
+DECL|field|referenceUpdated
 specifier|private
 specifier|final
-name|ReplicationQueue
-name|replication
+name|GitReferenceUpdated
+name|referenceUpdated
 decl_stmt|;
 DECL|field|hooks
 specifier|private
@@ -605,7 +607,7 @@ name|startingRevision
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, final ReplicationQueue replication, final ChangeHooks hooks, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
+DECL|method|AddBranch (final ProjectControl.Factory projectControlFactory, final ListBranches.Factory listBranchesFactory, final IdentifiedUser identifiedUser, final GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, final ChangeHooks hooks, @Assisted Project.NameKey projectName, @Assisted(R) String branchName, @Assisted(R) String startingRevision)
 name|AddBranch
 parameter_list|(
 specifier|final
@@ -628,9 +630,8 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-specifier|final
-name|ReplicationQueue
-name|replication
+name|GitReferenceUpdated
+name|referenceUpdated
 parameter_list|,
 specifier|final
 name|ChangeHooks
@@ -686,9 +687,9 @@ name|repoManager
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|referenceUpdated
 operator|=
-name|replication
+name|referenceUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -1044,9 +1045,9 @@ case|:
 case|case
 name|NO_CHANGE
 case|:
-name|replication
+name|referenceUpdated
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|name
 operator|.

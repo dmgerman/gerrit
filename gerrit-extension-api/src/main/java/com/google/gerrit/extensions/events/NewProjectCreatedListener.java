@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.extensions.events
 package|package
 name|com
 operator|.
@@ -60,37 +60,66 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
+operator|.
+name|events
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
+import|;
+end_import
+
 begin_comment
-comment|/** How the {@link CurrentUser} is accessing Gerrit. */
+comment|/** Notified whenever a project is created on the master. */
 end_comment
 
-begin_enum
-DECL|enum|AccessPath
+begin_interface
+annotation|@
+name|ExtensionPoint
+DECL|interface|NewProjectCreatedListener
 specifier|public
-enum|enum
-name|AccessPath
+interface|interface
+name|NewProjectCreatedListener
 block|{
-comment|/** An unknown access path, probably should not be special. */
-DECL|enumConstant|UNKNOWN
-name|UNKNOWN
-block|,
-comment|/** Access through the web UI. */
-DECL|enumConstant|WEB_UI
-name|WEB_UI
-block|,
-comment|/** Access through an SSH command that is not invoked by Git. */
-DECL|enumConstant|SSH_COMMAND
-name|SSH_COMMAND
-block|,
-comment|/** Access from a Git client using any Git protocol. */
-DECL|enumConstant|GIT
-name|GIT
-block|; }
-end_enum
+DECL|interface|Event
+specifier|public
+interface|interface
+name|Event
+block|{
+DECL|method|getProjectName ()
+name|String
+name|getProjectName
+parameter_list|()
+function_decl|;
+DECL|method|getHeadName ()
+name|String
+name|getHeadName
+parameter_list|()
+function_decl|;
+block|}
+DECL|method|onNewProjectCreated (Event event)
+name|void
+name|onNewProjectCreated
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
+function_decl|;
+block|}
+end_interface
 
 end_unit
 

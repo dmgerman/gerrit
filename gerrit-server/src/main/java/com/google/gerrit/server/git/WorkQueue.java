@@ -994,6 +994,20 @@ comment|// concurrency level
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|unregisterWorkQueue ()
+specifier|public
+name|void
+name|unregisterWorkQueue
+parameter_list|()
+block|{
+name|queues
+operator|.
+name|remove
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|decorateTask ( final Runnable runnable, RunnableScheduledFuture<V> r)

@@ -186,6 +186,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|SubmoduleSectionParser
@@ -817,7 +835,7 @@ decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 decl_stmt|;
 DECL|field|schemaFactory
@@ -842,7 +860,7 @@ name|updatedSubscribers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, ReplicationQueue replication)
+DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated replication)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -922,7 +940,7 @@ parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|)
 block|{
@@ -2293,7 +2311,7 @@ name|FAST_FORWARD
 case|:
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|subscriber
 operator|.

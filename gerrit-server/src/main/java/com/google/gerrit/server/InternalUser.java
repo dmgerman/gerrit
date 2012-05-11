@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -76,22 +76,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AccountProjectWatch
 import|;
 end_import
@@ -150,39 +134,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|ListGroupMembership
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|assistedinject
-operator|.
-name|Assisted
 import|;
 end_import
 
@@ -216,73 +170,39 @@ name|Set
 import|;
 end_import
 
+begin_comment
+comment|/**  * User identity for plugin code that needs an identity.  *<p>  * An InternalUser has no real identity, it acts as the server and can access  * anything it wants, anytime it wants, given the JVM's own direct access to  * data. Plugins may use this when they need to have a CurrentUser with read  * permission on anything.  */
+end_comment
+
 begin_class
-DECL|class|ReplicationUser
+DECL|class|InternalUser
 specifier|public
 class|class
-name|ReplicationUser
+name|InternalUser
 extends|extends
 name|CurrentUser
 block|{
-comment|/** Magic set of groups enabling read of any project and reference. */
-DECL|field|EVERYTHING_VISIBLE
-specifier|public
-specifier|static
-specifier|final
-name|GroupMembership
-name|EVERYTHING_VISIBLE
-init|=
-operator|new
-name|ListGroupMembership
-argument_list|(
-name|Collections
-operator|.
-expr|<
-name|AccountGroup
-operator|.
-name|UUID
-operator|>
-name|emptySet
-argument_list|()
-argument_list|)
-decl_stmt|;
 DECL|interface|Factory
 specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (@ssisted GroupMembership authGroups)
-name|ReplicationUser
+DECL|method|create ()
+name|InternalUser
 name|create
-parameter_list|(
-annotation|@
-name|Assisted
-name|GroupMembership
-name|authGroups
-parameter_list|)
+parameter_list|()
 function_decl|;
 block|}
-DECL|field|effectiveGroups
-specifier|private
-specifier|final
-name|GroupMembership
-name|effectiveGroups
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplicationUser (CapabilityControl.Factory capabilityControlFactory, @Assisted GroupMembership authGroups)
+DECL|method|InternalUser (CapabilityControl.Factory capabilityControlFactory)
 specifier|protected
-name|ReplicationUser
+name|InternalUser
 parameter_list|(
 name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-annotation|@
-name|Assisted
-name|GroupMembership
-name|authGroups
 parameter_list|)
 block|{
 name|super
@@ -291,12 +211,8 @@ name|capabilityControlFactory
 argument_list|,
 name|AccessPath
 operator|.
-name|REPLICATION
+name|UNKNOWN
 argument_list|)
-expr_stmt|;
-name|effectiveGroups
-operator|=
-name|authGroups
 expr_stmt|;
 block|}
 annotation|@
@@ -308,7 +224,9 @@ name|getEffectiveGroups
 parameter_list|()
 block|{
 return|return
-name|effectiveGroups
+name|GroupMembership
+operator|.
+name|EMPTY
 return|;
 block|}
 annotation|@
@@ -349,17 +267,16 @@ name|emptySet
 argument_list|()
 return|;
 block|}
-DECL|method|isEverythingVisible ()
+annotation|@
+name|Override
+DECL|method|toString ()
 specifier|public
-name|boolean
-name|isEverythingVisible
+name|String
+name|toString
 parameter_list|()
 block|{
 return|return
-name|getEffectiveGroups
-argument_list|()
-operator|==
-name|EVERYTHING_VISIBLE
+literal|"InternalUser"
 return|;
 block|}
 block|}

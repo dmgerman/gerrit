@@ -310,7 +310,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ReplicationUser
+name|InternalUser
 import|;
 end_import
 
@@ -1190,8 +1190,9 @@ parameter_list|()
 block|{
 return|return
 operator|(
-name|visibleForReplication
-argument_list|()
+name|user
+operator|instanceof
+name|InternalUser
 operator|||
 name|canPerformOnAnyRef
 argument_list|(
@@ -1234,8 +1235,9 @@ name|allRefsAreVisible
 parameter_list|()
 block|{
 return|return
-name|visibleForReplication
-argument_list|()
+name|user
+operator|instanceof
+name|InternalUser
 operator|||
 name|canPerformOnAllRefs
 argument_list|(
@@ -1243,28 +1245,6 @@ name|Permission
 operator|.
 name|READ
 argument_list|)
-return|;
-block|}
-comment|/** Is this project completely visible for replication? */
-DECL|method|visibleForReplication ()
-name|boolean
-name|visibleForReplication
-parameter_list|()
-block|{
-return|return
-name|user
-operator|instanceof
-name|ReplicationUser
-operator|&&
-operator|(
-operator|(
-name|ReplicationUser
-operator|)
-name|user
-operator|)
-operator|.
-name|isEverythingVisible
-argument_list|()
 return|;
 block|}
 comment|/** Is this user a project owner? Ownership does not imply {@link #isVisible()} */

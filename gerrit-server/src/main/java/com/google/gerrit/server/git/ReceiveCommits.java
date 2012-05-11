@@ -478,6 +478,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|MultiProgressMonitor
@@ -1707,7 +1725,7 @@ decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 decl_stmt|;
 DECL|field|patchSetInfoFactory
@@ -1972,7 +1990,7 @@ name|messageSender
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ReplicationQueue replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2002,7 +2020,7 @@ name|Factory
 name|replacePatchSetFactory
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 specifier|final
@@ -3347,7 +3365,7 @@ comment|// Change refs are scheduled when they are created.
 comment|//
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|project
 operator|.
@@ -6921,7 +6939,7 @@ throw|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|project
 operator|.
@@ -8864,7 +8882,7 @@ throw|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|project
 operator|.

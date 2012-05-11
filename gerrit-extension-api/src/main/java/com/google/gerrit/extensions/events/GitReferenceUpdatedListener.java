@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.extensions.events
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|git
+name|events
 package|;
 end_package
 
@@ -74,89 +74,76 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|annotations
 operator|.
-name|Project
+name|ExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
 begin_comment
-comment|/** A disabled {@link ReplicationQueue}. */
+comment|/** Notified when one or more references are modified. */
 end_comment
 
-begin_class
-DECL|class|NoReplication
-specifier|public
-specifier|final
-class|class
-name|NoReplication
-implements|implements
-name|ReplicationQueue
-block|{
+begin_interface
 annotation|@
-name|Override
-DECL|method|isEnabled ()
+name|ExtensionPoint
+DECL|interface|GitReferenceUpdatedListener
 specifier|public
-name|boolean
-name|isEnabled
+interface|interface
+name|GitReferenceUpdatedListener
+block|{
+DECL|interface|Update
+specifier|public
+interface|interface
+name|Update
+block|{
+DECL|method|getRefName ()
+name|String
+name|getRefName
 parameter_list|()
+function_decl|;
+block|}
+DECL|interface|Event
+specifier|public
+interface|interface
+name|Event
 block|{
-return|return
-literal|false
-return|;
+DECL|method|getProjectName ()
+name|String
+name|getProjectName
+parameter_list|()
+function_decl|;
+DECL|method|getUpdates ()
+name|List
+argument_list|<
+name|Update
+argument_list|>
+name|getUpdates
+parameter_list|()
+function_decl|;
 block|}
-annotation|@
-name|Override
-DECL|method|scheduleUpdate (Project.NameKey project, String ref)
-specifier|public
+DECL|method|onGitReferenceUpdated (Event event)
 name|void
-name|scheduleUpdate
+name|onGitReferenceUpdated
 parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|String
-name|ref
+name|Event
+name|event
 parameter_list|)
-block|{   }
-annotation|@
-name|Override
-DECL|method|scheduleFullSync (Project.NameKey project, String urlMatch)
-specifier|public
-name|void
-name|scheduleFullSync
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|String
-name|urlMatch
-parameter_list|)
-block|{   }
-annotation|@
-name|Override
-DECL|method|replicateNewProject (Project.NameKey project, String head)
-specifier|public
-name|void
-name|replicateNewProject
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|String
-name|head
-parameter_list|)
-block|{   }
+function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 

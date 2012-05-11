@@ -416,6 +416,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|MergeFailSender
@@ -1306,7 +1324,7 @@ decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 decl_stmt|;
 DECL|field|mergedSenderFactory
@@ -1508,7 +1526,7 @@ name|requestScopePropagator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final ReplicationQueue rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, @GerritPersonIdent final PersonIdent myIdent, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final CreateCodeReviewNotes.Factory crnf, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final GitReferenceUpdated rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, @CanonicalWebUrl @Nullable final Provider<String> cwu, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, @GerritPersonIdent final PersonIdent myIdent, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final CreateCodeReviewNotes.Factory crnf, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1533,7 +1551,7 @@ name|Factory
 name|fs
 parameter_list|,
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|rq
 parameter_list|,
 specifier|final
@@ -6288,7 +6306,7 @@ expr_stmt|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|destBranch
 operator|.
@@ -6779,7 +6797,7 @@ expr_stmt|;
 block|}
 name|replication
 operator|.
-name|scheduleUpdate
+name|fire
 argument_list|(
 name|destBranch
 operator|.

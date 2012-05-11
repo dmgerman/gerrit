@@ -154,9 +154,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|extensions
 operator|.
-name|GitRepositoryManager
+name|events
+operator|.
+name|GitReferenceUpdated
 import|;
 end_import
 
@@ -172,7 +174,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ReplicationQueue
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -372,7 +374,7 @@ decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 decl_stmt|;
 DECL|field|patchSetInfoFactory
@@ -391,7 +393,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftPatchSet (ChangeControl.Factory changeControlFactory, ReviewDb db, GitRepositoryManager gitManager, ReplicationQueue replication, PatchSetInfoFactory patchSetInfoFactory, @Assisted final PatchSet.Id patchSetId)
+DECL|method|DeleteDraftPatchSet (ChangeControl.Factory changeControlFactory, ReviewDb db, GitRepositoryManager gitManager, GitReferenceUpdated replication, PatchSetInfoFactory patchSetInfoFactory, @Assisted final PatchSet.Id patchSetId)
 name|DeleteDraftPatchSet
 parameter_list|(
 name|ChangeControl
@@ -405,7 +407,7 @@ parameter_list|,
 name|GitRepositoryManager
 name|gitManager
 parameter_list|,
-name|ReplicationQueue
+name|GitReferenceUpdated
 name|replication
 parameter_list|,
 name|PatchSetInfoFactory

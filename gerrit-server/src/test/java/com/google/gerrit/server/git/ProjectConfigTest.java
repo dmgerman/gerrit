@@ -252,6 +252,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|GitReferenceUpdated
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1405,11 +1423,10 @@ init|=
 operator|new
 name|MetaDataUpdate
 argument_list|(
-operator|new
-name|NoReplication
-argument_list|()
+name|GitReferenceUpdated
+operator|.
+name|DISABLED
 argument_list|,
-comment|//
 name|cfg
 operator|.
 name|getProject
@@ -1418,7 +1435,6 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|,
-comment|//
 name|db
 argument_list|)
 decl_stmt|;
