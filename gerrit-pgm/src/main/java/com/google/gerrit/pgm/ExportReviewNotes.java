@@ -854,13 +854,6 @@ operator|.
 name|SINGLETON
 argument_list|)
 expr_stmt|;
-name|bind
-argument_list|(
-name|CachePool
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|install
 argument_list|(
 name|AccountCacheImpl
