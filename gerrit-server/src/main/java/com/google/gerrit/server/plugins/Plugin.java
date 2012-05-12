@@ -370,6 +370,66 @@ name|EXTENSION
 block|,
 name|PLUGIN
 block|;   }
+comment|/** Unique key that changes whenever a plugin reloads. */
+DECL|class|CacheKey
+specifier|public
+specifier|static
+specifier|final
+class|class
+name|CacheKey
+block|{
+DECL|field|name
+specifier|private
+specifier|final
+name|String
+name|name
+decl_stmt|;
+DECL|method|CacheKey (String name)
+name|CacheKey
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+name|int
+name|id
+init|=
+name|System
+operator|.
+name|identityHashCode
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Plugin[%s@%x]"
+argument_list|,
+name|name
+argument_list|,
+name|id
+argument_list|)
+return|;
+block|}
+block|}
 static|static
 block|{
 comment|// Guice logs warnings about multiple injectors being created.
@@ -493,6 +553,12 @@ argument_list|)
 throw|;
 block|}
 block|}
+DECL|field|cacheKey
+specifier|private
+specifier|final
+name|CacheKey
+name|cacheKey
+decl_stmt|;
 DECL|field|name
 specifier|private
 specifier|final
@@ -663,6 +729,16 @@ parameter_list|)
 block|{
 name|this
 operator|.
+name|cacheKey
+operator|=
+operator|new
+name|CacheKey
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|name
 operator|=
 name|name
@@ -735,6 +811,16 @@ parameter_list|()
 block|{
 return|return
 name|srcJar
+return|;
+block|}
+DECL|method|getCacheKey ()
+specifier|public
+name|CacheKey
+name|getCacheKey
+parameter_list|()
+block|{
+return|return
+name|cacheKey
 return|;
 block|}
 DECL|method|getName ()
