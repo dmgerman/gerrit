@@ -94,7 +94,21 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Maps
+name|LinkedListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Multimap
 import|;
 end_import
 
@@ -503,7 +517,7 @@ name|sysSingletons
 decl_stmt|;
 DECL|field|sysListen
 specifier|private
-name|Map
+name|Multimap
 argument_list|<
 name|TypeLiteral
 argument_list|<
@@ -618,9 +632,9 @@ argument_list|()
 expr_stmt|;
 name|sysListen
 operator|=
-name|Maps
+name|LinkedListMultimap
 operator|.
-name|newHashMap
+name|create
 argument_list|()
 expr_stmt|;
 if|if
@@ -773,7 +787,7 @@ name|e
 range|:
 name|sysListen
 operator|.
-name|entrySet
+name|entries
 argument_list|()
 control|)
 block|{
