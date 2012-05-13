@@ -146,9 +146,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|systemstatus
+name|events
 operator|.
-name|ServerInformation
+name|LifecycleListener
 import|;
 end_import
 
@@ -160,9 +160,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lifecycle
+name|extensions
 operator|.
-name|LifecycleListener
+name|systemstatus
+operator|.
+name|ServerInformation
 import|;
 end_import
 

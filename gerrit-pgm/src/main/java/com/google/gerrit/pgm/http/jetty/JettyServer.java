@@ -104,9 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|launcher
+name|extensions
 operator|.
-name|GerritLauncher
+name|events
+operator|.
+name|LifecycleListener
 import|;
 end_import
 
@@ -118,9 +120,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lifecycle
+name|launcher
 operator|.
-name|LifecycleListener
+name|GerritLauncher
 import|;
 end_import
 

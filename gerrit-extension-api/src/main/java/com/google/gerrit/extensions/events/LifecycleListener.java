@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.lifecycle
+DECL|package|com.google.gerrit.extensions.events
 package|package
 name|com
 operator|.
@@ -60,9 +60,27 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lifecycle
+name|extensions
+operator|.
+name|events
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
+import|;
+end_import
 
 begin_import
 import|import
@@ -79,6 +97,8 @@ comment|/** Listener interested in server startup and shutdown events. */
 end_comment
 
 begin_interface
+annotation|@
+name|ExtensionPoint
 DECL|interface|LifecycleListener
 specifier|public
 interface|interface

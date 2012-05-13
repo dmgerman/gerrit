@@ -104,7 +104,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|lifecycle
+name|extensions
+operator|.
+name|events
 operator|.
 name|LifecycleListener
 import|;
