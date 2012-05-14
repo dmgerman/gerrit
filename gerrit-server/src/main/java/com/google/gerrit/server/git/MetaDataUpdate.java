@@ -192,6 +192,16 @@ name|Repository
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/** Helps with the updating of a {@link VersionedMetaData}. */
 end_comment
@@ -314,6 +324,8 @@ name|name
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
+throws|,
+name|IOException
 block|{
 name|MetaDataUpdate
 name|md
@@ -429,6 +441,8 @@ name|name
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
+throws|,
+name|IOException
 block|{
 name|MetaDataUpdate
 name|md

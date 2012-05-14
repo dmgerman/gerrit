@@ -192,7 +192,7 @@ name|REFS_CACHE_AUTOMERGE
 init|=
 literal|"refs/cache-automerge/"
 decl_stmt|;
-comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository, or the name cannot be read as a repository.    */
+comment|/**    * Get (or open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryNotFoundException the name does not denote an existing    *         repository.    * @throws IOException the name cannot be read as a repository.    */
 DECL|method|openRepository (Project.NameKey name)
 specifier|public
 specifier|abstract
@@ -206,8 +206,10 @@ name|name
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
+throws|,
+name|IOException
 function_decl|;
-comment|/**    * Create (and open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryCaseMismatchException the name collides with an existing    *         repository name, but only in case of a character within the name.    * @throws RepositoryNotFoundException the name is invalid.    */
+comment|/**    * Create (and open) a repository by name.    *    * @param name the repository name, relative to the base directory.    * @return the cached Repository instance. Caller must call {@code close()}    *         when done to decrement the resource handle.    * @throws RepositoryCaseMismatchException the name collides with an existing    *         repository name, but only in case of a character within the name.    * @throws RepositoryNotFoundException the name is invalid.    * @throws IOException the repository cannot be created.    */
 DECL|method|createRepository (Project.NameKey name)
 specifier|public
 specifier|abstract
@@ -223,6 +225,8 @@ throws|throws
 name|RepositoryCaseMismatchException
 throws|,
 name|RepositoryNotFoundException
+throws|,
+name|IOException
 function_decl|;
 comment|/** @return set of all known projects, sorted by natural NameKey order. */
 DECL|method|list ()

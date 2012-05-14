@@ -597,6 +597,8 @@ throws|,
 name|RepositoryNotFoundException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 specifier|final
 name|ProjectControl

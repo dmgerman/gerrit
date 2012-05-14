@@ -1177,6 +1177,24 @@ name|e
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CompileException
+argument_list|(
+literal|"Cannot open repository "
+operator|+
+name|project
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 try|try
 block|{
 name|ObjectLoader

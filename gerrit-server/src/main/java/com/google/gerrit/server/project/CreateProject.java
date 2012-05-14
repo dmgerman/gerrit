@@ -980,8 +980,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|RepositoryNotFoundException
-name|doesNotExist
+name|IOException
+name|ioErr
 parameter_list|)
 block|{
 specifier|final
@@ -1007,7 +1007,7 @@ name|ProjectCreationFailedException
 argument_list|(
 name|msg
 argument_list|,
-name|err
+name|ioErr
 argument_list|)
 throw|;
 block|}

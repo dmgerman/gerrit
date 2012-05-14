@@ -373,6 +373,8 @@ name|call
 parameter_list|()
 throws|throws
 name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 specifier|final
 name|ProjectControl

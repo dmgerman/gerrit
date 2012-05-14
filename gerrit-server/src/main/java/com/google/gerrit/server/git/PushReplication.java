@@ -3223,6 +3223,27 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|err
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Internal error: unable to open project "
+operator|+
+name|project
+operator|+
+literal|" during replication"
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 try|try
 block|{
 name|Ref
