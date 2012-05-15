@@ -1821,6 +1821,8 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// we can't use changeControl directly as it won't suggest reviewers
+comment|// to drafts
 return|return
 name|changeControl
 operator|.
@@ -1829,13 +1831,8 @@ argument_list|(
 name|who
 argument_list|)
 operator|.
-name|isVisible
-argument_list|(
-name|reviewDbProvider
-operator|.
-name|get
+name|isRefVisible
 argument_list|()
-argument_list|)
 return|;
 block|}
 block|}
