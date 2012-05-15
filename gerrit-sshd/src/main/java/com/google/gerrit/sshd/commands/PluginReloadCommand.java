@@ -122,11 +122,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|plugins
+name|annotations
 operator|.
-name|PluginLoader
+name|RequiresCapability
 import|;
 end_import
 
@@ -138,9 +138,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
-name|RequiresCapability
+name|plugins
+operator|.
+name|PluginLoader
 import|;
 end_import
 

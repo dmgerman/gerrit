@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd
+DECL|package|com.google.gerrit.extensions.annotations
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|extensions
+operator|.
+name|annotations
 package|;
 end_package
 
@@ -115,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation on {@link SshCommand} declaring a capability must be granted.  */
+comment|/**  * Annotation on {@link SshCommand} or {@link RestApiServlet} declaring a  * capability must be granted.  */
 end_comment
 
 begin_annotation_defn

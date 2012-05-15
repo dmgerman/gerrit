@@ -92,6 +92,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|OutputFormat
 import|;
 end_import
@@ -326,9 +340,16 @@ name|factory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChangesServlet (ParameterParser paramParser, Provider<ListChanges> ls)
+DECL|method|ListChangesServlet (final Provider<CurrentUser> currentUser, ParameterParser paramParser, Provider<ListChanges> ls)
 name|ListChangesServlet
 parameter_list|(
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|currentUser
+parameter_list|,
 name|ParameterParser
 name|paramParser
 parameter_list|,
@@ -339,6 +360,11 @@ argument_list|>
 name|ls
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|currentUser
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|paramParser

@@ -564,9 +564,16 @@ name|factory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountCapabilitiesServlet ( ParameterParser paramParser, Provider<Impl> factory)
+DECL|method|AccountCapabilitiesServlet (final Provider<CurrentUser> currentUser, ParameterParser paramParser, Provider<Impl> factory)
 name|AccountCapabilitiesServlet
 parameter_list|(
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|currentUser
+parameter_list|,
 name|ParameterParser
 name|paramParser
 parameter_list|,
@@ -577,6 +584,11 @@ argument_list|>
 name|factory
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|currentUser
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|paramParser
