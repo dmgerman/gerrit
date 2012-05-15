@@ -224,6 +224,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|systemstatus
+operator|.
+name|ServerInformation
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|lifecycle
 operator|.
 name|LifecycleListener
@@ -454,6 +470,12 @@ specifier|final
 name|Injector
 name|sysInjector
 decl_stmt|;
+DECL|field|srvInfo
+specifier|private
+specifier|final
+name|ServerInformation
+name|srvInfo
+decl_stmt|;
 DECL|field|copyConfigModule
 specifier|private
 specifier|final
@@ -607,11 +629,14 @@ name|httpMaps
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginGuiceEnvironment (Injector sysInjector, CopyConfigModule ccm)
+DECL|method|PluginGuiceEnvironment ( Injector sysInjector, ServerInformation srvInfo, CopyConfigModule ccm)
 name|PluginGuiceEnvironment
 parameter_list|(
 name|Injector
 name|sysInjector
+parameter_list|,
+name|ServerInformation
+name|srvInfo
 parameter_list|,
 name|CopyConfigModule
 name|ccm
@@ -622,6 +647,12 @@ operator|.
 name|sysInjector
 operator|=
 name|sysInjector
+expr_stmt|;
+name|this
+operator|.
+name|srvInfo
+operator|=
+name|srvInfo
 expr_stmt|;
 name|this
 operator|.
@@ -689,6 +720,15 @@ argument_list|(
 name|sysInjector
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getServerInformation ()
+name|ServerInformation
+name|getServerInformation
+parameter_list|()
+block|{
+return|return
+name|srvInfo
+return|;
 block|}
 DECL|method|hasDynamicSet (TypeLiteral<?> type)
 name|boolean

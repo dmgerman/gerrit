@@ -231,6 +231,23 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|PluginLoader
+operator|.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Cleaned plugin "
+operator|+
+name|tmpFile
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
