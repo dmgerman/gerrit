@@ -506,7 +506,7 @@ name|permissions
 operator|.
 name|add
 argument_list|(
-name|dst
+name|src
 argument_list|)
 expr_stmt|;
 block|}
