@@ -241,6 +241,19 @@ range|:
 name|bindings
 control|)
 block|{
+if|if
+condition|(
+name|b
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|getAnnotation
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|m
 operator|.
 name|put
@@ -258,6 +271,7 @@ name|getProvider
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
