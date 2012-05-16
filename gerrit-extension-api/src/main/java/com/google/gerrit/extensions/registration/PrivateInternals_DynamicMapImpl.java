@@ -94,6 +94,18 @@ name|Key
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
 begin_comment
 comment|/**<b>DO NOT USE</b> */
 end_comment
@@ -117,7 +129,7 @@ name|PrivateInternals_DynamicMapImpl
 parameter_list|()
 block|{   }
 comment|/**    * Store one new element into the map.    *    * @param pluginName unique name of the plugin providing the export.    * @param exportName name the plugin has exported the item as.    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
-DECL|method|put ( String pluginName, String exportName, final T item)
+DECL|method|put ( String pluginName, String exportName, final Provider<T> item)
 specifier|public
 name|RegistrationHandle
 name|put
@@ -129,7 +141,10 @@ name|String
 name|exportName
 parameter_list|,
 specifier|final
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 parameter_list|)
 block|{
@@ -180,7 +195,7 @@ block|}
 return|;
 block|}
 comment|/**    * Store one new element that may be hot-replaceable in the future.    *    * @param pluginName unique name of the plugin providing the export.    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload. The key must    *        use an {@link @Export} annotation.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item    *         without it ever leaving the collection.    */
-DECL|method|put ( String pluginName, Key<T> key, T item)
+DECL|method|put ( String pluginName, Key<T> key, Provider<T> item)
 specifier|public
 name|ReloadableRegistrationHandle
 argument_list|<
@@ -197,7 +212,10 @@ name|T
 argument_list|>
 name|key
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 parameter_list|)
 block|{
@@ -277,10 +295,13 @@ decl_stmt|;
 DECL|field|item
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 decl_stmt|;
-DECL|method|ReloadableHandle (NamePair np, Key<T> key, T item)
+DECL|method|ReloadableHandle (NamePair np, Key<T> key, Provider<T> item)
 name|ReloadableHandle
 parameter_list|(
 name|NamePair
@@ -292,7 +313,10 @@ name|T
 argument_list|>
 name|key
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 parameter_list|)
 block|{
@@ -350,7 +374,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|replace (Key<T> newKey, T newItem)
+DECL|method|replace (Key<T> newKey, Provider<T> newItem)
 specifier|public
 name|ReloadableHandle
 name|replace
@@ -361,7 +385,10 @@ name|T
 argument_list|>
 name|newKey
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|newItem
 parameter_list|)
 block|{

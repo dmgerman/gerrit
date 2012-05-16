@@ -98,6 +98,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Scopes
 import|;
 end_import
@@ -153,6 +165,20 @@ operator|.
 name|name
 operator|.
 name|Named
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|util
+operator|.
+name|Providers
 import|;
 end_import
 
@@ -227,7 +253,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A set of members that can be modified as plugins reload.  *<p>  * DynamicSets are always mapped as singletons in Guice, and only may contain  * singletons, as providers are resolved to an instance before the member is  * added to the set.  */
+comment|/**  * A set of members that can be modified as plugins reload.  *<p>  * DynamicSets are always mapped as singletons in Guice. Sets store Providers  * internally, and resolve the provider to an instance on demand. This enables  * registrations to decide between singleton and non-singleton members.  */
 end_comment
 
 begin_class
@@ -530,19 +556,25 @@ name|CopyOnWriteArrayList
 argument_list|<
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|>
 name|items
 decl_stmt|;
-DECL|method|DynamicSet (Collection<AtomicReference<T>> base)
+DECL|method|DynamicSet (Collection<AtomicReference<Provider<T>>> base)
 name|DynamicSet
 parameter_list|(
 name|Collection
 argument_list|<
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|>
 name|base
@@ -555,7 +587,10 @@ name|CopyOnWriteArrayList
 argument_list|<
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|>
 argument_list|(
@@ -579,7 +614,10 @@ name|Iterator
 argument_list|<
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|>
 name|itr
@@ -620,8 +658,12 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|next
-operator|=
+name|Provider
+argument_list|<
+name|T
+argument_list|>
+name|p
+init|=
 name|itr
 operator|.
 name|next
@@ -629,7 +671,33 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|next
+operator|=
+name|p
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+comment|// TODO Log failed member of DynamicSet.
+block|}
+block|}
 block|}
 return|return
 name|next
@@ -696,17 +764,49 @@ name|T
 name|item
 parameter_list|)
 block|{
+return|return
+name|add
+argument_list|(
+name|Providers
+operator|.
+name|of
+argument_list|(
+name|item
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**    * Add one new element to the set.    *    * @param item the item to add to the collection. Must not be null.    * @return handle to remove the item at a later point in time.    */
+DECL|method|add (final Provider<T> item)
+specifier|public
+name|RegistrationHandle
+name|add
+parameter_list|(
+specifier|final
+name|Provider
+argument_list|<
+name|T
+argument_list|>
+name|item
+parameter_list|)
+block|{
 specifier|final
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|ref
 init|=
 operator|new
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|(
 name|item
@@ -756,7 +856,7 @@ block|}
 return|;
 block|}
 comment|/**    * Add one new element that may be hot-replaceable in the future.    *    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item    *         without it ever leaving the collection.    */
-DECL|method|add (Key<T> key, T item)
+DECL|method|add (Key<T> key, Provider<T> item)
 specifier|public
 name|ReloadableRegistrationHandle
 argument_list|<
@@ -770,20 +870,29 @@ name|T
 argument_list|>
 name|key
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 parameter_list|)
 block|{
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|ref
 init|=
 operator|new
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|(
 name|item
@@ -823,7 +932,10 @@ specifier|private
 specifier|final
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|ref
 decl_stmt|;
@@ -839,15 +951,21 @@ decl_stmt|;
 DECL|field|item
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 decl_stmt|;
-DECL|method|ReloadableHandle (AtomicReference<T> ref, Key<T> key, T item)
+DECL|method|ReloadableHandle (AtomicReference<Provider<T>> ref, Key<T> key, Provider<T> item)
 name|ReloadableHandle
 parameter_list|(
 name|AtomicReference
 argument_list|<
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|ref
 parameter_list|,
@@ -857,7 +975,10 @@ name|T
 argument_list|>
 name|key
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 parameter_list|)
 block|{
@@ -926,7 +1047,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|replace (Key<T> newKey, T newItem)
+DECL|method|replace (Key<T> newKey, Provider<T> newItem)
 specifier|public
 name|ReloadableHandle
 name|replace
@@ -937,7 +1058,10 @@ name|T
 argument_list|>
 name|newKey
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|newItem
 parameter_list|)
 block|{

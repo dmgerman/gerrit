@@ -78,6 +78,18 @@ name|Key
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
 begin_interface
 DECL|interface|ReloadableRegistrationHandle
 specifier|public
@@ -98,7 +110,7 @@ argument_list|>
 name|getKey
 parameter_list|()
 function_decl|;
-DECL|method|replace (Key<T> key, T item)
+DECL|method|replace (Key<T> key, Provider<T> item)
 specifier|public
 name|RegistrationHandle
 name|replace
@@ -109,7 +121,10 @@ name|T
 argument_list|>
 name|key
 parameter_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 name|item
 parameter_list|)
 function_decl|;

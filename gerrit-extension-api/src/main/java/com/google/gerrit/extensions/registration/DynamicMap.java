@@ -98,6 +98,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Scopes
 import|;
 end_import
@@ -213,7 +225,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A map of members that can be modified as plugins reload.  *<p>  * Maps index their members by plugin name and export name.  *<p>  * DynamicMaps are always mapped as singletons in Guice, and only may contain  * singletons, as providers are resolved to an instance before the member is  * added to the map.  */
+comment|/**  * A map of members that can be modified as plugins reload.  *<p>  * Maps index their members by plugin name and export name.  *<p>  * DynamicMaps are always mapped as singletons in Guice. Maps store Providers  * internally, and resolve the provider to an instance on demand. This enables  * registrations to decide between singleton and non-singleton members.  */
 end_comment
 
 begin_class
@@ -354,7 +366,10 @@ name|ConcurrentMap
 argument_list|<
 name|NamePair
 argument_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|items
 decl_stmt|;
@@ -369,18 +384,24 @@ name|ConcurrentHashMap
 argument_list|<
 name|NamePair
 argument_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|(
 literal|16
+comment|/* initial size */
 argument_list|,
 literal|0.75f
+comment|/* load factor */
 argument_list|,
 literal|1
+comment|/* concurrency level of 1, load/unload is single threaded */
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Lookup an implementation by name.    *    * @param pluginName local name of the plugin providing the item.    * @param exportName name the plugin exports the item as.    * @return the implementation. Null if the plugin is not running, or if the    *         plugin does not export this name.    */
+comment|/**    * Lookup an implementation by name.    *    * @param pluginName local name of the plugin providing the item.    * @param exportName name the plugin exports the item as.    * @return the implementation. Null if the plugin is not running, or if the    *         plugin does not export this name.    * @throws ProvisionException if the registered provider is unable to obtain    *         an instance of the requested implementation.    */
 DECL|method|get (String pluginName, String exportName)
 specifier|public
 name|T
@@ -393,7 +414,12 @@ name|String
 name|exportName
 parameter_list|)
 block|{
-return|return
+name|Provider
+argument_list|<
+name|T
+argument_list|>
+name|p
+init|=
 name|items
 operator|.
 name|get
@@ -406,6 +432,18 @@ argument_list|,
 name|exportName
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+name|p
+operator|!=
+literal|null
+condition|?
+name|p
+operator|.
+name|get
+argument_list|()
+else|:
+literal|null
 return|;
 block|}
 comment|/**    * Get the names of all running plugins supplying this type.    *    * @return sorted set of active plugins that supply at least one item.    */
@@ -468,7 +506,10 @@ name|SortedMap
 argument_list|<
 name|String
 argument_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|byPlugin
 parameter_list|(
@@ -480,7 +521,10 @@ name|SortedMap
 argument_list|<
 name|String
 argument_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|r
 init|=
@@ -489,7 +533,10 @@ name|TreeMap
 argument_list|<
 name|String
 argument_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -501,7 +548,10 @@ name|Entry
 argument_list|<
 name|NamePair
 argument_list|,
+name|Provider
+argument_list|<
 name|T
+argument_list|>
 argument_list|>
 name|e
 range|:
