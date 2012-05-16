@@ -79,6 +79,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|PrivateInternals_DynamicTypes
+operator|.
+name|registerInParentInjectors
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1174,6 +1192,15 @@ argument_list|(
 name|SshPluginStarterCallback
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|listener
+argument_list|()
+operator|.
+name|toInstance
+argument_list|(
+name|registerInParentInjectors
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|listener
