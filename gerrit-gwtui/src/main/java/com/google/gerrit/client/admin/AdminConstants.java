@@ -475,6 +475,26 @@ name|String
 name|projectAdminTabAccess
 parameter_list|()
 function_decl|;
+DECL|method|plugins ()
+name|String
+name|plugins
+parameter_list|()
+function_decl|;
+DECL|method|pluginTabInstalled ()
+name|String
+name|pluginTabInstalled
+parameter_list|()
+function_decl|;
+DECL|method|columnPluginName ()
+name|String
+name|columnPluginName
+parameter_list|()
+function_decl|;
+DECL|method|columnPluginVersion ()
+name|String
+name|columnPluginVersion
+parameter_list|()
+function_decl|;
 DECL|method|noGroupSelected ()
 name|String
 name|noGroupSelected

@@ -310,6 +310,15 @@ name|ADMIN_CREATE_PROJECT
 init|=
 literal|"/admin/create-project/"
 decl_stmt|;
+DECL|field|ADMIN_PLUGINS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ADMIN_PLUGINS
+init|=
+literal|"/admin/plugins/"
+decl_stmt|;
 DECL|method|toChange (final ChangeInfo c)
 specifier|public
 specifier|static
