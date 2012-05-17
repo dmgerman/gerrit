@@ -853,6 +853,14 @@ name|FieldName
 operator|.
 name|USER_NAME
 argument_list|)
+operator|&&
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|siteHasUsernames
+argument_list|()
 condition|)
 block|{
 name|infoPlainText
