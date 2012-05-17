@@ -278,6 +278,11 @@ specifier|protected
 name|String
 name|sshdAddress
 decl_stmt|;
+DECL|field|editFullNameUrl
+specifier|protected
+name|String
+name|editFullNameUrl
+decl_stmt|;
 DECL|field|wildProject
 specifier|protected
 name|Project
@@ -344,6 +349,30 @@ name|u
 parameter_list|)
 block|{
 name|registerUrl
+operator|=
+name|u
+expr_stmt|;
+block|}
+DECL|method|getEditFullNameUrl ()
+specifier|public
+name|String
+name|getEditFullNameUrl
+parameter_list|()
+block|{
+return|return
+name|editFullNameUrl
+return|;
+block|}
+DECL|method|setEditFullNameUrl (String u)
+specifier|public
+name|void
+name|setEditFullNameUrl
+parameter_list|(
+name|String
+name|u
+parameter_list|)
+block|{
+name|editFullNameUrl
 operator|=
 name|u
 expr_stmt|;

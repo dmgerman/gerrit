@@ -265,6 +265,16 @@ name|String
 name|linkObtainPassword
 parameter_list|()
 function_decl|;
+DECL|method|linkEditFullName ()
+name|String
+name|linkEditFullName
+parameter_list|()
+function_decl|;
+DECL|method|linkReloadContact ()
+name|String
+name|linkReloadContact
+parameter_list|()
+function_decl|;
 DECL|method|invalidUserName ()
 name|String
 name|invalidUserName

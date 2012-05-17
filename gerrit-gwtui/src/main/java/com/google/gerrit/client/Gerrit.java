@@ -1729,7 +1729,7 @@ break|break;
 block|}
 block|}
 DECL|method|loginRedirect (String token)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|loginRedirect
