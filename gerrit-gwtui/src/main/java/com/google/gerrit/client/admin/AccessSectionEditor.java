@@ -1858,6 +1858,11 @@ init|=
 operator|new
 name|PermissionEditor
 argument_list|(
+name|projectAccess
+operator|.
+name|getProjectName
+argument_list|()
+argument_list|,
 name|readOnly
 argument_list|,
 name|value

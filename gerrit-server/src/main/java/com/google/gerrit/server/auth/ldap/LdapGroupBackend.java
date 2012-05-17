@@ -1033,7 +1033,7 @@ name|isVisibleToAll
 parameter_list|()
 block|{
 return|return
-literal|true
+literal|false
 return|;
 block|}
 block|}

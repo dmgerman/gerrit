@@ -222,10 +222,38 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+comment|/**    * @see #suggestAccountGroup(com.google.gerrit.reviewdb.client.Project.NameKey, String, int, AsyncCallback)    */
+annotation|@
+name|Deprecated
 DECL|method|suggestAccountGroup (String query, int limit, AsyncCallback<List<GroupReference>> callback)
 name|void
 name|suggestAccountGroup
 parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|int
+name|limit
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|List
+argument_list|<
+name|GroupReference
+argument_list|>
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+DECL|method|suggestAccountGroupForProject (Project.NameKey project, String query, int limit, AsyncCallback<List<GroupReference>> callback)
+name|void
+name|suggestAccountGroupForProject
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|String
 name|query
 parameter_list|,
