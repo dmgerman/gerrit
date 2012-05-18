@@ -1513,6 +1513,11 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// Initialize the message buffer
+name|msgbuf
+operator|=
+literal|""
+expr_stmt|;
 comment|// The first updatedBranch on a cascade event of automatic
 comment|// updates of repos is added to updatedSubscribers set so
 comment|// if we face a situation having
