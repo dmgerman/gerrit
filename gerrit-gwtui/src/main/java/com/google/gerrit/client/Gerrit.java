@@ -2024,6 +2024,8 @@ literal|"GerritAccount"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|onModuleLoad ()
 specifier|public
 name|void
@@ -2078,6 +2080,13 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|e
+operator|=
+name|fixDoubleQuote
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 name|e
 return|;
@@ -2121,6 +2130,16 @@ name|String
 name|path
 argument_list|)
 comment|/*-{ return path.replace(/%3A/g, ":"); }-*/
+decl_stmt|;
+specifier|private
+specifier|native
+name|String
+name|fixDoubleQuote
+argument_list|(
+name|String
+name|path
+argument_list|)
+comment|/*-{ return path.replace(/%22/g, '"'); }-*/
 decl_stmt|;
 block|}
 argument_list|)
