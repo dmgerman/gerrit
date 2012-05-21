@@ -106,18 +106,6 @@ name|Inject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
 begin_class
 DECL|class|HttpRequestContext
 class|class
