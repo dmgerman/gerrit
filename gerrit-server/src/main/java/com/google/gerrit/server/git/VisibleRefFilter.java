@@ -378,6 +378,12 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
+DECL|field|changeCache
+specifier|private
+specifier|final
+name|ChangeCache
+name|changeCache
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -410,13 +416,17 @@ specifier|final
 name|boolean
 name|showChanges
 decl_stmt|;
-DECL|method|VisibleRefFilter (final TagCache tagCache, final Repository db, final ProjectControl projectControl, final ReviewDb reviewDb, final boolean showChanges)
+DECL|method|VisibleRefFilter (final TagCache tagCache, final ChangeCache changeCache, final Repository db, final ProjectControl projectControl, final ReviewDb reviewDb, final boolean showChanges)
 specifier|public
 name|VisibleRefFilter
 parameter_list|(
 specifier|final
 name|TagCache
 name|tagCache
+parameter_list|,
+specifier|final
+name|ChangeCache
+name|changeCache
 parameter_list|,
 specifier|final
 name|Repository
@@ -440,6 +450,12 @@ operator|.
 name|tagCache
 operator|=
 name|tagCache
+expr_stmt|;
+name|this
+operator|.
+name|changeCache
+operator|=
+name|changeCache
 expr_stmt|;
 name|this
 operator|.
@@ -923,12 +939,9 @@ control|(
 name|Change
 name|change
 range|:
-name|reviewDb
+name|changeCache
 operator|.
-name|changes
-argument_list|()
-operator|.
-name|byProject
+name|get
 argument_list|(
 name|project
 operator|.
