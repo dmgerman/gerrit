@@ -939,6 +939,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|getBase ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getBase
+parameter_list|()
+block|{
+return|return
+name|base
+return|;
+block|}
 DECL|method|setSavePointerId (final String id)
 specifier|public
 name|void
