@@ -319,7 +319,7 @@ literal|"--quiet"
 argument_list|,
 name|usage
 operator|=
-literal|"supress some messsages"
+literal|"suppress some messages"
 argument_list|)
 DECL|field|quiet
 specifier|private
