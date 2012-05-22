@@ -495,7 +495,7 @@ name|get
 argument_list|(
 name|group
 operator|.
-name|getGroupUUID
+name|getOwnerGroupUUID
 argument_list|()
 argument_list|)
 decl_stmt|;
