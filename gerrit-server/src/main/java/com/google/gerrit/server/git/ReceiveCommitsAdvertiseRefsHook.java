@@ -104,7 +104,7 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|ReceivePack
+name|BaseReceivePack
 import|;
 end_import
 
@@ -175,12 +175,12 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|advertiseRefs (ReceivePack rp)
+DECL|method|advertiseRefs (BaseReceivePack rp)
 specifier|public
 name|void
 name|advertiseRefs
 parameter_list|(
-name|ReceivePack
+name|BaseReceivePack
 name|rp
 parameter_list|)
 block|{
