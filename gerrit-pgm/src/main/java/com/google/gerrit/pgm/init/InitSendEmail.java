@@ -201,6 +201,12 @@ specifier|final
 name|Section
 name|sendemail
 decl_stmt|;
+DECL|field|site
+specifier|private
+specifier|final
+name|SitePaths
+name|site
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|InitSendEmail (final ConsoleUI ui, final SitePaths site, final Section.Factory sections)
@@ -237,6 +243,12 @@ name|get
 argument_list|(
 literal|"sendemail"
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|site
+operator|=
+name|site
 expr_stmt|;
 block|}
 DECL|method|run ()
@@ -304,6 +316,27 @@ name|username
 init|=
 literal|null
 decl_stmt|;
+if|if
+condition|(
+name|site
+operator|.
+name|gerrit_config
+operator|.
+name|exists
+argument_list|()
+condition|)
+block|{
+name|username
+operator|=
+name|sendemail
+operator|.
+name|get
+argument_list|(
+literal|"smtpUser"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|(
