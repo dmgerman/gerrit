@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -62,15 +62,15 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|patch
 package|;
 end_package
 
 begin_class
-DECL|class|IncompleteUserInfoException
+DECL|class|PatchListNotAvailableException
 specifier|public
 class|class
-name|IncompleteUserInfoException
+name|PatchListNotAvailableException
 extends|extends
 name|Exception
 block|{
@@ -83,30 +83,31 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|IncompleteUserInfoException (final String userName, final String missingInfo)
+DECL|method|PatchListNotAvailableException (String message)
 specifier|public
-name|IncompleteUserInfoException
+name|PatchListNotAvailableException
 parameter_list|(
-specifier|final
 name|String
-name|userName
-parameter_list|,
-specifier|final
-name|String
-name|missingInfo
+name|message
 parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"For the user \""
-operator|+
-name|userName
-operator|+
-literal|"\" "
-operator|+
-name|missingInfo
-operator|+
-literal|" is not set."
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|PatchListNotAvailableException (Throwable cause)
+specifier|public
+name|PatchListNotAvailableException
+parameter_list|(
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|cause
 argument_list|)
 expr_stmt|;
 block|}

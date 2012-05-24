@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,60 +66,107 @@ name|cache
 package|;
 end_package
 
-begin_comment
-comment|/**  * A fast in-memory and/or on-disk based cache.  *  * @type<K> type of key used to lookup entries in the cache.  * @type<V> type of value stored within each cache entry.  */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|Cache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|CacheLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|LoadingCache
+import|;
+end_import
 
 begin_interface
-DECL|interface|Cache
+DECL|interface|MemoryCacheFactory
 specifier|public
 interface|interface
-name|Cache
+name|MemoryCacheFactory
+block|{
+DECL|method|build (CacheBinding<K, V> def)
 parameter_list|<
 name|K
 parameter_list|,
 name|V
 parameter_list|>
-block|{
-comment|/** Get the element from the cache, or null if not stored in the cache. */
-DECL|method|get (K key)
-specifier|public
-name|V
-name|get
-parameter_list|(
+name|Cache
+argument_list|<
 name|K
-name|key
+argument_list|,
+name|V
+argument_list|>
+name|build
+parameter_list|(
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|def
 parameter_list|)
 function_decl|;
-comment|/** Put one element into the cache, replacing any existing value. */
-DECL|method|put (K key, V value)
-specifier|public
-name|void
-name|put
-parameter_list|(
+DECL|method|build ( CacheBinding<K, V> def, CacheLoader<K, V> loader)
+parameter_list|<
 name|K
-name|key
 parameter_list|,
 name|V
-name|value
-parameter_list|)
-function_decl|;
-comment|/** Remove any existing value from the cache, no-op if not present. */
-DECL|method|remove (K key)
-specifier|public
-name|void
-name|remove
-parameter_list|(
+parameter_list|>
+name|LoadingCache
+argument_list|<
 name|K
-name|key
+argument_list|,
+name|V
+argument_list|>
+name|build
+parameter_list|(
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|def
+parameter_list|,
+name|CacheLoader
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|loader
 parameter_list|)
-function_decl|;
-comment|/** Remove all cached items. */
-DECL|method|removeAll ()
-specifier|public
-name|void
-name|removeAll
-parameter_list|()
 function_decl|;
 block|}
 end_interface

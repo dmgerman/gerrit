@@ -108,20 +108,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|ehcache
-operator|.
-name|EhcachePoolImpl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|lifecycle
 operator|.
 name|LifecycleManager
@@ -266,7 +252,9 @@ name|server
 operator|.
 name|cache
 operator|.
-name|CachePool
+name|h2
+operator|.
+name|DefaultCacheFactory
 import|;
 end_import
 
@@ -873,7 +861,7 @@ expr_stmt|;
 name|install
 argument_list|(
 operator|new
-name|EhcachePoolImpl
+name|DefaultCacheFactory
 operator|.
 name|Module
 argument_list|()

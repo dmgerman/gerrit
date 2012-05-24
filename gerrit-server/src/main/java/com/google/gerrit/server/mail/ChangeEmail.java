@@ -410,6 +410,22 @@ name|server
 operator|.
 name|patch
 operator|.
+name|PatchListNotAvailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
 name|PatchSetInfoNotAvailableException
 import|;
 end_import
@@ -1734,6 +1750,8 @@ specifier|protected
 name|PatchList
 name|getPatchList
 parameter_list|()
+throws|throws
+name|PatchListNotAvailableException
 block|{
 if|if
 condition|(
@@ -1755,9 +1773,13 @@ name|patchSet
 argument_list|)
 return|;
 block|}
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|PatchListNotAvailableException
+argument_list|(
+literal|"no patchSet specified"
+argument_list|)
+throw|;
 block|}
 comment|/** Get the project entity the change is in; null if its been deleted. */
 DECL|method|getProjectState ()

@@ -76,13 +76,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|reviewdb
+name|cache
 operator|.
-name|client
-operator|.
-name|Patch
+name|CacheLoader
 import|;
 end_import
 
@@ -112,11 +110,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|cache
+name|client
 operator|.
-name|EntryCreator
+name|Patch
 import|;
 end_import
 
@@ -618,6 +616,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -681,13 +699,28 @@ DECL|class|PatchListLoader
 class|class
 name|PatchListLoader
 extends|extends
-name|EntryCreator
+name|CacheLoader
 argument_list|<
 name|PatchListKey
 argument_list|,
 name|PatchList
 argument_list|>
 block|{
+DECL|field|log
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PatchListLoader
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -710,10 +743,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|createEntry (final PatchListKey key)
+DECL|method|load (final PatchListKey key)
 specifier|public
 name|PatchList
-name|createEntry
+name|load
 parameter_list|(
 specifier|final
 name|PatchListKey
