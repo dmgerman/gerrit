@@ -530,6 +530,11 @@ argument_list|()
 decl_stmt|;
 name|builder
 operator|.
+name|recordStats
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
 name|maximumWeight
 argument_list|(
 name|cfg
