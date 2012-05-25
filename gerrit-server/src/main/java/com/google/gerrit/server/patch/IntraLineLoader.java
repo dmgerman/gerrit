@@ -76,13 +76,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
+name|common
 operator|.
 name|cache
 operator|.
-name|EntryCreator
+name|CacheLoader
 import|;
 end_import
 
@@ -293,7 +291,7 @@ DECL|class|IntraLineLoader
 class|class
 name|IntraLineLoader
 extends|extends
-name|EntryCreator
+name|CacheLoader
 argument_list|<
 name|IntraLineDiffKey
 argument_list|,
@@ -301,7 +299,6 @@ name|IntraLineDiff
 argument_list|>
 block|{
 DECL|field|log
-specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -451,10 +448,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|createEntry (IntraLineDiffKey key)
+DECL|method|load (IntraLineDiffKey key)
 specifier|public
 name|IntraLineDiff
-name|createEntry
+name|load
 parameter_list|(
 name|IntraLineDiffKey
 name|key
@@ -724,7 +721,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Result
+operator|.
+name|TIMEOUT
 return|;
 block|}
 name|Result

@@ -360,6 +360,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|PatchListNotAvailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -1668,6 +1684,8 @@ name|PatchSet
 name|patchSet
 parameter_list|)
 block|{
+try|try
+block|{
 name|PatchList
 name|patchList
 init|=
@@ -1747,6 +1765,13 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|PatchListNotAvailableException
+name|e
+parameter_list|)
+block|{     }
 block|}
 DECL|method|addComments (ChangeAttribute ca, Collection<ChangeMessage> messages)
 specifier|public

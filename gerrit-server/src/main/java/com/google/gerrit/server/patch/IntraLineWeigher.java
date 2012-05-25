@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.cache
+DECL|package|com.google.gerrit.server.patch
 package|package
 name|com
 operator|.
@@ -62,51 +62,99 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|cache
+name|patch
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|Weigher
+import|;
+end_import
+
 begin_comment
-comment|/**  * Creates a cache entry on demand when its not found.  *  * @param<K> type of the cache's key.  * @param<V> type of the cache's value element.  */
+comment|/** Approximates memory usage for IntralineDiff in bytes of memory used. */
 end_comment
 
 begin_class
-DECL|class|EntryCreator
+DECL|class|IntraLineWeigher
 specifier|public
-specifier|abstract
 class|class
-name|EntryCreator
-parameter_list|<
-name|K
-parameter_list|,
-name|V
-parameter_list|>
+name|IntraLineWeigher
+implements|implements
+name|Weigher
+argument_list|<
+name|IntraLineDiffKey
+argument_list|,
+name|IntraLineDiff
+argument_list|>
 block|{
-comment|/**    * Invoked on a cache miss, to compute the cache entry.    *    * @param key entry whose content needs to be obtained.    * @return new cache content. The caller will automatically put this object    *         into the cache.    * @throws Exception the cache content cannot be computed. No entry will be    *         stored in the cache, and {@link #missing(Object)} will be invoked    *         instead. Future requests for the same key will retry this method.    */
-DECL|method|createEntry (K key)
+annotation|@
+name|Override
+DECL|method|weigh (IntraLineDiffKey key, IntraLineDiff value)
 specifier|public
-specifier|abstract
-name|V
-name|createEntry
+name|int
+name|weigh
 parameter_list|(
-name|K
+name|IntraLineDiffKey
 name|key
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
-comment|/** Invoked when {@link #createEntry(Object)} fails, by default return null. */
-DECL|method|missing (K key)
-specifier|public
-name|V
-name|missing
-parameter_list|(
-name|K
-name|key
+parameter_list|,
+name|IntraLineDiff
+name|value
 parameter_list|)
 block|{
 return|return
-literal|null
+literal|16
+operator|+
+literal|8
+operator|*
+literal|8
+operator|+
+literal|2
+operator|*
+literal|36
+comment|// Size of IntraLineDiffKey, 64 bit JVM
+operator|+
+literal|16
+operator|+
+literal|2
+operator|*
+literal|8
+operator|+
+literal|16
+operator|+
+literal|8
+operator|+
+literal|4
+operator|+
+literal|20
+comment|// Size of IntraLineDiff, 64 bit JVM
+operator|+
+operator|(
+literal|8
+operator|+
+literal|16
+operator|+
+literal|4
+operator|*
+literal|4
+operator|)
+operator|*
+name|value
+operator|.
+name|getEdits
+argument_list|()
+operator|.
+name|size
+argument_list|()
 return|;
 block|}
 block|}

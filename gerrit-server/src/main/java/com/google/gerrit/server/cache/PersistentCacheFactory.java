@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -68,117 +68,104 @@ end_package
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|concurrent
+name|common
 operator|.
-name|TimeUnit
+name|cache
+operator|.
+name|Cache
 import|;
 end_import
 
-begin_comment
-comment|/** Configure a cache declared within a {@link CacheModule} instance. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|CacheLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|cache
+operator|.
+name|LoadingCache
+import|;
+end_import
 
 begin_interface
-DECL|interface|NamedCacheBinding
+DECL|interface|PersistentCacheFactory
 specifier|public
 interface|interface
-name|NamedCacheBinding
+name|PersistentCacheFactory
+block|{
+DECL|method|build (CacheBinding<K, V> def)
 parameter_list|<
 name|K
 parameter_list|,
 name|V
 parameter_list|>
-block|{
-comment|/** Set the number of objects to cache in memory. */
-DECL|method|memoryLimit (int objects)
-specifier|public
-name|NamedCacheBinding
+name|Cache
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-name|memoryLimit
+name|build
 parameter_list|(
-name|int
-name|objects
+name|CacheBinding
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+name|def
 parameter_list|)
 function_decl|;
-comment|/** Set the number of objects to cache in memory. */
-DECL|method|diskLimit (int objects)
-specifier|public
-name|NamedCacheBinding
-argument_list|<
+DECL|method|build ( CacheBinding<K, V> def, CacheLoader<K, V> loader)
+parameter_list|<
 name|K
-argument_list|,
-name|V
-argument_list|>
-name|diskLimit
-parameter_list|(
-name|int
-name|objects
-parameter_list|)
-function_decl|;
-comment|/** Set the time an element lives before being expired. */
-DECL|method|maxAge (long duration, TimeUnit durationUnits)
-specifier|public
-name|NamedCacheBinding
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
-name|maxAge
-parameter_list|(
-name|long
-name|duration
 parameter_list|,
-name|TimeUnit
-name|durationUnits
-parameter_list|)
-function_decl|;
-comment|/** Set the eviction policy for elements when the cache is full. */
-DECL|method|evictionPolicy (EvictionPolicy policy)
-specifier|public
-name|NamedCacheBinding
+name|V
+parameter_list|>
+name|LoadingCache
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-name|evictionPolicy
+name|build
 parameter_list|(
-name|EvictionPolicy
-name|policy
-parameter_list|)
-function_decl|;
-comment|/** Populate the cache with items from the EntryCreator. */
-DECL|method|populateWith (Class<? extends EntryCreator<K, V>> creator)
-specifier|public
-name|NamedCacheBinding
+name|CacheBinding
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-name|populateWith
-parameter_list|(
-name|Class
-argument_list|<
-name|?
-extends|extends
-name|EntryCreator
+name|def
+parameter_list|,
+name|CacheLoader
 argument_list|<
 name|K
 argument_list|,
 name|V
 argument_list|>
-argument_list|>
-name|creator
+name|loader
 parameter_list|)
 function_decl|;
 block|}
