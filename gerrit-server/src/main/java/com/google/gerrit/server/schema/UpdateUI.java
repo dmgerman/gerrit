@@ -129,6 +129,11 @@ name|String
 name|msg
 parameter_list|)
 function_decl|;
+DECL|method|isBatch ()
+name|boolean
+name|isBatch
+parameter_list|()
+function_decl|;
 DECL|method|pruneSchema (StatementExecutor e, List<String> pruneList)
 name|void
 name|pruneSchema

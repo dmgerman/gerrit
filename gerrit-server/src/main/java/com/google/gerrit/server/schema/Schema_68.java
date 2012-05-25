@@ -213,6 +213,80 @@ literal|" ON submodule_subscriptions (submodule_project_name, submodule_branch_n
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|e
+parameter_list|)
+block|{
+comment|// the index creation might have failed because the index exists already,
+comment|// in this case the exception can be safely ignored,
+comment|// but there are also other possible reasons for an exception here that
+comment|// should not be ignored,
+comment|// -> ask the user whether to ignore this exception or not
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"warning: Cannot create index for submodule subscriptions"
+argument_list|)
+expr_stmt|;
+name|ui
+operator|.
+name|message
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ui
+operator|.
+name|isBatch
+argument_list|()
+condition|)
+block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"you may ignore this warning when running in interactive mode"
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
+else|else
+block|{
+specifier|final
+name|boolean
+name|answer
+init|=
+name|ui
+operator|.
+name|yesno
+argument_list|(
+literal|false
+argument_list|,
+literal|"Ignore warning and proceed with schema upgrade"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|answer
+condition|)
+block|{
+throw|throw
+name|e
+throw|;
+block|}
+block|}
+block|}
 finally|finally
 block|{
 name|stmt
