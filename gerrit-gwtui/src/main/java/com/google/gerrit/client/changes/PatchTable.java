@@ -1392,7 +1392,7 @@ return|;
 block|}
 comment|/**    * @return a link to the the given patch.    * @param index The patch to link to    * @param patchType The type of patch display    * @param before A string to display at the beginning of the href text    * @param after A string to display at the end of the href text    */
 DECL|method|createLink (int index, PatchScreen.Type patchType, SafeHtml before, SafeHtml after)
-specifier|private
+specifier|public
 name|PatchLink
 name|createLink
 parameter_list|(
