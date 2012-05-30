@@ -1930,6 +1930,9 @@ name|registered
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Permission
+name|metaReadPermission
+init|=
 name|meta
 operator|.
 name|getPermission
@@ -1940,7 +1943,15 @@ name|READ
 argument_list|,
 literal|true
 argument_list|)
-comment|//
+decl_stmt|;
+name|metaReadPermission
+operator|.
+name|setExclusiveGroup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|metaReadPermission
 operator|.
 name|add
 argument_list|(
