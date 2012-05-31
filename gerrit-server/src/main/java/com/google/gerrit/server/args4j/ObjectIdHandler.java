@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd.args4j
+DECL|package|com.google.gerrit.server.args4j
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
 name|args4j
 package|;
@@ -89,6 +89,20 @@ operator|.
 name|assistedinject
 operator|.
 name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -171,21 +185,21 @@ import|;
 end_import
 
 begin_class
-DECL|class|SubcommandHandler
+DECL|class|ObjectIdHandler
 specifier|public
 class|class
-name|SubcommandHandler
+name|ObjectIdHandler
 extends|extends
 name|OptionHandler
 argument_list|<
-name|String
+name|ObjectId
 argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|SubcommandHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<String> setter)
+DECL|method|ObjectIdHandler (@ssisted final CmdLineParser parser, @Assisted final OptionDef option, @Assisted final Setter<ObjectId> setter)
 specifier|public
-name|SubcommandHandler
+name|ObjectIdHandler
 parameter_list|(
 annotation|@
 name|Assisted
@@ -204,7 +218,7 @@ name|Assisted
 specifier|final
 name|Setter
 argument_list|<
-name|String
+name|ObjectId
 argument_list|>
 name|setter
 parameter_list|)
@@ -221,35 +235,39 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|parseArguments (final Parameters params)
+DECL|method|parseArguments (Parameters params)
 specifier|public
-specifier|final
 name|int
 name|parseArguments
 parameter_list|(
-specifier|final
 name|Parameters
 name|params
 parameter_list|)
 throws|throws
 name|CmdLineException
 block|{
-name|setter
-operator|.
-name|addValue
-argument_list|(
+specifier|final
+name|String
+name|n
+init|=
 name|params
 operator|.
 name|getParameter
 argument_list|(
 literal|0
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|owner
+decl_stmt|;
+name|setter
 operator|.
-name|stopOptionParsing
-argument_list|()
+name|addValue
+argument_list|(
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
+name|n
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return
 literal|1
@@ -259,13 +277,12 @@ annotation|@
 name|Override
 DECL|method|getDefaultMetaVariable ()
 specifier|public
-specifier|final
 name|String
 name|getDefaultMetaVariable
 parameter_list|()
 block|{
 return|return
-literal|"COMMAND"
+literal|"COMMIT"
 return|;
 block|}
 block|}

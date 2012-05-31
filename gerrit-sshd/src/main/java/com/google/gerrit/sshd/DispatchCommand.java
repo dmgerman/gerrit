@@ -148,7 +148,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|server
 operator|.
 name|args4j
 operator|.
