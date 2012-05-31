@@ -181,7 +181,10 @@ name|permissionsOnly
 decl_stmt|;
 DECL|field|branch
 specifier|public
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|branch
 decl_stmt|;
 DECL|field|contentMerge
