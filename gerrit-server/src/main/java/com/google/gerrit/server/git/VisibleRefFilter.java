@@ -751,6 +751,8 @@ argument_list|)
 operator|.
 name|matcher
 argument_list|(
+name|tagCache
+argument_list|,
 name|db
 argument_list|,
 name|filterTagsSeperately

@@ -200,10 +200,13 @@ operator|=
 name|tags
 expr_stmt|;
 block|}
-DECL|method|matcher (Repository db, Collection<Ref> include)
+DECL|method|matcher (TagCache cache, Repository db, Collection<Ref> include)
 name|TagMatcher
 name|matcher
 parameter_list|(
+name|TagCache
+name|cache
+parameter_list|,
 name|Repository
 name|db
 parameter_list|,
@@ -232,6 +235,8 @@ name|tags
 operator|=
 name|build
 argument_list|(
+name|cache
+argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
@@ -243,6 +248,8 @@ operator|new
 name|TagMatcher
 argument_list|(
 name|this
+argument_list|,
+name|cache
 argument_list|,
 name|db
 argument_list|,
@@ -283,6 +290,8 @@ name|tags
 operator|=
 name|rebuild
 argument_list|(
+name|cache
+argument_list|,
 name|db
 argument_list|,
 name|tags
@@ -296,6 +305,8 @@ operator|new
 name|TagMatcher
 argument_list|(
 name|this
+argument_list|,
+name|cache
 argument_list|,
 name|db
 argument_list|,
@@ -318,10 +329,13 @@ return|return
 name|m
 return|;
 block|}
-DECL|method|rebuildForNewTags (TagMatcher m)
+DECL|method|rebuildForNewTags (TagCache cache, TagMatcher m)
 name|void
 name|rebuildForNewTags
 parameter_list|(
+name|TagCache
+name|cache
+parameter_list|,
 name|TagMatcher
 name|m
 parameter_list|)
@@ -332,6 +346,8 @@ name|tags
 operator|=
 name|rebuild
 argument_list|(
+name|cache
+argument_list|,
 name|m
 operator|.
 name|db
@@ -374,11 +390,14 @@ name|m
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|build (Repository db)
+DECL|method|build (TagCache cache, Repository db)
 specifier|private
 name|TagSet
 name|build
 parameter_list|(
+name|TagCache
+name|cache
+parameter_list|,
 name|Repository
 name|db
 parameter_list|)
@@ -427,17 +446,29 @@ name|tags
 operator|=
 name|tags
 expr_stmt|;
+name|cache
+operator|.
+name|put
+argument_list|(
+name|projectName
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|tags
 return|;
 block|}
 block|}
-DECL|method|rebuild (Repository db, TagSet old, TagMatcher m)
+DECL|method|rebuild (TagCache cache, Repository db, TagSet old, TagMatcher m)
 specifier|private
 name|TagSet
 name|rebuild
 parameter_list|(
+name|TagCache
+name|cache
+parameter_list|,
 name|Repository
 name|db
 parameter_list|,
@@ -491,6 +522,15 @@ operator|.
 name|tags
 operator|=
 name|cur
+expr_stmt|;
+name|cache
+operator|.
+name|put
+argument_list|(
+name|projectName
+argument_list|,
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 return|return

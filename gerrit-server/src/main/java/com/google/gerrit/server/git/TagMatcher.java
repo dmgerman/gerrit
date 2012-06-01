@@ -215,6 +215,11 @@ specifier|final
 name|TagSetHolder
 name|holder
 decl_stmt|;
+DECL|field|cache
+specifier|final
+name|TagCache
+name|cache
+decl_stmt|;
 DECL|field|db
 specifier|final
 name|Repository
@@ -233,6 +238,7 @@ name|TagSet
 name|tags
 decl_stmt|;
 DECL|field|updated
+specifier|final
 name|boolean
 name|updated
 decl_stmt|;
@@ -241,11 +247,14 @@ specifier|private
 name|boolean
 name|rebuiltForNewTags
 decl_stmt|;
-DECL|method|TagMatcher (TagSetHolder holder, Repository db, Collection<Ref> include, TagSet tags, boolean updated)
+DECL|method|TagMatcher ( TagSetHolder holder, TagCache cache, Repository db, Collection<Ref> include, TagSet tags, boolean updated)
 name|TagMatcher
 parameter_list|(
 name|TagSetHolder
 name|holder
+parameter_list|,
+name|TagCache
+name|cache
 parameter_list|,
 name|Repository
 name|db
@@ -268,6 +277,12 @@ operator|.
 name|holder
 operator|=
 name|holder
+expr_stmt|;
+name|this
+operator|.
+name|cache
+operator|=
+name|cache
 expr_stmt|;
 name|this
 operator|.
@@ -379,6 +394,8 @@ name|holder
 operator|.
 name|rebuildForNewTags
 argument_list|(
+name|cache
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;

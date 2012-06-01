@@ -471,7 +471,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|updateFastForward (String refName, ObjectId oldValue, ObjectId newValue)
-name|void
+name|boolean
 name|updateFastForward
 parameter_list|(
 name|String
@@ -523,6 +523,7 @@ name|oldValue
 argument_list|)
 condition|)
 block|{
+return|return
 name|ref
 operator|.
 name|compareAndSet
@@ -531,9 +532,12 @@ name|cur
 argument_list|,
 name|newValue
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|prepare (TagMatcher m)
 name|void
