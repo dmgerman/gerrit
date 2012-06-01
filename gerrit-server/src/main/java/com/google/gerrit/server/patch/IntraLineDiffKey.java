@@ -376,6 +376,7 @@ name|edits
 return|;
 block|}
 DECL|method|getBlobA ()
+specifier|public
 name|ObjectId
 name|getBlobA
 parameter_list|()
@@ -385,6 +386,7 @@ name|aId
 return|;
 block|}
 DECL|method|getBlobB ()
+specifier|public
 name|ObjectId
 name|getBlobB
 parameter_list|()
