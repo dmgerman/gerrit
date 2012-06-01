@@ -290,6 +290,14 @@ return|;
 block|}
 block|}
 decl_stmt|;
+DECL|field|groupControlFactory
+specifier|private
+specifier|final
+name|GroupControl
+operator|.
+name|Factory
+name|groupControlFactory
+decl_stmt|;
 DECL|field|groupCache
 specifier|private
 specifier|final
@@ -306,9 +314,14 @@ name|groupMembershipFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalGroupBackend (GroupCache groupCache, IncludingGroupMembership.Factory groupMembershipFactory)
+DECL|method|InternalGroupBackend (GroupControl.Factory groupControlFactory, GroupCache groupCache, IncludingGroupMembership.Factory groupMembershipFactory)
 name|InternalGroupBackend
 parameter_list|(
+name|GroupControl
+operator|.
+name|Factory
+name|groupControlFactory
+parameter_list|,
 name|GroupCache
 name|groupCache
 parameter_list|,
@@ -318,6 +331,12 @@ name|Factory
 name|groupMembershipFactory
 parameter_list|)
 block|{
+name|this
+operator|.
+name|groupControlFactory
+operator|=
+name|groupControlFactory
+expr_stmt|;
 name|this
 operator|.
 name|groupCache
@@ -471,7 +490,7 @@ name|AccountGroup
 name|group
 parameter_list|)
 block|{
-comment|// startsWithIgnoreCase
+comment|// startsWithIgnoreCase&& isVisible
 return|return
 name|group
 operator|.
@@ -493,6 +512,16 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
+operator|&&
+name|groupControlFactory
+operator|.
+name|controlFor
+argument_list|(
+name|group
+argument_list|)
+operator|.
+name|isVisible
+argument_list|()
 return|;
 block|}
 block|}
