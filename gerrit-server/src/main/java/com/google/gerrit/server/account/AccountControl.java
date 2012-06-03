@@ -480,6 +480,29 @@ name|Account
 name|otherUser
 parameter_list|)
 block|{
+return|return
+name|canSee
+argument_list|(
+name|otherUser
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**    * Returns true if the otherUser is allowed to see the current user, based    * on the account visibility policy. Depending on the group membership    * realms supported, this may not be able to determine SAME_GROUP or    * VISIBLE_GROUP correctly (defaulting to not being visible). This is because    * {@link GroupMembership#getKnownGroups()} may only return a subset of the    * effective groups.    */
+DECL|method|canSee (final Account.Id otherUser)
+specifier|public
+name|boolean
+name|canSee
+parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|otherUser
+parameter_list|)
+block|{
 comment|// Special case: I can always see myself.
 if|if
 condition|(
@@ -500,9 +523,6 @@ operator|.
 name|equals
 argument_list|(
 name|otherUser
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -709,7 +729,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|groupsOf (Account account)
+DECL|method|groupsOf (Account.Id account)
 specifier|private
 name|Set
 argument_list|<
@@ -720,6 +740,8 @@ argument_list|>
 name|groupsOf
 parameter_list|(
 name|Account
+operator|.
+name|Id
 name|account
 parameter_list|)
 block|{
@@ -729,9 +751,6 @@ operator|.
 name|create
 argument_list|(
 name|account
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|getEffectiveGroups
