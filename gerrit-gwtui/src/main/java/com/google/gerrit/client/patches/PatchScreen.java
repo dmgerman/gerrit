@@ -2356,6 +2356,57 @@ name|getHistory
 argument_list|()
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|Patch
+name|p
+range|:
+name|patchSetDetail
+operator|.
+name|getPatches
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|p
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|patchKey
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|p
+operator|.
+name|getPatchType
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|Patch
+operator|.
+name|PatchType
+operator|.
+name|BINARY
+argument_list|)
+condition|)
+block|{
+name|contentTable
+operator|.
+name|isDisplayBinary
+operator|=
+literal|true
+expr_stmt|;
+block|}
+break|break;
+block|}
+block|}
 comment|// True if there are differences between the two patch sets
 name|boolean
 name|hasEdits
@@ -2404,11 +2455,17 @@ operator|instanceof
 name|SideBySideTable
 operator|&&
 name|pureMetaChange
+operator|&&
+operator|!
+name|contentTable
+operator|.
+name|isDisplayBinary
 condition|)
 block|{
 comment|// User asked for SideBySide (or a link guessed, wrong) and we can't
-comment|// show a binary or pure-rename change there accurately. Switch to
-comment|// the unified view instead.
+comment|// show a pure-rename change there accurately. Switch to
+comment|// the unified view instead. User can set file comments on binary file
+comment|// in SideBySide view.
 comment|//
 name|contentTable
 operator|.

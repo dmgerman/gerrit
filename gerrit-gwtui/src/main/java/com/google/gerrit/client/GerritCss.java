@@ -448,6 +448,11 @@ name|String
 name|diffText
 parameter_list|()
 function_decl|;
+DECL|method|diffTextForBinaryInSideBySide ()
+name|String
+name|diffTextForBinaryInSideBySide
+parameter_list|()
+function_decl|;
 DECL|method|diffTextCONTEXT ()
 name|String
 name|diffTextCONTEXT
@@ -926,6 +931,11 @@ function_decl|;
 DECL|method|rightBorder ()
 name|String
 name|rightBorder
+parameter_list|()
+function_decl|;
+DECL|method|sideBySideTableBinaryHeader ()
+name|String
+name|sideBySideTableBinaryHeader
 parameter_list|()
 function_decl|;
 DECL|method|rpcStatus ()
