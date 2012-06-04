@@ -232,6 +232,67 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|created ()
+specifier|public
+specifier|final
+name|Timestamp
+name|created
+parameter_list|()
+block|{
+name|Timestamp
+name|ts
+init|=
+name|_get_cts
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ts
+operator|==
+literal|null
+condition|)
+block|{
+name|ts
+operator|=
+name|JavaSqlTimestamp_JsonSerializer
+operator|.
+name|parseTimestamp
+argument_list|(
+name|createdRaw
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_set_cts
+argument_list|(
+name|ts
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|ts
+return|;
+block|}
+DECL|method|_get_cts ()
+specifier|private
+specifier|final
+specifier|native
+name|Timestamp
+name|_get_cts
+parameter_list|()
+comment|/*-{ return this._cts; }-*/
+function_decl|;
+DECL|method|_set_cts (Timestamp ts)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|_set_cts
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+comment|/*-{ this._cts = ts; }-*/
+function_decl|;
 DECL|method|updated ()
 specifier|public
 specifier|final
@@ -373,6 +434,15 @@ name|AccountInfo
 name|owner
 parameter_list|()
 comment|/*-{ return this.owner; }-*/
+function_decl|;
+DECL|method|createdRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|createdRaw
+parameter_list|()
+comment|/*-{ return this.created; }-*/
 function_decl|;
 DECL|method|updatedRaw ()
 specifier|private
