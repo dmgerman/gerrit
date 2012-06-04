@@ -1759,6 +1759,13 @@ operator|.
 name|onLoad
 argument_list|()
 expr_stmt|;
+name|fileList
+operator|.
+name|movePointerTo
+argument_list|(
+name|patchKey
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|patchSetDetail
