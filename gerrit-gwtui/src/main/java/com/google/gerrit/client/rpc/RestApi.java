@@ -735,10 +735,14 @@ name|data
 decl_stmt|;
 try|try
 block|{
+comment|// javac generics bug
 name|data
 operator|=
 name|Natives
 operator|.
+expr|<
+name|T
+operator|>
 name|parseJSON
 argument_list|(
 name|json

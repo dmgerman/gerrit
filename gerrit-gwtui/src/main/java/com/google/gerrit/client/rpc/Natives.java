@@ -191,7 +191,13 @@ name|bestJsonParser
 argument_list|()
 expr_stmt|;
 block|}
+comment|// javac generics bug
 return|return
+name|Natives
+operator|.
+expr|<
+name|T
+operator|>
 name|parse0
 argument_list|(
 name|parser
