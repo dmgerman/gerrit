@@ -334,6 +334,41 @@ name|r
 return|;
 block|}
 block|}
+comment|/** @return true if the UUID is for a group managed within Gerrit. */
+DECL|method|isInternalGroup (AccountGroup.UUID uuid)
+specifier|public
+specifier|static
+name|boolean
+name|isInternalGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+return|return
+name|uuid
+operator|.
+name|get
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"global:"
+argument_list|)
+operator|||
+name|uuid
+operator|.
+name|get
+argument_list|()
+operator|.
+name|matches
+argument_list|(
+literal|"[0-9a-f]{40}"
+argument_list|)
+return|;
+block|}
 comment|/** Synthetic key to link to within the database */
 DECL|class|Id
 specifier|public
