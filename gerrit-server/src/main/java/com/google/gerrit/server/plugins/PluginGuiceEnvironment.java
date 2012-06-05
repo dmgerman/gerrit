@@ -2673,7 +2673,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
 name|dynamicTypes
 operator|.
 name|contains
@@ -2687,6 +2686,27 @@ name|getTypeLiteral
 argument_list|()
 argument_list|)
 operator|&&
+name|e
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|getAnnotation
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// A type used in DynamicSet or DynamicMap that has an annotation
+comment|// must be picked up by the set/map itself. A type used in either
+comment|// but without an annotation may be magic glue implementing F and
+comment|// using DynamicSet<F> or DynamicMap<F> internally. That should be
+comment|// exported to plugins.
+continue|continue;
+block|}
+elseif|else
+if|if
+condition|(
 name|shouldCopy
 argument_list|(
 name|e
