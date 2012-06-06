@@ -212,6 +212,20 @@ name|jgit
 operator|.
 name|errors
 operator|.
+name|TooLargeObjectInPackException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
 name|UnpackException
 import|;
 end_import
@@ -277,6 +291,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
 import|;
 end_import
 
@@ -671,6 +695,50 @@ name|UnpackException
 name|badStream
 parameter_list|)
 block|{
+comment|// In case this was caused by the user pushing an object whose size
+comment|// is larger than the receive.maxObjectSizeLimit gerrit.config parameter
+comment|// we want to present this error to the user
+if|if
+condition|(
+name|badStream
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|TooLargeObjectInPackException
+condition|)
+block|{
+name|PrintWriter
+name|p
+init|=
+name|toPrintWriter
+argument_list|(
+name|err
+argument_list|)
+decl_stmt|;
+name|p
+operator|.
+name|print
+argument_list|(
+literal|"error: "
+operator|+
+name|badStream
+operator|.
+name|getCause
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
 comment|// This may have been triggered by branch level access controls.
 comment|// Log what the heck is going on, as detailed as we can.
 comment|//
