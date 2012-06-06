@@ -767,7 +767,7 @@ name|h
 operator|.
 name|openElement
 argument_list|(
-literal|"span"
+literal|"div"
 argument_list|)
 expr_stmt|;
 name|h
@@ -908,7 +908,7 @@ name|h
 operator|.
 name|closeElement
 argument_list|(
-literal|"span"
+literal|"div"
 argument_list|)
 expr_stmt|;
 if|if
