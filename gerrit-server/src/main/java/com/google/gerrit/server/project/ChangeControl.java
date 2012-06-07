@@ -1186,6 +1186,13 @@ operator|.
 name|canAdministrateServer
 argument_list|()
 comment|// site administers are god
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|canAbandon
+argument_list|()
+comment|// user can abandon a specific ref
 return|;
 block|}
 comment|/** Can this user publish this draft change or any draft patch set of this change? */
