@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd
+DECL|package|com.google.gerrit.client.plugins
 package|package
 name|com
 operator|.
@@ -60,91 +60,61 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|client
+operator|.
+name|plugins
 package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|RetentionPolicy
-operator|.
-name|RUNTIME
-import|;
-end_import
-
-begin_import
 import|import
-name|java
+name|com
 operator|.
-name|lang
+name|google
 operator|.
-name|annotation
+name|gwt
 operator|.
-name|ElementType
+name|core
+operator|.
+name|client
+operator|.
+name|JavaScriptObject
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Retention
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Target
-import|;
-end_import
-
-begin_comment
-comment|/**  * Annotation on {@link SshCommand} declaring a capability must be granted.  */
-end_comment
-
-begin_annotation_defn
-annotation|@
-name|Target
-argument_list|(
-block|{
-name|ElementType
-operator|.
-name|TYPE
-block|}
-argument_list|)
-annotation|@
-name|Retention
-argument_list|(
-name|RUNTIME
-argument_list|)
-DECL|annotation|RequiresCapability
+begin_class
+DECL|class|PluginInfo
 specifier|public
-annotation_defn|@interface
-name|RequiresCapability
+class|class
+name|PluginInfo
+extends|extends
+name|JavaScriptObject
 block|{
-DECL|method|value ()
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
 name|String
-name|value
+name|name
 parameter_list|()
+comment|/*-{ return this.name; }-*/
 function_decl|;
+DECL|method|version ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|version
+parameter_list|()
+comment|/*-{ return this.version; }-*/
+function_decl|;
+DECL|method|PluginInfo ()
+specifier|protected
+name|PluginInfo
+parameter_list|()
+block|{   }
 block|}
-end_annotation_defn
+end_class
 
 end_unit
 

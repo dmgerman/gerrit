@@ -848,6 +848,11 @@ name|String
 name|permalink
 parameter_list|()
 function_decl|;
+DECL|method|pluginsTable ()
+name|String
+name|pluginsTable
+parameter_list|()
+function_decl|;
 DECL|method|posscore ()
 name|String
 name|posscore

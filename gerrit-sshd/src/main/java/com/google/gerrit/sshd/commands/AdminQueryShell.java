@@ -90,9 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|extensions
 operator|.
-name|AdminHighPriorityCommand
+name|annotations
+operator|.
+name|RequiresCapability
 import|;
 end_import
 
@@ -106,7 +108,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|RequiresCapability
+name|AdminHighPriorityCommand
 import|;
 end_import
 

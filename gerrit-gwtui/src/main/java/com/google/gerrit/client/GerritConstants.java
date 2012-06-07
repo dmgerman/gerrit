@@ -298,6 +298,11 @@ name|String
 name|menuProjects
 parameter_list|()
 function_decl|;
+DECL|method|menuPlugins ()
+name|String
+name|menuPlugins
+parameter_list|()
+function_decl|;
 DECL|method|menuDocumentation ()
 name|String
 name|menuDocumentation
