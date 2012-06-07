@@ -1361,6 +1361,22 @@ name|FORGE_SERVER
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can abandon a change for this ref */
+DECL|method|canAbandon ()
+specifier|public
+name|boolean
+name|canAbandon
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|ABANDON
+argument_list|)
+return|;
+block|}
 comment|/** All value ranges of any allowed label permission. */
 DECL|method|getLabelRanges ()
 specifier|public
