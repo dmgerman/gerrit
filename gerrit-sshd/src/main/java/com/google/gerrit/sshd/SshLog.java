@@ -735,9 +735,9 @@ name|getName
 argument_list|()
 argument_list|,
 comment|// fqnOfCategoryClass
-literal|null
+name|log
 argument_list|,
-comment|// logger (optional)
+comment|// logger
 name|System
 operator|.
 name|currentTimeMillis
@@ -1072,9 +1072,9 @@ name|getName
 argument_list|()
 argument_list|,
 comment|// fqnOfCategoryClass
-literal|null
+name|log
 argument_list|,
-comment|// logger (optional)
+comment|// logger
 name|System
 operator|.
 name|currentTimeMillis
