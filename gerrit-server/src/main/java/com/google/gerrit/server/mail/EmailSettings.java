@@ -132,6 +132,11 @@ specifier|final
 name|boolean
 name|includeDiff
 decl_stmt|;
+DECL|field|maximumDiffSize
+specifier|final
+name|int
+name|maximumDiffSize
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|EmailSettings (@erritServerConfig Config cfg)
@@ -154,6 +159,21 @@ argument_list|,
 literal|"includeDiff"
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|maximumDiffSize
+operator|=
+name|cfg
+operator|.
+name|getInt
+argument_list|(
+literal|"sendemail"
+argument_list|,
+literal|"maximumDiffSize"
+argument_list|,
+literal|256
+operator|<<
+literal|10
 argument_list|)
 expr_stmt|;
 block|}
