@@ -401,6 +401,23 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
+DECL|method|doDraftPublishedHook (Change change, PatchSet patchSet, ReviewDb db)
+specifier|public
+name|void
+name|doDraftPublishedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
 DECL|method|doRefUpdatedHook (NameKey refName, RefUpdate refUpdate, Account account)
 specifier|public
 name|void

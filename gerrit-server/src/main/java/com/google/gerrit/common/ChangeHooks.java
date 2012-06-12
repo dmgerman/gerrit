@@ -307,6 +307,24 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+comment|/**    * Fire the Draft Published Hook.    *    * @param change The change itself.    * @param patchSet The Patchset that was created.    * @throws OrmException    */
+DECL|method|doDraftPublishedHook (Change change, PatchSet patchSet, ReviewDb db)
+specifier|public
+name|void
+name|doDraftPublishedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param patchSet The patchset this comment is related to.    * @param account The gerrit user who commited the change.    * @param comment The comment given.    * @param approvals Map of Approval Categories and Scores    * @throws OrmException    */
 DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals, ReviewDb db)
 specifier|public
