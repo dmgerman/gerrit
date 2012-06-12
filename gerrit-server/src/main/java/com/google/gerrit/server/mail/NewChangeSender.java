@@ -657,6 +657,20 @@ return|return
 name|host
 return|;
 block|}
+DECL|method|getIncludeDiff ()
+specifier|public
+name|boolean
+name|getIncludeDiff
+parameter_list|()
+block|{
+return|return
+name|args
+operator|.
+name|settings
+operator|.
+name|includeDiff
+return|;
+block|}
 comment|/** Show patch set as unified difference.  */
 DECL|method|getUnifiedDiff ()
 specifier|public
