@@ -140,7 +140,7 @@ specifier|public
 class|class
 name|ProjectUtil
 block|{
-comment|/**    * Checks whether the specified branch exists.    *    * @param repoManager Git repository manager to open the git repository    * @param branch the branch for which it should be checked if it exists    * @return<code>true</code> if the specified branch exists, otherwise    *<code>false</code>    * @throws RepositoryNotFoundException the repository of the branch's project    *         does not exist.    * @throws IOException error while retrieving the branch from the repository.    */
+comment|/**    * Checks whether the specified branch exists.    *    * @param repoManager Git repository manager to open the git repository    * @param branch the branch for which it should be checked if it exists    * @return<code>true</code> if the specified branch exists or if    *<code>HEAD</code> points to this branch, otherwise    *<code>false</code>    * @throws RepositoryNotFoundException the repository of the branch's project    *         does not exist.    * @throws IOException error while retrieving the branch from the repository.    */
 DECL|method|branchExists (final GitRepositoryManager repoManager, final Branch.NameKey branch)
 specifier|public
 specifier|static
@@ -178,7 +178,9 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-return|return
+name|boolean
+name|exists
+init|=
 name|repo
 operator|.
 name|getRef
@@ -190,6 +192,31 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|exists
+condition|)
+block|{
+name|exists
+operator|=
+name|repo
+operator|.
+name|getFullBranch
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|branch
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|exists
 return|;
 block|}
 finally|finally
