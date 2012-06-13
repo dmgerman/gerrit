@@ -1549,6 +1549,14 @@ literal|"change is closed"
 expr_stmt|;
 break|break;
 case|case
+name|CHANGE_NOT_ABANDONED
+case|:
+name|errMsg
+operator|+=
+literal|"change is not abandoned"
+expr_stmt|;
+break|break;
+case|case
 name|PUBLISH_NOT_PERMITTED
 case|:
 name|errMsg

@@ -4000,7 +4000,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updatedChange ( final ReviewDb db, final IdentifiedUser user, final Change change, final ChangeMessage cmsg, ReplyToChangeSender.Factory<T> senderFactory, final String err)
+DECL|method|updatedChange ( final ReviewDb db, final IdentifiedUser user, final Change change, final ChangeMessage cmsg, ReplyToChangeSender.Factory<T> senderFactory)
 specifier|public
 specifier|static
 parameter_list|<
@@ -4034,35 +4034,14 @@ argument_list|<
 name|T
 argument_list|>
 name|senderFactory
-parameter_list|,
-specifier|final
-name|String
-name|err
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
-throws|,
-name|InvalidChangeOperationException
 throws|,
 name|EmailException
 throws|,
 name|OrmException
 block|{
-if|if
-condition|(
-name|change
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|InvalidChangeOperationException
-argument_list|(
-name|err
-argument_list|)
-throw|;
-block|}
 name|db
 operator|.
 name|changeMessages

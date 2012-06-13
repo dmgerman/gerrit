@@ -235,6 +235,10 @@ comment|/** Review operation invalid because change is closed. */
 DECL|enumConstant|CHANGE_IS_CLOSED
 name|CHANGE_IS_CLOSED
 block|,
+comment|/** Review operation invalid because change is not abandoned. */
+DECL|enumConstant|CHANGE_NOT_ABANDONED
+name|CHANGE_NOT_ABANDONED
+block|,
 comment|/** Not permitted to publish this draft patch set */
 DECL|enumConstant|PUBLISH_NOT_PERMITTED
 name|PUBLISH_NOT_PERMITTED
