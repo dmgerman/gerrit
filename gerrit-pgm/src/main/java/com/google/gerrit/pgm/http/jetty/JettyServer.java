@@ -919,6 +919,8 @@ operator|new
 name|HttpLog
 argument_list|(
 name|site
+argument_list|,
+name|cfg
 argument_list|)
 argument_list|)
 expr_stmt|;
