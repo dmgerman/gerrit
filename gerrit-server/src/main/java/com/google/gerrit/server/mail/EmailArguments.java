@@ -459,9 +459,14 @@ specifier|final
 name|RuntimeInstance
 name|velocityRuntime
 decl_stmt|;
+DECL|field|settings
+specifier|final
+name|EmailSettings
+name|settings
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -531,6 +536,9 @@ name|db
 parameter_list|,
 name|RuntimeInstance
 name|velocityRuntime
+parameter_list|,
+name|EmailSettings
+name|settings
 parameter_list|)
 block|{
 name|this
@@ -634,6 +642,12 @@ operator|.
 name|velocityRuntime
 operator|=
 name|velocityRuntime
+expr_stmt|;
+name|this
+operator|.
+name|settings
+operator|=
+name|settings
 expr_stmt|;
 block|}
 block|}
