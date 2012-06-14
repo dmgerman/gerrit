@@ -773,6 +773,12 @@ condition|(
 name|authorId
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|ps
+operator|.
+name|isDraft
+argument_list|()
 condition|)
 block|{
 name|need
@@ -810,6 +816,12 @@ condition|(
 name|committerId
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|ps
+operator|.
+name|isDraft
+argument_list|()
 condition|)
 block|{
 name|need
