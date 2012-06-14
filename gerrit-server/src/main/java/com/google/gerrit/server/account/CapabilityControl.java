@@ -544,7 +544,7 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
-comment|/** @return true if the user can create a group. */
+comment|/** @return true if the user can create a project. */
 DECL|method|canCreateProject ()
 specifier|public
 name|boolean
