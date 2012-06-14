@@ -150,6 +150,22 @@ name|HorizontalPanel
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|globalkey
+operator|.
+name|client
+operator|.
+name|KeyCommandSet
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeDescriptionBlock
 specifier|public
@@ -170,10 +186,13 @@ specifier|final
 name|CommitMessageBlock
 name|messageBlock
 decl_stmt|;
-DECL|method|ChangeDescriptionBlock ()
+DECL|method|ChangeDescriptionBlock (KeyCommandSet keysAction)
 specifier|public
 name|ChangeDescriptionBlock
-parameter_list|()
+parameter_list|(
+name|KeyCommandSet
+name|keysAction
+parameter_list|)
 block|{
 name|infoBlock
 operator|=
@@ -185,7 +204,9 @@ name|messageBlock
 operator|=
 operator|new
 name|CommitMessageBlock
-argument_list|()
+argument_list|(
+name|keysAction
+argument_list|)
 expr_stmt|;
 specifier|final
 name|HorizontalPanel
@@ -215,16 +236,17 @@ name|hp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final Change chg, final PatchSetInfo info, final AccountInfoCache acc)
+DECL|method|display (Change chg, Boolean starred, PatchSetInfo info, final AccountInfoCache acc)
 specifier|public
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|Change
 name|chg
 parameter_list|,
-specifier|final
+name|Boolean
+name|starred
+parameter_list|,
 name|PatchSetInfo
 name|info
 parameter_list|,
@@ -246,6 +268,13 @@ name|messageBlock
 operator|.
 name|display
 argument_list|(
+name|chg
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|starred
+argument_list|,
 name|info
 operator|.
 name|getMessage
