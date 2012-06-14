@@ -1478,6 +1478,11 @@ specifier|private
 name|RefUpdate
 name|branchUpdate
 decl_stmt|;
+DECL|field|inserter
+specifier|private
+name|ObjectInserter
+name|inserter
+decl_stmt|;
 DECL|field|hooks
 specifier|private
 specifier|final
@@ -2182,6 +2187,19 @@ finally|finally
 block|{
 if|if
 condition|(
+name|inserter
+operator|!=
+literal|null
+condition|)
+block|{
+name|inserter
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|rw
 operator|!=
 literal|null
@@ -2420,6 +2438,13 @@ name|newFlag
 argument_list|(
 literal|"CAN_MERGE"
 argument_list|)
+expr_stmt|;
+name|inserter
+operator|=
+name|repo
+operator|.
+name|newObjectInserter
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|openBranch ()
@@ -3308,48 +3333,10 @@ block|{
 specifier|final
 name|ThreeWayMerger
 name|m
-decl_stmt|;
-if|if
-condition|(
-name|destProject
-operator|.
-name|isUseContentMerge
+init|=
+name|newThreeWayMerger
 argument_list|()
-condition|)
-block|{
-comment|// Settings for this project allow us to try and
-comment|// automatically resolve conflicts within files if needed.
-comment|// Use ResolveMerge and instruct to operate in core.
-name|m
-operator|=
-name|MergeStrategy
-operator|.
-name|RESOLVE
-operator|.
-name|newMerger
-argument_list|(
-name|repo
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// No auto conflict resolving allowed. If any of the
-comment|// affected files was modified, merge will fail.
-name|m
-operator|=
-name|MergeStrategy
-operator|.
-name|SIMPLE_TWO_WAY_IN_CORE
-operator|.
-name|newMerger
-argument_list|(
-name|repo
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -3372,6 +3359,9 @@ block|{
 name|writeMergeCommit
 argument_list|(
 name|m
+operator|.
+name|getResultTreeId
+argument_list|()
 argument_list|,
 name|n
 argument_list|)
@@ -3468,7 +3458,102 @@ end_catch
 
 begin_function
 unit|}    private
+DECL|method|newThreeWayMerger ()
+name|ThreeWayMerger
+name|newThreeWayMerger
+parameter_list|()
+block|{
+name|ThreeWayMerger
+name|m
+decl_stmt|;
+if|if
+condition|(
+name|destProject
+operator|.
+name|isUseContentMerge
+argument_list|()
+condition|)
+block|{
+comment|// Settings for this project allow us to try and
+comment|// automatically resolve conflicts within files if needed.
+comment|// Use ResolveMerge and instruct to operate in core.
+name|m
+operator|=
+name|MergeStrategy
+operator|.
+name|RESOLVE
+operator|.
+name|newMerger
+argument_list|(
+name|repo
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// No auto conflict resolving allowed. If any of the
+comment|// affected files was modified, merge will fail.
+name|m
+operator|=
+name|MergeStrategy
+operator|.
+name|SIMPLE_TWO_WAY_IN_CORE
+operator|.
+name|newMerger
+argument_list|(
+name|repo
+argument_list|)
+expr_stmt|;
+block|}
+name|m
+operator|.
+name|setObjectInserter
+argument_list|(
+operator|new
+name|ObjectInserter
+operator|.
+name|Filter
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|protected
+name|ObjectInserter
+name|delegate
+parameter_list|()
+block|{
+return|return
+name|inserter
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|flush
+parameter_list|()
+block|{       }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|release
+parameter_list|()
+block|{       }
+block|}
+argument_list|)
+expr_stmt|;
+return|return
+name|m
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|failed (final CodeReviewCommit n, final CommitMergeStatus failure)
+specifier|private
 name|CodeReviewCommit
 name|failed
 parameter_list|(
@@ -3540,16 +3625,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|writeMergeCommit (final Merger m, final CodeReviewCommit n)
+DECL|method|writeMergeCommit (ObjectId treeId, CodeReviewCommit n)
 specifier|private
 name|void
 name|writeMergeCommit
 parameter_list|(
-specifier|final
-name|Merger
-name|m
+name|ObjectId
+name|treeId
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|n
 parameter_list|)
@@ -3867,10 +3950,7 @@ name|mergeCommit
 operator|.
 name|setTreeId
 argument_list|(
-name|m
-operator|.
-name|getResultTreeId
-argument_list|()
+name|treeId
 argument_list|)
 expr_stmt|;
 name|mergeCommit
@@ -3917,8 +3997,6 @@ name|parseCommit
 argument_list|(
 name|commit
 argument_list|(
-name|m
-argument_list|,
 name|mergeCommit
 argument_list|)
 argument_list|)
@@ -4385,48 +4463,10 @@ decl_stmt|;
 specifier|final
 name|ThreeWayMerger
 name|m
-decl_stmt|;
-if|if
-condition|(
-name|destProject
-operator|.
-name|isUseContentMerge
+init|=
+name|newThreeWayMerger
 argument_list|()
-condition|)
-block|{
-comment|// Settings for this project allow us to try and
-comment|// automatically resolve conflicts within files if needed.
-comment|// Use ResolveMerge and instruct to operate in core.
-name|m
-operator|=
-name|MergeStrategy
-operator|.
-name|RESOLVE
-operator|.
-name|newMerger
-argument_list|(
-name|repo
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// No auto conflict resolving allowed. If any of the
-comment|// affected files was modified, merge will fail.
-name|m
-operator|=
-name|MergeStrategy
-operator|.
-name|SIMPLE_TWO_WAY_IN_CORE
-operator|.
-name|newMerger
-argument_list|(
-name|repo
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -5445,8 +5485,6 @@ name|id
 init|=
 name|commit
 argument_list|(
-name|m
-argument_list|,
 name|mergeCommit
 argument_list|)
 decl_stmt|;
@@ -5879,16 +5917,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|commit (final Merger m, final CommitBuilder mergeCommit)
+DECL|method|commit (CommitBuilder mergeCommit)
 specifier|private
 name|ObjectId
 name|commit
 parameter_list|(
-specifier|final
-name|Merger
-name|m
-parameter_list|,
-specifier|final
 name|CommitBuilder
 name|mergeCommit
 parameter_list|)
@@ -5897,27 +5930,17 @@ name|IOException
 throws|,
 name|UnsupportedEncodingException
 block|{
-name|ObjectInserter
-name|oi
-init|=
-name|m
-operator|.
-name|getObjectInserter
-argument_list|()
-decl_stmt|;
-try|try
-block|{
 name|ObjectId
 name|id
 init|=
-name|oi
+name|inserter
 operator|.
 name|insert
 argument_list|(
 name|mergeCommit
 argument_list|)
 decl_stmt|;
-name|oi
+name|inserter
 operator|.
 name|flush
 argument_list|()
@@ -5925,15 +5948,6 @@ expr_stmt|;
 return|return
 name|id
 return|;
-block|}
-finally|finally
-block|{
-name|oi
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 end_function
 
