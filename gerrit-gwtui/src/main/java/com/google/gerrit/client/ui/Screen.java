@@ -551,6 +551,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|setHeaderVisible (boolean value)
+specifier|protected
+name|void
+name|setHeaderVisible
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+block|{
+name|header
+operator|.
+name|setVisible
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setTitleEast (final Widget w)
 specifier|protected
 name|void
