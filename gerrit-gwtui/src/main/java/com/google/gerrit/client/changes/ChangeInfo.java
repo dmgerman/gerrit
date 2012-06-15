@@ -462,6 +462,15 @@ name|starred
 parameter_list|()
 comment|/*-{ return this.starred ? true : false; }-*/
 function_decl|;
+DECL|method|reviewed ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|reviewed
+parameter_list|()
+comment|/*-{ return this.reviewed ? true : false; }-*/
+function_decl|;
 DECL|method|_sortkey ()
 specifier|public
 specifier|final

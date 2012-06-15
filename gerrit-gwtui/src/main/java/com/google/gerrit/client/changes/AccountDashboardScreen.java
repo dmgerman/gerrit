@@ -346,6 +346,13 @@ name|incomingReviews
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|incoming
+operator|.
+name|setHighlightUnreviewed
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|closed
 operator|.
 name|setTitleText
