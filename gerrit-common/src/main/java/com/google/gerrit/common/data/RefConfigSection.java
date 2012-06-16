@@ -93,6 +93,16 @@ name|HEADS
 init|=
 literal|"refs/heads/*"
 decl_stmt|;
+comment|/** Configuration settings for a project {@code refs/meta/config} */
+DECL|field|REF_CONFIG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REF_CONFIG
+init|=
+literal|"refs/meta/config"
+decl_stmt|;
 comment|/** Prefix that triggers a regular expression pattern. */
 DECL|field|REGEX_PREFIX
 specifier|public

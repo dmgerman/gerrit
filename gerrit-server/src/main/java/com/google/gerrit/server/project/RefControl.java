@@ -805,9 +805,36 @@ comment|// Pushing configuration changes modifies the access control
 comment|// rules. Allowing this to be done by a non-project-owner opens
 comment|// a security hole enabling editing of access rules, and thus
 comment|// granting of powers beyond pushing to the configuration.
+comment|// On the AllProjects project the owner access right cannot be assigned,
+comment|// this why for the AllProjects project we allow administrators to push
+comment|// configuration changes if they have push without being project owner.
+if|if
+condition|(
+operator|!
+operator|(
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
+operator|.
+name|isAllProjects
+argument_list|()
+operator|&&
+name|getCurrentUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
+argument_list|()
+operator|)
+condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 return|return
 name|canPerform
