@@ -918,6 +918,11 @@ name|String
 name|screenHeader
 parameter_list|()
 function_decl|;
+DECL|method|screenNoHeader ()
+name|String
+name|screenNoHeader
+parameter_list|()
+function_decl|;
 DECL|method|searchPanel ()
 name|String
 name|searchPanel

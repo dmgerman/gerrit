@@ -835,7 +835,9 @@ name|descBlock
 operator|=
 operator|new
 name|ChangeDescriptionBlock
-argument_list|()
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
@@ -1873,6 +1875,8 @@ name|r
 operator|.
 name|getChange
 argument_list|()
+argument_list|,
+literal|null
 argument_list|,
 name|r
 operator|.
