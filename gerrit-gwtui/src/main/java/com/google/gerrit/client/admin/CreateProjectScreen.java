@@ -1195,7 +1195,7 @@ argument_list|)
 expr_stmt|;
 name|ProjectMap
 operator|.
-name|permissions
+name|parentCandidates
 argument_list|(
 operator|new
 name|GerritCallback
