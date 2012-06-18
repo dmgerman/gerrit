@@ -134,6 +134,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|SitePaths
 import|;
 end_import
@@ -303,6 +319,20 @@ operator|.
 name|spi
 operator|.
 name|LoggingEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -494,7 +524,7 @@ name|async
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshLog (final Provider<SshSession> session, final Provider<Context> context, final SitePaths site)
+DECL|method|SshLog (final Provider<SshSession> session, final Provider<Context> context, final SitePaths site, @GerritServerConfig Config config)
 name|SshLog
 parameter_list|(
 specifier|final
@@ -514,6 +544,11 @@ parameter_list|,
 specifier|final
 name|SitePaths
 name|site
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|config
 parameter_list|)
 block|{
 name|this
@@ -643,7 +678,16 @@ name|async
 operator|.
 name|setBufferSize
 argument_list|(
+name|config
+operator|.
+name|getInt
+argument_list|(
+literal|"core"
+argument_list|,
+literal|"asyncLoggingBufferSize"
+argument_list|,
 literal|64
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|async
@@ -737,9 +781,9 @@ name|getName
 argument_list|()
 argument_list|,
 comment|// fqnOfCategoryClass
-literal|null
+name|log
 argument_list|,
-comment|// logger (optional)
+comment|// logger
 name|System
 operator|.
 name|currentTimeMillis
@@ -1074,9 +1118,9 @@ name|getName
 argument_list|()
 argument_list|,
 comment|// fqnOfCategoryClass
-literal|null
+name|log
 argument_list|,
-comment|// logger (optional)
+comment|// logger
 name|System
 operator|.
 name|currentTimeMillis

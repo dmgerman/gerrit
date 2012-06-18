@@ -272,6 +272,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -445,12 +459,16 @@ specifier|final
 name|AsyncAppender
 name|async
 decl_stmt|;
-DECL|method|HttpLog (final SitePaths site)
+DECL|method|HttpLog (final SitePaths site, final Config config)
 name|HttpLog
 parameter_list|(
 specifier|final
 name|SitePaths
 name|site
+parameter_list|,
+specifier|final
+name|Config
+name|config
 parameter_list|)
 block|{
 specifier|final
@@ -568,7 +586,16 @@ name|async
 operator|.
 name|setBufferSize
 argument_list|(
+name|config
+operator|.
+name|getInt
+argument_list|(
+literal|"core"
+argument_list|,
+literal|"asyncLoggingBufferSize"
+argument_list|,
 literal|64
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|async
@@ -689,9 +716,9 @@ name|getName
 argument_list|()
 argument_list|,
 comment|// fqnOfCategoryClass
-literal|null
+name|log
 argument_list|,
-comment|// logger (optional)
+comment|// logger
 name|System
 operator|.
 name|currentTimeMillis
