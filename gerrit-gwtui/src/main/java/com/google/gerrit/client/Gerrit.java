@@ -1781,7 +1781,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|selfRedirect (String suffix)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|selfRedirect
