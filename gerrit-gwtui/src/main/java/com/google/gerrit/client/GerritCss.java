@@ -843,11 +843,6 @@ name|String
 name|patchSizeCell
 parameter_list|()
 function_decl|;
-DECL|method|permalink ()
-name|String
-name|permalink
-parameter_list|()
-function_decl|;
 DECL|method|pluginsTable ()
 name|String
 name|pluginsTable
