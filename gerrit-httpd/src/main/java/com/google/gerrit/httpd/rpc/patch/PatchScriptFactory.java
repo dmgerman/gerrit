@@ -1827,7 +1827,7 @@ name|byKey
 argument_list|,
 name|aic
 argument_list|,
-name|oldName
+name|newName
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1931,7 +1931,7 @@ name|aic
 argument_list|,
 name|me
 argument_list|,
-name|oldName
+name|newName
 argument_list|)
 expr_stmt|;
 break|break;
