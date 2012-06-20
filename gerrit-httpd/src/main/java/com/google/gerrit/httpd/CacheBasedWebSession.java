@@ -659,6 +659,19 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|authMethod
+operator|=
+name|isSignedIn
+argument_list|()
+condition|?
+name|AuthMethod
+operator|.
+name|COOKIE
+else|:
+name|AuthMethod
+operator|.
+name|NONE
+expr_stmt|;
 if|if
 condition|(
 name|isSignedIn
@@ -993,7 +1006,7 @@ name|path
 expr_stmt|;
 block|}
 comment|/** Set the user account for this current request only. */
-DECL|method|setUserAccountId (Account.Id id)
+DECL|method|setUserAccountId (Account.Id id, AuthMethod method)
 specifier|public
 name|void
 name|setUserAccountId
@@ -1002,6 +1015,9 @@ name|Account
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|AuthMethod
+name|method
 parameter_list|)
 block|{
 name|key
@@ -1031,6 +1047,10 @@ literal|""
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+name|authMethod
+operator|=
+name|method
 expr_stmt|;
 block|}
 DECL|method|logout ()

@@ -229,7 +229,7 @@ name|path
 parameter_list|)
 function_decl|;
 comment|/** Set the user account for this current request only. */
-DECL|method|setUserAccountId (Account.Id id)
+DECL|method|setUserAccountId (Account.Id id, AuthMethod method)
 specifier|public
 name|void
 name|setUserAccountId
@@ -238,6 +238,9 @@ name|Account
 operator|.
 name|Id
 name|id
+parameter_list|,
+name|AuthMethod
+name|method
 parameter_list|)
 function_decl|;
 DECL|method|logout ()
