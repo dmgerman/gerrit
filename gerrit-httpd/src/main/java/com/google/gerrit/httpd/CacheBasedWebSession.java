@@ -224,6 +224,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AuthMethod
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|AuthResult
 import|;
 end_import
@@ -513,6 +529,11 @@ DECL|field|outCookie
 specifier|private
 name|Cookie
 name|outCookie
+decl_stmt|;
+DECL|field|authMethod
+specifier|private
+name|AuthMethod
+name|authMethod
 decl_stmt|;
 DECL|field|key
 specifier|private
@@ -867,7 +888,7 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|login (final AuthResult res, final boolean rememberMe)
+DECL|method|login (final AuthResult res, final AuthMethod meth, final boolean rememberMe)
 specifier|public
 name|void
 name|login
@@ -875,6 +896,10 @@ parameter_list|(
 specifier|final
 name|AuthResult
 name|res
+parameter_list|,
+specifier|final
+name|AuthMethod
+name|meth
 parameter_list|,
 specifier|final
 name|boolean
@@ -946,6 +971,10 @@ argument_list|)
 expr_stmt|;
 name|saveCookie
 argument_list|()
+expr_stmt|;
+name|authMethod
+operator|=
+name|meth
 expr_stmt|;
 block|}
 comment|/** Change the access path from the default of {@link AccessPath#WEB_UI}. */
@@ -1229,6 +1258,16 @@ operator|.
 name|getScheme
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|getAuthMethod ()
+specifier|public
+name|AuthMethod
+name|getAuthMethod
+parameter_list|()
+block|{
+return|return
+name|authMethod
 return|;
 block|}
 block|}

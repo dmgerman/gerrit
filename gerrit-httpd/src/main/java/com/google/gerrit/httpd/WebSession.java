@@ -136,6 +136,22 @@ name|server
 operator|.
 name|account
 operator|.
+name|AuthMethod
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
 name|AuthResult
 import|;
 end_import
@@ -146,6 +162,12 @@ specifier|public
 interface|interface
 name|WebSession
 block|{
+DECL|method|getAuthMethod ()
+specifier|public
+name|AuthMethod
+name|getAuthMethod
+parameter_list|()
+function_decl|;
 DECL|method|isSignedIn ()
 specifier|public
 name|boolean
@@ -181,13 +203,16 @@ name|CurrentUser
 name|getCurrentUser
 parameter_list|()
 function_decl|;
-DECL|method|login (AuthResult res, boolean rememberMe)
+DECL|method|login (AuthResult res, AuthMethod meth, boolean rememberMe)
 specifier|public
 name|void
 name|login
 parameter_list|(
 name|AuthResult
 name|res
+parameter_list|,
+name|AuthMethod
+name|meth
 parameter_list|,
 name|boolean
 name|rememberMe
