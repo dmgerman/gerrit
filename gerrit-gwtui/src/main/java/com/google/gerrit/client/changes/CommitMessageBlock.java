@@ -565,6 +565,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|changeId
+operator|!=
+literal|null
+condition|)
+block|{
 name|permalinkPanel
 operator|.
 name|add
@@ -601,6 +608,7 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|splitCommitMessage
