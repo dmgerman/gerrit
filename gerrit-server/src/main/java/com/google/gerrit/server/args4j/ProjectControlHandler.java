@@ -453,6 +453,14 @@ operator|.
 name|validateFor
 argument_list|(
 name|nameKey
+argument_list|,
+name|ProjectControl
+operator|.
+name|OWNER
+operator||
+name|ProjectControl
+operator|.
+name|VISIBLE
 argument_list|)
 expr_stmt|;
 block|}
