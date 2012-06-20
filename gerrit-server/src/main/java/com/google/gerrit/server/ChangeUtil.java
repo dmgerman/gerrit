@@ -794,6 +794,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -880,6 +900,22 @@ specifier|public
 class|class
 name|ChangeUtil
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ChangeUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|uuidPrefix
 specifier|private
 specifier|static
@@ -4071,6 +4107,8 @@ name|change
 argument_list|)
 expr_stmt|;
 comment|// Email the reviewers
+try|try
+block|{
 specifier|final
 name|ReplyToChangeSender
 name|cm
@@ -4104,6 +4142,28 @@ operator|.
 name|send
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot email update for change "
+operator|+
+name|change
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|sortKey (long lastUpdated, int id)
 specifier|public
