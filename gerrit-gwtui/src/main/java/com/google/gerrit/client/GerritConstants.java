@@ -413,6 +413,11 @@ name|String
 name|projectAccessError
 parameter_list|()
 function_decl|;
+DECL|method|projectAccessProposeForReviewHint ()
+name|String
+name|projectAccessProposeForReviewHint
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

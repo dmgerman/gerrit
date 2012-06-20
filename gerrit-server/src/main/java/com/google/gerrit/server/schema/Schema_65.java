@@ -1550,9 +1550,6 @@ name|commit
 argument_list|)
 expr_stmt|;
 comment|// Save the the final metadata.
-if|if
-condition|(
-operator|!
 name|batch
 operator|.
 name|commitAt
@@ -1562,18 +1559,7 @@ operator|.
 name|getRevision
 argument_list|()
 argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Cannot update "
-operator|+
-name|allProjects
-argument_list|)
-throw|;
-block|}
+expr_stmt|;
 block|}
 finally|finally
 block|{

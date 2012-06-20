@@ -148,6 +148,11 @@ specifier|protected
 name|boolean
 name|isConfigVisible
 decl_stmt|;
+DECL|field|canUpload
+specifier|protected
+name|boolean
+name|canUpload
+decl_stmt|;
 DECL|method|ProjectAccess ()
 specifier|public
 name|ProjectAccess
@@ -395,6 +400,32 @@ operator|.
 name|isConfigVisible
 operator|=
 name|isConfigVisible
+expr_stmt|;
+block|}
+DECL|method|canUpload ()
+specifier|public
+name|boolean
+name|canUpload
+parameter_list|()
+block|{
+return|return
+name|canUpload
+return|;
+block|}
+DECL|method|setCanUpload (boolean canUpload)
+specifier|public
+name|void
+name|setCanUpload
+parameter_list|(
+name|boolean
+name|canUpload
+parameter_list|)
+block|{
+name|this
+operator|.
+name|canUpload
+operator|=
+name|canUpload
 expr_stmt|;
 block|}
 block|}
