@@ -487,6 +487,11 @@ name|String
 name|commitMessage
 parameter_list|)
 block|{
+name|starPanel
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|changeId
