@@ -1539,6 +1539,14 @@ name|out
 operator|.
 name|reviewed
 operator|=
+name|in
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+operator|&&
 name|isChangeReviewed
 argument_list|(
 name|cd
