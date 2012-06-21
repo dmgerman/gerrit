@@ -150,6 +150,11 @@ name|String
 name|patchHeaderNew
 parameter_list|()
 function_decl|;
+DECL|method|patchSet ()
+name|String
+name|patchSet
+parameter_list|()
+function_decl|;
 DECL|method|patchHistoryTitle ()
 name|String
 name|patchHistoryTitle
