@@ -2029,6 +2029,19 @@ finally|finally
 block|{
 if|if
 condition|(
+name|repo
+operator|!=
+literal|null
+condition|)
+block|{
+name|repo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|db
 operator|!=
 literal|null
@@ -2040,10 +2053,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|db
-operator|=
-literal|null
-expr_stmt|;
 block|}
 block|}
 DECL|method|setDestProject ()
@@ -2224,15 +2233,19 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|db
+operator|!=
+literal|null
+condition|)
+block|{
 name|db
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|db
-operator|=
-literal|null
-expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|preMerge ()
