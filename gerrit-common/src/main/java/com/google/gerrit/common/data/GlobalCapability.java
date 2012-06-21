@@ -156,7 +156,7 @@ name|CREATE_PROJECT
 init|=
 literal|"createProject"
 decl_stmt|;
-comment|/**    * Denotes who may email change reviewers.    *<p>    * This can be used to deny build bots from emailing reviewers and people who    * have starred the changed. Instead, only the authors of the change will be    * emailed. The allow rules are evaluated before deny rules, however the    * default is to allow emailing, if no explicit rule is matched.    */
+comment|/**    * Denotes who may email change reviewers and watchers.    *<p>    * This can be used to deny build bots from emailing reviewers and people who    * watch the change. Instead, only the authors of the change and those who    * starred it will be emailed. The allow rules are evaluated before deny    * rules, however the default is to allow emailing, if no explicit rule is    * matched.    */
 DECL|field|EMAIL_REVIEWERS
 specifier|public
 specifier|static
