@@ -565,6 +565,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|permalinkPanel
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|changeId
