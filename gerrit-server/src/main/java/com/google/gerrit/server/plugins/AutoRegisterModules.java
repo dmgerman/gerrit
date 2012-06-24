@@ -1281,6 +1281,19 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|PluginLoader
+operator|.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Exporting "
+operator|+
+name|clazz
+operator|+
+literal|" as SSH Command"
+argument_list|)
+expr_stmt|;
 name|sshGen
 operator|.
 name|export
@@ -1310,6 +1323,19 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|PluginLoader
+operator|.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Exporting "
+operator|+
+name|clazz
+operator|+
+literal|" as HTTP Servlet"
+argument_list|)
+expr_stmt|;
 name|httpGen
 operator|.
 name|export
@@ -1622,6 +1648,21 @@ argument_list|(
 name|clazz
 argument_list|)
 expr_stmt|;
+name|PluginLoader
+operator|.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Registering "
+operator|+
+name|clazz
+operator|+
+literal|" to listener "
+operator|+
+name|tl
+argument_list|)
+expr_stmt|;
 name|sysListen
 operator|.
 name|put
@@ -1685,6 +1726,21 @@ operator|.
 name|add
 argument_list|(
 name|clazz
+argument_list|)
+expr_stmt|;
+name|PluginLoader
+operator|.
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Registering "
+operator|+
+name|clazz
+operator|+
+literal|" to listener "
+operator|+
+name|tl
 argument_list|)
 expr_stmt|;
 name|sysListen
