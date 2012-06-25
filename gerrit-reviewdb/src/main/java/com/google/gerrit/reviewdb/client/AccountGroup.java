@@ -365,7 +365,7 @@ argument_list|()
 operator|.
 name|matches
 argument_list|(
-literal|"[0-9a-f]{40}"
+literal|"^[0-9a-f]{40}$"
 argument_list|)
 return|;
 block|}
