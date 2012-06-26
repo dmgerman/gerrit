@@ -3389,9 +3389,14 @@ argument_list|,
 operator|new
 name|InlineLabel
 argument_list|(
+name|Util
+operator|.
+name|cropSubject
+argument_list|(
 name|parent
 operator|.
 name|shortMessage
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
