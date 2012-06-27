@@ -1008,6 +1008,10 @@ literal|"name"
 argument_list|,
 literal|"email@site"
 argument_list|)
+argument_list|,
+operator|new
+name|InMemoryH2Type
+argument_list|()
 argument_list|)
 operator|.
 name|create
