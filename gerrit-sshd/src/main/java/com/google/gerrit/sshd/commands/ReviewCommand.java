@@ -680,7 +680,7 @@ literal|"{COMMIT | CHANGE,PATCHSET}"
 argument_list|,
 name|usage
 operator|=
-literal|"patch to review"
+literal|"list of commits or patch sets to review"
 argument_list|)
 DECL|method|addPatchSetId (final String token)
 name|void
@@ -753,7 +753,7 @@ literal|"-p"
 argument_list|,
 name|usage
 operator|=
-literal|"project containing the patch set"
+literal|"project containing the specified patch set(s)"
 argument_list|)
 DECL|field|projectControl
 specifier|private
@@ -773,7 +773,7 @@ literal|"-m"
 argument_list|,
 name|usage
 operator|=
-literal|"cover message to publish on change"
+literal|"cover message to publish on change(s)"
 argument_list|,
 name|metaVar
 operator|=
@@ -793,7 +793,7 @@ literal|"--abandon"
 argument_list|,
 name|usage
 operator|=
-literal|"abandon the patch set"
+literal|"abandon the specified change(s)"
 argument_list|)
 DECL|field|abandonChange
 specifier|private
@@ -809,7 +809,7 @@ literal|"--restore"
 argument_list|,
 name|usage
 operator|=
-literal|"restore an abandoned the patch set"
+literal|"restore the specified abandoned change(s)"
 argument_list|)
 DECL|field|restoreChange
 specifier|private
@@ -829,7 +829,7 @@ literal|"-s"
 argument_list|,
 name|usage
 operator|=
-literal|"submit the patch set"
+literal|"submit the specified patch set(s)"
 argument_list|)
 DECL|field|submitChange
 specifier|private
@@ -847,7 +847,7 @@ name|usage
 operator|=
 literal|"publish the message, "
 operator|+
-literal|"even if the label score cannot be applied due to change being closed"
+literal|"even if the label score cannot be applied due to the change being closed"
 argument_list|)
 DECL|field|forceMessage
 specifier|private
@@ -865,7 +865,7 @@ literal|"--publish"
 argument_list|,
 name|usage
 operator|=
-literal|"publish a draft patch set"
+literal|"publish the specified draft patch set(s)"
 argument_list|)
 DECL|field|publishPatchSet
 specifier|private
@@ -881,7 +881,7 @@ literal|"--delete"
 argument_list|,
 name|usage
 operator|=
-literal|"delete a draft patch set"
+literal|"delete the specified draft patch set(s)"
 argument_list|)
 DECL|field|deleteDraftPatchSet
 specifier|private
@@ -1631,7 +1631,7 @@ name|NOT_A_DRAFT
 case|:
 name|errMsg
 operator|+=
-literal|"change is not a draft"
+literal|"change/patch set is not a draft"
 expr_stmt|;
 break|break;
 case|case
