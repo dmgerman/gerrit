@@ -1275,8 +1275,15 @@ block|{
 return|return
 name|canAbandon
 argument_list|()
-return|;
 comment|// Anyone who can abandon the change can restore it back
+operator|&&
+name|getRefControl
+argument_list|()
+operator|.
+name|canUpload
+argument_list|()
+return|;
+comment|// as long as you can upload too
 block|}
 comment|/** All value ranges of any allowed label permission. */
 DECL|method|getLabelRanges ()
