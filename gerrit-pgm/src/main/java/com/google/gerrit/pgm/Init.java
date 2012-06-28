@@ -1055,6 +1055,13 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+while|while
+condition|(
+name|why
+operator|!=
+literal|null
+condition|)
+block|{
 name|buf
 operator|.
 name|append
@@ -1072,7 +1079,7 @@ operator|.
 name|getCause
 argument_list|()
 expr_stmt|;
-while|while
+if|if
 condition|(
 name|why
 operator|!=
@@ -1086,23 +1093,7 @@ argument_list|(
 literal|"\n  caused by "
 argument_list|)
 expr_stmt|;
-name|buf
-operator|.
-name|append
-argument_list|(
-name|why
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|why
-operator|=
-name|why
-operator|.
-name|getCause
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 throw|throw
 name|die
