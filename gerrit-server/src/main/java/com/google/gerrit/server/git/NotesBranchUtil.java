@@ -300,6 +300,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|merge
+operator|.
+name|MergeStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|notes
 operator|.
 name|Note
@@ -478,6 +492,11 @@ DECL|field|overwrite
 specifier|private
 name|boolean
 name|overwrite
+decl_stmt|;
+DECL|field|noteMerger
+specifier|private
+name|ReviewNoteMerger
+name|noteMerger
 decl_stmt|;
 annotation|@
 name|Inject
@@ -849,17 +868,11 @@ block|{
 comment|// Merge the existing and the new note as if they are both new,
 comment|// means: base == null
 comment|// There is no really a common ancestry for these two note revisions
-name|NoteMerger
-name|noteMerger
-init|=
-operator|new
-name|ReviewNoteMerger
-argument_list|()
-decl_stmt|;
 name|ObjectId
 name|noteContent
 init|=
-name|noteMerger
+name|getNoteMerger
+argument_list|()
 operator|.
 name|merge
 argument_list|(
@@ -908,6 +921,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|getNoteMerger ()
+specifier|private
+name|NoteMerger
+name|getNoteMerger
+parameter_list|()
+block|{
+if|if
+condition|(
+name|noteMerger
+operator|==
+literal|null
+condition|)
+block|{
+name|noteMerger
+operator|=
+operator|new
+name|ReviewNoteMerger
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|noteMerger
+return|;
 block|}
 DECL|method|loadBase (String notesBranch)
 specifier|private
@@ -1282,6 +1319,13 @@ operator|new
 name|NoteMapMerger
 argument_list|(
 name|db
+argument_list|,
+name|getNoteMerger
+argument_list|()
+argument_list|,
+name|MergeStrategy
+operator|.
+name|RESOLVE
 argument_list|)
 decl_stmt|;
 name|NoteMap
