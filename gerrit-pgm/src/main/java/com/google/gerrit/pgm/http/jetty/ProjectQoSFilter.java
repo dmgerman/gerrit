@@ -667,6 +667,10 @@ name|this
 operator|.
 name|maxWait
 operator|=
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
 name|getTimeUnit
 argument_list|(
 name|cfg
@@ -680,6 +684,7 @@ argument_list|,
 literal|5
 argument_list|,
 name|MINUTES
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
