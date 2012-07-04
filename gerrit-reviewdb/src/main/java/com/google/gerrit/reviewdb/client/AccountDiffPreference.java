@@ -303,6 +303,13 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|setShowLineEndings
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|setIntralineDifference
 argument_list|(
 literal|true
@@ -420,6 +427,18 @@ name|id
 operator|=
 literal|7
 argument_list|)
+DECL|field|showLineEndings
+specifier|protected
+name|boolean
+name|showLineEndings
+decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|8
+argument_list|)
 DECL|field|intralineDifference
 specifier|protected
 name|boolean
@@ -430,7 +449,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|8
+literal|9
 argument_list|)
 DECL|field|showTabs
 specifier|protected
@@ -443,7 +462,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|9
+literal|10
 argument_list|)
 DECL|field|context
 specifier|protected
@@ -455,7 +474,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|10
+literal|11
 argument_list|)
 DECL|field|skipDeleted
 specifier|protected
@@ -467,7 +486,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|11
+literal|12
 argument_list|)
 DECL|field|skipUncommented
 specifier|protected
@@ -479,7 +498,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|12
+literal|13
 argument_list|)
 DECL|field|expandAllComments
 specifier|protected
@@ -491,7 +510,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|13
+literal|14
 argument_list|)
 DECL|field|retainHeader
 specifier|protected
@@ -503,7 +522,7 @@ name|Column
 argument_list|(
 name|id
 operator|=
-literal|14
+literal|15
 argument_list|)
 DECL|field|manualReview
 specifier|protected
@@ -587,6 +606,14 @@ operator|=
 name|p
 operator|.
 name|showWhitespaceErrors
+expr_stmt|;
+name|this
+operator|.
+name|showLineEndings
+operator|=
+name|p
+operator|.
+name|showLineEndings
 expr_stmt|;
 name|this
 operator|.
@@ -801,6 +828,32 @@ operator|.
 name|showWhitespaceErrors
 operator|=
 name|showWhitespaceErrors
+expr_stmt|;
+block|}
+DECL|method|isShowLineEndings ()
+specifier|public
+name|boolean
+name|isShowLineEndings
+parameter_list|()
+block|{
+return|return
+name|showLineEndings
+return|;
+block|}
+DECL|method|setShowLineEndings (boolean showLineEndings)
+specifier|public
+name|void
+name|setShowLineEndings
+parameter_list|(
+name|boolean
+name|showLineEndings
+parameter_list|)
+block|{
+name|this
+operator|.
+name|showLineEndings
+operator|=
+name|showLineEndings
 expr_stmt|;
 block|}
 DECL|method|isIntralineDifference ()
