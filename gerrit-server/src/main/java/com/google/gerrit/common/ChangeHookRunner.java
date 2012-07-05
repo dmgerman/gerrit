@@ -410,7 +410,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeRestoreEvent
+name|ChangeRestoredEvent
 import|;
 end_import
 
@@ -956,7 +956,7 @@ specifier|final
 name|File
 name|changeAbandonedHook
 decl_stmt|;
-comment|/** Filename of the change abandoned hook. */
+comment|/** Filename of the change restored hook. */
 DECL|field|changeRestoredHook
 specifier|private
 specifier|final
@@ -2662,10 +2662,10 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doChangeRestoreHook (final Change change, final Account account, final String reason, final ReviewDb db)
+DECL|method|doChangeRestoredHook (final Change change, final Account account, final String reason, final ReviewDb db)
 specifier|public
 name|void
-name|doChangeRestoreHook
+name|doChangeRestoredHook
 parameter_list|(
 specifier|final
 name|Change
@@ -2687,11 +2687,11 @@ throws|throws
 name|OrmException
 block|{
 specifier|final
-name|ChangeRestoreEvent
+name|ChangeRestoredEvent
 name|event
 init|=
 operator|new
-name|ChangeRestoreEvent
+name|ChangeRestoredEvent
 argument_list|()
 decl_stmt|;
 name|event

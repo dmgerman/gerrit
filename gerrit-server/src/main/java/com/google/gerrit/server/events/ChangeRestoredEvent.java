@@ -67,10 +67,10 @@ package|;
 end_package
 
 begin_class
-DECL|class|ChangeRestoreEvent
+DECL|class|ChangeRestoredEvent
 specifier|public
 class|class
-name|ChangeRestoreEvent
+name|ChangeRestoredEvent
 extends|extends
 name|ChangeEvent
 block|{
