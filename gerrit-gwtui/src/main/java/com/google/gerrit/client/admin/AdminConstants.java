@@ -235,6 +235,16 @@ name|String
 name|parentSuggestions
 parameter_list|()
 function_decl|;
+DECL|method|buttonBrowseProjects ()
+name|String
+name|buttonBrowseProjects
+parameter_list|()
+function_decl|;
+DECL|method|projects ()
+name|String
+name|projects
+parameter_list|()
+function_decl|;
 DECL|method|headingGroupUUID ()
 name|String
 name|headingGroupUUID
