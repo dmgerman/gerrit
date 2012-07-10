@@ -76,6 +76,10 @@ comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} 
 DECL|enumConstant|OPENID
 name|OPENID
 block|,
+comment|/** Login relies upon the OpenID standard: {@link "http://openid.net/"} in Single Sign On mode */
+DECL|enumConstant|OPENID_SSO
+name|OPENID_SSO
+block|,
 comment|/**    * Login relies upon the container/web server security.    *<p>    * The container or web server must populate an HTTP header with a unique name    * for the current user. Gerrit will implicitly trust the value of this header    * to supply the unique identity.    */
 DECL|enumConstant|HTTP
 name|HTTP
