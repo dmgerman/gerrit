@@ -291,6 +291,28 @@ operator|.
 name|TEXT
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--all"
+argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"-a"
+block|}
+argument_list|,
+name|usage
+operator|=
+literal|"List all plugins, including disabled plugins"
+argument_list|)
+DECL|field|all
+specifier|private
+name|boolean
+name|all
+decl_stmt|;
+annotation|@
 name|Inject
 DECL|method|ListPlugins (PluginLoader pluginLoader)
 specifier|protected
@@ -413,7 +435,9 @@ argument_list|(
 name|pluginLoader
 operator|.
 name|getPlugins
-argument_list|()
+argument_list|(
+name|all
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collections
@@ -473,18 +497,20 @@ name|stdout
 operator|.
 name|format
 argument_list|(
-literal|"%-30s %-10s\n"
+literal|"%-30s %-10s %-8s\n"
 argument_list|,
 literal|"Name"
 argument_list|,
 literal|"Version"
+argument_list|,
+literal|"Status"
 argument_list|)
 expr_stmt|;
 name|stdout
 operator|.
 name|print
 argument_list|(
-literal|"----------------------------------------------------------------------\n"
+literal|"-------------------------------------------------------------------------------\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -511,6 +537,19 @@ name|p
 operator|.
 name|getVersion
 argument_list|()
+expr_stmt|;
+name|info
+operator|.
+name|disabled
+operator|=
+name|p
+operator|.
+name|isDisabled
+argument_list|()
+condition|?
+literal|true
+else|:
+literal|null
 expr_stmt|;
 if|if
 condition|(
@@ -539,7 +578,7 @@ name|stdout
 operator|.
 name|format
 argument_list|(
-literal|"%-30s %-10s\n"
+literal|"%-30s %-10s %-8s\n"
 argument_list|,
 name|p
 operator|.
@@ -554,6 +593,15 @@ name|info
 operator|.
 name|version
 argument_list|)
+argument_list|,
+name|p
+operator|.
+name|isDisabled
+argument_list|()
+condition|?
+literal|"DISABLED"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -617,6 +665,17 @@ block|{
 DECL|field|version
 name|String
 name|version
+decl_stmt|;
+comment|// disabled is only read via reflection when building the json output.  We
+comment|// do not want to show a compiler error that it isn't used.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+DECL|field|disabled
+name|Boolean
+name|disabled
 decl_stmt|;
 block|}
 block|}

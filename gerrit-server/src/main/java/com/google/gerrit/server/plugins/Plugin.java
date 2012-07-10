@@ -607,6 +607,12 @@ specifier|final
 name|ClassLoader
 name|classLoader
 decl_stmt|;
+DECL|field|disabled
+specifier|private
+specifier|final
+name|boolean
+name|disabled
+decl_stmt|;
 DECL|field|sysModule
 specifier|private
 name|Class
@@ -784,6 +790,20 @@ operator|.
 name|classLoader
 operator|=
 name|classLoader
+expr_stmt|;
+name|this
+operator|.
+name|disabled
+operator|=
+name|srcJar
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|".disabled"
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -974,6 +994,16 @@ name|jar
 operator|.
 name|lastModified
 argument_list|()
+return|;
+block|}
+DECL|method|isDisabled ()
+specifier|public
+name|boolean
+name|isDisabled
+parameter_list|()
+block|{
+return|return
+name|disabled
 return|;
 block|}
 DECL|method|start (PluginGuiceEnvironment env)
@@ -1670,6 +1700,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|manager
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
 name|handle
 operator|instanceof
 name|ReloadableRegistrationHandle
@@ -1711,6 +1748,7 @@ argument_list|(
 name|handle
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getReloadableHandles ()
 name|List
