@@ -495,6 +495,11 @@ name|String
 name|pluginTabInstalled
 parameter_list|()
 function_decl|;
+DECL|method|pluginDisabled ()
+name|String
+name|pluginDisabled
+parameter_list|()
+function_decl|;
 DECL|method|columnPluginName ()
 name|String
 name|columnPluginName
@@ -503,6 +508,11 @@ function_decl|;
 DECL|method|columnPluginVersion ()
 name|String
 name|columnPluginVersion
+parameter_list|()
+function_decl|;
+DECL|method|columnPluginStatus ()
+name|String
+name|columnPluginStatus
 parameter_list|()
 function_decl|;
 DECL|method|noGroupSelected ()

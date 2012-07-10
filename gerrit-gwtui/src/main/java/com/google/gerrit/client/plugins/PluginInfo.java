@@ -108,6 +108,15 @@ name|version
 parameter_list|()
 comment|/*-{ return this.version; }-*/
 function_decl|;
+DECL|method|isDisabled ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isDisabled
+parameter_list|()
+comment|/*-{ return this.disabled ? true : false; }-*/
+function_decl|;
 DECL|method|PluginInfo ()
 specifier|protected
 name|PluginInfo
