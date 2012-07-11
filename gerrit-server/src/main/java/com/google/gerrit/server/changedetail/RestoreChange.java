@@ -1045,7 +1045,7 @@ argument_list|)
 expr_stmt|;
 name|hooks
 operator|.
-name|doChangeRestoreHook
+name|doChangeRestoredHook
 argument_list|(
 name|updatedChange
 argument_list|,

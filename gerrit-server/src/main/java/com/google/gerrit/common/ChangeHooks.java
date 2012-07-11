@@ -325,7 +325,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param patchSet The patchset this comment is related to.    * @param account The gerrit user who commited the change.    * @param comment The comment given.    * @param approvals Map of Approval Categories and Scores    * @throws OrmException    */
+comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param patchSet The patchset this comment is related to.    * @param account The gerrit user who added the comment.    * @param comment The comment given.    * @param approvals Map of Approval Categories and Scores    * @throws OrmException    */
 DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals, ReviewDb db)
 specifier|public
 name|void
@@ -361,7 +361,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Change Merged Hook.    *    * @param change The change itself.    * @param account The gerrit user who commited the change.    * @param patchSet The patchset that was merged.    * @throws OrmException    */
+comment|/**    * Fire the Change Merged Hook.    *    * @param change The change itself.    * @param account The gerrit user who submitted the change.    * @param patchSet The patchset that was merged.    * @throws OrmException    */
 DECL|method|doChangeMergedHook (Change change, Account account, PatchSet patchSet, ReviewDb db)
 specifier|public
 name|void
@@ -404,10 +404,10 @@ throws|throws
 name|OrmException
 function_decl|;
 comment|/**    * Fire the Change Restored Hook.    *    * @param change The change itself.    * @param account The gerrit user who restored the change.    * @param reason Reason for restoring the change.    * @throws OrmException    */
-DECL|method|doChangeRestoreHook (Change change, Account account, String reason, ReviewDb db)
+DECL|method|doChangeRestoredHook (Change change, Account account, String reason, ReviewDb db)
 specifier|public
 name|void
-name|doChangeRestoreHook
+name|doChangeRestoredHook
 parameter_list|(
 name|Change
 name|change

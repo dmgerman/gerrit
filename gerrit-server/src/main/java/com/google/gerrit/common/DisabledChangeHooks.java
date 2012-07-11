@@ -315,10 +315,10 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doChangeRestoreHook (Change change, Account account, String reason, ReviewDb db)
+DECL|method|doChangeRestoredHook (Change change, Account account, String reason, ReviewDb db)
 specifier|public
 name|void
-name|doChangeRestoreHook
+name|doChangeRestoredHook
 parameter_list|(
 name|Change
 name|change
