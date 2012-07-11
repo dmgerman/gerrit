@@ -198,26 +198,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -290,22 +270,6 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-DECL|field|log
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|log
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|DynamicSet
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *<p>    * Sets must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.setOf(binder(), Interface.class);    *   DynamicSet.bind(binder(), Interface.class).to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
 DECL|method|setOf (Binder binder, Class<T> member)
 specifier|public
@@ -731,19 +695,7 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Cannot get iterated object from provider "
-operator|+
-name|p
-operator|+
-literal|": object discared"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
+comment|// TODO Log failed member of DynamicSet.
 block|}
 block|}
 block|}
