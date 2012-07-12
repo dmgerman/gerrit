@@ -270,9 +270,14 @@ name|String
 name|nextFileHelp
 parameter_list|()
 function_decl|;
-DECL|method|reviewed ()
+DECL|method|reviewedAnd ()
 name|String
-name|reviewed
+name|reviewedAnd
+parameter_list|()
+function_decl|;
+DECL|method|next ()
+name|String
+name|next
 parameter_list|()
 function_decl|;
 DECL|method|download ()
