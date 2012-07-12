@@ -1153,9 +1153,6 @@ name|patchIndex
 operator|=
 name|patchIndex
 expr_stmt|;
-name|createReviewedPanel
-argument_list|()
-expr_stmt|;
 name|prefs
 operator|=
 name|fileList
@@ -1221,6 +1218,12 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|reviewedPanel
+operator|=
+operator|new
+name|FlowPanel
+argument_list|()
+expr_stmt|;
 name|settingsPanel
 operator|=
 operator|new
@@ -1230,16 +1233,15 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createReviewedPanel ()
+DECL|method|populateReviewedPanel ()
 specifier|private
 name|void
-name|createReviewedPanel
+name|populateReviewedPanel
 parameter_list|()
 block|{
 name|reviewedPanel
-operator|=
-operator|new
-name|FlowPanel
+operator|.
+name|clear
 argument_list|()
 expr_stmt|;
 name|reviewedCheckBox
@@ -2475,6 +2477,9 @@ name|setEnabled
 argument_list|(
 literal|false
 argument_list|)
+expr_stmt|;
+name|populateReviewedPanel
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
