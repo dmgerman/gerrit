@@ -126,7 +126,7 @@ specifier|final
 name|int
 name|TRACKING_ID_MAX_CHAR
 init|=
-literal|20
+literal|32
 decl_stmt|;
 DECL|field|TRACKING_SYSTEM_MAX_CHAR
 specifier|public
@@ -380,10 +380,10 @@ name|id
 operator|=
 literal|2
 argument_list|)
-DECL|field|trackingId
+DECL|field|trackingKey
 specifier|protected
 name|Id
-name|trackingId
+name|trackingKey
 decl_stmt|;
 annotation|@
 name|Column
@@ -410,7 +410,7 @@ operator|.
 name|Id
 argument_list|()
 expr_stmt|;
-name|trackingId
+name|trackingKey
 operator|=
 operator|new
 name|Id
@@ -446,7 +446,7 @@ name|changeId
 operator|=
 name|ch
 expr_stmt|;
-name|trackingId
+name|trackingKey
 operator|=
 name|id
 expr_stmt|;
@@ -478,7 +478,7 @@ name|getTrackingId
 parameter_list|()
 block|{
 return|return
-name|trackingId
+name|trackingKey
 return|;
 block|}
 DECL|method|getTrackingSystem ()
@@ -529,7 +529,7 @@ name|?
 argument_list|>
 index|[]
 block|{
-name|trackingId
+name|trackingKey
 operator|,
 name|trackingSystem
 block|}
@@ -674,7 +674,7 @@ block|{
 return|return
 name|key
 operator|.
-name|trackingId
+name|trackingKey
 operator|.
 name|get
 argument_list|()
