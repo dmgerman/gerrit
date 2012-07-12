@@ -393,6 +393,11 @@ name|String
 name|coverMessage
 parameter_list|()
 function_decl|;
+DECL|method|createGroupLink ()
+name|String
+name|createGroupLink
+parameter_list|()
+function_decl|;
 DECL|method|createProjectLink ()
 name|String
 name|createProjectLink
