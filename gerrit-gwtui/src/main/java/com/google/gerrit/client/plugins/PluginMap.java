@@ -146,6 +146,11 @@ argument_list|(
 literal|"/plugins/"
 argument_list|)
 operator|.
+name|addParameterTrue
+argument_list|(
+literal|"all"
+argument_list|)
+operator|.
 name|send
 argument_list|(
 name|NativeMap
