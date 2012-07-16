@@ -251,7 +251,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** List projects visible to the calling user. */
+comment|/** List the installed plugins. */
 end_comment
 
 begin_class
