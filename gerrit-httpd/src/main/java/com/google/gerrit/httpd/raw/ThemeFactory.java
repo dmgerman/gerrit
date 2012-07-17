@@ -280,7 +280,7 @@ name|name
 argument_list|,
 literal|"changeTableOutdatedColor"
 argument_list|,
-literal|"#FF0000"
+literal|"#F08080"
 argument_list|)
 expr_stmt|;
 name|theme
