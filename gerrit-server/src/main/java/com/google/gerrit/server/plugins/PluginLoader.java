@@ -1866,6 +1866,9 @@ expr_stmt|;
 block|}
 try|try
 block|{
+name|Plugin
+name|loadedPlugin
+init|=
 name|runPlugin
 argument_list|(
 name|name
@@ -1874,12 +1877,18 @@ name|jar
 argument_list|,
 name|active
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|active
 operator|==
 literal|null
+operator|&&
+operator|!
+name|loadedPlugin
+operator|.
+name|isDisabled
+argument_list|()
 condition|)
 block|{
 name|log
@@ -1931,7 +1940,7 @@ expr_stmt|;
 block|}
 DECL|method|runPlugin (String name, File jar, Plugin oldPlugin)
 specifier|private
-name|void
+name|Plugin
 name|runPlugin
 parameter_list|(
 name|String
@@ -2103,6 +2112,9 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+return|return
+name|newPlugin
+return|;
 block|}
 catch|catch
 parameter_list|(
