@@ -2022,6 +2022,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 if|if
 condition|(
 name|detail
@@ -2077,7 +2078,6 @@ name|depsOpen
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
