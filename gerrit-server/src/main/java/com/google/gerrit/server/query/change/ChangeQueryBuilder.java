@@ -689,6 +689,8 @@ argument_list|(
 literal|"^[a-zA-Z][a-zA-Z0-9]*((=|>=|<=)[+-]?|[+-])\\d+$"
 argument_list|)
 decl_stmt|;
+comment|// NOTE: As new search operations are added, please keep the
+comment|// SearchSuggestOracle up to date.
 DECL|field|FIELD_AGE
 specifier|public
 specifier|static
