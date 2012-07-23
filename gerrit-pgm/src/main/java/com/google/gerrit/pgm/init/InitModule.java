@@ -287,6 +287,16 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|step
+argument_list|()
+operator|.
+name|to
+argument_list|(
+name|InitPlugins
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|step ()
 specifier|protected

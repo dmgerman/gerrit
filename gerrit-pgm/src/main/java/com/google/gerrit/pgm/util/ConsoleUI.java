@@ -339,6 +339,21 @@ modifier|...
 name|args
 parameter_list|)
 function_decl|;
+comment|/** Display a message. */
+DECL|method|message (String fmt, Object... args)
+specifier|public
+specifier|abstract
+name|void
+name|message
+parameter_list|(
+name|String
+name|fmt
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+function_decl|;
 comment|/** Request the user to answer a yes/no question. */
 DECL|method|yesno (Boolean def, String fmt, Object... args)
 specifier|public
@@ -1205,6 +1220,31 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|message (String fmt, Object... args)
+specifier|public
+name|void
+name|message
+parameter_list|(
+name|String
+name|fmt
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{
+name|console
+operator|.
+name|printf
+argument_list|(
+name|fmt
+argument_list|,
+name|args
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|class|Batch
 specifier|private
@@ -1339,6 +1379,21 @@ DECL|method|header (String fmt, Object... args)
 specifier|public
 name|void
 name|header
+parameter_list|(
+name|String
+name|fmt
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{     }
+annotation|@
+name|Override
+DECL|method|message (String fmt, Object... args)
+specifier|public
+name|void
+name|message
 parameter_list|(
 name|String
 name|fmt
