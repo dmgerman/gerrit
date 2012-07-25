@@ -670,6 +670,10 @@ operator|.
 name|getUserName
 argument_list|()
 argument_list|,
+name|user
+operator|instanceof
+name|IdentifiedUser
+condition|?
 operator|(
 operator|(
 name|IdentifiedUser
@@ -678,6 +682,11 @@ name|user
 operator|)
 operator|.
 name|getNameEmail
+argument_list|()
+else|:
+name|user
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 argument_list|,
