@@ -292,6 +292,15 @@ name|ADMIN_GROUPS
 init|=
 literal|"/admin/groups/"
 decl_stmt|;
+DECL|field|ADMIN_CREATE_GROUP
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ADMIN_CREATE_GROUP
+init|=
+literal|"/admin/create-group/"
+decl_stmt|;
 DECL|field|ADMIN_PROJECTS
 specifier|public
 specifier|static

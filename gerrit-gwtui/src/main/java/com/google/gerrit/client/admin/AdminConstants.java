@@ -450,6 +450,11 @@ name|String
 name|groupListTitle
 parameter_list|()
 function_decl|;
+DECL|method|createGroupTitle ()
+name|String
+name|createGroupTitle
+parameter_list|()
+function_decl|;
 DECL|method|groupTabGeneral ()
 name|String
 name|groupTabGeneral
