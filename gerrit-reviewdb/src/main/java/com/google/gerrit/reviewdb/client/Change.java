@@ -1474,6 +1474,30 @@ block|}
 end_function
 
 begin_function
+DECL|method|updateNumberOfPatchSets (int max)
+specifier|public
+name|void
+name|updateNumberOfPatchSets
+parameter_list|(
+name|int
+name|max
+parameter_list|)
+block|{
+name|nbrPatchSets
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|nbrPatchSets
+argument_list|,
+name|max
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|currPatchSetId ()
 specifier|public
 name|PatchSet
