@@ -98,6 +98,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ProgressMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -287,6 +301,8 @@ DECL|class|Task
 specifier|public
 class|class
 name|Task
+implements|implements
+name|ProgressMonitor
 block|{
 DECL|field|name
 specifier|private
@@ -337,6 +353,8 @@ name|totalWork
 expr_stmt|;
 block|}
 comment|/**      * Indicate that work has been completed on this sub-task.      *<p>      * Must be called from the worker thread.      *      * @param completed number of work units completed.      */
+annotation|@
+name|Override
 DECL|method|update (final int completed)
 specifier|public
 name|void
@@ -406,6 +424,51 @@ name|wakeUp
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|start (int totalTasks)
+specifier|public
+name|void
+name|start
+parameter_list|(
+name|int
+name|totalTasks
+parameter_list|)
+block|{     }
+annotation|@
+name|Override
+DECL|method|beginTask (String title, int totalWork)
+specifier|public
+name|void
+name|beginTask
+parameter_list|(
+name|String
+name|title
+parameter_list|,
+name|int
+name|totalWork
+parameter_list|)
+block|{     }
+annotation|@
+name|Override
+DECL|method|endTask ()
+specifier|public
+name|void
+name|endTask
+parameter_list|()
+block|{     }
+annotation|@
+name|Override
+DECL|method|isCancelled ()
+specifier|public
+name|boolean
+name|isCancelled
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
 block|}
 block|}
 DECL|field|out
