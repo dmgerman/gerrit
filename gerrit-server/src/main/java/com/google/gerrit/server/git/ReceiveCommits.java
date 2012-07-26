@@ -11399,6 +11399,11 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+name|Change
+operator|.
+name|Key
+name|closedChange
+init|=
 name|closeChange
 argument_list|(
 name|cmd
@@ -11417,7 +11422,7 @@ argument_list|)
 argument_list|,
 name|c
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|closeProgress
 operator|.
 name|update
@@ -11425,6 +11430,21 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|closedChange
+operator|!=
+literal|null
+condition|)
+block|{
+name|byKey
+operator|.
+name|remove
+argument_list|(
+name|closedChange
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|rw
 operator|.
@@ -11676,7 +11696,9 @@ block|}
 block|}
 DECL|method|closeChange (final ReceiveCommand cmd, final PatchSet.Id psi, final RevCommit commit)
 specifier|private
-name|void
+name|Change
+operator|.
+name|Key
 name|closeChange
 parameter_list|(
 specifier|final
@@ -11771,7 +11793,9 @@ operator|+
 literal|" is missing"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|null
+return|;
 block|}
 if|if
 condition|(
@@ -11802,7 +11826,9 @@ comment|// If its already merged, don't make further updates, it
 comment|// might just be moving from an experimental branch into
 comment|// a more stable branch.
 comment|//
-return|return;
+return|return
+literal|null
+return|;
 block|}
 specifier|final
 name|ReplaceResult
@@ -11855,6 +11881,12 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+return|return
+name|change
+operator|.
+name|getKey
+argument_list|()
+return|;
 block|}
 DECL|method|changeRefsById ()
 specifier|private
