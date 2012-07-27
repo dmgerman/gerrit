@@ -223,7 +223,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.trackingId = ?"
+literal|"WHERE key.trackingKey = ?"
 argument_list|)
 DECL|method|byTrackingId (TrackingId.Id trackingId)
 name|ResultSet
