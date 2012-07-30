@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -270,6 +286,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|createNewProject (String projectName, String parentName, boolean emptyCommit, boolean permissionsOnly, AsyncCallback<VoidResult> callback)
 name|void
@@ -311,6 +329,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|changeProjectSettings (Project update, AsyncCallback<ProjectDetail> callback)
 name|void
@@ -326,6 +346,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|changeProjectAccess (Project.NameKey projectName, String baseRevision, String message, List<AccessSection> sections, AsyncCallback<ProjectAccess> callback)
@@ -405,6 +427,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<ListBranchesResult> callback)
 name|void
@@ -428,6 +452,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|deleteBranch (Project.NameKey projectName, Set<Branch.NameKey> ids, AsyncCallback<Set<Branch.NameKey>> callback)

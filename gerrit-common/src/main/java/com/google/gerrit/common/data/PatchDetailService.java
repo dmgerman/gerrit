@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -321,6 +337,8 @@ name|PatchDetailService
 extends|extends
 name|RemoteJsonService
 block|{
+annotation|@
+name|Audit
 DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, AccountDiffPreference diffPrefs, AsyncCallback<PatchScript> callback)
 name|void
 name|patchScript
@@ -351,6 +369,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|saveDraft (PatchLineComment comment, AsyncCallback<PatchLineComment> callback)
 name|void
@@ -366,6 +386,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|deleteDraft (PatchLineComment.Key key, AsyncCallback<VoidResult> callback)
@@ -386,6 +408,8 @@ parameter_list|)
 function_decl|;
 comment|/**    * Deletes the specified draft patch set. If the draft patch set is the only    * patch set of the change, then also the change gets deleted.    *    * @param psid ID of the draft patch set that should be deleted    * @param callback callback to report the result of the draft patch set    *        deletion operation; if the draft patch set was successfully deleted    *        {@link AsyncCallback#onSuccess(Object)} is invoked and the change    *        details are passed as parameter; if the change gets deleted because    *        the draft patch set that was deleted was the only patch set in the    *        change, then<code>null</code> is passed as result to    *        {@link AsyncCallback#onSuccess(Object)}    */
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|deleteDraftPatchSet (PatchSet.Id psid, AsyncCallback<ChangeDetail> callback)
 name|void
@@ -403,6 +427,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|publishComments (PatchSet.Id psid, String message, Set<ApprovalCategoryValue.Id> approvals, AsyncCallback<VoidResult> callback)
@@ -433,6 +459,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|addReviewers (Change.Id id, List<String> reviewers, boolean confirmed, AsyncCallback<ReviewerResult> callback)
 name|void
@@ -459,6 +487,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|removeReviewer (Change.Id id, Account.Id reviewerId, AsyncCallback<ReviewerResult> callback)
@@ -526,6 +556,8 @@ name|callback
 parameter_list|)
 function_decl|;
 comment|/**    * Update the reviewed status for the patch.    */
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|setReviewedByCurrentUser (Key patchKey, boolean reviewed, AsyncCallback<VoidResult> callback)

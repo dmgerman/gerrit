@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -282,6 +298,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|changePreferences (AccountGeneralPreferences pref, AsyncCallback<VoidResult> gerritCallback)
 name|void
@@ -297,6 +315,8 @@ argument_list|>
 name|gerritCallback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|changeDiffPreferences (AccountDiffPreference diffPref, AsyncCallback<VoidResult> callback)
@@ -330,6 +350,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|addProjectWatch (String projectName, String filter, AsyncCallback<AccountProjectWatchInfo> callback)
 name|void
@@ -349,6 +371,8 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
+name|Audit
+annotation|@
 name|SignInRequired
 DECL|method|updateProjectWatch (AccountProjectWatch watch, AsyncCallback<VoidResult> callback)
 name|void
@@ -364,6 +388,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 annotation|@
 name|SignInRequired
 DECL|method|deleteProjectWatches (Set<AccountProjectWatch.Key> keys, AsyncCallback<VoidResult> callback)

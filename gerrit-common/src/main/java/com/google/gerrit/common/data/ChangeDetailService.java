@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|audit
+operator|.
+name|Audit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|auth
 operator|.
 name|SignInRequired
@@ -205,6 +221,8 @@ name|ChangeDetailService
 extends|extends
 name|RemoteJsonService
 block|{
+annotation|@
+name|Audit
 DECL|method|changeDetail (Change.Id id, AsyncCallback<ChangeDetail> callback)
 name|void
 name|changeDetail
@@ -221,6 +239,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 DECL|method|includedInDetail (Change.Id id, AsyncCallback<IncludedInDetail> callback)
 name|void
 name|includedInDetail
@@ -237,6 +257,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 DECL|method|patchSetDetail (PatchSet.Id key, AsyncCallback<PatchSetDetail> callback)
 name|void
 name|patchSetDetail
@@ -253,6 +275,8 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
 DECL|method|patchSetDetail2 (PatchSet.Id baseId, PatchSet.Id key, AccountDiffPreference diffPrefs, AsyncCallback<PatchSetDetail> callback)
 name|void
 name|patchSetDetail2
