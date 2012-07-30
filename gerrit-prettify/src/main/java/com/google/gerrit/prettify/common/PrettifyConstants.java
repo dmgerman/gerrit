@@ -136,6 +136,11 @@ name|String
 name|wseBareCR
 parameter_list|()
 function_decl|;
+DECL|method|leCR ()
+name|String
+name|leCR
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
