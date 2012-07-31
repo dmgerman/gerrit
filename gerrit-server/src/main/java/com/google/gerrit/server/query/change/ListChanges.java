@@ -1251,6 +1251,7 @@ operator|=
 literal|"Maximum number of results to return"
 argument_list|)
 DECL|method|setLimit (int limit)
+specifier|public
 name|void
 name|setLimit
 parameter_list|(
@@ -1282,6 +1283,7 @@ operator|=
 literal|"Output options per change"
 argument_list|)
 DECL|method|addOption (ListChangesOption o)
+specifier|public
 name|void
 name|addOption
 parameter_list|(
@@ -1352,6 +1354,7 @@ operator|=
 literal|"Previous changes before SORTKEY"
 argument_list|)
 DECL|method|setSortKeyAfter (String key)
+specifier|public
 name|void
 name|setSortKeyAfter
 parameter_list|(
@@ -1390,6 +1393,7 @@ operator|=
 literal|"Next changes after SORTKEY"
 argument_list|)
 DECL|method|setSortKeyBefore (String key)
+specifier|public
 name|void
 name|setSortKeyBefore
 parameter_list|(
@@ -1573,6 +1577,41 @@ operator|.
 name|format
 operator|=
 name|fmt
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|addQuery (String query)
+specifier|public
+name|ListChanges
+name|addQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+if|if
+condition|(
+name|queries
+operator|==
+literal|null
+condition|)
+block|{
+name|queries
+operator|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|()
+expr_stmt|;
+block|}
+name|queries
+operator|.
+name|add
+argument_list|(
+name|query
+argument_list|)
 expr_stmt|;
 return|return
 name|this
