@@ -106,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|data
+name|client
 operator|.
-name|GroupDetail
+name|AccountGroup
 import|;
 end_import
 
@@ -189,13 +189,15 @@ name|ScreenLoadCallback
 argument_list|<
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 argument_list|>
 argument_list|(
 name|this
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|preDisplay
@@ -203,7 +205,7 @@ parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 name|result
 parameter_list|)

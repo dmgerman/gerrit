@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGroup
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -86,7 +102,7 @@ DECL|field|groups
 specifier|protected
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 name|groups
 decl_stmt|;
@@ -100,14 +116,14 @@ specifier|protected
 name|GroupList
 parameter_list|()
 block|{   }
-DECL|method|GroupList (final List<GroupDetail> groups, final boolean canCreateGroup)
+DECL|method|GroupList (final List<AccountGroup> groups, final boolean canCreateGroup)
 specifier|public
 name|GroupList
 parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 name|groups
 parameter_list|,
@@ -133,7 +149,7 @@ DECL|method|getGroups ()
 specifier|public
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 name|getGroups
 parameter_list|()
@@ -142,14 +158,14 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|setGroups (List<GroupDetail> groups)
+DECL|method|setGroups (List<AccountGroup> groups)
 specifier|public
 name|void
 name|setGroups
 parameter_list|(
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 name|groups
 parameter_list|)

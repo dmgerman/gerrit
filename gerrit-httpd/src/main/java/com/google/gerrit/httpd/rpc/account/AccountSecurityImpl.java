@@ -124,22 +124,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|data
-operator|.
-name|GroupDetail
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|errors
 operator|.
 name|ContactInformationStoreException
@@ -1725,7 +1709,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|myGroups (final AsyncCallback<List<GroupDetail>> callback)
+DECL|method|myGroups (final AsyncCallback<List<AccountGroup>> callback)
 specifier|public
 name|void
 name|myGroups
@@ -1735,7 +1719,7 @@ name|AsyncCallback
 argument_list|<
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 argument_list|>
 name|callback
@@ -1750,7 +1734,7 @@ name|Action
 argument_list|<
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 argument_list|>
 argument_list|()
@@ -1758,7 +1742,7 @@ block|{
 specifier|public
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 name|run
 parameter_list|(

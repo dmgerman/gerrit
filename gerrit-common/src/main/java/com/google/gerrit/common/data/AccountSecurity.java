@@ -142,6 +142,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|AccountGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|AccountSshKey
 import|;
 end_import
@@ -214,7 +230,9 @@ name|gwtjsonrpc
 operator|.
 name|common
 operator|.
-name|VoidResult
+name|RpcImpl
+operator|.
+name|Version
 import|;
 end_import
 
@@ -228,9 +246,7 @@ name|gwtjsonrpc
 operator|.
 name|common
 operator|.
-name|RpcImpl
-operator|.
-name|Version
+name|VoidResult
 import|;
 end_import
 
@@ -404,7 +420,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|myGroups (AsyncCallback<List<GroupDetail>> callback)
+DECL|method|myGroups (AsyncCallback<List<AccountGroup>> callback)
 name|void
 name|myGroups
 parameter_list|(
@@ -412,7 +428,7 @@ name|AsyncCallback
 argument_list|<
 name|List
 argument_list|<
-name|GroupDetail
+name|AccountGroup
 argument_list|>
 argument_list|>
 name|callback
