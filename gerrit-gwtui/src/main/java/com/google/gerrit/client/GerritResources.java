@@ -195,6 +195,17 @@ name|ImageResource
 name|redNot
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"downloadIcon.png"
+argument_list|)
+DECL|method|downloadIcon ()
+specifier|public
+name|ImageResource
+name|downloadIcon
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
