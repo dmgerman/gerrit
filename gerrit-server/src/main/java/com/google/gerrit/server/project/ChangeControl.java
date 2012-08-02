@@ -2531,12 +2531,34 @@ literal|"Project submit rule has no solution"
 argument_list|)
 return|;
 block|}
-comment|// Convert the results from Prolog Cafe's format to Gerrit's common format.
-comment|// can_submit/1 terminates when an ok(P) record is found. Therefore walk
-comment|// the results backwards, using only that ok(P) record if it exists. This
-comment|// skips partial results that occur early in the output. Later after the loop
-comment|// the out collection is reversed to restore it to the original ordering.
-comment|//
+return|return
+name|resultsToSubmitRecord
+argument_list|(
+name|submitRule
+argument_list|,
+name|results
+argument_list|)
+return|;
+block|}
+comment|/**    * Convert the results from Prolog Cafe's format to Gerrit's common format.    *    * can_submit/1 terminates when an ok(P) record is found. Therefore walk    * the results backwards, using only that ok(P) record if it exists. This    * skips partial results that occur early in the output. Later after the loop    * the out collection is reversed to restore it to the original ordering.    */
+DECL|method|resultsToSubmitRecord (Term submitRule, List<Term> results)
+specifier|public
+name|List
+argument_list|<
+name|SubmitRecord
+argument_list|>
+name|resultsToSubmitRecord
+parameter_list|(
+name|Term
+name|submitRule
+parameter_list|,
+name|List
+argument_list|<
+name|Term
+argument_list|>
+name|results
+parameter_list|)
+block|{
 name|List
 argument_list|<
 name|SubmitRecord
