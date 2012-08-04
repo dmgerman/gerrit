@@ -754,7 +754,7 @@ argument_list|(
 name|newName
 argument_list|)
 operator|.
-name|matches
+name|find
 argument_list|()
 operator|||
 operator|(
@@ -769,7 +769,7 @@ argument_list|(
 name|oldName
 argument_list|)
 operator|.
-name|matches
+name|find
 argument_list|()
 operator|)
 condition|)
