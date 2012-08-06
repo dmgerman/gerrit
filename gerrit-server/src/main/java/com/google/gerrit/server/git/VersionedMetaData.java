@@ -1280,6 +1280,16 @@ argument_list|(
 name|src
 argument_list|)
 expr_stmt|;
+name|ru
+operator|.
+name|disableRefLog
+argument_list|()
+expr_stmt|;
+name|inserter
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|RefUpdate
 operator|.
 name|Result
