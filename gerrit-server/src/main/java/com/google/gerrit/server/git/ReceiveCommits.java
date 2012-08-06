@@ -8565,6 +8565,12 @@ name|getResult
 argument_list|()
 operator|==
 name|NOT_ATTEMPTED
+operator|&&
+name|req
+operator|.
+name|cmd
+operator|!=
+literal|null
 condition|)
 block|{
 name|batch
@@ -8611,6 +8617,12 @@ operator|.
 name|inputCommand
 operator|==
 name|newChange
+operator|&&
+name|req
+operator|.
+name|cmd
+operator|!=
+literal|null
 condition|)
 block|{
 name|req
