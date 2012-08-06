@@ -208,30 +208,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
+name|C
+name|old
+init|=
 name|threadLocal
 operator|.
 name|get
 argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// This is consistent with the Guice ServletScopes.continueRequest()
-comment|// behavior.
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Cannot continue request, "
-operator|+
-literal|"thread already has request in progress. A new thread must "
-operator|+
-literal|"be used to propagate the request scope context."
-argument_list|)
-throw|;
-block|}
+decl_stmt|;
 name|threadLocal
 operator|.
 name|set
@@ -250,11 +234,29 @@ return|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
+block|{
+name|threadLocal
+operator|.
+name|set
+argument_list|(
+name|old
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|threadLocal
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
