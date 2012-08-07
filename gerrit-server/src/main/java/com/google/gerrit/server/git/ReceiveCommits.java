@@ -5433,8 +5433,6 @@ block|}
 name|reject
 argument_list|(
 name|cmd
-argument_list|,
-literal|"can not update the reference as a fast forward"
 argument_list|)
 expr_stmt|;
 block|}
