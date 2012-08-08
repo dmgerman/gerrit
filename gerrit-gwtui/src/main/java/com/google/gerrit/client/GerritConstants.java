@@ -278,6 +278,21 @@ name|String
 name|menuDiffFiles
 parameter_list|()
 function_decl|;
+DECL|method|menuProjects ()
+name|String
+name|menuProjects
+parameter_list|()
+function_decl|;
+DECL|method|menuProjectsList ()
+name|String
+name|menuProjectsList
+parameter_list|()
+function_decl|;
+DECL|method|menuProjectsCreate ()
+name|String
+name|menuProjectsCreate
+parameter_list|()
+function_decl|;
 DECL|method|menuAdmin ()
 name|String
 name|menuAdmin
@@ -291,11 +306,6 @@ function_decl|;
 DECL|method|menuGroups ()
 name|String
 name|menuGroups
-parameter_list|()
-function_decl|;
-DECL|method|menuProjects ()
-name|String
-name|menuProjects
 parameter_list|()
 function_decl|;
 DECL|method|menuPlugins ()

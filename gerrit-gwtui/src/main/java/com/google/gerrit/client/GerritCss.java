@@ -398,11 +398,6 @@ name|String
 name|createGroupLink
 parameter_list|()
 function_decl|;
-DECL|method|createProjectLink ()
-name|String
-name|createProjectLink
-parameter_list|()
-function_decl|;
 DECL|method|createProjectPanel ()
 name|String
 name|createProjectPanel
