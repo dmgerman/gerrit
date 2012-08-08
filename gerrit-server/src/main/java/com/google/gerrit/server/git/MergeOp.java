@@ -5650,6 +5650,13 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|submitAudit
+operator|!=
+literal|null
+condition|)
+block|{
 specifier|final
 name|Change
 name|oldChange
@@ -6008,6 +6015,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|newCommit
 operator|.
 name|copyFrom
