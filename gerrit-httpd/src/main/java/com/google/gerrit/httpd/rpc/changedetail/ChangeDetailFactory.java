@@ -1439,6 +1439,16 @@ argument_list|(
 name|submitRecords
 argument_list|)
 expr_stmt|;
+name|detail
+operator|.
+name|setSubmitType
+argument_list|(
+name|control
+operator|.
+name|getSubmitType
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|patchsetsById
 operator|=
 operator|new

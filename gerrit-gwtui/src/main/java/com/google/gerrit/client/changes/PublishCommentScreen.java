@@ -1903,6 +1903,11 @@ name|r
 operator|.
 name|getAccounts
 argument_list|()
+argument_list|,
+name|r
+operator|.
+name|getSubmitType
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

@@ -1871,6 +1871,11 @@ name|detail
 operator|.
 name|getAccounts
 argument_list|()
+argument_list|,
+name|detail
+operator|.
+name|getSubmitType
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|dependsOn

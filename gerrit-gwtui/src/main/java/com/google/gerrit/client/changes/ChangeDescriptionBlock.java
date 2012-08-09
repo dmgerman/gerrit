@@ -120,6 +120,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|user
@@ -236,7 +252,7 @@ name|hp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (Change chg, Boolean starred, PatchSetInfo info, final AccountInfoCache acc)
+DECL|method|display (Change chg, Boolean starred, PatchSetInfo info, final AccountInfoCache acc, Project.SubmitType submitType)
 specifier|public
 name|void
 name|display
@@ -253,6 +269,11 @@ parameter_list|,
 specifier|final
 name|AccountInfoCache
 name|acc
+parameter_list|,
+name|Project
+operator|.
+name|SubmitType
+name|submitType
 parameter_list|)
 block|{
 name|infoBlock
@@ -262,6 +283,8 @@ argument_list|(
 name|chg
 argument_list|,
 name|acc
+argument_list|,
+name|submitType
 argument_list|)
 expr_stmt|;
 name|messageBlock
