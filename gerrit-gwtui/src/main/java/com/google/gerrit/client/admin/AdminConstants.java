@@ -295,11 +295,6 @@ name|String
 name|headingCreateGroup
 parameter_list|()
 function_decl|;
-DECL|method|headingCreateProject ()
-name|String
-name|headingCreateProject
-parameter_list|()
-function_decl|;
 DECL|method|headingParentProjectName ()
 name|String
 name|headingParentProjectName
