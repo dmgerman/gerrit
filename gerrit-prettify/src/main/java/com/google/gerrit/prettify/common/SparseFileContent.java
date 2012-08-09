@@ -1201,6 +1201,8 @@ name|r
 operator|.
 name|setSize
 argument_list|(
+name|lines
+operator|.
 name|size
 argument_list|()
 argument_list|)
