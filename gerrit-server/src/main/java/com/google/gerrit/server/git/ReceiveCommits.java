@@ -4136,6 +4136,12 @@ condition|(
 name|replace
 operator|.
 name|cmd
+operator|!=
+literal|null
+operator|&&
+name|replace
+operator|.
+name|cmd
 operator|.
 name|getResult
 argument_list|()
@@ -4151,6 +4157,12 @@ block|}
 elseif|else
 if|if
 condition|(
+name|replace
+operator|.
+name|cmd
+operator|!=
+literal|null
+operator|&&
 name|replace
 operator|.
 name|cmd
