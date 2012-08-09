@@ -661,6 +661,11 @@ name|Anchor
 argument_list|>
 argument_list|()
 expr_stmt|;
+name|linkPanel
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|screenType
