@@ -220,6 +220,16 @@ name|String
 name|expandComment
 parameter_list|()
 function_decl|;
+DECL|method|toggleReviewed ()
+name|String
+name|toggleReviewed
+parameter_list|()
+function_decl|;
+DECL|method|markAsReviewedAndGoToNext ()
+name|String
+name|markAsReviewedAndGoToNext
+parameter_list|()
+function_decl|;
 DECL|method|commentEditorSet ()
 name|String
 name|commentEditorSet
