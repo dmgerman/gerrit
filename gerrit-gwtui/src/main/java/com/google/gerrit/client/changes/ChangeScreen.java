@@ -1874,7 +1874,7 @@ argument_list|()
 argument_list|,
 name|detail
 operator|.
-name|getSubmitType
+name|getSubmitTypeRecord
 argument_list|()
 argument_list|)
 expr_stmt|;

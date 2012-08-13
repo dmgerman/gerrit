@@ -277,6 +277,11 @@ operator|.
 name|SubmitType
 name|submitType
 decl_stmt|;
+DECL|field|submitTypeRecord
+specifier|protected
+name|SubmitTypeRecord
+name|submitTypeRecord
+decl_stmt|;
 DECL|field|canSubmit
 specifier|protected
 name|boolean
@@ -792,34 +797,30 @@ return|return
 name|submitRecords
 return|;
 block|}
-DECL|method|setSubmitType (Project.SubmitType submitType)
+DECL|method|setSubmitTypeRecord (SubmitTypeRecord submitTypeRecord)
 specifier|public
 name|void
-name|setSubmitType
+name|setSubmitTypeRecord
 parameter_list|(
-name|Project
-operator|.
-name|SubmitType
-name|submitType
+name|SubmitTypeRecord
+name|submitTypeRecord
 parameter_list|)
 block|{
 name|this
 operator|.
-name|submitType
+name|submitTypeRecord
 operator|=
-name|submitType
+name|submitTypeRecord
 expr_stmt|;
 block|}
-DECL|method|getSubmitType ()
+DECL|method|getSubmitTypeRecord ()
 specifier|public
-name|Project
-operator|.
-name|SubmitType
-name|getSubmitType
+name|SubmitTypeRecord
+name|getSubmitTypeRecord
 parameter_list|()
 block|{
 return|return
-name|submitType
+name|submitTypeRecord
 return|;
 block|}
 DECL|method|isCurrentPatchSet (final PatchSetDetail detail)
