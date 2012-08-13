@@ -8026,6 +8026,16 @@ try|try
 block|{
 if|if
 condition|(
+name|ps
+operator|.
+name|isDraft
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
+if|if
+condition|(
 name|isReviewer
 argument_list|(
 name|footerLine
