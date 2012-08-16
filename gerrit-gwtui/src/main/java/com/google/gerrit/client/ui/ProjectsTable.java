@@ -326,6 +326,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|initColumnHeaders
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|initColumnHeaders ()
+specifier|protected
+name|void
+name|initColumnHeaders
+parameter_list|()
+block|{
 name|table
 operator|.
 name|setText
