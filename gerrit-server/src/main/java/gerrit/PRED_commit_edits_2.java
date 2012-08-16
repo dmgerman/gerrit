@@ -446,15 +446,6 @@ name|Predicate
 operator|.
 name|P2
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|PRED_commit_edits_2 (Term a1, Term a2, Operation n)
 specifier|public
 name|PRED_commit_edits_2

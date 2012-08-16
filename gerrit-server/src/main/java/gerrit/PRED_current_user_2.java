@@ -353,15 +353,6 @@ name|Predicate
 operator|.
 name|P2
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|static

@@ -282,15 +282,6 @@ name|Predicate
 operator|.
 name|P4
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|add
 specifier|private
 specifier|static
