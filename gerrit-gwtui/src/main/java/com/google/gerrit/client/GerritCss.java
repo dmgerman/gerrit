@@ -298,6 +298,11 @@ name|String
 name|commentHolder
 parameter_list|()
 function_decl|;
+DECL|method|commentHolderLeftmost ()
+name|String
+name|commentHolderLeftmost
+parameter_list|()
+function_decl|;
 DECL|method|commentPanel ()
 name|String
 name|commentPanel
