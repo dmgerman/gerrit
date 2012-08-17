@@ -222,6 +222,11 @@ specifier|protected
 name|String
 name|httpPasswordUrl
 decl_stmt|;
+DECL|field|reportBugUrl
+specifier|protected
+name|String
+name|reportBugUrl
+decl_stmt|;
 DECL|field|openIdSsoUrl
 specifier|protected
 name|String
@@ -354,6 +359,30 @@ name|u
 parameter_list|)
 block|{
 name|registerUrl
+operator|=
+name|u
+expr_stmt|;
+block|}
+DECL|method|getReportBugUrl ()
+specifier|public
+name|String
+name|getReportBugUrl
+parameter_list|()
+block|{
+return|return
+name|reportBugUrl
+return|;
+block|}
+DECL|method|setReportBugUrl (String u)
+specifier|public
+name|void
+name|setReportBugUrl
+parameter_list|(
+name|String
+name|u
+parameter_list|)
+block|{
+name|reportBugUrl
 operator|=
 name|u
 expr_stmt|;
