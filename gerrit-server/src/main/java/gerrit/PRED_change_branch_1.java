@@ -198,15 +198,6 @@ name|Predicate
 operator|.
 name|P1
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|PRED_change_branch_1 (Term a1, Operation n)
 specifier|public
 name|PRED_change_branch_1

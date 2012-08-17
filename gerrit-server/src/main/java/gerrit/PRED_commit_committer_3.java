@@ -168,15 +168,6 @@ name|PRED_commit_committer_3
 extends|extends
 name|AbstractCommitUserIdentityPredicate
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|PRED_commit_committer_3 (Term a1, Term a2, Term a3, Operation n)
 specifier|public
 name|PRED_commit_committer_3
