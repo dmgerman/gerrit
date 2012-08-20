@@ -108,6 +108,11 @@ name|String
 name|menuSettings
 parameter_list|()
 function_decl|;
+DECL|method|reportBug ()
+name|String
+name|reportBug
+parameter_list|()
+function_decl|;
 DECL|method|signInDialogTitle ()
 name|String
 name|signInDialogTitle
