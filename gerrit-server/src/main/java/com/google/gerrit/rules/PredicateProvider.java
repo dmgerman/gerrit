@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -70,13 +70,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|extensions
+name|collect
 operator|.
-name|registration
-operator|.
-name|DynamicSet
+name|ImmutableSet
 import|;
 end_import
 
@@ -88,54 +86,52 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|config
+name|annotations
 operator|.
-name|FactoryModule
+name|ExtensionPoint
 import|;
 end_import
 
-begin_class
-DECL|class|PrologModule
-specifier|public
-class|class
-name|PrologModule
-extends|extends
-name|FactoryModule
-block|{
+begin_import
+import|import
+name|com
+operator|.
+name|googlecode
+operator|.
+name|prolog_cafe
+operator|.
+name|lang
+operator|.
+name|Predicate
+import|;
+end_import
+
+begin_comment
+comment|/**  * Provides additional packages that contain Prolog predicates that should be  * made available in the Prolog environment. The predicates can e.g. be used in  * the project submit rules.  *  * Each Java class defining a Prolog predicate must be in one of the provided  * packages and its name must apply to the 'PRED_[functor]_[arity]' format. In  * addition it must extend {@link Predicate}.  */
+end_comment
+
+begin_interface
 annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
-parameter_list|()
-block|{
-name|DynamicSet
-operator|.
-name|setOf
-argument_list|(
-name|binder
-argument_list|()
-argument_list|,
+name|ExtensionPoint
+DECL|interface|PredicateProvider
+specifier|public
+interface|interface
 name|PredicateProvider
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|PrologEnvironment
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+block|{
+comment|/** Return set of packages that contain Prolog predicates */
+DECL|method|getPackages ()
+specifier|public
+name|ImmutableSet
+argument_list|<
+name|String
+argument_list|>
+name|getPackages
+parameter_list|()
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
