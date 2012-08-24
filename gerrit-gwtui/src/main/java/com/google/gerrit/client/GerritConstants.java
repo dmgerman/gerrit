@@ -433,6 +433,11 @@ name|String
 name|projectAccessProposeForReviewHint
 parameter_list|()
 function_decl|;
+DECL|method|userCannotVoteToolTip ()
+name|String
+name|userCannotVoteToolTip
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
