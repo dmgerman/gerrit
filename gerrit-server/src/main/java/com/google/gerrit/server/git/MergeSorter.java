@@ -381,6 +381,14 @@ name|has
 argument_list|(
 name|canMergeFlag
 argument_list|)
+operator|||
+operator|!
+name|incoming
+operator|.
+name|contains
+argument_list|(
+name|c
+argument_list|)
 condition|)
 block|{
 comment|// We cannot merge n as it would bring something we
