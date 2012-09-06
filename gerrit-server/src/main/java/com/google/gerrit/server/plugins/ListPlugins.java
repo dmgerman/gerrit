@@ -601,7 +601,7 @@ argument_list|()
 condition|?
 literal|"DISABLED"
 else|:
-literal|""
+literal|"ENABLED"
 argument_list|)
 expr_stmt|;
 block|}
