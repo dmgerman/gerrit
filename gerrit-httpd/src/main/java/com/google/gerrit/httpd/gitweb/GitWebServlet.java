@@ -2227,6 +2227,12 @@ name|project
 operator|.
 name|allRefsAreVisible
 argument_list|()
+operator|&&
+operator|!
+name|project
+operator|.
+name|isOwner
+argument_list|()
 condition|)
 block|{
 comment|// Pretend the project doesn't exist
