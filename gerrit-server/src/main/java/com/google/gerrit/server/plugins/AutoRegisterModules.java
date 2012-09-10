@@ -1916,7 +1916,7 @@ specifier|private
 specifier|static
 class|class
 name|ClassData
-implements|implements
+extends|extends
 name|ClassVisitor
 block|{
 DECL|field|EXPORT
@@ -1973,6 +1973,18 @@ DECL|field|listen
 name|boolean
 name|listen
 decl_stmt|;
+DECL|method|ClassData ()
+name|ClassData
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|Opcodes
+operator|.
+name|ASM4
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|isConcrete ()
 name|boolean
 name|isConcrete
@@ -2259,9 +2271,21 @@ specifier|static
 specifier|abstract
 class|class
 name|AbstractAnnotationVisitor
-implements|implements
+extends|extends
 name|AnnotationVisitor
 block|{
+DECL|method|AbstractAnnotationVisitor ()
+name|AbstractAnnotationVisitor
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|Opcodes
+operator|.
+name|ASM4
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|visitAnnotation (String arg0, String arg1)
