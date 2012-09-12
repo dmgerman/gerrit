@@ -86,6 +86,13 @@ literal|"Change has been successfully cherry-picked"
 argument_list|)
 block|,
 comment|/** */
+DECL|enumConstant|CLEAN_REBASE
+name|CLEAN_REBASE
+argument_list|(
+literal|"Change has been successfully rebased"
+argument_list|)
+block|,
+comment|/** */
 DECL|enumConstant|ALREADY_MERGED
 name|ALREADY_MERGED
 argument_list|(
@@ -147,6 +154,17 @@ DECL|enumConstant|CANNOT_CHERRY_PICK_ROOT
 name|CANNOT_CHERRY_PICK_ROOT
 argument_list|(
 literal|"Cannot cherry-pick an initial commit onto an existing branch.\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Please merge the change locally and upload the merge commit for review."
+argument_list|)
+block|,
+comment|/** */
+DECL|enumConstant|CANNOT_REBASE_ROOT
+name|CANNOT_REBASE_ROOT
+argument_list|(
+literal|"Cannot rebase an initial commit onto an existing branch.\n"
 operator|+
 literal|"\n"
 operator|+

@@ -1582,6 +1582,14 @@ operator|==
 name|CommitMergeStatus
 operator|.
 name|CLEAN_PICK
+operator|||
+name|c
+operator|.
+name|statusCode
+operator|==
+name|CommitMergeStatus
+operator|.
+name|CLEAN_REBASE
 operator|)
 condition|)
 block|{

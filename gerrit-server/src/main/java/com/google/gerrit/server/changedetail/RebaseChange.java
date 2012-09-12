@@ -1189,6 +1189,23 @@ name|db
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|PathConflictException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 finally|finally
 block|{
 if|if
@@ -1614,6 +1631,8 @@ throws|,
 name|IOException
 throws|,
 name|InvalidChangeOperationException
+throws|,
+name|PathConflictException
 block|{
 name|Change
 name|change
@@ -2314,6 +2333,8 @@ name|committerIdent
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|PathConflictException
 block|{
 if|if
 condition|(
@@ -2435,7 +2456,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|PathConflictException
 argument_list|(
 literal|"The rebase failed since conflicts occured during the merge."
 argument_list|)
