@@ -187,7 +187,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|RebaseChange
+name|RebaseChangeHandler
 operator|.
 name|Factory
 operator|.
