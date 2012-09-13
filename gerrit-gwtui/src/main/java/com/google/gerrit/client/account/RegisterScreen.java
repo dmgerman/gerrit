@@ -1046,10 +1046,6 @@ argument_list|,
 name|PageLinks
 operator|.
 name|SETTINGS_NEW_AGREEMENT
-operator|+
-literal|","
-operator|+
-name|nextToken
 argument_list|)
 argument_list|)
 expr_stmt|;
