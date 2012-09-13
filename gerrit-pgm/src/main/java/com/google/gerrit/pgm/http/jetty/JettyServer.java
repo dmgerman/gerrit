@@ -398,6 +398,22 @@ name|jetty
 operator|.
 name|server
 operator|.
+name|session
+operator|.
+name|SessionHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
+name|server
+operator|.
 name|ssl
 operator|.
 name|SslSelectChannelConnector
@@ -2201,6 +2217,18 @@ operator|new
 name|ServletContextHandler
 argument_list|()
 decl_stmt|;
+comment|// This enables the use of sessions in Jetty, feature available
+comment|// for Gerrit plug-ins to enable user-level sessions.
+comment|//
+name|app
+operator|.
+name|setSessionHandler
+argument_list|(
+operator|new
+name|SessionHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// This is the path we are accessed by clients within our domain.
 comment|//
 name|app
