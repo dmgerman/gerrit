@@ -160,6 +160,7 @@ DECL|enumConstant|PULL
 DECL|enumConstant|CHECKOUT
 DECL|enumConstant|CHERRY_PICK
 DECL|enumConstant|FORMAT_PATCH
+DECL|enumConstant|DEFAULT_DOWNLOADS
 name|REPO_DOWNLOAD
 block|,
 name|PULL
@@ -169,6 +170,8 @@ block|,
 name|CHERRY_PICK
 block|,
 name|FORMAT_PATCH
+block|,
+name|DEFAULT_DOWNLOADS
 block|;   }
 DECL|enum|DateFormat
 specifier|public
