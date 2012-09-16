@@ -1601,10 +1601,17 @@ return|return
 literal|true
 return|;
 block|}
-comment|// The branch owner, project owner, site admin can remove anyone.
-comment|//
+comment|// Users with the remove reviewer permission, the branch owner, project
+comment|// owner and site admin can remove anyone
 if|if
 condition|(
+name|getRefControl
+argument_list|()
+operator|.
+name|canRemoveReviewer
+argument_list|()
+comment|// has removal permissions
+operator|||
 name|getRefControl
 argument_list|()
 operator|.
