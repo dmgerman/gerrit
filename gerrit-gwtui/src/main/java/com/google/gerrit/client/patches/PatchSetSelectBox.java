@@ -400,7 +400,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|HashMap
 import|;
 end_import
 
@@ -410,7 +410,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Map
 import|;
 end_import
 
@@ -520,8 +520,10 @@ name|Type
 name|screenType
 decl_stmt|;
 DECL|field|links
-name|List
+name|Map
 argument_list|<
+name|Integer
+argument_list|,
 name|Anchor
 argument_list|>
 name|links
@@ -655,8 +657,10 @@ operator|.
 name|links
 operator|=
 operator|new
-name|LinkedList
+name|HashMap
 argument_list|<
+name|Integer
+argument_list|,
 name|Anchor
 argument_list|>
 argument_list|()
@@ -765,8 +769,10 @@ expr_stmt|;
 block|}
 name|links
 operator|.
-name|add
+name|put
 argument_list|(
+literal|0
+argument_list|,
 name|baseLink
 argument_list|)
 expr_stmt|;
@@ -864,8 +870,13 @@ argument_list|)
 decl_stmt|;
 name|links
 operator|.
-name|add
+name|put
 argument_list|(
+name|psId
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|anchor
 argument_list|)
 expr_stmt|;
