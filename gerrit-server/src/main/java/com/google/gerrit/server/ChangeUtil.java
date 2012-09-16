@@ -2424,6 +2424,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|newPatchSet
+operator|.
+name|setDraft
+argument_list|(
+name|originalPatchSet
+operator|.
+name|isDraft
+argument_list|()
+argument_list|)
+expr_stmt|;
 specifier|final
 name|PatchSetInfo
 name|info
