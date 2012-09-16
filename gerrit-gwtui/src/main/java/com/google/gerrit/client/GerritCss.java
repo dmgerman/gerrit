@@ -188,6 +188,11 @@ name|String
 name|approvalscore
 parameter_list|()
 function_decl|;
+DECL|method|notVotable ()
+name|String
+name|notVotable
+parameter_list|()
+function_decl|;
 DECL|method|blockHeader ()
 name|String
 name|blockHeader
