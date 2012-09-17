@@ -78,7 +78,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|SystemConfig
+name|AccountGeneralPreferences
+operator|.
+name|DownloadCommand
 import|;
 end_import
 
@@ -97,6 +99,22 @@ operator|.
 name|AccountGeneralPreferences
 operator|.
 name|DownloadScheme
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|SystemConfig
 import|;
 end_import
 
@@ -185,10 +203,10 @@ end_comment
 begin_class
 annotation|@
 name|Singleton
-DECL|class|DownloadSchemeConfig
+DECL|class|DownloadConfig
 specifier|public
 class|class
-name|DownloadSchemeConfig
+name|DownloadConfig
 block|{
 DECL|field|downloadSchemes
 specifier|private
@@ -199,10 +217,19 @@ name|DownloadScheme
 argument_list|>
 name|downloadSchemes
 decl_stmt|;
+DECL|field|downloadCommands
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|DownloadCommand
+argument_list|>
+name|downloadCommands
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DownloadSchemeConfig (@erritServerConfig final Config cfg, final SystemConfig s)
-name|DownloadSchemeConfig
+DECL|method|DownloadConfig (@erritServerConfig final Config cfg, final SystemConfig s)
+name|DownloadConfig
 parameter_list|(
 annotation|@
 name|GerritServerConfig
@@ -219,7 +246,7 @@ name|List
 argument_list|<
 name|DownloadScheme
 argument_list|>
-name|all
+name|allSchemes
 init|=
 name|ConfigUtil
 operator|.
@@ -250,23 +277,76 @@ argument_list|<
 name|DownloadScheme
 argument_list|>
 argument_list|(
-name|all
+name|allSchemes
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|List
+argument_list|<
+name|DownloadCommand
+argument_list|>
+name|allCommands
+init|=
+name|ConfigUtil
+operator|.
+name|getEnumList
+argument_list|(
+name|cfg
+argument_list|,
+literal|"download"
+argument_list|,
+literal|null
+argument_list|,
+literal|"command"
+argument_list|,
+name|DownloadCommand
+operator|.
+name|DEFAULT_DOWNLOADS
+argument_list|)
+decl_stmt|;
+name|downloadCommands
+operator|=
+name|Collections
+operator|.
+name|unmodifiableSet
+argument_list|(
+operator|new
+name|HashSet
+argument_list|<
+name|DownloadCommand
+argument_list|>
+argument_list|(
+name|allCommands
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 comment|/** Scheme used to download. */
-DECL|method|getDownloadScheme ()
+DECL|method|getDownloadSchemes ()
 specifier|public
 name|Set
 argument_list|<
 name|DownloadScheme
 argument_list|>
-name|getDownloadScheme
+name|getDownloadSchemes
 parameter_list|()
 block|{
 return|return
 name|downloadSchemes
+return|;
+block|}
+comment|/** Command used to download. */
+DECL|method|getDownloadCommands ()
+specifier|public
+name|Set
+argument_list|<
+name|DownloadCommand
+argument_list|>
+name|getDownloadCommands
+parameter_list|()
+block|{
+return|return
+name|downloadCommands
 return|;
 block|}
 block|}

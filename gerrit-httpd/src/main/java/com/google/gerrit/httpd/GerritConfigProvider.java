@@ -204,7 +204,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|DownloadSchemeConfig
+name|DownloadConfig
 import|;
 end_import
 
@@ -450,11 +450,11 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
-DECL|field|schemeConfig
+DECL|field|downloadConfig
 specifier|private
 specifier|final
-name|DownloadSchemeConfig
-name|schemeConfig
+name|DownloadConfig
+name|downloadConfig
 decl_stmt|;
 DECL|field|gitWebConfig
 specifier|private
@@ -505,7 +505,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs, final ServletContext sc, final DownloadSchemeConfig dc, final @AnonymousCowardName String acn)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ApprovalTypes at, final ContactStore cs, final ServletContext sc, final DownloadConfig dc, final @AnonymousCowardName String acn)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -547,7 +547,7 @@ name|ServletContext
 name|sc
 parameter_list|,
 specifier|final
-name|DownloadSchemeConfig
+name|DownloadConfig
 name|dc
 parameter_list|,
 specifier|final
@@ -569,7 +569,7 @@ name|authConfig
 operator|=
 name|ac
 expr_stmt|;
-name|schemeConfig
+name|downloadConfig
 operator|=
 name|dc
 expr_stmt|;
@@ -833,9 +833,19 @@ name|config
 operator|.
 name|setDownloadSchemes
 argument_list|(
-name|schemeConfig
+name|downloadConfig
 operator|.
-name|getDownloadScheme
+name|getDownloadSchemes
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|config
+operator|.
+name|setDownloadCommands
+argument_list|(
+name|downloadConfig
+operator|.
+name|getDownloadCommands
 argument_list|()
 argument_list|)
 expr_stmt|;

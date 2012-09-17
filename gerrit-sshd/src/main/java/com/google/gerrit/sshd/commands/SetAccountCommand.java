@@ -1153,11 +1153,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|addSshKeys (final List<String> keys, final Account account)
 specifier|private
