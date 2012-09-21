@@ -307,7 +307,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Draft Published Hook.    *    * @param change The change itself.    * @param patchSet The Patchset that was created.    * @throws OrmException    */
+comment|/**    * Fire the Draft Published Hook.    *    * @param change The change itself.    * @param patchSet The Patchset that was published.    * @throws OrmException    */
 DECL|method|doDraftPublishedHook (Change change, PatchSet patchSet, ReviewDb db)
 specifier|public
 name|void
@@ -462,6 +462,27 @@ parameter_list|,
 name|Account
 name|account
 parameter_list|)
+function_decl|;
+comment|/**    * Fire the Reviewer Added Hook    *    * @param change The change itself.    * @param patchSet The patchset that the reviewer was added on.    * @param account The gerrit user who was added as reviewer.    */
+DECL|method|doReviewerAddedHook (Change change, Account account, PatchSet patchSet, ReviewDb db)
+specifier|public
+name|void
+name|doReviewerAddedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 DECL|method|doClaSignupHook (Account account, ContributorAgreement cla)
 specifier|public

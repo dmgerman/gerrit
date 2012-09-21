@@ -455,6 +455,26 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
+DECL|method|doReviewerAddedHook (Change change, Account account, PatchSet patchSet, ReviewDb db)
+specifier|public
+name|void
+name|doReviewerAddedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
 DECL|method|removeChangeListener (ChangeListener listener)
 specifier|public
 name|void
