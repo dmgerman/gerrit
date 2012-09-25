@@ -180,25 +180,50 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_comment
 comment|/** Helper to edit a section of the configuration files. */
 end_comment
 
 begin_class
 DECL|class|Section
+specifier|public
 class|class
 name|Section
 block|{
 DECL|interface|Factory
+specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|get (String name)
+DECL|method|get (@ssistedR) String section, @Assisted(R) String subsection)
 name|Section
 name|get
 parameter_list|(
+annotation|@
+name|Assisted
+argument_list|(
+literal|"section"
+argument_list|)
 name|String
-name|name
+name|section
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"subsection"
+argument_list|)
+name|String
+name|subsection
 parameter_list|)
 function_decl|;
 block|}
@@ -226,9 +251,16 @@ specifier|final
 name|String
 name|section
 decl_stmt|;
+DECL|field|subsection
+specifier|private
+specifier|final
+name|String
+name|subsection
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Section (final InitFlags flags, final SitePaths site, final ConsoleUI ui, @Assisted final String section)
+DECL|method|Section (final InitFlags flags, final SitePaths site, final ConsoleUI ui, @Assisted(R) final String section, @Assisted(R) @Nullable final String subsection)
+specifier|public
 name|Section
 parameter_list|(
 specifier|final
@@ -245,9 +277,23 @@ name|ui
 parameter_list|,
 annotation|@
 name|Assisted
+argument_list|(
+literal|"section"
+argument_list|)
 specifier|final
 name|String
 name|section
+parameter_list|,
+annotation|@
+name|Assisted
+argument_list|(
+literal|"subsection"
+argument_list|)
+annotation|@
+name|Nullable
+specifier|final
+name|String
+name|subsection
 parameter_list|)
 block|{
 name|this
@@ -273,6 +319,12 @@ operator|.
 name|section
 operator|=
 name|section
+expr_stmt|;
+name|this
+operator|.
+name|subsection
+operator|=
+name|subsection
 expr_stmt|;
 block|}
 DECL|method|get (String name)
@@ -299,6 +351,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|set (final String name, final String value)
+specifier|public
 name|void
 name|set
 parameter_list|(
@@ -341,7 +394,7 @@ name|getStringList
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|)
@@ -380,7 +433,7 @@ name|setString
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|,
@@ -407,7 +460,7 @@ name|setStringList
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|,
@@ -446,7 +499,7 @@ name|unset
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|)
@@ -469,7 +522,7 @@ name|setStringList
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|,
@@ -479,6 +532,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|set (final String name, final T value)
+specifier|public
 parameter_list|<
 name|T
 extends|extends
@@ -527,6 +581,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|unset (String name)
+specifier|public
 name|void
 name|unset
 parameter_list|(
@@ -546,6 +601,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|string (final String title, final String name, final String dv)
+specifier|public
 name|String
 name|string
 parameter_list|(
@@ -576,6 +632,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|string (final String title, final String name, final String dv, final boolean nullIfDefault)
+specifier|public
 name|String
 name|string
 parameter_list|(
@@ -663,6 +720,7 @@ name|nv
 return|;
 block|}
 DECL|method|path (final String title, final String name, final String defValue)
+specifier|public
 name|File
 name|path
 parameter_list|(
@@ -696,6 +754,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|select (final String title, final String name, final T defValue)
+specifier|public
 parameter_list|<
 name|T
 extends|extends
@@ -734,6 +793,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|select (final String title, final String name, final T defValue, final boolean nullIfDefault)
+specifier|public
 parameter_list|<
 name|T
 extends|extends
@@ -786,7 +846,7 @@ name|cfg
 argument_list|,
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|,
@@ -860,6 +920,7 @@ name|newValue
 return|;
 block|}
 DECL|method|select (final String title, final String name, final String dv, Set<String> allowedValues)
+specifier|public
 name|String
 name|select
 parameter_list|(
@@ -937,6 +998,7 @@ name|nv
 return|;
 block|}
 DECL|method|password (final String username, final String password)
+specifier|public
 name|String
 name|password
 parameter_list|(
@@ -969,7 +1031,7 @@ name|getString
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|username
 argument_list|)
@@ -1004,7 +1066,7 @@ name|unset
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|password
 argument_list|)
@@ -1085,6 +1147,7 @@ name|nv
 return|;
 block|}
 DECL|method|getSecure (String name)
+specifier|public
 name|String
 name|getSecure
 parameter_list|(
@@ -1101,13 +1164,14 @@ name|getString
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|)
 return|;
 block|}
 DECL|method|setSecure (String name, String value)
+specifier|public
 name|void
 name|setSecure
 parameter_list|(
@@ -1133,7 +1197,7 @@ name|setString
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|,
@@ -1151,7 +1215,7 @@ name|unset
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|)

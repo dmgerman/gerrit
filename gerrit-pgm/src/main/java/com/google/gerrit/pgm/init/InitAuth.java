@@ -216,6 +216,8 @@ operator|.
 name|get
 argument_list|(
 literal|"auth"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -227,6 +229,8 @@ operator|.
 name|get
 argument_list|(
 literal|"ldap"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
