@@ -5628,7 +5628,7 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"can not delete references"
+literal|"cannot delete references"
 argument_list|)
 expr_stmt|;
 block|}
@@ -6135,7 +6135,7 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"can not upload review"
+literal|"cannot upload review"
 argument_list|)
 expr_stmt|;
 return|return;
