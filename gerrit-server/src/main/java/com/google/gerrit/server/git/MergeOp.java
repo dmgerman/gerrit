@@ -1175,14 +1175,6 @@ name|CodeReviewCommit
 argument_list|>
 name|toMerge
 decl_stmt|;
-DECL|field|submitted
-specifier|private
-name|List
-argument_list|<
-name|Change
-argument_list|>
-name|submitted
-decl_stmt|;
 DECL|field|commits
 specifier|private
 specifier|final
@@ -1211,10 +1203,10 @@ specifier|private
 name|RevWalk
 name|rw
 decl_stmt|;
-DECL|field|CAN_MERGE
+DECL|field|canMergeFlag
 specifier|private
 name|RevFlag
-name|CAN_MERGE
+name|canMergeFlag
 decl_stmt|;
 DECL|field|branchTip
 specifier|private
@@ -1225,19 +1217,6 @@ DECL|field|mergeTip
 specifier|private
 name|CodeReviewCommit
 name|mergeTip
-decl_stmt|;
-DECL|field|alreadyAccepted
-specifier|private
-name|Set
-argument_list|<
-name|RevCommit
-argument_list|>
-name|alreadyAccepted
-decl_stmt|;
-DECL|field|branchUpdate
-specifier|private
-name|RefUpdate
-name|branchUpdate
 decl_stmt|;
 DECL|field|inserter
 specifier|private
@@ -1582,22 +1561,6 @@ name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|submitted
-operator|=
-operator|new
-name|ArrayList
-argument_list|<
-name|Change
-argument_list|>
-argument_list|()
-expr_stmt|;
-name|submitted
-operator|.
-name|add
-argument_list|(
-name|change
-argument_list|)
-expr_stmt|;
 comment|// Test mergeability of the change if the last merged sha1
 comment|// in the branch is different from the last sha1
 comment|// the change was tested against.
@@ -1652,6 +1615,19 @@ condition|)
 block|{
 name|openSchema
 argument_list|()
+expr_stmt|;
+name|openBranch
+argument_list|()
+expr_stmt|;
+name|validateChangeList
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|change
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|preMerge
 argument_list|(
@@ -1918,8 +1894,13 @@ expr_stmt|;
 name|openRepository
 argument_list|()
 expr_stmt|;
+specifier|final
+name|List
+argument_list|<
+name|Change
+argument_list|>
 name|submitted
-operator|=
+init|=
 name|db
 operator|.
 name|changes
@@ -1932,6 +1913,18 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+decl_stmt|;
+specifier|final
+name|RefUpdate
+name|branchUpdate
+init|=
+name|openBranch
+argument_list|()
+decl_stmt|;
+name|validateChangeList
+argument_list|(
+name|submitted
+argument_list|)
 expr_stmt|;
 specifier|final
 name|SubmitStrategy
@@ -1948,13 +1941,19 @@ expr_stmt|;
 name|updateBranch
 argument_list|(
 name|strategy
+argument_list|,
+name|branchUpdate
 argument_list|)
 expr_stmt|;
 name|updateChangeStatus
-argument_list|()
+argument_list|(
+name|submitted
+argument_list|)
 expr_stmt|;
 name|updateSubscriptions
-argument_list|()
+argument_list|(
+name|submitted
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -2041,12 +2040,6 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
-name|openBranch
-argument_list|()
-expr_stmt|;
-name|validateChangeList
-argument_list|()
-expr_stmt|;
 name|mergeTip
 operator|=
 name|strategy
@@ -2102,9 +2095,12 @@ name|rw
 argument_list|,
 name|inserter
 argument_list|,
-name|CAN_MERGE
+name|canMergeFlag
 argument_list|,
-name|alreadyAccepted
+name|getAlreadyAccepted
+argument_list|(
+name|branchTip
+argument_list|)
 argument_list|,
 name|destBranch
 argument_list|,
@@ -2253,7 +2249,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|CAN_MERGE
+name|canMergeFlag
 operator|=
 name|rw
 operator|.
@@ -2272,25 +2268,18 @@ expr_stmt|;
 block|}
 DECL|method|openBranch ()
 specifier|private
-name|void
+name|RefUpdate
 name|openBranch
 parameter_list|()
 throws|throws
 name|MergeException
 block|{
-name|alreadyAccepted
-operator|=
-operator|new
-name|HashSet
-argument_list|<
-name|RevCommit
-argument_list|>
-argument_list|()
-expr_stmt|;
 try|try
 block|{
+specifier|final
+name|RefUpdate
 name|branchUpdate
-operator|=
+init|=
 name|repo
 operator|.
 name|updateRef
@@ -2300,7 +2289,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|branchUpdate
@@ -2324,13 +2313,6 @@ name|branchUpdate
 operator|.
 name|getOldObjectId
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|alreadyAccepted
-operator|.
-name|add
-argument_list|(
-name|branchTip
 argument_list|)
 expr_stmt|;
 block|}
@@ -2440,6 +2422,73 @@ name|e
 argument_list|)
 throw|;
 block|}
+return|return
+name|branchUpdate
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MergeException
+argument_list|(
+literal|"Cannot open branch"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+DECL|method|getAlreadyAccepted (final CodeReviewCommit branchTip)
+specifier|private
+name|Set
+argument_list|<
+name|RevCommit
+argument_list|>
+name|getAlreadyAccepted
+parameter_list|(
+specifier|final
+name|CodeReviewCommit
+name|branchTip
+parameter_list|)
+throws|throws
+name|MergeException
+block|{
+specifier|final
+name|Set
+argument_list|<
+name|RevCommit
+argument_list|>
+name|alreadyAccepted
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|RevCommit
+argument_list|>
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|branchTip
+operator|!=
+literal|null
+condition|)
+block|{
+name|alreadyAccepted
+operator|.
+name|add
+argument_list|(
+name|branchTip
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
 for|for
 control|(
 specifier|final
@@ -2521,18 +2570,28 @@ throw|throw
 operator|new
 name|MergeException
 argument_list|(
-literal|"Cannot open branch"
+literal|"Failed to determine already accepted commits."
 argument_list|,
 name|e
 argument_list|)
 throw|;
 block|}
+return|return
+name|alreadyAccepted
+return|;
 block|}
-DECL|method|validateChangeList ()
+DECL|method|validateChangeList (final List<Change> submitted)
 specifier|private
 name|void
 name|validateChangeList
-parameter_list|()
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|Change
+argument_list|>
+name|submitted
+parameter_list|)
 throws|throws
 name|MergeException
 block|{
@@ -2902,7 +2961,7 @@ literal|null
 condition|)
 block|{
 comment|// If this commit is already merged its a bug in the queuing code
-comment|// that we got back here. Just mark it complete and move on. Its
+comment|// that we got back here. Just mark it complete and move on. It's
 comment|// merged and that is all that mattered to the requestor.
 comment|//
 try|try
@@ -2951,7 +3010,7 @@ name|commit
 operator|.
 name|add
 argument_list|(
-name|CAN_MERGE
+name|canMergeFlag
 argument_list|)
 expr_stmt|;
 name|toMerge
@@ -2963,7 +3022,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|updateBranch (final SubmitStrategy strategy)
+DECL|method|updateBranch (final SubmitStrategy strategy, final RefUpdate branchUpdate)
 specifier|private
 name|void
 name|updateBranch
@@ -2971,6 +3030,10 @@ parameter_list|(
 specifier|final
 name|SubmitStrategy
 name|strategy
+parameter_list|,
+specifier|final
+name|RefUpdate
+name|branchUpdate
 parameter_list|)
 throws|throws
 name|MergeException
@@ -3425,11 +3488,18 @@ return|return
 name|isMergeable
 return|;
 block|}
-DECL|method|updateChangeStatus ()
+DECL|method|updateChangeStatus (final List<Change> submitted)
 specifier|private
 name|void
 name|updateChangeStatus
-parameter_list|()
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|Change
+argument_list|>
+name|submitted
+parameter_list|)
 block|{
 name|List
 argument_list|<
@@ -3739,11 +3809,18 @@ name|REFS_NOTES_REVIEW
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateSubscriptions ()
+DECL|method|updateSubscriptions (final List<Change> submitted)
 specifier|private
 name|void
 name|updateSubscriptions
-parameter_list|()
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|Change
+argument_list|>
+name|submitted
+parameter_list|)
 block|{
 if|if
 condition|(
