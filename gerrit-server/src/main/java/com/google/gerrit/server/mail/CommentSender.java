@@ -529,6 +529,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|hasInlineComments ()
+specifier|public
+name|boolean
+name|hasInlineComments
+parameter_list|()
+block|{
+return|return
+operator|!
+name|inlineComments
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 DECL|method|getInlineComments ()
 specifier|public
 name|String
