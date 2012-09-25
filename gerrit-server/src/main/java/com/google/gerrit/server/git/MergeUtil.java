@@ -1233,7 +1233,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|mergeOneCommit (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final boolean useContentMerge, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final CodeReviewCommit n)
+DECL|method|mergeOneCommit (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final boolean useContentMerge, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final CodeReviewCommit n)
 specifier|public
 specifier|static
 name|CodeReviewCommit
@@ -1264,6 +1264,10 @@ parameter_list|,
 specifier|final
 name|ObjectInserter
 name|inserter
+parameter_list|,
+specifier|final
+name|RevFlag
+name|canMergeFlag
 parameter_list|,
 specifier|final
 name|boolean
@@ -1331,6 +1335,8 @@ name|rw
 argument_list|,
 name|inserter
 argument_list|,
+name|canMergeFlag
+argument_list|,
 name|destBranch
 argument_list|,
 name|mergeTip
@@ -1349,6 +1355,8 @@ block|{
 name|failed
 argument_list|(
 name|rw
+argument_list|,
+name|canMergeFlag
 argument_list|,
 name|mergeTip
 argument_list|,
@@ -1388,6 +1396,8 @@ block|{
 name|failed
 argument_list|(
 name|rw
+argument_list|,
+name|canMergeFlag
 argument_list|,
 name|mergeTip
 argument_list|,
@@ -1449,7 +1459,7 @@ end_return
 
 begin_function
 unit|}    private
-DECL|method|failed (final RevWalk rw, final CodeReviewCommit mergeTip, final CodeReviewCommit n, final CommitMergeStatus failure)
+DECL|method|failed (final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final CodeReviewCommit n, final CommitMergeStatus failure)
 specifier|static
 name|CodeReviewCommit
 name|failed
@@ -1457,6 +1467,10 @@ parameter_list|(
 specifier|final
 name|RevWalk
 name|rw
+parameter_list|,
+specifier|final
+name|RevFlag
+name|canMergeFlag
 parameter_list|,
 specifier|final
 name|CodeReviewCommit
@@ -1479,8 +1493,10 @@ name|IOException
 block|{
 name|rw
 operator|.
-name|reset
-argument_list|()
+name|resetRetain
+argument_list|(
+name|canMergeFlag
+argument_list|)
 expr_stmt|;
 name|rw
 operator|.
@@ -1530,7 +1546,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|writeMergeCommit (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final RevWalk rw, final ObjectInserter inserter, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final ObjectId treeId, final CodeReviewCommit n)
+DECL|method|writeMergeCommit (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final ObjectId treeId, final CodeReviewCommit n)
 specifier|public
 specifier|static
 name|CodeReviewCommit
@@ -1557,6 +1573,10 @@ parameter_list|,
 specifier|final
 name|ObjectInserter
 name|inserter
+parameter_list|,
+specifier|final
+name|RevFlag
+name|canMergeFlag
 parameter_list|,
 specifier|final
 name|Branch
@@ -1599,8 +1619,10 @@ argument_list|()
 decl_stmt|;
 name|rw
 operator|.
-name|reset
-argument_list|()
+name|resetRetain
+argument_list|(
+name|canMergeFlag
+argument_list|)
 expr_stmt|;
 name|rw
 operator|.

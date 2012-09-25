@@ -1034,6 +1034,10 @@ name|inserter
 argument_list|,
 name|args
 operator|.
+name|canMergeFlag
+argument_list|,
+name|args
+operator|.
 name|useContentMerge
 argument_list|,
 name|args
