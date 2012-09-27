@@ -914,6 +914,37 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// The this.names list does not hold the project-name but it can still exist
+comment|// on disk; for instance when the project has been created directly on the
+comment|// file-system through replication.
+comment|//
+if|if
+condition|(
+name|FileKey
+operator|.
+name|resolve
+argument_list|(
+name|gitDirOf
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+name|FS
+operator|.
+name|DETECTED
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|onCreateProject
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|RepositoryNotFoundException
@@ -924,6 +955,7 @@ name|name
 argument_list|)
 argument_list|)
 throw|;
+block|}
 block|}
 specifier|final
 name|FileKey
