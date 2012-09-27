@@ -298,11 +298,6 @@ name|String
 name|menuProjectsCreate
 parameter_list|()
 function_decl|;
-DECL|method|menuAdmin ()
-name|String
-name|menuAdmin
-parameter_list|()
-function_decl|;
 DECL|method|menuPeople ()
 name|String
 name|menuPeople
@@ -313,9 +308,24 @@ name|String
 name|menuGroups
 parameter_list|()
 function_decl|;
+DECL|method|menuGroupsList ()
+name|String
+name|menuGroupsList
+parameter_list|()
+function_decl|;
+DECL|method|menuGroupsCreate ()
+name|String
+name|menuGroupsCreate
+parameter_list|()
+function_decl|;
 DECL|method|menuPlugins ()
 name|String
 name|menuPlugins
+parameter_list|()
+function_decl|;
+DECL|method|menuPluginsInstalled ()
+name|String
+name|menuPluginsInstalled
 parameter_list|()
 function_decl|;
 DECL|method|menuDocumentation ()

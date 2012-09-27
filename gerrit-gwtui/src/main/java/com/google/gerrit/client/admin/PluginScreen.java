@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|PageLinks
-operator|.
-name|ADMIN_PLUGINS
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -94,7 +78,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|MenuScreen
+name|Screen
 import|;
 end_import
 
@@ -105,7 +89,7 @@ specifier|abstract
 class|class
 name|PluginScreen
 extends|extends
-name|MenuScreen
+name|Screen
 block|{
 DECL|method|PluginScreen ()
 specifier|public
@@ -115,18 +99,6 @@ block|{
 name|setRequiresSignIn
 argument_list|(
 literal|true
-argument_list|)
-expr_stmt|;
-name|link
-argument_list|(
-name|Util
-operator|.
-name|C
-operator|.
-name|pluginTabInstalled
-argument_list|()
-argument_list|,
-name|ADMIN_PLUGINS
 argument_list|)
 expr_stmt|;
 block|}
