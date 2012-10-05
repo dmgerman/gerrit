@@ -1089,6 +1089,15 @@ argument_list|,
 name|b
 operator|.
 name|path
+argument_list|,
+name|diffPrefs
+operator|.
+name|getIgnoreWhitespace
+argument_list|()
+operator|!=
+name|Whitespace
+operator|.
+name|IGNORE_NONE
 argument_list|)
 argument_list|)
 decl_stmt|;
