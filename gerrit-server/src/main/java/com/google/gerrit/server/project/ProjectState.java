@@ -1046,7 +1046,6 @@ return|;
 block|}
 comment|/** Get the sections that pertain only to this project. */
 DECL|method|getLocalAccessSections ()
-specifier|private
 name|List
 argument_list|<
 name|SectionMatcher
