@@ -215,6 +215,14 @@ name|DependencyAttribute
 argument_list|>
 name|neededBy
 decl_stmt|;
+DECL|field|submitRecords
+specifier|public
+name|List
+argument_list|<
+name|SubmitRecordAttribute
+argument_list|>
+name|submitRecords
+decl_stmt|;
 block|}
 end_class
 

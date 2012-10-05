@@ -396,6 +396,33 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--submit-records"
+argument_list|,
+name|usage
+operator|=
+literal|"Include submit and label status"
+argument_list|)
+DECL|method|setSubmitRecords (boolean on)
+name|void
+name|setSubmitRecords
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setIncludeSubmitRecords
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Argument
 argument_list|(
 name|index
