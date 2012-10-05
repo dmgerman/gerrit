@@ -206,7 +206,13 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|3L
+literal|4L
+decl_stmt|;
+DECL|field|ignoreWhitespace
+specifier|private
+specifier|transient
+name|boolean
+name|ignoreWhitespace
 decl_stmt|;
 DECL|field|aId
 specifier|private
@@ -262,7 +268,7 @@ specifier|transient
 name|String
 name|path
 decl_stmt|;
-DECL|method|IntraLineDiffKey (ObjectId aId, Text aText, ObjectId bId, Text bText, List<Edit> edits, Project.NameKey projectKey, ObjectId commit, String path)
+DECL|method|IntraLineDiffKey (ObjectId aId, Text aText, ObjectId bId, Text bText, List<Edit> edits, Project.NameKey projectKey, ObjectId commit, String path, boolean ignoreWhitespace)
 specifier|public
 name|IntraLineDiffKey
 parameter_list|(
@@ -294,6 +300,9 @@ name|commit
 parameter_list|,
 name|String
 name|path
+parameter_list|,
+name|boolean
+name|ignoreWhitespace
 parameter_list|)
 block|{
 name|this
@@ -343,6 +352,12 @@ operator|.
 name|path
 operator|=
 name|path
+expr_stmt|;
+name|this
+operator|.
+name|ignoreWhitespace
+operator|=
+name|ignoreWhitespace
 expr_stmt|;
 block|}
 DECL|method|getTextA ()
@@ -459,6 +474,20 @@ operator|.
 name|hashCode
 argument_list|()
 expr_stmt|;
+name|h
+operator|=
+name|h
+operator|*
+literal|31
+operator|+
+operator|(
+name|ignoreWhitespace
+condition|?
+literal|1
+else|:
+literal|0
+operator|)
+expr_stmt|;
 return|return
 name|h
 return|;
@@ -510,6 +539,13 @@ name|k
 operator|.
 name|bId
 argument_list|)
+comment|//
+operator|&&
+name|ignoreWhitespace
+operator|==
+name|k
+operator|.
+name|ignoreWhitespace
 return|;
 block|}
 return|return
@@ -628,6 +664,13 @@ argument_list|,
 name|bId
 argument_list|)
 expr_stmt|;
+name|out
+operator|.
+name|writeBoolean
+argument_list|(
+name|ignoreWhitespace
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|readObject (final ObjectInputStream in)
 specifier|private
@@ -654,6 +697,13 @@ name|readNotNull
 argument_list|(
 name|in
 argument_list|)
+expr_stmt|;
+name|ignoreWhitespace
+operator|=
+name|in
+operator|.
+name|readBoolean
+argument_list|()
 expr_stmt|;
 block|}
 block|}
