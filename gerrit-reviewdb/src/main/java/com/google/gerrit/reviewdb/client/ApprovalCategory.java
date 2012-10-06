@@ -482,6 +482,13 @@ name|c
 operator|<=
 literal|'Z'
 operator|)
+comment|//
+operator|||
+operator|(
+name|c
+operator|==
+literal|'-'
+operator|)
 condition|)
 block|{
 name|r
