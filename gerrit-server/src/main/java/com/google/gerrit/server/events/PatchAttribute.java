@@ -100,6 +100,16 @@ specifier|public
 name|ChangeType
 name|type
 decl_stmt|;
+DECL|field|insertions
+specifier|public
+name|int
+name|insertions
+decl_stmt|;
+DECL|field|deletions
+specifier|public
+name|int
+name|deletions
+decl_stmt|;
 block|}
 end_class
 
