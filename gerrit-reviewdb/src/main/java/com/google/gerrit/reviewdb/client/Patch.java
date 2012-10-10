@@ -340,7 +340,7 @@ argument_list|(
 literal|'C'
 argument_list|)
 block|,
-comment|/** Sufficient amount of content changed to claim the file was written. */
+comment|/** Sufficient amount of content changed to claim the file was rewritten. */
 DECL|enumConstant|REWRITE
 name|REWRITE
 argument_list|(
