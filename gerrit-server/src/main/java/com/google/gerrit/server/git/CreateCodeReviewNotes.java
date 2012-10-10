@@ -828,6 +828,8 @@ operator|.
 name|create
 argument_list|(
 name|db
+argument_list|,
+name|inserter
 argument_list|)
 decl_stmt|;
 name|notesBranchUtil
@@ -1044,6 +1046,8 @@ operator|.
 name|create
 argument_list|(
 name|db
+argument_list|,
+name|inserter
 argument_list|)
 decl_stmt|;
 name|notesBranchUtil

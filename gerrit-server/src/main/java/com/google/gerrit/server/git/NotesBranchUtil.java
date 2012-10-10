@@ -415,12 +415,15 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Repository db)
+DECL|method|create (Repository db, ObjectInserter inserter)
 name|NotesBranchUtil
 name|create
 parameter_list|(
 name|Repository
 name|db
+parameter_list|,
+name|ObjectInserter
+name|inserter
 parameter_list|)
 function_decl|;
 block|}
@@ -453,6 +456,12 @@ specifier|final
 name|Repository
 name|db
 decl_stmt|;
+DECL|field|inserter
+specifier|private
+specifier|final
+name|ObjectInserter
+name|inserter
+decl_stmt|;
 DECL|field|baseCommit
 specifier|private
 name|RevCommit
@@ -478,11 +487,6 @@ specifier|private
 name|RevWalk
 name|revWalk
 decl_stmt|;
-DECL|field|inserter
-specifier|private
-name|ObjectInserter
-name|inserter
-decl_stmt|;
 DECL|field|reader
 specifier|private
 name|ObjectReader
@@ -500,7 +504,7 @@ name|noteMerger
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|NotesBranchUtil (@erritPersonIdent final PersonIdent gerritIdent, @Assisted Repository db)
+DECL|method|NotesBranchUtil (@erritPersonIdent final PersonIdent gerritIdent, @Assisted Repository db, @Assisted ObjectInserter inserter)
 specifier|public
 name|NotesBranchUtil
 parameter_list|(
@@ -514,6 +518,11 @@ annotation|@
 name|Assisted
 name|Repository
 name|db
+parameter_list|,
+annotation|@
+name|Assisted
+name|ObjectInserter
+name|inserter
 parameter_list|)
 block|{
 name|this
@@ -527,6 +536,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|inserter
+operator|=
+name|inserter
 expr_stmt|;
 block|}
 comment|/**    * Create a new commit in the<code>notesBranch</code> by updating existing    * or creating new notes from the<code>notes</code> map.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @throws IOException    * @throws ConcurrentRefUpdateException    */
@@ -693,13 +708,6 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
-name|inserter
-operator|=
-name|db
-operator|.
-name|newObjectInserter
-argument_list|()
-expr_stmt|;
 name|reader
 operator|=
 name|db
@@ -775,11 +783,6 @@ block|}
 finally|finally
 block|{
 name|revWalk
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-name|inserter
 operator|.
 name|release
 argument_list|()

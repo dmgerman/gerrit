@@ -653,6 +653,8 @@ operator|.
 name|create
 argument_list|(
 name|repo
+argument_list|,
+name|inserter
 argument_list|)
 decl_stmt|;
 name|NoteMap
