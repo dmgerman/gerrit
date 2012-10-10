@@ -641,23 +641,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|submitRule
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|RuleEvalException
-argument_list|(
-name|userRuleLocatorName
-operator|+
-literal|" returned null"
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
 name|fastEvalLabels
 condition|)
 block|{
@@ -897,13 +880,6 @@ name|VariableTerm
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|filterRule
-operator|!=
-literal|null
-condition|)
-block|{
 try|try
 block|{
 if|if
@@ -1059,7 +1035,6 @@ argument_list|,
 name|err
 argument_list|)
 throw|;
-block|}
 block|}
 name|parentState
 operator|=
