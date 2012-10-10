@@ -3334,7 +3334,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|toListTerm (List<Term> terms)
-specifier|private
+specifier|public
 specifier|static
 name|Term
 name|toListTerm
