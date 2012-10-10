@@ -185,6 +185,14 @@ name|String
 name|existingBranchName
 parameter_list|)
 function_decl|;
+DECL|method|pluginFailed (String scriptPath)
+name|String
+name|pluginFailed
+parameter_list|(
+name|String
+name|scriptPath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

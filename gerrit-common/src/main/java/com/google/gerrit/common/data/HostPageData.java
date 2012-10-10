@@ -98,6 +98,16 @@ name|AccountDiffPreference
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Data sent as part of the host page, to bootstrap the UI. */
 end_comment
@@ -132,6 +142,14 @@ DECL|field|theme
 specifier|public
 name|Theme
 name|theme
+decl_stmt|;
+DECL|field|plugins
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|plugins
 decl_stmt|;
 DECL|class|Theme
 specifier|public
