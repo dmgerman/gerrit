@@ -3028,6 +3028,9 @@ block|}
 name|row
 operator|++
 expr_stmt|;
+name|cell
+operator|--
+expr_stmt|;
 block|}
 else|else
 block|{
