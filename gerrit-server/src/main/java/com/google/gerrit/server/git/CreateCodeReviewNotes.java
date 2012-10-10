@@ -846,6 +846,11 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|inserter
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1053,6 +1058,11 @@ name|author
 argument_list|,
 name|commitMessage
 argument_list|)
+expr_stmt|;
+name|inserter
+operator|.
+name|flush
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
