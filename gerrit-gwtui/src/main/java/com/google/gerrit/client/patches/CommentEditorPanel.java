@@ -1199,6 +1199,16 @@ operator|==
 literal|null
 return|;
 block|}
+DECL|method|getComment ()
+specifier|public
+name|PatchLineComment
+name|getComment
+parameter_list|()
+block|{
+return|return
+name|comment
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|onDoubleClick (final DoubleClickEvent event)
