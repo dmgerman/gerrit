@@ -3229,6 +3229,8 @@ name|CodeReviewCommit
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -5152,6 +5154,8 @@ name|PatchSetApproval
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
