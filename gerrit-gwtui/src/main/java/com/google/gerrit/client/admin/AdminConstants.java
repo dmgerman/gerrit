@@ -495,11 +495,6 @@ name|String
 name|plugins
 parameter_list|()
 function_decl|;
-DECL|method|pluginTabInstalled ()
-name|String
-name|pluginTabInstalled
-parameter_list|()
-function_decl|;
 DECL|method|pluginDisabled ()
 name|String
 name|pluginDisabled
