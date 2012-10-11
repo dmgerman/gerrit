@@ -6750,7 +6750,7 @@ expr_stmt|;
 break|break;
 block|}
 break|break;
-block|}
+default|default:
 throw|throw
 operator|new
 name|IOException
@@ -6764,6 +6764,7 @@ name|name
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 catch|catch
 parameter_list|(
