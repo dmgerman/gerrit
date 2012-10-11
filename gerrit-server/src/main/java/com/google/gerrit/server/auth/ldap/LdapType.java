@@ -201,6 +201,12 @@ name|String
 name|groupMemberPattern
 parameter_list|()
 function_decl|;
+DECL|method|groupName ()
+specifier|abstract
+name|String
+name|groupName
+parameter_list|()
+function_decl|;
 DECL|method|accountFullName ()
 specifier|abstract
 name|String
@@ -259,6 +265,17 @@ parameter_list|()
 block|{
 return|return
 literal|"(memberUid=${username})"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|groupName ()
+name|String
+name|groupName
+parameter_list|()
+block|{
+return|return
+literal|"cn"
 return|;
 block|}
 annotation|@
@@ -382,6 +399,17 @@ parameter_list|()
 block|{
 return|return
 literal|"(&(objectClass=group)(cn=${groupname}))"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|groupName ()
+name|String
+name|groupName
+parameter_list|()
+block|{
+return|return
+literal|"cn"
 return|;
 block|}
 annotation|@

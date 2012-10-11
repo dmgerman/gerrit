@@ -1298,7 +1298,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|apply (ParameterizedString p, LdapQuery.Result m)
-specifier|private
 specifier|static
 name|String
 name|apply
