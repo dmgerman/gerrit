@@ -1633,6 +1633,11 @@ literal|false
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|canSubmit (ReviewDb db, PatchSet patchSet, @Nullable ChangeData cd, boolean fastEvalLabels, boolean allowClosed)
 specifier|public
 name|List
@@ -1890,6 +1895,9 @@ operator|=
 name|evaluator
 operator|.
 name|evaluate
+argument_list|()
+operator|.
+name|toJava
 argument_list|()
 expr_stmt|;
 block|}
