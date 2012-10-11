@@ -1053,7 +1053,12 @@ name|buf
 init|=
 operator|new
 name|StringBuilder
+argument_list|(
+name|ce
+operator|.
+name|getMessage
 argument_list|()
+argument_list|)
 decl_stmt|;
 while|while
 condition|(
@@ -1062,6 +1067,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 name|buf
 operator|.
 name|append
