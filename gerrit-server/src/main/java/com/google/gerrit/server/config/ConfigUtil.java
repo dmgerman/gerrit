@@ -971,7 +971,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^([1-9][0-9]*)\\s*(.*)$"
+literal|"^(0|[1-9][0-9]*)\\s*(.*)$"
 argument_list|)
 operator|.
 name|matcher
