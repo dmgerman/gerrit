@@ -1117,7 +1117,7 @@ name|find
 argument_list|(
 name|doc
 argument_list|,
-literal|"gerrit_gwtdevmode"
+literal|"gwtdevmode"
 argument_list|)
 decl_stmt|;
 if|if
