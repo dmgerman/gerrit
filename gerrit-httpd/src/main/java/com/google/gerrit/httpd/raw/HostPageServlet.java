@@ -1992,6 +1992,13 @@ argument_list|)
 expr_stmt|;
 name|nocache
 operator|.
+name|removeAttribute
+argument_list|(
+literal|"id"
+argument_list|)
+expr_stmt|;
+name|nocache
+operator|.
 name|setAttribute
 argument_list|(
 literal|"src"
@@ -2084,13 +2091,6 @@ name|Element
 name|scriptNode
 parameter_list|)
 block|{
-name|scriptNode
-operator|.
-name|removeAttribute
-argument_list|(
-literal|"id"
-argument_list|)
-expr_stmt|;
 name|scriptNode
 operator|.
 name|setAttribute
