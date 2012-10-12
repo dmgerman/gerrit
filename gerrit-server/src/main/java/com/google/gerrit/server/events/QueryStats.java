@@ -90,6 +90,11 @@ specifier|public
 name|long
 name|runTimeMilliseconds
 decl_stmt|;
+DECL|field|resumeSortKey
+specifier|public
+name|String
+name|resumeSortKey
+decl_stmt|;
 block|}
 end_class
 
