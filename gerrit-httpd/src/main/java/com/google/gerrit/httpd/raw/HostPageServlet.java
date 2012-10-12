@@ -833,7 +833,7 @@ block|}
 name|String
 name|src
 init|=
-literal|"gerrit/gerrit.nocache.js"
+literal|"gerrit_ui/gerrit_ui.nocache.js"
 decl_stmt|;
 if|if
 condition|(
@@ -1012,7 +1012,7 @@ operator|=
 operator|new
 name|PermutationSelector
 argument_list|(
-literal|"gerrit"
+literal|"gerrit_ui"
 argument_list|)
 expr_stmt|;
 if|if

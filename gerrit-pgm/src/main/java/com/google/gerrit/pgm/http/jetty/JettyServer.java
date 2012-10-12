@@ -3111,7 +3111,7 @@ name|File
 argument_list|(
 name|e
 argument_list|,
-literal|"gerrit/gerrit.nocache.js"
+literal|"gerrit_ui/gerrit_ui.nocache.js"
 argument_list|)
 operator|.
 name|isFile
