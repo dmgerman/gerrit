@@ -410,6 +410,16 @@ return|return
 name|bId
 return|;
 block|}
+DECL|method|isIgnoreWhitespace ()
+specifier|public
+name|boolean
+name|isIgnoreWhitespace
+parameter_list|()
+block|{
+return|return
+name|ignoreWhitespace
+return|;
+block|}
 DECL|method|getProject ()
 name|Project
 operator|.
