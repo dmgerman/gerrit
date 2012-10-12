@@ -8848,6 +8848,13 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|submitter
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|hooks
@@ -8856,7 +8863,6 @@ name|doChangeMergedHook
 argument_list|(
 name|c
 argument_list|,
-comment|//
 name|accountCache
 operator|.
 name|get
@@ -8870,7 +8876,6 @@ operator|.
 name|getAccount
 argument_list|()
 argument_list|,
-comment|//
 name|db
 operator|.
 name|patchSets
@@ -8908,6 +8913,7 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_function
