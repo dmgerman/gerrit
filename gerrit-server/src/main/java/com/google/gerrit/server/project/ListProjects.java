@@ -903,12 +903,12 @@ name|usage
 operator|=
 literal|"displays only projects on which access rights for this group are directly assigned"
 argument_list|)
-DECL|field|groupId
+DECL|field|groupUuid
 specifier|private
 name|AccountGroup
 operator|.
-name|Id
-name|groupId
+name|UUID
+name|groupUuid
 decl_stmt|;
 annotation|@
 name|Inject
@@ -1223,7 +1223,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|groupId
+name|groupUuid
 operator|!=
 literal|null
 condition|)
@@ -1237,7 +1237,7 @@ name|groupControlFactory
 operator|.
 name|controlFor
 argument_list|(
-name|groupId
+name|groupUuid
 argument_list|)
 operator|.
 name|isVisible
@@ -1273,7 +1273,7 @@ name|groupCache
 operator|.
 name|get
 argument_list|(
-name|groupId
+name|groupUuid
 argument_list|)
 argument_list|)
 argument_list|)
