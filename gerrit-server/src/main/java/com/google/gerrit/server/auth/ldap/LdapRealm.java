@@ -576,6 +576,20 @@ name|DirContext
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|LoginException
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -1704,6 +1718,31 @@ operator|.
 name|error
 argument_list|(
 literal|"Cannot query LDAP to autenticate user"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|AuthenticationUnavailableException
+argument_list|(
+literal|"Cannot query LDAP for account"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|LoginException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot authenticate server via JAAS"
 argument_list|,
 name|e
 argument_list|)

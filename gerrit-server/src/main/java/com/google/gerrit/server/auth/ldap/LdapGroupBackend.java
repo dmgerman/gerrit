@@ -526,6 +526,20 @@ name|Rdn
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|security
+operator|.
+name|auth
+operator|.
+name|login
+operator|.
+name|LoginException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation of GroupBackend for the LDAP group system.  */
 end_comment
@@ -1522,6 +1536,22 @@ block|}
 catch|catch
 parameter_list|(
 name|NamingException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot query LDAP for groups matching requested name"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|LoginException
 name|e
 parameter_list|)
 block|{
