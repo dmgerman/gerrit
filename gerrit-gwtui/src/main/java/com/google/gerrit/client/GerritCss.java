@@ -218,11 +218,6 @@ name|String
 name|cLastUpdate
 parameter_list|()
 function_decl|;
-DECL|method|cPROJECT ()
-name|String
-name|cPROJECT
-parameter_list|()
-function_decl|;
 DECL|method|cSUBJECT ()
 name|String
 name|cSUBJECT
