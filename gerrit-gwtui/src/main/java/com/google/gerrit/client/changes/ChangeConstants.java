@@ -435,6 +435,11 @@ name|String
 name|changeInfoBlockStatus
 parameter_list|()
 function_decl|;
+DECL|method|changeInfoBlockSubmitType ()
+name|String
+name|changeInfoBlockSubmitType
+parameter_list|()
+function_decl|;
 DECL|method|changePermalink ()
 name|String
 name|changePermalink

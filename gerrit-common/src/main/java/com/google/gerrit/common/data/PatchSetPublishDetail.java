@@ -148,6 +148,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -238,6 +254,11 @@ argument_list|<
 name|SubmitRecord
 argument_list|>
 name|submitRecords
+decl_stmt|;
+DECL|field|submitTypeRecord
+specifier|protected
+name|SubmitTypeRecord
+name|submitTypeRecord
 decl_stmt|;
 DECL|field|given
 specifier|protected
@@ -360,6 +381,32 @@ parameter_list|()
 block|{
 return|return
 name|submitRecords
+return|;
+block|}
+DECL|method|setSubmitTypeRecord (SubmitTypeRecord submitTypeRecord)
+specifier|public
+name|void
+name|setSubmitTypeRecord
+parameter_list|(
+name|SubmitTypeRecord
+name|submitTypeRecord
+parameter_list|)
+block|{
+name|this
+operator|.
+name|submitTypeRecord
+operator|=
+name|submitTypeRecord
+expr_stmt|;
+block|}
+DECL|method|getSubmitTypeRecord ()
+specifier|public
+name|SubmitTypeRecord
+name|getSubmitTypeRecord
+parameter_list|()
+block|{
+return|return
+name|submitTypeRecord
 return|;
 block|}
 DECL|method|getGiven ()

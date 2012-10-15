@@ -125,6 +125,13 @@ literal|""
 argument_list|)
 block|,
 comment|/** */
+DECL|enumConstant|NO_SUBMIT_TYPE
+name|NO_SUBMIT_TYPE
+argument_list|(
+literal|""
+argument_list|)
+block|,
+comment|/** */
 DECL|enumConstant|CRISS_CROSS_MERGE
 name|CRISS_CROSS_MERGE
 argument_list|(
