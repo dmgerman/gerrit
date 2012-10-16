@@ -4020,7 +4020,7 @@ argument_list|)
 expr_stmt|;
 name|menuLeft
 operator|.
-name|add
+name|insert
 argument_list|(
 name|pluginsBar
 argument_list|,
@@ -4028,6 +4028,15 @@ name|C
 operator|.
 name|menuPlugins
 argument_list|()
+argument_list|,
+name|menuLeft
+operator|.
+name|getWidgetIndex
+argument_list|(
+name|groupsBar
+argument_list|)
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
