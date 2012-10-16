@@ -4199,6 +4199,9 @@ break|break;
 case|case
 name|LOCK_FAILURE
 case|:
+name|String
+name|msg
+decl_stmt|;
 if|if
 condition|(
 name|strategy
@@ -4223,8 +4226,35 @@ argument_list|,
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+name|msg
+operator|=
+literal|"will retry"
+expr_stmt|;
 block|}
-break|break;
+else|else
+block|{
+name|msg
+operator|=
+literal|"will not retry"
+expr_stmt|;
+block|}
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+name|branchUpdate
+operator|.
+name|getResult
+argument_list|()
+operator|.
+name|name
+argument_list|()
+operator|+
+literal|", "
+operator|+
+name|msg
+argument_list|)
+throw|;
 default|default:
 throw|throw
 operator|new
