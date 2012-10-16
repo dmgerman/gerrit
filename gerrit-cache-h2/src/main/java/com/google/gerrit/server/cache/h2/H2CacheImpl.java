@@ -1526,6 +1526,8 @@ name|into
 argument_list|)
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|ser
 operator|.
 name|writeObject
@@ -1538,6 +1540,15 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|ser
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
