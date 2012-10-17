@@ -1052,6 +1052,8 @@ name|updateSuperProjects
 argument_list|(
 name|destBranch
 argument_list|,
+name|rw
+argument_list|,
 name|mergeTip
 operator|.
 name|getId
@@ -1448,7 +1450,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|updateSuperProjects (final Branch.NameKey updatedBranch, final ObjectId mergedCommit, final String msg)
+DECL|method|updateSuperProjects (final Branch.NameKey updatedBranch, RevWalk myRw, final ObjectId mergedCommit, final String msg)
 specifier|private
 name|void
 name|updateSuperProjects
@@ -1458,6 +1460,9 @@ name|Branch
 operator|.
 name|NameKey
 name|updatedBranch
+parameter_list|,
+name|RevWalk
+name|myRw
 parameter_list|,
 specifier|final
 name|ObjectId
@@ -1709,6 +1714,8 @@ operator|.
 name|getSuperProject
 argument_list|()
 argument_list|,
+name|myRw
+argument_list|,
 name|modules
 argument_list|,
 name|paths
@@ -1746,7 +1753,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|updateGitlinks (final Branch.NameKey subscriber, final Map<Branch.NameKey, ObjectId> modules, final Map<Branch.NameKey, String> paths, final String msg)
+DECL|method|updateGitlinks (final Branch.NameKey subscriber, RevWalk myRw, final Map<Branch.NameKey, ObjectId> modules, final Map<Branch.NameKey, String> paths, final String msg)
 specifier|private
 name|void
 name|updateGitlinks
@@ -1756,6 +1763,9 @@ name|Branch
 operator|.
 name|NameKey
 name|subscriber
+parameter_list|,
+name|RevWalk
+name|myRw
 parameter_list|,
 specifier|final
 name|Map
@@ -1819,6 +1829,11 @@ name|pdb
 init|=
 literal|null
 decl_stmt|;
+name|RevWalk
+name|recRw
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|boolean
@@ -1850,7 +1865,7 @@ block|{
 name|RevCommit
 name|c
 init|=
-name|rw
+name|myRw
 operator|.
 name|parseCommit
 argument_list|(
@@ -2347,10 +2362,20 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+name|recRw
+operator|=
+operator|new
+name|RevWalk
+argument_list|(
+name|pdb
+argument_list|)
+expr_stmt|;
 comment|// Recursive call: update subscribers of the subscriber
 name|updateSuperProjects
 argument_list|(
 name|subscriber
+argument_list|,
+name|recRw
 argument_list|,
 name|commitId
 argument_list|,
@@ -2382,6 +2407,19 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|recRw
+operator|!=
+literal|null
+condition|)
+block|{
+name|recRw
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|pdb
