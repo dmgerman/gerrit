@@ -315,6 +315,29 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
+DECL|method|doMergeFailedHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
+specifier|public
+name|void
+name|doMergeFailedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
+parameter_list|,
+name|String
+name|reason
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
 DECL|method|doChangeRestoredHook (Change change, Account account, String reason, ReviewDb db)
 specifier|public
 name|void
