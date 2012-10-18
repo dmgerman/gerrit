@@ -324,7 +324,7 @@ try|try
 block|{
 specifier|final
 name|CurrentSchemaVersion
-name|sVer
+name|currentVer
 init|=
 name|getSchemaVersion
 argument_list|(
@@ -333,7 +333,7 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|int
-name|eVer
+name|expectedVer
 init|=
 name|version
 operator|.
@@ -345,7 +345,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|sVer
+name|currentVer
 operator|==
 literal|null
 condition|)
@@ -362,11 +362,11 @@ throw|;
 block|}
 if|if
 condition|(
-name|sVer
+name|currentVer
 operator|.
 name|versionNbr
-operator|!=
-name|eVer
+operator|<
+name|expectedVer
 condition|)
 block|{
 throw|throw
@@ -375,15 +375,43 @@ name|ProvisionException
 argument_list|(
 literal|"Unsupported schema version "
 operator|+
-name|sVer
+name|currentVer
 operator|.
 name|versionNbr
 operator|+
 literal|"; expected schema version "
 operator|+
-name|eVer
+name|expectedVer
 operator|+
 literal|".  Run init to upgrade."
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|currentVer
+operator|.
+name|versionNbr
+operator|>
+name|expectedVer
+condition|)
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Unsupported schema version "
+operator|+
+name|currentVer
+operator|.
+name|versionNbr
+operator|+
+literal|"; expected schema version "
+operator|+
+name|expectedVer
+operator|+
+literal|". Downgrade is not supported."
 argument_list|)
 throw|;
 block|}
