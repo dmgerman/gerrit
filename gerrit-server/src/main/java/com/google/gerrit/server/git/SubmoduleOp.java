@@ -2466,6 +2466,8 @@ argument_list|(
 name|pdb
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 specifier|final
 name|DirCache
 name|dc
@@ -2524,6 +2526,15 @@ expr_stmt|;
 return|return
 name|dc
 return|;
+block|}
+finally|finally
+block|{
+name|rw
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|logAndThrowSubmoduleException (final String errorMsg, final Exception e)
 specifier|private
