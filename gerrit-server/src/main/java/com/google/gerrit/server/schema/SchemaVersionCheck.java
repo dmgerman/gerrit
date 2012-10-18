@@ -134,6 +134,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -258,6 +274,12 @@ name|ReviewDb
 argument_list|>
 name|schema
 decl_stmt|;
+DECL|field|site
+specifier|private
+specifier|final
+name|SitePaths
+name|site
+decl_stmt|;
 annotation|@
 name|Current
 DECL|field|version
@@ -271,7 +293,7 @@ name|version
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaVersionCheck (SchemaFactory<ReviewDb> schemaFactory, @Current Provider<SchemaVersion> version)
+DECL|method|SchemaVersionCheck (SchemaFactory<ReviewDb> schemaFactory, final SitePaths site, @Current Provider<SchemaVersion> version)
 specifier|public
 name|SchemaVersionCheck
 parameter_list|(
@@ -280,6 +302,10 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
+parameter_list|,
+specifier|final
+name|SitePaths
+name|site
 parameter_list|,
 annotation|@
 name|Current
@@ -295,6 +321,12 @@ operator|.
 name|schema
 operator|=
 name|schemaFactory
+expr_stmt|;
+name|this
+operator|.
+name|site
+operator|=
+name|site
 expr_stmt|;
 name|this
 operator|.
@@ -356,7 +388,16 @@ name|ProvisionException
 argument_list|(
 literal|"Schema not yet initialized."
 operator|+
-literal|"  Run init to initialize the schema."
+literal|"  Run init to initialize the schema:\n"
+operator|+
+literal|"$ java -jar gerrit.war init -d "
+operator|+
+name|site
+operator|.
+name|site_path
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -383,7 +424,16 @@ literal|"; expected schema version "
 operator|+
 name|expectedVer
 operator|+
-literal|".  Run init to upgrade."
+literal|".  Run init to upgrade:\n"
+operator|+
+literal|"$ java -jar gerrit.war init -d "
+operator|+
+name|site
+operator|.
+name|site_path
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 throw|;
 block|}
