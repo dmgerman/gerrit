@@ -528,6 +528,33 @@ name|JdbcSchema
 operator|)
 name|db
 decl_stmt|;
+if|if
+condition|(
+name|curr
+operator|.
+name|versionNbr
+operator|>
+name|versionNbr
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"Cannot downgrade database schema from version "
+operator|+
+name|curr
+operator|.
+name|versionNbr
+operator|+
+literal|" to "
+operator|+
+name|versionNbr
+operator|+
+literal|"."
+argument_list|)
+throw|;
+block|}
 name|prior
 operator|.
 name|get
