@@ -615,11 +615,6 @@ operator||
 literal|3
 decl_stmt|;
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-annotation|@
 name|Option
 argument_list|(
 name|name

@@ -148,22 +148,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
