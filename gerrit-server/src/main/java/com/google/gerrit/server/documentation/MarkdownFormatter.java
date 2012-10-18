@@ -879,6 +879,8 @@ operator|*
 literal|1024
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|tmp
 operator|.
 name|copy
@@ -898,6 +900,15 @@ argument_list|,
 literal|"UTF-8"
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+name|tmp
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
