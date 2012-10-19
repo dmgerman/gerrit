@@ -164,22 +164,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|safehtml
-operator|.
-name|client
-operator|.
-name|HighlightSuggestOracle
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -228,7 +212,7 @@ specifier|public
 class|class
 name|AccountGroupSuggestOracle
 extends|extends
-name|HighlightSuggestOracle
+name|SuggestAfterTypingNCharsOracle
 block|{
 DECL|field|priorResults
 specifier|private
@@ -262,10 +246,10 @@ name|projectName
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|onRequestSuggestions (final Request req, final Callback callback)
+DECL|method|_onRequestSuggestions (final Request req, final Callback callback)
 specifier|public
 name|void
-name|onRequestSuggestions
+name|_onRequestSuggestions
 parameter_list|(
 specifier|final
 name|Request

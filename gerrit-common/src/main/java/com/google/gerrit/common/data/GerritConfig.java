@@ -364,6 +364,11 @@ specifier|protected
 name|String
 name|anonymousCowardName
 decl_stmt|;
+DECL|field|suggestFrom
+specifier|protected
+name|int
+name|suggestFrom
+decl_stmt|;
 DECL|method|getRegisterUrl ()
 specifier|public
 name|String
@@ -1009,6 +1014,33 @@ operator|.
 name|anonymousCowardName
 operator|=
 name|anonymousCowardName
+expr_stmt|;
+block|}
+DECL|method|getSuggestFrom ()
+specifier|public
+name|int
+name|getSuggestFrom
+parameter_list|()
+block|{
+return|return
+name|suggestFrom
+return|;
+block|}
+DECL|method|setSuggestFrom (final int suggestFrom)
+specifier|public
+name|void
+name|setSuggestFrom
+parameter_list|(
+specifier|final
+name|int
+name|suggestFrom
+parameter_list|)
+block|{
+name|this
+operator|.
+name|suggestFrom
+operator|=
+name|suggestFrom
 expr_stmt|;
 block|}
 DECL|method|siteHasUsernames ()
