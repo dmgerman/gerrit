@@ -529,6 +529,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|formatFooter ()
+specifier|public
+name|void
+name|formatFooter
+parameter_list|()
+throws|throws
+name|EmailException
+block|{
+name|appendText
+argument_list|(
+name|velocifyFile
+argument_list|(
+literal|"CommentFooter.vm"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|hasInlineComments ()
 specifier|public
 name|boolean
