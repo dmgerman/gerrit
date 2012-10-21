@@ -933,8 +933,6 @@ argument_list|(
 block|{
 literal|"unchecked"
 block|,
-literal|"rawtypes"
-block|,
 literal|"cast"
 block|}
 argument_list|)
