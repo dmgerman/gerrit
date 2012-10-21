@@ -1010,6 +1010,9 @@ name|OrmException
 name|e
 parameter_list|)
 block|{     }
+name|formatFooter
+argument_list|()
+expr_stmt|;
 block|}
 comment|/** Format the message body by calling {@link #appendText(String)}. */
 DECL|method|formatChange ()
@@ -1021,6 +1024,15 @@ parameter_list|()
 throws|throws
 name|EmailException
 function_decl|;
+comment|/** Format the message footer by calling {@link #appendText(String)}. */
+DECL|method|formatFooter ()
+specifier|protected
+name|void
+name|formatFooter
+parameter_list|()
+throws|throws
+name|EmailException
+block|{   }
 comment|/** Setup the message headers and envelope (TO, CC, BCC). */
 DECL|method|init ()
 specifier|protected
