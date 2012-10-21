@@ -2067,6 +2067,11 @@ name|pattern
 argument_list|)
 condition|)
 block|{
+comment|// Since Brics will substitute dot [.] with \0 when generating
+comment|// shortest example, any usage of dot will fail in
+comment|// Repository.isValidRefName() if not combined with star [*].
+comment|// To get around this, we substitute the \0 with an arbitrary
+comment|// accepted character.
 return|return
 name|toRegExp
 argument_list|(
@@ -2079,6 +2084,13 @@ operator|.
 name|getShortestExample
 argument_list|(
 literal|true
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|'\0'
+argument_list|,
+literal|'-'
 argument_list|)
 return|;
 block|}
