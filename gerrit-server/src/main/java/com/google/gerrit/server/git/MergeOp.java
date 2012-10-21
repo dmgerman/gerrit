@@ -4315,6 +4315,9 @@ expr_stmt|;
 break|break;
 block|}
 case|case
+name|CLEAN_REBASE
+case|:
+case|case
 name|CLEAN_PICK
 case|:
 block|{

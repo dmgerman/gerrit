@@ -296,6 +296,9 @@ block|,
 DECL|enumConstant|MERGE_IF_NECESSARY
 name|MERGE_IF_NECESSARY
 block|,
+DECL|enumConstant|REBASE_IF_NECESSARY
+name|REBASE_IF_NECESSARY
+block|,
 DECL|enumConstant|MERGE_ALWAYS
 name|MERGE_ALWAYS
 block|,

@@ -297,6 +297,15 @@ name|projectSubmitType_MERGE_IF_NECESSARY
 argument_list|()
 return|;
 case|case
+name|REBASE_IF_NECESSARY
+case|:
+return|return
+name|C
+operator|.
+name|projectSubmitType_REBASE_IF_NECESSARY
+argument_list|()
+return|;
+case|case
 name|MERGE_ALWAYS
 case|:
 return|return

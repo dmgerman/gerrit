@@ -170,6 +170,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|changedetail
+operator|.
+name|RebaseChange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|CanonicalWebUrl
@@ -425,9 +441,17 @@ specifier|final
 name|GitReferenceUpdated
 name|replication
 decl_stmt|;
+DECL|field|rebaseChangeFactory
+specifier|private
+specifier|final
+name|RebaseChange
+operator|.
+name|Factory
+name|rebaseChangeFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated replication)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated replication, final RebaseChange.Factory rebaseChangeFactory)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -464,6 +488,12 @@ parameter_list|,
 specifier|final
 name|GitReferenceUpdated
 name|replication
+parameter_list|,
+specifier|final
+name|RebaseChange
+operator|.
+name|Factory
+name|rebaseChangeFactory
 parameter_list|)
 block|{
 name|this
@@ -501,6 +531,12 @@ operator|.
 name|replication
 operator|=
 name|replication
+expr_stmt|;
+name|this
+operator|.
+name|rebaseChangeFactory
+operator|=
+name|rebaseChangeFactory
 expr_stmt|;
 block|}
 DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final boolean useContentMerge)
@@ -635,6 +671,18 @@ operator|new
 name|MergeIfNecessary
 argument_list|(
 name|args
+argument_list|)
+return|;
+case|case
+name|REBASE_IF_NECESSARY
+case|:
+return|return
+operator|new
+name|RebaseIfNecessary
+argument_list|(
+name|args
+argument_list|,
+name|rebaseChangeFactory
 argument_list|)
 return|;
 default|default:

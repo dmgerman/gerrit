@@ -330,6 +330,11 @@ name|String
 name|projectSubmitType_MERGE_IF_NECESSARY
 parameter_list|()
 function_decl|;
+DECL|method|projectSubmitType_REBASE_IF_NECESSARY ()
+name|String
+name|projectSubmitType_REBASE_IF_NECESSARY
+parameter_list|()
+function_decl|;
 DECL|method|projectSubmitType_CHERRY_PICK ()
 name|String
 name|projectSubmitType_CHERRY_PICK
