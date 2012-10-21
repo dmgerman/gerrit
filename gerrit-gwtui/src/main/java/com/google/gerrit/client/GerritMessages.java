@@ -131,6 +131,60 @@ name|String
 name|who
 parameter_list|)
 function_decl|;
+DECL|method|branchCreationFailed (String branchName, String error)
+name|String
+name|branchCreationFailed
+parameter_list|(
+name|String
+name|branchName
+parameter_list|,
+name|String
+name|error
+parameter_list|)
+function_decl|;
+DECL|method|invalidBranchName (String branchName)
+name|String
+name|invalidBranchName
+parameter_list|(
+name|String
+name|branchName
+parameter_list|)
+function_decl|;
+DECL|method|invalidRevision (String revision)
+name|String
+name|invalidRevision
+parameter_list|(
+name|String
+name|revision
+parameter_list|)
+function_decl|;
+DECL|method|branchCreationNotAllowedUnderRefnamePrefix (String refnamePrefix)
+name|String
+name|branchCreationNotAllowedUnderRefnamePrefix
+parameter_list|(
+name|String
+name|refnamePrefix
+parameter_list|)
+function_decl|;
+DECL|method|branchAlreadyExists (String branchName)
+name|String
+name|branchAlreadyExists
+parameter_list|(
+name|String
+name|branchName
+parameter_list|)
+function_decl|;
+DECL|method|branchCreationConflict (String branchName, String existingBranchName)
+name|String
+name|branchCreationConflict
+parameter_list|(
+name|String
+name|branchName
+parameter_list|,
+name|String
+name|existingBranchName
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

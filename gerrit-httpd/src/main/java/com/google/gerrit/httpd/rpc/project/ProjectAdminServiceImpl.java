@@ -96,6 +96,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|AddBranchResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|ListBranchesResult
 import|;
 end_import
@@ -844,7 +860,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addBranch (final Project.NameKey projectName, final String branchName, final String startingRevision, final AsyncCallback<ListBranchesResult> callback)
+DECL|method|addBranch (final Project.NameKey projectName, final String branchName, final String startingRevision, final AsyncCallback<AddBranchResult> callback)
 specifier|public
 name|void
 name|addBranch
@@ -866,7 +882,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|ListBranchesResult
+name|AddBranchResult
 argument_list|>
 name|callback
 parameter_list|)

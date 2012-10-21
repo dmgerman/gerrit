@@ -430,7 +430,7 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<ListBranchesResult> callback)
+DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<AddBranchResult> callback)
 name|void
 name|addBranch
 parameter_list|(
@@ -447,7 +447,7 @@ name|startingRevision
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|ListBranchesResult
+name|AddBranchResult
 argument_list|>
 name|callback
 parameter_list|)
