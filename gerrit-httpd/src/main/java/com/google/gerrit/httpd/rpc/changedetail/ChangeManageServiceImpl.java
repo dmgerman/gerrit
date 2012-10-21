@@ -182,7 +182,7 @@ decl_stmt|;
 DECL|field|rebaseChangeFactory
 specifier|private
 specifier|final
-name|RebaseChange
+name|RebaseChangeHandler
 operator|.
 name|Factory
 name|rebaseChangeFactory
@@ -221,7 +221,7 @@ name|deleteDraftChangeFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChangeHandler.Factory abandonChangeHandlerFactory, final RebaseChange.Factory rebaseChangeFactory, final RestoreChangeHandler.Factory restoreChangeHandlerFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory)
+DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final AbandonChangeHandler.Factory abandonChangeHandlerFactory, final RebaseChangeHandler.Factory rebaseChangeFactory, final RestoreChangeHandler.Factory restoreChangeHandlerFactory, final RevertChange.Factory revertChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
@@ -237,7 +237,7 @@ name|Factory
 name|abandonChangeHandlerFactory
 parameter_list|,
 specifier|final
-name|RebaseChange
+name|RebaseChangeHandler
 operator|.
 name|Factory
 name|rebaseChangeFactory
