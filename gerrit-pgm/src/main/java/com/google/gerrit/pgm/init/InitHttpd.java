@@ -392,6 +392,8 @@ operator|.
 name|get
 argument_list|(
 literal|"httpd"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -403,6 +405,8 @@ operator|.
 name|get
 argument_list|(
 literal|"gerrit"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

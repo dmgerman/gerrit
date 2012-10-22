@@ -198,6 +198,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Enumeration
 import|;
 end_import
@@ -302,9 +312,14 @@ specifier|final
 name|SitePaths
 name|site
 decl_stmt|;
+DECL|field|pluginLoader
+specifier|private
+name|InitPluginStepsLoader
+name|pluginLoader
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitPlugins (final ConsoleUI ui, final SitePaths site)
+DECL|method|InitPlugins (final ConsoleUI ui, final SitePaths site, InitPluginStepsLoader pluginLoader)
 name|InitPlugins
 parameter_list|(
 specifier|final
@@ -314,6 +329,9 @@ parameter_list|,
 specifier|final
 name|SitePaths
 name|site
+parameter_list|,
+name|InitPluginStepsLoader
+name|pluginLoader
 parameter_list|)
 block|{
 name|this
@@ -327,6 +345,12 @@ operator|.
 name|site
 operator|=
 name|site
+expr_stmt|;
+name|this
+operator|.
+name|pluginLoader
+operator|=
+name|pluginLoader
 expr_stmt|;
 block|}
 annotation|@
@@ -346,6 +370,21 @@ argument_list|(
 literal|"Plugins"
 argument_list|)
 expr_stmt|;
+name|installPlugins
+argument_list|()
+expr_stmt|;
+name|initPlugins
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|installPlugins ()
+specifier|private
+name|void
+name|installPlugins
+parameter_list|()
+throws|throws
+name|IOException
+block|{
 specifier|final
 name|File
 name|myWar
@@ -748,6 +787,32 @@ name|message
 argument_list|(
 literal|"No plugins found."
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|initPlugins ()
+specifier|private
+name|void
+name|initPlugins
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+for|for
+control|(
+name|InitStep
+name|initStep
+range|:
+name|pluginLoader
+operator|.
+name|getInitSteps
+argument_list|()
+control|)
+block|{
+name|initStep
+operator|.
+name|run
+argument_list|()
 expr_stmt|;
 block|}
 block|}

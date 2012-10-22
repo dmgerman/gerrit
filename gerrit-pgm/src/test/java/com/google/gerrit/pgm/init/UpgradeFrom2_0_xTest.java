@@ -542,6 +542,9 @@ name|get
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|String
+name|subsection
 parameter_list|)
 block|{
 return|return
@@ -555,6 +558,8 @@ argument_list|,
 name|ui
 argument_list|,
 name|name
+argument_list|,
+name|subsection
 argument_list|)
 return|;
 block|}

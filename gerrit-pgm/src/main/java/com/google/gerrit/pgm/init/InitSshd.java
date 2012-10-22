@@ -342,6 +342,8 @@ operator|.
 name|get
 argument_list|(
 literal|"sshd"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
