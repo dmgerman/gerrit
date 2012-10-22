@@ -78,6 +78,22 @@ name|extensions
 operator|.
 name|annotations
 operator|.
+name|ExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
 name|PluginName
 import|;
 end_import
@@ -95,10 +111,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Specifies JavaScript to dynamically load into the web UI.  *  * @see GwtPlugin  * @see JavaScriptPlugin  */
+comment|/**  * Specifies JavaScript to dynamically load into the web UI.  *<p>  * To automatically register (instead of writing a Guice module), declare the  * intention with {@code @Listen}, extend the correct class and define a  * constructor to configure the correct resource:  *  *<pre>  *&#064;Listen  * class MyJs extends JavaScriptPlugin {  *   MyJs() {  *     super(&quot;hello.js&quot;);  *   }  * }  *</pre>  *  * @see GwtPlugin  * @see JavaScriptPlugin  */
 end_comment
 
 begin_class
+annotation|@
+name|ExtensionPoint
 DECL|class|WebUiPlugin
 specifier|public
 specifier|abstract
