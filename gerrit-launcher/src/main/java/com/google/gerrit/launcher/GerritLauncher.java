@@ -1677,7 +1677,7 @@ name|move
 argument_list|(
 name|jars
 argument_list|,
-literal|"servlet-api-"
+literal|"tomcat-servlet-api-"
 argument_list|,
 name|extapi
 argument_list|)
