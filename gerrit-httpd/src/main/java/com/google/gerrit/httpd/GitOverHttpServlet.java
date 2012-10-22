@@ -212,6 +212,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|ChangeCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|GitRepositoryManager
 import|;
 end_import
@@ -1429,9 +1445,15 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
+DECL|field|changeCache
+specifier|private
+specifier|final
+name|ChangeCache
+name|changeCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UploadFilter (Provider<ReviewDb> db, TagCache tagCache)
+DECL|method|UploadFilter (Provider<ReviewDb> db, TagCache tagCache, ChangeCache changeCache)
 name|UploadFilter
 parameter_list|(
 name|Provider
@@ -1442,6 +1464,9 @@ name|db
 parameter_list|,
 name|TagCache
 name|tagCache
+parameter_list|,
+name|ChangeCache
+name|changeCache
 parameter_list|)
 block|{
 name|this
@@ -1455,6 +1480,12 @@ operator|.
 name|tagCache
 operator|=
 name|tagCache
+expr_stmt|;
+name|this
+operator|.
+name|changeCache
+operator|=
+name|changeCache
 expr_stmt|;
 block|}
 annotation|@
@@ -1566,6 +1597,8 @@ operator|new
 name|VisibleRefFilter
 argument_list|(
 name|tagCache
+argument_list|,
+name|changeCache
 argument_list|,
 name|repo
 argument_list|,

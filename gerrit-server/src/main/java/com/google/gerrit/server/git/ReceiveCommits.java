@@ -2204,6 +2204,12 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
+DECL|field|changeCache
+specifier|private
+specifier|final
+name|ChangeCache
+name|changeCache
+decl_stmt|;
 DECL|field|workQueue
 specifier|private
 specifier|final
@@ -2426,7 +2432,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2489,6 +2495,10 @@ parameter_list|,
 specifier|final
 name|TagCache
 name|tagCache
+parameter_list|,
+specifier|final
+name|ChangeCache
+name|changeCache
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -2656,6 +2666,12 @@ name|tagCache
 expr_stmt|;
 name|this
 operator|.
+name|changeCache
+operator|=
+name|changeCache
+expr_stmt|;
+name|this
+operator|.
 name|workQueue
 operator|=
 name|workQueue
@@ -2782,6 +2798,8 @@ operator|new
 name|VisibleRefFilter
 argument_list|(
 name|tagCache
+argument_list|,
+name|changeCache
 argument_list|,
 name|repo
 argument_list|,
