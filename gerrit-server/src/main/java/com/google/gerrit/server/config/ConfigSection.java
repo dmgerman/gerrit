@@ -164,7 +164,7 @@ name|getRequired
 argument_list|(
 name|cfg
 argument_list|,
-literal|null
+name|section
 argument_list|,
 name|name
 argument_list|)
