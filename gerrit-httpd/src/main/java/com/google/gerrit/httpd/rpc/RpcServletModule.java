@@ -152,7 +152,7 @@ specifier|final
 name|String
 name|PREFIX
 init|=
-literal|"/gerrit/rpc/"
+literal|"/gerrit_ui/rpc/"
 decl_stmt|;
 DECL|field|prefix
 specifier|private
