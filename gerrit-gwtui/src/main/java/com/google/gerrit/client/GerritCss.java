@@ -893,6 +893,11 @@ name|String
 name|rightmost
 parameter_list|()
 function_decl|;
+DECL|method|rightBorder ()
+name|String
+name|rightBorder
+parameter_list|()
+function_decl|;
 DECL|method|rpcStatus ()
 name|String
 name|rpcStatus
