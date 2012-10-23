@@ -486,6 +486,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|column
+operator|>
+name|C_ARROW
+operator|&&
 name|getRowItem
 argument_list|(
 name|row

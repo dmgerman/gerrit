@@ -526,7 +526,7 @@ if|if
 condition|(
 name|column
 operator|>
-literal|0
+name|C_ARROW
 operator|&&
 name|getRowItem
 argument_list|(
