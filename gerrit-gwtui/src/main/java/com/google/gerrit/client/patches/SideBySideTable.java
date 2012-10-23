@@ -1962,6 +1962,27 @@ name|lineNumber
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|fmt
+operator|.
+name|addStyleName
+argument_list|(
+name|row
+argument_list|,
+name|B
+operator|+
+literal|1
+argument_list|,
+name|Gerrit
+operator|.
+name|RESOURCES
+operator|.
+name|css
+argument_list|()
+operator|.
+name|rightmost
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|finish (final Iterator<PatchLineComment> i, int row, final int col, boolean expandComment)
 specifier|private
@@ -2350,10 +2371,6 @@ name|i
 operator|++
 control|)
 block|{
-comment|// The overridden version of insertRow adds some css classes we don't
-comment|// want.
-name|super
-operator|.
 name|insertRow
 argument_list|(
 name|row
