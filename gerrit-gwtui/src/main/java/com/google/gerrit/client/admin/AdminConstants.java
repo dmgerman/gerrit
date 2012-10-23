@@ -500,6 +500,11 @@ name|String
 name|plugins
 parameter_list|()
 function_decl|;
+DECL|method|pluginEnabled ()
+name|String
+name|pluginEnabled
+parameter_list|()
+function_decl|;
 DECL|method|pluginDisabled ()
 name|String
 name|pluginDisabled
