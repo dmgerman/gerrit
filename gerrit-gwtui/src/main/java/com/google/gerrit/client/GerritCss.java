@@ -948,6 +948,11 @@ name|String
 name|sideBySideScreenSideBySideTable
 parameter_list|()
 function_decl|;
+DECL|method|unifiedTable ()
+name|String
+name|unifiedTable
+parameter_list|()
+function_decl|;
 DECL|method|singleLine ()
 name|String
 name|singleLine
