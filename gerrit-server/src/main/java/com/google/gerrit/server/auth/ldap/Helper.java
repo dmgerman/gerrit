@@ -927,6 +927,13 @@ return|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|username
+operator|!=
+literal|null
+condition|)
+block|{
 name|env
 operator|.
 name|put
@@ -955,6 +962,7 @@ else|:
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|new
 name|InitialDirContext
