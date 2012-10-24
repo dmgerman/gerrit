@@ -810,6 +810,11 @@ argument_list|)
 expr_stmt|;
 name|audit
 argument_list|(
+name|context
+operator|.
+name|get
+argument_list|()
+argument_list|,
 literal|"0"
 argument_list|,
 literal|"LOGIN"
@@ -946,6 +951,8 @@ argument_list|)
 expr_stmt|;
 name|audit
 argument_list|(
+literal|null
+argument_list|,
 literal|"FAIL"
 argument_list|,
 literal|"AUTH"
@@ -1141,6 +1148,11 @@ argument_list|)
 expr_stmt|;
 name|audit
 argument_list|(
+name|context
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|status
 argument_list|,
 name|getCommand
@@ -1219,6 +1231,11 @@ argument_list|)
 expr_stmt|;
 name|audit
 argument_list|(
+name|context
+operator|.
+name|get
+argument_list|()
+argument_list|,
 literal|"0"
 argument_list|,
 literal|"LOGOUT"
@@ -2485,10 +2502,13 @@ name|logger
 parameter_list|)
 block|{     }
 block|}
-DECL|method|audit (Object result, String commandName, String[] args)
+DECL|method|audit (Context ctx, Object result, String commandName, String[] args)
 name|void
 name|audit
 parameter_list|(
+name|Context
+name|ctx
+parameter_list|,
 name|Object
 name|result
 parameter_list|,
@@ -2500,15 +2520,6 @@ index|[]
 name|args
 parameter_list|)
 block|{
-specifier|final
-name|Context
-name|ctx
-init|=
-name|context
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 specifier|final
 name|String
 name|sid
