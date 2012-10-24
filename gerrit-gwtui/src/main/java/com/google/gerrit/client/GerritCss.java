@@ -963,6 +963,11 @@ name|String
 name|unifiedTable
 parameter_list|()
 function_decl|;
+DECL|method|unifiedTableHeader ()
+name|String
+name|unifiedTableHeader
+parameter_list|()
+function_decl|;
 DECL|method|singleLine ()
 name|String
 name|singleLine
