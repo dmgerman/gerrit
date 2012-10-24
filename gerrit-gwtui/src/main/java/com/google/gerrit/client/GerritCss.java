@@ -283,6 +283,11 @@ name|String
 name|closedstate
 parameter_list|()
 function_decl|;
+DECL|method|cellsNextToFileComment ()
+name|String
+name|cellsNextToFileComment
+parameter_list|()
+function_decl|;
 DECL|method|commentedActionDialog ()
 name|String
 name|commentedActionDialog
@@ -671,6 +676,11 @@ function_decl|;
 DECL|method|iconCell ()
 name|String
 name|iconCell
+parameter_list|()
+function_decl|;
+DECL|method|iconCellOfFileCommentRow ()
+name|String
+name|iconCellOfFileCommentRow
 parameter_list|()
 function_decl|;
 DECL|method|iconHeader ()

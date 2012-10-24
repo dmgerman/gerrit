@@ -295,6 +295,11 @@ name|String
 name|download
 parameter_list|()
 function_decl|;
+DECL|method|addFileCommentToolTip ()
+name|String
+name|addFileCommentToolTip
+parameter_list|()
+function_decl|;
 DECL|method|buttonReplyDone ()
 name|String
 name|buttonReplyDone

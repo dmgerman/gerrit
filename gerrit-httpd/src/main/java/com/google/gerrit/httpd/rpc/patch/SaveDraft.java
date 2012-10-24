@@ -536,14 +536,14 @@ operator|.
 name|getLine
 argument_list|()
 operator|<
-literal|1
+literal|0
 condition|)
 block|{
 throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Comment line must be>= 1, not "
+literal|"Comment line must be>= 0, not "
 operator|+
 name|comment
 operator|.

@@ -1111,7 +1111,7 @@ name|anchor
 return|;
 block|}
 DECL|method|isFile ()
-specifier|private
+specifier|public
 name|boolean
 name|isFile
 parameter_list|()
