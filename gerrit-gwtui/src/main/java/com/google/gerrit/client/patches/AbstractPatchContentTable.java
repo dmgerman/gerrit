@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|//Copyright (C) 2008 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -3095,6 +3095,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|updateCursor (final PatchLineComment newComment)
+specifier|protected
+name|void
+name|updateCursor
+parameter_list|(
+specifier|final
+name|PatchLineComment
+name|newComment
+parameter_list|)
+block|{   }
 DECL|method|insertFileCommentRow (final int row)
 specifier|abstract
 name|void
@@ -3697,6 +3707,11 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+name|updateCursor
+argument_list|(
+name|newComment
+argument_list|)
+expr_stmt|;
 return|return
 name|ed
 return|;
