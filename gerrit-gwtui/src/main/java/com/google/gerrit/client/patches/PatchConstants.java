@@ -300,6 +300,11 @@ name|String
 name|addFileCommentToolTip
 parameter_list|()
 function_decl|;
+DECL|method|addFileCommentByDoubleClick ()
+name|String
+name|addFileCommentByDoubleClick
+parameter_list|()
+function_decl|;
 DECL|method|buttonReplyDone ()
 name|String
 name|buttonReplyDone
