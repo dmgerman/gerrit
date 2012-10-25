@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-operator|.
-name|R_HEADS
-import|;
-end_import
-
-begin_import
-import|import static
 name|com
 operator|.
 name|google
@@ -97,6 +81,22 @@ operator|.
 name|MultiProgressMonitor
 operator|.
 name|UNKNOWN
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Constants
+operator|.
+name|R_HEADS
 import|;
 end_import
 
@@ -11329,7 +11329,10 @@ name|canUploadMerges
 argument_list|()
 operator|&&
 operator|!
-name|project
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
 operator|.
 name|isUseSignedOffBy
 argument_list|()
@@ -11811,7 +11814,10 @@ return|;
 block|}
 if|if
 condition|(
-name|project
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
 operator|.
 name|isUseSignedOffBy
 argument_list|()
@@ -11992,7 +11998,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|project
+name|projectControl
+operator|.
+name|getProjectState
+argument_list|()
 operator|.
 name|isRequireChangeID
 argument_list|()

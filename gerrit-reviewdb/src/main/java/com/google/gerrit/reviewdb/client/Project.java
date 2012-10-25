@@ -320,6 +320,21 @@ block|,
 DECL|enumConstant|HIDDEN
 name|HIDDEN
 block|;   }
+DECL|enum|InheritedBoolean
+specifier|public
+specifier|static
+enum|enum
+name|InheritedBoolean
+block|{
+DECL|enumConstant|TRUE
+name|TRUE
+block|,
+DECL|enumConstant|FALSE
+name|FALSE
+block|,
+DECL|enumConstant|INHERIT
+name|INHERIT
+block|;   }
 DECL|field|name
 specifier|protected
 name|NameKey
@@ -332,12 +347,12 @@ name|description
 decl_stmt|;
 DECL|field|useContributorAgreements
 specifier|protected
-name|boolean
+name|InheritedBoolean
 name|useContributorAgreements
 decl_stmt|;
 DECL|field|useSignedOffBy
 specifier|protected
-name|boolean
+name|InheritedBoolean
 name|useSignedOffBy
 decl_stmt|;
 DECL|field|submitType
@@ -357,12 +372,12 @@ name|parent
 decl_stmt|;
 DECL|field|requireChangeID
 specifier|protected
-name|boolean
+name|InheritedBoolean
 name|requireChangeID
 decl_stmt|;
 DECL|field|useContentMerge
 specifier|protected
-name|boolean
+name|InheritedBoolean
 name|useContentMerge
 decl_stmt|;
 DECL|method|Project ()
@@ -395,6 +410,30 @@ operator|=
 name|State
 operator|.
 name|ACTIVE
+expr_stmt|;
+name|useContributorAgreements
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|useSignedOffBy
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|requireChangeID
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|useContentMerge
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
 expr_stmt|;
 block|}
 DECL|method|getNameKey ()
@@ -453,68 +492,68 @@ operator|=
 name|d
 expr_stmt|;
 block|}
-DECL|method|isUseContributorAgreements ()
+DECL|method|getUseContributorAgreements ()
 specifier|public
-name|boolean
-name|isUseContributorAgreements
+name|InheritedBoolean
+name|getUseContributorAgreements
 parameter_list|()
 block|{
 return|return
 name|useContributorAgreements
 return|;
 block|}
-DECL|method|setUseContributorAgreements (final boolean u)
+DECL|method|getUseSignedOffBy ()
 specifier|public
-name|void
-name|setUseContributorAgreements
-parameter_list|(
-specifier|final
-name|boolean
-name|u
-parameter_list|)
-block|{
-name|useContributorAgreements
-operator|=
-name|u
-expr_stmt|;
-block|}
-DECL|method|isUseSignedOffBy ()
-specifier|public
-name|boolean
-name|isUseSignedOffBy
+name|InheritedBoolean
+name|getUseSignedOffBy
 parameter_list|()
 block|{
 return|return
 name|useSignedOffBy
 return|;
 block|}
-DECL|method|isUseContentMerge ()
+DECL|method|getUseContentMerge ()
 specifier|public
-name|boolean
-name|isUseContentMerge
+name|InheritedBoolean
+name|getUseContentMerge
 parameter_list|()
 block|{
 return|return
 name|useContentMerge
 return|;
 block|}
-DECL|method|isRequireChangeID ()
+DECL|method|getRequireChangeID ()
 specifier|public
-name|boolean
-name|isRequireChangeID
+name|InheritedBoolean
+name|getRequireChangeID
 parameter_list|()
 block|{
 return|return
 name|requireChangeID
 return|;
 block|}
-DECL|method|setUseSignedOffBy (final boolean sbo)
+DECL|method|setUseContributorAgreements (final InheritedBoolean u)
+specifier|public
+name|void
+name|setUseContributorAgreements
+parameter_list|(
+specifier|final
+name|InheritedBoolean
+name|u
+parameter_list|)
+block|{
+name|useContributorAgreements
+operator|=
+name|u
+expr_stmt|;
+block|}
+DECL|method|setUseSignedOffBy (final InheritedBoolean sbo)
 specifier|public
 name|void
 name|setUseSignedOffBy
 parameter_list|(
 specifier|final
-name|boolean
+name|InheritedBoolean
 name|sbo
 parameter_list|)
 block|{
@@ -523,13 +562,13 @@ operator|=
 name|sbo
 expr_stmt|;
 block|}
-DECL|method|setUseContentMerge (final boolean cm)
+DECL|method|setUseContentMerge (final InheritedBoolean cm)
 specifier|public
 name|void
 name|setUseContentMerge
 parameter_list|(
 specifier|final
-name|boolean
+name|InheritedBoolean
 name|cm
 parameter_list|)
 block|{
@@ -538,13 +577,13 @@ operator|=
 name|cm
 expr_stmt|;
 block|}
-DECL|method|setRequireChangeID (final boolean cid)
+DECL|method|setRequireChangeID (final InheritedBoolean cid)
 specifier|public
 name|void
 name|setRequireChangeID
 parameter_list|(
 specifier|final
-name|boolean
+name|InheritedBoolean
 name|cid
 parameter_list|)
 block|{
