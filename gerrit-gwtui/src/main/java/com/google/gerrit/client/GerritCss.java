@@ -223,6 +223,11 @@ name|String
 name|cSUBJECT
 parameter_list|()
 function_decl|;
+DECL|method|cOWNER ()
+name|String
+name|cOWNER
+parameter_list|()
+function_decl|;
 DECL|method|changeComments ()
 name|String
 name|changeComments
