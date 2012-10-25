@@ -133,6 +133,11 @@ name|String
 name|activeRow
 parameter_list|()
 function_decl|;
+DECL|method|fileCommentBorder ()
+name|String
+name|fileCommentBorder
+parameter_list|()
+function_decl|;
 DECL|method|addMemberTextBox ()
 name|String
 name|addMemberTextBox
