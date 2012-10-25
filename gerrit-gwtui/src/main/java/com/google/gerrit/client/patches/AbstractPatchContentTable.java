@@ -1158,6 +1158,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|notifyDraftDelta (final int delta)
 specifier|public
 name|void
@@ -2809,13 +2811,15 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|createCommentEditor
+name|findOrCreateCommentEditor
 argument_list|(
 name|suggestRow
 argument_list|,
 name|column
 argument_list|,
 name|newComment
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|setFocus
@@ -2839,10 +2843,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|createCommentEditor (final int suggestRow, final int column, final PatchLineComment newComment)
+DECL|method|findOrCreateCommentEditor (final int suggestRow, final int column, final PatchLineComment newComment, final boolean create)
 specifier|private
 name|CommentEditorPanel
-name|createCommentEditor
+name|findOrCreateCommentEditor
 parameter_list|(
 specifier|final
 name|int
@@ -2855,6 +2859,10 @@ parameter_list|,
 specifier|final
 name|PatchLineComment
 name|newComment
+parameter_list|,
+specifier|final
+name|boolean
+name|create
 parameter_list|)
 block|{
 name|int
@@ -3073,6 +3081,9 @@ condition|(
 name|newComment
 operator|==
 literal|null
+operator|||
+operator|!
+name|create
 condition|)
 block|{
 return|return
@@ -5137,9 +5148,11 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|createEditor
+name|findOrCreateEditor
 argument_list|(
 name|newComment
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|setFocus
@@ -5174,9 +5187,11 @@ expr_stmt|;
 name|CommentEditorPanel
 name|p
 init|=
-name|createEditor
+name|findOrCreateEditor
 argument_list|(
 name|newComment
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -5206,6 +5221,8 @@ name|PatchLineComment
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -5225,9 +5242,11 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|createEditor
+name|findOrCreateEditor
 argument_list|(
 name|result
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|setOpen
@@ -5291,14 +5310,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|createEditor (final PatchLineComment newComment)
+DECL|method|findOrCreateEditor ( PatchLineComment newComment, boolean create)
 specifier|private
 name|CommentEditorPanel
-name|createEditor
+name|findOrCreateEditor
 parameter_list|(
-specifier|final
 name|PatchLineComment
 name|newComment
+parameter_list|,
+name|boolean
+name|create
 parameter_list|)
 block|{
 name|int
@@ -5320,7 +5341,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|createCommentEditor
+name|findOrCreateCommentEditor
 argument_list|(
 name|row
 operator|+
@@ -5329,6 +5350,8 @@ argument_list|,
 name|column
 argument_list|,
 name|newComment
+argument_list|,
+name|create
 argument_list|)
 return|;
 block|}
