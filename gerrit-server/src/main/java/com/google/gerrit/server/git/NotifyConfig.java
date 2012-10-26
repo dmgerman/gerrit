@@ -175,6 +175,21 @@ argument_list|<
 name|NotifyConfig
 argument_list|>
 block|{
+DECL|enum|Header
+specifier|public
+specifier|static
+enum|enum
+name|Header
+block|{
+DECL|enumConstant|TO
+DECL|enumConstant|CC
+DECL|enumConstant|BCC
+name|TO
+block|,
+name|CC
+block|,
+name|BCC
+block|;   }
 DECL|field|name
 specifier|private
 name|String
@@ -201,6 +216,11 @@ DECL|field|filter
 specifier|private
 name|String
 name|filter
+decl_stmt|;
+DECL|field|header
+specifier|private
+name|Header
+name|header
 decl_stmt|;
 DECL|field|groups
 specifier|private
@@ -366,6 +386,30 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getHeader ()
+specifier|public
+name|Header
+name|getHeader
+parameter_list|()
+block|{
+return|return
+name|header
+return|;
+block|}
+DECL|method|setHeader (Header hdr)
+specifier|public
+name|void
+name|setHeader
+parameter_list|(
+name|Header
+name|hdr
+parameter_list|)
+block|{
+name|header
+operator|=
+name|hdr
+expr_stmt|;
 block|}
 DECL|method|getGroups ()
 specifier|public

@@ -366,14 +366,14 @@ expr_stmt|;
 name|bccStarredBy
 argument_list|()
 expr_stmt|;
-name|bccWatches
+name|includeWatchers
 argument_list|(
 name|NotifyType
 operator|.
 name|ALL_COMMENTS
 argument_list|)
 expr_stmt|;
-name|bccWatches
+name|includeWatchers
 argument_list|(
 name|NotifyType
 operator|.
