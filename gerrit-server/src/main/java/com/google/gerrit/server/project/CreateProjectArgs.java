@@ -224,7 +224,32 @@ DECL|method|CreateProjectArgs ()
 specifier|public
 name|CreateProjectArgs
 parameter_list|()
-block|{   }
+block|{
+name|contributorAgreements
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|signedOffBy
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|contentMerge
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|changeIdRequired
+operator|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+block|}
 DECL|method|getProject ()
 specifier|public
 name|Project
