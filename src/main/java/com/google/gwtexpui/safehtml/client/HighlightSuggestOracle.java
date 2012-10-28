@@ -186,17 +186,13 @@ specifier|final
 name|String
 name|qpat
 init|=
-literal|"("
-operator|+
-name|escape
+name|getQueryPattern
 argument_list|(
 name|request
 operator|.
 name|getQuery
 argument_list|()
 argument_list|)
-operator|+
-literal|")"
 decl_stmt|;
 specifier|final
 name|boolean
@@ -264,6 +260,27 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getQueryPattern (final String query)
+specifier|protected
+name|String
+name|getQueryPattern
+parameter_list|(
+specifier|final
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+literal|"("
+operator|+
+name|escape
+argument_list|(
+name|query
+argument_list|)
+operator|+
+literal|")"
+return|;
 block|}
 comment|/**    * @return true if {@link SuggestOracle.Suggestion#getDisplayString()} returns    *         HTML; false if the text must be escaped before evaluating in an    *         HTML like context.    */
 DECL|method|isHTML ()
