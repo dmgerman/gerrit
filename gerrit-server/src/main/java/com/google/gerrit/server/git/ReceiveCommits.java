@@ -2204,12 +2204,6 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
-DECL|field|changeCache
-specifier|private
-specifier|final
-name|ChangeCache
-name|changeCache
-decl_stmt|;
 DECL|field|workQueue
 specifier|private
 specifier|final
@@ -2663,12 +2657,6 @@ operator|.
 name|tagCache
 operator|=
 name|tagCache
-expr_stmt|;
-name|this
-operator|.
-name|changeCache
-operator|=
-name|changeCache
 expr_stmt|;
 name|this
 operator|.
