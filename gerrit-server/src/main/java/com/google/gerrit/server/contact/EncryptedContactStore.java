@@ -798,6 +798,11 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 DECL|method|readPubRing (final File pub)
 specifier|private
 specifier|static
