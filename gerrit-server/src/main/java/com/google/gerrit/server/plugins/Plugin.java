@@ -350,9 +350,12 @@ name|ApiType
 block|{
 DECL|enumConstant|EXTENSION
 DECL|enumConstant|PLUGIN
+DECL|enumConstant|JS
 name|EXTENSION
 block|,
 name|PLUGIN
+block|,
+name|JS
 block|;   }
 comment|/** Unique key that changes whenever a plugin reloads. */
 DECL|class|CacheKey
@@ -522,6 +525,28 @@ return|return
 name|ApiType
 operator|.
 name|PLUGIN
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|ApiType
+operator|.
+name|JS
+operator|.
+name|name
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|v
+argument_list|)
+condition|)
+block|{
+return|return
+name|ApiType
+operator|.
+name|JS
 return|;
 block|}
 else|else
