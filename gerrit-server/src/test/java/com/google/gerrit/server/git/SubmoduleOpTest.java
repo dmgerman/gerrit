@@ -805,7 +805,7 @@ name|replication
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * It tests Submodule.update in the scenario a merged commit is an empty one    * (it does not have a .gitmodule file) and the project the commit was merged    * is not a submodule of other project.    *    * @throws Exception If an exception occurs.    */
+comment|/**    * It tests Submodule.update in the scenario a merged commit is an empty one    * (it does not have a .gitmodules file) and the project the commit was merged    * is not a submodule of other project.    *    * @throws Exception If an exception occurs.    */
 annotation|@
 name|Test
 DECL|method|testEmptyCommit ()
@@ -2125,7 +2125,7 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Change
-name|submitedChange
+name|submittedChange
 init|=
 operator|new
 name|Change
@@ -2167,7 +2167,7 @@ name|codeReviewCommit
 operator|.
 name|change
 operator|=
-name|submitedChange
+name|submittedChange
 expr_stmt|;
 specifier|final
 name|Map
@@ -2210,7 +2210,7 @@ name|List
 argument_list|<
 name|Change
 argument_list|>
-name|submited
+name|submitted
 init|=
 operator|new
 name|ArrayList
@@ -2219,11 +2219,11 @@ name|Change
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|submited
+name|submitted
 operator|.
 name|add
 argument_list|(
-name|submitedChange
+name|submittedChange
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2497,7 +2497,7 @@ name|getParentKey
 argument_list|()
 argument_list|)
 argument_list|,
-name|submited
+name|submitted
 argument_list|,
 name|mergedCommits
 argument_list|,
@@ -2621,7 +2621,7 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|Change
-name|submitedChange
+name|submittedChange
 init|=
 operator|new
 name|Change
@@ -2663,7 +2663,7 @@ name|codeReviewCommit
 operator|.
 name|change
 operator|=
-name|submitedChange
+name|submittedChange
 expr_stmt|;
 specifier|final
 name|Map
@@ -2706,7 +2706,7 @@ name|List
 argument_list|<
 name|Change
 argument_list|>
-name|submited
+name|submitted
 init|=
 operator|new
 name|ArrayList
@@ -2715,11 +2715,11 @@ name|Change
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|submited
+name|submitted
 operator|.
 name|add
 argument_list|(
-name|submitedChange
+name|submittedChange
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -3001,7 +3001,7 @@ name|getParentKey
 argument_list|()
 argument_list|)
 argument_list|,
-name|submited
+name|submitted
 argument_list|,
 name|mergedCommits
 argument_list|,
@@ -3021,7 +3021,7 @@ name|doVerify
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * It calls SubmoduleOp.update considering only one insert on Subscriptions    * table.    *<p>    * It considers a commit containing a .gitmodules file was merged in    * refs/heads/master of a dest-project.    *</p>    *<p>    * The .gitmodules file content should indicate a source project called    * "source".    *</p>    *    * @param gitModulesFileContent The .gitmodules file content. During the test    *        this file is created, so the commit containing it.    * @param sourceBranchName The branch name of source project "pointed by"    *        .gitmodule file.    * @throws Exception If an exception occurs.    */
+comment|/**    * It calls SubmoduleOp.update considering only one insert on Subscriptions    * table.    *<p>    * It considers a commit containing a .gitmodules file was merged in    * refs/heads/master of a dest-project.    *</p>    *<p>    * The .gitmodules file content should indicate a source project called    * "source".    *</p>    *    * @param gitModulesFileContent The .gitmodules file content. During the test    *        this file is created, so the commit containing it.    * @param sourceBranchName The branch name of source project "pointed by"    *        .gitmodules file.    * @throws Exception If an exception occurs.    */
 DECL|method|doOneSubscriptionInsert (final String gitModulesFileContent, final String sourceBranchName)
 specifier|private
 name|void
@@ -3113,7 +3113,7 @@ name|subscriptionsToInsert
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * It calls SubmoduleOp.update method considering scenario only inserting new    * subscriptions.    *<p>    * In this test a commit is created and considered merged to    *<code>mergedBranch</code> branch.    *</p>    *<p>    * The destination project the commit was merged is not considered to be a    * source of another project (no subscribers found to this project).    *</p>    *    * @param gitModulesFileContent The .gitmodule file content.    * @param mergedBranch The {@link Branch.NameKey} instance representing the    *        project/branch the commit was merged.    * @param extractedSubscriptions The subscription rows extracted from    *        gitmodules file.    * @throws Exception If an exception occurs.    */
+comment|/**    * It calls SubmoduleOp.update method considering scenario only inserting new    * subscriptions.    *<p>    * In this test a commit is created and considered merged to    *<code>mergedBranch</code> branch.    *</p>    *<p>    * The destination project the commit was merged is not considered to be a    * source of another project (no subscribers found to this project).    *</p>    *    * @param gitModulesFileContent The .gitmodules file content.    * @param mergedBranch The {@link Branch.NameKey} instance representing the    *        project/branch the commit was merged.    * @param extractedSubscriptions The subscription rows extracted from    *        gitmodules file.    * @throws Exception If an exception occurs.    */
 DECL|method|doOnlySubscriptionInserts (final String gitModulesFileContent, final Branch.NameKey mergedBranch, final List<SubmoduleSubscription> extractedSubscriptions)
 specifier|private
 name|void
