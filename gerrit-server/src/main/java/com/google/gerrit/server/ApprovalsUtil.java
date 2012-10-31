@@ -284,6 +284,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -420,7 +430,7 @@ name|approvals
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param change Change to update    * @throws OrmException    * @return List<PatchSetApproval> The previous approvals    */
+comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param change Change to update    * @throws OrmException    * @throws IOException    * @return List<PatchSetApproval> The previous approvals    */
 DECL|method|copyVetosToLatestPatchSet (Change change)
 specifier|public
 name|List
@@ -434,33 +444,8 @@ name|change
 parameter_list|)
 throws|throws
 name|OrmException
-block|{
-return|return
-name|copyVetosToLatestPatchSet
-argument_list|(
-name|db
-argument_list|,
-name|change
-argument_list|)
-return|;
-block|}
-comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param db database connection to use for updates.    * @param change Change to update    * @throws OrmException    * @return List<PatchSetApproval> The previous approvals    */
-DECL|method|copyVetosToLatestPatchSet (ReviewDb db, Change change)
-specifier|public
-name|List
-argument_list|<
-name|PatchSetApproval
-argument_list|>
-name|copyVetosToLatestPatchSet
-parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|Change
-name|change
-parameter_list|)
-throws|throws
-name|OrmException
+throws|,
+name|IOException
 block|{
 name|PatchSet
 operator|.
@@ -502,7 +487,7 @@ else|else
 block|{
 throw|throw
 operator|new
-name|OrmException
+name|IOException
 argument_list|(
 literal|"Previous patch set could not be found"
 argument_list|)
@@ -635,14 +620,12 @@ return|return
 name|patchSetApprovals
 return|;
 block|}
-DECL|method|addReviewers (ReviewDb db, Change change, PatchSet ps, PatchSetInfo info, Set<Id> wantReviewers, Set<Account.Id> existingReviewers)
+comment|/** Attach reviewers to a change. */
+DECL|method|addReviewers (Change change, PatchSet ps, PatchSetInfo info, Set<Account.Id> wantReviewers)
 specifier|public
 name|void
 name|addReviewers
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -654,6 +637,64 @@ name|info
 parameter_list|,
 name|Set
 argument_list|<
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|wantReviewers
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+name|Set
+argument_list|<
+name|Id
+argument_list|>
+name|existing
+init|=
+name|Sets
+operator|.
+expr|<
+name|Account
+operator|.
+name|Id
+operator|>
+name|newHashSet
+argument_list|()
+decl_stmt|;
+name|addReviewers
+argument_list|(
+name|change
+argument_list|,
+name|ps
+argument_list|,
+name|info
+argument_list|,
+name|wantReviewers
+argument_list|,
+name|existing
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Attach reviewers to a change. */
+DECL|method|addReviewers (Change change, PatchSet ps, PatchSetInfo info, Set<Account.Id> wantReviewers, Set<Account.Id> existingReviewers)
+specifier|public
+name|void
+name|addReviewers
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|PatchSet
+name|ps
+parameter_list|,
+name|PatchSetInfo
+name|info
+parameter_list|,
+name|Set
+argument_list|<
+name|Account
+operator|.
 name|Id
 argument_list|>
 name|wantReviewers
