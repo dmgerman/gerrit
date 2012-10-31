@@ -2110,6 +2110,15 @@ argument_list|()
 expr_stmt|;
 name|p
 operator|.
+name|fileOld
+operator|=
+name|patch
+operator|.
+name|getOldName
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
 name|type
 operator|=
 name|patch

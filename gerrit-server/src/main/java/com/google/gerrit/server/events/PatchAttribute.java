@@ -95,6 +95,11 @@ specifier|public
 name|String
 name|file
 decl_stmt|;
+DECL|field|fileOld
+specifier|public
+name|String
+name|fileOld
+decl_stmt|;
 DECL|field|type
 specifier|public
 name|ChangeType
