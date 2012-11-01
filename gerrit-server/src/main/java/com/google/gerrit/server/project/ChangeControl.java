@@ -3176,6 +3176,12 @@ name|db
 argument_list|,
 name|cd
 argument_list|)
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|canViewDrafts
+argument_list|()
 return|;
 block|}
 DECL|method|isUser (Term who)

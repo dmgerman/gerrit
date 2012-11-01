@@ -1420,6 +1420,22 @@ name|REMOVE_REVIEWER
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can view draft changes. */
+DECL|method|canViewDrafts ()
+specifier|public
+name|boolean
+name|canViewDrafts
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|VIEW_DRAFTS
+argument_list|)
+return|;
+block|}
 comment|/** All value ranges of any allowed label permission. */
 DECL|method|getLabelRanges ()
 specifier|public
