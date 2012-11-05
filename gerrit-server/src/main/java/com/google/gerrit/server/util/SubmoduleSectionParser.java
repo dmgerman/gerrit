@@ -447,7 +447,7 @@ name|url
 operator|.
 name|startsWith
 argument_list|(
-literal|"/"
+literal|"../"
 argument_list|)
 decl_stmt|;
 name|String
