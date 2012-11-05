@@ -79,14 +79,12 @@ class|class
 name|CommitValidationResult
 block|{
 DECL|field|validated
-specifier|public
-specifier|final
+specifier|private
 name|boolean
 name|validated
 decl_stmt|;
 DECL|field|message
-specifier|public
-specifier|final
+specifier|private
 name|String
 name|message
 decl_stmt|;
@@ -200,7 +198,24 @@ return|return
 name|validated
 return|;
 block|}
-comment|/**    * Gets additional textual description for the validation.    *    * @return textual validation reason.    */
+comment|/**    * Sets validation status.    * @param validated the validation status    */
+DECL|method|setIsValidated (boolean validated)
+specifier|public
+name|void
+name|setIsValidated
+parameter_list|(
+name|boolean
+name|validated
+parameter_list|)
+block|{
+name|this
+operator|.
+name|validated
+operator|=
+name|validated
+expr_stmt|;
+block|}
+comment|/**    * Gets additional textual description for the validation.    *    * @return textual validation description.    */
 DECL|method|getValidationReason ()
 specifier|public
 name|String
@@ -210,6 +225,23 @@ block|{
 return|return
 name|message
 return|;
+block|}
+comment|/**    * Sets additional textual description for the validation.    * @param message the textual validation description.    */
+DECL|method|setValidationReason (String message)
+specifier|public
+name|void
+name|setValidationReason
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|this
+operator|.
+name|message
+operator|=
+name|message
+expr_stmt|;
 block|}
 block|}
 end_class
