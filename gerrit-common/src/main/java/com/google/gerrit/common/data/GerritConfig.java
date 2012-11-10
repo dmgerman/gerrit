@@ -235,6 +235,11 @@ specifier|protected
 name|String
 name|registerUrl
 decl_stmt|;
+DECL|field|registerText
+specifier|protected
+name|String
+name|registerText
+decl_stmt|;
 DECL|field|httpPasswordUrl
 specifier|protected
 name|String
@@ -392,6 +397,31 @@ block|{
 name|registerUrl
 operator|=
 name|u
+expr_stmt|;
+block|}
+DECL|method|getRegisterText ()
+specifier|public
+name|String
+name|getRegisterText
+parameter_list|()
+block|{
+return|return
+name|registerText
+return|;
+block|}
+DECL|method|setRegisterText (final String t)
+specifier|public
+name|void
+name|setRegisterText
+parameter_list|(
+specifier|final
+name|String
+name|t
+parameter_list|)
+block|{
+name|registerText
+operator|=
+name|t
 expr_stmt|;
 block|}
 DECL|method|getReportBugUrl ()
