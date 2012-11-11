@@ -340,20 +340,6 @@ argument_list|(
 literal|"peer_daemon"
 argument_list|)
 decl_stmt|;
-DECL|field|replication
-specifier|private
-specifier|static
-specifier|final
-name|SymbolTerm
-name|replication
-init|=
-name|SymbolTerm
-operator|.
-name|intern
-argument_list|(
-literal|"replication"
-argument_list|)
-decl_stmt|;
 DECL|method|PRED_current_user_1 (Term a1, Operation n)
 specifier|public
 name|PRED_current_user_1
