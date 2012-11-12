@@ -490,6 +490,11 @@ name|String
 name|projectListQueryLink
 parameter_list|()
 function_decl|;
+DECL|method|projectAdminTabDashboards ()
+name|String
+name|projectAdminTabDashboards
+parameter_list|()
+function_decl|;
 DECL|method|plugins ()
 name|String
 name|plugins
