@@ -1793,17 +1793,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|SignedTokenRestTokenVerifier
-operator|.
-name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|modules
-operator|.
-name|add
-argument_list|(
-operator|new
 name|PluginModule
 argument_list|()
 argument_list|)
