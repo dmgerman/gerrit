@@ -1320,7 +1320,7 @@ name|write
 argument_list|(
 name|HPD_ID
 operator|+
-literal|".xsrfToken="
+literal|".accessToken="
 argument_list|)
 expr_stmt|;
 name|json
@@ -1330,7 +1330,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getToken
+name|getAccessToken
 argument_list|()
 argument_list|,
 name|w

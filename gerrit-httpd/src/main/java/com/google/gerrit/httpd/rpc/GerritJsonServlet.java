@@ -808,7 +808,7 @@ operator|.
 name|getWebSession
 argument_list|()
 operator|.
-name|getToken
+name|getAccessToken
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1413,11 +1413,14 @@ operator|.
 name|isSignedIn
 argument_list|()
 operator|&&
+name|keyIn
+operator|.
+name|equals
+argument_list|(
 name|session
 operator|.
-name|isTokenValid
-argument_list|(
-name|keyIn
+name|getAccessToken
+argument_list|()
 argument_list|)
 return|;
 block|}

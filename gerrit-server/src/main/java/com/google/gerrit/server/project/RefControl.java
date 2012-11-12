@@ -1047,7 +1047,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|WEB_UI
+name|REST_API
 case|:
 name|owner
 operator|=
@@ -1294,7 +1294,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|WEB_UI
+name|REST_API
 case|:
 return|return
 name|isOwner

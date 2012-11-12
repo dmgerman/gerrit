@@ -106,37 +106,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|AccessPath
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|AuthMethod
 import|;
 end_import
 
@@ -162,32 +132,17 @@ specifier|public
 interface|interface
 name|WebSession
 block|{
-DECL|method|getAuthMethod ()
-specifier|public
-name|AuthMethod
-name|getAuthMethod
-parameter_list|()
-function_decl|;
 DECL|method|isSignedIn ()
 specifier|public
 name|boolean
 name|isSignedIn
 parameter_list|()
 function_decl|;
-DECL|method|getToken ()
+DECL|method|getAccessToken ()
 specifier|public
 name|String
-name|getToken
+name|getAccessToken
 parameter_list|()
-function_decl|;
-DECL|method|isTokenValid (String inputToken)
-specifier|public
-name|boolean
-name|isTokenValid
-parameter_list|(
-name|String
-name|inputToken
-parameter_list|)
 function_decl|;
 DECL|method|getLastLoginExternalId ()
 specifier|public
@@ -203,7 +158,7 @@ name|CurrentUser
 name|getCurrentUser
 parameter_list|()
 function_decl|;
-DECL|method|login (AuthResult res, AuthMethod meth, boolean rememberMe)
+DECL|method|login (AuthResult res, boolean rememberMe)
 specifier|public
 name|void
 name|login
@@ -211,25 +166,12 @@ parameter_list|(
 name|AuthResult
 name|res
 parameter_list|,
-name|AuthMethod
-name|meth
-parameter_list|,
 name|boolean
 name|rememberMe
 parameter_list|)
 function_decl|;
-comment|/** Change the access path from the default of {@link AccessPath#WEB_UI}. */
-DECL|method|setAccessPath (AccessPath path)
-specifier|public
-name|void
-name|setAccessPath
-parameter_list|(
-name|AccessPath
-name|path
-parameter_list|)
-function_decl|;
 comment|/** Set the user account for this current request only. */
-DECL|method|setUserAccountId (Account.Id id, AuthMethod method)
+DECL|method|setUserAccountId (Account.Id id)
 specifier|public
 name|void
 name|setUserAccountId
@@ -238,9 +180,6 @@ name|Account
 operator|.
 name|Id
 name|id
-parameter_list|,
-name|AuthMethod
-name|method
 parameter_list|)
 function_decl|;
 DECL|method|logout ()

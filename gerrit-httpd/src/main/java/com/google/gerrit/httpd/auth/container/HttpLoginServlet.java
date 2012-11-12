@@ -154,22 +154,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AuthMethod
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|AuthRequest
 import|;
 end_import
@@ -964,10 +948,6 @@ operator|.
 name|login
 argument_list|(
 name|arsp
-argument_list|,
-name|AuthMethod
-operator|.
-name|COOKIE
 argument_list|,
 literal|true
 comment|/* persistent cookie */

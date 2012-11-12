@@ -1199,11 +1199,11 @@ specifier|static
 name|AccountDiffPreference
 name|myAccountDiffPref
 decl_stmt|;
-DECL|field|xsrfToken
+DECL|field|accessToken
 specifier|private
 specifier|static
 name|String
-name|xsrfToken
+name|accessToken
 decl_stmt|;
 DECL|field|menuLeft
 specifier|private
@@ -1771,6 +1771,18 @@ return|return
 name|myAccount
 return|;
 block|}
+comment|/** @return access token to prove user identity during REST API calls. */
+DECL|method|getAccessToken ()
+specifier|public
+specifier|static
+name|String
+name|getAccessToken
+parameter_list|()
+block|{
+return|return
+name|accessToken
+return|;
+block|}
 comment|/** @return the currently signed in users's diff preferences; null if no diff preferences defined for the account */
 DECL|method|getAccountDiffPreference ()
 specifier|public
@@ -2226,7 +2238,7 @@ name|myAccountDiffPref
 operator|=
 literal|null
 expr_stmt|;
-name|xsrfToken
+name|accessToken
 operator|=
 literal|null
 expr_stmt|;
@@ -2454,11 +2466,11 @@ name|result
 operator|.
 name|account
 expr_stmt|;
-name|xsrfToken
+name|accessToken
 operator|=
 name|result
 operator|.
-name|xsrfToken
+name|accessToken
 expr_stmt|;
 block|}
 if|if
@@ -3393,7 +3405,7 @@ name|proxy
 parameter_list|)
 block|{
 return|return
-name|xsrfToken
+name|accessToken
 return|;
 block|}
 annotation|@

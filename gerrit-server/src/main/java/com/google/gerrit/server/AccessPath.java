@@ -78,9 +78,13 @@ comment|/** An unknown access path, probably should not be special. */
 DECL|enumConstant|UNKNOWN
 name|UNKNOWN
 block|,
-comment|/** Access through the web UI. */
-DECL|enumConstant|WEB_UI
-name|WEB_UI
+comment|/** Access through the REST API. */
+DECL|enumConstant|REST_API
+name|REST_API
+block|,
+comment|/** Access by a web cookie. This path is not protected like REST_API. */
+DECL|enumConstant|WEB_BROWSER
+name|WEB_BROWSER
 block|,
 comment|/** Access through an SSH command that is not invoked by Git. */
 DECL|enumConstant|SSH_COMMAND

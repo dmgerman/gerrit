@@ -128,10 +128,10 @@ specifier|public
 name|AccountDiffPreference
 name|accountDiffPref
 decl_stmt|;
-DECL|field|xsrfToken
+DECL|field|accessToken
 specifier|public
 name|String
-name|xsrfToken
+name|accessToken
 decl_stmt|;
 DECL|field|config
 specifier|public
