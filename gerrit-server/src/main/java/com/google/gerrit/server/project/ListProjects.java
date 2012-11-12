@@ -2475,6 +2475,13 @@ specifier|static
 class|class
 name|ProjectInfo
 block|{
+DECL|field|kind
+specifier|final
+name|String
+name|kind
+init|=
+literal|"gerritcodereview#project"
+decl_stmt|;
 DECL|field|name
 specifier|transient
 name|String

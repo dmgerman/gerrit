@@ -4373,6 +4373,13 @@ specifier|static
 class|class
 name|ChangeInfo
 block|{
+DECL|field|kind
+specifier|final
+name|String
+name|kind
+init|=
+literal|"gerritcodereview#change"
+decl_stmt|;
 DECL|field|project
 name|String
 name|project
