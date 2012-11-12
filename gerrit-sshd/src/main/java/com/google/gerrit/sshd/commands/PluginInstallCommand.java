@@ -632,10 +632,25 @@ argument_list|(
 name|stderr
 argument_list|)
 expr_stmt|;
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Plugin failed to install. Cause: %s"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+decl_stmt|;
 throw|throw
 name|die
 argument_list|(
-literal|"plugin failed to install"
+name|msg
 argument_list|)
 throw|;
 block|}

@@ -595,15 +595,6 @@ literal|".disabled"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getSrcFile ()
-name|File
-name|getSrcFile
-parameter_list|()
-block|{
-return|return
-name|srcFile
-return|;
-block|}
 DECL|method|getPluginUser ()
 name|PluginUser
 name|getPluginUser
@@ -611,6 +602,16 @@ parameter_list|()
 block|{
 return|return
 name|pluginUser
+return|;
+block|}
+DECL|method|getSrcFile ()
+specifier|public
+name|File
+name|getSrcFile
+parameter_list|()
+block|{
+return|return
+name|srcFile
 return|;
 block|}
 DECL|method|getName ()
