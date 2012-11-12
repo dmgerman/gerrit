@@ -1514,7 +1514,7 @@ argument_list|)
 decl_stmt|;
 name|active
 operator|.
-name|getSrcJar
+name|getSrcFile
 argument_list|()
 operator|.
 name|renameTo
@@ -1672,7 +1672,7 @@ argument_list|)
 decl_stmt|;
 name|off
 operator|.
-name|getSrcJar
+name|getSrcFile
 argument_list|()
 operator|.
 name|renameTo
@@ -2014,7 +2014,7 @@ name|name
 argument_list|,
 name|active
 operator|.
-name|getSrcJar
+name|getSrcFile
 argument_list|()
 argument_list|,
 name|active
@@ -3038,7 +3038,7 @@ name|Plugin
 name|plugin
 init|=
 operator|new
-name|Plugin
+name|JarPlugin
 argument_list|(
 name|name
 argument_list|,
