@@ -323,7 +323,7 @@ name|Change
 operator|.
 name|Key
 argument_list|(
-name|id
+name|change_id
 argument_list|()
 argument_list|)
 operator|.
@@ -372,6 +372,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|id ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|id
+parameter_list|()
+comment|/*-{ return this.id; }-*/
+function_decl|;
 DECL|method|project ()
 specifier|public
 specifier|final
@@ -399,14 +408,14 @@ name|topic
 parameter_list|()
 comment|/*-{ return this.topic; }-*/
 function_decl|;
-DECL|method|id ()
+DECL|method|change_id ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|id
+name|change_id
 parameter_list|()
-comment|/*-{ return this.id; }-*/
+comment|/*-{ return this.change_id; }-*/
 function_decl|;
 DECL|method|statusRaw ()
 specifier|private
