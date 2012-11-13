@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -78,42 +78,51 @@ name|i18n
 operator|.
 name|client
 operator|.
-name|Constants
+name|Messages
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
 import|;
 end_import
 
 begin_interface
-DECL|interface|UIConstants
+DECL|interface|UIMessages
 specifier|public
 interface|interface
-name|UIConstants
+name|UIMessages
 extends|extends
-name|Constants
+name|Messages
 block|{
-DECL|method|commentedActionButtonSend ()
+DECL|method|helpListOpen (String item)
 name|String
-name|commentedActionButtonSend
-parameter_list|()
+name|helpListOpen
+parameter_list|(
+name|String
+name|item
+parameter_list|)
 function_decl|;
-DECL|method|commentedActionButtonCancel ()
+DECL|method|helpListPrev (String item)
 name|String
-name|commentedActionButtonCancel
-parameter_list|()
+name|helpListPrev
+parameter_list|(
+name|String
+name|item
+parameter_list|)
 function_decl|;
-DECL|method|projectName ()
+DECL|method|helpListNext (String item)
 name|String
-name|projectName
-parameter_list|()
-function_decl|;
-DECL|method|projectDescription ()
+name|helpListNext
+parameter_list|(
 name|String
-name|projectDescription
-parameter_list|()
-function_decl|;
-DECL|method|projectItemHelp ()
-name|String
-name|projectItemHelp
-parameter_list|()
+name|item
+parameter_list|)
 function_decl|;
 block|}
 end_interface

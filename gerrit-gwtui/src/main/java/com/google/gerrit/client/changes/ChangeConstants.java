@@ -210,19 +210,9 @@ name|String
 name|changeTableNone
 parameter_list|()
 function_decl|;
-DECL|method|changeTablePrev ()
+DECL|method|changeItemHelp ()
 name|String
-name|changeTablePrev
-parameter_list|()
-function_decl|;
-DECL|method|changeTableNext ()
-name|String
-name|changeTableNext
-parameter_list|()
-function_decl|;
-DECL|method|changeTableOpen ()
-name|String
-name|changeTableOpen
+name|changeItemHelp
 parameter_list|()
 function_decl|;
 DECL|method|changeTableStar ()
