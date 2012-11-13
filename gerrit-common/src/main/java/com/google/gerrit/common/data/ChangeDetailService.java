@@ -319,6 +319,32 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
+annotation|@
+name|Audit
+annotation|@
+name|SignInRequired
+DECL|method|alterTopic (Change.Id id, String topic, String message, AsyncCallback<ChangeDetail> callback)
+name|void
+name|alterTopic
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|topic
+parameter_list|,
+name|String
+name|message
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ChangeDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
