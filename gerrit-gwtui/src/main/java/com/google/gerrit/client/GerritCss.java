@@ -238,6 +238,11 @@ name|String
 name|changeInfoBlock
 parameter_list|()
 function_decl|;
+DECL|method|changeInfoBlockEdit ()
+name|String
+name|changeInfoBlockEdit
+parameter_list|()
+function_decl|;
 DECL|method|changeScreen ()
 name|String
 name|changeScreen

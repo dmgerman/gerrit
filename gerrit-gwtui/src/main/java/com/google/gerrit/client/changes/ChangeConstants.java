@@ -460,6 +460,36 @@ name|String
 name|changeInfoBlockCanMergeNo
 parameter_list|()
 function_decl|;
+DECL|method|buttonAlterTopic ()
+name|String
+name|buttonAlterTopic
+parameter_list|()
+function_decl|;
+DECL|method|buttonAlterTopicBegin ()
+name|String
+name|buttonAlterTopicBegin
+parameter_list|()
+function_decl|;
+DECL|method|buttonAlterTopicSend ()
+name|String
+name|buttonAlterTopicSend
+parameter_list|()
+function_decl|;
+DECL|method|buttonAlterTopicCancel ()
+name|String
+name|buttonAlterTopicCancel
+parameter_list|()
+function_decl|;
+DECL|method|headingAlterTopicMessage ()
+name|String
+name|headingAlterTopicMessage
+parameter_list|()
+function_decl|;
+DECL|method|alterTopicTitle ()
+name|String
+name|alterTopicTitle
+parameter_list|()
+function_decl|;
 DECL|method|includedInTableBranch ()
 name|String
 name|includedInTableBranch

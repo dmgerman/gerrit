@@ -154,6 +154,17 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"editText.png"
+argument_list|)
+DECL|method|edit ()
+specifier|public
+name|ImageResource
+name|edit
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"starOpen.gif"
 argument_list|)
 DECL|method|starOpen ()
