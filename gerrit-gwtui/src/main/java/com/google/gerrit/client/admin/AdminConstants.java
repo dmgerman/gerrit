@@ -495,6 +495,11 @@ name|String
 name|projectAdminTabAccess
 parameter_list|()
 function_decl|;
+DECL|method|projectListQueryLink ()
+name|String
+name|projectListQueryLink
+parameter_list|()
+function_decl|;
 DECL|method|plugins ()
 name|String
 name|plugins

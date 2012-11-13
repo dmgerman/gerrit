@@ -206,6 +206,17 @@ name|ImageResource
 name|downloadIcon
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"queryProjectLink.png"
+argument_list|)
+DECL|method|queryProjectLink ()
+specifier|public
+name|ImageResource
+name|queryProjectLink
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
