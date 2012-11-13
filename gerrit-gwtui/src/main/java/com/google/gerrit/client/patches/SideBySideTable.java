@@ -627,6 +627,15 @@ name|int
 name|column
 parameter_list|)
 block|{
+name|super
+operator|.
+name|onCellSingleClick
+argument_list|(
+name|row
+argument_list|,
+name|column
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|column
