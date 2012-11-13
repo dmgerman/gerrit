@@ -962,13 +962,6 @@ operator|.
 name|Factory
 name|capabilityControlFactory
 decl_stmt|;
-DECL|field|changeControlFactory
-specifier|final
-name|ChangeControl
-operator|.
-name|Factory
-name|changeControlFactory
-decl_stmt|;
 DECL|field|changeControlGenericFactory
 specifier|final
 name|ChangeControl
@@ -1013,7 +1006,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.Factory changeControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, ApprovalTypes approvalTypes, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, ApprovalTypes approvalTypes, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -1037,11 +1030,6 @@ name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-name|ChangeControl
-operator|.
-name|Factory
-name|changeControlFactory
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -1093,12 +1081,6 @@ operator|.
 name|capabilityControlFactory
 operator|=
 name|capabilityControlFactory
-expr_stmt|;
-name|this
-operator|.
-name|changeControlFactory
-operator|=
-name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
