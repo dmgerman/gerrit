@@ -11928,7 +11928,7 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"not Signed-off-by author/committer/uploader"
+literal|"not Signed-off-by author/committer/uploader in commit message footer"
 argument_list|)
 expr_stmt|;
 return|return
@@ -11998,7 +11998,7 @@ block|{
 name|String
 name|errMsg
 init|=
-literal|"missing Change-Id in commit message"
+literal|"missing Change-Id in commit message footer"
 decl_stmt|;
 name|reject
 argument_list|(
@@ -12037,7 +12037,7 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-literal|"multiple Change-Id lines in commit message"
+literal|"multiple Change-Id lines in commit message footer"
 argument_list|)
 expr_stmt|;
 return|return
@@ -12080,7 +12080,7 @@ specifier|final
 name|String
 name|errMsg
 init|=
-literal|"missing or invalid Change-Id line format in commit message"
+literal|"missing or invalid Change-Id line format in commit message footer"
 decl_stmt|;
 name|reject
 argument_list|(
