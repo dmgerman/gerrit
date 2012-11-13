@@ -2519,37 +2519,6 @@ name|ChangeData
 name|cd
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|patchSet
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|change
-operator|.
-name|currentPatchSetId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-name|typeRuleError
-argument_list|(
-literal|"Patch set "
-operator|+
-name|patchSet
-operator|.
-name|getPatchSetId
-argument_list|()
-operator|+
-literal|" is not current"
-argument_list|)
-return|;
-block|}
 try|try
 block|{
 if|if
