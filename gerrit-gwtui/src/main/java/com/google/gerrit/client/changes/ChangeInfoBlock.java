@@ -1537,7 +1537,12 @@ argument_list|(
 operator|new
 name|InlineLabel
 argument_list|(
-literal|"Alter topic to:"
+name|Util
+operator|.
+name|C
+operator|.
+name|alterTopicLabel
+argument_list|()
 argument_list|)
 argument_list|,
 literal|0

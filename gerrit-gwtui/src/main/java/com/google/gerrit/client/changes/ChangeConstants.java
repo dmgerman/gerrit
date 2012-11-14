@@ -480,6 +480,11 @@ name|String
 name|alterTopicTitle
 parameter_list|()
 function_decl|;
+DECL|method|alterTopicLabel ()
+name|String
+name|alterTopicLabel
+parameter_list|()
+function_decl|;
 DECL|method|includedInTableBranch ()
 name|String
 name|includedInTableBranch
