@@ -82,16 +82,6 @@ name|Messages
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
 begin_interface
 DECL|interface|UIMessages
 specifier|public
