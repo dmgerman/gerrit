@@ -228,10 +228,6 @@ block|{
 name|super
 argument_list|(
 name|capabilityControlFactory
-argument_list|,
-name|AccessPath
-operator|.
-name|UNKNOWN
 argument_list|)
 expr_stmt|;
 block|}

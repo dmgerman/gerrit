@@ -430,6 +430,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|util
+operator|.
+name|Providers
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -774,10 +788,9 @@ block|{
 return|return
 name|create
 argument_list|(
-name|AccessPath
-operator|.
-name|UNKNOWN
-argument_list|,
+operator|(
+name|SocketAddress
+operator|)
 literal|null
 argument_list|,
 name|id
@@ -807,10 +820,6 @@ name|IdentifiedUser
 argument_list|(
 name|capabilityControlFactory
 argument_list|,
-name|AccessPath
-operator|.
-name|UNKNOWN
-argument_list|,
 name|authConfig
 argument_list|,
 name|anonymousCowardName
@@ -831,19 +840,13 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|create (AccessPath accessPath, Provider<SocketAddress> remotePeerProvider, Account.Id id)
+DECL|method|create (SocketAddress remotePeer, Account.Id id)
 specifier|public
 name|IdentifiedUser
 name|create
 parameter_list|(
-name|AccessPath
-name|accessPath
-parameter_list|,
-name|Provider
-argument_list|<
 name|SocketAddress
-argument_list|>
-name|remotePeerProvider
+name|remotePeer
 parameter_list|,
 name|Account
 operator|.
@@ -857,8 +860,6 @@ name|IdentifiedUser
 argument_list|(
 name|capabilityControlFactory
 argument_list|,
-name|accessPath
-argument_list|,
 name|authConfig
 argument_list|,
 name|anonymousCowardName
@@ -871,7 +872,12 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
-name|remotePeerProvider
+name|Providers
+operator|.
+name|of
+argument_list|(
+name|remotePeer
+argument_list|)
 argument_list|,
 literal|null
 argument_list|,
@@ -1067,16 +1073,11 @@ operator|=
 name|dbProvider
 expr_stmt|;
 block|}
-DECL|method|create (final AccessPath accessPath, final Account.Id id)
+DECL|method|create (Account.Id id)
 specifier|public
 name|IdentifiedUser
 name|create
 parameter_list|(
-specifier|final
-name|AccessPath
-name|accessPath
-parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1088,8 +1089,6 @@ operator|new
 name|IdentifiedUser
 argument_list|(
 name|capabilityControlFactory
-argument_list|,
-name|accessPath
 argument_list|,
 name|authConfig
 argument_list|,
@@ -1251,7 +1250,7 @@ name|AccountProjectWatch
 argument_list|>
 name|notificationFilters
 decl_stmt|;
-DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AccessPath accessPath, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupBackend groupBackend, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
+DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupBackend groupBackend, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -1259,10 +1258,6 @@ name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-specifier|final
-name|AccessPath
-name|accessPath
 parameter_list|,
 specifier|final
 name|AuthConfig
@@ -1319,8 +1314,6 @@ block|{
 name|super
 argument_list|(
 name|capabilityControlFactory
-argument_list|,
-name|accessPath
 argument_list|)
 expr_stmt|;
 name|this

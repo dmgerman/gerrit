@@ -106,6 +106,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AccessPath
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -189,6 +203,27 @@ name|Account
 operator|.
 name|Id
 name|id
+parameter_list|)
+function_decl|;
+DECL|method|isAccessPathOk (AccessPath path)
+specifier|public
+name|boolean
+name|isAccessPathOk
+parameter_list|(
+name|AccessPath
+name|path
+parameter_list|)
+function_decl|;
+DECL|method|setAccessPathOk (AccessPath path, boolean ok)
+specifier|public
+name|void
+name|setAccessPathOk
+parameter_list|(
+name|AccessPath
+name|path
+parameter_list|,
+name|boolean
+name|ok
 parameter_list|)
 function_decl|;
 DECL|method|logout ()
