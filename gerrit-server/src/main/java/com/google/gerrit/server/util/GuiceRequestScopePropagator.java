@@ -116,6 +116,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|RequestScopedReviewDbProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -280,7 +296,7 @@ name|peer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GuiceRequestScopePropagator ( @anonicalWebUrl @ullable Provider<String> urlProvider, @RemotePeer Provider<SocketAddress> remotePeerProvider, ThreadLocalRequestContext local)
+DECL|method|GuiceRequestScopePropagator ( @anonicalWebUrl @ullable Provider<String> urlProvider, @RemotePeer Provider<SocketAddress> remotePeerProvider, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|GuiceRequestScopePropagator
 parameter_list|(
 annotation|@
@@ -303,6 +319,12 @@ name|remotePeerProvider
 parameter_list|,
 name|ThreadLocalRequestContext
 name|local
+parameter_list|,
+name|Provider
+argument_list|<
+name|RequestScopedReviewDbProvider
+argument_list|>
+name|dbProviderProvider
 parameter_list|)
 block|{
 name|super
@@ -312,6 +334,8 @@ operator|.
 name|REQUEST
 argument_list|,
 name|local
+argument_list|,
+name|dbProviderProvider
 argument_list|)
 expr_stmt|;
 name|this

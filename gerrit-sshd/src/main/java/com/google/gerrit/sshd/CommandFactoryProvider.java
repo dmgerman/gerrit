@@ -104,6 +104,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -141,6 +157,20 @@ operator|.
 name|SshScope
 operator|.
 name|Context
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|SchemaFactory
 import|;
 end_import
 
@@ -474,9 +504,18 @@ specifier|final
 name|Executor
 name|destroyExecutor
 decl_stmt|;
+DECL|field|schemaFactory
+specifier|private
+specifier|final
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|schemaFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) final DispatchCommandProvider d, @GerritServerConfig final Config cfg, final WorkQueue workQueue, final SshLog l, final SshScope s)
+DECL|method|CommandFactoryProvider ( @ommandNameCommands.ROOT) final DispatchCommandProvider d, @GerritServerConfig final Config cfg, final WorkQueue workQueue, final SshLog l, final SshScope s, SchemaFactory<ReviewDb> sf)
 name|CommandFactoryProvider
 parameter_list|(
 annotation|@
@@ -507,6 +546,12 @@ parameter_list|,
 specifier|final
 name|SshScope
 name|s
+parameter_list|,
+name|SchemaFactory
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|sf
 parameter_list|)
 block|{
 name|dispatcher
@@ -520,6 +565,10 @@ expr_stmt|;
 name|sshScope
 operator|=
 name|s
+expr_stmt|;
+name|schemaFactory
+operator|=
+name|sf
 expr_stmt|;
 name|int
 name|threads
@@ -811,6 +860,8 @@ name|sshScope
 operator|.
 name|newContext
 argument_list|(
+name|schemaFactory
+argument_list|,
 name|s
 argument_list|,
 name|commandLine

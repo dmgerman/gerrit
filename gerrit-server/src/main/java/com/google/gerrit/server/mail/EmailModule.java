@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.util
+DECL|package|com.google.gerrit.server.mail
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|mail
 package|;
 end_package
 
@@ -74,65 +74,42 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
-name|ReviewDb
+name|config
+operator|.
+name|FactoryModule
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_comment
-comment|/**  * The RequestContext is an interface exposing the fields that are needed  * by the GerritGlobalModule scope.  */
-end_comment
-
-begin_interface
-DECL|interface|RequestContext
+begin_class
+DECL|class|EmailModule
 specifier|public
-interface|interface
-name|RequestContext
+class|class
+name|EmailModule
+extends|extends
+name|FactoryModule
 block|{
-DECL|method|getCurrentUser ()
-name|CurrentUser
-name|getCurrentUser
+annotation|@
+name|Override
+DECL|method|configure ()
+specifier|protected
+name|void
+name|configure
 parameter_list|()
-function_decl|;
-DECL|method|getReviewDbProvider ()
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|getReviewDbProvider
-parameter_list|()
-function_decl|;
+block|{
+name|factory
+argument_list|(
+name|AbandonedSender
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

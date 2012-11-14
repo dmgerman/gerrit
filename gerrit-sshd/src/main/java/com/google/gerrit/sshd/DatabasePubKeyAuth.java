@@ -1154,6 +1154,8 @@ name|sshScope
 operator|.
 name|newContext
 argument_list|(
+literal|null
+argument_list|,
 name|sd
 argument_list|,
 literal|null
@@ -1222,6 +1224,8 @@ name|sshScope
 operator|.
 name|newContext
 argument_list|(
+literal|null
+argument_list|,
 name|sd
 argument_list|,
 literal|null

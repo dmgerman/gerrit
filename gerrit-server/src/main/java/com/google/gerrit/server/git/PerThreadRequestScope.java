@@ -90,6 +90,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|RequestScopedReviewDbProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|RequestContext
@@ -353,11 +369,17 @@ argument_list|>
 block|{
 annotation|@
 name|Inject
-DECL|method|Propagator (ThreadLocalRequestContext local)
+DECL|method|Propagator (ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|Propagator
 parameter_list|(
 name|ThreadLocalRequestContext
 name|local
+parameter_list|,
+name|Provider
+argument_list|<
+name|RequestScopedReviewDbProvider
+argument_list|>
+name|dbProviderProvider
 parameter_list|)
 block|{
 name|super
@@ -367,6 +389,8 @@ argument_list|,
 name|current
 argument_list|,
 name|local
+argument_list|,
+name|dbProviderProvider
 argument_list|)
 expr_stmt|;
 block|}
