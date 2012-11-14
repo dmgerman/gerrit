@@ -625,9 +625,19 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Topic changed to: "
+literal|"Topic changed from \""
+operator|+
+name|change
+operator|.
+name|getTopic
+argument_list|()
+comment|//
+operator|+
+literal|"\" to \""
 operator|+
 name|topic
+operator|+
+literal|"\""
 argument_list|)
 decl_stmt|;
 if|if
