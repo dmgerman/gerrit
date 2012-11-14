@@ -541,6 +541,10 @@ DECL|field|contributorAgreements
 specifier|private
 name|InheritedBoolean
 name|contributorAgreements
+init|=
+name|InheritedBoolean
+operator|.
+name|INHERIT
 decl_stmt|;
 annotation|@
 name|Option
