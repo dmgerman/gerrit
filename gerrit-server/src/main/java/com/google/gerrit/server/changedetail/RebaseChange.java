@@ -2390,12 +2390,22 @@ name|setMessage
 argument_list|(
 literal|"Patch Set "
 operator|+
+name|change
+operator|.
+name|currentPatchSetId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|": Patch Set "
+operator|+
 name|patchSetId
 operator|.
 name|get
 argument_list|()
 operator|+
-literal|": Rebased"
+literal|" was rebased onto the latest head"
 argument_list|)
 expr_stmt|;
 name|db
