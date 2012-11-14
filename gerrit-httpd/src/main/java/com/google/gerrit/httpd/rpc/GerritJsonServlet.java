@@ -808,7 +808,7 @@ operator|.
 name|getWebSession
 argument_list|()
 operator|.
-name|getAccessToken
+name|getAuthorization
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1419,7 +1419,7 @@ name|equals
 argument_list|(
 name|session
 operator|.
-name|getAccessToken
+name|getAuthorization
 argument_list|()
 argument_list|)
 return|;

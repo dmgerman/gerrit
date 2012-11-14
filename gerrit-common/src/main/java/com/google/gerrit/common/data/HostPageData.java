@@ -128,10 +128,10 @@ specifier|public
 name|AccountDiffPreference
 name|accountDiffPref
 decl_stmt|;
-DECL|field|accessToken
+DECL|field|authorization
 specifier|public
 name|String
-name|accessToken
+name|authorization
 decl_stmt|;
 DECL|field|config
 specifier|public

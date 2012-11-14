@@ -627,7 +627,7 @@ name|cookie
 operator|.
 name|startsWith
 argument_list|(
-literal|"OAuth "
+literal|"Bearer "
 argument_list|)
 condition|)
 block|{
@@ -637,7 +637,7 @@ name|cookie
 operator|.
 name|substring
 argument_list|(
-literal|"OAuth "
+literal|"Bearer "
 operator|.
 name|length
 argument_list|()
@@ -845,16 +845,18 @@ operator|!=
 literal|null
 return|;
 block|}
-DECL|method|getAccessToken ()
+DECL|method|getAuthorization ()
 specifier|public
 name|String
-name|getAccessToken
+name|getAuthorization
 parameter_list|()
 block|{
 return|return
 name|isSignedIn
 argument_list|()
 condition|?
+literal|"Bearer "
+operator|+
 name|key
 operator|.
 name|getToken
