@@ -144,6 +144,15 @@ name|parameters
 parameter_list|()
 comment|/*-{ return this.parameters; }-*/
 function_decl|;
+DECL|method|isDefault ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isDefault
+parameter_list|()
+comment|/*-{ return this.isDefault ? true : false; }-*/
+function_decl|;
 DECL|method|DashboardInfo ()
 specifier|protected
 name|DashboardInfo
