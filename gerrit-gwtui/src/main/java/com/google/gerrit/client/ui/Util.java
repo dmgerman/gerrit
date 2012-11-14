@@ -104,6 +104,22 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|M
+specifier|public
+specifier|static
+specifier|final
+name|UIMessages
+name|M
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|UIMessages
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 block|}
 end_class
 

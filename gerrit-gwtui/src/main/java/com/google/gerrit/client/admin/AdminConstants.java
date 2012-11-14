@@ -435,19 +435,9 @@ name|String
 name|branchDeletionOpenChanges
 parameter_list|()
 function_decl|;
-DECL|method|groupListPrev ()
+DECL|method|groupItemHelp ()
 name|String
-name|groupListPrev
-parameter_list|()
-function_decl|;
-DECL|method|groupListNext ()
-name|String
-name|groupListNext
-parameter_list|()
-function_decl|;
-DECL|method|groupListOpen ()
-name|String
-name|groupListOpen
+name|groupItemHelp
 parameter_list|()
 function_decl|;
 DECL|method|groupListTitle ()
