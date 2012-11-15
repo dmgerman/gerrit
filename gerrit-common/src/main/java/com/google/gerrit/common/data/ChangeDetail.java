@@ -312,6 +312,11 @@ specifier|protected
 name|boolean
 name|canEdit
 decl_stmt|;
+DECL|field|canEditTopicName
+specifier|protected
+name|boolean
+name|canEditTopicName
+decl_stmt|;
 DECL|method|ChangeDetail ()
 specifier|public
 name|ChangeDetail
@@ -534,6 +539,30 @@ name|a
 parameter_list|)
 block|{
 name|canDeleteDraft
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canEditTopicName ()
+specifier|public
+name|boolean
+name|canEditTopicName
+parameter_list|()
+block|{
+return|return
+name|canEditTopicName
+return|;
+block|}
+DECL|method|setCanEditTopicName (boolean a)
+specifier|public
+name|void
+name|setCanEditTopicName
+parameter_list|(
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canEditTopicName
 operator|=
 name|a
 expr_stmt|;

@@ -1343,6 +1343,16 @@ name|canWrite
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|detail
+operator|.
+name|setCanEditTopicName
+argument_list|(
+name|control
+operator|.
+name|canEditTopicName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|SubmitRecord

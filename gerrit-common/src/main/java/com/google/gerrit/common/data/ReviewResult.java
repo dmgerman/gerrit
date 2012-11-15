@@ -262,6 +262,10 @@ block|,
 comment|/** The destination branch does not exist */
 DECL|enumConstant|DEST_BRANCH_NOT_FOUND
 name|DEST_BRANCH_NOT_FOUND
+block|,
+comment|/** Not permitted to edit the topic name */
+DECL|enumConstant|EDIT_TOPIC_NAME_NOT_PERMITTED
+name|EDIT_TOPIC_NAME_NOT_PERMITTED
 block|}
 DECL|field|type
 specifier|protected
