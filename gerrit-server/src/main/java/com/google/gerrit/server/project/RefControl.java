@@ -1436,6 +1436,21 @@ name|VIEW_DRAFTS
 argument_list|)
 return|;
 block|}
+DECL|method|canEditTopicName ()
+specifier|public
+name|boolean
+name|canEditTopicName
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_TOPIC_NAME
+argument_list|)
+return|;
+block|}
 comment|/** All value ranges of any allowed label permission. */
 DECL|method|getLabelRanges ()
 specifier|public

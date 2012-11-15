@@ -1571,6 +1571,50 @@ return|return
 literal|false
 return|;
 block|}
+comment|/** Can this user edit the topic name? */
+DECL|method|canEditTopicName ()
+specifier|public
+name|boolean
+name|canEditTopicName
+parameter_list|()
+block|{
+return|return
+name|isOwner
+argument_list|()
+comment|// owner (aka creator) of the change can edit topic
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// branch owner can edit topic
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// project owner can edit topic
+operator|||
+name|getCurrentUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
+argument_list|()
+comment|// site administers are god
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|canEditTopicName
+argument_list|()
+comment|// user can edit topic on a specific ref
+return|;
+block|}
 DECL|method|getSubmitRecords (ReviewDb db, PatchSet patchSet)
 specifier|public
 name|List
