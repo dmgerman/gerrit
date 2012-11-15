@@ -169,15 +169,6 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|RestoreChangeHandler
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
 name|RebaseChangeHandler
 operator|.
 name|Factory
