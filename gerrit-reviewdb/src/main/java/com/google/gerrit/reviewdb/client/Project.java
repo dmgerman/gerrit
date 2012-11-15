@@ -380,6 +380,16 @@ specifier|protected
 name|InheritedBoolean
 name|useContentMerge
 decl_stmt|;
+DECL|field|defaultDashboardId
+specifier|protected
+name|String
+name|defaultDashboardId
+decl_stmt|;
+DECL|field|localDefaultDashboardId
+specifier|protected
+name|String
+name|localDefaultDashboardId
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -640,6 +650,60 @@ block|{
 name|state
 operator|=
 name|newState
+expr_stmt|;
+block|}
+DECL|method|getDefaultDashboard ()
+specifier|public
+name|String
+name|getDefaultDashboard
+parameter_list|()
+block|{
+return|return
+name|defaultDashboardId
+return|;
+block|}
+DECL|method|setDefaultDashboard (final String defaultDashboardId)
+specifier|public
+name|void
+name|setDefaultDashboard
+parameter_list|(
+specifier|final
+name|String
+name|defaultDashboardId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|defaultDashboardId
+operator|=
+name|defaultDashboardId
+expr_stmt|;
+block|}
+DECL|method|getLocalDefaultDashboard ()
+specifier|public
+name|String
+name|getLocalDefaultDashboard
+parameter_list|()
+block|{
+return|return
+name|localDefaultDashboardId
+return|;
+block|}
+DECL|method|setLocalDefaultDashboard (final String localDefaultDashboardId)
+specifier|public
+name|void
+name|setLocalDefaultDashboard
+parameter_list|(
+specifier|final
+name|String
+name|localDefaultDashboardId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|localDefaultDashboardId
+operator|=
+name|localDefaultDashboardId
 expr_stmt|;
 block|}
 DECL|method|copySettingsFrom (final Project update)
