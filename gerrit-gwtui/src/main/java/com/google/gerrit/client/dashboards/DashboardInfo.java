@@ -151,7 +151,7 @@ specifier|native
 name|boolean
 name|isDefault
 parameter_list|()
-comment|/*-{ return this.isDefault ? true : false; }-*/
+comment|/*-{ return this.is_default ? true : false; }-*/
 function_decl|;
 DECL|method|DashboardInfo ()
 specifier|protected
