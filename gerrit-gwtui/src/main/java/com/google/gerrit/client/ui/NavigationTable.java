@@ -965,7 +965,7 @@ name|int
 name|column
 parameter_list|)
 block|{
-name|movePointerTo
+name|onOpenRow
 argument_list|(
 name|row
 argument_list|)
@@ -984,7 +984,7 @@ name|int
 name|column
 parameter_list|)
 block|{
-name|onOpenRow
+name|movePointerTo
 argument_list|(
 name|row
 argument_list|)
