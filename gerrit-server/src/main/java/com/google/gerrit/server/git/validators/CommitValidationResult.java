@@ -143,6 +143,27 @@ name|message
 argument_list|)
 return|;
 block|}
+comment|/**    * Commit validation succeeded with warning.    *    * @param message warning on the commit validation.    *    * @return validation success with warning.    */
+DECL|method|newSuccess (String message)
+specifier|public
+specifier|static
+name|CommitValidationResult
+name|newSuccess
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+return|return
+operator|new
+name|CommitValidationResult
+argument_list|(
+literal|true
+argument_list|,
+name|message
+argument_list|)
+return|;
+block|}
 comment|/**    * Commit validation result and reason.    *    * @param validated true if commit is valid or false if has to be rejected.    * @param message reason of the commit validation failure or warning message when    *            commit has been validated.    */
 DECL|method|CommitValidationResult (boolean validated, String message)
 specifier|protected
