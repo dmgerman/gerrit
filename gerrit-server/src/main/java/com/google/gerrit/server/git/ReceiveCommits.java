@@ -12472,6 +12472,7 @@ name|currentUser
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|final
 name|String
 name|pluginName
 init|=
@@ -12481,6 +12482,14 @@ name|getPluginName
 argument_list|(
 name|validator
 argument_list|)
+decl_stmt|;
+specifier|final
+name|String
+name|message
+init|=
+name|validationResult
+operator|.
+name|message
 decl_stmt|;
 if|if
 condition|(
@@ -12500,8 +12509,6 @@ name|format
 argument_list|(
 literal|"%s (rejected by plugin %s)"
 argument_list|,
-name|validationResult
-operator|.
 name|message
 argument_list|,
 name|pluginName
@@ -12520,8 +12527,6 @@ name|Strings
 operator|.
 name|isNullOrEmpty
 argument_list|(
-name|validationResult
-operator|.
 name|message
 argument_list|)
 condition|)
@@ -12533,6 +12538,8 @@ operator|.
 name|format
 argument_list|(
 literal|"%s (from plugin %s)"
+argument_list|,
+name|message
 argument_list|,
 name|pluginName
 argument_list|)
