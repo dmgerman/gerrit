@@ -1476,6 +1476,8 @@ operator|new
 name|StringTokenizer
 argument_list|(
 name|dashboardId
+argument_list|,
+literal|":"
 argument_list|)
 decl_stmt|;
 if|if
