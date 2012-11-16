@@ -200,7 +200,13 @@ specifier|final
 name|Config
 name|config
 decl_stmt|;
-DECL|method|DashboardResource (ProjectControl control, String refName, String pathName, ObjectId objId, Config config)
+DECL|field|projectDefault
+specifier|private
+specifier|final
+name|boolean
+name|projectDefault
+decl_stmt|;
+DECL|method|DashboardResource (ProjectControl control, String refName, String pathName, ObjectId objId, Config config, boolean projectDefault)
 name|DashboardResource
 parameter_list|(
 name|ProjectControl
@@ -217,6 +223,9 @@ name|objId
 parameter_list|,
 name|Config
 name|config
+parameter_list|,
+name|boolean
+name|projectDefault
 parameter_list|)
 block|{
 name|this
@@ -248,6 +257,12 @@ operator|.
 name|config
 operator|=
 name|config
+expr_stmt|;
+name|this
+operator|.
+name|projectDefault
+operator|=
+name|projectDefault
 expr_stmt|;
 block|}
 DECL|method|getControl ()
@@ -298,6 +313,16 @@ parameter_list|()
 block|{
 return|return
 name|config
+return|;
+block|}
+DECL|method|isProjectDefault ()
+specifier|public
+name|boolean
+name|isProjectDefault
+parameter_list|()
+block|{
+return|return
+name|projectDefault
 return|;
 block|}
 block|}
