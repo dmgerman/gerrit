@@ -227,6 +227,32 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
+DECL|method|createNewPatchSet (final PatchSet.Id patchSetId, final String newCommitMessage, final AsyncCallback<ChangeDetail> callback)
+name|void
+name|createNewPatchSet
+parameter_list|(
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|patchSetId
+parameter_list|,
+specifier|final
+name|String
+name|newCommitMessage
+parameter_list|,
+specifier|final
+name|AsyncCallback
+argument_list|<
+name|ChangeDetail
+argument_list|>
+name|callback
+parameter_list|)
+function_decl|;
+annotation|@
+name|Audit
+annotation|@
+name|SignInRequired
 DECL|method|revertChange (PatchSet.Id patchSetId, String message, AsyncCallback<ChangeDetail> callback)
 name|void
 name|revertChange

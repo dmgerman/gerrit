@@ -252,7 +252,7 @@ name|hp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (Change chg, Boolean starred, PatchSetInfo info, final AccountInfoCache acc, SubmitTypeRecord submitTypeRecord)
+DECL|method|display (Change chg, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, final AccountInfoCache acc, SubmitTypeRecord submitTypeRecord)
 specifier|public
 name|void
 name|display
@@ -262,6 +262,9 @@ name|chg
 parameter_list|,
 name|Boolean
 name|starred
+parameter_list|,
+name|Boolean
+name|canEditCommitMessage
 parameter_list|,
 name|PatchSetInfo
 name|info
@@ -291,10 +294,12 @@ name|display
 argument_list|(
 name|chg
 operator|.
-name|getId
+name|currentPatchSetId
 argument_list|()
 argument_list|,
 name|starred
+argument_list|,
+name|canEditCommitMessage
 argument_list|,
 name|info
 operator|.

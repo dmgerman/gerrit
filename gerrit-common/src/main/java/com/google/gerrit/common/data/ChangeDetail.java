@@ -195,6 +195,11 @@ specifier|protected
 name|boolean
 name|canAbandon
 decl_stmt|;
+DECL|field|canEditCommitMessage
+specifier|protected
+name|boolean
+name|canEditCommitMessage
+decl_stmt|;
 DECL|field|canPublish
 specifier|protected
 name|boolean
@@ -392,6 +397,31 @@ name|a
 parameter_list|)
 block|{
 name|canAbandon
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canEditCommitMessage ()
+specifier|public
+name|boolean
+name|canEditCommitMessage
+parameter_list|()
+block|{
+return|return
+name|canEditCommitMessage
+return|;
+block|}
+DECL|method|setCanEditCommitMessage (final boolean a)
+specifier|public
+name|void
+name|setCanEditCommitMessage
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canEditCommitMessage
 operator|=
 name|a
 expr_stmt|;
