@@ -238,9 +238,9 @@ name|String
 name|changeInfoBlock
 parameter_list|()
 function_decl|;
-DECL|method|changeInfoBlockEdit ()
+DECL|method|changeInfoTopicPanel ()
 name|String
-name|changeInfoBlockEdit
+name|changeInfoTopicPanel
 parameter_list|()
 function_decl|;
 DECL|method|changeScreen ()
