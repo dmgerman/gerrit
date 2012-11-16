@@ -110,6 +110,11 @@ name|String
 name|dashboardDescription
 parameter_list|()
 function_decl|;
+DECL|method|dashboardInherited ()
+name|String
+name|dashboardInherited
+parameter_list|()
+function_decl|;
 DECL|method|dashboardItem ()
 name|String
 name|dashboardItem
