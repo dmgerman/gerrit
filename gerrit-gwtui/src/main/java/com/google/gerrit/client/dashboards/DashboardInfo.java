@@ -99,41 +99,32 @@ name|id
 parameter_list|()
 comment|/*-{ return this.id; }-*/
 function_decl|;
-DECL|method|name ()
+DECL|method|project ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|name
+name|project
 parameter_list|()
-comment|/*-{ return this.dashboard_name; }-*/
+comment|/*-{ return this.project; }-*/
 function_decl|;
-DECL|method|section ()
+DECL|method|ref ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|section
+name|ref
 parameter_list|()
-comment|/*-{ return this.section; }-*/
+comment|/*-{ return this.ref; }-*/
 function_decl|;
-DECL|method|refName ()
+DECL|method|path ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|refName
+name|path
 parameter_list|()
-comment|/*-{ return this.ref_name; }-*/
-function_decl|;
-DECL|method|projectName ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|projectName
-parameter_list|()
-comment|/*-{ return this.project_name; }-*/
+comment|/*-{ return this.path; }-*/
 function_decl|;
 DECL|method|description ()
 specifier|public
@@ -144,14 +135,14 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
-DECL|method|parameters ()
+DECL|method|url ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|parameters
+name|url
 parameter_list|()
-comment|/*-{ return this.parameters; }-*/
+comment|/*-{ return this.url; }-*/
 function_decl|;
 DECL|method|isDefault ()
 specifier|public
@@ -160,7 +151,7 @@ specifier|native
 name|boolean
 name|isDefault
 parameter_list|()
-comment|/*-{ return this.is_default ? true : false; }-*/
+comment|/*-{ return this['default'] ? true : false; }-*/
 function_decl|;
 DECL|method|DashboardInfo ()
 specifier|protected

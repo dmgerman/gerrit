@@ -620,6 +620,45 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setAuthor (IdentifiedUser user)
+specifier|public
+name|void
+name|setAuthor
+parameter_list|(
+name|IdentifiedUser
+name|user
+parameter_list|)
+block|{
+name|getCommitBuilder
+argument_list|()
+operator|.
+name|setAuthor
+argument_list|(
+name|user
+operator|.
+name|newCommitterIdent
+argument_list|(
+name|getCommitBuilder
+argument_list|()
+operator|.
+name|getCommitter
+argument_list|()
+operator|.
+name|getWhen
+argument_list|()
+argument_list|,
+name|getCommitBuilder
+argument_list|()
+operator|.
+name|getCommitter
+argument_list|()
+operator|.
+name|getTimeZone
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Close the cached Repository handle. */
 DECL|method|close ()
 specifier|public

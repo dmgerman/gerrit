@@ -78,7 +78,7 @@ name|client
 operator|.
 name|dashboards
 operator|.
-name|DashboardMap
+name|DashboardList
 import|;
 end_import
 
@@ -95,6 +95,22 @@ operator|.
 name|dashboards
 operator|.
 name|DashboardsTable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NativeList
 import|;
 end_import
 
@@ -203,9 +219,9 @@ operator|.
 name|onLoad
 argument_list|()
 expr_stmt|;
-name|DashboardMap
+name|DashboardList
 operator|.
-name|allOnProject
+name|all
 argument_list|(
 name|getProjectKey
 argument_list|()
@@ -213,7 +229,10 @@ argument_list|,
 operator|new
 name|ScreenLoadCallback
 argument_list|<
-name|DashboardMap
+name|NativeList
+argument_list|<
+name|DashboardList
+argument_list|>
 argument_list|>
 argument_list|(
 name|this
@@ -225,8 +244,10 @@ specifier|protected
 name|void
 name|preDisplay
 parameter_list|(
-specifier|final
-name|DashboardMap
+name|NativeList
+argument_list|<
+name|DashboardList
+argument_list|>
 name|result
 parameter_list|)
 block|{

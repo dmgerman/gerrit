@@ -1088,6 +1088,37 @@ operator|=
 name|c
 expr_stmt|;
 block|}
+DECL|method|ChangeData (final ChangeControl c)
+specifier|public
+name|ChangeData
+parameter_list|(
+specifier|final
+name|ChangeControl
+name|c
+parameter_list|)
+block|{
+name|legacyId
+operator|=
+name|c
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+expr_stmt|;
+name|change
+operator|=
+name|c
+operator|.
+name|getChange
+argument_list|()
+expr_stmt|;
+name|changeControl
+operator|=
+name|c
+expr_stmt|;
+block|}
 DECL|method|setCurrentFilePaths (String[] filePaths)
 specifier|public
 name|void
@@ -1384,6 +1415,7 @@ name|user
 return|;
 block|}
 DECL|method|changeControl ()
+specifier|public
 name|ChangeControl
 name|changeControl
 parameter_list|()
