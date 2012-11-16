@@ -197,6 +197,12 @@ name|void
 name|logout
 parameter_list|()
 function_decl|;
+DECL|method|getSessionId ()
+specifier|public
+name|String
+name|getSessionId
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
