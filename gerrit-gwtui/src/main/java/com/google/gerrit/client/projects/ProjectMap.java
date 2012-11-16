@@ -180,7 +180,7 @@ literal|"d"
 argument_list|)
 comment|// description
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.
@@ -228,7 +228,7 @@ literal|"d"
 argument_list|)
 comment|// description
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.
@@ -276,7 +276,7 @@ literal|"d"
 argument_list|)
 comment|// description
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.
@@ -346,7 +346,7 @@ literal|"d"
 argument_list|)
 comment|// description
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.

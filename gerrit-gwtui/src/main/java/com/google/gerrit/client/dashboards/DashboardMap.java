@@ -200,7 +200,7 @@ literal|"%3F"
 argument_list|)
 argument_list|)
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.
@@ -257,7 +257,7 @@ argument_list|(
 literal|"default"
 argument_list|)
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.

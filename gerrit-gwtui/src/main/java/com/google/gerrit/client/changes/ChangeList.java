@@ -248,7 +248,7 @@ argument_list|)
 expr_stmt|;
 name|call
 operator|.
-name|send
+name|get
 argument_list|(
 name|callback
 argument_list|)
@@ -335,7 +335,7 @@ expr_stmt|;
 block|}
 name|call
 operator|.
-name|send
+name|get
 argument_list|(
 name|callback
 argument_list|)
@@ -422,7 +422,7 @@ expr_stmt|;
 block|}
 name|call
 operator|.
-name|send
+name|get
 argument_list|(
 name|callback
 argument_list|)

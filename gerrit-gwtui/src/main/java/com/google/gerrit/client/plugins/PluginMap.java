@@ -151,7 +151,7 @@ argument_list|(
 literal|"all"
 argument_list|)
 operator|.
-name|send
+name|get
 argument_list|(
 name|NativeMap
 operator|.
