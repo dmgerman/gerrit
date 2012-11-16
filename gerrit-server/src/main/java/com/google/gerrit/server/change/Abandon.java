@@ -387,6 +387,7 @@ class|class
 name|Input
 block|{
 DECL|field|message
+specifier|public
 name|String
 name|message
 decl_stmt|;
