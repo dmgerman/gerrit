@@ -108,6 +108,15 @@ name|name
 parameter_list|()
 comment|/*-{ return this.dashboard_name; }-*/
 function_decl|;
+DECL|method|section ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|section
+parameter_list|()
+comment|/*-{ return this.section; }-*/
+function_decl|;
 DECL|method|refName ()
 specifier|public
 specifier|final
