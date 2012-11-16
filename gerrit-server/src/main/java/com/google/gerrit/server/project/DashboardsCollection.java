@@ -1102,7 +1102,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|defaultOf (Project proj)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|defaultOf
