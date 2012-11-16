@@ -328,6 +328,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|EnumSet
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -516,10 +526,23 @@ operator|.
 name|RequestFactory
 name|identified
 decl_stmt|;
-DECL|field|accessPath
+DECL|field|okPaths
 specifier|private
+specifier|final
+name|EnumSet
+argument_list|<
 name|AccessPath
-name|accessPath
+argument_list|>
+name|okPaths
+init|=
+name|EnumSet
+operator|.
+name|of
+argument_list|(
+name|AccessPath
+operator|.
+name|UNKNOWN
+argument_list|)
 decl_stmt|;
 DECL|field|outCookie
 specifier|private
@@ -607,8 +630,25 @@ name|identified
 operator|=
 name|identified
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|GitSmartHttpTools
+operator|.
+name|isGitClient
+argument_list|(
+name|request
+argument_list|)
+condition|)
+block|{
 name|String
 name|cookie
+init|=
+name|readCookie
+argument_list|()
+decl_stmt|;
+name|String
+name|token
 init|=
 name|request
 operator|.
@@ -619,11 +659,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|cookie
+name|token
 operator|!=
 literal|null
 operator|&&
-name|cookie
+name|token
 operator|.
 name|startsWith
 argument_list|(
@@ -631,9 +671,9 @@ literal|"Bearer "
 argument_list|)
 condition|)
 block|{
-name|cookie
+name|token
 operator|=
-name|cookie
+name|token
 operator|.
 name|substring
 argument_list|(
@@ -643,52 +683,26 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|accessPath
-operator|=
+name|okPaths
+operator|.
+name|add
+argument_list|(
 name|AccessPath
 operator|.
 name|REST_API
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|cookie
-operator|!=
-literal|null
-operator|&&
-name|GitSmartHttpTools
-operator|.
-name|isGitClient
-argument_list|(
-name|request
 argument_list|)
-condition|)
-block|{
-name|accessPath
-operator|=
-name|AccessPath
-operator|.
-name|GIT
 expr_stmt|;
 block|}
 else|else
 block|{
+name|token
+operator|=
 name|cookie
-operator|=
-name|readCookie
-argument_list|()
-expr_stmt|;
-name|accessPath
-operator|=
-name|AccessPath
-operator|.
-name|WEB_BROWSER
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|cookie
+name|token
 operator|!=
 literal|null
 condition|)
@@ -698,7 +712,7 @@ operator|=
 operator|new
 name|Key
 argument_list|(
-name|cookie
+name|token
 argument_list|)
 expr_stmt|;
 name|val
@@ -710,18 +724,6 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|key
-operator|=
-literal|null
-expr_stmt|;
-name|val
-operator|=
-literal|null
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|isSignedIn
@@ -734,11 +736,7 @@ argument_list|()
 condition|)
 block|{
 comment|// Cookie is more than half old. Send the cookie again to the
-comment|// client with an updated expiration date. We don't dare to
-comment|// change the key token here because there may be other RPCs
-comment|// queued up in the browser whose xsrfKey would not get updated
-comment|// with the new token, causing them to fail.
-comment|//
+comment|// client with an updated expiration date.
 name|val
 operator|=
 name|manager
@@ -750,9 +748,19 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|cookie
+operator|!=
+literal|null
+condition|)
+block|{
 name|saveCookie
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+block|}
 block|}
 block|}
 DECL|method|readCookie ()
@@ -833,6 +841,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSignedIn ()
 specifier|public
 name|boolean
@@ -845,6 +855,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getAuthorization ()
 specifier|public
 name|String
@@ -886,6 +898,66 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|isAccessPathOk (AccessPath path)
+specifier|public
+name|boolean
+name|isAccessPathOk
+parameter_list|(
+name|AccessPath
+name|path
+parameter_list|)
+block|{
+return|return
+name|okPaths
+operator|.
+name|contains
+argument_list|(
+name|path
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|setAccessPathOk (AccessPath path, boolean ok)
+specifier|public
+name|void
+name|setAccessPathOk
+parameter_list|(
+name|AccessPath
+name|path
+parameter_list|,
+name|boolean
+name|ok
+parameter_list|)
+block|{
+if|if
+condition|(
+name|ok
+condition|)
+block|{
+name|okPaths
+operator|.
+name|add
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|okPaths
+operator|.
+name|remove
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getLastLoginExternalId ()
 specifier|public
 name|AccountExternalId
@@ -907,6 +979,8 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCurrentUser ()
 specifier|public
 name|CurrentUser
@@ -924,8 +998,6 @@ name|identified
 operator|.
 name|create
 argument_list|(
-name|accessPath
-argument_list|,
 name|val
 operator|.
 name|getAccountId
@@ -940,6 +1012,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|login (final AuthResult res, final boolean rememberMe)
 specifier|public
 name|void
@@ -1022,6 +1096,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/** Set the user account for this current request only. */
+annotation|@
+name|Override
 DECL|method|setUserAccountId (Account.Id id)
 specifier|public
 name|void
@@ -1062,6 +1138,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|logout ()
 specifier|public
 name|void

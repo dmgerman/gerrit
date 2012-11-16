@@ -183,16 +183,19 @@ name|capabilityControlFactory
 decl_stmt|;
 DECL|field|accessPath
 specifier|private
-specifier|final
 name|AccessPath
 name|accessPath
+init|=
+name|AccessPath
+operator|.
+name|UNKNOWN
 decl_stmt|;
 DECL|field|capabilities
 specifier|private
 name|CapabilityControl
 name|capabilities
 decl_stmt|;
-DECL|method|CurrentUser ( CapabilityControl.Factory capabilityControlFactory, AccessPath accessPath)
+DECL|method|CurrentUser (CapabilityControl.Factory capabilityControlFactory)
 specifier|protected
 name|CurrentUser
 parameter_list|(
@@ -200,9 +203,6 @@ name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
-parameter_list|,
-name|AccessPath
-name|accessPath
 parameter_list|)
 block|{
 name|this
@@ -210,12 +210,6 @@ operator|.
 name|capabilityControlFactory
 operator|=
 name|capabilityControlFactory
-expr_stmt|;
-name|this
-operator|.
-name|accessPath
-operator|=
-name|accessPath
 expr_stmt|;
 block|}
 comment|/** How this user is accessing the Gerrit Code Review application. */
@@ -229,6 +223,20 @@ block|{
 return|return
 name|accessPath
 return|;
+block|}
+DECL|method|setAccessPath (AccessPath path)
+specifier|public
+name|void
+name|setAccessPath
+parameter_list|(
+name|AccessPath
+name|path
+parameter_list|)
+block|{
+name|accessPath
+operator|=
+name|path
+expr_stmt|;
 block|}
 comment|/**    * Get the set of groups the user is currently a member of.    *<p>    * The returned set may be a subset of the user's actual groups; if the user's    * account is currently deemed to be untrusted then the effective group set is    * only the anonymous and registered user groups. To enable additional groups    * (and gain their granted permissions) the user must update their account to    * use only trusted authentication providers.    *    * @return active groups for this user.    */
 DECL|method|getEffectiveGroups ()

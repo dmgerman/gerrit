@@ -258,10 +258,6 @@ block|{
 name|super
 argument_list|(
 name|capabilityControlFactory
-argument_list|,
-name|AccessPath
-operator|.
-name|SSH_COMMAND
 argument_list|)
 expr_stmt|;
 name|this

@@ -463,12 +463,6 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|user
-operator|.
-name|getAccessPath
-argument_list|()
-argument_list|,
-comment|//
 operator|(
 operator|(
 name|IdentifiedUser
