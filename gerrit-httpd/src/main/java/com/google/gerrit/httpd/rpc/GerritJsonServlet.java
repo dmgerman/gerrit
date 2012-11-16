@@ -1413,14 +1413,11 @@ operator|.
 name|isSignedIn
 argument_list|()
 operator|&&
-name|keyIn
-operator|.
-name|equals
-argument_list|(
 name|session
 operator|.
-name|getAuthorization
-argument_list|()
+name|isValidAuthorization
+argument_list|(
+name|keyIn
 argument_list|)
 return|;
 block|}
