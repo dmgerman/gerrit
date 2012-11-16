@@ -865,6 +865,27 @@ else|:
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|isValidAuthorization (String keyIn)
+specifier|public
+name|boolean
+name|isValidAuthorization
+parameter_list|(
+name|String
+name|keyIn
+parameter_list|)
+block|{
+return|return
+name|keyIn
+operator|.
+name|equals
+argument_list|(
+name|getAuthorization
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|getLastLoginExternalId ()
 specifier|public
 name|AccountExternalId

@@ -144,6 +144,15 @@ name|String
 name|getAuthorization
 parameter_list|()
 function_decl|;
+DECL|method|isValidAuthorization (String keyIn)
+specifier|public
+name|boolean
+name|isValidAuthorization
+parameter_list|(
+name|String
+name|keyIn
+parameter_list|)
+function_decl|;
 DECL|method|getLastLoginExternalId ()
 specifier|public
 name|AccountExternalId
