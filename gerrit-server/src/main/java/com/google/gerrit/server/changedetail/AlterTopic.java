@@ -403,10 +403,10 @@ name|usage
 operator|=
 literal|"new topic"
 argument_list|)
-DECL|field|topic
+DECL|field|newTopicName
 specifier|private
 name|String
-name|topic
+name|newTopicName
 decl_stmt|;
 DECL|method|setTopic (final String topic)
 specifier|public
@@ -420,7 +420,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|topic
+name|newTopicName
 operator|=
 name|topic
 operator|.
@@ -509,7 +509,7 @@ name|changeId
 operator|=
 literal|null
 expr_stmt|;
-name|topic
+name|newTopicName
 operator|=
 literal|null
 expr_stmt|;
@@ -623,20 +623,80 @@ argument_list|(
 name|changeId
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
+specifier|final
+name|String
+name|oldTopicName
+init|=
 name|change
 operator|.
 name|getTopic
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|oldTopicName
 operator|.
 name|equals
 argument_list|(
-name|topic
+name|newTopicName
 argument_list|)
 condition|)
 block|{
+name|String
+name|summary
+decl_stmt|;
+if|if
+condition|(
+name|oldTopicName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|summary
+operator|=
+literal|"Topic set to \""
+operator|+
+name|newTopicName
+operator|+
+literal|"\""
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|newTopicName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|summary
+operator|=
+literal|"Topic \""
+operator|+
+name|oldTopicName
+operator|+
+literal|"\" removed"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|summary
+operator|=
+literal|"Topic changed from \""
+operator|+
+name|oldTopicName
+comment|//
+operator|+
+literal|"\" to \""
+operator|+
+name|newTopicName
+operator|+
+literal|"\""
+expr_stmt|;
+block|}
 specifier|final
 name|ChangeMessage
 name|cmsg
@@ -677,19 +737,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"Topic changed from \""
-operator|+
-name|change
-operator|.
-name|getTopic
-argument_list|()
-comment|//
-operator|+
-literal|"\" to \""
-operator|+
-name|topic
-operator|+
-literal|"\""
+name|summary
 argument_list|)
 decl_stmt|;
 if|if
@@ -765,7 +813,7 @@ name|change
 operator|.
 name|setTopic
 argument_list|(
-name|topic
+name|newTopicName
 argument_list|)
 expr_stmt|;
 return|return
