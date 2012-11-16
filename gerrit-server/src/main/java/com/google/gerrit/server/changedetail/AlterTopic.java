@@ -631,6 +631,15 @@ name|change
 operator|.
 name|getTopic
 argument_list|()
+operator|!=
+literal|null
+condition|?
+name|change
+operator|.
+name|getTopic
+argument_list|()
+else|:
+literal|""
 decl_stmt|;
 if|if
 condition|(
