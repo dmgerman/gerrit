@@ -423,6 +423,9 @@ operator|.
 name|topic
 operator|=
 name|topic
+operator|.
+name|trim
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
