@@ -115,6 +115,11 @@ name|String
 name|dashboardItem
 parameter_list|()
 function_decl|;
+DECL|method|dashboardDefaultToolTip ()
+name|String
+name|dashboardDefaultToolTip
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
