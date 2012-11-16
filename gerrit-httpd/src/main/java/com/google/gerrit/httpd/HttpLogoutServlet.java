@@ -506,7 +506,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAuthorization
+name|getSessionId
 argument_list|()
 decl_stmt|;
 specifier|final

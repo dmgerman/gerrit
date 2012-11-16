@@ -1013,6 +1013,8 @@ argument_list|,
 name|rememberMe
 argument_list|,
 name|identity
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|saveCookie
@@ -1055,6 +1057,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1090,6 +1094,27 @@ name|saveCookie
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getSessionId ()
+specifier|public
+name|String
+name|getSessionId
+parameter_list|()
+block|{
+return|return
+name|val
+operator|!=
+literal|null
+condition|?
+name|val
+operator|.
+name|getSessionId
+argument_list|()
+else|:
+literal|null
+return|;
 block|}
 DECL|method|saveCookie ()
 specifier|private
