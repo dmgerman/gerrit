@@ -86,6 +86,15 @@ name|FORCE_PUSH
 init|=
 literal|"Force Push"
 decl_stmt|;
+DECL|field|FORCE_EDIT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FORCE_EDIT
+init|=
+literal|"Force Edit"
+decl_stmt|;
 DECL|enum|Action
 specifier|public
 specifier|static

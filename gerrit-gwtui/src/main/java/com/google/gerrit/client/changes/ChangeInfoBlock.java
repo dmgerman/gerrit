@@ -1489,14 +1489,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|chg
-operator|.
-name|getStatus
-argument_list|()
-operator|.
-name|isOpen
-argument_list|()
-operator|&&
 name|changeDetail
 operator|.
 name|canEditTopicName
