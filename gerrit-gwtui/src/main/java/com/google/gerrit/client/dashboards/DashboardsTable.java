@@ -433,7 +433,7 @@ condition|(
 operator|!
 name|d
 operator|.
-name|refName
+name|section
 argument_list|()
 operator|.
 name|equals
@@ -446,7 +446,7 @@ name|section
 operator|=
 name|d
 operator|.
-name|refName
+name|section
 argument_list|()
 expr_stmt|;
 name|insertTitleRow
