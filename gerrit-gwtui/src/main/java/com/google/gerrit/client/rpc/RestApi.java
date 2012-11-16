@@ -1265,7 +1265,7 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getAccessToken
+name|getAuthorization
 argument_list|()
 operator|!=
 literal|null
@@ -1277,11 +1277,9 @@ name|setHeader
 argument_list|(
 literal|"Authorization"
 argument_list|,
-literal|"OAuth "
-operator|+
 name|Gerrit
 operator|.
-name|getAccessToken
+name|getAuthorization
 argument_list|()
 argument_list|)
 expr_stmt|;

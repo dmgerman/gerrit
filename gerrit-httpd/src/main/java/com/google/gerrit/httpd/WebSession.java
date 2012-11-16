@@ -138,10 +138,10 @@ name|boolean
 name|isSignedIn
 parameter_list|()
 function_decl|;
-DECL|method|getAccessToken ()
+DECL|method|getAuthorization ()
 specifier|public
 name|String
-name|getAccessToken
+name|getAuthorization
 parameter_list|()
 function_decl|;
 DECL|method|getLastLoginExternalId ()
