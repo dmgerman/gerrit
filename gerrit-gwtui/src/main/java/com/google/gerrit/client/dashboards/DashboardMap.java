@@ -211,7 +211,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|projectDefault (Project.NameKey project, boolean mine, AsyncCallback<DashboardMap> callback)
+DECL|method|projectDefault (Project.NameKey project, AsyncCallback<DashboardMap> callback)
 specifier|public
 specifier|static
 name|void
@@ -221,9 +221,6 @@ name|Project
 operator|.
 name|NameKey
 name|project
-parameter_list|,
-name|boolean
-name|mine
 parameter_list|,
 name|AsyncCallback
 argument_list|<
