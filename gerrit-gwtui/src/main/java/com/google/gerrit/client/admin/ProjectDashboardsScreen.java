@@ -161,7 +161,13 @@ specifier|private
 name|DashboardsTable
 name|dashes
 decl_stmt|;
-DECL|method|ProjectDashboardsScreen (final Project.NameKey toShow)
+DECL|field|project
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
+DECL|method|ProjectDashboardsScreen (final Project.NameKey project)
 specifier|public
 name|ProjectDashboardsScreen
 parameter_list|(
@@ -169,13 +175,19 @@ specifier|final
 name|Project
 operator|.
 name|NameKey
-name|toShow
+name|project
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|toShow
+name|project
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|project
+operator|=
+name|project
 expr_stmt|;
 block|}
 annotation|@
@@ -247,7 +259,9 @@ name|dashes
 operator|=
 operator|new
 name|DashboardsTable
-argument_list|()
+argument_list|(
+name|project
+argument_list|)
 expr_stmt|;
 name|FlowPanel
 name|fp
