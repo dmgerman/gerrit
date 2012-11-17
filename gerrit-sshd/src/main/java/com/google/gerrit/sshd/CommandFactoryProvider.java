@@ -1197,6 +1197,8 @@ name|log
 operator|.
 name|onExecute
 argument_list|(
+name|cmd
+argument_list|,
 name|rc
 argument_list|)
 expr_stmt|;
