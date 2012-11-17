@@ -479,6 +479,29 @@ name|TOP
 argument_list|)
 return|;
 block|}
+DECL|method|toProjectDashboards (Project.NameKey proj)
+specifier|public
+specifier|static
+name|String
+name|toProjectDashboards
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|proj
+parameter_list|)
+block|{
+return|return
+name|ADMIN_PROJECTS
+operator|+
+name|proj
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|",dashboards"
+return|;
+block|}
 DECL|method|toChangeQuery (final String query)
 specifier|public
 specifier|static
