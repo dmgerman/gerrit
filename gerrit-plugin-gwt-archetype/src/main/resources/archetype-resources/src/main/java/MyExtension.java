@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2012 Google
 end_comment
 
 begin_comment
@@ -52,19 +52,32 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.plugins
 package|package
+name|$
+block|{
+package|package
+block|}
+end_package
+
+begin_empty_stmt
+empty_stmt|;
+end_empty_stmt
+
+begin_import
+import|import
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|plugins
-package|;
-end_package
+name|webui
+operator|.
+name|GwtPlugin
+import|;
+end_import
 
 begin_import
 import|import
@@ -78,90 +91,33 @@ name|extensions
 operator|.
 name|annotations
 operator|.
-name|Export
+name|Listen
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Module
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|TypeLiteral
-import|;
-end_import
-
-begin_interface
-DECL|interface|ModuleGenerator
+begin_class
+annotation|@
+name|Listen
+DECL|class|MyExtension
 specifier|public
-interface|interface
-name|ModuleGenerator
+class|class
+name|MyExtension
+extends|extends
+name|GwtPlugin
 block|{
-DECL|method|setPluginName (String name)
-name|void
-name|setPluginName
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-function_decl|;
-DECL|method|export (Export export, Class<?> type)
-name|void
-name|export
-parameter_list|(
-name|Export
-name|export
-parameter_list|,
-name|Class
-argument_list|<
-name|?
-argument_list|>
-name|type
-parameter_list|)
-throws|throws
-name|InvalidPluginException
-function_decl|;
-DECL|method|listen (TypeLiteral<?> tl, Class<?> clazz)
-name|void
-name|listen
-parameter_list|(
-name|TypeLiteral
-argument_list|<
-name|?
-argument_list|>
-name|tl
-parameter_list|,
-name|Class
-argument_list|<
-name|?
-argument_list|>
-name|clazz
-parameter_list|)
-function_decl|;
-DECL|method|create ()
-name|Module
-name|create
+DECL|method|MyExtension ()
+specifier|public
+name|MyExtension
 parameter_list|()
-throws|throws
-name|InvalidPluginException
-function_decl|;
+block|{
+name|super
+argument_list|(
+literal|"hello_gwt_plugins"
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

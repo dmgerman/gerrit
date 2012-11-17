@@ -2822,6 +2822,17 @@ name|Id
 name|id
 parameter_list|)
 block|{
+if|if
+condition|(
+name|id
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|asAccountAttribute
 argument_list|(
