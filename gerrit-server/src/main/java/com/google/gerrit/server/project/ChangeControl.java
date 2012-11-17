@@ -1578,6 +1578,17 @@ name|boolean
 name|canEditTopicName
 parameter_list|()
 block|{
+if|if
+condition|(
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+condition|)
+block|{
 return|return
 name|isOwner
 argument_list|()
@@ -1614,6 +1625,17 @@ name|canEditTopicName
 argument_list|()
 comment|// user can edit topic on a specific ref
 return|;
+block|}
+else|else
+block|{
+return|return
+name|getRefControl
+argument_list|()
+operator|.
+name|canForceEditTopicName
+argument_list|()
+return|;
+block|}
 block|}
 DECL|method|getSubmitRecords (ReviewDb db, PatchSet patchSet)
 specifier|public
