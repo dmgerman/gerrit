@@ -1852,11 +1852,6 @@ return|return
 name|handler
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
 DECL|method|ensureOptionsInitialized ()
 specifier|private
 name|void

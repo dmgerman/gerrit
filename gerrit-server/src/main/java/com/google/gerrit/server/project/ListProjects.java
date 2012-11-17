@@ -2787,11 +2787,6 @@ specifier|static
 class|class
 name|ProjectInfo
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|field|kind
 specifier|final
 name|String
