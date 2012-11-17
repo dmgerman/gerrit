@@ -3273,6 +3273,30 @@ name|closeTd
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|createFileCommentEditorOnSideA ()
+name|void
+name|createFileCommentEditorOnSideA
+parameter_list|()
+block|{   }
+annotation|@
+name|Override
+DECL|method|createFileCommentEditorOnSideB ()
+name|void
+name|createFileCommentEditorOnSideB
+parameter_list|()
+block|{   }
+annotation|@
+name|Override
+DECL|method|insertFileCommentRow (int row)
+name|void
+name|insertFileCommentRow
+parameter_list|(
+name|int
+name|row
+parameter_list|)
+block|{   }
 block|}
 end_class
 

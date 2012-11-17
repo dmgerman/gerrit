@@ -228,6 +228,17 @@ name|ImageResource
 name|queryProjectLink
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"addFileComment.png"
+argument_list|)
+DECL|method|addFileComment ()
+specifier|public
+name|ImageResource
+name|addFileComment
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
