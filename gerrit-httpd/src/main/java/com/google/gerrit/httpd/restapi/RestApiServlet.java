@@ -458,6 +458,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|PutInput
 import|;
 end_import
@@ -2031,7 +2047,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|InvalidMethodException
+name|MethodNotAllowedException
 name|e
 parameter_list|)
 block|{
@@ -2170,7 +2186,7 @@ name|InstantiationException
 throws|,
 name|InvocationTargetException
 throws|,
-name|InvalidMethodException
+name|MethodNotAllowedException
 block|{
 if|if
 condition|(
@@ -2592,7 +2608,7 @@ name|IllegalAccessException
 throws|,
 name|InvocationTargetException
 throws|,
-name|InvalidMethodException
+name|MethodNotAllowedException
 block|{
 name|Object
 name|obj
@@ -2696,7 +2712,7 @@ block|}
 block|}
 throw|throw
 operator|new
-name|InvalidMethodException
+name|MethodNotAllowedException
 argument_list|()
 throw|;
 block|}
@@ -3722,7 +3738,7 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 throws|,
-name|InvalidMethodException
+name|MethodNotAllowedException
 throws|,
 name|AmbiguousViewException
 block|{
@@ -4844,22 +4860,6 @@ argument_list|)
 return|;
 block|}
 end_function
-
-begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
-DECL|class|InvalidMethodException
-specifier|private
-specifier|static
-class|class
-name|InvalidMethodException
-extends|extends
-name|Exception
-block|{   }
-end_class
 
 begin_class
 annotation|@
