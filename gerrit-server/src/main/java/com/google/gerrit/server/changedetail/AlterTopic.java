@@ -842,7 +842,7 @@ block|{
 name|String
 name|err
 init|=
-literal|"Change is closed, submitted, or patchset is not latest"
+literal|"Patchset is not latest"
 decl_stmt|;
 throw|throw
 operator|new
