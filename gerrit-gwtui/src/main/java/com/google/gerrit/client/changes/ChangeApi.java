@@ -132,7 +132,7 @@ init|=
 literal|"/changes/"
 decl_stmt|;
 DECL|class|Message
-specifier|private
+specifier|protected
 specifier|static
 class|class
 name|Message
@@ -175,8 +175,12 @@ block|{
 name|Message
 name|msg
 init|=
-operator|new
+operator|(
 name|Message
+operator|)
+name|JavaScriptObject
+operator|.
+name|createObject
 argument_list|()
 decl_stmt|;
 name|msg
