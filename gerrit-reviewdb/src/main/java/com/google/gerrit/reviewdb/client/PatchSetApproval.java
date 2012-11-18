@@ -612,6 +612,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setGranted (Timestamp ts)
+specifier|public
+name|void
+name|setGranted
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|granted
+operator|=
+name|ts
+expr_stmt|;
+block|}
 DECL|method|cache (final Change c)
 specifier|public
 name|void

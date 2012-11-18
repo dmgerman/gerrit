@@ -787,6 +787,23 @@ block|}
 end_function
 
 begin_function
+DECL|method|setWrittenOn (Timestamp ts)
+specifier|public
+name|void
+name|setWrittenOn
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
+block|{
+name|writtenOn
+operator|=
+name|ts
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|getParentUuid ()
 specifier|public
 name|String
