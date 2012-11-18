@@ -88,6 +88,7 @@ init|=
 literal|1L
 decl_stmt|;
 DECL|method|MergeException (final String msg)
+specifier|public
 name|MergeException
 parameter_list|(
 specifier|final
@@ -104,6 +105,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|MergeException (final String msg, final Throwable why)
+specifier|public
 name|MergeException
 parameter_list|(
 specifier|final
