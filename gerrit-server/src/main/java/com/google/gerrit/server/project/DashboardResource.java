@@ -124,20 +124,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|ObjectId
-import|;
-end_import
-
 begin_class
 DECL|class|DashboardResource
 specifier|public
@@ -170,6 +156,31 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
+DECL|method|projectDefault (ProjectControl ctl)
+specifier|static
+name|DashboardResource
+name|projectDefault
+parameter_list|(
+name|ProjectControl
+name|ctl
+parameter_list|)
+block|{
+return|return
+operator|new
+name|DashboardResource
+argument_list|(
+name|ctl
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|field|control
 specifier|private
 specifier|final
@@ -188,12 +199,6 @@ specifier|final
 name|String
 name|pathName
 decl_stmt|;
-DECL|field|objId
-specifier|private
-specifier|final
-name|ObjectId
-name|objId
-decl_stmt|;
 DECL|field|config
 specifier|private
 specifier|final
@@ -206,7 +211,7 @@ specifier|final
 name|boolean
 name|projectDefault
 decl_stmt|;
-DECL|method|DashboardResource (ProjectControl control, String refName, String pathName, ObjectId objId, Config config, boolean projectDefault)
+DECL|method|DashboardResource (ProjectControl control, String refName, String pathName, Config config, boolean projectDefault)
 name|DashboardResource
 parameter_list|(
 name|ProjectControl
@@ -217,9 +222,6 @@ name|refName
 parameter_list|,
 name|String
 name|pathName
-parameter_list|,
-name|ObjectId
-name|objId
 parameter_list|,
 name|Config
 name|config
@@ -245,12 +247,6 @@ operator|.
 name|pathName
 operator|=
 name|pathName
-expr_stmt|;
-name|this
-operator|.
-name|objId
-operator|=
-name|objId
 expr_stmt|;
 name|this
 operator|.
@@ -293,16 +289,6 @@ parameter_list|()
 block|{
 return|return
 name|pathName
-return|;
-block|}
-DECL|method|getObjectId ()
-specifier|public
-name|ObjectId
-name|getObjectId
-parameter_list|()
-block|{
-return|return
-name|objId
 return|;
 block|}
 DECL|method|getConfig ()

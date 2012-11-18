@@ -229,6 +229,11 @@ operator|+
 literal|"default"
 argument_list|)
 operator|.
+name|addParameterTrue
+argument_list|(
+literal|"inherited"
+argument_list|)
+operator|.
 name|get
 argument_list|(
 name|callback
