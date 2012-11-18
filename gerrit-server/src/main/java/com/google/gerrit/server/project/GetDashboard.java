@@ -102,6 +102,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|DashboardsCollection
+operator|.
+name|DashboardInfo
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -124,7 +142,7 @@ annotation|@
 name|Override
 DECL|method|apply (DashboardResource resource)
 specifier|public
-name|Object
+name|DashboardInfo
 name|apply
 parameter_list|(
 name|DashboardResource
