@@ -657,17 +657,6 @@ name|PUBLISH
 block|,
 name|KEEP
 block|;   }
-DECL|enum|Side
-specifier|static
-enum|enum
-name|Side
-block|{
-DECL|enumConstant|PARENT
-DECL|enumConstant|REVISION
-name|PARENT
-block|,
-name|REVISION
-block|;   }
 DECL|class|Comment
 specifier|static
 class|class
@@ -678,6 +667,8 @@ name|String
 name|id
 decl_stmt|;
 DECL|field|side
+name|GetDraft
+operator|.
 name|Side
 name|side
 decl_stmt|;
@@ -1816,6 +1807,8 @@ name|c
 operator|.
 name|side
 operator|==
+name|GetDraft
+operator|.
 name|Side
 operator|.
 name|PARENT
