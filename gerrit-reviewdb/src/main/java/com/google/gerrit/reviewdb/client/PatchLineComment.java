@@ -637,6 +637,23 @@ block|}
 end_function
 
 begin_function
+DECL|method|setLine (int line)
+specifier|public
+name|void
+name|setLine
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+block|{
+name|lineNbr
+operator|=
+name|line
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|getAuthor ()
 specifier|public
 name|Account
