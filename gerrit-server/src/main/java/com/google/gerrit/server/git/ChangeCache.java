@@ -380,7 +380,7 @@ argument_list|)
 operator|.
 name|maximumWeight
 argument_list|(
-literal|1024
+literal|0
 argument_list|)
 operator|.
 name|loader
