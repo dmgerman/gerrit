@@ -545,7 +545,7 @@ operator|+
 name|page
 return|;
 block|}
-DECL|method|toProjectDashboard (Project.NameKey projectName, String dashboardId)
+DECL|method|toProjectDashboard (Project.NameKey name, String id)
 specifier|public
 specifier|static
 name|String
@@ -554,23 +554,23 @@ parameter_list|(
 name|Project
 operator|.
 name|NameKey
-name|projectName
+name|name
 parameter_list|,
 name|String
-name|dashboardId
+name|id
 parameter_list|)
 block|{
 return|return
 name|PROJECTS
 operator|+
-name|projectName
+name|name
 operator|.
 name|get
 argument_list|()
 operator|+
 name|DASHBOARDS
 operator|+
-name|dashboardId
+name|id
 return|;
 block|}
 DECL|method|projectQuery (Project.NameKey proj)

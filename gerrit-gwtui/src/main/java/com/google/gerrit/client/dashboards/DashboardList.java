@@ -200,11 +200,11 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|defaultDashboard (Project.NameKey project, AsyncCallback<DashboardInfo> callback)
+DECL|method|getDefault (Project.NameKey project, AsyncCallback<DashboardInfo> callback)
 specifier|public
 specifier|static
 name|void
-name|defaultDashboard
+name|getDefault
 parameter_list|(
 name|Project
 operator|.

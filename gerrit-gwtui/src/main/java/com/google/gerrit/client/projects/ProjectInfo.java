@@ -166,15 +166,6 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
-DECL|method|defaultDashboard ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|defaultDashboard
-parameter_list|()
-comment|/*-{ return this.default_dashboard; }-*/
-function_decl|;
 annotation|@
 name|Override
 DECL|method|getDisplayString ()
