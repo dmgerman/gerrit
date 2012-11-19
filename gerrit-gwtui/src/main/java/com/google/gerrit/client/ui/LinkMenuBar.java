@@ -88,11 +88,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|aria
 operator|.
 name|client
 operator|.
-name|Command
+name|Roles
 import|;
 end_import
 
@@ -108,9 +108,7 @@ name|user
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|Accessibility
+name|Command
 import|;
 end_import
 
@@ -211,16 +209,15 @@ name|linkMenuBar
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Accessibility
+name|Roles
 operator|.
-name|setRole
+name|getMenubarRole
+argument_list|()
+operator|.
+name|set
 argument_list|(
 name|getElement
 argument_list|()
-argument_list|,
-name|Accessibility
-operator|.
-name|ROLE_MENUBAR
 argument_list|)
 expr_stmt|;
 block|}

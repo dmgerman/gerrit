@@ -88,11 +88,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|dom
+name|aria
 operator|.
 name|client
 operator|.
-name|AnchorElement
+name|Roles
 import|;
 end_import
 
@@ -104,13 +104,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|dom
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|Accessibility
+name|AnchorElement
 import|;
 end_import
 
@@ -155,16 +153,15 @@ name|menuItem
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Accessibility
+name|Roles
 operator|.
-name|setRole
+name|getMenuitemRole
+argument_list|()
+operator|.
+name|set
 argument_list|(
 name|getElement
 argument_list|()
-argument_list|,
-name|Accessibility
-operator|.
-name|ROLE_MENUITEM
 argument_list|)
 expr_stmt|;
 block|}
