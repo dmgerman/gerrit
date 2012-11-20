@@ -939,30 +939,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getQueryPattern (final String query)
-specifier|protected
-name|String
-name|getQueryPattern
-parameter_list|(
-specifier|final
-name|String
-name|query
-parameter_list|)
-block|{
-return|return
-name|super
-operator|.
-name|getQueryPattern
-argument_list|(
-name|getLastWord
-argument_list|(
-name|query
-argument_list|)
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|isHTML ()
 specifier|protected
 name|boolean
