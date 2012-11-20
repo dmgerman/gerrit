@@ -593,7 +593,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|json
 operator|.
 name|startsWith
@@ -602,26 +601,6 @@ name|JSON_MAGIC
 argument_list|)
 condition|)
 block|{
-name|RpcStatus
-operator|.
-name|INSTANCE
-operator|.
-name|onRpcComplete
-argument_list|()
-expr_stmt|;
-name|cb
-operator|.
-name|onFailure
-argument_list|(
-operator|new
-name|RemoteJsonException
-argument_list|(
-literal|"Invalid JSON"
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 name|json
 operator|=
 name|json
@@ -634,6 +613,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|T
 name|data
 decl_stmt|;
