@@ -2845,6 +2845,8 @@ name|openBranch
 parameter_list|()
 throws|throws
 name|MergeException
+throws|,
+name|OrmException
 block|{
 try|try
 block|{
@@ -2959,23 +2961,41 @@ expr_stmt|;
 block|}
 else|else
 block|{
-throw|throw
-operator|new
-name|MergeException
+for|for
+control|(
+specifier|final
+name|Change
+name|c
+range|:
+name|db
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|submitted
 argument_list|(
-literal|"Destination branch \""
-operator|+
-name|branchUpdate
-operator|.
-name|getRef
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"\" does not exist"
+name|destBranch
 argument_list|)
-throw|;
+operator|.
+name|toList
+argument_list|()
+control|)
+block|{
+name|setNew
+argument_list|(
+name|c
+argument_list|,
+name|message
+argument_list|(
+name|c
+argument_list|,
+literal|"Your change could not be merged, "
+operator|+
+literal|"because the destination branch does not exist anymore."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
