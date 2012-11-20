@@ -1020,7 +1020,7 @@ return|return
 name|views
 return|;
 block|}
-DECL|method|parse (Project project, String refName, String path, Config config)
+DECL|method|parse (Project project, String refName, String path, Config config, boolean setDefault)
 specifier|static
 name|DashboardInfo
 name|parse
@@ -1036,6 +1036,9 @@ name|path
 parameter_list|,
 name|Config
 name|config
+parameter_list|,
+name|boolean
+name|setDefault
 parameter_list|)
 throws|throws
 name|UnsupportedEncodingException
@@ -1085,6 +1088,9 @@ name|info
 operator|.
 name|isDefault
 operator|=
+name|setDefault
+condition|?
+operator|(
 name|info
 operator|.
 name|id
@@ -1098,6 +1104,9 @@ argument_list|)
 argument_list|)
 condition|?
 literal|true
+else|:
+literal|null
+operator|)
 else|:
 literal|null
 expr_stmt|;

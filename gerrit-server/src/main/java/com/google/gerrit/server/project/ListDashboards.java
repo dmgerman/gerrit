@@ -543,6 +543,8 @@ name|resource
 operator|.
 name|getControl
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}
@@ -581,6 +583,11 @@ operator|.
 name|newHashSet
 argument_list|()
 decl_stmt|;
+name|boolean
+name|setDefault
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 init|;
@@ -604,6 +611,8 @@ init|=
 name|scan
 argument_list|(
 name|ctl
+argument_list|,
+name|setDefault
 argument_list|)
 decl_stmt|;
 for|for
@@ -626,6 +635,31 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|d
+operator|.
+name|isDefault
+operator|!=
+literal|null
+operator|&&
+name|Boolean
+operator|.
+name|TRUE
+operator|.
+name|equals
+argument_list|(
+name|d
+operator|.
+name|isDefault
+argument_list|)
+condition|)
+block|{
+name|setDefault
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -710,7 +744,7 @@ return|return
 name|all
 return|;
 block|}
-DECL|method|scan (ProjectControl ctl)
+DECL|method|scan (ProjectControl ctl, boolean setDefault)
 specifier|private
 name|List
 argument_list|<
@@ -720,6 +754,9 @@ name|scan
 parameter_list|(
 name|ProjectControl
 name|ctl
+parameter_list|,
+name|boolean
+name|setDefault
 parameter_list|)
 throws|throws
 name|AuthException
@@ -838,6 +875,8 @@ argument_list|,
 name|rw
 argument_list|,
 name|ref
+argument_list|,
+name|setDefault
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -865,7 +904,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|scanDashboards (Project project, Repository git, RevWalk rw, Ref ref)
+DECL|method|scanDashboards (Project project, Repository git, RevWalk rw, Ref ref, boolean setDefault)
 specifier|private
 name|List
 argument_list|<
@@ -884,6 +923,9 @@ name|rw
 parameter_list|,
 name|Ref
 name|ref
+parameter_list|,
+name|boolean
+name|setDefault
 parameter_list|)
 throws|throws
 name|IOException
@@ -1001,6 +1043,8 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
+argument_list|,
+name|setDefault
 argument_list|)
 argument_list|)
 expr_stmt|;
