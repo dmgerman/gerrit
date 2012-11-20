@@ -192,6 +192,13 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
+name|PluginsCollection
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
 name|PluginGuiceEnvironment
 operator|.
 name|class
