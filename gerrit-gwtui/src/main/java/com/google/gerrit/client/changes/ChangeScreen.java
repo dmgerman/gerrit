@@ -1861,6 +1861,11 @@ argument_list|()
 argument_list|,
 name|detail
 operator|.
+name|canEditCommitMessage
+argument_list|()
+argument_list|,
+name|detail
+operator|.
 name|getCurrentPatchSetDetail
 argument_list|()
 operator|.

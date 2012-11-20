@@ -570,6 +570,16 @@ name|String
 name|revertChangeTitle
 parameter_list|()
 function_decl|;
+DECL|method|headingEditCommitMessage ()
+name|String
+name|headingEditCommitMessage
+parameter_list|()
+function_decl|;
+DECL|method|titleEditCommitMessage ()
+name|String
+name|titleEditCommitMessage
+parameter_list|()
+function_decl|;
 DECL|method|buttonAbandonChangeBegin ()
 name|String
 name|buttonAbandonChangeBegin
