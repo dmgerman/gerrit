@@ -279,6 +279,13 @@ name|onInitUI
 argument_list|()
 expr_stmt|;
 block|}
+name|Gerrit
+operator|.
+name|setQueryString
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|registerKeys ()
 specifier|public
