@@ -104,13 +104,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|aria
 operator|.
 name|client
 operator|.
-name|ui
-operator|.
-name|Accessibility
+name|Roles
 import|;
 end_import
 
@@ -190,16 +188,15 @@ name|downloadLinkList
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Accessibility
+name|Roles
 operator|.
-name|setRole
+name|getTablistRole
+argument_list|()
+operator|.
+name|set
 argument_list|(
 name|getElement
 argument_list|()
-argument_list|,
-name|Accessibility
-operator|.
-name|ROLE_TABLIST
 argument_list|)
 expr_stmt|;
 block|}
