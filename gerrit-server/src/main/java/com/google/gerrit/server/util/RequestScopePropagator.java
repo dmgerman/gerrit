@@ -641,7 +641,7 @@ argument_list|>
 name|callable
 parameter_list|)
 function_decl|;
-DECL|method|context (RequestContext context, final Callable<T> callable)
+DECL|method|context (final RequestContext context, final Callable<T> callable)
 specifier|protected
 parameter_list|<
 name|T
@@ -652,6 +652,7 @@ name|T
 argument_list|>
 name|context
 parameter_list|(
+specifier|final
 name|RequestContext
 name|context
 parameter_list|,
@@ -663,15 +664,6 @@ argument_list|>
 name|callable
 parameter_list|)
 block|{
-specifier|final
-name|CurrentUser
-name|user
-init|=
-name|context
-operator|.
-name|getCurrentUser
-argument_list|()
-decl_stmt|;
 return|return
 operator|new
 name|Callable
@@ -689,6 +681,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+specifier|final
+name|CurrentUser
+name|user
+init|=
+name|context
+operator|.
+name|getCurrentUser
+argument_list|()
+decl_stmt|;
 name|RequestContext
 name|old
 init|=
