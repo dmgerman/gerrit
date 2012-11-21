@@ -135,6 +135,15 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
+DECL|method|foreach ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|foreach
+parameter_list|()
+comment|/*-{ return this.foreach; }-*/
+function_decl|;
 DECL|method|url ()
 specifier|public
 specifier|final
