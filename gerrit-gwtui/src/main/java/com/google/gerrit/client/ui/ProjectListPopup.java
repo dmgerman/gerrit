@@ -351,10 +351,10 @@ specifier|private
 name|int
 name|preferredLeft
 decl_stmt|;
-DECL|field|popingUp
+DECL|field|poppingUp
 specifier|private
 name|boolean
-name|popingUp
+name|poppingUp
 decl_stmt|;
 DECL|field|firstPopupLoad
 specifier|private
@@ -602,14 +602,14 @@ name|String
 name|projectName
 parameter_list|)
 block|{   }
-DECL|method|isPopingUp ()
+DECL|method|isPoppingUp ()
 specifier|public
 name|boolean
-name|isPopingUp
+name|isPoppingUp
 parameter_list|()
 block|{
 return|return
-name|popingUp
+name|poppingUp
 return|;
 block|}
 DECL|method|createWidgets (final String popupText, final String currentPageLink)
@@ -773,7 +773,7 @@ name|void
 name|displayPopup
 parameter_list|()
 block|{
-name|popingUp
+name|poppingUp
 operator|=
 literal|true
 expr_stmt|;
@@ -843,7 +843,7 @@ operator|.
 name|finishDisplay
 argument_list|()
 expr_stmt|;
-name|popingUp
+name|poppingUp
 operator|=
 literal|false
 expr_stmt|;

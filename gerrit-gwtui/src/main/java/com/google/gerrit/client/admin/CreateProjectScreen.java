@@ -769,7 +769,7 @@ condition|(
 operator|!
 name|projectsPopup
 operator|.
-name|isPopingUp
+name|isPoppingUp
 argument_list|()
 operator|||
 literal|""
