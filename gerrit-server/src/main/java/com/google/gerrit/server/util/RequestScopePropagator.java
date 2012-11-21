@@ -681,15 +681,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
-name|CurrentUser
-name|user
-init|=
-name|context
-operator|.
-name|getCurrentUser
-argument_list|()
-decl_stmt|;
 name|RequestContext
 name|old
 init|=
@@ -709,7 +700,10 @@ name|getCurrentUser
 parameter_list|()
 block|{
 return|return
-name|user
+name|context
+operator|.
+name|getCurrentUser
+argument_list|()
 return|;
 block|}
 annotation|@
