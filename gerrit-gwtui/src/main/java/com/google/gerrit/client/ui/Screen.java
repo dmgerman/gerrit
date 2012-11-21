@@ -279,13 +279,6 @@ name|onInitUI
 argument_list|()
 expr_stmt|;
 block|}
-name|Gerrit
-operator|.
-name|setQueryString
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|registerKeys ()
 specifier|public
@@ -797,6 +790,13 @@ operator|.
 name|updateMenus
 argument_list|(
 name|this
+argument_list|)
+expr_stmt|;
+name|Gerrit
+operator|.
+name|setQueryString
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|registerKeys
