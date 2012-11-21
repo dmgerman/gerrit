@@ -229,6 +229,11 @@ specifier|private
 name|String
 name|windowTitle
 decl_stmt|;
+DECL|field|titleWidget
+specifier|private
+name|Widget
+name|titleWidget
+decl_stmt|;
 DECL|method|Screen ()
 specifier|protected
 name|Screen
@@ -351,6 +356,24 @@ name|FlowPanel
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|headerText
+operator|=
+operator|new
+name|InlineLabel
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|titleWidget
+operator|==
+literal|null
+condition|)
+block|{
+name|titleWidget
+operator|=
+name|headerText
+expr_stmt|;
+block|}
 name|FlowPanel
 name|title
 init|=
@@ -362,11 +385,7 @@ name|title
 operator|.
 name|add
 argument_list|(
-name|headerText
-operator|=
-operator|new
-name|InlineLabel
-argument_list|()
+name|titleWidget
 argument_list|)
 expr_stmt|;
 name|title
@@ -566,6 +585,21 @@ name|setVisible
 argument_list|(
 name|value
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setTitle (final Widget w)
+specifier|public
+name|void
+name|setTitle
+parameter_list|(
+specifier|final
+name|Widget
+name|w
+parameter_list|)
+block|{
+name|titleWidget
+operator|=
+name|w
 expr_stmt|;
 block|}
 DECL|method|setTitleEast (final Widget w)

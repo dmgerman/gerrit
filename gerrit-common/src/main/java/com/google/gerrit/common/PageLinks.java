@@ -497,6 +497,23 @@ name|TOP
 argument_list|)
 return|;
 block|}
+DECL|method|toCustomDashboard (final String params)
+specifier|public
+specifier|static
+name|String
+name|toCustomDashboard
+parameter_list|(
+specifier|final
+name|String
+name|params
+parameter_list|)
+block|{
+return|return
+literal|"/dashboard/?"
+operator|+
+name|params
+return|;
+block|}
 DECL|method|toProjectDashboards (Project.NameKey proj)
 specifier|public
 specifier|static
