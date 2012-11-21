@@ -109,6 +109,35 @@ name|NativeString
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|wrap (String value)
+specifier|static
+name|NativeString
+name|wrap
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+name|NativeString
+name|ns
+init|=
+operator|(
+name|NativeString
+operator|)
+name|createObject
+argument_list|()
+decl_stmt|;
+name|ns
+operator|.
+name|set
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+return|return
+name|ns
+return|;
+block|}
 DECL|method|asString ()
 specifier|public
 specifier|final
@@ -116,7 +145,19 @@ specifier|native
 name|String
 name|asString
 parameter_list|()
-comment|/*-{ return this; }-*/
+comment|/*-{ return this.s; }-*/
+function_decl|;
+DECL|method|set (String v)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|set
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ this.s = v; }-*/
 function_decl|;
 specifier|public
 specifier|static

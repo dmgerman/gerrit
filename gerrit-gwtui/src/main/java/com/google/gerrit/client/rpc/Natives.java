@@ -163,6 +163,11 @@ name|emptySet
 argument_list|()
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|parseJSON (String json)
 specifier|public
 specifier|static
@@ -180,31 +185,45 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|parser
-operator|==
-literal|null
+name|json
+operator|.
+name|startsWith
+argument_list|(
+literal|"\""
+argument_list|)
 condition|)
 block|{
+return|return
+operator|(
+name|T
+operator|)
+name|NativeString
+operator|.
+name|wrap
+argument_list|(
+name|parseString
+argument_list|(
 name|parser
-operator|=
-name|bestJsonParser
-argument_list|()
-expr_stmt|;
+argument_list|,
+name|json
+argument_list|)
+argument_list|)
+return|;
 block|}
-comment|// javac generics bug
 return|return
 name|Natives
 operator|.
 expr|<
 name|T
 operator|>
-name|parse0
+name|parseObject
 argument_list|(
 name|parser
 argument_list|,
 name|json
 argument_list|)
 return|;
+comment|// javac generics bug
 block|}
 specifier|private
 specifier|static
@@ -214,9 +233,24 @@ name|T
 extends|extends
 name|JavaScriptObject
 parameter_list|>
-DECL|method|parse0 (JavaScriptObject p, String s)
+DECL|method|parseObject (JavaScriptObject p, String s)
 name|T
-name|parse0
+name|parseObject
+parameter_list|(
+name|JavaScriptObject
+name|p
+parameter_list|,
+name|String
+name|s
+parameter_list|)
+comment|/*-{ return p(s); }-*/
+function_decl|;
+specifier|private
+specifier|static
+specifier|native
+DECL|method|parseString (JavaScriptObject p, String s)
+name|String
+name|parseString
 parameter_list|(
 name|JavaScriptObject
 name|p
@@ -241,6 +275,14 @@ name|bestJsonParser
 parameter_list|()
 comment|/*-{     if ($wnd.JSON&& typeof $wnd.JSON.parse === 'function')       return $wnd.JSON.parse;     return function(s) { return eval('(' + s + ')'); };   }-*/
 function_decl|;
+static|static
+block|{
+name|parser
+operator|=
+name|bestJsonParser
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|Natives ()
 specifier|private
 name|Natives
