@@ -106,20 +106,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|AccessPath
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
 import|;
 end_import
@@ -216,16 +202,6 @@ name|meth
 parameter_list|,
 name|boolean
 name|rememberMe
-parameter_list|)
-function_decl|;
-comment|/** Change the access path from the default of {@link AccessPath#WEB_UI}. */
-DECL|method|setAccessPath (AccessPath path)
-specifier|public
-name|void
-name|setAccessPath
-parameter_list|(
-name|AccessPath
-name|path
 parameter_list|)
 function_decl|;
 comment|/** Set the user account for this current request only. */
