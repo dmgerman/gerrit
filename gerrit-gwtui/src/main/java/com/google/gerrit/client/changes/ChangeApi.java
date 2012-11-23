@@ -138,33 +138,24 @@ specifier|public
 class|class
 name|ChangeApi
 block|{
-DECL|field|URI
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|URI
-init|=
-literal|"/changes/"
-decl_stmt|;
-comment|/**    * Sends a REST call to abandon a change and notify a callback. TODO: switch    * to use the new id triplet (project~branch~change) once that data is    * available to the UI.    */
-DECL|method|abandon (int changeId, String message, AsyncCallback<ChangeInfo> callback)
+comment|/** Abandon the change, ending its review. */
+DECL|method|abandon (int id, String msg, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|abandon
 parameter_list|(
 name|int
-name|changeId
+name|id
 parameter_list|,
 name|String
-name|message
+name|msg
 parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ChangeInfo
 argument_list|>
-name|callback
+name|cb
 parameter_list|)
 block|{
 name|Input
@@ -177,22 +168,19 @@ argument_list|()
 decl_stmt|;
 name|input
 operator|.
-name|setMessage
+name|message
 argument_list|(
 name|emptyToNull
 argument_list|(
-name|message
+name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-operator|new
-name|RestApi
+name|api
 argument_list|(
-name|URI
-operator|+
-name|changeId
-operator|+
-literal|"/abandon"
+name|id
+argument_list|,
+literal|"abandon"
 argument_list|)
 operator|.
 name|data
@@ -202,28 +190,28 @@ argument_list|)
 operator|.
 name|post
 argument_list|(
-name|callback
+name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Sends a REST call to revert a change.    */
-DECL|method|revert (int changeId, String message, AsyncCallback<ChangeInfo> callback)
+comment|/** Create a new change that reverts the delta caused by this change. */
+DECL|method|revert (int id, String msg, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
 name|revert
 parameter_list|(
 name|int
-name|changeId
+name|id
 parameter_list|,
 name|String
-name|message
+name|msg
 parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ChangeInfo
 argument_list|>
-name|callback
+name|cb
 parameter_list|)
 block|{
 name|Input
@@ -236,22 +224,19 @@ argument_list|()
 decl_stmt|;
 name|input
 operator|.
-name|setMessage
+name|message
 argument_list|(
 name|emptyToNull
 argument_list|(
-name|message
+name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-operator|new
-name|RestApi
+name|api
 argument_list|(
-name|URI
-operator|+
-name|changeId
-operator|+
-literal|"/revert"
+name|id
+argument_list|,
+literal|"revert"
 argument_list|)
 operator|.
 name|data
@@ -261,10 +246,11 @@ argument_list|)
 operator|.
 name|post
 argument_list|(
-name|callback
+name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Update the topic of a change. */
 DECL|method|topic (int id, String topic, String msg, AsyncCallback<String> cb)
 specifier|public
 specifier|static
@@ -297,7 +283,7 @@ argument_list|()
 decl_stmt|;
 name|input
 operator|.
-name|setTopic
+name|topic
 argument_list|(
 name|emptyToNull
 argument_list|(
@@ -307,7 +293,7 @@ argument_list|)
 expr_stmt|;
 name|input
 operator|.
-name|setMessage
+name|message
 argument_list|(
 name|emptyToNull
 argument_list|(
@@ -315,14 +301,11 @@ name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-operator|new
-name|RestApi
+name|api
 argument_list|(
-name|URI
-operator|+
 name|id
-operator|+
-literal|"/topic"
+argument_list|,
+literal|"topic"
 argument_list|)
 operator|.
 name|data
@@ -349,27 +332,27 @@ name|Input
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|setTopic (String t)
+DECL|method|topic (String t)
 specifier|final
 specifier|native
 name|void
-name|setTopic
+name|topic
 parameter_list|(
 name|String
 name|t
 parameter_list|)
-comment|/*-{ this.topic = t; }-*/
+comment|/*-{ if(t)this.topic=t; }-*/
 function_decl|;
-DECL|method|setMessage (String m)
+DECL|method|message (String m)
 specifier|final
 specifier|native
 name|void
-name|setMessage
+name|message
 parameter_list|(
 name|String
 name|m
 parameter_list|)
-comment|/*-{ this.message = m; }-*/
+comment|/*-{ if(m)this.message=m; }-*/
 function_decl|;
 DECL|method|create ()
 specifier|static
@@ -392,6 +375,34 @@ specifier|protected
 name|Input
 parameter_list|()
 block|{     }
+block|}
+DECL|method|api (int id, String action)
+specifier|private
+specifier|static
+name|RestApi
+name|api
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|String
+name|action
+parameter_list|)
+block|{
+comment|// TODO Switch to triplet project~branch~id format in URI.
+return|return
+operator|new
+name|RestApi
+argument_list|(
+literal|"/changes/"
+operator|+
+name|id
+operator|+
+literal|"/"
+operator|+
+name|action
+argument_list|)
+return|;
 block|}
 DECL|method|emptyToNull (String str)
 specifier|private
