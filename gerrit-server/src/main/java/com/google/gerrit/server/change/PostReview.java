@@ -552,6 +552,7 @@ end_import
 
 begin_class
 DECL|class|PostReview
+specifier|public
 class|class
 name|PostReview
 implements|implements
@@ -579,6 +580,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -586,10 +588,12 @@ block|{
 annotation|@
 name|DefaultInput
 DECL|field|message
+specifier|public
 name|String
 name|message
 decl_stmt|;
 DECL|field|labels
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -612,6 +616,7 @@ name|comments
 decl_stmt|;
 comment|/**      * If true require all labels to be within the user's permitted ranges based      * on access controls, attempting to use a label not granted to the user      * will fail the entire modify operation early. If false the operation will      * execute anyway, but the proposed labels given by the user will be      * modified to be the "best" value allowed by the access controls.      */
 DECL|field|strictLabels
+specifier|public
 name|boolean
 name|strictLabels
 init|=
@@ -619,6 +624,7 @@ literal|true
 decl_stmt|;
 comment|/**      * How to process draft comments already in the database that were not also      * described in this input request.      */
 DECL|field|drafts
+specifier|public
 name|DraftHandling
 name|drafts
 init|=
@@ -628,6 +634,7 @@ name|DELETE
 decl_stmt|;
 block|}
 DECL|enum|DraftHandling
+specifier|public
 specifier|static
 enum|enum
 name|DraftHandling
