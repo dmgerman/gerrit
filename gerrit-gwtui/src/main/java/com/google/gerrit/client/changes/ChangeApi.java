@@ -445,7 +445,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|emptyToNull (String str)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|emptyToNull

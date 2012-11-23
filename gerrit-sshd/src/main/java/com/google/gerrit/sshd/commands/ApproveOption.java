@@ -94,22 +94,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ApprovalCategory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|ApprovalCategoryValue
 import|;
 end_import
@@ -461,11 +445,9 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|getCategoryId ()
-name|ApprovalCategory
-operator|.
-name|Id
-name|getCategoryId
+DECL|method|getLabelName ()
+name|String
+name|getLabelName
 parameter_list|()
 block|{
 return|return
@@ -474,7 +456,7 @@ operator|.
 name|getCategory
 argument_list|()
 operator|.
-name|getId
+name|getLabelName
 argument_list|()
 return|;
 block|}
