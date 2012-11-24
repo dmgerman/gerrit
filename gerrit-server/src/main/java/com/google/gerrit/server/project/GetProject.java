@@ -114,21 +114,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|gerrit
 operator|.
-name|net
+name|server
 operator|.
-name|URLEncoder
+name|util
+operator|.
+name|Url
 import|;
 end_import
 
@@ -152,8 +148,6 @@ parameter_list|(
 name|ProjectResource
 name|resource
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|Project
 name|project
@@ -251,18 +245,14 @@ DECL|method|finish ()
 name|void
 name|finish
 parameter_list|()
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|id
 operator|=
-name|URLEncoder
+name|Url
 operator|.
 name|encode
 argument_list|(
 name|name
-argument_list|,
-literal|"UTF-8"
 argument_list|)
 expr_stmt|;
 block|}
