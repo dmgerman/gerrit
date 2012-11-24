@@ -833,6 +833,23 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|method|setParentUuid (String inReplyTo)
+specifier|public
+name|void
+name|setParentUuid
+parameter_list|(
+name|String
+name|inReplyTo
+parameter_list|)
+block|{
+name|parentUuid
+operator|=
+name|inReplyTo
+expr_stmt|;
+block|}
+end_function
+
 unit|}
 end_unit
 
