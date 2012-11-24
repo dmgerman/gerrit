@@ -107,7 +107,7 @@ literal|"Your change could not be merged due to a path conflict.\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Please merge (or rebase) the change locally and upload the resolution for review."
+literal|"Please rebase the change locally and upload the rebased commit for review."
 argument_list|)
 block|,
 comment|/** */
