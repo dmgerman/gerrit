@@ -251,8 +251,6 @@ block|{
 return|return
 name|mix
 argument_list|(
-name|salt
-argument_list|,
 name|gen
 operator|.
 name|getAndIncrement
@@ -269,6 +267,24 @@ name|salt
 init|=
 literal|0x9e3779b9
 decl_stmt|;
+DECL|method|mix (int in)
+specifier|static
+name|int
+name|mix
+parameter_list|(
+name|int
+name|in
+parameter_list|)
+block|{
+return|return
+name|mix
+argument_list|(
+name|salt
+argument_list|,
+name|in
+argument_list|)
+return|;
+block|}
 comment|/** A very simple bit permutation to mask a simple incrementer. */
 DECL|method|mix (final int salt, final int in)
 specifier|public
