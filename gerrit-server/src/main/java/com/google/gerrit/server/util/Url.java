@@ -118,6 +118,13 @@ name|String
 name|component
 parameter_list|)
 block|{
+if|if
+condition|(
+name|component
+operator|!=
+literal|null
+condition|)
+block|{
 try|try
 block|{
 return|return
@@ -148,6 +155,10 @@ argument_list|)
 throw|;
 block|}
 block|}
+return|return
+literal|null
+return|;
+block|}
 comment|/** Decode a URL encoded string, e.g. from {@code "%2F"} to {@code "/"}. */
 DECL|method|decode (String str)
 specifier|public
@@ -158,6 +169,13 @@ parameter_list|(
 name|String
 name|str
 parameter_list|)
+block|{
+if|if
+condition|(
+name|str
+operator|!=
+literal|null
+condition|)
 block|{
 try|try
 block|{
@@ -188,6 +206,10 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+return|return
+literal|null
+return|;
 block|}
 DECL|method|Url ()
 specifier|private
