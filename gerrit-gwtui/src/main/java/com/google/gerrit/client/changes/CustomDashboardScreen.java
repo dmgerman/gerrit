@@ -214,11 +214,6 @@ name|Screen
 implements|implements
 name|ChangeListScreen
 block|{
-DECL|field|params
-specifier|private
-name|String
-name|params
-decl_stmt|;
 DECL|field|title
 specifier|private
 name|String
@@ -263,12 +258,6 @@ name|String
 name|params
 parameter_list|)
 block|{
-name|this
-operator|.
-name|params
-operator|=
-name|params
-expr_stmt|;
 name|titles
 operator|=
 operator|new
