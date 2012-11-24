@@ -1809,7 +1809,7 @@ name|KEY_REQUIRE_CONTRIBUTOR_AGREEMENT
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -1831,7 +1831,7 @@ name|KEY_REQUIRE_SIGNED_OFF_BY
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -1853,7 +1853,7 @@ name|KEY_REQUIRE_CHANGE_ID
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -1893,7 +1893,7 @@ name|KEY_MERGE_CONTENT
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -3487,7 +3487,7 @@ argument_list|()
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -3509,7 +3509,7 @@ argument_list|()
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -3531,7 +3531,7 @@ argument_list|()
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)
@@ -3571,7 +3571,7 @@ argument_list|()
 argument_list|,
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 argument_list|)

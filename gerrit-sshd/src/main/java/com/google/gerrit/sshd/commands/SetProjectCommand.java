@@ -128,7 +128,7 @@ name|client
 operator|.
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 import|;
 end_import
 
@@ -458,7 +458,7 @@ literal|"if contributor agreement is required"
 argument_list|)
 DECL|field|contributorAgreements
 specifier|private
-name|InheritedBoolean
+name|InheritableBoolean
 name|contributorAgreements
 decl_stmt|;
 annotation|@
@@ -474,7 +474,7 @@ literal|"if signed-off-by is required"
 argument_list|)
 DECL|field|signedOffBy
 specifier|private
-name|InheritedBoolean
+name|InheritableBoolean
 name|signedOffBy
 decl_stmt|;
 annotation|@
@@ -490,7 +490,7 @@ literal|"allow automatic conflict resolving within files"
 argument_list|)
 DECL|field|contentMerge
 specifier|private
-name|InheritedBoolean
+name|InheritableBoolean
 name|contentMerge
 decl_stmt|;
 annotation|@
@@ -506,7 +506,7 @@ literal|"if change-id is required"
 argument_list|)
 DECL|field|requireChangeID
 specifier|private
-name|InheritedBoolean
+name|InheritableBoolean
 name|requireChangeID
 decl_stmt|;
 annotation|@
@@ -536,7 +536,7 @@ parameter_list|)
 block|{
 name|contributorAgreements
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|TRUE
 expr_stmt|;
@@ -568,7 +568,7 @@ parameter_list|)
 block|{
 name|contributorAgreements
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 expr_stmt|;
@@ -600,7 +600,7 @@ parameter_list|)
 block|{
 name|signedOffBy
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|TRUE
 expr_stmt|;
@@ -632,7 +632,7 @@ parameter_list|)
 block|{
 name|signedOffBy
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 expr_stmt|;
@@ -658,7 +658,7 @@ parameter_list|)
 block|{
 name|contentMerge
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|TRUE
 expr_stmt|;
@@ -684,7 +684,7 @@ parameter_list|)
 block|{
 name|contentMerge
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 expr_stmt|;
@@ -716,7 +716,7 @@ parameter_list|)
 block|{
 name|requireChangeID
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|TRUE
 expr_stmt|;
@@ -748,7 +748,7 @@ parameter_list|)
 block|{
 name|requireChangeID
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 expr_stmt|;

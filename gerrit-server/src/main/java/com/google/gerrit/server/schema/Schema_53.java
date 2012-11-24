@@ -390,7 +390,7 @@ name|client
 operator|.
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 import|;
 end_import
 
@@ -1651,7 +1651,7 @@ name|project
 operator|.
 name|setUseContributorAgreements
 argument_list|(
-name|asInheritedBoolean
+name|asInheritableBoolean
 argument_list|(
 name|rs
 argument_list|,
@@ -1761,7 +1761,7 @@ name|project
 operator|.
 name|setUseSignedOffBy
 argument_list|(
-name|asInheritedBoolean
+name|asInheritableBoolean
 argument_list|(
 name|rs
 argument_list|,
@@ -1773,7 +1773,7 @@ name|project
 operator|.
 name|setRequireChangeID
 argument_list|(
-name|asInheritedBoolean
+name|asInheritableBoolean
 argument_list|(
 name|rs
 argument_list|,
@@ -1785,7 +1785,7 @@ name|project
 operator|.
 name|setUseContentMerge
 argument_list|(
-name|asInheritedBoolean
+name|asInheritableBoolean
 argument_list|(
 name|rs
 argument_list|,
@@ -1806,11 +1806,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|asInheritedBoolean (ResultSet rs, String col)
+DECL|method|asInheritableBoolean (ResultSet rs, String col)
 specifier|private
 specifier|static
-name|InheritedBoolean
-name|asInheritedBoolean
+name|InheritableBoolean
+name|asInheritableBoolean
 parameter_list|(
 name|ResultSet
 name|rs
@@ -1836,13 +1836,13 @@ argument_list|)
 condition|?
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|TRUE
 else|:
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 return|;

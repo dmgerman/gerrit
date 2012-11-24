@@ -320,11 +320,11 @@ block|,
 DECL|enumConstant|HIDDEN
 name|HIDDEN
 block|;   }
-DECL|enum|InheritedBoolean
+DECL|enum|InheritableBoolean
 specifier|public
 specifier|static
 enum|enum
-name|InheritedBoolean
+name|InheritableBoolean
 block|{
 DECL|enumConstant|TRUE
 name|TRUE
@@ -347,12 +347,12 @@ name|description
 decl_stmt|;
 DECL|field|useContributorAgreements
 specifier|protected
-name|InheritedBoolean
+name|InheritableBoolean
 name|useContributorAgreements
 decl_stmt|;
 DECL|field|useSignedOffBy
 specifier|protected
-name|InheritedBoolean
+name|InheritableBoolean
 name|useSignedOffBy
 decl_stmt|;
 DECL|field|submitType
@@ -372,12 +372,12 @@ name|parent
 decl_stmt|;
 DECL|field|requireChangeID
 specifier|protected
-name|InheritedBoolean
+name|InheritableBoolean
 name|requireChangeID
 decl_stmt|;
 DECL|field|useContentMerge
 specifier|protected
-name|InheritedBoolean
+name|InheritableBoolean
 name|useContentMerge
 decl_stmt|;
 DECL|field|defaultDashboardId
@@ -423,25 +423,25 @@ name|ACTIVE
 expr_stmt|;
 name|useContributorAgreements
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 expr_stmt|;
 name|useSignedOffBy
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 expr_stmt|;
 name|requireChangeID
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 expr_stmt|;
 name|useContentMerge
 operator|=
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|INHERIT
 expr_stmt|;
@@ -504,7 +504,7 @@ expr_stmt|;
 block|}
 DECL|method|getUseContributorAgreements ()
 specifier|public
-name|InheritedBoolean
+name|InheritableBoolean
 name|getUseContributorAgreements
 parameter_list|()
 block|{
@@ -514,7 +514,7 @@ return|;
 block|}
 DECL|method|getUseSignedOffBy ()
 specifier|public
-name|InheritedBoolean
+name|InheritableBoolean
 name|getUseSignedOffBy
 parameter_list|()
 block|{
@@ -524,7 +524,7 @@ return|;
 block|}
 DECL|method|getUseContentMerge ()
 specifier|public
-name|InheritedBoolean
+name|InheritableBoolean
 name|getUseContentMerge
 parameter_list|()
 block|{
@@ -534,7 +534,7 @@ return|;
 block|}
 DECL|method|getRequireChangeID ()
 specifier|public
-name|InheritedBoolean
+name|InheritableBoolean
 name|getRequireChangeID
 parameter_list|()
 block|{
@@ -542,13 +542,13 @@ return|return
 name|requireChangeID
 return|;
 block|}
-DECL|method|setUseContributorAgreements (final InheritedBoolean u)
+DECL|method|setUseContributorAgreements (final InheritableBoolean u)
 specifier|public
 name|void
 name|setUseContributorAgreements
 parameter_list|(
 specifier|final
-name|InheritedBoolean
+name|InheritableBoolean
 name|u
 parameter_list|)
 block|{
@@ -557,13 +557,13 @@ operator|=
 name|u
 expr_stmt|;
 block|}
-DECL|method|setUseSignedOffBy (final InheritedBoolean sbo)
+DECL|method|setUseSignedOffBy (final InheritableBoolean sbo)
 specifier|public
 name|void
 name|setUseSignedOffBy
 parameter_list|(
 specifier|final
-name|InheritedBoolean
+name|InheritableBoolean
 name|sbo
 parameter_list|)
 block|{
@@ -572,13 +572,13 @@ operator|=
 name|sbo
 expr_stmt|;
 block|}
-DECL|method|setUseContentMerge (final InheritedBoolean cm)
+DECL|method|setUseContentMerge (final InheritableBoolean cm)
 specifier|public
 name|void
 name|setUseContentMerge
 parameter_list|(
 specifier|final
-name|InheritedBoolean
+name|InheritableBoolean
 name|cm
 parameter_list|)
 block|{
@@ -587,13 +587,13 @@ operator|=
 name|cm
 expr_stmt|;
 block|}
-DECL|method|setRequireChangeID (final InheritedBoolean cid)
+DECL|method|setRequireChangeID (final InheritableBoolean cid)
 specifier|public
 name|void
 name|setRequireChangeID
 parameter_list|(
 specifier|final
-name|InheritedBoolean
+name|InheritableBoolean
 name|cid
 parameter_list|)
 block|{

@@ -254,7 +254,7 @@ name|client
 operator|.
 name|Project
 operator|.
-name|InheritedBoolean
+name|InheritableBoolean
 import|;
 end_import
 
@@ -1581,7 +1581,7 @@ name|p
 operator|.
 name|setRequireChangeID
 argument_list|(
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|TRUE
 argument_list|)
@@ -1590,7 +1590,7 @@ name|p
 operator|.
 name|setUseContentMerge
 argument_list|(
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 argument_list|)
@@ -1599,7 +1599,7 @@ name|p
 operator|.
 name|setUseContributorAgreements
 argument_list|(
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 argument_list|)
@@ -1608,7 +1608,7 @@ name|p
 operator|.
 name|setUseSignedOffBy
 argument_list|(
-name|InheritedBoolean
+name|InheritableBoolean
 operator|.
 name|FALSE
 argument_list|)
