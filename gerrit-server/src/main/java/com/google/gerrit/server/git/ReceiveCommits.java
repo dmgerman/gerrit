@@ -818,24 +818,6 @@ name|git
 operator|.
 name|validators
 operator|.
-name|CommitValidationResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|validators
-operator|.
 name|CommitValidationListener
 import|;
 end_import
@@ -855,6 +837,24 @@ operator|.
 name|validators
 operator|.
 name|CommitValidationMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|validators
+operator|.
+name|CommitValidationResult
 import|;
 end_import
 
@@ -919,22 +919,6 @@ operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|plugins
-operator|.
-name|PluginLoader
 import|;
 end_import
 
@@ -2570,15 +2554,9 @@ name|CommitValidationListener
 argument_list|>
 name|commitValidators
 decl_stmt|;
-DECL|field|pluginLoader
-specifier|private
-specifier|final
-name|PluginLoader
-name|pluginLoader
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final DynamicSet<CommitValidationListener> commitValidationListeners, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final PluginLoader pluginLoader)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final DynamicSet<CommitValidationListener> commitValidationListeners, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2705,10 +2683,6 @@ name|SubmoduleOp
 operator|.
 name|Factory
 name|subOpFactory
-parameter_list|,
-specifier|final
-name|PluginLoader
-name|pluginLoader
 parameter_list|)
 throws|throws
 name|IOException
@@ -2865,12 +2839,6 @@ operator|.
 name|repo
 operator|=
 name|repo
-expr_stmt|;
-name|this
-operator|.
-name|pluginLoader
-operator|=
-name|pluginLoader
 expr_stmt|;
 name|this
 operator|.
@@ -12606,17 +12574,6 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|String
-name|pluginName
-init|=
-name|pluginLoader
-operator|.
-name|getPluginName
-argument_list|(
-name|validator
-argument_list|)
-decl_stmt|;
-specifier|final
-name|String
 name|message
 init|=
 name|validationResult
@@ -12637,16 +12594,7 @@ name|reject
 argument_list|(
 name|cmd
 argument_list|,
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s (rejected by plugin %s)"
-argument_list|,
 name|message
-argument_list|,
-name|pluginName
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -12671,11 +12619,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"(W) %s (from plugin %s)"
+literal|"(W) %s"
 argument_list|,
 name|message
-argument_list|,
-name|pluginName
 argument_list|)
 argument_list|)
 expr_stmt|;
