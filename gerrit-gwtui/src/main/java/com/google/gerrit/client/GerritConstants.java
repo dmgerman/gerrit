@@ -293,6 +293,26 @@ name|String
 name|menuProjectsList
 parameter_list|()
 function_decl|;
+DECL|method|menuProjectsInfo ()
+name|String
+name|menuProjectsInfo
+parameter_list|()
+function_decl|;
+DECL|method|menuProjectsBranches ()
+name|String
+name|menuProjectsBranches
+parameter_list|()
+function_decl|;
+DECL|method|menuProjectsAccess ()
+name|String
+name|menuProjectsAccess
+parameter_list|()
+function_decl|;
+DECL|method|menuProjectsDashboards ()
+name|String
+name|menuProjectsDashboards
+parameter_list|()
+function_decl|;
 DECL|method|menuProjectsCreate ()
 name|String
 name|menuProjectsCreate

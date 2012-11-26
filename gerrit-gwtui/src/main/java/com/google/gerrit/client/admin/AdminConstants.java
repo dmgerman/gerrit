@@ -470,29 +470,9 @@ name|String
 name|createProjectTitle
 parameter_list|()
 function_decl|;
-DECL|method|projectAdminTabGeneral ()
-name|String
-name|projectAdminTabGeneral
-parameter_list|()
-function_decl|;
-DECL|method|projectAdminTabBranches ()
-name|String
-name|projectAdminTabBranches
-parameter_list|()
-function_decl|;
-DECL|method|projectAdminTabAccess ()
-name|String
-name|projectAdminTabAccess
-parameter_list|()
-function_decl|;
 DECL|method|projectListQueryLink ()
 name|String
 name|projectListQueryLink
-parameter_list|()
-function_decl|;
-DECL|method|projectAdminTabDashboards ()
-name|String
-name|projectAdminTabDashboards
 parameter_list|()
 function_decl|;
 DECL|method|plugins ()
