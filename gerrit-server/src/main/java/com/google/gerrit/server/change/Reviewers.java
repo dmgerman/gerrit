@@ -354,9 +354,18 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|list
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|ListReviewers
+argument_list|>
+name|list
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Reviewers (Provider<ReviewDb> dbProvider, DynamicMap<RestView<ReviewerResource>> views, AccountCache accountCache)
+DECL|method|Reviewers (Provider<ReviewDb> dbProvider, DynamicMap<RestView<ReviewerResource>> views, AccountCache accountCache, Provider<ListReviewers> list)
 name|Reviewers
 parameter_list|(
 name|Provider
@@ -376,6 +385,12 @@ name|views
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|Provider
+argument_list|<
+name|ListReviewers
+argument_list|>
+name|list
 parameter_list|)
 block|{
 name|this
@@ -395,6 +410,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|list
+operator|=
+name|list
 expr_stmt|;
 block|}
 annotation|@
@@ -425,14 +446,13 @@ name|ChangeResource
 argument_list|>
 name|list
 parameter_list|()
-throws|throws
-name|ResourceNotFoundException
 block|{
-throw|throw
-operator|new
-name|ResourceNotFoundException
+return|return
+name|list
+operator|.
+name|get
 argument_list|()
-throw|;
+return|;
 block|}
 annotation|@
 name|Override
