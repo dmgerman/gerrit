@@ -323,7 +323,8 @@ literal|"git fetch "
 operator|+
 name|link
 operator|.
-name|urlData
+name|getUrlData
+argument_list|()
 operator|+
 literal|"&& git checkout FETCH_HEAD"
 argument_list|)
@@ -378,7 +379,8 @@ literal|"git pull "
 operator|+
 name|link
 operator|.
-name|urlData
+name|getUrlData
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -431,7 +433,8 @@ literal|"git fetch "
 operator|+
 name|link
 operator|.
-name|urlData
+name|getUrlData
+argument_list|()
 operator|+
 literal|"&& git cherry-pick FETCH_HEAD"
 argument_list|)
@@ -486,7 +489,8 @@ literal|"git fetch "
 operator|+
 name|link
 operator|.
-name|urlData
+name|getUrlData
+argument_list|()
 operator|+
 literal|"&& git format-patch -1 --stdout FETCH_HEAD"
 argument_list|)
