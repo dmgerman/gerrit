@@ -181,14 +181,6 @@ name|ChangeManageServiceImpl
 implements|implements
 name|ChangeManageService
 block|{
-DECL|field|submitAction
-specifier|private
-specifier|final
-name|SubmitAction
-operator|.
-name|Factory
-name|submitAction
-decl_stmt|;
 DECL|field|rebaseChangeFactory
 specifier|private
 specifier|final
@@ -223,15 +215,9 @@ name|editCommitMessageHandlerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl (final SubmitAction.Factory patchSetAction, final RebaseChangeHandler.Factory rebaseChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory, final EditCommitMessageHandler.Factory editCommitMessageHandler)
+DECL|method|ChangeManageServiceImpl ( final RebaseChangeHandler.Factory rebaseChangeFactory, final PublishAction.Factory publishAction, final DeleteDraftChange.Factory deleteDraftChangeFactory, final EditCommitMessageHandler.Factory editCommitMessageHandler)
 name|ChangeManageServiceImpl
 parameter_list|(
-specifier|final
-name|SubmitAction
-operator|.
-name|Factory
-name|patchSetAction
-parameter_list|,
 specifier|final
 name|RebaseChangeHandler
 operator|.
@@ -259,12 +245,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|submitAction
-operator|=
-name|patchSetAction
-expr_stmt|;
-name|this
-operator|.
 name|rebaseChangeFactory
 operator|=
 name|rebaseChangeFactory
@@ -286,38 +266,6 @@ operator|.
 name|editCommitMessageHandlerFactory
 operator|=
 name|editCommitMessageHandler
-expr_stmt|;
-block|}
-DECL|method|submit (final PatchSet.Id patchSetId, final AsyncCallback<ChangeDetail> cb)
-specifier|public
-name|void
-name|submit
-parameter_list|(
-specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
-parameter_list|,
-specifier|final
-name|AsyncCallback
-argument_list|<
-name|ChangeDetail
-argument_list|>
-name|cb
-parameter_list|)
-block|{
-name|submitAction
-operator|.
-name|create
-argument_list|(
-name|patchSetId
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|cb
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|rebaseChange (final PatchSet.Id patchSetId, final AsyncCallback<ChangeDetail> callback)

@@ -207,26 +207,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|submit (PatchSet.Id patchSetId, AsyncCallback<ChangeDetail> callback)
-name|void
-name|submit
-parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|ChangeDetail
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|createNewPatchSet (final PatchSet.Id patchSetId, final String newCommitMessage, final AsyncCallback<ChangeDetail> callback)
 name|void
 name|createNewPatchSet

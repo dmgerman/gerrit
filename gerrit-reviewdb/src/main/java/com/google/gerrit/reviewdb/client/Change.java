@@ -1245,6 +1245,23 @@ block|}
 end_function
 
 begin_function
+DECL|method|setLastUpdatedOn (Timestamp now)
+specifier|public
+name|void
+name|setLastUpdatedOn
+parameter_list|(
+name|Timestamp
+name|now
+parameter_list|)
+block|{
+name|lastUpdatedOn
+operator|=
+name|now
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|method|resetLastUpdatedOn ()
 specifier|public
 name|void
