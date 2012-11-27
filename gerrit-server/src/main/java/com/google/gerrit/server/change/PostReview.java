@@ -969,6 +969,13 @@ operator|.
 name|getLastUpdatedOn
 argument_list|()
 expr_stmt|;
+name|boolean
+name|dirty
+init|=
+literal|false
+decl_stmt|;
+name|dirty
+operator||=
 name|insertComments
 argument_list|(
 name|revision
@@ -982,6 +989,8 @@ operator|.
 name|drafts
 argument_list|)
 expr_stmt|;
+name|dirty
+operator||=
 name|updateLabels
 argument_list|(
 name|revision
@@ -991,6 +1000,8 @@ operator|.
 name|labels
 argument_list|)
 expr_stmt|;
+name|dirty
+operator||=
 name|insertMessage
 argument_list|(
 name|revision
@@ -1000,6 +1011,11 @@ operator|.
 name|message
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dirty
+condition|)
+block|{
 name|db
 operator|.
 name|changes
@@ -1020,6 +1036,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -1609,7 +1626,7 @@ block|}
 block|}
 DECL|method|insertComments (RevisionResource rsrc, Map<String, List<Comment>> in, DraftHandling draftsHandling)
 specifier|private
-name|void
+name|boolean
 name|insertComments
 parameter_list|(
 name|RevisionResource
@@ -2041,6 +2058,25 @@ argument_list|(
 name|upd
 argument_list|)
 expr_stmt|;
+return|return
+operator|!
+name|del
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|ins
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|upd
+operator|.
+name|isEmpty
+argument_list|()
+return|;
 block|}
 DECL|method|scanDraftComments ( RevisionResource rsrc)
 specifier|private
@@ -2120,7 +2156,7 @@ return|;
 block|}
 DECL|method|updateLabels (RevisionResource rsrc, Map<String, Short> labels)
 specifier|private
-name|void
+name|boolean
 name|updateLabels
 parameter_list|(
 name|RevisionResource
@@ -2582,6 +2618,25 @@ argument_list|(
 name|upd
 argument_list|)
 expr_stmt|;
+return|return
+operator|!
+name|del
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|ins
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|upd
+operator|.
+name|isEmpty
+argument_list|()
+return|;
 block|}
 DECL|method|forceCallerAsReviewer (RevisionResource rsrc, Map<String, PatchSetApproval> current, List<PatchSetApproval> ins, List<PatchSetApproval> upd, List<PatchSetApproval> del)
 specifier|private
@@ -2972,7 +3027,7 @@ return|;
 block|}
 DECL|method|insertMessage (RevisionResource rsrc, String msg)
 specifier|private
-name|void
+name|boolean
 name|insertMessage
 parameter_list|(
 name|RevisionResource
@@ -3003,26 +3058,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|buf
-operator|.
-name|append
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Patch Set %d:"
-argument_list|,
-name|rsrc
-operator|.
-name|getPatchSet
-argument_list|()
-operator|.
-name|getPatchSetId
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|String
@@ -3113,6 +3148,20 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|buf
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|message
 operator|=
 operator|new
@@ -3156,10 +3205,25 @@ name|message
 operator|.
 name|setMessage
 argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Patch Set %d:%s"
+argument_list|,
+name|rsrc
+operator|.
+name|getPatchSet
+argument_list|()
+operator|.
+name|getPatchSetId
+argument_list|()
+argument_list|,
 name|buf
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
@@ -3177,6 +3241,9 @@ name|message
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Deprecated
