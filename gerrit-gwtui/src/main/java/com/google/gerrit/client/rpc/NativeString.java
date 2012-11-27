@@ -204,9 +204,15 @@ operator|.
 name|onSuccess
 argument_list|(
 name|result
+operator|!=
+literal|null
+condition|?
+name|result
 operator|.
 name|asString
 argument_list|()
+else|:
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

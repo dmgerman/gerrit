@@ -399,6 +399,9 @@ name|decode
 argument_list|(
 name|id
 argument_list|)
+argument_list|,
+literal|true
+comment|/* created */
 argument_list|)
 return|;
 block|}
