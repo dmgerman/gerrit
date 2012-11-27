@@ -786,7 +786,7 @@ name|google
 operator|.
 name|gson
 operator|.
-name|JsonObject
+name|JsonParseException
 import|;
 end_import
 
@@ -798,7 +798,7 @@ name|google
 operator|.
 name|gson
 operator|.
-name|JsonParseException
+name|JsonPrimitive
 import|;
 end_import
 
@@ -4775,22 +4775,6 @@ name|text
 argument_list|)
 condition|)
 block|{
-name|JsonObject
-name|obj
-init|=
-operator|new
-name|JsonObject
-argument_list|()
-decl_stmt|;
-name|obj
-operator|.
-name|addProperty
-argument_list|(
-literal|"message"
-argument_list|,
-name|text
-argument_list|)
-expr_stmt|;
 name|replyJson
 argument_list|(
 name|req
@@ -4806,7 +4790,11 @@ argument_list|,
 literal|"0"
 argument_list|)
 argument_list|,
-name|obj
+operator|new
+name|JsonPrimitive
+argument_list|(
+name|text
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
