@@ -260,6 +260,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Iterables
 import|;
 end_import
@@ -772,6 +786,18 @@ name|google
 operator|.
 name|gson
 operator|.
+name|JsonObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
 name|JsonParseException
 import|;
 end_import
@@ -1083,6 +1109,18 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -2960,12 +2998,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyJson (HttpServletRequest req, HttpServletResponse res, Multimap<String, String> config, Object result)
+DECL|method|replyJson (@ullable HttpServletRequest req, HttpServletResponse res, Multimap<String, String> config, Object result)
 specifier|private
 specifier|static
 name|void
 name|replyJson
 parameter_list|(
+annotation|@
+name|Nullable
 name|HttpServletRequest
 name|req
 parameter_list|,
@@ -3152,7 +3192,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|method|newGson (Multimap<String, String> config, HttpServletRequest req)
+DECL|method|newGson (Multimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
 specifier|static
 name|Gson
@@ -3166,6 +3206,8 @@ name|String
 argument_list|>
 name|config
 parameter_list|,
+annotation|@
+name|Nullable
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -3211,7 +3253,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|enablePrettyPrint (GsonBuilder gb, Multimap<String, String> config, HttpServletRequest req)
+DECL|method|enablePrettyPrint (GsonBuilder gb, Multimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
 specifier|static
 name|void
@@ -3228,6 +3270,8 @@ name|String
 argument_list|>
 name|config
 parameter_list|,
+annotation|@
+name|Nullable
 name|HttpServletRequest
 name|req
 parameter_list|)
@@ -3276,6 +3320,10 @@ if|if
 condition|(
 name|pp
 operator|==
+literal|null
+operator|&&
+name|req
+operator|!=
 literal|null
 condition|)
 block|{
@@ -3543,12 +3591,14 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyBinaryResult (HttpServletRequest req, HttpServletResponse res, BinaryResult bin)
+DECL|method|replyBinaryResult ( @ullable HttpServletRequest req, HttpServletResponse res, BinaryResult bin)
 specifier|private
 specifier|static
 name|void
 name|replyBinaryResult
 parameter_list|(
+annotation|@
+name|Nullable
 name|HttpServletRequest
 name|req
 parameter_list|,
@@ -4719,6 +4769,51 @@ name|IOException
 block|{
 if|if
 condition|(
+name|isMaybeHTML
+argument_list|(
+name|text
+argument_list|)
+condition|)
+block|{
+name|JsonObject
+name|obj
+init|=
+operator|new
+name|JsonObject
+argument_list|()
+decl_stmt|;
+name|obj
+operator|.
+name|addProperty
+argument_list|(
+literal|"message"
+argument_list|,
+name|text
+argument_list|)
+expr_stmt|;
+name|replyJson
+argument_list|(
+name|req
+argument_list|,
+name|res
+argument_list|,
+name|ImmutableMultimap
+operator|.
+name|of
+argument_list|(
+literal|"pp"
+argument_list|,
+literal|"0"
+argument_list|)
+argument_list|,
+name|obj
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
 operator|!
 name|text
 operator|.
@@ -4752,6 +4847,49 @@ literal|"text/plain"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_decl_stmt
+DECL|field|IS_HTML
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|IS_HTML
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[<&]"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|method|isMaybeHTML (String text)
+specifier|private
+specifier|static
+name|boolean
+name|isMaybeHTML
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+return|return
+name|IS_HTML
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+operator|.
+name|find
+argument_list|()
+return|;
 block|}
 end_function
 
