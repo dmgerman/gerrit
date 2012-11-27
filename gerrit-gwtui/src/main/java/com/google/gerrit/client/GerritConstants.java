@@ -323,19 +323,14 @@ name|String
 name|menuPeople
 parameter_list|()
 function_decl|;
-DECL|method|menuGroups ()
+DECL|method|menuPeopleGroupsList ()
 name|String
-name|menuGroups
+name|menuPeopleGroupsList
 parameter_list|()
 function_decl|;
-DECL|method|menuGroupsList ()
+DECL|method|menuPeopleGroupsCreate ()
 name|String
-name|menuGroupsList
-parameter_list|()
-function_decl|;
-DECL|method|menuGroupsCreate ()
-name|String
-name|menuGroupsCreate
+name|menuPeopleGroupsCreate
 parameter_list|()
 function_decl|;
 DECL|method|menuPlugins ()
