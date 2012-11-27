@@ -1512,6 +1512,15 @@ argument_list|,
 literal|"attachment"
 argument_list|)
 expr_stmt|;
+name|res
+operator|.
+name|setHeader
+argument_list|(
+literal|"X-Content-Type-Options"
+argument_list|,
+literal|"nosniff"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|int
