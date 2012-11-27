@@ -94,7 +94,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|AuthException
 import|;
 end_import
 
@@ -110,7 +110,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|TopLevelResource
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -143,6 +143,36 @@ operator|.
 name|restapi
 operator|.
 name|RestView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|TopLevelResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|AnonymousUser
 import|;
 end_import
 
@@ -281,6 +311,8 @@ name|id
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
+throws|,
+name|AuthException
 block|{
 if|if
 condition|(
@@ -318,6 +350,24 @@ name|user
 argument_list|)
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|user
+operator|instanceof
+name|AnonymousUser
+condition|)
+block|{
+throw|throw
+operator|new
+name|AuthException
+argument_list|(
+literal|"Authentication required"
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|ResourceNotFoundException
@@ -326,6 +376,9 @@ name|id
 argument_list|)
 throw|;
 block|}
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|ResourceNotFoundException
@@ -333,6 +386,7 @@ argument_list|(
 name|id
 argument_list|)
 throw|;
+block|}
 block|}
 annotation|@
 name|Override
