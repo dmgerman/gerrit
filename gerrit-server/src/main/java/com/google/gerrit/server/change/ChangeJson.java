@@ -2350,6 +2350,8 @@ name|appliedBy
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 name|n
 operator|.
