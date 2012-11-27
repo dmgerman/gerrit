@@ -842,16 +842,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|merge (MergeOp.Factory mof, Branch.NameKey branch)
+DECL|method|merge (Branch.NameKey branch)
 specifier|public
 name|void
 name|merge
 parameter_list|(
-name|MergeOp
-operator|.
-name|Factory
-name|mof
-parameter_list|,
 name|Branch
 operator|.
 name|NameKey
@@ -868,8 +863,6 @@ condition|)
 block|{
 name|mergeImpl
 argument_list|(
-name|mof
-argument_list|,
 name|branch
 argument_list|)
 expr_stmt|;
@@ -1245,64 +1238,6 @@ name|needMerge
 operator|=
 literal|false
 expr_stmt|;
-block|}
-DECL|method|mergeImpl (MergeOp.Factory opFactory, Branch.NameKey branch)
-specifier|private
-name|void
-name|mergeImpl
-parameter_list|(
-name|MergeOp
-operator|.
-name|Factory
-name|opFactory
-parameter_list|,
-name|Branch
-operator|.
-name|NameKey
-name|branch
-parameter_list|)
-block|{
-try|try
-block|{
-name|opFactory
-operator|.
-name|create
-argument_list|(
-name|branch
-argument_list|)
-operator|.
-name|merge
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Merge attempt for "
-operator|+
-name|branch
-operator|+
-literal|" failed"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|finish
-argument_list|(
-name|branch
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|mergeImpl (final Branch.NameKey branch)
 specifier|private

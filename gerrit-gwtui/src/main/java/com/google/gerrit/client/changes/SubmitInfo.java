@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -74,9 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
 name|client
 operator|.
-name|ErrorDialog
+name|Change
 import|;
 end_import
 
@@ -86,100 +88,57 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gwt
 operator|.
-name|safehtml
-operator|.
-name|client
-operator|.
-name|SafeHtmlBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
+name|core
 operator|.
 name|client
 operator|.
-name|RemoteJsonException
+name|JavaScriptObject
 import|;
 end_import
 
 begin_class
-DECL|class|SubmitFailureDialog
+DECL|class|SubmitInfo
 class|class
-name|SubmitFailureDialog
+name|SubmitInfo
 extends|extends
-name|ErrorDialog
+name|JavaScriptObject
 block|{
-DECL|method|isConflict (Throwable err)
-specifier|static
-name|boolean
-name|isConflict
-parameter_list|(
-name|Throwable
-name|err
-parameter_list|)
+DECL|method|status ()
+specifier|final
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|()
 block|{
 return|return
-name|err
-operator|instanceof
-name|RemoteJsonException
-operator|&&
-literal|409
-operator|==
-operator|(
-operator|(
-name|RemoteJsonException
-operator|)
-name|err
-operator|)
+name|Change
 operator|.
-name|getCode
+name|Status
+operator|.
+name|valueOf
+argument_list|(
+name|statusRaw
 argument_list|()
+argument_list|)
 return|;
 block|}
-DECL|method|SubmitFailureDialog (String msg)
-name|SubmitFailureDialog
-parameter_list|(
+DECL|method|statusRaw ()
+specifier|private
+specifier|final
+specifier|native
 name|String
-name|msg
-parameter_list|)
-block|{
-name|super
-argument_list|(
-operator|new
-name|SafeHtmlBuilder
-argument_list|()
-operator|.
-name|append
-argument_list|(
-name|msg
-operator|.
-name|trim
-argument_list|()
-argument_list|)
-operator|.
-name|wikify
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|setText
-argument_list|(
-name|Util
-operator|.
-name|C
-operator|.
-name|submitFailed
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+name|statusRaw
+parameter_list|()
+comment|/*-{ return this.status; }-*/
+function_decl|;
+DECL|method|SubmitInfo ()
+specifier|protected
+name|SubmitInfo
+parameter_list|()
+block|{   }
 block|}
 end_class
 
