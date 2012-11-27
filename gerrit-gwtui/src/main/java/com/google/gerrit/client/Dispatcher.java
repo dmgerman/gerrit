@@ -3618,7 +3618,7 @@ name|ref
 init|=
 name|URL
 operator|.
-name|decodePathSegment
+name|decode
 argument_list|(
 name|dashboardId
 operator|.
@@ -3636,7 +3636,7 @@ name|path
 init|=
 name|URL
 operator|.
-name|decodePathSegment
+name|decode
 argument_list|(
 name|dashboardId
 operator|.

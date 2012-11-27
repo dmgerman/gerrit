@@ -347,7 +347,7 @@ name|ref
 init|=
 name|URL
 operator|.
-name|encodePathSegment
+name|encode
 argument_list|(
 name|dashboardId
 operator|.
@@ -365,7 +365,7 @@ name|path
 init|=
 name|URL
 operator|.
-name|encodePathSegment
+name|encode
 argument_list|(
 name|dashboardId
 operator|.
@@ -390,7 +390,7 @@ block|{
 return|return
 name|URL
 operator|.
-name|encodePathSegment
+name|encode
 argument_list|(
 name|dashboardId
 argument_list|)
