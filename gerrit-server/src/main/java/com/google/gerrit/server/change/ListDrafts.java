@@ -459,6 +459,12 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
+name|o
+operator|.
+name|path
+operator|=
+literal|null
+expr_stmt|;
 name|list
 operator|.
 name|add
