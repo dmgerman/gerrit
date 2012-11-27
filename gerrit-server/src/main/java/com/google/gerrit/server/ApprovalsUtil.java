@@ -335,6 +335,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ApprovalsUtil (ReviewDb db, ApprovalTypes approvalTypes)
+specifier|public
 name|ApprovalsUtil
 parameter_list|(
 name|ReviewDb
