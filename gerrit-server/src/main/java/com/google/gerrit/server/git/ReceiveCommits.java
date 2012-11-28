@@ -10204,7 +10204,7 @@ finally|finally
 block|{
 synchronized|synchronized
 init|(
-name|newProgress
+name|replaceProgress
 init|)
 block|{
 name|replaceProgress
