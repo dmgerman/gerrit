@@ -3746,7 +3746,7 @@ block|{
 comment|// Octopus merges are not well supported for diff output by Gerrit.
 comment|// Currently these always have a null oldId in the PatchList.
 return|return
-literal|""
+literal|"[Octopus merge; cannot be formatted as a diff.]\n"
 return|;
 block|}
 block|}
