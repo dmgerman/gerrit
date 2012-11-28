@@ -600,6 +600,31 @@ name|String
 name|titleEditCommitMessage
 parameter_list|()
 function_decl|;
+DECL|method|buttonCherryPickChangeBegin ()
+name|String
+name|buttonCherryPickChangeBegin
+parameter_list|()
+function_decl|;
+DECL|method|buttonCherryPickChangeSend ()
+name|String
+name|buttonCherryPickChangeSend
+parameter_list|()
+function_decl|;
+DECL|method|headingCherryPickBranch ()
+name|String
+name|headingCherryPickBranch
+parameter_list|()
+function_decl|;
+DECL|method|cherryPickCommitMessage ()
+name|String
+name|cherryPickCommitMessage
+parameter_list|()
+function_decl|;
+DECL|method|cherryPickTitle ()
+name|String
+name|cherryPickTitle
+parameter_list|()
+function_decl|;
 DECL|method|buttonAbandonChangeBegin ()
 name|String
 name|buttonAbandonChangeBegin

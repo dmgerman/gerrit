@@ -578,6 +578,71 @@ argument_list|)
 return|;
 block|}
 comment|/** Submit a specific revision of a change. */
+DECL|method|cherrypick (int id, String commit, String destination, String message, AsyncCallback<ChangeInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|cherrypick
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|String
+name|commit
+parameter_list|,
+name|String
+name|destination
+parameter_list|,
+name|String
+name|message
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|CherryPickInput
+name|cherryPickInput
+init|=
+name|CherryPickInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|cherryPickInput
+operator|.
+name|setMessage
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|cherryPickInput
+operator|.
+name|setDestination
+argument_list|(
+name|destination
+argument_list|)
+expr_stmt|;
+name|call
+argument_list|(
+name|id
+argument_list|,
+name|commit
+argument_list|,
+literal|"cherrypick"
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|cherryPickInput
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Submit a specific revision of a change. */
 DECL|method|submit (int id, String commit, AsyncCallback<SubmitInfo> cb)
 specifier|public
 specifier|static
@@ -679,6 +744,57 @@ name|Input
 parameter_list|()
 block|{     }
 block|}
+DECL|class|CherryPickInput
+specifier|private
+specifier|static
+class|class
+name|CherryPickInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|create ()
+specifier|static
+name|CherryPickInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|CherryPickInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|setDestination (String d)
+specifier|final
+specifier|native
+name|void
+name|setDestination
+parameter_list|(
+name|String
+name|d
+parameter_list|)
+comment|/*-{ this.destination = d; }-*/
+function_decl|;
+DECL|method|setMessage (String m)
+specifier|final
+specifier|native
+name|void
+name|setMessage
+parameter_list|(
+name|String
+name|m
+parameter_list|)
+comment|/*-{ this.message = m; }-*/
+function_decl|;
+DECL|method|CherryPickInput ()
+specifier|protected
+name|CherryPickInput
+parameter_list|()
+block|{     }
+block|}
+empty_stmt|;
 DECL|class|SubmitInput
 specifier|private
 specifier|static
