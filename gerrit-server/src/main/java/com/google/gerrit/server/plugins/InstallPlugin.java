@@ -110,22 +110,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|AuthException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|BadRequestException
 import|;
 end_import
@@ -174,7 +158,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|Response
 import|;
 end_import
 
@@ -359,7 +343,13 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|method|InstallPlugin (PluginLoader loader, String name)
+DECL|field|created
+specifier|private
+specifier|final
+name|boolean
+name|created
+decl_stmt|;
+DECL|method|InstallPlugin (PluginLoader loader, String name, boolean created)
 name|InstallPlugin
 parameter_list|(
 name|PluginLoader
@@ -367,6 +357,9 @@ name|loader
 parameter_list|,
 name|String
 name|name
+parameter_list|,
+name|boolean
+name|created
 parameter_list|)
 block|{
 name|this
@@ -380,6 +373,12 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|this
+operator|.
+name|created
+operator|=
+name|created
 expr_stmt|;
 block|}
 annotation|@
@@ -403,7 +402,12 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|ListPlugins
+operator|.
+name|PluginInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|TopLevelResource
@@ -413,13 +417,9 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
 name|BadRequestException
 throws|,
-name|ResourceConflictException
-throws|,
-name|Exception
+name|IOException
 block|{
 try|try
 block|{
@@ -619,7 +619,11 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-return|return
+name|ListPlugins
+operator|.
+name|PluginInfo
+name|info
+init|=
 operator|new
 name|ListPlugins
 operator|.
@@ -631,6 +635,23 @@ name|get
 argument_list|(
 name|name
 argument_list|)
+argument_list|)
+decl_stmt|;
+return|return
+name|created
+condition|?
+name|Response
+operator|.
+name|created
+argument_list|(
+name|info
+argument_list|)
+else|:
+name|Response
+operator|.
+name|ok
+argument_list|(
+name|info
 argument_list|)
 return|;
 block|}
@@ -696,7 +717,12 @@ annotation|@
 name|Override
 DECL|method|apply (PluginResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|ListPlugins
+operator|.
+name|PluginInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|PluginResource
@@ -706,13 +732,9 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
 name|BadRequestException
 throws|,
-name|ResourceConflictException
-throws|,
-name|Exception
+name|IOException
 block|{
 return|return
 operator|new
@@ -724,6 +746,8 @@ name|resource
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 operator|.
 name|apply
