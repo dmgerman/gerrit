@@ -92,7 +92,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|ErrorDialog
+name|Gerrit
 import|;
 end_import
 
@@ -106,7 +106,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|rpc
+operator|.
+name|GerritCallback
 import|;
 end_import
 
@@ -138,7 +140,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|CommentedActionDialog
+name|BranchLink
 import|;
 end_import
 
@@ -154,7 +156,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|BranchLink
+name|CommentedActionDialog
 import|;
 end_import
 
@@ -463,20 +465,6 @@ operator|.
 name|client
 operator|.
 name|CopyableLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtjsonrpc
-operator|.
-name|common
-operator|.
-name|AsyncCallback
 import|;
 end_import
 
@@ -1711,7 +1699,7 @@ name|getMessageText
 argument_list|()
 argument_list|,
 operator|new
-name|AsyncCallback
+name|GerritCallback
 argument_list|<
 name|String
 argument_list|>
@@ -1766,17 +1754,12 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-operator|new
-name|ErrorDialog
+name|super
+operator|.
+name|onFailure
 argument_list|(
 name|caught
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
-operator|.
-name|center
-argument_list|()
 expr_stmt|;
 block|}
 block|}
