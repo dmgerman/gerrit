@@ -1275,7 +1275,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Finds the revision of commit on which the given patch set should be based.    *    * @param patchSetId the id of the patch set for which the new base commit    *        should be found    * @param db the ReviewDb    * @param destBranch the destination branch    * @param git the repository    * @param rw the RevWalk    * @param patchSetAncestors the original PatchSetAncestor of the given patch    *        set that should be based    * @param depPatchSetList the original patch set list on which the rebased    *        patch set depends    * @param depChangeList the original change list on whose patch set the    *        rebased patch set depends    * @return the revision of commit on which the given patch set should be based    * @throws IOException thrown if rebase is not possible or not needed    * @throws OrmException thrown in case accessing the database fails    */
+comment|/**    * Finds the revision of commit on which the given patch set should be based.    *    * @param patchSetId the id of the patch set for which the new base commit    *        should be found    * @param db the ReviewDb    * @param destBranch the destination branch    * @param git the repository    * @param patchSetAncestors the original PatchSetAncestor of the given patch    *        set that should be based    * @param depPatchSetList the original patch set list on which the rebased    *        patch set depends    * @param depChangeList the original change list on whose patch set the    *        rebased patch set depends    * @return the revision of commit on which the given patch set should be based    * @throws IOException thrown if rebase is not possible or not needed    * @throws OrmException thrown in case accessing the database fails    */
 DECL|method|findBaseRevision (final PatchSet.Id patchSetId, final ReviewDb db, final Branch.NameKey destBranch, final Repository git, List<PatchSetAncestor> patchSetAncestors, List<PatchSet> depPatchSetList, List<Change> depChangeList)
 specifier|private
 specifier|static
@@ -2349,9 +2349,14 @@ throw|;
 block|}
 name|approvalsUtil
 operator|.
-name|copyVetosToLatestPatchSet
+name|copyVetosToPatchSet
 argument_list|(
+name|db
+argument_list|,
 name|change
+operator|.
+name|currentPatchSetId
+argument_list|()
 argument_list|)
 expr_stmt|;
 specifier|final
