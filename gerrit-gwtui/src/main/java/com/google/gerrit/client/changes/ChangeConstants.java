@@ -300,6 +300,11 @@ name|String
 name|commitMessage
 parameter_list|()
 function_decl|;
+DECL|method|fileCommentHeader ()
+name|String
+name|fileCommentHeader
+parameter_list|()
+function_decl|;
 DECL|method|patchTablePrev ()
 name|String
 name|patchTablePrev
