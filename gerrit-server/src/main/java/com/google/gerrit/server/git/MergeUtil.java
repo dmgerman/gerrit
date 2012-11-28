@@ -1405,9 +1405,9 @@ return|return
 name|submitter
 return|;
 block|}
-DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, CodeReviewCommit mergeTip, CodeReviewCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, RevWalk rw)
+DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, RevCommit mergeTip, RevCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, RevWalk rw)
 specifier|public
-name|CodeReviewCommit
+name|RevCommit
 name|createCherryPickFromCommit
 parameter_list|(
 name|Repository
@@ -1416,10 +1416,10 @@ parameter_list|,
 name|ObjectInserter
 name|inserter
 parameter_list|,
-name|CodeReviewCommit
+name|RevCommit
 name|mergeTip
 parameter_list|,
-name|CodeReviewCommit
+name|RevCommit
 name|originalCommit
 parameter_list|,
 name|PersonIdent
@@ -1533,22 +1533,13 @@ argument_list|,
 name|mergeCommit
 argument_list|)
 decl_stmt|;
-specifier|final
-name|CodeReviewCommit
-name|newCommit
-init|=
-operator|(
-name|CodeReviewCommit
-operator|)
+return|return
 name|rw
 operator|.
 name|parseCommit
 argument_list|(
 name|id
 argument_list|)
-decl_stmt|;
-return|return
-name|newCommit
 return|;
 block|}
 else|else
