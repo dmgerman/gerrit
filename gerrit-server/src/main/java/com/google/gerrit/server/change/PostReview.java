@@ -1046,6 +1046,13 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|message
+operator|!=
+literal|null
+condition|)
+block|{
 name|email
 operator|.
 name|create
@@ -1075,6 +1082,7 @@ argument_list|(
 name|revision
 argument_list|)
 expr_stmt|;
+block|}
 name|Output
 name|output
 init|=
