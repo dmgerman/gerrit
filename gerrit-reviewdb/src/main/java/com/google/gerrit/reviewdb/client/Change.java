@@ -565,6 +565,16 @@ name|STATUS_MERGED
 init|=
 literal|'M'
 decl_stmt|;
+comment|/** ID number of the first patch set in a change. */
+DECL|field|INITIAL_PATCH_SET_ID
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|INITIAL_PATCH_SET_ID
+init|=
+literal|1
+decl_stmt|;
 comment|/**    * Current state within the basic workflow of the change.    *    *<p>    * Within the database, lower case codes ('a'..'z') indicate a change that is    * still open, and that can be modified/refined further, while upper case    * codes ('A'..'Z') indicate a change that is closed and cannot be further    * modified.    * */
 DECL|enum|Status
 specifier|public
@@ -935,25 +945,6 @@ DECL|field|status
 specifier|protected
 name|char
 name|status
-decl_stmt|;
-end_decl_stmt
-
-begin_comment
-comment|/** The total number of {@link PatchSet} children in this Change. */
-end_comment
-
-begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|11
-argument_list|)
-DECL|field|nbrPatchSets
-specifier|protected
-name|int
-name|nbrPatchSets
 decl_stmt|;
 end_decl_stmt
 
@@ -1440,70 +1431,6 @@ operator|.
 name|getSubject
 argument_list|()
 expr_stmt|;
-block|}
-end_function
-
-begin_comment
-comment|/**    * Allocate a new PatchSet id within this change.    *<p>    *<b>Note: This makes the change dirty. Call update() after.</b>    */
-end_comment
-
-begin_function
-DECL|method|nextPatchSetId ()
-specifier|public
-name|void
-name|nextPatchSetId
-parameter_list|()
-block|{
-operator|++
-name|nbrPatchSets
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|updateNumberOfPatchSets (int max)
-specifier|public
-name|void
-name|updateNumberOfPatchSets
-parameter_list|(
-name|int
-name|max
-parameter_list|)
-block|{
-name|nbrPatchSets
-operator|=
-name|Math
-operator|.
-name|max
-argument_list|(
-name|nbrPatchSets
-argument_list|,
-name|max
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|currPatchSetId ()
-specifier|public
-name|PatchSet
-operator|.
-name|Id
-name|currPatchSetId
-parameter_list|()
-block|{
-return|return
-operator|new
-name|PatchSet
-operator|.
-name|Id
-argument_list|(
-name|changeId
-argument_list|,
-name|nbrPatchSets
-argument_list|)
-return|;
 block|}
 end_function
 

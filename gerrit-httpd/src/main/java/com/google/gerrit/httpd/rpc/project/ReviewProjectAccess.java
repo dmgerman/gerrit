@@ -728,7 +728,9 @@ name|Id
 argument_list|(
 name|changeId
 argument_list|,
-literal|1
+name|Change
+operator|.
+name|INITIAL_PATCH_SET_ID
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -809,11 +811,6 @@ name|REF_CONFIG
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|change
-operator|.
-name|nextPatchSetId
-argument_list|()
-expr_stmt|;
 name|ps
 operator|.
 name|setCreatedOn
