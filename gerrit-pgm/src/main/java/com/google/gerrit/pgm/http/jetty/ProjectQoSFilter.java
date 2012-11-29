@@ -527,7 +527,7 @@ specifier|final
 name|String
 name|FILTER_RE
 init|=
-literal|"^/p/(.*)/(git-upload-pack|git-receive-pack)$"
+literal|"^/(.*)/(git-upload-pack|git-receive-pack)$"
 decl_stmt|;
 DECL|field|URI_PATTERN
 specifier|private
