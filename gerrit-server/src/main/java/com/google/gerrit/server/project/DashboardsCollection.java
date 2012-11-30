@@ -1245,6 +1245,15 @@ argument_list|,
 literal|"description"
 argument_list|)
 expr_stmt|;
+name|String
+name|id
+init|=
+name|refName
+operator|+
+literal|":"
+operator|+
+name|path
+decl_stmt|;
 name|info
 operator|.
 name|isDefault
@@ -1252,8 +1261,6 @@ operator|=
 name|setDefault
 condition|?
 operator|(
-name|info
-operator|.
 name|id
 operator|.
 name|equals
