@@ -926,6 +926,13 @@ name|addSshKeyPanel
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|addPanel
+operator|.
+name|setWidth
+argument_list|(
+literal|"35em"
+argument_list|)
+expr_stmt|;
 specifier|final
 name|Grid
 name|addGrid
