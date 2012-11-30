@@ -421,44 +421,22 @@ name|approvals
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param change Change to update    * @throws OrmException    * @return List<PatchSetApproval> The previous approvals    */
-DECL|method|copyVetosToLatestPatchSet (Change change)
+comment|/**    * Moves the PatchSetApprovals to the specified PatchSet on the change from    * the prior PatchSet, while keeping the vetos.    *    * @param db database connection to use for updates.    * @param dest PatchSet to copy to    * @throws OrmException    * @return List<PatchSetApproval> The previous approvals    */
+DECL|method|copyVetosToPatchSet (ReviewDb db, PatchSet.Id dest)
 specifier|public
 name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
-name|copyVetosToLatestPatchSet
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|copyVetosToLatestPatchSet
-argument_list|(
-name|db
-argument_list|,
-name|change
-argument_list|)
-return|;
-block|}
-comment|/**    * Moves the PatchSetApprovals to the last PatchSet on the change while    * keeping the vetos.    *    * @param db database connection to use for updates.    * @param change Change to update    * @throws OrmException    * @return List<PatchSetApproval> The previous approvals    */
-DECL|method|copyVetosToLatestPatchSet (ReviewDb db, Change change)
-specifier|public
-name|List
-argument_list|<
-name|PatchSetApproval
-argument_list|>
-name|copyVetosToLatestPatchSet
+name|copyVetosToPatchSet
 parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|Change
-name|change
+name|PatchSet
+operator|.
+name|Id
+name|dest
 parameter_list|)
 throws|throws
 name|OrmException
@@ -470,9 +448,9 @@ name|source
 decl_stmt|;
 if|if
 condition|(
-name|change
+name|dest
 operator|.
-name|getNumberOfPatchSets
+name|get
 argument_list|()
 operator|>
 literal|1
@@ -485,14 +463,14 @@ name|PatchSet
 operator|.
 name|Id
 argument_list|(
-name|change
+name|dest
 operator|.
-name|getId
+name|getParentKey
 argument_list|()
 argument_list|,
-name|change
+name|dest
 operator|.
-name|getNumberOfPatchSets
+name|get
 argument_list|()
 operator|-
 literal|1
@@ -509,16 +487,6 @@ literal|"Previous patch set could not be found"
 argument_list|)
 throw|;
 block|}
-name|PatchSet
-operator|.
-name|Id
-name|dest
-init|=
-name|change
-operator|.
-name|currPatchSetId
-argument_list|()
-decl_stmt|;
 name|List
 argument_list|<
 name|PatchSetApproval
@@ -532,9 +500,9 @@ argument_list|()
 operator|.
 name|byChange
 argument_list|(
-name|change
+name|dest
 operator|.
-name|getId
+name|getParentKey
 argument_list|()
 argument_list|)
 operator|.

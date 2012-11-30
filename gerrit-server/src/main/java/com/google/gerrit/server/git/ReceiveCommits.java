@@ -1510,20 +1510,6 @@ name|jgit
 operator|.
 name|transport
 operator|.
-name|ServiceMayNotContinueException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
 name|UploadPack
 import|;
 end_import
@@ -2977,8 +2963,6 @@ parameter_list|(
 name|BaseReceivePack
 name|rp
 parameter_list|)
-throws|throws
-name|ServiceMayNotContinueException
 block|{
 name|allRefs
 operator|=
@@ -3027,8 +3011,6 @@ parameter_list|(
 name|UploadPack
 name|uploadPack
 parameter_list|)
-throws|throws
-name|ServiceMayNotContinueException
 block|{       }
 block|}
 argument_list|)
@@ -10607,11 +10589,14 @@ name|patchSetApprovals
 init|=
 name|approvalsUtil
 operator|.
-name|copyVetosToLatestPatchSet
+name|copyVetosToPatchSet
 argument_list|(
 name|db
 argument_list|,
-name|change
+name|newPatchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
