@@ -843,6 +843,11 @@ name|String
 name|patchScreenDisplayControls
 parameter_list|()
 function_decl|;
+DECL|method|reviewedPanelBottom ()
+name|String
+name|reviewedPanelBottom
+parameter_list|()
+function_decl|;
 DECL|method|patchSetActions ()
 name|String
 name|patchSetActions
