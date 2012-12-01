@@ -3621,7 +3621,6 @@ end_function
 
 begin_function
 DECL|method|replyBinaryResult ( @ullable HttpServletRequest req, HttpServletResponse res, BinaryResult bin)
-specifier|private
 specifier|static
 name|void
 name|replyBinaryResult
