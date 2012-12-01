@@ -1032,6 +1032,10 @@ case|:
 return|return
 name|copy
 return|;
+case|case
+name|REWRITE
+case|:
+break|break;
 block|}
 throw|throw
 operator|new
