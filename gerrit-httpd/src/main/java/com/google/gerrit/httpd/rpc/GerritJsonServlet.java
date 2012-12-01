@@ -180,6 +180,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|AccessPath
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -1403,11 +1417,9 @@ name|isSignedIn
 argument_list|()
 return|;
 block|}
-else|else
-block|{
-comment|// The session must exist, and must be using this token.
-comment|//
-return|return
+elseif|else
+if|if
+condition|(
 name|session
 operator|.
 name|isSignedIn
@@ -1419,8 +1431,29 @@ name|isValidAuthorization
 argument_list|(
 name|keyIn
 argument_list|)
+condition|)
+block|{
+comment|// The session must exist, and must be using this token.
+comment|//
+name|session
+operator|.
+name|getCurrentUser
+argument_list|()
+operator|.
+name|setAccessPath
+argument_list|(
+name|AccessPath
+operator|.
+name|JSON_RPC
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
 return|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|getWebSession ()
 specifier|public

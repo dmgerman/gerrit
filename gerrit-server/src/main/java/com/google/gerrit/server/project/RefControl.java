@@ -1158,6 +1158,9 @@ block|{
 case|case
 name|REST_API
 case|:
+case|case
+name|JSON_RPC
+case|:
 name|owner
 operator|=
 name|isOwner
@@ -1404,6 +1407,9 @@ condition|)
 block|{
 case|case
 name|REST_API
+case|:
+case|case
+name|JSON_RPC
 case|:
 return|return
 name|isOwner
