@@ -2750,7 +2750,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|buttonDiffAllSideBySide
+name|diffAllSideBySide
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2835,7 +2835,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|buttonDiffAllUnified
+name|diffAllUnified
 argument_list|()
 argument_list|)
 decl_stmt|;
