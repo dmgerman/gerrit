@@ -80,7 +80,7 @@ name|restapi
 operator|.
 name|RestApiServlet
 operator|.
-name|replyError
+name|replyBinaryResult
 import|;
 end_import
 
@@ -98,7 +98,7 @@ name|restapi
 operator|.
 name|RestApiServlet
 operator|.
-name|replyText
+name|replyError
 import|;
 end_import
 
@@ -227,6 +227,22 @@ operator|.
 name|restapi
 operator|.
 name|BadRequestException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|BinaryResult
 import|;
 end_import
 
@@ -602,16 +618,26 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
-name|replyText
+name|replyBinaryResult
 argument_list|(
 name|req
 argument_list|,
 name|res
 argument_list|,
+name|BinaryResult
+operator|.
+name|create
+argument_list|(
 name|msg
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+operator|.
+name|setContentType
+argument_list|(
+literal|"text/plain"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
