@@ -266,6 +266,22 @@ name|server
 operator|.
 name|mail
 operator|.
+name|CommitMessageEditedSender
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|mail
+operator|.
 name|EmailException
 import|;
 end_import
@@ -508,6 +524,14 @@ operator|.
 name|Factory
 name|changeDetailFactory
 decl_stmt|;
+DECL|field|commitMessageEditedSenderFactory
+specifier|private
+specifier|final
+name|CommitMessageEditedSender
+operator|.
+name|Factory
+name|commitMessageEditedSenderFactory
+decl_stmt|;
 DECL|field|replication
 specifier|private
 specifier|final
@@ -556,7 +580,7 @@ name|myIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, @GerritPersonIdent final PersonIdent myIdent)
+DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, @GerritPersonIdent final PersonIdent myIdent)
 name|EditCommitMessageHandler
 parameter_list|(
 specifier|final
@@ -578,6 +602,12 @@ name|ChangeDetailFactory
 operator|.
 name|Factory
 name|changeDetailFactory
+parameter_list|,
+specifier|final
+name|CommitMessageEditedSender
+operator|.
+name|Factory
+name|commitMessageEditedSenderFactory
 parameter_list|,
 annotation|@
 name|Assisted
@@ -641,6 +671,12 @@ operator|.
 name|changeDetailFactory
 operator|=
 name|changeDetailFactory
+expr_stmt|;
+name|this
+operator|.
+name|commitMessageEditedSenderFactory
+operator|=
+name|commitMessageEditedSenderFactory
 expr_stmt|;
 name|this
 operator|.
@@ -766,6 +802,8 @@ argument_list|,
 name|message
 argument_list|,
 name|db
+argument_list|,
+name|commitMessageEditedSenderFactory
 argument_list|,
 name|hooks
 argument_list|,
