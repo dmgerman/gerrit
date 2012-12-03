@@ -952,6 +952,10 @@ specifier|private
 name|HandlerRegistration
 name|regOpenByEnter
 decl_stmt|;
+DECL|field|isDisplayBinary
+name|boolean
+name|isDisplayBinary
+decl_stmt|;
 DECL|method|AbstractPatchContentTable ()
 specifier|protected
 name|AbstractPatchContentTable
