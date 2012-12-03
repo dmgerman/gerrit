@@ -4271,6 +4271,14 @@ operator|)
 operator|.
 name|getRequestURI
 argument_list|()
+operator|.
+name|substring
+argument_list|(
+name|contextPath
+operator|.
+name|length
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
