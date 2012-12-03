@@ -715,14 +715,14 @@ name|String
 name|buttonClose
 parameter_list|()
 function_decl|;
-DECL|method|buttonDiffAllSideBySide ()
+DECL|method|diffAllSideBySide ()
 name|String
-name|buttonDiffAllSideBySide
+name|diffAllSideBySide
 parameter_list|()
 function_decl|;
-DECL|method|buttonDiffAllUnified ()
+DECL|method|diffAllUnified ()
 name|String
-name|buttonDiffAllUnified
+name|diffAllUnified
 parameter_list|()
 function_decl|;
 block|}
