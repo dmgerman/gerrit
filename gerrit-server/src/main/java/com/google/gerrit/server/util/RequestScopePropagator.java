@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -314,7 +330,7 @@ operator|=
 name|dbProviderProvider
 expr_stmt|;
 block|}
-comment|/**    * Wraps callable in a new {@link Callable} that propagates the current    * request state when the callable is invoked. The method must be called in a    * request scope and the returned Callable may only be invoked in a thread    * that is not already in a request scope. The returned Callable will inherit    * toString() from the passed in Callable. A    * {@link com.google.gerrit.server.git.WorkQueue.Executor} does not accept a    * Callable, so there is no ProjectCallable implementation. Implementations of    * this method must be consistent with Guice's    * {@link ServletScopes#continueRequest(Callable, java.util.Map)}.    *<p>    * There are some limitations:    *<ul>    *<li>Derived objects (i.e. anything marked created in a request scope) will    * not be transported.</li>    *<li>State changes to the request scoped context after this method is called    * will not be seen in the continued thread.</li>    *</ul>    *    * @param callable the Callable to wrap.    * @return a new Callable which will execute in the current request scope.    */
+comment|/**    * Ensures that the current request state is available when the passed in    * Callable is invoked.    *    * If needed wraps the passed in Callable in a new {@link Callable} that    * propagates the current request state when the returned Callable is invoked.    * The method must be called in a request scope and the returned Callable may    * only be invoked in a thread that is not already in a request scope or is in    * the same request scope. The returned Callable will inherit toString() from    * the passed in Callable. A    * {@link com.google.gerrit.server.git.WorkQueue.Executor} does not accept a    * Callable, so there is no ProjectCallable implementation. Implementations of    * this method must be consistent with Guice's    * {@link ServletScopes#continueRequest(Callable, java.util.Map)}.    *<p>    * There are some limitations:    *<ul>    *<li>Derived objects (i.e. anything marked created in a request scope) will    * not be transported.</li>    *<li>State changes to the request scoped context after this method is called    * will not be seen in the continued thread.</li>    *</ul>    *    * @param callable the Callable to wrap.    * @return a new Callable which will execute in the current request scope.    */
 DECL|method|wrap (final Callable<T> callable)
 specifier|public
 specifier|final
@@ -336,6 +352,18 @@ name|callable
 parameter_list|)
 block|{
 specifier|final
+name|RequestContext
+name|callerContext
+init|=
+name|checkNotNull
+argument_list|(
+name|local
+operator|.
+name|getContext
+argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|final
 name|Callable
 argument_list|<
 name|T
@@ -346,10 +374,7 @@ name|wrapImpl
 argument_list|(
 name|context
 argument_list|(
-name|local
-operator|.
-name|getContext
-argument_list|()
+name|callerContext
 argument_list|,
 name|cleanup
 argument_list|(
@@ -375,12 +400,32 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|callerContext
+operator|==
+name|local
+operator|.
+name|getContext
+argument_list|()
+condition|)
+block|{
+return|return
+name|callable
+operator|.
+name|call
+argument_list|()
+return|;
+block|}
+else|else
+block|{
 return|return
 name|wrapped
 operator|.
 name|call
 argument_list|()
 return|;
+block|}
 block|}
 annotation|@
 name|Override
