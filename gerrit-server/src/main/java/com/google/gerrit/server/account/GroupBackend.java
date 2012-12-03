@@ -146,6 +146,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectControl
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -203,7 +219,7 @@ name|uuid
 parameter_list|)
 function_decl|;
 comment|/** @return suggestions for the group name sorted by name. */
-DECL|method|suggest (String name)
+DECL|method|suggest ( String name, @Nullable ProjectControl project)
 name|Collection
 argument_list|<
 name|GroupReference
@@ -212,6 +228,11 @@ name|suggest
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+annotation|@
+name|Nullable
+name|ProjectControl
+name|project
 parameter_list|)
 function_decl|;
 comment|/** @return the group membership checker for the backend. */

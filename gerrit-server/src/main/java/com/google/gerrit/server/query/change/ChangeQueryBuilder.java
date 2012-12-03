@@ -2442,6 +2442,8 @@ operator|.
 name|suggest
 argument_list|(
 name|who
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if

@@ -206,6 +206,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -432,7 +448,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|suggest (final String name)
+DECL|method|suggest (final String name, final ProjectControl project)
 specifier|public
 name|Collection
 argument_list|<
@@ -443,6 +459,10 @@ parameter_list|(
 specifier|final
 name|String
 name|name
+parameter_list|,
+specifier|final
+name|ProjectControl
+name|project
 parameter_list|)
 block|{
 name|Iterable

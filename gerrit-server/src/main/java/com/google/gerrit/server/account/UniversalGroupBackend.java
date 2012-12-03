@@ -238,6 +238,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -498,7 +514,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|suggest (String name)
+DECL|method|suggest (String name, ProjectControl project)
 specifier|public
 name|Collection
 argument_list|<
@@ -508,6 +524,9 @@ name|suggest
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|ProjectControl
+name|project
 parameter_list|)
 block|{
 name|Set
@@ -540,6 +559,8 @@ operator|.
 name|suggest
 argument_list|(
 name|name
+argument_list|,
+name|project
 argument_list|)
 argument_list|)
 expr_stmt|;

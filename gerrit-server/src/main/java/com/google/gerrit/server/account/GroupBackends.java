@@ -98,6 +98,38 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectControl
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -183,10 +215,10 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Runs {@link GroupBackend#suggest(String)} and filters the result to return    * the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the best single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the best single GroupReference suggestion    */
 annotation|@
 name|Nullable
-DECL|method|findBestSuggestion ( GroupBackend groupBackend, String name)
+DECL|method|findBestSuggestion (GroupBackend groupBackend, String name)
 specifier|public
 specifier|static
 name|GroupReference
@@ -197,6 +229,38 @@ name|groupBackend
 parameter_list|,
 name|String
 name|name
+parameter_list|)
+block|{
+return|return
+name|findBestSuggestion
+argument_list|(
+name|groupBackend
+argument_list|,
+name|name
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the best single GroupReference suggestion    */
+annotation|@
+name|Nullable
+DECL|method|findBestSuggestion (GroupBackend groupBackend, String name, @Nullable ProjectControl project)
+specifier|public
+specifier|static
+name|GroupReference
+name|findBestSuggestion
+parameter_list|(
+name|GroupBackend
+name|groupBackend
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+annotation|@
+name|Nullable
+name|ProjectControl
+name|project
 parameter_list|)
 block|{
 name|Collection
@@ -210,6 +274,8 @@ operator|.
 name|suggest
 argument_list|(
 name|name
+argument_list|,
+name|project
 argument_list|)
 decl_stmt|;
 if|if
@@ -258,7 +324,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String)} and filters the result to return    * the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the exact single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the exact single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findExactSuggestion ( GroupBackend groupBackend, String name)
@@ -274,6 +340,36 @@ name|String
 name|name
 parameter_list|)
 block|{
+return|return
+name|findExactSuggestion
+argument_list|(
+name|groupBackend
+argument_list|,
+name|name
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the exact single GroupReference suggestion    */
+annotation|@
+name|Nullable
+DECL|method|findExactSuggestion ( GroupBackend groupBackend, String name, ProjectControl project)
+specifier|public
+specifier|static
+name|GroupReference
+name|findExactSuggestion
+parameter_list|(
+name|GroupBackend
+name|groupBackend
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|ProjectControl
+name|project
+parameter_list|)
+block|{
 name|Collection
 argument_list|<
 name|GroupReference
@@ -285,6 +381,8 @@ operator|.
 name|suggest
 argument_list|(
 name|name
+argument_list|,
+name|project
 argument_list|)
 decl_stmt|;
 for|for
