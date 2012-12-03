@@ -78,20 +78,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Strings
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Throwables
 import|;
 end_import
@@ -870,21 +856,6 @@ expr_stmt|;
 block|}
 return|return
 name|env
-return|;
-block|}
-DECL|method|hasLdapConfiguration ()
-name|boolean
-name|hasLdapConfiguration
-parameter_list|()
-block|{
-return|return
-operator|!
-name|Strings
-operator|.
-name|isNullOrEmpty
-argument_list|(
-name|server
-argument_list|)
 return|;
 block|}
 DECL|method|open ()
