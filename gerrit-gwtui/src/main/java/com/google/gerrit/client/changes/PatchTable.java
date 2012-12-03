@@ -4290,6 +4290,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|REWRITE
+case|:
+break|break;
 block|}
 block|}
 else|else
