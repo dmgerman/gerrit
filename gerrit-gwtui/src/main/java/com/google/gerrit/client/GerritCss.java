@@ -1123,6 +1123,16 @@ name|String
 name|patchCellReverseDiff
 parameter_list|()
 function_decl|;
+DECL|method|projectFilterPanel ()
+name|String
+name|projectFilterPanel
+parameter_list|()
+function_decl|;
+DECL|method|projectFilterLabel ()
+name|String
+name|projectFilterLabel
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
