@@ -417,6 +417,28 @@ name|get
 argument_list|()
 return|;
 block|}
+DECL|method|toProject (final Project.NameKey p)
+specifier|public
+specifier|static
+name|String
+name|toProject
+parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
+return|return
+name|ADMIN_PROJECTS
+operator|+
+name|p
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|toProjectAcceess (final Project.NameKey p)
 specifier|public
 specifier|static
