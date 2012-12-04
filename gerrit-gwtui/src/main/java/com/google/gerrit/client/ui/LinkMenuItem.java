@@ -119,6 +119,8 @@ class|class
 name|LinkMenuItem
 extends|extends
 name|InlineHyperlink
+implements|implements
+name|ScreenLoadHandler
 block|{
 DECL|method|LinkMenuItem (final String text, final String targetHistoryToken)
 specifier|public
@@ -164,6 +166,19 @@ name|getElement
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Gerrit
+operator|.
+name|EVENT_BUS
+operator|.
+name|addHandler
+argument_list|(
+name|ScreenLoadEvent
+operator|.
+name|TYPE
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -190,6 +205,15 @@ name|blur
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|onScreenLoad (ScreenLoadEvent event)
+specifier|public
+name|void
+name|onScreenLoad
+parameter_list|(
+name|ScreenLoadEvent
+name|event
+parameter_list|)
+block|{   }
 block|}
 end_class
 
