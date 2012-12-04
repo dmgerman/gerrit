@@ -381,7 +381,7 @@ name|CodeReviewCommit
 argument_list|>
 name|newCommits
 decl_stmt|;
-DECL|method|RebaseIfNecessary (final SubmitStrategy.Arguments args, final RebaseChange.Factory rebaseChangeFactory)
+DECL|method|RebaseIfNecessary (final SubmitStrategy.Arguments args, final RebaseChange rebaseChange)
 name|RebaseIfNecessary
 parameter_list|(
 specifier|final
@@ -392,9 +392,7 @@ name|args
 parameter_list|,
 specifier|final
 name|RebaseChange
-operator|.
-name|Factory
-name|rebaseChangeFactory
+name|rebaseChange
 parameter_list|)
 block|{
 name|super
@@ -406,10 +404,7 @@ name|this
 operator|.
 name|rebaseChange
 operator|=
-name|rebaseChangeFactory
-operator|.
-name|create
-argument_list|()
+name|rebaseChange
 expr_stmt|;
 name|this
 operator|.

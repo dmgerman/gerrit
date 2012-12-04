@@ -441,17 +441,15 @@ specifier|final
 name|GitReferenceUpdated
 name|replication
 decl_stmt|;
-DECL|field|rebaseChangeFactory
+DECL|field|rebaseChange
 specifier|private
 specifier|final
 name|RebaseChange
-operator|.
-name|Factory
-name|rebaseChangeFactory
+name|rebaseChange
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated replication, final RebaseChange.Factory rebaseChangeFactory)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated replication, final RebaseChange rebaseChange)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -491,9 +489,7 @@ name|replication
 parameter_list|,
 specifier|final
 name|RebaseChange
-operator|.
-name|Factory
-name|rebaseChangeFactory
+name|rebaseChange
 parameter_list|)
 block|{
 name|this
@@ -534,9 +530,9 @@ name|replication
 expr_stmt|;
 name|this
 operator|.
-name|rebaseChangeFactory
+name|rebaseChange
 operator|=
-name|rebaseChangeFactory
+name|rebaseChange
 expr_stmt|;
 block|}
 DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final boolean useContentMerge)
@@ -682,7 +678,7 @@ name|RebaseIfNecessary
 argument_list|(
 name|args
 argument_list|,
-name|rebaseChangeFactory
+name|rebaseChange
 argument_list|)
 return|;
 default|default:
