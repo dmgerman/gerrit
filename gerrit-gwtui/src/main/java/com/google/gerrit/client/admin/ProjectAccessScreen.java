@@ -690,6 +690,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|savedPanel
+operator|=
+name|ACCESS
+expr_stmt|;
 block|}
 DECL|method|displayReadOnly (ProjectAccess access)
 specifier|private

@@ -143,6 +143,23 @@ name|DASHBOARDS
 init|=
 literal|"dashboards"
 decl_stmt|;
+DECL|field|savedPanel
+specifier|protected
+specifier|static
+name|String
+name|savedPanel
+decl_stmt|;
+DECL|method|getSavedPanel ()
+specifier|public
+specifier|static
+name|String
+name|getSavedPanel
+parameter_list|()
+block|{
+return|return
+name|savedPanel
+return|;
+block|}
 DECL|field|name
 specifier|private
 specifier|final

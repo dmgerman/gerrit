@@ -262,6 +262,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|savedPanel
+operator|=
+name|DASHBOARDS
+expr_stmt|;
 block|}
 annotation|@
 name|Override

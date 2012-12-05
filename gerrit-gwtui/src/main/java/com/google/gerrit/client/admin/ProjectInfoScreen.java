@@ -739,6 +739,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|savedPanel
+operator|=
+name|INFO
+expr_stmt|;
 block|}
 DECL|method|enableForm (final boolean canModifyAgreements, final boolean canModifyDescription, final boolean canModifyMergeType, final boolean canModifyState)
 specifier|private

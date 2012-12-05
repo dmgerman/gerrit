@@ -698,16 +698,12 @@ block|{
 return|return
 name|Dispatcher
 operator|.
-name|toProjectAdmin
+name|toProject
 argument_list|(
 name|item
 operator|.
 name|name_key
 argument_list|()
-argument_list|,
-name|ProjectScreen
-operator|.
-name|INFO
 argument_list|)
 return|;
 block|}
