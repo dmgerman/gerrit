@@ -2547,6 +2547,11 @@ operator|.
 name|refreshMenuBar
 argument_list|()
 expr_stmt|;
+name|display
+argument_list|(
+name|me
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|toContactInformation ()
 name|ContactInformation

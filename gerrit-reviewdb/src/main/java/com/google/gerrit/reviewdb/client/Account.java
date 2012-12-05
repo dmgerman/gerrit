@@ -514,6 +514,15 @@ block|{
 name|fullName
 operator|=
 name|name
+operator|!=
+literal|null
+condition|?
+name|name
+operator|.
+name|trim
+argument_list|()
+else|:
+literal|null
 expr_stmt|;
 block|}
 comment|/** Email address the user prefers to be contacted through. */
