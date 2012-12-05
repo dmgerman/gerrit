@@ -149,6 +149,14 @@ specifier|static
 name|String
 name|savedPanel
 decl_stmt|;
+DECL|field|savedKey
+specifier|protected
+specifier|static
+name|Project
+operator|.
+name|NameKey
+name|savedKey
+decl_stmt|;
 DECL|method|getSavedPanel ()
 specifier|public
 specifier|static
@@ -158,6 +166,19 @@ parameter_list|()
 block|{
 return|return
 name|savedPanel
+return|;
+block|}
+DECL|method|getSavedKey ()
+specifier|public
+specifier|static
+name|Project
+operator|.
+name|NameKey
+name|getSavedKey
+parameter_list|()
+block|{
+return|return
+name|savedKey
 return|;
 block|}
 DECL|field|name
@@ -223,6 +244,24 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|onLoad ()
+specifier|protected
+name|void
+name|onLoad
+parameter_list|()
+block|{
+name|super
+operator|.
+name|onLoad
+argument_list|()
+expr_stmt|;
+name|savedKey
+operator|=
+name|name
 expr_stmt|;
 block|}
 block|}
