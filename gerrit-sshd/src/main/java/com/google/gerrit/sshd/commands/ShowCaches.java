@@ -1703,6 +1703,16 @@ name|tasksSleeping
 operator|++
 expr_stmt|;
 break|break;
+case|case
+name|CANCELLED
+case|:
+case|case
+name|DONE
+case|:
+case|case
+name|OTHER
+case|:
+break|break;
 block|}
 block|}
 name|stdout

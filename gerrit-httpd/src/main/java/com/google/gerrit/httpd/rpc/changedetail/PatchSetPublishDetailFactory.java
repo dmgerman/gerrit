@@ -1193,6 +1193,13 @@ operator|++
 expr_stmt|;
 block|}
 break|break;
+case|case
+name|IMPOSSIBLE
+case|:
+case|case
+name|REJECT
+case|:
+break|break;
 block|}
 block|}
 if|if

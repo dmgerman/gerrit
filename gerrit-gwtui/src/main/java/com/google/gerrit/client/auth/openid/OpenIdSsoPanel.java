@@ -447,6 +447,16 @@ name|submit
 argument_list|()
 expr_stmt|;
 break|break;
+case|case
+name|ERROR
+case|:
+case|case
+name|NO_PROVIDER
+case|:
+case|case
+name|NOT_ALLOWED
+case|:
+break|break;
 block|}
 block|}
 block|}

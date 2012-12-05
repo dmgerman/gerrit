@@ -811,6 +811,16 @@ operator|=
 literal|true
 expr_stmt|;
 break|break;
+case|case
+name|ALLOW
+case|:
+case|case
+name|BLOCK
+case|:
+case|case
+name|DENY
+case|:
+break|break;
 block|}
 block|}
 block|}

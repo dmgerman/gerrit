@@ -1890,6 +1890,10 @@ name|addr
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|BCC
+case|:
+break|break;
 block|}
 block|}
 block|}

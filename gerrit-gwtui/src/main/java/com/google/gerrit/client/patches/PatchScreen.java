@@ -2870,6 +2870,10 @@ name|fileList
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|MAIN
+case|:
+break|break;
 block|}
 block|}
 DECL|class|FileListCmd

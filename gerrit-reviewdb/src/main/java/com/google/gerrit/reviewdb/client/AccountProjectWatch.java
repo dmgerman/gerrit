@@ -631,6 +631,10 @@ case|:
 return|return
 name|notifySubmittedChanges
 return|;
+case|case
+name|ALL
+case|:
+break|break;
 block|}
 return|return
 literal|false

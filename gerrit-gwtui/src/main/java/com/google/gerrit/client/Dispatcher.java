@@ -4898,6 +4898,10 @@ operator|new
 name|MyIdentitiesScreen
 argument_list|()
 return|;
+case|case
+name|REGISTER
+case|:
+break|break;
 block|}
 block|}
 if|if
