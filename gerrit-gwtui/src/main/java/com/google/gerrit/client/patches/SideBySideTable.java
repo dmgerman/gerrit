@@ -4402,6 +4402,10 @@ argument_list|)
 expr_stmt|;
 block|}
 break|break;
+case|case
+name|REPLACE
+case|:
+break|break;
 block|}
 name|m
 operator|.

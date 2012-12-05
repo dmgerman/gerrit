@@ -2358,6 +2358,10 @@ case|:
 return|return
 literal|true
 return|;
+case|case
+name|CONTEXT
+case|:
+break|break;
 block|}
 block|}
 elseif|else

@@ -665,6 +665,10 @@ literal|1
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|REPLACE
+case|:
+break|break;
 block|}
 block|}
 block|}
@@ -1103,6 +1107,10 @@ operator|)
 literal|1
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|REPLACE
+case|:
 break|break;
 block|}
 block|}
@@ -3564,6 +3572,10 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|REPLACE
+case|:
 break|break;
 block|}
 name|m
