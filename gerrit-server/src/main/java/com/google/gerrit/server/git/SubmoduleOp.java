@@ -2347,9 +2347,6 @@ name|getParentKey
 argument_list|()
 argument_list|,
 name|rfu
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO since this is performed "in the background" no mail will be

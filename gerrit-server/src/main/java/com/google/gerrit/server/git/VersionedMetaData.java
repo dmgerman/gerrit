@@ -1325,9 +1325,6 @@ operator|.
 name|replicate
 argument_list|(
 name|ru
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -1495,9 +1492,6 @@ operator|.
 name|replicate
 argument_list|(
 name|ru
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

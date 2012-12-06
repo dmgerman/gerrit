@@ -206,6 +206,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|RefUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|Repository
 import|;
 end_import
@@ -703,12 +717,12 @@ return|return
 name|commit
 return|;
 block|}
-DECL|method|replicate (String ref)
+DECL|method|replicate (RefUpdate ru)
 name|void
 name|replicate
 parameter_list|(
-name|String
-name|ref
+name|RefUpdate
+name|ru
 parameter_list|)
 block|{
 name|replication
@@ -717,7 +731,7 @@ name|fire
 argument_list|(
 name|projectName
 argument_list|,
-name|ref
+name|ru
 argument_list|)
 expr_stmt|;
 block|}

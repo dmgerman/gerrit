@@ -114,6 +114,16 @@ name|String
 name|getRefName
 parameter_list|()
 function_decl|;
+DECL|method|getOldObjectId ()
+name|String
+name|getOldObjectId
+parameter_list|()
+function_decl|;
+DECL|method|getNewObjectId ()
+name|String
+name|getNewObjectId
+parameter_list|()
+function_decl|;
 block|}
 DECL|interface|Event
 specifier|public

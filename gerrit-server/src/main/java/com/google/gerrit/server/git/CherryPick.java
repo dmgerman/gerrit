@@ -1445,9 +1445,6 @@ name|getProject
 argument_list|()
 argument_list|,
 name|ru
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|newCommit
