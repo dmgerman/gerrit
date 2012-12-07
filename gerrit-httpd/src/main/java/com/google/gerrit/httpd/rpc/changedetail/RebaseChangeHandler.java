@@ -359,14 +359,12 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChangeHandler (final RebaseChange.Factory rebaseChangeFactory, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId)
+DECL|method|RebaseChangeHandler (final RebaseChange rebaseChange, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, @Assisted final PatchSet.Id patchSetId)
 name|RebaseChangeHandler
 parameter_list|(
 specifier|final
 name|RebaseChange
-operator|.
-name|Factory
-name|rebaseChangeFactory
+name|rebaseChange
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -391,10 +389,7 @@ name|this
 operator|.
 name|rebaseChange
 operator|=
-name|rebaseChangeFactory
-operator|.
-name|create
-argument_list|()
+name|rebaseChange
 expr_stmt|;
 name|this
 operator|.

@@ -726,17 +726,6 @@ specifier|public
 class|class
 name|RebaseChange
 block|{
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create ()
-name|RebaseChange
-name|create
-parameter_list|()
-function_decl|;
-block|}
 DECL|field|changeControlFactory
 specifier|private
 specifier|final
