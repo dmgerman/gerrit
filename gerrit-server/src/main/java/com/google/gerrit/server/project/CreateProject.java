@@ -1458,20 +1458,6 @@ operator|.
 name|projectDescription
 argument_list|)
 expr_stmt|;
-name|referenceUpdated
-operator|.
-name|fire
-argument_list|(
-name|createProjectArgs
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|GitRepositoryManager
-operator|.
-name|REF_CONFIG
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|validateParameters ()
 specifier|private
