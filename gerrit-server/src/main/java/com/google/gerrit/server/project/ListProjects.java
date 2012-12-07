@@ -1063,7 +1063,7 @@ literal|"-p"
 argument_list|,
 name|metaVar
 operator|=
-literal|"PERFIX"
+literal|"PREFIX"
 argument_list|,
 name|usage
 operator|=
