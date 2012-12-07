@@ -821,6 +821,10 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|savedPanel
+operator|=
+name|BRANCH
+expr_stmt|;
 block|}
 DECL|method|display (final List<Branch> listBranches)
 specifier|private

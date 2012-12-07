@@ -1722,6 +1722,30 @@ operator|+
 name|panel
 return|;
 block|}
+DECL|method|toProject (Project.NameKey n)
+specifier|public
+specifier|static
+name|String
+name|toProject
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|n
+parameter_list|)
+block|{
+return|return
+name|toProjectAdmin
+argument_list|(
+name|n
+argument_list|,
+name|ProjectScreen
+operator|.
+name|getSavedPanel
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|toProjectAdmin (Project.NameKey n, String panel)
 specifier|public
 specifier|static
@@ -1739,6 +1763,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|panel
+operator|==
+literal|null
+operator|||
 name|ProjectScreen
 operator|.
 name|INFO
