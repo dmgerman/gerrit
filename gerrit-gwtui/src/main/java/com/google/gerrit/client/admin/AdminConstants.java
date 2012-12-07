@@ -465,6 +465,11 @@ name|String
 name|projectListTitle
 parameter_list|()
 function_decl|;
+DECL|method|projectFilter ()
+name|String
+name|projectFilter
+parameter_list|()
+function_decl|;
 DECL|method|createProjectTitle ()
 name|String
 name|createProjectTitle
