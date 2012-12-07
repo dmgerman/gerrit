@@ -168,7 +168,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|InlineHyperlink
+name|HighlightingInlineHyperlink
 import|;
 end_import
 
@@ -808,7 +808,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|InlineHyperlink
+name|HighlightingInlineHyperlink
 argument_list|(
 name|k
 operator|.
@@ -819,6 +819,8 @@ name|link
 argument_list|(
 name|k
 argument_list|)
+argument_list|,
+name|subname
 argument_list|)
 argument_list|)
 expr_stmt|;
