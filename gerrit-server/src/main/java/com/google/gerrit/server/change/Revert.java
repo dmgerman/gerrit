@@ -546,11 +546,11 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|canonicalWebUrl
 specifier|private
@@ -572,7 +572,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|Revert (ChangeHooks hooks, RevertedSender.Factory revertedSenderFactory, final CommitValidators.Factory commitValidatorsFactory, Provider<ReviewDb> dbProvider, ChangeJson json, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, @GerritPersonIdent final PersonIdent myIdent, @CanonicalWebUrl @Nullable final String canonicalWebUrl)
+DECL|method|Revert (ChangeHooks hooks, RevertedSender.Factory revertedSenderFactory, final CommitValidators.Factory commitValidatorsFactory, Provider<ReviewDb> dbProvider, ChangeJson json, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, @GerritPersonIdent final PersonIdent myIdent, @CanonicalWebUrl @Nullable final String canonicalWebUrl)
 name|Revert
 parameter_list|(
 name|ChangeHooks
@@ -607,7 +607,7 @@ name|patchSetInfoFactory
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -668,9 +668,9 @@ name|myIdent
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -849,7 +849,7 @@ name|git
 argument_list|,
 name|patchSetInfoFactory
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|,
 name|myIdent
 argument_list|,

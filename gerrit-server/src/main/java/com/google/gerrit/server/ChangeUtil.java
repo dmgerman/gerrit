@@ -1560,7 +1560,7 @@ name|toInsert
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|revert (final RefControl refControl, final PatchSet.Id patchSetId, final IdentifiedUser user, final CommitValidators commitValidators, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, PersonIdent myIdent, String canonicalWebUrl)
+DECL|method|revert (final RefControl refControl, final PatchSet.Id patchSetId, final IdentifiedUser user, final CommitValidators commitValidators, final String message, final ReviewDb db, final RevertedSender.Factory revertedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, PersonIdent myIdent, String canonicalWebUrl)
 specifier|public
 specifier|static
 name|Change
@@ -1613,7 +1613,7 @@ name|patchSetInfoFactory
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 name|PersonIdent
 name|myIdent
@@ -2177,7 +2177,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(
@@ -2414,7 +2414,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|editCommitMessage (final PatchSet.Id patchSetId, final RefControl refControl, CommitValidators commitValidators, final IdentifiedUser user, final String message, final ReviewDb db, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, PersonIdent myIdent)
+DECL|method|editCommitMessage (final PatchSet.Id patchSetId, final RefControl refControl, CommitValidators commitValidators, final IdentifiedUser user, final String message, final ReviewDb db, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, PersonIdent myIdent)
 specifier|public
 specifier|static
 name|Change
@@ -2466,7 +2466,7 @@ name|patchSetInfoFactory
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 name|PersonIdent
 name|myIdent
@@ -2997,7 +2997,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(
@@ -3398,7 +3398,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|deleteDraftChange (final PatchSet.Id patchSetId, GitRepositoryManager gitManager, final GitReferenceUpdated replication, final ReviewDb db)
+DECL|method|deleteDraftChange (final PatchSet.Id patchSetId, GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final ReviewDb db)
 specifier|public
 specifier|static
 name|void
@@ -3415,7 +3415,7 @@ name|gitManager
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|ReviewDb
@@ -3504,7 +3504,7 @@ name|change
 argument_list|,
 name|gitManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|,
 name|db
 argument_list|)
@@ -3580,7 +3580,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteOnlyDraftPatchSet (final PatchSet patch, final Change change, GitRepositoryManager gitManager, final GitReferenceUpdated replication, final ReviewDb db)
+DECL|method|deleteOnlyDraftPatchSet (final PatchSet patch, final Change change, GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final ReviewDb db)
 specifier|public
 specifier|static
 name|void
@@ -3599,7 +3599,7 @@ name|gitManager
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|ReviewDb
@@ -3737,7 +3737,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

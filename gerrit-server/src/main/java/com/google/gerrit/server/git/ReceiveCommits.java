@@ -2197,11 +2197,11 @@ operator|.
 name|Factory
 name|replacePatchSetFactory
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
@@ -2489,7 +2489,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated replication, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2527,7 +2527,7 @@ name|replacePatchSetFactory
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|PatchSetInfoFactory
@@ -2673,9 +2673,9 @@ name|replacePatchSetFactory
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -4115,10 +4115,10 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// We only schedule direct refs updates for replication.
-comment|// Change refs are scheduled when they are created.
+comment|// We only fire gitRefUpdated for direct refs updates.
+comment|// Events for change refs are fired when they are created.
 comment|//
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(
@@ -8562,7 +8562,7 @@ name|created
 operator|=
 literal|true
 expr_stmt|;
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(
@@ -10714,7 +10714,7 @@ name|rp
 argument_list|)
 expr_stmt|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

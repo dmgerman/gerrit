@@ -594,11 +594,11 @@ operator|.
 name|Factory
 name|commitMessageEditedSenderFactory
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|patchSetId
 specifier|private
@@ -650,7 +650,7 @@ name|myIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated replication, @GerritPersonIdent final PersonIdent myIdent)
+DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, @GerritPersonIdent final PersonIdent myIdent)
 name|EditCommitMessageHandler
 parameter_list|(
 specifier|final
@@ -715,7 +715,7 @@ name|patchSetInfoFactory
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -792,9 +792,9 @@ name|patchSetInfoFactory
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -964,7 +964,7 @@ name|git
 argument_list|,
 name|patchSetInfoFactory
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|,
 name|myIdent
 argument_list|)

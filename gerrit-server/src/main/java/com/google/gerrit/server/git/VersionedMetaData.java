@@ -1322,7 +1322,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|.
-name|replicate
+name|fireGitRefUpdatedEvent
 argument_list|(
 name|ru
 argument_list|)
@@ -1489,7 +1489,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|.
-name|replicate
+name|fireGitRefUpdatedEvent
 argument_list|(
 name|ru
 argument_list|)

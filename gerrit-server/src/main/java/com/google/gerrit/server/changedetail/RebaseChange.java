@@ -758,11 +758,11 @@ specifier|final
 name|PersonIdent
 name|myIdent
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|rebasedPatchSetSenderFactory
 specifier|private
@@ -786,7 +786,7 @@ name|approvalsUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated replication, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final ApprovalsUtil approvalsUtil)
+DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final ApprovalsUtil approvalsUtil)
 name|RebaseChange
 parameter_list|(
 specifier|final
@@ -815,7 +815,7 @@ name|gitManager
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|RebasedPatchSetSender
@@ -864,9 +864,9 @@ name|myIdent
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -2021,7 +2021,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

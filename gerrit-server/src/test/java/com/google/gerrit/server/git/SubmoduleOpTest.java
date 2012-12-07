@@ -739,10 +739,10 @@ specifier|private
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 annotation|@
 name|SuppressWarnings
@@ -811,7 +811,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|replication
+name|gitRefUpdated
 operator|=
 name|createStrictMock
 argument_list|(
@@ -839,7 +839,7 @@ name|urlProvider
 argument_list|,
 name|repoManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|)
 expr_stmt|;
 block|}
@@ -861,7 +861,7 @@ name|urlProvider
 argument_list|,
 name|repoManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|)
 expr_stmt|;
 block|}
@@ -2454,7 +2454,7 @@ name|RefUpdate
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(
@@ -2581,7 +2581,7 @@ name|myIdent
 argument_list|,
 name|repoManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|)
 decl_stmt|;
 name|submoduleOp
@@ -2987,7 +2987,7 @@ name|RefUpdate
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(
@@ -3122,7 +3122,7 @@ name|myIdent
 argument_list|,
 name|repoManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|)
 decl_stmt|;
 name|submoduleOp

@@ -1200,11 +1200,11 @@ operator|.
 name|Factory
 name|functionState
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|mergedSenderFactory
 specifier|private
@@ -1408,7 +1408,7 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final GitReferenceUpdated rq, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, @GerritPersonIdent final PersonIdent myIdent, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final CreateCodeReviewNotes.Factory crnf, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final AllProjectsName allProjectsName)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, @GerritPersonIdent final PersonIdent myIdent, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final CreateCodeReviewNotes.Factory crnf, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final AllProjectsName allProjectsName)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1434,7 +1434,7 @@ name|fs
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|rq
+name|gru
 parameter_list|,
 specifier|final
 name|MergedSender
@@ -1543,9 +1543,9 @@ name|projectCache
 operator|=
 name|pc
 expr_stmt|;
-name|replication
+name|gitRefUpdated
 operator|=
-name|rq
+name|gru
 expr_stmt|;
 name|mergedSenderFactory
 operator|=
@@ -4358,7 +4358,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

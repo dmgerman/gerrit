@@ -435,11 +435,11 @@ specifier|final
 name|ApprovalTypes
 name|approvalTypes
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|rebaseChange
 specifier|private
@@ -449,7 +449,7 @@ name|rebaseChange
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated replication, final RebaseChange rebaseChange)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -485,7 +485,7 @@ name|approvalTypes
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|RebaseChange
@@ -524,9 +524,9 @@ name|approvalTypes
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -636,7 +636,7 @@ name|urlProvider
 argument_list|,
 name|approvalTypes
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|)
 return|;
 case|case

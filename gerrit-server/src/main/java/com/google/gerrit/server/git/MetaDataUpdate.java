@@ -540,11 +540,11 @@ name|db
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|projectName
 specifier|private
@@ -568,12 +568,12 @@ name|commit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MetaDataUpdate (GitReferenceUpdated replication, @Assisted Project.NameKey projectName, @Assisted Repository db)
+DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository db)
 specifier|public
 name|MetaDataUpdate
 parameter_list|(
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 annotation|@
 name|Assisted
@@ -590,9 +590,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -717,15 +717,15 @@ return|return
 name|commit
 return|;
 block|}
-DECL|method|replicate (RefUpdate ru)
+DECL|method|fireGitRefUpdatedEvent (RefUpdate ru)
 name|void
-name|replicate
+name|fireGitRefUpdatedEvent
 parameter_list|(
 name|RefUpdate
 name|ru
 parameter_list|)
 block|{
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

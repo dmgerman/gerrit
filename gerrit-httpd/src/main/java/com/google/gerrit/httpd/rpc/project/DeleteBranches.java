@@ -440,11 +440,11 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|identifiedUser
 specifier|private
@@ -485,7 +485,7 @@ name|toRemove
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final GitReferenceUpdated replication, final IdentifiedUser identifiedUser, final ChangeHooks hooks, final ReviewDb db, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
+DECL|method|DeleteBranches (final ProjectControl.Factory projectControlFactory, final GitRepositoryManager repoManager, final GitReferenceUpdated gitRefUpdated, final IdentifiedUser identifiedUser, final ChangeHooks hooks, final ReviewDb db, @Assisted Project.NameKey name, @Assisted Set<Branch.NameKey> toRemove)
 name|DeleteBranches
 parameter_list|(
 specifier|final
@@ -500,7 +500,7 @@ name|repoManager
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -546,9 +546,9 @@ name|repoManager
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -851,7 +851,7 @@ argument_list|(
 name|branchKey
 argument_list|)
 expr_stmt|;
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

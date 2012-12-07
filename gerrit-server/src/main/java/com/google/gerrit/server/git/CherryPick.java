@@ -565,11 +565,11 @@ specifier|final
 name|ApprovalTypes
 name|approvalTypes
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|newCommits
 specifier|private
@@ -584,7 +584,7 @@ name|CodeReviewCommit
 argument_list|>
 name|newCommits
 decl_stmt|;
-DECL|method|CherryPick (final SubmitStrategy.Arguments args, final PatchSetInfoFactory patchSetInfoFactory, final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated replication)
+DECL|method|CherryPick (final SubmitStrategy.Arguments args, final PatchSetInfoFactory patchSetInfoFactory, final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated gitRefUpdated)
 name|CherryPick
 parameter_list|(
 specifier|final
@@ -610,7 +610,7 @@ name|approvalTypes
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|)
 block|{
 name|super
@@ -638,9 +638,9 @@ name|approvalTypes
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -1433,7 +1433,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

@@ -832,11 +832,11 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|schemaFactory
 specifier|private
@@ -860,7 +860,7 @@ name|updatedSubscribers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated replication)
+DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -941,7 +941,7 @@ name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|)
 block|{
 name|this
@@ -1012,9 +1012,9 @@ name|repoManager
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|updatedSubscribers
 operator|=
@@ -2337,7 +2337,7 @@ case|:
 case|case
 name|FAST_FORWARD
 case|:
-name|replication
+name|gitRefUpdated
 operator|.
 name|fire
 argument_list|(

@@ -371,11 +371,11 @@ specifier|final
 name|GitRepositoryManager
 name|gitManager
 decl_stmt|;
-DECL|field|replication
+DECL|field|gitRefUpdated
 specifier|private
 specifier|final
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
@@ -393,7 +393,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftPatchSet (ChangeControl.Factory changeControlFactory, ReviewDb db, GitRepositoryManager gitManager, GitReferenceUpdated replication, PatchSetInfoFactory patchSetInfoFactory, @Assisted final PatchSet.Id patchSetId)
+DECL|method|DeleteDraftPatchSet (ChangeControl.Factory changeControlFactory, ReviewDb db, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, @Assisted final PatchSet.Id patchSetId)
 name|DeleteDraftPatchSet
 parameter_list|(
 name|ChangeControl
@@ -408,7 +408,7 @@ name|GitRepositoryManager
 name|gitManager
 parameter_list|,
 name|GitReferenceUpdated
-name|replication
+name|gitRefUpdated
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
@@ -442,9 +442,9 @@ name|gitManager
 expr_stmt|;
 name|this
 operator|.
-name|replication
+name|gitRefUpdated
 operator|=
-name|replication
+name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -624,7 +624,7 @@ name|change
 argument_list|,
 name|gitManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|,
 name|db
 argument_list|)
@@ -700,7 +700,7 @@ name|patchSetId
 argument_list|,
 name|gitManager
 argument_list|,
-name|replication
+name|gitRefUpdated
 argument_list|,
 name|db
 argument_list|)
