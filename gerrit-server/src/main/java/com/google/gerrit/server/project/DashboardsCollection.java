@@ -1222,6 +1222,12 @@ name|info
 operator|.
 name|project
 operator|=
+name|project
+expr_stmt|;
+name|info
+operator|.
+name|definingProject
+operator|=
 name|definingProject
 operator|.
 name|getName
@@ -1555,6 +1561,10 @@ decl_stmt|;
 DECL|field|project
 name|String
 name|project
+decl_stmt|;
+DECL|field|definingProject
+name|String
+name|definingProject
 decl_stmt|;
 DECL|field|ref
 name|String

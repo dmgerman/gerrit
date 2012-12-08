@@ -1027,15 +1027,15 @@ if|if
 condition|(
 name|k
 operator|.
-name|project
+name|definingProject
 argument_list|()
 operator|!=
 literal|null
 operator|&&
 operator|!
-name|project
+name|k
 operator|.
-name|get
+name|definingProject
 argument_list|()
 operator|.
 name|equals
@@ -1060,7 +1060,7 @@ name|Anchor
 argument_list|(
 name|k
 operator|.
-name|project
+name|definingProject
 argument_list|()
 argument_list|,
 literal|"#"
@@ -1076,7 +1076,7 @@ name|NameKey
 argument_list|(
 name|k
 operator|.
-name|project
+name|definingProject
 argument_list|()
 argument_list|)
 argument_list|)
