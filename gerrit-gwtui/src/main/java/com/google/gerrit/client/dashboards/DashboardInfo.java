@@ -108,6 +108,15 @@ name|project
 parameter_list|()
 comment|/*-{ return this.project; }-*/
 function_decl|;
+DECL|method|definingProject ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|definingProject
+parameter_list|()
+comment|/*-{ return this.defining_project; }-*/
+function_decl|;
 DECL|method|ref ()
 specifier|public
 specifier|final
