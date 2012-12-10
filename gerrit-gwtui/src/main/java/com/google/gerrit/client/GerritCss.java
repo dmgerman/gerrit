@@ -753,6 +753,11 @@ name|String
 name|menuBarUserName
 parameter_list|()
 function_decl|;
+DECL|method|menuBarUserNameFocusPanel ()
+name|String
+name|menuBarUserNameFocusPanel
+parameter_list|()
+function_decl|;
 DECL|method|menuItem ()
 name|String
 name|menuItem
@@ -1096,6 +1101,11 @@ function_decl|;
 DECL|method|useridentity ()
 name|String
 name|useridentity
+parameter_list|()
+function_decl|;
+DECL|method|userInfoPopup ()
+name|String
+name|userInfoPopup
 parameter_list|()
 function_decl|;
 DECL|method|usernameField ()

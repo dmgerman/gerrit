@@ -796,6 +796,29 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Formats an account name.    *<p>    * If the account has a full name, it returns only the full name. Otherwise it    * returns a longer form that includes the email address.    */
+DECL|method|name (final Account acct)
+specifier|public
+specifier|static
+name|String
+name|name
+parameter_list|(
+specifier|final
+name|Account
+name|acct
+parameter_list|)
+block|{
+return|return
+name|name
+argument_list|(
+operator|new
+name|AccountInfo
+argument_list|(
+name|acct
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**    * Formats an account name.    *<p>    * If the account has a full name, it returns only the full name. Otherwise it    * returns a longer form that includes the email address.    */
 DECL|method|name (final AccountInfo ai)
 specifier|public
 specifier|static
