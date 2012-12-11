@@ -1930,6 +1930,16 @@ operator|.
 name|getReceivePack
 argument_list|()
 decl_stmt|;
+name|rp
+operator|.
+name|getAdvertiseRefsHook
+argument_list|()
+operator|.
+name|advertiseRefs
+argument_list|(
+name|rp
+argument_list|)
+expr_stmt|;
 name|ProjectControl
 name|pc
 init|=
