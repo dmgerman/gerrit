@@ -12597,6 +12597,16 @@ name|CommitValidationException
 name|error
 parameter_list|)
 block|{
+name|messages
+operator|.
+name|addAll
+argument_list|(
+name|error
+operator|.
+name|getMessages
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
