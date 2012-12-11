@@ -4579,7 +4579,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|replace
+operator|.
+name|inputCommand
+operator|.
+name|getResult
+argument_list|()
+operator|==
+name|NOT_ATTEMPTED
+condition|)
 block|{
 name|reject
 argument_list|(
@@ -9633,6 +9644,26 @@ argument_list|(
 name|commitId
 argument_list|)
 decl_stmt|;
+comment|// Don't allow the same commit to appear twice on the same change
+comment|//
+if|if
+condition|(
+name|newCommit
+operator|==
+name|prior
+condition|)
+block|{
+name|reject
+argument_list|(
+name|inputCommand
+argument_list|,
+literal|"commit already exists"
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 comment|// Don't allow a change to directly depend upon itself. This is a
 comment|// very common error due to users making a new commit rather than
 comment|// amending when trying to address review comments.
@@ -9657,26 +9688,6 @@ argument_list|(
 name|inputCommand
 argument_list|,
 literal|"squash commits first"
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
-comment|// Don't allow the same commit to appear twice on the same change
-comment|//
-if|if
-condition|(
-name|newCommit
-operator|==
-name|prior
-condition|)
-block|{
-name|reject
-argument_list|(
-name|inputCommand
-argument_list|,
-literal|"commit already exists"
 argument_list|)
 expr_stmt|;
 return|return
