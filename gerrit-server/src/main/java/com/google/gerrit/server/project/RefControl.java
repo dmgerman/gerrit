@@ -1337,7 +1337,7 @@ name|canPerform
 argument_list|(
 name|Permission
 operator|.
-name|PUSH_TAG
+name|PUSH_SIGNED_TAG
 argument_list|)
 return|;
 block|}
