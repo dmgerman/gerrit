@@ -418,7 +418,7 @@ name|ProjectListPopup
 block|{
 DECL|field|projectsTab
 specifier|private
-name|ProjectsTable
+name|HighlightingProjectsTable
 name|projectsTab
 decl_stmt|;
 DECL|field|popup
@@ -873,7 +873,7 @@ expr_stmt|;
 name|projectsTab
 operator|=
 operator|new
-name|ProjectsTable
+name|HighlightingProjectsTable
 argument_list|()
 block|{
 annotation|@
@@ -1231,6 +1231,8 @@ operator|.
 name|display
 argument_list|(
 name|result
+argument_list|,
+name|subname
 argument_list|)
 expr_stmt|;
 if|if
