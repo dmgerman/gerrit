@@ -1551,6 +1551,39 @@ name|VIEW_DRAFTS
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can publish draft changes. */
+DECL|method|canPublishDrafts ()
+specifier|public
+name|boolean
+name|canPublishDrafts
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|PUBLISH_DRAFTS
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can delete draft changes. */
+DECL|method|canDeleteDrafts ()
+specifier|public
+name|boolean
+name|canDeleteDrafts
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|DELETE_DRAFTS
+argument_list|)
+return|;
+block|}
+comment|/** @return true if this user can edit topic names. */
 DECL|method|canEditTopicName ()
 specifier|public
 name|boolean
@@ -1566,6 +1599,7 @@ name|EDIT_TOPIC_NAME
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can force edit topic names. */
 DECL|method|canForceEditTopicName ()
 specifier|public
 name|boolean
