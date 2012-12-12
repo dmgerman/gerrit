@@ -354,6 +354,28 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
+if|if
+condition|(
+name|match
+operator|==
+literal|null
+operator|||
+literal|""
+operator|.
+name|equals
+argument_list|(
+name|match
+argument_list|)
+condition|)
+block|{
+name|all
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 operator|new
 name|RestApi
 argument_list|(
@@ -390,6 +412,7 @@ name|cb
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|ProjectMap ()
 specifier|protected
