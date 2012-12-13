@@ -1343,6 +1343,17 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|review
+operator|.
+name|labels
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|reviewProvider
 operator|.
 name|get
@@ -1373,6 +1384,7 @@ argument_list|,
 name|review
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|approveOne (final PatchSet.Id patchSetId)
 specifier|private
@@ -1485,6 +1497,25 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// If review labels are being applied, the comment will be included
+comment|// on the review note. We don't need to add it again on the abandon
+comment|// or restore comment.
+if|if
+condition|(
+operator|!
+name|review
+operator|.
+name|labels
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|changeComment
+operator|=
+literal|null
+expr_stmt|;
 block|}
 try|try
 block|{
