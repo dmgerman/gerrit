@@ -1410,16 +1410,6 @@ argument_list|(
 literal|4
 argument_list|)
 decl_stmt|;
-name|modules
-operator|.
-name|add
-argument_list|(
-name|env
-operator|.
-name|getSysModule
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|apiType
