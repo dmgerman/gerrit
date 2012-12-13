@@ -989,6 +989,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|patchSetPanel
+operator|.
+name|setOpen
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|activePatchSetId
 operator|=
 name|patchSetId
