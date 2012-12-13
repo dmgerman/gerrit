@@ -181,6 +181,40 @@ literal|"\n"
 operator|+
 literal|"Please rebase the change locally and upload again for review."
 argument_list|)
+block|,
+comment|/** */
+DECL|enumConstant|INVALID_PROJECT_CONFIGURATION
+name|INVALID_PROJECT_CONFIGURATION
+argument_list|(
+literal|"Change contains an invalid project configuration."
+argument_list|)
+block|,
+comment|/** */
+DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
+name|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
+argument_list|(
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"Parent project does not exist."
+argument_list|)
+block|,
+comment|/** */
+DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_ROOT_PROJECT_CANNOT_HAVE_PARENT
+name|INVALID_PROJECT_CONFIGURATION_ROOT_PROJECT_CANNOT_HAVE_PARENT
+argument_list|(
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"The root project cannot have a parent."
+argument_list|)
+block|,
+comment|/** */
+DECL|enumConstant|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
+name|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
+argument_list|(
+literal|"Change contains a project configuration that changes the parent project.\n"
+operator|+
+literal|"The change must be submitted by a Gerrit administrator."
+argument_list|)
 block|;
 DECL|field|message
 specifier|private
