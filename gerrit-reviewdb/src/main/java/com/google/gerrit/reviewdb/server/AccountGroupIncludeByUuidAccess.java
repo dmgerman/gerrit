@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeAudit
+name|AccountGroupIncludeByUuid
 import|;
 end_import
 
@@ -169,16 +169,16 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|AccountGroupIncludeAuditAccess
+DECL|interface|AccountGroupIncludeByUuidAccess
 specifier|public
 interface|interface
-name|AccountGroupIncludeAuditAccess
+name|AccountGroupIncludeByUuidAccess
 extends|extends
 name|Access
 argument_list|<
-name|AccountGroupIncludeAudit
+name|AccountGroupIncludeByUuid
 argument_list|,
-name|AccountGroupIncludeAudit
+name|AccountGroupIncludeByUuid
 operator|.
 name|Key
 argument_list|>
@@ -188,11 +188,11 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (AccountGroupIncludeAudit.Key key)
-name|AccountGroupIncludeAudit
+DECL|method|get (AccountGroupIncludeByUuid.Key key)
+name|AccountGroupIncludeByUuid
 name|get
 parameter_list|(
-name|AccountGroupIncludeAudit
+name|AccountGroupIncludeByUuid
 operator|.
 name|Key
 name|key
@@ -203,24 +203,39 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.groupId = ? AND key.includeId = ?"
+literal|"WHERE key.includeUUID = ?"
 argument_list|)
-DECL|method|byGroupInclude (AccountGroup.Id groupId, AccountGroup.Id incGroupId)
+DECL|method|byIncludeUUID (AccountGroup.UUID uuid)
 name|ResultSet
 argument_list|<
-name|AccountGroupIncludeAudit
+name|AccountGroupIncludeByUuid
 argument_list|>
-name|byGroupInclude
+name|byIncludeUUID
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.groupId = ?"
+argument_list|)
+DECL|method|byGroup (AccountGroup.Id id)
+name|ResultSet
+argument_list|<
+name|AccountGroupIncludeByUuid
+argument_list|>
+name|byGroup
 parameter_list|(
 name|AccountGroup
 operator|.
 name|Id
-name|groupId
-parameter_list|,
-name|AccountGroup
-operator|.
-name|Id
-name|incGroupId
+name|id
 parameter_list|)
 throws|throws
 name|OrmException

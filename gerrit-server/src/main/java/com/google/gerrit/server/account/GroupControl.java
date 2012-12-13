@@ -695,15 +695,15 @@ name|canSeeMembers
 argument_list|()
 return|;
 block|}
-DECL|method|canAddGroup (AccountGroup.Id id)
+DECL|method|canAddGroup (AccountGroup.UUID uuid)
 specifier|public
 name|boolean
 name|canAddGroup
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 return|return
@@ -711,15 +711,15 @@ name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canRemoveGroup (AccountGroup.Id id)
+DECL|method|canRemoveGroup (AccountGroup.UUID uuid)
 specifier|public
 name|boolean
 name|canRemoveGroup
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 return|return
@@ -727,15 +727,15 @@ name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canSeeGroup (AccountGroup.Id id)
+DECL|method|canSeeGroup (AccountGroup.UUID uuid)
 specifier|public
 name|boolean
 name|canSeeGroup
 parameter_list|(
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 return|return

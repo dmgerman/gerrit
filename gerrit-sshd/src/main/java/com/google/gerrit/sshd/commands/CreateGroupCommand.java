@@ -444,7 +444,7 @@ name|Set
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 name|initialGroups
 init|=
@@ -453,7 +453,7 @@ name|HashSet
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -476,14 +476,14 @@ name|usage
 operator|=
 literal|"initial set of groups to be included in the group"
 argument_list|)
-DECL|method|addGroup (final AccountGroup.Id id)
+DECL|method|addGroup (final AccountGroup.UUID id)
 name|void
 name|addGroup
 parameter_list|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|id
 parameter_list|)
 block|{

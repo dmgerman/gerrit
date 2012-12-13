@@ -142,7 +142,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 import|;
 end_import
 
@@ -795,7 +795,7 @@ block|{
 for|for
 control|(
 specifier|final
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 name|groupInclude
 range|:
 name|groupDetail
@@ -813,7 +813,7 @@ name|get
 argument_list|(
 name|groupInclude
 operator|.
-name|getIncludeId
+name|getIncludeUUID
 argument_list|()
 argument_list|)
 decl_stmt|;

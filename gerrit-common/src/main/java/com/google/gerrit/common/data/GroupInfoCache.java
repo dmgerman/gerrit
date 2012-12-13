@@ -165,7 +165,7 @@ name|Map
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|,
 name|GroupInfo
 argument_list|>
@@ -195,7 +195,7 @@ name|HashMap
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|,
 name|GroupInfo
 argument_list|>
@@ -225,7 +225,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Lookup the group summary    *<p>    * The return value can take on one of three forms:    *<ul>    *<li><code>null</code>, if<code>id == null</code>.</li>    *<li>a valid info block, if<code>id</code> was loaded.</li>    *<li>an anonymous info block, if<code>id</code> was not loaded.</li>    *</ul>    *    * @param id the id desired.    * @return info block for the group.    */
-DECL|method|get (final AccountGroup.Id id)
+DECL|method|get (final AccountGroup.UUID uuid)
 specifier|public
 name|GroupInfo
 name|get
@@ -233,13 +233,13 @@ parameter_list|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 if|if
 condition|(
-name|id
+name|uuid
 operator|==
 literal|null
 condition|)
@@ -255,7 +255,7 @@ name|groups
 operator|.
 name|get
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 decl_stmt|;
 if|if
@@ -270,14 +270,14 @@ operator|=
 operator|new
 name|GroupInfo
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 expr_stmt|;
 name|groups
 operator|.
 name|put
 argument_list|(
-name|id
+name|uuid
 argument_list|,
 name|r
 argument_list|)
