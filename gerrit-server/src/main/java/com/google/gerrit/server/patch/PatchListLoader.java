@@ -1984,7 +1984,13 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|//
+comment|// It is not safe to continue further down in this method as throwing
+comment|// an exception most likely means that the merge tree was not created
+comment|// and m.getMergeResults() is empty. This would mean that all paths are
+comment|// unmerged and Gerrit UI would show all paths in the patch list.
+return|return
+literal|null
+return|;
 block|}
 if|if
 condition|(
