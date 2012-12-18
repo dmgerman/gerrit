@@ -1859,6 +1859,12 @@ operator|+
 literal|"flag set to delete references."
 argument_list|)
 block|,
+DECL|enumConstant|DELETE_CHANGES
+name|DELETE_CHANGES
+argument_list|(
+literal|"Cannot delete from 'refs/changes'"
+argument_list|)
+block|,
 DECL|enumConstant|CODE_REVIEW
 name|CODE_REVIEW
 argument_list|(
@@ -6086,6 +6092,42 @@ name|getRefName
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ctl
+operator|.
+name|getRefName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"refs/changes/"
+argument_list|)
+condition|)
+block|{
+name|errors
+operator|.
+name|put
+argument_list|(
+name|Error
+operator|.
+name|DELETE_CHANGES
+argument_list|,
+name|ctl
+operator|.
+name|getRefName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"cannot delete changes"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|ctl
