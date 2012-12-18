@@ -467,6 +467,11 @@ specifier|private
 name|Boolean
 name|canForgeCommitter
 decl_stmt|;
+DECL|field|isVisible
+specifier|private
+name|Boolean
+name|isVisible
+decl_stmt|;
 DECL|method|RefControl (ProjectControl projectControl, String ref, PermissionCollection relevant)
 name|RefControl
 parameter_list|(
@@ -652,7 +657,15 @@ name|boolean
 name|isVisible
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|isVisible
+operator|==
+literal|null
+condition|)
+block|{
+name|isVisible
+operator|=
 operator|(
 name|getCurrentUser
 argument_list|()
@@ -669,6 +682,10 @@ operator|)
 operator|&&
 name|canRead
 argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|isVisible
 return|;
 block|}
 comment|/**    * True if this reference is visible by all REGISTERED_USERS    */
