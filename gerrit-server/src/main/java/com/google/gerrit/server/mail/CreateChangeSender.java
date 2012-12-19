@@ -450,10 +450,6 @@ name|projectState
 operator|!=
 literal|null
 operator|&&
-name|change
-operator|!=
-literal|null
-operator|&&
 name|projectState
 operator|.
 name|controlFor
