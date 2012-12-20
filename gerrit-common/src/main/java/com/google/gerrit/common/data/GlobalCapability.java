@@ -116,7 +116,7 @@ specifier|public
 class|class
 name|GlobalCapability
 block|{
-comment|/**    * Denotes the server's administrators.    *<p>    * This is similar to UNIX root, or Windows SYSTEM account. Any user that    * has this capability can perform almost any other action, or can grant    * themselves the power to perform any other action on the site. Most of    * the other capabilities and permissions fall-back to the predicate    * "OR user has capablity ADMINISTRATE_SERVER".    */
+comment|/**    * Denotes the server's administrators.    *<p>    * This is similar to UNIX root, or Windows SYSTEM account. Any user that    * has this capability can perform almost any other action, or can grant    * themselves the power to perform any other action on the site. Most of    * the other capabilities and permissions fall-back to the predicate    * "OR user has capability ADMINISTRATE_SERVER".    */
 DECL|field|ADMINISTRATE_SERVER
 specifier|public
 specifier|static
