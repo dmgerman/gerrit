@@ -200,6 +200,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
+name|PostReview
+operator|.
+name|NotifyHandling
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|WorkQueue
@@ -427,10 +445,13 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( Change change, PatchSet patchSet, Account.Id authorId, ChangeMessage message, List<PatchLineComment> comments)
+DECL|method|create ( NotifyHandling notify, Change change, PatchSet patchSet, Account.Id authorId, ChangeMessage message, List<PatchLineComment> comments)
 name|EmailReviewComments
 name|create
 parameter_list|(
+name|NotifyHandling
+name|notify
+parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -488,6 +509,14 @@ specifier|final
 name|ThreadLocalRequestContext
 name|requestContext
 decl_stmt|;
+DECL|field|notify
+specifier|private
+specifier|final
+name|PostReview
+operator|.
+name|NotifyHandling
+name|notify
+decl_stmt|;
 DECL|field|change
 specifier|private
 specifier|final
@@ -529,7 +558,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( WorkQueue workQueue, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
+DECL|method|EmailReviewComments ( WorkQueue workQueue, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
 name|EmailReviewComments
 parameter_list|(
 name|WorkQueue
@@ -551,6 +580,11 @@ name|schemaFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|requestContext
+parameter_list|,
+annotation|@
+name|Assisted
+name|NotifyHandling
+name|notify
 parameter_list|,
 annotation|@
 name|Assisted
@@ -612,6 +646,12 @@ operator|.
 name|requestContext
 operator|=
 name|requestContext
+expr_stmt|;
+name|this
+operator|.
+name|notify
+operator|=
+name|notify
 expr_stmt|;
 name|this
 operator|.
@@ -806,6 +846,8 @@ name|commentSenderFactory
 operator|.
 name|create
 argument_list|(
+name|notify
+argument_list|,
 name|change
 argument_list|)
 decl_stmt|;
