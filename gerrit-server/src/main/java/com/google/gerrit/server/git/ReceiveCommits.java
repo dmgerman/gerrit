@@ -14363,11 +14363,24 @@ operator|.
 name|Status
 operator|.
 name|ABANDONED
+operator|||
+operator|!
+name|change
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|refName
+argument_list|)
 condition|)
 block|{
-comment|// If its already merged, don't make further updates, it
-comment|// might just be moving from an experimental branch into
-comment|// a more stable branch.
+comment|// If it's already merged or the commit is not aimed for
+comment|// this change's destination, don't make further updates.
 comment|//
 return|return
 literal|null
