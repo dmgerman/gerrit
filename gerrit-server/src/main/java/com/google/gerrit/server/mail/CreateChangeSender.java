@@ -302,7 +302,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|CreateChangeSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, SshInfo sshInfo, @Assisted Change c)
+DECL|method|CreateChangeSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, SshInfo si, @Assisted Change c)
 specifier|public
 name|CreateChangeSender
 parameter_list|(
@@ -315,7 +315,7 @@ name|String
 name|anonymousCowardName
 parameter_list|,
 name|SshInfo
-name|sshInfo
+name|si
 parameter_list|,
 annotation|@
 name|Assisted
@@ -329,9 +329,12 @@ name|ea
 argument_list|,
 name|anonymousCowardName
 argument_list|,
-name|sshInfo
-argument_list|,
 name|c
+argument_list|)
+expr_stmt|;
+name|setSshInfo
+argument_list|(
+name|si
 argument_list|)
 expr_stmt|;
 block|}
