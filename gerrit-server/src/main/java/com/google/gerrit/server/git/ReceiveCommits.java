@@ -12927,15 +12927,25 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|String
+name|p
+init|=
+literal|".git/hooks/commit-msg"
+decl_stmt|;
 return|return
-literal|"$ curl -o .git/hooks/commit-msg "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"  curl -o %s %s/tools/hooks/commit-msg ; chmod +x %s"
+argument_list|,
+name|p
+argument_list|,
 name|getGerritUrl
 argument_list|()
-operator|+
-literal|"/tools/hooks/commit-msg\n"
-operator|+
-literal|"$ chmod +x .git/hooks/commit-msg"
+argument_list|,
+name|p
+argument_list|)
 return|;
 block|}
 comment|// SSH keys exist, so the hook can be installed with scp.
@@ -13034,22 +13044,21 @@ literal|22
 expr_stmt|;
 block|}
 return|return
-literal|"$ scp -p -P "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"  scp -p -P %d %s@%s:hooks/commit-msg .git/hooks/"
+argument_list|,
 name|sshPort
-operator|+
-literal|" "
-operator|+
+argument_list|,
 name|currentUser
 operator|.
 name|getUserName
 argument_list|()
-operator|+
-literal|"@"
-operator|+
+argument_list|,
 name|sshHost
-operator|+
-literal|":hooks/commit-msg .git/hooks/"
+argument_list|)
 return|;
 block|}
 DECL|method|getFixedCommitMsgWithChangeId (String errMsg, RevCommit c)
@@ -13097,7 +13106,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|sb
@@ -13137,7 +13146,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|sb
@@ -13245,7 +13254,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
@@ -13253,7 +13262,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|sb
@@ -13280,7 +13289,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|sb
@@ -13307,7 +13316,14 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\nHint: A potential Change-Id was found, but it was not in the footer of the commit message."
+literal|'\n'
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"Hint: A potential Change-Id was found, but it was not in the footer of the commit message."
 argument_list|)
 expr_stmt|;
 block|}
@@ -13316,14 +13332,21 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Hint: To automatically add a Change-Id to commit messages, install the commit-msg hook:\n"
+literal|'\n'
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"Hint: To automatically insert Change-Id, install the hook:\n"
 argument_list|)
 expr_stmt|;
 name|sb
@@ -13332,6 +13355,18 @@ name|append
 argument_list|(
 name|getCommitMessageHookInstallationHint
 argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\n'
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 return|return
