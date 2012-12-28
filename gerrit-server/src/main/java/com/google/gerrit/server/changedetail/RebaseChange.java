@@ -887,7 +887,7 @@ operator|=
 name|approvalsUtil
 expr_stmt|;
 block|}
-comment|/**    * Rebases the change of the given patch set.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
+comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
 DECL|method|rebase (final PatchSet.Id patchSetId, final Account.Id uploader)
 specifier|public
 name|void
@@ -938,6 +938,28 @@ argument_list|(
 name|changeId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|changeControl
+operator|.
+name|canRebase
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidChangeOperationException
+argument_list|(
+literal|"Cannot rebase: New patch sets are not allowed to be added to change: "
+operator|+
+name|changeId
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|Change
 name|change
@@ -1759,42 +1781,6 @@ name|change
 init|=
 name|chg
 decl_stmt|;
-specifier|final
-name|ChangeControl
-name|changeControl
-init|=
-name|changeControlFactory
-operator|.
-name|validateFor
-argument_list|(
-name|change
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|changeControl
-operator|.
-name|canRebase
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|InvalidChangeOperationException
-argument_list|(
-literal|"Cannot rebase: New patch sets are not allowed to be added to change: "
-operator|+
-name|change
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-throw|;
-block|}
 specifier|final
 name|PatchSet
 name|originalPatchSet
