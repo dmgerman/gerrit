@@ -1913,18 +1913,14 @@ name|CodeReviewCommit
 name|n
 parameter_list|)
 block|{
+try|try
+block|{
 name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|approvalList
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|approvalList
-operator|=
 name|db
 operator|.
 name|patchSetApprovals
@@ -1939,7 +1935,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|Collections
 operator|.
 name|sort
@@ -1986,6 +1982,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+return|return
+name|approvalList
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -2006,10 +2005,13 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 return|return
-name|approvalList
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
+block|}
 block|}
 DECL|method|contains (List<FooterLine> footers, FooterKey key, String val)
 specifier|private
