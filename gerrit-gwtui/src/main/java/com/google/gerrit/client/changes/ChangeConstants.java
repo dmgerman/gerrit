@@ -365,6 +365,11 @@ name|String
 name|changeScreenComments
 parameter_list|()
 function_decl|;
+DECL|method|changeScreenAddComment ()
+name|String
+name|changeScreenAddComment
+parameter_list|()
+function_decl|;
 DECL|method|approvalTableReviewer ()
 name|String
 name|approvalTableReviewer
