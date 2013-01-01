@@ -315,6 +315,11 @@ name|String
 name|addSshKeyPanelHeader
 parameter_list|()
 function_decl|;
+DECL|method|addSshKeyHelpTitle ()
+name|String
+name|addSshKeyHelpTitle
+parameter_list|()
+function_decl|;
 DECL|method|addSshKeyHelp ()
 name|String
 name|addSshKeyHelp
