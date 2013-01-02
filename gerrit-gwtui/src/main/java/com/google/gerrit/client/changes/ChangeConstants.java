@@ -420,6 +420,11 @@ name|String
 name|changeInfoBlockTopic
 parameter_list|()
 function_decl|;
+DECL|method|changeInfoBlockTopicAlterTopicToolTip ()
+name|String
+name|changeInfoBlockTopicAlterTopicToolTip
+parameter_list|()
+function_decl|;
 DECL|method|changeInfoBlockUploaded ()
 name|String
 name|changeInfoBlockUploaded
@@ -583,6 +588,11 @@ function_decl|;
 DECL|method|headingEditCommitMessage ()
 name|String
 name|headingEditCommitMessage
+parameter_list|()
+function_decl|;
+DECL|method|editCommitMessageToolTip ()
+name|String
+name|editCommitMessageToolTip
 parameter_list|()
 function_decl|;
 DECL|method|titleEditCommitMessage ()

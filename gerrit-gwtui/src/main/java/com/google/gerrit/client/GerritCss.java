@@ -738,6 +738,11 @@ name|String
 name|lineNumber
 parameter_list|()
 function_decl|;
+DECL|method|link ()
+name|String
+name|link
+parameter_list|()
+function_decl|;
 DECL|method|linkMenuBar ()
 name|String
 name|linkMenuBar
