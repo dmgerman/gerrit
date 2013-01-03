@@ -505,6 +505,11 @@ name|String
 name|descRegisterNewEmail
 parameter_list|()
 function_decl|;
+DECL|method|errorDialogTitleRegisterNewEmail ()
+name|String
+name|errorDialogTitleRegisterNewEmail
+parameter_list|()
+function_decl|;
 DECL|method|newAgreement ()
 name|String
 name|newAgreement

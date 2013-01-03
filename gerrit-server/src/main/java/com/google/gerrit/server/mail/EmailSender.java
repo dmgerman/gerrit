@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|errors
+operator|.
+name|EmailException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util

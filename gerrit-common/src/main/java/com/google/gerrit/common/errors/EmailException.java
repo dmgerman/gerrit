@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.common.errors
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|common
 operator|.
-name|mail
+name|errors
 package|;
 end_package
 
@@ -83,6 +83,15 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+DECL|field|MESSAGE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MESSAGE
+init|=
+literal|"Mail Error: "
+decl_stmt|;
 DECL|method|EmailException (String msg)
 specifier|public
 name|EmailException
@@ -93,6 +102,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|msg
 argument_list|)
 expr_stmt|;
@@ -110,6 +121,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|msg
 argument_list|,
 name|why
