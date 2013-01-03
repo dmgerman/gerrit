@@ -910,16 +910,6 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
-name|dataSourceType
-operator|.
-name|getNextValScript
-argument_list|()
-operator|.
-name|run
-argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|newGroup (ReviewDb c, String name, AccountGroup.UUID uuid)
 specifier|private

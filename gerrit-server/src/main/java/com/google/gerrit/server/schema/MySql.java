@@ -160,16 +160,6 @@ name|Config
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|MySql
 class|class
@@ -308,23 +298,6 @@ parameter_list|()
 block|{
 return|return
 literal|false
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getNextValScript ()
-specifier|public
-name|ScriptRunner
-name|getNextValScript
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|getScriptRunner
-argument_list|(
-literal|"mysql_nextval.sql"
-argument_list|)
 return|;
 block|}
 block|}

@@ -174,22 +174,6 @@ literal|"index_generic.sql"
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|getNextValScript ()
-specifier|public
-name|ScriptRunner
-name|getNextValScript
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|ScriptRunner
-operator|.
-name|NOOP
-return|;
-block|}
 DECL|method|getScriptRunner (String path)
 specifier|protected
 specifier|static

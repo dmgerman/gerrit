@@ -113,15 +113,6 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Return a ScriptRunner that runs the nextVal script. Must not return    *<code>null</code>, but may return a ScriptRunner that does nothing.    *    * @throws IOException    */
-DECL|method|getNextValScript ()
-specifier|public
-name|ScriptRunner
-name|getNextValScript
-parameter_list|()
-throws|throws
-name|IOException
-function_decl|;
 block|}
 end_interface
 
