@@ -449,6 +449,13 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+name|includeWatchers
+argument_list|(
+name|NotifyType
+operator|.
+name|NEW_PATCHSETS
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isOwnerOfProjectOrBranch (Account.Id user)
 specifier|private

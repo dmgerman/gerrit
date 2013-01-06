@@ -435,6 +435,11 @@ name|String
 name|watchedProjectColumnNewChanges
 parameter_list|()
 function_decl|;
+DECL|method|watchedProjectColumnNewPatchSets ()
+name|String
+name|watchedProjectColumnNewPatchSets
+parameter_list|()
+function_decl|;
 DECL|method|watchedProjectColumnAllComments ()
 name|String
 name|watchedProjectColumnAllComments
