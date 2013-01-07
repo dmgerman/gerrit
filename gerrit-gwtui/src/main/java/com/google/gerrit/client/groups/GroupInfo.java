@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.account
+DECL|package|com.google.gerrit.client.groups
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|groups
 package|;
 end_package
 
@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
 name|client
 operator|.
-name|admin
-operator|.
-name|GroupTable
+name|AccountGroup
 import|;
 end_import
 
@@ -88,127 +88,103 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
+operator|.
+name|core
 operator|.
 name|client
 operator|.
-name|groups
-operator|.
-name|GroupMap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|ScreenLoadCallback
+name|JavaScriptObject
 import|;
 end_import
 
 begin_class
-DECL|class|MyGroupsScreen
+DECL|class|GroupInfo
 specifier|public
 class|class
-name|MyGroupsScreen
+name|GroupInfo
 extends|extends
-name|SettingsScreen
+name|JavaScriptObject
 block|{
-DECL|field|groups
-specifier|private
-name|GroupTable
-name|groups
-decl_stmt|;
-annotation|@
-name|Override
-DECL|method|onInitUI ()
-specifier|protected
-name|void
-name|onInitUI
-parameter_list|()
-block|{
-name|super
-operator|.
-name|onInitUI
-argument_list|()
-expr_stmt|;
-name|groups
-operator|=
-operator|new
-name|GroupTable
-argument_list|(
-literal|true
-comment|/* hyperlink to admin */
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|groups
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|onLoad ()
-specifier|protected
-name|void
-name|onLoad
-parameter_list|()
-block|{
-name|super
-operator|.
-name|onLoad
-argument_list|()
-expr_stmt|;
-name|GroupMap
-operator|.
-name|my
-argument_list|(
-operator|new
-name|ScreenLoadCallback
-argument_list|<
-name|GroupMap
-argument_list|>
-argument_list|(
-name|this
-argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|preDisplay
-parameter_list|(
+DECL|method|getGroupId ()
+specifier|public
 specifier|final
-name|GroupMap
-name|result
-parameter_list|)
+name|AccountGroup
+operator|.
+name|Id
+name|getGroupId
+parameter_list|()
 block|{
-name|groups
+return|return
+operator|new
+name|AccountGroup
 operator|.
-name|display
+name|Id
 argument_list|(
-name|result
-argument_list|)
-expr_stmt|;
-name|groups
-operator|.
-name|finishDisplay
+name|groupId
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+DECL|method|groupId ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|groupId
+parameter_list|()
+comment|/*-{ return this.group_id; }-*/
+function_decl|;
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|name
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|uuid ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|uuid
+parameter_list|()
+comment|/*-{ return this.uuid; }-*/
+function_decl|;
+DECL|method|description ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|description
+parameter_list|()
+comment|/*-{ return this.description; }-*/
+function_decl|;
+DECL|method|isVisibleToAll ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isVisibleToAll
+parameter_list|()
+comment|/*-{ return this['is_visible_to_all'] ? true : false; }-*/
+function_decl|;
+DECL|method|ownerUuid ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|ownerUuid
+parameter_list|()
+comment|/*-{ return this.owner_uuid; }-*/
+function_decl|;
+DECL|method|GroupInfo ()
+specifier|protected
+name|GroupInfo
+parameter_list|()
+block|{   }
 block|}
 end_class
 
