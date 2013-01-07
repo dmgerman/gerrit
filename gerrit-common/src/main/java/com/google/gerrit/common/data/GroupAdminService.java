@@ -249,21 +249,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|visibleGroups (AsyncCallback<GroupList> callback)
-name|void
-name|visibleGroups
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|GroupList
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|createGroup (String newName, AsyncCallback<AccountGroup.Id> callback)
 name|void
 name|createGroup
