@@ -1948,6 +1948,11 @@ argument_list|(
 name|detail
 argument_list|)
 expr_stmt|;
+name|patchesList
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|detail
