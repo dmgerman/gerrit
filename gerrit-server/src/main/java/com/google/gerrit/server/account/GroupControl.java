@@ -508,6 +508,18 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getGroup ()
+specifier|public
+name|GroupDescription
+operator|.
+name|Basic
+name|getGroup
+parameter_list|()
+block|{
+return|return
+name|group
+return|;
+block|}
 DECL|method|getCurrentUser ()
 specifier|public
 name|CurrentUser
