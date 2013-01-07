@@ -138,7 +138,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Hyperlink
+name|HighlightingInlineHyperlink
 import|;
 end_import
 
@@ -594,6 +594,28 @@ name|GroupMap
 name|groups
 parameter_list|)
 block|{
+name|display
+argument_list|(
+name|groups
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|display (final GroupMap groups, final String toHighlight)
+specifier|public
+name|void
+name|display
+parameter_list|(
+specifier|final
+name|GroupMap
+name|groups
+parameter_list|,
+specifier|final
+name|String
+name|toHighlight
+parameter_list|)
+block|{
 while|while
 condition|(
 literal|1
@@ -707,11 +729,13 @@ argument_list|(
 name|row
 argument_list|,
 name|group
+argument_list|,
+name|toHighlight
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populate (final int row, final GroupInfo k)
+DECL|method|populate (final int row, final GroupInfo k, final String toHighlight)
 name|void
 name|populate
 parameter_list|(
@@ -722,6 +746,10 @@ parameter_list|,
 specifier|final
 name|GroupInfo
 name|k
+parameter_list|,
+specifier|final
+name|String
+name|toHighlight
 parameter_list|)
 block|{
 if|if
@@ -738,7 +766,7 @@ argument_list|,
 literal|1
 argument_list|,
 operator|new
-name|Hyperlink
+name|HighlightingInlineHyperlink
 argument_list|(
 name|k
 operator|.
@@ -754,6 +782,8 @@ operator|.
 name|getGroupId
 argument_list|()
 argument_list|)
+argument_list|,
+name|toHighlight
 argument_list|)
 argument_list|)
 expr_stmt|;
