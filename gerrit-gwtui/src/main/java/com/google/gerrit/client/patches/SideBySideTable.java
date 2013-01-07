@@ -915,6 +915,14 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|hasDifferences
+argument_list|(
+name|script
+argument_list|)
+condition|)
+block|{
 name|int
 name|lastA
 init|=
@@ -1550,6 +1558,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 comment|// Display the patch header for binary
@@ -1574,6 +1583,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|hasDifferences
+argument_list|(
+name|script
+argument_list|)
+condition|)
+block|{
+name|appendNoDifferences
+argument_list|(
+name|nc
+argument_list|)
+expr_stmt|;
+block|}
 name|resetHtml
 argument_list|(
 name|nc
@@ -1586,6 +1610,14 @@ argument_list|,
 name|detail
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|hasDifferences
+argument_list|(
+name|script
+argument_list|)
+condition|)
+block|{
 name|initScript
 argument_list|(
 name|script
@@ -1654,6 +1686,7 @@ name|row
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
