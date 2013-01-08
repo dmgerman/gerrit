@@ -100,6 +100,7 @@ end_import
 
 begin_class
 DECL|class|NoSshInfo
+specifier|public
 class|class
 name|NoSshInfo
 implements|implements
