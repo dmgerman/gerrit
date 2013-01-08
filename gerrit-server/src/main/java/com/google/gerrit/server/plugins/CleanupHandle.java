@@ -228,7 +228,14 @@ name|tmpFile
 operator|.
 name|getAbsolutePath
 argument_list|()
+operator|+
+literal|", retrying to delete it on termination of the virtual machine"
 argument_list|)
+expr_stmt|;
+name|tmpFile
+operator|.
+name|deleteOnExit
+argument_list|()
 expr_stmt|;
 block|}
 else|else
