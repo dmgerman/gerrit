@@ -2363,7 +2363,7 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|" was rebased onto the latest head"
+literal|" was rebased"
 argument_list|)
 expr_stmt|;
 name|db
