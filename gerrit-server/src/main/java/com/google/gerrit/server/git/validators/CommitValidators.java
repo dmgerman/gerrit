@@ -608,7 +608,7 @@ name|commitValidationListeners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommitValidators (@erritPersonIdent final PersonIdent gerritIdent, final SshInfo sshInfo, @CanonicalWebUrl @Nullable final String canonicalWebUrl, final DynamicSet<CommitValidationListener> commitValidationListeners, @Assisted final Repository repo, @Assisted final RefControl refControl)
+DECL|method|CommitValidators (@erritPersonIdent final PersonIdent gerritIdent, @CanonicalWebUrl @Nullable final String canonicalWebUrl, final DynamicSet<CommitValidationListener> commitValidationListeners, @Assisted final SshInfo sshInfo, @Assisted final Repository repo, @Assisted final RefControl refControl)
 name|CommitValidators
 parameter_list|(
 annotation|@
@@ -616,10 +616,6 @@ name|GerritPersonIdent
 specifier|final
 name|PersonIdent
 name|gerritIdent
-parameter_list|,
-specifier|final
-name|SshInfo
-name|sshInfo
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -635,6 +631,12 @@ argument_list|<
 name|CommitValidationListener
 argument_list|>
 name|commitValidationListeners
+parameter_list|,
+annotation|@
+name|Assisted
+specifier|final
+name|SshInfo
+name|sshInfo
 parameter_list|,
 annotation|@
 name|Assisted
