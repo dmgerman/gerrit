@@ -445,6 +445,11 @@ name|String
 name|groupListTitle
 parameter_list|()
 function_decl|;
+DECL|method|groupFilter ()
+name|String
+name|groupFilter
+parameter_list|()
+function_decl|;
 DECL|method|createGroupTitle ()
 name|String
 name|createGroupTitle

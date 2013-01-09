@@ -615,6 +615,26 @@ name|boolean
 name|verboseOutput
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"-m"
+argument_list|,
+name|metaVar
+operator|=
+literal|"MATCH"
+argument_list|,
+name|usage
+operator|=
+literal|"match group substring"
+argument_list|)
+DECL|field|matchSubstring
+specifier|private
+name|String
+name|matchSubstring
+decl_stmt|;
+annotation|@
 name|Inject
 DECL|method|ListGroups (final GroupCache groupCache, final VisibleGroups.Factory visibleGroupsFactory, final IdentifiedUser.GenericFactory userFactory)
 specifier|protected
@@ -791,6 +811,13 @@ operator|.
 name|setGroupType
 argument_list|(
 name|groupType
+argument_list|)
+expr_stmt|;
+name|visibleGroups
+operator|.
+name|setMatch
+argument_list|(
+name|matchSubstring
 argument_list|)
 expr_stmt|;
 specifier|final
