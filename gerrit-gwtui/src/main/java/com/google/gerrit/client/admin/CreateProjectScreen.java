@@ -558,20 +558,6 @@ name|VoidResult
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-import|;
-end_import
-
 begin_class
 DECL|class|CreateProjectScreen
 specifier|public
@@ -1578,9 +1564,7 @@ name|nameWithoutSuffix
 operator|.
 name|endsWith
 argument_list|(
-name|Constants
-operator|.
-name|DOT_GIT_EXT
+literal|".git"
 argument_list|)
 condition|)
 block|{
@@ -1602,12 +1586,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-name|Constants
-operator|.
-name|DOT_GIT_EXT
-operator|.
-name|length
-argument_list|()
+literal|4
 argument_list|)
 expr_stmt|;
 while|while
