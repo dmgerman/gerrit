@@ -103,7 +103,7 @@ comment|/** */
 DECL|enumConstant|PATH_CONFLICT
 name|PATH_CONFLICT
 argument_list|(
-literal|"Your change could not be merged due to a path conflict.\n"
+literal|"The change could not be merged due to a path conflict.\n"
 operator|+
 literal|"\n"
 operator|+
@@ -142,7 +142,7 @@ comment|/** */
 DECL|enumConstant|CRISS_CROSS_MERGE
 name|CRISS_CROSS_MERGE
 argument_list|(
-literal|"Your change requires a recursive merge to resolve.\n"
+literal|"The change requires a recursive merge to resolve.\n"
 operator|+
 literal|"\n"
 operator|+

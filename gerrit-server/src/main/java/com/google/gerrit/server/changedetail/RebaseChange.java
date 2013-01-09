@@ -2509,7 +2509,7 @@ throw|throw
 operator|new
 name|PathConflictException
 argument_list|(
-literal|"The rebase failed since conflicts occured during the merge."
+literal|"The change could not be rebased due to a path conflict during merge."
 argument_list|)
 throw|;
 block|}
