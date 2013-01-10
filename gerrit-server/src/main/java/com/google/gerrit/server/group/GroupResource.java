@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GroupDescription
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -194,6 +210,21 @@ operator|=
 name|control
 expr_stmt|;
 block|}
+DECL|method|getGroup ()
+specifier|public
+name|GroupDescription
+operator|.
+name|Basic
+name|getGroup
+parameter_list|()
+block|{
+return|return
+name|control
+operator|.
+name|getGroup
+argument_list|()
+return|;
+block|}
 DECL|method|getName ()
 specifier|public
 name|String
@@ -201,8 +232,6 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|control
-operator|.
 name|getGroup
 argument_list|()
 operator|.
@@ -219,13 +248,26 @@ name|getGroupUUID
 parameter_list|()
 block|{
 return|return
-name|control
-operator|.
 name|getGroup
 argument_list|()
 operator|.
 name|getGroupUUID
 argument_list|()
+return|;
+block|}
+DECL|method|isInternal ()
+specifier|public
+name|boolean
+name|isInternal
+parameter_list|()
+block|{
+return|return
+name|getGroup
+argument_list|()
+operator|instanceof
+name|GroupDescription
+operator|.
+name|Internal
 return|;
 block|}
 DECL|method|getControl ()
