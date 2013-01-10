@@ -187,6 +187,7 @@ name|IdentifiedUser
 name|user
 decl_stmt|;
 DECL|method|AccountResource (IdentifiedUser user)
+specifier|public
 name|AccountResource
 parameter_list|(
 name|IdentifiedUser
