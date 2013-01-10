@@ -4631,6 +4631,8 @@ literal|"Only %d of %d new change refs created in %s; aborting"
 argument_list|,
 name|okToInsert
 argument_list|,
+name|replaceCount
+operator|+
 name|newChanges
 operator|.
 name|size
