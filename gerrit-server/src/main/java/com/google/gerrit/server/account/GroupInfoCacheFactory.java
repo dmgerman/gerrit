@@ -200,7 +200,7 @@ name|Map
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|,
 name|AccountGroup
 argument_list|>
@@ -231,15 +231,15 @@ name|HashMap
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|,
 name|AccountGroup
 argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Indicate a group will be needed later on.    *    * @param id identity that will be needed in the future; may be null.    */
-DECL|method|want (final AccountGroup.Id id)
+comment|/**    * Indicate a group will be needed later on.    *    * @param uuid identity that will be needed in the future; may be null.    */
+DECL|method|want (final AccountGroup.UUID uuid)
 specifier|public
 name|void
 name|want
@@ -247,13 +247,13 @@ parameter_list|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 if|if
 condition|(
-name|id
+name|uuid
 operator|!=
 literal|null
 operator|&&
@@ -262,7 +262,7 @@ name|out
 operator|.
 name|containsKey
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 condition|)
 block|{
@@ -270,20 +270,20 @@ name|out
 operator|.
 name|put
 argument_list|(
-name|id
+name|uuid
 argument_list|,
 name|groupCache
 operator|.
 name|get
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 comment|/** Indicate one or more groups will be needed later on. */
-DECL|method|want (final Iterable<AccountGroup.Id> ids)
+DECL|method|want (final Iterable<AccountGroup.UUID> uuids)
 specifier|public
 name|void
 name|want
@@ -293,9 +293,9 @@ name|Iterable
 argument_list|<
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 argument_list|>
-name|ids
+name|uuids
 parameter_list|)
 block|{
 for|for
@@ -303,20 +303,20 @@ control|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 range|:
-name|ids
+name|uuids
 control|)
 block|{
 name|want
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|get (final AccountGroup.Id id)
+DECL|method|get (final AccountGroup.UUID uuid)
 specifier|public
 name|AccountGroup
 name|get
@@ -324,13 +324,13 @@ parameter_list|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 name|want
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 expr_stmt|;
 return|return
@@ -338,7 +338,7 @@ name|out
 operator|.
 name|get
 argument_list|(
-name|id
+name|uuid
 argument_list|)
 return|;
 block|}
@@ -380,6 +380,13 @@ name|values
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|a
+operator|==
+literal|null
+condition|)
+continue|continue;
 name|r
 operator|.
 name|add

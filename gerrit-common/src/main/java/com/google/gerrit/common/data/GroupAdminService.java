@@ -126,7 +126,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 import|;
 end_import
 
@@ -434,7 +434,7 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|addGroupInclude (AccountGroup.Id groupId, String groupName, AsyncCallback<GroupDetail> callback)
+DECL|method|addGroupInclude (AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID, String incGroupName, AsyncCallback<GroupDetail> callback)
 name|void
 name|addGroupInclude
 parameter_list|(
@@ -443,8 +443,13 @@ operator|.
 name|Id
 name|groupId
 parameter_list|,
+name|AccountGroup
+operator|.
+name|UUID
+name|incGroupUUID
+parameter_list|,
 name|String
-name|groupName
+name|incGroupName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -485,7 +490,7 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|deleteGroupIncludes (AccountGroup.Id groupId, Set<AccountGroupInclude.Key> keys, AsyncCallback<VoidResult> callback)
+DECL|method|deleteGroupIncludes (AccountGroup.Id groupId, Set<AccountGroupIncludeByUuid.Key> keys, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteGroupIncludes
 parameter_list|(
@@ -496,7 +501,7 @@ name|groupId
 parameter_list|,
 name|Set
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 operator|.
 name|Key
 argument_list|>

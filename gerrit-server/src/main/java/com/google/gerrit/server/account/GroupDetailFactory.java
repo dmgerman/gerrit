@@ -174,7 +174,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 import|;
 end_import
 
@@ -845,7 +845,7 @@ DECL|method|loadIncludes ()
 specifier|private
 name|List
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 argument_list|>
 name|loadIncludes
 parameter_list|()
@@ -854,26 +854,26 @@ name|OrmException
 block|{
 name|List
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 argument_list|>
 name|groups
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 specifier|final
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 name|m
 range|:
 name|db
 operator|.
-name|accountGroupIncludes
+name|accountGroupIncludesByUuid
 argument_list|()
 operator|.
 name|byGroup
@@ -890,7 +890,7 @@ name|canSeeGroup
 argument_list|(
 name|m
 operator|.
-name|getIncludeId
+name|getIncludeUUID
 argument_list|()
 argument_list|)
 condition|)
@@ -901,7 +901,7 @@ name|want
 argument_list|(
 name|m
 operator|.
-name|getIncludeId
+name|getIncludeUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -923,7 +923,7 @@ argument_list|,
 operator|new
 name|Comparator
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 argument_list|>
 argument_list|()
 block|{
@@ -932,11 +932,11 @@ name|int
 name|compare
 parameter_list|(
 specifier|final
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 name|o1
 parameter_list|,
 specifier|final
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuid
 name|o2
 parameter_list|)
 block|{
@@ -950,7 +950,7 @@ name|get
 argument_list|(
 name|o1
 operator|.
-name|getIncludeId
+name|getIncludeUUID
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -964,7 +964,7 @@ name|get
 argument_list|(
 name|o2
 operator|.
-name|getIncludeId
+name|getIncludeUUID
 argument_list|()
 argument_list|)
 decl_stmt|;

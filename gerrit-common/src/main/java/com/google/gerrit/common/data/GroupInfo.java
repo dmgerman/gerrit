@@ -92,12 +92,12 @@ specifier|public
 class|class
 name|GroupInfo
 block|{
-DECL|field|id
+DECL|field|uuid
 specifier|protected
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 decl_stmt|;
 DECL|field|name
 specifier|protected
@@ -115,22 +115,22 @@ name|GroupInfo
 parameter_list|()
 block|{   }
 comment|/**    * Create an anonymous group info, when only the id is known.    *<p>    * This constructor should only be a last-ditch effort, when the usual group    * lookup has failed and a stale group id has been discovered in the data    * store.    */
-DECL|method|GroupInfo (final AccountGroup.Id id)
+DECL|method|GroupInfo (final AccountGroup.UUID uuid)
 specifier|public
 name|GroupInfo
 parameter_list|(
 specifier|final
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|uuid
 parameter_list|)
 block|{
 name|this
 operator|.
-name|id
+name|uuid
 operator|=
-name|id
+name|uuid
 expr_stmt|;
 block|}
 comment|/**    * Create a group description from a real data store record.    *    * @param a the data store record holding the specific group details.    */
@@ -143,11 +143,11 @@ name|AccountGroup
 name|a
 parameter_list|)
 block|{
-name|id
+name|uuid
 operator|=
 name|a
 operator|.
-name|getId
+name|getGroupUUID
 argument_list|()
 expr_stmt|;
 name|name
@@ -170,12 +170,12 @@ DECL|method|getId ()
 specifier|public
 name|AccountGroup
 operator|.
-name|Id
+name|UUID
 name|getId
 parameter_list|()
 block|{
 return|return
-name|id
+name|uuid
 return|;
 block|}
 comment|/** @return the name of the group; null if not supplied */

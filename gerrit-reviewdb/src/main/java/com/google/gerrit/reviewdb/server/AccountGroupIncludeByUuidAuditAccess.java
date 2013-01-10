@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuidAudit
 import|;
 end_import
 
@@ -169,16 +169,16 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|AccountGroupIncludeAccess
+DECL|interface|AccountGroupIncludeByUuidAuditAccess
 specifier|public
 interface|interface
-name|AccountGroupIncludeAccess
+name|AccountGroupIncludeByUuidAuditAccess
 extends|extends
 name|Access
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuidAudit
 argument_list|,
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuidAudit
 operator|.
 name|Key
 argument_list|>
@@ -188,11 +188,11 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (AccountGroupInclude.Key key)
-name|AccountGroupInclude
+DECL|method|get (AccountGroupIncludeByUuidAudit.Key key)
+name|AccountGroupIncludeByUuidAudit
 name|get
 parameter_list|(
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuidAudit
 operator|.
 name|Key
 name|key
@@ -203,39 +203,24 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE key.includeId = ?"
+literal|"WHERE key.groupId = ? AND key.includeUUID = ?"
 argument_list|)
-DECL|method|byInclude (AccountGroup.Id id)
+DECL|method|byGroupInclude (AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID)
 name|ResultSet
 argument_list|<
-name|AccountGroupInclude
+name|AccountGroupIncludeByUuidAudit
 argument_list|>
-name|byInclude
+name|byGroupInclude
 parameter_list|(
 name|AccountGroup
 operator|.
 name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE key.groupId = ?"
-argument_list|)
-DECL|method|byGroup (AccountGroup.Id id)
-name|ResultSet
-argument_list|<
-name|AccountGroupInclude
-argument_list|>
-name|byGroup
-parameter_list|(
+name|groupId
+parameter_list|,
 name|AccountGroup
 operator|.
-name|Id
-name|id
+name|UUID
+name|incGroupUUID
 parameter_list|)
 throws|throws
 name|OrmException
