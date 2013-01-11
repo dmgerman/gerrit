@@ -512,9 +512,10 @@ name|included
 operator|.
 name|add
 argument_list|(
+operator|new
 name|GetGroup
 operator|.
-name|parse
+name|GroupInfo
 argument_list|(
 name|i
 operator|.

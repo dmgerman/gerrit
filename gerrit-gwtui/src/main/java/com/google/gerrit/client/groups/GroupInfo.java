@@ -98,6 +98,22 @@ name|JavaScriptObject
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|http
+operator|.
+name|client
+operator|.
+name|URL
+import|;
+end_import
+
 begin_class
 DECL|class|GroupInfo
 specifier|public
@@ -121,19 +137,44 @@ name|AccountGroup
 operator|.
 name|Id
 argument_list|(
-name|groupId
+name|group_id
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|groupId ()
+DECL|method|getGroupUUID ()
+specifier|public
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|getGroupUUID
+parameter_list|()
+block|{
+return|return
+operator|new
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|(
+name|URL
+operator|.
+name|decodePathSegment
+argument_list|(
+name|id
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|id ()
 specifier|public
 specifier|final
 specifier|native
-name|int
-name|groupId
+name|String
+name|id
 parameter_list|()
-comment|/*-{ return this.group_id; }-*/
+comment|/*-{ return this.id; }-*/
 function_decl|;
 DECL|method|name ()
 specifier|public
@@ -144,14 +185,14 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|uuid ()
+DECL|method|isVisibleToAll ()
 specifier|public
 specifier|final
 specifier|native
-name|String
-name|uuid
+name|boolean
+name|isVisibleToAll
 parameter_list|()
-comment|/*-{ return this.uuid; }-*/
+comment|/*-{ return this['visible_to_all'] ? true : false; }-*/
 function_decl|;
 DECL|method|description ()
 specifier|public
@@ -162,24 +203,65 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
-DECL|method|isVisibleToAll ()
-specifier|public
+DECL|method|group_id ()
+specifier|private
 specifier|final
 specifier|native
-name|boolean
-name|isVisibleToAll
+name|int
+name|group_id
 parameter_list|()
-comment|/*-{ return this['is_visible_to_all'] ? true : false; }-*/
+comment|/*-{ return this.group_id; }-*/
 function_decl|;
-DECL|method|ownerUuid ()
-specifier|public
+DECL|method|owner_uuid ()
+specifier|private
 specifier|final
 specifier|native
 name|String
-name|ownerUuid
+name|owner_uuid
 parameter_list|()
 comment|/*-{ return this.owner_uuid; }-*/
 function_decl|;
+DECL|method|getOwnerUUID ()
+specifier|public
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|getOwnerUUID
+parameter_list|()
+block|{
+name|String
+name|owner
+init|=
+name|owner_uuid
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|owner
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|(
+name|URL
+operator|.
+name|decodePathSegment
+argument_list|(
+name|owner
+argument_list|)
+argument_list|)
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
 DECL|method|GroupInfo ()
 specifier|protected
 name|GroupInfo
