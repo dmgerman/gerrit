@@ -369,6 +369,23 @@ name|getId
 argument_list|()
 return|;
 block|}
+DECL|method|getGroupUUID ()
+specifier|protected
+name|AccountGroup
+operator|.
+name|UUID
+name|getGroupUUID
+parameter_list|()
+block|{
+return|return
+name|groupDetail
+operator|.
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+return|;
+block|}
 DECL|method|setMembersTabVisible (final boolean visible)
 specifier|protected
 name|void
