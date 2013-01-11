@@ -450,6 +450,11 @@ name|String
 name|watchedProjectColumnSubmittedChanges
 parameter_list|()
 function_decl|;
+DECL|method|watchedProjectColumnAbandonedChanges ()
+name|String
+name|watchedProjectColumnAbandonedChanges
+parameter_list|()
+function_decl|;
 DECL|method|contactFieldFullName ()
 name|String
 name|contactFieldFullName
