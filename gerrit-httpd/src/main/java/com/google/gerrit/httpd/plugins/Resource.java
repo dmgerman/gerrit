@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|server
+operator|.
+name|CacheHeaders
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -140,9 +154,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|HttpPluginServlet
+name|CacheHeaders
 operator|.
-name|noCache
+name|setNotCacheable
 argument_list|(
 name|res
 argument_list|)
