@@ -486,6 +486,13 @@ literal|' '
 argument_list|,
 literal|'_'
 argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|'-'
+argument_list|,
+literal|'_'
+argument_list|)
 decl_stmt|;
 for|for
 control|(
