@@ -134,12 +134,13 @@ name|uuid
 expr_stmt|;
 block|}
 comment|/**    * Create a group description from a real data store record.    *    * @param a the data store record holding the specific group details.    */
-DECL|method|GroupInfo (final AccountGroup a)
+DECL|method|GroupInfo (GroupDescription.Basic a)
 specifier|public
 name|GroupInfo
 parameter_list|(
-specifier|final
-name|AccountGroup
+name|GroupDescription
+operator|.
+name|Basic
 name|a
 parameter_list|)
 block|{
@@ -157,13 +158,38 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|a
+operator|instanceof
+name|GroupDescription
+operator|.
+name|Internal
+condition|)
+block|{
+name|AccountGroup
+name|group
+init|=
+operator|(
+operator|(
+name|GroupDescription
+operator|.
+name|Internal
+operator|)
+name|a
+operator|)
+operator|.
+name|getAccountGroup
+argument_list|()
+decl_stmt|;
 name|description
 operator|=
-name|a
+name|group
 operator|.
 name|getDescription
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/** @return the unique local id of the group */
 DECL|method|getId ()
