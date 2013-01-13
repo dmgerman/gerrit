@@ -232,6 +232,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gson
 operator|.
 name|reflect
@@ -293,6 +307,17 @@ comment|/** Command that allows testing of prolog submit-rules in a live instanc
 end_comment
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"rule"
+argument_list|,
+name|descr
+operator|=
+literal|"Test prolog submit rules"
+argument_list|)
 DECL|class|TestSubmitRule
 specifier|final
 class|class

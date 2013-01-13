@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd.commands
+DECL|package|com.google.gerrit.sshd
 package|package
 name|com
 operator|.
@@ -61,119 +61,97 @@ operator|.
 name|gerrit
 operator|.
 name|sshd
-operator|.
-name|commands
 package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gerrit
+name|annotation
 operator|.
-name|common
+name|RetentionPolicy
 operator|.
-name|Version
+name|RUNTIME
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gerrit
+name|annotation
 operator|.
-name|sshd
-operator|.
-name|CommandMetaData
+name|ElementType
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gerrit
+name|annotation
 operator|.
-name|sshd
-operator|.
-name|SshCommand
+name|Retention
 import|;
 end_import
 
-begin_class
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Target
+import|;
+end_import
+
+begin_comment
+comment|/**  * Annotation tagged on a concrete Command to describe what it is doing  */
+end_comment
+
+begin_annotation_defn
 annotation|@
-name|CommandMetaData
+name|Target
 argument_list|(
-name|name
-operator|=
-literal|"version"
-argument_list|,
-name|descr
-operator|=
-literal|"Display gerrit version"
+block|{
+name|ElementType
+operator|.
+name|TYPE
+block|}
 argument_list|)
-DECL|class|VersionCommand
-specifier|final
-class|class
-name|VersionCommand
-extends|extends
-name|SshCommand
-block|{
 annotation|@
-name|Override
-DECL|method|run ()
-specifier|protected
-name|void
-name|run
-parameter_list|()
-throws|throws
-name|Failure
+name|Retention
+argument_list|(
+name|RUNTIME
+argument_list|)
+DECL|annotation|CommandMetaData
+specifier|public
+annotation_defn|@interface
+name|CommandMetaData
 block|{
+DECL|method|name ()
 name|String
-name|v
-init|=
-name|Version
-operator|.
-name|getVersion
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|v
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|Failure
-argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: version unavailable"
-argument_list|)
-throw|;
+name|name
+parameter_list|()
+function_decl|;
+DECL|method|descr ()
+name|String
+name|descr
+parameter_list|()
+default|default
+literal|""
+function_decl|;
 block|}
-name|stdout
-operator|.
-name|println
-argument_list|(
-literal|"gerrit version "
-operator|+
-name|v
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
+end_annotation_defn
 
 end_unit
 

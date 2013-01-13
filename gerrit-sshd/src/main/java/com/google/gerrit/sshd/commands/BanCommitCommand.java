@@ -156,6 +156,20 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
 name|SshCommand
 import|;
 end_import
@@ -267,6 +281,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"ban-commit"
+argument_list|,
+name|descr
+operator|=
+literal|"Ban a commit from a project's repository"
+argument_list|)
 DECL|class|BanCommitCommand
 specifier|public
 class|class

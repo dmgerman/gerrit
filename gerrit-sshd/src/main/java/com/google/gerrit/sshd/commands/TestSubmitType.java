@@ -138,6 +138,20 @@ begin_import
 import|import
 name|com
 operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|googlecode
 operator|.
 name|prolog_cafe
@@ -173,6 +187,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"type"
+argument_list|,
+name|descr
+operator|=
+literal|"Test prolog submit type"
+argument_list|)
 DECL|class|TestSubmitType
 specifier|final
 class|class

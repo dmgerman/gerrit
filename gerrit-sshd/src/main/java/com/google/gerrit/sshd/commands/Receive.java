@@ -196,6 +196,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -369,6 +383,17 @@ comment|/** Receives change upload over SSH using the Git receive-pack protocol.
 end_comment
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"receive-pack"
+argument_list|,
+name|descr
+operator|=
+literal|"Standard Git server side command for client side git push"
+argument_list|)
 DECL|class|Receive
 specifier|final
 class|class

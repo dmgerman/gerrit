@@ -140,6 +140,20 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
 name|SshCommand
 import|;
 end_import
@@ -183,6 +197,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"rename-group"
+argument_list|,
+name|descr
+operator|=
+literal|"Rename an account group"
+argument_list|)
 DECL|class|RenameGroupCommand
 specifier|public
 class|class
