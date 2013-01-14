@@ -665,6 +665,8 @@ return|return
 operator|new
 name|MemberResource
 argument_list|(
+name|parent
+argument_list|,
 name|userGenericFactory
 operator|.
 name|create

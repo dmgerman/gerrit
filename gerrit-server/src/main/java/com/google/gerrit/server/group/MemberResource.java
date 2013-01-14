@@ -156,10 +156,19 @@ argument_list|>
 argument_list|()
 block|{}
 decl_stmt|;
-DECL|method|MemberResource (IdentifiedUser user)
+DECL|field|group
+specifier|private
+specifier|final
+name|GroupResource
+name|group
+decl_stmt|;
+DECL|method|MemberResource (GroupResource group, IdentifiedUser user)
 specifier|public
 name|MemberResource
 parameter_list|(
+name|GroupResource
+name|group
+parameter_list|,
 name|IdentifiedUser
 name|user
 parameter_list|)
@@ -169,6 +178,22 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|group
+operator|=
+name|group
+expr_stmt|;
+block|}
+DECL|method|getGroup ()
+specifier|public
+name|GroupResource
+name|getGroup
+parameter_list|()
+block|{
+return|return
+name|group
+return|;
 block|}
 block|}
 end_class
