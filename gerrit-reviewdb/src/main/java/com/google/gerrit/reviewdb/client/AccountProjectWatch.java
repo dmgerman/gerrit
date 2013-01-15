@@ -128,7 +128,6 @@ DECL|enumConstant|NEW_CHANGES
 DECL|enumConstant|NEW_PATCHSETS
 DECL|enumConstant|ALL_COMMENTS
 DECL|enumConstant|SUBMITTED_CHANGES
-DECL|enumConstant|ALL
 name|NEW_CHANGES
 block|,
 name|NEW_PATCHSETS
@@ -136,6 +135,10 @@ block|,
 name|ALL_COMMENTS
 block|,
 name|SUBMITTED_CHANGES
+block|,
+DECL|enumConstant|ABANDONED_CHANGES
+DECL|enumConstant|ALL
+name|ABANDONED_CHANGES
 block|,
 name|ALL
 block|}
@@ -523,6 +526,18 @@ specifier|protected
 name|boolean
 name|notifyNewPatchSets
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|6
+argument_list|)
+DECL|field|notifyAbandonedChanges
+specifier|protected
+name|boolean
+name|notifyAbandonedChanges
+decl_stmt|;
 DECL|method|AccountProjectWatch ()
 specifier|protected
 name|AccountProjectWatch
@@ -653,6 +668,12 @@ return|return
 name|notifySubmittedChanges
 return|;
 case|case
+name|ABANDONED_CHANGES
+case|:
+return|return
+name|notifyAbandonedChanges
+return|;
+case|case
 name|ALL
 case|:
 break|break;
@@ -713,6 +734,14 @@ name|v
 expr_stmt|;
 break|break;
 case|case
+name|ABANDONED_CHANGES
+case|:
+name|notifyAbandonedChanges
+operator|=
+name|v
+expr_stmt|;
+break|break;
+case|case
 name|ALL
 case|:
 name|notifyNewChanges
@@ -728,6 +757,10 @@ operator|=
 name|v
 expr_stmt|;
 name|notifySubmittedChanges
+operator|=
+name|v
+expr_stmt|;
+name|notifyAbandonedChanges
 operator|=
 name|v
 expr_stmt|;
