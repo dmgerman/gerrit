@@ -74,7 +74,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collections
 import|;
 end_import
 
@@ -157,11 +157,9 @@ name|this
 operator|.
 name|messages
 operator|=
-operator|new
-name|ArrayList
-argument_list|<
-name|CommitValidationMessage
-argument_list|>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 expr_stmt|;
 block|}
@@ -187,11 +185,9 @@ name|this
 operator|.
 name|messages
 operator|=
-operator|new
-name|ArrayList
-argument_list|<
-name|CommitValidationMessage
-argument_list|>
+name|Collections
+operator|.
+name|emptyList
 argument_list|()
 expr_stmt|;
 block|}
