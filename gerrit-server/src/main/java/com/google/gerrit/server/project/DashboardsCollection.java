@@ -918,13 +918,7 @@ name|ResourceNotFoundException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|ResourceNotFoundException
-argument_list|(
-name|id
-argument_list|)
-throw|;
+continue|continue;
 block|}
 block|}
 throw|throw
