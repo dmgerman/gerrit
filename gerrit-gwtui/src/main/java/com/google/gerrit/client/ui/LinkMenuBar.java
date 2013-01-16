@@ -173,6 +173,8 @@ class|class
 name|LinkMenuBar
 extends|extends
 name|Composite
+implements|implements
+name|ScreenLoadHandler
 block|{
 DECL|field|body
 specifier|private
@@ -218,6 +220,19 @@ name|set
 argument_list|(
 name|getElement
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|Gerrit
+operator|.
+name|EVENT_BUS
+operator|.
+name|addHandler
+argument_list|(
+name|ScreenLoadEvent
+operator|.
+name|TYPE
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -406,6 +421,15 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|onScreenLoad (ScreenLoadEvent event)
+specifier|public
+name|void
+name|onScreenLoad
+parameter_list|(
+name|ScreenLoadEvent
+name|event
+parameter_list|)
+block|{   }
 block|}
 end_class
 
