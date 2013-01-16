@@ -452,6 +452,8 @@ condition|?
 operator|new
 name|AndSource
 argument_list|(
+name|dbProvider
+argument_list|,
 name|l
 argument_list|)
 else|:
