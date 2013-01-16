@@ -158,6 +158,11 @@ name|String
 name|removeReviewerCell
 parameter_list|()
 function_decl|;
+DECL|method|addBranch ()
+name|String
+name|addBranch
+parameter_list|()
+function_decl|;
 DECL|method|addSshKeyPanel ()
 name|String
 name|addSshKeyPanel
