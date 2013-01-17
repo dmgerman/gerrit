@@ -1231,13 +1231,6 @@ block|{
 comment|// Set a reasonable list id so that filters can be used to sort messages
 name|setVHeader
 argument_list|(
-literal|"Mailing-List"
-argument_list|,
-literal|"list $email.listId"
-argument_list|)
-expr_stmt|;
-name|setVHeader
-argument_list|(
 literal|"List-Id"
 argument_list|,
 literal|"<$email.listId.replace('@', '.')>"
