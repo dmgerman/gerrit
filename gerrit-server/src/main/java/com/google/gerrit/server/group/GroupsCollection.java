@@ -665,7 +665,7 @@ if|if
 condition|(
 name|ctl
 operator|.
-name|isOwner
+name|isVisible
 argument_list|()
 condition|)
 block|{
