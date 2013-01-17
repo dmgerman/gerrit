@@ -198,6 +198,7 @@ end_import
 
 begin_class
 DECL|class|GetGroups
+specifier|public
 class|class
 name|GetGroups
 implements|implements
