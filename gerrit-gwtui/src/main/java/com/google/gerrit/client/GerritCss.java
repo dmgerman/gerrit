@@ -758,9 +758,19 @@ name|String
 name|menuBarUserName
 parameter_list|()
 function_decl|;
+DECL|method|menuBarUserNameAvatar ()
+name|String
+name|menuBarUserNameAvatar
+parameter_list|()
+function_decl|;
 DECL|method|menuBarUserNameFocusPanel ()
 name|String
 name|menuBarUserNameFocusPanel
+parameter_list|()
+function_decl|;
+DECL|method|menuBarUserNamePanel ()
+name|String
+name|menuBarUserNamePanel
 parameter_list|()
 function_decl|;
 DECL|method|menuItem ()
