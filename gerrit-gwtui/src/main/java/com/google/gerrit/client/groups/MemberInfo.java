@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd
+DECL|package|com.google.gerrit.client.groups
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|client
+operator|.
+name|groups
 package|;
 end_package
 
@@ -72,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|ssh
+name|client
 operator|.
-name|SshInfo
+name|Account
 import|;
 end_import
 
@@ -86,97 +88,76 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwt
 operator|.
-name|AbstractModule
+name|core
+operator|.
+name|client
+operator|.
+name|JavaScriptObject
 import|;
 end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_comment
-comment|/**  * Pulls objects from the SSH injector over the HTTP injector.  *<p>  * This mess is only necessary because we build up two different injectors, in  * order to have different request scopes. But some HTTP RPCs can cause changes  * to the SSH side of the house, and thus needs access to it.  */
-end_comment
 
 begin_class
-DECL|class|WebSshGlueModule
+DECL|class|MemberInfo
 specifier|public
 class|class
-name|WebSshGlueModule
+name|MemberInfo
 extends|extends
-name|AbstractModule
+name|JavaScriptObject
 block|{
-DECL|field|sshInfoProvider
-specifier|private
+DECL|method|getAccountId ()
+specifier|public
 specifier|final
-name|Provider
-argument_list|<
-name|SshInfo
-argument_list|>
-name|sshInfoProvider
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|WebSshGlueModule (Provider<SshInfo> sshInfoProvider)
-name|WebSshGlueModule
-parameter_list|(
-name|Provider
-argument_list|<
-name|SshInfo
-argument_list|>
-name|sshInfoProvider
-parameter_list|)
-block|{
-name|this
+name|Account
 operator|.
-name|sshInfoProvider
-operator|=
-name|sshInfoProvider
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
-name|void
-name|configure
+name|Id
+name|getAccountId
 parameter_list|()
 block|{
-name|bind
-argument_list|(
-name|SshInfo
+return|return
+operator|new
+name|Account
 operator|.
-name|class
-argument_list|)
-operator|.
-name|toProvider
+name|Id
 argument_list|(
-name|sshInfoProvider
+name|account_id
+argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+DECL|method|account_id ()
+specifier|private
+specifier|final
+specifier|native
+name|int
+name|account_id
+parameter_list|()
+comment|/*-{ return this.account_id; }-*/
+function_decl|;
+DECL|method|fullName ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|fullName
+parameter_list|()
+comment|/*-{ return this.full_name; }-*/
+function_decl|;
+DECL|method|preferredEmail ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|preferredEmail
+parameter_list|()
+comment|/*-{ return this.preferred_email; }-*/
+function_decl|;
+DECL|method|MemberInfo ()
+specifier|protected
+name|MemberInfo
+parameter_list|()
+block|{   }
 block|}
 end_class
 
