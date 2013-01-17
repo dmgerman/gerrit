@@ -2522,9 +2522,12 @@ argument_list|,
 name|project
 argument_list|)
 argument_list|,
-name|repo
+name|gitwebCgi
 operator|.
-name|getDirectory
+name|getAbsoluteFile
+argument_list|()
+operator|.
+name|getParentFile
 argument_list|()
 argument_list|)
 decl_stmt|;
