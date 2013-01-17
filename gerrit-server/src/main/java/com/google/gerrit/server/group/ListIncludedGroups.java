@@ -631,7 +631,7 @@ name|nullToEmpty
 argument_list|(
 name|b
 operator|.
-name|name
+name|id
 argument_list|)
 argument_list|)
 return|;
