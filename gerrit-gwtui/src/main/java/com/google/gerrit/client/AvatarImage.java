@@ -201,6 +201,26 @@ name|size
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|size
+operator|>
+literal|0
+condition|)
+block|{
+comment|// If the provider does not resize the image, force it in the browser.
+name|setSize
+argument_list|(
+name|size
+operator|+
+literal|"px"
+argument_list|,
+name|size
+operator|+
+literal|"px"
+argument_list|)
+expr_stmt|;
+block|}
 name|addErrorHandler
 argument_list|(
 operator|new
