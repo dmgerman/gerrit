@@ -218,11 +218,6 @@ name|String
 name|cAPPROVAL
 parameter_list|()
 function_decl|;
-DECL|method|cID ()
-name|String
-name|cID
-parameter_list|()
-function_decl|;
 DECL|method|cLastUpdate ()
 name|String
 name|cLastUpdate
