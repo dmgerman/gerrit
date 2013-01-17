@@ -1543,6 +1543,19 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|url ()
+specifier|public
+name|String
+name|url
+parameter_list|()
+block|{
+return|return
+name|url
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 DECL|method|send ( Method method, final AsyncCallback<T> cb)
 specifier|public
 parameter_list|<
@@ -1573,8 +1586,6 @@ argument_list|(
 name|method
 argument_list|,
 name|url
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
