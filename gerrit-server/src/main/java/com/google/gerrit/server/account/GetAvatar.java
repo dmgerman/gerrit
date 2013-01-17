@@ -210,9 +210,15 @@ name|name
 operator|=
 literal|"--size"
 argument_list|,
+name|aliases
+operator|=
+block|{
+literal|"-s"
+block|}
+argument_list|,
 name|usage
 operator|=
-literal|"size in pixels (height and width)"
+literal|"recommended size in pixels, height and width"
 argument_list|)
 DECL|field|size
 specifier|private

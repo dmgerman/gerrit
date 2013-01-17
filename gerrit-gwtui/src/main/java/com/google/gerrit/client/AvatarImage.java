@@ -327,7 +327,7 @@ name|api
 operator|.
 name|addParameter
 argument_list|(
-literal|"size"
+literal|"s"
 argument_list|,
 name|size
 argument_list|)
