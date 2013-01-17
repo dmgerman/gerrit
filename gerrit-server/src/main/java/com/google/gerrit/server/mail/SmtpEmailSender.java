@@ -1082,15 +1082,23 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|/* Include rejected recipient error messages here to not lose that            * information. That piece of the puzzle is vital if zero recipients            * are accepted and the server consequently rejects the DATA command.            */
 throw|throw
 operator|new
 name|EmailException
 argument_list|(
+name|rejected
+operator|+
 literal|"Server "
 operator|+
 name|smtpHost
 operator|+
-literal|" rejected body"
+literal|" rejected DATA command: "
+operator|+
+name|client
+operator|.
+name|getReplyString
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1209,7 +1217,12 @@ literal|"Server "
 operator|+
 name|smtpHost
 operator|+
-literal|" rejected body"
+literal|" rejected message body: "
+operator|+
+name|client
+operator|.
+name|getReplyString
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1416,7 +1429,7 @@ throw|throw
 operator|new
 name|EmailException
 argument_list|(
-literal|"SMTP server rejected login: "
+literal|"SMTP server rejected HELO/EHLO greeting: "
 operator|+
 name|e
 argument_list|)
