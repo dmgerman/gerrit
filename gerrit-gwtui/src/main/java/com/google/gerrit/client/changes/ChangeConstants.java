@@ -170,11 +170,6 @@ name|String
 name|allMergedChanges
 parameter_list|()
 function_decl|;
-DECL|method|changeTableColumnID ()
-name|String
-name|changeTableColumnID
-parameter_list|()
-function_decl|;
 DECL|method|changeTableColumnSubject ()
 name|String
 name|changeTableColumnSubject
