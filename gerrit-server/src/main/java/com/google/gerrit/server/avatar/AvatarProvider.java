@@ -90,27 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|UserIdentity
+name|IdentifiedUser
 import|;
 end_import
 
@@ -126,27 +108,27 @@ specifier|public
 interface|interface
 name|AvatarProvider
 block|{
-comment|/**    * Get avatar URL.    *    * @param account The user for which to load an avatar image    * @param imageSize A requested image size, in pixels. An imageSize of 0    *        indicates to use whatever default size the provider determines.    *        AvatarProviders may ignore the requested image size. The web    *        interface will resize any image to match imageSize, so ideally the    *        provider should return an image sized correctly.    * @return a URL of an avatar image for the specified user. A return value of    *         {@code null} is acceptable, and results in the server responding    *         with a 404. This will hide the avatar image in the web UI.    */
-DECL|method|getUrl (Account account, int imageSize)
+comment|/**    * Get avatar URL.    *    * @param forUser The user for which to load an avatar image    * @param imageSize A requested image size, in pixels. An imageSize of 0    *        indicates to use whatever default size the provider determines.    *        AvatarProviders may ignore the requested image size. The web    *        interface will resize any image to match imageSize, so ideally the    *        provider should return an image sized correctly.    * @return a URL of an avatar image for the specified user. A return value of    *         {@code null} is acceptable, and results in the server responding    *         with a 404. This will hide the avatar image in the web UI.    */
+DECL|method|getUrl (IdentifiedUser forUser, int imageSize)
 specifier|public
 name|String
 name|getUrl
 parameter_list|(
-name|Account
-name|account
+name|IdentifiedUser
+name|forUser
 parameter_list|,
 name|int
 name|imageSize
 parameter_list|)
 function_decl|;
 comment|/**    * Gets a URL for a user to modify their avatar image.    *    * @param user The user wishing to change their avatar image    * @return a URL the user should visit to modify their avatar, or null if    *         modification is not possible.    */
-DECL|method|getChangeAvatarUrl (UserIdentity user)
+DECL|method|getChangeAvatarUrl (IdentifiedUser forUser)
 specifier|public
 name|String
 name|getChangeAvatarUrl
 parameter_list|(
-name|UserIdentity
-name|user
+name|IdentifiedUser
+name|forUser
 parameter_list|)
 function_decl|;
 block|}

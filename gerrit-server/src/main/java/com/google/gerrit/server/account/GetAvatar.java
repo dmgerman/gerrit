@@ -291,9 +291,6 @@ name|rsrc
 operator|.
 name|getUser
 argument_list|()
-operator|.
-name|getAccount
-argument_list|()
 argument_list|,
 name|size
 argument_list|)
