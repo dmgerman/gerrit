@@ -366,7 +366,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Locate exactly one account matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the accounts that match, empty collection if none.  Never null.    */
+comment|/**    * Find all accounts matching the name or name/email string.    *    * @param nameOrEmail a string of the format    *        "Full Name&lt;email@example&gt;", just the email address    *        ("email@example"), a full name ("Full Name"), an account id    *        ("18419") or an user name ("username").    * @return the accounts that match, empty collection if none.  Never null.    */
 DECL|method|findAll (String nameOrEmail)
 specifier|public
 name|Set
