@@ -94,7 +94,7 @@ name|client
 operator|.
 name|groups
 operator|.
-name|GroupMap
+name|GroupList
 import|;
 end_import
 
@@ -168,14 +168,14 @@ operator|.
 name|onLoad
 argument_list|()
 expr_stmt|;
-name|GroupMap
+name|GroupList
 operator|.
 name|my
 argument_list|(
 operator|new
 name|ScreenLoadCallback
 argument_list|<
-name|GroupMap
+name|GroupList
 argument_list|>
 argument_list|(
 name|this
@@ -187,8 +187,7 @@ specifier|protected
 name|void
 name|preDisplay
 parameter_list|(
-specifier|final
-name|GroupMap
+name|GroupList
 name|result
 parameter_list|)
 block|{
