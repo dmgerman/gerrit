@@ -5129,6 +5129,11 @@ name|userPopup
 operator|.
 name|isShowing
 argument_list|()
+operator|&&
+name|userPopup
+operator|.
+name|isVisible
+argument_list|()
 condition|)
 block|{
 name|userPopup
@@ -5218,6 +5223,11 @@ condition|(
 name|userPopup
 operator|.
 name|isShowing
+argument_list|()
+operator|&&
+name|userPopup
+operator|.
+name|isVisible
 argument_list|()
 condition|)
 block|{
