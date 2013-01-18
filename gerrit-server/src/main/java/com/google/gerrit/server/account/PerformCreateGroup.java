@@ -764,6 +764,13 @@ argument_list|,
 name|initialGroups
 argument_list|)
 expr_stmt|;
+name|groupIncludeCache
+operator|.
+name|evictMembersOf
+argument_list|(
+name|uuid
+argument_list|)
+expr_stmt|;
 block|}
 name|groupCache
 operator|.
@@ -1069,7 +1076,7 @@ control|)
 block|{
 name|groupIncludeCache
 operator|.
-name|evictInclude
+name|evictMemberIn
 argument_list|(
 name|uuid
 argument_list|)

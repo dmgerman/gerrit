@@ -235,7 +235,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of GroupBackend for the internal group system.  */
+comment|/** Implementation of GroupBackend for the internal group system. */
 end_comment
 
 begin_class
@@ -547,12 +547,6 @@ operator|.
 name|create
 argument_list|(
 name|user
-operator|.
-name|state
-argument_list|()
-operator|.
-name|getInternalGroups
-argument_list|()
 argument_list|)
 return|;
 block|}
