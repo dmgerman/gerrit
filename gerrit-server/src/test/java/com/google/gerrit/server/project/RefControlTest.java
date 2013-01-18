@@ -2311,6 +2311,25 @@ name|NameKey
 name|newProjectName
 parameter_list|)
 block|{       }
+annotation|@
+name|Override
+specifier|public
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|guessRelevantGroupUUIDs
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
 block|}
 expr_stmt|;
 name|Injector

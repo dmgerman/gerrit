@@ -1549,6 +1549,30 @@ name|uuid
 argument_list|)
 return|;
 block|}
+comment|/** @return set of all groups used by this configuration. */
+DECL|method|getAllGroupUUIDs ()
+specifier|public
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|getAllGroupUUIDs
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableSet
+argument_list|(
+name|groupsByUUID
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**    * @return the project's rules.pl ObjectId, if present in the branch.    *    Null if it doesn't exist.    */
 DECL|method|getRulesId ()
 specifier|public
