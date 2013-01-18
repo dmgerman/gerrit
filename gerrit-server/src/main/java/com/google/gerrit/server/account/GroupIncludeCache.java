@@ -88,7 +88,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|Set
 import|;
 end_import
 
@@ -102,15 +102,33 @@ specifier|public
 interface|interface
 name|GroupIncludeCache
 block|{
-DECL|method|getByInclude (AccountGroup.UUID groupId)
+comment|/** @return groups directly a member of the passed group. */
+DECL|method|membersOf (AccountGroup.UUID group)
 specifier|public
-name|Collection
+name|Set
 argument_list|<
 name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|getByInclude
+name|membersOf
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|)
+function_decl|;
+comment|/** @return any groups the passed group belongs to. */
+DECL|method|memberIn (AccountGroup.UUID groupId)
+specifier|public
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|memberIn
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -118,10 +136,21 @@ name|UUID
 name|groupId
 parameter_list|)
 function_decl|;
-DECL|method|evictInclude (AccountGroup.UUID groupId)
+DECL|method|evictMembersOf (AccountGroup.UUID groupId)
 specifier|public
 name|void
-name|evictInclude
+name|evictMembersOf
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|groupId
+parameter_list|)
+function_decl|;
+DECL|method|evictMemberIn (AccountGroup.UUID groupId)
+specifier|public
+name|void
+name|evictMemberIn
 parameter_list|(
 name|AccountGroup
 operator|.
