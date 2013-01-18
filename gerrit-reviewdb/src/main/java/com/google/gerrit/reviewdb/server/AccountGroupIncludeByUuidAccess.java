@@ -240,6 +240,21 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|""
+argument_list|)
+DECL|method|all ()
+name|ResultSet
+argument_list|<
+name|AccountGroupIncludeByUuid
+argument_list|>
+name|all
+parameter_list|()
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
