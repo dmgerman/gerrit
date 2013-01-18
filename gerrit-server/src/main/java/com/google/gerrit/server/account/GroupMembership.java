@@ -158,6 +158,25 @@ argument_list|>
 name|groupIds
 parameter_list|)
 function_decl|;
+comment|/**    * Returns a set containing an input member of {@code contains(id)} is true.    *<p>    * This is batch form of contains that returns specific group information.    * Implementors may implement the method as:    *    *<pre>    * Set&lt;AccountGroup.UUID&gt; r = Sets.newHashSet();    * for (AccountGroup.UUID id : groupIds)    *   if (contains(id)) r.add(id);    *</pre>    */
+DECL|method|intersection (Iterable<AccountGroup.UUID> groupIds)
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|intersection
+parameter_list|(
+name|Iterable
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|groupIds
+parameter_list|)
+function_decl|;
 comment|/**    * Returns the set of groups that can be determined by the implementation.    * This may not return all groups the {@link #contains(AccountGroup.UUID)}    * would return {@code true} for, but will at least contain all top level    * groups. This restriction stems from the API of some group systems, which    * make it expensive to enumerate the members of a group.    */
 DECL|method|getKnownGroups ()
 name|Set
