@@ -1157,6 +1157,9 @@ operator|.
 name|getIfPresent
 argument_list|(
 name|n
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
