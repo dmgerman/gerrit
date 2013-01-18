@@ -119,6 +119,47 @@ parameter_list|>
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|of (T a)
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+extends|extends
+name|JavaScriptObject
+parameter_list|>
+name|NativeList
+argument_list|<
+name|T
+argument_list|>
+name|of
+parameter_list|(
+name|T
+name|a
+parameter_list|)
+block|{
+name|NativeList
+argument_list|<
+name|T
+argument_list|>
+name|list
+init|=
+name|createArray
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+name|a
+argument_list|)
+expr_stmt|;
+return|return
+name|list
+return|;
+block|}
 DECL|method|NativeList ()
 specifier|protected
 name|NativeList
@@ -256,6 +297,18 @@ name|int
 name|i
 parameter_list|)
 comment|/*-{ return this[i]; }-*/
+function_decl|;
+DECL|method|add (T v)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|add
+parameter_list|(
+name|T
+name|v
+parameter_list|)
+comment|/*-{ this.push(v); }-*/
 function_decl|;
 DECL|method|set0 (int i, T v)
 specifier|private
