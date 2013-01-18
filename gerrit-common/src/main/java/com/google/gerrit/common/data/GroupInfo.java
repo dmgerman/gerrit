@@ -109,6 +109,11 @@ specifier|protected
 name|String
 name|description
 decl_stmt|;
+DECL|field|url
+specifier|protected
+name|String
+name|url
+decl_stmt|;
 DECL|method|GroupInfo ()
 specifier|protected
 name|GroupInfo
@@ -156,6 +161,13 @@ operator|=
 name|a
 operator|.
 name|getName
+argument_list|()
+expr_stmt|;
+name|url
+operator|=
+name|a
+operator|.
+name|getUrl
 argument_list|()
 expr_stmt|;
 if|if
@@ -224,6 +236,16 @@ parameter_list|()
 block|{
 return|return
 name|description
+return|;
+block|}
+DECL|method|getUrl ()
+specifier|public
+name|String
+name|getUrl
+parameter_list|()
+block|{
+return|return
+name|url
 return|;
 block|}
 block|}

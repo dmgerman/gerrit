@@ -203,6 +203,15 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
+DECL|method|url ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|url
+parameter_list|()
+comment|/*-{ return this.url; }-*/
+function_decl|;
 DECL|method|group_id ()
 specifier|private
 specifier|final

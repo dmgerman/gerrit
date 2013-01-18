@@ -144,10 +144,7 @@ name|groups
 operator|=
 operator|new
 name|GroupTable
-argument_list|(
-literal|true
-comment|/* hyperlink to admin */
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|add
 argument_list|(

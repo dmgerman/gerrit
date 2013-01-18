@@ -552,9 +552,6 @@ operator|=
 operator|new
 name|GroupTable
 argument_list|(
-literal|true
-comment|/* hyperlink to admin */
-argument_list|,
 name|PageLinks
 operator|.
 name|ADMIN_GROUPS

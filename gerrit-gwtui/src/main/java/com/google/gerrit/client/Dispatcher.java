@@ -1672,13 +1672,12 @@ operator|+
 name|panel
 return|;
 block|}
-DECL|method|toGroup (final AccountGroup.UUID uuid)
+DECL|method|toGroup (AccountGroup.UUID uuid)
 specifier|public
 specifier|static
 name|String
 name|toGroup
 parameter_list|(
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -1686,12 +1685,12 @@ name|uuid
 parameter_list|)
 block|{
 return|return
-literal|"/admin/groups/uuid-"
-operator|+
-name|uuid
+name|PageLinks
 operator|.
-name|toString
-argument_list|()
+name|toGroup
+argument_list|(
+name|uuid
+argument_list|)
 return|;
 block|}
 DECL|method|toGroup (AccountGroup.UUID uuid, String panel)
@@ -1710,12 +1709,10 @@ name|panel
 parameter_list|)
 block|{
 return|return
-literal|"/admin/groups/uuid-"
-operator|+
+name|toGroup
+argument_list|(
 name|uuid
-operator|.
-name|toString
-argument_list|()
+argument_list|)
 operator|+
 literal|","
 operator|+
