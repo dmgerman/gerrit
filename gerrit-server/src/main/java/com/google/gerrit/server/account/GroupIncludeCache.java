@@ -136,6 +136,18 @@ name|UUID
 name|groupId
 parameter_list|)
 function_decl|;
+comment|/** @return set of any UUIDs that are not internal groups. */
+DECL|method|allExternalMembers ()
+specifier|public
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|allExternalMembers
+parameter_list|()
+function_decl|;
 DECL|method|evictMembersOf (AccountGroup.UUID groupId)
 specifier|public
 name|void
