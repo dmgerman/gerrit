@@ -78,7 +78,33 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|AccountGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -141,6 +167,19 @@ operator|.
 name|NameKey
 argument_list|>
 name|all
+parameter_list|()
+function_decl|;
+comment|/**    * @return estimated set of relevant groups extracted from hot project access    *         rules. If the cache is cold or too small for the entire project set    *         of the server, this set may be incomplete.    */
+DECL|method|guessRelevantGroupUUIDs ()
+specifier|public
+specifier|abstract
+name|Set
+argument_list|<
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|>
+name|guessRelevantGroupUUIDs
 parameter_list|()
 function_decl|;
 comment|/**    * Filter the set of registered project names by common prefix.    *    * @param prefix common prefix.    * @return sorted iteration of projects sharing the same prefix.    */

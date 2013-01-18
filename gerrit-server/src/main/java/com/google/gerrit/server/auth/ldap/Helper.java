@@ -1748,9 +1748,9 @@ block|}
 else|else
 block|{
 return|return
-name|Collections
+name|ImmutableSet
 operator|.
-name|unmodifiableSet
+name|copyOf
 argument_list|(
 name|actual
 argument_list|)
