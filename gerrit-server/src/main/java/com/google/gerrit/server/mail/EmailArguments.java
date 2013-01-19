@@ -184,6 +184,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|GroupIncludeCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|AllProjectsName
@@ -374,6 +390,11 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
+DECL|field|groupIncludes
+specifier|final
+name|GroupIncludeCache
+name|groupIncludes
+decl_stmt|;
 DECL|field|accountCache
 specifier|final
 name|AccountCache
@@ -466,7 +487,7 @@ name|settings
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -477,6 +498,9 @@ name|projectCache
 parameter_list|,
 name|GroupBackend
 name|groupBackend
+parameter_list|,
+name|GroupIncludeCache
+name|groupIncludes
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -558,6 +582,12 @@ operator|.
 name|groupBackend
 operator|=
 name|groupBackend
+expr_stmt|;
+name|this
+operator|.
+name|groupIncludes
+operator|=
+name|groupIncludes
 expr_stmt|;
 name|this
 operator|.
