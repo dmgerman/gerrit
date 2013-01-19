@@ -94,6 +94,21 @@ specifier|protected
 name|VoidResult
 parameter_list|()
 block|{   }
+DECL|method|create ()
+specifier|public
+specifier|static
+name|VoidResult
+name|create
+parameter_list|()
+block|{
+return|return
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
