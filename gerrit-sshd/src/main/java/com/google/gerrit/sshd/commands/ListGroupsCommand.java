@@ -556,9 +556,16 @@ name|formatter
 operator|.
 name|addColumn
 argument_list|(
+name|Objects
+operator|.
+name|firstNonNull
+argument_list|(
 name|info
 operator|.
 name|name
+argument_list|,
+literal|"n/a"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
