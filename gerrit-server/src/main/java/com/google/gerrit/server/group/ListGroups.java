@@ -702,7 +702,7 @@ name|usage
 operator|=
 literal|"verbose output format with tab-separated columns for the "
 operator|+
-literal|"group name, UUID, description, type, owner group name, "
+literal|"group name, UUID, description, owner group name, "
 operator|+
 literal|"owner group UUID, and whether the group is visible to all"
 argument_list|)
