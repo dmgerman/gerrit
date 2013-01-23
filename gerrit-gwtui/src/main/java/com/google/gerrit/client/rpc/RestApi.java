@@ -812,8 +812,14 @@ name|data
 decl_stmt|;
 try|try
 block|{
+comment|// javac generics bug
 name|data
 operator|=
+name|RestApi
+operator|.
+expr|<
+name|T
+operator|>
 name|cast
 argument_list|(
 name|parseJson
