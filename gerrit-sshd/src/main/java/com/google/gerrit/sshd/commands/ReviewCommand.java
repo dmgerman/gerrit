@@ -650,16 +650,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
 import|;
 end_import
@@ -753,23 +743,19 @@ return|return
 name|parser
 return|;
 block|}
-DECL|field|patchSetIds
+DECL|field|patchSets
 specifier|private
 specifier|final
 name|Set
 argument_list|<
 name|PatchSet
-operator|.
-name|Id
 argument_list|>
-name|patchSetIds
+name|patchSets
 init|=
 operator|new
 name|HashSet
 argument_list|<
 name|PatchSet
-operator|.
-name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -807,11 +793,11 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|patchSetIds
+name|patchSets
 operator|.
-name|addAll
+name|add
 argument_list|(
-name|parsePatchSetId
+name|parsePatchSet
 argument_list|(
 name|token
 argument_list|)
@@ -1206,18 +1192,16 @@ for|for
 control|(
 specifier|final
 name|PatchSet
-operator|.
-name|Id
-name|patchSetId
+name|patchSet
 range|:
-name|patchSetIds
+name|patchSets
 control|)
 block|{
 try|try
 block|{
 name|approveOne
 argument_list|(
-name|patchSetId
+name|patchSet
 argument_list|)
 expr_stmt|;
 block|}
@@ -1258,7 +1242,10 @@ name|writeError
 argument_list|(
 literal|"no such change "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 operator|.
 name|getParentKey
 argument_list|()
@@ -1282,7 +1269,10 @@ name|writeError
 argument_list|(
 literal|"fatal: internal server error while approving "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 operator|+
 literal|"\n"
 argument_list|)
@@ -1293,7 +1283,10 @@ name|error
 argument_list|(
 literal|"internal error while approving "
 operator|+
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -1319,7 +1312,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|applyReview (final ChangeControl ctl, final PatchSet.Id patchSetId, final PostReview.Input review)
+DECL|method|applyReview (final ChangeControl ctl, final PatchSet patchSet, final PostReview.Input review)
 specifier|private
 name|void
 name|applyReview
@@ -1330,9 +1323,7 @@ name|ctl
 parameter_list|,
 specifier|final
 name|PatchSet
-operator|.
-name|Id
-name|patchSetId
+name|patchSet
 parameter_list|,
 specifier|final
 name|PostReview
@@ -1370,15 +1361,7 @@ argument_list|(
 name|ctl
 argument_list|)
 argument_list|,
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|patchSetId
-argument_list|)
+name|patchSet
 argument_list|)
 argument_list|,
 name|review
@@ -1386,16 +1369,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|approveOne (final PatchSet.Id patchSetId)
+DECL|method|approveOne (final PatchSet patchSet)
 specifier|private
 name|void
 name|approveOne
 parameter_list|(
 specifier|final
 name|PatchSet
-operator|.
-name|Id
-name|patchSetId
+name|patchSet
 parameter_list|)
 throws|throws
 name|Exception
@@ -1526,7 +1507,10 @@ name|changeControlFactory
 operator|.
 name|controlFor
 argument_list|(
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 operator|.
 name|getParentKey
 argument_list|()
@@ -1568,7 +1552,7 @@ name|applyReview
 argument_list|(
 name|ctl
 argument_list|,
-name|patchSetId
+name|patchSet
 argument_list|,
 name|review
 argument_list|)
@@ -1684,7 +1668,7 @@ name|applyReview
 argument_list|(
 name|ctl
 argument_list|,
-name|patchSetId
+name|patchSet
 argument_list|,
 name|review
 argument_list|)
@@ -1739,7 +1723,7 @@ name|applyReview
 argument_list|(
 name|ctl
 argument_list|,
-name|patchSetId
+name|patchSet
 argument_list|,
 name|review
 argument_list|)
@@ -1788,15 +1772,7 @@ argument_list|(
 name|ctl
 argument_list|)
 argument_list|,
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|patchSetId
-argument_list|)
+name|patchSet
 argument_list|)
 argument_list|,
 name|input
@@ -1897,7 +1873,10 @@ name|publishDraftFactory
 operator|.
 name|create
 argument_list|(
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 operator|.
 name|call
@@ -1923,7 +1902,10 @@ name|deleteDraftPatchSetFactory
 operator|.
 name|create
 argument_list|(
-name|patchSetId
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 operator|.
 name|call
@@ -2100,15 +2082,10 @@ literal|"failure in review"
 return|;
 block|}
 block|}
-DECL|method|parsePatchSetId (final String patchIdentity)
+DECL|method|parsePatchSet (final String patchIdentity)
 specifier|private
-name|Set
-argument_list|<
 name|PatchSet
-operator|.
-name|Id
-argument_list|>
-name|parsePatchSetId
+name|parsePatchSet
 parameter_list|(
 specifier|final
 name|String
@@ -2199,8 +2176,6 @@ specifier|final
 name|Set
 argument_list|<
 name|PatchSet
-operator|.
-name|Id
 argument_list|>
 name|matches
 init|=
@@ -2208,8 +2183,6 @@ operator|new
 name|HashSet
 argument_list|<
 name|PatchSet
-operator|.
-name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -2255,9 +2228,6 @@ operator|.
 name|add
 argument_list|(
 name|ps
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2275,6 +2245,12 @@ literal|1
 case|:
 return|return
 name|matches
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
 return|;
 case|case
 literal|0
@@ -2351,8 +2327,10 @@ literal|"\" is not a valid patch set"
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
+specifier|final
+name|PatchSet
+name|patchSet
+init|=
 name|db
 operator|.
 name|patchSets
@@ -2362,6 +2340,10 @@ name|get
 argument_list|(
 name|patchSetId
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|patchSet
 operator|==
 literal|null
 condition|)
@@ -2434,12 +2416,7 @@ throw|;
 block|}
 block|}
 return|return
-name|Collections
-operator|.
-name|singleton
-argument_list|(
-name|patchSetId
-argument_list|)
+name|patchSet
 return|;
 block|}
 throw|throw
