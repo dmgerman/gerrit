@@ -184,7 +184,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|VisibleGroups
+name|GroupControl
 import|;
 end_import
 
@@ -468,22 +468,27 @@ specifier|private
 name|boolean
 name|verboseOutput
 decl_stmt|;
-DECL|field|groupCache
-specifier|private
-specifier|final
-name|GroupCache
-name|groupCache
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MyListGroups (final VisibleGroups.Factory visibleGroupsFactory, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, final GroupCache groupCache)
+DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups)
 name|MyListGroups
 parameter_list|(
 specifier|final
-name|VisibleGroups
+name|GroupCache
+name|groupCache
+parameter_list|,
+specifier|final
+name|GroupControl
 operator|.
 name|Factory
-name|visibleGroupsFactory
+name|groupControlFactory
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|IdentifiedUser
+argument_list|>
+name|identifiedUser
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -497,26 +502,20 @@ argument_list|<
 name|GetGroups
 argument_list|>
 name|accountGetGroups
-parameter_list|,
-specifier|final
-name|GroupCache
-name|groupCache
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|visibleGroupsFactory
+name|groupCache
+argument_list|,
+name|groupControlFactory
+argument_list|,
+name|identifiedUser
 argument_list|,
 name|userFactory
 argument_list|,
 name|accountGetGroups
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|groupCache
-operator|=
-name|groupCache
 expr_stmt|;
 block|}
 DECL|method|display (final PrintWriter out)
