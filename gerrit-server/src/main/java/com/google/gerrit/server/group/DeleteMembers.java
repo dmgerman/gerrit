@@ -616,8 +616,6 @@ throws|,
 name|BadRequestException
 throws|,
 name|OrmException
-throws|,
-name|NoSuchGroupException
 block|{
 specifier|final
 name|GroupDescription
@@ -1070,8 +1068,6 @@ name|groupId
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|NoSuchGroupException
 block|{
 specifier|final
 name|Map
