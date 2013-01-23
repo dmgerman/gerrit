@@ -1808,14 +1808,6 @@ literal|"You need 'Push' rights to upload code review requests.\n"
 operator|+
 literal|"Verify that you are pushing to the right branch."
 argument_list|)
-block|,
-DECL|enumConstant|CREATE
-name|CREATE
-argument_list|(
-literal|"You are not allowed to perform this operation.\n"
-operator|+
-literal|"To create new references you need 'Create Reference' rights."
-argument_list|)
 block|;
 DECL|field|value
 specifier|private
@@ -5697,20 +5689,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|errors
-operator|.
-name|put
-argument_list|(
-name|Error
-operator|.
-name|CREATE
-argument_list|,
-name|ctl
-operator|.
-name|getRefName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|reject
 argument_list|(
 name|cmd
