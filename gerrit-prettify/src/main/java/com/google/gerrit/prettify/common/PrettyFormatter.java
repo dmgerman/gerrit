@@ -602,6 +602,29 @@ argument_list|,
 literal|"'"
 argument_list|)
 expr_stmt|;
+comment|// The prettify parser converts all line endings ('\r', '\n' and '\r\n')
+comment|// into 'br' tags.
+comment|// If a line is modified at its end and the line ending is changed from
+comment|// '\n' to '\r\n' then the '\r' of the new line is part of the modified
+comment|// text. If intraline diffs are highlighted the modified text is
+comment|// surrounded by a 'span' tag. As result '\r' and '\n' of the new line get
+comment|// separated by '</span>'. For the prettify parser this now looks like two
+comment|// separate line endings and 2 'br' tags are inserted. This messes up the
+comment|// line counting by 'br' tags which is done below, since we now have more
+comment|// 'br' tags than lines. As result we would run into an
+comment|// ArrayIndexOutOfBoundsException when trying to lookup the non-existing
+comment|// lines. Drop the '\r' to avoid this problem.
+name|html
+operator|=
+name|html
+operator|.
+name|replace
+argument_list|(
+literal|"\r</span>\n"
+argument_list|,
+literal|"</span>\n"
+argument_list|)
+expr_stmt|;
 name|html
 operator|=
 name|prettify
