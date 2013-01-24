@@ -1030,6 +1030,7 @@ name|nameOrEmail
 argument_list|)
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
