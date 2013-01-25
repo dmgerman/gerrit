@@ -214,6 +214,55 @@ specifier|public
 class|class
 name|GroupApi
 block|{
+comment|/** Create a new group */
+DECL|method|createGroup (String groupName, AsyncCallback<GroupInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|createGroup
+parameter_list|(
+name|String
+name|groupName
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|GroupInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|GroupInput
+name|in
+init|=
+name|GroupInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|name
+argument_list|(
+name|groupName
+argument_list|)
+expr_stmt|;
+operator|new
+name|RestApi
+argument_list|(
+literal|"/groups/"
+argument_list|)
+operator|.
+name|data
+argument_list|(
+name|in
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Add member to a group. */
 DECL|method|addMember (AccountGroup.UUID groupUUID, String member, AsyncCallback<MemberInfo> cb)
 specifier|public
@@ -639,6 +688,45 @@ block|}
 DECL|method|MemberInput ()
 specifier|protected
 name|MemberInput
+parameter_list|()
+block|{     }
+block|}
+DECL|class|GroupInput
+specifier|private
+specifier|static
+class|class
+name|GroupInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|name (String n)
+specifier|final
+specifier|native
+name|void
+name|name
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ if(n)this.name=n; }-*/
+function_decl|;
+DECL|method|create ()
+specifier|static
+name|GroupInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|GroupInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|GroupInput ()
+specifier|protected
+name|GroupInput
 parameter_list|()
 block|{     }
 block|}

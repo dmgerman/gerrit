@@ -474,8 +474,6 @@ comment|/**    * Creates a new group.    *    * @param groupName the name for th
 DECL|method|createGroup (final String groupName, final String groupDescription, final boolean visibleToAll, final AccountGroup.Id ownerGroupId, final Collection<? extends Account.Id> initialMembers, final Collection<? extends AccountGroup.UUID> initialGroups)
 specifier|public
 name|AccountGroup
-operator|.
-name|Id
 name|createGroup
 parameter_list|(
 specifier|final
@@ -780,7 +778,7 @@ name|nameKey
 argument_list|)
 expr_stmt|;
 return|return
-name|groupId
+name|group
 return|;
 block|}
 DECL|method|addMembers (final AccountGroup.Id groupId, final Collection<? extends Account.Id> members)
