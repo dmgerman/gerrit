@@ -231,33 +231,41 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|GroupInput
+name|JavaScriptObject
 name|in
 init|=
-name|GroupInput
+name|JavaScriptObject
 operator|.
-name|create
+name|createObject
 argument_list|()
 decl_stmt|;
-name|in
+name|String
+name|n
+init|=
+name|URL
 operator|.
-name|name
+name|encodePathSegment
 argument_list|(
 name|groupName
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 operator|new
 name|RestApi
 argument_list|(
 literal|"/groups/"
+operator|+
+name|n
 argument_list|)
+operator|.
+name|ifNoneMatch
+argument_list|()
 operator|.
 name|data
 argument_list|(
 name|in
 argument_list|)
 operator|.
-name|post
+name|put
 argument_list|(
 name|cb
 argument_list|)
@@ -688,45 +696,6 @@ block|}
 DECL|method|MemberInput ()
 specifier|protected
 name|MemberInput
-parameter_list|()
-block|{     }
-block|}
-DECL|class|GroupInput
-specifier|private
-specifier|static
-class|class
-name|GroupInput
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|name (String n)
-specifier|final
-specifier|native
-name|void
-name|name
-parameter_list|(
-name|String
-name|n
-parameter_list|)
-comment|/*-{ if(n)this.name=n; }-*/
-function_decl|;
-DECL|method|create ()
-specifier|static
-name|GroupInput
-name|create
-parameter_list|()
-block|{
-return|return
-operator|(
-name|GroupInput
-operator|)
-name|createObject
-argument_list|()
-return|;
-block|}
-DECL|method|GroupInput ()
-specifier|protected
-name|GroupInput
 parameter_list|()
 block|{     }
 block|}

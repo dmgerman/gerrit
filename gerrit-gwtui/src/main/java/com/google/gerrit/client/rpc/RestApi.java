@@ -654,6 +654,10 @@ literal|409
 case|:
 comment|// Conflict
 case|case
+literal|412
+case|:
+comment|// Precondition Failed
+case|case
 literal|429
 case|:
 comment|// Too Many Requests (RFC 6585)
@@ -1102,6 +1106,11 @@ specifier|private
 name|String
 name|contentData
 decl_stmt|;
+DECL|field|ifNoneMatch
+specifier|private
+name|String
+name|ifNoneMatch
+decl_stmt|;
 comment|/**    * Initialize a new API call.    *<p>    * By default the JSON format will be selected by including an HTTP Accept    * header in the request.    *    * @param name URL of the REST resource to access, e.g. {@code "/projects/"}    *        to list accessible projects from the server.    */
 DECL|method|RestApi (String name)
 specifier|public
@@ -1380,6 +1389,36 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|ifNoneMatch ()
+specifier|public
+name|RestApi
+name|ifNoneMatch
+parameter_list|()
+block|{
+return|return
+name|ifNoneMatch
+argument_list|(
+literal|"*"
+argument_list|)
+return|;
+block|}
+DECL|method|ifNoneMatch (String etag)
+specifier|public
+name|RestApi
+name|ifNoneMatch
+parameter_list|(
+name|String
+name|etag
+parameter_list|)
+block|{
+name|ifNoneMatch
+operator|=
+name|etag
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|data (JavaScriptObject obj)
 specifier|public
 name|RestApi
@@ -1595,6 +1634,23 @@ name|url
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ifNoneMatch
+operator|!=
+literal|null
+condition|)
+block|{
+name|req
+operator|.
+name|setHeader
+argument_list|(
+literal|"If-None-Match"
+argument_list|,
+name|ifNoneMatch
+argument_list|)
+expr_stmt|;
+block|}
 name|req
 operator|.
 name|setHeader
