@@ -818,23 +818,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|inputType ()
-specifier|public
-name|Class
-argument_list|<
-name|Input
-argument_list|>
-name|inputType
-parameter_list|()
-block|{
-return|return
-name|Input
-operator|.
-name|class
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|apply (GroupResource resource, Input input)
 specifier|public
 name|List
@@ -1441,27 +1424,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|inputType ()
-specifier|public
-name|Class
-argument_list|<
-name|PutMember
-operator|.
-name|Input
-argument_list|>
-name|inputType
-parameter_list|()
-block|{
-return|return
-name|PutMember
-operator|.
-name|Input
-operator|.
-name|class
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|apply (GroupResource resource, PutMember.Input input)
 specifier|public
 name|Object
@@ -1594,27 +1556,6 @@ name|get
 operator|=
 name|get
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|inputType ()
-specifier|public
-name|Class
-argument_list|<
-name|PutMember
-operator|.
-name|Input
-argument_list|>
-name|inputType
-parameter_list|()
-block|{
-return|return
-name|PutMember
-operator|.
-name|Input
-operator|.
-name|class
-return|;
 block|}
 annotation|@
 name|Override

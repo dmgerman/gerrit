@@ -88,15 +88,6 @@ argument_list|<
 name|R
 argument_list|>
 block|{
-comment|/**    * @return Java class object defining the input type. The JSON parser will    *         parse the supplied request body into a new instance of this class    *         before passing it to apply.    */
-DECL|method|inputType ()
-name|Class
-argument_list|<
-name|I
-argument_list|>
-name|inputType
-parameter_list|()
-function_decl|;
 comment|/**    * Process the view operation by altering the resource.    *    * @param resource resource to modify.    * @param input input after parsing from request.    * @return result to return to the client. Use {@link BinaryResult} to avoid    *         automatic conversion to JSON.    * @throws AuthException the client is not permitted to access this view.    * @throws BadRequestException the request was incorrectly specified and    *         cannot be handled by this view.    * @throws ResourceConflictException the resource state does not permit this    *         view to make the changes at this time.    * @throws Exception the implementation of the view failed. The exception will    *         be logged and HTTP 500 Internal Server Error will be returned to    *         the client.    */
 DECL|method|apply (R resource, I input)
 name|Object
