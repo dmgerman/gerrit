@@ -2062,6 +2062,8 @@ operator|+
 literal|1
 else|:
 name|n
+operator|+
+literal|1
 return|;
 block|}
 annotation|@
