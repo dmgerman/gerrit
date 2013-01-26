@@ -659,23 +659,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|inputType ()
-specifier|public
-name|Class
-argument_list|<
-name|Input
-argument_list|>
-name|inputType
-parameter_list|()
-block|{
-return|return
-name|Input
-operator|.
-name|class
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|apply (RevisionResource rsrc, Input input)
 specifier|public
 name|Output
@@ -1970,23 +1953,6 @@ name|json
 operator|=
 name|json
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|inputType ()
-specifier|public
-name|Class
-argument_list|<
-name|Input
-argument_list|>
-name|inputType
-parameter_list|()
-block|{
-return|return
-name|Input
-operator|.
-name|class
-return|;
 block|}
 annotation|@
 name|Override
