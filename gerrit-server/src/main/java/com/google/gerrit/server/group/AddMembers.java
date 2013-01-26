@@ -532,7 +532,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|PutMembers
+name|AddMembers
 operator|.
 name|Input
 import|;
@@ -597,9 +597,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|PutMembers
+DECL|class|AddMembers
 class|class
-name|PutMembers
+name|AddMembers
 implements|implements
 name|RestModifyView
 argument_list|<
@@ -749,8 +749,8 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutMembers (final GroupControl.Factory groupControlFactory, final AccountManager accountManager, final AuthConfig authConfig, final AccountResolver accountResolver, final AccountCache accountCache, final ReviewDb db, final Provider<CurrentUser> self)
-name|PutMembers
+DECL|method|AddMembers (final GroupControl.Factory groupControlFactory, final AccountManager accountManager, final AuthConfig authConfig, final AccountResolver accountResolver, final AccountCache accountCache, final ReviewDb db, final Provider<CurrentUser> self)
+name|AddMembers
 parameter_list|(
 specifier|final
 name|GroupControl
@@ -1418,7 +1418,7 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|PutMembers
+name|AddMembers
 argument_list|>
 name|put
 decl_stmt|;
@@ -1428,13 +1428,13 @@ specifier|final
 name|String
 name|id
 decl_stmt|;
-DECL|method|PutMember (final Provider<PutMembers> put, String id)
+DECL|method|PutMember (final Provider<AddMembers> put, String id)
 name|PutMember
 parameter_list|(
 specifier|final
 name|Provider
 argument_list|<
-name|PutMembers
+name|AddMembers
 argument_list|>
 name|put
 parameter_list|,
@@ -1500,13 +1500,13 @@ name|BadRequestException
 throws|,
 name|OrmException
 block|{
-name|PutMembers
+name|AddMembers
 operator|.
 name|Input
 name|in
 init|=
 operator|new
-name|PutMembers
+name|AddMembers
 operator|.
 name|Input
 argument_list|()

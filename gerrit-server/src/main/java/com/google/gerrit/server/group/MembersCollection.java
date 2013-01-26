@@ -284,7 +284,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|PutMembers
+name|AddMembers
 operator|.
 name|PutMember
 import|;
@@ -403,13 +403,13 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|PutMembers
+name|AddMembers
 argument_list|>
 name|put
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MembersCollection (final DynamicMap<RestView<MemberResource>> views, final Provider<ListMembers> list, final IdentifiedUser.GenericFactory userGenericFactory, final GroupCache groupCache, final AccountResolver accountResolver, final Provider<ReviewDb> db, final Provider<PutMembers> put)
+DECL|method|MembersCollection (final DynamicMap<RestView<MemberResource>> views, final Provider<ListMembers> list, final IdentifiedUser.GenericFactory userGenericFactory, final GroupCache groupCache, final AccountResolver accountResolver, final Provider<ReviewDb> db, final Provider<AddMembers> put)
 name|MembersCollection
 parameter_list|(
 specifier|final
@@ -453,7 +453,7 @@ parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
-name|PutMembers
+name|AddMembers
 argument_list|>
 name|put
 parameter_list|)

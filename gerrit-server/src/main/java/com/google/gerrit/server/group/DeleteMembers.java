@@ -404,7 +404,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|PutMembers
+name|AddMembers
 operator|.
 name|Input
 import|;
@@ -1210,13 +1210,13 @@ name|OrmException
 throws|,
 name|NoSuchGroupException
 block|{
-name|PutMembers
+name|AddMembers
 operator|.
 name|Input
 name|in
 init|=
 operator|new
-name|PutMembers
+name|AddMembers
 operator|.
 name|Input
 argument_list|()
