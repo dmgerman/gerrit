@@ -136,6 +136,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|lifecycle
 operator|.
 name|LifecycleModule
@@ -1246,7 +1262,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/** Listeners to receive changes as they happen. */
+comment|/** Listeners to receive changes as they happen (limited by visibility      *  of holder's user). */
 DECL|field|listeners
 specifier|private
 specifier|final
@@ -1266,6 +1282,16 @@ argument_list|,
 name|ChangeListenerHolder
 argument_list|>
 argument_list|()
+decl_stmt|;
+comment|/** Listeners to receive all changes as they happen. */
+DECL|field|unrestrictedListeners
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|ChangeListener
+argument_list|>
+name|unrestrictedListeners
 decl_stmt|;
 comment|/** Filename of the new patchset hook. */
 DECL|field|patchsetCreatedHook
@@ -1418,7 +1444,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final ApprovalTypes approvalTypes, final EventFactory eventFactory, final SitePaths sitePaths)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final ApprovalTypes approvalTypes, final EventFactory eventFactory, final SitePaths sitePaths, final DynamicSet<ChangeListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1465,6 +1491,13 @@ parameter_list|,
 specifier|final
 name|SitePaths
 name|sitePaths
+parameter_list|,
+specifier|final
+name|DynamicSet
+argument_list|<
+name|ChangeListener
+argument_list|>
+name|unrestrictedListeners
 parameter_list|)
 block|{
 name|this
@@ -1521,6 +1554,12 @@ operator|.
 name|sitePaths
 operator|=
 name|sitePath
+expr_stmt|;
+name|this
+operator|.
+name|unrestrictedListeners
+operator|=
+name|unrestrictedListeners
 expr_stmt|;
 specifier|final
 name|File
@@ -4224,6 +4263,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|fireEventForUnrestrictedListeners (final ChangeEvent event)
+specifier|private
+name|void
+name|fireEventForUnrestrictedListeners
+parameter_list|(
+specifier|final
+name|ChangeEvent
+name|event
+parameter_list|)
+block|{
+for|for
+control|(
+name|ChangeListener
+name|listener
+range|:
+name|unrestrictedListeners
+control|)
+block|{
+name|listener
+operator|.
+name|onChangeEvent
+argument_list|(
+name|event
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|fireEvent (final Change change, final ChangeEvent event, final ReviewDb db)
 specifier|private
 name|void
@@ -4280,6 +4346,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|fireEventForUnrestrictedListeners
+argument_list|(
+name|event
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|fireEvent (Branch.NameKey branchName, final ChangeEvent event)
 specifier|private
@@ -4330,6 +4401,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|fireEventForUnrestrictedListeners
+argument_list|(
+name|event
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isVisibleTo (Change change, IdentifiedUser user, ReviewDb db)
 specifier|private
