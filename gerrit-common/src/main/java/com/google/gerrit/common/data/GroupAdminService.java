@@ -233,26 +233,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|createGroup (String newName, AsyncCallback<AccountGroup.Id> callback)
-name|void
-name|createGroup
-parameter_list|(
-name|String
-name|newName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|AccountGroup
-operator|.
-name|Id
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|groupDetail (AccountGroup.Id groupId, AccountGroup.UUID uuid, AsyncCallback<GroupDetail> callback)
 name|void
 name|groupDetail

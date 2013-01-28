@@ -501,14 +501,6 @@ operator|.
 name|Factory
 name|groupControlFactory
 decl_stmt|;
-DECL|field|createGroupFactory
-specifier|private
-specifier|final
-name|CreateGroup
-operator|.
-name|Factory
-name|createGroupFactory
-decl_stmt|;
 DECL|field|renameGroupFactory
 specifier|private
 specifier|final
@@ -527,7 +519,7 @@ name|groupDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final GroupIncludeCache groupIncludeCache, final GroupCache groupCache, final GroupBackend groupBackend, final GroupControl.Factory groupControlFactory, final CreateGroup.Factory createGroupFactory, final RenameGroup.Factory renameGroupFactory, final GroupDetailHandler.Factory groupDetailFactory)
+DECL|method|GroupAdminServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> currentUser, final GroupIncludeCache groupIncludeCache, final GroupCache groupCache, final GroupBackend groupBackend, final GroupControl.Factory groupControlFactory, final RenameGroup.Factory renameGroupFactory, final GroupDetailHandler.Factory groupDetailFactory)
 name|GroupAdminServiceImpl
 parameter_list|(
 specifier|final
@@ -561,12 +553,6 @@ name|GroupControl
 operator|.
 name|Factory
 name|groupControlFactory
-parameter_list|,
-specifier|final
-name|CreateGroup
-operator|.
-name|Factory
-name|createGroupFactory
 parameter_list|,
 specifier|final
 name|RenameGroup
@@ -614,12 +600,6 @@ name|groupControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|createGroupFactory
-operator|=
-name|createGroupFactory
-expr_stmt|;
-name|this
-operator|.
 name|renameGroupFactory
 operator|=
 name|renameGroupFactory
@@ -629,38 +609,6 @@ operator|.
 name|groupDetailFactory
 operator|=
 name|groupDetailFactory
-expr_stmt|;
-block|}
-DECL|method|createGroup (final String newName, final AsyncCallback<AccountGroup.Id> callback)
-specifier|public
-name|void
-name|createGroup
-parameter_list|(
-specifier|final
-name|String
-name|newName
-parameter_list|,
-specifier|final
-name|AsyncCallback
-argument_list|<
-name|AccountGroup
-operator|.
-name|Id
-argument_list|>
-name|callback
-parameter_list|)
-block|{
-name|createGroupFactory
-operator|.
-name|create
-argument_list|(
-name|newName
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|callback
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|groupDetail (AccountGroup.Id groupId, AccountGroup.UUID groupUUID, AsyncCallback<GroupDetail> callback)
