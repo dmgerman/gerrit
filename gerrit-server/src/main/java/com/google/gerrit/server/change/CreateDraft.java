@@ -515,7 +515,7 @@ literal|0
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|,
 name|Url

@@ -404,7 +404,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|)
 control|)

@@ -1112,7 +1112,7 @@ argument_list|()
 argument_list|,
 name|revision
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|,
 name|message
@@ -1903,7 +1903,7 @@ name|line
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|,
 name|parent
@@ -2183,7 +2183,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|)
 control|)
@@ -2558,7 +2558,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|,
 name|at
@@ -2788,7 +2788,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|,
 name|approvalTypes
@@ -2954,7 +2954,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|)
 control|)
@@ -3252,7 +3252,7 @@ argument_list|)
 argument_list|,
 name|rsrc
 operator|.
-name|getAuthorId
+name|getAccountId
 argument_list|()
 argument_list|,
 name|timestamp

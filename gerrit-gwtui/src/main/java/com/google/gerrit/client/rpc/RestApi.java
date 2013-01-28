@@ -1202,6 +1202,27 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|id (int id)
+specifier|public
+name|RestApi
+name|id
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|idRaw
+argument_list|(
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|idRaw (String name)
 specifier|public
 name|RestApi
