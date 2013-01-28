@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** Indicats the user cannot perform this task. */
+comment|/** Indicates the user cannot perform this task. */
 end_comment
 
 begin_class

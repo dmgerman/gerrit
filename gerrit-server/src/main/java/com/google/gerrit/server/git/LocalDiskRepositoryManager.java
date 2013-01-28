@@ -1729,7 +1729,7 @@ condition|)
 return|return
 literal|true
 return|;
-comment|// no windows/dos stlye paths
+comment|// no windows/dos style paths
 if|if
 condition|(
 name|name
@@ -1863,7 +1863,7 @@ condition|)
 return|return
 literal|true
 return|;
-comment|// Could be used for aboslute paths in windows?
+comment|// Could be used for absolute paths in windows?
 if|if
 condition|(
 name|name
