@@ -981,7 +981,12 @@ name|rc
 operator|.
 name|addError
 argument_list|(
-literal|"internal error while processing changes"
+literal|"internal error while processing changes "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// ReceiveCommits has tried its best to catch errors, so anything at this
