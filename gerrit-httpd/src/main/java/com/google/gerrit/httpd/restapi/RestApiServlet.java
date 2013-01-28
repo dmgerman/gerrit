@@ -2651,7 +2651,9 @@ block|{
 throw|throw
 operator|new
 name|PreconditionFailedException
-argument_list|()
+argument_list|(
+literal|"Resource already exists"
+argument_list|)
 throw|;
 block|}
 block|}
