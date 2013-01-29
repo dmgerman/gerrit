@@ -110,6 +110,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -159,22 +175,6 @@ operator|.
 name|restapi
 operator|.
 name|TopLevelResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|Url
 import|;
 end_import
 
@@ -312,7 +312,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (TopLevelResource parent, String id)
+DECL|method|parse (TopLevelResource parent, IdString id)
 specifier|public
 name|PluginResource
 name|parse
@@ -320,13 +320,11 @@ parameter_list|(
 name|TopLevelResource
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
-throws|,
-name|Exception
 block|{
 name|Plugin
 name|p
@@ -335,12 +333,10 @@ name|loader
 operator|.
 name|get
 argument_list|(
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -373,7 +369,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|create (TopLevelResource parent, String id)
+DECL|method|create (TopLevelResource parent, IdString id)
 specifier|public
 name|InstallPlugin
 name|create
@@ -381,7 +377,7 @@ parameter_list|(
 name|TopLevelResource
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -393,12 +389,10 @@ name|InstallPlugin
 argument_list|(
 name|loader
 argument_list|,
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|true
 comment|/* created */

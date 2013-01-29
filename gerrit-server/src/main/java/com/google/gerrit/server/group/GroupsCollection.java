@@ -158,6 +158,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -207,22 +223,6 @@ operator|.
 name|restapi
 operator|.
 name|TopLevelResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|Url
 import|;
 end_import
 
@@ -574,7 +574,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (TopLevelResource parent, String id)
+DECL|method|parse (TopLevelResource parent, IdString id)
 specifier|public
 name|GroupResource
 name|parse
@@ -582,7 +582,7 @@ parameter_list|(
 name|TopLevelResource
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -637,29 +637,22 @@ return|return
 name|parse
 argument_list|(
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|parse (String urlId)
+DECL|method|parse (String id)
 name|GroupResource
 name|parse
 parameter_list|(
 name|String
-name|urlId
+name|id
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 block|{
-name|String
-name|id
-init|=
-name|Url
-operator|.
-name|decode
-argument_list|(
-name|urlId
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|AccountGroup
@@ -688,7 +681,7 @@ block|{
 return|return
 name|check
 argument_list|(
-name|urlId
+name|id
 argument_list|,
 name|groupControlFactory
 operator|.
@@ -736,7 +729,7 @@ decl_stmt|;
 return|return
 name|check
 argument_list|(
-name|urlId
+name|id
 argument_list|,
 name|groupControlFactory
 operator|.
@@ -785,7 +778,7 @@ block|{
 return|return
 name|check
 argument_list|(
-name|urlId
+name|id
 argument_list|,
 name|groupControlFactory
 operator|.
@@ -810,17 +803,18 @@ throw|throw
 operator|new
 name|ResourceNotFoundException
 argument_list|(
-name|urlId
+name|id
 argument_list|)
 throw|;
 block|}
-DECL|method|check (String urlId, GroupControl ctl)
+DECL|method|check (String id, GroupControl ctl)
 specifier|private
+specifier|static
 name|GroupResource
 name|check
 parameter_list|(
 name|String
-name|urlId
+name|id
 parameter_list|,
 name|GroupControl
 name|ctl
@@ -848,7 +842,7 @@ throw|throw
 operator|new
 name|ResourceNotFoundException
 argument_list|(
-name|urlId
+name|id
 argument_list|)
 throw|;
 block|}
@@ -859,7 +853,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|create (TopLevelResource root, String name)
+DECL|method|create (TopLevelResource root, IdString name)
 specifier|public
 name|CreateGroup
 name|create
@@ -867,7 +861,7 @@ parameter_list|(
 name|TopLevelResource
 name|root
 parameter_list|,
-name|String
+name|IdString
 name|name
 parameter_list|)
 block|{
@@ -876,12 +870,10 @@ name|createGroup
 operator|.
 name|create
 argument_list|(
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|name
-argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}

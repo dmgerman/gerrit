@@ -546,6 +546,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|MethodNotAllowedException
 import|;
 end_import
@@ -1629,7 +1645,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|String
+name|IdString
 argument_list|>
 name|path
 init|=
@@ -1761,7 +1777,7 @@ block|}
 block|}
 else|else
 block|{
-name|String
+name|IdString
 name|id
 init|=
 name|path
@@ -2023,7 +2039,7 @@ break|break;
 block|}
 else|else
 block|{
-name|String
+name|IdString
 name|id
 init|=
 name|path
@@ -4669,7 +4685,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|view ( RestCollection<RestResource, RestResource> rc, String method, List<String> path)
+DECL|method|view ( RestCollection<RestResource, RestResource> rc, String method, List<IdString> path)
 specifier|private
 name|RestView
 argument_list|<
@@ -4690,7 +4706,7 @@ name|method
 parameter_list|,
 name|List
 argument_list|<
-name|String
+name|IdString
 argument_list|>
 name|path
 parameter_list|)
@@ -4716,7 +4732,7 @@ name|views
 argument_list|()
 decl_stmt|;
 specifier|final
-name|String
+name|IdString
 name|projection
 init|=
 name|path
@@ -4724,7 +4740,12 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|?
+name|IdString
+operator|.
+name|fromUrl
+argument_list|(
 literal|"/"
+argument_list|)
 else|:
 name|path
 operator|.
@@ -5035,7 +5056,7 @@ specifier|private
 specifier|static
 name|List
 argument_list|<
-name|String
+name|IdString
 argument_list|>
 name|splitPath
 parameter_list|(
@@ -5070,14 +5091,20 @@ return|;
 block|}
 name|List
 argument_list|<
-name|String
+name|IdString
 argument_list|>
 name|out
 init|=
 name|Lists
 operator|.
 name|newArrayList
-argument_list|(
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|p
+range|:
 name|Splitter
 operator|.
 name|on
@@ -5089,8 +5116,21 @@ name|split
 argument_list|(
 name|path
 argument_list|)
+control|)
+block|{
+name|out
+operator|.
+name|add
+argument_list|(
+name|IdString
+operator|.
+name|fromUrl
+argument_list|(
+name|p
 argument_list|)
-decl_stmt|;
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|out
@@ -5136,7 +5176,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|splitProjection (String projection)
+DECL|method|splitProjection (IdString projection)
 specifier|private
 specifier|static
 name|List
@@ -5145,15 +5185,29 @@ name|String
 argument_list|>
 name|splitProjection
 parameter_list|(
-name|String
+name|IdString
 name|projection
 parameter_list|)
 block|{
-return|return
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|p
+init|=
 name|Lists
 operator|.
-name|newArrayList
+name|newArrayListWithCapacity
 argument_list|(
+literal|2
+argument_list|)
+decl_stmt|;
+name|Iterables
+operator|.
+name|addAll
+argument_list|(
+name|p
+argument_list|,
 name|Splitter
 operator|.
 name|on
@@ -5169,8 +5223,14 @@ operator|.
 name|split
 argument_list|(
 name|projection
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
+expr_stmt|;
+return|return
+name|p
 return|;
 block|}
 end_function

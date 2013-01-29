@@ -142,6 +142,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -331,7 +347,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (AccountResource parent, String id)
+DECL|method|parse (AccountResource parent, IdString id)
 specifier|public
 name|Capability
 name|parse
@@ -339,7 +355,7 @@ parameter_list|(
 name|AccountResource
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -380,6 +396,14 @@ literal|"restricted to administrator"
 argument_list|)
 throw|;
 block|}
+name|String
+name|name
+init|=
+name|id
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|CapabilityControl
 name|cap
 init|=
@@ -397,7 +421,7 @@ name|cap
 operator|.
 name|canPerform
 argument_list|(
-name|id
+name|name
 argument_list|)
 operator|||
 operator|(
@@ -410,7 +434,7 @@ name|GlobalCapability
 operator|.
 name|isCapability
 argument_list|(
-name|id
+name|name
 argument_list|)
 operator|)
 condition|)
@@ -426,7 +450,7 @@ operator|.
 name|getUser
 argument_list|()
 argument_list|,
-name|id
+name|name
 argument_list|)
 return|;
 block|}

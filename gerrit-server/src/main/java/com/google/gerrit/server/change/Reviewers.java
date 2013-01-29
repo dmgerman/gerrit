@@ -140,6 +140,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -456,7 +472,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (ChangeResource rsrc, String id)
+DECL|method|parse (ChangeResource rsrc, IdString id)
 specifier|public
 name|ReviewerResource
 name|parse
@@ -464,7 +480,7 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -552,6 +568,9 @@ if|if
 condition|(
 name|id
 operator|.
+name|get
+argument_list|()
+operator|.
 name|matches
 argument_list|(
 literal|"^[0-9]+$"
@@ -567,6 +586,9 @@ operator|.
 name|parse
 argument_list|(
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

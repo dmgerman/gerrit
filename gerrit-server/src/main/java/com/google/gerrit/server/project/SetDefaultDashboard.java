@@ -138,7 +138,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|Response
+name|IdString
 import|;
 end_import
 
@@ -171,6 +171,22 @@ operator|.
 name|restapi
 operator|.
 name|ResourceNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|Response
 import|;
 end_import
 
@@ -571,9 +587,14 @@ argument_list|(
 name|ctl
 argument_list|)
 argument_list|,
+name|IdString
+operator|.
+name|fromUrl
+argument_list|(
 name|input
 operator|.
 name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

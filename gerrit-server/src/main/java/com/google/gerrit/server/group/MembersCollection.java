@@ -142,6 +142,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -525,17 +541,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (final GroupResource parent, final String id)
+DECL|method|parse (GroupResource parent, IdString id)
 specifier|public
 name|MemberResource
 name|parse
 parameter_list|(
-specifier|final
 name|GroupResource
 name|parent
 parameter_list|,
-specifier|final
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -543,7 +557,6 @@ name|ResourceNotFoundException
 throws|,
 name|Exception
 block|{
-specifier|final
 name|Account
 name|a
 init|=
@@ -551,12 +564,10 @@ name|accountResolver
 operator|.
 name|find
 argument_list|(
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -673,17 +684,15 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|create (final GroupResource group, final String id)
+DECL|method|create (GroupResource group, IdString id)
 specifier|public
 name|PutMember
 name|create
 parameter_list|(
-specifier|final
 name|GroupResource
 name|group
 parameter_list|,
-specifier|final
-name|String
+name|IdString
 name|id
 parameter_list|)
 block|{
@@ -693,12 +702,10 @@ name|PutMember
 argument_list|(
 name|put
 argument_list|,
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}

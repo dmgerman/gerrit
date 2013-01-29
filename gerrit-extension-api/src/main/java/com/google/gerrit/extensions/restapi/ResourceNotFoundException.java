@@ -108,6 +108,24 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** @param id portion of the resource URI that does not exist. */
+DECL|method|ResourceNotFoundException (IdString id)
+specifier|public
+name|ResourceNotFoundException
+parameter_list|(
+name|IdString
+name|id
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

@@ -126,6 +126,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -143,22 +159,6 @@ operator|.
 name|restapi
 operator|.
 name|RestView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|Url
 import|;
 end_import
 
@@ -412,7 +412,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (RevisionResource rev, String id)
+DECL|method|parse (RevisionResource rev, IdString id)
 specifier|public
 name|DraftResource
 name|parse
@@ -420,7 +420,7 @@ parameter_list|(
 name|RevisionResource
 name|rev
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -436,12 +436,10 @@ expr_stmt|;
 name|String
 name|uuid
 init|=
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 for|for
 control|(

@@ -108,6 +108,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -518,7 +534,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (TopLevelResource root, String id)
+DECL|method|parse (TopLevelResource root, IdString id)
 specifier|public
 name|ChangeResource
 name|parse
@@ -526,7 +542,7 @@ parameter_list|(
 name|TopLevelResource
 name|root
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -543,6 +559,9 @@ operator|new
 name|ParsedId
 argument_list|(
 name|id
+operator|.
+name|encoded
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|List

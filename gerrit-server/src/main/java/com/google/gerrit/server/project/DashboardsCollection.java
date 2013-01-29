@@ -214,6 +214,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -661,7 +677,7 @@ literal|"unchecked"
 argument_list|)
 annotation|@
 name|Override
-DECL|method|create (ProjectResource parent, String id)
+DECL|method|create (ProjectResource parent, IdString id)
 specifier|public
 name|RestModifyView
 argument_list|<
@@ -674,7 +690,7 @@ parameter_list|(
 name|ProjectResource
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -682,11 +698,11 @@ name|RestApiException
 block|{
 if|if
 condition|(
-literal|"default"
+name|id
 operator|.
 name|equals
 argument_list|(
-name|id
+literal|"default"
 argument_list|)
 condition|)
 block|{
@@ -707,7 +723,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (ProjectResource parent, String id)
+DECL|method|parse (ProjectResource parent, IdString id)
 specifier|public
 name|DashboardResource
 name|parse
@@ -715,7 +731,7 @@ parameter_list|(
 name|ProjectResource
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -735,11 +751,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-literal|"default"
+name|id
 operator|.
 name|equals
 argument_list|(
-name|id
+literal|"default"
 argument_list|)
 condition|)
 block|{
@@ -777,6 +793,9 @@ operator|.
 name|split
 argument_list|(
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -809,31 +828,21 @@ decl_stmt|;
 name|String
 name|ref
 init|=
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|parts
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-argument_list|)
 decl_stmt|;
 name|String
 name|path
 init|=
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|parts
 operator|.
 name|get
 argument_list|(
 literal|1
-argument_list|)
 argument_list|)
 decl_stmt|;
 for|for

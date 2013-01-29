@@ -115,14 +115,14 @@ throws|,
 name|AuthException
 function_decl|;
 comment|/**    * Parse a path component into a resource handle.    *    * @param parent the handle to the collection.    * @param id string identifier supplied by the client. In a URL such as    *        {@code /changes/1234/abandon} this string is {@code "1234"}.    * @return a resource handle for the identified object.    * @throws ResourceNotFoundException the object does not exist, or the caller    *         is not permitted to know if the resource exists.    * @throws Exception if the implementation had any errors converting to a    *         resource handle. This results in an HTTP 500 Internal Server Error.    */
-DECL|method|parse (P parent, String id)
+DECL|method|parse (P parent, IdString id)
 name|R
 name|parse
 parameter_list|(
 name|P
 name|parent
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws

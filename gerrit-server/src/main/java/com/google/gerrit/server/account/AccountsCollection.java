@@ -124,6 +124,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|IdString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -173,22 +189,6 @@ operator|.
 name|restapi
 operator|.
 name|TopLevelResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|Url
 import|;
 end_import
 
@@ -421,7 +421,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|parse (TopLevelResource root, String id)
+DECL|method|parse (TopLevelResource root, IdString id)
 specifier|public
 name|AccountResource
 name|parse
@@ -429,7 +429,7 @@ parameter_list|(
 name|TopLevelResource
 name|root
 parameter_list|,
-name|String
+name|IdString
 name|id
 parameter_list|)
 throws|throws
@@ -449,11 +449,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-literal|"self"
+name|id
 operator|.
 name|equals
 argument_list|(
-name|id
+literal|"self"
 argument_list|)
 condition|)
 block|{
@@ -514,12 +514,10 @@ name|resolver
 operator|.
 name|findAll
 argument_list|(
-name|Url
-operator|.
-name|decode
-argument_list|(
 name|id
-argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
