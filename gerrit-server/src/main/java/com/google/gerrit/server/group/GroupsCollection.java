@@ -675,6 +675,16 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|groupBackend
+operator|.
+name|handles
+argument_list|(
+name|uuid
+argument_list|)
+condition|)
+block|{
 return|return
 name|check
 argument_list|(
@@ -688,6 +698,7 @@ name|uuid
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -865,7 +876,12 @@ name|createGroup
 operator|.
 name|create
 argument_list|(
+name|Url
+operator|.
+name|decode
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 return|;
 block|}
