@@ -2565,13 +2565,10 @@ argument_list|(
 literal|"review"
 argument_list|)
 operator|.
-name|data
-argument_list|(
-name|data
-argument_list|)
-operator|.
 name|post
 argument_list|(
+name|data
+argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
