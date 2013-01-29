@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GroupDescriptions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|restapi
@@ -210,6 +226,23 @@ operator|=
 name|control
 expr_stmt|;
 block|}
+DECL|method|GroupResource (GroupResource rsrc)
+name|GroupResource
+parameter_list|(
+name|GroupResource
+name|rsrc
+parameter_list|)
+block|{
+name|this
+operator|.
+name|control
+operator|=
+name|rsrc
+operator|.
+name|getControl
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|getGroup ()
 specifier|public
 name|GroupDescription
@@ -255,19 +288,20 @@ name|getGroupUUID
 argument_list|()
 return|;
 block|}
-DECL|method|isInternal ()
+DECL|method|toAccountGroup ()
 specifier|public
-name|boolean
-name|isInternal
+name|AccountGroup
+name|toAccountGroup
 parameter_list|()
 block|{
 return|return
+name|GroupDescriptions
+operator|.
+name|toAccountGroup
+argument_list|(
 name|getGroup
 argument_list|()
-operator|instanceof
-name|GroupDescription
-operator|.
-name|Internal
+argument_list|)
 return|;
 block|}
 DECL|method|getControl ()

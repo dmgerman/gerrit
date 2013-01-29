@@ -129,7 +129,7 @@ name|parse
 argument_list|(
 name|resource
 operator|.
-name|getUser
+name|getMember
 argument_list|()
 operator|.
 name|getAccount

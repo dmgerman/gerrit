@@ -110,7 +110,7 @@ name|GroupInfo
 argument_list|(
 name|rsrc
 operator|.
-name|getGroup
+name|getMemberDescription
 argument_list|()
 argument_list|)
 return|;
