@@ -219,7 +219,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|SetDescription
+name|PutDescription
 operator|.
 name|class
 argument_list|)
@@ -233,7 +233,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|SetDescription
+name|PutDescription
 operator|.
 name|class
 argument_list|)
