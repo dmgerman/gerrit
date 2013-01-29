@@ -180,7 +180,7 @@ name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|api
+name|call
 argument_list|(
 name|id
 argument_list|,
@@ -236,7 +236,7 @@ name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|api
+name|call
 argument_list|(
 name|id
 argument_list|,
@@ -292,7 +292,7 @@ name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|api
+name|call
 argument_list|(
 name|id
 argument_list|,
@@ -336,7 +336,7 @@ block|{
 name|RestApi
 name|call
 init|=
-name|api
+name|call
 argument_list|(
 name|id
 argument_list|,
@@ -459,7 +459,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|api
+name|call
 argument_list|(
 name|id
 argument_list|,
@@ -568,11 +568,11 @@ name|SubmitInput
 parameter_list|()
 block|{     }
 block|}
-DECL|method|api (int id, String action)
+DECL|method|call (int id, String action)
 specifier|private
 specifier|static
 name|RestApi
-name|api
+name|call
 parameter_list|(
 name|int
 name|id
@@ -581,26 +581,23 @@ name|String
 name|action
 parameter_list|)
 block|{
-comment|// TODO Switch to triplet project~branch~id format in URI.
 return|return
-operator|new
-name|RestApi
+name|change
 argument_list|(
-literal|"/changes/"
-operator|+
 name|id
-operator|+
-literal|"/"
-operator|+
+argument_list|)
+operator|.
+name|view
+argument_list|(
 name|action
 argument_list|)
 return|;
 block|}
-DECL|method|api (int id, String commit, String action)
+DECL|method|call (int id, String commit, String action)
 specifier|private
 specifier|static
 name|RestApi
-name|api
+name|call
 parameter_list|(
 name|int
 name|id
@@ -612,22 +609,54 @@ name|String
 name|action
 parameter_list|)
 block|{
+return|return
+name|change
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"revisions"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|commit
+argument_list|)
+operator|.
+name|view
+argument_list|(
+name|action
+argument_list|)
+return|;
+block|}
+DECL|method|change (int id)
+specifier|private
+specifier|static
+name|RestApi
+name|change
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
 comment|// TODO Switch to triplet project~branch~id format in URI.
 return|return
 operator|new
 name|RestApi
 argument_list|(
 literal|"/changes/"
-operator|+
+argument_list|)
+operator|.
 name|id
-operator|+
-literal|"/revisions/"
-operator|+
-name|commit
-operator|+
-literal|"/"
-operator|+
-name|action
+argument_list|(
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|id
+argument_list|)
 argument_list|)
 return|;
 block|}

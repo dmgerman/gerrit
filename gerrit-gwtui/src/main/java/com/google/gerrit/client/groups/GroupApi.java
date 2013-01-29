@@ -168,22 +168,6 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|http
-operator|.
-name|client
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
 name|user
 operator|.
 name|client
@@ -239,22 +223,15 @@ operator|.
 name|createObject
 argument_list|()
 decl_stmt|;
-name|String
-name|n
-init|=
-name|URL
-operator|.
-name|encodePathSegment
-argument_list|(
-name|groupName
-argument_list|)
-decl_stmt|;
 operator|new
 name|RestApi
 argument_list|(
 literal|"/groups/"
-operator|+
-name|n
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|groupName
 argument_list|)
 operator|.
 name|ifNoneMatch
@@ -272,7 +249,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add member to a group. */
-DECL|method|addMember (AccountGroup.UUID groupUUID, String member, AsyncCallback<MemberInfo> cb)
+DECL|method|addMember (AccountGroup.UUID group, String member, AsyncCallback<MemberInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -281,7 +258,7 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|,
 name|String
 name|member
@@ -293,27 +270,14 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|String
-name|n
-init|=
-name|URL
+name|members
+argument_list|(
+name|group
+argument_list|)
 operator|.
-name|encodePathSegment
+name|id
 argument_list|(
 name|member
-argument_list|)
-decl_stmt|;
-operator|new
-name|RestApi
-argument_list|(
-name|membersBase
-argument_list|(
-name|groupUUID
-argument_list|)
-operator|+
-literal|"/"
-operator|+
-name|n
 argument_list|)
 operator|.
 name|put
@@ -323,7 +287,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add members to a group. */
-DECL|method|addMembers (AccountGroup.UUID groupUUID, Set<String> members, final AsyncCallback<NativeList<MemberInfo>> cb)
+DECL|method|addMembers (AccountGroup.UUID group, Set<String> members, final AsyncCallback<NativeList<MemberInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -332,7 +296,7 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|,
 name|Set
 argument_list|<
@@ -363,7 +327,7 @@ condition|)
 block|{
 name|addMember
 argument_list|(
-name|groupUUID
+name|group
 argument_list|,
 name|members
 operator|.
@@ -451,15 +415,9 @@ name|member
 argument_list|)
 expr_stmt|;
 block|}
-operator|new
-name|RestApi
+name|members
 argument_list|(
-name|membersBase
-argument_list|(
-name|groupUUID
-argument_list|)
-operator|+
-literal|".add"
+name|group
 argument_list|)
 operator|.
 name|data
@@ -475,7 +433,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove members from a group. */
-DECL|method|removeMembers (AccountGroup.UUID groupUUID, Set<Account.Id> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeMembers (AccountGroup.UUID group, Set<Account.Id> ids, final AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -484,7 +442,7 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|,
 name|Set
 argument_list|<
@@ -525,17 +483,17 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-operator|new
-name|RestApi
+name|members
 argument_list|(
-name|membersBase
-argument_list|(
-name|groupUUID
+name|group
 argument_list|)
-operator|+
-literal|"/"
-operator|+
+operator|.
+name|id
+argument_list|(
 name|u
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 operator|.
 name|delete
@@ -575,15 +533,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-operator|new
-name|RestApi
+name|group
 argument_list|(
-name|membersBase
-argument_list|(
-name|groupUUID
+name|group
 argument_list|)
-operator|+
-literal|".delete"
+operator|.
+name|view
+argument_list|(
+literal|"members.delete"
 argument_list|)
 operator|.
 name|data
@@ -599,7 +556,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Include a group into a group. */
-DECL|method|addIncludedGroup (AccountGroup.UUID groupUUID, String includedGroup, AsyncCallback<GroupInfo> cb)
+DECL|method|addIncludedGroup (AccountGroup.UUID group, String include, AsyncCallback<GroupInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -608,10 +565,10 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|,
 name|String
-name|includedGroup
+name|include
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -620,27 +577,14 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|String
-name|n
-init|=
-name|URL
+name|groups
+argument_list|(
+name|group
+argument_list|)
 operator|.
-name|encodePathSegment
+name|id
 argument_list|(
-name|includedGroup
-argument_list|)
-decl_stmt|;
-operator|new
-name|RestApi
-argument_list|(
-name|includedGroupsBase
-argument_list|(
-name|groupUUID
-argument_list|)
-operator|+
-literal|"/"
-operator|+
-name|n
+name|include
 argument_list|)
 operator|.
 name|put
@@ -650,7 +594,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Include groups into a group. */
-DECL|method|addIncludedGroups (AccountGroup.UUID groupUUID, Set<String> includedGroups, final AsyncCallback<NativeList<GroupInfo>> cb)
+DECL|method|addIncludedGroups (AccountGroup.UUID group, Set<String> includedGroups, final AsyncCallback<NativeList<GroupInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -659,7 +603,7 @@ parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|,
 name|Set
 argument_list|<
@@ -690,7 +634,7 @@ condition|)
 block|{
 name|addIncludedGroup
 argument_list|(
-name|groupUUID
+name|group
 argument_list|,
 name|includedGroups
 operator|.
@@ -778,15 +722,9 @@ name|includedGroup
 argument_list|)
 expr_stmt|;
 block|}
-operator|new
-name|RestApi
+name|groups
 argument_list|(
-name|includedGroupsBase
-argument_list|(
-name|groupUUID
-argument_list|)
-operator|+
-literal|".add"
+name|group
 argument_list|)
 operator|.
 name|data
@@ -801,79 +739,80 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|membersBase (AccountGroup.UUID groupUUID)
+DECL|method|members (AccountGroup.UUID group)
 specifier|private
 specifier|static
-name|String
-name|membersBase
+name|RestApi
+name|members
 parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|)
 block|{
 return|return
-name|base
+name|group
 argument_list|(
-name|groupUUID
+name|group
 argument_list|)
-operator|+
+operator|.
+name|view
+argument_list|(
 literal|"members"
+argument_list|)
 return|;
 block|}
-DECL|method|includedGroupsBase (AccountGroup.UUID groupUUID)
+DECL|method|groups (AccountGroup.UUID group)
 specifier|private
 specifier|static
-name|String
-name|includedGroupsBase
+name|RestApi
+name|groups
 parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|)
 block|{
 return|return
-name|base
+name|group
 argument_list|(
-name|groupUUID
+name|group
 argument_list|)
-operator|+
+operator|.
+name|view
+argument_list|(
 literal|"groups"
+argument_list|)
 return|;
 block|}
-DECL|method|base (AccountGroup.UUID groupUUID)
+DECL|method|group (AccountGroup.UUID group)
 specifier|private
 specifier|static
-name|String
-name|base
+name|RestApi
+name|group
 parameter_list|(
 name|AccountGroup
 operator|.
 name|UUID
-name|groupUUID
+name|group
 parameter_list|)
 block|{
-name|String
-name|id
-init|=
-name|URL
-operator|.
-name|encodePathSegment
+return|return
+operator|new
+name|RestApi
 argument_list|(
-name|groupUUID
+literal|"/groups/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|group
 operator|.
 name|get
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-literal|"/groups/"
-operator|+
-name|id
-operator|+
-literal|"/"
 return|;
 block|}
 DECL|class|MemberInput
