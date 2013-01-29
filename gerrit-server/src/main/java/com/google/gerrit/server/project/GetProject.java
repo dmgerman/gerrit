@@ -104,11 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|Project
+name|Url
 import|;
 end_import
 
@@ -120,11 +120,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|util
+name|client
 operator|.
-name|Url
+name|Project
 import|;
 end_import
 

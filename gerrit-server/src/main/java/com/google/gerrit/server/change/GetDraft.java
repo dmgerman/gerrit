@@ -152,11 +152,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|PatchLineComment
+name|Url
 import|;
 end_import
 
@@ -168,11 +168,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|util
+name|client
 operator|.
-name|Url
+name|PatchLineComment
 import|;
 end_import
 

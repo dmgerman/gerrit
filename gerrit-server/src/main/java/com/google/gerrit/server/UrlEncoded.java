@@ -72,9 +72,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|util
+name|restapi
 operator|.
 name|Url
 import|;

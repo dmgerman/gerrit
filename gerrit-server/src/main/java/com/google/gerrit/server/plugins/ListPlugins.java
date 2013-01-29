@@ -228,9 +228,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|OutputFormat
+name|restapi
+operator|.
+name|Url
 import|;
 end_import
 
@@ -244,9 +246,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
-operator|.
-name|Url
+name|OutputFormat
 import|;
 end_import
 
