@@ -245,6 +245,61 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Rename a group */
+DECL|method|renameGroup (AccountGroup.UUID group, String newName, AsyncCallback<VoidResult> cb)
+specifier|public
+specifier|static
+name|void
+name|renameGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|,
+name|String
+name|newName
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|GroupInput
+name|in
+init|=
+name|GroupInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|name
+argument_list|(
+name|newName
+argument_list|)
+expr_stmt|;
+name|group
+argument_list|(
+name|group
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"name"
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Set description for a group */
 DECL|method|setGroupDescription (AccountGroup.UUID group, String description, AsyncCallback<VoidResult> cb)
 specifier|public
@@ -960,6 +1015,17 @@ name|String
 name|d
 parameter_list|)
 comment|/*-{ if(d)this.description=d; }-*/
+function_decl|;
+DECL|method|name (String n)
+specifier|final
+specifier|native
+name|void
+name|name
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ if(n)this.name=n; }-*/
 function_decl|;
 DECL|method|owner (String o)
 specifier|final
