@@ -658,11 +658,6 @@ name|String
 name|groupOwnerTextBox
 parameter_list|()
 function_decl|;
-DECL|method|groupTypePanel ()
-name|String
-name|groupTypePanel
-parameter_list|()
-function_decl|;
 DECL|method|groupTypeSelectListBox ()
 name|String
 name|groupTypeSelectListBox

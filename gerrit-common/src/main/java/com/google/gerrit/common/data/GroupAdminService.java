@@ -350,31 +350,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|changeGroupType (AccountGroup.Id groupId, AccountGroup.Type newType, AsyncCallback<VoidResult> callback)
-name|void
-name|changeGroupType
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|AccountGroup
-operator|.
-name|Type
-name|newType
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|addGroupInclude (AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID, String incGroupName, AsyncCallback<GroupDetail> callback)
 name|void
 name|addGroupInclude
