@@ -186,104 +186,194 @@ name|TextResource
 name|core
 parameter_list|()
 function_decl|;
+DECL|method|lang_apollo ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-apollo.js"
 argument_list|)
-DECL|method|lang_apollo ()
 name|TextResource
 name|lang_apollo
 parameter_list|()
 function_decl|;
+DECL|method|lang_clj ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-clj.js"
+argument_list|)
+name|TextResource
+name|lang_clj
+parameter_list|()
+function_decl|;
+DECL|method|lang_css ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-css.js"
 argument_list|)
-DECL|method|lang_css ()
 name|TextResource
 name|lang_css
 parameter_list|()
 function_decl|;
+DECL|method|lang_dart ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-dart.js"
+argument_list|)
+name|TextResource
+name|lang_dart
+parameter_list|()
+function_decl|;
+DECL|method|lang_go ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-go.js"
+argument_list|)
+name|TextResource
+name|lang_go
+parameter_list|()
+function_decl|;
+DECL|method|lang_hs ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-hs.js"
 argument_list|)
-DECL|method|lang_hs ()
 name|TextResource
 name|lang_hs
 parameter_list|()
 function_decl|;
+DECL|method|lang_lisp ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-lisp.js"
 argument_list|)
-DECL|method|lang_lisp ()
 name|TextResource
 name|lang_lisp
 parameter_list|()
 function_decl|;
+DECL|method|lang_lua ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-lua.js"
 argument_list|)
-DECL|method|lang_lua ()
 name|TextResource
 name|lang_lua
 parameter_list|()
 function_decl|;
+DECL|method|lang_ml ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-ml.js"
 argument_list|)
-DECL|method|lang_ml ()
 name|TextResource
 name|lang_ml
 parameter_list|()
 function_decl|;
+DECL|method|lang_n ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-n.js"
+argument_list|)
+name|TextResource
+name|lang_n
+parameter_list|()
+function_decl|;
+DECL|method|lang_proto ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-proto.js"
 argument_list|)
-DECL|method|lang_proto ()
 name|TextResource
 name|lang_proto
 parameter_list|()
 function_decl|;
+DECL|method|lang_scala ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-scala.js"
+argument_list|)
+name|TextResource
+name|lang_scala
+parameter_list|()
+function_decl|;
+DECL|method|lang_sql ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-sql.js"
 argument_list|)
-DECL|method|lang_sql ()
 name|TextResource
 name|lang_sql
 parameter_list|()
 function_decl|;
+DECL|method|lang_tex ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-tex.js"
+argument_list|)
+name|TextResource
+name|lang_tex
+parameter_list|()
+function_decl|;
+DECL|method|lang_vb ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-vb.js"
 argument_list|)
-DECL|method|lang_vb ()
 name|TextResource
 name|lang_vb
 parameter_list|()
 function_decl|;
+DECL|method|lang_vhdl ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-vhdl.js"
+argument_list|)
+name|TextResource
+name|lang_vhdl
+parameter_list|()
+function_decl|;
+DECL|method|lang_wiki ()
 annotation|@
 name|Source
 argument_list|(
 literal|"lang-wiki.js"
 argument_list|)
-DECL|method|lang_wiki ()
 name|TextResource
 name|lang_wiki
+parameter_list|()
+function_decl|;
+DECL|method|lang_xq ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-xq.js"
+argument_list|)
+name|TextResource
+name|lang_xq
+parameter_list|()
+function_decl|;
+DECL|method|lang_yaml ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-yaml.js"
+argument_list|)
+name|TextResource
+name|lang_yaml
 parameter_list|()
 function_decl|;
 block|}
