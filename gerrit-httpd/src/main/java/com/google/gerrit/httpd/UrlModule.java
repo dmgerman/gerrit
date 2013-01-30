@@ -542,11 +542,19 @@ specifier|final
 name|UrlConfig
 name|cfg
 decl_stmt|;
-DECL|method|UrlModule (UrlConfig cfg)
+DECL|field|uiOptions
+specifier|private
+name|GerritUiOptions
+name|uiOptions
+decl_stmt|;
+DECL|method|UrlModule (UrlConfig cfg, GerritUiOptions uiOptions)
 name|UrlModule
 parameter_list|(
 name|UrlConfig
 name|cfg
+parameter_list|,
+name|GerritUiOptions
+name|uiOptions
 parameter_list|)
 block|{
 name|this
@@ -554,6 +562,12 @@ operator|.
 name|cfg
 operator|=
 name|cfg
+expr_stmt|;
+name|this
+operator|.
+name|uiOptions
+operator|=
+name|uiOptions
 expr_stmt|;
 block|}
 annotation|@
@@ -598,6 +612,14 @@ argument_list|(
 name|SINGLETON
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|uiOptions
+operator|.
+name|enableDefaultUi
+argument_list|()
+condition|)
+block|{
 name|serve
 argument_list|(
 literal|"/"
@@ -633,6 +655,7 @@ name|legacyGerritScreen
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|serve
 argument_list|(
 literal|"/cat/*"

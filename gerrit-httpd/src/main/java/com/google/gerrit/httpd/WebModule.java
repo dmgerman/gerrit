@@ -70,20 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
-operator|.
-name|Scopes
-operator|.
-name|SINGLETON
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -93,6 +79,20 @@ operator|.
 name|PrivateInternals_DynamicTypes
 operator|.
 name|registerInParentInjectors
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Scopes
+operator|.
+name|SINGLETON
 import|;
 end_import
 
@@ -506,6 +506,20 @@ name|google
 operator|.
 name|inject
 operator|.
+name|name
+operator|.
+name|Named
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|servlet
 operator|.
 name|RequestScoped
@@ -580,9 +594,15 @@ specifier|final
 name|GitWebConfig
 name|gitWebConfig
 decl_stmt|;
+DECL|field|uiOptions
+specifier|private
+specifier|final
+name|GerritUiOptions
+name|uiOptions
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebModule (final AuthConfig authConfig, final UrlModule.UrlConfig urlConfig, @CanonicalWebUrl @Nullable final String canonicalUrl, final Injector creatingInjector)
+DECL|method|WebModule (final AuthConfig authConfig, final UrlModule.UrlConfig urlConfig, @CanonicalWebUrl @Nullable final String canonicalUrl, GerritUiOptions uiOptions, final Injector creatingInjector)
 name|WebModule
 parameter_list|(
 specifier|final
@@ -602,6 +622,9 @@ name|Nullable
 specifier|final
 name|String
 name|canonicalUrl
+parameter_list|,
+name|GerritUiOptions
+name|uiOptions
 parameter_list|,
 specifier|final
 name|Injector
@@ -634,6 +657,12 @@ name|startsWith
 argument_list|(
 literal|"https:"
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|uiOptions
+operator|=
+name|uiOptions
 expr_stmt|;
 name|this
 operator|.
@@ -828,6 +857,8 @@ operator|new
 name|UrlModule
 argument_list|(
 name|urlConfig
+argument_list|,
+name|uiOptions
 argument_list|)
 argument_list|)
 expr_stmt|;
