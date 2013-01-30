@@ -633,6 +633,8 @@ comment|// Reference to a patch set is visible if the change is visible.
 comment|//
 if|if
 condition|(
+name|showChanges
+operator|&&
 name|visibleChanges
 operator|.
 name|contains
