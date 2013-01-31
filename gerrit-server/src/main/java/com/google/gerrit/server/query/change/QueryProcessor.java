@@ -1678,6 +1678,9 @@ name|approvalsMap
 argument_list|(
 name|db
 argument_list|)
+operator|.
+name|asMap
+argument_list|()
 else|:
 literal|null
 argument_list|,
@@ -1715,6 +1718,9 @@ name|approvalsMap
 argument_list|(
 name|db
 argument_list|)
+operator|.
+name|asMap
+argument_list|()
 else|:
 literal|null
 argument_list|)
