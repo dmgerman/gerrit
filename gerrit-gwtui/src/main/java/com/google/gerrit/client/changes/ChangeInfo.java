@@ -78,6 +78,38 @@ name|client
 operator|.
 name|rpc
 operator|.
+name|NativeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NativeString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
 name|Natives
 import|;
 end_import
@@ -152,6 +184,38 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtjsonrpc
 operator|.
 name|client
@@ -192,6 +256,31 @@ name|ChangeInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|init ()
+specifier|public
+specifier|final
+name|void
+name|init
+parameter_list|()
+block|{
+if|if
+condition|(
+name|labels0
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|labels0
+argument_list|()
+operator|.
+name|copyKeysIntoChildren
+argument_list|(
+literal|"_name"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|project_name_key ()
 specifier|public
 specifier|final
@@ -493,7 +582,10 @@ DECL|method|labels0 ()
 specifier|private
 specifier|final
 specifier|native
-name|JavaScriptObject
+name|NativeMap
+argument_list|<
+name|LabelInfo
+argument_list|>
 name|labels0
 parameter_list|()
 comment|/*-{ return this.labels; }-*/
@@ -509,6 +601,50 @@ name|String
 name|n
 parameter_list|)
 comment|/*-{ return this.labels[n]; }-*/
+function_decl|;
+DECL|method|_permitted_labels ()
+specifier|private
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|JavaScriptObject
+argument_list|>
+name|_permitted_labels
+parameter_list|()
+comment|/*-{ return this.permitted_labels; }-*/
+function_decl|;
+DECL|method|permitted_labels ()
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|permitted_labels
+parameter_list|()
+block|{
+return|return
+name|Natives
+operator|.
+name|keys
+argument_list|(
+name|_permitted_labels
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|permitted_values (String n)
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|permitted_values
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.permitted_labels[n]; }-*/
 function_decl|;
 DECL|method|_number ()
 specifier|final
@@ -685,6 +821,62 @@ name|disliked
 parameter_list|()
 comment|/*-{ return this.disliked; }-*/
 function_decl|;
+DECL|method|all ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|ApprovalInfo
+argument_list|>
+name|all
+parameter_list|()
+comment|/*-{ return this.all; }-*/
+function_decl|;
+DECL|method|_values ()
+specifier|private
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|NativeString
+argument_list|>
+name|_values
+parameter_list|()
+comment|/*-{ return this.values; }-*/
+function_decl|;
+DECL|method|values ()
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|values
+parameter_list|()
+block|{
+return|return
+name|Natives
+operator|.
+name|keys
+argument_list|(
+name|_values
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|value_text (String n)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|value_text
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.values[n]; }-*/
+function_decl|;
 DECL|method|optional ()
 specifier|public
 specifier|final
@@ -705,6 +897,56 @@ function_decl|;
 DECL|method|LabelInfo ()
 specifier|protected
 name|LabelInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|ApprovalInfo
+specifier|public
+specifier|static
+class|class
+name|ApprovalInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|_account_id ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|_account_id
+parameter_list|()
+comment|/*-{ return this._account_id || 0; }-*/
+function_decl|;
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|name
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|email ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|email
+parameter_list|()
+comment|/*-{ return this.email; }-*/
+function_decl|;
+DECL|method|value ()
+specifier|public
+specifier|final
+specifier|native
+name|short
+name|value
+parameter_list|()
+comment|/*-{ return this.value; }-*/
+function_decl|;
+DECL|method|ApprovalInfo ()
+specifier|protected
+name|ApprovalInfo
 parameter_list|()
 block|{     }
 block|}

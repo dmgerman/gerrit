@@ -92,6 +92,12 @@ argument_list|(
 literal|0
 argument_list|)
 block|,
+DECL|enumConstant|DETAILED_LABELS
+name|DETAILED_LABELS
+argument_list|(
+literal|8
+argument_list|)
+block|,
 comment|/** Return information on the current patch set of the change. */
 DECL|enumConstant|CURRENT_REVISION
 name|CURRENT_REVISION
