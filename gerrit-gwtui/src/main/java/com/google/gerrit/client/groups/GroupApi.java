@@ -455,6 +455,61 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Set the options for a group */
+DECL|method|setGroupOptions (AccountGroup.UUID group, boolean isVisibleToAll, AsyncCallback<VoidResult> cb)
+specifier|public
+specifier|static
+name|void
+name|setGroupOptions
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|,
+name|boolean
+name|isVisibleToAll
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|GroupOptionsInput
+name|in
+init|=
+name|GroupOptionsInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|isVisibleToAll
+argument_list|(
+name|isVisibleToAll
+argument_list|)
+expr_stmt|;
+name|group
+argument_list|(
+name|group
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"options"
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Add member to a group. */
 DECL|method|addMember (AccountGroup.UUID group, String member, AsyncCallback<MemberInfo> cb)
 specifier|public
@@ -1197,6 +1252,45 @@ block|}
 DECL|method|GroupInput ()
 specifier|protected
 name|GroupInput
+parameter_list|()
+block|{     }
+block|}
+DECL|class|GroupOptionsInput
+specifier|private
+specifier|static
+class|class
+name|GroupOptionsInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|isVisibleToAll (boolean v)
+specifier|final
+specifier|native
+name|void
+name|isVisibleToAll
+parameter_list|(
+name|boolean
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.is_visible_to_all=v; }-*/
+function_decl|;
+DECL|method|create ()
+specifier|static
+name|GroupOptionsInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|GroupOptionsInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|GroupOptionsInput ()
+specifier|protected
+name|GroupOptionsInput
 parameter_list|()
 block|{     }
 block|}

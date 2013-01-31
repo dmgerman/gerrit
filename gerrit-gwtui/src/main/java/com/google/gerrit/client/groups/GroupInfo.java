@@ -185,14 +185,14 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|isVisibleToAll ()
+DECL|method|options ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
-name|isVisibleToAll
+name|GroupOptionsInfo
+name|options
 parameter_list|()
-comment|/*-{ return this['visible_to_all'] ? true : false; }-*/
+comment|/*-{ return this.options; }-*/
 function_decl|;
 DECL|method|description ()
 specifier|public
@@ -276,6 +276,29 @@ specifier|protected
 name|GroupInfo
 parameter_list|()
 block|{   }
+DECL|class|GroupOptionsInfo
+specifier|public
+specifier|static
+class|class
+name|GroupOptionsInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|isVisibleToAll ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isVisibleToAll
+parameter_list|()
+comment|/*-{ return this['is_visible_to_all'] ? true : false; }-*/
+function_decl|;
+DECL|method|GroupOptionsInfo ()
+specifier|protected
+name|GroupOptionsInfo
+parameter_list|()
+block|{     }
+block|}
 block|}
 end_class
 

@@ -680,7 +680,9 @@ name|firstNonNull
 argument_list|(
 name|info
 operator|.
-name|visibleToAll
+name|options
+operator|.
+name|isVisibleToAll
 argument_list|,
 name|Boolean
 operator|.
