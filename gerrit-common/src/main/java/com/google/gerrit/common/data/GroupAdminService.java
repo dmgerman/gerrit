@@ -304,29 +304,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|changeGroupOwner (AccountGroup.Id groupId, String newOwnerName, AsyncCallback<VoidResult> callback)
-name|void
-name|changeGroupOwner
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|String
-name|newOwnerName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|renameGroup (AccountGroup.Id groupId, String newName, AsyncCallback<GroupDetail> callback)
 name|void
 name|renameGroup
