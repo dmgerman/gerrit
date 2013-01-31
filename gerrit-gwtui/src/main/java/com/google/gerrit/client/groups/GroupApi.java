@@ -329,6 +329,61 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Set owner for a group */
+DECL|method|setGroupOwner (AccountGroup.UUID group, String owner, AsyncCallback<VoidResult> cb)
+specifier|public
+specifier|static
+name|void
+name|setGroupOwner
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|,
+name|String
+name|owner
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|GroupInput
+name|in
+init|=
+name|GroupInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|owner
+argument_list|(
+name|owner
+argument_list|)
+expr_stmt|;
+name|group
+argument_list|(
+name|group
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"owner"
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Add member to a group. */
 DECL|method|addMember (AccountGroup.UUID group, String member, AsyncCallback<MemberInfo> cb)
 specifier|public
@@ -905,6 +960,17 @@ name|String
 name|d
 parameter_list|)
 comment|/*-{ if(d)this.description=d; }-*/
+function_decl|;
+DECL|method|owner (String o)
+specifier|final
+specifier|native
+name|void
+name|owner
+parameter_list|(
+name|String
+name|o
+parameter_list|)
+comment|/*-{ if(o)this.owner=o; }-*/
 function_decl|;
 DECL|method|create ()
 specifier|static
