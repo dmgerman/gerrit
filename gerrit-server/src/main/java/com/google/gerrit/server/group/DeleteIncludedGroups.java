@@ -1117,7 +1117,7 @@ operator|.
 name|getMember
 argument_list|()
 operator|.
-name|toString
+name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
