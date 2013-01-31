@@ -135,11 +135,6 @@ specifier|public
 name|AccountInfoCache
 name|accounts
 decl_stmt|;
-DECL|field|groups
-specifier|public
-name|GroupInfoCache
-name|groups
-decl_stmt|;
 DECL|field|group
 specifier|public
 name|AccountGroup
@@ -186,20 +181,6 @@ name|c
 parameter_list|)
 block|{
 name|accounts
-operator|=
-name|c
-expr_stmt|;
-block|}
-DECL|method|setGroups (GroupInfoCache c)
-specifier|public
-name|void
-name|setGroups
-parameter_list|(
-name|GroupInfoCache
-name|c
-parameter_list|)
-block|{
-name|groups
 operator|=
 name|c
 expr_stmt|;

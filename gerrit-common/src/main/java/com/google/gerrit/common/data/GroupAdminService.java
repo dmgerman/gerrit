@@ -274,34 +274,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|addGroupInclude (AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID, String incGroupName, AsyncCallback<GroupDetail> callback)
-name|void
-name|addGroupInclude
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|AccountGroup
-operator|.
-name|UUID
-name|incGroupUUID
-parameter_list|,
-name|String
-name|incGroupName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|GroupDetail
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 

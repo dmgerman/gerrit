@@ -150,22 +150,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGroupIncludeByUuid
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|core
@@ -938,7 +922,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove included groups from a group. */
-DECL|method|removeIncludedGroups (AccountGroup.UUID group, Set<AccountGroupIncludeByUuid.Key> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeIncludedGroups (AccountGroup.UUID group, Set<AccountGroup.UUID> ids, final AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -951,9 +935,9 @@ name|group
 parameter_list|,
 name|Set
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroup
 operator|.
-name|Key
+name|UUID
 argument_list|>
 name|ids
 parameter_list|,
@@ -975,9 +959,9 @@ operator|==
 literal|1
 condition|)
 block|{
-name|AccountGroupIncludeByUuid
+name|AccountGroup
 operator|.
-name|Key
+name|UUID
 name|g
 init|=
 name|ids
@@ -996,9 +980,6 @@ operator|.
 name|id
 argument_list|(
 name|g
-operator|.
-name|getIncludeUUID
-argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -1022,9 +1003,9 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|AccountGroupIncludeByUuid
+name|AccountGroup
 operator|.
-name|Key
+name|UUID
 name|g
 range|:
 name|ids
@@ -1035,9 +1016,6 @@ operator|.
 name|add_group
 argument_list|(
 name|g
-operator|.
-name|getIncludeUUID
-argument_list|()
 operator|.
 name|get
 argument_list|()

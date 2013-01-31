@@ -608,16 +608,6 @@ name|isOwner
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|detail
-operator|.
-name|setGroups
-argument_list|(
-name|gic
-operator|.
-name|create
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 name|detail
 return|;
