@@ -452,13 +452,11 @@ name|labels
 parameter_list|()
 block|{
 return|return
-name|Natives
-operator|.
-name|keys
-argument_list|(
 name|labels0
 argument_list|()
-argument_list|)
+operator|.
+name|keySet
+argument_list|()
 return|;
 block|}
 DECL|method|id ()
