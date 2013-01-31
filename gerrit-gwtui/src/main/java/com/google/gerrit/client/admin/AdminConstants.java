@@ -270,11 +270,6 @@ name|String
 name|headingProjectOptions
 parameter_list|()
 function_decl|;
-DECL|method|headingGroupType ()
-name|String
-name|headingGroupType
-parameter_list|()
-function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
@@ -353,21 +348,6 @@ function_decl|;
 DECL|method|projectState_HIDDEN ()
 name|String
 name|projectState_HIDDEN
-parameter_list|()
-function_decl|;
-DECL|method|groupType_SYSTEM ()
-name|String
-name|groupType_SYSTEM
-parameter_list|()
-function_decl|;
-DECL|method|groupType_INTERNAL ()
-name|String
-name|groupType_INTERNAL
-parameter_list|()
-function_decl|;
-DECL|method|groupType_LDAP ()
-name|String
-name|groupType_LDAP
 parameter_list|()
 function_decl|;
 DECL|method|columnMember ()
