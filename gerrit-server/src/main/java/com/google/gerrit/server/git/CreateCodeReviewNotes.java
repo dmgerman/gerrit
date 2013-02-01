@@ -190,6 +190,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -527,12 +543,17 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ReviewDb reviewDb, Repository db)
+DECL|method|create (ReviewDb reviewDb, Project.NameKey project, Repository db)
 name|CreateCodeReviewNotes
 name|create
 parameter_list|(
 name|ReviewDb
 name|reviewDb
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 name|Repository
 name|db
@@ -582,6 +603,14 @@ specifier|final
 name|ReviewDb
 name|schema
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -613,7 +642,7 @@ name|notesBranchUtilFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateCodeReviewNotes ( @erritPersonIdent final PersonIdent gerritIdent, final AccountCache accountCache, final ApprovalTypes approvalTypes, final @Nullable @CanonicalWebUrl String canonicalWebUrl, final @AnonymousCowardName String anonymousCowardName, final NotesBranchUtil.Factory notesBranchUtilFactory, final @Assisted ReviewDb reviewDb, final @Assisted Repository db)
+DECL|method|CreateCodeReviewNotes ( @erritPersonIdent final PersonIdent gerritIdent, final AccountCache accountCache, final ApprovalTypes approvalTypes, final @Nullable @CanonicalWebUrl String canonicalWebUrl, final @AnonymousCowardName String anonymousCowardName, final NotesBranchUtil.Factory notesBranchUtilFactory, final @Assisted ReviewDb reviewDb, final @Assisted Project.NameKey project, final @Assisted Repository db)
 name|CreateCodeReviewNotes
 parameter_list|(
 annotation|@
@@ -655,6 +684,14 @@ annotation|@
 name|Assisted
 name|ReviewDb
 name|reviewDb
+parameter_list|,
+specifier|final
+annotation|@
+name|Assisted
+name|Project
+operator|.
+name|NameKey
+name|project
 parameter_list|,
 specifier|final
 annotation|@
@@ -702,6 +739,12 @@ expr_stmt|;
 name|schema
 operator|=
 name|reviewDb
+expr_stmt|;
+name|this
+operator|.
+name|project
+operator|=
+name|project
 expr_stmt|;
 name|this
 operator|.
@@ -827,6 +870,8 @@ name|notesBranchUtilFactory
 operator|.
 name|create
 argument_list|(
+name|project
+argument_list|,
 name|db
 argument_list|,
 name|inserter
@@ -1045,6 +1090,8 @@ name|notesBranchUtilFactory
 operator|.
 name|create
 argument_list|(
+name|project
+argument_list|,
 name|db
 argument_list|,
 name|inserter

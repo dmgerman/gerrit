@@ -4768,6 +4768,11 @@ name|create
 argument_list|(
 name|db
 argument_list|,
+name|destBranch
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
 name|repo
 argument_list|)
 decl_stmt|;
@@ -4811,20 +4816,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|replication
-operator|.
-name|fire
-argument_list|(
-name|destBranch
-operator|.
-name|getParentKey
-argument_list|()
-argument_list|,
-name|GitRepositoryManager
-operator|.
-name|REFS_NOTES_REVIEW
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|updateSubscriptions (final List<Change> submitted)
 specifier|private
