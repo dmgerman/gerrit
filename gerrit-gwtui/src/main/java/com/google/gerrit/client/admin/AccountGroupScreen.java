@@ -448,6 +448,23 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getOwnerGroupUUID ()
+specifier|protected
+name|AccountGroup
+operator|.
+name|UUID
+name|getOwnerGroupUUID
+parameter_list|()
+block|{
+return|return
+name|groupDetail
+operator|.
+name|group
+operator|.
+name|getOwnerGroupUUID
+argument_list|()
+return|;
+block|}
 DECL|method|setMembersTabVisible (final boolean visible)
 specifier|protected
 name|void
