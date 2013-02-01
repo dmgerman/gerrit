@@ -789,9 +789,15 @@ literal|0
 operator|<=
 name|lf
 operator|&&
+operator|(
 name|lf
 operator|<
 name|tagStart
+operator|||
+name|tagStart
+operator|<
+literal|0
+operator|)
 condition|)
 block|{
 if|if
