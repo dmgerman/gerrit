@@ -385,7 +385,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Set owner for a group */
-DECL|method|setGroupOwner (AccountGroup.UUID group, String owner, AsyncCallback<VoidResult> cb)
+DECL|method|setGroupOwner (AccountGroup.UUID group, String owner, AsyncCallback<GroupInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -401,7 +401,7 @@ name|owner
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|VoidResult
+name|GroupInfo
 argument_list|>
 name|cb
 parameter_list|)
