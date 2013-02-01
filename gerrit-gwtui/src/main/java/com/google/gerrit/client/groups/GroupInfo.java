@@ -221,14 +221,14 @@ name|group_id
 parameter_list|()
 comment|/*-{ return this.group_id; }-*/
 function_decl|;
-DECL|method|owner_uuid ()
+DECL|method|owner_id ()
 specifier|private
 specifier|final
 specifier|native
 name|String
-name|owner_uuid
+name|owner_id
 parameter_list|()
-comment|/*-{ return this.owner_uuid; }-*/
+comment|/*-{ return this.owner_id; }-*/
 function_decl|;
 DECL|method|getOwnerUUID ()
 specifier|public
@@ -242,7 +242,7 @@ block|{
 name|String
 name|owner
 init|=
-name|owner_uuid
+name|owner_id
 argument_list|()
 decl_stmt|;
 if|if
