@@ -230,6 +230,18 @@ name|owner_id
 parameter_list|()
 comment|/*-{ return this.owner_id; }-*/
 function_decl|;
+DECL|method|owner_id (String o)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|owner_id
+parameter_list|(
+name|String
+name|o
+parameter_list|)
+comment|/*-{ if(o)this.owner_id=o; }-*/
+function_decl|;
 DECL|method|getOwnerUUID ()
 specifier|public
 specifier|final
@@ -270,6 +282,32 @@ block|}
 return|return
 literal|null
 return|;
+block|}
+DECL|method|setOwnerUUID (AccountGroup.UUID uuid)
+specifier|public
+specifier|final
+name|void
+name|setOwnerUUID
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+name|owner_id
+argument_list|(
+name|URL
+operator|.
+name|encodePathSegment
+argument_list|(
+name|uuid
+operator|.
+name|get
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|GroupInfo ()
 specifier|protected
