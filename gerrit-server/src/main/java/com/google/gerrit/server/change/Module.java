@@ -647,6 +647,17 @@ parameter_list|()
 block|{
 name|factory
 argument_list|(
+name|AccountInfo
+operator|.
+name|Loader
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|EmailReviewComments
 operator|.
 name|Factory

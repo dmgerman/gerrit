@@ -103,6 +103,17 @@ name|Id
 name|accountId
 parameter_list|)
 function_decl|;
+DECL|method|getIfPresent (Account.Id accountId)
+specifier|public
+name|AccountState
+name|getIfPresent
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
+function_decl|;
 DECL|method|getByUsername (String username)
 specifier|public
 name|AccountState

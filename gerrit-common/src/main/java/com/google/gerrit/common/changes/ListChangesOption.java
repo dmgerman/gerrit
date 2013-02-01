@@ -130,6 +130,13 @@ name|ALL_FILES
 argument_list|(
 literal|6
 argument_list|)
+block|,
+comment|/** If accounts are included, include detailed account info. */
+DECL|enumConstant|DETAILED_ACCOUNTS
+name|DETAILED_ACCOUNTS
+argument_list|(
+literal|7
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

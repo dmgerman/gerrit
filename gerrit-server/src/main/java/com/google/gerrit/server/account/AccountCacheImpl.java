@@ -651,6 +651,26 @@ argument_list|)
 return|;
 block|}
 block|}
+DECL|method|getIfPresent (Account.Id accountId)
+specifier|public
+name|AccountState
+name|getIfPresent
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|accountId
+parameter_list|)
+block|{
+return|return
+name|byId
+operator|.
+name|getIfPresent
+argument_list|(
+name|accountId
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getByUsername (String username)
