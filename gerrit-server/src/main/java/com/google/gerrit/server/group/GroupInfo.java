@@ -172,10 +172,10 @@ specifier|public
 name|String
 name|url
 decl_stmt|;
-DECL|field|visibleToAll
+DECL|field|options
 specifier|public
-name|Boolean
-name|visibleToAll
+name|GroupOptionsInfo
+name|options
 decl_stmt|;
 comment|// These fields are only supplied for internal groups.
 DECL|field|description
@@ -242,16 +242,13 @@ name|getUrl
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|visibleToAll
+name|options
 operator|=
+operator|new
+name|GroupOptionsInfo
+argument_list|(
 name|group
-operator|.
-name|isVisibleToAll
-argument_list|()
-condition|?
-literal|true
-else|:
-literal|null
+argument_list|)
 expr_stmt|;
 name|AccountGroup
 name|internalGroup

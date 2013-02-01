@@ -968,6 +968,9 @@ if|if
 condition|(
 name|k
 operator|.
+name|options
+argument_list|()
+operator|.
 name|isVisibleToAll
 argument_list|()
 condition|)
