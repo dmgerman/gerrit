@@ -1122,63 +1122,12 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setListIdHeader
-argument_list|()
-expr_stmt|;
 name|setChangeUrlHeader
 argument_list|()
 expr_stmt|;
 name|setCommitIdHeader
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|setListIdHeader ()
-specifier|private
-name|void
-name|setListIdHeader
-parameter_list|()
-throws|throws
-name|EmailException
-block|{
-comment|// Set a reasonable list id so that filters can be used to sort messages
-name|setVHeader
-argument_list|(
-literal|"List-Id"
-argument_list|,
-literal|"<$email.listId.replace('@', '.')>"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|getSettingsUrl
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-name|setVHeader
-argument_list|(
-literal|"List-Unsubscribe"
-argument_list|,
-literal|"<$email.settingsUrl>"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|method|getListId ()
-specifier|public
-name|String
-name|getListId
-parameter_list|()
-throws|throws
-name|EmailException
-block|{
-return|return
-name|velocify
-argument_list|(
-literal|"gerrit-$projectName.replace('/', '-')@$email.gerritHost"
-argument_list|)
-return|;
 block|}
 DECL|method|setChangeUrlHeader ()
 specifier|private
