@@ -251,29 +251,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|changeGroupOptions (AccountGroup.Id groupId, GroupOptions groupOptions, AsyncCallback<VoidResult> callback)
-name|void
-name|changeGroupOptions
-parameter_list|(
-name|AccountGroup
-operator|.
-name|Id
-name|groupId
-parameter_list|,
-name|GroupOptions
-name|groupOptions
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|VoidResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 
