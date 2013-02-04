@@ -2615,6 +2615,23 @@ name|info
 argument_list|,
 name|i
 argument_list|)
+operator|==
+literal|0
+condition|)
+block|{
+comment|// group is already contained in the table
+return|return;
+block|}
+if|if
+condition|(
+name|c
+operator|.
+name|compare
+argument_list|(
+name|info
+argument_list|,
+name|i
+argument_list|)
 operator|<
 literal|0
 condition|)
