@@ -220,12 +220,12 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"queryProjectLink.png"
+literal|"queryIcon.png"
 argument_list|)
-DECL|method|queryProjectLink ()
+DECL|method|queryIcon ()
 specifier|public
 name|ImageResource
-name|queryProjectLink
+name|queryIcon
 parameter_list|()
 function_decl|;
 annotation|@

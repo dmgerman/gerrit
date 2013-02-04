@@ -213,7 +213,7 @@ name|Gerrit
 operator|.
 name|RESOURCES
 operator|.
-name|queryProjectLink
+name|queryIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
