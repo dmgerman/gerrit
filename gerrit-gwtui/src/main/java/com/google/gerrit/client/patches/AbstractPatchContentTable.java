@@ -1374,7 +1374,7 @@ if|if
 condition|(
 name|headerSideA
 operator|.
-name|isFile
+name|isFileOrCommitMessage
 argument_list|()
 condition|)
 block|{
@@ -1437,7 +1437,7 @@ if|if
 condition|(
 name|headerSideB
 operator|.
-name|isFile
+name|isFileOrCommitMessage
 argument_list|()
 condition|)
 block|{
