@@ -540,6 +540,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 DECL|class|AccountGroupMembersScreen
 specifier|public
@@ -2551,18 +2561,22 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-specifier|public
+specifier|private
 name|String
 name|nullToEmpty
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|str
 parameter_list|)
 block|{
 return|return
+operator|(
 name|str
 operator|==
 literal|null
+operator|)
 condition|?
 literal|""
 else|:
@@ -2609,9 +2623,10 @@ name|left
 operator|+
 name|right
 operator|)
-operator|/
-literal|2
+operator|>>>
+literal|1
 decl_stmt|;
+comment|// (left+right)/2
 name|GroupInfo
 name|i
 init|=
