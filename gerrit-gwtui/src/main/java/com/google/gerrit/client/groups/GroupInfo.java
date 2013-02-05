@@ -291,7 +291,7 @@ specifier|native
 name|boolean
 name|isVisibleToAll
 parameter_list|()
-comment|/*-{ return this['is_visible_to_all'] ? true : false; }-*/
+comment|/*-{ return this['visible_to_all'] ? true : false; }-*/
 function_decl|;
 DECL|method|GroupOptionsInfo ()
 specifier|protected

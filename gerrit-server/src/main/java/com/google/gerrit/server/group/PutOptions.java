@@ -266,9 +266,9 @@ specifier|static
 class|class
 name|Input
 block|{
-DECL|field|isVisibleToAll
+DECL|field|visibleToAll
 name|Boolean
-name|isVisibleToAll
+name|visibleToAll
 decl_stmt|;
 block|}
 DECL|field|groupCache
@@ -388,14 +388,14 @@ if|if
 condition|(
 name|input
 operator|.
-name|isVisibleToAll
+name|visibleToAll
 operator|==
 literal|null
 condition|)
 block|{
 name|input
 operator|.
-name|isVisibleToAll
+name|visibleToAll
 operator|=
 literal|false
 expr_stmt|;
@@ -438,7 +438,7 @@ name|setVisibleToAll
 argument_list|(
 name|input
 operator|.
-name|isVisibleToAll
+name|visibleToAll
 argument_list|)
 expr_stmt|;
 name|db

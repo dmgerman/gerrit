@@ -111,10 +111,10 @@ name|kind
 init|=
 literal|"gerritcodereview#groupoptions"
 decl_stmt|;
-DECL|field|isVisibleToAll
+DECL|field|visibleToAll
 specifier|public
 name|Boolean
-name|isVisibleToAll
+name|visibleToAll
 decl_stmt|;
 DECL|method|GroupOptionsInfo (GroupDescription.Basic group)
 specifier|public
@@ -126,7 +126,7 @@ name|Basic
 name|group
 parameter_list|)
 block|{
-name|isVisibleToAll
+name|visibleToAll
 operator|=
 name|group
 operator|.
@@ -146,7 +146,7 @@ name|AccountGroup
 name|group
 parameter_list|)
 block|{
-name|isVisibleToAll
+name|visibleToAll
 operator|=
 name|group
 operator|.

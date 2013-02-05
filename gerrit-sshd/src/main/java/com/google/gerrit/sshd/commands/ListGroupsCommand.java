@@ -682,7 +682,7 @@ name|info
 operator|.
 name|options
 operator|.
-name|isVisibleToAll
+name|visibleToAll
 argument_list|,
 name|Boolean
 operator|.
