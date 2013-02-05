@@ -628,7 +628,7 @@ name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
-literal|"<lf>\n"
+literal|" \n"
 argument_list|)
 expr_stmt|;
 name|html
@@ -647,7 +647,7 @@ name|html
 operator|.
 name|replace
 argument_list|(
-literal|"<lf>\n"
+literal|" \n"
 argument_list|,
 literal|"\n"
 argument_list|)
