@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ApprovalCategory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -131,9 +115,7 @@ specifier|private
 specifier|transient
 name|Map
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
 name|ApprovalType
 argument_list|>
@@ -171,7 +153,7 @@ name|approvalTypes
 operator|=
 name|approvals
 expr_stmt|;
-name|byCategory
+name|byId
 argument_list|()
 expr_stmt|;
 block|}
@@ -188,20 +170,17 @@ return|return
 name|approvalTypes
 return|;
 block|}
-DECL|method|byId (final ApprovalCategory.Id id)
+DECL|method|byId (String id)
 specifier|public
 name|ApprovalType
 name|byId
 parameter_list|(
-specifier|final
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 name|id
 parameter_list|)
 block|{
 return|return
-name|byCategory
+name|byId
 argument_list|()
 operator|.
 name|get
@@ -210,17 +189,15 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|byCategory ()
+DECL|method|byId ()
 specifier|private
 name|Map
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
 name|ApprovalType
 argument_list|>
-name|byCategory
+name|byId
 parameter_list|()
 block|{
 if|if
@@ -235,9 +212,7 @@ operator|=
 operator|new
 name|HashMap
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
 name|ApprovalType
 argument_list|>
@@ -264,9 +239,6 @@ operator|.
 name|put
 argument_list|(
 name|t
-operator|.
-name|getCategory
-argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -353,10 +325,7 @@ name|put
 argument_list|(
 name|t
 operator|.
-name|getCategory
-argument_list|()
-operator|.
-name|getLabelName
+name|getName
 argument_list|()
 operator|.
 name|toLowerCase

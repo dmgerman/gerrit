@@ -192,9 +192,6 @@ literal|null
 condition|?
 name|at
 operator|.
-name|getCategory
-argument_list|()
-operator|.
 name|getPosition
 argument_list|()
 else|:

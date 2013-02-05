@@ -78,22 +78,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ApprovalCategory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSetApproval
 import|;
 end_import
@@ -142,9 +126,7 @@ DECL|field|approvals
 specifier|protected
 name|Map
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
 name|PatchSetApproval
 argument_list|>
@@ -172,9 +154,7 @@ operator|=
 operator|new
 name|HashMap
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
 name|PatchSetApproval
 argument_list|>
@@ -197,19 +177,22 @@ name|a
 operator|.
 name|getCategoryId
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|a
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// TODO: Convert keys to label names.
+comment|/** @return a map of approvals keyed by ID string. */
 DECL|method|getApprovalMap ()
 specifier|public
 name|Map
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
 name|PatchSetApproval
 argument_list|>

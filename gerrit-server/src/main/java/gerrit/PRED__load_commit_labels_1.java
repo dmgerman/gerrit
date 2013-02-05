@@ -557,6 +557,9 @@ name|a
 operator|.
 name|getCategoryId
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -582,10 +585,7 @@ name|intern
 argument_list|(
 name|t
 operator|.
-name|getCategory
-argument_list|()
-operator|.
-name|getLabelName
+name|getName
 argument_list|()
 argument_list|)
 argument_list|,

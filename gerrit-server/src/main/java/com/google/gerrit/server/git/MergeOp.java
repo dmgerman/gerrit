@@ -5699,12 +5699,9 @@ control|)
 block|{
 name|CategoryFunction
 operator|.
-name|forCategory
+name|forType
 argument_list|(
 name|at
-operator|.
-name|getCategory
-argument_list|()
 argument_list|)
 operator|.
 name|run

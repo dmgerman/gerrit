@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 operator|.
-name|ApprovalCategoryValue
+name|LabelValue
 operator|.
 name|formatValue
 import|;

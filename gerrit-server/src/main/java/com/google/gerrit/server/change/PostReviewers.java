@@ -1031,10 +1031,7 @@ name|getApprovalTypes
 argument_list|()
 argument_list|)
 operator|.
-name|getCategory
-argument_list|()
-operator|.
-name|getId
+name|getApprovalCategoryId
 argument_list|()
 expr_stmt|;
 block|}
