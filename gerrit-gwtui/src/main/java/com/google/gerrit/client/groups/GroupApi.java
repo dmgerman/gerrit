@@ -471,7 +471,7 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|isVisibleToAll
+name|visibleToAll
 argument_list|(
 name|isVisibleToAll
 argument_list|)
@@ -1241,16 +1241,16 @@ name|GroupOptionsInput
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|isVisibleToAll (boolean v)
+DECL|method|visibleToAll (boolean v)
 specifier|final
 specifier|native
 name|void
-name|isVisibleToAll
+name|visibleToAll
 parameter_list|(
 name|boolean
 name|v
 parameter_list|)
-comment|/*-{ if(v)this.is_visible_to_all=v; }-*/
+comment|/*-{ if(v)this.visible_to_all=v; }-*/
 function_decl|;
 DECL|method|create ()
 specifier|static
