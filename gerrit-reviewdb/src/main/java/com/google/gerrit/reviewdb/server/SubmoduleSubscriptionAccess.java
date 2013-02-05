@@ -94,6 +94,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|SubmoduleSubscription
 import|;
 end_import
@@ -220,6 +236,27 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+comment|/**    * Fetches all<code>SubmoduleSubscription</code>s in which some branch of    *<code>superProject</code> subscribes a branch.    *    * Use {@link #bySuperproject(Branch.NameKey)} to fetch for a branch instead    * of a project.    *    * @param superProject the project to fetch subscriptions for    * @return<code>SubmoduleSubscription</code>s that are subscribed by some    * branch of<code>superProject</code>.    * @throws OrmException    */
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.superProject.projectName = ?"
+argument_list|)
+DECL|method|bySuperProjectProject (Project.NameKey superProject)
+name|ResultSet
+argument_list|<
+name|SubmoduleSubscription
+argument_list|>
+name|bySuperProjectProject
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|superProject
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 annotation|@
 name|Query
 argument_list|(
@@ -233,6 +270,27 @@ argument_list|>
 name|bySubmodule
 parameter_list|(
 name|Branch
+operator|.
+name|NameKey
+name|submodule
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+comment|/**    * Fetches all<code>SubmoduleSubscription</code>s in which some branch of    *<code>submodule</code> is subscribed.    *    * Use {@link #bySubmodule(Branch.NameKey)} to fetch for a branch instead of    * a project.    *    * @param submodule the project to fetch subscriptions for.    * @return<code>SubmoduleSubscription</code>s that subscribe some branch of    *<code>submodule</code>.    * @throws OrmException    */
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE submodule.projectName = ?"
+argument_list|)
+DECL|method|bySubmoduleProject (Project.NameKey submodule)
+name|ResultSet
+argument_list|<
+name|SubmoduleSubscription
+argument_list|>
+name|bySubmoduleProject
+parameter_list|(
+name|Project
 operator|.
 name|NameKey
 name|submodule
