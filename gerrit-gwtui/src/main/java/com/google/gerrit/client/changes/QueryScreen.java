@@ -349,7 +349,7 @@ if|if
 condition|(
 name|result
 operator|.
-name|size
+name|length
 argument_list|()
 operator|==
 literal|1

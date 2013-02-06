@@ -696,11 +696,12 @@ name|result
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|changes
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|!=
+literal|0
 condition|)
 block|{
 specifier|final
@@ -724,7 +725,7 @@ name|get
 argument_list|(
 name|changes
 operator|.
-name|size
+name|length
 argument_list|()
 operator|-
 literal|1

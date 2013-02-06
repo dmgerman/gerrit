@@ -106,7 +106,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|NativeList
+name|Natives
 import|;
 end_import
 
@@ -155,6 +155,22 @@ operator|.
 name|client
 operator|.
 name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -433,7 +449,7 @@ argument_list|(
 operator|new
 name|ScreenLoadCallback
 argument_list|<
-name|NativeList
+name|JsArray
 argument_list|<
 name|ChangeList
 argument_list|>
@@ -448,7 +464,7 @@ specifier|protected
 name|void
 name|preDisplay
 parameter_list|(
-name|NativeList
+name|JsArray
 argument_list|<
 name|ChangeList
 argument_list|>
@@ -504,12 +520,12 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (NativeList<ChangeList> result)
+DECL|method|display (JsArray<ChangeList> result)
 specifier|private
 name|void
 name|display
 parameter_list|(
-name|NativeList
+name|JsArray
 argument_list|<
 name|ChangeList
 argument_list|>
@@ -680,10 +696,12 @@ name|Collections
 operator|.
 name|sort
 argument_list|(
-name|out
+name|Natives
 operator|.
 name|asList
-argument_list|()
+argument_list|(
+name|out
+argument_list|)
 argument_list|,
 name|outComparator
 argument_list|()
@@ -797,12 +815,12 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|hasChanges (NativeList<ChangeList> result)
+DECL|method|hasChanges (JsArray<ChangeList> result)
 specifier|private
 name|boolean
 name|hasChanges
 parameter_list|(
-name|NativeList
+name|JsArray
 argument_list|<
 name|ChangeList
 argument_list|>
@@ -814,19 +832,22 @@ control|(
 name|ChangeList
 name|list
 range|:
-name|result
+name|Natives
 operator|.
 name|asList
-argument_list|()
+argument_list|(
+name|result
+argument_list|)
 control|)
 block|{
 if|if
 condition|(
-operator|!
 name|list
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|!=
+literal|0
 condition|)
 block|{
 return|return
@@ -853,10 +874,12 @@ control|(
 name|ChangeInfo
 name|change
 range|:
-name|list
+name|Natives
 operator|.
 name|asList
-argument_list|()
+argument_list|(
+name|list
+argument_list|)
 control|)
 block|{
 if|if
