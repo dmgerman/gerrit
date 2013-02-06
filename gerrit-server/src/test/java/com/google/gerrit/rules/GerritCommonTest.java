@@ -76,7 +76,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -92,7 +92,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -158,11 +158,11 @@ name|setUp
 argument_list|()
 expr_stmt|;
 specifier|final
-name|ApprovalTypes
+name|LabelTypes
 name|types
 init|=
 operator|new
-name|ApprovalTypes
+name|LabelTypes
 argument_list|(
 name|Arrays
 operator|.
@@ -266,7 +266,7 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|ApprovalTypes
+name|LabelTypes
 operator|.
 name|class
 argument_list|)
@@ -310,7 +310,7 @@ block|}
 DECL|method|category (int pos, String id, String name, LabelValue... values)
 specifier|private
 specifier|static
-name|ApprovalType
+name|LabelType
 name|category
 parameter_list|(
 name|int
@@ -327,11 +327,11 @@ modifier|...
 name|values
 parameter_list|)
 block|{
-name|ApprovalType
+name|LabelType
 name|type
 init|=
 operator|new
-name|ApprovalType
+name|LabelType
 argument_list|(
 name|id
 argument_list|,

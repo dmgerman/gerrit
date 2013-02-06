@@ -175,15 +175,15 @@ import|;
 end_import
 
 begin_class
-DECL|class|ApprovalType
+DECL|class|LabelType
 specifier|public
 class|class
-name|ApprovalType
+name|LabelType
 block|{
 DECL|method|fromApprovalCategory (ApprovalCategory ac, List<ApprovalCategoryValue> acvs)
 specifier|public
 specifier|static
-name|ApprovalType
+name|LabelType
 name|fromApprovalCategory
 parameter_list|(
 name|ApprovalCategory
@@ -242,11 +242,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
 operator|new
-name|ApprovalType
+name|LabelType
 argument_list|(
 name|ac
 operator|.
@@ -264,7 +264,7 @@ argument_list|,
 name|values
 argument_list|)
 decl_stmt|;
-name|at
+name|lt
 operator|.
 name|setAbbreviatedName
 argument_list|(
@@ -274,7 +274,7 @@ name|getAbbreviatedName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|at
+name|lt
 operator|.
 name|setFunctionName
 argument_list|(
@@ -284,7 +284,7 @@ name|getFunctionName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|at
+name|lt
 operator|.
 name|setCopyMinScore
 argument_list|(
@@ -294,7 +294,7 @@ name|isCopyMinScore
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|at
+name|lt
 operator|.
 name|setPosition
 argument_list|(
@@ -305,13 +305,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|at
+name|lt
 return|;
 block|}
 DECL|method|withDefaultValues (String id, String name)
 specifier|public
 specifier|static
-name|ApprovalType
+name|LabelType
 name|withDefaultValues
 parameter_list|(
 name|String
@@ -321,6 +321,11 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|checkId
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 name|checkName
 argument_list|(
 name|name
@@ -375,7 +380,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|ApprovalType
+name|LabelType
 argument_list|(
 name|id
 argument_list|,
@@ -688,14 +693,14 @@ name|LabelValue
 argument_list|>
 name|byValue
 decl_stmt|;
-DECL|method|ApprovalType ()
+DECL|method|LabelType ()
 specifier|protected
-name|ApprovalType
+name|LabelType
 parameter_list|()
 block|{   }
-DECL|method|ApprovalType (String id, String name, List<LabelValue> valueList)
+DECL|method|LabelType (String id, String name, List<LabelValue> valueList)
 specifier|public
-name|ApprovalType
+name|LabelType
 parameter_list|(
 name|String
 name|id

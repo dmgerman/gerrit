@@ -134,7 +134,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -1649,14 +1649,14 @@ break|break;
 block|}
 name|bind
 argument_list|(
-name|ApprovalTypes
+name|LabelTypes
 operator|.
 name|class
 argument_list|)
 operator|.
 name|toProvider
 argument_list|(
-name|ApprovalTypesProvider
+name|LabelTypesProvider
 operator|.
 name|class
 argument_list|)

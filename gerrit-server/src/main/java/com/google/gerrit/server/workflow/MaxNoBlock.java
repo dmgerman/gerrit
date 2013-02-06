@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -136,14 +136,14 @@ literal|"MaxNoBlock"
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|run (final ApprovalType at, final FunctionState state)
+DECL|method|run (final LabelType lt, final FunctionState state)
 specifier|public
 name|void
 name|run
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 specifier|final
 name|FunctionState
@@ -165,7 +165,7 @@ name|state
 operator|.
 name|getApprovals
 argument_list|(
-name|at
+name|lt
 argument_list|)
 control|)
 block|{
@@ -173,14 +173,14 @@ name|state
 operator|.
 name|normalize
 argument_list|(
-name|at
+name|lt
 argument_list|,
 name|a
 argument_list|)
 expr_stmt|;
 name|passed
 operator||=
-name|at
+name|lt
 operator|.
 name|isMaxPositive
 argument_list|(
@@ -194,7 +194,7 @@ name|state
 operator|.
 name|valid
 argument_list|(
-name|at
+name|lt
 argument_list|,
 name|passed
 argument_list|)

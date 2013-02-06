@@ -112,7 +112,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -623,11 +623,11 @@ name|BaseServiceImplementation
 implements|implements
 name|PatchDetailService
 block|{
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|accountInfoCacheFactory
 specifier|private
@@ -687,7 +687,7 @@ name|changeDetailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final ApprovalTypes approvalTypes, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final DeleteDraftPatchSet.Factory deleteDraftPatchSetFactory, final FunctionState.Factory functionStateFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory, final ChangeDetailFactory.Factory changeDetailFactory)
+DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final LabelTypes labelTypes, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final DeleteDraftPatchSet.Factory deleteDraftPatchSetFactory, final FunctionState.Factory functionStateFactory, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory, final ChangeDetailFactory.Factory changeDetailFactory)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -705,8 +705,8 @@ argument_list|>
 name|currentUser
 parameter_list|,
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 specifier|final
 name|AccountInfoCacheFactory
@@ -760,9 +760,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1527,7 +1527,7 @@ name|fs
 operator|.
 name|normalize
 argument_list|(
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -1820,7 +1820,7 @@ name|fs
 operator|.
 name|normalize
 argument_list|(
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(

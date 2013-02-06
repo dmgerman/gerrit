@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -297,11 +297,11 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|appendApproval (ApprovalType type, short value, Account user)
+DECL|method|appendApproval (LabelType type, short value, Account user)
 name|void
 name|appendApproval
 parameter_list|(
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|,
 name|short

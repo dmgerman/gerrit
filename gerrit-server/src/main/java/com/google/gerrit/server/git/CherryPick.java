@@ -236,7 +236,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -559,11 +559,11 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|gitRefUpdated
 specifier|private
@@ -584,7 +584,7 @@ name|CodeReviewCommit
 argument_list|>
 name|newCommits
 decl_stmt|;
-DECL|method|CherryPick (final SubmitStrategy.Arguments args, final PatchSetInfoFactory patchSetInfoFactory, final Provider<String> urlProvider, final ApprovalTypes approvalTypes, final GitReferenceUpdated gitRefUpdated)
+DECL|method|CherryPick (final SubmitStrategy.Arguments args, final PatchSetInfoFactory patchSetInfoFactory, final Provider<String> urlProvider, final LabelTypes labelTypes, final GitReferenceUpdated gitRefUpdated)
 name|CherryPick
 parameter_list|(
 specifier|final
@@ -605,8 +605,8 @@ argument_list|>
 name|urlProvider
 parameter_list|,
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 specifier|final
 name|GitReferenceUpdated
@@ -632,9 +632,9 @@ name|urlProvider
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1089,7 +1089,7 @@ name|createCherryPickCommitMessage
 argument_list|(
 name|n
 argument_list|,
-name|approvalTypes
+name|labelTypes
 argument_list|,
 name|urlProvider
 argument_list|,

@@ -70,7 +70,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -86,7 +86,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -308,7 +308,7 @@ name|engine
 operator|.
 name|control
 decl_stmt|;
-name|ApprovalTypes
+name|LabelTypes
 name|types
 init|=
 name|env
@@ -318,20 +318,20 @@ argument_list|()
 operator|.
 name|getInstance
 argument_list|(
-name|ApprovalTypes
+name|LabelTypes
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|list
 init|=
 name|types
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 decl_stmt|;
 name|Term
@@ -421,12 +421,12 @@ argument_list|,
 literal|5
 argument_list|)
 decl_stmt|;
-DECL|method|export (ApprovalType type)
+DECL|method|export (LabelType type)
 specifier|static
 name|Term
 name|export
 parameter_list|(
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|)
 block|{

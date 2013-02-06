@@ -94,7 +94,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -979,10 +979,10 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|allProjectsName
 specifier|final
@@ -1006,7 +1006,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, ApprovalTypes approvalTypes, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, LabelTypes labelTypes, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -1042,8 +1042,8 @@ parameter_list|,
 name|GroupBackend
 name|groupBackend
 parameter_list|,
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName
@@ -1102,9 +1102,9 @@ name|groupBackend
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1979,7 +1979,7 @@ name|dbProvider
 argument_list|,
 name|args
 operator|.
-name|approvalTypes
+name|labelTypes
 argument_list|,
 name|name
 argument_list|)

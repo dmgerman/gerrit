@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -104,14 +104,14 @@ literal|"NoOp"
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|run (final ApprovalType at, final FunctionState state)
+DECL|method|run (final LabelType lt, final FunctionState state)
 specifier|public
 name|void
 name|run
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 specifier|final
 name|FunctionState

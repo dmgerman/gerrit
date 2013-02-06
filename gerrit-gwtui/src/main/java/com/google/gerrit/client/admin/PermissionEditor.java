@@ -140,7 +140,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -1690,15 +1690,15 @@ name|isLabel
 argument_list|()
 condition|)
 block|{
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
 name|Gerrit
 operator|.
 name|getConfig
 argument_list|()
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 operator|.
 name|byLabel
@@ -1711,7 +1711,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|!=
 literal|null
 condition|)
@@ -1728,7 +1728,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getMin
 argument_list|()
@@ -1736,7 +1736,7 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getMax
 argument_list|()
@@ -1744,7 +1744,7 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getMin
 argument_list|()
@@ -1752,7 +1752,7 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getMax
 argument_list|()

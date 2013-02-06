@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -359,11 +359,11 @@ name|all
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|userFactory
 specifier|private
@@ -433,12 +433,12 @@ name|change
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final ApprovalTypes approvalTypes, final IdentifiedUser.GenericFactory userFactory, @Assisted final ChangeControl c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
+DECL|method|FunctionState (final LabelTypes labelTypes, final IdentifiedUser.GenericFactory userFactory, @Assisted final ChangeControl c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -472,9 +472,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -550,10 +550,10 @@ name|PatchSetApproval
 argument_list|>
 argument_list|()
 expr_stmt|;
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -568,7 +568,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|!=
 literal|null
 condition|)
@@ -578,7 +578,7 @@ name|approvals
 operator|.
 name|put
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -598,18 +598,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|getApprovalTypes ()
+DECL|method|getLabelTypes ()
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
-name|getApprovalTypes
+name|getLabelTypes
 parameter_list|()
 block|{
 return|return
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 return|;
 block|}
@@ -622,14 +622,14 @@ return|return
 name|change
 return|;
 block|}
-DECL|method|valid (final ApprovalType at, final boolean v)
+DECL|method|valid (final LabelType lt, final boolean v)
 specifier|public
 name|void
 name|valid
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 specifier|final
 name|boolean
@@ -642,27 +642,27 @@ name|put
 argument_list|(
 name|id
 argument_list|(
-name|at
+name|lt
 argument_list|)
 argument_list|,
 name|v
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isValid (final ApprovalType at)
+DECL|method|isValid (final LabelType lt)
 specifier|public
 name|boolean
 name|isValid
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|)
 block|{
 return|return
 name|isValid
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -698,7 +698,7 @@ operator|&&
 name|b
 return|;
 block|}
-DECL|method|getApprovals (final ApprovalType at)
+DECL|method|getApprovals (final LabelType lt)
 specifier|public
 name|Collection
 argument_list|<
@@ -707,14 +707,14 @@ argument_list|>
 name|getApprovals
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|)
 block|{
 return|return
 name|getApprovals
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -765,14 +765,14 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Normalize the approval record down to the range permitted by the type, in    * case the type was modified since the approval was originally granted.    *<p>    */
-DECL|method|applyTypeFloor (final ApprovalType at, final PatchSetApproval a)
+DECL|method|applyTypeFloor (final LabelType lt, final PatchSetApproval a)
 specifier|private
 name|void
 name|applyTypeFloor
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 specifier|final
 name|PatchSetApproval
@@ -783,7 +783,7 @@ specifier|final
 name|LabelValue
 name|atMin
 init|=
-name|at
+name|lt
 operator|.
 name|getMin
 argument_list|()
@@ -820,7 +820,7 @@ specifier|final
 name|LabelValue
 name|atMax
 init|=
-name|at
+name|lt
 operator|.
 name|getMax
 argument_list|()
@@ -855,14 +855,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Normalize the approval record to be inside the maximum range permitted by    * the RefRights granted to groups the account is a member of.    *<p>    * If multiple RefRights are matched (assigned to different groups the account    * is a member of) the lowest minValue and the highest maxValue of the union    * of them is used.    *<p>    */
-DECL|method|applyRightFloor (final ApprovalType at, final PatchSetApproval a)
+DECL|method|applyRightFloor (final LabelType lt, final PatchSetApproval a)
 specifier|private
 name|void
 name|applyRightFloor
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 specifier|final
 name|PatchSetApproval
@@ -877,7 +877,7 @@ name|Permission
 operator|.
 name|forLabel
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -949,14 +949,14 @@ argument_list|)
 return|;
 block|}
 comment|/** Run<code>applyTypeFloor</code>,<code>applyRightFloor</code>. */
-DECL|method|normalize (final ApprovalType at, final PatchSetApproval ca)
+DECL|method|normalize (final LabelType lt, final PatchSetApproval ca)
 specifier|public
 name|void
 name|normalize
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 specifier|final
 name|PatchSetApproval
@@ -965,32 +965,32 @@ parameter_list|)
 block|{
 name|applyTypeFloor
 argument_list|(
-name|at
+name|lt
 argument_list|,
 name|ca
 argument_list|)
 expr_stmt|;
 name|applyRightFloor
 argument_list|(
-name|at
+name|lt
 argument_list|,
 name|ca
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|id (final ApprovalType at)
+DECL|method|id (final LabelType lt)
 specifier|private
 specifier|static
 name|String
 name|id
 parameter_list|(
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|)
 block|{
 return|return
-name|at
+name|lt
 operator|.
 name|getId
 argument_list|()

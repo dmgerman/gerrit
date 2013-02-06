@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -241,14 +241,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|ApprovalTypesProvider
+DECL|class|LabelTypesProvider
 specifier|public
 class|class
-name|ApprovalTypesProvider
+name|LabelTypesProvider
 implements|implements
 name|Provider
 argument_list|<
-name|ApprovalTypes
+name|LabelTypes
 argument_list|>
 block|{
 DECL|field|schema
@@ -262,8 +262,8 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalTypesProvider (final SchemaFactory<ReviewDb> sf)
-name|ApprovalTypesProvider
+DECL|method|LabelTypesProvider (final SchemaFactory<ReviewDb> sf)
+name|LabelTypesProvider
 parameter_list|(
 specifier|final
 name|SchemaFactory
@@ -282,20 +282,20 @@ annotation|@
 name|Override
 DECL|method|get ()
 specifier|public
-name|ApprovalTypes
+name|LabelTypes
 name|get
 parameter_list|()
 block|{
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|types
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
 argument_list|(
 literal|2
@@ -356,7 +356,7 @@ name|types
 operator|.
 name|add
 argument_list|(
-name|ApprovalType
+name|LabelType
 operator|.
 name|fromApprovalCategory
 argument_list|(
@@ -395,7 +395,7 @@ throw|;
 block|}
 return|return
 operator|new
-name|ApprovalTypes
+name|LabelTypes
 argument_list|(
 name|Collections
 operator|.

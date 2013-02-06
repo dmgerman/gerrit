@@ -106,7 +106,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -1006,10 +1006,10 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
@@ -2500,12 +2500,12 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|ApprovalType
+name|LabelType
 name|type
 range|:
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{

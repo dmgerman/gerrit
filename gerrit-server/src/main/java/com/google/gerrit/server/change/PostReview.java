@@ -148,7 +148,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -164,7 +164,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -741,11 +741,11 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|email
 specifier|private
@@ -827,14 +827,14 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview (ReviewDb db, ApprovalTypes approvalTypes, EmailReviewComments.Factory email, ChangeHooks hooks)
+DECL|method|PostReview (ReviewDb db, LabelTypes labelTypes, EmailReviewComments.Factory email, ChangeHooks hooks)
 name|PostReview
 parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|EmailReviewComments
 operator|.
@@ -853,9 +853,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1225,10 +1225,10 @@ name|next
 argument_list|()
 decl_stmt|;
 comment|// TODO Support more generic label assignments.
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byLabel
 argument_list|(
@@ -1240,7 +1240,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|==
 literal|null
 condition|)
@@ -1301,7 +1301,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|at
+name|lt
 operator|.
 name|getValue
 argument_list|(
@@ -1355,7 +1355,7 @@ block|}
 name|String
 name|name
 init|=
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -2311,10 +2311,10 @@ argument_list|()
 control|)
 block|{
 comment|// TODO Support arbitrary label names.
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byLabel
 argument_list|(
@@ -2327,7 +2327,7 @@ decl_stmt|;
 name|String
 name|name
 init|=
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -2478,12 +2478,12 @@ name|categories
 operator|.
 name|put
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getApprovalCategoryId
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getApprovalCategoryValueId
 argument_list|(
@@ -2554,7 +2554,7 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getApprovalCategoryId
 argument_list|()
@@ -2606,12 +2606,12 @@ name|categories
 operator|.
 name|put
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getApprovalCategoryId
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getApprovalCategoryValueId
 argument_list|(
@@ -2750,7 +2750,7 @@ argument_list|()
 condition|)
 block|{
 comment|// If no existing label is being set to 0, hack in the caller
-comment|// as a reviewer by picking the first server-wide ApprovalType.
+comment|// as a reviewer by picking the first server-wide LabelType.
 name|PatchSetApproval
 name|c
 init|=
@@ -2775,9 +2775,9 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 operator|.
 name|get
@@ -2957,10 +2957,10 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -2975,7 +2975,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|!=
 literal|null
 condition|)
@@ -2984,7 +2984,7 @@ name|current
 operator|.
 name|put
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()

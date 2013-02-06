@@ -331,10 +331,10 @@ operator|.
 name|NameKey
 name|wildProject
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|protected
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|editableAccountFields
 specifier|protected
@@ -857,27 +857,27 @@ operator|=
 name|wp
 expr_stmt|;
 block|}
-DECL|method|getApprovalTypes ()
+DECL|method|getLabelTypes ()
 specifier|public
-name|ApprovalTypes
-name|getApprovalTypes
+name|LabelTypes
+name|getLabelTypes
 parameter_list|()
 block|{
 return|return
-name|approvalTypes
+name|labelTypes
 return|;
 block|}
-DECL|method|setApprovalTypes (final ApprovalTypes at)
+DECL|method|setLabelTypes (final LabelTypes at)
 specifier|public
 name|void
-name|setApprovalTypes
+name|setLabelTypes
 parameter_list|(
 specifier|final
-name|ApprovalTypes
+name|LabelTypes
 name|at
 parameter_list|)
 block|{
-name|approvalTypes
+name|labelTypes
 operator|=
 name|at
 expr_stmt|;

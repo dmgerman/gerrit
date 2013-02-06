@@ -222,7 +222,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -238,7 +238,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -1248,11 +1248,11 @@ operator|.
 name|Factory
 name|mergeFailSenderFactory
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
@@ -1420,7 +1420,7 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final ApprovalTypes approvalTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final AllProjectsName allProjectsName)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final FunctionState.Factory fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final LabelTypes labelTypes, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final AllProjectsName allProjectsName)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1461,8 +1461,8 @@ name|Factory
 name|mfsf
 parameter_list|,
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 specifier|final
 name|PatchSetInfoFactory
@@ -1557,9 +1557,9 @@ name|mfsf
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|patchSetInfoFactory
 operator|=
@@ -5688,12 +5688,12 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 range|:
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{
@@ -5701,12 +5701,12 @@ name|CategoryFunction
 operator|.
 name|forType
 argument_list|(
-name|at
+name|lt
 argument_list|)
 operator|.
 name|run
 argument_list|(
-name|at
+name|lt
 argument_list|,
 name|fs
 argument_list|)

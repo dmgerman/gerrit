@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -228,7 +228,7 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|ApprovalType
+name|LabelType
 name|type
 decl_stmt|;
 DECL|field|value
@@ -236,7 +236,7 @@ specifier|private
 name|Short
 name|value
 decl_stmt|;
-DECL|method|ApproveOption (final String name, final String usage, final ApprovalType type)
+DECL|method|ApproveOption (final String name, final String usage, final LabelType type)
 name|ApproveOption
 parameter_list|(
 specifier|final
@@ -248,7 +248,7 @@ name|String
 name|usage
 parameter_list|,
 specifier|final
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|)
 block|{

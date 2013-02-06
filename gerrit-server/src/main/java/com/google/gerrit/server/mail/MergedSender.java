@@ -106,7 +106,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -292,23 +292,23 @@ name|change
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedSender (EmailArguments ea, ApprovalTypes at, @Assisted Change c)
+DECL|method|MergedSender (EmailArguments ea, LabelTypes lt, @Assisted Change c)
 specifier|public
 name|MergedSender
 parameter_list|(
 name|EmailArguments
 name|ea
 parameter_list|,
-name|ApprovalTypes
-name|at
+name|LabelTypes
+name|lt
 parameter_list|,
 annotation|@
 name|Assisted
@@ -325,9 +325,9 @@ argument_list|,
 literal|"merged"
 argument_list|)
 expr_stmt|;
-name|approvalTypes
+name|labelTypes
 operator|=
-name|at
+name|lt
 expr_stmt|;
 block|}
 annotation|@
@@ -451,10 +451,10 @@ argument_list|()
 argument_list|)
 control|)
 block|{
-name|ApprovalType
+name|LabelType
 name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -658,12 +658,12 @@ literal|true
 decl_stmt|;
 for|for
 control|(
-name|ApprovalType
+name|LabelType
 name|lt
 range|:
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{
