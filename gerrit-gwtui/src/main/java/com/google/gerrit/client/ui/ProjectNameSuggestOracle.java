@@ -112,6 +112,22 @@ name|GerritCallback
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|Natives
+import|;
+end_import
+
 begin_comment
 comment|/** Suggestion Oracle for Project.NameKey entities. */
 end_comment
@@ -195,13 +211,15 @@ argument_list|,
 operator|new
 name|Response
 argument_list|(
+name|Natives
+operator|.
+name|asList
+argument_list|(
 name|map
 operator|.
 name|values
 argument_list|()
-operator|.
-name|asList
-argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

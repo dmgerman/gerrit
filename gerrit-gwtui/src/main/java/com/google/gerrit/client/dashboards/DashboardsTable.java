@@ -92,7 +92,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|NativeList
+name|Natives
 import|;
 end_import
 
@@ -139,6 +139,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -465,19 +481,21 @@ parameter_list|)
 block|{
 name|display
 argument_list|(
-name|dashes
+name|Natives
 operator|.
 name|asList
-argument_list|()
+argument_list|(
+name|dashes
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (NativeList<DashboardList> in)
+DECL|method|display (JsArray<DashboardList> in)
 specifier|public
 name|void
 name|display
 parameter_list|(
-name|NativeList
+name|JsArray
 argument_list|<
 name|DashboardList
 argument_list|>
@@ -506,10 +524,12 @@ control|(
 name|DashboardList
 name|list
 range|:
-name|in
+name|Natives
 operator|.
 name|asList
-argument_list|()
+argument_list|(
+name|in
+argument_list|)
 control|)
 block|{
 for|for
@@ -517,10 +537,12 @@ control|(
 name|DashboardInfo
 name|d
 range|:
-name|list
+name|Natives
 operator|.
 name|asList
-argument_list|()
+argument_list|(
+name|list
+argument_list|)
 control|)
 block|{
 if|if

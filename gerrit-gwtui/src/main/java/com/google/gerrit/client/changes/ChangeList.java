@@ -78,22 +78,6 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|NativeList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
 name|RestApi
 import|;
 end_import
@@ -111,6 +95,22 @@ operator|.
 name|changes
 operator|.
 name|ListChangesOption
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -166,7 +166,7 @@ specifier|public
 class|class
 name|ChangeList
 extends|extends
-name|NativeList
+name|JsArray
 argument_list|<
 name|ChangeInfo
 argument_list|>
@@ -181,7 +181,7 @@ init|=
 literal|"/changes/"
 decl_stmt|;
 comment|/** Run 2 or more queries in a single remote invocation. */
-DECL|method|query ( AsyncCallback<NativeList<ChangeList>> callback, String... queries)
+DECL|method|query ( AsyncCallback<JsArray<ChangeList>> callback, String... queries)
 specifier|public
 specifier|static
 name|void
@@ -189,7 +189,7 @@ name|query
 parameter_list|(
 name|AsyncCallback
 argument_list|<
-name|NativeList
+name|JsArray
 argument_list|<
 name|ChangeList
 argument_list|>

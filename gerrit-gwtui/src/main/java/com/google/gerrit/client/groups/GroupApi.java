@@ -92,7 +92,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|NativeList
+name|Natives
 import|;
 end_import
 
@@ -157,6 +157,22 @@ operator|.
 name|client
 operator|.
 name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -533,7 +549,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add members to a group. */
-DECL|method|addMembers (AccountGroup.UUID group, Set<String> members, final AsyncCallback<NativeList<MemberInfo>> cb)
+DECL|method|addMembers (AccountGroup.UUID group, Set<String> members, final AsyncCallback<JsArray<MemberInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -553,7 +569,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|NativeList
+name|JsArray
 argument_list|<
 name|MemberInfo
 argument_list|>
@@ -604,9 +620,9 @@ name|cb
 operator|.
 name|onSuccess
 argument_list|(
-name|NativeList
+name|Natives
 operator|.
-name|of
+name|arrayOf
 argument_list|(
 name|result
 argument_list|)
@@ -834,7 +850,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Include groups into a group. */
-DECL|method|addIncludedGroups (AccountGroup.UUID group, Set<String> includedGroups, final AsyncCallback<NativeList<GroupInfo>> cb)
+DECL|method|addIncludedGroups (AccountGroup.UUID group, Set<String> includedGroups, final AsyncCallback<JsArray<GroupInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -854,7 +870,7 @@ parameter_list|,
 specifier|final
 name|AsyncCallback
 argument_list|<
-name|NativeList
+name|JsArray
 argument_list|<
 name|GroupInfo
 argument_list|>
@@ -905,9 +921,9 @@ name|cb
 operator|.
 name|onSuccess
 argument_list|(
-name|NativeList
+name|Natives
 operator|.
-name|of
+name|arrayOf
 argument_list|(
 name|result
 argument_list|)

@@ -1287,7 +1287,7 @@ name|i
 operator|<
 name|list
 operator|.
-name|size
+name|length
 argument_list|()
 condition|;
 name|i
@@ -2980,7 +2980,7 @@ literal|null
 condition|?
 name|changeList
 operator|.
-name|size
+name|length
 argument_list|()
 else|:
 literal|0
