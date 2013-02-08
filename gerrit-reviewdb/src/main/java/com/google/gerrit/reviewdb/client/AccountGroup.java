@@ -369,6 +369,31 @@ literal|"^[0-9a-f]{40}$"
 argument_list|)
 return|;
 block|}
+comment|/** @return true if the UUID is for a system group managed within Gerrit. */
+DECL|method|isSystemGroup (AccountGroup.UUID uuid)
+specifier|public
+specifier|static
+name|boolean
+name|isSystemGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+return|return
+name|uuid
+operator|.
+name|get
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"global:"
+argument_list|)
+return|;
+block|}
 comment|/** Synthetic key to link to within the database */
 DECL|class|Id
 specifier|public
