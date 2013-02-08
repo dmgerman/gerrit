@@ -364,6 +364,14 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|resourceFactory
+specifier|private
+specifier|final
+name|ReviewerResource
+operator|.
+name|Factory
+name|resourceFactory
+decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
@@ -381,7 +389,7 @@ name|list
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Reviewers (Provider<ReviewDb> dbProvider, DynamicMap<RestView<ReviewerResource>> views, AccountCache accountCache, Provider<ListReviewers> list)
+DECL|method|Reviewers (Provider<ReviewDb> dbProvider, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, AccountCache accountCache, Provider<ListReviewers> list)
 name|Reviewers
 parameter_list|(
 name|Provider
@@ -389,6 +397,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|ReviewerResource
+operator|.
+name|Factory
+name|resourceFactory
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -414,6 +427,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|resourceFactory
+operator|=
+name|resourceFactory
 expr_stmt|;
 name|this
 operator|.
@@ -630,8 +649,9 @@ name|getAccount
 argument_list|()
 decl_stmt|;
 return|return
-operator|new
-name|ReviewerResource
+name|resourceFactory
+operator|.
+name|create
 argument_list|(
 name|rsrc
 argument_list|,

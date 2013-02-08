@@ -572,10 +572,10 @@ name|equals
 argument_list|(
 name|rsrc
 operator|.
-name|getAccount
+name|getUser
 argument_list|()
 operator|.
-name|getId
+name|getAccountId
 argument_list|()
 argument_list|)
 return|;
