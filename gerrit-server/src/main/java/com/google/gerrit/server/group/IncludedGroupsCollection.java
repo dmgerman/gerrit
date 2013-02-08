@@ -494,9 +494,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-operator|.
-name|getGroup
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
