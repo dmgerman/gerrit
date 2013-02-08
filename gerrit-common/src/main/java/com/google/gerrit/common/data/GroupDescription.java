@@ -122,12 +122,6 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/** @return whether the group is visible to all accounts. */
-DECL|method|isVisibleToAll ()
-name|boolean
-name|isVisibleToAll
-parameter_list|()
-function_decl|;
 comment|/**      * @return optional email address to send to the group's members. If      *         provided, Gerrit will use this email address to send      *         change notifications to the group.      */
 annotation|@
 name|Nullable
