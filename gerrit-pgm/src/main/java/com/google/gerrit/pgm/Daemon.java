@@ -1279,6 +1279,31 @@ specifier|private
 name|File
 name|runFile
 decl_stmt|;
+DECL|field|serverStarted
+specifier|private
+name|Runnable
+name|serverStarted
+decl_stmt|;
+DECL|method|Daemon ()
+specifier|public
+name|Daemon
+parameter_list|()
+block|{   }
+DECL|method|Daemon (Runnable serverStarted)
+specifier|public
+name|Daemon
+parameter_list|(
+name|Runnable
+name|serverStarted
+parameter_list|)
+block|{
+name|this
+operator|.
+name|serverStarted
+operator|=
+name|serverStarted
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|run ()
@@ -1635,6 +1660,19 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|serverStarted
+operator|!=
+literal|null
+condition|)
+block|{
+name|serverStarted
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
 block|}
 name|RuntimeShutdown
 operator|.

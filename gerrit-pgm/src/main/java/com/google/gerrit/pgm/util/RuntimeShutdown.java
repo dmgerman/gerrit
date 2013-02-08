@@ -416,25 +416,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Thread "
-operator|+
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" interrupted while waiting for graceful shutdown;"
-operator|+
-literal|" ignoring interrupt request"
-argument_list|)
-expr_stmt|;
+return|return;
 block|}
 block|}
 block|}
