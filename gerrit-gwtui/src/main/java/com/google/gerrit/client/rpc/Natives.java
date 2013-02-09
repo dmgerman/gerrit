@@ -221,6 +221,17 @@ argument_list|>
 name|arr
 parameter_list|)
 block|{
+if|if
+condition|(
+name|arr
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 operator|new
 name|AbstractList

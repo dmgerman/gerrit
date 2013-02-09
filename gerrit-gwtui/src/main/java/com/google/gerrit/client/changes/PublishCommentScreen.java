@@ -1830,6 +1830,16 @@ name|prior
 init|=
 literal|null
 decl_stmt|;
+if|if
+condition|(
+name|label
+operator|.
+name|all
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|ApprovalInfo
@@ -1873,6 +1883,7 @@ name|value
 argument_list|()
 expr_stmt|;
 break|break;
+block|}
 block|}
 block|}
 for|for
