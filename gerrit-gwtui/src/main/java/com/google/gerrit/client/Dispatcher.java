@@ -5551,7 +5551,7 @@ return|return;
 block|}
 name|GroupApi
 operator|.
-name|getGroup
+name|getGroupDetail
 argument_list|(
 name|group
 argument_list|,
