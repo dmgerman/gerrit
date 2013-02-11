@@ -284,6 +284,24 @@ name|server
 operator|.
 name|group
 operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
 name|PutOwner
 operator|.
 name|Input
@@ -392,9 +410,15 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|json
+specifier|private
+specifier|final
+name|GroupJson
+name|json
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutOwner (Provider<GroupsCollection> groupsCollection, GroupCache groupCache, GroupControl.Factory controlFactory, ReviewDb db)
+DECL|method|PutOwner (Provider<GroupsCollection> groupsCollection, GroupCache groupCache, GroupControl.Factory controlFactory, ReviewDb db, GroupJson json)
 name|PutOwner
 parameter_list|(
 name|Provider
@@ -413,6 +437,9 @@ name|controlFactory
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|GroupJson
+name|json
 parameter_list|)
 block|{
 name|this
@@ -438,6 +465,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|json
+operator|=
+name|json
 expr_stmt|;
 block|}
 annotation|@
@@ -669,8 +702,9 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-operator|new
-name|GroupInfo
+name|json
+operator|.
+name|format
 argument_list|(
 name|c
 operator|.

@@ -212,6 +212,27 @@ name|url
 parameter_list|()
 comment|/*-{ return this.url; }-*/
 function_decl|;
+DECL|method|owner ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|owner
+parameter_list|()
+comment|/*-{ return this.owner; }-*/
+function_decl|;
+DECL|method|owner (String o)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|owner
+parameter_list|(
+name|String
+name|o
+parameter_list|)
+comment|/*-{ if(o)this.owner=o; }-*/
+function_decl|;
 DECL|method|group_id ()
 specifier|private
 specifier|final
