@@ -434,13 +434,13 @@ DECL|field|description
 name|String
 name|description
 decl_stmt|;
-DECL|field|groupId
+DECL|field|group_id
 name|Integer
-name|groupId
+name|group_id
 decl_stmt|;
-DECL|field|ownerId
+DECL|field|owner_id
 name|String
-name|ownerId
+name|owner_id
 decl_stmt|;
 block|}
 empty_stmt|;
