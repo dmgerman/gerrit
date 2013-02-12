@@ -168,6 +168,7 @@ name|httpPassword
 expr_stmt|;
 block|}
 DECL|method|privateKey ()
+specifier|public
 name|byte
 index|[]
 name|privateKey

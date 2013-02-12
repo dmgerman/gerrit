@@ -168,6 +168,7 @@ end_import
 
 begin_class
 DECL|class|RestSession
+specifier|public
 class|class
 name|RestSession
 block|{
@@ -182,6 +183,7 @@ name|DefaultHttpClient
 name|client
 decl_stmt|;
 DECL|method|RestSession (TestAccount account)
+specifier|public
 name|RestSession
 parameter_list|(
 name|TestAccount
@@ -196,6 +198,7 @@ name|account
 expr_stmt|;
 block|}
 DECL|method|get (String endPoint)
+specifier|public
 name|Reader
 name|get
 parameter_list|(
@@ -254,6 +257,7 @@ name|reader
 return|;
 block|}
 DECL|method|post (String endPoint)
+specifier|public
 name|Reader
 name|post
 parameter_list|(

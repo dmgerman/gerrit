@@ -330,6 +330,7 @@ end_import
 
 begin_class
 DECL|class|AccountCreator
+specifier|public
 class|class
 name|AccountCreator
 block|{
@@ -415,6 +416,7 @@ name|byEmailCache
 expr_stmt|;
 block|}
 DECL|method|create (String username, String email, String fullName, String... groups)
+specifier|public
 name|TestAccount
 name|create
 parameter_list|(

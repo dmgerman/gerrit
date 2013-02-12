@@ -144,6 +144,7 @@ end_import
 
 begin_class
 DECL|class|SshSession
+specifier|public
 class|class
 name|SshSession
 block|{
@@ -159,6 +160,7 @@ name|Session
 name|session
 decl_stmt|;
 DECL|method|SshSession (TestAccount account)
+specifier|public
 name|SshSession
 parameter_list|(
 name|TestAccount
@@ -173,6 +175,7 @@ name|account
 expr_stmt|;
 block|}
 DECL|method|exec (String command)
+specifier|public
 name|String
 name|exec
 parameter_list|(
@@ -265,6 +268,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|close ()
+specifier|public
 name|void
 name|close
 parameter_list|()
