@@ -533,16 +533,6 @@ name|names
 operator|.
 name|contains
 argument_list|(
-literal|"Administrators"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
 literal|"Anonymous Users"
 argument_list|)
 argument_list|)
@@ -634,16 +624,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Administrators"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 name|names
