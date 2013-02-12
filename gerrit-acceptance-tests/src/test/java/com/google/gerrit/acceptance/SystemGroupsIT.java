@@ -407,6 +407,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|class|Group
 specifier|private
 specifier|static
@@ -475,6 +480,11 @@ operator|new
 name|Gson
 argument_list|()
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 name|Map
 argument_list|<
 name|String
