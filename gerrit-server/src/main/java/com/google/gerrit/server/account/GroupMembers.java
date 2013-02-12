@@ -819,6 +819,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|includedGroup
+operator|!=
+literal|null
+operator|&&
 operator|!
 name|seen
 operator|.
