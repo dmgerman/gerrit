@@ -118,6 +118,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|TypeLiteral
@@ -200,7 +216,7 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 function_decl|;
-DECL|method|create (ChangeResource rsrc, Account account)
+DECL|method|create (ChangeResource rsrc, Account.Id id)
 name|ReviewerResource
 name|create
 parameter_list|(
@@ -208,7 +224,9 @@ name|ChangeResource
 name|rsrc
 parameter_list|,
 name|Account
-name|account
+operator|.
+name|Id
+name|id
 parameter_list|)
 function_decl|;
 block|}
@@ -248,7 +266,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ReviewerResource (IdentifiedUser.GenericFactory userFactory, @Assisted ChangeResource rsrc, @Assisted Account account)
+DECL|method|ReviewerResource (IdentifiedUser.GenericFactory userFactory, @Assisted ChangeResource rsrc, @Assisted Account.Id id)
 name|ReviewerResource
 parameter_list|(
 name|IdentifiedUser
@@ -264,7 +282,9 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Account
-name|account
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 name|this
@@ -275,10 +295,7 @@ name|userFactory
 operator|.
 name|create
 argument_list|(
-name|account
-operator|.
-name|getId
-argument_list|()
+name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -291,6 +308,23 @@ parameter_list|()
 block|{
 return|return
 name|user
+return|;
+block|}
+comment|/**    * @return the control for the reviewer's user (as opposed to the caller's    *     user as returned by {@link #getControl()}).    */
+DECL|method|getUserControl ()
+specifier|public
+name|ChangeControl
+name|getUserControl
+parameter_list|()
+block|{
+return|return
+name|getControl
+argument_list|()
+operator|.
+name|forUser
+argument_list|(
+name|user
+argument_list|)
 return|;
 block|}
 block|}
