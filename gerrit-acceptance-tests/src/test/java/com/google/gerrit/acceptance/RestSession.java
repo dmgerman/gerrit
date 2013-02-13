@@ -65,6 +65,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|restapi
+operator|.
+name|RestApiServlet
+operator|.
+name|JSON_MAGIC
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -249,7 +267,9 @@ name|reader
 operator|.
 name|skip
 argument_list|(
-literal|4
+name|JSON_MAGIC
+operator|.
+name|length
 argument_list|)
 expr_stmt|;
 return|return

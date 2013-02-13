@@ -1396,7 +1396,7 @@ literal|"application/x-www-form-urlencoded"
 decl_stmt|;
 comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *<p>    * This prefix is ")]}'\n" and is designed to prevent a web browser from    * executing the response body if the resource URI were to be referenced using    * a&lt;script src="...&gt; HTML tag from another web site. Clients using the    * HTTP interface will need to always strip the first line of response data to    * remove this magic header.    */
 DECL|field|JSON_MAGIC
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|byte
