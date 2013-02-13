@@ -120,13 +120,6 @@ specifier|public
 class|class
 name|GroupOptionsInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#groupoptions"
-decl_stmt|;
 DECL|field|visibleToAll
 specifier|public
 name|Boolean
