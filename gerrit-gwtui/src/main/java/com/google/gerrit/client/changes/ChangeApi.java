@@ -428,6 +428,35 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|detail (int id, AsyncCallback<ChangeInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|detail
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|call
+argument_list|(
+name|id
+argument_list|,
+literal|"detail"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|revision (PatchSet.Id id)
 specifier|public
 specifier|static
