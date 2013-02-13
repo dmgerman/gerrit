@@ -686,29 +686,6 @@ specifier|protected
 name|ChangeInfo
 parameter_list|()
 block|{   }
-DECL|class|AccountInfo
-specifier|public
-specifier|static
-class|class
-name|AccountInfo
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|name ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|name
-parameter_list|()
-comment|/*-{ return this.name; }-*/
-function_decl|;
-DECL|method|AccountInfo ()
-specifier|protected
-name|AccountInfo
-parameter_list|()
-block|{     }
-block|}
 DECL|class|LabelInfo
 specifier|public
 specifier|static
@@ -925,35 +902,8 @@ specifier|static
 class|class
 name|ApprovalInfo
 extends|extends
-name|JavaScriptObject
+name|AccountInfo
 block|{
-DECL|method|_account_id ()
-specifier|public
-specifier|final
-specifier|native
-name|int
-name|_account_id
-parameter_list|()
-comment|/*-{ return this._account_id || 0; }-*/
-function_decl|;
-DECL|method|name ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|name
-parameter_list|()
-comment|/*-{ return this.name; }-*/
-function_decl|;
-DECL|method|email ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|email
-parameter_list|()
-comment|/*-{ return this.email; }-*/
-function_decl|;
 DECL|method|value ()
 specifier|public
 specifier|final

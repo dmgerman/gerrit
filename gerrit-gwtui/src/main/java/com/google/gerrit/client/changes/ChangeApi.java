@@ -495,6 +495,28 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|reviewers (int id)
+specifier|public
+specifier|static
+name|RestApi
+name|reviewers
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|change
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"reviewers"
+argument_list|)
+return|;
+block|}
 DECL|method|reviewer (int id, int reviewer)
 specifier|public
 specifier|static

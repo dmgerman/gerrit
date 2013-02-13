@@ -150,6 +150,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -161,6 +171,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -319,6 +339,17 @@ name|String
 argument_list|>
 name|rejected
 decl_stmt|;
+DECL|field|values
+specifier|private
+specifier|transient
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Integer
+argument_list|>
+name|values
+decl_stmt|;
 DECL|field|hasNonZero
 specifier|private
 specifier|transient
@@ -399,6 +430,8 @@ operator|=
 name|removeable
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|getPatchSetApprovals ()
 specifier|public
 name|List
@@ -412,6 +445,8 @@ return|return
 name|approvals
 return|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|getPatchSetApproval (ApprovalCategory.Id category)
 specifier|public
 name|PatchSetApproval
@@ -470,6 +505,8 @@ operator|.
 name|EG_0
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 DECL|method|add (final PatchSetApproval ca)
 specifier|public
 name|void
@@ -516,6 +553,8 @@ name|sortOrder
 operator|=
 name|g
 expr_stmt|;
+comment|// Value is not set, but code calling this deprecated method does not
+comment|// call getValue.
 block|}
 if|if
 condition|(
@@ -635,6 +674,47 @@ name|label
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|value (String label, int value)
+specifier|public
+name|void
+name|value
+parameter_list|(
+name|String
+name|label
+parameter_list|,
+name|int
+name|value
+parameter_list|)
+block|{
+if|if
+condition|(
+name|values
+operator|==
+literal|null
+condition|)
+block|{
+name|values
+operator|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Integer
+argument_list|>
+argument_list|()
+expr_stmt|;
+block|}
+name|values
+operator|.
+name|put
+argument_list|(
+name|label
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|isApproved (String label)
 specifier|public
 name|boolean
@@ -699,6 +779,46 @@ name|contains
 argument_list|(
 name|label
 argument_list|)
+return|;
+block|}
+DECL|method|getValue (String label)
+specifier|public
+name|int
+name|getValue
+parameter_list|(
+name|String
+name|label
+parameter_list|)
+block|{
+if|if
+condition|(
+name|values
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+name|Integer
+name|v
+init|=
+name|values
+operator|.
+name|get
+argument_list|(
+name|label
+argument_list|)
+decl_stmt|;
+return|return
+name|v
+operator|!=
+literal|null
+condition|?
+name|v
+else|:
+literal|0
 return|;
 block|}
 block|}
