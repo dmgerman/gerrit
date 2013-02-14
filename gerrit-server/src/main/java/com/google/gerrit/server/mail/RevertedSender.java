@@ -94,7 +94,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
+name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -110,25 +112,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountProjectWatch
-operator|.
-name|NotifyType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AnonymousCowardName
+name|Change
 import|;
 end_import
 
@@ -187,17 +171,12 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|RevertedSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, @Assisted Change c)
+DECL|method|RevertedSender (EmailArguments ea, @Assisted Change c)
 specifier|public
 name|RevertedSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|Assisted
@@ -208,8 +187,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

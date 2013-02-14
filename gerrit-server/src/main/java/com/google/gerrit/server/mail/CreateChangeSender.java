@@ -156,22 +156,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|mail
 operator|.
 name|ProjectWatch
@@ -302,17 +286,12 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|CreateChangeSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, SshInfo si, @Assisted Change c)
+DECL|method|CreateChangeSender (EmailArguments ea, SshInfo si, @Assisted Change c)
 specifier|public
 name|CreateChangeSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|SshInfo
 name|si
@@ -326,8 +305,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|)

@@ -218,6 +218,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|CanonicalWebUrl
 import|;
 end_import
@@ -439,6 +455,11 @@ specifier|final
 name|AnonymousUser
 name|anonymousUser
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|field|urlProvider
 specifier|final
 name|Provider
@@ -487,7 +508,7 @@ name|settings
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -527,6 +548,11 @@ name|capabilityControlFactory
 parameter_list|,
 name|AnonymousUser
 name|anonymousUser
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -636,6 +662,12 @@ operator|.
 name|anonymousUser
 operator|=
 name|anonymousUser
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.

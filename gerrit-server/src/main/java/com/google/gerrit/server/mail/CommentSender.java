@@ -176,22 +176,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|patch
 operator|.
 name|PatchFile
@@ -382,17 +366,12 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, @Assisted NotifyHandling notify, @Assisted Change c)
+DECL|method|CommentSender (EmailArguments ea, @Assisted NotifyHandling notify, @Assisted Change c)
 specifier|public
 name|CommentSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 annotation|@
 name|Assisted
@@ -408,8 +387,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

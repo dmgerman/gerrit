@@ -520,12 +520,6 @@ specifier|final
 name|EmailArguments
 name|args
 decl_stmt|;
-DECL|field|anonymousCowardName
-specifier|private
-specifier|final
-name|String
-name|anonymousCowardName
-decl_stmt|;
 DECL|field|fromId
 specifier|protected
 name|Account
@@ -533,18 +527,13 @@ operator|.
 name|Id
 name|fromId
 decl_stmt|;
-DECL|method|OutgoingEmail (EmailArguments ea, final String anonymousCowardName, final String mc)
+DECL|method|OutgoingEmail (EmailArguments ea, String mc)
 specifier|protected
 name|OutgoingEmail
 parameter_list|(
 name|EmailArguments
 name|ea
 parameter_list|,
-specifier|final
-name|String
-name|anonymousCowardName
-parameter_list|,
-specifier|final
 name|String
 name|mc
 parameter_list|)
@@ -552,12 +541,6 @@ block|{
 name|args
 operator|=
 name|ea
-expr_stmt|;
-name|this
-operator|.
-name|anonymousCowardName
-operator|=
-name|anonymousCowardName
 expr_stmt|;
 name|messageClass
 operator|=
@@ -1387,6 +1370,8 @@ literal|null
 condition|)
 block|{
 return|return
+name|args
+operator|.
 name|anonymousCowardName
 return|;
 block|}
@@ -1438,6 +1423,8 @@ condition|)
 block|{
 name|name
 operator|=
+name|args
+operator|.
 name|anonymousCowardName
 operator|+
 literal|" #"
@@ -1543,6 +1530,8 @@ else|else
 comment|/* (name == null&& email == null) */
 block|{
 return|return
+name|args
+operator|.
 name|anonymousCowardName
 operator|+
 literal|" #"
