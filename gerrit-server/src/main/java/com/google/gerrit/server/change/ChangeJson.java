@@ -2571,8 +2571,15 @@ name|labels
 init|=
 name|Maps
 operator|.
-name|newLinkedHashMap
-argument_list|()
+name|newTreeMap
+argument_list|(
+name|LabelOrdering
+operator|.
+name|create
+argument_list|(
+name|approvalTypes
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|initLabels
 argument_list|(
