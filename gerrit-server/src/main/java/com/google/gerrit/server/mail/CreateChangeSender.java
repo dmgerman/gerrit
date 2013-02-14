@@ -170,22 +170,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ssh
-operator|.
-name|SshInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -286,15 +270,12 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|CreateChangeSender (EmailArguments ea, SshInfo si, @Assisted Change c)
+DECL|method|CreateChangeSender (EmailArguments ea, @Assisted Change c)
 specifier|public
 name|CreateChangeSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-name|SshInfo
-name|si
 parameter_list|,
 annotation|@
 name|Assisted
@@ -307,11 +288,6 @@ argument_list|(
 name|ea
 argument_list|,
 name|c
-argument_list|)
-expr_stmt|;
-name|setSshInfo
-argument_list|(
-name|si
 argument_list|)
 expr_stmt|;
 block|}
