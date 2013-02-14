@@ -668,6 +668,7 @@ end_import
 
 begin_class
 DECL|class|PostReviewers
+specifier|public
 class|class
 name|PostReviewers
 implements|implements
@@ -697,6 +698,7 @@ init|=
 literal|20
 decl_stmt|;
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -704,6 +706,7 @@ block|{
 annotation|@
 name|DefaultInput
 DECL|field|reviewer
+specifier|public
 name|String
 name|reviewer
 decl_stmt|;

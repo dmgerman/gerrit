@@ -372,9 +372,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|change
 operator|.
-name|GerritServerConfig
+name|PostReviewers
 import|;
 end_import
 
@@ -388,9 +388,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|config
 operator|.
-name|AddReviewer
+name|GerritServerConfig
 import|;
 end_import
 
@@ -2034,7 +2034,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|AddReviewer
+name|PostReviewers
 operator|.
 name|isLegalReviewerGroup
 argument_list|(
@@ -2100,7 +2100,7 @@ literal|"addreviewer"
 argument_list|,
 literal|"maxAllowed"
 argument_list|,
-name|AddReviewer
+name|PostReviewers
 operator|.
 name|DEFAULT_MAX_REVIEWERS
 argument_list|)

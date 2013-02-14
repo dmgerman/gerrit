@@ -304,6 +304,7 @@ end_import
 
 begin_class
 DECL|class|DeleteReviewer
+specifier|public
 class|class
 name|DeleteReviewer
 implements|implements
@@ -315,6 +316,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
