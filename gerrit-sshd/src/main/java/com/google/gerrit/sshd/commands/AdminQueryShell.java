@@ -176,7 +176,7 @@ name|RequiresCapability
 argument_list|(
 name|GlobalCapability
 operator|.
-name|ADMINISTRATE_SERVER
+name|ACCESS_DATABASE
 argument_list|)
 annotation|@
 name|CommandMetaData
