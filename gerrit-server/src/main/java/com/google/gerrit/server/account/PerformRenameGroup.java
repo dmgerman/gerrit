@@ -218,20 +218,6 @@ name|gwtorm
 operator|.
 name|server
 operator|.
-name|OrmDuplicateKeyException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
 name|OrmException
 import|;
 end_import
@@ -640,12 +626,10 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmDuplicateKeyException
-name|dupeErr
+name|OrmException
+name|e
 parameter_list|)
 block|{
-comment|// If we are using this identity, don't report the exception.
-comment|//
 name|AccountGroupName
 name|other
 init|=
@@ -664,7 +648,12 @@ condition|(
 name|other
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+comment|// If we are using this identity, don't report the exception.
+comment|//
+if|if
+condition|(
 name|other
 operator|.
 name|getId
@@ -695,6 +684,13 @@ operator|new
 name|NameAlreadyUsedException
 argument_list|()
 throw|;
+block|}
+else|else
+block|{
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 name|group
 operator|.
