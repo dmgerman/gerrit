@@ -1010,7 +1010,9 @@ init|=
 name|groupMembersFactory
 operator|.
 name|create
-argument_list|()
+argument_list|(
+name|currentUser
+argument_list|)
 operator|.
 name|listAccounts
 argument_list|(

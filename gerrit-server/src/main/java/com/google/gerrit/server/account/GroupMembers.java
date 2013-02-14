@@ -188,7 +188,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -252,6 +252,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -291,10 +305,13 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ()
+DECL|method|create (CurrentUser currentUser)
 name|GroupMembers
 name|create
-parameter_list|()
+parameter_list|(
+name|CurrentUser
+name|currentUser
+parameter_list|)
 function_decl|;
 block|}
 DECL|field|groupCache
@@ -328,12 +345,12 @@ decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
-name|IdentifiedUser
+name|CurrentUser
 name|currentUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupMembers (final GroupCache groupCache, final GroupDetailFactory.Factory groupDetailFactory, final AccountCache accountCache, final ProjectControl.GenericFactory projectControl, final IdentifiedUser currentUser)
+DECL|method|GroupMembers (final GroupCache groupCache, final GroupDetailFactory.Factory groupDetailFactory, final AccountCache accountCache, final ProjectControl.GenericFactory projectControl, @Assisted final CurrentUser currentUser)
 name|GroupMembers
 parameter_list|(
 specifier|final
@@ -356,8 +373,10 @@ operator|.
 name|GenericFactory
 name|projectControl
 parameter_list|,
+annotation|@
+name|Assisted
 specifier|final
-name|IdentifiedUser
+name|CurrentUser
 name|currentUser
 parameter_list|)
 block|{

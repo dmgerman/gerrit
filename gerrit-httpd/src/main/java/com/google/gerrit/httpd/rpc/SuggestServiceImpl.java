@@ -2061,7 +2061,10 @@ init|=
 name|groupMembersFactory
 operator|.
 name|create
+argument_list|(
+name|getCurrentUser
 argument_list|()
+argument_list|)
 operator|.
 name|listAccounts
 argument_list|(
