@@ -1544,10 +1544,7 @@ control|(
 name|LabelType
 name|t
 range|:
-name|Gerrit
-operator|.
-name|getConfig
-argument_list|()
+name|projectAccess
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -1899,6 +1896,11 @@ argument_list|,
 name|readOnly
 argument_list|,
 name|value
+argument_list|,
+name|projectAccess
+operator|.
+name|getLabelTypes
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|permissionContainer
