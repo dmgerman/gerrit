@@ -204,7 +204,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|PreconditionFailedException
 import|;
 end_import
 
@@ -373,7 +373,7 @@ name|BadRequestException
 throws|,
 name|ResourceNotFoundException
 throws|,
-name|ResourceConflictException
+name|PreconditionFailedException
 throws|,
 name|OrmException
 block|{
@@ -534,7 +534,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ResourceConflictException
+name|PreconditionFailedException
 argument_list|(
 name|e
 operator|.
