@@ -94,22 +94,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|LabelTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|GroupReference
 import|;
 end_import
@@ -979,11 +963,6 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
-DECL|field|labelTypes
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|allProjectsName
 specifier|final
 name|AllProjectsName
@@ -1006,7 +985,7 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, LabelTypes labelTypes, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -1041,9 +1020,6 @@ name|accountResolver
 parameter_list|,
 name|GroupBackend
 name|groupBackend
-parameter_list|,
-name|LabelTypes
-name|labelTypes
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName
@@ -1099,12 +1075,6 @@ operator|.
 name|groupBackend
 operator|=
 name|groupBackend
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1967,6 +1937,10 @@ name|LabelPredicate
 argument_list|(
 name|args
 operator|.
+name|projectCache
+argument_list|,
+name|args
+operator|.
 name|changeControlGenericFactory
 argument_list|,
 name|args
@@ -1976,10 +1950,6 @@ argument_list|,
 name|args
 operator|.
 name|dbProvider
-argument_list|,
-name|args
-operator|.
-name|labelTypes
 argument_list|,
 name|name
 argument_list|)

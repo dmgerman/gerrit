@@ -431,12 +431,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|functionState
 specifier|private
 specifier|final
@@ -457,7 +451,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, LabelTypes labelTypes, FunctionState.Factory functionState, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson (Provider<ReviewDb> db, FunctionState.Factory functionState, AccountInfo.Loader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -465,9 +459,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|LabelTypes
-name|labelTypes
 parameter_list|,
 name|FunctionState
 operator|.
@@ -487,12 +478,6 @@ operator|.
 name|db
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -688,6 +673,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|LabelTypes
+name|labelTypes
+init|=
+name|ctl
+operator|.
+name|getLabelTypes
+argument_list|()
+decl_stmt|;
 name|FunctionState
 name|fs
 init|=

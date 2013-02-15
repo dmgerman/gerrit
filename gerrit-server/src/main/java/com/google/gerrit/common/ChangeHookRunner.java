@@ -1404,12 +1404,6 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|eventFactory
 specifier|private
 specifier|final
@@ -1444,7 +1438,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final LabelTypes labelTypes, final EventFactory eventFactory, final SitePaths sitePaths, final DynamicSet<ChangeListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final SitePaths sitePaths, final DynamicSet<ChangeListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1479,10 +1473,6 @@ parameter_list|,
 specifier|final
 name|AccountCache
 name|accountCache
-parameter_list|,
-specifier|final
-name|LabelTypes
-name|labelTypes
 parameter_list|,
 specifier|final
 name|EventFactory
@@ -1536,12 +1526,6 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -2767,6 +2751,22 @@ name|comment
 operator|=
 name|comment
 expr_stmt|;
+name|LabelTypes
+name|labelTypes
+init|=
+name|projectCache
+operator|.
+name|get
+argument_list|(
+name|change
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
+operator|.
+name|getLabelTypes
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|approvals
@@ -2827,6 +2827,8 @@ index|]
 operator|=
 name|getApprovalAttribute
 argument_list|(
+name|labelTypes
+argument_list|,
 name|approval
 argument_list|)
 expr_stmt|;
@@ -4537,11 +4539,14 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Create an ApprovalAttribute for the given approval suitable for serialization to JSON.      * @param approval      * @return object suitable for serialization to JSON      */
-DECL|method|getApprovalAttribute ( Entry<ApprovalCategory.Id, ApprovalCategoryValue.Id> approval)
+DECL|method|getApprovalAttribute (LabelTypes labelTypes, Entry<ApprovalCategory.Id, ApprovalCategoryValue.Id> approval)
 specifier|private
 name|ApprovalAttribute
 name|getApprovalAttribute
 parameter_list|(
+name|LabelTypes
+name|labelTypes
+parameter_list|,
 name|Entry
 argument_list|<
 name|ApprovalCategory

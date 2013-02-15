@@ -784,8 +784,6 @@ operator|new
 name|ApprovalsUtil
 argument_list|(
 name|db
-argument_list|,
-literal|null
 argument_list|)
 operator|.
 name|syncChangeStatus

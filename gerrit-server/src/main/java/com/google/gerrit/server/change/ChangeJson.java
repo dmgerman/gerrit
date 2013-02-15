@@ -1262,12 +1262,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
@@ -1367,7 +1361,7 @@ name|lastControl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelTypes at, CurrentUser u, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeControl.GenericFactory ccf, PatchSetInfoFactory psi, PatchListCache plc, AccountInfo.Loader.Factory ailf, @CanonicalWebUrl Provider<String> curl, Urls urls)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, CurrentUser u, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeControl.GenericFactory ccf, PatchSetInfoFactory psi, PatchListCache plc, AccountInfo.Loader.Factory ailf, @CanonicalWebUrl Provider<String> curl, Urls urls)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1375,9 +1369,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|LabelTypes
-name|at
 parameter_list|,
 name|CurrentUser
 name|u
@@ -1425,12 +1416,6 @@ operator|.
 name|db
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|at
 expr_stmt|;
 name|this
 operator|.
@@ -2587,6 +2572,14 @@ return|return
 literal|null
 return|;
 block|}
+name|LabelTypes
+name|labelTypes
+init|=
+name|ctl
+operator|.
+name|getLabelTypes
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|cd
@@ -2606,6 +2599,8 @@ name|labelsForOpenChange
 argument_list|(
 name|cd
 argument_list|,
+name|labelTypes
+argument_list|,
 name|standard
 argument_list|,
 name|detailed
@@ -2619,6 +2614,8 @@ name|labelsForClosedChange
 argument_list|(
 name|cd
 argument_list|,
+name|labelTypes
+argument_list|,
 name|standard
 argument_list|,
 name|detailed
@@ -2626,7 +2623,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|labelsForOpenChange (ChangeData cd, boolean standard, boolean detailed)
+DECL|method|labelsForOpenChange (ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -2638,6 +2635,9 @@ name|labelsForOpenChange
 parameter_list|(
 name|ChangeData
 name|cd
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|boolean
 name|standard
@@ -2659,6 +2659,8 @@ init|=
 name|initLabels
 argument_list|(
 name|cd
+argument_list|,
+name|labelTypes
 argument_list|,
 name|standard
 argument_list|)
@@ -2756,7 +2758,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|initLabels (ChangeData cd, boolean standard)
+DECL|method|initLabels (ChangeData cd, LabelTypes labelTypes, boolean standard)
 specifier|private
 name|Map
 argument_list|<
@@ -2768,6 +2770,9 @@ name|initLabels
 parameter_list|(
 name|ChangeData
 name|cd
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|boolean
 name|standard
@@ -3402,7 +3407,10 @@ comment|// TODO Support arbitrary labels placed by a reviewer.
 name|LabelType
 name|lt
 init|=
-name|labelTypes
+name|ctl
+operator|.
+name|getLabelTypes
+argument_list|()
 operator|.
 name|byId
 argument_list|(
@@ -3487,7 +3495,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|labelsForClosedChange (ChangeData cd, boolean standard, boolean detailed)
+DECL|method|labelsForClosedChange (ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -3499,6 +3507,9 @@ name|labelsForClosedChange
 parameter_list|(
 name|ChangeData
 name|cd
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|boolean
 name|standard
@@ -4203,6 +4214,14 @@ return|return
 literal|null
 return|;
 block|}
+name|LabelTypes
+name|labelTypes
+init|=
+name|ctl
+operator|.
+name|getLabelTypes
+argument_list|()
+decl_stmt|;
 name|ListMultimap
 argument_list|<
 name|String

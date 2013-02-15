@@ -387,7 +387,7 @@ throw|throw
 operator|new
 name|ProvisionException
 argument_list|(
-literal|"Cannot query approval categories"
+literal|"Cannot query label categories"
 argument_list|,
 name|e
 argument_list|)

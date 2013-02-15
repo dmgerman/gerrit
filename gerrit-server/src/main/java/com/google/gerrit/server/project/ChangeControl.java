@@ -78,6 +78,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|LabelTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|PermissionRange
 import|;
 end_import
@@ -1226,6 +1242,21 @@ name|canUpload
 argument_list|()
 return|;
 comment|// as long as you can upload too
+block|}
+comment|/** All available label types for this project. */
+DECL|method|getLabelTypes ()
+specifier|public
+name|LabelTypes
+name|getLabelTypes
+parameter_list|()
+block|{
+return|return
+name|getProjectControl
+argument_list|()
+operator|.
+name|getLabelTypes
+argument_list|()
+return|;
 block|}
 comment|/** All value ranges of any allowed label permission. */
 DECL|method|getLabelRanges ()

@@ -506,6 +506,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|LabelTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|PermissionRule
 import|;
 end_import
@@ -2375,6 +2391,11 @@ DECL|field|magicBranch
 specifier|private
 name|MagicBranchInput
 name|magicBranch
+decl_stmt|;
+DECL|field|labelTypes
+specifier|private
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|newChanges
 specifier|private
@@ -7182,6 +7203,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|labelTypes
+operator|=
+name|projectControl
+operator|.
+name|getLabelTypes
+argument_list|()
+expr_stmt|;
 comment|// Validate that the new commits are connected with the target
 comment|// branch.  If they aren't, we want to abort. We do this check by
 comment|// looking to see if we can compute a merge base between the new
@@ -9230,6 +9258,8 @@ name|addReviewers
 argument_list|(
 name|db
 argument_list|,
+name|labelTypes
+argument_list|,
 name|change
 argument_list|,
 name|ps
@@ -11046,6 +11076,8 @@ name|copyVetosToPatchSet
 argument_list|(
 name|db
 argument_list|,
+name|labelTypes
+argument_list|,
 name|newPatchSet
 operator|.
 name|getId
@@ -11066,6 +11098,8 @@ operator|.
 name|addReviewers
 argument_list|(
 name|db
+argument_list|,
+name|labelTypes
 argument_list|,
 name|change
 argument_list|,
@@ -13597,7 +13631,7 @@ name|create
 argument_list|(
 name|result
 operator|.
-name|change
+name|changeCtl
 argument_list|)
 decl_stmt|;
 name|cm

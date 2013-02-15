@@ -96,22 +96,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|LabelTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|PatchSetPublishDetail
 import|;
 end_import
@@ -454,12 +438,6 @@ operator|.
 name|Factory
 name|changeControlFactory
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|aic
 specifier|private
 specifier|final
@@ -500,7 +478,7 @@ name|drafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final ReviewDb db, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final LabelTypes labelTypes, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
+DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final ReviewDb db, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
 name|PatchSetPublishDetailFactory
 parameter_list|(
 specifier|final
@@ -522,10 +500,6 @@ name|ChangeControl
 operator|.
 name|Factory
 name|changeControlFactory
-parameter_list|,
-specifier|final
-name|LabelTypes
-name|labelTypes
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -557,12 +531,6 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -896,7 +864,10 @@ block|{
 name|LabelType
 name|lt
 init|=
-name|labelTypes
+name|control
+operator|.
+name|getLabelTypes
+argument_list|()
 operator|.
 name|byLabel
 argument_list|(
