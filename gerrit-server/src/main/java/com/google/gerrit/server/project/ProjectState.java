@@ -673,7 +673,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final LabelTypes labelTypes, @Assisted final ProjectConfig config)
-specifier|protected
+specifier|public
 name|ProjectState
 parameter_list|(
 specifier|final
