@@ -2319,12 +2319,6 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
-DECL|field|config
-specifier|private
-specifier|final
-name|Config
-name|config
-decl_stmt|;
 DECL|field|projectControl
 specifier|private
 specifier|final
@@ -2802,12 +2796,6 @@ operator|.
 name|allProjectsName
 operator|=
 name|allProjectsName
-expr_stmt|;
-name|this
-operator|.
-name|config
-operator|=
-name|config
 expr_stmt|;
 name|this
 operator|.
