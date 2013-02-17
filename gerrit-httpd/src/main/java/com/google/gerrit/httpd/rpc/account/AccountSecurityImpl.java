@@ -174,7 +174,7 @@ name|common
 operator|.
 name|errors
 operator|.
-name|NameAlreadyUsedException
+name|NoSuchEntityException
 import|;
 end_import
 
@@ -190,7 +190,7 @@ name|common
 operator|.
 name|errors
 operator|.
-name|NoSuchEntityException
+name|PermissionDeniedException
 import|;
 end_import
 
@@ -1565,8 +1565,12 @@ operator|.
 name|onFailure
 argument_list|(
 operator|new
-name|NameAlreadyUsedException
-argument_list|()
+name|PermissionDeniedException
+argument_list|(
+literal|"Not allowed to change"
+operator|+
+literal|" username"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
