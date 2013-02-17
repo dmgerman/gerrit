@@ -107,6 +107,24 @@ name|MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|NameAlreadyUsedException (String name)
+specifier|public
+name|NameAlreadyUsedException
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|MESSAGE
+operator|+
+literal|": "
+operator|+
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
