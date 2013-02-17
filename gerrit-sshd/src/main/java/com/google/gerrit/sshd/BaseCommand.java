@@ -2066,8 +2066,6 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|" no such project"
 argument_list|)
 throw|;
 block|}
