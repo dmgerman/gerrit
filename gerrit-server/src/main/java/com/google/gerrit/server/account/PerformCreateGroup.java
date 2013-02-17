@@ -723,7 +723,9 @@ block|{
 throw|throw
 operator|new
 name|NameAlreadyUsedException
-argument_list|()
+argument_list|(
+name|groupName
+argument_list|)
 throw|;
 block|}
 name|db

@@ -682,7 +682,9 @@ comment|//
 throw|throw
 operator|new
 name|NameAlreadyUsedException
-argument_list|()
+argument_list|(
+name|newName
+argument_list|)
 throw|;
 block|}
 else|else
