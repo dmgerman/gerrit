@@ -4068,20 +4068,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|field|NAMING
-specifier|private
-specifier|static
-specifier|final
-name|FieldNamingPolicy
-name|NAMING
-init|=
-name|FieldNamingPolicy
-operator|.
-name|LOWER_CASE_WITH_UNDERSCORES
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|method|newGson (Multimap<String, String> config, @Nullable HttpServletRequest req)
 specifier|private
@@ -4112,11 +4098,6 @@ name|JSON_COMPACT
 operator|.
 name|newGsonBuilder
 argument_list|()
-operator|.
-name|setFieldNamingPolicy
-argument_list|(
-name|NAMING
-argument_list|)
 decl_stmt|;
 name|enablePrettyPrint
 argument_list|(
@@ -4395,10 +4376,13 @@ try|try
 block|{
 name|name
 operator|=
-name|NAMING
+name|FieldNamingPolicy
+operator|.
+name|LOWER_CASE_WITH_UNDERSCORES
 operator|.
 name|translateName
 argument_list|(
+comment|//
 name|field
 operator|.
 name|getDeclaringClass
