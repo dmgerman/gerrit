@@ -1427,7 +1427,7 @@ operator|+
 name|end
 argument_list|()
 operator|+
-literal|")"
+literal|"]"
 return|;
 block|}
 block|}
