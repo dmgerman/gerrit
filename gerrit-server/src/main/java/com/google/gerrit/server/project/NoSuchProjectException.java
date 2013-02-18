@@ -103,6 +103,15 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+DECL|field|MESSAGE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MESSAGE
+init|=
+literal|"Project not found: "
+decl_stmt|;
 DECL|method|NoSuchProjectException (final Project.NameKey key)
 specifier|public
 name|NoSuchProjectException
@@ -139,6 +148,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|MESSAGE
+operator|+
 name|key
 operator|.
 name|toString

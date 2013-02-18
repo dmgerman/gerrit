@@ -437,11 +437,10 @@ name|CmdLineException
 argument_list|(
 name|owner
 argument_list|,
-literal|"'"
-operator|+
-name|projectName
-operator|+
-literal|"': is not a Gerrit project"
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
