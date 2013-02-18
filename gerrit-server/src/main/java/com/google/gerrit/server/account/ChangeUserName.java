@@ -788,7 +788,9 @@ comment|//
 throw|throw
 operator|new
 name|NameAlreadyUsedException
-argument_list|()
+argument_list|(
+name|newUsername
+argument_list|)
 throw|;
 block|}
 block|}
