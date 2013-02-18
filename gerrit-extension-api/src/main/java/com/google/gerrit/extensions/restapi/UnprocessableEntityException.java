@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,22 +52,8 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.extensions.restapi
 package|package
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-package|;
-end_package
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -77,74 +63,43 @@ operator|.
 name|extensions
 operator|.
 name|restapi
-operator|.
-name|RestReadView
-import|;
-end_import
+package|;
+end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
+begin_comment
+comment|/** Resource referenced in the request body is not found (HTTP 422 Unprocessable Entity). */
+end_comment
 
 begin_class
-DECL|class|GetProject
-class|class
-name|GetProject
-implements|implements
-name|RestReadView
-argument_list|<
-name|ProjectResource
-argument_list|>
-block|{
-DECL|field|json
-specifier|private
-specifier|final
-name|ProjectJson
-name|json
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|GetProject (ProjectJson json)
-name|GetProject
-parameter_list|(
-name|ProjectJson
-name|json
-parameter_list|)
-block|{
-name|this
-operator|.
-name|json
-operator|=
-name|json
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|apply (ProjectResource rsrc)
+DECL|class|UnprocessableEntityException
 specifier|public
-name|Object
-name|apply
+class|class
+name|UnprocessableEntityException
+extends|extends
+name|RestApiException
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|UnprocessableEntityException (String msg)
+specifier|public
+name|UnprocessableEntityException
 parameter_list|(
-name|ProjectResource
-name|rsrc
+name|String
+name|msg
 parameter_list|)
 block|{
-return|return
-name|json
-operator|.
-name|format
+name|super
 argument_list|(
-name|rsrc
+name|msg
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 block|}
 end_class

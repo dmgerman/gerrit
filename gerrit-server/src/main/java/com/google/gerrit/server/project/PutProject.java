@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -78,7 +78,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestReadView
+name|ResourceConflictException
 import|;
 end_import
 
@@ -88,63 +88,77 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|Inject
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestModifyView
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|CreateProject
+operator|.
+name|Input
 import|;
 end_import
 
 begin_class
-DECL|class|GetProject
+DECL|class|PutProject
+specifier|public
 class|class
-name|GetProject
+name|PutProject
 implements|implements
-name|RestReadView
+name|RestModifyView
 argument_list|<
 name|ProjectResource
+argument_list|,
+name|Input
 argument_list|>
 block|{
-DECL|field|json
-specifier|private
-specifier|final
-name|ProjectJson
-name|json
-decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|GetProject (ProjectJson json)
-name|GetProject
-parameter_list|(
-name|ProjectJson
-name|json
-parameter_list|)
-block|{
-name|this
-operator|.
-name|json
-operator|=
-name|json
-expr_stmt|;
-block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource rsrc)
+DECL|method|apply (ProjectResource resource, Input input)
 specifier|public
 name|Object
 name|apply
 parameter_list|(
 name|ProjectResource
-name|rsrc
+name|resource
+parameter_list|,
+name|Input
+name|input
 parameter_list|)
+throws|throws
+name|ResourceConflictException
 block|{
-return|return
-name|json
-operator|.
-name|format
+throw|throw
+operator|new
+name|ResourceConflictException
 argument_list|(
-name|rsrc
+literal|"Project \""
+operator|+
+name|resource
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"\" already exists"
 argument_list|)
-return|;
+throw|;
 block|}
 block|}
 end_class

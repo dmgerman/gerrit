@@ -249,6 +249,12 @@ name|InheritableBoolean
 operator|.
 name|INHERIT
 expr_stmt|;
+name|submitType
+operator|=
+name|SubmitType
+operator|.
+name|MERGE_IF_NECESSARY
+expr_stmt|;
 block|}
 DECL|method|getProject ()
 specifier|public
