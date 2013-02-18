@@ -1307,7 +1307,7 @@ name|rule
 return|;
 block|}
 DECL|method|parseInt (String value)
-specifier|private
+specifier|public
 specifier|static
 name|int
 name|parseInt

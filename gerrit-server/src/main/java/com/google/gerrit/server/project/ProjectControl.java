@@ -876,6 +876,11 @@ name|SectionMatcher
 argument_list|>
 name|localSections
 decl_stmt|;
+DECL|field|labelTypes
+specifier|private
+name|LabelTypes
+name|labelTypes
+decl_stmt|;
 DECL|field|refControls
 specifier|private
 name|Map
@@ -1198,11 +1203,23 @@ name|LabelTypes
 name|getLabelTypes
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|labelTypes
+operator|==
+literal|null
+condition|)
+block|{
+name|labelTypes
+operator|=
 name|state
 operator|.
 name|getLabelTypes
 argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|labelTypes
 return|;
 block|}
 DECL|method|isHidden ()
