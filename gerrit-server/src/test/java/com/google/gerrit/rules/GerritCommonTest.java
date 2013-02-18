@@ -312,8 +312,6 @@ name|asList
 argument_list|(
 name|category
 argument_list|(
-literal|0
-argument_list|,
 literal|"CRVW"
 argument_list|,
 literal|"Code-Review"
@@ -358,8 +356,6 @@ argument_list|)
 argument_list|,
 name|category
 argument_list|(
-literal|1
-argument_list|,
 literal|"VRIF"
 argument_list|,
 literal|"Verified"
@@ -560,15 +556,12 @@ name|text
 argument_list|)
 return|;
 block|}
-DECL|method|category (int pos, String id, String name, LabelValue... values)
+DECL|method|category (String id, String name, LabelValue... values)
 specifier|private
 specifier|static
 name|LabelType
 name|category
 parameter_list|(
-name|int
-name|pos
-parameter_list|,
 name|String
 name|id
 parameter_list|,
@@ -580,9 +573,7 @@ modifier|...
 name|values
 parameter_list|)
 block|{
-name|LabelType
-name|type
-init|=
+return|return
 operator|new
 name|LabelType
 argument_list|(
@@ -597,19 +588,6 @@ argument_list|(
 name|values
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|type
-operator|.
-name|setPosition
-argument_list|(
-operator|(
-name|short
-operator|)
-name|pos
-argument_list|)
-expr_stmt|;
-return|return
-name|type
 return|;
 block|}
 DECL|class|Projects
