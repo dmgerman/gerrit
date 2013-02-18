@@ -294,6 +294,13 @@ name|isCopyMinScore
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|lt
+operator|.
+name|setCanOverride
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|lt
 return|;
@@ -658,6 +665,12 @@ specifier|protected
 name|short
 name|maxPositive
 decl_stmt|;
+DECL|field|canOverride
+specifier|private
+specifier|transient
+name|boolean
+name|canOverride
+decl_stmt|;
 DECL|field|intList
 specifier|private
 specifier|transient
@@ -717,6 +730,10 @@ name|checkName
 argument_list|(
 name|name
 argument_list|)
+expr_stmt|;
+name|canOverride
+operator|=
+literal|true
 expr_stmt|;
 name|values
 operator|=
@@ -939,6 +956,32 @@ operator|.
 name|functionName
 operator|=
 name|functionName
+expr_stmt|;
+block|}
+DECL|method|canOverride ()
+specifier|public
+name|boolean
+name|canOverride
+parameter_list|()
+block|{
+return|return
+name|canOverride
+return|;
+block|}
+DECL|method|setCanOverride (boolean canOverride)
+specifier|public
+name|void
+name|setCanOverride
+parameter_list|(
+name|boolean
+name|canOverride
+parameter_list|)
+block|{
+name|this
+operator|.
+name|canOverride
+operator|=
+name|canOverride
 expr_stmt|;
 block|}
 DECL|method|getValues ()
