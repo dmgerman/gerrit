@@ -774,14 +774,11 @@ name|at
 init|=
 name|labelTypes
 operator|.
-name|byId
+name|byLabel
 argument_list|(
 name|ca
 operator|.
-name|getCategoryId
-argument_list|()
-operator|.
-name|get
+name|getLabelId
 argument_list|()
 argument_list|)
 decl_stmt|;

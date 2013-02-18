@@ -527,14 +527,11 @@ name|t
 init|=
 name|types
 operator|.
-name|byId
+name|byLabel
 argument_list|(
 name|a
 operator|.
-name|getCategoryId
-argument_list|()
-operator|.
-name|get
+name|getLabelId
 argument_list|()
 argument_list|)
 decl_stmt|;

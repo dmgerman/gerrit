@@ -239,30 +239,8 @@ name|SystemConfigAccess
 name|systemConfig
 parameter_list|()
 function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|3
-argument_list|)
-DECL|method|approvalCategories ()
-name|ApprovalCategoryAccess
-name|approvalCategories
-parameter_list|()
-function_decl|;
-annotation|@
-name|Relation
-argument_list|(
-name|id
-operator|=
-literal|4
-argument_list|)
-DECL|method|approvalCategoryValues ()
-name|ApprovalCategoryValueAccess
-name|approvalCategoryValues
-parameter_list|()
-function_decl|;
+comment|// Deleted @Relation(id = 3)
+comment|// Deleted @Relation(id = 4)
 annotation|@
 name|Relation
 argument_list|(

@@ -271,7 +271,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Obtain a list of label types from the server configuration.  *<p>  * Unifies to a Prolog list of: {@code label_type(Label, Id, Fun, Min, Max)}  * where:  *<ul>  *<li>{@code Label} - the newer style label name</li>  *<li>{@code Id} - the legacy LabelCategory.Id from the database</li>  *<li>{@code Fun} - legacy function name</li>  *<li>{@code Min, Max} - the smallest and largest configured values.</li>  *</ul>  */
+comment|/**  * Obtain a list of label types from the server configuration.  *<p>  * Unifies to a Prolog list of: {@code label_type(Label, Fun, Min, Max)}  * where:  *<ul>  *<li>{@code Label} - the newer style label name</li>  *<li>{@code Fun} - legacy function name</li>  *<li>{@code Min, Max} - the smallest and largest configured values.</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -483,7 +483,7 @@ name|intern
 argument_list|(
 literal|"label_type"
 argument_list|,
-literal|5
+literal|4
 argument_list|)
 decl_stmt|;
 DECL|method|export (LabelType type)
@@ -508,16 +508,6 @@ argument_list|(
 name|type
 operator|.
 name|getName
-argument_list|()
-argument_list|)
-argument_list|,
-name|SymbolTerm
-operator|.
-name|intern
-argument_list|(
-name|type
-operator|.
-name|getId
 argument_list|()
 argument_list|)
 argument_list|,

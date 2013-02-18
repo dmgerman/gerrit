@@ -2984,7 +2984,7 @@ literal|"--"
 operator|+
 name|lt
 operator|.
-name|getId
+name|getName
 argument_list|()
 argument_list|,
 name|Short

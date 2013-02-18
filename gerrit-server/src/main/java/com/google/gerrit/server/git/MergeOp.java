@@ -94,6 +94,20 @@ name|concurrent
 operator|.
 name|TimeUnit
 operator|.
+name|DAYS
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
 name|MILLISECONDS
 import|;
 end_import
@@ -123,20 +137,6 @@ operator|.
 name|TimeUnit
 operator|.
 name|SECONDS
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|DAYS
 import|;
 end_import
 
@@ -287,22 +287,6 @@ operator|.
 name|client
 operator|.
 name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ApprovalCategory
 import|;
 end_import
 
@@ -5743,20 +5727,10 @@ argument_list|()
 operator|>
 literal|0
 operator|&&
-name|ApprovalCategory
-operator|.
-name|SUBMIT_ID
-operator|.
-name|equals
-argument_list|(
 name|a
 operator|.
-name|getCategoryId
+name|isSubmit
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
 operator|&&
 name|a
 operator|.
