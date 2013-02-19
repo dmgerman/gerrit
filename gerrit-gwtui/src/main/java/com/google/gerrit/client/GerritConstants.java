@@ -188,11 +188,6 @@ name|String
 name|notFoundBody
 parameter_list|()
 function_decl|;
-DECL|method|nameAlreadyUsedBody ()
-name|String
-name|nameAlreadyUsedBody
-parameter_list|()
-function_decl|;
 DECL|method|noSuchAccountTitle ()
 name|String
 name|noSuchAccountTitle

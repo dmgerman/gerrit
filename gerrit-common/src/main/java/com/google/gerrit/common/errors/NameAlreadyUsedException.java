@@ -94,19 +94,8 @@ specifier|final
 name|String
 name|MESSAGE
 init|=
-literal|"Name Already Used"
+literal|"Name Already Used: "
 decl_stmt|;
-DECL|method|NameAlreadyUsedException ()
-specifier|public
-name|NameAlreadyUsedException
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|NameAlreadyUsedException (String name)
 specifier|public
 name|NameAlreadyUsedException
@@ -118,8 +107,6 @@ block|{
 name|super
 argument_list|(
 name|MESSAGE
-operator|+
-literal|": "
 operator|+
 name|name
 argument_list|)
