@@ -1417,6 +1417,7 @@ name|String
 name|toString
 parameter_list|()
 block|{
+comment|// Usage of [ and ) is intentional to denote inclusive/exclusive range
 return|return
 literal|"Range["
 operator|+
