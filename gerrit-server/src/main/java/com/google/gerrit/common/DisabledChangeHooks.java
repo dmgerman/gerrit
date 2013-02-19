@@ -124,23 +124,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ApprovalCategory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
+name|Branch
 operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ApprovalCategoryValue
+name|NameKey
 import|;
 end_import
 
@@ -173,24 +159,6 @@ operator|.
 name|client
 operator|.
 name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Branch
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -404,7 +372,7 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals, ReviewDb db)
+DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, ReviewDb db)
 specifier|public
 name|void
 name|doCommentAddedHook
@@ -423,13 +391,9 @@ name|comment
 parameter_list|,
 name|Map
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
-name|ApprovalCategoryValue
-operator|.
-name|Id
+name|Short
 argument_list|>
 name|approvals
 parameter_list|,

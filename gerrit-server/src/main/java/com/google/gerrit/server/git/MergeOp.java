@@ -5745,13 +5745,16 @@ literal|0
 operator|&&
 name|ApprovalCategory
 operator|.
-name|SUBMIT
+name|SUBMIT_ID
 operator|.
 name|equals
 argument_list|(
 name|a
 operator|.
 name|getCategoryId
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 operator|&&

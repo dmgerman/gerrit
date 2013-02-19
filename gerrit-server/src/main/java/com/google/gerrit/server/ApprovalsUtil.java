@@ -519,24 +519,6 @@ range|:
 name|patchSetApprovals
 control|)
 block|{
-comment|// ApprovalCategory.SUBMIT is still in db but not relevant in git-store
-if|if
-condition|(
-operator|!
-name|ApprovalCategory
-operator|.
-name|SUBMIT
-operator|.
-name|equals
-argument_list|(
-name|a
-operator|.
-name|getCategoryId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-specifier|final
 name|LabelType
 name|type
 init|=
@@ -555,6 +537,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|type
+operator|!=
+literal|null
+operator|&&
 name|a
 operator|.
 name|getPatchSetId
@@ -599,7 +585,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return

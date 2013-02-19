@@ -124,38 +124,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ApprovalCategory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|ApprovalCategoryValue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Branch
 import|;
 end_import
@@ -202,9 +170,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|server
+name|client
 operator|.
-name|ReviewDb
+name|Project
 import|;
 end_import
 
@@ -218,9 +186,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|Project
+name|ReviewDb
 import|;
 end_import
 
@@ -357,8 +325,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param patchSet The patchset this comment is related to.    * @param account The gerrit user who added the comment.    * @param comment The comment given.    * @param approvals Map of Approval Categories and Scores    * @throws OrmException    */
-DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<ApprovalCategory.Id, ApprovalCategoryValue.Id> approvals, ReviewDb db)
+comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param patchSet The patchset this comment is related to.    * @param account The gerrit user who added the comment.    * @param comment The comment given.    * @param approvals Map of label IDs to scores    * @throws OrmException    */
+DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, ReviewDb db)
 specifier|public
 name|void
 name|doCommentAddedHook
@@ -377,13 +345,9 @@ name|comment
 parameter_list|,
 name|Map
 argument_list|<
-name|ApprovalCategory
-operator|.
-name|Id
+name|String
 argument_list|,
-name|ApprovalCategoryValue
-operator|.
-name|Id
+name|Short
 argument_list|>
 name|approvals
 parameter_list|,

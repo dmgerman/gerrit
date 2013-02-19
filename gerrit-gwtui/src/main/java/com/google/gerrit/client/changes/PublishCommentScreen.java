@@ -1811,7 +1811,7 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|approvalCategoryList
+name|labelList
 argument_list|()
 argument_list|)
 expr_stmt|;
