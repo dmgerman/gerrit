@@ -143,13 +143,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ReviewerResource reviewerResource)
+DECL|method|apply (ReviewerResource rsrc)
 specifier|public
 name|Object
 name|apply
 parameter_list|(
 name|ReviewerResource
-name|reviewerResource
+name|rsrc
 parameter_list|)
 throws|throws
 name|OrmException
@@ -159,7 +159,7 @@ name|json
 operator|.
 name|format
 argument_list|(
-name|reviewerResource
+name|rsrc
 argument_list|)
 return|;
 block|}
