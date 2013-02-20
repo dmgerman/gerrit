@@ -622,7 +622,7 @@ literal|"*"
 operator|+
 literal|")"
 argument_list|,
-literal|"<a href=\"$1\">$1</a>"
+literal|"<a href=\"$1\" target=\"_blank\">$1</a>"
 argument_list|)
 return|;
 block|}
