@@ -194,7 +194,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|CreateProject
+name|PerformCreateProject
 import|;
 end_import
 
@@ -853,12 +853,12 @@ block|}
 block|}
 annotation|@
 name|Inject
-DECL|field|CreateProjectFactory
+DECL|field|factory
 specifier|private
-name|CreateProject
+name|PerformCreateProject
 operator|.
 name|Factory
-name|CreateProjectFactory
+name|factory
 decl_stmt|;
 annotation|@
 name|Inject
@@ -986,10 +986,10 @@ operator|=
 name|createEmptyCommit
 expr_stmt|;
 specifier|final
-name|CreateProject
+name|PerformCreateProject
 name|createProject
 init|=
-name|CreateProjectFactory
+name|factory
 operator|.
 name|create
 argument_list|(

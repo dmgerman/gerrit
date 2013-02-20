@@ -641,10 +641,10 @@ comment|/** Common class that holds the code to create projects */
 end_comment
 
 begin_class
-DECL|class|CreateProject
+DECL|class|PerformCreateProject
 specifier|public
 class|class
-name|CreateProject
+name|PerformCreateProject
 block|{
 DECL|field|log
 specifier|private
@@ -657,7 +657,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|CreateProject
+name|PerformCreateProject
 operator|.
 name|class
 argument_list|)
@@ -668,7 +668,7 @@ interface|interface
 name|Factory
 block|{
 DECL|method|create (CreateProjectArgs createProjectArgs)
-name|CreateProject
+name|PerformCreateProject
 name|create
 parameter_list|(
 name|CreateProjectArgs
@@ -744,8 +744,8 @@ name|metaDataUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProject (@rojectOwnerGroups Set<AccountGroup.UUID> pOwnerGroups, IdentifiedUser identifiedUser, GitRepositoryManager gitRepoManager, GitReferenceUpdated referenceUpdated, DynamicSet<NewProjectCreatedListener> createdListener, ReviewDb db, @GerritPersonIdent PersonIdent personIdent, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, @Assisted CreateProjectArgs createPArgs, ProjectCache pCache)
-name|CreateProject
+DECL|method|PerformCreateProject (@rojectOwnerGroups Set<AccountGroup.UUID> pOwnerGroups, IdentifiedUser identifiedUser, GitRepositoryManager gitRepoManager, GitReferenceUpdated referenceUpdated, DynamicSet<NewProjectCreatedListener> createdListener, ReviewDb db, @GerritPersonIdent PersonIdent personIdent, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, @Assisted CreateProjectArgs createPArgs, ProjectCache pCache)
+name|PerformCreateProject
 parameter_list|(
 annotation|@
 name|ProjectOwnerGroups

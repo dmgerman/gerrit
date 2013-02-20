@@ -146,7 +146,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|CreateProject
+name|PerformCreateProject
 import|;
 end_import
 
@@ -304,7 +304,7 @@ block|}
 DECL|field|createProjectFactory
 specifier|private
 specifier|final
-name|CreateProject
+name|PerformCreateProject
 operator|.
 name|Factory
 name|createProjectFactory
@@ -343,12 +343,12 @@ name|permissionsOnly
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateProjectHandler (final CreateProject.Factory createProjectFactory, final ProjectControl.Factory projectControlFactory, @Assisted(R) final String projectName, @Assisted(R) final String parentName, @Assisted(R) final boolean emptyCommit, @Assisted(R) final boolean permissionsOnly)
+DECL|method|CreateProjectHandler (final PerformCreateProject.Factory createProjectFactory, final ProjectControl.Factory projectControlFactory, @Assisted(R) final String projectName, @Assisted(R) final String parentName, @Assisted(R) final boolean emptyCommit, @Assisted(R) final boolean permissionsOnly)
 specifier|public
 name|CreateProjectHandler
 parameter_list|(
 specifier|final
-name|CreateProject
+name|PerformCreateProject
 operator|.
 name|Factory
 name|createProjectFactory
@@ -554,7 +554,7 @@ operator|=
 name|permissionsOnly
 expr_stmt|;
 specifier|final
-name|CreateProject
+name|PerformCreateProject
 name|createProject
 init|=
 name|createProjectFactory
