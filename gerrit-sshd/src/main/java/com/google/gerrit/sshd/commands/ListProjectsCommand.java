@@ -102,6 +102,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -123,6 +137,17 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"ls-projects"
+argument_list|,
+name|descr
+operator|=
+literal|"List projects visible to the caller"
+argument_list|)
 DECL|class|ListProjectsCommand
 specifier|final
 class|class

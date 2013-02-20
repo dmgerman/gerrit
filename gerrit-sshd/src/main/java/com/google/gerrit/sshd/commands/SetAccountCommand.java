@@ -294,6 +294,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -441,6 +455,17 @@ comment|/** Set a user's account settings. **/
 end_comment
 
 begin_class
+annotation|@
+name|CommandMetaData
+argument_list|(
+name|name
+operator|=
+literal|"set-account"
+argument_list|,
+name|descr
+operator|=
+literal|"Change an account's settings"
+argument_list|)
 DECL|class|SetAccountCommand
 specifier|final
 class|class
