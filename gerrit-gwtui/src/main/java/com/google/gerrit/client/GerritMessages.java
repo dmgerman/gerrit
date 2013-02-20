@@ -131,6 +131,14 @@ name|String
 name|who
 parameter_list|)
 function_decl|;
+DECL|method|nameAlreadyUsedBody (String alreadyUsedName)
+name|String
+name|nameAlreadyUsedBody
+parameter_list|(
+name|String
+name|alreadyUsedName
+parameter_list|)
+function_decl|;
 DECL|method|branchCreationFailed (String branchName, String error)
 name|String
 name|branchCreationFailed
