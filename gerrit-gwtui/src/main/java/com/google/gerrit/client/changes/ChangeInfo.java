@@ -504,6 +504,15 @@ name|change_id
 parameter_list|()
 comment|/*-{ return this.change_id; }-*/
 function_decl|;
+DECL|method|mergeable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|mergeable
+parameter_list|()
+comment|/*-{ return this.mergeable; }-*/
+function_decl|;
 DECL|method|statusRaw ()
 specifier|private
 specifier|final
@@ -643,6 +652,18 @@ name|String
 name|n
 parameter_list|)
 comment|/*-{ return this.permitted_labels[n]; }-*/
+function_decl|;
+DECL|method|removable_reviewers ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|removable_reviewers
+parameter_list|()
+comment|/*-{ return this.removable_reviewers; }-*/
 function_decl|;
 DECL|method|_number ()
 specifier|final
