@@ -344,6 +344,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ssh
+operator|.
+name|SshAdvertisedAddresses
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -373,6 +389,16 @@ operator|.
 name|runtime
 operator|.
 name|RuntimeInstance
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -473,6 +499,14 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
+DECL|field|sshAddresses
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|sshAddresses
+decl_stmt|;
 DECL|field|queryBuilder
 specifier|final
 name|ChangeQueryBuilder
@@ -508,7 +542,7 @@ name|settings
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ChangeQueryRewriter> queryRewriter, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -589,6 +623,14 @@ name|velocityRuntime
 parameter_list|,
 name|EmailSettings
 name|settings
+parameter_list|,
+annotation|@
+name|SshAdvertisedAddresses
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|sshAddresses
 parameter_list|)
 block|{
 name|this
@@ -710,6 +752,12 @@ operator|.
 name|settings
 operator|=
 name|settings
+expr_stmt|;
+name|this
+operator|.
+name|sshAddresses
+operator|=
+name|sshAddresses
 expr_stmt|;
 block|}
 block|}

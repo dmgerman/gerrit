@@ -138,22 +138,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ssh
-operator|.
-name|SshInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -294,15 +278,12 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplacePatchSetSender (EmailArguments ea, SshInfo si, @Assisted Change c)
+DECL|method|ReplacePatchSetSender (EmailArguments ea, @Assisted Change c)
 specifier|public
 name|ReplacePatchSetSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-name|SshInfo
-name|si
 parameter_list|,
 annotation|@
 name|Assisted
@@ -317,11 +298,6 @@ argument_list|,
 name|c
 argument_list|,
 literal|"newpatchset"
-argument_list|)
-expr_stmt|;
-name|setSshInfo
-argument_list|(
-name|si
 argument_list|)
 expr_stmt|;
 block|}

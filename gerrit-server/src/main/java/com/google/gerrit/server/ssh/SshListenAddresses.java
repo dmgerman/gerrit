@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.mail
+DECL|package|com.google.gerrit.server.ssh
 package|package
 name|com
 operator|.
@@ -62,39 +62,21 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|mail
+name|ssh
 package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|gerrit
+name|annotation
 operator|.
-name|common
+name|RetentionPolicy
 operator|.
-name|errors
-operator|.
-name|EmailException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
+name|RUNTIME
 import|;
 end_import
 
@@ -106,95 +88,40 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|BindingAnnotation
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|lang
 operator|.
-name|inject
+name|annotation
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
+name|Retention
 import|;
 end_import
 
 begin_comment
-comment|/** Asks a user to review a change. */
+comment|/**  * Marker on the list of {@link SocketAddress}es on which the SSH daemon is  * configured to listen.  */
 end_comment
 
-begin_class
-DECL|class|AddReviewerSender
-specifier|public
-class|class
-name|AddReviewerSender
-extends|extends
-name|NewChangeSender
-block|{
-DECL|interface|Factory
-specifier|public
-specifier|static
-interface|interface
-name|Factory
-block|{
-DECL|method|create (Change change)
-name|AddReviewerSender
-name|create
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-function_decl|;
-block|}
+begin_annotation_defn
 annotation|@
-name|Inject
-DECL|method|AddReviewerSender (EmailArguments ea, @Assisted Change c)
-specifier|public
-name|AddReviewerSender
-parameter_list|(
-name|EmailArguments
-name|ea
-parameter_list|,
-annotation|@
-name|Assisted
-name|Change
-name|c
-parameter_list|)
-block|{
-name|super
+name|Retention
 argument_list|(
-name|ea
-argument_list|,
-name|c
+name|RUNTIME
 argument_list|)
-expr_stmt|;
-block|}
 annotation|@
-name|Override
-DECL|method|init ()
-specifier|protected
-name|void
-name|init
-parameter_list|()
-throws|throws
-name|EmailException
-block|{
-name|super
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
-name|ccExistingReviewers
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-end_class
+name|BindingAnnotation
+DECL|annotation|SshListenAddresses
+specifier|public
+annotation_defn|@interface
+name|SshListenAddresses
+block|{ }
+end_annotation_defn
 
 end_unit
 
