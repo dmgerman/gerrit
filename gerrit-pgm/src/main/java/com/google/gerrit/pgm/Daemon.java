@@ -646,6 +646,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|patch
+operator|.
+name|IntraLineWorkerPool
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|plugins
 operator|.
 name|PluginGuiceEnvironment
@@ -728,7 +744,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|NoSshModule
+name|NoSshKeyCache
 import|;
 end_import
 
@@ -744,7 +760,7 @@ name|server
 operator|.
 name|ssh
 operator|.
-name|NoSshKeyCache
+name|NoSshModule
 import|;
 end_import
 
@@ -2143,6 +2159,17 @@ name|add
 argument_list|(
 operator|new
 name|ReceiveCommitsExecutorModule
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+operator|new
+name|IntraLineWorkerPool
+operator|.
+name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
