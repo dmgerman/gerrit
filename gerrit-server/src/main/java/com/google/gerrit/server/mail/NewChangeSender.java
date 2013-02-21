@@ -217,15 +217,12 @@ name|Id
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|NewChangeSender (EmailArguments ea, String anonymousCowardName, Change c)
+DECL|method|NewChangeSender (EmailArguments ea, Change c)
 specifier|protected
 name|NewChangeSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|Change
 name|c
@@ -234,8 +231,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

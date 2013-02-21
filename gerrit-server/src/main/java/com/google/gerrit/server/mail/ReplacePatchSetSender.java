@@ -110,7 +110,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
+name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -126,25 +128,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountProjectWatch
-operator|.
-name|NotifyType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AnonymousCowardName
+name|Change
 import|;
 end_import
 
@@ -310,17 +294,12 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReplacePatchSetSender (EmailArguments ea, @AnonymousCowardName String anonymousCowardName, SshInfo si, @Assisted Change c)
+DECL|method|ReplacePatchSetSender (EmailArguments ea, SshInfo si, @Assisted Change c)
 specifier|public
 name|ReplacePatchSetSender
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|SshInfo
 name|si
@@ -334,8 +313,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|c
 argument_list|,

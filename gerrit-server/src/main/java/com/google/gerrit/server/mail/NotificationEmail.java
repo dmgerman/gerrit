@@ -286,15 +286,12 @@ specifier|private
 name|SshInfo
 name|sshInfo
 decl_stmt|;
-DECL|method|NotificationEmail (EmailArguments ea, String anonymousCowardName, String mc, Project.NameKey project, Branch.NameKey branch)
+DECL|method|NotificationEmail (EmailArguments ea, String mc, Project.NameKey project, Branch.NameKey branch)
 specifier|protected
 name|NotificationEmail
 parameter_list|(
 name|EmailArguments
 name|ea
-parameter_list|,
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|String
 name|mc
@@ -313,8 +310,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 name|mc
 argument_list|)

@@ -102,22 +102,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|AnonymousCowardName
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -186,7 +170,7 @@ name|emailToken
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RegisterNewEmailSender (EmailArguments ea, EmailTokenVerifier etv, @AnonymousCowardName String anonymousCowardName, IdentifiedUser callingUser, @Assisted final String address)
+DECL|method|RegisterNewEmailSender (EmailArguments ea, EmailTokenVerifier etv, IdentifiedUser callingUser, @Assisted final String address)
 specifier|public
 name|RegisterNewEmailSender
 parameter_list|(
@@ -195,11 +179,6 @@ name|ea
 parameter_list|,
 name|EmailTokenVerifier
 name|etv
-parameter_list|,
-annotation|@
-name|AnonymousCowardName
-name|String
-name|anonymousCowardName
 parameter_list|,
 name|IdentifiedUser
 name|callingUser
@@ -214,8 +193,6 @@ block|{
 name|super
 argument_list|(
 name|ea
-argument_list|,
-name|anonymousCowardName
 argument_list|,
 literal|"registernewemail"
 argument_list|)
