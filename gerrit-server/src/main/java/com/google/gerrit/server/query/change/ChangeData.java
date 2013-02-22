@@ -76,9 +76,37 @@ name|google
 operator|.
 name|common
 operator|.
+name|base
+operator|.
+name|Function
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|ArrayListMultimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|ListMultimap
 import|;
 end_import
 
@@ -120,7 +148,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|Multimap
+name|Ordering
 import|;
 end_import
 
@@ -518,6 +546,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -590,6 +628,76 @@ specifier|public
 class|class
 name|ChangeData
 block|{
+DECL|field|SORT_APPROVALS
+specifier|private
+specifier|static
+name|Ordering
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|SORT_APPROVALS
+init|=
+name|Ordering
+operator|.
+name|natural
+argument_list|()
+operator|.
+name|onResultOf
+argument_list|(
+operator|new
+name|Function
+argument_list|<
+name|PatchSetApproval
+argument_list|,
+name|Timestamp
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Timestamp
+name|apply
+parameter_list|(
+name|PatchSetApproval
+name|a
+parameter_list|)
+block|{
+return|return
+name|a
+operator|.
+name|getGranted
+argument_list|()
+return|;
+block|}
+block|}
+argument_list|)
+decl_stmt|;
+DECL|method|sortApprovals ( Iterable<PatchSetApproval> approvals)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|sortApprovals
+parameter_list|(
+name|Iterable
+argument_list|<
+name|PatchSetApproval
+argument_list|>
+name|approvals
+parameter_list|)
+block|{
+return|return
+name|SORT_APPROVALS
+operator|.
+name|sortedCopy
+argument_list|(
+name|approvals
+argument_list|)
+return|;
+block|}
 DECL|method|ensureChangeLoaded ( Provider<ReviewDb> db, List<ChangeData> changes)
 specifier|public
 specifier|static
@@ -984,6 +1092,8 @@ name|cd
 operator|.
 name|currentApprovals
 operator|=
+name|sortApprovals
+argument_list|(
 name|pending
 operator|.
 name|get
@@ -991,9 +1101,7 @@ argument_list|(
 name|idx
 operator|++
 argument_list|)
-operator|.
-name|toList
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1042,7 +1150,7 @@ name|patches
 decl_stmt|;
 DECL|field|approvals
 specifier|private
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -1054,7 +1162,7 @@ name|approvals
 decl_stmt|;
 DECL|field|currentApprovals
 specifier|private
-name|Collection
+name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -1720,7 +1828,7 @@ return|;
 block|}
 DECL|method|currentApprovals (Provider<ReviewDb> db)
 specifier|public
-name|Collection
+name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -1805,6 +1913,8 @@ else|else
 block|{
 name|currentApprovals
 operator|=
+name|sortApprovals
+argument_list|(
 name|db
 operator|.
 name|get
@@ -1820,9 +1930,7 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 argument_list|)
-operator|.
-name|toList
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2076,10 +2184,10 @@ return|return
 name|patches
 return|;
 block|}
-comment|/**    * @param db review database.    * @return patch set approvals for the change. If    *     {@link #limitToPatchSets(Collection)} was previously called, only contains    *     approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @param db review database.    * @return patch set approvals for the change in timestamp order. If    *     {@link #limitToPatchSets(Collection)} was previously called, only contains    *     approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|approvals (Provider<ReviewDb> db)
 specifier|public
-name|Collection
+name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -2095,6 +2203,8 @@ throws|throws
 name|OrmException
 block|{
 return|return
+name|sortApprovals
+argument_list|(
 name|approvalsMap
 argument_list|(
 name|db
@@ -2102,12 +2212,13 @@ argument_list|)
 operator|.
 name|values
 argument_list|()
+argument_list|)
 return|;
 block|}
-comment|/**    * @param db review database.    * @return patch set approvals for the change, keyed by ID. If    *     {@link #limitToPatchSets(Collection)} was previously called, only    *     contains approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
+comment|/**    * @param db review database.    * @return patch set approvals for the change, keyed by ID, ordered by    *     timestamp within each patch set. If    *     {@link #limitToPatchSets(Collection)} was previously called, only    *     contains approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|approvalsMap ( Provider<ReviewDb> db)
 specifier|public
-name|Multimap
+name|ListMultimap
 argument_list|<
 name|PatchSet
 operator|.
@@ -2145,6 +2256,8 @@ control|(
 name|PatchSetApproval
 name|psa
 range|:
+name|sortApprovals
+argument_list|(
 name|db
 operator|.
 name|get
@@ -2156,6 +2269,7 @@ operator|.
 name|byChange
 argument_list|(
 name|legacyId
+argument_list|)
 argument_list|)
 control|)
 block|{
