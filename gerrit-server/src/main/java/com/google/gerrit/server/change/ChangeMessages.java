@@ -120,6 +120,11 @@ name|class
 argument_list|)
 return|;
 block|}
+DECL|field|revertChangeDefaultMessage
+specifier|public
+name|String
+name|revertChangeDefaultMessage
+decl_stmt|;
 DECL|field|groupIsNotAllowed
 specifier|public
 name|String
