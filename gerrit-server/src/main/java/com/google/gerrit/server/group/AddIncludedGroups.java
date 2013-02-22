@@ -414,6 +414,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -592,9 +610,15 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|json
+specifier|private
+specifier|final
+name|GroupJson
+name|json
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, ReviewDb db)
+DECL|method|AddIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, ReviewDb db, GroupJson json)
 specifier|public
 name|AddIncludedGroups
 parameter_list|(
@@ -609,6 +633,9 @@ name|groupIncludeCache
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|GroupJson
+name|json
 parameter_list|)
 block|{
 name|this
@@ -628,6 +655,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|json
+operator|=
+name|json
 expr_stmt|;
 block|}
 annotation|@
@@ -932,8 +965,9 @@ name|result
 operator|.
 name|add
 argument_list|(
-operator|new
-name|GroupInfo
+name|json
+operator|.
+name|format
 argument_list|(
 name|d
 argument_list|)

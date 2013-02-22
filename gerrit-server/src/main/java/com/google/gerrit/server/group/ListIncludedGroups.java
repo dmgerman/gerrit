@@ -198,6 +198,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -318,9 +336,15 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|json
+specifier|private
+specifier|final
+name|GroupJson
+name|json
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListIncludedGroups (GroupControl.Factory controlFactory, Provider<ReviewDb> dbProvider)
+DECL|method|ListIncludedGroups (GroupControl.Factory controlFactory, Provider<ReviewDb> dbProvider, GroupJson json)
 name|ListIncludedGroups
 parameter_list|(
 name|GroupControl
@@ -333,6 +357,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|GroupJson
+name|json
 parameter_list|)
 block|{
 name|this
@@ -346,6 +373,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|json
+operator|=
+name|json
 expr_stmt|;
 block|}
 annotation|@
@@ -466,8 +499,9 @@ name|included
 operator|.
 name|add
 argument_list|(
-operator|new
-name|GroupInfo
+name|json
+operator|.
+name|format
 argument_list|(
 name|i
 operator|.

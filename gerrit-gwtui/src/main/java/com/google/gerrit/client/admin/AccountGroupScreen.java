@@ -456,6 +456,16 @@ name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|group
+operator|.
+name|owner
+argument_list|(
+name|ownerGroup
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getOwnerGroupUUID ()
 specifier|protected

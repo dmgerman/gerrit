@@ -430,6 +430,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectControl
@@ -609,6 +627,12 @@ name|GetGroups
 argument_list|>
 name|accountGetGroups
 decl_stmt|;
+DECL|field|json
+specifier|private
+specifier|final
+name|GroupJson
+name|json
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -785,7 +809,7 @@ name|matchSubstring
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups)
+DECL|method|ListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, GroupJson json)
 specifier|protected
 name|ListGroups
 parameter_list|(
@@ -824,6 +848,9 @@ argument_list|<
 name|GetGroups
 argument_list|>
 name|accountGetGroups
+parameter_list|,
+name|GroupJson
+name|json
 parameter_list|)
 block|{
 name|this
@@ -861,6 +888,12 @@ operator|.
 name|accountGetGroups
 operator|=
 name|accountGetGroups
+expr_stmt|;
+name|this
+operator|.
+name|json
+operator|=
+name|json
 expr_stmt|;
 block|}
 DECL|method|getUser ()
@@ -1235,8 +1268,9 @@ name|groupInfos
 operator|.
 name|add
 argument_list|(
-operator|new
-name|GroupInfo
+name|json
+operator|.
+name|format
 argument_list|(
 name|GroupDescriptions
 operator|.
@@ -1325,8 +1359,9 @@ name|groups
 operator|.
 name|add
 argument_list|(
-operator|new
-name|GroupInfo
+name|json
+operator|.
+name|format
 argument_list|(
 name|ctl
 operator|.

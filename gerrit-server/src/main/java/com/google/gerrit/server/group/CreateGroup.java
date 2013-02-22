@@ -388,6 +388,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -538,6 +556,12 @@ operator|.
 name|Factory
 name|op
 decl_stmt|;
+DECL|field|json
+specifier|private
+specifier|final
+name|GroupJson
+name|json
+decl_stmt|;
 DECL|field|defaultVisibleToAll
 specifier|private
 specifier|final
@@ -552,7 +576,7 @@ name|name
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateGroup ( Provider<IdentifiedUser> self, GroupsCollection groups, PerformCreateGroup.Factory performCreateGroupFactory, @GerritServerConfig Config cfg, @Assisted String name)
+DECL|method|CreateGroup (Provider<IdentifiedUser> self, GroupsCollection groups, PerformCreateGroup.Factory performCreateGroupFactory, GroupJson json, @GerritServerConfig Config cfg, @Assisted String name)
 name|CreateGroup
 parameter_list|(
 name|Provider
@@ -568,6 +592,9 @@ name|PerformCreateGroup
 operator|.
 name|Factory
 name|performCreateGroupFactory
+parameter_list|,
+name|GroupJson
+name|json
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -597,6 +624,12 @@ operator|.
 name|op
 operator|=
 name|performCreateGroupFactory
+expr_stmt|;
+name|this
+operator|.
+name|json
+operator|=
+name|json
 expr_stmt|;
 name|this
 operator|.
@@ -780,8 +813,9 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|new
-name|GroupInfo
+name|json
+operator|.
+name|format
 argument_list|(
 name|GroupDescriptions
 operator|.

@@ -216,6 +216,24 @@ name|server
 operator|.
 name|group
 operator|.
+name|GroupJson
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
 name|GroupInfo
 import|;
 end_import
@@ -495,7 +513,7 @@ name|verboseOutput
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups)
+DECL|method|MyListGroups (final GroupCache groupCache, final GroupControl.Factory groupControlFactory, final GroupControl.GenericFactory genericGroupControlFactory, final Provider<IdentifiedUser> identifiedUser, final IdentifiedUser.GenericFactory userFactory, final Provider<GetGroups> accountGetGroups, final GroupJson json)
 name|MyListGroups
 parameter_list|(
 specifier|final
@@ -533,6 +551,10 @@ argument_list|<
 name|GetGroups
 argument_list|>
 name|accountGetGroups
+parameter_list|,
+specifier|final
+name|GroupJson
+name|json
 parameter_list|)
 block|{
 name|super
@@ -548,6 +570,8 @@ argument_list|,
 name|userFactory
 argument_list|,
 name|accountGetGroups
+argument_list|,
+name|json
 argument_list|)
 expr_stmt|;
 block|}
