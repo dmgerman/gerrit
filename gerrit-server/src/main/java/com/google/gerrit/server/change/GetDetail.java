@@ -160,6 +160,13 @@ name|addOption
 argument_list|(
 name|ListChangesOption
 operator|.
+name|LABELS
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+name|ListChangesOption
+operator|.
 name|DETAILED_LABELS
 argument_list|)
 operator|.
