@@ -280,20 +280,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -433,14 +419,6 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|userFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
-decl_stmt|;
 DECL|field|approvalTypes
 specifier|private
 specifier|final
@@ -467,7 +445,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, IdentifiedUser.GenericFactory userFactory, ApprovalTypes approvalTypes, FunctionState.Factory functionState, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson (Provider<ReviewDb> db, ApprovalTypes approvalTypes, FunctionState.Factory functionState, AccountInfo.Loader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -475,11 +453,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|userFactory
 parameter_list|,
 name|ApprovalTypes
 name|approvalTypes
@@ -502,12 +475,6 @@ operator|.
 name|db
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|userFactory
-operator|=
-name|userFactory
 expr_stmt|;
 name|this
 operator|.
