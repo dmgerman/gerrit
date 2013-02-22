@@ -169,20 +169,27 @@ name|supported
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|supported
 operator|.
 name|contains
 argument_list|(
 literal|"1.2.840.113556.1.4.800"
 argument_list|)
+operator|||
+name|supported
+operator|.
+name|contains
+argument_list|(
+literal|"1.2.840.113556.1.4.1851"
+argument_list|)
+operator|)
 condition|)
 block|{
 return|return
 operator|new
 name|ActiveDirectory
-argument_list|(
-name|rootAtts
-argument_list|)
+argument_list|()
 return|;
 block|}
 return|return
@@ -343,53 +350,6 @@ name|ActiveDirectory
 extends|extends
 name|LdapType
 block|{
-DECL|method|ActiveDirectory (final Attributes atts)
-name|ActiveDirectory
-parameter_list|(
-specifier|final
-name|Attributes
-name|atts
-parameter_list|)
-throws|throws
-name|NamingException
-block|{
-comment|// Convert "defaultNamingContext: DC=foo,DC=example,DC=com" into
-comment|// the a standard DNS name as we would expect to find in the suffix
-comment|// part of the userPrincipalName.
-comment|//
-name|Attribute
-name|defaultNamingContext
-init|=
-name|atts
-operator|.
-name|get
-argument_list|(
-literal|"defaultNamingContext"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|defaultNamingContext
-operator|==
-literal|null
-operator|||
-name|defaultNamingContext
-operator|.
-name|size
-argument_list|()
-operator|<
-literal|1
-condition|)
-block|{
-throw|throw
-operator|new
-name|NamingException
-argument_list|(
-literal|"rootDSE has no defaultNamingContext"
-argument_list|)
-throw|;
-block|}
-block|}
 annotation|@
 name|Override
 DECL|method|groupPattern ()
