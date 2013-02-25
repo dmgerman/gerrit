@@ -691,6 +691,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|parse (String id)
+specifier|public
 name|GroupDescription
 operator|.
 name|Basic
