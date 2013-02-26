@@ -1846,9 +1846,14 @@ name|drafts
 operator|.
 name|remove
 argument_list|(
+name|Url
+operator|.
+name|decode
+argument_list|(
 name|c
 operator|.
 name|id
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|boolean
