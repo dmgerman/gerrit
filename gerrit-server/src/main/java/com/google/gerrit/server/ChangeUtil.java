@@ -2465,7 +2465,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|editCommitMessage (final PatchSet.Id patchSetId, final RefControl refControl, CommitValidators commitValidators, final IdentifiedUser user, final String message, final ReviewDb db, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, PersonIdent myIdent)
+DECL|method|editCommitMessage (final PatchSet.Id patchSetId, final RefControl refControl, CommitValidators commitValidators, final IdentifiedUser user, final String message, final ReviewDb db, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, PersonIdent myIdent, final ApprovalsUtil approvalsUtil)
 specifier|public
 specifier|static
 name|Change
@@ -2521,6 +2521,10 @@ name|gitRefUpdated
 parameter_list|,
 name|PersonIdent
 name|myIdent
+parameter_list|,
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -3310,6 +3314,18 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+name|approvalsUtil
+operator|.
+name|copyVetosToPatchSet
+argument_list|(
+name|db
+argument_list|,
+name|change
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ChangeMessage
 name|cmsg
