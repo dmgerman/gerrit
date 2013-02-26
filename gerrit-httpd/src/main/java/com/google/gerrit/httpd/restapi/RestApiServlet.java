@@ -3105,6 +3105,13 @@ argument_list|(
 name|br
 argument_list|)
 decl_stmt|;
+name|json
+operator|.
+name|setLenient
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|JsonToken
 name|first
 decl_stmt|;
