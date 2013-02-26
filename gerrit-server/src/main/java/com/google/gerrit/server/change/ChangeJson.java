@@ -1120,6 +1120,16 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeJson
 specifier|public
@@ -2767,7 +2777,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|Map
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,
@@ -3562,7 +3572,7 @@ name|OrmException
 block|{
 comment|// We can only approximately reconstruct what the submit rule evaluator
 comment|// would have done. These should really come from a stored submit record.
-name|Map
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,

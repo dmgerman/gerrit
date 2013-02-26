@@ -400,7 +400,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|TreeMap
 import|;
 end_import
 
@@ -1010,7 +1010,7 @@ init|=
 literal|"gerritcodereview#reviewer"
 decl_stmt|;
 DECL|field|approvals
-name|Map
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,
