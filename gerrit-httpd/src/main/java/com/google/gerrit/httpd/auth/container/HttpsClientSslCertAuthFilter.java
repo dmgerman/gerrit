@@ -328,7 +328,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"CN=([^,]*),.*"
+literal|"CN=([^,]*)"
 argument_list|)
 decl_stmt|;
 DECL|field|log
@@ -488,7 +488,7 @@ if|if
 condition|(
 name|m
 operator|.
-name|matches
+name|find
 argument_list|()
 condition|)
 block|{
