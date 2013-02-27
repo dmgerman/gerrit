@@ -1120,6 +1120,16 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeJson
 specifier|public
@@ -2787,6 +2797,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+comment|// Don't use Maps.newTreeMap(Comparator) due to OpenJDK bug 100167.
 name|Map
 argument_list|<
 name|String
@@ -2795,9 +2806,13 @@ name|LabelInfo
 argument_list|>
 name|labels
 init|=
-name|Maps
-operator|.
-name|newTreeMap
+operator|new
+name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|LabelInfo
+argument_list|>
 argument_list|(
 name|LabelOrdering
 operator|.
@@ -3582,6 +3597,8 @@ name|OrmException
 block|{
 comment|// We can only approximately reconstruct what the submit rule evaluator
 comment|// would have done. These should really come from a stored submit record.
+comment|//
+comment|// Don't use Maps.newTreeMap(Comparator) due to OpenJDK bug 100167.
 name|Map
 argument_list|<
 name|String
@@ -3590,9 +3607,13 @@ name|LabelInfo
 argument_list|>
 name|labels
 init|=
-name|Maps
-operator|.
-name|newTreeMap
+operator|new
+name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|LabelInfo
+argument_list|>
 argument_list|(
 name|LabelOrdering
 operator|.
