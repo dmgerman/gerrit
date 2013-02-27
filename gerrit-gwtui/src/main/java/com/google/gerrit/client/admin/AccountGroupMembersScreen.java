@@ -118,6 +118,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|account
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|groups
 operator|.
 name|GroupApi
@@ -153,22 +169,6 @@ operator|.
 name|groups
 operator|.
 name|GroupList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|groups
-operator|.
-name|MemberInfo
 import|;
 end_import
 
@@ -313,22 +313,6 @@ operator|.
 name|ui
 operator|.
 name|SmallHeading
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
 import|;
 end_import
 
@@ -1237,7 +1221,7 @@ argument_list|,
 operator|new
 name|GerritCallback
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 argument_list|()
 block|{
@@ -1246,7 +1230,7 @@ name|void
 name|onSuccess
 parameter_list|(
 specifier|final
-name|MemberInfo
+name|AccountInfo
 name|memberInfo
 parameter_list|)
 block|{
@@ -1419,7 +1403,7 @@ name|MemberTable
 extends|extends
 name|FancyFlexTable
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 block|{
 DECL|field|enabled
@@ -1566,7 +1550,7 @@ operator|++
 control|)
 block|{
 specifier|final
-name|MemberInfo
+name|AccountInfo
 name|i
 init|=
 name|getRowItem
@@ -1611,18 +1595,14 @@ block|{
 specifier|final
 name|HashSet
 argument_list|<
-name|Account
-operator|.
-name|Id
+name|Integer
 argument_list|>
 name|ids
 init|=
 operator|new
 name|HashSet
 argument_list|<
-name|Account
-operator|.
-name|Id
+name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1645,7 +1625,7 @@ operator|++
 control|)
 block|{
 specifier|final
-name|MemberInfo
+name|AccountInfo
 name|i
 init|=
 name|getRowItem
@@ -1683,7 +1663,7 @@ name|add
 argument_list|(
 name|i
 operator|.
-name|getAccountId
+name|_account_id
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1740,7 +1720,7 @@ condition|;
 control|)
 block|{
 specifier|final
-name|MemberInfo
+name|AccountInfo
 name|i
 init|=
 name|getRowItem
@@ -1760,7 +1740,7 @@ name|contains
 argument_list|(
 name|i
 operator|.
-name|getAccountId
+name|_account_id
 argument_list|()
 argument_list|)
 condition|)
@@ -1786,14 +1766,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|display (final List<MemberInfo> result)
+DECL|method|display (final List<AccountInfo> result)
 name|void
 name|display
 parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 name|result
 parameter_list|)
@@ -1822,7 +1802,7 @@ expr_stmt|;
 for|for
 control|(
 specifier|final
-name|MemberInfo
+name|AccountInfo
 name|i
 range|:
 name|result
@@ -1858,24 +1838,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insert (MemberInfo info)
+DECL|method|insert (AccountInfo info)
 name|void
 name|insert
 parameter_list|(
-name|MemberInfo
+name|AccountInfo
 name|info
 parameter_list|)
 block|{
 name|Comparator
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 name|c
 init|=
 operator|new
 name|Comparator
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 argument_list|()
 block|{
@@ -1885,10 +1865,10 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-name|MemberInfo
+name|AccountInfo
 name|a
 parameter_list|,
-name|MemberInfo
+name|AccountInfo
 name|b
 parameter_list|)
 block|{
@@ -1899,7 +1879,7 @@ name|nullToEmpty
 argument_list|(
 name|a
 operator|.
-name|fullName
+name|name
 argument_list|()
 argument_list|)
 operator|.
@@ -1909,7 +1889,7 @@ name|nullToEmpty
 argument_list|(
 name|b
 operator|.
-name|fullName
+name|name
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1931,7 +1911,7 @@ name|nullToEmpty
 argument_list|(
 name|a
 operator|.
-name|preferredEmail
+name|email
 argument_list|()
 argument_list|)
 operator|.
@@ -1941,7 +1921,7 @@ name|nullToEmpty
 argument_list|(
 name|b
 operator|.
-name|preferredEmail
+name|email
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1960,18 +1940,12 @@ block|}
 return|return
 name|a
 operator|.
-name|getAccountId
-argument_list|()
-operator|.
-name|get
+name|_account_id
 argument_list|()
 operator|-
 name|b
 operator|.
-name|getAccountId
-argument_list|()
-operator|.
-name|get
+name|_account_id
 argument_list|()
 return|;
 block|}
@@ -2037,7 +2011,7 @@ operator|>>>
 literal|1
 decl_stmt|;
 comment|// (left+right)/2
-name|MemberInfo
+name|AccountInfo
 name|i
 init|=
 name|getRowItem
@@ -2116,7 +2090,7 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populate (final int row, final MemberInfo i)
+DECL|method|populate (final int row, final AccountInfo i)
 name|void
 name|populate
 parameter_list|(
@@ -2125,7 +2099,7 @@ name|int
 name|row
 parameter_list|,
 specifier|final
-name|MemberInfo
+name|AccountInfo
 name|i
 parameter_list|)
 block|{
@@ -2166,9 +2140,6 @@ operator|new
 name|AccountLink
 argument_list|(
 name|i
-operator|.
-name|asAccountInfo
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2182,7 +2153,7 @@ literal|3
 argument_list|,
 name|i
 operator|.
-name|preferredEmail
+name|email
 argument_list|()
 argument_list|)
 expr_stmt|;

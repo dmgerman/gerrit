@@ -90,9 +90,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|rpc
+name|account
 operator|.
-name|Natives
+name|AccountInfo
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|RestApi
+name|Natives
 import|;
 end_import
 
@@ -136,11 +136,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|client
 operator|.
-name|Account
+name|rpc
+operator|.
+name|RestApi
 import|;
 end_import
 
@@ -664,7 +664,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add member to a group. */
-DECL|method|addMember (AccountGroup.UUID group, String member, AsyncCallback<MemberInfo> cb)
+DECL|method|addMember (AccountGroup.UUID group, String member, AsyncCallback<AccountInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -680,7 +680,7 @@ name|member
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 name|cb
 parameter_list|)
@@ -702,7 +702,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Add members to a group. */
-DECL|method|addMembers (AccountGroup.UUID group, Set<String> members, final AsyncCallback<JsArray<MemberInfo>> cb)
+DECL|method|addMembers (AccountGroup.UUID group, Set<String> members, final AsyncCallback<JsArray<AccountInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -724,7 +724,7 @@ name|AsyncCallback
 argument_list|<
 name|JsArray
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 argument_list|>
 name|cb
@@ -755,7 +755,7 @@ argument_list|,
 operator|new
 name|AsyncCallback
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 argument_list|()
 block|{
@@ -765,7 +765,7 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-name|MemberInfo
+name|AccountInfo
 name|result
 parameter_list|)
 block|{
@@ -845,7 +845,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Remove members from a group. */
-DECL|method|removeMembers (AccountGroup.UUID group, Set<Account.Id> ids, final AsyncCallback<VoidResult> cb)
+DECL|method|removeMembers (AccountGroup.UUID group, Set<Integer> ids, final AsyncCallback<VoidResult> cb)
 specifier|public
 specifier|static
 name|void
@@ -858,9 +858,7 @@ name|group
 parameter_list|,
 name|Set
 argument_list|<
-name|Account
-operator|.
-name|Id
+name|Integer
 argument_list|>
 name|ids
 parameter_list|,
@@ -882,19 +880,6 @@ operator|==
 literal|1
 condition|)
 block|{
-name|Account
-operator|.
-name|Id
-name|u
-init|=
-name|ids
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|members
 argument_list|(
 name|group
@@ -902,7 +887,13 @@ argument_list|)
 operator|.
 name|id
 argument_list|(
-name|u
+name|ids
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
 operator|.
 name|toString
 argument_list|()
@@ -926,10 +917,8 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Account
-operator|.
-name|Id
-name|u
+name|Integer
+name|id
 range|:
 name|ids
 control|)
@@ -938,7 +927,7 @@ name|in
 operator|.
 name|add_member
 argument_list|(
-name|u
+name|id
 operator|.
 name|toString
 argument_list|()

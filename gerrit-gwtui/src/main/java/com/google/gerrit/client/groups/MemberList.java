@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|account
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|RestApi
@@ -140,7 +156,7 @@ name|MemberList
 extends|extends
 name|JsArray
 argument_list|<
-name|MemberInfo
+name|AccountInfo
 argument_list|>
 block|{
 DECL|method|all (AccountGroup.UUID group, AsyncCallback<MemberList> callback)

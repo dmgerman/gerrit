@@ -92,11 +92,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
+name|account
 operator|.
-name|MembersCollection
-operator|.
-name|MemberInfo
+name|AccountInfo
 import|;
 end_import
 
@@ -115,7 +113,7 @@ annotation|@
 name|Override
 DECL|method|apply (MemberResource resource)
 specifier|public
-name|MemberInfo
+name|AccountInfo
 name|apply
 parameter_list|(
 name|MemberResource
@@ -123,7 +121,7 @@ name|resource
 parameter_list|)
 block|{
 return|return
-name|MembersCollection
+name|AccountInfo
 operator|.
 name|parse
 argument_list|(
@@ -134,6 +132,8 @@ argument_list|()
 operator|.
 name|getAccount
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}

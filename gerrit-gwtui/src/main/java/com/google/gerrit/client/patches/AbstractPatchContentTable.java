@@ -118,7 +118,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|account
 operator|.
 name|AccountInfo
 import|;
