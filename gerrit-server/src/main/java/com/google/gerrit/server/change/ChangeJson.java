@@ -4405,6 +4405,17 @@ range|:
 name|labels
 control|)
 block|{
+if|if
+condition|(
+name|label
+operator|.
+name|all
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 for|for
 control|(
 name|ApprovalInfo
