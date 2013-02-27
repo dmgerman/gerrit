@@ -714,10 +714,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testCreateGroupWhenGroupAlreadyExists_PreconditionFailed ()
+DECL|method|testCreateGroupWhenGroupAlreadyExists_Conflict ()
 specifier|public
 name|void
-name|testCreateGroupWhenGroupAlreadyExists_PreconditionFailed
+name|testCreateGroupWhenGroupAlreadyExists_Conflict
 parameter_list|()
 throws|throws
 name|OrmException
@@ -740,7 +740,7 @@ name|assertEquals
 argument_list|(
 name|HttpStatus
 operator|.
-name|SC_PRECONDITION_FAILED
+name|SC_CONFLICT
 argument_list|,
 name|r
 operator|.

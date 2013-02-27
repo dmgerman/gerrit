@@ -78,7 +78,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|PreconditionFailedException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -143,13 +143,13 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|PreconditionFailedException
+name|ResourceConflictException
 block|{
 throw|throw
 operator|new
-name|PreconditionFailedException
+name|ResourceConflictException
 argument_list|(
-literal|"Resource already exists"
+literal|"Group already exists"
 argument_list|)
 throw|;
 block|}

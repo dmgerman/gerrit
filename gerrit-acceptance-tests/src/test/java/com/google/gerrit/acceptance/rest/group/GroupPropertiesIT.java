@@ -532,7 +532,7 @@ name|assertEquals
 argument_list|(
 name|HttpStatus
 operator|.
-name|SC_PRECONDITION_FAILED
+name|SC_CONFLICT
 argument_list|,
 name|r
 operator|.
