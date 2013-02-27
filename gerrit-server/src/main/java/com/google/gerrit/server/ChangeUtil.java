@@ -2465,7 +2465,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|editCommitMessage (final PatchSet.Id patchSetId, final RefControl refControl, CommitValidators commitValidators, final IdentifiedUser user, final String message, final ReviewDb db, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, PersonIdent myIdent, final ApprovalsUtil approvalsUtil)
+DECL|method|editCommitMessage (final PatchSet.Id patchSetId, final RefControl refControl, CommitValidators commitValidators, final IdentifiedUser user, final String message, final ReviewDb db, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, final ChangeHooks hooks, Repository git, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, PersonIdent myIdent, final ApprovalsUtil approvalsUtil, final TrackingFooters trackingFooters)
 specifier|public
 specifier|static
 name|Change
@@ -2525,6 +2525,10 @@ parameter_list|,
 specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+specifier|final
+name|TrackingFooters
+name|trackingFooters
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -3324,6 +3328,29 @@ name|change
 operator|.
 name|currentPatchSetId
 argument_list|()
+argument_list|)
+expr_stmt|;
+specifier|final
+name|List
+argument_list|<
+name|FooterLine
+argument_list|>
+name|footerLines
+init|=
+name|newCommit
+operator|.
+name|getFooterLines
+argument_list|()
+decl_stmt|;
+name|updateTrackingIds
+argument_list|(
+name|db
+argument_list|,
+name|change
+argument_list|,
+name|trackingFooters
+argument_list|,
+name|footerLines
 argument_list|)
 expr_stmt|;
 specifier|final
