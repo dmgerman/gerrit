@@ -260,6 +260,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|TrackingFooters
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|events
@@ -668,9 +684,15 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
+DECL|field|trackingFooters
+specifier|private
+specifier|final
+name|TrackingFooters
+name|trackingFooters
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, @GerritPersonIdent final PersonIdent myIdent, final ApprovalsUtil approvalsUtil)
+DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final ChangeHooks hooks, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, @GerritPersonIdent final PersonIdent myIdent, final ApprovalsUtil approvalsUtil, TrackingFooters trackingFooters)
 name|EditCommitMessageHandler
 parameter_list|(
 specifier|final
@@ -746,6 +768,9 @@ parameter_list|,
 specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|TrackingFooters
+name|trackingFooters
 parameter_list|)
 block|{
 name|this
@@ -831,6 +856,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|trackingFooters
+operator|=
+name|trackingFooters
 expr_stmt|;
 block|}
 annotation|@
@@ -999,6 +1030,8 @@ argument_list|,
 name|myIdent
 argument_list|,
 name|approvalsUtil
+argument_list|,
+name|trackingFooters
 argument_list|)
 expr_stmt|;
 return|return
