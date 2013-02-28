@@ -286,8 +286,7 @@ name|String
 name|refName
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|refName
 operator|.
 name|startsWith
@@ -308,14 +307,6 @@ name|startsWith
 argument_list|(
 name|NEW_CHANGE
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 comment|/** Returns the ref name prefix for a magic branch,<code>null</code> if the branch is not magic */
