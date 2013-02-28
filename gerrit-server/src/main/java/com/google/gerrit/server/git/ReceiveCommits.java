@@ -774,22 +774,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|TrackingFooters
 import|;
 end_import
@@ -1231,20 +1215,6 @@ operator|.
 name|lib
 operator|.
 name|BatchRefUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
 import|;
 end_import
 
@@ -2305,6 +2275,12 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
+DECL|field|receiveConfig
+specifier|private
+specifier|final
+name|ReceiveConfig
+name|receiveConfig
+decl_stmt|;
 DECL|field|projectControl
 specifier|private
 specifier|final
@@ -2505,7 +2481,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, final @GerritServerConfig Config config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2618,10 +2594,7 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 parameter_list|,
-specifier|final
-annotation|@
-name|GerritServerConfig
-name|Config
+name|ReceiveConfig
 name|config
 parameter_list|,
 annotation|@
@@ -2785,6 +2758,12 @@ name|allProjectsName
 expr_stmt|;
 name|this
 operator|.
+name|receiveConfig
+operator|=
+name|config
+expr_stmt|;
+name|this
+operator|.
 name|projectControl
 operator|=
 name|projectControl
@@ -2878,16 +2857,7 @@ name|setCheckReferencedObjectsAreReachable
 argument_list|(
 name|config
 operator|.
-name|getBoolean
-argument_list|(
-literal|"receive"
-argument_list|,
-literal|null
-argument_list|,
-literal|"checkReferencedObjectsAreReachable"
-argument_list|,
-literal|true
-argument_list|)
+name|checkReferencedObjectsAreReachable
 argument_list|)
 expr_stmt|;
 name|rp
@@ -3582,7 +3552,15 @@ return|return
 name|result
 return|;
 block|}
-return|return
+if|if
+condition|(
+name|receiveConfig
+operator|.
+name|checkMagicRefs
+condition|)
+block|{
+name|result
+operator|=
 name|MagicBranch
 operator|.
 name|checkMagicBranchRefs
@@ -3591,6 +3569,10 @@ name|repo
 argument_list|,
 name|project
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
 return|;
 block|}
 DECL|method|addMessage (String message)
