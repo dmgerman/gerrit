@@ -591,7 +591,7 @@ name|a
 init|=
 name|accountCache
 operator|.
-name|getIfPresent
+name|get
 argument_list|(
 name|Iterables
 operator|.
