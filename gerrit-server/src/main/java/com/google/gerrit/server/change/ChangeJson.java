@@ -2701,7 +2701,6 @@ literal|null
 condition|)
 block|{
 continue|continue;
-comment|// TODO: Support arbitrary labels.
 block|}
 if|if
 condition|(
@@ -3376,7 +3375,6 @@ name|accountId
 argument_list|)
 control|)
 block|{
-comment|// TODO Support arbitrary labels placed by a reviewer.
 name|LabelType
 name|lt
 init|=
@@ -4256,7 +4254,6 @@ literal|null
 condition|)
 block|{
 continue|continue;
-comment|// TODO: Support arbitrary labels.
 block|}
 name|PermissionRange
 name|range

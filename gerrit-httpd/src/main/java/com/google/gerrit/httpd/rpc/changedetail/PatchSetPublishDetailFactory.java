@@ -879,9 +879,9 @@ decl_stmt|;
 if|if
 condition|(
 name|lt
-operator|==
+operator|!=
 literal|null
-operator|||
+operator|&&
 name|lt
 operator|.
 name|getMax

@@ -768,7 +768,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// TODO: Support arbitrary labels.
 name|LabelType
 name|at
 init|=

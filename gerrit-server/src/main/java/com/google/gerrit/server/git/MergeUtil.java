@@ -2098,7 +2098,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// TODO: Support arbitrary labels.
 continue|continue;
 block|}
 name|tag

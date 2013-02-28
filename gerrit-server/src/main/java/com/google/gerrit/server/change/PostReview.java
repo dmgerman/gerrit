@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -598,7 +614,7 @@ argument_list|>
 argument_list|>
 name|comments
 decl_stmt|;
-comment|/**      * If true require all labels to be within the user's permitted ranges based      * on access controls, attempting to use a label not granted to the user      * will fail the entire modify operation early. If false the operation will      * execute anyway, but the proposed labels given by the user will be      * modified to be the "best" value allowed by the access controls.      */
+comment|/**      * If true require all labels to be within the user's permitted ranges based      * on access controls, attempting to use a label not granted to the user      * will fail the entire modify operation early. If false the operation will      * execute anyway, but the proposed labels given by the user will be      * modified to be the "best" value allowed by the access controls, or      * ignored if the label does not exist.      */
 DECL|field|strictLabels
 specifier|public
 name|boolean
@@ -1171,7 +1187,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// TODO Support more generic label assignments.
 name|LabelType
 name|lt
 init|=
@@ -2274,27 +2289,28 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-comment|// TODO Support arbitrary label names.
-name|LabelType
-name|lt
+name|String
+name|name
 init|=
-name|labelTypes
-operator|.
-name|byLabel
-argument_list|(
 name|ent
 operator|.
 name|getKey
 argument_list|()
-argument_list|)
 decl_stmt|;
-name|String
-name|name
-init|=
+name|LabelType
 name|lt
+init|=
+name|checkNotNull
+argument_list|(
+name|labelTypes
 operator|.
-name|getName
-argument_list|()
+name|byLabel
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+name|name
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
