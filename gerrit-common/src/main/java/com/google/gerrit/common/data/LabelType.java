@@ -1433,12 +1433,6 @@ return|return
 operator|new
 name|LabelId
 argument_list|(
-name|id
-operator|!=
-literal|null
-condition|?
-name|id
-else|:
 name|name
 argument_list|)
 return|;
