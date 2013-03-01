@@ -479,28 +479,6 @@ operator|+
 literal|",access"
 return|;
 block|}
-DECL|method|toAccountQuery (final String fullname)
-specifier|public
-specifier|static
-name|String
-name|toAccountQuery
-parameter_list|(
-specifier|final
-name|String
-name|fullname
-parameter_list|)
-block|{
-return|return
-name|toAccountQuery
-argument_list|(
-name|fullname
-argument_list|,
-name|Status
-operator|.
-name|NEW
-argument_list|)
-return|;
-block|}
 DECL|method|toAccountQuery (String fullname, Status status)
 specifier|public
 specifier|static

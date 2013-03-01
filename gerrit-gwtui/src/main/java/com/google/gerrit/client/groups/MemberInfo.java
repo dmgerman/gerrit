@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -126,6 +142,29 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|asAccountInfo ()
+specifier|public
+specifier|final
+name|AccountInfo
+name|asAccountInfo
+parameter_list|()
+block|{
+return|return
+name|AccountInfo
+operator|.
+name|create
+argument_list|(
+name|account_id
+argument_list|()
+argument_list|,
+name|fullName
+argument_list|()
+argument_list|,
+name|preferredEmail
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|account_id ()
 specifier|private
 specifier|final
@@ -133,7 +172,7 @@ specifier|native
 name|int
 name|account_id
 parameter_list|()
-comment|/*-{ return this.account_id; }-*/
+comment|/*-{ return this.account_id || 0; }-*/
 function_decl|;
 DECL|method|fullName ()
 specifier|public

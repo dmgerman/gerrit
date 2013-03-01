@@ -2166,6 +2166,9 @@ operator|new
 name|AccountLink
 argument_list|(
 name|i
+operator|.
+name|asAccountInfo
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
