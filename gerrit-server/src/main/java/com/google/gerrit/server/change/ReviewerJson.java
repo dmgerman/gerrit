@@ -864,6 +864,17 @@ literal|false
 argument_list|)
 control|)
 block|{
+if|if
+condition|(
+name|rec
+operator|.
+name|labels
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 for|for
 control|(
 name|SubmitRecord
