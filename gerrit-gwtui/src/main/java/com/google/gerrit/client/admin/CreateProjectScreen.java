@@ -605,10 +605,10 @@ specifier|private
 name|HintTextBox
 name|parent
 decl_stmt|;
-DECL|field|sugestParent
+DECL|field|suggestParent
 specifier|private
 name|SuggestBox
-name|sugestParent
+name|suggestParent
 decl_stmt|;
 DECL|field|emptyCommit
 specifier|private
@@ -790,14 +790,14 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|sugestParent
+name|suggestParent
 operator|.
 name|getText
 argument_list|()
 argument_list|)
 condition|)
 block|{
-name|sugestParent
+name|suggestParent
 operator|.
 name|setText
 argument_list|(
@@ -1154,7 +1154,7 @@ operator|new
 name|HintTextBox
 argument_list|()
 expr_stmt|;
-name|sugestParent
+name|suggestParent
 operator|=
 operator|new
 name|SuggestBox
@@ -1250,7 +1250,7 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
-name|sugestParent
+name|suggestParent
 operator|.
 name|setText
 argument_list|(
@@ -1454,7 +1454,7 @@ literal|1
 argument_list|,
 literal|1
 argument_list|,
-name|sugestParent
+name|suggestParent
 argument_list|)
 expr_stmt|;
 name|grid
@@ -1498,7 +1498,7 @@ specifier|final
 name|String
 name|parentName
 init|=
-name|sugestParent
+name|suggestParent
 operator|.
 name|getText
 argument_list|()
