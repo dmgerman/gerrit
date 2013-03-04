@@ -102,9 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|client
 operator|.
-name|data
+name|changes
 operator|.
 name|AccountInfo
 import|;
