@@ -106,7 +106,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -122,7 +122,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -131,7 +131,7 @@ DECL|class|LabelOrdering
 class|class
 name|LabelOrdering
 block|{
-DECL|method|create (final ApprovalTypes approvalTypes)
+DECL|method|create (final LabelTypes labelTypes)
 specifier|public
 specifier|static
 name|Ordering
@@ -141,8 +141,8 @@ argument_list|>
 name|create
 parameter_list|(
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 return|return
@@ -175,10 +175,10 @@ name|String
 name|n
 parameter_list|)
 block|{
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byLabel
 argument_list|(
@@ -186,11 +186,11 @@ name|n
 argument_list|)
 decl_stmt|;
 return|return
-name|at
+name|lt
 operator|!=
 literal|null
 condition|?
-name|at
+name|lt
 operator|.
 name|getPosition
 argument_list|()

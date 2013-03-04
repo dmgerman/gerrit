@@ -108,7 +108,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -1541,7 +1541,7 @@ condition|)
 block|{
 for|for
 control|(
-name|ApprovalType
+name|LabelType
 name|t
 range|:
 name|Gerrit
@@ -1549,10 +1549,10 @@ operator|.
 name|getConfig
 argument_list|()
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{

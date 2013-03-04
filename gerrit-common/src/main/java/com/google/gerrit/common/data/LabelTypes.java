@@ -97,18 +97,18 @@ import|;
 end_import
 
 begin_class
-DECL|class|ApprovalTypes
+DECL|class|LabelTypes
 specifier|public
 class|class
-name|ApprovalTypes
+name|LabelTypes
 block|{
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|protected
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
-name|approvalTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|byId
 specifier|private
@@ -117,7 +117,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|byId
 decl_stmt|;
@@ -128,28 +128,28 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|byLabel
 decl_stmt|;
-DECL|method|ApprovalTypes ()
+DECL|method|LabelTypes ()
 specifier|protected
-name|ApprovalTypes
+name|LabelTypes
 parameter_list|()
 block|{   }
-DECL|method|ApprovalTypes (final List<ApprovalType> approvals)
+DECL|method|LabelTypes (final List<LabelType> approvals)
 specifier|public
-name|ApprovalTypes
+name|LabelTypes
 parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|approvals
 parameter_list|)
 block|{
-name|approvalTypes
+name|labelTypes
 operator|=
 name|approvals
 expr_stmt|;
@@ -157,22 +157,22 @@ name|byId
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getApprovalTypes ()
+DECL|method|getLabelTypes ()
 specifier|public
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
-name|getApprovalTypes
+name|getLabelTypes
 parameter_list|()
 block|{
 return|return
-name|approvalTypes
+name|labelTypes
 return|;
 block|}
 DECL|method|byId (String id)
 specifier|public
-name|ApprovalType
+name|LabelType
 name|byId
 parameter_list|(
 name|String
@@ -195,7 +195,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|byId
 parameter_list|()
@@ -214,13 +214,13 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ApprovalType
+name|LabelType
 argument_list|>
 argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|approvalTypes
+name|labelTypes
 operator|!=
 literal|null
 condition|)
@@ -228,10 +228,10 @@ block|{
 for|for
 control|(
 specifier|final
-name|ApprovalType
+name|LabelType
 name|t
 range|:
-name|approvalTypes
+name|labelTypes
 control|)
 block|{
 name|byId
@@ -255,7 +255,7 @@ return|;
 block|}
 DECL|method|byLabel (String labelName)
 specifier|public
-name|ApprovalType
+name|LabelType
 name|byLabel
 parameter_list|(
 name|String
@@ -281,7 +281,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|byLabel
 parameter_list|()
@@ -300,23 +300,23 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|ApprovalType
+name|LabelType
 argument_list|>
 argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|approvalTypes
+name|labelTypes
 operator|!=
 literal|null
 condition|)
 block|{
 for|for
 control|(
-name|ApprovalType
+name|LabelType
 name|t
 range|:
-name|approvalTypes
+name|labelTypes
 control|)
 block|{
 name|byLabel

@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -240,13 +240,13 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Locate a function by type.    *    * @param type the type the function is for.    * @return the function implementation; {@link NoOpFunction} if the function    *         is not known to Gerrit and thus cannot be executed.    */
-DECL|method|forType (ApprovalType type)
+DECL|method|forType (LabelType type)
 specifier|public
 specifier|static
 name|CategoryFunction
 name|forType
 parameter_list|(
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|)
 block|{
@@ -313,15 +313,15 @@ name|NoOpFunction
 argument_list|()
 return|;
 block|}
-comment|/**    * Normalize ChangeApprovals and set the valid flag for this category.    *<p>    * Implementors should invoke:    *    *<pre>    * state.valid(at, true);    *</pre>    *<p>    * If the set of approvals from<code>state.getApprovals(at)</code> covers the    * requirements for the function, indicating the category has been completed.    *<p>    * An example implementation which requires at least one positive and no    * negatives might be:    *    *<pre>    * boolean neg = false, pos = false;    * for (final ChangeApproval ca : state.getApprovals(at)) {    *   state.normalize(ca);    *   neg |= ca.getValue()&lt; 0;    *   pos |= ca.getValue()&gt; 0;    * }    * state.valid(at, !neg&amp;&amp; pos);    *</pre>    *    * @param at the cached category description to process.    * @param state state to read approvals and project rights from, and to update    *        the valid status into.    */
-DECL|method|run (ApprovalType at, FunctionState state)
+comment|/**    * Normalize ChangeApprovals and set the valid flag for this category.    *<p>    * Implementors should invoke:    *    *<pre>    * state.valid(at, true);    *</pre>    *<p>    * If the set of approvals from<code>state.getApprovals(at)</code> covers the    * requirements for the function, indicating the category has been completed.    *<p>    * An example implementation which requires at least one positive and no    * negatives might be:    *    *<pre>    * boolean neg = false, pos = false;    * for (final ChangeApproval ca : state.getApprovals(at)) {    *   state.normalize(ca);    *   neg |= ca.getValue()&lt; 0;    *   pos |= ca.getValue()&gt; 0;    * }    * state.valid(at, !neg&amp;&amp; pos);    *</pre>    *    * @param lt the cached category description to process.    * @param state state to read approvals and project rights from, and to update    *        the valid status into.    */
+DECL|method|run (LabelType lt, FunctionState state)
 specifier|public
 specifier|abstract
 name|void
 name|run
 parameter_list|(
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 parameter_list|,
 name|FunctionState
 name|state

@@ -22,7 +22,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -38,7 +38,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -465,7 +465,7 @@ argument_list|(
 name|engine
 argument_list|)
 decl_stmt|;
-name|ApprovalTypes
+name|LabelTypes
 name|types
 init|=
 name|env
@@ -475,7 +475,7 @@ argument_list|()
 operator|.
 name|getInstance
 argument_list|(
-name|ApprovalTypes
+name|LabelTypes
 operator|.
 name|class
 argument_list|)
@@ -546,7 +546,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|ApprovalType
+name|LabelType
 name|t
 init|=
 name|types

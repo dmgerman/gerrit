@@ -80,7 +80,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -454,11 +454,11 @@ operator|.
 name|Factory
 name|changeControlFactory
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|aic
 specifier|private
@@ -500,7 +500,7 @@ name|drafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final ReviewDb db, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final ApprovalTypes approvalTypes, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
+DECL|method|PatchSetPublishDetailFactory (final PatchSetInfoFactory infoFactory, final ReviewDb db, final AccountInfoCacheFactory.Factory accountInfoCacheFactory, final ChangeControl.Factory changeControlFactory, final LabelTypes labelTypes, final IdentifiedUser user, @Assisted final PatchSet.Id patchSetId)
 name|PatchSetPublishDetailFactory
 parameter_list|(
 specifier|final
@@ -524,8 +524,8 @@ name|Factory
 name|changeControlFactory
 parameter_list|,
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -560,9 +560,9 @@ name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -893,10 +893,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byLabel
 argument_list|(
@@ -907,11 +907,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|==
 literal|null
 operator|||
-name|at
+name|lt
 operator|.
 name|getMax
 argument_list|()

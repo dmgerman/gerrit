@@ -118,7 +118,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -134,7 +134,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -340,23 +340,23 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil (ReviewDb db, ApprovalTypes approvalTypes)
+DECL|method|ApprovalsUtil (ReviewDb db, LabelTypes labelTypes)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 name|this
@@ -367,9 +367,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 block|}
 comment|/**    * Resync the changeOpen status which is cached in the approvals table for    * performance reasons    */
@@ -549,10 +549,10 @@ argument_list|)
 condition|)
 block|{
 specifier|final
-name|ApprovalType
+name|LabelType
 name|type
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -654,13 +654,13 @@ name|OrmException
 block|{
 name|List
 argument_list|<
-name|ApprovalType
+name|LabelType
 argument_list|>
 name|allTypes
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 decl_stmt|;
 if|if

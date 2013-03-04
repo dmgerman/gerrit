@@ -78,7 +78,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -1245,7 +1245,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|createCherryPickCommitMessage (final CodeReviewCommit n, final ApprovalTypes approvalTypes, final Provider<String> urlProvider, final ReviewDb db, final IdentifiedUser.GenericFactory identifiedUserFactory)
+DECL|method|createCherryPickCommitMessage (final CodeReviewCommit n, final LabelTypes labelTypes, final Provider<String> urlProvider, final ReviewDb db, final IdentifiedUser.GenericFactory identifiedUserFactory)
 specifier|public
 specifier|static
 name|String
@@ -1256,8 +1256,8 @@ name|CodeReviewCommit
 name|n
 parameter_list|,
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 specifier|final
 name|Provider
@@ -1797,10 +1797,10 @@ block|}
 else|else
 block|{
 specifier|final
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -1815,7 +1815,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|==
 literal|null
 condition|)
@@ -1825,7 +1825,7 @@ continue|continue;
 block|}
 name|tag
 operator|=
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()

@@ -124,7 +124,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -140,7 +140,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -415,11 +415,11 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|functionState
 specifier|private
@@ -441,7 +441,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, ApprovalTypes approvalTypes, FunctionState.Factory functionState, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson (Provider<ReviewDb> db, LabelTypes labelTypes, FunctionState.Factory functionState, AccountInfo.Loader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -450,8 +450,8 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|FunctionState
 operator|.
@@ -474,9 +474,9 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
-name|approvalTypes
+name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -688,12 +688,12 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ApprovalType
+name|LabelType
 name|at
 range|:
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{
@@ -729,7 +729,7 @@ name|LabelOrdering
 operator|.
 name|create
 argument_list|(
-name|approvalTypes
+name|labelTypes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -762,10 +762,10 @@ argument_list|()
 condition|)
 block|{
 comment|// TODO: Support arbitrary labels.
-name|ApprovalType
+name|LabelType
 name|at
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(

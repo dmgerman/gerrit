@@ -176,22 +176,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|GroupDescription
 import|;
 end_import
@@ -209,6 +193,22 @@ operator|.
 name|data
 operator|.
 name|GroupDescriptions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|LabelTypes
 import|;
 end_import
 
@@ -871,7 +871,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers (Reviewers.Parser parser, ReviewerResource.Factory reviewerFactory, AddReviewerSender.Factory addReviewerSenderFactory, Provider<GroupsCollection> groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, IdentifiedUser currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, ApprovalTypes approvalTypes, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json)
+DECL|method|PostReviewers (Reviewers.Parser parser, ReviewerResource.Factory reviewerFactory, AddReviewerSender.Factory addReviewerSenderFactory, Provider<GroupsCollection> groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, IdentifiedUser currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, LabelTypes labelTypes, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json)
 name|PostReviewers
 parameter_list|(
 name|Reviewers
@@ -921,8 +921,8 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 parameter_list|,
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -1025,9 +1025,9 @@ name|Iterables
 operator|.
 name|getLast
 argument_list|(
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 argument_list|)
 operator|.

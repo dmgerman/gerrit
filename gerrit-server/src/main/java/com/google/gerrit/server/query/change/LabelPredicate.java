@@ -80,7 +80,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -413,13 +413,13 @@ name|expValue
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|type (ApprovalTypes types, String toFind)
+DECL|method|type (LabelTypes types, String toFind)
 specifier|private
 specifier|static
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|(
-name|ApprovalTypes
+name|LabelTypes
 name|types
 parameter_list|,
 name|String
@@ -470,12 +470,12 @@ return|;
 block|}
 for|for
 control|(
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 range|:
 name|types
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{
@@ -485,7 +485,7 @@ name|toFind
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -493,18 +493,18 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|at
+name|lt
 return|;
 block|}
 block|}
 for|for
 control|(
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 range|:
 name|types
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{
@@ -514,7 +514,7 @@ name|toFind
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getAbbreviatedName
 argument_list|()
@@ -522,12 +522,12 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|at
+name|lt
 return|;
 block|}
 block|}
 return|return
-name|ApprovalType
+name|LabelType
 operator|.
 name|withDefaultValues
 argument_list|(
@@ -690,7 +690,7 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|ApprovalType
+name|LabelType
 name|type
 decl_stmt|;
 DECL|field|permissionName
@@ -705,7 +705,7 @@ specifier|final
 name|int
 name|expVal
 decl_stmt|;
-DECL|method|LabelPredicate (ChangeControl.GenericFactory ccFactory, IdentifiedUser.GenericFactory userFactory, Provider<ReviewDb> dbProvider, ApprovalTypes types, String value)
+DECL|method|LabelPredicate (ChangeControl.GenericFactory ccFactory, IdentifiedUser.GenericFactory userFactory, Provider<ReviewDb> dbProvider, LabelTypes types, String value)
 name|LabelPredicate
 parameter_list|(
 name|ChangeControl
@@ -724,7 +724,7 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
-name|ApprovalTypes
+name|LabelTypes
 name|types
 parameter_list|,
 name|String

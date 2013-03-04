@@ -396,7 +396,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -412,7 +412,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -1262,11 +1262,11 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
-DECL|field|approvalTypes
+DECL|field|labelTypes
 specifier|private
 specifier|final
-name|ApprovalTypes
-name|approvalTypes
+name|LabelTypes
+name|labelTypes
 decl_stmt|;
 DECL|field|functionState
 specifier|private
@@ -1382,7 +1382,7 @@ name|accountLoader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, ApprovalTypes at, FunctionState.Factory fs, CurrentUser u, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeControl.GenericFactory ccf, PatchSetInfoFactory psi, PatchListCache plc, AccountInfo.Loader.Factory ailf, @CanonicalWebUrl Provider<String> curl, Urls urls)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelTypes at, FunctionState.Factory fs, CurrentUser u, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeControl.GenericFactory ccf, PatchSetInfoFactory psi, PatchListCache plc, AccountInfo.Loader.Factory ailf, @CanonicalWebUrl Provider<String> curl, Urls urls)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1391,7 +1391,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|ApprovalTypes
+name|LabelTypes
 name|at
 parameter_list|,
 name|FunctionState
@@ -1448,7 +1448,7 @@ name|db
 expr_stmt|;
 name|this
 operator|.
-name|approvalTypes
+name|labelTypes
 operator|=
 name|at
 expr_stmt|;
@@ -2716,10 +2716,10 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|ApprovalType
+name|LabelType
 name|type
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byLabel
 argument_list|(
@@ -2818,7 +2818,7 @@ name|LabelOrdering
 operator|.
 name|create
 argument_list|(
-name|approvalTypes
+name|labelTypes
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2991,7 +2991,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|setRecommendedAndDisliked (ChangeData cd, ApprovalType type, LabelInfo label)
+DECL|method|setRecommendedAndDisliked (ChangeData cd, LabelType type, LabelInfo label)
 specifier|private
 name|void
 name|setRecommendedAndDisliked
@@ -2999,7 +2999,7 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|,
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|,
 name|LabelInfo
@@ -3273,12 +3273,12 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 range|:
-name|approvalTypes
+name|labelTypes
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 control|)
 block|{
@@ -3286,12 +3286,12 @@ name|CategoryFunction
 operator|.
 name|forType
 argument_list|(
-name|at
+name|lt
 argument_list|)
 operator|.
 name|run
 argument_list|(
-name|at
+name|lt
 argument_list|,
 name|fs
 argument_list|)
@@ -3330,10 +3330,10 @@ range|:
 name|approvals
 control|)
 block|{
-name|ApprovalType
-name|at
+name|LabelType
+name|lt
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -3348,7 +3348,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|at
+name|lt
 operator|==
 literal|null
 condition|)
@@ -3362,7 +3362,7 @@ name|labels
 operator|.
 name|get
 argument_list|(
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -3390,7 +3390,7 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -3428,7 +3428,7 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
-name|at
+name|lt
 operator|.
 name|getName
 argument_list|()
@@ -3611,7 +3611,7 @@ name|LabelOrdering
 operator|.
 name|create
 argument_list|(
-name|approvalTypes
+name|labelTypes
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3628,10 +3628,10 @@ name|db
 argument_list|)
 control|)
 block|{
-name|ApprovalType
+name|LabelType
 name|type
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byId
 argument_list|(
@@ -4007,12 +4007,12 @@ argument_list|)
 operator|)
 return|;
 block|}
-DECL|method|setLabelValues (ApprovalType type, LabelInfo label)
+DECL|method|setLabelValues (LabelType type, LabelInfo label)
 specifier|private
 name|void
 name|setLabelValues
 parameter_list|(
-name|ApprovalType
+name|LabelType
 name|type
 parameter_list|,
 name|LabelInfo
@@ -4152,10 +4152,10 @@ operator|.
 name|labels
 control|)
 block|{
-name|ApprovalType
+name|LabelType
 name|type
 init|=
-name|approvalTypes
+name|labelTypes
 operator|.
 name|byLabel
 argument_list|(

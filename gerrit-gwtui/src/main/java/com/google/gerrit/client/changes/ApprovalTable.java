@@ -316,7 +316,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalType
+name|LabelType
 import|;
 end_import
 
@@ -332,7 +332,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|ApprovalTypes
+name|LabelTypes
 import|;
 end_import
 
@@ -738,59 +738,10 @@ name|ApprovalTable
 extends|extends
 name|Composite
 block|{
-DECL|method|parseLabelValue (String value)
-specifier|static
-name|short
-name|parseLabelValue
-parameter_list|(
-name|String
-name|value
-parameter_list|)
-block|{
-if|if
-condition|(
-name|value
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-operator|==
-literal|' '
-operator|||
-name|value
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-operator|==
-literal|'+'
-condition|)
-block|{
-name|value
-operator|=
-name|value
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|Short
-operator|.
-name|parseShort
-argument_list|(
-name|value
-argument_list|)
-return|;
-block|}
 DECL|field|types
 specifier|private
 specifier|final
-name|ApprovalTypes
+name|LabelTypes
 name|types
 decl_stmt|;
 DECL|field|table
@@ -861,7 +812,7 @@ operator|.
 name|getConfig
 argument_list|()
 operator|.
-name|getApprovalTypes
+name|getLabelTypes
 argument_list|()
 expr_stmt|;
 name|table
@@ -2807,8 +2758,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// TODO: support arbitrary labels.
-name|ApprovalType
+name|LabelType
 name|legacyType
 init|=
 name|types
