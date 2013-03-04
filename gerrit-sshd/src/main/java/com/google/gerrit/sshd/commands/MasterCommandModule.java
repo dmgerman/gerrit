@@ -215,15 +215,6 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
-name|TestSubmitRule
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
 name|SetReviewersCommand
 operator|.
 name|class
@@ -306,7 +297,7 @@ name|command
 argument_list|(
 name|testSubmit
 argument_list|,
-name|TestSubmitRule
+name|TestSubmitRuleCommand
 operator|.
 name|class
 argument_list|)
@@ -315,7 +306,7 @@ name|command
 argument_list|(
 name|testSubmit
 argument_list|,
-name|TestSubmitType
+name|TestSubmitTypeCommand
 operator|.
 name|class
 argument_list|)

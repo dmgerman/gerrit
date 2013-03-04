@@ -884,6 +884,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|isProjectRulesEnabled ()
+specifier|public
+name|boolean
+name|isProjectRulesEnabled
+parameter_list|()
+block|{
+return|return
+name|enableProjectRules
+return|;
+block|}
 comment|/**    * Locate a cached Prolog machine state, or create one if not available.    *    * @return a Prolog machine, after loading the specified rules.    * @throws CompileException the machine cannot be created.    */
 DECL|method|loadMachine ( Project.NameKey project, ObjectId rulesId)
 specifier|public
