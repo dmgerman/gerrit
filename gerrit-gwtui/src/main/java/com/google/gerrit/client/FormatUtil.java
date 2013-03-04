@@ -638,27 +638,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Format an account as a name and email address. */
-DECL|method|nameEmail (Account acct)
-specifier|public
-specifier|static
-name|String
-name|nameEmail
-parameter_list|(
-name|Account
-name|acct
-parameter_list|)
-block|{
-return|return
-name|nameEmail
-argument_list|(
-name|asInfo
-argument_list|(
-name|acct
-argument_list|)
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Deprecated
 DECL|method|nameEmail (com.google.gerrit.common.data.AccountInfo acct)
