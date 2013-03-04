@@ -1016,7 +1016,6 @@ name|disabled
 return|;
 block|}
 DECL|method|start (PluginGuiceEnvironment env)
-specifier|public
 name|void
 name|start
 parameter_list|(
@@ -1572,7 +1571,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|stop ()
-specifier|public
 name|void
 name|stop
 parameter_list|()
