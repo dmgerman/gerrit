@@ -4585,6 +4585,9 @@ name|approval
 operator|.
 name|getKey
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -4599,9 +4602,6 @@ operator|.
 name|description
 operator|=
 name|at
-operator|.
-name|getCategory
-argument_list|()
 operator|.
 name|getName
 argument_list|()

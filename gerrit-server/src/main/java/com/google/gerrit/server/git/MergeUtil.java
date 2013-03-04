@@ -1808,6 +1808,9 @@ name|a
 operator|.
 name|getCategoryId
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1817,25 +1820,15 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// A deprecated/deleted approval type, ignore it.
+comment|// TODO: Support arbitrary labels.
 continue|continue;
 block|}
 name|tag
 operator|=
 name|at
 operator|.
-name|getCategory
-argument_list|()
-operator|.
 name|getName
 argument_list|()
-operator|.
-name|replace
-argument_list|(
-literal|' '
-argument_list|,
-literal|'-'
-argument_list|)
 expr_stmt|;
 block|}
 if|if

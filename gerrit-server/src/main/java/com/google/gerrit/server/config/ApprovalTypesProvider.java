@@ -356,8 +356,9 @@ name|types
 operator|.
 name|add
 argument_list|(
-operator|new
 name|ApprovalType
+operator|.
+name|fromApprovalCategory
 argument_list|(
 name|c
 argument_list|,

@@ -220,6 +220,61 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|forName (String name)
+specifier|public
+specifier|static
+name|CategoryFunction
+name|forName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|all
+operator|.
+name|get
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+comment|/**    * Locate a function by type.    *    * @param type the type the function is for.    * @return the function implementation; {@link NoOpFunction} if the function    *         is not known to Gerrit and thus cannot be executed.    */
+DECL|method|forType (ApprovalType type)
+specifier|public
+specifier|static
+name|CategoryFunction
+name|forType
+parameter_list|(
+name|ApprovalType
+name|type
+parameter_list|)
+block|{
+name|CategoryFunction
+name|r
+init|=
+name|all
+operator|.
+name|get
+argument_list|(
+name|type
+operator|.
+name|getFunctionName
+argument_list|()
+argument_list|)
+decl_stmt|;
+return|return
+name|r
+operator|!=
+literal|null
+condition|?
+name|r
+else|:
+operator|new
+name|NoOpFunction
+argument_list|()
+return|;
+block|}
 comment|/**    * Locate a function by category.    *    * @param category the category the function is for.    * @return the function implementation; {@link NoOpFunction} if the function    *         is not known to Gerrit and thus cannot be executed.    */
 DECL|method|forCategory (final ApprovalCategory category)
 specifier|public

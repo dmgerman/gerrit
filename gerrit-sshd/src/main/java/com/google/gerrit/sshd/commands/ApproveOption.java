@@ -90,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 operator|.
-name|ApprovalCategoryValue
+name|LabelValue
 import|;
 end_import
 
@@ -453,10 +453,7 @@ block|{
 return|return
 name|type
 operator|.
-name|getCategory
-argument_list|()
-operator|.
-name|getLabelName
+name|getName
 argument_list|()
 return|;
 block|}
@@ -569,7 +566,7 @@ name|argument
 argument_list|)
 decl_stmt|;
 specifier|final
-name|ApprovalCategoryValue
+name|LabelValue
 name|min
 init|=
 name|cmdOption
@@ -580,7 +577,7 @@ name|getMin
 argument_list|()
 decl_stmt|;
 specifier|final
-name|ApprovalCategoryValue
+name|LabelValue
 name|max
 init|=
 name|cmdOption

@@ -442,10 +442,7 @@ name|intern
 argument_list|(
 name|type
 operator|.
-name|getCategory
-argument_list|()
-operator|.
-name|getLabelName
+name|getName
 argument_list|()
 argument_list|)
 argument_list|,
@@ -454,15 +451,9 @@ operator|.
 name|intern
 argument_list|(
 name|type
-operator|.
-name|getCategory
-argument_list|()
 operator|.
 name|getId
 argument_list|()
-operator|.
-name|get
-argument_list|()
 argument_list|)
 argument_list|,
 name|SymbolTerm
@@ -470,9 +461,6 @@ operator|.
 name|intern
 argument_list|(
 name|type
-operator|.
-name|getCategory
-argument_list|()
 operator|.
 name|getFunctionName
 argument_list|()

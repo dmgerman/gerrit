@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 operator|.
-name|Account
+name|ApprovalType
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|ApprovalCategory
+name|Account
 import|;
 end_import
 
@@ -297,12 +297,12 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|appendApproval (ApprovalCategory category, short value, Account user)
+DECL|method|appendApproval (ApprovalType type, short value, Account user)
 name|void
 name|appendApproval
 parameter_list|(
-name|ApprovalCategory
-name|category
+name|ApprovalType
+name|type
 parameter_list|,
 name|short
 name|value
@@ -315,9 +315,9 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|category
+name|type
 operator|.
-name|getLabelName
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
