@@ -277,11 +277,11 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getGroup (String group, AsyncCallback<GroupInfo> cb)
+DECL|method|getGroupDetail (String group, AsyncCallback<GroupInfo> cb)
 specifier|public
 specifier|static
 name|void
-name|getGroup
+name|getGroupDetail
 parameter_list|(
 name|String
 name|group
@@ -296,6 +296,11 @@ block|{
 name|group
 argument_list|(
 name|group
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"detail"
 argument_list|)
 operator|.
 name|get

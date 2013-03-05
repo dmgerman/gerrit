@@ -667,6 +667,8 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
+name|ResourceNotFoundException
+throws|,
 name|AuthException
 throws|,
 name|BadRequestException

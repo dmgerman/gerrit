@@ -102,11 +102,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|errors
+name|restapi
 operator|.
-name|NoSuchGroupException
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -295,6 +295,20 @@ operator|.
 name|sshd
 operator|.
 name|CommandMetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -584,7 +598,9 @@ name|PrintWriter
 name|out
 parameter_list|)
 throws|throws
-name|NoSuchGroupException
+name|ResourceNotFoundException
+throws|,
+name|OrmException
 block|{
 specifier|final
 name|ColumnFormatter

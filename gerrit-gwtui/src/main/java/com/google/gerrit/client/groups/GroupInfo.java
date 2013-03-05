@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|account
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -95,6 +111,22 @@ operator|.
 name|client
 operator|.
 name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -232,6 +264,30 @@ name|String
 name|o
 parameter_list|)
 comment|/*-{ if(o)this.owner=o; }-*/
+function_decl|;
+DECL|method|members ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|members
+parameter_list|()
+comment|/*-{ return this.members; }-*/
+function_decl|;
+DECL|method|includes ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|GroupInfo
+argument_list|>
+name|includes
+parameter_list|()
+comment|/*-{ return this.includes; }-*/
 function_decl|;
 DECL|method|group_id ()
 specifier|private
