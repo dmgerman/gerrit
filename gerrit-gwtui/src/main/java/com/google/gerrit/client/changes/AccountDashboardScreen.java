@@ -495,7 +495,7 @@ literal|"is:closed owner:"
 operator|+
 name|who
 operator|+
-literal|" -age:1w limit:10"
+literal|" -age:4w limit:10"
 argument_list|)
 expr_stmt|;
 block|}
