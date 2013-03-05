@@ -284,6 +284,7 @@ end_import
 
 begin_class
 DECL|class|Revisions
+specifier|public
 class|class
 name|Revisions
 implements|implements
