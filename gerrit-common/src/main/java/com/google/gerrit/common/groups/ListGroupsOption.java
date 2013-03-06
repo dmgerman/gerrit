@@ -131,26 +131,6 @@ return|return
 name|value
 return|;
 block|}
-DECL|method|fromValue (int value)
-specifier|public
-specifier|static
-name|ListGroupsOption
-name|fromValue
-parameter_list|(
-name|int
-name|value
-parameter_list|)
-block|{
-return|return
-name|ListGroupsOption
-operator|.
-name|values
-argument_list|()
-index|[
-name|value
-index|]
-return|;
-block|}
 DECL|method|fromBits (int v)
 specifier|public
 specifier|static
