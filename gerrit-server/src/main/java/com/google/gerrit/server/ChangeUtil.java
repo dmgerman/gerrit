@@ -2560,7 +2560,7 @@ argument_list|()
 decl_stmt|;
 specifier|final
 name|PatchSet
-name|patch
+name|originalPS
 init|=
 name|db
 operator|.
@@ -2574,7 +2574,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|patch
+name|originalPS
 operator|==
 literal|null
 condition|)
@@ -2632,7 +2632,7 @@ name|ObjectId
 operator|.
 name|fromString
 argument_list|(
-name|patch
+name|originalPS
 operator|.
 name|getRevision
 argument_list|()
@@ -2797,20 +2797,6 @@ name|release
 argument_list|()
 expr_stmt|;
 block|}
-specifier|final
-name|PatchSet
-name|originalPS
-init|=
-name|db
-operator|.
-name|patchSets
-argument_list|()
-operator|.
-name|get
-argument_list|(
-name|patchSetId
-argument_list|)
-decl_stmt|;
 name|PatchSet
 operator|.
 name|Id
