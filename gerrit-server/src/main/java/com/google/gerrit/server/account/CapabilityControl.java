@@ -703,6 +703,22 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can access the database (with gsql). */
+DECL|method|canAccessDatabase ()
+specifier|public
+name|boolean
+name|canAccessDatabase
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|ACCESS_DATABASE
+argument_list|)
+return|;
+block|}
 comment|/** @return true if the user can force replication to any configured destination. */
 DECL|method|canStartReplication ()
 specifier|public

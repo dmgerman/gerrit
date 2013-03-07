@@ -116,6 +116,16 @@ specifier|public
 class|class
 name|GlobalCapability
 block|{
+comment|/** Ability to access the database (with gsql). */
+DECL|field|ACCESS_DATABASE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ACCESS_DATABASE
+init|=
+literal|"accessDatabase"
+decl_stmt|;
 comment|/**    * Denotes the server's administrators.    *<p>    * This is similar to UNIX root, or Windows SYSTEM account. Any user that    * has this capability can perform almost any other action, or can grant    * themselves the power to perform any other action on the site. Most of    * the other capabilities and permissions fall-back to the predicate    * "OR user has capability ADMINISTRATE_SERVER".    */
 DECL|field|ADMINISTRATE_SERVER
 specifier|public
@@ -276,6 +286,13 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|ACCESS_DATABASE
+argument_list|)
 expr_stmt|;
 name|NAMES_ALL
 operator|.
