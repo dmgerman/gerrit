@@ -102,6 +102,20 @@ name|KeyPair
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
+import|;
+end_import
+
 begin_class
 DECL|class|TestAccount
 specifier|public
@@ -233,6 +247,22 @@ name|out
 operator|.
 name|toByteArray
 argument_list|()
+return|;
+block|}
+DECL|method|getIdent ()
+specifier|public
+name|PersonIdent
+name|getIdent
+parameter_list|()
+block|{
+return|return
+operator|new
+name|PersonIdent
+argument_list|(
+name|username
+argument_list|,
+name|email
+argument_list|)
 return|;
 block|}
 block|}

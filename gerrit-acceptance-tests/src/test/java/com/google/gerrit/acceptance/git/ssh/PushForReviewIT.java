@@ -1972,7 +1972,7 @@ name|createCommit
 argument_list|(
 name|git
 argument_list|,
-name|sshSession
+name|admin
 operator|.
 name|getIdent
 argument_list|()
