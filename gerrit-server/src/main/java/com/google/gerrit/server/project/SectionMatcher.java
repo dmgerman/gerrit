@@ -118,6 +118,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|dk
 operator|.
 name|brics
@@ -160,11 +176,16 @@ specifier|abstract
 class|class
 name|SectionMatcher
 block|{
-DECL|method|wrap (AccessSection section)
+DECL|method|wrap (Project.NameKey project, AccessSection section)
 specifier|static
 name|SectionMatcher
 name|wrap
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|AccessSection
 name|section
 parameter_list|)
@@ -190,6 +211,8 @@ block|{
 return|return
 name|wrap
 argument_list|(
+name|project
+argument_list|,
 name|ref
 argument_list|,
 name|section
@@ -203,11 +226,16 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|wrap (String pattern, AccessSection section)
+DECL|method|wrap (Project.NameKey project, String pattern, AccessSection section)
 specifier|static
 name|SectionMatcher
 name|wrap
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|String
 name|pattern
 parameter_list|,
@@ -229,6 +257,8 @@ return|return
 operator|new
 name|ExpandParameters
 argument_list|(
+name|project
+argument_list|,
 name|pattern
 argument_list|,
 name|section
@@ -248,6 +278,8 @@ return|return
 operator|new
 name|Regexp
 argument_list|(
+name|project
+argument_list|,
 name|pattern
 argument_list|,
 name|section
@@ -269,6 +301,8 @@ return|return
 operator|new
 name|Prefix
 argument_list|(
+name|project
+argument_list|,
 name|pattern
 operator|.
 name|substring
@@ -293,6 +327,8 @@ return|return
 operator|new
 name|Exact
 argument_list|(
+name|project
+argument_list|,
 name|pattern
 argument_list|,
 name|section
@@ -300,18 +336,36 @@ argument_list|)
 return|;
 block|}
 block|}
+DECL|field|project
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|field|section
 specifier|final
 name|AccessSection
 name|section
 decl_stmt|;
-DECL|method|SectionMatcher (AccessSection section)
+DECL|method|SectionMatcher (Project.NameKey project, AccessSection section)
 name|SectionMatcher
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|AccessSection
 name|section
 parameter_list|)
 block|{
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
 name|this
 operator|.
 name|section
@@ -345,9 +399,14 @@ specifier|final
 name|String
 name|expect
 decl_stmt|;
-DECL|method|Exact (String name, AccessSection section)
+DECL|method|Exact (Project.NameKey project, String name, AccessSection section)
 name|Exact
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -357,6 +416,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|project
+argument_list|,
 name|section
 argument_list|)
 expr_stmt|;
@@ -402,9 +463,14 @@ specifier|final
 name|String
 name|prefix
 decl_stmt|;
-DECL|method|Prefix (String pfx, AccessSection section)
+DECL|method|Prefix (Project.NameKey project, String pfx, AccessSection section)
 name|Prefix
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|String
 name|pfx
 parameter_list|,
@@ -414,6 +480,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|project
+argument_list|,
 name|section
 argument_list|)
 expr_stmt|;
@@ -459,9 +527,14 @@ specifier|final
 name|Pattern
 name|pattern
 decl_stmt|;
-DECL|method|Regexp (String re, AccessSection section)
+DECL|method|Regexp (Project.NameKey project, String re, AccessSection section)
 name|Regexp
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|String
 name|re
 parameter_list|,
@@ -471,6 +544,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|project
+argument_list|,
 name|section
 argument_list|)
 expr_stmt|;
@@ -529,9 +604,14 @@ specifier|final
 name|String
 name|prefix
 decl_stmt|;
-DECL|method|ExpandParameters (String pattern, AccessSection section)
+DECL|method|ExpandParameters (Project.NameKey project, String pattern, AccessSection section)
 name|ExpandParameters
 parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|String
 name|pattern
 parameter_list|,
@@ -541,6 +621,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|project
+argument_list|,
 name|section
 argument_list|)
 expr_stmt|;
@@ -704,6 +786,8 @@ name|next
 init|=
 name|wrap
 argument_list|(
+name|project
+argument_list|,
 name|template
 operator|.
 name|replace
