@@ -1265,6 +1265,8 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 throws|,
+name|MethodNotAllowedException
+throws|,
 name|OrmException
 block|{
 comment|// Do nothing, the group is already included.
