@@ -310,6 +310,11 @@ name|String
 name|headingAgreements
 parameter_list|()
 function_decl|;
+DECL|method|headingProjectSubmitType ()
+name|String
+name|headingProjectSubmitType
+parameter_list|()
+function_decl|;
 DECL|method|projectSubmitType_FAST_FORWARD_ONLY ()
 name|String
 name|projectSubmitType_FAST_FORWARD_ONLY
@@ -333,6 +338,11 @@ function_decl|;
 DECL|method|projectSubmitType_CHERRY_PICK ()
 name|String
 name|projectSubmitType_CHERRY_PICK
+parameter_list|()
+function_decl|;
+DECL|method|headingProjectState ()
+name|String
+name|headingProjectState
 parameter_list|()
 function_decl|;
 DECL|method|projectState_ACTIVE ()
