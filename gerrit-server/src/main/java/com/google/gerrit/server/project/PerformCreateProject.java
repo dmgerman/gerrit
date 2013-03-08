@@ -860,7 +860,7 @@ expr_stmt|;
 block|}
 DECL|method|createProject ()
 specifier|public
-name|void
+name|Project
 name|createProject
 parameter_list|()
 throws|throws
@@ -1022,6 +1022,17 @@ name|branch
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|projectCache
+operator|.
+name|get
+argument_list|(
+name|nameKey
+argument_list|)
+operator|.
+name|getProject
+argument_list|()
+return|;
 block|}
 finally|finally
 block|{
@@ -1121,6 +1132,9 @@ literal|"\" exists"
 argument_list|)
 throw|;
 block|}
+throw|throw
+name|err
+throw|;
 block|}
 finally|finally
 block|{
