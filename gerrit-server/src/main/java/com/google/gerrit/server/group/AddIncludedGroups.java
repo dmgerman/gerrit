@@ -680,8 +680,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
 name|MethodNotAllowedException
 throws|,
 name|AuthException
@@ -1124,8 +1122,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
 name|MethodNotAllowedException
 throws|,
 name|AuthException
@@ -1263,8 +1259,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
 name|MethodNotAllowedException
 throws|,
 name|OrmException

@@ -1458,8 +1458,6 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
 name|OrmException
 block|{
 name|List
