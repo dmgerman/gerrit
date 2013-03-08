@@ -1555,7 +1555,7 @@ name|assertEquals
 argument_list|(
 name|HttpStatus
 operator|.
-name|SC_BAD_REQUEST
+name|SC_UNPROCESSABLE_ENTITY
 argument_list|,
 name|r
 operator|.
