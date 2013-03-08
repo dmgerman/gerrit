@@ -749,25 +749,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|GroupInput
-specifier|private
-specifier|static
-class|class
-name|GroupInput
-block|{
-DECL|field|description
-name|String
-name|description
-decl_stmt|;
-DECL|field|visible_to_all
-name|Boolean
-name|visible_to_all
-decl_stmt|;
-DECL|field|owner_id
-name|String
-name|owner_id
-decl_stmt|;
-block|}
 block|}
 end_class
 
