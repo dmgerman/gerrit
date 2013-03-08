@@ -756,6 +756,37 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|create (String username, String group)
+specifier|public
+name|TestAccount
+name|create
+parameter_list|(
+name|String
+name|username
+parameter_list|,
+name|String
+name|group
+parameter_list|)
+throws|throws
+name|OrmException
+throws|,
+name|UnsupportedEncodingException
+throws|,
+name|JSchException
+block|{
+return|return
+name|create
+argument_list|(
+name|username
+argument_list|,
+literal|null
+argument_list|,
+name|username
+argument_list|,
+name|group
+argument_list|)
+return|;
+block|}
 DECL|method|getEmailKey (String email)
 specifier|private
 name|AccountExternalId
