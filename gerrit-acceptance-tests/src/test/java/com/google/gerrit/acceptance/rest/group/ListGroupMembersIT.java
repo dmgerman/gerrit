@@ -126,20 +126,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|reflect
-operator|.
-name|TypeToken
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -213,6 +199,20 @@ operator|.
 name|gson
 operator|.
 name|Gson
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gson
+operator|.
+name|reflect
+operator|.
+name|TypeToken
 import|;
 end_import
 
@@ -540,11 +540,6 @@ literal|"uy"
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|method|GET (String endpoint)
 specifier|private
 name|List
@@ -611,11 +606,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"serial"
-argument_list|)
 DECL|method|GET_ONE (String endpoint)
 specifier|private
 name|AccountInfo
