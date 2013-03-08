@@ -506,8 +506,6 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 throws|,
-name|MethodNotAllowedException
-throws|,
 name|OrmException
 block|{
 name|GroupInfo
@@ -544,8 +542,6 @@ name|group
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
-throws|,
-name|MethodNotAllowedException
 throws|,
 name|OrmException
 block|{
@@ -793,9 +789,23 @@ parameter_list|)
 throws|throws
 name|ResourceNotFoundException
 throws|,
-name|MethodNotAllowedException
-throws|,
 name|OrmException
+block|{
+if|if
+condition|(
+name|rsrc
+operator|.
+name|toAccountGroup
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|info
+return|;
+block|}
+try|try
 block|{
 if|if
 condition|(
@@ -850,6 +860,24 @@ block|}
 return|return
 name|info
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|MethodNotAllowedException
+name|e
+parameter_list|)
+block|{
+comment|// should never happen, this exception is only thrown if we would try to
+comment|// list members/includes of an external group, but in case of an external
+comment|// group we return before
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|class|GroupInfo
 specifier|public
