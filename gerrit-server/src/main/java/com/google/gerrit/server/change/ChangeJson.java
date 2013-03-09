@@ -3947,7 +3947,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|approvalInfo (Account.Id id, short value)
+DECL|method|approvalInfo (Account.Id id, int value)
 specifier|private
 name|ApprovalInfo
 name|approvalInfo
@@ -3957,7 +3957,7 @@ operator|.
 name|Id
 name|id
 parameter_list|,
-name|short
+name|int
 name|value
 parameter_list|)
 block|{
@@ -6225,7 +6225,7 @@ extends|extends
 name|AccountInfo
 block|{
 DECL|field|value
-name|short
+name|int
 name|value
 decl_stmt|;
 DECL|method|ApprovalInfo (Account.Id id)

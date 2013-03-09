@@ -1485,7 +1485,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|canRemoveReviewer (Account.Id reviewer, short value)
+DECL|method|canRemoveReviewer (Account.Id reviewer, int value)
 specifier|public
 name|boolean
 name|canRemoveReviewer
@@ -1495,7 +1495,7 @@ operator|.
 name|Id
 name|reviewer
 parameter_list|,
-name|short
+name|int
 name|value
 parameter_list|)
 block|{
