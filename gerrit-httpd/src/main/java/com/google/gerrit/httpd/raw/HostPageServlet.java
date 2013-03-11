@@ -1328,7 +1328,7 @@ name|write
 argument_list|(
 name|HPD_ID
 operator|+
-literal|".authorization="
+literal|".xGerritAuth="
 argument_list|)
 expr_stmt|;
 name|json
@@ -1338,7 +1338,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getAuthorization
+name|getXGerritAuth
 argument_list|()
 argument_list|,
 name|w

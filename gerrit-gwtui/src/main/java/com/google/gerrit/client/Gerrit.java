@@ -1401,11 +1401,11 @@ specifier|static
 name|AccountDiffPreference
 name|myAccountDiffPref
 decl_stmt|;
-DECL|field|authorization
+DECL|field|xGerritAuth
 specifier|private
 specifier|static
 name|String
-name|authorization
+name|xGerritAuth
 decl_stmt|;
 DECL|field|menuLeft
 specifier|private
@@ -1980,15 +1980,15 @@ name|myAccount
 return|;
 block|}
 comment|/** @return access token to prove user identity during REST API calls. */
-DECL|method|getAuthorization ()
+DECL|method|getXGerritAuth ()
 specifier|public
 specifier|static
 name|String
-name|getAuthorization
+name|getXGerritAuth
 parameter_list|()
 block|{
 return|return
-name|authorization
+name|xGerritAuth
 return|;
 block|}
 comment|/** @return the currently signed in users's diff preferences; null if no diff preferences defined for the account */
@@ -2446,7 +2446,7 @@ name|myAccountDiffPref
 operator|=
 literal|null
 expr_stmt|;
-name|authorization
+name|xGerritAuth
 operator|=
 literal|null
 expr_stmt|;
@@ -2674,11 +2674,11 @@ name|result
 operator|.
 name|account
 expr_stmt|;
-name|authorization
+name|xGerritAuth
 operator|=
 name|result
 operator|.
-name|authorization
+name|xGerritAuth
 expr_stmt|;
 block|}
 if|if
@@ -3613,7 +3613,7 @@ name|proxy
 parameter_list|)
 block|{
 return|return
-name|authorization
+name|xGerritAuth
 return|;
 block|}
 annotation|@

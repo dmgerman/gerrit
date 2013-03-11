@@ -152,16 +152,16 @@ name|boolean
 name|isSignedIn
 parameter_list|()
 function_decl|;
-DECL|method|getAuthorization ()
+DECL|method|getXGerritAuth ()
 specifier|public
 name|String
-name|getAuthorization
+name|getXGerritAuth
 parameter_list|()
 function_decl|;
-DECL|method|isValidAuthorization (String keyIn)
+DECL|method|isValidXGerritAuth (String keyIn)
 specifier|public
 name|boolean
-name|isValidAuthorization
+name|isValidXGerritAuth
 parameter_list|(
 name|String
 name|keyIn

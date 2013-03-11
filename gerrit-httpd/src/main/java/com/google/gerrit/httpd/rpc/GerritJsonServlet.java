@@ -1584,7 +1584,7 @@ argument_list|()
 operator|&&
 name|session
 operator|.
-name|isValidAuthorization
+name|isValidXGerritAuth
 argument_list|(
 name|keyIn
 argument_list|)

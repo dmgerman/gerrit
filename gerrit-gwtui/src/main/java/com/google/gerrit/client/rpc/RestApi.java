@@ -1910,7 +1910,7 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getAuthorization
+name|getXGerritAuth
 argument_list|()
 operator|!=
 literal|null
@@ -1920,11 +1920,11 @@ name|req
 operator|.
 name|setHeader
 argument_list|(
-literal|"Authorization"
+literal|"X-Gerrit-Auth"
 argument_list|,
 name|Gerrit
 operator|.
-name|getAuthorization
+name|getXGerritAuth
 argument_list|()
 argument_list|)
 expr_stmt|;

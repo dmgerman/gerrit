@@ -572,6 +572,29 @@ name|Id
 name|who
 parameter_list|)
 block|{
+return|return
+operator|new
+name|Key
+argument_list|(
+name|newUniqueToken
+argument_list|(
+name|who
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|newUniqueToken (final Account.Id who)
+specifier|private
+name|String
+name|newUniqueToken
+parameter_list|(
+specifier|final
+name|Account
+operator|.
+name|Id
+name|who
+parameter_list|)
+block|{
 try|try
 block|{
 specifier|final
@@ -642,9 +665,6 @@ name|rnd
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|Key
-argument_list|(
 name|CookieBase64
 operator|.
 name|encode
@@ -653,7 +673,6 @@ name|buf
 operator|.
 name|toByteArray
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -732,10 +751,14 @@ argument_list|,
 name|val
 operator|.
 name|sessionId
+argument_list|,
+name|val
+operator|.
+name|auth
 argument_list|)
 return|;
 block|}
-DECL|method|createVal (final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin, String sid)
+DECL|method|createVal (final Key key, final Account.Id who, final boolean remember, final AccountExternalId.Key lastLogin, String sid, String auth)
 name|Val
 name|createVal
 parameter_list|(
@@ -761,6 +784,9 @@ name|lastLogin
 parameter_list|,
 name|String
 name|sid
+parameter_list|,
+name|String
+name|auth
 parameter_list|)
 block|{
 comment|// Refresh the cookie every hour or when it is half-expired.
@@ -834,12 +860,25 @@ condition|)
 block|{
 name|sid
 operator|=
-name|createKey
+name|newUniqueToken
 argument_list|(
 name|who
 argument_list|)
-operator|.
-name|token
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|auth
+operator|==
+literal|null
+condition|)
+block|{
+name|auth
+operator|=
+name|newUniqueToken
+argument_list|(
+name|who
+argument_list|)
 expr_stmt|;
 block|}
 name|Val
@@ -859,6 +898,8 @@ argument_list|,
 name|expiresAt
 argument_list|,
 name|sid
+argument_list|,
+name|auth
 argument_list|)
 decl_stmt|;
 name|self
@@ -1129,7 +1170,13 @@ specifier|transient
 name|String
 name|sessionId
 decl_stmt|;
-DECL|method|Val (final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId, final long expiresAt, final String sessionId)
+DECL|field|auth
+specifier|private
+specifier|transient
+name|String
+name|auth
+decl_stmt|;
+DECL|method|Val (final Account.Id accountId, final long refreshCookieAt, final boolean persistentCookie, final AccountExternalId.Key externalId, final long expiresAt, final String sessionId, final String auth)
 name|Val
 parameter_list|(
 specifier|final
@@ -1159,6 +1206,10 @@ parameter_list|,
 specifier|final
 name|String
 name|sessionId
+parameter_list|,
+specifier|final
+name|String
+name|auth
 parameter_list|)
 block|{
 name|this
@@ -1197,6 +1248,12 @@ name|sessionId
 operator|=
 name|sessionId
 expr_stmt|;
+name|this
+operator|.
+name|auth
+operator|=
+name|auth
+expr_stmt|;
 block|}
 DECL|method|getAccountId ()
 name|Account
@@ -1227,6 +1284,15 @@ parameter_list|()
 block|{
 return|return
 name|sessionId
+return|;
+block|}
+DECL|method|getAuth ()
+name|String
+name|getAuth
+parameter_list|()
+block|{
+return|return
+name|auth
 return|;
 block|}
 DECL|method|needsCookieRefresh ()
@@ -1372,6 +1438,28 @@ argument_list|,
 name|expiresAt
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|auth
+operator|!=
+literal|null
+condition|)
+block|{
+name|writeVarInt32
+argument_list|(
+name|out
+argument_list|,
+literal|7
+argument_list|)
+expr_stmt|;
+name|writeString
+argument_list|(
+name|out
+argument_list|,
+name|auth
+argument_list|)
+expr_stmt|;
+block|}
 name|writeVarInt32
 argument_list|(
 name|out
@@ -1495,6 +1583,17 @@ case|:
 name|expiresAt
 operator|=
 name|readFixInt64
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+continue|continue;
+case|case
+literal|7
+case|:
+name|auth
+operator|=
+name|readString
 argument_list|(
 name|in
 argument_list|)

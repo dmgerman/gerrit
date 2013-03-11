@@ -128,10 +128,10 @@ specifier|public
 name|AccountDiffPreference
 name|accountDiffPref
 decl_stmt|;
-DECL|field|authorization
+DECL|field|xGerritAuth
 specifier|public
 name|String
-name|authorization
+name|xGerritAuth
 decl_stmt|;
 DECL|field|config
 specifier|public
