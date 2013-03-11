@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.git.ssh
+DECL|package|com.google.gerrit.acceptance.git
 package|package
 name|com
 operator|.
@@ -63,8 +63,6 @@ operator|.
 name|acceptance
 operator|.
 name|git
-operator|.
-name|ssh
 package|;
 end_package
 
