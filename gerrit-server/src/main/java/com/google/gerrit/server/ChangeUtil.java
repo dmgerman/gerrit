@@ -2113,7 +2113,7 @@ try|try
 block|{
 name|commitValidators
 operator|.
-name|validateForRevertCommits
+name|validateForGerritCommits
 argument_list|(
 name|commitReceivedEvent
 argument_list|)

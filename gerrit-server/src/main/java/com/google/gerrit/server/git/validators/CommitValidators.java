@@ -919,13 +919,13 @@ return|return
 name|messages
 return|;
 block|}
-DECL|method|validateForRevertCommits ( CommitReceivedEvent receiveEvent)
+DECL|method|validateForGerritCommits ( CommitReceivedEvent receiveEvent)
 specifier|public
 name|List
 argument_list|<
 name|CommitValidationMessage
 argument_list|>
-name|validateForRevertCommits
+name|validateForGerritCommits
 parameter_list|(
 name|CommitReceivedEvent
 name|receiveEvent
