@@ -140,6 +140,16 @@ name|Inject
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 DECL|class|ProjectJson
 specifier|public
@@ -292,6 +302,15 @@ decl_stmt|;
 DECL|field|description
 name|String
 name|description
+decl_stmt|;
+DECL|field|branches
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|branches
 decl_stmt|;
 DECL|method|finish ()
 name|void
