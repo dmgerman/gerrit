@@ -4687,7 +4687,7 @@ case|case
 name|PATH_CONFLICT
 case|:
 case|case
-name|CRISS_CROSS_MERGE
+name|MANUAL_RECURSIVE_MERGE
 case|:
 case|case
 name|CANNOT_CHERRY_PICK_ROOT
