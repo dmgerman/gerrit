@@ -340,23 +340,14 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil (ReviewDb db, LabelTypes labelTypes)
+DECL|method|ApprovalsUtil (ReviewDb db)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
 name|ReviewDb
 name|db
-parameter_list|,
-name|LabelTypes
-name|labelTypes
 parameter_list|)
 block|{
 name|this
@@ -364,12 +355,6 @@ operator|.
 name|db
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
 expr_stmt|;
 block|}
 comment|/**    * Resync the changeOpen status which is cached in the approvals table for    * performance reasons    */
@@ -436,7 +421,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Moves the PatchSetApprovals to the specified PatchSet on the change from    * the prior PatchSet, while keeping the vetos.    *    * @param db database connection to use for updates.    * @param dest PatchSet to copy to    * @throws OrmException    * @return List<PatchSetApproval> The previous approvals    */
-DECL|method|copyVetosToPatchSet (ReviewDb db, PatchSet.Id dest)
+DECL|method|copyVetosToPatchSet (ReviewDb db, LabelTypes labelTypes, PatchSet.Id dest)
 specifier|public
 name|List
 argument_list|<
@@ -446,6 +431,9 @@ name|copyVetosToPatchSet
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|PatchSet
 operator|.
@@ -618,13 +606,16 @@ return|return
 name|patchSetApprovals
 return|;
 block|}
-DECL|method|addReviewers (ReviewDb db, Change change, PatchSet ps, PatchSetInfo info, Set<Id> wantReviewers, Set<Account.Id> existingReviewers)
+DECL|method|addReviewers (ReviewDb db, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Set<Id> wantReviewers, Set<Account.Id> existingReviewers)
 specifier|public
 name|void
 name|addReviewers
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 name|Change
 name|change

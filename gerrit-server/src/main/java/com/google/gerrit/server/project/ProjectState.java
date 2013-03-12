@@ -166,6 +166,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|LabelTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|Permission
 import|;
 end_import
@@ -600,6 +616,12 @@ specifier|final
 name|RulesCache
 name|rulesCache
 decl_stmt|;
+DECL|field|labelTypes
+specifier|private
+specifier|final
+name|LabelTypes
+name|labelTypes
+decl_stmt|;
 DECL|field|config
 specifier|private
 specifier|final
@@ -650,7 +672,7 @@ name|capabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final LabelTypes labelTypes, @Assisted final ProjectConfig config)
 specifier|protected
 name|ProjectState
 parameter_list|(
@@ -681,6 +703,10 @@ parameter_list|,
 specifier|final
 name|RulesCache
 name|rulesCache
+parameter_list|,
+specifier|final
+name|LabelTypes
+name|labelTypes
 parameter_list|,
 annotation|@
 name|Assisted
@@ -768,6 +794,12 @@ argument_list|)
 argument_list|)
 else|:
 literal|null
+expr_stmt|;
+name|this
+operator|.
+name|labelTypes
+operator|=
+name|labelTypes
 expr_stmt|;
 if|if
 condition|(
@@ -1741,6 +1773,16 @@ return|;
 block|}
 block|}
 argument_list|)
+return|;
+block|}
+DECL|method|getLabelTypes ()
+specifier|public
+name|LabelTypes
+name|getLabelTypes
+parameter_list|()
+block|{
+return|return
+name|labelTypes
 return|;
 block|}
 DECL|method|getInheritableBoolean (Function<Project, InheritableBoolean> func)

@@ -94,22 +94,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|LabelTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|LabelValue
 import|;
 end_import
@@ -359,12 +343,6 @@ name|all
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|userFactory
 specifier|private
 specifier|final
@@ -433,13 +411,9 @@ name|change
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FunctionState (final LabelTypes labelTypes, final IdentifiedUser.GenericFactory userFactory, @Assisted final ChangeControl c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
+DECL|method|FunctionState (final IdentifiedUser.GenericFactory userFactory, @Assisted final ChangeControl c, @Assisted final PatchSet.Id psId, @Assisted final Collection<PatchSetApproval> all)
 name|FunctionState
 parameter_list|(
-specifier|final
-name|LabelTypes
-name|labelTypes
-parameter_list|,
 specifier|final
 name|IdentifiedUser
 operator|.
@@ -470,12 +444,6 @@ argument_list|>
 name|all
 parameter_list|)
 block|{
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
-expr_stmt|;
 name|this
 operator|.
 name|userFactory
@@ -553,7 +521,10 @@ expr_stmt|;
 name|LabelType
 name|lt
 init|=
-name|labelTypes
+name|c
+operator|.
+name|getLabelTypes
+argument_list|()
 operator|.
 name|byId
 argument_list|(
@@ -607,7 +578,10 @@ name|getLabelTypes
 parameter_list|()
 block|{
 return|return
-name|labelTypes
+name|callerChangeControl
+operator|.
+name|getLabelTypes
+argument_list|()
 operator|.
 name|getLabelTypes
 argument_list|()

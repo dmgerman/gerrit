@@ -665,12 +665,6 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|patchListCache
 specifier|private
 specifier|final
@@ -700,7 +694,7 @@ name|myIdent
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, LabelTypes labelTypes, final PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent)
+DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -716,10 +710,6 @@ name|String
 argument_list|>
 name|urlProvider
 parameter_list|,
-name|LabelTypes
-name|labelTypes
-parameter_list|,
-specifier|final
 name|PatchSetInfoFactory
 name|psif
 parameter_list|,
@@ -749,12 +739,6 @@ operator|.
 name|urlProvider
 operator|=
 name|urlProvider
-expr_stmt|;
-name|this
-operator|.
-name|labelTypes
-operator|=
-name|labelTypes
 expr_stmt|;
 name|this
 operator|.
@@ -1765,7 +1749,7 @@ operator|=
 name|commitMessage
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ChangeAttribute a, Collection<PatchSet> ps)
+DECL|method|addPatchSets (ChangeAttribute a, Collection<PatchSet> ps, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
@@ -1778,6 +1762,9 @@ argument_list|<
 name|PatchSet
 argument_list|>
 name|ps
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 name|addPatchSets
@@ -1791,10 +1778,12 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id,Collection<PatchSetApproval>> approvals)
+DECL|method|addPatchSets (ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
@@ -1820,6 +1809,9 @@ name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|approvals
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 name|addPatchSets
@@ -1833,10 +1825,12 @@ argument_list|,
 literal|false
 argument_list|,
 literal|null
+argument_list|,
+name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPatchSets (ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id,Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change)
+DECL|method|addPatchSets (ChangeAttribute ca, Collection<PatchSet> ps, Map<PatchSet.Id, Collection<PatchSetApproval>> approvals, boolean includeFiles, Change change, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addPatchSets
@@ -1868,6 +1862,9 @@ name|includeFiles
 parameter_list|,
 name|Change
 name|change
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 if|if
@@ -1928,6 +1925,8 @@ name|getId
 argument_list|()
 argument_list|,
 name|approvals
+argument_list|,
+name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
@@ -2663,7 +2662,7 @@ return|return
 name|p
 return|;
 block|}
-DECL|method|addApprovals (PatchSetAttribute p, PatchSet.Id id, Map<PatchSet.Id,Collection<PatchSetApproval>> all)
+DECL|method|addApprovals (PatchSetAttribute p, PatchSet.Id id, Map<PatchSet.Id, Collection<PatchSetApproval>> all, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addApprovals
@@ -2688,6 +2687,9 @@ name|PatchSetApproval
 argument_list|>
 argument_list|>
 name|all
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 name|Collection
@@ -2715,11 +2717,13 @@ argument_list|(
 name|p
 argument_list|,
 name|list
+argument_list|,
+name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addApprovals (PatchSetAttribute p, Collection<PatchSetApproval> list)
+DECL|method|addApprovals (PatchSetAttribute p, Collection<PatchSetApproval> list, LabelTypes labelTypes)
 specifier|public
 name|void
 name|addApprovals
@@ -2732,6 +2736,9 @@ argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|list
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 if|if
@@ -2786,6 +2793,8 @@ argument_list|(
 name|asApprovalAttribute
 argument_list|(
 name|a
+argument_list|,
+name|labelTypes
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2936,14 +2945,17 @@ return|return
 name|who
 return|;
 block|}
-comment|/**    * Create an ApprovalAttribute for the given approval suitable for    * serialization to JSON.    *    * @param approval    * @return object suitable for serialization to JSON    */
-DECL|method|asApprovalAttribute (PatchSetApproval approval)
+comment|/**    * Create an ApprovalAttribute for the given approval suitable for    * serialization to JSON.    *    * @param approval    * @param labelTypes label types for the containing project    * @return object suitable for serialization to JSON    */
+DECL|method|asApprovalAttribute (PatchSetApproval approval, LabelTypes labelTypes)
 specifier|public
 name|ApprovalAttribute
 name|asApprovalAttribute
 parameter_list|(
 name|PatchSetApproval
 name|approval
+parameter_list|,
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 name|ApprovalAttribute

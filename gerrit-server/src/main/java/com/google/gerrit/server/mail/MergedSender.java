@@ -204,7 +204,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
+name|PatchSetApproval
 import|;
 end_import
 
@@ -216,11 +216,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|project
 operator|.
-name|PatchSetApproval
+name|ChangeControl
 import|;
 end_import
 
@@ -282,12 +282,12 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change change)
+DECL|method|create (ChangeControl change)
 specifier|public
 name|MergedSender
 name|create
 parameter_list|(
-name|Change
+name|ChangeControl
 name|change
 parameter_list|)
 function_decl|;
@@ -300,19 +300,16 @@ name|labelTypes
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergedSender (EmailArguments ea, LabelTypes lt, @Assisted Change c)
+DECL|method|MergedSender (EmailArguments ea, @Assisted ChangeControl c)
 specifier|public
 name|MergedSender
 parameter_list|(
 name|EmailArguments
 name|ea
 parameter_list|,
-name|LabelTypes
-name|lt
-parameter_list|,
 annotation|@
 name|Assisted
-name|Change
+name|ChangeControl
 name|c
 parameter_list|)
 block|{
@@ -321,13 +318,19 @@ argument_list|(
 name|ea
 argument_list|,
 name|c
+operator|.
+name|getChange
+argument_list|()
 argument_list|,
 literal|"merged"
 argument_list|)
 expr_stmt|;
 name|labelTypes
 operator|=
-name|lt
+name|c
+operator|.
+name|getLabelTypes
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

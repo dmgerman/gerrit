@@ -128,6 +128,22 @@ name|common
 operator|.
 name|data
 operator|.
+name|LabelTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
 name|ReviewResult
 import|;
 end_import
@@ -900,6 +916,15 @@ name|changeId
 argument_list|)
 decl_stmt|;
 specifier|final
+name|LabelTypes
+name|labelTypes
+init|=
+name|control
+operator|.
+name|getLabelTypes
+argument_list|()
+decl_stmt|;
+specifier|final
 name|PatchSet
 name|patch
 init|=
@@ -1165,6 +1190,8 @@ argument_list|,
 name|updatedChange
 argument_list|,
 name|updatedPatchSet
+argument_list|,
+name|labelTypes
 argument_list|)
 expr_stmt|;
 block|}
@@ -1173,7 +1200,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|sendNotifications (final boolean newChange, final IdentifiedUser currentUser, final Change updatedChange, final PatchSet updatedPatchSet)
+DECL|method|sendNotifications (final boolean newChange, final IdentifiedUser currentUser, final Change updatedChange, final PatchSet updatedPatchSet, final LabelTypes labelTypes)
 specifier|private
 name|void
 name|sendNotifications
@@ -1193,6 +1220,10 @@ parameter_list|,
 specifier|final
 name|PatchSet
 name|updatedPatchSet
+parameter_list|,
+specifier|final
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1332,6 +1363,8 @@ name|addReviewers
 argument_list|(
 name|db
 argument_list|,
+name|labelTypes
+argument_list|,
 name|updatedChange
 argument_list|,
 name|updatedPatchSet
@@ -1469,6 +1502,8 @@ operator|.
 name|addReviewers
 argument_list|(
 name|db
+argument_list|,
+name|labelTypes
 argument_list|,
 name|updatedChange
 argument_list|,
