@@ -92,7 +92,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|MethodNotAllowedException
 import|;
 end_import
 
@@ -149,7 +149,7 @@ name|GroupResource
 name|resource
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|MethodNotAllowedException
 block|{
 name|AccountGroup
 name|group
@@ -168,7 +168,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ResourceNotFoundException
+name|MethodNotAllowedException
 argument_list|()
 throw|;
 block|}
