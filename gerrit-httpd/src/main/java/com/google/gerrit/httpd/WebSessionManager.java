@@ -235,20 +235,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
-operator|.
-name|MINUTES
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -574,10 +560,6 @@ name|cache
 expr_stmt|;
 name|sessionMaxAgeMillis
 operator|=
-name|MINUTES
-operator|.
-name|toMillis
-argument_list|(
 name|ConfigUtil
 operator|.
 name|getTimeUnit
@@ -592,8 +574,7 @@ literal|"maxAge"
 argument_list|,
 name|MAX_AGE_MINUTES
 argument_list|,
-name|MINUTES
-argument_list|)
+name|MILLISECONDS
 argument_list|)
 expr_stmt|;
 if|if
