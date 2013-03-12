@@ -74,22 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|LabelTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -468,15 +452,6 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|urlProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
-name|urlProvider
-decl_stmt|;
 DECL|field|gitRefUpdated
 specifier|private
 specifier|final
@@ -495,9 +470,17 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|mergeUtilFactory
+specifier|private
+specifier|final
+name|MergeUtil
+operator|.
+name|Factory
+name|mergeUtilFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final MergeUtil.Factory mergeUtilFactory)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -538,6 +521,12 @@ parameter_list|,
 specifier|final
 name|ProjectCache
 name|projectCache
+parameter_list|,
+specifier|final
+name|MergeUtil
+operator|.
+name|Factory
+name|mergeUtilFactory
 parameter_list|)
 block|{
 name|this
@@ -560,12 +549,6 @@ name|patchSetInfoFactory
 expr_stmt|;
 name|this
 operator|.
-name|urlProvider
-operator|=
-name|urlProvider
-expr_stmt|;
-name|this
-operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
@@ -581,9 +564,15 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|mergeUtilFactory
+operator|=
+name|mergeUtilFactory
 expr_stmt|;
 block|}
-DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final boolean useContentMerge)
+DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch)
 specifier|public
 name|SubmitStrategy
 name|create
@@ -624,16 +613,20 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
-parameter_list|,
-specifier|final
-name|boolean
-name|useContentMerge
 parameter_list|)
 throws|throws
 name|MergeException
 throws|,
 name|NoSuchProjectException
 block|{
+name|ProjectState
+name|project
+init|=
+name|getProject
+argument_list|(
+name|destBranch
+argument_list|)
+decl_stmt|;
 specifier|final
 name|SubmitStrategy
 operator|.
@@ -663,7 +656,12 @@ name|alreadyAccepted
 argument_list|,
 name|destBranch
 argument_list|,
-name|useContentMerge
+name|mergeUtilFactory
+operator|.
+name|create
+argument_list|(
+name|project
+argument_list|)
 argument_list|)
 decl_stmt|;
 switch|switch
@@ -681,13 +679,6 @@ argument_list|(
 name|args
 argument_list|,
 name|patchSetInfoFactory
-argument_list|,
-name|urlProvider
-argument_list|,
-name|getLabelTypes
-argument_list|(
-name|destBranch
-argument_list|)
 argument_list|,
 name|gitRefUpdated
 argument_list|)
@@ -759,10 +750,10 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getLabelTypes (Branch.NameKey branch)
+DECL|method|getProject (Branch.NameKey branch)
 specifier|private
-name|LabelTypes
-name|getLabelTypes
+name|ProjectState
+name|getProject
 parameter_list|(
 name|Branch
 operator|.
@@ -806,9 +797,6 @@ throw|;
 block|}
 return|return
 name|p
-operator|.
-name|getLabelTypes
-argument_list|()
 return|;
 block|}
 block|}

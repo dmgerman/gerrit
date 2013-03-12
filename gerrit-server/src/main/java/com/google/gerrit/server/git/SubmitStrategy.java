@@ -382,11 +382,11 @@ operator|.
 name|NameKey
 name|destBranch
 decl_stmt|;
-DECL|field|useContentMerge
+DECL|field|mergeUtil
 specifier|protected
 specifier|final
-name|boolean
-name|useContentMerge
+name|MergeUtil
+name|mergeUtil
 decl_stmt|;
 DECL|field|mergeSorter
 specifier|protected
@@ -394,7 +394,7 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final boolean useContentMerge)
+DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final MergeUtil mergeUtil)
 name|Arguments
 parameter_list|(
 specifier|final
@@ -441,8 +441,8 @@ name|NameKey
 name|destBranch
 parameter_list|,
 specifier|final
-name|boolean
-name|useContentMerge
+name|MergeUtil
+name|mergeUtil
 parameter_list|)
 block|{
 name|this
@@ -501,9 +501,9 @@ name|destBranch
 expr_stmt|;
 name|this
 operator|.
-name|useContentMerge
+name|mergeUtil
 operator|=
-name|useContentMerge
+name|mergeUtil
 expr_stmt|;
 name|this
 operator|.

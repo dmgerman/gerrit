@@ -800,9 +800,17 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
+DECL|field|mergeUtilFactory
+specifier|private
+specifier|final
+name|MergeUtil
+operator|.
+name|Factory
+name|mergeUtilFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final ApprovalsUtil approvalsUtil)
+DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory)
 name|RebaseChange
 parameter_list|(
 specifier|final
@@ -846,6 +854,12 @@ parameter_list|,
 specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+specifier|final
+name|MergeUtil
+operator|.
+name|Factory
+name|mergeUtilFactory
 parameter_list|)
 block|{
 name|this
@@ -901,6 +915,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|mergeUtilFactory
+operator|=
+name|mergeUtilFactory
 expr_stmt|;
 block|}
 comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
@@ -1112,7 +1132,20 @@ name|uploader
 argument_list|,
 name|baseCommit
 argument_list|,
+name|mergeUtilFactory
+operator|.
+name|create
+argument_list|(
+name|changeControl
+operator|.
+name|getProjectControl
+argument_list|()
+operator|.
+name|getProjectState
+argument_list|()
+argument_list|,
 literal|true
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1739,8 +1772,8 @@ return|return
 name|baseRev
 return|;
 block|}
-comment|/**    * Rebases the change of the given patch set on the given base commit.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks is NOT done for the creation of    * the new patch set.    *    * @param git the repository    * @param revWalk the RevWalk    * @param inserter the object inserter    * @param patchSetId the id of the patch set    * @param chg the change that should be rebased    * @param uploader the user that creates the rebased patch set    * @param baseCommit the commit that should be the new base    * @param useContentMerge flag that decides if content merge should be done    * @return the new patch set which is based on the given base commit    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
-DECL|method|rebase (final Repository git, final RevWalk revWalk, final ObjectInserter inserter, final PatchSet.Id patchSetId, final Change chg, final Account.Id uploader, final RevCommit baseCommit, final boolean useContentMerge)
+comment|/**    * Rebases the change of the given patch set on the given base commit.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks is NOT done for the creation of    * the new patch set.    *    * @param git the repository    * @param revWalk the RevWalk    * @param inserter the object inserter    * @param patchSetId the id of the patch set    * @param chg the change that should be rebased    * @param uploader the user that creates the rebased patch set    * @param baseCommit the commit that should be the new base    * @param mergeUtil merge utilities for the destination project    * @return the new patch set which is based on the given base commit    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
+DECL|method|rebase (final Repository git, final RevWalk revWalk, final ObjectInserter inserter, final PatchSet.Id patchSetId, final Change chg, final Account.Id uploader, final RevCommit baseCommit, final MergeUtil mergeUtil)
 specifier|public
 name|PatchSet
 name|rebase
@@ -1778,8 +1811,8 @@ name|RevCommit
 name|baseCommit
 parameter_list|,
 specifier|final
-name|boolean
-name|useContentMerge
+name|MergeUtil
+name|mergeUtil
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -1849,7 +1882,7 @@ argument_list|)
 argument_list|,
 name|baseCommit
 argument_list|,
-name|useContentMerge
+name|mergeUtil
 argument_list|,
 name|myIdent
 argument_list|)
@@ -2414,10 +2447,9 @@ return|return
 name|newPatchSet
 return|;
 block|}
-comment|/**    * Rebases a commit.    *    * @param git repository to find commits in    * @param inserter inserter to handle new trees and blobs    * @param original The commit to rebase    * @param base Base to rebase against    * @param useContentMerge flag to decide if content merge should be done    * @param committerIdent committer identity    * @return the id of the rebased commit    * @throws IOException Merged failed    * @throws PathConflictException the rebase failed due to a path conflict    */
-DECL|method|rebaseCommit (final Repository git, final ObjectInserter inserter, final RevCommit original, final RevCommit base, final boolean useContentMerge, final PersonIdent committerIdent)
+comment|/**    * Rebases a commit.    *    * @param git repository to find commits in    * @param inserter inserter to handle new trees and blobs    * @param original The commit to rebase    * @param base Base to rebase against    * @param mergeUtil merge utilities for the destination project    * @param committerIdent committer identity    * @return the id of the rebased commit    * @throws IOException Merged failed    * @throws PathConflictException the rebase failed due to a path conflict    */
+DECL|method|rebaseCommit (final Repository git, final ObjectInserter inserter, final RevCommit original, final RevCommit base, final MergeUtil mergeUtil, final PersonIdent committerIdent)
 specifier|private
-specifier|static
 name|ObjectId
 name|rebaseCommit
 parameter_list|(
@@ -2438,8 +2470,8 @@ name|RevCommit
 name|base
 parameter_list|,
 specifier|final
-name|boolean
-name|useContentMerge
+name|MergeUtil
+name|mergeUtil
 parameter_list|,
 specifier|final
 name|PersonIdent
@@ -2483,15 +2515,13 @@ specifier|final
 name|ThreeWayMerger
 name|merger
 init|=
-name|MergeUtil
+name|mergeUtil
 operator|.
 name|newThreeWayMerger
 argument_list|(
 name|git
 argument_list|,
 name|inserter
-argument_list|,
-name|useContentMerge
 argument_list|)
 decl_stmt|;
 name|merger

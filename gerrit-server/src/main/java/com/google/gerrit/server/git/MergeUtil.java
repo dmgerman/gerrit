@@ -90,22 +90,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|LabelTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -214,6 +198,38 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -231,6 +247,34 @@ operator|.
 name|inject
 operator|.
 name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|AssistedInject
 import|;
 end_import
 
@@ -680,6 +724,16 @@ name|TimeZone
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 DECL|class|MergeUtil
 specifier|public
@@ -702,6 +756,32 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|interface|Factory
+specifier|public
+specifier|static
+interface|interface
+name|Factory
+block|{
+DECL|method|create (ProjectState project)
+name|MergeUtil
+name|create
+parameter_list|(
+name|ProjectState
+name|project
+parameter_list|)
+function_decl|;
+DECL|method|create (ProjectState project, boolean useContentMerge)
+name|MergeUtil
+name|create
+parameter_list|(
+name|ProjectState
+name|project
+parameter_list|,
+name|boolean
+name|useContentMerge
+parameter_list|)
+function_decl|;
+block|}
 DECL|field|R_HEADS_MASTER
 specifier|private
 specifier|static
@@ -779,9 +859,171 @@ argument_list|(
 literal|"Change-Id"
 argument_list|)
 decl_stmt|;
+DECL|field|db
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+decl_stmt|;
+DECL|field|identifiedUserFactory
+specifier|private
+specifier|final
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|identifiedUserFactory
+decl_stmt|;
+DECL|field|urlProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|String
+argument_list|>
+name|urlProvider
+decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|ProjectState
+name|project
+decl_stmt|;
+DECL|field|useContentMerge
+specifier|private
+specifier|final
+name|boolean
+name|useContentMerge
+decl_stmt|;
+annotation|@
+name|AssistedInject
+DECL|method|MergeUtil (final Provider<ReviewDb> db, final IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, @Assisted final ProjectState project)
+name|MergeUtil
+parameter_list|(
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+parameter_list|,
+specifier|final
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|identifiedUserFactory
+parameter_list|,
+annotation|@
+name|CanonicalWebUrl
+annotation|@
+name|Nullable
+specifier|final
+name|Provider
+argument_list|<
+name|String
+argument_list|>
+name|urlProvider
+parameter_list|,
+annotation|@
+name|Assisted
+specifier|final
+name|ProjectState
+name|project
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|db
+argument_list|,
+name|identifiedUserFactory
+argument_list|,
+name|urlProvider
+argument_list|,
+name|project
+argument_list|,
+name|project
+operator|.
+name|isUseContentMerge
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|AssistedInject
+DECL|method|MergeUtil (final Provider<ReviewDb> db, final IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, @Assisted final ProjectState project, @Assisted boolean useContentMerge)
+name|MergeUtil
+parameter_list|(
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+parameter_list|,
+specifier|final
+name|IdentifiedUser
+operator|.
+name|GenericFactory
+name|identifiedUserFactory
+parameter_list|,
+annotation|@
+name|CanonicalWebUrl
+annotation|@
+name|Nullable
+specifier|final
+name|Provider
+argument_list|<
+name|String
+argument_list|>
+name|urlProvider
+parameter_list|,
+annotation|@
+name|Assisted
+specifier|final
+name|ProjectState
+name|project
+parameter_list|,
+annotation|@
+name|Assisted
+name|boolean
+name|useContentMerge
+parameter_list|)
+block|{
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
+name|identifiedUserFactory
+operator|=
+name|identifiedUserFactory
+expr_stmt|;
+name|this
+operator|.
+name|urlProvider
+operator|=
+name|urlProvider
+expr_stmt|;
+name|this
+operator|.
+name|project
+operator|=
+name|project
+expr_stmt|;
+name|this
+operator|.
+name|useContentMerge
+operator|=
+name|useContentMerge
+expr_stmt|;
+block|}
 DECL|method|getFirstFastForward ( final CodeReviewCommit mergeTip, final RevWalk rw, final List<CodeReviewCommit> toMerge)
 specifier|public
-specifier|static
 name|CodeReviewCommit
 name|getFirstFastForward
 parameter_list|(
@@ -884,7 +1126,6 @@ return|;
 block|}
 DECL|method|reduceToMinimalMerge (final MergeSorter mergeSorter, final List<CodeReviewCommit> toSort)
 specifier|public
-specifier|static
 name|void
 name|reduceToMinimalMerge
 parameter_list|(
@@ -990,6 +1231,30 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getSubmitter (final PatchSet.Id c)
+specifier|public
+name|PatchSetApproval
+name|getSubmitter
+parameter_list|(
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|c
+parameter_list|)
+block|{
+return|return
+name|getSubmitter
+argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|c
+argument_list|)
+return|;
 block|}
 DECL|method|getSubmitter (final ReviewDb reviewDb, final PatchSet.Id c)
 specifier|public
@@ -1116,9 +1381,8 @@ return|return
 name|submitter
 return|;
 block|}
-DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, CodeReviewCommit mergeTip, CodeReviewCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, RevWalk rw, Boolean useContentMerge)
+DECL|method|createCherryPickFromCommit (Repository repo, ObjectInserter inserter, CodeReviewCommit mergeTip, CodeReviewCommit originalCommit, PersonIdent cherryPickCommitterIdent, String commitMsg, RevWalk rw)
 specifier|public
-specifier|static
 name|CodeReviewCommit
 name|createCherryPickFromCommit
 parameter_list|(
@@ -1142,9 +1406,6 @@ name|commitMsg
 parameter_list|,
 name|RevWalk
 name|rw
-parameter_list|,
-name|Boolean
-name|useContentMerge
 parameter_list|)
 throws|throws
 name|MissingObjectException
@@ -1162,8 +1423,6 @@ argument_list|(
 name|repo
 argument_list|,
 name|inserter
-argument_list|,
-name|useContentMerge
 argument_list|)
 decl_stmt|;
 name|m
@@ -1275,36 +1534,14 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|createCherryPickCommitMessage (final CodeReviewCommit n, final LabelTypes labelTypes, final Provider<String> urlProvider, final ReviewDb db, final IdentifiedUser.GenericFactory identifiedUserFactory)
+DECL|method|createCherryPickCommitMessage (final CodeReviewCommit n)
 specifier|public
-specifier|static
 name|String
 name|createCherryPickCommitMessage
 parameter_list|(
 specifier|final
 name|CodeReviewCommit
 name|n
-parameter_list|,
-specifier|final
-name|LabelTypes
-name|labelTypes
-parameter_list|,
-specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
-name|urlProvider
-parameter_list|,
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|,
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
 parameter_list|)
 block|{
 specifier|final
@@ -1553,8 +1790,6 @@ name|a
 range|:
 name|getApprovalsForCommit
 argument_list|(
-name|db
-argument_list|,
 name|n
 argument_list|)
 control|)
@@ -1830,7 +2065,10 @@ specifier|final
 name|LabelType
 name|lt
 init|=
-name|labelTypes
+name|project
+operator|.
+name|getLabelTypes
+argument_list|()
 operator|.
 name|byId
 argument_list|(
@@ -1918,19 +2156,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|getApprovalsForCommit (final ReviewDb db, final CodeReviewCommit n)
+DECL|method|getApprovalsForCommit (final CodeReviewCommit n)
 specifier|public
-specifier|static
 name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|getApprovalsForCommit
 parameter_list|(
-specifier|final
-name|ReviewDb
-name|db
-parameter_list|,
 specifier|final
 name|CodeReviewCommit
 name|n
@@ -1945,6 +2178,9 @@ argument_list|>
 name|approvalList
 init|=
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchSetApprovals
 argument_list|()
@@ -2149,22 +2385,11 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|computeMergeCommitAuthor (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final RevWalk rw, final List<CodeReviewCommit> codeReviewCommits)
+DECL|method|computeMergeCommitAuthor (final PersonIdent myIdent, final RevWalk rw, final List<CodeReviewCommit> codeReviewCommits)
 specifier|public
-specifier|static
 name|PersonIdent
 name|computeMergeCommitAuthor
 parameter_list|(
-specifier|final
-name|ReviewDb
-name|reviewDb
-parameter_list|,
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-parameter_list|,
 specifier|final
 name|PersonIdent
 name|myIdent
@@ -2200,8 +2425,6 @@ name|s
 init|=
 name|getSubmitter
 argument_list|(
-name|reviewDb
-argument_list|,
 name|c
 operator|.
 name|patchsetId
@@ -2428,9 +2651,8 @@ return|return
 name|authorIdent
 return|;
 block|}
-DECL|method|canMerge (final MergeSorter mergeSorter, final Repository repo, final boolean useContentMerge, final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|canMerge (final MergeSorter mergeSorter, final Repository repo, final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
 specifier|public
-specifier|static
 name|boolean
 name|canMerge
 parameter_list|(
@@ -2441,10 +2663,6 @@ parameter_list|,
 specifier|final
 name|Repository
 name|repo
-parameter_list|,
-specifier|final
-name|boolean
-name|useContentMerge
 parameter_list|,
 specifier|final
 name|CodeReviewCommit
@@ -2481,8 +2699,6 @@ name|repo
 argument_list|,
 name|createDryRunInserter
 argument_list|()
-argument_list|,
-name|useContentMerge
 argument_list|)
 decl_stmt|;
 try|try
@@ -2537,7 +2753,6 @@ block|}
 block|}
 DECL|method|canFastForward (final MergeSorter mergeSorter, final CodeReviewCommit mergeTip, final RevWalk rw, final CodeReviewCommit toMerge)
 specifier|public
-specifier|static
 name|boolean
 name|canFastForward
 parameter_list|(
@@ -2608,9 +2823,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|canCherryPick (final MergeSorter mergeSorter, final Repository repo, final boolean useContentMerge, final CodeReviewCommit mergeTip, final RevWalk rw, final CodeReviewCommit toMerge)
+DECL|method|canCherryPick (final MergeSorter mergeSorter, final Repository repo, final CodeReviewCommit mergeTip, final RevWalk rw, final CodeReviewCommit toMerge)
 specifier|public
-specifier|static
 name|boolean
 name|canCherryPick
 parameter_list|(
@@ -2621,10 +2835,6 @@ parameter_list|,
 specifier|final
 name|Repository
 name|repo
-parameter_list|,
-specifier|final
-name|boolean
-name|useContentMerge
 parameter_list|,
 specifier|final
 name|CodeReviewCommit
@@ -2697,8 +2907,6 @@ name|repo
 argument_list|,
 name|createDryRunInserter
 argument_list|()
-argument_list|,
-name|useContentMerge
 argument_list|)
 decl_stmt|;
 name|m
@@ -2770,8 +2978,6 @@ name|mergeSorter
 argument_list|,
 name|repo
 argument_list|,
-name|useContentMerge
-argument_list|,
 name|mergeTip
 argument_list|,
 name|toMerge
@@ -2780,7 +2986,6 @@ return|;
 block|}
 DECL|method|hasMissingDependencies (final MergeSorter mergeSorter, final CodeReviewCommit toMerge)
 specifier|public
-specifier|static
 name|boolean
 name|hasMissingDependencies
 parameter_list|(
@@ -2836,7 +3041,6 @@ block|}
 block|}
 DECL|method|createDryRunInserter ()
 specifier|public
-specifier|static
 name|ObjectInserter
 name|createDryRunInserter
 parameter_list|()
@@ -2950,22 +3154,11 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|mergeOneCommit (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final boolean useContentMerge, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final CodeReviewCommit n)
+DECL|method|mergeOneCommit (final PersonIdent myIdent, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final CodeReviewCommit n)
 specifier|public
-specifier|static
 name|CodeReviewCommit
 name|mergeOneCommit
 parameter_list|(
-specifier|final
-name|ReviewDb
-name|reviewDb
-parameter_list|,
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-parameter_list|,
 specifier|final
 name|PersonIdent
 name|myIdent
@@ -2985,10 +3178,6 @@ parameter_list|,
 specifier|final
 name|RevFlag
 name|canMergeFlag
-parameter_list|,
-specifier|final
-name|boolean
-name|useContentMerge
 parameter_list|,
 specifier|final
 name|Branch
@@ -3016,8 +3205,6 @@ argument_list|(
 name|repo
 argument_list|,
 name|inserter
-argument_list|,
-name|useContentMerge
 argument_list|)
 decl_stmt|;
 try|try
@@ -3042,10 +3229,6 @@ block|{
 return|return
 name|writeMergeCommit
 argument_list|(
-name|reviewDb
-argument_list|,
-name|identifiedUserFactory
-argument_list|,
 name|myIdent
 argument_list|,
 name|rw
@@ -3300,22 +3483,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|writeMergeCommit (final ReviewDb reviewDb, final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final ObjectId treeId, final CodeReviewCommit n)
+DECL|method|writeMergeCommit (final PersonIdent myIdent, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final ObjectId treeId, final CodeReviewCommit n)
 specifier|public
-specifier|static
 name|CodeReviewCommit
 name|writeMergeCommit
 parameter_list|(
-specifier|final
-name|ReviewDb
-name|reviewDb
-parameter_list|,
-specifier|final
-name|IdentifiedUser
-operator|.
-name|GenericFactory
-name|identifiedUserFactory
-parameter_list|,
 specifier|final
 name|PersonIdent
 name|myIdent
@@ -3651,10 +3823,6 @@ name|authorIdent
 init|=
 name|computeMergeCommitAuthor
 argument_list|(
-name|reviewDb
-argument_list|,
-name|identifiedUserFactory
-argument_list|,
 name|myIdent
 argument_list|,
 name|rw
@@ -3730,9 +3898,8 @@ block|}
 end_function
 
 begin_function
-DECL|method|newThreeWayMerger (final Repository repo, final ObjectInserter inserter, final boolean useContentMerge)
+DECL|method|newThreeWayMerger (final Repository repo, final ObjectInserter inserter)
 specifier|public
-specifier|static
 name|ThreeWayMerger
 name|newThreeWayMerger
 parameter_list|(
@@ -3743,10 +3910,6 @@ parameter_list|,
 specifier|final
 name|ObjectInserter
 name|inserter
-parameter_list|,
-specifier|final
-name|boolean
-name|useContentMerge
 parameter_list|)
 block|{
 name|ThreeWayMerger
@@ -3837,7 +4000,6 @@ end_function
 begin_function
 DECL|method|commit (final ObjectInserter inserter, final CommitBuilder mergeCommit)
 specifier|public
-specifier|static
 name|ObjectId
 name|commit
 parameter_list|(
@@ -3876,16 +4038,11 @@ block|}
 end_function
 
 begin_function
-DECL|method|markCleanMerges (final ReviewDb reviewDb, final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final Set<RevCommit> alreadyAccepted)
+DECL|method|markCleanMerges (final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final Set<RevCommit> alreadyAccepted)
 specifier|public
-specifier|static
 name|PatchSetApproval
 name|markCleanMerges
 parameter_list|(
-specifier|final
-name|ReviewDb
-name|reviewDb
-parameter_list|,
 specifier|final
 name|RevWalk
 name|rw
@@ -4028,8 +4185,6 @@ name|submitApproval
 operator|=
 name|getSubmitter
 argument_list|(
-name|reviewDb
-argument_list|,
 name|c
 operator|.
 name|patchsetId

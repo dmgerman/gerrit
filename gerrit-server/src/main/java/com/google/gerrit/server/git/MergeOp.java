@@ -2707,11 +2707,6 @@ name|branchTip
 argument_list|)
 argument_list|,
 name|destBranch
-argument_list|,
-name|destProject
-operator|.
-name|isUseContentMerge
-argument_list|()
 argument_list|)
 return|;
 block|}
