@@ -153,6 +153,11 @@ specifier|protected
 name|boolean
 name|canUpload
 decl_stmt|;
+DECL|field|labelTypes
+specifier|protected
+name|LabelTypes
+name|labelTypes
+decl_stmt|;
 DECL|method|ProjectAccess ()
 specifier|public
 name|ProjectAccess
@@ -426,6 +431,32 @@ operator|.
 name|canUpload
 operator|=
 name|canUpload
+expr_stmt|;
+block|}
+DECL|method|getLabelTypes ()
+specifier|public
+name|LabelTypes
+name|getLabelTypes
+parameter_list|()
+block|{
+return|return
+name|labelTypes
+return|;
+block|}
+DECL|method|setLabelTypes (LabelTypes labelTypes)
+specifier|public
+name|void
+name|setLabelTypes
+parameter_list|(
+name|LabelTypes
+name|labelTypes
+parameter_list|)
+block|{
+name|this
+operator|.
+name|labelTypes
+operator|=
+name|labelTypes
 expr_stmt|;
 block|}
 block|}

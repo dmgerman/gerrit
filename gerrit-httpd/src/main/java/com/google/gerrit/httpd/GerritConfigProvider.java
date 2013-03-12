@@ -76,22 +76,6 @@ name|common
 operator|.
 name|data
 operator|.
-name|LabelTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
 name|GerritConfig
 import|;
 end_import
@@ -474,12 +458,6 @@ specifier|final
 name|SshInfo
 name|sshInfo
 decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-specifier|final
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|emailSender
 specifier|private
 name|EmailSender
@@ -505,7 +483,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final LabelTypes at, final ContactStore cs, final ServletContext sc, final DownloadConfig dc, final @AnonymousCowardName String acn)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ContactStore cs, final ServletContext sc, final DownloadConfig dc, final @AnonymousCowardName String acn)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -533,10 +511,6 @@ parameter_list|,
 specifier|final
 name|SshInfo
 name|si
-parameter_list|,
-specifier|final
-name|LabelTypes
-name|at
 parameter_list|,
 specifier|final
 name|ContactStore
@@ -584,10 +558,6 @@ expr_stmt|;
 name|wildProject
 operator|=
 name|wp
-expr_stmt|;
-name|labelTypes
-operator|=
-name|at
 expr_stmt|;
 name|contactStore
 operator|=
@@ -909,13 +879,6 @@ operator|.
 name|setWildProject
 argument_list|(
 name|wildProject
-argument_list|)
-expr_stmt|;
-name|config
-operator|.
-name|setLabelTypes
-argument_list|(
-name|labelTypes
 argument_list|)
 expr_stmt|;
 name|config

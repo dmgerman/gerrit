@@ -331,11 +331,6 @@ operator|.
 name|NameKey
 name|wildProject
 decl_stmt|;
-DECL|field|labelTypes
-specifier|protected
-name|LabelTypes
-name|labelTypes
-decl_stmt|;
 DECL|field|editableAccountFields
 specifier|protected
 name|Set
@@ -855,31 +850,6 @@ block|{
 name|wildProject
 operator|=
 name|wp
-expr_stmt|;
-block|}
-DECL|method|getLabelTypes ()
-specifier|public
-name|LabelTypes
-name|getLabelTypes
-parameter_list|()
-block|{
-return|return
-name|labelTypes
-return|;
-block|}
-DECL|method|setLabelTypes (final LabelTypes at)
-specifier|public
-name|void
-name|setLabelTypes
-parameter_list|(
-specifier|final
-name|LabelTypes
-name|at
-parameter_list|)
-block|{
-name|labelTypes
-operator|=
-name|at
 expr_stmt|;
 block|}
 DECL|method|canEdit (final Account.FieldName f)

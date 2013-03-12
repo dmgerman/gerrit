@@ -1332,6 +1332,16 @@ name|isVisible
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|detail
+operator|.
+name|setLabelTypes
+argument_list|(
+name|pc
+operator|.
+name|getLabelTypes
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|detail
 return|;
