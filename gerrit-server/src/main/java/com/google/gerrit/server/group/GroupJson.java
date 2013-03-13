@@ -240,7 +240,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupCache
+name|GroupBackend
 import|;
 end_import
 
@@ -334,11 +334,11 @@ specifier|public
 class|class
 name|GroupJson
 block|{
-DECL|field|groupCache
+DECL|field|groupBackend
 specifier|private
 specifier|final
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 decl_stmt|;
 DECL|field|groupControlFactory
 specifier|private
@@ -376,11 +376,11 @@ name|options
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupJson (GroupCache groupCache, GroupControl.Factory groupControlFactory, Provider<ListMembers> listMembers, Provider<ListIncludedGroups> listIncludes)
+DECL|method|GroupJson (GroupBackend groupBackend, GroupControl.Factory groupControlFactory, Provider<ListMembers> listMembers, Provider<ListIncludedGroups> listIncludes)
 name|GroupJson
 parameter_list|(
-name|GroupCache
-name|groupCache
+name|GroupBackend
+name|groupBackend
 parameter_list|,
 name|GroupControl
 operator|.
@@ -402,9 +402,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|groupCache
+name|groupBackend
 operator|=
-name|groupCache
+name|groupBackend
 expr_stmt|;
 name|this
 operator|.
@@ -719,10 +719,12 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|AccountGroup
+name|GroupDescription
+operator|.
+name|Basic
 name|o
 init|=
-name|groupCache
+name|groupBackend
 operator|.
 name|get
 argument_list|(
