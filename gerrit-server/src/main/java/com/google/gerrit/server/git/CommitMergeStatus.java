@@ -139,10 +139,10 @@ literal|""
 argument_list|)
 block|,
 comment|/** */
-DECL|enumConstant|CRISS_CROSS_MERGE
-name|CRISS_CROSS_MERGE
+DECL|enumConstant|MANUAL_RECURSIVE_MERGE
+name|MANUAL_RECURSIVE_MERGE
 argument_list|(
-literal|"The change requires a recursive merge to resolve.\n"
+literal|"The change requires a local merge to resolve.\n"
 operator|+
 literal|"\n"
 operator|+
