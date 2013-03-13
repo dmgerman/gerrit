@@ -235,6 +235,20 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -572,7 +586,14 @@ name|CACHE_NAME
 argument_list|,
 literal|"maxAge"
 argument_list|,
+name|MILLISECONDS
+operator|.
+name|convert
+argument_list|(
 name|MAX_AGE_MINUTES
+argument_list|,
+name|MINUTES
+argument_list|)
 argument_list|,
 name|MILLISECONDS
 argument_list|)
@@ -581,8 +602,6 @@ if|if
 condition|(
 name|sessionMaxAgeMillis
 operator|<
-name|TimeUnit
-operator|.
 name|MINUTES
 operator|.
 name|toMillis
