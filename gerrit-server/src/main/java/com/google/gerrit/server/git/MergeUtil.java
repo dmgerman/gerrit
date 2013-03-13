@@ -218,6 +218,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectState
@@ -361,6 +377,20 @@ operator|.
 name|lib
 operator|.
 name|CommitBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -897,11 +927,22 @@ specifier|final
 name|boolean
 name|useContentMerge
 decl_stmt|;
+DECL|field|useRecursiveMerge
+specifier|private
+specifier|final
+name|boolean
+name|useRecursiveMerge
+decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil (final Provider<ReviewDb> db, final IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, @Assisted final ProjectState project)
+DECL|method|MergeUtil (@erritServerConfig Config serverConfig, final Provider<ReviewDb> db, final IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, @Assisted final ProjectState project)
 name|MergeUtil
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|serverConfig
+parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
@@ -935,6 +976,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|serverConfig
+argument_list|,
 name|db
 argument_list|,
 name|identifiedUserFactory
@@ -952,9 +995,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|MergeUtil (final Provider<ReviewDb> db, final IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, @Assisted final ProjectState project, @Assisted boolean useContentMerge)
+DECL|method|MergeUtil (@erritServerConfig Config serverConfig, final Provider<ReviewDb> db, final IdentifiedUser.GenericFactory identifiedUserFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, @Assisted final ProjectState project, @Assisted boolean useContentMerge)
 name|MergeUtil
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|serverConfig
+parameter_list|,
 specifier|final
 name|Provider
 argument_list|<
@@ -1020,6 +1068,23 @@ operator|.
 name|useContentMerge
 operator|=
 name|useContentMerge
+expr_stmt|;
+name|this
+operator|.
+name|useRecursiveMerge
+operator|=
+name|serverConfig
+operator|.
+name|getBoolean
+argument_list|(
+literal|"core"
+argument_list|,
+literal|null
+argument_list|,
+literal|"useRecursiveMerge"
+argument_list|,
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getFirstFastForward ( final CodeReviewCommit mergeTip, final RevWalk rw, final List<CodeReviewCommit> toMerge)
@@ -3920,9 +3985,30 @@ condition|(
 name|useContentMerge
 condition|)
 block|{
-comment|// Settings for this project allow us to try and
-comment|// automatically resolve conflicts within files if needed.
-comment|// Use ResolveMerge and instruct to operate in core.
+comment|// Settings for this project allow us to try and automatically resolve
+comment|// conflicts within files if needed. Use either the old resolve merger or
+comment|// new recursive merger, and instruct to operate in core.
+if|if
+condition|(
+name|useRecursiveMerge
+condition|)
+block|{
+name|m
+operator|=
+name|MergeStrategy
+operator|.
+name|RECURSIVE
+operator|.
+name|newMerger
+argument_list|(
+name|repo
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|m
 operator|=
 name|MergeStrategy
@@ -3936,6 +4022,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
