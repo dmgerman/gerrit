@@ -399,6 +399,19 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Failed to start Gerrit daemon. Check "
+operator|+
+name|sitePath
+operator|+
+literal|"/logs/error_log"
+argument_list|)
+expr_stmt|;
 name|serverStarted
 operator|.
 name|reset
