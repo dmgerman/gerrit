@@ -88,41 +88,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|PermissionDeniedException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|server
 operator|.
 name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|IdentifiedUser
 import|;
 end_import
 
@@ -450,12 +420,6 @@ name|ReviewDb
 argument_list|>
 name|dbFactory
 decl_stmt|;
-DECL|field|currentUser
-specifier|private
-specifier|final
-name|IdentifiedUser
-name|currentUser
-decl_stmt|;
 DECL|field|outputFormat
 specifier|private
 name|OutputFormat
@@ -482,7 +446,7 @@ name|statement
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryShell (final SchemaFactory<ReviewDb> dbFactory, final IdentifiedUser currentUser, @Assisted final InputStream in, @Assisted final OutputStream out)
+DECL|method|QueryShell (final SchemaFactory<ReviewDb> dbFactory, @Assisted final InputStream in, @Assisted final OutputStream out)
 name|QueryShell
 parameter_list|(
 specifier|final
@@ -491,10 +455,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbFactory
-parameter_list|,
-specifier|final
-name|IdentifiedUser
-name|currentUser
 parameter_list|,
 annotation|@
 name|Assisted
@@ -549,12 +509,6 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|currentUser
-operator|=
-name|currentUser
-expr_stmt|;
 block|}
 DECL|method|setOutputFormat (OutputFormat fmt)
 specifier|public
@@ -578,9 +532,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|checkPermission
-argument_list|()
-expr_stmt|;
 name|db
 operator|=
 name|dbFactory
@@ -689,25 +640,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|PermissionDeniedException
-name|err
-parameter_list|)
-block|{
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"fatal: "
-operator|+
-name|err
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 finally|finally
 block|{
 name|out
@@ -728,9 +660,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|checkPermission
-argument_list|()
-expr_stmt|;
 name|db
 operator|=
 name|dbFactory
@@ -838,25 +767,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|PermissionDeniedException
-name|err
-parameter_list|)
-block|{
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"fatal: "
-operator|+
-name|err
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 finally|finally
 block|{
 name|out
@@ -864,46 +774,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-comment|/**    * Assert that the current user is permitted to perform raw queries.    *<p>    * As the @RequireCapability guards at various entry points of internal    * commands implicitly add administrators (which we want to avoid), we also    * check permissions within QueryShell and grant access only to those who    * canPerformRawQuery, regardless of whether they are administrators or not.    *    * @throws PermissionDeniedException    */
-DECL|method|checkPermission ()
-specifier|private
-name|void
-name|checkPermission
-parameter_list|()
-throws|throws
-name|PermissionDeniedException
-block|{
-if|if
-condition|(
-operator|!
-name|currentUser
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|canAccessDatabase
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|PermissionDeniedException
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s does not have \"Perform Raw Query\" capability."
-argument_list|,
-name|currentUser
-operator|.
-name|getUserName
-argument_list|()
-argument_list|)
-argument_list|)
-throw|;
 block|}
 block|}
 DECL|method|readEvalPrintLoop ()
