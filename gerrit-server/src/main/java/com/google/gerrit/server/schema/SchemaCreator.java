@@ -1830,12 +1830,12 @@ name|owners
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|initVerifiedCategory
+name|initVerifiedLabel
 argument_list|(
 name|config
 argument_list|)
 expr_stmt|;
-name|initCodeReviewCategory
+name|initCodeReviewLabel
 argument_list|(
 name|config
 argument_list|)
@@ -1894,10 +1894,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|initVerifiedCategory (ProjectConfig c)
-specifier|private
+DECL|method|initVerifiedLabel (ProjectConfig c)
+specifier|public
+specifier|static
 name|void
-name|initVerifiedCategory
+name|initVerifiedLabel
 parameter_list|(
 name|ProjectConfig
 name|c
@@ -1967,10 +1968,11 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initCodeReviewCategory (ProjectConfig c)
-specifier|private
+DECL|method|initCodeReviewLabel (ProjectConfig c)
+specifier|public
+specifier|static
 name|void
-name|initCodeReviewCategory
+name|initCodeReviewLabel
 parameter_list|(
 name|ProjectConfig
 name|c
