@@ -294,16 +294,6 @@ name|isCopyMinScore
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|lt
-operator|.
-name|setPosition
-argument_list|(
-name|ac
-operator|.
-name|getPosition
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 name|lt
 return|;
@@ -650,11 +640,6 @@ specifier|protected
 name|boolean
 name|copyMinScore
 decl_stmt|;
-DECL|field|position
-specifier|protected
-name|short
-name|position
-decl_stmt|;
 DECL|field|values
 specifier|protected
 name|List
@@ -954,32 +939,6 @@ operator|.
 name|functionName
 operator|=
 name|functionName
-expr_stmt|;
-block|}
-DECL|method|getPosition ()
-specifier|public
-name|short
-name|getPosition
-parameter_list|()
-block|{
-return|return
-name|position
-return|;
-block|}
-DECL|method|setPosition (short position)
-specifier|public
-name|void
-name|setPosition
-parameter_list|(
-name|short
-name|position
-parameter_list|)
-block|{
-name|this
-operator|.
-name|position
-operator|=
-name|position
 expr_stmt|;
 block|}
 DECL|method|getValues ()

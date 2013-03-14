@@ -734,12 +734,10 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|(
-name|LabelOrdering
-operator|.
-name|create
-argument_list|(
 name|labelTypes
-argument_list|)
+operator|.
+name|nameComparator
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
