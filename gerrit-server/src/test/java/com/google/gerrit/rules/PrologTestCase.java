@@ -601,6 +601,15 @@ name|env
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setUpEnvironment (PrologEnvironment env)
+specifier|protected
+name|void
+name|setUpEnvironment
+parameter_list|(
+name|PrologEnvironment
+name|env
+parameter_list|)
+block|{   }
 DECL|method|newMachine ()
 specifier|private
 name|PrologMachineCopy
@@ -854,6 +863,11 @@ argument_list|(
 name|machine
 argument_list|)
 decl_stmt|;
+name|setUpEnvironment
+argument_list|(
+name|env
+argument_list|)
+expr_stmt|;
 name|env
 operator|.
 name|setEnabled
