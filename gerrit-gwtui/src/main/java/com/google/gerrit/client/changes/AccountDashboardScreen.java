@@ -491,11 +491,15 @@ literal|" -owner:"
 operator|+
 name|who
 argument_list|,
-literal|"is:closed owner:"
+literal|"is:closed (owner:"
 operator|+
 name|who
 operator|+
-literal|" -age:4w limit:10"
+literal|" OR reviewer:"
+operator|+
+name|who
+operator|+
+literal|") -age:4w limit:10"
 argument_list|)
 expr_stmt|;
 block|}
