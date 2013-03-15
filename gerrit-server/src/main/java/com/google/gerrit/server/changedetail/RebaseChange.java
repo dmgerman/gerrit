@@ -340,6 +340,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|events
@@ -747,7 +761,7 @@ specifier|private
 specifier|final
 name|ChangeControl
 operator|.
-name|Factory
+name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
 DECL|field|patchSetInfoFactory
@@ -810,13 +824,13 @@ name|projectCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final MergeUtil.Factory mergeUtilFactory, final ProjectCache projectCache)
+DECL|method|RebaseChange (final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final MergeUtil.Factory mergeUtilFactory, final ProjectCache projectCache)
 name|RebaseChange
 parameter_list|(
 specifier|final
 name|ChangeControl
 operator|.
-name|Factory
+name|GenericFactory
 name|changeControlFactory
 parameter_list|,
 specifier|final
@@ -924,7 +938,7 @@ name|projectCache
 expr_stmt|;
 block|}
 comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
-DECL|method|rebase (final PatchSet.Id patchSetId, final Account.Id uploader)
+DECL|method|rebase (final PatchSet.Id patchSetId, final IdentifiedUser uploader)
 specifier|public
 name|void
 name|rebase
@@ -936,9 +950,7 @@ name|Id
 name|patchSetId
 parameter_list|,
 specifier|final
-name|Account
-operator|.
-name|Id
+name|IdentifiedUser
 name|uploader
 parameter_list|)
 throws|throws
@@ -972,6 +984,8 @@ operator|.
 name|validateFor
 argument_list|(
 name|changeId
+argument_list|,
+name|uploader
 argument_list|)
 decl_stmt|;
 if|if
@@ -1129,6 +1143,9 @@ argument_list|,
 name|change
 argument_list|,
 name|uploader
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|,
 name|baseCommit
 argument_list|,
@@ -1235,6 +1252,9 @@ operator|.
 name|setFrom
 argument_list|(
 name|uploader
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|cm
