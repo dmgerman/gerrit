@@ -318,9 +318,13 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|internal
 operator|.
-name|Config
+name|storage
+operator|.
+name|file
+operator|.
+name|FileSnapshot
 import|;
 end_import
 
@@ -332,11 +336,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|storage
+name|lib
 operator|.
-name|file
-operator|.
-name|FileSnapshot
+name|Config
 import|;
 end_import
 

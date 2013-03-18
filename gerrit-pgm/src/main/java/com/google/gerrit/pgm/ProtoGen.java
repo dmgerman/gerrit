@@ -120,6 +120,8 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|internal
+operator|.
 name|storage
 operator|.
 name|file
