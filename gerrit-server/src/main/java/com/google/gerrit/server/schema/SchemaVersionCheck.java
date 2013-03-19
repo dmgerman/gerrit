@@ -426,7 +426,16 @@ name|expectedVer
 operator|+
 literal|".  Run init to upgrade:\n"
 operator|+
-literal|"$ java -jar gerrit.war init -d "
+literal|"$ java -jar "
+operator|+
+name|site
+operator|.
+name|gerrit_war
+operator|.
+name|getAbsolutePath
+argument_list|()
+operator|+
+literal|" init -d "
 operator|+
 name|site
 operator|.
