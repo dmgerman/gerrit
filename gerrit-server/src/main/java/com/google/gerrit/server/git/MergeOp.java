@@ -4470,19 +4470,6 @@ argument_list|>
 name|submitted
 parameter_list|)
 block|{
-name|List
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
-name|merged
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 specifier|final
@@ -4541,6 +4528,8 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 switch|switch
 condition|(
 name|s
@@ -4549,7 +4538,6 @@ block|{
 case|case
 name|CLEAN_MERGE
 case|:
-block|{
 name|setMerged
 argument_list|(
 name|c
@@ -4562,22 +4550,13 @@ name|txt
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|merged
-operator|.
-name|add
-argument_list|(
-name|commit
-argument_list|)
-expr_stmt|;
 break|break;
-block|}
 case|case
 name|CLEAN_REBASE
 case|:
 case|case
 name|CLEAN_PICK
 case|:
-block|{
 name|setMerged
 argument_list|(
 name|c
@@ -4597,15 +4576,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|merged
-operator|.
-name|add
-argument_list|(
-name|commit
-argument_list|)
-expr_stmt|;
 break|break;
-block|}
 case|case
 name|ALREADY_MERGED
 case|:
@@ -4614,13 +4585,6 @@ argument_list|(
 name|c
 argument_list|,
 literal|null
-argument_list|)
-expr_stmt|;
-name|merged
-operator|.
-name|add
-argument_list|(
-name|commit
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4648,7 +4612,6 @@ case|:
 case|case
 name|SETTING_PARENT_PROJECT_ONLY_ALLOWED_BY_ADMIN
 case|:
-block|{
 name|setNew
 argument_list|(
 name|c
@@ -4662,11 +4625,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
-block|}
 case|case
 name|MISSING_DEPENDENCY
 case|:
-block|{
 name|potentiallyStillSubmittable
 operator|.
 name|add
@@ -4675,7 +4636,6 @@ name|commit
 argument_list|)
 expr_stmt|;
 break|break;
-block|}
 default|default:
 name|setNew
 argument_list|(
@@ -4695,6 +4655,28 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|err
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error updating change status for "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -5383,7 +5365,24 @@ specifier|final
 name|ChangeMessage
 name|msg
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
+try|try
+block|{
+name|db
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|beginTransaction
+argument_list|(
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// We must pull the patchset out of commits, because the patchset ID is
 comment|// modified when using the cherry-pick merge strategy.
 name|CodeReviewCommit
@@ -5437,6 +5436,11 @@ name|submitter
 argument_list|,
 name|msg
 argument_list|)
+expr_stmt|;
+name|db
+operator|.
+name|commit
+argument_list|()
 expr_stmt|;
 name|sendMergedEmail
 argument_list|(
@@ -5513,6 +5517,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+finally|finally
+block|{
+name|db
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 DECL|method|setMergedPatchSet (Change.Id changeId, final PatchSet.Id merged)
 specifier|private
 name|void
@@ -5529,8 +5542,8 @@ operator|.
 name|Id
 name|merged
 parameter_list|)
-block|{
-try|try
+throws|throws
+name|OrmException
 block|{
 name|db
 operator|.
@@ -5647,29 +5660,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|OrmConcurrencyException
-name|err
-parameter_list|)
-block|{     }
-catch|catch
-parameter_list|(
-name|OrmException
-name|err
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot update change status"
-argument_list|,
-name|err
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|saveApprovals (Change c, PatchSet.Id merged)
 specifier|private
 name|PatchSetApproval
@@ -5683,6 +5673,8 @@ operator|.
 name|Id
 name|merged
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 comment|// Flatten out all existing approvals based upon the current
 comment|// permissions. Once the change is closed the approvals are
@@ -5891,35 +5883,13 @@ name|NoSuchChangeException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot normalize approvals for change "
-operator|+
-name|changeId
-argument_list|,
-name|err
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+throw|throw
+operator|new
 name|OrmException
-name|err
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
 argument_list|(
-literal|"Cannot normalize approvals for change "
-operator|+
-name|changeId
-argument_list|,
 name|err
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 return|return
 name|submitter
@@ -5936,6 +5906,8 @@ parameter_list|,
 name|ChangeMessage
 name|msg
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 if|if
 condition|(
@@ -5969,8 +5941,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
 name|db
 operator|.
 name|changeMessages
@@ -5986,23 +5956,6 @@ name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|err
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Cannot store message on change"
-argument_list|,
-name|err
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|sendMergedEmail (final Change c, final PatchSetApproval from)
