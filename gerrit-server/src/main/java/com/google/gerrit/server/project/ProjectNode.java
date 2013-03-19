@@ -310,6 +310,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|getProject ()
+specifier|public
+name|Project
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|project
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getDisplayName ()
@@ -345,7 +355,7 @@ name|SortedSet
 argument_list|<
 name|?
 extends|extends
-name|TreeNode
+name|ProjectNode
 argument_list|>
 name|getChildren
 parameter_list|()
