@@ -773,14 +773,22 @@ name|String
 name|getMessageText
 parameter_list|()
 block|{
-comment|// The commit message should be trimmed to remove any excess
-comment|// newlines at the end, but we need to make sure it still has
-comment|// at least one trailing newline.
+comment|// As we rely on commit message lines ending in LF, we convert CRLF to
+comment|// LF. Additionally, the commit message should be trimmed to remove any
+comment|// excess newlines at the end, but we need to make sure it still has at
+comment|// least one trailing newline.
 return|return
 name|message
 operator|.
 name|getText
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\r\n"
+argument_list|,
+literal|"\n"
+argument_list|)
 operator|.
 name|trim
 argument_list|()
