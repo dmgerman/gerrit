@@ -1538,7 +1538,7 @@ argument_list|()
 operator|.
 name|getParent
 argument_list|(
-name|projectName
+name|allProjectsName
 argument_list|)
 argument_list|)
 condition|)
