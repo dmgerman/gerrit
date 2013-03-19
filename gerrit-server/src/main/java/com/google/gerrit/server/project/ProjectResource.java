@@ -165,6 +165,7 @@ name|ProjectControl
 name|control
 decl_stmt|;
 DECL|method|ProjectResource (ProjectControl control)
+specifier|public
 name|ProjectResource
 parameter_list|(
 name|ProjectControl

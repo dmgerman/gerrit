@@ -171,6 +171,18 @@ name|Project
 name|p
 parameter_list|)
 function_decl|;
+comment|/** Invalidate the cached information about the given project. */
+DECL|method|evict (Project.NameKey p)
+specifier|public
+name|void
+name|evict
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+function_decl|;
 comment|/**    * Remove information about the given project from the cache. It will no    * longer be returned from {@link #all()}.    */
 DECL|method|remove (Project p)
 name|void

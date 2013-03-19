@@ -729,6 +729,25 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|evict (Project.NameKey p)
+specifier|public
+name|void
+name|evict
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|remove (Project p)
 specifier|public
 name|void

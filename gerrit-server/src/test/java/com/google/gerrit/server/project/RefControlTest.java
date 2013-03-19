@@ -3340,6 +3340,18 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|evict
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{       }
+annotation|@
+name|Override
+specifier|public
+name|void
 name|remove
 parameter_list|(
 name|Project

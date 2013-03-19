@@ -956,6 +956,38 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Invalidate the cached information about the given project. */
+DECL|method|evict (final Project.NameKey p)
+specifier|public
+name|void
+name|evict
+parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
+name|byName
+operator|.
+name|invalidate
+argument_list|(
+name|p
+operator|.
+name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 DECL|method|remove (final Project p)
