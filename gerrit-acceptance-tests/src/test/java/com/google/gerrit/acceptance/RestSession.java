@@ -407,6 +407,26 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|post (String endPoint)
+specifier|public
+name|RestResponse
+name|post
+parameter_list|(
+name|String
+name|endPoint
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|post
+argument_list|(
+name|endPoint
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
 DECL|method|post (String endPoint, Object content)
 specifier|public
 name|RestResponse
