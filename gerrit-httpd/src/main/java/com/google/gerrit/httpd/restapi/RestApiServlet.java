@@ -5420,7 +5420,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"Invalid authentication method"
+literal|"Invalid authentication method. In order to authenticate, prefix the REST endpoint URL with /a/ (e.g. http://example.com/a/projects/)."
 argument_list|)
 throw|;
 block|}
