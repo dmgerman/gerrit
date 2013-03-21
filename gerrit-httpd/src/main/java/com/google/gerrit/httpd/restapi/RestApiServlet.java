@@ -1923,6 +1923,11 @@ name|rc
 operator|instanceof
 name|AcceptsCreate
 operator|&&
+name|path
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
 operator|(
 literal|"POST"
 operator|.
@@ -2188,6 +2193,11 @@ condition|(
 name|c
 operator|instanceof
 name|AcceptsCreate
+operator|&&
+name|path
+operator|.
+name|isEmpty
+argument_list|()
 operator|&&
 operator|(
 literal|"POST"
