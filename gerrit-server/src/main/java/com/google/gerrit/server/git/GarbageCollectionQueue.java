@@ -132,6 +132,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GarbageCollectionQueue
+specifier|public
 class|class
 name|GarbageCollectionQueue
 block|{
@@ -152,6 +153,7 @@ name|newHashSet
 argument_list|()
 decl_stmt|;
 DECL|method|addAll (Collection<Project.NameKey> projects)
+specifier|public
 specifier|synchronized
 name|Set
 argument_list|<
@@ -222,6 +224,7 @@ name|added
 return|;
 block|}
 DECL|method|gcFinished (Project.NameKey project)
+specifier|public
 specifier|synchronized
 name|void
 name|gcFinished
