@@ -726,7 +726,13 @@ argument_list|)
 throw|;
 block|}
 return|return
-literal|false
+name|currentUser
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
+argument_list|()
 return|;
 block|}
 DECL|method|groupsOf (Account.Id account)
