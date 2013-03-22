@@ -2391,6 +2391,12 @@ specifier|final
 name|Project
 name|project
 decl_stmt|;
+DECL|field|labelTypes
+specifier|private
+specifier|final
+name|LabelTypes
+name|labelTypes
+decl_stmt|;
 DECL|field|repo
 specifier|private
 specifier|final
@@ -2413,11 +2419,6 @@ DECL|field|magicBranch
 specifier|private
 name|MagicBranchInput
 name|magicBranch
-decl_stmt|;
-DECL|field|labelTypes
-specifier|private
-name|LabelTypes
-name|labelTypes
 decl_stmt|;
 DECL|field|newChanges
 specifier|private
@@ -2875,6 +2876,15 @@ operator|.
 name|projectControl
 operator|=
 name|projectControl
+expr_stmt|;
+name|this
+operator|.
+name|labelTypes
+operator|=
+name|projectControl
+operator|.
+name|getLabelTypes
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -7254,13 +7264,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|labelTypes
-operator|=
-name|projectControl
-operator|.
-name|getLabelTypes
-argument_list|()
-expr_stmt|;
 comment|// Validate that the new commits are connected with the target
 comment|// branch.  If they aren't, we want to abort. We do this check by
 comment|// looking to see if we can compute a merge base between the new
