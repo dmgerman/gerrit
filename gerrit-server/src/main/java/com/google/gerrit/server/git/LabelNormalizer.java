@@ -649,16 +649,6 @@ name|getChange
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|dest
-operator|.
-name|setLabel
-argument_list|(
-name|src
-operator|.
-name|getLabel
-argument_list|()
-argument_list|)
-expr_stmt|;
 return|return
 name|dest
 return|;

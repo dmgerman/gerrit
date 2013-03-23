@@ -2423,8 +2423,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**    * @param db review database.    * @return all patch set approvals for the change (regardless of whether    *     {@link #limitToPatchSets(Collection)} was previously called), keyed by    *     ID, ordered by timestamp within each patch set.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|allApprovalsMap ( Provider<ReviewDb> db)
-specifier|private
+specifier|public
 name|ListMultimap
 argument_list|<
 name|PatchSet

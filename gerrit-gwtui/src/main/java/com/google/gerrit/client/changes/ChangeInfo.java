@@ -920,6 +920,15 @@ name|ApprovalInfo
 extends|extends
 name|AccountInfo
 block|{
+DECL|method|has_value ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_value
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('value'); }-*/
+function_decl|;
 DECL|method|value ()
 specifier|public
 specifier|final
