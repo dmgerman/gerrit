@@ -581,12 +581,6 @@ specifier|protected
 name|String
 name|changeSortKey
 decl_stmt|;
-comment|/** Label name copied from corresponding {@link ApprovalCategory}. */
-DECL|field|label
-specifier|protected
-name|String
-name|label
-decl_stmt|;
 DECL|method|PatchSetApproval ()
 specifier|protected
 name|PatchSetApproval
@@ -826,24 +820,12 @@ name|getLabel
 parameter_list|()
 block|{
 return|return
-name|label
-return|;
-block|}
-DECL|method|setLabel (String label)
-specifier|public
-name|void
-name|setLabel
-parameter_list|(
-name|String
-name|label
-parameter_list|)
-block|{
-name|this
+name|getLabelId
+argument_list|()
 operator|.
-name|label
-operator|=
-name|label
-expr_stmt|;
+name|get
+argument_list|()
+return|;
 block|}
 DECL|method|isSubmit ()
 specifier|public
@@ -861,10 +843,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|getLabelId
-argument_list|()
-operator|.
-name|get
+name|getLabel
 argument_list|()
 argument_list|)
 return|;
