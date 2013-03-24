@@ -686,7 +686,7 @@ name|String
 name|id
 decl_stmt|;
 DECL|field|side
-name|GetDraft
+name|CommentInfo
 operator|.
 name|Side
 name|side
@@ -1922,7 +1922,7 @@ name|c
 operator|.
 name|side
 operator|==
-name|GetDraft
+name|CommentInfo
 operator|.
 name|Side
 operator|.
