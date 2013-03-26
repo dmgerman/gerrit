@@ -687,6 +687,11 @@ specifier|protected
 name|boolean
 name|copyMinScore
 decl_stmt|;
+DECL|field|copyMaxScore
+specifier|protected
+name|boolean
+name|copyMaxScore
+decl_stmt|;
 DECL|field|values
 specifier|protected
 name|List
@@ -1094,6 +1099,32 @@ operator|.
 name|copyMinScore
 operator|=
 name|copyMinScore
+expr_stmt|;
+block|}
+DECL|method|isCopyMaxScore ()
+specifier|public
+name|boolean
+name|isCopyMaxScore
+parameter_list|()
+block|{
+return|return
+name|copyMaxScore
+return|;
+block|}
+DECL|method|setCopyMaxScore (boolean copyMaxScore)
+specifier|public
+name|void
+name|setCopyMaxScore
+parameter_list|(
+name|boolean
+name|copyMaxScore
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyMaxScore
+operator|=
+name|copyMaxScore
 expr_stmt|;
 block|}
 DECL|method|isMaxNegative (PatchSetApproval ca)
