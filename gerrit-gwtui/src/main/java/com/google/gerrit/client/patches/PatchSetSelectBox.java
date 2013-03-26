@@ -1345,11 +1345,12 @@ name|Key
 name|key
 init|=
 operator|(
-name|idSideA
+name|idActive
 operator|==
 literal|null
 operator|)
 condition|?
+comment|//
 name|patchKey
 else|:
 operator|(
@@ -1358,7 +1359,7 @@ name|Patch
 operator|.
 name|Key
 argument_list|(
-name|idSideA
+name|idActive
 argument_list|,
 name|patchKey
 operator|.
@@ -1371,11 +1372,9 @@ name|String
 name|sideURL
 init|=
 operator|(
-name|side
+name|idActive
 operator|==
-name|Side
-operator|.
-name|A
+literal|null
 operator|)
 condition|?
 literal|"1"
