@@ -176,6 +176,13 @@ name|ListChangesOption
 operator|.
 name|DETAILED_ACCOUNTS
 argument_list|)
+operator|.
+name|addOption
+argument_list|(
+name|ListChangesOption
+operator|.
+name|MESSAGES
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

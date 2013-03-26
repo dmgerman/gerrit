@@ -143,6 +143,13 @@ name|DETAILED_ACCOUNTS
 argument_list|(
 literal|7
 argument_list|)
+block|,
+comment|/** Include messages associated with the change. */
+DECL|enumConstant|MESSAGES
+name|MESSAGES
+argument_list|(
+literal|9
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
