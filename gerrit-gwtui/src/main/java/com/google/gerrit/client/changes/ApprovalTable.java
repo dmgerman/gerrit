@@ -1891,6 +1891,13 @@ block|}
 elseif|else
 if|if
 condition|(
+name|ai
+operator|.
+name|value
+argument_list|()
+operator|<
+literal|0
+operator|&&
 name|fv
 operator|.
 name|equals
