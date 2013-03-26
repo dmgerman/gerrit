@@ -368,9 +368,7 @@ DECL|method|apply (RevisionResource rsrc, Input in)
 specifier|public
 name|Response
 argument_list|<
-name|GetDraft
-operator|.
-name|Comment
+name|CommentInfo
 argument_list|>
 name|apply
 parameter_list|(
@@ -545,7 +543,7 @@ name|in
 operator|.
 name|side
 operator|==
-name|GetDraft
+name|CommentInfo
 operator|.
 name|Side
 operator|.
@@ -598,11 +596,11 @@ operator|.
 name|created
 argument_list|(
 operator|new
-name|GetDraft
-operator|.
-name|Comment
+name|CommentInfo
 argument_list|(
 name|c
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 return|;

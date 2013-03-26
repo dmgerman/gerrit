@@ -222,7 +222,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|GetDraft
+name|CommentInfo
 operator|.
 name|Side
 import|;
@@ -709,11 +709,11 @@ expr_stmt|;
 block|}
 return|return
 operator|new
-name|GetDraft
-operator|.
-name|Comment
+name|CommentInfo
 argument_list|(
 name|c
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -746,7 +746,7 @@ name|in
 operator|.
 name|side
 operator|==
-name|GetDraft
+name|CommentInfo
 operator|.
 name|Side
 operator|.
