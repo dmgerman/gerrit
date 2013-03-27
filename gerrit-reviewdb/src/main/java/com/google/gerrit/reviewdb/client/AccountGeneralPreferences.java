@@ -481,6 +481,18 @@ specifier|protected
 name|boolean
 name|showUsernameInReviewCategory
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|12
+argument_list|)
+DECL|field|relativeDateInChangeTable
+specifier|protected
+name|boolean
+name|relativeDateInChangeTable
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -845,6 +857,33 @@ name|name
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|isRelativeDateInChangeTable ()
+specifier|public
+name|boolean
+name|isRelativeDateInChangeTable
+parameter_list|()
+block|{
+return|return
+name|relativeDateInChangeTable
+return|;
+block|}
+DECL|method|setRelativeDateInChangeTable (final boolean relativeDateInChangeTable)
+specifier|public
+name|void
+name|setRelativeDateInChangeTable
+parameter_list|(
+specifier|final
+name|boolean
+name|relativeDateInChangeTable
+parameter_list|)
+block|{
+name|this
+operator|.
+name|relativeDateInChangeTable
+operator|=
+name|relativeDateInChangeTable
+expr_stmt|;
+block|}
 DECL|method|resetToDefaults ()
 specifier|public
 name|void
@@ -890,6 +929,10 @@ expr_stmt|;
 name|timeFormat
 operator|=
 literal|null
+expr_stmt|;
+name|relativeDateInChangeTable
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}

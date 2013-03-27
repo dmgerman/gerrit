@@ -160,6 +160,11 @@ name|String
 name|buttonSaveChanges
 parameter_list|()
 function_decl|;
+DECL|method|showRelativeDateInChangeTable ()
+name|String
+name|showRelativeDateInChangeTable
+parameter_list|()
+function_decl|;
 DECL|method|tabAccountSummary ()
 name|String
 name|tabAccountSummary
