@@ -116,6 +116,8 @@ argument_list|)
 expr_stmt|;
 name|serve
 argument_list|(
+literal|"/login"
+argument_list|,
 literal|"/login/*"
 argument_list|)
 operator|.

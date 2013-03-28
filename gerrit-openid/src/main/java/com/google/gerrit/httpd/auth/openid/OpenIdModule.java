@@ -104,6 +104,8 @@ parameter_list|()
 block|{
 name|serve
 argument_list|(
+literal|"/login"
+argument_list|,
 literal|"/login/*"
 argument_list|)
 operator|.
