@@ -1747,7 +1747,6 @@ name|READ
 argument_list|,
 literal|true
 argument_list|)
-comment|//
 operator|.
 name|add
 argument_list|(
@@ -1769,7 +1768,6 @@ name|READ
 argument_list|,
 literal|true
 argument_list|)
-comment|//
 operator|.
 name|add
 argument_list|(
@@ -1793,7 +1791,6 @@ name|ALL
 argument_list|,
 literal|true
 argument_list|)
-comment|//
 operator|.
 name|getPermission
 argument_list|(
@@ -1803,7 +1800,6 @@ name|PUSH
 argument_list|,
 literal|true
 argument_list|)
-comment|//
 operator|.
 name|add
 argument_list|(
@@ -1825,7 +1821,6 @@ name|FORGE_AUTHOR
 argument_list|,
 literal|true
 argument_list|)
-comment|//
 operator|.
 name|add
 argument_list|(
