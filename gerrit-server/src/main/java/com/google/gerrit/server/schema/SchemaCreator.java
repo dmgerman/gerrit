@@ -1601,7 +1601,7 @@ name|setUseContentMerge
 argument_list|(
 name|InheritableBoolean
 operator|.
-name|FALSE
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|p
