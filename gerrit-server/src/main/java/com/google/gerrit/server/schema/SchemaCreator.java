@@ -876,7 +876,7 @@ argument_list|(
 name|db
 argument_list|)
 expr_stmt|;
-name|initWildCardProject
+name|initAllProjects
 argument_list|()
 expr_stmt|;
 name|dataSourceType
@@ -1389,10 +1389,10 @@ return|return
 name|s
 return|;
 block|}
-DECL|method|initWildCardProject ()
+DECL|method|initAllProjects ()
 specifier|private
 name|void
-name|initWildCardProject
+name|initAllProjects
 parameter_list|()
 throws|throws
 name|IOException
@@ -1415,7 +1415,7 @@ argument_list|(
 name|allProjectsName
 argument_list|)
 expr_stmt|;
-name|initWildCardProject
+name|initAllProjects
 argument_list|(
 name|git
 argument_list|)
@@ -1440,7 +1440,7 @@ argument_list|(
 name|allProjectsName
 argument_list|)
 expr_stmt|;
-name|initWildCardProject
+name|initAllProjects
 argument_list|(
 name|git
 argument_list|)
@@ -1513,10 +1513,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|initWildCardProject (Repository git)
+DECL|method|initAllProjects (Repository git)
 specifier|private
 name|void
-name|initWildCardProject
+name|initAllProjects
 parameter_list|(
 name|Repository
 name|git
