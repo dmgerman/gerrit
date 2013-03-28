@@ -92,41 +92,6 @@ name|OpenIdConstants
 extends|extends
 name|Constants
 block|{
-DECL|method|buttonSignIn ()
-name|String
-name|buttonSignIn
-parameter_list|()
-function_decl|;
-DECL|method|buttonRegister ()
-name|String
-name|buttonRegister
-parameter_list|()
-function_decl|;
-DECL|method|buttonLinkId ()
-name|String
-name|buttonLinkId
-parameter_list|()
-function_decl|;
-DECL|method|rememberMe ()
-name|String
-name|rememberMe
-parameter_list|()
-function_decl|;
-DECL|method|notAllowed ()
-name|String
-name|notAllowed
-parameter_list|()
-function_decl|;
-DECL|method|noProvider ()
-name|String
-name|noProvider
-parameter_list|()
-function_decl|;
-DECL|method|error ()
-name|String
-name|error
-parameter_list|()
-function_decl|;
 DECL|method|nameGoogle ()
 name|String
 name|nameGoogle
@@ -135,11 +100,6 @@ function_decl|;
 DECL|method|nameYahoo ()
 name|String
 name|nameYahoo
-parameter_list|()
-function_decl|;
-DECL|method|whatIsOpenIDHtml ()
-name|String
-name|whatIsOpenIDHtml
 parameter_list|()
 function_decl|;
 block|}
