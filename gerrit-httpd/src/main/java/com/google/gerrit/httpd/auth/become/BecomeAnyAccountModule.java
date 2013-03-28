@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.userpass
+DECL|package|com.google.gerrit.httpd.auth.become
 package|package
 name|com
 operator|.
@@ -60,11 +60,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|httpd
 operator|.
 name|auth
 operator|.
-name|userpass
+name|become
 package|;
 end_package
 
@@ -74,58 +74,47 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|reviewdb
+name|servlet
 operator|.
-name|client
-operator|.
-name|AuthType
+name|ServletModule
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
-import|;
-end_import
-
-begin_interface
-DECL|interface|UserPassMessages
+begin_class
+DECL|class|BecomeAnyAccountModule
 specifier|public
-interface|interface
-name|UserPassMessages
+class|class
+name|BecomeAnyAccountModule
 extends|extends
-name|Messages
+name|ServletModule
 block|{
-DECL|method|signInAt (String hostname)
-name|String
-name|signInAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|authenticationUnavailable (AuthType authType)
-name|String
-name|authenticationUnavailable
-parameter_list|(
-name|AuthType
-name|authType
-parameter_list|)
-function_decl|;
+annotation|@
+name|Override
+DECL|method|configureServlets ()
+specifier|protected
+name|void
+name|configureServlets
+parameter_list|()
+block|{
+name|serve
+argument_list|(
+literal|"/login"
+argument_list|,
+literal|"/login/*"
+argument_list|)
+operator|.
+name|with
+argument_list|(
+name|BecomeAnyAccountLoginServlet
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

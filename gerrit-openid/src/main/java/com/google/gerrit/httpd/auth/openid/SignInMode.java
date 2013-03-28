@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2008 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.userpass
+DECL|package|com.google.gerrit.httpd.auth.openid
 package|package
 name|com
 operator|.
@@ -60,50 +60,29 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|httpd
 operator|.
 name|auth
 operator|.
-name|userpass
+name|openid
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|CssResource
-import|;
-end_import
-
-begin_interface
-DECL|interface|UserPassCss
-specifier|public
-interface|interface
-name|UserPassCss
-extends|extends
-name|CssResource
+begin_enum
+DECL|enum|SignInMode
+enum|enum
+name|SignInMode
 block|{
-DECL|method|loginForm ()
-name|String
-name|loginForm
-parameter_list|()
-function_decl|;
-DECL|method|error ()
-name|String
-name|error
-parameter_list|()
-function_decl|;
-block|}
-end_interface
+DECL|enumConstant|SIGN_IN
+DECL|enumConstant|LINK_IDENTIY
+DECL|enumConstant|REGISTER
+name|SIGN_IN
+block|,
+name|LINK_IDENTIY
+block|,
+name|REGISTER
+block|; }
+end_enum
 
 end_unit
 

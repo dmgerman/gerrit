@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.auth.openid
+DECL|package|com.google.gerrit.httpd.auth.openid
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|httpd
 operator|.
 name|auth
 operator|.
@@ -70,78 +70,102 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
+name|Map
 import|;
 end_import
 
-begin_interface
-DECL|interface|OpenIdMessages
-specifier|public
-interface|interface
-name|OpenIdMessages
-extends|extends
-name|Messages
+begin_class
+DECL|class|DiscoveryResult
+specifier|final
+class|class
+name|DiscoveryResult
 block|{
-DECL|method|signInAt (String hostname)
+DECL|enum|Status
+specifier|static
+enum|enum
+name|Status
+block|{
+comment|/** Provider was discovered and {@code providerUrl} is valid. */
+DECL|enumConstant|VALID
+name|VALID
+block|,
+comment|/** Identifier isn't for an OpenID provider. */
+DECL|enumConstant|NO_PROVIDER
+name|NO_PROVIDER
+block|,
+comment|/** The provider was discovered, but something else failed. */
+DECL|enumConstant|ERROR
+name|ERROR
+block|;   }
+DECL|field|status
+name|Status
+name|status
+decl_stmt|;
+DECL|field|providerUrl
 name|String
-name|signInAt
+name|providerUrl
+decl_stmt|;
+DECL|field|providerArgs
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|providerArgs
+decl_stmt|;
+DECL|method|DiscoveryResult ()
+name|DiscoveryResult
+parameter_list|()
+block|{   }
+DECL|method|DiscoveryResult (String redirect, Map<String, String> args)
+name|DiscoveryResult
 parameter_list|(
 name|String
-name|hostname
+name|redirect
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|args
 parameter_list|)
-function_decl|;
-DECL|method|registerAt (String hostname)
-name|String
-name|registerAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|linkAt (String hostname)
-name|String
-name|linkAt
-parameter_list|(
-name|String
-name|hostname
-parameter_list|)
-function_decl|;
-DECL|method|signInWith (String who)
-name|String
-name|signInWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|registerWith (String who)
-name|String
-name|registerWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
-DECL|method|linkWith (String who)
-name|String
-name|linkWith
-parameter_list|(
-name|String
-name|who
-parameter_list|)
-function_decl|;
+block|{
+name|status
+operator|=
+name|Status
+operator|.
+name|VALID
+expr_stmt|;
+name|providerUrl
+operator|=
+name|redirect
+expr_stmt|;
+name|providerArgs
+operator|=
+name|args
+expr_stmt|;
 block|}
-end_interface
+DECL|method|DiscoveryResult (Status s)
+name|DiscoveryResult
+parameter_list|(
+name|Status
+name|s
+parameter_list|)
+block|{
+name|status
+operator|=
+name|s
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 
