@@ -1583,7 +1583,7 @@ name|p
 operator|.
 name|setDescription
 argument_list|(
-literal|"Rights inherited by all other projects"
+literal|"Access inherited by all other projects."
 argument_list|)
 expr_stmt|;
 name|p
