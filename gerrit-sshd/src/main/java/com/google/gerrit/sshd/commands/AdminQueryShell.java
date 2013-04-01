@@ -394,7 +394,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s does not have \"Perform Raw Query\" capability."
+literal|"%s does not have \"Access Database\" capability."
 argument_list|,
 name|currentUser
 operator|.
