@@ -356,6 +356,90 @@ name|int
 name|memberCount
 parameter_list|)
 function_decl|;
+DECL|method|secondsAgo (long seconds)
+name|String
+name|secondsAgo
+parameter_list|(
+name|long
+name|seconds
+parameter_list|)
+function_decl|;
+DECL|method|minutesAgo (long minutes)
+name|String
+name|minutesAgo
+parameter_list|(
+name|long
+name|minutes
+parameter_list|)
+function_decl|;
+DECL|method|hoursAgo (long hours)
+name|String
+name|hoursAgo
+parameter_list|(
+name|long
+name|hours
+parameter_list|)
+function_decl|;
+DECL|method|daysAgo (long days)
+name|String
+name|daysAgo
+parameter_list|(
+name|long
+name|days
+parameter_list|)
+function_decl|;
+DECL|method|weeksAgo (long weeks)
+name|String
+name|weeksAgo
+parameter_list|(
+name|long
+name|weeks
+parameter_list|)
+function_decl|;
+DECL|method|monthsAgo (long months)
+name|String
+name|monthsAgo
+parameter_list|(
+name|long
+name|months
+parameter_list|)
+function_decl|;
+DECL|method|yearsAgo (long years)
+name|String
+name|yearsAgo
+parameter_list|(
+name|long
+name|years
+parameter_list|)
+function_decl|;
+DECL|method|years0MonthsAgo (long years, String yearLabel)
+name|String
+name|years0MonthsAgo
+parameter_list|(
+name|long
+name|years
+parameter_list|,
+name|String
+name|yearLabel
+parameter_list|)
+function_decl|;
+DECL|method|yearsMonthsAgo (long years, String yearLabel, long months, String monthLabel)
+name|String
+name|yearsMonthsAgo
+parameter_list|(
+name|long
+name|years
+parameter_list|,
+name|String
+name|yearLabel
+parameter_list|,
+name|long
+name|months
+parameter_list|,
+name|String
+name|monthLabel
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

@@ -638,6 +638,26 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Format a date using git log's relative date format. */
+DECL|method|relativeFormat (Date dt)
+specifier|public
+specifier|static
+name|String
+name|relativeFormat
+parameter_list|(
+name|Date
+name|dt
+parameter_list|)
+block|{
+return|return
+name|RelativeDateFormatter
+operator|.
+name|format
+argument_list|(
+name|dt
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Deprecated
 DECL|method|nameEmail (com.google.gerrit.common.data.AccountInfo acct)

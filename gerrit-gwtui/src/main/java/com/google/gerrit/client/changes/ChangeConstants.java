@@ -735,6 +735,31 @@ name|String
 name|diffAllUnified
 parameter_list|()
 function_decl|;
+DECL|method|inTheFuture ()
+name|String
+name|inTheFuture
+parameter_list|()
+function_decl|;
+DECL|method|month ()
+name|String
+name|month
+parameter_list|()
+function_decl|;
+DECL|method|months ()
+name|String
+name|months
+parameter_list|()
+function_decl|;
+DECL|method|year ()
+name|String
+name|year
+parameter_list|()
+function_decl|;
+DECL|method|years ()
+name|String
+name|years
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
