@@ -2197,6 +2197,19 @@ name|DETAILED_LABELS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Collection
+argument_list|<
+name|PatchSet
+operator|.
+name|Id
+argument_list|>
+name|limited
+init|=
+name|cd
+operator|.
+name|getLimitedPatchSets
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|out
@@ -2211,6 +2224,25 @@ name|DETAILED_LABELS
 argument_list|)
 condition|)
 block|{
+comment|// If limited to specific patch sets but not the current patch set, don't
+comment|// list permitted labels, since users can't vote on those patch sets.
+if|if
+condition|(
+name|limited
+operator|==
+literal|null
+operator|||
+name|limited
+operator|.
+name|contains
+argument_list|(
+name|in
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|out
 operator|.
 name|permitted_labels
@@ -2220,6 +2252,7 @@ argument_list|(
 name|cd
 argument_list|)
 expr_stmt|;
+block|}
 name|out
 operator|.
 name|removable_reviewers
@@ -2254,10 +2287,7 @@ argument_list|(
 name|CURRENT_REVISION
 argument_list|)
 operator|||
-name|cd
-operator|.
-name|getLimitedPatchSets
-argument_list|()
+name|limited
 operator|!=
 literal|null
 condition|)
