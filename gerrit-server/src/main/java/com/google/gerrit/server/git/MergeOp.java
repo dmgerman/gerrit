@@ -5676,22 +5676,11 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-comment|// Flatten out all existing approvals based upon the current
-comment|// permissions. Once the change is closed the approvals are
-comment|// not updated at presentation view time, so we need to make.
-comment|// sure they are accurate now. This way if permissions get
-comment|// modified in the future, historical records stay accurate.
-comment|//
-name|Change
-operator|.
-name|Id
-name|changeId
-init|=
-name|c
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
+comment|// Flatten out existing approvals for this patch set based upon the current
+comment|// permissions. Once the change is closed the approvals are not updated at
+comment|// presentation view time, except for zero votes used to indicate a reviewer
+comment|// was added. So we need to make sure votes are accurate now. This way if
+comment|// permissions get modified in the future, historical records stay accurate.
 name|PatchSetApproval
 name|submitter
 init|=
@@ -5721,9 +5710,9 @@ operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
-name|byChange
+name|byPatchSet
 argument_list|(
-name|changeId
+name|merged
 argument_list|)
 operator|.
 name|toList
@@ -5755,6 +5744,16 @@ range|:
 name|approvals
 control|)
 block|{
+if|if
+condition|(
+name|a
+operator|.
+name|getValue
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
 name|toDelete
 operator|.
 name|add
@@ -5765,6 +5764,7 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|approvals
 operator|=
@@ -5808,16 +5808,6 @@ name|a
 operator|.
 name|isSubmit
 argument_list|()
-operator|&&
-name|a
-operator|.
-name|getPatchSetId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|merged
-argument_list|)
 condition|)
 block|{
 if|if
