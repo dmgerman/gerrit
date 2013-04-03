@@ -99,6 +99,15 @@ name|id
 parameter_list|()
 comment|/*-{ return this.id; }-*/
 function_decl|;
+DECL|method|title ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|title
+parameter_list|()
+comment|/*-{ return this.title; }-*/
+function_decl|;
 DECL|method|project ()
 specifier|public
 specifier|final
