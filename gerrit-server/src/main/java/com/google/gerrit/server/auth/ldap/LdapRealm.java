@@ -1717,7 +1717,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot query LDAP to autenticate user"
+literal|"Cannot query LDAP to authenticate user"
 argument_list|,
 name|e
 argument_list|)
