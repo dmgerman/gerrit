@@ -426,7 +426,7 @@ specifier|final
 name|String
 name|HTML_STRICT
 init|=
-literal|"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd"
+literal|"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd"
 decl_stmt|;
 comment|/** Convert a document to a UTF-8 byte sequence. */
 DECL|method|toUTF8 (final Document hostDoc)
