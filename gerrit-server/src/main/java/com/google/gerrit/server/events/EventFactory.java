@@ -1397,8 +1397,8 @@ expr_stmt|;
 block|}
 block|}
 specifier|final
-name|RevId
-name|revId
+name|PatchSet
+name|ps
 init|=
 name|db
 operator|.
@@ -1409,6 +1409,37 @@ name|get
 argument_list|(
 name|psId
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error while generating the list of descendants for"
+operator|+
+literal|" PatchSet "
+operator|+
+name|psId
+operator|+
+literal|": Cannot find PatchSet entry in"
+operator|+
+literal|" database."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+specifier|final
+name|RevId
+name|revId
+init|=
+name|ps
 operator|.
 name|getRevision
 argument_list|()
@@ -1446,6 +1477,38 @@ name|getPatchSet
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|p
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error while generating the list of descendants for"
+operator|+
+literal|" revision "
+operator|+
+name|revId
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|": Cannot find PatchSet entry in"
+operator|+
+literal|" database for "
+operator|+
+name|a
+operator|.
+name|getPatchSet
+argument_list|()
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 specifier|final
 name|Change
 name|c
@@ -1480,6 +1543,7 @@ name|p
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally
