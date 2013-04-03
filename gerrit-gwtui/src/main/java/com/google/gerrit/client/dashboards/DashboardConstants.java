@@ -95,6 +95,11 @@ name|String
 name|dashboardName
 parameter_list|()
 function_decl|;
+DECL|method|dashboardTitle ()
+name|String
+name|dashboardTitle
+parameter_list|()
+function_decl|;
 DECL|method|dashboardDescription ()
 name|String
 name|dashboardDescription
