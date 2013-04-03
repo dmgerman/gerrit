@@ -625,6 +625,15 @@ name|n
 parameter_list|)
 comment|/*-{ return this.labels[n]; }-*/
 function_decl|;
+DECL|method|has_permitted_labels ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_permitted_labels
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('permitted_labels') }-*/
+function_decl|;
 DECL|method|_permitted_labels ()
 specifier|private
 specifier|final
