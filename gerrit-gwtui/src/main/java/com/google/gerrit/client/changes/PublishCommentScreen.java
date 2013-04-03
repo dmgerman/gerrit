@@ -1685,6 +1685,17 @@ name|Panel
 name|body
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|change
+operator|.
+name|has_permitted_labels
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 name|JsArrayString
 name|nativeValues
 init|=

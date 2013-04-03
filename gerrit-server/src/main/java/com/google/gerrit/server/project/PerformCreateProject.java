@@ -248,22 +248,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|GerritPersonIdent
@@ -722,21 +706,25 @@ name|serverIdent
 decl_stmt|;
 DECL|field|createProjectArgs
 specifier|private
+specifier|final
 name|CreateProjectArgs
 name|createProjectArgs
 decl_stmt|;
 DECL|field|projectCache
 specifier|private
+specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
 DECL|field|groupBackend
 specifier|private
+specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
 DECL|field|metaDataUpdateFactory
 specifier|private
+specifier|final
 name|MetaDataUpdate
 operator|.
 name|User
@@ -744,7 +732,7 @@ name|metaDataUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PerformCreateProject (@rojectOwnerGroups Set<AccountGroup.UUID> pOwnerGroups, IdentifiedUser identifiedUser, GitRepositoryManager gitRepoManager, GitReferenceUpdated referenceUpdated, DynamicSet<NewProjectCreatedListener> createdListener, ReviewDb db, @GerritPersonIdent PersonIdent personIdent, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, @Assisted CreateProjectArgs createPArgs, ProjectCache pCache)
+DECL|method|PerformCreateProject (@rojectOwnerGroups Set<AccountGroup.UUID> pOwnerGroups, IdentifiedUser identifiedUser, GitRepositoryManager gitRepoManager, GitReferenceUpdated referenceUpdated, DynamicSet<NewProjectCreatedListener> createdListener, @GerritPersonIdent PersonIdent personIdent, GroupBackend groupBackend, MetaDataUpdate.User metaDataUpdateFactory, @Assisted CreateProjectArgs createPArgs, ProjectCache pCache)
 name|PerformCreateProject
 parameter_list|(
 annotation|@
@@ -771,9 +759,6 @@ argument_list|<
 name|NewProjectCreatedListener
 argument_list|>
 name|createdListener
-parameter_list|,
-name|ReviewDb
-name|db
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
