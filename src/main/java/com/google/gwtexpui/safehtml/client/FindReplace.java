@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -66,97 +66,51 @@ name|client
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|regexp
+operator|.
+name|shared
+operator|.
+name|RegExp
+import|;
+end_import
+
 begin_comment
-comment|/** A Find/Replace pair used against the SafeHtml block of text */
+comment|/** A Find/Replace pair used against the {@link SafeHtml} block of text. */
 end_comment
 
-begin_class
-DECL|class|RegexFindReplace
+begin_interface
+DECL|interface|FindReplace
 specifier|public
-class|class
-name|RegexFindReplace
+interface|interface
+name|FindReplace
 block|{
-DECL|field|find
-specifier|private
-name|String
-name|find
-decl_stmt|;
-DECL|field|replace
-specifier|private
+comment|/**    * @return regular expression to match substrings with; should be treated as    *     immutable.    */
+DECL|method|pattern ()
+specifier|public
+name|RegExp
+name|pattern
+parameter_list|()
+function_decl|;
+comment|/**    * Find and replace a single instance of this pattern in an input.    *<p>    *<b>WARNING:</b> No XSS sanitization is done on the return value of this    * method, e.g. this value may be passed directly to    * {@link SafeHtml#replaceAll(String, String)}. Implementations must sanitize output    * appropriately.    *    * @param input input string.    * @return result of regular expression replacement.    * @throws IllegalArgumentException if the input could not be safely sanitized.    */
+DECL|method|replace (String input)
+specifier|public
 name|String
 name|replace
-decl_stmt|;
-DECL|method|RegexFindReplace ()
-specifier|protected
-name|RegexFindReplace
-parameter_list|()
-block|{   }
-DECL|method|RegexFindReplace (final String find, final String replace)
-specifier|public
-name|RegexFindReplace
 parameter_list|(
-specifier|final
 name|String
-name|find
-parameter_list|,
-specifier|final
-name|String
-name|replace
+name|input
 parameter_list|)
-block|{
-name|this
-operator|.
-name|find
-operator|=
-name|find
-expr_stmt|;
-name|this
-operator|.
-name|replace
-operator|=
-name|replace
-expr_stmt|;
+function_decl|;
 block|}
-DECL|method|find ()
-specifier|public
-name|String
-name|find
-parameter_list|()
-block|{
-return|return
-name|find
-return|;
-block|}
-DECL|method|replace ()
-specifier|public
-name|String
-name|replace
-parameter_list|()
-block|{
-return|return
-name|replace
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|toString ()
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-literal|"find = "
-operator|+
-name|find
-operator|+
-literal|", replace = "
-operator|+
-name|replace
-return|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
