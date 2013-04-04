@@ -938,7 +938,7 @@ block|{
 return|return
 name|CommentVisibilityStrategy
 operator|.
-name|EXPAND_MOST_RECENT
+name|EXPAND_RECENT
 return|;
 block|}
 return|return
