@@ -68,6 +68,7 @@ end_package
 
 begin_enum
 DECL|enum|CommitMergeStatus
+specifier|public
 enum|enum
 name|CommitMergeStatus
 block|{
