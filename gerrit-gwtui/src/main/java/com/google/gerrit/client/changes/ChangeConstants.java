@@ -510,6 +510,11 @@ name|String
 name|messageNoAuthor
 parameter_list|()
 function_decl|;
+DECL|method|messageExpandMostRecent ()
+name|String
+name|messageExpandMostRecent
+parameter_list|()
+function_decl|;
 DECL|method|messageExpandRecent ()
 name|String
 name|messageExpandRecent

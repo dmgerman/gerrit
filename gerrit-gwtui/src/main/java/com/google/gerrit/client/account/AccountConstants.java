@@ -115,6 +115,11 @@ name|String
 name|accountId
 parameter_list|()
 function_decl|;
+DECL|method|commentVisibilityLabel ()
+name|String
+name|commentVisibilityLabel
+parameter_list|()
+function_decl|;
 DECL|method|maximumPageSizeFieldLabel ()
 name|String
 name|maximumPageSizeFieldLabel
