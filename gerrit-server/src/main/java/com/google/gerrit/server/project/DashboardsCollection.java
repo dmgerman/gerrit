@@ -1201,6 +1201,10 @@ name|info
 operator|.
 name|title
 operator|=
+name|replace
+argument_list|(
+name|project
+argument_list|,
 name|config
 operator|.
 name|getString
@@ -1211,11 +1215,16 @@ literal|null
 argument_list|,
 literal|"title"
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|info
 operator|.
 name|description
 operator|=
+name|replace
+argument_list|(
+name|project
+argument_list|,
 name|config
 operator|.
 name|getString
@@ -1225,6 +1234,7 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"description"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|info
