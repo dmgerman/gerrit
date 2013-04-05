@@ -557,7 +557,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|anonymous
+name|registered
 operator|=
 operator|new
 name|GroupReference
