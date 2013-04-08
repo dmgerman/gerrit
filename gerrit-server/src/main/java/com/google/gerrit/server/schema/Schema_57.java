@@ -1009,7 +1009,7 @@ name|stmt
 operator|.
 name|setInt
 argument_list|(
-literal|0
+literal|1
 argument_list|,
 name|sc
 operator|.
