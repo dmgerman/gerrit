@@ -283,6 +283,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|name
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
