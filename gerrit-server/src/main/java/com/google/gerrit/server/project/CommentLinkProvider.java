@@ -152,6 +152,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ProvisionException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -272,10 +284,9 @@ range|:
 name|subsections
 control|)
 block|{
-name|cls
-operator|.
-name|add
-argument_list|(
+name|CommentLinkInfo
+name|cl
+init|=
 name|ProjectConfig
 operator|.
 name|buildCommentLink
@@ -286,6 +297,32 @@ name|name
 argument_list|,
 literal|true
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|cl
+operator|.
+name|isOverrideOnly
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"commentlink "
+operator|+
+name|name
+operator|+
+literal|" empty except for \"enabled\""
+argument_list|)
+throw|;
+block|}
+name|cls
+operator|.
+name|add
+argument_list|(
+name|cl
 argument_list|)
 expr_stmt|;
 block|}

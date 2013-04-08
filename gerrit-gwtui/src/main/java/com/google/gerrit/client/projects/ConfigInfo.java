@@ -344,6 +344,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|cl
+operator|.
+name|enabled
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
+if|if
+condition|(
 name|cl
 operator|.
 name|link
@@ -434,6 +445,14 @@ name|String
 name|html
 parameter_list|()
 comment|/*-{ return this.html; }-*/
+function_decl|;
+DECL|method|enabled ()
+specifier|final
+specifier|native
+name|boolean
+name|enabled
+parameter_list|()
+comment|/*-{       return !this.hasOwnProperty('enabled') || this.enabled;     }-*/
 function_decl|;
 DECL|method|CommentLinkInfo ()
 specifier|protected
