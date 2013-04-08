@@ -116,6 +116,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -147,6 +163,13 @@ argument_list|<
 name|Patch
 argument_list|>
 name|patches
+decl_stmt|;
+DECL|field|project
+specifier|protected
+name|Project
+operator|.
+name|NameKey
+name|project
 decl_stmt|;
 DECL|method|PatchSetDetail ()
 specifier|public
@@ -230,6 +253,35 @@ name|p
 parameter_list|)
 block|{
 name|patches
+operator|=
+name|p
+expr_stmt|;
+block|}
+DECL|method|getProject ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|project
+return|;
+block|}
+DECL|method|setProject (final Project.NameKey p)
+specifier|public
+name|void
+name|setProject
+parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
+name|project
 operator|=
 name|p
 expr_stmt|;

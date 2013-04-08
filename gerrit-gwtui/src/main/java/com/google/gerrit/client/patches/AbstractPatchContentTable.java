@@ -184,6 +184,22 @@ name|client
 operator|.
 name|ui
 operator|.
+name|CommentLinkProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
 name|CommentPanel
 import|;
 end_import
@@ -995,6 +1011,11 @@ DECL|field|regOpenByEnter
 specifier|private
 name|HandlerRegistration
 name|regOpenByEnter
+decl_stmt|;
+DECL|field|commentLinkProcessor
+specifier|private
+name|CommentLinkProcessor
+name|commentLinkProcessor
 decl_stmt|;
 DECL|field|isDisplayBinary
 name|boolean
@@ -2026,6 +2047,21 @@ name|s
 argument_list|,
 name|d
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setCommentLinkProcessor (CommentLinkProcessor commentLinkProcessor)
+name|void
+name|setCommentLinkProcessor
+parameter_list|(
+name|CommentLinkProcessor
+name|commentLinkProcessor
+parameter_list|)
+block|{
+name|this
+operator|.
+name|commentLinkProcessor
+operator|=
+name|commentLinkProcessor
 expr_stmt|;
 block|}
 DECL|method|hasDifferences (PatchScript script)
@@ -3725,6 +3761,8 @@ operator|new
 name|CommentEditorPanel
 argument_list|(
 name|newComment
+argument_list|,
+name|commentLinkProcessor
 argument_list|)
 decl_stmt|;
 name|ed
@@ -4588,6 +4626,8 @@ operator|new
 name|CommentEditorPanel
 argument_list|(
 name|line
+argument_list|,
+name|commentLinkProcessor
 argument_list|)
 decl_stmt|;
 name|plc
@@ -5533,6 +5573,8 @@ name|c
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|commentLinkProcessor
 argument_list|)
 expr_stmt|;
 name|this

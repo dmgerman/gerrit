@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|CommentLinkProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -252,7 +268,7 @@ name|hp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (Change chg, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, final AccountInfoCache acc, SubmitTypeRecord submitTypeRecord)
+DECL|method|display (Change chg, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, AccountInfoCache acc, SubmitTypeRecord submitTypeRecord, CommentLinkProcessor commentLinkProcessor)
 specifier|public
 name|void
 name|display
@@ -269,12 +285,14 @@ parameter_list|,
 name|PatchSetInfo
 name|info
 parameter_list|,
-specifier|final
 name|AccountInfoCache
 name|acc
 parameter_list|,
 name|SubmitTypeRecord
 name|submitTypeRecord
+parameter_list|,
+name|CommentLinkProcessor
+name|commentLinkProcessor
 parameter_list|)
 block|{
 name|infoBlock
@@ -305,6 +323,8 @@ name|info
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|commentLinkProcessor
 argument_list|)
 expr_stmt|;
 block|}

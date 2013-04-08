@@ -148,6 +148,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|CommentLinkProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -366,7 +382,9 @@ name|client
 operator|.
 name|ui
 operator|.
-name|UIObject
+name|HTMLTable
+operator|.
+name|CellFormatter
 import|;
 end_import
 
@@ -384,9 +402,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|HTMLTable
-operator|.
-name|CellFormatter
+name|UIObject
 import|;
 end_import
 

@@ -610,14 +610,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (final String commitMessage)
+DECL|method|display (String commitMessage, CommentLinkProcessor commentLinkProcessor)
 specifier|public
 name|void
 name|display
 parameter_list|(
-specifier|final
 name|String
 name|commitMessage
+parameter_list|,
+name|CommentLinkProcessor
+name|commentLinkProcessor
 parameter_list|)
 block|{
 name|display
@@ -629,6 +631,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|commitMessage
+argument_list|,
+name|commentLinkProcessor
 argument_list|)
 expr_stmt|;
 block|}
@@ -797,7 +801,7 @@ literal|'\n'
 return|;
 block|}
 block|}
-DECL|method|display (final PatchSet.Id patchSetId, Boolean starred, Boolean canEditCommitMessage, final String commitMessage)
+DECL|method|display (final PatchSet.Id patchSetId, Boolean starred, Boolean canEditCommitMessage, final String commitMessage, CommentLinkProcessor commentLinkProcessor)
 specifier|public
 name|void
 name|display
@@ -817,6 +821,9 @@ parameter_list|,
 specifier|final
 name|String
 name|commitMessage
+parameter_list|,
+name|CommentLinkProcessor
+name|commentLinkProcessor
 parameter_list|)
 block|{
 name|starPanel
@@ -1225,7 +1232,7 @@ argument_list|()
 expr_stmt|;
 name|commitSummaryLinkified
 operator|=
-name|CommentLinkProcessor
+name|commentLinkProcessor
 operator|.
 name|apply
 argument_list|(
@@ -1291,7 +1298,7 @@ argument_list|()
 expr_stmt|;
 name|commitBodyLinkified
 operator|=
-name|CommentLinkProcessor
+name|commentLinkProcessor
 operator|.
 name|apply
 argument_list|(

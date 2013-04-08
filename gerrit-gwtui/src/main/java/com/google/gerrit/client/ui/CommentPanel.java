@@ -627,6 +627,11 @@ specifier|final
 name|DoubleClickHTML
 name|messageText
 decl_stmt|;
+DECL|field|commentLinkProcessor
+specifier|private
+name|CommentLinkProcessor
+name|commentLinkProcessor
+decl_stmt|;
 DECL|field|buttons
 specifier|private
 name|FlowPanel
@@ -637,7 +642,7 @@ specifier|private
 name|boolean
 name|recent
 decl_stmt|;
-DECL|method|CommentPanel (final AccountInfo author, final Date when, String message)
+DECL|method|CommentPanel (final AccountInfo author, final Date when, String message, CommentLinkProcessor commentLinkProcessor)
 specifier|public
 name|CommentPanel
 parameter_list|(
@@ -651,10 +656,15 @@ name|when
 parameter_list|,
 name|String
 name|message
+parameter_list|,
+name|CommentLinkProcessor
+name|commentLinkProcessor
 parameter_list|)
 block|{
 name|this
-argument_list|()
+argument_list|(
+name|commentLinkProcessor
+argument_list|)
 expr_stmt|;
 name|setMessageText
 argument_list|(
@@ -729,11 +739,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CommentPanel ()
+DECL|method|CommentPanel (CommentLinkProcessor commentLinkProcessor)
 specifier|protected
 name|CommentPanel
-parameter_list|()
+parameter_list|(
+name|CommentLinkProcessor
+name|commentLinkProcessor
+parameter_list|)
 block|{
+name|this
+operator|.
+name|commentLinkProcessor
+operator|=
+name|commentLinkProcessor
+expr_stmt|;
 specifier|final
 name|FlowPanel
 name|body
@@ -1092,7 +1111,7 @@ argument_list|()
 decl_stmt|;
 name|buf
 operator|=
-name|CommentLinkProcessor
+name|commentLinkProcessor
 operator|.
 name|apply
 argument_list|(

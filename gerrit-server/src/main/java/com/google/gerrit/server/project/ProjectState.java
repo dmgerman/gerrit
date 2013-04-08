@@ -656,6 +656,15 @@ specifier|final
 name|RulesCache
 name|rulesCache
 decl_stmt|;
+DECL|field|commentLinks
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|CommentLinkInfo
+argument_list|>
+name|commentLinks
+decl_stmt|;
 DECL|field|config
 specifier|private
 specifier|final
@@ -706,7 +715,7 @@ name|capabilities
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, @Assisted final ProjectConfig config)
+DECL|method|ProjectState ( final ProjectCache projectCache, final AllProjectsName allProjectsName, final ProjectControl.AssistedFactory projectControlFactory, final PrologEnvironment.Factory envFactory, final GitRepositoryManager gitMgr, final RulesCache rulesCache, final List<CommentLinkInfo> commentLinks, @Assisted final ProjectConfig config)
 specifier|public
 name|ProjectState
 parameter_list|(
@@ -737,6 +746,13 @@ parameter_list|,
 specifier|final
 name|RulesCache
 name|rulesCache
+parameter_list|,
+specifier|final
+name|List
+argument_list|<
+name|CommentLinkInfo
+argument_list|>
+name|commentLinks
 parameter_list|,
 annotation|@
 name|Assisted
@@ -797,6 +813,12 @@ operator|.
 name|rulesCache
 operator|=
 name|rulesCache
+expr_stmt|;
+name|this
+operator|.
+name|commentLinks
+operator|=
+name|commentLinks
 expr_stmt|;
 name|this
 operator|.
@@ -1968,6 +1990,19 @@ argument_list|(
 name|all
 argument_list|)
 argument_list|)
+return|;
+block|}
+DECL|method|getCommentLinks ()
+specifier|public
+name|List
+argument_list|<
+name|CommentLinkInfo
+argument_list|>
+name|getCommentLinks
+parameter_list|()
+block|{
+return|return
+name|commentLinks
 return|;
 block|}
 DECL|method|getInheritableBoolean (Function<Project, InheritableBoolean> func)
