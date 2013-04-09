@@ -248,6 +248,19 @@ return|return
 name|commentLinkProcessor
 return|;
 block|}
+DECL|method|getTheme ()
+specifier|public
+name|ThemeInfo
+name|getTheme
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|theme
+argument_list|()
+return|;
+block|}
 block|}
 DECL|method|get (Project.NameKey name, AsyncCallback<Entry> cb)
 specifier|public

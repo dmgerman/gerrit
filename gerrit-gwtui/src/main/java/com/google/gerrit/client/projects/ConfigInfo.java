@@ -409,6 +409,14 @@ return|return
 name|commentLinks
 return|;
 block|}
+DECL|method|theme ()
+specifier|final
+specifier|native
+name|ThemeInfo
+name|theme
+parameter_list|()
+comment|/*-{ return this.theme; }-*/
+function_decl|;
 DECL|method|ConfigInfo ()
 specifier|protected
 name|ConfigInfo

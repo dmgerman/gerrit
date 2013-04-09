@@ -1434,6 +1434,14 @@ operator|.
 name|getCommentLinkProcessor
 argument_list|()
 expr_stmt|;
+name|setTheme
+argument_list|(
+name|result
+operator|.
+name|getTheme
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|display
 argument_list|(
 name|pubDetail
