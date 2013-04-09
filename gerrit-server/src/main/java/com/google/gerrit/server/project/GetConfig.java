@@ -177,6 +177,11 @@ name|CommentLinkInfo
 argument_list|>
 name|commentlinks
 decl_stmt|;
+DECL|field|theme
+specifier|public
+name|ThemeInfo
+name|theme
+decl_stmt|;
 block|}
 annotation|@
 name|Override
@@ -303,6 +308,16 @@ name|cl
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Themes are visible to anyone, as they are rendered client-side.
+name|result
+operator|.
+name|theme
+operator|=
+name|project
+operator|.
+name|getTheme
+argument_list|()
+expr_stmt|;
 return|return
 name|result
 return|;

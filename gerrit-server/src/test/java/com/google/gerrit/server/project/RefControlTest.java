@@ -3988,6 +3988,8 @@ argument_list|,
 operator|new
 name|ProjectState
 argument_list|(
+literal|null
+argument_list|,
 name|projectCache
 argument_list|,
 name|allProjectsName
@@ -4021,6 +4023,8 @@ argument_list|,
 operator|new
 name|ProjectState
 argument_list|(
+literal|null
+argument_list|,
 name|projectCache
 argument_list|,
 name|allProjectsName

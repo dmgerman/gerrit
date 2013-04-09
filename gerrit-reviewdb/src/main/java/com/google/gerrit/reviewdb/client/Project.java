@@ -390,6 +390,11 @@ specifier|protected
 name|String
 name|localDefaultDashboardId
 decl_stmt|;
+DECL|field|themeName
+specifier|protected
+name|String
+name|themeName
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -704,6 +709,33 @@ operator|.
 name|localDefaultDashboardId
 operator|=
 name|localDefaultDashboardId
+expr_stmt|;
+block|}
+DECL|method|getThemeName ()
+specifier|public
+name|String
+name|getThemeName
+parameter_list|()
+block|{
+return|return
+name|themeName
+return|;
+block|}
+DECL|method|setThemeName (final String themeName)
+specifier|public
+name|void
+name|setThemeName
+parameter_list|(
+specifier|final
+name|String
+name|themeName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|themeName
+operator|=
+name|themeName
 expr_stmt|;
 block|}
 DECL|method|copySettingsFrom (final Project update)

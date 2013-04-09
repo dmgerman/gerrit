@@ -632,6 +632,8 @@ operator|=
 operator|new
 name|ProjectState
 argument_list|(
+literal|null
+argument_list|,
 name|this
 argument_list|,
 name|allProjectsName
