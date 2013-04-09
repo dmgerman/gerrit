@@ -107,6 +107,20 @@ name|MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|NoSuchEntityException (String message)
+specifier|public
+name|NoSuchEntityException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
