@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.events
+DECL|package|com.google.gerrit.server.data
 package|package
 name|com
 operator|.
@@ -62,58 +62,30 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|events
+name|data
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Patch
-operator|.
-name|ChangeType
-import|;
-end_import
-
 begin_class
-DECL|class|PatchAttribute
+DECL|class|SubmitLabelAttribute
 specifier|public
 class|class
-name|PatchAttribute
+name|SubmitLabelAttribute
 block|{
-DECL|field|file
+DECL|field|label
 specifier|public
 name|String
-name|file
+name|label
 decl_stmt|;
-DECL|field|fileOld
+DECL|field|status
 specifier|public
 name|String
-name|fileOld
+name|status
 decl_stmt|;
-DECL|field|type
+DECL|field|by
 specifier|public
-name|ChangeType
-name|type
-decl_stmt|;
-DECL|field|insertions
-specifier|public
-name|int
-name|insertions
-decl_stmt|;
-DECL|field|deletions
-specifier|public
-name|int
-name|deletions
+name|AccountAttribute
+name|by
 decl_stmt|;
 block|}
 end_class

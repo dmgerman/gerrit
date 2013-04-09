@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.events
+DECL|package|com.google.gerrit.server.data
 package|package
 name|com
 operator|.
@@ -62,35 +62,40 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|events
+name|data
 package|;
 end_package
 
 begin_class
-DECL|class|PatchSetCommentAttribute
+DECL|class|DependencyAttribute
 specifier|public
 class|class
-name|PatchSetCommentAttribute
+name|DependencyAttribute
 block|{
-DECL|field|file
+DECL|field|id
 specifier|public
 name|String
-name|file
+name|id
 decl_stmt|;
-DECL|field|line
-specifier|public
-name|Integer
-name|line
-decl_stmt|;
-DECL|field|reviewer
-specifier|public
-name|AccountAttribute
-name|reviewer
-decl_stmt|;
-DECL|field|message
+DECL|field|number
 specifier|public
 name|String
-name|message
+name|number
+decl_stmt|;
+DECL|field|revision
+specifier|public
+name|String
+name|revision
+decl_stmt|;
+DECL|field|ref
+specifier|public
+name|String
+name|ref
+decl_stmt|;
+DECL|field|isCurrentPatchSet
+specifier|public
+name|Boolean
+name|isCurrentPatchSet
 decl_stmt|;
 block|}
 end_class

@@ -358,7 +358,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|events
+name|data
 operator|.
 name|ApprovalAttribute
 import|;
