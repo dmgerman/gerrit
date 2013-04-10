@@ -1471,17 +1471,6 @@ operator|.
 name|Type
 operator|.
 name|SIDE_BY_SIDE
-operator|&&
-name|patch
-operator|.
-name|getPatchType
-argument_list|()
-operator|==
-name|Patch
-operator|.
-name|PatchType
-operator|.
-name|UNIFIED
 condition|)
 block|{
 name|link
