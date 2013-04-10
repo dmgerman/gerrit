@@ -275,7 +275,6 @@ parameter_list|()
 comment|/*-{ return this.commentlinks; }-*/
 function_decl|;
 DECL|method|commentlinks ()
-specifier|public
 specifier|final
 name|List
 argument_list|<

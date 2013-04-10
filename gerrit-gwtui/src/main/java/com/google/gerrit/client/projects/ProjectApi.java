@@ -237,7 +237,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|config (Project.NameKey name)
-specifier|public
 specifier|static
 name|RestApi
 name|config
