@@ -1211,6 +1211,11 @@ condition|(
 name|findReplaceList
 operator|==
 literal|null
+operator|||
+name|findReplaceList
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
