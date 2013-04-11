@@ -276,11 +276,6 @@ literal|"ServerPlannedIFrameLinker"
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|link (final TreeLogger logger, final LinkerContext context, final ArtifactSet artifacts)
 specifier|public

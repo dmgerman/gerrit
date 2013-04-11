@@ -330,11 +330,6 @@ literal|"CssLinker"
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|link (final TreeLogger logger, final LinkerContext context, final ArtifactSet artifacts)
 specifier|public
@@ -479,6 +474,9 @@ block|}
 for|for
 control|(
 name|Artifact
+argument_list|<
+name|?
+argument_list|>
 name|a
 range|:
 name|artifacts
@@ -779,6 +777,15 @@ name|CssPubRsrc
 extends|extends
 name|PublicResource
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|src
 specifier|private
 specifier|final
