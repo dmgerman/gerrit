@@ -920,6 +920,13 @@ condition|(
 name|gw
 operator|!=
 literal|null
+operator|&&
+name|gw
+operator|.
+name|canLink
+argument_list|(
+name|ps
+argument_list|)
 condition|)
 block|{
 specifier|final

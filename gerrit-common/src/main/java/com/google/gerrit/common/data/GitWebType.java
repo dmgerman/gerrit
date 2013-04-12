@@ -297,6 +297,12 @@ name|pathSeparator
 init|=
 literal|'/'
 decl_stmt|;
+comment|/** Whether to include links to draft patch sets */
+DECL|field|linkDrafts
+specifier|private
+name|boolean
+name|linkDrafts
+decl_stmt|;
 comment|/** Private default constructor for gson. */
 DECL|method|GitWebType ()
 specifier|protected
@@ -356,6 +362,17 @@ parameter_list|()
 block|{
 return|return
 name|fileHistory
+return|;
+block|}
+comment|/**    * Get whether to link to draft patch sets    *    * @return True to link    */
+DECL|method|getLinkDrafts ()
+specifier|public
+name|boolean
+name|getLinkDrafts
+parameter_list|()
+block|{
+return|return
+name|linkDrafts
 return|;
 block|}
 comment|/**    * Set the pattern for branch view.    *    * @param pattern The pattern for branch view    */
@@ -557,6 +574,22 @@ operator|.
 name|pathSeparator
 operator|=
 name|separator
+expr_stmt|;
+block|}
+DECL|method|setLinkDrafts (boolean linkDrafts)
+specifier|public
+name|void
+name|setLinkDrafts
+parameter_list|(
+name|boolean
+name|linkDrafts
+parameter_list|)
+block|{
+name|this
+operator|.
+name|linkDrafts
+operator|=
+name|linkDrafts
 expr_stmt|;
 block|}
 block|}
