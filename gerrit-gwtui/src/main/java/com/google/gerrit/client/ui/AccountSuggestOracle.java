@@ -349,7 +349,12 @@ name|FormatUtil
 operator|.
 name|nameEmail
 argument_list|(
+name|FormatUtil
+operator|.
+name|asInfo
+argument_list|(
 name|info
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -364,7 +369,12 @@ name|FormatUtil
 operator|.
 name|nameEmail
 argument_list|(
+name|FormatUtil
+operator|.
+name|asInfo
+argument_list|(
 name|info
+argument_list|)
 argument_list|)
 return|;
 block|}
