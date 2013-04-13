@@ -738,6 +738,25 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can stream Gerrit events. */
+DECL|method|canStreamEvents ()
+specifier|public
+name|boolean
+name|canStreamEvents
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|STREAM_EVENTS
+argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
 comment|/** @return true if the user can run the Git garbage collection. */
 DECL|method|canRunGC ()
 specifier|public

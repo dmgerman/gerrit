@@ -236,6 +236,16 @@ name|START_REPLICATION
 init|=
 literal|"startReplication"
 decl_stmt|;
+comment|/** Can perform streaming of Gerrit events. */
+DECL|field|STREAM_EVENTS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|STREAM_EVENTS
+init|=
+literal|"streamEvents"
+decl_stmt|;
 comment|/** Can view the server's current cache states. */
 DECL|field|VIEW_CACHES
 specifier|public
@@ -379,6 +389,13 @@ operator|.
 name|add
 argument_list|(
 name|START_REPLICATION
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|STREAM_EVENTS
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
