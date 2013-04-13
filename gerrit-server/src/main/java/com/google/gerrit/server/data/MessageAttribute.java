@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2011 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.events
+DECL|package|com.google.gerrit.server.data
 package|package
 name|com
 operator|.
@@ -62,30 +62,30 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|events
+name|data
 package|;
 end_package
 
 begin_class
-DECL|class|SubmitLabelAttribute
+DECL|class|MessageAttribute
 specifier|public
 class|class
-name|SubmitLabelAttribute
+name|MessageAttribute
 block|{
-DECL|field|label
+DECL|field|timestamp
 specifier|public
-name|String
-name|label
+name|Long
+name|timestamp
 decl_stmt|;
-DECL|field|status
-specifier|public
-name|String
-name|status
-decl_stmt|;
-DECL|field|by
+DECL|field|reviewer
 specifier|public
 name|AccountAttribute
-name|by
+name|reviewer
+decl_stmt|;
+DECL|field|message
+specifier|public
+name|String
+name|message
 decl_stmt|;
 block|}
 end_class

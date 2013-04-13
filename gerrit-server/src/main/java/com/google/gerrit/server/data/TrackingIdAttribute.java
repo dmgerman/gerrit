@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.events
+DECL|package|com.google.gerrit.server.data
 package|package
 name|com
 operator|.
@@ -62,30 +62,25 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|events
+name|data
 package|;
 end_package
 
 begin_class
-DECL|class|AccountAttribute
+DECL|class|TrackingIdAttribute
 specifier|public
 class|class
-name|AccountAttribute
+name|TrackingIdAttribute
 block|{
-DECL|field|name
+DECL|field|system
 specifier|public
 name|String
-name|name
+name|system
 decl_stmt|;
-DECL|field|email
+DECL|field|id
 specifier|public
 name|String
-name|email
-decl_stmt|;
-DECL|field|username
-specifier|public
-name|String
-name|username
+name|id
 decl_stmt|;
 block|}
 end_class
