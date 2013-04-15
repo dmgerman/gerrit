@@ -168,7 +168,7 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|ScreenLoadCallback
+name|GerritCallback
 import|;
 end_import
 
@@ -562,6 +562,9 @@ operator|.
 name|onLoad
 argument_list|()
 expr_stmt|;
+name|display
+argument_list|()
+expr_stmt|;
 name|refresh
 argument_list|()
 expr_stmt|;
@@ -614,21 +617,18 @@ argument_list|(
 name|this
 argument_list|,
 operator|new
-name|ScreenLoadCallback
+name|GerritCallback
 argument_list|<
 name|ProjectMap
 argument_list|>
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 block|{
 annotation|@
 name|Override
-specifier|protected
+specifier|public
 name|void
-name|preDisplay
+name|onSuccess
 parameter_list|(
-specifier|final
 name|ProjectMap
 name|result
 parameter_list|)
