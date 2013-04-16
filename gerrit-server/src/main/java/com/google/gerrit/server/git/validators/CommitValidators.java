@@ -3025,7 +3025,14 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"Hint: A potential Change-Id was found, but it was not in the footer of the commit message."
+literal|"Hint: A potential Change-Id was found, but it was not in the "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"footer (last paragraph) of the commit message."
 argument_list|)
 expr_stmt|;
 block|}
