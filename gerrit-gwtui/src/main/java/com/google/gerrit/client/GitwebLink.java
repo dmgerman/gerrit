@@ -231,6 +231,30 @@ operator|.
 name|type
 expr_stmt|;
 block|}
+comment|/**    * Can we link to a patch set if it's a draft    *    * @param ps Patch set to check draft status    * @return true if it's not a draft, or we can link to drafts    */
+DECL|method|canLink (final PatchSet ps)
+specifier|public
+name|boolean
+name|canLink
+parameter_list|(
+specifier|final
+name|PatchSet
+name|ps
+parameter_list|)
+block|{
+return|return
+operator|!
+name|ps
+operator|.
+name|isDraft
+argument_list|()
+operator|||
+name|type
+operator|.
+name|getLinkDrafts
+argument_list|()
+return|;
+block|}
 DECL|method|getLinkName ()
 specifier|public
 name|String
