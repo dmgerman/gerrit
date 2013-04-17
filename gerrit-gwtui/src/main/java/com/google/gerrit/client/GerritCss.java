@@ -883,6 +883,11 @@ name|String
 name|patchSetUserIdentity
 parameter_list|()
 function_decl|;
+DECL|method|patchSetWithDraft ()
+name|String
+name|patchSetWithDraft
+parameter_list|()
+function_decl|;
 DECL|method|patchSizeCell ()
 name|String
 name|patchSizeCell

@@ -722,6 +722,12 @@ specifier|protected
 name|boolean
 name|draft
 decl_stmt|;
+comment|/** Not persisted in the database */
+DECL|field|hasDraftComments
+specifier|protected
+name|boolean
+name|hasDraftComments
+decl_stmt|;
 DECL|method|PatchSet ()
 specifier|protected
 name|PatchSet
@@ -883,6 +889,32 @@ operator|.
 name|toRefName
 argument_list|()
 return|;
+block|}
+DECL|method|getHasDraftComments ()
+specifier|public
+name|boolean
+name|getHasDraftComments
+parameter_list|()
+block|{
+return|return
+name|hasDraftComments
+return|;
+block|}
+DECL|method|setHasDraftComments (boolean hasDraftComments)
+specifier|public
+name|void
+name|setHasDraftComments
+parameter_list|(
+name|boolean
+name|hasDraftComments
+parameter_list|)
+block|{
+name|this
+operator|.
+name|hasDraftComments
+operator|=
+name|hasDraftComments
+expr_stmt|;
 block|}
 annotation|@
 name|Override
