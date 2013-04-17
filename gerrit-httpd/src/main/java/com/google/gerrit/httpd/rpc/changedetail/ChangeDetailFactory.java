@@ -1514,13 +1514,11 @@ argument_list|,
 name|me
 argument_list|)
 operator|.
-name|toList
+name|iterator
 argument_list|()
 operator|.
-name|size
+name|hasNext
 argument_list|()
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
