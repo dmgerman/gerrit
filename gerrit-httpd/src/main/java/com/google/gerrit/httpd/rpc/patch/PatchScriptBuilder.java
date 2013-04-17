@@ -981,6 +981,11 @@ name|intralineFailure
 init|=
 literal|false
 decl_stmt|;
+name|boolean
+name|intralineTimeout
+init|=
+literal|false
+decl_stmt|;
 name|a
 operator|.
 name|path
@@ -1145,6 +1150,15 @@ break|break;
 case|case
 name|ERROR
 case|:
+name|intralineDifferenceIsPossible
+operator|=
+literal|false
+expr_stmt|;
+name|intralineFailure
+operator|=
+literal|true
+expr_stmt|;
+break|break;
 case|case
 name|TIMEOUT
 case|:
@@ -1152,7 +1166,7 @@ name|intralineDifferenceIsPossible
 operator|=
 literal|false
 expr_stmt|;
-name|intralineFailure
+name|intralineTimeout
 operator|=
 literal|true
 expr_stmt|;
@@ -1439,6 +1453,8 @@ argument_list|,
 name|intralineDifferenceIsPossible
 argument_list|,
 name|intralineFailure
+argument_list|,
+name|intralineTimeout
 argument_list|)
 return|;
 block|}

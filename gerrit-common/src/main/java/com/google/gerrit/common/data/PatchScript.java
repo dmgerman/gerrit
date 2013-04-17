@@ -343,7 +343,12 @@ specifier|protected
 name|boolean
 name|intralineFailure
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf)
+DECL|field|intralineTimeout
+specifier|protected
+name|boolean
+name|intralineTimeout
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -429,6 +434,10 @@ parameter_list|,
 specifier|final
 name|boolean
 name|idf
+parameter_list|,
+specifier|final
+name|boolean
+name|idt
 parameter_list|)
 block|{
 name|changeId
@@ -502,6 +511,10 @@ expr_stmt|;
 name|intralineFailure
 operator|=
 name|idf
+expr_stmt|;
+name|intralineTimeout
+operator|=
+name|idt
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -696,6 +709,16 @@ parameter_list|()
 block|{
 return|return
 name|intralineFailure
+return|;
+block|}
+DECL|method|hasIntralineTimeout ()
+specifier|public
+name|boolean
+name|hasIntralineTimeout
+parameter_list|()
+block|{
+return|return
+name|intralineTimeout
 return|;
 block|}
 DECL|method|isExpandAllComments ()
