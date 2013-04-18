@@ -1939,7 +1939,35 @@ parameter_list|(
 name|OrmException
 name|err
 parameter_list|)
-block|{     }
+block|{
+if|if
+condition|(
+name|includeZero
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot CC users that commented on updated change"
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot CC users that reviewed updated change"
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 DECL|method|add (final RecipientType rt, final Account.Id to)
 specifier|protected
