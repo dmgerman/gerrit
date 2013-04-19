@@ -390,6 +390,20 @@ name|prolog_cafe
 operator|.
 name|lang
 operator|.
+name|SymbolTerm
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|googlecode
+operator|.
+name|prolog_cafe
+operator|.
+name|lang
+operator|.
 name|Term
 import|;
 end_import
@@ -1971,9 +1985,6 @@ name|evaluator
 operator|.
 name|evaluate
 argument_list|()
-operator|.
-name|toJava
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -2779,7 +2790,7 @@ return|;
 block|}
 name|List
 argument_list|<
-name|String
+name|Term
 argument_list|>
 name|results
 decl_stmt|;
@@ -2822,9 +2833,6 @@ operator|=
 name|evaluator
 operator|.
 name|evaluate
-argument_list|()
-operator|.
-name|toJava
 argument_list|()
 expr_stmt|;
 block|}
@@ -2891,11 +2899,8 @@ literal|"Project submit rule has no solution"
 argument_list|)
 return|;
 block|}
-comment|// Take only the first result and convert it to SubmitTypeRecord
-comment|// This logic will need to change once we support multiple submit types
-comment|// in the UI
-name|String
-name|typeName
+name|Term
+name|typeTerm
 init|=
 name|results
 operator|.
@@ -2903,6 +2908,64 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|typeTerm
+operator|.
+name|isSymbol
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Submit rule '"
+operator|+
+name|evaluator
+operator|.
+name|getSubmitRule
+argument_list|()
+operator|+
+literal|"' for change "
+operator|+
+name|change
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" of "
+operator|+
+name|getProject
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" did not return a symbol."
+argument_list|)
+expr_stmt|;
+return|return
+name|typeRuleError
+argument_list|(
+literal|"Project submit rule has invalid solution"
+argument_list|)
+return|;
+block|}
+name|String
+name|typeName
+init|=
+operator|(
+operator|(
+name|SymbolTerm
+operator|)
+name|typeTerm
+operator|)
+operator|.
+name|name
+argument_list|()
 decl_stmt|;
 try|try
 block|{
