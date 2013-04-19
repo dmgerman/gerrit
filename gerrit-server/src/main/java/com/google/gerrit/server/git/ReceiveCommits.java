@@ -9228,8 +9228,6 @@ name|commit
 argument_list|,
 name|labelTypes
 argument_list|,
-name|footerLines
-argument_list|,
 name|info
 argument_list|,
 name|recipients

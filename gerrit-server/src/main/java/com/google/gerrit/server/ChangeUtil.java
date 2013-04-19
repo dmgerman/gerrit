@@ -2402,11 +2402,6 @@ name|revertCommit
 argument_list|,
 name|labelTypes
 argument_list|,
-name|revertCommit
-operator|.
-name|getFooterLines
-argument_list|()
-argument_list|,
 name|info
 argument_list|,
 name|Collections
