@@ -928,11 +928,6 @@ return|return
 name|out
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|eval (SubmitRuleEvaluator evaluator)
 specifier|private
 specifier|static
@@ -952,9 +947,6 @@ return|return
 name|evaluator
 operator|.
 name|evaluate
-argument_list|()
-operator|.
-name|toJava
 argument_list|()
 return|;
 block|}
