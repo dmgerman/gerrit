@@ -1349,18 +1349,11 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|diffPrefs
-operator|.
-name|isSyntaxHighlighting
-argument_list|()
-condition|)
+else|else
 block|{
-comment|// In order to syntax highlight the file properly we need to
-comment|// give the client the complete file contents. So force our
-comment|// context temporarily to the complete file size.
+comment|// In order to expand the skipped common lines or syntax highlight the
+comment|// file properly we need to give the client the complete file contents.
+comment|// So force our context temporarily to the complete file size.
 comment|//
 name|context
 operator|=
