@@ -1799,11 +1799,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|canSubmit (ReviewDb db, PatchSet patchSet, @Nullable ChangeData cd, boolean fastEvalLabels, boolean allowClosed, boolean allowDraft)
 specifier|public
 name|List
@@ -2677,11 +2672,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getSubmitTypeRecord (ReviewDb db, PatchSet patchSet, @Nullable ChangeData cd)
 specifier|public
 name|SubmitTypeRecord
