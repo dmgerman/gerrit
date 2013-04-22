@@ -304,20 +304,6 @@ name|jgit
 operator|.
 name|revwalk
 operator|.
-name|FooterLine
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
 name|RevCommit
 import|;
 end_import
@@ -329,16 +315,6 @@ operator|.
 name|util
 operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -427,7 +403,7 @@ operator|=
 name|trackingFooters
 expr_stmt|;
 block|}
-DECL|method|insertChange (ReviewDb db, Change change, PatchSet ps, RevCommit commit, LabelTypes labelTypes, List<FooterLine> footerLines, PatchSetInfo info, Set<Account.Id> reviewers)
+DECL|method|insertChange (ReviewDb db, Change change, PatchSet ps, RevCommit commit, LabelTypes labelTypes, PatchSetInfo info, Set<Account.Id> reviewers)
 specifier|public
 name|void
 name|insertChange
@@ -446,12 +422,6 @@ name|commit
 parameter_list|,
 name|LabelTypes
 name|labelTypes
-parameter_list|,
-name|List
-argument_list|<
-name|FooterLine
-argument_list|>
-name|footerLines
 parameter_list|,
 name|PatchSetInfo
 name|info
@@ -481,15 +451,13 @@ name|commit
 argument_list|,
 name|labelTypes
 argument_list|,
-name|footerLines
-argument_list|,
 name|info
 argument_list|,
 name|reviewers
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertChange (ReviewDb db, Change change, ChangeMessage changeMessage, PatchSet ps, RevCommit commit, LabelTypes labelTypes, List<FooterLine> footerLines, PatchSetInfo info, Set<Account.Id> reviewers)
+DECL|method|insertChange (ReviewDb db, Change change, ChangeMessage changeMessage, PatchSet ps, RevCommit commit, LabelTypes labelTypes, PatchSetInfo info, Set<Account.Id> reviewers)
 specifier|public
 name|void
 name|insertChange
@@ -511,12 +479,6 @@ name|commit
 parameter_list|,
 name|LabelTypes
 name|labelTypes
-parameter_list|,
-name|List
-argument_list|<
-name|FooterLine
-argument_list|>
-name|footerLines
 parameter_list|,
 name|PatchSetInfo
 name|info
@@ -601,7 +563,10 @@ name|change
 argument_list|,
 name|trackingFooters
 argument_list|,
-name|footerLines
+name|commit
+operator|.
+name|getFooterLines
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|approvalsUtil
