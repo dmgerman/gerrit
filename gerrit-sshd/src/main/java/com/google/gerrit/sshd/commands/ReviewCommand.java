@@ -1543,17 +1543,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-operator|!
-name|review
-operator|.
-name|labels
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
 name|reviewProvider
 operator|.
 name|get
@@ -1576,7 +1565,6 @@ argument_list|,
 name|review
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|approveOne (final PatchSet patchSet)
 specifier|private
@@ -1709,6 +1697,12 @@ name|labels
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+operator|(
+name|abandonChange
+operator|||
+name|restoreChange
+operator|)
 condition|)
 block|{
 name|changeComment
