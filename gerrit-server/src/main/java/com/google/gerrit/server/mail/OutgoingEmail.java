@@ -1557,7 +1557,13 @@ literal|0
 condition|)
 block|{
 comment|// If we have no message body, don't send.
-comment|//
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Skipping delivery of email with no body"
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -1573,7 +1579,13 @@ block|{
 comment|// If we have nobody to send this message to, then all of our
 comment|// selection filters previously for this type of message were
 comment|// unable to match a destination. Don't bother sending it.
-comment|//
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Skipping delivery of email with no recipients"
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
