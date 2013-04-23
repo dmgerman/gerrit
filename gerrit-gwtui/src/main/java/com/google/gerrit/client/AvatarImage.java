@@ -86,22 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|event
@@ -159,33 +143,29 @@ extends|extends
 name|Image
 block|{
 comment|/** A default sized avatar image. */
-DECL|method|AvatarImage (Account.Id account)
+DECL|method|AvatarImage (String email)
 specifier|public
 name|AvatarImage
 parameter_list|(
-name|Account
-operator|.
-name|Id
-name|account
+name|String
+name|email
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|account
+name|email
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * An avatar image for the given account using the requested size.    *    * @param account The account in which we are interested    * @param size A requested size. Note that the size can be ignored depending    *        on the avatar provider. A size<= 0 indicates to let the provider    *        decide a default size.    */
-DECL|method|AvatarImage (Account.Id account, int size)
+comment|/**    * An avatar image for the given account using the requested size.    *    * @param email The email address of the account in which we are interested    * @param size A requested size. Note that the size can be ignored depending    *        on the avatar provider. A size<= 0 indicates to let the provider    *        decide a default size.    */
+DECL|method|AvatarImage (String email, int size)
 specifier|public
 name|AvatarImage
 parameter_list|(
-name|Account
-operator|.
-name|Id
-name|account
+name|String
+name|email
 parameter_list|,
 name|int
 name|size
@@ -195,7 +175,7 @@ name|super
 argument_list|(
 name|url
 argument_list|(
-name|account
+name|email
 argument_list|,
 name|size
 argument_list|)
@@ -249,21 +229,30 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|url (Account.Id id, int size)
+DECL|method|url (String email, int size)
 specifier|private
 specifier|static
 name|String
 name|url
 parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
+name|String
+name|email
 parameter_list|,
 name|int
 name|size
 parameter_list|)
 block|{
+if|if
+condition|(
+name|email
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 name|String
 name|u
 decl_stmt|;
@@ -274,7 +263,7 @@ operator|.
 name|isSignedIn
 argument_list|()
 operator|&&
-name|id
+name|email
 operator|.
 name|equals
 argument_list|(
@@ -283,7 +272,7 @@ operator|.
 name|getUserAccount
 argument_list|()
 operator|.
-name|getId
+name|getPreferredEmail
 argument_list|()
 argument_list|)
 condition|)
@@ -297,10 +286,7 @@ else|else
 block|{
 name|u
 operator|=
-name|id
-operator|.
-name|toString
-argument_list|()
+name|email
 expr_stmt|;
 block|}
 name|RestApi
