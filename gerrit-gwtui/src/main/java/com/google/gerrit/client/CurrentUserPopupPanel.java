@@ -309,7 +309,7 @@ name|AvatarImage
 argument_list|(
 name|account
 operator|.
-name|getId
+name|getPreferredEmail
 argument_list|()
 argument_list|,
 literal|100
