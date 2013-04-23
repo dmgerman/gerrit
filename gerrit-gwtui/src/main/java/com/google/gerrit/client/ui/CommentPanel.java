@@ -688,9 +688,6 @@ expr_stmt|;
 name|setAuthorNameText
 argument_list|(
 name|author
-operator|.
-name|email
-argument_list|()
 argument_list|,
 name|FormatUtil
 operator|.
@@ -1147,14 +1144,14 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setAuthorNameText (final String authorEmail, final String nameText)
+DECL|method|setAuthorNameText (final AccountInfo author, final String nameText)
 specifier|public
 name|void
 name|setAuthorNameText
 parameter_list|(
 specifier|final
-name|String
-name|authorEmail
+name|AccountInfo
+name|author
 parameter_list|,
 specifier|final
 name|String
@@ -1172,7 +1169,7 @@ argument_list|,
 operator|new
 name|AvatarImage
 argument_list|(
-name|authorEmail
+name|author
 argument_list|,
 literal|26
 argument_list|)

@@ -72,9 +72,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|client
 operator|.
-name|PageLinks
+name|account
+operator|.
+name|AccountInfo
 import|;
 end_import
 
@@ -86,11 +88,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
-operator|.
-name|Account
+name|PageLinks
 import|;
 end_import
 
@@ -213,10 +213,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CurrentUserPopupPanel
+DECL|class|UserPopupPanel
 specifier|public
 class|class
-name|CurrentUserPopupPanel
+name|UserPopupPanel
 extends|extends
 name|PluginSafePopupPanel
 block|{
@@ -228,7 +228,7 @@ name|UiBinder
 argument_list|<
 name|Widget
 argument_list|,
-name|CurrentUserPopupPanel
+name|UserPopupPanel
 argument_list|>
 block|{   }
 DECL|field|binder
@@ -282,15 +282,18 @@ DECL|field|settings
 name|Anchor
 name|settings
 decl_stmt|;
-DECL|method|CurrentUserPopupPanel (Account account, boolean canLogOut)
+DECL|method|UserPopupPanel (AccountInfo account, boolean canLogOut, boolean showSettingsLink)
 specifier|public
-name|CurrentUserPopupPanel
+name|UserPopupPanel
 parameter_list|(
-name|Account
+name|AccountInfo
 name|account
 parameter_list|,
 name|boolean
 name|canLogOut
+parameter_list|,
+name|boolean
+name|showSettingsLink
 parameter_list|)
 block|{
 name|super
@@ -308,11 +311,10 @@ operator|new
 name|AvatarImage
 argument_list|(
 name|account
-operator|.
-name|getPreferredEmail
-argument_list|()
 argument_list|,
 literal|100
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|setWidget
@@ -353,7 +355,7 @@ if|if
 condition|(
 name|account
 operator|.
-name|getFullName
+name|name
 argument_list|()
 operator|!=
 literal|null
@@ -365,7 +367,7 @@ name|setText
 argument_list|(
 name|account
 operator|.
-name|getFullName
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -374,7 +376,7 @@ if|if
 condition|(
 name|account
 operator|.
-name|getPreferredEmail
+name|email
 argument_list|()
 operator|!=
 literal|null
@@ -386,7 +388,7 @@ name|setText
 argument_list|(
 name|account
 operator|.
-name|getPreferredEmail
+name|email
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -419,6 +421,11 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|showSettingsLink
+condition|)
+block|{
 name|settings
 operator|.
 name|setHref
@@ -433,6 +440,17 @@ name|SETTINGS
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|settings
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
