@@ -2484,10 +2484,7 @@ name|setAuthorNameText
 argument_list|(
 name|Gerrit
 operator|.
-name|getUserAccount
-argument_list|()
-operator|.
-name|getPreferredEmail
+name|getUserAccountInfo
 argument_list|()
 argument_list|,
 name|Util
@@ -2507,10 +2504,7 @@ name|setAuthorNameText
 argument_list|(
 name|Gerrit
 operator|.
-name|getUserAccount
-argument_list|()
-operator|.
-name|getPreferredEmail
+name|getUserAccountInfo
 argument_list|()
 argument_list|,
 name|Util

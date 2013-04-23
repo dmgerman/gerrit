@@ -896,7 +896,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|asInfo (Account acct)
-specifier|private
+specifier|public
 specifier|static
 name|AccountInfo
 name|asInfo
