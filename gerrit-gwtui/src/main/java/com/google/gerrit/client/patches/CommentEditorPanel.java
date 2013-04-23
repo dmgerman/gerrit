@@ -514,6 +514,14 @@ argument_list|)
 expr_stmt|;
 name|setAuthorNameText
 argument_list|(
+name|Gerrit
+operator|.
+name|getUserAccount
+argument_list|()
+operator|.
+name|getPreferredEmail
+argument_list|()
+argument_list|,
 name|PatchUtil
 operator|.
 name|C
