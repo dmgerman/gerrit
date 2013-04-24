@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|AvatarImage
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|FormatUtil
 import|;
 end_import
@@ -188,23 +202,41 @@ name|UserIdentity
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|FlowPanel
+import|;
+end_import
+
 begin_comment
 comment|/** Link to any user's account dashboard. */
 end_comment
 
 begin_class
-DECL|class|AccountLink
+DECL|class|AccountLinkPanel
 specifier|public
 class|class
-name|AccountLink
+name|AccountLinkPanel
 extends|extends
-name|InlineHyperlink
+name|FlowPanel
 block|{
 comment|/** Create a link after locating account details from an active cache. */
 DECL|method|link (AccountInfoCache cache, Account.Id id)
 specifier|public
 specifier|static
-name|AccountLink
+name|AccountLinkPanel
 name|link
 parameter_list|(
 name|AccountInfoCache
@@ -242,7 +274,7 @@ operator|!=
 literal|null
 condition|?
 operator|new
-name|AccountLink
+name|AccountLinkPanel
 argument_list|(
 name|ai
 argument_list|)
@@ -250,9 +282,9 @@ else|:
 literal|null
 return|;
 block|}
-DECL|method|AccountLink (com.google.gerrit.common.data.AccountInfo ai)
+DECL|method|AccountLinkPanel (com.google.gerrit.common.data.AccountInfo ai)
 specifier|public
-name|AccountLink
+name|AccountLinkPanel
 parameter_list|(
 name|com
 operator|.
@@ -279,9 +311,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AccountLink (UserIdentity ident)
+DECL|method|AccountLinkPanel (UserIdentity ident)
 specifier|public
-name|AccountLink
+name|AccountLinkPanel
 parameter_list|(
 name|UserIdentity
 name|ident
@@ -314,9 +346,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AccountLink (AccountInfo info)
+DECL|method|AccountLinkPanel (AccountInfo info)
 specifier|public
-name|AccountLink
+name|AccountLinkPanel
 parameter_list|(
 name|AccountInfo
 name|info
@@ -334,9 +366,9 @@ name|NEW
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AccountLink (AccountInfo info, Change.Status status)
+DECL|method|AccountLinkPanel (AccountInfo info, Change.Status status)
 specifier|public
-name|AccountLink
+name|AccountLinkPanel
 parameter_list|(
 name|AccountInfo
 name|info
@@ -347,7 +379,24 @@ name|Status
 name|status
 parameter_list|)
 block|{
-name|super
+name|addStyleName
+argument_list|(
+name|Gerrit
+operator|.
+name|RESOURCES
+operator|.
+name|css
+argument_list|()
+operator|.
+name|accountLinkPanel
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|InlineHyperlink
+name|l
+init|=
+operator|new
+name|InlineHyperlink
 argument_list|(
 name|FormatUtil
 operator|.
@@ -368,7 +417,27 @@ argument_list|,
 name|status
 argument_list|)
 argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|go
+parameter_list|()
+block|{
+name|Gerrit
+operator|.
+name|display
+argument_list|(
+name|getTargetHistoryToken
+argument_list|()
+argument_list|)
 expr_stmt|;
+block|}
+block|}
+decl_stmt|;
+name|l
+operator|.
 name|setTitle
 argument_list|(
 name|FormatUtil
@@ -377,6 +446,22 @@ name|nameEmail
 argument_list|(
 name|info
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+operator|new
+name|AvatarImage
+argument_list|(
+name|info
+argument_list|,
+literal|16
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|l
 argument_list|)
 expr_stmt|;
 block|}
@@ -451,23 +536,6 @@ return|return
 literal|""
 return|;
 block|}
-block|}
-annotation|@
-name|Override
-DECL|method|go ()
-specifier|public
-name|void
-name|go
-parameter_list|()
-block|{
-name|Gerrit
-operator|.
-name|display
-argument_list|(
-name|getTargetHistoryToken
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
