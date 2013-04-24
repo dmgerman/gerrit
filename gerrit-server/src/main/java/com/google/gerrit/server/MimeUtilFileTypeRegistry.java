@@ -379,6 +379,71 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Get specificity of mime types with generic types forced to low values    *    * "application/octet-stream" is forced to -1.    * "text/plain" is forced to 0.    * All other mime types return the specificity reported by mimeType itself.    *    * @param mimeType The mimeType to get the corrected specificity for.    * @return The corrected specificity.    */
+DECL|method|getCorrectedMimeSpecificity (MimeType mimeType)
+specifier|private
+name|int
+name|getCorrectedMimeSpecificity
+parameter_list|(
+name|MimeType
+name|mimeType
+parameter_list|)
+block|{
+comment|// Although the documentation of MimeType's getSpecificity claims that for
+comment|// example "application/octet-stream" always has a specificity of 0, it
+comment|// effectively returns 1 for us. This causes problems when trying to get
+comment|// the correct mime type via sorting. For example in
+comment|// [application/octet-stream, image/x-icon] both mime types come with
+comment|// specificity 1 for us. Hence, getMimeType below may end up using
+comment|// application/octet-stream instead of the more specific image/x-icon.
+comment|// Therefore, we have to force the specificity of generic types below the
+comment|// default of 1.
+comment|//
+specifier|final
+name|String
+name|mimeTypeStr
+init|=
+name|mimeType
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|mimeTypeStr
+operator|.
+name|equals
+argument_list|(
+literal|"application/octet-stream"
+argument_list|)
+condition|)
+block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
+if|if
+condition|(
+name|mimeTypeStr
+operator|.
+name|equals
+argument_list|(
+literal|"text/plain"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+return|return
+name|mimeType
+operator|.
+name|getSpecificity
+argument_list|()
+return|;
+block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -545,15 +610,15 @@ name|b
 parameter_list|)
 block|{
 return|return
+name|getCorrectedMimeSpecificity
+argument_list|(
 name|b
-operator|.
-name|getSpecificity
-argument_list|()
+argument_list|)
 operator|-
+name|getCorrectedMimeSpecificity
+argument_list|(
 name|a
-operator|.
-name|getSpecificity
-argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
