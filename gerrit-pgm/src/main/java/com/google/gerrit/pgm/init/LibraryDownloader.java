@@ -120,6 +120,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|pgm
+operator|.
+name|util
+operator|.
+name|IoUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -329,12 +345,6 @@ specifier|final
 name|File
 name|lib_dir
 decl_stmt|;
-DECL|field|reload
-specifier|private
-specifier|final
-name|ReloadSiteLibrary
-name|reload
-decl_stmt|;
 DECL|field|required
 specifier|private
 name|boolean
@@ -367,18 +377,12 @@ name|dst
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LibraryDownloader (final ReloadSiteLibrary reload, final ConsoleUI ui, final SitePaths site)
+DECL|method|LibraryDownloader (ConsoleUI ui, SitePaths site)
 name|LibraryDownloader
 parameter_list|(
-specifier|final
-name|ReloadSiteLibrary
-name|reload
-parameter_list|,
-specifier|final
 name|ConsoleUI
 name|ui
 parameter_list|,
-specifier|final
 name|SitePaths
 name|site
 parameter_list|)
@@ -396,12 +400,6 @@ operator|=
 name|site
 operator|.
 name|lib_dir
-expr_stmt|;
-name|this
-operator|.
-name|reload
-operator|=
-name|reload
 expr_stmt|;
 block|}
 DECL|method|setName (final String name)
@@ -929,11 +927,22 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|reload
+if|if
+condition|(
+name|dst
 operator|.
-name|reload
+name|exists
 argument_list|()
+condition|)
+block|{
+name|IoUtil
+operator|.
+name|loadJARs
+argument_list|(
+name|dst
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|removeStaleVersions ()
 specifier|private
