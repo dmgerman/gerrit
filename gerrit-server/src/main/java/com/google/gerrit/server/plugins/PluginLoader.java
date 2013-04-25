@@ -224,6 +224,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PluginUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|ConfigUtil
@@ -665,6 +679,14 @@ specifier|final
 name|ServerInformationImpl
 name|srvInfoImpl
 decl_stmt|;
+DECL|field|pluginUserFactory
+specifier|private
+specifier|final
+name|PluginUser
+operator|.
+name|Factory
+name|pluginUserFactory
+decl_stmt|;
 DECL|field|running
 specifier|private
 specifier|final
@@ -735,7 +757,7 @@ name|scanner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginLoader (SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg)
+DECL|method|PluginLoader (SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg)
 specifier|public
 name|PluginLoader
 parameter_list|(
@@ -747,6 +769,11 @@ name|pe
 parameter_list|,
 name|ServerInformationImpl
 name|sii
+parameter_list|,
+name|PluginUser
+operator|.
+name|Factory
+name|puf
 parameter_list|,
 name|Provider
 argument_list|<
@@ -785,6 +812,10 @@ expr_stmt|;
 name|srvInfoImpl
 operator|=
 name|sii
+expr_stmt|;
+name|pluginUserFactory
+operator|=
+name|puf
 expr_stmt|;
 name|running
 operator|=
@@ -1381,7 +1412,9 @@ expr_stmt|;
 name|plugin
 operator|.
 name|stop
-argument_list|()
+argument_list|(
+name|env
+argument_list|)
 expr_stmt|;
 name|running
 operator|.
@@ -3008,6 +3041,13 @@ operator|new
 name|Plugin
 argument_list|(
 name|name
+argument_list|,
+name|pluginUserFactory
+operator|.
+name|create
+argument_list|(
+name|name
+argument_list|)
 argument_list|,
 name|srcJar
 argument_list|,
