@@ -173,6 +173,11 @@ name|String
 name|approvalscore
 parameter_list|()
 function_decl|;
+DECL|method|avatarInfoPanel ()
+name|String
+name|avatarInfoPanel
+parameter_list|()
+function_decl|;
 DECL|method|blockHeader ()
 name|String
 name|blockHeader

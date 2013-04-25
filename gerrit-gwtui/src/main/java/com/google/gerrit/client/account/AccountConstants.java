@@ -95,6 +95,11 @@ name|String
 name|settingsHeading
 parameter_list|()
 function_decl|;
+DECL|method|changeAvatar ()
+name|String
+name|changeAvatar
+parameter_list|()
+function_decl|;
 DECL|method|fullName ()
 name|String
 name|fullName

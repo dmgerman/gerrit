@@ -280,6 +280,11 @@ name|AvatarImage
 extends|extends
 name|Image
 block|{
+DECL|method|AvatarImage ()
+specifier|public
+name|AvatarImage
+parameter_list|()
+block|{   }
 comment|/** A default sized avatar image. */
 DECL|method|AvatarImage (AccountInfo account)
 specifier|public
@@ -334,7 +339,32 @@ name|boolean
 name|addPopup
 parameter_list|)
 block|{
-name|super
+name|setAccount
+argument_list|(
+name|account
+argument_list|,
+name|size
+argument_list|,
+name|addPopup
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setAccount (AccountInfo account, int size, boolean addPopup)
+specifier|public
+name|void
+name|setAccount
+parameter_list|(
+name|AccountInfo
+name|account
+parameter_list|,
+name|int
+name|size
+parameter_list|,
+name|boolean
+name|addPopup
+parameter_list|)
+block|{
+name|setUrl
 argument_list|(
 name|isGerritServer
 argument_list|(
