@@ -126,7 +126,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|ErrorEvent
+name|LoadEvent
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|ErrorHandler
+name|LoadHandler
 import|;
 end_import
 
@@ -355,6 +355,11 @@ name|size
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|size
@@ -375,27 +380,25 @@ literal|"px"
 argument_list|)
 expr_stmt|;
 block|}
-name|addErrorHandler
+name|addLoadHandler
 argument_list|(
 operator|new
-name|ErrorHandler
+name|LoadHandler
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
 name|void
-name|onError
+name|onLoad
 parameter_list|(
-name|ErrorEvent
+name|LoadEvent
 name|event
 parameter_list|)
 block|{
-comment|// We got a 404, don't bother showing the image. Either the user doesn't
-comment|// have an avatar or there is no avatar provider plugin installed.
 name|setVisible
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
