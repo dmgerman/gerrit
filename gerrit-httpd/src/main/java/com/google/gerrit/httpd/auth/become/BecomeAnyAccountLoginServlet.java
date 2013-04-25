@@ -164,6 +164,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|httpd
+operator|.
+name|template
+operator|.
+name|SiteHeaderFooter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -552,9 +568,15 @@ specifier|final
 name|AccountManager
 name|accountManager
 decl_stmt|;
+DECL|field|headers
+specifier|private
+specifier|final
+name|SiteHeaderFooter
+name|headers
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BecomeAnyAccountLoginServlet (final Provider<WebSession> ws, final SchemaFactory<ReviewDb> sf, final AccountManager am, final ServletContext servletContext)
+DECL|method|BecomeAnyAccountLoginServlet (final Provider<WebSession> ws, final SchemaFactory<ReviewDb> sf, final AccountManager am, final ServletContext servletContext, SiteHeaderFooter shf)
 name|BecomeAnyAccountLoginServlet
 parameter_list|(
 specifier|final
@@ -578,6 +600,9 @@ parameter_list|,
 specifier|final
 name|ServletContext
 name|servletContext
+parameter_list|,
+name|SiteHeaderFooter
+name|shf
 parameter_list|)
 block|{
 name|webSession
@@ -591,6 +616,10 @@ expr_stmt|;
 name|accountManager
 operator|=
 name|am
+expr_stmt|;
+name|headers
+operator|=
+name|shf
 expr_stmt|;
 block|}
 annotation|@
@@ -1081,13 +1110,12 @@ name|pageName
 init|=
 literal|"BecomeAnyAccount.html"
 decl_stmt|;
-specifier|final
 name|Document
 name|doc
 init|=
-name|HtmlDomUtil
+name|headers
 operator|.
-name|parseFile
+name|parse
 argument_list|(
 name|getClass
 argument_list|()

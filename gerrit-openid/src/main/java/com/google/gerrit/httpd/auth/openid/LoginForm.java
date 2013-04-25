@@ -208,6 +208,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|httpd
+operator|.
+name|template
+operator|.
+name|SiteHeaderFooter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -555,9 +571,15 @@ specifier|final
 name|String
 name|ssoUrl
 decl_stmt|;
+DECL|field|header
+specifier|private
+specifier|final
+name|SiteHeaderFooter
+name|header
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LoginForm ( @anonicalWebUrl @ullable Provider<String> urlProvider, @GerritServerConfig Config config, AuthConfig authConfig, OpenIdServiceImpl impl)
+DECL|method|LoginForm ( @anonicalWebUrl @ullable Provider<String> urlProvider, @GerritServerConfig Config config, AuthConfig authConfig, OpenIdServiceImpl impl, SiteHeaderFooter header)
 name|LoginForm
 parameter_list|(
 annotation|@
@@ -580,6 +602,9 @@ name|authConfig
 parameter_list|,
 name|OpenIdServiceImpl
 name|impl
+parameter_list|,
+name|SiteHeaderFooter
+name|header
 parameter_list|)
 block|{
 name|this
@@ -593,6 +618,12 @@ operator|.
 name|impl
 operator|=
 name|impl
+expr_stmt|;
+name|this
+operator|.
+name|header
+operator|=
+name|header
 expr_stmt|;
 name|this
 operator|.
@@ -1632,9 +1663,9 @@ block|}
 name|Document
 name|doc
 init|=
-name|HtmlDomUtil
+name|header
 operator|.
-name|parseFile
+name|parse
 argument_list|(
 name|LoginForm
 operator|.
