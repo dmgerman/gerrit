@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.util
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|util
 package|;
 end_package
 
@@ -74,25 +76,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|AccountProjectWatch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Change
+name|ReviewDb
 import|;
 end_import
 
@@ -106,9 +92,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|CapabilityControl
+name|CurrentUser
 import|;
 end_import
 
@@ -122,9 +106,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|GroupMembership
+name|PluginUser
 import|;
 end_import
 
@@ -136,143 +118,102 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|Provider
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|inject
 operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
+name|ProvisionException
 import|;
 end_import
 
 begin_comment
-comment|/**  * User identity for plugin code that needs an identity.  *<p>  * An InternalUser has no real identity, it acts as the server and can access  * anything it wants, anytime it wants, given the JVM's own direct access to  * data. Plugins may use this when they need to have a CurrentUser with read  * permission on anything.  *  * @see PluginUser  */
+comment|/** RequestContext active while plugins load or unload. */
 end_comment
 
 begin_class
-DECL|class|InternalUser
+DECL|class|PluginRequestContext
 specifier|public
 class|class
-name|InternalUser
-extends|extends
-name|CurrentUser
+name|PluginRequestContext
+implements|implements
+name|RequestContext
 block|{
-DECL|interface|Factory
+DECL|field|user
+specifier|private
+specifier|final
+name|PluginUser
+name|user
+decl_stmt|;
+DECL|method|PluginRequestContext (PluginUser user)
 specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create ()
-name|InternalUser
-name|create
-parameter_list|()
-function_decl|;
-block|}
-annotation|@
-name|Inject
-DECL|method|InternalUser (CapabilityControl.Factory capabilityControlFactory)
-specifier|protected
-name|InternalUser
+name|PluginRequestContext
 parameter_list|(
-name|CapabilityControl
-operator|.
-name|Factory
-name|capabilityControlFactory
+name|PluginUser
+name|user
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|capabilityControlFactory
-argument_list|)
+name|this
+operator|.
+name|user
+operator|=
+name|user
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getEffectiveGroups ()
+DECL|method|getCurrentUser ()
 specifier|public
-name|GroupMembership
-name|getEffectiveGroups
+name|CurrentUser
+name|getCurrentUser
 parameter_list|()
 block|{
 return|return
-name|GroupMembership
-operator|.
-name|EMPTY
+name|user
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getStarredChanges ()
+DECL|method|getReviewDbProvider ()
 specifier|public
-name|Set
+name|Provider
 argument_list|<
-name|Change
-operator|.
-name|Id
+name|ReviewDb
 argument_list|>
-name|getStarredChanges
+name|getReviewDbProvider
 parameter_list|()
 block|{
 return|return
-name|Collections
-operator|.
-name|emptySet
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getNotificationFilters ()
-specifier|public
-name|Collection
+operator|new
+name|Provider
 argument_list|<
-name|AccountProjectWatch
+name|ReviewDb
 argument_list|>
-name|getNotificationFilters
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|emptySet
 argument_list|()
-return|;
-block|}
+block|{
 annotation|@
 name|Override
-DECL|method|toString ()
 specifier|public
-name|String
-name|toString
+name|ReviewDb
+name|get
 parameter_list|()
 block|{
-return|return
-literal|"InternalUser"
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Automatic ReviewDb only available in request scope"
+argument_list|)
+throw|;
+block|}
+block|}
 return|;
 block|}
 block|}
