@@ -239,6 +239,17 @@ name|ImageResource
 name|addFileComment
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"diffy.png"
+argument_list|)
+DECL|method|gerritAvatar ()
+specifier|public
+name|ImageResource
+name|gerritAvatar
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
