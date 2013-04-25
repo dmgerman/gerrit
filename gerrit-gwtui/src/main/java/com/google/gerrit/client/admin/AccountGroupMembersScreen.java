@@ -216,7 +216,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountLink
+name|AccountLinkPanel
 import|;
 end_import
 
@@ -2055,7 +2055,7 @@ argument_list|,
 literal|2
 argument_list|,
 operator|new
-name|AccountLink
+name|AccountLinkPanel
 argument_list|(
 name|i
 argument_list|)

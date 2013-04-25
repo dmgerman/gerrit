@@ -268,7 +268,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountLink
+name|AccountLinkPanel
 import|;
 end_import
 
@@ -2429,7 +2429,7 @@ name|col
 operator|++
 argument_list|,
 operator|new
-name|AccountLink
+name|AccountLinkPanel
 argument_list|(
 name|account
 argument_list|)

@@ -142,7 +142,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountLink
+name|AccountLinkPanel
 import|;
 end_import
 
@@ -1720,7 +1720,7 @@ argument_list|,
 name|C_OWNER
 argument_list|,
 operator|new
-name|AccountLink
+name|AccountLinkPanel
 argument_list|(
 name|c
 operator|.

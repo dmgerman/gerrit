@@ -108,7 +108,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountLink
+name|AccountLinkPanel
 import|;
 end_import
 
@@ -1536,7 +1536,7 @@ block|}
 block|}
 DECL|method|link (final Account.Id id)
 specifier|private
-name|AccountLink
+name|AccountLinkPanel
 name|link
 parameter_list|(
 specifier|final
@@ -1547,7 +1547,7 @@ name|id
 parameter_list|)
 block|{
 return|return
-name|AccountLink
+name|AccountLinkPanel
 operator|.
 name|link
 argument_list|(

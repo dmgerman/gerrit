@@ -108,6 +108,11 @@ name|String
 name|accountInfoBlock
 parameter_list|()
 function_decl|;
+DECL|method|accountLinkPanel ()
+name|String
+name|accountLinkPanel
+parameter_list|()
+function_decl|;
 DECL|method|accountName ()
 name|String
 name|accountName
