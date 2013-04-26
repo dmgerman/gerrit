@@ -239,7 +239,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE revision = ? LIMIT 2"
+literal|"WHERE revision = ?"
 argument_list|)
 DECL|method|byRevision (RevId rev)
 name|ResultSet
@@ -257,7 +257,7 @@ function_decl|;
 annotation|@
 name|Query
 argument_list|(
-literal|"WHERE revision>= ? AND revision<= ? LIMIT 2"
+literal|"WHERE revision>= ? AND revision<= ?"
 argument_list|)
 DECL|method|byRevisionRange (RevId reva, RevId revb)
 name|ResultSet
