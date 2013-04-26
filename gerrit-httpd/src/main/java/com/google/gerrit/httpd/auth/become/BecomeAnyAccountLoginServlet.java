@@ -1256,6 +1256,15 @@ name|getFullName
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|a
+operator|.
+name|getFullName
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|displayName
