@@ -1721,20 +1721,6 @@ return|return
 name|listenablePrefs
 return|;
 block|}
-DECL|method|setPreferences (ListenableAccountDiffPreference prefs)
-specifier|public
-name|void
-name|setPreferences
-parameter_list|(
-name|ListenableAccountDiffPreference
-name|prefs
-parameter_list|)
-block|{
-name|listenablePrefs
-operator|=
-name|prefs
-expr_stmt|;
-block|}
 DECL|class|MyTable
 specifier|private
 class|class
