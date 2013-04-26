@@ -579,6 +579,7 @@ argument_list|>
 block|{   }
 DECL|field|listenablePrefs
 specifier|private
+specifier|final
 name|ListenableAccountDiffPreference
 name|listenablePrefs
 decl_stmt|;
