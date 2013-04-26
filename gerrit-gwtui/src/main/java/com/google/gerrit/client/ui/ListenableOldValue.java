@@ -105,6 +105,8 @@ name|T
 name|value
 parameter_list|)
 block|{
+try|try
+block|{
 name|oldValue
 operator|=
 name|get
@@ -117,11 +119,15 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|oldValue
 operator|=
 literal|null
 expr_stmt|;
 comment|// allow it to be gced before the next event
+block|}
 block|}
 block|}
 end_class
