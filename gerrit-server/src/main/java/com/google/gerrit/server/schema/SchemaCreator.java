@@ -398,6 +398,11 @@ specifier|private
 name|AccountGroup
 name|owners
 decl_stmt|;
+DECL|field|batch
+specifier|private
+name|AccountGroup
+name|batch
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|SchemaCreator (SitePaths site, @Current SchemaVersion version, AllProjectsCreator ap, @GerritPersonIdent PersonIdent au, DataSourceType dst)
@@ -587,6 +592,16 @@ operator|.
 name|forGroup
 argument_list|(
 name|admin
+argument_list|)
+argument_list|)
+operator|.
+name|setBatchUsers
+argument_list|(
+name|GroupReference
+operator|.
+name|forGroup
+argument_list|(
+name|batch
 argument_list|)
 argument_list|)
 operator|.
@@ -897,10 +912,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-specifier|final
-name|AccountGroup
-name|batchUsers
-init|=
+name|batch
+operator|=
 name|newGroup
 argument_list|(
 name|c
@@ -909,15 +922,15 @@ literal|"Non-Interactive Users"
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-name|batchUsers
+expr_stmt|;
+name|batch
 operator|.
 name|setDescription
 argument_list|(
 literal|"Users who perform batch actions on Gerrit"
 argument_list|)
 expr_stmt|;
-name|batchUsers
+name|batch
 operator|.
 name|setOwnerGroupUUID
 argument_list|(
@@ -927,7 +940,7 @@ name|getGroupUUID
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|batchUsers
+name|batch
 operator|.
 name|setType
 argument_list|(
@@ -949,7 +962,7 @@ name|Collections
 operator|.
 name|singleton
 argument_list|(
-name|batchUsers
+name|batch
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -967,7 +980,7 @@ argument_list|(
 operator|new
 name|AccountGroupName
 argument_list|(
-name|batchUsers
+name|batch
 argument_list|)
 argument_list|)
 argument_list|)
