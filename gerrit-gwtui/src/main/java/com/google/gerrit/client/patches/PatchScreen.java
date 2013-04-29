@@ -340,7 +340,7 @@ name|gerrit
 operator|.
 name|prettify
 operator|.
-name|common
+name|client
 operator|.
 name|PrettyFactory
 import|;

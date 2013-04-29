@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.prettify.common
+DECL|package|com.google.gerrit.prettify.client
 package|package
 name|com
 operator|.
@@ -62,83 +62,23 @@ name|gerrit
 operator|.
 name|prettify
 operator|.
-name|common
+name|client
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
-name|GWT
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Constants
-import|;
-end_import
+begin_comment
+comment|/** Creates a new PrettyFormatter instance for one formatting run. */
+end_comment
 
 begin_interface
-DECL|interface|PrettifyConstants
+DECL|interface|PrettyFactory
 specifier|public
 interface|interface
-name|PrettifyConstants
-extends|extends
-name|Constants
+name|PrettyFactory
 block|{
-DECL|field|C
-specifier|static
-specifier|final
-name|PrettifyConstants
-name|C
-init|=
-name|GWT
-operator|.
-name|create
-argument_list|(
-name|PrettifyConstants
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-DECL|method|wseTabAfterSpace ()
-name|String
-name|wseTabAfterSpace
-parameter_list|()
-function_decl|;
-DECL|method|wseTrailingSpace ()
-name|String
-name|wseTrailingSpace
-parameter_list|()
-function_decl|;
-DECL|method|wseBareCR ()
-name|String
-name|wseBareCR
-parameter_list|()
-function_decl|;
-DECL|method|leCR ()
-name|String
-name|leCR
+DECL|method|get ()
+name|PrettyFormatter
+name|get
 parameter_list|()
 function_decl|;
 block|}

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.prettify.common
+DECL|package|com.google.gerrit.prettify.client
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|prettify
 operator|.
-name|common
+name|client
 package|;
 end_package
 
@@ -72,58 +72,74 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtexpui
+name|gwt
 operator|.
-name|safehtml
+name|core
 operator|.
 name|client
 operator|.
-name|SafeHtml
+name|GWT
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|i18n
+operator|.
+name|client
+operator|.
+name|Constants
 import|;
 end_import
 
 begin_interface
-DECL|interface|SparseHtmlFile
+DECL|interface|PrettifyConstants
 specifier|public
 interface|interface
-name|SparseHtmlFile
+name|PrettifyConstants
+extends|extends
+name|Constants
 block|{
-comment|/** @return the line of formatted HTML. */
-DECL|method|getSafeHtmlLine (int lineNo)
-specifier|public
-name|SafeHtml
-name|getSafeHtmlLine
-parameter_list|(
-name|int
-name|lineNo
-parameter_list|)
-function_decl|;
-comment|/** @return the number of lines in this sparse list. */
-DECL|method|size ()
-specifier|public
-name|int
-name|size
+DECL|field|C
+specifier|static
+specifier|final
+name|PrettifyConstants
+name|C
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|PrettifyConstants
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|method|wseTabAfterSpace ()
+name|String
+name|wseTabAfterSpace
 parameter_list|()
 function_decl|;
-comment|/** @return true if the line is valid in this sparse list. */
-DECL|method|contains (int idx)
-specifier|public
-name|boolean
-name|contains
-parameter_list|(
-name|int
-name|idx
-parameter_list|)
+DECL|method|wseTrailingSpace ()
+name|String
+name|wseTrailingSpace
+parameter_list|()
 function_decl|;
-comment|/** @return true if this line ends in the middle of a character edit span. */
-DECL|method|hasTrailingEdit (int idx)
-specifier|public
-name|boolean
-name|hasTrailingEdit
-parameter_list|(
-name|int
-name|idx
-parameter_list|)
+DECL|method|wseBareCR ()
+name|String
+name|wseBareCR
+parameter_list|()
+function_decl|;
+DECL|method|leCR ()
+name|String
+name|leCR
+parameter_list|()
 function_decl|;
 block|}
 end_interface

@@ -254,9 +254,9 @@ name|gerrit
 operator|.
 name|prettify
 operator|.
-name|common
+name|client
 operator|.
-name|EditList
+name|SparseHtmlFile
 import|;
 end_import
 
@@ -272,7 +272,7 @@ name|prettify
 operator|.
 name|common
 operator|.
-name|SparseHtmlFile
+name|EditList
 import|;
 end_import
 

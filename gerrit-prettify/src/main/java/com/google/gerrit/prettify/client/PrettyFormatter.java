@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.prettify.common
+DECL|package|com.google.gerrit.prettify.client
 package|package
 name|com
 operator|.
@@ -62,9 +62,25 @@ name|gerrit
 operator|.
 name|prettify
 operator|.
-name|common
+name|client
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|prettify
+operator|.
+name|common
+operator|.
+name|SparseFileContent
+import|;
+end_import
 
 begin_import
 import|import

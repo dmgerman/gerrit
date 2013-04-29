@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.prettify.common
+DECL|package|com.google.gerrit.prettify.client
 package|package
 name|com
 operator|.
@@ -62,24 +62,68 @@ name|gerrit
 operator|.
 name|prettify
 operator|.
-name|common
+name|client
 package|;
 end_package
 
-begin_comment
-comment|/** Creates a new PrettyFormatter instance for one formatting run. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtexpui
+operator|.
+name|safehtml
+operator|.
+name|client
+operator|.
+name|SafeHtml
+import|;
+end_import
 
 begin_interface
-DECL|interface|PrettyFactory
+DECL|interface|SparseHtmlFile
 specifier|public
 interface|interface
-name|PrettyFactory
+name|SparseHtmlFile
 block|{
-DECL|method|get ()
-name|PrettyFormatter
-name|get
+comment|/** @return the line of formatted HTML. */
+DECL|method|getSafeHtmlLine (int lineNo)
+specifier|public
+name|SafeHtml
+name|getSafeHtmlLine
+parameter_list|(
+name|int
+name|lineNo
+parameter_list|)
+function_decl|;
+comment|/** @return the number of lines in this sparse list. */
+DECL|method|size ()
+specifier|public
+name|int
+name|size
 parameter_list|()
+function_decl|;
+comment|/** @return true if the line is valid in this sparse list. */
+DECL|method|contains (int idx)
+specifier|public
+name|boolean
+name|contains
+parameter_list|(
+name|int
+name|idx
+parameter_list|)
+function_decl|;
+comment|/** @return true if this line ends in the middle of a character edit span. */
+DECL|method|hasTrailingEdit (int idx)
+specifier|public
+name|boolean
+name|hasTrailingEdit
+parameter_list|(
+name|int
+name|idx
+parameter_list|)
 function_decl|;
 block|}
 end_interface
