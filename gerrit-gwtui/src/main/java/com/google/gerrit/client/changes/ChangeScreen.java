@@ -1593,7 +1593,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|oldVersionHistory
+name|referenceVersion
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -615,9 +615,9 @@ name|String
 name|abandonChangeTitle
 parameter_list|()
 function_decl|;
-DECL|method|oldVersionHistory ()
+DECL|method|referenceVersion ()
 name|String
-name|oldVersionHistory
+name|referenceVersion
 parameter_list|()
 function_decl|;
 DECL|method|baseDiffItem ()
