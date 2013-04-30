@@ -1014,6 +1014,10 @@ argument_list|(
 name|fullName
 argument_list|)
 expr_stmt|;
+name|accountUpdated
+operator|=
+literal|true
+expr_stmt|;
 block|}
 else|else
 block|{
