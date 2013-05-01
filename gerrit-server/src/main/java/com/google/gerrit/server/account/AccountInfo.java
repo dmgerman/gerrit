@@ -709,6 +709,11 @@ specifier|public
 name|String
 name|email
 decl_stmt|;
+DECL|field|username
+specifier|public
+name|String
+name|username
+decl_stmt|;
 DECL|method|fill (Account account, boolean detailed)
 specifier|private
 name|void
@@ -748,6 +753,13 @@ operator|=
 name|account
 operator|.
 name|getPreferredEmail
+argument_list|()
+expr_stmt|;
+name|username
+operator|=
+name|account
+operator|.
+name|getUserName
 argument_list|()
 expr_stmt|;
 block|}
