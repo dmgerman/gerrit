@@ -92,6 +92,20 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
 name|HtmlDomUtil
 import|;
 end_import
@@ -171,22 +185,6 @@ operator|.
 name|account
 operator|.
 name|AuthResult
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|CanonicalWebUrl
 import|;
 end_import
 
@@ -434,10 +432,7 @@ decl_stmt|;
 DECL|field|urlProvider
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
+name|CanonicalWebUrl
 name|urlProvider
 decl_stmt|;
 DECL|field|accountManager
@@ -454,7 +449,7 @@ name|authFilter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLoginServlet (final Provider<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AccountManager accountManager, final HttpAuthFilter authFilter)
+DECL|method|HttpLoginServlet (final Provider<WebSession> webSession, final CanonicalWebUrl urlProvider, final AccountManager accountManager, final HttpAuthFilter authFilter)
 name|HttpLoginServlet
 parameter_list|(
 specifier|final
@@ -464,15 +459,8 @@ name|WebSession
 argument_list|>
 name|webSession
 parameter_list|,
-annotation|@
-name|CanonicalWebUrl
-annotation|@
-name|Nullable
 specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
+name|CanonicalWebUrl
 name|urlProvider
 parameter_list|,
 specifier|final
@@ -833,7 +821,9 @@ argument_list|(
 name|urlProvider
 operator|.
 name|get
-argument_list|()
+argument_list|(
+name|req
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|rdr
