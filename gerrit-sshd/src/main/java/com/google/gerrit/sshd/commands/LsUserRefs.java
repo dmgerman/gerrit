@@ -464,6 +464,10 @@ name|metaVar
 operator|=
 literal|"PROJECT"
 argument_list|,
+name|required
+operator|=
+literal|true
+argument_list|,
 name|usage
 operator|=
 literal|"project for which the refs should be listed"
@@ -489,6 +493,10 @@ argument_list|,
 name|metaVar
 operator|=
 literal|"USER"
+argument_list|,
+name|required
+operator|=
+literal|true
 argument_list|,
 name|usage
 operator|=
@@ -532,27 +540,6 @@ parameter_list|()
 throws|throws
 name|Failure
 block|{
-if|if
-condition|(
-name|userName
-operator|==
-literal|null
-operator|||
-name|projectControl
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|UnloggedFailure
-argument_list|(
-literal|1
-argument_list|,
-literal|"fatal: --user and --project options must be used."
-argument_list|)
-throw|;
-block|}
 name|Account
 name|userAccount
 init|=
