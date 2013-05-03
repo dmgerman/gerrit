@@ -498,6 +498,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -808,9 +824,15 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 decl_stmt|;
+DECL|field|projectCache
+specifier|private
+specifier|final
+name|ProjectCache
+name|projectCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|RebaseChange (final ChangeControl.Factory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ProjectCache projectCache)
 name|RebaseChange
 parameter_list|(
 specifier|final
@@ -860,6 +882,10 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
+parameter_list|,
+specifier|final
+name|ProjectCache
+name|projectCache
 parameter_list|)
 block|{
 name|this
@@ -921,6 +947,12 @@ operator|.
 name|mergeUtilFactory
 operator|=
 name|mergeUtilFactory
+expr_stmt|;
+name|this
+operator|.
+name|projectCache
+operator|=
+name|projectCache
 expr_stmt|;
 block|}
 comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
@@ -2336,11 +2368,14 @@ specifier|final
 name|LabelTypes
 name|labelTypes
 init|=
-name|changeControlFactory
+name|projectCache
 operator|.
-name|controlFor
+name|get
 argument_list|(
 name|change
+operator|.
+name|getProject
+argument_list|()
 argument_list|)
 operator|.
 name|getLabelTypes
