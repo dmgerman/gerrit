@@ -560,6 +560,11 @@ name|String
 name|patchSetInfoParents
 parameter_list|()
 function_decl|;
+DECL|method|patchSetWithDraftCommentsToolTip ()
+name|String
+name|patchSetWithDraftCommentsToolTip
+parameter_list|()
+function_decl|;
 DECL|method|initialCommit ()
 name|String
 name|initialCommit

@@ -250,6 +250,17 @@ name|ImageResource
 name|gerritAvatar
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"draftComments.png"
+argument_list|)
+DECL|method|draftComments ()
+specifier|public
+name|ImageResource
+name|draftComments
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

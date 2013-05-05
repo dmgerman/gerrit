@@ -140,6 +140,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_comment
 comment|/** Detail necessary to display a change. */
 end_comment
@@ -233,6 +243,16 @@ argument_list|<
 name|PatchSet
 argument_list|>
 name|patchSets
+decl_stmt|;
+DECL|field|patchSetsWithDraftComments
+specifier|protected
+name|Set
+argument_list|<
+name|PatchSet
+operator|.
+name|Id
+argument_list|>
+name|patchSetsWithDraftComments
 decl_stmt|;
 DECL|field|submitRecords
 specifier|protected
@@ -769,6 +789,47 @@ name|patchSets
 operator|=
 name|s
 expr_stmt|;
+block|}
+DECL|method|setPatchSetsWithDraftComments (Set<PatchSet.Id> pwdc)
+specifier|public
+name|void
+name|setPatchSetsWithDraftComments
+parameter_list|(
+name|Set
+argument_list|<
+name|PatchSet
+operator|.
+name|Id
+argument_list|>
+name|pwdc
+parameter_list|)
+block|{
+name|this
+operator|.
+name|patchSetsWithDraftComments
+operator|=
+name|pwdc
+expr_stmt|;
+block|}
+DECL|method|hasDraftComments (PatchSet.Id id)
+specifier|public
+name|boolean
+name|hasDraftComments
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+name|patchSetsWithDraftComments
+operator|.
+name|contains
+argument_list|(
+name|id
+argument_list|)
+return|;
 block|}
 DECL|method|setSubmitRecords (List<SubmitRecord> all)
 specifier|public

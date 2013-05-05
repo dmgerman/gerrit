@@ -606,6 +606,16 @@ argument_list|,
 name|ps
 operator|==
 name|currps
+argument_list|,
+name|detail
+operator|.
+name|hasDraftComments
+argument_list|(
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
