@@ -296,6 +296,10 @@ name|boolean
 name|usePool
 parameter_list|()
 block|{
+comment|// MySQL has given us trouble with the connection pool,
+comment|// sometimes the backend disconnects and the pool winds
+comment|// up with a stale connection. Fortunately opening up
+comment|// a new MySQL connection is usually very fast.
 return|return
 literal|false
 return|;
