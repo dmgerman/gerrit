@@ -902,6 +902,13 @@ operator|==
 literal|null
 condition|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"notify = null; assuming notify = NONE"
+argument_list|)
+expr_stmt|;
 name|input
 operator|.
 name|notify
