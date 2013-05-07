@@ -143,14 +143,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|PatchResource
+DECL|class|FileResource
 specifier|public
 class|class
-name|PatchResource
+name|FileResource
 implements|implements
 name|RestResource
 block|{
-DECL|field|PATCH_KIND
+DECL|field|FILE_KIND
 specifier|public
 specifier|static
 specifier|final
@@ -158,17 +158,17 @@ name|TypeLiteral
 argument_list|<
 name|RestView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|>
 argument_list|>
-name|PATCH_KIND
+name|FILE_KIND
 init|=
 operator|new
 name|TypeLiteral
 argument_list|<
 name|RestView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|>
 argument_list|>
 argument_list|()
@@ -188,8 +188,8 @@ operator|.
 name|Key
 name|key
 decl_stmt|;
-DECL|method|PatchResource (RevisionResource rev, String name)
-name|PatchResource
+DECL|method|FileResource (RevisionResource rev, String name)
+name|FileResource
 parameter_list|(
 name|RevisionResource
 name|rev
