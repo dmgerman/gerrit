@@ -251,6 +251,15 @@ name|getAccountId
 argument_list|()
 return|;
 block|}
+DECL|method|getRevision ()
+name|RevisionResource
+name|getRevision
+parameter_list|()
+block|{
+return|return
+name|rev
+return|;
+block|}
 block|}
 end_class
 
