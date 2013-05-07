@@ -189,15 +189,15 @@ import|;
 end_import
 
 begin_class
-DECL|class|Patches
+DECL|class|Files
 class|class
-name|Patches
+name|Files
 implements|implements
 name|ChildCollection
 argument_list|<
 name|RevisionResource
 argument_list|,
-name|PatchResource
+name|FileResource
 argument_list|>
 block|{
 DECL|field|views
@@ -207,21 +207,21 @@ name|DynamicMap
 argument_list|<
 name|RestView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|>
 argument_list|>
 name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Patches (DynamicMap<RestView<PatchResource>> views)
-name|Patches
+DECL|method|Files (DynamicMap<RestView<FileResource>> views)
+name|Files
 parameter_list|(
 name|DynamicMap
 argument_list|<
 name|RestView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|>
 argument_list|>
 name|views
@@ -242,7 +242,7 @@ name|DynamicMap
 argument_list|<
 name|RestView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|>
 argument_list|>
 name|views
@@ -275,7 +275,7 @@ annotation|@
 name|Override
 DECL|method|parse (RevisionResource rev, IdString id)
 specifier|public
-name|PatchResource
+name|FileResource
 name|parse
 parameter_list|(
 name|RevisionResource
@@ -293,7 +293,7 @@ name|AuthException
 block|{
 return|return
 operator|new
-name|PatchResource
+name|FileResource
 argument_list|(
 name|rev
 argument_list|,

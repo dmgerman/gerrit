@@ -132,9 +132,9 @@ name|server
 operator|.
 name|change
 operator|.
-name|PatchResource
+name|FileResource
 operator|.
-name|PATCH_KIND
+name|FILE_KIND
 import|;
 end_import
 
@@ -320,7 +320,7 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|Patches
+name|Files
 operator|.
 name|class
 argument_list|)
@@ -362,7 +362,7 @@ argument_list|(
 name|binder
 argument_list|()
 argument_list|,
-name|PATCH_KIND
+name|FILE_KIND
 argument_list|)
 expr_stmt|;
 name|DynamicMap
@@ -820,14 +820,14 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|Patches
+name|Files
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
-name|PATCH_KIND
+name|FILE_KIND
 argument_list|,
 literal|"reviewed"
 argument_list|)
@@ -841,7 +841,7 @@ argument_list|)
 expr_stmt|;
 name|delete
 argument_list|(
-name|PATCH_KIND
+name|FILE_KIND
 argument_list|,
 literal|"reviewed"
 argument_list|)

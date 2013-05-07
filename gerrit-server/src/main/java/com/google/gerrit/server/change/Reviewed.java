@@ -195,7 +195,7 @@ name|PutReviewed
 implements|implements
 name|RestModifyView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|,
 name|Input
 argument_list|>
@@ -230,12 +230,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (PatchResource resource, Input input)
+DECL|method|apply (FileResource resource, Input input)
 specifier|public
 name|Object
 name|apply
 parameter_list|(
-name|PatchResource
+name|FileResource
 name|resource
 parameter_list|,
 name|Input
@@ -325,7 +325,7 @@ name|DeleteReviewed
 implements|implements
 name|RestModifyView
 argument_list|<
-name|PatchResource
+name|FileResource
 argument_list|,
 name|Input
 argument_list|>
@@ -360,12 +360,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (PatchResource resource, Input input)
+DECL|method|apply (FileResource resource, Input input)
 specifier|public
 name|Object
 name|apply
 parameter_list|(
-name|PatchResource
+name|FileResource
 name|resource
 parameter_list|,
 name|Input
@@ -423,7 +423,7 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|getExisting (ReviewDb db, PatchResource resource)
+DECL|method|getExisting (ReviewDb db, FileResource resource)
 specifier|private
 specifier|static
 name|AccountPatchReview
@@ -432,7 +432,7 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|PatchResource
+name|FileResource
 name|resource
 parameter_list|)
 throws|throws
