@@ -461,9 +461,6 @@ argument_list|(
 name|patchSetId
 argument_list|,
 name|currentUser
-operator|.
-name|getAccountId
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

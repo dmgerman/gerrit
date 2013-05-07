@@ -301,7 +301,19 @@ name|getAccountId
 parameter_list|()
 block|{
 return|return
-operator|(
+name|getUser
+argument_list|()
+operator|.
+name|getAccountId
+argument_list|()
+return|;
+block|}
+DECL|method|getUser ()
+name|IdentifiedUser
+name|getUser
+parameter_list|()
+block|{
+return|return
 operator|(
 name|IdentifiedUser
 operator|)
@@ -309,10 +321,6 @@ name|getControl
 argument_list|()
 operator|.
 name|getCurrentUser
-argument_list|()
-operator|)
-operator|.
-name|getAccountId
 argument_list|()
 return|;
 block|}
