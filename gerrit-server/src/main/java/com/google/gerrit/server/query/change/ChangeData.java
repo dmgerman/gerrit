@@ -827,6 +827,44 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|ensureAllPatchSetsLoaded (Provider<ReviewDb> db, List<ChangeData> changes)
+specifier|public
+specifier|static
+name|void
+name|ensureAllPatchSetsLoaded
+parameter_list|(
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+parameter_list|,
+name|List
+argument_list|<
+name|ChangeData
+argument_list|>
+name|changes
+parameter_list|)
+throws|throws
+name|OrmException
+block|{
+for|for
+control|(
+name|ChangeData
+name|cd
+range|:
+name|changes
+control|)
+block|{
+name|cd
+operator|.
+name|patches
+argument_list|(
+name|db
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|ensureCurrentPatchSetLoaded ( Provider<ReviewDb> db, List<ChangeData> changes)
 specifier|public
 specifier|static
@@ -1241,6 +1279,11 @@ argument_list|<
 name|SubmitRecord
 argument_list|>
 name|submitRecords
+decl_stmt|;
+DECL|field|patchesLoaded
+specifier|private
+name|boolean
+name|patchesLoaded
 decl_stmt|;
 DECL|method|ChangeData (final Change.Id id)
 specifier|public
@@ -2146,6 +2189,9 @@ condition|(
 name|patches
 operator|==
 literal|null
+operator|||
+operator|!
+name|patchesLoaded
 condition|)
 block|{
 if|if
@@ -2225,6 +2271,10 @@ name|toList
 argument_list|()
 expr_stmt|;
 block|}
+name|patchesLoaded
+operator|=
+literal|true
+expr_stmt|;
 block|}
 return|return
 name|patches
