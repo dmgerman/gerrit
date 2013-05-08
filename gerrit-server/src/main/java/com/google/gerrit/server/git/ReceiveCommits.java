@@ -6666,7 +6666,7 @@ literal|"--draft"
 argument_list|,
 name|usage
 operator|=
-literal|"mark new/update changes as draft"
+literal|"mark new/updated changes as draft"
 argument_list|)
 DECL|field|draft
 name|boolean
