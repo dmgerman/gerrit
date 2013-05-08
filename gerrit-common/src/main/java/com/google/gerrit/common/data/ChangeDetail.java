@@ -170,6 +170,11 @@ specifier|protected
 name|boolean
 name|canEditCommitMessage
 decl_stmt|;
+DECL|field|canCherryPick
+specifier|protected
+name|boolean
+name|canCherryPick
+decl_stmt|;
 DECL|field|canPublish
 specifier|protected
 name|boolean
@@ -384,6 +389,31 @@ name|a
 parameter_list|)
 block|{
 name|canEditCommitMessage
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|canCherryPick ()
+specifier|public
+name|boolean
+name|canCherryPick
+parameter_list|()
+block|{
+return|return
+name|canCherryPick
+return|;
+block|}
+DECL|method|setCanCherryPick (final boolean a)
+specifier|public
+name|void
+name|setCanCherryPick
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canCherryPick
 operator|=
 name|a
 expr_stmt|;

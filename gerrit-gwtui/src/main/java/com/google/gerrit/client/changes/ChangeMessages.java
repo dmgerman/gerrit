@@ -133,6 +133,17 @@ name|String
 name|commitId
 parameter_list|)
 function_decl|;
+DECL|method|cherryPickedChangeDefaultMessage (String commitMsg, String commitId)
+name|String
+name|cherryPickedChangeDefaultMessage
+parameter_list|(
+name|String
+name|commitMsg
+parameter_list|,
+name|String
+name|commitId
+parameter_list|)
+function_decl|;
 DECL|method|changeScreenTitleId (String changeId)
 name|String
 name|changeScreenTitleId
