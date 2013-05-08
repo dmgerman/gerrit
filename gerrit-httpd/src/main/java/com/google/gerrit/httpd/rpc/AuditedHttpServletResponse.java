@@ -128,6 +128,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getStatus ()
+specifier|public
 name|int
 name|getStatus
 parameter_list|()
