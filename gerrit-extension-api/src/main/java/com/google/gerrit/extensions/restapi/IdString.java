@@ -95,6 +95,30 @@ name|id
 argument_list|)
 return|;
 block|}
+comment|/** Construct an identifier from an already decoded string. */
+DECL|method|fromDecoded (String id)
+specifier|public
+specifier|static
+name|IdString
+name|fromDecoded
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+return|return
+operator|new
+name|IdString
+argument_list|(
+name|Url
+operator|.
+name|encode
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|field|urlEncoded
 specifier|private
 specifier|final

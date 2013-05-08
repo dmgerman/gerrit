@@ -256,6 +256,16 @@ operator|=
 name|ps
 expr_stmt|;
 block|}
+DECL|method|getChangeResource ()
+specifier|public
+name|ChangeResource
+name|getChangeResource
+parameter_list|()
+block|{
+return|return
+name|change
+return|;
+block|}
 DECL|method|getControl ()
 specifier|public
 name|ChangeControl
@@ -263,7 +273,8 @@ name|getControl
 parameter_list|()
 block|{
 return|return
-name|change
+name|getChangeResource
+argument_list|()
 operator|.
 name|getControl
 argument_list|()
