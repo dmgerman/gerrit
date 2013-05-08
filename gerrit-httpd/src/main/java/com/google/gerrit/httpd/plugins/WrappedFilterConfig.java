@@ -130,13 +130,13 @@ block|{
 DECL|field|context
 specifier|private
 specifier|final
-name|WrappedContext
+name|ServletContext
 name|context
 decl_stmt|;
-DECL|method|WrappedFilterConfig (WrappedContext context)
+DECL|method|WrappedFilterConfig (ServletContext context)
 name|WrappedFilterConfig
 parameter_list|(
-name|WrappedContext
+name|ServletContext
 name|context
 parameter_list|)
 block|{
