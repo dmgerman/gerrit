@@ -1004,26 +1004,6 @@ name|Option
 argument_list|(
 name|name
 operator|=
-literal|"--force-message"
-argument_list|,
-name|usage
-operator|=
-literal|"publish the message, "
-operator|+
-literal|"even if the label score cannot be applied due to the change being closed"
-argument_list|)
-DECL|field|forceMessage
-specifier|private
-name|boolean
-name|forceMessage
-init|=
-literal|false
-decl_stmt|;
-annotation|@
-name|Option
-argument_list|(
-name|name
-operator|=
 literal|"--publish"
 argument_list|,
 name|usage
