@@ -1874,7 +1874,7 @@ name|revertCommitBuilder
 operator|.
 name|setCommitter
 argument_list|(
-name|myIdent
+name|authorIdent
 argument_list|)
 expr_stmt|;
 if|if
