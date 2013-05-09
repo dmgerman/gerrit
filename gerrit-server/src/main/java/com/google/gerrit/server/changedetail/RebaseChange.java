@@ -822,9 +822,15 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|currentUser
+specifier|private
+specifier|final
+name|IdentifiedUser
+name|currentUser
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final MergeUtil.Factory mergeUtilFactory, final ProjectCache projectCache)
+DECL|method|RebaseChange (final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final RebasedPatchSetSender.Factory rebasedPatchSetSenderFactory, final ChangeHookRunner hooks, final MergeUtil.Factory mergeUtilFactory, final ProjectCache projectCache, final IdentifiedUser currentUser)
 name|RebaseChange
 parameter_list|(
 specifier|final
@@ -874,6 +880,10 @@ parameter_list|,
 specifier|final
 name|ProjectCache
 name|projectCache
+parameter_list|,
+specifier|final
+name|IdentifiedUser
+name|currentUser
 parameter_list|)
 block|{
 name|this
@@ -935,6 +945,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|currentUser
+operator|=
+name|currentUser
 expr_stmt|;
 block|}
 comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
@@ -1126,6 +1142,24 @@ name|baseRev
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|PersonIdent
+name|committerIdent
+init|=
+name|currentUser
+operator|.
+name|newCommitterIdent
+argument_list|(
+name|myIdent
+operator|.
+name|getWhen
+argument_list|()
+argument_list|,
+name|myIdent
+operator|.
+name|getTimeZone
+argument_list|()
+argument_list|)
+decl_stmt|;
 specifier|final
 name|PatchSet
 name|newPatchSet
@@ -1163,6 +1197,8 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|)
+argument_list|,
+name|committerIdent
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1793,7 +1829,7 @@ name|baseRev
 return|;
 block|}
 comment|/**    * Rebases the change of the given patch set on the given base commit.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks is NOT done for the creation of    * the new patch set.    *    * @param git the repository    * @param revWalk the RevWalk    * @param inserter the object inserter    * @param patchSetId the id of the patch set    * @param chg the change that should be rebased    * @param uploader the user that creates the rebased patch set    * @param baseCommit the commit that should be the new base    * @param mergeUtil merge utilities for the destination project    * @return the new patch set which is based on the given base commit    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
-DECL|method|rebase (final Repository git, final RevWalk revWalk, final ObjectInserter inserter, final PatchSet.Id patchSetId, final Change chg, final Account.Id uploader, final RevCommit baseCommit, final MergeUtil mergeUtil)
+DECL|method|rebase (final Repository git, final RevWalk revWalk, final ObjectInserter inserter, final PatchSet.Id patchSetId, final Change chg, final Account.Id uploader, final RevCommit baseCommit, final MergeUtil mergeUtil, PersonIdent committerIdent)
 specifier|public
 name|PatchSet
 name|rebase
@@ -1833,6 +1869,9 @@ parameter_list|,
 specifier|final
 name|MergeUtil
 name|mergeUtil
+parameter_list|,
+name|PersonIdent
+name|committerIdent
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -1904,7 +1943,7 @@ name|baseCommit
 argument_list|,
 name|mergeUtil
 argument_list|,
-name|myIdent
+name|committerIdent
 argument_list|)
 decl_stmt|;
 name|rebasedCommit

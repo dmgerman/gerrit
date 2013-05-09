@@ -723,6 +723,8 @@ argument_list|(
 name|args
 argument_list|,
 name|rebaseChange
+argument_list|,
+name|myIdent
 argument_list|)
 return|;
 default|default:

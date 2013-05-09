@@ -222,6 +222,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -287,7 +301,13 @@ name|CodeReviewCommit
 argument_list|>
 name|newCommits
 decl_stmt|;
-DECL|method|RebaseIfNecessary (final SubmitStrategy.Arguments args, final RebaseChange rebaseChange)
+DECL|field|committerIdent
+specifier|private
+specifier|final
+name|PersonIdent
+name|committerIdent
+decl_stmt|;
+DECL|method|RebaseIfNecessary (final SubmitStrategy.Arguments args, final RebaseChange rebaseChange, PersonIdent committerIdent)
 name|RebaseIfNecessary
 parameter_list|(
 specifier|final
@@ -299,6 +319,9 @@ parameter_list|,
 specifier|final
 name|RebaseChange
 name|rebaseChange
+parameter_list|,
+name|PersonIdent
+name|committerIdent
 parameter_list|)
 block|{
 name|super
@@ -326,6 +349,12 @@ argument_list|,
 name|CodeReviewCommit
 argument_list|>
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|committerIdent
+operator|=
+name|committerIdent
 expr_stmt|;
 block|}
 annotation|@
@@ -522,6 +551,8 @@ argument_list|,
 name|args
 operator|.
 name|mergeUtil
+argument_list|,
+name|committerIdent
 argument_list|)
 decl_stmt|;
 name|List
