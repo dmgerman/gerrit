@@ -268,6 +268,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -437,6 +447,8 @@ throws|,
 name|NoSuchProjectException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 return|return
 name|listAccounts
@@ -491,6 +503,8 @@ throws|,
 name|OrmException
 throws|,
 name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -583,6 +597,8 @@ throws|,
 name|NoSuchGroupException
 throws|,
 name|OrmException
+throws|,
+name|IOException
 block|{
 name|seen
 operator|.
@@ -720,6 +736,8 @@ throws|,
 name|OrmException
 throws|,
 name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 name|seen
 operator|.
