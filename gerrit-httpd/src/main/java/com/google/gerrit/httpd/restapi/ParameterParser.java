@@ -902,11 +902,6 @@ parameter_list|)
 throws|throws
 name|BadRequestException
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|Map
 argument_list|<
 name|String
