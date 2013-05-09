@@ -254,6 +254,15 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
+name|ListMembersCommand
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|command
+argument_list|(
+name|gerrit
+argument_list|,
 name|ListGroupsCommand
 operator|.
 name|class
