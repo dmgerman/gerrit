@@ -256,6 +256,13 @@ name|gzip
 init|=
 literal|true
 decl_stmt|;
+DECL|field|base64
+specifier|private
+name|boolean
+name|base64
+init|=
+literal|false
+decl_stmt|;
 comment|/** @return the MIME type of the result, for HTTP clients. */
 DECL|method|getContentType ()
 specifier|public
@@ -397,6 +404,32 @@ operator|.
 name|gzip
 operator|=
 literal|false
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** @return true if the result must be base64 encoded. */
+DECL|method|isBase64 ()
+specifier|public
+name|boolean
+name|isBase64
+parameter_list|()
+block|{
+return|return
+name|base64
+return|;
+block|}
+comment|/** Wrap the binary data in base64 encoding. */
+DECL|method|base64 ()
+specifier|public
+name|BinaryResult
+name|base64
+parameter_list|()
+block|{
+name|base64
+operator|=
+literal|true
 expr_stmt|;
 return|return
 name|this
