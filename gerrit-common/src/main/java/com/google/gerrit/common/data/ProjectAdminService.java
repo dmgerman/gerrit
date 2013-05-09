@@ -389,32 +389,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|addBranch (Project.NameKey projectName, String branchName, String startingRevision, AsyncCallback<AddBranchResult> callback)
-name|void
-name|addBranch
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|projectName
-parameter_list|,
-name|String
-name|branchName
-parameter_list|,
-name|String
-name|startingRevision
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|AddBranchResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|deleteBranch (Project.NameKey projectName, Set<Branch.NameKey> ids, AsyncCallback<Set<Branch.NameKey>> callback)
 name|void
 name|deleteBranch
