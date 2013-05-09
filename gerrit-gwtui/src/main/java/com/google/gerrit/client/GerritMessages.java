@@ -201,6 +201,14 @@ name|String
 name|scriptPath
 parameter_list|)
 function_decl|;
+DECL|method|cannotDownloadPlugin (String scriptPath)
+name|String
+name|cannotDownloadPlugin
+parameter_list|(
+name|String
+name|scriptPath
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
