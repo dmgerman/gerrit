@@ -625,6 +625,8 @@ name|url
 parameter_list|)
 throws|throws
 name|GitAPIException
+throws|,
+name|IOException
 block|{
 specifier|final
 name|File
