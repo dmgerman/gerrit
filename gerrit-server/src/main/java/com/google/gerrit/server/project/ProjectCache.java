@@ -102,6 +102,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -125,7 +135,7 @@ name|ProjectState
 name|getAllProjects
 parameter_list|()
 function_decl|;
-comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists.    */
+comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists or a error occured.    * @see #checkedGet(com.google.gerrit.reviewdb.client.Project.NameKey)    */
 DECL|method|get (Project.NameKey projectName)
 specifier|public
 name|ProjectState
@@ -136,6 +146,20 @@ operator|.
 name|NameKey
 name|projectName
 parameter_list|)
+function_decl|;
+comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @throws IOException when there was an error.    * @return the cached data; null if no such project exists.    */
+DECL|method|checkedGet (Project.NameKey projectName)
+specifier|public
+name|ProjectState
+name|checkedGet
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|)
+throws|throws
+name|IOException
 function_decl|;
 comment|/** Invalidate the cached information about the given project. */
 DECL|method|evict (Project p)
