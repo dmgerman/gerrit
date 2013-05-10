@@ -692,6 +692,26 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|checkedGet (Project.NameKey projectName)
+specifier|public
+name|ProjectState
+name|checkedGet
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|)
+block|{
+return|return
+name|get
+argument_list|(
+name|projectName
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|evict (Project p)
 specifier|public
 name|void

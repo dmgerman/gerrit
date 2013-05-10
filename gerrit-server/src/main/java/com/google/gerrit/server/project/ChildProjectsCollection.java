@@ -216,6 +216,16 @@ name|Provider
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|ChildProjectsCollection
 specifier|public
@@ -342,6 +352,8 @@ name|id
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
+throws|,
+name|IOException
 block|{
 name|ProjectResource
 name|p
