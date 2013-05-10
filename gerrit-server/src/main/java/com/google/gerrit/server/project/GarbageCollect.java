@@ -140,7 +140,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestModifyView
+name|BinaryResult
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|StreamingResponse
+name|RestModifyView
 import|;
 end_import
 
@@ -311,7 +311,7 @@ annotation|@
 name|Override
 DECL|method|apply (final ProjectResource rsrc, Input input)
 specifier|public
-name|StreamingResponse
+name|BinaryResult
 name|apply
 parameter_list|(
 specifier|final
@@ -324,25 +324,14 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|StreamingResponse
+name|BinaryResult
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|String
-name|getContentType
-parameter_list|()
-block|{
-return|return
-literal|"text/plain;charset=UTF-8"
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
 name|void
-name|stream
+name|writeTo
 parameter_list|(
 name|OutputStream
 name|out
@@ -522,6 +511,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
+operator|.
+name|setContentType
+argument_list|(
+literal|"text/plain; charset=UTF-8"
+argument_list|)
+operator|.
+name|disableGzip
+argument_list|()
 return|;
 block|}
 block|}
