@@ -620,6 +620,33 @@ specifier|private
 name|boolean
 name|noAutoStart
 decl_stmt|;
+DECL|method|Init ()
+specifier|public
+name|Init
+parameter_list|()
+block|{   }
+DECL|method|Init (File sitePath)
+specifier|public
+name|Init
+parameter_list|(
+name|File
+name|sitePath
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|sitePath
+argument_list|)
+expr_stmt|;
+name|batchMode
+operator|=
+literal|true
+expr_stmt|;
+name|noAutoStart
+operator|=
+literal|true
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|run ()

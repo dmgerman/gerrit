@@ -479,6 +479,26 @@ argument_list|(
 literal|"."
 argument_list|)
 decl_stmt|;
+DECL|method|SiteProgram ()
+specifier|protected
+name|SiteProgram
+parameter_list|()
+block|{   }
+DECL|method|SiteProgram (File sitePath)
+specifier|protected
+name|SiteProgram
+parameter_list|(
+name|File
+name|sitePath
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sitePath
+operator|=
+name|sitePath
+expr_stmt|;
+block|}
 comment|/** @return the site path specified on the command line. */
 DECL|method|getSitePath ()
 specifier|protected
