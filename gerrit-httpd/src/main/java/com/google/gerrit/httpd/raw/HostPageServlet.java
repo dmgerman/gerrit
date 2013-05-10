@@ -74,6 +74,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|collect
+operator|.
+name|Lists
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|hash
 operator|.
 name|Hasher
@@ -102,9 +116,9 @@ name|google
 operator|.
 name|common
 operator|.
-name|collect
+name|primitives
 operator|.
-name|Lists
+name|Bytes
 import|;
 end_import
 
@@ -114,11 +128,11 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
-name|primitives
-operator|.
-name|Bytes
+name|Version
 import|;
 end_import
 
@@ -1894,6 +1908,15 @@ operator|new
 name|HostPageData
 argument_list|()
 decl_stmt|;
+name|pageData
+operator|.
+name|version
+operator|=
+name|Version
+operator|.
+name|getVersion
+argument_list|()
+expr_stmt|;
 name|pageData
 operator|.
 name|config

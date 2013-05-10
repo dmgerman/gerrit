@@ -118,6 +118,11 @@ specifier|public
 class|class
 name|HostPageData
 block|{
+DECL|field|version
+specifier|public
+name|String
+name|version
+decl_stmt|;
 DECL|field|account
 specifier|public
 name|Account
