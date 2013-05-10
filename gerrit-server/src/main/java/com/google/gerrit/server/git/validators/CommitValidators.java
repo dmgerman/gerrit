@@ -3147,7 +3147,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"  curl -o %s %s/tools/hooks/commit-msg ; chmod +x %s"
+literal|"  curl -Lo %s %s/tools/hooks/commit-msg ; chmod +x %s"
 argument_list|,
 name|p
 argument_list|,
