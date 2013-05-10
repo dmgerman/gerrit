@@ -262,6 +262,16 @@ name|Provider
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|ProjectsCollection
 specifier|public
@@ -434,6 +444,8 @@ name|id
 parameter_list|)
 throws|throws
 name|ResourceNotFoundException
+throws|,
+name|IOException
 block|{
 name|ProjectResource
 name|rsrc
@@ -465,7 +477,7 @@ return|return
 name|rsrc
 return|;
 block|}
-comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be    *         resolved or if the project is not visible to the calling user    */
+comment|/**    * Parses a project ID from a request body and returns the project.    *    * @param id ID of the project, can be a project name    * @return the project    * @throws UnprocessableEntityException thrown if the project ID cannot be    *         resolved or if the project is not visible to the calling user    * @throws IOException thrown when there is an error.    */
 DECL|method|parse (String id)
 specifier|public
 name|ProjectResource
@@ -476,6 +488,8 @@ name|id
 parameter_list|)
 throws|throws
 name|UnprocessableEntityException
+throws|,
+name|IOException
 block|{
 name|ProjectResource
 name|rsrc
@@ -519,6 +533,8 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|ProjectControl
 name|ctl

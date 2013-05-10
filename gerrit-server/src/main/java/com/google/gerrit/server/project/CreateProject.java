@@ -380,6 +380,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -598,6 +608,8 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|ProjectCreationFailedException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(

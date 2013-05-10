@@ -420,6 +420,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collection
@@ -570,6 +580,8 @@ name|user
 parameter_list|)
 throws|throws
 name|NoSuchProjectException
+throws|,
+name|IOException
 block|{
 specifier|final
 name|ProjectState
@@ -577,7 +589,7 @@ name|p
 init|=
 name|projectCache
 operator|.
-name|get
+name|checkedGet
 argument_list|(
 name|nameKey
 argument_list|)

@@ -690,6 +690,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|MessageFormat
@@ -1046,6 +1056,8 @@ throws|,
 name|OrmException
 throws|,
 name|EmailException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -1197,10 +1209,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
-throws|,
-name|AuthException
-throws|,
 name|BadRequestException
 throws|,
 name|UnprocessableEntityException
@@ -1208,6 +1216,8 @@ throws|,
 name|OrmException
 throws|,
 name|EmailException
+throws|,
+name|IOException
 block|{
 name|GroupDescription
 operator|.
