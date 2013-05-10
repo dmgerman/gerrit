@@ -577,6 +577,15 @@ argument_list|(
 literal|"^refs/changes/(?:[0-9][0-9])?(/[1-9][0-9]*){1,2}(?:/new)?$"
 argument_list|)
 decl_stmt|;
+DECL|field|GIT_HOOKS_COMMIT_MSG
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|GIT_HOOKS_COMMIT_MSG
+init|=
+literal|"`git rev-parse --git-dir`/hooks/commit-msg"
+decl_stmt|;
 DECL|interface|Factory
 specifier|public
 interface|interface
@@ -1839,6 +1848,11 @@ argument_list|()
 decl_stmt|;
 comment|// If there are no SSH keys, the commit-msg hook must be installed via
 comment|// HTTP(S)
+name|String
+name|p
+init|=
+name|GIT_HOOKS_COMMIT_MSG
+decl_stmt|;
 if|if
 condition|(
 name|hostKeys
@@ -1847,11 +1861,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|String
-name|p
-init|=
-literal|".git/hooks/commit-msg"
-decl_stmt|;
 return|return
 name|String
 operator|.
@@ -1972,7 +1981,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"  scp -p -P %d %s@%s:hooks/commit-msg .git/hooks/"
+literal|"  scp -p -P %d %s@%s:hooks/commit-msg %s"
 argument_list|,
 name|sshPort
 argument_list|,
@@ -1982,6 +1991,8 @@ name|getUserName
 argument_list|()
 argument_list|,
 name|sshHost
+argument_list|,
+name|p
 argument_list|)
 return|;
 block|}
