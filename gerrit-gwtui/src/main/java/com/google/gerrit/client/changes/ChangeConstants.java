@@ -175,6 +175,11 @@ name|String
 name|changeTableColumnSubject
 parameter_list|()
 function_decl|;
+DECL|method|changeTableColumnStatus ()
+name|String
+name|changeTableColumnStatus
+parameter_list|()
+function_decl|;
 DECL|method|changeTableColumnOwner ()
 name|String
 name|changeTableColumnOwner
