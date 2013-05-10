@@ -3712,11 +3712,6 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|enumerateHeaderNames (HttpServletRequest req)
 specifier|private
 specifier|static
