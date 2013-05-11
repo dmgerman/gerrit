@@ -346,6 +346,13 @@ block|{
 name|commands
 operator|=
 name|cmds
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+literal|null
+else|:
+name|cmds
 expr_stmt|;
 block|}
 block|}
