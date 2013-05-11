@@ -2178,6 +2178,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Deprecated
 DECL|method|setStatus (int sc, String sm)
 specifier|public
 name|void
