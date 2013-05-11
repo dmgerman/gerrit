@@ -98,6 +98,16 @@ name|RestView
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|UiCommand
 specifier|public
@@ -124,9 +134,12 @@ DECL|enumConstant|PATCHSET_ACTION_PANEL
 name|PATCHSET_ACTION_PANEL
 block|;   }
 empty_stmt|;
-DECL|method|getPlace ()
+DECL|method|getPlaces ()
+name|Set
+argument_list|<
 name|Place
-name|getPlace
+argument_list|>
+name|getPlaces
 parameter_list|()
 function_decl|;
 DECL|method|getLabel (R resource)
