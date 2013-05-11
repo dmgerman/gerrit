@@ -324,7 +324,10 @@ decl_stmt|;
 DECL|field|cherryPickChange
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|CherryPickChange
+argument_list|>
 name|cherryPickChange
 decl_stmt|;
 DECL|field|json
@@ -349,7 +352,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|CherryPick (Provider<ReviewDb> dbProvider, CherryPickChange cherryPickChange, ChangeJson json)
+DECL|method|CherryPick (Provider<ReviewDb> dbProvider, Provider<CherryPickChange> cherryPickChange, ChangeJson json)
 name|CherryPick
 parameter_list|(
 name|Provider
@@ -358,7 +361,10 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
+name|Provider
+argument_list|<
 name|CherryPickChange
+argument_list|>
 name|cherryPickChange
 parameter_list|,
 name|ChangeJson
@@ -593,6 +599,9 @@ name|Id
 name|cherryPickedChangeId
 init|=
 name|cherryPickChange
+operator|.
+name|get
+argument_list|()
 operator|.
 name|cherryPick
 argument_list|(
