@@ -201,7 +201,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Parses a SQL script from a resource file and later runs it. */
+comment|/** Parses an SQL script from a resource file and later runs it. */
 end_comment
 
 begin_class

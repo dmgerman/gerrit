@@ -835,7 +835,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** Execute a SQL statement. */
+comment|/** Execute an SQL statement. */
 DECL|method|execute (ReviewDb db, String sql)
 specifier|protected
 name|void
