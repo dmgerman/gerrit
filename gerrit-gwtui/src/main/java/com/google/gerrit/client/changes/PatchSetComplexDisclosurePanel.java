@@ -3953,6 +3953,15 @@ condition|(
 name|msg
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|msg
+operator|.
+name|asString
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|Window
