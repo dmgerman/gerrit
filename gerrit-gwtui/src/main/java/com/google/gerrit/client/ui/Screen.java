@@ -333,10 +333,8 @@ name|Gerrit
 operator|.
 name|THEMER
 operator|.
-name|set
-argument_list|(
-literal|null
-argument_list|)
+name|clear
+argument_list|()
 expr_stmt|;
 block|}
 block|}
