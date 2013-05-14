@@ -216,6 +216,13 @@ name|ThemeInfo
 name|theme
 parameter_list|)
 block|{
+if|if
+condition|(
+name|theme
+operator|!=
+literal|null
+condition|)
+block|{
 name|set
 argument_list|(
 name|theme
@@ -262,11 +269,7 @@ name|footerHtml
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|clear ()
-specifier|public
-name|void
-name|clear
-parameter_list|()
+else|else
 block|{
 name|set
 argument_list|(
@@ -275,6 +278,19 @@ argument_list|,
 name|headerHtml
 argument_list|,
 name|footerHtml
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|clear ()
+specifier|public
+name|void
+name|clear
+parameter_list|()
+block|{
+name|set
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
