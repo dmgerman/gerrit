@@ -363,6 +363,11 @@ name|String
 name|menuDocumentationAccess
 parameter_list|()
 function_decl|;
+DECL|method|menuDocumentationAPI ()
+name|String
+name|menuDocumentationAPI
+parameter_list|()
+function_decl|;
 DECL|method|searchHint ()
 name|String
 name|searchHint
