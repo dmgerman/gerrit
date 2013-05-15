@@ -248,24 +248,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|extensions
-operator|.
-name|events
-operator|.
-name|GitReferenceUpdated
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -632,15 +614,17 @@ specifier|final
 name|PersonIdent
 name|myIdent
 decl_stmt|;
-DECL|field|patchSetInserter
+DECL|field|patchSetInserterFactory
 specifier|private
 specifier|final
 name|PatchSetInserter
-name|patchSetInserter
+operator|.
+name|Factory
+name|patchSetInserterFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInserter patchSetInserter)
+DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInserter.Factory patchSetInserterFactory)
 name|EditCommitMessageHandler
 parameter_list|(
 specifier|final
@@ -703,7 +687,9 @@ name|myIdent
 parameter_list|,
 specifier|final
 name|PatchSetInserter
-name|patchSetInserter
+operator|.
+name|Factory
+name|patchSetInserterFactory
 parameter_list|)
 block|{
 name|this
@@ -768,9 +754,9 @@ name|myIdent
 expr_stmt|;
 name|this
 operator|.
-name|patchSetInserter
+name|patchSetInserterFactory
 operator|=
-name|patchSetInserter
+name|patchSetInserterFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -934,7 +920,7 @@ name|git
 argument_list|,
 name|myIdent
 argument_list|,
-name|patchSetInserter
+name|patchSetInserterFactory
 argument_list|)
 expr_stmt|;
 return|return
