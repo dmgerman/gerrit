@@ -923,6 +923,11 @@ argument_list|,
 name|footerLines
 argument_list|)
 expr_stmt|;
+name|db
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|changeMessage
@@ -946,11 +951,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|db
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
 name|hooks
 operator|.
 name|doPatchsetCreatedHook
