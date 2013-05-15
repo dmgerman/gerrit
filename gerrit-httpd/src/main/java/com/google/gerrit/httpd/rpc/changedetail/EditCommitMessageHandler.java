@@ -596,12 +596,6 @@ operator|.
 name|Factory
 name|commitMessageEditedSenderFactory
 decl_stmt|;
-DECL|field|gitRefUpdated
-specifier|private
-specifier|final
-name|GitReferenceUpdated
-name|gitRefUpdated
-decl_stmt|;
 DECL|field|patchSetId
 specifier|private
 specifier|final
@@ -646,7 +640,7 @@ name|patchSetInserter
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInserter patchSetInserter)
+DECL|method|EditCommitMessageHandler (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final IdentifiedUser currentUser, final ChangeDetailFactory.Factory changeDetailFactory, final CommitMessageEditedSender.Factory commitMessageEditedSenderFactory, @Assisted final PatchSet.Id patchSetId, @Assisted @Nullable final String message, final CommitValidators.Factory commitValidatorsFactory, final GitRepositoryManager gitManager, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInserter patchSetInserter)
 name|EditCommitMessageHandler
 parameter_list|(
 specifier|final
@@ -700,10 +694,6 @@ parameter_list|,
 specifier|final
 name|GitRepositoryManager
 name|gitManager
-parameter_list|,
-specifier|final
-name|GitReferenceUpdated
-name|gitRefUpdated
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -769,12 +759,6 @@ operator|.
 name|gitManager
 operator|=
 name|gitManager
-expr_stmt|;
-name|this
-operator|.
-name|gitRefUpdated
-operator|=
-name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -947,8 +931,6 @@ argument_list|,
 name|commitMessageEditedSenderFactory
 argument_list|,
 name|git
-argument_list|,
-name|gitRefUpdated
 argument_list|,
 name|myIdent
 argument_list|,
