@@ -1268,6 +1268,9 @@ name|nameTxtBox
 operator|.
 name|getText
 argument_list|()
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1295,6 +1298,9 @@ init|=
 name|irevTxtBox
 operator|.
 name|getText
+argument_list|()
+operator|.
+name|trim
 argument_list|()
 decl_stmt|;
 if|if
