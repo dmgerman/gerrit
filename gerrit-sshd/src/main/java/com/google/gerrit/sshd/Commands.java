@@ -82,20 +82,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|StringUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|sshd
 operator|.
 name|server
@@ -654,9 +640,7 @@ name|this
 operator|.
 name|descr
 operator|=
-name|StringUtils
-operator|.
-name|EMPTY
+literal|""
 expr_stmt|;
 block|}
 DECL|method|NestedCommandNameImpl (final CommandName parent, final String name, final String descr)
