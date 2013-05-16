@@ -2348,6 +2348,15 @@ name|SessionHandler
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|app
+operator|.
+name|setErrorHandler
+argument_list|(
+operator|new
+name|HiddenErrorHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// This is the path we are accessed by clients within our domain.
 comment|//
 name|app
