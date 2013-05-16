@@ -1971,6 +1971,14 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|path
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|checkPreconditions
 argument_list|(
 name|req
@@ -1978,6 +1986,7 @@ argument_list|,
 name|rsrc
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
