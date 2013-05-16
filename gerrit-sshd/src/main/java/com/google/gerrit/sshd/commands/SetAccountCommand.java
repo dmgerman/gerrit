@@ -1770,6 +1770,22 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|ex
+parameter_list|)
+block|{
+throw|throw
+name|die
+argument_list|(
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|readSshKey (final List<String> sshKeys)
 specifier|private

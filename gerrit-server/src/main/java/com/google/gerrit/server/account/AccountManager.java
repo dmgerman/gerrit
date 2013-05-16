@@ -2378,8 +2378,8 @@ name|who
 parameter_list|)
 throws|throws
 name|AccountException
-block|{
-try|try
+throws|,
+name|OrmException
 block|{
 specifier|final
 name|ReviewDb
@@ -2613,23 +2613,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AccountException
-argument_list|(
-literal|"Cannot link identity"
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 comment|/**    * Unlink an authentication identity from an existing account.    *    * @param from account to unlink the identity from.    * @param who the identity to delete    * @return the result of unlinking the identity from the user.    * @throws AccountException the identity belongs to a different account, or it    *         cannot be unlinked at this time.    */

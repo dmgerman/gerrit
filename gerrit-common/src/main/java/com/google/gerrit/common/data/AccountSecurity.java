@@ -476,24 +476,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|registerEmail (String address, AsyncCallback<Account> callback)
-name|void
-name|registerEmail
-parameter_list|(
-name|String
-name|address
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|Account
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|validateEmail (String token, AsyncCallback<VoidResult> callback)
 name|void
 name|validateEmail
