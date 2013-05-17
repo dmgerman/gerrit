@@ -2632,8 +2632,8 @@ name|who
 parameter_list|)
 throws|throws
 name|AccountException
-block|{
-try|try
+throws|,
+name|OrmException
 block|{
 specifier|final
 name|ReviewDb
@@ -2845,23 +2845,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AccountException
-argument_list|(
-literal|"Cannot unlink identity"
-argument_list|,
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 DECL|method|id (final AuthRequest who)
