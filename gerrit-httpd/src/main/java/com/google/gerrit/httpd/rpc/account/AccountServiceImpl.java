@@ -1196,7 +1196,7 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|setAllowFile
+name|setAllowFileRegex
 argument_list|(
 literal|true
 argument_list|)

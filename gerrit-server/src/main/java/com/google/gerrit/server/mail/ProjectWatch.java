@@ -232,7 +232,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
+name|AccountProjectWatch
+operator|.
+name|NotifyType
 import|;
 end_import
 
@@ -248,9 +250,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountProjectWatch
-operator|.
-name|NotifyType
+name|Project
 import|;
 end_import
 
@@ -1439,7 +1439,7 @@ condition|)
 block|{
 name|qb
 operator|.
-name|setAllowFile
+name|setAllowFileRegex
 argument_list|(
 literal|true
 argument_list|)

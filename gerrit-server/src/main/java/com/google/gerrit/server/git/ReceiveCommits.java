@@ -9275,6 +9275,11 @@ name|change
 argument_list|,
 name|c
 argument_list|)
+operator|.
+name|setRequestScopePropagator
+argument_list|(
+name|requestScopePropagator
+argument_list|)
 expr_stmt|;
 name|cmd
 operator|=

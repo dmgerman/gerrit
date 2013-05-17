@@ -298,6 +298,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -317,6 +333,22 @@ operator|.
 name|project
 operator|.
 name|RefControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|RequestScopePropagator
 import|;
 end_import
 
@@ -480,6 +512,12 @@ specifier|final
 name|TrackingFooters
 name|trackingFooters
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|refControl
 specifier|private
 specifier|final
@@ -510,6 +548,11 @@ specifier|final
 name|PatchSetInfo
 name|patchSetInfo
 decl_stmt|;
+DECL|field|requestScopePropagator
+specifier|private
+name|RequestScopePropagator
+name|requestScopePropagator
+decl_stmt|;
 DECL|field|changeMessage
 specifier|private
 name|ChangeMessage
@@ -532,7 +575,7 @@ name|draft
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, TrackingFooters trackingFooters, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, TrackingFooters trackingFooters, ChangeIndexer indexer, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
 name|ChangeInserter
 parameter_list|(
 name|Provider
@@ -555,6 +598,9 @@ name|approvalsUtil
 parameter_list|,
 name|TrackingFooters
 name|trackingFooters
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|,
 annotation|@
 name|Assisted
@@ -601,6 +647,12 @@ operator|.
 name|trackingFooters
 operator|=
 name|trackingFooters
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -734,6 +786,23 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|setRequestScopePropagator (RequestScopePropagator rsp)
+specifier|public
+name|ChangeInserter
+name|setRequestScopePropagator
+parameter_list|(
+name|RequestScopePropagator
+name|rsp
+parameter_list|)
+block|{
+name|requestScopePropagator
+operator|=
+name|rsp
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|setMessage (ChangeMessage changeMessage)
 specifier|public
@@ -983,6 +1052,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
+argument_list|,
+name|requestScopePropagator
+argument_list|)
+expr_stmt|;
 name|gitRefUpdated
 operator|.
 name|fire
