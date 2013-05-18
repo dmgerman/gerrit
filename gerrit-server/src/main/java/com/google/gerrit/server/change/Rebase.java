@@ -380,7 +380,10 @@ block|{   }
 DECL|field|rebaseChange
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|RebaseChange
+argument_list|>
 name|rebaseChange
 decl_stmt|;
 DECL|field|json
@@ -391,11 +394,14 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Rebase (RebaseChange rebaseChange, ChangeJson json)
+DECL|method|Rebase (Provider<RebaseChange> rebaseChange, ChangeJson json)
 specifier|public
 name|Rebase
 parameter_list|(
+name|Provider
+argument_list|<
 name|RebaseChange
+argument_list|>
 name|rebaseChange
 parameter_list|,
 name|ChangeJson
@@ -507,6 +513,9 @@ block|}
 try|try
 block|{
 name|rebaseChange
+operator|.
+name|get
+argument_list|()
 operator|.
 name|rebase
 argument_list|(
