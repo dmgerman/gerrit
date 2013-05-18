@@ -2741,7 +2741,7 @@ name|commentVisibilityStrategy
 init|=
 name|CommentVisibilityStrategy
 operator|.
-name|EXPAND_MOST_RECENT
+name|EXPAND_RECENT
 decl_stmt|;
 if|if
 condition|(
@@ -2969,14 +2969,6 @@ name|COLLAPSE_ALL
 case|:
 break|break;
 case|case
-name|EXPAND_RECENT
-case|:
-name|isOpen
-operator|=
-name|isRecent
-expr_stmt|;
-break|break;
-case|case
 name|EXPAND_ALL
 case|:
 name|isOpen
@@ -2987,7 +2979,6 @@ break|break;
 case|case
 name|EXPAND_MOST_RECENT
 case|:
-default|default:
 name|isOpen
 operator|=
 name|i
@@ -2998,6 +2989,15 @@ name|size
 argument_list|()
 operator|-
 literal|1
+expr_stmt|;
+break|break;
+case|case
+name|EXPAND_RECENT
+case|:
+default|default:
+name|isOpen
+operator|=
+name|isRecent
 expr_stmt|;
 break|break;
 block|}

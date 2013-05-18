@@ -1600,7 +1600,7 @@ name|AccountGeneralPreferences
 operator|.
 name|CommentVisibilityStrategy
 operator|.
-name|EXPAND_MOST_RECENT
+name|EXPAND_RECENT
 argument_list|,
 name|p
 operator|.
@@ -2054,7 +2054,7 @@ name|commentVisibilityStrategy
 argument_list|,
 name|CommentVisibilityStrategy
 operator|.
-name|EXPAND_MOST_RECENT
+name|EXPAND_RECENT
 argument_list|,
 name|CommentVisibilityStrategy
 operator|.
