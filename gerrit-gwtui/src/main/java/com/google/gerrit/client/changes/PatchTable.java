@@ -1210,6 +1210,13 @@ name|Key
 name|k
 parameter_list|)
 block|{
+if|if
+condition|(
+name|myTable
+operator|!=
+literal|null
+condition|)
+block|{
 name|myTable
 operator|.
 name|movePointerTo
@@ -1217,6 +1224,7 @@ argument_list|(
 name|k
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setActive (boolean active)
 specifier|public

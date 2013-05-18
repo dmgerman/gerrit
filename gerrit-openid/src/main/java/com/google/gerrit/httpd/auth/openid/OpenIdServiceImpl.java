@@ -110,6 +110,20 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
 name|WebSession
 import|;
 end_import
@@ -221,22 +235,6 @@ operator|.
 name|config
 operator|.
 name|AuthConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|CanonicalWebUrl
 import|;
 end_import
 
@@ -682,16 +680,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|annotation
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|servlet
 operator|.
 name|http
@@ -873,10 +861,7 @@ decl_stmt|;
 DECL|field|urlProvider
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
+name|CanonicalWebUrl
 name|urlProvider
 decl_stmt|;
 DECL|field|accountManager
@@ -918,7 +903,7 @@ name|papeMaxAuthAge
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl (final Provider<WebSession> cf, final Provider<IdentifiedUser> iu, @CanonicalWebUrl @Nullable final Provider<String> up, @GerritServerConfig final Config config, final AuthConfig ac, final AccountManager am)
+DECL|method|OpenIdServiceImpl (final Provider<WebSession> cf, final Provider<IdentifiedUser> iu, CanonicalWebUrl up, @GerritServerConfig final Config config, final AuthConfig ac, final AccountManager am)
 name|OpenIdServiceImpl
 parameter_list|(
 specifier|final
@@ -935,15 +920,7 @@ name|IdentifiedUser
 argument_list|>
 name|iu
 parameter_list|,
-annotation|@
 name|CanonicalWebUrl
-annotation|@
-name|Nullable
-specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
 name|up
 parameter_list|,
 annotation|@
@@ -1210,11 +1187,13 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|discover (final String openidIdentifier, final SignInMode mode, final boolean remember, final String returnToken)
+DECL|method|discover (HttpServletRequest req, String openidIdentifier, final SignInMode mode, final boolean remember, final String returnToken)
 name|DiscoveryResult
 name|discover
 parameter_list|(
-specifier|final
+name|HttpServletRequest
+name|req
+parameter_list|,
 name|String
 name|openidIdentifier
 parameter_list|,
@@ -1239,6 +1218,8 @@ name|state
 operator|=
 name|init
 argument_list|(
+name|req
+argument_list|,
 name|openidIdentifier
 argument_list|,
 name|mode
@@ -1730,6 +1711,8 @@ name|state
 operator|=
 name|init
 argument_list|(
+name|req
+argument_list|,
 name|rediscoverIdentifier
 argument_list|,
 name|mode
@@ -3091,7 +3074,9 @@ argument_list|(
 name|urlProvider
 operator|.
 name|get
-argument_list|()
+argument_list|(
+name|req
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|rdr
@@ -3253,7 +3238,9 @@ argument_list|(
 name|urlProvider
 operator|.
 name|get
-argument_list|()
+argument_list|(
+name|req
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|rdr
@@ -3323,11 +3310,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (final String openidIdentifier, final SignInMode mode, final boolean remember, final String returnToken)
+DECL|method|init (HttpServletRequest req, final String openidIdentifier, final SignInMode mode, final boolean remember, final String returnToken)
 specifier|private
 name|State
 name|init
 parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
 specifier|final
 name|String
 name|openidIdentifier
@@ -3408,7 +3398,9 @@ init|=
 name|urlProvider
 operator|.
 name|get
-argument_list|()
+argument_list|(
+name|req
+argument_list|)
 decl_stmt|;
 specifier|final
 name|DiscoveryInformation

@@ -120,6 +120,20 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
+name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
 name|HtmlDomUtil
 import|;
 end_import
@@ -262,7 +276,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|CanonicalWebUrl
+name|SitePaths
 import|;
 end_import
 
@@ -488,10 +502,7 @@ decl_stmt|;
 DECL|field|urlProvider
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
-name|String
-argument_list|>
+name|CanonicalWebUrl
 name|urlProvider
 decl_stmt|;
 DECL|field|headers
@@ -502,7 +513,7 @@ name|headers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LdapLoginServlet (AccountManager accountManager, Provider<WebSession> webSession, @CanonicalWebUrl @Nullable Provider<String> urlProvider, SiteHeaderFooter headers)
+DECL|method|LdapLoginServlet (AccountManager accountManager, Provider<WebSession> webSession, CanonicalWebUrl urlProvider, SiteHeaderFooter headers)
 name|LdapLoginServlet
 parameter_list|(
 name|AccountManager
@@ -514,14 +525,7 @@ name|WebSession
 argument_list|>
 name|webSession
 parameter_list|,
-annotation|@
 name|CanonicalWebUrl
-annotation|@
-name|Nullable
-name|Provider
-argument_list|<
-name|String
-argument_list|>
 name|urlProvider
 parameter_list|,
 name|SiteHeaderFooter
@@ -552,27 +556,6 @@ name|headers
 operator|=
 name|headers
 expr_stmt|;
-if|if
-condition|(
-name|Strings
-operator|.
-name|isNullOrEmpty
-argument_list|(
-name|urlProvider
-operator|.
-name|get
-argument_list|()
-argument_list|)
-condition|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"gerrit.canonicalWebUrl must be set in gerrit.config"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|sendForm (HttpServletRequest req, HttpServletResponse res, @Nullable String errorMessage)
 specifier|private
@@ -611,7 +594,9 @@ argument_list|(
 name|urlProvider
 operator|.
 name|get
-argument_list|()
+argument_list|(
+name|req
+argument_list|)
 argument_list|,
 literal|"/"
 argument_list|)
@@ -1065,14 +1050,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|String
-name|token
-init|=
-name|getToken
-argument_list|(
-name|req
-argument_list|)
-decl_stmt|;
 name|StringBuilder
 name|dest
 init|=
@@ -1087,7 +1064,9 @@ argument_list|(
 name|urlProvider
 operator|.
 name|get
-argument_list|()
+argument_list|(
+name|req
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|dest
@@ -1101,7 +1080,10 @@ name|dest
 operator|.
 name|append
 argument_list|(
-name|token
+name|getToken
+argument_list|(
+name|req
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|CacheHeaders

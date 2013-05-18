@@ -2044,7 +2044,7 @@ decl_stmt|;
 return|return
 name|last
 operator|.
-name|getBeginB
+name|getEndB
 argument_list|()
 operator|+
 operator|(
@@ -2191,7 +2191,7 @@ decl_stmt|;
 return|return
 name|last
 operator|.
-name|getBeginA
+name|getEndA
 argument_list|()
 operator|+
 operator|(

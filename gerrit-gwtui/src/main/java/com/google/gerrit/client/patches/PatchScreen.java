@@ -2075,6 +2075,11 @@ operator|&&
 name|fileList
 operator|!=
 literal|null
+operator|&&
+name|fileList
+operator|.
+name|isLoaded
+argument_list|()
 condition|)
 block|{
 name|fileList
