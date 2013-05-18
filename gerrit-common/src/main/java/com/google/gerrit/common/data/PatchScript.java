@@ -315,6 +315,18 @@ specifier|protected
 name|DisplayMethod
 name|displayMethodB
 decl_stmt|;
+DECL|field|mimeTypeA
+specifier|protected
+specifier|transient
+name|String
+name|mimeTypeA
+decl_stmt|;
+DECL|field|mimeTypeB
+specifier|protected
+specifier|transient
+name|String
+name|mimeTypeB
+decl_stmt|;
 DECL|field|comments
 specifier|protected
 name|CommentDetail
@@ -348,7 +360,7 @@ specifier|protected
 name|boolean
 name|intralineTimeout
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt)
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -411,6 +423,14 @@ parameter_list|,
 specifier|final
 name|DisplayMethod
 name|mb
+parameter_list|,
+specifier|final
+name|String
+name|mta
+parameter_list|,
+specifier|final
+name|String
+name|mtb
 parameter_list|,
 specifier|final
 name|CommentDetail
@@ -491,6 +511,14 @@ expr_stmt|;
 name|displayMethodB
 operator|=
 name|mb
+expr_stmt|;
+name|mimeTypeA
+operator|=
+name|mta
+expr_stmt|;
+name|mimeTypeB
+operator|=
+name|mtb
 expr_stmt|;
 name|comments
 operator|=
@@ -752,6 +780,26 @@ parameter_list|()
 block|{
 return|return
 name|b
+return|;
+block|}
+DECL|method|getMimeTypeA ()
+specifier|public
+name|String
+name|getMimeTypeA
+parameter_list|()
+block|{
+return|return
+name|mimeTypeA
+return|;
+block|}
+DECL|method|getMimeTypeB ()
+specifier|public
+name|String
+name|getMimeTypeB
+parameter_list|()
+block|{
+return|return
+name|mimeTypeB
 return|;
 block|}
 DECL|method|getEdits ()
