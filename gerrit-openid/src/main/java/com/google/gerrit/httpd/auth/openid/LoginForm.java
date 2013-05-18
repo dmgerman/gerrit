@@ -1180,6 +1180,8 @@ name|impl
 operator|.
 name|discover
 argument_list|(
+name|req
+argument_list|,
 name|id
 argument_list|,
 name|mode
