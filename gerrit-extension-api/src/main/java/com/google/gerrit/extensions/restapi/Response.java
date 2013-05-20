@@ -98,6 +98,20 @@ operator|new
 name|None
 argument_list|()
 decl_stmt|;
+DECL|enum|CacheControl
+specifier|public
+enum|enum
+name|CacheControl
+block|{
+DECL|enumConstant|NONE
+DECL|enumConstant|PUBLIC
+DECL|enumConstant|PRIVATE
+name|NONE
+block|,
+name|PUBLIC
+block|,
+name|PRIVATE
+block|;   }
 comment|/** HTTP 200 OK: pointless wrapper for type safety. */
 DECL|method|ok (T value)
 specifier|public
@@ -263,6 +277,26 @@ name|T
 name|value
 parameter_list|()
 function_decl|;
+DECL|method|caching ()
+specifier|public
+specifier|abstract
+name|CacheControl
+name|caching
+parameter_list|()
+function_decl|;
+DECL|method|caching (CacheControl c)
+specifier|public
+specifier|abstract
+name|Response
+argument_list|<
+name|T
+argument_list|>
+name|caching
+parameter_list|(
+name|CacheControl
+name|c
+parameter_list|)
+function_decl|;
 DECL|method|toString ()
 specifier|public
 specifier|abstract
@@ -296,6 +330,15 @@ specifier|private
 specifier|final
 name|T
 name|value
+decl_stmt|;
+DECL|field|caching
+specifier|private
+name|CacheControl
+name|caching
+init|=
+name|CacheControl
+operator|.
+name|NONE
 decl_stmt|;
 DECL|method|Impl (int sc, T val)
 specifier|private
@@ -339,6 +382,40 @@ parameter_list|()
 block|{
 return|return
 name|value
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|caching ()
+specifier|public
+name|CacheControl
+name|caching
+parameter_list|()
+block|{
+return|return
+name|caching
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|caching (CacheControl c)
+specifier|public
+name|Response
+argument_list|<
+name|T
+argument_list|>
+name|caching
+parameter_list|(
+name|CacheControl
+name|c
+parameter_list|)
+block|{
+name|caching
+operator|=
+name|c
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 annotation|@
@@ -396,6 +473,40 @@ specifier|public
 name|Object
 name|value
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|caching ()
+specifier|public
+name|CacheControl
+name|caching
+parameter_list|()
+block|{
+return|return
+name|CacheControl
+operator|.
+name|NONE
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|caching (CacheControl c)
+specifier|public
+name|Response
+argument_list|<
+name|Object
+argument_list|>
+name|caching
+parameter_list|(
+name|CacheControl
+name|c
+parameter_list|)
 block|{
 throw|throw
 operator|new
