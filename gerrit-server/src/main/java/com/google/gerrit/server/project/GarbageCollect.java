@@ -514,7 +514,17 @@ block|}
 operator|.
 name|setContentType
 argument_list|(
-literal|"text/plain; charset=UTF-8"
+literal|"text/plain"
+argument_list|)
+operator|.
+name|setCharacterEncoding
+argument_list|(
+name|Charsets
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 operator|.
 name|disableGzip
