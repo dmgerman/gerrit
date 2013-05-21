@@ -570,7 +570,12 @@ name|cd
 operator|.
 name|setCurrentFilePaths
 argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|files
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

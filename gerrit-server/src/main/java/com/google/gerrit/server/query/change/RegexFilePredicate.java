@@ -184,7 +184,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -451,8 +461,10 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|files
 init|=
 name|object
@@ -512,7 +524,8 @@ name|end
 operator|=
 name|files
 operator|.
-name|length
+name|size
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -540,10 +553,12 @@ operator|.
 name|run
 argument_list|(
 name|files
-index|[
+operator|.
+name|get
+argument_list|(
 name|begin
 operator|++
-index|]
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -567,14 +582,16 @@ literal|true
 return|;
 block|}
 block|}
-DECL|method|find (String[] files, String p)
+DECL|method|find (List<String> files, String p)
 specifier|private
 specifier|static
 name|int
 name|find
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|files
 parameter_list|,
 name|String
@@ -584,7 +601,7 @@ block|{
 name|int
 name|r
 init|=
-name|Arrays
+name|Collections
 operator|.
 name|binarySearch
 argument_list|(
