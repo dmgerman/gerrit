@@ -1007,6 +1007,13 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+name|loading
+operator|.
+name|add
+argument_list|(
+name|d
+argument_list|)
+expr_stmt|;
 name|beginLoading
 argument_list|(
 name|d
