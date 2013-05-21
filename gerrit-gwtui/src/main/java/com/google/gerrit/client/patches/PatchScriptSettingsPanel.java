@@ -1766,9 +1766,6 @@ argument_list|)
 return|;
 block|}
 return|return
-operator|(
-name|short
-operator|)
 name|getValue
 argument_list|()
 operator|.
