@@ -1198,18 +1198,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|codemirror
-operator|.
-name|lib
-operator|.
-name|CodeMirror
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -2461,11 +2449,6 @@ argument_list|(
 name|myHost
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|CodeMirror
-operator|.
-name|install
-argument_list|()
 expr_stmt|;
 specifier|final
 name|HostPageDataService
