@@ -70,11 +70,43 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|dom
 operator|.
 name|client
 operator|.
 name|Document
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|dom
+operator|.
+name|client
+operator|.
+name|Element
 import|;
 end_import
 
@@ -214,12 +246,111 @@ name|Logger
 import|;
 end_import
 
+begin_comment
+comment|/**  * Glue to connect CodeMirror to be callable from GWT.  *  * @link http://codemirror.net/doc/manual.html#api  */
+end_comment
+
 begin_class
 DECL|class|CodeMirror
 specifier|public
 class|class
 name|CodeMirror
+extends|extends
+name|JavaScriptObject
 block|{
+DECL|method|create (Element parent, Configuration cfg)
+specifier|public
+specifier|static
+specifier|native
+name|CodeMirror
+name|create
+parameter_list|(
+name|Element
+name|parent
+parameter_list|,
+name|Configuration
+name|cfg
+parameter_list|)
+comment|/*-{     return $wnd.CodeMirror(parent, cfg);   }-*/
+function_decl|;
+DECL|method|setValue (String v)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setValue
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ this.setValue(v); }-*/
+function_decl|;
+DECL|method|setWidth (int w)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setWidth
+parameter_list|(
+name|int
+name|w
+parameter_list|)
+comment|/*-{ this.setSize(w, null); }-*/
+function_decl|;
+DECL|method|setWidth (String w)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setWidth
+parameter_list|(
+name|String
+name|w
+parameter_list|)
+comment|/*-{ this.setSize(w, null); }-*/
+function_decl|;
+DECL|method|setHeight (int h)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setHeight
+parameter_list|(
+name|int
+name|h
+parameter_list|)
+comment|/*-{ this.setSize(null, h); }-*/
+function_decl|;
+DECL|method|setHeight (String h)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setHeight
+parameter_list|(
+name|String
+name|h
+parameter_list|)
+comment|/*-{ this.setSize(null, h); }-*/
+function_decl|;
+DECL|method|refresh ()
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|refresh
+parameter_list|()
+comment|/*-{ this.refresh(); }-*/
+function_decl|;
+DECL|method|getWrapperElement ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getWrapperElement
+parameter_list|()
+comment|/*-{ return this.getWrapperElement(); }-*/
+function_decl|;
 DECL|method|install ()
 specifier|public
 specifier|static
@@ -422,7 +553,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CodeMirror ()
-specifier|private
+specifier|protected
 name|CodeMirror
 parameter_list|()
 block|{   }

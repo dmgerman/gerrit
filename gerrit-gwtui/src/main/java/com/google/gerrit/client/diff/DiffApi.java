@@ -231,6 +231,13 @@ name|Id
 name|id
 parameter_list|)
 block|{
+if|if
+condition|(
+name|id
+operator|!=
+literal|null
+condition|)
+block|{
 name|call
 operator|.
 name|addParameter
@@ -243,6 +250,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|this
 return|;
