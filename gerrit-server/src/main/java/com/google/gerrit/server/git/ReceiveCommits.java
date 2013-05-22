@@ -996,6 +996,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|CreateChangeSender
@@ -2443,6 +2459,12 @@ specifier|final
 name|RequestScopePropagator
 name|requestScopePropagator
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|sshInfo
 specifier|private
 specifier|final
@@ -2693,7 +2715,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2809,6 +2831,10 @@ parameter_list|,
 specifier|final
 name|RequestScopePropagator
 name|requestScopePropagator
+parameter_list|,
+specifier|final
+name|ChangeIndexer
+name|indexer
 parameter_list|,
 specifier|final
 name|SshInfo
@@ -2990,6 +3016,12 @@ operator|.
 name|requestScopePropagator
 operator|=
 name|requestScopePropagator
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -11916,6 +11948,15 @@ name|rp
 argument_list|)
 expr_stmt|;
 block|}
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
+argument_list|,
+name|requestScopePropagator
+argument_list|)
+expr_stmt|;
 name|gitRefUpdated
 operator|.
 name|fire
@@ -13884,7 +13925,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|Change
 name|change
 init|=
@@ -14086,6 +14126,8 @@ name|msg
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|change
+operator|=
 name|db
 operator|.
 name|changes
@@ -14159,6 +14201,15 @@ name|change
 return|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
+argument_list|,
+name|requestScopePropagator
 argument_list|)
 expr_stmt|;
 block|}

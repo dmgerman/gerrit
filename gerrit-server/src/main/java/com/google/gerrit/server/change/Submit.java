@@ -406,6 +406,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -622,9 +638,15 @@ specifier|final
 name|MergeQueue
 name|mergeQueue
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Submit (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, MergeQueue mergeQueue)
+DECL|method|Submit (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, MergeQueue mergeQueue, ChangeIndexer indexer)
 name|Submit
 parameter_list|(
 name|Provider
@@ -638,6 +660,9 @@ name|repoManager
 parameter_list|,
 name|MergeQueue
 name|mergeQueue
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -657,6 +682,12 @@ operator|.
 name|mergeQueue
 operator|=
 name|mergeQueue
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 block|}
 annotation|@
@@ -1316,6 +1347,13 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
 return|return
 name|change
 return|;

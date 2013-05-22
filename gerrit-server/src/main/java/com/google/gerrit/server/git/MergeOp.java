@@ -506,6 +506,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|MergeFailSender
@@ -1360,9 +1376,15 @@ specifier|final
 name|AllProjectsName
 name|allProjectsName
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final LabelNormalizer fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final AllProjectsName allProjectsName)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final LabelNormalizer fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final AllProjectsName allProjectsName, final ChangeIndexer indexer)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1461,6 +1483,10 @@ parameter_list|,
 specifier|final
 name|AllProjectsName
 name|allProjectsName
+parameter_list|,
+specifier|final
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|repoManager
@@ -1558,6 +1584,12 @@ operator|.
 name|allProjectsName
 operator|=
 name|allProjectsName
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|destBranch
 operator|=
@@ -4658,6 +4690,13 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|updateSubscriptions (final List<Change> submitted)

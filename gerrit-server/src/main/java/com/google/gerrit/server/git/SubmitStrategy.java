@@ -164,6 +164,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -388,13 +404,19 @@ specifier|final
 name|MergeUtil
 name|mergeUtil
 decl_stmt|;
+DECL|field|indexer
+specifier|protected
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|mergeSorter
 specifier|protected
 specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final MergeUtil mergeUtil)
+DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final MergeUtil mergeUtil, final ChangeIndexer indexer)
 name|Arguments
 parameter_list|(
 specifier|final
@@ -443,6 +465,10 @@ parameter_list|,
 specifier|final
 name|MergeUtil
 name|mergeUtil
+parameter_list|,
+specifier|final
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -504,6 +530,12 @@ operator|.
 name|mergeUtil
 operator|=
 name|mergeUtil
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.

@@ -204,6 +204,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -478,9 +494,15 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -527,6 +549,10 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
+parameter_list|,
+specifier|final
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -570,6 +596,12 @@ operator|.
 name|mergeUtilFactory
 operator|=
 name|mergeUtilFactory
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 block|}
 DECL|method|create (final SubmitType submitType, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch)
@@ -662,6 +694,8 @@ name|create
 argument_list|(
 name|project
 argument_list|)
+argument_list|,
+name|indexer
 argument_list|)
 decl_stmt|;
 switch|switch

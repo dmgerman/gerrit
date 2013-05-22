@@ -294,6 +294,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|ReplyToChangeSender
@@ -472,6 +488,12 @@ specifier|final
 name|ChangeJson
 name|json
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|class|Input
 specifier|public
 specifier|static
@@ -488,7 +510,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|Restore (ChangeHooks hooks, RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json)
+DECL|method|Restore (ChangeHooks hooks, RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json, ChangeIndexer indexer)
 name|Restore
 parameter_list|(
 name|ChangeHooks
@@ -507,6 +529,9 @@ name|dbProvider
 parameter_list|,
 name|ChangeJson
 name|json
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -532,6 +557,12 @@ operator|.
 name|json
 operator|=
 name|json
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 block|}
 annotation|@
@@ -754,6 +785,13 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
 name|message
 operator|=
 name|newMessage

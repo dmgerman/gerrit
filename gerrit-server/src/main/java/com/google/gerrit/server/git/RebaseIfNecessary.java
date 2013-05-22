@@ -553,6 +553,10 @@ operator|.
 name|mergeUtil
 argument_list|,
 name|committerIdent
+argument_list|,
+name|args
+operator|.
+name|indexer
 argument_list|)
 decl_stmt|;
 name|List
