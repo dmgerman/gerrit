@@ -681,7 +681,9 @@ literal|8
 operator|-
 literal|12
 operator|-
-literal|8
+literal|12
+operator|-
+literal|4
 operator|-
 literal|4
 expr_stmt|;
@@ -693,12 +695,14 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%-8s %-12s %-8s %s\n"
+literal|"%-8s %-12s %-12s %-4s %s\n"
 argument_list|,
 comment|//
 literal|"Task"
 argument_list|,
 literal|"State"
+argument_list|,
+literal|"StartTime"
 argument_list|,
 literal|""
 argument_list|,
@@ -952,6 +956,17 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+name|String
+name|startTime
+init|=
+name|startTime
+argument_list|(
+name|task
+operator|.
+name|getStartTime
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// Shows information about tasks depending on the user rights
 if|if
 condition|(
@@ -973,7 +988,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%8s %-12s %-8s %s\n"
+literal|"%8s %-12s %-12s %-4s %s\n"
 argument_list|,
 comment|//
 name|id
@@ -985,6 +1000,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|start
+argument_list|,
+name|startTime
 argument_list|,
 literal|""
 argument_list|,
@@ -1036,7 +1053,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%8s %-12s %-8s %s\n"
+literal|"%8s %-12s %-4s %s\n"
 argument_list|,
 comment|//
 name|id
@@ -1048,6 +1065,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|start
+argument_list|,
+name|startTime
 argument_list|,
 literal|""
 argument_list|,
@@ -1144,9 +1163,67 @@ operator|+
 name|delay
 argument_list|)
 decl_stmt|;
+return|return
+name|format
+argument_list|(
+name|when
+argument_list|,
+name|delay
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|startTime (final Date when)
+specifier|private
+specifier|static
+name|String
+name|startTime
+parameter_list|(
+specifier|final
+name|Date
+name|when
+parameter_list|)
+block|{
+return|return
+name|format
+argument_list|(
+name|when
+argument_list|,
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+operator|-
+name|when
+operator|.
+name|getTime
+argument_list|()
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|format (final Date when, final long timeFromNow)
+specifier|private
+specifier|static
+name|String
+name|format
+parameter_list|(
+specifier|final
+name|Date
+name|when
+parameter_list|,
+specifier|final
+name|long
+name|timeFromNow
+parameter_list|)
+block|{
 if|if
 condition|(
-name|delay
+name|timeFromNow
 operator|<
 literal|24
 operator|*

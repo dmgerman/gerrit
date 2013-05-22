@@ -202,6 +202,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -1338,6 +1348,12 @@ specifier|final
 name|AtomicBoolean
 name|running
 decl_stmt|;
+DECL|field|startTime
+specifier|private
+specifier|final
+name|Date
+name|startTime
+decl_stmt|;
 DECL|method|Task (Runnable runnable, RunnableScheduledFuture<V> task, Executor executor, int taskId)
 name|Task
 parameter_list|(
@@ -1387,6 +1403,14 @@ name|running
 operator|=
 operator|new
 name|AtomicBoolean
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|startTime
+operator|=
+operator|new
+name|Date
 argument_list|()
 expr_stmt|;
 block|}
@@ -1492,6 +1516,16 @@ return|return
 name|State
 operator|.
 name|OTHER
+return|;
+block|}
+DECL|method|getStartTime ()
+specifier|public
+name|Date
+name|getStartTime
+parameter_list|()
+block|{
+return|return
+name|startTime
 return|;
 block|}
 DECL|method|cancel (boolean mayInterruptIfRunning)
