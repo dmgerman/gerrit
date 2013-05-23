@@ -720,12 +720,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|VERSION
-specifier|private
+DECL|field|LUCENE_VERSION
+specifier|public
 specifier|static
 specifier|final
 name|Version
-name|VERSION
+name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
@@ -798,12 +798,12 @@ init|=
 operator|new
 name|IndexWriterConfig
 argument_list|(
-name|VERSION
+name|LUCENE_VERSION
 argument_list|,
 operator|new
 name|StandardAnalyzer
 argument_list|(
-name|VERSION
+name|LUCENE_VERSION
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1066,6 +1066,16 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|getDirectory ()
+specifier|public
+name|Directory
+name|getDirectory
+parameter_list|()
+block|{
+return|return
+name|dir
+return|;
 block|}
 DECL|method|getWriter ()
 specifier|public

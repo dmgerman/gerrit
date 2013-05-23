@@ -200,6 +200,16 @@ specifier|public
 class|class
 name|ChangeField
 block|{
+comment|/** Increment whenever making schema changes. */
+DECL|field|SCHEMA_VERSION
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|SCHEMA_VERSION
+init|=
+literal|1
+decl_stmt|;
 comment|/** Legacy change ID. */
 DECL|field|CHANGE_ID
 specifier|public
