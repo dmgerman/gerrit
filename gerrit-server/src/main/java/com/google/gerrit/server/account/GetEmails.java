@@ -506,6 +506,11 @@ specifier|public
 name|Boolean
 name|preferred
 decl_stmt|;
+DECL|field|pendingConfirmation
+specifier|public
+name|Boolean
+name|pendingConfirmation
+decl_stmt|;
 DECL|method|setPreferred (boolean preferred)
 name|void
 name|setPreferred
