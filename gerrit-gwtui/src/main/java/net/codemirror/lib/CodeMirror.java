@@ -238,6 +238,106 @@ name|getWrapperElement
 parameter_list|()
 comment|/*-{ return this.getWrapperElement(); }-*/
 function_decl|;
+DECL|method|markText (LineCharacter from, LineCharacter to, Configuration options)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|markText
+parameter_list|(
+name|LineCharacter
+name|from
+parameter_list|,
+name|LineCharacter
+name|to
+parameter_list|,
+name|Configuration
+name|options
+parameter_list|)
+comment|/*-{     this.markText(from, to, options);   }-*/
+function_decl|;
+DECL|enum|LineClassWhere
+specifier|public
+enum|enum
+name|LineClassWhere
+block|{
+DECL|enumConstant|TEXT
+DECL|enumConstant|BACKGROUND
+DECL|enumConstant|WRAP
+name|TEXT
+block|,
+name|BACKGROUND
+block|,
+name|WRAP
+block|;   }
+DECL|method|addLineClass (int line, LineClassWhere where, String className)
+specifier|public
+specifier|final
+name|void
+name|addLineClass
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|LineClassWhere
+name|where
+parameter_list|,
+name|String
+name|className
+parameter_list|)
+block|{
+name|addLineClassNative
+argument_list|(
+name|line
+argument_list|,
+name|where
+operator|.
+name|name
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|,
+name|className
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|addLineClassNative (int line, String where, String lineClass)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|addLineClassNative
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|String
+name|where
+parameter_list|,
+name|String
+name|lineClass
+parameter_list|)
+comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
+function_decl|;
+DECL|method|addLineWidget (int line, Element node, Configuration options)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|addLineWidget
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|Element
+name|node
+parameter_list|,
+name|Configuration
+name|options
+parameter_list|)
+comment|/*-{     this.addLineWidget(line, node, options);   }-*/
+function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror
