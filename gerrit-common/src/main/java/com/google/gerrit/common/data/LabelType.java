@@ -672,10 +672,10 @@ specifier|protected
 name|String
 name|name
 decl_stmt|;
-DECL|field|abbreviatedName
+DECL|field|abbreviation
 specifier|protected
 name|String
-name|abbreviatedName
+name|abbreviation
 decl_stmt|;
 DECL|field|functionName
 specifier|protected
@@ -775,7 +775,7 @@ argument_list|(
 name|valueList
 argument_list|)
 expr_stmt|;
-name|abbreviatedName
+name|abbreviation
 operator|=
 name|defaultAbbreviation
 argument_list|(
@@ -910,30 +910,30 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|getAbbreviatedName ()
+DECL|method|getAbbreviation ()
 specifier|public
 name|String
-name|getAbbreviatedName
+name|getAbbreviation
 parameter_list|()
 block|{
 return|return
-name|abbreviatedName
+name|abbreviation
 return|;
 block|}
-DECL|method|setAbbreviatedName (String abbreviatedName)
+DECL|method|setAbbreviation (String abbreviation)
 specifier|public
 name|void
-name|setAbbreviatedName
+name|setAbbreviation
 parameter_list|(
 name|String
-name|abbreviatedName
+name|abbreviation
 parameter_list|)
 block|{
 name|this
 operator|.
-name|abbreviatedName
+name|abbreviation
 operator|=
-name|abbreviatedName
+name|abbreviation
 expr_stmt|;
 block|}
 DECL|method|getFunctionName ()
