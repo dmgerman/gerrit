@@ -527,7 +527,7 @@ name|equalsIgnoreCase
 argument_list|(
 name|lt
 operator|.
-name|getAbbreviatedName
+name|getAbbreviation
 argument_list|()
 argument_list|)
 condition|)

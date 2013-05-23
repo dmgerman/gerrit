@@ -4113,7 +4113,7 @@ condition|)
 block|{
 name|label
 operator|.
-name|setAbbreviatedName
+name|setAbbreviation
 argument_list|(
 name|abbr
 argument_list|)
@@ -6395,7 +6395,7 @@ name|equals
 argument_list|(
 name|label
 operator|.
-name|getAbbreviatedName
+name|getAbbreviation
 argument_list|()
 argument_list|)
 condition|)
@@ -6412,7 +6412,7 @@ name|KEY_ABBREVIATION
 argument_list|,
 name|label
 operator|.
-name|getAbbreviatedName
+name|getAbbreviation
 argument_list|()
 argument_list|)
 expr_stmt|;
