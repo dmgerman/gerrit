@@ -186,20 +186,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|PutPreferred
@@ -344,7 +330,10 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource.Email rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|AccountResource
@@ -362,23 +351,9 @@ name|ResourceNotFoundException
 throws|,
 name|OrmException
 block|{
-name|IdentifiedUser
-name|s
-init|=
-operator|(
-name|IdentifiedUser
-operator|)
-name|self
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|s
-operator|.
-name|getAccountId
-argument_list|()
+name|self
 operator|.
 name|get
 argument_list|()
@@ -386,12 +361,6 @@ operator|!=
 name|rsrc
 operator|.
 name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
-operator|.
-name|get
 argument_list|()
 operator|&&
 operator|!
@@ -448,15 +417,7 @@ throw|throw
 operator|new
 name|ResourceNotFoundException
 argument_list|(
-literal|"No such account: "
-operator|+
-name|rsrc
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
+literal|"account not found"
 argument_list|)
 throw|;
 block|}

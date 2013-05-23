@@ -149,17 +149,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Account \""
-operator|+
-name|resource
-operator|.
-name|getUser
-argument_list|()
-operator|.
-name|getNameEmail
-argument_list|()
-operator|+
-literal|"\" already exists"
+literal|"account exists"
 argument_list|)
 throw|;
 block|}

@@ -144,14 +144,7 @@ argument_list|()
 expr_stmt|;
 name|e
 operator|.
-name|setPreferred
-argument_list|(
-name|rsrc
-operator|.
-name|getEmail
-argument_list|()
-operator|.
-name|equals
+name|preferred
 argument_list|(
 name|rsrc
 operator|.
@@ -163,7 +156,6 @@ argument_list|()
 operator|.
 name|getPreferredEmail
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

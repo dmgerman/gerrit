@@ -153,14 +153,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Email \""
-operator|+
-name|rsrc
-operator|.
-name|getEmail
-argument_list|()
-operator|+
-literal|"\" already exists"
+literal|"email exists"
 argument_list|)
 throw|;
 block|}

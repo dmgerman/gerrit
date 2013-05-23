@@ -142,6 +142,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceConflictException
 import|;
 end_import
@@ -218,9 +234,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|CurrentUser
+name|client
+operator|.
+name|Account
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -234,7 +254,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -448,6 +468,12 @@ name|CurrentUser
 argument_list|>
 name|self
 decl_stmt|;
+DECL|field|realm
+specifier|private
+specifier|final
+name|Realm
+name|realm
+decl_stmt|;
 DECL|field|authConfig
 specifier|private
 specifier|final
@@ -485,7 +511,7 @@ name|email
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateEmail (Provider<CurrentUser> self, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, Provider<PutPreferred> putPreferredProvider, @Assisted String email)
+DECL|method|CreateEmail (Provider<CurrentUser> self, Realm realm, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, Provider<PutPreferred> putPreferredProvider, @Assisted String email)
 name|CreateEmail
 parameter_list|(
 name|Provider
@@ -493,6 +519,9 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|self
+parameter_list|,
+name|Realm
+name|realm
 parameter_list|,
 name|AuthConfig
 name|authConfig
@@ -522,6 +551,12 @@ operator|.
 name|self
 operator|=
 name|self
+expr_stmt|;
+name|this
+operator|.
+name|realm
+operator|=
+name|realm
 expr_stmt|;
 name|this
 operator|.
@@ -579,24 +614,12 @@ throws|,
 name|OrmException
 throws|,
 name|EmailException
+throws|,
+name|MethodNotAllowedException
 block|{
-name|IdentifiedUser
-name|s
-init|=
-operator|(
-name|IdentifiedUser
-operator|)
-name|self
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|s
-operator|.
-name|getAccountId
-argument_list|()
+name|self
 operator|.
 name|get
 argument_list|()
@@ -604,12 +627,6 @@ operator|!=
 name|rsrc
 operator|.
 name|getUser
-argument_list|()
-operator|.
-name|getAccountId
-argument_list|()
-operator|.
-name|get
 argument_list|()
 operator|&&
 operator|!
@@ -630,6 +647,27 @@ operator|new
 name|AuthException
 argument_list|(
 literal|"not allowed to add email address"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|realm
+operator|.
+name|allowsEdit
+argument_list|(
+name|FieldName
+operator|.
+name|REGISTER_NEW_EMAIL
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"realm does not allow adding emails"
 argument_list|)
 throw|;
 block|}
@@ -697,9 +735,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"not allowed to add email address without confirmation, "
-operator|+
-literal|"need to be Gerrit administrator"
+literal|"must be administrator to use no_confirmation"
 argument_list|)
 throw|;
 block|}
@@ -804,10 +840,9 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|setPreferred
-argument_list|(
+name|preferred
+operator|=
 literal|true
-argument_list|)
 expr_stmt|;
 block|}
 block|}
