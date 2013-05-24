@@ -119,12 +119,16 @@ name|bind
 argument_list|(
 name|ChangeIndex
 operator|.
+name|Manager
+operator|.
 name|class
 argument_list|)
 operator|.
 name|toInstance
 argument_list|(
 name|ChangeIndex
+operator|.
+name|Manager
 operator|.
 name|DISABLED
 argument_list|)

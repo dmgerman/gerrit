@@ -839,16 +839,12 @@ comment|/**  * Secondary index implementation using Apache Lucene.  *<p>  * Writ
 end_comment
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|LuceneChangeIndex
 specifier|public
 class|class
 name|LuceneChangeIndex
 implements|implements
 name|ChangeIndex
-implements|,
-name|LifecycleListener
 block|{
 DECL|field|log
 specifier|private
@@ -901,13 +897,11 @@ specifier|final
 name|SearcherManager
 name|searcherManager
 decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|LuceneChangeIndex (SitePaths sitePaths, FillArgs fillArgs)
+DECL|method|LuceneChangeIndex (File file, FillArgs fillArgs)
 name|LuceneChangeIndex
 parameter_list|(
-name|SitePaths
-name|sitePaths
+name|File
+name|file
 parameter_list|,
 name|FillArgs
 name|fillArgs
@@ -927,15 +921,7 @@ name|FSDirectory
 operator|.
 name|open
 argument_list|(
-operator|new
-name|File
-argument_list|(
-name|sitePaths
-operator|.
-name|index_dir
-argument_list|,
-literal|"changes"
-argument_list|)
+name|file
 argument_list|)
 expr_stmt|;
 name|IndexWriterConfig
@@ -985,22 +971,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|start ()
-specifier|public
+DECL|method|close ()
 name|void
-name|start
-parameter_list|()
-block|{
-comment|// Do nothing.
-block|}
-annotation|@
-name|Override
-DECL|method|stop ()
-specifier|public
-name|void
-name|stop
+name|close
 parameter_list|()
 block|{
 try|try

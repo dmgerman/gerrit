@@ -228,15 +228,19 @@ name|index
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeIndexerImpl (WorkQueue workQueue, ChangeIndex index)
+DECL|method|ChangeIndexerImpl (WorkQueue workQueue, ChangeIndex.Manager indexManager)
 name|ChangeIndexerImpl
 parameter_list|(
 name|WorkQueue
 name|workQueue
 parameter_list|,
 name|ChangeIndex
-name|index
+operator|.
+name|Manager
+name|indexManager
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|this
 operator|.
@@ -248,7 +252,12 @@ name|this
 operator|.
 name|index
 operator|=
-name|index
+name|indexManager
+operator|.
+name|get
+argument_list|(
+literal|"changes"
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
