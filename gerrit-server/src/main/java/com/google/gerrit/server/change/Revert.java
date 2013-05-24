@@ -502,11 +502,13 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|changeInserter
+DECL|field|changeInserterFactory
 specifier|private
 specifier|final
 name|ChangeInserter
-name|changeInserter
+operator|.
+name|Factory
+name|changeInserterFactory
 decl_stmt|;
 DECL|class|Input
 specifier|public
@@ -522,7 +524,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|Revert (ChangeHooks hooks, RevertedSender.Factory revertedSenderFactory, final CommitValidators.Factory commitValidatorsFactory, Provider<ReviewDb> dbProvider, ChangeJson json, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, @GerritPersonIdent final PersonIdent myIdent, final ChangeInserter changeInserter)
+DECL|method|Revert (ChangeHooks hooks, RevertedSender.Factory revertedSenderFactory, final CommitValidators.Factory commitValidatorsFactory, Provider<ReviewDb> dbProvider, ChangeJson json, GitRepositoryManager gitManager, final PatchSetInfoFactory patchSetInfoFactory, @GerritPersonIdent final PersonIdent myIdent, final ChangeInserter.Factory changeInserterFactory)
 name|Revert
 parameter_list|(
 name|ChangeHooks
@@ -563,7 +565,9 @@ name|myIdent
 parameter_list|,
 specifier|final
 name|ChangeInserter
-name|changeInserter
+operator|.
+name|Factory
+name|changeInserterFactory
 parameter_list|)
 block|{
 name|this
@@ -610,9 +614,9 @@ name|myIdent
 expr_stmt|;
 name|this
 operator|.
-name|changeInserter
+name|changeInserterFactory
 operator|=
-name|changeInserter
+name|changeInserterFactory
 expr_stmt|;
 name|this
 operator|.
@@ -787,7 +791,7 @@ name|patchSetInfoFactory
 argument_list|,
 name|myIdent
 argument_list|,
-name|changeInserter
+name|changeInserterFactory
 argument_list|)
 decl_stmt|;
 return|return

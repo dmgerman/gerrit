@@ -925,6 +925,15 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
+name|ChangeInserter
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|PatchSetInserter
 operator|.
 name|Factory

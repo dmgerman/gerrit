@@ -2435,11 +2435,13 @@ specifier|final
 name|TagCache
 name|tagCache
 decl_stmt|;
-DECL|field|changeInserter
+DECL|field|changeInserterFactory
 specifier|private
 specifier|final
 name|ChangeInserter
-name|changeInserter
+operator|.
+name|Factory
+name|changeInserterFactory
 decl_stmt|;
 DECL|field|workQueue
 specifier|private
@@ -2709,7 +2711,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final ChangeInserter changeInserter, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final ChangeCache changeCache, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2785,7 +2787,9 @@ name|changeCache
 parameter_list|,
 specifier|final
 name|ChangeInserter
-name|changeInserter
+operator|.
+name|Factory
+name|changeInserterFactory
 parameter_list|,
 specifier|final
 name|CommitValidators
@@ -2977,9 +2981,9 @@ name|tagCache
 expr_stmt|;
 name|this
 operator|.
-name|changeInserter
+name|changeInserterFactory
 operator|=
-name|changeInserter
+name|changeInserterFactory
 expr_stmt|;
 name|this
 operator|.
@@ -8541,6 +8545,10 @@ argument_list|(
 operator|new
 name|CreateRequest
 argument_list|(
+name|magicBranch
+operator|.
+name|ctl
+argument_list|,
 name|c
 argument_list|,
 name|changeKey
@@ -8810,6 +8818,10 @@ argument_list|(
 operator|new
 name|CreateRequest
 argument_list|(
+name|magicBranch
+operator|.
+name|ctl
+argument_list|,
 name|p
 operator|.
 name|commit
@@ -9207,6 +9219,12 @@ specifier|final
 name|ReceiveCommand
 name|cmd
 decl_stmt|;
+DECL|field|ctl
+specifier|private
+specifier|final
+name|RefControl
+name|ctl
+decl_stmt|;
 DECL|field|info
 specifier|private
 specifier|final
@@ -9217,9 +9235,12 @@ DECL|field|created
 name|boolean
 name|created
 decl_stmt|;
-DECL|method|CreateRequest (RevCommit c, Change.Key changeKey)
+DECL|method|CreateRequest (RefControl ctl, RevCommit c, Change.Key changeKey)
 name|CreateRequest
 parameter_list|(
+name|RefControl
+name|ctl
+parameter_list|,
 name|RevCommit
 name|c
 parameter_list|,
@@ -9231,6 +9252,12 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|this
+operator|.
+name|ctl
+operator|=
+name|ctl
+expr_stmt|;
 name|commit
 operator|=
 name|c
@@ -9612,11 +9639,11 @@ argument_list|(
 name|me
 argument_list|)
 expr_stmt|;
-name|changeInserter
+name|changeInserterFactory
 operator|.
-name|insertChange
+name|create
 argument_list|(
-name|db
+name|ctl
 argument_list|,
 name|change
 argument_list|,
@@ -9624,15 +9651,19 @@ name|ps
 argument_list|,
 name|commit
 argument_list|,
-name|labelTypes
-argument_list|,
 name|info
-argument_list|,
+argument_list|)
+operator|.
+name|setReviewers
+argument_list|(
 name|recipients
 operator|.
 name|getReviewers
 argument_list|()
 argument_list|)
+operator|.
+name|insert
+argument_list|()
 expr_stmt|;
 name|created
 operator|=
