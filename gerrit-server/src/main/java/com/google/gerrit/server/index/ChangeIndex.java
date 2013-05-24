@@ -220,6 +220,20 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|void
+name|delete
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// Do nothing.
+block|}
+annotation|@
+name|Override
+specifier|public
 name|ChangeDataSource
 name|getSource
 parameter_list|(
@@ -266,11 +280,23 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to removing the document and reinserting it with    * new field values. Results may not be immediately visible to searchers, but    * should be visible within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException    */
+comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. Results may not be immediately visible to searchers, but    * should be visible within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException    */
 DECL|method|replace (ChangeData cd)
 specifier|public
 name|void
 name|replace
+parameter_list|(
+name|ChangeData
+name|cd
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**    * Delete a change document from the index.    *    * @param cd change document.    *    * @throws IOException    */
+DECL|method|delete (ChangeData cd)
+specifier|public
+name|void
+name|delete
 parameter_list|(
 name|ChangeData
 name|cd

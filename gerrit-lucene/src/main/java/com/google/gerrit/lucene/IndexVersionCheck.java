@@ -294,7 +294,13 @@ name|ImmutableMap
 operator|.
 name|of
 argument_list|(
-literal|"changes"
+literal|"changes_open"
+argument_list|,
+name|ChangeField
+operator|.
+name|SCHEMA_VERSION
+argument_list|,
+literal|"changes_closed"
 argument_list|,
 name|ChangeField
 operator|.
