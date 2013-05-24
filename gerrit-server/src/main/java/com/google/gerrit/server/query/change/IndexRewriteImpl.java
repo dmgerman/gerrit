@@ -932,9 +932,9 @@ return|return
 operator|new
 name|PredicateWrapper
 argument_list|(
-name|index
-argument_list|,
 name|p
+argument_list|,
+name|index
 argument_list|)
 return|;
 block|}
