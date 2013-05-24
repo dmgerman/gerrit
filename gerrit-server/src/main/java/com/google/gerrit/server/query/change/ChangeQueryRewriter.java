@@ -397,9 +397,15 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|indexRewrite
+specifier|private
+specifier|final
+name|IndexRewrite
+name|indexRewrite
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeQueryRewriter (Provider<ReviewDb> dbProvider)
+DECL|method|ChangeQueryRewriter (Provider<ReviewDb> dbProvider, IndexRewrite indexRewrite)
 name|ChangeQueryRewriter
 parameter_list|(
 name|Provider
@@ -407,6 +413,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|IndexRewrite
+name|indexRewrite
 parameter_list|)
 block|{
 name|super
@@ -419,6 +428,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|indexRewrite
+operator|=
+name|indexRewrite
 expr_stmt|;
 block|}
 annotation|@
@@ -504,6 +519,37 @@ operator|.
 name|or
 argument_list|(
 name|l
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|rewrite (Predicate<ChangeData> in)
+specifier|public
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|rewrite
+parameter_list|(
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|in
+parameter_list|)
+block|{
+return|return
+name|super
+operator|.
+name|rewrite
+argument_list|(
+name|indexRewrite
+operator|.
+name|rewrite
+argument_list|(
+name|in
+argument_list|)
 argument_list|)
 return|;
 block|}

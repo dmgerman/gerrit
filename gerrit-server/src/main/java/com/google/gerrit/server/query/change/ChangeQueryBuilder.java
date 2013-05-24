@@ -344,22 +344,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|PredicateWrapper
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|patch
 operator|.
 name|PatchListCache
@@ -1977,15 +1961,7 @@ operator|.
 name|DISABLED
 condition|)
 block|{
-comment|// TODO(dborowitz): Wrap predicates in query rewriter, not here.
 return|return
-operator|new
-name|PredicateWrapper
-argument_list|(
-name|args
-operator|.
-name|index
-argument_list|,
 operator|new
 name|EqualsFilePredicate
 argument_list|(
@@ -1998,7 +1974,6 @@ operator|.
 name|patchListCache
 argument_list|,
 name|file
-argument_list|)
 argument_list|)
 return|;
 block|}

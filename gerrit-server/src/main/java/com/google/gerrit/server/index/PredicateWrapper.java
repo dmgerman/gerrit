@@ -192,7 +192,7 @@ block|{
 DECL|field|pred
 specifier|private
 specifier|final
-name|IndexPredicate
+name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -204,14 +204,14 @@ specifier|final
 name|ChangeDataSource
 name|source
 decl_stmt|;
-DECL|method|PredicateWrapper (ChangeIndex index, IndexPredicate<ChangeData> pred)
+DECL|method|PredicateWrapper (ChangeIndex index, Predicate<ChangeData> pred)
 specifier|public
 name|PredicateWrapper
 parameter_list|(
 name|ChangeIndex
 name|index
 parameter_list|,
-name|IndexPredicate
+name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -403,6 +403,22 @@ operator|)
 operator|.
 name|pred
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"index("
+operator|+
+name|pred
+operator|+
+literal|")"
 return|;
 block|}
 block|}

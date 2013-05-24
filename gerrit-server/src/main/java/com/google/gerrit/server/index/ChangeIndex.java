@@ -78,6 +78,22 @@ name|server
 operator|.
 name|query
 operator|.
+name|Predicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
 name|QueryParseException
 import|;
 end_import
@@ -184,7 +200,7 @@ specifier|public
 name|ChangeDataSource
 name|getSource
 parameter_list|(
-name|IndexPredicate
+name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -225,13 +241,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match.    * @return a source of documents matching the predicate.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
-DECL|method|getSource (IndexPredicate<ChangeData> p)
+comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @return a source of documents matching the predicate.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
+DECL|method|getSource (Predicate<ChangeData> p)
 specifier|public
 name|ChangeDataSource
 name|getSource
 parameter_list|(
-name|IndexPredicate
+name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
