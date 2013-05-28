@@ -13637,6 +13637,17 @@ name|change
 expr_stmt|;
 name|result
 operator|.
+name|changeCtl
+operator|=
+name|projectControl
+operator|.
+name|controlFor
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
 name|newPatchSet
 operator|=
 name|ps
