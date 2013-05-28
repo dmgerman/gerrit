@@ -347,46 +347,6 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|generatePassword (AccountExternalId.Key key, AsyncCallback<AccountExternalId> callback)
-name|void
-name|generatePassword
-parameter_list|(
-name|AccountExternalId
-operator|.
-name|Key
-name|key
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|AccountExternalId
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|clearPassword (AccountExternalId.Key key, AsyncCallback<AccountExternalId> gerritCallback)
-name|void
-name|clearPassword
-parameter_list|(
-name|AccountExternalId
-operator|.
-name|Key
-name|key
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|AccountExternalId
-argument_list|>
-name|gerritCallback
-parameter_list|)
-function_decl|;
-annotation|@
 name|SignInRequired
 DECL|method|myExternalIds (AsyncCallback<List<AccountExternalId>> callback)
 name|void
