@@ -106,6 +106,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|CssResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|uibinder
 operator|.
 name|client
@@ -203,6 +219,33 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|interface|LineStyle
+interface|interface
+name|LineStyle
+extends|extends
+name|CssResource
+block|{
+DECL|method|insert ()
+name|String
+name|insert
+parameter_list|()
+function_decl|;
+DECL|method|delete ()
+name|String
+name|delete
+parameter_list|()
+function_decl|;
+DECL|method|intraline ()
+name|String
+name|intraline
+parameter_list|()
+function_decl|;
+DECL|method|padding ()
+name|String
+name|padding
+parameter_list|()
+function_decl|;
+block|}
 annotation|@
 name|UiField
 DECL|field|cmA
@@ -214,6 +257,12 @@ name|UiField
 DECL|field|cmB
 name|DivElement
 name|cmB
+decl_stmt|;
+annotation|@
+name|UiField
+DECL|field|style
+name|LineStyle
+name|style
 decl_stmt|;
 DECL|method|DiffTable ()
 name|DiffTable

@@ -79,92 +79,98 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple map-like structure to pass configuration to CodeMirror.  *  * @link http://codemirror.net/doc/manual.html#config  * @see CodeMirror#create(com.google.gwt.dom.client.Element, Configuration)  */
+comment|/** {line, ch} objects used within CodeMirror. */
 end_comment
 
 begin_class
-DECL|class|Configuration
+DECL|class|LineCharacter
 specifier|public
 class|class
-name|Configuration
+name|LineCharacter
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create ()
+DECL|method|create (int line, int ch)
 specifier|public
 specifier|static
-name|Configuration
+name|LineCharacter
 name|create
-parameter_list|()
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|int
+name|ch
+parameter_list|)
 block|{
-return|return
+name|LineCharacter
+name|lineCh
+init|=
 name|createObject
 argument_list|()
 operator|.
 name|cast
 argument_list|()
+decl_stmt|;
+return|return
+name|lineCh
+operator|.
+name|setLine
+argument_list|(
+name|line
+argument_list|)
+operator|.
+name|setCh
+argument_list|(
+name|ch
+argument_list|)
 return|;
 block|}
-DECL|method|set (String name, String val)
-specifier|public
+DECL|method|setLine (int line)
+specifier|private
 specifier|final
 specifier|native
-name|Configuration
-name|set
+name|LineCharacter
+name|setLine
 parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|String
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
-function_decl|;
-DECL|method|set (String name, int val)
-specifier|public
-specifier|final
-specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
 name|int
-name|val
+name|line
 parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+comment|/*-{     this.line = line; return this;   }-*/
 function_decl|;
-DECL|method|set (String name, boolean val)
+DECL|method|setCh (int ch)
+specifier|private
+specifier|final
+specifier|native
+name|LineCharacter
+name|setCh
+parameter_list|(
+name|int
+name|ch
+parameter_list|)
+comment|/*-{     this.ch = ch; return this;   }-*/
+function_decl|;
+DECL|method|getLine ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|boolean
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+name|int
+name|getLine
+parameter_list|()
+comment|/*-{ return this.line; }-*/
 function_decl|;
-DECL|method|setInfinity (String name)
+DECL|method|getCh ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|setInfinity
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-comment|/*-{ this[name] = Infinity; return this; }-*/
+name|int
+name|getCh
+parameter_list|()
+comment|/*-{ return this.ch; }-*/
 function_decl|;
-DECL|method|Configuration ()
+DECL|method|LineCharacter ()
 specifier|protected
-name|Configuration
+name|LineCharacter
 parameter_list|()
 block|{   }
 block|}
