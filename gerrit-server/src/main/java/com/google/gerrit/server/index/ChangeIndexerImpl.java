@@ -72,13 +72,29 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|reviewdb
+name|util
 operator|.
-name|client
+name|concurrent
 operator|.
-name|Change
+name|ListenableFuture
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListeningScheduledExecutorService
 import|;
 end_import
 
@@ -90,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|WorkQueue
+name|Change
 import|;
 end_import
 
@@ -174,18 +190,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Future
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper for (re)indexing a change document.  *<p>  * Indexing is run in the background, as it may require substantial work to  * compute some of the fields and/or update the index.  */
 end_comment
@@ -214,11 +218,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|workQueue
+DECL|field|executor
 specifier|private
 specifier|final
-name|WorkQueue
-name|workQueue
+name|ListeningScheduledExecutorService
+name|executor
 decl_stmt|;
 DECL|field|openIndex
 specifier|private
@@ -234,11 +238,13 @@ name|closedIndex
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeIndexerImpl (WorkQueue workQueue, ChangeIndex.Manager indexManager)
+DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningScheduledExecutorService executor, ChangeIndex.Manager indexManager)
 name|ChangeIndexerImpl
 parameter_list|(
-name|WorkQueue
-name|workQueue
+annotation|@
+name|IndexExecutor
+name|ListeningScheduledExecutorService
+name|executor
 parameter_list|,
 name|ChangeIndex
 operator|.
@@ -250,9 +256,9 @@ name|IOException
 block|{
 name|this
 operator|.
-name|workQueue
+name|executor
 operator|=
-name|workQueue
+name|executor
 expr_stmt|;
 name|this
 operator|.
@@ -281,7 +287,7 @@ annotation|@
 name|Override
 DECL|method|index (Change change)
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
@@ -304,7 +310,7 @@ annotation|@
 name|Override
 DECL|method|index (Change change, RequestScopePropagator prop)
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
@@ -344,10 +350,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|workQueue
-operator|.
-name|getDefaultQueue
-argument_list|()
+name|executor
 operator|.
 name|submit
 argument_list|(

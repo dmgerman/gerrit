@@ -88,6 +88,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListenableFuture
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -111,18 +127,6 @@ operator|.
 name|util
 operator|.
 name|RequestScopePropagator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Future
 import|;
 end_import
 
@@ -151,7 +155,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
@@ -173,7 +177,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
@@ -197,10 +201,10 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Start indexing a change.    *    * @param change change to index.    */
+comment|/**    * Start indexing a change.    *    * @param change change to index.    * @return future for the indexing task.    */
 DECL|method|index (Change change)
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
@@ -210,10 +214,10 @@ name|Change
 name|change
 parameter_list|)
 function_decl|;
-comment|/**    * Start indexing a change.    *    * @param change change to index.    * @param prop propagator to wrap any created runnables in.    */
+comment|/**    * Start indexing a change.    *    * @param change change to index.    * @param prop propagator to wrap any created runnables in.    * @return future for the indexing task.    */
 DECL|method|index (Change change, RequestScopePropagator prop)
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|?
 argument_list|>
