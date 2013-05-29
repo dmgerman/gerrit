@@ -330,22 +330,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
-operator|.
-name|PatchSetInfoFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|InvalidChangeOperationException
@@ -677,12 +661,6 @@ argument_list|(
 literal|"Change-Id"
 argument_list|)
 decl_stmt|;
-DECL|field|patchSetInfoFactory
-specifier|private
-specifier|final
-name|PatchSetInfoFactory
-name|patchSetInfoFactory
-decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -740,13 +718,9 @@ name|mergeUtilFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange (final PatchSetInfoFactory patchSetInfoFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final IdentifiedUser currentUser, final CommitValidators.Factory commitValidatorsFactory, final ChangeInserter.Factory changeInserterFactory, final PatchSetInserter.Factory patchSetInserterFactory, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|CherryPickChange (final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final IdentifiedUser currentUser, final CommitValidators.Factory commitValidatorsFactory, final ChangeInserter.Factory changeInserterFactory, final PatchSetInserter.Factory patchSetInserterFactory, final MergeUtil.Factory mergeUtilFactory)
 name|CherryPickChange
 parameter_list|(
-specifier|final
-name|PatchSetInfoFactory
-name|patchSetInfoFactory
-parameter_list|,
 specifier|final
 name|ReviewDb
 name|db
@@ -790,12 +764,6 @@ name|Factory
 name|mergeUtilFactory
 parameter_list|)
 block|{
-name|this
-operator|.
-name|patchSetInfoFactory
-operator|=
-name|patchSetInfoFactory
-expr_stmt|;
 name|this
 operator|.
 name|db
