@@ -225,14 +225,9 @@ name|LineStyle
 extends|extends
 name|CssResource
 block|{
-DECL|method|insert ()
+DECL|method|diff ()
 name|String
-name|insert
-parameter_list|()
-function_decl|;
-DECL|method|delete ()
-name|String
-name|delete
+name|diff
 parameter_list|()
 function_decl|;
 DECL|method|intraline ()
