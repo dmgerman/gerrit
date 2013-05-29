@@ -272,22 +272,6 @@ extends|extends
 name|RemoteJsonService
 block|{
 annotation|@
-name|SignInRequired
-DECL|method|mySshKeys (AsyncCallback<List<AccountSshKey>> callback)
-name|void
-name|mySshKeys
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|AccountSshKey
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
