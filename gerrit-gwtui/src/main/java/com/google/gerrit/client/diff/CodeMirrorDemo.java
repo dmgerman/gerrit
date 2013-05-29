@@ -1399,6 +1399,8 @@ operator|.
 name|addLineClass
 argument_list|(
 name|line
+operator|+
+name|i
 argument_list|,
 name|LineClassWhere
 operator|.
