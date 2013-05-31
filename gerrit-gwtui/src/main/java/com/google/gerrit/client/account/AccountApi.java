@@ -274,6 +274,50 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Add a new SSH keys */
+DECL|method|addSshKey (String account, String sshPublicKey, AsyncCallback<SshKeyInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|addSshKey
+parameter_list|(
+name|String
+name|account
+parameter_list|,
+name|String
+name|sshPublicKey
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|SshKeyInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"sshkeys"
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|sshPublicKey
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Generate a new HTTP password */
 DECL|method|generateHttpPassword (String account, AsyncCallback<NativeString> cb)
 specifier|public

@@ -275,24 +275,6 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|addSshKey (String keyText, AsyncCallback<AccountSshKey> callback)
-name|void
-name|addSshKey
-parameter_list|(
-name|String
-name|keyText
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|AccountSshKey
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
 DECL|method|deleteSshKeys (Set<AccountSshKey.Id> ids, AsyncCallback<VoidResult> callback)
 name|void
 name|deleteSshKeys
