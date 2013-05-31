@@ -87,14 +87,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Raw data stream supplied by the body of a PUT. */
+comment|/** Raw data stream supplied by the body of a PUT or POST. */
 end_comment
 
 begin_interface
-DECL|interface|PutInput
+DECL|interface|RawInput
 specifier|public
 interface|interface
-name|PutInput
+name|RawInput
 block|{
 DECL|method|getContentType ()
 name|String

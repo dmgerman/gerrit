@@ -142,7 +142,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|PutInput
+name|RawInput
 import|;
 end_import
 
@@ -327,7 +327,7 @@ name|String
 name|url
 decl_stmt|;
 DECL|field|raw
-name|PutInput
+name|RawInput
 name|raw
 decl_stmt|;
 block|}
