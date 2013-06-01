@@ -809,6 +809,17 @@ argument_list|(
 name|resource
 argument_list|)
 expr_stmt|;
+name|dsc
+operator|.
+name|confirmationMessage
+operator|=
+name|cmd
+operator|.
+name|getConfirmationMessage
+argument_list|(
+name|resource
+argument_list|)
+expr_stmt|;
 return|return
 name|dsc
 return|;

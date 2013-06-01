@@ -174,6 +174,14 @@ name|R
 name|resource
 parameter_list|)
 function_decl|;
+DECL|method|getConfirmationMessage (R resource)
+name|String
+name|getConfirmationMessage
+parameter_list|(
+name|R
+name|resource
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

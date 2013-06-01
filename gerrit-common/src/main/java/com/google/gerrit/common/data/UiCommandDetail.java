@@ -101,6 +101,11 @@ specifier|public
 name|boolean
 name|enabled
 decl_stmt|;
+DECL|field|confirmationMessage
+specifier|public
+name|String
+name|confirmationMessage
+decl_stmt|;
 block|}
 end_class
 
