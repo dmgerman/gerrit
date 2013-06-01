@@ -1557,7 +1557,7 @@ name|out
 operator|.
 name|format
 argument_list|(
-literal|"Reindexed %d changes in %.02fms"
+literal|"Reindexed %d changes in %.02fms\n"
 argument_list|,
 name|i
 argument_list|,
