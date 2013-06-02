@@ -3420,7 +3420,7 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doChangeAbandonedHook (final Change change, final Account account, final String reason, final ReviewDb db)
+DECL|method|doChangeAbandonedHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
 specifier|public
 name|void
 name|doChangeAbandonedHook
@@ -3432,6 +3432,10 @@ parameter_list|,
 specifier|final
 name|Account
 name|account
+parameter_list|,
+specifier|final
+name|PatchSet
+name|patchSet
 parameter_list|,
 specifier|final
 name|String
@@ -3472,6 +3476,17 @@ operator|.
 name|asAccountAttribute
 argument_list|(
 name|account
+argument_list|)
+expr_stmt|;
+name|event
+operator|.
+name|patchSet
+operator|=
+name|eventFactory
+operator|.
+name|asPatchSetAttribute
+argument_list|(
+name|patchSet
 argument_list|)
 expr_stmt|;
 name|event
@@ -3584,6 +3599,19 @@ name|addArg
 argument_list|(
 name|args
 argument_list|,
+literal|"--commit"
+argument_list|,
+name|event
+operator|.
+name|patchSet
+operator|.
+name|revision
+argument_list|)
+expr_stmt|;
+name|addArg
+argument_list|(
+name|args
+argument_list|,
 literal|"--reason"
 argument_list|,
 name|reason
@@ -3608,7 +3636,7 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doChangeRestoredHook (final Change change, final Account account, final String reason, final ReviewDb db)
+DECL|method|doChangeRestoredHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
 specifier|public
 name|void
 name|doChangeRestoredHook
@@ -3620,6 +3648,10 @@ parameter_list|,
 specifier|final
 name|Account
 name|account
+parameter_list|,
+specifier|final
+name|PatchSet
+name|patchSet
 parameter_list|,
 specifier|final
 name|String
@@ -3660,6 +3692,17 @@ operator|.
 name|asAccountAttribute
 argument_list|(
 name|account
+argument_list|)
+expr_stmt|;
+name|event
+operator|.
+name|patchSet
+operator|=
+name|eventFactory
+operator|.
+name|asPatchSetAttribute
+argument_list|(
+name|patchSet
 argument_list|)
 expr_stmt|;
 name|event
@@ -3766,6 +3809,19 @@ name|getDisplayName
 argument_list|(
 name|account
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|addArg
+argument_list|(
+name|args
+argument_list|,
+literal|"--commit"
+argument_list|,
+name|event
+operator|.
+name|patchSet
+operator|.
+name|revision
 argument_list|)
 expr_stmt|;
 name|addArg
