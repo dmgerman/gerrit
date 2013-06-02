@@ -1095,7 +1095,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|pushHead (Git git, String ref)
+DECL|method|pushHead (Git git, String ref, boolean pushTags)
 specifier|public
 specifier|static
 name|PushResult
@@ -1106,6 +1106,9 @@ name|git
 parameter_list|,
 name|String
 name|ref
+parameter_list|,
+name|boolean
+name|pushTags
 parameter_list|)
 throws|throws
 name|GitAPIException
@@ -1131,6 +1134,17 @@ name|ref
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pushTags
+condition|)
+block|{
+name|pushCmd
+operator|.
+name|setPushTags
+argument_list|()
+expr_stmt|;
+block|}
 name|Iterable
 argument_list|<
 name|PushResult
