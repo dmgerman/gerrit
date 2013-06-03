@@ -159,6 +159,50 @@ specifier|private
 name|boolean
 name|failed
 decl_stmt|;
+DECL|method|emptyCallback ()
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|AsyncCallback
+argument_list|<
+name|T
+argument_list|>
+name|emptyCallback
+parameter_list|()
+block|{
+return|return
+operator|new
+name|AsyncCallback
+argument_list|<
+name|T
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onSuccess
+parameter_list|(
+name|T
+name|result
+parameter_list|)
+block|{       }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|err
+parameter_list|)
+block|{       }
+block|}
+return|;
+block|}
 DECL|method|CallbackGroup ()
 specifier|public
 name|CallbackGroup
