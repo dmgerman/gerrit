@@ -4008,7 +4008,12 @@ name|Key
 argument_list|(
 name|ps
 argument_list|,
+name|KeyUtil
+operator|.
+name|decode
+argument_list|(
 name|rest
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|patch
