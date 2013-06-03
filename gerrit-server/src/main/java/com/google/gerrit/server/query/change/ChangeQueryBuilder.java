@@ -1948,18 +1948,29 @@ else|else
 block|{
 if|if
 condition|(
-operator|!
 name|file
 operator|.
 name|startsWith
 argument_list|(
 literal|"^"
 argument_list|)
-operator|&&
+condition|)
+block|{
+throw|throw
+name|error
+argument_list|(
+literal|"regular expression not permitted here: file:"
+operator|+
+name|file
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|args
 operator|.
 name|indexManager
-operator|!=
+operator|==
 name|ChangeIndex
 operator|.
 name|Manager
@@ -1967,6 +1978,15 @@ operator|.
 name|DISABLED
 condition|)
 block|{
+throw|throw
+name|error
+argument_list|(
+literal|"secondary index must be enabled for file:"
+operator|+
+name|file
+argument_list|)
+throw|;
+block|}
 return|return
 operator|new
 name|EqualsFilePredicate
@@ -1982,18 +2002,6 @@ argument_list|,
 name|file
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-throw|throw
-name|error
-argument_list|(
-literal|"regular expression not permitted here: file:"
-operator|+
-name|file
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 annotation|@
