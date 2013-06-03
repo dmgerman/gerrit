@@ -656,6 +656,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -980,6 +990,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Sets the header row    *    * @param labels The list of labels to display in the header. This list does    *    not get resorted, so be sure that the list's elements are in the same    *    order as the list of labels passed to the {@code displayRow} method.    */
 DECL|method|displayHeader (Collection<String> labels)
 specifier|private
 name|void
@@ -1269,12 +1280,34 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|displayHeader
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|labels
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|change
 operator|.
 name|labels
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|labels
+argument_list|)
+expr_stmt|;
+name|displayHeader
+argument_list|(
+name|labels
 argument_list|)
 expr_stmt|;
 name|table
@@ -1325,7 +1358,7 @@ operator|++
 argument_list|,
 name|ad
 argument_list|,
-name|change
+name|labels
 argument_list|,
 name|accounts
 operator|.
@@ -2386,7 +2419,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|displayRow (int row, final ApprovalDetail ad, ChangeInfo change, AccountInfo account)
+comment|/**    * Sets the reviewer data for a row.    *    * @param row The number of the row on which to set the reviewer.    * @param ad The details for this reviewer's approval.    * @param labels The list of labels to show. This list does not get resorted,    *    so be sure that the list's elements are in the same order as the list    *    of labels passed to the {@code displayHeader} method.    * @param account The account information for the approval.    */
+DECL|method|displayRow (int row, final ApprovalDetail ad, List<String> labels, AccountInfo account)
 specifier|private
 name|void
 name|displayRow
@@ -2398,8 +2432,11 @@ specifier|final
 name|ApprovalDetail
 name|ad
 parameter_list|,
-name|ChangeInfo
-name|change
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|labels
 parameter_list|,
 name|AccountInfo
 name|account
@@ -2612,10 +2649,7 @@ control|(
 name|String
 name|labelName
 range|:
-name|change
-operator|.
 name|labels
-argument_list|()
 control|)
 block|{
 name|fmt
