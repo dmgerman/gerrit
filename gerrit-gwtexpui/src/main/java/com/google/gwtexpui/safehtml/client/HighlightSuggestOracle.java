@@ -369,7 +369,13 @@ name|ds
 argument_list|)
 expr_stmt|;
 block|}
-name|displayString
+comment|// We now surround qstr by<strong>. But the chosen approach is not too
+comment|// smooth, if qstr is small (e.g.: "t") and this small qstr may occur in
+comment|// escapes (e.g.: "Tim&lt;email@example.org&gt;"). Those escapes will
+comment|// get<strong>-ed as well (e.g.: "&lt;" -> "&<strong>l</strong>t;"). But
+comment|// as repairing those mangled escapes is easier than not mangling them in
+comment|// the first place, we repair them afterwards.
+name|ds
 operator|=
 name|sgi
 argument_list|(
@@ -379,6 +385,22 @@ name|qstr
 argument_list|,
 literal|"<strong>$1</strong>"
 argument_list|)
+expr_stmt|;
+comment|// Repairing<strong>-ed escapes.
+name|ds
+operator|=
+name|sgi
+argument_list|(
+name|ds
+argument_list|,
+literal|"(&[a-z]*)<strong>([a-z]*)</strong>([a-z]*;)"
+argument_list|,
+literal|"$1$2$3"
+argument_list|)
+expr_stmt|;
+name|displayString
+operator|=
+name|ds
 expr_stmt|;
 block|}
 DECL|method|sgi (String inString, String pat, String newHtml)
