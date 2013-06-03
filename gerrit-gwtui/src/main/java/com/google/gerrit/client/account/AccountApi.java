@@ -198,8 +198,50 @@ specifier|public
 class|class
 name|AccountApi
 block|{
+comment|/** Retrieve email addresses */
+DECL|method|getEmails (String account, AsyncCallback<JsArray<EmailInfo>> cb)
+specifier|public
+specifier|static
+name|void
+name|getEmails
+parameter_list|(
+name|String
+name|account
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|JsArray
+argument_list|<
+name|EmailInfo
+argument_list|>
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"emails"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Register a new email address */
-DECL|method|registerEmail (String account, String email, AsyncCallback<NativeString> cb)
+DECL|method|registerEmail (String account, String email, AsyncCallback<EmailInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -213,7 +255,7 @@ name|email
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|NativeString
+name|EmailInfo
 argument_list|>
 name|cb
 parameter_list|)
