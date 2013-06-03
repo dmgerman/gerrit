@@ -403,7 +403,7 @@ throws|throws
 name|OrmException
 function_decl|;
 comment|/**    * Fire the Change Abandoned Hook.    *    * @param change The change itself.    * @param account The gerrit user who abandoned the change.    * @param reason Reason for abandoning the change.    * @throws OrmException    */
-DECL|method|doChangeAbandonedHook (Change change, Account account, String reason, ReviewDb db)
+DECL|method|doChangeAbandonedHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
 specifier|public
 name|void
 name|doChangeAbandonedHook
@@ -413,6 +413,9 @@ name|change
 parameter_list|,
 name|Account
 name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
 parameter_list|,
 name|String
 name|reason
@@ -424,7 +427,7 @@ throws|throws
 name|OrmException
 function_decl|;
 comment|/**    * Fire the Change Restored Hook.    *    * @param change The change itself.    * @param account The gerrit user who restored the change.    * @param reason Reason for restoring the change.    * @throws OrmException    */
-DECL|method|doChangeRestoredHook (Change change, Account account, String reason, ReviewDb db)
+DECL|method|doChangeRestoredHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
 specifier|public
 name|void
 name|doChangeRestoredHook
@@ -434,6 +437,9 @@ name|change
 parameter_list|,
 name|Account
 name|account
+parameter_list|,
+name|PatchSet
+name|patchSet
 parameter_list|,
 name|String
 name|reason
