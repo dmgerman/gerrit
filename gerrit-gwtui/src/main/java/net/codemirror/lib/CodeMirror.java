@@ -160,6 +160,21 @@ name|cfg
 parameter_list|)
 comment|/*-{     return $wnd.CodeMirror(parent, cfg);   }-*/
 function_decl|;
+DECL|method|setOption (String option, boolean value)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setOption
+parameter_list|(
+name|String
+name|option
+parameter_list|,
+name|boolean
+name|value
+parameter_list|)
+comment|/*-{     this.setOption(option, value);   }-*/
+function_decl|;
 DECL|method|setValue (String v)
 specifier|public
 specifier|final
@@ -337,6 +352,57 @@ name|Configuration
 name|options
 parameter_list|)
 comment|/*-{     this.addLineWidget(line, node, options);   }-*/
+function_decl|;
+DECL|method|scrollTo (int x, int y)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|scrollTo
+parameter_list|(
+name|int
+name|x
+parameter_list|,
+name|int
+name|y
+parameter_list|)
+comment|/*-{     this.scrollTo(x, y);   }-*/
+function_decl|;
+DECL|method|scrollToY (int y)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|scrollToY
+parameter_list|(
+name|int
+name|y
+parameter_list|)
+comment|/*-{     this.scrollTo(null, y);   }-*/
+function_decl|;
+DECL|method|getScrollInfo ()
+specifier|public
+specifier|final
+specifier|native
+name|ScrollInfo
+name|getScrollInfo
+parameter_list|()
+comment|/*-{     return this.getScrollInfo();   }-*/
+function_decl|;
+DECL|method|on (String event, Runnable thunk)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|Runnable
+name|thunk
+parameter_list|)
+comment|/*-{     this.on(event, function() {       $entry(thunk.@java.lang.Runnable::run()());     });   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
