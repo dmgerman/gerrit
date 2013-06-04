@@ -406,6 +406,7 @@ return|;
 block|}
 block|}
 DECL|class|SshKey
+specifier|public
 specifier|static
 class|class
 name|SshKey

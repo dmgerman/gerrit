@@ -320,6 +320,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -327,6 +328,7 @@ block|{
 annotation|@
 name|DefaultInput
 DECL|field|name
+specifier|public
 name|String
 name|name
 decl_stmt|;
