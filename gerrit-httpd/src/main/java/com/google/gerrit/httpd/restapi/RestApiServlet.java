@@ -676,7 +676,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|PutInput
+name|RawInput
 import|;
 end_import
 
@@ -3457,6 +3457,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 literal|"PUT"
 operator|.
 name|equals
@@ -3466,15 +3467,26 @@ operator|.
 name|getMethod
 argument_list|()
 argument_list|)
+operator|||
+literal|"POST"
+operator|.
+name|equals
+argument_list|(
+name|req
+operator|.
+name|getMethod
+argument_list|()
+argument_list|)
+operator|)
 operator|&&
-name|acceptsPutInput
+name|acceptsRawInput
 argument_list|(
 name|type
 argument_list|)
 condition|)
 block|{
 return|return
-name|parsePutInput
+name|parseRawInput
 argument_list|(
 name|req
 argument_list|,
@@ -3734,11 +3746,11 @@ name|SuppressWarnings
 argument_list|(
 literal|"rawtypes"
 argument_list|)
-DECL|method|acceptsPutInput (Type type)
+DECL|method|acceptsRawInput (Type type)
 specifier|private
 specifier|static
 name|boolean
-name|acceptsPutInput
+name|acceptsRawInput
 parameter_list|(
 name|Type
 name|type
@@ -3774,7 +3786,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|PutInput
+name|RawInput
 operator|.
 name|class
 condition|)
@@ -3792,10 +3804,10 @@ block|}
 end_function
 
 begin_function
-DECL|method|parsePutInput (final HttpServletRequest req, Type type)
+DECL|method|parseRawInput (final HttpServletRequest req, Type type)
 specifier|private
 name|Object
-name|parsePutInput
+name|parseRawInput
 parameter_list|(
 specifier|final
 name|HttpServletRequest
@@ -3848,7 +3860,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|PutInput
+name|RawInput
 operator|.
 name|class
 condition|)
@@ -3867,7 +3879,7 @@ argument_list|(
 name|obj
 argument_list|,
 operator|new
-name|PutInput
+name|RawInput
 argument_list|()
 block|{
 annotation|@
