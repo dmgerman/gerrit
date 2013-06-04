@@ -358,6 +358,7 @@ return|;
 block|}
 block|}
 DECL|class|Email
+specifier|public
 specifier|static
 class|class
 name|Email
