@@ -144,33 +144,6 @@ name|isValid
 parameter_list|()
 comment|/*-{ return this['valid'] ? true : false; }-*/
 function_decl|;
-DECL|method|create (int seq, String sshPublicKey, String encodedKey, String algorithm, String comment, boolean valid)
-specifier|public
-specifier|static
-specifier|native
-name|SshKeyInfo
-name|create
-parameter_list|(
-name|int
-name|seq
-parameter_list|,
-name|String
-name|sshPublicKey
-parameter_list|,
-name|String
-name|encodedKey
-parameter_list|,
-name|String
-name|algorithm
-parameter_list|,
-name|String
-name|comment
-parameter_list|,
-name|boolean
-name|valid
-parameter_list|)
-comment|/*-{     return {       'seq': seq,       'ssh_public_key': sshPublicKey,       'encoded_key': encodedKey,       'algorithm': algorithm,       'comment': comment,       'valid': valid     };   }-*/
-function_decl|;
 DECL|method|SshKeyInfo ()
 specifier|protected
 name|SshKeyInfo
