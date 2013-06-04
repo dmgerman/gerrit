@@ -198,6 +198,45 @@ specifier|public
 class|class
 name|AccountApi
 block|{
+comment|/** Retrieve the username */
+DECL|method|getUsername (String account, AsyncCallback<NativeString> cb)
+specifier|public
+specifier|static
+name|void
+name|getUsername
+parameter_list|(
+name|String
+name|account
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|NativeString
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"username"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Retrieve email addresses */
 DECL|method|getEmails (String account, AsyncCallback<JsArray<EmailInfo>> cb)
 specifier|public
@@ -463,6 +502,45 @@ name|emptyCallback
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/** Retrieve the HTTP password */
+DECL|method|getHttpPassword (String account, AsyncCallback<NativeString> cb)
+specifier|public
+specifier|static
+name|void
+name|getHttpPassword
+parameter_list|(
+name|String
+name|account
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|NativeString
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|account
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"password.http"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** Generate a new HTTP password */
 DECL|method|generateHttpPassword (String account, AsyncCallback<NativeString> cb)
