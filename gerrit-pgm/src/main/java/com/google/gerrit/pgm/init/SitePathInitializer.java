@@ -663,6 +663,11 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
+literal|"Footer.vm"
+argument_list|)
+expr_stmt|;
+name|extractMailExample
+argument_list|(
 literal|"Merged.vm"
 argument_list|)
 expr_stmt|;

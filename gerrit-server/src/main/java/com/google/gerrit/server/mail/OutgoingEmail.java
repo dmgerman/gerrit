@@ -605,6 +605,14 @@ expr_stmt|;
 name|format
 argument_list|()
 expr_stmt|;
+name|appendText
+argument_list|(
+name|velocifyFile
+argument_list|(
+literal|"Footer.vm"
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|shouldSendMessage
