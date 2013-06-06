@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.projects
+DECL|package|com.google.gerrit.client.access
 package|package
 name|com
 operator|.
@@ -62,25 +62,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|projects
+name|access
 package|;
 end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Branch
-import|;
-end_import
 
 begin_import
 import|import
@@ -99,78 +83,25 @@ import|;
 end_import
 
 begin_class
-DECL|class|BranchInfo
+DECL|class|ProjectAccessInfo
 specifier|public
 class|class
-name|BranchInfo
+name|ProjectAccessInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|getShortName ()
-specifier|public
-specifier|final
-name|String
-name|getShortName
-parameter_list|()
-block|{
-return|return
-name|ref
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-name|Branch
-operator|.
-name|R_HEADS
-argument_list|)
-condition|?
-name|ref
-argument_list|()
-operator|.
-name|substring
-argument_list|(
-name|Branch
-operator|.
-name|R_HEADS
-operator|.
-name|length
-argument_list|()
-argument_list|)
-else|:
-name|ref
-argument_list|()
-return|;
-block|}
-DECL|method|ref ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|ref
-parameter_list|()
-comment|/*-{ return this.ref; }-*/
-function_decl|;
-DECL|method|revision ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|revision
-parameter_list|()
-comment|/*-{ return this.revision; }-*/
-function_decl|;
-DECL|method|canDelete ()
+DECL|method|canAddRefs ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|canDelete
+name|canAddRefs
 parameter_list|()
-comment|/*-{ return this['can_delete'] ? true : false; }-*/
+comment|/*-{ return this.can_add ? true : false; }-*/
 function_decl|;
-DECL|method|BranchInfo ()
+DECL|method|ProjectAccessInfo ()
 specifier|protected
-name|BranchInfo
+name|ProjectAccessInfo
 parameter_list|()
 block|{   }
 block|}

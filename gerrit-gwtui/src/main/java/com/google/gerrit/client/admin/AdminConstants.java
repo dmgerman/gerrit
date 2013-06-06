@@ -420,11 +420,6 @@ name|String
 name|buttonDeleteBranch
 parameter_list|()
 function_decl|;
-DECL|method|branchDeletionOpenChanges ()
-name|String
-name|branchDeletionOpenChanges
-parameter_list|()
-function_decl|;
 DECL|method|groupItemHelp ()
 name|String
 name|groupItemHelp
