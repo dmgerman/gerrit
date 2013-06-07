@@ -650,6 +650,43 @@ name|JSchException
 throws|,
 name|IOException
 block|{
+name|createProject
+argument_list|(
+name|s
+argument_list|,
+name|name
+argument_list|,
+name|parent
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|createProject (SshSession s, String name, Project.NameKey parent, boolean emptyCommit)
+specifier|public
+specifier|static
+name|void
+name|createProject
+parameter_list|(
+name|SshSession
+name|s
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|parent
+parameter_list|,
+name|boolean
+name|emptyCommit
+parameter_list|)
+throws|throws
+name|JSchException
+throws|,
+name|IOException
+block|{
 name|StringBuilder
 name|b
 init|=
@@ -661,7 +698,27 @@ name|b
 operator|.
 name|append
 argument_list|(
-literal|"gerrit create-project --empty-commit --name \""
+literal|"gerrit create-project"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|emptyCommit
+condition|)
+block|{
+name|b
+operator|.
+name|append
+argument_list|(
+literal|" --empty-commit"
+argument_list|)
+expr_stmt|;
+block|}
+name|b
+operator|.
+name|append
+argument_list|(
+literal|" --name \""
 argument_list|)
 expr_stmt|;
 name|b
