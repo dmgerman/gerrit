@@ -154,37 +154,14 @@ specifier|public
 interface|interface
 name|ChangeIndex
 block|{
-DECL|interface|Manager
-specifier|public
-specifier|static
-interface|interface
-name|Manager
-block|{
 comment|/** Instance indicating secondary index is disabled. */
 DECL|field|DISABLED
 specifier|public
 specifier|static
 specifier|final
-name|Manager
+name|ChangeIndex
 name|DISABLED
 init|=
-operator|new
-name|Manager
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|ChangeIndex
-name|get
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
 operator|new
 name|ChangeIndex
 argument_list|()
@@ -253,21 +230,7 @@ argument_list|()
 throw|;
 block|}
 block|}
-return|;
-block|}
-block|}
 decl_stmt|;
-DECL|method|get (String name)
-name|ChangeIndex
-name|get
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-block|}
 comment|/**    * Insert a change document into the index.    *<p>    * Results may not be immediately visible to searchers, but should be visible    * within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException if the change could not be inserted.    */
 DECL|method|insert (ChangeData cd)
 specifier|public

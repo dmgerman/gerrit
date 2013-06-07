@@ -188,14 +188,12 @@ name|bind
 argument_list|(
 name|ChangeIndex
 operator|.
-name|Manager
-operator|.
 name|class
 argument_list|)
 operator|.
 name|to
 argument_list|(
-name|LuceneChangeIndexManager
+name|LuceneChangeIndex
 operator|.
 name|class
 argument_list|)
@@ -205,7 +203,7 @@ argument_list|()
 operator|.
 name|to
 argument_list|(
-name|LuceneChangeIndexManager
+name|LuceneChangeIndex
 operator|.
 name|class
 argument_list|)
