@@ -79,21 +79,21 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple map-like structure to pass configuration to CodeMirror.  *  * @link http://codemirror.net/doc/manual.html#config  * @see CodeMirror#create(com.google.gwt.dom.client.Element, Configuration)  */
+comment|/** {left, top, width, height, clientWidth, clientHeight} objects returned by  * getScrollInfo(). */
 end_comment
 
 begin_class
-DECL|class|Configuration
+DECL|class|ScrollInfo
 specifier|public
 class|class
-name|Configuration
+name|ScrollInfo
 extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|create ()
 specifier|public
 specifier|static
-name|Configuration
+name|ScrollInfo
 name|create
 parameter_list|()
 block|{
@@ -105,54 +105,63 @@ name|cast
 argument_list|()
 return|;
 block|}
-DECL|method|set (String name, String val)
+DECL|method|getLeft ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|String
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
-function_decl|;
-DECL|method|set (String name, int val)
-specifier|public
-specifier|final
-specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
 name|int
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+name|getLeft
+parameter_list|()
+comment|/*-{ return this.left; }-*/
 function_decl|;
-DECL|method|set (String name, boolean val)
+DECL|method|getTop ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|boolean
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+name|int
+name|getTop
+parameter_list|()
+comment|/*-{ return this.top; }-*/
 function_decl|;
-DECL|method|Configuration ()
+DECL|method|getWidth ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getWidth
+parameter_list|()
+comment|/*-{ return this.width; }-*/
+function_decl|;
+DECL|method|getHeight ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getHeight
+parameter_list|()
+comment|/*-{ return this.height; }-*/
+function_decl|;
+DECL|method|getClientWidth ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getClientWidth
+parameter_list|()
+comment|/*-{ return this.clientWidth; }-*/
+function_decl|;
+DECL|method|getClientHeight ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getClientHeight
+parameter_list|()
+comment|/*-{ return this.clientHeight; }-*/
+function_decl|;
+DECL|method|ScrollInfo ()
 specifier|protected
-name|Configuration
+name|ScrollInfo
 parameter_list|()
 block|{   }
 block|}
