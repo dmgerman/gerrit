@@ -343,22 +343,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-DECL|method|listBranches (Project.NameKey projectName, AsyncCallback<ListBranchesResult> callback)
-name|void
-name|listBranches
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|projectName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|ListBranchesResult
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 
