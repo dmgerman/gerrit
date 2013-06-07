@@ -1855,6 +1855,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|deleteKey
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|AccountApi
 operator|.
 name|deleteSshKeys
