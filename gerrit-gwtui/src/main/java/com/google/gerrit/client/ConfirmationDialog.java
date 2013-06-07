@@ -385,6 +385,11 @@ block|{
 name|hide
 argument_list|()
 expr_stmt|;
+name|callback
+operator|.
+name|onCancel
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
