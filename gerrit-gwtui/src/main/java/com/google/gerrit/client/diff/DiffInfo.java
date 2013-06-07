@@ -712,39 +712,24 @@ name|Span
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|begin ()
+DECL|method|skip ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|begin
+name|skip
 parameter_list|()
 comment|/*-{ return this[0]; }-*/
 function_decl|;
-DECL|method|length ()
+DECL|method|mark ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|length
+name|mark
 parameter_list|()
 comment|/*-{ return this[1]; }-*/
 function_decl|;
-DECL|method|end ()
-specifier|public
-specifier|final
-name|int
-name|end
-parameter_list|()
-block|{
-return|return
-name|begin
-argument_list|()
-operator|+
-name|length
-argument_list|()
-return|;
-block|}
 DECL|method|Span ()
 specifier|protected
 name|Span

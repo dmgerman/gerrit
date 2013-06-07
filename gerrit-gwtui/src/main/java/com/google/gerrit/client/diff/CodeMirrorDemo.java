@@ -1538,11 +1538,6 @@ name|int
 name|startLine
 parameter_list|)
 block|{
-name|int
-name|pos
-init|=
-literal|0
-decl_stmt|;
 name|EditIterator
 name|iter
 init|=
@@ -1657,10 +1652,8 @@ name|advance
 argument_list|(
 name|span
 operator|.
-name|begin
+name|skip
 argument_list|()
-operator|-
-name|pos
 argument_list|)
 decl_stmt|;
 name|LineCharacter
@@ -1672,7 +1665,7 @@ name|advance
 argument_list|(
 name|span
 operator|.
-name|length
+name|mark
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1684,13 +1677,6 @@ operator|.
 name|getLine
 argument_list|()
 decl_stmt|;
-name|pos
-operator|=
-name|span
-operator|.
-name|end
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|last
