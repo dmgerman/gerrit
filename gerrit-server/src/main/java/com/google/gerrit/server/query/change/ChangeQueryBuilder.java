@@ -999,16 +999,14 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|indexManager
+DECL|field|index
 specifier|final
 name|ChangeIndex
-operator|.
-name|Manager
-name|indexManager
+name|index
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChangeIndex.Manager indexManager)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChangeIndex index)
 name|Arguments
 parameter_list|(
 name|Provider
@@ -1057,9 +1055,7 @@ name|ProjectCache
 name|projectCache
 parameter_list|,
 name|ChangeIndex
-operator|.
-name|Manager
-name|indexManager
+name|index
 parameter_list|)
 block|{
 name|this
@@ -1130,9 +1126,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|indexManager
+name|index
 operator|=
-name|indexManager
+name|index
 expr_stmt|;
 block|}
 block|}
@@ -1969,11 +1965,9 @@ if|if
 condition|(
 name|args
 operator|.
-name|indexManager
+name|index
 operator|==
 name|ChangeIndex
-operator|.
-name|Manager
 operator|.
 name|DISABLED
 condition|)
