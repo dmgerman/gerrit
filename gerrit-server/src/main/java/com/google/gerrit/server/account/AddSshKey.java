@@ -416,11 +416,13 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
 block|{
 DECL|field|raw
+specifier|public
 name|RawInput
 name|raw
 decl_stmt|;
