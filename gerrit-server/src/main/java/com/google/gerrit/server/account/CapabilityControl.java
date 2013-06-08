@@ -776,6 +776,25 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can generate HTTP passwords for users other than self. */
+DECL|method|canGenerateHttpPassword ()
+specifier|public
+name|boolean
+name|canGenerateHttpPassword
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|GENERATE_HTTP_PASSWORD
+argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
 comment|/** @return which priority queue the user's tasks should be submitted to. */
 DECL|method|getQueueType ()
 specifier|public
