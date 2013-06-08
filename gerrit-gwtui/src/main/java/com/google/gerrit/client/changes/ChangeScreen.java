@@ -932,6 +932,11 @@ specifier|private
 name|HandlerRegistration
 name|regAction
 decl_stmt|;
+DECL|field|regDetailCache
+specifier|private
+name|HandlerRegistration
+name|regDetailCache
+decl_stmt|;
 DECL|field|patchesGrid
 specifier|private
 name|Grid
@@ -1082,6 +1087,23 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|regDetailCache
+operator|!=
+literal|null
+condition|)
+block|{
+name|regDetailCache
+operator|.
+name|removeHandler
+argument_list|()
+expr_stmt|;
+name|regDetailCache
+operator|=
+literal|null
+expr_stmt|;
+block|}
 name|super
 operator|.
 name|onUnload
@@ -1169,6 +1191,8 @@ operator|.
 name|getChangeDetailCache
 argument_list|()
 expr_stmt|;
+name|regDetailCache
+operator|=
 name|detailCache
 operator|.
 name|addValueChangeHandler
@@ -1872,6 +1896,9 @@ if|if
 condition|(
 name|isAttached
 argument_list|()
+operator|&&
+name|isLastValueChangeHandler
+argument_list|()
 condition|)
 block|{
 comment|// Until this screen is fully migrated to the new API, these calls must
@@ -2034,6 +2061,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// Find the last attached screen.
+comment|// When DialogBox is used (i. e. CommentedActionDialog) then the original
+comment|// ChangeScreen is still in attached state.
+comment|// Use here the fact, that the handlers (ChangeScreen) are sorted.
+DECL|method|isLastValueChangeHandler ()
+specifier|private
+name|boolean
+name|isLastValueChangeHandler
+parameter_list|()
+block|{
+name|int
+name|count
+init|=
+name|detailCache
+operator|.
+name|getHandlerCount
+argument_list|()
+decl_stmt|;
+return|return
+name|count
+operator|>
+literal|0
+operator|&&
+name|detailCache
+operator|.
+name|getHandler
+argument_list|(
+name|count
+operator|-
+literal|1
+argument_list|)
+operator|==
+name|this
+return|;
 block|}
 DECL|method|display (final ChangeDetail detail)
 specifier|private
