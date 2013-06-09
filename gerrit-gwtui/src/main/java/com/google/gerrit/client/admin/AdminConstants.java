@@ -565,16 +565,6 @@ name|String
 name|errorsMustBeFixed
 parameter_list|()
 function_decl|;
-DECL|method|capabilityNames ()
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|capabilityNames
-parameter_list|()
-function_decl|;
 DECL|method|sectionTypeReference ()
 name|String
 name|sectionTypeReference
