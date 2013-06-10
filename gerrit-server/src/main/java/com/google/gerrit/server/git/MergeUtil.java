@@ -474,20 +474,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|AnyObjectId
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|CommitBuilder
 import|;
 end_import
@@ -774,16 +760,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|sql
 operator|.
 name|Timestamp
@@ -879,6 +855,10 @@ operator|.
 name|TimeZone
 import|;
 end_import
+
+begin_comment
+comment|/**  * Utilities for various kinds of merges and cherry-picks.  *<p>  *<b>Note:</b> Unless otherwise noted, the methods in this class do not flush  * the {@link ObjectInserter}s passed in after performing a merge.  */
+end_comment
 
 begin_class
 DECL|class|MergeUtil
@@ -1481,6 +1461,8 @@ name|m
 operator|.
 name|merge
 argument_list|(
+literal|false
+argument_list|,
 name|mergeTip
 argument_list|,
 name|originalCommit
@@ -1566,10 +1548,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|commit
-argument_list|(
 name|inserter
-argument_list|,
+operator|.
+name|insert
+argument_list|(
 name|mergeCommit
 argument_list|)
 argument_list|)
@@ -2742,14 +2724,11 @@ name|m
 operator|.
 name|merge
 argument_list|(
-operator|new
-name|AnyObjectId
-index|[]
-block|{
+literal|false
+argument_list|,
 name|mergeTip
-block|,
+argument_list|,
 name|toMerge
-block|}
 argument_list|)
 return|;
 block|}
@@ -2983,6 +2962,8 @@ name|m
 operator|.
 name|merge
 argument_list|(
+literal|false
+argument_list|,
 name|mergeTip
 argument_list|,
 name|toMerge
@@ -3226,16 +3207,13 @@ name|m
 operator|.
 name|merge
 argument_list|(
-operator|new
-name|AnyObjectId
-index|[]
-block|{
+literal|false
+argument_list|,
 name|mergeTip
-operator|,
+argument_list|,
 name|n
-block|}
-block|)
-block|)
+argument_list|)
+condition|)
 block|{
 return|return
 name|writeMergeCommit
@@ -3280,9 +3258,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_catch
 catch|catch
 parameter_list|(
 name|NoMergeBaseException
@@ -3333,9 +3308,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_catch
-
-begin_catch
 catch|catch
 parameter_list|(
 name|IOException
@@ -3357,17 +3329,12 @@ name|e
 argument_list|)
 throw|;
 block|}
-end_catch
-
-begin_return
 return|return
 name|mergeTip
 return|;
-end_return
-
-begin_function
-unit|}    private
+block|}
 DECL|method|getCommitMergeStatus ( MergeBaseFailureReason reason)
+specifier|private
 specifier|static
 name|CommitMergeStatus
 name|getCommitMergeStatus
@@ -3403,9 +3370,6 @@ name|PATH_CONFLICT
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|failed (final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final CodeReviewCommit n, final CommitMergeStatus failure)
 specifier|private
 specifier|static
@@ -3492,9 +3456,6 @@ return|return
 name|failed
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|writeMergeCommit (final PersonIdent myIdent, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Branch.NameKey destBranch, final CodeReviewCommit mergeTip, final ObjectId treeId, final CodeReviewCommit n)
 specifier|public
 name|CodeReviewCommit
@@ -3789,10 +3750,10 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|commit
-argument_list|(
 name|inserter
-argument_list|,
+operator|.
+name|insert
+argument_list|(
 name|mergeCommit
 argument_list|)
 argument_list|)
@@ -3811,9 +3772,6 @@ return|return
 name|mergeResult
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|summarize (RevWalk rw, List<CodeReviewCommit> merged)
 specifier|private
 name|String
@@ -4066,9 +4024,6 @@ argument_list|)
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|newThreeWayMerger (final Repository repo, final ObjectInserter inserter)
 specifier|public
 name|ThreeWayMerger
@@ -4095,9 +4050,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|mergeStrategyName ()
 specifier|public
 name|String
@@ -4113,9 +4065,6 @@ name|useRecursiveMerge
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|mergeStrategyName (boolean useContentMerge, boolean useRecursiveMerge)
 specifier|public
 specifier|static
@@ -4177,9 +4126,6 @@ argument_list|()
 return|;
 block|}
 block|}
-end_function
-
-begin_function
 DECL|method|newThreeWayMerger (Repository repo, final ObjectInserter inserter, String strategyName)
 specifier|public
 specifier|static
@@ -4245,38 +4191,7 @@ name|m
 operator|.
 name|setObjectInserter
 argument_list|(
-operator|new
-name|ObjectInserter
-operator|.
-name|Filter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|ObjectInserter
-name|delegate
-parameter_list|()
-block|{
-return|return
 name|inserter
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|flush
-parameter_list|()
-block|{       }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|release
-parameter_list|()
-block|{       }
-block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -4286,49 +4201,6 @@ operator|)
 name|m
 return|;
 block|}
-end_function
-
-begin_function
-DECL|method|commit (final ObjectInserter inserter, final CommitBuilder mergeCommit)
-specifier|public
-name|ObjectId
-name|commit
-parameter_list|(
-specifier|final
-name|ObjectInserter
-name|inserter
-parameter_list|,
-specifier|final
-name|CommitBuilder
-name|mergeCommit
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|UnsupportedEncodingException
-block|{
-name|ObjectId
-name|id
-init|=
-name|inserter
-operator|.
-name|insert
-argument_list|(
-name|mergeCommit
-argument_list|)
-decl_stmt|;
-name|inserter
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-return|return
-name|id
-return|;
-block|}
-end_function
-
-begin_function
 DECL|method|markCleanMerges (final RevWalk rw, final RevFlag canMergeFlag, final CodeReviewCommit mergeTip, final Set<RevCommit> alreadyAccepted)
 specifier|public
 name|PatchSetApproval
@@ -4505,8 +4377,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

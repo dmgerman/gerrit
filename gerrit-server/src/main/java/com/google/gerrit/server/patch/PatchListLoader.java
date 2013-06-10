@@ -2132,38 +2132,7 @@ name|m
 operator|.
 name|setObjectInserter
 argument_list|(
-operator|new
-name|ObjectInserter
-operator|.
-name|Filter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|protected
-name|ObjectInserter
-name|delegate
-parameter_list|()
-block|{
-return|return
 name|ins
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|flush
-parameter_list|()
-block|{         }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|release
-parameter_list|()
-block|{         }
-block|}
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -2177,6 +2146,8 @@ name|m
 operator|.
 name|merge
 argument_list|(
+literal|false
+argument_list|,
 name|b
 operator|.
 name|getParents
