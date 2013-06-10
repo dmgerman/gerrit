@@ -1927,7 +1927,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|NEW_PATCHSET
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Pattern
