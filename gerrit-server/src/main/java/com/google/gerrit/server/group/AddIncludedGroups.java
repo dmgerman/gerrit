@@ -468,6 +468,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -485,6 +486,36 @@ name|String
 argument_list|>
 name|groups
 decl_stmt|;
+DECL|method|fromGroups (List<String> groups)
+specifier|public
+specifier|static
+name|Input
+name|fromGroups
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|groups
+parameter_list|)
+block|{
+name|Input
+name|in
+init|=
+operator|new
+name|Input
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|groups
+operator|=
+name|groups
+expr_stmt|;
+return|return
+name|in
+return|;
+block|}
 DECL|method|init (Input in)
 specifier|static
 name|Input

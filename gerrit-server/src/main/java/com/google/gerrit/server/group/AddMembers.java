@@ -520,6 +520,7 @@ end_import
 
 begin_class
 DECL|class|AddMembers
+specifier|public
 class|class
 name|AddMembers
 implements|implements
@@ -531,6 +532,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -548,6 +550,36 @@ name|String
 argument_list|>
 name|members
 decl_stmt|;
+DECL|method|fromMembers (List<String> members)
+specifier|public
+specifier|static
+name|Input
+name|fromMembers
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|members
+parameter_list|)
+block|{
+name|Input
+name|in
+init|=
+operator|new
+name|Input
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|members
+operator|=
+name|members
+expr_stmt|;
+return|return
+name|in
+return|;
+block|}
 DECL|method|init (Input in)
 specifier|static
 name|Input
