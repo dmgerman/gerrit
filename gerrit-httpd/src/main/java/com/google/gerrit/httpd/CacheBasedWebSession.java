@@ -1138,6 +1138,10 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|user
+operator|=
+literal|null
+expr_stmt|;
 block|}
 annotation|@
 name|Override

@@ -702,6 +702,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|install
+argument_list|(
+operator|new
+name|RunAsFilter
+operator|.
+name|Module
+argument_list|()
+argument_list|)
+expr_stmt|;
 switch|switch
 condition|(
 name|authConfig
