@@ -94,7 +94,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|DivElement
+name|Element
 import|;
 end_import
 
@@ -182,6 +182,24 @@ name|HTMLPanel
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Widget
+import|;
+end_import
+
 begin_comment
 comment|/**  * A table with one row and two columns to hold the two CodeMirrors displaying  * the files to be diffed.  */
 end_comment
@@ -244,13 +262,13 @@ block|}
 annotation|@
 name|UiField
 DECL|field|cmA
-name|DivElement
+name|Element
 name|cmA
 decl_stmt|;
 annotation|@
 name|UiField
 DECL|field|cmB
-name|DivElement
+name|Element
 name|cmB
 decl_stmt|;
 annotation|@
@@ -275,7 +293,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getCmA ()
-name|DivElement
+name|Element
 name|getCmA
 parameter_list|()
 block|{
@@ -284,13 +302,35 @@ name|cmA
 return|;
 block|}
 DECL|method|getCmB ()
-name|DivElement
+name|Element
 name|getCmB
 parameter_list|()
 block|{
 return|return
 name|cmB
 return|;
+block|}
+DECL|method|add (Widget widget)
+name|void
+name|add
+parameter_list|(
+name|Widget
+name|widget
+parameter_list|)
+block|{
+operator|(
+operator|(
+name|HTMLPanel
+operator|)
+name|getWidget
+argument_list|()
+operator|)
+operator|.
+name|add
+argument_list|(
+name|widget
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
