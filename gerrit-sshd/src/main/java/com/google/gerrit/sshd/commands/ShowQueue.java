@@ -378,7 +378,13 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--wide"
+argument_list|,
+name|aliases
+operator|=
+block|{
 literal|"-w"
+block|}
 argument_list|,
 name|usage
 operator|=
