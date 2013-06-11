@@ -997,7 +997,7 @@ name|set
 argument_list|(
 literal|"readOnly"
 argument_list|,
-literal|"nocursor"
+literal|true
 argument_list|)
 operator|.
 name|set
@@ -2030,6 +2030,28 @@ return|return
 name|at
 return|;
 block|}
+if|if
+condition|(
+name|numOfChar
+operator|==
+name|lengthWithNewline
+condition|)
+block|{
+return|return
+name|LineCharacter
+operator|.
+name|create
+argument_list|(
+name|startLine
+operator|+
+name|currLineIndex
+operator|+
+literal|1
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
 name|numOfChar
 operator|-=
 name|lengthWithNewline
@@ -2042,7 +2064,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"LineIterator index out of bound"
+literal|"EditIterator index out of bound"
 argument_list|)
 throw|;
 block|}
