@@ -274,6 +274,12 @@ specifier|final
 name|boolean
 name|trustContainerAuth
 decl_stmt|;
+DECL|field|enableRunAs
+specifier|private
+specifier|final
+name|boolean
+name|enableRunAs
+decl_stmt|;
 DECL|field|userNameToLowerCase
 specifier|private
 specifier|final
@@ -488,6 +494,21 @@ argument_list|,
 literal|"trustContainerAuth"
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+name|enableRunAs
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"enableRunAs"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|gitBasicAuth
@@ -949,6 +970,17 @@ parameter_list|()
 block|{
 return|return
 name|trustContainerAuth
+return|;
+block|}
+comment|/** @return true if users with Run As capability can impersonate others. */
+DECL|method|isRunAsEnabled ()
+specifier|public
+name|boolean
+name|isRunAsEnabled
+parameter_list|()
+block|{
+return|return
+name|enableRunAs
 return|;
 block|}
 comment|/** Whether user name should be converted to lower-case before validation */

@@ -166,7 +166,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GerritServerConfig
+name|AuthConfig
 import|;
 end_import
 
@@ -231,20 +231,6 @@ operator|.
 name|servlet
 operator|.
 name|ServletModule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
 import|;
 end_import
 
@@ -452,12 +438,10 @@ name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RunAsFilter (@erritServerConfig Config config, Provider<WebSession> session, AccountResolver accountResolver)
+DECL|method|RunAsFilter (AuthConfig config, Provider<WebSession> session, AccountResolver accountResolver)
 name|RunAsFilter
 parameter_list|(
-annotation|@
-name|GerritServerConfig
-name|Config
+name|AuthConfig
 name|config
 parameter_list|,
 name|Provider
@@ -476,16 +460,8 @@ name|enabled
 operator|=
 name|config
 operator|.
-name|getBoolean
-argument_list|(
-literal|"auth"
-argument_list|,
-literal|null
-argument_list|,
-literal|"enableRunAs"
-argument_list|,
-literal|true
-argument_list|)
+name|isRunAsEnabled
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
