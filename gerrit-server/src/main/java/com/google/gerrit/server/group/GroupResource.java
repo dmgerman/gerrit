@@ -213,6 +213,7 @@ name|GroupControl
 name|control
 decl_stmt|;
 DECL|method|GroupResource (GroupControl control)
+specifier|public
 name|GroupResource
 parameter_list|(
 name|GroupControl
