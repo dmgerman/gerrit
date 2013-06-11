@@ -160,6 +160,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -215,6 +231,20 @@ operator|.
 name|servlet
 operator|.
 name|ServletModule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -399,6 +429,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|field|enabled
+specifier|private
+specifier|final
+name|boolean
+name|enabled
+decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
@@ -416,9 +452,14 @@ name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RunAsFilter (Provider<WebSession> session, AccountResolver accountResolver)
+DECL|method|RunAsFilter (@erritServerConfig Config config, Provider<WebSession> session, AccountResolver accountResolver)
 name|RunAsFilter
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|config
+parameter_list|,
 name|Provider
 argument_list|<
 name|WebSession
@@ -429,6 +470,23 @@ name|AccountResolver
 name|accountResolver
 parameter_list|)
 block|{
+name|this
+operator|.
+name|enabled
+operator|=
+name|config
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"enableRunAs"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|session
@@ -444,7 +502,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doFilter (ServletRequest request, ServletResponse res, FilterChain chain)
+DECL|method|doFilter (ServletRequest request, ServletResponse response, FilterChain chain)
 specifier|public
 name|void
 name|doFilter
@@ -453,7 +511,7 @@ name|ServletRequest
 name|request
 parameter_list|,
 name|ServletResponse
-name|res
+name|response
 parameter_list|,
 name|FilterChain
 name|chain
@@ -470,6 +528,14 @@ operator|(
 name|HttpServletRequest
 operator|)
 name|request
+decl_stmt|;
+name|HttpServletResponse
+name|res
+init|=
+operator|(
+name|HttpServletResponse
+operator|)
+name|response
 decl_stmt|;
 name|String
 name|runas
@@ -488,6 +554,27 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|enabled
+condition|)
+block|{
+name|RestApiServlet
+operator|.
+name|replyError
+argument_list|(
+name|res
+argument_list|,
+name|SC_FORBIDDEN
+argument_list|,
+name|RUN_AS
+operator|+
+literal|" disabled by auth.enableRunAs = false"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|CurrentUser
 name|self
 init|=
@@ -515,9 +602,6 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
-operator|(
-name|HttpServletResponse
-operator|)
 name|res
 argument_list|,
 name|SC_FORBIDDEN
@@ -565,9 +649,6 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
-operator|(
-name|HttpServletResponse
-operator|)
 name|res
 argument_list|,
 name|SC_INTERNAL_SERVER_ERROR
@@ -590,9 +671,6 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
-operator|(
-name|HttpServletResponse
-operator|)
 name|res
 argument_list|,
 name|SC_FORBIDDEN
