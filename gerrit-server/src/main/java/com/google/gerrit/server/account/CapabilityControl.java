@@ -795,6 +795,22 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can impersonate another user. */
+DECL|method|canRunAs ()
+specifier|public
+name|boolean
+name|canRunAs
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|RUN_AS
+argument_list|)
+return|;
+block|}
 comment|/** @return which priority queue the user's tasks should be submitted to. */
 DECL|method|getQueueType ()
 specifier|public

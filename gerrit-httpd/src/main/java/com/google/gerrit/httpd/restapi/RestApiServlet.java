@@ -6025,6 +6025,7 @@ end_function
 
 begin_function
 DECL|method|replyError (HttpServletResponse res, int statusCode, String msg)
+specifier|public
 specifier|static
 name|void
 name|replyError

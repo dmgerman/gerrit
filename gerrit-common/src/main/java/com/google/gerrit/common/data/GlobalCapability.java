@@ -226,6 +226,16 @@ name|QUERY_LIMIT
 init|=
 literal|"queryLimit"
 decl_stmt|;
+comment|/** Ability to impersonate another user. */
+DECL|field|RUN_AS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|RUN_AS
+init|=
+literal|"runAs"
+decl_stmt|;
 comment|/** Can run the Git garbage collection. */
 DECL|field|RUN_GC
 specifier|public
@@ -385,6 +395,13 @@ operator|.
 name|add
 argument_list|(
 name|QUERY_LIMIT
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|RUN_AS
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
