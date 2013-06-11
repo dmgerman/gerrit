@@ -108,6 +108,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|AuthException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|BadRequestException
 import|;
 end_import
@@ -660,6 +676,8 @@ parameter_list|)
 throws|throws
 name|BadRequestException
 throws|,
+name|AuthException
+throws|,
 name|ResourceConflictException
 throws|,
 name|IOException
@@ -966,7 +984,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|AuthException
 argument_list|(
 literal|"Cannot create \""
 operator|+
