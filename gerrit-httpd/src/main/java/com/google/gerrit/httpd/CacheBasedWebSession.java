@@ -1140,7 +1140,14 @@ argument_list|)
 expr_stmt|;
 name|user
 operator|=
-literal|null
+name|identified
+operator|.
+name|runAs
+argument_list|(
+name|id
+argument_list|,
+name|user
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
