@@ -1847,7 +1847,7 @@ if|if
 condition|(
 name|Permission
 operator|.
-name|isLabel
+name|hasRange
 argument_list|(
 name|permission
 argument_list|)

@@ -1701,10 +1701,15 @@ name|value
 expr_stmt|;
 if|if
 condition|(
+name|Permission
+operator|.
+name|hasRange
+argument_list|(
 name|value
 operator|.
-name|isLabel
+name|getName
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|LabelType

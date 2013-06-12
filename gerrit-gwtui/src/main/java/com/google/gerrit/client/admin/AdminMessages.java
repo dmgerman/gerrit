@@ -106,6 +106,14 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+DECL|method|labelAs (String name)
+name|String
+name|labelAs
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 DECL|method|project (String name)
 name|String
 name|project
