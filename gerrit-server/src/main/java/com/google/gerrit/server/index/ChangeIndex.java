@@ -168,6 +168,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|errors
+operator|.
+name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -273,6 +287,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|void
+name|deleteAll
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// Do nothing.
+block|}
+annotation|@
+name|Override
+specifier|public
 name|ChangeDataSource
 name|getSource
 parameter_list|(
@@ -290,6 +315,15 @@ operator|new
 name|UnsupportedOperationException
 argument_list|()
 throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|finishIndex
+parameter_list|()
+block|{
+comment|// Do nothing.
 block|}
 block|}
 decl_stmt|;
@@ -338,6 +372,15 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * Delete all change documents from the index.    *    * @throws IOException    */
+DECL|method|deleteAll ()
+specifier|public
+name|void
+name|deleteAll
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @return a source of documents matching the predicate.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
 DECL|method|getSource (Predicate<ChangeData> p)
 specifier|public
@@ -352,6 +395,17 @@ name|p
 parameter_list|)
 throws|throws
 name|QueryParseException
+function_decl|;
+comment|/**    * Mark completion of indexing.    *    * @throws ConfigInvalidException    * @throws IOException    */
+DECL|method|finishIndex ()
+specifier|public
+name|void
+name|finishIndex
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|ConfigInvalidException
 function_decl|;
 block|}
 end_interface
