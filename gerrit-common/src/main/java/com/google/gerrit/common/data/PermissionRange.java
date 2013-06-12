@@ -374,23 +374,13 @@ name|getLabel
 parameter_list|()
 block|{
 return|return
-name|isLabel
-argument_list|()
-condition|?
-name|getName
-argument_list|()
-operator|.
-name|substring
-argument_list|(
 name|Permission
 operator|.
-name|LABEL
-operator|.
-name|length
+name|extractLabel
+argument_list|(
+name|getName
 argument_list|()
 argument_list|)
-else|:
-literal|null
 return|;
 block|}
 DECL|method|getMin ()

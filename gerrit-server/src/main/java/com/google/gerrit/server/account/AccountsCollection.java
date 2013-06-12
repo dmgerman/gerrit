@@ -555,7 +555,7 @@ name|user
 argument_list|)
 return|;
 block|}
-comment|/**    * Parses a account ID from a request body and returns the user.    *    * @param id ID of the account, can be a string of the format    *        "Full Name<email@example.com>", just the email address, a full name    *        if it is unique, an account ID, a user name or 'self' for the    *        calling user    * @return the project    * @throws UnprocessableEntityException thrown if the account ID cannot be    *         resolved or if the account is not visible to the calling user    */
+comment|/**    * Parses a account ID from a request body and returns the user.    *    * @param id ID of the account, can be a string of the format    *        "Full Name<email@example.com>", just the email address, a full name    *        if it is unique, an account ID, a user name or 'self' for the    *        calling user    * @return the user, never null.    * @throws UnprocessableEntityException thrown if the account ID cannot be    *         resolved or if the account is not visible to the calling user    */
 DECL|method|parse (String id)
 specifier|public
 name|IdentifiedUser
