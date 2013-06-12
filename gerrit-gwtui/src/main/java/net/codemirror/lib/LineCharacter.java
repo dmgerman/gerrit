@@ -112,43 +112,47 @@ operator|.
 name|cast
 argument_list|()
 decl_stmt|;
-return|return
 name|lineCh
 operator|.
 name|setLine
 argument_list|(
 name|line
 argument_list|)
+expr_stmt|;
+name|lineCh
 operator|.
 name|setCh
 argument_list|(
 name|ch
 argument_list|)
+expr_stmt|;
+return|return
+name|lineCh
 return|;
 block|}
 DECL|method|setLine (int line)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
-name|LineCharacter
+name|void
 name|setLine
 parameter_list|(
 name|int
 name|line
 parameter_list|)
-comment|/*-{     this.line = line; return this;   }-*/
+comment|/*-{ this.line = line; }-*/
 function_decl|;
 DECL|method|setCh (int ch)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
-name|LineCharacter
+name|void
 name|setCh
 parameter_list|(
 name|int
 name|ch
 parameter_list|)
-comment|/*-{     this.ch = ch; return this;   }-*/
+comment|/*-{ this.ch = ch; }-*/
 function_decl|;
 DECL|method|getLine ()
 specifier|public
