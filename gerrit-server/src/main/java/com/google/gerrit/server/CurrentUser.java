@@ -238,6 +238,17 @@ operator|=
 name|path
 expr_stmt|;
 block|}
+comment|/**    * Identity of the authenticated user.    *<p>    * In the normal case where a user authenticates as themselves    * {@code getRealUser() == this}.    *<p>    * If {@code X-Gerrit-RunAs} or {@code suexec} was used this method returns    * the identity of the account that has permission to act on behalf of this    * user.    */
+DECL|method|getRealUser ()
+specifier|public
+name|CurrentUser
+name|getRealUser
+parameter_list|()
+block|{
+return|return
+name|this
+return|;
+block|}
 comment|/**    * Get the set of groups the user is currently a member of.    *<p>    * The returned set may be a subset of the user's actual groups; if the user's    * account is currently deemed to be untrusted then the effective group set is    * only the anonymous and registered user groups. To enable additional groups    * (and gain their granted permissions) the user must update their account to    * use only trusted authentication providers.    *    * @return active groups for this user.    */
 DECL|method|getEffectiveGroups ()
 specifier|public
@@ -288,19 +299,14 @@ name|CapabilityControl
 name|getCapabilities
 parameter_list|()
 block|{
-name|CapabilityControl
-name|ctl
-init|=
-name|capabilities
-decl_stmt|;
 if|if
 condition|(
-name|ctl
+name|capabilities
 operator|==
 literal|null
 condition|)
 block|{
-name|ctl
+name|capabilities
 operator|=
 name|capabilityControlFactory
 operator|.
@@ -309,13 +315,9 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|capabilities
-operator|=
-name|ctl
-expr_stmt|;
 block|}
 return|return
-name|ctl
+name|capabilities
 return|;
 block|}
 block|}
