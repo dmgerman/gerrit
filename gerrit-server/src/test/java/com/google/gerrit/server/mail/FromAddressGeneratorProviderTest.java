@@ -608,6 +608,12 @@ literal|"USER"
 argument_list|)
 expr_stmt|;
 specifier|final
+name|String
+name|name
+init|=
+literal|"A U. Thor"
+decl_stmt|;
+specifier|final
 name|Account
 operator|.
 name|Id
@@ -615,7 +621,7 @@ name|user
 init|=
 name|user
 argument_list|(
-literal|"A U. Thor"
+name|name
 argument_list|,
 literal|null
 argument_list|)
@@ -644,10 +650,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|ident
-operator|.
-name|getName
-argument_list|()
+name|name
 argument_list|,
 name|r
 operator|.
