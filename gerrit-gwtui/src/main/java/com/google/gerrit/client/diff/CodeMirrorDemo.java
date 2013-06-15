@@ -724,6 +724,13 @@ name|refresh
 argument_list|()
 expr_stmt|;
 block|}
+name|Window
+operator|.
+name|enableScrolling
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -795,6 +802,13 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|Window
+operator|.
+name|enableScrolling
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|display (DiffInfo diff)
 specifier|private
@@ -946,13 +960,6 @@ name|doScroll
 argument_list|(
 name|cmA
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|Window
-operator|.
-name|enableScrolling
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
