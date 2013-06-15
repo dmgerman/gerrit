@@ -88,6 +88,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|PluginName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -538,6 +554,16 @@ name|AtomicReference
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|annotation
+operator|.
+name|Nullable
+import|;
+end_import
+
 begin_class
 DECL|class|BaseCommand
 specifier|public
@@ -712,6 +738,21 @@ name|Context
 argument_list|>
 name|contextProvider
 decl_stmt|;
+comment|/** Commands declared by a plugin can be scoped by the plugin name. */
+annotation|@
+name|Inject
+argument_list|(
+name|optional
+operator|=
+literal|true
+argument_list|)
+annotation|@
+name|PluginName
+DECL|field|pluginName
+specifier|private
+name|String
+name|pluginName
+decl_stmt|;
 comment|/** The task, as scheduled on a worker thread. */
 DECL|field|task
 specifier|private
@@ -820,6 +861,17 @@ name|exit
 operator|=
 name|callback
 expr_stmt|;
+block|}
+annotation|@
+name|Nullable
+DECL|method|getPluginName ()
+name|String
+name|getPluginName
+parameter_list|()
+block|{
+return|return
+name|pluginName
+return|;
 block|}
 DECL|method|getName ()
 name|String

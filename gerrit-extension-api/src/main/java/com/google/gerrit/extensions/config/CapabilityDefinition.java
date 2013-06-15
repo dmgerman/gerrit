@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.annotations
+DECL|package|com.google.gerrit.extensions.config
 package|package
 name|com
 operator|.
@@ -62,103 +62,49 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|annotations
+name|config
 package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|RetentionPolicy
-operator|.
-name|RUNTIME
-import|;
-end_import
-
-begin_import
 import|import
-name|java
+name|com
 operator|.
-name|lang
+name|google
 operator|.
-name|annotation
+name|gerrit
 operator|.
-name|ElementType
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|extensions
 operator|.
-name|lang
+name|annotations
 operator|.
-name|annotation
-operator|.
-name|Retention
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|annotation
-operator|.
-name|Target
+name|ExtensionPoint
 import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation on {@link SshCommand} or {@link RestApiServlet} declaring a  * capability must be granted.  */
+comment|/** Specifies a capability declared by a plugin. */
 end_comment
 
-begin_annotation_defn
+begin_class
 annotation|@
-name|Target
-argument_list|(
-block|{
-name|ElementType
-operator|.
-name|TYPE
-block|}
-argument_list|)
-annotation|@
-name|Retention
-argument_list|(
-name|RUNTIME
-argument_list|)
-DECL|annotation|RequiresCapability
+name|ExtensionPoint
+DECL|class|CapabilityDefinition
 specifier|public
-annotation_defn|@interface
-name|RequiresCapability
+specifier|abstract
+class|class
+name|CapabilityDefinition
 block|{
-comment|/**  Name of the capability required to invoke this action. */
-DECL|method|value ()
+comment|/** @return description of the capability. */
+DECL|method|getDescription ()
+specifier|public
+specifier|abstract
 name|String
-name|value
+name|getDescription
 parameter_list|()
-function_decl|;
-comment|/** Scope of the named capability. */
-DECL|method|scope ()
-DECL|field|CapabilityScope.CONTEXT
-name|CapabilityScope
-name|scope
-parameter_list|()
-default|default
-name|CapabilityScope
-operator|.
-name|CONTEXT
 function_decl|;
 block|}
-end_annotation_defn
+end_class
 
 end_unit
 
