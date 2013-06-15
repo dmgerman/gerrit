@@ -509,6 +509,11 @@ operator|.
 name|onInitUI
 argument_list|()
 expr_stmt|;
+name|setHeaderVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 name|diffTable
