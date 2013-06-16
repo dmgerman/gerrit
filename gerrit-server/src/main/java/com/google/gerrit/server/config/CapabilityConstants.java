@@ -180,11 +180,6 @@ specifier|public
 name|String
 name|runGC
 decl_stmt|;
-DECL|field|startReplication
-specifier|public
-name|String
-name|startReplication
-decl_stmt|;
 DECL|field|streamEvents
 specifier|public
 name|String

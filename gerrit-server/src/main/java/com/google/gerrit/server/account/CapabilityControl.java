@@ -737,25 +737,6 @@ name|ACCESS_DATABASE
 argument_list|)
 return|;
 block|}
-comment|/** @return true if the user can force replication to any configured destination. */
-DECL|method|canStartReplication ()
-specifier|public
-name|boolean
-name|canStartReplication
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|START_REPLICATION
-argument_list|)
-operator|||
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user can stream Gerrit events. */
 DECL|method|canStreamEvents ()
 specifier|public

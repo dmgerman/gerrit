@@ -246,16 +246,6 @@ name|RUN_GC
 init|=
 literal|"runGC"
 decl_stmt|;
-comment|/** Forcefully restart replication to any configured destination. */
-DECL|field|START_REPLICATION
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|START_REPLICATION
-init|=
-literal|"startReplication"
-decl_stmt|;
 comment|/** Can perform streaming of Gerrit events. */
 DECL|field|STREAM_EVENTS
 specifier|public
@@ -409,13 +399,6 @@ operator|.
 name|add
 argument_list|(
 name|RUN_GC
-argument_list|)
-expr_stmt|;
-name|NAMES_ALL
-operator|.
-name|add
-argument_list|(
-name|START_REPLICATION
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
