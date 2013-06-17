@@ -2608,6 +2608,15 @@ argument_list|()
 operator|/
 literal|1000L
 expr_stmt|;
+name|p
+operator|.
+name|isDraft
+operator|=
+name|patchSet
+operator|.
+name|isDraft
+argument_list|()
+expr_stmt|;
 specifier|final
 name|PatchSet
 operator|.
