@@ -1470,7 +1470,8 @@ argument_list|<
 name|PermissionRule
 argument_list|>
 argument_list|(
-name|rules
+name|getRules
+argument_list|()
 argument_list|)
 operator|.
 name|equals
@@ -1483,7 +1484,8 @@ argument_list|>
 argument_list|(
 name|other
 operator|.
-name|rules
+name|getRules
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
