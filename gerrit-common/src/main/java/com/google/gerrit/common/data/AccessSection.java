@@ -629,7 +629,8 @@ argument_list|<
 name|Permission
 argument_list|>
 argument_list|(
-name|permissions
+name|getPermissions
+argument_list|()
 argument_list|)
 operator|.
 name|equals
@@ -647,7 +648,8 @@ operator|)
 name|obj
 operator|)
 operator|.
-name|permissions
+name|getPermissions
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
