@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -1222,6 +1236,21 @@ name|append
 argument_list|(
 literal|' '
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Strings
+operator|.
+name|isNullOrEmpty
+argument_list|(
+name|t
+operator|.
+name|name
+argument_list|)
+condition|)
+block|{
+name|s
 operator|.
 name|append
 argument_list|(
@@ -1235,6 +1264,7 @@ argument_list|(
 literal|": "
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|t
