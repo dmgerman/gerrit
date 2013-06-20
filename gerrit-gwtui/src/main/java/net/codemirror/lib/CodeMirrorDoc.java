@@ -52,13 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|net.codemirror.addon
+DECL|package|net.codemirror.lib
 package|package
 name|net
 operator|.
 name|codemirror
 operator|.
-name|addon
+name|lib
 package|;
 end_package
 
@@ -74,110 +74,62 @@ name|core
 operator|.
 name|client
 operator|.
-name|GWT
+name|JavaScriptObject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|ClientBundle
-import|;
-end_import
+begin_comment
+comment|/** The Doc object representing the content in a CodeMirror */
+end_comment
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|DataResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|DataResource
-operator|.
-name|DoNotEmbed
-import|;
-end_import
-
-begin_interface
-DECL|interface|Addons
+begin_class
+DECL|class|CodeMirrorDoc
 specifier|public
-interface|interface
-name|Addons
+class|class
+name|CodeMirrorDoc
 extends|extends
-name|ClientBundle
+name|JavaScriptObject
 block|{
-DECL|field|I
+DECL|method|replaceRange (String replacement, LineCharacter from, LineCharacter to)
 specifier|public
-specifier|static
 specifier|final
-name|Addons
-name|I
-init|=
-name|GWT
-operator|.
-name|create
-argument_list|(
-name|Addons
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-annotation|@
-name|Source
-argument_list|(
-literal|"selection/mark-selection.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|mark_selection ()
-name|DataResource
-name|mark_selection
-parameter_list|()
+specifier|native
+name|void
+name|replaceRange
+parameter_list|(
+name|String
+name|replacement
+parameter_list|,
+name|LineCharacter
+name|from
+parameter_list|,
+name|LineCharacter
+name|to
+parameter_list|)
+comment|/*-{     this.replaceRange(replacement, from, to);   }-*/
 function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"fold/foldcode.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|foldcode ()
-name|DataResource
-name|foldcode
-parameter_list|()
+DECL|method|insertText (String insertion, LineCharacter at)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|insertText
+parameter_list|(
+name|String
+name|insertion
+parameter_list|,
+name|LineCharacter
+name|at
+parameter_list|)
+comment|/*-{     this.replaceRange(insertion, at);   }-*/
 function_decl|;
+DECL|method|CodeMirrorDoc ()
+specifier|protected
+name|CodeMirrorDoc
+parameter_list|()
+block|{   }
 block|}
-end_interface
+end_class
 
 end_unit
 

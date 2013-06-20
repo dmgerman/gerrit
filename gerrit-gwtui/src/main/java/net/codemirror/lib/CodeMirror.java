@@ -353,6 +353,15 @@ name|options
 parameter_list|)
 comment|/*-{     this.addLineWidget(line, node, options);   }-*/
 function_decl|;
+DECL|method|getDoc ()
+specifier|public
+specifier|final
+specifier|native
+name|CodeMirrorDoc
+name|getDoc
+parameter_list|()
+comment|/*-{     return this.getDoc();   }-*/
+function_decl|;
 DECL|method|scrollTo (int x, int y)
 specifier|public
 specifier|final
