@@ -516,30 +516,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -799,8 +775,6 @@ comment|/**  * Secondary index implementation using Apache Lucene.  *<p>  * Writ
 end_comment
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|LuceneChangeIndex
 specifier|public
 class|class
@@ -845,6 +819,12 @@ specifier|final
 name|FillArgs
 name|fillArgs
 decl_stmt|;
+DECL|field|readOnly
+specifier|private
+specifier|final
+name|boolean
+name|readOnly
+decl_stmt|;
 DECL|field|openIndex
 specifier|private
 specifier|final
@@ -857,9 +837,7 @@ specifier|final
 name|SubIndex
 name|closedIndex
 decl_stmt|;
-annotation|@
-name|Inject
-DECL|method|LuceneChangeIndex (SitePaths sitePaths, FillArgs fillArgs)
+DECL|method|LuceneChangeIndex (SitePaths sitePaths, FillArgs fillArgs, boolean readOnly)
 name|LuceneChangeIndex
 parameter_list|(
 name|SitePaths
@@ -867,6 +845,9 @@ name|sitePaths
 parameter_list|,
 name|FillArgs
 name|fillArgs
+parameter_list|,
+name|boolean
+name|readOnly
 parameter_list|)
 throws|throws
 name|IOException
@@ -876,6 +857,12 @@ operator|.
 name|fillArgs
 operator|=
 name|fillArgs
+expr_stmt|;
+name|this
+operator|.
+name|readOnly
+operator|=
+name|readOnly
 expr_stmt|;
 name|openIndex
 operator|=
@@ -970,6 +957,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|readOnly
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 name|cd
 operator|.
 name|getChange
@@ -1046,6 +1040,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|readOnly
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 name|cd
 operator|.
 name|getChange
@@ -1116,6 +1117,13 @@ argument_list|(
 name|cd
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|readOnly
+condition|)
+block|{
+return|return;
+block|}
 if|if
 condition|(
 name|cd
