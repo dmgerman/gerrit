@@ -90,6 +90,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|SitePaths
 import|;
 end_import
@@ -165,6 +181,20 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -314,11 +344,16 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getChangeIndex (SitePaths sitePaths, FillArgs fillArgs)
+DECL|method|getChangeIndex (@erritServerConfig Config cfg, SitePaths sitePaths, FillArgs fillArgs)
 specifier|public
 name|LuceneChangeIndex
 name|getChangeIndex
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
+parameter_list|,
 name|SitePaths
 name|sitePaths
 parameter_list|,
@@ -332,6 +367,8 @@ return|return
 operator|new
 name|LuceneChangeIndex
 argument_list|(
+name|cfg
+argument_list|,
 name|sitePaths
 argument_list|,
 name|fillArgs
