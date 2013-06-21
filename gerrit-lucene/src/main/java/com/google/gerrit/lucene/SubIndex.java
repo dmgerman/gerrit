@@ -284,7 +284,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|LuceneChangeIndex
+name|SubIndex
 operator|.
 name|class
 argument_list|)
@@ -406,9 +406,7 @@ block|{
 name|writer
 operator|.
 name|close
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -469,9 +467,6 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|replace (Term term, Document doc)
 name|void
@@ -495,9 +490,6 @@ argument_list|,
 name|doc
 argument_list|)
 expr_stmt|;
-name|commit
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|delete (Term term)
 name|void
@@ -515,9 +507,6 @@ name|deleteDocuments
 argument_list|(
 name|term
 argument_list|)
-expr_stmt|;
-name|commit
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|acquire ()
@@ -552,24 +541,35 @@ name|searcher
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|commit ()
-specifier|private
+DECL|method|maybeRefresh ()
 name|void
-name|commit
+name|maybeRefresh
 parameter_list|()
-throws|throws
-name|IOException
 block|{
-name|writer
-operator|.
-name|commit
-argument_list|()
-expr_stmt|;
+try|try
+block|{
 name|searcherManager
 operator|.
 name|maybeRefresh
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"error refreshing indexer"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

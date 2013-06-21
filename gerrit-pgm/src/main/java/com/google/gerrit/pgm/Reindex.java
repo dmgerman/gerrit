@@ -925,6 +925,10 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// Delete before any LuceneChangeIndex may be created.
+name|deleteAll
+argument_list|()
+expr_stmt|;
 name|sysInjector
 operator|=
 name|createSysInjector
@@ -947,9 +951,6 @@ expr_stmt|;
 name|sysManager
 operator|.
 name|start
-argument_list|()
-expr_stmt|;
-name|deleteAll
 argument_list|()
 expr_stmt|;
 name|int
