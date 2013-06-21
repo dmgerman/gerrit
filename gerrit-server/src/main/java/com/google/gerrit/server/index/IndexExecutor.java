@@ -133,6 +133,7 @@ argument_list|)
 annotation|@
 name|BindingAnnotation
 DECL|annotation|IndexExecutor
+specifier|public
 annotation_defn|@interface
 name|IndexExecutor
 block|{ }

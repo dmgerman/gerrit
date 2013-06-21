@@ -70,6 +70,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListeningScheduledExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|lifecycle
@@ -141,6 +157,22 @@ operator|.
 name|FieldDef
 operator|.
 name|FillArgs
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexExecutor
 import|;
 end_import
 
@@ -344,7 +376,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getChangeIndex (@erritServerConfig Config cfg, SitePaths sitePaths, FillArgs fillArgs)
+DECL|method|getChangeIndex (@erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor ListeningScheduledExecutorService executor, FillArgs fillArgs)
 specifier|public
 name|LuceneChangeIndex
 name|getChangeIndex
@@ -356,6 +388,11 @@ name|cfg
 parameter_list|,
 name|SitePaths
 name|sitePaths
+parameter_list|,
+annotation|@
+name|IndexExecutor
+name|ListeningScheduledExecutorService
+name|executor
 parameter_list|,
 name|FillArgs
 name|fillArgs
@@ -370,6 +407,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|sitePaths
+argument_list|,
+name|executor
 argument_list|,
 name|fillArgs
 argument_list|,
