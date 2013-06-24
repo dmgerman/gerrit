@@ -2189,7 +2189,7 @@ argument_list|()
 argument_list|,
 name|cb
 operator|.
-name|addGwtjsonrpc
+name|addFinal
 argument_list|(
 operator|new
 name|ScreenLoadCallback
