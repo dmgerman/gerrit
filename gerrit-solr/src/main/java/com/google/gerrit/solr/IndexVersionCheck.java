@@ -122,7 +122,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|ChangeSchemas
 import|;
 end_import
 
@@ -251,17 +251,25 @@ name|SolrChangeIndex
 operator|.
 name|CHANGES_OPEN
 argument_list|,
-name|ChangeField
+name|ChangeSchemas
 operator|.
-name|SCHEMA_VERSION
+name|getLatestRelease
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
 argument_list|,
 name|SolrChangeIndex
 operator|.
 name|CHANGES_CLOSED
 argument_list|,
-name|ChangeField
+name|ChangeSchemas
 operator|.
-name|SCHEMA_VERSION
+name|getLatestRelease
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|method|solrIndexConfig (SitePaths sitePaths)

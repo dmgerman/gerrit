@@ -154,7 +154,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|ChangeSchemas
 import|;
 end_import
 
@@ -298,17 +298,25 @@ name|LuceneChangeIndex
 operator|.
 name|CHANGES_OPEN
 argument_list|,
-name|ChangeField
+name|ChangeSchemas
 operator|.
-name|SCHEMA_VERSION
+name|getLatestRelease
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
 argument_list|,
 name|LuceneChangeIndex
 operator|.
 name|CHANGES_CLOSED
 argument_list|,
-name|ChangeField
+name|ChangeSchemas
 operator|.
-name|SCHEMA_VERSION
+name|getLatestRelease
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|method|gerritIndexConfig (SitePaths sitePaths)
