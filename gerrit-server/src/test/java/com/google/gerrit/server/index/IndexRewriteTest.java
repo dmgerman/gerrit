@@ -529,6 +529,23 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getSchema ()
+specifier|public
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|getSchema
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|finishIndex ()
 specifier|public
 name|void
@@ -641,7 +658,6 @@ block|}
 block|}
 DECL|class|QueryBuilder
 specifier|public
-specifier|static
 class|class
 name|QueryBuilder
 extends|extends
@@ -695,7 +711,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-literal|null
+name|indexes
 argument_list|)
 argument_list|,
 literal|null
@@ -750,7 +766,6 @@ return|;
 block|}
 DECL|method|predicate (String name, String value)
 specifier|private
-specifier|static
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -812,6 +827,11 @@ specifier|private
 name|DummyIndex
 name|index
 decl_stmt|;
+DECL|field|indexes
+specifier|private
+name|IndexCollection
+name|indexes
+decl_stmt|;
 DECL|field|queryBuilder
 specifier|private
 name|ChangeQueryBuilder
@@ -843,6 +863,19 @@ operator|new
 name|DummyIndex
 argument_list|()
 expr_stmt|;
+name|indexes
+operator|=
+operator|new
+name|IndexCollection
+argument_list|()
+expr_stmt|;
+name|indexes
+operator|.
+name|setSearchIndex
+argument_list|(
+name|index
+argument_list|)
+expr_stmt|;
 name|queryBuilder
 operator|=
 operator|new
@@ -854,7 +887,7 @@ operator|=
 operator|new
 name|IndexRewriteImpl
 argument_list|(
-name|index
+name|indexes
 argument_list|,
 literal|null
 argument_list|,

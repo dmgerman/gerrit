@@ -188,6 +188,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|IndexExecutor
 import|;
 end_import
@@ -392,7 +408,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getChangeIndex (@erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor ListeningScheduledExecutorService executor, FillArgs fillArgs)
+DECL|method|getChangeIndex (@erritServerConfig Config cfg, SitePaths sitePaths, IndexCollection indexes, @IndexExecutor ListeningScheduledExecutorService executor, FillArgs fillArgs)
 specifier|public
 name|LuceneChangeIndex
 name|getChangeIndex
@@ -404,6 +420,9 @@ name|cfg
 parameter_list|,
 name|SitePaths
 name|sitePaths
+parameter_list|,
+name|IndexCollection
+name|indexes
 parameter_list|,
 annotation|@
 name|IndexExecutor
@@ -423,6 +442,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|sitePaths
+argument_list|,
+name|indexes
 argument_list|,
 name|executor
 argument_list|,

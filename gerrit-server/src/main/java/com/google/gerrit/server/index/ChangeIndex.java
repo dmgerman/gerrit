@@ -215,6 +215,20 @@ block|{
 annotation|@
 name|Override
 specifier|public
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|getSchema
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|ListenableFuture
 argument_list|<
 name|Void
@@ -327,6 +341,16 @@ comment|// Do nothing.
 block|}
 block|}
 decl_stmt|;
+comment|/** @return the schema version used by this index. */
+DECL|method|getSchema ()
+specifier|public
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|getSchema
+parameter_list|()
+function_decl|;
 comment|/**    * Insert a change document into the index.    *<p>    * Results may not be immediately visible to searchers, but should be visible    * within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException if the change could not be inserted.    */
 DECL|method|insert (ChangeData cd)
 specifier|public

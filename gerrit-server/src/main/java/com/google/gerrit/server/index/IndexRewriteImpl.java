@@ -932,11 +932,11 @@ return|return
 literal|null
 return|;
 block|}
-DECL|field|index
+DECL|field|indexes
 specifier|private
 specifier|final
-name|ChangeIndex
-name|index
+name|IndexCollection
+name|indexes
 decl_stmt|;
 DECL|field|db
 specifier|private
@@ -955,11 +955,11 @@ name|basicRewrites
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IndexRewriteImpl (ChangeIndex index, Provider<ReviewDb> db, BasicRewritesImpl basicRewrites)
+DECL|method|IndexRewriteImpl (IndexCollection indexes, Provider<ReviewDb> db, BasicRewritesImpl basicRewrites)
 name|IndexRewriteImpl
 parameter_list|(
-name|ChangeIndex
-name|index
+name|IndexCollection
+name|indexes
 parameter_list|,
 name|Provider
 argument_list|<
@@ -973,9 +973,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|index
+name|indexes
 operator|=
-name|index
+name|indexes
 expr_stmt|;
 name|this
 operator|.
@@ -1613,7 +1613,10 @@ return|return
 operator|new
 name|IndexedChangeQuery
 argument_list|(
-name|index
+name|indexes
+operator|.
+name|getSearchIndex
+argument_list|()
 argument_list|,
 name|p
 argument_list|)

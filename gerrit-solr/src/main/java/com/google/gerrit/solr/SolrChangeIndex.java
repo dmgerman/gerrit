@@ -378,6 +378,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|IndexRewriteImpl
 import|;
 end_import
@@ -815,6 +831,12 @@ specifier|final
 name|SitePaths
 name|sitePaths
 decl_stmt|;
+DECL|field|indexes
+specifier|private
+specifier|final
+name|IndexCollection
+name|indexes
+decl_stmt|;
 DECL|field|openIndex
 specifier|private
 specifier|final
@@ -836,7 +858,7 @@ name|ChangeData
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|method|SolrChangeIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, Schema<ChangeData> schema)
+DECL|method|SolrChangeIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, IndexCollection indexes, Schema<ChangeData> schema)
 name|SolrChangeIndex
 parameter_list|(
 annotation|@
@@ -849,6 +871,9 @@ name|fillArgs
 parameter_list|,
 name|SitePaths
 name|sitePaths
+parameter_list|,
+name|IndexCollection
+name|indexes
 parameter_list|,
 name|Schema
 argument_list|<
@@ -870,6 +895,12 @@ operator|.
 name|sitePaths
 operator|=
 name|sitePaths
+expr_stmt|;
+name|this
+operator|.
+name|indexes
+operator|=
+name|indexes
 expr_stmt|;
 name|this
 operator|.
@@ -948,7 +979,20 @@ name|void
 name|start
 parameter_list|()
 block|{
-comment|// Do nothing.
+name|indexes
+operator|.
+name|setSearchIndex
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|indexes
+operator|.
+name|addWriteIndex
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -968,6 +1012,21 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getSchema ()
+specifier|public
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|getSchema
+parameter_list|()
+block|{
+return|return
+name|schema
+return|;
 block|}
 annotation|@
 name|Override

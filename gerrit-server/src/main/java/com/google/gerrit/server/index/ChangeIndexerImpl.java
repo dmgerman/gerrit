@@ -286,11 +286,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|index
+DECL|field|indexes
 specifier|private
 specifier|final
-name|ChangeIndex
-name|index
+name|IndexCollection
+name|indexes
 decl_stmt|;
 DECL|field|schemaFactory
 specifier|private
@@ -309,7 +309,7 @@ name|context
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningScheduledExecutorService executor, ChangeIndex index, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context)
+DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningScheduledExecutorService executor, IndexCollection indexes, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context)
 name|ChangeIndexerImpl
 parameter_list|(
 annotation|@
@@ -317,8 +317,8 @@ name|IndexExecutor
 name|ListeningScheduledExecutorService
 name|executor
 parameter_list|,
-name|ChangeIndex
-name|index
+name|IndexCollection
+name|indexes
 parameter_list|,
 name|SchemaFactory
 argument_list|<
@@ -337,9 +337,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|index
+name|indexes
 operator|=
-name|index
+name|indexes
 expr_stmt|;
 name|this
 operator|.
@@ -475,6 +475,17 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|ChangeIndex
+name|index
+range|:
+name|indexes
+operator|.
+name|getWriteIndexes
+argument_list|()
+control|)
+block|{
 name|index
 operator|.
 name|replace
@@ -482,6 +493,8 @@ argument_list|(
 name|cd
 argument_list|)
 expr_stmt|;
+comment|// TODO(dborowitz): Parallelize these
+block|}
 return|return
 literal|null
 return|;
