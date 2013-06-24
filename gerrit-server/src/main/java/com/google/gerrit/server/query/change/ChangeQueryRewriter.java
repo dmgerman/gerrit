@@ -927,9 +927,9 @@ block|}
 annotation|@
 name|Rewrite
 argument_list|(
-literal|"status:open P=(project:*) B=(branch:*)"
+literal|"status:open P=(project:*) B=(ref:*)"
 argument_list|)
-DECL|method|r05_byBranchOpen ( @amedR) final ProjectPredicate p, @Named(R) final BranchPredicate b)
+DECL|method|r05_byBranchOpen ( @amedR) final ProjectPredicate p, @Named(R) final RefPredicate b)
 specifier|public
 name|Predicate
 argument_list|<
@@ -952,7 +952,7 @@ argument_list|(
 literal|"B"
 argument_list|)
 specifier|final
-name|BranchPredicate
+name|RefPredicate
 name|b
 parameter_list|)
 block|{
@@ -1047,9 +1047,9 @@ block|}
 annotation|@
 name|Rewrite
 argument_list|(
-literal|"status:merged P=(project:*) B=(branch:*) S=(sortkey_after:*) L=(limit:*)"
+literal|"status:merged P=(project:*) B=(ref:*) S=(sortkey_after:*) L=(limit:*)"
 argument_list|)
-DECL|method|r05_byBranchMergedPrev ( @amedR) final ProjectPredicate p, @Named(R) final BranchPredicate b, @Named(R) final SortKeyPredicate.After s, @Named(R) final IntPredicate<ChangeData> l)
+DECL|method|r05_byBranchMergedPrev ( @amedR) final ProjectPredicate p, @Named(R) final RefPredicate b, @Named(R) final SortKeyPredicate.After s, @Named(R) final IntPredicate<ChangeData> l)
 specifier|public
 name|Predicate
 argument_list|<
@@ -1072,7 +1072,7 @@ argument_list|(
 literal|"B"
 argument_list|)
 specifier|final
-name|BranchPredicate
+name|RefPredicate
 name|b
 parameter_list|,
 annotation|@
@@ -1232,9 +1232,9 @@ block|}
 annotation|@
 name|Rewrite
 argument_list|(
-literal|"status:merged P=(project:*) B=(branch:*) S=(sortkey_before:*) L=(limit:*)"
+literal|"status:merged P=(project:*) B=(ref:*) S=(sortkey_before:*) L=(limit:*)"
 argument_list|)
-DECL|method|r05_byBranchMergedNext ( @amedR) final ProjectPredicate p, @Named(R) final BranchPredicate b, @Named(R) final SortKeyPredicate.Before s, @Named(R) final IntPredicate<ChangeData> l)
+DECL|method|r05_byBranchMergedNext ( @amedR) final ProjectPredicate p, @Named(R) final RefPredicate b, @Named(R) final SortKeyPredicate.Before s, @Named(R) final IntPredicate<ChangeData> l)
 specifier|public
 name|Predicate
 argument_list|<
@@ -1257,7 +1257,7 @@ argument_list|(
 literal|"B"
 argument_list|)
 specifier|final
-name|BranchPredicate
+name|RefPredicate
 name|b
 parameter_list|,
 annotation|@
