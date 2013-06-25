@@ -114,22 +114,6 @@ name|Change
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestScopePropagator
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper for (re)indexing a change document.  *<p>  * Indexing is run in the background, as it may require substantial work to  * compute some of the fields and/or update the index.  */
 end_comment
@@ -174,31 +158,6 @@ literal|null
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|ListenableFuture
-argument_list|<
-name|?
-argument_list|>
-name|index
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|RequestScopePropagator
-name|prop
-parameter_list|)
-block|{
-return|return
-name|Futures
-operator|.
-name|immediateFuture
-argument_list|(
-literal|null
-argument_list|)
-return|;
-block|}
 block|}
 decl_stmt|;
 comment|/**    * Start indexing a change.    *    * @param change change to index.    * @return future for the indexing task.    */
@@ -212,22 +171,6 @@ name|index
 parameter_list|(
 name|Change
 name|change
-parameter_list|)
-function_decl|;
-comment|/**    * Start indexing a change.    *    * @param change change to index.    * @param prop propagator to wrap any created runnables in.    * @return future for the indexing task.    */
-DECL|method|index (Change change, RequestScopePropagator prop)
-specifier|public
-name|ListenableFuture
-argument_list|<
-name|?
-argument_list|>
-name|index
-parameter_list|(
-name|Change
-name|change
-parameter_list|,
-name|RequestScopePropagator
-name|prop
 parameter_list|)
 function_decl|;
 block|}
