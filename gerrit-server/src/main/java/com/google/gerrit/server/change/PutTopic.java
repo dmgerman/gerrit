@@ -280,6 +280,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -355,6 +371,12 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|class|Input
 specifier|static
 class|class
@@ -373,7 +395,7 @@ decl_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|PutTopic (Provider<ReviewDb> dbProvider)
+DECL|method|PutTopic (Provider<ReviewDb> dbProvider, ChangeIndexer indexer)
 name|PutTopic
 parameter_list|(
 name|Provider
@@ -381,6 +403,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -388,6 +413,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 block|}
 annotation|@
@@ -650,6 +681,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|change
+operator|=
 name|db
 operator|.
 name|changes
@@ -711,6 +744,13 @@ name|singleton
 argument_list|(
 name|cmsg
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
 argument_list|)
 expr_stmt|;
 block|}
