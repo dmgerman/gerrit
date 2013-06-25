@@ -470,22 +470,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestScopePropagator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -775,12 +759,6 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
-DECL|field|requestScopePropagator
-specifier|private
-specifier|final
-name|RequestScopePropagator
-name|requestScopePropagator
-decl_stmt|;
 DECL|field|patchSetId
 specifier|private
 specifier|final
@@ -791,7 +769,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PublishDraft (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final ChangeHooks hooks, final GitRepositoryManager repoManager, final PatchSetInfoFactory patchSetInfoFactory, final ApprovalsUtil approvalsUtil, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ChangeIndexer indexer, final RequestScopePropagator requestScopePropagator, @Assisted final PatchSet.Id patchSetId)
+DECL|method|PublishDraft (final ChangeControl.Factory changeControlFactory, final ReviewDb db, final ChangeHooks hooks, final GitRepositoryManager repoManager, final PatchSetInfoFactory patchSetInfoFactory, final ApprovalsUtil approvalsUtil, final AccountResolver accountResolver, final CreateChangeSender.Factory createChangeSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final ChangeIndexer indexer, @Assisted final PatchSet.Id patchSetId)
 name|PublishDraft
 parameter_list|(
 specifier|final
@@ -839,10 +817,6 @@ parameter_list|,
 specifier|final
 name|ChangeIndexer
 name|indexer
-parameter_list|,
-specifier|final
-name|RequestScopePropagator
-name|requestScopePropagator
 parameter_list|,
 annotation|@
 name|Assisted
@@ -912,12 +886,6 @@ operator|.
 name|indexer
 operator|=
 name|indexer
-expr_stmt|;
-name|this
-operator|.
-name|requestScopePropagator
-operator|=
-name|requestScopePropagator
 expr_stmt|;
 name|this
 operator|.
@@ -1221,8 +1189,6 @@ operator|.
 name|index
 argument_list|(
 name|updatedChange
-argument_list|,
-name|requestScopePropagator
 argument_list|)
 expr_stmt|;
 name|hooks

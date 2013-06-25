@@ -342,22 +342,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|RequestScopePropagator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -547,11 +531,6 @@ specifier|private
 specifier|final
 name|PatchSetInfo
 name|patchSetInfo
-decl_stmt|;
-DECL|field|requestScopePropagator
-specifier|private
-name|RequestScopePropagator
-name|requestScopePropagator
 decl_stmt|;
 DECL|field|changeMessage
 specifier|private
@@ -757,23 +736,6 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|setRequestScopePropagator (RequestScopePropagator rsp)
-specifier|public
-name|ChangeInserter
-name|setRequestScopePropagator
-parameter_list|(
-name|RequestScopePropagator
-name|rsp
-parameter_list|)
-block|{
-name|requestScopePropagator
-operator|=
-name|rsp
-expr_stmt|;
-return|return
-name|this
-return|;
 block|}
 DECL|method|setMessage (ChangeMessage changeMessage)
 specifier|public
@@ -1037,8 +999,6 @@ operator|.
 name|index
 argument_list|(
 name|change
-argument_list|,
-name|requestScopePropagator
 argument_list|)
 expr_stmt|;
 name|gitRefUpdated
