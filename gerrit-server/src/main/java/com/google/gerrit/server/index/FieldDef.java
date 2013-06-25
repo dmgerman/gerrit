@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchListCache
@@ -290,6 +306,11 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|repoManager
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
 DECL|field|patchListCache
 specifier|final
 name|PatchListCache
@@ -297,7 +318,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FillArgs (Provider<ReviewDb> db, PatchListCache patchListCache)
+DECL|method|FillArgs (Provider<ReviewDb> db, GitRepositoryManager repoManager, PatchListCache patchListCache)
 name|FillArgs
 parameter_list|(
 name|Provider
@@ -305,6 +326,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|GitRepositoryManager
+name|repoManager
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -315,6 +339,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
 expr_stmt|;
 name|this
 operator|.

@@ -189,6 +189,26 @@ argument_list|(
 literal|"PREFIX"
 argument_list|)
 decl_stmt|;
+comment|/** A string field searched using fuzzy-match semantics. */
+DECL|field|FULL_TEXT
+specifier|public
+specifier|static
+specifier|final
+name|FieldType
+argument_list|<
+name|String
+argument_list|>
+name|FULL_TEXT
+init|=
+operator|new
+name|FieldType
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
+literal|"FULL_TEXT"
+argument_list|)
+decl_stmt|;
 DECL|field|name
 specifier|private
 specifier|final
