@@ -66,6 +66,16 @@ name|index
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/** Document field types supported by the secondary index system. */
 end_comment
@@ -97,6 +107,26 @@ name|Integer
 argument_list|>
 argument_list|(
 literal|"INTEGER"
+argument_list|)
+decl_stmt|;
+comment|/** A single date/time-valued field. */
+DECL|field|TIMESTAMP
+specifier|public
+specifier|static
+specifier|final
+name|FieldType
+argument_list|<
+name|Timestamp
+argument_list|>
+name|TIMESTAMP
+init|=
+operator|new
+name|FieldType
+argument_list|<
+name|Timestamp
+argument_list|>
+argument_list|(
+literal|"TIMESTAMP"
 argument_list|)
 decl_stmt|;
 comment|/** A string field searched using exact-match semantics. */
