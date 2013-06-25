@@ -398,6 +398,26 @@ name|cb
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|injectScript
+argument_list|(
+name|Addons
+operator|.
+name|I
+operator|.
+name|foldcode
+argument_list|()
+operator|.
+name|getSafeUri
+argument_list|()
+argument_list|,
+name|group
+operator|.
+name|add
+argument_list|(
+name|cb
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|injectCss (ExternalTextResource css)
