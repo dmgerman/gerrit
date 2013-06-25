@@ -332,7 +332,6 @@ name|total
 decl_stmt|;
 DECL|field|count
 specifier|private
-specifier|volatile
 name|int
 name|count
 decl_stmt|;
@@ -366,7 +365,7 @@ operator|=
 name|totalWork
 expr_stmt|;
 block|}
-comment|/**      * Indicate that work has been completed on this sub-task.      *<p>      * Must be called from the worker thread.      *      * @param completed number of work units completed.      */
+comment|/**      * Indicate that work has been completed on this sub-task.      *<p>      * Must be called from a worker thread.      *      * @param completed number of work units completed.      */
 annotation|@
 name|Override
 DECL|method|update (final int completed)
@@ -378,6 +377,16 @@ specifier|final
 name|int
 name|completed
 parameter_list|)
+block|{
+name|boolean
+name|w
+init|=
+literal|false
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
 block|{
 name|count
 operator|+=
@@ -410,13 +419,24 @@ name|lastPercent
 operator|=
 name|percent
 expr_stmt|;
+name|w
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
+block|}
+if|if
+condition|(
+name|w
+condition|)
+block|{
 name|wakeUp
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
-comment|/**      * Indicate that this sub-task is finished.      *<p>      * Must be called from the worker thread.      */
+comment|/**      * Indicate that this sub-task is finished.      *<p>      * Must be called from a worker thread.      */
 DECL|method|end ()
 specifier|public
 name|void
@@ -429,7 +449,8 @@ name|total
 operator|==
 name|UNKNOWN
 operator|&&
-name|count
+name|getCount
+argument_list|()
 operator|>
 literal|0
 condition|)
@@ -482,6 +503,17 @@ parameter_list|()
 block|{
 return|return
 literal|false
+return|;
+block|}
+DECL|method|getCount ()
+specifier|public
+specifier|synchronized
+name|int
+name|getCount
+parameter_list|()
+block|{
+return|return
+name|count
 return|;
 block|}
 block|}
@@ -641,7 +673,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Wait for a task managed by a {@link Future}.    *<p>    * Must be called from the main thread,<em>not</em> the worker thread. Once    * the worker thread calls {@link #end()}, the future has an additional    *<code>maxInterval</code> to finish before it is forcefully cancelled and    * {@link ExecutionException} is thrown.    *    * @param workerFuture a future that returns when the worker thread is    *     finished.    * @param timeoutTime overall timeout for the task; the future is forcefully    *     cancelled if the task exceeds the timeout. Non-positive values indicate    *     no timeout.    * @param timeoutUnit unit for overall task timeout.    * @throws ExecutionException if this thread or the worker thread was    *     interrupted, the worker was cancelled, or the worker timed out.    */
+comment|/**    * Wait for a task managed by a {@link Future}.    *<p>    * Must be called from the main thread,<em>not</em> a worker thread. Once a    * worker thread calls {@link #end()}, the future has an additional    *<code>maxInterval</code> to finish before it is forcefully cancelled and    * {@link ExecutionException} is thrown.    *    * @param workerFuture a future that returns when worker threads are finished.    * @param timeoutTime overall timeout for the task; the future is forcefully    *     cancelled if the task exceeds the timeout. Non-positive values indicate    *     no timeout.    * @param timeoutUnit unit for overall task timeout.    * @throws ExecutionException if this thread or a worker thread was    *     interrupted, the worker was cancelled, or timed out waiting for a    *     worker to call {@link #end()}.    */
 DECL|method|waitFor (final Future<?> workerFuture, final long timeoutTime, final TimeUnit timeoutUnit)
 specifier|public
 name|void
@@ -1017,7 +1049,7 @@ return|return
 name|task
 return|;
 block|}
-comment|/**    * End the overall task.    *<p>    * Must be called from the worker thread.    */
+comment|/**    * End the overall task.    *<p>    * Must be called from a worker thread.    */
 DECL|method|end ()
 specifier|public
 specifier|synchronized
