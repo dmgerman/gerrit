@@ -502,6 +502,11 @@ name|emptyCallback
 argument_list|()
 expr_stmt|;
 block|}
+name|group
+operator|.
+name|done
+argument_list|()
+expr_stmt|;
 block|}
 comment|/** Retrieve the HTTP password */
 DECL|method|getHttpPassword (String account, AsyncCallback<NativeString> cb)

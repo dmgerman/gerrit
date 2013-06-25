@@ -1316,7 +1316,7 @@ name|patchSetId
 argument_list|,
 name|cbs
 operator|.
-name|addGwtjsonrpc
+name|addFinal
 argument_list|(
 operator|new
 name|ScreenLoadCallback

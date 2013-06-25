@@ -784,7 +784,7 @@ name|get
 argument_list|(
 name|group
 operator|.
-name|add
+name|addFinal
 argument_list|(
 operator|new
 name|GerritCallback
