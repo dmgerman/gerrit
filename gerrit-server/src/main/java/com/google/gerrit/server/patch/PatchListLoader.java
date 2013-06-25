@@ -696,6 +696,7 @@ end_import
 
 begin_class
 DECL|class|PatchListLoader
+specifier|public
 class|class
 name|PatchListLoader
 extends|extends
@@ -1788,9 +1789,9 @@ return|;
 block|}
 block|}
 DECL|method|automerge (Repository repo, RevWalk rw, RevCommit b)
-specifier|private
+specifier|public
 specifier|static
-name|RevObject
+name|RevTree
 name|automerge
 parameter_list|(
 name|Repository
