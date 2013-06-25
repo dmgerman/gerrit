@@ -335,11 +335,29 @@ name|lineClass
 parameter_list|)
 comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
 function_decl|;
-DECL|method|addLineWidget (int line, Element node, Configuration options)
+DECL|method|addWidget (LineCharacter pos, Element node, boolean scrollIntoView)
 specifier|public
 specifier|final
 specifier|native
 name|void
+name|addWidget
+parameter_list|(
+name|LineCharacter
+name|pos
+parameter_list|,
+name|Element
+name|node
+parameter_list|,
+name|boolean
+name|scrollIntoView
+parameter_list|)
+comment|/*-{     this.addWidget(pos, node, scrollIntoView);   }-*/
+function_decl|;
+DECL|method|addLineWidget (int line, Element node, Configuration options)
+specifier|public
+specifier|final
+specifier|native
+name|LineWidget
 name|addLineWidget
 parameter_list|(
 name|int
@@ -351,7 +369,19 @@ parameter_list|,
 name|Configuration
 name|options
 parameter_list|)
-comment|/*-{     this.addLineWidget(line, node, options);   }-*/
+comment|/*-{     return this.addLineWidget(line, node, options);   }-*/
+function_decl|;
+DECL|method|lineAtHeight (int height)
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|lineAtHeight
+parameter_list|(
+name|int
+name|height
+parameter_list|)
+comment|/*-{     return this.lineAtHeight(height);   }-*/
 function_decl|;
 DECL|method|getDoc ()
 specifier|public
