@@ -352,7 +352,7 @@ name|Void
 name|call
 parameter_list|()
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|index
 operator|.
