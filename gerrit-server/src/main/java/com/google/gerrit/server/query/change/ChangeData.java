@@ -1157,6 +1157,11 @@ operator|.
 name|Id
 name|legacyId
 decl_stmt|;
+DECL|field|returnedBySource
+specifier|private
+name|ChangeDataSource
+name|returnedBySource
+decl_stmt|;
 DECL|field|change
 specifier|private
 name|Change
@@ -1343,6 +1348,35 @@ expr_stmt|;
 name|changeControl
 operator|=
 name|c
+expr_stmt|;
+block|}
+DECL|method|isFromSource (ChangeDataSource s)
+specifier|public
+name|boolean
+name|isFromSource
+parameter_list|(
+name|ChangeDataSource
+name|s
+parameter_list|)
+block|{
+return|return
+name|s
+operator|==
+name|returnedBySource
+return|;
+block|}
+DECL|method|cacheFromSource (ChangeDataSource s)
+specifier|public
+name|void
+name|cacheFromSource
+parameter_list|(
+name|ChangeDataSource
+name|s
+parameter_list|)
+block|{
+name|returnedBySource
+operator|=
+name|s
 expr_stmt|;
 block|}
 DECL|method|limitToPatchSets (Collection<PatchSet.Id> ids)
