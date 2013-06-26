@@ -307,24 +307,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|t
-operator|.
-name|size
-argument_list|()
-operator|<
-literal|2
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Need at least two predicates"
-argument_list|)
-throw|;
-block|}
 name|children
 operator|=
 name|t
@@ -573,7 +555,6 @@ annotation|@
 name|Override
 DECL|method|toString ()
 specifier|public
-specifier|final
 name|String
 name|toString
 parameter_list|()

@@ -1635,6 +1635,8 @@ argument_list|(
 name|args
 argument_list|,
 name|currentUser
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -2371,6 +2373,8 @@ argument_list|(
 name|args
 argument_list|,
 name|currentUser
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2398,6 +2402,8 @@ name|dbProvider
 argument_list|,
 name|id
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
