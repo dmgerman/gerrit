@@ -142,7 +142,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|TimestampRangePredicate
+name|IndexPredicate
 import|;
 end_import
 
@@ -172,16 +172,6 @@ name|Provider
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Timestamp
-import|;
-end_import
-
 begin_class
 DECL|class|SortKeyPredicate
 specifier|public
@@ -189,7 +179,7 @@ specifier|abstract
 class|class
 name|SortKeyPredicate
 extends|extends
-name|TimestampRangePredicate
+name|IndexPredicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -223,7 +213,7 @@ name|super
 argument_list|(
 name|ChangeField
 operator|.
-name|UPDATED
+name|SORTKEY
 argument_list|,
 name|name
 argument_list|,
@@ -249,6 +239,20 @@ return|return
 literal|1
 return|;
 block|}
+DECL|method|getMinValue ()
+specifier|public
+specifier|abstract
+name|long
+name|getMinValue
+parameter_list|()
+function_decl|;
+DECL|method|getMaxValue ()
+specifier|public
+specifier|abstract
+name|long
+name|getMaxValue
+parameter_list|()
+function_decl|;
 DECL|class|Before
 specifier|public
 specifier|static
@@ -282,32 +286,28 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getMinTimestamp ()
+DECL|method|getMinValue ()
 specifier|public
-name|Timestamp
-name|getMinTimestamp
+name|long
+name|getMinValue
 parameter_list|()
 block|{
 return|return
-operator|new
-name|Timestamp
-argument_list|(
 literal|0
-argument_list|)
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getMaxTimestamp ()
+DECL|method|getMaxValue ()
 specifier|public
-name|Timestamp
-name|getMaxTimestamp
+name|long
+name|getMaxValue
 parameter_list|()
 block|{
 return|return
 name|ChangeUtil
 operator|.
-name|timeFromSortKey
+name|parseSortKey
 argument_list|(
 name|getValue
 argument_list|()
@@ -390,16 +390,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getMinTimestamp ()
+DECL|method|getMinValue ()
 specifier|public
-name|Timestamp
-name|getMinTimestamp
+name|long
+name|getMinValue
 parameter_list|()
 block|{
 return|return
 name|ChangeUtil
 operator|.
-name|timeFromSortKey
+name|parseSortKey
 argument_list|(
 name|getValue
 argument_list|()
@@ -408,20 +408,16 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getMaxTimestamp ()
+DECL|method|getMaxValue ()
 specifier|public
-name|Timestamp
-name|getMaxTimestamp
+name|long
+name|getMaxValue
 parameter_list|()
 block|{
 return|return
-operator|new
-name|Timestamp
-argument_list|(
 name|Long
 operator|.
 name|MAX_VALUE
-argument_list|)
 return|;
 block|}
 annotation|@

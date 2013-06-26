@@ -3300,11 +3300,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|timeFromSortKey (String sortKey)
+DECL|method|parseSortKey (String sortKey)
 specifier|public
 specifier|static
-name|Timestamp
-name|timeFromSortKey
+name|long
+name|parseSortKey
 parameter_list|(
 name|String
 name|sortKey
@@ -3321,13 +3321,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-operator|new
-name|Timestamp
-argument_list|(
 name|Long
 operator|.
 name|MAX_VALUE
-argument_list|)
 return|;
 block|}
 name|String
@@ -3365,9 +3361,7 @@ condition|)
 name|i
 operator|++
 expr_stmt|;
-name|long
-name|v
-init|=
+return|return
 name|Long
 operator|.
 name|parseLong
@@ -3380,21 +3374,6 @@ name|i
 argument_list|)
 argument_list|,
 literal|16
-argument_list|)
-operator|*
-literal|60
-decl_stmt|;
-return|return
-operator|new
-name|Timestamp
-argument_list|(
-operator|(
-name|v
-operator|+
-name|SORT_KEY_EPOCH
-operator|)
-operator|*
-literal|1000
 argument_list|)
 return|;
 block|}
