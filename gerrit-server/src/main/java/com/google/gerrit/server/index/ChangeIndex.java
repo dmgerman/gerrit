@@ -72,6 +72,38 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Futures
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ListenableFuture
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|server
@@ -169,7 +201,10 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|void
+name|ListenableFuture
+argument_list|<
+name|Void
+argument_list|>
 name|insert
 parameter_list|(
 name|ChangeData
@@ -178,12 +213,22 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Do nothing.
+return|return
+name|Futures
+operator|.
+name|immediateFuture
+argument_list|(
+literal|null
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|ListenableFuture
+argument_list|<
+name|Void
+argument_list|>
 name|replace
 parameter_list|(
 name|ChangeData
@@ -192,12 +237,22 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Do nothing.
+return|return
+name|Futures
+operator|.
+name|immediateFuture
+argument_list|(
+literal|null
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
 specifier|public
-name|void
+name|ListenableFuture
+argument_list|<
+name|Void
+argument_list|>
 name|delete
 parameter_list|(
 name|ChangeData
@@ -206,7 +261,14 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Do nothing.
+return|return
+name|Futures
+operator|.
+name|immediateFuture
+argument_list|(
+literal|null
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override
@@ -234,7 +296,10 @@ decl_stmt|;
 comment|/**    * Insert a change document into the index.    *<p>    * Results may not be immediately visible to searchers, but should be visible    * within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException if the change could not be inserted.    */
 DECL|method|insert (ChangeData cd)
 specifier|public
-name|void
+name|ListenableFuture
+argument_list|<
+name|Void
+argument_list|>
 name|insert
 parameter_list|(
 name|ChangeData
@@ -246,7 +311,10 @@ function_decl|;
 comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. Results may not be immediately visible to searchers, but    * should be visible within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException    */
 DECL|method|replace (ChangeData cd)
 specifier|public
-name|void
+name|ListenableFuture
+argument_list|<
+name|Void
+argument_list|>
 name|replace
 parameter_list|(
 name|ChangeData
@@ -258,7 +326,10 @@ function_decl|;
 comment|/**    * Delete a change document from the index.    *    * @param cd change document.    *    * @throws IOException    */
 DECL|method|delete (ChangeData cd)
 specifier|public
-name|void
+name|ListenableFuture
+argument_list|<
+name|Void
+argument_list|>
 name|delete
 parameter_list|(
 name|ChangeData
