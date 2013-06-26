@@ -110,9 +110,25 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|index
 operator|.
-name|OperatorPredicate
+name|ChangeField
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexPredicate
 import|;
 end_import
 
@@ -161,7 +177,7 @@ DECL|class|ChangeIdPredicate
 class|class
 name|ChangeIdPredicate
 extends|extends
-name|OperatorPredicate
+name|IndexPredicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -192,6 +208,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|ChangeField
+operator|.
+name|ID
+argument_list|,
 name|ChangeQueryBuilder
 operator|.
 name|FIELD_CHANGE

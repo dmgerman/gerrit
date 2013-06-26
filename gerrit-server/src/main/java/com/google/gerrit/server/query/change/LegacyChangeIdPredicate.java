@@ -244,7 +244,11 @@ name|super
 argument_list|(
 name|ChangeField
 operator|.
-name|CHANGE_ID
+name|LEGACY_ID
+argument_list|,
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_CHANGE
 argument_list|,
 name|id
 operator|.

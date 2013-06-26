@@ -78,26 +78,6 @@ name|query
 operator|.
 name|change
 operator|.
-name|ChangeQueryBuilder
-operator|.
-name|FIELD_CHANGE
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
 name|IndexRewriteImpl
 operator|.
 name|CLOSED_STATUSES
@@ -1167,6 +1147,20 @@ name|CHANGES_CLOSED
 init|=
 literal|"changes_closed"
 decl_stmt|;
+DECL|field|ID_FIELD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ID_FIELD
+init|=
+name|ChangeField
+operator|.
+name|LEGACY_ID
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
 DECL|method|getIndexWriterConfig (Config cfg, String name)
 specifier|private
 specifier|static
@@ -1863,7 +1857,7 @@ block|{
 return|return
 name|intTerm
 argument_list|(
-name|FIELD_CHANGE
+name|ID_FIELD
 argument_list|,
 name|cd
 operator|.
@@ -2968,7 +2962,7 @@ name|doc
 operator|.
 name|getField
 argument_list|(
-name|FIELD_CHANGE
+name|ID_FIELD
 argument_list|)
 operator|.
 name|numericValue
