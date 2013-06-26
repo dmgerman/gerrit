@@ -2313,7 +2313,10 @@ name|intTerm
 argument_list|(
 name|p
 operator|.
-name|getOperator
+name|getField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|value
@@ -2550,7 +2553,10 @@ name|Term
 argument_list|(
 name|p
 operator|.
-name|getOperator
+name|getField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|p
@@ -2646,7 +2652,10 @@ name|Term
 argument_list|(
 name|p
 operator|.
-name|getOperator
+name|getField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|re
@@ -2675,7 +2684,10 @@ name|Term
 argument_list|(
 name|p
 operator|.
-name|getOperator
+name|getField
+argument_list|()
+operator|.
+name|getName
 argument_list|()
 argument_list|,
 name|p
