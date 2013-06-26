@@ -94,9 +94,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
+name|index
 operator|.
-name|PatchListCache
+name|ChangeField
 import|;
 end_import
 
@@ -110,9 +110,25 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|query
+name|index
 operator|.
-name|OperatorPredicate
+name|RegexPredicate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|patch
+operator|.
+name|PatchListCache
 import|;
 end_import
 
@@ -203,7 +219,7 @@ DECL|class|RegexFilePredicate
 class|class
 name|RegexFilePredicate
 extends|extends
-name|OperatorPredicate
+name|RegexPredicate
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -271,9 +287,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ChangeQueryBuilder
+name|ChangeField
 operator|.
-name|FIELD_FILE
+name|FILE
 argument_list|,
 name|re
 argument_list|)
