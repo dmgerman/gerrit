@@ -1474,7 +1474,7 @@ argument_list|()
 argument_list|,
 name|currentPatchSetId
 argument_list|,
-name|change
+name|updatedChange
 operator|.
 name|currentPatchSetId
 argument_list|()
