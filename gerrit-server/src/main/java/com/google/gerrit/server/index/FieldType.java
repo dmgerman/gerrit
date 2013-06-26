@@ -109,6 +109,26 @@ argument_list|(
 literal|"INTEGER"
 argument_list|)
 decl_stmt|;
+comment|/** A single integer-valued field. */
+DECL|field|LONG
+specifier|public
+specifier|static
+specifier|final
+name|FieldType
+argument_list|<
+name|Long
+argument_list|>
+name|LONG
+init|=
+operator|new
+name|FieldType
+argument_list|<
+name|Long
+argument_list|>
+argument_list|(
+literal|"LONG"
+argument_list|)
+decl_stmt|;
 comment|/** A single date/time-valued field. */
 DECL|field|TIMESTAMP
 specifier|public
