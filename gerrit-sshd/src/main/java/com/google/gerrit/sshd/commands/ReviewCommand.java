@@ -1617,6 +1617,12 @@ name|strictLabels
 operator|=
 literal|false
 expr_stmt|;
+name|review
+operator|.
+name|waitForCommit
+operator|=
+literal|true
+expr_stmt|;
 for|for
 control|(
 name|ApproveOption
