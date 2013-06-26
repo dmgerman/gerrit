@@ -83,18 +83,16 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|com
 operator|.
 name|google
 operator|.
 name|common
 operator|.
-name|base
+name|collect
 operator|.
-name|Preconditions
-operator|.
-name|checkState
+name|ImmutableMap
 import|;
 end_import
 
@@ -108,7 +106,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ImmutableMap
+name|Iterables
 import|;
 end_import
 
@@ -375,7 +373,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|ALL
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|ImmutableMap
@@ -391,6 +389,7 @@ name|ALL
 decl_stmt|;
 DECL|method|get (int version)
 specifier|public
+specifier|static
 name|Schema
 argument_list|<
 name|ChangeData
@@ -429,63 +428,26 @@ return|return
 name|schema
 return|;
 block|}
-DECL|method|getLatestRelease ()
+DECL|method|getLatest ()
 specifier|public
 specifier|static
 name|Schema
 argument_list|<
 name|ChangeData
 argument_list|>
-name|getLatestRelease
+name|getLatest
 parameter_list|()
 block|{
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|latest
-init|=
-literal|null
-decl_stmt|;
-for|for
-control|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-range|:
+return|return
+name|Iterables
+operator|.
+name|getLast
+argument_list|(
 name|ALL
 operator|.
 name|values
 argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|schema
-operator|.
-name|isRelease
-argument_list|()
-condition|)
-block|{
-name|latest
-operator|=
-name|schema
-expr_stmt|;
-block|}
-block|}
-name|checkState
-argument_list|(
-name|latest
-operator|!=
-literal|null
-argument_list|,
-literal|"No released schema versions found"
 argument_list|)
-expr_stmt|;
-return|return
-name|latest
 return|;
 block|}
 static|static

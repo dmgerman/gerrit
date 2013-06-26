@@ -657,10 +657,18 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|finishIndex ()
+DECL|method|close ()
 specifier|public
 name|void
-name|finishIndex
+name|close
+parameter_list|()
+block|{     }
+annotation|@
+name|Override
+DECL|method|markReady ()
+specifier|public
+name|void
+name|markReady
 parameter_list|()
 block|{
 throw|throw

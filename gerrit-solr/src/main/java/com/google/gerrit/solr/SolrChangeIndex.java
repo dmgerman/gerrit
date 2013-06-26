@@ -640,20 +640,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|lib
 operator|.
 name|Config
@@ -1029,6 +1015,18 @@ block|{
 return|return
 name|schema
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+name|stop
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -2196,15 +2194,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|finishIndex ()
+DECL|method|markReady ()
 specifier|public
 name|void
-name|finishIndex
+name|markReady
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|ConfigInvalidException
 block|{
 comment|// TODO Move the schema version information to a special meta-document
 name|FileBasedConfig

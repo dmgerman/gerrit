@@ -412,7 +412,7 @@ name|indexes
 argument_list|,
 name|ChangeSchemas
 operator|.
-name|getLatestRelease
+name|getLatest
 argument_list|()
 argument_list|,
 name|base

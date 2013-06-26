@@ -253,7 +253,7 @@ name|CHANGES_OPEN
 argument_list|,
 name|ChangeSchemas
 operator|.
-name|getLatestRelease
+name|getLatest
 argument_list|()
 operator|.
 name|getVersion
@@ -265,7 +265,7 @@ name|CHANGES_CLOSED
 argument_list|,
 name|ChangeSchemas
 operator|.
-name|getLatestRelease
+name|getLatest
 argument_list|()
 operator|.
 name|getVersion

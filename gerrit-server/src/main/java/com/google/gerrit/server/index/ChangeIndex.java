@@ -168,20 +168,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -321,8 +307,6 @@ name|ChangeData
 argument_list|>
 name|p
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 throw|throw
 operator|new
@@ -334,10 +318,23 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|finishIndex
+name|close
 parameter_list|()
 block|{
 comment|// Do nothing.
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|markReady
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 block|}
 decl_stmt|;
@@ -349,6 +346,13 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|getSchema
+parameter_list|()
+function_decl|;
+comment|/** Close this index. */
+DECL|method|close ()
+specifier|public
+name|void
+name|close
 parameter_list|()
 function_decl|;
 comment|/**    * Insert a change document into the index.    *<p>    * Results may not be immediately visible to searchers, but should be visible    * within a reasonable amount of time.    *    * @param cd change document with all index fields prepopulated; see    *     {@link ChangeData#fillIndexFields}.    *    * @throws IOException if the change could not be inserted.    */
@@ -420,16 +424,14 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 function_decl|;
-comment|/**    * Mark completion of indexing.    *    * @throws ConfigInvalidException    * @throws IOException    */
-DECL|method|finishIndex ()
+comment|/**    * Mark this index as up-to-date and ready to serve reads.    *<p>    * Should only be called immediately after a reindex, either during an online    * schema upgrade while actively writing to this index, or during an offline    * reindex.    *    * @throws IOException    */
+DECL|method|markReady ()
 specifier|public
 name|void
-name|finishIndex
+name|markReady
 parameter_list|()
 throws|throws
 name|IOException
-throws|,
-name|ConfigInvalidException
 function_decl|;
 block|}
 end_interface
