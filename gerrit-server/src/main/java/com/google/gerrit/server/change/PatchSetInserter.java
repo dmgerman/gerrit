@@ -1499,7 +1499,7 @@ name|updateTrackingIds
 argument_list|(
 name|db
 argument_list|,
-name|change
+name|updatedChange
 argument_list|,
 name|trackingFooters
 argument_list|,
@@ -1538,14 +1538,14 @@ name|indexer
 operator|.
 name|index
 argument_list|(
-name|change
+name|updatedChange
 argument_list|)
 expr_stmt|;
 name|hooks
 operator|.
 name|doPatchsetCreatedHook
 argument_list|(
-name|change
+name|updatedChange
 argument_list|,
 name|patchSet
 argument_list|,
