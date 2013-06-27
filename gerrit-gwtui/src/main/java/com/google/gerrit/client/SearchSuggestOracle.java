@@ -508,6 +508,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"comment:"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"project:"
 argument_list|)
 expr_stmt|;
