@@ -1016,6 +1016,14 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+name|ChangeIndex
+name|index
+init|=
+name|indexes
+operator|.
+name|getSearchIndex
+argument_list|()
+decl_stmt|;
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -1025,6 +1033,8 @@ init|=
 name|rewriteImpl
 argument_list|(
 name|in
+argument_list|,
+name|index
 argument_list|)
 decl_stmt|;
 if|if
@@ -1042,6 +1052,8 @@ return|return
 name|query
 argument_list|(
 name|out
+argument_list|,
+name|index
 argument_list|)
 return|;
 block|}
@@ -1065,8 +1077,8 @@ name|out
 return|;
 block|}
 block|}
-comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    */
-DECL|method|rewriteImpl (Predicate<ChangeData> in)
+comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    */
+DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1079,13 +1091,19 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|in
+parameter_list|,
+name|ChangeIndex
+name|index
 parameter_list|)
 block|{
 if|if
 condition|(
+name|isIndexPredicate
+argument_list|(
 name|in
-operator|instanceof
-name|IndexPredicate
+argument_list|,
+name|index
+argument_list|)
 condition|)
 block|{
 return|return
@@ -1195,6 +1213,8 @@ init|=
 name|rewriteImpl
 argument_list|(
 name|c
+argument_list|,
+name|index
 argument_list|)
 decl_stmt|;
 if|if
@@ -1321,10 +1341,76 @@ argument_list|,
 name|newChildren
 argument_list|,
 name|isIndexed
+argument_list|,
+name|index
 argument_list|)
 return|;
 block|}
-DECL|method|partitionChildren ( Predicate<ChangeData> in, List<Predicate<ChangeData>> newChildren, BitSet isIndexed)
+DECL|method|isIndexPredicate (Predicate<ChangeData> in, ChangeIndex index)
+specifier|private
+name|boolean
+name|isIndexPredicate
+parameter_list|(
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|in
+parameter_list|,
+name|ChangeIndex
+name|index
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|in
+operator|instanceof
+name|IndexPredicate
+operator|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+name|IndexPredicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|p
+init|=
+operator|(
+name|IndexPredicate
+argument_list|<
+name|ChangeData
+argument_list|>
+operator|)
+name|in
+decl_stmt|;
+return|return
+name|index
+operator|.
+name|getSchema
+argument_list|()
+operator|.
+name|getFields
+argument_list|()
+operator|.
+name|containsKey
+argument_list|(
+name|p
+operator|.
+name|getField
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|partitionChildren ( Predicate<ChangeData> in, List<Predicate<ChangeData>> newChildren, BitSet isIndexed, ChangeIndex index)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1349,6 +1435,9 @@ name|newChildren
 parameter_list|,
 name|BitSet
 name|isIndexed
+parameter_list|,
+name|ChangeIndex
+name|index
 parameter_list|)
 block|{
 if|if
@@ -1385,6 +1474,8 @@ name|remove
 argument_list|(
 name|i
 argument_list|)
+argument_list|,
+name|index
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1517,6 +1608,8 @@ name|copy
 argument_list|(
 name|indexed
 argument_list|)
+argument_list|,
+name|index
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1595,7 +1688,7 @@ name|all
 argument_list|)
 return|;
 block|}
-DECL|method|query (Predicate<ChangeData> p)
+DECL|method|query (Predicate<ChangeData> p, ChangeIndex index)
 specifier|private
 name|IndexedChangeQuery
 name|query
@@ -1605,6 +1698,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|p
+parameter_list|,
+name|ChangeIndex
+name|index
 parameter_list|)
 block|{
 try|try
@@ -1613,10 +1709,7 @@ return|return
 operator|new
 name|IndexedChangeQuery
 argument_list|(
-name|indexes
-operator|.
-name|getSearchIndex
-argument_list|()
+name|index
 argument_list|,
 name|p
 argument_list|)
