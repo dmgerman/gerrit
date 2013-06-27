@@ -665,11 +665,14 @@ parameter_list|()
 block|{     }
 annotation|@
 name|Override
-DECL|method|markReady ()
+DECL|method|markReady (boolean ready)
 specifier|public
 name|void
 name|markReady
-parameter_list|()
+parameter_list|(
+name|boolean
+name|ready
+parameter_list|)
 block|{
 throw|throw
 operator|new

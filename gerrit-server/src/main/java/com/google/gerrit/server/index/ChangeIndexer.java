@@ -171,6 +171,28 @@ specifier|abstract
 class|class
 name|ChangeIndexer
 block|{
+DECL|interface|Factory
+specifier|public
+interface|interface
+name|Factory
+block|{
+DECL|method|create (ChangeIndex index)
+name|ChangeIndexer
+name|create
+parameter_list|(
+name|ChangeIndex
+name|index
+parameter_list|)
+function_decl|;
+DECL|method|create (IndexCollection indexes)
+name|ChangeIndexer
+name|create
+parameter_list|(
+name|IndexCollection
+name|indexes
+parameter_list|)
+function_decl|;
+block|}
 comment|/** Instance indicating secondary index is disabled. */
 DECL|field|DISABLED
 specifier|public

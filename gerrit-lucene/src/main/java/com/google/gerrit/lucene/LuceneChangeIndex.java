@@ -1883,11 +1883,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|markReady ()
+DECL|method|markReady (boolean ready)
 specifier|public
 name|void
 name|markReady
-parameter_list|()
+parameter_list|(
+name|boolean
+name|ready
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -1903,25 +1906,18 @@ argument_list|(
 name|sitePaths
 argument_list|)
 decl_stmt|;
+name|LuceneVersionManager
+operator|.
+name|setReady
+argument_list|(
 name|cfg
-operator|.
-name|setBoolean
-argument_list|(
-literal|"index"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|schema
 operator|.
 name|getVersion
 argument_list|()
-argument_list|)
 argument_list|,
-literal|"ready"
-argument_list|,
-literal|true
+name|ready
 argument_list|)
 expr_stmt|;
 name|cfg

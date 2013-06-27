@@ -328,7 +328,10 @@ name|Override
 specifier|public
 name|void
 name|markReady
-parameter_list|()
+parameter_list|(
+name|boolean
+name|ready
+parameter_list|)
 block|{
 throw|throw
 operator|new
@@ -424,12 +427,15 @@ parameter_list|)
 throws|throws
 name|QueryParseException
 function_decl|;
-comment|/**    * Mark this index as up-to-date and ready to serve reads.    *<p>    * Should only be called immediately after a reindex, either during an online    * schema upgrade while actively writing to this index, or during an offline    * reindex.    *    * @throws IOException    */
-DECL|method|markReady ()
+comment|/**    * Mark whether this index is up-to-date and ready to serve reads.    *    * @param ready whether the index is ready    * @throws IOException    */
+DECL|method|markReady (boolean ready)
 specifier|public
 name|void
 name|markReady
-parameter_list|()
+parameter_list|(
+name|boolean
+name|ready
+parameter_list|)
 throws|throws
 name|IOException
 function_decl|;

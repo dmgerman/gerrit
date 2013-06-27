@@ -2194,11 +2194,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|markReady ()
+DECL|method|markReady (boolean ready)
 specifier|public
 name|void
 name|markReady
-parameter_list|()
+parameter_list|(
+name|boolean
+name|ready
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -2251,10 +2254,15 @@ argument_list|()
 argument_list|,
 literal|"schemaVersion"
 argument_list|,
+name|ready
+condition|?
 name|e
 operator|.
 name|getValue
 argument_list|()
+else|:
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

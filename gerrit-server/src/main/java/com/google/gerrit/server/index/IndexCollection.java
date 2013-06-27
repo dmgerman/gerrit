@@ -366,6 +366,41 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|removeWriteIndex (int version)
+specifier|public
+name|void
+name|removeWriteIndex
+parameter_list|(
+name|int
+name|version
+parameter_list|)
+block|{
+name|writeIndexes
+operator|.
+name|remove
+argument_list|(
+name|version
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getWriteIndex (int version)
+specifier|public
+name|ChangeIndex
+name|getWriteIndex
+parameter_list|(
+name|int
+name|version
+parameter_list|)
+block|{
+return|return
+name|writeIndexes
+operator|.
+name|get
+argument_list|(
+name|version
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|start ()
