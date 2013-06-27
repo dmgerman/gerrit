@@ -2603,13 +2603,9 @@ name|project
 argument_list|)
 control|)
 block|{
-name|Ref
-name|r
+name|String
+name|refName
 init|=
-name|refs
-operator|.
-name|get
-argument_list|(
 name|c
 operator|.
 name|currentPatchSetId
@@ -2617,6 +2613,15 @@ argument_list|()
 operator|.
 name|toRefName
 argument_list|()
+decl_stmt|;
+name|Ref
+name|r
+init|=
+name|refs
+operator|.
+name|get
+argument_list|(
+name|refName
 argument_list|)
 decl_stmt|;
 if|if
@@ -2640,6 +2645,29 @@ name|ChangeData
 argument_list|(
 name|c
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|fail
+argument_list|(
+literal|"Failed to index change "
+operator|+
+name|c
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|refName
+operator|+
+literal|" not found)"
+argument_list|,
+literal|true
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
