@@ -524,13 +524,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|rewrite (Predicate<ChangeData> in)
+DECL|method|preRewrite (Predicate<ChangeData> in)
 specifier|public
 name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
-name|rewrite
+name|preRewrite
 parameter_list|(
 name|Predicate
 argument_list|<
@@ -540,16 +540,11 @@ name|in
 parameter_list|)
 block|{
 return|return
-name|super
-operator|.
-name|rewrite
-argument_list|(
 name|indexRewrite
 operator|.
 name|rewrite
 argument_list|(
 name|in
-argument_list|)
 argument_list|)
 return|;
 block|}
