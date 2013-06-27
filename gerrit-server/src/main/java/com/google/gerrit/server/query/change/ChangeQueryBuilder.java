@@ -994,7 +994,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|VisibleForTesting
 DECL|class|Arguments
+specifier|public
 specifier|static
 class|class
 name|Arguments
@@ -1073,7 +1076,10 @@ name|index
 decl_stmt|;
 annotation|@
 name|Inject
+annotation|@
+name|VisibleForTesting
 DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, ChangeIndex index)
+specifier|public
 name|Arguments
 parameter_list|(
 name|Provider
@@ -1233,6 +1239,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ChangeQueryBuilder (Arguments args, @Assisted CurrentUser currentUser)
+specifier|public
 name|ChangeQueryBuilder
 parameter_list|(
 name|Arguments

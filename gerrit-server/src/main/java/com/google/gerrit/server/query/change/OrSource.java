@@ -190,6 +190,7 @@ end_import
 
 begin_class
 DECL|class|OrSource
+specifier|public
 class|class
 name|OrSource
 extends|extends
@@ -208,10 +209,10 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|method|OrSource (final Collection<? extends Predicate<ChangeData>> that)
+DECL|method|OrSource (Collection<? extends Predicate<ChangeData>> that)
+specifier|public
 name|OrSource
 parameter_list|(
-specifier|final
 name|Collection
 argument_list|<
 name|?

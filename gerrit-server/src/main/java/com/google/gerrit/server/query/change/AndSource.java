@@ -306,6 +306,7 @@ end_import
 
 begin_class
 DECL|class|AndSource
+specifier|public
 class|class
 name|AndSource
 extends|extends
@@ -567,6 +568,7 @@ operator|-
 literal|1
 decl_stmt|;
 DECL|method|AndSource (Provider<ReviewDb> db, Collection<? extends Predicate<ChangeData>> that)
+specifier|public
 name|AndSource
 parameter_list|(
 name|Provider

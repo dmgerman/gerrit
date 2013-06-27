@@ -209,17 +209,6 @@ name|getType
 argument_list|()
 return|;
 block|}
-comment|/**    * @return whether this predicate can only be satisfied by looking at the    *     secondary index, i.e. it cannot be expressed as a query over the DB.    */
-DECL|method|isIndexOnly ()
-specifier|public
-name|boolean
-name|isIndexOnly
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 end_class
 

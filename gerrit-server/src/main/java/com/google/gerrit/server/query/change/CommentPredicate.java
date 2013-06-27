@@ -357,18 +357,6 @@ return|return
 literal|1
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|isIndexOnly ()
-specifier|public
-name|boolean
-name|isIndexOnly
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 block|}
 end_class
 

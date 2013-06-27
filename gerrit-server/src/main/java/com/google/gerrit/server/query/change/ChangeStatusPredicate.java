@@ -313,6 +313,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|open (Provider<ReviewDb> dbProvider)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -409,6 +410,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|closed (Provider<ReviewDb> dbProvider)
+specifier|public
 specifier|static
 name|Predicate
 argument_list|<
@@ -616,6 +618,7 @@ name|status
 expr_stmt|;
 block|}
 DECL|method|getStatus ()
+specifier|public
 name|Change
 operator|.
 name|Status
