@@ -2666,9 +2666,7 @@ name|getMaxTimestamp
 argument_list|()
 argument_list|)
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|null
 argument_list|,
 literal|true
 argument_list|,
