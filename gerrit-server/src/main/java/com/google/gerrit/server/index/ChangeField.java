@@ -380,7 +380,7 @@ specifier|final
 name|int
 name|SCHEMA_VERSION
 init|=
-literal|13
+literal|14
 decl_stmt|;
 comment|/** Legacy change ID. */
 DECL|field|LEGACY_ID
@@ -468,7 +468,7 @@ name|FieldType
 operator|.
 name|PREFIX
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 block|{
 annotation|@
