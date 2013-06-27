@@ -1846,15 +1846,7 @@ name|pm
 init|=
 operator|new
 name|TextProgressMonitor
-argument_list|(
-operator|new
-name|PrintWriter
-argument_list|(
-name|System
-operator|.
-name|out
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|pm
 operator|.
@@ -1887,6 +1879,11 @@ operator|.
 name|newTreeSet
 argument_list|()
 decl_stmt|;
+name|int
+name|changeCount
+init|=
+literal|0
+decl_stmt|;
 try|try
 block|{
 for|for
@@ -1903,6 +1900,9 @@ name|all
 argument_list|()
 control|)
 block|{
+name|changeCount
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|projects
@@ -1948,7 +1948,7 @@ name|MultiProgressMonitor
 argument_list|(
 name|System
 operator|.
-name|out
+name|err
 argument_list|,
 literal|"Reindexing changes"
 argument_list|)
@@ -1979,9 +1979,7 @@ name|beginSubTask
 argument_list|(
 literal|null
 argument_list|,
-name|MultiProgressMonitor
-operator|.
-name|UNKNOWN
+name|changeCount
 argument_list|)
 decl_stmt|;
 specifier|final
