@@ -796,6 +796,19 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|deleteAll ()
+name|void
+name|deleteAll
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|writer
+operator|.
+name|deleteAll
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|acquire ()
 name|IndexSearcher
 name|acquire

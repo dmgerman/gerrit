@@ -467,6 +467,20 @@ throw|;
 block|}
 annotation|@
 name|Override
+DECL|method|deleteAll ()
+specifier|public
+name|void
+name|deleteAll
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
 DECL|method|getSource (Predicate<ChangeData> p)
 specifier|public
 name|ChangeDataSource
@@ -486,6 +500,20 @@ operator|new
 name|Source
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|finishIndex ()
+specifier|public
+name|void
+name|finishIndex
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 block|}
 DECL|class|Source

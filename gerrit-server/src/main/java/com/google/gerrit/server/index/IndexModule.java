@@ -270,17 +270,34 @@ name|IndexModule
 extends|extends
 name|AbstractModule
 block|{
-DECL|method|isEnabled (Injector injector)
+DECL|enum|IndexType
+specifier|public
+enum|enum
+name|IndexType
+block|{
+DECL|enumConstant|SQL
+DECL|enumConstant|LUCENE
+DECL|enumConstant|SOLR
+name|SQL
+block|,
+name|LUCENE
+block|,
+name|SOLR
+block|;   }
+comment|/** Type of secondary index. */
+DECL|method|getIndexType (Injector injector)
 specifier|public
 specifier|static
-name|boolean
-name|isEnabled
+name|IndexType
+name|getIndexType
 parameter_list|(
 name|Injector
 name|injector
 parameter_list|)
 block|{
-return|return
+name|Config
+name|cfg
+init|=
 name|injector
 operator|.
 name|getInstance
@@ -298,16 +315,21 @@ operator|.
 name|class
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+name|cfg
 operator|.
-name|getBoolean
+name|getEnum
 argument_list|(
 literal|"index"
 argument_list|,
 literal|null
 argument_list|,
-literal|"enabled"
+literal|"type"
 argument_list|,
-literal|false
+name|IndexType
+operator|.
+name|SQL
 argument_list|)
 return|;
 block|}
