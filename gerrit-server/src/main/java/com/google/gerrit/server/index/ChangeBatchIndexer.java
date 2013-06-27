@@ -368,9 +368,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwtorm
 operator|.
-name|Inject
+name|server
+operator|.
+name|SchemaFactory
 import|;
 end_import
 
@@ -382,7 +384,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Inject
 import|;
 end_import
 
@@ -876,14 +878,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|dbProvider
+DECL|field|schemaFactory
 specifier|private
 specifier|final
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|dbProvider
+name|schemaFactory
 decl_stmt|;
 DECL|field|repoManager
 specifier|private
@@ -907,14 +909,14 @@ name|indexerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (Provider<ReviewDb> dbProvider, GitRepositoryManager repoManager, @IndexExecutor ListeningScheduledExecutorService executor, ChangeIndexer.Factory indexerFactory)
+DECL|method|ChangeBatchIndexer (SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, @IndexExecutor ListeningScheduledExecutorService executor, ChangeIndexer.Factory indexerFactory)
 name|ChangeBatchIndexer
 parameter_list|(
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|dbProvider
+name|schemaFactory
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -932,9 +934,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dbProvider
+name|schemaFactory
 operator|=
-name|dbProvider
+name|schemaFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1209,14 +1211,13 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
-name|ok
-operator|.
-name|set
+name|fail
 argument_list|(
-literal|false
+name|project
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
-comment|// Logged by indexer.
 block|}
 catch|catch
 parameter_list|(
@@ -1602,11 +1603,13 @@ block|{
 name|ReviewDb
 name|db
 init|=
-name|dbProvider
+name|schemaFactory
 operator|.
-name|get
+name|open
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|repo
 operator|=
 name|repoManager
@@ -1702,6 +1705,15 @@ expr_stmt|;
 comment|// TODO(dborowitz): Opening all repositories in a live server may be
 comment|// wasteful; see if we can determine which ones it is safe to close with
 comment|// RepositoryCache.close(repo).
+block|}
+block|}
+finally|finally
+block|{
+name|db
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 return|return
 literal|null
