@@ -325,9 +325,7 @@ name|Exception
 block|{
 name|server
 operator|=
-name|GerritServer
-operator|.
-name|start
+name|startServer
 argument_list|(
 name|cfg
 argument_list|,
@@ -344,6 +342,31 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|startServer (Config cfg, boolean memory)
+specifier|protected
+name|GerritServer
+name|startServer
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
+name|boolean
+name|memory
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|GerritServer
+operator|.
+name|start
+argument_list|(
+name|cfg
+argument_list|,
+name|memory
+argument_list|)
+return|;
 block|}
 DECL|method|afterTest ()
 specifier|private
