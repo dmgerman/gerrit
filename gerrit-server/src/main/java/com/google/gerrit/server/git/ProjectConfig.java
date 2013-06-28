@@ -1056,6 +1056,15 @@ name|KEY_REQUIRE_CHANGE_ID
 init|=
 literal|"requireChangeId"
 decl_stmt|;
+DECL|field|KEY_MAX_OBJECT_SIZE_LIMIT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|KEY_MAX_OBJECT_SIZE_LIMIT
+init|=
+literal|"maxObjectSizeLimit"
+decl_stmt|;
 DECL|field|KEY_REQUIRE_CONTRIBUTOR_AGREEMENT
 specifier|private
 specifier|static
@@ -1325,6 +1334,11 @@ DECL|field|rulesId
 specifier|private
 name|ObjectId
 name|rulesId
+decl_stmt|;
+DECL|field|maxObjectSizeLimit
+specifier|private
+name|long
+name|maxObjectSizeLimit
 decl_stmt|;
 DECL|method|read (MetaDataUpdate update)
 specifier|public
@@ -2191,6 +2205,17 @@ return|return
 name|rulesId
 return|;
 block|}
+comment|/**    * @return the maxObjectSizeLimit for this project, if set. Zero if this    *         project doesn't define own maxObjectSizeLimit.    */
+DECL|method|getMaxObjectSizeLimit ()
+specifier|public
+name|long
+name|getMaxObjectSizeLimit
+parameter_list|()
+block|{
+return|return
+name|maxObjectSizeLimit
+return|;
+block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupBackend cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupBackend groupBackend)
 specifier|public
@@ -2616,6 +2641,21 @@ expr_stmt|;
 name|loadCommentLinkSections
 argument_list|(
 name|rc
+argument_list|)
+expr_stmt|;
+name|maxObjectSizeLimit
+operator|=
+name|rc
+operator|.
+name|getLong
+argument_list|(
+name|RECEIVE
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_MAX_OBJECT_SIZE_LIMIT
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
