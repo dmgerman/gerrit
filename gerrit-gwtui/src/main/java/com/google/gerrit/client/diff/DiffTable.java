@@ -258,6 +258,16 @@ name|String
 name|padding
 parameter_list|()
 function_decl|;
+DECL|method|activeLine ()
+name|String
+name|activeLine
+parameter_list|()
+function_decl|;
+DECL|method|activeLineBg ()
+name|String
+name|activeLineBg
+parameter_list|()
+function_decl|;
 block|}
 annotation|@
 name|UiField

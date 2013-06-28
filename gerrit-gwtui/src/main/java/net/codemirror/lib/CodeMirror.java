@@ -335,6 +335,56 @@ name|lineClass
 parameter_list|)
 comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
 function_decl|;
+DECL|method|removeLineClass (int line, LineClassWhere where, String className)
+specifier|public
+specifier|final
+name|void
+name|removeLineClass
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|LineClassWhere
+name|where
+parameter_list|,
+name|String
+name|className
+parameter_list|)
+block|{
+name|removeLineClassNative
+argument_list|(
+name|line
+argument_list|,
+name|where
+operator|.
+name|name
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|,
+name|className
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeLineClassNative (int line, String where, String lineClass)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|removeLineClassNative
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|String
+name|where
+parameter_list|,
+name|String
+name|lineClass
+parameter_list|)
+comment|/*-{     this.removeLineClass(line, where, lineClass);   }-*/
+function_decl|;
 DECL|method|addWidget (LineCharacter pos, Element node, boolean scrollIntoView)
 specifier|public
 specifier|final
@@ -442,6 +492,60 @@ name|Runnable
 name|thunk
 parameter_list|)
 comment|/*-{     this.on(event, function() {       $entry(thunk.@java.lang.Runnable::run()());     });   }-*/
+function_decl|;
+DECL|method|getCursor (String start)
+specifier|public
+specifier|final
+specifier|native
+name|LineCharacter
+name|getCursor
+parameter_list|(
+name|String
+name|start
+parameter_list|)
+comment|/*-{     return this.getCursor(start);   }-*/
+function_decl|;
+DECL|method|hasActiveLine ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hasActiveLine
+parameter_list|()
+comment|/*-{     return this.state.hasOwnProperty('activeLine');   }-*/
+function_decl|;
+DECL|method|getActiveLine ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getActiveLine
+parameter_list|()
+comment|/*-{     return this.state.activeLine;   }-*/
+function_decl|;
+DECL|method|setActiveLine (int line)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setActiveLine
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+comment|/*-{     this.state.activeLine = line;   }-*/
+function_decl|;
+DECL|method|addKeyMap (KeyMap map)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|addKeyMap
+parameter_list|(
+name|KeyMap
+name|map
+parameter_list|)
+comment|/*-{ this.addKeyMap(map); }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected

@@ -273,10 +273,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|isDraft
+DECL|field|draft
 specifier|private
 name|boolean
-name|isDraft
+name|draft
 decl_stmt|;
 annotation|@
 name|UiField
@@ -323,6 +323,14 @@ block|{
 comment|// TODO: Set avatar's display to none if we get a 404.
 name|avatar
 operator|=
+name|author
+operator|==
+literal|null
+condition|?
+operator|new
+name|AvatarImage
+argument_list|()
+else|:
 operator|new
 name|AvatarImage
 argument_list|(
@@ -343,7 +351,7 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|isDraft
+name|draft
 operator|=
 name|isDraft
 expr_stmt|;
@@ -399,7 +407,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|isDraft
+name|draft
 condition|)
 block|{
 name|date
