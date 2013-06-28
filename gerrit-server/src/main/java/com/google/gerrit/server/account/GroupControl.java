@@ -695,6 +695,7 @@ argument_list|(
 name|group
 argument_list|)
 decl_stmt|;
+comment|/* Check for canAdministrateServer may seem redundant, but allows      * for visibility of all groups that are not an internal group to      * server administrators.      */
 return|return
 operator|(
 name|accountGroup
@@ -725,6 +726,14 @@ argument_list|()
 argument_list|)
 operator|||
 name|isOwner
+argument_list|()
+operator|||
+name|user
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
 argument_list|()
 return|;
 block|}
