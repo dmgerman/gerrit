@@ -1165,16 +1165,16 @@ name|Option
 argument_list|(
 name|name
 operator|=
-literal|"--dry-run"
+literal|"--output"
 argument_list|,
 name|usage
 operator|=
-literal|"Dry run: don't write anything to index"
+literal|"Prefix for output; path for local disk index, or prefix for remote index"
 argument_list|)
-DECL|field|dryRun
+DECL|field|outputBase
 specifier|private
-name|boolean
-name|dryRun
+name|String
+name|outputBase
 decl_stmt|;
 annotation|@
 name|Option
@@ -1365,7 +1365,7 @@ literal|false
 argument_list|,
 name|threads
 argument_list|,
-name|dryRun
+name|outputBase
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1380,6 +1380,8 @@ argument_list|(
 literal|false
 argument_list|,
 name|threads
+argument_list|,
+name|outputBase
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1696,13 +1698,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|dryRun
-condition|)
-block|{
-return|return;
-block|}
 name|ChangeIndex
 name|index
 init|=
@@ -3324,13 +3319,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-if|if
-condition|(
-name|dryRun
-condition|)
-block|{
-return|return;
-block|}
 name|ChangeIndex
 name|index
 init|=

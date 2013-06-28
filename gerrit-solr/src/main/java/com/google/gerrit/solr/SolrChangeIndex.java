@@ -512,18 +512,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -777,8 +765,6 @@ comment|/** Secondary index implementation using a remote Solr instance. */
 end_comment
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|SolrChangeIndex
 class|class
 name|SolrChangeIndex
@@ -858,7 +844,7 @@ name|ChangeData
 argument_list|>
 name|schema
 decl_stmt|;
-DECL|method|SolrChangeIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, IndexCollection indexes, Schema<ChangeData> schema)
+DECL|method|SolrChangeIndex ( @erritServerConfig Config cfg, FillArgs fillArgs, SitePaths sitePaths, IndexCollection indexes, Schema<ChangeData> schema, String base)
 name|SolrChangeIndex
 parameter_list|(
 annotation|@
@@ -880,6 +866,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|schema
+parameter_list|,
+name|String
+name|base
 parameter_list|)
 throws|throws
 name|IOException
@@ -940,6 +929,15 @@ literal|"index.solr.url must be supplied"
 argument_list|)
 throw|;
 block|}
+name|base
+operator|=
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
+name|base
+argument_list|)
+expr_stmt|;
 name|openIndex
 operator|=
 operator|new
@@ -952,6 +950,8 @@ name|openIndex
 operator|.
 name|setDefaultCollection
 argument_list|(
+name|base
+operator|+
 name|CHANGES_OPEN
 argument_list|)
 expr_stmt|;
@@ -967,6 +967,8 @@ name|closedIndex
 operator|.
 name|setDefaultCollection
 argument_list|(
+name|base
+operator|+
 name|CHANGES_CLOSED
 argument_list|)
 expr_stmt|;

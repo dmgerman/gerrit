@@ -292,11 +292,11 @@ specifier|final
 name|int
 name|threads
 decl_stmt|;
-DECL|field|readOnly
+DECL|field|base
 specifier|private
 specifier|final
-name|boolean
-name|readOnly
+name|String
+name|base
 decl_stmt|;
 DECL|method|LuceneIndexModule ()
 specifier|public
@@ -309,11 +309,11 @@ literal|true
 argument_list|,
 literal|0
 argument_list|,
-literal|false
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|LuceneIndexModule (boolean checkVersion, int threads, boolean readOnly)
+DECL|method|LuceneIndexModule (boolean checkVersion, int threads, String base)
 specifier|public
 name|LuceneIndexModule
 parameter_list|(
@@ -323,8 +323,8 @@ parameter_list|,
 name|int
 name|threads
 parameter_list|,
-name|boolean
-name|readOnly
+name|String
+name|base
 parameter_list|)
 block|{
 name|this
@@ -341,9 +341,9 @@ name|threads
 expr_stmt|;
 name|this
 operator|.
-name|readOnly
+name|base
 operator|=
-name|readOnly
+name|base
 expr_stmt|;
 block|}
 annotation|@
@@ -454,7 +454,7 @@ operator|.
 name|getLatestRelease
 argument_list|()
 argument_list|,
-name|readOnly
+name|base
 argument_list|)
 return|;
 block|}

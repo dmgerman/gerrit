@@ -260,6 +260,12 @@ specifier|final
 name|int
 name|threads
 decl_stmt|;
+DECL|field|base
+specifier|private
+specifier|final
+name|String
+name|base
+decl_stmt|;
 DECL|method|SolrIndexModule ()
 specifier|public
 name|SolrIndexModule
@@ -270,10 +276,12 @@ argument_list|(
 literal|true
 argument_list|,
 literal|0
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SolrIndexModule (boolean checkVersion, int threads)
+DECL|method|SolrIndexModule (boolean checkVersion, int threads, String base)
 specifier|public
 name|SolrIndexModule
 parameter_list|(
@@ -282,6 +290,9 @@ name|checkVersion
 parameter_list|,
 name|int
 name|threads
+parameter_list|,
+name|String
+name|base
 parameter_list|)
 block|{
 name|this
@@ -295,6 +306,12 @@ operator|.
 name|threads
 operator|=
 name|threads
+expr_stmt|;
+name|this
+operator|.
+name|base
+operator|=
+name|base
 expr_stmt|;
 block|}
 annotation|@
@@ -397,6 +414,8 @@ name|ChangeSchemas
 operator|.
 name|getLatestRelease
 argument_list|()
+argument_list|,
+name|base
 argument_list|)
 return|;
 block|}
