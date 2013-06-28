@@ -2778,11 +2778,16 @@ name|ChangeData
 argument_list|>
 name|cds
 init|=
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
 name|byId
 operator|.
 name|get
 argument_list|(
 name|bCommit
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try
