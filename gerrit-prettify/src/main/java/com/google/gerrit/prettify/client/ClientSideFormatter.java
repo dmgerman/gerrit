@@ -502,15 +502,10 @@ argument_list|,
 name|html
 argument_list|,
 name|type
-argument_list|,
-name|diffPrefs
-operator|.
-name|getTabSize
-argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|go (JavaScriptObject ctx, String srcText, String srcType, int tabSize)
+DECL|method|go (JavaScriptObject ctx, String srcText, String srcType)
 specifier|private
 specifier|static
 specifier|native
@@ -525,11 +520,8 @@ name|srcText
 parameter_list|,
 name|String
 name|srcType
-parameter_list|,
-name|int
-name|tabSize
 parameter_list|)
-comment|/*-{      ctx.PR_TAB_WIDTH = tabSize;      return ctx.prettyPrintOne(srcText, srcType);   }-*/
+comment|/*-{      return ctx.prettyPrintOne(srcText, srcType);   }-*/
 function_decl|;
 block|}
 end_class
