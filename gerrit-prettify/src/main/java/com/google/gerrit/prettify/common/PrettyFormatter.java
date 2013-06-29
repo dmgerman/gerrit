@@ -624,11 +624,11 @@ name|html
 operator|=
 name|html
 operator|.
-name|replace
+name|replaceAll
 argument_list|(
-literal|"\n"
+literal|"(\r)?\n"
 argument_list|,
-literal|" \n"
+literal|" $1\n"
 argument_list|)
 expr_stmt|;
 name|html
@@ -645,11 +645,11 @@ name|html
 operator|=
 name|html
 operator|.
-name|replace
+name|replaceAll
 argument_list|(
-literal|" \n"
+literal|" (\r)?\n"
 argument_list|,
-literal|"\n"
+literal|"$1\n"
 argument_list|)
 expr_stmt|;
 block|}
