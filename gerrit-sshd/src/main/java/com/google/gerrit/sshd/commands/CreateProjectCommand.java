@@ -800,6 +800,22 @@ specifier|private
 name|boolean
 name|createEmptyCommit
 decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--max-object-size-limit"
+argument_list|,
+name|usage
+operator|=
+literal|"max Git object size for this project"
+argument_list|)
+DECL|field|maxObjectSizeLimit
+specifier|private
+name|String
+name|maxObjectSizeLimit
+decl_stmt|;
 DECL|field|projectName
 specifier|private
 name|String
@@ -984,6 +1000,12 @@ operator|.
 name|createEmptyCommit
 operator|=
 name|createEmptyCommit
+expr_stmt|;
+name|args
+operator|.
+name|maxObjectSizeLimit
+operator|=
+name|maxObjectSizeLimit
 expr_stmt|;
 specifier|final
 name|PerformCreateProject
