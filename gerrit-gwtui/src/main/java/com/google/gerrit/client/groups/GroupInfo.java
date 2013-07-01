@@ -191,7 +191,7 @@ name|UUID
 argument_list|(
 name|URL
 operator|.
-name|decodePathSegment
+name|decodeQueryString
 argument_list|(
 name|id
 argument_list|()
@@ -349,7 +349,7 @@ name|UUID
 argument_list|(
 name|URL
 operator|.
-name|decodePathSegment
+name|decodeQueryString
 argument_list|(
 name|owner
 argument_list|)
@@ -376,7 +376,7 @@ name|owner_id
 argument_list|(
 name|URL
 operator|.
-name|encodePathSegment
+name|encodeQueryString
 argument_list|(
 name|uuid
 operator|.
