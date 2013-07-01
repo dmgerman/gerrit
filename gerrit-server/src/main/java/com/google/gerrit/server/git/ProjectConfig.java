@@ -5063,7 +5063,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|validMaxObjectSizeLimit (String value)
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
