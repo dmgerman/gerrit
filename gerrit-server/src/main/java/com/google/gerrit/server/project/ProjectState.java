@@ -1365,6 +1365,19 @@ return|return
 name|config
 return|;
 block|}
+DECL|method|getMaxObjectSizeLimit ()
+specifier|public
+name|long
+name|getMaxObjectSizeLimit
+parameter_list|()
+block|{
+return|return
+name|config
+operator|.
+name|getMaxObjectSizeLimit
+argument_list|()
+return|;
+block|}
 comment|/** Get the sections that pertain only to this project. */
 DECL|method|getLocalAccessSections ()
 name|List
