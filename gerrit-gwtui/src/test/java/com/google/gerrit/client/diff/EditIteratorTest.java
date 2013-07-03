@@ -316,8 +316,6 @@ operator|.
 name|create
 argument_list|(
 literal|0
-argument_list|,
-literal|0
 argument_list|)
 argument_list|,
 name|iter
@@ -433,8 +431,6 @@ operator|.
 name|create
 argument_list|(
 literal|1
-argument_list|,
-literal|0
 argument_list|)
 argument_list|,
 name|iter

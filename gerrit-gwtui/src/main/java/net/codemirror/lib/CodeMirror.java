@@ -257,7 +257,7 @@ DECL|method|markText (LineCharacter from, LineCharacter to, Configuration option
 specifier|public
 specifier|final
 specifier|native
-name|void
+name|TextMarker
 name|markText
 parameter_list|(
 name|LineCharacter
@@ -269,7 +269,7 @@ parameter_list|,
 name|Configuration
 name|options
 parameter_list|)
-comment|/*-{     this.markText(from, to, options);   }-*/
+comment|/*-{     return this.markText(from, to, options);   }-*/
 function_decl|;
 DECL|enum|LineClassWhere
 specifier|public
@@ -335,6 +335,56 @@ name|lineClass
 parameter_list|)
 comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
 function_decl|;
+DECL|method|addLineClass (LineHandle line, LineClassWhere where, String className)
+specifier|public
+specifier|final
+name|void
+name|addLineClass
+parameter_list|(
+name|LineHandle
+name|line
+parameter_list|,
+name|LineClassWhere
+name|where
+parameter_list|,
+name|String
+name|className
+parameter_list|)
+block|{
+name|addLineClassNative
+argument_list|(
+name|line
+argument_list|,
+name|where
+operator|.
+name|name
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|,
+name|className
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|addLineClassNative (LineHandle line, String where, String lineClass)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|addLineClassNative
+parameter_list|(
+name|LineHandle
+name|line
+parameter_list|,
+name|String
+name|where
+parameter_list|,
+name|String
+name|lineClass
+parameter_list|)
+comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
+function_decl|;
 DECL|method|removeLineClass (int line, LineClassWhere where, String className)
 specifier|public
 specifier|final
@@ -375,6 +425,56 @@ name|void
 name|removeLineClassNative
 parameter_list|(
 name|int
+name|line
+parameter_list|,
+name|String
+name|where
+parameter_list|,
+name|String
+name|lineClass
+parameter_list|)
+comment|/*-{     this.removeLineClass(line, where, lineClass);   }-*/
+function_decl|;
+DECL|method|removeLineClass (LineHandle line, LineClassWhere where, String className)
+specifier|public
+specifier|final
+name|void
+name|removeLineClass
+parameter_list|(
+name|LineHandle
+name|line
+parameter_list|,
+name|LineClassWhere
+name|where
+parameter_list|,
+name|String
+name|className
+parameter_list|)
+block|{
+name|removeLineClassNative
+argument_list|(
+name|line
+argument_list|,
+name|where
+operator|.
+name|name
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|,
+name|className
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeLineClassNative (LineHandle line, String where, String lineClass)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|removeLineClassNative
+parameter_list|(
+name|LineHandle
 name|line
 parameter_list|,
 name|String
@@ -518,19 +618,19 @@ DECL|method|getActiveLine ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|LineHandle
 name|getActiveLine
 parameter_list|()
 comment|/*-{     return this.state.activeLine;   }-*/
 function_decl|;
-DECL|method|setActiveLine (int line)
+DECL|method|setActiveLine (LineHandle line)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|setActiveLine
 parameter_list|(
-name|int
+name|LineHandle
 name|line
 parameter_list|)
 comment|/*-{     this.state.activeLine = line;   }-*/
@@ -547,6 +647,35 @@ name|map
 parameter_list|)
 comment|/*-{ this.addKeyMap(map); }-*/
 function_decl|;
+DECL|method|pos (int line, int ch)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|LineCharacter
+name|pos
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|int
+name|ch
+parameter_list|)
+comment|/*-{     return $wnd.CodeMirror.Pos(line, ch);   }-*/
+function_decl|;
+DECL|method|pos (int line)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|LineCharacter
+name|pos
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+comment|/*-{     return $wnd.CodeMirror.Pos(line);   }-*/
+function_decl|;
 DECL|method|getLineHandle (int line)
 specifier|public
 specifier|final
@@ -558,6 +687,18 @@ name|int
 name|line
 parameter_list|)
 comment|/*-{     return this.getLineHandle(line);   }-*/
+function_decl|;
+DECL|method|getLineNumber (LineHandle handle)
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getLineNumber
+parameter_list|(
+name|LineHandle
+name|handle
+parameter_list|)
+comment|/*-{     return this.getLineNumber(handle);   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected

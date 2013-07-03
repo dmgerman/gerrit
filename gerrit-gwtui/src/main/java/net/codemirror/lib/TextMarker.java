@@ -78,38 +78,22 @@ name|JavaScriptObject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|dom
-operator|.
-name|client
-operator|.
-name|Element
-import|;
-end_import
-
 begin_comment
-comment|/**  * Simple map-like structure to pass configuration to CodeMirror.  *  * @link http://codemirror.net/doc/manual.html#config  * @see CodeMirror#create(com.google.gwt.dom.client.Element, Configuration)  */
+comment|/** Object that represents a text marker within CodeMirror */
 end_comment
 
 begin_class
-DECL|class|Configuration
+DECL|class|TextMarker
 specifier|public
 class|class
-name|Configuration
+name|TextMarker
 extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|create ()
 specifier|public
 specifier|static
-name|Configuration
+name|TextMarker
 name|create
 parameter_list|()
 block|{
@@ -121,71 +105,70 @@ name|cast
 argument_list|()
 return|;
 block|}
-DECL|method|set (String name, String val)
+DECL|method|clear ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|String
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+name|void
+name|clear
+parameter_list|()
+comment|/*-{ this.clear(); }-*/
 function_decl|;
-DECL|method|set (String name, int val)
+DECL|method|changed ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|int
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+name|void
+name|changed
+parameter_list|()
+comment|/*-{ this.changed(); }-*/
 function_decl|;
-DECL|method|set (String name, boolean val)
+DECL|method|find ()
 specifier|public
 specifier|final
 specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|boolean
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
+name|FromTo
+name|find
+parameter_list|()
+comment|/*-{ return this.find(); }-*/
 function_decl|;
-DECL|method|set (String name, JavaScriptObject val)
-specifier|public
-specifier|final
-specifier|native
-name|Configuration
-name|set
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|JavaScriptObject
-name|val
-parameter_list|)
-comment|/*-{ this[name] = val; return this; }-*/
-function_decl|;
-DECL|method|Configuration ()
+DECL|method|TextMarker ()
 specifier|protected
-name|Configuration
+name|TextMarker
 parameter_list|()
 block|{   }
+DECL|class|FromTo
+specifier|public
+specifier|static
+class|class
+name|FromTo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|getFrom ()
+specifier|public
+specifier|final
+specifier|native
+name|LineCharacter
+name|getFrom
+parameter_list|()
+comment|/*-{ return this.from; }-*/
+function_decl|;
+DECL|method|getTo ()
+specifier|public
+specifier|final
+specifier|native
+name|LineCharacter
+name|getTo
+parameter_list|()
+comment|/*-{ return this.to; }-*/
+function_decl|;
+DECL|method|FromTo ()
+specifier|protected
+name|FromTo
+parameter_list|()
+block|{     }
+block|}
 block|}
 end_class
 

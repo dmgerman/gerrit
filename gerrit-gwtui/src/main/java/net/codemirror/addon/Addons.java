@@ -164,18 +164,6 @@ name|DataResource
 name|mark_selection
 parameter_list|()
 function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"fold/foldcode.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|foldcode ()
-name|DataResource
-name|foldcode
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 
