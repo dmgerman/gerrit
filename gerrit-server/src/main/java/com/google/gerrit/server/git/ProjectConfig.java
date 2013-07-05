@@ -4921,7 +4921,7 @@ operator|.
 name|getState
 argument_list|()
 argument_list|,
-literal|null
+name|defaultStateValue
 argument_list|)
 expr_stmt|;
 name|set
