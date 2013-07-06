@@ -585,6 +585,13 @@ argument_list|(
 name|src
 argument_list|)
 decl_stmt|;
+name|html
+operator|=
+name|expandTabs
+argument_list|(
+name|html
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|diffPrefs
@@ -666,16 +673,6 @@ argument_list|(
 literal|" (\r)?\n"
 argument_list|,
 literal|"$1\n"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|html
-operator|=
-name|expandTabs
-argument_list|(
-name|html
 argument_list|)
 expr_stmt|;
 block|}
