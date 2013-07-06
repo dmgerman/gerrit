@@ -126,6 +126,22 @@ name|core
 operator|.
 name|client
 operator|.
+name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
 name|JsArray
 import|;
 end_import
@@ -191,7 +207,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|comment (PatchSet.Id id, String commentId, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|comment (PatchSet.Id id, String commentId, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -207,13 +223,7 @@ name|commentId
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|NativeMap
-argument_list|<
-name|JsArray
-argument_list|<
 name|CommentInfo
-argument_list|>
-argument_list|>
 argument_list|>
 name|cb
 parameter_list|)
@@ -273,7 +283,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|draft (PatchSet.Id id, String draftId, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|draft (PatchSet.Id id, String draftId, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -289,13 +299,7 @@ name|draftId
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|NativeMap
-argument_list|<
-name|JsArray
-argument_list|<
 name|CommentInfo
-argument_list|>
-argument_list|>
 argument_list|>
 name|cb
 parameter_list|)
@@ -318,7 +322,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createDraft (PatchSet.Id id, CommentInfo content, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|createDraft (PatchSet.Id id, CommentInput content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -329,18 +333,12 @@ operator|.
 name|Id
 name|id
 parameter_list|,
-name|CommentInfo
+name|CommentInput
 name|content
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|NativeMap
-argument_list|<
-name|JsArray
-argument_list|<
 name|CommentInfo
-argument_list|>
-argument_list|>
 argument_list|>
 name|cb
 parameter_list|)
@@ -360,7 +358,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateDraft (PatchSet.Id id, String draftId, CommentInfo content, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|updateDraft (PatchSet.Id id, String draftId, CommentInput content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -374,18 +372,12 @@ parameter_list|,
 name|String
 name|draftId
 parameter_list|,
-name|CommentInfo
+name|CommentInput
 name|content
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|NativeMap
-argument_list|<
-name|JsArray
-argument_list|<
 name|CommentInfo
-argument_list|>
-argument_list|>
 argument_list|>
 name|cb
 parameter_list|)
@@ -410,7 +402,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteDraft (PatchSet.Id id, String draftId, AsyncCallback<NativeMap<JsArray<CommentInfo>>> cb)
+DECL|method|deleteDraft (PatchSet.Id id, String draftId, AsyncCallback<JavaScriptObject> cb)
 specifier|public
 specifier|static
 name|void
@@ -426,13 +418,7 @@ name|draftId
 parameter_list|,
 name|AsyncCallback
 argument_list|<
-name|NativeMap
-argument_list|<
-name|JsArray
-argument_list|<
-name|CommentInfo
-argument_list|>
-argument_list|>
+name|JavaScriptObject
 argument_list|>
 name|cb
 parameter_list|)

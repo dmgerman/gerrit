@@ -74,22 +74,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
-operator|.
-name|account
-operator|.
-name|AccountInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|common
 operator|.
 name|changes
@@ -143,37 +127,25 @@ import|;
 end_import
 
 begin_class
-DECL|class|CommentInfo
+DECL|class|CommentInput
 specifier|public
 class|class
-name|CommentInfo
+name|CommentInput
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create (String path, Side side, int line, String in_reply_to, String message)
+DECL|method|create (CommentInfo original)
 specifier|public
 specifier|static
-name|CommentInfo
+name|CommentInput
 name|create
 parameter_list|(
-name|String
-name|path
-parameter_list|,
-name|Side
-name|side
-parameter_list|,
-name|int
-name|line
-parameter_list|,
-name|String
-name|in_reply_to
-parameter_list|,
-name|String
-name|message
+name|CommentInfo
+name|original
 parameter_list|)
 block|{
-name|CommentInfo
-name|info
+name|CommentInput
+name|input
 init|=
 name|createObject
 argument_list|()
@@ -181,47 +153,81 @@ operator|.
 name|cast
 argument_list|()
 decl_stmt|;
-name|info
+name|input
+operator|.
+name|setId
+argument_list|(
+name|original
+operator|.
+name|id
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|input
 operator|.
 name|setPath
 argument_list|(
+name|original
+operator|.
 name|path
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|info
+name|input
 operator|.
 name|setSide
 argument_list|(
+name|original
+operator|.
 name|side
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|info
+if|if
+condition|(
+name|original
+operator|.
+name|has_line
+argument_list|()
+condition|)
+block|{
+name|input
 operator|.
 name|setLine
 argument_list|(
+name|original
+operator|.
 name|line
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|info
+block|}
+name|input
 operator|.
 name|setInReplyTo
 argument_list|(
+name|original
+operator|.
 name|in_reply_to
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|info
+name|input
 operator|.
 name|setMessage
 argument_list|(
+name|original
+operator|.
 name|message
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|info
+name|input
 return|;
 block|}
 DECL|method|setId (String id)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
 name|void
@@ -233,7 +239,7 @@ parameter_list|)
 comment|/*-{ this.id = id; }-*/
 function_decl|;
 DECL|method|setPath (String path)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
 name|void
@@ -245,7 +251,7 @@ parameter_list|)
 comment|/*-{ this.path = path; }-*/
 function_decl|;
 DECL|method|setSide (Side side)
-specifier|private
+specifier|public
 specifier|final
 name|void
 name|setSide
@@ -276,7 +282,7 @@ parameter_list|)
 comment|/*-{ this.side = side; }-*/
 function_decl|;
 DECL|method|setLine (int line)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
 name|void
@@ -288,7 +294,7 @@ parameter_list|)
 comment|/*-{ this.line = line; }-*/
 function_decl|;
 DECL|method|setInReplyTo (String in_reply_to)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
 name|void
@@ -300,7 +306,7 @@ parameter_list|)
 comment|/*-{     this.in_reply_to = in_reply_to;   }-*/
 function_decl|;
 DECL|method|setMessage (String message)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
 name|void
@@ -402,19 +408,7 @@ name|Timestamp
 name|updated
 parameter_list|()
 block|{
-name|String
-name|updatedRaw
-init|=
-name|updatedRaw
-argument_list|()
-decl_stmt|;
 return|return
-name|updatedRaw
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
 name|JavaSqlTimestamp_JsonSerializer
 operator|.
 name|parseTimestamp
@@ -433,15 +427,6 @@ name|updatedRaw
 parameter_list|()
 comment|/*-{ return this.updated; }-*/
 function_decl|;
-DECL|method|author ()
-specifier|public
-specifier|final
-specifier|native
-name|AccountInfo
-name|author
-parameter_list|()
-comment|/*-{ return this.author; }-*/
-function_decl|;
 DECL|method|has_line ()
 specifier|public
 specifier|final
@@ -451,9 +436,9 @@ name|has_line
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('line'); }-*/
 function_decl|;
-DECL|method|CommentInfo ()
+DECL|method|CommentInput ()
 specifier|protected
-name|CommentInfo
+name|CommentInput
 parameter_list|()
 block|{   }
 block|}

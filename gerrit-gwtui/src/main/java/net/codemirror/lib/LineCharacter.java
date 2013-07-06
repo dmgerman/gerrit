@@ -131,7 +131,7 @@ name|lineCh
 return|;
 block|}
 DECL|method|setLine (int line)
-specifier|public
+specifier|private
 specifier|final
 specifier|native
 name|void
@@ -143,7 +143,7 @@ parameter_list|)
 comment|/*-{ this.line = line; }-*/
 function_decl|;
 DECL|method|setCh (int ch)
-specifier|public
+specifier|private
 specifier|final
 specifier|native
 name|void
