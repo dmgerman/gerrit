@@ -285,6 +285,12 @@ name|screen
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|body
+operator|=
+operator|new
+name|FlowPanel
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -403,10 +409,6 @@ operator|.
 name|add
 argument_list|(
 name|body
-operator|=
-operator|new
-name|FlowPanel
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|headerText
