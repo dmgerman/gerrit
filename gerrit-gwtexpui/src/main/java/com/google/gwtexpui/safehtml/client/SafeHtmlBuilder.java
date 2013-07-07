@@ -87,6 +87,11 @@ comment|/**  * Safely constructs a {@link SafeHtml}, escaping user provided cont
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|SafeHtmlBuilder
 specifier|public
 class|class

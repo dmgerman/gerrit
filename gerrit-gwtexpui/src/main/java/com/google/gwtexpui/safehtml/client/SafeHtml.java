@@ -261,10 +261,27 @@ comment|/** Immutable string safely placed as HTML without further escaping. */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|SafeHtml
 specifier|public
 specifier|abstract
 class|class
+name|SafeHtml
+implements|implements
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|safehtml
+operator|.
+name|shared
+operator|.
 name|SafeHtml
 block|{
 DECL|field|RESOURCES
