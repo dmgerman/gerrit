@@ -683,11 +683,6 @@ argument_list|)
 expr_stmt|;
 name|extractMailExample
 argument_list|(
-literal|"RebasedPatchSet.vm"
-argument_list|)
-expr_stmt|;
-name|extractMailExample
-argument_list|(
 literal|"RegisterNewEmail.vm"
 argument_list|)
 expr_stmt|;
