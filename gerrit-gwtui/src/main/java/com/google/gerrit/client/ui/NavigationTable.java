@@ -1598,7 +1598,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|resetHtml (SafeHtml body)
-specifier|protected
+specifier|public
 name|void
 name|resetHtml
 parameter_list|(
