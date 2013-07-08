@@ -98,20 +98,6 @@ operator|new
 name|None
 argument_list|()
 decl_stmt|;
-DECL|enum|CacheControl
-specifier|public
-enum|enum
-name|CacheControl
-block|{
-DECL|enumConstant|NONE
-DECL|enumConstant|PUBLIC
-DECL|enumConstant|PRIVATE
-name|NONE
-block|,
-name|PUBLIC
-block|,
-name|PRIVATE
-block|;   }
 comment|/** HTTP 200 OK: pointless wrapper for type safety. */
 DECL|method|ok (T value)
 specifier|public

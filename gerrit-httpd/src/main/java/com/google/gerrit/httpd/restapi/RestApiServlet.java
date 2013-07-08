@@ -612,6 +612,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|CacheControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|DefaultInput
 import|;
 end_import
@@ -1357,18 +1373,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -2562,6 +2566,9 @@ argument_list|,
 name|res
 argument_list|,
 name|r
+operator|.
+name|caching
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2968,7 +2975,7 @@ block|}
 end_class
 
 begin_function
-DECL|method|configureCaching (HttpServletRequest req, HttpServletResponse res, Response<T> r)
+DECL|method|configureCaching (HttpServletRequest req, HttpServletResponse res, CacheControl c)
 specifier|private
 specifier|static
 parameter_list|<
@@ -2983,11 +2990,8 @@ parameter_list|,
 name|HttpServletResponse
 name|res
 parameter_list|,
-name|Response
-argument_list|<
-name|T
-argument_list|>
-name|r
+name|CacheControl
+name|c
 parameter_list|)
 block|{
 if|if
@@ -3005,9 +3009,9 @@ condition|)
 block|{
 switch|switch
 condition|(
-name|r
+name|c
 operator|.
-name|caching
+name|getType
 argument_list|()
 condition|)
 block|{
@@ -3032,11 +3036,15 @@ name|setCacheablePrivate
 argument_list|(
 name|res
 argument_list|,
-literal|7
-argument_list|,
-name|TimeUnit
+name|c
 operator|.
-name|DAYS
+name|getAge
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getUnit
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -3051,11 +3059,15 @@ name|req
 argument_list|,
 name|res
 argument_list|,
-literal|7
-argument_list|,
-name|TimeUnit
+name|c
 operator|.
-name|DAYS
+name|getAge
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getUnit
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
