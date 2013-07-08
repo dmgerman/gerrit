@@ -457,6 +457,36 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|revision (int id, String revision)
+specifier|public
+specifier|static
+name|RestApi
+name|revision
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|String
+name|revision
+parameter_list|)
+block|{
+return|return
+name|change
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"revisions"
+argument_list|)
+operator|.
+name|id
+argument_list|(
+name|revision
+argument_list|)
+return|;
+block|}
 DECL|method|revision (PatchSet.Id id)
 specifier|public
 specifier|static
