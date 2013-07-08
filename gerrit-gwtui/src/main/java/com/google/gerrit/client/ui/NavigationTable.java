@@ -1213,6 +1213,18 @@ name|boolean
 name|scroll
 parameter_list|)
 block|{
+if|if
+condition|(
+name|getRowItem
+argument_list|(
+name|newRow
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 specifier|final
 name|CellFormatter
 name|fmt
@@ -1586,7 +1598,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|resetHtml (SafeHtml body)
-specifier|protected
+specifier|public
 name|void
 name|resetHtml
 parameter_list|(
