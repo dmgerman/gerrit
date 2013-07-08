@@ -2688,6 +2688,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2697,6 +2699,11 @@ argument_list|,
 name|e
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|caching
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2709,6 +2716,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2718,6 +2727,11 @@ argument_list|,
 name|e
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|caching
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2730,6 +2744,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2737,6 +2753,11 @@ operator|=
 name|SC_METHOD_NOT_ALLOWED
 argument_list|,
 literal|"Method not allowed"
+argument_list|,
+name|e
+operator|.
+name|caching
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2748,6 +2769,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2757,6 +2780,11 @@ argument_list|,
 name|e
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|caching
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2769,6 +2797,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2786,6 +2816,11 @@ argument_list|()
 argument_list|,
 literal|"Precondition failed"
 argument_list|)
+argument_list|,
+name|e
+operator|.
+name|caching
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2797,6 +2832,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2804,6 +2841,11 @@ operator|=
 name|SC_NOT_FOUND
 argument_list|,
 literal|"Not found"
+argument_list|,
+name|e
+operator|.
+name|caching
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2815,6 +2857,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2832,6 +2876,11 @@ argument_list|()
 argument_list|,
 literal|"Unprocessable Entity"
 argument_list|)
+argument_list|,
+name|e
+operator|.
+name|caching
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2843,6 +2892,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2864,6 +2915,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -2886,6 +2939,8 @@ parameter_list|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|status
@@ -6027,6 +6082,8 @@ argument_list|()
 expr_stmt|;
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|SC_INTERNAL_SERVER_ERROR
@@ -6039,12 +6096,15 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyError (HttpServletResponse res, int statusCode, String msg)
+DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg)
 specifier|public
 specifier|static
 name|void
 name|replyError
 parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
 name|HttpServletResponse
 name|res
 parameter_list|,
@@ -6057,6 +6117,49 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|replyError
+argument_list|(
+name|req
+argument_list|,
+name|res
+argument_list|,
+name|statusCode
+argument_list|,
+name|msg
+argument_list|,
+name|CacheControl
+operator|.
+name|NONE
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, CacheControl c)
+specifier|public
+specifier|static
+name|void
+name|replyError
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
+name|HttpServletResponse
+name|res
+parameter_list|,
+name|int
+name|statusCode
+parameter_list|,
+name|String
+name|msg
+parameter_list|,
+name|CacheControl
+name|c
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|res
 operator|.
 name|setStatus
@@ -6064,11 +6167,13 @@ argument_list|(
 name|statusCode
 argument_list|)
 expr_stmt|;
-name|CacheHeaders
-operator|.
-name|setNotCacheable
+name|configureCaching
 argument_list|(
+name|req
+argument_list|,
 name|res
+argument_list|,
+name|c
 argument_list|)
 expr_stmt|;
 name|replyText

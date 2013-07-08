@@ -560,6 +560,8 @@ condition|)
 block|{
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|SC_BAD_REQUEST
