@@ -126,6 +126,31 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+annotation|@
+name|Override
+DECL|method|caching (CacheControl c)
+specifier|public
+name|ResourceNotFoundException
+name|caching
+parameter_list|(
+name|CacheControl
+name|c
+parameter_list|)
+block|{
+return|return
+name|super
+operator|.
+name|caching
+argument_list|(
+name|c
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
