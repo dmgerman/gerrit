@@ -1099,6 +1099,34 @@ literal|"td"
 argument_list|)
 return|;
 block|}
+comment|/** Append "&lt;th&gt;"; attributes may be set if needed */
+DECL|method|openTh ()
+specifier|public
+name|SafeHtmlBuilder
+name|openTh
+parameter_list|()
+block|{
+return|return
+name|openElement
+argument_list|(
+literal|"th"
+argument_list|)
+return|;
+block|}
+comment|/** Append "&lt;/th&gt;" */
+DECL|method|closeTh ()
+specifier|public
+name|SafeHtmlBuilder
+name|closeTh
+parameter_list|()
+block|{
+return|return
+name|closeElement
+argument_list|(
+literal|"th"
+argument_list|)
+return|;
+block|}
 comment|/** Append "&lt;div&gt;"; attributes may be set if needed */
 DECL|method|openDiv ()
 specifier|public
