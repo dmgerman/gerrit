@@ -540,6 +540,8 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|SC_FORBIDDEN
@@ -578,6 +580,8 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|SC_FORBIDDEN
@@ -625,6 +629,8 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|SC_INTERNAL_SERVER_ERROR
@@ -647,6 +653,8 @@ name|RestApiServlet
 operator|.
 name|replyError
 argument_list|(
+name|req
+argument_list|,
 name|res
 argument_list|,
 name|SC_FORBIDDEN
