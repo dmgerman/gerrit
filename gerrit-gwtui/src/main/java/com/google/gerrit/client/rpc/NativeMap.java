@@ -346,6 +346,21 @@ name|n
 parameter_list|)
 comment|/*-{ return this[n]; }-*/
 function_decl|;
+DECL|method|put (String n, T v)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|put
+parameter_list|(
+name|String
+name|n
+parameter_list|,
+name|T
+name|v
+parameter_list|)
+comment|/*-{ this[n] = v; }-*/
+function_decl|;
 DECL|method|copyKeysIntoChildren (String p)
 specifier|public
 specifier|final
