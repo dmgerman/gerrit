@@ -941,7 +941,7 @@ name|maxObjectSizeLimit
 operator|=
 name|ProjectConfig
 operator|.
-name|validLong
+name|validMaxObjectSizeLimit
 argument_list|(
 name|input
 operator|.
