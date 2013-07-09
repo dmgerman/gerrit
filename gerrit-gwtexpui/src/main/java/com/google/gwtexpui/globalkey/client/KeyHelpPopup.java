@@ -170,7 +170,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|KeyUpEvent
+name|KeyDownEvent
 import|;
 end_import
 
@@ -188,7 +188,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|KeyUpHandler
+name|KeyDownHandler
 import|;
 end_import
 
@@ -436,7 +436,7 @@ name|PluginSafePopupPanel
 implements|implements
 name|KeyPressHandler
 implements|,
-name|KeyUpHandler
+name|KeyDownHandler
 block|{
 DECL|field|focus
 specifier|private
@@ -745,7 +745,7 @@ argument_list|)
 expr_stmt|;
 name|focus
 operator|.
-name|addKeyUpHandler
+name|addKeyDownHandler
 argument_list|(
 name|this
 argument_list|)
@@ -837,13 +837,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyUp (final KeyUpEvent event)
+DECL|method|onKeyDown (final KeyDownEvent event)
 specifier|public
 name|void
-name|onKeyUp
+name|onKeyDown
 parameter_list|(
 specifier|final
-name|KeyUpEvent
+name|KeyDownEvent
 name|event
 parameter_list|)
 block|{
