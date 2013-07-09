@@ -156,40 +156,6 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|dom
-operator|.
-name|client
-operator|.
-name|Element
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|dom
-operator|.
-name|client
-operator|.
-name|Style
-operator|.
-name|Unit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
 name|event
 operator|.
 name|dom
@@ -441,20 +407,10 @@ operator|.
 name|Id
 name|patchSetId
 decl_stmt|;
-DECL|field|selfWidget
+DECL|field|widgetManager
 specifier|private
-name|LineWidget
-name|selfWidget
-decl_stmt|;
-DECL|field|paddingWidget
-specifier|private
-name|LineWidget
-name|paddingWidget
-decl_stmt|;
-DECL|field|paddingWidgetEle
-specifier|private
-name|Element
-name|paddingWidgetEle
+name|PaddingManager
+name|widgetManager
 decl_stmt|;
 DECL|field|diffView
 specifier|private
@@ -465,6 +421,11 @@ DECL|field|draft
 specifier|private
 name|boolean
 name|draft
+decl_stmt|;
+DECL|field|selfWidget
+specifier|private
+name|LineWidget
+name|selfWidget
 decl_stmt|;
 annotation|@
 name|UiField
@@ -490,7 +451,6 @@ name|CommentBoxResources
 name|res
 decl_stmt|;
 DECL|method|CommentBox ( CodeMirrorDemo host, UiBinder<? extends Widget, CommentBox> binder, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor, boolean isDraft)
-specifier|protected
 name|CommentBox
 parameter_list|(
 name|CodeMirrorDemo
@@ -667,39 +627,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|setSelfWidget (LineWidget widget)
-name|void
-name|setSelfWidget
-parameter_list|(
-name|LineWidget
-name|widget
-parameter_list|)
-block|{
-name|selfWidget
-operator|=
-name|widget
-expr_stmt|;
-block|}
-DECL|method|setPadding (LineWidget widget, Element element)
-name|void
-name|setPadding
-parameter_list|(
-name|LineWidget
-name|widget
-parameter_list|,
-name|Element
-name|element
-parameter_list|)
-block|{
-name|paddingWidget
-operator|=
-name|widget
-expr_stmt|;
-name|paddingWidgetEle
-operator|=
-name|element
-expr_stmt|;
-block|}
 DECL|method|resizePaddingWidget ()
 name|void
 name|resizePaddingWidget
@@ -716,36 +643,38 @@ operator|new
 name|ScheduledCommand
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|execute
 parameter_list|()
 block|{
-name|paddingWidgetEle
-operator|.
-name|getStyle
-argument_list|()
-operator|.
-name|setHeight
+if|if
+condition|(
+name|selfWidget
+operator|==
+literal|null
+operator|||
+name|widgetManager
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
-name|getOffsetHeight
-argument_list|()
-argument_list|,
-name|Unit
-operator|.
-name|PX
+literal|"resizePaddingWidget() called before setting up widgets"
 argument_list|)
-expr_stmt|;
-name|paddingWidget
-operator|.
-name|changed
-argument_list|()
-expr_stmt|;
+throw|;
+block|}
 name|selfWidget
 operator|.
 name|changed
+argument_list|()
+expr_stmt|;
+name|widgetManager
+operator|.
+name|resizePaddingWidget
 argument_list|()
 expr_stmt|;
 block|}
@@ -754,7 +683,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setMessageText (String message)
-specifier|protected
 name|void
 name|setMessageText
 parameter_list|(
@@ -826,7 +754,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setDate (Timestamp when)
-specifier|protected
 name|void
 name|setDate
 parameter_list|(
@@ -843,7 +770,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setOpen (boolean open)
-specifier|protected
 name|void
 name|setOpen
 parameter_list|(
@@ -931,7 +857,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|getDiffView ()
-specifier|protected
 name|CodeMirrorDemo
 name|getDiffView
 parameter_list|()
@@ -941,7 +866,6 @@ name|diffView
 return|;
 block|}
 DECL|method|getPatchSetId ()
-specifier|protected
 name|PatchSet
 operator|.
 name|Id
@@ -953,7 +877,6 @@ name|patchSetId
 return|;
 block|}
 DECL|method|getOriginal ()
-specifier|protected
 name|CommentInfo
 name|getOriginal
 parameter_list|()
@@ -962,28 +885,7 @@ return|return
 name|original
 return|;
 block|}
-DECL|method|getSelfWidget ()
-specifier|protected
-name|LineWidget
-name|getSelfWidget
-parameter_list|()
-block|{
-return|return
-name|selfWidget
-return|;
-block|}
-DECL|method|getPaddingWidget ()
-specifier|protected
-name|LineWidget
-name|getPaddingWidget
-parameter_list|()
-block|{
-return|return
-name|paddingWidget
-return|;
-block|}
 DECL|method|updateOriginal (CommentInfo newInfo)
-specifier|protected
 name|void
 name|updateOriginal
 parameter_list|(
@@ -996,6 +898,15 @@ operator|=
 name|newInfo
 expr_stmt|;
 block|}
+DECL|method|getPaddingManager ()
+name|PaddingManager
+name|getPaddingManager
+parameter_list|()
+block|{
+return|return
+name|widgetManager
+return|;
+block|}
 DECL|method|isDraft ()
 name|boolean
 name|isDraft
@@ -1003,6 +914,41 @@ parameter_list|()
 block|{
 return|return
 name|draft
+return|;
+block|}
+DECL|method|setPaddingManager (PaddingManager manager)
+name|void
+name|setPaddingManager
+parameter_list|(
+name|PaddingManager
+name|manager
+parameter_list|)
+block|{
+name|widgetManager
+operator|=
+name|manager
+expr_stmt|;
+block|}
+DECL|method|setSelfWidget (LineWidget widget)
+name|void
+name|setSelfWidget
+parameter_list|(
+name|LineWidget
+name|widget
+parameter_list|)
+block|{
+name|selfWidget
+operator|=
+name|widget
+expr_stmt|;
+block|}
+DECL|method|getSelfWidget ()
+name|LineWidget
+name|getSelfWidget
+parameter_list|()
+block|{
+return|return
+name|selfWidget
 return|;
 block|}
 block|}

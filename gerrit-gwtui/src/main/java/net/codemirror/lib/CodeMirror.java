@@ -547,11 +547,37 @@ name|map
 parameter_list|)
 comment|/*-{ this.addKeyMap(map); }-*/
 function_decl|;
+DECL|method|getLineHandle (int line)
+specifier|public
+specifier|final
+specifier|native
+name|LineHandle
+name|getLineHandle
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+comment|/*-{     return this.getLineHandle(line);   }-*/
+function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror
 parameter_list|()
 block|{   }
+DECL|class|LineHandle
+specifier|public
+specifier|static
+class|class
+name|LineHandle
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|LineHandle ()
+specifier|protected
+name|LineHandle
+parameter_list|()
+block|{     }
+block|}
 block|}
 end_class
 
