@@ -67,6 +67,11 @@ package|;
 end_package
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|SafeHtmlString
 class|class
 name|SafeHtmlString
