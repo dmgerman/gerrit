@@ -2538,14 +2538,21 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-name|error
+return|return
+operator|new
+name|LegacyMessagePredicate
 argument_list|(
-literal|"secondary index must be enabled for message:"
-operator|+
+name|args
+operator|.
+name|dbProvider
+argument_list|,
+name|args
+operator|.
+name|repoManager
+argument_list|,
 name|text
 argument_list|)
-throw|;
+return|;
 block|}
 return|return
 operator|new
