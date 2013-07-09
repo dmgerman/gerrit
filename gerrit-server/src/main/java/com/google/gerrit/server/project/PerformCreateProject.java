@@ -1304,6 +1304,15 @@ operator|.
 name|changeIdRequired
 argument_list|)
 expr_stmt|;
+name|newProject
+operator|.
+name|setMaxObjectSizeLimit
+argument_list|(
+name|createProjectArgs
+operator|.
+name|maxObjectSizeLimit
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|createProjectArgs

@@ -375,6 +375,11 @@ specifier|protected
 name|InheritableBoolean
 name|requireChangeID
 decl_stmt|;
+DECL|field|maxObjectSizeLimit
+specifier|protected
+name|String
+name|maxObjectSizeLimit
+decl_stmt|;
 DECL|field|useContentMerge
 specifier|protected
 name|InheritableBoolean
@@ -547,6 +552,16 @@ return|return
 name|requireChangeID
 return|;
 block|}
+DECL|method|getMaxObjectSizeLimit ()
+specifier|public
+name|String
+name|getMaxObjectSizeLimit
+parameter_list|()
+block|{
+return|return
+name|maxObjectSizeLimit
+return|;
+block|}
 DECL|method|setUseContributorAgreements (final InheritableBoolean u)
 specifier|public
 name|void
@@ -605,6 +620,21 @@ block|{
 name|requireChangeID
 operator|=
 name|cid
+expr_stmt|;
+block|}
+DECL|method|setMaxObjectSizeLimit (final String limit)
+specifier|public
+name|void
+name|setMaxObjectSizeLimit
+parameter_list|(
+specifier|final
+name|String
+name|limit
+parameter_list|)
+block|{
+name|maxObjectSizeLimit
+operator|=
+name|limit
 expr_stmt|;
 block|}
 DECL|method|getSubmitType ()
@@ -789,6 +819,12 @@ operator|=
 name|update
 operator|.
 name|state
+expr_stmt|;
+name|maxObjectSizeLimit
+operator|=
+name|update
+operator|.
+name|maxObjectSizeLimit
 expr_stmt|;
 block|}
 comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project,<code>null</code> if this project    *         is the wild project,<code>null</code> or the name key of the wild    *         project if this project is a direct child of the wild project    */

@@ -220,6 +220,11 @@ specifier|public
 name|boolean
 name|createEmptyCommit
 decl_stmt|;
+DECL|field|maxObjectSizeLimit
+specifier|public
+name|String
+name|maxObjectSizeLimit
+decl_stmt|;
 DECL|method|CreateProjectArgs ()
 specifier|public
 name|CreateProjectArgs
