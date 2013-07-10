@@ -243,14 +243,14 @@ name|LineStyle
 extends|extends
 name|CssResource
 block|{
+DECL|method|intralineBg ()
+name|String
+name|intralineBg
+parameter_list|()
+function_decl|;
 DECL|method|diff ()
 name|String
 name|diff
-parameter_list|()
-function_decl|;
-DECL|method|intraline ()
-name|String
-name|intraline
 parameter_list|()
 function_decl|;
 DECL|method|padding ()
