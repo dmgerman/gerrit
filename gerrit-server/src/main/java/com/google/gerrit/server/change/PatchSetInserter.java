@@ -862,6 +862,11 @@ specifier|private
 name|SshInfo
 name|sshInfo
 decl_stmt|;
+DECL|field|draft
+specifier|private
+name|boolean
+name|draft
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PatchSetInserter (ChangeHooks hooks, TrackingFooters trackingFooters, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser user, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, ChangeIndexer indexer, ReplacePatchSetSender.Factory replacePatchSetFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
@@ -1224,6 +1229,25 @@ operator|.
 name|validateForReceiveCommits
 operator|=
 name|validate
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setDraft (boolean draft)
+specifier|public
+name|PatchSetInserter
+name|setDraft
+parameter_list|(
+name|boolean
+name|draft
+parameter_list|)
+block|{
+name|this
+operator|.
+name|draft
+operator|=
+name|draft
 expr_stmt|;
 return|return
 name|this
@@ -1980,6 +2004,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|patchSet
+operator|.
+name|setDraft
+argument_list|(
+name|draft
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|validate ()
 specifier|private
