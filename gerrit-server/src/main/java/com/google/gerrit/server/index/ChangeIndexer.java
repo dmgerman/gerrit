@@ -234,7 +234,7 @@ name|Override
 specifier|public
 name|Callable
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|indexTask
 parameter_list|(
@@ -269,7 +269,7 @@ name|Override
 specifier|public
 name|Callable
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|deleteTask
 parameter_list|(
@@ -346,7 +346,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Start indexing a change.    *    * @param change change to index.    * @return future for the indexing task.    */
+comment|/**    * Start indexing a change.    *    * @param cd change to index.    * @return future for the indexing task.    */
 DECL|method|index (ChangeData cd)
 specifier|public
 name|ListenableFuture
@@ -388,7 +388,7 @@ specifier|public
 specifier|abstract
 name|Callable
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|indexTask
 parameter_list|(
@@ -420,7 +420,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Start deleting a change.    *    * @param change change to delete.    * @return future for the deleting task.    */
+comment|/**    * Start deleting a change.    *    * @param cd change to delete.    * @return future for the deleting task.    */
 DECL|method|delete (ChangeData cd)
 specifier|public
 name|ListenableFuture
@@ -462,7 +462,7 @@ specifier|public
 specifier|abstract
 name|Callable
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|deleteTask
 parameter_list|(

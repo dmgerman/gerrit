@@ -711,7 +711,7 @@ block|}
 DECL|method|insert (Document doc)
 name|ListenableFuture
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|insert
 parameter_list|(
@@ -737,7 +737,7 @@ block|}
 DECL|method|replace (Term term, Document doc)
 name|ListenableFuture
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|replace
 parameter_list|(
@@ -768,7 +768,7 @@ block|}
 DECL|method|delete (Term term)
 name|ListenableFuture
 argument_list|<
-name|Void
+name|?
 argument_list|>
 name|delete
 parameter_list|(

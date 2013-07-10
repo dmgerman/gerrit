@@ -86,22 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ListenableFuture
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -398,10 +382,7 @@ annotation|@
 name|Override
 DECL|method|insert (ChangeData cd)
 specifier|public
-name|ListenableFuture
-argument_list|<
-name|Void
-argument_list|>
+name|void
 name|insert
 parameter_list|(
 name|ChangeData
@@ -418,10 +399,7 @@ annotation|@
 name|Override
 DECL|method|replace (ChangeData cd)
 specifier|public
-name|ListenableFuture
-argument_list|<
-name|Void
-argument_list|>
+name|void
 name|replace
 parameter_list|(
 name|ChangeData
@@ -438,10 +416,7 @@ annotation|@
 name|Override
 DECL|method|delete (ChangeData cd)
 specifier|public
-name|ListenableFuture
-argument_list|<
-name|Void
-argument_list|>
+name|void
 name|delete
 parameter_list|(
 name|ChangeData

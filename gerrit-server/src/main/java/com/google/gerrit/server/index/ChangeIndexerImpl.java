@@ -636,7 +636,6 @@ argument_list|,
 name|cd
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz): Parallelize these
 block|}
 block|}
 else|else
