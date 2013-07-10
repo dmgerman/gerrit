@@ -210,6 +210,11 @@ name|String
 name|requireChangeID
 parameter_list|()
 function_decl|;
+DECL|method|headingMaxObjectSizeLimit ()
+name|String
+name|headingMaxObjectSizeLimit
+parameter_list|()
+function_decl|;
 DECL|method|headingGroupOptions ()
 name|String
 name|headingGroupOptions
