@@ -312,22 +312,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|ChangeIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -602,7 +586,7 @@ name|patchSetInserterFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RebaseChange (final ChangeControl.GenericFactory changeControlFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer changeIndexer, final PatchSetInserter.Factory patchSetInserterFactory)
+DECL|method|RebaseChange (final ChangeControl.GenericFactory changeControlFactory, final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final MergeUtil.Factory mergeUtilFactory, final PatchSetInserter.Factory patchSetInserterFactory)
 name|RebaseChange
 parameter_list|(
 specifier|final
@@ -630,10 +614,6 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
-parameter_list|,
-specifier|final
-name|ChangeIndexer
-name|changeIndexer
 parameter_list|,
 specifier|final
 name|PatchSetInserter
