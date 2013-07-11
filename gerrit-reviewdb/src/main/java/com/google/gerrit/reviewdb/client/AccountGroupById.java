@@ -99,11 +99,11 @@ comment|/** Membership of an {@link AccountGroup} in an {@link AccountGroup}. */
 end_comment
 
 begin_class
-DECL|class|AccountGroupIncludeByUuid
+DECL|class|AccountGroupById
 specifier|public
 specifier|final
 class|class
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 block|{
 DECL|class|Key
 specifier|public
@@ -300,17 +300,17 @@ specifier|protected
 name|Key
 name|key
 decl_stmt|;
-DECL|method|AccountGroupIncludeByUuid ()
+DECL|method|AccountGroupById ()
 specifier|protected
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 parameter_list|()
 block|{   }
-DECL|method|AccountGroupIncludeByUuid (final AccountGroupIncludeByUuid.Key k)
+DECL|method|AccountGroupById (final AccountGroupById.Key k)
 specifier|public
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 parameter_list|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 name|k
@@ -323,7 +323,7 @@ expr_stmt|;
 block|}
 DECL|method|getKey ()
 specifier|public
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 name|getKey

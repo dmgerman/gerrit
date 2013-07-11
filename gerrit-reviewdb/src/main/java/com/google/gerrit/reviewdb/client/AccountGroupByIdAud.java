@@ -109,11 +109,11 @@ comment|/** Inclusion of an {@link AccountGroup} in another {@link AccountGroup}
 end_comment
 
 begin_class
-DECL|class|AccountGroupIncludeByUuidAudit
+DECL|class|AccountGroupByIdAud
 specifier|public
 specifier|final
 class|class
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 block|{
 DECL|class|Key
 specifier|public
@@ -376,17 +376,17 @@ specifier|protected
 name|Timestamp
 name|removedOn
 decl_stmt|;
-DECL|method|AccountGroupIncludeByUuidAudit ()
+DECL|method|AccountGroupByIdAud ()
 specifier|protected
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 parameter_list|()
 block|{   }
-DECL|method|AccountGroupIncludeByUuidAudit (final AccountGroupIncludeByUuid m, final Account.Id adder, final Timestamp when)
+DECL|method|AccountGroupByIdAud (final AccountGroupById m, final Account.Id adder, final Timestamp when)
 specifier|public
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 parameter_list|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|m
 parameter_list|,
 specifier|final
@@ -425,7 +425,7 @@ decl_stmt|;
 name|key
 operator|=
 operator|new
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 operator|.
 name|Key
 argument_list|(
@@ -441,12 +441,12 @@ operator|=
 name|adder
 expr_stmt|;
 block|}
-DECL|method|AccountGroupIncludeByUuidAudit (final AccountGroupIncludeByUuid m, final Account.Id adder)
+DECL|method|AccountGroupByIdAud (final AccountGroupById m, final Account.Id adder)
 specifier|public
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 parameter_list|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|m
 parameter_list|,
 specifier|final
@@ -469,7 +469,7 @@ expr_stmt|;
 block|}
 DECL|method|getKey ()
 specifier|public
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 operator|.
 name|Key
 name|getKey

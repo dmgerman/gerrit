@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 import|;
 end_import
 
@@ -169,16 +169,16 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|AccountGroupIncludeByUuidAuditAccess
+DECL|interface|AccountGroupByIdAudAccess
 specifier|public
 interface|interface
-name|AccountGroupIncludeByUuidAuditAccess
+name|AccountGroupByIdAudAccess
 extends|extends
 name|Access
 argument_list|<
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|,
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 operator|.
 name|Key
 argument_list|>
@@ -188,11 +188,11 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (AccountGroupIncludeByUuidAudit.Key key)
-name|AccountGroupIncludeByUuidAudit
+DECL|method|get (AccountGroupByIdAud.Key key)
+name|AccountGroupByIdAud
 name|get
 parameter_list|(
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 operator|.
 name|Key
 name|key
@@ -208,7 +208,7 @@ argument_list|)
 DECL|method|byGroupInclude (AccountGroup.Id groupId, AccountGroup.UUID incGroupUUID)
 name|ResultSet
 argument_list|<
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|>
 name|byGroupInclude
 parameter_list|(

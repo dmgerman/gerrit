@@ -278,7 +278,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -294,7 +294,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 import|;
 end_import
 
@@ -735,7 +735,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|newIncludedGroups
 init|=
@@ -746,7 +746,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|>
 name|newIncludedGroupsAudits
 init|=
@@ -855,13 +855,13 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 name|agiKey
 init|=
 operator|new
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 argument_list|(
@@ -876,12 +876,12 @@ name|getGroupUUID
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|agi
 init|=
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|get
@@ -899,7 +899,7 @@ block|{
 name|agi
 operator|=
 operator|new
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|(
 name|agiKey
 argument_list|)
@@ -921,7 +921,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|(
 name|agi
 argument_list|,
@@ -955,7 +955,7 @@ condition|)
 block|{
 name|db
 operator|.
-name|accountGroupIncludesByUuidAudit
+name|accountGroupByIdAud
 argument_list|()
 operator|.
 name|insert
@@ -965,7 +965,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|insert
@@ -978,7 +978,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|agi
 range|:
 name|newIncludedGroups

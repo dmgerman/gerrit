@@ -476,9 +476,9 @@ name|id
 operator|=
 literal|29
 argument_list|)
-DECL|method|accountGroupIncludesByUuid ()
-name|AccountGroupIncludeByUuidAccess
-name|accountGroupIncludesByUuid
+DECL|method|accountGroupById ()
+name|AccountGroupByIdAccess
+name|accountGroupById
 parameter_list|()
 function_decl|;
 annotation|@
@@ -488,9 +488,9 @@ name|id
 operator|=
 literal|30
 argument_list|)
-DECL|method|accountGroupIncludesByUuidAudit ()
-name|AccountGroupIncludeByUuidAuditAccess
-name|accountGroupIncludesByUuidAudit
+DECL|method|accountGroupByIdAud ()
+name|AccountGroupByIdAudAccess
+name|accountGroupByIdAud
 parameter_list|()
 function_decl|;
 comment|/** Create the next unique id for an {@link Account}. */

@@ -494,10 +494,10 @@ name|id
 operator|=
 literal|11
 argument_list|)
-DECL|field|showUsernameInReviewCategory
+DECL|field|showUserInReview
 specifier|protected
 name|boolean
-name|showUsernameInReviewCategory
+name|showUserInReview
 decl_stmt|;
 annotation|@
 name|Column
@@ -785,7 +785,7 @@ name|isShowUsernameInReviewCategory
 parameter_list|()
 block|{
 return|return
-name|showUsernameInReviewCategory
+name|showUserInReview
 return|;
 block|}
 DECL|method|setShowUsernameInReviewCategory (final boolean showUsernameInReviewCategory)
@@ -800,7 +800,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|showUsernameInReviewCategory
+name|showUserInReview
 operator|=
 name|showUsernameInReviewCategory
 expr_stmt|;
@@ -993,7 +993,7 @@ name|reversePatchSetOrder
 operator|=
 literal|false
 expr_stmt|;
-name|showUsernameInReviewCategory
+name|showUserInReview
 operator|=
 literal|false
 expr_stmt|;

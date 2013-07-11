@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -169,16 +169,16 @@ import|;
 end_import
 
 begin_interface
-DECL|interface|AccountGroupIncludeByUuidAccess
+DECL|interface|AccountGroupByIdAccess
 specifier|public
 interface|interface
-name|AccountGroupIncludeByUuidAccess
+name|AccountGroupByIdAccess
 extends|extends
 name|Access
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|,
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 argument_list|>
@@ -188,11 +188,11 @@ name|PrimaryKey
 argument_list|(
 literal|"key"
 argument_list|)
-DECL|method|get (AccountGroupIncludeByUuid.Key key)
-name|AccountGroupIncludeByUuid
+DECL|method|get (AccountGroupById.Key key)
+name|AccountGroupById
 name|get
 parameter_list|(
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 name|key
@@ -208,7 +208,7 @@ argument_list|)
 DECL|method|byIncludeUUID (AccountGroup.UUID uuid)
 name|ResultSet
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|byIncludeUUID
 parameter_list|(
@@ -228,7 +228,7 @@ argument_list|)
 DECL|method|byGroup (AccountGroup.Id id)
 name|ResultSet
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|byGroup
 parameter_list|(
@@ -248,7 +248,7 @@ argument_list|)
 DECL|method|all ()
 name|ResultSet
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|all
 parameter_list|()

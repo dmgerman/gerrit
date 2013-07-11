@@ -254,7 +254,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -612,13 +612,13 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|get
 argument_list|(
 operator|new
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 argument_list|(
