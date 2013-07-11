@@ -547,6 +547,11 @@ name|Id
 argument_list|>
 name|reviewers
 decl_stmt|;
+DECL|field|runHooks
+specifier|private
+name|boolean
+name|runHooks
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, TrackingFooters trackingFooters, ChangeIndexer indexer, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
@@ -654,6 +659,12 @@ name|Collections
 operator|.
 name|emptySet
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|runHooks
+operator|=
+literal|true
 expr_stmt|;
 name|patchSet
 operator|=
@@ -814,6 +825,25 @@ name|setDraft
 argument_list|(
 name|draft
 argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setRunHooks (boolean runHooks)
+specifier|public
+name|ChangeInserter
+name|setRunHooks
+parameter_list|(
+name|boolean
+name|runHooks
+parameter_list|)
+block|{
+name|this
+operator|.
+name|runHooks
+operator|=
+name|runHooks
 expr_stmt|;
 return|return
 name|this
@@ -1034,6 +1064,11 @@ argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|runHooks
+condition|)
+block|{
 name|hooks
 operator|.
 name|doPatchsetCreatedHook
@@ -1045,6 +1080,7 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
