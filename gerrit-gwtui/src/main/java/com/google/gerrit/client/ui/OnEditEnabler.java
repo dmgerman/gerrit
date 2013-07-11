@@ -490,6 +490,11 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|originalValue
+specifier|private
+name|String
+name|originalValue
+decl_stmt|;
 comment|// The first parameter to the contructors must be the FocusWidget to enable,
 comment|// subsequent parameters are widgets to listenTo.
 DECL|method|OnEditEnabler (final FocusWidget w, final TextBoxBase tb)
@@ -509,6 +514,16 @@ name|this
 argument_list|(
 name|w
 argument_list|)
+expr_stmt|;
+name|originalValue
+operator|=
+name|tb
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|trim
+argument_list|()
 expr_stmt|;
 name|listenTo
 argument_list|(
@@ -599,6 +614,9 @@ name|tb
 operator|.
 name|getText
 argument_list|()
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|tb
@@ -648,6 +666,9 @@ argument_list|,
 name|tb
 operator|.
 name|getText
+argument_list|()
+operator|.
+name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -906,10 +927,10 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
-argument_list|()
-operator|==
-literal|0
+name|equals
+argument_list|(
+name|originalValue
+argument_list|)
 condition|)
 block|{
 name|widget
@@ -1024,6 +1045,9 @@ argument_list|(
 name|tb
 operator|.
 name|getText
+argument_list|()
+operator|.
+name|trim
 argument_list|()
 argument_list|)
 condition|)
