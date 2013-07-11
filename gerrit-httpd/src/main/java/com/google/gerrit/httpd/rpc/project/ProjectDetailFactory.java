@@ -505,6 +505,13 @@ argument_list|(
 name|userIsOwner
 argument_list|)
 expr_stmt|;
+name|detail
+operator|.
+name|setCanModifyMaxObjectSizeLimit
+argument_list|(
+name|userIsOwner
+argument_list|)
+expr_stmt|;
 specifier|final
 name|InheritedBoolean
 name|useContributorAgreements

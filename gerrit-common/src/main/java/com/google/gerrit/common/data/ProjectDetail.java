@@ -134,6 +134,11 @@ specifier|public
 name|boolean
 name|canModifyState
 decl_stmt|;
+DECL|field|canModifyMaxObjectSizeLimit
+specifier|public
+name|boolean
+name|canModifyMaxObjectSizeLimit
+decl_stmt|;
 DECL|field|isPermissionOnly
 specifier|public
 name|boolean
@@ -222,6 +227,21 @@ block|{
 name|canModifyState
 operator|=
 name|cms
+expr_stmt|;
+block|}
+DECL|method|setCanModifyMaxObjectSizeLimit (final boolean cmmosl)
+specifier|public
+name|void
+name|setCanModifyMaxObjectSizeLimit
+parameter_list|(
+specifier|final
+name|boolean
+name|cmmosl
+parameter_list|)
+block|{
+name|canModifyMaxObjectSizeLimit
+operator|=
+name|cmmosl
 expr_stmt|;
 block|}
 DECL|method|setCanModifyAgreements (final boolean cma)
