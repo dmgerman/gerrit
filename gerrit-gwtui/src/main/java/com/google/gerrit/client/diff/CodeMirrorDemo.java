@@ -1503,6 +1503,13 @@ name|CommentBox
 argument_list|>
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|published
+operator|!=
+literal|null
+condition|)
+block|{
 name|publishedMap
 operator|=
 operator|new
@@ -1519,6 +1526,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|lineBoxMapA
 operator|=
 operator|new
@@ -2670,6 +2678,13 @@ argument_list|(
 name|box
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|published
+operator|!=
+literal|null
+condition|)
+block|{
 name|PublishedBox
 name|replyToBox
 init|=
@@ -2697,6 +2712,7 @@ argument_list|(
 name|box
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|getLineBoxMapFromSide
 argument_list|(
