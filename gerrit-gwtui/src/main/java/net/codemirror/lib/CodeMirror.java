@@ -605,6 +605,15 @@ name|start
 parameter_list|)
 comment|/*-{     return this.getCursor(start);   }-*/
 function_decl|;
+DECL|method|somethingSelected ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|somethingSelected
+parameter_list|()
+comment|/*-{     return this.somethingSelected();   }-*/
+function_decl|;
 DECL|method|hasActiveLine ()
 specifier|public
 specifier|final

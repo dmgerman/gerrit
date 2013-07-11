@@ -164,6 +164,18 @@ name|DataResource
 name|mark_selection
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"edit/trailingspace.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+DECL|method|trailingspace ()
+name|DataResource
+name|trailingspace
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
