@@ -102,6 +102,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|dom
+operator|.
+name|client
+operator|.
+name|NativeEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|user
 operator|.
 name|client
@@ -591,7 +607,31 @@ parameter_list|,
 name|Runnable
 name|thunk
 parameter_list|)
-comment|/*-{     this.on(event, function() {       $entry(thunk.@java.lang.Runnable::run()());     });   }-*/
+comment|/*-{     this.on(event, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+function_decl|;
+DECL|method|on (String event, EventHandler handler)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|EventHandler
+name|handler
+parameter_list|)
+comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.EventHandler::handle(Lnet/codemirror/lib/CodeMirror;Lcom/google/gwt/dom/client/NativeEvent;)(cm, e);     }));   }-*/
+function_decl|;
+DECL|method|getCursor ()
+specifier|public
+specifier|final
+specifier|native
+name|LineCharacter
+name|getCursor
+parameter_list|()
+comment|/*-{     return this.getCursor();   }-*/
 function_decl|;
 DECL|method|getCursor (String start)
 specifier|public
@@ -604,6 +644,18 @@ name|String
 name|start
 parameter_list|)
 comment|/*-{     return this.getCursor(start);   }-*/
+function_decl|;
+DECL|method|setCursor (LineCharacter lineCh)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setCursor
+parameter_list|(
+name|LineCharacter
+name|lineCh
+parameter_list|)
+comment|/*-{     this.setCursor(lineCh);   }-*/
 function_decl|;
 DECL|method|somethingSelected ()
 specifier|public
@@ -656,6 +708,30 @@ name|map
 parameter_list|)
 comment|/*-{ this.addKeyMap(map); }-*/
 function_decl|;
+DECL|method|removeKeyMap (KeyMap map)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|removeKeyMap
+parameter_list|(
+name|KeyMap
+name|map
+parameter_list|)
+comment|/*-{ this.removeKeyMap(map); }-*/
+function_decl|;
+DECL|method|removeKeyMap (String name)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|removeKeyMap
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+comment|/*-{ this.removeKeyMap(name); }-*/
+function_decl|;
 DECL|method|pos (int line, int ch)
 specifier|public
 specifier|static
@@ -697,6 +773,18 @@ name|line
 parameter_list|)
 comment|/*-{     return this.getLineHandle(line);   }-*/
 function_decl|;
+DECL|method|getLineHandleVisualStart (int line)
+specifier|public
+specifier|final
+specifier|native
+name|LineHandle
+name|getLineHandleVisualStart
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+comment|/*-{     return this.getLineHandleVisualStart(line);   }-*/
+function_decl|;
 DECL|method|getLineNumber (LineHandle handle)
 specifier|public
 specifier|final
@@ -708,6 +796,32 @@ name|LineHandle
 name|handle
 parameter_list|)
 comment|/*-{     return this.getLineNumber(handle);   }-*/
+function_decl|;
+DECL|method|focus ()
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|focus
+parameter_list|()
+comment|/*-{     this.focus();   }-*/
+function_decl|;
+comment|/** Hack into CodeMirror to disable unwanted keys */
+DECL|method|disableUnwantedKey (String category, String name)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|disableUnwantedKey
+parameter_list|(
+name|String
+name|category
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.keyMap[category][name] = undefined;   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
@@ -727,6 +841,24 @@ specifier|protected
 name|LineHandle
 parameter_list|()
 block|{     }
+block|}
+DECL|interface|EventHandler
+specifier|public
+interface|interface
+name|EventHandler
+block|{
+DECL|method|handle (CodeMirror instance, NativeEvent event)
+specifier|public
+name|void
+name|handle
+parameter_list|(
+name|CodeMirror
+name|instance
+parameter_list|,
+name|NativeEvent
+name|event
+parameter_list|)
+function_decl|;
 block|}
 block|}
 end_class
