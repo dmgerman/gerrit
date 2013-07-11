@@ -78,22 +78,6 @@ name|JavaScriptObject
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|dom
-operator|.
-name|client
-operator|.
-name|Element
-import|;
-end_import
-
 begin_comment
 comment|/**  * Simple map-like structure to pass configuration to CodeMirror.  *  * @link http://codemirror.net/doc/manual.html#config  * @see CodeMirror#create(com.google.gwt.dom.client.Element, Configuration)  */
 end_comment
