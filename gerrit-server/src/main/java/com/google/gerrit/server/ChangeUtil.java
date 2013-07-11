@@ -774,6 +774,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -931,6 +951,22 @@ specifier|private
 specifier|static
 name|int
 name|uuidSeq
+decl_stmt|;
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ChangeUtil
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**    * Generate a new unique identifier for change message entities.    *    * @param db the database connection, used to increment the change message    *        allocation sequence.    * @return the new unique identifier.    * @throws OrmException the database couldn't be incremented.    */
 DECL|method|messageUUID (ReviewDb db)
@@ -2252,6 +2288,8 @@ operator|.
 name|insert
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 specifier|final
 name|RevertedSender
 name|cm
@@ -2285,6 +2323,28 @@ operator|.
 name|send
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|err
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot send email for revert change "
+operator|+
+name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|change
 operator|.
