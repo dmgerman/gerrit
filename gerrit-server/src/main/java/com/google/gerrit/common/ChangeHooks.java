@@ -510,6 +510,27 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+comment|/**    * Fire the Topic Changed Hook    *    * @param change The change itself.    * @param account The gerrit user who changed the topic.    * @param oldTopic The old topic name.    */
+DECL|method|doTopicChangedHook (Change change, Account account, String oldTopic, ReviewDb db)
+specifier|public
+name|void
+name|doTopicChangedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|String
+name|oldTopic
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 DECL|method|doClaSignupHook (Account account, ContributorAgreement cla)
 specifier|public
 name|void
