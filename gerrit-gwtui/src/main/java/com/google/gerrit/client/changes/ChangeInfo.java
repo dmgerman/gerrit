@@ -529,6 +529,15 @@ name|mergeable
 parameter_list|()
 comment|/*-{ return this.mergeable; }-*/
 function_decl|;
+DECL|method|submit_action ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|submit_action
+parameter_list|()
+comment|/*-{ return this.submit_action; }-*/
+function_decl|;
 DECL|method|statusRaw ()
 specifier|private
 specifier|final
