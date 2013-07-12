@@ -1343,6 +1343,10 @@ name|sorted
 argument_list|(
 name|UiCommands
 operator|.
+name|plugins
+argument_list|(
+name|UiCommands
+operator|.
 name|from
 argument_list|(
 name|revisions
@@ -1368,6 +1372,7 @@ operator|.
 name|Place
 operator|.
 name|PATCHSET_ACTION_PANEL
+argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
