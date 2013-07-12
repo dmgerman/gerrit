@@ -150,6 +150,13 @@ name|MESSAGES
 argument_list|(
 literal|9
 argument_list|)
+block|,
+comment|/** Include allowed actions client could perform. */
+DECL|enumConstant|CURRENT_ACTIONS
+name|CURRENT_ACTIONS
+argument_list|(
+literal|10
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
