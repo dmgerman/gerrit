@@ -268,6 +268,11 @@ name|String
 name|activeLineBg
 parameter_list|()
 function_decl|;
+DECL|method|hideNumber ()
+name|String
+name|hideNumber
+parameter_list|()
+function_decl|;
 block|}
 annotation|@
 name|UiField
@@ -284,6 +289,7 @@ decl_stmt|;
 annotation|@
 name|UiField
 DECL|field|style
+specifier|static
 name|LineStyle
 name|style
 decl_stmt|;
