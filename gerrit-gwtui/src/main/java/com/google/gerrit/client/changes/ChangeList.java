@@ -448,6 +448,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|addOptions (RestApi call, EnumSet<ListChangesOption> s)
+specifier|public
 specifier|static
 name|void
 name|addOptions
