@@ -278,7 +278,10 @@ name|box
 operator|.
 name|getOffsetHeight
 argument_list|()
+operator|+
+literal|5
 expr_stmt|;
+comment|// 5px for shadow margin
 block|}
 return|return
 name|total

@@ -145,6 +145,11 @@ name|String
 name|table
 parameter_list|()
 function_decl|;
+DECL|method|name ()
+name|String
+name|name
+parameter_list|()
+function_decl|;
 DECL|method|summary ()
 name|String
 name|summary
@@ -168,6 +173,11 @@ function_decl|;
 DECL|method|message ()
 name|String
 name|message
+parameter_list|()
+function_decl|;
+DECL|method|button ()
+name|String
+name|button
 parameter_list|()
 function_decl|;
 block|}

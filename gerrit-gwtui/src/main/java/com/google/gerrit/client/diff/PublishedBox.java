@@ -198,6 +198,18 @@ name|HTMLPanel
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
+import|;
+end_import
+
 begin_comment
 comment|/** An HtmlPanel for displaying a published comment */
 end_comment
@@ -245,11 +257,14 @@ specifier|private
 name|DraftBox
 name|replyBox
 decl_stmt|;
-DECL|method|PublishedBox (CodeMirrorDemo host, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor)
+DECL|method|PublishedBox ( CodeMirrorDemo host, CodeMirror cm, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor)
 name|PublishedBox
 parameter_list|(
 name|CodeMirrorDemo
 name|host
+parameter_list|,
+name|CodeMirror
+name|cm
 parameter_list|,
 name|PatchSet
 operator|.
@@ -266,6 +281,8 @@ block|{
 name|super
 argument_list|(
 name|host
+argument_list|,
+name|cm
 argument_list|,
 name|uiBinder
 argument_list|,
