@@ -689,13 +689,6 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
-name|visibleLen
-operator|=
-name|text
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|embedMovie ()
