@@ -543,6 +543,17 @@ specifier|private
 name|Element
 name|swf
 decl_stmt|;
+DECL|method|CopyableLabel ()
+specifier|public
+name|CopyableLabel
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Create a new label    *    * @param str initial content    */
 DECL|method|CopyableLabel (final String str)
 specifier|public
