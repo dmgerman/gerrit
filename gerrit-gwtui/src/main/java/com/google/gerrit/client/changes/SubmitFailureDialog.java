@@ -112,12 +112,14 @@ end_import
 
 begin_class
 DECL|class|SubmitFailureDialog
+specifier|public
 class|class
 name|SubmitFailureDialog
 extends|extends
 name|ErrorDialog
 block|{
 DECL|method|isConflict (Throwable err)
+specifier|public
 specifier|static
 name|boolean
 name|isConflict
@@ -145,6 +147,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|SubmitFailureDialog (String msg)
+specifier|public
 name|SubmitFailureDialog
 parameter_list|(
 name|String
