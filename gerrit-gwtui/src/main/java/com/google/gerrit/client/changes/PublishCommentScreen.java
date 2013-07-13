@@ -430,22 +430,6 @@ name|core
 operator|.
 name|client
 operator|.
-name|JavaScriptObject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
 name|JsArrayString
 import|;
 end_import
@@ -2710,11 +2694,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|data
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 specifier|final
@@ -2860,67 +2839,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-DECL|class|ReviewInput
-specifier|private
-specifier|static
-class|class
-name|ReviewInput
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|create ()
-specifier|static
-name|ReviewInput
-name|create
-parameter_list|()
-block|{
-return|return
-operator|(
-name|ReviewInput
-operator|)
-name|createObject
-argument_list|()
-return|;
-block|}
-DECL|method|message (String m)
-specifier|final
-specifier|native
-name|void
-name|message
-parameter_list|(
-name|String
-name|m
-parameter_list|)
-comment|/*-{ if(m)this.message=m; }-*/
-function_decl|;
-DECL|method|label (String n, short v)
-specifier|final
-specifier|native
-name|void
-name|label
-parameter_list|(
-name|String
-name|n
-parameter_list|,
-name|short
-name|v
-parameter_list|)
-comment|/*-{ this.labels[n]=v; }-*/
-function_decl|;
-DECL|method|init ()
-specifier|final
-specifier|native
-name|void
-name|init
-parameter_list|()
-comment|/*-{       this.labels = {};       this.strict_labels = true;       this.drafts = 'PUBLISH';     }-*/
-function_decl|;
-DECL|method|ReviewInput ()
-specifier|protected
-name|ReviewInput
-parameter_list|()
-block|{     }
 block|}
 DECL|method|submit ()
 specifier|private
