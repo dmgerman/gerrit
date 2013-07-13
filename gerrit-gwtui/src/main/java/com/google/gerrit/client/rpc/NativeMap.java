@@ -143,6 +143,29 @@ parameter_list|>
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|create ()
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+extends|extends
+name|JavaScriptObject
+parameter_list|>
+name|NativeMap
+argument_list|<
+name|T
+argument_list|>
+name|create
+parameter_list|()
+block|{
+return|return
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+return|;
+block|}
 comment|/**    * Loop through the result map's entries and copy the key strings into the    * "name" property of the corresponding child object. This only runs on the    * top level map of the result, and requires the children to be JSON objects    * and not a JSON primitive (e.g. boolean or string).    */
 specifier|public
 specifier|static
