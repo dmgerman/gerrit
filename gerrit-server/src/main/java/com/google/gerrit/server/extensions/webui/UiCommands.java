@@ -196,7 +196,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ChildCollection
+name|RestCollection
 import|;
 end_import
 
@@ -509,7 +509,7 @@ block|}
 argument_list|)
 return|;
 block|}
-DECL|method|from ( ChildCollection<?, R> collection, R resource, EnumSet<UiCommand.Place> places)
+DECL|method|from ( RestCollection<?, R> collection, R resource, EnumSet<UiCommand.Place> places)
 specifier|public
 specifier|static
 parameter_list|<
@@ -523,7 +523,7 @@ name|UiCommandDetail
 argument_list|>
 name|from
 parameter_list|(
-name|ChildCollection
+name|RestCollection
 argument_list|<
 name|?
 argument_list|,
