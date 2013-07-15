@@ -52,13 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|net.codemirror.addon
+DECL|package|net.codemirror.keymap
 package|package
 name|net
 operator|.
 name|codemirror
 operator|.
-name|addon
+name|keymap
 package|;
 end_package
 
@@ -128,42 +128,25 @@ name|DoNotEmbed
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|ExternalTextResource
-import|;
-end_import
-
 begin_interface
-DECL|interface|Addons
+DECL|interface|Keymap
 specifier|public
 interface|interface
-name|Addons
+name|Keymap
 extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
-specifier|public
 specifier|static
 specifier|final
-name|Addons
+name|Keymap
 name|I
 init|=
 name|GWT
 operator|.
 name|create
 argument_list|(
-name|Addons
+name|Keymap
 operator|.
 name|class
 argument_list|)
@@ -171,71 +154,13 @@ decl_stmt|;
 annotation|@
 name|Source
 argument_list|(
-literal|"selection/mark-selection.js"
+literal|"vim.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
-DECL|method|mark_selection ()
+DECL|method|vim ()
 name|DataResource
-name|mark_selection
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"edit/trailingspace.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|trailingspace ()
-name|DataResource
-name|trailingspace
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"dialog/dialog.css"
-argument_list|)
-DECL|method|dialogCss ()
-name|ExternalTextResource
-name|dialogCss
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"dialog/dialog.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|dialog ()
-name|DataResource
-name|dialog
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"search/searchcursor.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|searchcursor ()
-name|DataResource
-name|searchcursor
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"search/search.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|search ()
-name|DataResource
-name|search
+name|vim
 parameter_list|()
 function_decl|;
 block|}
