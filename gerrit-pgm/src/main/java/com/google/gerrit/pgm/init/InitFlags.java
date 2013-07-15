@@ -160,6 +160,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/** Global variables used by the 'init' command. */
 end_comment
@@ -196,20 +206,44 @@ specifier|final
 name|FileBasedConfig
 name|sec
 decl_stmt|;
+DECL|field|installPlugins
+specifier|public
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|installPlugins
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitFlags (final SitePaths site)
+DECL|method|InitFlags (final SitePaths site, final @InstallPlugins List<String> installPlugins)
 name|InitFlags
 parameter_list|(
 specifier|final
 name|SitePaths
 name|site
+parameter_list|,
+specifier|final
+annotation|@
+name|InstallPlugins
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|installPlugins
 parameter_list|)
 throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
+name|this
+operator|.
+name|installPlugins
+operator|=
+name|installPlugins
+expr_stmt|;
 name|cfg
 operator|=
 operator|new
