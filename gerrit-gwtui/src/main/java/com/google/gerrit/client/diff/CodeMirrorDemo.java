@@ -1785,14 +1785,11 @@ literal|"scroll"
 argument_list|,
 name|doScroll
 argument_list|(
-name|otherCM
-argument_list|(
 name|cm
 argument_list|)
 argument_list|)
-argument_list|)
 expr_stmt|;
-comment|/**      * TODO: Trying to prevent right click from updating the cursor.      * Doesn't seem to work for now.      */
+comment|/**      * Trying to prevent right click from updating the cursor.      *      * TODO: Change to listen on "contextmenu" instead. Latest CM has      * provided a patch that will hopefully make this work.      */
 name|cm
 operator|.
 name|on
@@ -1890,7 +1887,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: Examine if a better way exists.
+comment|/**      * TODO: Maybe remove this after updating CM to HEAD. The latest VIM mode      * doesn't enter INSERT mode when document is read only.      */
 for|for
 control|(
 name|String
@@ -2562,6 +2559,13 @@ name|getContentType
 argument_list|(
 name|meta
 argument_list|)
+argument_list|)
+operator|.
+name|set
+argument_list|(
+literal|"lineWrapping"
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|set
@@ -3271,14 +3275,13 @@ return|return
 name|box
 return|;
 block|}
-DECL|method|addCommentBox (CommentInfo info, final CommentBox box)
+DECL|method|addCommentBox (CommentInfo info, CommentBox box)
 name|CommentBox
 name|addCommentBox
 parameter_list|(
 name|CommentInfo
 name|info
 parameter_list|,
-specifier|final
 name|CommentBox
 name|box
 parameter_list|)
@@ -3314,7 +3317,7 @@ decl_stmt|;
 name|CodeMirror
 name|other
 init|=
-name|otherCM
+name|otherCm
 argument_list|(
 name|cm
 argument_list|)
@@ -3365,7 +3368,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Estimated height at 21px, fixed by deferring after display
+comment|// Estimated height at 28px, fixed by deferring after display
 name|manager
 operator|=
 operator|new
@@ -3384,7 +3387,7 @@ argument_list|()
 argument_list|,
 name|line
 argument_list|,
-literal|21
+literal|28
 argument_list|,
 name|Unit
 operator|.
@@ -3475,7 +3478,7 @@ argument_list|()
 argument_list|,
 name|lineToPad
 argument_list|,
-literal|21
+literal|28
 argument_list|,
 name|Unit
 operator|.
@@ -3767,7 +3770,17 @@ range|:
 name|sorted
 control|)
 block|{
-specifier|final
+name|CodeMirror
+name|cm
+init|=
+name|getCmFromSide
+argument_list|(
+name|info
+operator|.
+name|side
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|PublishedBox
 name|box
 init|=
@@ -3775,6 +3788,8 @@ operator|new
 name|PublishedBox
 argument_list|(
 name|this
+argument_list|,
+name|cm
 argument_list|,
 name|revision
 argument_list|,
@@ -3822,13 +3837,7 @@ decl_stmt|;
 name|LineHandle
 name|handle
 init|=
-name|getCmFromSide
-argument_list|(
-name|info
-operator|.
-name|side
-argument_list|()
-argument_list|)
+name|cm
 operator|.
 name|getLineHandle
 argument_list|(
@@ -3887,7 +3896,6 @@ range|:
 name|sorted
 control|)
 block|{
-specifier|final
 name|DraftBox
 name|box
 init|=
@@ -4102,11 +4110,13 @@ if|if
 condition|(
 name|deltaBefore
 operator|<
-literal|0
+operator|-
+name|context
 operator|||
 name|deltaAfter
 operator|<
-literal|0
+operator|-
+name|context
 condition|)
 block|{
 name|temp
@@ -4483,10 +4493,10 @@ return|return
 name|bar
 return|;
 block|}
-DECL|method|otherCM (CodeMirror me)
+DECL|method|otherCm (CodeMirror me)
 specifier|private
 name|CodeMirror
-name|otherCM
+name|otherCm
 parameter_list|(
 name|CodeMirror
 name|me
@@ -4870,6 +4880,8 @@ name|nextLine
 operator|-
 literal|1
 argument_list|,
+literal|1.1
+operator|*
 name|cnt
 argument_list|,
 name|Unit
@@ -4880,7 +4892,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPaddingWidget (CodeMirror cm, String style, int line, int height, Unit unit, Integer index)
+DECL|method|addPaddingWidget (CodeMirror cm, String style, int line, double height, Unit unit, Integer index)
 specifier|private
 name|LineWidgetElementPair
 name|addPaddingWidget
@@ -4894,7 +4906,7 @@ parameter_list|,
 name|int
 name|line
 parameter_list|,
-name|int
+name|double
 name|height
 parameter_list|,
 name|Unit
@@ -5020,7 +5032,7 @@ specifier|final
 name|CodeMirror
 name|other
 init|=
-name|otherCM
+name|otherCm
 argument_list|(
 name|cm
 argument_list|)
@@ -5035,17 +5047,64 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|// Prevent feedback loop, Chrome seems fine but Firefox chokes.
+name|double
+name|now
+init|=
+operator|(
+name|double
+operator|)
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
 name|cm
+operator|.
+name|getScrollSetBy
+argument_list|()
+operator|==
+name|other
+operator|&&
+name|cm
+operator|.
+name|getScrollSetAt
+argument_list|()
+operator|+
+literal|50
+operator|>
+name|now
+condition|)
+block|{
+return|return;
+block|}
+name|other
 operator|.
 name|scrollToY
 argument_list|(
-name|other
+name|cm
 operator|.
 name|getScrollInfo
 argument_list|()
 operator|.
 name|getTop
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|other
+operator|.
+name|setScrollSetBy
+argument_list|(
+name|cm
+argument_list|)
+expr_stmt|;
+name|other
+operator|.
+name|setScrollSetAt
+argument_list|(
+name|now
 argument_list|)
 expr_stmt|;
 block|}
@@ -5066,7 +5125,7 @@ specifier|final
 name|CodeMirror
 name|other
 init|=
-name|otherCM
+name|otherCm
 argument_list|(
 name|cm
 argument_list|)
@@ -5845,12 +5904,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|onKeyPress (final KeyPressEvent event)
+DECL|method|onKeyPress (KeyPressEvent event)
 specifier|public
 name|void
 name|onKeyPress
 parameter_list|(
-specifier|final
 name|KeyPressEvent
 name|event
 parameter_list|)

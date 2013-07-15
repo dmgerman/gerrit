@@ -594,6 +594,48 @@ name|getScrollInfo
 parameter_list|()
 comment|/*-{     return this.getScrollInfo();   }-*/
 function_decl|;
+DECL|method|getScrollSetBy ()
+specifier|public
+specifier|final
+specifier|native
+name|CodeMirror
+name|getScrollSetBy
+parameter_list|()
+comment|/*-{     return this.state.scrollSetBy;   }-*/
+function_decl|;
+DECL|method|setScrollSetBy (CodeMirror cm)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setScrollSetBy
+parameter_list|(
+name|CodeMirror
+name|cm
+parameter_list|)
+comment|/*-{     this.state.scrollSetBy = cm;   }-*/
+function_decl|;
+DECL|method|getScrollSetAt ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|getScrollSetAt
+parameter_list|()
+comment|/*-{     return this.state.scrollSetAt;   }-*/
+function_decl|;
+DECL|method|setScrollSetAt (double when)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setScrollSetAt
+parameter_list|(
+name|double
+name|when
+parameter_list|)
+comment|/*-{     this.state.scrollSetAt = when;   }-*/
+function_decl|;
 DECL|method|on (String event, Runnable thunk)
 specifier|public
 specifier|final
@@ -609,6 +651,7 @@ name|thunk
 parameter_list|)
 comment|/*-{     this.on(event, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
 function_decl|;
+comment|/** TODO: Break this line after updating GWT */
 DECL|method|on (String event, EventHandler handler)
 specifier|public
 specifier|final
