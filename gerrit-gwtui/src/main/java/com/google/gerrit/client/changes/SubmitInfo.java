@@ -100,6 +100,7 @@ end_import
 
 begin_class
 DECL|class|SubmitInfo
+specifier|public
 class|class
 name|SubmitInfo
 extends|extends
