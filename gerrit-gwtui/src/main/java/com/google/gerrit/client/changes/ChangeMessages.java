@@ -215,6 +215,17 @@ name|int
 name|deletions
 parameter_list|)
 function_decl|;
+DECL|method|patchTableSize_LongModify (int insertions, int deletions)
+name|String
+name|patchTableSize_LongModify
+parameter_list|(
+name|int
+name|insertions
+parameter_list|,
+name|int
+name|deletions
+parameter_list|)
+function_decl|;
 DECL|method|patchTableSize_Lines (@luralCount int insertions)
 name|String
 name|patchTableSize_Lines

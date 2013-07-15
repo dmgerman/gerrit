@@ -115,6 +115,16 @@ name|String
 name|statusLongDraft
 parameter_list|()
 function_decl|;
+DECL|method|readyToSubmit ()
+name|String
+name|readyToSubmit
+parameter_list|()
+function_decl|;
+DECL|method|mergeConflict ()
+name|String
+name|mergeConflict
+parameter_list|()
+function_decl|;
 DECL|method|myDashboardTitle ()
 name|String
 name|myDashboardTitle
@@ -250,9 +260,19 @@ name|String
 name|nextPatchSet
 parameter_list|()
 function_decl|;
+DECL|method|keyReload ()
+name|String
+name|keyReload
+parameter_list|()
+function_decl|;
 DECL|method|keyPublishComments ()
 name|String
 name|keyPublishComments
+parameter_list|()
+function_decl|;
+DECL|method|keyEditTopic ()
+name|String
+name|keyEditTopic
 parameter_list|()
 function_decl|;
 DECL|method|patchTableColumnName ()
@@ -293,6 +313,11 @@ function_decl|;
 DECL|method|patchTableDownloadPostImage ()
 name|String
 name|patchTableDownloadPostImage
+parameter_list|()
+function_decl|;
+DECL|method|patchTableBinary ()
+name|String
+name|patchTableBinary
 parameter_list|()
 function_decl|;
 DECL|method|commitMessage ()

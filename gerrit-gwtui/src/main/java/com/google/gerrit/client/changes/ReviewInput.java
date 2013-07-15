@@ -90,6 +90,24 @@ name|ReviewInput
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|enum|NotifyHandling
+specifier|public
+specifier|static
+enum|enum
+name|NotifyHandling
+block|{
+DECL|enumConstant|NONE
+DECL|enumConstant|OWNER
+DECL|enumConstant|OWNER_REVIEWERS
+DECL|enumConstant|ALL
+name|NONE
+block|,
+name|OWNER
+block|,
+name|OWNER_REVIEWERS
+block|,
+name|ALL
+block|;   }
 DECL|method|create ()
 specifier|public
 specifier|static
@@ -141,6 +159,37 @@ name|short
 name|v
 parameter_list|)
 comment|/*-{ this.labels[n]=v; }-*/
+function_decl|;
+DECL|method|notify (NotifyHandling e)
+specifier|public
+specifier|final
+name|void
+name|notify
+parameter_list|(
+name|NotifyHandling
+name|e
+parameter_list|)
+block|{
+name|_notify
+argument_list|(
+name|e
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|_notify (String n)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|_notify
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ this.notify=n; }-*/
 function_decl|;
 DECL|method|init ()
 specifier|private

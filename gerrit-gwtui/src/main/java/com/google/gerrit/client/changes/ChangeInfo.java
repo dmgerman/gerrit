@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|diff
+operator|.
+name|FileInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|NativeMap
@@ -127,6 +143,22 @@ operator|.
 name|rpc
 operator|.
 name|Natives
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|LabelValue
 import|;
 end_import
 
@@ -264,6 +296,26 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeSet
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeInfo
 specifier|public
@@ -281,13 +333,13 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|labels0
+name|all_labels
 argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
-name|labels0
+name|all_labels
 argument_list|()
 operator|.
 name|copyKeysIntoChildren
@@ -468,7 +520,7 @@ name|labels
 parameter_list|()
 block|{
 return|return
-name|labels0
+name|all_labels
 argument_list|()
 operator|.
 name|keySet
@@ -601,15 +653,15 @@ name|_sortkey
 parameter_list|()
 comment|/*-{ return this._sortkey; }-*/
 function_decl|;
-DECL|method|labels0 ()
-specifier|private
+DECL|method|all_labels ()
+specifier|public
 specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
 name|LabelInfo
 argument_list|>
-name|labels0
+name|all_labels
 parameter_list|()
 comment|/*-{ return this.labels; }-*/
 function_decl|;
@@ -625,6 +677,51 @@ name|n
 parameter_list|)
 comment|/*-{ return this.labels[n]; }-*/
 function_decl|;
+DECL|method|current_revision ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|current_revision
+parameter_list|()
+comment|/*-{ return this.current_revision; }-*/
+function_decl|;
+DECL|method|revisions ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|RevisionInfo
+argument_list|>
+name|revisions
+parameter_list|()
+comment|/*-{ return this.revisions; }-*/
+function_decl|;
+DECL|method|revision (String n)
+specifier|public
+specifier|final
+specifier|native
+name|RevisionInfo
+name|revision
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.revisions[n]; }-*/
+function_decl|;
+DECL|method|messages ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|MessageInfo
+argument_list|>
+name|messages
+parameter_list|()
+comment|/*-{ return this.messages; }-*/
+function_decl|;
 DECL|method|has_permitted_labels ()
 specifier|public
 specifier|final
@@ -634,38 +731,18 @@ name|has_permitted_labels
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('permitted_labels') }-*/
 function_decl|;
-DECL|method|_permitted_labels ()
-specifier|private
+DECL|method|permitted_labels ()
+specifier|public
 specifier|final
 specifier|native
 name|NativeMap
 argument_list|<
-name|JavaScriptObject
-argument_list|>
-name|_permitted_labels
-parameter_list|()
-comment|/*-{ return this.permitted_labels; }-*/
-function_decl|;
-DECL|method|permitted_labels ()
-specifier|public
-specifier|final
-name|Set
-argument_list|<
-name|String
+name|JsArrayString
 argument_list|>
 name|permitted_labels
 parameter_list|()
-block|{
-return|return
-name|Natives
-operator|.
-name|keys
-argument_list|(
-name|_permitted_labels
-argument_list|()
-argument_list|)
-return|;
-block|}
+comment|/*-{ return this.permitted_labels; }-*/
+function_decl|;
 DECL|method|permitted_values (String n)
 specifier|public
 specifier|final
@@ -689,6 +766,27 @@ argument_list|>
 name|removable_reviewers
 parameter_list|()
 comment|/*-{ return this.removable_reviewers; }-*/
+function_decl|;
+DECL|method|has_actions ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_actions
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('actions') }-*/
+function_decl|;
+DECL|method|actions ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|ActionInfo
+argument_list|>
+name|actions
+parameter_list|()
+comment|/*-{ return this.actions; }-*/
 function_decl|;
 DECL|method|_number ()
 specifier|final
@@ -854,6 +952,76 @@ name|all
 parameter_list|()
 comment|/*-{ return this.all; }-*/
 function_decl|;
+DECL|method|for_user (int user)
+specifier|public
+specifier|final
+name|ApprovalInfo
+name|for_user
+parameter_list|(
+name|int
+name|user
+parameter_list|)
+block|{
+name|JsArray
+argument_list|<
+name|ApprovalInfo
+argument_list|>
+name|all
+init|=
+name|all
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|all
+operator|!=
+literal|null
+operator|&&
+name|i
+operator|<
+name|all
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|all
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|_account_id
+argument_list|()
+operator|==
+name|user
+condition|)
+block|{
+return|return
+name|all
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+return|;
+block|}
+block|}
+return|return
+literal|null
+return|;
+block|}
 DECL|method|_values ()
 specifier|private
 specifier|final
@@ -915,6 +1083,132 @@ name|_value
 parameter_list|()
 comment|/*-{       if (this.value) return this.value;       if (this.disliked) return -1;       if (this.recommended) return 1;       return 0;     }-*/
 function_decl|;
+DECL|method|max_value ()
+specifier|public
+specifier|final
+name|String
+name|max_value
+parameter_list|()
+block|{
+return|return
+name|LabelValue
+operator|.
+name|formatValue
+argument_list|(
+name|value_set
+argument_list|()
+operator|.
+name|last
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|value_set ()
+specifier|public
+specifier|final
+name|SortedSet
+argument_list|<
+name|Short
+argument_list|>
+name|value_set
+parameter_list|()
+block|{
+name|SortedSet
+argument_list|<
+name|Short
+argument_list|>
+name|values
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|Short
+argument_list|>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|v
+range|:
+name|values
+argument_list|()
+control|)
+block|{
+name|values
+operator|.
+name|add
+argument_list|(
+name|parseValue
+argument_list|(
+name|v
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|values
+return|;
+block|}
+DECL|method|parseValue (String formatted)
+specifier|public
+specifier|static
+specifier|final
+name|short
+name|parseValue
+parameter_list|(
+name|String
+name|formatted
+parameter_list|)
+block|{
+if|if
+condition|(
+name|formatted
+operator|.
+name|startsWith
+argument_list|(
+literal|"+"
+argument_list|)
+condition|)
+block|{
+name|formatted
+operator|=
+name|formatted
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|formatted
+operator|.
+name|startsWith
+argument_list|(
+literal|" "
+argument_list|)
+condition|)
+block|{
+name|formatted
+operator|=
+name|formatted
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|Short
+operator|.
+name|parseShort
+argument_list|(
+name|formatted
+argument_list|)
+return|;
+block|}
 DECL|method|LabelInfo ()
 specifier|protected
 name|LabelInfo
@@ -945,11 +1239,358 @@ specifier|native
 name|short
 name|value
 parameter_list|()
-comment|/*-{ return this.value; }-*/
+comment|/*-{ return this.value || 0; }-*/
 function_decl|;
 DECL|method|ApprovalInfo ()
 specifier|protected
 name|ApprovalInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|RevisionInfo
+specifier|public
+specifier|static
+class|class
+name|RevisionInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|_number ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|_number
+parameter_list|()
+comment|/*-{ return this._number; }-*/
+function_decl|;
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|name
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|draft ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|draft
+parameter_list|()
+comment|/*-{ return this.draft || false; }-*/
+function_decl|;
+DECL|method|commit ()
+specifier|public
+specifier|final
+specifier|native
+name|CommitInfo
+name|commit
+parameter_list|()
+comment|/*-{ return this.commit; }-*/
+function_decl|;
+DECL|method|set_commit (CommitInfo c)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|set_commit
+parameter_list|(
+name|CommitInfo
+name|c
+parameter_list|)
+comment|/*-{ this.commit = c; }-*/
+function_decl|;
+DECL|method|has_files ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_files
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('files') }-*/
+function_decl|;
+DECL|method|files ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|FileInfo
+argument_list|>
+name|files
+parameter_list|()
+comment|/*-{ return this.files; }-*/
+function_decl|;
+DECL|method|has_actions ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_actions
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('actions') }-*/
+function_decl|;
+DECL|method|actions ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|ActionInfo
+argument_list|>
+name|actions
+parameter_list|()
+comment|/*-{ return this.actions; }-*/
+function_decl|;
+DECL|method|RevisionInfo ()
+specifier|protected
+name|RevisionInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|CommitInfo
+specifier|public
+specifier|static
+class|class
+name|CommitInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|commit ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|commit
+parameter_list|()
+comment|/*-{ return this.commit; }-*/
+function_decl|;
+DECL|method|author ()
+specifier|public
+specifier|final
+specifier|native
+name|GitPerson
+name|author
+parameter_list|()
+comment|/*-{ return this.author; }-*/
+function_decl|;
+DECL|method|committer ()
+specifier|public
+specifier|final
+specifier|native
+name|GitPerson
+name|committer
+parameter_list|()
+comment|/*-{ return this.committer; }-*/
+function_decl|;
+DECL|method|subject ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|subject
+parameter_list|()
+comment|/*-{ return this.subject; }-*/
+function_decl|;
+DECL|method|message ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|message
+parameter_list|()
+comment|/*-{ return this.message; }-*/
+function_decl|;
+DECL|method|CommitInfo ()
+specifier|protected
+name|CommitInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|GitPerson
+specifier|public
+specifier|static
+class|class
+name|GitPerson
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|name
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|email ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|email
+parameter_list|()
+comment|/*-{ return this.email; }-*/
+function_decl|;
+DECL|method|dateRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|dateRaw
+parameter_list|()
+comment|/*-{ return this.date; }-*/
+function_decl|;
+DECL|method|date ()
+specifier|public
+specifier|final
+name|Timestamp
+name|date
+parameter_list|()
+block|{
+return|return
+name|JavaSqlTimestamp_JsonSerializer
+operator|.
+name|parseTimestamp
+argument_list|(
+name|dateRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|GitPerson ()
+specifier|protected
+name|GitPerson
+parameter_list|()
+block|{     }
+block|}
+DECL|class|ActionInfo
+specifier|public
+specifier|static
+class|class
+name|ActionInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|id ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|id
+parameter_list|()
+comment|/*-{ return this.id; }-*/
+function_decl|;
+DECL|method|method ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|method
+parameter_list|()
+comment|/*-{ return this.method; }-*/
+function_decl|;
+DECL|method|label ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|label
+parameter_list|()
+comment|/*-{ return this.label; }-*/
+function_decl|;
+DECL|method|title ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|title
+parameter_list|()
+comment|/*-{ return this.title; }-*/
+function_decl|;
+DECL|method|enabled ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|enabled
+parameter_list|()
+comment|/*-{ return this.enabled || false; }-*/
+function_decl|;
+DECL|method|confirmation_message ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|confirmation_message
+parameter_list|()
+comment|/*-{ return this.confirmation_message; }-*/
+function_decl|;
+DECL|method|ActionInfo ()
+specifier|protected
+name|ActionInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|MessageInfo
+specifier|public
+specifier|static
+class|class
+name|MessageInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|author ()
+specifier|public
+specifier|final
+specifier|native
+name|AccountInfo
+name|author
+parameter_list|()
+comment|/*-{ return this.author; }-*/
+function_decl|;
+DECL|method|message ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|message
+parameter_list|()
+comment|/*-{ return this.message; }-*/
+function_decl|;
+DECL|method|dateRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|dateRaw
+parameter_list|()
+comment|/*-{ return this.date; }-*/
+function_decl|;
+DECL|method|date ()
+specifier|public
+specifier|final
+name|Timestamp
+name|date
+parameter_list|()
+block|{
+return|return
+name|JavaSqlTimestamp_JsonSerializer
+operator|.
+name|parseTimestamp
+argument_list|(
+name|dateRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|MessageInfo ()
+specifier|protected
+name|MessageInfo
 parameter_list|()
 block|{     }
 block|}

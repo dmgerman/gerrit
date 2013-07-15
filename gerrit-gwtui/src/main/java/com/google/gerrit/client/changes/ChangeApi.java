@@ -1073,7 +1073,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|change (int id)
-specifier|private
+specifier|public
 specifier|static
 name|RestApi
 name|change
