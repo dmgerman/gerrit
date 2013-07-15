@@ -191,6 +191,48 @@ name|value
 parameter_list|)
 comment|/*-{     this.setOption(option, value);   }-*/
 function_decl|;
+DECL|method|setOption (String option, double value)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setOption
+parameter_list|(
+name|String
+name|option
+parameter_list|,
+name|double
+name|value
+parameter_list|)
+comment|/*-{     this.setOption(option, value);   }-*/
+function_decl|;
+DECL|method|setOption (String option, JavaScriptObject val)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setOption
+parameter_list|(
+name|String
+name|option
+parameter_list|,
+name|JavaScriptObject
+name|val
+parameter_list|)
+comment|/*-{     this.setOption(option, val);   }-*/
+function_decl|;
+DECL|method|setOptionToInfinity (String option)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setOptionToInfinity
+parameter_list|(
+name|String
+name|option
+parameter_list|)
+comment|/*-{     this.setOption(option, Infinity);   }-*/
+function_decl|;
 DECL|method|setValue (String v)
 specifier|public
 specifier|final
@@ -865,6 +907,33 @@ name|String
 name|name
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.keyMap[category][name] = undefined;   }-*/
+function_decl|;
+DECL|method|defineVimEx (String name, String prefix, Runnable thunk)
+specifier|public
+specifier|static
+specifier|native
+name|void
+name|defineVimEx
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|prefix
+parameter_list|,
+name|Runnable
+name|thunk
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.Vim.defineEx(name, prefix, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+function_decl|;
+DECL|method|getGutterElement ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getGutterElement
+parameter_list|()
+comment|/*-{     return this.getGutterElement();   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
