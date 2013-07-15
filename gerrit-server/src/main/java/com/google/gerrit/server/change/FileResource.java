@@ -237,6 +237,19 @@ return|return
 name|key
 return|;
 block|}
+DECL|method|isCacheable ()
+specifier|public
+name|boolean
+name|isCacheable
+parameter_list|()
+block|{
+return|return
+name|rev
+operator|.
+name|isCacheable
+argument_list|()
+return|;
+block|}
 DECL|method|getAccountId ()
 name|Account
 operator|.

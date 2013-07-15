@@ -232,6 +232,13 @@ specifier|final
 name|PatchSet
 name|ps
 decl_stmt|;
+DECL|field|cacheable
+specifier|private
+name|boolean
+name|cacheable
+init|=
+literal|true
+decl_stmt|;
 DECL|method|RevisionResource (ChangeResource change, PatchSet ps)
 specifier|public
 name|RevisionResource
@@ -255,6 +262,16 @@ name|ps
 operator|=
 name|ps
 expr_stmt|;
+block|}
+DECL|method|isCacheable ()
+specifier|public
+name|boolean
+name|isCacheable
+parameter_list|()
+block|{
+return|return
+name|cacheable
+return|;
 block|}
 DECL|method|getChangeResource ()
 specifier|public
@@ -333,6 +350,19 @@ argument_list|()
 operator|.
 name|getCurrentUser
 argument_list|()
+return|;
+block|}
+DECL|method|doNotCache ()
+name|RevisionResource
+name|doNotCache
+parameter_list|()
+block|{
+name|cacheable
+operator|=
+literal|false
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 block|}
