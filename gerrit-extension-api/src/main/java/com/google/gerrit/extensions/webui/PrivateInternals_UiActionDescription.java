@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.extensions.webui
 package|package
 name|com
 operator|.
@@ -60,47 +60,73 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|data
+name|webui
 package|;
 end_package
 
 begin_comment
-comment|/** Detail necessary to display an action. */
+comment|/**  * Internal implementation helper for Gerrit Code Review server.  *<p>  * Extensions and plugins should not invoke this class.  */
 end_comment
 
 begin_class
-DECL|class|UiCommandDetail
+DECL|class|PrivateInternals_UiActionDescription
 specifier|public
 class|class
-name|UiCommandDetail
+name|PrivateInternals_UiActionDescription
 block|{
-DECL|field|id
+DECL|method|setMethod (UiAction.Description d, String method)
 specifier|public
-name|String
-name|id
-decl_stmt|;
-DECL|field|method
-specifier|public
+specifier|static
+name|void
+name|setMethod
+parameter_list|(
+name|UiAction
+operator|.
+name|Description
+name|d
+parameter_list|,
 name|String
 name|method
-decl_stmt|;
-DECL|field|label
+parameter_list|)
+block|{
+name|d
+operator|.
+name|setMethod
+argument_list|(
+name|method
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setId (UiAction.Description d, String id)
 specifier|public
+specifier|static
+name|void
+name|setId
+parameter_list|(
+name|UiAction
+operator|.
+name|Description
+name|d
+parameter_list|,
 name|String
-name|label
-decl_stmt|;
-DECL|field|title
-specifier|public
-name|String
-name|title
-decl_stmt|;
-DECL|field|enabled
-specifier|public
-name|boolean
-name|enabled
-decl_stmt|;
+name|id
+parameter_list|)
+block|{
+name|d
+operator|.
+name|setId
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|PrivateInternals_UiActionDescription ()
+specifier|private
+name|PrivateInternals_UiActionDescription
+parameter_list|()
+block|{   }
 block|}
 end_class
 

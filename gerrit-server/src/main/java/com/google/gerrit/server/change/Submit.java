@@ -218,7 +218,7 @@ name|extensions
 operator|.
 name|webui
 operator|.
-name|UiCommand
+name|UiAction
 import|;
 end_import
 
@@ -556,27 +556,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|EnumSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -593,7 +573,7 @@ argument_list|,
 name|Input
 argument_list|>
 implements|,
-name|UiCommand
+name|UiAction
 argument_list|<
 name|RevisionResource
 argument_list|>
@@ -1106,75 +1086,12 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getPlaces ()
+DECL|method|getDescription (RevisionResource resource)
 specifier|public
-name|Set
-argument_list|<
-name|Place
-argument_list|>
-name|getPlaces
-parameter_list|()
-block|{
-return|return
-name|EnumSet
+name|UiAction
 operator|.
-name|of
-argument_list|(
-name|Place
-operator|.
-name|PATCHSET_ACTION_PANEL
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getLabel (RevisionResource resource)
-specifier|public
-name|String
-name|getLabel
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Submit Patch Set %d"
-argument_list|,
-name|resource
-operator|.
-name|getPatchSet
-argument_list|()
-operator|.
-name|getPatchSetId
-argument_list|()
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getTitle (RevisionResource resource)
-specifier|public
-name|String
-name|getTitle
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|isVisible (RevisionResource resource)
-specifier|public
-name|boolean
-name|isVisible
+name|Description
+name|getDescription
 parameter_list|(
 name|RevisionResource
 name|resource
@@ -1194,6 +1111,32 @@ name|currentPatchSetId
 argument_list|()
 decl_stmt|;
 return|return
+operator|new
+name|UiAction
+operator|.
+name|Description
+argument_list|()
+operator|.
+name|setLabel
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Submit Revision %d"
+argument_list|,
+name|resource
+operator|.
+name|getPatchSet
+argument_list|()
+operator|.
+name|getPatchSetId
+argument_list|()
+argument_list|)
+argument_list|)
+operator|.
+name|setVisible
+argument_list|(
 name|resource
 operator|.
 name|getChange
@@ -1218,27 +1161,6 @@ argument_list|(
 name|current
 argument_list|)
 operator|&&
-name|isEnabled
-argument_list|(
-name|resource
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|isEnabled (RevisionResource resource)
-specifier|public
-name|boolean
-name|isEnabled
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-comment|// Enable based on approximation. If the user has permission enable,
-comment|// even if the change has not reached as submittable state according
-comment|// to the project rules.
-return|return
 name|resource
 operator|.
 name|getControl
@@ -1246,21 +1168,7 @@ argument_list|()
 operator|.
 name|canSubmit
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getConfirmationMessage (RevisionResource resource)
-specifier|public
-name|String
-name|getConfirmationMessage
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
-literal|null
+argument_list|)
 return|;
 block|}
 comment|/**    * If the merge was attempted and it failed the system usually writes a    * comment as a ChangeMessage and sets status to NEW. Find the relevant    * message and return it.    */

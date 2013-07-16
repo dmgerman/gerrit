@@ -142,7 +142,7 @@ name|extensions
 operator|.
 name|webui
 operator|.
-name|UiCommand
+name|UiAction
 import|;
 end_import
 
@@ -300,26 +300,6 @@ name|Provider
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|EnumSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
 begin_class
 DECL|class|CherryPick
 class|class
@@ -332,7 +312,7 @@ argument_list|,
 name|Input
 argument_list|>
 implements|,
-name|UiCommand
+name|UiAction
 argument_list|<
 name|RevisionResource
 argument_list|>
@@ -689,86 +669,36 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getPlaces ()
+DECL|method|getDescription (RevisionResource resource)
 specifier|public
-name|Set
-argument_list|<
-name|Place
-argument_list|>
-name|getPlaces
-parameter_list|()
+name|UiAction
+operator|.
+name|Description
+name|getDescription
+parameter_list|(
+name|RevisionResource
+name|resource
+parameter_list|)
 block|{
 return|return
-name|EnumSet
+operator|new
+name|UiAction
 operator|.
-name|of
+name|Description
+argument_list|()
+operator|.
+name|setLabel
 argument_list|(
-name|Place
-operator|.
-name|PATCHSET_ACTION_PANEL
+literal|"Cherry Pick"
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getLabel (RevisionResource resource)
-specifier|public
-name|String
-name|getLabel
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
-literal|"Cherry Pick To"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getTitle (RevisionResource resource)
-specifier|public
-name|String
-name|getTitle
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
+operator|.
+name|setTitle
+argument_list|(
 literal|"Cherry pick change to a different branch"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|isVisible (RevisionResource resource)
-specifier|public
-name|boolean
-name|isVisible
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
-name|isEnabled
-argument_list|(
-name|resource
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|isEnabled (RevisionResource resource)
-specifier|public
-name|boolean
-name|isEnabled
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
+operator|.
+name|setVisible
+argument_list|(
 name|resource
 operator|.
 name|getControl
@@ -779,21 +709,7 @@ argument_list|()
 operator|.
 name|canUpload
 argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getConfirmationMessage (RevisionResource resource)
-specifier|public
-name|String
-name|getConfirmationMessage
-parameter_list|(
-name|RevisionResource
-name|resource
-parameter_list|)
-block|{
-return|return
-literal|null
+argument_list|)
 return|;
 block|}
 block|}

@@ -1521,15 +1521,6 @@ name|enabled
 parameter_list|()
 comment|/*-{ return this.enabled || false; }-*/
 function_decl|;
-DECL|method|confirmation_message ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|confirmation_message
-parameter_list|()
-comment|/*-{ return this.confirmation_message; }-*/
-function_decl|;
 DECL|method|ActionInfo ()
 specifier|protected
 name|ActionInfo
