@@ -911,6 +911,7 @@ function_decl|;
 DECL|method|defineVimEx (String name, String prefix, Runnable thunk)
 specifier|public
 specifier|static
+specifier|final
 specifier|native
 name|void
 name|defineVimEx
@@ -925,6 +926,18 @@ name|Runnable
 name|thunk
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.Vim.defineEx(name, prefix, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+function_decl|;
+DECL|method|moveCursorDown (int numLines)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|moveCursorDown
+parameter_list|(
+name|int
+name|numLines
+parameter_list|)
+comment|/*-{     this.moveV(numLines, "line");   }-*/
 function_decl|;
 DECL|method|getGutterElement ()
 specifier|public
