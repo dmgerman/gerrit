@@ -680,7 +680,7 @@ argument_list|(
 operator|new
 name|ActionButton
 argument_list|(
-name|changeId
+name|info
 argument_list|,
 name|actions
 operator|.
@@ -828,9 +828,9 @@ argument_list|(
 operator|new
 name|ActionButton
 argument_list|(
-name|changeId
+name|info
 argument_list|,
-name|revision
+name|revInfo
 argument_list|,
 name|actions
 operator|.
