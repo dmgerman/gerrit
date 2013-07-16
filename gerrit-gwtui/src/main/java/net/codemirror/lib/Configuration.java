@@ -165,6 +165,18 @@ name|val
 parameter_list|)
 comment|/*-{ this[name] = val; return this; }-*/
 function_decl|;
+DECL|method|setInfinity (String name)
+specifier|public
+specifier|final
+specifier|native
+name|Configuration
+name|setInfinity
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+comment|/*-{ this[name] = Infinity; return this; }-*/
+function_decl|;
 DECL|method|Configuration ()
 specifier|protected
 name|Configuration

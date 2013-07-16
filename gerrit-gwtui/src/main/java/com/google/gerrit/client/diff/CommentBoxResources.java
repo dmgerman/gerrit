@@ -145,24 +145,9 @@ name|String
 name|table
 parameter_list|()
 function_decl|;
-DECL|method|name ()
-name|String
-name|name
-parameter_list|()
-function_decl|;
-DECL|method|summary ()
-name|String
-name|summary
-parameter_list|()
-function_decl|;
 DECL|method|summaryText ()
 name|String
 name|summaryText
-parameter_list|()
-function_decl|;
-DECL|method|date ()
-name|String
-name|date
 parameter_list|()
 function_decl|;
 DECL|method|contentPanel ()
