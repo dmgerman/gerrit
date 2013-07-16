@@ -95,8 +95,42 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
 operator|.
 name|InheritableBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+operator|.
+name|SubmitType
 import|;
 end_import
 
@@ -208,6 +242,15 @@ name|ConfigInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|description ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|description
+parameter_list|()
+comment|/*-{ return this.description }-*/
+function_decl|;
 DECL|method|require_change_id ()
 specifier|public
 specifier|final
@@ -243,6 +286,87 @@ name|InheritedBooleanInfo
 name|use_signed_off_by
 parameter_list|()
 comment|/*-{ return this.use_signed_off_by; }-*/
+function_decl|;
+DECL|method|submit_type ()
+specifier|public
+specifier|final
+name|SubmitType
+name|submit_type
+parameter_list|()
+block|{
+return|return
+name|SubmitType
+operator|.
+name|valueOf
+argument_list|(
+name|submit_typeRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|submit_typeRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|submit_typeRaw
+parameter_list|()
+comment|/*-{ return this.submit_type }-*/
+function_decl|;
+DECL|method|state ()
+specifier|public
+specifier|final
+name|Project
+operator|.
+name|State
+name|state
+parameter_list|()
+block|{
+if|if
+condition|(
+name|stateRaw
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|Project
+operator|.
+name|State
+operator|.
+name|ACTIVE
+return|;
+block|}
+return|return
+name|Project
+operator|.
+name|State
+operator|.
+name|valueOf
+argument_list|(
+name|stateRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|stateRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|stateRaw
+parameter_list|()
+comment|/*-{ return this.state }-*/
+function_decl|;
+DECL|method|max_object_size_limit ()
+specifier|public
+specifier|final
+specifier|native
+name|MaxObjectSizeLimitInfo
+name|max_object_size_limit
+parameter_list|()
+comment|/*-{ return this.max_object_size_limit; }-*/
 function_decl|;
 DECL|method|commentlinks0 ()
 specifier|private
@@ -457,6 +581,21 @@ name|InheritedBooleanInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|create ()
+specifier|public
+specifier|static
+name|InheritedBooleanInfo
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|InheritedBooleanInfo
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
 DECL|method|value ()
 specifier|public
 specifier|final
@@ -501,9 +640,81 @@ name|configured_valueRaw
 parameter_list|()
 comment|/*-{ return this.configured_value }-*/
 function_decl|;
+DECL|method|setConfiguredValue (InheritableBoolean v)
+specifier|public
+specifier|final
+name|void
+name|setConfiguredValue
+parameter_list|(
+name|InheritableBoolean
+name|v
+parameter_list|)
+block|{
+name|setConfiguredValueRaw
+argument_list|(
+name|v
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setConfiguredValueRaw (String v)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setConfiguredValueRaw
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.configured_value=v; }-*/
+function_decl|;
 DECL|method|InheritedBooleanInfo ()
 specifier|protected
 name|InheritedBooleanInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|MaxObjectSizeLimitInfo
+specifier|public
+specifier|static
+class|class
+name|MaxObjectSizeLimitInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|value ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|value
+parameter_list|()
+comment|/*-{ return this.value; }-*/
+function_decl|;
+DECL|method|inherited_value ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|inherited_value
+parameter_list|()
+comment|/*-{ return this.inherited_value; }-*/
+function_decl|;
+DECL|method|configured_value ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|configured_value
+parameter_list|()
+comment|/*-{ return this.configured_value }-*/
+function_decl|;
+DECL|method|MaxObjectSizeLimitInfo ()
+specifier|protected
+name|MaxObjectSizeLimitInfo
 parameter_list|()
 block|{     }
 block|}
