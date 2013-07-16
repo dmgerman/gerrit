@@ -1971,6 +1971,13 @@ argument_list|)
 expr_stmt|;
 name|ConfigInfoCache
 operator|.
+name|add
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
+name|ConfigInfoCache
+operator|.
 name|get
 argument_list|(
 name|info
