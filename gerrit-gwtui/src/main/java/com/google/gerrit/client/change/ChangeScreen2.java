@@ -2710,6 +2710,14 @@ name|setVisible
 argument_list|(
 name|notMergeable
 argument_list|,
+name|info
+operator|.
+name|status
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+operator|&&
 name|hasConflict
 argument_list|)
 expr_stmt|;
