@@ -636,47 +636,26 @@ name|getScrollInfo
 parameter_list|()
 comment|/*-{     return this.getScrollInfo();   }-*/
 function_decl|;
-DECL|method|getScrollSetBy ()
+DECL|method|isScrollSetByOther ()
 specifier|public
 specifier|final
 specifier|native
-name|CodeMirror
-name|getScrollSetBy
+name|boolean
+name|isScrollSetByOther
 parameter_list|()
-comment|/*-{     return this.state.scrollSetBy;   }-*/
+comment|/*-{     return this.state.scrollSetByOther == true;   }-*/
 function_decl|;
-DECL|method|setScrollSetBy (CodeMirror cm)
+DECL|method|setScrollSetByOther (boolean setByOther)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|setScrollSetBy
+name|setScrollSetByOther
 parameter_list|(
-name|CodeMirror
-name|cm
+name|boolean
+name|setByOther
 parameter_list|)
-comment|/*-{     this.state.scrollSetBy = cm;   }-*/
-function_decl|;
-DECL|method|getScrollSetAt ()
-specifier|public
-specifier|final
-specifier|native
-name|double
-name|getScrollSetAt
-parameter_list|()
-comment|/*-{     return this.state.scrollSetAt;   }-*/
-function_decl|;
-DECL|method|setScrollSetAt (double when)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setScrollSetAt
-parameter_list|(
-name|double
-name|when
-parameter_list|)
-comment|/*-{     this.state.scrollSetAt = when;   }-*/
+comment|/*-{     this.state.scrollSetByOther = setByOther;   }-*/
 function_decl|;
 DECL|method|on (String event, Runnable thunk)
 specifier|public
