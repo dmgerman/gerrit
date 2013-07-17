@@ -577,7 +577,15 @@ block|}
 else|else
 block|{
 return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|or
+argument_list|(
 name|r
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
