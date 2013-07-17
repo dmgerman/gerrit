@@ -156,6 +156,7 @@ end_comment
 
 begin_class
 DECL|class|CodeReviewCommit
+specifier|public
 class|class
 name|CodeReviewCommit
 extends|extends
@@ -225,6 +226,7 @@ argument_list|>
 name|missing
 decl_stmt|;
 DECL|method|CodeReviewCommit (final AnyObjectId id)
+specifier|public
 name|CodeReviewCommit
 parameter_list|(
 specifier|final

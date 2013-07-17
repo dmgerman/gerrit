@@ -405,12 +405,15 @@ operator|=
 name|statusText
 expr_stmt|;
 block|}
-DECL|method|set (ChangeInfo info)
+DECL|method|set (ChangeInfo info, boolean current)
 name|boolean
 name|set
 parameter_list|(
 name|ChangeInfo
 name|info
+parameter_list|,
+name|boolean
+name|current
 parameter_list|)
 block|{
 name|List
@@ -586,6 +589,11 @@ block|{
 case|case
 name|NEED
 case|:
+if|if
+condition|(
+name|current
+condition|)
+block|{
 name|statusText
 operator|.
 name|setInnerText
@@ -595,6 +603,7 @@ operator|+
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 name|canSubmit
 operator|=
 literal|false
@@ -606,6 +615,11 @@ case|:
 case|case
 name|IMPOSSIBLE
 case|:
+if|if
+condition|(
+name|current
+condition|)
+block|{
 name|statusText
 operator|.
 name|setInnerText
@@ -615,6 +629,7 @@ operator|+
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 name|canSubmit
 operator|=
 literal|false

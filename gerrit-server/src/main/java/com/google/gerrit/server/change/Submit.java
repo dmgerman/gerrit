@@ -2032,7 +2032,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|status (Change change)
-specifier|private
 specifier|static
 name|String
 name|status

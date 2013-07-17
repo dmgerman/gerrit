@@ -1585,6 +1585,38 @@ name|MessageInfo
 parameter_list|()
 block|{     }
 block|}
+DECL|class|MergeableInfo
+specifier|public
+specifier|static
+class|class
+name|MergeableInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|submit_type ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|submit_type
+parameter_list|()
+comment|/*-{ return this.submit_type }-*/
+function_decl|;
+DECL|method|mergeable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|mergeable
+parameter_list|()
+comment|/*-{ return this.mergeable }-*/
+function_decl|;
+DECL|method|MergeableInfo ()
+specifier|protected
+name|MergeableInfo
+parameter_list|()
+block|{     }
+block|}
 block|}
 end_class
 

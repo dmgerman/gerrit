@@ -458,6 +458,11 @@ specifier|private
 name|String
 name|message
 decl_stmt|;
+DECL|field|canSubmit
+specifier|private
+name|boolean
+name|canSubmit
+decl_stmt|;
 DECL|method|Actions ()
 name|Actions
 parameter_list|()
@@ -481,7 +486,7 @@ literal|"change_actions"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (ChangeInfo info, String revision, boolean canSubmit)
+DECL|method|display (ChangeInfo info, String revision)
 name|void
 name|display
 parameter_list|(
@@ -490,9 +495,6 @@ name|info
 parameter_list|,
 name|String
 name|revision
-parameter_list|,
-name|boolean
-name|canSubmit
 parameter_list|)
 block|{
 name|this
@@ -567,8 +569,6 @@ argument_list|(
 name|info
 argument_list|,
 name|revInfo
-argument_list|,
-name|canSubmit
 argument_list|,
 name|hasUser
 argument_list|)
@@ -694,7 +694,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|initRevisionActions (ChangeInfo info, RevisionInfo revInfo, boolean canSubmit, boolean hasUser)
+DECL|method|initRevisionActions (ChangeInfo info, RevisionInfo revInfo, boolean hasUser)
 specifier|private
 name|void
 name|initRevisionActions
@@ -706,29 +706,9 @@ name|RevisionInfo
 name|revInfo
 parameter_list|,
 name|boolean
-name|canSubmit
-parameter_list|,
-name|boolean
 name|hasUser
 parameter_list|)
 block|{
-name|boolean
-name|hasConflict
-init|=
-name|Gerrit
-operator|.
-name|getConfig
-argument_list|()
-operator|.
-name|testChangeMerge
-argument_list|()
-operator|&&
-operator|!
-name|info
-operator|.
-name|mergeable
-argument_list|()
-decl_stmt|;
 name|NativeMap
 argument_list|<
 name|ActionInfo
@@ -788,23 +768,15 @@ literal|"rebase"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|submit
-operator|.
-name|setVisible
-argument_list|(
-name|hasUser
-operator|&&
-operator|!
-name|hasConflict
-operator|&&
 name|canSubmit
+operator|=
+name|hasUser
 operator|&&
 name|actions
 operator|.
 name|containsKey
 argument_list|(
 literal|"submit"
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -920,6 +892,24 @@ block|}
 return|return
 name|ids
 return|;
+block|}
+DECL|method|setSubmitEnabled (boolean ok)
+name|void
+name|setSubmitEnabled
+parameter_list|(
+name|boolean
+name|ok
+parameter_list|)
+block|{
+name|submit
+operator|.
+name|setVisible
+argument_list|(
+name|ok
+operator|&&
+name|canSubmit
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|isSubmitEnabled ()
 name|boolean
