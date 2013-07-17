@@ -308,24 +308,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getCmA ()
-name|Element
-name|getCmA
-parameter_list|()
-block|{
-return|return
-name|cmA
-return|;
-block|}
-DECL|method|getCmB ()
-name|Element
-name|getCmB
-parameter_list|()
-block|{
-return|return
-name|cmB
-return|;
-block|}
 DECL|method|add (Widget widget)
 name|void
 name|add
