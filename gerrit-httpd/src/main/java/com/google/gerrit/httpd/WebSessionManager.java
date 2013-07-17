@@ -378,21 +378,9 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|com
+name|assistedinject
 operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|name
-operator|.
-name|Named
+name|Assisted
 import|;
 end_import
 
@@ -503,9 +491,8 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|WebSessionManager
+specifier|public
 class|class
 name|WebSessionManager
 block|{
@@ -526,6 +513,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|CACHE_NAME
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -558,7 +546,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebSessionManager (@erritServerConfig Config cfg, @Named(CACHE_NAME) final Cache<String, Val> cache)
+DECL|method|WebSessionManager (@erritServerConfig Config cfg, @Assisted final Cache<String, Val> cache)
 name|WebSessionManager
 parameter_list|(
 annotation|@
@@ -567,10 +555,7 @@ name|Config
 name|cfg
 parameter_list|,
 annotation|@
-name|Named
-argument_list|(
-name|CACHE_NAME
-argument_list|)
+name|Assisted
 specifier|final
 name|Cache
 argument_list|<
@@ -1208,6 +1193,7 @@ return|;
 block|}
 block|}
 DECL|class|Val
+specifier|public
 specifier|static
 specifier|final
 class|class

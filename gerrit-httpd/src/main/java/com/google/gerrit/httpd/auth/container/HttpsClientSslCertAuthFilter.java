@@ -76,6 +76,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|WebSession
@@ -155,18 +171,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -350,7 +354,7 @@ decl_stmt|;
 DECL|field|webSession
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -364,11 +368,11 @@ name|accountManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpsClientSslCertAuthFilter (final Provider<WebSession> webSession, final AccountManager accountManager)
+DECL|method|HttpsClientSslCertAuthFilter (final DynamicItem<WebSession> webSession, final AccountManager accountManager)
 name|HttpsClientSslCertAuthFilter
 parameter_list|(
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

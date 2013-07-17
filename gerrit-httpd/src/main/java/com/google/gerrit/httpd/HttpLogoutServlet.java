@@ -128,6 +128,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -301,7 +317,7 @@ decl_stmt|;
 DECL|field|webSession
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -330,7 +346,7 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final Provider<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AccountManager accountManager, final AuditService audit)
+DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AccountManager accountManager, final AuditService audit)
 name|HttpLogoutServlet
 parameter_list|(
 specifier|final
@@ -338,7 +354,7 @@ name|AuthConfig
 name|authConfig
 parameter_list|,
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

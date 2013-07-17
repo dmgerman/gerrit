@@ -142,6 +142,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|HtmlDomUtil
@@ -247,18 +263,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -418,7 +422,7 @@ block|{
 DECL|field|sessionProvider
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -458,11 +462,11 @@ name|emailHeader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpAuthFilter (final Provider<WebSession> webSession, final AuthConfig authConfig)
+DECL|method|HttpAuthFilter (final DynamicItem<WebSession> webSession, final AuthConfig authConfig)
 name|HttpAuthFilter
 parameter_list|(
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

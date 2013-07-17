@@ -72,6 +72,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|server
@@ -160,7 +176,10 @@ block|{
 DECL|field|session
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|WebSession
+argument_list|>
 name|session
 decl_stmt|;
 DECL|field|provider
@@ -171,10 +190,13 @@ name|provider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpRequestContext (WebSession session, RequestScopedReviewDbProvider provider)
+DECL|method|HttpRequestContext (DynamicItem<WebSession> session, RequestScopedReviewDbProvider provider)
 name|HttpRequestContext
 parameter_list|(
+name|DynamicItem
+argument_list|<
 name|WebSession
+argument_list|>
 name|session
 parameter_list|,
 name|RequestScopedReviewDbProvider
@@ -204,6 +226,9 @@ parameter_list|()
 block|{
 return|return
 name|session
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getCurrentUser
 argument_list|()

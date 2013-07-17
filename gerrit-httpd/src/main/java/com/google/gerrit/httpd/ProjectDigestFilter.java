@@ -156,6 +156,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|AccessPath
@@ -533,7 +549,7 @@ decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -564,7 +580,7 @@ name|context
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectDigestFilter (@anonicalWebUrl @ullable Provider<String> urlProvider, Provider<WebSession> session, AccountCache accountCache, @GerritServerConfig Config config)
+DECL|method|ProjectDigestFilter (@anonicalWebUrl @ullable Provider<String> urlProvider, DynamicItem<WebSession> session, AccountCache accountCache, @GerritServerConfig Config config)
 name|ProjectDigestFilter
 parameter_list|(
 annotation|@
@@ -577,7 +593,7 @@ name|String
 argument_list|>
 name|urlProvider
 parameter_list|,
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

@@ -108,6 +108,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|CanonicalWebUrl
@@ -843,7 +859,7 @@ decl_stmt|;
 DECL|field|webSession
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -903,11 +919,11 @@ name|papeMaxAuthAge
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OpenIdServiceImpl (final Provider<WebSession> cf, final Provider<IdentifiedUser> iu, CanonicalWebUrl up, @GerritServerConfig final Config config, final AuthConfig ac, final AccountManager am)
+DECL|method|OpenIdServiceImpl (final DynamicItem<WebSession> cf, final Provider<IdentifiedUser> iu, CanonicalWebUrl up, @GerritServerConfig final Config config, final AuthConfig ac, final AccountManager am)
 name|OpenIdServiceImpl
 parameter_list|(
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

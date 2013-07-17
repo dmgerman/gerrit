@@ -94,6 +94,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|WebSession
@@ -268,12 +284,15 @@ decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
+name|DynamicItem
+argument_list|<
 name|WebSession
+argument_list|>
 name|session
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ExternalIdDetailFactory (final ReviewDb db, final IdentifiedUser user, final AuthConfig authConfig, final WebSession session)
+DECL|method|ExternalIdDetailFactory (final ReviewDb db, final IdentifiedUser user, final AuthConfig authConfig, final DynamicItem<WebSession> session)
 name|ExternalIdDetailFactory
 parameter_list|(
 specifier|final
@@ -289,7 +308,10 @@ name|AuthConfig
 name|authConfig
 parameter_list|,
 specifier|final
+name|DynamicItem
+argument_list|<
 name|WebSession
+argument_list|>
 name|session
 parameter_list|)
 block|{
@@ -338,6 +360,9 @@ name|Key
 name|last
 init|=
 name|session
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getLastLoginExternalId
 argument_list|()

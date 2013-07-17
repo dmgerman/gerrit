@@ -2581,7 +2581,7 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|CacheBasedWebSession
+name|H2CacheBasedWebSession
 operator|.
 name|module
 argument_list|()
