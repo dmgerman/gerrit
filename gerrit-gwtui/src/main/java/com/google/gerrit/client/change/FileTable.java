@@ -1828,7 +1828,7 @@ name|info
 operator|.
 name|lines_inserted
 argument_list|()
-operator|-
+operator|+
 name|info
 operator|.
 name|lines_deleted
