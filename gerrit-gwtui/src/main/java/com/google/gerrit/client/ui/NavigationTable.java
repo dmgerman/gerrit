@@ -1482,13 +1482,26 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|scrollIntoView0
+argument_list|(
 name|tr
-operator|.
-name|scrollIntoView
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|scrollIntoView0 (Element e)
+specifier|private
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|scrollIntoView0
+parameter_list|(
+name|Element
+name|e
+parameter_list|)
+comment|/*-{ if (e.scrollIntoView) e.scrollIntoView() }-*/
+function_decl|;
 DECL|method|movePointerTo (final Object oldId)
 specifier|protected
 name|void
