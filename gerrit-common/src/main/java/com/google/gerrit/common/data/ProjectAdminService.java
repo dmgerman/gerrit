@@ -215,36 +215,6 @@ name|ProjectAdminService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|visibleProjectDetails (AsyncCallback<List<ProjectDetail>> callback)
-name|void
-name|visibleProjectDetails
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|ProjectDetail
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-DECL|method|projectDetail (Project.NameKey projectName, AsyncCallback<ProjectDetail> callback)
-name|void
-name|projectDetail
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|projectName
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|ProjectDetail
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 DECL|method|projectAccess (Project.NameKey projectName, AsyncCallback<ProjectAccess> callback)
 name|void
 name|projectAccess
@@ -257,24 +227,6 @@ parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ProjectAccess
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|changeProjectSettings (Project update, AsyncCallback<ProjectDetail> callback)
-name|void
-name|changeProjectSettings
-parameter_list|(
-name|Project
-name|update
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|ProjectDetail
 argument_list|>
 name|callback
 parameter_list|)
