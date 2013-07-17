@@ -1352,6 +1352,9 @@ expr_stmt|;
 if|if
 condition|(
 name|scroll
+operator|&&
+name|isAttached
+argument_list|()
 condition|)
 block|{
 name|scrollIntoView
