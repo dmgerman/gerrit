@@ -1426,6 +1426,12 @@ specifier|static
 name|String
 name|lastChangeListToken
 decl_stmt|;
+DECL|field|lastViewToken
+specifier|private
+specifier|static
+name|String
+name|lastViewToken
+decl_stmt|;
 static|static
 block|{
 name|SYSTEM_SVC
@@ -1554,6 +1560,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getPriorView ()
+specifier|public
+specifier|static
+name|String
+name|getPriorView
+parameter_list|()
+block|{
+return|return
+name|lastViewToken
+return|;
 block|}
 comment|/**    * Load the screen at the given location, displaying when ready.    *<p>    * If the URL is not already pointing at this location, a new item will be    * added to the browser's history when the screen is fully loaded and    * displayed on the UI.    *    * @param token location to parse, load, and render.    */
 DECL|method|display (final String token)
@@ -3272,7 +3289,13 @@ name|Screen
 name|view
 parameter_list|)
 block|{
-specifier|final
+name|lastViewToken
+operator|=
+name|History
+operator|.
+name|getToken
+argument_list|()
+expr_stmt|;
 name|String
 name|token
 init|=
@@ -3288,10 +3311,7 @@ name|token
 operator|.
 name|equals
 argument_list|(
-name|History
-operator|.
-name|getToken
-argument_list|()
+name|lastViewToken
 argument_list|)
 condition|)
 block|{
