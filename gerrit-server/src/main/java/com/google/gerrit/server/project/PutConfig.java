@@ -827,6 +827,38 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|ConfigInvalidException
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"Cannot update "
+operator|+
+name|projectName
+operator|+
+literal|": "
+operator|+
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|ResourceConflictException
@@ -836,6 +868,7 @@ operator|+
 name|projectName
 argument_list|)
 throw|;
+block|}
 block|}
 return|return
 operator|new
