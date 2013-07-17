@@ -135,6 +135,27 @@ name|binary
 parameter_list|()
 comment|/*-{ return this.binary || false; }-*/
 function_decl|;
+DECL|method|_row ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|_row
+parameter_list|()
+comment|/*-{ return this._row }-*/
+function_decl|;
+DECL|method|_row (int r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|_row
+parameter_list|(
+name|int
+name|r
+parameter_list|)
+comment|/*-{ this._row = r }-*/
+function_decl|;
 DECL|method|FileInfo ()
 specifier|protected
 name|FileInfo
