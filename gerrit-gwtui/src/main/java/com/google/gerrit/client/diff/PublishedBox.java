@@ -257,10 +257,10 @@ specifier|private
 name|DraftBox
 name|replyBox
 decl_stmt|;
-DECL|method|PublishedBox ( CodeMirrorDemo host, CodeMirror cm, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor)
+DECL|method|PublishedBox ( SideBySide2 host, CodeMirror cm, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor)
 name|PublishedBox
 parameter_list|(
-name|CodeMirrorDemo
+name|SideBySide2
 name|host
 parameter_list|,
 name|CodeMirror

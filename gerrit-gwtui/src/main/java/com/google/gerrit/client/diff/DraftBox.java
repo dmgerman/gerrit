@@ -588,10 +588,10 @@ specifier|private
 name|Timer
 name|expandTimer
 decl_stmt|;
-DECL|method|DraftBox ( CodeMirrorDemo host, CodeMirror cm, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor, boolean isNewDraft, boolean saveOnInit)
+DECL|method|DraftBox ( SideBySide2 host, CodeMirror cm, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor, boolean isNewDraft, boolean saveOnInit)
 name|DraftBox
 parameter_list|(
-name|CodeMirrorDemo
+name|SideBySide2
 name|host
 parameter_list|,
 name|CodeMirror

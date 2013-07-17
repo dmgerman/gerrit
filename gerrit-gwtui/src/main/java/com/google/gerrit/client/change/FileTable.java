@@ -872,7 +872,7 @@ argument_list|()
 condition|?
 literal|",unified"
 else|:
-literal|",codemirror"
+literal|"cm"
 argument_list|)
 expr_stmt|;
 return|return

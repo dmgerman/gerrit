@@ -90,7 +90,7 @@ name|client
 operator|.
 name|diff
 operator|.
-name|CodeMirrorDemo
+name|SideBySide2
 operator|.
 name|EditIterator
 import|;

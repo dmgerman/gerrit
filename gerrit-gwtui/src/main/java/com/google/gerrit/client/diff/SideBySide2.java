@@ -919,10 +919,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CodeMirrorDemo
+DECL|class|SideBySide2
 specifier|public
 class|class
-name|CodeMirrorDemo
+name|SideBySide2
 extends|extends
 name|Screen
 block|{
@@ -934,7 +934,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|CodeMirrorDemo
+name|SideBySide2
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -1176,9 +1176,9 @@ name|HandlerRegistration
 argument_list|>
 name|keyHandlers
 decl_stmt|;
-DECL|method|CodeMirrorDemo ( PatchSet.Id base, PatchSet.Id revision, String path)
+DECL|method|SideBySide2 ( PatchSet.Id base, PatchSet.Id revision, String path)
 specifier|public
-name|CodeMirrorDemo
+name|SideBySide2
 parameter_list|(
 name|PatchSet
 operator|.
@@ -1617,7 +1617,7 @@ operator|.
 name|Entry
 argument_list|>
 argument_list|(
-name|CodeMirrorDemo
+name|SideBySide2
 operator|.
 name|this
 argument_list|)

@@ -956,7 +956,7 @@ name|client
 operator|.
 name|diff
 operator|.
-name|CodeMirrorDemo
+name|SideBySide2
 import|;
 end_import
 
@@ -4651,7 +4651,7 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"codemirror"
+literal|"cm"
 operator|.
 name|equals
 argument_list|(
@@ -4661,7 +4661,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|CodeMirrorDemo
+name|SideBySide2
 argument_list|(
 name|baseId
 argument_list|,

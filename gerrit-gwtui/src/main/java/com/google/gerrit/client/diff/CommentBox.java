@@ -437,7 +437,7 @@ name|widgetManager
 decl_stmt|;
 DECL|field|diffView
 specifier|private
-name|CodeMirrorDemo
+name|SideBySide2
 name|diffView
 decl_stmt|;
 DECL|field|draft
@@ -488,10 +488,10 @@ DECL|field|res
 name|CommentBoxResources
 name|res
 decl_stmt|;
-DECL|method|CommentBox ( CodeMirrorDemo host, CodeMirror cmInstance, UiBinder<? extends Widget, CommentBox> binder, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor, boolean isDraft)
+DECL|method|CommentBox ( SideBySide2 host, CodeMirror cmInstance, UiBinder<? extends Widget, CommentBox> binder, PatchSet.Id id, CommentInfo info, CommentLinkProcessor linkProcessor, boolean isDraft)
 name|CommentBox
 parameter_list|(
-name|CodeMirrorDemo
+name|SideBySide2
 name|host
 parameter_list|,
 name|CodeMirror
@@ -847,7 +847,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getDiffView ()
-name|CodeMirrorDemo
+name|SideBySide2
 name|getDiffView
 parameter_list|()
 block|{
