@@ -703,11 +703,6 @@ name|String
 name|inputFieldTypeHint
 parameter_list|()
 function_decl|;
-DECL|method|keyhelp ()
-name|String
-name|keyhelp
-parameter_list|()
-function_decl|;
 DECL|method|labelList ()
 name|String
 name|labelList
@@ -1151,11 +1146,6 @@ function_decl|;
 DECL|method|usernameField ()
 name|String
 name|usernameField
-parameter_list|()
-function_decl|;
-DECL|method|version ()
-name|String
-name|version
 parameter_list|()
 function_decl|;
 DECL|method|watchedProjectFilter ()
