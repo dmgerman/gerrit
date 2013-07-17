@@ -2020,6 +2020,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|saveProject
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|ProjectApi
 operator|.
 name|setConfig
