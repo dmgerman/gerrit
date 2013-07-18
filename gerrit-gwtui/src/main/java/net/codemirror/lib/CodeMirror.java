@@ -591,6 +591,21 @@ name|height
 parameter_list|)
 comment|/*-{     return this.lineAtHeight(height);   }-*/
 function_decl|;
+DECL|method|lineAtHeight (double height, String mode)
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|lineAtHeight
+parameter_list|(
+name|double
+name|height
+parameter_list|,
+name|String
+name|mode
+parameter_list|)
+comment|/*-{     return this.lineAtHeight(height, mode);   }-*/
+function_decl|;
 DECL|method|heightAtLine (int line)
 specifier|public
 specifier|final
@@ -602,6 +617,21 @@ name|int
 name|line
 parameter_list|)
 comment|/*-{     return this.heightAtLine(line);   }-*/
+function_decl|;
+DECL|method|heightAtLine (int line, String mode)
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|heightAtLine
+parameter_list|(
+name|int
+name|line
+parameter_list|,
+name|String
+name|mode
+parameter_list|)
+comment|/*-{     return this.heightAtLine(line, mode);   }-*/
 function_decl|;
 DECL|method|getDoc ()
 specifier|public
@@ -656,6 +686,27 @@ name|Viewport
 name|getViewport
 parameter_list|()
 comment|/*-{     return this.getViewport();   }-*/
+function_decl|;
+DECL|method|getOldViewportSize ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getOldViewportSize
+parameter_list|()
+comment|/*-{     return this.state.oldViewportSize || 0;   }-*/
+function_decl|;
+DECL|method|setOldViewportSize (int lines)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setOldViewportSize
+parameter_list|(
+name|int
+name|lines
+parameter_list|)
+comment|/*-{     this.state.oldViewportSize = lines;   }-*/
 function_decl|;
 DECL|method|getScrollSetAt ()
 specifier|public
@@ -921,6 +972,15 @@ name|focus
 parameter_list|()
 comment|/*-{     this.focus();   }-*/
 function_decl|;
+DECL|method|lineCount ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|lineCount
+parameter_list|()
+comment|/*-{     return this.lineCount();   }-*/
+function_decl|;
 comment|/** Hack into CodeMirror to disable unwanted keys */
 DECL|method|disableUnwantedKey (String category, String name)
 specifier|public
@@ -958,6 +1018,33 @@ name|Element
 name|getGutterElement
 parameter_list|()
 comment|/*-{     return this.getGutterElement();   }-*/
+function_decl|;
+DECL|method|getScrollerElement ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getScrollerElement
+parameter_list|()
+comment|/*-{     return this.getScrollerElement();   }-*/
+function_decl|;
+DECL|method|getSizer ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getSizer
+parameter_list|()
+comment|/*-{     return this.display.sizer;   }-*/
+function_decl|;
+DECL|method|getScrollbarV ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getScrollbarV
+parameter_list|()
+comment|/*-{     return this.display.scrollbarV;   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected

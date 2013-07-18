@@ -1508,6 +1508,12 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|getGutterWrapper
+argument_list|()
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
 name|Scheduler
 operator|.
 name|get

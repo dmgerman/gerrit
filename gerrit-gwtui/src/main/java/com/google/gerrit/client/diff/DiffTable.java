@@ -322,6 +322,12 @@ name|cmB
 decl_stmt|;
 annotation|@
 name|UiField
+DECL|field|sidePanel
+name|SidePanel
+name|sidePanel
+decl_stmt|;
+annotation|@
+name|UiField
 DECL|field|patchsetNavRow
 name|Element
 name|patchsetNavRow
