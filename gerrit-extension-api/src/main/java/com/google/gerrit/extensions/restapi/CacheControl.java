@@ -189,6 +189,11 @@ specifier|final
 name|TimeUnit
 name|unit
 decl_stmt|;
+DECL|field|mustRevalidate
+specifier|private
+name|boolean
+name|mustRevalidate
+decl_stmt|;
 DECL|method|CacheControl (Type type, long age, TimeUnit unit)
 specifier|private
 name|CacheControl
@@ -250,6 +255,30 @@ parameter_list|()
 block|{
 return|return
 name|unit
+return|;
+block|}
+DECL|method|isMustRevalidate ()
+specifier|public
+name|boolean
+name|isMustRevalidate
+parameter_list|()
+block|{
+return|return
+name|mustRevalidate
+return|;
+block|}
+DECL|method|setMustRevalidate ()
+specifier|public
+name|CacheControl
+name|setMustRevalidate
+parameter_list|()
+block|{
+name|mustRevalidate
+operator|=
+literal|true
+expr_stmt|;
+return|return
+name|this
 return|;
 block|}
 block|}

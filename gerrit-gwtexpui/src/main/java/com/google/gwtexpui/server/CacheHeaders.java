@@ -228,6 +228,43 @@ name|TimeUnit
 name|unit
 parameter_list|)
 block|{
+name|setCacheable
+argument_list|(
+name|req
+argument_list|,
+name|res
+argument_list|,
+name|age
+argument_list|,
+name|unit
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**    * Permit caching the response for up to the age specified.    *<p>    * If the request is on a secure connection (e.g. SSL) private caching is    * used. This allows the user-agent to cache the response, but requests    * intermediate proxies to not cache. This may offer better protection for    * Set-Cookie headers.    *<p>    * If the request is on plaintext (insecure), public caching is used. This may    * allow an intermediate proxy to cache the response, including any Set-Cookie    * header that may have also been included.    *    * @param req current request.    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
+DECL|method|setCacheable ( HttpServletRequest req, HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
+specifier|public
+specifier|static
+name|void
+name|setCacheable
+parameter_list|(
+name|HttpServletRequest
+name|req
+parameter_list|,
+name|HttpServletResponse
+name|res
+parameter_list|,
+name|long
+name|age
+parameter_list|,
+name|TimeUnit
+name|unit
+parameter_list|,
+name|boolean
+name|mustRevalidate
+parameter_list|)
+block|{
 if|if
 condition|(
 name|req
@@ -243,6 +280,8 @@ argument_list|,
 name|age
 argument_list|,
 name|unit
+argument_list|,
+name|mustRevalidate
 argument_list|)
 expr_stmt|;
 block|}
@@ -255,12 +294,14 @@ argument_list|,
 name|age
 argument_list|,
 name|unit
+argument_list|,
+name|mustRevalidate
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Allow the response to be cached by proxies and user-agents.    *<p>    * If the response includes a Set-Cookie header the cookie may be cached by a    * proxy and returned to multiple browsers behind the same proxy. This is    * insecure for authenticated connections.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    */
-DECL|method|setCacheablePublic (HttpServletResponse res, long age, TimeUnit unit)
+comment|/**    * Allow the response to be cached by proxies and user-agents.    *<p>    * If the response includes a Set-Cookie header the cookie may be cached by a    * proxy and returned to multiple browsers behind the same proxy. This is    * insecure for authenticated connections.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
+DECL|method|setCacheablePublic (HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
 specifier|public
 specifier|static
 name|void
@@ -274,6 +315,9 @@ name|age
 parameter_list|,
 name|TimeUnit
 name|unit
+parameter_list|,
+name|boolean
+name|mustRevalidate
 parameter_list|)
 block|{
 name|long
@@ -328,11 +372,13 @@ argument_list|,
 name|age
 argument_list|,
 name|unit
+argument_list|,
+name|mustRevalidate
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Allow the response to be cached only by the user-agent.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    */
-DECL|method|setCacheablePrivate (HttpServletResponse res, long age, TimeUnit unit)
+comment|/**    * Allow the response to be cached only by the user-agent.    *    * @param res response being returned.    * @param age how long the response can be cached.    * @param unit time unit for age, usually {@link TimeUnit#SECONDS}.    * @param mustRevalidate true if the client must validate the cached entity.    */
+DECL|method|setCacheablePrivate (HttpServletResponse res, long age, TimeUnit unit, boolean mustRevalidate)
 specifier|public
 specifier|static
 name|void
@@ -346,6 +392,9 @@ name|age
 parameter_list|,
 name|TimeUnit
 name|unit
+parameter_list|,
+name|boolean
+name|mustRevalidate
 parameter_list|)
 block|{
 name|long
@@ -383,10 +432,12 @@ argument_list|,
 name|age
 argument_list|,
 name|unit
+argument_list|,
+name|mustRevalidate
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|cache (HttpServletResponse res, String type, long age, TimeUnit unit)
+DECL|method|cache (HttpServletResponse res, String type, long age, TimeUnit unit, boolean revalidate)
 specifier|private
 specifier|static
 name|void
@@ -403,6 +454,9 @@ name|age
 parameter_list|,
 name|TimeUnit
 name|unit
+parameter_list|,
+name|boolean
+name|revalidate
 parameter_list|)
 block|{
 name|res
@@ -415,7 +469,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s, max-age=%d"
+literal|"%s, max-age=%d%s"
 argument_list|,
 name|type
 argument_list|,
@@ -425,6 +479,12 @@ name|age
 argument_list|,
 name|unit
 argument_list|)
+argument_list|,
+name|revalidate
+condition|?
+literal|", must-revalidate"
+else|:
+literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;

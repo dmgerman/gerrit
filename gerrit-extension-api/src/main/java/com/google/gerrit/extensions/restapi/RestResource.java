@@ -66,6 +66,16 @@ name|restapi
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/**  * Generic resource handle defining arguments to views.  *<p>  * Resource handle returned by {@link RestCollection} and passed to a  * {@link RestView} such as {@link RestReadView} or {@link RestModifyView}.  */
 end_comment
@@ -75,7 +85,21 @@ DECL|interface|RestResource
 specifier|public
 interface|interface
 name|RestResource
-block|{ }
+block|{
+comment|/** A resource with a last modification date. */
+DECL|interface|HasLastModified
+specifier|public
+interface|interface
+name|HasLastModified
+block|{
+DECL|method|getLastModified ()
+specifier|public
+name|Timestamp
+name|getLastModified
+parameter_list|()
+function_decl|;
+block|}
+block|}
 end_interface
 
 end_unit
