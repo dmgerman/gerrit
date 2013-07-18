@@ -132,12 +132,14 @@ end_import
 
 begin_interface
 DECL|interface|Resources
+specifier|public
 interface|interface
 name|Resources
 extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
+specifier|public
 specifier|static
 specifier|final
 name|Resources
@@ -203,6 +205,7 @@ name|style
 parameter_list|()
 function_decl|;
 DECL|interface|Style
+specifier|public
 interface|interface
 name|Style
 extends|extends
@@ -211,6 +214,16 @@ block|{
 DECL|method|button ()
 name|String
 name|button
+parameter_list|()
+function_decl|;
+DECL|method|popup ()
+name|String
+name|popup
+parameter_list|()
+function_decl|;
+DECL|method|popupContent ()
+name|String
+name|popupContent
 parameter_list|()
 function_decl|;
 block|}

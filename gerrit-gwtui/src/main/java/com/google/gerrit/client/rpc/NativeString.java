@@ -113,35 +113,61 @@ name|NativeString
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|wrap (String value)
+DECL|field|TYPE
+specifier|private
 specifier|static
+specifier|final
+name|JavaScriptObject
+name|TYPE
+init|=
+name|init
+argument_list|()
+decl_stmt|;
+DECL|method|init ()
+specifier|private
+specifier|static
+specifier|final
+specifier|native
+name|JavaScriptObject
+name|init
+parameter_list|()
+comment|/*-{ return function(s){this.s=s} }-*/
+function_decl|;
+DECL|method|wrap (String s)
+specifier|static
+specifier|final
 name|NativeString
 name|wrap
 parameter_list|(
 name|String
-name|value
+name|s
 parameter_list|)
 block|{
-name|NativeString
-name|ns
-init|=
-operator|(
-name|NativeString
-operator|)
-name|createObject
-argument_list|()
-decl_stmt|;
-name|ns
-operator|.
-name|set
-argument_list|(
-name|value
-argument_list|)
-expr_stmt|;
 return|return
-name|ns
+name|wrap0
+argument_list|(
+name|TYPE
+argument_list|,
+name|s
+argument_list|)
 return|;
 block|}
+DECL|method|wrap0 (JavaScriptObject T, String s)
+specifier|private
+specifier|static
+specifier|final
+specifier|native
+name|NativeString
+name|wrap0
+parameter_list|(
+name|JavaScriptObject
+name|T
+parameter_list|,
+name|String
+name|s
+parameter_list|)
+comment|/*-{ return new T(s) }-*/
+function_decl|;
 DECL|method|asString ()
 specifier|public
 specifier|final
@@ -237,6 +263,42 @@ block|}
 block|}
 return|;
 block|}
+DECL|method|is (JavaScriptObject o)
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|is
+parameter_list|(
+name|JavaScriptObject
+name|o
+parameter_list|)
+block|{
+return|return
+name|is
+argument_list|(
+name|TYPE
+argument_list|,
+name|o
+argument_list|)
+return|;
+block|}
+DECL|method|is (JavaScriptObject T, JavaScriptObject o)
+specifier|private
+specifier|static
+specifier|final
+specifier|native
+name|boolean
+name|is
+parameter_list|(
+name|JavaScriptObject
+name|T
+parameter_list|,
+name|JavaScriptObject
+name|o
+parameter_list|)
+comment|/*-{ return o instanceof T }-*/
+function_decl|;
 DECL|method|NativeString ()
 specifier|protected
 name|NativeString
