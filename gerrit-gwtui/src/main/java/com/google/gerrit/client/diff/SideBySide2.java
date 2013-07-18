@@ -2996,6 +2996,8 @@ operator|&&
 name|length
 operator|>
 name|context
+operator|+
+literal|1
 condition|)
 block|{
 name|skips
@@ -3031,6 +3033,8 @@ operator|&&
 name|length
 operator|>
 name|context
+operator|+
+literal|1
 condition|)
 block|{
 name|skips
@@ -3063,6 +3067,8 @@ operator|>
 literal|2
 operator|*
 name|context
+operator|+
+literal|1
 condition|)
 block|{
 name|skips
@@ -4264,19 +4270,18 @@ operator|.
 name|WHOLE_FILE_CONTEXT
 condition|)
 block|{
-name|skips
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 return|return;
 block|}
+comment|/**      * TODO: This is not optimal, but shouldn't bee too costly in most cases.      * Maybe rewrite after done keeping track of diff chunk positions.      */
 for|for
 control|(
 name|CommentBox
 name|box
 range|:
-name|initialBoxes
+name|lineActiveBoxMap
+operator|.
+name|values
+argument_list|()
 control|)
 block|{
 name|List
@@ -4370,13 +4375,14 @@ operator|-
 name|context
 condition|)
 block|{
-name|checkAndAddSkip
-argument_list|(
 name|temp
-argument_list|,
+operator|.
+name|add
+argument_list|(
 name|skip
 argument_list|)
 expr_stmt|;
+comment|// Size guaranteed to be greater than 1
 block|}
 elseif|else
 if|if
@@ -4490,6 +4496,16 @@ name|skip
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|temp
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return;
 block|}
 name|skips
 operator|=
