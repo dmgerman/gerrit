@@ -666,26 +666,35 @@ name|getScrollInfo
 parameter_list|()
 comment|/*-{     return this.getScrollInfo();   }-*/
 function_decl|;
-DECL|method|isScrollSetByOther ()
+DECL|method|getViewport ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
-name|isScrollSetByOther
+name|Viewport
+name|getViewport
 parameter_list|()
-comment|/*-{     return this.state.scrollSetByOther == true;   }-*/
+comment|/*-{     return this.getViewport();   }-*/
 function_decl|;
-DECL|method|setScrollSetByOther (boolean setByOther)
+DECL|method|getScrollSetAt ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|getScrollSetAt
+parameter_list|()
+comment|/*-{     return this.state.scrollSetAt || 0;   }-*/
+function_decl|;
+DECL|method|setScrollSetAt (double when)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|setScrollSetByOther
+name|setScrollSetAt
 parameter_list|(
-name|boolean
-name|setByOther
+name|double
+name|when
 parameter_list|)
-comment|/*-{     this.state.scrollSetByOther = setByOther;   }-*/
+comment|/*-{     this.state.scrollSetAt = when;   }-*/
 function_decl|;
 DECL|method|on (String event, Runnable thunk)
 specifier|public
@@ -973,6 +982,38 @@ specifier|protected
 name|CodeMirror
 parameter_list|()
 block|{   }
+DECL|class|Viewport
+specifier|public
+specifier|static
+class|class
+name|Viewport
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|getFrom ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getFrom
+parameter_list|()
+comment|/*-{ return this.from; }-*/
+function_decl|;
+DECL|method|getTo ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|getTo
+parameter_list|()
+comment|/*-{ return this.to; }-*/
+function_decl|;
+DECL|method|Viewport ()
+specifier|protected
+name|Viewport
+parameter_list|()
+block|{     }
+block|}
 DECL|class|LineHandle
 specifier|public
 specifier|static
