@@ -503,7 +503,7 @@ name|checkBox
 operator|.
 name|setValue
 argument_list|(
-literal|true
+name|reviewed
 argument_list|,
 literal|true
 argument_list|)
