@@ -92,10 +92,24 @@ specifier|public
 interface|interface
 name|HasLastModified
 block|{
+comment|/**      * @return time for the Last-Modified header. HTTP truncates the header      *         value to seconds.      */
 DECL|method|getLastModified ()
 specifier|public
 name|Timestamp
 name|getLastModified
+parameter_list|()
+function_decl|;
+block|}
+comment|/** A resource with an ETag. */
+DECL|interface|HasETag
+specifier|public
+interface|interface
+name|HasETag
+block|{
+DECL|method|getETag ()
+specifier|public
+name|String
+name|getETag
 parameter_list|()
 function_decl|;
 block|}

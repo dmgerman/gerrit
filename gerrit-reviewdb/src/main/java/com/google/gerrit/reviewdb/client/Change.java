@@ -1253,6 +1253,19 @@ block|}
 end_function
 
 begin_function
+DECL|method|getRowVersion ()
+specifier|public
+name|int
+name|getRowVersion
+parameter_list|()
+block|{
+return|return
+name|rowVersion
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|resetLastUpdatedOn ()
 specifier|public
 name|void
