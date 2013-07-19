@@ -688,6 +688,21 @@ name|handler
 parameter_list|)
 comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.EventHandler::handle(Lnet/codemirror/lib/CodeMirror;Lcom/google/gwt/dom/client/NativeEvent;)(cm, e);     }));   }-*/
 function_decl|;
+DECL|method|on (String event, RenderLineHandler handler)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|RenderLineHandler
+name|handler
+parameter_list|)
+comment|/*-{     this.on(event, $entry(function(cm, h, ele) {       handler.@net.codemirror.lib.CodeMirror.RenderLineHandler::handle(Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/CodeMirror$LineHandle;Lcom/google/gwt/dom/client/Element;)(cm, h, ele);     }));   }-*/
+function_decl|;
 DECL|method|getCursor ()
 specifier|public
 specifier|final
@@ -961,6 +976,27 @@ name|instance
 parameter_list|,
 name|NativeEvent
 name|event
+parameter_list|)
+function_decl|;
+block|}
+DECL|interface|RenderLineHandler
+specifier|public
+interface|interface
+name|RenderLineHandler
+block|{
+DECL|method|handle (CodeMirror instance, LineHandle handle, Element element)
+specifier|public
+name|void
+name|handle
+parameter_list|(
+name|CodeMirror
+name|instance
+parameter_list|,
+name|LineHandle
+name|handle
+parameter_list|,
+name|Element
+name|element
 parameter_list|)
 function_decl|;
 block|}
