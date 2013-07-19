@@ -991,6 +991,8 @@ argument_list|()
 operator|.
 name|removeDraft
 argument_list|(
+name|this
+argument_list|,
 name|info
 operator|.
 name|side
