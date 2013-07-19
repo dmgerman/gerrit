@@ -88,6 +88,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+operator|.
+name|InheritableBoolean
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -190,74 +208,38 @@ name|ConfigInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|has_require_change_id ()
-specifier|public
-specifier|final
-specifier|native
-name|JavaScriptObject
-name|has_require_change_id
-parameter_list|()
-comment|/*-{ return this.hasOwnProperty('require_change_id'); }-*/
-function_decl|;
 DECL|method|require_change_id ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
+name|InheritedBooleanInfo
 name|require_change_id
 parameter_list|()
 comment|/*-{ return this.require_change_id; }-*/
-function_decl|;
-DECL|method|has_use_content_merge ()
-specifier|public
-specifier|final
-specifier|native
-name|JavaScriptObject
-name|has_use_content_merge
-parameter_list|()
-comment|/*-{ return this.hasOwnProperty('use_content_merge'); }-*/
 function_decl|;
 DECL|method|use_content_merge ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
+name|InheritedBooleanInfo
 name|use_content_merge
 parameter_list|()
 comment|/*-{ return this.use_content_merge; }-*/
-function_decl|;
-DECL|method|has_use_contributor_agreements ()
-specifier|public
-specifier|final
-specifier|native
-name|JavaScriptObject
-name|has_use_contributor_agreements
-parameter_list|()
-comment|/*-{ return this.hasOwnProperty('use_contributor_agreements'); }-*/
 function_decl|;
 DECL|method|use_contributor_agreements ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
+name|InheritedBooleanInfo
 name|use_contributor_agreements
 parameter_list|()
 comment|/*-{ return this.use_contributor_agreements; }-*/
-function_decl|;
-DECL|method|has_use_signed_off_by ()
-specifier|public
-specifier|final
-specifier|native
-name|JavaScriptObject
-name|has_use_signed_off_by
-parameter_list|()
-comment|/*-{ return this.hasOwnProperty('use_signed_off_by'); }-*/
 function_decl|;
 DECL|method|use_signed_off_by ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
+name|InheritedBooleanInfo
 name|use_signed_off_by
 parameter_list|()
 comment|/*-{ return this.use_signed_off_by; }-*/
@@ -464,6 +446,64 @@ function_decl|;
 DECL|method|CommentLinkInfo ()
 specifier|protected
 name|CommentLinkInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|InheritedBooleanInfo
+specifier|public
+specifier|static
+class|class
+name|InheritedBooleanInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|value ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|value
+parameter_list|()
+comment|/*-{ return this.value ? true : false; }-*/
+function_decl|;
+DECL|method|inherited_value ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|inherited_value
+parameter_list|()
+comment|/*-{ return this.inherited_value ? true : false; }-*/
+function_decl|;
+DECL|method|configured_value ()
+specifier|public
+specifier|final
+name|InheritableBoolean
+name|configured_value
+parameter_list|()
+block|{
+return|return
+name|InheritableBoolean
+operator|.
+name|valueOf
+argument_list|(
+name|configured_valueRaw
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|configured_valueRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|configured_valueRaw
+parameter_list|()
+comment|/*-{ return this.configured_value }-*/
+function_decl|;
+DECL|method|InheritedBooleanInfo ()
+specifier|protected
+name|InheritedBooleanInfo
 parameter_list|()
 block|{     }
 block|}
