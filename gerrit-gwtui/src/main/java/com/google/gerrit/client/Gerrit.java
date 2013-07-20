@@ -2007,6 +2007,17 @@ name|isVisible
 argument_list|()
 return|;
 block|}
+DECL|method|getBottomMenu ()
+specifier|public
+specifier|static
+name|RootPanel
+name|getBottomMenu
+parameter_list|()
+block|{
+return|return
+name|bottomMenu
+return|;
+block|}
 comment|/** Get the public configuration data used by this Gerrit instance. */
 DECL|method|getConfig ()
 specifier|public

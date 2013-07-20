@@ -304,6 +304,11 @@ specifier|protected
 name|int
 name|suggestFrom
 decl_stmt|;
+DECL|field|changeUpdateDelay
+specifier|protected
+name|int
+name|changeUpdateDelay
+decl_stmt|;
 DECL|method|getRegisterUrl ()
 specifier|public
 name|String
@@ -928,6 +933,30 @@ block|}
 return|return
 literal|true
 return|;
+block|}
+DECL|method|getChangeUpdateDelay ()
+specifier|public
+name|int
+name|getChangeUpdateDelay
+parameter_list|()
+block|{
+return|return
+name|changeUpdateDelay
+return|;
+block|}
+DECL|method|setChangeUpdateDelay (int seconds)
+specifier|public
+name|void
+name|setChangeUpdateDelay
+parameter_list|(
+name|int
+name|seconds
+parameter_list|)
+block|{
+name|changeUpdateDelay
+operator|=
+name|seconds
+expr_stmt|;
 block|}
 block|}
 end_class

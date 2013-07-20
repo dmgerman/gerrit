@@ -672,7 +672,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|authorName (MessageInfo info)
-specifier|private
 specifier|static
 name|String
 name|authorName
