@@ -791,6 +791,31 @@ specifier|private
 name|boolean
 name|isSuggestionSelected
 decl_stmt|;
+DECL|method|MySuggestionDisplay ()
+specifier|private
+name|MySuggestionDisplay
+parameter_list|()
+block|{
+name|super
+argument_list|()
+expr_stmt|;
+name|getPopupPanel
+argument_list|()
+operator|.
+name|addStyleName
+argument_list|(
+name|Gerrit
+operator|.
+name|RESOURCES
+operator|.
+name|css
+argument_list|()
+operator|.
+name|suggestBoxPopup
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getCurrentSelection ()

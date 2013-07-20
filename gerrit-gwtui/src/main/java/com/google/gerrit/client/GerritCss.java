@@ -1003,6 +1003,11 @@ name|String
 name|searchPanel
 parameter_list|()
 function_decl|;
+DECL|method|suggestBoxPopup ()
+name|String
+name|suggestBoxPopup
+parameter_list|()
+function_decl|;
 DECL|method|sectionHeader ()
 name|String
 name|sectionHeader
