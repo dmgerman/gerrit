@@ -488,18 +488,24 @@ name|done
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|config (Project.NameKey name)
+DECL|method|getConfig (Project.NameKey name, AsyncCallback<ConfigInfo> cb)
+specifier|public
 specifier|static
-name|RestApi
-name|config
+name|void
+name|getConfig
 parameter_list|(
 name|Project
 operator|.
 name|NameKey
 name|name
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ConfigInfo
+argument_list|>
+name|cb
 parameter_list|)
 block|{
-return|return
 operator|new
 name|RestApi
 argument_list|(
@@ -518,7 +524,12 @@ name|view
 argument_list|(
 literal|"config"
 argument_list|)
-return|;
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
 block|}
 DECL|class|ProjectInput
 specifier|private

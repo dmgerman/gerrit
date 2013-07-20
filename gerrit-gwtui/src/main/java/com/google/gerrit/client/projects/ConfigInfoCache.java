@@ -581,7 +581,7 @@ return|return;
 block|}
 name|ProjectApi
 operator|.
-name|config
+name|getConfig
 argument_list|(
 operator|new
 name|Project
@@ -590,10 +590,7 @@ name|NameKey
 argument_list|(
 name|name
 argument_list|)
-argument_list|)
-operator|.
-name|get
-argument_list|(
+argument_list|,
 operator|new
 name|AsyncCallback
 argument_list|<

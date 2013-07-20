@@ -146,22 +146,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|GitRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -199,21 +183,6 @@ operator|new
 name|ConfigInfo
 argument_list|()
 decl_stmt|;
-name|RefControl
-name|refConfig
-init|=
-name|resource
-operator|.
-name|getControl
-argument_list|()
-operator|.
-name|controlForRef
-argument_list|(
-name|GitRepositoryManager
-operator|.
-name|REF_CONFIG
-argument_list|)
-decl_stmt|;
 name|ProjectState
 name|state
 init|=
@@ -225,14 +194,6 @@ operator|.
 name|getProjectState
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|refConfig
-operator|.
-name|isVisible
-argument_list|()
-condition|)
-block|{
 name|InheritedBooleanInfo
 name|useContributorAgreements
 init|=
@@ -424,9 +385,6 @@ name|requireChangeId
 operator|=
 name|requireChangeId
 expr_stmt|;
-block|}
-comment|// commentlinks are visible to anyone, as they are used for linkification
-comment|// on the client side.
 name|result
 operator|.
 name|commentlinks
@@ -461,7 +419,6 @@ name|cl
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Themes are visible to anyone, as they are rendered client-side.
 name|result
 operator|.
 name|theme
