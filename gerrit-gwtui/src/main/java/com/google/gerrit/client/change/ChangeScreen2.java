@@ -2510,11 +2510,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadMergeable (final boolean canSubmit)
+DECL|method|loadMergeable (final Change.Status status, final boolean canSubmit)
 specifier|private
 name|void
 name|loadMergeable
 parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|,
 specifier|final
 name|boolean
 name|canSubmit
@@ -2582,6 +2588,17 @@ name|mergeable
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|status
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|NEW
+condition|)
+block|{
 name|statusText
 operator|.
 name|setInnerText
@@ -2606,6 +2623,7 @@ name|mergeConflict
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|setVisible
 argument_list|(
@@ -2639,6 +2657,8 @@ parameter_list|)
 block|{
 name|loadSubmitType
 argument_list|(
+name|status
+argument_list|,
 name|canSubmit
 argument_list|)
 expr_stmt|;
@@ -2651,16 +2671,24 @@ else|else
 block|{
 name|loadSubmitType
 argument_list|(
+name|status
+argument_list|,
 name|canSubmit
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|loadSubmitType (final boolean canSubmit)
+DECL|method|loadSubmitType (final Change.Status status, final boolean canSubmit)
 specifier|private
 name|void
 name|loadSubmitType
 parameter_list|(
+specifier|final
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|,
 specifier|final
 name|boolean
 name|canSubmit
@@ -2678,6 +2706,17 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|status
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|NEW
+condition|)
+block|{
 name|statusText
 operator|.
 name|setInnerText
@@ -2690,6 +2729,7 @@ name|readyToSubmit
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|ChangeApi
 operator|.
@@ -3150,6 +3190,11 @@ condition|)
 block|{
 name|loadMergeable
 argument_list|(
+name|info
+operator|.
+name|status
+argument_list|()
+argument_list|,
 name|canSubmit
 argument_list|)
 expr_stmt|;
