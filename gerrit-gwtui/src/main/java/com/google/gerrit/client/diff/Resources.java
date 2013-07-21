@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|GWT
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|resources
 operator|.
 name|client
@@ -99,22 +115,37 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Resources used by diff.  */
+comment|/** Resources used by diff. */
 end_comment
 
 begin_interface
-DECL|interface|CommentBoxResources
+DECL|interface|Resources
 interface|interface
-name|CommentBoxResources
+name|Resources
 extends|extends
 name|ClientBundle
 block|{
+DECL|field|I
+specifier|static
+specifier|final
+name|Resources
+name|I
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|Resources
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|method|style ()
 annotation|@
 name|Source
 argument_list|(
 literal|"CommentBoxUi.css"
 argument_list|)
-DECL|method|style ()
 name|Style
 name|style
 parameter_list|()
@@ -125,44 +156,29 @@ name|Style
 extends|extends
 name|CssResource
 block|{
-DECL|method|open ()
-name|String
-name|open
-parameter_list|()
-function_decl|;
-DECL|method|close ()
-name|String
-name|close
-parameter_list|()
-function_decl|;
 DECL|method|commentBox ()
 name|String
 name|commentBox
 parameter_list|()
 function_decl|;
-DECL|method|table ()
+DECL|method|contents ()
 name|String
-name|table
+name|contents
 parameter_list|()
 function_decl|;
-DECL|method|summaryText ()
+DECL|method|header ()
 name|String
-name|summaryText
+name|header
 parameter_list|()
 function_decl|;
-DECL|method|contentPanel ()
+DECL|method|summary ()
 name|String
-name|contentPanel
+name|summary
 parameter_list|()
 function_decl|;
-DECL|method|message ()
+DECL|method|date ()
 name|String
-name|message
-parameter_list|()
-function_decl|;
-DECL|method|button ()
-name|String
-name|button
+name|date
 parameter_list|()
 function_decl|;
 block|}
