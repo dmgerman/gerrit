@@ -607,14 +607,21 @@ specifier|final
 name|SitePaths
 name|site
 decl_stmt|;
+DECL|field|initFlags
+specifier|private
+specifier|final
+name|InitFlags
+name|initFlags
+decl_stmt|;
 DECL|field|pluginLoader
 specifier|private
+specifier|final
 name|InitPluginStepsLoader
 name|pluginLoader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InitPlugins (final ConsoleUI ui, final SitePaths site, InitPluginStepsLoader pluginLoader)
+DECL|method|InitPlugins (final ConsoleUI ui, final SitePaths site, InitFlags initFlags, InitPluginStepsLoader pluginLoader)
 name|InitPlugins
 parameter_list|(
 specifier|final
@@ -624,6 +631,9 @@ parameter_list|,
 specifier|final
 name|SitePaths
 name|site
+parameter_list|,
+name|InitFlags
+name|initFlags
 parameter_list|,
 name|InitPluginStepsLoader
 name|pluginLoader
@@ -640,6 +650,12 @@ operator|.
 name|site
 operator|=
 name|site
+expr_stmt|;
+name|this
+operator|.
+name|initFlags
+operator|=
+name|initFlags
 expr_stmt|;
 name|this
 operator|.
@@ -719,6 +735,16 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+operator|(
+name|initFlags
+operator|.
+name|installPlugins
+operator|.
+name|contains
+argument_list|(
+name|pluginName
+argument_list|)
+operator|||
 name|ui
 operator|.
 name|yesno
@@ -733,6 +759,7 @@ name|plugin
 operator|.
 name|version
 argument_list|)
+operator|)
 condition|)
 block|{
 name|tmpPlugin
