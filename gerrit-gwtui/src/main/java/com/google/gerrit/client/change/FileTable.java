@@ -682,7 +682,6 @@ extends|extends
 name|FlowPanel
 block|{
 DECL|field|R
-specifier|private
 specifier|static
 specifier|final
 name|FileTableResources
