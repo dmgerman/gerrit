@@ -618,7 +618,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|setOpen (boolean open)
-specifier|private
 name|void
 name|setOpen
 parameter_list|(
