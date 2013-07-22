@@ -779,6 +779,13 @@ name|newTopicName
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ChangeUtil
+operator|.
+name|updated
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
 return|return
 name|change
 return|;
