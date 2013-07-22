@@ -314,6 +314,16 @@ name|Writer
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
 begin_class
 DECL|class|UpgradeFrom2_0_xTest
 specifier|public
@@ -510,6 +520,14 @@ operator|new
 name|InitFlags
 argument_list|(
 name|site
+argument_list|,
+name|Collections
+operator|.
+expr|<
+name|String
+operator|>
+name|emptyList
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
