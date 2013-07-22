@@ -1909,7 +1909,7 @@ name|KeyCommand
 argument_list|(
 literal|0
 argument_list|,
-literal|'r'
+literal|'a'
 argument_list|,
 name|Util
 operator|.

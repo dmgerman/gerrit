@@ -1710,7 +1710,7 @@ name|KeyCommand
 argument_list|(
 literal|0
 argument_list|,
-literal|'m'
+literal|'r'
 argument_list|,
 name|PatchUtil
 operator|.
