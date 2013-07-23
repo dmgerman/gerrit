@@ -902,25 +902,6 @@ name|name
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.keyMap[category][name] = undefined;   }-*/
 function_decl|;
-DECL|method|defineVimEx (String name, String prefix, Runnable thunk)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|void
-name|defineVimEx
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|String
-name|prefix
-parameter_list|,
-name|Runnable
-name|thunk
-parameter_list|)
-comment|/*-{     $wnd.CodeMirror.Vim.defineEx(name, prefix, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
-function_decl|;
 DECL|method|moveCursorDown (int numLines)
 specifier|public
 specifier|final
