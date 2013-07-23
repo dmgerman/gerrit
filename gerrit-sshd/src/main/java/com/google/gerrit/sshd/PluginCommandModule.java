@@ -148,7 +148,7 @@ name|command
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|setPluginName (@luginName String name, final String descr)
+DECL|method|setPluginName (@luginName String name)
 name|void
 name|setPluginName
 parameter_list|(
@@ -156,10 +156,6 @@ annotation|@
 name|PluginName
 name|String
 name|name
-parameter_list|,
-specifier|final
-name|String
-name|descr
 parameter_list|)
 block|{
 name|this
