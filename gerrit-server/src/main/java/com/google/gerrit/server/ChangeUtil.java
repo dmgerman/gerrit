@@ -2708,6 +2708,8 @@ name|revWalk
 argument_list|,
 name|refControl
 argument_list|,
+name|user
+argument_list|,
 name|change
 argument_list|,
 name|newCommit

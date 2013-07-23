@@ -728,7 +728,7 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Repository git, RevWalk revWalk, RefControl refControl, Change change, RevCommit commit)
+DECL|method|create (Repository git, RevWalk revWalk, RefControl refControl, IdentifiedUser user, Change change, RevCommit commit)
 name|PatchSetInserter
 name|create
 parameter_list|(
@@ -740,6 +740,9 @@ name|revWalk
 parameter_list|,
 name|RefControl
 name|refControl
+parameter_list|,
+name|IdentifiedUser
+name|user
 parameter_list|,
 name|Change
 name|change
@@ -879,7 +882,7 @@ name|sendMail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetInserter (ChangeHooks hooks, TrackingFooters trackingFooters, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, IdentifiedUser user, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, ChangeIndexer indexer, ReplacePatchSetSender.Factory replacePatchSetFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ChangeHooks hooks, TrackingFooters trackingFooters, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, ChangeIndexer indexer, ReplacePatchSetSender.Factory replacePatchSetFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted IdentifiedUser user, @Assisted Change change, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
@@ -894,9 +897,6 @@ name|db
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
-parameter_list|,
-name|IdentifiedUser
-name|user
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
@@ -928,6 +928,11 @@ annotation|@
 name|Assisted
 name|RefControl
 name|refControl
+parameter_list|,
+annotation|@
+name|Assisted
+name|IdentifiedUser
+name|user
 parameter_list|,
 annotation|@
 name|Assisted
