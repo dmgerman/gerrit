@@ -1429,6 +1429,8 @@ name|revWalk
 argument_list|,
 name|refControl
 argument_list|,
+name|currentUser
+argument_list|,
 name|change
 argument_list|,
 name|cherryPickCommit
