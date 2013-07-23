@@ -669,6 +669,10 @@ literal|412
 case|:
 comment|// Precondition Failed
 case|case
+literal|422
+case|:
+comment|// Unprocessable Entity
+case|case
 literal|429
 case|:
 comment|// Too Many Requests (RFC 6585)
