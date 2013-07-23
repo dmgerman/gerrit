@@ -82,6 +82,22 @@ name|JavaScriptObject
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
+import|;
+end_import
+
 begin_class
 DECL|class|AccountInfo
 specifier|public
@@ -117,6 +133,98 @@ name|email
 parameter_list|()
 comment|/*-{ return this.email; }-*/
 function_decl|;
+comment|/**    * @return true if the server supplied avatar information about this account.    *         The information may be an empty list, indicating no avatars are    *         available, such as when no plugin is installed. This method returns    *         false if the server did not check on avatars for the account.    */
+DECL|method|has_avatar_info ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_avatar_info
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('avatars') }-*/
+function_decl|;
+DECL|method|avatar (int sz)
+specifier|public
+specifier|final
+name|AvatarInfo
+name|avatar
+parameter_list|(
+name|int
+name|sz
+parameter_list|)
+block|{
+name|JsArray
+argument_list|<
+name|AvatarInfo
+argument_list|>
+name|a
+init|=
+name|avatars
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|a
+operator|!=
+literal|null
+operator|&&
+name|i
+operator|<
+name|a
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|AvatarInfo
+name|r
+init|=
+name|a
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|r
+operator|.
+name|height
+argument_list|()
+operator|==
+name|sz
+condition|)
+block|{
+return|return
+name|r
+return|;
+block|}
+block|}
+return|return
+literal|null
+return|;
+block|}
+DECL|method|avatars ()
+specifier|private
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|AvatarInfo
+argument_list|>
+name|avatars
+parameter_list|()
+comment|/*-{ return this.avatars }-*/
+function_decl|;
 DECL|method|create (int id, String name, String email)
 specifier|public
 specifier|static
@@ -140,6 +248,47 @@ specifier|protected
 name|AccountInfo
 parameter_list|()
 block|{   }
+DECL|class|AvatarInfo
+specifier|public
+specifier|static
+class|class
+name|AvatarInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|url ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|url
+parameter_list|()
+comment|/*-{ return this.url }-*/
+function_decl|;
+DECL|method|height ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|height
+parameter_list|()
+comment|/*-{ return this.height || 0 }-*/
+function_decl|;
+DECL|method|width ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|width
+parameter_list|()
+comment|/*-{ return this.width || 0 }-*/
+function_decl|;
+DECL|method|AvatarInfo ()
+specifier|protected
+name|AvatarInfo
+parameter_list|()
+block|{     }
+block|}
 block|}
 end_class
 

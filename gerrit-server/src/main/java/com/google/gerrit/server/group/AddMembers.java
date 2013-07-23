@@ -687,6 +687,16 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|infoFactory
+specifier|private
+specifier|final
+name|AccountInfo
+operator|.
+name|Loader
+operator|.
+name|Factory
+name|infoFactory
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -695,7 +705,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, Provider<AccountsCollection> accounts, AccountResolver accountResolver, AccountCache accountCache, ReviewDb db)
+DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, Provider<AccountsCollection> accounts, AccountResolver accountResolver, AccountCache accountCache, AccountInfo.Loader.Factory infoFactory, ReviewDb db)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -715,6 +725,13 @@ name|accountResolver
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|AccountInfo
+operator|.
+name|Loader
+operator|.
+name|Factory
+name|infoFactory
 parameter_list|,
 name|ReviewDb
 name|db
@@ -752,6 +769,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|infoFactory
+operator|=
+name|infoFactory
 expr_stmt|;
 name|this
 operator|.
@@ -877,6 +900,18 @@ operator|)
 operator|.
 name|getAccountId
 argument_list|()
+decl_stmt|;
+name|AccountInfo
+operator|.
+name|Loader
+name|loader
+init|=
+name|infoFactory
+operator|.
+name|create
+argument_list|(
+literal|true
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -1041,13 +1076,14 @@ name|result
 operator|.
 name|add
 argument_list|(
-name|AccountInfo
+name|loader
 operator|.
-name|parse
+name|get
 argument_list|(
 name|a
-argument_list|,
-literal|true
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1097,6 +1133,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|loader
+operator|.
+name|fill
+argument_list|()
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -1466,6 +1507,8 @@ operator|.
 name|Input
 name|input
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 comment|// Do nothing, the user is already a member.
 return|return

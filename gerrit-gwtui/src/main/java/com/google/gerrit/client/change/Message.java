@@ -460,8 +460,6 @@ name|info
 operator|.
 name|author
 argument_list|()
-argument_list|,
-literal|26
 argument_list|)
 expr_stmt|;
 name|avatar
