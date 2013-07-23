@@ -1174,8 +1174,6 @@ operator|new
 name|AvatarImage
 argument_list|(
 name|author
-argument_list|,
-literal|26
 argument_list|)
 argument_list|)
 expr_stmt|;
