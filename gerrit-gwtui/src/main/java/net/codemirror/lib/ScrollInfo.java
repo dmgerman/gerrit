@@ -109,7 +109,7 @@ DECL|method|getLeft ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|double
 name|getLeft
 parameter_list|()
 comment|/*-{ return this.left; }-*/
@@ -118,7 +118,7 @@ DECL|method|getTop ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|double
 name|getTop
 parameter_list|()
 comment|/*-{ return this.top; }-*/
@@ -127,7 +127,7 @@ DECL|method|getWidth ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|double
 name|getWidth
 parameter_list|()
 comment|/*-{ return this.width; }-*/
@@ -136,7 +136,7 @@ DECL|method|getHeight ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|double
 name|getHeight
 parameter_list|()
 comment|/*-{ return this.height; }-*/
@@ -145,7 +145,7 @@ DECL|method|getClientWidth ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|double
 name|getClientWidth
 parameter_list|()
 comment|/*-{ return this.clientWidth; }-*/
@@ -154,7 +154,7 @@ DECL|method|getClientHeight ()
 specifier|public
 specifier|final
 specifier|native
-name|int
+name|double
 name|getClientHeight
 parameter_list|()
 comment|/*-{ return this.clientHeight; }-*/

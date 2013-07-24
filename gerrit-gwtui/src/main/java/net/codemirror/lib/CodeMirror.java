@@ -245,14 +245,14 @@ name|v
 parameter_list|)
 comment|/*-{ this.setValue(v); }-*/
 function_decl|;
-DECL|method|setWidth (int w)
+DECL|method|setWidth (double w)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|setWidth
 parameter_list|(
-name|int
+name|double
 name|w
 parameter_list|)
 comment|/*-{ this.setSize(w, null); }-*/
@@ -269,14 +269,14 @@ name|w
 parameter_list|)
 comment|/*-{ this.setSize(w, null); }-*/
 function_decl|;
-DECL|method|setHeight (int h)
+DECL|method|setHeight (double h)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|setHeight
 parameter_list|(
-name|int
+name|double
 name|h
 parameter_list|)
 comment|/*-{ this.setSize(null, h); }-*/
@@ -579,17 +579,29 @@ name|options
 parameter_list|)
 comment|/*-{     return this.addLineWidget(line, node, options);   }-*/
 function_decl|;
-DECL|method|lineAtHeight (int height)
+DECL|method|lineAtHeight (double height)
 specifier|public
 specifier|final
 specifier|native
 name|int
 name|lineAtHeight
 parameter_list|(
-name|int
+name|double
 name|height
 parameter_list|)
 comment|/*-{     return this.lineAtHeight(height);   }-*/
+function_decl|;
+DECL|method|heightAtLine (int line)
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|heightAtLine
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+comment|/*-{     return this.heightAtLine(line);   }-*/
 function_decl|;
 DECL|method|getDoc ()
 specifier|public
@@ -600,29 +612,29 @@ name|getDoc
 parameter_list|()
 comment|/*-{     return this.getDoc();   }-*/
 function_decl|;
-DECL|method|scrollTo (int x, int y)
+DECL|method|scrollTo (double x, double y)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|scrollTo
 parameter_list|(
-name|int
+name|double
 name|x
 parameter_list|,
-name|int
+name|double
 name|y
 parameter_list|)
 comment|/*-{     this.scrollTo(x, y);   }-*/
 function_decl|;
-DECL|method|scrollToY (int y)
+DECL|method|scrollToY (double y)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|scrollToY
 parameter_list|(
-name|int
+name|double
 name|y
 parameter_list|)
 comment|/*-{     this.scrollTo(null, y);   }-*/
