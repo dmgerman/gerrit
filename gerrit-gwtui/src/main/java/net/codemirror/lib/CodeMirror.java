@@ -118,6 +118,24 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|event
+operator|.
+name|dom
+operator|.
+name|client
+operator|.
+name|MouseDownEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|user
 operator|.
 name|client
@@ -715,6 +733,21 @@ name|handler
 parameter_list|)
 comment|/*-{     this.on(event, $entry(function(cm, h, ele) {       handler.@net.codemirror.lib.CodeMirror.RenderLineHandler::handle(Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/CodeMirror$LineHandle;Lcom/google/gwt/dom/client/Element;)(cm, h, ele);     }));   }-*/
 function_decl|;
+DECL|method|on (String event, GutterClickHandler handler)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|GutterClickHandler
+name|handler
+parameter_list|)
+comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;Lcom/google/gwt/event/dom/client/MouseDownEvent;)(cm, l, g, e);     }));   }-*/
+function_decl|;
 DECL|method|getCursor ()
 specifier|public
 specifier|final
@@ -990,6 +1023,30 @@ name|handle
 parameter_list|,
 name|Element
 name|element
+parameter_list|)
+function_decl|;
+block|}
+DECL|interface|GutterClickHandler
+specifier|public
+interface|interface
+name|GutterClickHandler
+block|{
+DECL|method|handle (CodeMirror instance, int line, String gutter, MouseDownEvent clickEvent)
+specifier|public
+name|void
+name|handle
+parameter_list|(
+name|CodeMirror
+name|instance
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|String
+name|gutter
+parameter_list|,
+name|MouseDownEvent
+name|clickEvent
 parameter_list|)
 function_decl|;
 block|}
