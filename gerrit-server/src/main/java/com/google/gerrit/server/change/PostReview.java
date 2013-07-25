@@ -2815,6 +2815,14 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+name|String
+name|normName
+init|=
+name|lt
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|ent
@@ -2856,7 +2864,7 @@ name|add
 argument_list|(
 literal|"-"
 operator|+
-name|name
+name|normName
 argument_list|)
 expr_stmt|;
 block|}
@@ -2924,7 +2932,7 @@ name|add
 argument_list|(
 name|format
 argument_list|(
-name|name
+name|normName
 argument_list|,
 name|c
 operator|.
@@ -2937,7 +2945,7 @@ name|categories
 operator|.
 name|put
 argument_list|(
-name|name
+name|normName
 argument_list|,
 name|c
 operator|.
@@ -2968,7 +2976,7 @@ name|current
 operator|.
 name|put
 argument_list|(
-name|name
+name|normName
 argument_list|,
 name|c
 argument_list|)
@@ -3044,7 +3052,7 @@ name|add
 argument_list|(
 name|format
 argument_list|(
-name|name
+name|normName
 argument_list|,
 name|c
 operator|.
@@ -3057,7 +3065,7 @@ name|categories
 operator|.
 name|put
 argument_list|(
-name|name
+name|normName
 argument_list|,
 name|c
 operator|.
