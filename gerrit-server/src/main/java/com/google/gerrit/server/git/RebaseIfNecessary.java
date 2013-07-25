@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|PatchSetInserter
+operator|.
+name|ValidatePolicy
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -584,6 +602,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|ValidatePolicy
+operator|.
+name|NONE
 argument_list|)
 decl_stmt|;
 name|List
