@@ -474,6 +474,18 @@ name|SafeHtmlBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
+import|;
+end_import
+
 begin_comment
 comment|/** An HtmlPanel for displaying a published comment */
 end_comment
@@ -614,11 +626,14 @@ DECL|field|avatar
 name|AvatarImage
 name|avatar
 decl_stmt|;
-DECL|method|PublishedBox ( SideBySide2 parent, DisplaySide side, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info)
+DECL|method|PublishedBox ( SideBySide2 parent, CodeMirror cm, DisplaySide side, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info)
 name|PublishedBox
 parameter_list|(
 name|SideBySide2
 name|parent
+parameter_list|,
+name|CodeMirror
+name|cm
 parameter_list|,
 name|DisplaySide
 name|side
@@ -637,6 +652,10 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|cm
+argument_list|,
+name|info
+argument_list|,
 name|side
 argument_list|)
 expr_stmt|;

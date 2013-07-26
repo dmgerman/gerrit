@@ -309,6 +309,16 @@ name|String
 name|hideNumber
 parameter_list|()
 function_decl|;
+DECL|method|range ()
+name|String
+name|range
+parameter_list|()
+function_decl|;
+DECL|method|rangeHighlight ()
+name|String
+name|rangeHighlight
+parameter_list|()
+function_decl|;
 block|}
 annotation|@
 name|UiField
