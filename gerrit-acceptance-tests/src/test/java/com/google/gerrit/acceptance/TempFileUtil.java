@@ -173,18 +173,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Directory symlink reaching outside of temporary space.
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Refusing to clear symlink "
-operator|+
-name|dir
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-throw|;
+return|return;
 block|}
 name|File
 index|[]
