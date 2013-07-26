@@ -92,7 +92,7 @@ class|class
 name|AbstractDaemonTest
 block|{
 DECL|field|server
-specifier|private
+specifier|protected
 name|GerritServer
 name|server
 decl_stmt|;

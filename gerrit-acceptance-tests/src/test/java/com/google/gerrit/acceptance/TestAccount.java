@@ -265,11 +265,14 @@ name|email
 argument_list|)
 return|;
 block|}
-DECL|method|getHttpUrl ()
+DECL|method|getHttpUrl (GerritServer server)
 specifier|public
 name|String
 name|getHttpUrl
-parameter_list|()
+parameter_list|(
+name|GerritServer
+name|server
+parameter_list|)
 block|{
 name|StringBuilder
 name|b
@@ -310,7 +313,12 @@ name|b
 operator|.
 name|append
 argument_list|(
-literal|"@localhost:8080"
+literal|"@localhost:"
+operator|+
+name|server
+operator|.
+name|getHttpPort
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

@@ -148,6 +148,12 @@ specifier|public
 class|class
 name|SshSession
 block|{
+DECL|field|port
+specifier|private
+specifier|final
+name|int
+name|port
+decl_stmt|;
 DECL|field|account
 specifier|private
 specifier|final
@@ -164,14 +170,26 @@ specifier|private
 name|String
 name|error
 decl_stmt|;
-DECL|method|SshSession (TestAccount account)
+DECL|method|SshSession (GerritServer server, TestAccount account)
 specifier|public
 name|SshSession
 parameter_list|(
+name|GerritServer
+name|server
+parameter_list|,
 name|TestAccount
 name|account
 parameter_list|)
 block|{
+name|this
+operator|.
+name|port
+operator|=
+name|server
+operator|.
+name|getSshdPort
+argument_list|()
+expr_stmt|;
 name|this
 operator|.
 name|account
@@ -408,7 +426,7 @@ name|username
 argument_list|,
 literal|"localhost"
 argument_list|,
-literal|29418
+name|port
 argument_list|)
 expr_stmt|;
 name|session

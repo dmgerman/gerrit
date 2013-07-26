@@ -455,6 +455,8 @@ init|=
 operator|new
 name|SshSession
 argument_list|(
+name|server
+argument_list|,
 name|admin
 argument_list|)
 decl_stmt|;
@@ -525,7 +527,9 @@ operator|=
 name|admin
 operator|.
 name|getHttpUrl
-argument_list|()
+argument_list|(
+name|server
+argument_list|)
 expr_stmt|;
 break|break;
 default|default:

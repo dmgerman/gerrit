@@ -820,6 +820,8 @@ init|=
 operator|new
 name|SshSession
 argument_list|(
+name|server
+argument_list|,
 name|admin
 argument_list|)
 decl_stmt|;

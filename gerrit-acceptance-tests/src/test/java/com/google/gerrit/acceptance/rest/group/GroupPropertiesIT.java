@@ -388,6 +388,8 @@ operator|=
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|admin
 argument_list|)
 expr_stmt|;

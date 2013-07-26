@@ -746,6 +746,8 @@ operator|=
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|admin
 argument_list|)
 expr_stmt|;
@@ -769,6 +771,8 @@ operator|=
 operator|new
 name|SshSession
 argument_list|(
+name|server
+argument_list|,
 name|admin
 argument_list|)
 expr_stmt|;
@@ -876,6 +880,8 @@ init|=
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|accounts
 operator|.
 name|create
@@ -1316,6 +1322,8 @@ init|=
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|accounts
 operator|.
 name|create
@@ -1487,6 +1495,8 @@ init|=
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|accounts
 operator|.
 name|create

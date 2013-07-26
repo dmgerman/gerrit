@@ -670,6 +670,8 @@ operator|=
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|admin
 argument_list|)
 expr_stmt|;
@@ -1650,13 +1652,13 @@ decl_stmt|;
 name|RestResponse
 name|r
 init|=
-operator|(
 operator|new
 name|RestSession
 argument_list|(
+name|server
+argument_list|,
 name|user
 argument_list|)
-operator|)
 operator|.
 name|put
 argument_list|(
