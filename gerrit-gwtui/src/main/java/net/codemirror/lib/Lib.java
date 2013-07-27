@@ -169,7 +169,7 @@ decl_stmt|;
 annotation|@
 name|Source
 argument_list|(
-literal|"codemirror.css"
+literal|"cm3.css"
 argument_list|)
 DECL|method|css ()
 name|ExternalTextResource
@@ -179,7 +179,7 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"codemirror.js"
+literal|"cm3.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
