@@ -193,6 +193,11 @@ name|String
 name|inactiveAccountBody
 parameter_list|()
 function_decl|;
+DECL|method|labelNotApplicable ()
+name|String
+name|labelNotApplicable
+parameter_list|()
+function_decl|;
 DECL|method|menuAll ()
 name|String
 name|menuAll
