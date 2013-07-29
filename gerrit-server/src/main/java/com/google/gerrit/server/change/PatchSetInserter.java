@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -752,6 +768,22 @@ name|commit
 parameter_list|)
 function_decl|;
 block|}
+comment|/**    * Whether to use {@link CommitValidators#validateForGerritCommits},    * {@link CommitValidators#validateForReceiveCommits}, or no commit    * validation.    */
+DECL|enum|ValidatePolicy
+specifier|public
+specifier|static
+enum|enum
+name|ValidatePolicy
+block|{
+DECL|enumConstant|GERRIT
+DECL|enumConstant|RECEIVE_COMMITS
+DECL|enumConstant|NONE
+name|GERRIT
+block|,
+name|RECEIVE_COMMITS
+block|,
+name|NONE
+block|;   }
 DECL|field|hooks
 specifier|private
 specifier|final
@@ -801,11 +833,6 @@ specifier|private
 specifier|final
 name|ChangeIndexer
 name|indexer
-decl_stmt|;
-DECL|field|validateForReceiveCommits
-specifier|private
-name|boolean
-name|validateForReceiveCommits
 decl_stmt|;
 DECL|field|replacePatchSetFactory
 specifier|private
@@ -864,6 +891,15 @@ DECL|field|sshInfo
 specifier|private
 name|SshInfo
 name|sshInfo
+decl_stmt|;
+DECL|field|validatePolicy
+specifier|private
+name|ValidatePolicy
+name|validatePolicy
+init|=
+name|ValidatePolicy
+operator|.
+name|GERRIT
 decl_stmt|;
 DECL|field|draft
 specifier|private
@@ -1242,20 +1278,23 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|setValidateForReceiveCommits (boolean validate)
+DECL|method|setValidatePolicy (ValidatePolicy validate)
 specifier|public
 name|PatchSetInserter
-name|setValidateForReceiveCommits
+name|setValidatePolicy
 parameter_list|(
-name|boolean
+name|ValidatePolicy
 name|validate
 parameter_list|)
 block|{
 name|this
 operator|.
-name|validateForReceiveCommits
+name|validatePolicy
 operator|=
+name|checkNotNull
+argument_list|(
 name|validate
+argument_list|)
 expr_stmt|;
 return|return
 name|this
@@ -2177,11 +2216,14 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-if|if
+switch|switch
 condition|(
-name|validateForReceiveCommits
+name|validatePolicy
 condition|)
 block|{
+case|case
+name|RECEIVE_COMMITS
+case|:
 name|cv
 operator|.
 name|validateForReceiveCommits
@@ -2189,9 +2231,10 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
+break|break;
+case|case
+name|GERRIT
+case|:
 name|cv
 operator|.
 name|validateForGerritCommits
@@ -2199,6 +2242,7 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 catch|catch
