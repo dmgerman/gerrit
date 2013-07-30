@@ -292,6 +292,12 @@ specifier|final
 name|boolean
 name|gitBasicAuth
 decl_stmt|;
+DECL|field|loginUrl
+specifier|private
+specifier|final
+name|String
+name|loginUrl
+decl_stmt|;
 DECL|field|logoutUrl
 specifier|private
 specifier|final
@@ -393,6 +399,19 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"httpheader"
+argument_list|)
+expr_stmt|;
+name|loginUrl
+operator|=
+name|cfg
+operator|.
+name|getString
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"loginurl"
 argument_list|)
 expr_stmt|;
 name|logoutUrl
@@ -862,6 +881,16 @@ parameter_list|()
 block|{
 return|return
 name|httpHeader
+return|;
+block|}
+DECL|method|getLoginUrl ()
+specifier|public
+name|String
+name|getLoginUrl
+parameter_list|()
+block|{
+return|return
+name|loginUrl
 return|;
 block|}
 DECL|method|getLogoutURL ()

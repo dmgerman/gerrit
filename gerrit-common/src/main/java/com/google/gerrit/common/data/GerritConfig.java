@@ -196,6 +196,16 @@ specifier|protected
 name|String
 name|registerText
 decl_stmt|;
+DECL|field|loginUrl
+specifier|protected
+name|String
+name|loginUrl
+decl_stmt|;
+DECL|field|loginText
+specifier|protected
+name|String
+name|loginText
+decl_stmt|;
 DECL|field|httpPasswordUrl
 specifier|protected
 name|String
@@ -309,6 +319,57 @@ specifier|protected
 name|int
 name|changeUpdateDelay
 decl_stmt|;
+DECL|method|getLoginUrl ()
+specifier|public
+name|String
+name|getLoginUrl
+parameter_list|()
+block|{
+return|return
+name|loginUrl
+return|;
+block|}
+DECL|method|setLoginUrl (final String u)
+specifier|public
+name|void
+name|setLoginUrl
+parameter_list|(
+specifier|final
+name|String
+name|u
+parameter_list|)
+block|{
+name|loginUrl
+operator|=
+name|u
+expr_stmt|;
+block|}
+DECL|method|getLoginText ()
+specifier|public
+name|String
+name|getLoginText
+parameter_list|()
+block|{
+return|return
+name|loginText
+return|;
+block|}
+DECL|method|setLoginText (String signinText)
+specifier|public
+name|void
+name|setLoginText
+parameter_list|(
+name|String
+name|signinText
+parameter_list|)
+block|{
+name|this
+operator|.
+name|loginText
+operator|=
+name|signinText
+expr_stmt|;
+block|}
 DECL|method|getRegisterUrl ()
 specifier|public
 name|String
