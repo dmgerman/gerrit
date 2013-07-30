@@ -958,6 +958,16 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|listener
+argument_list|()
+operator|.
+name|to
+argument_list|(
+name|CommandFactoryProvider
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)

@@ -104,6 +104,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|events
+operator|.
+name|LifecycleListener
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|server
@@ -195,6 +211,18 @@ operator|.
 name|inject
 operator|.
 name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
 import|;
 end_import
 
@@ -376,7 +404,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Executor
+name|ExecutorService
 import|;
 end_import
 
@@ -449,6 +477,8 @@ comment|/**  * Creates a CommandFactory using commands registered by {@link Comm
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|CommandFactoryProvider
 class|class
 name|CommandFactoryProvider
@@ -457,6 +487,8 @@ name|Provider
 argument_list|<
 name|CommandFactory
 argument_list|>
+implements|,
+name|LifecycleListener
 block|{
 DECL|field|logger
 specifier|private
@@ -501,7 +533,7 @@ decl_stmt|;
 DECL|field|destroyExecutor
 specifier|private
 specifier|final
-name|Executor
+name|ExecutorService
 name|destroyExecutor
 decl_stmt|;
 DECL|field|schemaFactory
@@ -618,6 +650,28 @@ operator|.
 name|build
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|start ()
+specifier|public
+name|void
+name|start
+parameter_list|()
+block|{   }
+annotation|@
+name|Override
+DECL|method|stop ()
+specifier|public
+name|void
+name|stop
+parameter_list|()
+block|{
+name|destroyExecutor
+operator|.
+name|shutdownNow
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
