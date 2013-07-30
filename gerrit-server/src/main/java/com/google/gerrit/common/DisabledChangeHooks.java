@@ -142,6 +142,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Branch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Change
 import|;
 end_import
@@ -205,6 +221,22 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|events
+operator|.
+name|ChangeEvent
 import|;
 end_import
 
@@ -556,6 +588,39 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|ChangeEvent
+name|event
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
+DECL|method|postEvent (Branch.NameKey branchName, ChangeEvent event)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|branchName
+parameter_list|,
+name|ChangeEvent
+name|event
+parameter_list|)
+block|{   }
 block|}
 end_class
 

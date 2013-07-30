@@ -212,6 +212,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|events
+operator|.
+name|ChangeEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -564,6 +580,41 @@ parameter_list|,
 name|ObjectId
 name|newId
 parameter_list|)
+function_decl|;
+comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @param db The database    * @throws OrmException    */
+DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|ChangeEvent
+name|event
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
+comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    * @throws OrmException    */
+DECL|method|postEvent (Branch.NameKey branchName, ChangeEvent event)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Branch
+operator|.
+name|NameKey
+name|branchName
+parameter_list|,
+name|ChangeEvent
+name|event
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
