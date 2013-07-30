@@ -946,15 +946,15 @@ specifier|private
 name|String
 name|url
 decl_stmt|;
-DECL|field|sshdPort
+DECL|field|sshdAddress
 specifier|private
-name|int
-name|sshdPort
+name|InetSocketAddress
+name|sshdAddress
 decl_stmt|;
-DECL|field|httpPort
+DECL|field|httpAddress
 specifier|private
-name|int
-name|httpPort
+name|InetSocketAddress
+name|httpAddress
 decl_stmt|;
 DECL|method|GerritServer (File sitePath, Injector testInjector, Daemon daemon, ExecutorService daemonService)
 specifier|private
@@ -1044,11 +1044,21 @@ argument_list|,
 literal|"canonicalWebUrl"
 argument_list|)
 expr_stmt|;
-name|sshdPort
+name|URI
+name|uri
+init|=
+name|URI
+operator|.
+name|create
+argument_list|(
+name|url
+argument_list|)
+decl_stmt|;
+name|sshdAddress
 operator|=
 name|SocketUtil
 operator|.
-name|parse
+name|resolve
 argument_list|(
 name|cfg
 operator|.
@@ -1063,21 +1073,22 @@ argument_list|)
 argument_list|,
 literal|0
 argument_list|)
-operator|.
-name|getPort
-argument_list|()
 expr_stmt|;
-name|httpPort
+name|httpAddress
 operator|=
-name|URI
-operator|.
-name|create
+operator|new
+name|InetSocketAddress
 argument_list|(
-name|url
-argument_list|)
+name|uri
+operator|.
+name|getHost
+argument_list|()
+argument_list|,
+name|uri
 operator|.
 name|getPort
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getUrl ()
@@ -1089,22 +1100,22 @@ return|return
 name|url
 return|;
 block|}
-DECL|method|getSshdPort ()
-name|int
-name|getSshdPort
+DECL|method|getSshdAddress ()
+name|InetSocketAddress
+name|getSshdAddress
 parameter_list|()
 block|{
 return|return
-name|sshdPort
+name|sshdAddress
 return|;
 block|}
-DECL|method|getHttpPort ()
-name|int
-name|getHttpPort
+DECL|method|getHttpAddress ()
+name|InetSocketAddress
+name|getHttpAddress
 parameter_list|()
 block|{
 return|return
-name|httpPort
+name|httpAddress
 return|;
 block|}
 DECL|method|getTestInjector ()
