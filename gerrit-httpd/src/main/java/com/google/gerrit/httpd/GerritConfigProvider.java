@@ -1057,6 +1057,17 @@ name|emailSender
 operator|.
 name|isEnabled
 argument_list|()
+operator|&&
+name|realm
+operator|.
+name|allowsEdit
+argument_list|(
+name|Account
+operator|.
+name|FieldName
+operator|.
+name|REGISTER_NEW_EMAIL
+argument_list|)
 condition|)
 block|{
 name|fields
