@@ -118,24 +118,6 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|event
-operator|.
-name|dom
-operator|.
-name|client
-operator|.
-name|MouseDownEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
 name|user
 operator|.
 name|client
@@ -746,7 +728,7 @@ parameter_list|,
 name|GutterClickHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;Lcom/google/gwt/event/dom/client/MouseDownEvent;)(cm, l, g, e);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;Lcom/google/gwt/dom/client/NativeEvent;)(cm, l, g, e);     }));   }-*/
 function_decl|;
 DECL|method|getCursor ()
 specifier|public
@@ -1031,7 +1013,7 @@ specifier|public
 interface|interface
 name|GutterClickHandler
 block|{
-DECL|method|handle (CodeMirror instance, int line, String gutter, MouseDownEvent clickEvent)
+DECL|method|handle (CodeMirror instance, int line, String gutter, NativeEvent clickEvent)
 specifier|public
 name|void
 name|handle
@@ -1045,7 +1027,7 @@ parameter_list|,
 name|String
 name|gutter
 parameter_list|,
-name|MouseDownEvent
+name|NativeEvent
 name|clickEvent
 parameter_list|)
 function_decl|;
