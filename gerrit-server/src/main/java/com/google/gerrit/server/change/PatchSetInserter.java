@@ -2243,6 +2243,10 @@ name|event
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|NONE
+case|:
+break|break;
 block|}
 block|}
 catch|catch
