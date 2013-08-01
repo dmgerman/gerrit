@@ -5197,10 +5197,9 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|c
+name|commit
 operator|.
-name|currentPatchSetId
-argument_list|()
+name|patchsetId
 argument_list|)
 argument_list|,
 name|db
