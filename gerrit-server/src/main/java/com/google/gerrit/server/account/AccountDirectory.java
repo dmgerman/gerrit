@@ -72,7 +72,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|EnumSet
+name|Set
 import|;
 end_import
 
@@ -109,7 +109,7 @@ comment|/** Unique user identity to login to Gerrit, may be deprecated. */
 DECL|enumConstant|USERNAME
 name|USERNAME
 block|;   }
-DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, EnumSet<FillOptions> options)
+DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract
 name|void
@@ -123,7 +123,7 @@ name|AccountInfo
 argument_list|>
 name|in
 parameter_list|,
-name|EnumSet
+name|Set
 argument_list|<
 name|FillOptions
 argument_list|>
