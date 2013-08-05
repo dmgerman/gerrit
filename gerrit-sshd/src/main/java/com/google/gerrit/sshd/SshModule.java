@@ -70,20 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
-operator|.
-name|Scopes
-operator|.
-name|SINGLETON
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -93,6 +79,20 @@ operator|.
 name|PrivateInternals_DynamicTypes
 operator|.
 name|registerInParentInjectors
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Scopes
+operator|.
+name|SINGLETON
 import|;
 end_import
 
@@ -121,20 +121,6 @@ operator|.
 name|lifecycle
 operator|.
 name|LifecycleModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|CmdLineParserModule
 import|;
 end_import
 
@@ -638,13 +624,6 @@ operator|new
 name|AsyncReceiveCommits
 operator|.
 name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|install
-argument_list|(
-operator|new
-name|CmdLineParserModule
 argument_list|()
 argument_list|)
 expr_stmt|;
