@@ -176,16 +176,12 @@ name|token
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Creates an empty link.    */
+comment|/** Creates an empty link. */
 DECL|method|InlineHyperlink ()
 specifier|public
 name|InlineHyperlink
 parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
+block|{   }
 annotation|@
 name|Override
 DECL|method|onBrowserEvent (final Event event)
