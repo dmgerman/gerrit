@@ -115,7 +115,7 @@ block|{
 name|install
 argument_list|(
 operator|new
-name|EnviromentModule
+name|EnvironmentModule
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -129,10 +129,10 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|EnviromentModule
+DECL|class|EnvironmentModule
 specifier|static
 class|class
-name|EnviromentModule
+name|EnvironmentModule
 extends|extends
 name|FactoryModule
 block|{

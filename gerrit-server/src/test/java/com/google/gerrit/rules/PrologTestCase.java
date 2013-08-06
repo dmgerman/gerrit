@@ -432,7 +432,7 @@ argument_list|(
 operator|new
 name|PrologModule
 operator|.
-name|EnviromentModule
+name|EnvironmentModule
 argument_list|()
 argument_list|)
 expr_stmt|;
