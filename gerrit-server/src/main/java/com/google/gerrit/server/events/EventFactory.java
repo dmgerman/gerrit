@@ -570,6 +570,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchList
@@ -653,6 +669,24 @@ operator|.
 name|patch
 operator|.
 name|PatchSetInfoNotAvailableException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeData
 import|;
 end_import
 
@@ -884,9 +918,24 @@ specifier|final
 name|PersonIdent
 name|myIdent
 decl_stmt|;
+DECL|field|db
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+decl_stmt|;
+DECL|field|repoManager
+specifier|private
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent)
+DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent, Provider<ReviewDb> db, GitRepositoryManager repoManager)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -918,6 +967,15 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|myIdent
+parameter_list|,
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+parameter_list|,
+name|GitRepositoryManager
+name|repoManager
 parameter_list|)
 block|{
 name|this
@@ -955,6 +1013,18 @@ operator|.
 name|myIdent
 operator|=
 name|myIdent
+expr_stmt|;
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
@@ -1041,6 +1111,46 @@ operator|.
 name|getSubject
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+name|a
+operator|.
+name|commitMessage
+operator|=
+operator|new
+name|ChangeData
+argument_list|(
+name|change
+argument_list|)
+operator|.
+name|commitMessage
+argument_list|(
+name|repoManager
+argument_list|,
+name|db
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error while getting full commit message for"
+operator|+
+literal|" change "
+operator|+
+name|a
+operator|.
+name|number
+argument_list|)
+expr_stmt|;
+block|}
 name|a
 operator|.
 name|url
@@ -1075,7 +1185,7 @@ return|return
 name|a
 return|;
 block|}
-comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and    * branch that is suitable for serialization to JSON.    *    * @param refUpdate    * @param refName    * @return object suitable for serialization to JSON    */
+comment|/**    * Create a RefUpdateAttribute for the given old ObjectId, new ObjectId, and    * branch that is suitable for serialization to JSON.    *    * @param oldId    * @param newId    * @param refName    * @return object suitable for serialization to JSON    */
 DECL|method|asRefUpdateAttribute (final ObjectId oldId, final ObjectId newId, final Branch.NameKey refName)
 specifier|public
 name|RefUpdateAttribute
