@@ -306,7 +306,7 @@ block|}
 DECL|method|addWriteIndex (ChangeIndex index)
 specifier|public
 specifier|synchronized
-name|void
+name|ChangeIndex
 name|addWriteIndex
 parameter_list|(
 name|ChangeIndex
@@ -326,15 +326,30 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|ChangeIndex
+name|int
 name|i
-range|:
+init|=
+literal|0
+init|;
+name|i
+operator|<
 name|writeIndexes
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
 control|)
 block|{
 if|if
 condition|(
+name|writeIndexes
+operator|.
+name|get
+argument_list|(
 name|i
+argument_list|)
 operator|.
 name|getSchema
 argument_list|()
@@ -345,17 +360,16 @@ operator|==
 name|version
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+return|return
+name|writeIndexes
+operator|.
+name|set
 argument_list|(
-literal|"Write index version "
-operator|+
-name|version
-operator|+
-literal|" already in list"
+name|i
+argument_list|,
+name|index
 argument_list|)
-throw|;
+return|;
 block|}
 block|}
 name|writeIndexes
@@ -365,6 +379,9 @@ argument_list|(
 name|index
 argument_list|)
 expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
 DECL|method|removeWriteIndex (int version)
 specifier|public
