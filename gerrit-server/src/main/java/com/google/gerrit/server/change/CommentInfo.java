@@ -136,6 +136,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|CommentRange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|account
@@ -198,6 +214,10 @@ decl_stmt|;
 DECL|field|author
 name|AccountInfo
 name|author
+decl_stmt|;
+DECL|field|range
+name|CommentRange
+name|range
 decl_stmt|;
 DECL|method|CommentInfo (PatchLineComment c, AccountInfo.Loader accountLoader)
 name|CommentInfo
@@ -303,6 +323,13 @@ operator|=
 name|c
 operator|.
 name|getWrittenOn
+argument_list|()
+expr_stmt|;
+name|range
+operator|=
+name|c
+operator|.
+name|getRange
 argument_list|()
 expr_stmt|;
 if|if

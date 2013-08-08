@@ -3665,7 +3665,7 @@ name|addDraftBox
 argument_list|(
 name|CommentInfo
 operator|.
-name|createLine
+name|createRange
 argument_list|(
 name|path
 argument_list|,
@@ -3677,6 +3677,8 @@ argument_list|,
 name|line
 operator|+
 literal|1
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|,
@@ -3728,7 +3730,7 @@ block|{
 return|return
 name|CommentInfo
 operator|.
-name|createLine
+name|createRange
 argument_list|(
 name|path
 argument_list|,
@@ -3746,6 +3748,8 @@ name|replyTo
 operator|.
 name|id
 argument_list|()
+argument_list|,
+literal|null
 argument_list|,
 literal|null
 argument_list|)
