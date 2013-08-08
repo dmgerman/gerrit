@@ -1776,7 +1776,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<ChangeData> p)
+DECL|method|getSource (Predicate<ChangeData> p, int limit)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -1786,6 +1786,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|p
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 throws|throws
 name|QueryParseException
@@ -1878,6 +1881,8 @@ name|toQuery
 argument_list|(
 name|p
 argument_list|)
+argument_list|,
+name|limit
 argument_list|)
 return|;
 block|}
@@ -1949,16 +1954,6 @@ name|QuerySource
 implements|implements
 name|ChangeDataSource
 block|{
-comment|// TODO(dborowitz): Push limit down from predicate tree.
-DECL|field|LIMIT
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|LIMIT
-init|=
-literal|1000
-decl_stmt|;
 DECL|field|FIELDS
 specifier|private
 specifier|static
@@ -1991,7 +1986,13 @@ specifier|final
 name|Query
 name|query
 decl_stmt|;
-DECL|method|QuerySource (List<SubIndex> indexes, Query query)
+DECL|field|limit
+specifier|private
+specifier|final
+name|int
+name|limit
+decl_stmt|;
+DECL|method|QuerySource (List<SubIndex> indexes, Query query, int limit)
 specifier|public
 name|QuerySource
 parameter_list|(
@@ -2003,6 +2004,9 @@ name|indexes
 parameter_list|,
 name|Query
 name|query
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 block|{
 name|this
@@ -2016,6 +2020,12 @@ operator|.
 name|query
 operator|=
 name|query
+expr_stmt|;
+name|this
+operator|.
+name|limit
+operator|=
+name|limit
 expr_stmt|;
 block|}
 annotation|@
@@ -2173,7 +2183,7 @@ name|search
 argument_list|(
 name|query
 argument_list|,
-name|LIMIT
+name|limit
 argument_list|,
 name|sort
 argument_list|)
@@ -2188,7 +2198,7 @@ name|merge
 argument_list|(
 name|sort
 argument_list|,
-name|LIMIT
+name|limit
 argument_list|,
 name|hits
 argument_list|)

@@ -306,6 +306,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|p
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 block|{
 throw|throw
@@ -412,8 +415,8 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @return a source of documents matching the predicate.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
-DECL|method|getSource (Predicate<ChangeData> p)
+comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param limit maximum number of results to return.    * @return a source of documents matching the predicate.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
+DECL|method|getSource (Predicate<ChangeData> p, int limit)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -423,6 +426,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|p
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 throws|throws
 name|QueryParseException

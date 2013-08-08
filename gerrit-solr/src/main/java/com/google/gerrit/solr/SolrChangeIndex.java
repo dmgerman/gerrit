@@ -1411,7 +1411,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<ChangeData> p)
+DECL|method|getSource (Predicate<ChangeData> p, int limit)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -1421,6 +1421,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|p
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 throws|throws
 name|QueryParseException
@@ -1513,6 +1516,8 @@ name|toQuery
 argument_list|(
 name|p
 argument_list|)
+argument_list|,
+name|limit
 argument_list|)
 return|;
 block|}
@@ -1572,7 +1577,7 @@ specifier|final
 name|SolrQuery
 name|query
 decl_stmt|;
-DECL|method|QuerySource (List<SolrServer> indexes, Query q)
+DECL|method|QuerySource (List<SolrServer> indexes, Query q, int limit)
 specifier|public
 name|QuerySource
 parameter_list|(
@@ -1584,6 +1589,9 @@ name|indexes
 parameter_list|,
 name|Query
 name|q
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 block|{
 name|this
@@ -1610,6 +1618,20 @@ argument_list|(
 literal|"shards.tolerant"
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|query
+operator|.
+name|setParam
+argument_list|(
+literal|"rows"
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|limit
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|query

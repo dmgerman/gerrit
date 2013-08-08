@@ -74,6 +74,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|collect
 operator|.
 name|Lists
@@ -291,6 +305,24 @@ operator|.
 name|change
 operator|.
 name|ChangeData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeQueryBuilder
 import|;
 end_import
 
@@ -569,6 +601,16 @@ name|closed
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|VisibleForTesting
+DECL|field|MAX_LIMIT
+specifier|static
+specifier|final
+name|int
+name|MAX_LIMIT
+init|=
+literal|1000
+decl_stmt|;
 comment|/**    * Get the set of statuses that changes matching the given predicate may have.    *    * @param in predicate    * @return the maximal set of statuses that any changes matching the input    *     predicates may have, based on examining boolean and    *     {@link ChangeStatusPredicate}s.    */
 DECL|method|getPossibleStatus (Predicate<ChangeData> in)
 specifier|public
@@ -1016,6 +1058,28 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+comment|// Add 1 to specified limit to match behavior of QueryProcessor.
+name|int
+name|limit
+init|=
+name|ChangeQueryBuilder
+operator|.
+name|hasLimit
+argument_list|(
+name|in
+argument_list|)
+condition|?
+name|ChangeQueryBuilder
+operator|.
+name|getLimit
+argument_list|(
+name|in
+argument_list|)
+operator|+
+literal|1
+else|:
+name|MAX_LIMIT
+decl_stmt|;
 name|ChangeIndex
 name|index
 init|=
@@ -1035,6 +1099,8 @@ argument_list|(
 name|in
 argument_list|,
 name|index
+argument_list|,
+name|limit
 argument_list|)
 decl_stmt|;
 if|if
@@ -1054,6 +1120,8 @@ argument_list|(
 name|out
 argument_list|,
 name|index
+argument_list|,
+name|limit
 argument_list|)
 return|;
 block|}
@@ -1077,8 +1145,8 @@ name|out
 return|;
 block|}
 block|}
-comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    */
-DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index)
+comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param limit maximum number of results to return.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    */
+DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, int limit)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1094,6 +1162,9 @@ name|in
 parameter_list|,
 name|ChangeIndex
 name|index
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 block|{
 if|if
@@ -1215,6 +1286,8 @@ argument_list|(
 name|c
 argument_list|,
 name|index
+argument_list|,
+name|limit
 argument_list|)
 decl_stmt|;
 if|if
@@ -1343,6 +1416,8 @@ argument_list|,
 name|isIndexed
 argument_list|,
 name|index
+argument_list|,
+name|limit
 argument_list|)
 return|;
 block|}
@@ -1410,7 +1485,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|partitionChildren ( Predicate<ChangeData> in, List<Predicate<ChangeData>> newChildren, BitSet isIndexed, ChangeIndex index)
+DECL|method|partitionChildren ( Predicate<ChangeData> in, List<Predicate<ChangeData>> newChildren, BitSet isIndexed, ChangeIndex index, int limit)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1438,6 +1513,9 @@ name|isIndexed
 parameter_list|,
 name|ChangeIndex
 name|index
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 block|{
 if|if
@@ -1476,6 +1554,8 @@ name|i
 argument_list|)
 argument_list|,
 name|index
+argument_list|,
+name|limit
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1610,6 +1690,8 @@ name|indexed
 argument_list|)
 argument_list|,
 name|index
+argument_list|,
+name|limit
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1688,7 +1770,7 @@ name|all
 argument_list|)
 return|;
 block|}
-DECL|method|query (Predicate<ChangeData> p, ChangeIndex index)
+DECL|method|query (Predicate<ChangeData> p, ChangeIndex index, int limit)
 specifier|private
 name|IndexedChangeQuery
 name|query
@@ -1701,6 +1783,9 @@ name|p
 parameter_list|,
 name|ChangeIndex
 name|index
+parameter_list|,
+name|int
+name|limit
 parameter_list|)
 block|{
 try|try
@@ -1712,6 +1797,8 @@ argument_list|(
 name|index
 argument_list|,
 name|p
+argument_list|,
+name|limit
 argument_list|)
 return|;
 block|}
