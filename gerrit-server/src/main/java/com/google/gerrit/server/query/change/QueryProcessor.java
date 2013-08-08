@@ -2169,14 +2169,14 @@ block|{
 name|int
 name|n
 init|=
-name|queryBuilder
+name|ChangeQueryBuilder
 operator|.
 name|hasLimit
 argument_list|(
 name|s
 argument_list|)
 condition|?
-name|queryBuilder
+name|ChangeQueryBuilder
 operator|.
 name|getLimit
 argument_list|(
@@ -2248,7 +2248,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|queryBuilder
+name|ChangeQueryBuilder
 operator|.
 name|hasSortKey
 argument_list|(
