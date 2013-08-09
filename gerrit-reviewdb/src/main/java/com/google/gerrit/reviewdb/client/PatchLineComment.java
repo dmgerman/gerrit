@@ -544,6 +544,25 @@ name|parentUuid
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|9
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|range
+specifier|protected
+name|CommentRange
+name|range
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|PatchLineComment ()
 specifier|protected
@@ -847,6 +866,36 @@ name|parentUuid
 operator|=
 name|inReplyTo
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|setRange (CommentRange r)
+specifier|public
+name|void
+name|setRange
+parameter_list|(
+name|CommentRange
+name|r
+parameter_list|)
+block|{
+name|range
+operator|=
+name|r
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|getRange ()
+specifier|public
+name|CommentRange
+name|getRange
+parameter_list|()
+block|{
+return|return
+name|range
+return|;
 block|}
 end_function
 

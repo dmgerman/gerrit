@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|diff
+operator|.
+name|CommentRange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|changes
@@ -202,6 +218,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|input
+operator|.
+name|setRange
+argument_list|(
+name|original
+operator|.
+name|range
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|input
 operator|.
 name|setInReplyTo
@@ -435,6 +461,27 @@ name|boolean
 name|has_line
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('line'); }-*/
+function_decl|;
+DECL|method|range ()
+specifier|public
+specifier|final
+specifier|native
+name|CommentRange
+name|range
+parameter_list|()
+comment|/*-{ return this.range; }-*/
+function_decl|;
+DECL|method|setRange (CommentRange range)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setRange
+parameter_list|(
+name|CommentRange
+name|range
+parameter_list|)
+comment|/*-{ this.range = range; }-*/
 function_decl|;
 DECL|method|CommentInput ()
 specifier|protected

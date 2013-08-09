@@ -360,6 +360,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|CommentRange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|PatchLineCommentAccess
@@ -1011,6 +1027,18 @@ argument_list|,
 name|timeBase
 argument_list|,
 literal|"First Comment"
+argument_list|,
+operator|new
+name|CommentRange
+argument_list|(
+literal|1
+argument_list|,
+literal|2
+argument_list|,
+literal|3
+argument_list|,
+literal|4
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|plc2
@@ -1038,6 +1066,18 @@ operator|+
 literal|1000
 argument_list|,
 literal|"Reply to First Comment"
+argument_list|,
+operator|new
+name|CommentRange
+argument_list|(
+literal|1
+argument_list|,
+literal|2
+argument_list|,
+literal|3
+argument_list|,
+literal|4
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|plc3
@@ -1065,6 +1105,18 @@ operator|+
 literal|2000
 argument_list|,
 literal|"First Parent Comment"
+argument_list|,
+operator|new
+name|CommentRange
+argument_list|(
+literal|1
+argument_list|,
+literal|2
+argument_list|,
+literal|3
+argument_list|,
+literal|4
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|expect
@@ -1759,8 +1811,20 @@ operator|.
 name|updated
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+name|plc
+operator|.
+name|getRange
+argument_list|()
+argument_list|,
+name|ci
+operator|.
+name|range
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|newPatchLineComment (PatchSet.Id psId, String uuid, String inReplyToUuid, String filename, Side side, int line, Account.Id authorId, long millis, String message)
+DECL|method|newPatchLineComment (PatchSet.Id psId, String uuid, String inReplyToUuid, String filename, Side side, int line, Account.Id authorId, long millis, String message, CommentRange range)
 specifier|private
 specifier|static
 name|PatchLineComment
@@ -1796,6 +1860,9 @@ name|millis
 parameter_list|,
 name|String
 name|message
+parameter_list|,
+name|CommentRange
+name|range
 parameter_list|)
 block|{
 name|Patch
@@ -1848,6 +1915,13 @@ operator|.
 name|setMessage
 argument_list|(
 name|message
+argument_list|)
+expr_stmt|;
+name|plc
+operator|.
+name|setRange
+argument_list|(
+name|range
 argument_list|)
 expr_stmt|;
 name|plc

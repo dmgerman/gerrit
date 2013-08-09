@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|diff
+operator|.
+name|CommentRange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|changes
@@ -150,11 +166,11 @@ name|CommentInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|createLine (String path, Side side, int line, String in_reply_to, String message)
+DECL|method|createRange (String path, Side side, int line, String in_reply_to, String message, CommentRange range)
 specifier|public
 specifier|static
 name|CommentInfo
-name|createLine
+name|createRange
 parameter_list|(
 name|String
 name|path
@@ -170,6 +186,9 @@ name|in_reply_to
 parameter_list|,
 name|String
 name|message
+parameter_list|,
+name|CommentRange
+name|range
 parameter_list|)
 block|{
 name|CommentInfo
@@ -188,9 +207,25 @@ argument_list|)
 decl_stmt|;
 name|info
 operator|.
+name|setRange
+argument_list|(
+name|range
+argument_list|)
+expr_stmt|;
+name|info
+operator|.
 name|setLine
 argument_list|(
+name|range
+operator|==
+literal|null
+condition|?
 name|line
+else|:
+name|range
+operator|.
+name|end_line
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -487,6 +522,27 @@ name|boolean
 name|has_line
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('line'); }-*/
+function_decl|;
+DECL|method|range ()
+specifier|public
+specifier|final
+specifier|native
+name|CommentRange
+name|range
+parameter_list|()
+comment|/*-{ return this.range; }-*/
+function_decl|;
+DECL|method|setRange (CommentRange range)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setRange
+parameter_list|(
+name|CommentRange
+name|range
+parameter_list|)
+comment|/*-{ this.range = range; }-*/
 function_decl|;
 DECL|method|CommentInfo ()
 specifier|protected
