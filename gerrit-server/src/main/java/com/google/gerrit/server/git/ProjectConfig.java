@@ -1216,6 +1216,8 @@ name|of
 argument_list|(
 literal|"MaxWithBlock"
 argument_list|,
+literal|"AnyWithBlock"
+argument_list|,
 literal|"MaxNoBlock"
 argument_list|,
 literal|"NoBlock"
