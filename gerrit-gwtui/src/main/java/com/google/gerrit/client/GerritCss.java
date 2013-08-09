@@ -923,6 +923,11 @@ name|String
 name|projectFilterPanel
 parameter_list|()
 function_decl|;
+DECL|method|projectNameColumn ()
+name|String
+name|projectNameColumn
+parameter_list|()
+function_decl|;
 DECL|method|publishCommentsScreen ()
 name|String
 name|publishCommentsScreen
