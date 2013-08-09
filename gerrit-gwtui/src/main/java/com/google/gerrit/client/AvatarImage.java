@@ -435,7 +435,7 @@ name|Gerrit
 operator|.
 name|RESOURCES
 operator|.
-name|gerritAvatar
+name|gerritAvatar26
 argument_list|()
 argument_list|)
 expr_stmt|;

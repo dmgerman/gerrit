@@ -242,12 +242,12 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"diffy.png"
+literal|"diffy26.png"
 argument_list|)
-DECL|method|gerritAvatar ()
+DECL|method|gerritAvatar26 ()
 specifier|public
 name|ImageResource
-name|gerritAvatar
+name|gerritAvatar26
 parameter_list|()
 function_decl|;
 annotation|@
