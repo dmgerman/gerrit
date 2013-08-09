@@ -156,7 +156,7 @@ parameter_list|)
 block|{
 name|SafeHtml
 operator|.
-name|set
+name|setInnerHTML
 argument_list|(
 name|getBodyElement
 argument_list|(
