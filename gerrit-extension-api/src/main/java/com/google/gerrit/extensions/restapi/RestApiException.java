@@ -73,7 +73,6 @@ end_comment
 begin_class
 DECL|class|RestApiException
 specifier|public
-specifier|abstract
 class|class
 name|RestApiException
 extends|extends
