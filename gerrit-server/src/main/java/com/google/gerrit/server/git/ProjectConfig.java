@@ -3512,16 +3512,6 @@ control|)
 block|{
 if|if
 condition|(
-name|GlobalCapability
-operator|.
-name|isCapability
-argument_list|(
-name|varName
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
 name|capability
 operator|==
 literal|null
@@ -3583,7 +3573,6 @@ name|varName
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|loadPermissionRules (Config rc, String section, String subsection, String varName, Map<String, GroupReference> groupsByName, boolean useRange)
@@ -6071,13 +6060,6 @@ control|)
 block|{
 if|if
 condition|(
-name|GlobalCapability
-operator|.
-name|isCapability
-argument_list|(
-name|varName
-argument_list|)
-operator|&&
 operator|!
 name|have
 operator|.
