@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.config
+DECL|package|com.google.gerrit.server.util
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
+name|util
 package|;
 end_package
 
@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|GroupBackend
+name|ReviewDb
 import|;
 end_import
 
@@ -92,9 +92,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
-operator|.
-name|ServerRequestContext
+name|CurrentUser
 import|;
 end_import
 
@@ -108,9 +106,31 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|InternalUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|ThreadLocalRequestContext
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ProvisionException
 import|;
 end_import
 
@@ -126,71 +146,93 @@ name|Inject
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
-import|;
-end_import
-
 begin_comment
-comment|/**  * Provider of the group(s) which should become owners of a newly created  * project. Currently only supports {@code ownerGroup} declarations in the  * {@code "*"} repository, like so:  *  *<pre>  * [repository&quot;*&quot;]  *     ownerGroup = Registered Users  *     ownerGroup = Administrators  *</pre>  */
+comment|/** RequestContext with an InternalUser making the internals visible. */
 end_comment
 
 begin_class
-DECL|class|ProjectOwnerGroupsProvider
+DECL|class|ServerRequestContext
 specifier|public
 class|class
-name|ProjectOwnerGroupsProvider
-extends|extends
-name|GroupSetProvider
+name|ServerRequestContext
+implements|implements
+name|RequestContext
 block|{
+DECL|field|user
+specifier|private
+specifier|final
+name|InternalUser
+name|user
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectOwnerGroupsProvider (GroupBackend gb, @GerritServerConfig final Config config, ThreadLocalRequestContext context, ServerRequestContext serverCtx)
-specifier|public
-name|ProjectOwnerGroupsProvider
-parameter_list|(
-name|GroupBackend
-name|gb
-parameter_list|,
-annotation|@
-name|GerritServerConfig
-specifier|final
-name|Config
-name|config
-parameter_list|,
-name|ThreadLocalRequestContext
-name|context
-parameter_list|,
+DECL|method|ServerRequestContext (InternalUser.Factory userFactory)
 name|ServerRequestContext
-name|serverCtx
+parameter_list|(
+name|InternalUser
+operator|.
+name|Factory
+name|userFactory
 parameter_list|)
 block|{
-name|super
-argument_list|(
-name|gb
-argument_list|,
-name|config
-argument_list|,
-name|context
-argument_list|,
-name|serverCtx
-argument_list|,
-literal|"repository"
-argument_list|,
-literal|"*"
-argument_list|,
-literal|"ownerGroup"
-argument_list|)
+name|this
+operator|.
+name|user
+operator|=
+name|userFactory
+operator|.
+name|create
+argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getCurrentUser ()
+specifier|public
+name|CurrentUser
+name|getCurrentUser
+parameter_list|()
+block|{
+return|return
+name|user
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getReviewDbProvider ()
+specifier|public
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|getReviewDbProvider
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|ReviewDb
+name|get
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Automatic ReviewDb only available in request scope"
+argument_list|)
+throw|;
+block|}
+block|}
+return|;
 block|}
 block|}
 end_class
