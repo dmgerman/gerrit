@@ -271,7 +271,7 @@ name|groupMemberPattern
 parameter_list|()
 block|{
 return|return
-literal|"(memberUid=${username})"
+literal|"(|(memberUid=${username})(gidNumber=${gidNumber}))"
 return|;
 block|}
 annotation|@
