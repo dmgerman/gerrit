@@ -94,7 +94,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|SubmitTypeRecord
+name|ChangeDetail
 import|;
 end_import
 
@@ -106,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 operator|.
-name|Change
+name|SubmitTypeRecord
 import|;
 end_import
 
@@ -252,12 +252,12 @@ name|hp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (Change chg, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, final AccountInfoCache acc, SubmitTypeRecord submitTypeRecord)
+DECL|method|display (ChangeDetail chg, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, final AccountInfoCache acc, SubmitTypeRecord submitTypeRecord)
 specifier|public
 name|void
 name|display
 parameter_list|(
-name|Change
+name|ChangeDetail
 name|chg
 parameter_list|,
 name|Boolean
@@ -293,6 +293,9 @@ operator|.
 name|display
 argument_list|(
 name|chg
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
