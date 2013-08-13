@@ -138,6 +138,24 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|diff
+operator|.
+name|SideBySide2
+operator|.
+name|DisplaySide
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|GerritCallback
@@ -157,22 +175,6 @@ operator|.
 name|ui
 operator|.
 name|CommentLinkProcessor
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|changes
-operator|.
-name|Side
 import|;
 end_import
 
@@ -802,7 +804,7 @@ name|UiField
 name|Button
 name|discard2
 decl_stmt|;
-DECL|method|DraftBox ( SideBySide2 parent, CodeMirror cm, CommentLinkProcessor clp, PatchSet.Id id, CommentInfo info)
+DECL|method|DraftBox ( SideBySide2 parent, CodeMirror cm, DisplaySide side, CommentLinkProcessor clp, PatchSet.Id id, CommentInfo info)
 name|DraftBox
 parameter_list|(
 name|SideBySide2
@@ -810,6 +812,9 @@ name|parent
 parameter_list|,
 name|CodeMirror
 name|cm
+parameter_list|,
+name|DisplaySide
+name|side
 parameter_list|,
 name|CommentLinkProcessor
 name|clp
@@ -823,6 +828,11 @@ name|CommentInfo
 name|info
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|side
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|parent
@@ -1459,14 +1469,6 @@ name|unregisterReplyBox
 argument_list|()
 expr_stmt|;
 block|}
-name|Side
-name|side
-init|=
-name|comment
-operator|.
-name|side
-argument_list|()
-decl_stmt|;
 name|removeFromParent
 argument_list|()
 expr_stmt|;
@@ -1485,8 +1487,6 @@ operator|.
 name|removeFileCommentBox
 argument_list|(
 name|this
-argument_list|,
-name|side
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1509,8 +1509,6 @@ operator|.
 name|removeDraft
 argument_list|(
 name|this
-argument_list|,
-name|side
 argument_list|,
 name|comment
 operator|.

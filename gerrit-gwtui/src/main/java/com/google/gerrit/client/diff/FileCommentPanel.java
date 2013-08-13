@@ -104,11 +104,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|client
 operator|.
-name|changes
+name|diff
 operator|.
-name|Side
+name|SideBySide2
+operator|.
+name|DisplaySide
 import|;
 end_import
 
@@ -196,7 +198,7 @@ name|path
 decl_stmt|;
 DECL|field|side
 specifier|private
-name|Side
+name|DisplaySide
 name|side
 decl_stmt|;
 DECL|field|boxes
@@ -212,7 +214,7 @@ specifier|private
 name|FlowPanel
 name|body
 decl_stmt|;
-DECL|method|FileCommentPanel (SideBySide2 host, DiffTable table, String path, Side side)
+DECL|method|FileCommentPanel (SideBySide2 host, DiffTable table, String path, DisplaySide side)
 name|FileCommentPanel
 parameter_list|(
 name|SideBySide2
@@ -224,7 +226,7 @@ parameter_list|,
 name|String
 name|path
 parameter_list|,
-name|Side
+name|DisplaySide
 name|side
 parameter_list|)
 block|{
@@ -314,7 +316,12 @@ name|createFile
 argument_list|(
 name|path
 argument_list|,
+name|parent
+operator|.
+name|getStoredSideFromDisplaySide
+argument_list|(
 name|side
+argument_list|)
 argument_list|,
 literal|null
 argument_list|,
@@ -328,6 +335,8 @@ operator|.
 name|addDraftBox
 argument_list|(
 name|info
+argument_list|,
+name|side
 argument_list|)
 argument_list|)
 expr_stmt|;

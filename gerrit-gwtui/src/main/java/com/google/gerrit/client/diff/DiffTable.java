@@ -74,11 +74,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|client
 operator|.
-name|changes
+name|diff
 operator|.
-name|Side
+name|SideBySide2
+operator|.
+name|DisplaySide
 import|;
 end_import
 
@@ -435,9 +437,9 @@ name|PatchSelectBox2
 argument_list|(
 name|this
 argument_list|,
-name|Side
+name|DisplaySide
 operator|.
-name|PARENT
+name|A
 argument_list|)
 expr_stmt|;
 name|patchSelectBoxB
@@ -447,9 +449,9 @@ name|PatchSelectBox2
 argument_list|(
 name|this
 argument_list|,
-name|Side
+name|DisplaySide
 operator|.
-name|REVISION
+name|B
 argument_list|)
 expr_stmt|;
 name|fileCommentPanelA
@@ -463,9 +465,9 @@ name|this
 argument_list|,
 name|path
 argument_list|,
-name|Side
+name|DisplaySide
 operator|.
-name|PARENT
+name|A
 argument_list|)
 expr_stmt|;
 name|fileCommentPanelB
@@ -479,9 +481,9 @@ name|this
 argument_list|,
 name|path
 argument_list|,
-name|Side
+name|DisplaySide
 operator|.
-name|REVISION
+name|B
 argument_list|)
 expr_stmt|;
 name|initWidget
@@ -582,32 +584,32 @@ name|resizeCodeMirror
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getPanelFromSide (Side side)
+DECL|method|getPanelFromSide (DisplaySide side)
 specifier|private
 name|FileCommentPanel
 name|getPanelFromSide
 parameter_list|(
-name|Side
+name|DisplaySide
 name|side
 parameter_list|)
 block|{
 return|return
 name|side
 operator|==
-name|Side
+name|DisplaySide
 operator|.
-name|PARENT
+name|A
 condition|?
 name|fileCommentPanelA
 else|:
 name|fileCommentPanelB
 return|;
 block|}
-DECL|method|createOrEditFileComment (Side side)
+DECL|method|createOrEditFileComment (DisplaySide side)
 name|void
 name|createOrEditFileComment
 parameter_list|(
-name|Side
+name|DisplaySide
 name|side
 parameter_list|)
 block|{
@@ -625,20 +627,20 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addFileCommentBox (CommentBox box, Side side)
+DECL|method|addFileCommentBox (CommentBox box)
 name|void
 name|addFileCommentBox
 parameter_list|(
 name|CommentBox
 name|box
-parameter_list|,
-name|Side
-name|side
 parameter_list|)
 block|{
 name|getPanelFromSide
 argument_list|(
-name|side
+name|box
+operator|.
+name|getSide
+argument_list|()
 argument_list|)
 operator|.
 name|addFileComment
@@ -647,20 +649,20 @@ name|box
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onRemoveDraftBox (DraftBox box, Side side)
+DECL|method|onRemoveDraftBox (DraftBox box)
 name|void
 name|onRemoveDraftBox
 parameter_list|(
 name|DraftBox
 name|box
-parameter_list|,
-name|Side
-name|side
 parameter_list|)
 block|{
 name|getPanelFromSide
 argument_list|(
-name|side
+name|box
+operator|.
+name|getSide
+argument_list|()
 argument_list|)
 operator|.
 name|onRemoveDraftBox
