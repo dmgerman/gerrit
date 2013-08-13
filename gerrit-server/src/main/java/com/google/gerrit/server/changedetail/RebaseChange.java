@@ -1591,7 +1591,7 @@ name|uploader
 argument_list|)
 decl_stmt|;
 name|PatchSetInserter
-name|patchSetinserter
+name|patchSetInserter
 init|=
 name|patchSetInserterFactory
 operator|.
@@ -1642,6 +1642,17 @@ name|runHooks
 argument_list|)
 decl_stmt|;
 specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|newPatchSetId
+init|=
+name|patchSetInserter
+operator|.
+name|getPatchSetId
+argument_list|()
+decl_stmt|;
+specifier|final
 name|ChangeMessage
 name|cmsg
 init|=
@@ -1680,10 +1691,7 @@ name|setMessage
 argument_list|(
 literal|"Patch Set "
 operator|+
-name|change
-operator|.
-name|currentPatchSetId
-argument_list|()
+name|newPatchSetId
 operator|.
 name|get
 argument_list|()
@@ -1701,7 +1709,7 @@ expr_stmt|;
 name|Change
 name|newChange
 init|=
-name|patchSetinserter
+name|patchSetInserter
 operator|.
 name|setMessage
 argument_list|(

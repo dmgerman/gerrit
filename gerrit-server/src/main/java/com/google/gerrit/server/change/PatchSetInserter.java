@@ -1163,6 +1163,24 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|getPatchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchSetId
+parameter_list|()
+block|{
+name|init
+argument_list|()
+expr_stmt|;
+return|return
+name|patchSet
+operator|.
+name|getId
+argument_list|()
+return|;
+block|}
 DECL|method|setMessage (String message)
 specifier|public
 name|PatchSetInserter
