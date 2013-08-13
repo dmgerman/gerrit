@@ -182,7 +182,7 @@ name|name
 operator|=
 literal|"type"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Test prolog submit type"
 argument_list|)

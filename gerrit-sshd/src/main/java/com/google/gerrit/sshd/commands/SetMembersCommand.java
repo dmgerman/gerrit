@@ -442,7 +442,7 @@ name|name
 operator|=
 literal|"set-members"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Modifies members of specific group or number of groups"
 argument_list|)

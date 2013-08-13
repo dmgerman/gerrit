@@ -288,7 +288,7 @@ name|name
 operator|=
 literal|"ban-commit"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Ban a commit from a project's repository"
 argument_list|)

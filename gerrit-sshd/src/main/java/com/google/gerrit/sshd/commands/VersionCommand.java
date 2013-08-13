@@ -116,7 +116,7 @@ name|name
 operator|=
 literal|"version"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Display gerrit version"
 argument_list|)

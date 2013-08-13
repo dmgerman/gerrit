@@ -390,7 +390,7 @@ name|name
 operator|=
 literal|"receive-pack"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Standard Git server side command for client side git push"
 argument_list|)

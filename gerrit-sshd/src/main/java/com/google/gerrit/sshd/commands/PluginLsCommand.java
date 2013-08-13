@@ -193,7 +193,7 @@ name|name
 operator|=
 literal|"ls"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"List the installed plugins"
 argument_list|)

@@ -339,7 +339,7 @@ name|name
 operator|=
 literal|"create-project"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Create a new project and associated Git repository"
 argument_list|)

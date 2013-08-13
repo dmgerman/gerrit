@@ -205,7 +205,7 @@ name|name
 operator|=
 literal|"remove"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Disable plugins"
 argument_list|)

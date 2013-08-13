@@ -347,7 +347,7 @@ name|name
 operator|=
 literal|"create-account"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Create a new batch/role account"
 argument_list|)

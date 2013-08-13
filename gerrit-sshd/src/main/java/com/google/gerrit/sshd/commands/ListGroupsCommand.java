@@ -364,7 +364,7 @@ name|name
 operator|=
 literal|"ls-groups"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"List groups visible to the caller"
 argument_list|)

@@ -594,7 +594,7 @@ name|name
 operator|=
 literal|"set-account"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Change an account's settings"
 argument_list|)

@@ -204,7 +204,7 @@ name|name
 operator|=
 literal|"rename-group"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Rename an account group"
 argument_list|)

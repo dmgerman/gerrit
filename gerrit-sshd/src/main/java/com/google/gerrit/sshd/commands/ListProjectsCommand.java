@@ -154,7 +154,7 @@ name|name
 operator|=
 literal|"ls-projects"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"List projects visible to the caller"
 argument_list|)

@@ -166,7 +166,7 @@ name|name
 operator|=
 literal|"query"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Query the change database"
 argument_list|)

@@ -527,7 +527,7 @@ name|name
 operator|=
 literal|"show-caches"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Display current cache statistics"
 argument_list|)

@@ -221,7 +221,7 @@ name|name
 operator|=
 literal|"enable"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Enable plugins"
 argument_list|)

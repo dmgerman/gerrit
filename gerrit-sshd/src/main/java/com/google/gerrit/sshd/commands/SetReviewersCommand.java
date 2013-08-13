@@ -456,7 +456,7 @@ name|name
 operator|=
 literal|"set-reviewers"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Add or remove reviewers on a change"
 argument_list|)

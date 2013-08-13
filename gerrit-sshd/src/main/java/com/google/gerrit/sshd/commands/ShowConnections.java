@@ -403,7 +403,7 @@ name|name
 operator|=
 literal|"show-connections"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Display active client SSH connections"
 argument_list|)

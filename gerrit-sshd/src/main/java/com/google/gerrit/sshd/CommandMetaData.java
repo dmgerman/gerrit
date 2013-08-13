@@ -143,6 +143,16 @@ name|String
 name|name
 parameter_list|()
 function_decl|;
+DECL|method|description ()
+name|String
+name|description
+parameter_list|()
+default|default
+literal|""
+function_decl|;
+comment|/** @deprecated use description intead. */
+annotation|@
+name|Deprecated
 DECL|method|descr ()
 name|String
 name|descr

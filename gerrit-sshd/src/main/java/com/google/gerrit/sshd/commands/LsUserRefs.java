@@ -399,7 +399,7 @@ name|name
 operator|=
 literal|"ls-user-refs"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"List refs visible to a specific user"
 argument_list|)

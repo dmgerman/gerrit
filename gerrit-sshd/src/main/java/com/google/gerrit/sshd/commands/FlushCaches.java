@@ -243,7 +243,7 @@ name|name
 operator|=
 literal|"flush-caches"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Flush some/all server caches from memory"
 argument_list|)

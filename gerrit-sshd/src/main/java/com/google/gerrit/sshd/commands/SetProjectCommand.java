@@ -369,7 +369,7 @@ name|name
 operator|=
 literal|"set-project"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Change a project's settings"
 argument_list|)

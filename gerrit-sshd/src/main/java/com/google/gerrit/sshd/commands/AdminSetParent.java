@@ -515,7 +515,7 @@ name|name
 operator|=
 literal|"set-project-parent"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Change the project permissions are inherited from"
 argument_list|)

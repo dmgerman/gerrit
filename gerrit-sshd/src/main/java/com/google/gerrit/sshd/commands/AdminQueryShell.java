@@ -215,7 +215,7 @@ name|name
 operator|=
 literal|"gsql"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Administrative interface to active database"
 argument_list|)

@@ -329,7 +329,7 @@ name|name
 operator|=
 literal|"stream-events"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Monitor events occurring in real time"
 argument_list|)

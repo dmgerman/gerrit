@@ -293,7 +293,7 @@ name|name
 operator|=
 literal|"install"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Install/Add a plugin"
 argument_list|)

@@ -182,7 +182,7 @@ name|name
 operator|=
 literal|"rule"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Test prolog submit rules"
 argument_list|)

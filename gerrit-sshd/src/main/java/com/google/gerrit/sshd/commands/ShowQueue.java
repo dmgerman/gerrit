@@ -362,7 +362,7 @@ name|name
 operator|=
 literal|"show-queue"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Display the background work queues, including replication"
 argument_list|)

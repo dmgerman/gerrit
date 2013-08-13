@@ -734,7 +734,7 @@ name|name
 operator|=
 literal|"review"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Verify, approve and/or submit one or more patch sets"
 argument_list|)

@@ -295,7 +295,7 @@ name|name
 operator|=
 literal|"create-group"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Create a new account group"
 argument_list|)

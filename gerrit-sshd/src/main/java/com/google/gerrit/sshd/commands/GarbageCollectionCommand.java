@@ -329,7 +329,7 @@ name|name
 operator|=
 literal|"gc"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Run Git garbage collection"
 argument_list|)

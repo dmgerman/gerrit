@@ -223,7 +223,7 @@ name|name
 operator|=
 literal|"reload"
 argument_list|,
-name|descr
+name|description
 operator|=
 literal|"Reload/Restart plugins"
 argument_list|)
