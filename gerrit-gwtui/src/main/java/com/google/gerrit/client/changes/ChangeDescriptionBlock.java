@@ -110,7 +110,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|SubmitTypeRecord
+name|ChangeDetail
 import|;
 end_import
 
@@ -122,11 +122,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 operator|.
-name|Change
+name|SubmitTypeRecord
 import|;
 end_import
 
@@ -268,13 +268,13 @@ name|hp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (Change chg, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, AccountInfoCache acc, SubmitTypeRecord submitTypeRecord, CommentLinkProcessor commentLinkProcessor)
+DECL|method|display (ChangeDetail changeDetail, Boolean starred, Boolean canEditCommitMessage, PatchSetInfo info, AccountInfoCache acc, SubmitTypeRecord submitTypeRecord, CommentLinkProcessor commentLinkProcessor)
 specifier|public
 name|void
 name|display
 parameter_list|(
-name|Change
-name|chg
+name|ChangeDetail
+name|changeDetail
 parameter_list|,
 name|Boolean
 name|starred
@@ -299,7 +299,7 @@ name|infoBlock
 operator|.
 name|display
 argument_list|(
-name|chg
+name|changeDetail
 argument_list|,
 name|acc
 argument_list|,
@@ -310,7 +310,10 @@ name|messageBlock
 operator|.
 name|display
 argument_list|(
-name|chg
+name|changeDetail
+operator|.
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
