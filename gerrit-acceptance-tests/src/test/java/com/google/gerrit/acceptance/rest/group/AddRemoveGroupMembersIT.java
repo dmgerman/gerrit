@@ -330,7 +330,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -1631,13 +1631,13 @@ argument_list|()
 decl_stmt|;
 name|ResultSet
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|all
 init|=
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|byGroup
@@ -1650,7 +1650,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|m
 range|:
 name|all
@@ -1853,13 +1853,13 @@ argument_list|)
 decl_stmt|;
 name|Iterator
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|it
 init|=
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|byGroup

@@ -243,6 +243,11 @@ comment|/* final */
 name|LibraryDownloader
 name|mysqlDriver
 decl_stmt|;
+DECL|field|oracleDriver
+comment|/* final */
+name|LibraryDownloader
+name|oracleDriver
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|Libraries (final Provider<LibraryDownloader> downloadProvider)

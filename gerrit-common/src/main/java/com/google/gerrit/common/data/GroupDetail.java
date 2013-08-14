@@ -94,7 +94,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -152,7 +152,7 @@ DECL|field|includes
 specifier|public
 name|List
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|includes
 decl_stmt|;
@@ -216,14 +216,14 @@ operator|=
 name|m
 expr_stmt|;
 block|}
-DECL|method|setIncludes (List<AccountGroupIncludeByUuid> i)
+DECL|method|setIncludes (List<AccountGroupById> i)
 specifier|public
 name|void
 name|setIncludes
 parameter_list|(
 name|List
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|i
 parameter_list|)

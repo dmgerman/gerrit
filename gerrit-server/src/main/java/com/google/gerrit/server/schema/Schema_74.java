@@ -110,7 +110,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -126,7 +126,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 import|;
 end_import
 
@@ -390,27 +390,27 @@ argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|newIncludes
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|>
 name|newIncludeAudits
 init|=
 operator|new
 name|ArrayList
 argument_list|<
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -514,14 +514,14 @@ expr_stmt|;
 continue|continue;
 block|}
 comment|// Create the new include entry
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|destIncludeEntry
 init|=
 operator|new
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|(
 operator|new
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 operator|.
 name|Key
 argument_list|(
@@ -611,11 +611,11 @@ literal|"removed_by"
 argument_list|)
 decl_stmt|;
 comment|// Create the new audit entry
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 name|destAuditEntry
 init|=
 operator|new
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|(
 name|destIncludeEntry
 argument_list|,
@@ -697,7 +697,7 @@ expr_stmt|;
 comment|// Now insert all of the new entries to the database
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|insert
@@ -707,7 +707,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|accountGroupIncludesByUuidAudit
+name|accountGroupByIdAud
 argument_list|()
 operator|.
 name|insert

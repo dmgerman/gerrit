@@ -264,7 +264,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -280,7 +280,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 import|;
 end_import
 
@@ -598,7 +598,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|includedGroups
 init|=
@@ -613,7 +613,7 @@ decl_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|toRemove
 init|=
@@ -680,7 +680,7 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|g
 init|=
 name|includedGroups
@@ -725,7 +725,7 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|delete
@@ -736,7 +736,7 @@ expr_stmt|;
 for|for
 control|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|g
 range|:
 name|toRemove
@@ -779,7 +779,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|getIncludedGroups
 parameter_list|(
@@ -799,7 +799,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|,
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|groups
 init|=
@@ -811,12 +811,12 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|g
 range|:
 name|db
 operator|.
-name|accountGroupIncludesByUuid
+name|accountGroupById
 argument_list|()
 operator|.
 name|byGroup
@@ -842,7 +842,7 @@ return|return
 name|groups
 return|;
 block|}
-DECL|method|writeAudits (final List<AccountGroupIncludeByUuid> toBeRemoved)
+DECL|method|writeAudits (final List<AccountGroupById> toBeRemoved)
 specifier|private
 name|void
 name|writeAudits
@@ -850,7 +850,7 @@ parameter_list|(
 specifier|final
 name|List
 argument_list|<
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 argument_list|>
 name|toBeRemoved
 parameter_list|)
@@ -879,7 +879,7 @@ decl_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 argument_list|>
 name|auditUpdates
 init|=
@@ -891,25 +891,25 @@ decl_stmt|;
 for|for
 control|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|g
 range|:
 name|toBeRemoved
 control|)
 block|{
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 name|audit
 init|=
 literal|null
 decl_stmt|;
 for|for
 control|(
-name|AccountGroupIncludeByUuidAudit
+name|AccountGroupByIdAud
 name|a
 range|:
 name|db
 operator|.
-name|accountGroupIncludesByUuidAudit
+name|accountGroupByIdAud
 argument_list|()
 operator|.
 name|byGroupInclude
@@ -966,7 +966,7 @@ block|}
 block|}
 name|db
 operator|.
-name|accountGroupIncludesByUuidAudit
+name|accountGroupByIdAud
 argument_list|()
 operator|.
 name|update

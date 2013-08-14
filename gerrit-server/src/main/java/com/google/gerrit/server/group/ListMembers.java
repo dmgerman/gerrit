@@ -230,7 +230,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 import|;
 end_import
 
@@ -901,7 +901,7 @@ block|{
 for|for
 control|(
 specifier|final
-name|AccountGroupIncludeByUuid
+name|AccountGroupById
 name|includedGroup
 range|:
 name|groupDetail
