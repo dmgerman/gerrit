@@ -1277,7 +1277,6 @@ name|rs
 argument_list|,
 literal|false
 argument_list|,
-comment|//
 name|Identity
 operator|.
 name|create
@@ -1287,7 +1286,6 @@ argument_list|,
 literal|"TABLE_SCHEM"
 argument_list|)
 argument_list|,
-comment|//
 name|Identity
 operator|.
 name|create
@@ -1297,7 +1295,6 @@ argument_list|,
 literal|"TABLE_NAME"
 argument_list|)
 argument_list|,
-comment|//
 name|Identity
 operator|.
 name|create
@@ -1469,7 +1466,6 @@ name|rs
 argument_list|,
 literal|true
 argument_list|,
-comment|//
 name|Identity
 operator|.
 name|create
@@ -1479,7 +1475,6 @@ argument_list|,
 literal|"COLUMN_NAME"
 argument_list|)
 argument_list|,
-comment|//
 operator|new
 name|Function
 argument_list|(
@@ -2082,7 +2077,6 @@ literal|" row"
 else|:
 literal|" rows"
 operator|)
-comment|//
 operator|+
 literal|"; "
 operator|+
