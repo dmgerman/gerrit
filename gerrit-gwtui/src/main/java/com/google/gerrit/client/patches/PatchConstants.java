@@ -185,6 +185,11 @@ name|String
 name|upToChange
 parameter_list|()
 function_decl|;
+DECL|method|openReply ()
+name|String
+name|openReply
+parameter_list|()
+function_decl|;
 DECL|method|linePrev ()
 name|String
 name|linePrev

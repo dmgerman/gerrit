@@ -1379,6 +1379,11 @@ specifier|private
 name|UpdateAvailableBar
 name|updateAvailable
 decl_stmt|;
+DECL|field|openReplyBox
+specifier|private
+name|boolean
+name|openReplyBox
+decl_stmt|;
 DECL|field|style
 annotation|@
 name|UiField
@@ -1558,7 +1563,7 @@ specifier|private
 name|ReplyAction
 name|replyAction
 decl_stmt|;
-DECL|method|ChangeScreen2 (Change.Id changeId, String revision)
+DECL|method|ChangeScreen2 (Change.Id changeId, String revision, boolean openReplyBox)
 specifier|public
 name|ChangeScreen2
 parameter_list|(
@@ -1569,6 +1574,9 @@ name|changeId
 parameter_list|,
 name|String
 name|revision
+parameter_list|,
+name|boolean
+name|openReplyBox
 parameter_list|)
 block|{
 name|this
@@ -1594,6 +1602,12 @@ condition|?
 name|revision
 else|:
 literal|null
+expr_stmt|;
+name|this
+operator|.
+name|openReplyBox
+operator|=
+name|openReplyBox
 expr_stmt|;
 name|add
 argument_list|(
@@ -2137,6 +2151,17 @@ name|getOffsetHeight
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|openReplyBox
+condition|)
+block|{
+name|onReply
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 name|String
 name|prior
 init|=
@@ -2169,6 +2194,7 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|startPoller
 argument_list|()
@@ -2413,14 +2439,6 @@ name|changeId
 argument_list|,
 name|n
 argument_list|)
-argument_list|,
-operator|new
-name|ChangeScreen2
-argument_list|(
-name|changeId
-argument_list|,
-name|n
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2437,6 +2455,16 @@ parameter_list|(
 name|ClickEvent
 name|e
 parameter_list|)
+block|{
+name|onReply
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|onReply ()
+specifier|private
+name|void
+name|onReply
+parameter_list|()
 block|{
 if|if
 condition|(
