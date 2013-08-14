@@ -98,6 +98,11 @@ name|String
 name|openChange
 parameter_list|()
 function_decl|;
+DECL|method|reviewedFileTitle ()
+name|String
+name|reviewedFileTitle
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
