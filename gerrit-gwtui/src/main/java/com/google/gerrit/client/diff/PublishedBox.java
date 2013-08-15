@@ -182,6 +182,24 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|diff
+operator|.
+name|SideBySide2
+operator|.
+name|DisplaySide
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|patches
 operator|.
 name|PatchUtil
@@ -456,6 +474,18 @@ name|SafeHtmlBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
+import|;
+end_import
+
 begin_comment
 comment|/** An HtmlPanel for displaying a published comment */
 end_comment
@@ -596,11 +626,17 @@ DECL|field|avatar
 name|AvatarImage
 name|avatar
 decl_stmt|;
-DECL|method|PublishedBox ( SideBySide2 parent, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info)
+DECL|method|PublishedBox ( SideBySide2 parent, CodeMirror cm, DisplaySide side, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info)
 name|PublishedBox
 parameter_list|(
 name|SideBySide2
 name|parent
+parameter_list|,
+name|CodeMirror
+name|cm
+parameter_list|,
+name|DisplaySide
+name|side
 parameter_list|,
 name|CommentLinkProcessor
 name|clp
@@ -614,6 +650,15 @@ name|CommentInfo
 name|info
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|cm
+argument_list|,
+name|info
+argument_list|,
+name|side
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|parent
@@ -958,6 +1003,9 @@ name|createReply
 argument_list|(
 name|comment
 argument_list|)
+argument_list|,
+name|getSide
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|registerReplyBox
@@ -1023,11 +1071,6 @@ operator|.
 name|addFileCommentBox
 argument_list|(
 name|box
-argument_list|,
-name|comment
-operator|.
-name|side
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1186,6 +1229,9 @@ operator|.
 name|addDraftBox
 argument_list|(
 name|result
+argument_list|,
+name|getSide
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|registerReplyBox
@@ -1208,11 +1254,6 @@ operator|.
 name|addFileCommentBox
 argument_list|(
 name|box
-argument_list|,
-name|comment
-operator|.
-name|side
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

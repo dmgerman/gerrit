@@ -90,9 +90,11 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
+name|diff
 operator|.
-name|PatchUtil
+name|SideBySide2
+operator|.
+name|DisplaySide
 import|;
 end_import
 
@@ -104,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|client
 operator|.
-name|changes
+name|patches
 operator|.
-name|Side
+name|PatchUtil
 import|;
 end_import
 
@@ -298,16 +300,16 @@ name|table
 decl_stmt|;
 DECL|field|side
 specifier|private
-name|Side
+name|DisplaySide
 name|side
 decl_stmt|;
-DECL|method|PatchSelectBox2 (DiffTable table, Side side)
+DECL|method|PatchSelectBox2 (DiffTable table, DisplaySide side)
 name|PatchSelectBox2
 parameter_list|(
 name|DiffTable
 name|table
 parameter_list|,
-name|Side
+name|DisplaySide
 name|side
 parameter_list|)
 block|{

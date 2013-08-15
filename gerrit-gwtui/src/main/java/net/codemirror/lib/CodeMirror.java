@@ -128,6 +128,20 @@ name|AsyncCallback
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|TextMarker
+operator|.
+name|FromTo
+import|;
+end_import
+
 begin_comment
 comment|/**  * Glue to connect CodeMirror to be callable from GWT.  *  * @link http://codemirror.net/doc/manual.html#api  */
 end_comment
@@ -811,6 +825,31 @@ name|start
 parameter_list|)
 comment|/*-{     return this.getCursor(start);   }-*/
 function_decl|;
+DECL|method|getSelectedRange ()
+specifier|public
+specifier|final
+name|FromTo
+name|getSelectedRange
+parameter_list|()
+block|{
+return|return
+name|FromTo
+operator|.
+name|create
+argument_list|(
+name|getCursor
+argument_list|(
+literal|"start"
+argument_list|)
+argument_list|,
+name|getCursor
+argument_list|(
+literal|"end"
+argument_list|)
+argument_list|)
+return|;
+block|}
+empty_stmt|;
 DECL|method|setCursor (LineCharacter lineCh)
 specifier|public
 specifier|final
