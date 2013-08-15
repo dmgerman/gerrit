@@ -828,10 +828,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|testRunPrologTestCases ()
+DECL|method|runPrologBasedTests ()
 specifier|public
 name|void
-name|testRunPrologTestCases
+name|runPrologBasedTests
 parameter_list|()
 block|{
 name|int

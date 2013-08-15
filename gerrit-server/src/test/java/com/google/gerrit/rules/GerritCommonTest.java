@@ -513,6 +513,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testGerritCommon ()
+specifier|public
+name|void
+name|testGerritCommon
+parameter_list|()
+block|{
+name|runPrologBasedTests
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|value (int value, String text)
 specifier|private
 specifier|static
