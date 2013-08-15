@@ -1076,6 +1076,15 @@ name|getSizer
 parameter_list|()
 comment|/*-{     return this.display.sizer;   }-*/
 function_decl|;
+DECL|method|getInputField ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getInputField
+parameter_list|()
+comment|/*-{     return this.getInputField();   }-*/
+function_decl|;
 DECL|method|getScrollbarV ()
 specifier|public
 specifier|final
