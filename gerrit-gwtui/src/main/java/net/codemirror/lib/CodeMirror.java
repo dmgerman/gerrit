@@ -1094,6 +1094,25 @@ name|getScrollbarV
 parameter_list|()
 comment|/*-{     return this.display.scrollbarV;   }-*/
 function_decl|;
+DECL|method|setObjectProperty (JavaScriptObject obj, String name, boolean value)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|setObjectProperty
+parameter_list|(
+name|JavaScriptObject
+name|obj
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|boolean
+name|value
+parameter_list|)
+comment|/*-{     obj[name] = value;   }-*/
+function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror
