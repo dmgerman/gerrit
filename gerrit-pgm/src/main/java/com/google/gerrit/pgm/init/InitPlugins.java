@@ -782,10 +782,9 @@ name|plugins_dir
 argument_list|,
 name|plugin
 operator|.
-name|pluginFile
-operator|.
-name|getName
-argument_list|()
+name|name
+operator|+
+literal|".jar"
 argument_list|)
 decl_stmt|;
 if|if
