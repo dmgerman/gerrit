@@ -588,8 +588,6 @@ block|,
 literal|"U"
 block|,
 literal|"Ctrl-C"
-block|,
-literal|"Enter"
 block|}
 control|)
 block|{
