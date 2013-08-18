@@ -198,6 +198,26 @@ specifier|public
 class|class
 name|AccountApi
 block|{
+DECL|method|self ()
+specifier|public
+specifier|static
+name|RestApi
+name|self
+parameter_list|()
+block|{
+return|return
+operator|new
+name|RestApi
+argument_list|(
+literal|"/accounts/"
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"self"
+argument_list|)
+return|;
+block|}
 comment|/** Retrieve the username */
 DECL|method|getUsername (String account, AsyncCallback<NativeString> cb)
 specifier|public

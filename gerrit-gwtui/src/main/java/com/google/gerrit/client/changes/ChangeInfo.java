@@ -1365,6 +1365,27 @@ name|actions
 parameter_list|()
 comment|/*-{ return this.actions; }-*/
 function_decl|;
+DECL|method|has_fetch ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_fetch
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('fetch') }-*/
+function_decl|;
+DECL|method|fetch ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|FetchInfo
+argument_list|>
+name|fetch
+parameter_list|()
+comment|/*-{ return this.fetch; }-*/
+function_decl|;
 DECL|method|sortRevisionInfoByNumber (JsArray<RevisionInfo> list)
 specifier|public
 specifier|static
@@ -1428,6 +1449,38 @@ block|}
 DECL|method|RevisionInfo ()
 specifier|protected
 name|RevisionInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|FetchInfo
+specifier|public
+specifier|static
+class|class
+name|FetchInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|url ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|url
+parameter_list|()
+comment|/*-{ return this.url }-*/
+function_decl|;
+DECL|method|ref ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|ref
+parameter_list|()
+comment|/*-{ return this.ref }-*/
+function_decl|;
+DECL|method|FetchInfo ()
+specifier|protected
+name|FetchInfo
 parameter_list|()
 block|{     }
 block|}
