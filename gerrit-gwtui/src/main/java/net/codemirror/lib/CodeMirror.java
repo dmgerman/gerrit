@@ -1020,23 +1020,6 @@ name|lineCount
 parameter_list|()
 comment|/*-{     return this.lineCount();   }-*/
 function_decl|;
-comment|/** Hack into CodeMirror to disable unwanted keys */
-DECL|method|disableUnwantedKey (String category, String name)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|void
-name|disableUnwantedKey
-parameter_list|(
-name|String
-name|category
-parameter_list|,
-name|String
-name|name
-parameter_list|)
-comment|/*-{     $wnd.CodeMirror.keyMap[category][name] = undefined;   }-*/
-function_decl|;
 DECL|method|moveCursorDown (int numLines)
 specifier|public
 specifier|final
@@ -1112,6 +1095,35 @@ name|boolean
 name|value
 parameter_list|)
 comment|/*-{     obj[name] = value;   }-*/
+function_decl|;
+DECL|method|cloneKeyMap (String name)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|KeyMap
+name|cloneKeyMap
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+comment|/*-{     var i = $wnd.CodeMirror.keyMap[name];     var o = {};     for (n in i)       if (i.hasOwnProperty(n))         o[n] = i[n];     return o;   }-*/
+function_decl|;
+DECL|method|addKeyMap (String name, KeyMap km)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|addKeyMap
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|KeyMap
+name|km
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.keyMap[name] = km;   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected

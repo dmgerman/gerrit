@@ -3594,7 +3594,7 @@ name|set
 argument_list|(
 literal|"keyMap"
 argument_list|,
-literal|"vim"
+literal|"vim_ro"
 argument_list|)
 operator|.
 name|set
