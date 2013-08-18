@@ -878,7 +878,7 @@ specifier|native
 name|boolean
 name|hasActiveLine
 parameter_list|()
-comment|/*-{     return this.state.hasOwnProperty('activeLine');   }-*/
+comment|/*-{     return !!this.state.activeLine;   }-*/
 function_decl|;
 DECL|method|getActiveLine ()
 specifier|public
