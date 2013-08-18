@@ -3773,6 +3773,11 @@ name|String
 name|token
 parameter_list|)
 block|{
+name|ApiGlue
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|hpd
@@ -3790,11 +3795,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|ApiGlue
-operator|.
-name|init
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 specifier|final
