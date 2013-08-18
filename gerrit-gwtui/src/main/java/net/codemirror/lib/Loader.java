@@ -575,6 +575,8 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"A"
+block|,
 literal|"C"
 block|,
 literal|"J"
