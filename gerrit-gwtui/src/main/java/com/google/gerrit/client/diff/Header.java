@@ -652,6 +652,16 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
+DECL|field|hasPrev
+specifier|private
+name|boolean
+name|hasPrev
+decl_stmt|;
+DECL|field|hasNext
+specifier|private
+name|boolean
+name|hasNext
+decl_stmt|;
 DECL|method|Header (KeyCommandSet keys, PatchSet.Id patchSetId, String path)
 name|Header
 parameter_list|(
@@ -1309,6 +1319,25 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|link
+operator|==
+name|prev
+condition|)
+block|{
+name|hasPrev
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
+name|hasNext
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1400,6 +1429,24 @@ literal|1
 argument_list|)
 else|:
 name|fileName
+return|;
+block|}
+DECL|method|hasPrev ()
+name|boolean
+name|hasPrev
+parameter_list|()
+block|{
+return|return
+name|hasPrev
+return|;
+block|}
+DECL|method|hasNext ()
+name|boolean
+name|hasNext
+parameter_list|()
+block|{
+return|return
+name|hasNext
 return|;
 block|}
 block|}
