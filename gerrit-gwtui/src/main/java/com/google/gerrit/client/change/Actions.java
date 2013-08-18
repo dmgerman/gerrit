@@ -357,6 +357,8 @@ block|,
 literal|"submit"
 block|,
 literal|"rebase"
+block|,
+literal|"message"
 block|}
 decl_stmt|;
 DECL|interface|Binder

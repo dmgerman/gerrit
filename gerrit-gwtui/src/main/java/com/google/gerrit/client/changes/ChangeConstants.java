@@ -275,6 +275,11 @@ name|String
 name|keyEditTopic
 parameter_list|()
 function_decl|;
+DECL|method|keyEditMessage ()
+name|String
+name|keyEditMessage
+parameter_list|()
+function_decl|;
 DECL|method|patchTableColumnName ()
 name|String
 name|patchTableColumnName

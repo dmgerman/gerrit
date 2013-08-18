@@ -241,6 +241,11 @@ name|String
 name|popupContent
 parameter_list|()
 function_decl|;
+DECL|method|section ()
+name|String
+name|section
+parameter_list|()
+function_decl|;
 block|}
 block|}
 end_interface
