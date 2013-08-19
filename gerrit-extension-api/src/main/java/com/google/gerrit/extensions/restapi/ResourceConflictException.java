@@ -102,6 +102,26 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** @param msg message to return to the client describing the error. */
+DECL|method|ResourceConflictException (String msg, Throwable cause)
+specifier|public
+name|ResourceConflictException
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|msg
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

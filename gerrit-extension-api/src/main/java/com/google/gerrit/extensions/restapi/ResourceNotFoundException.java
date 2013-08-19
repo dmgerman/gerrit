@@ -109,6 +109,26 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** @param id portion of the resource URI that does not exist. */
+DECL|method|ResourceNotFoundException (String id, Throwable cause)
+specifier|public
+name|ResourceNotFoundException
+parameter_list|(
+name|String
+name|id
+parameter_list|,
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|id
+argument_list|,
+name|cause
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** @param id portion of the resource URI that does not exist. */
 DECL|method|ResourceNotFoundException (IdString id)
 specifier|public
 name|ResourceNotFoundException
