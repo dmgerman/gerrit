@@ -346,7 +346,7 @@ name|Void
 name|result
 parameter_list|)
 block|{
-name|initDisableUnwantedKeys
+name|initVimKeys
 argument_list|()
 expr_stmt|;
 name|cb
@@ -558,14 +558,24 @@ name|cast
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|initDisableUnwantedKeys ()
+DECL|method|initVimKeys ()
 specifier|private
 specifier|static
 name|void
-name|initDisableUnwantedKeys
+name|initVimKeys
 parameter_list|()
 block|{
 comment|// TODO: Better custom keybindings, remove temporary navigation hacks.
+name|KeyMap
+name|km
+init|=
+name|CodeMirror
+operator|.
+name|cloneKeyMap
+argument_list|(
+literal|"vim"
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -575,6 +585,8 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"A"
+block|,
 literal|"C"
 block|,
 literal|"J"
@@ -591,16 +603,23 @@ literal|"Ctrl-C"
 block|}
 control|)
 block|{
-name|CodeMirror
+name|km
 operator|.
-name|disableUnwantedKey
+name|remove
 argument_list|(
-literal|"vim"
-argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
 block|}
+name|CodeMirror
+operator|.
+name|addKeyMap
+argument_list|(
+literal|"vim_ro"
+argument_list|,
+name|km
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|error (Exception e)
 specifier|private
