@@ -466,8 +466,8 @@ name|PushOneCommit
 block|{
 DECL|field|SUBJECT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SUBJECT
 init|=
@@ -475,8 +475,8 @@ literal|"test commit"
 decl_stmt|;
 DECL|field|FILE_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FILE_NAME
 init|=
@@ -484,8 +484,8 @@ literal|"a.txt"
 decl_stmt|;
 DECL|field|FILE_CONTENT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FILE_CONTENT
 init|=

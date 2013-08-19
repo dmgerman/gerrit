@@ -105,8 +105,8 @@ block|{
 comment|/**    * Globally unique identifier for the user.    */
 DECL|class|UUID
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 class|class
 name|UUID
 block|{

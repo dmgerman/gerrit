@@ -288,8 +288,8 @@ name|InitStep
 block|{
 DECL|field|PLUGIN_DIR
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PLUGIN_DIR
 init|=
@@ -297,8 +297,8 @@ literal|"WEB-INF/plugins/"
 decl_stmt|;
 DECL|field|JAR
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|JAR
 init|=

@@ -100,8 +100,8 @@ name|PRIVATE
 block|;   }
 DECL|field|NONE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|CacheControl
 name|NONE
 init|=

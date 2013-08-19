@@ -3104,8 +3104,8 @@ name|MutableObjectId
 argument_list|()
 decl_stmt|;
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|LAST_BYTE
 init|=

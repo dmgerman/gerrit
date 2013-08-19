@@ -342,8 +342,8 @@ name|LocalDiskRepositoryTestCase
 block|{
 DECL|field|THIS_SERVER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|THIS_SERVER
 init|=
@@ -1764,8 +1764,8 @@ expr_stmt|;
 block|}
 DECL|class|SubmoduleSection
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 class|class
 name|SubmoduleSection
 block|{

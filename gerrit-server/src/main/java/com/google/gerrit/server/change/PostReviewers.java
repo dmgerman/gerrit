@@ -755,8 +755,8 @@ argument_list|>
 block|{
 DECL|field|DEFAULT_MAX_REVIEWERS_WITHOUT_CHECK
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_MAX_REVIEWERS_WITHOUT_CHECK
 init|=
@@ -764,8 +764,8 @@ literal|10
 decl_stmt|;
 DECL|field|DEFAULT_MAX_REVIEWERS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_MAX_REVIEWERS
 init|=
