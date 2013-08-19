@@ -958,6 +958,7 @@ name|index
 operator|=
 name|i
 expr_stmt|;
+break|break;
 block|}
 block|}
 name|setupNav
