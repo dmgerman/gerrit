@@ -193,6 +193,11 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|method|SortKeyPredicate (Provider<ReviewDb> dbProvider, String name, String value)
 name|SortKeyPredicate
 parameter_list|(
