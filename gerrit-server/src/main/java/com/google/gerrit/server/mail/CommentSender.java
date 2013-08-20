@@ -1575,6 +1575,16 @@ name|PatchLineComment
 name|child
 parameter_list|)
 block|{
+if|if
+condition|(
+name|child
+operator|.
+name|getParentUuid
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|PatchLineComment
 name|parent
 decl_stmt|;
@@ -1712,6 +1722,7 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Makes a link back to the given patch set and file.
