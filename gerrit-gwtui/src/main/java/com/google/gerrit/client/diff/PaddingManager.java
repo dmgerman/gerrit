@@ -385,13 +385,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"resizePaddingWidget() called before linking"
-argument_list|)
-throw|;
+return|return;
 block|}
 name|int
 name|myHeight
