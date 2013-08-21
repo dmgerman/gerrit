@@ -570,6 +570,16 @@ name|String
 name|messageNeedsRebaseOrHasDependency
 parameter_list|()
 function_decl|;
+DECL|method|sideBySide ()
+name|String
+name|sideBySide
+parameter_list|()
+function_decl|;
+DECL|method|unifiedDiff ()
+name|String
+name|unifiedDiff
+parameter_list|()
+function_decl|;
 DECL|method|patchSetInfoAuthor ()
 name|String
 name|patchSetInfoAuthor

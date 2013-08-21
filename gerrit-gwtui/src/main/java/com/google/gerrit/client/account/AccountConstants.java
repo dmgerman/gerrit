@@ -125,6 +125,11 @@ name|String
 name|commentVisibilityLabel
 parameter_list|()
 function_decl|;
+DECL|method|diffViewLabel ()
+name|String
+name|diffViewLabel
+parameter_list|()
+function_decl|;
 DECL|method|maximumPageSizeFieldLabel ()
 name|String
 name|maximumPageSizeFieldLabel
