@@ -3384,6 +3384,27 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pref
+operator|.
+name|isShowTabs
+argument_list|()
+condition|)
+block|{
+name|diffTable
+operator|.
+name|addStyleName
+argument_list|(
+name|DiffTable
+operator|.
+name|style
+operator|.
+name|showtabs
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|displaySide (DiffInfo.FileMeta meta, String contents, Element ele)
 specifier|private
