@@ -222,7 +222,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
+name|PatchSet
 import|;
 end_import
 
@@ -740,13 +740,13 @@ name|label_value
 parameter_list|()
 function_decl|;
 block|}
-DECL|field|changeId
+DECL|field|psId
 specifier|private
 specifier|final
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|psId
 decl_stmt|;
 DECL|field|revision
 specifier|private
@@ -808,13 +808,13 @@ name|UiField
 name|CheckBox
 name|email
 decl_stmt|;
-DECL|method|ReplyBox ( Change.Id changeId, String revision, NativeMap<LabelInfo> all, NativeMap<JsArrayString> permitted)
+DECL|method|ReplyBox ( PatchSet.Id psId, String revision, NativeMap<LabelInfo> all, NativeMap<JsArrayString> permitted)
 name|ReplyBox
 parameter_list|(
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|psId
 parameter_list|,
 name|String
 name|revision
@@ -834,9 +834,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|changeId
+name|psId
 operator|=
-name|changeId
+name|psId
 expr_stmt|;
 name|this
 operator|.
@@ -1175,7 +1175,10 @@ name|ChangeApi
 operator|.
 name|revision
 argument_list|(
-name|changeId
+name|psId
+operator|.
+name|getParentKey
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -1217,7 +1220,20 @@ name|PageLinks
 operator|.
 name|toChange2
 argument_list|(
-name|changeId
+name|psId
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|psId
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
