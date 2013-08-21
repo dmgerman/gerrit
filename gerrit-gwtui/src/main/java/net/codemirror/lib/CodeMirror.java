@@ -1125,6 +1125,31 @@ name|km
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.keyMap[name] = km;   }-*/
 function_decl|;
+DECL|method|handleVimKey (CodeMirror cm, String key)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|handleVimKey
+parameter_list|(
+name|CodeMirror
+name|cm
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.Vim.handleKey(cm, key);   }-*/
+function_decl|;
+DECL|method|hasVimSearchHighlight ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hasVimSearchHighlight
+parameter_list|()
+comment|/*-{     return this.state.vim&& this.state.vim.searchState_&&         !!this.state.vim.searchState_.getOverlay();   }-*/
+function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror
