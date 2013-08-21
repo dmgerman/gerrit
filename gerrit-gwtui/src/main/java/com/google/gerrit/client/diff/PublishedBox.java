@@ -1099,7 +1099,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getSideBySide
+name|getDiffScreen
 argument_list|()
 operator|.
 name|getToken
@@ -1184,7 +1184,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getSideBySide
+name|getDiffScreen
 argument_list|()
 operator|.
 name|getToken
@@ -1232,7 +1232,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getSideBySide
+name|getDiffScreen
 argument_list|()
 operator|.
 name|getToken

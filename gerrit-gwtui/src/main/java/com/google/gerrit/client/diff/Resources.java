@@ -164,6 +164,18 @@ name|Style
 name|scrollbarStyle
 parameter_list|()
 function_decl|;
+DECL|method|diffTableStyle ()
+annotation|@
+name|Source
+argument_list|(
+literal|"DiffTable.css"
+argument_list|)
+name|DiffTable
+operator|.
+name|Style
+name|diffTableStyle
+parameter_list|()
+function_decl|;
 comment|/**    * tango icon library (public domain):    * http://tango.freedesktop.org/Tango_Icon_Library    */
 DECL|method|goPrev ()
 annotation|@

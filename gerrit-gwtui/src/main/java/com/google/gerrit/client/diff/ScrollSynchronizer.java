@@ -113,7 +113,7 @@ name|ScrollSynchronizer
 block|{
 DECL|field|diffTable
 specifier|private
-name|DiffTable
+name|SideBySideTable
 name|diffTable
 decl_stmt|;
 DECL|field|mapper
@@ -146,10 +146,10 @@ specifier|private
 name|boolean
 name|autoHideDiffTableHeader
 decl_stmt|;
-DECL|method|ScrollSynchronizer (DiffTable diffTable, CodeMirror cmA, CodeMirror cmB, LineMapper mapper)
+DECL|method|ScrollSynchronizer (SideBySideTable diffTable, CodeMirror cmA, CodeMirror cmB, LineMapper mapper)
 name|ScrollSynchronizer
 parameter_list|(
-name|DiffTable
+name|SideBySideTable
 name|diffTable
 parameter_list|,
 name|CodeMirror
