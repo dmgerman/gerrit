@@ -1096,7 +1096,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|f
+operator|.
 name|exists
+argument_list|()
 operator|&&
 operator|!
 name|f
