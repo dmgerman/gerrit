@@ -125,6 +125,11 @@ name|String
 name|mergeConflict
 parameter_list|()
 function_decl|;
+DECL|method|notCurrent ()
+name|String
+name|notCurrent
+parameter_list|()
+function_decl|;
 DECL|method|myDashboardTitle ()
 name|String
 name|myDashboardTitle
