@@ -1020,18 +1020,6 @@ name|lineCount
 parameter_list|()
 comment|/*-{     return this.lineCount();   }-*/
 function_decl|;
-DECL|method|moveCursorDown (int numLines)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|moveCursorDown
-parameter_list|(
-name|int
-name|numLines
-parameter_list|)
-comment|/*-{     this.moveV(numLines, "line");   }-*/
-function_decl|;
 DECL|method|getGutterElement ()
 specifier|public
 specifier|final
@@ -1140,6 +1128,22 @@ name|String
 name|key
 parameter_list|)
 comment|/*-{     $wnd.CodeMirror.Vim.handleKey(cm, key);   }-*/
+function_decl|;
+DECL|method|mapVimKey (String alias, String actual)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|void
+name|mapVimKey
+parameter_list|(
+name|String
+name|alias
+parameter_list|,
+name|String
+name|actual
+parameter_list|)
+comment|/*-{     $wnd.CodeMirror.Vim.map(alias, actual);   }-*/
 function_decl|;
 DECL|method|hasVimSearchHighlight ()
 specifier|public
