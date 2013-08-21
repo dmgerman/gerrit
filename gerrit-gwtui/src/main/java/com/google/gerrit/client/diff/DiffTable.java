@@ -319,6 +319,11 @@ name|String
 name|rangeHighlight
 parameter_list|()
 function_decl|;
+DECL|method|showtabs ()
+name|String
+name|showtabs
+parameter_list|()
+function_decl|;
 block|}
 annotation|@
 name|UiField
