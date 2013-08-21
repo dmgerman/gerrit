@@ -4209,6 +4209,8 @@ operator|.
 name|set
 argument_list|(
 name|info
+argument_list|,
+name|revision
 argument_list|)
 expr_stmt|;
 name|commit
