@@ -784,6 +784,13 @@ operator|&&
 name|UserAgent
 operator|.
 name|hasFlash
+operator|&&
+name|text
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
 condition|)
 block|{
 specifier|final
