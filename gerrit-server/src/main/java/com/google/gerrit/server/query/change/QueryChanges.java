@@ -234,22 +234,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ssh
-operator|.
-name|SshInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -600,7 +584,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryChanges (ChangeJson json, QueryProcessor qp, SshInfo sshInfo, ChangeControl.Factory cf)
+DECL|method|QueryChanges (ChangeJson json, QueryProcessor qp, ChangeControl.Factory cf)
 name|QueryChanges
 parameter_list|(
 name|ChangeJson
@@ -608,9 +592,6 @@ name|json
 parameter_list|,
 name|QueryProcessor
 name|qp
-parameter_list|,
-name|SshInfo
-name|sshInfo
 parameter_list|,
 name|ChangeControl
 operator|.
@@ -639,13 +620,6 @@ argument_list|(
 name|ListChangesOption
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|json
-operator|.
-name|setSshInfo
-argument_list|(
-name|sshInfo
 argument_list|)
 expr_stmt|;
 name|json
