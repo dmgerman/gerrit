@@ -1096,6 +1096,10 @@ name|relativeDateInChangeTable
 operator|=
 literal|false
 expr_stmt|;
+name|commentVisibilityStrategy
+operator|=
+literal|null
+expr_stmt|;
 name|diffView
 operator|=
 literal|null
