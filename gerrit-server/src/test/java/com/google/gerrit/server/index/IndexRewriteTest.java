@@ -2141,6 +2141,8 @@ name|ChangeData
 argument_list|>
 name|in
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 return|return
 name|rewrite

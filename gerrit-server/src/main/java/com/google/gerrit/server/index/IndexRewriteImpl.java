@@ -1063,6 +1063,8 @@ name|ChangeData
 argument_list|>
 name|in
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 name|ChangeIndex
 name|index
@@ -1146,11 +1148,12 @@ name|IndexPredicate
 condition|)
 block|{
 return|return
-name|query
+operator|new
+name|IndexedChangeQuery
 argument_list|(
-name|out
-argument_list|,
 name|index
+argument_list|,
+name|out
 argument_list|,
 name|limit
 argument_list|)
@@ -1176,7 +1179,7 @@ name|out
 return|;
 block|}
 block|}
-comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param limit maximum number of results to return.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    */
+comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param limit maximum number of results to return.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not    *     support this predicate.    */
 DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, int limit)
 specifier|private
 name|Predicate
@@ -1197,6 +1200,8 @@ parameter_list|,
 name|int
 name|limit
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 if|if
 condition|(
@@ -1548,6 +1553,8 @@ parameter_list|,
 name|int
 name|limit
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 if|if
 condition|(
@@ -1575,16 +1582,17 @@ name|add
 argument_list|(
 literal|0
 argument_list|,
-name|query
+operator|new
+name|IndexedChangeQuery
 argument_list|(
+name|index
+argument_list|,
 name|newChildren
 operator|.
 name|remove
 argument_list|(
 name|i
 argument_list|)
-argument_list|,
-name|index
 argument_list|,
 name|limit
 argument_list|)
@@ -1711,16 +1719,17 @@ name|add
 argument_list|(
 literal|0
 argument_list|,
-name|query
+operator|new
+name|IndexedChangeQuery
 argument_list|(
+name|index
+argument_list|,
 name|in
 operator|.
 name|copy
 argument_list|(
 name|indexed
 argument_list|)
-argument_list|,
-name|index
 argument_list|,
 name|limit
 argument_list|)
@@ -1800,59 +1809,6 @@ argument_list|(
 name|all
 argument_list|)
 return|;
-block|}
-DECL|method|query (Predicate<ChangeData> p, ChangeIndex index, int limit)
-specifier|private
-name|IndexedChangeQuery
-name|query
-parameter_list|(
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-name|p
-parameter_list|,
-name|ChangeIndex
-name|index
-parameter_list|,
-name|int
-name|limit
-parameter_list|)
-block|{
-try|try
-block|{
-return|return
-operator|new
-name|IndexedChangeQuery
-argument_list|(
-name|index
-argument_list|,
-name|p
-argument_list|,
-name|limit
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|QueryParseException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Failed to convert "
-operator|+
-name|p
-operator|+
-literal|" to index predicate"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 DECL|method|isRewritePossible (Predicate<ChangeData> p)
 specifier|private

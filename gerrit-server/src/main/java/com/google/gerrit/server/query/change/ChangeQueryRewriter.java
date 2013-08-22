@@ -84,6 +84,22 @@ name|Predicate
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|QueryParseException
+import|;
+end_import
+
 begin_interface
 DECL|interface|ChangeQueryRewriter
 specifier|public
@@ -103,6 +119,8 @@ name|ChangeData
 argument_list|>
 name|in
 parameter_list|)
+throws|throws
+name|QueryParseException
 function_decl|;
 block|}
 end_interface
