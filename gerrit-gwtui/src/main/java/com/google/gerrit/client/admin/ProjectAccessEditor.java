@@ -895,10 +895,6 @@ name|addSection
 operator|.
 name|setVisible
 argument_list|(
-name|value
-operator|!=
-literal|null
-operator|&&
 name|editing
 operator|&&
 operator|(

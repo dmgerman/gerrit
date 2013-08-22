@@ -3056,10 +3056,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|patch
-operator|==
-literal|null
-operator|||
 operator|!
 name|patch
 operator|.

@@ -1840,10 +1840,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|value
-operator|!=
-literal|null
-operator|&&
 name|Permission
 operator|.
 name|OWNER
