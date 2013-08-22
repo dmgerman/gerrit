@@ -263,6 +263,11 @@ name|base64
 init|=
 literal|false
 decl_stmt|;
+DECL|field|attachmentName
+specifier|private
+name|String
+name|attachmentName
+decl_stmt|;
 comment|/** @return the MIME type of the result, for HTTP clients. */
 DECL|method|getContentType ()
 specifier|public
@@ -345,6 +350,37 @@ block|{
 name|characterEncoding
 operator|=
 name|encoding
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/** Get the attachment file name; null if not set. */
+DECL|method|getAttachmentName ()
+specifier|public
+name|String
+name|getAttachmentName
+parameter_list|()
+block|{
+return|return
+name|attachmentName
+return|;
+block|}
+comment|/** Set the attachment file name and return {@code this}. */
+DECL|method|setAttachmentName (String attachmentName)
+specifier|public
+name|BinaryResult
+name|setAttachmentName
+parameter_list|(
+name|String
+name|attachmentName
+parameter_list|)
+block|{
+name|this
+operator|.
+name|attachmentName
+operator|=
+name|attachmentName
 expr_stmt|;
 return|return
 name|this
