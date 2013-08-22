@@ -1113,9 +1113,9 @@ argument_list|(
 operator|new
 name|NoSuchChangeException
 argument_list|(
-name|result
+name|psid
 operator|.
-name|getChangeId
+name|getParentKey
 argument_list|()
 argument_list|)
 argument_list|)
