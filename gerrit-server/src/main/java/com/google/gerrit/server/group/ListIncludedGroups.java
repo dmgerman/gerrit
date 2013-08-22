@@ -518,7 +518,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Group %s no longer available, included into "
+literal|"Group %s no longer available, included into %s"
 argument_list|,
 name|u
 operator|.

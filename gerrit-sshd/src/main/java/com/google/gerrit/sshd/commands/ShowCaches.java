@@ -1898,8 +1898,6 @@ name|format
 argument_list|(
 literal|"  on %s %s %s\n"
 argument_list|,
-literal|""
-argument_list|,
 name|osBean
 operator|.
 name|getName

@@ -5933,7 +5933,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Projection %s is ambiguous: "
+literal|"Projection %s is ambiguous: %s"
 argument_list|,
 name|name
 argument_list|,
