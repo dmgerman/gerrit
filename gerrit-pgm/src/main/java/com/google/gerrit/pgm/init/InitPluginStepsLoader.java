@@ -429,11 +429,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 name|ClassLoader
 name|pluginLoader
 init|=
@@ -461,11 +456,6 @@ name|getClassLoader
 argument_list|()
 argument_list|)
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 name|JarFile
 name|jarFile
 init|=
