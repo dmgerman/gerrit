@@ -99,6 +99,15 @@ name|canAddRefs
 parameter_list|()
 comment|/*-{ return this.can_add ? true : false; }-*/
 function_decl|;
+DECL|method|isOwner ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isOwner
+parameter_list|()
+comment|/*-{ return this.is_owner ? true : false; }-*/
+function_decl|;
 DECL|method|ProjectAccessInfo ()
 specifier|protected
 name|ProjectAccessInfo
