@@ -998,11 +998,29 @@ name|h
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|initHideHandler
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|initHideHandler ()
+specifier|private
+name|void
+name|initHideHandler
+parameter_list|()
+block|{
 if|if
 condition|(
 name|hideHandler
 operator|==
 literal|null
+operator|&&
+name|swf
+operator|!=
+literal|null
+operator|&&
+name|isAttached
+argument_list|()
 condition|)
 block|{
 name|hideHandler
@@ -1054,7 +1072,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|getText ()
@@ -1131,8 +1148,20 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|onLoad ()
+specifier|protected
+name|void
+name|onLoad
+parameter_list|()
+block|{
+name|initHideHandler
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 DECL|method|onUnload ()
-specifier|public
+specifier|protected
 name|void
 name|onUnload
 parameter_list|()
