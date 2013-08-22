@@ -161,6 +161,8 @@ name|UserAgent
 operator|.
 name|fireDialogVisible
 argument_list|(
+name|this
+argument_list|,
 name|show
 argument_list|)
 expr_stmt|;
@@ -184,6 +186,8 @@ name|UserAgent
 operator|.
 name|fireDialogVisible
 argument_list|(
+name|this
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
@@ -209,6 +213,8 @@ name|UserAgent
 operator|.
 name|fireDialogVisible
 argument_list|(
+name|this
+argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;

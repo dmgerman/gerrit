@@ -146,6 +146,24 @@ name|Window
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Widget
+import|;
+end_import
+
 begin_comment
 comment|/**  * User agent feature tests we don't create permutations for.  *<p>  * Some features aren't worth creating full permutations in GWT for, as each new  * boolean permutation (only two settings) doubles the compile time required. If  * the setting only affects a couple of lines of JavaScript code, the slightly  * larger cache files for user agents that lack the functionality requested is  * trivial compared to the time developers lose building their application.  */
 end_comment
@@ -202,11 +220,14 @@ name|handler
 argument_list|)
 return|;
 block|}
-DECL|method|fireDialogVisible (boolean visible)
+DECL|method|fireDialogVisible (Widget w, boolean visible)
 specifier|static
 name|void
 name|fireDialogVisible
 parameter_list|(
+name|Widget
+name|w
+parameter_list|,
 name|boolean
 name|visible
 parameter_list|)
@@ -218,6 +239,8 @@ argument_list|(
 operator|new
 name|DialogVisibleEvent
 argument_list|(
+name|w
+argument_list|,
 name|visible
 argument_list|)
 argument_list|)
