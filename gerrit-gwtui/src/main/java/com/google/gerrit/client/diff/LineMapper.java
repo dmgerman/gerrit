@@ -68,24 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|diff
-operator|.
-name|SideBySide2
-operator|.
-name|DisplaySide
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
