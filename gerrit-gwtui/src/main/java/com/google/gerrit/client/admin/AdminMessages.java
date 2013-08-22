@@ -146,6 +146,22 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+DECL|method|effectiveMaxObjectSizeLimit (String effectiveMaxObjectSizeLimit)
+name|String
+name|effectiveMaxObjectSizeLimit
+parameter_list|(
+name|String
+name|effectiveMaxObjectSizeLimit
+parameter_list|)
+function_decl|;
+DECL|method|globalMaxObjectSizeLimit (String globalMaxObjectSizeLimit)
+name|String
+name|globalMaxObjectSizeLimit
+parameter_list|(
+name|String
+name|globalMaxObjectSizeLimit
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

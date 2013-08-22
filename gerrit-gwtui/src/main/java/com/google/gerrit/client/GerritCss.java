@@ -738,6 +738,11 @@ name|String
 name|linkMenuItemNotLast
 parameter_list|()
 function_decl|;
+DECL|method|maxObjectSizeLimitPanel ()
+name|String
+name|maxObjectSizeLimitPanel
+parameter_list|()
+function_decl|;
 DECL|method|menuBarUserName ()
 name|String
 name|menuBarUserName
