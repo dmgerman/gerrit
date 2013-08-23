@@ -520,6 +520,10 @@ decl_stmt|;
 comment|// BEGIN SSH2 line...
 if|if
 condition|(
+name|line
+operator|==
+literal|null
+operator|||
 operator|!
 name|line
 operator|.
