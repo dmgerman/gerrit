@@ -642,6 +642,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|urlProvider
+operator|==
+literal|null
+operator|||
 name|Strings
 operator|.
 name|isNullOrEmpty
@@ -1629,9 +1633,15 @@ operator|.
 name|firstNonNull
 argument_list|(
 name|urlProvider
+operator|!=
+literal|null
+condition|?
+name|urlProvider
 operator|.
 name|get
 argument_list|()
+else|:
+literal|"/"
 argument_list|,
 literal|"/"
 argument_list|)
