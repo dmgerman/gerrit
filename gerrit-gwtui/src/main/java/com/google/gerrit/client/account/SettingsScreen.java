@@ -213,6 +213,18 @@ name|SETTINGS_SSHKEYS
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|isGitBasicAuth
+argument_list|()
+condition|)
+block|{
 name|link
 argument_list|(
 name|Util
@@ -227,6 +239,7 @@ operator|.
 name|SETTINGS_HTTP_PASSWORD
 argument_list|)
 expr_stmt|;
+block|}
 name|link
 argument_list|(
 name|Util

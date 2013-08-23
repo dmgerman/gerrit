@@ -216,6 +216,11 @@ specifier|protected
 name|String
 name|reportBugUrl
 decl_stmt|;
+DECL|field|gitBasicAuth
+specifier|protected
+name|boolean
+name|gitBasicAuth
+decl_stmt|;
 DECL|field|gitweb
 specifier|protected
 name|GitwebConfig
@@ -442,6 +447,30 @@ block|{
 name|reportBugUrl
 operator|=
 name|u
+expr_stmt|;
+block|}
+DECL|method|isGitBasicAuth ()
+specifier|public
+name|boolean
+name|isGitBasicAuth
+parameter_list|()
+block|{
+return|return
+name|gitBasicAuth
+return|;
+block|}
+DECL|method|setGitBasicAuth (boolean gba)
+specifier|public
+name|void
+name|setGitBasicAuth
+parameter_list|(
+name|boolean
+name|gba
+parameter_list|)
+block|{
+name|gitBasicAuth
+operator|=
+name|gba
 expr_stmt|;
 block|}
 DECL|method|getEditFullNameUrl ()

@@ -994,6 +994,16 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|config
+operator|.
+name|setGitBasicAuth
+argument_list|(
+name|authConfig
+operator|.
+name|isGitBasichAuth
+argument_list|()
+argument_list|)
+expr_stmt|;
 specifier|final
 name|Set
 argument_list|<
