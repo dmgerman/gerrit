@@ -1321,6 +1321,11 @@ name|String
 name|replyBox
 parameter_list|()
 function_decl|;
+DECL|method|selected ()
+name|String
+name|selected
+parameter_list|()
+function_decl|;
 block|}
 DECL|field|changeId
 specifier|private
