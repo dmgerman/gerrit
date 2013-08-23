@@ -1989,6 +1989,7 @@ return|;
 block|}
 DECL|field|myArchive
 specifier|private
+specifier|volatile
 specifier|static
 name|File
 name|myArchive
