@@ -687,8 +687,11 @@ condition|(
 name|nullIfDefault
 operator|&&
 name|nv
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|dv
+argument_list|)
 condition|)
 block|{
 name|nv

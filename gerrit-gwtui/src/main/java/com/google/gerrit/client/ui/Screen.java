@@ -614,8 +614,11 @@ operator|==
 literal|null
 operator|||
 name|windowTitle
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|old
+argument_list|)
 condition|)
 block|{
 name|setWindowTitle
