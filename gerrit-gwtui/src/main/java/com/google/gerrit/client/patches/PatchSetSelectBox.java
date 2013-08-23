@@ -1010,7 +1010,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|idActive
+operator|!=
+literal|null
+condition|)
 block|{
 name|links
 operator|.
