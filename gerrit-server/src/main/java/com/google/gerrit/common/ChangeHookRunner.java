@@ -5630,6 +5630,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
 specifier|final
 name|int
 name|exitValue
@@ -5744,6 +5751,7 @@ argument_list|,
 name|iox
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|result
@@ -5930,7 +5938,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/** Runable type used to run async hooks */
+comment|/** Runnable type used to run asynchronous hooks */
 DECL|class|AsyncHookTask
 specifier|private
 specifier|final
