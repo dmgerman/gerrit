@@ -957,6 +957,8 @@ name|append
 argument_list|(
 name|formatUserList
 argument_list|(
+name|style
+argument_list|,
 name|m
 operator|.
 name|get
@@ -1221,10 +1223,16 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|formatUserList (Collection<? extends AccountInfo> in)
+DECL|method|formatUserList (ChangeScreen2.Style style, Collection<? extends AccountInfo> in)
+specifier|static
 name|SafeHtml
 name|formatUserList
 parameter_list|(
+name|ChangeScreen2
+operator|.
+name|Style
+name|style
+parameter_list|,
 name|Collection
 argument_list|<
 name|?

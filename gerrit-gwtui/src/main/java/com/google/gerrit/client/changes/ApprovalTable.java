@@ -2022,7 +2022,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|PostInput
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|PostInput
@@ -2030,6 +2030,7 @@ extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|create (String reviewer, boolean confirmed)
+specifier|public
 specifier|static
 name|PostInput
 name|create
@@ -2084,7 +2085,7 @@ parameter_list|()
 block|{     }
 block|}
 DECL|class|ReviewerInfo
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|ReviewerInfo
@@ -2140,7 +2141,7 @@ parameter_list|()
 block|{     }
 block|}
 DECL|class|PostResult
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|PostResult
@@ -2148,6 +2149,7 @@ extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|reviewers ()
+specifier|public
 specifier|final
 specifier|native
 name|JsArray
@@ -2159,6 +2161,7 @@ parameter_list|()
 comment|/*-{ return this.reviewers; }-*/
 function_decl|;
 DECL|method|confirm ()
+specifier|public
 specifier|final
 specifier|native
 name|boolean
@@ -2167,6 +2170,7 @@ parameter_list|()
 comment|/*-{ return this.confirm || false; }-*/
 function_decl|;
 DECL|method|error ()
+specifier|public
 specifier|final
 specifier|native
 name|String
