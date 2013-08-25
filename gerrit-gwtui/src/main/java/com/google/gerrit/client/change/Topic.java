@@ -493,6 +493,7 @@ block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static
+specifier|final
 name|Binder
 name|uiBinder
 init|=
