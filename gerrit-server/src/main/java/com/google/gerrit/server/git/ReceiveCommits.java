@@ -7502,6 +7502,26 @@ name|magicBranch
 operator|.
 name|ctl
 operator|.
+name|canWrite
+argument_list|()
+condition|)
+block|{
+name|reject
+argument_list|(
+name|cmd
+argument_list|,
+literal|"project is read only"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+operator|!
+name|magicBranch
+operator|.
+name|ctl
+operator|.
 name|canUpload
 argument_list|()
 condition|)
