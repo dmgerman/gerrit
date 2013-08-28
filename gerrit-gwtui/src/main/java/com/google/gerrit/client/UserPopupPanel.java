@@ -102,11 +102,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
 operator|.
-name|common
+name|core
 operator|.
-name|PageLinks
+name|client
+operator|.
+name|GWT
 import|;
 end_import
 
@@ -118,11 +120,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|core
+name|dom
 operator|.
 name|client
 operator|.
-name|GWT
+name|Element
 import|;
 end_import
 
@@ -246,7 +248,7 @@ name|Widget
 argument_list|,
 name|UserPopupPanel
 argument_list|>
-block|{   }
+block|{}
 DECL|field|binder
 specifier|private
 specifier|static
@@ -263,6 +265,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|avatar
 annotation|@
 name|UiField
 argument_list|(
@@ -270,31 +273,36 @@ name|provided
 operator|=
 literal|true
 argument_list|)
-DECL|field|avatar
 name|AvatarImage
 name|avatar
 decl_stmt|;
+DECL|field|userName
 annotation|@
 name|UiField
-DECL|field|userName
 name|Label
 name|userName
 decl_stmt|;
+DECL|field|userEmail
 annotation|@
 name|UiField
-DECL|field|userEmail
 name|Label
 name|userEmail
 decl_stmt|;
+DECL|field|userLinks
 annotation|@
 name|UiField
+name|Element
+name|userLinks
+decl_stmt|;
 DECL|field|logout
+annotation|@
+name|UiField
 name|Anchor
 name|logout
 decl_stmt|;
+DECL|field|settings
 annotation|@
 name|UiField
-DECL|field|settings
 name|InlineHyperlink
 name|settings
 decl_stmt|;
@@ -341,17 +349,6 @@ name|createAndBindUi
 argument_list|(
 name|this
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// We must show and then hide this popup so that it is part of the DOM.
-comment|// Otherwise the image does not get any events.  Calling hide() would
-comment|// remove it from the DOM so we use setVisible(false) instead.
-name|show
-argument_list|()
-expr_stmt|;
-name|setVisible
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 name|setStyleName
@@ -411,6 +408,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|showSettingsLink
+condition|)
+block|{
+if|if
+condition|(
 name|canLogOut
 condition|)
 block|{
@@ -437,31 +439,43 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|showSettingsLink
-condition|)
-block|{
-name|settings
-operator|.
-name|setTargetHistoryToken
-argument_list|(
-name|PageLinks
-operator|.
-name|SETTINGS
-argument_list|)
-expr_stmt|;
 block|}
 else|else
 block|{
 name|settings
 operator|.
+name|removeFromParent
+argument_list|()
+expr_stmt|;
+name|settings
+operator|=
+literal|null
+expr_stmt|;
+name|userLinks
+operator|.
+name|removeFromParent
+argument_list|()
+expr_stmt|;
+name|userLinks
+operator|=
+literal|null
+expr_stmt|;
+name|logout
+operator|=
+literal|null
+expr_stmt|;
+block|}
+comment|// We must show and then hide this popup so that it is part of the DOM.
+comment|// Otherwise the image does not get any events.  Calling hide() would
+comment|// remove it from the DOM so we use setVisible(false) instead.
+name|show
+argument_list|()
+expr_stmt|;
 name|setVisible
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class
