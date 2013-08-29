@@ -529,7 +529,7 @@ name|DownloadCommand
 operator|.
 name|REPO_DOWNLOAD
 argument_list|,
-literal|"checkout"
+literal|"repo download"
 argument_list|)
 expr_stmt|;
 name|this
