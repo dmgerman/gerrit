@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.ui
+DECL|package|com.google.gerrit.client.change
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|ui
+name|change
 package|;
 end_package
 
@@ -72,13 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|gerrit
 operator|.
-name|user
+name|reviewdb
 operator|.
 name|client
 operator|.
-name|Element
+name|Change
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|FlexTable
+name|UIObject
 import|;
 end_import
 
@@ -114,71 +114,77 @@ name|client
 operator|.
 name|ui
 operator|.
-name|HTMLTable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtexpui
-operator|.
-name|safehtml
-operator|.
-name|client
-operator|.
-name|SafeHtml
+name|Widget
 import|;
 end_import
 
 begin_class
-DECL|class|FancyFlexTableImpl
-specifier|public
+DECL|class|RevisionsAction
 class|class
-name|FancyFlexTableImpl
+name|RevisionsAction
+extends|extends
+name|RightSidePopdownAction
 block|{
-DECL|method|resetHtml (final FlexTable myTable, final SafeHtml body)
-specifier|public
-name|void
-name|resetHtml
+DECL|field|revisionBox
+specifier|private
+specifier|final
+name|RevisionsBox
+name|revisionBox
+decl_stmt|;
+DECL|method|RevisionsAction ( Change.Id changeId, String revision, ChangeScreen2.Style style, UIObject relativeTo, Widget downloadButton)
+name|RevisionsAction
 parameter_list|(
-specifier|final
-name|FlexTable
-name|myTable
+name|Change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
-specifier|final
-name|SafeHtml
-name|body
+name|String
+name|revision
+parameter_list|,
+name|ChangeScreen2
+operator|.
+name|Style
+name|style
+parameter_list|,
+name|UIObject
+name|relativeTo
+parameter_list|,
+name|Widget
+name|downloadButton
 parameter_list|)
 block|{
-name|SafeHtml
-operator|.
-name|setInnerHTML
+name|super
 argument_list|(
-name|getBodyElement
-argument_list|(
-name|myTable
-argument_list|)
+name|style
 argument_list|,
-name|body
+name|relativeTo
+argument_list|,
+name|downloadButton
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|revisionBox
+operator|=
+operator|new
+name|RevisionsBox
+argument_list|(
+name|changeId
+argument_list|,
+name|revision
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getBodyElement (HTMLTable myTable)
-specifier|protected
-specifier|static
-specifier|native
-name|Element
-name|getBodyElement
-parameter_list|(
-name|HTMLTable
-name|myTable
-parameter_list|)
-comment|/*-{ return myTable.@com.google.gwt.user.client.ui.HTMLTable::bodyElem; }-*/
-function_decl|;
+DECL|method|getWidget ()
+name|Widget
+name|getWidget
+parameter_list|()
+block|{
+return|return
+name|revisionBox
+return|;
+block|}
 block|}
 end_class
 

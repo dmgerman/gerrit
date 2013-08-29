@@ -103,6 +103,26 @@ name|String
 name|reviewedFileTitle
 parameter_list|()
 function_decl|;
+DECL|method|ps ()
+name|String
+name|ps
+parameter_list|()
+function_decl|;
+DECL|method|commit ()
+name|String
+name|commit
+parameter_list|()
+function_decl|;
+DECL|method|date ()
+name|String
+name|date
+parameter_list|()
+function_decl|;
+DECL|method|author ()
+name|String
+name|author
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

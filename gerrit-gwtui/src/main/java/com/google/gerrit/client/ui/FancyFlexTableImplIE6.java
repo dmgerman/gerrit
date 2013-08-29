@@ -72,24 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|FancyFlexTable
-operator|.
-name|MyFlexTable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|user
@@ -113,6 +95,24 @@ operator|.
 name|client
 operator|.
 name|Element
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|FlexTable
 import|;
 end_import
 
@@ -176,13 +176,13 @@ name|FancyFlexTableImpl
 block|{
 annotation|@
 name|Override
-DECL|method|resetHtml (final MyFlexTable myTable, final SafeHtml bodyHtml)
+DECL|method|resetHtml (final FlexTable myTable, final SafeHtml bodyHtml)
 specifier|public
 name|void
 name|resetHtml
 parameter_list|(
 specifier|final
-name|MyFlexTable
+name|FlexTable
 name|myTable
 parameter_list|,
 specifier|final
