@@ -4660,10 +4660,9 @@ name|info
 parameter_list|)
 block|{
 comment|// TODO info card hover
-name|ownerText
-operator|.
-name|setInnerText
-argument_list|(
+name|String
+name|name
+init|=
 name|info
 operator|.
 name|owner
@@ -4689,6 +4688,19 @@ argument_list|()
 operator|.
 name|getAnonymousCowardName
 argument_list|()
+decl_stmt|;
+name|ownerText
+operator|.
+name|setInnerText
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|ownerText
+operator|.
+name|setTitle
+argument_list|(
+name|name
 argument_list|)
 expr_stmt|;
 block|}
