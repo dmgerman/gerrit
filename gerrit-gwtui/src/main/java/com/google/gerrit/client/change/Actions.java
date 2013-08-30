@@ -90,9 +90,25 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|actions
 operator|.
-name|ChangeInfo
+name|ActionButton
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|actions
+operator|.
+name|ActionInfo
 import|;
 end_import
 
@@ -109,8 +125,6 @@ operator|.
 name|changes
 operator|.
 name|ChangeInfo
-operator|.
-name|ActionInfo
 import|;
 end_import
 

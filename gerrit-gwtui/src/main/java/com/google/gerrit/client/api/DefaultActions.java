@@ -90,9 +90,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|actions
 operator|.
-name|ChangeInfo
+name|ActionInfo
 import|;
 end_import
 
@@ -109,8 +109,6 @@ operator|.
 name|changes
 operator|.
 name|ChangeInfo
-operator|.
-name|ActionInfo
 import|;
 end_import
 

@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.change
+DECL|package|com.google.gerrit.client.actions
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|change
+name|actions
 package|;
 end_package
 
@@ -127,24 +127,6 @@ operator|.
 name|changes
 operator|.
 name|ChangeInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|changes
-operator|.
-name|ChangeInfo
-operator|.
-name|ActionInfo
 import|;
 end_import
 
@@ -270,6 +252,7 @@ name|ActionContext
 name|ctx
 decl_stmt|;
 DECL|method|ActionButton (ChangeInfo change, ActionInfo action)
+specifier|public
 name|ActionButton
 parameter_list|(
 name|ChangeInfo
@@ -290,6 +273,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|ActionButton (ChangeInfo change, RevisionInfo revision, ActionInfo action)
+specifier|public
 name|ActionButton
 parameter_list|(
 name|ChangeInfo
