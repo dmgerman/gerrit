@@ -206,6 +206,11 @@ specifier|protected
 name|String
 name|loginText
 decl_stmt|;
+DECL|field|switchAccountUrl
+specifier|protected
+name|String
+name|switchAccountUrl
+decl_stmt|;
 DECL|field|httpPasswordUrl
 specifier|protected
 name|String
@@ -396,6 +401,30 @@ name|u
 parameter_list|)
 block|{
 name|registerUrl
+operator|=
+name|u
+expr_stmt|;
+block|}
+DECL|method|getSwitchAccountUrl ()
+specifier|public
+name|String
+name|getSwitchAccountUrl
+parameter_list|()
+block|{
+return|return
+name|switchAccountUrl
+return|;
+block|}
+DECL|method|setSwitchAccountUrl (String u)
+specifier|public
+name|void
+name|setSwitchAccountUrl
+parameter_list|(
+name|String
+name|u
+parameter_list|)
+block|{
+name|switchAccountUrl
 operator|=
 name|u
 expr_stmt|;
