@@ -93,19 +93,9 @@ name|String
 name|menuSignIn
 parameter_list|()
 function_decl|;
-DECL|method|menuSignOut ()
-name|String
-name|menuSignOut
-parameter_list|()
-function_decl|;
 DECL|method|menuRegister ()
 name|String
 name|menuRegister
-parameter_list|()
-function_decl|;
-DECL|method|menuSettings ()
-name|String
-name|menuSettings
 parameter_list|()
 function_decl|;
 DECL|method|reportBug ()
