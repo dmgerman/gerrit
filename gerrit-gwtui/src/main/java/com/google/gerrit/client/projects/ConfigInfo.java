@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|actions
+operator|.
+name|ActionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|NativeMap
@@ -304,6 +320,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|actions ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|ActionInfo
+argument_list|>
+name|actions
+parameter_list|()
+comment|/*-{ return this.actions; }-*/
+function_decl|;
 DECL|method|submit_typeRaw ()
 specifier|private
 specifier|final

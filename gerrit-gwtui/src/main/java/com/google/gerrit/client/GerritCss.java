@@ -913,6 +913,11 @@ name|String
 name|posscore
 parameter_list|()
 function_decl|;
+DECL|method|projectActions ()
+name|String
+name|projectActions
+parameter_list|()
+function_decl|;
 DECL|method|projectAdminLabelRangeLine ()
 name|String
 name|projectAdminLabelRangeLine

@@ -880,7 +880,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|project (Project.NameKey name)
-specifier|private
+specifier|public
 specifier|static
 name|RestApi
 name|project

@@ -186,6 +186,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -246,6 +262,19 @@ name|ChangeInfo
 name|c
 parameter_list|)
 comment|/*-{ this.change=c; }-*/
+function_decl|;
+DECL|method|set (Project.NameKey p)
+specifier|final
+specifier|native
+name|void
+name|set
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+comment|/*-{ this.project=p; }-*/
 function_decl|;
 DECL|method|set (RevisionInfo r)
 specifier|final

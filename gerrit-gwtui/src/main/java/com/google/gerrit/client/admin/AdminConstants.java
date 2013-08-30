@@ -275,6 +275,16 @@ name|String
 name|headingProjectOptions
 parameter_list|()
 function_decl|;
+DECL|method|headingProjectCommands ()
+name|String
+name|headingProjectCommands
+parameter_list|()
+function_decl|;
+DECL|method|headingCommands ()
+name|String
+name|headingCommands
+parameter_list|()
+function_decl|;
 DECL|method|headingMembers ()
 name|String
 name|headingMembers
