@@ -1374,7 +1374,10 @@ decl_stmt|;
 DECL|field|user
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|CurrentUser
+argument_list|>
 name|user
 decl_stmt|;
 DECL|field|anonymous
@@ -1483,7 +1486,7 @@ name|lastControl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, CurrentUser u, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeControl.GenericFactory ccf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, @CanonicalWebUrl Provider<String> curl, Urls urls, DynamicMap<RestView<ChangeResource>> changes, Revisions revisions)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> userProvider, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeControl.GenericFactory ccf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, @CanonicalWebUrl Provider<String> curl, Urls urls, DynamicMap<RestView<ChangeResource>> changes, Revisions revisions)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1495,8 +1498,11 @@ parameter_list|,
 name|LabelNormalizer
 name|ln
 parameter_list|,
+name|Provider
+argument_list|<
 name|CurrentUser
-name|u
+argument_list|>
+name|userProvider
 parameter_list|,
 name|AnonymousUser
 name|au
@@ -1564,7 +1570,7 @@ name|this
 operator|.
 name|user
 operator|=
-name|u
+name|userProvider
 expr_stmt|;
 name|this
 operator|.
@@ -2244,6 +2250,9 @@ name|starred
 operator|=
 name|user
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getStarredChanges
 argument_list|()
 operator|.
@@ -2512,6 +2521,8 @@ argument_list|(
 name|cd
 argument_list|)
 argument_list|)
+argument_list|,
+name|user
 argument_list|)
 control|)
 block|{
@@ -2648,6 +2659,9 @@ name|db
 argument_list|)
 argument_list|,
 name|user
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -5655,6 +5669,8 @@ argument_list|)
 argument_list|,
 name|in
 argument_list|)
+argument_list|,
+name|user
 argument_list|)
 control|)
 block|{
