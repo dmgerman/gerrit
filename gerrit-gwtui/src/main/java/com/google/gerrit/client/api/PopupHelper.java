@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|change
+name|actions
 operator|.
 name|ActionButton
 import|;

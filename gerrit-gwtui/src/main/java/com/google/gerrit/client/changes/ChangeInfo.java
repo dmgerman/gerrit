@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|actions
+operator|.
+name|ActionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|diff
 operator|.
 name|FileInfo
@@ -1610,65 +1626,6 @@ block|}
 DECL|method|GitPerson ()
 specifier|protected
 name|GitPerson
-parameter_list|()
-block|{     }
-block|}
-DECL|class|ActionInfo
-specifier|public
-specifier|static
-class|class
-name|ActionInfo
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|id ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|id
-parameter_list|()
-comment|/*-{ return this.id; }-*/
-function_decl|;
-DECL|method|method ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|method
-parameter_list|()
-comment|/*-{ return this.method; }-*/
-function_decl|;
-DECL|method|label ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|label
-parameter_list|()
-comment|/*-{ return this.label; }-*/
-function_decl|;
-DECL|method|title ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|title
-parameter_list|()
-comment|/*-{ return this.title; }-*/
-function_decl|;
-DECL|method|enabled ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|enabled
-parameter_list|()
-comment|/*-{ return this.enabled || false; }-*/
-function_decl|;
-DECL|method|ActionInfo ()
-specifier|protected
-name|ActionInfo
 parameter_list|()
 block|{     }
 block|}
