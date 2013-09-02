@@ -152,7 +152,7 @@ specifier|public
 class|class
 name|GroupInfo
 extends|extends
-name|JavaScriptObject
+name|GroupBaseInfo
 block|{
 DECL|method|getGroupId ()
 specifier|public
@@ -174,49 +174,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getGroupUUID ()
-specifier|public
-specifier|final
-name|AccountGroup
-operator|.
-name|UUID
-name|getGroupUUID
-parameter_list|()
-block|{
-return|return
-operator|new
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|(
-name|URL
-operator|.
-name|decodeQueryString
-argument_list|(
-name|id
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
-DECL|method|id ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|id
-parameter_list|()
-comment|/*-{ return this.id; }-*/
-function_decl|;
-DECL|method|name ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|name
-parameter_list|()
-comment|/*-{ return this.name; }-*/
-function_decl|;
 DECL|method|options ()
 specifier|public
 specifier|final
