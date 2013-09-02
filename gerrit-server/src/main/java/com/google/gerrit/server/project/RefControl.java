@@ -1475,6 +1475,9 @@ case|:
 case|case
 name|JSON_RPC
 case|:
+case|case
+name|SSH_COMMAND
+case|:
 return|return
 name|isOwner
 argument_list|()

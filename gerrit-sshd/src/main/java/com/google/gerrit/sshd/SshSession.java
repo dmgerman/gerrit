@@ -373,6 +373,15 @@ name|identity
 operator|=
 name|id
 expr_stmt|;
+name|identity
+operator|.
+name|setAccessPath
+argument_list|(
+name|AccessPath
+operator|.
+name|SSH_COMMAND
+argument_list|)
+expr_stmt|;
 name|authError
 operator|=
 literal|null
