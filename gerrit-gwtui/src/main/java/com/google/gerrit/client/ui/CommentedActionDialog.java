@@ -653,7 +653,7 @@ operator|.
 name|getElement
 argument_list|()
 argument_list|,
-literal|"margin-top"
+literal|"marginTop"
 argument_list|,
 literal|"4px"
 argument_list|)
