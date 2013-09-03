@@ -541,7 +541,7 @@ operator|.
 name|getElement
 argument_list|()
 argument_list|,
-literal|"box-sizing"
+literal|"boxSizing"
 argument_list|,
 literal|"border-box"
 argument_list|)
