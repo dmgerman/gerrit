@@ -455,6 +455,11 @@ operator|.
 name|Id
 name|changeId
 decl_stmt|;
+DECL|field|changeInfo
+specifier|private
+name|ChangeInfo
+name|changeInfo
+decl_stmt|;
 DECL|field|revision
 specifier|private
 name|String
@@ -573,6 +578,10 @@ name|commit
 operator|.
 name|message
 argument_list|()
+expr_stmt|;
+name|changeInfo
+operator|=
+name|info
 expr_stmt|;
 name|initChangeActions
 argument_list|(
@@ -1084,7 +1093,7 @@ name|call
 argument_list|(
 name|cherrypick
 argument_list|,
-name|changeId
+name|changeInfo
 argument_list|,
 name|revision
 argument_list|,
