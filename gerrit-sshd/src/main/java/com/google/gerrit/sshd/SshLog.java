@@ -1526,8 +1526,9 @@ decl_stmt|;
 if|if
 condition|(
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|IdentifiedUser

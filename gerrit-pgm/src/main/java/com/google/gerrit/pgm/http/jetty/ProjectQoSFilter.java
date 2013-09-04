@@ -1264,8 +1264,9 @@ decl_stmt|;
 if|if
 condition|(
 name|who
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|String

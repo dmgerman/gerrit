@@ -2506,8 +2506,9 @@ name|userProvider
 operator|.
 name|get
 argument_list|()
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|out
@@ -5111,8 +5112,9 @@ decl_stmt|;
 if|if
 condition|(
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|PatchSet
@@ -5662,8 +5664,9 @@ name|userProvider
 operator|.
 name|get
 argument_list|()
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|out

@@ -2859,8 +2859,9 @@ block|{
 if|if
 condition|(
 name|currentUser
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 operator|&&
 name|id
 operator|.
@@ -4193,8 +4194,9 @@ block|{
 if|if
 condition|(
 name|currentUser
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 return|return

@@ -1262,8 +1262,9 @@ decl_stmt|;
 if|if
 condition|(
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 comment|// If we are signed in, compute the number of draft comments by the

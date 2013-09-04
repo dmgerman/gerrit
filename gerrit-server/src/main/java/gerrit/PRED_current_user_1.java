@@ -412,8 +412,9 @@ decl_stmt|;
 if|if
 condition|(
 name|curUser
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|Account

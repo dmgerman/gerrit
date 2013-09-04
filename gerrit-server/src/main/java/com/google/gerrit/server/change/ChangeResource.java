@@ -407,8 +407,9 @@ operator|.
 name|putInt
 argument_list|(
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|?
 operator|(
 operator|(
