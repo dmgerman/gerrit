@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Iterables
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -317,16 +303,6 @@ operator|.
 name|inject
 operator|.
 name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
