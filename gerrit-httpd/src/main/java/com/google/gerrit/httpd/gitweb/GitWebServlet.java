@@ -3157,8 +3157,9 @@ name|project
 operator|.
 name|getCurrentUser
 argument_list|()
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 specifier|final

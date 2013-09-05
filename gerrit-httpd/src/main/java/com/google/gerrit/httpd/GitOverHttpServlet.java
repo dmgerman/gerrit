@@ -1728,8 +1728,9 @@ name|pc
 operator|.
 name|getCurrentUser
 argument_list|()
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -2083,8 +2084,9 @@ name|pc
 operator|.
 name|getCurrentUser
 argument_list|()
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 operator|)
 condition|)
 block|{

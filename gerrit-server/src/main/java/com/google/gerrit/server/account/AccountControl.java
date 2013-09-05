@@ -507,8 +507,9 @@ comment|// Special case: I can always see myself.
 if|if
 condition|(
 name|currentUser
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 operator|&&
 operator|(
 operator|(

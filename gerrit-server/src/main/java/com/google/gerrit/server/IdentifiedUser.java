@@ -2439,6 +2439,19 @@ operator|+
 literal|"]"
 return|;
 block|}
+comment|/** Check if user is the IdentifiedUser */
+annotation|@
+name|Override
+DECL|method|isIdentifiedUser ()
+specifier|public
+name|boolean
+name|isIdentifiedUser
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

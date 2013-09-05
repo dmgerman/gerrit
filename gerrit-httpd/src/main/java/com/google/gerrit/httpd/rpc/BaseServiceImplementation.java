@@ -359,8 +359,9 @@ decl_stmt|;
 if|if
 condition|(
 name|u
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 return|return

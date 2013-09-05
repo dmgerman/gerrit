@@ -602,8 +602,9 @@ condition|(
 operator|!
 operator|(
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -668,8 +669,9 @@ condition|(
 operator|!
 operator|(
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 operator|)
 condition|)
 block|{

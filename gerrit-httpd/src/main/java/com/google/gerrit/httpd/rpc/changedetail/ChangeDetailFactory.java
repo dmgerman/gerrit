@@ -1599,8 +1599,9 @@ name|Id
 name|me
 init|=
 name|user
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|?
 operator|(
 operator|(
@@ -2449,8 +2450,9 @@ decl_stmt|;
 if|if
 condition|(
 name|currentUser
-operator|instanceof
-name|IdentifiedUser
+operator|.
+name|isIdentifiedUser
+argument_list|()
 condition|)
 block|{
 name|currentUserId
