@@ -689,13 +689,15 @@ name|stdout
 operator|.
 name|format
 argument_list|(
-literal|"%-30s %-10s %-8s\n"
+literal|"%-30s %-10s %-8s %s\n"
 argument_list|,
 literal|"Name"
 argument_list|,
 literal|"Version"
 argument_list|,
 literal|"Status"
+argument_list|,
+literal|"File"
 argument_list|)
 expr_stmt|;
 name|stdout
@@ -750,7 +752,7 @@ name|stdout
 operator|.
 name|format
 argument_list|(
-literal|"%-30s %-10s %-8s\n"
+literal|"%-30s %-10s %-8s %s\n"
 argument_list|,
 name|p
 operator|.
@@ -774,6 +776,14 @@ condition|?
 literal|"DISABLED"
 else|:
 literal|"ENABLED"
+argument_list|,
+name|p
+operator|.
+name|getSrcFile
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
