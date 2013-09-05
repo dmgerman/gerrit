@@ -690,7 +690,7 @@ argument_list|)
 expr_stmt|;
 name|assertError
 argument_list|(
-literal|"fatal: user does not have \"runGC\" capability."
+literal|"Capability runGC is required to access this resource"
 argument_list|,
 name|s
 operator|.
