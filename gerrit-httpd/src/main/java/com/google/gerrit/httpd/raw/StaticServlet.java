@@ -130,6 +130,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|servlet
@@ -1480,6 +1494,24 @@ argument_list|,
 name|DAYS
 argument_list|,
 literal|false
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|CacheHeaders
+operator|.
+name|setCacheable
+argument_list|(
+name|req
+argument_list|,
+name|rsp
+argument_list|,
+literal|15
+argument_list|,
+name|MINUTES
+argument_list|,
+name|refresh
 argument_list|)
 expr_stmt|;
 block|}
