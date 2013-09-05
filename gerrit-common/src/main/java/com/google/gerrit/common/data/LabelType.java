@@ -716,6 +716,15 @@ specifier|transient
 name|boolean
 name|canOverride
 decl_stmt|;
+DECL|field|refPatterns
+specifier|private
+specifier|transient
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|refPatterns
+decl_stmt|;
 DECL|field|intList
 specifier|private
 specifier|transient
@@ -972,6 +981,19 @@ return|return
 name|canOverride
 return|;
 block|}
+DECL|method|getRefPatterns ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getRefPatterns
+parameter_list|()
+block|{
+return|return
+name|refPatterns
+return|;
+block|}
 DECL|method|setCanOverride (boolean canOverride)
 specifier|public
 name|void
@@ -986,6 +1008,25 @@ operator|.
 name|canOverride
 operator|=
 name|canOverride
+expr_stmt|;
+block|}
+DECL|method|setRefPatterns (List<String> refPatterns)
+specifier|public
+name|void
+name|setRefPatterns
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|refPatterns
+parameter_list|)
+block|{
+name|this
+operator|.
+name|refPatterns
+operator|=
+name|refPatterns
 expr_stmt|;
 block|}
 DECL|method|getValues ()
