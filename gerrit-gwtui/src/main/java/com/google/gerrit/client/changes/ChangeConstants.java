@@ -265,9 +265,14 @@ name|String
 name|nextPatchSet
 parameter_list|()
 function_decl|;
-DECL|method|keyReload ()
+DECL|method|keyReloadChange ()
 name|String
-name|keyReload
+name|keyReloadChange
+parameter_list|()
+function_decl|;
+DECL|method|keyReloadSearch ()
+name|String
+name|keyReloadSearch
 parameter_list|()
 function_decl|;
 DECL|method|keyPublishComments ()
