@@ -1890,7 +1890,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|keyReload
+name|keyReloadChange
 argument_list|()
 argument_list|)
 block|{
