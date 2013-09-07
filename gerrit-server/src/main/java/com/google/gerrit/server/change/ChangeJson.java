@@ -265,6 +265,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|changes
+operator|.
+name|ListChangesOption
+operator|.
+name|REVIEWED
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -2295,6 +2313,11 @@ argument_list|()
 operator|.
 name|isOpen
 argument_list|()
+operator|&&
+name|has
+argument_list|(
+name|REVIEWED
+argument_list|)
 operator|&&
 name|isChangeReviewed
 argument_list|(

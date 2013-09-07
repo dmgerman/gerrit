@@ -157,6 +157,13 @@ name|CURRENT_ACTIONS
 argument_list|(
 literal|10
 argument_list|)
+block|,
+comment|/** Set the reviewed boolean for the caller. */
+DECL|enumConstant|REVIEWED
+name|REVIEWED
+argument_list|(
+literal|11
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

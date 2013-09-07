@@ -181,7 +181,7 @@ init|=
 literal|"/changes/"
 decl_stmt|;
 comment|/** Run 2 or more queries in a single remote invocation. */
-DECL|method|query ( AsyncCallback<JsArray<ChangeList>> callback, String... queries)
+DECL|method|query ( AsyncCallback<JsArray<ChangeList>> callback, EnumSet<ListChangesOption> options, String... queries)
 specifier|public
 specifier|static
 name|void
@@ -195,6 +195,12 @@ name|ChangeList
 argument_list|>
 argument_list|>
 name|callback
+parameter_list|,
+name|EnumSet
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|options
 parameter_list|,
 name|String
 modifier|...
@@ -241,10 +247,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|addOptions
-argument_list|(
-name|call
-argument_list|,
+name|EnumSet
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|o
+init|=
 name|EnumSet
 operator|.
 name|of
@@ -253,6 +261,19 @@ name|ListChangesOption
 operator|.
 name|LABELS
 argument_list|)
+decl_stmt|;
+name|o
+operator|.
+name|addAll
+argument_list|(
+name|options
+argument_list|)
+expr_stmt|;
+name|addOptions
+argument_list|(
+name|call
+argument_list|,
+name|o
 argument_list|)
 expr_stmt|;
 name|call
