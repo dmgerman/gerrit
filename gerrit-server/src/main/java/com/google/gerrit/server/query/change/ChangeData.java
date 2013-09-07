@@ -1836,6 +1836,19 @@ return|return
 name|change
 return|;
 block|}
+DECL|method|setChange (Change c)
+name|void
+name|setChange
+parameter_list|(
+name|Change
+name|c
+parameter_list|)
+block|{
+name|change
+operator|=
+name|c
+expr_stmt|;
+block|}
 DECL|method|currentPatchSet (Provider<ReviewDb> db)
 specifier|public
 name|PatchSet
