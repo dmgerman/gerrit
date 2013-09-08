@@ -221,8 +221,6 @@ expr_stmt|;
 operator|new
 name|CreateChangeDialog
 argument_list|(
-name|b
-argument_list|,
 operator|new
 name|Project
 operator|.

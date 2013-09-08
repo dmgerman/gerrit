@@ -2744,24 +2744,6 @@ name|fmt
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|getPatchScreenType ()
-specifier|protected
-name|PatchScreen
-operator|.
-name|Type
-name|getPatchScreenType
-parameter_list|()
-block|{
-return|return
-name|PatchScreen
-operator|.
-name|Type
-operator|.
-name|UNIFIED
-return|;
-block|}
 DECL|method|insert (final List<PatchLineComment> in, int row)
 specifier|private
 name|int

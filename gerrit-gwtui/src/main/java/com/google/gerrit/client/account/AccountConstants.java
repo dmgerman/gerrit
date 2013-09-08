@@ -120,16 +120,6 @@ name|String
 name|accountId
 parameter_list|()
 function_decl|;
-DECL|method|commentVisibilityLabel ()
-name|String
-name|commentVisibilityLabel
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenLabel ()
-name|String
-name|changeScreenLabel
-parameter_list|()
-function_decl|;
 DECL|method|diffViewLabel ()
 name|String
 name|diffViewLabel
@@ -163,11 +153,6 @@ function_decl|;
 DECL|method|copySelfOnEmails ()
 name|String
 name|copySelfOnEmails
-parameter_list|()
-function_decl|;
-DECL|method|reversePatchSetOrder ()
-name|String
-name|reversePatchSetOrder
 parameter_list|()
 function_decl|;
 DECL|method|reviewCategoryLabel ()
@@ -243,16 +228,6 @@ function_decl|;
 DECL|method|myMenuReset ()
 name|String
 name|myMenuReset
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenOldUi ()
-name|String
-name|changeScreenOldUi
-parameter_list|()
-function_decl|;
-DECL|method|changeScreenNewUi ()
-name|String
-name|changeScreenNewUi
 parameter_list|()
 function_decl|;
 DECL|method|tabAccountSummary ()

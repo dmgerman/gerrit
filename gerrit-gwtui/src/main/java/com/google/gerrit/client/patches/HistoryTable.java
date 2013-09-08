@@ -283,7 +283,7 @@ block|{
 DECL|field|screen
 specifier|private
 specifier|final
-name|PatchScreen
+name|UnifiedPatchScreen
 name|screen
 decl_stmt|;
 DECL|field|all
@@ -299,11 +299,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|HistoryTable (final PatchScreen parent)
+DECL|method|HistoryTable (final UnifiedPatchScreen parent)
 name|HistoryTable
 parameter_list|(
 specifier|final
-name|PatchScreen
+name|UnifiedPatchScreen
 name|parent
 parameter_list|)
 block|{
@@ -430,24 +430,13 @@ name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
-switch|switch
-condition|(
-name|screen
-operator|.
-name|getPatchScreenType
-argument_list|()
-condition|)
-block|{
-case|case
-name|SIDE_BY_SIDE
-case|:
 name|Gerrit
 operator|.
 name|display
 argument_list|(
 name|Dispatcher
 operator|.
-name|toPatchSideBySide
+name|toUnified
 argument_list|(
 name|sideA
 argument_list|,
@@ -455,26 +444,6 @@ name|k
 argument_list|)
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
-name|UNIFIED
-case|:
-name|Gerrit
-operator|.
-name|display
-argument_list|(
-name|Dispatcher
-operator|.
-name|toPatchUnified
-argument_list|(
-name|sideA
-argument_list|,
-name|k
-argument_list|)
-argument_list|)
-expr_stmt|;
-break|break;
-block|}
 block|}
 DECL|method|enableAll (final boolean on)
 name|void

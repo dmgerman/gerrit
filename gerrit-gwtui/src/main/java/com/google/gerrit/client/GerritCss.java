@@ -1108,16 +1108,6 @@ name|String
 name|sideBySideScreenLinkTable
 parameter_list|()
 function_decl|;
-DECL|method|sideBySideScreenSideBySideTable ()
-name|String
-name|sideBySideScreenSideBySideTable
-parameter_list|()
-function_decl|;
-DECL|method|sideBySideTableBinaryHeader ()
-name|String
-name|sideBySideTableBinaryHeader
-parameter_list|()
-function_decl|;
 DECL|method|singleLine ()
 name|String
 name|singleLine

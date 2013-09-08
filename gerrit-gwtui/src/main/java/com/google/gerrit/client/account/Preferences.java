@@ -112,42 +112,6 @@ name|client
 operator|.
 name|AccountGeneralPreferences
 operator|.
-name|ChangeScreen
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGeneralPreferences
-operator|.
-name|CommentVisibilityStrategy
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountGeneralPreferences
-operator|.
 name|DateFormat
 import|;
 end_import
@@ -414,16 +378,6 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
-name|reversePatchSetOrder
-argument_list|(
-name|in
-operator|.
-name|isReversePatchSetOrder
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
 name|relativeDateInChangeTable
 argument_list|(
 name|in
@@ -454,16 +408,6 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
-name|commentVisibilityStrategy
-argument_list|(
-name|in
-operator|.
-name|getCommentVisibilityStrategy
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
 name|reviewCategoryStrategy
 argument_list|(
 name|in
@@ -479,16 +423,6 @@ argument_list|(
 name|in
 operator|.
 name|getDiffView
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
-name|changeScreen
-argument_list|(
-name|in
-operator|.
-name|getChangeScreen
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -711,15 +645,6 @@ name|timeFormatRaw
 parameter_list|()
 comment|/*-{ return this.time_format }-*/
 function_decl|;
-DECL|method|reversePatchSetOrder ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|reversePatchSetOrder
-parameter_list|()
-comment|/*-{ return this.reverse_patch_set_order || false }-*/
-function_decl|;
 DECL|method|relativeDateInChangeTable ()
 specifier|public
 specifier|final
@@ -786,43 +711,6 @@ name|reviewCategeoryStrategyRaw
 parameter_list|()
 comment|/*-{ return this.review_category_strategy }-*/
 function_decl|;
-DECL|method|commentVisibilityStrategy ()
-specifier|public
-specifier|final
-name|CommentVisibilityStrategy
-name|commentVisibilityStrategy
-parameter_list|()
-block|{
-name|String
-name|s
-init|=
-name|commentVisibilityStrategyRaw
-argument_list|()
-decl_stmt|;
-return|return
-name|s
-operator|!=
-literal|null
-condition|?
-name|CommentVisibilityStrategy
-operator|.
-name|valueOf
-argument_list|(
-name|s
-argument_list|)
-else|:
-literal|null
-return|;
-block|}
-DECL|method|commentVisibilityStrategyRaw ()
-specifier|private
-specifier|final
-specifier|native
-name|String
-name|commentVisibilityStrategyRaw
-parameter_list|()
-comment|/*-{ return this.comment_visibility_strategy }-*/
-function_decl|;
 DECL|method|diffView ()
 specifier|public
 specifier|final
@@ -859,43 +747,6 @@ name|String
 name|diffViewRaw
 parameter_list|()
 comment|/*-{ return this.diff_view }-*/
-function_decl|;
-DECL|method|changeScreen ()
-specifier|public
-specifier|final
-name|ChangeScreen
-name|changeScreen
-parameter_list|()
-block|{
-name|String
-name|s
-init|=
-name|changeScreenRaw
-argument_list|()
-decl_stmt|;
-return|return
-name|s
-operator|!=
-literal|null
-condition|?
-name|ChangeScreen
-operator|.
-name|valueOf
-argument_list|(
-name|s
-argument_list|)
-else|:
-literal|null
-return|;
-block|}
-DECL|method|changeScreenRaw ()
-specifier|private
-specifier|final
-specifier|native
-name|String
-name|changeScreenRaw
-parameter_list|()
-comment|/*-{ return this.change_screen }-*/
 function_decl|;
 DECL|method|my ()
 specifier|public
@@ -1105,18 +956,6 @@ name|f
 parameter_list|)
 comment|/*-{ this.time_format = f }-*/
 function_decl|;
-DECL|method|reversePatchSetOrder (boolean r)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|reversePatchSetOrder
-parameter_list|(
-name|boolean
-name|r
-parameter_list|)
-comment|/*-{ this.reverse_patch_set_order = r }-*/
-function_decl|;
 DECL|method|relativeDateInChangeTable (boolean d)
 specifier|public
 specifier|final
@@ -1190,43 +1029,6 @@ name|s
 parameter_list|)
 comment|/*-{ this.review_category_strategy = s }-*/
 function_decl|;
-DECL|method|commentVisibilityStrategy (CommentVisibilityStrategy s)
-specifier|public
-specifier|final
-name|void
-name|commentVisibilityStrategy
-parameter_list|(
-name|CommentVisibilityStrategy
-name|s
-parameter_list|)
-block|{
-name|commentVisibilityStrategyRaw
-argument_list|(
-name|s
-operator|!=
-literal|null
-condition|?
-name|s
-operator|.
-name|toString
-argument_list|()
-else|:
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|commentVisibilityStrategyRaw (String s)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|commentVisibilityStrategyRaw
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-comment|/*-{ this.comment_visibility_strategy = s }-*/
-function_decl|;
 DECL|method|diffView (DiffView d)
 specifier|public
 specifier|final
@@ -1263,43 +1065,6 @@ name|String
 name|d
 parameter_list|)
 comment|/*-{ this.diff_view = d }-*/
-function_decl|;
-DECL|method|changeScreen (ChangeScreen s)
-specifier|public
-specifier|final
-name|void
-name|changeScreen
-parameter_list|(
-name|ChangeScreen
-name|s
-parameter_list|)
-block|{
-name|changeScreenRaw
-argument_list|(
-name|s
-operator|!=
-literal|null
-condition|?
-name|s
-operator|.
-name|toString
-argument_list|()
-else|:
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|changeScreenRaw (String s)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|changeScreenRaw
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-comment|/*-{ this.change_screen = s }-*/
 function_decl|;
 DECL|method|setMyMenus (List<TopMenuItem> myMenus)
 specifier|final

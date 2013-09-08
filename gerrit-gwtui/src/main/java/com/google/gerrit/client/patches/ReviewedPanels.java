@@ -484,7 +484,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populate (Patch.Key pk, PatchTable pt, int patchIndex, PatchScreen.Type patchScreenType)
+DECL|method|populate (Patch.Key pk, PatchTable pt, int patchIndex)
 specifier|public
 name|void
 name|populate
@@ -499,11 +499,6 @@ name|pt
 parameter_list|,
 name|int
 name|patchIndex
-parameter_list|,
-name|PatchScreen
-operator|.
-name|Type
-name|patchScreenType
 parameter_list|)
 block|{
 name|patchKey
@@ -519,8 +514,6 @@ operator|=
 name|createReviewedLink
 argument_list|(
 name|patchIndex
-argument_list|,
-name|patchScreenType
 argument_list|)
 expr_stmt|;
 name|top
@@ -892,7 +885,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|createReviewedLink (final int patchIndex, final PatchScreen.Type patchScreenType)
+DECL|method|createReviewedLink (final int patchIndex)
 specifier|private
 name|InlineHyperlink
 name|createReviewedLink
@@ -900,12 +893,6 @@ parameter_list|(
 specifier|final
 name|int
 name|patchIndex
-parameter_list|,
-specifier|final
-name|PatchScreen
-operator|.
-name|Type
-name|patchScreenType
 parameter_list|)
 block|{
 specifier|final
@@ -991,8 +978,6 @@ operator|.
 name|createLink
 argument_list|(
 name|nextUnreviewedPatchIndex
-argument_list|,
-name|patchScreenType
 argument_list|,
 literal|null
 argument_list|,

@@ -104,22 +104,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|patches
-operator|.
-name|PatchScreen
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|ui
 operator|.
 name|InlineHyperlink
@@ -1379,18 +1363,13 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**    * @return a link to the previous file in this patch set, or null.    */
-DECL|method|getPreviousPatchLink (int index, PatchScreen.Type patchType)
+DECL|method|getPreviousPatchLink (int index)
 specifier|public
 name|InlineHyperlink
 name|getPreviousPatchLink
 parameter_list|(
 name|int
 name|index
-parameter_list|,
-name|PatchScreen
-operator|.
-name|Type
-name|patchType
 parameter_list|)
 block|{
 name|int
@@ -1419,8 +1398,6 @@ name|createLink
 argument_list|(
 name|previousPatchIndex
 argument_list|,
-name|patchType
-argument_list|,
 name|SafeHtml
 operator|.
 name|asis
@@ -1438,18 +1415,13 @@ argument_list|)
 return|;
 block|}
 comment|/**    * @return a link to the next file in this patch set, or null.    */
-DECL|method|getNextPatchLink (int index, PatchScreen.Type patchType)
+DECL|method|getNextPatchLink (int index)
 specifier|public
 name|InlineHyperlink
 name|getNextPatchLink
 parameter_list|(
 name|int
 name|index
-parameter_list|,
-name|PatchScreen
-operator|.
-name|Type
-name|patchType
 parameter_list|)
 block|{
 name|int
@@ -1480,8 +1452,6 @@ name|createLink
 argument_list|(
 name|nextPatchIndex
 argument_list|,
-name|patchType
-argument_list|,
 literal|null
 argument_list|,
 name|SafeHtml
@@ -1498,19 +1468,14 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * @return a link to the the given patch.    * @param index The patch to link to    * @param screenType The screen type of patch display    * @param before A string to display at the beginning of the href text    * @param after A string to display at the end of the href text    */
-DECL|method|createLink (int index, PatchScreen.Type screenType, SafeHtml before, SafeHtml after)
+comment|/**    * @return a link to the the given patch.    * @param index The patch to link to    * @param before A string to display at the beginning of the href text    * @param after A string to display at the end of the href text    */
+DECL|method|createLink (int index, SafeHtml before, SafeHtml after)
 specifier|public
 name|PatchLink
 name|createLink
 parameter_list|(
 name|int
 name|index
-parameter_list|,
-name|PatchScreen
-operator|.
-name|Type
-name|screenType
 parameter_list|,
 name|SafeHtml
 name|before
@@ -1547,8 +1512,6 @@ condition|(
 name|isUnifiedPatchLink
 argument_list|(
 name|patch
-argument_list|,
-name|screenType
 argument_list|)
 condition|)
 block|{
@@ -1564,12 +1527,6 @@ argument_list|,
 name|base
 argument_list|,
 name|thisKey
-argument_list|,
-name|index
-argument_list|,
-name|detail
-argument_list|,
-name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -1587,12 +1544,6 @@ argument_list|,
 name|base
 argument_list|,
 name|thisKey
-argument_list|,
-name|index
-argument_list|,
-name|detail
-argument_list|,
-name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -1640,7 +1591,7 @@ return|return
 name|link
 return|;
 block|}
-DECL|method|isUnifiedPatchLink (final Patch patch, final PatchScreen.Type screenType)
+DECL|method|isUnifiedPatchLink (final Patch patch)
 specifier|private
 specifier|static
 name|boolean
@@ -1649,21 +1600,7 @@ parameter_list|(
 specifier|final
 name|Patch
 name|patch
-parameter_list|,
-specifier|final
-name|PatchScreen
-operator|.
-name|Type
-name|screenType
 parameter_list|)
-block|{
-if|if
-condition|(
-name|Dispatcher
-operator|.
-name|isChangeScreen2
-argument_list|()
-condition|)
 block|{
 return|return
 operator|(
@@ -1679,12 +1616,6 @@ operator|.
 name|BINARY
 argument_list|)
 operator|||
-operator|(
-name|Gerrit
-operator|.
-name|isSignedIn
-argument_list|()
-operator|&&
 name|Gerrit
 operator|.
 name|getUserAccount
@@ -1703,17 +1634,6 @@ operator|.
 name|UNIFIED_DIFF
 argument_list|)
 operator|)
-operator|)
-return|;
-block|}
-return|return
-name|screenType
-operator|==
-name|PatchScreen
-operator|.
-name|Type
-operator|.
-name|UNIFIED
 return|;
 block|}
 DECL|method|getFileNameOnly (Patch patch)
@@ -2486,9 +2406,7 @@ argument_list|)
 expr_stmt|;
 name|Widget
 name|nameCol
-decl_stmt|;
-name|nameCol
-operator|=
+init|=
 operator|new
 name|PatchLink
 operator|.
@@ -2505,18 +2423,8 @@ name|patch
 operator|.
 name|getKey
 argument_list|()
-argument_list|,
-name|row
-operator|-
-literal|1
-argument_list|,
-name|detail
-argument_list|,
-name|PatchTable
-operator|.
-name|this
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|patch
@@ -2698,16 +2606,6 @@ name|patch
 operator|.
 name|getKey
 argument_list|()
-argument_list|,
-name|row
-operator|-
-literal|1
-argument_list|,
-name|detail
-argument_list|,
-name|PatchTable
-operator|.
-name|this
 argument_list|)
 decl_stmt|;
 name|sideBySide
@@ -2738,16 +2636,6 @@ name|patch
 operator|.
 name|getKey
 argument_list|()
-argument_list|,
-name|row
-operator|-
-literal|1
-argument_list|,
-name|detail
-argument_list|,
-name|PatchTable
-operator|.
-name|this
 argument_list|)
 decl_stmt|;
 name|unified
@@ -2835,7 +2723,7 @@ name|openWindow
 argument_list|(
 name|Dispatcher
 operator|.
-name|toPatchSideBySide
+name|toSideBySide
 argument_list|(
 name|base
 argument_list|,
@@ -2920,7 +2808,7 @@ name|openWindow
 argument_list|(
 name|Dispatcher
 operator|.
-name|toPatchUnified
+name|toUnified
 argument_list|(
 name|base
 argument_list|,

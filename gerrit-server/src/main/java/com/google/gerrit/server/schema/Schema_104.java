@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|changes
+name|schema
 package|;
 end_package
 
@@ -72,13 +72,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|inject
 operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|ClientBundle
+name|Inject
 import|;
 end_import
 
@@ -88,48 +84,41 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|inject
 operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|ImageResource
+name|Provider
 import|;
 end_import
 
-begin_interface
-DECL|interface|ChangeResources
+begin_class
+DECL|class|Schema_104
 specifier|public
-interface|interface
-name|ChangeResources
+class|class
+name|Schema_104
 extends|extends
-name|ClientBundle
+name|SchemaVersion
 block|{
 annotation|@
-name|Source
+name|Inject
+DECL|method|Schema_104 (Provider<Schema_103> prior)
+name|Schema_104
+parameter_list|(
+name|Provider
+argument_list|<
+name|Schema_103
+argument_list|>
+name|prior
+parameter_list|)
+block|{
+name|super
 argument_list|(
-literal|"removeReviewerNormal.png"
+name|prior
 argument_list|)
-DECL|method|removeReviewerNormal ()
-specifier|public
-name|ImageResource
-name|removeReviewerNormal
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"removeReviewerPressed.png"
-argument_list|)
-DECL|method|removeReviewerPressed ()
-specifier|public
-name|ImageResource
-name|removeReviewerPressed
-parameter_list|()
-function_decl|;
+expr_stmt|;
 block|}
-end_interface
+comment|// Remove old change screen
+block|}
+end_class
 
 end_unit
 

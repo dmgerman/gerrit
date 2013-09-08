@@ -224,24 +224,6 @@ name|client
 operator|.
 name|ui
 operator|.
-name|FocusWidget
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
 name|SuggestBox
 import|;
 end_import
@@ -325,7 +307,7 @@ specifier|abstract
 class|class
 name|CreateChangeDialog
 extends|extends
-name|ActionDialog
+name|CommentedActionDialog
 block|{
 DECL|field|newChange
 specifier|private
@@ -340,14 +322,10 @@ name|BranchInfo
 argument_list|>
 name|branches
 decl_stmt|;
-DECL|method|CreateChangeDialog (final FocusWidget enableOnFailure, Project.NameKey project)
+DECL|method|CreateChangeDialog (Project.NameKey project)
 specifier|public
 name|CreateChangeDialog
 parameter_list|(
-specifier|final
-name|FocusWidget
-name|enableOnFailure
-parameter_list|,
 name|Project
 operator|.
 name|NameKey
@@ -356,10 +334,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|enableOnFailure
-argument_list|,
-literal|true
-argument_list|,
 name|Util
 operator|.
 name|C

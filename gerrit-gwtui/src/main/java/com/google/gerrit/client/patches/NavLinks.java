@@ -640,17 +640,12 @@ name|up
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|display (int patchIndex, PatchScreen.Type type, PatchTable fileList, List<InlineHyperlink> links, List<WebLinkInfo> webLinks)
+DECL|method|display (int patchIndex, PatchTable fileList, List<InlineHyperlink> links, List<WebLinkInfo> webLinks)
 name|void
 name|display
 parameter_list|(
 name|int
 name|patchIndex
-parameter_list|,
-name|PatchScreen
-operator|.
-name|Type
-name|type
 parameter_list|,
 name|PatchTable
 name|fileList
@@ -686,8 +681,6 @@ operator|.
 name|getPreviousPatchLink
 argument_list|(
 name|patchIndex
-argument_list|,
-name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -702,8 +695,6 @@ operator|.
 name|getNextPatchLink
 argument_list|(
 name|patchIndex
-argument_list|,
-name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
