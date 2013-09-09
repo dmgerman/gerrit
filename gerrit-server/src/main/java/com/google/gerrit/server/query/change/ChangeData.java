@@ -702,7 +702,7 @@ name|approvals
 argument_list|)
 return|;
 block|}
-DECL|method|ensureChangeLoaded ( Provider<ReviewDb> db, List<ChangeData> changes)
+DECL|method|ensureChangeLoaded (Provider<ReviewDb> db, Iterable<ChangeData> changes)
 specifier|public
 specifier|static
 name|void
@@ -714,7 +714,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -817,7 +817,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|ensureAllPatchSetsLoaded (Provider<ReviewDb> db, List<ChangeData> changes)
+DECL|method|ensureAllPatchSetsLoaded (Provider<ReviewDb> db, Iterable<ChangeData> changes)
 specifier|public
 specifier|static
 name|void
@@ -829,7 +829,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -855,7 +855,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|ensureCurrentPatchSetLoaded ( Provider<ReviewDb> db, List<ChangeData> changes)
+DECL|method|ensureCurrentPatchSetLoaded (Provider<ReviewDb> db, Iterable<ChangeData> changes)
 specifier|public
 specifier|static
 name|void
@@ -867,7 +867,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -1007,7 +1007,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|ensureCurrentApprovalsLoaded ( Provider<ReviewDb> db, List<ChangeData> changes)
+DECL|method|ensureCurrentApprovalsLoaded (Provider<ReviewDb> db, Iterable<ChangeData> changes)
 specifier|public
 specifier|static
 name|void
@@ -1019,7 +1019,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -1835,6 +1835,19 @@ block|}
 return|return
 name|change
 return|;
+block|}
+DECL|method|setChange (Change c)
+name|void
+name|setChange
+parameter_list|(
+name|Change
+name|c
+parameter_list|)
+block|{
+name|change
+operator|=
+name|c
+expr_stmt|;
 block|}
 DECL|method|currentPatchSet (Provider<ReviewDb> db)
 specifier|public
