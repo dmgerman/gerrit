@@ -136,11 +136,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|data
+name|client
 operator|.
-name|SubmitRecord
+name|PatchSet
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|SubmitRecord
 import|;
 end_import
 

@@ -74,9 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|reviewdb
 operator|.
-name|data
+name|client
 operator|.
 name|SubmitRecord
 operator|.
@@ -139,22 +139,6 @@ operator|.
 name|collect
 operator|.
 name|Lists
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|SubmitRecord
 import|;
 end_import
 
@@ -283,6 +267,22 @@ operator|.
 name|client
 operator|.
 name|PatchSetApproval
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|SubmitRecord
 import|;
 end_import
 
