@@ -532,7 +532,7 @@ name|server
 operator|.
 name|plugins
 operator|.
-name|PluginModule
+name|PluginRestApiModule
 import|;
 end_import
 
@@ -2056,7 +2056,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|PluginModule
+name|PluginRestApiModule
 argument_list|()
 argument_list|)
 expr_stmt|;
