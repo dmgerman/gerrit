@@ -129,7 +129,6 @@ name|DownloadScheme
 block|{
 DECL|enumConstant|ANON_GIT
 DECL|enumConstant|ANON_HTTP
-DECL|enumConstant|ANON_SSH
 DECL|enumConstant|HTTP
 DECL|enumConstant|SSH
 DECL|enumConstant|REPO_DOWNLOAD
@@ -137,8 +136,6 @@ DECL|enumConstant|DEFAULT_DOWNLOADS
 name|ANON_GIT
 block|,
 name|ANON_HTTP
-block|,
-name|ANON_SSH
 block|,
 name|HTTP
 block|,

@@ -1267,9 +1267,6 @@ return|;
 case|case
 name|SSH
 case|:
-case|case
-name|ANON_SSH
-case|:
 return|return
 literal|"ssh"
 return|;
