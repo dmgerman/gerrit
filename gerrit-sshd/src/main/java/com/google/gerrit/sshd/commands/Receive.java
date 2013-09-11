@@ -728,11 +728,6 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|receive
-operator|.
-name|advertiseHistory
-argument_list|()
-expr_stmt|;
 name|rp
 operator|.
 name|receive
