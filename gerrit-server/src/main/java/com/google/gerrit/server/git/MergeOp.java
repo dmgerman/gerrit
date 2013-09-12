@@ -3305,6 +3305,13 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|chg
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
