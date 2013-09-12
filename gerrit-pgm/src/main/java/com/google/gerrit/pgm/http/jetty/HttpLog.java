@@ -784,6 +784,10 @@ block|}
 if|if
 condition|(
 name|user
+operator|!=
+literal|null
+operator|&&
+name|user
 operator|.
 name|isIdentifiedUser
 argument_list|()
