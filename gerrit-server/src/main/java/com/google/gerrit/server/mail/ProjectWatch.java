@@ -779,7 +779,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Project %s has invalid notify %s filter \"%s\": %s"
+literal|"Project %s has invalid notify %s filter \"%s\""
 argument_list|,
 name|state
 operator|.
@@ -798,12 +798,9 @@ name|nc
 operator|.
 name|getFilter
 argument_list|()
+argument_list|)
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
