@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb.client
+DECL|package|com.google.gerrit.common.data
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
+name|data
 package|;
 end_package
 
@@ -72,11 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
+operator|.
+name|reviewdb
 operator|.
 name|client
 operator|.
-name|Column
+name|Account
 import|;
 end_import
 
@@ -152,8 +154,6 @@ specifier|static
 enum|enum
 name|Status
 block|{
-comment|// NOTE: These enum values are stored in the secondary index; reordering
-comment|// or removing values requires incrementing the index schema version.
 comment|/**        * This label provides what is necessary for submission.        *<p>        * If provided, {@link Label#appliedBy} describes the user account        * that applied this label to the change.        */
 DECL|enumConstant|OK
 name|OK
@@ -174,37 +174,16 @@ comment|/**        * The label is required for submission, but is impossible to 
 DECL|enumConstant|IMPOSSIBLE
 name|IMPOSSIBLE
 block|;     }
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|1
-argument_list|)
 DECL|field|label
 specifier|public
 name|String
 name|label
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|2
-argument_list|)
 DECL|field|status
 specifier|public
 name|Status
 name|status
 decl_stmt|;
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|3
-argument_list|)
 DECL|field|appliedBy
 specifier|public
 name|Account
