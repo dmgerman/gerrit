@@ -947,6 +947,8 @@ range|:
 name|createdListener
 control|)
 block|{
+try|try
+block|{
 name|l
 operator|.
 name|onNewProjectCreated
@@ -954,6 +956,23 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Failure in NewProjectCreatedListener"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|final
 name|RefUpdate
