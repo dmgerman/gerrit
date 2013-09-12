@@ -391,7 +391,7 @@ name|CHANGE
 argument_list|,
 name|ChangeField
 operator|.
-name|SUBMIT_RECORD_LABEL
+name|APPROVAL
 argument_list|)
 decl_stmt|;
 DECL|method|release (FieldDef<ChangeData, ?>.... fields)
