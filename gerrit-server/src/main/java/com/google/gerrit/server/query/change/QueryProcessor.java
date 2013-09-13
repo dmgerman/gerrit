@@ -1557,10 +1557,6 @@ name|ChangeData
 argument_list|>
 name|results
 init|=
-name|Lists
-operator|.
-name|newArrayList
-argument_list|(
 name|matches
 operator|.
 name|get
@@ -1570,7 +1566,6 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|Collections
 operator|.
