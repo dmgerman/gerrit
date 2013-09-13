@@ -636,11 +636,11 @@ name|int
 name|getCost
 parameter_list|()
 block|{
+comment|// Index queries are assumed to be cheaper than any other type of query, so
+comment|// so try to make sure they get picked. Note that pred's cost may be higher
+comment|// because it doesn't know whether it's being used in an index query or not.
 return|return
-name|pred
-operator|.
-name|getCost
-argument_list|()
+literal|0
 return|;
 block|}
 annotation|@
