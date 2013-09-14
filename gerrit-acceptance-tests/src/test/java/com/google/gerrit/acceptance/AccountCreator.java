@@ -827,6 +827,31 @@ literal|null
 argument_list|)
 return|;
 block|}
+DECL|method|admin ()
+specifier|public
+name|TestAccount
+name|admin
+parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
+throws|,
+name|OrmException
+throws|,
+name|JSchException
+block|{
+return|return
+name|create
+argument_list|(
+literal|"admin"
+argument_list|,
+literal|"admin@example.com"
+argument_list|,
+literal|"Administrator"
+argument_list|,
+literal|"Administrators"
+argument_list|)
+return|;
+block|}
 DECL|method|getEmailKey (String email)
 specifier|private
 name|AccountExternalId
