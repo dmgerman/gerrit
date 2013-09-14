@@ -194,6 +194,12 @@ specifier|public
 name|boolean
 name|autoStart
 decl_stmt|;
+comment|/** Skip plugins */
+DECL|field|skipPlugins
+specifier|public
+name|boolean
+name|skipPlugins
+decl_stmt|;
 DECL|field|cfg
 specifier|public
 specifier|final

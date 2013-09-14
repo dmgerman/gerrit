@@ -627,6 +627,8 @@ block|,
 literal|"--batch"
 block|,
 literal|"--no-auto-start"
+block|,
+literal|"--skip-plugins"
 block|}
 argument_list|)
 decl_stmt|;
