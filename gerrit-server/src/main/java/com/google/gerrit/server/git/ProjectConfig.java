@@ -4759,6 +4759,8 @@ argument_list|(
 name|pluginName
 argument_list|,
 name|pluginConfig
+argument_list|,
+name|this
 argument_list|)
 return|;
 block|}

@@ -188,9 +188,17 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|projectStateFactory
+specifier|private
+specifier|final
+name|ProjectState
+operator|.
+name|Factory
+name|projectStateFactory
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginConfigFactory (@erritServerConfig Config cfg, ProjectCache projectCache)
+DECL|method|PluginConfigFactory (@erritServerConfig Config cfg, ProjectCache projectCache, ProjectState.Factory projectStateFactory)
 name|PluginConfigFactory
 parameter_list|(
 annotation|@
@@ -200,6 +208,11 @@ name|cfg
 parameter_list|,
 name|ProjectCache
 name|projectCache
+parameter_list|,
+name|ProjectState
+operator|.
+name|Factory
+name|projectStateFactory
 parameter_list|)
 block|{
 name|this
@@ -213,6 +226,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|projectStateFactory
+operator|=
+name|projectStateFactory
 expr_stmt|;
 block|}
 DECL|method|get (String pluginName)
@@ -284,6 +303,36 @@ operator|.
 name|getPluginConfig
 argument_list|(
 name|pluginName
+argument_list|)
+return|;
+block|}
+DECL|method|getWithInheritance (Project.NameKey projectName, String pluginName)
+specifier|public
+name|PluginConfig
+name|getWithInheritance
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+name|String
+name|pluginName
+parameter_list|)
+throws|throws
+name|NoSuchProjectException
+block|{
+return|return
+name|get
+argument_list|(
+name|projectName
+argument_list|,
+name|pluginName
+argument_list|)
+operator|.
+name|withInheritance
+argument_list|(
+name|projectStateFactory
 argument_list|)
 return|;
 block|}
