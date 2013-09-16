@@ -346,7 +346,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|CreateBranch
+name|DeleteBranch
 operator|.
 name|class
 argument_list|)
