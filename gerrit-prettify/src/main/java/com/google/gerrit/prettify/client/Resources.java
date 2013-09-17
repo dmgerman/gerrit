@@ -196,6 +196,16 @@ name|TextResource
 name|lang_apollo
 parameter_list|()
 function_decl|;
+DECL|method|lang_basic ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-basic.js"
+argument_list|)
+name|TextResource
+name|lang_basic
+parameter_list|()
+function_decl|;
 DECL|method|lang_clj ()
 annotation|@
 name|Source
@@ -224,6 +234,16 @@ literal|"lang-dart.js"
 argument_list|)
 name|TextResource
 name|lang_dart
+parameter_list|()
+function_decl|;
+DECL|method|lang_erlang ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-erlang.js"
+argument_list|)
+name|TextResource
+name|lang_erlang
 parameter_list|()
 function_decl|;
 DECL|method|lang_go ()
@@ -256,6 +276,16 @@ name|TextResource
 name|lang_lisp
 parameter_list|()
 function_decl|;
+DECL|method|lang_llvm ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-llvm.js"
+argument_list|)
+name|TextResource
+name|lang_llvm
+parameter_list|()
+function_decl|;
 DECL|method|lang_lua ()
 annotation|@
 name|Source
@@ -264,6 +294,16 @@ literal|"lang-lua.js"
 argument_list|)
 name|TextResource
 name|lang_lua
+parameter_list|()
+function_decl|;
+DECL|method|lang_matlab ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-matlab.js"
+argument_list|)
+name|TextResource
+name|lang_matlab
 parameter_list|()
 function_decl|;
 DECL|method|lang_ml ()
@@ -276,6 +316,16 @@ name|TextResource
 name|lang_ml
 parameter_list|()
 function_decl|;
+DECL|method|lang_mumps ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-mumps.js"
+argument_list|)
+name|TextResource
+name|lang_mumps
+parameter_list|()
+function_decl|;
 DECL|method|lang_n ()
 annotation|@
 name|Source
@@ -286,6 +336,16 @@ name|TextResource
 name|lang_n
 parameter_list|()
 function_decl|;
+DECL|method|lang_pascal ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-pascal.js"
+argument_list|)
+name|TextResource
+name|lang_pascal
+parameter_list|()
+function_decl|;
 DECL|method|lang_proto ()
 annotation|@
 name|Source
@@ -294,6 +354,26 @@ literal|"lang-proto.js"
 argument_list|)
 name|TextResource
 name|lang_proto
+parameter_list|()
+function_decl|;
+DECL|method|lang_r ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-r.js"
+argument_list|)
+name|TextResource
+name|lang_r
+parameter_list|()
+function_decl|;
+DECL|method|lang_rd ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-rd.js"
+argument_list|)
+name|TextResource
+name|lang_rd
 parameter_list|()
 function_decl|;
 DECL|method|lang_scala ()
@@ -314,6 +394,16 @@ literal|"lang-sql.js"
 argument_list|)
 name|TextResource
 name|lang_sql
+parameter_list|()
+function_decl|;
+DECL|method|lang_tcl ()
+annotation|@
+name|Source
+argument_list|(
+literal|"lang-tcl.js"
+argument_list|)
+name|TextResource
+name|lang_tcl
 parameter_list|()
 function_decl|;
 DECL|method|lang_tex ()
