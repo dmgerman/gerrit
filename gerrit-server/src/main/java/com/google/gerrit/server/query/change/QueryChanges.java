@@ -1109,6 +1109,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|data
+operator|.
+name|set
+argument_list|(
+name|n
+argument_list|,
+name|changes
+argument_list|)
+expr_stmt|;
 name|more
 operator|.
 name|set
