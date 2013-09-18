@@ -186,6 +186,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|RepositoryCache
 import|;
 end_import
@@ -376,15 +390,19 @@ end_import
 
 begin_class
 DECL|class|GerritServer
+specifier|public
 class|class
 name|GerritServer
 block|{
 comment|/** Returns fully started Gerrit server */
-DECL|method|start ()
+DECL|method|start (Config base)
 specifier|static
 name|GerritServer
 name|start
-parameter_list|()
+parameter_list|(
+name|Config
+name|base
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -393,7 +411,9 @@ name|File
 name|site
 init|=
 name|initSite
-argument_list|()
+argument_list|(
+name|base
+argument_list|)
 decl_stmt|;
 specifier|final
 name|CyclicBarrier
@@ -582,12 +602,15 @@ name|daemonService
 argument_list|)
 return|;
 block|}
-DECL|method|initSite ()
+DECL|method|initSite (Config base)
 specifier|private
 specifier|static
 name|File
 name|initSite
-parameter_list|()
+parameter_list|(
+name|Config
+name|base
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -671,11 +694,11 @@ argument_list|)
 operator|+
 literal|"/"
 decl_stmt|;
-name|FileBasedConfig
+name|MergeableFileBasedConfig
 name|cfg
 init|=
 operator|new
-name|FileBasedConfig
+name|MergeableFileBasedConfig
 argument_list|(
 operator|new
 name|File
@@ -700,6 +723,13 @@ name|cfg
 operator|.
 name|load
 argument_list|()
+expr_stmt|;
+name|cfg
+operator|.
+name|merge
+argument_list|(
+name|base
+argument_list|)
 expr_stmt|;
 name|cfg
 operator|.
