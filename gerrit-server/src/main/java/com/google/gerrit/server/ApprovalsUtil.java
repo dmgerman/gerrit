@@ -395,7 +395,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Copy min/max scores from one patch set to another.    *    * @throws OrmException    */
-DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, PatchSet.Id source, PatchSet.Id dest)
+DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, PatchSet.Id source, PatchSet dest, boolean trivialRebase)
 specifier|public
 specifier|static
 name|void
@@ -413,9 +413,10 @@ name|Id
 name|source
 parameter_list|,
 name|PatchSet
-operator|.
-name|Id
 name|dest
+parameter_list|,
+name|boolean
+name|trivialRebase
 parameter_list|)
 throws|throws
 name|OrmException
@@ -447,11 +448,13 @@ argument_list|,
 name|source
 argument_list|,
 name|dest
+argument_list|,
+name|trivialRebase
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Copy a set's min/max scores from one patch set to another.    *    * @throws OrmException    */
-DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, Iterable<PatchSetApproval> sourceApprovals, PatchSet.Id source, PatchSet.Id dest)
+DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, Iterable<PatchSetApproval> sourceApprovals, PatchSet.Id source, PatchSet dest, boolean trivialRebase)
 specifier|public
 specifier|static
 name|void
@@ -475,9 +478,10 @@ name|Id
 name|source
 parameter_list|,
 name|PatchSet
-operator|.
-name|Id
 name|dest
+parameter_list|,
+name|boolean
+name|trivialRebase
 parameter_list|)
 throws|throws
 name|OrmException
@@ -560,6 +564,9 @@ operator|new
 name|PatchSetApproval
 argument_list|(
 name|dest
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|a
 argument_list|)
@@ -590,6 +597,37 @@ operator|new
 name|PatchSetApproval
 argument_list|(
 name|dest
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|a
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|type
+operator|.
+name|isCopyAllScoresOnTrivialRebase
+argument_list|()
+operator|&&
+name|trivialRebase
+condition|)
+block|{
+name|copied
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PatchSetApproval
+argument_list|(
+name|dest
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|a
 argument_list|)
