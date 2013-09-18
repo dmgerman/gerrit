@@ -150,6 +150,27 @@ name|InitModule
 extends|extends
 name|FactoryModule
 block|{
+DECL|field|standalone
+specifier|private
+specifier|final
+name|boolean
+name|standalone
+decl_stmt|;
+DECL|method|InitModule (boolean standalone)
+specifier|public
+name|InitModule
+parameter_list|(
+name|boolean
+name|standalone
+parameter_list|)
+block|{
+name|this
+operator|.
+name|standalone
+operator|=
+name|standalone
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|configure ()
@@ -217,6 +238,11 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|standalone
+condition|)
+block|{
 name|step
 argument_list|()
 operator|.
@@ -227,6 +253,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 name|step
 argument_list|()
 operator|.
@@ -247,6 +274,11 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|standalone
+condition|)
+block|{
 name|step
 argument_list|()
 operator|.
@@ -257,6 +289,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 name|step
 argument_list|()
 operator|.
@@ -287,6 +320,11 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|standalone
+condition|)
+block|{
 name|step
 argument_list|()
 operator|.
@@ -297,6 +335,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|step ()
 specifier|protected

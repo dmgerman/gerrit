@@ -202,7 +202,7 @@ name|gerrit
 operator|.
 name|pgm
 operator|.
-name|Init
+name|BaseInit
 import|;
 end_import
 
@@ -619,7 +619,7 @@ name|site
 operator|.
 name|gerrit_sh
 argument_list|,
-name|Init
+name|BaseInit
 operator|.
 name|class
 argument_list|,
