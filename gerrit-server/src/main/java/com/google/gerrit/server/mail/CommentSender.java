@@ -1094,13 +1094,6 @@ name|getStartLine
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|out
-operator|.
-name|append
-argument_list|(
-name|prefix
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|int
