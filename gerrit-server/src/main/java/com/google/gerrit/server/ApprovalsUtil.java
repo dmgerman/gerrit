@@ -258,6 +258,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|PatchSetInserter
+operator|.
+name|ChangeKind
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -395,7 +413,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Copy min/max scores from one patch set to another.    *    * @throws OrmException    */
-DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, PatchSet.Id source, PatchSet dest, boolean trivialRebase)
+DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, PatchSet.Id source, PatchSet dest, ChangeKind changeKind)
 specifier|public
 specifier|static
 name|void
@@ -415,8 +433,8 @@ parameter_list|,
 name|PatchSet
 name|dest
 parameter_list|,
-name|boolean
-name|trivialRebase
+name|ChangeKind
+name|changeKind
 parameter_list|)
 throws|throws
 name|OrmException
@@ -449,12 +467,12 @@ name|source
 argument_list|,
 name|dest
 argument_list|,
-name|trivialRebase
+name|changeKind
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Copy a set's min/max scores from one patch set to another.    *    * @throws OrmException    */
-DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, Iterable<PatchSetApproval> sourceApprovals, PatchSet.Id source, PatchSet dest, boolean trivialRebase)
+DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, Iterable<PatchSetApproval> sourceApprovals, PatchSet.Id source, PatchSet dest, ChangeKind changeKind)
 specifier|public
 specifier|static
 name|void
@@ -480,8 +498,8 @@ parameter_list|,
 name|PatchSet
 name|dest
 parameter_list|,
-name|boolean
-name|trivialRebase
+name|ChangeKind
+name|changeKind
 parameter_list|)
 throws|throws
 name|OrmException
@@ -614,7 +632,49 @@ operator|.
 name|isCopyAllScoresOnTrivialRebase
 argument_list|()
 operator|&&
-name|trivialRebase
+name|ChangeKind
+operator|.
+name|TRIVIAL_REBASE
+operator|.
+name|equals
+argument_list|(
+name|changeKind
+argument_list|)
+condition|)
+block|{
+name|copied
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PatchSetApproval
+argument_list|(
+name|dest
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|a
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|type
+operator|.
+name|isCopyAllScoresIfNoCodeChange
+argument_list|()
+operator|&&
+name|ChangeKind
+operator|.
+name|NO_CODE_CHANGE
+operator|.
+name|equals
+argument_list|(
+name|changeKind
+argument_list|)
 condition|)
 block|{
 name|copied
