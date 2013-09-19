@@ -674,7 +674,15 @@ name|site
 operator|.
 name|isNew
 expr_stmt|;
-empty_stmt|;
+name|init
+operator|.
+name|flags
+operator|.
+name|skipPlugins
+operator|=
+name|skipPlugins
+argument_list|()
+expr_stmt|;
 specifier|final
 name|SiteRun
 name|run
@@ -783,6 +791,16 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|0
+return|;
+block|}
+DECL|method|skipPlugins ()
+specifier|protected
+name|boolean
+name|skipPlugins
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 DECL|method|beforeInit (SiteInit init)

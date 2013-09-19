@@ -807,6 +807,18 @@ operator|!
 name|noAutoStart
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|skipPlugins ()
+specifier|protected
+name|boolean
+name|skipPlugins
+parameter_list|()
+block|{
+return|return
+name|skipPlugins
+return|;
+block|}
 DECL|method|start (SiteRun run)
 name|void
 name|start
