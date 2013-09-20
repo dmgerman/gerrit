@@ -107,10 +107,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|PluginConfigProvider
+DECL|class|PluginConfigFactory
 specifier|public
 class|class
-name|PluginConfigProvider
+name|PluginConfigFactory
 block|{
 DECL|field|cfg
 specifier|private
@@ -120,8 +120,8 @@ name|cfg
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginConfigProvider (@erritServerConfig Config cfg)
-name|PluginConfigProvider
+DECL|method|PluginConfigFactory (@erritServerConfig Config cfg)
+name|PluginConfigFactory
 parameter_list|(
 annotation|@
 name|GerritServerConfig
