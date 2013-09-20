@@ -190,6 +190,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -327,6 +343,12 @@ specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|patchSetId
 specifier|private
 specifier|final
@@ -337,7 +359,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftChange (final ReviewDb db, final ChangeControl.Factory changeControlFactory, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, @Assisted final PatchSet.Id patchSetId)
+DECL|method|DeleteDraftChange (final ReviewDb db, final ChangeControl.Factory changeControlFactory, final GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final ChangeIndexer indexer, @Assisted final PatchSet.Id patchSetId)
 name|DeleteDraftChange
 parameter_list|(
 specifier|final
@@ -357,6 +379,10 @@ parameter_list|,
 specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
+parameter_list|,
+specifier|final
+name|ChangeIndexer
+name|indexer
 parameter_list|,
 annotation|@
 name|Assisted
@@ -390,6 +416,12 @@ operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -464,6 +496,8 @@ argument_list|,
 name|gitRefUpdated
 argument_list|,
 name|db
+argument_list|,
+name|indexer
 argument_list|)
 expr_stmt|;
 return|return
