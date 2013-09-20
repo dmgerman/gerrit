@@ -1532,6 +1532,8 @@ name|QueryBuilder
 operator|.
 name|toQuery
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 argument_list|,
@@ -1541,6 +1543,8 @@ name|ChangeQueryBuilder
 operator|.
 name|hasNonTrivialSortKeyAfter
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 argument_list|)

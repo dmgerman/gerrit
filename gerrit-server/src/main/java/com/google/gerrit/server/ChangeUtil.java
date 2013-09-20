@@ -3466,13 +3466,6 @@ operator|.
 name|parseLong
 argument_list|(
 name|sortKey
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-literal|8
-argument_list|)
 argument_list|,
 literal|16
 argument_list|)

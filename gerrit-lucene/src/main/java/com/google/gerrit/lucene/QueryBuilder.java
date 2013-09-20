@@ -208,6 +208,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|Schema
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|TimestampRangePredicate
 import|;
 end_import
@@ -547,12 +563,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|toQuery (Predicate<ChangeData> p)
+DECL|method|toQuery (Schema<ChangeData> schema, Predicate<ChangeData> p)
 specifier|public
 specifier|static
 name|Query
 name|toQuery
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -572,6 +594,8 @@ block|{
 return|return
 name|and
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 return|;
@@ -587,6 +611,8 @@ block|{
 return|return
 name|or
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 return|;
@@ -602,6 +628,8 @@ block|{
 return|return
 name|not
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 return|;
@@ -617,6 +645,8 @@ block|{
 return|return
 name|fieldQuery
 argument_list|(
+name|schema
+argument_list|,
 operator|(
 name|IndexPredicate
 argument_list|<
@@ -640,12 +670,18 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|or (Predicate<ChangeData> p)
+DECL|method|or (Schema<ChangeData> schema, Predicate<ChangeData> p)
 specifier|private
 specifier|static
 name|Query
 name|or
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -688,6 +724,8 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
+name|schema
+argument_list|,
 name|p
 operator|.
 name|getChild
@@ -725,12 +763,18 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|and (Predicate<ChangeData> p)
+DECL|method|and (Schema<ChangeData> schema, Predicate<ChangeData> p)
 specifier|private
 specifier|static
 name|Query
 name|and
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -850,6 +894,8 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
+name|schema
+argument_list|,
 name|n
 argument_list|)
 argument_list|)
@@ -864,6 +910,8 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
+name|schema
+argument_list|,
 name|c
 argument_list|)
 argument_list|,
@@ -915,12 +963,18 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|not (Predicate<ChangeData> p)
+DECL|method|not (Schema<ChangeData> schema, Predicate<ChangeData> p)
 specifier|private
 specifier|static
 name|Query
 name|not
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -988,6 +1042,8 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
+name|schema
+argument_list|,
 name|n
 argument_list|)
 argument_list|,
@@ -998,12 +1054,18 @@ return|return
 name|q
 return|;
 block|}
-DECL|method|fieldQuery (IndexPredicate<ChangeData> p)
+DECL|method|fieldQuery (Schema<ChangeData> schema, IndexPredicate<ChangeData> p)
 specifier|private
 specifier|static
 name|Query
 name|fieldQuery
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|IndexPredicate
 argument_list|<
 name|ChangeData
@@ -1123,6 +1185,8 @@ block|{
 return|return
 name|sortKeyQuery
 argument_list|(
+name|schema
+argument_list|,
 operator|(
 name|SortKeyPredicate
 operator|)
@@ -1261,16 +1325,42 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|sortKeyQuery (SortKeyPredicate p)
+DECL|method|sortKeyQuery (Schema<ChangeData> schema, SortKeyPredicate p)
 specifier|private
 specifier|static
 name|Query
 name|sortKeyQuery
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|SortKeyPredicate
 name|p
 parameter_list|)
 block|{
+name|long
+name|min
+init|=
+name|p
+operator|.
+name|getMinValue
+argument_list|(
+name|schema
+argument_list|)
+decl_stmt|;
+name|long
+name|max
+init|=
+name|p
+operator|.
+name|getMaxValue
+argument_list|(
+name|schema
+argument_list|)
+decl_stmt|;
 return|return
 name|NumericRangeQuery
 operator|.
@@ -1284,41 +1374,29 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|p
-operator|.
-name|getMinValue
-argument_list|()
+name|min
 operator|!=
 name|Long
 operator|.
 name|MIN_VALUE
 condition|?
-name|p
-operator|.
-name|getMinValue
-argument_list|()
+name|min
 else|:
 literal|null
 argument_list|,
-name|p
-operator|.
-name|getMaxValue
-argument_list|()
+name|max
 operator|!=
 name|Long
 operator|.
 name|MAX_VALUE
 condition|?
-name|p
-operator|.
-name|getMaxValue
-argument_list|()
+name|max
 else|:
 literal|null
 argument_list|,
-literal|true
+literal|false
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 return|;
 block|}

@@ -2025,6 +2025,8 @@ name|QueryBuilder
 operator|.
 name|toQuery
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 argument_list|,
@@ -2034,6 +2036,8 @@ name|ChangeQueryBuilder
 operator|.
 name|hasNonTrivialSortKeyAfter
 argument_list|(
+name|schema
+argument_list|,
 name|p
 argument_list|)
 argument_list|)
@@ -2266,11 +2270,6 @@ name|size
 argument_list|()
 index|]
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 name|Sort
 name|sort
 init|=

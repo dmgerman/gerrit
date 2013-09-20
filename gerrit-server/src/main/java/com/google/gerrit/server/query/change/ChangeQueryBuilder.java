@@ -390,6 +390,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|Schema
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchListCache
@@ -1085,12 +1101,18 @@ name|intValue
 argument_list|()
 return|;
 block|}
-DECL|method|hasNonTrivialSortKeyAfter (Predicate<ChangeData> p)
+DECL|method|hasNonTrivialSortKeyAfter (Schema<ChangeData> schema, Predicate<ChangeData> p)
 specifier|public
 specifier|static
 name|boolean
 name|hasNonTrivialSortKeyAfter
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -1123,7 +1145,9 @@ operator|&&
 name|after
 operator|.
 name|getMaxValue
-argument_list|()
+argument_list|(
+name|schema
+argument_list|)
 operator|>
 literal|0
 return|;
