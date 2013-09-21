@@ -188,6 +188,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -383,6 +399,12 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|patchSetId
 specifier|private
 specifier|final
@@ -393,7 +415,7 @@ name|patchSetId
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftPatchSet (ChangeControl.Factory changeControlFactory, ReviewDb db, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, @Assisted final PatchSet.Id patchSetId)
+DECL|method|DeleteDraftPatchSet (ChangeControl.Factory changeControlFactory, ReviewDb db, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, PatchSetInfoFactory patchSetInfoFactory, ChangeIndexer indexer, @Assisted final PatchSet.Id patchSetId)
 name|DeleteDraftPatchSet
 parameter_list|(
 name|ChangeControl
@@ -412,6 +434,9 @@ name|gitRefUpdated
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|,
 annotation|@
 name|Assisted
@@ -451,6 +476,12 @@ operator|.
 name|patchSetInfoFactory
 operator|=
 name|patchSetInfoFactory
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -703,6 +734,8 @@ argument_list|,
 name|gitRefUpdated
 argument_list|,
 name|db
+argument_list|,
+name|indexer
 argument_list|)
 expr_stmt|;
 name|result

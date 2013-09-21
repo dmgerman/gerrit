@@ -402,6 +402,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|CommitMessageEditedSender
@@ -2829,13 +2845,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|deleteDraftChange (final PatchSet.Id patchSetId, GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final ReviewDb db)
+DECL|method|deleteDraftChange (PatchSet.Id patchSetId, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ReviewDb db, ChangeIndexer indexer)
 specifier|public
 specifier|static
 name|void
 name|deleteDraftChange
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -2844,13 +2859,14 @@ parameter_list|,
 name|GitRepositoryManager
 name|gitManager
 parameter_list|,
-specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -2879,16 +2895,17 @@ argument_list|,
 name|gitRefUpdated
 argument_list|,
 name|db
+argument_list|,
+name|indexer
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|deleteDraftChange (final Change.Id changeId, GitRepositoryManager gitManager, final GitReferenceUpdated gitRefUpdated, final ReviewDb db)
+DECL|method|deleteDraftChange (Change.Id changeId, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ReviewDb db, ChangeIndexer indexer)
 specifier|public
 specifier|static
 name|void
 name|deleteDraftChange
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -2897,13 +2914,14 @@ parameter_list|,
 name|GitRepositoryManager
 name|gitManager
 parameter_list|,
-specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -2912,7 +2930,6 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-specifier|final
 name|Change
 name|change
 init|=
@@ -3050,6 +3067,13 @@ name|singleton
 argument_list|(
 name|change
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|delete
+argument_list|(
+name|change
 argument_list|)
 expr_stmt|;
 block|}
