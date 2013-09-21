@@ -229,6 +229,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Callable
 argument_list|<
@@ -309,7 +311,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Start indexing a change.    *    * @param change change to index.    * @param prop propagator to wrap any created runnables in.    * @return future for the indexing task.    */
+comment|/**    * Start indexing a change.    *    * @param change change to index.    * @return future for the indexing task.    */
 DECL|method|index (ChangeData cd)
 specifier|public
 name|ListenableFuture
@@ -334,6 +336,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**    * Create a runnable to index a change.    *    * @param cd change to index.    * @return unstarted runnable to index the change.    */
 DECL|method|indexTask (ChangeData cd)
 specifier|public
 specifier|abstract
