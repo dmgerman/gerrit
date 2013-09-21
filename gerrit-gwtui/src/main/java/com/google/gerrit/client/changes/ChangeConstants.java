@@ -290,6 +290,11 @@ name|String
 name|keyEditMessage
 parameter_list|()
 function_decl|;
+DECL|method|keyAddReviewers ()
+name|String
+name|keyAddReviewers
+parameter_list|()
+function_decl|;
 DECL|method|patchTableColumnName ()
 name|String
 name|patchTableColumnName
