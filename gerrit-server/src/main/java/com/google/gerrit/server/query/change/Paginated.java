@@ -98,6 +98,7 @@ end_import
 
 begin_interface
 DECL|interface|Paginated
+specifier|public
 interface|interface
 name|Paginated
 block|{

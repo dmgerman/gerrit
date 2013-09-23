@@ -1151,6 +1151,8 @@ return|return
 operator|new
 name|IndexedChangeQuery
 argument_list|(
+name|db
+argument_list|,
 name|index
 argument_list|,
 name|out
@@ -1585,6 +1587,8 @@ argument_list|,
 operator|new
 name|IndexedChangeQuery
 argument_list|(
+name|db
+argument_list|,
 name|index
 argument_list|,
 name|newChildren
@@ -1722,6 +1726,8 @@ argument_list|,
 operator|new
 name|IndexedChangeQuery
 argument_list|(
+name|db
+argument_list|,
 name|index
 argument_list|,
 name|in

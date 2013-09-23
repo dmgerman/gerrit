@@ -1617,6 +1617,8 @@ return|return
 operator|new
 name|IndexedChangeQuery
 argument_list|(
+literal|null
+argument_list|,
 name|index
 argument_list|,
 name|p
