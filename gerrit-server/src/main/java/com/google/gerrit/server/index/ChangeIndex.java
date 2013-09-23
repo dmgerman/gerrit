@@ -415,7 +415,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param limit maximum number of results to return.    * @return a source of documents matching the predicate.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
+comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param limit maximum number of results to return.    * @return a source of documents matching the predicate. Documents must be    *     returned in descending sort key order, unless a {@code sortkey_after}    *     predicate (with a cut point not at {@link Long#MAX_VALUE}) is provided,    *     in which case the source should return documents in ascending sort key    *     order starting from the sort key cut point.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
 DECL|method|getSource (Predicate<ChangeData> p, int limit)
 specifier|public
 name|ChangeDataSource

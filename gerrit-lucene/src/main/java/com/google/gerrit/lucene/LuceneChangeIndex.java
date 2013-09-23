@@ -508,6 +508,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeQueryBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -2011,6 +2029,13 @@ name|p
 argument_list|)
 argument_list|,
 name|limit
+argument_list|,
+name|ChangeQueryBuilder
+operator|.
+name|hasNonTrivialSortKeyAfter
+argument_list|(
+name|p
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2124,8 +2149,14 @@ specifier|final
 name|int
 name|limit
 decl_stmt|;
-DECL|method|QuerySource (List<SubIndex> indexes, Query query, int limit)
-specifier|public
+DECL|field|reverse
+specifier|private
+specifier|final
+name|boolean
+name|reverse
+decl_stmt|;
+DECL|method|QuerySource (List<SubIndex> indexes, Query query, int limit, boolean reverse)
+specifier|private
 name|QuerySource
 parameter_list|(
 name|List
@@ -2139,6 +2170,9 @@ name|query
 parameter_list|,
 name|int
 name|limit
+parameter_list|,
+name|boolean
+name|reverse
 parameter_list|)
 block|{
 name|this
@@ -2158,6 +2192,12 @@ operator|.
 name|limit
 operator|=
 name|limit
+expr_stmt|;
+name|this
+operator|.
+name|reverse
+operator|=
+name|reverse
 expr_stmt|;
 block|}
 annotation|@
@@ -2226,6 +2266,11 @@ name|size
 argument_list|()
 index|]
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 name|Sort
 name|sort
 init|=
@@ -2237,7 +2282,7 @@ name|SortField
 argument_list|(
 name|ChangeField
 operator|.
-name|UPDATED
+name|SORTKEY
 operator|.
 name|getName
 argument_list|()
@@ -2246,10 +2291,12 @@ name|SortField
 operator|.
 name|Type
 operator|.
-name|INT
+name|LONG
 argument_list|,
-literal|true
-comment|/* descending */
+comment|// Standard order is descending by sort key, unless reversed due
+comment|// to a sortkey_before predicate.
+operator|!
+name|reverse
 argument_list|)
 argument_list|)
 decl_stmt|;
