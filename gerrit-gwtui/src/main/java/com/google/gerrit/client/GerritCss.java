@@ -708,6 +708,11 @@ name|String
 name|labelList
 parameter_list|()
 function_decl|;
+DECL|method|labelNotApplicable ()
+name|String
+name|labelNotApplicable
+parameter_list|()
+function_decl|;
 DECL|method|leftMostCell ()
 name|String
 name|leftMostCell
