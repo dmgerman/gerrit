@@ -994,7 +994,7 @@ argument_list|,
 name|Long
 argument_list|>
 argument_list|(
-literal|"sortkey"
+literal|"sortkey2"
 argument_list|,
 name|FieldType
 operator|.

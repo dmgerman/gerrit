@@ -347,6 +347,8 @@ argument_list|(
 name|mydef
 argument_list|,
 name|dbProvider
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

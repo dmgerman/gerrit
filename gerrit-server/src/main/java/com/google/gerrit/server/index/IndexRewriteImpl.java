@@ -1894,7 +1894,7 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BasicRewritesImpl (Provider<ReviewDb> db)
+DECL|method|BasicRewritesImpl (Provider<ReviewDb> db, IndexCollection indexes)
 name|BasicRewritesImpl
 parameter_list|(
 name|Provider
@@ -1902,6 +1902,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|IndexCollection
+name|indexes
 parameter_list|)
 block|{
 name|super
@@ -1909,6 +1912,8 @@ argument_list|(
 name|mydef
 argument_list|,
 name|db
+argument_list|,
+name|indexes
 argument_list|)
 expr_stmt|;
 block|}
