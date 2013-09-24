@@ -404,32 +404,11 @@ operator|+
 literal|"/"
 return|;
 block|}
-DECL|method|toChange2 (final Change.Id c)
+DECL|method|toChange (Change.Id c, String p)
 specifier|public
 specifier|static
 name|String
-name|toChange2
-parameter_list|(
-specifier|final
-name|Change
-operator|.
-name|Id
-name|c
-parameter_list|)
-block|{
-return|return
-literal|"/c2/"
-operator|+
-name|c
-operator|+
-literal|"/"
-return|;
-block|}
-DECL|method|toChange2 (Change.Id c, String p)
-specifier|public
-specifier|static
-name|String
-name|toChange2
+name|toChange
 parameter_list|(
 name|Change
 operator|.
@@ -441,7 +420,7 @@ name|p
 parameter_list|)
 block|{
 return|return
-literal|"/c2/"
+literal|"/c/"
 operator|+
 name|c
 operator|+
