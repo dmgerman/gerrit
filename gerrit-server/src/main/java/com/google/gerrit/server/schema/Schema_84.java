@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.account
+DECL|package|com.google.gerrit.server.schema
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|account
+name|schema
 package|;
 end_package
 
@@ -72,76 +72,52 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|inject
 operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
+name|Inject
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Date
+name|inject
+operator|.
+name|Provider
 import|;
 end_import
 
-begin_interface
-DECL|interface|AccountMessages
+begin_class
+DECL|class|Schema_84
 specifier|public
-interface|interface
-name|AccountMessages
+class|class
+name|Schema_84
 extends|extends
-name|Messages
+name|SchemaVersion
 block|{
-DECL|method|lines (short cnt)
-name|String
-name|lines
+annotation|@
+name|Inject
+DECL|method|Schema_84 (Provider<Schema_83> prior)
+name|Schema_84
 parameter_list|(
-name|short
-name|cnt
+name|Provider
+argument_list|<
+name|Schema_83
+argument_list|>
+name|prior
 parameter_list|)
-function_decl|;
-DECL|method|rowsPerPage (short cnt)
-name|String
-name|rowsPerPage
-parameter_list|(
-name|short
-name|cnt
-parameter_list|)
-function_decl|;
-DECL|method|changeScreenServerDefault (String d)
-name|String
-name|changeScreenServerDefault
-parameter_list|(
-name|String
-name|d
-parameter_list|)
-function_decl|;
-DECL|method|enterIAGREE (String iagree)
-name|String
-name|enterIAGREE
-parameter_list|(
-name|String
-name|iagree
-parameter_list|)
-function_decl|;
-DECL|method|contactOnFile (Date lastDate)
-name|String
-name|contactOnFile
-parameter_list|(
-name|Date
-name|lastDate
-parameter_list|)
-function_decl|;
+block|{
+name|super
+argument_list|(
+name|prior
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

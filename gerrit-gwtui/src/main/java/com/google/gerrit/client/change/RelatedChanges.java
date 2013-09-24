@@ -1257,7 +1257,7 @@ literal|"#"
 operator|+
 name|PageLinks
 operator|.
-name|toChange2
+name|toChange
 argument_list|(
 name|id
 operator|.

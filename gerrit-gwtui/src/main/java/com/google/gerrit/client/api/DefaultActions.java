@@ -342,7 +342,7 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|toChange2
+name|toChange
 argument_list|(
 name|id
 argument_list|)

@@ -1535,7 +1535,7 @@ block|{
 return|return
 name|PageLinks
 operator|.
-name|toChange2
+name|toChange
 argument_list|(
 name|changeId
 argument_list|,
