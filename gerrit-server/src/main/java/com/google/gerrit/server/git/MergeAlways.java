@@ -118,16 +118,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (final CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -150,6 +148,25 @@ argument_list|,
 name|toMerge
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|mergeTip
+operator|==
+literal|null
+condition|)
+block|{
+comment|// The branch is unborn. Take a fast-forward resolution to
+comment|// create the branch.
+name|mergeTip
+operator|=
+name|toMerge
+operator|.
+name|remove
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 name|CodeReviewCommit
 name|newMergeTip
 init|=
