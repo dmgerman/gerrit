@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -92,7 +108,9 @@ argument_list|>
 name|messages
 decl_stmt|;
 DECL|field|status
-name|String
+name|Change
+operator|.
+name|Status
 name|status
 decl_stmt|;
 block|}
