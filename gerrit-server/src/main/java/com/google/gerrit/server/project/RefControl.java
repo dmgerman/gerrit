@@ -896,7 +896,34 @@ name|canWrite
 argument_list|()
 return|;
 block|}
-comment|/** @return true if this user can submit merge patch sets to this ref */
+comment|/**    * @return true if this user can push merge commits directly bypassing code    *         review to this ref.    */
+DECL|method|canPushMerges ()
+specifier|public
+name|boolean
+name|canPushMerges
+parameter_list|()
+block|{
+return|return
+name|projectControl
+operator|.
+name|controlForRef
+argument_list|(
+name|getRefName
+argument_list|()
+argument_list|)
+operator|.
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|PUSH_MERGE
+argument_list|)
+operator|&&
+name|canWrite
+argument_list|()
+return|;
+block|}
+comment|/** @return true if this user can upload merge commits to this ref for review */
 DECL|method|canUploadMerges ()
 specifier|public
 name|boolean
