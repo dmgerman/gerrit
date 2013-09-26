@@ -74,21 +74,25 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
-operator|.
-name|AccountGroup
+name|Nullable
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|com
 operator|.
-name|annotation
+name|google
 operator|.
-name|Nullable
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGroup
 import|;
 end_import
 

@@ -68,21 +68,25 @@ end_package
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|google
 operator|.
-name|IOException
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|annotation
+name|io
 operator|.
-name|Nullable
+name|IOException
 import|;
 end_import
 

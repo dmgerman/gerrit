@@ -82,9 +82,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|com
 operator|.
-name|annotation
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
 operator|.
 name|Nullable
 import|;
