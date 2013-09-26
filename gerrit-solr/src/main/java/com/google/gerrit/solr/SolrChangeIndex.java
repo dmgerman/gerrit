@@ -1606,11 +1606,6 @@ specifier|final
 name|SolrQuery
 name|query
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|method|QuerySource (List<SolrServer> indexes, Query q, int limit, boolean reverse)
 specifier|public
 name|QuerySource
