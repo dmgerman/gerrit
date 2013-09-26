@@ -1300,6 +1300,12 @@ specifier|public
 class|class
 name|Dispatcher
 block|{
+DECL|field|changeScreen2
+specifier|public
+specifier|static
+name|boolean
+name|changeScreen2
+decl_stmt|;
 DECL|method|toPatchSideBySide (final Patch.Key id)
 specifier|public
 specifier|static
@@ -2155,6 +2161,28 @@ argument_list|)
 condition|)
 block|{
 name|admin
+argument_list|(
+name|token
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+comment|/* DEPRECATED URL */
+name|matchPrefix
+argument_list|(
+literal|"/c2/"
+argument_list|,
+name|token
+argument_list|)
+condition|)
+block|{
+name|changeScreen2
+operator|=
+literal|true
+expr_stmt|;
+name|change
 argument_list|(
 name|token
 argument_list|)
@@ -4243,6 +4271,15 @@ name|boolean
 name|isChangeScreen2
 parameter_list|()
 block|{
+if|if
+condition|(
+name|changeScreen2
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 name|AccountGeneralPreferences
 operator|.
 name|ChangeScreen
