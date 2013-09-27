@@ -692,6 +692,16 @@ specifier|protected
 name|boolean
 name|copyMaxScore
 decl_stmt|;
+DECL|field|copyAllScoresOnTrivialRebase
+specifier|protected
+name|boolean
+name|copyAllScoresOnTrivialRebase
+decl_stmt|;
+DECL|field|copyAllScoresIfNoCodeChange
+specifier|protected
+name|boolean
+name|copyAllScoresIfNoCodeChange
+decl_stmt|;
 DECL|field|values
 specifier|protected
 name|List
@@ -1166,6 +1176,58 @@ operator|.
 name|copyMaxScore
 operator|=
 name|copyMaxScore
+expr_stmt|;
+block|}
+DECL|method|isCopyAllScoresOnTrivialRebase ()
+specifier|public
+name|boolean
+name|isCopyAllScoresOnTrivialRebase
+parameter_list|()
+block|{
+return|return
+name|copyAllScoresOnTrivialRebase
+return|;
+block|}
+DECL|method|setCopyAllScoresOnTrivialRebase (boolean copyAllScoresOnTrivialRebase)
+specifier|public
+name|void
+name|setCopyAllScoresOnTrivialRebase
+parameter_list|(
+name|boolean
+name|copyAllScoresOnTrivialRebase
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyAllScoresOnTrivialRebase
+operator|=
+name|copyAllScoresOnTrivialRebase
+expr_stmt|;
+block|}
+DECL|method|isCopyAllScoresIfNoCodeChange ()
+specifier|public
+name|boolean
+name|isCopyAllScoresIfNoCodeChange
+parameter_list|()
+block|{
+return|return
+name|copyAllScoresIfNoCodeChange
+return|;
+block|}
+DECL|method|setCopyAllScoresIfNoCodeChange (boolean copyAllScoresIfNoCodeChange)
+specifier|public
+name|void
+name|setCopyAllScoresIfNoCodeChange
+parameter_list|(
+name|boolean
+name|copyAllScoresIfNoCodeChange
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyAllScoresIfNoCodeChange
+operator|=
+name|copyAllScoresIfNoCodeChange
 expr_stmt|;
 block|}
 DECL|method|isMaxNegative (PatchSetApproval ca)
