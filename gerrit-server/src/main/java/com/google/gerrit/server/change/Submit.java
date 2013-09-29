@@ -1117,7 +1117,7 @@ operator|.
 name|Description
 argument_list|()
 operator|.
-name|setLabel
+name|setTitle
 argument_list|(
 name|String
 operator|.

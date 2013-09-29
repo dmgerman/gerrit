@@ -6029,9 +6029,15 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|out
 operator|.
 name|isCurrent
+operator|||
+name|out
+operator|.
+name|draft
+operator|)
 operator|&&
 name|has
 argument_list|(
