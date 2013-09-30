@@ -875,6 +875,11 @@ argument_list|(
 literal|"Revert"
 argument_list|)
 operator|.
+name|setTitle
+argument_list|(
+literal|"Revert the change"
+argument_list|)
+operator|.
 name|setVisible
 argument_list|(
 name|resource

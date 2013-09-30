@@ -700,7 +700,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Delete Draft Revision %d"
+literal|"Delete draft revision %d"
 argument_list|,
 name|rsrc
 operator|.

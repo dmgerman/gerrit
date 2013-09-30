@@ -856,7 +856,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Publish Revision %d"
+literal|"Publish revision %d"
 argument_list|,
 name|rsrc
 operator|.

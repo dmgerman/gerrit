@@ -610,7 +610,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Delete Draft Change %d"
+literal|"Delete draft change %d"
 argument_list|,
 name|rsrc
 operator|.

@@ -1123,7 +1123,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Submit Revision %d"
+literal|"Submit revision %d"
 argument_list|,
 name|resource
 operator|.

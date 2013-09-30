@@ -991,6 +991,11 @@ argument_list|(
 literal|"Abandon"
 argument_list|)
 operator|.
+name|setTitle
+argument_list|(
+literal|"Abandon the change"
+argument_list|)
+operator|.
 name|setVisible
 argument_list|(
 name|resource

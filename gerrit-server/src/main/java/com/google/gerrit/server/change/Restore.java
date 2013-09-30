@@ -989,6 +989,11 @@ argument_list|(
 literal|"Restore"
 argument_list|)
 operator|.
+name|setTitle
+argument_list|(
+literal|"Restore the change"
+argument_list|)
+operator|.
 name|setVisible
 argument_list|(
 name|resource
