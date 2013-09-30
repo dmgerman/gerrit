@@ -329,7 +329,11 @@ name|this
 argument_list|(
 name|account
 argument_list|,
-literal|26
+name|AccountInfo
+operator|.
+name|AvatarInfo
+operator|.
+name|DEFAULT_SIZE
 argument_list|,
 literal|true
 argument_list|)
