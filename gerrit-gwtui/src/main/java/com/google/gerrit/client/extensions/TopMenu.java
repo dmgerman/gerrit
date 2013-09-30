@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.config
+DECL|package|com.google.gerrit.client.extensions
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|config
+name|extensions
 package|;
 end_package
 
@@ -72,45 +72,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
+operator|.
+name|core
 operator|.
 name|client
 operator|.
-name|extensions
-operator|.
-name|TopMenuList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|NativeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|RestApi
+name|JavaScriptObject
 import|;
 end_import
 
@@ -122,80 +90,48 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|core
 operator|.
 name|client
 operator|.
-name|rpc
-operator|.
-name|AsyncCallback
+name|JsArray
 import|;
 end_import
 
-begin_comment
-comment|/**  * A collection of static methods which work on the Gerrit REST API for server  * configuration.  */
-end_comment
-
 begin_class
-DECL|class|ConfigServerApi
+DECL|class|TopMenu
 specifier|public
 class|class
-name|ConfigServerApi
+name|TopMenu
+extends|extends
+name|JavaScriptObject
 block|{
-comment|/** map of the server wide capabilities (core& plugins). */
-DECL|method|capabilities (AsyncCallback<NativeMap<CapabilityInfo>> cb)
+DECL|method|TopMenu ()
+specifier|protected
+name|TopMenu
+parameter_list|()
+block|{   }
+DECL|method|getName ()
 specifier|public
-specifier|static
-name|void
-name|capabilities
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|NativeMap
-argument_list|<
-name|CapabilityInfo
-argument_list|>
-argument_list|>
-name|cb
-parameter_list|)
-block|{
-operator|new
-name|RestApi
-argument_list|(
-literal|"/config/server/capabilities/"
-argument_list|)
-operator|.
-name|get
-argument_list|(
-name|cb
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|topMenus (AsyncCallback<TopMenuList> cb)
+specifier|final
+specifier|native
+name|String
+name|getName
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|getItems ()
 specifier|public
-specifier|static
-name|void
-name|topMenus
-parameter_list|(
-name|AsyncCallback
+specifier|final
+specifier|native
+name|JsArray
 argument_list|<
-name|TopMenuList
+name|TopMenuItem
 argument_list|>
-name|cb
-parameter_list|)
-block|{
-operator|new
-name|RestApi
-argument_list|(
-literal|"/config/server/top-menus"
-argument_list|)
-operator|.
-name|get
-argument_list|(
-name|cb
-argument_list|)
-expr_stmt|;
-block|}
+name|getItems
+parameter_list|()
+comment|/*-{ return this.items; }-*/
+function_decl|;
 block|}
 end_class
 
