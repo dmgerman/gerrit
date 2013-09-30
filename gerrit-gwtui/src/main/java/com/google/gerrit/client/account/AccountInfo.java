@@ -256,6 +256,15 @@ name|AvatarInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|field|DEFAULT_SIZE
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|DEFAULT_SIZE
+init|=
+literal|26
+decl_stmt|;
 DECL|method|url ()
 specifier|public
 specifier|final
