@@ -264,6 +264,10 @@ argument_list|,
 name|ChangeField
 operator|.
 name|FILE
+argument_list|,
+name|ChangeField
+operator|.
+name|SORTKEY
 argument_list|)
 argument_list|)
 decl_stmt|;
