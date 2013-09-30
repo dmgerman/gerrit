@@ -340,7 +340,7 @@ name|common
 operator|.
 name|collect
 operator|.
-name|LinkedListMultimap
+name|LinkedHashMultimap
 import|;
 end_import
 
@@ -397,6 +397,20 @@ operator|.
 name|collect
 operator|.
 name|Multimap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|SetMultimap
 import|;
 end_import
 
@@ -4251,7 +4265,7 @@ operator|.
 name|getLabelTypes
 argument_list|()
 decl_stmt|;
-name|ListMultimap
+name|SetMultimap
 argument_list|<
 name|String
 argument_list|,
@@ -4259,7 +4273,7 @@ name|String
 argument_list|>
 name|permitted
 init|=
-name|LinkedListMultimap
+name|LinkedHashMultimap
 operator|.
 name|create
 argument_list|()
