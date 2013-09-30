@@ -722,27 +722,6 @@ name|lines
 parameter_list|)
 comment|/*-{     this.state.oldViewportSize = lines;   }-*/
 function_decl|;
-DECL|method|getScrollSetAt ()
-specifier|public
-specifier|final
-specifier|native
-name|double
-name|getScrollSetAt
-parameter_list|()
-comment|/*-{     return this.state.scrollSetAt || 0;   }-*/
-function_decl|;
-DECL|method|setScrollSetAt (double when)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setScrollSetAt
-parameter_list|(
-name|double
-name|when
-parameter_list|)
-comment|/*-{     this.state.scrollSetAt = when;   }-*/
-function_decl|;
 DECL|method|on (String event, Runnable thunk)
 specifier|public
 specifier|final
