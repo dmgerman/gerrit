@@ -123,6 +123,11 @@ name|String
 name|author
 parameter_list|()
 function_decl|;
+DECL|method|draft ()
+name|String
+name|draft
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
