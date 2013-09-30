@@ -639,6 +639,12 @@ argument_list|(
 name|open
 argument_list|)
 expr_stmt|;
+name|getCm
+argument_list|()
+operator|.
+name|focus
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getPaddingManager ()
 name|PaddingManager
