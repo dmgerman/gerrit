@@ -1318,6 +1318,15 @@ name|draft
 parameter_list|()
 comment|/*-{ return this.draft || false; }-*/
 function_decl|;
+DECL|method|has_draft_comments ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_draft_comments
+parameter_list|()
+comment|/*-{ return this.has_draft_comments || false; }-*/
+function_decl|;
 DECL|method|commit ()
 specifier|public
 specifier|final

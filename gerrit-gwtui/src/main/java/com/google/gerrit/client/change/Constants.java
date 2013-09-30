@@ -128,6 +128,11 @@ name|String
 name|draft
 parameter_list|()
 function_decl|;
+DECL|method|draftCommentsTooltip ()
+name|String
+name|draftCommentsTooltip
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

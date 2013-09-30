@@ -164,6 +164,13 @@ name|REVIEWED
 argument_list|(
 literal|11
 argument_list|)
+block|,
+comment|/** Include draft comments for the caller. */
+DECL|enumConstant|DRAFT_COMMENTS
+name|DRAFT_COMMENTS
+argument_list|(
+literal|12
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
