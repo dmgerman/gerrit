@@ -855,6 +855,41 @@ name|String
 name|years
 parameter_list|()
 function_decl|;
+DECL|method|oneSecondAgo ()
+name|String
+name|oneSecondAgo
+parameter_list|()
+function_decl|;
+DECL|method|oneMinuteAgo ()
+name|String
+name|oneMinuteAgo
+parameter_list|()
+function_decl|;
+DECL|method|oneHourAgo ()
+name|String
+name|oneHourAgo
+parameter_list|()
+function_decl|;
+DECL|method|oneDayAgo ()
+name|String
+name|oneDayAgo
+parameter_list|()
+function_decl|;
+DECL|method|oneWeekAgo ()
+name|String
+name|oneWeekAgo
+parameter_list|()
+function_decl|;
+DECL|method|oneMonthAgo ()
+name|String
+name|oneMonthAgo
+parameter_list|()
+function_decl|;
+DECL|method|oneYearAgo ()
+name|String
+name|oneYearAgo
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
