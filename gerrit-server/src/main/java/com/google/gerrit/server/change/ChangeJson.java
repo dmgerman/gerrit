@@ -6034,9 +6034,17 @@ name|out
 operator|.
 name|isCurrent
 operator|||
+operator|(
 name|out
 operator|.
 name|draft
+operator|!=
+literal|null
+operator|&&
+name|out
+operator|.
+name|draft
+operator|)
 operator|)
 operator|&&
 name|has
