@@ -385,6 +385,48 @@ name|this
 return|;
 block|}
 comment|/** Append already safe HTML as-is, avoiding double escaping. */
+DECL|method|append (com.google.gwt.safehtml.shared.SafeHtml in)
+specifier|public
+name|SafeHtmlBuilder
+name|append
+parameter_list|(
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|safehtml
+operator|.
+name|shared
+operator|.
+name|SafeHtml
+name|in
+parameter_list|)
+block|{
+if|if
+condition|(
+name|in
+operator|!=
+literal|null
+condition|)
+block|{
+name|cb
+operator|.
+name|append
+argument_list|(
+name|in
+operator|.
+name|asString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|this
+return|;
+block|}
+comment|/** Append already safe HTML as-is, avoiding double escaping. */
 DECL|method|append (final SafeHtml in)
 specifier|public
 name|SafeHtmlBuilder

@@ -209,6 +209,16 @@ name|ImageResource
 name|reload_white
 parameter_list|()
 function_decl|;
+DECL|method|remove_reviewer ()
+annotation|@
+name|Source
+argument_list|(
+literal|"remove_reviewer.png"
+argument_list|)
+name|ImageResource
+name|remove_reviewer
+parameter_list|()
+function_decl|;
 DECL|method|style ()
 annotation|@
 name|Source
