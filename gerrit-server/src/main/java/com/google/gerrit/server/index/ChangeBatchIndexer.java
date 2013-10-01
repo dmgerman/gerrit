@@ -1046,11 +1046,9 @@ decl_stmt|;
 name|Stopwatch
 name|sw
 init|=
-operator|new
 name|Stopwatch
-argument_list|()
 operator|.
-name|start
+name|createStarted
 argument_list|()
 decl_stmt|;
 specifier|final
