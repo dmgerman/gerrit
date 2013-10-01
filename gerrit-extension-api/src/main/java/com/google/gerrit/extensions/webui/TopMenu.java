@@ -120,6 +120,30 @@ name|MenuItem
 argument_list|>
 name|items
 decl_stmt|;
+DECL|method|MenuEntry (GerritTopMenu gerritMenu, List<MenuItem> items)
+specifier|public
+name|MenuEntry
+parameter_list|(
+name|GerritTopMenu
+name|gerritMenu
+parameter_list|,
+name|List
+argument_list|<
+name|MenuItem
+argument_list|>
+name|items
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|gerritMenu
+operator|.
+name|menuName
+argument_list|,
+name|items
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|MenuEntry (String name, List<MenuItem> items)
 specifier|public
 name|MenuEntry
