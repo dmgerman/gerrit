@@ -1761,7 +1761,7 @@ name|s
 init|=
 name|Funnels
 operator|.
-name|stringFunnel
+name|unencodedCharsFunnel
 argument_list|()
 decl_stmt|;
 return|return
