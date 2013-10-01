@@ -598,11 +598,7 @@ name|void
 name|stop
 parameter_list|()
 block|{
-name|index
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+comment|// Do nothing; indexes are closed by IndexCollection.
 block|}
 block|}
 block|}

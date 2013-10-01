@@ -1461,7 +1461,9 @@ specifier|public
 name|void
 name|stop
 parameter_list|()
-block|{   }
+block|{
+comment|// Do nothing; indexes are closed on demand by IndexCollection.
+block|}
 block|}
 end_class
 
