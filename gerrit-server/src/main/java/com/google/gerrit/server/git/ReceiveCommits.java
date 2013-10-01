@@ -10679,6 +10679,16 @@ return|return
 literal|false
 return|;
 block|}
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|parseBody
+argument_list|(
+name|priorCommit
+argument_list|)
+expr_stmt|;
 comment|// Don't allow the same tree if the commit message is unmodified
 comment|// or no parents were updated (rebase), else warn that only part
 comment|// of the commit was modified.
@@ -10695,16 +10705,6 @@ name|getTree
 argument_list|()
 condition|)
 block|{
-name|rp
-operator|.
-name|getRevWalk
-argument_list|()
-operator|.
-name|parseBody
-argument_list|(
-name|priorCommit
-argument_list|)
-expr_stmt|;
 specifier|final
 name|boolean
 name|messageEq
