@@ -309,24 +309,6 @@ name|NEW_CHANGE
 argument_list|)
 return|;
 block|}
-comment|/** Checks if the supplied ref name is a magic branch for review */
-DECL|method|isForReview (String refName)
-specifier|public
-specifier|static
-name|boolean
-name|isForReview
-parameter_list|(
-name|String
-name|refName
-parameter_list|)
-block|{
-return|return
-name|isMagicBranch
-argument_list|(
-name|refName
-argument_list|)
-return|;
-block|}
 comment|/** Returns the ref name prefix for a magic branch,<code>null</code> if the branch is not magic */
 DECL|method|getMagicRefNamePrefix (String refName)
 specifier|public
