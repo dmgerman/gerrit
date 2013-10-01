@@ -159,18 +159,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -640,10 +628,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|noMessages ()
+DECL|method|defaultMessage ()
 specifier|public
 name|void
-name|noMessages
+name|defaultMessage
 parameter_list|()
 throws|throws
 name|GitAPIException
@@ -671,14 +659,32 @@ operator|.
 name|messages
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
 name|c
 operator|.
 name|messages
 operator|.
-name|isEmpty
+name|size
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Uploaded patch set 1."
+argument_list|,
+name|c
+operator|.
+name|messages
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|message
 argument_list|)
 expr_stmt|;
 block|}
@@ -741,7 +747,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 name|c
 operator|.
@@ -751,9 +757,9 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertMessage
+name|assertEquals
 argument_list|(
-name|firstMessage
+literal|"Uploaded patch set 1."
 argument_list|,
 name|c
 operator|.
@@ -769,7 +775,7 @@ argument_list|)
 expr_stmt|;
 name|assertMessage
 argument_list|(
-name|secondMessage
+name|firstMessage
 argument_list|,
 name|c
 operator|.
@@ -778,6 +784,22 @@ operator|.
 name|get
 argument_list|(
 literal|1
+argument_list|)
+operator|.
+name|message
+argument_list|)
+expr_stmt|;
+name|assertMessage
+argument_list|(
+name|secondMessage
+argument_list|,
+name|c
+operator|.
+name|messages
+operator|.
+name|get
+argument_list|(
+literal|2
 argument_list|)
 operator|.
 name|message
