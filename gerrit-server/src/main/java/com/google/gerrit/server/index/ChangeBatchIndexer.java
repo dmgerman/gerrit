@@ -2152,13 +2152,10 @@ argument_list|)
 expr_stmt|;
 name|indexer
 operator|.
-name|indexTask
+name|index
 argument_list|(
 name|cd
 argument_list|)
-operator|.
-name|call
-argument_list|()
 expr_stmt|;
 name|done
 operator|.

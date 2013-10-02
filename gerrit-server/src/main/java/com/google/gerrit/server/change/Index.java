@@ -180,11 +180,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|concurrent
-operator|.
-name|ExecutionException
+name|IOException
 import|;
 end_import
 
@@ -250,9 +248,7 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|InterruptedException
-throws|,
-name|ExecutionException
+name|IOException
 block|{
 name|indexer
 operator|.
@@ -263,9 +259,6 @@ operator|.
 name|getChange
 argument_list|()
 argument_list|)
-operator|.
-name|get
-argument_list|()
 expr_stmt|;
 return|return
 name|Response

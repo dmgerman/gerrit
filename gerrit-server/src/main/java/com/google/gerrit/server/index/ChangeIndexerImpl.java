@@ -508,7 +508,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|indexTask (ChangeData cd)
-specifier|public
+specifier|protected
 name|Callable
 argument_list|<
 name|Void
@@ -532,7 +532,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|deleteTask (ChangeData cd)
-specifier|public
+specifier|protected
 name|Callable
 argument_list|<
 name|Void
