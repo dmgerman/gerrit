@@ -219,6 +219,15 @@ name|binary
 parameter_list|()
 comment|/*-{ return this.binary || false; }-*/
 function_decl|;
+DECL|method|status ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|status
+parameter_list|()
+comment|/*-{ return this.status; }-*/
+function_decl|;
 DECL|method|_row ()
 specifier|public
 specifier|final
