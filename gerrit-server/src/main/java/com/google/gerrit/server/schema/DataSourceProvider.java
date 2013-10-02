@@ -327,6 +327,15 @@ argument_list|>
 implements|,
 name|LifecycleListener
 block|{
+DECL|field|DEFAULT_POOL_LIMIT
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_POOL_LIMIT
+init|=
+literal|8
+decl_stmt|;
 DECL|field|site
 specifier|private
 specifier|final
@@ -721,7 +730,7 @@ literal|"database"
 argument_list|,
 literal|"poollimit"
 argument_list|,
-literal|8
+name|DEFAULT_POOL_LIMIT
 argument_list|)
 argument_list|)
 expr_stmt|;
