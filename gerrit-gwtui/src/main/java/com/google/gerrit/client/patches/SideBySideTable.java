@@ -1684,6 +1684,14 @@ name|get
 argument_list|(
 name|row
 argument_list|)
+argument_list|,
+name|script
+operator|.
+name|getA
+argument_list|()
+operator|.
+name|isWholeFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3748,6 +3756,7 @@ argument_list|(
 name|numRows
 argument_list|)
 expr_stmt|;
+comment|// If we got here, we must have the whole file anyway.
 name|createSkipLine
 argument_list|(
 name|row
@@ -3755,6 +3764,8 @@ operator|+
 name|loopTo
 argument_list|,
 name|line
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -3774,11 +3785,14 @@ operator|-
 name|numRows
 argument_list|)
 expr_stmt|;
+comment|// If we got here, we must have the whole file anyway.
 name|createSkipLine
 argument_list|(
 name|row
 argument_list|,
 name|line
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -3795,7 +3809,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|createSkipLine (int row, SkippedLine line)
+DECL|method|createSkipLine (int row, SkippedLine line, boolean isWholeFile)
 specifier|private
 name|void
 name|createSkipLine
@@ -3805,6 +3819,9 @@ name|row
 parameter_list|,
 name|SkippedLine
 name|line
+parameter_list|,
+name|boolean
+name|isWholeFile
 parameter_list|)
 block|{
 name|FlowPanel
@@ -3897,6 +3914,8 @@ name|getSize
 argument_list|()
 operator|>
 literal|30
+operator|&&
+name|isWholeFile
 condition|)
 block|{
 comment|// Only show the expand before/after if skipped more than 30 lines.
@@ -4016,7 +4035,11 @@ name|a
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|isWholeFile
+condition|)
 block|{
 name|p
 operator|.
@@ -4030,6 +4053,41 @@ operator|.
 name|add
 argument_list|(
 name|all
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|add
+argument_list|(
+name|l2
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|p
+operator|.
+name|add
+argument_list|(
+name|l1
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|add
+argument_list|(
+operator|new
+name|InlineLabel
+argument_list|(
+literal|" "
+operator|+
+name|line
+operator|.
+name|getSize
+argument_list|()
+operator|+
+literal|" "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|p
