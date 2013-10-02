@@ -368,11 +368,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|server
-operator|.
-name|SchemaFactory
+name|Inject
 import|;
 end_import
 
@@ -384,7 +382,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|Provider
 import|;
 end_import
 
@@ -906,14 +904,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|schemaFactory
+DECL|field|db
 specifier|private
 specifier|final
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|schemaFactory
+name|db
 decl_stmt|;
 DECL|field|repoManager
 specifier|private
@@ -937,14 +935,14 @@ name|indexerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (SchemaFactory<ReviewDb> schemaFactory, GitRepositoryManager repoManager, @IndexExecutor ListeningScheduledExecutorService executor, ChangeIndexer.Factory indexerFactory)
+DECL|method|ChangeBatchIndexer (Provider<ReviewDb> db, GitRepositoryManager repoManager, @IndexExecutor ListeningScheduledExecutorService executor, ChangeIndexer.Factory indexerFactory)
 name|ChangeBatchIndexer
 parameter_list|(
-name|SchemaFactory
+name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|schemaFactory
+name|db
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -962,9 +960,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|schemaFactory
+name|db
 operator|=
-name|schemaFactory
+name|db
 expr_stmt|;
 name|this
 operator|.
@@ -1551,16 +1549,6 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-name|ReviewDb
-name|db
-init|=
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
-decl_stmt|;
-try|try
-block|{
 name|Repository
 name|repo
 init|=
@@ -1592,6 +1580,9 @@ name|Change
 name|c
 range|:
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|changes
 argument_list|()
@@ -1673,15 +1664,6 @@ expr_stmt|;
 comment|// TODO(dborowitz): Opening all repositories in a live server may be
 comment|// wasteful; see if we can determine which ones it is safe to close
 comment|// with RepositoryCache.close(repo).
-block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 literal|null
