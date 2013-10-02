@@ -1519,6 +1519,8 @@ name|projectCache
 argument_list|,
 name|sectionSorter
 argument_list|,
+literal|null
+argument_list|,
 name|canonicalWebUrl
 argument_list|,
 operator|new
