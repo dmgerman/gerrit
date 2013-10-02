@@ -1481,12 +1481,10 @@ name|i
 operator|--
 control|)
 block|{
-name|DOM
+name|el
 operator|.
 name|removeChild
 argument_list|(
-name|el
-argument_list|,
 name|DOM
 operator|.
 name|getChild
@@ -1533,12 +1531,10 @@ name|missingApproval
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|DOM
+name|li
 operator|.
 name|setInnerText
 argument_list|(
-name|li
-argument_list|,
 name|text
 argument_list|)
 expr_stmt|;

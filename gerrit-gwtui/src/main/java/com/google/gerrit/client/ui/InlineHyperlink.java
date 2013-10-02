@@ -215,12 +215,10 @@ name|event
 argument_list|)
 condition|)
 block|{
-name|DOM
-operator|.
-name|eventPreventDefault
-argument_list|(
 name|event
-argument_list|)
+operator|.
+name|preventDefault
+argument_list|()
 expr_stmt|;
 name|go
 argument_list|()

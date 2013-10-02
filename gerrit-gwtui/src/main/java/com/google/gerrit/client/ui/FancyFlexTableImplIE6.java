@@ -224,12 +224,10 @@ argument_list|(
 name|oldBody
 argument_list|)
 decl_stmt|;
-name|DOM
+name|tableElem
 operator|.
 name|removeChild
 argument_list|(
-name|tableElem
-argument_list|,
 name|oldBody
 argument_list|)
 expr_stmt|;

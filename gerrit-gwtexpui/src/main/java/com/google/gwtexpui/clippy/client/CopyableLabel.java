@@ -994,13 +994,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DOM
+name|getElement
+argument_list|()
 operator|.
 name|removeChild
 argument_list|(
-name|getElement
-argument_list|()
-argument_list|,
 name|swf
 argument_list|)
 expr_stmt|;
