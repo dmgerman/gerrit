@@ -135,26 +135,28 @@ argument_list|<
 name|RevisionResource
 argument_list|>
 block|{
-DECL|field|json
+DECL|field|delegate
 specifier|private
 specifier|final
-name|ChangeJson
-name|json
+name|GetChange
+name|delegate
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetReview (ChangeJson json)
+DECL|method|GetReview (GetChange delegate)
 name|GetReview
 parameter_list|(
-name|ChangeJson
-name|json
+name|GetChange
+name|delegate
 parameter_list|)
 block|{
 name|this
 operator|.
-name|json
+name|delegate
 operator|=
-name|json
+name|delegate
+expr_stmt|;
+name|delegate
 operator|.
 name|addOption
 argument_list|(
@@ -162,6 +164,8 @@ name|ListChangesOption
 operator|.
 name|DETAILED_LABELS
 argument_list|)
+expr_stmt|;
+name|delegate
 operator|.
 name|addOption
 argument_list|(
@@ -173,23 +177,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (RevisionResource resource)
+DECL|method|apply (RevisionResource rsrc)
 specifier|public
 name|Object
 name|apply
 parameter_list|(
 name|RevisionResource
-name|resource
+name|rsrc
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
 return|return
-name|json
+name|delegate
 operator|.
-name|format
+name|apply
 argument_list|(
-name|resource
+name|rsrc
 argument_list|)
 return|;
 block|}

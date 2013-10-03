@@ -94,6 +94,24 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|RestResource
+operator|.
+name|HasETag
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestView
 import|;
 end_import
@@ -195,6 +213,8 @@ class|class
 name|RevisionResource
 implements|implements
 name|RestResource
+implements|,
+name|HasETag
 block|{
 DECL|field|REVISION_KIND
 specifier|public
@@ -319,6 +339,24 @@ parameter_list|()
 block|{
 return|return
 name|ps
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getETag ()
+specifier|public
+name|String
+name|getETag
+parameter_list|()
+block|{
+comment|// Conservative estimate: refresh the revision if its parent change has
+comment|// changed, so we don't have to check whether a given modification affected
+comment|// this revision specifically.
+return|return
+name|change
+operator|.
+name|getETag
+argument_list|()
 return|;
 block|}
 DECL|method|getAccountId ()
