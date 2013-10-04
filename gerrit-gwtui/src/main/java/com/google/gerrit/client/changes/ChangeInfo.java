@@ -1728,6 +1728,38 @@ name|MergeableInfo
 parameter_list|()
 block|{     }
 block|}
+DECL|class|IncludedInInfo
+specifier|public
+specifier|static
+class|class
+name|IncludedInInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|branches ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|branches
+parameter_list|()
+comment|/*-{ return this.branches; }-*/
+function_decl|;
+DECL|method|tags ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|tags
+parameter_list|()
+comment|/*-{ return this.tags; }-*/
+function_decl|;
+DECL|method|IncludedInInfo ()
+specifier|protected
+name|IncludedInInfo
+parameter_list|()
+block|{     }
+block|}
 block|}
 end_class
 
