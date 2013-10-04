@@ -1245,44 +1245,11 @@ block|{
 comment|// IF the file is really large, we disable things to avoid choking
 comment|// the browser client.
 comment|//
-name|diffPrefs
-operator|.
-name|setContext
-argument_list|(
-operator|(
-name|short
-operator|)
-name|Math
-operator|.
-name|min
-argument_list|(
-literal|25
-argument_list|,
-name|context
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|diffPrefs
-operator|.
-name|setSyntaxHighlighting
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|context
-operator|=
-name|diffPrefs
-operator|.
-name|getContext
-argument_list|()
-expr_stmt|;
 name|hugeFile
 operator|=
 literal|true
 expr_stmt|;
 block|}
-else|else
-block|{
 comment|// In order to expand the skipped common lines or syntax highlight the
 comment|// file properly we need to give the client the complete file contents.
 comment|// So force our context temporarily to the complete file size.
@@ -1291,7 +1258,6 @@ name|context
 operator|=
 name|MAX_CONTEXT
 expr_stmt|;
-block|}
 name|packContent
 argument_list|(
 name|diffPrefs
