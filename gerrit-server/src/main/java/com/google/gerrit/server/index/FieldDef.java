@@ -153,7 +153,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Definition of a field stored in the secondary index.  *  * @param I input type from which documents are created and search results are  *     returned.  * @param T type that should be extracted from the input object when converting  *     to an index document.  */
+comment|/**  * Definition of a field stored in the secondary index.  *  * @param<I> input type from which documents are created and search results are  *     returned.  * @param<T> type that should be extracted from the input object when converting  *     to an index document.  */
 end_comment
 
 begin_class
