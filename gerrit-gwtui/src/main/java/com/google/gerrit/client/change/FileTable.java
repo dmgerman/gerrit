@@ -3047,6 +3047,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|Patch
 operator|.
 name|COMMIT_MSG
@@ -3059,14 +3060,6 @@ name|path
 argument_list|()
 argument_list|)
 condition|)
-block|{
-name|sb
-operator|.
-name|nbsp
-argument_list|()
-expr_stmt|;
-block|}
-else|else
 block|{
 name|sb
 operator|.
