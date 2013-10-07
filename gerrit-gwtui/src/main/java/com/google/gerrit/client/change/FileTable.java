@@ -719,6 +719,11 @@ name|String
 name|reviewed
 parameter_list|()
 function_decl|;
+DECL|method|status ()
+name|String
+name|status
+parameter_list|()
+function_decl|;
 DECL|method|pathColumn ()
 name|String
 name|pathColumn
@@ -762,11 +767,6 @@ function_decl|;
 DECL|method|deleted ()
 name|String
 name|deleted
-parameter_list|()
-function_decl|;
-DECL|method|statusTypeCell ()
-name|String
-name|statusTypeCell
 parameter_list|()
 function_decl|;
 block|}
@@ -2767,7 +2767,7 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|statusTypeCell
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -3041,7 +3041,7 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|statusTypeCell
+name|status
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4025,7 +4025,7 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|statusTypeCell
+name|status
 argument_list|()
 argument_list|)
 operator|.
