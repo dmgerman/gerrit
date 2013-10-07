@@ -1266,6 +1266,8 @@ operator|.
 name|Id
 name|getPatchSetId
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|init
 argument_list|()
@@ -2233,6 +2235,8 @@ specifier|private
 name|void
 name|init
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(

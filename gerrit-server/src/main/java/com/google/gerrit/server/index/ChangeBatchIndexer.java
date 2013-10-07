@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|RefDatabase
+operator|.
+name|ALL
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -495,6 +511,20 @@ operator|.
 name|lib
 operator|.
 name|Ref
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|RefDatabase
 import|;
 end_import
 
@@ -1571,8 +1601,13 @@ name|refs
 init|=
 name|repo
 operator|.
-name|getAllRefs
+name|getRefDatabase
 argument_list|()
+operator|.
+name|getRefs
+argument_list|(
+name|ALL
+argument_list|)
 decl_stmt|;
 for|for
 control|(
