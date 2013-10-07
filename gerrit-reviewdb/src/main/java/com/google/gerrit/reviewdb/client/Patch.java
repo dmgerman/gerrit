@@ -377,6 +377,37 @@ return|return
 name|code
 return|;
 block|}
+DECL|method|matches (String s)
+specifier|public
+name|boolean
+name|matches
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+return|return
+name|s
+operator|!=
+literal|null
+operator|&&
+name|s
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|1
+operator|&&
+name|s
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+name|code
+return|;
+block|}
 DECL|method|forCode (final char c)
 specifier|public
 specifier|static

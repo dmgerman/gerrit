@@ -284,6 +284,24 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Patch
+operator|.
+name|ChangeType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -719,6 +737,11 @@ name|String
 name|reviewed
 parameter_list|()
 function_decl|;
+DECL|method|status ()
+name|String
+name|status
+parameter_list|()
+function_decl|;
 DECL|method|pathColumn ()
 name|String
 name|pathColumn
@@ -762,11 +785,6 @@ function_decl|;
 DECL|method|deleted ()
 name|String
 name|deleted
-parameter_list|()
-function_decl|;
-DECL|method|statusTypeCell ()
-name|String
-name|statusTypeCell
 parameter_list|()
 function_decl|;
 block|}
@@ -2767,7 +2785,7 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|statusTypeCell
+name|status
 argument_list|()
 argument_list|)
 operator|.
@@ -3041,12 +3059,13 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|statusTypeCell
+name|status
 argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|Patch
 operator|.
 name|COMMIT_MSG
@@ -3058,15 +3077,27 @@ operator|.
 name|path
 argument_list|()
 argument_list|)
-condition|)
-block|{
-name|sb
+operator|&&
+name|info
 operator|.
-name|nbsp
+name|status
 argument_list|()
-expr_stmt|;
-block|}
-else|else
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|ChangeType
+operator|.
+name|MODIFIED
+operator|.
+name|matches
+argument_list|(
+name|info
+operator|.
+name|status
+argument_list|()
+argument_list|)
+condition|)
 block|{
 name|sb
 operator|.
@@ -4032,7 +4063,7 @@ operator|.
 name|css
 argument_list|()
 operator|.
-name|statusTypeCell
+name|status
 argument_list|()
 argument_list|)
 operator|.
