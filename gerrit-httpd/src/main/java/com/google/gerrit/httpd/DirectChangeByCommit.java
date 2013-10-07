@@ -623,13 +623,11 @@ parameter_list|)
 block|{
 name|log
 operator|.
-name|warn
+name|info
 argument_list|(
 literal|"Received invalid query by URL: /r/"
 operator|+
 name|query
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}
