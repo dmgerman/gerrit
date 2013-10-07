@@ -1884,8 +1884,6 @@ name|html
 operator|.
 name|openSpan
 argument_list|()
-expr_stmt|;
-name|html
 operator|.
 name|setAttribute
 argument_list|(
@@ -1893,8 +1891,6 @@ literal|"role"
 argument_list|,
 literal|"listitem"
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|setAttribute
 argument_list|(
@@ -1905,8 +1901,6 @@ operator|.
 name|_account_id
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|setStyleName
 argument_list|(
@@ -1929,8 +1923,6 @@ name|openElement
 argument_list|(
 literal|"img"
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|setStyleName
 argument_list|(
@@ -1939,8 +1931,6 @@ operator|.
 name|avatar
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|setAttribute
 argument_list|(
@@ -2030,8 +2020,6 @@ name|openElement
 argument_list|(
 literal|"button"
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|setAttribute
 argument_list|(
@@ -2046,8 +2034,6 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|setAttribute
 argument_list|(
@@ -2057,8 +2043,6 @@ name|REMOVE
 operator|+
 literal|"(event)"
 argument_list|)
-expr_stmt|;
-name|html
 operator|.
 name|append
 argument_list|(
@@ -2075,6 +2059,11 @@ operator|.
 name|remove_reviewer
 argument_list|()
 argument_list|)
+argument_list|)
+operator|.
+name|closeElement
+argument_list|(
+literal|"button"
 argument_list|)
 expr_stmt|;
 block|}
