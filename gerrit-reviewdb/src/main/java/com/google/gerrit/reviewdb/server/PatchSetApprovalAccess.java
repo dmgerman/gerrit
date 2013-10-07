@@ -298,6 +298,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE changeOpen = true AND key.accountId = ?"
@@ -318,27 +320,7 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
-name|Query
-argument_list|(
-literal|"WHERE changeOpen = false AND key.accountId = ?"
-operator|+
-literal|" ORDER BY changeSortKey DESC LIMIT 10"
-argument_list|)
-DECL|method|closedByUser (Account.Id account)
-name|ResultSet
-argument_list|<
-name|PatchSetApproval
-argument_list|>
-name|closedByUser
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|account
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
+name|Deprecated
 annotation|@
 name|Query
 argument_list|(

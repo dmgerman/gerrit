@@ -323,6 +323,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE owner = ? AND open = true ORDER BY createdOn, changeId"
@@ -343,25 +345,7 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
-name|Query
-argument_list|(
-literal|"WHERE owner = ? AND open = false ORDER BY lastUpdatedOn DESC LIMIT 5"
-argument_list|)
-DECL|method|byOwnerClosed (Account.Id id)
-name|ResultSet
-argument_list|<
-name|Change
-argument_list|>
-name|byOwnerClosed
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
+name|Deprecated
 annotation|@
 name|Query
 argument_list|(
@@ -430,6 +414,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE open = true AND sortKey> ? ORDER BY sortKey LIMIT ?"
@@ -450,6 +436,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Deprecated
 annotation|@
 name|Query
 argument_list|(
@@ -512,6 +500,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE open = true AND dest.projectName = ? AND sortKey> ?"
@@ -568,6 +558,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE open = false AND status = ? AND dest.projectName = ? AND sortKey> ?"
@@ -598,6 +590,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Deprecated
 annotation|@
 name|Query
 argument_list|(
@@ -630,6 +624,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE open = false AND status = ? AND sortKey> ? ORDER BY sortKey LIMIT ?"
@@ -654,6 +650,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE open = false AND status = ? AND sortKey< ? ORDER BY sortKey DESC LIMIT ?"
@@ -677,6 +675,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Deprecated
 annotation|@
 name|Query
 argument_list|(
@@ -708,6 +708,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Deprecated
 annotation|@
 name|Query
 argument_list|(
