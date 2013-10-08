@@ -1789,6 +1789,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|ps
+operator|!=
+literal|null
+operator|&&
 name|control
 operator|.
 name|isPatchVisible
