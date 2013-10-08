@@ -226,22 +226,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|ListeningScheduledExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|common
@@ -1520,7 +1504,7 @@ name|closedIndex
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor ListeningScheduledExecutorService executor, FillArgs fillArgs, @Assisted Schema<ChangeData> schema, @Assisted @Nullable String base)
+DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor ListeningExecutorService executor, FillArgs fillArgs, @Assisted Schema<ChangeData> schema, @Assisted @Nullable String base)
 name|LuceneChangeIndex
 parameter_list|(
 annotation|@
@@ -1533,7 +1517,7 @@ name|sitePaths
 parameter_list|,
 annotation|@
 name|IndexExecutor
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 parameter_list|,
 name|FillArgs

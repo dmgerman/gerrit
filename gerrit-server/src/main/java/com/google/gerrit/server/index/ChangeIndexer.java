@@ -140,7 +140,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 import|;
 end_import
 
@@ -415,14 +415,14 @@ decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 decl_stmt|;
-DECL|method|ChangeIndexer (ListeningScheduledExecutorService executor)
+DECL|method|ChangeIndexer (ListeningExecutorService executor)
 specifier|protected
 name|ChangeIndexer
 parameter_list|(
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 parameter_list|)
 block|{

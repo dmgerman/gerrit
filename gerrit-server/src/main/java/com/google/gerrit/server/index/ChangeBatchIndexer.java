@@ -226,7 +226,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 import|;
 end_import
 
@@ -938,7 +938,7 @@ decl_stmt|;
 DECL|field|executor
 specifier|private
 specifier|final
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 decl_stmt|;
 DECL|field|indexerFactory
@@ -951,7 +951,7 @@ name|indexerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (Provider<ReviewDb> db, GitRepositoryManager repoManager, @IndexExecutor ListeningScheduledExecutorService executor, ChangeIndexer.Factory indexerFactory)
+DECL|method|ChangeBatchIndexer (Provider<ReviewDb> db, GitRepositoryManager repoManager, @IndexExecutor ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory)
 name|ChangeBatchIndexer
 parameter_list|(
 name|Provider
@@ -965,7 +965,7 @@ name|repoManager
 parameter_list|,
 annotation|@
 name|IndexExecutor
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 parameter_list|,
 name|ChangeIndexer

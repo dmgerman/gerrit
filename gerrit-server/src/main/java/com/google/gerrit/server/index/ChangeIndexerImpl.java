@@ -94,7 +94,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 import|;
 end_import
 
@@ -397,12 +397,12 @@ name|context
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningScheduledExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context, @Assisted ChangeIndex index)
 name|ChangeIndexerImpl
 parameter_list|(
 annotation|@
 name|IndexExecutor
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 parameter_list|,
 name|SchemaFactory
@@ -452,12 +452,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningScheduledExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context, @Assisted IndexCollection indexes)
+DECL|method|ChangeIndexerImpl (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context, @Assisted IndexCollection indexes)
 name|ChangeIndexerImpl
 parameter_list|(
 annotation|@
 name|IndexExecutor
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|executor
 parameter_list|,
 name|SchemaFactory

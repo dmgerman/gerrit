@@ -78,7 +78,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 import|;
 end_import
 
@@ -352,7 +352,7 @@ decl_stmt|;
 DECL|field|indexExecutor
 specifier|private
 specifier|final
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|indexExecutor
 decl_stmt|;
 DECL|method|IndexModule (int threads)
@@ -376,11 +376,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|IndexModule (ListeningScheduledExecutorService indexExecutor)
+DECL|method|IndexModule (ListeningExecutorService indexExecutor)
 specifier|public
 name|IndexModule
 parameter_list|(
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|indexExecutor
 parameter_list|)
 block|{
@@ -482,7 +482,7 @@ condition|)
 block|{
 name|bind
 argument_list|(
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 operator|.
 name|class
 argument_list|)
@@ -581,7 +581,7 @@ name|Singleton
 annotation|@
 name|IndexExecutor
 DECL|method|getIndexExecutor ( @erritServerConfig Config config, WorkQueue workQueue)
-name|ListeningScheduledExecutorService
+name|ListeningExecutorService
 name|getIndexExecutor
 parameter_list|(
 annotation|@
