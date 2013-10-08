@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|TrackingFooters
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -311,6 +327,11 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|trackingFooters
+specifier|final
+name|TrackingFooters
+name|trackingFooters
+decl_stmt|;
 DECL|field|patchListCache
 specifier|final
 name|PatchListCache
@@ -318,7 +339,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FillArgs (Provider<ReviewDb> db, GitRepositoryManager repoManager, PatchListCache patchListCache)
+DECL|method|FillArgs (Provider<ReviewDb> db, GitRepositoryManager repoManager, TrackingFooters trackingFooters, PatchListCache patchListCache)
 name|FillArgs
 parameter_list|(
 name|Provider
@@ -329,6 +350,9 @@ name|db
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|TrackingFooters
+name|trackingFooters
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -345,6 +369,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|trackingFooters
+operator|=
+name|trackingFooters
 expr_stmt|;
 name|this
 operator|.
