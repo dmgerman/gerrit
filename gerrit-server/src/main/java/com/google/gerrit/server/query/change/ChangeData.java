@@ -1484,7 +1484,12 @@ parameter_list|)
 block|{
 name|currentFiles
 operator|=
+name|ImmutableList
+operator|.
+name|copyOf
+argument_list|(
 name|filePaths
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|currentFilePaths (Provider<ReviewDb> db, PatchListCache cache)
