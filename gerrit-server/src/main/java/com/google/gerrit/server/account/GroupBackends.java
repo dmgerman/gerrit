@@ -118,22 +118,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|project
@@ -219,7 +203,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the best single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the    * result to return the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the best single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findBestSuggestion (GroupBackend groupBackend, String name)
@@ -246,7 +230,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the best single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the    * result to return the best suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the best single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findBestSuggestion (GroupBackend groupBackend, String name, @Nullable ProjectControl project)
@@ -328,7 +312,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the exact single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the    * result to return the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @return the exact single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findExactSuggestion ( GroupBackend groupBackend, String name)
@@ -355,7 +339,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Runs {@link GroupBackend#suggest(String, Project)} and filters the result to return    * the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the exact single GroupReference suggestion    */
+comment|/**    * Runs {@link GroupBackend#suggest(String, ProjectControl)} and filters the    * result to return the exact suggestion, or null if one does not exist.    *    * @param groupBackend the group backend    * @param name the name for which to suggest groups    * @param project the project for which to suggest groups    * @return the exact single GroupReference suggestion    */
 annotation|@
 name|Nullable
 DECL|method|findExactSuggestion ( GroupBackend groupBackend, String name, ProjectControl project)

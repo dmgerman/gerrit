@@ -109,7 +109,7 @@ specifier|protected
 name|RawFindReplace
 parameter_list|()
 block|{   }
-comment|/**    * @param regex regular expression pattern to match substrings with.    * @param repl replacement expression. Capture groups within    *<code>regex</code> can be referenced with<code>$<i>n</i></code>.    */
+comment|/**    * @param find regular expression pattern to match substrings with.    * @param replace replacement expression. Capture groups within    *<code>find</code> can be referenced with<code>$<i>n</i></code>.    */
 DECL|method|RawFindReplace (String find, String replace)
 specifier|public
 name|RawFindReplace

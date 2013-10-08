@@ -222,7 +222,7 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-comment|/**    * @see #suggestAccountGroup(com.google.gerrit.reviewdb.client.Project.NameKey, String, int, AsyncCallback)    */
+comment|/**    * @see #suggestAccountGroupForProject(com.google.gerrit.reviewdb.client.Project.NameKey, String, int, AsyncCallback)    */
 annotation|@
 name|Deprecated
 DECL|method|suggestAccountGroup (String query, int limit, AsyncCallback<List<GroupReference>> callback)

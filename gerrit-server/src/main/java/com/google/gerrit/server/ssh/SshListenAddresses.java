@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the list of {@link SocketAddress}es on which the SSH daemon is  * configured to listen.  */
+comment|/**  * Marker on the list of {@link java.net.SocketAddress}es on which the SSH  * daemon is configured to listen.  */
 end_comment
 
 begin_annotation_defn

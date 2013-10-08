@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Glue to connect CodeMirror to be callable from GWT.  *  * @link http://codemirror.net/doc/manual.html#api  */
+comment|/**  * Glue to connect CodeMirror to be callable from GWT.  *  * @see<a href="http://codemirror.net/doc/manual.html#api">CodeMirror API</a>  */
 end_comment
 
 begin_class

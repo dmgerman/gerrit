@@ -659,7 +659,7 @@ specifier|public
 interface|interface
 name|PatchValidator
 block|{
-comment|/**      * Returns true if patch is valid      *      * @param patch      * @return      */
+comment|/**      * @param patch      * @return true if patch is valid.      */
 DECL|method|isValid (Patch patch)
 name|boolean
 name|isValid
@@ -4975,7 +4975,7 @@ literal|200
 return|;
 block|}
 block|}
-comment|/**    * Gets the next patch    *    * @param currentIndex    * @param validators    * @param loopAround loops back around to the front and traverses if this is    *        true    * @return    */
+comment|/**    * Gets the next patch    *    * @param currentIndex    * @param validators    * @param loopAround loops back around to the front and traverses if this is    *        true    * @return index of next valid patch, or -1 if no valid patches    */
 DECL|method|getNextPatch (int currentIndex, boolean loopAround, PatchValidator... validators)
 specifier|public
 name|int
@@ -5011,7 +5011,7 @@ name|validators
 argument_list|)
 return|;
 block|}
-comment|/**    * Helper function for getNextPatch    *    * @param currentIndex    * @param validators    * @param loopAround    * @param maxIndex will only traverse up to this index    * @return    */
+comment|/**    * Helper function for getNextPatch    *    * @param currentIndex    * @param validators    * @param loopAround    * @param maxIndex will only traverse up to this index    * @return index of next valid patch, or -1 if no valid patches    */
 DECL|method|getNextPatchHelper (int currentIndex, boolean loopAround, int maxIndex, PatchValidator... validators)
 specifier|private
 name|int

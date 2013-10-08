@@ -224,7 +224,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Lookup the group summary    *<p>    * The return value can take on one of three forms:    *<ul>    *<li><code>null</code>, if<code>id == null</code>.</li>    *<li>a valid info block, if<code>id</code> was loaded.</li>    *<li>an anonymous info block, if<code>id</code> was not loaded.</li>    *</ul>    *    * @param id the id desired.    * @return info block for the group.    */
+comment|/**    * Lookup the group summary    *<p>    * The return value can take on one of three forms:    *<ul>    *<li><code>null</code>, if<code>id == null</code>.</li>    *<li>a valid info block, if<code>id</code> was loaded.</li>    *<li>an anonymous info block, if<code>id</code> was not loaded.</li>    *</ul>    *    * @param uuid the id desired.    * @return info block for the group.    */
 DECL|method|get (final AccountGroup.UUID uuid)
 specifier|public
 name|GroupInfo

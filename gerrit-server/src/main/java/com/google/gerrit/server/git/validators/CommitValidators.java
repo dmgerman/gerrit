@@ -3344,7 +3344,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the Gerrit URL.    *    * @return the canonical URL (with any trailing slash removed) if it is    *         configured, otherwise fall back to "http://hostname" where hostname    *         is the value returned by {@link #getGerritHost()}.    */
+comment|/**    * Get the Gerrit URL.    *    * @return the canonical URL (with any trailing slash removed) if it is    *         configured, otherwise fall back to "http://hostname" where hostname    *         is the value returned by {@link #getGerritHost(String)}.    */
 DECL|method|getGerritUrl (String canonicalWebUrl)
 specifier|private
 specifier|static

@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple map-like structure to pass configuration to CodeMirror.  *  * @link http://codemirror.net/doc/manual.html#config  * @see CodeMirror#create(com.google.gwt.dom.client.Element, Configuration)  */
+comment|/**  * Simple map-like structure to pass configuration to CodeMirror.  *  * @see<a href="http://codemirror.net/doc/manual.html#config">CodeMirror config</a>  * @see CodeMirror#create(com.google.gwt.dom.client.Element, Configuration)  */
 end_comment
 
 begin_class

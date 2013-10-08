@@ -110,6 +110,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|ProvisionException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Scopes
 import|;
 end_import
@@ -433,6 +445,8 @@ parameter_list|,
 name|String
 name|exportName
 parameter_list|)
+throws|throws
+name|ProvisionException
 block|{
 name|Provider
 argument_list|<

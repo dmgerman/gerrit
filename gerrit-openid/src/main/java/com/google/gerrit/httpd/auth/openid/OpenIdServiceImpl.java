@@ -1553,7 +1553,7 @@ literal|true
 return|;
 block|}
 block|}
-comment|/** Called by {@link OpenIdLoginForm} doGet, doPost */
+comment|/** Called by {@link OpenIdLoginServlet} doGet, doPost */
 DECL|method|doAuth (final HttpServletRequest req, final HttpServletResponse rsp)
 name|void
 name|doAuth

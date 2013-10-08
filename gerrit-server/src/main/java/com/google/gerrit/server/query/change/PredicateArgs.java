@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is used to extract comma separated values in a predicate  *  * If tags for the values are present (e.g. "branch=jb_2.3,vote=approved") then  * the args are placed in a map that maps tag to value (e.g., "branch" to "jb_2.3").  * If no tag is present (e.g. "jb_2.3,approved") then the args are placed into a  * positional list.  Args may be mixed so some may appear in the map and others  * in the positional list (e.g. "vote=approved,jb_2.3).  */
+comment|/**  * This class is used to extract comma separated values in a predicate.  *<p>  * If tags for the values are present (e.g. "branch=jb_2.3,vote=approved") then  * the args are placed in a map that maps tag to value (e.g., "branch" to "jb_2.3").  * If no tag is present (e.g. "jb_2.3,approved") then the args are placed into a  * positional list.  Args may be mixed so some may appear in the map and others  * in the positional list (e.g. "vote=approved,jb_2.3).  */
 end_comment
 
 begin_class
@@ -160,7 +160,7 @@ name|String
 argument_list|>
 name|keyValue
 decl_stmt|;
-comment|/**    * Parses query arguments into keyValue and/or positional values    * labels for these arguments should be kept in ChangeQueryBuilder    * as ARG_ID_{argument name}.    *    * @param args - arguments to be parsed    *    * @return - the static values keyValue and positional will contain    *           the parsed values.    * @throws QueryParseException    */
+comment|/**    * Parses query arguments into {@link #keyValue} and/or {@link #positional}..    *<p>    * Labels for these arguments should be kept in ChangeQueryBuilder    * as {@code ARG_ID_{argument name}}.    *    * @param args arguments to be parsed    * @throws QueryParseException    */
 DECL|method|PredicateArgs (String args)
 name|PredicateArgs
 parameter_list|(

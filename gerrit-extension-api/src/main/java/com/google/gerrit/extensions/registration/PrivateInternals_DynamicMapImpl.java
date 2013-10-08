@@ -194,7 +194,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**    * Store one new element that may be hot-replaceable in the future.    *    * @param pluginName unique name of the plugin providing the export.    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload. The key must    *        use an {@link @Export} annotation.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item    *         without it ever leaving the collection.    */
+comment|/**    * Store one new element that may be hot-replaceable in the future.    *    * @param pluginName unique name of the plugin providing the export.    * @param key unique description from the item's Guice binding. This can be    *        later obtained from the registration handle to facilitate matching    *        with the new equivalent instance during a hot reload. The key must    *        use an {@link Export} annotation.    * @param item the item to add to the collection right now. Must not be null.    * @return a handle that can remove this item later, or hot-swap the item    *         without it ever leaving the collection.    */
 DECL|method|put ( String pluginName, Key<T> key, Provider<T> item)
 specifier|public
 name|ReloadableRegistrationHandle

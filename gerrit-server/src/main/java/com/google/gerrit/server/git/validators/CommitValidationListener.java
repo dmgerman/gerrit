@@ -122,7 +122,7 @@ specifier|public
 interface|interface
 name|CommitValidationListener
 block|{
-comment|/**    * Commit validation.    *    * @param received commit event details    * @return list of validation messages    * @throws CommitValidationException if validation fails    */
+comment|/**    * Commit validation.    *    * @param receiveEvent commit event details    * @return list of validation messages    * @throws CommitValidationException if validation fails    */
 DECL|method|onCommitReceived (CommitReceivedEvent receiveEvent)
 specifier|public
 name|List

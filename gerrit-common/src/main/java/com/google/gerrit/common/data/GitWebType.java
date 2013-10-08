@@ -405,7 +405,7 @@ name|pattern
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Set the pattern for link-name type.    *    * @param pattern The pattern for link-name type    */
+comment|/**    * Set the pattern for link-name type.    *    * @param name The link-name type    */
 DECL|method|setLinkName (final String name)
 specifier|public
 name|void
