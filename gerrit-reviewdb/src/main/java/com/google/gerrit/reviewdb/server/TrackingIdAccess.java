@@ -221,6 +221,8 @@ throws|throws
 name|OrmException
 function_decl|;
 annotation|@
+name|Deprecated
+annotation|@
 name|Query
 argument_list|(
 literal|"WHERE key.trackingKey = ?"
