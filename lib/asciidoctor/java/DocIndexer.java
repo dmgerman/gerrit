@@ -360,7 +360,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_43
+name|LUCENE_44
 decl_stmt|;
 DECL|field|DOC_FIELD
 specifier|private
