@@ -520,12 +520,8 @@ argument_list|(
 name|m
 argument_list|)
 operator|.
-name|in
-argument_list|(
-name|Scopes
-operator|.
-name|SINGLETON
-argument_list|)
+name|asEagerSingleton
+argument_list|()
 expr_stmt|;
 name|bind
 argument_list|(
