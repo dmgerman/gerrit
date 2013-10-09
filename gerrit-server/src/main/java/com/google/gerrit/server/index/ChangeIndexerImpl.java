@@ -626,8 +626,9 @@ operator|.
 name|newReference
 argument_list|()
 decl_stmt|;
-try|try
-block|{
+name|RequestContext
+name|oldCtx
+init|=
 name|context
 operator|.
 name|setContext
@@ -734,7 +735,9 @@ throw|;
 block|}
 block|}
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|indexes
@@ -782,7 +785,7 @@ name|context
 operator|.
 name|setContext
 argument_list|(
-literal|null
+name|oldCtx
 argument_list|)
 expr_stmt|;
 name|Provider
