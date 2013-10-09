@@ -466,8 +466,9 @@ argument_list|()
 expr_stmt|;
 name|db
 operator|=
-operator|new
 name|InMemoryDatabase
+operator|.
+name|newDatabase
 argument_list|()
 expr_stmt|;
 block|}
