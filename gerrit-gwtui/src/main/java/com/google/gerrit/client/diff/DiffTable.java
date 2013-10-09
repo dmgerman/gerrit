@@ -588,20 +588,6 @@ operator|=
 name|host
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|onLoad ()
-specifier|protected
-name|void
-name|onLoad
-parameter_list|()
-block|{
-name|updateFileCommentVisibility
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|updateFileCommentVisibility (boolean forceHide)
 name|void
 name|updateFileCommentVisibility
