@@ -6741,6 +6741,7 @@ name|String
 name|_sortkey
 decl_stmt|;
 DECL|field|_number
+specifier|public
 name|int
 name|_number
 decl_stmt|;

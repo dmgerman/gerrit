@@ -435,6 +435,7 @@ operator|.
 name|CREATE_PROJECT
 argument_list|)
 DECL|class|CreateProject
+specifier|public
 class|class
 name|CreateProject
 implements|implements
@@ -446,6 +447,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -510,6 +512,7 @@ name|maxObjectSizeLimit
 decl_stmt|;
 block|}
 DECL|interface|Factory
+specifier|public
 specifier|static
 interface|interface
 name|Factory
