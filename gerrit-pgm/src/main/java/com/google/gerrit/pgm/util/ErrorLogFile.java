@@ -281,7 +281,9 @@ specifier|final
 name|String
 name|LOG4J_CONFIGURATION
 init|=
-literal|"log4j.configuration"
+name|LogManager
+operator|.
+name|DEFAULT_CONFIGURATION_KEY
 decl_stmt|;
 DECL|field|LOG_NAME
 specifier|static
