@@ -224,20 +224,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -376,7 +362,7 @@ annotation|@
 name|Override
 DECL|method|openRepository (Project.NameKey name)
 specifier|public
-name|Repository
+name|InMemoryRepository
 name|openRepository
 parameter_list|(
 name|Project
@@ -398,7 +384,7 @@ annotation|@
 name|Override
 DECL|method|createRepository (Project.NameKey name)
 specifier|public
-name|Repository
+name|InMemoryRepository
 name|createRepository
 parameter_list|(
 name|Project
