@@ -809,6 +809,12 @@ name|UiField
 name|CheckBox
 name|email
 decl_stmt|;
+DECL|field|cancel
+annotation|@
+name|UiField
+name|Button
+name|cancel
+decl_stmt|;
 DECL|method|ReplyBox ( PatchSet.Id psId, String revision, NativeMap<LabelInfo> all, NativeMap<JsArrayString> permitted)
 name|ReplyBox
 parameter_list|(
@@ -1242,6 +1248,23 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|hide
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|UiHandler
+argument_list|(
+literal|"cancel"
+argument_list|)
+DECL|method|onCancel (ClickEvent e)
+name|void
+name|onCancel
+parameter_list|(
+name|ClickEvent
+name|e
+parameter_list|)
+block|{
 name|hide
 argument_list|()
 expr_stmt|;
