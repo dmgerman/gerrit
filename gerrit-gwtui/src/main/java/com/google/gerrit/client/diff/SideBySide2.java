@@ -4619,13 +4619,6 @@ name|addPaddingWidget
 argument_list|(
 name|cm
 argument_list|,
-name|DiffTable
-operator|.
-name|style
-operator|.
-name|padding
-argument_list|()
-argument_list|,
 name|line
 argument_list|,
 literal|0
@@ -4729,13 +4722,6 @@ argument_list|(
 name|addPaddingWidget
 argument_list|(
 name|other
-argument_list|,
-name|DiffTable
-operator|.
-name|style
-operator|.
-name|padding
-argument_list|()
 argument_list|,
 name|lineToPad
 argument_list|,
@@ -6596,13 +6582,6 @@ name|addPaddingWidget
 argument_list|(
 name|cmToPad
 argument_list|,
-name|DiffTable
-operator|.
-name|style
-operator|.
-name|padding
-argument_list|()
-argument_list|,
 name|lineToPad
 argument_list|,
 literal|0
@@ -6645,16 +6624,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addPaddingWidget (CodeMirror cm, String style, int line, double height, Unit unit, Integer index)
+DECL|method|addPaddingWidget (CodeMirror cm, int line, double height, Unit unit, Integer index)
 specifier|private
 name|PaddingWidgetWrapper
 name|addPaddingWidget
 parameter_list|(
 name|CodeMirror
 name|cm
-parameter_list|,
-name|String
-name|style
 parameter_list|,
 name|int
 name|line
@@ -6677,13 +6653,6 @@ operator|.
 name|createDiv
 argument_list|()
 decl_stmt|;
-name|div
-operator|.
-name|setClassName
-argument_list|(
-name|style
-argument_list|)
-expr_stmt|;
 name|div
 operator|.
 name|getStyle

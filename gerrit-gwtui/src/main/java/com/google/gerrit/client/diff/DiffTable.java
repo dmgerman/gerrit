@@ -322,11 +322,6 @@ name|String
 name|diff
 parameter_list|()
 function_decl|;
-DECL|method|padding ()
-name|String
-name|padding
-parameter_list|()
-function_decl|;
 DECL|method|activeLine ()
 name|String
 name|activeLine
