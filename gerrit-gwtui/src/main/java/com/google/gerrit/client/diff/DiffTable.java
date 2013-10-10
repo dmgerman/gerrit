@@ -332,11 +332,6 @@ name|String
 name|activeLine
 parameter_list|()
 function_decl|;
-DECL|method|activeLineBg ()
-name|String
-name|activeLineBg
-parameter_list|()
-function_decl|;
 DECL|method|hideNumber ()
 name|String
 name|hideNumber
