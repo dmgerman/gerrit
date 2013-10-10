@@ -1237,10 +1237,8 @@ condition|)
 block|{
 name|html
 operator|.
-name|append
-argument_list|(
-literal|"; "
-argument_list|)
+name|br
+argument_list|()
 expr_stmt|;
 block|}
 name|String
@@ -2072,6 +2070,22 @@ operator|.
 name|closeSpan
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|itr
+operator|.
+name|hasNext
+argument_list|()
+condition|)
+block|{
+name|html
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|html
