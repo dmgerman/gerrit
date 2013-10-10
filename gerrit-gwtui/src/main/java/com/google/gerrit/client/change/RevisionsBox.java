@@ -1349,14 +1349,6 @@ operator|.
 name|legacy_id
 argument_list|()
 argument_list|)
-operator|.
-name|append
-argument_list|(
-name|r
-operator|.
-name|_number
-argument_list|()
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1370,17 +1362,17 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
-argument_list|)
-operator|.
-name|append
-argument_list|(
 name|Resources
 operator|.
 name|C
 operator|.
 name|draft
 argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -1393,11 +1385,6 @@ argument_list|()
 condition|)
 block|{
 name|sb
-operator|.
-name|append
-argument_list|(
-literal|" "
-argument_list|)
 operator|.
 name|openSpan
 argument_list|()
@@ -1441,8 +1428,23 @@ argument_list|)
 operator|.
 name|closeSpan
 argument_list|()
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
 expr_stmt|;
 block|}
+name|sb
+operator|.
+name|append
+argument_list|(
+name|r
+operator|.
+name|_number
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|sb
 operator|.
 name|closeTd
