@@ -1022,7 +1022,7 @@ comment|// Index queries are assumed to be cheaper than any other type of query,
 comment|// so try to make sure they get picked. Note that pred's cost may be higher
 comment|// because it doesn't know whether it's being used in an index query or not.
 return|return
-literal|0
+literal|1
 return|;
 block|}
 annotation|@
