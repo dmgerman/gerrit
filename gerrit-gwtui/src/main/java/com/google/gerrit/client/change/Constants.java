@@ -133,6 +133,11 @@ name|String
 name|draftCommentsTooltip
 parameter_list|()
 function_decl|;
+DECL|method|relatedChangesTooltip ()
+name|String
+name|relatedChangesTooltip
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
