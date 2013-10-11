@@ -6791,6 +6791,13 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 finally|finally
@@ -6801,13 +6808,6 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
-name|indexer
-operator|.
-name|index
-argument_list|(
-name|change
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
