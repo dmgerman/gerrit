@@ -5765,6 +5765,7 @@ argument_list|(
 name|avatar
 argument_list|)
 expr_stmt|;
+comment|// "BLACK DOWN-POINTING SMALL TRIANGLE"
 name|userSummaryPanel
 operator|.
 name|add
@@ -5772,7 +5773,7 @@ argument_list|(
 operator|new
 name|InlineLabel
 argument_list|(
-literal|" â¾"
+literal|" \u25be"
 argument_list|)
 argument_list|)
 expr_stmt|;
