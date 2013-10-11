@@ -274,6 +274,11 @@ specifier|public
 class|class
 name|ErrorLogFile
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|field|LOG4J_CONFIGURATION
 specifier|private
 specifier|static
