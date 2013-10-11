@@ -100,6 +100,22 @@ name|String
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|conflictingChanges (int count)
+name|String
+name|conflictingChanges
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+DECL|method|conflictingChanges (String count)
+name|String
+name|conflictingChanges
+parameter_list|(
+name|String
+name|count
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

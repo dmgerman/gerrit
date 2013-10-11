@@ -148,6 +148,16 @@ name|String
 name|relatedChangesTooltip
 parameter_list|()
 function_decl|;
+DECL|method|conflictingChanges ()
+name|String
+name|conflictingChanges
+parameter_list|()
+function_decl|;
+DECL|method|conflictingChangesTooltip ()
+name|String
+name|conflictingChangesTooltip
+parameter_list|()
+function_decl|;
 DECL|method|noChanges ()
 name|String
 name|noChanges
