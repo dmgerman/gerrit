@@ -303,6 +303,12 @@ specifier|private
 name|boolean
 name|linkDrafts
 decl_stmt|;
+comment|/** Whether to encode URL segments */
+DECL|field|urlEncode
+specifier|private
+name|boolean
+name|urlEncode
+decl_stmt|;
 comment|/** Private default constructor for gson. */
 DECL|method|GitWebType ()
 specifier|protected
@@ -590,6 +596,32 @@ operator|.
 name|linkDrafts
 operator|=
 name|linkDrafts
+expr_stmt|;
+block|}
+DECL|method|isUrlEncode ()
+specifier|public
+name|boolean
+name|isUrlEncode
+parameter_list|()
+block|{
+return|return
+name|urlEncode
+return|;
+block|}
+DECL|method|setUrlEncode (boolean urlEncode)
+specifier|public
+name|void
+name|setUrlEncode
+parameter_list|(
+name|boolean
+name|urlEncode
+parameter_list|)
+block|{
+name|this
+operator|.
+name|urlEncode
+operator|=
+name|urlEncode
 expr_stmt|;
 block|}
 block|}
