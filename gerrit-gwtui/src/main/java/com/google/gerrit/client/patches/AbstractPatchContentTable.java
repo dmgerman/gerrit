@@ -2047,6 +2047,11 @@ name|hasMeta
 argument_list|(
 name|script
 argument_list|)
+operator|||
+name|hasComments
+argument_list|(
+name|script
+argument_list|)
 return|;
 block|}
 DECL|method|isPureMetaChange (PatchScript script)
@@ -2113,6 +2118,42 @@ block|}
 block|}
 return|return
 literal|false
+return|;
+block|}
+comment|// True if one of the two patch sets has comments
+DECL|method|hasComments (PatchScript script)
+specifier|private
+name|boolean
+name|hasComments
+parameter_list|(
+name|PatchScript
+name|script
+parameter_list|)
+block|{
+return|return
+operator|!
+name|script
+operator|.
+name|getCommentDetail
+argument_list|()
+operator|.
+name|getCommentsA
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|!
+name|script
+operator|.
+name|getCommentDetail
+argument_list|()
+operator|.
+name|getCommentsB
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 return|;
 block|}
 comment|// True if this change is a mode change or a pure rename/copy
