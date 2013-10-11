@@ -3663,32 +3663,34 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|limit (int limit)
-specifier|public
-name|Predicate
+DECL|class|LimitPredicate
+specifier|static
+class|class
+name|LimitPredicate
+extends|extends
+name|IntPredicate
 argument_list|<
 name|ChangeData
 argument_list|>
-name|limit
+block|{
+DECL|method|LimitPredicate (int limit)
+name|LimitPredicate
 parameter_list|(
 name|int
 name|limit
 parameter_list|)
 block|{
-return|return
-operator|new
-name|IntPredicate
-argument_list|<
-name|ChangeData
-argument_list|>
+name|super
 argument_list|(
 name|FIELD_LIMIT
 argument_list|,
 name|limit
 argument_list|)
-block|{
+expr_stmt|;
+block|}
 annotation|@
 name|Override
+DECL|method|match (ChangeData object)
 specifier|public
 name|boolean
 name|match
@@ -3703,6 +3705,7 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getCost ()
 specifier|public
 name|int
 name|getCost
@@ -3713,6 +3716,24 @@ literal|0
 return|;
 block|}
 block|}
+DECL|method|limit (int limit)
+specifier|public
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|limit
+parameter_list|(
+name|int
+name|limit
+parameter_list|)
+block|{
+return|return
+operator|new
+name|LimitPredicate
+argument_list|(
+name|limit
+argument_list|)
 return|;
 block|}
 annotation|@
