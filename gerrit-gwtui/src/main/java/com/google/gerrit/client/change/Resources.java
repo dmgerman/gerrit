@@ -169,6 +169,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|M
+specifier|static
+specifier|final
+name|Messages
+name|M
+init|=
+name|GWT
+operator|.
+name|create
+argument_list|(
+name|Messages
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|star_open ()
 annotation|@
 name|Source
