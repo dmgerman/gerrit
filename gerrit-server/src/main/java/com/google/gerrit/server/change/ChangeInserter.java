@@ -875,6 +875,16 @@ name|change
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getChange ()
+specifier|public
+name|Change
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|change
+return|;
+block|}
 DECL|method|setMessage (ChangeMessage changeMessage)
 specifier|public
 name|ChangeInserter
@@ -1041,7 +1051,7 @@ return|;
 block|}
 DECL|method|insert ()
 specifier|public
-name|void
+name|Change
 name|insert
 parameter_list|()
 throws|throws
@@ -1344,6 +1354,9 @@ operator|.
 name|checkedGet
 argument_list|()
 expr_stmt|;
+return|return
+name|change
+return|;
 block|}
 block|}
 end_class

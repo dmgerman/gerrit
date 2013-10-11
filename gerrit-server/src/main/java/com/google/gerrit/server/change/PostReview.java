@@ -594,6 +594,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -725,6 +737,7 @@ argument_list|>
 name|labels
 decl_stmt|;
 DECL|field|comments
+specifier|public
 name|Map
 argument_list|<
 name|String
@@ -805,31 +818,38 @@ block|,
 name|ALL
 block|;   }
 DECL|class|Comment
+specifier|public
 specifier|static
 class|class
 name|Comment
 block|{
 DECL|field|id
+specifier|public
 name|String
 name|id
 decl_stmt|;
 DECL|field|side
+specifier|public
 name|Side
 name|side
 decl_stmt|;
 DECL|field|line
+specifier|public
 name|int
 name|line
 decl_stmt|;
 DECL|field|inReplyTo
+specifier|public
 name|String
 name|inReplyTo
 decl_stmt|;
 DECL|field|message
+specifier|public
 name|String
 name|message
 decl_stmt|;
 DECL|field|range
+specifier|public
 name|CommentRange
 name|range
 decl_stmt|;
@@ -852,7 +872,10 @@ block|}
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|indexer
@@ -941,10 +964,13 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview (ReviewDb db, ChangeIndexer indexer, AccountsCollection accounts, EmailReviewComments.Factory email, ChangeHooks hooks)
+DECL|method|PostReview (Provider<ReviewDb> db, ChangeIndexer indexer, AccountsCollection accounts, EmailReviewComments.Factory email, ChangeHooks hooks)
 name|PostReview
 parameter_list|(
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|ChangeIndexer
@@ -1103,6 +1129,9 @@ expr_stmt|;
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|changes
 argument_list|()
 operator|.
@@ -1127,6 +1156,9 @@ block|{
 name|change
 operator|=
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|changes
 argument_list|()
@@ -1200,6 +1232,9 @@ condition|)
 block|{
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|changes
 argument_list|()
 operator|.
@@ -1215,6 +1250,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|commit
 argument_list|()
 expr_stmt|;
@@ -1223,6 +1261,9 @@ block|}
 finally|finally
 block|{
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|rollback
 argument_list|()
@@ -2391,6 +2432,9 @@ operator|.
 name|messageUUID
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
@@ -2574,6 +2618,9 @@ break|break;
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|patchComments
 argument_list|()
 operator|.
@@ -2584,6 +2631,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|patchComments
 argument_list|()
 operator|.
@@ -2593,6 +2643,9 @@ name|ins
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchComments
 argument_list|()
@@ -2671,6 +2724,9 @@ name|PatchLineComment
 name|c
 range|:
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchComments
 argument_list|()
@@ -3145,6 +3201,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
@@ -3155,6 +3214,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
@@ -3164,6 +3226,9 @@ name|ins
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchSetApprovals
 argument_list|()
@@ -3442,6 +3507,9 @@ name|PatchSetApproval
 name|a
 range|:
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchSetApprovals
 argument_list|()
@@ -3741,6 +3809,9 @@ operator|.
 name|messageUUID
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
@@ -3786,6 +3857,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|changeMessages
 argument_list|()
@@ -3855,6 +3929,9 @@ argument_list|,
 name|categories
 argument_list|,
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -126,7 +126,7 @@ specifier|public
 class|class
 name|LuceneQueryChangesTest
 extends|extends
-name|AbstractQueryChangesTest
+name|AbstractIndexQueryChangesTest
 block|{
 DECL|method|createInjector ()
 specifier|protected
