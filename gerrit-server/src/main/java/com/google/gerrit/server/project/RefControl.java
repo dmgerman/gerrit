@@ -1717,14 +1717,17 @@ argument_list|)
 return|;
 block|}
 comment|/** All value ranges of any allowed label permission. */
-DECL|method|getLabelRanges ()
+DECL|method|getLabelRanges (boolean isChangeOwner)
 specifier|public
 name|List
 argument_list|<
 name|PermissionRange
 argument_list|>
 name|getLabelRanges
-parameter_list|()
+parameter_list|(
+name|boolean
+name|isChangeOwner
+parameter_list|)
 block|{
 name|List
 argument_list|<
@@ -1801,6 +1804,8 @@ operator|.
 name|match
 argument_list|(
 name|rule
+argument_list|,
+name|isChangeOwner
 argument_list|)
 condition|)
 block|{
@@ -1880,6 +1885,28 @@ name|String
 name|permission
 parameter_list|)
 block|{
+return|return
+name|getRange
+argument_list|(
+name|permission
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/** The range of permitted values associated with a label permission. */
+DECL|method|getRange (String permission, boolean isChangeOwner)
+specifier|public
+name|PermissionRange
+name|getRange
+parameter_list|(
+name|String
+name|permission
+parameter_list|,
+name|boolean
+name|isChangeOwner
+parameter_list|)
+block|{
 if|if
 condition|(
 name|Permission
@@ -1898,6 +1925,8 @@ argument_list|,
 name|access
 argument_list|(
 name|permission
+argument_list|,
+name|isChangeOwner
 argument_list|)
 argument_list|)
 return|;
@@ -2649,6 +2678,31 @@ name|String
 name|permissionName
 parameter_list|)
 block|{
+return|return
+name|access
+argument_list|(
+name|permissionName
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/** Rules for the given permission, or the empty list. */
+DECL|method|access (String permissionName, boolean isChangeOwner)
+specifier|private
+name|List
+argument_list|<
+name|PermissionRule
+argument_list|>
+name|access
+parameter_list|(
+name|String
+name|permissionName
+parameter_list|,
+name|boolean
+name|isChangeOwner
+parameter_list|)
+block|{
 name|List
 argument_list|<
 name|PermissionRule
@@ -2726,6 +2780,8 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|,
+name|isChangeOwner
 argument_list|)
 condition|)
 block|{
@@ -2783,6 +2839,8 @@ operator|.
 name|match
 argument_list|(
 name|rule
+argument_list|,
+name|isChangeOwner
 argument_list|)
 condition|)
 block|{
