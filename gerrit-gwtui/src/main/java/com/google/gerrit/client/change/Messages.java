@@ -116,6 +116,22 @@ name|String
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|cherryPicks (int count)
+name|String
+name|cherryPicks
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+DECL|method|cherryPicks (String count)
+name|String
+name|cherryPicks
+parameter_list|(
+name|String
+name|count
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

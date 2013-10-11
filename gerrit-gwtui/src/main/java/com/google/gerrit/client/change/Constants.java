@@ -158,6 +158,16 @@ name|String
 name|conflictingChangesTooltip
 parameter_list|()
 function_decl|;
+DECL|method|cherryPicks ()
+name|String
+name|cherryPicks
+parameter_list|()
+function_decl|;
+DECL|method|cherryPicksTooltip ()
+name|String
+name|cherryPicksTooltip
+parameter_list|()
+function_decl|;
 DECL|method|noChanges ()
 name|String
 name|noChanges

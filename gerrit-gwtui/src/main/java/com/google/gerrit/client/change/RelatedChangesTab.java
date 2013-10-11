@@ -658,6 +658,11 @@ specifier|private
 name|String
 name|project
 decl_stmt|;
+DECL|field|showBranches
+specifier|private
+name|boolean
+name|showBranches
+decl_stmt|;
 DECL|field|table
 specifier|private
 name|MyTable
@@ -749,6 +754,21 @@ name|index
 argument_list|,
 name|title
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setShowBranches (boolean showBranches)
+name|void
+name|setShowBranches
+parameter_list|(
+name|boolean
+name|showBranches
+parameter_list|)
+block|{
+name|this
+operator|.
+name|showBranches
+operator|=
+name|showBranches
 expr_stmt|;
 block|}
 DECL|method|setChanges (String project, String revision, JsArray<ChangeAndCommit> changes)
@@ -1728,6 +1748,21 @@ argument_list|()
 operator|.
 name|subject
 argument_list|()
+operator|+
+operator|(
+name|showBranches
+condition|?
+literal|" ("
+operator|+
+name|info
+operator|.
+name|branch
+argument_list|()
+operator|+
+literal|")"
+else|:
+literal|""
+operator|)
 argument_list|)
 expr_stmt|;
 name|sb
