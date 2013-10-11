@@ -132,6 +132,22 @@ name|String
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|sameTopic (int count)
+name|String
+name|sameTopic
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+DECL|method|sameTopic (String count)
+name|String
+name|sameTopic
+parameter_list|(
+name|String
+name|count
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

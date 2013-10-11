@@ -168,6 +168,16 @@ name|String
 name|cherryPicksTooltip
 parameter_list|()
 function_decl|;
+DECL|method|sameTopic ()
+name|String
+name|sameTopic
+parameter_list|()
+function_decl|;
+DECL|method|sameTopicTooltip ()
+name|String
+name|sameTopicTooltip
+parameter_list|()
+function_decl|;
 DECL|method|noChanges ()
 name|String
 name|noChanges
