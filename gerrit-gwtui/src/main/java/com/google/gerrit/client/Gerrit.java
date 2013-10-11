@@ -3709,9 +3709,7 @@ name|INSTANCE
 operator|=
 operator|new
 name|RpcStatus
-argument_list|(
-name|topMenu
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|JsonUtil
 operator|.
