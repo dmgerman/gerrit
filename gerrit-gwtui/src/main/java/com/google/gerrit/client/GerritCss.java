@@ -983,6 +983,16 @@ name|String
 name|publishCommentsScreen
 parameter_list|()
 function_decl|;
+DECL|method|relatedChangesTabPanel ()
+name|String
+name|relatedChangesTabPanel
+parameter_list|()
+function_decl|;
+DECL|method|relatedChangesSubject ()
+name|String
+name|relatedChangesSubject
+parameter_list|()
+function_decl|;
 DECL|method|registerScreenExplain ()
 name|String
 name|registerScreenExplain

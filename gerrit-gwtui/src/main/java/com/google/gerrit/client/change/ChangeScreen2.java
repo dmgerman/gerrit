@@ -2595,11 +2595,6 @@ operator|.
 name|registerKeys
 argument_list|()
 expr_stmt|;
-name|related
-operator|.
-name|registerKeys
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override

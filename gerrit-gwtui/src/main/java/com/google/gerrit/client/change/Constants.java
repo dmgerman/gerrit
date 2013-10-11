@@ -138,9 +138,19 @@ name|String
 name|notAvailable
 parameter_list|()
 function_decl|;
+DECL|method|relatedChanges ()
+name|String
+name|relatedChanges
+parameter_list|()
+function_decl|;
 DECL|method|relatedChangesTooltip ()
 name|String
 name|relatedChangesTooltip
+parameter_list|()
+function_decl|;
+DECL|method|noChanges ()
+name|String
+name|noChanges
 parameter_list|()
 function_decl|;
 block|}
