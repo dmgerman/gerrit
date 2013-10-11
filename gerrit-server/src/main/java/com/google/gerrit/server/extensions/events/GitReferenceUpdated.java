@@ -74,20 +74,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -197,16 +183,6 @@ operator|.
 name|util
 operator|.
 name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -530,30 +506,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getUpdates ()
-specifier|public
-name|List
-argument_list|<
-name|GitReferenceUpdatedListener
-operator|.
-name|Update
-argument_list|>
-name|getUpdates
-parameter_list|()
-block|{
-name|GitReferenceUpdatedListener
-operator|.
-name|Update
-name|update
-init|=
-operator|new
-name|GitReferenceUpdatedListener
-operator|.
-name|Update
-argument_list|()
-block|{
-annotation|@
-name|Override
+DECL|method|getRefName ()
 specifier|public
 name|String
 name|getRefName
@@ -565,6 +518,7 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getOldObjectId ()
 specifier|public
 name|String
 name|getOldObjectId
@@ -576,6 +530,7 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getNewObjectId ()
 specifier|public
 name|String
 name|getNewObjectId
@@ -583,17 +538,6 @@ parameter_list|()
 block|{
 return|return
 name|newObjectId
-return|;
-block|}
-block|}
-decl_stmt|;
-return|return
-name|ImmutableList
-operator|.
-name|of
-argument_list|(
-name|update
-argument_list|)
 return|;
 block|}
 block|}
