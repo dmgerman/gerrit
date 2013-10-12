@@ -1636,8 +1636,6 @@ name|sectionNavigation
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|add
-argument_list|(
 name|header
 operator|=
 operator|new
@@ -1651,10 +1649,7 @@ name|revision
 argument_list|,
 name|path
 argument_list|)
-argument_list|)
 expr_stmt|;
-name|add
-argument_list|(
 name|diffTable
 operator|=
 operator|new
@@ -1667,7 +1662,6 @@ argument_list|,
 name|revision
 argument_list|,
 name|path
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|add
@@ -2283,6 +2277,13 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|cmA
+operator|!=
+literal|null
+condition|)
+block|{
 name|cmA
 operator|.
 name|getWrapperElement
@@ -2291,6 +2292,14 @@ operator|.
 name|removeFromParent
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|cmB
+operator|!=
+literal|null
+condition|)
+block|{
 name|cmB
 operator|.
 name|getWrapperElement
@@ -2299,6 +2308,7 @@ operator|.
 name|removeFromParent
 argument_list|()
 expr_stmt|;
+block|}
 name|Window
 operator|.
 name|enableScrolling
@@ -3601,7 +3611,7 @@ name|set
 argument_list|(
 literal|"lineWrapping"
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 operator|.
 name|set
