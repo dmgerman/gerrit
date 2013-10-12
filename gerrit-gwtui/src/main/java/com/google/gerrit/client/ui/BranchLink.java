@@ -369,7 +369,7 @@ return|;
 block|}
 block|}
 DECL|method|query (Project.NameKey project, Change.Status status, String branch, String topic)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|query
