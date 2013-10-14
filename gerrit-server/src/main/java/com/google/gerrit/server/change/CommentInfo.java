@@ -48,7 +48,7 @@ comment|// See the License for the specific language governing permissions and
 end_comment
 
 begin_comment
-comment|// limitations under the License.package com.google.gerrit.server.change;
+comment|// limitations under the License.
 end_comment
 
 begin_package
