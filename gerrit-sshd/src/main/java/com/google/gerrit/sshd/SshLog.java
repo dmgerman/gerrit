@@ -234,6 +234,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|TimeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|sshd
 operator|.
 name|SshScope
@@ -867,9 +883,9 @@ comment|// fqnOfCategoryClass
 name|log
 argument_list|,
 comment|// logger
-name|System
+name|TimeUtil
 operator|.
-name|currentTimeMillis
+name|nowMs
 argument_list|()
 argument_list|,
 comment|// when
@@ -996,9 +1012,9 @@ name|ctx
 operator|.
 name|finished
 operator|=
-name|System
+name|TimeUtil
 operator|.
-name|currentTimeMillis
+name|nowMs
 argument_list|()
 expr_stmt|;
 name|String
@@ -1469,9 +1485,9 @@ comment|// fqnOfCategoryClass
 name|log
 argument_list|,
 comment|// logger
-name|System
+name|TimeUtil
 operator|.
-name|currentTimeMillis
+name|nowMs
 argument_list|()
 argument_list|,
 comment|// when
@@ -2876,9 +2892,9 @@ name|ctx
 operator|.
 name|created
 else|:
-name|System
+name|TimeUtil
 operator|.
-name|currentTimeMillis
+name|nowMs
 argument_list|()
 return|;
 block|}

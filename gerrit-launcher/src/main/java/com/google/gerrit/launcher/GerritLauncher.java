@@ -94,6 +94,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|joda
+operator|.
+name|time
+operator|.
+name|DateTimeUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -2877,7 +2889,7 @@ specifier|final
 name|long
 name|now
 init|=
-name|System
+name|DateTimeUtils
 operator|.
 name|currentTimeMillis
 argument_list|()

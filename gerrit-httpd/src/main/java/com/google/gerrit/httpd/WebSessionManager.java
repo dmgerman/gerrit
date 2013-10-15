@@ -208,6 +208,24 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|TimeUtil
+operator|.
+name|nowMs
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|util
@@ -515,19 +533,6 @@ name|CACHE_NAME
 init|=
 literal|"web_sessions"
 decl_stmt|;
-DECL|method|now ()
-specifier|static
-name|long
-name|now
-parameter_list|()
-block|{
-return|return
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-return|;
-block|}
 DECL|field|sessionMaxAgeMillis
 specifier|private
 specifier|final
@@ -920,7 +925,7 @@ specifier|final
 name|long
 name|now
 init|=
-name|now
+name|nowMs
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1081,7 +1086,7 @@ name|val
 operator|.
 name|expiresAt
 operator|<=
-name|now
+name|nowMs
 argument_list|()
 condition|)
 block|{
@@ -1391,7 +1396,7 @@ block|{
 return|return
 name|refreshCookieAt
 operator|<=
-name|now
+name|nowMs
 argument_list|()
 return|;
 block|}

@@ -134,6 +134,22 @@ name|CurrentUser
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|TimeUtil
+import|;
+end_import
+
 begin_class
 DECL|class|AuditEvent
 specifier|public
@@ -475,9 +491,9 @@ name|this
 operator|.
 name|elapsed
 operator|=
-name|System
+name|TimeUtil
 operator|.
-name|currentTimeMillis
+name|nowMs
 argument_list|()
 operator|-
 name|timeAtStart
