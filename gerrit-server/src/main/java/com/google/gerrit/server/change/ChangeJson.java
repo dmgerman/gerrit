@@ -6737,6 +6737,7 @@ name|Boolean
 name|mergeable
 decl_stmt|;
 DECL|field|_sortkey
+specifier|public
 name|String
 name|_sortkey
 decl_stmt|;

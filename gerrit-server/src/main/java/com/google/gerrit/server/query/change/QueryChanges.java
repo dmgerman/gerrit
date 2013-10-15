@@ -723,6 +723,24 @@ name|query
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getQuery (int i)
+specifier|public
+name|String
+name|getQuery
+parameter_list|(
+name|int
+name|i
+parameter_list|)
+block|{
+return|return
+name|queries
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|apply (TopLevelResource rsrc)
