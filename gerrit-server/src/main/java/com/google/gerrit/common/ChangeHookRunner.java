@@ -4580,8 +4580,6 @@ specifier|final
 name|ChangeEvent
 name|event
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|fireEvent
 argument_list|(

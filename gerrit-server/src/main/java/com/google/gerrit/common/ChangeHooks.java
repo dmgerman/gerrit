@@ -599,7 +599,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    * @throws OrmException    */
+comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    */
 DECL|method|postEvent (Branch.NameKey branchName, ChangeEvent event)
 specifier|public
 name|void
@@ -613,8 +613,6 @@ parameter_list|,
 name|ChangeEvent
 name|event
 parameter_list|)
-throws|throws
-name|OrmException
 function_decl|;
 block|}
 end_interface
