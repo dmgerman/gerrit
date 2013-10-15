@@ -85,6 +85,48 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|MINUTES
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+operator|.
+name|SECONDS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -95,6 +137,20 @@ operator|.
 name|annotations
 operator|.
 name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|primitives
+operator|.
+name|Ints
 import|;
 end_import
 
@@ -942,18 +998,25 @@ specifier|public
 class|class
 name|ChangeUtil
 block|{
+comment|/**    * Epoch for sort key calculations, Tue Sep 30 2008 17:00:00.    *<p>    * We overrun approximately 4,083 years later, so ~6092.    */
 annotation|@
 name|VisibleForTesting
-DECL|field|SORT_KEY_EPOCH
+DECL|field|SORT_KEY_EPOCH_MINS
 specifier|public
 specifier|static
 specifier|final
 name|long
-name|SORT_KEY_EPOCH
+name|SORT_KEY_EPOCH_MINS
 init|=
+name|MINUTES
+operator|.
+name|convert
+argument_list|(
 literal|1222819200L
+argument_list|,
+name|SECONDS
+argument_list|)
 decl_stmt|;
-comment|// Oct 1 2008 00:00
 DECL|field|uuidLock
 specifier|private
 specifier|static
@@ -3385,35 +3448,38 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sortKey (long lastUpdated, int id)
+DECL|method|sortKey (long lastUpdatedMs, int id)
 specifier|public
 specifier|static
 name|String
 name|sortKey
 parameter_list|(
 name|long
-name|lastUpdated
+name|lastUpdatedMs
 parameter_list|,
 name|int
 name|id
 parameter_list|)
 block|{
-comment|// The encoding uses minutes since Wed Oct 1 00:00:00 2008 UTC.
-comment|// We overrun approximately 4,085 years later, so ~6093.
-comment|//
-specifier|final
 name|long
-name|lastUpdatedOn
+name|lastUpdatedMins
 init|=
-operator|(
-name|lastUpdated
-operator|/
-literal|1000L
-operator|)
-operator|-
-name|SORT_KEY_EPOCH
+name|MINUTES
+operator|.
+name|convert
+argument_list|(
+name|lastUpdatedMs
+argument_list|,
+name|MILLISECONDS
+argument_list|)
 decl_stmt|;
-specifier|final
+name|long
+name|minsSinceEpoch
+init|=
+name|lastUpdatedMins
+operator|-
+name|SORT_KEY_EPOCH_MINS
+decl_stmt|;
 name|StringBuilder
 name|r
 init|=
@@ -3436,13 +3502,11 @@ name|r
 argument_list|,
 literal|0
 argument_list|,
-call|(
-name|int
-call|)
+name|Ints
+operator|.
+name|checkedCast
 argument_list|(
-name|lastUpdatedOn
-operator|/
-literal|60
+name|minsSinceEpoch
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3499,19 +3563,18 @@ literal|16
 argument_list|)
 return|;
 block|}
-DECL|method|computeSortKey (final Change c)
+DECL|method|computeSortKey (Change c)
 specifier|public
 specifier|static
 name|void
 name|computeSortKey
 parameter_list|(
-specifier|final
 name|Change
 name|c
 parameter_list|)
 block|{
 name|long
-name|lastUpdated
+name|lastUpdatedMs
 init|=
 name|c
 operator|.
@@ -3538,7 +3601,7 @@ name|setSortKey
 argument_list|(
 name|sortKey
 argument_list|(
-name|lastUpdated
+name|lastUpdatedMs
 argument_list|,
 name|id
 argument_list|)
