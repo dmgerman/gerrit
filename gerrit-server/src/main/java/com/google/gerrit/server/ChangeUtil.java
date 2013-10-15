@@ -1295,14 +1295,10 @@ name|c
 operator|.
 name|setLastUpdatedOn
 argument_list|(
-operator|new
-name|Timestamp
-argument_list|(
 name|TimeUtil
 operator|.
-name|nowMs
+name|nowTs
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|computeSortKey

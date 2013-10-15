@@ -1318,14 +1318,10 @@ specifier|final
 name|Timestamp
 name|timestamp
 init|=
-operator|new
-name|Timestamp
-argument_list|(
 name|TimeUtil
 operator|.
-name|nowMs
+name|nowTs
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|Change
 name|change

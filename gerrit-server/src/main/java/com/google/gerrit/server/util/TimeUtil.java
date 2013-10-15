@@ -78,6 +78,16 @@ name|DateTimeUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Timestamp
+import|;
+end_import
+
 begin_comment
 comment|/** Static utility methods for dealing with dates and times. */
 end_comment
@@ -100,6 +110,22 @@ name|DateTimeUtils
 operator|.
 name|currentTimeMillis
 argument_list|()
+return|;
+block|}
+DECL|method|nowTs ()
+specifier|public
+specifier|static
+name|Timestamp
+name|nowTs
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Timestamp
+argument_list|(
+name|nowMs
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|TimeUtil ()
