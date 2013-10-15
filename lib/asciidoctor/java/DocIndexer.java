@@ -699,6 +699,10 @@ decl_stmt|;
 if|if
 condition|(
 name|title
+operator|!=
+literal|null
+operator|&&
+name|title
 operator|.
 name|startsWith
 argument_list|(
