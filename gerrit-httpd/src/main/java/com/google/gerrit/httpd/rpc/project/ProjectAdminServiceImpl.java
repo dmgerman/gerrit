@@ -345,7 +345,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|changeProjectAccess (Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, AsyncCallback<ProjectAccess> cb)
+DECL|method|changeProjectAccess (Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<ProjectAccess> cb)
 specifier|public
 name|void
 name|changeProjectAccess
@@ -367,6 +367,11 @@ name|AccessSection
 argument_list|>
 name|sections
 parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|parentProjectName
+parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ProjectAccess
@@ -387,6 +392,8 @@ argument_list|)
 argument_list|,
 name|sections
 argument_list|,
+name|parentProjectName
+argument_list|,
 name|msg
 argument_list|)
 operator|.
@@ -398,7 +405,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|reviewProjectAccess (Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, AsyncCallback<Change.Id> cb)
+DECL|method|reviewProjectAccess (Project.NameKey projectName, String baseRevision, String msg, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<Change.Id> cb)
 specifier|public
 name|void
 name|reviewProjectAccess
@@ -419,6 +426,11 @@ argument_list|<
 name|AccessSection
 argument_list|>
 name|sections
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|parentProjectName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -441,6 +453,8 @@ name|baseRevision
 argument_list|)
 argument_list|,
 name|sections
+argument_list|,
+name|parentProjectName
 argument_list|,
 name|msg
 argument_list|)

@@ -209,6 +209,14 @@ name|String
 name|scriptPath
 parameter_list|)
 function_decl|;
+DECL|method|parentUpdateFailed (String message)
+name|String
+name|parentUpdateFailed
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

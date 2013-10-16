@@ -163,6 +163,11 @@ specifier|protected
 name|boolean
 name|canUpload
 decl_stmt|;
+DECL|field|canChangeParent
+specifier|protected
+name|boolean
+name|canChangeParent
+decl_stmt|;
 DECL|field|labelTypes
 specifier|protected
 name|LabelTypes
@@ -451,6 +456,32 @@ operator|.
 name|canUpload
 operator|=
 name|canUpload
+expr_stmt|;
+block|}
+DECL|method|canChangeParent ()
+specifier|public
+name|boolean
+name|canChangeParent
+parameter_list|()
+block|{
+return|return
+name|canChangeParent
+return|;
+block|}
+DECL|method|setCanChangeParent (boolean canChangeParent)
+specifier|public
+name|void
+name|setCanChangeParent
+parameter_list|(
+name|boolean
+name|canChangeParent
+parameter_list|)
+block|{
+name|this
+operator|.
+name|canChangeParent
+operator|=
+name|canChangeParent
 expr_stmt|;
 block|}
 DECL|method|getLabelTypes ()

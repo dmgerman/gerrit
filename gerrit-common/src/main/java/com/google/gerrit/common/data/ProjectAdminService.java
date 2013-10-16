@@ -235,7 +235,7 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|changeProjectAccess (Project.NameKey projectName, String baseRevision, String message, List<AccessSection> sections, AsyncCallback<ProjectAccess> callback)
+DECL|method|changeProjectAccess (Project.NameKey projectName, String baseRevision, String message, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<ProjectAccess> callback)
 name|void
 name|changeProjectAccess
 parameter_list|(
@@ -256,6 +256,11 @@ name|AccessSection
 argument_list|>
 name|sections
 parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|parentProjectName
+parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ProjectAccess
@@ -265,7 +270,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|SignInRequired
-DECL|method|reviewProjectAccess (Project.NameKey projectName, String baseRevision, String message, List<AccessSection> sections, AsyncCallback<Change.Id> callback)
+DECL|method|reviewProjectAccess (Project.NameKey projectName, String baseRevision, String message, List<AccessSection> sections, Project.NameKey parentProjectName, AsyncCallback<Change.Id> callback)
 name|void
 name|reviewProjectAccess
 parameter_list|(
@@ -285,6 +290,11 @@ argument_list|<
 name|AccessSection
 argument_list|>
 name|sections
+parameter_list|,
+name|Project
+operator|.
+name|NameKey
+name|parentProjectName
 parameter_list|,
 name|AsyncCallback
 argument_list|<
