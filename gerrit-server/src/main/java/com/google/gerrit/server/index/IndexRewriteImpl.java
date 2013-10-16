@@ -1099,7 +1099,6 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
-comment|// Add 1 to specified limit to match behavior of QueryProcessor.
 name|int
 name|limit
 init|=
@@ -1116,8 +1115,6 @@ name|getLimit
 argument_list|(
 name|in
 argument_list|)
-operator|+
-literal|1
 else|:
 name|MAX_LIMIT
 decl_stmt|;
