@@ -463,6 +463,36 @@ name|String
 name|diffTextNoLF
 parameter_list|()
 function_decl|;
+DECL|method|downloadBox ()
+name|String
+name|downloadBox
+parameter_list|()
+function_decl|;
+DECL|method|downloadBoxTable ()
+name|String
+name|downloadBoxTable
+parameter_list|()
+function_decl|;
+DECL|method|downloadBoxTableCommandColumn ()
+name|String
+name|downloadBoxTableCommandColumn
+parameter_list|()
+function_decl|;
+DECL|method|downloadBoxSpacer ()
+name|String
+name|downloadBoxSpacer
+parameter_list|()
+function_decl|;
+DECL|method|downloadBoxScheme ()
+name|String
+name|downloadBoxScheme
+parameter_list|()
+function_decl|;
+DECL|method|downloadBoxCopyLabel ()
+name|String
+name|downloadBoxCopyLabel
+parameter_list|()
+function_decl|;
 DECL|method|downloadLink ()
 name|String
 name|downloadLink

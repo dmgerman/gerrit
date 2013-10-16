@@ -171,6 +171,13 @@ name|DRAFT_COMMENTS
 argument_list|(
 literal|12
 argument_list|)
+block|,
+comment|/** Include download commands for the caller. */
+DECL|enumConstant|DOWNLOAD_COMMANDS
+name|DOWNLOAD_COMMANDS
+argument_list|(
+literal|13
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

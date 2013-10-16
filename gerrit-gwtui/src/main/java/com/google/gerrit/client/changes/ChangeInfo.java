@@ -1503,6 +1503,30 @@ name|ref
 parameter_list|()
 comment|/*-{ return this.ref }-*/
 function_decl|;
+DECL|method|commands ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|NativeString
+argument_list|>
+name|commands
+parameter_list|()
+comment|/*-{ return this.commands }-*/
+function_decl|;
+DECL|method|command (String n)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|command
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.commands[n]; }-*/
+function_decl|;
 DECL|method|FetchInfo ()
 specifier|protected
 name|FetchInfo
