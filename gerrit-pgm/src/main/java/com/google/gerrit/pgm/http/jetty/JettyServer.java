@@ -3870,7 +3870,7 @@ if|if
 condition|(
 name|properties
 operator|.
-name|contains
+name|containsKey
 argument_list|(
 literal|"PATH"
 argument_list|)
