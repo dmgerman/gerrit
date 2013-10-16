@@ -314,6 +314,10 @@ name|EMAIL
 argument_list|,
 name|FillOptions
 operator|.
+name|USERNAME
+argument_list|,
+name|FillOptions
+operator|.
 name|AVATARS
 argument_list|)
 argument_list|)
