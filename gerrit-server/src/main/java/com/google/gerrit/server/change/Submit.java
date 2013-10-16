@@ -1595,6 +1595,11 @@ operator|(
 name|short
 operator|)
 literal|1
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

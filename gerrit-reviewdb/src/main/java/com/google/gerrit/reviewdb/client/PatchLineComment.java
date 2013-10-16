@@ -572,21 +572,18 @@ block|{   }
 end_constructor
 
 begin_constructor
-DECL|method|PatchLineComment (final PatchLineComment.Key id, final int line, final Account.Id a, String parentUuid)
+DECL|method|PatchLineComment (PatchLineComment.Key id, int line, Account.Id a, String parentUuid, Timestamp when)
 specifier|public
 name|PatchLineComment
 parameter_list|(
-specifier|final
 name|PatchLineComment
 operator|.
 name|Key
 name|id
 parameter_list|,
-specifier|final
 name|int
 name|line
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -594,6 +591,9 @@ name|a
 parameter_list|,
 name|String
 name|parentUuid
+parameter_list|,
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|key
@@ -622,7 +622,9 @@ name|DRAFT
 argument_list|)
 expr_stmt|;
 name|updated
-argument_list|()
+argument_list|(
+name|when
+argument_list|)
 expr_stmt|;
 block|}
 end_constructor
@@ -802,22 +804,18 @@ block|}
 end_function
 
 begin_function
-DECL|method|updated ()
+DECL|method|updated (Timestamp when)
 specifier|public
 name|void
 name|updated
-parameter_list|()
+parameter_list|(
+name|Timestamp
+name|when
+parameter_list|)
 block|{
 name|writtenOn
 operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
+name|when
 expr_stmt|;
 block|}
 end_function

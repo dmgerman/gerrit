@@ -1056,33 +1056,32 @@ block|{   }
 end_constructor
 
 begin_constructor
-DECL|method|Change (final Change.Key newKey, final Change.Id newId, final Account.Id ownedBy, final Branch.NameKey forBranch)
+DECL|method|Change (Change.Key newKey, Change.Id newId, Account.Id ownedBy, Branch.NameKey forBranch, Timestamp ts)
 specifier|public
 name|Change
 parameter_list|(
-specifier|final
 name|Change
 operator|.
 name|Key
 name|newKey
 parameter_list|,
-specifier|final
 name|Change
 operator|.
 name|Id
 name|newId
 parameter_list|,
-specifier|final
 name|Account
 operator|.
 name|Id
 name|ownedBy
 parameter_list|,
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|forBranch
+parameter_list|,
+name|Timestamp
+name|ts
 parameter_list|)
 block|{
 name|changeKey
@@ -1095,14 +1094,7 @@ name|newId
 expr_stmt|;
 name|createdOn
 operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
+name|ts
 expr_stmt|;
 name|lastUpdatedOn
 operator|=
@@ -1262,27 +1254,6 @@ block|{
 return|return
 name|rowVersion
 return|;
-block|}
-end_function
-
-begin_function
-DECL|method|resetLastUpdatedOn ()
-specifier|public
-name|void
-name|resetLastUpdatedOn
-parameter_list|()
-block|{
-name|lastUpdatedOn
-operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 

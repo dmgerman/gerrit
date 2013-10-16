@@ -381,32 +381,6 @@ specifier|protected
 name|AccountGroupMemberAudit
 parameter_list|()
 block|{   }
-DECL|method|AccountGroupMemberAudit (final AccountGroupMember m, final Account.Id adder)
-specifier|public
-name|AccountGroupMemberAudit
-parameter_list|(
-specifier|final
-name|AccountGroupMember
-name|m
-parameter_list|,
-specifier|final
-name|Account
-operator|.
-name|Id
-name|adder
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|m
-argument_list|,
-name|adder
-argument_list|,
-name|now
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|AccountGroupMemberAudit (final AccountGroupMember m, final Account.Id adder, Timestamp addedOn)
 specifier|public
 name|AccountGroupMemberAudit
@@ -490,7 +464,7 @@ operator|==
 literal|null
 return|;
 block|}
-DECL|method|removed (final Account.Id deleter)
+DECL|method|removed (final Account.Id deleter, final Timestamp when)
 specifier|public
 name|void
 name|removed
@@ -500,6 +474,10 @@ name|Account
 operator|.
 name|Id
 name|deleter
+parameter_list|,
+specifier|final
+name|Timestamp
+name|when
 parameter_list|)
 block|{
 name|removedBy
@@ -508,8 +486,7 @@ name|deleter
 expr_stmt|;
 name|removedOn
 operator|=
-name|now
-argument_list|()
+name|when
 expr_stmt|;
 block|}
 DECL|method|removedLegacy ()
@@ -528,24 +505,6 @@ name|key
 operator|.
 name|addedOn
 expr_stmt|;
-block|}
-DECL|method|now ()
-specifier|private
-specifier|static
-name|Timestamp
-name|now
-parameter_list|()
-block|{
-return|return
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
-return|;
 block|}
 block|}
 end_class

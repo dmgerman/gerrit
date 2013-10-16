@@ -208,6 +208,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|TimeUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -1659,6 +1675,11 @@ operator|new
 name|Account
 argument_list|(
 name|userId
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|account

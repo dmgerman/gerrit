@@ -1324,6 +1324,11 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|,
 name|patchSet
 operator|.
 name|getId

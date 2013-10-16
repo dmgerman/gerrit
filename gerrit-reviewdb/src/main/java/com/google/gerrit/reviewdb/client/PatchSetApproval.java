@@ -586,19 +586,20 @@ specifier|protected
 name|PatchSetApproval
 parameter_list|()
 block|{   }
-DECL|method|PatchSetApproval (final PatchSetApproval.Key k, final short v)
+DECL|method|PatchSetApproval (PatchSetApproval.Key k, short v, Timestamp ts)
 specifier|public
 name|PatchSetApproval
 parameter_list|(
-specifier|final
 name|PatchSetApproval
 operator|.
 name|Key
 name|k
 parameter_list|,
-specifier|final
 name|short
 name|v
+parameter_list|,
+name|Timestamp
+name|ts
 parameter_list|)
 block|{
 name|key
@@ -615,7 +616,9 @@ name|v
 argument_list|)
 expr_stmt|;
 name|setGranted
-argument_list|()
+argument_list|(
+name|ts
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|PatchSetApproval (final PatchSet.Id psId, final PatchSetApproval src)
@@ -757,24 +760,6 @@ block|{
 return|return
 name|granted
 return|;
-block|}
-DECL|method|setGranted ()
-specifier|public
-name|void
-name|setGranted
-parameter_list|()
-block|{
-name|granted
-operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|setGranted (Timestamp ts)
 specifier|public

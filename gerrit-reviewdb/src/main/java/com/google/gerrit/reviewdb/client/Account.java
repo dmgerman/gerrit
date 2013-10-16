@@ -437,32 +437,31 @@ specifier|protected
 name|Account
 parameter_list|()
 block|{   }
-comment|/**    * Create a new account.    *    * @param newId unique id, see    *        {@link com.google.gerrit.reviewdb.server.ReviewDb#nextAccountId()}.    */
-DECL|method|Account (final Account.Id newId)
+comment|/**    * Create a new account.    *    * @param newId unique id, see    *        {@link com.google.gerrit.reviewdb.server.ReviewDb#nextAccountId()}.    * @param registeredOn when the account was registered.    */
+DECL|method|Account (Account.Id newId, Timestamp registeredOn)
 specifier|public
 name|Account
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|newId
+parameter_list|,
+name|Timestamp
+name|registeredOn
 parameter_list|)
 block|{
+name|this
+operator|.
 name|accountId
 operator|=
 name|newId
 expr_stmt|;
+name|this
+operator|.
 name|registeredOn
 operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
+name|registeredOn
 expr_stmt|;
 name|generalPreferences
 operator|=
@@ -628,22 +627,18 @@ return|return
 name|contactFiledOn
 return|;
 block|}
-DECL|method|setContactFiled ()
+DECL|method|setContactFiled (Timestamp ts)
 specifier|public
 name|void
 name|setContactFiled
-parameter_list|()
+parameter_list|(
+name|Timestamp
+name|ts
+parameter_list|)
 block|{
 name|contactFiledOn
 operator|=
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
+name|ts
 expr_stmt|;
 block|}
 DECL|method|isActive ()

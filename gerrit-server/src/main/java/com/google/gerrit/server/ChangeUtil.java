@@ -2122,6 +2122,11 @@ name|changeToRevert
 operator|.
 name|getDest
 argument_list|()
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|change
@@ -2364,6 +2369,11 @@ argument_list|,
 name|user
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
 argument_list|()
 argument_list|,
 name|patchSetId

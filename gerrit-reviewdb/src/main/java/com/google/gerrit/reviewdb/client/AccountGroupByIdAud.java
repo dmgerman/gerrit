@@ -441,32 +441,6 @@ operator|=
 name|adder
 expr_stmt|;
 block|}
-DECL|method|AccountGroupByIdAud (final AccountGroupById m, final Account.Id adder)
-specifier|public
-name|AccountGroupByIdAud
-parameter_list|(
-specifier|final
-name|AccountGroupById
-name|m
-parameter_list|,
-specifier|final
-name|Account
-operator|.
-name|Id
-name|adder
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|m
-argument_list|,
-name|adder
-argument_list|,
-name|now
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|getKey ()
 specifier|public
 name|AccountGroupByIdAud
@@ -490,28 +464,6 @@ name|removedOn
 operator|==
 literal|null
 return|;
-block|}
-DECL|method|removed (final Account.Id deleter)
-specifier|public
-name|void
-name|removed
-parameter_list|(
-specifier|final
-name|Account
-operator|.
-name|Id
-name|deleter
-parameter_list|)
-block|{
-name|removedBy
-operator|=
-name|deleter
-expr_stmt|;
-name|removedOn
-operator|=
-name|now
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|removed (final Account.Id deleter, final Timestamp when)
 specifier|public
@@ -537,24 +489,6 @@ name|removedOn
 operator|=
 name|when
 expr_stmt|;
-block|}
-DECL|method|now ()
-specifier|private
-specifier|static
-name|Timestamp
-name|now
-parameter_list|()
-block|{
-return|return
-operator|new
-name|Timestamp
-argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-argument_list|)
-return|;
 block|}
 block|}
 end_class

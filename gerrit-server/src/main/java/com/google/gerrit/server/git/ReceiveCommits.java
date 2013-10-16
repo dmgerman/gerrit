@@ -9138,6 +9138,11 @@ argument_list|,
 name|magicBranch
 operator|.
 name|dest
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|change
@@ -14304,6 +14309,11 @@ argument_list|,
 name|currentUser
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
 argument_list|()
 argument_list|,
 name|result

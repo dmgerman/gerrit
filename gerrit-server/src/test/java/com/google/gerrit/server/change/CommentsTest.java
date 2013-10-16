@@ -1924,6 +1924,11 @@ argument_list|,
 name|authorId
 argument_list|,
 name|inReplyToUuid
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|plc

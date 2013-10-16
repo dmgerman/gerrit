@@ -4923,7 +4923,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|final
 name|ChangeMessage
 name|m
 init|=
@@ -4944,6 +4943,11 @@ name|uuid
 argument_list|)
 argument_list|,
 literal|null
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
 argument_list|,
 name|c
 operator|.
