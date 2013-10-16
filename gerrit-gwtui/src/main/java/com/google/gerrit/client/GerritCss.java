@@ -993,16 +993,6 @@ name|String
 name|rpcStatus
 parameter_list|()
 function_decl|;
-DECL|method|rpcStatusLoading ()
-name|String
-name|rpcStatusLoading
-parameter_list|()
-function_decl|;
-DECL|method|rpcStatusPanel ()
-name|String
-name|rpcStatusPanel
-parameter_list|()
-function_decl|;
 DECL|method|screen ()
 name|String
 name|screen
