@@ -885,6 +885,7 @@ block|}
 annotation|@
 name|Nullable
 DECL|method|getPluginName ()
+specifier|protected
 name|String
 name|getPluginName
 parameter_list|()
@@ -894,6 +895,7 @@ name|pluginName
 return|;
 block|}
 DECL|method|getName ()
+specifier|protected
 name|String
 name|getName
 parameter_list|()
@@ -919,6 +921,7 @@ name|prefix
 expr_stmt|;
 block|}
 DECL|method|getArguments ()
+specifier|public
 name|String
 index|[]
 name|getArguments
