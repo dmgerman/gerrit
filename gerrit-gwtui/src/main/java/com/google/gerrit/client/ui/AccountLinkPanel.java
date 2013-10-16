@@ -466,7 +466,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|owner (AccountInfo ai)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|owner
