@@ -82,16 +82,6 @@ name|ExtensionPoint
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/** Notified when one or more references are modified. */
 end_comment
@@ -104,11 +94,16 @@ specifier|public
 interface|interface
 name|GitReferenceUpdatedListener
 block|{
-DECL|interface|Update
+DECL|interface|Event
 specifier|public
 interface|interface
-name|Update
+name|Event
 block|{
+DECL|method|getProjectName ()
+name|String
+name|getProjectName
+parameter_list|()
+function_decl|;
 DECL|method|getRefName ()
 name|String
 name|getRefName
@@ -122,25 +117,6 @@ function_decl|;
 DECL|method|getNewObjectId ()
 name|String
 name|getNewObjectId
-parameter_list|()
-function_decl|;
-block|}
-DECL|interface|Event
-specifier|public
-interface|interface
-name|Event
-block|{
-DECL|method|getProjectName ()
-name|String
-name|getProjectName
-parameter_list|()
-function_decl|;
-DECL|method|getUpdates ()
-name|List
-argument_list|<
-name|Update
-argument_list|>
-name|getUpdates
 parameter_list|()
 function_decl|;
 block|}
