@@ -397,7 +397,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"warn: Cannot find gerrit.war"
+literal|"warn: Cannot find distribution archive (e.g. gerrit.war)"
 argument_list|)
 expr_stmt|;
 name|myWar
@@ -520,7 +520,12 @@ name|yesno
 argument_list|(
 literal|true
 argument_list|,
-literal|"Copy gerrit.war to %s"
+literal|"Copy %s to %s"
+argument_list|,
+name|myWar
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|siteWar
 operator|.
@@ -577,7 +582,12 @@ name|err
 operator|.
 name|format
 argument_list|(
-literal|"Copying gerrit.war to %s"
+literal|"Copying %s to %s"
+argument_list|,
+name|myWar
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|siteWar
 operator|.
