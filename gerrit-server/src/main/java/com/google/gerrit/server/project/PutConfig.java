@@ -974,13 +974,9 @@ name|get
 argument_list|()
 argument_list|)
 argument_list|,
-name|state
-argument_list|,
 name|config
 argument_list|,
 name|views
-argument_list|,
-name|currentUser
 argument_list|)
 return|;
 block|}
