@@ -223,6 +223,14 @@ name|SubmitRecordAttribute
 argument_list|>
 name|submitRecords
 decl_stmt|;
+DECL|field|allReviewers
+specifier|public
+name|List
+argument_list|<
+name|AccountAttribute
+argument_list|>
+name|allReviewers
+decl_stmt|;
 block|}
 end_class
 

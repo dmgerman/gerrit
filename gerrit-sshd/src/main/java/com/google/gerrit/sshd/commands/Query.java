@@ -425,6 +425,33 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--all-reviewers"
+argument_list|,
+name|usage
+operator|=
+literal|"Include all reviewers"
+argument_list|)
+DECL|method|setAllReviewers (boolean on)
+name|void
+name|setAllReviewers
+parameter_list|(
+name|boolean
+name|on
+parameter_list|)
+block|{
+name|processor
+operator|.
+name|setIncludeAllReviewers
+argument_list|(
+name|on
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--submit-records"
 argument_list|,
 name|usage
