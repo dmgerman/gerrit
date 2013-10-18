@@ -3032,7 +3032,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|nameOf (File jar)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|nameOf
@@ -4246,7 +4246,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getGerritPluginName (File srcFile)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|getGerritPluginName
