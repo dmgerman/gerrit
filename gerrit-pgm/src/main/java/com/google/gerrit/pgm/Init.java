@@ -553,7 +553,7 @@ annotation|@
 name|Override
 DECL|method|beforeInit (SiteInit init)
 specifier|protected
-name|void
+name|boolean
 name|beforeInit
 parameter_list|(
 name|SiteInit
@@ -582,7 +582,7 @@ name|plugins
 init|=
 name|InitPlugins
 operator|.
-name|listPlugins
+name|listPluginsAndRemoveTempFiles
 argument_list|(
 name|init
 operator|.
@@ -662,8 +662,14 @@ literal|"No plugins found.\n"
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 block|}
+return|return
+literal|false
+return|;
 block|}
 annotation|@
 name|Override
