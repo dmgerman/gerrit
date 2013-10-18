@@ -1215,7 +1215,7 @@ argument_list|()
 operator|.
 name|firstNById
 argument_list|(
-literal|5
+literal|100
 argument_list|)
 decl_stmt|;
 for|for
