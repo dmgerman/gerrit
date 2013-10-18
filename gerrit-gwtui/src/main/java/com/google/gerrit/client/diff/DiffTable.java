@@ -749,7 +749,7 @@ name|getOffsetHeight
 argument_list|()
 return|;
 block|}
-DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list)
+DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo info)
 name|void
 name|setUpPatchSetNav
 parameter_list|(
@@ -758,6 +758,9 @@ argument_list|<
 name|RevisionInfo
 argument_list|>
 name|list
+parameter_list|,
+name|DiffInfo
+name|info
 parameter_list|)
 block|{
 name|patchSetSelectBoxA
@@ -765,6 +768,11 @@ operator|.
 name|setUpPatchSetNav
 argument_list|(
 name|list
+argument_list|,
+name|info
+operator|.
+name|meta_a
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|patchSetSelectBoxB
@@ -772,6 +780,11 @@ operator|.
 name|setUpPatchSetNav
 argument_list|(
 name|list
+argument_list|,
+name|info
+operator|.
+name|meta_b
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
