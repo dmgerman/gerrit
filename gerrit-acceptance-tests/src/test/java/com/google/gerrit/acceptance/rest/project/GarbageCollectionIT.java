@@ -204,6 +204,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|UseLocalDisk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -527,6 +541,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|UseLocalDisk
 DECL|method|testGcOneProject ()
 specifier|public
 name|void

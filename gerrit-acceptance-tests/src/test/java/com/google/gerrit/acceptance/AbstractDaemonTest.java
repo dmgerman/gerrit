@@ -178,12 +178,28 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
+name|boolean
+name|mem
+init|=
+name|description
+operator|.
+name|getAnnotation
+argument_list|(
+name|UseLocalDisk
+operator|.
+name|class
+argument_list|)
+operator|==
+literal|null
+decl_stmt|;
 name|beforeTest
 argument_list|(
 name|config
 argument_list|(
 name|description
 argument_list|)
+argument_list|,
+name|mem
 argument_list|)
 expr_stmt|;
 name|base
@@ -293,13 +309,16 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|beforeTest (Config cfg)
+DECL|method|beforeTest (Config cfg, boolean memory)
 specifier|private
 name|void
 name|beforeTest
 parameter_list|(
 name|Config
 name|cfg
+parameter_list|,
+name|boolean
+name|memory
 parameter_list|)
 throws|throws
 name|Exception
@@ -311,6 +330,8 @@ operator|.
 name|start
 argument_list|(
 name|cfg
+argument_list|,
+name|memory
 argument_list|)
 expr_stmt|;
 name|server
