@@ -654,11 +654,18 @@ init|=
 name|createSiteInit
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
 name|beforeInit
 argument_list|(
 name|init
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+return|return
+literal|0
+return|;
+block|}
 name|init
 operator|.
 name|flags
@@ -805,7 +812,7 @@ return|;
 block|}
 DECL|method|beforeInit (SiteInit init)
 specifier|protected
-name|void
+name|boolean
 name|beforeInit
 parameter_list|(
 name|SiteInit
@@ -813,7 +820,11 @@ name|init
 parameter_list|)
 throws|throws
 name|Exception
-block|{   }
+block|{
+return|return
+literal|false
+return|;
+block|}
 DECL|method|afterInit (SiteRun run)
 specifier|protected
 name|void
