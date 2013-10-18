@@ -582,7 +582,7 @@ name|plugins
 init|=
 name|InitPlugins
 operator|.
-name|listPlugins
+name|listPluginsAndRemoveTempFiles
 argument_list|(
 name|init
 operator|.
