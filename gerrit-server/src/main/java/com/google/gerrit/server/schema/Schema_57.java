@@ -288,7 +288,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -515,7 +515,7 @@ decl_stmt|;
 DECL|field|mgr
 specifier|private
 specifier|final
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|mgr
 decl_stmt|;
 DECL|field|serverUser
@@ -526,7 +526,7 @@ name|serverUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_57 (Provider<Schema_56> prior, SitePaths site, LocalDiskRepositoryManager mgr, @GerritPersonIdent PersonIdent serverUser)
+DECL|method|Schema_57 (Provider<Schema_56> prior, SitePaths site, GitRepositoryManager mgr, @GerritPersonIdent PersonIdent serverUser)
 name|Schema_57
 parameter_list|(
 name|Provider
@@ -538,7 +538,7 @@ parameter_list|,
 name|SitePaths
 name|site
 parameter_list|,
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|mgr
 parameter_list|,
 annotation|@
