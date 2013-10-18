@@ -198,6 +198,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|UseLocalDisk
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
 name|data
@@ -532,6 +546,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|UseLocalDisk
 DECL|method|testGc ()
 specifier|public
 name|void
@@ -600,6 +616,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|UseLocalDisk
 DECL|method|testGcAll ()
 specifier|public
 name|void
@@ -701,6 +719,8 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|UseLocalDisk
 DECL|method|testGcAlreadyScheduled ()
 specifier|public
 name|void

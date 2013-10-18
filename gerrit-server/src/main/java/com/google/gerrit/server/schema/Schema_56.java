@@ -120,22 +120,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|LocalDiskRepositoryManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -151,20 +135,6 @@ operator|.
 name|inject
 operator|.
 name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|errors
-operator|.
-name|RepositoryNotFoundException
 import|;
 end_import
 
@@ -289,7 +259,7 @@ block|{
 DECL|field|mgr
 specifier|private
 specifier|final
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|mgr
 decl_stmt|;
 DECL|field|keysOne
@@ -312,7 +282,7 @@ name|keysTwo
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_56 (Provider<Schema_55> prior, LocalDiskRepositoryManager mgr)
+DECL|method|Schema_56 (Provider<Schema_55> prior, GitRepositoryManager mgr)
 name|Schema_56
 parameter_list|(
 name|Provider
@@ -321,7 +291,7 @@ name|Schema_55
 argument_list|>
 name|prior
 parameter_list|,
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|mgr
 parameter_list|)
 block|{
@@ -426,7 +396,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|RepositoryNotFoundException
+name|IOException
 name|e
 parameter_list|)
 block|{

@@ -126,6 +126,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|LocalDiskRepositoryManager
 import|;
 end_import
@@ -243,12 +259,12 @@ block|{
 DECL|field|mgr
 specifier|private
 specifier|final
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|mgr
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Schema_55 (Provider<Schema_54> prior, LocalDiskRepositoryManager mgr)
+DECL|method|Schema_55 (Provider<Schema_54> prior, GitRepositoryManager mgr)
 name|Schema_55
 parameter_list|(
 name|Provider
@@ -257,7 +273,7 @@ name|Schema_54
 argument_list|>
 name|prior
 parameter_list|,
-name|LocalDiskRepositoryManager
+name|GitRepositoryManager
 name|mgr
 parameter_list|)
 block|{
@@ -349,7 +365,12 @@ expr_stmt|;
 name|File
 name|base
 init|=
+operator|(
+operator|(
+name|LocalDiskRepositoryManager
+operator|)
 name|mgr
+operator|)
 operator|.
 name|getBasePath
 argument_list|()

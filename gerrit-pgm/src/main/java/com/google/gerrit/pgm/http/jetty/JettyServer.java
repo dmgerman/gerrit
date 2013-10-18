@@ -1133,7 +1133,7 @@ name|getBoolean
 argument_list|(
 literal|"httpd"
 argument_list|,
-literal|"requestlog"
+literal|"requestLog"
 argument_list|,
 operator|!
 name|reverseProxy
