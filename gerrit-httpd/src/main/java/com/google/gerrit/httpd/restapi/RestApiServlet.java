@@ -4597,7 +4597,7 @@ end_function
 
 begin_function
 DECL|method|replyJson (@ullable HttpServletRequest req, HttpServletResponse res, Multimap<String, String> config, Object result)
-specifier|private
+specifier|public
 specifier|static
 name|void
 name|replyJson
