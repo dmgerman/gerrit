@@ -648,6 +648,12 @@ name|UiField
 name|Element
 name|filePath
 decl_stmt|;
+DECL|field|noDiff
+annotation|@
+name|UiField
+name|Element
+name|noDiff
+decl_stmt|;
 DECL|field|prev
 annotation|@
 name|UiField
@@ -1605,6 +1611,17 @@ block|{
 return|return
 name|nextPath
 return|;
+block|}
+DECL|method|removeNoDiff ()
+name|void
+name|removeNoDiff
+parameter_list|()
+block|{
+name|noDiff
+operator|.
+name|removeFromParent
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
