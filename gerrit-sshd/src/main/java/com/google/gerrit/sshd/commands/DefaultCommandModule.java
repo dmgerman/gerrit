@@ -227,6 +227,15 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
+name|AproposCommand
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|command
+argument_list|(
+name|gerrit
+argument_list|,
 name|BanCommitCommand
 operator|.
 name|class

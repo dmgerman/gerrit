@@ -73,11 +73,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|server
 operator|.
-name|rpc
-operator|.
-name|doc
+name|documentation
 operator|.
 name|Constants
 import|;
