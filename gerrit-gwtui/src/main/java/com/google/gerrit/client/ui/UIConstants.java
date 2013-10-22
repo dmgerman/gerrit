@@ -115,6 +115,16 @@ name|String
 name|projectItemHelp
 parameter_list|()
 function_decl|;
+DECL|method|projectStateAbbrev ()
+name|String
+name|projectStateAbbrev
+parameter_list|()
+function_decl|;
+DECL|method|projectStateHelp ()
+name|String
+name|projectStateHelp
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
