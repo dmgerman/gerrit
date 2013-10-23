@@ -6298,7 +6298,7 @@ condition|(
 operator|!
 name|scheme
 operator|.
-name|isAuthRequired
+name|isAuthSupported
 argument_list|()
 operator|&&
 operator|!
