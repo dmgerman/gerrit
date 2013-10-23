@@ -189,6 +189,33 @@ argument_list|<
 name|ProjectInfo
 argument_list|>
 block|{
+DECL|field|C_NAME
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|C_NAME
+init|=
+literal|1
+decl_stmt|;
+DECL|field|C_DESCRIPTION
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|C_DESCRIPTION
+init|=
+literal|2
+decl_stmt|;
+DECL|field|C_REPO_BROWSER
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|C_REPO_BROWSER
+init|=
+literal|3
+decl_stmt|;
 DECL|method|ProjectsTable ()
 specifier|public
 name|ProjectsTable
@@ -220,7 +247,7 @@ name|setText
 argument_list|(
 literal|0
 argument_list|,
-literal|1
+name|C_NAME
 argument_list|,
 name|Util
 operator|.
@@ -236,7 +263,7 @@ name|setText
 argument_list|(
 literal|0
 argument_list|,
-literal|2
+name|C_DESCRIPTION
 argument_list|,
 name|Util
 operator|.
@@ -261,7 +288,7 @@ name|addStyleName
 argument_list|(
 literal|0
 argument_list|,
-literal|1
+name|C_NAME
 argument_list|,
 name|Gerrit
 operator|.
@@ -280,7 +307,7 @@ name|addStyleName
 argument_list|(
 literal|0
 argument_list|,
-literal|2
+name|C_DESCRIPTION
 argument_list|,
 name|Gerrit
 operator|.
@@ -491,7 +518,7 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
-literal|1
+name|C_NAME
 argument_list|,
 name|Gerrit
 operator|.
@@ -510,7 +537,7 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
-literal|1
+name|C_NAME
 argument_list|,
 name|Gerrit
 operator|.
@@ -529,7 +556,7 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
-literal|2
+name|C_DESCRIPTION
 argument_list|,
 name|Gerrit
 operator|.
@@ -570,7 +597,7 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|1
+name|C_NAME
 argument_list|,
 name|k
 operator|.
@@ -584,7 +611,7 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|2
+name|C_DESCRIPTION
 argument_list|,
 name|k
 operator|.
