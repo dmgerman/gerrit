@@ -186,7 +186,7 @@ if|if
 condition|(
 name|authConfig
 operator|.
-name|isGitBasichAuth
+name|isGitBasicAuth
 argument_list|()
 condition|)
 block|{
