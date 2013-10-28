@@ -654,6 +654,31 @@ operator|+
 name|id
 return|;
 block|}
+DECL|method|toProjectDefaultDashboard (Project.NameKey name)
+specifier|public
+specifier|static
+name|String
+name|toProjectDefaultDashboard
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+block|{
+return|return
+name|PROJECTS
+operator|+
+name|name
+operator|.
+name|get
+argument_list|()
+operator|+
+name|DASHBOARDS
+operator|+
+literal|"default"
+return|;
+block|}
 DECL|method|projectQuery (Project.NameKey proj)
 specifier|public
 specifier|static
