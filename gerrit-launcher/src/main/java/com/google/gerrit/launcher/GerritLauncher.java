@@ -2008,6 +2008,7 @@ name|myArchive
 decl_stmt|;
 DECL|field|myHome
 specifier|private
+specifier|volatile
 specifier|static
 name|File
 name|myHome
