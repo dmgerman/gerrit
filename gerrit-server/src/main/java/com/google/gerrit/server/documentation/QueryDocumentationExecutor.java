@@ -586,6 +586,8 @@ argument_list|(
 name|q
 argument_list|)
 decl_stmt|;
+comment|// TODO(fishywang): Currently as we don't have much documentation, we just use MAX_VALUE here
+comment|// and skipped paging. Maybe add paging later.
 name|TopDocs
 name|results
 init|=
