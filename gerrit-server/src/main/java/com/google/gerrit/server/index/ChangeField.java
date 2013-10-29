@@ -1345,6 +1345,16 @@ name|db
 argument_list|)
 control|)
 block|{
+if|if
+condition|(
+name|ps
+operator|.
+name|getRevision
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|revisions
 operator|.
 name|add
@@ -1358,6 +1368,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|revisions
