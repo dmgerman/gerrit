@@ -1101,10 +1101,10 @@ name|userNameToLowerCase
 return|;
 block|}
 comment|/** Whether git-over-http should use Gerrit basic authentication scheme. */
-DECL|method|isGitBasichAuth ()
+DECL|method|isGitBasicAuth ()
 specifier|public
 name|boolean
-name|isGitBasichAuth
+name|isGitBasicAuth
 parameter_list|()
 block|{
 return|return

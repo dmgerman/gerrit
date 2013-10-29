@@ -1054,7 +1054,7 @@ name|setGitBasicAuth
 argument_list|(
 name|authConfig
 operator|.
-name|isGitBasichAuth
+name|isGitBasicAuth
 argument_list|()
 argument_list|)
 expr_stmt|;
