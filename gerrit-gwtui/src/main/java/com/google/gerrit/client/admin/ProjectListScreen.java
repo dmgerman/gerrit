@@ -784,7 +784,9 @@ name|setText
 argument_list|(
 literal|0
 argument_list|,
-literal|3
+name|ProjectsTable
+operator|.
+name|C_REPO_BROWSER
 argument_list|,
 name|Util
 operator|.
@@ -803,7 +805,9 @@ name|addStyleName
 argument_list|(
 literal|0
 argument_list|,
-literal|3
+name|ProjectsTable
+operator|.
+name|C_REPO_BROWSER
 argument_list|,
 name|Gerrit
 operator|.
@@ -905,7 +909,9 @@ name|addStyleName
 argument_list|(
 name|row
 argument_list|,
-literal|3
+name|ProjectsTable
+operator|.
+name|C_REPO_BROWSER
 argument_list|,
 name|Gerrit
 operator|.
@@ -983,7 +989,9 @@ name|setWidget
 argument_list|(
 name|row
 argument_list|,
-literal|1
+name|ProjectsTable
+operator|.
+name|C_NAME
 argument_list|,
 name|fp
 argument_list|)
@@ -994,7 +1002,9 @@ name|setText
 argument_list|(
 name|row
 argument_list|,
-literal|2
+name|ProjectsTable
+operator|.
+name|C_DESCRIPTION
 argument_list|,
 name|k
 operator|.
@@ -1023,7 +1033,9 @@ name|setWidget
 argument_list|(
 name|row
 argument_list|,
-literal|3
+name|ProjectsTable
+operator|.
+name|C_REPO_BROWSER
 argument_list|,
 operator|new
 name|Anchor
