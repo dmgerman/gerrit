@@ -184,11 +184,9 @@ literal|" "
 argument_list|,
 name|PageLinks
 operator|.
-name|toProjectDashboard
+name|toProjectDefaultDashboard
 argument_list|(
 name|projectName
-argument_list|,
-literal|"default"
 argument_list|)
 argument_list|)
 expr_stmt|;
