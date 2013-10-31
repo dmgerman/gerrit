@@ -361,6 +361,16 @@ literal|"eu.medsea.mimeutil.detector.WindowsRegistryMimeDetector"
 argument_list|)
 expr_stmt|;
 block|}
+name|register
+argument_list|(
+name|DefaultFileExtensionRegistry
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|register (String name)
 specifier|private
