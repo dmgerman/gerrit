@@ -138,6 +138,16 @@ name|SQLException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
 begin_class
 DECL|class|SiteInitializer
 specifier|public
@@ -145,12 +155,12 @@ specifier|final
 class|class
 name|SiteInitializer
 block|{
-DECL|field|log
+DECL|field|LOG
 specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -162,11 +172,13 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|sitePath
+specifier|private
 specifier|final
 name|String
 name|sitePath
 decl_stmt|;
 DECL|field|initPath
+specifier|private
 specifier|final
 name|String
 name|initPath
@@ -218,7 +230,7 @@ argument_list|(
 name|sitePath
 argument_list|)
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -291,7 +303,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -340,7 +352,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -389,17 +401,24 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|ResultSet
-name|rs
+name|Statement
+name|stmt
 init|=
 name|conn
 operator|.
 name|createStatement
 argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|ResultSet
+name|rs
+init|=
+name|stmt
 operator|.
 name|executeQuery
 argument_list|(
-literal|"select site_path from system_config"
+literal|"SELECT site_path FROM system_config"
 argument_list|)
 decl_stmt|;
 if|if
@@ -422,6 +441,15 @@ literal|1
 argument_list|)
 argument_list|)
 return|;
+block|}
+block|}
+finally|finally
+block|{
+name|stmt
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 return|return
 literal|null
