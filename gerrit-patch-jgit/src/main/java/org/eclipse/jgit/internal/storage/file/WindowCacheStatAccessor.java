@@ -68,24 +68,6 @@ name|file
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|internal
-operator|.
-name|storage
-operator|.
-name|file
-operator|.
-name|WindowCache
-import|;
-end_import
-
 begin_comment
 comment|// Hack to obtain visibility to package level methods only.
 end_comment
