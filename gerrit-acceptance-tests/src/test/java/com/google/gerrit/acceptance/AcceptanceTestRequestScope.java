@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.sshd
+DECL|package|com.google.gerrit.acceptance
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|sshd
+name|acceptance
 package|;
 end_package
 
@@ -105,20 +105,6 @@ operator|.
 name|server
 operator|.
 name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|IdentifiedUser
 import|;
 end_import
 
@@ -315,14 +301,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** Guice scopes for state during an SSH connection. */
+comment|/** Guice scopes for state during an Acceptance Test connection. */
 end_comment
 
 begin_class
-DECL|class|SshScope
+DECL|class|AcceptanceTestRequestScope
 specifier|public
 class|class
-name|SshScope
+name|AcceptanceTestRequestScope
 block|{
 DECL|field|RC_KEY
 specifier|private
@@ -363,6 +349,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|class|Context
+specifier|public
 class|class
 name|Context
 implements|implements
@@ -412,11 +399,11 @@ specifier|final
 name|SshSession
 name|session
 decl_stmt|;
-DECL|field|commandLine
+DECL|field|user
 specifier|private
 specifier|final
-name|String
-name|commandLine
+name|CurrentUser
+name|user
 decl_stmt|;
 DECL|field|created
 specifier|final
@@ -433,7 +420,7 @@ specifier|volatile
 name|long
 name|finished
 decl_stmt|;
-DECL|method|Context (SchemaFactory<ReviewDb> sf, final SshSession s, final String c, final long at)
+DECL|method|Context (SchemaFactory<ReviewDb> sf, SshSession s, CurrentUser u, long at)
 specifier|private
 name|Context
 parameter_list|(
@@ -443,15 +430,12 @@ name|ReviewDb
 argument_list|>
 name|sf
 parameter_list|,
-specifier|final
 name|SshSession
 name|s
 parameter_list|,
-specifier|final
-name|String
-name|c
+name|CurrentUser
+name|u
 parameter_list|,
-specifier|final
 name|long
 name|at
 parameter_list|)
@@ -464,9 +448,9 @@ name|session
 operator|=
 name|s
 expr_stmt|;
-name|commandLine
+name|user
 operator|=
-name|c
+name|u
 expr_stmt|;
 name|created
 operator|=
@@ -506,7 +490,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Context (Context p, SshSession s, String c)
+DECL|method|Context (Context p, SshSession s, CurrentUser c)
 specifier|private
 name|Context
 parameter_list|(
@@ -516,7 +500,7 @@ parameter_list|,
 name|SshSession
 name|s
 parameter_list|,
-name|String
+name|CurrentUser
 name|c
 parameter_list|)
 block|{
@@ -548,15 +532,6 @@ operator|.
 name|finished
 expr_stmt|;
 block|}
-DECL|method|getCommandLine ()
-name|String
-name|getCommandLine
-parameter_list|()
-block|{
-return|return
-name|commandLine
-return|;
-block|}
 DECL|method|getSession ()
 name|SshSession
 name|getSession
@@ -574,58 +549,20 @@ name|CurrentUser
 name|getCurrentUser
 parameter_list|()
 block|{
-specifier|final
-name|CurrentUser
-name|user
-init|=
-name|session
-operator|.
-name|getCurrentUser
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|user
-operator|!=
+operator|==
 literal|null
-operator|&&
-name|user
-operator|.
-name|isIdentifiedUser
-argument_list|()
 condition|)
 block|{
-name|IdentifiedUser
-name|identifiedUser
-init|=
-name|userFactory
-operator|.
-name|create
+throw|throw
+operator|new
+name|IllegalStateException
 argument_list|(
-operator|(
-operator|(
-name|IdentifiedUser
-operator|)
-name|user
-operator|)
-operator|.
-name|getAccountId
-argument_list|()
+literal|"user == null, forgot to set it?"
 argument_list|)
-decl_stmt|;
-name|identifiedUser
-operator|.
-name|setAccessPath
-argument_list|(
-name|user
-operator|.
-name|getAccessPath
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|identifiedUser
-return|;
+throw|;
 block|}
 return|return
 name|user
@@ -721,44 +658,6 @@ return|return
 name|t
 return|;
 block|}
-DECL|method|subContext (SshSession newSession, String newCommandLine)
-specifier|synchronized
-name|Context
-name|subContext
-parameter_list|(
-name|SshSession
-name|newSession
-parameter_list|,
-name|String
-name|newCommandLine
-parameter_list|)
-block|{
-name|Context
-name|ctx
-init|=
-operator|new
-name|Context
-argument_list|(
-name|this
-argument_list|,
-name|newSession
-argument_list|,
-name|newCommandLine
-argument_list|)
-decl_stmt|;
-name|cleanup
-operator|.
-name|add
-argument_list|(
-name|ctx
-operator|.
-name|cleanup
-argument_list|)
-expr_stmt|;
-return|return
-name|ctx
-return|;
-block|}
 block|}
 DECL|class|ContextProvider
 specifier|static
@@ -785,7 +684,6 @@ return|;
 block|}
 block|}
 DECL|class|SshSessionProvider
-specifier|public
 specifier|static
 class|class
 name|SshSessionProvider
@@ -822,19 +720,19 @@ argument_list|<
 name|Context
 argument_list|>
 block|{
-DECL|field|sshScope
+DECL|field|atrScope
 specifier|private
 specifier|final
-name|SshScope
-name|sshScope
+name|AcceptanceTestRequestScope
+name|atrScope
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Propagator (SshScope sshScope, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
+DECL|method|Propagator (AcceptanceTestRequestScope atrScope, ThreadLocalRequestContext local, Provider<RequestScopedReviewDbProvider> dbProviderProvider)
 name|Propagator
 parameter_list|(
-name|SshScope
-name|sshScope
+name|AcceptanceTestRequestScope
+name|atrScope
 parameter_list|,
 name|ThreadLocalRequestContext
 name|local
@@ -859,9 +757,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|sshScope
+name|atrScope
 operator|=
-name|sshScope
+name|atrScope
 expr_stmt|;
 block|}
 annotation|@
@@ -878,7 +776,7 @@ block|{
 comment|// The cleanup is not chained, since the RequestScopePropagator executors
 comment|// the Context's cleanup when finished executing.
 return|return
-name|sshScope
+name|atrScope
 operator|.
 name|newContinuingContext
 argument_list|(
@@ -945,26 +843,13 @@ specifier|final
 name|ThreadLocalRequestContext
 name|local
 decl_stmt|;
-DECL|field|userFactory
-specifier|private
-specifier|final
-name|IdentifiedUser
-operator|.
-name|RequestFactory
-name|userFactory
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SshScope (ThreadLocalRequestContext local, IdentifiedUser.RequestFactory userFactory)
-name|SshScope
+DECL|method|AcceptanceTestRequestScope (ThreadLocalRequestContext local)
+name|AcceptanceTestRequestScope
 parameter_list|(
 name|ThreadLocalRequestContext
 name|local
-parameter_list|,
-name|IdentifiedUser
-operator|.
-name|RequestFactory
-name|userFactory
 parameter_list|)
 block|{
 name|this
@@ -973,14 +858,9 @@ name|local
 operator|=
 name|local
 expr_stmt|;
-name|this
-operator|.
-name|userFactory
-operator|=
-name|userFactory
-expr_stmt|;
 block|}
-DECL|method|newContext (SchemaFactory<ReviewDb> sf, SshSession s, String cmd)
+DECL|method|newContext (SchemaFactory<ReviewDb> sf, SshSession s, CurrentUser user)
+specifier|public
 name|Context
 name|newContext
 parameter_list|(
@@ -993,8 +873,8 @@ parameter_list|,
 name|SshSession
 name|s
 parameter_list|,
-name|String
-name|cmd
+name|CurrentUser
+name|user
 parameter_list|)
 block|{
 return|return
@@ -1005,7 +885,7 @@ name|sf
 argument_list|,
 name|s
 argument_list|,
-name|cmd
+name|user
 argument_list|,
 name|TimeUtil
 operator|.
@@ -1036,12 +916,13 @@ argument_list|()
 argument_list|,
 name|ctx
 operator|.
-name|getCommandLine
+name|getCurrentUser
 argument_list|()
 argument_list|)
 return|;
 block|}
 DECL|method|set (Context ctx)
+specifier|public
 name|Context
 name|set
 parameter_list|(
@@ -1077,7 +958,6 @@ return|;
 block|}
 comment|/** Returns exactly one instance per command executed. */
 DECL|field|REQUEST
-specifier|public
 specifier|static
 specifier|final
 name|Scope
@@ -1168,7 +1048,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"SshScopes.REQUEST"
+literal|"Acceptance Test Scope.REQUEST"
 return|;
 block|}
 block|}
