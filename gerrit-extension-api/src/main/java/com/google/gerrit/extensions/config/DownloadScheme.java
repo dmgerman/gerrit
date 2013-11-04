@@ -113,15 +113,11 @@ function_decl|;
 comment|/** @return whether this scheme supports authentication */
 DECL|method|isAuthSupported ()
 specifier|public
+specifier|abstract
 name|boolean
 name|isAuthSupported
 parameter_list|()
-block|{
-return|return
-name|isAuthRequired
-argument_list|()
-return|;
-block|}
+function_decl|;
 comment|/** @return whether the download scheme is enabled */
 DECL|method|isEnabled ()
 specifier|public
