@@ -871,11 +871,13 @@ name|range
 decl_stmt|;
 block|}
 DECL|class|Output
+specifier|public
 specifier|static
 class|class
 name|Output
 block|{
 DECL|field|labels
+specifier|public
 name|Map
 argument_list|<
 name|String
