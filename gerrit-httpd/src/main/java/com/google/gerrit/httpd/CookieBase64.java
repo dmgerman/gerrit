@@ -205,6 +205,7 @@ condition|;
 name|c
 operator|++
 control|)
+block|{
 name|out
 index|[
 name|o
@@ -213,6 +214,7 @@ index|]
 operator|=
 name|c
 expr_stmt|;
+block|}
 return|return
 name|o
 return|;

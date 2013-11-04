@@ -437,6 +437,7 @@ name|msg
 operator|==
 literal|null
 condition|)
+block|{
 name|msg
 operator|=
 name|HttpStatus
@@ -452,6 +453,7 @@ name|getStatus
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|msg
 operator|.
