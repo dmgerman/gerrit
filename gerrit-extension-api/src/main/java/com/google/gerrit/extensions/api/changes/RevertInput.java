@@ -80,60 +80,25 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestApiException
+name|DefaultInput
 import|;
 end_import
 
-begin_interface
-DECL|interface|RevisionApi
+begin_class
+DECL|class|RevertInput
 specifier|public
-interface|interface
-name|RevisionApi
+class|class
+name|RevertInput
 block|{
-DECL|method|delete ()
-name|void
-name|delete
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|rebase ()
-name|void
-name|rebase
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|review (ReviewInput in)
-name|void
-name|review
-parameter_list|(
-name|ReviewInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/** {@code submit} with {@link SubmitInput#waitForMerge} set to true. */
-DECL|method|submit ()
-name|void
-name|submit
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|submit (SubmitInput in)
-name|void
-name|submit
-parameter_list|(
-name|SubmitInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
+annotation|@
+name|DefaultInput
+DECL|field|message
+specifier|public
+name|String
+name|message
+decl_stmt|;
 block|}
-end_interface
+end_class
 
 end_unit
 

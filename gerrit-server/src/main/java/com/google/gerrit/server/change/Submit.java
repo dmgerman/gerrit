@@ -168,6 +168,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|SubmitInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -359,24 +377,6 @@ operator|.
 name|server
 operator|.
 name|ProjectUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|Submit
-operator|.
-name|Input
 import|;
 end_import
 
@@ -586,7 +586,7 @@ name|RestModifyView
 argument_list|<
 name|RevisionResource
 argument_list|,
-name|Input
+name|SubmitInput
 argument_list|>
 implements|,
 name|UiAction
@@ -729,7 +729,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (RevisionResource rsrc, Input input)
+DECL|method|apply (RevisionResource rsrc, SubmitInput input)
 specifier|public
 name|Output
 name|apply
@@ -737,7 +737,7 @@ parameter_list|(
 name|RevisionResource
 name|rsrc
 parameter_list|,
-name|Input
+name|SubmitInput
 name|input
 parameter_list|)
 throws|throws
@@ -2088,7 +2088,7 @@ name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|Input
+name|SubmitInput
 argument_list|>
 block|{
 DECL|field|dbProvider
@@ -2151,7 +2151,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource rsrc, Input input)
+DECL|method|apply (ChangeResource rsrc, SubmitInput input)
 specifier|public
 name|Object
 name|apply
@@ -2159,7 +2159,7 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|Input
+name|SubmitInput
 name|input
 parameter_list|)
 throws|throws

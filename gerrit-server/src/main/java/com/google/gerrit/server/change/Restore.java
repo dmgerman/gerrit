@@ -120,9 +120,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|api
 operator|.
-name|AuthException
+name|changes
+operator|.
+name|RestoreInput
 import|;
 end_import
 
@@ -138,7 +140,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|DefaultInput
+name|AuthException
 import|;
 end_import
 
@@ -326,24 +328,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|Restore
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|ChangeIndexer
@@ -500,7 +484,7 @@ name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|Input
+name|RestoreInput
 argument_list|>
 implements|,
 name|UiAction
@@ -559,20 +543,6 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-annotation|@
-name|DefaultInput
-DECL|field|message
-specifier|public
-name|String
-name|message
-decl_stmt|;
-block|}
 annotation|@
 name|Inject
 DECL|method|Restore (ChangeHooks hooks, RestoredSender.Factory restoredSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json, ChangeIndexer indexer)
@@ -632,7 +602,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource req, Input input)
+DECL|method|apply (ChangeResource req, RestoreInput input)
 specifier|public
 name|Object
 name|apply
@@ -640,11 +610,17 @@ parameter_list|(
 name|ChangeResource
 name|req
 parameter_list|,
-name|Input
+name|RestoreInput
 name|input
 parameter_list|)
 throws|throws
-name|Exception
+name|OrmException
+throws|,
+name|IOException
+throws|,
+name|AuthException
+throws|,
+name|ResourceConflictException
 block|{
 name|ChangeControl
 name|control
@@ -1080,12 +1056,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|newMessage (Input input, IdentifiedUser caller, Change change)
+DECL|method|newMessage (RestoreInput input, IdentifiedUser caller, Change change)
 specifier|private
 name|ChangeMessage
 name|newMessage
 parameter_list|(
-name|Input
+name|RestoreInput
 name|input
 parameter_list|,
 name|IdentifiedUser
