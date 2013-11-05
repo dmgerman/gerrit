@@ -278,18 +278,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|CharacterCodingException
-import|;
-end_import
-
 begin_comment
 comment|/** State supporting processing of a single {@link Patch} instance. */
 end_comment
@@ -548,7 +536,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Extract a line from the file, as a string.    *    * @param file the file index to extract.    * @param line the line number to extract (1 based; 1 is the first line).    * @return the string version of the file line.    * @throws CorruptEntityException the patch cannot be read.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException    * @throws CharacterCodingException the file is not a known character set.    */
+comment|/**    * Extract a line from the file, as a string.    *    * @param file the file index to extract.    * @param line the line number to extract (1 based; 1 is the first line).    * @return the string version of the file line.    * @throws CorruptEntityException the patch cannot be read.    * @throws IOException the patch or complete file content cannot be read.    * @throws NoSuchEntityException    */
 DECL|method|getLine (final int file, final int line)
 specifier|public
 name|String
