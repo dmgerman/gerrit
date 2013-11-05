@@ -577,6 +577,7 @@ block|{
 DECL|field|ANONYMOUS
 specifier|public
 specifier|static
+specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -589,6 +590,7 @@ decl_stmt|;
 DECL|field|REGISTERED
 specifier|public
 specifier|static
+specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -601,6 +603,7 @@ decl_stmt|;
 DECL|field|ADMIN
 specifier|public
 specifier|static
+specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -617,6 +620,7 @@ decl_stmt|;
 DECL|field|DEVS
 specifier|public
 specifier|static
+specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -633,6 +637,7 @@ decl_stmt|;
 DECL|field|CR
 specifier|public
 specifier|static
+specifier|final
 name|LabelType
 name|CR
 init|=
