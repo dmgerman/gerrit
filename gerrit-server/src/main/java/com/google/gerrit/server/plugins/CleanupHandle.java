@@ -156,7 +156,24 @@ parameter_list|(
 name|IOException
 name|err
 parameter_list|)
-block|{     }
+block|{
+name|PluginLoader
+operator|.
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Cannot close "
+operator|+
+name|jarFile
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!

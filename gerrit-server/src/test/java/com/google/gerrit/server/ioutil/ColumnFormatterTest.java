@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|ioutil
-operator|.
-name|ColumnFormatter
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
