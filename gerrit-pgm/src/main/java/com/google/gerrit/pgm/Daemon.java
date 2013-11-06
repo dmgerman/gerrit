@@ -1793,6 +1793,15 @@ argument_list|)
 expr_stmt|;
 name|shell
 operator|.
+name|set
+argument_list|(
+literal|"d"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+name|shell
+operator|.
 name|run
 argument_list|()
 expr_stmt|;
