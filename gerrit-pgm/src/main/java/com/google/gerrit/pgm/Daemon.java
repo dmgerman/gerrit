@@ -1368,6 +1368,11 @@ specifier|private
 name|boolean
 name|test
 decl_stmt|;
+DECL|field|luceneModule
+specifier|private
+name|AbstractModule
+name|luceneModule
+decl_stmt|;
 DECL|field|serverStarted
 specifier|private
 name|Runnable
@@ -1879,6 +1884,26 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
+DECL|method|setLuceneModule (LuceneIndexModule m)
+specifier|public
+name|void
+name|setLuceneModule
+parameter_list|(
+name|LuceneIndexModule
+name|m
+parameter_list|)
+block|{
+name|luceneModule
+operator|=
+name|m
+expr_stmt|;
+name|test
+operator|=
+literal|true
+expr_stmt|;
+block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|start ()
 specifier|public
 name|void
@@ -2207,6 +2232,12 @@ name|LUCENE
 case|:
 name|changeIndexModule
 operator|=
+name|luceneModule
+operator|!=
+literal|null
+condition|?
+name|luceneModule
+else|:
 operator|new
 name|LuceneIndexModule
 argument_list|()
