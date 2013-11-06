@@ -117,6 +117,15 @@ name|getTarget
 parameter_list|()
 comment|/*-{ return this.target; }-*/
 function_decl|;
+DECL|method|getId ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|getId
+parameter_list|()
+comment|/*-{ return this.id; }-*/
+function_decl|;
 DECL|method|TopMenuItem ()
 specifier|protected
 name|TopMenuItem
