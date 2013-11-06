@@ -78,7 +78,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|BinaryResult
 import|;
 end_import
 
@@ -135,8 +135,6 @@ parameter_list|(
 name|AccountResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|ResourceNotFoundException
 block|{
 if|if
 condition|(
@@ -153,19 +151,20 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|Response
+name|BinaryResult
 operator|.
-name|ok
+name|create
 argument_list|(
-literal|""
+literal|"ok\n"
 argument_list|)
 return|;
 block|}
-throw|throw
-operator|new
-name|ResourceNotFoundException
+return|return
+name|Response
+operator|.
+name|none
 argument_list|()
-throw|;
+return|;
 block|}
 block|}
 end_class
