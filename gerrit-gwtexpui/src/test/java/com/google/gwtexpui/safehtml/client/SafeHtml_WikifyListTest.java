@@ -68,11 +68,35 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
 import|;
 end_import
 
@@ -81,8 +105,6 @@ DECL|class|SafeHtml_WikifyListTest
 specifier|public
 class|class
 name|SafeHtml_WikifyListTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|BEGIN_LIST
 specifier|private
@@ -120,6 +142,8 @@ operator|+
 literal|"</li>"
 return|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBulletList1 ()
 specifier|public
 name|void
@@ -181,6 +205,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBulletList2 ()
 specifier|public
 name|void
@@ -245,6 +271,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBulletList3 ()
 specifier|public
 name|void
@@ -306,6 +334,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBulletList4 ()
 specifier|public
 name|void
@@ -373,6 +403,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBulletList5 ()
 specifier|public
 name|void
@@ -443,6 +475,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDashList1 ()
 specifier|public
 name|void
@@ -504,6 +538,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDashList2 ()
 specifier|public
 name|void
@@ -568,6 +604,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDashList3 ()
 specifier|public
 name|void

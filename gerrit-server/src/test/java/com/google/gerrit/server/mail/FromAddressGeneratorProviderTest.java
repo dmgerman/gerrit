@@ -127,6 +127,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -224,16 +260,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -257,6 +283,26 @@ operator|.
 name|lib
 operator|.
 name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -275,8 +321,6 @@ DECL|class|FromAddressGeneratorProviderTest
 specifier|public
 class|class
 name|FromAddressGeneratorProviderTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|config
 specifier|private
@@ -294,20 +338,15 @@ name|AccountCache
 name|accountCache
 decl_stmt|;
 annotation|@
-name|Override
+name|Before
 DECL|method|setUp ()
-specifier|protected
+specifier|public
 name|void
 name|setUp
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|config
 operator|=
 operator|new
@@ -385,6 +424,8 @@ name|newFrom
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDefaultIsMIXED ()
 specifier|public
 name|void
@@ -402,6 +443,8 @@ name|PatternGen
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSelectUSER ()
 specifier|public
 name|void
@@ -454,6 +497,8 @@ name|UserGen
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUSER_FullyConfiguredUser ()
 specifier|public
 name|void
@@ -536,6 +581,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUSER_NoFullNameUser ()
 specifier|public
 name|void
@@ -612,6 +659,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUSER_NoPreferredEmailUser ()
 specifier|public
 name|void
@@ -691,6 +740,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUSER_NullUser ()
 specifier|public
 name|void
@@ -754,6 +805,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSelectSERVER ()
 specifier|public
 name|void
@@ -806,6 +859,8 @@ name|ServerGen
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSERVER_FullyConfiguredUser ()
 specifier|public
 name|void
@@ -894,6 +949,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSERVER_NullUser ()
 specifier|public
 name|void
@@ -957,6 +1014,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSelectMIXED ()
 specifier|public
 name|void
@@ -1009,6 +1068,8 @@ name|PatternGen
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMIXED_FullyConfiguredUser ()
 specifier|public
 name|void
@@ -1096,6 +1157,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMIXED_NoFullNameUser ()
 specifier|public
 name|void
@@ -1175,6 +1238,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMIXED_NoPreferredEmailUser ()
 specifier|public
 name|void
@@ -1256,6 +1321,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMIXED_NullUser ()
 specifier|public
 name|void
@@ -1319,6 +1386,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCUSTOM_FullyConfiguredUser ()
 specifier|public
 name|void
@@ -1405,6 +1474,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCUSTOM_NoFullNameUser ()
 specifier|public
 name|void
@@ -1481,6 +1552,8 @@ name|accountCache
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCUSTOM_NullUser ()
 specifier|public
 name|void

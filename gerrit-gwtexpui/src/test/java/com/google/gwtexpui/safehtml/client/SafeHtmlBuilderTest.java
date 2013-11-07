@@ -67,12 +67,96 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -81,9 +165,9 @@ DECL|class|SafeHtmlBuilderTest
 specifier|public
 class|class
 name|SafeHtmlBuilderTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testEmpty ()
 specifier|public
 name|void
@@ -150,6 +234,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToSafeHtml ()
 specifier|public
 name|void
@@ -210,6 +296,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_boolean ()
 specifier|public
 name|void
@@ -259,6 +347,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_char ()
 specifier|public
 name|void
@@ -308,6 +398,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_int ()
 specifier|public
 name|void
@@ -370,6 +462,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_long ()
 specifier|public
 name|void
@@ -419,6 +513,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_float ()
 specifier|public
 name|void
@@ -456,6 +552,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_double ()
 specifier|public
 name|void
@@ -493,6 +591,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_String ()
 specifier|public
 name|void
@@ -567,6 +667,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_StringBuilder ()
 specifier|public
 name|void
@@ -649,6 +751,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_StringBuffer ()
 specifier|public
 name|void
@@ -731,6 +835,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_Object ()
 specifier|public
 name|void
@@ -808,6 +914,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_CharSequence ()
 specifier|public
 name|void
@@ -888,6 +996,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAppend_SafeHtml ()
 specifier|public
 name|void
@@ -973,6 +1083,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHtmlSpecialCharacters ()
 specifier|public
 name|void
@@ -1100,6 +1212,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testEntityNbsp ()
 specifier|public
 name|void
@@ -1135,6 +1249,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTagBr ()
 specifier|public
 name|void
@@ -1170,6 +1286,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTagTableTrTd ()
 specifier|public
 name|void
@@ -1271,6 +1389,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTagDiv ()
 specifier|public
 name|void
@@ -1328,6 +1448,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTagAnchor ()
 specifier|public
 name|void
@@ -1487,6 +1609,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTagHeightWidth ()
 specifier|public
 name|void
@@ -1558,6 +1682,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testStyleName ()
 specifier|public
 name|void
@@ -1639,6 +1765,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testRejectJavaScript_AnchorHref ()
 specifier|public
 name|void
@@ -1693,6 +1821,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testRejectJavaScript_ImgSrc ()
 specifier|public
 name|void
@@ -1749,6 +1879,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testRejectJavaScript_FormAction ()
 specifier|public
 name|void

@@ -226,16 +226,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -245,6 +235,16 @@ operator|.
 name|errors
 operator|.
 name|ConfigInvalidException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -295,6 +295,18 @@ operator|.
 name|sql
 operator|.
 name|DataSource
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -815,8 +827,6 @@ init|=
 name|getSchemaVersion
 argument_list|()
 decl_stmt|;
-name|TestCase
-operator|.
 name|assertEquals
 argument_list|(
 name|schemaVersion

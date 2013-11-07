@@ -167,6 +167,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -352,11 +388,21 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -390,8 +436,6 @@ DECL|class|IndexRewriteTest
 specifier|public
 class|class
 name|IndexRewriteTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|index
 specifier|private
@@ -414,7 +458,7 @@ name|IndexRewriteImpl
 name|rewrite
 decl_stmt|;
 annotation|@
-name|Override
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -423,11 +467,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|index
 operator|=
 operator|new
@@ -486,6 +525,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testIndexPredicate ()
 specifier|public
 name|void
@@ -519,6 +560,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testNonIndexPredicate ()
 specifier|public
 name|void
@@ -549,6 +592,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testIndexPredicates ()
 specifier|public
 name|void
@@ -582,6 +627,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testNonIndexPredicates ()
 specifier|public
 name|void
@@ -612,6 +659,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testOneIndexPredicate ()
 specifier|public
 name|void
@@ -685,6 +734,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testThreeLevelTreeWithAllIndexPredicates ()
 specifier|public
 name|void
@@ -723,6 +774,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testThreeLevelTreeWithSomeIndexPredicates ()
 specifier|public
 name|void
@@ -796,6 +849,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMultipleIndexPredicates ()
 specifier|public
 name|void
@@ -888,6 +943,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testIndexAndNonIndexPredicates ()
 specifier|public
 name|void
@@ -973,6 +1030,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDuplicateCompoundNonIndexOnlyPredicates ()
 specifier|public
 name|void
@@ -1058,6 +1117,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDuplicateCompoundIndexOnlyPredicates ()
 specifier|public
 name|void
@@ -1143,6 +1204,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testLimit ()
 specifier|public
 name|void
@@ -1218,6 +1281,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetPossibleStatus ()
 specifier|public
 name|void
@@ -1365,6 +1430,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnsupportedIndexOperator ()
 specifier|public
 name|void
@@ -1459,6 +1526,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testNoChangeIndexUsesSqlRewrites ()
 specifier|public
 name|void

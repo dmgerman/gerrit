@@ -519,6 +519,11 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|sshSession
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|HttpStatus
@@ -592,6 +597,11 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|sshSession
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 name|RestResponse
 name|r
@@ -740,6 +750,11 @@ argument_list|,
 name|child
 argument_list|)
 expr_stmt|;
+name|sshSession
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|HttpStatus
@@ -838,6 +853,11 @@ argument_list|()
 argument_list|,
 name|child
 argument_list|)
+expr_stmt|;
+name|sshSession
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 name|RestResponse
 name|r

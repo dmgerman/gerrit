@@ -68,11 +68,21 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -101,8 +111,6 @@ DECL|class|ColumnFormatterTest
 specifier|public
 class|class
 name|ColumnFormatterTest
-extends|extends
-name|TestCase
 block|{
 comment|/**    * Holds an in-memory {@link java.io.PrintWriter} object and allows    * comparisons of its contents to a supplied string via an assert statement.    */
 DECL|class|PrintWriterComparator
@@ -153,7 +161,7 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|TestCase
+name|Assert
 operator|.
 name|assertEquals
 argument_list|(
@@ -178,6 +186,8 @@ return|;
 block|}
 block|}
 comment|/**    * Test that only lines with at least one column of text emit output.    */
+annotation|@
+name|Test
 DECL|method|testEmptyLine ()
 specifier|public
 name|void
@@ -264,6 +274,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test that there is no output if no columns are ever added.    */
+annotation|@
+name|Test
 DECL|method|testEmptyOutput ()
 specifier|public
 name|void
@@ -317,6 +329,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test that there is no output (nor any exceptions) if we finalize    * the output immediately after the creation of the {@link ColumnFormatter}.    */
+annotation|@
+name|Test
 DECL|method|testNoNextLine ()
 specifier|public
 name|void
@@ -360,6 +374,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test that the text in added columns is escaped while the column separator    * (which of course shouldn't be escaped) is left alone.    */
+annotation|@
+name|Test
 DECL|method|testEscapingTakesPlace ()
 specifier|public
 name|void
@@ -422,6 +438,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test that we get the correct output with multi-line input where the number    * of columns in each line varies.    */
+annotation|@
+name|Test
 DECL|method|testMultiLineDifferentColumnCount ()
 specifier|public
 name|void
@@ -510,6 +528,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test that we get the correct output with a single column of input.    */
+annotation|@
+name|Test
 DECL|method|testOneColumn ()
 specifier|public
 name|void

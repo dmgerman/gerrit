@@ -610,6 +610,11 @@ argument_list|,
 name|child1
 argument_list|)
 expr_stmt|;
+name|sshSession
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|RestResponse
 name|r
 init|=
@@ -838,6 +843,11 @@ argument_list|()
 argument_list|,
 name|child1_1_1
 argument_list|)
+expr_stmt|;
+name|sshSession
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 name|RestResponse
 name|r

@@ -68,11 +68,11 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -106,14 +106,50 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertSame
+import|;
+end_import
+
 begin_class
 DECL|class|SafeHtml_ReplaceTest
 specifier|public
 class|class
 name|SafeHtml_ReplaceTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testReplaceEmpty ()
 specifier|public
 name|void
@@ -159,6 +195,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceOneLink ()
 specifier|public
 name|void
@@ -210,6 +248,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceNoLeadingOrTrailingText ()
 specifier|public
 name|void
@@ -261,6 +301,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceTwoLinks ()
 specifier|public
 name|void
@@ -318,6 +360,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceInOrder ()
 specifier|public
 name|void
@@ -383,6 +427,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceOverlappingAfterFirstChar ()
 specifier|public
 name|void
@@ -493,6 +539,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceOverlappingAtFirstCharLongestMatch ()
 specifier|public
 name|void
@@ -570,6 +618,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceOverlappingAtFirstCharFirstMatch ()
 specifier|public
 name|void
@@ -647,6 +697,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFailedSanitization ()
 specifier|public
 name|void

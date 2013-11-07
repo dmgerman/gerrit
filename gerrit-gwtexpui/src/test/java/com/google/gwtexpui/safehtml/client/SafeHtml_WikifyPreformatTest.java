@@ -68,11 +68,35 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
 import|;
 end_import
 
@@ -81,8 +105,6 @@ DECL|class|SafeHtml_WikifyPreformatTest
 specifier|public
 class|class
 name|SafeHtml_WikifyPreformatTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|B
 specifier|private
@@ -120,6 +142,8 @@ operator|+
 name|E
 return|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPreformat1 ()
 specifier|public
 name|void
@@ -181,6 +205,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPreformat2 ()
 specifier|public
 name|void
@@ -245,6 +271,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPreformat3 ()
 specifier|public
 name|void
@@ -315,6 +343,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testPreformat4 ()
 specifier|public
 name|void

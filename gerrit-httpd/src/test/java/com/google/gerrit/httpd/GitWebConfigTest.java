@@ -66,11 +66,35 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -79,8 +103,6 @@ DECL|class|GitWebConfigTest
 specifier|public
 class|class
 name|GitWebConfigTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|VALID_CHARACTERS
 specifier|private
@@ -100,6 +122,8 @@ name|SOME_INVALID_CHARACTERS
 init|=
 literal|"09AZaz$-_.+!',"
 decl_stmt|;
+annotation|@
+name|Test
 DECL|method|testValidPathSeparator ()
 specifier|public
 name|void
@@ -133,6 +157,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testInalidPathSeparator ()
 specifier|public
 name|void

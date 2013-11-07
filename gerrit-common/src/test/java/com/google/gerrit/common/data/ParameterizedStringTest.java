@@ -68,11 +68,11 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -96,14 +96,50 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 DECL|class|ParameterizedStringTest
 specifier|public
 class|class
 name|ParameterizedStringTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testEmptyString ()
 specifier|public
 name|void
@@ -206,6 +242,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAsis1 ()
 specifier|public
 name|void
@@ -318,6 +356,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplace1 ()
 specifier|public
 name|void
@@ -459,6 +499,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplace2 ()
 specifier|public
 name|void
@@ -600,6 +642,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplace3 ()
 specifier|public
 name|void
@@ -741,6 +785,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplace4 ()
 specifier|public
 name|void
@@ -873,6 +919,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToLowerCase ()
 specifier|public
 name|void
@@ -1054,6 +1102,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToUpperCase ()
 specifier|public
 name|void
@@ -1235,6 +1285,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceLocalName ()
 specifier|public
 name|void
@@ -1416,6 +1468,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUndefinedFunctionName ()
 specifier|public
 name|void
@@ -1573,6 +1627,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToUpperCaseToLowerCase ()
 specifier|public
 name|void
@@ -1754,6 +1810,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToUpperCaseLocalName ()
 specifier|public
 name|void
@@ -1935,6 +1993,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToUpperCaseAnUndefinedMethod ()
 specifier|public
 name|void
@@ -2116,6 +2176,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceLocalNameToUpperCase ()
 specifier|public
 name|void
@@ -2297,6 +2359,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceLocalNameToLowerCase ()
 specifier|public
 name|void
@@ -2478,6 +2542,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceLocalNameAnUndefinedMethod ()
 specifier|public
 name|void
@@ -2659,6 +2725,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToLowerCaseToUpperCase ()
 specifier|public
 name|void
@@ -2840,6 +2908,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToLowerCaseLocalName ()
 specifier|public
 name|void
@@ -3021,6 +3091,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceToLowerCaseAnUndefinedMethod ()
 specifier|public
 name|void

@@ -66,11 +66,23 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -79,10 +91,10 @@ DECL|class|StringUtilTest
 specifier|public
 class|class
 name|StringUtilTest
-extends|extends
-name|TestCase
 block|{
 comment|/**    * Test the boundary condition that the first character of a string    * should be escaped.    */
+annotation|@
+name|Test
 DECL|method|testEscapeFirstChar ()
 specifier|public
 name|void
@@ -103,6 +115,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test the boundary condition that the last character of a string    * should be escaped.    */
+annotation|@
+name|Test
 DECL|method|testEscapeLastChar ()
 specifier|public
 name|void
@@ -123,6 +137,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Test that various forms of input strings are escaped (or left as-is)    * in the expected way.    */
+annotation|@
+name|Test
 DECL|method|testEscapeString ()
 specifier|public
 name|void

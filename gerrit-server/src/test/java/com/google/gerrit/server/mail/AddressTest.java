@@ -68,11 +68,11 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -86,14 +86,50 @@ name|UnsupportedEncodingException
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_class
 DECL|class|AddressTest
 specifier|public
 class|class
 name|AddressTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testParse_NameEmail1 ()
 specifier|public
 name|void
@@ -130,6 +166,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse_NameEmail2 ()
 specifier|public
 name|void
@@ -166,6 +204,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse_NameEmail3 ()
 specifier|public
 name|void
@@ -200,6 +240,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse_NameEmail4 ()
 specifier|public
 name|void
@@ -236,6 +278,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse_NameEmail5 ()
 specifier|public
 name|void
@@ -272,6 +316,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse_Email1 ()
 specifier|public
 name|void
@@ -306,6 +352,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse_Email2 ()
 specifier|public
 name|void
@@ -340,6 +388,8 @@ name|email
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParseInvalid ()
 specifier|public
 name|void
@@ -465,6 +515,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_NameEmail1 ()
 specifier|public
 name|void
@@ -484,6 +536,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_NameEmail2 ()
 specifier|public
 name|void
@@ -503,6 +557,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_NameEmail3 ()
 specifier|public
 name|void
@@ -522,6 +578,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_NameEmail4 ()
 specifier|public
 name|void
@@ -541,6 +599,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_NameEmail5 ()
 specifier|public
 name|void
@@ -560,6 +620,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_NameEmail6 ()
 specifier|public
 name|void
@@ -579,6 +641,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_Email1 ()
 specifier|public
 name|void
@@ -598,6 +662,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_Email2 ()
 specifier|public
 name|void

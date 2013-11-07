@@ -819,6 +819,11 @@ name|void
 name|cleanup
 parameter_list|()
 block|{
+name|sshSession
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|db
 operator|.
 name|close

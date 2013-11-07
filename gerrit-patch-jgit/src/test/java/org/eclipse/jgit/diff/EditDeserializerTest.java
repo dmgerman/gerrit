@@ -66,25 +66,23 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
-name|eclipse
+name|junit
 operator|.
-name|jgit
+name|Assert
 operator|.
-name|diff
-operator|.
-name|EditDeserializer
+name|assertNotNull
 import|;
 end_import
 
@@ -93,9 +91,9 @@ DECL|class|EditDeserializerTest
 specifier|public
 class|class
 name|EditDeserializerTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testDiffDeserializer ()
 specifier|public
 name|void

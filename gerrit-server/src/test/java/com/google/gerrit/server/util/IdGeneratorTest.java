@@ -68,11 +68,11 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -86,14 +86,38 @@ name|HashSet
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 DECL|class|IdGeneratorTest
 specifier|public
 class|class
 name|IdGeneratorTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|test1234 ()
 specifier|public
 name|void
@@ -238,6 +262,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFormat ()
 specifier|public
 name|void

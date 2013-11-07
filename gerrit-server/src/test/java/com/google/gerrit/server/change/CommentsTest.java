@@ -115,6 +115,42 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -508,11 +544,11 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|easymock
 operator|.
-name|TestCase
+name|IAnswer
 import|;
 end_import
 
@@ -520,9 +556,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|easymock
+name|junit
 operator|.
-name|IAnswer
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -581,8 +627,6 @@ DECL|class|CommentsTest
 specifier|public
 class|class
 name|CommentsTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|injector
 specifier|private
@@ -615,9 +659,9 @@ name|PatchLineComment
 name|plc3
 decl_stmt|;
 annotation|@
-name|Override
+name|Before
 DECL|method|setUp ()
-specifier|protected
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -1200,6 +1244,8 @@ name|mod
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testListComments ()
 specifier|public
 name|void
@@ -1256,6 +1302,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetComment ()
 specifier|public
 name|void

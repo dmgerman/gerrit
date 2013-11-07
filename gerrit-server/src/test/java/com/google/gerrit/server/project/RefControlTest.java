@@ -283,6 +283,30 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -380,11 +404,21 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -393,8 +427,6 @@ DECL|class|RefControlTest
 specifier|public
 class|class
 name|RefControlTest
-extends|extends
-name|TestCase
 block|{
 DECL|method|assertOwner (String ref, ProjectControl u)
 specifier|private
@@ -513,7 +545,7 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Override
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -522,11 +554,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|local
 operator|=
 operator|new
@@ -548,6 +575,8 @@ name|local
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testOwnerProject ()
 specifier|public
 name|void
@@ -612,6 +641,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBranchDelegation1 ()
 specifier|public
 name|void
@@ -708,6 +739,8 @@ name|uDev
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBranchDelegation2 ()
 specifier|public
 name|void
@@ -898,6 +931,8 @@ name|uFix
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritRead_SingleBranchDeniesUpload ()
 specifier|public
 name|void
@@ -1018,6 +1053,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritRead_SingleBranchDoesNotOverrideInherited ()
 specifier|public
 name|void
@@ -1120,6 +1157,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritDuplicateSections ()
 specifier|public
 name|void
@@ -1239,6 +1278,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritRead_OverrideWithDeny ()
 specifier|public
 name|void
@@ -1294,6 +1335,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritRead_AppendWithDenyOfRef ()
 specifier|public
 name|void
@@ -1394,6 +1437,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritRead_OverridesAndDeniesOfRef ()
 specifier|public
 name|void
@@ -1505,6 +1550,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInheritSubmit_OverridesAndDeniesOfRef ()
 specifier|public
 name|void
@@ -1606,6 +1653,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCannotUploadToAnyRef ()
 specifier|public
 name|void
@@ -1689,6 +1738,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUsernamePatternNonRegex ()
 specifier|public
 name|void
@@ -1764,6 +1815,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUsernamePatternWithRegex ()
 specifier|public
 name|void
@@ -1839,6 +1892,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSortWithRegex ()
 specifier|public
 name|void
@@ -1924,6 +1979,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBlockRule_ParentBlocksChild ()
 specifier|public
 name|void
@@ -1986,6 +2043,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBlockLabelRange_ParentBlocksChild ()
 specifier|public
 name|void
@@ -2116,6 +2175,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockNoForce ()
 specifier|public
 name|void
@@ -2175,6 +2236,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockForce ()
 specifier|public
 name|void
@@ -2251,6 +2314,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockForceWithAllowNoForce_NotPossible ()
 specifier|public
 name|void
@@ -2322,6 +2387,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockMoreSpecificRef_Fails ()
 specifier|public
 name|void
@@ -2381,6 +2448,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockLargerScope_Fails ()
 specifier|public
 name|void
@@ -2440,6 +2509,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockInLocal_Fails ()
 specifier|public
 name|void
@@ -2502,6 +2573,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockInParentBlockInLocal ()
 specifier|public
 name|void
@@ -2581,6 +2654,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockVisibilityByREGISTEREDUsers ()
 specifier|public
 name|void
@@ -2640,6 +2715,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockInLocalVisibilityByRegisteredUsers_Fails ()
 specifier|public
 name|void
@@ -2702,6 +2779,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockForceEditTopicName ()
 specifier|public
 name|void
@@ -2766,6 +2845,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockInLocalForceEditTopicName_Fails ()
 specifier|public
 name|void
@@ -2833,6 +2914,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockRange ()
 specifier|public
 name|void
@@ -2935,6 +3018,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockRangeOnMoreSpecificRef_Fails ()
 specifier|public
 name|void
@@ -3038,6 +3123,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockRangeOnLargerScope_Fails ()
 specifier|public
 name|void
@@ -3141,6 +3228,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testUnblockInLocalRange_Fails ()
 specifier|public
 name|void

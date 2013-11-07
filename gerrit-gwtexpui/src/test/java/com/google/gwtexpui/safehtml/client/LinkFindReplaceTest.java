@@ -85,12 +85,60 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -99,9 +147,9 @@ DECL|class|LinkFindReplaceTest
 specifier|public
 class|class
 name|LinkFindReplaceTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testNoEscaping ()
 specifier|public
 name|void
@@ -171,6 +219,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBackreference ()
 specifier|public
 name|void
@@ -196,6 +246,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHasValidScheme ()
 specifier|public
 name|void
@@ -275,6 +327,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testInvalidSchemeInReplace ()
 specifier|public
 name|void
@@ -309,6 +363,8 @@ name|expected
 parameter_list|)
 block|{     }
 block|}
+annotation|@
+name|Test
 DECL|method|testInvalidSchemeWithBackreference ()
 specifier|public
 name|void
@@ -343,6 +399,8 @@ name|expected
 parameter_list|)
 block|{     }
 block|}
+annotation|@
+name|Test
 DECL|method|testReplaceEscaping ()
 specifier|public
 name|void
@@ -368,6 +426,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHtmlInFind ()
 specifier|public
 name|void
