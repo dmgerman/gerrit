@@ -72,7 +72,9 @@ name|StringUtil
 block|{
 comment|/**    * An array of the string representations that should be used in place    * of the non-printable characters in the beginning of the ASCII table    * when escaping a string. The index of each element in the array    * corresponds to its ASCII value, i.e. the string representation of    * ASCII 0 is found in the first element of this array.    */
 DECL|field|NON_PRINTABLE_CHARS
+specifier|private
 specifier|static
+specifier|final
 name|String
 index|[]
 name|NON_PRINTABLE_CHARS
