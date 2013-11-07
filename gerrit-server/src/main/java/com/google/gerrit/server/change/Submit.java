@@ -957,18 +957,6 @@ case|:
 comment|// If the merge was attempted and it failed the system usually
 comment|// writes a comment as a ChangeMessage and sets status to NEW.
 comment|// Find the relevant message and report that as the conflict.
-specifier|final
-name|Timestamp
-name|before
-init|=
-name|rsrc
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getLastUpdatedOn
-argument_list|()
-decl_stmt|;
 name|ChangeMessage
 name|msg
 init|=
@@ -1028,19 +1016,6 @@ name|getAuthor
 argument_list|()
 operator|==
 literal|null
-operator|&&
-name|input
-operator|.
-name|getWrittenOn
-argument_list|()
-operator|.
-name|getTime
-argument_list|()
-operator|>=
-name|before
-operator|.
-name|getTime
-argument_list|()
 return|;
 block|}
 block|}
