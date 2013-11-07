@@ -172,6 +172,11 @@ name|String
 name|keyMeta
 parameter_list|()
 function_decl|;
+DECL|method|keyShift ()
+name|String
+name|keyShift
+parameter_list|()
+function_decl|;
 DECL|method|keyEnter ()
 name|String
 name|keyEnter

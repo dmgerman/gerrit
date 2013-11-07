@@ -210,6 +210,16 @@ name|String
 name|chunkNext
 parameter_list|()
 function_decl|;
+DECL|method|chunkPrev2 ()
+name|String
+name|chunkPrev2
+parameter_list|()
+function_decl|;
+DECL|method|chunkNext2 ()
+name|String
+name|chunkNext2
+parameter_list|()
+function_decl|;
 DECL|method|commentPrev ()
 name|String
 name|commentPrev
@@ -228,6 +238,11 @@ function_decl|;
 DECL|method|expandComment ()
 name|String
 name|expandComment
+parameter_list|()
+function_decl|;
+DECL|method|expandAllCommentsOnCurrentLine ()
+name|String
+name|expandAllCommentsOnCurrentLine
 parameter_list|()
 function_decl|;
 DECL|method|toggleReviewed ()
