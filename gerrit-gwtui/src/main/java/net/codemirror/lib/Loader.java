@@ -596,6 +596,8 @@ block|,
 literal|"U"
 block|,
 literal|"Ctrl-C"
+block|,
+literal|"Ctrl-O"
 block|}
 control|)
 block|{

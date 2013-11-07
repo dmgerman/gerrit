@@ -1076,6 +1076,18 @@ name|name
 parameter_list|)
 comment|/*-{     var i = $wnd.CodeMirror.keyMap[name];     var o = {};     for (n in i)       if (i.hasOwnProperty(n))         o[n] = i[n];     return o;   }-*/
 function_decl|;
+DECL|method|execCommand (String cmd)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|execCommand
+parameter_list|(
+name|String
+name|cmd
+parameter_list|)
+comment|/*-{     this.execCommand(cmd);   }-*/
+function_decl|;
 DECL|method|addKeyMap (String name, KeyMap km)
 specifier|public
 specifier|static
