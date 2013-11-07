@@ -346,13 +346,9 @@ name|bar
 operator|.
 name|setWidth
 argument_list|(
-literal|""
-operator|+
-operator|(
 literal|2
 operator|*
 name|pComplete
-operator|)
 operator|+
 literal|"px"
 argument_list|)
