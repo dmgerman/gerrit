@@ -423,6 +423,8 @@ operator|.
 name|createStatement
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|ResultSet
 name|oldGroupIncludes
 init|=
@@ -533,7 +535,7 @@ argument_list|)
 decl_stmt|;
 comment|// Iterate over all the audits (for this group)
 name|PreparedStatement
-name|oldAuditsQuery
+name|oldAuditsQueryStmt
 init|=
 name|conn
 operator|.
@@ -542,7 +544,9 @@ argument_list|(
 literal|"SELECT * FROM account_group_includes_audit WHERE group_id=? AND include_id=?"
 argument_list|)
 decl_stmt|;
-name|oldAuditsQuery
+try|try
+block|{
+name|oldAuditsQueryStmt
 operator|.
 name|setInt
 argument_list|(
@@ -554,7 +558,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|oldAuditsQuery
+name|oldAuditsQueryStmt
 operator|.
 name|setInt
 argument_list|(
@@ -569,7 +573,7 @@ expr_stmt|;
 name|ResultSet
 name|oldGroupIncludeAudits
 init|=
-name|oldAuditsQuery
+name|oldAuditsQueryStmt
 operator|.
 name|executeQuery
 argument_list|()
@@ -673,27 +677,25 @@ argument_list|(
 name|destIncludeEntry
 argument_list|)
 expr_stmt|;
-name|oldAuditsQuery
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|oldGroupIncludeAudits
+block|}
+finally|finally
+block|{
+name|oldAuditsQueryStmt
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|oldGroupIncludes
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
 name|oldGroupIncludesStmt
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Now insert all of the new entries to the database
 name|db
 operator|.
