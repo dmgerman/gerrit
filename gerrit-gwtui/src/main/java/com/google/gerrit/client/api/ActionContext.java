@@ -382,6 +382,30 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|put (RestApi api, JavaScriptObject cb)
+specifier|static
+specifier|final
+name|void
+name|put
+parameter_list|(
+name|RestApi
+name|api
+parameter_list|,
+name|JavaScriptObject
+name|cb
+parameter_list|)
+block|{
+name|api
+operator|.
+name|put
+argument_list|(
+name|wrap
+argument_list|(
+name|cb
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|put (RestApi api, JavaScriptObject in, JavaScriptObject cb)
 specifier|static
 specifier|final
