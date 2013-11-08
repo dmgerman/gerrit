@@ -292,6 +292,13 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
+name|ChangesCollection
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
 name|Revisions
 operator|.
 name|class
