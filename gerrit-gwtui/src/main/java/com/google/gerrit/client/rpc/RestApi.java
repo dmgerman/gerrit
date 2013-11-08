@@ -1845,6 +1845,36 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|put (String content, AsyncCallback<T> cb)
+specifier|public
+parameter_list|<
+name|T
+extends|extends
+name|JavaScriptObject
+parameter_list|>
+name|void
+name|put
+parameter_list|(
+name|String
+name|content
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|T
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|sendRaw
+argument_list|(
+name|PUT
+argument_list|,
+name|content
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|put ( JavaScriptObject content, AsyncCallback<T> cb)
 specifier|public
 parameter_list|<

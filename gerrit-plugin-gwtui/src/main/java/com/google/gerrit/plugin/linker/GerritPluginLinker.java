@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client
+DECL|package|com.google.gerrit.plugin.linker
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|plugin
+operator|.
+name|linker
 package|;
 end_package
 
@@ -74,25 +76,69 @@ name|gwt
 operator|.
 name|core
 operator|.
-name|client
+name|ext
 operator|.
-name|EntryPoint
+name|LinkerContext
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|linker
+operator|.
+name|CrossSiteIframeLinker
 import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for writing Gerrit Web UI plugins  *  * Writing a plugin:  *<ol>  *<li>Declare subtype of Plugin</li>  *<li>Bind WebUiPlugin to GwtPlugin implementation in Gerrit-Module</li>  *</ol>  */
+comment|/** Finalizes the module manifest file with the selection script. */
 end_comment
 
 begin_class
-DECL|class|Plugin
+DECL|class|GerritPluginLinker
 specifier|public
-specifier|abstract
+specifier|final
 class|class
-name|Plugin
-implements|implements
-name|EntryPoint
-block|{ }
+name|GerritPluginLinker
+extends|extends
+name|CrossSiteIframeLinker
+block|{
+annotation|@
+name|Override
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"Gerrit GWT UI plugin"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getJsComputeUrlForResource (LinkerContext context)
+specifier|protected
+name|String
+name|getJsComputeUrlForResource
+parameter_list|(
+name|LinkerContext
+name|context
+parameter_list|)
+block|{
+return|return
+literal|"com/google/gerrit/linker/computeUrlForPluginResource.js"
+return|;
+block|}
+block|}
 end_class
 
 end_unit

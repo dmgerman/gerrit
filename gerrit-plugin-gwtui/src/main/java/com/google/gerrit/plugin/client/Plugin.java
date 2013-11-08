@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.linker
+DECL|package|com.google.gerrit.plugin.client
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|linker
+name|plugin
+operator|.
+name|client
 package|;
 end_package
 
@@ -74,69 +76,25 @@ name|gwt
 operator|.
 name|core
 operator|.
-name|ext
+name|client
 operator|.
-name|LinkerContext
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|linker
-operator|.
-name|CrossSiteIframeLinker
+name|EntryPoint
 import|;
 end_import
 
 begin_comment
-comment|/** Finalizes the module manifest file with the selection script. */
+comment|/**  * Base class for writing Gerrit Web UI plugins  *  * Writing a plugin:  *<ol>  *<li>Declare subtype of Plugin</li>  *<li>Bind WebUiPlugin to GwtPlugin implementation in Gerrit-Module</li>  *</ol>  */
 end_comment
 
 begin_class
-DECL|class|GerritPluginLinker
+DECL|class|Plugin
 specifier|public
-specifier|final
+specifier|abstract
 class|class
-name|GerritPluginLinker
-extends|extends
-name|CrossSiteIframeLinker
-block|{
-annotation|@
-name|Override
-DECL|method|getDescription ()
-specifier|public
-name|String
-name|getDescription
-parameter_list|()
-block|{
-return|return
-literal|"Gerrit GWT UI plugin"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getJsComputeUrlForResource (LinkerContext context)
-specifier|protected
-name|String
-name|getJsComputeUrlForResource
-parameter_list|(
-name|LinkerContext
-name|context
-parameter_list|)
-block|{
-return|return
-literal|"com/google/gerrit/linker/computeUrlForPluginResource.js"
-return|;
-block|}
-block|}
+name|Plugin
+implements|implements
+name|EntryPoint
+block|{ }
 end_class
 
 end_unit

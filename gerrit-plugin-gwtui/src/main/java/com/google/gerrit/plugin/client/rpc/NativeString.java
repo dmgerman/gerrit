@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,13 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.rpc
+DECL|package|com.google.gerrit.plugin.client.rpc
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
+operator|.
+name|plugin
 operator|.
 name|client
 operator|.
@@ -107,14 +109,13 @@ end_comment
 begin_class
 DECL|class|NativeString
 specifier|public
-specifier|final
 class|class
 name|NativeString
 extends|extends
 name|JavaScriptObject
 block|{
 DECL|field|TYPE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|JavaScriptObject
@@ -131,42 +132,7 @@ specifier|native
 name|JavaScriptObject
 name|init
 parameter_list|()
-comment|/*-{     var T = function(s){this.s=s};     T.prototype = {       get: function(){return this.s},     };     return T;   }-*/
-function_decl|;
-DECL|method|wrap (String s)
-specifier|static
-specifier|final
-name|NativeString
-name|wrap
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-return|return
-name|wrap0
-argument_list|(
-name|TYPE
-argument_list|,
-name|s
-argument_list|)
-return|;
-block|}
-DECL|method|wrap0 (JavaScriptObject T, String s)
-specifier|private
-specifier|static
-specifier|final
-specifier|native
-name|NativeString
-name|wrap0
-parameter_list|(
-name|JavaScriptObject
-name|T
-parameter_list|,
-name|String
-name|s
-parameter_list|)
-comment|/*-{ return new T(s) }-*/
+comment|/*-{ return $wnd.Gerrit.JsonString } }-*/
 function_decl|;
 DECL|method|asString ()
 specifier|public
@@ -175,16 +141,16 @@ specifier|native
 name|String
 name|asString
 parameter_list|()
-comment|/*-{ return this.s; }-*/
+comment|/*-{ return this.get(); }-*/
 function_decl|;
 specifier|public
 specifier|static
 specifier|final
+DECL|method|unwrap (final AsyncCallback<String> cb)
 name|AsyncCallback
 argument_list|<
 name|NativeString
 argument_list|>
-DECL|method|unwrap (final AsyncCallback<String> cb)
 name|unwrap
 parameter_list|(
 specifier|final
