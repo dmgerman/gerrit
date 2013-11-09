@@ -463,10 +463,7 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
-name|RestView
-argument_list|<
-name|TopLevelResource
-argument_list|>
+name|QueryChanges
 name|list
 parameter_list|()
 block|{
