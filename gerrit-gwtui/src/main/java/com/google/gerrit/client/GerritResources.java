@@ -261,6 +261,17 @@ name|ImageResource
 name|draftComments
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"readOnly.png"
+argument_list|)
+DECL|method|readOnly ()
+specifier|public
+name|ImageResource
+name|readOnly
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

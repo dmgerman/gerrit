@@ -230,6 +230,24 @@ name|getNameKey
 argument_list|()
 return|;
 block|}
+DECL|method|getState ()
+specifier|public
+name|Project
+operator|.
+name|State
+name|getState
+parameter_list|()
+block|{
+return|return
+name|control
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+return|;
+block|}
 DECL|method|getControl ()
 specifier|public
 name|ProjectControl

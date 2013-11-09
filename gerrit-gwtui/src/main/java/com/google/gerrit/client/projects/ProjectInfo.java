@@ -166,6 +166,36 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
+DECL|method|state ()
+specifier|public
+specifier|final
+name|Project
+operator|.
+name|State
+name|state
+parameter_list|()
+block|{
+return|return
+name|Project
+operator|.
+name|State
+operator|.
+name|valueOf
+argument_list|(
+name|getStringState
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|getStringState ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|getStringState
+parameter_list|()
+comment|/*-{ return this.state; }-*/
+function_decl|;
 annotation|@
 name|Override
 DECL|method|getDisplayString ()
