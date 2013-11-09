@@ -306,6 +306,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|getId ()
+specifier|public
+name|Account
+operator|.
+name|Id
+name|getId
+parameter_list|()
+block|{
+return|return
+name|id
+return|;
+block|}
 block|}
 end_class
 

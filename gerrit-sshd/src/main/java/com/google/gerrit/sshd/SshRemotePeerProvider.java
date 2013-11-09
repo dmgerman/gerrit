@@ -114,6 +114,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|SshRemotePeerProvider
+specifier|public
 class|class
 name|SshRemotePeerProvider
 implements|implements
