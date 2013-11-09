@@ -125,6 +125,11 @@ operator|.
 name|Status
 name|status
 decl_stmt|;
+DECL|field|starred
+specifier|public
+name|Boolean
+name|starred
+decl_stmt|;
 block|}
 end_class
 

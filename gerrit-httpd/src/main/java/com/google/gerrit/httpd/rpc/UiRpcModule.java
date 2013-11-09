@@ -171,13 +171,6 @@ parameter_list|()
 block|{
 name|rpc
 argument_list|(
-name|ChangeListServiceImpl
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|rpc
-argument_list|(
 name|SuggestServiceImpl
 operator|.
 name|class
