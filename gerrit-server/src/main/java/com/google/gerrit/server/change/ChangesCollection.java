@@ -314,16 +314,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -522,8 +512,6 @@ throws|throws
 name|ResourceNotFoundException
 throws|,
 name|OrmException
-throws|,
-name|UnsupportedEncodingException
 block|{
 name|List
 argument_list|<
