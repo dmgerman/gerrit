@@ -234,22 +234,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
-operator|.
-name|ChangeControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|query
 operator|.
 name|QueryParseException
@@ -633,7 +617,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryChanges (ChangeJson json, QueryProcessor qp, ChangeControl.Factory cf, Provider<CurrentUser> user)
+DECL|method|QueryChanges (ChangeJson json, QueryProcessor qp, Provider<CurrentUser> user)
 name|QueryChanges
 parameter_list|(
 name|ChangeJson
@@ -641,11 +625,6 @@ name|json
 parameter_list|,
 name|QueryProcessor
 name|qp
-parameter_list|,
-name|ChangeControl
-operator|.
-name|Factory
-name|cf
 parameter_list|,
 name|Provider
 argument_list|<
@@ -681,13 +660,6 @@ argument_list|(
 name|ListChangesOption
 operator|.
 name|class
-argument_list|)
-expr_stmt|;
-name|json
-operator|.
-name|setChangeControlFactory
-argument_list|(
-name|cf
 argument_list|)
 expr_stmt|;
 block|}
