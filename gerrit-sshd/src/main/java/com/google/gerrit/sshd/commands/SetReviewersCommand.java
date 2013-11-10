@@ -891,7 +891,6 @@ name|error
 init|=
 literal|null
 decl_stmt|;
-empty_stmt|;
 try|try
 block|{
 name|delete

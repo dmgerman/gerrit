@@ -115,7 +115,7 @@ DECL|enumConstant|BATCH
 name|INTERACTIVE
 block|,
 name|BATCH
-block|;   }
+block|}
 DECL|field|action
 specifier|protected
 name|Action

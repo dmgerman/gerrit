@@ -107,7 +107,7 @@ block|,
 name|OWNER_REVIEWERS
 block|,
 name|ALL
-block|;   }
+block|}
 DECL|method|create ()
 specifier|public
 specifier|static

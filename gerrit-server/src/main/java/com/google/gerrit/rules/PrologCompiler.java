@@ -514,7 +514,7 @@ DECL|enumConstant|COMPILED
 name|NO_RULES
 block|,
 name|COMPILED
-block|;   }
+block|}
 DECL|field|ruleDir
 specifier|private
 specifier|final

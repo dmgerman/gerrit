@@ -1314,7 +1314,7 @@ block|,
 name|SLEEPING
 block|,
 name|OTHER
-block|;     }
+block|}
 DECL|field|runnable
 specifier|private
 specifier|final

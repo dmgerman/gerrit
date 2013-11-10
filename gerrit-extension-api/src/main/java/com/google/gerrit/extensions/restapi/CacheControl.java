@@ -97,7 +97,7 @@ block|,
 name|PUBLIC
 block|,
 name|PRIVATE
-block|;   }
+block|}
 DECL|field|NONE
 specifier|public
 specifier|static

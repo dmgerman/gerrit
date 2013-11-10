@@ -276,7 +276,6 @@ name|ReviewDb
 name|db
 parameter_list|)
 block|{     }
-empty_stmt|;
 block|}
 decl_stmt|;
 DECL|method|ScriptRunner (final String scriptName, final InputStream script)

@@ -356,7 +356,7 @@ block|,
 name|BACKGROUND
 block|,
 name|WRAP
-block|;   }
+block|}
 DECL|method|addLineClass (int line, LineClassWhere where, String className)
 specifier|public
 specifier|final
@@ -828,7 +828,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-empty_stmt|;
 DECL|method|setCursor (LineCharacter lineCh)
 specifier|public
 specifier|final

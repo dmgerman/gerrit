@@ -107,7 +107,7 @@ block|,
 comment|/** Development mode to enable becoming anyone you want. */
 DECL|enumConstant|DEVELOPMENT_BECOME_ANY_ACCOUNT
 name|DEVELOPMENT_BECOME_ANY_ACCOUNT
-block|; }
+block|}
 end_enum
 
 end_unit

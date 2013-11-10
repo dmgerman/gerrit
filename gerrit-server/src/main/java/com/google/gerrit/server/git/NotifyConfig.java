@@ -189,7 +189,7 @@ block|,
 name|CC
 block|,
 name|BCC
-block|;   }
+block|}
 DECL|field|name
 specifier|private
 name|String

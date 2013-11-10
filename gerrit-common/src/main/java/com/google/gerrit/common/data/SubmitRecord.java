@@ -123,7 +123,7 @@ block|,
 comment|/**      * An internal server error occurred preventing computation.      *<p>      * Additional detail may be available in {@link SubmitRecord#errorMessage}.      */
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
-block|;   }
+block|}
 DECL|field|status
 specifier|public
 name|Status
@@ -173,7 +173,7 @@ block|,
 comment|/**        * The label is required for submission, but is impossible to complete.        * The likely cause is access has not been granted correctly by the        * project owner or site administrator.        */
 DECL|enumConstant|IMPOSSIBLE
 name|IMPOSSIBLE
-block|;     }
+block|}
 DECL|field|label
 specifier|public
 name|String

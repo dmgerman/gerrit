@@ -597,7 +597,7 @@ block|,
 name|TIMEOUT
 block|,
 name|FAILURE
-block|;   }
+block|}
 DECL|class|FileMeta
 specifier|public
 specifier|static

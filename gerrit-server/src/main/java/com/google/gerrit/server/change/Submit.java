@@ -616,7 +616,7 @@ DECL|enumConstant|MERGED
 name|SUBMITTED
 block|,
 name|MERGED
-block|;   }
+block|}
 DECL|class|Output
 specifier|public
 specifier|static

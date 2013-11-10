@@ -884,7 +884,7 @@ DECL|enumConstant|FILE
 name|DIR
 block|,
 name|FILE
-block|;     }
+block|}
 DECL|field|type
 specifier|private
 specifier|final

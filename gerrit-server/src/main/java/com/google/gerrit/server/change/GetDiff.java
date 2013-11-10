@@ -1383,7 +1383,7 @@ name|TIMEOUT
 block|,
 DECL|enumConstant|FAILURE
 name|FAILURE
-block|;   }
+block|}
 DECL|class|Content
 specifier|private
 specifier|static

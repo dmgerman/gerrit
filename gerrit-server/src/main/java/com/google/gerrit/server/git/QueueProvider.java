@@ -83,7 +83,7 @@ DECL|enumConstant|BATCH
 name|INTERACTIVE
 block|,
 name|BATCH
-block|;   }
+block|}
 DECL|method|getQueue (QueueType type)
 specifier|public
 name|WorkQueue

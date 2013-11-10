@@ -100,7 +100,7 @@ block|,
 comment|/** The provider was discovered, but something else failed. */
 DECL|enumConstant|ERROR
 name|ERROR
-block|;   }
+block|}
 DECL|field|status
 name|Status
 name|status

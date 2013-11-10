@@ -5806,7 +5806,7 @@ block|,
 name|RETRY_NO_MESSAGE
 block|,
 name|RETRY_ADD_MESSAGE
-block|;   }
+block|}
 DECL|method|getRetryStatus ( @ullable PatchSetApproval submitter, ChangeMessage msg)
 specifier|private
 name|RetryStatus

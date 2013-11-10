@@ -186,8 +186,7 @@ block|,
 name|CHANGED
 block|,
 name|ALL
-block|;   }
-empty_stmt|;
+block|}
 DECL|method|list (int id, String revision, AsyncCallback<NativeMap<FileInfo>> cb)
 specifier|public
 specifier|static

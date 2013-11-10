@@ -806,7 +806,6 @@ name|on
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 DECL|method|setEnableSmallFileFeatures (final boolean on)
 specifier|public
