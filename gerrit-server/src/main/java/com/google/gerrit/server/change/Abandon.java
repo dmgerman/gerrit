@@ -120,6 +120,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|AbandonInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -139,22 +157,6 @@ operator|.
 name|restapi
 operator|.
 name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|DefaultInput
 import|;
 end_import
 
@@ -293,24 +295,6 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|Abandon
-operator|.
-name|Input
 import|;
 end_import
 
@@ -498,7 +482,7 @@ name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|Input
+name|AbandonInput
 argument_list|>
 implements|,
 name|UiAction
@@ -557,20 +541,6 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-annotation|@
-name|DefaultInput
-DECL|field|message
-specifier|public
-name|String
-name|message
-decl_stmt|;
-block|}
 annotation|@
 name|Inject
 DECL|method|Abandon (ChangeHooks hooks, AbandonedSender.Factory abandonedSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json, ChangeIndexer indexer)
@@ -630,7 +600,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource req, Input input)
+DECL|method|apply (ChangeResource req, AbandonInput input)
 specifier|public
 name|Object
 name|apply
@@ -638,7 +608,7 @@ parameter_list|(
 name|ChangeResource
 name|req
 parameter_list|,
-name|Input
+name|AbandonInput
 name|input
 parameter_list|)
 throws|throws
@@ -648,7 +618,9 @@ name|AuthException
 throws|,
 name|ResourceConflictException
 throws|,
-name|Exception
+name|OrmException
+throws|,
+name|IOException
 block|{
 name|ChangeControl
 name|control
@@ -1081,12 +1053,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|newMessage (Input input, IdentifiedUser caller, Change change)
+DECL|method|newMessage (AbandonInput input, IdentifiedUser caller, Change change)
 specifier|private
 name|ChangeMessage
 name|newMessage
 parameter_list|(
-name|Input
+name|AbandonInput
 name|input
 parameter_list|,
 name|IdentifiedUser

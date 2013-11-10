@@ -90,6 +90,18 @@ specifier|public
 interface|interface
 name|ChangeApi
 block|{
+DECL|method|id ()
+name|String
+name|id
+parameter_list|()
+function_decl|;
+DECL|method|current ()
+name|RevisionApi
+name|current
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|revision (int id)
 name|RevisionApi
 name|revision
@@ -106,6 +118,57 @@ name|revision
 parameter_list|(
 name|String
 name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|abandon ()
+name|void
+name|abandon
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|abandon (AbandonInput in)
+name|void
+name|abandon
+parameter_list|(
+name|AbandonInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|restore ()
+name|void
+name|restore
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|restore (RestoreInput in)
+name|void
+name|restore
+parameter_list|(
+name|RestoreInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|revert ()
+name|ChangeApi
+name|revert
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|revert (RevertInput in)
+name|ChangeApi
+name|revert
+parameter_list|(
+name|RevertInput
+name|in
 parameter_list|)
 throws|throws
 name|RestApiException
