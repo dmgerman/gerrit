@@ -1167,7 +1167,6 @@ name|CherryPickInput
 parameter_list|()
 block|{     }
 block|}
-empty_stmt|;
 DECL|class|SubmitInput
 specifier|private
 specifier|static

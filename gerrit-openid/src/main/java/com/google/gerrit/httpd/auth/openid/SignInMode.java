@@ -81,7 +81,7 @@ block|,
 name|LINK_IDENTIY
 block|,
 name|REGISTER
-block|; }
+block|}
 end_enum
 
 end_unit

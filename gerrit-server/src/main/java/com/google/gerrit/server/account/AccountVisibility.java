@@ -91,7 +91,7 @@ block|,
 comment|/**    * Other accounts are not visible to the given user unless they are explicitly    * collaborating on a change.    */
 DECL|enumConstant|NONE
 name|NONE
-block|; }
+block|}
 end_enum
 
 end_unit

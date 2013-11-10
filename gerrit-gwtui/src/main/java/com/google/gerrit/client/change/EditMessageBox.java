@@ -664,7 +664,6 @@ name|hide
 argument_list|()
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 argument_list|)
 expr_stmt|;

@@ -108,7 +108,7 @@ block|,
 comment|/** Unique user identity to login to Gerrit, may be deprecated. */
 DECL|enumConstant|USERNAME
 name|USERNAME
-block|;   }
+block|}
 DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract

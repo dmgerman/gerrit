@@ -429,7 +429,7 @@ block|,
 name|JSON
 block|,
 name|JSON_SINGLE
-block|;   }
+block|}
 DECL|field|in
 specifier|private
 specifier|final

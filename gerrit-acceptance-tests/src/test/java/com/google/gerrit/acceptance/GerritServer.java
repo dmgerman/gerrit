@@ -838,7 +838,6 @@ return|return
 literal|null
 return|;
 block|}
-empty_stmt|;
 block|}
 argument_list|)
 expr_stmt|;

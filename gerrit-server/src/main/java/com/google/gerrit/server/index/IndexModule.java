@@ -275,7 +275,7 @@ block|,
 name|LUCENE
 block|,
 name|SOLR
-block|;   }
+block|}
 comment|/** Type of secondary index. */
 DECL|method|getIndexType (Injector injector)
 specifier|public

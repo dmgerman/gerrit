@@ -503,7 +503,7 @@ DECL|enumConstant|MULTI_USER
 name|SINGLE_USER
 block|,
 name|MULTI_USER
-block|;   }
+block|}
 DECL|method|open (final SitePaths site, final Config cfg, final Context context, final DataSourceType dst)
 specifier|private
 name|DataSource

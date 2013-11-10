@@ -851,7 +851,7 @@ block|,
 name|RECEIVE_COMMITS
 block|,
 name|NONE
-block|;   }
+block|}
 DECL|enum|ChangeKind
 specifier|public
 specifier|static
@@ -866,7 +866,7 @@ block|,
 name|TRIVIAL_REBASE
 block|,
 name|NO_CODE_CHANGE
-block|;   }
+block|}
 DECL|field|hooks
 specifier|private
 specifier|final

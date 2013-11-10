@@ -97,7 +97,7 @@ block|,
 comment|/** Access from a Git client using any Git protocol. */
 DECL|enumConstant|GIT
 name|GIT
-block|; }
+block|}
 end_enum
 
 end_unit

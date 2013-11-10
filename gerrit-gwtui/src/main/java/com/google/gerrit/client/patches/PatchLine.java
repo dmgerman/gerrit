@@ -87,7 +87,7 @@ block|,
 name|REPLACE
 block|,
 name|CONTEXT
-block|;   }
+block|}
 DECL|field|type
 specifier|private
 name|PatchLine

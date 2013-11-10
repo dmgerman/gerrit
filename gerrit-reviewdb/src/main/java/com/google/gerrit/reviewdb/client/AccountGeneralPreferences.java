@@ -144,7 +144,7 @@ block|,
 name|REPO_DOWNLOAD
 block|,
 name|DEFAULT_DOWNLOADS
-block|;   }
+block|}
 comment|/** Preferred method to download a change. */
 DECL|enum|DownloadCommand
 specifier|public
@@ -169,7 +169,7 @@ block|,
 name|FORMAT_PATCH
 block|,
 name|DEFAULT_DOWNLOADS
-block|;   }
+block|}
 DECL|enum|DateFormat
 specifier|public
 specifier|static
@@ -285,7 +285,7 @@ name|EXPAND_RECENT
 block|,
 DECL|enumConstant|EXPAND_ALL
 name|EXPAND_ALL
-block|;   }
+block|}
 DECL|enum|DiffView
 specifier|public
 specifier|static

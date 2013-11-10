@@ -81,7 +81,7 @@ DECL|enumConstant|REVISION
 name|PARENT
 block|,
 name|REVISION
-block|; }
+block|}
 end_enum
 
 end_unit

@@ -763,7 +763,7 @@ DECL|enumConstant|JSON
 name|TEXT
 block|,
 name|JSON
-block|;   }
+block|}
 DECL|field|gson
 specifier|private
 specifier|final

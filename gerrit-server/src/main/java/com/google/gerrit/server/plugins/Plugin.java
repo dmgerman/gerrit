@@ -285,7 +285,7 @@ block|,
 name|PLUGIN
 block|,
 name|JS
-block|;   }
+block|}
 comment|/** Unique key that changes whenever a plugin reloads. */
 DECL|class|CacheKey
 specifier|public

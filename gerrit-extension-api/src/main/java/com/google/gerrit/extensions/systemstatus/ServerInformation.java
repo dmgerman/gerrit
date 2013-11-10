@@ -93,7 +93,7 @@ block|,
 comment|/**      * The server is attempting a graceful halt of operations and will exit (or      * be killed by the operating system) soon.      */
 DECL|enumConstant|SHUTDOWN
 name|SHUTDOWN
-block|;   }
+block|}
 DECL|method|getState ()
 name|State
 name|getState

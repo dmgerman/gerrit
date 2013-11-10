@@ -87,7 +87,7 @@ block|,
 comment|/** Scope is the core server. */
 DECL|enumConstant|CORE
 name|CORE
-block|; }
+block|}
 end_enum
 
 end_unit

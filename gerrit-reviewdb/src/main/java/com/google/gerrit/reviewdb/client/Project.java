@@ -304,7 +304,7 @@ name|MERGE_ALWAYS
 block|,
 DECL|enumConstant|CHERRY_PICK
 name|CHERRY_PICK
-block|;   }
+block|}
 DECL|enum|State
 specifier|public
 specifier|static
@@ -319,7 +319,7 @@ name|READ_ONLY
 block|,
 DECL|enumConstant|HIDDEN
 name|HIDDEN
-block|;   }
+block|}
 DECL|enum|InheritableBoolean
 specifier|public
 specifier|static
@@ -334,7 +334,7 @@ name|FALSE
 block|,
 DECL|enumConstant|INHERIT
 name|INHERIT
-block|;   }
+block|}
 DECL|field|name
 specifier|protected
 name|NameKey

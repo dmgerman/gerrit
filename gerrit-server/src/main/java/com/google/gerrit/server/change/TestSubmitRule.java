@@ -477,7 +477,7 @@ DECL|enumConstant|SKIP
 name|RUN
 block|,
 name|SKIP
-block|;   }
+block|}
 DECL|class|Input
 specifier|public
 specifier|static

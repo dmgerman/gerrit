@@ -532,7 +532,7 @@ block|,
 comment|/**      * Group defined within our database.      *<p>      * An internal group has its membership fully enumerated in the database.      * The membership can be viewed and edited through the web UI by any user      * who is a member of the owner group. These groups are not treated special      * in the code.      */
 DECL|enumConstant|INTERNAL
 name|INTERNAL
-block|;   }
+block|}
 comment|/** Common UUID assigned to the "Project Owners" placeholder group. */
 DECL|field|PROJECT_OWNERS
 specifier|public

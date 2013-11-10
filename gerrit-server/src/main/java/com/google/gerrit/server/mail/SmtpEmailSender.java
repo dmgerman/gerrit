@@ -412,7 +412,7 @@ block|,
 name|SSL
 block|,
 name|TLS
-block|;   }
+block|}
 DECL|field|enabled
 specifier|private
 specifier|final

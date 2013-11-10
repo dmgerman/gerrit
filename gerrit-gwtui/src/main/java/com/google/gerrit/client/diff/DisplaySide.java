@@ -80,7 +80,7 @@ DECL|enumConstant|B
 name|A
 block|,
 name|B
-block|; }
+block|}
 end_enum
 
 end_unit

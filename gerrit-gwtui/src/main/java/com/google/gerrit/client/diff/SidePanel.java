@@ -425,7 +425,7 @@ block|,
 name|DELETE
 block|,
 name|EDIT
-block|;   }
+block|}
 annotation|@
 name|UiField
 DECL|field|style

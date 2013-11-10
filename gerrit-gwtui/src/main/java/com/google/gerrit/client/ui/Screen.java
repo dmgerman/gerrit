@@ -367,7 +367,7 @@ block|,
 name|East
 block|,
 name|FarEast
-block|;   }
+block|}
 DECL|method|onInitUI ()
 specifier|protected
 name|void

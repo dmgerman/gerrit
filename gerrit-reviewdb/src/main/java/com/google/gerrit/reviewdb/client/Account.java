@@ -129,7 +129,7 @@ block|,
 name|USER_NAME
 block|,
 name|REGISTER_NEW_EMAIL
-block|;   }
+block|}
 DECL|field|USER_NAME_PATTERN_FIRST
 specifier|public
 specifier|static
