@@ -990,7 +990,7 @@ name|AccountGeneralPreferences
 operator|.
 name|ChangeScreen
 operator|.
-name|OLD_UI
+name|CHANGE_SCREEN2
 argument_list|)
 argument_list|)
 expr_stmt|;
