@@ -2051,9 +2051,13 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
 name|currentValue
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|defaultValue
+argument_list|)
 condition|)
 block|{
 name|setListBox
