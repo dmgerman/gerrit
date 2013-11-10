@@ -132,7 +132,7 @@ specifier|native
 name|JavaScriptObject
 name|init
 parameter_list|()
-comment|/*-{ return $wnd.Gerrit.JsonString } }-*/
+comment|/*-{ return $wnd.Gerrit.JsonString }-*/
 function_decl|;
 DECL|method|asString ()
 specifier|public
