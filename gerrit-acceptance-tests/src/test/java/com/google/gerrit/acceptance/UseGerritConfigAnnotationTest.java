@@ -209,7 +209,6 @@ name|value
 operator|=
 literal|"c"
 argument_list|)
-block|,
 block|}
 argument_list|)
 DECL|method|testMultiple ()

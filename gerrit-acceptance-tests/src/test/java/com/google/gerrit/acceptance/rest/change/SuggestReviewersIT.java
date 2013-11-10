@@ -727,7 +727,6 @@ name|value
 operator|=
 literal|"NONE"
 argument_list|)
-block|,
 block|}
 argument_list|)
 DECL|method|suggestReviewersNoResult2 ()
