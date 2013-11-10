@@ -1333,11 +1333,14 @@ block|{
 if|if
 condition|(
 name|NOT_ARCHIVED
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// Assume the CLASSPATH was made complete by the calling process,
