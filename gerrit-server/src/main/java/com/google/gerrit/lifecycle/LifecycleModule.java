@@ -34,9 +34,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|AbstractModule
+name|server
+operator|.
+name|config
+operator|.
+name|FactoryModule
 import|;
 end_import
 
@@ -103,7 +107,7 @@ specifier|abstract
 class|class
 name|LifecycleModule
 extends|extends
-name|AbstractModule
+name|FactoryModule
 block|{
 comment|/**    * Create a unique listener binding.    *<p>    * To create a listener binding use:    *    *<pre>    * listener().to(MyListener.class);    *</pre>    *    * where {@code MyListener} is a {@link Singleton} implementing the    * {@link LifecycleListener} interface.    */
 DECL|method|listener ()

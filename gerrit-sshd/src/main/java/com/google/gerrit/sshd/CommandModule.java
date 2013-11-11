@@ -98,9 +98,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gerrit
 operator|.
-name|AbstractModule
+name|lifecycle
+operator|.
+name|LifecycleModule
 import|;
 end_import
 
@@ -143,7 +145,7 @@ specifier|abstract
 class|class
 name|CommandModule
 extends|extends
-name|AbstractModule
+name|LifecycleModule
 block|{
 comment|/**    * Configure a command to be invoked by name.    *    * @param name the name of the command the client will provide in order to    *        call the command.    * @return a binding that must be bound to a non-singleton provider for a    *         {@link Command} object.    */
 DECL|method|command (final String name)
