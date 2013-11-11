@@ -484,7 +484,10 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -494,7 +497,7 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|IOException
+name|AuthException
 throws|,
 name|ResourceNotFoundException
 throws|,
@@ -502,7 +505,7 @@ name|ResourceConflictException
 throws|,
 name|OrmException
 throws|,
-name|AuthException
+name|IOException
 block|{
 if|if
 condition|(
@@ -1010,7 +1013,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -1024,15 +1030,11 @@ name|AuthException
 throws|,
 name|ResourceConflictException
 throws|,
-name|ResourceConflictException
+name|ResourceNotFoundException
 throws|,
 name|IOException
 throws|,
 name|OrmException
-throws|,
-name|ResourceNotFoundException
-throws|,
-name|AuthException
 block|{
 name|PatchSet
 name|ps

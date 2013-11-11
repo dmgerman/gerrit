@@ -166,22 +166,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|DefaultInput
 import|;
 end_import
@@ -701,8 +685,6 @@ name|MethodNotAllowedException
 throws|,
 name|AuthException
 throws|,
-name|BadRequestException
-throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
@@ -1108,11 +1090,9 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
-throws|,
 name|AuthException
 throws|,
-name|BadRequestException
+name|MethodNotAllowedException
 throws|,
 name|UnprocessableEntityException
 throws|,
@@ -1235,7 +1215,7 @@ annotation|@
 name|Override
 DECL|method|apply (IncludedGroupResource resource, PutIncludedGroup.Input input)
 specifier|public
-name|Object
+name|GroupInfo
 name|apply
 parameter_list|(
 name|IncludedGroupResource
@@ -1247,8 +1227,6 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
-throws|,
 name|OrmException
 block|{
 comment|// Do nothing, the group is already included.

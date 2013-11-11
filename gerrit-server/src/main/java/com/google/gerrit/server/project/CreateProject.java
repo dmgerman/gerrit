@@ -360,6 +360,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectJson
+operator|.
+name|ProjectInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -630,7 +648,10 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|ProjectInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|TopLevelResource

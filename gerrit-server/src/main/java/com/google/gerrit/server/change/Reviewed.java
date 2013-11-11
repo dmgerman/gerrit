@@ -246,7 +246,10 @@ annotation|@
 name|Override
 DECL|method|apply (FileResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|String
+argument_list|>
 name|apply
 parameter_list|(
 name|FileResource
@@ -394,7 +397,10 @@ annotation|@
 name|Override
 DECL|method|apply (FileResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|FileResource

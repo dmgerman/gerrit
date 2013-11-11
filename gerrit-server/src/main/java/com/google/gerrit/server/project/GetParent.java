@@ -162,7 +162,7 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource resource)
 specifier|public
-name|Object
+name|String
 name|apply
 parameter_list|(
 name|ProjectResource

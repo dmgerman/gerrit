@@ -375,20 +375,20 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
-name|Object
+name|IncludedInInfo
 name|apply
 parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
-name|IOException
-throws|,
 name|BadRequestException
 throws|,
 name|ResourceConflictException
+throws|,
+name|OrmException
+throws|,
+name|IOException
 block|{
 name|ChangeControl
 name|ctl

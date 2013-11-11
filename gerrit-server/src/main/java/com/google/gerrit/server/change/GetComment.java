@@ -168,7 +168,7 @@ annotation|@
 name|Override
 DECL|method|apply (CommentResource rsrc)
 specifier|public
-name|Object
+name|CommentInfo
 name|apply
 parameter_list|(
 name|CommentResource

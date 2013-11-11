@@ -535,7 +535,10 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -545,15 +548,15 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
+name|AuthException
+throws|,
 name|ResourceNotFoundException
 throws|,
-name|AuthException
+name|ResourceConflictException
 throws|,
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|ResourceConflictException
 block|{
 name|PatchSet
 name|patchSet

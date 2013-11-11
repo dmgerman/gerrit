@@ -317,7 +317,10 @@ annotation|@
 name|Override
 DECL|method|apply (AccountResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|AccountResource

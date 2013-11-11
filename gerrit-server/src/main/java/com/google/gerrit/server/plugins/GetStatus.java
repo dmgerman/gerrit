@@ -82,6 +82,24 @@ name|RestReadView
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
+name|ListPlugins
+operator|.
+name|PluginInfo
+import|;
+end_import
+
 begin_class
 DECL|class|GetStatus
 class|class
@@ -96,7 +114,7 @@ annotation|@
 name|Override
 DECL|method|apply (PluginResource resource)
 specifier|public
-name|Object
+name|PluginInfo
 name|apply
 parameter_list|(
 name|PluginResource
@@ -105,8 +123,6 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|ListPlugins
-operator|.
 name|PluginInfo
 argument_list|(
 name|resource

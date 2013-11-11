@@ -1024,24 +1024,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ResourceNotFoundException
-name|e
-parameter_list|)
-block|{
-name|error
-operator|=
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"could not add %s: not found"
-argument_list|,
-name|reviewer
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|Exception
 name|e
 parameter_list|)

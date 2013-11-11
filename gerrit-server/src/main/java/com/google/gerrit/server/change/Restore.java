@@ -604,7 +604,7 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource req, RestoreInput input)
 specifier|public
-name|Object
+name|ChangeInfo
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -614,13 +614,13 @@ name|RestoreInput
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
-name|IOException
-throws|,
 name|AuthException
 throws|,
 name|ResourceConflictException
+throws|,
+name|OrmException
+throws|,
+name|IOException
 block|{
 name|ChangeControl
 name|control

@@ -192,7 +192,12 @@ annotation|@
 name|Override
 DECL|method|apply (ConfigResource resource)
 specifier|public
-name|Object
+name|List
+argument_list|<
+name|TopMenu
+operator|.
+name|MenuEntry
+argument_list|>
 name|apply
 parameter_list|(
 name|ConfigResource

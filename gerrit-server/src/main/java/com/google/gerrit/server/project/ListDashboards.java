@@ -424,7 +424,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource resource)
 specifier|public
-name|Object
+name|List
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource

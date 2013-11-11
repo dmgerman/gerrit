@@ -680,7 +680,7 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource rsrc)
 specifier|public
-name|Object
+name|RelatedInfo
 name|apply
 parameter_list|(
 name|RevisionResource
