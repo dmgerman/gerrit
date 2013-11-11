@@ -73,6 +73,8 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|plugin
+operator|.
 name|client
 operator|.
 name|Plugin
