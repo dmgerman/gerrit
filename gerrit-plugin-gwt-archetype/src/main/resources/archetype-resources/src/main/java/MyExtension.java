@@ -112,7 +112,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"hello_gwt_plugins"
+literal|"hello_gwt_plugin"
 argument_list|)
 expr_stmt|;
 block|}

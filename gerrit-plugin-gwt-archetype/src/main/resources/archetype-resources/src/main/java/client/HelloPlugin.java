@@ -204,14 +204,14 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|/**  * HelloWorld Plugins.  */
+comment|/**  * HelloWorld Plugin.  */
 end_comment
 
 begin_class
-DECL|class|HelloPlugins
+DECL|class|HelloPlugin
 specifier|public
 class|class
-name|HelloPlugins
+name|HelloPlugin
 extends|extends
 name|Plugin
 block|{
