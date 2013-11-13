@@ -1450,6 +1450,8 @@ operator|new
 name|ProjectLevelConfig
 argument_list|(
 name|fileName
+argument_list|,
+name|this
 argument_list|)
 decl_stmt|;
 try|try
