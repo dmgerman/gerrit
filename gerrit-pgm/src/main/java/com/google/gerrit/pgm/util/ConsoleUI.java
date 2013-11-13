@@ -997,9 +997,6 @@ literal|"         %s\n"
 argument_list|,
 name|v
 operator|.
-name|toString
-argument_list|()
-operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)

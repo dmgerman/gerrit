@@ -676,9 +676,6 @@ operator|.
 name|encode
 argument_list|(
 name|message
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

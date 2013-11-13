@@ -208,9 +208,6 @@ name|accountInfo
 operator|.
 name|getFullName
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 return|return
