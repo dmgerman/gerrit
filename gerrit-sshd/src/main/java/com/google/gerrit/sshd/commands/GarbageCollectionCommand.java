@@ -357,6 +357,22 @@ name|boolean
 name|all
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--show-progress"
+argument_list|,
+name|usage
+operator|=
+literal|"progress information is shown"
+argument_list|)
+DECL|field|showProgress
+specifier|private
+name|boolean
+name|showProgress
+decl_stmt|;
+annotation|@
 name|Argument
 argument_list|(
 name|index
@@ -607,7 +623,11 @@ name|run
 argument_list|(
 name|projectNames
 argument_list|,
+name|showProgress
+condition|?
 name|stdout
+else|:
+literal|null
 argument_list|)
 decl_stmt|;
 if|if
