@@ -269,6 +269,8 @@ name|DefaultActions
 operator|.
 name|invokeProjectAction
 argument_list|(
+name|project
+argument_list|,
 name|action
 argument_list|,
 name|api
