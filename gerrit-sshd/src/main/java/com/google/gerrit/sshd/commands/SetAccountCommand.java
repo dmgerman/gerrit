@@ -690,10 +690,6 @@ name|name
 operator|=
 literal|"--add-email"
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|metaVar
 operator|=
 literal|"EMAIL"
@@ -723,10 +719,6 @@ argument_list|(
 name|name
 operator|=
 literal|"--delete-email"
-argument_list|,
-name|multiValued
-operator|=
-literal|true
 argument_list|,
 name|metaVar
 operator|=
@@ -758,10 +750,6 @@ name|name
 operator|=
 literal|"--add-ssh-key"
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|metaVar
 operator|=
 literal|"-|KEY"
@@ -791,10 +779,6 @@ argument_list|(
 name|name
 operator|=
 literal|"--delete-ssh-key"
-argument_list|,
-name|multiValued
-operator|=
-literal|true
 argument_list|,
 name|metaVar
 operator|=

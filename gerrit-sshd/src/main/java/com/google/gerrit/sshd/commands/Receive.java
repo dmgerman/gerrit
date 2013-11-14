@@ -516,10 +516,6 @@ block|{
 literal|"--re"
 block|}
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|metaVar
 operator|=
 literal|"EMAIL"
@@ -557,10 +553,6 @@ argument_list|,
 name|aliases
 operator|=
 block|{}
-argument_list|,
-name|multiValued
-operator|=
-literal|true
 argument_list|,
 name|metaVar
 operator|=

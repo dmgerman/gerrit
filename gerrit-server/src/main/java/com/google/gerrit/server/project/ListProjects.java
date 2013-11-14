@@ -886,10 +886,6 @@ block|{
 literal|"-b"
 block|}
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|usage
 operator|=
 literal|"displays the sha of each project in the specified branch"

@@ -862,10 +862,6 @@ name|name
 operator|=
 literal|"-o"
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|usage
 operator|=
 literal|"Output options per group"
