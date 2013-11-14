@@ -270,6 +270,16 @@ name|String
 name|keyReloadChange
 parameter_list|()
 function_decl|;
+DECL|method|keyNextPatchSet ()
+name|String
+name|keyNextPatchSet
+parameter_list|()
+function_decl|;
+DECL|method|keyPreviousPatchSet ()
+name|String
+name|keyPreviousPatchSet
+parameter_list|()
+function_decl|;
 DECL|method|keyReloadSearch ()
 name|String
 name|keyReloadSearch
