@@ -437,9 +437,6 @@ name|missing
 operator|.
 name|add
 argument_list|(
-operator|(
-name|CodeReviewCommit
-operator|)
 name|c
 argument_list|)
 expr_stmt|;

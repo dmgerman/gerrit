@@ -782,9 +782,6 @@ name|top
 init|=
 name|height
 operator|/
-operator|(
-name|double
-operator|)
 name|cmB
 operator|.
 name|getSizer

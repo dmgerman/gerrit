@@ -255,12 +255,7 @@ block|{
 return|return
 literal|"group:"
 operator|+
-operator|(
-operator|(
-name|SingleGroupUser
-operator|)
 name|user
-operator|)
 operator|.
 name|getEffectiveGroups
 argument_list|()
