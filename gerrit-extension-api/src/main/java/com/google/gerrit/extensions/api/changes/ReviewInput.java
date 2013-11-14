@@ -202,7 +202,7 @@ block|,
 name|PUBLISH
 block|,
 name|KEEP
-block|;   }
+block|}
 DECL|enum|NotifyHandling
 specifier|public
 specifier|static
@@ -220,7 +220,7 @@ block|,
 name|OWNER_REVIEWERS
 block|,
 name|ALL
-block|;   }
+block|}
 DECL|enum|Side
 specifier|public
 specifier|static
@@ -232,7 +232,7 @@ DECL|enumConstant|REVISION
 name|PARENT
 block|,
 name|REVISION
-block|;   }
+block|}
 DECL|class|Comment
 specifier|public
 specifier|static
