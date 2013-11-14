@@ -230,6 +230,11 @@ name|String
 name|changeTableNone
 parameter_list|()
 function_decl|;
+DECL|method|changeTableNotMergeable ()
+name|String
+name|changeTableNotMergeable
+parameter_list|()
+function_decl|;
 DECL|method|changeItemHelp ()
 name|String
 name|changeItemHelp
