@@ -168,6 +168,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|webui
+operator|.
+name|UiAction
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|git
@@ -275,13 +291,24 @@ name|ProjectResource
 argument_list|,
 name|Input
 argument_list|>
+implements|,
+name|UiAction
+argument_list|<
+name|ProjectResource
+argument_list|>
 block|{
 DECL|class|Input
 specifier|public
 specifier|static
 class|class
 name|Input
-block|{   }
+block|{
+DECL|field|showProgress
+specifier|public
+name|boolean
+name|showProgress
+decl_stmt|;
+block|}
 DECL|field|garbageCollectionFactory
 specifier|private
 name|GarbageCollection
@@ -309,7 +336,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (final ProjectResource rsrc, Input input)
+DECL|method|apply (final ProjectResource rsrc, final Input input)
 specifier|public
 name|BinaryResult
 name|apply
@@ -318,6 +345,7 @@ specifier|final
 name|ProjectResource
 name|rsrc
 parameter_list|,
+specifier|final
 name|Input
 name|input
 parameter_list|)
@@ -393,8 +421,19 @@ name|getNameKey
 argument_list|()
 argument_list|)
 argument_list|,
+name|input
+operator|.
+name|showProgress
+condition|?
 name|writer
+else|:
+literal|null
 argument_list|)
+decl_stmt|;
+name|String
+name|msg
+init|=
+literal|"garbage collection was successfully done"
 decl_stmt|;
 if|if
 condition|(
@@ -417,9 +456,6 @@ name|getErrors
 argument_list|()
 control|)
 block|{
-name|String
-name|msg
-decl_stmt|;
 switch|switch
 condition|(
 name|e
@@ -491,6 +527,8 @@ name|getType
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
 name|writer
 operator|.
 name|println
@@ -498,8 +536,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 finally|finally
 block|{
@@ -529,6 +565,37 @@ argument_list|)
 operator|.
 name|disableGzip
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getDescription (ProjectResource rsrc)
+specifier|public
+name|UiAction
+operator|.
+name|Description
+name|getDescription
+parameter_list|(
+name|ProjectResource
+name|rsrc
+parameter_list|)
+block|{
+return|return
+operator|new
+name|UiAction
+operator|.
+name|Description
+argument_list|()
+operator|.
+name|setLabel
+argument_list|(
+literal|"Run GC"
+argument_list|)
+operator|.
+name|setTitle
+argument_list|(
+literal|"Triggers the Git Garbage Collection for this project."
+argument_list|)
 return|;
 block|}
 block|}
