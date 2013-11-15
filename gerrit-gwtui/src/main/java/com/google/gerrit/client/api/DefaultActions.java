@@ -196,6 +196,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -361,11 +377,17 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|invokeProjectAction (ActionInfo action, RestApi api)
+DECL|method|invokeProjectAction (final Project.NameKey project, ActionInfo action, RestApi api)
 specifier|static
 name|void
 name|invokeProjectAction
 parameter_list|(
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
 name|ActionInfo
 name|action
 parameter_list|,
@@ -444,7 +466,10 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|ADMIN_PROJECTS
+name|toProject
+argument_list|(
+name|project
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
