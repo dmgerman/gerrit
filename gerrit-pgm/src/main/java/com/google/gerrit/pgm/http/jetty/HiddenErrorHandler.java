@@ -120,7 +120,7 @@ name|jetty
 operator|.
 name|http
 operator|.
-name|HttpHeaders
+name|HttpHeader
 import|;
 end_import
 
@@ -148,7 +148,7 @@ name|jetty
 operator|.
 name|server
 operator|.
-name|AbstractHttpConnection
+name|HttpConnection
 import|;
 end_import
 
@@ -289,18 +289,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|AbstractHttpConnection
+name|HttpConnection
 name|conn
 init|=
-name|AbstractHttpConnection
+name|HttpConnection
 operator|.
 name|getCurrentConnection
 argument_list|()
 decl_stmt|;
-name|conn
-operator|.
-name|getRequest
-argument_list|()
+name|baseRequest
 operator|.
 name|setHandled
 argument_list|(
@@ -326,12 +323,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|reply (AbstractHttpConnection conn, HttpServletResponse res)
+DECL|method|reply (HttpConnection conn, HttpServletResponse res)
 specifier|private
 name|void
 name|reply
 parameter_list|(
-name|AbstractHttpConnection
+name|HttpConnection
 name|conn
 parameter_list|,
 name|HttpServletResponse
@@ -353,9 +350,12 @@ name|res
 operator|.
 name|setHeader
 argument_list|(
-name|HttpHeaders
+name|HttpHeader
 operator|.
 name|CONTENT_TYPE
+operator|.
+name|asString
+argument_list|()
 argument_list|,
 literal|"text/plain; charset=ISO-8859-1"
 argument_list|)
@@ -409,14 +409,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|message (AbstractHttpConnection conn)
+DECL|method|message (HttpConnection conn)
 specifier|private
 specifier|static
 name|byte
 index|[]
 name|message
 parameter_list|(
-name|AbstractHttpConnection
+name|HttpConnection
 name|conn
 parameter_list|)
 block|{
@@ -424,6 +424,9 @@ name|String
 name|msg
 init|=
 name|conn
+operator|.
+name|getHttpChannel
+argument_list|()
 operator|.
 name|getResponse
 argument_list|()
@@ -445,6 +448,9 @@ operator|.
 name|getMessage
 argument_list|(
 name|conn
+operator|.
+name|getHttpChannel
+argument_list|()
 operator|.
 name|getResponse
 argument_list|()
