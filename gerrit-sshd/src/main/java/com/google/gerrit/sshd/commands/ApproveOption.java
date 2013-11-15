@@ -190,6 +190,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|kohsuke
+operator|.
+name|args4j
+operator|.
+name|spi
+operator|.
+name|FieldSetter
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -197,6 +211,18 @@ operator|.
 name|annotation
 operator|.
 name|Annotation
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|reflect
+operator|.
+name|AnnotatedElement
 import|;
 end_import
 
@@ -290,6 +316,34 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|depends ()
+specifier|public
+name|String
+index|[]
+name|depends
+parameter_list|()
+block|{
+return|return
+operator|new
+name|String
+index|[]
+block|{}
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hidden ()
+specifier|public
+name|boolean
+name|hidden
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|handler ()
 specifier|public
 name|Class
@@ -320,18 +374,6 @@ parameter_list|()
 block|{
 return|return
 literal|"N"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|multiValued ()
-specifier|public
-name|boolean
-name|multiValued
-parameter_list|()
-block|{
-return|return
-literal|false
 return|;
 block|}
 annotation|@
@@ -396,6 +438,34 @@ block|{
 return|return
 literal|null
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|asFieldSetter ()
+specifier|public
+name|FieldSetter
+name|asFieldSetter
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|asAnnotatedElement ()
+specifier|public
+name|AnnotatedElement
+name|asAnnotatedElement
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 annotation|@
 name|Override

@@ -416,10 +416,6 @@ name|metaVar
 operator|=
 literal|"QUERY"
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|usage
 operator|=
 literal|"Query string"
@@ -476,10 +472,6 @@ argument_list|(
 name|name
 operator|=
 literal|"-o"
-argument_list|,
-name|multiValued
-operator|=
-literal|true
 argument_list|,
 name|usage
 operator|=

@@ -241,10 +241,6 @@ name|name
 operator|=
 literal|"-s"
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|metaVar
 operator|=
 literal|"FILE.pl"

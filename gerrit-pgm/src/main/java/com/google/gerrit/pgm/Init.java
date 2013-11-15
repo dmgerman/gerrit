@@ -476,10 +476,6 @@ argument_list|,
 name|usage
 operator|=
 literal|"Install given plugin without asking"
-argument_list|,
-name|multiValued
-operator|=
-literal|true
 argument_list|)
 DECL|field|installPlugins
 specifier|private

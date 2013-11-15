@@ -665,10 +665,6 @@ name|metaVar
 operator|=
 literal|"CAP"
 argument_list|,
-name|multiValued
-operator|=
-literal|true
-argument_list|,
 name|usage
 operator|=
 literal|"Capability to inspect"
