@@ -156,6 +156,24 @@ name|server
 operator|.
 name|plugins
 operator|.
+name|ListPlugins
+operator|.
+name|PluginInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
 name|ReloadPlugin
 operator|.
 name|Input
@@ -244,7 +262,7 @@ annotation|@
 name|Override
 DECL|method|apply (PluginResource resource, Input input)
 specifier|public
-name|Object
+name|PluginInfo
 name|apply
 parameter_list|(
 name|PluginResource
@@ -357,8 +375,6 @@ throw|;
 block|}
 return|return
 operator|new
-name|ListPlugins
-operator|.
 name|PluginInfo
 argument_list|(
 name|loader

@@ -102,22 +102,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|NoSuchGroupException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|restapi
@@ -534,7 +518,10 @@ annotation|@
 name|Override
 DECL|method|apply (GroupResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|GroupResource
@@ -1061,7 +1048,10 @@ annotation|@
 name|Override
 DECL|method|apply (MemberResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|MemberResource
@@ -1078,8 +1068,6 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
-throws|,
-name|NoSuchGroupException
 block|{
 name|AddMembers
 operator|.

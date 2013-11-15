@@ -434,22 +434,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|BinaryResult
 import|;
 end_import
@@ -775,9 +759,7 @@ name|AccountResource
 name|resource
 parameter_list|)
 throws|throws
-name|BadRequestException
-throws|,
-name|Exception
+name|AuthException
 block|{
 if|if
 condition|(
@@ -1506,7 +1488,7 @@ annotation|@
 name|Override
 DECL|method|apply (Capability resource)
 specifier|public
-name|Object
+name|BinaryResult
 name|apply
 parameter_list|(
 name|Capability

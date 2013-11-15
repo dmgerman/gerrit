@@ -665,11 +665,11 @@ name|BadRequestException
 throws|,
 name|ResourceConflictException
 throws|,
+name|ResourceNotFoundException
+throws|,
 name|EmailException
 throws|,
 name|OrmException
-throws|,
-name|ResourceNotFoundException
 throws|,
 name|IOException
 block|{

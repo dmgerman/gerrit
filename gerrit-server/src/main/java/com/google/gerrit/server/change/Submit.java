@@ -390,6 +390,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
+name|ChangeJson
+operator|.
+name|ChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -2153,7 +2171,7 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc, SubmitInput input)
 specifier|public
-name|Object
+name|ChangeInfo
 name|apply
 parameter_list|(
 name|ChangeResource

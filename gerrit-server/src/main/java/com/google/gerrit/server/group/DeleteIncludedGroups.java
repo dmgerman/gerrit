@@ -152,22 +152,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|MethodNotAllowedException
 import|;
 end_import
@@ -548,7 +532,10 @@ annotation|@
 name|Override
 DECL|method|apply (GroupResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|GroupResource
@@ -558,11 +545,9 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
-throws|,
 name|AuthException
 throws|,
-name|BadRequestException
+name|MethodNotAllowedException
 throws|,
 name|UnprocessableEntityException
 throws|,
@@ -1048,7 +1033,10 @@ annotation|@
 name|Override
 DECL|method|apply (IncludedGroupResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|IncludedGroupResource
@@ -1058,11 +1046,9 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
-throws|,
 name|AuthException
 throws|,
-name|BadRequestException
+name|MethodNotAllowedException
 throws|,
 name|UnprocessableEntityException
 throws|,

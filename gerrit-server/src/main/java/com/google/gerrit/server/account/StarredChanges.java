@@ -1120,8 +1120,6 @@ name|in
 parameter_list|)
 throws|throws
 name|AuthException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(

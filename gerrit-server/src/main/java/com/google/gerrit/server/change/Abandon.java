@@ -156,22 +156,6 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
 name|ResourceConflictException
 import|;
 end_import
@@ -602,7 +586,7 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource req, AbandonInput input)
 specifier|public
-name|Object
+name|ChangeInfo
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -612,8 +596,6 @@ name|AbandonInput
 name|input
 parameter_list|)
 throws|throws
-name|BadRequestException
-throws|,
 name|AuthException
 throws|,
 name|ResourceConflictException

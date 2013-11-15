@@ -96,20 +96,6 @@ name|RestReadView
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
 begin_class
 DECL|class|GetTopic
 class|class
@@ -124,14 +110,12 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
-name|Object
+name|String
 name|apply
 parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 name|Strings

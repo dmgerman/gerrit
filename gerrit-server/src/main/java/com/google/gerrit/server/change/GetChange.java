@@ -136,6 +136,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|ChangeJson
+operator|.
+name|ChangeInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -283,7 +301,10 @@ annotation|@
 name|Override
 DECL|method|apply (ChangeResource rsrc)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|ChangeInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ChangeResource
@@ -305,7 +326,10 @@ argument_list|)
 return|;
 block|}
 DECL|method|apply (RevisionResource rsrc)
-name|Object
+name|Response
+argument_list|<
+name|ChangeInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -326,12 +350,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|cache (Object res)
+DECL|method|cache (ChangeInfo res)
 specifier|private
-name|Object
+name|Response
+argument_list|<
+name|ChangeInfo
+argument_list|>
 name|cache
 parameter_list|(
-name|Object
+name|ChangeInfo
 name|res
 parameter_list|)
 block|{

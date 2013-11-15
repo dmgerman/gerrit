@@ -581,7 +581,10 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource rsrc, Input input)
 specifier|public
-name|Object
+name|List
+argument_list|<
+name|Record
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -591,11 +594,11 @@ name|Input
 name|input
 parameter_list|)
 throws|throws
-name|OrmException
+name|AuthException
 throws|,
 name|BadRequestException
 throws|,
-name|AuthException
+name|OrmException
 block|{
 if|if
 condition|(

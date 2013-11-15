@@ -229,7 +229,10 @@ annotation|@
 name|Override
 DECL|method|apply (DraftResource rsrc, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|CommentInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|DraftResource

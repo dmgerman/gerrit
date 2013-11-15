@@ -1385,7 +1385,7 @@ annotation|@
 name|Override
 DECL|method|apply (GroupResource resource, PutMember.Input input)
 specifier|public
-name|Object
+name|AccountInfo
 name|apply
 parameter_list|(
 name|GroupResource
@@ -1517,7 +1517,7 @@ annotation|@
 name|Override
 DECL|method|apply (MemberResource resource, PutMember.Input input)
 specifier|public
-name|Object
+name|AccountInfo
 name|apply
 parameter_list|(
 name|MemberResource

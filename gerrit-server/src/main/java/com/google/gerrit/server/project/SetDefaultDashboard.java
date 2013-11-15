@@ -368,6 +368,16 @@ name|Option
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|SetDefaultDashboard
 class|class
@@ -477,7 +487,10 @@ annotation|@
 name|Override
 DECL|method|apply (DashboardResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|DashboardInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|DashboardResource
@@ -493,7 +506,9 @@ name|BadRequestException
 throws|,
 name|ResourceConflictException
 throws|,
-name|Exception
+name|ResourceNotFoundException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -615,6 +630,23 @@ operator|.
 name|id
 operator|+
 literal|" not found"
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|ConfigInvalidException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -794,7 +826,12 @@ operator|=
 literal|true
 expr_stmt|;
 return|return
+name|Response
+operator|.
+name|ok
+argument_list|(
 name|info
+argument_list|)
 return|;
 block|}
 return|return
@@ -920,7 +957,10 @@ annotation|@
 name|Override
 DECL|method|apply (ProjectResource resource, Input input)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|DashboardInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ProjectResource
@@ -936,7 +976,9 @@ name|BadRequestException
 throws|,
 name|ResourceConflictException
 throws|,
-name|Exception
+name|ResourceNotFoundException
+throws|,
+name|IOException
 block|{
 name|SetDefaultDashboard
 name|set
@@ -953,10 +995,6 @@ operator|=
 name|inherited
 expr_stmt|;
 return|return
-name|Response
-operator|.
-name|created
-argument_list|(
 name|set
 operator|.
 name|apply
@@ -972,7 +1010,6 @@ argument_list|()
 argument_list|)
 argument_list|,
 name|input
-argument_list|)
 argument_list|)
 return|;
 block|}

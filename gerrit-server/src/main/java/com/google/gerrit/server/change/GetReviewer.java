@@ -88,6 +88,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|ReviewerJson
+operator|.
+name|ReviewerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -105,6 +123,16 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -145,7 +173,10 @@ annotation|@
 name|Override
 DECL|method|apply (ReviewerResource rsrc)
 specifier|public
-name|Object
+name|List
+argument_list|<
+name|ReviewerInfo
+argument_list|>
 name|apply
 parameter_list|(
 name|ReviewerResource

@@ -946,7 +946,7 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource revision, ReviewInput input)
 specifier|public
-name|Object
+name|Output
 name|apply
 parameter_list|(
 name|RevisionResource
@@ -960,9 +960,9 @@ name|AuthException
 throws|,
 name|BadRequestException
 throws|,
-name|OrmException
-throws|,
 name|UnprocessableEntityException
+throws|,
+name|OrmException
 throws|,
 name|IOException
 block|{
