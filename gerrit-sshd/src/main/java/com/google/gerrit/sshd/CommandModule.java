@@ -254,9 +254,6 @@ block|{
 name|CommandMetaData
 name|meta
 init|=
-operator|(
-name|CommandMetaData
-operator|)
 name|clazz
 operator|.
 name|getAnnotation
@@ -334,9 +331,6 @@ block|{
 name|CommandMetaData
 name|meta
 init|=
-operator|(
-name|CommandMetaData
-operator|)
 name|clazz
 operator|.
 name|getAnnotation
