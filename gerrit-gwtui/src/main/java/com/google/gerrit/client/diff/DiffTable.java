@@ -327,11 +327,6 @@ name|String
 name|activeLine
 parameter_list|()
 function_decl|;
-DECL|method|hideNumber ()
-name|String
-name|hideNumber
-parameter_list|()
-function_decl|;
 DECL|method|range ()
 name|String
 name|range
