@@ -1703,7 +1703,7 @@ literal|"Invalid config file "
 operator|+
 name|fileName
 operator|+
-literal|" in commit"
+literal|" in commit "
 operator|+
 name|revision
 operator|.
