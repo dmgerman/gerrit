@@ -438,6 +438,28 @@ name|String
 name|defaultValue
 parameter_list|)
 block|{
+if|if
+condition|(
+name|defaultValue
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|cfg
+operator|.
+name|getString
+argument_list|(
+name|PLUGIN
+argument_list|,
+name|pluginName
+argument_list|,
+name|name
+argument_list|)
+return|;
+block|}
+else|else
+block|{
 return|return
 name|Objects
 operator|.
@@ -457,6 +479,7 @@ argument_list|,
 name|defaultValue
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|getStringList (String name)
 specifier|public
