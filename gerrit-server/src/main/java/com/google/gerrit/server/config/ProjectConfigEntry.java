@@ -112,6 +112,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -701,6 +717,22 @@ parameter_list|()
 block|{
 return|return
 name|permittedValues
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|isEditable (ProjectState project)
+specifier|public
+name|boolean
+name|isEditable
+parameter_list|(
+name|ProjectState
+name|project
+parameter_list|)
+block|{
+return|return
+literal|true
 return|;
 block|}
 end_function

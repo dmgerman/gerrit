@@ -836,6 +836,15 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value; }-*/
 function_decl|;
+DECL|method|editable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|editable
+parameter_list|()
+comment|/*-{ return this.editable ? true : false; }-*/
+function_decl|;
 DECL|method|inheritable ()
 specifier|public
 specifier|final
