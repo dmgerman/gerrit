@@ -1552,8 +1552,6 @@ condition|)
 block|{
 name|String
 name|projectNameCandidate
-init|=
-literal|null
 decl_stmt|;
 specifier|final
 name|String

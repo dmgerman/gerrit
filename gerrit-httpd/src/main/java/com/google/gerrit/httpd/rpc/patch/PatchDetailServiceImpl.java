@@ -1029,8 +1029,6 @@ name|Failure
 block|{
 name|ReviewResult
 name|result
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

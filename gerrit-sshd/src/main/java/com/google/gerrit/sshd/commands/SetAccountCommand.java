@@ -1856,8 +1856,6 @@ condition|)
 block|{
 name|String
 name|sshKey
-init|=
-literal|""
 decl_stmt|;
 name|int
 name|idx

@@ -824,8 +824,6 @@ argument_list|)
 decl_stmt|;
 name|PersonIdent
 name|cherryPickCommitterIdent
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

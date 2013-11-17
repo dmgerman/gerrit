@@ -810,8 +810,6 @@ expr_stmt|;
 block|}
 name|Anchor
 name|baseLink
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

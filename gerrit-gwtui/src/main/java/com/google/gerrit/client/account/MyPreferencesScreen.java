@@ -1430,9 +1430,6 @@ argument_list|,
 name|diffView
 argument_list|)
 expr_stmt|;
-name|row
-operator|++
-expr_stmt|;
 name|add
 argument_list|(
 name|formGrid

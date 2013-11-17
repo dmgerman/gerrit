@@ -1563,10 +1563,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|sources
-operator|=
-literal|null
-expr_stmt|;
 name|List
 argument_list|<
 name|List

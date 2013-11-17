@@ -918,7 +918,6 @@ operator|.
 name|setText
 argument_list|(
 name|row
-operator|++
 argument_list|,
 name|fieldIdx
 argument_list|,

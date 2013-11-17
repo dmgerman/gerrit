@@ -1995,8 +1995,6 @@ argument_list|)
 expr_stmt|;
 name|boolean
 name|couldMerge
-init|=
-literal|false
 decl_stmt|;
 try|try
 block|{

@@ -162,7 +162,6 @@ expr_stmt|;
 name|enc
 index|[
 name|o
-operator|++
 index|]
 operator|=
 literal|'.'

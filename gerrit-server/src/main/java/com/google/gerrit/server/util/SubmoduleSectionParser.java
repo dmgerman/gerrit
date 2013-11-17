@@ -551,8 +551,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|projectName
-init|=
-name|urlExtractedPath
 decl_stmt|;
 name|int
 name|fromIndex

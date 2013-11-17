@@ -558,8 +558,6 @@ name|Failure
 block|{
 name|Account
 name|userAccount
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

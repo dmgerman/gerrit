@@ -2653,8 +2653,6 @@ control|)
 block|{
 name|String
 name|usage
-init|=
-literal|""
 decl_stmt|;
 name|usage
 operator|=
