@@ -599,7 +599,7 @@ return|return
 name|next
 operator|!=
 literal|null
-condition|?
+operator|&&
 name|next
 operator|.
 name|match
@@ -608,8 +608,6 @@ name|ref
 argument_list|,
 name|username
 argument_list|)
-else|:
-literal|false
 return|;
 block|}
 DECL|method|matchPrefix (String ref)
