@@ -1485,9 +1485,7 @@ return|return
 name|p
 operator|==
 literal|null
-condition|?
-literal|true
-else|:
+operator|||
 name|p
 operator|.
 name|match

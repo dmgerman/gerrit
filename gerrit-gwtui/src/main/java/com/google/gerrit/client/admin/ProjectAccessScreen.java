@@ -1991,7 +1991,7 @@ operator|.
 name|setEnabled
 argument_list|(
 name|enabled
-condition|?
+operator|&&
 operator|!
 name|access
 operator|.
@@ -2000,8 +2000,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-else|:
-literal|false
 argument_list|)
 expr_stmt|;
 name|review

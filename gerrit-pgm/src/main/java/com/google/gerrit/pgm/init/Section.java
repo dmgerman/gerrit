@@ -1272,15 +1272,13 @@ return|return
 name|a
 operator|!=
 literal|null
-condition|?
+operator|&&
 name|a
 operator|.
 name|equals
 argument_list|(
 name|b
 argument_list|)
-else|:
-literal|false
 return|;
 block|}
 block|}
