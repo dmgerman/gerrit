@@ -375,7 +375,6 @@ argument_list|,
 name|ds
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 catch|catch

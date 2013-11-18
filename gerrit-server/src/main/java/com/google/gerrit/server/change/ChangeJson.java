@@ -3712,7 +3712,6 @@ name|score
 expr_stmt|;
 block|}
 block|}
-return|return;
 block|}
 DECL|method|setAllApprovals (ChangeData cd, Map<String, LabelInfo> labels)
 specifier|private

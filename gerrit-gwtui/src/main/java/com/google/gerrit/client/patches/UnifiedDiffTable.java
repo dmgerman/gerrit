@@ -722,8 +722,8 @@ expr_stmt|;
 name|borderRowOfFileComment
 operator|++
 expr_stmt|;
-return|return;
 block|}
+elseif|else
 if|if
 condition|(
 name|idSideB
@@ -737,7 +737,6 @@ block|{
 name|borderRowOfFileComment
 operator|++
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
@@ -966,8 +965,8 @@ expr_stmt|;
 name|borderRowOfFileComment
 operator|--
 expr_stmt|;
-return|return;
 block|}
+elseif|else
 if|if
 condition|(
 name|idSideB
@@ -981,7 +980,6 @@ block|{
 name|borderRowOfFileComment
 operator|--
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
@@ -1123,7 +1121,6 @@ argument_list|,
 name|FILE_SIDE_A
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 DECL|method|createFileCommentEditorOnSideB ()
 specifier|protected

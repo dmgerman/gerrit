@@ -7700,7 +7700,6 @@ argument_list|,
 literal|"no common ancestry"
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 finally|finally
@@ -7743,7 +7742,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 DECL|method|readHEAD (Repository repo)
