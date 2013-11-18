@@ -424,22 +424,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|ChangeIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|mail
 operator|.
 name|ReplacePatchSetSender
@@ -911,11 +895,11 @@ operator|.
 name|Factory
 name|commitValidatorsFactory
 decl_stmt|;
-DECL|field|indexer
+DECL|field|mergeabilityChecker
 specifier|private
 specifier|final
-name|ChangeIndexer
-name|indexer
+name|MergeabilityChecker
+name|mergeabilityChecker
 decl_stmt|;
 DECL|field|replacePatchSetFactory
 specifier|private
@@ -1009,7 +993,7 @@ name|sendMail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetInserter (ChangeHooks hooks, TrackingFooters trackingFooters, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, ChangeIndexer indexer, ReplacePatchSetSender.Factory replacePatchSetFactory, MergeUtil.Factory mergeUtilFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted IdentifiedUser user, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ChangeHooks hooks, TrackingFooters trackingFooters, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, MergeabilityChecker mergeabilityChecker, ReplacePatchSetSender.Factory replacePatchSetFactory, MergeUtil.Factory mergeUtilFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted IdentifiedUser user, @Assisted Change change, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
@@ -1033,8 +1017,8 @@ operator|.
 name|Factory
 name|commitValidatorsFactory
 parameter_list|,
-name|ChangeIndexer
-name|indexer
+name|MergeabilityChecker
+name|mergeabilityChecker
 parameter_list|,
 name|ReplacePatchSetSender
 operator|.
@@ -1121,9 +1105,9 @@ name|commitValidatorsFactory
 expr_stmt|;
 name|this
 operator|.
-name|indexer
+name|mergeabilityChecker
 operator|=
-name|indexer
+name|mergeabilityChecker
 expr_stmt|;
 name|this
 operator|.
@@ -2206,13 +2190,13 @@ name|?
 argument_list|,
 name|IOException
 argument_list|>
-name|e
+name|f
 init|=
-name|indexer
+name|mergeabilityChecker
 operator|.
-name|indexAsync
+name|updateAndIndexAsync
 argument_list|(
-name|updatedChange
+name|change
 argument_list|)
 decl_stmt|;
 if|if
@@ -2232,7 +2216,7 @@ name|db
 argument_list|)
 expr_stmt|;
 block|}
-name|e
+name|f
 operator|.
 name|checkedGet
 argument_list|()
