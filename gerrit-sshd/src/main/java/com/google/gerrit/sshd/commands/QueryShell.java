@@ -2675,7 +2675,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 comment|/**    * Outputs a result set to stdout in plain text format.    *    * @param rs ResultSet to show.    * @param alreadyOnRow true if rs is already on the first row. false    *     otherwise.    * @param start Timestamp in milliseconds when executing the statement    *     started. This timestamp is used to compute statistics about the    *     statement. If no statistics should be shown, set it to 0.    * @param show Functions to map columns    * @throws SQLException    */

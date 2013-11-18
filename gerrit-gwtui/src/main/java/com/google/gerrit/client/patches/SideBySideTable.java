@@ -610,7 +610,6 @@ argument_list|,
 name|FILE_SIDE_A
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 DECL|method|createFileCommentEditorOnSideB ()
 specifier|protected
@@ -631,7 +630,6 @@ argument_list|,
 name|FILE_SIDE_B
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 annotation|@
 name|Override

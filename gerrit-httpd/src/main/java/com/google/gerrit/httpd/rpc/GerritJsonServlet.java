@@ -724,7 +724,6 @@ name|NotSignedInException
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
