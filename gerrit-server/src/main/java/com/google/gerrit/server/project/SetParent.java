@@ -489,6 +489,8 @@ argument_list|,
 name|input
 operator|.
 name|parent
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|IdentifiedUser
@@ -719,7 +721,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|validateParentUpdate (final ProjectControl ctl, String newParent)
+DECL|method|validateParentUpdate (final ProjectControl ctl, String newParent, boolean checkIfAdmin)
 specifier|public
 name|void
 name|validateParentUpdate
@@ -730,6 +732,9 @@ name|ctl
 parameter_list|,
 name|String
 name|newParent
+parameter_list|,
+name|boolean
+name|checkIfAdmin
 parameter_list|)
 throws|throws
 name|AuthException
@@ -751,6 +756,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|checkIfAdmin
+operator|&&
 operator|!
 name|user
 operator|.
