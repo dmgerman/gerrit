@@ -254,9 +254,6 @@ operator|.
 name|center
 argument_list|()
 expr_stmt|;
-name|redisplay
-argument_list|()
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -268,6 +265,9 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+name|redisplay
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
