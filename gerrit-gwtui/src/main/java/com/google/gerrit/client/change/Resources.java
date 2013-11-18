@@ -189,26 +189,6 @@ name|ImageResource
 name|star_filled
 parameter_list|()
 function_decl|;
-DECL|method|reload_black ()
-annotation|@
-name|Source
-argument_list|(
-literal|"reload_black.png"
-argument_list|)
-name|ImageResource
-name|reload_black
-parameter_list|()
-function_decl|;
-DECL|method|reload_white ()
-annotation|@
-name|Source
-argument_list|(
-literal|"reload_white.png"
-argument_list|)
-name|ImageResource
-name|reload_white
-parameter_list|()
-function_decl|;
 DECL|method|remove_reviewer ()
 annotation|@
 name|Source
