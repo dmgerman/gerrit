@@ -1074,9 +1074,6 @@ block|{
 return|return
 name|Collections
 operator|.
-expr|<
-name|AccountInfo
-operator|>
 name|emptyList
 argument_list|()
 return|;

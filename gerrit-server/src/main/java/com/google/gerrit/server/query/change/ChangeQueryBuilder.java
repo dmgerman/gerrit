@@ -1173,9 +1173,6 @@ block|{
 name|SortKeyPredicate
 name|after
 init|=
-operator|(
-name|SortKeyPredicate
-operator|)
 name|find
 argument_list|(
 name|p

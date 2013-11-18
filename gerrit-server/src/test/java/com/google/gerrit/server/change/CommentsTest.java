@@ -1483,9 +1483,6 @@ block|}
 name|CommentInfo
 name|actual
 init|=
-operator|(
-name|CommentInfo
-operator|)
 name|getComment
 operator|.
 name|apply
