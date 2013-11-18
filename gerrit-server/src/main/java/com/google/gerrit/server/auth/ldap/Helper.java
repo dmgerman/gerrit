@@ -1477,6 +1477,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|account
 operator|=
 name|findAccount
@@ -1488,6 +1490,33 @@ argument_list|,
 name|username
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AccountException
+name|e
+parameter_list|)
+block|{
+name|LdapRealm
+operator|.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Account "
+operator|+
+name|username
+operator|+
+literal|" not found, assuming empty group membership"
+argument_list|)
+expr_stmt|;
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
 block|}
 for|for
 control|(
@@ -1593,6 +1622,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|account
 operator|=
 name|findAccount
@@ -1604,6 +1635,33 @@ argument_list|,
 name|username
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AccountException
+name|e
+parameter_list|)
+block|{
+name|LdapRealm
+operator|.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Account "
+operator|+
+name|username
+operator|+
+literal|" not found, assuming empty group membership"
+argument_list|)
+expr_stmt|;
+return|return
+name|Collections
+operator|.
+name|emptySet
+argument_list|()
+return|;
+block|}
 block|}
 specifier|final
 name|Attribute
