@@ -533,6 +533,11 @@ name|String
 name|drafts
 parameter_list|()
 function_decl|;
+DECL|method|editHeadButton ()
+name|String
+name|editHeadButton
+parameter_list|()
+function_decl|;
 DECL|method|emptySection ()
 name|String
 name|emptySection
