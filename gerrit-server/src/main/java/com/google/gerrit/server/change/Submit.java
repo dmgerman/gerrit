@@ -1217,9 +1217,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ChangeMessage
-name|msg
-init|=
+return|return
 name|Iterables
 operator|.
 name|getFirst
@@ -1286,9 +1284,6 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-return|return
-name|msg
 return|;
 block|}
 DECL|method|submit (RevisionResource rsrc, IdentifiedUser caller)

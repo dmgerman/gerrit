@@ -1769,10 +1769,7 @@ argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
-specifier|final
-name|AccountState
-name|s
-init|=
+return|return
 operator|new
 name|AccountState
 argument_list|(
@@ -1796,9 +1793,6 @@ operator|>
 name|emptySet
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|s
 return|;
 block|}
 block|}

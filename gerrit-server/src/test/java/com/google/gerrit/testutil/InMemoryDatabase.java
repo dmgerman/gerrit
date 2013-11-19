@@ -398,18 +398,12 @@ name|dbCnt
 operator|)
 argument_list|)
 expr_stmt|;
-specifier|final
-name|DataSource
-name|dataSource
-init|=
+return|return
 operator|new
 name|SimpleDataSource
 argument_list|(
 name|p
 argument_list|)
-decl_stmt|;
-return|return
-name|dataSource
 return|;
 block|}
 comment|/** Drop the database from memory; does nothing if the instance was null. */

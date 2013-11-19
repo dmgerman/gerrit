@@ -697,9 +697,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|Change
-name|updatedChange
-init|=
+return|return
 name|dbProvider
 operator|.
 name|get
@@ -774,9 +772,6 @@ return|;
 block|}
 block|}
 argument_list|)
-decl_stmt|;
-return|return
-name|updatedChange
 return|;
 block|}
 DECL|method|updateDraftPatchSet (RevisionResource rsrc)
@@ -790,10 +785,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
-name|PatchSet
-name|updatedPatchSet
-init|=
+return|return
 name|dbProvider
 operator|.
 name|get
@@ -842,9 +834,6 @@ return|;
 block|}
 block|}
 argument_list|)
-decl_stmt|;
-return|return
-name|updatedPatchSet
 return|;
 block|}
 annotation|@
