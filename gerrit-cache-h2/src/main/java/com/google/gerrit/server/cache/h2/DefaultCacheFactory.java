@@ -870,16 +870,19 @@ argument_list|>
 name|newCacheBuilder
 parameter_list|()
 block|{
+return|return
+operator|(
 name|CacheBuilder
-name|builder
-init|=
+argument_list|<
+name|K
+argument_list|,
+name|V
+argument_list|>
+operator|)
 name|CacheBuilder
 operator|.
 name|newBuilder
 argument_list|()
-decl_stmt|;
-return|return
-name|builder
 return|;
 block|}
 DECL|method|unitWeight ()

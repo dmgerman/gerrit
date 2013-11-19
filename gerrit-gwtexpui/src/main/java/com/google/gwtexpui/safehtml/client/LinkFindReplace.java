@@ -264,9 +264,7 @@ name|href
 argument_list|)
 throw|;
 block|}
-name|String
-name|result
-init|=
+return|return
 operator|new
 name|SafeHtmlBuilder
 argument_list|()
@@ -296,9 +294,6 @@ argument_list|()
 operator|.
 name|asString
 argument_list|()
-decl_stmt|;
-return|return
-name|result
 return|;
 block|}
 annotation|@

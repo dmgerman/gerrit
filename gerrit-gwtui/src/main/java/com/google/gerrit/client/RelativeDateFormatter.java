@@ -691,17 +691,12 @@ name|long
 name|unit
 parameter_list|)
 block|{
-name|long
-name|limit
-init|=
+return|return
 name|unit
 operator|+
 name|unit
 operator|/
 literal|2
-decl_stmt|;
-return|return
-name|limit
 return|;
 block|}
 DECL|method|round (long n, long unit)
@@ -717,9 +712,7 @@ name|long
 name|unit
 parameter_list|)
 block|{
-name|long
-name|rounded
-init|=
+return|return
 operator|(
 name|n
 operator|+
@@ -729,9 +722,6 @@ literal|2
 operator|)
 operator|/
 name|unit
-decl_stmt|;
-return|return
-name|rounded
 return|;
 block|}
 block|}

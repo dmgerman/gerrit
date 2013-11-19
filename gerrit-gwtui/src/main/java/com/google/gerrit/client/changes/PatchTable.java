@@ -1420,9 +1420,7 @@ return|return
 literal|null
 return|;
 block|}
-name|InlineHyperlink
-name|link
-init|=
+return|return
 name|createLink
 argument_list|(
 name|previousPatchIndex
@@ -1443,9 +1441,6 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-return|return
-name|link
 return|;
 block|}
 comment|/**    * @return a link to the next file in this patch set, or null.    */
@@ -1486,9 +1481,7 @@ return|return
 literal|null
 return|;
 block|}
-name|InlineHyperlink
-name|link
-init|=
+return|return
 name|createLink
 argument_list|(
 name|nextPatchIndex
@@ -1509,9 +1502,6 @@ name|nextPatchLinkIcon
 argument_list|()
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|link
 return|;
 block|}
 comment|/**    * @return a link to the the given patch.    * @param index The patch to link to    * @param patchType The type of patch display    * @param before A string to display at the beginning of the href text    * @param after A string to display at the end of the href text    */

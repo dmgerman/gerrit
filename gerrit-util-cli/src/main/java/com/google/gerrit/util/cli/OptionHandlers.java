@@ -563,6 +563,11 @@ literal|0
 index|]
 return|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|cast (Binding<?> e)
 specifier|private
 specifier|static
@@ -582,20 +587,7 @@ argument_list|>
 name|e
 parameter_list|)
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-name|Binding
-argument_list|<
-name|OptionHandlerFactory
-argument_list|<
-name|?
-argument_list|>
-argument_list|>
-name|b
-init|=
+return|return
 operator|(
 name|Binding
 argument_list|<
@@ -606,9 +598,6 @@ argument_list|>
 argument_list|>
 operator|)
 name|e
-decl_stmt|;
-return|return
-name|b
 return|;
 block|}
 block|}
