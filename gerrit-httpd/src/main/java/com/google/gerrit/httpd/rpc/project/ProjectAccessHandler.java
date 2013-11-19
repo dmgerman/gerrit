@@ -1005,6 +1005,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|boolean
+name|parentProjectUpdate
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1044,6 +1049,10 @@ name|parentProjectName
 argument_list|)
 condition|)
 block|{
+name|parentProjectUpdate
+operator|=
+literal|true
+expr_stmt|;
 try|try
 block|{
 name|setParent
@@ -1059,6 +1068,8 @@ name|parentProjectName
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|checkIfOwner
 argument_list|)
 expr_stmt|;
 block|}
@@ -1072,10 +1083,11 @@ throw|throw
 operator|new
 name|UpdateParentFailedException
 argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"You are not allowed to change the parent project since you are "
+operator|+
+literal|"not an administrator. You may save the modifications for review "
+operator|+
+literal|"so that an administrator can approve them."
 argument_list|,
 name|e
 argument_list|)
@@ -1183,6 +1195,8 @@ argument_list|(
 name|config
 argument_list|,
 name|md
+argument_list|,
+name|parentProjectUpdate
 argument_list|)
 return|;
 block|}
@@ -1195,7 +1209,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|updateProjectConfig (ProjectConfig config, MetaDataUpdate md)
+DECL|method|updateProjectConfig (ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 specifier|abstract
 name|T
@@ -1206,6 +1220,9 @@ name|config
 parameter_list|,
 name|MetaDataUpdate
 name|md
+parameter_list|,
+name|boolean
+name|parentProjectUpdate
 parameter_list|)
 throws|throws
 name|IOException

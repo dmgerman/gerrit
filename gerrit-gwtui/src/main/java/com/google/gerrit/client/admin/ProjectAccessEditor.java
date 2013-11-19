@@ -822,11 +822,6 @@ operator|.
 name|setVisible
 argument_list|(
 name|editing
-operator|&&
-name|value
-operator|.
-name|canChangeParent
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|parentProjectBox

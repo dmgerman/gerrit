@@ -542,7 +542,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateProjectConfig (ProjectConfig config, MetaDataUpdate md)
+DECL|method|updateProjectConfig (ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|ProjectAccess
 name|updateProjectConfig
@@ -552,6 +552,9 @@ name|config
 parameter_list|,
 name|MetaDataUpdate
 name|md
+parameter_list|,
+name|boolean
+name|parentProjectUpdate
 parameter_list|)
 throws|throws
 name|IOException
