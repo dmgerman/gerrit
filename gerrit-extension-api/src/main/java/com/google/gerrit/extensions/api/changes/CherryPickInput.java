@@ -68,82 +68,24 @@ name|changes
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
-import|;
-end_import
-
-begin_interface
-DECL|interface|RevisionApi
+begin_class
+DECL|class|CherryPickInput
 specifier|public
-interface|interface
-name|RevisionApi
-block|{
-DECL|method|delete ()
-name|void
-name|delete
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|review (ReviewInput in)
-name|void
-name|review
-parameter_list|(
-name|ReviewInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/** {@code submit} with {@link SubmitInput#waitForMerge} set to true. */
-DECL|method|submit ()
-name|void
-name|submit
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|submit (SubmitInput in)
-name|void
-name|submit
-parameter_list|(
-name|SubmitInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|cherryPick (CherryPickInput in)
-name|ChangeApi
-name|cherryPick
-parameter_list|(
+class|class
 name|CherryPickInput
-name|in
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|method|rebase ()
-name|ChangeApi
-name|rebase
-parameter_list|()
-throws|throws
-name|RestApiException
-function_decl|;
+block|{
+DECL|field|message
+specifier|public
+name|String
+name|message
+decl_stmt|;
+DECL|field|destination
+specifier|public
+name|String
+name|destination
+decl_stmt|;
 block|}
-end_interface
+end_class
 
 end_unit
 
