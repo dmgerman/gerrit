@@ -538,18 +538,12 @@ block|}
 argument_list|,
 name|usage
 operator|=
-literal|"project submit type\n"
-operator|+
-literal|"(default: MERGE_IF_NECESSARY)"
+literal|"project submit type"
 argument_list|)
 DECL|field|submitType
 specifier|private
 name|SubmitType
 name|submitType
-init|=
-name|SubmitType
-operator|.
-name|MERGE_IF_NECESSARY
 decl_stmt|;
 annotation|@
 name|Option
