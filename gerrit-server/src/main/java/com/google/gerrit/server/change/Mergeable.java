@@ -298,6 +298,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|NoSuchProjectException
@@ -651,9 +667,15 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Mergeable (TestSubmitType.Get submitType, GitRepositoryManager gitManager, SubmitStrategyFactory submitStrategyFactory, Provider<ReviewDb> db)
+DECL|method|Mergeable (TestSubmitType.Get submitType, GitRepositoryManager gitManager, SubmitStrategyFactory submitStrategyFactory, Provider<ReviewDb> db, ChangeIndexer indexer)
 name|Mergeable
 parameter_list|(
 name|TestSubmitType
@@ -672,6 +694,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|)
 block|{
 name|this
@@ -697,6 +722,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 block|}
 annotation|@
@@ -1307,6 +1338,13 @@ name|singleton
 argument_list|(
 name|c
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|c
 argument_list|)
 expr_stmt|;
 block|}
