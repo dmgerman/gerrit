@@ -84,6 +84,24 @@ name|Changes
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|projects
+operator|.
+name|Projects
+import|;
+end_import
+
 begin_interface
 DECL|interface|GerritApi
 specifier|public
@@ -94,6 +112,12 @@ DECL|method|changes ()
 specifier|public
 name|Changes
 name|changes
+parameter_list|()
+function_decl|;
+DECL|method|projects ()
+specifier|public
+name|Projects
+name|projects
 parameter_list|()
 function_decl|;
 block|}
