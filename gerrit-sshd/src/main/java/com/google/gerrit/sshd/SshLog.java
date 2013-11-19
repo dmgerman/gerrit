@@ -238,6 +238,22 @@ name|server
 operator|.
 name|util
 operator|.
+name|LogUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|util
+operator|.
 name|TimeUtil
 import|;
 end_import
@@ -255,20 +271,6 @@ operator|.
 name|SshScope
 operator|.
 name|Context
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|util
-operator|.
-name|LogUtil
 import|;
 end_import
 
@@ -772,6 +774,20 @@ operator|.
 name|addAppender
 argument_list|(
 name|appender
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"No appender with the name: "
+operator|+
+name|LOG_NAME
+operator|+
+literal|" was found. SSHD logging is disabled"
 argument_list|)
 expr_stmt|;
 block|}
