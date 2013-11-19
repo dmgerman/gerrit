@@ -504,6 +504,29 @@ operator|+
 literal|",access"
 return|;
 block|}
+DECL|method|toProjectBranches (Project.NameKey p)
+specifier|public
+specifier|static
+name|String
+name|toProjectBranches
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|p
+parameter_list|)
+block|{
+return|return
+literal|"/admin/projects/"
+operator|+
+name|p
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|",branches"
+return|;
+block|}
 DECL|method|toAccountQuery (String fullname, Status status)
 specifier|public
 specifier|static
