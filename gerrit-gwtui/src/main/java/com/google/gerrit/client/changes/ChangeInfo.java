@@ -1688,6 +1688,15 @@ name|message
 parameter_list|()
 comment|/*-{ return this.message; }-*/
 function_decl|;
+DECL|method|_revisionNumber ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|_revisionNumber
+parameter_list|()
+comment|/*-{ return this._revision_number || 0; }-*/
+function_decl|;
 DECL|method|dateRaw ()
 specifier|private
 specifier|final

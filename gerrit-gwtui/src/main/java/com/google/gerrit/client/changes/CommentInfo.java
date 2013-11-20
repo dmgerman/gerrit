@@ -305,7 +305,7 @@ parameter_list|)
 comment|/*-{ this.id = id; }-*/
 function_decl|;
 DECL|method|setPath (String path)
-specifier|private
+specifier|public
 specifier|final
 specifier|native
 name|void
@@ -447,7 +447,7 @@ specifier|native
 name|int
 name|line
 parameter_list|()
-comment|/*-{ return this.line; }-*/
+comment|/*-{ return this.line || 0; }-*/
 function_decl|;
 DECL|method|in_reply_to ()
 specifier|public
