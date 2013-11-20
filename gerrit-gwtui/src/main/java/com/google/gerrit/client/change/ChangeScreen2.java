@@ -2614,6 +2614,11 @@ operator|.
 name|onShowView
 argument_list|()
 expr_stmt|;
+name|commit
+operator|.
+name|onShowView
+argument_list|()
+expr_stmt|;
 name|related
 operator|.
 name|setMaxHeight
