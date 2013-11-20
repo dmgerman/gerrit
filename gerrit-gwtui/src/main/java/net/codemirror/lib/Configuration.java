@@ -135,6 +135,21 @@ name|val
 parameter_list|)
 comment|/*-{ this[name] = val; return this; }-*/
 function_decl|;
+DECL|method|set (String name, double val)
+specifier|public
+specifier|final
+specifier|native
+name|Configuration
+name|set
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|double
+name|val
+parameter_list|)
+comment|/*-{ this[name] = val; return this; }-*/
+function_decl|;
 DECL|method|set (String name, boolean val)
 specifier|public
 specifier|final
