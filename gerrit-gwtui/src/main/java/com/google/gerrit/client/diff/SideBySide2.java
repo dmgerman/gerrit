@@ -1976,6 +1976,13 @@ argument_list|,
 name|diff
 argument_list|)
 expr_stmt|;
+name|header
+operator|.
+name|set
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
