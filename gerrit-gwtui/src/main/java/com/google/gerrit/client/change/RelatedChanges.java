@@ -1608,11 +1608,15 @@ name|int
 name|height
 parameter_list|)
 block|{
-name|this
-operator|.
 name|maxHeight
 operator|=
 name|height
+operator|-
+name|getTabBar
+argument_list|()
+operator|.
+name|getOffsetHeight
+argument_list|()
 expr_stmt|;
 for|for
 control|(
@@ -1642,7 +1646,7 @@ argument_list|)
 operator|.
 name|setMaxHeight
 argument_list|(
-name|height
+name|maxHeight
 argument_list|)
 expr_stmt|;
 block|}
