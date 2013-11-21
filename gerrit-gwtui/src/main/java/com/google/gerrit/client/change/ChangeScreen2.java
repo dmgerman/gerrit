@@ -3505,7 +3505,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|myLastReply (ChangeInfo info)
-specifier|private
 specifier|static
 name|Timestamp
 name|myLastReply
