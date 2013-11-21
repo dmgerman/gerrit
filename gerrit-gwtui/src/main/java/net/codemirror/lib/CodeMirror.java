@@ -722,6 +722,18 @@ name|lines
 parameter_list|)
 comment|/*-{     this.state.oldViewportSize = lines;   }-*/
 function_decl|;
+DECL|method|operation (Runnable thunk)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|operation
+parameter_list|(
+name|Runnable
+name|thunk
+parameter_list|)
+comment|/*-{     this.operation(function() {       thunk.@java.lang.Runnable::run()();     });   }-*/
+function_decl|;
 DECL|method|on (String event, Runnable thunk)
 specifier|public
 specifier|final
