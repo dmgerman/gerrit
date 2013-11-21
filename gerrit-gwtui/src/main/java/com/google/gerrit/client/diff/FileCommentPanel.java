@@ -414,9 +414,9 @@ argument_list|)
 expr_stmt|;
 name|table
 operator|.
-name|updateFileCommentVisibility
+name|setHeaderVisible
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -437,9 +437,9 @@ argument_list|)
 expr_stmt|;
 name|table
 operator|.
-name|updateFileCommentVisibility
+name|setHeaderVisible
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
