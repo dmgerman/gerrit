@@ -92,6 +92,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|CherryPickInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -254,24 +272,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|CherryPick
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|MergeException
@@ -392,6 +392,7 @@ end_import
 
 begin_class
 DECL|class|CherryPick
+specifier|public
 class|class
 name|CherryPick
 implements|implements
@@ -399,7 +400,7 @@ name|RestModifyView
 argument_list|<
 name|RevisionResource
 argument_list|,
-name|Input
+name|CherryPickInput
 argument_list|>
 implements|,
 name|UiAction
@@ -431,20 +432,6 @@ specifier|final
 name|ChangeJson
 name|json
 decl_stmt|;
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|message
-name|String
-name|message
-decl_stmt|;
-DECL|field|destination
-name|String
-name|destination
-decl_stmt|;
-block|}
 annotation|@
 name|Inject
 DECL|method|CherryPick (Provider<ReviewDb> dbProvider, Provider<CherryPickChange> cherryPickChange, ChangeJson json)
@@ -487,7 +474,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (RevisionResource revision, Input input)
+DECL|method|apply (RevisionResource revision, CherryPickInput input)
 specifier|public
 name|ChangeInfo
 name|apply
@@ -495,7 +482,7 @@ parameter_list|(
 name|RevisionResource
 name|revision
 parameter_list|,
-name|Input
+name|CherryPickInput
 name|input
 parameter_list|)
 throws|throws
