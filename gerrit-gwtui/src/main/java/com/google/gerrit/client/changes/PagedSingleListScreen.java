@@ -481,12 +481,7 @@ argument_list|()
 argument_list|,
 name|prev
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|keysNavigation
-operator|.
-name|add
-argument_list|(
+argument_list|,
 operator|new
 name|DoLinkCommand
 argument_list|(
@@ -525,12 +520,7 @@ argument_list|()
 argument_list|,
 name|prev
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|keysNavigation
-operator|.
-name|add
-argument_list|(
+argument_list|,
 operator|new
 name|DoLinkCommand
 argument_list|(

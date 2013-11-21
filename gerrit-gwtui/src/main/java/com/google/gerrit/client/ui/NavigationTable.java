@@ -701,12 +701,7 @@ argument_list|(
 name|itemHelpName
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|keysNavigation
-operator|.
-name|add
-argument_list|(
+argument_list|,
 operator|new
 name|NextKeyCommand
 argument_list|(

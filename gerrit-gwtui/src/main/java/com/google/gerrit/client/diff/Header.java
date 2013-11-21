@@ -1070,6 +1070,9 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
+name|KeyCommand
+name|p
+init|=
 name|setupNav
 argument_list|(
 name|prev
@@ -1098,7 +1101,10 @@ operator|-
 literal|1
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+name|KeyCommand
+name|n
+init|=
 name|setupNav
 argument_list|(
 name|next
@@ -1114,7 +1120,28 @@ argument_list|()
 argument_list|,
 name|nextInfo
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+operator|&&
+name|n
+operator|!=
+literal|null
+condition|)
+block|{
+name|keys
+operator|.
+name|pair
+argument_list|(
+name|p
+argument_list|,
+name|n
+argument_list|)
 expr_stmt|;
+block|}
 name|nextPath
 operator|=
 name|nextInfo
@@ -1483,7 +1510,7 @@ return|;
 block|}
 DECL|method|setupNav (InlineHyperlink link, int key, String help, FileInfo info)
 specifier|private
-name|void
+name|KeyCommand
 name|setupNav
 parameter_list|(
 name|InlineHyperlink
@@ -1537,10 +1564,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|keys
-operator|.
-name|add
-argument_list|(
+name|KeyCommand
+name|k
+init|=
 operator|new
 name|KeyCommand
 argument_list|(
@@ -1570,6 +1596,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+decl_stmt|;
+name|keys
+operator|.
+name|add
+argument_list|(
+name|k
 argument_list|)
 expr_stmt|;
 if|if
@@ -1591,6 +1623,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+return|return
+name|k
+return|;
 block|}
 else|else
 block|{
@@ -1624,6 +1659,9 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
 block|}
 DECL|method|hasPrev ()
