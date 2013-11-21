@@ -778,9 +778,9 @@ name|String
 name|linkMenuItemNotLast
 parameter_list|()
 function_decl|;
-DECL|method|maxObjectSizeLimitPanel ()
+DECL|method|maxObjectSizeLimitEffectiveLabel ()
 name|String
-name|maxObjectSizeLimitPanel
+name|maxObjectSizeLimitEffectiveLabel
 parameter_list|()
 function_decl|;
 DECL|method|menuBarUserName ()
