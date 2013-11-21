@@ -285,19 +285,6 @@ name|callback
 parameter_list|)
 function_decl|;
 annotation|@
-name|SignInRequired
-DECL|method|myDiffPreferences (AsyncCallback<AccountDiffPreference> callback)
-name|void
-name|myDiffPreferences
-parameter_list|(
-name|AsyncCallback
-argument_list|<
-name|AccountDiffPreference
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
