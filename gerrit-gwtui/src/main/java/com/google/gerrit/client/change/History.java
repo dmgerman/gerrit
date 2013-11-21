@@ -390,6 +390,11 @@ specifier|private
 name|CommentLinkProcessor
 name|clp
 decl_stmt|;
+DECL|field|replyAction
+specifier|private
+name|ReplyAction
+name|replyAction
+decl_stmt|;
 DECL|field|changeId
 specifier|private
 name|Change
@@ -439,12 +444,15 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|set (CommentLinkProcessor clp, Change.Id id, ChangeInfo info)
+DECL|method|set (CommentLinkProcessor clp, ReplyAction ra, Change.Id id, ChangeInfo info)
 name|void
 name|set
 parameter_list|(
 name|CommentLinkProcessor
 name|clp
+parameter_list|,
+name|ReplyAction
+name|ra
 parameter_list|,
 name|Change
 operator|.
@@ -460,6 +468,12 @@ operator|.
 name|clp
 operator|=
 name|clp
+expr_stmt|;
+name|this
+operator|.
+name|replyAction
+operator|=
+name|ra
 expr_stmt|;
 name|this
 operator|.
@@ -560,6 +574,22 @@ block|{
 return|return
 name|changeId
 return|;
+block|}
+DECL|method|replyTo (MessageInfo info)
+name|void
+name|replyTo
+parameter_list|(
+name|MessageInfo
+name|info
+parameter_list|)
+block|{
+name|replyAction
+operator|.
+name|onReply
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|addComments (int id, NativeMap<JsArray<CommentInfo>> map)
 name|void
