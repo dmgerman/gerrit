@@ -223,6 +223,14 @@ name|b
 operator|.
 name|helpText
 argument_list|)
+operator|&&
+name|a
+operator|.
+name|sibling
+operator|==
+name|b
+operator|.
+name|sibling
 return|;
 block|}
 DECL|field|keyMask
@@ -235,6 +243,10 @@ specifier|private
 specifier|final
 name|String
 name|helpText
+decl_stmt|;
+DECL|field|sibling
+name|KeyCommand
+name|sibling
 decl_stmt|;
 DECL|method|KeyCommand (final int mask, final int key, final String help)
 specifier|public

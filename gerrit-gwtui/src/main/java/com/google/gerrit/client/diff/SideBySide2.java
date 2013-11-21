@@ -2709,12 +2709,7 @@ operator|.
 name|lineNext
 argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|keysNavigation
-operator|.
-name|add
-argument_list|(
+argument_list|,
 operator|new
 name|NoOpKeyCommand
 argument_list|(
@@ -2749,12 +2744,7 @@ operator|.
 name|chunkNext2
 argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|keysNavigation
-operator|.
-name|add
-argument_list|(
+argument_list|,
 operator|new
 name|NoOpKeyCommand
 argument_list|(
