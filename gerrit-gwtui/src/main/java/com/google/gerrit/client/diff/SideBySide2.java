@@ -8733,7 +8733,7 @@ operator|.
 name|getHeaderHeight
 argument_list|()
 operator|+
-literal|10
+literal|5
 decl_stmt|;
 comment|// Estimate
 name|int
