@@ -1424,6 +1424,13 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|conflictsQuery
+operator|.
+name|append
+argument_list|(
+literal|" -age:1month"
+argument_list|)
+expr_stmt|;
 name|ChangeList
 operator|.
 name|query
