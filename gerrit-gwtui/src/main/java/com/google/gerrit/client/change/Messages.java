@@ -67,9 +67,10 @@ package|;
 end_package
 
 begin_interface
-DECL|interface|Constants
+DECL|interface|Messages
+specifier|public
 interface|interface
-name|Constants
+name|Messages
 extends|extends
 name|com
 operator|.
@@ -81,67 +82,23 @@ name|i18n
 operator|.
 name|client
 operator|.
-name|Constants
+name|Messages
 block|{
-DECL|method|previousChange ()
+DECL|method|relatedChanges (int count)
 name|String
-name|previousChange
-parameter_list|()
+name|relatedChanges
+parameter_list|(
+name|int
+name|count
+parameter_list|)
 function_decl|;
-DECL|method|nextChange ()
+DECL|method|relatedChanges (String count)
 name|String
-name|nextChange
-parameter_list|()
-function_decl|;
-DECL|method|openChange ()
+name|relatedChanges
+parameter_list|(
 name|String
-name|openChange
-parameter_list|()
-function_decl|;
-DECL|method|reviewedFileTitle ()
-name|String
-name|reviewedFileTitle
-parameter_list|()
-function_decl|;
-DECL|method|ps ()
-name|String
-name|ps
-parameter_list|()
-function_decl|;
-DECL|method|commit ()
-name|String
-name|commit
-parameter_list|()
-function_decl|;
-DECL|method|date ()
-name|String
-name|date
-parameter_list|()
-function_decl|;
-DECL|method|author ()
-name|String
-name|author
-parameter_list|()
-function_decl|;
-DECL|method|draft ()
-name|String
-name|draft
-parameter_list|()
-function_decl|;
-DECL|method|draftCommentsTooltip ()
-name|String
-name|draftCommentsTooltip
-parameter_list|()
-function_decl|;
-DECL|method|notAvailable ()
-name|String
-name|notAvailable
-parameter_list|()
-function_decl|;
-DECL|method|relatedChangesTooltip ()
-name|String
-name|relatedChangesTooltip
-parameter_list|()
+name|count
+parameter_list|)
 function_decl|;
 block|}
 end_interface
