@@ -1130,11 +1130,11 @@ name|keysNavigation
 operator|.
 name|setName
 argument_list|(
-name|Gerrit
+name|Resources
 operator|.
 name|C
 operator|.
-name|sectionNavigation
+name|relatedChanges
 argument_list|()
 argument_list|)
 expr_stmt|;
