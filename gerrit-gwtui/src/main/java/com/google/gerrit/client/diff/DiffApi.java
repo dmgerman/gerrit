@@ -188,7 +188,7 @@ block|,
 name|ALL
 block|;   }
 empty_stmt|;
-DECL|method|list (int id, String revision, AsyncCallback<NativeMap<FileInfo>> cb)
+DECL|method|list (int id, String base, String revision, AsyncCallback<NativeMap<FileInfo>> cb)
 specifier|public
 specifier|static
 name|void
@@ -196,6 +196,9 @@ name|list
 parameter_list|(
 name|int
 name|id
+parameter_list|,
+name|String
+name|base
 parameter_list|,
 name|String
 name|revision
@@ -210,6 +213,9 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
+name|RestApi
+name|api
+init|=
 name|ChangeApi
 operator|.
 name|revision
@@ -223,6 +229,25 @@ name|view
 argument_list|(
 literal|"files"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|base
+operator|!=
+literal|null
+condition|)
+block|{
+name|api
+operator|.
+name|addParameter
+argument_list|(
+literal|"base"
+argument_list|,
+name|base
+argument_list|)
+expr_stmt|;
+block|}
+name|api
 operator|.
 name|get
 argument_list|(
