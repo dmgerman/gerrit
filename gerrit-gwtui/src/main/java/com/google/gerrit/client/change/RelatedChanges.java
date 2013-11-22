@@ -1612,11 +1612,16 @@ name|maxHeight
 operator|=
 name|height
 operator|-
+operator|(
 name|getTabBar
 argument_list|()
 operator|.
 name|getOffsetHeight
 argument_list|()
+operator|+
+literal|2
+comment|/* padding */
+operator|)
 expr_stmt|;
 for|for
 control|(
