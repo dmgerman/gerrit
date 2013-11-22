@@ -266,6 +266,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|IndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|mail
 operator|.
 name|EmailSender
@@ -442,6 +458,12 @@ specifier|final
 name|SshInfo
 name|sshInfo
 decl_stmt|;
+DECL|field|indexCollection
+specifier|private
+specifier|final
+name|IndexCollection
+name|indexCollection
+decl_stmt|;
 DECL|field|emailSender
 specifier|private
 name|EmailSender
@@ -467,7 +489,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ContactStore cs, final ServletContext sc, final DownloadConfig dc, final @AnonymousCowardName String acn)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ContactStore cs, final IndexCollection ic, final ServletContext sc, final DownloadConfig dc, final @AnonymousCowardName String acn)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -499,6 +521,10 @@ parameter_list|,
 specifier|final
 name|ContactStore
 name|cs
+parameter_list|,
+specifier|final
+name|IndexCollection
+name|ic
 parameter_list|,
 specifier|final
 name|ServletContext
@@ -538,6 +564,10 @@ expr_stmt|;
 name|sshInfo
 operator|=
 name|si
+expr_stmt|;
+name|indexCollection
+operator|=
+name|ic
 expr_stmt|;
 name|wildProject
 operator|=
@@ -992,6 +1022,18 @@ name|ChangeScreen
 operator|.
 name|CHANGE_SCREEN2
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|config
+operator|.
+name|setIndex
+argument_list|(
+name|indexCollection
+operator|.
+name|getSearchIndex
+argument_list|()
+operator|!=
+literal|null
 argument_list|)
 expr_stmt|;
 name|config

@@ -1472,6 +1472,17 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|hasIndex
+argument_list|()
+condition|)
+block|{
 name|StringBuilder
 name|conflictsQuery
 init|=
@@ -1692,6 +1703,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setMaxHeight (int height)
 name|void
