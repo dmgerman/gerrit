@@ -397,6 +397,12 @@ name|UiField
 name|Style
 name|style
 decl_stmt|;
+DECL|field|header
+annotation|@
+name|UiField
+name|HTMLPanel
+name|header
+decl_stmt|;
 DECL|field|name
 annotation|@
 name|UiField
@@ -492,6 +498,8 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|header
+operator|.
 name|addDomHandler
 argument_list|(
 operator|new
