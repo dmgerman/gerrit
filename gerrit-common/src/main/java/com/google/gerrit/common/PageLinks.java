@@ -819,6 +819,27 @@ literal|"status:open"
 return|;
 block|}
 block|}
+DECL|method|op (String op, int value)
+specifier|public
+specifier|static
+name|String
+name|op
+parameter_list|(
+name|String
+name|op
+parameter_list|,
+name|int
+name|value
+parameter_list|)
+block|{
+return|return
+name|op
+operator|+
+literal|":"
+operator|+
+name|value
+return|;
+block|}
 DECL|method|op (String op, String value)
 specifier|public
 specifier|static

@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|PageLinks
+operator|.
+name|op
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -770,41 +786,50 @@ name|cherryPicksQuery
 operator|.
 name|append
 argument_list|(
-literal|" project:"
-argument_list|)
-operator|.
-name|append
+name|op
 argument_list|(
+literal|"project"
+argument_list|,
 name|info
 operator|.
 name|project
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|cherryPicksQuery
 operator|.
 name|append
 argument_list|(
-literal|" change:"
+literal|" "
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|op
+argument_list|(
+literal|"change"
+argument_list|,
 name|info
 operator|.
 name|change_id
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|cherryPicksQuery
 operator|.
 name|append
 argument_list|(
-literal|" -change:"
+literal|" "
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|op
+argument_list|(
+literal|"-change"
+argument_list|,
 name|info
 operator|.
 name|legacy_id
@@ -812,6 +837,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ChangeList
@@ -1028,45 +1054,60 @@ name|topicQuery
 operator|.
 name|append
 argument_list|(
-literal|" project:"
+literal|" "
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|op
+argument_list|(
+literal|"project"
+argument_list|,
 name|info
 operator|.
 name|project
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|topicQuery
 operator|.
 name|append
 argument_list|(
-literal|" branch:"
+literal|" "
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|op
+argument_list|(
+literal|"branch"
+argument_list|,
 name|info
 operator|.
 name|branch
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|topicQuery
 operator|.
 name|append
 argument_list|(
-literal|" topic:"
+literal|" "
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|op
+argument_list|(
+literal|"topic"
+argument_list|,
 name|info
 operator|.
 name|topic
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ChangeList
@@ -1410,11 +1451,15 @@ name|conflictsQuery
 operator|.
 name|append
 argument_list|(
-literal|" conflicts:"
+literal|" "
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|op
+argument_list|(
+literal|"conflicts"
+argument_list|,
 name|info
 operator|.
 name|legacy_id
@@ -1422,6 +1467,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|conflictsQuery
