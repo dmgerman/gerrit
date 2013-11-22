@@ -3134,14 +3134,14 @@ block|{
 name|String
 name|p
 init|=
-literal|".git/hooks/commit-msg"
+literal|"$gitdir/hooks/commit-msg"
 decl_stmt|;
 return|return
 name|String
 operator|.
 name|format
 argument_list|(
-literal|"  curl -o %s %s/tools/hooks/commit-msg ; chmod +x %s"
+literal|"  gitdir=$(git rev-parse --git-dir) curl -o %s %s/tools/hooks/commit-msg ; chmod +x %s"
 argument_list|,
 name|p
 argument_list|,
@@ -3256,7 +3256,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"  scp -p -P %d %s@%s:hooks/commit-msg .git/hooks/"
+literal|"  gitdir=$(git rev-parse --git-dir) scp -p -P %d %s@%s:hooks/commit-msg $gitdir/hooks/"
 argument_list|,
 name|sshPort
 argument_list|,
