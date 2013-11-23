@@ -617,6 +617,24 @@ name|mergeable
 parameter_list|()
 comment|/*-{ return this.mergeable; }-*/
 function_decl|;
+DECL|method|insertions ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|insertions
+parameter_list|()
+comment|/*-{ return this.insertions; }-*/
+function_decl|;
+DECL|method|deletions ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|deletions
+parameter_list|()
+comment|/*-{ return this.deletions; }-*/
+function_decl|;
 DECL|method|statusRaw ()
 specifier|private
 specifier|final

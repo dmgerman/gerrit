@@ -462,6 +462,17 @@ name|String
 name|monthLabel
 parameter_list|)
 function_decl|;
+DECL|method|insertionsAndDeletions (int insertions, int deletions)
+name|String
+name|insertionsAndDeletions
+parameter_list|(
+name|int
+name|insertions
+parameter_list|,
+name|int
+name|deletions
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 

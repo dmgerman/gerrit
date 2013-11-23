@@ -357,6 +357,11 @@ specifier|protected
 name|boolean
 name|index
 decl_stmt|;
+DECL|field|largeChangeSize
+specifier|protected
+name|int
+name|largeChangeSize
+decl_stmt|;
 DECL|method|getLoginUrl ()
 specifier|public
 name|String
@@ -1159,6 +1164,32 @@ operator|.
 name|index
 operator|=
 name|index
+expr_stmt|;
+block|}
+DECL|method|getLargeChangeSize ()
+specifier|public
+name|int
+name|getLargeChangeSize
+parameter_list|()
+block|{
+return|return
+name|largeChangeSize
+return|;
+block|}
+DECL|method|setLargeChangeSize (int largeChangeSize)
+specifier|public
+name|void
+name|setLargeChangeSize
+parameter_list|(
+name|int
+name|largeChangeSize
+parameter_list|)
+block|{
+name|this
+operator|.
+name|largeChangeSize
+operator|=
+name|largeChangeSize
 expr_stmt|;
 block|}
 block|}

@@ -190,6 +190,11 @@ name|String
 name|changeTableColumnSubject
 parameter_list|()
 function_decl|;
+DECL|method|changeTableColumnSize ()
+name|String
+name|changeTableColumnSize
+parameter_list|()
+function_decl|;
 DECL|method|changeTableColumnStatus ()
 name|String
 name|changeTableColumnStatus

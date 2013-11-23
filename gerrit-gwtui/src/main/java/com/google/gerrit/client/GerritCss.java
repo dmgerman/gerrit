@@ -208,6 +208,11 @@ name|String
 name|cOWNER
 parameter_list|()
 function_decl|;
+DECL|method|cSIZE ()
+name|String
+name|cSIZE
+parameter_list|()
+function_decl|;
 DECL|method|cSUBJECT ()
 name|String
 name|cSUBJECT
@@ -246,6 +251,11 @@ function_decl|;
 DECL|method|changeScreenStarIcon ()
 name|String
 name|changeScreenStarIcon
+parameter_list|()
+function_decl|;
+DECL|method|changeSize ()
+name|String
+name|changeSize
 parameter_list|()
 function_decl|;
 DECL|method|changeTable ()
