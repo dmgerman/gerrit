@@ -4554,6 +4554,13 @@ argument_list|,
 name|box
 argument_list|)
 expr_stmt|;
+name|box
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|LineHandle
 name|handle
 init|=
