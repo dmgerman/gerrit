@@ -84,6 +84,14 @@ name|client
 operator|.
 name|Messages
 block|{
+DECL|method|changeWithNoRevisions (int changeId)
+name|String
+name|changeWithNoRevisions
+parameter_list|(
+name|int
+name|changeId
+parameter_list|)
+function_decl|;
 DECL|method|relatedChanges (int count)
 name|String
 name|relatedChanges
