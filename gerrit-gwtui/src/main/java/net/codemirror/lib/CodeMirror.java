@@ -235,18 +235,6 @@ name|val
 parameter_list|)
 comment|/*-{     this.setOption(option, val);   }-*/
 function_decl|;
-DECL|method|setOptionToInfinity (String option)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setOptionToInfinity
-parameter_list|(
-name|String
-name|option
-parameter_list|)
-comment|/*-{     this.setOption(option, Infinity);   }-*/
-function_decl|;
 DECL|method|setValue (String v)
 specifier|public
 specifier|final
