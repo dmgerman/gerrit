@@ -1374,11 +1374,11 @@ name|id
 argument_list|)
 return|;
 block|}
-DECL|method|toPatchSideBySide2 (PatchSet.Id diffBase, PatchSet.Id revision, String fileName)
+DECL|method|toSideBySide (PatchSet.Id diffBase, PatchSet.Id revision, String fileName)
 specifier|public
 specifier|static
 name|String
-name|toPatchSideBySide2
+name|toSideBySide
 parameter_list|(
 name|PatchSet
 operator|.
@@ -1397,7 +1397,40 @@ block|{
 return|return
 name|toPatch
 argument_list|(
-literal|"cm"
+literal|""
+argument_list|,
+name|diffBase
+argument_list|,
+name|revision
+argument_list|,
+name|fileName
+argument_list|)
+return|;
+block|}
+DECL|method|toUnified (PatchSet.Id diffBase, PatchSet.Id revision, String fileName)
+specifier|public
+specifier|static
+name|String
+name|toUnified
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|diffBase
+parameter_list|,
+name|PatchSet
+operator|.
+name|Id
+name|revision
+parameter_list|,
+name|String
+name|fileName
+parameter_list|)
+block|{
+return|return
+name|toPatch
+argument_list|(
+literal|"unified"
 argument_list|,
 name|diffBase
 argument_list|,

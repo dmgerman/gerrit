@@ -911,7 +911,7 @@ name|label
 argument_list|,
 name|Dispatcher
 operator|.
-name|toPatchSideBySide2
+name|toSideBySide
 argument_list|(
 name|sideA
 condition|?
