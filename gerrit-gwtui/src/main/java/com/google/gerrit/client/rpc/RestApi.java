@@ -948,6 +948,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+try|try
+block|{
 name|cb
 operator|.
 name|onSuccess
@@ -955,6 +957,9 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 if|if
 condition|(
 operator|!
@@ -968,6 +973,7 @@ operator|.
 name|onRpcComplete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
