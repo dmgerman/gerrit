@@ -6007,6 +6007,8 @@ init|=
 name|markStart
 operator|+
 name|size
+operator|-
+literal|1
 decl_stmt|;
 name|SkipBar
 name|bar
