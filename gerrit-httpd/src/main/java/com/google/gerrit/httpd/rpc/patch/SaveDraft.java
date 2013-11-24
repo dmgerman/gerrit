@@ -780,7 +780,7 @@ throw|;
 block|}
 name|comment
 operator|.
-name|updated
+name|setWrittenOn
 argument_list|(
 name|TimeUtil
 operator|.

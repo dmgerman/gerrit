@@ -2372,10 +2372,7 @@ argument_list|()
 argument_list|,
 name|parent
 argument_list|,
-name|TimeUtil
-operator|.
-name|nowTs
-argument_list|()
+name|timestamp
 argument_list|)
 expr_stmt|;
 block|}
