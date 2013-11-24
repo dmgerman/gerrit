@@ -909,7 +909,7 @@ expr_stmt|;
 block|}
 name|e
 operator|.
-name|updated
+name|setWrittenOn
 argument_list|(
 name|TimeUtil
 operator|.

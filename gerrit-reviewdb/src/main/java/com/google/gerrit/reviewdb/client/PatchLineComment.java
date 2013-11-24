@@ -608,11 +608,10 @@ name|author
 operator|=
 name|a
 expr_stmt|;
-name|this
-operator|.
+name|setParentUuid
+argument_list|(
 name|parentUuid
-operator|=
-name|parentUuid
+argument_list|)
 expr_stmt|;
 name|setStatus
 argument_list|(
@@ -621,7 +620,7 @@ operator|.
 name|DRAFT
 argument_list|)
 expr_stmt|;
-name|updated
+name|setWrittenOn
 argument_list|(
 name|when
 argument_list|)
@@ -799,23 +798,6 @@ block|{
 name|message
 operator|=
 name|s
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|updated (Timestamp when)
-specifier|public
-name|void
-name|updated
-parameter_list|(
-name|Timestamp
-name|when
-parameter_list|)
-block|{
-name|writtenOn
-operator|=
-name|when
 expr_stmt|;
 block|}
 end_function
