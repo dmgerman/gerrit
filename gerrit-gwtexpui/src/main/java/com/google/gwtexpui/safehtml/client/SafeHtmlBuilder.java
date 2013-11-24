@@ -614,7 +614,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * Open an element, appending "<tagName>" to the buffer.    *<p>    * After the element is open the attributes may be manipulated until the next    *<code>append</code>,<code>openElement</code>,<code>closeSelf</code> or    *<code>closeElement</code> call.    *    * @param tagName name of the HTML element to open.    */
+comment|/**    * Open an element, appending "<tagName>" to the buffer.    *<p>    * After the element is open the attributes may be manipulated until the next    * {@code append}, {@code openElement}, {@code closeSelf} or    * {@code closeElement} call.    *    * @param tagName name of the HTML element to open.    */
 DECL|method|openElement (final String tagName)
 specifier|public
 name|SafeHtmlBuilder

@@ -655,7 +655,7 @@ name|isOpen
 argument_list|()
 return|;
 block|}
-comment|/**    * Changes the visible state of this panel's content.    *    * @param isOpen<code>true</code> to open,<code>false</code> to close    */
+comment|/**    * Changes the visible state of this panel's content.    *    * @param isOpen {@code true} to open, {@code false} to close    */
 DECL|method|setOpen (final boolean isOpen)
 specifier|public
 name|void

@@ -274,7 +274,7 @@ operator|=
 name|isVisible
 expr_stmt|;
 block|}
-comment|/**    * Returns the project parent name.    *    * @return Project parent name,<code>null</code> for the 'All-Projects' root    *         project    */
+comment|/**    * Returns the project parent name.    *    * @return Project parent name, {@code null} for the 'All-Projects' root    *         project    */
 DECL|method|getParentName ()
 specifier|public
 name|Project

@@ -298,7 +298,7 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-comment|/**    * Suggests reviewers. A reviewer can be a user or a group. Inactive users,    * the system groups {@link AccountGroup#ANONYMOUS_USERS} and    * {@link AccountGroup#REGISTERED_USERS} and groups that have more than the    * configured<code>addReviewer.maxAllowed</code> members are not suggested as    * reviewers.    * @param changeId the change for which reviewers should be suggested    */
+comment|/**    * Suggests reviewers. A reviewer can be a user or a group. Inactive users,    * the system groups {@link AccountGroup#ANONYMOUS_USERS} and    * {@link AccountGroup#REGISTERED_USERS} and groups that have more than the    * configured {@code addReviewer.maxAllowed} members are not suggested as    * reviewers.    * @param changeId the change for which reviewers should be suggested    */
 DECL|method|suggestChangeReviewer (Change.Id changeId, String query, int limit, AsyncCallback<List<ReviewerInfo>> callback)
 name|void
 name|suggestChangeReviewer

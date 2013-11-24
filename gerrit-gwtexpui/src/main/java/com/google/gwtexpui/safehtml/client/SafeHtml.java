@@ -1162,7 +1162,7 @@ literal|"* "
 argument_list|)
 return|;
 block|}
-comment|/**    * Replace first occurrence of<code>regex</code> with<code>repl</code> .    *<p>    *<b>WARNING:</b> This replacement is being performed against an otherwise    * safe HTML string. The caller must ensure that the replacement does not    * introduce cross-site scripting attack entry points.    *    * @param regex regular expression pattern to match the substring with.    * @param repl replacement expression. Capture groups within    *<code>regex</code> can be referenced with<code>$<i>n</i></code>.    * @return a new string, after the replacement has been made.    */
+comment|/**    * Replace first occurrence of {@code regex} with {@code repl} .    *<p>    *<b>WARNING:</b> This replacement is being performed against an otherwise    * safe HTML string. The caller must ensure that the replacement does not    * introduce cross-site scripting attack entry points.    *    * @param regex regular expression pattern to match the substring with.    * @param repl replacement expression. Capture groups within    *        {@code regex} can be referenced with {@code $<i>n</i>}.    * @return a new string, after the replacement has been made.    */
 DECL|method|replaceFirst (final String regex, final String repl)
 specifier|public
 name|SafeHtml
@@ -1193,7 +1193,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Replace each occurrence of<code>regex</code> with<code>repl</code> .    *<p>    *<b>WARNING:</b> This replacement is being performed against an otherwise    * safe HTML string. The caller must ensure that the replacement does not    * introduce cross-site scripting attack entry points.    *    * @param regex regular expression pattern to match substrings with.    * @param repl replacement expression. Capture groups within    *<code>regex</code> can be referenced with<code>$<i>n</i></code>.    * @return a new string, after the replacements have been made.    */
+comment|/**    * Replace each occurrence of {@code regex} with {@code repl} .    *<p>    *<b>WARNING:</b> This replacement is being performed against an otherwise    * safe HTML string. The caller must ensure that the replacement does not    * introduce cross-site scripting attack entry points.    *    * @param regex regular expression pattern to match substrings with.    * @param repl replacement expression. Capture groups within    *        {@code regex} can be referenced with {@code $<i>n</i>}.    * @return a new string, after the replacements have been made.    */
 DECL|method|replaceAll (final String regex, final String repl)
 specifier|public
 name|SafeHtml

@@ -224,7 +224,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Lookup the account summary    *<p>    * The return value can take on one of three forms:    *<ul>    *<li><code>null</code>, if<code>id == null</code>.</li>    *<li>a valid info block, if<code>id</code> was loaded.</li>    *<li>an anonymous info block, if<code>id</code> was not loaded.</li>    *</ul>    *    * @param id the id desired.    * @return info block for the account.    */
+comment|/**    * Lookup the account summary    *<p>    * The return value can take on one of three forms:    *<ul>    *<li>{@code null}, if {@code id == null}.</li>    *<li>a valid info block, if {@code id} was loaded.</li>    *<li>an anonymous info block, if {@code id} was not loaded.</li>    *</ul>    *    * @param id the id desired.    * @return info block for the account.    */
 DECL|method|get (final Account.Id id)
 specifier|public
 name|AccountInfo

@@ -163,7 +163,7 @@ operator|==
 name|LEN
 return|;
 block|}
-comment|/**    * @return if {@link #isComplete()},<code>this</code>; otherwise a new RevId    *         with 'z' appended on the end.    */
+comment|/**    * @return if {@link #isComplete()}, {@code this}; otherwise a new RevId    *         with 'z' appended on the end.    */
 DECL|method|max ()
 specifier|public
 name|RevId

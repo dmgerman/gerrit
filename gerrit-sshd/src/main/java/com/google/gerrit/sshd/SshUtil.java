@@ -473,7 +473,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**    * Convert an RFC 4716 style key to an OpenSSH style key.    *    * @param keyStr the key string to convert.    * @return<code>keyStr</code> if conversion failed; otherwise the converted    *         key, in OpenSSH key format.    */
+comment|/**    * Convert an RFC 4716 style key to an OpenSSH style key.    *    * @param keyStr the key string to convert.    * @return {@code keyStr} if conversion failed; otherwise the converted    *         key, in OpenSSH key format.    */
 DECL|method|toOpenSshPublicKey (final String keyStr)
 specifier|public
 specifier|static

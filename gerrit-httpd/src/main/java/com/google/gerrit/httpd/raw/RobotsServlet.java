@@ -257,7 +257,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class provides a mechanism to use a configurable robots.txt file,  * outside of the .war of the application. In order to configure it add the  * following to the<code>httpd</code> section of the<code>gerrit.conf</code>  * file:  *  *<pre>  * [httpd]  *         robotsFile = etc/myrobots.txt  *</pre>  *  * If the specified file name is relative it will resolved as a sub directory of  * the site directory, if it is absolute it will be used as is.  *  * If the specified file doesn't exist or isn't readable the servlet will  * default to the<code>robots.txt</code> file bundled with the .war file of the  * application.  */
+comment|/**  * This class provides a mechanism to use a configurable robots.txt file,  * outside of the .war of the application. In order to configure it add the  * following to the {@code httpd} section of the {@code gerrit.conf}  * file:  *  *<pre>  * [httpd]  *         robotsFile = etc/myrobots.txt  *</pre>  *  * If the specified file name is relative it will resolved as a sub directory of  * the site directory, if it is absolute it will be used as is.  *  * If the specified file doesn't exist or isn't readable the servlet will  * default to the {@code robots.txt} file bundled with the .war file of the  * application.  */
 end_comment
 
 begin_class

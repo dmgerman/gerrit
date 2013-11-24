@@ -629,7 +629,7 @@ parameter_list|)
 throws|throws
 name|MergeException
 function_decl|;
-comment|/**    * Checks whether the given commit can be merged.    *    * Subclasses must ensure that invoking this method does neither modify the    * git repository nor the Gerrit database.    *    * @param mergeTip the mergeTip    * @param toMerge the commit for which it should be checked whether it can be    *        merged or not    * @return<code>true</code> if the given commit can be merged, otherwise    *<code>false</code>    * @throws MergeException    */
+comment|/**    * Checks whether the given commit can be merged.    *    * Subclasses must ensure that invoking this method does neither modify the    * git repository nor the Gerrit database.    *    * @param mergeTip the mergeTip    * @param toMerge the commit for which it should be checked whether it can be    *        merged or not    * @return {@code true} if the given commit can be merged, otherwise    *         {@code false}    * @throws MergeException    */
 DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 specifier|abstract
@@ -645,7 +645,7 @@ parameter_list|)
 throws|throws
 name|MergeException
 function_decl|;
-comment|/**    * Returns the PersonIdent that should be used for the ref log entries when    * updating the destination branch. The ref log identity may be set after the    * {@link #run(CodeReviewCommit, List)} method finished.    *    * Do only call this method after the {@link #run(CodeReviewCommit, List)}    * method has been invoked.    *    * @return the ref log identity, may be<code>null</code>    */
+comment|/**    * Returns the PersonIdent that should be used for the ref log entries when    * updating the destination branch. The ref log identity may be set after the    * {@link #run(CodeReviewCommit, List)} method finished.    *    * Do only call this method after the {@link #run(CodeReviewCommit, List)}    * method has been invoked.    *    * @return the ref log identity, may be {@code null}    */
 DECL|method|getRefLogIdent ()
 specifier|public
 specifier|final
@@ -678,7 +678,7 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns whether a merge that failed with    * {@link Result#LOCK_FAILURE} should be retried.    *    * May be overwritten by subclasses.    *    * @return<code>true</code> if a merge that failed with    *         {@link Result#LOCK_FAILURE} should be retried, otherwise    *<code>false</code>    */
+comment|/**    * Returns whether a merge that failed with    * {@link Result#LOCK_FAILURE} should be retried.    *    * May be overwritten by subclasses.    *    * @return {@code true} if a merge that failed with    *         {@link Result#LOCK_FAILURE} should be retried, otherwise    *         {@code false}    */
 DECL|method|retryOnLockFailure ()
 specifier|public
 name|boolean

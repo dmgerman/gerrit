@@ -233,7 +233,7 @@ name|token
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Creates a hyperlink with its text and target history token specified.    *    * @param text the hyperlink's text    * @param asHTML<code>true</code> to treat the specified text as html    * @param token the history token to which it will link    * @see #setTargetHistoryToken    */
+comment|/**    * Creates a hyperlink with its text and target history token specified.    *    * @param text the hyperlink's text    * @param asHTML {@code true} to treat the specified text as html    * @param token the history token to which it will link    * @see #setTargetHistoryToken    */
 DECL|method|Hyperlink (String text, boolean asHTML, String token)
 specifier|public
 name|Hyperlink

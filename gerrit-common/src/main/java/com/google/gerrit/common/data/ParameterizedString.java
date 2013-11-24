@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Performs replacements on strings such as<code>Hello ${user}</code>. */
+comment|/** Performs replacements on strings such as {@code Hello ${user}}. */
 end_comment
 
 begin_class

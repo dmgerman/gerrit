@@ -880,7 +880,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Updates the mergeability flag of the change asynchronously. If the    * mergeability flag is updated the change is reindexed.    *    * @param change the change for which the mergeability flag should be updated    * @return CheckedFuture that updates the mergeability flag of the change and    *         returns<code>true</code> if the mergeability flag was updated and    *         the change was reindexed, and<code>false</code> if the    *         mergeability flag was not updated and the change was not reindexed    */
+comment|/**    * Updates the mergeability flag of the change asynchronously. If the    * mergeability flag is updated the change is reindexed.    *    * @param change the change for which the mergeability flag should be updated    * @return CheckedFuture that updates the mergeability flag of the change and    *         returns {@code true} if the mergeability flag was updated and    *         the change was reindexed, and {@code false} if the    *         mergeability flag was not updated and the change was not reindexed    */
 DECL|method|updateAsync (Change change)
 specifier|public
 name|CheckedFuture

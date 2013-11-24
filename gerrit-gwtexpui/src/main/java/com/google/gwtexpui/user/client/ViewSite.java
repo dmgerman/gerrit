@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Hosts a single {@link View}.  *<p>  * View instances are attached inside of an invisible DOM node, permitting their  *<code>onLoad()</code> method to be invoked and to update the DOM prior to the  * elements being made visible in the UI.  *<p>  * Complaint View instances must invoke {@link View#display()} once the DOM is  * ready for presentation.  */
+comment|/**  * Hosts a single {@link View}.  *<p>  * View instances are attached inside of an invisible DOM node, permitting their  * {@code onLoad()} method to be invoked and to update the DOM prior to the  * elements being made visible in the UI.  *<p>  * Complaint View instances must invoke {@link View#display()} once the DOM is  * ready for presentation.  */
 end_comment
 
 begin_class
@@ -198,7 +198,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**    * Set the next view to display.    *<p>    * The view will be attached to the DOM tree within a hidden container,    * permitting its<code>onLoad()</code> method to execute and update the DOM    * without the user seeing the result.    *    * @param view the next view to display.    */
+comment|/**    * Set the next view to display.    *<p>    * The view will be attached to the DOM tree within a hidden container,    * permitting its {@code onLoad()} method to execute and update the DOM    * without the user seeing the result.    *    * @param view the next view to display.    */
 DECL|method|setView (final V view)
 specifier|public
 name|void

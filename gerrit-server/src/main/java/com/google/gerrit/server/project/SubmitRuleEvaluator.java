@@ -481,7 +481,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * @param userRuleLocatorName The name of the rule used to locate the    *        user-supplied rule.    * @param userRuleWrapperName The name of the wrapper rule used to evaluate    *        the user-supplied rule.    * @param filterRuleLocatorName The name of the rule used to locate the filter    *        rule.    * @param filterRuleWrapperName The name of the rule used to evaluate the    *        filter rule.    * @param skipSubmitFilters if<code>true</code> submit filter will not be    *        applied    * @param rules when non-null the rules will be read from this input stream    *        instead of refs/meta/config:rules.pl file    */
+comment|/**    * @param userRuleLocatorName The name of the rule used to locate the    *        user-supplied rule.    * @param userRuleWrapperName The name of the wrapper rule used to evaluate    *        the user-supplied rule.    * @param filterRuleLocatorName The name of the rule used to locate the filter    *        rule.    * @param filterRuleWrapperName The name of the rule used to evaluate the    *        filter rule.    * @param skipSubmitFilters if {@code true} submit filter will not be    *        applied    * @param rules when non-null the rules will be read from this input stream    *        instead of refs/meta/config:rules.pl file    */
 DECL|method|SubmitRuleEvaluator (ReviewDb db, PatchSet patchSet, ProjectControl projectControl, ChangeControl changeControl, Change change, @Nullable ChangeData cd, boolean fastEvalLabels, String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName, boolean skipSubmitFilters, InputStream rules)
 specifier|public
 name|SubmitRuleEvaluator

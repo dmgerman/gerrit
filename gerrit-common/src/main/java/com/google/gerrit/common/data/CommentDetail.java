@@ -761,7 +761,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Add the comments to<code>outResult</code>, depth first    */
+comment|/**    * Add the comments to {@code outResult}, depth first    */
 DECL|method|addChildren (Map<String, List<PatchLineComment>> parentMap, List<PatchLineComment> children, List<PatchLineComment> outResult)
 specifier|private
 specifier|static

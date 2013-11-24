@@ -1357,7 +1357,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SSH daemon to communicate with Gerrit.  *<p>  * Use a Git URL such as<code>ssh://${email}@${host}:${port}/${path}</code>,  * e.g.<code>ssh://sop@google.com@gerrit.com:8010/tools/gerrit.git</code> to  * access the SSH daemon itself.  *<p>  * Versions of Git before 1.5.3 may require setting the username and port  * properties in the user's<code>~/.ssh/config</code> file, and using a host  * alias through a URL such as<code>gerrit-alias:/tools/gerrit.git:  *<pre>  * Host gerrit-alias  *  User sop@google.com  *  Hostname gerrit.com  *  Port 8010  *</pre>  */
+comment|/**  * SSH daemon to communicate with Gerrit.  *<p>  * Use a Git URL such as {@code ssh://${email}@${host}:${port}/${path}},  * e.g. {@code ssh://sop@google.com@gerrit.com:8010/tools/gerrit.git} to  * access the SSH daemon itself.  *<p>  * Versions of Git before 1.5.3 may require setting the username and port  * properties in the user's {@code ~/.ssh/config} file, and using a host  * alias through a URL such as<code>gerrit-alias:/tools/gerrit.git:  *<pre>  * Host gerrit-alias  *  User sop@google.com  *  Hostname gerrit.com  *  Port 8010  *</pre>  */
 end_comment
 
 begin_class

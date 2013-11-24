@@ -175,7 +175,7 @@ specifier|protected
 name|LinkFindReplace
 parameter_list|()
 block|{   }
-comment|/**    * @param find regular expression pattern to match substrings with.    * @param link replacement link href. Capture groups within    *<code>find</code> can be referenced with<code>$<i>n</i></code>.    */
+comment|/**    * @param find regular expression pattern to match substrings with.    * @param link replacement link href. Capture groups within    *        {@code find} can be referenced with {@code $<i>n</i>}.    */
 DECL|method|LinkFindReplace (String find, String link)
 specifier|public
 name|LinkFindReplace

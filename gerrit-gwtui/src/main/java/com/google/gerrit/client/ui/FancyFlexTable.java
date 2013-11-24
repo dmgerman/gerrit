@@ -444,7 +444,7 @@ name|item
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Finds an item in the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the item that should be found    * @return if the item is found the number of the row that contains the item;    *         if the item is not found<code>-1</code>    */
+comment|/**    * Finds an item in the table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the item that should be found    * @return if the item is found the number of the row that contains the item;    *         if the item is not found {@code -1}    */
 DECL|method|findRowItem (Comparator<RowItem> comparator, RowItem item)
 specifier|protected
 name|int
@@ -503,7 +503,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**    * Finds the number of the row where a new item should be inserted into the    * table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the new item that should be inserted    * @return if the item is not yet contained in the table, the number of the    *         row where the new item should be inserted; if the item is already    *         contained in the table<code>-1</code>    */
+comment|/**    * Finds the number of the row where a new item should be inserted into the    * table.    *    * @param comparator comparator by which the items in the table are sorted    * @param item the new item that should be inserted    * @return if the item is not yet contained in the table, the number of the    *         row where the new item should be inserted; if the item is already    *         contained in the table {@code -1}    */
 DECL|method|getInsertRow (Comparator<RowItem> comparator, RowItem item)
 specifier|protected
 name|int

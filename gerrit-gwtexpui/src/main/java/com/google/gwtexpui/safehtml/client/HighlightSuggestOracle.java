@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A suggestion oracle that tries to highlight the matched text.  *<p>  * Suggestions supplied by the implementation of  * {@link #onRequestSuggestions(Request, Callback)} are modified to wrap all  * occurrences of the {@link SuggestOracle.Request#getQuery()} substring in HTML  *<code>&lt;strong&gt;</code> tags, so they can be emphasized to the user.  */
+comment|/**  * A suggestion oracle that tries to highlight the matched text.  *<p>  * Suggestions supplied by the implementation of  * {@link #onRequestSuggestions(Request, Callback)} are modified to wrap all  * occurrences of the {@link SuggestOracle.Request#getQuery()} substring in HTML  * {@code&lt;strong&gt;} tags, so they can be emphasized to the user.  */
 end_comment
 
 begin_class

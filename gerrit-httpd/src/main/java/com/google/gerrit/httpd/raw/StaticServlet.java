@@ -551,7 +551,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Sends static content from the site 's<code>static/</code> subdirectory. */
+comment|/** Sends static content from the site 's {@code static/} subdirectory. */
 end_comment
 
 begin_class

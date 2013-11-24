@@ -621,7 +621,7 @@ operator|=
 name|inserter
 expr_stmt|;
 block|}
-comment|/**    * Create a new commit in the<code>notesBranch</code> by updating existing    * or creating new notes from the<code>notes</code> map.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @throws IOException    * @throws ConcurrentRefUpdateException    */
+comment|/**    * Create a new commit in the {@code notesBranch} by updating existing    * or creating new notes from the {@code notes} map.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @throws IOException    * @throws ConcurrentRefUpdateException    */
 DECL|method|commitAllNotes (NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
 specifier|public
 specifier|final
@@ -663,7 +663,7 @@ name|commitMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Create a new commit in the<code>notesBranch</code> by creating not yet    * existing notes from the<code>notes</code> map. The notes from the    *<code>notes</code> map which already exist in the note-tree of the    * tip of the<code>notesBranch</code> will not be updated.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @return map with those notes from the<code>notes</code> that were newly    *         created    * @throws IOException    * @throws ConcurrentRefUpdateException    */
+comment|/**    * Create a new commit in the {@code notesBranch} by creating not yet    * existing notes from the {@code notes} map. The notes from the    * {@code notes} map which already exist in the note-tree of the    * tip of the {@code notesBranch} will not be updated.    *    * @param notes map of notes    * @param notesBranch notes branch to update    * @param commitAuthor author of the commit in the notes branch    * @param commitMessage for the commit in the notes branch    * @return map with those notes from the {@code notes} that were newly    *         created    * @throws IOException    * @throws ConcurrentRefUpdateException    */
 DECL|method|commitNewNotes (NoteMap notes, String notesBranch, PersonIdent commitAuthor, String commitMessage)
 specifier|public
 specifier|final

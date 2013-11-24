@@ -1386,7 +1386,7 @@ name|MyWebAppContext
 extends|extends
 name|WebAppContext
 block|{
-comment|/**      * Parent ClassLoader for the Jetty web app, which can only load JVM      * classes. We would just use<code>null</code> for the parent ClassLoader      * except this makes Jetty unhappy.      */
+comment|/**      * Parent ClassLoader for the Jetty web app, which can only load JVM      * classes. We would just use {@code null} for the parent ClassLoader      * except this makes Jetty unhappy.      */
 DECL|field|bootStrapOnlyClassLoader
 specifier|private
 specifier|final

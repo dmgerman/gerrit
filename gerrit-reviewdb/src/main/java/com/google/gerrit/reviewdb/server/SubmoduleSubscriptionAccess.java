@@ -236,7 +236,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fetches all<code>SubmoduleSubscription</code>s in which some branch of    *<code>superProject</code> subscribes a branch.    *    * Use {@link #bySuperProject(Branch.NameKey)} to fetch for a branch instead    * of a project.    *    * @param superProject the project to fetch subscriptions for    * @return<code>SubmoduleSubscription</code>s that are subscribed by some    * branch of<code>superProject</code>.    * @throws OrmException    */
+comment|/**    * Fetches all {@code SubmoduleSubscription}s in which some branch of    * {@code superProject} subscribes a branch.    *    * Use {@link #bySuperProject(Branch.NameKey)} to fetch for a branch instead    * of a project.    *    * @param superProject the project to fetch subscriptions for    * @return {@code SubmoduleSubscription}s that are subscribed by some    * branch of {@code superProject}.    * @throws OrmException    */
 annotation|@
 name|Query
 argument_list|(
@@ -277,7 +277,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fetches all<code>SubmoduleSubscription</code>s in which some branch of    *<code>submodule</code> is subscribed.    *    * Use {@link #bySubmodule(Branch.NameKey)} to fetch for a branch instead of    * a project.    *    * @param submodule the project to fetch subscriptions for.    * @return<code>SubmoduleSubscription</code>s that subscribe some branch of    *<code>submodule</code>.    * @throws OrmException    */
+comment|/**    * Fetches all {@code SubmoduleSubscription}s in which some branch of    * {@code submodule} is subscribed.    *    * Use {@link #bySubmodule(Branch.NameKey)} to fetch for a branch instead of    * a project.    *    * @param submodule the project to fetch subscriptions for.    * @return {@code SubmoduleSubscription}s that subscribe some branch of    * {@code submodule}.    * @throws OrmException    */
 annotation|@
 name|Query
 argument_list|(

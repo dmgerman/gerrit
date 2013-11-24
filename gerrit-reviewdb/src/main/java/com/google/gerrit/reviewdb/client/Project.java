@@ -827,7 +827,7 @@ operator|.
 name|maxObjectSizeLimit
 expr_stmt|;
 block|}
-comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project,<code>null</code> if this project    *         is the wild project,<code>null</code> or the name key of the wild    *         project if this project is a direct child of the wild project    */
+comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project, {@code null} if this project    *         is the wild project, {@code null} or the name key of the wild    *         project if this project is a direct child of the wild project    */
 DECL|method|getParent ()
 specifier|public
 name|Project
@@ -840,7 +840,7 @@ return|return
 name|parent
 return|;
 block|}
-comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project,<code>null</code> if this project    *         is the wild project    */
+comment|/**    * Returns the name key of the parent project.    *    * @param allProjectsName name key of the wild project    * @return name key of the parent project, {@code null} if this project    *         is the wild project    */
 DECL|method|getParent (final Project.NameKey allProjectsName)
 specifier|public
 name|Project

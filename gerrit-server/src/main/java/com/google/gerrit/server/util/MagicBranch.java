@@ -309,7 +309,7 @@ name|NEW_CHANGE
 argument_list|)
 return|;
 block|}
-comment|/** Returns the ref name prefix for a magic branch,<code>null</code> if the branch is not magic */
+comment|/** Returns the ref name prefix for a magic branch, {@code null} if the branch is not magic */
 DECL|method|getMagicRefNamePrefix (String refName)
 specifier|public
 specifier|static

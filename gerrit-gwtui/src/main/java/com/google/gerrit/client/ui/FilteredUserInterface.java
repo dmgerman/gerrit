@@ -72,7 +72,7 @@ specifier|public
 interface|interface
 name|FilteredUserInterface
 block|{
-comment|/**    * Return the value by which the user interface is currently filtered.    *    * @return value by which the user interface is currently filtered,    *<code>null</code> or empty String if currently no filter is applied    */
+comment|/**    * Return the value by which the user interface is currently filtered.    *    * @return value by which the user interface is currently filtered,    *         {@code null} or empty String if currently no filter is applied    */
 DECL|method|getCurrentFilter ()
 specifier|public
 name|String

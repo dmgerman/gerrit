@@ -153,7 +153,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Handles the<code>/OpenID</code> URL for web based single-sign-on. */
+comment|/** Handles the {@code /OpenID} URL for web based single-sign-on. */
 end_comment
 
 begin_class
