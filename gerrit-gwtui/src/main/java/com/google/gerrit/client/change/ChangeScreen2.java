@@ -5289,6 +5289,8 @@ name|revision
 argument_list|,
 name|style
 argument_list|,
+name|commentLinkProcessor
+argument_list|,
 name|reply
 argument_list|)
 expr_stmt|;
