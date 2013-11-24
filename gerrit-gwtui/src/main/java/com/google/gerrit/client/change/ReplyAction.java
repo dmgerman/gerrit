@@ -142,6 +142,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|CommentLinkProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -297,6 +313,12 @@ operator|.
 name|Style
 name|style
 decl_stmt|;
+DECL|field|clp
+specifier|private
+specifier|final
+name|CommentLinkProcessor
+name|clp
+decl_stmt|;
 DECL|field|replyButton
 specifier|private
 specifier|final
@@ -329,7 +351,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|ReplyAction ( ChangeInfo info, String revision, ChangeScreen2.Style style, Widget replyButton)
+DECL|method|ReplyAction ( ChangeInfo info, String revision, ChangeScreen2.Style style, CommentLinkProcessor clp, Widget replyButton)
 name|ReplyAction
 parameter_list|(
 name|ChangeInfo
@@ -342,6 +364,9 @@ name|ChangeScreen2
 operator|.
 name|Style
 name|style
+parameter_list|,
+name|CommentLinkProcessor
+name|clp
 parameter_list|,
 name|Widget
 name|replyButton
@@ -386,6 +411,12 @@ operator|.
 name|style
 operator|=
 name|style
+expr_stmt|;
+name|this
+operator|.
+name|clp
+operator|=
+name|clp
 expr_stmt|;
 name|this
 operator|.
@@ -470,6 +501,8 @@ operator|=
 operator|new
 name|ReplyBox
 argument_list|(
+name|clp
+argument_list|,
 name|psId
 argument_list|,
 name|revision

@@ -72,6 +72,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NativeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -79,6 +95,22 @@ operator|.
 name|client
 operator|.
 name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -108,6 +140,21 @@ name|OWNER_REVIEWERS
 block|,
 name|ALL
 block|}
+DECL|enum|DraftHandling
+specifier|public
+specifier|static
+enum|enum
+name|DraftHandling
+block|{
+DECL|enumConstant|DELETE
+DECL|enumConstant|PUBLISH
+DECL|enumConstant|KEEP
+name|DELETE
+block|,
+name|PUBLISH
+block|,
+name|KEEP
+block|}
 DECL|method|create ()
 specifier|public
 specifier|static
@@ -128,6 +175,15 @@ name|r
 operator|.
 name|init
 argument_list|()
+expr_stmt|;
+name|r
+operator|.
+name|drafts
+argument_list|(
+name|DraftHandling
+operator|.
+name|PUBLISH
+argument_list|)
 expr_stmt|;
 return|return
 name|r
@@ -160,6 +216,24 @@ name|v
 parameter_list|)
 comment|/*-{ this.labels[n]=v; }-*/
 function_decl|;
+DECL|method|comments (NativeMap<JsArray<CommentInfo>> m)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|comments
+parameter_list|(
+name|NativeMap
+argument_list|<
+name|JsArray
+argument_list|<
+name|CommentInfo
+argument_list|>
+argument_list|>
+name|m
+parameter_list|)
+comment|/*-{ this.comments=m }-*/
+function_decl|;
 DECL|method|notify (NotifyHandling e)
 specifier|public
 specifier|final
@@ -191,6 +265,37 @@ name|n
 parameter_list|)
 comment|/*-{ this.notify=n; }-*/
 function_decl|;
+DECL|method|drafts (DraftHandling e)
+specifier|public
+specifier|final
+name|void
+name|drafts
+parameter_list|(
+name|DraftHandling
+name|e
+parameter_list|)
+block|{
+name|_drafts
+argument_list|(
+name|e
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|_drafts (String n)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|_drafts
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ this.drafts=n; }-*/
+function_decl|;
 DECL|method|init ()
 specifier|private
 specifier|final
@@ -198,7 +303,16 @@ specifier|native
 name|void
 name|init
 parameter_list|()
-comment|/*-{     this.labels = {};     this.strict_labels = true;     this.drafts = 'PUBLISH';   }-*/
+comment|/*-{     this.labels = {};     this.strict_labels = true;   }-*/
+function_decl|;
+DECL|method|prePost ()
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|prePost
+parameter_list|()
+comment|/*-{     var m=this.comments;     if (m) {       for (var p in m) {         var l=m[p];         for (var i=0;i<l.length;i++) {           var c=l[i];           delete c['kind'];           delete c['path'];           delete c['updated'];         }       }     }   }-*/
 function_decl|;
 DECL|method|ReviewInput ()
 specifier|protected
