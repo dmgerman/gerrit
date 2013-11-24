@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** {@link ContactStoreConnection} with an underlying {@HttpURLConnection}. */
+comment|/** {@link ContactStoreConnection} with an underlying {@literal @HttpURLConnection}. */
 end_comment
 
 begin_class

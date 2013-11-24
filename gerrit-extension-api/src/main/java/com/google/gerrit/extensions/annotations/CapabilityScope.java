@@ -76,7 +76,7 @@ specifier|public
 enum|enum
 name|CapabilityScope
 block|{
-comment|/**    * Scope is assumed based on the context.    *    * When {@code @RequiresCapability} is used within a plugin the scope of the    * capability is assumed to be that plugin.    *    * If {@code @RequiresCapability} is used within the core Gerrit Code Review    * server (and thus is outside of a plugin) the scope is the core server and    * will use {@link com.google.gerrit.common.data.GlobalCapability}.    */
+comment|/**    * Scope is assumed based on the context.    *    * When {@code @RequiresCapability} is used within a plugin the scope of the    * capability is assumed to be that plugin.    *    * If {@code @RequiresCapability} is used within the core Gerrit Code Review    * server (and thus is outside of a plugin) the scope is the core server and    * will use {@code com.google.gerrit.common.data.GlobalCapability}.    */
 DECL|enumConstant|CONTEXT
 name|CONTEXT
 block|,

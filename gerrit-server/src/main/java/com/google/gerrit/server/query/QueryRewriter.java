@@ -281,7 +281,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Rewrites a Predicate tree by applying rewrite rules.  *<p>  * Subclasses may document their rewrite rules by declaring public methods with  * {@link Rewrite} annotations, such as:  *  *<pre>  *&#064;Rewrite(&quot;A=(owner:*) B=(status:*)&quot;)  * public Predicate r1_ownerStatus(@Named(&quot;A&quot;) OperatorPredicate owner,  *&#064;Named(&quot;B&quot;) OperatorPredicate status) {  * }  *</pre>  *<p>  * Rewrite methods are applied in order by declared name, so naming methods with  * a numeric prefix to ensure a specific ordering (if required) is suggested.  *  * @type<T> type of object the predicate can evaluate in memory.  */
+comment|/**  * Rewrites a Predicate tree by applying rewrite rules.  *<p>  * Subclasses may document their rewrite rules by declaring public methods with  * {@link Rewrite} annotations, such as:  *  *<pre>  *&#064;Rewrite(&quot;A=(owner:*) B=(status:*)&quot;)  * public Predicate r1_ownerStatus(@Named(&quot;A&quot;) OperatorPredicate owner,  *&#064;Named(&quot;B&quot;) OperatorPredicate status) {  * }  *</pre>  *<p>  * Rewrite methods are applied in order by declared name, so naming methods with  * a numeric prefix to ensure a specific ordering (if required) is suggested.  *  * @param<T> type of object the predicate can evaluate in memory.  */
 end_comment
 
 begin_class

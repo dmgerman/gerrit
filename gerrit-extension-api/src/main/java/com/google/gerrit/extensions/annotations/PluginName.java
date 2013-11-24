@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation applied to a String containing the plugin or extension name.  *<p>  * A plugin or extension may receive this string by Guice injection to discover  * the name that an administrator has installed the plugin or extension under:  *  *<pre>  *  @Inject  *  MyType(@PluginName String myName) {  *  ...  *  }  *</pre>  */
+comment|/**  * Annotation applied to a String containing the plugin or extension name.  *<p>  * A plugin or extension may receive this string by Guice injection to discover  * the name that an administrator has installed the plugin or extension under:  *  *<pre>  *  {@literal @Inject}  *  MyType(@PluginName String myName) {  *  ...  *  }  *</pre>  */
 end_comment
 
 begin_annotation_defn
