@@ -886,6 +886,22 @@ name|server
 operator|.
 name|change
 operator|.
+name|MergeabilityChecker
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
 name|PatchSetInserter
 import|;
 end_import
@@ -2589,6 +2605,12 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
+DECL|field|mergeabilityChecker
+specifier|private
+specifier|final
+name|MergeabilityChecker
+name|mergeabilityChecker
+decl_stmt|;
 DECL|field|sshInfo
 specifier|private
 specifier|final
@@ -2847,7 +2869,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final TrackingFooters trackingFooters, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeabilityChecker mergeabilityChecker, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final MergeUtil.Factory mergeUtilFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2969,6 +2991,10 @@ parameter_list|,
 specifier|final
 name|ChangeIndexer
 name|indexer
+parameter_list|,
+specifier|final
+name|MergeabilityChecker
+name|mergeabilityChecker
 parameter_list|,
 specifier|final
 name|SshInfo
@@ -3168,6 +3194,12 @@ operator|.
 name|indexer
 operator|=
 name|indexer
+expr_stmt|;
+name|this
+operator|.
+name|mergeabilityChecker
+operator|=
+name|mergeabilityChecker
 expr_stmt|;
 name|this
 operator|.
@@ -12126,11 +12158,11 @@ name|?
 argument_list|,
 name|IOException
 argument_list|>
-name|indexFuture
+name|f
 init|=
-name|indexer
+name|mergeabilityChecker
 operator|.
-name|indexAsync
+name|updateAndIndexAsync
 argument_list|(
 name|change
 argument_list|)
@@ -12327,7 +12359,7 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|indexFuture
+name|f
 operator|.
 name|checkedGet
 argument_list|()

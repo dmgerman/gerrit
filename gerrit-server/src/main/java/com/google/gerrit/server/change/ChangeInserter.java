@@ -314,22 +314,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|ChangeIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|mail
 operator|.
 name|CreateChangeSender
@@ -574,11 +558,11 @@ specifier|final
 name|TrackingFooters
 name|trackingFooters
 decl_stmt|;
-DECL|field|indexer
+DECL|field|mergeabilityChecker
 specifier|private
 specifier|final
-name|ChangeIndexer
-name|indexer
+name|MergeabilityChecker
+name|mergeabilityChecker
 decl_stmt|;
 DECL|field|createChangeSenderFactory
 specifier|private
@@ -655,7 +639,7 @@ name|sendMail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, TrackingFooters trackingFooters, ChangeIndexer indexer, CreateChangeSender.Factory createChangeSenderFactory, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, TrackingFooters trackingFooters, MergeabilityChecker mergeabilityChecker, CreateChangeSender.Factory createChangeSenderFactory, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
 name|ChangeInserter
 parameter_list|(
 name|Provider
@@ -679,8 +663,8 @@ parameter_list|,
 name|TrackingFooters
 name|trackingFooters
 parameter_list|,
-name|ChangeIndexer
-name|indexer
+name|MergeabilityChecker
+name|mergeabilityChecker
 parameter_list|,
 name|CreateChangeSender
 operator|.
@@ -735,9 +719,9 @@ name|trackingFooters
 expr_stmt|;
 name|this
 operator|.
-name|indexer
+name|mergeabilityChecker
 operator|=
-name|indexer
+name|mergeabilityChecker
 expr_stmt|;
 name|this
 operator|.
@@ -1223,11 +1207,11 @@ name|?
 argument_list|,
 name|IOException
 argument_list|>
-name|indexFuture
+name|f
 init|=
-name|indexer
+name|mergeabilityChecker
 operator|.
-name|indexAsync
+name|updateAndIndexAsync
 argument_list|(
 name|change
 argument_list|)
@@ -1349,7 +1333,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|indexFuture
+name|f
 operator|.
 name|checkedGet
 argument_list|()
