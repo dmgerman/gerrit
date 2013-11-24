@@ -1481,6 +1481,11 @@ argument_list|()
 operator|.
 name|hasIndex
 argument_list|()
+operator|&&
+name|info
+operator|.
+name|mergeable
+argument_list|()
 condition|)
 block|{
 name|StringBuilder
