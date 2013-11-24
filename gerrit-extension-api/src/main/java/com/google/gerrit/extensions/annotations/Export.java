@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation applied to auto-registered, exported types.  *<p>  * Plugins or extensions using auto-registration should apply this annotation to  * any non-abstract class they want exported for access.  *<p>  * For SSH commands the @Export annotation names the subcommand:  *  *<pre>  *   @Export("print")  *   class MyCommand extends SshCommand {  *</pre>  *  * For HTTP servlets, the @Export annotation names the URL the servlet is bound  * to, relative to the plugin or extension's namespace within the Gerrit  * container.  *  *<pre>  *  @Export("/index.html")  *  class ShowIndexHtml extends HttpServlet {  *</pre>  */
+comment|/**  * Annotation applied to auto-registered, exported types.  *<p>  * Plugins or extensions using auto-registration should apply this annotation to  * any non-abstract class they want exported for access.  *<p>  * For SSH commands the {@literal @Export} annotation names the subcommand:  *  *<pre>  *   {@literal @Export("print")}  *   class MyCommand extends SshCommand {  *</pre>  *  * For HTTP servlets, the {@literal @Export} annotation names the URL the  * servlet is bound to, relative to the plugin or extension's namespace within  * the Gerrit container.  *  *<pre>  *  {@literal @Export("/index.html")}  *  class ShowIndexHtml extends HttpServlet {  *</pre>  */
 end_comment
 
 begin_annotation_defn

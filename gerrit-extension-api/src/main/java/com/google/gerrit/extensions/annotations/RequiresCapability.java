@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation on {@link com.google.gerrit.sshd.SshCommand} or  * {@link com.google.gerrit.httpd.restapi.RestApiServlet} declaring a  * capability must be granted.  */
+comment|/**  * Annotation on {@code com.google.gerrit.sshd.SshCommand} or  * {@code com.google.gerrit.httpd.restapi.RestApiServlet} declaring a  * capability must be granted.  */
 end_comment
 
 begin_annotation_defn

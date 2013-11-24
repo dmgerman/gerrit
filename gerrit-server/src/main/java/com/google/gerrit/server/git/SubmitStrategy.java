@@ -217,6 +217,8 @@ operator|.
 name|lib
 operator|.
 name|RefUpdate
+operator|.
+name|Result
 import|;
 end_import
 
@@ -676,7 +678,7 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns whether a merge that failed with    * {@link RefUpdate.Result#LOCK_FAILURE} should be retried.    *    * May be overwritten by subclasses.    *    * @return<code>true</code> if a merge that failed with    *         {@link RefUpdate.Result#LOCK_FAILURE} should be retried, otherwise    *<code>false</code>    */
+comment|/**    * Returns whether a merge that failed with    * {@link Result#LOCK_FAILURE} should be retried.    *    * May be overwritten by subclasses.    *    * @return<code>true</code> if a merge that failed with    *         {@link Result#LOCK_FAILURE} should be retried, otherwise    *<code>false</code>    */
 DECL|method|retryOnLockFailure ()
 specifier|public
 name|boolean

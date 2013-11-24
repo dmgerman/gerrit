@@ -124,6 +124,24 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Change
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -225,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Predicate for a {@link Change.Status}.  *<p>  * The actual name of this operator can differ, it usually comes as {@code  * status:} but may also be {@code is:} to help do-what-i-meanery for end-users  * searching for changes. Either operator name has the same meaning.  */
+comment|/**  * Predicate for a {@link Status}.  *<p>  * The actual name of this operator can differ, it usually comes as {@code  * status:} but may also be {@code is:} to help do-what-i-meanery for end-users  * searching for changes. Either operator name has the same meaning.  */
 end_comment
 
 begin_class
