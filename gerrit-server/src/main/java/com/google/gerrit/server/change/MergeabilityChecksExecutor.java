@@ -93,6 +93,8 @@ operator|.
 name|git
 operator|.
 name|WorkQueue
+operator|.
+name|Executor
 import|;
 end_import
 
@@ -121,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on the global {@link WorkQueue.Executor} used by  * {@link MergeabilityChecker}.  */
+comment|/**  * Marker on the global {@link Executor} used by  * {@link MergeabilityChecker}.  */
 end_comment
 
 begin_annotation_defn
