@@ -90,14 +90,19 @@ name|SafeHtmlCss
 extends|extends
 name|CssResource
 block|{
+DECL|method|wikiList ()
+name|String
+name|wikiList
+parameter_list|()
+function_decl|;
 DECL|method|wikiPreFormat ()
 name|String
 name|wikiPreFormat
 parameter_list|()
 function_decl|;
-DECL|method|wikiList ()
+DECL|method|wikiQuote ()
 name|String
-name|wikiList
+name|wikiQuote
 parameter_list|()
 function_decl|;
 block|}
