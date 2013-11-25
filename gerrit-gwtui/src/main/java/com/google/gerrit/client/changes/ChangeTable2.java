@@ -1815,14 +1815,6 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Gerrit
-operator|.
-name|getConfig
-argument_list|()
-operator|.
-name|testChangeMerge
-argument_list|()
-operator|&&
 operator|!
 name|c
 operator|.

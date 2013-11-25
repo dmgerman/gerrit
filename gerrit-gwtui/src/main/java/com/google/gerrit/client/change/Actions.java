@@ -966,20 +966,15 @@ return|return
 name|ids
 return|;
 block|}
-DECL|method|setSubmitEnabled (boolean ok)
+DECL|method|setSubmitEnabled ()
 name|void
 name|setSubmitEnabled
-parameter_list|(
-name|boolean
-name|ok
-parameter_list|)
+parameter_list|()
 block|{
 name|submit
 operator|.
 name|setVisible
 argument_list|(
-name|ok
-operator|&&
 name|canSubmit
 argument_list|)
 expr_stmt|;
