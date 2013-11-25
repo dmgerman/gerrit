@@ -1226,7 +1226,7 @@ name|Resources
 operator|.
 name|C
 operator|.
-name|ps
+name|patchSet
 argument_list|()
 argument_list|)
 operator|.

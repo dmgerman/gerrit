@@ -103,9 +103,9 @@ name|String
 name|reviewedFileTitle
 parameter_list|()
 function_decl|;
-DECL|method|ps ()
+DECL|method|patchSet ()
 name|String
-name|ps
+name|patchSet
 parameter_list|()
 function_decl|;
 DECL|method|commit ()
