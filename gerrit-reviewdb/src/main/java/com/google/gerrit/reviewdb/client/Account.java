@@ -137,7 +137,7 @@ specifier|final
 name|String
 name|USER_NAME_PATTERN_FIRST
 init|=
-literal|"[a-zA-Z]"
+literal|"[a-zA-Z0-9]"
 decl_stmt|;
 DECL|field|USER_NAME_PATTERN_REST
 specifier|public
