@@ -1434,13 +1434,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|qb
-operator|.
-name|setAllowFileRegex
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|Predicate
 argument_list|<
 name|ChangeData

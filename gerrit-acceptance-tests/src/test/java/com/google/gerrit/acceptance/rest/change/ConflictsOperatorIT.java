@@ -198,7 +198,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|AbstractDaemonTestWithSecondaryIndex
+name|AbstractDaemonTest
 import|;
 end_import
 
@@ -488,7 +488,7 @@ specifier|public
 class|class
 name|ConflictsOperatorIT
 extends|extends
-name|AbstractDaemonTestWithSecondaryIndex
+name|AbstractDaemonTest
 block|{
 annotation|@
 name|Inject
