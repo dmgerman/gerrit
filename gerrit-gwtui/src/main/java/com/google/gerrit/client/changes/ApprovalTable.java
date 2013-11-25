@@ -1385,14 +1385,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|Gerrit
-operator|.
-name|getConfig
-argument_list|()
-operator|.
-name|testChangeMerge
-argument_list|()
-operator|&&
 name|change
 operator|.
 name|status
