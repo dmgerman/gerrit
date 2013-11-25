@@ -84,6 +84,17 @@ name|client
 operator|.
 name|Messages
 block|{
+DECL|method|revisions (int currentlyViewedPatchSet, int currentPatchSet)
+name|String
+name|revisions
+parameter_list|(
+name|int
+name|currentlyViewedPatchSet
+parameter_list|,
+name|int
+name|currentPatchSet
+parameter_list|)
+function_decl|;
 DECL|method|changeWithNoRevisions (int changeId)
 name|String
 name|changeWithNoRevisions
