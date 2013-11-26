@@ -673,6 +673,11 @@ specifier|final
 name|ChangeIndexer
 name|indexer
 decl_stmt|;
+DECL|field|force
+specifier|private
+name|boolean
+name|force
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|Mergeable (TestSubmitType.Get submitType, GitRepositoryManager gitManager, SubmitStrategyFactory submitStrategyFactory, Provider<ReviewDb> db, ChangeIndexer indexer)
@@ -728,6 +733,22 @@ operator|.
 name|indexer
 operator|=
 name|indexer
+expr_stmt|;
+block|}
+DECL|method|setForce (boolean force)
+specifier|public
+name|void
+name|setForce
+parameter_list|(
+name|boolean
+name|force
+parameter_list|)
+block|{
+name|this
+operator|.
+name|force
+operator|=
+name|force
 expr_stmt|;
 block|}
 annotation|@
@@ -897,6 +918,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|force
+operator|||
 name|isStale
 argument_list|(
 name|change
