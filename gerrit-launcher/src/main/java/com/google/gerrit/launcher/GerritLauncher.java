@@ -523,6 +523,15 @@ name|err
 operator|.
 name|println
 argument_list|(
+literal|"  reindex        Rebuild the secondary index"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
 literal|"  daemon         Run the Gerrit network daemons"
 argument_list|)
 expr_stmt|;
