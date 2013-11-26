@@ -295,6 +295,16 @@ name|String
 name|keyAddReviewers
 parameter_list|()
 function_decl|;
+DECL|method|keyExpandAllMessages ()
+name|String
+name|keyExpandAllMessages
+parameter_list|()
+function_decl|;
+DECL|method|keyCollapseAllMessages ()
+name|String
+name|keyCollapseAllMessages
+parameter_list|()
+function_decl|;
 DECL|method|patchTableColumnName ()
 name|String
 name|patchTableColumnName
