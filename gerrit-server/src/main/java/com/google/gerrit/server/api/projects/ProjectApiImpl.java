@@ -116,22 +116,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|CreateBranch
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|ProjectResource
 import|;
 end_import
@@ -174,12 +158,12 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ProjectResource change)
+DECL|method|create (ProjectResource project)
 name|ProjectApiImpl
 name|create
 parameter_list|(
 name|ProjectResource
-name|change
+name|project
 parameter_list|)
 function_decl|;
 block|}
@@ -199,14 +183,9 @@ name|branchApi
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectApiImpl ( CreateBranch.Factory createBranchFactory, BranchApiImpl.Factory branchApiFactory, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl ( BranchApiImpl.Factory branchApiFactory, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
-name|CreateBranch
-operator|.
-name|Factory
-name|createBranchFactory
-parameter_list|,
 name|BranchApiImpl
 operator|.
 name|Factory
