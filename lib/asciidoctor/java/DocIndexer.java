@@ -392,7 +392,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_44
+name|LUCENE_46
 decl_stmt|;
 annotation|@
 name|Option

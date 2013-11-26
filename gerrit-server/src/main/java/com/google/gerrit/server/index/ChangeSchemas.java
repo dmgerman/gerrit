@@ -597,6 +597,27 @@ operator|.
 name|MERGEABLE
 argument_list|)
 decl_stmt|;
+comment|// For upgrade to Lucene 4.6.0 index format only.
+DECL|field|V6
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V6
+init|=
+name|release
+argument_list|(
+name|V5
+operator|.
+name|getFields
+argument_list|()
+operator|.
+name|values
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|method|release (Collection<FieldDef<ChangeData, ?>> fields)
 specifier|private
 specifier|static
