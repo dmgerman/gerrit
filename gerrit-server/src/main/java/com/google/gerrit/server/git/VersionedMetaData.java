@@ -475,17 +475,17 @@ name|RevCommit
 name|revision
 decl_stmt|;
 DECL|field|reader
-specifier|private
+specifier|protected
 name|ObjectReader
 name|reader
 decl_stmt|;
 DECL|field|inserter
-specifier|private
+specifier|protected
 name|ObjectInserter
 name|inserter
 decl_stmt|;
 DECL|field|newTree
-specifier|private
+specifier|protected
 name|DirCache
 name|newTree
 decl_stmt|;
@@ -1576,7 +1576,7 @@ block|}
 return|;
 block|}
 DECL|method|readTree (RevTree tree)
-specifier|private
+specifier|protected
 name|DirCache
 name|readTree
 parameter_list|(

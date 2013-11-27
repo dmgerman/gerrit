@@ -888,7 +888,7 @@ init|=
 literal|"enabled"
 decl_stmt|;
 DECL|field|PROJECT_CONFIG
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
