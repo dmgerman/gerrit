@@ -588,6 +588,30 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+DECL|method|save (String message)
+name|void
+name|save
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|save
+argument_list|(
+operator|new
+name|PersonIdent
+argument_list|(
+literal|"Gerrit Initialization"
+argument_list|,
+literal|"init@gerrit"
+argument_list|)
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|save (String pluginName, String message)
 specifier|public
 name|void
@@ -598,6 +622,42 @@ name|pluginName
 parameter_list|,
 name|String
 name|message
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|save
+argument_list|(
+operator|new
+name|PersonIdent
+argument_list|(
+name|pluginName
+argument_list|,
+name|pluginName
+operator|+
+literal|"@gerrit"
+argument_list|)
+argument_list|,
+literal|"Update from plugin "
+operator|+
+name|pluginName
+operator|+
+literal|": "
+operator|+
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|save (PersonIdent ident, String msg)
+specifier|private
+name|void
+name|save
+parameter_list|(
+name|PersonIdent
+name|ident
+parameter_list|,
+name|String
+name|msg
 parameter_list|)
 throws|throws
 name|IOException
@@ -716,30 +776,6 @@ block|{
 comment|// If there are no changes to the content, don't create the commit.
 return|return;
 block|}
-name|PersonIdent
-name|ident
-init|=
-operator|new
-name|PersonIdent
-argument_list|(
-name|pluginName
-argument_list|,
-name|pluginName
-operator|+
-literal|"@gerrit"
-argument_list|)
-decl_stmt|;
-name|String
-name|msg
-init|=
-literal|"Update from plugin "
-operator|+
-name|pluginName
-operator|+
-literal|": "
-operator|+
-name|message
-decl_stmt|;
 name|CommitBuilder
 name|commit
 init|=
