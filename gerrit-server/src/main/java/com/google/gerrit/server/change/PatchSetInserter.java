@@ -2196,7 +2196,7 @@ name|mergeabilityChecker
 operator|.
 name|updateAndIndexAsync
 argument_list|(
-name|change
+name|updatedChange
 argument_list|)
 decl_stmt|;
 if|if
