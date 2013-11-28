@@ -188,6 +188,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtexpui
 operator|.
 name|safehtml
@@ -819,6 +835,15 @@ name|String
 name|value
 parameter_list|()
 comment|/*-{ return this.value; }-*/
+function_decl|;
+DECL|method|permittedValues ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|permittedValues
+parameter_list|()
+comment|/*-{ return this.permitted_values; }-*/
 function_decl|;
 DECL|method|ConfigParameterInfo ()
 specifier|protected
