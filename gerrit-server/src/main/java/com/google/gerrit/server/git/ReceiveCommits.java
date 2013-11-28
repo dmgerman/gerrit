@@ -4603,6 +4603,15 @@ operator|!
 name|input
 operator|.
 name|skip
+operator|&&
+name|input
+operator|.
+name|inputCommand
+operator|.
+name|getResult
+argument_list|()
+operator|==
+name|OK
 return|;
 block|}
 block|}
