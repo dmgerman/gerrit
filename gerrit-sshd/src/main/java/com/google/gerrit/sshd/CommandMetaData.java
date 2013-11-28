@@ -150,16 +150,6 @@ parameter_list|()
 default|default
 literal|""
 function_decl|;
-comment|/** @deprecated use description intead. */
-annotation|@
-name|Deprecated
-DECL|method|descr ()
-name|String
-name|descr
-parameter_list|()
-default|default
-literal|""
-function_decl|;
 block|}
 end_annotation_defn
 
