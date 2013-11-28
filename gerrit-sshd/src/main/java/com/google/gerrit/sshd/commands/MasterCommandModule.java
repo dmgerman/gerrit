@@ -247,18 +247,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// deprecated alias to review command
-name|alias
-argument_list|(
-name|gerrit
-argument_list|,
-literal|"approve"
-argument_list|,
-name|ReviewCommand
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|command
 argument_list|(
 name|gerrit
