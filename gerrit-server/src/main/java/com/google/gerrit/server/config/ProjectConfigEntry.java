@@ -164,6 +164,12 @@ specifier|final
 name|String
 name|displayName
 decl_stmt|;
+DECL|field|inheritable
+specifier|private
+specifier|final
+name|boolean
+name|inheritable
+decl_stmt|;
 DECL|field|defaultValue
 specifier|private
 specifier|final
@@ -202,11 +208,37 @@ name|displayName
 argument_list|,
 name|defaultValue
 argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectConfigEntry (String displayName, String defaultValue, boolean inheritable)
+specifier|public
+name|ProjectConfigEntry
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|String
+name|defaultValue
+parameter_list|,
+name|boolean
+name|inheritable
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|displayName
+argument_list|,
+name|defaultValue
+argument_list|,
 name|Type
 operator|.
 name|STRING
 argument_list|,
 literal|null
+argument_list|,
+name|inheritable
 argument_list|)
 expr_stmt|;
 block|}
@@ -225,6 +257,30 @@ name|this
 argument_list|(
 name|displayName
 argument_list|,
+name|defaultValue
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectConfigEntry (String displayName, int defaultValue, boolean inheritable)
+specifier|public
+name|ProjectConfigEntry
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|int
+name|defaultValue
+parameter_list|,
+name|boolean
+name|inheritable
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|displayName
+argument_list|,
 name|Integer
 operator|.
 name|toString
@@ -237,6 +293,8 @@ operator|.
 name|INT
 argument_list|,
 literal|null
+argument_list|,
+name|inheritable
 argument_list|)
 expr_stmt|;
 block|}
@@ -255,6 +313,30 @@ name|this
 argument_list|(
 name|displayName
 argument_list|,
+name|defaultValue
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectConfigEntry (String displayName, long defaultValue, boolean inheritable)
+specifier|public
+name|ProjectConfigEntry
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|long
+name|defaultValue
+parameter_list|,
+name|boolean
+name|inheritable
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|displayName
+argument_list|,
 name|Long
 operator|.
 name|toString
@@ -267,9 +349,12 @@ operator|.
 name|LONG
 argument_list|,
 literal|null
+argument_list|,
+name|inheritable
 argument_list|)
 expr_stmt|;
 block|}
+comment|// For inheritable boolean use 'LIST' type with InheritableBoolean
 DECL|method|ProjectConfigEntry (String displayName, boolean defaultValue)
 specifier|public
 name|ProjectConfigEntry
@@ -297,6 +382,8 @@ operator|.
 name|BOOLEAN
 argument_list|,
 literal|null
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -323,11 +410,45 @@ name|displayName
 argument_list|,
 name|defaultValue
 argument_list|,
+name|permittedValues
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectConfigEntry (String displayName, String defaultValue, List<String> permittedValues, boolean inheritable)
+specifier|public
+name|ProjectConfigEntry
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|String
+name|defaultValue
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|permittedValues
+parameter_list|,
+name|boolean
+name|inheritable
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|displayName
+argument_list|,
+name|defaultValue
+argument_list|,
 name|Type
 operator|.
 name|LIST
 argument_list|,
 name|permittedValues
+argument_list|,
+name|inheritable
 argument_list|)
 expr_stmt|;
 block|}
@@ -354,6 +475,46 @@ argument_list|<
 name|T
 argument_list|>
 name|permittedValues
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|displayName
+argument_list|,
+name|defaultValue
+argument_list|,
+name|permittedValues
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ProjectConfigEntry (String displayName, T defaultValue, Class<T> permittedValues, boolean inheritable)
+specifier|public
+parameter_list|<
+name|T
+extends|extends
+name|Enum
+argument_list|<
+name|?
+argument_list|>
+parameter_list|>
+name|ProjectConfigEntry
+parameter_list|(
+name|String
+name|displayName
+parameter_list|,
+name|T
+name|defaultValue
+parameter_list|,
+name|Class
+argument_list|<
+name|T
+argument_list|>
+name|permittedValues
+parameter_list|,
+name|boolean
+name|inheritable
 parameter_list|)
 block|{
 name|this
@@ -417,13 +578,15 @@ return|;
 block|}
 block|}
 block|)
+operator|,
+constructor|inheritable
 block|)
 class|;
 end_class
 
 begin_expr_stmt
 unit|}    private
-DECL|method|ProjectConfigEntry (String displayName, String defaultValue, Type type, List<String> permittedValues)
+DECL|method|ProjectConfigEntry (String displayName, String defaultValue, Type type, List<String> permittedValues, boolean inheritable)
 name|ProjectConfigEntry
 argument_list|(
 name|String
@@ -440,6 +603,9 @@ argument_list|<
 name|String
 argument_list|>
 name|permittedValues
+argument_list|,
+name|boolean
+name|inheritable
 argument_list|)
 block|{
 name|this
@@ -465,6 +631,12 @@ operator|.
 name|permittedValues
 operator|=
 name|permittedValues
+block|;
+name|this
+operator|.
+name|inheritable
+operator|=
+name|inheritable
 block|;   }
 DECL|method|getDisplayName ()
 specifier|public
@@ -477,6 +649,19 @@ name|displayName
 return|;
 block|}
 end_expr_stmt
+
+begin_function
+DECL|method|isInheritable ()
+specifier|public
+name|boolean
+name|isInheritable
+parameter_list|()
+block|{
+return|return
+name|inheritable
+return|;
+block|}
+end_function
 
 begin_function
 DECL|method|getDefaultValue ()

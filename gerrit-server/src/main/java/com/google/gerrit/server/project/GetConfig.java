@@ -140,6 +140,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllProjectsNameProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|PluginConfigFactory
 import|;
 end_import
@@ -232,6 +248,12 @@ specifier|final
 name|PluginConfigFactory
 name|cfgFactory
 decl_stmt|;
+DECL|field|allProjects
+specifier|private
+specifier|final
+name|AllProjectsNameProvider
+name|allProjects
+decl_stmt|;
 DECL|field|views
 specifier|private
 specifier|final
@@ -246,7 +268,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig (TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> currentUser)
+DECL|method|GetConfig (TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> currentUser)
 specifier|public
 name|GetConfig
 parameter_list|(
@@ -261,6 +283,9 @@ name|pluginConfigEntries
 parameter_list|,
 name|PluginConfigFactory
 name|cfgFactory
+parameter_list|,
+name|AllProjectsNameProvider
+name|allProjects
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -289,6 +314,12 @@ operator|.
 name|pluginConfigEntries
 operator|=
 name|pluginConfigEntries
+expr_stmt|;
+name|this
+operator|.
+name|allProjects
+operator|=
+name|allProjects
 expr_stmt|;
 name|this
 operator|.
@@ -328,6 +359,8 @@ argument_list|,
 name|pluginConfigEntries
 argument_list|,
 name|cfgFactory
+argument_list|,
+name|allProjects
 argument_list|,
 name|views
 argument_list|)

@@ -958,6 +958,11 @@ name|String
 name|patchSizeCell
 parameter_list|()
 function_decl|;
+DECL|method|pluginProjectConfigInheritedValue ()
+name|String
+name|pluginProjectConfigInheritedValue
+parameter_list|()
+function_decl|;
 DECL|method|pluginsTable ()
 name|String
 name|pluginsTable

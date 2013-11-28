@@ -836,6 +836,33 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value; }-*/
 function_decl|;
+DECL|method|inheritable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|inheritable
+parameter_list|()
+comment|/*-{ return this.inheritable ? true : false; }-*/
+function_decl|;
+DECL|method|configuredValue ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|configuredValue
+parameter_list|()
+comment|/*-{ return this.configured_value; }-*/
+function_decl|;
+DECL|method|inheritedValue ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|inheritedValue
+parameter_list|()
+comment|/*-{ return this.inherited_value; }-*/
+function_decl|;
 DECL|method|permittedValues ()
 specifier|public
 specifier|final
