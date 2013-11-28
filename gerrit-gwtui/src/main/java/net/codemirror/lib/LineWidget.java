@@ -123,6 +123,18 @@ name|changed
 parameter_list|()
 comment|/*-{ this.changed(); }-*/
 function_decl|;
+DECL|method|onRedraw (Runnable thunk)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|onRedraw
+parameter_list|(
+name|Runnable
+name|thunk
+parameter_list|)
+comment|/*-{     this.on("redraw", $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+function_decl|;
 DECL|method|onFirstRedraw (Runnable thunk)
 specifier|public
 specifier|final
