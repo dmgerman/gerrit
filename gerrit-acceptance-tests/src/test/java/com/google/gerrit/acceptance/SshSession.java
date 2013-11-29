@@ -207,6 +207,11 @@ operator|=
 name|account
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 DECL|method|exec (String command)
 specifier|public
 name|String

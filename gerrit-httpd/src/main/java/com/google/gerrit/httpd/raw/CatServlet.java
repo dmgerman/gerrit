@@ -1426,6 +1426,11 @@ expr_stmt|;
 name|OutputStream
 name|out
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|ZipOutputStream
 name|zo
 decl_stmt|;

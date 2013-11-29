@@ -439,7 +439,14 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
-return|return
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+name|BinaryResult
+name|result
+init|=
 operator|new
 name|BinaryResult
 argument_list|()
@@ -465,6 +472,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+decl_stmt|;
+return|return
+name|result
 operator|.
 name|setContentLength
 argument_list|(
