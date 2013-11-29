@@ -279,6 +279,7 @@ name|Singleton
 annotation|@
 name|SshListenAddresses
 DECL|method|getListenAddresses (@erritServerConfig Config cfg)
+specifier|public
 name|List
 argument_list|<
 name|SocketAddress
