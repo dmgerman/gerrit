@@ -347,6 +347,11 @@ operator|.
 name|URLClassLoader
 condition|)
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|URLClassLoader
 name|ucl
 init|=

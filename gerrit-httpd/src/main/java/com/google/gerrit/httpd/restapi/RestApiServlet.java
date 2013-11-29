@@ -7051,6 +7051,11 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 DECL|method|asBinaryResult (final TemporaryBuffer.Heap buf)
 specifier|private
 specifier|static

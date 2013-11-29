@@ -384,6 +384,11 @@ name|garbageCollectionFactory
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+annotation|@
 name|Override
 DECL|method|apply (final ProjectResource rsrc, final Input input)
 specifier|public
