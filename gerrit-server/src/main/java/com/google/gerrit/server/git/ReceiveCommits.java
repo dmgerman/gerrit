@@ -10903,6 +10903,13 @@ name|skip
 operator|=
 literal|true
 expr_stmt|;
+name|reject
+argument_list|(
+name|inputCommand
+argument_list|,
+literal|"commit already exists"
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
