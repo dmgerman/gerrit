@@ -2999,6 +2999,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SafeVarargs
 DECL|method|filter (final Config cfg, final String key, final NamedFactory<T>... avail)
 specifier|private
 specifier|static
@@ -3369,6 +3371,8 @@ return|return
 name|def
 return|;
 block|}
+annotation|@
+name|SafeVarargs
 DECL|method|find (final String name, final NamedFactory<T>... avail)
 specifier|private
 specifier|static

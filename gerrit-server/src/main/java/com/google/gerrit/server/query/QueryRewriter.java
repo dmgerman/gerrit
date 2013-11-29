@@ -541,7 +541,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Combine the passed predicates into a single AND node. */
-DECL|method|and (Predicate<T>.... that)
+DECL|method|and (@uppressWarningsR) Predicate<T>.... that)
 specifier|public
 name|Predicate
 argument_list|<
@@ -549,6 +549,11 @@ name|T
 argument_list|>
 name|and
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Predicate
 argument_list|<
 name|T
@@ -600,7 +605,7 @@ argument_list|)
 return|;
 block|}
 comment|/** Combine the passed predicates into a single OR node. */
-DECL|method|or (Predicate<T>.... that)
+DECL|method|or (@uppressWarningsR) Predicate<T>.... that)
 specifier|public
 name|Predicate
 argument_list|<
@@ -608,6 +613,11 @@ name|T
 argument_list|>
 name|or
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Predicate
 argument_list|<
 name|T

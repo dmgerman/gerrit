@@ -170,6 +170,8 @@ name|INSTANCE
 return|;
 block|}
 comment|/** Combine the passed predicates into a single AND node. */
+annotation|@
+name|SafeVarargs
 DECL|method|and (final Predicate<T>... that)
 specifier|public
 specifier|static
@@ -275,6 +277,8 @@ argument_list|)
 return|;
 block|}
 comment|/** Combine the passed predicates into a single OR node. */
+annotation|@
+name|SafeVarargs
 DECL|method|or (final Predicate<T>... that)
 specifier|public
 specifier|static

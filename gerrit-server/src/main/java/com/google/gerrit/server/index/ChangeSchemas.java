@@ -221,11 +221,7 @@ block|{
 annotation|@
 name|SuppressWarnings
 argument_list|(
-block|{
-literal|"unchecked"
-block|,
 literal|"deprecation"
-block|}
 argument_list|)
 DECL|field|V1
 specifier|static
@@ -310,11 +306,7 @@ decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
-block|{
-literal|"unchecked"
-block|,
 literal|"deprecation"
-block|}
 argument_list|)
 DECL|field|V2
 specifier|static
@@ -404,11 +396,6 @@ operator|.
 name|APPROVAL
 argument_list|)
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|field|V3
 specifier|static
 specifier|final
@@ -518,11 +505,6 @@ name|values
 argument_list|()
 argument_list|)
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|field|V5
 specifier|static
 specifier|final
@@ -649,6 +631,8 @@ name|fields
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SafeVarargs
 DECL|method|release (FieldDef<ChangeData, ?>.... fields)
 specifier|private
 specifier|static
@@ -680,6 +664,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|SafeVarargs
 annotation|@
 name|SuppressWarnings
 argument_list|(

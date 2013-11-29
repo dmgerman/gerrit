@@ -166,6 +166,8 @@ specifier|final
 name|int
 name|cost
 decl_stmt|;
+annotation|@
+name|SafeVarargs
 DECL|method|OrPredicate (final Predicate<T>... that)
 specifier|protected
 name|OrPredicate
