@@ -68,11 +68,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Arrays
+name|common
+operator|.
+name|collect
+operator|.
+name|ImmutableList
 import|;
 end_import
 
@@ -153,7 +157,7 @@ operator|.
 name|emptyList
 argument_list|()
 decl_stmt|;
-DECL|method|init (String name, Predicate<T>... args)
+DECL|method|init (String name, @SuppressWarnings(R) Predicate<T>... args)
 specifier|protected
 name|void
 name|init
@@ -161,6 +165,11 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Predicate
 argument_list|<
 name|T
@@ -185,9 +194,9 @@ name|this
 operator|.
 name|children
 operator|=
-name|Arrays
+name|ImmutableList
 operator|.
-name|asList
+name|copyOf
 argument_list|(
 name|args
 argument_list|)
