@@ -102,20 +102,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|events
@@ -256,9 +242,7 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * @return the current search index version, or null if the secondary index is    *     disabled.    */
-annotation|@
-name|Nullable
+comment|/** @return the current search index version. */
 DECL|method|getSearchIndex ()
 specifier|public
 name|ChangeIndex

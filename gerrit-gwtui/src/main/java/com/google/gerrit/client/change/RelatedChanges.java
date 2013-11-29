@@ -1509,14 +1509,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Gerrit
-operator|.
-name|getConfig
-argument_list|()
-operator|.
-name|hasIndex
-argument_list|()
-operator|&&
 name|info
 operator|.
 name|mergeable

@@ -220,28 +220,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-annotation|@
-name|Deprecated
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE key.trackingKey = ?"
-argument_list|)
-DECL|method|byTrackingId (TrackingId.Id trackingId)
-name|ResultSet
-argument_list|<
-name|TrackingId
-argument_list|>
-name|byTrackingId
-parameter_list|(
-name|TrackingId
-operator|.
-name|Id
-name|trackingId
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
 block|}
 end_interface
 

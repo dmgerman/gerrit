@@ -1161,9 +1161,6 @@ condition|)
 block|{
 try|try
 block|{
-name|ChangeQueryBuilder
-name|builder
-init|=
 name|queryBuilder
 operator|.
 name|create
@@ -1173,15 +1170,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|builder
-operator|.
-name|setAllowFileRegex
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|builder
 operator|.
 name|parse
 argument_list|(

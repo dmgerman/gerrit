@@ -347,11 +347,6 @@ operator|.
 name|ChangeScreen
 name|changeScreen
 decl_stmt|;
-DECL|field|index
-specifier|protected
-name|boolean
-name|index
-decl_stmt|;
 DECL|field|largeChangeSize
 specifier|protected
 name|int
@@ -1108,32 +1103,6 @@ operator|.
 name|changeScreen
 operator|=
 name|ui
-expr_stmt|;
-block|}
-DECL|method|hasIndex ()
-specifier|public
-name|boolean
-name|hasIndex
-parameter_list|()
-block|{
-return|return
-name|index
-return|;
-block|}
-DECL|method|setIndex (boolean index)
-specifier|public
-name|void
-name|setIndex
-parameter_list|(
-name|boolean
-name|index
-parameter_list|)
-block|{
-name|this
-operator|.
-name|index
-operator|=
-name|index
 expr_stmt|;
 block|}
 DECL|method|getLargeChangeSize ()
