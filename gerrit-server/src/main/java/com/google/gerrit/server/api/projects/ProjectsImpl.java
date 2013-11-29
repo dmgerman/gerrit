@@ -254,19 +254,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RestApiException
-argument_list|(
-literal|"Cannot retrieve project"
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|UnprocessableEntityException
 name|e
 parameter_list|)
