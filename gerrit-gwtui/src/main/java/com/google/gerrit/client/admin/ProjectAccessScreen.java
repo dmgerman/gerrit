@@ -2007,13 +2007,11 @@ operator|.
 name|setEnabled
 argument_list|(
 name|enabled
-condition|?
+operator|&&
 name|access
 operator|.
 name|canUpload
 argument_list|()
-else|:
-literal|false
 argument_list|)
 expr_stmt|;
 name|cancel1
