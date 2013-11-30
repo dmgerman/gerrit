@@ -271,7 +271,7 @@ name|assertNotNull
 argument_list|(
 name|lib
 operator|.
-name|bouncyCastle
+name|bouncyCastleProvider
 argument_list|)
 expr_stmt|;
 name|assertNotNull
