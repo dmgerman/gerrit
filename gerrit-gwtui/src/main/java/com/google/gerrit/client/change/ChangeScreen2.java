@@ -1627,17 +1627,17 @@ name|UiField
 name|Button
 name|includedIn
 decl_stmt|;
-DECL|field|revisions
+DECL|field|patchSets
 annotation|@
 name|UiField
 name|Button
-name|revisions
+name|patchSets
 decl_stmt|;
-DECL|field|revisionsText
+DECL|field|patchSetsText
 annotation|@
 name|UiField
 name|Element
-name|revisionsText
+name|patchSetsText
 decl_stmt|;
 DECL|field|download
 annotation|@
@@ -1690,10 +1690,10 @@ specifier|private
 name|IncludedInAction
 name|includedInAction
 decl_stmt|;
-DECL|field|revisionsAction
+DECL|field|patchSetsAction
 specifier|private
-name|RevisionsAction
-name|revisionsAction
+name|PatchSetsAction
+name|patchSetsAction
 decl_stmt|;
 DECL|field|downloadAction
 specifier|private
@@ -2727,7 +2727,7 @@ operator|.
 name|_number
 argument_list|()
 decl_stmt|;
-name|revisionsText
+name|patchSetsText
 operator|.
 name|setInnerText
 argument_list|(
@@ -2735,7 +2735,7 @@ name|Resources
 operator|.
 name|M
 operator|.
-name|revisions
+name|patchSets
 argument_list|(
 name|currentlyViewedPatchSet
 argument_list|,
@@ -2743,10 +2743,10 @@ name|currentPatchSet
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|revisionsAction
+name|patchSetsAction
 operator|=
 operator|new
-name|RevisionsAction
+name|PatchSetsAction
 argument_list|(
 name|info
 operator|.
@@ -2759,7 +2759,7 @@ name|style
 argument_list|,
 name|headerLine
 argument_list|,
-name|revisions
+name|patchSets
 argument_list|)
 expr_stmt|;
 block|}
@@ -3399,17 +3399,17 @@ block|}
 annotation|@
 name|UiHandler
 argument_list|(
-literal|"revisions"
+literal|"patchSets"
 argument_list|)
-DECL|method|onRevision (ClickEvent e)
+DECL|method|onPatchSets (ClickEvent e)
 name|void
-name|onRevision
+name|onPatchSets
 parameter_list|(
 name|ClickEvent
 name|e
 parameter_list|)
 block|{
-name|revisionsAction
+name|patchSetsAction
 operator|.
 name|show
 argument_list|()

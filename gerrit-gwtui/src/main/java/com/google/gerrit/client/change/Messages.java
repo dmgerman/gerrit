@@ -84,9 +84,9 @@ name|client
 operator|.
 name|Messages
 block|{
-DECL|method|revisions (int currentlyViewedPatchSet, int currentPatchSet)
+DECL|method|patchSets (int currentlyViewedPatchSet, int currentPatchSet)
 name|String
-name|revisions
+name|patchSets
 parameter_list|(
 name|int
 name|currentlyViewedPatchSet
