@@ -987,6 +987,26 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getNames ()
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getNames
+parameter_list|()
+block|{
+return|return
+name|cfg
+operator|.
+name|getNames
+argument_list|(
+name|PLUGIN
+argument_list|,
+name|pluginName
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
