@@ -878,26 +878,7 @@ block|}
 catch|catch
 parameter_list|(
 name|EmailException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Cannot send email verification message to "
-operator|+
-name|email
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-throw|throw
-name|e
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|RuntimeException
 name|e
 parameter_list|)
