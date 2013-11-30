@@ -1177,9 +1177,14 @@ name|SubmitAction
 operator|.
 name|call
 argument_list|(
-name|changeId
+name|changeInfo
 argument_list|,
+name|changeInfo
+operator|.
 name|revision
+argument_list|(
+name|revision
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
