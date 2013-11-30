@@ -615,9 +615,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|RevisionsBox
+DECL|class|PatchSetsBox
 class|class
-name|RevisionsBox
+name|PatchSetsBox
 extends|extends
 name|Composite
 block|{
@@ -629,7 +629,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|RevisionsBox
+name|PatchSetsBox
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -704,7 +704,7 @@ parameter_list|(
 name|String
 name|o
 parameter_list|)
-comment|/*-{     $wnd[o] = $entry(function(e,i) {       return @com.google.gerrit.client.change.RevisionsBox::onOpen(Lcom/google/gwt/dom/client/NativeEvent;I)(e,i);     });   }-*/
+comment|/*-{     $wnd[o] = $entry(function(e,i) {       return @com.google.gerrit.client.change.PatchSetsBox::onOpen(Lcom/google/gwt/dom/client/NativeEvent;I)(e,i);     });   }-*/
 function_decl|;
 DECL|method|onOpen (NativeEvent e, int idx)
 specifier|private
@@ -735,7 +735,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|RevisionsBox
+name|PatchSetsBox
 name|t
 init|=
 name|getRevisionBox
@@ -774,7 +774,7 @@ block|}
 DECL|method|getRevisionBox (NativeEvent event)
 specifier|private
 specifier|static
-name|RevisionsBox
+name|PatchSetsBox
 name|getRevisionBox
 parameter_list|(
 name|NativeEvent
@@ -841,12 +841,12 @@ if|if
 condition|(
 name|l
 operator|instanceof
-name|RevisionsBox
+name|PatchSetsBox
 condition|)
 block|{
 return|return
 operator|(
-name|RevisionsBox
+name|PatchSetsBox
 operator|)
 name|l
 return|;
@@ -922,8 +922,8 @@ name|UiField
 name|Style
 name|style
 decl_stmt|;
-DECL|method|RevisionsBox (Change.Id changeId, String revision)
-name|RevisionsBox
+DECL|method|PatchSetsBox (Change.Id changeId, String revision)
+name|PatchSetsBox
 parameter_list|(
 name|Change
 operator|.

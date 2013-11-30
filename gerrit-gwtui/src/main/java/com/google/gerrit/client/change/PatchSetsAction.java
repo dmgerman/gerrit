@@ -119,20 +119,20 @@ import|;
 end_import
 
 begin_class
-DECL|class|RevisionsAction
+DECL|class|PatchSetsAction
 class|class
-name|RevisionsAction
+name|PatchSetsAction
 extends|extends
 name|RightSidePopdownAction
 block|{
 DECL|field|revisionBox
 specifier|private
 specifier|final
-name|RevisionsBox
+name|PatchSetsBox
 name|revisionBox
 decl_stmt|;
-DECL|method|RevisionsAction ( Change.Id changeId, String revision, ChangeScreen2.Style style, UIObject relativeTo, Widget downloadButton)
-name|RevisionsAction
+DECL|method|PatchSetsAction ( Change.Id changeId, String revision, ChangeScreen2.Style style, UIObject relativeTo, Widget downloadButton)
+name|PatchSetsAction
 parameter_list|(
 name|Change
 operator|.
@@ -168,7 +168,7 @@ operator|.
 name|revisionBox
 operator|=
 operator|new
-name|RevisionsBox
+name|PatchSetsBox
 argument_list|(
 name|changeId
 argument_list|,
