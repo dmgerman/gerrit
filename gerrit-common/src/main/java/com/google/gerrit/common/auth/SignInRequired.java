@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|NotSignedInException
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|lang
@@ -131,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation indicating a service method requires a current user.  *<p>  * If there is no current user then {@link NotSignedInException} will be given  * to the callback's onFailure method.  */
+comment|/**  * Annotation indicating a service method requires a current user.  *<p>  * If there is no current user then  * {@code com.google.gerrit.common.errors.NotSignedInException} will be given to  * the callback's onFailure method.  */
 end_comment
 
 begin_annotation_defn
