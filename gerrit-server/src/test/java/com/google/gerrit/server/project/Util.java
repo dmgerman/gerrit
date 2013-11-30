@@ -577,7 +577,6 @@ block|{
 DECL|field|ANONYMOUS
 specifier|public
 specifier|static
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -587,10 +586,21 @@ name|AccountGroup
 operator|.
 name|ANONYMOUS_USERS
 decl_stmt|;
+DECL|field|CHANGE_OWNER
+specifier|public
+specifier|static
+name|AccountGroup
+operator|.
+name|UUID
+name|CHANGE_OWNER
+init|=
+name|AccountGroup
+operator|.
+name|CHANGE_OWNER
+decl_stmt|;
 DECL|field|REGISTERED
 specifier|public
 specifier|static
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -603,7 +613,6 @@ decl_stmt|;
 DECL|field|ADMIN
 specifier|public
 specifier|static
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -620,7 +629,6 @@ decl_stmt|;
 DECL|field|DEVS
 specifier|public
 specifier|static
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID

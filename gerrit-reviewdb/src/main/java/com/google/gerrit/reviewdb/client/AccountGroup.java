@@ -551,6 +551,24 @@ argument_list|(
 literal|"global:Project-Owners"
 argument_list|)
 decl_stmt|;
+comment|/** Common UUID assigned to the "Change Owner" placeholder group. */
+DECL|field|CHANGE_OWNER
+specifier|public
+specifier|static
+specifier|final
+name|AccountGroup
+operator|.
+name|UUID
+name|CHANGE_OWNER
+init|=
+operator|new
+name|AccountGroup
+operator|.
+name|UUID
+argument_list|(
+literal|"global:Change-Owner"
+argument_list|)
+decl_stmt|;
 comment|/** Common UUID assigned to the "Anonymous Users" group. */
 DECL|field|ANONYMOUS_USERS
 specifier|public

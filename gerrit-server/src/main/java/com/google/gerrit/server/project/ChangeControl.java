@@ -1743,7 +1743,10 @@ name|getRefControl
 argument_list|()
 operator|.
 name|getLabelRanges
+argument_list|(
+name|isOwner
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/** The range of permitted values associated with a label permission. */
@@ -1763,6 +1766,9 @@ operator|.
 name|getRange
 argument_list|(
 name|permission
+argument_list|,
+name|isOwner
+argument_list|()
 argument_list|)
 return|;
 block|}

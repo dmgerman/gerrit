@@ -457,6 +457,16 @@ name|result
 operator|.
 name|contains
 argument_list|(
+literal|"Change Owner"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|result
+operator|.
+name|contains
+argument_list|(
 literal|"Non-Interactive Users"
 argument_list|)
 argument_list|)
@@ -596,6 +606,16 @@ name|names
 operator|.
 name|contains
 argument_list|(
+literal|"Change Owner"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|names
+operator|.
+name|contains
+argument_list|(
 literal|"Non-Interactive Users"
 argument_list|)
 argument_list|)
@@ -694,6 +714,16 @@ operator|.
 name|contains
 argument_list|(
 literal|"Anonymous Users"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"Change Owner"
 argument_list|)
 argument_list|)
 expr_stmt|;
