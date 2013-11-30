@@ -515,7 +515,7 @@ condition|)
 block|{
 name|libraries
 operator|.
-name|bouncyCastle
+name|bouncyCastleSSL
 operator|.
 name|downloadRequired
 argument_list|()
@@ -535,7 +535,7 @@ condition|)
 block|{
 name|libraries
 operator|.
-name|bouncyCastle
+name|bouncyCastleSSL
 operator|.
 name|downloadOptional
 argument_list|()
