@@ -723,6 +723,13 @@ operator|.
 name|upgradeSchema
 argument_list|()
 expr_stmt|;
+name|init
+operator|.
+name|initializer
+operator|.
+name|postRun
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
