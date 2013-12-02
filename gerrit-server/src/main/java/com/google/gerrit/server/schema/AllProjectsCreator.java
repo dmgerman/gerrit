@@ -67,6 +67,60 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+operator|.
+name|ANONYMOUS_USERS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+operator|.
+name|PROJECT_OWNERS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+operator|.
+name|REGISTERED_USERS
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -367,24 +421,6 @@ operator|.
 name|group
 operator|.
 name|SystemGroupBackend
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|SystemGroupBackend
-operator|.
-name|*
 import|;
 end_import
 
