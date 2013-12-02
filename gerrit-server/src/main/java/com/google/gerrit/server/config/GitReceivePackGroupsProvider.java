@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|account
 operator|.
-name|AccountGroup
+name|GroupBackend
 import|;
 end_import
 
@@ -92,9 +92,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|group
 operator|.
-name|GroupBackend
+name|SystemGroupBackend
 import|;
 end_import
 
@@ -228,7 +228,7 @@ name|Collections
 operator|.
 name|singleton
 argument_list|(
-name|AccountGroup
+name|SystemGroupBackend
 operator|.
 name|REGISTERED_USERS
 argument_list|)

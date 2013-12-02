@@ -1334,24 +1334,6 @@ argument_list|(
 name|uuid
 argument_list|)
 decl_stmt|;
-name|group
-operator|.
-name|setType
-argument_list|(
-name|AccountGroup
-operator|.
-name|Type
-operator|.
-name|INTERNAL
-argument_list|)
-expr_stmt|;
-name|toUpdate
-operator|.
-name|add
-argument_list|(
-name|group
-argument_list|)
-expr_stmt|;
 name|ui
 operator|.
 name|message
@@ -1360,7 +1342,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"*** Group has no DN and is inuse. Updated to be INTERNAL: %s"
+literal|"*** Group has no DN and is in use: %s"
 argument_list|,
 name|group
 operator|.

@@ -170,11 +170,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
+name|group
 operator|.
-name|AccountGroup
+name|SystemGroupBackend
 import|;
 end_import
 
@@ -681,14 +681,13 @@ specifier|final
 name|GroupReference
 name|anonymous
 init|=
-operator|new
-name|GroupReference
+name|SystemGroupBackend
+operator|.
+name|getGroup
 argument_list|(
-name|AccountGroup
+name|SystemGroupBackend
 operator|.
 name|ANONYMOUS_USERS
-argument_list|,
-literal|"Anonymous Users"
 argument_list|)
 decl_stmt|;
 DECL|method|configureDefaults (Map<String, List<PermissionRule>> out, AccessSection section)

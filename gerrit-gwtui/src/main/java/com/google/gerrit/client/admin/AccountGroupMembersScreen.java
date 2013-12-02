@@ -1019,17 +1019,6 @@ operator|.
 name|getGroupUUID
 argument_list|()
 argument_list|)
-operator|&&
-operator|!
-name|AccountGroup
-operator|.
-name|isSystemGroup
-argument_list|(
-name|group
-operator|.
-name|getGroupUUID
-argument_list|()
-argument_list|)
 condition|)
 block|{
 name|members

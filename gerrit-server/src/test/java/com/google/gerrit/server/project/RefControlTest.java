@@ -184,11 +184,11 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|group
 operator|.
-name|Util
+name|SystemGroupBackend
 operator|.
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 import|;
 end_import
 
@@ -202,29 +202,29 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|group
 operator|.
-name|Util
-operator|.
-name|REGISTERED
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|Util
+name|SystemGroupBackend
 operator|.
 name|CHANGE_OWNER
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+operator|.
+name|REGISTERED_USERS
 import|;
 end_import
 
@@ -278,7 +278,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|grant
+name|doNotInherit
 import|;
 end_import
 
@@ -296,7 +296,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|doNotInherit
+name|grant
 import|;
 end_import
 
@@ -966,7 +966,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -980,7 +980,7 @@ argument_list|()
 argument_list|,
 name|PUSH
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/for/refs/*"
 argument_list|)
@@ -991,7 +991,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/foobar"
 argument_list|)
@@ -1088,7 +1088,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1102,7 +1102,7 @@ argument_list|()
 argument_list|,
 name|PUSH
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/for/refs/*"
 argument_list|)
@@ -1113,7 +1113,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/foobar"
 argument_list|)
@@ -1313,7 +1313,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1324,7 +1324,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1370,7 +1370,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1381,7 +1381,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -1472,7 +1472,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1483,7 +1483,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1497,7 +1497,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -1585,7 +1585,7 @@ argument_list|()
 argument_list|,
 name|SUBMIT
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1596,7 +1596,7 @@ name|local
 argument_list|,
 name|SUBMIT
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1610,7 +1610,7 @@ name|local
 argument_list|,
 name|SUBMIT
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -1688,7 +1688,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
@@ -1938,7 +1938,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"^refs/heads/.*-QA-.*"
 argument_list|)
@@ -2025,7 +2025,7 @@ argument_list|()
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/tags/*"
 argument_list|)
@@ -2207,7 +2207,7 @@ name|local
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2271,7 +2271,7 @@ name|local
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2349,7 +2349,7 @@ name|local
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2419,7 +2419,7 @@ name|local
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2480,7 +2480,7 @@ name|local
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
@@ -2544,7 +2544,7 @@ argument_list|()
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2608,7 +2608,7 @@ argument_list|()
 argument_list|,
 name|PUSH
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2686,7 +2686,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2700,7 +2700,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2714,7 +2714,7 @@ name|user
 argument_list|(
 name|local
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -2750,7 +2750,7 @@ argument_list|()
 argument_list|,
 name|READ
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2764,7 +2764,7 @@ name|local
 argument_list|,
 name|READ
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2778,7 +2778,7 @@ name|user
 argument_list|(
 name|local
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -2811,7 +2811,7 @@ name|local
 argument_list|,
 name|EDIT_TOPIC_NAME
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2880,7 +2880,7 @@ argument_list|()
 argument_list|,
 name|EDIT_TOPIC_NAME
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -2913,7 +2913,7 @@ name|user
 argument_list|(
 name|local
 argument_list|,
-name|REGISTERED
+name|REGISTERED_USERS
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -2954,7 +2954,7 @@ argument_list|,
 operator|+
 literal|1
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -3058,7 +3058,7 @@ argument_list|,
 operator|+
 literal|1
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
@@ -3163,7 +3163,7 @@ argument_list|,
 operator|+
 literal|1
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
@@ -3270,7 +3270,7 @@ literal|1
 argument_list|,
 literal|1
 argument_list|,
-name|ANONYMOUS
+name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)

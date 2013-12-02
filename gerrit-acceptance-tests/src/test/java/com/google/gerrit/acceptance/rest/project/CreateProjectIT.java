@@ -352,6 +352,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|group
+operator|.
+name|SystemGroupBackend
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ProjectCache
@@ -1242,7 +1258,7 @@ name|owners
 operator|.
 name|add
 argument_list|(
-literal|"Administrators"
+literal|"Anonymous Users"
 argument_list|)
 expr_stmt|;
 comment|// by name
@@ -1252,16 +1268,15 @@ name|owners
 operator|.
 name|add
 argument_list|(
-name|groupUuid
-argument_list|(
-literal|"Registered Users"
-argument_list|)
+name|SystemGroupBackend
+operator|.
+name|REGISTERED_USERS
 operator|.
 name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// by group UUID
+comment|// by UUID
 name|in
 operator|.
 name|owners
@@ -1281,7 +1296,7 @@ name|AccountGroup
 operator|.
 name|NameKey
 argument_list|(
-literal|"Anonymous Users"
+literal|"Administrators"
 argument_list|)
 argument_list|)
 operator|.
@@ -1293,7 +1308,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// by legacy group ID
+comment|// by ID
 name|session
 operator|.
 name|put
@@ -1340,29 +1355,27 @@ name|expectedOwnerIds
 operator|.
 name|add
 argument_list|(
+name|SystemGroupBackend
+operator|.
+name|ANONYMOUS_USERS
+argument_list|)
+expr_stmt|;
+name|expectedOwnerIds
+operator|.
+name|add
+argument_list|(
+name|SystemGroupBackend
+operator|.
+name|REGISTERED_USERS
+argument_list|)
+expr_stmt|;
+name|expectedOwnerIds
+operator|.
+name|add
+argument_list|(
 name|groupUuid
 argument_list|(
 literal|"Administrators"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|expectedOwnerIds
-operator|.
-name|add
-argument_list|(
-name|groupUuid
-argument_list|(
-literal|"Registered Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|expectedOwnerIds
-operator|.
-name|add
-argument_list|(
-name|groupUuid
-argument_list|(
-literal|"Anonymous Users"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -339,14 +339,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An example test that tests presence of system groups in a newly initialized  * review site.  *  * The test shows how to perform these checks via SSH, REST or using Gerrit  * internals.  */
+comment|/**  * An example test that tests presence of default groups in a newly initialized  * review site.  *  * The test shows how to perform these checks via SSH, REST or using Gerrit  * internals.  */
 end_comment
 
 begin_class
-DECL|class|SystemGroupsIT
+DECL|class|DefaultGroupsIT
 specifier|public
 class|class
-name|SystemGroupsIT
+name|DefaultGroupsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
@@ -400,10 +400,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|systemGroupsCreated_ssh ()
+DECL|method|defaultGroupsCreated_ssh ()
 specifier|public
 name|void
-name|systemGroupsCreated_ssh
+name|defaultGroupsCreated_ssh
 parameter_list|()
 throws|throws
 name|JSchException
@@ -447,47 +447,7 @@ name|result
 operator|.
 name|contains
 argument_list|(
-literal|"Anonymous Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|contains
-argument_list|(
-literal|"Change Owner"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|contains
-argument_list|(
 literal|"Non-Interactive Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|contains
-argument_list|(
-literal|"Project Owners"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|contains
-argument_list|(
-literal|"Registered Users"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -499,10 +459,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|systemGroupsCreated_rest ()
+DECL|method|defaultGroupsCreated_rest ()
 specifier|public
 name|void
-name|systemGroupsCreated_rest
+name|defaultGroupsCreated_rest
 parameter_list|()
 throws|throws
 name|IOException
@@ -596,57 +556,17 @@ name|names
 operator|.
 name|contains
 argument_list|(
-literal|"Anonymous Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Change Owner"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
 literal|"Non-Interactive Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Project Owners"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Registered Users"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|systemGroupsCreated_internals ()
+DECL|method|defaultGroupsCreated_internals ()
 specifier|public
 name|void
-name|systemGroupsCreated_internals
+name|defaultGroupsCreated_internals
 parameter_list|()
 throws|throws
 name|OrmException
@@ -713,47 +633,7 @@ name|names
 operator|.
 name|contains
 argument_list|(
-literal|"Anonymous Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Change Owner"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
 literal|"Non-Interactive Users"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Project Owners"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"Registered Users"
 argument_list|)
 argument_list|)
 expr_stmt|;
