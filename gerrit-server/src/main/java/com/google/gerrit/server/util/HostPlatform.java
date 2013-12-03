@@ -166,13 +166,10 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"windows"
 argument_list|)
-operator|!=
-operator|-
-literal|1
 return|;
 block|}
 DECL|method|HostPlatform ()
