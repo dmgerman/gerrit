@@ -242,15 +242,13 @@ operator|new
 name|URL
 argument_list|(
 operator|(
+operator|!
 name|s
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"://"
 argument_list|)
-operator|==
-operator|-
-literal|1
 operator|)
 condition|?
 literal|"http://"

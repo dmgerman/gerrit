@@ -6794,13 +6794,10 @@ literal|null
 operator|&&
 name|accepts
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"gzip"
 argument_list|)
-operator|!=
-operator|-
-literal|1
 return|;
 block|}
 return|return

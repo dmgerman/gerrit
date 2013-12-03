@@ -613,12 +613,10 @@ argument_list|()
 operator|&&
 name|n
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"replication"
 argument_list|)
-operator|>=
-literal|0
 return|;
 block|}
 block|}
