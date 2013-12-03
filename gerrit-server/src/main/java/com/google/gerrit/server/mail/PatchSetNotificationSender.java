@@ -840,8 +840,6 @@ name|approvalsUtil
 operator|.
 name|addReviewers
 argument_list|(
-name|db
-argument_list|,
 name|labelTypes
 argument_list|,
 name|updatedChange
@@ -980,8 +978,6 @@ name|approvalsUtil
 operator|.
 name|addReviewers
 argument_list|(
-name|db
-argument_list|,
 name|labelTypes
 argument_list|,
 name|updatedChange
