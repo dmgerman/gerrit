@@ -547,40 +547,6 @@ specifier|protected
 name|Timestamp
 name|granted
 decl_stmt|;
-comment|/**<i>Cached copy of Change.open.</i> */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|4
-argument_list|)
-DECL|field|changeOpen
-specifier|protected
-name|boolean
-name|changeOpen
-decl_stmt|;
-comment|/**<i>Cached copy of Change.sortKey</i>; only if {@link #changeOpen} = false */
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|5
-argument_list|,
-name|length
-operator|=
-literal|16
-argument_list|,
-name|notNull
-operator|=
-literal|false
-argument_list|)
-DECL|field|changeSortKey
-specifier|protected
-name|String
-name|changeSortKey
-decl_stmt|;
 DECL|method|PatchSetApproval ()
 specifier|protected
 name|PatchSetApproval
@@ -605,10 +571,6 @@ block|{
 name|key
 operator|=
 name|k
-expr_stmt|;
-name|changeOpen
-operator|=
-literal|true
 expr_stmt|;
 name|setValue
 argument_list|(
@@ -655,10 +617,6 @@ operator|.
 name|getLabelId
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|changeOpen
-operator|=
-literal|true
 expr_stmt|;
 name|value
 operator|=
@@ -773,29 +731,6 @@ block|{
 name|granted
 operator|=
 name|ts
-expr_stmt|;
-block|}
-DECL|method|cache (final Change c)
-specifier|public
-name|void
-name|cache
-parameter_list|(
-specifier|final
-name|Change
-name|c
-parameter_list|)
-block|{
-name|changeOpen
-operator|=
-name|c
-operator|.
-name|open
-expr_stmt|;
-name|changeSortKey
-operator|=
-name|c
-operator|.
-name|sortKey
 expr_stmt|;
 block|}
 DECL|method|getLabel ()

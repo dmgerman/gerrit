@@ -14447,13 +14447,6 @@ argument_list|(
 name|change
 argument_list|)
 expr_stmt|;
-name|approvalsUtil
-operator|.
-name|syncChangeStatus
-argument_list|(
-name|change
-argument_list|)
-expr_stmt|;
 specifier|final
 name|StringBuilder
 name|msgBuf

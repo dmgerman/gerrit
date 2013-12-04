@@ -625,9 +625,7 @@ name|ChangeControl
 name|ctl
 parameter_list|)
 block|{
-name|PatchSetApproval
-name|dest
-init|=
+return|return
 operator|new
 name|PatchSetApproval
 argument_list|(
@@ -638,19 +636,6 @@ argument_list|()
 argument_list|,
 name|src
 argument_list|)
-decl_stmt|;
-name|dest
-operator|.
-name|cache
-argument_list|(
-name|ctl
-operator|.
-name|getChange
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|dest
 return|;
 block|}
 DECL|method|getRange (ChangeControl ctl, LabelType lt, Account.Id id)
