@@ -220,6 +220,21 @@ name|value
 parameter_list|)
 comment|/*-{     this.setOption(option, value);   }-*/
 function_decl|;
+DECL|method|setOption (String option, String value)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setOption
+parameter_list|(
+name|String
+name|option
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+comment|/*-{     this.setOption(option, value);   }-*/
+function_decl|;
 DECL|method|setOption (String option, JavaScriptObject val)
 specifier|public
 specifier|final
