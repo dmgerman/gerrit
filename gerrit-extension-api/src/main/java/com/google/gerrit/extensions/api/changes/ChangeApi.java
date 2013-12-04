@@ -173,6 +173,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|addReviewer (AddReviewerInput in)
+name|void
+name|addReviewer
+parameter_list|(
+name|AddReviewerInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 block|}
 end_interface
 

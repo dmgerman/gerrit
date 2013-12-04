@@ -238,6 +238,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|AddReviewerInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -257,22 +275,6 @@ operator|.
 name|restapi
 operator|.
 name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|DefaultInput
 import|;
 end_import
 
@@ -511,24 +513,6 @@ operator|.
 name|account
 operator|.
 name|GroupMembers
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|PostReviewers
-operator|.
-name|Input
 import|;
 end_import
 
@@ -818,7 +802,7 @@ name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|Input
+name|AddReviewerInput
 argument_list|>
 block|{
 DECL|field|log
@@ -855,40 +839,6 @@ name|DEFAULT_MAX_REVIEWERS
 init|=
 literal|20
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-annotation|@
-name|DefaultInput
-DECL|field|reviewer
-specifier|public
-name|String
-name|reviewer
-decl_stmt|;
-DECL|field|confirmed
-name|Boolean
-name|confirmed
-decl_stmt|;
-DECL|method|confirmed ()
-name|boolean
-name|confirmed
-parameter_list|()
-block|{
-return|return
-name|Objects
-operator|.
-name|firstNonNull
-argument_list|(
-name|confirmed
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
-block|}
 DECL|field|accounts
 specifier|private
 specifier|final
@@ -1146,7 +1096,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource rsrc, Input input)
+DECL|method|apply (ChangeResource rsrc, AddReviewerInput input)
 specifier|public
 name|PostResult
 name|apply
@@ -1154,7 +1104,7 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|Input
+name|AddReviewerInput
 name|input
 parameter_list|)
 throws|throws
@@ -1310,7 +1260,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|putGroup (ChangeResource rsrc, Input input)
+DECL|method|putGroup (ChangeResource rsrc, AddReviewerInput input)
 specifier|private
 name|PostResult
 name|putGroup
@@ -1318,7 +1268,7 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|Input
+name|AddReviewerInput
 name|input
 parameter_list|)
 throws|throws
