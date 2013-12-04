@@ -147,15 +147,6 @@ name|thunk
 parameter_list|)
 comment|/*-{     var w = this;     var h = $entry(function() {       thunk.@java.lang.Runnable::run()();       w.off("redraw", h);     });     w.on("redraw", h);   }-*/
 function_decl|;
-DECL|method|getLine ()
-specifier|public
-specifier|final
-specifier|native
-name|JavaScriptObject
-name|getLine
-parameter_list|()
-comment|/*-{ return this.line; }-*/
-function_decl|;
 DECL|method|LineWidget ()
 specifier|protected
 name|LineWidget
