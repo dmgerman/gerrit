@@ -881,6 +881,12 @@ operator|.
 name|Factory
 name|mergeUtilFactory
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|git
 specifier|private
 specifier|final
@@ -957,7 +963,7 @@ name|sendMail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, MergeabilityChecker mergeabilityChecker, ReplacePatchSetSender.Factory replacePatchSetFactory, MergeUtil.Factory mergeUtilFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted IdentifiedUser user, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, MergeabilityChecker mergeabilityChecker, ReplacePatchSetSender.Factory replacePatchSetFactory, MergeUtil.Factory mergeUtilFactory, ApprovalsUtil approvalsUtil, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted IdentifiedUser user, @Assisted Change change, @Assisted RevCommit commit)
 specifier|public
 name|PatchSetInserter
 parameter_list|(
@@ -990,6 +996,9 @@ name|MergeUtil
 operator|.
 name|Factory
 name|mergeUtilFactory
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1075,6 +1084,12 @@ operator|.
 name|mergeUtilFactory
 operator|=
 name|mergeUtilFactory
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -1955,12 +1970,10 @@ argument_list|,
 name|commit
 argument_list|)
 decl_stmt|;
-name|ApprovalsUtil
+name|approvalsUtil
 operator|.
 name|copyLabels
 argument_list|(
-name|db
-argument_list|,
 name|refControl
 operator|.
 name|getProjectControl

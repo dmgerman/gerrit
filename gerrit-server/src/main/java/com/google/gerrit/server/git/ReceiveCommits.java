@@ -11803,12 +11803,10 @@ argument_list|(
 name|oldChangeApprovals
 argument_list|)
 decl_stmt|;
-name|ApprovalsUtil
+name|approvalsUtil
 operator|.
 name|copyLabels
 argument_list|(
-name|db
-argument_list|,
 name|labelTypes
 argument_list|,
 name|oldChangeApprovals
@@ -11824,8 +11822,6 @@ name|approvalsUtil
 operator|.
 name|addReviewers
 argument_list|(
-name|db
-argument_list|,
 name|labelTypes
 argument_list|,
 name|change

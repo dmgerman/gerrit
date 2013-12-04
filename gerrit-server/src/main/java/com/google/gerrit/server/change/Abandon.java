@@ -513,6 +513,15 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|approvals
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|ApprovalsUtil
+argument_list|>
+name|approvals
+decl_stmt|;
 DECL|field|json
 specifier|private
 specifier|final
@@ -527,7 +536,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Abandon (ChangeHooks hooks, AbandonedSender.Factory abandonedSenderFactory, Provider<ReviewDb> dbProvider, ChangeJson json, ChangeIndexer indexer)
+DECL|method|Abandon (ChangeHooks hooks, AbandonedSender.Factory abandonedSenderFactory, Provider<ReviewDb> dbProvider, Provider<ApprovalsUtil> approvals, ChangeJson json, ChangeIndexer indexer)
 name|Abandon
 parameter_list|(
 name|ChangeHooks
@@ -543,6 +552,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|Provider
+argument_list|<
+name|ApprovalsUtil
+argument_list|>
+name|approvals
 parameter_list|,
 name|ChangeJson
 name|json
@@ -568,6 +583,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|approvals
+operator|=
+name|approvals
 expr_stmt|;
 name|this
 operator|.
@@ -831,11 +852,10 @@ name|message
 argument_list|)
 argument_list|)
 expr_stmt|;
-operator|new
-name|ApprovalsUtil
-argument_list|(
-name|db
-argument_list|)
+name|approvals
+operator|.
+name|get
+argument_list|()
 operator|.
 name|syncChangeStatus
 argument_list|(

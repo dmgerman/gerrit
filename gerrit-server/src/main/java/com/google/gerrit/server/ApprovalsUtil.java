@@ -429,15 +429,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Copy min/max scores from one patch set to another.    *    * @throws OrmException    */
-DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, PatchSet.Id source, PatchSet dest, ChangeKind changeKind)
+DECL|method|copyLabels (LabelTypes labelTypes, PatchSet.Id source, PatchSet dest, ChangeKind changeKind)
 specifier|public
-specifier|static
 name|void
 name|copyLabels
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|LabelTypes
 name|labelTypes
 parameter_list|,
@@ -473,8 +469,6 @@ argument_list|)
 decl_stmt|;
 name|copyLabels
 argument_list|(
-name|db
-argument_list|,
 name|labelTypes
 argument_list|,
 name|sourceApprovals
@@ -488,15 +482,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Copy a set's min/max scores from one patch set to another.    *    * @throws OrmException    */
-DECL|method|copyLabels (ReviewDb db, LabelTypes labelTypes, Iterable<PatchSetApproval> sourceApprovals, PatchSet.Id source, PatchSet dest, ChangeKind changeKind)
+DECL|method|copyLabels (LabelTypes labelTypes, Iterable<PatchSetApproval> sourceApprovals, PatchSet.Id source, PatchSet dest, ChangeKind changeKind)
 specifier|public
-specifier|static
 name|void
 name|copyLabels
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|LabelTypes
 name|labelTypes
 parameter_list|,
@@ -723,14 +713,11 @@ name|copied
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addReviewers (ReviewDb db, LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Set<Account.Id> wantReviewers, Set<Account.Id> existingReviewers)
+DECL|method|addReviewers (LabelTypes labelTypes, Change change, PatchSet ps, PatchSetInfo info, Set<Account.Id> wantReviewers, Set<Account.Id> existingReviewers)
 specifier|public
 name|void
 name|addReviewers
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|LabelTypes
 name|labelTypes
 parameter_list|,
