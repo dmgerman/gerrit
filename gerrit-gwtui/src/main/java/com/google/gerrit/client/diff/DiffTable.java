@@ -341,6 +341,11 @@ name|String
 name|diff
 parameter_list|()
 function_decl|;
+DECL|method|noIntraline ()
+name|String
+name|noIntraline
+parameter_list|()
+function_decl|;
 DECL|method|activeLine ()
 name|String
 name|activeLine
@@ -356,9 +361,9 @@ name|String
 name|rangeHighlight
 parameter_list|()
 function_decl|;
-DECL|method|showtabs ()
+DECL|method|showTabs ()
 name|String
-name|showtabs
+name|showTabs
 parameter_list|()
 function_decl|;
 block|}

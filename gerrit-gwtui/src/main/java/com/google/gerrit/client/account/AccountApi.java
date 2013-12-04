@@ -218,6 +218,38 @@ literal|"self"
 argument_list|)
 return|;
 block|}
+DECL|method|putDiffPreferences (DiffPreferences in, AsyncCallback<DiffPreferences> cb)
+specifier|public
+specifier|static
+name|void
+name|putDiffPreferences
+parameter_list|(
+name|DiffPreferences
+name|in
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|DiffPreferences
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|view
+argument_list|(
+literal|"preferences.diff"
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Retrieve the username */
 DECL|method|getUsername (String account, AsyncCallback<NativeString> cb)
 specifier|public

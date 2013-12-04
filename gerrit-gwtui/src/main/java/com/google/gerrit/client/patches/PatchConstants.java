@@ -245,6 +245,11 @@ name|String
 name|expandAllCommentsOnCurrentLine
 parameter_list|()
 function_decl|;
+DECL|method|showPreferences ()
+name|String
+name|showPreferences
+parameter_list|()
+function_decl|;
 DECL|method|toggleReviewed ()
 name|String
 name|toggleReviewed
