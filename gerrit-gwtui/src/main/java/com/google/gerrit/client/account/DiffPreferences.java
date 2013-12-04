@@ -539,66 +539,115 @@ function_decl|;
 DECL|method|tabSize ()
 specifier|public
 specifier|final
-specifier|native
 name|int
 name|tabSize
 parameter_list|()
-comment|/*-{ return this.tab_size }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"tab_size"
+argument_list|,
+literal|8
+argument_list|)
+return|;
+block|}
 DECL|method|context ()
 specifier|public
 specifier|final
-specifier|native
 name|int
 name|context
 parameter_list|()
-comment|/*-{ return this.context }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"context"
+argument_list|,
+literal|10
+argument_list|)
+return|;
+block|}
 DECL|method|intralineDifference ()
 specifier|public
 specifier|final
-specifier|native
 name|boolean
 name|intralineDifference
 parameter_list|()
-comment|/*-{ return this.intraline_difference }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"intraline_difference"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|showLineEndings ()
 specifier|public
 specifier|final
-specifier|native
 name|boolean
 name|showLineEndings
 parameter_list|()
-comment|/*-{ return this.show_line_endings }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"show_line_endings"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|showTabs ()
 specifier|public
 specifier|final
-specifier|native
 name|boolean
 name|showTabs
 parameter_list|()
-comment|/*-{ return this.show_tabs }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"show_tabs"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|showWhitespaceErrors ()
 specifier|public
 specifier|final
-specifier|native
 name|boolean
 name|showWhitespaceErrors
 parameter_list|()
-comment|/*-{ return this.show_whitespace_errors }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"show_whitespace_errors"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|syntaxHighlighting ()
 specifier|public
 specifier|final
-specifier|native
 name|boolean
 name|syntaxHighlighting
 parameter_list|()
-comment|/*-{ return this.syntax_highlighting }-*/
-function_decl|;
+block|{
+return|return
+name|get
+argument_list|(
+literal|"syntax_highlighting"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|hideTopMenu ()
 specifier|public
 specifier|final
@@ -606,7 +655,7 @@ specifier|native
 name|boolean
 name|hideTopMenu
 parameter_list|()
-comment|/*-{ return this.hide_top_menu }-*/
+comment|/*-{ return this.hide_top_menu || false }-*/
 function_decl|;
 DECL|method|expandAllComments ()
 specifier|public
@@ -615,7 +664,37 @@ specifier|native
 name|boolean
 name|expandAllComments
 parameter_list|()
-comment|/*-{ return this.expand_all_comments }-*/
+comment|/*-{ return this.expand_all_comments || false }-*/
+function_decl|;
+DECL|method|get (String n, int d)
+specifier|private
+specifier|final
+specifier|native
+name|int
+name|get
+parameter_list|(
+name|String
+name|n
+parameter_list|,
+name|int
+name|d
+parameter_list|)
+comment|/*-{ return this.hasOwnProperty(n) ? this[n] : d }-*/
+function_decl|;
+DECL|method|get (String n, boolean d)
+specifier|private
+specifier|final
+specifier|native
+name|boolean
+name|get
+parameter_list|(
+name|String
+name|n
+parameter_list|,
+name|boolean
+name|d
+parameter_list|)
+comment|/*-{ return this.hasOwnProperty(n) ? this[n] : d }-*/
 function_decl|;
 DECL|method|DiffPreferences ()
 specifier|protected
