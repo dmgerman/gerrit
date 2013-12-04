@@ -245,6 +245,11 @@ name|String
 name|expandAllCommentsOnCurrentLine
 parameter_list|()
 function_decl|;
+DECL|method|toggleIntraline ()
+name|String
+name|toggleIntraline
+parameter_list|()
+function_decl|;
 DECL|method|showPreferences ()
 name|String
 name|showPreferences

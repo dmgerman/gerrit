@@ -206,6 +206,27 @@ operator|=
 name|prefs
 expr_stmt|;
 block|}
+DECL|method|update ()
+name|void
+name|update
+parameter_list|()
+block|{
+if|if
+condition|(
+name|current
+operator|!=
+literal|null
+condition|)
+block|{
+name|current
+operator|.
+name|set
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|show ()
 name|void
 name|show
