@@ -217,6 +217,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|match (String ref, String username)
+specifier|public
 name|boolean
 name|match
 parameter_list|(
