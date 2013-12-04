@@ -529,6 +529,18 @@ specifier|protected
 name|boolean
 name|showLineEndings
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|16
+argument_list|)
+DECL|field|hideTopMenu
+specifier|protected
+name|boolean
+name|hideTopMenu
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -678,6 +690,14 @@ operator|=
 name|p
 operator|.
 name|manualReview
+expr_stmt|;
+name|this
+operator|.
+name|hideTopMenu
+operator|=
+name|p
+operator|.
+name|hideTopMenu
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -1065,6 +1085,30 @@ name|manualReview
 operator|=
 name|manual
 expr_stmt|;
+block|}
+DECL|method|setHideTopMenu (boolean hide)
+specifier|public
+name|void
+name|setHideTopMenu
+parameter_list|(
+name|boolean
+name|hide
+parameter_list|)
+block|{
+name|hideTopMenu
+operator|=
+name|hide
+expr_stmt|;
+block|}
+DECL|method|isHideTopMenu ()
+specifier|public
+name|boolean
+name|isHideTopMenu
+parameter_list|()
+block|{
+return|return
+name|hideTopMenu
+return|;
 block|}
 block|}
 end_class

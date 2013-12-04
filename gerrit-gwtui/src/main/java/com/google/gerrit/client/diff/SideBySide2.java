@@ -2159,6 +2159,22 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|prefs
+operator|.
+name|hideTopMenu
+argument_list|()
+condition|)
+block|{
+name|Gerrit
+operator|.
+name|setHeaderVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 specifier|final
 name|int
 name|height
@@ -10221,6 +10237,15 @@ argument_list|()
 argument_list|)
 else|:
 literal|null
+return|;
+block|}
+DECL|method|getPrefs ()
+name|DiffPreferences
+name|getPrefs
+parameter_list|()
+block|{
+return|return
+name|prefs
 return|;
 block|}
 DECL|method|getCmA ()
