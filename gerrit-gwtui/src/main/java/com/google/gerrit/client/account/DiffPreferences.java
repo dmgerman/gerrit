@@ -242,6 +242,16 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|hideTopMenu
+argument_list|(
+name|in
+operator|.
+name|isHideTopMenu
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|expandAllComments
 argument_list|(
 name|in
@@ -328,6 +338,14 @@ operator|.
 name|setSyntaxHighlighting
 argument_list|(
 name|syntaxHighlighting
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setHideTopMenu
+argument_list|(
+name|hideTopMenu
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -455,6 +473,18 @@ name|s
 parameter_list|)
 comment|/*-{ this.syntax_highlighting = s }-*/
 function_decl|;
+DECL|method|hideTopMenu (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|hideTopMenu
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.hide_top_menu = s }-*/
+function_decl|;
 DECL|method|expandAllComments (boolean e)
 specifier|public
 specifier|final
@@ -568,6 +598,15 @@ name|boolean
 name|syntaxHighlighting
 parameter_list|()
 comment|/*-{ return this.syntax_highlighting }-*/
+function_decl|;
+DECL|method|hideTopMenu ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hideTopMenu
+parameter_list|()
+comment|/*-{ return this.hide_top_menu }-*/
 function_decl|;
 DECL|method|expandAllComments ()
 specifier|public

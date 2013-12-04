@@ -477,6 +477,11 @@ specifier|private
 name|SideBySide2
 name|host
 decl_stmt|;
+DECL|field|headerVisible
+specifier|private
+name|boolean
+name|headerVisible
+decl_stmt|;
 DECL|method|DiffTable (SideBySide2 host, PatchSet.Id base, PatchSet.Id revision, String path)
 name|DiffTable
 parameter_list|(
@@ -596,6 +601,21 @@ name|host
 operator|=
 name|host
 expr_stmt|;
+name|this
+operator|.
+name|headerVisible
+operator|=
+literal|true
+expr_stmt|;
+block|}
+DECL|method|isHeaderVisible ()
+name|boolean
+name|isHeaderVisible
+parameter_list|()
+block|{
+return|return
+name|headerVisible
+return|;
 block|}
 DECL|method|setHeaderVisible (boolean show)
 name|void
@@ -605,11 +625,24 @@ name|boolean
 name|show
 parameter_list|)
 block|{
+name|headerVisible
+operator|=
+name|show
+expr_stmt|;
 name|Gerrit
 operator|.
 name|setHeaderVisible
 argument_list|(
 name|show
+operator|&&
+operator|!
+name|host
+operator|.
+name|getPrefs
+argument_list|()
+operator|.
+name|hideTopMenu
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|UIObject
