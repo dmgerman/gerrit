@@ -4127,11 +4127,6 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Override
 DECL|method|defaultField (String query)
 specifier|protected

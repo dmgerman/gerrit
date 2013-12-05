@@ -1339,11 +1339,6 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Query for changes that match the query string.    *<p>    * If a limit was specified using {@link #setLimit(int)} this method may    * return up to {@code limit + 1} results, allowing the caller to determine if    * there are more than {@code limit} matches and suggest to its own caller    * that the query could be retried with {@link #setSortkeyBefore(String)}.    */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|queryChanges (List<String> queries)
 specifier|public
 name|List
@@ -2499,11 +2494,6 @@ operator|+
 literal|1
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|parseQuery (String queryString, final Predicate<ChangeData> visibleToMe)
 specifier|private
 name|Predicate

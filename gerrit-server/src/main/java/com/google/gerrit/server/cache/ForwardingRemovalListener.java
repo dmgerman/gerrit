@@ -277,6 +277,11 @@ name|name
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|onRemoval (RemovalNotification<K, V> notification)
 specifier|public
 name|void
