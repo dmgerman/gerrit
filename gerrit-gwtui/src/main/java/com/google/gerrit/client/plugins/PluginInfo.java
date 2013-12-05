@@ -97,7 +97,7 @@ specifier|native
 name|String
 name|name
 parameter_list|()
-comment|/*-{ return this.name; }-*/
+comment|/*-{ return this.name }-*/
 function_decl|;
 DECL|method|version ()
 specifier|public
@@ -106,16 +106,25 @@ specifier|native
 name|String
 name|version
 parameter_list|()
-comment|/*-{ return this.version; }-*/
+comment|/*-{ return this.version }-*/
 function_decl|;
-DECL|method|isDisabled ()
+DECL|method|indexUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|indexUrl
+parameter_list|()
+comment|/*-{ return this.index_url }-*/
+function_decl|;
+DECL|method|disabled ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|isDisabled
+name|disabled
 parameter_list|()
-comment|/*-{ return this.disabled ? true : false; }-*/
+comment|/*-{ return this.disabled || false }-*/
 function_decl|;
 DECL|method|PluginInfo ()
 specifier|protected
