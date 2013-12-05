@@ -293,10 +293,10 @@ specifier|private
 name|PaddingWidgetWrapper
 name|selfWidgetWrapper
 decl_stmt|;
-DECL|field|parent
+DECL|field|diffScreen
 specifier|private
 name|SideBySide2
-name|parent
+name|diffScreen
 decl_stmt|;
 DECL|field|cm
 specifier|private
@@ -508,7 +508,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|parent
+name|diffScreen
 operator|.
 name|defer
 argument_list|(
@@ -543,7 +543,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|parent
+name|diffScreen
 operator|.
 name|resizePaddingOnOtherSide
 argument_list|(
@@ -668,19 +668,28 @@ operator|=
 name|info
 expr_stmt|;
 block|}
-DECL|method|setParent (SideBySide2 parent)
+DECL|method|getDiffScreen ()
+name|SideBySide2
+name|getDiffScreen
+parameter_list|()
+block|{
+return|return
+name|diffScreen
+return|;
+block|}
+DECL|method|setDiffScreen (SideBySide2 diffScreen)
 name|void
-name|setParent
+name|setDiffScreen
 parameter_list|(
 name|SideBySide2
-name|parent
+name|diffScreen
 parameter_list|)
 block|{
 name|this
 operator|.
-name|parent
+name|diffScreen
 operator|=
-name|parent
+name|diffScreen
 expr_stmt|;
 block|}
 DECL|method|setGutterWrapper (GutterWrapper wrapper)

@@ -5000,13 +5000,6 @@ name|CommentBox
 name|box
 parameter_list|)
 block|{
-name|box
-operator|.
-name|setParent
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|diffTable
 operator|.
 name|add
