@@ -302,6 +302,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|InMemoryRepositoryManager
+operator|.
+name|newRepository
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -582,8 +598,13 @@ argument_list|)
 expr_stmt|;
 name|local
 operator|.
-name|createInMemory
-argument_list|()
+name|load
+argument_list|(
+name|newRepository
+argument_list|(
+name|localKey
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|util
 operator|.
@@ -1182,6 +1203,8 @@ specifier|public
 name|void
 name|testInheritDuplicateSections
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 name|grant
 argument_list|(
@@ -1262,8 +1285,13 @@ argument_list|)
 expr_stmt|;
 name|local
 operator|.
-name|createInMemory
-argument_list|()
+name|load
+argument_list|(
+name|newRepository
+argument_list|(
+name|localKey
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|grant
 argument_list|(

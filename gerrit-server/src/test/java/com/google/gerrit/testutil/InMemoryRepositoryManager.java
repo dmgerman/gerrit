@@ -254,6 +254,26 @@ name|InMemoryRepositoryManager
 implements|implements
 name|GitRepositoryManager
 block|{
+DECL|method|newRepository (Project.NameKey name)
+specifier|public
+specifier|static
+name|InMemoryRepository
+name|newRepository
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|Repo
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 DECL|class|Description
 specifier|private
 specifier|static
