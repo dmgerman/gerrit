@@ -4806,7 +4806,7 @@ name|m
 argument_list|,
 name|C
 operator|.
-name|menuDocumentationIndex
+name|menuDocumentationTOC
 argument_list|()
 argument_list|,
 literal|"index.html"
