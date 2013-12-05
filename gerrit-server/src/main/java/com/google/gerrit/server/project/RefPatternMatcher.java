@@ -136,6 +136,7 @@ end_import
 
 begin_class
 DECL|class|RefPatternMatcher
+specifier|public
 specifier|abstract
 class|class
 name|RefPatternMatcher
@@ -228,6 +229,7 @@ return|;
 block|}
 block|}
 DECL|method|match (String ref, String username)
+specifier|public
 specifier|abstract
 name|boolean
 name|match
@@ -268,6 +270,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|match (String ref, String username)
+specifier|public
 name|boolean
 name|match
 parameter_list|(
@@ -317,6 +320,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|match (String ref, String username)
+specifier|public
 name|boolean
 name|match
 parameter_list|(
@@ -371,6 +375,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|match (String ref, String username)
+specifier|public
 name|boolean
 name|match
 parameter_list|(
@@ -513,6 +518,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|match (String ref, String username)
+specifier|public
 name|boolean
 name|match
 parameter_list|(
