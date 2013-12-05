@@ -467,6 +467,26 @@ name|create
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|hide ()
+name|void
+name|hide
+parameter_list|()
+block|{
+if|if
+condition|(
+name|popup
+operator|!=
+literal|null
+condition|)
+block|{
+name|popup
+operator|.
+name|hide
+argument_list|()
+expr_stmt|;
+block|}
+return|return;
+block|}
 DECL|method|onReply (MessageInfo msg)
 name|void
 name|onReply
