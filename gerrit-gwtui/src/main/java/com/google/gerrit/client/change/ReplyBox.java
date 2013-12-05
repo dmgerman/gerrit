@@ -1183,6 +1183,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|send
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|CommentApi
 operator|.
 name|drafts
@@ -1228,6 +1235,13 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+name|send
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1238,7 +1252,15 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{       }
+block|{
+name|send
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
