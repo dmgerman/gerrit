@@ -338,9 +338,9 @@ name|String
 name|menuDocumentation
 parameter_list|()
 function_decl|;
-DECL|method|menuDocumentationIndex ()
+DECL|method|menuDocumentationTOC ()
 name|String
-name|menuDocumentationIndex
+name|menuDocumentationTOC
 parameter_list|()
 function_decl|;
 DECL|method|menuDocumentationSearch ()
