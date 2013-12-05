@@ -571,83 +571,48 @@ block|}
 DECL|method|intralineDifference ()
 specifier|public
 specifier|final
+specifier|native
 name|boolean
 name|intralineDifference
 parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"intraline_difference"
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
+comment|/*-{ return this.intraline_difference || false }-*/
+function_decl|;
 DECL|method|showLineEndings ()
 specifier|public
 specifier|final
+specifier|native
 name|boolean
 name|showLineEndings
 parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"show_line_endings"
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
+comment|/*-{ return this.show_line_endings || false }-*/
+function_decl|;
 DECL|method|showTabs ()
 specifier|public
 specifier|final
+specifier|native
 name|boolean
 name|showTabs
 parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"show_tabs"
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
+comment|/*-{ return this.show_tabs || false }-*/
+function_decl|;
 DECL|method|showWhitespaceErrors ()
 specifier|public
 specifier|final
+specifier|native
 name|boolean
 name|showWhitespaceErrors
 parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"show_whitespace_errors"
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
+comment|/*-{ return this.show_whitespace_errors || false }-*/
+function_decl|;
 DECL|method|syntaxHighlighting ()
 specifier|public
 specifier|final
+specifier|native
 name|boolean
 name|syntaxHighlighting
 parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"syntax_highlighting"
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
+comment|/*-{ return this.syntax_highlighting || false }-*/
+function_decl|;
 DECL|method|hideTopMenu ()
 specifier|public
 specifier|final
@@ -677,21 +642,6 @@ name|String
 name|n
 parameter_list|,
 name|int
-name|d
-parameter_list|)
-comment|/*-{ return this.hasOwnProperty(n) ? this[n] : d }-*/
-function_decl|;
-DECL|method|get (String n, boolean d)
-specifier|private
-specifier|final
-specifier|native
-name|boolean
-name|get
-parameter_list|(
-name|String
-name|n
-parameter_list|,
-name|boolean
 name|d
 parameter_list|)
 comment|/*-{ return this.hasOwnProperty(n) ? this[n] : d }-*/
