@@ -411,11 +411,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|class|IndexRewriteTest
 specifier|public
 class|class

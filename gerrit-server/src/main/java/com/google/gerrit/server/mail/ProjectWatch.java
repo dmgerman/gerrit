@@ -1353,11 +1353,6 @@ block|{
 comment|// Ignore broken filter expressions.
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|filterMatch (CurrentUser user, String filter)
 specifier|private
 name|boolean
