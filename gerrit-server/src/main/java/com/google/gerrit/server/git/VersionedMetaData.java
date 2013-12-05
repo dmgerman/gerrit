@@ -1121,6 +1121,12 @@ name|equals
 argument_list|(
 name|srcTree
 argument_list|)
+operator|&&
+operator|!
+name|update
+operator|.
+name|allowEmpty
+argument_list|()
 condition|)
 block|{
 comment|// If there are no changes to the content, don't create the commit.

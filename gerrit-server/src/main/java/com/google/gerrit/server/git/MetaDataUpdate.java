@@ -597,6 +597,11 @@ specifier|final
 name|CommitBuilder
 name|commit
 decl_stmt|;
+DECL|field|allowEmpty
+specifier|private
+name|boolean
+name|allowEmpty
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository db)
@@ -704,6 +709,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setAllowEmpty (boolean allowEmpty)
+specifier|public
+name|void
+name|setAllowEmpty
+parameter_list|(
+name|boolean
+name|allowEmpty
+parameter_list|)
+block|{
+name|this
+operator|.
+name|allowEmpty
+operator|=
+name|allowEmpty
+expr_stmt|;
+block|}
 comment|/** Close the cached Repository handle. */
 DECL|method|close ()
 specifier|public
@@ -736,6 +757,15 @@ parameter_list|()
 block|{
 return|return
 name|db
+return|;
+block|}
+DECL|method|allowEmpty ()
+name|boolean
+name|allowEmpty
+parameter_list|()
+block|{
+return|return
+name|allowEmpty
 return|;
 block|}
 DECL|method|getCommitBuilder ()
