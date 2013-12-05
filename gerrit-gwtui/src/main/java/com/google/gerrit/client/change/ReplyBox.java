@@ -1049,11 +1049,11 @@ name|UiField
 name|Grid
 name|labelsTable
 decl_stmt|;
-DECL|field|send
+DECL|field|post
 annotation|@
 name|UiField
 name|Button
-name|send
+name|post
 decl_stmt|;
 DECL|field|email
 annotation|@
@@ -1239,7 +1239,7 @@ operator|.
 name|preventDefault
 argument_list|()
 expr_stmt|;
-name|onSend
+name|onPost
 argument_list|(
 literal|null
 argument_list|)
@@ -1270,7 +1270,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|send
+name|post
 operator|.
 name|setEnabled
 argument_list|(
@@ -1322,7 +1322,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-name|send
+name|post
 operator|.
 name|setEnabled
 argument_list|(
@@ -1340,7 +1340,7 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{
-name|send
+name|post
 operator|.
 name|setEnabled
 argument_list|(
@@ -1563,11 +1563,11 @@ block|}
 annotation|@
 name|UiHandler
 argument_list|(
-literal|"send"
+literal|"post"
 argument_list|)
-DECL|method|onSend (ClickEvent e)
+DECL|method|onPost (ClickEvent e)
 name|void
-name|onSend
+name|onPost
 parameter_list|(
 name|ClickEvent
 name|e
