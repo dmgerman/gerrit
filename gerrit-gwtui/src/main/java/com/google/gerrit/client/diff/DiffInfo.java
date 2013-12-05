@@ -624,6 +624,15 @@ name|content_type
 parameter_list|()
 comment|/*-{ return this.content_type; }-*/
 function_decl|;
+DECL|method|lines ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|lines
+parameter_list|()
+comment|/*-{ return this.lines || 0 }-*/
+function_decl|;
 DECL|method|FileMeta ()
 specifier|protected
 name|FileMeta
