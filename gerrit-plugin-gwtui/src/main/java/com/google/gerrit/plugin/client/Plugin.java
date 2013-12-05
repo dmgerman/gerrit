@@ -94,7 +94,29 @@ class|class
 name|Plugin
 implements|implements
 name|EntryPoint
-block|{ }
+block|{
+DECL|method|go (String t)
+specifier|public
+specifier|native
+specifier|static
+name|void
+name|go
+parameter_list|(
+name|String
+name|t
+parameter_list|)
+comment|/*-{ $wnd.Gerrit.go(t) }-*/
+function_decl|;
+DECL|method|refresh ()
+specifier|public
+specifier|native
+specifier|static
+name|void
+name|refresh
+parameter_list|()
+comment|/*-{ $wnd.Gerrit.refresh() }-*/
+function_decl|;
+block|}
 end_class
 
 end_unit
