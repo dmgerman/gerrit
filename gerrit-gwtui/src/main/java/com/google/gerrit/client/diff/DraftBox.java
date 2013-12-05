@@ -672,12 +672,6 @@ name|MAX_LINES
 init|=
 literal|30
 decl_stmt|;
-DECL|field|parent
-specifier|private
-specifier|final
-name|SideBySide2
-name|parent
-decl_stmt|;
 DECL|field|linkProcessor
 specifier|private
 specifier|final
@@ -817,9 +811,10 @@ argument_list|,
 name|side
 argument_list|)
 expr_stmt|;
-name|parent
-operator|=
+name|setDiffScreen
+argument_list|(
 name|sideBySide
+argument_list|)
 expr_stmt|;
 name|linkProcessor
 operator|=
@@ -1430,7 +1425,8 @@ name|cancel
 argument_list|()
 expr_stmt|;
 block|}
-name|parent
+name|getDiffScreen
+argument_list|()
 operator|.
 name|updateUnsaved
 argument_list|(
@@ -1515,7 +1511,8 @@ name|has_line
 argument_list|()
 condition|)
 block|{
-name|parent
+name|getDiffScreen
+argument_list|()
 operator|.
 name|removeFileCommentBox
 argument_list|(
@@ -1537,7 +1534,8 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|parent
+name|getDiffScreen
+argument_list|()
 operator|.
 name|removeDraft
 argument_list|(
@@ -1769,7 +1767,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|parent
+name|getDiffScreen
+argument_list|()
 operator|.
 name|updateUnsaved
 argument_list|(
