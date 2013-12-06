@@ -858,11 +858,6 @@ name|String
 name|noborder
 parameter_list|()
 function_decl|;
-DECL|method|notMergeable ()
-name|String
-name|notMergeable
-parameter_list|()
-function_decl|;
 DECL|method|notVotable ()
 name|String
 name|notVotable
