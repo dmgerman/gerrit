@@ -206,13 +206,37 @@ name|boolean
 name|latest
 decl_stmt|;
 DECL|method|ChangeInfo ()
-specifier|protected
+specifier|public
 name|ChangeInfo
 parameter_list|()
 block|{   }
 DECL|method|ChangeInfo (final Change c, final PatchSet.Id patchId)
 specifier|public
 name|ChangeInfo
+parameter_list|(
+specifier|final
+name|Change
+name|c
+parameter_list|,
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|patchId
+parameter_list|)
+block|{
+name|set
+argument_list|(
+name|c
+argument_list|,
+name|patchId
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|set (final Change c, final PatchSet.Id patchId)
+specifier|public
+name|void
+name|set
 parameter_list|(
 specifier|final
 name|Change

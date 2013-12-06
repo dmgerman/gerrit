@@ -416,6 +416,7 @@ end_import
 
 begin_class
 DECL|class|RelatedChanges
+specifier|public
 class|class
 name|RelatedChanges
 extends|extends
@@ -2043,7 +2044,7 @@ return|;
 block|}
 block|}
 DECL|class|RelatedInfo
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|RelatedInfo
@@ -2051,6 +2052,7 @@ extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|changes ()
+specifier|public
 specifier|final
 specifier|native
 name|JsArray
@@ -2068,6 +2070,7 @@ parameter_list|()
 block|{     }
 block|}
 DECL|class|ChangeAndCommit
+specifier|public
 specifier|static
 class|class
 name|ChangeAndCommit
@@ -2089,6 +2092,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|id ()
+specifier|public
 specifier|final
 specifier|native
 name|String
@@ -2097,6 +2101,7 @@ parameter_list|()
 comment|/*-{ return this.change_id }-*/
 function_decl|;
 DECL|method|commit ()
+specifier|public
 specifier|final
 specifier|native
 name|CommitInfo
@@ -2146,6 +2151,7 @@ parameter_list|)
 comment|/*-{ if(b)this.branch=b; }-*/
 function_decl|;
 DECL|method|legacy_id ()
+specifier|public
 specifier|final
 name|Change
 operator|.
@@ -2170,6 +2176,7 @@ literal|null
 return|;
 block|}
 DECL|method|patch_set_id ()
+specifier|public
 specifier|final
 name|PatchSet
 operator|.

@@ -156,24 +156,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
-operator|.
-name|rpc
-operator|.
-name|changedetail
-operator|.
-name|ChangeDetailFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -419,7 +401,7 @@ name|changeControlFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory, final ChangeDetailFactory.Factory changeDetailFactory, final ChangeControl.Factory changeControlFactory)
+DECL|method|PatchDetailServiceImpl (final Provider<ReviewDb> schema, final Provider<CurrentUser> currentUser, final PatchScriptFactory.Factory patchScriptFactoryFactory, final SaveDraft.Factory saveDraftFactory, final ChangeControl.Factory changeControlFactory)
 name|PatchDetailServiceImpl
 parameter_list|(
 specifier|final
@@ -447,12 +429,6 @@ name|SaveDraft
 operator|.
 name|Factory
 name|saveDraftFactory
-parameter_list|,
-specifier|final
-name|ChangeDetailFactory
-operator|.
-name|Factory
-name|changeDetailFactory
 parameter_list|,
 specifier|final
 name|ChangeControl

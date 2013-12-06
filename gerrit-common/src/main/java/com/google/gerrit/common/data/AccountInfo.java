@@ -178,6 +178,20 @@ return|return
 name|id
 return|;
 block|}
+DECL|method|setFullName (String n)
+specifier|public
+name|void
+name|setFullName
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+block|{
+name|fullName
+operator|=
+name|n
+expr_stmt|;
+block|}
 comment|/** @return the full name of the account holder; null if not supplied */
 DECL|method|getFullName ()
 specifier|public
