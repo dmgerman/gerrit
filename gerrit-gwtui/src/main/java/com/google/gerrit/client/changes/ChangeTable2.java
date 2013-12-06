@@ -1459,9 +1459,20 @@ argument_list|(
 name|labelNames
 argument_list|)
 expr_stmt|;
+name|int
+name|baseColumns
+init|=
+name|useNewFeatures
+condition|?
+name|BASE_COLUMNS
+else|:
+name|BASE_COLUMNS
+operator|-
+literal|1
+decl_stmt|;
 if|if
 condition|(
-name|BASE_COLUMNS
+name|baseColumns
 operator|+
 name|labelNames
 operator|.
@@ -1477,7 +1488,7 @@ init|=
 name|columns
 operator|-
 operator|(
-name|BASE_COLUMNS
+name|baseColumns
 operator|+
 name|labelNames
 operator|.
@@ -1518,7 +1529,7 @@ block|}
 block|}
 name|columns
 operator|=
-name|BASE_COLUMNS
+name|baseColumns
 operator|+
 name|labelNames
 operator|.
@@ -1564,7 +1575,7 @@ decl_stmt|;
 name|int
 name|col
 init|=
-name|BASE_COLUMNS
+name|baseColumns
 operator|+
 name|i
 decl_stmt|;
@@ -2042,6 +2053,7 @@ argument_list|(
 name|row
 argument_list|,
 name|col
+operator|++
 argument_list|,
 name|Util
 operator|.
