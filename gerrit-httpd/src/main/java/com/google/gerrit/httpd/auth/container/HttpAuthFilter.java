@@ -983,6 +983,7 @@ literal|"Digest "
 argument_list|)
 condition|)
 block|{
+specifier|final
 name|int
 name|u
 init|=
@@ -1015,6 +1016,7 @@ operator|+
 literal|10
 argument_list|)
 expr_stmt|;
+specifier|final
 name|int
 name|e
 init|=
@@ -1036,12 +1038,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|auth
-operator|.
-name|indexOf
-argument_list|(
-literal|'"'
-argument_list|)
+name|e
 argument_list|)
 else|:
 literal|null
