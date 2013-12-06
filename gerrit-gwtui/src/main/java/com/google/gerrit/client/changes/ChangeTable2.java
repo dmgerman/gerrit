@@ -667,7 +667,13 @@ argument_list|)
 expr_stmt|;
 name|columns
 operator|=
+name|useNewFeatures
+condition|?
 name|BASE_COLUMNS
+else|:
+name|BASE_COLUMNS
+operator|-
+literal|1
 expr_stmt|;
 name|labelNames
 operator|=
