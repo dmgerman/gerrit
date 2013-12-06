@@ -194,6 +194,7 @@ end_import
 
 begin_class
 DECL|class|DraftActions
+specifier|public
 class|class
 name|DraftActions
 block|{
@@ -287,7 +288,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|cs ( final Change.Id id)
-specifier|private
+specifier|public
 specifier|static
 name|GerritCallback
 argument_list|<

@@ -157,17 +157,9 @@ operator|.
 name|Factory
 name|rebaseChangeFactory
 decl_stmt|;
-DECL|field|publishAction
-specifier|private
-specifier|final
-name|PublishAction
-operator|.
-name|Factory
-name|publishAction
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeManageServiceImpl ( final RebaseChangeHandler.Factory rebaseChangeFactory, final PublishAction.Factory publishAction)
+DECL|method|ChangeManageServiceImpl ( final RebaseChangeHandler.Factory rebaseChangeFactory)
 name|ChangeManageServiceImpl
 parameter_list|(
 specifier|final
@@ -175,12 +167,6 @@ name|RebaseChangeHandler
 operator|.
 name|Factory
 name|rebaseChangeFactory
-parameter_list|,
-specifier|final
-name|PublishAction
-operator|.
-name|Factory
-name|publishAction
 parameter_list|)
 block|{
 name|this
@@ -188,12 +174,6 @@ operator|.
 name|rebaseChangeFactory
 operator|=
 name|rebaseChangeFactory
-expr_stmt|;
-name|this
-operator|.
-name|publishAction
-operator|=
-name|publishAction
 expr_stmt|;
 block|}
 DECL|method|rebaseChange (final PatchSet.Id patchSetId, final AsyncCallback<ChangeDetail> callback)
@@ -216,38 +196,6 @@ name|callback
 parameter_list|)
 block|{
 name|rebaseChangeFactory
-operator|.
-name|create
-argument_list|(
-name|patchSetId
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|callback
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|publish (final PatchSet.Id patchSetId, final AsyncCallback<ChangeDetail> callback)
-specifier|public
-name|void
-name|publish
-parameter_list|(
-specifier|final
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
-parameter_list|,
-specifier|final
-name|AsyncCallback
-argument_list|<
-name|ChangeDetail
-argument_list|>
-name|callback
-parameter_list|)
-block|{
-name|publishAction
 operator|.
 name|create
 argument_list|(
