@@ -283,14 +283,13 @@ name|user
 parameter_list|)
 block|{
 return|return
+operator|!
 name|user
 operator|.
-name|indexOf
+name|contains
 argument_list|(
-literal|' '
+literal|" "
 argument_list|)
-operator|<
-literal|0
 return|;
 block|}
 DECL|method|expand (final String user)

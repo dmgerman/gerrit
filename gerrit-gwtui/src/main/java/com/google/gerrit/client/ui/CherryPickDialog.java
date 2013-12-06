@@ -468,15 +468,13 @@ operator|.
 name|ref
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|request
 operator|.
 name|getQuery
 argument_list|()
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|suggestions

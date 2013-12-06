@@ -398,15 +398,13 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|visibles
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|w
 argument_list|)
-operator|==
-operator|-
-literal|1
 condition|)
 block|{
 name|int
