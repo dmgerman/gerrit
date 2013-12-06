@@ -1287,6 +1287,15 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|getNewFeatures
+argument_list|()
+operator|&&
+operator|(
 name|status
 operator|.
 name|equals
@@ -1308,6 +1317,7 @@ name|Status
 operator|.
 name|DRAFT
 argument_list|)
+operator|)
 condition|)
 block|{
 name|table
