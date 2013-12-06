@@ -1974,6 +1974,8 @@ name|approvalsUtil
 operator|.
 name|copyLabels
 argument_list|(
+name|db
+argument_list|,
 name|refControl
 operator|.
 name|getProjectControl
