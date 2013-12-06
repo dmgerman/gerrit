@@ -1176,17 +1176,15 @@ if|if
 condition|(
 name|name
 operator|.
-name|indexOf
+name|contains
 argument_list|(
-literal|'\\'
+literal|"\\"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 return|return
 literal|true
 return|;
-comment|// no windows/dos stlye paths
+comment|// no windows/dos style paths
 if|if
 condition|(
 name|name
