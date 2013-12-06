@@ -185,6 +185,11 @@ name|String
 name|showRelativeDateInChangeTable
 parameter_list|()
 function_decl|;
+DECL|method|showSizeBarInChangeTable ()
+name|String
+name|showSizeBarInChangeTable
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenOldUi ()
 name|String
 name|changeScreenOldUi

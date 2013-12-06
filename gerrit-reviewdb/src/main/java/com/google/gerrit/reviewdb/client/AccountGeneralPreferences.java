@@ -592,6 +592,18 @@ specifier|protected
 name|String
 name|changeScreen
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|16
+argument_list|)
+DECL|field|sizeBarInChangeTable
+specifier|protected
+name|boolean
+name|sizeBarInChangeTable
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -1119,6 +1131,32 @@ else|:
 literal|null
 expr_stmt|;
 block|}
+DECL|method|isSizeBarInChangeTable ()
+specifier|public
+name|boolean
+name|isSizeBarInChangeTable
+parameter_list|()
+block|{
+return|return
+name|sizeBarInChangeTable
+return|;
+block|}
+DECL|method|setSizeBarInChangeTable (boolean sizeBarInChangeTable)
+specifier|public
+name|void
+name|setSizeBarInChangeTable
+parameter_list|(
+name|boolean
+name|sizeBarInChangeTable
+parameter_list|)
+block|{
+name|this
+operator|.
+name|sizeBarInChangeTable
+operator|=
+name|sizeBarInChangeTable
+expr_stmt|;
+block|}
 DECL|method|resetToDefaults ()
 specifier|public
 name|void
@@ -1180,6 +1218,10 @@ expr_stmt|;
 name|changeScreen
 operator|=
 literal|null
+expr_stmt|;
+name|sizeBarInChangeTable
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
