@@ -83,6 +83,20 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+DECL|method|PluginInstallException (String msg)
+specifier|public
+name|PluginInstallException
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|PluginInstallException (Throwable why)
 specifier|public
 name|PluginInstallException
