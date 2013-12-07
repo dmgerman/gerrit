@@ -318,6 +318,11 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 argument_list|,
+name|info
+operator|.
+name|getRevId
+argument_list|()
+argument_list|,
 name|starred
 argument_list|,
 name|canEditCommitMessage
