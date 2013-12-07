@@ -1929,10 +1929,7 @@ name|ObjectId
 operator|.
 name|fromString
 argument_list|(
-name|rsrc
-operator|.
-name|getPatchSet
-argument_list|()
+name|p
 operator|.
 name|getRevision
 argument_list|()
