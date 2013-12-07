@@ -320,27 +320,6 @@ argument_list|>
 name|callback
 parameter_list|)
 function_decl|;
-comment|/**    * Deletes the specified draft patch set. If the draft patch set is the only    * patch set of the change, then also the change gets deleted.    *    * @param psid ID of the draft patch set that should be deleted    * @param callback callback to report the result of the draft patch set    *        deletion operation; if the draft patch set was successfully deleted    *        {@link AsyncCallback#onSuccess(Object)} is invoked and the change    *        details are passed as parameter; if the change gets deleted because    *        the draft patch set that was deleted was the only patch set in the    *        change, then {@code null} is passed as result to    *        {@link AsyncCallback#onSuccess(Object)}    */
-annotation|@
-name|Audit
-annotation|@
-name|SignInRequired
-DECL|method|deleteDraftPatchSet (PatchSet.Id psid, AsyncCallback<ChangeDetail> callback)
-name|void
-name|deleteDraftPatchSet
-parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|psid
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|ChangeDetail
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 

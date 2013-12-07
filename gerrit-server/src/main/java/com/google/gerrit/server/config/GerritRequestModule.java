@@ -120,22 +120,6 @@ name|server
 operator|.
 name|changedetail
 operator|.
-name|DeleteDraftPatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|changedetail
-operator|.
 name|PublishDraft
 import|;
 end_import
@@ -400,15 +384,6 @@ expr_stmt|;
 comment|// Not really per-request, but dammit, I don't know where else to
 comment|// easily park this stuff.
 comment|//
-name|factory
-argument_list|(
-name|DeleteDraftPatchSet
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|factory
 argument_list|(
 name|PublishDraft
