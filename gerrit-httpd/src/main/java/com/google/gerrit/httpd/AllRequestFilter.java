@@ -408,7 +408,24 @@ name|config
 parameter_list|)
 throws|throws
 name|ServletException
-block|{     }
+block|{
+for|for
+control|(
+name|AllRequestFilter
+name|f
+range|:
+name|filters
+control|)
+block|{
+name|f
+operator|.
+name|init
+argument_list|(
+name|config
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 DECL|method|destroy ()
@@ -416,7 +433,22 @@ specifier|public
 name|void
 name|destroy
 parameter_list|()
-block|{     }
+block|{
+for|for
+control|(
+name|AllRequestFilter
+name|f
+range|:
+name|filters
+control|)
+block|{
+name|f
+operator|.
+name|destroy
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 annotation|@
 name|Override
