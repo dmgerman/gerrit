@@ -211,6 +211,15 @@ literal|"d. MMM"
 argument_list|,
 literal|"dd.MM.yyyy"
 argument_list|)
+block|,
+comment|/** UK style dates: 27/04, 27/04/2010 */
+DECL|enumConstant|UK
+name|UK
+argument_list|(
+literal|"dd/MM"
+argument_list|,
+literal|"dd/MM/yyyy"
+argument_list|)
 block|;
 DECL|field|shortFormat
 specifier|private
