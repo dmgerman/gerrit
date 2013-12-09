@@ -216,6 +216,18 @@ name|v
 parameter_list|)
 comment|/*-{ this.labels[n]=v; }-*/
 function_decl|;
+DECL|method|label (String n)
+specifier|public
+specifier|final
+specifier|native
+name|short
+name|label
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.labels[n]||0 }-*/
+function_decl|;
 DECL|method|comments (NativeMap<JsArray<CommentInfo>> m)
 specifier|public
 specifier|final
