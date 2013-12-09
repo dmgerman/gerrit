@@ -462,8 +462,11 @@ name|s
 operator|.
 name|append
 argument_list|(
-literal|"f.style.cssText"
-operator|+
+literal|"f.style.cssText)"
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"='position:absolute;width:0;height:0;border:none';"
 argument_list|)
 expr_stmt|;

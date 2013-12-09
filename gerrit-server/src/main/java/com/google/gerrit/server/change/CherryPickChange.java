@@ -1889,17 +1889,28 @@ name|msgBuf
 init|=
 operator|new
 name|StringBuilder
+argument_list|()
+decl_stmt|;
+name|msgBuf
+operator|.
+name|append
 argument_list|(
 literal|"Patch Set "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|patchSetId
 operator|.
 name|get
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|": Cherry Picked"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|msgBuf
 operator|.
 name|append
@@ -1912,7 +1923,10 @@ operator|.
 name|append
 argument_list|(
 literal|"This patchset was cherry picked to change: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|dest
 operator|.
 name|getKey

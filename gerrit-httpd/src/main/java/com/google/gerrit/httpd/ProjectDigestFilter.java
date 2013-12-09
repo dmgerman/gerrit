@@ -1961,9 +1961,15 @@ operator|.
 name|append
 argument_list|(
 literal|" realm=\""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|REALM_NAME
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\""
 argument_list|)
 expr_stmt|;
@@ -2034,9 +2040,15 @@ operator|.
 name|append
 argument_list|(
 literal|", domain=\""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|url
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\""
 argument_list|)
 expr_stmt|;
@@ -2060,7 +2072,10 @@ operator|.
 name|append
 argument_list|(
 literal|", stale="
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|stale
 argument_list|)
 expr_stmt|;
@@ -2070,10 +2085,16 @@ operator|.
 name|append
 argument_list|(
 literal|", nonce=\""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|newNonce
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\""
 argument_list|)
 expr_stmt|;
