@@ -782,6 +782,10 @@ name|getSubmitter
 argument_list|(
 name|db
 argument_list|,
+name|commit
+operator|.
+name|notes
+argument_list|,
 name|patchSetId
 argument_list|)
 decl_stmt|;

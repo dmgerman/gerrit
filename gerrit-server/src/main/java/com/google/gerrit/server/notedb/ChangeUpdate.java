@@ -450,6 +450,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
 import|;
 end_import
@@ -587,6 +601,12 @@ name|user
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|migration
+specifier|private
+specifier|final
+name|NotesMigration
+name|migration
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -675,7 +695,7 @@ name|psId
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted Change change)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted Change change)
 name|ChangeUpdate
 parameter_list|(
 annotation|@
@@ -685,6 +705,9 @@ name|serverIdent
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -711,6 +734,8 @@ argument_list|(
 name|serverIdent
 argument_list|,
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|accountCache
 argument_list|,
@@ -731,7 +756,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted Change change, @Assisted Date when)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted Change change, @Assisted Date when)
 name|ChangeUpdate
 parameter_list|(
 annotation|@
@@ -741,6 +766,9 @@ name|serverIdent
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -772,6 +800,8 @@ argument_list|(
 name|serverIdent
 argument_list|,
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|accountCache
 argument_list|,
@@ -789,7 +819,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, @Assisted Change change, @Assisted Date when, @Assisted IdentifiedUser user)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, @Assisted Change change, @Assisted Date when, @Assisted IdentifiedUser user)
 name|ChangeUpdate
 parameter_list|(
 annotation|@
@@ -799,6 +829,9 @@ name|serverIdent
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -832,6 +865,8 @@ argument_list|(
 name|serverIdent
 argument_list|,
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|accountCache
 argument_list|,
@@ -863,7 +898,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|ChangeUpdate ( PersonIdent serverIdent, GitRepositoryManager repoManager, AccountCache accountCache, MetaDataUpdate.User updateFactory, LabelTypes labelTypes, Change change, Date when, IdentifiedUser user)
+DECL|method|ChangeUpdate ( PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, LabelTypes labelTypes, Change change, Date when, IdentifiedUser user)
 name|ChangeUpdate
 parameter_list|(
 name|PersonIdent
@@ -871,6 +906,9 @@ name|serverIdent
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -898,6 +936,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -967,6 +1011,16 @@ operator|.
 name|newLinkedHashMap
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getChange ()
+specifier|public
+name|Change
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|change
+return|;
 block|}
 DECL|method|getUser ()
 specifier|public
@@ -1165,6 +1219,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
+name|migration
+operator|.
+name|write
+argument_list|()
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|Repository
 name|repo
 init|=
@@ -1290,6 +1357,119 @@ operator|.
 name|getAccount
 argument_list|()
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|openUpdate (MetaDataUpdate update)
+specifier|public
+name|BatchMetaDataUpdate
+name|openUpdate
+parameter_list|(
+name|MetaDataUpdate
+name|update
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|migration
+operator|.
+name|write
+argument_list|()
+condition|)
+block|{
+return|return
+name|super
+operator|.
+name|openUpdate
+argument_list|(
+name|update
+argument_list|)
+return|;
+block|}
+return|return
+operator|new
+name|BatchMetaDataUpdate
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|write
+parameter_list|(
+name|CommitBuilder
+name|commit
+parameter_list|)
+block|{
+comment|// Do nothing.
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|write
+parameter_list|(
+name|VersionedMetaData
+name|config
+parameter_list|,
+name|CommitBuilder
+name|commit
+parameter_list|)
+block|{
+comment|// Do nothing.
+block|}
+annotation|@
+name|Override
+specifier|public
+name|RevCommit
+name|createRef
+parameter_list|(
+name|String
+name|refName
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|RevCommit
+name|commit
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|RevCommit
+name|commitAt
+parameter_list|(
+name|ObjectId
+name|revision
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+comment|// Do nothing.
+block|}
+block|}
 return|;
 block|}
 annotation|@

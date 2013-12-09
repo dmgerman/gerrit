@@ -1063,6 +1063,17 @@ argument_list|(
 name|token
 argument_list|)
 decl_stmt|;
+name|LabelType
+operator|.
+name|checkName
+argument_list|(
+name|v
+operator|.
+name|getLabel
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Disallow SUBM.
 name|customLabels
 operator|.
 name|put

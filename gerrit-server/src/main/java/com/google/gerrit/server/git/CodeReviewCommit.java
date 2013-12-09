@@ -100,6 +100,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -202,10 +218,11 @@ operator|.
 name|Id
 name|patchsetId
 decl_stmt|;
-comment|/** The change containing {@link #patchsetId} . */
-DECL|field|change
-name|Change
-name|change
+comment|/** Change info loaded from notes. */
+DECL|field|notes
+specifier|public
+name|ChangeNotes
+name|notes
 decl_stmt|;
 comment|/**    * Ordinal position of this commit within the submit queue.    *<p>    * Only valid if {@link #patchsetId} is not null.    */
 DECL|field|originalOrder
@@ -255,11 +272,11 @@ name|src
 operator|.
 name|patchsetId
 expr_stmt|;
-name|change
+name|notes
 operator|=
 name|src
 operator|.
-name|change
+name|notes
 expr_stmt|;
 name|originalOrder
 operator|=
@@ -279,6 +296,18 @@ name|src
 operator|.
 name|missing
 expr_stmt|;
+block|}
+DECL|method|getChange ()
+name|Change
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|notes
+operator|.
+name|getChange
+argument_list|()
+return|;
 block|}
 block|}
 end_class

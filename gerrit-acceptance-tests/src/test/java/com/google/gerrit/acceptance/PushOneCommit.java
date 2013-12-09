@@ -322,6 +322,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|server
@@ -632,6 +648,14 @@ name|changeId
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|notesFactory
+specifier|private
+specifier|final
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+decl_stmt|;
 DECL|field|approvalsUtil
 specifier|private
 specifier|final
@@ -680,9 +704,14 @@ name|tagName
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i)
 name|PushOneCommit
 parameter_list|(
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
@@ -699,6 +728,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|notesFactory
+argument_list|,
 name|approvalsUtil
 argument_list|,
 name|db
@@ -715,9 +746,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 parameter_list|(
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
@@ -758,6 +794,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|notesFactory
+argument_list|,
 name|approvalsUtil
 argument_list|,
 name|db
@@ -776,9 +814,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
@@ -830,6 +873,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|notesFactory
+operator|=
+name|notesFactory
 expr_stmt|;
 name|this
 operator|.
@@ -968,10 +1017,6 @@ return|return
 operator|new
 name|Result
 argument_list|(
-name|db
-argument_list|,
-name|approvalsUtil
-argument_list|,
 name|ref
 argument_list|,
 name|pushHead
@@ -1010,22 +1055,9 @@ expr_stmt|;
 block|}
 DECL|class|Result
 specifier|public
-specifier|static
 class|class
 name|Result
 block|{
-DECL|field|db
-specifier|private
-specifier|final
-name|ReviewDb
-name|db
-decl_stmt|;
-DECL|field|approvalsUtil
-specifier|private
-specifier|final
-name|ApprovalsUtil
-name|approvalsUtil
-decl_stmt|;
 DECL|field|ref
 specifier|private
 specifier|final
@@ -1050,16 +1082,10 @@ specifier|final
 name|String
 name|subject
 decl_stmt|;
-DECL|method|Result (ReviewDb db, ApprovalsUtil approvalsUtil, String ref, PushResult result, Commit commit, String subject)
+DECL|method|Result (String ref, PushResult result, Commit commit, String subject)
 specifier|private
 name|Result
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
-name|ApprovalsUtil
-name|approvalsUtil
-parameter_list|,
 name|String
 name|ref
 parameter_list|,
@@ -1073,18 +1099,6 @@ name|String
 name|subject
 parameter_list|)
 block|{
-name|this
-operator|.
-name|db
-operator|=
-name|db
-expr_stmt|;
-name|this
-operator|.
-name|approvalsUtil
-operator|=
-name|approvalsUtil
-expr_stmt|;
 name|this
 operator|.
 name|ref
@@ -1368,10 +1382,12 @@ name|getReviewers
 argument_list|(
 name|db
 argument_list|,
-name|c
+name|notesFactory
 operator|.
-name|getId
-argument_list|()
+name|create
+argument_list|(
+name|c
+argument_list|)
 argument_list|)
 operator|.
 name|values

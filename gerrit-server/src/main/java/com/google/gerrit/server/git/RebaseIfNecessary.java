@@ -67,24 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|PatchSetInserter
-operator|.
-name|ValidatePolicy
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -157,6 +139,24 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|PatchSetInserter
+operator|.
+name|ValidatePolicy
 import|;
 end_import
 
@@ -553,8 +553,6 @@ operator|.
 name|getSubmitter
 argument_list|(
 name|n
-operator|.
-name|patchsetId
 argument_list|)
 operator|.
 name|getAccountId
@@ -587,7 +585,8 @@ name|patchsetId
 argument_list|,
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 argument_list|,
 name|uploader
 argument_list|,
@@ -608,6 +607,9 @@ operator|.
 name|NONE
 argument_list|)
 decl_stmt|;
+comment|// TODO(dborowitz): This doesn't copy labels in the notedb. We
+comment|// should stamp those in atomically with the same commit that
+comment|// describes the change being submitted.
 name|List
 argument_list|<
 name|PatchSetApproval
@@ -633,6 +635,10 @@ argument_list|(
 name|args
 operator|.
 name|db
+argument_list|,
+name|n
+operator|.
+name|notes
 argument_list|,
 name|n
 operator|.
@@ -712,8 +718,14 @@ argument_list|()
 expr_stmt|;
 name|newMergeTip
 operator|.
-name|change
+name|notes
 operator|=
+name|args
+operator|.
+name|notesFactory
+operator|.
+name|create
+argument_list|(
 name|args
 operator|.
 name|db
@@ -730,6 +742,7 @@ argument_list|()
 operator|.
 name|getParentKey
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|newMergeTip
@@ -764,8 +777,6 @@ operator|.
 name|getSubmitter
 argument_list|(
 name|n
-operator|.
-name|patchsetId
 argument_list|)
 argument_list|)
 expr_stmt|;

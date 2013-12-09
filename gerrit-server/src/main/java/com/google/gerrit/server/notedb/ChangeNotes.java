@@ -693,8 +693,11 @@ name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
 annotation|@
+name|VisibleForTesting
+annotation|@
 name|Inject
 DECL|method|Factory (GitRepositoryManager repoManager)
+specifier|public
 name|Factory
 parameter_list|(
 name|GitRepositoryManager
@@ -1866,6 +1869,21 @@ block|}
 block|}
 return|return
 name|this
+return|;
+block|}
+DECL|method|getChangeId ()
+specifier|public
+name|Change
+operator|.
+name|Id
+name|getChangeId
+parameter_list|()
+block|{
+return|return
+name|change
+operator|.
+name|getId
+argument_list|()
 return|;
 block|}
 DECL|method|getChange ()

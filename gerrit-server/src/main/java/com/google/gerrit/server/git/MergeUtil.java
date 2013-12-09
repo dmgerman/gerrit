@@ -212,22 +212,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|PatchSetApproval
 import|;
 end_import
@@ -1402,15 +1386,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getSubmitter (final PatchSet.Id c)
-specifier|public
+DECL|method|getSubmitter (CodeReviewCommit c)
 name|PatchSetApproval
 name|getSubmitter
 parameter_list|(
-specifier|final
-name|PatchSet
-operator|.
-name|Id
+name|CodeReviewCommit
 name|c
 parameter_list|)
 block|{
@@ -1425,6 +1405,12 @@ name|get
 argument_list|()
 argument_list|,
 name|c
+operator|.
+name|notes
+argument_list|,
+name|c
+operator|.
+name|patchsetId
 argument_list|)
 return|;
 block|}
@@ -1702,7 +1688,8 @@ name|CHANGE_ID
 argument_list|,
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getKey
 argument_list|()
@@ -1735,7 +1722,8 @@ name|append
 argument_list|(
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getKey
 argument_list|()
@@ -2264,6 +2252,10 @@ argument_list|()
 argument_list|,
 name|n
 operator|.
+name|notes
+argument_list|,
+name|n
+operator|.
 name|patchsetId
 argument_list|)
 return|;
@@ -2449,8 +2441,6 @@ init|=
 name|getSubmitter
 argument_list|(
 name|c
-operator|.
-name|patchsetId
 argument_list|)
 decl_stmt|;
 if|if
@@ -3866,7 +3856,8 @@ name|isNullOrEmpty
 argument_list|(
 name|c
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getTopic
 argument_list|()
@@ -3879,7 +3870,8 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getTopic
 argument_list|()
@@ -4000,7 +3992,8 @@ block|{
 return|return
 name|in
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getKey
 argument_list|()
@@ -4424,8 +4417,6 @@ operator|=
 name|getSubmitter
 argument_list|(
 name|c
-operator|.
-name|patchsetId
 argument_list|)
 expr_stmt|;
 block|}

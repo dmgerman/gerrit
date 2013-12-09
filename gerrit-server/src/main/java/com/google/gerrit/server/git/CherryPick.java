@@ -815,11 +815,6 @@ operator|.
 name|getSubmitter
 argument_list|(
 name|n
-operator|.
-name|change
-operator|.
-name|currentPatchSetId
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|PersonIdent
@@ -944,7 +939,8 @@ name|repo
 argument_list|,
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -1012,7 +1008,8 @@ name|beginTransaction
 argument_list|(
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -1053,7 +1050,8 @@ argument_list|)
 expr_stmt|;
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|setCurrentPatchSet
 argument_list|(
@@ -1085,7 +1083,8 @@ name|singletonList
 argument_list|(
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1118,6 +1117,10 @@ name|db
 argument_list|,
 name|n
 operator|.
+name|notes
+argument_list|,
+name|n
+operator|.
 name|patchsetId
 argument_list|)
 control|)
@@ -1139,6 +1142,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO(dborowitz): This doesn't copy labels in the notedb. We should
+comment|// stamp those in atomically with the same commit that describes the
+comment|// change being submitted.
 name|args
 operator|.
 name|db
@@ -1222,7 +1228,8 @@ argument_list|()
 argument_list|,
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getDest
 argument_list|()
@@ -1265,7 +1272,8 @@ name|fire
 argument_list|(
 name|n
 operator|.
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getProject
 argument_list|()

@@ -610,6 +610,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchList
@@ -1378,8 +1394,8 @@ name|isOpen
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Add allReviewers to an existing ChangeAttribute.    *    * @param a    * @param change    */
-DECL|method|addAllReviewers (ChangeAttribute a, Change change)
+comment|/**    * Add allReviewers to an existing ChangeAttribute.    *    * @param a    * @param notes    */
+DECL|method|addAllReviewers (ChangeAttribute a, ChangeNotes notes)
 specifier|public
 name|void
 name|addAllReviewers
@@ -1387,8 +1403,8 @@ parameter_list|(
 name|ChangeAttribute
 name|a
 parameter_list|,
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1410,10 +1426,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|change
-operator|.
-name|getId
-argument_list|()
+name|notes
 argument_list|)
 operator|.
 name|values

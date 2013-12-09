@@ -1831,7 +1831,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -2165,7 +2165,7 @@ decl_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -2409,7 +2409,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -2487,7 +2487,7 @@ argument_list|)
 expr_stmt|;
 name|notes
 operator|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -2609,7 +2609,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -2909,7 +2909,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -3012,7 +3012,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -3100,7 +3100,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -3159,7 +3159,7 @@ argument_list|)
 expr_stmt|;
 name|notes
 operator|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -3289,7 +3289,7 @@ expr_stmt|;
 name|ChangeNotes
 name|notes
 init|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -3394,7 +3394,7 @@ argument_list|)
 expr_stmt|;
 name|notes
 operator|=
-name|newChange
+name|newNotes
 argument_list|(
 name|c
 argument_list|)
@@ -3538,6 +3538,11 @@ name|SERVER_IDENT
 argument_list|,
 name|repoManager
 argument_list|,
+name|NotesMigration
+operator|.
+name|allEnabled
+argument_list|()
+argument_list|,
 name|accountCache
 argument_list|,
 literal|null
@@ -3555,10 +3560,10 @@ name|user
 argument_list|)
 return|;
 block|}
-DECL|method|newChange (Change c)
+DECL|method|newNotes (Change c)
 specifier|private
 name|ChangeNotes
-name|newChange
+name|newNotes
 parameter_list|(
 name|Change
 name|c

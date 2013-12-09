@@ -441,7 +441,7 @@ name|name
 operator|=
 name|LabelType
 operator|.
-name|checkName
+name|checkNameInternal
 argument_list|(
 name|name
 argument_list|)

@@ -4032,8 +4032,7 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|getChange
-argument_list|()
+name|this
 argument_list|)
 return|;
 block|}
