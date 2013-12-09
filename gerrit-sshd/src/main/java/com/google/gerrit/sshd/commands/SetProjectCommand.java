@@ -1063,9 +1063,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: Project "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" not found\n"
 argument_list|)
 expr_stmt|;
@@ -1098,9 +1104,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|msg
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1133,9 +1145,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|msg
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;

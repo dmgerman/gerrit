@@ -1069,15 +1069,30 @@ operator|.
 name|append
 argument_list|(
 literal|"Server "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|smtpHost
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" rejected recipient "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|addr
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|": "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|error
 argument_list|)
 expr_stmt|;

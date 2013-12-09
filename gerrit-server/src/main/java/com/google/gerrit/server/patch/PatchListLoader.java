@@ -1320,7 +1320,10 @@ operator|.
 name|append
 argument_list|(
 literal|" a/"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Patch
 operator|.
 name|COMMIT_MSG
@@ -1334,7 +1337,10 @@ operator|.
 name|append
 argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|FileHeader
 operator|.
 name|DEV_NULL
@@ -1346,7 +1352,10 @@ operator|.
 name|append
 argument_list|(
 literal|" b/"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Patch
 operator|.
 name|COMMIT_MSG
@@ -1371,11 +1380,17 @@ operator|.
 name|append
 argument_list|(
 literal|"--- a/"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Patch
 operator|.
 name|COMMIT_MSG
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1387,11 +1402,17 @@ operator|.
 name|append
 argument_list|(
 literal|"--- "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|FileHeader
 operator|.
 name|DEV_NULL
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1401,11 +1422,17 @@ operator|.
 name|append
 argument_list|(
 literal|"+++ b/"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Patch
 operator|.
 name|COMMIT_MSG
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;

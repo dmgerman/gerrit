@@ -3229,13 +3229,25 @@ operator|.
 name|append
 argument_list|(
 literal|"sshd."
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|key
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" = "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" unsupported; only "
 argument_list|)
 expr_stmt|;

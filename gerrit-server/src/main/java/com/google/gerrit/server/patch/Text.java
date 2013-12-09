@@ -720,7 +720,10 @@ operator|.
 name|append
 argument_list|(
 name|field
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":    "
 argument_list|)
 expr_stmt|;
@@ -818,7 +821,10 @@ operator|.
 name|append
 argument_list|(
 name|field
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"Date: "
 argument_list|)
 expr_stmt|;

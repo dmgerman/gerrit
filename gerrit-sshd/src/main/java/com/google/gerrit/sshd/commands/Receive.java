@@ -777,7 +777,10 @@ operator|.
 name|append
 argument_list|(
 literal|"Receive error on project \""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|projectControl
 operator|.
 name|getProject
@@ -785,7 +788,10 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\""
 argument_list|)
 expr_stmt|;
@@ -889,7 +895,10 @@ operator|.
 name|append
 argument_list|(
 literal|"Unpack error on project \""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|projectControl
 operator|.
 name|getProject
@@ -897,7 +906,10 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\":\n"
 argument_list|)
 expr_stmt|;
@@ -906,7 +918,10 @@ operator|.
 name|append
 argument_list|(
 literal|"  AdvertiseRefsHook: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|rp
 operator|.
 name|getAdvertiseRefsHook
@@ -1003,12 +1018,18 @@ operator|.
 name|append
 argument_list|(
 literal|"  Visible references ("
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|adv
 operator|.
 name|size
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"):\n"
 argument_list|)
 expr_stmt|;
@@ -1028,7 +1049,10 @@ operator|.
 name|append
 argument_list|(
 literal|"  - "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|ref
 operator|.
 name|getObjectId
@@ -1041,14 +1065,23 @@ argument_list|)
 operator|.
 name|name
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|ref
 operator|.
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1128,12 +1161,18 @@ operator|.
 name|append
 argument_list|(
 literal|"  Hidden references ("
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|hidden
 operator|.
 name|size
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"):\n"
 argument_list|)
 expr_stmt|;
@@ -1150,7 +1189,10 @@ operator|.
 name|append
 argument_list|(
 literal|"  - "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|ref
 operator|.
 name|getObjectId
@@ -1163,14 +1205,23 @@ argument_list|)
 operator|.
 name|name
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|ref
 operator|.
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
