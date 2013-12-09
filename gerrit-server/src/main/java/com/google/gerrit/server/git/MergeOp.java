@@ -4651,9 +4651,7 @@ name|m
 operator|.
 name|append
 argument_list|(
-literal|"Change cannot be merged due"
-operator|+
-literal|" to unsatisfiable dependencies.\n"
+literal|"Change cannot be merged due to unsatisfiable dependencies.\n"
 argument_list|)
 expr_stmt|;
 name|m

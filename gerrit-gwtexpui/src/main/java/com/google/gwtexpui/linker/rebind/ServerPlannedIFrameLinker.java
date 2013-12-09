@@ -376,7 +376,12 @@ name|r
 operator|.
 name|getStrongName
 argument_list|()
-operator|+
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;

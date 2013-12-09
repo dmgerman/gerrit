@@ -1915,7 +1915,10 @@ operator|.
 name|append
 argument_list|(
 literal|"  "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|me
 operator|.
 name|getValue

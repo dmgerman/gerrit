@@ -1829,7 +1829,10 @@ operator|.
 name|append
 argument_list|(
 literal|"blocked by "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|lbl
 operator|.
 name|label
@@ -1860,7 +1863,10 @@ operator|.
 name|append
 argument_list|(
 literal|"needs "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|lbl
 operator|.
 name|label
@@ -1891,11 +1897,17 @@ operator|.
 name|append
 argument_list|(
 literal|"needs "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|lbl
 operator|.
 name|label
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" (check project access)"
 argument_list|)
 expr_stmt|;
