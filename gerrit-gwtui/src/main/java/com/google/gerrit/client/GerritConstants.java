@@ -103,6 +103,11 @@ name|String
 name|reportBug
 parameter_list|()
 function_decl|;
+DECL|method|loadingPlugins ()
+name|String
+name|loadingPlugins
+parameter_list|()
+function_decl|;
 DECL|method|signInDialogTitle ()
 name|String
 name|signInDialogTitle

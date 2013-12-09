@@ -583,6 +583,11 @@ name|String
 name|errorDialogTitle
 parameter_list|()
 function_decl|;
+DECL|method|loadingPluginsDialog ()
+name|String
+name|loadingPluginsDialog
+parameter_list|()
+function_decl|;
 DECL|method|fileColumnHeader ()
 name|String
 name|fileColumnHeader
