@@ -138,9 +138,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ApprovalsUtil
+name|account
 operator|.
-name|ReviewerState
+name|AccountResolver
 import|;
 end_import
 
@@ -154,9 +154,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
+name|notedb
 operator|.
-name|AccountResolver
+name|ReviewerState
 import|;
 end_import
 
