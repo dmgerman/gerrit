@@ -711,6 +711,11 @@ name|FileTableCss
 extends|extends
 name|CssResource
 block|{
+DECL|method|table ()
+name|String
+name|table
+parameter_list|()
+function_decl|;
 DECL|method|pointer ()
 name|String
 name|pointer
@@ -729,6 +734,16 @@ function_decl|;
 DECL|method|pathColumn ()
 name|String
 name|pathColumn
+parameter_list|()
+function_decl|;
+DECL|method|commonPrefix ()
+name|String
+name|commonPrefix
+parameter_list|()
+function_decl|;
+DECL|method|renameCopySource ()
+name|String
+name|renameCopySource
 parameter_list|()
 function_decl|;
 DECL|method|draftColumn ()
@@ -754,11 +769,6 @@ function_decl|;
 DECL|method|deltaColumn2 ()
 name|String
 name|deltaColumn2
-parameter_list|()
-function_decl|;
-DECL|method|commonPrefix ()
-name|String
-name|commonPrefix
 parameter_list|()
 function_decl|;
 DECL|method|inserted ()
@@ -2295,6 +2305,19 @@ operator|.
 name|isSignedIn
 argument_list|()
 expr_stmt|;
+name|table
+operator|.
+name|addStyleName
+argument_list|(
+name|R
+operator|.
+name|css
+argument_list|()
+operator|.
+name|table
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|execute ()
 specifier|public
@@ -3185,6 +3208,51 @@ name|sb
 operator|.
 name|closeAnchor
 argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|info
+operator|.
+name|old_path
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|sb
+operator|.
+name|br
+argument_list|()
+expr_stmt|;
+name|sb
+operator|.
+name|openSpan
+argument_list|()
+operator|.
+name|setStyleName
+argument_list|(
+name|R
+operator|.
+name|css
+argument_list|()
+operator|.
+name|renameCopySource
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|info
+operator|.
+name|old_path
+argument_list|()
+argument_list|)
+operator|.
+name|closeSpan
+argument_list|()
+expr_stmt|;
+block|}
+name|sb
 operator|.
 name|closeTd
 argument_list|()
