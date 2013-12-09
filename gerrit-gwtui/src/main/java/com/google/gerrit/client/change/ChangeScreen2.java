@@ -3218,6 +3218,24 @@ expr_stmt|;
 name|startPoller
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|NewChangeScreenBar
+operator|.
+name|show
+argument_list|()
+condition|)
+block|{
+name|add
+argument_list|(
+operator|new
+name|NewChangeScreenBar
+argument_list|(
+name|changeId
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|scrollToPath (String token)
 specifier|private
