@@ -462,8 +462,10 @@ name|s
 operator|.
 name|append
 argument_list|(
-literal|"f.style.cssText)"
+literal|"f.style.cssText"
 argument_list|)
+expr_stmt|;
+name|s
 operator|.
 name|append
 argument_list|(
