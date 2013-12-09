@@ -3396,7 +3396,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Unsupported plugin type: "
+literal|"Unsupported plugin type: %s"
 argument_list|,
 name|srcPlugin
 operator|.
