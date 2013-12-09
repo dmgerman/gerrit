@@ -991,7 +991,10 @@ operator|.
 name|append
 argument_list|(
 literal|"0"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Integer
 operator|.
 name|toOctalString

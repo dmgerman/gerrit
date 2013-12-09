@@ -964,9 +964,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: Cannot set parent of '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"'\n"
 argument_list|)
 expr_stmt|;
@@ -996,12 +1002,20 @@ operator|.
 name|append
 argument_list|(
 literal|"error: Cycle exists between '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"' and '"
-operator|+
-operator|(
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|newParentKey
 operator|!=
 literal|null
@@ -1015,8 +1029,10 @@ name|allProjectsName
 operator|.
 name|get
 argument_list|()
-operator|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"'\n"
 argument_list|)
 expr_stmt|;
@@ -1109,9 +1125,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: Project "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|name
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" not found\n"
 argument_list|)
 expr_stmt|;
@@ -1144,9 +1166,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|msg
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1179,9 +1207,15 @@ operator|.
 name|append
 argument_list|(
 literal|"error: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|msg
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
