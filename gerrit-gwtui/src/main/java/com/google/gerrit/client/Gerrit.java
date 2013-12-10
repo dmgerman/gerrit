@@ -3057,17 +3057,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|getConfig
-argument_list|()
-operator|.
-name|getReportBugUrl
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 name|Anchor
 name|a
 init|=
@@ -3118,7 +3107,6 @@ argument_list|(
 name|a
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|onModuleLoad2 (HostPageData hpd)
 specifier|private
