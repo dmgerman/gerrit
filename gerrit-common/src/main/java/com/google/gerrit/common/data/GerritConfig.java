@@ -237,6 +237,11 @@ specifier|protected
 name|String
 name|reportBugUrl
 decl_stmt|;
+DECL|field|reportBugText
+specifier|protected
+name|String
+name|reportBugText
+decl_stmt|;
 DECL|field|gitBasicAuth
 specifier|protected
 name|boolean
@@ -504,6 +509,30 @@ block|{
 name|reportBugUrl
 operator|=
 name|u
+expr_stmt|;
+block|}
+DECL|method|getReportBugText ()
+specifier|public
+name|String
+name|getReportBugText
+parameter_list|()
+block|{
+return|return
+name|reportBugText
+return|;
+block|}
+DECL|method|setReportBugText (String t)
+specifier|public
+name|void
+name|setReportBugText
+parameter_list|(
+name|String
+name|t
+parameter_list|)
+block|{
+name|reportBugText
+operator|=
+name|t
 expr_stmt|;
 block|}
 DECL|method|isGitBasicAuth ()
