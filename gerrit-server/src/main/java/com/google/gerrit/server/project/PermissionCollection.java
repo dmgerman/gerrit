@@ -813,10 +813,6 @@ argument_list|,
 name|ruleProps
 argument_list|,
 name|perUser
-condition|?
-name|username
-else|:
-literal|null
 argument_list|)
 return|;
 block|}
@@ -846,13 +842,13 @@ name|ProjectRef
 argument_list|>
 name|ruleProps
 decl_stmt|;
-DECL|field|username
+DECL|field|perUser
 specifier|private
 specifier|final
-name|String
-name|username
+name|boolean
+name|perUser
 decl_stmt|;
-DECL|method|PermissionCollection (Map<String, List<PermissionRule>> rules, Map<PermissionRule, ProjectRef> ruleProps, String username)
+DECL|method|PermissionCollection (Map<String, List<PermissionRule>> rules, Map<PermissionRule, ProjectRef> ruleProps, boolean perUser)
 specifier|private
 name|PermissionCollection
 parameter_list|(
@@ -875,8 +871,8 @@ name|ProjectRef
 argument_list|>
 name|ruleProps
 parameter_list|,
-name|String
-name|username
+name|boolean
+name|perUser
 parameter_list|)
 block|{
 name|this
@@ -893,9 +889,9 @@ name|ruleProps
 expr_stmt|;
 name|this
 operator|.
-name|username
+name|perUser
 operator|=
-name|username
+name|perUser
 expr_stmt|;
 block|}
 comment|/**    * @return true if a "${username}" pattern might need to be expanded to build    *         this collection, making the results user specific.    */
@@ -906,9 +902,7 @@ name|isUserSpecific
 parameter_list|()
 block|{
 return|return
-name|username
-operator|!=
-literal|null
+name|perUser
 return|;
 block|}
 comment|/**    * Obtain all permission rules for a given type of permission.    *    * @param permissionName type of permission.    * @return all rules that apply to this reference, for any group. Never null;    *         the empty list is returned when there are no rules for the requested    *         permission name.    */
