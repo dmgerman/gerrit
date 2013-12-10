@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** In-memory table of {@link GroupInfo}, indexed by {@link AccountGroup.Id}. */
+comment|/** In-memory table of {@link GroupInfo}, indexed by {@code AccountGroup.Id}. */
 end_comment
 
 begin_class

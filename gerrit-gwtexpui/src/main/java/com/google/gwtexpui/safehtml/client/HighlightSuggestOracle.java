@@ -95,7 +95,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A suggestion oracle that tries to highlight the matched text.  *<p>  * Suggestions supplied by the implementation of  * {@link #onRequestSuggestions(Request, Callback)} are modified to wrap all  * occurrences of the {@link SuggestOracle.Request#getQuery()} substring in HTML  * {@code&lt;strong&gt;} tags, so they can be emphasized to the user.  */
+comment|/**  * A suggestion oracle that tries to highlight the matched text.  *<p>  * Suggestions supplied by the implementation of  * {@link #onRequestSuggestions(Request, Callback)} are modified to wrap all  * occurrences of the  * {@link com.google.gwt.user.client.ui.SuggestOracle.Request#getQuery()}  * substring in HTML {@code&lt;strong&gt;} tags, so they can be emphasized to  * the user.  */
 end_comment
 
 begin_class
@@ -282,7 +282,7 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|/**    * @return true if {@link SuggestOracle.Suggestion#getDisplayString()} returns    *         HTML; false if the text must be escaped before evaluating in an    *         HTML like context.    */
+comment|/**    * @return true if    *         {@link com.google.gwt.user.client.ui.SuggestOracle.Suggestion#getDisplayString()}    *         returns HTML; false if the text must be escaped before evaluating    *         in an HTML like context.    */
 DECL|method|isHTML ()
 specifier|protected
 name|boolean
