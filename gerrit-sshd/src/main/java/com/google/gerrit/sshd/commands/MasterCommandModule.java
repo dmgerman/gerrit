@@ -206,6 +206,15 @@ name|command
 argument_list|(
 name|gerrit
 argument_list|,
+name|CreateBranchCommand
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|command
+argument_list|(
+name|gerrit
+argument_list|,
 name|AdminQueryShell
 operator|.
 name|class
