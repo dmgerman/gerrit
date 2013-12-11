@@ -880,7 +880,7 @@ name|setCanEditCommitMessage
 argument_list|(
 name|can
 argument_list|(
-name|info
+name|rev
 operator|.
 name|actions
 argument_list|()
