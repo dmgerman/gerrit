@@ -366,6 +366,11 @@ name|String
 name|showTabs
 parameter_list|()
 function_decl|;
+DECL|method|padding ()
+name|String
+name|padding
+parameter_list|()
+function_decl|;
 block|}
 annotation|@
 name|UiField
