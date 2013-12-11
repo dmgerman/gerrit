@@ -77,7 +77,7 @@ name|plugin
 operator|.
 name|client
 operator|.
-name|Plugin
+name|PluginEntryPoint
 import|;
 end_import
 
@@ -213,14 +213,14 @@ specifier|public
 class|class
 name|HelloPlugin
 extends|extends
-name|Plugin
+name|PluginEntryPoint
 block|{
 annotation|@
 name|Override
-DECL|method|onModuleLoad ()
+DECL|method|onPluginLoad ()
 specifier|public
 name|void
-name|onModuleLoad
+name|onPluginLoad
 parameter_list|()
 block|{
 comment|// Create the dialog box

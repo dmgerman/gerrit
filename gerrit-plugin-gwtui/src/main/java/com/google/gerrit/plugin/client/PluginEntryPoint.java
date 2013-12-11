@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2012 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.api
+DECL|package|com.google.gerrit.plugin.client
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|plugin
 operator|.
-name|api
+name|client
 package|;
 end_package
 
@@ -78,30 +78,66 @@ name|core
 operator|.
 name|client
 operator|.
-name|JavaScriptObject
+name|EntryPoint
 import|;
 end_import
 
+begin_comment
+comment|/**  * Base class for writing Gerrit Web UI plugins  *  * Writing a plugin:  *<ol>  *<li>Declare subtype of Plugin</li>  *<li>Bind WebUiPlugin to GwtPlugin implementation in Gerrit-Module</li>  *</ol>  */
+end_comment
+
 begin_class
-DECL|class|JsUiPlugin
+DECL|class|PluginEntryPoint
+specifier|public
+specifier|abstract
 class|class
-name|JsUiPlugin
-extends|extends
-name|JavaScriptObject
+name|PluginEntryPoint
+implements|implements
+name|EntryPoint
 block|{
-DECL|method|name ()
-specifier|final
-specifier|native
-name|String
-name|name
+comment|/**    * The plugin entry point method, called automatically by loading    * a module that declares an implementing class as an entry point.    */
+DECL|method|onPluginLoad ()
+specifier|public
+specifier|abstract
+name|void
+name|onPluginLoad
 parameter_list|()
-comment|/*-{ return this.name }-*/
 function_decl|;
-DECL|method|JsUiPlugin ()
-specifier|protected
-name|JsUiPlugin
+DECL|method|onModuleLoad ()
+specifier|public
+specifier|final
+name|void
+name|onModuleLoad
 parameter_list|()
-block|{   }
+block|{
+name|Plugin
+name|self
+init|=
+name|Plugin
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|onPluginLoad
+argument_list|()
+expr_stmt|;
+name|self
+operator|.
+name|_initialized
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|self
+operator|.
+name|_loaded
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
