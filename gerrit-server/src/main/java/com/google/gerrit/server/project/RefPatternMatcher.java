@@ -564,13 +564,11 @@ condition|)
 block|{
 name|u
 operator|=
-name|username
+name|Pattern
 operator|.
-name|replace
+name|quote
 argument_list|(
-literal|"."
-argument_list|,
-literal|"\\."
+name|username
 argument_list|)
 expr_stmt|;
 block|}

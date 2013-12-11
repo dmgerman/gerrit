@@ -232,6 +232,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -326,8 +336,8 @@ operator|=
 name|sorter
 expr_stmt|;
 block|}
-comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in      *        priority order (project specific definitions must appear before      *        inherited ones).      * @param ref reference being accessed.      * @param username if the reference is a per-user reference, access sections      *        using the parameter variable "${username}" will first have {@code      *        username} inserted into them before seeing if they apply to the      *        reference named by {@code ref}. If null, per-user references are      *        ignored.      * @return map of permissions that apply to this reference, keyed by      *         permission name.      */
-DECL|method|filter (Iterable<SectionMatcher> matcherList, String ref, String username)
+comment|/**      * Get all permissions that apply to a reference.      *      * @param matcherList collection of sections that should be considered, in      *        priority order (project specific definitions must appear before      *        inherited ones).      * @param ref reference being accessed.      * @param usernames if the reference is a per-user reference, access sections      *        using the parameter variable "${username}" will first have each of      *        {@code usernames} inserted into them before seeing if they apply to      *        the reference named by {@code ref}. If null or empty, per-user      *        references are ignored.      * @return map of permissions that apply to this reference, keyed by      *         permission name.      */
+DECL|method|filter (Iterable<SectionMatcher> matcherList, String ref, Collection<String> usernames)
 name|PermissionCollection
 name|filter
 parameter_list|(
@@ -340,8 +350,11 @@ parameter_list|,
 name|String
 name|ref
 parameter_list|,
+name|Collection
+argument_list|<
 name|String
-name|username
+argument_list|>
+name|usernames
 parameter_list|)
 block|{
 if|if
@@ -391,6 +404,19 @@ argument_list|)
 expr_stmt|;
 block|}
 name|boolean
+name|hasUsernames
+init|=
+name|usernames
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|usernames
+operator|.
+name|isEmpty
+argument_list|()
+decl_stmt|;
+name|boolean
 name|perUser
 init|=
 literal|false
@@ -432,10 +458,11 @@ comment|// references are usually less frequent than the non-user references.
 comment|//
 if|if
 condition|(
-name|username
-operator|!=
-literal|null
-operator|&&
+name|hasUsernames
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|perUser
 operator|&&
@@ -467,6 +494,14 @@ name|ref
 argument_list|)
 expr_stmt|;
 block|}
+for|for
+control|(
+name|String
+name|username
+range|:
+name|usernames
+control|)
+block|{
 if|if
 condition|(
 name|sm
@@ -476,6 +511,36 @@ argument_list|(
 name|ref
 argument_list|,
 name|username
+argument_list|)
+condition|)
+block|{
+name|sectionToProject
+operator|.
+name|put
+argument_list|(
+name|sm
+operator|.
+name|section
+argument_list|,
+name|sm
+operator|.
+name|project
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|sm
+operator|.
+name|match
+argument_list|(
+name|ref
+argument_list|,
+literal|null
 argument_list|)
 condition|)
 block|{
@@ -813,10 +878,6 @@ argument_list|,
 name|ruleProps
 argument_list|,
 name|perUser
-condition|?
-name|username
-else|:
-literal|null
 argument_list|)
 return|;
 block|}
@@ -846,13 +907,13 @@ name|ProjectRef
 argument_list|>
 name|ruleProps
 decl_stmt|;
-DECL|field|username
+DECL|field|perUser
 specifier|private
 specifier|final
-name|String
-name|username
+name|boolean
+name|perUser
 decl_stmt|;
-DECL|method|PermissionCollection (Map<String, List<PermissionRule>> rules, Map<PermissionRule, ProjectRef> ruleProps, String username)
+DECL|method|PermissionCollection (Map<String, List<PermissionRule>> rules, Map<PermissionRule, ProjectRef> ruleProps, boolean perUser)
 specifier|private
 name|PermissionCollection
 parameter_list|(
@@ -875,8 +936,8 @@ name|ProjectRef
 argument_list|>
 name|ruleProps
 parameter_list|,
-name|String
-name|username
+name|boolean
+name|perUser
 parameter_list|)
 block|{
 name|this
@@ -893,9 +954,9 @@ name|ruleProps
 expr_stmt|;
 name|this
 operator|.
-name|username
+name|perUser
 operator|=
-name|username
+name|perUser
 expr_stmt|;
 block|}
 comment|/**    * @return true if a "${username}" pattern might need to be expanded to build    *         this collection, making the results user specific.    */
@@ -906,9 +967,7 @@ name|isUserSpecific
 parameter_list|()
 block|{
 return|return
-name|username
-operator|!=
-literal|null
+name|perUser
 return|;
 block|}
 comment|/**    * Obtain all permission rules for a given type of permission.    *    * @param permissionName type of permission.    * @return all rules that apply to this reference, for any group. Never null;    *         the empty list is returned when there are no rules for the requested    *         permission name.    */
