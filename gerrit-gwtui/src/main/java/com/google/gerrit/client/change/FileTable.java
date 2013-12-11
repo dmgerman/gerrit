@@ -716,6 +716,11 @@ name|String
 name|table
 parameter_list|()
 function_decl|;
+DECL|method|nohover ()
+name|String
+name|nohover
+parameter_list|()
+function_decl|;
 DECL|method|pointer ()
 name|String
 name|pointer
@@ -2664,6 +2669,17 @@ name|sb
 operator|.
 name|openTr
 argument_list|()
+operator|.
+name|setStyleName
+argument_list|(
+name|R
+operator|.
+name|css
+argument_list|()
+operator|.
+name|nohover
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|sb
 operator|.
@@ -3987,6 +4003,17 @@ name|sb
 operator|.
 name|openTr
 argument_list|()
+operator|.
+name|setStyleName
+argument_list|(
+name|R
+operator|.
+name|css
+argument_list|()
+operator|.
+name|nohover
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|sb
 operator|.
