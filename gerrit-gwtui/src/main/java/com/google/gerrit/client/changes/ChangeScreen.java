@@ -2700,6 +2700,11 @@ condition|(
 name|pc
 operator|!=
 literal|null
+operator|&&
+name|pc
+operator|.
+name|has_change_number
+argument_list|()
 condition|)
 block|{
 name|ChangeInfo
@@ -2837,6 +2842,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|c
+operator|.
+name|has_change_number
+argument_list|()
+operator|&&
 name|c
 operator|.
 name|commit
