@@ -239,7 +239,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|checkName (String name)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|checkName
@@ -248,6 +248,26 @@ name|String
 name|name
 parameter_list|)
 block|{
+if|if
+condition|(
+name|name
+operator|==
+literal|null
+operator|||
+name|name
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Empty label name"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 literal|"SUBM"
@@ -300,6 +320,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
+name|i
+operator|==
+literal|0
+operator|&&
+name|c
+operator|==
+literal|'-'
+operator|)
+operator|||
 operator|!
 operator|(
 operator|(
