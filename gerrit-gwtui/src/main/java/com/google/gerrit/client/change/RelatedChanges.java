@@ -2223,6 +2223,7 @@ literal|null
 return|;
 block|}
 DECL|method|has_change_number ()
+specifier|public
 specifier|final
 specifier|native
 name|boolean
