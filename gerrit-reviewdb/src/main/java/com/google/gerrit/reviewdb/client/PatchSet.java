@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|REFS_CHANGES
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -115,15 +133,6 @@ specifier|final
 class|class
 name|PatchSet
 block|{
-DECL|field|REFS_CHANGES
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|REFS_CHANGES
-init|=
-literal|"refs/changes/"
-decl_stmt|;
 comment|/** Is the reference name a change reference? */
 DECL|method|isRef (final String name)
 specifier|public

@@ -148,6 +148,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|config
@@ -599,7 +615,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages a cache of compiled Prolog rules.  *<p>  * Rules are loaded from the {@code site_path/cache/rules/rules-SHA1.jar}, where  * {@code SHA1} is the SHA1 of the Prolog {@code rules.pl} in a project's  * {@link GitRepositoryManager#REF_CONFIG} branch.  */
+comment|/**  * Manages a cache of compiled Prolog rules.  *<p>  * Rules are loaded from the {@code site_path/cache/rules/rules-SHA1.jar}, where  * {@code SHA1} is the SHA1 of the Prolog {@code rules.pl} in a project's  * {@link RefNames#REFS_CONFIG} branch.  */
 end_comment
 
 begin_class

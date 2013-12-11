@@ -296,6 +296,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -345,22 +361,6 @@ operator|.
 name|Mergeable
 operator|.
 name|MergeableInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|GitRepositoryManager
 import|;
 end_import
 
@@ -979,9 +979,9 @@ name|ref
 operator|.
 name|equals
 argument_list|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 argument_list|)
 condition|)
 block|{
@@ -1016,9 +1016,9 @@ name|ref
 operator|.
 name|equals
 argument_list|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 argument_list|)
 condition|)
 block|{
@@ -1108,9 +1108,9 @@ argument_list|()
 operator|+
 literal|" on update of "
 operator|+
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 decl_stmt|;
 name|log
 operator|.
@@ -1160,9 +1160,9 @@ argument_list|()
 operator|+
 literal|" on update of "
 operator|+
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 decl_stmt|;
 name|log
 operator|.

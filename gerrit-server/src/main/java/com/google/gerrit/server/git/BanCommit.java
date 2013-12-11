@@ -74,13 +74,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_REJECT_COMMITS
+name|REFS_REJECT_COMMITS
 import|;
 end_import
 
@@ -692,7 +692,7 @@ name|commitNewNotes
 argument_list|(
 name|banCommitNotes
 argument_list|,
-name|REF_REJECT_COMMITS
+name|REFS_REJECT_COMMITS
 argument_list|,
 name|createPersonIdent
 argument_list|()

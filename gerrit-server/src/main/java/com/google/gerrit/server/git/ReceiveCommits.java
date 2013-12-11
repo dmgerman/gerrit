@@ -74,6 +74,24 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+operator|.
+name|REFS_CHANGES
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|git
@@ -733,6 +751,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
 import|;
 end_import
 
@@ -2055,7 +2089,11 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^refs/changes/(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/new)?$"
+literal|"^"
+operator|+
+name|REFS_CHANGES
+operator|+
+literal|"(?:[0-9][0-9]/)?([1-9][0-9]*)(?:/new)?$"
 argument_list|)
 decl_stmt|;
 DECL|field|CHANGE_ID
@@ -2096,9 +2134,9 @@ literal|"Configuration changes can only be pushed by project owners\n"
 operator|+
 literal|"who also have 'Push' rights on "
 operator|+
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 argument_list|)
 block|,
 DECL|enumConstant|UPDATE
@@ -2120,7 +2158,11 @@ block|,
 DECL|enumConstant|DELETE_CHANGES
 name|DELETE_CHANGES
 argument_list|(
-literal|"Cannot delete from 'refs/changes'"
+literal|"Cannot delete from '"
+operator|+
+name|REFS_CHANGES
+operator|+
+literal|"'"
 argument_list|)
 block|,
 DECL|enumConstant|CODE_REVIEW
@@ -3401,7 +3443,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-literal|"refs/changes/"
+name|REFS_CHANGES
 argument_list|)
 operator|&&
 operator|!
@@ -3409,7 +3451,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
 name|REFS_CACHE_AUTOMERGE
 argument_list|)
@@ -6173,9 +6215,9 @@ else|else
 block|{
 if|if
 condition|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 operator|.
 name|equals
 argument_list|(
@@ -6194,9 +6236,9 @@ name|Error
 operator|.
 name|CONFIG_UPDATE
 argument_list|,
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
 block|}
@@ -6353,7 +6395,7 @@ argument_list|()
 operator|.
 name|startsWith
 argument_list|(
-literal|"refs/changes/"
+name|REFS_CHANGES
 argument_list|)
 condition|)
 block|{
@@ -6400,9 +6442,9 @@ else|else
 block|{
 if|if
 condition|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 operator|.
 name|equals
 argument_list|(
@@ -7952,9 +7994,9 @@ name|repo
 operator|.
 name|getRef
 argument_list|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_REJECT_COMMITS
+name|REFS_REJECT_COMMITS
 argument_list|)
 decl_stmt|;
 if|if
@@ -8018,9 +8060,9 @@ name|IOException
 argument_list|(
 literal|"Cannot load "
 operator|+
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_REJECT_COMMITS
+name|REFS_REJECT_COMMITS
 argument_list|,
 name|badMap
 argument_list|)
@@ -9165,7 +9207,7 @@ argument_list|()
 operator|.
 name|startsWith
 argument_list|(
-literal|"refs/changes/"
+name|REFS_CHANGES
 argument_list|)
 condition|)
 block|{
@@ -13020,9 +13062,9 @@ name|rejectCommits
 argument_list|)
 operator|&&
 operator|!
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 operator|.
 name|equals
 argument_list|(
@@ -14268,7 +14310,7 @@ argument_list|()
 operator|.
 name|getRefs
 argument_list|(
-literal|"refs/changes/"
+name|REFS_CHANGES
 argument_list|)
 operator|.
 name|values
@@ -14960,9 +15002,9 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 argument_list|)
 return|;
 block|}

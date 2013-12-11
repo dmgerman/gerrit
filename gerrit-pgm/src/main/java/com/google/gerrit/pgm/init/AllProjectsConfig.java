@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|config
+name|client
 operator|.
-name|SitePaths
+name|RefNames
 import|;
 end_import
 
@@ -92,9 +92,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|config
 operator|.
-name|GitRepositoryManager
+name|SitePaths
 import|;
 end_import
 
@@ -473,9 +473,9 @@ name|getRefName
 parameter_list|()
 block|{
 return|return
-name|GitRepositoryManager
+name|RefNames
 operator|.
-name|REF_CONFIG
+name|REFS_CONFIG
 return|;
 block|}
 DECL|method|load ()

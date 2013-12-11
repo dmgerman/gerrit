@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|GitRepositoryManager
+name|RefNames
 operator|.
 name|REFS_DASHBOARDS
 import|;
