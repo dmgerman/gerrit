@@ -998,14 +998,24 @@ name|String
 name|publishCommentsScreen
 parameter_list|()
 function_decl|;
-DECL|method|relatedChangesTabPanel ()
+DECL|method|relatedChangesGitweb ()
 name|String
-name|relatedChangesTabPanel
+name|relatedChangesGitweb
+parameter_list|()
+function_decl|;
+DECL|method|relatedChangesNotCurrent ()
+name|String
+name|relatedChangesNotCurrent
 parameter_list|()
 function_decl|;
 DECL|method|relatedChangesSubject ()
 name|String
 name|relatedChangesSubject
+parameter_list|()
+function_decl|;
+DECL|method|relatedChangesTabPanel ()
+name|String
+name|relatedChangesTabPanel
 parameter_list|()
 function_decl|;
 DECL|method|registerScreenExplain ()

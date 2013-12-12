@@ -2239,6 +2239,14 @@ name|has_revision_number
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('_revision_number') }-*/
 function_decl|;
+DECL|method|has_current_revision_number ()
+specifier|final
+specifier|native
+name|boolean
+name|has_current_revision_number
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('_current_revision_number') }-*/
+function_decl|;
 DECL|method|_change_number ()
 specifier|final
 specifier|native
@@ -2254,6 +2262,14 @@ name|int
 name|_revision_number
 parameter_list|()
 comment|/*-{ return this._revision_number }-*/
+function_decl|;
+DECL|method|_current_revision_number ()
+specifier|final
+specifier|native
+name|int
+name|_current_revision_number
+parameter_list|()
+comment|/*-{ return this._current_revision_number }-*/
 function_decl|;
 DECL|method|set_change_number (int n)
 specifier|final
@@ -2276,6 +2292,17 @@ name|int
 name|n
 parameter_list|)
 comment|/*-{ this._revision_number=n; }-*/
+function_decl|;
+DECL|method|set_current_revision_number (int n)
+specifier|final
+specifier|native
+name|void
+name|set_current_revision_number
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+comment|/*-{ this._current_revision_number=n; }-*/
 function_decl|;
 DECL|method|ChangeAndCommit ()
 specifier|protected
