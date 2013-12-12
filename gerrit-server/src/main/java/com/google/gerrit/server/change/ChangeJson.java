@@ -6986,6 +6986,7 @@ name|tz
 decl_stmt|;
 block|}
 DECL|class|CommitInfo
+specifier|public
 specifier|static
 class|class
 name|CommitInfo
