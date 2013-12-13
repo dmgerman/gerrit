@@ -1482,11 +1482,6 @@ specifier|private
 name|boolean
 name|openReplyBox
 decl_stmt|;
-DECL|field|focusSubmit
-specifier|private
-name|boolean
-name|focusSubmit
-decl_stmt|;
 DECL|field|loaded
 specifier|private
 name|boolean
@@ -1721,7 +1716,7 @@ specifier|private
 name|DownloadAction
 name|downloadAction
 decl_stmt|;
-DECL|method|ChangeScreen2 (Change.Id changeId, String base, String revision, boolean openReplyBox, boolean focusSubmit)
+DECL|method|ChangeScreen2 (Change.Id changeId, String base, String revision, boolean openReplyBox)
 specifier|public
 name|ChangeScreen2
 parameter_list|(
@@ -1738,9 +1733,6 @@ name|revision
 parameter_list|,
 name|boolean
 name|openReplyBox
-parameter_list|,
-name|boolean
-name|focusSubmit
 parameter_list|)
 block|{
 name|this
@@ -1772,12 +1764,6 @@ operator|.
 name|openReplyBox
 operator|=
 name|openReplyBox
-expr_stmt|;
-name|this
-operator|.
-name|focusSubmit
-operator|=
-name|focusSubmit
 expr_stmt|;
 name|add
 argument_list|(
@@ -3177,27 +3163,6 @@ condition|)
 block|{
 name|onReply
 argument_list|()
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|focusSubmit
-operator|&&
-name|actions
-operator|.
-name|isSubmitEnabled
-argument_list|()
-condition|)
-block|{
-name|actions
-operator|.
-name|submit
-operator|.
-name|setFocus
-argument_list|(
-literal|true
-argument_list|)
 expr_stmt|;
 block|}
 else|else

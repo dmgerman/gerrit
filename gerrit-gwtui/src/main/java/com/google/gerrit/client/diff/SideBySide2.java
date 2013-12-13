@@ -9583,8 +9583,6 @@ argument_list|,
 name|rev
 argument_list|,
 name|openReplyBox
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
