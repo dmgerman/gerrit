@@ -358,7 +358,7 @@ name|popup
 operator|.
 name|setPopupPosition
 argument_list|(
-literal|390
+literal|300
 argument_list|,
 literal|120
 argument_list|)
