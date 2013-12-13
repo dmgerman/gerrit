@@ -3196,7 +3196,6 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO(dborowitz):> and< are broken at head.
 name|assertResultEquals
 argument_list|(
 name|change
@@ -3207,7 +3206,16 @@ literal|"label:Code-Review>=0"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertResultEquals(change, queryOne("label:Code-Review>0"));
+name|assertResultEquals
+argument_list|(
+name|change
+argument_list|,
+name|queryOne
+argument_list|(
+literal|"label:Code-Review>0"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertResultEquals
 argument_list|(
 name|change
@@ -3218,7 +3226,17 @@ literal|"label:Code-Review>=1"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertTrue(query("label:Code-Review>1").isEmpty());
+name|assertTrue
+argument_list|(
+name|query
+argument_list|(
+literal|"label:Code-Review>1"
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|query
@@ -3240,7 +3258,16 @@ literal|"label: Code-Review<=2"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertResultEquals(change, queryOne("label: Code-Review<2"));
+name|assertResultEquals
+argument_list|(
+name|change
+argument_list|,
+name|queryOne
+argument_list|(
+literal|"label: Code-Review<2"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertResultEquals
 argument_list|(
 name|change
@@ -3251,12 +3278,22 @@ literal|"label: Code-Review<=1"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertTrue(query("label: Code-Review<1").isEmpty());
 name|assertTrue
 argument_list|(
 name|query
 argument_list|(
-literal|"label: Code-Review<=0"
+literal|"label:Code-Review<1"
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|query
+argument_list|(
+literal|"label:Code-Review<=0"
 argument_list|)
 operator|.
 name|isEmpty
