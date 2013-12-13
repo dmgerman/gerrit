@@ -997,7 +997,13 @@ literal|"lucene"
 argument_list|,
 literal|"testVersion"
 argument_list|,
-literal|4
+name|ChangeSchemas
+operator|.
+name|getLatest
+argument_list|()
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
