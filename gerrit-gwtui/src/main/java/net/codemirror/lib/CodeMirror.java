@@ -843,6 +843,18 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|setSelection (LineCharacter lineCh)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setSelection
+parameter_list|(
+name|LineCharacter
+name|lineCh
+parameter_list|)
+comment|/*-{     this.setSelection(lineCh);   }-*/
+function_decl|;
 DECL|method|setCursor (LineCharacter lineCh)
 specifier|public
 specifier|final
