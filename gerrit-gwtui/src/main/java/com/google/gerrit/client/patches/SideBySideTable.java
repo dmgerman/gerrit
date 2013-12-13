@@ -372,6 +372,22 @@ name|user
 operator|.
 name|client
 operator|.
+name|Event
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
 name|ui
 operator|.
 name|Anchor
@@ -739,11 +755,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onCellSingleClick (int row, int column)
+DECL|method|onCellSingleClick (Event event, int row, int column)
 specifier|protected
 name|void
 name|onCellSingleClick
 parameter_list|(
+name|Event
+name|event
+parameter_list|,
 name|int
 name|row
 parameter_list|,
@@ -755,6 +774,8 @@ name|super
 operator|.
 name|onCellSingleClick
 argument_list|(
+name|event
+argument_list|,
 name|row
 argument_list|,
 name|column

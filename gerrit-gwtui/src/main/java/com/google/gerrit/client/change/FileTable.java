@@ -990,6 +990,11 @@ operator|.
 name|preventDefault
 argument_list|()
 expr_stmt|;
+name|e
+operator|.
+name|stopPropagation
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2131,11 +2136,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|onCellSingleClick (int row, int column)
+DECL|method|onCellSingleClick (Event event, int row, int column)
 specifier|protected
 name|void
 name|onCellSingleClick
 parameter_list|(
+name|Event
+name|event
+parameter_list|,
 name|int
 name|row
 parameter_list|,
@@ -2148,6 +2156,13 @@ condition|(
 name|column
 operator|==
 name|C_PATH
+operator|&&
+name|link
+operator|.
+name|handleAsClick
+argument_list|(
+name|event
+argument_list|)
 condition|)
 block|{
 name|onOpenRow
@@ -2162,6 +2177,8 @@ name|super
 operator|.
 name|onCellSingleClick
 argument_list|(
+name|event
+argument_list|,
 name|row
 argument_list|,
 name|column

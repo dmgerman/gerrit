@@ -499,6 +499,8 @@ condition|)
 block|{
 name|onCellSingleClick
 argument_list|(
+name|event
+argument_list|,
 name|rowOf
 argument_list|(
 name|td
@@ -983,11 +985,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Invoked when the user clicks on a table cell. */
-DECL|method|onCellSingleClick (int row, int column)
+DECL|method|onCellSingleClick (Event event, int row, int column)
 specifier|protected
 name|void
 name|onCellSingleClick
 parameter_list|(
+name|Event
+name|event
+parameter_list|,
 name|int
 name|row
 parameter_list|,
