@@ -650,6 +650,21 @@ name|mode
 parameter_list|)
 comment|/*-{     return this.heightAtLine(line, mode);   }-*/
 function_decl|;
+DECL|method|charCoords (LineCharacter pos, String mode)
+specifier|public
+specifier|final
+specifier|native
+name|Rect
+name|charCoords
+parameter_list|(
+name|LineCharacter
+name|pos
+parameter_list|,
+name|String
+name|mode
+parameter_list|)
+comment|/*-{     return this.charCoords(pos, mode);   }-*/
+function_decl|;
 DECL|method|getDoc ()
 specifier|public
 specifier|final
@@ -798,6 +813,21 @@ name|handler
 parameter_list|)
 comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;Lcom/google/gwt/dom/client/NativeEvent;)(cm, l, g, e);     }));   }-*/
 function_decl|;
+DECL|method|on (String event, BeforeSelectionChangeHandler handler)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|BeforeSelectionChangeHandler
+name|handler
+parameter_list|)
+comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/LineCharacter;Lnet/codemirror/lib/LineCharacter;)(cm,e.anchor,e.head);     }));   }-*/
+function_decl|;
 DECL|method|getCursor ()
 specifier|public
 specifier|final
@@ -843,7 +873,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setSelection (LineCharacter lineCh)
+DECL|method|setSelection (LineCharacter anchor)
 specifier|public
 specifier|final
 specifier|native
@@ -851,9 +881,24 @@ name|void
 name|setSelection
 parameter_list|(
 name|LineCharacter
-name|lineCh
+name|anchor
 parameter_list|)
-comment|/*-{     this.setSelection(lineCh);   }-*/
+comment|/*-{     this.setSelection(anchor);   }-*/
+function_decl|;
+DECL|method|setSelection (LineCharacter anchor, LineCharacter head)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setSelection
+parameter_list|(
+name|LineCharacter
+name|anchor
+parameter_list|,
+name|LineCharacter
+name|head
+parameter_list|)
+comment|/*-{     this.setSelection(anchor, head);   }-*/
 function_decl|;
 DECL|method|setCursor (LineCharacter lineCh)
 specifier|public
@@ -1263,6 +1308,27 @@ name|gutter
 parameter_list|,
 name|NativeEvent
 name|clickEvent
+parameter_list|)
+function_decl|;
+block|}
+DECL|interface|BeforeSelectionChangeHandler
+specifier|public
+interface|interface
+name|BeforeSelectionChangeHandler
+block|{
+DECL|method|handle (CodeMirror instance, LineCharacter anchor, LineCharacter head)
+specifier|public
+name|void
+name|handle
+parameter_list|(
+name|CodeMirror
+name|instance
+parameter_list|,
+name|LineCharacter
+name|anchor
+parameter_list|,
+name|LineCharacter
+name|head
 parameter_list|)
 function_decl|;
 block|}
