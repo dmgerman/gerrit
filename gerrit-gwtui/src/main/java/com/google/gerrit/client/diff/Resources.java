@@ -114,6 +114,22 @@ name|CssResource
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|ImageResource
+import|;
+end_import
+
 begin_comment
 comment|/** Resources used by diff. */
 end_comment
@@ -150,6 +166,46 @@ name|Style
 name|style
 parameter_list|()
 function_decl|;
+DECL|method|go_prev ()
+annotation|@
+name|Source
+argument_list|(
+literal|"go-prev.png"
+argument_list|)
+name|ImageResource
+name|go_prev
+parameter_list|()
+function_decl|;
+DECL|method|go_next ()
+annotation|@
+name|Source
+argument_list|(
+literal|"go-next.png"
+argument_list|)
+name|ImageResource
+name|go_next
+parameter_list|()
+function_decl|;
+DECL|method|go_up ()
+annotation|@
+name|Source
+argument_list|(
+literal|"go-up.png"
+argument_list|)
+name|ImageResource
+name|go_up
+parameter_list|()
+function_decl|;
+DECL|method|gear ()
+annotation|@
+name|Source
+argument_list|(
+literal|"gear.png"
+argument_list|)
+name|ImageResource
+name|gear
+parameter_list|()
+function_decl|;
 DECL|interface|Style
 interface|interface
 name|Style
@@ -179,6 +235,21 @@ function_decl|;
 DECL|method|date ()
 name|String
 name|date
+parameter_list|()
+function_decl|;
+DECL|method|go_prev ()
+name|String
+name|go_prev
+parameter_list|()
+function_decl|;
+DECL|method|go_next ()
+name|String
+name|go_next
+parameter_list|()
+function_decl|;
+DECL|method|go_up ()
+name|String
+name|go_up
 parameter_list|()
 function_decl|;
 block|}
