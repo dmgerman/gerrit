@@ -260,6 +260,16 @@ name|isExpandAllComments
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|manualReview
+argument_list|(
+name|in
+operator|.
+name|isManualReview
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -354,6 +364,14 @@ operator|.
 name|setExpandAllComments
 argument_list|(
 name|expandAllComments
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setManualReview
+argument_list|(
+name|manualReview
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -497,6 +515,18 @@ name|e
 parameter_list|)
 comment|/*-{ this.expand_all_comments = e }-*/
 function_decl|;
+DECL|method|manualReview (boolean r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|manualReview
+parameter_list|(
+name|boolean
+name|r
+parameter_list|)
+comment|/*-{ this.manual_review = r }-*/
+function_decl|;
 DECL|method|ignoreWhitespace ()
 specifier|public
 specifier|final
@@ -631,6 +661,28 @@ name|expandAllComments
 parameter_list|()
 comment|/*-{ return this.expand_all_comments || false }-*/
 function_decl|;
+DECL|method|manualReview ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|manualReview
+parameter_list|()
+comment|/*-{ return this.manual_review || false }-*/
+function_decl|;
+DECL|method|autoReview ()
+specifier|public
+specifier|final
+name|boolean
+name|autoReview
+parameter_list|()
+block|{
+return|return
+operator|!
+name|manualReview
+argument_list|()
+return|;
+block|}
 DECL|method|get (String n, int d)
 specifier|private
 specifier|final
