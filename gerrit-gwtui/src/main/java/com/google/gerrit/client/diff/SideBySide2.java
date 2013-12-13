@@ -8903,6 +8903,16 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|cm
+operator|.
+name|setSelection
+argument_list|(
+name|cm
+operator|.
+name|getCursor
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
