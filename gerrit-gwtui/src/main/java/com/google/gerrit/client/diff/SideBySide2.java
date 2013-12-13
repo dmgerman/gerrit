@@ -2125,7 +2125,7 @@ argument_list|)
 expr_stmt|;
 name|header
 operator|.
-name|set
+name|setChangeInfo
 argument_list|(
 name|info
 argument_list|)
@@ -3945,6 +3945,13 @@ argument_list|,
 name|cmB
 argument_list|,
 name|mapper
+argument_list|)
+expr_stmt|;
+name|header
+operator|.
+name|init
+argument_list|(
+name|prefsAction
 argument_list|)
 expr_stmt|;
 name|resizeHandler

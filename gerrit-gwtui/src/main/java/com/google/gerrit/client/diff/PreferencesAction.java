@@ -156,6 +156,24 @@ name|PositionCallback
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
+name|Widget
+import|;
+end_import
+
 begin_class
 DECL|class|PreferencesAction
 class|class
@@ -182,6 +200,11 @@ DECL|field|current
 specifier|private
 name|PreferencesBox
 name|current
+decl_stmt|;
+DECL|field|partner
+specifier|private
+name|Widget
+name|partner
 decl_stmt|;
 DECL|method|PreferencesAction (SideBySide2 view, DiffPreferences prefs)
 name|PreferencesAction
@@ -287,6 +310,16 @@ operator|.
 name|add
 argument_list|(
 name|current
+argument_list|)
+expr_stmt|;
+name|popup
+operator|.
+name|addAutoHidePartner
+argument_list|(
+name|partner
+operator|.
+name|getElement
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|popup
@@ -401,6 +434,19 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+DECL|method|setPartner (Widget w)
+name|void
+name|setPartner
+parameter_list|(
+name|Widget
+name|w
+parameter_list|)
+block|{
+name|partner
+operator|=
+name|w
+expr_stmt|;
 block|}
 block|}
 end_class
