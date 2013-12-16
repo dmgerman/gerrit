@@ -512,7 +512,7 @@ literal|"/"
 operator|+
 name|ps
 operator|.
-name|get
+name|getId
 argument_list|()
 return|;
 block|}

@@ -4470,7 +4470,7 @@ argument_list|()
 decl_stmt|;
 name|files
 operator|.
-name|setRevisions
+name|set
 argument_list|(
 name|b
 operator|!=
@@ -4503,6 +4503,12 @@ operator|.
 name|_number
 argument_list|()
 argument_list|)
+argument_list|,
+name|style
+argument_list|,
+name|editMessage
+argument_list|,
+name|reply
 argument_list|)
 expr_stmt|;
 name|files
@@ -4865,7 +4871,7 @@ parameter_list|)
 block|{
 name|files
 operator|.
-name|setRevisions
+name|set
 argument_list|(
 name|base
 operator|!=
@@ -4898,6 +4904,12 @@ operator|.
 name|_number
 argument_list|()
 argument_list|)
+argument_list|,
+name|style
+argument_list|,
+name|editMessage
+argument_list|,
+name|reply
 argument_list|)
 expr_stmt|;
 name|files

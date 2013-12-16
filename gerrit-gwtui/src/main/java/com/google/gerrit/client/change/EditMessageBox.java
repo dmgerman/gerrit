@@ -731,7 +731,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|hide ()
-specifier|private
+specifier|protected
 name|void
 name|hide
 parameter_list|()
