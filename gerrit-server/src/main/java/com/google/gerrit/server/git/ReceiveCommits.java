@@ -918,7 +918,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeResource
+name|ChangesCollection
 import|;
 end_import
 
@@ -2621,6 +2621,12 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
+DECL|field|changes
+specifier|private
+specifier|final
+name|ChangesCollection
+name|changes
+decl_stmt|;
 DECL|field|changeInserterFactory
 specifier|private
 specifier|final
@@ -2917,7 +2923,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeabilityChecker mergeabilityChecker, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeabilityChecker mergeabilityChecker, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final MergeUtil.Factory mergeUtilFactory)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -2994,6 +3000,10 @@ parameter_list|,
 specifier|final
 name|ChangeCache
 name|changeCache
+parameter_list|,
+specifier|final
+name|ChangesCollection
+name|changes
 parameter_list|,
 specifier|final
 name|ChangeInserter
@@ -3196,6 +3206,12 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
+expr_stmt|;
+name|this
+operator|.
+name|changes
+operator|=
+name|changes
 expr_stmt|;
 name|this
 operator|.
@@ -10013,8 +10029,9 @@ init|=
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|changeCtl
 argument_list|)

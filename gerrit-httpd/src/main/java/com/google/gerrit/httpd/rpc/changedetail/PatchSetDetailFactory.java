@@ -390,7 +390,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeResource
+name|ChangesCollection
 import|;
 end_import
 
@@ -783,6 +783,12 @@ operator|.
 name|Factory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|changes
+specifier|private
+specifier|final
+name|ChangesCollection
+name|changes
+decl_stmt|;
 DECL|field|revisions
 specifier|private
 specifier|final
@@ -843,7 +849,7 @@ name|patchSet
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetDetailFactory (final PatchSetInfoFactory psif, final ReviewDb db, final PatchListCache patchListCache, final ChangeControl.Factory changeControlFactory, final Revisions revisions, @Assisted(R) @Nullable final PatchSet.Id psIdBase, @Assisted(R) final PatchSet.Id psIdNew, @Assisted @Nullable final AccountDiffPreference diffPrefs)
+DECL|method|PatchSetDetailFactory (final PatchSetInfoFactory psif, final ReviewDb db, final PatchListCache patchListCache, final ChangeControl.Factory changeControlFactory, final ChangesCollection changes, final Revisions revisions, @Assisted(R) @Nullable final PatchSet.Id psIdBase, @Assisted(R) final PatchSet.Id psIdNew, @Assisted @Nullable final AccountDiffPreference diffPrefs)
 name|PatchSetDetailFactory
 parameter_list|(
 specifier|final
@@ -863,6 +869,10 @@ name|ChangeControl
 operator|.
 name|Factory
 name|changeControlFactory
+parameter_list|,
+specifier|final
+name|ChangesCollection
+name|changes
 parameter_list|,
 specifier|final
 name|Revisions
@@ -924,6 +934,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|changes
+operator|=
+name|changes
 expr_stmt|;
 name|this
 operator|.
@@ -1429,8 +1445,9 @@ argument_list|,
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|control
 argument_list|)

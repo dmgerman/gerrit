@@ -480,7 +480,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeResource
+name|ChangesCollection
 import|;
 end_import
 
@@ -886,6 +886,13 @@ name|ChangeInserter
 operator|.
 name|Factory
 name|changeFactory
+decl_stmt|;
+DECL|field|changes
+annotation|@
+name|Inject
+specifier|protected
+name|ChangesCollection
+name|changes
 decl_stmt|;
 DECL|field|projectFactory
 annotation|@
@@ -3063,8 +3070,9 @@ argument_list|(
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|ctl
 argument_list|)
@@ -4049,8 +4057,9 @@ argument_list|(
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|ctl1
 argument_list|)
@@ -4313,8 +4322,9 @@ argument_list|(
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|ctl1
 argument_list|)
@@ -5094,8 +5104,9 @@ argument_list|(
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|ctl
 argument_list|)

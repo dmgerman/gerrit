@@ -817,6 +817,12 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|changes
+specifier|private
+specifier|final
+name|ChangesCollection
+name|changes
+decl_stmt|;
 DECL|field|indexer
 specifier|private
 specifier|final
@@ -903,7 +909,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview (Provider<ReviewDb> db, ChangeIndexer indexer, AccountsCollection accounts, EmailReviewComments.Factory email, ChangeHooks hooks)
+DECL|method|PostReview (Provider<ReviewDb> db, ChangesCollection changes, ChangeIndexer indexer, AccountsCollection accounts, EmailReviewComments.Factory email, ChangeHooks hooks)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -911,6 +917,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|ChangesCollection
+name|changes
 parameter_list|,
 name|ChangeIndexer
 name|indexer
@@ -932,6 +941,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|changes
+operator|=
+name|changes
 expr_stmt|;
 name|this
 operator|.
@@ -1605,8 +1620,9 @@ return|return
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|target
 argument_list|)
