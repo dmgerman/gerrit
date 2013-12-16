@@ -109,6 +109,11 @@ name|String
 name|reviewedFileTitle
 parameter_list|()
 function_decl|;
+DECL|method|editFileInline ()
+name|String
+name|editFileInline
+parameter_list|()
+function_decl|;
 DECL|method|openLastFile ()
 name|String
 name|openLastFile
