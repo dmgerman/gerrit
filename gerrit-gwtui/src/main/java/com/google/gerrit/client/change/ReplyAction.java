@@ -483,6 +483,24 @@ name|create
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getMessage ()
+name|String
+name|getMessage
+parameter_list|()
+block|{
+return|return
+name|replyBox
+operator|!=
+literal|null
+condition|?
+name|replyBox
+operator|.
+name|getMessage
+argument_list|()
+else|:
+literal|null
+return|;
+block|}
 DECL|method|hide ()
 name|void
 name|hide

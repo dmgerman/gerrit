@@ -1561,12 +1561,7 @@ name|in
 operator|.
 name|message
 argument_list|(
-name|message
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|trim
+name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1648,6 +1643,21 @@ expr_stmt|;
 name|hide
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|getMessage ()
+name|String
+name|getMessage
+parameter_list|()
+block|{
+return|return
+name|message
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+return|;
 block|}
 annotation|@
 name|UiHandler

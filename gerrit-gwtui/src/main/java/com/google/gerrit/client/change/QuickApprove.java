@@ -324,6 +324,11 @@ specifier|private
 name|ReviewInput
 name|input
 decl_stmt|;
+DECL|field|replyAction
+specifier|private
+name|ReplyAction
+name|replyAction
+decl_stmt|;
 DECL|method|QuickApprove ()
 name|QuickApprove
 parameter_list|()
@@ -334,7 +339,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|set (ChangeInfo info, String commit)
+DECL|method|set (ChangeInfo info, String commit, ReplyAction action)
 name|void
 name|set
 parameter_list|(
@@ -343,6 +348,9 @@ name|info
 parameter_list|,
 name|String
 name|commit
+parameter_list|,
+name|ReplyAction
+name|action
 parameter_list|)
 block|{
 if|if
@@ -593,6 +601,10 @@ argument_list|,
 name|qValue
 argument_list|)
 expr_stmt|;
+name|replyAction
+operator|=
+name|action
+expr_stmt|;
 name|setText
 argument_list|(
 name|qName
@@ -651,6 +663,24 @@ name|ClickEvent
 name|event
 parameter_list|)
 block|{
+if|if
+condition|(
+name|replyAction
+operator|!=
+literal|null
+condition|)
+block|{
+name|input
+operator|.
+name|message
+argument_list|(
+name|replyAction
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|ChangeApi
 operator|.
 name|revision
