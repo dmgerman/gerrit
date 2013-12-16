@@ -183,6 +183,11 @@ name|String
 name|noChanges
 parameter_list|()
 function_decl|;
+DECL|method|indirectAncestor ()
+name|String
+name|indirectAncestor
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -1003,6 +1003,11 @@ name|String
 name|relatedChangesGitweb
 parameter_list|()
 function_decl|;
+DECL|method|relatedChangesIndirect ()
+name|String
+name|relatedChangesIndirect
+parameter_list|()
+function_decl|;
 DECL|method|relatedChangesNotCurrent ()
 name|String
 name|relatedChangesNotCurrent
