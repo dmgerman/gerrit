@@ -147,6 +147,20 @@ argument_list|)
 expr_stmt|;
 name|type
 operator|.
+name|setRootTree
+argument_list|(
+literal|"?p=${project}.git;a=tree;hb=${commit}"
+argument_list|)
+expr_stmt|;
+name|type
+operator|.
+name|setFile
+argument_list|(
+literal|"?p=${project}.git;hb=${commit};f=${file}"
+argument_list|)
+expr_stmt|;
+name|type
+operator|.
 name|setFileHistory
 argument_list|(
 literal|"?p=${project}.git;a=history;hb=${branch};f=${file}"
@@ -196,6 +210,20 @@ operator|.
 name|setBranch
 argument_list|(
 literal|"${project}.git/log/?h=${branch}"
+argument_list|)
+expr_stmt|;
+name|type
+operator|.
+name|setRootTree
+argument_list|(
+literal|"${project}.git/tree/?h=${commit}"
+argument_list|)
+expr_stmt|;
+name|type
+operator|.
+name|setFile
+argument_list|(
+literal|"${project}.git/tree/${file}?h=${commit}"
 argument_list|)
 expr_stmt|;
 name|type
@@ -283,6 +311,18 @@ specifier|private
 name|String
 name|branch
 decl_stmt|;
+comment|/** ParamertizedString for root tree view url. */
+DECL|field|rootTree
+specifier|private
+name|String
+name|rootTree
+decl_stmt|;
+comment|/** ParamertizedString for file view url. */
+DECL|field|file
+specifier|private
+name|String
+name|file
+decl_stmt|;
 comment|/** ParamertizedString for file history view url. */
 DECL|field|fileHistory
 specifier|private
@@ -357,6 +397,28 @@ parameter_list|()
 block|{
 return|return
 name|revision
+return|;
+block|}
+comment|/**    * Get the String for root tree view.    *    * @return The String for root tree view    */
+DECL|method|getRootTree ()
+specifier|public
+name|String
+name|getRootTree
+parameter_list|()
+block|{
+return|return
+name|rootTree
+return|;
+block|}
+comment|/**    * Get the String for file view.    *    * @return The String for file view    */
+DECL|method|getFile ()
+specifier|public
+name|String
+name|getFile
+parameter_list|()
+block|{
+return|return
+name|file
 return|;
 block|}
 comment|/**    * Get the String for file history view.    *    * @return The String for file history view    */
@@ -498,6 +560,66 @@ argument_list|()
 condition|)
 block|{
 name|revision
+operator|=
+name|pattern
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Set the pattern for root tree view.    *    * @param pattern The pattern for root tree view    */
+DECL|method|setRootTree (final String pattern)
+specifier|public
+name|void
+name|setRootTree
+parameter_list|(
+specifier|final
+name|String
+name|pattern
+parameter_list|)
+block|{
+if|if
+condition|(
+name|pattern
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|pattern
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|rootTree
+operator|=
+name|pattern
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Set the pattern for file view.    *    * @param pattern The pattern for file view    */
+DECL|method|setFile (final String pattern)
+specifier|public
+name|void
+name|setFile
+parameter_list|(
+specifier|final
+name|String
+name|pattern
+parameter_list|)
+block|{
+if|if
+condition|(
+name|pattern
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|pattern
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|file
 operator|=
 name|pattern
 expr_stmt|;
