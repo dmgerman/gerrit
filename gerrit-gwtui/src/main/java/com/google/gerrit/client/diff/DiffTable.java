@@ -371,6 +371,11 @@ name|String
 name|showTabs
 parameter_list|()
 function_decl|;
+DECL|method|showLineNumbers ()
+name|String
+name|showLineNumbers
+parameter_list|()
+function_decl|;
 DECL|method|padding ()
 name|String
 name|padding

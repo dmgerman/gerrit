@@ -252,6 +252,16 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|hideLineNumbers
+argument_list|(
+name|in
+operator|.
+name|isHideLineNumbers
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|expandAllComments
 argument_list|(
 name|in
@@ -356,6 +366,14 @@ operator|.
 name|setHideTopMenu
 argument_list|(
 name|hideTopMenu
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setHideLineNumbers
+argument_list|(
+name|hideLineNumbers
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -503,6 +521,18 @@ name|s
 parameter_list|)
 comment|/*-{ this.hide_top_menu = s }-*/
 function_decl|;
+DECL|method|hideLineNumbers (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|hideLineNumbers
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.hide_line_numbers = s }-*/
+function_decl|;
 DECL|method|expandAllComments (boolean e)
 specifier|public
 specifier|final
@@ -527,6 +557,23 @@ name|r
 parameter_list|)
 comment|/*-{ this.manual_review = r }-*/
 function_decl|;
+DECL|method|showLineNumbers (boolean s)
+specifier|public
+specifier|final
+name|void
+name|showLineNumbers
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+block|{
+name|hideLineNumbers
+argument_list|(
+operator|!
+name|s
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ignoreWhitespace ()
 specifier|public
 specifier|final
@@ -652,6 +699,15 @@ name|hideTopMenu
 parameter_list|()
 comment|/*-{ return this.hide_top_menu || false }-*/
 function_decl|;
+DECL|method|hideLineNumbers ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hideLineNumbers
+parameter_list|()
+comment|/*-{ return this.hide_line_numbers || false }-*/
+function_decl|;
 DECL|method|expandAllComments ()
 specifier|public
 specifier|final
@@ -670,6 +726,19 @@ name|manualReview
 parameter_list|()
 comment|/*-{ return this.manual_review || false }-*/
 function_decl|;
+DECL|method|showLineNumbers ()
+specifier|public
+specifier|final
+name|boolean
+name|showLineNumbers
+parameter_list|()
+block|{
+return|return
+operator|!
+name|hideLineNumbers
+argument_list|()
+return|;
+block|}
 DECL|method|autoReview ()
 specifier|public
 specifier|final

@@ -541,6 +541,18 @@ specifier|protected
 name|boolean
 name|hideTopMenu
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|17
+argument_list|)
+DECL|field|hideLineNumbers
+specifier|protected
+name|boolean
+name|hideLineNumbers
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -698,6 +710,14 @@ operator|=
 name|p
 operator|.
 name|hideTopMenu
+expr_stmt|;
+name|this
+operator|.
+name|hideLineNumbers
+operator|=
+name|p
+operator|.
+name|hideLineNumbers
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -1086,6 +1106,16 @@ operator|=
 name|manual
 expr_stmt|;
 block|}
+DECL|method|isHideTopMenu ()
+specifier|public
+name|boolean
+name|isHideTopMenu
+parameter_list|()
+block|{
+return|return
+name|hideTopMenu
+return|;
+block|}
 DECL|method|setHideTopMenu (boolean hide)
 specifier|public
 name|void
@@ -1100,15 +1130,29 @@ operator|=
 name|hide
 expr_stmt|;
 block|}
-DECL|method|isHideTopMenu ()
+DECL|method|isHideLineNumbers ()
 specifier|public
 name|boolean
-name|isHideTopMenu
+name|isHideLineNumbers
 parameter_list|()
 block|{
 return|return
-name|hideTopMenu
+name|hideLineNumbers
 return|;
+block|}
+DECL|method|setHideLineNumbers (boolean hide)
+specifier|public
+name|void
+name|setHideLineNumbers
+parameter_list|(
+name|boolean
+name|hide
+parameter_list|)
+block|{
+name|hideLineNumbers
+operator|=
+name|hide
+expr_stmt|;
 block|}
 block|}
 end_class
