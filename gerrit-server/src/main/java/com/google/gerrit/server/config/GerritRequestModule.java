@@ -166,22 +166,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
-operator|.
-name|RemoveReviewer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -368,15 +352,6 @@ expr_stmt|;
 comment|// Not really per-request, but dammit, I don't know where else to
 comment|// easily park this stuff.
 comment|//
-name|factory
-argument_list|(
-name|RemoveReviewer
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 name|factory
 argument_list|(
 name|SuggestParentCandidates
