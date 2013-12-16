@@ -125,6 +125,13 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|publish ()
+name|void
+name|publish
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|cherryPick (CherryPickInput in)
 name|ChangeApi
 name|cherryPick
