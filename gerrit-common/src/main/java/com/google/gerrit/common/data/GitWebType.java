@@ -299,31 +299,31 @@ specifier|private
 name|String
 name|revision
 decl_stmt|;
-comment|/** ParamertizedString for project view url. */
+comment|/** ParameterizedString for project view url. */
 DECL|field|project
 specifier|private
 name|String
 name|project
 decl_stmt|;
-comment|/** ParamertizedString for branch view url. */
+comment|/** ParameterizedString for branch view url. */
 DECL|field|branch
 specifier|private
 name|String
 name|branch
 decl_stmt|;
-comment|/** ParamertizedString for root tree view url. */
+comment|/** ParameterizedString for root tree view url. */
 DECL|field|rootTree
 specifier|private
 name|String
 name|rootTree
 decl_stmt|;
-comment|/** ParamertizedString for file view url. */
+comment|/** ParameterizedString for file view url. */
 DECL|field|file
 specifier|private
 name|String
 name|file
 decl_stmt|;
-comment|/** ParamertizedString for file history view url. */
+comment|/** ParameterizedString for file history view url. */
 DECL|field|fileHistory
 specifier|private
 name|String
