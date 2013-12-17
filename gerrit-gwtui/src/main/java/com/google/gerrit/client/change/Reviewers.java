@@ -754,11 +754,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|ccText
+DECL|field|reviewersText
 annotation|@
 name|UiField
 name|Element
-name|ccText
+name|reviewersText
 decl_stmt|;
 DECL|field|openForm
 annotation|@
@@ -796,10 +796,10 @@ operator|.
 name|Style
 name|style
 decl_stmt|;
-DECL|field|reviewersText
+DECL|field|ccText
 specifier|private
 name|Element
-name|reviewersText
+name|ccText
 decl_stmt|;
 DECL|field|reviewerSuggestOracle
 specifier|private
@@ -1018,7 +1018,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (ChangeScreen2.Style style, Element reviewersText)
+DECL|method|init (ChangeScreen2.Style style, Element ccText)
 name|void
 name|init
 parameter_list|(
@@ -1028,7 +1028,7 @@ name|Style
 name|style
 parameter_list|,
 name|Element
-name|reviewersText
+name|ccText
 parameter_list|)
 block|{
 name|this
@@ -1039,9 +1039,9 @@ name|style
 expr_stmt|;
 name|this
 operator|.
-name|reviewersText
+name|ccText
 operator|=
-name|reviewersText
+name|ccText
 expr_stmt|;
 block|}
 DECL|method|set (ChangeInfo info)

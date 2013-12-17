@@ -1517,11 +1517,11 @@ name|UiField
 name|Anchor
 name|permalink
 decl_stmt|;
-DECL|field|reviewersText
+DECL|field|ccText
 annotation|@
 name|UiField
 name|Element
-name|reviewersText
+name|ccText
 decl_stmt|;
 DECL|field|reviewers
 annotation|@
@@ -2027,7 +2027,7 @@ name|init
 argument_list|(
 name|style
 argument_list|,
-name|reviewersText
+name|ccText
 argument_list|)
 expr_stmt|;
 name|keysNavigation
