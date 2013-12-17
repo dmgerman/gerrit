@@ -765,11 +765,6 @@ name|String
 name|buttonPublishCommentsSend
 parameter_list|()
 function_decl|;
-DECL|method|buttonPublishSubmitSend ()
-name|String
-name|buttonPublishSubmitSend
-parameter_list|()
-function_decl|;
 DECL|method|buttonPublishCommentsCancel ()
 name|String
 name|buttonPublishCommentsCancel
