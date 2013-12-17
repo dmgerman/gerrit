@@ -1606,7 +1606,7 @@ name|append
 argument_list|(
 name|r
 operator|.
-name|_number
+name|id
 argument_list|()
 argument_list|)
 expr_stmt|;
