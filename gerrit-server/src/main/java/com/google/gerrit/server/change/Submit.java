@@ -1157,7 +1157,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Submit revision %d"
+literal|"Merge patch set %d into %s"
 argument_list|,
 name|resource
 operator|.
@@ -1165,6 +1165,17 @@ name|getPatchSet
 argument_list|()
 operator|.
 name|getPatchSetId
+argument_list|()
+argument_list|,
+name|resource
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|getShortName
 argument_list|()
 argument_list|)
 argument_list|)
