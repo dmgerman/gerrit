@@ -158,6 +158,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ApprovalsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -400,6 +414,12 @@ operator|.
 name|NameKey
 name|destBranch
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|protected
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|mergeUtil
 specifier|protected
 specifier|final
@@ -418,7 +438,7 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final MergeUtil mergeUtil, final ChangeIndexer indexer)
+DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final ApprovalsUtil approvalsUtil, final MergeUtil mergeUtil, final ChangeIndexer indexer)
 name|Arguments
 parameter_list|(
 specifier|final
@@ -463,6 +483,10 @@ name|Branch
 operator|.
 name|NameKey
 name|destBranch
+parameter_list|,
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 specifier|final
 name|MergeUtil
@@ -526,6 +550,12 @@ operator|.
 name|destBranch
 operator|=
 name|destBranch
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.

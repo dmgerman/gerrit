@@ -140,6 +140,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ApprovalsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritPersonIdent
 import|;
 end_import
@@ -490,6 +504,12 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|mergeUtilFactory
 specifier|private
 specifier|final
@@ -506,7 +526,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final PatchSetInfoFactory patchSetInfoFactory, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -547,6 +567,10 @@ parameter_list|,
 specifier|final
 name|ProjectCache
 name|projectCache
+parameter_list|,
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 specifier|final
 name|MergeUtil
@@ -594,6 +618,12 @@ operator|.
 name|projectCache
 operator|=
 name|projectCache
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -691,6 +721,8 @@ argument_list|,
 name|alreadyAccepted
 argument_list|,
 name|destBranch
+argument_list|,
+name|approvalsUtil
 argument_list|,
 name|mergeUtilFactory
 operator|.

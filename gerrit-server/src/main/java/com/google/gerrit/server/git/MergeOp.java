@@ -68,24 +68,6 @@ end_package
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|MergeUtil
-operator|.
-name|getSubmitter
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|util
@@ -491,6 +473,20 @@ operator|.
 name|server
 operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ApprovalsUtil
 import|;
 end_import
 
@@ -1334,6 +1330,12 @@ operator|.
 name|Factory
 name|mergeValidatorsFactory
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|destBranch
 specifier|private
 specifier|final
@@ -1481,7 +1483,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final LabelNormalizer fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeValidators.Factory mergeValidatorsFactory)
+DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ProjectCache pc, final LabelNormalizer fs, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeValidators.Factory mergeValidatorsFactory, final ApprovalsUtil approvalsUtil)
 name|MergeOp
 parameter_list|(
 specifier|final
@@ -1586,6 +1588,10 @@ name|MergeValidators
 operator|.
 name|Factory
 name|mergeValidatorsFactory
+parameter_list|,
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|)
 block|{
 name|repoManager
@@ -1689,6 +1695,12 @@ operator|.
 name|mergeValidatorsFactory
 operator|=
 name|mergeValidatorsFactory
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|destBranch
 operator|=
@@ -3991,10 +4003,11 @@ name|account
 init|=
 literal|null
 decl_stmt|;
-specifier|final
 name|PatchSetApproval
 name|submitter
 init|=
+name|approvalsUtil
+operator|.
 name|getSubmitter
 argument_list|(
 name|db
@@ -6087,6 +6100,8 @@ try|try
 block|{
 name|submitter
 operator|=
+name|approvalsUtil
+operator|.
 name|getSubmitter
 argument_list|(
 name|db

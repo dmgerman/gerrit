@@ -69,24 +69,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|MergeUtil
-operator|.
-name|getSubmitter
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -209,6 +191,20 @@ operator|.
 name|server
 operator|.
 name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ApprovalsUtil
 import|;
 end_import
 
@@ -540,6 +536,12 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|interface|Factory
 specifier|public
 interface|interface
@@ -553,7 +555,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|ProjectConfigValidator (AllProjectsName allProjectsName, ReviewDb db, ProjectCache projectCache, IdentifiedUser.GenericFactory iuf)
+DECL|method|ProjectConfigValidator (AllProjectsName allProjectsName, ReviewDb db, ProjectCache projectCache, IdentifiedUser.GenericFactory iuf, ApprovalsUtil approvalsUtil)
 specifier|public
 name|ProjectConfigValidator
 parameter_list|(
@@ -570,6 +572,9 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|iuf
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|)
 block|{
 name|this
@@ -595,6 +600,12 @@ operator|.
 name|identifiedUserFactory
 operator|=
 name|iuf
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 block|}
 annotation|@
@@ -762,10 +773,11 @@ name|newParent
 argument_list|)
 condition|)
 block|{
-specifier|final
 name|PatchSetApproval
 name|psa
 init|=
+name|approvalsUtil
+operator|.
 name|getSubmitter
 argument_list|(
 name|db
