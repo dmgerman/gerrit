@@ -278,8 +278,6 @@ name|server
 operator|.
 name|change
 operator|.
-name|PatchSetInserter
-operator|.
 name|ChangeKind
 import|;
 end_import
