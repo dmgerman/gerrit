@@ -1529,6 +1529,12 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
+DECL|field|changes
+specifier|private
+specifier|final
+name|ChangesCollection
+name|changes
+decl_stmt|;
 DECL|field|fileInfoJson
 specifier|private
 specifier|final
@@ -1563,7 +1569,7 @@ name|DownloadCommand
 argument_list|>
 name|downloadCommands
 decl_stmt|;
-DECL|field|changes
+DECL|field|changeViews
 specifier|private
 specifier|final
 name|DynamicMap
@@ -1573,7 +1579,7 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 argument_list|>
-name|changes
+name|changeViews
 decl_stmt|;
 DECL|field|revisions
 specifier|private
@@ -1631,7 +1637,7 @@ name|projectControls
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changes, Revisions revisions, PatchListCache patchListCache)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, PatchSetInfoFactory psi, ChangesCollection changes, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, PatchListCache patchListCache)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1665,6 +1671,9 @@ parameter_list|,
 name|PatchSetInfoFactory
 name|psi
 parameter_list|,
+name|ChangesCollection
+name|changes
+parameter_list|,
 name|FileInfoJson
 name|fileInfoJson
 parameter_list|,
@@ -1694,7 +1703,7 @@ argument_list|<
 name|ChangeResource
 argument_list|>
 argument_list|>
-name|changes
+name|changeViews
 parameter_list|,
 name|Revisions
 name|revisions
@@ -1747,6 +1756,12 @@ name|psi
 expr_stmt|;
 name|this
 operator|.
+name|changes
+operator|=
+name|changes
+expr_stmt|;
+name|this
+operator|.
 name|fileInfoJson
 operator|=
 name|fileInfoJson
@@ -1771,9 +1786,9 @@ name|downloadCommands
 expr_stmt|;
 name|this
 operator|.
-name|changes
+name|changeViews
 operator|=
-name|changes
+name|changeViews
 expr_stmt|;
 name|this
 operator|.
@@ -2852,10 +2867,11 @@ name|UiActions
 operator|.
 name|from
 argument_list|(
-name|changes
+name|changeViews
 argument_list|,
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|control
 argument_list|(
@@ -6180,8 +6196,9 @@ argument_list|,
 operator|new
 name|RevisionResource
 argument_list|(
-operator|new
-name|ChangeResource
+name|changes
+operator|.
+name|parse
 argument_list|(
 name|control
 argument_list|(

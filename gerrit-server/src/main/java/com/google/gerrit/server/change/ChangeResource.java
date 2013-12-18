@@ -301,7 +301,6 @@ name|ChangeControl
 name|control
 decl_stmt|;
 DECL|method|ChangeResource (ChangeControl control)
-specifier|public
 name|ChangeResource
 parameter_list|(
 name|ChangeControl
