@@ -138,9 +138,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|PatchSetApproval
+name|ReviewDb
 import|;
 end_import
 
@@ -152,11 +152,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
-name|ReviewDb
+name|ApprovalsUtil
 import|;
 end_import
 
@@ -255,6 +253,12 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|json
 specifier|private
 specifier|final
@@ -271,7 +275,7 @@ name|resourceFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListReviewers (Provider<ReviewDb> dbProvider, ReviewerResource.Factory resourceFactory, ReviewerJson json)
+DECL|method|ListReviewers (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, ReviewerResource.Factory resourceFactory, ReviewerJson json)
 name|ListReviewers
 parameter_list|(
 name|Provider
@@ -279,6 +283,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 name|ReviewerResource
 operator|.
@@ -294,6 +301,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -362,30 +375,24 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|PatchSetApproval
-name|patchSetApproval
-range|:
-name|db
-operator|.
-name|patchSetApprovals
-argument_list|()
-operator|.
-name|byChange
-argument_list|(
-name|changeId
-argument_list|)
-control|)
-block|{
 name|Account
 operator|.
 name|Id
 name|accountId
-init|=
-name|patchSetApproval
+range|:
+name|approvalsUtil
 operator|.
-name|getAccountId
+name|getReviewers
+argument_list|(
+name|db
+argument_list|,
+name|changeId
+argument_list|)
+operator|.
+name|values
 argument_list|()
-decl_stmt|;
+control|)
+block|{
 if|if
 condition|(
 operator|!

@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|Sets
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -218,9 +204,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|PatchSetApproval
+name|ReviewDb
 import|;
 end_import
 
@@ -232,11 +218,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
-name|ReviewDb
+name|ApprovalsUtil
 import|;
 end_import
 
@@ -300,7 +284,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Collection
 import|;
 end_import
 
@@ -338,6 +322,12 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|private
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|accounts
 specifier|private
 specifier|final
@@ -363,7 +353,7 @@ name|list
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Reviewers (Provider<ReviewDb> dbProvider, AccountsCollection accounts, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, Provider<ListReviewers> list)
+DECL|method|Reviewers (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, AccountsCollection accounts, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, Provider<ListReviewers> list)
 name|Reviewers
 parameter_list|(
 name|Provider
@@ -371,6 +361,9 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 name|AccountsCollection
 name|accounts
@@ -401,6 +394,12 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
@@ -540,7 +539,7 @@ throw|;
 block|}
 DECL|method|fetchAccountIds (ChangeResource rsrc)
 specifier|private
-name|Set
+name|Collection
 argument_list|<
 name|Account
 operator|.
@@ -554,34 +553,16 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|Set
-argument_list|<
-name|Account
+return|return
+name|approvalsUtil
 operator|.
-name|Id
-argument_list|>
-name|accountIds
-init|=
-name|Sets
-operator|.
-name|newHashSet
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|PatchSetApproval
-name|a
-range|:
+name|getReviewers
+argument_list|(
 name|dbProvider
 operator|.
 name|get
 argument_list|()
-operator|.
-name|patchSetApprovals
-argument_list|()
-operator|.
-name|byChange
-argument_list|(
+argument_list|,
 name|rsrc
 operator|.
 name|getChange
@@ -590,21 +571,9 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-control|)
-block|{
-name|accountIds
 operator|.
-name|add
-argument_list|(
-name|a
-operator|.
-name|getAccountId
+name|values
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|accountIds
 return|;
 block|}
 block|}

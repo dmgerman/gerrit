@@ -116,7 +116,7 @@ name|mail
 operator|.
 name|MailUtil
 operator|.
-name|getRecipientsFromApprovals
+name|getRecipientsFromFooters
 import|;
 end_import
 
@@ -134,7 +134,7 @@ name|mail
 operator|.
 name|MailUtil
 operator|.
-name|getRecipientsFromFooters
+name|getRecipientsFromReviewers
 import|;
 end_import
 
@@ -813,6 +813,22 @@ operator|.
 name|server
 operator|.
 name|ApprovalsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|ApprovalsUtil
+operator|.
+name|ReviewerState
 import|;
 end_import
 
@@ -11852,13 +11868,29 @@ operator|.
 name|toList
 argument_list|()
 decl_stmt|;
-specifier|final
+name|SetMultimap
+argument_list|<
+name|ReviewerState
+argument_list|,
+name|Account
+operator|.
+name|Id
+argument_list|>
+name|reviewers
+init|=
+name|ApprovalsUtil
+operator|.
+name|getReviewers
+argument_list|(
+name|oldChangeApprovals
+argument_list|)
+decl_stmt|;
 name|MailRecipients
 name|oldRecipients
 init|=
-name|getRecipientsFromApprovals
+name|getRecipientsFromReviewers
 argument_list|(
-name|oldChangeApprovals
+name|reviewers
 argument_list|)
 decl_stmt|;
 name|approvalsUtil

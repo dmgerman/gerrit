@@ -120,6 +120,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ApprovalsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -433,6 +447,11 @@ specifier|final
 name|PatchListCache
 name|patchListCache
 decl_stmt|;
+DECL|field|approvalsUtil
+specifier|final
+name|ApprovalsUtil
+name|approvalsUtil
+decl_stmt|;
 DECL|field|fromAddressGenerator
 specifier|final
 name|FromAddressGenerator
@@ -520,7 +539,7 @@ name|settings
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder.Factory queryBuilder, Provider<ReviewDb> db, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -540,6 +559,9 @@ name|accountCache
 parameter_list|,
 name|PatchListCache
 name|patchListCache
+parameter_list|,
+name|ApprovalsUtil
+name|approvalsUtil
 parameter_list|,
 name|FromAddressGenerator
 name|fromAddressGenerator
@@ -640,6 +662,12 @@ operator|.
 name|patchListCache
 operator|=
 name|patchListCache
+expr_stmt|;
+name|this
+operator|.
+name|approvalsUtil
+operator|=
+name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
