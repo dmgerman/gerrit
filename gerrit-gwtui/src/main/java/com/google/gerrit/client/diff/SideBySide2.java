@@ -2935,7 +2935,9 @@ name|diffChunkNav
 argument_list|(
 name|cm
 argument_list|,
-literal|true
+name|Direction
+operator|.
+name|PREV
 argument_list|)
 argument_list|)
 operator|.
@@ -10047,7 +10049,9 @@ name|diffChunkNav
 argument_list|(
 name|cm
 argument_list|,
-literal|false
+name|Direction
+operator|.
+name|NEXT
 argument_list|)
 operator|.
 name|run
@@ -10058,7 +10062,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|diffChunkNav (final CodeMirror cm, final boolean prev)
+DECL|method|diffChunkNav (final CodeMirror cm, final Direction dir)
 specifier|private
 name|Runnable
 name|diffChunkNav
@@ -10068,8 +10072,8 @@ name|CodeMirror
 name|cm
 parameter_list|,
 specifier|final
-name|boolean
-name|prev
+name|Direction
+name|dir
 parameter_list|)
 block|{
 return|return
@@ -10145,7 +10149,11 @@ operator|-
 name|res
 operator|-
 operator|(
-name|prev
+name|dir
+operator|==
+name|Direction
+operator|.
+name|PREV
 condition|?
 literal|1
 else|:
@@ -10158,7 +10166,11 @@ operator|=
 name|res
 operator|+
 operator|(
-name|prev
+name|dir
+operator|==
+name|Direction
+operator|.
+name|PREV
 condition|?
 operator|-
 literal|1
@@ -10215,7 +10227,11 @@ operator|=
 name|res
 operator|+
 operator|(
-name|prev
+name|dir
+operator|==
+name|Direction
+operator|.
+name|PREV
 condition|?
 operator|-
 literal|1
