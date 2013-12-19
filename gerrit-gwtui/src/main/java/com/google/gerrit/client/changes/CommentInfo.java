@@ -474,26 +474,50 @@ name|Timestamp
 name|updated
 parameter_list|()
 block|{
+name|Timestamp
+name|r
+init|=
+name|updatedTimestamp
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|r
+operator|==
+literal|null
+condition|)
+block|{
 name|String
-name|updatedRaw
+name|s
 init|=
 name|updatedRaw
 argument_list|()
 decl_stmt|;
-return|return
-name|updatedRaw
-operator|==
+if|if
+condition|(
+name|s
+operator|!=
 literal|null
-condition|?
-literal|null
-else|:
+condition|)
+block|{
+name|r
+operator|=
 name|JavaSqlTimestamp_JsonSerializer
 operator|.
 name|parseTimestamp
 argument_list|(
-name|updatedRaw
-argument_list|()
+name|s
 argument_list|)
+expr_stmt|;
+name|updatedTimestamp
+argument_list|(
+name|r
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|r
 return|;
 block|}
 DECL|method|updatedRaw ()
@@ -504,6 +528,27 @@ name|String
 name|updatedRaw
 parameter_list|()
 comment|/*-{ return this.updated; }-*/
+function_decl|;
+DECL|method|updatedTimestamp ()
+specifier|private
+specifier|final
+specifier|native
+name|Timestamp
+name|updatedTimestamp
+parameter_list|()
+comment|/*-{ return this._ts }-*/
+function_decl|;
+DECL|method|updatedTimestamp (Timestamp t)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|updatedTimestamp
+parameter_list|(
+name|Timestamp
+name|t
+parameter_list|)
+comment|/*-{ this._ts = t }-*/
 function_decl|;
 DECL|method|author ()
 specifier|public
