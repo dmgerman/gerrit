@@ -448,6 +448,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -3042,18 +3056,19 @@ name|Change
 name|c
 parameter_list|)
 throws|throws
-name|ConfigInvalidException
-throws|,
-name|IOException
+name|OrmException
 block|{
 return|return
 operator|new
 name|ChangeNotes
 argument_list|(
-name|repo
+name|repoManager
 argument_list|,
 name|c
 argument_list|)
+operator|.
+name|load
+argument_list|()
 return|;
 block|}
 DECL|method|incrementPatchSet (Change change)

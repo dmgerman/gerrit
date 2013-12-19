@@ -338,6 +338,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|ChangeNotes
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|query
 operator|.
 name|change
@@ -1229,6 +1245,17 @@ name|Change
 name|change
 parameter_list|)
 function_decl|;
+DECL|method|create (RefControl refControl, ChangeNotes notes)
+name|ChangeControl
+name|create
+parameter_list|(
+name|RefControl
+name|refControl
+parameter_list|,
+name|ChangeNotes
+name|notes
+parameter_list|)
+function_decl|;
 block|}
 comment|/**    * Exception thrown when the label term of a submit record    * unexpectedly didn't contain a user term.    */
 DECL|class|UserTermExpected
@@ -1295,15 +1322,61 @@ specifier|final
 name|RefControl
 name|refControl
 decl_stmt|;
-DECL|field|change
+DECL|field|notes
 specifier|private
 specifier|final
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeControl ( ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, @Assisted RefControl refControl, @Assisted Change change)
+DECL|method|ChangeControl ( ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, @Assisted RefControl refControl, @Assisted Change change)
+name|ChangeControl
+parameter_list|(
+name|ApprovalsUtil
+name|approvalsUtil
+parameter_list|,
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
+parameter_list|,
+name|ChangeNotes
+operator|.
+name|Factory
+name|notesFactory
+parameter_list|,
+annotation|@
+name|Assisted
+name|RefControl
+name|refControl
+parameter_list|,
+annotation|@
+name|Assisted
+name|Change
+name|change
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|approvalsUtil
+argument_list|,
+name|changeDataFactory
+argument_list|,
+name|refControl
+argument_list|,
+name|notesFactory
+operator|.
+name|create
+argument_list|(
+name|change
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|AssistedInject
+DECL|method|ChangeControl ( ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, @Assisted RefControl refControl, @Assisted ChangeNotes notes)
 name|ChangeControl
 parameter_list|(
 name|ApprovalsUtil
@@ -1321,8 +1394,8 @@ name|refControl
 parameter_list|,
 annotation|@
 name|Assisted
-name|Change
-name|change
+name|ChangeNotes
+name|notes
 parameter_list|)
 block|{
 name|this
@@ -1345,9 +1418,9 @@ name|refControl
 expr_stmt|;
 name|this
 operator|.
-name|change
+name|notes
 operator|=
-name|change
+name|notes
 expr_stmt|;
 block|}
 DECL|method|forUser (final CurrentUser who)
@@ -1376,7 +1449,7 @@ argument_list|(
 name|who
 argument_list|)
 argument_list|,
-name|change
+name|notes
 argument_list|)
 return|;
 block|}
@@ -1439,7 +1512,20 @@ name|getChange
 parameter_list|()
 block|{
 return|return
-name|change
+name|notes
+operator|.
+name|getChange
+argument_list|()
+return|;
+block|}
+DECL|method|getNotes ()
+specifier|public
+name|ChangeNotes
+name|getNotes
+parameter_list|()
+block|{
+return|return
+name|notes
 return|;
 block|}
 comment|/** Can this user see this change? */
@@ -1456,7 +1542,8 @@ name|OrmException
 block|{
 if|if
 condition|(
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getStatus
 argument_list|()
@@ -1916,7 +2003,8 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getOwner
 argument_list|()
@@ -2180,7 +2268,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getStatus
 argument_list|()
@@ -2349,7 +2438,8 @@ condition|(
 operator|!
 name|allowClosed
 operator|&&
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getStatus
 argument_list|()
@@ -2394,7 +2484,8 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -2427,7 +2518,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getStatus
 argument_list|()
@@ -2484,7 +2576,8 @@ argument_list|()
 argument_list|,
 name|this
 argument_list|,
-name|change
+name|getChange
+argument_list|()
 argument_list|,
 name|cd
 argument_list|,
@@ -2550,7 +2643,8 @@ argument_list|()
 operator|+
 literal|"' for change "
 operator|+
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -3289,7 +3383,8 @@ try|try
 block|{
 if|if
 condition|(
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getStatus
 argument_list|()
@@ -3399,7 +3494,8 @@ argument_list|()
 argument_list|,
 name|this
 argument_list|,
-name|change
+name|getChange
+argument_list|()
 argument_list|,
 name|cd
 argument_list|,
@@ -3462,7 +3558,8 @@ argument_list|()
 operator|+
 literal|"' for change "
 operator|+
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -3517,7 +3614,8 @@ argument_list|()
 operator|+
 literal|"' for change "
 operator|+
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -3620,7 +3718,8 @@ name|rule
 operator|+
 literal|" for change "
 operator|+
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -3799,7 +3898,8 @@ name|rule
 operator|+
 literal|" for change "
 operator|+
-name|change
+name|getChange
+argument_list|()
 operator|.
 name|getId
 argument_list|()
@@ -3932,7 +4032,8 @@ name|create
 argument_list|(
 name|db
 argument_list|,
-name|change
+name|getChange
+argument_list|()
 argument_list|)
 return|;
 block|}

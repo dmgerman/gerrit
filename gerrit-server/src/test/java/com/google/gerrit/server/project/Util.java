@@ -1761,7 +1761,7 @@ name|projectCache
 argument_list|,
 name|sectionSorter
 argument_list|,
-literal|null
+name|repoManager
 argument_list|,
 name|changeControlFactory
 argument_list|,
