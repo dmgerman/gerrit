@@ -963,30 +963,6 @@ name|map
 parameter_list|)
 comment|/*-{ this.addKeyMap(map); }-*/
 function_decl|;
-DECL|method|removeKeyMap (KeyMap map)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|removeKeyMap
-parameter_list|(
-name|KeyMap
-name|map
-parameter_list|)
-comment|/*-{ this.removeKeyMap(map); }-*/
-function_decl|;
-DECL|method|removeKeyMap (String name)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|removeKeyMap
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-comment|/*-{ this.removeKeyMap(name); }-*/
-function_decl|;
 DECL|method|pos (int line, int ch)
 specifier|public
 specifier|static
