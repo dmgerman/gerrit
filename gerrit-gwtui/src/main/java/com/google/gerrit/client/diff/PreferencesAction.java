@@ -348,8 +348,12 @@ parameter_list|)
 block|{
 name|view
 operator|.
-name|getCmB
-argument_list|()
+name|getCmFromSide
+argument_list|(
+name|DisplaySide
+operator|.
+name|B
+argument_list|)
 operator|.
 name|focus
 argument_list|()

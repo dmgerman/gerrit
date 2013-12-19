@@ -158,9 +158,8 @@ specifier|private
 name|ScrollCallback
 name|active
 decl_stmt|;
-DECL|method|init (DiffTable diffTable, CodeMirror cmA, CodeMirror cmB, LineMapper mapper)
-name|void
-name|init
+DECL|method|ScrollSynchronizer (DiffTable diffTable, CodeMirror cmA, CodeMirror cmB, LineMapper mapper)
+name|ScrollSynchronizer
 parameter_list|(
 name|DiffTable
 name|diffTable
