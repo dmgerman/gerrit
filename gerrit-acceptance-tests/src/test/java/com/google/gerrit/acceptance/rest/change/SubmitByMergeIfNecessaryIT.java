@@ -38,8 +38,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|git
-operator|.
 name|PushOneCommit
 import|;
 end_import

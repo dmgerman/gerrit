@@ -76,8 +76,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|git
-operator|.
 name|GitUtil
 operator|.
 name|createProject

@@ -76,8 +76,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|git
-operator|.
 name|GitUtil
 operator|.
 name|cloneProject
@@ -94,8 +92,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|git
-operator|.
 name|GitUtil
 operator|.
 name|createProject
@@ -111,8 +107,6 @@ operator|.
 name|gerrit
 operator|.
 name|acceptance
-operator|.
-name|git
 operator|.
 name|GitUtil
 operator|.
@@ -145,6 +139,20 @@ operator|.
 name|acceptance
 operator|.
 name|AccountCreator
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|PushOneCommit
 import|;
 end_import
 
@@ -382,6 +390,15 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|reviewDbProvider
+decl_stmt|;
+annotation|@
+name|Inject
+DECL|field|pushFactory
+specifier|protected
+name|PushOneCommit
+operator|.
+name|Factory
+name|pushFactory
 decl_stmt|;
 DECL|field|admin
 specifier|private
@@ -1183,8 +1200,9 @@ block|{
 name|PushOneCommit
 name|push
 init|=
-operator|new
-name|PushOneCommit
+name|pushFactory
+operator|.
+name|create
 argument_list|(
 name|db
 argument_list|,
