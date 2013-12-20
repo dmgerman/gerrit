@@ -231,6 +231,17 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"editUndo.png"
+argument_list|)
+DECL|method|editUndo ()
+specifier|public
+name|ImageResource
+name|editUndo
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"downloadIcon.png"
 argument_list|)
 DECL|method|downloadIcon ()
