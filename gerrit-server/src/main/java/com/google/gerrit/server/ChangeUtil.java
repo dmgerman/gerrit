@@ -3024,14 +3024,6 @@ argument_list|,
 name|revWalk
 argument_list|,
 name|ctl
-operator|.
-name|getRefControl
-argument_list|()
-argument_list|,
-name|user
-argument_list|()
-argument_list|,
-name|change
 argument_list|,
 name|newCommit
 argument_list|)

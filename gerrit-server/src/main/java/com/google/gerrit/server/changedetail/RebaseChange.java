@@ -1618,13 +1618,6 @@ argument_list|,
 name|revWalk
 argument_list|,
 name|changeControl
-operator|.
-name|getRefControl
-argument_list|()
-argument_list|,
-name|uploader
-argument_list|,
-name|change
 argument_list|,
 name|rebasedCommit
 argument_list|)
