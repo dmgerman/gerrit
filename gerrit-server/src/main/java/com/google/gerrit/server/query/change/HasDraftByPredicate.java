@@ -124,11 +124,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
 operator|.
-name|ReviewDb
+name|query
+operator|.
+name|OperatorPredicate
 import|;
 end_import
 
@@ -144,7 +144,11 @@ name|server
 operator|.
 name|query
 operator|.
-name|OperatorPredicate
+name|change
+operator|.
+name|ChangeQueryBuilder
+operator|.
+name|Arguments
 import|;
 end_import
 
@@ -192,18 +196,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -234,14 +226,11 @@ argument_list|>
 implements|implements
 name|ChangeDataSource
 block|{
-DECL|field|db
+DECL|field|args
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
+name|Arguments
+name|args
 decl_stmt|;
 DECL|field|accountId
 specifier|private
@@ -251,14 +240,11 @@ operator|.
 name|Id
 name|accountId
 decl_stmt|;
-DECL|method|HasDraftByPredicate (Provider<ReviewDb> db, Account.Id accountId)
+DECL|method|HasDraftByPredicate (Arguments args, Account.Id accountId)
 name|HasDraftByPredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
+name|Arguments
+name|args
 parameter_list|,
 name|Account
 operator|.
@@ -280,9 +266,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|db
+name|args
 operator|=
-name|db
+name|args
 expr_stmt|;
 name|this
 operator|.
@@ -313,9 +299,7 @@ range|:
 name|object
 operator|.
 name|comments
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 control|)
 block|{
 if|if
@@ -386,6 +370,8 @@ control|(
 name|PatchLineComment
 name|sc
 range|:
+name|args
+operator|.
 name|db
 operator|.
 name|get
@@ -452,9 +438,19 @@ name|r
 operator|.
 name|add
 argument_list|(
-operator|new
-name|ChangeData
+name|args
+operator|.
+name|changeDataFactory
+operator|.
+name|create
 argument_list|(
+name|args
+operator|.
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|id
 argument_list|)
 argument_list|)

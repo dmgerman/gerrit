@@ -389,9 +389,7 @@ init|=
 name|cd
 operator|.
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

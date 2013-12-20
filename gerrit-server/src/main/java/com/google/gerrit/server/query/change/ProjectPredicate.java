@@ -108,22 +108,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|index
@@ -162,18 +146,6 @@ name|OrmException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
 begin_class
 DECL|class|ProjectPredicate
 class|class
@@ -184,24 +156,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
-DECL|method|ProjectPredicate (Provider<ReviewDb> dbProvider, String id)
+DECL|method|ProjectPredicate (String id)
 name|ProjectPredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|String
 name|id
 parameter_list|)
@@ -214,12 +171,6 @@ name|PROJECT
 argument_list|,
 name|id
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 block|}
 DECL|method|getValueKey ()
@@ -260,9 +211,7 @@ init|=
 name|object
 operator|.
 name|change
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

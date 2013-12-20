@@ -347,6 +347,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 argument_list|,
 literal|null
@@ -557,8 +559,6 @@ argument_list|,
 operator|new
 name|ChangeStatusPredicate
 argument_list|(
-name|dbProvider
-argument_list|,
 name|Change
 operator|.
 name|Status
@@ -602,8 +602,6 @@ argument_list|,
 operator|new
 name|ChangeStatusPredicate
 argument_list|(
-name|dbProvider
-argument_list|,
 name|Change
 operator|.
 name|Status

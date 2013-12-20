@@ -138,6 +138,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|change
@@ -178,6 +194,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -212,6 +240,15 @@ specifier|static
 class|class
 name|Input
 block|{   }
+DECL|field|db
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+decl_stmt|;
 DECL|field|indexer
 specifier|private
 specifier|final
@@ -220,13 +257,25 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Index (ChangeIndexer indexer)
+DECL|method|Index (Provider<ReviewDb> db, ChangeIndexer indexer)
 name|Index
 parameter_list|(
+name|Provider
+argument_list|<
+name|ReviewDb
+argument_list|>
+name|db
+parameter_list|,
 name|ChangeIndexer
 name|indexer
 parameter_list|)
 block|{
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
 name|this
 operator|.
 name|indexer
@@ -257,6 +306,11 @@ name|indexer
 operator|.
 name|index
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|rsrc
 operator|.
 name|getChange

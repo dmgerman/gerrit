@@ -291,9 +291,7 @@ range|:
 name|object
 operator|.
 name|approvals
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 control|)
 block|{
 specifier|final

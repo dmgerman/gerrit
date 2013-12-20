@@ -1367,6 +1367,11 @@ name|indexer
 operator|.
 name|index
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|c
 argument_list|)
 expr_stmt|;

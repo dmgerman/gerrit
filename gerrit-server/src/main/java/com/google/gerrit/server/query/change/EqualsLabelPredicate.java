@@ -517,9 +517,7 @@ init|=
 name|object
 operator|.
 name|change
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -589,9 +587,7 @@ range|:
 name|object
 operator|.
 name|currentApprovals
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 control|)
 block|{
 if|if

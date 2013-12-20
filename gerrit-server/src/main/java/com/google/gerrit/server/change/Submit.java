@@ -1472,6 +1472,8 @@ name|indexer
 operator|.
 name|index
 argument_list|(
+name|db
+argument_list|,
 name|change
 argument_list|)
 expr_stmt|;

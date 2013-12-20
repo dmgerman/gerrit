@@ -92,6 +92,20 @@ name|google
 operator|.
 name|common
 operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
 name|base
 operator|.
 name|Objects
@@ -522,6 +536,34 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|Assisted
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|assistedinject
+operator|.
+name|AssistedInject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -855,9 +897,7 @@ block|{
 name|cd
 operator|.
 name|patches
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -927,9 +967,7 @@ argument_list|(
 name|cd
 operator|.
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -1088,9 +1126,7 @@ argument_list|(
 name|cd
 operator|.
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -1155,6 +1191,65 @@ block|}
 block|}
 block|}
 block|}
+DECL|interface|Factory
+specifier|public
+interface|interface
+name|Factory
+block|{
+DECL|method|create (ReviewDb db, Change.Id id)
+name|ChangeData
+name|create
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+function_decl|;
+DECL|method|create (ReviewDb db, Change c)
+name|ChangeData
+name|create
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Change
+name|c
+parameter_list|)
+function_decl|;
+DECL|method|create (ReviewDb db, ChangeControl c)
+name|ChangeData
+name|create
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|ChangeControl
+name|c
+parameter_list|)
+function_decl|;
+block|}
+DECL|field|db
+specifier|private
+specifier|final
+name|ReviewDb
+name|db
+decl_stmt|;
+DECL|field|repoManager
+specifier|private
+specifier|final
+name|GitRepositoryManager
+name|repoManager
+decl_stmt|;
+DECL|field|patchListCache
+specifier|private
+specifier|final
+name|PatchListCache
+name|patchListCache
+decl_stmt|;
 DECL|field|legacyId
 specifier|private
 specifier|final
@@ -1293,31 +1388,96 @@ specifier|private
 name|boolean
 name|patchesLoaded
 decl_stmt|;
-DECL|method|ChangeData (final Change.Id id)
+annotation|@
+name|VisibleForTesting
+annotation|@
+name|AssistedInject
+DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted Change.Id id)
 specifier|public
 name|ChangeData
 parameter_list|(
-specifier|final
+name|GitRepositoryManager
+name|repoManager
+parameter_list|,
+name|PatchListCache
+name|patchListCache
+parameter_list|,
+annotation|@
+name|Assisted
+name|ReviewDb
+name|db
+parameter_list|,
+annotation|@
+name|Assisted
 name|Change
 operator|.
 name|Id
 name|id
 parameter_list|)
 block|{
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|patchListCache
+operator|=
+name|patchListCache
+expr_stmt|;
 name|legacyId
 operator|=
 name|id
 expr_stmt|;
 block|}
-DECL|method|ChangeData (final Change c)
-specifier|public
+annotation|@
+name|AssistedInject
+DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted Change c)
 name|ChangeData
 parameter_list|(
-specifier|final
+name|GitRepositoryManager
+name|repoManager
+parameter_list|,
+name|PatchListCache
+name|patchListCache
+parameter_list|,
+annotation|@
+name|Assisted
+name|ReviewDb
+name|db
+parameter_list|,
+annotation|@
+name|Assisted
 name|Change
 name|c
 parameter_list|)
 block|{
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|patchListCache
+operator|=
+name|patchListCache
+expr_stmt|;
 name|legacyId
 operator|=
 name|c
@@ -1330,15 +1490,46 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|ChangeData (final ChangeControl c)
-specifier|public
+annotation|@
+name|AssistedInject
+DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted ChangeControl c)
 name|ChangeData
 parameter_list|(
-specifier|final
+name|GitRepositoryManager
+name|repoManager
+parameter_list|,
+name|PatchListCache
+name|patchListCache
+parameter_list|,
+annotation|@
+name|Assisted
+name|ReviewDb
+name|db
+parameter_list|,
+annotation|@
+name|Assisted
 name|ChangeControl
 name|c
 parameter_list|)
 block|{
+name|this
+operator|.
+name|db
+operator|=
+name|db
+expr_stmt|;
+name|this
+operator|.
+name|repoManager
+operator|=
+name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|patchListCache
+operator|=
+name|patchListCache
+expr_stmt|;
 name|legacyId
 operator|=
 name|c
@@ -1503,23 +1694,14 @@ name|filePaths
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|currentFilePaths (Provider<ReviewDb> db, PatchListCache cache)
+DECL|method|currentFilePaths ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|currentFilePaths
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|,
-name|PatchListCache
-name|cache
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1534,9 +1716,7 @@ name|Change
 name|c
 init|=
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1553,9 +1733,7 @@ name|PatchSet
 name|ps
 init|=
 name|currentPatchSet
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1575,7 +1753,7 @@ try|try
 block|{
 name|p
 operator|=
-name|cache
+name|patchListCache
 operator|.
 name|get
 argument_list|(
@@ -1732,20 +1910,11 @@ return|return
 name|currentFiles
 return|;
 block|}
-DECL|method|changedLines (Provider<ReviewDb> db, PatchListCache cache)
+DECL|method|changedLines ()
 specifier|public
 name|ChangedLines
 name|changedLines
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|,
-name|PatchListCache
-name|cache
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1760,9 +1929,7 @@ name|Change
 name|c
 init|=
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1779,9 +1946,7 @@ name|PatchSet
 name|ps
 init|=
 name|currentPatchSet
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1801,7 +1966,7 @@ try|try
 block|{
 name|p
 operator|=
-name|cache
+name|patchListCache
 operator|.
 name|get
 argument_list|(
@@ -1920,17 +2085,11 @@ operator|=
 name|ctl
 expr_stmt|;
 block|}
-DECL|method|change (Provider<ReviewDb> db)
+DECL|method|change ()
 specifier|public
 name|Change
 name|change
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1944,9 +2103,6 @@ block|{
 name|change
 operator|=
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|changes
 argument_list|()
@@ -1974,17 +2130,11 @@ operator|=
 name|c
 expr_stmt|;
 block|}
-DECL|method|currentPatchSet (Provider<ReviewDb> db)
+DECL|method|currentPatchSet ()
 specifier|public
 name|PatchSet
 name|currentPatchSet
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -1999,9 +2149,7 @@ name|Change
 name|c
 init|=
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2020,9 +2168,7 @@ name|PatchSet
 name|p
 range|:
 name|patches
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 control|)
 block|{
 if|if
@@ -2055,20 +2201,14 @@ return|return
 name|currentPatchSet
 return|;
 block|}
-DECL|method|currentApprovals (Provider<ReviewDb> db)
+DECL|method|currentApprovals ()
 specifier|public
 name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|currentApprovals
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2083,9 +2223,7 @@ name|Change
 name|c
 init|=
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2166,9 +2304,6 @@ name|sortApprovals
 argument_list|(
 name|db
 operator|.
-name|get
-argument_list|()
-operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
@@ -2204,20 +2339,11 @@ operator|=
 name|approvals
 expr_stmt|;
 block|}
-DECL|method|commitMessage (GitRepositoryManager repoManager, Provider<ReviewDb> db)
+DECL|method|commitMessage ()
 specifier|public
 name|String
 name|commitMessage
-parameter_list|(
-name|GitRepositoryManager
-name|repoManager
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 throws|,
@@ -2231,34 +2357,21 @@ literal|null
 condition|)
 block|{
 name|loadCommitData
-argument_list|(
-name|repoManager
-argument_list|,
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 return|return
 name|commitMessage
 return|;
 block|}
-DECL|method|commitFooters (GitRepositoryManager repoManager, Provider<ReviewDb> db)
+DECL|method|commitFooters ()
 specifier|public
 name|List
 argument_list|<
 name|FooterLine
 argument_list|>
 name|commitFooters
-parameter_list|(
-name|GitRepositoryManager
-name|repoManager
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 throws|,
@@ -2272,31 +2385,18 @@ literal|null
 condition|)
 block|{
 name|loadCommitData
-argument_list|(
-name|repoManager
-argument_list|,
-name|db
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 return|return
 name|commitFooters
 return|;
 block|}
-DECL|method|loadCommitData (GitRepositoryManager repoManager, Provider<ReviewDb> db)
+DECL|method|loadCommitData ()
 specifier|private
 name|void
 name|loadCommitData
-parameter_list|(
-name|GitRepositoryManager
-name|repoManager
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 throws|,
@@ -2314,9 +2414,7 @@ name|Id
 name|psId
 init|=
 name|change
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
@@ -2325,9 +2423,6 @@ name|String
 name|sha1
 init|=
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|patchSets
 argument_list|()
@@ -2417,21 +2512,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * @param db review database.    * @return patches for the change. If {@link #limitToPatchSets(Collection)}    *     was previously called, only contains patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|patches (Provider<ReviewDb> db)
+comment|/**    * @return patches for the change. If {@link #limitToPatchSets(Collection)}    *     was previously called, only contains patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
+DECL|method|patches ()
 specifier|public
 name|Collection
 argument_list|<
 name|PatchSet
 argument_list|>
 name|patches
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2465,9 +2554,6 @@ name|PatchSet
 name|ps
 range|:
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|patchSets
 argument_list|()
@@ -2507,9 +2593,6 @@ name|patches
 operator|=
 name|db
 operator|.
-name|get
-argument_list|()
-operator|.
 name|patchSets
 argument_list|()
 operator|.
@@ -2531,21 +2614,15 @@ return|return
 name|patches
 return|;
 block|}
-comment|/**    * @param db review database.    * @return patch set approvals for the change in timestamp order. If    *     {@link #limitToPatchSets(Collection)} was previously called, only contains    *     approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|approvals (Provider<ReviewDb> db)
+comment|/**    * @return patch set approvals for the change in timestamp order. If    *     {@link #limitToPatchSets(Collection)} was previously called, only contains    *     approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
+DECL|method|approvals ()
 specifier|public
 name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|approvals
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2555,17 +2632,15 @@ operator|.
 name|copyOf
 argument_list|(
 name|approvalsMap
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 operator|.
 name|values
 argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * @param db review database.    * @return patch set approvals for the change, keyed by ID, ordered by    *     timestamp within each patch set. If    *     {@link #limitToPatchSets(Collection)} was previously called, only    *     contains approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|approvalsMap ( Provider<ReviewDb> db)
+comment|/**    * @return patch set approvals for the change, keyed by ID, ordered by    *     timestamp within each patch set. If    *     {@link #limitToPatchSets(Collection)} was previously called, only    *     contains approvals for the patches with the specified IDs.    * @throws OrmException an error occurred reading the database.    */
+DECL|method|approvalsMap ()
 specifier|public
 name|ListMultimap
 argument_list|<
@@ -2576,13 +2651,7 @@ argument_list|,
 name|PatchSetApproval
 argument_list|>
 name|approvalsMap
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2644,9 +2713,6 @@ name|sortApprovals
 argument_list|(
 name|db
 operator|.
-name|get
-argument_list|()
-operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
@@ -2691,21 +2757,15 @@ return|return
 name|limitedApprovals
 return|;
 block|}
-comment|/**    * @param db review database.    * @return all patch set approvals for the change in timestamp order    *     (regardless of whether {@link #limitToPatchSets(Collection)} was    *     previously called).    * @throws OrmException an error occurred reading the database.    */
-DECL|method|allApprovals (Provider<ReviewDb> db)
+comment|/**    * @return all patch set approvals for the change in timestamp order    *     (regardless of whether {@link #limitToPatchSets(Collection)} was    *     previously called).    * @throws OrmException an error occurred reading the database.    */
+DECL|method|allApprovals ()
 specifier|public
 name|List
 argument_list|<
 name|PatchSetApproval
 argument_list|>
 name|allApprovals
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2715,17 +2775,15 @@ operator|.
 name|copyOf
 argument_list|(
 name|allApprovalsMap
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 operator|.
 name|values
 argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * @param db review database.    * @return all patch set approvals for the change (regardless of whether    *     {@link #limitToPatchSets(Collection)} was previously called), keyed by    *     ID, ordered by timestamp within each patch set.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|allApprovalsMap ( Provider<ReviewDb> db)
+comment|/**    * @return all patch set approvals for the change (regardless of whether    *     {@link #limitToPatchSets(Collection)} was previously called), keyed by    *     ID, ordered by timestamp within each patch set.    * @throws OrmException an error occurred reading the database.    */
+DECL|method|allApprovalsMap ()
 specifier|public
 name|ListMultimap
 argument_list|<
@@ -2736,13 +2794,7 @@ argument_list|,
 name|PatchSetApproval
 argument_list|>
 name|allApprovalsMap
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2768,9 +2820,6 @@ range|:
 name|sortApprovals
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|patchSetApprovals
 argument_list|()
@@ -2800,7 +2849,7 @@ return|return
 name|allApprovals
 return|;
 block|}
-DECL|method|reviewers (Provider<ReviewDb> db)
+DECL|method|reviewers ()
 specifier|public
 name|SetMultimap
 argument_list|<
@@ -2811,13 +2860,7 @@ operator|.
 name|Id
 argument_list|>
 name|reviewers
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2827,26 +2870,18 @@ operator|.
 name|getReviewers
 argument_list|(
 name|allApprovals
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|comments (Provider<ReviewDb> db)
+DECL|method|comments ()
 specifier|public
 name|Collection
 argument_list|<
 name|PatchLineComment
 argument_list|>
 name|comments
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2860,9 +2895,6 @@ block|{
 name|comments
 operator|=
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|patchComments
 argument_list|()
@@ -2880,20 +2912,14 @@ return|return
 name|comments
 return|;
 block|}
-DECL|method|messages (Provider<ReviewDb> db)
+DECL|method|messages ()
 specifier|public
 name|List
 argument_list|<
 name|ChangeMessage
 argument_list|>
 name|messages
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|)
+parameter_list|()
 throws|throws
 name|OrmException
 block|{
@@ -2907,9 +2933,6 @@ block|{
 name|messages
 operator|=
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|changeMessages
 argument_list|()

@@ -586,6 +586,14 @@ name|ReviewDb
 argument_list|>
 name|schemaFactory
 decl_stmt|;
+DECL|field|changeDataFactory
+specifier|private
+specifier|final
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
+decl_stmt|;
 DECL|field|context
 specifier|private
 specifier|final
@@ -600,7 +608,7 @@ name|executor
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
 annotation|@
@@ -613,6 +621,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
+parameter_list|,
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|context
@@ -637,6 +650,12 @@ name|schemaFactory
 expr_stmt|;
 name|this
 operator|.
+name|changeDataFactory
+operator|=
+name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
 name|context
 operator|=
 name|context
@@ -656,7 +675,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext context, @Assisted IndexCollection indexes)
+DECL|method|ChangeIndexer (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, @Assisted IndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
 annotation|@
@@ -669,6 +688,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|schemaFactory
+parameter_list|,
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|context
@@ -690,6 +714,12 @@ operator|.
 name|schemaFactory
 operator|=
 name|schemaFactory
+expr_stmt|;
+name|this
+operator|.
+name|changeDataFactory
+operator|=
+name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
@@ -735,11 +765,7 @@ argument_list|(
 operator|new
 name|Task
 argument_list|(
-operator|new
-name|ChangeData
-argument_list|(
 name|change
-argument_list|)
 argument_list|,
 literal|false
 argument_list|)
@@ -757,28 +783,6 @@ argument_list|(
 literal|null
 argument_list|)
 return|;
-block|}
-comment|/**    * Synchronously index a change.    *    * @param change change to index.    */
-DECL|method|index (Change change)
-specifier|public
-name|void
-name|index
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|index
-argument_list|(
-operator|new
-name|ChangeData
-argument_list|(
-name|change
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**    * Synchronously index a change.    *    * @param cd change to index.    */
 DECL|method|index (ChangeData cd)
@@ -810,6 +814,34 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Synchronously index a change.    *    * @param change change to index.    * @param db review database.    */
+DECL|method|index (ReviewDb db, Change change)
+specifier|public
+name|void
+name|index
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Change
+name|change
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|index
+argument_list|(
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|db
+argument_list|,
+name|change
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Start deleting a change.    *    * @param change change to delete.    * @return future for the deleting task.    */
 DECL|method|deleteAsync (Change change)
 specifier|public
@@ -835,11 +867,7 @@ argument_list|(
 operator|new
 name|Task
 argument_list|(
-operator|new
-name|ChangeData
-argument_list|(
 name|change
-argument_list|)
 argument_list|,
 literal|true
 argument_list|)
@@ -857,28 +885,6 @@ argument_list|(
 literal|null
 argument_list|)
 return|;
-block|}
-comment|/**    * Synchronously delete a change.    *    * @param change change to delete.    */
-DECL|method|delete (Change change)
-specifier|public
-name|void
-name|delete
-parameter_list|(
-name|Change
-name|change
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|delete
-argument_list|(
-operator|new
-name|ChangeData
-argument_list|(
-name|change
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**    * Synchronously delete a change.    *    * @param cd change to delete.    */
 DECL|method|delete (ChangeData cd)
@@ -909,6 +915,34 @@ name|cd
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**    * Synchronously delete a change.    *    * @param change change to delete.    * @param db review database.    */
+DECL|method|delete (ReviewDb db, Change change)
+specifier|public
+name|void
+name|delete
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|Change
+name|change
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|delete
+argument_list|(
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|db
+argument_list|,
+name|change
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getWriteIndexes ()
 specifier|private
@@ -980,11 +1014,11 @@ argument_list|<
 name|Void
 argument_list|>
 block|{
-DECL|field|cd
+DECL|field|change
 specifier|private
 specifier|final
-name|ChangeData
-name|cd
+name|Change
+name|change
 decl_stmt|;
 DECL|field|delete
 specifier|private
@@ -992,12 +1026,12 @@ specifier|final
 name|boolean
 name|delete
 decl_stmt|;
-DECL|method|Task (ChangeData cd, boolean delete)
+DECL|method|Task (Change change, boolean delete)
 specifier|private
 name|Task
 parameter_list|(
-name|ChangeData
-name|cd
+name|Change
+name|change
 parameter_list|,
 name|boolean
 name|delete
@@ -1005,9 +1039,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|cd
+name|change
 operator|=
-name|cd
+name|change
 expr_stmt|;
 name|this
 operator|.
@@ -1044,12 +1078,8 @@ name|newReference
 argument_list|()
 decl_stmt|;
 name|RequestContext
-name|oldCtx
+name|newCtx
 init|=
-name|context
-operator|.
-name|setContext
-argument_list|(
 operator|new
 name|RequestContext
 argument_list|()
@@ -1151,10 +1181,37 @@ argument_list|)
 throw|;
 block|}
 block|}
+decl_stmt|;
+name|RequestContext
+name|oldCtx
+init|=
+name|context
+operator|.
+name|setContext
+argument_list|(
+name|newCtx
 argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|ChangeData
+name|cd
+init|=
+name|changeDataFactory
+operator|.
+name|create
+argument_list|(
+name|newCtx
+operator|.
+name|getReviewDbProvider
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|change
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|delete
@@ -1256,7 +1313,7 @@ name|format
 argument_list|(
 literal|"Failed to index change %d in %s"
 argument_list|,
-name|cd
+name|change
 operator|.
 name|getId
 argument_list|()
@@ -1264,10 +1321,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|cd
-operator|.
-name|getChange
-argument_list|()
+name|change
 operator|.
 name|getProject
 argument_list|()
@@ -1295,7 +1349,7 @@ block|{
 return|return
 literal|"index-change-"
 operator|+
-name|cd
+name|change
 operator|.
 name|getId
 argument_list|()

@@ -429,8 +429,6 @@ argument_list|(
 operator|new
 name|ProjectPredicate
 argument_list|(
-name|dbProvider
-argument_list|,
 name|projectState
 operator|.
 name|getProject
@@ -488,8 +486,6 @@ argument_list|(
 operator|new
 name|ProjectPredicate
 argument_list|(
-name|dbProvider
-argument_list|,
 name|p
 operator|.
 name|name
