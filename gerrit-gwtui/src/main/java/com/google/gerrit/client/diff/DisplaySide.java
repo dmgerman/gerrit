@@ -72,6 +72,7 @@ end_comment
 
 begin_enum
 DECL|enum|DisplaySide
+specifier|public
 enum|enum
 name|DisplaySide
 block|{
