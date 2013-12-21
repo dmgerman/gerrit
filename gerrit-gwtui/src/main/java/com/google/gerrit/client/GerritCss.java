@@ -218,6 +218,11 @@ name|String
 name|cSUBJECT
 parameter_list|()
 function_decl|;
+DECL|method|cSTATUS ()
+name|String
+name|cSTATUS
+parameter_list|()
+function_decl|;
 DECL|method|cellsNextToFileComment ()
 name|String
 name|cellsNextToFileComment
