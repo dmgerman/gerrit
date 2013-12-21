@@ -750,6 +750,20 @@ name|initPlugins
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|postRun ()
+specifier|public
+name|void
+name|postRun
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|postInitPlugins
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|installPlugins ()
 specifier|private
 name|void
@@ -1012,6 +1026,32 @@ block|{
 name|initStep
 operator|.
 name|run
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|postInitPlugins ()
+specifier|private
+name|void
+name|postInitPlugins
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+for|for
+control|(
+name|InitStep
+name|initStep
+range|:
+name|pluginLoader
+operator|.
+name|getInitSteps
+argument_list|()
+control|)
+block|{
+name|initStep
+operator|.
+name|postRun
 argument_list|()
 expr_stmt|;
 block|}

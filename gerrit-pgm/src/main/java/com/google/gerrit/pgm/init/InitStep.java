@@ -84,6 +84,15 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
+comment|/** Executed after the site has been initialized */
+DECL|method|postRun ()
+specifier|public
+name|void
+name|postRun
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
 block|}
 end_interface
 
