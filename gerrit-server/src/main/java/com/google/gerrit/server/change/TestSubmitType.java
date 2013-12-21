@@ -383,6 +383,14 @@ specifier|final
 name|ReviewDb
 name|db
 decl_stmt|;
+DECL|field|changeDataFactory
+specifier|private
+specifier|final
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
+decl_stmt|;
 DECL|field|rules
 specifier|private
 specifier|final
@@ -411,11 +419,16 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitType (ReviewDb db, RulesCache rules)
+DECL|method|TestSubmitType (ReviewDb db, ChangeData.Factory changeDataFactory, RulesCache rules)
 name|TestSubmitType
 parameter_list|(
 name|ReviewDb
 name|db
+parameter_list|,
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
 parameter_list|,
 name|RulesCache
 name|rules
@@ -426,6 +439,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|changeDataFactory
+operator|=
+name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
@@ -535,9 +554,12 @@ operator|.
 name|getChange
 argument_list|()
 argument_list|,
-operator|new
-name|ChangeData
+name|changeDataFactory
+operator|.
+name|create
 argument_list|(
+name|db
+argument_list|,
 name|rsrc
 operator|.
 name|getChange

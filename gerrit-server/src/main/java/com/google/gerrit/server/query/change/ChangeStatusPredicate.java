@@ -398,8 +398,6 @@ argument_list|(
 operator|new
 name|ChangeStatusPredicate
 argument_list|(
-name|dbProvider
-argument_list|,
 name|e
 argument_list|)
 argument_list|)
@@ -495,8 +493,6 @@ argument_list|(
 operator|new
 name|ChangeStatusPredicate
 argument_list|(
-name|dbProvider
-argument_list|,
 name|e
 argument_list|)
 argument_list|)
@@ -524,15 +520,6 @@ name|r
 argument_list|)
 return|;
 block|}
-DECL|field|dbProvider
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-decl_stmt|;
 DECL|field|status
 specifier|private
 specifier|final
@@ -541,15 +528,9 @@ operator|.
 name|Status
 name|status
 decl_stmt|;
-DECL|method|ChangeStatusPredicate (Provider<ReviewDb> dbProvider, String value)
+DECL|method|ChangeStatusPredicate (String value)
 name|ChangeStatusPredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|String
 name|value
 parameter_list|)
@@ -562,12 +543,6 @@ name|STATUS
 argument_list|,
 name|value
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|status
 operator|=
@@ -593,15 +568,9 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ChangeStatusPredicate (Provider<ReviewDb> dbProvider, Change.Status status)
+DECL|method|ChangeStatusPredicate (Change.Status status)
 name|ChangeStatusPredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|Change
 operator|.
 name|Status
@@ -621,12 +590,6 @@ argument_list|(
 name|status
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|dbProvider
-operator|=
-name|dbProvider
 expr_stmt|;
 name|this
 operator|.
@@ -667,9 +630,7 @@ init|=
 name|object
 operator|.
 name|change
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|change

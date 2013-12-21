@@ -429,6 +429,14 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|changeDataFactory
+specifier|private
+specifier|final
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
+decl_stmt|;
 DECL|field|labelNormalizer
 specifier|private
 specifier|final
@@ -447,7 +455,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, LabelNormalizer labelNormalizer, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, LabelNormalizer labelNormalizer, AccountInfo.Loader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -455,6 +463,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
 parameter_list|,
 name|LabelNormalizer
 name|labelNormalizer
@@ -472,6 +485,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|changeDataFactory
+operator|=
+name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
@@ -782,9 +801,15 @@ comment|// do not exist in the DB.
 name|ChangeData
 name|cd
 init|=
-operator|new
-name|ChangeData
+name|changeDataFactory
+operator|.
+name|create
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|ctl
 argument_list|)
 decl_stmt|;
@@ -794,9 +819,7 @@ init|=
 name|cd
 operator|.
 name|currentPatchSet
-argument_list|(
-name|db
-argument_list|)
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

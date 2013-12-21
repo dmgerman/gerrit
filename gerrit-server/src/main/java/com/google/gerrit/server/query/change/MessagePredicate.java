@@ -76,22 +76,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|index
@@ -170,11 +154,17 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|server
 operator|.
-name|OrmException
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeQueryBuilder
+operator|.
+name|Arguments
 import|;
 end_import
 
@@ -184,9 +174,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwtorm
 operator|.
-name|Provider
+name|server
+operator|.
+name|OrmException
 import|;
 end_import
 
@@ -204,14 +196,11 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
-DECL|field|db
+DECL|field|args
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
+name|Arguments
+name|args
 decl_stmt|;
 DECL|field|index
 specifier|private
@@ -219,14 +208,11 @@ specifier|final
 name|ChangeIndex
 name|index
 decl_stmt|;
-DECL|method|MessagePredicate (Provider<ReviewDb> db, ChangeIndex index, String value)
+DECL|method|MessagePredicate (Arguments args, ChangeIndex index, String value)
 name|MessagePredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
+name|Arguments
+name|args
 parameter_list|,
 name|ChangeIndex
 name|index
@@ -246,9 +232,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|db
+name|args
 operator|=
-name|db
+name|args
 expr_stmt|;
 name|this
 operator|.
@@ -288,7 +274,7 @@ argument_list|(
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
-name|db
+name|args
 argument_list|,
 name|object
 operator|.

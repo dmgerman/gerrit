@@ -195,7 +195,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Delete a change document from the index.    *    * @param cd change document.    *    * @throws IOException    */
+comment|/**    * Delete a change document from the index.    *    * @param cd change document    *    * @throws IOException    */
 DECL|method|delete (ChangeData cd)
 specifier|public
 name|void

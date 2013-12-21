@@ -849,6 +849,8 @@ name|indexer
 operator|.
 name|index
 argument_list|(
+name|db
+argument_list|,
 name|rsrc
 operator|.
 name|getChange

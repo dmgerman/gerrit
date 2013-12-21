@@ -647,9 +647,7 @@ init|=
 name|cd
 operator|.
 name|change
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|change
@@ -798,9 +796,7 @@ init|=
 name|cd
 operator|.
 name|change
-argument_list|(
-name|dbProvider
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|change

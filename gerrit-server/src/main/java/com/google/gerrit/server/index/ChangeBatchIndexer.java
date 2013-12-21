@@ -943,6 +943,14 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|changeDataFactory
+specifier|private
+specifier|final
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
+decl_stmt|;
 DECL|field|repoManager
 specifier|private
 specifier|final
@@ -965,7 +973,7 @@ name|indexerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (Provider<ReviewDb> db, GitRepositoryManager repoManager, @IndexExecutor ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory)
+DECL|method|ChangeBatchIndexer (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory)
 name|ChangeBatchIndexer
 parameter_list|(
 name|Provider
@@ -973,6 +981,11 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|ChangeData
+operator|.
+name|Factory
+name|changeDataFactory
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -993,6 +1006,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|changeDataFactory
+operator|=
+name|changeDataFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1664,9 +1683,15 @@ operator|.
 name|getObjectId
 argument_list|()
 argument_list|,
-operator|new
-name|ChangeData
+name|changeDataFactory
+operator|.
+name|create
 argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|c
 argument_list|)
 argument_list|)

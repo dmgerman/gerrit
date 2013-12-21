@@ -559,10 +559,6 @@ return|return
 operator|new
 name|RegexFilePredicate
 argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|,
 name|pattern
 argument_list|)
 return|;
@@ -591,6 +587,12 @@ init|=
 operator|new
 name|ChangeData
 argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
 operator|new
 name|Change
 operator|.
