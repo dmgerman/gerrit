@@ -359,6 +359,15 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
+name|ChangeControl
+operator|.
+name|AssistedFactory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|factory
+argument_list|(
 name|ProjectControl
 operator|.
 name|AssistedFactory

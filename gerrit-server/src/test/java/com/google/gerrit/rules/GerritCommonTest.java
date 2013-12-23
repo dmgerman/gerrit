@@ -684,17 +684,6 @@ name|set
 argument_list|(
 name|StoredValues
 operator|.
-name|CHANGE
-argument_list|,
-name|change
-argument_list|)
-expr_stmt|;
-name|env
-operator|.
-name|set
-argument_list|(
-name|StoredValues
-operator|.
 name|CHANGE_CONTROL
 argument_list|,
 name|util

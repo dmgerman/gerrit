@@ -326,20 +326,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ApprovalsUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
 import|;
 end_import
@@ -1141,11 +1127,13 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|approvalsUtil
+DECL|field|changeControlFactory
 specifier|private
 specifier|final
-name|ApprovalsUtil
-name|approvalsUtil
+name|ChangeControl
+operator|.
+name|AssistedFactory
+name|changeControlFactory
 decl_stmt|;
 DECL|field|permissionFilter
 specifier|private
@@ -1202,7 +1190,7 @@ name|declaredOwner
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ApprovalsUtil approvalsUtil, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
+DECL|method|ProjectControl (@itUploadPackGroups Set<AccountGroup.UUID> uploadGroups, @GitReceivePackGroups Set<AccountGroup.UUID> receiveGroups, ProjectCache pc, PermissionCollection.Factory permissionFilter, GitRepositoryManager repoManager, ChangeControl.AssistedFactory changeControlFactory, @CanonicalWebUrl @Nullable String canonicalWebUrl, @Assisted CurrentUser who, @Assisted ProjectState ps)
 name|ProjectControl
 parameter_list|(
 annotation|@
@@ -1236,8 +1224,10 @@ parameter_list|,
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-name|ApprovalsUtil
-name|approvalsUtil
+name|ChangeControl
+operator|.
+name|AssistedFactory
+name|changeControlFactory
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -1265,9 +1255,9 @@ name|repoManager
 expr_stmt|;
 name|this
 operator|.
-name|approvalsUtil
+name|changeControlFactory
 operator|=
-name|approvalsUtil
+name|changeControlFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1358,11 +1348,10 @@ name|change
 parameter_list|)
 block|{
 return|return
-operator|new
-name|ChangeControl
+name|changeControlFactory
+operator|.
+name|create
 argument_list|(
-name|approvalsUtil
-argument_list|,
 name|controlForRef
 argument_list|(
 name|change

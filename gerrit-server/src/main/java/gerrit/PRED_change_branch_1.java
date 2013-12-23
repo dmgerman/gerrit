@@ -249,12 +249,15 @@ name|change
 init|=
 name|StoredValues
 operator|.
-name|CHANGE
+name|CHANGE_DATA
 operator|.
 name|get
 argument_list|(
 name|engine
 argument_list|)
+operator|.
+name|getChange
+argument_list|()
 decl_stmt|;
 name|Branch
 operator|.

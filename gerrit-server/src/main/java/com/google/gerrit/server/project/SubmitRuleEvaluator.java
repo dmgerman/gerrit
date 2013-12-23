@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -77,20 +93,6 @@ operator|.
 name|collect
 operator|.
 name|Lists
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|Nullable
 import|;
 end_import
 
@@ -411,7 +413,7 @@ name|String
 name|projectName
 decl_stmt|;
 comment|/**    * @param userRuleLocatorName The name of the rule used to locate the    *        user-supplied rule.    * @param userRuleWrapperName The name of the wrapper rule used to evaluate    *        the user-supplied rule.    * @param filterRuleLocatorName The name of the rule used to locate the filter    *        rule.    * @param filterRuleWrapperName The name of the rule used to evaluate the    *        filter rule.    */
-DECL|method|SubmitRuleEvaluator (ReviewDb db, PatchSet patchSet, ProjectControl projectControl, ChangeControl changeControl, Change change, @Nullable ChangeData cd, boolean fastEvalLabels, String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName)
+DECL|method|SubmitRuleEvaluator (ReviewDb db, PatchSet patchSet, ProjectControl projectControl, ChangeControl changeControl, Change change, ChangeData cd, boolean fastEvalLabels, String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName)
 specifier|public
 name|SubmitRuleEvaluator
 parameter_list|(
@@ -430,8 +432,6 @@ parameter_list|,
 name|Change
 name|change
 parameter_list|,
-annotation|@
-name|Nullable
 name|ChangeData
 name|cd
 parameter_list|,
@@ -482,7 +482,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * @param userRuleLocatorName The name of the rule used to locate the    *        user-supplied rule.    * @param userRuleWrapperName The name of the wrapper rule used to evaluate    *        the user-supplied rule.    * @param filterRuleLocatorName The name of the rule used to locate the filter    *        rule.    * @param filterRuleWrapperName The name of the rule used to evaluate the    *        filter rule.    * @param skipSubmitFilters if {@code true} submit filter will not be    *        applied    * @param rules when non-null the rules will be read from this input stream    *        instead of refs/meta/config:rules.pl file    */
-DECL|method|SubmitRuleEvaluator (ReviewDb db, PatchSet patchSet, ProjectControl projectControl, ChangeControl changeControl, Change change, @Nullable ChangeData cd, boolean fastEvalLabels, String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName, boolean skipSubmitFilters, InputStream rules)
+DECL|method|SubmitRuleEvaluator (ReviewDb db, PatchSet patchSet, ProjectControl projectControl, ChangeControl changeControl, Change change, ChangeData cd, boolean fastEvalLabels, String userRuleLocatorName, String userRuleWrapperName, String filterRuleLocatorName, String filterRuleWrapperName, boolean skipSubmitFilters, InputStream rules)
 specifier|public
 name|SubmitRuleEvaluator
 parameter_list|(
@@ -501,8 +501,6 @@ parameter_list|,
 name|Change
 name|change
 parameter_list|,
-annotation|@
-name|Nullable
 name|ChangeData
 name|cd
 parameter_list|,
@@ -562,7 +560,12 @@ name|this
 operator|.
 name|cd
 operator|=
+name|checkNotNull
+argument_list|(
 name|cd
+argument_list|,
+literal|"ChangeData"
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -954,17 +957,6 @@ operator|.
 name|REVIEW_DB
 argument_list|,
 name|db
-argument_list|)
-expr_stmt|;
-name|env
-operator|.
-name|set
-argument_list|(
-name|StoredValues
-operator|.
-name|CHANGE
-argument_list|,
-name|change
 argument_list|)
 expr_stmt|;
 name|env
