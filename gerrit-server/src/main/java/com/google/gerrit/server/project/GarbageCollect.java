@@ -487,7 +487,7 @@ decl_stmt|;
 name|String
 name|msg
 init|=
-literal|"garbage collection was successfully done"
+literal|"Garbage collection completed successfully."
 decl_stmt|;
 if|if
 condition|(
@@ -523,14 +523,14 @@ name|REPOSITORY_NOT_FOUND
 case|:
 name|msg
 operator|=
-literal|"error: project \""
+literal|"Error: project \""
 operator|+
 name|e
 operator|.
 name|getProjectName
 argument_list|()
 operator|+
-literal|"\" not found"
+literal|"\" not found."
 expr_stmt|;
 break|break;
 case|case
@@ -538,14 +538,14 @@ name|GC_ALREADY_SCHEDULED
 case|:
 name|msg
 operator|=
-literal|"error: garbage collection for project \""
+literal|"Error: garbage collection for project \""
 operator|+
 name|e
 operator|.
 name|getProjectName
 argument_list|()
 operator|+
-literal|"\" was already scheduled"
+literal|"\" was already scheduled."
 expr_stmt|;
 break|break;
 case|case
@@ -553,20 +553,20 @@ name|GC_FAILED
 case|:
 name|msg
 operator|=
-literal|"error: garbage collection for project \""
+literal|"Error: garbage collection for project \""
 operator|+
 name|e
 operator|.
 name|getProjectName
 argument_list|()
 operator|+
-literal|"\" failed"
+literal|"\" failed."
 expr_stmt|;
 break|break;
 default|default:
 name|msg
 operator|=
-literal|"error: garbage collection for project \""
+literal|"Error: garbage collection for project \""
 operator|+
 name|e
 operator|.
@@ -579,6 +579,8 @@ name|e
 operator|.
 name|getType
 argument_list|()
+operator|+
+literal|"."
 expr_stmt|;
 block|}
 block|}
