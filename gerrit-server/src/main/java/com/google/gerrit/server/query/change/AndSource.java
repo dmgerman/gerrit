@@ -146,22 +146,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|query
@@ -239,18 +223,6 @@ operator|.
 name|server
 operator|.
 name|ResultSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -550,15 +522,6 @@ return|return
 name|r
 return|;
 block|}
-DECL|field|db
-specifier|private
-specifier|final
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-decl_stmt|;
 DECL|field|cardinality
 specifier|private
 name|int
@@ -567,16 +530,10 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|method|AndSource (Provider<ReviewDb> db, Collection<? extends Predicate<ChangeData>> that)
+DECL|method|AndSource (Collection<? extends Predicate<ChangeData>> that)
 specifier|public
 name|AndSource
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|db
-parameter_list|,
 name|Collection
 argument_list|<
 name|?
@@ -596,12 +553,6 @@ argument_list|(
 name|that
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|db
-operator|=
-name|db
 expr_stmt|;
 block|}
 annotation|@
@@ -976,8 +927,6 @@ name|ChangeData
 operator|.
 name|ensureChangeLoaded
 argument_list|(
-name|db
-argument_list|,
 name|buffer
 argument_list|)
 expr_stmt|;

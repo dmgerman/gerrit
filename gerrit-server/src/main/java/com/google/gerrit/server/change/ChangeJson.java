@@ -2144,8 +2144,6 @@ name|ChangeData
 operator|.
 name|ensureChangeLoaded
 argument_list|(
-name|db
-argument_list|,
 name|all
 argument_list|)
 expr_stmt|;
@@ -2161,8 +2159,6 @@ name|ChangeData
 operator|.
 name|ensureAllPatchSetsLoaded
 argument_list|(
-name|db
-argument_list|,
 name|all
 argument_list|)
 expr_stmt|;
@@ -2173,8 +2169,6 @@ name|ChangeData
 operator|.
 name|ensureCurrentPatchSetLoaded
 argument_list|(
-name|db
-argument_list|,
 name|all
 argument_list|)
 expr_stmt|;
@@ -2197,8 +2191,6 @@ name|ChangeData
 operator|.
 name|ensureCurrentApprovalsLoaded
 argument_list|(
-name|db
-argument_list|,
 name|all
 argument_list|)
 expr_stmt|;

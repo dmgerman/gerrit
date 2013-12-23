@@ -1464,8 +1464,6 @@ init|=
 operator|new
 name|AndSource
 argument_list|(
-name|db
-argument_list|,
 name|ImmutableList
 operator|.
 name|of
