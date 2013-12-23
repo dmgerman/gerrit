@@ -997,6 +997,37 @@ name|call
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|rm (Git gApi, String path)
+specifier|public
+specifier|static
+name|void
+name|rm
+parameter_list|(
+name|Git
+name|gApi
+parameter_list|,
+name|String
+name|path
+parameter_list|)
+throws|throws
+name|GitAPIException
+throws|,
+name|IOException
+block|{
+name|gApi
+operator|.
+name|rm
+argument_list|()
+operator|.
+name|addFilepattern
+argument_list|(
+name|path
+argument_list|)
+operator|.
+name|call
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|createCommit (Git git, PersonIdent i, String msg)
 specifier|public
 specifier|static
