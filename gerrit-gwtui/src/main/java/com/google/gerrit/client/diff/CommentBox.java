@@ -293,20 +293,15 @@ specifier|private
 name|PaddingWidgetWrapper
 name|selfWidgetWrapper
 decl_stmt|;
-DECL|field|diffScreen
+DECL|field|commentManager
 specifier|private
-name|SideBySide2
-name|diffScreen
+name|CommentManager
+name|commentManager
 decl_stmt|;
 DECL|field|cm
 specifier|private
 name|CodeMirror
 name|cm
-decl_stmt|;
-DECL|field|side
-specifier|private
-name|DisplaySide
-name|side
 decl_stmt|;
 DECL|field|diffChunkInfo
 specifier|private
@@ -333,30 +328,30 @@ specifier|private
 name|TextMarker
 name|rangeHighlightMarker
 decl_stmt|;
-DECL|method|CommentBox (CodeMirror cm, CommentInfo info, DisplaySide side)
+DECL|method|CommentBox (CommentManager commentManager, CodeMirror cm, CommentInfo info)
 name|CommentBox
 parameter_list|(
+name|CommentManager
+name|commentManager
+parameter_list|,
 name|CodeMirror
 name|cm
 parameter_list|,
 name|CommentInfo
 name|info
-parameter_list|,
-name|DisplaySide
-name|side
 parameter_list|)
 block|{
 name|this
 operator|.
-name|cm
+name|commentManager
 operator|=
-name|cm
+name|commentManager
 expr_stmt|;
 name|this
 operator|.
-name|side
+name|cm
 operator|=
-name|side
+name|cm
 expr_stmt|;
 name|CommentRange
 name|range
@@ -508,7 +503,10 @@ condition|)
 block|{
 return|return;
 block|}
-name|diffScreen
+name|commentManager
+operator|.
+name|getSideBySide2
+argument_list|()
 operator|.
 name|defer
 argument_list|(
@@ -543,11 +541,20 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|diffScreen
+name|commentManager
+operator|.
+name|getSideBySide2
+argument_list|()
+operator|.
+name|getChunkManager
+argument_list|()
 operator|.
 name|resizePaddingOnOtherSide
 argument_list|(
+name|cm
+operator|.
 name|side
+argument_list|()
 argument_list|,
 name|diffChunkInfo
 operator|.
@@ -609,6 +616,15 @@ name|focus
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getCommentManager ()
+name|CommentManager
+name|getCommentManager
+parameter_list|()
+block|{
+return|return
+name|commentManager
+return|;
+block|}
 DECL|method|getPaddingManager ()
 name|PaddingManager
 name|getPaddingManager
@@ -666,30 +682,6 @@ operator|.
 name|diffChunkInfo
 operator|=
 name|info
-expr_stmt|;
-block|}
-DECL|method|getDiffScreen ()
-name|SideBySide2
-name|getDiffScreen
-parameter_list|()
-block|{
-return|return
-name|diffScreen
-return|;
-block|}
-DECL|method|setDiffScreen (SideBySide2 diffScreen)
-name|void
-name|setDiffScreen
-parameter_list|(
-name|SideBySide2
-name|diffScreen
-parameter_list|)
-block|{
-name|this
-operator|.
-name|diffScreen
-operator|=
-name|diffScreen
 expr_stmt|;
 block|}
 DECL|method|setGutterWrapper (GutterWrapper wrapper)
@@ -813,15 +805,6 @@ parameter_list|()
 block|{
 return|return
 name|gutterWrapper
-return|;
-block|}
-DECL|method|getSide ()
-name|DisplaySide
-name|getSide
-parameter_list|()
-block|{
-return|return
-name|side
 return|;
 block|}
 DECL|method|getCm ()

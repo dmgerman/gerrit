@@ -68,6 +68,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|diff
+operator|.
+name|DisplaySide
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -175,20 +191,23 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|create (Element parent, Configuration cfg)
+DECL|method|create ( DisplaySide side, Element parent, Configuration cfg)
 specifier|public
 specifier|static
 specifier|native
 name|CodeMirror
 name|create
 parameter_list|(
+name|DisplaySide
+name|side
+parameter_list|,
 name|Element
 name|parent
 parameter_list|,
 name|Configuration
 name|cfg
 parameter_list|)
-comment|/*-{     return $wnd.CodeMirror(parent, cfg);   }-*/
+comment|/*-{     var m = $wnd.CodeMirror(parent, cfg);     m._sbs2_side = side;     return m;   }-*/
 function_decl|;
 DECL|method|setOption (String option, boolean value)
 specifier|public
@@ -1172,6 +1191,15 @@ name|boolean
 name|hasVimSearchHighlight
 parameter_list|()
 comment|/*-{     return this.state.vim&& this.state.vim.searchState_&&         !!this.state.vim.searchState_.getOverlay();   }-*/
+function_decl|;
+DECL|method|side ()
+specifier|public
+specifier|final
+specifier|native
+name|DisplaySide
+name|side
+parameter_list|()
+comment|/*-{ return this._sbs2_side }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected

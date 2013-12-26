@@ -487,21 +487,21 @@ specifier|static
 name|DiffTableStyle
 name|style
 decl_stmt|;
-DECL|field|host
+DECL|field|parent
 specifier|private
 name|SideBySide2
-name|host
+name|parent
 decl_stmt|;
 DECL|field|headerVisible
 specifier|private
 name|boolean
 name|headerVisible
 decl_stmt|;
-DECL|method|DiffTable (SideBySide2 host, PatchSet.Id base, PatchSet.Id revision, String path)
+DECL|method|DiffTable (SideBySide2 parent, PatchSet.Id base, PatchSet.Id revision, String path)
 name|DiffTable
 parameter_list|(
 name|SideBySide2
-name|host
+name|parent
 parameter_list|,
 name|PatchSet
 operator|.
@@ -573,11 +573,9 @@ operator|=
 operator|new
 name|FileCommentPanel
 argument_list|(
-name|host
+name|parent
 argument_list|,
 name|this
-argument_list|,
-name|path
 argument_list|,
 name|DisplaySide
 operator|.
@@ -589,11 +587,9 @@ operator|=
 operator|new
 name|FileCommentPanel
 argument_list|(
-name|host
+name|parent
 argument_list|,
 name|this
-argument_list|,
-name|path
 argument_list|,
 name|DisplaySide
 operator|.
@@ -612,9 +608,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|host
+name|parent
 operator|=
-name|host
+name|parent
 expr_stmt|;
 name|this
 operator|.
@@ -651,7 +647,7 @@ argument_list|(
 name|show
 operator|&&
 operator|!
-name|host
+name|parent
 operator|.
 name|getPrefs
 argument_list|()
@@ -699,7 +695,7 @@ condition|(
 name|show
 condition|)
 block|{
-name|host
+name|parent
 operator|.
 name|header
 operator|.
@@ -714,7 +710,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|host
+name|parent
 operator|.
 name|header
 operator|.
@@ -727,7 +723,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|host
+name|parent
 operator|.
 name|resizeCodeMirror
 argument_list|()
@@ -788,7 +784,10 @@ name|getPanelFromSide
 argument_list|(
 name|box
 operator|.
-name|getSide
+name|getCm
+argument_list|()
+operator|.
+name|side
 argument_list|()
 argument_list|)
 operator|.
@@ -810,7 +809,10 @@ name|getPanelFromSide
 argument_list|(
 name|box
 operator|.
-name|getSide
+name|getCm
+argument_list|()
+operator|.
+name|side
 argument_list|()
 argument_list|)
 operator|.
