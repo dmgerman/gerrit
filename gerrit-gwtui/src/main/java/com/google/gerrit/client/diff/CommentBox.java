@@ -546,6 +546,9 @@ operator|.
 name|getSideBySide2
 argument_list|()
 operator|.
+name|getChunkManager
+argument_list|()
+operator|.
 name|resizePaddingOnOtherSide
 argument_list|(
 name|cm
