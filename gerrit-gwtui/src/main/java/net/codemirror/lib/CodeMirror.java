@@ -1056,15 +1056,6 @@ name|focus
 parameter_list|()
 comment|/*-{     this.focus();   }-*/
 function_decl|;
-DECL|method|lineCount ()
-specifier|public
-specifier|final
-specifier|native
-name|int
-name|lineCount
-parameter_list|()
-comment|/*-{     return this.lineCount();   }-*/
-function_decl|;
 DECL|method|getGutterElement ()
 specifier|public
 specifier|final
@@ -1074,15 +1065,6 @@ name|getGutterElement
 parameter_list|()
 comment|/*-{     return this.getGutterElement();   }-*/
 function_decl|;
-DECL|method|getScrollerElement ()
-specifier|public
-specifier|final
-specifier|native
-name|Element
-name|getScrollerElement
-parameter_list|()
-comment|/*-{     return this.getScrollerElement();   }-*/
-function_decl|;
 DECL|method|getSizer ()
 specifier|public
 specifier|final
@@ -1091,15 +1073,6 @@ name|Element
 name|getSizer
 parameter_list|()
 comment|/*-{     return this.display.sizer;   }-*/
-function_decl|;
-DECL|method|getInputField ()
-specifier|public
-specifier|final
-specifier|native
-name|Element
-name|getInputField
-parameter_list|()
-comment|/*-{     return this.getInputField();   }-*/
 function_decl|;
 DECL|method|getScrollbarV ()
 specifier|public
