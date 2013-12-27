@@ -1139,26 +1139,7 @@ block|}
 catch|catch
 parameter_list|(
 name|SecurityException
-name|e
-parameter_list|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"fatal: unknown command "
-operator|+
-name|name
-argument_list|)
-expr_stmt|;
-return|return
-literal|1
-return|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|NoSuchMethodException
 name|e
 parameter_list|)
