@@ -352,6 +352,20 @@ name|apache
 operator|.
 name|lucene
 operator|.
+name|analysis
+operator|.
+name|Analyzer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
 name|index
 operator|.
 name|Term
@@ -369,20 +383,6 @@ operator|.
 name|search
 operator|.
 name|BooleanQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
-name|search
-operator|.
-name|FuzzyQuery
 import|;
 end_import
 
@@ -563,11 +563,32 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|toQuery (Schema<ChangeData> schema, Predicate<ChangeData> p)
+DECL|field|schema
+specifier|private
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+decl_stmt|;
+DECL|field|queryBuilder
+specifier|private
+specifier|final
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|util
+operator|.
+name|QueryBuilder
+name|queryBuilder
+decl_stmt|;
+DECL|method|QueryBuilder (Schema<ChangeData> schema, Analyzer analyzer)
 specifier|public
-specifier|static
-name|Query
-name|toQuery
+name|QueryBuilder
 parameter_list|(
 name|Schema
 argument_list|<
@@ -575,6 +596,38 @@ name|ChangeData
 argument_list|>
 name|schema
 parameter_list|,
+name|Analyzer
+name|analyzer
+parameter_list|)
+block|{
+name|this
+operator|.
+name|schema
+operator|=
+name|schema
+expr_stmt|;
+name|queryBuilder
+operator|=
+operator|new
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|util
+operator|.
+name|QueryBuilder
+argument_list|(
+name|analyzer
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|toQuery (Predicate<ChangeData> p)
+specifier|public
+name|Query
+name|toQuery
+parameter_list|(
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -594,8 +647,6 @@ block|{
 return|return
 name|and
 argument_list|(
-name|schema
-argument_list|,
 name|p
 argument_list|)
 return|;
@@ -611,8 +662,6 @@ block|{
 return|return
 name|or
 argument_list|(
-name|schema
-argument_list|,
 name|p
 argument_list|)
 return|;
@@ -628,8 +677,6 @@ block|{
 return|return
 name|not
 argument_list|(
-name|schema
-argument_list|,
 name|p
 argument_list|)
 return|;
@@ -645,8 +692,6 @@ block|{
 return|return
 name|fieldQuery
 argument_list|(
-name|schema
-argument_list|,
 operator|(
 name|IndexPredicate
 argument_list|<
@@ -670,18 +715,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|or (Schema<ChangeData> schema, Predicate<ChangeData> p)
+DECL|method|or (Predicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|or
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -724,8 +762,6 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
-name|schema
-argument_list|,
 name|p
 operator|.
 name|getChild
@@ -763,18 +799,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|and (Schema<ChangeData> schema, Predicate<ChangeData> p)
+DECL|method|and (Predicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|and
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -894,8 +923,6 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
-name|schema
-argument_list|,
 name|n
 argument_list|)
 argument_list|)
@@ -910,8 +937,6 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
-name|schema
-argument_list|,
 name|c
 argument_list|)
 argument_list|,
@@ -963,18 +988,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|not (Schema<ChangeData> schema, Predicate<ChangeData> p)
+DECL|method|not (Predicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|not
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -1042,8 +1060,6 @@ name|add
 argument_list|(
 name|toQuery
 argument_list|(
-name|schema
-argument_list|,
 name|n
 argument_list|)
 argument_list|,
@@ -1054,18 +1070,11 @@ return|return
 name|q
 return|;
 block|}
-DECL|method|fieldQuery (Schema<ChangeData> schema, IndexPredicate<ChangeData> p)
+DECL|method|fieldQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|fieldQuery
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|IndexPredicate
 argument_list|<
 name|ChangeData
@@ -1185,8 +1194,6 @@ block|{
 return|return
 name|sortKeyQuery
 argument_list|(
-name|schema
-argument_list|,
 operator|(
 name|SortKeyPredicate
 operator|)
@@ -1254,7 +1261,6 @@ return|;
 block|}
 DECL|method|intQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|intQuery
 parameter_list|(
@@ -1325,18 +1331,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|sortKeyQuery (Schema<ChangeData> schema, SortKeyPredicate p)
+DECL|method|sortKeyQuery (SortKeyPredicate p)
 specifier|private
-specifier|static
 name|Query
 name|sortKeyQuery
 parameter_list|(
-name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
-name|schema
-parameter_list|,
 name|SortKeyPredicate
 name|p
 parameter_list|)
@@ -1402,7 +1401,6 @@ return|;
 block|}
 DECL|method|timestampQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|timestampQuery
 parameter_list|(
@@ -1483,7 +1481,6 @@ throw|;
 block|}
 DECL|method|notTimestamp (TimestampRangePredicate<ChangeData> r)
 specifier|private
-specifier|static
 name|Query
 name|notTimestamp
 parameter_list|(
@@ -1550,7 +1547,6 @@ throw|;
 block|}
 DECL|method|exactQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|exactQuery
 parameter_list|(
@@ -1606,7 +1602,6 @@ block|}
 block|}
 DECL|method|regexQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|regexQuery
 parameter_list|(
@@ -1702,7 +1697,6 @@ return|;
 block|}
 DECL|method|prefixQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|prefixQuery
 parameter_list|(
@@ -1738,7 +1732,6 @@ return|;
 block|}
 DECL|method|fullTextQuery (IndexPredicate<ChangeData> p)
 specifier|private
-specifier|static
 name|Query
 name|fullTextQuery
 parameter_list|(
@@ -1750,11 +1743,9 @@ name|p
 parameter_list|)
 block|{
 return|return
-operator|new
-name|FuzzyQuery
-argument_list|(
-operator|new
-name|Term
+name|queryBuilder
+operator|.
+name|createPhraseQuery
 argument_list|(
 name|p
 operator|.
@@ -1768,7 +1759,6 @@ name|p
 operator|.
 name|getValue
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1819,11 +1809,6 @@ name|t
 argument_list|)
 return|;
 block|}
-DECL|method|QueryBuilder ()
-specifier|private
-name|QueryBuilder
-parameter_list|()
-block|{   }
 block|}
 end_class
 
