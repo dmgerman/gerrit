@@ -2103,6 +2103,12 @@ return|return
 name|gw
 operator|!=
 literal|null
+operator|&&
+name|gw
+operator|.
+name|type
+operator|!=
+literal|null
 condition|?
 operator|new
 name|GitwebLink
