@@ -262,6 +262,20 @@ name|lucene
 operator|.
 name|store
 operator|.
+name|AlreadyClosedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|store
+operator|.
 name|Directory
 import|;
 end_import
@@ -683,6 +697,8 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|writer
 operator|.
 name|getIndexWriter
@@ -693,6 +709,15 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|AlreadyClosedException
+name|e
+parameter_list|)
+block|{
+comment|// Ignore.
+block|}
 block|}
 catch|catch
 parameter_list|(

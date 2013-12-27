@@ -284,6 +284,14 @@ operator|&&
 name|old
 operator|!=
 name|index
+operator|&&
+operator|!
+name|writeIndexes
+operator|.
+name|contains
+argument_list|(
+name|old
+argument_list|)
 condition|)
 block|{
 name|old

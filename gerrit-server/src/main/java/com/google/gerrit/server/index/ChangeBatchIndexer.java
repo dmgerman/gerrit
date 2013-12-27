@@ -384,9 +384,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|inject
+name|gwtorm
 operator|.
-name|Inject
+name|server
+operator|.
+name|SchemaFactory
 import|;
 end_import
 
@@ -398,7 +400,7 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Inject
 import|;
 end_import
 
@@ -934,14 +936,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|db
+DECL|field|schemaFactory
 specifier|private
 specifier|final
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|db
+name|schemaFactory
 decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
@@ -973,14 +975,14 @@ name|indexerFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory)
+DECL|method|ChangeBatchIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory)
 name|ChangeBatchIndexer
 parameter_list|(
-name|Provider
+name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
-name|db
+name|schemaFactory
 parameter_list|,
 name|ChangeData
 operator|.
@@ -1003,9 +1005,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|db
+name|schemaFactory
 operator|=
-name|db
+name|schemaFactory
 expr_stmt|;
 name|this
 operator|.
@@ -1603,6 +1605,11 @@ name|repo
 init|=
 literal|null
 decl_stmt|;
+name|ReviewDb
+name|db
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|repo
@@ -1632,15 +1639,19 @@ argument_list|(
 name|ALL
 argument_list|)
 decl_stmt|;
+name|db
+operator|=
+name|schemaFactory
+operator|.
+name|open
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Change
 name|c
 range|:
 name|db
-operator|.
-name|get
-argument_list|()
 operator|.
 name|changes
 argument_list|()
@@ -1688,9 +1699,6 @@ operator|.
 name|create
 argument_list|(
 name|db
-operator|.
-name|get
-argument_list|()
 argument_list|,
 name|c
 argument_list|)
@@ -1737,6 +1745,19 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|db
+operator|!=
+literal|null
+condition|)
+block|{
+name|db
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|repo
