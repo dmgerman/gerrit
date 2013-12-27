@@ -247,7 +247,7 @@ name|STATUS
 argument_list|,
 name|ChangeField
 operator|.
-name|FILE
+name|PATH
 argument_list|,
 name|ChangeField
 operator|.
