@@ -212,6 +212,11 @@ name|Style
 extends|extends
 name|CssResource
 block|{
+DECL|method|commentWidgets ()
+name|String
+name|commentWidgets
+parameter_list|()
+function_decl|;
 DECL|method|commentBox ()
 name|String
 name|commentBox
@@ -220,6 +225,11 @@ function_decl|;
 DECL|method|contents ()
 name|String
 name|contents
+parameter_list|()
+function_decl|;
+DECL|method|message ()
+name|String
+name|message
 parameter_list|()
 function_decl|;
 DECL|method|header ()

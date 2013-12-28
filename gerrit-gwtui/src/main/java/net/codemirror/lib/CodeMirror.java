@@ -1205,6 +1205,28 @@ name|getTo
 parameter_list|()
 comment|/*-{ return this.to; }-*/
 function_decl|;
+DECL|method|contains (int line)
+specifier|public
+specifier|final
+name|boolean
+name|contains
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+block|{
+return|return
+name|getFrom
+argument_list|()
+operator|<=
+name|line
+operator|&&
+name|line
+operator|<
+name|getTo
+argument_list|()
+return|;
+block|}
 DECL|method|Viewport ()
 specifier|protected
 name|Viewport

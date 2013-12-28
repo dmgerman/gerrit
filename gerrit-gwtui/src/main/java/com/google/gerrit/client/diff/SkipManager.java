@@ -213,6 +213,11 @@ name|SkipBar
 argument_list|>
 name|skipBars
 decl_stmt|;
+DECL|field|line0
+specifier|private
+name|SkipBar
+name|line0
+decl_stmt|;
 DECL|method|SkipManager (SideBySide2 host, CommentManager commentManager)
 name|SkipManager
 parameter_list|(
@@ -646,6 +651,10 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|line0
+operator|=
+name|barB
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -697,6 +706,31 @@ block|}
 block|}
 block|}
 block|}
+DECL|method|ensureFirstLineIsVisible ()
+name|void
+name|ensureFirstLineIsVisible
+parameter_list|()
+block|{
+if|if
+condition|(
+name|line0
+operator|!=
+literal|null
+condition|)
+block|{
+name|line0
+operator|.
+name|expandBefore
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|line0
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
 DECL|method|removeAll ()
 name|void
 name|removeAll
@@ -727,6 +761,10 @@ name|skipBars
 operator|=
 literal|null
 expr_stmt|;
+name|line0
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 DECL|method|remove (SkipBar a, SkipBar b)
@@ -754,6 +792,22 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|line0
+operator|==
+name|a
+operator|||
+name|line0
+operator|==
+name|b
+condition|)
+block|{
+name|line0
+operator|=
+literal|null
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|skipBars

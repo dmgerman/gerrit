@@ -789,7 +789,7 @@ control|)
 block|{
 name|c
 operator|.
-name|setPath
+name|path
 argument_list|(
 name|path
 argument_list|)
