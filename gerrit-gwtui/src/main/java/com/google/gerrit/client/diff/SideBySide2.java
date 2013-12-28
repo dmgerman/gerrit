@@ -1918,9 +1918,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|startSide
+name|startLine
 operator|==
-literal|null
+literal|0
 operator|&&
 name|diff
 operator|.
