@@ -237,16 +237,11 @@ name|bLen
 condition|)
 block|{
 comment|// Edit with insertion
-name|int
-name|insertCnt
-init|=
+name|appendInsert
+argument_list|(
 name|bLen
 operator|-
 name|aLen
-decl_stmt|;
-name|appendInsert
-argument_list|(
-name|insertCnt
 argument_list|)
 expr_stmt|;
 block|}
@@ -259,16 +254,11 @@ name|bLen
 condition|)
 block|{
 comment|// Edit with deletion
-name|int
-name|deleteCnt
-init|=
+name|appendDelete
+argument_list|(
 name|aLen
 operator|-
 name|bLen
-decl_stmt|;
-name|appendDelete
-argument_list|(
-name|deleteCnt
 argument_list|)
 expr_stmt|;
 block|}
