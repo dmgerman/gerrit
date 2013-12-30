@@ -92,20 +92,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|base
 operator|.
 name|Objects
@@ -1377,8 +1363,6 @@ specifier|private
 name|boolean
 name|patchesLoaded
 decl_stmt|;
-annotation|@
-name|VisibleForTesting
 annotation|@
 name|AssistedInject
 DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted Change.Id id)
