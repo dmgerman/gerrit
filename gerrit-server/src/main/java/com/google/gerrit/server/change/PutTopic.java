@@ -880,6 +880,9 @@ operator|.
 name|indexAsync
 argument_list|(
 name|change
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|hooks

@@ -603,6 +603,9 @@ operator|.
 name|indexAsync
 argument_list|(
 name|updatedChange
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|hooks

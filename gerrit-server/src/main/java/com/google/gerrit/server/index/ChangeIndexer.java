@@ -740,8 +740,8 @@ operator|=
 name|indexes
 expr_stmt|;
 block|}
-comment|/**    * Start indexing a change.    *    * @param change change to index.    * @return future for the indexing task.    */
-DECL|method|indexAsync (Change change)
+comment|/**    * Start indexing a change.    *    * @param id change to index.    * @return future for the indexing task.    */
+DECL|method|indexAsync (Change.Id id)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -752,7 +752,9 @@ argument_list|>
 name|indexAsync
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 return|return
@@ -765,7 +767,7 @@ argument_list|(
 operator|new
 name|Task
 argument_list|(
-name|change
+name|id
 argument_list|,
 literal|false
 argument_list|)
@@ -842,8 +844,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Start deleting a change.    *    * @param change change to delete.    * @return future for the deleting task.    */
-DECL|method|deleteAsync (Change change)
+comment|/**    * Start deleting a change.    *    * @param id change to delete.    * @return future for the deleting task.    */
+DECL|method|deleteAsync (Change.Id id)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -854,7 +856,9 @@ argument_list|>
 name|deleteAsync
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 return|return
@@ -867,7 +871,7 @@ argument_list|(
 operator|new
 name|Task
 argument_list|(
-name|change
+name|id
 argument_list|,
 literal|true
 argument_list|)
@@ -1014,11 +1018,13 @@ argument_list|<
 name|Void
 argument_list|>
 block|{
-DECL|field|change
+DECL|field|id
 specifier|private
 specifier|final
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 decl_stmt|;
 DECL|field|delete
 specifier|private
@@ -1026,12 +1032,14 @@ specifier|final
 name|boolean
 name|delete
 decl_stmt|;
-DECL|method|Task (Change change, boolean delete)
+DECL|method|Task (Change.Id id, boolean delete)
 specifier|private
 name|Task
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 parameter_list|,
 name|boolean
 name|delete
@@ -1039,9 +1047,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|change
+name|id
 operator|=
-name|change
+name|id
 expr_stmt|;
 name|this
 operator|.
@@ -1209,7 +1217,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|change
+name|id
 argument_list|)
 decl_stmt|;
 if|if
@@ -1311,23 +1319,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Failed to index change %d in %s"
+literal|"Failed to index change %d"
 argument_list|,
-name|change
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|,
-name|change
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|id
 argument_list|)
 argument_list|,
 name|e
@@ -1349,10 +1343,7 @@ block|{
 return|return
 literal|"index-change-"
 operator|+
-name|change
-operator|.
-name|getId
-argument_list|()
+name|id
 operator|.
 name|get
 argument_list|()

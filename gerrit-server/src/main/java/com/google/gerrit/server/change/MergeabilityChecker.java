@@ -1389,7 +1389,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * Updates the mergeability flag of the change asynchronously and reindexes    * the change in any case.    *    * @param change the change for which the mergeability flag should be updated    * @return CheckedFuture that updates the mergeability flag of the change and    *         reindexes the change (whether the mergeability flag was updated or    *         not)    */
-DECL|method|updateAndIndexAsync (final Change change)
+DECL|method|updateAndIndexAsync (Change change)
 specifier|public
 name|CheckedFuture
 argument_list|<
@@ -1399,11 +1399,21 @@ name|IOException
 argument_list|>
 name|updateAndIndexAsync
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|)
 block|{
+specifier|final
+name|Change
+operator|.
+name|Id
+name|id
+init|=
+name|change
+operator|.
+name|getId
+argument_list|()
+decl_stmt|;
 return|return
 name|Futures
 operator|.
@@ -1464,7 +1474,7 @@ name|indexer
 operator|.
 name|indexAsync
 argument_list|(
-name|change
+name|id
 argument_list|)
 return|;
 block|}
