@@ -105,6 +105,35 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|RegexPredicate (FieldDef<I, ?> def, String name, String value)
+specifier|protected
+name|RegexPredicate
+parameter_list|(
+name|FieldDef
+argument_list|<
+name|I
+argument_list|,
+name|?
+argument_list|>
+name|def
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|def
+argument_list|,
+name|name
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

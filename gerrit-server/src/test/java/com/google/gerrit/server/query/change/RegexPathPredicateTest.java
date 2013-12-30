@@ -143,10 +143,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RegexFilePredicateTest
+DECL|class|RegexPathPredicateTest
 specifier|public
 class|class
-name|RegexFilePredicateTest
+name|RegexPathPredicateTest
 block|{
 annotation|@
 name|Test
@@ -158,7 +158,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-name|RegexFilePredicate
+name|RegexPathPredicate
 name|p
 init|=
 name|predicate
@@ -231,7 +231,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-name|RegexFilePredicate
+name|RegexPathPredicate
 name|p
 init|=
 name|predicate
@@ -306,7 +306,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-name|RegexFilePredicate
+name|RegexPathPredicate
 name|p
 init|=
 name|predicate
@@ -364,7 +364,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-name|RegexFilePredicate
+name|RegexPathPredicate
 name|p
 init|=
 name|predicate
@@ -497,7 +497,7 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-name|RegexFilePredicate
+name|RegexPathPredicate
 name|p
 init|=
 name|predicate
@@ -548,7 +548,7 @@ block|}
 DECL|method|predicate (String pattern)
 specifier|private
 specifier|static
-name|RegexFilePredicate
+name|RegexPathPredicate
 name|predicate
 parameter_list|(
 name|String
@@ -557,8 +557,12 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|RegexFilePredicate
+name|RegexPathPredicate
 argument_list|(
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_PATH
+argument_list|,
 name|pattern
 argument_list|)
 return|;

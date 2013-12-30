@@ -719,8 +719,12 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|EqualsFilePredicate
+name|EqualsPathPredicate
 argument_list|(
+name|ChangeQueryBuilder
+operator|.
+name|FIELD_PATH
+argument_list|,
 name|file
 argument_list|)
 argument_list|)

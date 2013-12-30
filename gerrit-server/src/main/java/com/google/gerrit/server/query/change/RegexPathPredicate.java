@@ -171,9 +171,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|RegexFilePredicate
+DECL|class|RegexPathPredicate
 class|class
-name|RegexFilePredicate
+name|RegexPathPredicate
 extends|extends
 name|RegexPredicate
 argument_list|<
@@ -210,9 +210,12 @@ specifier|final
 name|boolean
 name|prefixOnly
 decl_stmt|;
-DECL|method|RegexFilePredicate (String re)
-name|RegexFilePredicate
+DECL|method|RegexPathPredicate (String fieldName, String re)
+name|RegexPathPredicate
 parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
 name|String
 name|re
 parameter_list|)
@@ -221,7 +224,7 @@ name|super
 argument_list|(
 name|ChangeField
 operator|.
-name|FILE
+name|PATH
 argument_list|,
 name|re
 argument_list|)
