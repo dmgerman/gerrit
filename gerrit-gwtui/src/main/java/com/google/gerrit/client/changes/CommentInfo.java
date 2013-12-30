@@ -166,11 +166,11 @@ name|CommentInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|createRange (String path, Side side, int line, String in_reply_to, String message, CommentRange range)
+DECL|method|create (String path, Side side, int line, CommentRange range)
 specifier|public
 specifier|static
 name|CommentInfo
-name|createRange
+name|create
 parameter_list|(
 name|String
 name|path
@@ -181,78 +181,12 @@ parameter_list|,
 name|int
 name|line
 parameter_list|,
-name|String
-name|in_reply_to
-parameter_list|,
-name|String
-name|message
-parameter_list|,
 name|CommentRange
 name|range
 parameter_list|)
 block|{
 name|CommentInfo
-name|info
-init|=
-name|createFile
-argument_list|(
-name|path
-argument_list|,
-name|side
-argument_list|,
-name|in_reply_to
-argument_list|,
-name|message
-argument_list|)
-decl_stmt|;
-name|info
-operator|.
-name|setRange
-argument_list|(
-name|range
-argument_list|)
-expr_stmt|;
-name|info
-operator|.
-name|setLine
-argument_list|(
-name|range
-operator|==
-literal|null
-condition|?
-name|line
-else|:
-name|range
-operator|.
-name|end_line
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|info
-return|;
-block|}
-DECL|method|createFile (String path, Side side, String in_reply_to, String message)
-specifier|public
-specifier|static
-name|CommentInfo
-name|createFile
-parameter_list|(
-name|String
-name|path
-parameter_list|,
-name|Side
-name|side
-parameter_list|,
-name|String
-name|in_reply_to
-parameter_list|,
-name|String
-name|message
-parameter_list|)
-block|{
-name|CommentInfo
-name|info
+name|n
 init|=
 name|createObject
 argument_list|()
@@ -260,73 +194,378 @@ operator|.
 name|cast
 argument_list|()
 decl_stmt|;
-name|info
+name|n
 operator|.
-name|setPath
+name|path
 argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
-name|info
+name|n
 operator|.
-name|setSide
+name|side
 argument_list|(
 name|side
 argument_list|)
 expr_stmt|;
-name|info
+if|if
+condition|(
+name|range
+operator|!=
+literal|null
+condition|)
+block|{
+name|n
 operator|.
-name|setInReplyTo
+name|line
 argument_list|(
-name|in_reply_to
+name|range
+operator|.
+name|end_line
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|info
+name|n
 operator|.
-name|setMessage
+name|range
 argument_list|(
-name|message
+name|range
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|line
+operator|>
+literal|0
+condition|)
+block|{
+name|n
+operator|.
+name|line
+argument_list|(
+name|line
+argument_list|)
+expr_stmt|;
+block|}
 return|return
-name|info
+name|n
 return|;
 block|}
-DECL|method|setId (String id)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|setId
+DECL|method|createReply (CommentInfo r)
+specifier|public
+specifier|static
+name|CommentInfo
+name|createReply
 parameter_list|(
-name|String
-name|id
+name|CommentInfo
+name|r
 parameter_list|)
-comment|/*-{ this.id = id; }-*/
-function_decl|;
-DECL|method|setPath (String path)
+block|{
+name|CommentInfo
+name|n
+init|=
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+name|n
+operator|.
+name|path
+argument_list|(
+name|r
+operator|.
+name|path
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|side
+argument_list|(
+name|r
+operator|.
+name|side
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|in_reply_to
+argument_list|(
+name|r
+operator|.
+name|id
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|r
+operator|.
+name|has_range
+argument_list|()
+condition|)
+block|{
+name|n
+operator|.
+name|line
+argument_list|(
+name|r
+operator|.
+name|range
+argument_list|()
+operator|.
+name|end_line
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|range
+argument_list|(
+name|r
+operator|.
+name|range
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|r
+operator|.
+name|has_line
+argument_list|()
+condition|)
+block|{
+name|n
+operator|.
+name|line
+argument_list|(
+name|r
+operator|.
+name|line
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|n
+return|;
+block|}
+DECL|method|copy (CommentInfo s)
+specifier|public
+specifier|static
+name|CommentInfo
+name|copy
+parameter_list|(
+name|CommentInfo
+name|s
+parameter_list|)
+block|{
+name|CommentInfo
+name|n
+init|=
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+name|n
+operator|.
+name|path
+argument_list|(
+name|s
+operator|.
+name|path
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|side
+argument_list|(
+name|s
+operator|.
+name|side
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|id
+argument_list|(
+name|s
+operator|.
+name|id
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|in_reply_to
+argument_list|(
+name|s
+operator|.
+name|in_reply_to
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|message
+argument_list|(
+name|s
+operator|.
+name|message
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|s
+operator|.
+name|has_range
+argument_list|()
+condition|)
+block|{
+name|n
+operator|.
+name|line
+argument_list|(
+name|s
+operator|.
+name|range
+argument_list|()
+operator|.
+name|end_line
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|n
+operator|.
+name|range
+argument_list|(
+name|s
+operator|.
+name|range
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|s
+operator|.
+name|has_line
+argument_list|()
+condition|)
+block|{
+name|n
+operator|.
+name|line
+argument_list|(
+name|s
+operator|.
+name|line
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|n
+return|;
+block|}
+DECL|method|path (String p)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|setPath
+name|path
 parameter_list|(
 name|String
-name|path
+name|p
 parameter_list|)
-comment|/*-{ this.path = path; }-*/
+comment|/*-{ this.path = p }-*/
 function_decl|;
-DECL|method|setSide (Side side)
-specifier|private
+DECL|method|id (String i)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|id
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.id = i }-*/
+function_decl|;
+DECL|method|line (int n)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|line
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+comment|/*-{ this.line = n }-*/
+function_decl|;
+DECL|method|range (CommentRange r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|range
+parameter_list|(
+name|CommentRange
+name|r
+parameter_list|)
+comment|/*-{ this.range = r }-*/
+function_decl|;
+DECL|method|in_reply_to (String i)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|in_reply_to
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.in_reply_to = i }-*/
+function_decl|;
+DECL|method|message (String m)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|message
+parameter_list|(
+name|String
+name|m
+parameter_list|)
+comment|/*-{ this.message = m }-*/
+function_decl|;
+DECL|method|side (Side side)
+specifier|public
 specifier|final
 name|void
-name|setSide
+name|side
 parameter_list|(
 name|Side
 name|side
 parameter_list|)
 block|{
-name|setSideRaw
+name|sideRaw
 argument_list|(
 name|side
 operator|.
@@ -335,62 +574,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setSideRaw (String side)
+DECL|method|sideRaw (String s)
 specifier|private
 specifier|final
 specifier|native
 name|void
-name|setSideRaw
+name|sideRaw
 parameter_list|(
 name|String
-name|side
+name|s
 parameter_list|)
-comment|/*-{ this.side = side; }-*/
-function_decl|;
-DECL|method|setLine (int line)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|setLine
-parameter_list|(
-name|int
-name|line
-parameter_list|)
-comment|/*-{ this.line = line; }-*/
-function_decl|;
-DECL|method|setInReplyTo (String in_reply_to)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|setInReplyTo
-parameter_list|(
-name|String
-name|in_reply_to
-parameter_list|)
-comment|/*-{     this.in_reply_to = in_reply_to;   }-*/
-function_decl|;
-DECL|method|setMessage (String message)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|setMessage
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-comment|/*-{ this.message = message; }-*/
-function_decl|;
-DECL|method|id ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|id
-parameter_list|()
-comment|/*-{ return this.id; }-*/
+comment|/*-{ this.side = s }-*/
 function_decl|;
 DECL|method|path ()
 specifier|public
@@ -399,7 +593,25 @@ specifier|native
 name|String
 name|path
 parameter_list|()
-comment|/*-{ return this.path; }-*/
+comment|/*-{ return this.path }-*/
+function_decl|;
+DECL|method|id ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|id
+parameter_list|()
+comment|/*-{ return this.id }-*/
+function_decl|;
+DECL|method|in_reply_to ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|in_reply_to
+parameter_list|()
+comment|/*-{ return this.in_reply_to }-*/
 function_decl|;
 DECL|method|side ()
 specifier|public
@@ -439,33 +651,6 @@ name|String
 name|sideRaw
 parameter_list|()
 comment|/*-{ return this.side }-*/
-function_decl|;
-DECL|method|line ()
-specifier|public
-specifier|final
-specifier|native
-name|int
-name|line
-parameter_list|()
-comment|/*-{ return this.line || 0; }-*/
-function_decl|;
-DECL|method|in_reply_to ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|in_reply_to
-parameter_list|()
-comment|/*-{ return this.in_reply_to; }-*/
-function_decl|;
-DECL|method|message ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|message
-parameter_list|()
-comment|/*-{ return this.message; }-*/
 function_decl|;
 DECL|method|updated ()
 specifier|public
@@ -527,7 +712,7 @@ specifier|native
 name|String
 name|updatedRaw
 parameter_list|()
-comment|/*-{ return this.updated; }-*/
+comment|/*-{ return this.updated }-*/
 function_decl|;
 DECL|method|updatedTimestamp ()
 specifier|private
@@ -557,7 +742,16 @@ specifier|native
 name|AccountInfo
 name|author
 parameter_list|()
-comment|/*-{ return this.author; }-*/
+comment|/*-{ return this.author }-*/
+function_decl|;
+DECL|method|line ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|line
+parameter_list|()
+comment|/*-{ return this.line || 0 }-*/
 function_decl|;
 DECL|method|has_line ()
 specifier|public
@@ -566,7 +760,16 @@ specifier|native
 name|boolean
 name|has_line
 parameter_list|()
-comment|/*-{ return this.hasOwnProperty('line'); }-*/
+comment|/*-{ return this.hasOwnProperty('line') }-*/
+function_decl|;
+DECL|method|has_range ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_range
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('range') }-*/
 function_decl|;
 DECL|method|range ()
 specifier|public
@@ -575,19 +778,16 @@ specifier|native
 name|CommentRange
 name|range
 parameter_list|()
-comment|/*-{ return this.range; }-*/
+comment|/*-{ return this.range }-*/
 function_decl|;
-DECL|method|setRange (CommentRange range)
+DECL|method|message ()
 specifier|public
 specifier|final
 specifier|native
-name|void
-name|setRange
-parameter_list|(
-name|CommentRange
-name|range
-parameter_list|)
-comment|/*-{ this.range = range; }-*/
+name|String
+name|message
+parameter_list|()
+comment|/*-{ return this.message }-*/
 function_decl|;
 DECL|method|CommentInfo ()
 specifier|protected

@@ -322,7 +322,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createDraft (PatchSet.Id id, CommentInput content, AsyncCallback<CommentInfo> cb)
+DECL|method|createDraft (PatchSet.Id id, CommentInfo content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -333,7 +333,7 @@ operator|.
 name|Id
 name|id
 parameter_list|,
-name|CommentInput
+name|CommentInfo
 name|content
 parameter_list|,
 name|AsyncCallback
@@ -358,7 +358,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateDraft (PatchSet.Id id, String draftId, CommentInput content, AsyncCallback<CommentInfo> cb)
+DECL|method|updateDraft (PatchSet.Id id, String draftId, CommentInfo content, AsyncCallback<CommentInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -372,7 +372,7 @@ parameter_list|,
 name|String
 name|draftId
 parameter_list|,
-name|CommentInput
+name|CommentInfo
 name|content
 parameter_list|,
 name|AsyncCallback

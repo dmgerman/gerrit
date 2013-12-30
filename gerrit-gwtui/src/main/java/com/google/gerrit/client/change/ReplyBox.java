@@ -3328,7 +3328,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|setPath
+name|path
 argument_list|(
 name|path
 argument_list|)

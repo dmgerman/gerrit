@@ -658,11 +658,6 @@ condition|(
 name|isNew
 condition|)
 block|{
-name|setVisible
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|lineWidget
 operator|.
 name|onFirstRedraw
@@ -702,11 +697,6 @@ argument_list|,
 name|Unit
 operator|.
 name|PX
-argument_list|)
-expr_stmt|;
-name|setVisible
-argument_list|(
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -875,6 +865,27 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|expandBefore (int cnt)
+name|void
+name|expandBefore
+parameter_list|(
+name|int
+name|cnt
+parameter_list|)
+block|{
+name|expandSideBefore
+argument_list|(
+name|cnt
+argument_list|)
+expr_stmt|;
+name|otherBar
+operator|.
+name|expandSideBefore
+argument_list|(
+name|cnt
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|expandAll ()
 name|void
 name|expandAll
@@ -890,11 +901,14 @@ name|updateSelection
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|expandBefore ()
+DECL|method|expandSideBefore (int cnt)
 specifier|private
 name|void
-name|expandBefore
-parameter_list|()
+name|expandSideBefore
+parameter_list|(
+name|int
+name|cnt
+parameter_list|)
 block|{
 name|FromTo
 name|range
@@ -920,7 +934,7 @@ name|newStart
 init|=
 name|oldStart
 operator|+
-name|NUM_ROWS_TO_EXPAND
+name|cnt
 decl_stmt|;
 name|int
 name|end
@@ -1098,13 +1112,10 @@ name|ClickEvent
 name|e
 parameter_list|)
 block|{
-name|otherBar
-operator|.
 name|expandBefore
-argument_list|()
-expr_stmt|;
-name|expandBefore
-argument_list|()
+argument_list|(
+name|NUM_ROWS_TO_EXPAND
+argument_list|)
 expr_stmt|;
 name|cm
 operator|.

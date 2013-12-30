@@ -629,7 +629,6 @@ return|;
 block|}
 DECL|method|sort (JsArray<CommentInfo> in)
 specifier|private
-specifier|static
 name|JsArray
 argument_list|<
 name|CommentInfo
@@ -650,6 +649,27 @@ operator|!=
 literal|null
 condition|)
 block|{
+for|for
+control|(
+name|CommentInfo
+name|c
+range|:
+name|Natives
+operator|.
+name|asList
+argument_list|(
+name|in
+argument_list|)
+control|)
+block|{
+name|c
+operator|.
+name|path
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+block|}
 name|Collections
 operator|.
 name|sort

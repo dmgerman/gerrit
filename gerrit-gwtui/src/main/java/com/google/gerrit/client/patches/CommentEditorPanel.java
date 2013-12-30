@@ -122,22 +122,6 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
-operator|.
-name|CommentInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
 name|rpc
 operator|.
 name|GerritCallback
@@ -1686,7 +1670,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-name|CommentInput
+name|CommentInfo
 name|input
 init|=
 name|toInput
@@ -2009,17 +1993,17 @@ block|}
 DECL|method|toInput (PatchLineComment c)
 specifier|public
 specifier|static
-name|CommentInput
+name|CommentInfo
 name|toInput
 parameter_list|(
 name|PatchLineComment
 name|c
 parameter_list|)
 block|{
-name|CommentInput
+name|CommentInfo
 name|i
 init|=
-name|CommentInput
+name|CommentInfo
 operator|.
 name|createObject
 argument_list|()
@@ -2029,7 +2013,7 @@ argument_list|()
 decl_stmt|;
 name|i
 operator|.
-name|setId
+name|id
 argument_list|(
 name|c
 operator|.
@@ -2042,7 +2026,7 @@ argument_list|)
 expr_stmt|;
 name|i
 operator|.
-name|setPath
+name|path
 argument_list|(
 name|c
 operator|.
@@ -2058,7 +2042,7 @@ argument_list|)
 expr_stmt|;
 name|i
 operator|.
-name|setSide
+name|side
 argument_list|(
 name|c
 operator|.
@@ -2088,7 +2072,7 @@ condition|)
 block|{
 name|i
 operator|.
-name|setLine
+name|line
 argument_list|(
 name|c
 operator|.
@@ -2099,7 +2083,7 @@ expr_stmt|;
 block|}
 name|i
 operator|.
-name|setInReplyTo
+name|in_reply_to
 argument_list|(
 name|c
 operator|.
@@ -2109,7 +2093,7 @@ argument_list|)
 expr_stmt|;
 name|i
 operator|.
-name|setMessage
+name|message
 argument_list|(
 name|c
 operator|.
