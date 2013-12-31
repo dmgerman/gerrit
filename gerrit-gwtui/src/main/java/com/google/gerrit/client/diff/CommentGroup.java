@@ -417,6 +417,24 @@ return|return
 name|cm
 return|;
 block|}
+DECL|method|getPeer ()
+name|CommentGroup
+name|getPeer
+parameter_list|()
+block|{
+return|return
+name|peer
+return|;
+block|}
+DECL|method|getLine ()
+name|int
+name|getLine
+parameter_list|()
+block|{
+return|return
+name|line
+return|;
+block|}
 DECL|method|add (PublishedBox box)
 name|void
 name|add
