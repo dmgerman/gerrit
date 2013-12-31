@@ -572,7 +572,7 @@ decl_stmt|;
 DECL|field|commitName
 annotation|@
 name|UiField
-name|Element
+name|CopyableLabel
 name|commitName
 decl_stmt|;
 DECL|field|browserLink
@@ -837,7 +837,7 @@ block|}
 block|}
 name|commitName
 operator|.
-name|setInnerText
+name|setText
 argument_list|(
 name|revision
 argument_list|)
