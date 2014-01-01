@@ -496,9 +496,6 @@ comment|// Since CM doesn't always take the height of line widgets into
 comment|// account when calculating scrollInfo when scrolling too fast (e.g.
 comment|// throw scrolling), simply setting scrollTop to be the same doesn't
 comment|// guarantee alignment.
-comment|//
-comment|// Find a pair of lines that are aligned and near the top of
-comment|// the viewport. Use that distance to correct the Y coordinate.
 name|int
 name|line
 init|=
@@ -511,6 +508,21 @@ argument_list|,
 literal|"local"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|line
+operator|==
+literal|0
+condition|)
+block|{
+comment|// Padding for insert at start of file occurs above line 0,
+comment|// and CM3 doesn't always compute heightAtLine correctly.
+return|return
+name|srcTop
+return|;
+block|}
+comment|// Find a pair of lines that are aligned and near the top of
+comment|// the viewport. Use that distance to correct the Y coordinate.
 name|LineMapper
 operator|.
 name|AlignedPair
