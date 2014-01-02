@@ -2132,7 +2132,7 @@ name|String
 argument_list|>
 name|b
 decl_stmt|;
-comment|// A list of changed sections of the of the corresponding line list.
+comment|// A list of changed sections of the corresponding line list.
 comment|// Each entry is a character<offset, length> pair. The offset is from the
 comment|// beginning of the first line in the list. Also, the offset includes an
 comment|// implied trailing newline character for each line.
