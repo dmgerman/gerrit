@@ -753,7 +753,7 @@ control|)
 block|{
 name|bar
 operator|.
-name|expandAll
+name|expandSideAll
 argument_list|()
 expr_stmt|;
 block|}
