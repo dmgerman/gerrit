@@ -148,6 +148,21 @@ name|find
 parameter_list|()
 comment|/*-{ return this.find(); }-*/
 function_decl|;
+DECL|method|on (String event, Runnable thunk)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|Runnable
+name|thunk
+parameter_list|)
+comment|/*-{ this.on(event, function(){$entry(thunk.@java.lang.Runnable::run()())}) }-*/
+function_decl|;
 DECL|method|TextMarker ()
 specifier|protected
 name|TextMarker
