@@ -329,6 +329,18 @@ name|h
 parameter_list|)
 comment|/*-{ this.setSize(null, h); }-*/
 function_decl|;
+DECL|method|getLine (int n)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|getLine
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+comment|/*-{ return this.getLine(n) }-*/
+function_decl|;
 DECL|method|refresh ()
 specifier|public
 specifier|final
