@@ -1819,7 +1819,7 @@ name|asChangeAttribute
 argument_list|(
 name|d
 operator|.
-name|getChange
+name|change
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1831,7 +1831,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|getChange
+name|change
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1875,7 +1875,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|getChange
+name|change
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1892,7 +1892,7 @@ name|psId
 init|=
 name|d
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|currentPatchSetId
@@ -2177,7 +2177,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|getChange
+name|change
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -1207,7 +1207,7 @@ if|if
 condition|(
 name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getStatus
@@ -1252,6 +1252,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|OrmException
+decl||
 name|SolrServerException
 name|e
 parameter_list|)
@@ -1313,7 +1315,7 @@ if|if
 condition|(
 name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getStatus
@@ -1358,6 +1360,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|OrmException
+decl||
 name|SolrServerException
 name|e
 parameter_list|)
@@ -1411,7 +1415,7 @@ if|if
 condition|(
 name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getStatus
@@ -1452,6 +1456,8 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|OrmException
+decl||
 name|SolrServerException
 name|e
 parameter_list|)

@@ -3207,7 +3207,7 @@ if|if
 condition|(
 name|cd
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getStatus

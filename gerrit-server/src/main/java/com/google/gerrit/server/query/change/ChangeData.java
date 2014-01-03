@@ -1992,28 +1992,6 @@ return|return
 name|legacyId
 return|;
 block|}
-DECL|method|getChange ()
-specifier|public
-name|Change
-name|getChange
-parameter_list|()
-block|{
-return|return
-name|change
-return|;
-block|}
-DECL|method|hasChange ()
-specifier|public
-name|boolean
-name|hasChange
-parameter_list|()
-block|{
-return|return
-name|change
-operator|!=
-literal|null
-return|;
-block|}
 DECL|method|fastIsVisibleTo (CurrentUser user)
 name|boolean
 name|fastIsVisibleTo
@@ -2089,19 +2067,6 @@ block|}
 return|return
 name|change
 return|;
-block|}
-DECL|method|setChange (Change c)
-name|void
-name|setChange
-parameter_list|(
-name|Change
-name|c
-parameter_list|)
-block|{
-name|change
-operator|=
-name|c
-expr_stmt|;
 block|}
 DECL|method|currentPatchSet ()
 specifier|public
@@ -2419,6 +2384,7 @@ operator|.
 name|openRepository
 argument_list|(
 name|change
+argument_list|()
 operator|.
 name|getProject
 argument_list|()

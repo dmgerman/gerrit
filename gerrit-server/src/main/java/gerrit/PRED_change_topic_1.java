@@ -240,15 +240,10 @@ name|change
 init|=
 name|StoredValues
 operator|.
-name|CHANGE_DATA
-operator|.
-name|get
+name|getChange
 argument_list|(
 name|engine
 argument_list|)
-operator|.
-name|getChange
-argument_list|()
 decl_stmt|;
 name|String
 name|topic
