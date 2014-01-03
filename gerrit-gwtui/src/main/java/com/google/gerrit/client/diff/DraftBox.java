@@ -1578,6 +1578,13 @@ name|getFromTo
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+name|comment
+operator|.
+name|in_reply_to
+argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 name|getCm
