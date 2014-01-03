@@ -683,6 +683,15 @@ name|skip
 parameter_list|()
 comment|/*-{ return this.skip || 0; }-*/
 function_decl|;
+DECL|method|common ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|common
+parameter_list|()
+comment|/*-{ return this.common || false; }-*/
+function_decl|;
 DECL|method|edit_a ()
 specifier|public
 specifier|final
