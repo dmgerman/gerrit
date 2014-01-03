@@ -837,6 +837,10 @@ argument_list|(
 name|buttons
 argument_list|,
 name|open
+operator|&&
+name|replyBox
+operator|==
+literal|null
 argument_list|)
 expr_stmt|;
 if|if
@@ -884,6 +888,15 @@ name|replyBox
 operator|=
 name|box
 expr_stmt|;
+name|UIObject
+operator|.
+name|setVisible
+argument_list|(
+name|buttons
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|box
 operator|.
 name|setReplyToBox
@@ -900,6 +913,16 @@ block|{
 name|replyBox
 operator|=
 literal|null
+expr_stmt|;
+name|UIObject
+operator|.
+name|setVisible
+argument_list|(
+name|buttons
+argument_list|,
+name|isOpen
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|openReplyBox ()
