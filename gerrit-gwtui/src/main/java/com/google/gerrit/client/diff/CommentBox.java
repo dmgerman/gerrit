@@ -623,6 +623,15 @@ name|getCm
 argument_list|()
 return|;
 block|}
+DECL|method|getFromTo ()
+name|FromTo
+name|getFromTo
+parameter_list|()
+block|{
+return|return
+name|fromTo
+return|;
+block|}
 block|}
 end_class
 
