@@ -103,6 +103,16 @@ name|String
 name|reviewedFileTitle
 parameter_list|()
 function_decl|;
+DECL|method|openLastFile ()
+name|String
+name|openLastFile
+parameter_list|()
+function_decl|;
+DECL|method|openCommitMessage ()
+name|String
+name|openCommitMessage
+parameter_list|()
+function_decl|;
 DECL|method|patchSet ()
 name|String
 name|patchSet
