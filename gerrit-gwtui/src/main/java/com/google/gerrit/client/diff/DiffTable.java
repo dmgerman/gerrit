@@ -344,11 +344,6 @@ name|DiffTableStyle
 extends|extends
 name|CssResource
 block|{
-DECL|method|insertCommentIcon ()
-name|String
-name|insertCommentIcon
-parameter_list|()
-function_decl|;
 DECL|method|fullscreen ()
 name|String
 name|fullscreen
