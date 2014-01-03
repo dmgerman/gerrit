@@ -1667,6 +1667,12 @@ name|getValue
 argument_list|()
 operator|!=
 literal|0
+operator|&&
+operator|!
+name|a
+operator|.
+name|isSubmit
+argument_list|()
 condition|)
 block|{
 name|allApprovals
