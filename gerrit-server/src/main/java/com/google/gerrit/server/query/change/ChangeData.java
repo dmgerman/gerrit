@@ -1207,6 +1207,32 @@ name|c
 parameter_list|)
 function_decl|;
 block|}
+comment|/**    * Create an instance for testing only.    *<p>    * Attempting to lazy load data will fail with NPEs.    *    * @param id change ID    * @return instance for testing.    */
+DECL|method|createForTest (Change.Id id)
+specifier|static
+name|ChangeData
+name|createForTest
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ChangeData
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+name|id
+argument_list|)
+return|;
+block|}
 DECL|field|db
 specifier|private
 specifier|final
@@ -1366,7 +1392,7 @@ decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted Change.Id id)
-specifier|public
+specifier|private
 name|ChangeData
 parameter_list|(
 name|GitRepositoryManager
@@ -1414,6 +1440,7 @@ block|}
 annotation|@
 name|AssistedInject
 DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted Change c)
+specifier|private
 name|ChangeData
 parameter_list|(
 name|GitRepositoryManager
@@ -1466,6 +1493,7 @@ block|}
 annotation|@
 name|AssistedInject
 DECL|method|ChangeData ( GitRepositoryManager repoManager, PatchListCache patchListCache, @Assisted ReviewDb db, @Assisted ChangeControl c)
+specifier|private
 name|ChangeData
 parameter_list|(
 name|GitRepositoryManager

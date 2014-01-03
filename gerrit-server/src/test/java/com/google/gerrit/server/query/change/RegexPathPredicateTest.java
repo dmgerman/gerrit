@@ -69,6 +69,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -115,30 +139,6 @@ operator|.
 name|util
 operator|.
 name|Arrays
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -588,15 +588,10 @@ expr_stmt|;
 name|ChangeData
 name|cd
 init|=
-operator|new
 name|ChangeData
+operator|.
+name|createForTest
 argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
 operator|new
 name|Change
 operator|.
