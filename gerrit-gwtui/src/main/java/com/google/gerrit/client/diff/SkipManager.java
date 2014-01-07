@@ -410,10 +410,12 @@ operator|&&
 name|len
 operator|>
 name|context
-operator|+
-literal|1
 condition|)
 block|{
+name|len
+operator|++
+expr_stmt|;
+comment|// Account for the trailing newline that is always added
 name|skips
 operator|.
 name|add
