@@ -280,6 +280,16 @@ name|isManualReview
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|renderEntireFile
+argument_list|(
+name|in
+operator|.
+name|isRenderEntireFile
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -390,6 +400,14 @@ operator|.
 name|setManualReview
 argument_list|(
 name|manualReview
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setRenderEntireFile
+argument_list|(
+name|renderEntireFile
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -556,6 +574,18 @@ name|boolean
 name|r
 parameter_list|)
 comment|/*-{ this.manual_review = r }-*/
+function_decl|;
+DECL|method|renderEntireFile (boolean r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|renderEntireFile
+parameter_list|(
+name|boolean
+name|r
+parameter_list|)
+comment|/*-{ this.render_entire_file = r }-*/
 function_decl|;
 DECL|method|showLineNumbers (boolean s)
 specifier|public
@@ -725,6 +755,15 @@ name|boolean
 name|manualReview
 parameter_list|()
 comment|/*-{ return this.manual_review || false }-*/
+function_decl|;
+DECL|method|renderEntireFile ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|renderEntireFile
+parameter_list|()
+comment|/*-{ return this.render_entire_file || false }-*/
 function_decl|;
 DECL|method|showLineNumbers ()
 specifier|public

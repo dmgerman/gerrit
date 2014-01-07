@@ -553,6 +553,18 @@ specifier|protected
 name|boolean
 name|hideLineNumbers
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|18
+argument_list|)
+DECL|field|renderEntireFile
+specifier|protected
+name|boolean
+name|renderEntireFile
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -718,6 +730,14 @@ operator|=
 name|p
 operator|.
 name|hideLineNumbers
+expr_stmt|;
+name|this
+operator|.
+name|renderEntireFile
+operator|=
+name|p
+operator|.
+name|renderEntireFile
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -1152,6 +1172,30 @@ block|{
 name|hideLineNumbers
 operator|=
 name|hide
+expr_stmt|;
+block|}
+DECL|method|isRenderEntireFile ()
+specifier|public
+name|boolean
+name|isRenderEntireFile
+parameter_list|()
+block|{
+return|return
+name|renderEntireFile
+return|;
+block|}
+DECL|method|setRenderEntireFile (boolean render)
+specifier|public
+name|void
+name|setRenderEntireFile
+parameter_list|(
+name|boolean
+name|render
+parameter_list|)
+block|{
+name|renderEntireFile
+operator|=
+name|render
 expr_stmt|;
 block|}
 block|}

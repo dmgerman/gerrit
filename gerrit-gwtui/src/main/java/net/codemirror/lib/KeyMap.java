@@ -120,6 +120,21 @@ name|thunk
 parameter_list|)
 comment|/*-{     this[key] = function() { $entry(thunk.@java.lang.Runnable::run()()); };     return this;   }-*/
 function_decl|;
+DECL|method|on (String key, boolean b)
+specifier|public
+specifier|final
+specifier|native
+name|KeyMap
+name|on
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|boolean
+name|b
+parameter_list|)
+comment|/*-{     this[key] = b;     return this;   }-*/
+function_decl|;
 DECL|method|remove (String key)
 specifier|public
 specifier|final
