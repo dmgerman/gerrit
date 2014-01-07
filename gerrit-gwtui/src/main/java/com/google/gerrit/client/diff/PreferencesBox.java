@@ -1789,13 +1789,6 @@ name|Gerrit
 operator|.
 name|setHeaderVisible
 argument_list|(
-name|view
-operator|.
-name|diffTable
-operator|.
-name|isHeaderVisible
-argument_list|()
-operator|&&
 operator|!
 name|prefs
 operator|.
