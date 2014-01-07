@@ -1003,31 +1003,6 @@ name|String
 name|publishCommentsScreen
 parameter_list|()
 function_decl|;
-DECL|method|relatedChangesGitweb ()
-name|String
-name|relatedChangesGitweb
-parameter_list|()
-function_decl|;
-DECL|method|relatedChangesIndirect ()
-name|String
-name|relatedChangesIndirect
-parameter_list|()
-function_decl|;
-DECL|method|relatedChangesNotCurrent ()
-name|String
-name|relatedChangesNotCurrent
-parameter_list|()
-function_decl|;
-DECL|method|relatedChangesSubject ()
-name|String
-name|relatedChangesSubject
-parameter_list|()
-function_decl|;
-DECL|method|relatedChangesTabPanel ()
-name|String
-name|relatedChangesTabPanel
-parameter_list|()
-function_decl|;
 DECL|method|registerScreenExplain ()
 name|String
 name|registerScreenExplain
