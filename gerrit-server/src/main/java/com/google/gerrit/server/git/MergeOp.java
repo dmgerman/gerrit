@@ -5063,16 +5063,14 @@ return|return
 name|m
 return|;
 block|}
-DECL|method|setMerged (final Change c, final ChangeMessage msg)
+DECL|method|setMerged (Change c, ChangeMessage msg)
 specifier|private
 name|void
 name|setMerged
 parameter_list|(
-specifier|final
 name|Change
 name|c
 parameter_list|,
-specifier|final
 name|ChangeMessage
 name|msg
 parameter_list|)
@@ -5123,6 +5121,8 @@ operator|.
 name|currentPatchSetId
 argument_list|()
 decl_stmt|;
+name|c
+operator|=
 name|setMergedPatchSet
 argument_list|(
 name|c
@@ -5249,7 +5249,7 @@ expr_stmt|;
 block|}
 DECL|method|setMergedPatchSet (Change.Id changeId, final PatchSet.Id merged)
 specifier|private
-name|void
+name|Change
 name|setMergedPatchSet
 parameter_list|(
 name|Change
@@ -5266,6 +5266,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+return|return
 name|db
 operator|.
 name|changes
@@ -5379,7 +5380,7 @@ return|;
 block|}
 block|}
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|saveApprovals (Change c, PatchSet.Id merged)
 specifier|private
@@ -5409,17 +5410,6 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|c
-operator|.
-name|setStatus
-argument_list|(
-name|Change
-operator|.
-name|Status
-operator|.
-name|MERGED
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|PatchSetApproval
