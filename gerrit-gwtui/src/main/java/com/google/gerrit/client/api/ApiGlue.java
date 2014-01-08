@@ -86,38 +86,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|NativeString
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
-name|GWT
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|core
@@ -196,16 +164,7 @@ name|init
 parameter_list|()
 block|{
 name|init0
-argument_list|(
-name|GWT
-operator|.
-name|getHostPageBaseURL
 argument_list|()
-argument_list|,
-name|NativeString
-operator|.
-name|TYPE
-argument_list|)
 expr_stmt|;
 name|ActionContext
 operator|.
@@ -221,20 +180,14 @@ name|addHistoryHook
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|init0 (String serverUrl, JavaScriptObject JsonString)
+DECL|method|init0 ()
 specifier|private
 specifier|static
 specifier|native
 name|void
 name|init0
-parameter_list|(
-name|String
-name|serverUrl
-parameter_list|,
-name|JavaScriptObject
-name|JsonString
-parameter_list|)
-comment|/*-{     $wnd.Gerrit = {       JsonString: JsonString,       events: {},       plugins: {},       change_actions: {},       revision_actions: {},       project_actions: {},        getPluginName: @com.google.gerrit.client.api.ApiGlue::getPluginName(),       install: function (f) {         var p = this._getPluginByUrl(@com.google.gerrit.client.api.PluginName::getCallerUrl()());         @com.google.gerrit.client.api.ApiGlue::install(Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gerrit/client/api/Plugin;)(f,p);       },       installGwt: function(u){return this._getPluginByUrl(u)},       _getPluginByUrl: function(u) {         return u.indexOf(serverUrl) == 0           ? this.plugins[u.substring(serverUrl.length)]           : this.plugins[u]       },        go: @com.google.gerrit.client.api.ApiGlue::go(Ljava/lang/String;),       refresh: @com.google.gerrit.client.api.ApiGlue::refresh(),        on: function (e,f){(this.events[e] || (this.events[e]=[])).push(f)},       onAction: function (t,n,c){this._onAction(this.getPluginName(),t,n,c)},       _onAction: function (p,t,n,c) {         var i = p+'~'+n;         if ('change' == t) this.change_actions[i]=c;         else if ('revision' == t) this.revision_actions[i]=c;         else if ('project' == t) this.project_actions[i]=c;       },        url: function (d) {         if (d&& d.length> 0)           return serverUrl + (d.charAt(0)=='/' ? d.substring(1) : d);         return serverUrl;       },        _api: function(u) {return @com.google.gerrit.client.rpc.RestApi::new(Ljava/lang/String;)(u)},       get: function(u,b){@com.google.gerrit.client.api.ActionContext::get(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),b)},       post: function(u,i,b){         if (typeof i=='string')           @com.google.gerrit.client.api.ActionContext::post(Lcom/google/gerrit/client/rpc/RestApi;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);         else           @com.google.gerrit.client.api.ActionContext::post(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);       },       put: function(u,i,b){         if(b){           if(typeof i=='string')             @com.google.gerrit.client.api.ActionContext::put(Lcom/google/gerrit/client/rpc/RestApi;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);           else             @com.google.gerrit.client.api.ActionContext::put(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);         }else{           @com.google.gerrit.client.api.ActionContext::put(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i)         }       },       'delete': function(u,b){@com.google.gerrit.client.api.ActionContext::delete(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),b)},     };   }-*/
+parameter_list|()
+comment|/*-{     var serverUrl = @com.google.gwt.core.client.GWT::getHostPageBaseURL()();     var ScreenDefinition = @com.google.gerrit.client.api.ExtensionScreen.Definition::TYPE;     $wnd.Gerrit = {       JsonString: @com.google.gerrit.client.rpc.NativeString::TYPE,       events: {},       plugins: {},       screens: {},       change_actions: {},       revision_actions: {},       project_actions: {},        getPluginName: @com.google.gerrit.client.api.ApiGlue::getPluginName(),       install: function (f) {         var p = this._getPluginByUrl(@com.google.gerrit.client.api.PluginName::getCallerUrl()());         @com.google.gerrit.client.api.ApiGlue::install(Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gerrit/client/api/Plugin;)(f,p);       },       installGwt: function(u){return this._getPluginByUrl(u)},       _getPluginByUrl: function(u) {         return u.indexOf(serverUrl) == 0           ? this.plugins[u.substring(serverUrl.length)]           : this.plugins[u]       },        go: @com.google.gerrit.client.api.ApiGlue::go(Ljava/lang/String;),       refresh: @com.google.gerrit.client.api.ApiGlue::refresh(),        on: function (e,f){(this.events[e] || (this.events[e]=[])).push(f)},       onAction: function (t,n,c){this._onAction(this.getPluginName(),t,n,c)},       _onAction: function (p,t,n,c) {         var i = p+'~'+n;         if ('change' == t) this.change_actions[i]=c;         else if ('revision' == t) this.revision_actions[i]=c;         else if ('project' == t) this.project_actions[i]=c;         else if ('screen' == t) _screen(p,t,c);       },       screen: function(r,c){this._screen(this.getPluginName(),r,c)},       _screen: function(p,r,c){         var s = new ScreenDefinition(r,c);         (this.screens[p] || (this.screens[p]=[])).push(s);       },        url: function (d) {         if (d&& d.length> 0)           return serverUrl + (d.charAt(0)=='/' ? d.substring(1) : d);         return serverUrl;       },        _api: function(u) {return @com.google.gerrit.client.rpc.RestApi::new(Ljava/lang/String;)(u)},       get: function(u,b){@com.google.gerrit.client.api.ActionContext::get(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),b)},       post: function(u,i,b){         if (typeof i=='string')           @com.google.gerrit.client.api.ActionContext::post(Lcom/google/gerrit/client/rpc/RestApi;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);         else           @com.google.gerrit.client.api.ActionContext::post(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);       },       put: function(u,i,b){         if(b){           if(typeof i=='string')             @com.google.gerrit.client.api.ActionContext::put(Lcom/google/gerrit/client/rpc/RestApi;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);           else             @com.google.gerrit.client.api.ActionContext::put(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i,b);         }else{           @com.google.gerrit.client.api.ActionContext::put(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),i)         }       },       'delete': function(u,b){@com.google.gerrit.client.api.ActionContext::delete(Lcom/google/gerrit/client/rpc/RestApi;Lcom/google/gwt/core/client/JavaScriptObject;)(this._api(u),b)},     };   }-*/
 function_decl|;
 comment|/** Install deprecated {@code gerrit_addHistoryHook()} function. */
 DECL|method|addHistoryHook ()

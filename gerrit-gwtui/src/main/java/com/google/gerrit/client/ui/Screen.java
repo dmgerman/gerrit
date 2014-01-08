@@ -759,6 +759,16 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getBody ()
+specifier|protected
+name|FlowPanel
+name|getBody
+parameter_list|()
+block|{
+return|return
+name|body
+return|;
+block|}
 DECL|method|setTheme (final ThemeInfo t)
 specifier|protected
 name|void
