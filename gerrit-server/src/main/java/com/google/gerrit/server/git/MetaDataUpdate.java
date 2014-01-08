@@ -345,7 +345,12 @@ parameter_list|()
 block|{
 return|return
 name|createPersonIdent
+argument_list|(
+name|identifiedUser
+operator|.
+name|get
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|create (Project.NameKey name)
@@ -357,6 +362,36 @@ name|Project
 operator|.
 name|NameKey
 name|name
+parameter_list|)
+throws|throws
+name|RepositoryNotFoundException
+throws|,
+name|IOException
+block|{
+return|return
+name|create
+argument_list|(
+name|name
+argument_list|,
+name|identifiedUser
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|create (Project.NameKey name, IdentifiedUser user)
+specifier|public
+name|MetaDataUpdate
+name|create
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|name
+parameter_list|,
+name|IdentifiedUser
+name|user
 parameter_list|)
 throws|throws
 name|RepositoryNotFoundException
@@ -388,7 +423,9 @@ operator|.
 name|setAuthor
 argument_list|(
 name|createPersonIdent
-argument_list|()
+argument_list|(
+name|user
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|md
@@ -405,17 +442,17 @@ return|return
 name|md
 return|;
 block|}
-DECL|method|createPersonIdent ()
+DECL|method|createPersonIdent (IdentifiedUser user)
 specifier|private
 name|PersonIdent
 name|createPersonIdent
-parameter_list|()
+parameter_list|(
+name|IdentifiedUser
+name|user
+parameter_list|)
 block|{
 return|return
-name|identifiedUser
-operator|.
-name|get
-argument_list|()
+name|user
 operator|.
 name|newCommitterIdent
 argument_list|(

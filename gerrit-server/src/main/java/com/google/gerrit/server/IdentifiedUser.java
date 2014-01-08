@@ -712,25 +712,25 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupBackend groupBackend)
+DECL|method|GenericFactory ( @ullable CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, Realm realm, AccountCache accountCache, GroupBackend groupBackend)
+specifier|public
 name|GenericFactory
 parameter_list|(
+annotation|@
+name|Nullable
 name|CapabilityControl
 operator|.
 name|Factory
 name|capabilityControlFactory
 parameter_list|,
-specifier|final
 name|AuthConfig
 name|authConfig
 parameter_list|,
-specifier|final
 annotation|@
 name|AnonymousCowardName
 name|String
 name|anonymousCowardName
 parameter_list|,
-specifier|final
 annotation|@
 name|CanonicalWebUrl
 name|Provider
@@ -739,15 +739,12 @@ name|String
 argument_list|>
 name|canonicalUrl
 parameter_list|,
-specifier|final
 name|Realm
 name|realm
 parameter_list|,
-specifier|final
 name|AccountCache
 name|accountCache
 parameter_list|,
-specifier|final
 name|GroupBackend
 name|groupBackend
 parameter_list|)
