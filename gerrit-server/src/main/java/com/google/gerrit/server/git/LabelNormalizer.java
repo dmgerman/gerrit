@@ -302,6 +302,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Normalizes votes on labels according to project config and permissions.  *<p>  * Votes are recorded in the database for a user based on the state of the  * project at that time: what labels are defined for the project, and what the  * user is allowed to vote on. Both of those can change between the time a vote  * is originally made and a later point, for example when a change is submitted.  * This class normalizes old votes against current project configuration.  */
+end_comment
+
 begin_class
 DECL|class|LabelNormalizer
 specifier|public
