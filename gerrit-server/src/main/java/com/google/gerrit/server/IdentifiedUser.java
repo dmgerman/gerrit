@@ -324,22 +324,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|Realm
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AnonymousCowardName
@@ -692,12 +676,6 @@ name|String
 argument_list|>
 name|canonicalUrl
 decl_stmt|;
-DECL|field|realm
-specifier|private
-specifier|final
-name|Realm
-name|realm
-decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
@@ -712,7 +690,7 @@ name|groupBackend
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( @ullable CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, Realm realm, AccountCache accountCache, GroupBackend groupBackend)
+DECL|method|GenericFactory ( @ullable CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend)
 specifier|public
 name|GenericFactory
 parameter_list|(
@@ -738,9 +716,6 @@ argument_list|<
 name|String
 argument_list|>
 name|canonicalUrl
-parameter_list|,
-name|Realm
-name|realm
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -772,12 +747,6 @@ operator|.
 name|canonicalUrl
 operator|=
 name|canonicalUrl
-expr_stmt|;
-name|this
-operator|.
-name|realm
-operator|=
-name|realm
 expr_stmt|;
 name|this
 operator|.
@@ -845,8 +814,6 @@ name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
 argument_list|,
-name|realm
-argument_list|,
 name|accountCache
 argument_list|,
 name|groupBackend
@@ -886,8 +853,6 @@ argument_list|,
 name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
-argument_list|,
-name|realm
 argument_list|,
 name|accountCache
 argument_list|,
@@ -938,8 +903,6 @@ argument_list|,
 name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
-argument_list|,
-name|realm
 argument_list|,
 name|accountCache
 argument_list|,
@@ -999,12 +962,6 @@ name|String
 argument_list|>
 name|canonicalUrl
 decl_stmt|;
-DECL|field|realm
-specifier|private
-specifier|final
-name|Realm
-name|realm
-decl_stmt|;
 DECL|field|accountCache
 specifier|private
 specifier|final
@@ -1037,7 +994,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupBackend groupBackend, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
 name|CapabilityControl
@@ -1063,10 +1020,6 @@ argument_list|<
 name|String
 argument_list|>
 name|canonicalUrl
-parameter_list|,
-specifier|final
-name|Realm
-name|realm
 parameter_list|,
 specifier|final
 name|AccountCache
@@ -1119,12 +1072,6 @@ name|canonicalUrl
 expr_stmt|;
 name|this
 operator|.
-name|realm
-operator|=
-name|realm
-expr_stmt|;
-name|this
-operator|.
 name|accountCache
 operator|=
 name|accountCache
@@ -1171,8 +1118,6 @@ name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
 argument_list|,
-name|realm
-argument_list|,
 name|accountCache
 argument_list|,
 name|groupBackend
@@ -1212,8 +1157,6 @@ argument_list|,
 name|anonymousCowardName
 argument_list|,
 name|canonicalUrl
-argument_list|,
-name|realm
 argument_list|,
 name|accountCache
 argument_list|,
@@ -1382,7 +1325,7 @@ specifier|private
 name|CurrentUser
 name|realUser
 decl_stmt|;
-DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final Realm realm, final AccountCache accountCache, final GroupBackend groupBackend, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id, @Nullable CurrentUser realUser)
+DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id, @Nullable CurrentUser realUser)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -1405,10 +1348,6 @@ argument_list|<
 name|String
 argument_list|>
 name|canonicalUrl
-parameter_list|,
-specifier|final
-name|Realm
-name|realm
 parameter_list|,
 specifier|final
 name|AccountCache
