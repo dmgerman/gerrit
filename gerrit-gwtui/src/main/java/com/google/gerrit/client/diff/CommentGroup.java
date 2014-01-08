@@ -678,6 +678,20 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+name|setOpenAll
+argument_list|(
+name|open
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setOpenAll (boolean open)
+name|void
+name|setOpenAll
+parameter_list|(
+name|boolean
+name|open
+parameter_list|)
+block|{
 for|for
 control|(
 name|int
