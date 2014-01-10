@@ -5204,6 +5204,13 @@ name|notCurrent
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|labels
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
