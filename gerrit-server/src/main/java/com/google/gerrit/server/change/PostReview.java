@@ -1217,14 +1217,12 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|change
-argument_list|,
-name|timestamp
-argument_list|,
 name|revision
 operator|.
-name|getUser
+name|getControl
 argument_list|()
+argument_list|,
+name|timestamp
 argument_list|)
 expr_stmt|;
 name|dirty

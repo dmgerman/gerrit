@@ -1422,11 +1422,12 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|rsrc
+operator|.
+name|getControl
+argument_list|()
 argument_list|,
 name|timestamp
-argument_list|,
-name|caller
 argument_list|)
 decl_stmt|;
 name|ReviewDb

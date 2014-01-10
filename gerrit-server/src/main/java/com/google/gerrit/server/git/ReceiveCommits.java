@@ -11726,7 +11726,7 @@ name|updateFactory
 operator|.
 name|create
 argument_list|(
-name|change
+name|changeCtl
 argument_list|,
 name|newPatchSet
 operator|.
