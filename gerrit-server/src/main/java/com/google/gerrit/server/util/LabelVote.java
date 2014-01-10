@@ -126,6 +126,22 @@ name|LabelType
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|PatchSetApproval
+import|;
+end_import
+
 begin_comment
 comment|/** A single vote on a label, consisting of a label name and a value. */
 end_comment
@@ -451,6 +467,28 @@ operator|.
 name|value
 operator|=
 name|value
+expr_stmt|;
+block|}
+DECL|method|LabelVote (PatchSetApproval psa)
+specifier|public
+name|LabelVote
+parameter_list|(
+name|PatchSetApproval
+name|psa
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|psa
+operator|.
+name|getLabel
+argument_list|()
+argument_list|,
+name|psa
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getLabel ()

@@ -706,9 +706,6 @@ operator|.
 name|NONE
 argument_list|)
 decl_stmt|;
-comment|// TODO(dborowitz): This doesn't copy labels in the notedb. We
-comment|// should stamp those in atomically with the same commit that
-comment|// describes the change being submitted.
 name|List
 argument_list|<
 name|PatchSetApproval

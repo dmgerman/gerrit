@@ -1235,9 +1235,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO(dborowitz): This doesn't copy labels in the notedb. We should
-comment|// stamp those in atomically with the same commit that describes the
-comment|// change being submitted.
 name|args
 operator|.
 name|db
