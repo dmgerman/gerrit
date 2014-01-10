@@ -5441,6 +5441,11 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|current
+condition|)
+block|{
 name|quickApprove
 operator|.
 name|set
@@ -5452,11 +5457,6 @@ argument_list|,
 name|replyAction
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|current
-condition|)
-block|{
 name|loadSubmitType
 argument_list|(
 name|info
@@ -5470,6 +5470,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|quickApprove
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|setVisible
 argument_list|(
 name|strategy
