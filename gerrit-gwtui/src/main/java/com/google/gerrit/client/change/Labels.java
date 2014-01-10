@@ -975,7 +975,7 @@ condition|)
 block|{
 name|statusText
 operator|.
-name|setInnerText
+name|setTitle
 argument_list|(
 literal|"Needs "
 operator|+
@@ -1001,7 +1001,7 @@ condition|)
 block|{
 name|statusText
 operator|.
-name|setInnerText
+name|setTitle
 argument_list|(
 literal|"Not "
 operator|+
