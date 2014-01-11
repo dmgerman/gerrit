@@ -262,11 +262,13 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
 block|{
 DECL|field|visibleToAll
+specifier|public
 name|Boolean
 name|visibleToAll
 decl_stmt|;

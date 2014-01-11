@@ -278,9 +278,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gson
+name|gerrit
 operator|.
-name|Gson
+name|server
+operator|.
+name|change
+operator|.
+name|SuggestReviewers
+operator|.
+name|SuggestedReviewerInfo
 import|;
 end_import
 
@@ -663,7 +669,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|SuggestReviewerInfo
+name|SuggestedReviewerInfo
 argument_list|>
 name|reviewers
 init|=
@@ -752,7 +758,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|SuggestReviewerInfo
+name|SuggestedReviewerInfo
 argument_list|>
 name|reviewers
 init|=
@@ -811,7 +817,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|SuggestReviewerInfo
+name|SuggestedReviewerInfo
 argument_list|>
 name|reviewers
 init|=
@@ -859,7 +865,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|SuggestReviewerInfo
+name|SuggestedReviewerInfo
 argument_list|>
 name|reviewers
 init|=
@@ -929,7 +935,7 @@ DECL|method|suggestReviewers (String changeId, String query, int n)
 specifier|private
 name|List
 argument_list|<
-name|SuggestReviewerInfo
+name|SuggestedReviewerInfo
 argument_list|>
 name|suggestReviewers
 parameter_list|(
@@ -946,8 +952,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-operator|new
-name|Gson
+name|newGson
 argument_list|()
 operator|.
 name|fromJson
@@ -977,7 +982,7 @@ name|TypeToken
 argument_list|<
 name|List
 argument_list|<
-name|SuggestReviewerInfo
+name|SuggestedReviewerInfo
 argument_list|>
 argument_list|>
 argument_list|()

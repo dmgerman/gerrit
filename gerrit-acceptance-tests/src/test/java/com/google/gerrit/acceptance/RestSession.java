@@ -98,9 +98,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gson
+name|gerrit
 operator|.
-name|Gson
+name|server
+operator|.
+name|OutputFormat
 import|;
 end_import
 
@@ -431,8 +433,11 @@ argument_list|(
 operator|new
 name|StringEntity
 argument_list|(
-operator|new
-name|Gson
+name|OutputFormat
+operator|.
+name|JSON_COMPACT
+operator|.
+name|newGson
 argument_list|()
 operator|.
 name|toJson
@@ -538,8 +543,11 @@ argument_list|(
 operator|new
 name|StringEntity
 argument_list|(
-operator|new
-name|Gson
+name|OutputFormat
+operator|.
+name|JSON_COMPACT
+operator|.
+name|newGson
 argument_list|()
 operator|.
 name|toJson

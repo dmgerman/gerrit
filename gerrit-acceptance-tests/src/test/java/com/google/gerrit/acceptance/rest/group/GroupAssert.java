@@ -126,6 +126,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -268,7 +286,7 @@ argument_list|)
 argument_list|,
 name|info
 operator|.
-name|group_id
+name|groupId
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -306,7 +324,7 @@ name|info
 operator|.
 name|options
 operator|.
-name|visible_to_all
+name|visibleToAll
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -338,7 +356,7 @@ name|decode
 argument_list|(
 name|info
 operator|.
-name|owner_id
+name|ownerId
 argument_list|)
 argument_list|)
 expr_stmt|;

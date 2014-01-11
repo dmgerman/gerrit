@@ -106,6 +106,22 @@ name|TestAccount
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountInfo
+import|;
+end_import
+
 begin_class
 DECL|class|AccountAssert
 specifier|public

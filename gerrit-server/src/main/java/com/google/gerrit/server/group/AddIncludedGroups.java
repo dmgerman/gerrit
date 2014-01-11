@@ -480,6 +480,7 @@ name|String
 name|_oneGroup
 decl_stmt|;
 DECL|field|groups
+specifier|public
 name|List
 argument_list|<
 name|String

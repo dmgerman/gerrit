@@ -332,9 +332,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gson
+name|gerrit
 operator|.
-name|Gson
+name|server
+operator|.
+name|change
+operator|.
+name|ChangeJson
+operator|.
+name|ChangeInfo
 import|;
 end_import
 
@@ -921,11 +927,8 @@ name|ChangeInfo
 argument_list|>
 name|changes
 init|=
-operator|(
-operator|new
-name|Gson
+name|newGson
 argument_list|()
-operator|)
 operator|.
 name|fromJson
 argument_list|(

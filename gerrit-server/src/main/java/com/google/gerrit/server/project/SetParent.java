@@ -378,6 +378,7 @@ name|Input
 argument_list|>
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -385,10 +386,12 @@ block|{
 annotation|@
 name|DefaultInput
 DECL|field|parent
+specifier|public
 name|String
 name|parent
 decl_stmt|;
 DECL|field|commitMessage
+specifier|public
 name|String
 name|commitMessage
 decl_stmt|;

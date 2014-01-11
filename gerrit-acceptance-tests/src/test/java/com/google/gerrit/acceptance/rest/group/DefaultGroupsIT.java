@@ -216,9 +216,15 @@ name|com
 operator|.
 name|google
 operator|.
-name|gson
+name|gerrit
 operator|.
-name|Gson
+name|server
+operator|.
+name|group
+operator|.
+name|GroupJson
+operator|.
+name|GroupInfo
 import|;
 end_import
 
@@ -488,13 +494,6 @@ argument_list|(
 literal|"/groups/"
 argument_list|)
 decl_stmt|;
-name|Gson
-name|gson
-init|=
-operator|new
-name|Gson
-argument_list|()
-decl_stmt|;
 name|Map
 argument_list|<
 name|String
@@ -503,7 +502,8 @@ name|GroupInfo
 argument_list|>
 name|result
 init|=
-name|gson
+name|newGson
+argument_list|()
 operator|.
 name|fromJson
 argument_list|(

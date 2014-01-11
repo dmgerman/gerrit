@@ -596,6 +596,7 @@ end_import
 
 begin_class
 DECL|class|SuggestReviewers
+specifier|public
 class|class
 name|SuggestReviewers
 implements|implements
@@ -1860,6 +1861,7 @@ literal|false
 return|;
 block|}
 DECL|class|SuggestedReviewerInfo
+specifier|public
 specifier|static
 class|class
 name|SuggestedReviewerInfo
