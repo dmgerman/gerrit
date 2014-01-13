@@ -417,12 +417,6 @@ name|UiField
 name|Element
 name|patchSetNavCellB
 decl_stmt|;
-DECL|field|sidePanelCell
-annotation|@
-name|UiField
-name|Element
-name|sidePanelCell
-decl_stmt|;
 DECL|field|widgets
 annotation|@
 name|UiField
