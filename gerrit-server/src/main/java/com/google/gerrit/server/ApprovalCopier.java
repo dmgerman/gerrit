@@ -606,7 +606,7 @@ operator|=
 name|changeDataFactory
 expr_stmt|;
 block|}
-DECL|method|copy (ReviewDb db, ChangeControl ctl, PatchSet.Id psId)
+DECL|method|copy (ReviewDb db, ChangeControl ctl, PatchSet ps)
 specifier|public
 name|void
 name|copy
@@ -618,9 +618,7 @@ name|ChangeControl
 name|ctl
 parameter_list|,
 name|PatchSet
-operator|.
-name|Id
-name|psId
+name|ps
 parameter_list|)
 throws|throws
 name|OrmException
@@ -638,12 +636,12 @@ name|db
 argument_list|,
 name|ctl
 argument_list|,
-name|psId
+name|ps
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getForPatchSet (ReviewDb db, ChangeControl ctl, PatchSet.Id psId)
+DECL|method|getForPatchSet (ReviewDb db, ChangeControl ctl, PatchSet ps)
 specifier|private
 name|List
 argument_list|<
@@ -658,9 +656,7 @@ name|ChangeControl
 name|ctl
 parameter_list|,
 name|PatchSet
-operator|.
-name|Id
-name|psId
+name|ps
 parameter_list|)
 throws|throws
 name|OrmException
@@ -739,7 +735,10 @@ name|all
 operator|.
 name|get
 argument_list|(
-name|psId
+name|ps
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 control|)
 block|{
@@ -785,36 +784,6 @@ operator|.
 name|navigableKeySet
 argument_list|()
 decl_stmt|;
-name|PatchSet
-name|currPs
-init|=
-name|patchSets
-operator|.
-name|get
-argument_list|(
-name|psId
-operator|.
-name|get
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|currPs
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"missing patch set "
-operator|+
-name|psId
-argument_list|)
-throw|;
-block|}
 name|Repository
 name|repo
 init|=
@@ -833,12 +802,13 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|// Walk patch sets strictly less than psId in descending order.
-for|for
-control|(
+comment|// Walk patch sets strictly less than current in descending order.
+name|Collection
+argument_list|<
 name|PatchSet
-name|priorPs
-range|:
+argument_list|>
+name|allPrior
+init|=
 name|patchSets
 operator|.
 name|descendingMap
@@ -846,7 +816,10 @@ argument_list|()
 operator|.
 name|tailMap
 argument_list|(
-name|psId
+name|ps
+operator|.
+name|getId
+argument_list|()
 operator|.
 name|get
 argument_list|()
@@ -856,6 +829,13 @@ argument_list|)
 operator|.
 name|values
 argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|PatchSet
+name|priorPs
+range|:
+name|allPrior
 control|)
 block|{
 name|List
@@ -912,7 +892,7 @@ name|ObjectId
 operator|.
 name|fromString
 argument_list|(
-name|currPs
+name|ps
 operator|.
 name|getRevision
 argument_list|()
@@ -954,7 +934,10 @@ name|project
 argument_list|,
 name|psa
 argument_list|,
-name|psId
+name|ps
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|allPsIds
 argument_list|,
@@ -980,7 +963,10 @@ name|copy
 argument_list|(
 name|psa
 argument_list|,
-name|psId
+name|ps
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

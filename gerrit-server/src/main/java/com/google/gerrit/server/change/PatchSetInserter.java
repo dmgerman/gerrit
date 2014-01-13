@@ -1862,9 +1862,6 @@ argument_list|,
 name|ctl
 argument_list|,
 name|patchSet
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
