@@ -344,7 +344,7 @@ decl_stmt|;
 DECL|field|sidePanel
 specifier|private
 specifier|final
-name|SidePanel
+name|OverviewBar
 name|sidePanel
 decl_stmt|;
 DECL|field|mapper
@@ -385,7 +385,7 @@ name|LineWidget
 argument_list|>
 name|padding
 decl_stmt|;
-DECL|method|ChunkManager (SideBySide2 host, CodeMirror cmA, CodeMirror cmB, SidePanel sidePanel)
+DECL|method|ChunkManager (SideBySide2 host, CodeMirror cmA, CodeMirror cmB, OverviewBar sidePanel)
 name|ChunkManager
 parameter_list|(
 name|SideBySide2
@@ -397,7 +397,7 @@ parameter_list|,
 name|CodeMirror
 name|cmB
 parameter_list|,
-name|SidePanel
+name|OverviewBar
 name|sidePanel
 parameter_list|)
 block|{
@@ -988,7 +988,7 @@ name|cmB
 argument_list|,
 name|startB
 argument_list|,
-name|SidePanel
+name|OverviewBar
 operator|.
 name|GutterType
 operator|.
@@ -1015,7 +1015,7 @@ name|cmA
 argument_list|,
 name|startA
 argument_list|,
-name|SidePanel
+name|OverviewBar
 operator|.
 name|GutterType
 operator|.
@@ -1033,7 +1033,7 @@ name|cmB
 argument_list|,
 name|startB
 argument_list|,
-name|SidePanel
+name|OverviewBar
 operator|.
 name|GutterType
 operator|.

@@ -94,7 +94,7 @@ name|client
 operator|.
 name|diff
 operator|.
-name|SidePanel
+name|OverviewBar
 operator|.
 name|GutterWrapper
 import|;

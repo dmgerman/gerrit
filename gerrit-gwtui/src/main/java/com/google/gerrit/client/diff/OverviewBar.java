@@ -343,13 +343,13 @@ import|;
 end_import
 
 begin_comment
-comment|/** The Widget that handles the scrollbar gutters */
+comment|/** Displays overview of all edits and comments in this file. */
 end_comment
 
 begin_class
-DECL|class|SidePanel
+DECL|class|OverviewBar
 class|class
-name|SidePanel
+name|OverviewBar
 extends|extends
 name|Composite
 block|{
@@ -361,7 +361,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|SidePanel
+name|OverviewBar
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -380,9 +380,9 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|interface|SidePanelStyle
+DECL|interface|Style
 interface|interface
-name|SidePanelStyle
+name|Style
 extends|extends
 name|CssResource
 block|{
@@ -439,7 +439,7 @@ block|}
 annotation|@
 name|UiField
 DECL|field|style
-name|SidePanelStyle
+name|Style
 name|style
 decl_stmt|;
 DECL|field|gutters
@@ -455,8 +455,8 @@ specifier|private
 name|CodeMirror
 name|cmB
 decl_stmt|;
-DECL|method|SidePanel ()
-name|SidePanel
+DECL|method|OverviewBar ()
+name|OverviewBar
 parameter_list|()
 block|{
 name|initWidget
@@ -469,8 +469,6 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|gutters
 operator|=
 operator|new
@@ -983,7 +981,7 @@ name|GutterWrapper
 block|{
 DECL|field|host
 specifier|private
-name|SidePanel
+name|OverviewBar
 name|host
 decl_stmt|;
 DECL|field|gutter
@@ -1011,10 +1009,10 @@ specifier|private
 name|GutterType
 name|type
 decl_stmt|;
-DECL|method|GutterWrapper (SidePanel host, Label anchor, CodeMirror cm, int line, GutterType type)
+DECL|method|GutterWrapper (OverviewBar host, Label anchor, CodeMirror cm, int line, GutterType type)
 name|GutterWrapper
 parameter_list|(
-name|SidePanel
+name|OverviewBar
 name|host
 parameter_list|,
 name|Label
