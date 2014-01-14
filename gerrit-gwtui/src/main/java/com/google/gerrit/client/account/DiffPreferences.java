@@ -182,6 +182,16 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|lineLength
+argument_list|(
+name|in
+operator|.
+name|getLineLength
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|context
 argument_list|(
 name|in
@@ -322,6 +332,14 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|setLineLength
+argument_list|(
+name|lineLength
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|setContext
 argument_list|(
 operator|(
@@ -454,6 +472,18 @@ name|int
 name|t
 parameter_list|)
 comment|/*-{ this.tab_size = t }-*/
+function_decl|;
+DECL|method|lineLength (int c)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|lineLength
+parameter_list|(
+name|int
+name|c
+parameter_list|)
+comment|/*-{ this.line_length = c }-*/
 function_decl|;
 DECL|method|context (int c)
 specifier|public
@@ -672,6 +702,22 @@ argument_list|(
 literal|"context"
 argument_list|,
 literal|10
+argument_list|)
+return|;
+block|}
+DECL|method|lineLength ()
+specifier|public
+specifier|final
+name|int
+name|lineLength
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"line_length"
+argument_list|,
+literal|100
 argument_list|)
 return|;
 block|}

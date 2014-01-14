@@ -375,6 +375,11 @@ name|String
 name|showLineNumbers
 parameter_list|()
 function_decl|;
+DECL|method|columnMargin ()
+name|String
+name|columnMargin
+parameter_list|()
+function_decl|;
 DECL|method|padding ()
 name|String
 name|padding
