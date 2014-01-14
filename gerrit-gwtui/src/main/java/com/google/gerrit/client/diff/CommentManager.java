@@ -1060,7 +1060,7 @@ name|host
 operator|.
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 operator|.
 name|addGutter
 argument_list|(
@@ -1085,7 +1085,7 @@ operator|-
 literal|1
 argument_list|)
 argument_list|,
-name|SidePanel
+name|OverviewBar
 operator|.
 name|GutterType
 operator|.
@@ -1386,7 +1386,7 @@ name|host
 operator|.
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 operator|.
 name|addGutter
 argument_list|(
@@ -1411,7 +1411,7 @@ operator|-
 literal|1
 argument_list|)
 argument_list|,
-name|SidePanel
+name|OverviewBar
 operator|.
 name|GutterType
 operator|.

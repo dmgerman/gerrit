@@ -1804,7 +1804,7 @@ argument_list|)
 expr_stmt|;
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 operator|.
 name|adjustGutters
 argument_list|(
@@ -3414,7 +3414,7 @@ name|cmB
 argument_list|,
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 argument_list|)
 expr_stmt|;
 name|skipManager
@@ -4452,7 +4452,7 @@ argument_list|)
 expr_stmt|;
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 operator|.
 name|adjustGutters
 argument_list|(
@@ -5219,7 +5219,7 @@ argument_list|)
 expr_stmt|;
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 operator|.
 name|adjustGutters
 argument_list|(
@@ -5669,7 +5669,7 @@ argument_list|()
 expr_stmt|;
 name|diffTable
 operator|.
-name|sidePanel
+name|overview
 operator|.
 name|clearDiffGutters
 argument_list|()

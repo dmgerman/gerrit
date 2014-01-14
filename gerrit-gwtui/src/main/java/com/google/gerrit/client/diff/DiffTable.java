@@ -398,11 +398,11 @@ name|UiField
 name|Element
 name|cmB
 decl_stmt|;
-DECL|field|sidePanel
+DECL|field|overview
 annotation|@
 name|UiField
-name|SidePanel
-name|sidePanel
+name|OverviewBar
+name|overview
 decl_stmt|;
 DECL|field|patchSetNavRow
 annotation|@
