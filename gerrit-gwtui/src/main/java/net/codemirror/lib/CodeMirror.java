@@ -759,27 +759,6 @@ name|getViewport
 parameter_list|()
 comment|/*-{     return this.getViewport();   }-*/
 function_decl|;
-DECL|method|getOldViewportSize ()
-specifier|public
-specifier|final
-specifier|native
-name|int
-name|getOldViewportSize
-parameter_list|()
-comment|/*-{     return this.state.oldViewportSize || 0;   }-*/
-function_decl|;
-DECL|method|setOldViewportSize (int lines)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setOldViewportSize
-parameter_list|(
-name|int
-name|lines
-parameter_list|)
-comment|/*-{     this.state.oldViewportSize = lines;   }-*/
-function_decl|;
 DECL|method|operation (Runnable thunk)
 specifier|public
 specifier|final

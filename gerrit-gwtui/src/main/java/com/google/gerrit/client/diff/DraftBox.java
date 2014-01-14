@@ -1550,7 +1550,7 @@ expr_stmt|;
 name|clearRange
 argument_list|()
 expr_stmt|;
-name|getGutterWrapper
+name|getMark
 argument_list|()
 operator|.
 name|remove

@@ -88,24 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|diff
-operator|.
-name|OverviewBar
-operator|.
-name|GutterWrapper
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|event
@@ -271,10 +253,12 @@ specifier|final
 name|CommentGroup
 name|group
 decl_stmt|;
-DECL|field|gutterWrapper
+DECL|field|mark
 specifier|private
-name|GutterWrapper
-name|gutterWrapper
+name|OverviewBar
+operator|.
+name|MarkHandle
+name|mark
 decl_stmt|;
 DECL|field|fromTo
 specifier|private
@@ -481,17 +465,30 @@ name|getCommentManager
 argument_list|()
 return|;
 block|}
-DECL|method|setGutterWrapper (GutterWrapper wrapper)
+DECL|method|getMark ()
+name|OverviewBar
+operator|.
+name|MarkHandle
+name|getMark
+parameter_list|()
+block|{
+return|return
+name|mark
+return|;
+block|}
+DECL|method|setMark (OverviewBar.MarkHandle mh)
 name|void
-name|setGutterWrapper
+name|setMark
 parameter_list|(
-name|GutterWrapper
-name|wrapper
+name|OverviewBar
+operator|.
+name|MarkHandle
+name|mh
 parameter_list|)
 block|{
-name|gutterWrapper
+name|mark
 operator|=
-name|wrapper
+name|mh
 expr_stmt|;
 block|}
 DECL|method|setRangeHighlight (boolean highlight)
@@ -601,15 +598,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-block|}
-DECL|method|getGutterWrapper ()
-name|GutterWrapper
-name|getGutterWrapper
-parameter_list|()
-block|{
-return|return
-name|gutterWrapper
-return|;
 block|}
 DECL|method|getCm ()
 name|CodeMirror

@@ -241,6 +241,19 @@ operator|=
 name|commentManager
 expr_stmt|;
 block|}
+DECL|method|getOverviewBar ()
+name|OverviewBar
+name|getOverviewBar
+parameter_list|()
+block|{
+return|return
+name|host
+operator|.
+name|diffTable
+operator|.
+name|overview
+return|;
+block|}
 DECL|method|render (int context, DiffInfo diff)
 name|void
 name|render
@@ -778,6 +791,12 @@ name|expandSideAll
 argument_list|()
 expr_stmt|;
 block|}
+name|getOverviewBar
+argument_list|()
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 name|skipBars
 operator|=
 literal|null
