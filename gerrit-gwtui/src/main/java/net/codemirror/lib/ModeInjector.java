@@ -295,6 +295,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|groovy
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|htmlmixed
 argument_list|()
 block|,

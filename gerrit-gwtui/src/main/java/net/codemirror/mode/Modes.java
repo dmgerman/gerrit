@@ -238,6 +238,18 @@ name|DataResource
 name|go
 parameter_list|()
 function_decl|;
+DECL|method|groovy ()
+annotation|@
+name|Source
+argument_list|(
+literal|"groovy/groovy.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|groovy
+parameter_list|()
+function_decl|;
 DECL|method|htmlmixed ()
 annotation|@
 name|Source
