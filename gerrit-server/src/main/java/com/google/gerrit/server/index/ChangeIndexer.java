@@ -1322,6 +1322,9 @@ argument_list|(
 literal|"Failed to index change %d"
 argument_list|,
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 name|e
