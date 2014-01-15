@@ -250,6 +250,18 @@ name|DataResource
 name|properties
 parameter_list|()
 function_decl|;
+DECL|method|perl ()
+annotation|@
+name|Source
+argument_list|(
+literal|"perl/perl.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|perl
+parameter_list|()
+function_decl|;
 DECL|method|python ()
 annotation|@
 name|Source
