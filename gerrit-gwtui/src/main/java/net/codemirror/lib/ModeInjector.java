@@ -295,6 +295,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|perl
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|properties
 argument_list|()
 block|,
@@ -303,6 +310,13 @@ operator|.
 name|I
 operator|.
 name|python
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
+name|ruby
 argument_list|()
 block|,
 name|Modes
