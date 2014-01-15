@@ -190,6 +190,18 @@ name|DataResource
 name|clike
 parameter_list|()
 function_decl|;
+DECL|method|commonlisp ()
+annotation|@
+name|Source
+argument_list|(
+literal|"commonlisp/commonlisp.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|commonlisp
+parameter_list|()
+function_decl|;
 DECL|method|css ()
 annotation|@
 name|Source

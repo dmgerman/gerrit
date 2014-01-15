@@ -267,6 +267,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|commonlisp
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|css
 argument_list|()
 block|,
