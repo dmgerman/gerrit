@@ -909,6 +909,14 @@ argument_list|(
 name|cnt
 argument_list|)
 expr_stmt|;
+name|manager
+operator|.
+name|getOverviewBar
+argument_list|()
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|expandSideBefore (int cnt)
 specifier|private
@@ -1156,6 +1164,14 @@ argument_list|,
 name|otherBar
 argument_list|)
 expr_stmt|;
+name|manager
+operator|.
+name|getOverviewBar
+argument_list|()
+operator|.
+name|refresh
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|UiHandler
@@ -1200,6 +1216,14 @@ expr_stmt|;
 name|otherBar
 operator|.
 name|expandAfter
+argument_list|()
+expr_stmt|;
+name|manager
+operator|.
+name|getOverviewBar
+argument_list|()
+operator|.
+name|refresh
 argument_list|()
 expr_stmt|;
 name|cm

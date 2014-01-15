@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** {left, top, width, height, clientWidth, clientHeight} objects returned by  * getScrollInfo(). */
+comment|/** Returned by {@link CodeMirror#getScrollInfo()}. */
 end_comment
 
 begin_class
@@ -90,21 +90,6 @@ name|ScrollInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create ()
-specifier|public
-specifier|static
-name|ScrollInfo
-name|create
-parameter_list|()
-block|{
-return|return
-name|createObject
-argument_list|()
-operator|.
-name|cast
-argument_list|()
-return|;
-block|}
 DECL|method|getLeft ()
 specifier|public
 specifier|final
@@ -123,15 +108,7 @@ name|getTop
 parameter_list|()
 comment|/*-{ return this.top; }-*/
 function_decl|;
-DECL|method|getWidth ()
-specifier|public
-specifier|final
-specifier|native
-name|double
-name|getWidth
-parameter_list|()
-comment|/*-{ return this.width; }-*/
-function_decl|;
+comment|/**    * Pixel height of the full content being scrolled. This may only be an    * estimate given by CodeMirror. Line widgets further down in the document may    * not be measured, so line heights can be incorrect until drawn.    */
 DECL|method|getHeight ()
 specifier|public
 specifier|final
@@ -141,15 +118,16 @@ name|getHeight
 parameter_list|()
 comment|/*-{ return this.height; }-*/
 function_decl|;
-DECL|method|getClientWidth ()
+DECL|method|getWidth ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getClientWidth
+name|getWidth
 parameter_list|()
-comment|/*-{ return this.clientWidth; }-*/
+comment|/*-{ return this.width; }-*/
 function_decl|;
+comment|/** Visible height of the viewport, excluding scrollbars. */
 DECL|method|getClientHeight ()
 specifier|public
 specifier|final
@@ -158,6 +136,15 @@ name|double
 name|getClientHeight
 parameter_list|()
 comment|/*-{ return this.clientHeight; }-*/
+function_decl|;
+DECL|method|getClientWidth ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|getClientWidth
+parameter_list|()
+comment|/*-{ return this.clientWidth; }-*/
 function_decl|;
 DECL|method|ScrollInfo ()
 specifier|protected

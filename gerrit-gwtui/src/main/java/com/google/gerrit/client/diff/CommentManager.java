@@ -1054,7 +1054,7 @@ argument_list|)
 expr_stmt|;
 name|box
 operator|.
-name|setGutterWrapper
+name|setMark
 argument_list|(
 name|host
 operator|.
@@ -1062,7 +1062,7 @@ name|diffTable
 operator|.
 name|overview
 operator|.
-name|addGutter
+name|add
 argument_list|(
 name|host
 operator|.
@@ -1085,9 +1085,11 @@ operator|-
 literal|1
 argument_list|)
 argument_list|,
+literal|1
+argument_list|,
 name|OverviewBar
 operator|.
-name|GutterType
+name|MarkType
 operator|.
 name|COMMENT
 argument_list|)
@@ -1380,7 +1382,7 @@ argument_list|)
 expr_stmt|;
 name|box
 operator|.
-name|setGutterWrapper
+name|setMark
 argument_list|(
 name|host
 operator|.
@@ -1388,7 +1390,7 @@ name|diffTable
 operator|.
 name|overview
 operator|.
-name|addGutter
+name|add
 argument_list|(
 name|host
 operator|.
@@ -1411,9 +1413,11 @@ operator|-
 literal|1
 argument_list|)
 argument_list|,
+literal|1
+argument_list|,
 name|OverviewBar
 operator|.
-name|GutterType
+name|MarkType
 operator|.
 name|DRAFT
 argument_list|)
