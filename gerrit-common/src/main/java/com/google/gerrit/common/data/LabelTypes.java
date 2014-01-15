@@ -161,6 +161,7 @@ decl_stmt|;
 DECL|field|byLabel
 specifier|private
 specifier|transient
+specifier|volatile
 name|Map
 argument_list|<
 name|String
@@ -172,6 +173,7 @@ decl_stmt|;
 DECL|field|positions
 specifier|private
 specifier|transient
+specifier|volatile
 name|Map
 argument_list|<
 name|String
