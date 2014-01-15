@@ -2514,7 +2514,7 @@ name|handleVimKey
 argument_list|(
 name|cm
 argument_list|,
-literal|"<PageDown>"
+literal|"<C-d>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2542,7 +2542,7 @@ name|handleVimKey
 argument_list|(
 name|cm
 argument_list|,
-literal|"<PageUp>"
+literal|"<C-u>"
 argument_list|)
 expr_stmt|;
 block|}
