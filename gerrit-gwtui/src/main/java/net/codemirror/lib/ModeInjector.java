@@ -316,6 +316,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|ruby
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|shell
 argument_list|()
 block|,
