@@ -274,6 +274,18 @@ name|DataResource
 name|python
 parameter_list|()
 function_decl|;
+DECL|method|ruby ()
+annotation|@
+name|Source
+argument_list|(
+literal|"ruby/ruby.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|ruby
+parameter_list|()
+function_decl|;
 DECL|method|shell ()
 annotation|@
 name|Source
