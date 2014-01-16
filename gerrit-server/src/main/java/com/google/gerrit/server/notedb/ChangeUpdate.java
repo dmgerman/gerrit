@@ -1496,7 +1496,7 @@ annotation|@
 name|Override
 DECL|method|onSave (CommitBuilder commit)
 specifier|protected
-name|void
+name|boolean
 name|onSave
 parameter_list|(
 name|CommitBuilder
@@ -1516,7 +1516,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|int
 name|ps
@@ -1749,6 +1751,9 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 DECL|method|addFooter (StringBuilder sb, FooterKey footer)
 specifier|private

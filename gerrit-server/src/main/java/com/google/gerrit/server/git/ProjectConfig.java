@@ -5043,7 +5043,7 @@ annotation|@
 name|Override
 DECL|method|onSave (CommitBuilder commit)
 specifier|protected
-name|void
+name|boolean
 name|onSave
 parameter_list|(
 name|CommitBuilder
@@ -5411,6 +5411,9 @@ expr_stmt|;
 name|saveGroupList
 argument_list|()
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 DECL|method|validMaxObjectSizeLimit (String value)
 specifier|public

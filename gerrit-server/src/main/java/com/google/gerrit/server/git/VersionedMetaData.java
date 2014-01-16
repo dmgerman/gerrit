@@ -497,6 +497,7 @@ name|String
 name|getRefName
 parameter_list|()
 function_decl|;
+comment|/** Set up the metadata, parsing any state from the loaded revision. */
 DECL|method|onLoad ()
 specifier|protected
 specifier|abstract
@@ -508,10 +509,11 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 function_decl|;
+comment|/**    * Save any changes to the metadata in a commit.    *    * @return true if the commit should proceed, false to abort.    * @throws IOException    * @throws ConfigInvalidException    */
 DECL|method|onSave (CommitBuilder commit)
 specifier|protected
 specifier|abstract
-name|void
+name|boolean
 name|onSave
 parameter_list|(
 name|CommitBuilder
@@ -964,7 +966,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|void
+name|boolean
 name|doSave
 parameter_list|(
 name|VersionedMetaData
@@ -1017,13 +1019,14 @@ name|inserter
 operator|=
 name|inserter
 expr_stmt|;
+return|return
 name|config
 operator|.
 name|onSave
 argument_list|(
 name|commit
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1095,13 +1098,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+operator|!
 name|doSave
 argument_list|(
 name|config
 argument_list|,
 name|commit
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+return|return;
+block|}
 specifier|final
 name|ObjectId
 name|res

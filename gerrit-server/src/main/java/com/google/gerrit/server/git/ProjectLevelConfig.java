@@ -534,7 +534,7 @@ annotation|@
 name|Override
 DECL|method|onSave (CommitBuilder commit)
 specifier|protected
-name|void
+name|boolean
 name|onSave
 parameter_list|(
 name|CommitBuilder
@@ -580,6 +580,9 @@ argument_list|,
 name|cfg
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class
