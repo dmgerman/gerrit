@@ -623,11 +623,9 @@ condition|)
 block|{
 name|summary
 operator|=
-literal|"Topic set to \""
+literal|"Topic set to "
 operator|+
 name|newTopicName
-operator|+
-literal|"\"."
 expr_stmt|;
 block|}
 elseif|else
@@ -641,11 +639,11 @@ condition|)
 block|{
 name|summary
 operator|=
-literal|"Topic \""
+literal|"Topic "
 operator|+
 name|oldTopicName
 operator|+
-literal|"\" removed."
+literal|" removed"
 expr_stmt|;
 block|}
 else|else
@@ -656,7 +654,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Topic updated from \"%s\" to \"%s\"."
+literal|"Topic changed from %s to %s"
 argument_list|,
 name|oldTopicName
 argument_list|,
