@@ -2607,7 +2607,7 @@ expr_stmt|;
 block|}
 DECL|method|ensureRowMeasurements ()
 specifier|private
-name|void
+name|boolean
 name|ensureRowMeasurements
 parameter_list|()
 block|{
@@ -2686,7 +2686,13 @@ operator|.
 name|PX
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|movePointerTo (int row, boolean scroll)
 specifier|public
@@ -3656,6 +3662,26 @@ argument_list|(
 name|this
 argument_list|,
 name|keysNavigation
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|view
+operator|.
+name|ensureRowMeasurements
+argument_list|()
+condition|)
+block|{
+name|view
+operator|.
+name|movePointerTo
+argument_list|(
+name|view
+operator|.
+name|selectedRow
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
