@@ -437,13 +437,13 @@ class|class
 name|GerritServer
 block|{
 comment|/** Returns fully started Gerrit server */
-DECL|method|start (Config base, boolean memory)
+DECL|method|start (Config cfg, boolean memory)
 specifier|static
 name|GerritServer
 name|start
 parameter_list|(
 name|Config
-name|base
+name|cfg
 parameter_list|,
 name|boolean
 name|memory
@@ -535,19 +535,6 @@ name|site
 operator|=
 literal|null
 expr_stmt|;
-name|Config
-name|cfg
-init|=
-name|base
-operator|!=
-literal|null
-condition|?
-name|base
-else|:
-operator|new
-name|Config
-argument_list|()
-decl_stmt|;
 name|mergeTestConfig
 argument_list|(
 name|cfg
@@ -646,19 +633,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Config
-name|cfg
-init|=
-name|base
-operator|!=
-literal|null
-condition|?
-name|base
-else|:
-operator|new
-name|Config
-argument_list|()
-decl_stmt|;
 name|site
 operator|=
 name|initSite
