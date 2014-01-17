@@ -845,6 +845,11 @@ operator|.
 name|KEY_ENTER
 condition|)
 block|{
+name|e
+operator|.
+name|stopPropagation
+argument_list|()
+expr_stmt|;
 name|onSave
 argument_list|(
 literal|null
