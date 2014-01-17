@@ -183,6 +183,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|addReviewer (String in)
+name|void
+name|addReviewer
+parameter_list|(
+name|String
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 block|}
 end_interface
 
