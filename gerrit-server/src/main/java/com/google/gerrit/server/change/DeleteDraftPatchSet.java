@@ -881,7 +881,7 @@ name|patchSetId
 argument_list|)
 condition|)
 block|{
-name|updateCurrentPatchSet
+name|updateChange
 argument_list|(
 name|dbProvider
 operator|.
@@ -894,6 +894,22 @@ name|previousPatchSetInfo
 argument_list|(
 name|patchSetId
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// TODO(davido): find a better way to enforce cache invalidation.
+name|updateChange
+argument_list|(
+name|dbProvider
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|change
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1018,11 +1034,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|updateCurrentPatchSet (final ReviewDb db, final Change change, final PatchSetInfo psInfo)
+DECL|method|updateChange (final ReviewDb db, final Change change, final PatchSetInfo psInfo)
 specifier|private
 specifier|static
 name|void
-name|updateCurrentPatchSet
+name|updateChange
 parameter_list|(
 specifier|final
 name|ReviewDb
@@ -1068,6 +1084,13 @@ name|Change
 name|c
 parameter_list|)
 block|{
+if|if
+condition|(
+name|psInfo
+operator|!=
+literal|null
+condition|)
+block|{
 name|c
 operator|.
 name|setCurrentPatchSet
@@ -1075,6 +1098,7 @@ argument_list|(
 name|psInfo
 argument_list|)
 expr_stmt|;
+block|}
 name|ChangeUtil
 operator|.
 name|updated
