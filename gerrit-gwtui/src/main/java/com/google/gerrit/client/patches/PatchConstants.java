@@ -230,16 +230,6 @@ name|String
 name|commentNext
 parameter_list|()
 function_decl|;
-DECL|method|pagePrev ()
-name|String
-name|pagePrev
-parameter_list|()
-function_decl|;
-DECL|method|pageNext ()
-name|String
-name|pageNext
-parameter_list|()
-function_decl|;
 DECL|method|fileList ()
 name|String
 name|fileList
