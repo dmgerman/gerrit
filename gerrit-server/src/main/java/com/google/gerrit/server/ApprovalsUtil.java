@@ -1757,6 +1757,16 @@ if|if
 condition|(
 name|a
 operator|.
+name|getPatchSetId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|c
+argument_list|)
+operator|&&
+name|a
+operator|.
 name|getValue
 argument_list|()
 operator|>
