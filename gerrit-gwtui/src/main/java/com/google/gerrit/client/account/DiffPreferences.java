@@ -96,6 +96,24 @@ name|client
 operator|.
 name|AccountDiffPreference
 operator|.
+name|Theme
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountDiffPreference
+operator|.
 name|Whitespace
 import|;
 end_import
@@ -300,6 +318,16 @@ name|isRenderEntireFile
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|theme
+argument_list|(
+name|in
+operator|.
+name|getTheme
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -429,6 +457,14 @@ name|renderEntireFile
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|setTheme
+argument_list|(
+name|theme
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|ignoreWhitespace (Whitespace i)
 specifier|public
@@ -460,6 +496,48 @@ name|String
 name|i
 parameter_list|)
 comment|/*-{ this.ignore_whitespace = i }-*/
+function_decl|;
+DECL|method|theme (Theme i)
+specifier|public
+specifier|final
+name|void
+name|theme
+parameter_list|(
+name|Theme
+name|i
+parameter_list|)
+block|{
+name|setThemeRaw
+argument_list|(
+name|i
+operator|!=
+literal|null
+condition|?
+name|i
+operator|.
+name|toString
+argument_list|()
+else|:
+name|Theme
+operator|.
+name|DEFAULT
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setThemeRaw (String i)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|setThemeRaw
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.theme = i }-*/
 function_decl|;
 DECL|method|tabSize (int t)
 specifier|public
@@ -672,6 +750,45 @@ name|String
 name|ignoreWhitespaceRaw
 parameter_list|()
 comment|/*-{ return this.ignore_whitespace }-*/
+function_decl|;
+DECL|method|theme ()
+specifier|public
+specifier|final
+name|Theme
+name|theme
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|themeRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|Theme
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+name|Theme
+operator|.
+name|DEFAULT
+return|;
+block|}
+DECL|method|themeRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|themeRaw
+parameter_list|()
+comment|/*-{ return this.theme }-*/
 function_decl|;
 DECL|method|tabSize ()
 specifier|public
