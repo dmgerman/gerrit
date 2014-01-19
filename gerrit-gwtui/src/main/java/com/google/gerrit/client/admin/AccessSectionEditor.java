@@ -1485,9 +1485,7 @@ name|perms
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -1797,9 +1795,7 @@ name|keep
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Permission
-argument_list|>
+argument_list|<>
 argument_list|(
 name|src
 operator|.

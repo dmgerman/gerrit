@@ -192,13 +192,7 @@ name|accounts
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|,
-name|AccountInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for

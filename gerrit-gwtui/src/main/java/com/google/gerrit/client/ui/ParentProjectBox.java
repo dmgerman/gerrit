@@ -421,9 +421,7 @@ name|exclude
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|setProject (Project.NameKey project)
@@ -576,9 +574,7 @@ name|filteredSuggestions
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Suggestion
-argument_list|>
+argument_list|<>
 argument_list|(
 name|response
 operator|.

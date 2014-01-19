@@ -206,9 +206,7 @@ name|permissions
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Permission
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -236,9 +234,7 @@ name|names
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -637,9 +633,7 @@ name|equals
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|Permission
-argument_list|>
+argument_list|<>
 argument_list|(
 operator|(
 operator|(

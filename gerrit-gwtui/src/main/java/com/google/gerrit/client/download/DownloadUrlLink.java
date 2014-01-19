@@ -1104,9 +1104,7 @@ name|urls
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|DownloadUrlLink
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Set

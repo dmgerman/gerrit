@@ -547,11 +547,7 @@ name|map
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|DashboardInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -613,9 +609,7 @@ name|display
 argument_list|(
 operator|new
 name|ArrayList
-argument_list|<
-name|DashboardInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|map
 operator|.

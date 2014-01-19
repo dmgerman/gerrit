@@ -1321,9 +1321,7 @@ name|rows
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SafeHtml
-argument_list|>
+argument_list|<>
 argument_list|(
 name|changes
 operator|.

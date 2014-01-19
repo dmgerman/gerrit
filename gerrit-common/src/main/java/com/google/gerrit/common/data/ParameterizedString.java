@@ -272,9 +272,7 @@ name|prs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Parameter
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)
@@ -288,9 +286,7 @@ name|ops
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Format
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)
@@ -567,9 +563,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|parameters
 operator|.
@@ -798,11 +792,7 @@ name|params
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|replace (final String name, final String value)
@@ -993,9 +983,7 @@ name|functs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Function
-argument_list|>
+argument_list|<>
 argument_list|(
 name|names
 operator|.
@@ -1194,7 +1182,6 @@ argument_list|>
 name|initFunctions
 parameter_list|()
 block|{
-specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1205,11 +1192,7 @@ name|m
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Function
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|m

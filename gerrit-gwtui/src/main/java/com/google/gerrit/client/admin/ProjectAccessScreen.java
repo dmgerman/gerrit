@@ -996,11 +996,7 @@ name|allCapabilities
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1572,9 +1568,7 @@ name|same
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|AccessSection
-argument_list|>
+argument_list|<>
 argument_list|(
 name|wantedSections
 argument_list|)
@@ -1588,9 +1582,7 @@ name|different
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|AccessSection
-argument_list|>
+argument_list|<>
 argument_list|(
 name|wantedSections
 operator|.
@@ -1649,9 +1641,7 @@ name|differentNames
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

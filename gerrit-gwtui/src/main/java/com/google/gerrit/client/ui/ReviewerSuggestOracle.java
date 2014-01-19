@@ -309,9 +309,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ReviewerSuggestion
-argument_list|>
+argument_list|<>
 argument_list|(
 name|result
 operator|.

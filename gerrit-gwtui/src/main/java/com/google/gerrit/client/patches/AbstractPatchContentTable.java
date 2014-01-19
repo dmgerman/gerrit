@@ -5295,9 +5295,7 @@ name|comments
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|panels
@@ -5310,9 +5308,7 @@ name|panels
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PublishedCommentPanel
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 block|}

@@ -159,13 +159,7 @@ name|caches
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|,
-name|ChangeCache
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|get (Change.Id chg)
@@ -312,9 +306,7 @@ name|info
 operator|=
 operator|new
 name|ListenableValue
-argument_list|<
-name|ChangeInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

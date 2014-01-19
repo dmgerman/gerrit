@@ -295,9 +295,7 @@ name|skips
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SkippedLine
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|int
@@ -603,9 +601,7 @@ name|skipBars
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|SkipBar
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for

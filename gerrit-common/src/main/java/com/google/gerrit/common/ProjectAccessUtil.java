@@ -162,7 +162,7 @@ specifier|public
 class|class
 name|ProjectAccessUtil
 block|{
-DECL|method|mergeSections (final List<AccessSection> src)
+DECL|method|mergeSections (List<AccessSection> src)
 specifier|public
 specifier|static
 name|List
@@ -171,7 +171,6 @@ name|AccessSection
 argument_list|>
 name|mergeSections
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|AccessSection
@@ -179,7 +178,6 @@ argument_list|>
 name|src
 parameter_list|)
 block|{
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -190,11 +188,7 @@ name|map
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|AccessSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -267,9 +261,7 @@ block|}
 return|return
 operator|new
 name|ArrayList
-argument_list|<
-name|AccessSection
-argument_list|>
+argument_list|<>
 argument_list|(
 name|map
 operator|.
@@ -304,9 +296,7 @@ name|sectionsToRemove
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|AccessSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -327,9 +317,7 @@ name|permissionsToRemove
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Permission
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

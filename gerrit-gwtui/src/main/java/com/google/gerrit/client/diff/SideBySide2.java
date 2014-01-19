@@ -1247,9 +1247,7 @@ name|handlers
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|HandlerRegistration
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|6
 argument_list|)

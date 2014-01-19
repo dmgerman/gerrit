@@ -219,17 +219,15 @@ argument_list|>
 argument_list|>
 name|forB
 decl_stmt|;
-DECL|method|CommentDetail (final PatchSet.Id idA, final PatchSet.Id idB)
+DECL|method|CommentDetail (PatchSet.Id idA, PatchSet.Id idB)
 specifier|public
 name|CommentDetail
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
 name|idA
 parameter_list|,
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -242,9 +240,7 @@ name|a
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|this
@@ -253,9 +249,7 @@ name|b
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|this
@@ -631,14 +625,7 @@ name|parentMap
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|PatchLineComment
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// It's possible to have more than one root comment if two reviewers create a comment on the
@@ -651,9 +638,7 @@ name|rootComments
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Store all the comments in parentMap, keyed by their parent
@@ -697,9 +682,7 @@ name|l
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|parentMap
@@ -743,9 +726,7 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addChildren
@@ -837,7 +818,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|index ( final List<PatchLineComment> in)
+DECL|method|index ( List<PatchLineComment> in)
 specifier|private
 name|Map
 argument_list|<
@@ -850,7 +831,6 @@ argument_list|>
 argument_list|>
 name|index
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|PatchLineComment
@@ -858,7 +838,6 @@ argument_list|>
 name|in
 parameter_list|)
 block|{
-specifier|final
 name|HashMap
 argument_list|<
 name|Integer
@@ -869,21 +848,12 @@ name|PatchLineComment
 argument_list|>
 argument_list|>
 name|r
-decl_stmt|;
-name|r
-operator|=
+init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|List
-argument_list|<
-name|PatchLineComment
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 specifier|final
@@ -920,9 +890,7 @@ name|l
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|r

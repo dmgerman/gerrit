@@ -1343,14 +1343,7 @@ name|m
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|CommentInfo
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1388,9 +1381,7 @@ name|l
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CommentInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|m

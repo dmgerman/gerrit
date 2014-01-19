@@ -3677,11 +3677,7 @@ name|menuBars
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|LinkMenuBar
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 specifier|final
