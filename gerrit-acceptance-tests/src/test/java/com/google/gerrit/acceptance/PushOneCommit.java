@@ -246,6 +246,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -814,7 +828,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -859,6 +873,8 @@ argument_list|)
 name|String
 name|content
 parameter_list|,
+annotation|@
+name|Nullable
 annotation|@
 name|Assisted
 argument_list|(
