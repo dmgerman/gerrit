@@ -5822,22 +5822,19 @@ name|atag
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addExtensionLink (final LinkMenuBar m, final TopMenuItem item)
+DECL|method|addExtensionLink (LinkMenuBar m, TopMenuItem item)
 specifier|private
 specifier|static
 name|void
 name|addExtensionLink
 parameter_list|(
-specifier|final
 name|LinkMenuBar
 name|m
 parameter_list|,
-specifier|final
 name|TopMenuItem
 name|item
 parameter_list|)
 block|{
-specifier|final
 name|Anchor
 name|atag
 init|=
@@ -5848,10 +5845,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
+name|selfRedirect
+argument_list|(
 name|item
 operator|.
 name|getUrl
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|atag
