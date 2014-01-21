@@ -86,22 +86,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|initSsh
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -123,20 +107,6 @@ operator|.
 name|acceptance
 operator|.
 name|AbstractDaemonTest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|AccountCreator
 import|;
 end_import
 
@@ -434,13 +404,6 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Inject
-DECL|field|accounts
-specifier|private
-name|AccountCreator
-name|accounts
-decl_stmt|;
-annotation|@
-name|Inject
 DECL|field|metaDataUpdateFactory
 specifier|private
 name|MetaDataUpdate
@@ -461,11 +424,6 @@ DECL|field|allProjects
 specifier|private
 name|AllProjectsNameProvider
 name|allProjects
-decl_stmt|;
-DECL|field|adminSession
-specifier|private
-name|RestSession
-name|adminSession
 decl_stmt|;
 DECL|field|userSession
 specifier|private
@@ -496,24 +454,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TestAccount
-name|admin
-init|=
-name|accounts
-operator|.
-name|admin
-argument_list|()
-decl_stmt|;
-name|adminSession
-operator|=
-operator|new
-name|RestSession
-argument_list|(
-name|server
-argument_list|,
-name|admin
-argument_list|)
-expr_stmt|;
 name|TestAccount
 name|user
 init|=
@@ -558,11 +498,6 @@ argument_list|(
 name|project
 argument_list|,
 literal|"test"
-argument_list|)
-expr_stmt|;
-name|initSsh
-argument_list|(
-name|admin
 argument_list|)
 expr_stmt|;
 name|SshSession
