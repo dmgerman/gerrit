@@ -1359,7 +1359,7 @@ name|a
 range|:
 name|input
 operator|.
-name|allApprovals
+name|approvals
 argument_list|()
 control|)
 block|{
