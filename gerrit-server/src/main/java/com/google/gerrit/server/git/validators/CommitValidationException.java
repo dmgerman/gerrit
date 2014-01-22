@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|validators
+operator|.
+name|ValidationException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -94,7 +110,7 @@ specifier|public
 class|class
 name|CommitValidationException
 extends|extends
-name|Exception
+name|ValidationException
 block|{
 DECL|field|serialVersionUID
 specifier|private

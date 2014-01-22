@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.validators
+DECL|package|com.google.gerrit.server.validators
 package|package
 name|com
 operator|.
@@ -61,8 +61,6 @@ operator|.
 name|gerrit
 operator|.
 name|server
-operator|.
-name|git
 operator|.
 name|validators
 package|;
@@ -76,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|git
+name|annotations
 operator|.
-name|CommitMergeStatus
+name|ExtensionPoint
 import|;
 end_import
 
@@ -94,70 +92,38 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|validators
+name|project
 operator|.
-name|ValidationException
+name|CreateProjectArgs
 import|;
 end_import
 
-begin_class
-DECL|class|MergeValidationException
+begin_comment
+comment|/**  * Listener to provide validation on project creation.  */
+end_comment
+
+begin_interface
+annotation|@
+name|ExtensionPoint
+DECL|interface|ProjectCreationValidationListener
 specifier|public
-class|class
-name|MergeValidationException
-extends|extends
-name|ValidationException
+interface|interface
+name|ProjectCreationValidationListener
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|field|status
-specifier|private
-specifier|final
-name|CommitMergeStatus
-name|status
-decl_stmt|;
-DECL|method|MergeValidationException (CommitMergeStatus status)
+comment|/**    * Project creation validation.    *    * Invoked by Gerrit just before a new project is going to be created.    *    * @param args arguments for the project creation    * @throws ValidationException if validation fails    */
+DECL|method|validateNewProject (CreateProjectArgs args)
 specifier|public
-name|MergeValidationException
+name|void
+name|validateNewProject
 parameter_list|(
-name|CommitMergeStatus
-name|status
+name|CreateProjectArgs
+name|args
 parameter_list|)
-block|{
-name|super
-argument_list|(
-name|status
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|status
-operator|=
-name|status
-expr_stmt|;
+throws|throws
+name|ValidationException
+function_decl|;
 block|}
-DECL|method|getStatus ()
-specifier|public
-name|CommitMergeStatus
-name|getStatus
-parameter_list|()
-block|{
-return|return
-name|status
-return|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
