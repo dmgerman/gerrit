@@ -3930,7 +3930,7 @@ name|allApprovals
 init|=
 name|cd
 operator|.
-name|approvalsMap
+name|approvals
 argument_list|()
 decl_stmt|;
 for|for
@@ -4256,6 +4256,9 @@ range|:
 name|cd
 operator|.
 name|approvals
+argument_list|()
+operator|.
+name|values
 argument_list|()
 control|)
 block|{
