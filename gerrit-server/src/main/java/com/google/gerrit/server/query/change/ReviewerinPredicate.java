@@ -80,7 +80,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGroup
+name|Account
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSetApproval
+name|AccountGroup
 import|;
 end_import
 
@@ -285,19 +285,20 @@ name|OrmException
 block|{
 for|for
 control|(
-name|PatchSetApproval
-name|p
+name|Account
+operator|.
+name|Id
+name|accountId
 range|:
 name|object
 operator|.
-name|approvals
+name|reviewers
 argument_list|()
 operator|.
 name|values
 argument_list|()
 control|)
 block|{
-specifier|final
 name|IdentifiedUser
 name|reviewer
 init|=
@@ -307,10 +308,7 @@ name|create
 argument_list|(
 name|dbProvider
 argument_list|,
-name|p
-operator|.
-name|getAccountId
-argument_list|()
+name|accountId
 argument_list|)
 decl_stmt|;
 if|if
