@@ -2734,10 +2734,13 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|ApprovalsUtil
+name|approvalsUtil
 operator|.
 name|getReviewers
 argument_list|(
+name|notes
+argument_list|()
+argument_list|,
 name|approvals
 argument_list|()
 argument_list|)
