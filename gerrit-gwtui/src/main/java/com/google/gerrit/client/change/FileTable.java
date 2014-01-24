@@ -1046,16 +1046,6 @@ name|NativeEvent
 name|event
 parameter_list|)
 block|{
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|Element
 name|e
 init|=

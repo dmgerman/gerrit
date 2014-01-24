@@ -616,16 +616,6 @@ comment|/** Parse an HTML block and return the first (typically root) element. *
 DECL|method|parse (SafeHtml html)
 specifier|public
 specifier|static
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|Element
 name|parse
 parameter_list|(
@@ -633,16 +623,6 @@ name|SafeHtml
 name|html
 parameter_list|)
 block|{
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
 name|Element
 name|e
 init|=
