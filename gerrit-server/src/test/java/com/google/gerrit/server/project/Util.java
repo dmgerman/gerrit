@@ -769,7 +769,7 @@ argument_list|(
 operator|-
 literal|1
 argument_list|,
-literal|"I would prefer that you didn't submit this"
+literal|"I would prefer this is not merged as is"
 argument_list|)
 argument_list|,
 name|value
@@ -777,7 +777,7 @@ argument_list|(
 operator|-
 literal|2
 argument_list|,
-literal|"Do not submit"
+literal|"This shall not be merged"
 argument_list|)
 argument_list|)
 decl_stmt|;
