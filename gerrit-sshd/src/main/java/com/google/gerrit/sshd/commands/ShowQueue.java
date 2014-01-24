@@ -396,7 +396,7 @@ literal|"show-queue"
 argument_list|,
 name|description
 operator|=
-literal|"Display the background work queues, including replication"
+literal|"Display the background work queues"
 argument_list|)
 DECL|class|ShowQueue
 specifier|final
