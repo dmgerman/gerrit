@@ -706,7 +706,7 @@ name|all
 init|=
 name|cd
 operator|.
-name|approvalsMap
+name|approvals
 argument_list|()
 decl_stmt|;
 name|Table

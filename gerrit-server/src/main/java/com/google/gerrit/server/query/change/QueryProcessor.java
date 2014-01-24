@@ -1994,7 +1994,7 @@ name|includeApprovals
 condition|?
 name|d
 operator|.
-name|approvalsMap
+name|approvals
 argument_list|()
 operator|.
 name|asMap
@@ -2030,7 +2030,7 @@ name|includeApprovals
 condition|?
 name|d
 operator|.
-name|approvalsMap
+name|approvals
 argument_list|()
 operator|.
 name|asMap

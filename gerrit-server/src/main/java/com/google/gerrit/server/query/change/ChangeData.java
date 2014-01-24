@@ -2653,33 +2653,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * @return patch set approvals for the change in timestamp order.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|approvals ()
-specifier|public
-name|List
-argument_list|<
-name|PatchSetApproval
-argument_list|>
-name|approvals
-parameter_list|()
-throws|throws
-name|OrmException
-block|{
-return|return
-name|ImmutableList
-operator|.
-name|copyOf
-argument_list|(
-name|approvalsMap
-argument_list|()
-operator|.
-name|values
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/**    * @return all patch set approvals for the change, keyed by ID, ordered by    *     timestamp within each patch set.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|approvalsMap ()
+DECL|method|approvals ()
 specifier|public
 name|ListMultimap
 argument_list|<
@@ -2689,7 +2664,7 @@ name|Id
 argument_list|,
 name|PatchSetApproval
 argument_list|>
-name|approvalsMap
+name|approvals
 parameter_list|()
 throws|throws
 name|OrmException
@@ -2742,6 +2717,9 @@ name|notes
 argument_list|()
 argument_list|,
 name|approvals
+argument_list|()
+operator|.
+name|values
 argument_list|()
 argument_list|)
 return|;
