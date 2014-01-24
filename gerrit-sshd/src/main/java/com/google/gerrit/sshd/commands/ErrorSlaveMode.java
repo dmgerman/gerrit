@@ -110,6 +110,7 @@ end_comment
 
 begin_class
 DECL|class|ErrorSlaveMode
+specifier|public
 specifier|final
 class|class
 name|ErrorSlaveMode
