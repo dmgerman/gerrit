@@ -270,6 +270,22 @@ name|dom
 operator|.
 name|client
 operator|.
+name|Element
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|dom
+operator|.
+name|client
+operator|.
 name|NativeEvent
 import|;
 end_import
@@ -511,22 +527,6 @@ operator|.
 name|client
 operator|.
 name|DOM
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|Element
 import|;
 end_import
 
@@ -872,7 +872,7 @@ parameter_list|(
 name|String
 name|o
 parameter_list|)
-comment|/*-{     $wnd[o] = $entry(@com.google.gerrit.client.change.RelatedChangesTab::onOpen(Lcom/google/gwt/dom/client/NativeEvent;Lcom/google/gwt/user/client/Element;));     return o + '(event,this)';   }-*/
+comment|/*-{     $wnd[o] = $entry(@com.google.gerrit.client.change.RelatedChangesTab::onOpen(Lcom/google/gwt/dom/client/NativeEvent;Lcom/google/gwt/dom/client/Element;));     return o + '(event,this)';   }-*/
 function_decl|;
 DECL|method|onOpen (NativeEvent evt, Element e)
 specifier|private
@@ -3486,16 +3486,6 @@ condition|)
 block|{
 name|NodeList
 argument_list|<
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|dom
-operator|.
-name|client
-operator|.
 name|Element
 argument_list|>
 name|nodes

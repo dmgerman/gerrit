@@ -1408,10 +1408,15 @@ name|height
 expr_stmt|;
 name|setElement
 argument_list|(
+call|(
+name|Element
+call|)
+argument_list|(
 name|DOM
 operator|.
 name|createDiv
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|setStyleName

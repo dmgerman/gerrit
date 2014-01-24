@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gwt
 operator|.
-name|user
+name|dom
 operator|.
 name|client
 operator|.
-name|DOM
+name|Element
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|user
 operator|.
 name|client
 operator|.
-name|Element
+name|DOM
 import|;
 end_import
 
