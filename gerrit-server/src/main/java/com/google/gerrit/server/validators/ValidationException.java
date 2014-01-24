@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.git.validators
+DECL|package|com.google.gerrit.server.validators
 package|package
 name|com
 operator|.
@@ -62,51 +62,17 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
 name|validators
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
-name|CommitMergeStatus
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|validators
-operator|.
-name|ValidationException
-import|;
-end_import
-
 begin_class
-DECL|class|MergeValidationException
+DECL|class|ValidationException
 specifier|public
 class|class
-name|MergeValidationException
-extends|extends
 name|ValidationException
+extends|extends
+name|Exception
 block|{
 DECL|field|serialVersionUID
 specifier|private
@@ -117,44 +83,38 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|field|status
-specifier|private
-specifier|final
-name|CommitMergeStatus
-name|status
-decl_stmt|;
-DECL|method|MergeValidationException (CommitMergeStatus status)
+DECL|method|ValidationException (String reason)
 specifier|public
-name|MergeValidationException
+name|ValidationException
 parameter_list|(
-name|CommitMergeStatus
-name|status
+name|String
+name|reason
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|status
-operator|.
-name|toString
-argument_list|()
+name|reason
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|status
-operator|=
-name|status
-expr_stmt|;
 block|}
-DECL|method|getStatus ()
+DECL|method|ValidationException (String reason, Throwable why)
 specifier|public
-name|CommitMergeStatus
-name|getStatus
-parameter_list|()
+name|ValidationException
+parameter_list|(
+name|String
+name|reason
+parameter_list|,
+name|Throwable
+name|why
+parameter_list|)
 block|{
-return|return
-name|status
-return|;
+name|super
+argument_list|(
+name|reason
+argument_list|,
+name|why
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
