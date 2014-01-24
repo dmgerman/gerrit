@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+operator|.
+name|Mode
+operator|.
+name|MASTER_OR_SLAVE
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -189,6 +207,10 @@ argument_list|,
 name|description
 operator|=
 literal|"Search in Gerrit documentation"
+argument_list|,
+name|runsAt
+operator|=
+name|MASTER_OR_SLAVE
 argument_list|)
 DECL|class|AproposCommand
 specifier|final

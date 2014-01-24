@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation tagged on a concrete Command to describe what it is doing  */
+comment|/**  * Annotation tagged on a concrete Command to describe what it is doing and  * whether it can be run on slaves.  */
 end_comment
 
 begin_annotation_defn
@@ -138,6 +138,36 @@ specifier|public
 annotation_defn|@interface
 name|CommandMetaData
 block|{
+DECL|enum|Mode
+specifier|public
+enum|enum
+name|Mode
+block|{
+DECL|enumConstant|MASTER
+DECL|enumConstant|MASTER_OR_SLAVE
+name|MASTER
+block|,
+name|MASTER_OR_SLAVE
+block|;
+DECL|method|isSupported (boolean slaveMode)
+specifier|public
+name|boolean
+name|isSupported
+parameter_list|(
+name|boolean
+name|slaveMode
+parameter_list|)
+block|{
+return|return
+name|this
+operator|==
+name|MASTER_OR_SLAVE
+operator|||
+operator|!
+name|slaveMode
+return|;
+block|}
+block|}
 DECL|method|name ()
 name|String
 name|name
@@ -149,6 +179,16 @@ name|description
 parameter_list|()
 default|default
 literal|""
+function_decl|;
+DECL|method|runsAt ()
+DECL|field|Mode.MASTER
+name|Mode
+name|runsAt
+parameter_list|()
+default|default
+name|Mode
+operator|.
+name|MASTER
 function_decl|;
 block|}
 end_annotation_defn
