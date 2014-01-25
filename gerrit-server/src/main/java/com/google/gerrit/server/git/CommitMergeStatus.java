@@ -191,6 +191,24 @@ literal|"Change contains an invalid project configuration."
 argument_list|)
 block|,
 comment|/** */
+DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_PERMITTED
+name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_PERMITTED
+argument_list|(
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"One of the plugin configuration parameters has a value that is not permitted."
+argument_list|)
+block|,
+comment|/** */
+DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_EDITABLE
+name|INVALID_PROJECT_CONFIGURATION_PLUGIN_VALUE_NOT_EDITABLE
+argument_list|(
+literal|"Change contains an invalid project configuration:\n"
+operator|+
+literal|"One of the plugin configuration parameters is not editable."
+argument_list|)
+block|,
+comment|/** */
 DECL|enumConstant|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
 name|INVALID_PROJECT_CONFIGURATION_PARENT_PROJECT_NOT_FOUND
 argument_list|(

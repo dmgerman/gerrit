@@ -188,6 +188,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtexpui
 operator|.
 name|safehtml
@@ -320,6 +336,36 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|pluginConfig ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|NativeMap
+argument_list|<
+name|ConfigParameterInfo
+argument_list|>
+argument_list|>
+name|pluginConfig
+parameter_list|()
+comment|/*-{ return this.plugin_config || {}; }-*/
+function_decl|;
+DECL|method|pluginConfig (String p)
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|ConfigParameterInfo
+argument_list|>
+name|pluginConfig
+parameter_list|(
+name|String
+name|p
+parameter_list|)
+comment|/*-{ return this.plugin_config[p]; }-*/
+function_decl|;
 DECL|method|actions ()
 specifier|public
 specifier|final
@@ -743,6 +789,101 @@ function_decl|;
 DECL|method|MaxObjectSizeLimitInfo ()
 specifier|protected
 name|MaxObjectSizeLimitInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|ConfigParameterInfo
+specifier|public
+specifier|static
+class|class
+name|ConfigParameterInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|name
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|displayName ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|displayName
+parameter_list|()
+comment|/*-{ return this.display_name; }-*/
+function_decl|;
+DECL|method|type ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|type
+parameter_list|()
+comment|/*-{ return this.type; }-*/
+function_decl|;
+DECL|method|value ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|value
+parameter_list|()
+comment|/*-{ return this.value; }-*/
+function_decl|;
+DECL|method|editable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|editable
+parameter_list|()
+comment|/*-{ return this.editable ? true : false; }-*/
+function_decl|;
+DECL|method|inheritable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|inheritable
+parameter_list|()
+comment|/*-{ return this.inheritable ? true : false; }-*/
+function_decl|;
+DECL|method|configuredValue ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|configuredValue
+parameter_list|()
+comment|/*-{ return this.configured_value; }-*/
+function_decl|;
+DECL|method|inheritedValue ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|inheritedValue
+parameter_list|()
+comment|/*-{ return this.inherited_value; }-*/
+function_decl|;
+DECL|method|permittedValues ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|permittedValues
+parameter_list|()
+comment|/*-{ return this.permitted_values; }-*/
+function_decl|;
+DECL|method|ConfigParameterInfo ()
+specifier|protected
+name|ConfigParameterInfo
 parameter_list|()
 block|{     }
 block|}

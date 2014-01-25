@@ -162,6 +162,30 @@ name|String
 name|globalMaxObjectSizeLimit
 parameter_list|)
 function_decl|;
+DECL|method|pluginProjectOptionsTitle (String pluginName)
+name|String
+name|pluginProjectOptionsTitle
+parameter_list|(
+name|String
+name|pluginName
+parameter_list|)
+function_decl|;
+DECL|method|pluginProjectInheritedValue (String value)
+name|String
+name|pluginProjectInheritedValue
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+function_decl|;
+DECL|method|pluginProjectInheritedListValue (String value)
+name|String
+name|pluginProjectInheritedListValue
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
