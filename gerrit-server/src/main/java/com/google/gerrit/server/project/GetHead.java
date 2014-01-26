@@ -78,6 +78,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|AuthException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceNotFoundException
 import|;
 end_import
@@ -95,22 +111,6 @@ operator|.
 name|restapi
 operator|.
 name|RestReadView
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|auth
-operator|.
-name|AuthException
 import|;
 end_import
 
@@ -404,7 +404,9 @@ block|}
 throw|throw
 operator|new
 name|AuthException
-argument_list|()
+argument_list|(
+literal|"not allowed to see HEAD"
+argument_list|)
 throw|;
 block|}
 elseif|else
@@ -470,7 +472,9 @@ block|}
 throw|throw
 operator|new
 name|AuthException
-argument_list|()
+argument_list|(
+literal|"not allowed to see HEAD"
+argument_list|)
 throw|;
 block|}
 catch|catch
@@ -505,7 +509,9 @@ block|}
 throw|throw
 operator|new
 name|AuthException
-argument_list|()
+argument_list|(
+literal|"not allowed to see HEAD"
+argument_list|)
 throw|;
 block|}
 finally|finally
