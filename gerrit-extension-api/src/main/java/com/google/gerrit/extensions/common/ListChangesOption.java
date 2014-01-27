@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.changes
+DECL|package|com.google.gerrit.extensions.common
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|changes
+name|common
 package|;
 end_package
 
@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Output options available when using {@code /changes/} RPCs. */
+comment|/** Output options available for retrieval change details. */
 end_comment
 
 begin_enum

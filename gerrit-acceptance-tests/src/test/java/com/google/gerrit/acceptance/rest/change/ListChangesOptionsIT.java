@@ -108,9 +108,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|changes
+name|common
 operator|.
 name|ListChangesOption
 operator|.
@@ -126,9 +126,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|changes
+name|common
 operator|.
 name|ListChangesOption
 operator|.
