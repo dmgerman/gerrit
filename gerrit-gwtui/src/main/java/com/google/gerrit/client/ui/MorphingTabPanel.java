@@ -181,9 +181,7 @@ name|widgets
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Widget
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|texts
@@ -196,9 +194,7 @@ name|texts
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// currently visible widgets
@@ -212,9 +208,7 @@ name|visibles
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Widget
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|selection

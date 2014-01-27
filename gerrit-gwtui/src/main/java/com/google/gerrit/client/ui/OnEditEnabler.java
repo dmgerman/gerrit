@@ -483,11 +483,7 @@ name|strings
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|TextBoxBase
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|originalValue

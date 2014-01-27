@@ -189,9 +189,7 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LabelValue
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|2
 argument_list|)
@@ -524,9 +522,7 @@ name|values
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LabelValue
-argument_list|>
+argument_list|<>
 argument_list|(
 name|values
 argument_list|)
@@ -638,9 +634,7 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LabelValue
-argument_list|>
+argument_list|<>
 argument_list|(
 name|max
 operator|-
@@ -1378,11 +1372,7 @@ name|byValue
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Short
-argument_list|,
-name|LabelValue
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -1429,9 +1419,7 @@ name|intList
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 name|values
 operator|.

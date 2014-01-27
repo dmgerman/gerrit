@@ -228,13 +228,7 @@ name|priorResults
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|projectName
@@ -327,9 +321,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupSuggestion
-argument_list|>
+argument_list|<>
 argument_list|(
 name|result
 operator|.

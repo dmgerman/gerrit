@@ -305,11 +305,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SuggestOracle
-operator|.
-name|Suggestion
-argument_list|>
+argument_list|<>
 argument_list|(
 name|response
 operator|.
@@ -423,9 +419,7 @@ name|suggestions
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -791,11 +785,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SearchSuggestOracle
-operator|.
-name|SearchSuggestion
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// No text - show some default suggestions.
@@ -954,11 +944,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SearchSuggestOracle
-operator|.
-name|SearchSuggestion
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1453,11 +1439,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SuggestOracle
-operator|.
-name|Suggestion
-argument_list|>
+argument_list|<>
 argument_list|(
 name|response
 operator|.

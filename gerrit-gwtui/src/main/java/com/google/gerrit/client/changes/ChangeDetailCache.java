@@ -1523,11 +1523,7 @@ name|r
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|AccountInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|add
@@ -1747,9 +1743,7 @@ name|msgs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ChangeMessage
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1911,9 +1905,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchSet
-argument_list|>
+argument_list|<>
 argument_list|(
 name|all
 operator|.

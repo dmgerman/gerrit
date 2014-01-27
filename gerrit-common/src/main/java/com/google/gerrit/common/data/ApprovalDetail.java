@@ -222,9 +222,7 @@ name|sorted
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ApprovalDetail
-argument_list|>
+argument_list|<>
 argument_list|(
 name|ads
 argument_list|)
@@ -398,9 +396,7 @@ name|approvals
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchSetApproval
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -460,9 +456,7 @@ name|approved
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -498,9 +492,7 @@ name|rejected
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -536,9 +528,7 @@ name|votable
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -573,11 +563,7 @@ name|values
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

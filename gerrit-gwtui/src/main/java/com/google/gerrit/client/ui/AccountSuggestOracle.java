@@ -256,9 +256,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountSuggestion
-argument_list|>
+argument_list|<>
 argument_list|(
 name|result
 operator|.

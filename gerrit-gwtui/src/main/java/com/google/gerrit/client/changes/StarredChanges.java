@@ -348,9 +348,7 @@ operator|new
 name|Event
 operator|.
 name|Type
-argument_list|<
-name|ChangeStarHandler
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/** Handler that can receive notifications of a change's starred status. */
@@ -669,13 +667,7 @@ name|pending
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)

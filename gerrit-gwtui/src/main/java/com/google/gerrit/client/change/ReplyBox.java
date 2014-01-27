@@ -1246,9 +1246,7 @@ name|names
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|permitted
 operator|.
@@ -2198,9 +2196,7 @@ name|values
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|Short
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List
@@ -2211,9 +2207,7 @@ name|labels
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LabelAndValues
-argument_list|>
+argument_list|<>
 argument_list|(
 name|permitted
 operator|.
@@ -2254,9 +2248,7 @@ name|a
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|Short
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2330,9 +2322,7 @@ name|columns
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Short
-argument_list|>
+argument_list|<>
 argument_list|(
 name|values
 argument_list|)
@@ -2425,9 +2415,7 @@ name|checkboxes
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LabelAndValues
-argument_list|>
+argument_list|<>
 argument_list|(
 name|labels
 operator|.
@@ -3204,9 +3192,7 @@ name|paths
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|m
 operator|.
@@ -3447,9 +3433,7 @@ name|buttons
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LabelRadioButton
-argument_list|>
+argument_list|<>
 argument_list|(
 name|cnt
 argument_list|)

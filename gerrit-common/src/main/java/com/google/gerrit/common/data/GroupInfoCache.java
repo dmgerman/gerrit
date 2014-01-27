@@ -192,13 +192,7 @@ name|groups
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|,
-name|GroupInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
