@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|changes
+name|errors
 operator|.
-name|ListChangesOption
+name|EmailException
 import|;
 end_import
 
@@ -90,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
 name|common
 operator|.
-name|errors
-operator|.
-name|EmailException
+name|ListChangesOption
 import|;
 end_import
 
