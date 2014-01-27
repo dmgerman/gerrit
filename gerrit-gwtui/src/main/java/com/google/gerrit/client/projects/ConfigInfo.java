@@ -818,6 +818,15 @@ name|displayName
 parameter_list|()
 comment|/*-{ return this.display_name; }-*/
 function_decl|;
+DECL|method|description ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|description
+parameter_list|()
+comment|/*-{ return this.description; }-*/
+function_decl|;
 DECL|method|type ()
 specifier|public
 specifier|final

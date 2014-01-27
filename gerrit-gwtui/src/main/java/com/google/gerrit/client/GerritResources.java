@@ -272,6 +272,17 @@ name|ImageResource
 name|readOnly
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"info.png"
+argument_list|)
+DECL|method|info ()
+specifier|public
+name|ImageResource
+name|info
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

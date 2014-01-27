@@ -1045,6 +1045,15 @@ argument_list|()
 expr_stmt|;
 name|p
 operator|.
+name|description
+operator|=
+name|configEntry
+operator|.
+name|getDescription
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
 name|type
 operator|=
 name|configEntry
@@ -1399,6 +1408,11 @@ DECL|field|displayName
 specifier|public
 name|String
 name|displayName
+decl_stmt|;
+DECL|field|description
+specifier|public
+name|String
+name|description
 decl_stmt|;
 DECL|field|type
 specifier|public
