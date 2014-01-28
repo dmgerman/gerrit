@@ -3434,6 +3434,17 @@ argument_list|(
 name|infoImg
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|add
+argument_list|(
+operator|new
+name|Label
+argument_list|(
+literal|":"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|g
 operator|.
 name|add
