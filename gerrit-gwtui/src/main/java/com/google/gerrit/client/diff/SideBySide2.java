@@ -2394,7 +2394,7 @@ argument_list|()
 operator|.
 name|on
 argument_list|(
-literal|"'a'"
+literal|"A"
 argument_list|,
 name|upToChange
 argument_list|(
@@ -2404,7 +2404,7 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"'u'"
+literal|"U"
 argument_list|,
 name|upToChange
 argument_list|(
@@ -2414,7 +2414,7 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"'r'"
+literal|"R"
 argument_list|,
 name|toggleReviewed
 argument_list|()
@@ -2422,7 +2422,7 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"'o'"
+literal|"O"
 argument_list|,
 name|toggleOpenBox
 argument_list|(
@@ -2442,7 +2442,7 @@ argument_list|)
 operator|.
 name|on
 argument_list|(
-literal|"'c'"
+literal|"C"
 argument_list|,
 name|insertNewDraft
 argument_list|(
