@@ -75,7 +75,7 @@ name|extensions
 operator|.
 name|annotations
 operator|.
-name|Listen
+name|PluginName
 import|;
 end_import
 
@@ -92,6 +92,18 @@ operator|.
 name|webui
 operator|.
 name|TopMenu
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
@@ -126,8 +138,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Listen
 DECL|class|HelloMenu
 specifier|public
 class|class
@@ -135,15 +145,6 @@ name|HelloMenu
 implements|implements
 name|TopMenu
 block|{
-DECL|field|MENU_ID
-specifier|public
-specifier|final
-specifier|static
-name|String
-name|MENU_ID
-init|=
-literal|"hello_open-dialog-box"
-decl_stmt|;
 DECL|field|menuEntries
 specifier|private
 specifier|final
@@ -153,10 +154,17 @@ name|MenuEntry
 argument_list|>
 name|menuEntries
 decl_stmt|;
-DECL|method|HelloMenu ()
+annotation|@
+name|Inject
+DECL|method|HelloMenu (@luginName String pluginName)
 specifier|public
 name|HelloMenu
-parameter_list|()
+parameter_list|(
+annotation|@
+name|PluginName
+name|String
+name|pluginName
+parameter_list|)
 block|{
 name|menuEntries
 operator|=
@@ -185,13 +193,13 @@ argument_list|(
 operator|new
 name|MenuItem
 argument_list|(
-literal|"Open Dialog Box"
+literal|"Hello Screen"
+argument_list|,
+literal|"#/x/"
+operator|+
+name|pluginName
 argument_list|,
 literal|""
-argument_list|,
-literal|""
-argument_list|,
-name|MENU_ID
 argument_list|)
 argument_list|)
 argument_list|)
