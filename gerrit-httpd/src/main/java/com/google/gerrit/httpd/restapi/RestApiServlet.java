@@ -76,22 +76,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Charsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Preconditions
 operator|.
 name|checkNotNull
@@ -107,6 +91,34 @@ operator|.
 name|RoundingMode
 operator|.
 name|CEILING
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -247,20 +259,6 @@ operator|.
 name|HttpServletResponse
 operator|.
 name|SC_PRECONDITION_FAILED
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
 import|;
 end_import
 
@@ -5411,8 +5409,6 @@ name|OutputStreamWriter
 argument_list|(
 name|out
 argument_list|,
-name|Charsets
-operator|.
 name|ISO_8859_1
 argument_list|)
 argument_list|)
@@ -6957,8 +6953,6 @@ name|OutputStreamWriter
 argument_list|(
 name|buf
 argument_list|,
-name|Charsets
-operator|.
 name|ISO_8859_1
 argument_list|)
 argument_list|)

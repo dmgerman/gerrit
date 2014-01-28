@@ -72,6 +72,20 @@ begin_import
 import|import static
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
 name|util
 operator|.
 name|concurrent
@@ -131,20 +145,6 @@ operator|.
 name|Assert
 operator|.
 name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
 import|;
 end_import
 
@@ -5685,8 +5685,6 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 operator|.
@@ -5697,8 +5695,6 @@ operator|.
 name|name
 argument_list|()
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 operator|.
@@ -5714,8 +5710,6 @@ name|putString
 argument_list|(
 name|branch
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 operator|.

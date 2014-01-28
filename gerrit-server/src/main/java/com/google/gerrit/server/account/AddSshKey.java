@@ -67,16 +67,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|nio
 operator|.
-name|common
+name|charset
 operator|.
-name|base
+name|StandardCharsets
 operator|.
-name|Charsets
+name|UTF_8
 import|;
 end_import
 
@@ -617,8 +617,6 @@ block|}
 operator|.
 name|asCharSource
 argument_list|(
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 operator|.

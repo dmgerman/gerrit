@@ -67,16 +67,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|nio
 operator|.
-name|common
+name|charset
 operator|.
-name|base
+name|StandardCharsets
 operator|.
-name|Charsets
+name|UTF_8
 import|;
 end_import
 
@@ -318,7 +318,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|RefNames
+name|Project
+operator|.
+name|InheritableBoolean
 import|;
 end_import
 
@@ -334,9 +336,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
-operator|.
-name|InheritableBoolean
+name|RefNames
 import|;
 end_import
 
@@ -2755,8 +2755,6 @@ name|toString
 argument_list|(
 name|f
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 else|:
