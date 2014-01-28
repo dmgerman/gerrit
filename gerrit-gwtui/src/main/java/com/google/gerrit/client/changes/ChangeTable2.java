@@ -2810,16 +2810,11 @@ condition|)
 block|{
 name|p
 operator|=
-name|Math
-operator|.
-name|round
-argument_list|(
 name|changedLines
 operator|*
 literal|100
 operator|/
 name|largeChangeSize
-argument_list|)
 expr_stmt|;
 block|}
 name|int
