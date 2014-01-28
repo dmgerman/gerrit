@@ -1170,6 +1170,22 @@ block|}
 end_function
 
 begin_function
+DECL|method|getWarning (ProjectState project)
+specifier|public
+name|String
+name|getWarning
+parameter_list|(
+name|ProjectState
+name|project
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|onUpdate (Project.NameKey project, String oldValue, String newValue)
 specifier|public
 name|void
