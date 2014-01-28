@@ -825,6 +825,15 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
+DECL|method|warning ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|warning
+parameter_list|()
+comment|/*-{ return this.warning; }-*/
+function_decl|;
 DECL|method|type ()
 specifier|public
 specifier|final
