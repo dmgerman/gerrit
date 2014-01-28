@@ -7905,6 +7905,12 @@ operator|.
 name|isDraft
 argument_list|()
 operator|&&
+operator|(
+operator|!
+name|receiveConfig
+operator|.
+name|allowDrafts
+operator|||
 name|projectControl
 operator|.
 name|controlForRef
@@ -7920,6 +7926,7 @@ name|Permission
 operator|.
 name|PUSH
 argument_list|)
+operator|)
 condition|)
 block|{
 name|errors

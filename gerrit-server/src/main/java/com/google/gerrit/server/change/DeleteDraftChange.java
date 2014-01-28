@@ -238,6 +238,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -300,6 +316,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -347,9 +377,15 @@ specifier|final
 name|ChangeUtil
 name|changeUtil
 decl_stmt|;
+DECL|field|allowDrafts
+specifier|private
+specifier|final
+name|boolean
+name|allowDrafts
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftChange (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, ChangeUtil changeUtil)
+DECL|method|DeleteDraftChange (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, ChangeUtil changeUtil, @GerritServerConfig Config cfg)
 specifier|public
 name|DeleteDraftChange
 parameter_list|(
@@ -364,6 +400,11 @@ name|patchSetInfoFactory
 parameter_list|,
 name|ChangeUtil
 name|changeUtil
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
 parameter_list|)
 block|{
 name|this
@@ -377,6 +418,21 @@ operator|.
 name|changeUtil
 operator|=
 name|changeUtil
+expr_stmt|;
+name|this
+operator|.
+name|allowDrafts
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"change"
+argument_list|,
+literal|"allowDrafts"
+argument_list|,
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -451,6 +507,20 @@ operator|new
 name|AuthException
 argument_list|(
 literal|"Not permitted to delete this draft change"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|allowDrafts
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"Draft workflow is disabled."
 argument_list|)
 throw|;
 block|}
@@ -536,6 +606,8 @@ argument_list|)
 operator|.
 name|setVisible
 argument_list|(
+name|allowDrafts
+operator|&&
 name|rsrc
 operator|.
 name|getChange
