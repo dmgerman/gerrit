@@ -1232,7 +1232,7 @@ name|RevertAction
 operator|.
 name|call
 argument_list|(
-name|cherrypick
+name|revert
 argument_list|,
 name|changeId
 argument_list|,
