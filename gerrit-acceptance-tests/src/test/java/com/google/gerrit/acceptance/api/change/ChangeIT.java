@@ -746,6 +746,8 @@ argument_list|)
 operator|.
 name|review
 argument_list|(
+name|ReviewInput
+operator|.
 name|approve
 argument_list|()
 argument_list|)
@@ -951,31 +953,6 @@ argument_list|(
 name|git
 argument_list|,
 literal|"refs/for/master"
-argument_list|)
-return|;
-block|}
-DECL|method|approve ()
-specifier|private
-specifier|static
-name|ReviewInput
-name|approve
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ReviewInput
-argument_list|()
-operator|.
-name|message
-argument_list|(
-literal|"Looks good!"
-argument_list|)
-operator|.
-name|label
-argument_list|(
-literal|"Code-Review"
-argument_list|,
-literal|2
 argument_list|)
 return|;
 block|}
