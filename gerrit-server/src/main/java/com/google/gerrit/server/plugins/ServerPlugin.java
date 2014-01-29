@@ -336,6 +336,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -380,6 +390,7 @@ end_import
 
 begin_class
 DECL|class|ServerPlugin
+specifier|public
 class|class
 name|ServerPlugin
 extends|extends
@@ -456,6 +467,12 @@ specifier|private
 specifier|final
 name|Manifest
 name|manifest
+decl_stmt|;
+DECL|field|scanner
+specifier|private
+specifier|final
+name|PluginContentScanner
+name|scanner
 decl_stmt|;
 DECL|field|dataDir
 specifier|private
@@ -536,7 +553,7 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, File srcJar, FileSnapshot snapshot, JarFile jarFile, Manifest manifest, File dataDir, ApiType apiType, ClassLoader classLoader, @Nullable Class<? extends Module> sysModule, @Nullable Class<? extends Module> sshModule, @Nullable Class<? extends Module> httpModule)
+DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, File srcJar, FileSnapshot snapshot, JarFile jarFile, PluginContentScanner scanner, File dataDir, ApiType apiType, ClassLoader classLoader, @Nullable Class<? extends Module> sysModule, @Nullable Class<? extends Module> sshModule, @Nullable Class<? extends Module> httpModule)
 specifier|public
 name|ServerPlugin
 parameter_list|(
@@ -558,8 +575,8 @@ parameter_list|,
 name|JarFile
 name|jarFile
 parameter_list|,
-name|Manifest
-name|manifest
+name|PluginContentScanner
+name|scanner
 parameter_list|,
 name|File
 name|dataDir
@@ -600,6 +617,8 @@ name|Module
 argument_list|>
 name|httpModule
 parameter_list|)
+throws|throws
+name|InvalidPluginException
 block|{
 name|super
 argument_list|(
@@ -628,9 +647,9 @@ name|jarFile
 expr_stmt|;
 name|this
 operator|.
-name|manifest
+name|scanner
 operator|=
-name|manifest
+name|scanner
 expr_stmt|;
 name|this
 operator|.
@@ -661,6 +680,15 @@ operator|.
 name|httpModule
 operator|=
 name|httpModule
+expr_stmt|;
+name|this
+operator|.
+name|manifest
+operator|=
+name|getPluginManifest
+argument_list|(
+name|scanner
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getSrcJar ()
@@ -672,6 +700,43 @@ return|return
 name|getSrcFile
 argument_list|()
 return|;
+block|}
+DECL|method|getPluginManifest (PluginContentScanner scanner)
+specifier|private
+name|Manifest
+name|getPluginManifest
+parameter_list|(
+name|PluginContentScanner
+name|scanner
+parameter_list|)
+throws|throws
+name|InvalidPluginException
+block|{
+try|try
+block|{
+return|return
+name|scanner
+operator|.
+name|getManifest
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|InvalidPluginException
+argument_list|(
+literal|"Cannot get plugin manifest"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Nullable
@@ -881,7 +946,7 @@ argument_list|()
 argument_list|,
 name|env
 argument_list|,
-name|jarFile
+name|scanner
 argument_list|,
 name|classLoader
 argument_list|)
@@ -1585,6 +1650,18 @@ name|handle
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getContentScanner ()
+specifier|public
+name|PluginContentScanner
+name|getContentScanner
+parameter_list|()
+block|{
+return|return
+name|scanner
+return|;
 block|}
 block|}
 end_class

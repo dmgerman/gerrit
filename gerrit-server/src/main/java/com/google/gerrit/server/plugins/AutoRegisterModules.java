@@ -204,7 +204,7 @@ name|server
 operator|.
 name|plugins
 operator|.
-name|JarScanner
+name|PluginContentScanner
 operator|.
 name|ExtensionMetaData
 import|;
@@ -312,18 +312,6 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|jar
-operator|.
-name|JarFile
-import|;
-end_import
-
 begin_class
 DECL|class|AutoRegisterModules
 class|class
@@ -341,11 +329,11 @@ specifier|final
 name|PluginGuiceEnvironment
 name|env
 decl_stmt|;
-DECL|field|jarFile
+DECL|field|scanner
 specifier|private
 specifier|final
-name|JarFile
-name|jarFile
+name|PluginContentScanner
+name|scanner
 decl_stmt|;
 DECL|field|classLoader
 specifier|private
@@ -404,7 +392,7 @@ DECL|field|httpModule
 name|Module
 name|httpModule
 decl_stmt|;
-DECL|method|AutoRegisterModules (String pluginName, PluginGuiceEnvironment env, JarFile jarFile, ClassLoader classLoader)
+DECL|method|AutoRegisterModules (String pluginName, PluginGuiceEnvironment env, PluginContentScanner scanner, ClassLoader classLoader)
 name|AutoRegisterModules
 parameter_list|(
 name|String
@@ -413,8 +401,8 @@ parameter_list|,
 name|PluginGuiceEnvironment
 name|env
 parameter_list|,
-name|JarFile
-name|jarFile
+name|PluginContentScanner
+name|scanner
 parameter_list|,
 name|ClassLoader
 name|classLoader
@@ -434,9 +422,9 @@ name|env
 expr_stmt|;
 name|this
 operator|.
-name|jarFile
+name|scanner
 operator|=
-name|jarFile
+name|scanner
 expr_stmt|;
 name|this
 operator|.
@@ -748,12 +736,10 @@ argument_list|>
 argument_list|>
 name|extensions
 init|=
-name|JarScanner
+name|scanner
 operator|.
 name|scan
 argument_list|(
-name|jarFile
-argument_list|,
 name|pluginName
 argument_list|,
 name|Arrays
@@ -840,8 +826,7 @@ name|forName
 argument_list|(
 name|def
 operator|.
-name|getClassName
-argument_list|()
+name|className
 argument_list|,
 literal|false
 argument_list|,
@@ -867,13 +852,11 @@ literal|"Cannot load %s with @Export(\"%s\")"
 argument_list|,
 name|def
 operator|.
-name|getClassName
-argument_list|()
+name|className
 argument_list|,
 name|def
 operator|.
-name|getAnnotationValue
-argument_list|()
+name|annotationValue
 argument_list|)
 argument_list|,
 name|err
@@ -920,8 +903,7 @@ argument_list|()
 argument_list|,
 name|def
 operator|.
-name|getAnnotationValue
-argument_list|()
+name|annotationValue
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1071,8 +1053,7 @@ name|forName
 argument_list|(
 name|def
 operator|.
-name|getClassName
-argument_list|()
+name|className
 argument_list|,
 literal|false
 argument_list|,
@@ -1098,8 +1079,7 @@ literal|"Cannot load %s with @Listen"
 argument_list|,
 name|def
 operator|.
-name|getClassName
-argument_list|()
+name|className
 argument_list|)
 argument_list|,
 name|err

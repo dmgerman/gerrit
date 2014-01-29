@@ -905,7 +905,7 @@ if|if
 condition|(
 name|p
 operator|.
-name|getJarFile
+name|getSrcFile
 argument_list|()
 operator|!=
 literal|null

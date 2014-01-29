@@ -430,18 +430,6 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getJarFile ()
-specifier|public
-name|JarFile
-name|getJarFile
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getSysInjector ()
 specifier|public
 name|Injector
@@ -584,6 +572,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getContentScanner ()
+specifier|public
+name|PluginContentScanner
+name|getContentScanner
+parameter_list|()
+block|{
+return|return
+name|PluginContentScanner
+operator|.
+name|EMPTY
+return|;
 block|}
 block|}
 end_class

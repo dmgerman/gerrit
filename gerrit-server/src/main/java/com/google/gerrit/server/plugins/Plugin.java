@@ -685,11 +685,11 @@ name|PluginGuiceEnvironment
 name|env
 parameter_list|)
 function_decl|;
-DECL|method|getJarFile ()
+DECL|method|getContentScanner ()
 specifier|public
 specifier|abstract
-name|JarFile
-name|getJarFile
+name|PluginContentScanner
+name|getContentScanner
 parameter_list|()
 function_decl|;
 DECL|method|getSysInjector ()
