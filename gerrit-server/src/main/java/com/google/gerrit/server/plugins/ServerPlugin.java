@@ -372,18 +372,6 @@ name|util
 operator|.
 name|jar
 operator|.
-name|JarFile
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|jar
-operator|.
 name|Manifest
 import|;
 end_import
@@ -456,12 +444,6 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|jarFile
-specifier|private
-specifier|final
-name|JarFile
-name|jarFile
-decl_stmt|;
 DECL|field|manifest
 specifier|private
 specifier|final
@@ -553,7 +535,7 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, File srcJar, FileSnapshot snapshot, JarFile jarFile, PluginContentScanner scanner, File dataDir, ApiType apiType, ClassLoader classLoader, @Nullable Class<? extends Module> sysModule, @Nullable Class<? extends Module> sshModule, @Nullable Class<? extends Module> httpModule)
+DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, File srcJar, FileSnapshot snapshot, PluginContentScanner scanner, File dataDir, ApiType apiType, ClassLoader classLoader, @Nullable Class<? extends Module> sysModule, @Nullable Class<? extends Module> sshModule, @Nullable Class<? extends Module> httpModule)
 specifier|public
 name|ServerPlugin
 parameter_list|(
@@ -571,9 +553,6 @@ name|srcJar
 parameter_list|,
 name|FileSnapshot
 name|snapshot
-parameter_list|,
-name|JarFile
-name|jarFile
 parameter_list|,
 name|PluginContentScanner
 name|scanner
@@ -638,12 +617,6 @@ operator|.
 name|pluginCanonicalWebUrl
 operator|=
 name|pluginCanonicalWebUrl
-expr_stmt|;
-name|this
-operator|.
-name|jarFile
-operator|=
-name|jarFile
 expr_stmt|;
 name|this
 operator|.
@@ -1545,16 +1518,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-block|}
-DECL|method|getJarFile ()
-specifier|public
-name|JarFile
-name|getJarFile
-parameter_list|()
-block|{
-return|return
-name|jarFile
-return|;
 block|}
 DECL|method|getSysInjector ()
 specifier|public

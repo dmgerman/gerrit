@@ -664,7 +664,7 @@ name|firstNonNull
 argument_list|(
 name|PluginLoader
 operator|.
-name|getGerritPluginName
+name|getGerritJarPluginName
 argument_list|(
 name|jarFile
 argument_list|)
