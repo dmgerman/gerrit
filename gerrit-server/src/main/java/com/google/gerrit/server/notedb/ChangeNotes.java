@@ -1330,7 +1330,7 @@ name|parseIdent
 argument_list|(
 name|commit
 operator|.
-name|getCommitterIdent
+name|getAuthorIdent
 argument_list|()
 argument_list|)
 return|;

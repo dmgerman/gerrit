@@ -984,27 +984,6 @@ argument_list|(
 literal|"America/Los_Angeles"
 argument_list|)
 decl_stmt|;
-DECL|field|SERVER_IDENT
-specifier|private
-specifier|static
-specifier|final
-name|PersonIdent
-name|SERVER_IDENT
-init|=
-operator|new
-name|PersonIdent
-argument_list|(
-literal|"Gerrit Server"
-argument_list|,
-literal|"noreply@gerrit.com"
-argument_list|,
-operator|new
-name|Date
-argument_list|()
-argument_list|,
-name|TZ
-argument_list|)
-decl_stmt|;
 DECL|field|LABEL_TYPES
 specifier|private
 specifier|static
@@ -1075,6 +1054,11 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|serverIdent
+specifier|private
+name|PersonIdent
+name|serverIdent
+decl_stmt|;
 DECL|field|project
 specifier|private
 name|Project
@@ -1123,6 +1107,26 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setMillisProvider
+argument_list|()
+expr_stmt|;
+name|serverIdent
+operator|=
+operator|new
+name|PersonIdent
+argument_list|(
+literal|"Gerrit Server"
+argument_list|,
+literal|"noreply@gerrit.com"
+argument_list|,
+name|TimeUtil
+operator|.
+name|nowTs
+argument_list|()
+argument_list|,
+name|TZ
+argument_list|)
+expr_stmt|;
 name|project
 operator|=
 operator|new
@@ -1429,10 +1433,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Before
 DECL|method|setMillisProvider ()
-specifier|public
+specifier|private
 name|void
 name|setMillisProvider
 parameter_list|()
@@ -1687,7 +1689,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"change@owner.com"
+literal|"1@gerrit"
 argument_list|,
 name|author
 operator|.
@@ -1742,7 +1744,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Change Owner"
+literal|"Gerrit Server"
 argument_list|,
 name|committer
 operator|.
@@ -1752,7 +1754,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1@gerrit"
+literal|"noreply@gerrit.com"
 argument_list|,
 name|committer
 operator|.
@@ -3556,7 +3558,7 @@ return|return
 operator|new
 name|ChangeUpdate
 argument_list|(
-name|SERVER_IDENT
+name|serverIdent
 argument_list|,
 name|repoManager
 argument_list|,
