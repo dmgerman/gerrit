@@ -88,22 +88,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -608,6 +592,22 @@ name|Date
 name|when
 parameter_list|)
 function_decl|;
+annotation|@
+name|VisibleForTesting
+DECL|method|create (ChangeControl ctl, Date when, LabelTypes labelTypes)
+name|ChangeUpdate
+name|create
+parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
+name|Date
+name|when
+parameter_list|,
+name|LabelTypes
+name|labelTypes
+parameter_list|)
+function_decl|;
 block|}
 DECL|field|migration
 specifier|private
@@ -698,6 +698,7 @@ decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl)
+specifier|private
 name|ChangeUpdate
 parameter_list|(
 annotation|@
@@ -754,6 +755,7 @@ block|}
 annotation|@
 name|AssistedInject
 DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when)
+specifier|private
 name|ChangeUpdate
 parameter_list|(
 annotation|@
@@ -801,6 +803,10 @@ name|accountCache
 argument_list|,
 name|updateFactory
 argument_list|,
+name|ctl
+argument_list|,
+name|when
+argument_list|,
 name|projectCache
 operator|.
 name|get
@@ -813,10 +819,6 @@ argument_list|)
 operator|.
 name|getLabelTypes
 argument_list|()
-argument_list|,
-name|ctl
-argument_list|,
-name|when
 argument_list|)
 expr_stmt|;
 block|}
@@ -846,10 +848,13 @@ argument_list|()
 return|;
 block|}
 annotation|@
-name|VisibleForTesting
-DECL|method|ChangeUpdate ( PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, LabelTypes labelTypes, ChangeControl ctl, Date when)
+name|AssistedInject
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted LabelTypes labelTypes)
+specifier|private
 name|ChangeUpdate
 parameter_list|(
+annotation|@
+name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
 parameter_list|,
@@ -867,14 +872,20 @@ operator|.
 name|User
 name|updateFactory
 parameter_list|,
-name|LabelTypes
-name|labelTypes
-parameter_list|,
+annotation|@
+name|Assisted
 name|ChangeControl
 name|ctl
 parameter_list|,
+annotation|@
+name|Assisted
 name|Date
 name|when
+parameter_list|,
+annotation|@
+name|Assisted
+name|LabelTypes
+name|labelTypes
 parameter_list|)
 block|{
 name|this
@@ -1123,38 +1134,6 @@ name|REMOVED
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|commit ()
-specifier|public
-name|RevCommit
-name|commit
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|commit
-argument_list|(
-name|checkNotNull
-argument_list|(
-name|updateFactory
-argument_list|,
-literal|"MetaDataUpdate.Factory"
-argument_list|)
-operator|.
-name|create
-argument_list|(
-name|getChange
-argument_list|()
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|getUser
-argument_list|()
-argument_list|)
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|commit (MetaDataUpdate md)
@@ -1168,6 +1147,39 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"use commit()"
+argument_list|)
+throw|;
+block|}
+DECL|method|commit ()
+specifier|public
+name|RevCommit
+name|commit
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|MetaDataUpdate
+name|md
+init|=
+name|updateFactory
+operator|.
+name|create
+argument_list|(
+name|getChange
+argument_list|()
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
+name|getUser
+argument_list|()
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
