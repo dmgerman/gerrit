@@ -465,7 +465,7 @@ condition|)
 block|{
 name|info
 operator|.
-name|_account_id
+name|_accountId
 operator|=
 name|id
 operator|.
@@ -503,7 +503,7 @@ condition|)
 block|{
 name|info
 operator|.
-name|_account_id
+name|_accountId
 operator|=
 name|info
 operator|.
@@ -649,10 +649,10 @@ operator|=
 name|id
 expr_stmt|;
 block|}
-DECL|field|_account_id
+DECL|field|_accountId
 specifier|public
 name|Integer
-name|_account_id
+name|_accountId
 decl_stmt|;
 DECL|field|name
 specifier|public

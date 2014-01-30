@@ -152,7 +152,7 @@ argument_list|()
 operator|==
 name|ai
 operator|.
-name|_account_id
+name|_accountId
 argument_list|)
 expr_stmt|;
 name|assertEquals

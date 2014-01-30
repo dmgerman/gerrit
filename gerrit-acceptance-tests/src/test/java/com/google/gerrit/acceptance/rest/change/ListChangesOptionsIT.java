@@ -648,7 +648,7 @@ name|assertNull
 argument_list|(
 name|c
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|)
 expr_stmt|;
 name|assertNull
@@ -688,7 +688,7 @@ argument_list|)
 argument_list|,
 name|c
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -760,7 +760,7 @@ argument_list|)
 argument_list|,
 name|c
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|)
 expr_stmt|;
 name|assertEquals
