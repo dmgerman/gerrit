@@ -147,7 +147,7 @@ init|=
 operator|new
 name|FooterKey
 argument_list|(
-literal|"Patch-Set"
+literal|"Patch-set"
 argument_list|)
 decl_stmt|;
 DECL|method|changeRefName (Change.Id id)

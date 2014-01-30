@@ -1816,7 +1816,7 @@ literal|"Update patch set 1\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"Patch-Set: 1\n"
+literal|"Patch-set: 1\n"
 operator|+
 literal|"Reviewer: Change Owner<1@gerrit>\n"
 operator|+
