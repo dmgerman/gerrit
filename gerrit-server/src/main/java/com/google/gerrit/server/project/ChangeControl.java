@@ -2387,6 +2387,20 @@ name|canSubmit
 argument_list|()
 return|;
 block|}
+DECL|method|canSubmitAs ()
+specifier|public
+name|boolean
+name|canSubmitAs
+parameter_list|()
+block|{
+return|return
+name|getRefControl
+argument_list|()
+operator|.
+name|canSubmitAs
+argument_list|()
+return|;
+block|}
 DECL|method|canSubmit (ReviewDb db, PatchSet patchSet)
 specifier|public
 name|List

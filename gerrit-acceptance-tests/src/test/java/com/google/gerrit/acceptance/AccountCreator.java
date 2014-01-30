@@ -873,6 +873,31 @@ literal|"Administrators"
 argument_list|)
 return|;
 block|}
+DECL|method|admin2 ()
+specifier|public
+name|TestAccount
+name|admin2
+parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
+throws|,
+name|OrmException
+throws|,
+name|JSchException
+block|{
+return|return
+name|create
+argument_list|(
+literal|"admin2"
+argument_list|,
+literal|"admin2@example.com"
+argument_list|,
+literal|"Administrator2"
+argument_list|,
+literal|"Administrators"
+argument_list|)
+return|;
+block|}
 DECL|method|user ()
 specifier|public
 name|TestAccount

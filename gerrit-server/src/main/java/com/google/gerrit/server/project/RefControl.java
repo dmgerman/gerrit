@@ -967,6 +967,22 @@ name|canWrite
 argument_list|()
 return|;
 block|}
+comment|/** @return true if this user was granted submitAs to this ref */
+DECL|method|canSubmitAs ()
+specifier|public
+name|boolean
+name|canSubmitAs
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|SUBMIT_AS
+argument_list|)
+return|;
+block|}
 comment|/** @return true if the user can update the reference as a fast-forward. */
 DECL|method|canUpdate ()
 specifier|public
