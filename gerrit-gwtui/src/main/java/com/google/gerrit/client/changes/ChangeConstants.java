@@ -915,6 +915,11 @@ name|String
 name|oneYearAgo
 parameter_list|()
 function_decl|;
+DECL|method|votable ()
+name|String
+name|votable
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
