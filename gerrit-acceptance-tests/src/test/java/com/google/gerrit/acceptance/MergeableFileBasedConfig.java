@@ -258,6 +258,8 @@ operator|.
 name|getNames
 argument_list|(
 name|section
+argument_list|,
+literal|true
 argument_list|)
 control|)
 block|{
