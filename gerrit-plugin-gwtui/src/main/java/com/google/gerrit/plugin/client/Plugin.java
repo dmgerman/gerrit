@@ -209,6 +209,19 @@ name|refresh
 parameter_list|()
 comment|/*-{ return this.refresh() }-*/
 function_decl|;
+comment|/** Show message in Gerrit's ErrorDialog. */
+DECL|method|showError (String message)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|showError
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+comment|/*-{ return this.showError(message) }-*/
+function_decl|;
 comment|/**    * Register a screen displayed at {@code /#/x/plugin/token}.    *    * @param token literal anchor token appearing after the plugin name. For    *        regular expression matching use {@code screenRegex()} .    * @param entry callback function invoked to create the screen widgets.    */
 DECL|method|screen (String token, Screen.EntryPoint entry)
 specifier|public
