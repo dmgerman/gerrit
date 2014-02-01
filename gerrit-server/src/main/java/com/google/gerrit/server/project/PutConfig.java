@@ -1424,10 +1424,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|Strings
+operator|.
+name|emptyToNull
+argument_list|(
 name|v
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 operator|!=
 literal|null
 condition|)
