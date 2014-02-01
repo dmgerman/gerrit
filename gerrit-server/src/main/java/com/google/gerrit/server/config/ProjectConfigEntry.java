@@ -254,6 +254,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ProvisionException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -362,6 +374,7 @@ DECL|enumConstant|INT
 DECL|enumConstant|LONG
 DECL|enumConstant|BOOLEAN
 DECL|enumConstant|LIST
+DECL|enumConstant|ARRAY
 name|STRING
 block|,
 name|INT
@@ -371,6 +384,8 @@ block|,
 name|BOOLEAN
 block|,
 name|LIST
+block|,
+name|ARRAY
 block|}
 DECL|field|displayName
 specifier|private
@@ -1011,7 +1026,7 @@ class|;
 end_class
 
 begin_expr_stmt
-unit|}    private
+unit|}    public
 DECL|method|ProjectConfigEntry (String displayName, String defaultValue, Type type, List<String> permittedValues, boolean inheritable, String description)
 name|ProjectConfigEntry
 argument_list|(
@@ -1072,18 +1087,40 @@ operator|.
 name|description
 operator|=
 name|description
-block|;   }
+block|;
+if|if
+condition|(
+name|type
+operator|==
+name|Type
+operator|.
+name|ARRAY
+operator|&&
+name|inheritable
+condition|)
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"ARRAY doesn't support inheritable values"
+argument_list|)
+throw|;
+block|}
+end_expr_stmt
+
+begin_function
+unit|}    public
 DECL|method|getDisplayName ()
-specifier|public
 name|String
 name|getDisplayName
-argument_list|()
+parameter_list|()
 block|{
 return|return
 name|displayName
 return|;
 block|}
-end_expr_stmt
+end_function
 
 begin_function
 DECL|method|getDescription ()
