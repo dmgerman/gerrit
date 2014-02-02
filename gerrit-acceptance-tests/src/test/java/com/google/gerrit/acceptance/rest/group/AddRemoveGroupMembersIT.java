@@ -699,20 +699,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TestAccount
-name|u
-init|=
-name|accounts
-operator|.
-name|create
-argument_list|(
-literal|"user"
-argument_list|,
-literal|"user@example.com"
-argument_list|,
-literal|"Full Name"
-argument_list|)
-decl_stmt|;
 name|RestResponse
 name|r
 init|=
@@ -753,7 +739,7 @@ argument_list|)
 decl_stmt|;
 name|assertAccountInfo
 argument_list|(
-name|u
+name|user
 argument_list|,
 name|ai
 argument_list|)
@@ -764,7 +750,7 @@ literal|"Administrators"
 argument_list|,
 name|admin
 argument_list|,
-name|u
+name|user
 argument_list|)
 expr_stmt|;
 name|r
