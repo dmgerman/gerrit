@@ -437,7 +437,7 @@ class|class
 name|GerritServer
 block|{
 comment|/** Returns fully started Gerrit server */
-DECL|method|start (Config cfg, boolean memory)
+DECL|method|start (Config cfg, boolean memory, boolean enableHttpd)
 specifier|static
 name|GerritServer
 name|start
@@ -447,6 +447,9 @@ name|cfg
 parameter_list|,
 name|boolean
 name|memory
+parameter_list|,
+name|boolean
+name|enableHttpd
 parameter_list|)
 throws|throws
 name|Exception
@@ -577,6 +580,13 @@ argument_list|,
 literal|"testInmemory"
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|daemon
+operator|.
+name|setEnableHttpd
+argument_list|(
+name|enableHttpd
 argument_list|)
 expr_stmt|;
 name|daemon

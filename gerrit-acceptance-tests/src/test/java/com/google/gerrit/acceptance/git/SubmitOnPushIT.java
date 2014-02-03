@@ -172,6 +172,20 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
+name|NoHttpd
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
 name|PushOneCommit
 import|;
 end_import
@@ -697,6 +711,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|NoHttpd
 DECL|class|SubmitOnPushIT
 specifier|public
 class|class

@@ -1476,6 +1476,20 @@ operator|=
 name|serverStarted
 expr_stmt|;
 block|}
+DECL|method|setEnableHttpd (boolean enable)
+specifier|public
+name|void
+name|setEnableHttpd
+parameter_list|(
+name|boolean
+name|enable
+parameter_list|)
+block|{
+name|httpd
+operator|=
+name|enable
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|run ()

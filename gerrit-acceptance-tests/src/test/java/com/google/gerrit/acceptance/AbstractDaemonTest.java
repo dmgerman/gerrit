@@ -697,6 +697,34 @@ argument_list|)
 operator|==
 literal|null
 decl_stmt|;
+name|boolean
+name|enableHttpd
+init|=
+name|description
+operator|.
+name|getAnnotation
+argument_list|(
+name|NoHttpd
+operator|.
+name|class
+argument_list|)
+operator|==
+literal|null
+operator|&&
+name|description
+operator|.
+name|getTestClass
+argument_list|()
+operator|.
+name|getAnnotation
+argument_list|(
+name|NoHttpd
+operator|.
+name|class
+argument_list|)
+operator|==
+literal|null
+decl_stmt|;
 name|beforeTest
 argument_list|(
 name|config
@@ -705,6 +733,8 @@ name|description
 argument_list|)
 argument_list|,
 name|mem
+argument_list|,
+name|enableHttpd
 argument_list|)
 expr_stmt|;
 name|base
@@ -817,7 +847,7 @@ name|baseConfig
 return|;
 block|}
 block|}
-DECL|method|beforeTest (Config cfg, boolean memory)
+DECL|method|beforeTest (Config cfg, boolean memory, boolean enableHttpd)
 specifier|private
 name|void
 name|beforeTest
@@ -827,6 +857,9 @@ name|cfg
 parameter_list|,
 name|boolean
 name|memory
+parameter_list|,
+name|boolean
+name|enableHttpd
 parameter_list|)
 throws|throws
 name|Exception
@@ -838,6 +871,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|memory
+argument_list|,
+name|enableHttpd
 argument_list|)
 expr_stmt|;
 name|server
@@ -975,7 +1010,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|startServer (Config cfg, boolean memory)
+DECL|method|startServer (Config cfg, boolean memory, boolean enableHttpd)
 specifier|protected
 name|GerritServer
 name|startServer
@@ -985,6 +1020,9 @@ name|cfg
 parameter_list|,
 name|boolean
 name|memory
+parameter_list|,
+name|boolean
+name|enableHttpd
 parameter_list|)
 throws|throws
 name|Exception
@@ -997,6 +1035,8 @@ argument_list|(
 name|cfg
 argument_list|,
 name|memory
+argument_list|,
+name|enableHttpd
 argument_list|)
 return|;
 block|}
