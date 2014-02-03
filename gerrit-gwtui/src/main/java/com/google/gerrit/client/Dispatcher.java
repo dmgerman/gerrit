@@ -1932,7 +1932,7 @@ name|id
 parameter_list|)
 block|{
 return|return
-literal|"/admin/groups/"
+name|ADMIN_GROUPS
 operator|+
 name|id
 operator|.
@@ -1956,7 +1956,7 @@ name|panel
 parameter_list|)
 block|{
 return|return
-literal|"/admin/groups/"
+name|ADMIN_GROUPS
 operator|+
 name|id
 operator|.
@@ -2071,7 +2071,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|"/admin/projects/"
+name|ADMIN_PROJECTS
 operator|+
 name|n
 operator|.
@@ -2080,7 +2080,7 @@ argument_list|()
 return|;
 block|}
 return|return
-literal|"/admin/projects/"
+name|ADMIN_PROJECTS
 operator|+
 name|n
 operator|.
@@ -3334,7 +3334,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|"/admin/groups/"
+name|ADMIN_GROUPS
 operator|+
 name|skip
 argument_list|(
@@ -5651,7 +5651,7 @@ if|if
 condition|(
 name|matchPrefix
 argument_list|(
-literal|"/admin/groups/"
+name|ADMIN_GROUPS
 argument_list|,
 name|token
 argument_list|)
@@ -5785,7 +5785,7 @@ if|if
 condition|(
 name|matchPrefix
 argument_list|(
-literal|"/admin/projects/"
+name|ADMIN_PROJECTS
 argument_list|,
 name|token
 argument_list|)
@@ -6084,7 +6084,7 @@ if|if
 condition|(
 name|matchPrefix
 argument_list|(
-literal|"/admin/groups/"
+name|ADMIN_GROUPS
 argument_list|,
 name|token
 argument_list|)
@@ -6360,7 +6360,7 @@ if|if
 condition|(
 name|matchPrefix
 argument_list|(
-literal|"/admin/projects/"
+name|ADMIN_PROJECTS
 argument_list|,
 name|token
 argument_list|)
