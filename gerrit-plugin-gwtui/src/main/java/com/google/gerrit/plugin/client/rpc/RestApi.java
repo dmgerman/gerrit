@@ -888,7 +888,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ '$wnd.Gerrit.delete'(p, r) }-*/
+comment|/*-{ $wnd.Gerrit.del(p, r) }-*/
 function_decl|;
 specifier|private
 specifier|native
