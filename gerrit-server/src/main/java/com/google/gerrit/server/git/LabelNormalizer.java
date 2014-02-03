@@ -515,8 +515,6 @@ argument_list|(
 name|copy
 argument_list|(
 name|psa
-argument_list|,
-name|ctl
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -547,8 +545,6 @@ operator|=
 name|copy
 argument_list|(
 name|psa
-argument_list|,
-name|ctl
 argument_list|)
 expr_stmt|;
 name|applyTypeFloor
@@ -617,16 +613,13 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-DECL|method|copy (PatchSetApproval src, ChangeControl ctl)
+DECL|method|copy (PatchSetApproval src)
 specifier|private
 name|PatchSetApproval
 name|copy
 parameter_list|(
 name|PatchSetApproval
 name|src
-parameter_list|,
-name|ChangeControl
-name|ctl
 parameter_list|)
 block|{
 return|return
