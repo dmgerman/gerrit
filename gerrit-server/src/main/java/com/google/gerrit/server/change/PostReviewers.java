@@ -1880,11 +1880,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 argument_list|,
-name|rsrc
-operator|.
-name|getNotes
-argument_list|()
-argument_list|,
 name|reviewers
 operator|.
 name|get
