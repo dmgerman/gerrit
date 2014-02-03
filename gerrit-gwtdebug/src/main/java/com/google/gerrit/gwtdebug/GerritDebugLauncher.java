@@ -1131,6 +1131,9 @@ block|{
 return|return
 name|this
 operator|.
+name|getClass
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 return|;
