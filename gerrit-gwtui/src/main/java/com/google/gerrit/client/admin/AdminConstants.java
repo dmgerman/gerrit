@@ -510,9 +510,19 @@ name|String
 name|pluginDisabled
 parameter_list|()
 function_decl|;
+DECL|method|pluginSettingsToolTip ()
+name|String
+name|pluginSettingsToolTip
+parameter_list|()
+function_decl|;
 DECL|method|columnPluginName ()
 name|String
 name|columnPluginName
+parameter_list|()
+function_decl|;
+DECL|method|columnPluginSettings ()
+name|String
+name|columnPluginSettings
 parameter_list|()
 function_decl|;
 DECL|method|columnPluginVersion ()

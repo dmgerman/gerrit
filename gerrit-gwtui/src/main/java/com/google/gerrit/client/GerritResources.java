@@ -275,6 +275,17 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"gear.png"
+argument_list|)
+DECL|method|gear ()
+specifier|public
+name|ImageResource
+name|gear
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"info.png"
 argument_list|)
 DECL|method|info ()
