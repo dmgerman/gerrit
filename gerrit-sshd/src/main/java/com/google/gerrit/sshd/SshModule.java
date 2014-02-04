@@ -515,6 +515,8 @@ operator|.
 name|getNames
 argument_list|(
 literal|"ssh-alias"
+argument_list|,
+literal|true
 argument_list|)
 control|)
 block|{
