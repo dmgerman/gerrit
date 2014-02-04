@@ -643,7 +643,7 @@ expr_stmt|;
 block|}
 DECL|method|getForPatchSet (ReviewDb db, ChangeControl ctl, PatchSet ps)
 specifier|private
-name|List
+name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -985,6 +985,9 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
+operator|.
+name|getNormalized
+argument_list|()
 return|;
 block|}
 finally|finally

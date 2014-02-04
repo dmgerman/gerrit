@@ -4051,12 +4051,6 @@ name|PatchSetApproval
 argument_list|>
 name|currentList
 init|=
-name|labelNormalizer
-operator|.
-name|normalize
-argument_list|(
-name|baseCtrl
-argument_list|,
 name|allApprovals
 operator|.
 name|get
@@ -4068,7 +4062,6 @@ argument_list|()
 operator|.
 name|currentPatchSetId
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Most recent, normalized vote on each label for the current patch set by
@@ -4111,7 +4104,17 @@ control|(
 name|PatchSetApproval
 name|psa
 range|:
+name|labelNormalizer
+operator|.
+name|normalize
+argument_list|(
+name|baseCtrl
+argument_list|,
 name|currentList
+argument_list|)
+operator|.
+name|getNormalized
+argument_list|()
 control|)
 block|{
 name|current

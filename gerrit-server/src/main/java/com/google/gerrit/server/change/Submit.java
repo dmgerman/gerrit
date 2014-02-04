@@ -1822,8 +1822,11 @@ comment|// permissions. Once the change is closed the approvals are not updated 
 comment|// presentation view time, except for zero votes used to indicate a reviewer
 comment|// was added. So we need to make sure votes are accurate now. This way if
 comment|// permissions get modified in the future, historical records stay accurate.
-name|approvals
-operator|=
+name|LabelNormalizer
+operator|.
+name|Result
+name|normalized
+init|=
 name|labelNormalizer
 operator|.
 name|normalize
@@ -1838,7 +1841,7 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// TODO(dborowitz): Don't use a label in notedb; just check when status
 comment|// change happened.
 name|update
@@ -1866,7 +1869,26 @@ argument_list|()
 operator|.
 name|upsert
 argument_list|(
-name|approvals
+name|normalized
+operator|.
+name|getNormalized
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|dbProvider
+operator|.
+name|get
+argument_list|()
+operator|.
+name|patchSetApprovals
+argument_list|()
+operator|.
+name|delete
+argument_list|(
+name|normalized
+operator|.
+name|getDeleted
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
