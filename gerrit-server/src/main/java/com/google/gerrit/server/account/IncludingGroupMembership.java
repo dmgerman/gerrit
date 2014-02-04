@@ -671,6 +671,13 @@ argument_list|(
 name|direct
 argument_list|)
 decl_stmt|;
+name|r
+operator|.
+name|remove
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|AccountGroup
@@ -706,6 +713,10 @@ control|)
 block|{
 if|if
 condition|(
+name|g
+operator|!=
+literal|null
+operator|&&
 name|r
 operator|.
 name|add
@@ -766,6 +777,10 @@ control|)
 block|{
 if|if
 condition|(
+name|g
+operator|!=
+literal|null
+operator|&&
 name|r
 operator|.
 name|add

@@ -1190,6 +1190,13 @@ condition|(
 name|group
 operator|!=
 literal|null
+operator|&&
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|internalGroups
