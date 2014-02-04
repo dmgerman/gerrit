@@ -198,11 +198,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Project
+name|projects
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -1094,9 +1096,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|Project
-operator|.
-name|State
+name|ProjectState
 operator|.
 name|ACTIVE
 argument_list|)
@@ -1120,9 +1120,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|Project
-operator|.
-name|State
+name|ProjectState
 operator|.
 name|READ_ONLY
 argument_list|)

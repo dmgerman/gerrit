@@ -90,6 +90,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -173,22 +189,6 @@ operator|.
 name|client
 operator|.
 name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
 import|;
 end_import
 
@@ -633,8 +633,6 @@ name|MergeableInfo
 block|{
 DECL|field|submitType
 specifier|public
-name|Project
-operator|.
 name|SubmitType
 name|submitType
 decl_stmt|;
@@ -1042,7 +1040,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-DECL|method|refresh (Change change, final PatchSet ps, Project.SubmitType type, Repository git, Map<String, Ref> refs, final Ref ref)
+DECL|method|refresh (Change change, final PatchSet ps, SubmitType type, Repository git, Map<String, Ref> refs, final Ref ref)
 specifier|private
 name|boolean
 name|refresh
@@ -1054,8 +1052,6 @@ specifier|final
 name|PatchSet
 name|ps
 parameter_list|,
-name|Project
-operator|.
 name|SubmitType
 name|type
 parameter_list|,

@@ -170,11 +170,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Project
+name|projects
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -186,11 +188,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
-operator|.
-name|Project
+name|common
 operator|.
 name|InheritableBoolean
 import|;
@@ -204,13 +204,27 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
 operator|.
 name|Project
-operator|.
-name|SubmitType
 import|;
 end_import
 
@@ -603,7 +617,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, Project.State state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -635,9 +649,7 @@ parameter_list|,
 name|SubmitType
 name|submitType
 parameter_list|,
-name|Project
-operator|.
-name|State
+name|ProjectState
 name|state
 parameter_list|,
 name|Map
@@ -1371,14 +1383,12 @@ name|t
 parameter_list|)
 comment|/*-{ if(t)this.submit_type=t; }-*/
 function_decl|;
-DECL|method|setState (Project.State s)
+DECL|method|setState (ProjectState s)
 specifier|final
 name|void
 name|setState
 parameter_list|(
-name|Project
-operator|.
-name|State
+name|ProjectState
 name|s
 parameter_list|)
 block|{

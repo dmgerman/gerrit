@@ -76,11 +76,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|Branch
+name|SubmitType
 import|;
 end_import
 
@@ -96,9 +96,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
-operator|.
-name|SubmitType
+name|Branch
 import|;
 end_import
 

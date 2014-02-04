@@ -76,6 +76,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|projects
+operator|.
+name|ProjectInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|ResourceConflictException
@@ -114,24 +132,6 @@ name|RestModifyView
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|CreateProject
-operator|.
-name|Input
-import|;
-end_import
-
 begin_class
 DECL|class|PutProject
 specifier|public
@@ -142,12 +142,12 @@ name|RestModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,
-name|Input
+name|ProjectInput
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource resource, Input input)
+DECL|method|apply (ProjectResource resource, ProjectInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -158,7 +158,7 @@ parameter_list|(
 name|ProjectResource
 name|resource
 parameter_list|,
-name|Input
+name|ProjectInput
 name|input
 parameter_list|)
 throws|throws

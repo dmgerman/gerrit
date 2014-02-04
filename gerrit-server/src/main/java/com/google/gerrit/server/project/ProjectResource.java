@@ -76,6 +76,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|projects
+operator|.
+name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|RestResource
@@ -232,9 +250,7 @@ return|;
 block|}
 DECL|method|getState ()
 specifier|public
-name|Project
-operator|.
-name|State
+name|ProjectState
 name|getState
 parameter_list|()
 block|{

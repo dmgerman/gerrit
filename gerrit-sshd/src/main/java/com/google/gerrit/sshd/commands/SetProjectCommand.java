@@ -106,11 +106,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Project
+name|projects
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -122,11 +124,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
-operator|.
-name|Project
+name|common
 operator|.
 name|InheritableBoolean
 import|;
@@ -140,13 +140,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|Project
-operator|.
-name|State
+name|SubmitType
 import|;
 end_import
 
@@ -163,8 +161,6 @@ operator|.
 name|client
 operator|.
 name|Project
-operator|.
-name|SubmitType
 import|;
 end_import
 
@@ -797,7 +793,7 @@ literal|"project's visibility state"
 argument_list|)
 DECL|field|state
 specifier|private
-name|State
+name|ProjectState
 name|state
 decl_stmt|;
 annotation|@

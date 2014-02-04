@@ -74,7 +74,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|assertArrayEquals
 import|;
 end_import
 
@@ -86,7 +86,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertArrayEquals
+name|assertEquals
 import|;
 end_import
 
@@ -110,11 +110,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|project
+name|api
 operator|.
-name|PutConfig
+name|projects
+operator|.
+name|ProjectInput
 operator|.
 name|ConfigValue
 import|;

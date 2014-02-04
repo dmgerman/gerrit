@@ -128,15 +128,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
-name|reviewdb
+name|server
 operator|.
-name|client
-operator|.
-name|Project
-operator|.
-name|SubmitType
+name|OrmException
 import|;
 end_import
 
@@ -146,11 +142,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|OrmException
+name|common
+operator|.
+name|SubmitType
 import|;
 end_import
 
