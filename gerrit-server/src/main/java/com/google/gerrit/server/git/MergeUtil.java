@@ -1407,6 +1407,7 @@ argument_list|,
 name|c
 operator|.
 name|notes
+argument_list|()
 argument_list|,
 name|c
 operator|.
@@ -1688,7 +1689,7 @@ name|CHANGE_ID
 argument_list|,
 name|n
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getKey
@@ -1722,7 +1723,7 @@ name|append
 argument_list|(
 name|n
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getKey
@@ -2253,6 +2254,7 @@ argument_list|,
 name|n
 operator|.
 name|notes
+argument_list|()
 argument_list|,
 name|n
 operator|.
@@ -3748,7 +3750,9 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return
+name|CodeReviewCommit
+name|mergeResult
+init|=
 operator|(
 name|CodeReviewCommit
 operator|)
@@ -3763,6 +3767,17 @@ argument_list|,
 name|mergeCommit
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|mergeResult
+operator|.
+name|control
+operator|=
+name|n
+operator|.
+name|control
+expr_stmt|;
+return|return
+name|mergeResult
 return|;
 block|}
 end_function
@@ -3856,7 +3871,7 @@ name|isNullOrEmpty
 argument_list|(
 name|c
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getTopic
@@ -3870,7 +3885,7 @@ name|add
 argument_list|(
 name|c
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getTopic
@@ -3992,7 +4007,7 @@ block|{
 return|return
 name|in
 operator|.
-name|getChange
+name|change
 argument_list|()
 operator|.
 name|getKey

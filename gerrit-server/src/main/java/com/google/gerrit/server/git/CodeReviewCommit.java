@@ -116,6 +116,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -218,11 +234,10 @@ operator|.
 name|Id
 name|patchsetId
 decl_stmt|;
-comment|/** Change info loaded from notes. */
-DECL|field|notes
-specifier|public
-name|ChangeNotes
-name|notes
+comment|/** Change control for the change owner. */
+DECL|field|control
+name|ChangeControl
+name|control
 decl_stmt|;
 comment|/**    * Ordinal position of this commit within the submit queue.    *<p>    * Only valid if {@link #patchsetId} is not null.    */
 DECL|field|originalOrder
@@ -257,6 +272,19 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|notes ()
+specifier|public
+name|ChangeNotes
+name|notes
+parameter_list|()
+block|{
+return|return
+name|control
+operator|.
+name|getNotes
+argument_list|()
+return|;
+block|}
 DECL|method|copyFrom (final CodeReviewCommit src)
 name|void
 name|copyFrom
@@ -266,17 +294,17 @@ name|CodeReviewCommit
 name|src
 parameter_list|)
 block|{
-name|patchsetId
+name|control
 operator|=
 name|src
 operator|.
-name|patchsetId
+name|control
 expr_stmt|;
-name|notes
+name|patchsetId
 operator|=
 name|src
 operator|.
-name|notes
+name|patchsetId
 expr_stmt|;
 name|originalOrder
 operator|=
@@ -297,13 +325,13 @@ operator|.
 name|missing
 expr_stmt|;
 block|}
-DECL|method|getChange ()
+DECL|method|change ()
 name|Change
-name|getChange
+name|change
 parameter_list|()
 block|{
 return|return
-name|notes
+name|control
 operator|.
 name|getChange
 argument_list|()
