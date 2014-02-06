@@ -302,6 +302,27 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|type
+operator|==
+name|IndexType
+operator|.
+name|SOLR
+condition|)
+block|{
+name|index
+operator|.
+name|string
+argument_list|(
+literal|"Solr Index URL"
+argument_list|,
+literal|"url"
+argument_list|,
+literal|"localhost:9983"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|site
 operator|.
 name|isNew
