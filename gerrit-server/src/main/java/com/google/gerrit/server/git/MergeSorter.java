@@ -184,6 +184,7 @@ end_import
 
 begin_class
 DECL|class|MergeSorter
+specifier|public
 class|class
 name|MergeSorter
 block|{
@@ -209,6 +210,7 @@ argument_list|>
 name|accepted
 decl_stmt|;
 DECL|method|MergeSorter (final RevWalk rw, final Set<RevCommit> alreadyAccepted, final RevFlag canMergeFlag)
+specifier|public
 name|MergeSorter
 parameter_list|(
 specifier|final
@@ -405,11 +407,12 @@ condition|)
 block|{
 name|n
 operator|.
-name|statusCode
-operator|=
+name|setStatusCode
+argument_list|(
 name|CommitMergeStatus
 operator|.
 name|MISSING_DEPENDENCY
+argument_list|)
 expr_stmt|;
 name|n
 operator|.
@@ -451,7 +454,8 @@ if|if
 condition|(
 name|n
 operator|.
-name|statusCode
+name|getStatusCode
+argument_list|()
 operator|==
 name|CommitMergeStatus
 operator|.

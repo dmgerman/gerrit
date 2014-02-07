@@ -1573,7 +1573,8 @@ operator|&&
 operator|(
 name|c
 operator|.
-name|statusCode
+name|getStatusCode
+argument_list|()
 operator|==
 name|CommitMergeStatus
 operator|.
@@ -1581,7 +1582,8 @@ name|CLEAN_MERGE
 operator|||
 name|c
 operator|.
-name|statusCode
+name|getStatusCode
+argument_list|()
 operator|==
 name|CommitMergeStatus
 operator|.
@@ -1589,7 +1591,8 @@ name|CLEAN_PICK
 operator|||
 name|c
 operator|.
-name|statusCode
+name|getStatusCode
+argument_list|()
 operator|==
 name|CommitMergeStatus
 operator|.

@@ -190,6 +190,7 @@ end_import
 
 begin_class
 DECL|class|RebaseSorter
+specifier|public
 class|class
 name|RebaseSorter
 block|{
@@ -215,6 +216,7 @@ argument_list|>
 name|accepted
 decl_stmt|;
 DECL|method|RebaseSorter (final RevWalk rw, final Set<RevCommit> alreadyAccepted, final RevFlag canMergeFlag)
+specifier|public
 name|RebaseSorter
 parameter_list|(
 specifier|final
@@ -253,6 +255,7 @@ name|alreadyAccepted
 expr_stmt|;
 block|}
 DECL|method|sort (Collection<CodeReviewCommit> incoming)
+specifier|public
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -413,11 +416,12 @@ condition|)
 block|{
 name|n
 operator|.
-name|statusCode
-operator|=
+name|setStatusCode
+argument_list|(
 name|CommitMergeStatus
 operator|.
 name|MISSING_DEPENDENCY
+argument_list|)
 expr_stmt|;
 name|n
 operator|.
@@ -456,7 +460,8 @@ if|if
 condition|(
 name|n
 operator|.
-name|statusCode
+name|getStatusCode
+argument_list|()
 operator|==
 name|CommitMergeStatus
 operator|.

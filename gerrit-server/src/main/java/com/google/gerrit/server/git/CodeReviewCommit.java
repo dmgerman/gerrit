@@ -229,6 +229,7 @@ return|;
 block|}
 comment|/**    * Unique key of the PatchSet entity from the code review system.    *<p>    * This value is only available on commits that have a PatchSet represented in    * the code review system.    */
 DECL|field|patchsetId
+specifier|private
 name|PatchSet
 operator|.
 name|Id
@@ -236,6 +237,7 @@ name|patchsetId
 decl_stmt|;
 comment|/** Change control for the change owner. */
 DECL|field|control
+specifier|private
 name|ChangeControl
 name|control
 decl_stmt|;
@@ -246,6 +248,7 @@ name|originalOrder
 decl_stmt|;
 comment|/**    * The result status for this commit.    *<p>    * Only valid if {@link #patchsetId} is not null.    */
 DECL|field|statusCode
+specifier|private
 name|CommitMergeStatus
 name|statusCode
 decl_stmt|;
@@ -279,13 +282,71 @@ name|notes
 parameter_list|()
 block|{
 return|return
-name|control
+name|getControl
+argument_list|()
 operator|.
 name|getNotes
 argument_list|()
 return|;
 block|}
+DECL|method|getStatusCode ()
+specifier|public
+name|CommitMergeStatus
+name|getStatusCode
+parameter_list|()
+block|{
+return|return
+name|statusCode
+return|;
+block|}
+DECL|method|setStatusCode (CommitMergeStatus statusCode)
+specifier|public
+name|void
+name|setStatusCode
+parameter_list|(
+name|CommitMergeStatus
+name|statusCode
+parameter_list|)
+block|{
+name|this
+operator|.
+name|statusCode
+operator|=
+name|statusCode
+expr_stmt|;
+block|}
+DECL|method|getPatchsetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchsetId
+parameter_list|()
+block|{
+return|return
+name|patchsetId
+return|;
+block|}
+DECL|method|setPatchsetId (PatchSet.Id patchsetId)
+specifier|public
+name|void
+name|setPatchsetId
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|patchsetId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|patchsetId
+operator|=
+name|patchsetId
+expr_stmt|;
+block|}
 DECL|method|copyFrom (final CodeReviewCommit src)
+specifier|public
 name|void
 name|copyFrom
 parameter_list|(
@@ -326,16 +387,44 @@ name|missing
 expr_stmt|;
 block|}
 DECL|method|change ()
+specifier|public
 name|Change
 name|change
 parameter_list|()
 block|{
 return|return
-name|control
+name|getControl
+argument_list|()
 operator|.
 name|getChange
 argument_list|()
 return|;
+block|}
+DECL|method|getControl ()
+specifier|public
+name|ChangeControl
+name|getControl
+parameter_list|()
+block|{
+return|return
+name|control
+return|;
+block|}
+DECL|method|setControl (ChangeControl control)
+specifier|public
+name|void
+name|setControl
+parameter_list|(
+name|ChangeControl
+name|control
+parameter_list|)
+block|{
+name|this
+operator|.
+name|control
+operator|=
+name|control
+expr_stmt|;
 block|}
 block|}
 end_class
