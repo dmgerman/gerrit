@@ -86,24 +86,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|ListChangesOption
-operator|.
-name|DETAILED_LABELS
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -187,24 +169,6 @@ operator|.
 name|changes
 operator|.
 name|ReviewInput
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|RevisionApi
 import|;
 end_import
 
@@ -1593,37 +1557,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|revision (PushOneCommit.Result r)
-specifier|private
-name|RevisionApi
-name|revision
-parameter_list|(
-name|PushOneCommit
-operator|.
-name|Result
-name|r
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-return|return
-name|gApi
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|id
-argument_list|(
-name|r
-operator|.
-name|getChangeId
-argument_list|()
-argument_list|)
-operator|.
-name|current
-argument_list|()
-return|;
-block|}
 DECL|method|merge (PushOneCommit.Result r)
 specifier|private
 name|void
@@ -1747,8 +1680,6 @@ name|r
 operator|.
 name|getChangeId
 argument_list|()
-argument_list|,
-name|DETAILED_LABELS
 argument_list|)
 decl_stmt|;
 name|LabelInfo
