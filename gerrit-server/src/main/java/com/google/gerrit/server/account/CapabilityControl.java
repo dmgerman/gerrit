@@ -949,6 +949,25 @@ name|String
 name|permissionName
 parameter_list|)
 block|{
+if|if
+condition|(
+name|GlobalCapability
+operator|.
+name|ADMINISTRATE_SERVER
+operator|.
+name|equals
+argument_list|(
+name|permissionName
+argument_list|)
+condition|)
+block|{
+return|return
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
+else|else
+block|{
 return|return
 operator|!
 name|access
@@ -959,6 +978,7 @@ operator|.
 name|isEmpty
 argument_list|()
 return|;
+block|}
 block|}
 comment|/** The range of permitted values associated with a label permission. */
 DECL|method|getRange (String permission)
