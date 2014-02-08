@@ -248,6 +248,22 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** {@code get} with {@link ListChangesOption} set to ALL. */
+DECL|method|get ()
+name|ChangeInfo
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** {@code get} with {@link ListChangesOption} set to NONE. */
+DECL|method|info ()
+name|ChangeInfo
+name|info
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 block|}
 end_interface
 
