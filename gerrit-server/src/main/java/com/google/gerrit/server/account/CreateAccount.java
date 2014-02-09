@@ -496,6 +496,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -618,7 +630,10 @@ decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|IdentifiedUser
+argument_list|>
 name|currentUser
 decl_stmt|;
 DECL|field|groupsCollection
@@ -663,13 +678,16 @@ name|username
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount (ReviewDb db, IdentifiedUser currentUser, GroupsCollection groupsCollection, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountInfo.Loader.Factory infoLoader, @Assisted String username)
+DECL|method|CreateAccount (ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountInfo.Loader.Factory infoLoader, @Assisted String username)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
+name|Provider
+argument_list|<
 name|IdentifiedUser
+argument_list|>
 name|currentUser
 parameter_list|,
 name|GroupsCollection
@@ -1239,6 +1257,9 @@ argument_list|(
 name|m
 argument_list|,
 name|currentUser
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAccountId
 argument_list|()
