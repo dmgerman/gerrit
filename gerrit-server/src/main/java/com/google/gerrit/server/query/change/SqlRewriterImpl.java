@@ -3555,12 +3555,11 @@ argument_list|,
 literal|"z"
 argument_list|)
 argument_list|,
+comment|// MySQL Connector/J 5.1.21 has a hard limit on 50M rows.
 operator|new
 name|LimitPredicate
 argument_list|(
-name|Integer
-operator|.
-name|MAX_VALUE
+literal|50000000
 argument_list|)
 argument_list|)
 return|;
