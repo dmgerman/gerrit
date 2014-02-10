@@ -1201,7 +1201,7 @@ throw|throw
 operator|new
 name|MergeException
 argument_list|(
-literal|"Could not create a merge commit during the cherry pick"
+literal|"Cherry pick failed"
 argument_list|)
 throw|;
 block|}
@@ -1342,7 +1342,7 @@ literal|"Several changes with key "
 operator|+
 name|changeKey
 operator|+
-literal|" resides on the same branch. "
+literal|" reside on the same branch. "
 operator|+
 literal|"Cannot create a new patch set."
 argument_list|)
