@@ -166,6 +166,42 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|change
+operator|.
+name|Reviewers
+operator|.
+name|PostInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|change
+operator|.
+name|Reviewers
+operator|.
+name|PostResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|changes
 operator|.
 name|ChangeInfo
@@ -205,38 +241,6 @@ operator|.
 name|rpc
 operator|.
 name|GerritCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|NativeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
-name|NativeString
 import|;
 end_import
 
@@ -381,22 +385,6 @@ operator|.
 name|client
 operator|.
 name|JavaScriptObject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
-name|JsArray
 import|;
 end_import
 
@@ -1995,169 +1983,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|class|PostInput
-specifier|public
-specifier|static
-class|class
-name|PostInput
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|create (String reviewer, boolean confirmed)
-specifier|public
-specifier|static
-name|PostInput
-name|create
-parameter_list|(
-name|String
-name|reviewer
-parameter_list|,
-name|boolean
-name|confirmed
-parameter_list|)
-block|{
-name|PostInput
-name|input
-init|=
-name|createObject
-argument_list|()
-operator|.
-name|cast
-argument_list|()
-decl_stmt|;
-name|input
-operator|.
-name|init
-argument_list|(
-name|reviewer
-argument_list|,
-name|confirmed
-argument_list|)
-expr_stmt|;
-return|return
-name|input
-return|;
-block|}
-DECL|method|init (String reviewer, boolean confirmed)
-specifier|private
-specifier|native
-name|void
-name|init
-parameter_list|(
-name|String
-name|reviewer
-parameter_list|,
-name|boolean
-name|confirmed
-parameter_list|)
-comment|/*-{       this.reviewer = reviewer;       if (confirmed) {         this.confirmed = true;       }     }-*/
-function_decl|;
-DECL|method|PostInput ()
-specifier|protected
-name|PostInput
-parameter_list|()
-block|{     }
-block|}
-DECL|class|ReviewerInfo
-specifier|public
-specifier|static
-class|class
-name|ReviewerInfo
-extends|extends
-name|AccountInfo
-block|{
-DECL|method|approvals ()
-specifier|final
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|approvals
-parameter_list|()
-block|{
-return|return
-name|Natives
-operator|.
-name|keys
-argument_list|(
-name|_approvals
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|approval (String l)
-specifier|final
-specifier|native
-name|String
-name|approval
-parameter_list|(
-name|String
-name|l
-parameter_list|)
-comment|/*-{ return this.approvals[l]; }-*/
-function_decl|;
-DECL|method|_approvals ()
-specifier|private
-specifier|final
-specifier|native
-name|NativeMap
-argument_list|<
-name|NativeString
-argument_list|>
-name|_approvals
-parameter_list|()
-comment|/*-{ return this.approvals; }-*/
-function_decl|;
-DECL|method|ReviewerInfo ()
-specifier|protected
-name|ReviewerInfo
-parameter_list|()
-block|{     }
-block|}
-DECL|class|PostResult
-specifier|public
-specifier|static
-class|class
-name|PostResult
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|reviewers ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArray
-argument_list|<
-name|ReviewerInfo
-argument_list|>
-name|reviewers
-parameter_list|()
-comment|/*-{ return this.reviewers; }-*/
-function_decl|;
-DECL|method|confirm ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|confirm
-parameter_list|()
-comment|/*-{ return this.confirm || false; }-*/
-function_decl|;
-DECL|method|error ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|error
-parameter_list|()
-comment|/*-{ return this.error; }-*/
-function_decl|;
-DECL|method|PostResult ()
-specifier|protected
-name|PostResult
-parameter_list|()
-block|{     }
 block|}
 DECL|method|addReviewer (final String reviewer, boolean confirmed)
 specifier|private
