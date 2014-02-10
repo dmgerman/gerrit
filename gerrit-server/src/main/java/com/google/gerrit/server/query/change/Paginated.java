@@ -120,6 +120,19 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+DECL|method|restart (int start)
+name|ResultSet
+argument_list|<
+name|ChangeData
+argument_list|>
+name|restart
+parameter_list|(
+name|int
+name|start
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 

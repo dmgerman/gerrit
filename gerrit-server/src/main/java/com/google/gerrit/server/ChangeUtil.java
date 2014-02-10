@@ -948,7 +948,7 @@ comment|/**    * Epoch for sort key calculations, Tue Sep 30 2008 17:00:00.    *
 annotation|@
 name|VisibleForTesting
 DECL|field|SORT_KEY_EPOCH_MINS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|long

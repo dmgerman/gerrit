@@ -1634,7 +1634,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"    $q = qq{#q,project:$ENV{'GERRIT_PROJECT_NAME'},n,z};\n"
+literal|"    $q = qq{#q,project:$ENV{'GERRIT_PROJECT_NAME'}};\n"
 argument_list|)
 expr_stmt|;
 name|p
@@ -1655,7 +1655,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"+branch:$1,n,z};\n"
+literal|"+branch:$1};\n"
 argument_list|)
 expr_stmt|;
 comment|// wrapped
@@ -1692,7 +1692,7 @@ name|p
 operator|.
 name|print
 argument_list|(
-literal|"    $q = qq{#/q/$h,n,z};\n"
+literal|"    $q = qq{#/q/$h};\n"
 argument_list|)
 expr_stmt|;
 name|p

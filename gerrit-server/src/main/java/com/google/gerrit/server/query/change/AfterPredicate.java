@@ -80,7 +80,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|Schema
 import|;
 end_import
 
@@ -157,9 +157,15 @@ specifier|final
 name|Date
 name|cut
 decl_stmt|;
-DECL|method|AfterPredicate (String value)
+DECL|method|AfterPredicate (Schema<ChangeData> schema, String value)
 name|AfterPredicate
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|String
 name|value
 parameter_list|)
@@ -168,13 +174,14 @@ name|QueryParseException
 block|{
 name|super
 argument_list|(
-name|ChangeField
-operator|.
-name|UPDATED
+name|updatedField
+argument_list|(
+name|schema
+argument_list|)
 argument_list|,
 name|ChangeQueryBuilder
 operator|.
-name|FIELD_AFTER
+name|FIELD_BEFORE
 argument_list|,
 name|value
 argument_list|)

@@ -670,9 +670,7 @@ argument_list|)
 argument_list|,
 literal|0
 argument_list|,
-name|PagedSingleListScreen
-operator|.
-name|MAX_SORTKEY
+literal|0
 argument_list|,
 operator|new
 name|GerritCallback

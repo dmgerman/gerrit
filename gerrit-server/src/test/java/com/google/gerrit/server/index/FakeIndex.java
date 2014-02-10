@@ -251,7 +251,7 @@ name|PATH
 argument_list|,
 name|ChangeField
 operator|.
-name|SORTKEY
+name|UPDATED
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -445,7 +445,7 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<ChangeData> p, int limit)
+DECL|method|getSource (Predicate<ChangeData> p, int start, int limit)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -455,6 +455,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|p
+parameter_list|,
+name|int
+name|start
 parameter_list|,
 name|int
 name|limit

@@ -199,13 +199,11 @@ name|forQuery
 argument_list|(
 name|query
 argument_list|,
-name|PageLinks
-operator|.
-name|TOP
+literal|0
 argument_list|)
 return|;
 block|}
-DECL|method|forQuery (String query, String position)
+DECL|method|forQuery (String query, int start)
 specifier|public
 specifier|static
 name|QueryScreen
@@ -214,8 +212,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|String
-name|position
+name|int
+name|start
 parameter_list|)
 block|{
 return|return
@@ -229,7 +227,7 @@ argument_list|(
 name|query
 argument_list|)
 argument_list|,
-name|position
+name|start
 argument_list|)
 return|;
 block|}
@@ -239,26 +237,26 @@ specifier|final
 name|String
 name|query
 decl_stmt|;
-DECL|method|QueryScreen (final String encQuery, final String positionToken)
+DECL|method|QueryScreen (String encQuery, int start)
 specifier|public
 name|QueryScreen
 parameter_list|(
-specifier|final
 name|String
 name|encQuery
 parameter_list|,
-specifier|final
-name|String
-name|positionToken
+name|int
+name|start
 parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"/q/"
+name|PageLinks
+operator|.
+name|QUERY
 operator|+
 name|encQuery
 argument_list|,
-name|positionToken
+name|start
 argument_list|)
 expr_stmt|;
 name|query
@@ -436,44 +434,26 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|loadPrev ()
+DECL|method|onLoad ()
 specifier|protected
 name|void
-name|loadPrev
+name|onLoad
 parameter_list|()
 block|{
-name|ChangeList
+name|super
 operator|.
-name|prev
-argument_list|(
-name|query
-argument_list|,
-name|pageSize
-argument_list|,
-name|pos
-argument_list|,
-name|loadCallback
+name|onLoad
 argument_list|()
-argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|loadNext ()
-specifier|protected
-name|void
-name|loadNext
-parameter_list|()
-block|{
 name|ChangeList
 operator|.
 name|next
 argument_list|(
 name|query
 argument_list|,
-name|pageSize
+name|start
 argument_list|,
-name|pos
+name|pageSize
 argument_list|,
 name|loadCallback
 argument_list|()

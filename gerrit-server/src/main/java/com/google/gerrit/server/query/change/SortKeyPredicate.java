@@ -264,6 +264,28 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
+DECL|method|hasSortKeyField (Schema<ChangeData> schema)
+specifier|public
+specifier|static
+name|boolean
+name|hasSortKeyField
+parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|)
+block|{
+return|return
+name|sortkeyFieldOrNull
+argument_list|(
+name|schema
+argument_list|)
+operator|!=
+literal|null
+return|;
+block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -339,7 +361,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
-DECL|method|sortkeyField (Schema<ChangeData> schema)
+DECL|method|sortkeyFieldOrNull ( Schema<ChangeData> schema)
 specifier|private
 specifier|static
 name|FieldDef
@@ -348,7 +370,7 @@ name|ChangeData
 argument_list|,
 name|?
 argument_list|>
-name|sortkeyField
+name|sortkeyFieldOrNull
 parameter_list|(
 name|Schema
 argument_list|<
@@ -403,8 +425,6 @@ name|f
 return|;
 block|}
 return|return
-name|checkNotNull
-argument_list|(
 name|schema
 operator|.
 name|getFields
@@ -419,16 +439,37 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|sortkeyField (Schema<ChangeData> schema)
+specifier|private
+specifier|static
+name|FieldDef
+argument_list|<
+name|ChangeData
+argument_list|,
+name|?
+argument_list|>
+name|sortkeyField
+parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|)
+block|{
+return|return
+name|checkNotNull
+argument_list|(
+name|sortkeyFieldOrNull
+argument_list|(
+name|schema
+argument_list|)
 argument_list|,
 literal|"schema missing sortkey field, found: %s"
 argument_list|,
 name|schema
-operator|.
-name|getFields
-argument_list|()
-operator|.
-name|keySet
-argument_list|()
 argument_list|)
 return|;
 block|}

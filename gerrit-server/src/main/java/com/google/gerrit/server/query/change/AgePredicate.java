@@ -140,7 +140,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|Schema
 import|;
 end_import
 
@@ -217,18 +217,25 @@ specifier|final
 name|long
 name|cut
 decl_stmt|;
-DECL|method|AgePredicate (String value)
+DECL|method|AgePredicate (Schema<ChangeData> schema, String value)
 name|AgePredicate
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|String
 name|value
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ChangeField
-operator|.
-name|UPDATED
+name|updatedField
+argument_list|(
+name|schema
+argument_list|)
 argument_list|,
 name|ChangeQueryBuilder
 operator|.
@@ -306,17 +313,6 @@ name|Timestamp
 argument_list|(
 name|cut
 argument_list|)
-return|;
-block|}
-DECL|method|getCut ()
-name|long
-name|getCut
-parameter_list|()
-block|{
-return|return
-name|cut
-operator|+
-literal|1
 return|;
 block|}
 annotation|@

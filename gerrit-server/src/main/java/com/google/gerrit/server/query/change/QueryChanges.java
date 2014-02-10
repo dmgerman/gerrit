@@ -608,6 +608,38 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"-S"
+argument_list|,
+name|metaVar
+operator|=
+literal|"CNT"
+argument_list|,
+name|usage
+operator|=
+literal|"Number of changes to skip"
+argument_list|)
+DECL|method|setStart (int start)
+specifier|public
+name|void
+name|setStart
+parameter_list|(
+name|int
+name|start
+parameter_list|)
+block|{
+name|imp
+operator|.
+name|setStart
+argument_list|(
+name|start
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
 name|Inject
 DECL|method|QueryChanges (ChangeJson json, QueryProcessor qp, Provider<CurrentUser> user)
 name|QueryChanges
