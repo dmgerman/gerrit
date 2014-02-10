@@ -1102,6 +1102,12 @@ expr_stmt|;
 name|int
 name|limit
 init|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|1
+argument_list|,
 name|ChangeQueryBuilder
 operator|.
 name|hasLimit
@@ -1117,6 +1123,7 @@ name|in
 argument_list|)
 else|:
 name|MAX_LIMIT
+argument_list|)
 decl_stmt|;
 name|Predicate
 argument_list|<
