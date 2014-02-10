@@ -1130,6 +1130,11 @@ name|message
 argument_list|,
 name|computedChangeId
 argument_list|)
+operator|.
+name|trim
+argument_list|()
+operator|+
+literal|'\n'
 decl_stmt|;
 name|RevCommit
 name|cherryPickCommit
