@@ -141,7 +141,7 @@ specifier|native
 name|String
 name|asString
 parameter_list|()
-comment|/*-{ return this.get(); }-*/
+comment|/*-{ return this; }-*/
 function_decl|;
 specifier|public
 specifier|static
