@@ -186,6 +186,22 @@ name|pgm
 operator|.
 name|init
 operator|.
+name|PluginsDistribution
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|init
+operator|.
 name|SitePathInitializer
 import|;
 end_import
@@ -516,11 +532,41 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileNotFoundException
 import|;
 end_import
 
@@ -566,6 +612,22 @@ name|BaseInit
 extends|extends
 name|SiteProgram
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|BaseInit
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|standalone
 specifier|private
 specifier|final
@@ -578,10 +640,19 @@ specifier|final
 name|boolean
 name|initDb
 decl_stmt|;
-DECL|method|BaseInit ()
-specifier|public
+DECL|field|pluginsDistribution
+specifier|protected
+specifier|final
+name|PluginsDistribution
+name|pluginsDistribution
+decl_stmt|;
+DECL|method|BaseInit (PluginsDistribution pluginsDistribution)
+specifier|protected
 name|BaseInit
-parameter_list|()
+parameter_list|(
+name|PluginsDistribution
+name|pluginsDistribution
+parameter_list|)
 block|{
 name|this
 operator|.
@@ -595,8 +666,14 @@ name|initDb
 operator|=
 literal|true
 expr_stmt|;
+name|this
+operator|.
+name|pluginsDistribution
+operator|=
+name|pluginsDistribution
+expr_stmt|;
 block|}
-DECL|method|BaseInit (File sitePath, boolean standalone, boolean initDb)
+DECL|method|BaseInit (File sitePath, boolean standalone, boolean initDb, PluginsDistribution pluginsDistribution)
 specifier|public
 name|BaseInit
 parameter_list|(
@@ -608,6 +685,9 @@ name|standalone
 parameter_list|,
 name|boolean
 name|initDb
+parameter_list|,
+name|PluginsDistribution
+name|pluginsDistribution
 parameter_list|)
 block|{
 name|this
@@ -619,10 +699,12 @@ argument_list|,
 name|standalone
 argument_list|,
 name|initDb
+argument_list|,
+name|pluginsDistribution
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BaseInit (File sitePath, final Provider<DataSource> dsProvider, boolean standalone, boolean initDb)
+DECL|method|BaseInit (File sitePath, final Provider<DataSource> dsProvider, boolean standalone, boolean initDb, PluginsDistribution pluginsDistribution)
 specifier|public
 name|BaseInit
 parameter_list|(
@@ -641,6 +723,9 @@ name|standalone
 parameter_list|,
 name|boolean
 name|initDb
+parameter_list|,
+name|PluginsDistribution
+name|pluginsDistribution
 parameter_list|)
 block|{
 name|super
@@ -661,6 +746,12 @@ operator|.
 name|initDb
 operator|=
 name|initDb
+expr_stmt|;
+name|this
+operator|.
+name|pluginsDistribution
+operator|=
+name|pluginsDistribution
 expr_stmt|;
 block|}
 annotation|@
@@ -878,9 +969,34 @@ argument_list|>
 name|getInstallPlugins
 parameter_list|()
 block|{
+try|try
+block|{
+return|return
+name|pluginsDistribution
+operator|.
+name|listPluginNames
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Couldn't find distribution archive location."
+operator|+
+literal|" No plugin will be installed"
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|getAutoStart ()
 specifier|protected
@@ -1104,6 +1220,18 @@ operator|.
 name|toInstance
 argument_list|(
 name|plugins
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|PluginsDistribution
+operator|.
+name|class
+argument_list|)
+operator|.
+name|toInstance
+argument_list|(
+name|pluginsDistribution
 argument_list|)
 expr_stmt|;
 block|}
