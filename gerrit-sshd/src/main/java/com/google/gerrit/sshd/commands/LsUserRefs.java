@@ -68,6 +68,24 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+operator|.
+name|Mode
+operator|.
+name|MASTER_OR_SLAVE
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -418,6 +436,10 @@ argument_list|,
 name|description
 operator|=
 literal|"List refs visible to a specific user"
+argument_list|,
+name|runsAt
+operator|=
+name|MASTER_OR_SLAVE
 argument_list|)
 DECL|class|LsUserRefs
 specifier|public

@@ -732,7 +732,7 @@ name|sshd
 operator|.
 name|commands
 operator|.
-name|MasterCommandModule
+name|DefaultCommandModule
 import|;
 end_import
 
@@ -2382,8 +2382,10 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|MasterCommandModule
-argument_list|()
+name|DefaultCommandModule
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

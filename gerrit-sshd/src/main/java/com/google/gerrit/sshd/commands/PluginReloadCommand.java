@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|sshd
+operator|.
+name|CommandMetaData
+operator|.
+name|Mode
+operator|.
+name|MASTER_OR_SLAVE
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -79,6 +97,22 @@ operator|.
 name|data
 operator|.
 name|GlobalCapability
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|RequiresCapability
 import|;
 end_import
 
@@ -111,22 +145,6 @@ operator|.
 name|plugins
 operator|.
 name|PluginInstallException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|RequiresCapability
 import|;
 end_import
 
@@ -226,6 +244,10 @@ argument_list|,
 name|description
 operator|=
 literal|"Reload/Restart plugins"
+argument_list|,
+name|runsAt
+operator|=
+name|MASTER_OR_SLAVE
 argument_list|)
 DECL|class|PluginReloadCommand
 specifier|final

@@ -119,6 +119,11 @@ name|CommandModule
 extends|extends
 name|LifecycleModule
 block|{
+DECL|field|slaveMode
+specifier|protected
+name|boolean
+name|slaveMode
+decl_stmt|;
 comment|/**    * Configure a command to be invoked by name.    *    * @param name the name of the command the client will provide in order to    *        call the command.    * @return a binding that must be bound to a non-singleton provider for a    *         {@link Command} object.    */
 DECL|method|command (final String name)
 specifier|protected
@@ -250,6 +255,19 @@ literal|"no CommandMetaData annotation found"
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+name|meta
+operator|.
+name|runsAt
+argument_list|()
+operator|.
+name|isSupported
+argument_list|(
+name|slaveMode
+argument_list|)
+condition|)
+block|{
 name|bind
 argument_list|(
 name|Commands
@@ -275,6 +293,7 @@ argument_list|(
 name|clazz
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**    * Alias one command to another. The alias is bound to the passed class.    *    * @param parent context of the parent command, that this command is a    *        subcommand of.    * @param name the name of the command the client will provide in order to    *        call the command.    * @param clazz class of the command with {@link CommandMetaData} annotation    *        to retrieve the description from    */
 DECL|method|alias (final CommandName parent, final String name, final Class<? extends BaseCommand> clazz)
