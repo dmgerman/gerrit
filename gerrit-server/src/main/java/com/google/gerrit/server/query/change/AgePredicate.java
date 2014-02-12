@@ -276,6 +276,8 @@ operator|-
 name|ms
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMinTimestamp ()
 specifier|public
 name|Timestamp
@@ -290,6 +292,8 @@ literal|0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMaxTimestamp ()
 specifier|public
 name|Timestamp
@@ -351,18 +355,6 @@ name|getTime
 argument_list|()
 operator|<=
 name|cut
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCost ()
-specifier|public
-name|int
-name|getCost
-parameter_list|()
-block|{
-return|return
-literal|1
 return|;
 block|}
 block|}

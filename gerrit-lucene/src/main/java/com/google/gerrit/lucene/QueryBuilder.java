@@ -502,9 +502,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|sql
+name|util
 operator|.
-name|Timestamp
+name|Date
 import|;
 end_import
 
@@ -1762,13 +1762,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|toIndexTime (Timestamp ts)
+DECL|method|toIndexTime (Date ts)
 specifier|public
 specifier|static
 name|int
 name|toIndexTime
 parameter_list|(
-name|Timestamp
+name|Date
 name|ts
 parameter_list|)
 block|{
