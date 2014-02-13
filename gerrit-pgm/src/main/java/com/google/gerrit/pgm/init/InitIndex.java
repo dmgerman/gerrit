@@ -302,6 +302,27 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|type
+operator|==
+name|IndexType
+operator|.
+name|SOLR
+condition|)
+block|{
+name|index
+operator|.
+name|string
+argument_list|(
+literal|"Solr Index URL"
+argument_list|,
+literal|"url"
+argument_list|,
+literal|"localhost:9983"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|site
 operator|.
 name|isNew
@@ -333,13 +354,32 @@ expr_stmt|;
 block|}
 else|else
 block|{
+specifier|final
+name|String
+name|message
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"\nThe index must be %sbuilt before starting Gerrit:\n"
+operator|+
+literal|"  java -jar gerrit.war reindex -d site_path\n"
+argument_list|,
+name|site
+operator|.
+name|isNew
+condition|?
+literal|""
+else|:
+literal|"re"
+argument_list|)
+decl_stmt|;
 name|ui
 operator|.
 name|message
 argument_list|(
-literal|"The index must be built before starting Gerrit:\n"
-operator|+
-literal|"  java -jar gerrit.war reindex -d site_path\n"
+name|message
 argument_list|)
 expr_stmt|;
 name|initFlags

@@ -1050,7 +1050,7 @@ name|getString
 argument_list|(
 literal|"index"
 argument_list|,
-literal|"solr"
+literal|null
 argument_list|,
 literal|"url"
 argument_list|)
@@ -1069,7 +1069,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"index.solr.url must be supplied"
+literal|"index.url must be supplied"
 argument_list|)
 throw|;
 block|}
