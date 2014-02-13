@@ -1128,6 +1128,15 @@ name|KEY_REQUIRE_CONTRIBUTOR_AGREEMENT
 init|=
 literal|"requireContributorAgreement"
 decl_stmt|;
+DECL|field|KEY_CHECK_RECEIVED_OBJECTS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|KEY_CHECK_RECEIVED_OBJECTS
+init|=
+literal|"checkReceivedObjects"
+decl_stmt|;
 DECL|field|SUBMIT
 specifier|private
 specifier|static
@@ -1441,6 +1450,11 @@ argument_list|,
 name|Config
 argument_list|>
 name|pluginConfigs
+decl_stmt|;
+DECL|field|checkReceivedObjects
+specifier|private
+name|boolean
+name|checkReceivedObjects
 decl_stmt|;
 DECL|method|read (MetaDataUpdate update)
 specifier|public
@@ -2318,6 +2332,17 @@ return|return
 name|maxObjectSizeLimit
 return|;
 block|}
+comment|/**    * @return the checkReceivedObjects for this project, default is true.    */
+DECL|method|getCheckReceivedObjects ()
+specifier|public
+name|boolean
+name|getCheckReceivedObjects
+parameter_list|()
+block|{
+return|return
+name|checkReceivedObjects
+return|;
+block|}
 comment|/**    * Check all GroupReferences use current group name, repairing stale ones.    *    * @param groupBackend cache to use when looking up group information by UUID.    * @return true if one or more group names was stale.    */
 DECL|method|updateGroupNames (GroupBackend groupBackend)
 specifier|public
@@ -2766,19 +2791,9 @@ argument_list|(
 name|rc
 argument_list|)
 expr_stmt|;
-name|maxObjectSizeLimit
-operator|=
-name|rc
-operator|.
-name|getLong
+name|loadReceiveSection
 argument_list|(
-name|RECEIVE
-argument_list|,
-literal|null
-argument_list|,
-name|KEY_MAX_OBJECT_SIZE_LIMIT
-argument_list|,
-literal|0
+name|rc
 argument_list|)
 expr_stmt|;
 block|}
@@ -4687,6 +4702,44 @@ operator|.
 name|copyOf
 argument_list|(
 name|commentLinkSections
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|loadReceiveSection (Config rc)
+specifier|private
+name|void
+name|loadReceiveSection
+parameter_list|(
+name|Config
+name|rc
+parameter_list|)
+block|{
+name|checkReceivedObjects
+operator|=
+name|rc
+operator|.
+name|getBoolean
+argument_list|(
+name|RECEIVE
+argument_list|,
+name|KEY_CHECK_RECEIVED_OBJECTS
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|maxObjectSizeLimit
+operator|=
+name|rc
+operator|.
+name|getLong
+argument_list|(
+name|RECEIVE
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_MAX_OBJECT_SIZE_LIMIT
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
