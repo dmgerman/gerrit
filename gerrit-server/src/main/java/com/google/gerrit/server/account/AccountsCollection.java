@@ -474,7 +474,7 @@ block|{
 name|IdentifiedUser
 name|user
 init|=
-name|_parse
+name|parseId
 argument_list|(
 name|id
 operator|.
@@ -550,7 +550,7 @@ block|{
 name|IdentifiedUser
 name|user
 init|=
-name|_parse
+name|parseId
 argument_list|(
 name|id
 argument_list|)
@@ -581,10 +581,11 @@ return|return
 name|user
 return|;
 block|}
-DECL|method|_parse (String id)
-specifier|private
+comment|/**    * Parses an account ID and returns the user without making any permission    * check whether the current user can see the account.    *    * @param id ID of the account, can be a string of the format    *        "Full Name<email@example.com>", just the email address, a full name    *        if it is unique, an account ID, a user name or 'self' for the    *        calling user    * @return the user, null if no user is found for the given account ID    * @throws AuthException thrown if 'self' is used as account ID and the    *         current user is not authenticated    * @throws OrmException    */
+DECL|method|parseId (String id)
+specifier|public
 name|IdentifiedUser
-name|_parse
+name|parseId
 parameter_list|(
 name|String
 name|id
@@ -594,14 +595,6 @@ name|AuthException
 throws|,
 name|OrmException
 block|{
-name|CurrentUser
-name|user
-init|=
-name|self
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|id
@@ -612,6 +605,14 @@ literal|"self"
 argument_list|)
 condition|)
 block|{
+name|CurrentUser
+name|user
+init|=
+name|self
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|user

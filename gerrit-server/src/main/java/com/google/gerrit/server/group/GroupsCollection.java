@@ -674,7 +674,7 @@ operator|.
 name|Basic
 name|group
 init|=
-name|_parse
+name|parseId
 argument_list|(
 name|id
 operator|.
@@ -754,7 +754,7 @@ operator|.
 name|Basic
 name|group
 init|=
-name|_parse
+name|parseId
 argument_list|(
 name|id
 argument_list|)
@@ -851,12 +851,13 @@ return|return
 name|group
 return|;
 block|}
-DECL|method|_parse (String id)
-specifier|private
+comment|/**    * Parses a group ID and returns the group without making any permission    * check whether the current user can see the group.    *    * @param id ID of the group, can be a group UUID, a group name or a legacy    *        group ID    * @return the group, null if no group is found for the given group ID    */
+DECL|method|parseId (String id)
+specifier|public
 name|GroupDescription
 operator|.
 name|Basic
-name|_parse
+name|parseId
 parameter_list|(
 name|String
 name|id
