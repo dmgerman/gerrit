@@ -636,11 +636,11 @@ name|html
 operator|=
 name|html
 operator|.
-name|replace
+name|replaceAll
 argument_list|(
-literal|"\r</span>\n"
+literal|"\r</span>(<span class=\"wdc\">)?\n"
 argument_list|,
-literal|"</span>\n"
+literal|"</span>$1\n"
 argument_list|)
 expr_stmt|;
 name|html
