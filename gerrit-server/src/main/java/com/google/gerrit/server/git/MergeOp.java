@@ -5245,9 +5245,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|commit
-operator|.
-name|patchsetId
+name|merged
 argument_list|)
 argument_list|,
 name|db
