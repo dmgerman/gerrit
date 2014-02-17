@@ -481,6 +481,22 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setRecursive (boolean recursive)
+specifier|public
+name|void
+name|setRecursive
+parameter_list|(
+name|boolean
+name|recursive
+parameter_list|)
+block|{
+name|this
+operator|.
+name|recursive
+operator|=
+name|recursive
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|apply (final GroupResource resource)
