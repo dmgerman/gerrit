@@ -206,6 +206,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|strategy
+operator|.
 name|SubmitStrategy
 import|;
 end_import

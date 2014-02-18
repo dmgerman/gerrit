@@ -284,6 +284,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|strategy
+operator|.
 name|SubmitStrategyFactory
 import|;
 end_import
