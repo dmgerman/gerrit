@@ -572,6 +572,12 @@ specifier|final
 name|boolean
 name|standalone
 decl_stmt|;
+DECL|field|initDb
+specifier|private
+specifier|final
+name|boolean
+name|initDb
+decl_stmt|;
 DECL|method|BaseInit ()
 specifier|public
 name|BaseInit
@@ -583,8 +589,14 @@ name|standalone
 operator|=
 literal|true
 expr_stmt|;
+name|this
+operator|.
+name|initDb
+operator|=
+literal|true
+expr_stmt|;
 block|}
-DECL|method|BaseInit (File sitePath, boolean standalone)
+DECL|method|BaseInit (File sitePath, boolean standalone, boolean initDb)
 specifier|public
 name|BaseInit
 parameter_list|(
@@ -593,6 +605,9 @@ name|sitePath
 parameter_list|,
 name|boolean
 name|standalone
+parameter_list|,
+name|boolean
+name|initDb
 parameter_list|)
 block|{
 name|this
@@ -602,10 +617,12 @@ argument_list|,
 literal|null
 argument_list|,
 name|standalone
+argument_list|,
+name|initDb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BaseInit (File sitePath, final Provider<DataSource> dsProvider, boolean standalone)
+DECL|method|BaseInit (File sitePath, final Provider<DataSource> dsProvider, boolean standalone, boolean initDb)
 specifier|public
 name|BaseInit
 parameter_list|(
@@ -621,6 +638,9 @@ name|dsProvider
 parameter_list|,
 name|boolean
 name|standalone
+parameter_list|,
+name|boolean
+name|initDb
 parameter_list|)
 block|{
 name|super
@@ -635,6 +655,12 @@ operator|.
 name|standalone
 operator|=
 name|standalone
+expr_stmt|;
+name|this
+operator|.
+name|initDb
+operator|=
+name|initDb
 expr_stmt|;
 block|}
 annotation|@
@@ -981,6 +1007,8 @@ operator|new
 name|InitModule
 argument_list|(
 name|standalone
+argument_list|,
+name|initDb
 argument_list|)
 argument_list|)
 expr_stmt|;
