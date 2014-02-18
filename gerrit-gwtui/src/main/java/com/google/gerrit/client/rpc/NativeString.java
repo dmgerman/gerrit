@@ -131,7 +131,7 @@ specifier|native
 name|JavaScriptObject
 name|init
 parameter_list|()
-comment|/*-{     var T = function(s){this.s=s};     T.prototype = {       get: function(){return this.s},     };     return T;   }-*/
+comment|/*-{ return function(s){this.s=s}; }-*/
 function_decl|;
 DECL|method|wrap (String s)
 specifier|static
