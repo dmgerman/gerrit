@@ -884,6 +884,12 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
+DECL|field|remoteAdmin
+specifier|private
+specifier|final
+name|boolean
+name|remoteAdmin
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PluginLoader (SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider)
@@ -997,6 +1003,21 @@ name|urlProvider
 operator|=
 name|provider
 expr_stmt|;
+name|remoteAdmin
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"plugins"
+argument_list|,
+literal|null
+argument_list|,
+literal|"allowRemoteAdmin"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 name|long
 name|checkFrequency
 init|=
@@ -1051,6 +1072,16 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
+DECL|method|isRemoteAdminEnabled ()
+specifier|public
+name|boolean
+name|isRemoteAdminEnabled
+parameter_list|()
+block|{
+return|return
+name|remoteAdmin
+return|;
 block|}
 DECL|method|get (String name)
 specifier|public
@@ -1167,6 +1198,9 @@ name|IOException
 throws|,
 name|PluginInstallException
 block|{
+name|checkRemoteInstall
+argument_list|()
+expr_stmt|;
 name|String
 name|fileName
 init|=
@@ -1697,6 +1731,28 @@ argument_list|>
 name|names
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|isRemoteAdminEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Remote plugin administration is disabled,"
+operator|+
+literal|" ignoring disablePlugins("
+operator|+
+name|names
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -1859,6 +1915,28 @@ parameter_list|)
 throws|throws
 name|PluginInstallException
 block|{
+if|if
+condition|(
+operator|!
+name|isRemoteAdminEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Remote plugin administration is disabled,"
+operator|+
+literal|" ignoring enablePlugins("
+operator|+
+name|names
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 synchronized|synchronized
 init|(
 name|this
@@ -4895,6 +4973,30 @@ operator|+
 literal|".disabled"
 argument_list|)
 return|;
+block|}
+DECL|method|checkRemoteInstall ()
+specifier|private
+name|void
+name|checkRemoteInstall
+parameter_list|()
+throws|throws
+name|PluginInstallException
+block|{
+if|if
+condition|(
+operator|!
+name|isRemoteAdminEnabled
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|PluginInstallException
+argument_list|(
+literal|"remote installation is disabled"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class

@@ -278,7 +278,25 @@ specifier|protected
 name|void
 name|run
 parameter_list|()
+throws|throws
+name|UnloggedFailure
 block|{
+if|if
+condition|(
+operator|!
+name|loader
+operator|.
+name|isRemoteAdminEnabled
+argument_list|()
+condition|)
+block|{
+throw|throw
+name|die
+argument_list|(
+literal|"remote plugin administration is disabled"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|names

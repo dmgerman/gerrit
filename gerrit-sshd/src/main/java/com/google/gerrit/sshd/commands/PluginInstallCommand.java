@@ -407,6 +407,22 @@ name|UnloggedFailure
 block|{
 if|if
 condition|(
+operator|!
+name|loader
+operator|.
+name|isRemoteAdminEnabled
+argument_list|()
+condition|)
+block|{
+throw|throw
+name|die
+argument_list|(
+literal|"remote installation is disabled"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|Strings
 operator|.
 name|isNullOrEmpty
