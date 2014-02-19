@@ -1138,12 +1138,12 @@ literal|'h'
 block|}
 argument_list|)
 decl_stmt|;
-DECL|method|ammendChange (String changeId)
+DECL|method|amendChange (String changeId)
 specifier|protected
 name|PushOneCommit
 operator|.
 name|Result
-name|ammendChange
+name|amendChange
 parameter_list|(
 name|String
 name|changeId

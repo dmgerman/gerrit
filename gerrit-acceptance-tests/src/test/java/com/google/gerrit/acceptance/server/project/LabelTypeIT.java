@@ -524,7 +524,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|ammendChange
+name|amendChange
 argument_list|(
 name|r
 operator|.
@@ -591,7 +591,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|ammendChange
+name|amendChange
 argument_list|(
 name|r
 operator|.
@@ -648,7 +648,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|ammendChange
+name|amendChange
 argument_list|(
 name|r
 operator|.
@@ -714,7 +714,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|ammendChange
+name|amendChange
 argument_list|(
 name|r
 operator|.
@@ -787,7 +787,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|ammendChange
+name|amendChange
 argument_list|(
 name|r
 operator|.
@@ -861,7 +861,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|ammendChange
+name|amendChange
 argument_list|(
 name|r
 operator|.
