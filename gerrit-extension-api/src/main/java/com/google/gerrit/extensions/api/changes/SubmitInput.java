@@ -79,6 +79,11 @@ specifier|public
 name|boolean
 name|waitForMerge
 decl_stmt|;
+DECL|field|onBehalfOf
+specifier|public
+name|String
+name|onBehalfOf
+decl_stmt|;
 block|}
 end_class
 
