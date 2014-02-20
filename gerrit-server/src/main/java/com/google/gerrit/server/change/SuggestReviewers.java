@@ -1878,10 +1878,12 @@ init|=
 literal|"gerritcodereview#suggestedreviewer"
 decl_stmt|;
 DECL|field|account
+specifier|public
 name|AccountInfo
 name|account
 decl_stmt|;
 DECL|field|group
+specifier|public
 name|GroupBaseInfo
 name|group
 decl_stmt|;

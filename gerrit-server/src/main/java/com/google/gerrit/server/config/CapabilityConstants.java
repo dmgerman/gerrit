@@ -185,6 +185,11 @@ specifier|public
 name|String
 name|streamEvents
 decl_stmt|;
+DECL|field|viewAllAccounts
+specifier|public
+name|String
+name|viewAllAccounts
+decl_stmt|;
 DECL|field|viewCaches
 specifier|public
 name|String

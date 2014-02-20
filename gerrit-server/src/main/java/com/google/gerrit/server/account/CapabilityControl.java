@@ -645,6 +645,25 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can view all accounts. */
+DECL|method|canViewAllAccounts ()
+specifier|public
+name|boolean
+name|canViewAllAccounts
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|VIEW_ALL_ACCOUNTS
+argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
 comment|/** @return true if the user can view the server caches. */
 DECL|method|canViewCaches ()
 specifier|public
