@@ -585,6 +585,21 @@ return|return
 literal|true
 return|;
 block|}
+if|if
+condition|(
+name|currentUser
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canViewAllAccounts
+argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 switch|switch
 condition|(
 name|accountVisibility
@@ -745,13 +760,7 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|currentUser
-operator|.
-name|getCapabilities
-argument_list|()
-operator|.
-name|canAdministrateServer
-argument_list|()
+literal|false
 return|;
 block|}
 DECL|method|groupsOf (Account.Id account)

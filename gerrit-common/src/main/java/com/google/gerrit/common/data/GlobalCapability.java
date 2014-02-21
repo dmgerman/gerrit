@@ -256,6 +256,16 @@ name|STREAM_EVENTS
 init|=
 literal|"streamEvents"
 decl_stmt|;
+comment|/** Can view all accounts, regardless of {@code accounts.visibility}. */
+DECL|field|VIEW_ALL_ACCOUNTS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VIEW_ALL_ACCOUNTS
+init|=
+literal|"viewAllAccounts"
+decl_stmt|;
 comment|/** Can view the server's current cache states. */
 DECL|field|VIEW_CACHES
 specifier|public
@@ -404,6 +414,13 @@ operator|.
 name|add
 argument_list|(
 name|STREAM_EVENTS
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|VIEW_ALL_ACCOUNTS
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL

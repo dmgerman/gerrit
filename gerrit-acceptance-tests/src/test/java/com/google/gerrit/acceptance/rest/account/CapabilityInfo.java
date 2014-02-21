@@ -143,6 +143,11 @@ specifier|public
 name|boolean
 name|streamEvents
 decl_stmt|;
+DECL|field|viewAllAccounts
+specifier|public
+name|boolean
+name|viewAllAccounts
+decl_stmt|;
 DECL|field|viewCaches
 specifier|public
 name|boolean
