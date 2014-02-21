@@ -156,12 +156,21 @@ specifier|final
 name|boolean
 name|standalone
 decl_stmt|;
-DECL|method|InitModule (boolean standalone)
+DECL|field|initDb
+specifier|private
+specifier|final
+name|boolean
+name|initDb
+decl_stmt|;
+DECL|method|InitModule (boolean standalone, boolean initDb)
 specifier|public
 name|InitModule
 parameter_list|(
 name|boolean
 name|standalone
+parameter_list|,
+name|boolean
+name|initDb
 parameter_list|)
 block|{
 name|this
@@ -169,6 +178,12 @@ operator|.
 name|standalone
 operator|=
 name|standalone
+expr_stmt|;
+name|this
+operator|.
+name|initDb
+operator|=
+name|initDb
 expr_stmt|;
 block|}
 annotation|@
@@ -240,7 +255,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|standalone
+name|initDb
 condition|)
 block|{
 name|step
