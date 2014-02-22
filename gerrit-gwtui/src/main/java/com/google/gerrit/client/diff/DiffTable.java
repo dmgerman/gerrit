@@ -340,6 +340,11 @@ name|String
 name|intralineBg
 parameter_list|()
 function_decl|;
+DECL|method|dark ()
+name|String
+name|dark
+parameter_list|()
+function_decl|;
 DECL|method|diff ()
 name|String
 name|diff
