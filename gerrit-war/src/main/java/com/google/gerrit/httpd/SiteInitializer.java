@@ -164,6 +164,16 @@ name|Statement
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|SiteInitializer
 specifier|public
@@ -205,7 +215,16 @@ specifier|final
 name|PluginsDistribution
 name|pluginsDistribution
 decl_stmt|;
-DECL|method|SiteInitializer (String sitePath, String initPath, PluginsDistribution pluginsDistribution)
+DECL|field|pluginsToInstall
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|pluginsToInstall
+decl_stmt|;
+DECL|method|SiteInitializer (String sitePath, String initPath, PluginsDistribution pluginsDistribution, List<String> pluginsToInstall)
 name|SiteInitializer
 parameter_list|(
 name|String
@@ -216,6 +235,12 @@ name|initPath
 parameter_list|,
 name|PluginsDistribution
 name|pluginsDistribution
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|pluginsToInstall
 parameter_list|)
 block|{
 name|this
@@ -235,6 +260,12 @@ operator|.
 name|pluginsDistribution
 operator|=
 name|pluginsDistribution
+expr_stmt|;
+name|this
+operator|.
+name|pluginsToInstall
+operator|=
+name|pluginsToInstall
 expr_stmt|;
 block|}
 DECL|method|init ()
@@ -288,6 +319,8 @@ argument_list|,
 literal|true
 argument_list|,
 name|pluginsDistribution
+argument_list|,
+name|pluginsToInstall
 argument_list|)
 operator|.
 name|run
@@ -369,6 +402,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|pluginsDistribution
+argument_list|,
+name|pluginsToInstall
 argument_list|)
 operator|.
 name|run
