@@ -1574,6 +1574,8 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|FileOutputStream
 name|stream
 init|=
@@ -1582,10 +1584,10 @@ name|FileOutputStream
 argument_list|(
 name|tmpjar
 argument_list|)
-decl_stmt|;
+init|;
 name|JarOutputStream
 name|out
-init|=
+operator|=
 operator|new
 name|JarOutputStream
 argument_list|(
@@ -1593,7 +1595,8 @@ name|stream
 argument_list|,
 name|mf
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|byte
 name|buffer
 index|[]
@@ -1604,8 +1607,6 @@ index|[
 literal|10240
 index|]
 decl_stmt|;
-try|try
-block|{
 for|for
 control|(
 name|String
@@ -1725,14 +1726,6 @@ name|closeEntry
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 if|if
 condition|(

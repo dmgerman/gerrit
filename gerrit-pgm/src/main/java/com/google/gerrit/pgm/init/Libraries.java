@@ -707,6 +707,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -721,7 +723,8 @@ name|getResourceAsStream
 argument_list|(
 name|p
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -739,7 +742,8 @@ name|p
 argument_list|)
 throw|;
 block|}
-specifier|final
+try|try
+init|(
 name|Reader
 name|r
 init|=
@@ -750,8 +754,7 @@ name|in
 argument_list|,
 literal|"UTF-8"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|StringBuilder
@@ -810,13 +813,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-finally|finally
-block|{
-name|r
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
