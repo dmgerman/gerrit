@@ -350,8 +350,12 @@ literal|null
 argument_list|)
 throw|;
 block|}
-try|try
-init|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+comment|// Leave open so classes can be loaded.
 name|URLClassLoader
 name|urlClassLoader
 init|=
@@ -359,8 +363,7 @@ operator|(
 name|URLClassLoader
 operator|)
 name|cl
-init|)
-block|{
+decl_stmt|;
 name|Method
 name|addURL
 decl_stmt|;
@@ -514,22 +517,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ioe
-parameter_list|)
-block|{
-throw|throw
-name|noAddURL
-argument_list|(
-literal|"Error closing URLClassLoader"
-argument_list|,
-name|ioe
-argument_list|)
-throw|;
 block|}
 block|}
 DECL|method|noAddURL (String m, Throwable why)
