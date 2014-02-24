@@ -350,11 +350,8 @@ literal|null
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
+try|try
+init|(
 name|URLClassLoader
 name|urlClassLoader
 init|=
@@ -362,7 +359,8 @@ operator|(
 name|URLClassLoader
 operator|)
 name|cl
-decl_stmt|;
+init|)
+block|{
 name|Method
 name|addURL
 decl_stmt|;
@@ -394,20 +392,7 @@ block|}
 catch|catch
 parameter_list|(
 name|SecurityException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|noAddURL
-argument_list|(
-literal|"Method addURL not available"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|NoSuchMethodException
 name|e
 parameter_list|)
@@ -487,43 +472,9 @@ block|}
 catch|catch
 parameter_list|(
 name|MalformedURLException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|noAddURL
-argument_list|(
-literal|"addURL "
-operator|+
-name|path
-operator|+
-literal|" failed"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|noAddURL
-argument_list|(
-literal|"addURL "
-operator|+
-name|path
-operator|+
-literal|" failed"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IllegalAccessException
 name|e
 parameter_list|)
@@ -563,6 +514,22 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioe
+parameter_list|)
+block|{
+throw|throw
+name|noAddURL
+argument_list|(
+literal|"Error closing URLClassLoader"
+argument_list|,
+name|ioe
+argument_list|)
+throw|;
 block|}
 block|}
 DECL|method|noAddURL (String m, Throwable why)
