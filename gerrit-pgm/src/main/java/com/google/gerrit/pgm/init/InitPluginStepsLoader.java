@@ -458,11 +458,6 @@ return|return
 name|pluginsInitSteps
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 DECL|method|loadInitStep (File jar)
 specifier|private
 name|InitStep
@@ -473,8 +468,8 @@ name|jar
 parameter_list|)
 block|{
 try|try
-block|{
-name|ClassLoader
+init|(
+name|URLClassLoader
 name|pluginLoader
 init|=
 operator|new
@@ -500,16 +495,18 @@ operator|.
 name|getClassLoader
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|;
 name|JarFile
 name|jarFile
-init|=
+operator|=
 operator|new
 name|JarFile
 argument_list|(
 name|jar
 argument_list|)
-decl_stmt|;
+init|;
+init|)
+block|{
 name|Attributes
 name|jarFileAttributes
 init|=
