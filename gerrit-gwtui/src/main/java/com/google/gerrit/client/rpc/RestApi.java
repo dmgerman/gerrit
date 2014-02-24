@@ -356,22 +356,6 @@ name|json
 operator|.
 name|client
 operator|.
-name|JSONObject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|json
-operator|.
-name|client
-operator|.
 name|JSONParser
 import|;
 end_import
@@ -2078,18 +2062,6 @@ name|onRpcStart
 argument_list|()
 expr_stmt|;
 block|}
-name|String
-name|body
-init|=
-operator|new
-name|JSONObject
-argument_list|(
-name|content
-argument_list|)
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
 name|RequestBuilder
 name|req
 init|=
@@ -2111,7 +2083,10 @@ name|req
 operator|.
 name|sendRequest
 argument_list|(
-name|body
+name|str
+argument_list|(
+name|content
+argument_list|)
 argument_list|,
 name|httpCallback
 argument_list|)
@@ -2134,6 +2109,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|str (JavaScriptObject jso)
+specifier|private
+specifier|static
+specifier|native
+name|String
+name|str
+parameter_list|(
+name|JavaScriptObject
+name|jso
+parameter_list|)
+comment|/*-{ return JSON.stringify(jso); }-*/
+function_decl|;
 DECL|method|sendRaw (Method method, String body, AsyncCallback<T> cb)
 specifier|private
 parameter_list|<
