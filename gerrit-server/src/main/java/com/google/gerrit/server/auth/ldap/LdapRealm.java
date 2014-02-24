@@ -594,6 +594,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|LdapRealm
+specifier|public
 class|class
 name|LdapRealm
 implements|implements
