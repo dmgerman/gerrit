@@ -473,7 +473,15 @@ DECL|method|Init ()
 specifier|public
 name|Init
 parameter_list|()
-block|{   }
+block|{
+name|super
+argument_list|(
+operator|new
+name|WarDistribution
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|Init (File sitePath)
 specifier|public
 name|Init
@@ -489,6 +497,10 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|,
+operator|new
+name|WarDistribution
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|batchMode
@@ -538,6 +550,8 @@ argument_list|(
 name|init
 operator|.
 name|site
+argument_list|,
+name|pluginsDistribution
 argument_list|)
 decl_stmt|;
 name|ConsoleUI

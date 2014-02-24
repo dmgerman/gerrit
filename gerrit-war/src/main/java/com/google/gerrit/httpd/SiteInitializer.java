@@ -80,6 +80,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|init
+operator|.
+name|PluginsDistribution
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -183,7 +199,13 @@ specifier|final
 name|String
 name|initPath
 decl_stmt|;
-DECL|method|SiteInitializer (String sitePath, String initPath)
+DECL|field|pluginsDistribution
+specifier|private
+specifier|final
+name|PluginsDistribution
+name|pluginsDistribution
+decl_stmt|;
+DECL|method|SiteInitializer (String sitePath, String initPath, PluginsDistribution pluginsDistribution)
 name|SiteInitializer
 parameter_list|(
 name|String
@@ -191,6 +213,9 @@ name|sitePath
 parameter_list|,
 name|String
 name|initPath
+parameter_list|,
+name|PluginsDistribution
+name|pluginsDistribution
 parameter_list|)
 block|{
 name|this
@@ -204,6 +229,12 @@ operator|.
 name|initPath
 operator|=
 name|initPath
+expr_stmt|;
+name|this
+operator|.
+name|pluginsDistribution
+operator|=
+name|pluginsDistribution
 expr_stmt|;
 block|}
 DECL|method|init ()
@@ -255,6 +286,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|true
+argument_list|,
+name|pluginsDistribution
 argument_list|)
 operator|.
 name|run
@@ -334,6 +367,8 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|pluginsDistribution
 argument_list|)
 operator|.
 name|run

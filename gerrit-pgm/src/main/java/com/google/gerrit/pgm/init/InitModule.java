@@ -355,11 +355,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|standalone
-condition|)
-block|{
 name|step
 argument_list|()
 operator|.
@@ -370,7 +365,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|step ()
 specifier|protected
