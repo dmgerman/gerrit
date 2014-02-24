@@ -1007,6 +1007,13 @@ specifier|private
 name|boolean
 name|sendMail
 decl_stmt|;
+DECL|field|uploader
+specifier|private
+name|Account
+operator|.
+name|Id
+name|uploader
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PatchSetInserter (ChangeHooks hooks, TrackingFooters trackingFooters, ReviewDb db, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, ChangeIndexer indexer, ReplacePatchSetSender.Factory replacePatchSetFactory, MergeUtil.Factory mergeUtilFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted RefControl refControl, @Assisted IdentifiedUser user, @Assisted Change change, @Assisted RevCommit commit)
@@ -1479,6 +1486,27 @@ operator|.
 name|sendMail
 operator|=
 name|sendMail
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setUploader (Account.Id uploader)
+specifier|public
+name|PatchSetInserter
+name|setUploader
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|uploader
+parameter_list|)
+block|{
+name|this
+operator|.
+name|uploader
+operator|=
+name|uploader
 expr_stmt|;
 return|return
 name|this
@@ -2330,6 +2358,21 @@ argument_list|(
 name|draft
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|uploader
+operator|!=
+literal|null
+condition|)
+block|{
+name|patchSet
+operator|.
+name|setUploader
+argument_list|(
+name|uploader
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|validate ()
 specifier|private

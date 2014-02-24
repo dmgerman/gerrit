@@ -1647,6 +1647,14 @@ name|isDraft
 argument_list|()
 argument_list|)
 operator|.
+name|setUploader
+argument_list|(
+name|uploader
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+operator|.
 name|setSendMail
 argument_list|(
 name|sendMail
