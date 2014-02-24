@@ -1366,6 +1366,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|message
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
 name|input
 operator|.
 name|notify
@@ -1378,10 +1385,6 @@ name|NONE
 argument_list|)
 operator|>
 literal|0
-operator|&&
-name|message
-operator|!=
-literal|null
 condition|)
 block|{
 name|email
@@ -1412,6 +1415,7 @@ operator|.
 name|sendAsync
 argument_list|()
 expr_stmt|;
+block|}
 name|fireCommentAddedHook
 argument_list|(
 name|revision
