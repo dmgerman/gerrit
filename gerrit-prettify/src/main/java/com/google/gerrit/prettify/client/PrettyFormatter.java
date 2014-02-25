@@ -2025,6 +2025,10 @@ block|{
 if|if
 condition|(
 name|charEdits
+operator|!=
+literal|null
+operator|&&
+name|charEdits
 operator|.
 name|size
 argument_list|()
