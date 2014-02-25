@@ -1560,7 +1560,7 @@ operator|.
 name|name
 argument_list|()
 else|:
-literal|null
+literal|""
 decl_stmt|;
 name|String
 name|cn
@@ -1580,7 +1580,7 @@ operator|.
 name|name
 argument_list|()
 else|:
-literal|null
+literal|""
 decl_stmt|;
 name|sb
 operator|.
