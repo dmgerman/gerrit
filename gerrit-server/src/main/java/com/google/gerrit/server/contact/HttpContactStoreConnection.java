@@ -322,7 +322,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|OutputStream
 name|out
 init|=
@@ -330,7 +331,8 @@ name|conn
 operator|.
 name|getOutputStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|out
 operator|.
 name|write
@@ -338,11 +340,7 @@ argument_list|(
 name|body
 argument_list|)
 expr_stmt|;
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 if|if
 condition|(
 name|conn

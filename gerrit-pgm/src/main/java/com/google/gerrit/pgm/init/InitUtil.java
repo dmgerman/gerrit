@@ -1030,7 +1030,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -1040,7 +1041,8 @@ name|sibling
 argument_list|,
 name|name
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -1067,6 +1069,7 @@ argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|open (final Class<?> sibling, final String name)
