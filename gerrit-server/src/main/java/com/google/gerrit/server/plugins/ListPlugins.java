@@ -547,6 +547,24 @@ argument_list|)
 throw|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|format
+operator|.
+name|isJson
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Text output requires that a display OutputStream is provided."
+argument_list|)
+throw|;
+block|}
 name|Map
 argument_list|<
 name|String
