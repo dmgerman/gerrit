@@ -897,9 +897,133 @@ name|permittedValues
 parameter_list|()
 comment|/*-{ return this.permitted_values; }-*/
 function_decl|;
+DECL|method|values ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|values
+parameter_list|()
+comment|/*-{ return this.values; }-*/
+function_decl|;
 DECL|method|ConfigParameterInfo ()
 specifier|protected
 name|ConfigParameterInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|ConfigParameterValue
+specifier|public
+specifier|static
+class|class
+name|ConfigParameterValue
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|init ()
+specifier|final
+specifier|native
+name|void
+name|init
+parameter_list|()
+comment|/*-{ this.values = []; }-*/
+function_decl|;
+DECL|method|add_value (String v)
+specifier|final
+specifier|native
+name|void
+name|add_value
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ this.values.push(v); }-*/
+function_decl|;
+DECL|method|set_value (String v)
+specifier|final
+specifier|native
+name|void
+name|set_value
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.value = v; }-*/
+function_decl|;
+DECL|method|create ()
+specifier|public
+specifier|static
+name|ConfigParameterValue
+name|create
+parameter_list|()
+block|{
+name|ConfigParameterValue
+name|v
+init|=
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+return|return
+name|v
+return|;
+block|}
+DECL|method|values (String[] values)
+specifier|public
+specifier|final
+name|ConfigParameterValue
+name|values
+parameter_list|(
+name|String
+index|[]
+name|values
+parameter_list|)
+block|{
+name|init
+argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|String
+name|v
+range|:
+name|values
+control|)
+block|{
+name|add_value
+argument_list|(
+name|v
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|this
+return|;
+block|}
+DECL|method|value (String v)
+specifier|public
+specifier|final
+name|ConfigParameterValue
+name|value
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+block|{
+name|set_value
+argument_list|(
+name|v
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|ConfigParameterValue ()
+specifier|protected
+name|ConfigParameterValue
 parameter_list|()
 block|{     }
 block|}

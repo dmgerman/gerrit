@@ -90,6 +90,24 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|projects
+operator|.
+name|ConfigInfo
+operator|.
+name|ConfigParameterValue
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|CallbackGroup
@@ -585,7 +603,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, Project.State state, Map<String, Map<String, String>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, Project.State state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -630,7 +648,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|ConfigParameterValue
 argument_list|>
 argument_list|>
 name|pluginConfigValues
@@ -1385,7 +1403,7 @@ name|s
 parameter_list|)
 comment|/*-{ if(s)this.state=s; }-*/
 function_decl|;
-DECL|method|setPluginConfigValues (Map<String, Map<String, String>> pluginConfigValues)
+DECL|method|setPluginConfigValues (Map<String, Map<String, ConfigParameterValue>> pluginConfigValues)
 specifier|final
 name|void
 name|setPluginConfigValues
@@ -1398,7 +1416,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|ConfigParameterValue
 argument_list|>
 argument_list|>
 name|pluginConfigValues
@@ -1415,7 +1433,7 @@ condition|)
 block|{
 name|NativeMap
 argument_list|<
-name|StringMap
+name|ConfigParameterValueMap
 argument_list|>
 name|configValues
 init|=
@@ -1437,7 +1455,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|ConfigParameterValue
 argument_list|>
 argument_list|>
 name|e
@@ -1448,10 +1466,10 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|StringMap
+name|ConfigParameterValueMap
 name|values
 init|=
-name|StringMap
+name|ConfigParameterValueMap
 operator|.
 name|create
 argument_list|()
@@ -1474,7 +1492,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|String
+name|ConfigParameterValue
 argument_list|>
 name|e2
 range|:
@@ -1511,7 +1529,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setPluginConfigValuesRaw (NativeMap<StringMap> v)
+DECL|method|setPluginConfigValuesRaw (NativeMap<ConfigParameterValueMap> v)
 specifier|private
 specifier|final
 specifier|native
@@ -1520,41 +1538,41 @@ name|setPluginConfigValuesRaw
 parameter_list|(
 name|NativeMap
 argument_list|<
-name|StringMap
+name|ConfigParameterValueMap
 argument_list|>
 name|v
 parameter_list|)
 comment|/*-{ this.plugin_config_values=v; }-*/
 function_decl|;
 block|}
-DECL|class|StringMap
+DECL|class|ConfigParameterValueMap
 specifier|private
 specifier|static
 class|class
-name|StringMap
+name|ConfigParameterValueMap
 extends|extends
 name|JavaScriptObject
 block|{
 DECL|method|create ()
 specifier|static
-name|StringMap
+name|ConfigParameterValueMap
 name|create
 parameter_list|()
 block|{
 return|return
-operator|(
-name|StringMap
-operator|)
 name|createObject
+argument_list|()
+operator|.
+name|cast
 argument_list|()
 return|;
 block|}
-DECL|method|StringMap ()
+DECL|method|ConfigParameterValueMap ()
 specifier|protected
-name|StringMap
+name|ConfigParameterValueMap
 parameter_list|()
 block|{     }
-DECL|method|put (String n, String v)
+DECL|method|put (String n, ConfigParameterValue v)
 specifier|public
 specifier|final
 specifier|native
@@ -1564,7 +1582,7 @@ parameter_list|(
 name|String
 name|n
 parameter_list|,
-name|String
+name|ConfigParameterValue
 name|v
 parameter_list|)
 comment|/*-{ this[n] = v; }-*/
