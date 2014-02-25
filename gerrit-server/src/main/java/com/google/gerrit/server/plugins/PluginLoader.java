@@ -322,6 +322,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|cache
+operator|.
+name|PersistentCacheFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|CanonicalWebUrl
@@ -884,6 +900,12 @@ name|String
 argument_list|>
 name|urlProvider
 decl_stmt|;
+DECL|field|persistentCacheFactory
+specifier|private
+specifier|final
+name|PersistentCacheFactory
+name|persistentCacheFactory
+decl_stmt|;
 DECL|field|remoteAdmin
 specifier|private
 specifier|final
@@ -892,7 +914,7 @@ name|remoteAdmin
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PluginLoader (SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider)
+DECL|method|PluginLoader (SitePaths sitePaths, PluginGuiceEnvironment pe, ServerInformationImpl sii, PluginUser.Factory puf, Provider<PluginCleanerTask> pct, @GerritServerConfig Config cfg, @CanonicalWebUrl Provider<String> provider, PersistentCacheFactory cacheFactory)
 specifier|public
 name|PluginLoader
 parameter_list|(
@@ -928,6 +950,9 @@ argument_list|<
 name|String
 argument_list|>
 name|provider
+parameter_list|,
+name|PersistentCacheFactory
+name|cacheFactory
 parameter_list|)
 block|{
 name|pluginsDir
@@ -1002,6 +1027,10 @@ expr_stmt|;
 name|urlProvider
 operator|=
 name|provider
+expr_stmt|;
+name|persistentCacheFactory
+operator|=
+name|cacheFactory
 expr_stmt|;
 name|remoteAdmin
 operator|=
@@ -1668,6 +1697,13 @@ name|Plugin
 name|plugin
 parameter_list|)
 block|{
+name|persistentCacheFactory
+operator|.
+name|onStop
+argument_list|(
+name|plugin
+argument_list|)
+expr_stmt|;
 name|String
 name|name
 init|=

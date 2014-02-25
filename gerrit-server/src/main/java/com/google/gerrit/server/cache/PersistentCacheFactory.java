@@ -108,6 +108,22 @@ name|LoadingCache
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
+name|Plugin
+import|;
+end_import
+
 begin_interface
 DECL|interface|PersistentCacheFactory
 specifier|public
@@ -166,6 +182,14 @@ argument_list|,
 name|V
 argument_list|>
 name|loader
+parameter_list|)
+function_decl|;
+DECL|method|onStop (Plugin plugin)
+name|void
+name|onStop
+parameter_list|(
+name|Plugin
+name|plugin
 parameter_list|)
 function_decl|;
 block|}
