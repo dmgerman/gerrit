@@ -1111,6 +1111,15 @@ name|optional
 parameter_list|()
 comment|/*-{ return this.optional ? true : false; }-*/
 function_decl|;
+DECL|method|blocking ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|blocking
+parameter_list|()
+comment|/*-{ return this.blocking ? true : false; }-*/
+function_decl|;
 DECL|method|_value ()
 specifier|final
 specifier|native

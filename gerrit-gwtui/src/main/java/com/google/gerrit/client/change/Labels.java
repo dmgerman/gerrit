@@ -996,6 +996,14 @@ name|IMPOSSIBLE
 case|:
 if|if
 condition|(
+name|label
+operator|.
+name|blocking
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|current
 condition|)
 block|{
@@ -1013,6 +1021,7 @@ name|canSubmit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 break|break;
 default|default:
 break|break;
