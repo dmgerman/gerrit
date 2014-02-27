@@ -651,6 +651,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// rebaseChange.rebase() may already have copied some approvals,
+comment|// use upsert, not insert, to avoid constraint violation on database
 name|args
 operator|.
 name|db
@@ -658,7 +660,7 @@ operator|.
 name|patchSetApprovals
 argument_list|()
 operator|.
-name|insert
+name|upsert
 argument_list|(
 name|approvals
 argument_list|)
