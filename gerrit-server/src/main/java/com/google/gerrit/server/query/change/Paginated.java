@@ -102,9 +102,9 @@ specifier|public
 interface|interface
 name|Paginated
 block|{
-DECL|method|limit ()
-name|int
-name|limit
+DECL|method|getOptions ()
+name|QueryOptions
+name|getOptions
 parameter_list|()
 function_decl|;
 DECL|method|restart (int start)

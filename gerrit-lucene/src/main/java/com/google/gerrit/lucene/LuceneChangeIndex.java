@@ -720,6 +720,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|QueryOptions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtorm
 operator|.
 name|protobuf
@@ -2760,7 +2778,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getSource (Predicate<ChangeData> p, int start, int limit)
+DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -2771,11 +2789,8 @@ name|ChangeData
 argument_list|>
 name|p
 parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|)
 throws|throws
 name|QueryParseException
@@ -2869,9 +2884,7 @@ argument_list|(
 name|p
 argument_list|)
 argument_list|,
-name|start
-argument_list|,
-name|limit
+name|opts
 argument_list|,
 name|getSort
 argument_list|()
@@ -3043,17 +3056,11 @@ specifier|final
 name|Query
 name|query
 decl_stmt|;
-DECL|field|start
+DECL|field|opts
 specifier|private
 specifier|final
-name|int
-name|start
-decl_stmt|;
-DECL|field|limit
-specifier|private
-specifier|final
-name|int
-name|limit
+name|QueryOptions
+name|opts
 decl_stmt|;
 DECL|field|sort
 specifier|private
@@ -3061,7 +3068,7 @@ specifier|final
 name|Sort
 name|sort
 decl_stmt|;
-DECL|method|QuerySource (List<SubIndex> indexes, Query query, int start, int limit, Sort sort)
+DECL|method|QuerySource (List<SubIndex> indexes, Query query, QueryOptions opts, Sort sort)
 specifier|private
 name|QuerySource
 parameter_list|(
@@ -3074,11 +3081,8 @@ parameter_list|,
 name|Query
 name|query
 parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|,
 name|Sort
 name|sort
@@ -3103,15 +3107,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|start
+name|opts
 operator|=
-name|start
-expr_stmt|;
-name|this
-operator|.
-name|limit
-operator|=
-name|limit
+name|opts
 expr_stmt|;
 name|this
 operator|.
@@ -3191,9 +3189,15 @@ block|{
 name|int
 name|realLimit
 init|=
+name|opts
+operator|.
 name|start
+argument_list|()
 operator|+
+name|opts
+operator|.
 name|limit
+argument_list|()
 decl_stmt|;
 name|TopFieldDocs
 index|[]
@@ -3297,7 +3301,10 @@ control|(
 name|int
 name|i
 init|=
+name|opts
+operator|.
 name|start
+argument_list|()
 init|;
 name|i
 operator|<

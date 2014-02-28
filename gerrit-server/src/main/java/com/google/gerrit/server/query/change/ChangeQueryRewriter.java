@@ -106,7 +106,7 @@ specifier|public
 interface|interface
 name|ChangeQueryRewriter
 block|{
-DECL|method|rewrite (Predicate<ChangeData> in, int start, int limit)
+DECL|method|rewrite (Predicate<ChangeData> in, QueryOptions opts)
 name|Predicate
 argument_list|<
 name|ChangeData
@@ -119,11 +119,8 @@ name|ChangeData
 argument_list|>
 name|in
 parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|)
 throws|throws
 name|QueryParseException

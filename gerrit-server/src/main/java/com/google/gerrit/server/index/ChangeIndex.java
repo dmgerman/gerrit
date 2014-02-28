@@ -152,6 +152,24 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|QueryOptions
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -222,8 +240,8 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *<p>    * This method may be called multiple times for variations on the same    * predicate or multiple predicate subtrees in the course of processing a    * single query, so it should not have any side effects (e.g. starting a    * search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param start offset in results list at which to start returning results.    * @param limit maximum number of results to return.    * @return a source of documents matching the predicate. Documents must be    *     returned in descending updated timestamp order.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
-DECL|method|getSource (Predicate<ChangeData> p, int start, int limit)
+comment|/**    * Convert the given operator predicate into a source searching the index and    * returning only the documents matching that predicate.    *<p>    * This method may be called multiple times for variations on the same    * predicate or multiple predicate subtrees in the course of processing a    * single query, so it should not have any side effects (e.g. starting a    * search in the background).    *    * @param p the predicate to match. Must be a tree containing only AND, OR,    *     or NOT predicates as internal nodes, and {@link IndexPredicate}s as    *     leaves.    * @param opts query options not implied by the predicate, such as start and    *     limit.    * @return a source of documents matching the predicate. Documents must be    *     returned in descending updated timestamp order.    *    * @throws QueryParseException if the predicate could not be converted to an    *     indexed data source.    */
+DECL|method|getSource (Predicate<ChangeData> p, QueryOptions opts)
 specifier|public
 name|ChangeDataSource
 name|getSource
@@ -234,11 +252,8 @@ name|ChangeData
 argument_list|>
 name|p
 parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|)
 throws|throws
 name|QueryParseException

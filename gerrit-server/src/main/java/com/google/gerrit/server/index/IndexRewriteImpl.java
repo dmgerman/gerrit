@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -329,6 +313,24 @@ operator|.
 name|change
 operator|.
 name|OrSource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|QueryOptions
 import|;
 end_import
 
@@ -939,7 +941,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|rewrite (Predicate<ChangeData> in, int start, int limit)
+DECL|method|rewrite (Predicate<ChangeData> in, QueryOptions opts)
 specifier|public
 name|Predicate
 argument_list|<
@@ -953,26 +955,12 @@ name|ChangeData
 argument_list|>
 name|in
 parameter_list|,
-name|int
-name|start
-parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|)
 throws|throws
 name|QueryParseException
 block|{
-name|checkArgument
-argument_list|(
-name|limit
-operator|>
-literal|0
-argument_list|,
-literal|"limit must be positive: %s"
-argument_list|,
-name|limit
-argument_list|)
-expr_stmt|;
 name|ChangeIndex
 name|index
 init|=
@@ -981,12 +969,6 @@ operator|.
 name|getSearchIndex
 argument_list|()
 decl_stmt|;
-comment|// Increase the limit rather than skipping, since we don't know how many
-comment|// skipped results would have been filtered out by the enclosing AndSource.
-name|limit
-operator|+=
-name|start
-expr_stmt|;
 name|MutableInteger
 name|leafTerms
 init|=
@@ -1006,7 +988,7 @@ name|in
 argument_list|,
 name|index
 argument_list|,
-name|limit
+name|opts
 argument_list|,
 name|leafTerms
 argument_list|)
@@ -1030,7 +1012,7 @@ name|index
 argument_list|,
 name|out
 argument_list|,
-name|limit
+name|opts
 argument_list|)
 return|;
 block|}
@@ -1054,8 +1036,8 @@ name|out
 return|;
 block|}
 block|}
-comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param limit maximum number of results to return.    * @param leafTerms number of leaf index query terms encountered so far.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not    *     support this predicate.    */
-DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, int limit, MutableInteger leafTerms)
+comment|/**    * Rewrite a single predicate subtree.    *    * @param in predicate to rewrite.    * @param index index whose schema determines which fields are indexed.    * @param opts other query options.    * @param leafTerms number of leaf index query terms encountered so far.    * @return {@code null} if no part of this subtree can be queried in the    *     index directly. {@code in} if this subtree and all its children can be    *     queried directly in the index. Otherwise, a predicate that is    *     semantically equivalent, with some of its subtrees wrapped to query the    *     index directly.    * @throws QueryParseException if the underlying index implementation does not    *     support this predicate.    */
+DECL|method|rewriteImpl (Predicate<ChangeData> in, ChangeIndex index, QueryOptions opts, MutableInteger leafTerms)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1072,8 +1054,8 @@ parameter_list|,
 name|ChangeIndex
 name|index
 parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|,
 name|MutableInteger
 name|leafTerms
@@ -1124,12 +1106,17 @@ operator|instanceof
 name|LimitPredicate
 condition|)
 block|{
-comment|// Replace any limits with the limit provided by the caller.
+comment|// Replace any limits with the limit provided by the caller. The caller
+comment|// should have already searched the predicate tree for limit predicates
+comment|// and included that in their limit computation.
 return|return
 operator|new
 name|LimitPredicate
 argument_list|(
+name|opts
+operator|.
 name|limit
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1239,7 +1226,7 @@ name|c
 argument_list|,
 name|index
 argument_list|,
-name|limit
+name|opts
 argument_list|,
 name|leafTerms
 argument_list|)
@@ -1371,7 +1358,7 @@ name|isIndexed
 argument_list|,
 name|index
 argument_list|,
-name|limit
+name|opts
 argument_list|)
 return|;
 block|}
@@ -1433,7 +1420,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|partitionChildren ( Predicate<ChangeData> in, List<Predicate<ChangeData>> newChildren, BitSet isIndexed, ChangeIndex index, int limit)
+DECL|method|partitionChildren ( Predicate<ChangeData> in, List<Predicate<ChangeData>> newChildren, BitSet isIndexed, ChangeIndex index, QueryOptions opts)
 specifier|private
 name|Predicate
 argument_list|<
@@ -1462,8 +1449,8 @@ parameter_list|,
 name|ChangeIndex
 name|index
 parameter_list|,
-name|int
-name|limit
+name|QueryOptions
+name|opts
 parameter_list|)
 throws|throws
 name|QueryParseException
@@ -1506,7 +1493,7 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|,
-name|limit
+name|opts
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1643,7 +1630,7 @@ argument_list|(
 name|indexed
 argument_list|)
 argument_list|,
-name|limit
+name|opts
 argument_list|)
 argument_list|)
 expr_stmt|;
