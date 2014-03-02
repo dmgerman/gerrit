@@ -150,6 +150,7 @@ name|String
 name|lastTimeString
 decl_stmt|;
 DECL|method|HttpLogLayout ()
+specifier|public
 name|HttpLogLayout
 parameter_list|()
 block|{
