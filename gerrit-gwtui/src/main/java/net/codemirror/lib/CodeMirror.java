@@ -786,7 +786,6 @@ name|thunk
 parameter_list|)
 comment|/*-{     this.on(event, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
 function_decl|;
-comment|/** TODO: Break this line after updating GWT */
 DECL|method|on (String event, EventHandler handler)
 specifier|public
 specifier|final
@@ -800,7 +799,7 @@ parameter_list|,
 name|EventHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.EventHandler::handle(Lnet/codemirror/lib/CodeMirror;Lcom/google/gwt/dom/client/NativeEvent;)(cm, e);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.EventHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lcom/google/gwt/dom/client/NativeEvent;)(cm, e);     }));   }-*/
 function_decl|;
 DECL|method|on (String event, RenderLineHandler handler)
 specifier|public
@@ -815,7 +814,7 @@ parameter_list|,
 name|RenderLineHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, h, ele) {       handler.@net.codemirror.lib.CodeMirror.RenderLineHandler::handle(Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/CodeMirror$LineHandle;Lcom/google/gwt/dom/client/Element;)(cm, h, ele);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, h, ele) {       handler.@net.codemirror.lib.CodeMirror.RenderLineHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/CodeMirror$LineHandle;         Lcom/google/gwt/dom/client/Element;)(cm, h, ele);     }));   }-*/
 function_decl|;
 DECL|method|on (String event, GutterClickHandler handler)
 specifier|public
@@ -830,7 +829,7 @@ parameter_list|,
 name|GutterClickHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;Lcom/google/gwt/dom/client/NativeEvent;)(cm, l, g, e);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(         Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;         Lcom/google/gwt/dom/client/NativeEvent;)(cm, l, g, e);     }));   }-*/
 function_decl|;
 DECL|method|on (String event, BeforeSelectionChangeHandler handler)
 specifier|public
@@ -845,7 +844,7 @@ parameter_list|,
 name|BeforeSelectionChangeHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/LineCharacter;Lnet/codemirror/lib/LineCharacter;)(cm,e.anchor,e.head);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/LineCharacter;         Lnet/codemirror/lib/LineCharacter;)(cm,e.anchor,e.head);     }));   }-*/
 function_decl|;
 DECL|method|getCursor ()
 specifier|public
