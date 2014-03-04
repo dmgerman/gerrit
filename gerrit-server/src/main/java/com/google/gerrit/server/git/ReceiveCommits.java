@@ -6592,6 +6592,16 @@ name|getRevWalk
 argument_list|()
 argument_list|,
 name|obj
+argument_list|,
+name|allRefs
+operator|.
+name|values
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|obj
+argument_list|)
 argument_list|)
 condition|)
 block|{

@@ -1179,8 +1179,8 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param rw revision pool {@code object} was parsed in.    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
-DECL|method|canCreate (RevWalk rw, RevObject object)
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param rw revision pool {@code object} was parsed in.    * @param object the object the user will start the reference with.    * @param existsOnServer the object exists on server or not.    * @return {@code true} if the user specified can create a new Git ref    */
+DECL|method|canCreate (RevWalk rw, RevObject object, boolean existsOnServer)
 specifier|public
 name|boolean
 name|canCreate
@@ -1190,6 +1190,9 @@ name|rw
 parameter_list|,
 name|RevObject
 name|object
+parameter_list|,
+name|boolean
+name|existsOnServer
 parameter_list|)
 block|{
 if|if
@@ -1270,6 +1273,13 @@ operator|.
 name|CREATE
 argument_list|)
 operator|&&
+operator|(
+operator|!
+name|existsOnServer
+operator|&&
+name|canUpdate
+argument_list|()
+operator|||
 name|projectControl
 operator|.
 name|canReadCommit
@@ -1281,6 +1291,7 @@ name|RevCommit
 operator|)
 name|object
 argument_list|)
+operator|)
 operator|)
 return|;
 block|}
