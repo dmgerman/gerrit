@@ -1329,6 +1329,26 @@ return|return
 name|registerPageUrl
 return|;
 block|}
+DECL|method|isLdapAuthType ()
+specifier|public
+name|boolean
+name|isLdapAuthType
+parameter_list|()
+block|{
+return|return
+name|authType
+operator|==
+name|AuthType
+operator|.
+name|LDAP
+operator|||
+name|authType
+operator|==
+name|AuthType
+operator|.
+name|LDAP_BIND
+return|;
+block|}
 block|}
 end_class
 
