@@ -567,7 +567,7 @@ name|Gerrit
 operator|.
 name|C
 operator|.
-name|errorDialogTitle
+name|errorTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1032,7 +1032,7 @@ block|}
 block|}
 DECL|method|setText (final String t)
 specifier|public
-name|void
+name|ErrorDialog
 name|setText
 parameter_list|(
 specifier|final
@@ -1047,6 +1047,9 @@ argument_list|(
 name|t
 argument_list|)
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override
