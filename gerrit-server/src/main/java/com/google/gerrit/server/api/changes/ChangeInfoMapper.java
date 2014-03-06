@@ -997,6 +997,14 @@ name|optional
 expr_stmt|;
 name|lo
 operator|.
+name|blocking
+operator|=
+name|li
+operator|.
+name|blocking
+expr_stmt|;
+name|lo
+operator|.
 name|values
 operator|=
 name|li

@@ -140,6 +140,11 @@ specifier|public
 name|Boolean
 name|optional
 decl_stmt|;
+DECL|field|blocking
+specifier|public
+name|Boolean
+name|blocking
+decl_stmt|;
 block|}
 end_class
 

@@ -1890,6 +1890,15 @@ name|getValue
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 name|msgbuf
 operator|.
 name|append

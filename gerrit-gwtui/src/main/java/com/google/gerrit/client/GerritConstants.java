@@ -133,14 +133,19 @@ name|String
 name|loginTypeUnsupported
 parameter_list|()
 function_decl|;
-DECL|method|errorDialogTitle ()
+DECL|method|errorTitle ()
 name|String
-name|errorDialogTitle
+name|errorTitle
 parameter_list|()
 function_decl|;
 DECL|method|errorDialogContinue ()
 name|String
 name|errorDialogContinue
+parameter_list|()
+function_decl|;
+DECL|method|warnTitle ()
+name|String
+name|warnTitle
 parameter_list|()
 function_decl|;
 DECL|method|confirmationDialogOk ()

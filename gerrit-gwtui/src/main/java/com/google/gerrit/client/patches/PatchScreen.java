@@ -2976,6 +2976,16 @@ name|intralineTimeout
 argument_list|()
 argument_list|)
 operator|.
+name|setText
+argument_list|(
+name|Gerrit
+operator|.
+name|C
+operator|.
+name|warnTitle
+argument_list|()
+argument_list|)
+operator|.
 name|show
 argument_list|()
 expr_stmt|;
