@@ -249,6 +249,7 @@ specifier|static
 enum|enum
 name|Theme
 block|{
+comment|// Light themes
 DECL|enumConstant|DEFAULT
 name|DEFAULT
 block|,
@@ -260,7 +261,47 @@ name|ELEGANT
 block|,
 DECL|enumConstant|NEAT
 name|NEAT
-block|,   }
+block|,
+comment|// Dark themes
+DECL|enumConstant|MIDNIGHT
+name|MIDNIGHT
+block|,
+DECL|enumConstant|NIGHT
+name|NIGHT
+block|,
+DECL|enumConstant|TWILIGHT
+name|TWILIGHT
+block|;
+DECL|method|isDark ()
+specifier|public
+name|boolean
+name|isDark
+parameter_list|()
+block|{
+switch|switch
+condition|(
+name|this
+condition|)
+block|{
+case|case
+name|MIDNIGHT
+case|:
+case|case
+name|NIGHT
+case|:
+case|case
+name|TWILIGHT
+case|:
+return|return
+literal|true
+return|;
+default|default:
+return|return
+literal|false
+return|;
+block|}
+block|}
+block|}
 DECL|method|createDefault (Account.Id accountId)
 specifier|public
 specifier|static
