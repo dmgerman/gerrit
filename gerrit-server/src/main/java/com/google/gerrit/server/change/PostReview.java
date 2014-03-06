@@ -2948,7 +2948,10 @@ name|current
 operator|.
 name|remove
 argument_list|(
-name|name
+name|lt
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
