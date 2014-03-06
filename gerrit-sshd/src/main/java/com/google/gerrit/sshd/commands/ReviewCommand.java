@@ -1058,7 +1058,7 @@ name|v
 init|=
 name|LabelVote
 operator|.
-name|parse
+name|parseWithEquals
 argument_list|(
 name|token
 argument_list|)
