@@ -1810,7 +1810,7 @@ begin_function
 DECL|method|toInt (String value)
 specifier|private
 specifier|static
-name|int
+name|Integer
 name|toInt
 parameter_list|(
 name|String
@@ -1838,7 +1838,7 @@ begin_function
 DECL|method|toLong (String value)
 specifier|private
 specifier|static
-name|long
+name|Long
 name|toLong
 parameter_list|(
 name|String
