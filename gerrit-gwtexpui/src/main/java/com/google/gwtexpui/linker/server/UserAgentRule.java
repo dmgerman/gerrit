@@ -125,8 +125,6 @@ DECL|class|UserAgentRule
 specifier|public
 class|class
 name|UserAgentRule
-implements|implements
-name|Rule
 block|{
 DECL|field|msie
 specifier|private
@@ -162,8 +160,6 @@ return|return
 literal|"user.agent"
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|select (HttpServletRequest req)
 specifier|public
 name|String
