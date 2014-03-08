@@ -516,6 +516,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|validator
+operator|.
+name|routines
+operator|.
+name|EmailValidator
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -977,7 +993,10 @@ operator|.
 name|email
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|db
 operator|.
 name|accountExternalIds
@@ -1009,6 +1028,31 @@ operator|+
 literal|"' already exists"
 argument_list|)
 throw|;
+block|}
+if|if
+condition|(
+operator|!
+name|EmailValidator
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|isValid
+argument_list|(
+name|input
+operator|.
+name|email
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|BadRequestException
+argument_list|(
+literal|"invalid email address"
+argument_list|)
+throw|;
+block|}
 block|}
 try|try
 block|{
