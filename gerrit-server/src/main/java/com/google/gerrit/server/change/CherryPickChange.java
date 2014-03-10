@@ -1849,6 +1849,8 @@ argument_list|(
 name|patchSetId
 argument_list|,
 name|change
+argument_list|,
+name|cherryPickCommit
 argument_list|)
 argument_list|)
 operator|.
@@ -1862,7 +1864,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|buildChangeMessage (PatchSet.Id patchSetId, Change dest)
+DECL|method|buildChangeMessage (PatchSet.Id patchSetId, Change dest, RevCommit cherryPickCommit)
 specifier|private
 name|ChangeMessage
 name|buildChangeMessage
@@ -1874,6 +1876,9 @@ name|patchSetId
 parameter_list|,
 name|Change
 name|dest
+parameter_list|,
+name|RevCommit
+name|cherryPickCommit
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1915,16 +1920,22 @@ argument_list|,
 name|patchSetId
 argument_list|)
 decl_stmt|;
+name|String
+name|destBranchName
+init|=
+name|dest
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 name|StringBuilder
 name|msgBuf
 init|=
 operator|new
 name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|msgBuf
-operator|.
-name|append
 argument_list|(
 literal|"Patch Set "
 argument_list|)
@@ -1941,32 +1952,53 @@ name|append
 argument_list|(
 literal|": Cherry Picked"
 argument_list|)
-expr_stmt|;
-name|msgBuf
 operator|.
 name|append
 argument_list|(
 literal|"\n\n"
 argument_list|)
-expr_stmt|;
-name|msgBuf
 operator|.
 name|append
 argument_list|(
-literal|"This patchset was cherry picked to change: "
+literal|"This patchset was cherry picked to branch "
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|dest
+name|destBranchName
 operator|.
-name|getKey
-argument_list|()
+name|substring
+argument_list|(
+name|destBranchName
 operator|.
-name|get
+name|indexOf
+argument_list|(
+literal|"refs/heads/"
+argument_list|)
+operator|+
+literal|"refs/heads/"
+operator|.
+name|length
 argument_list|()
 argument_list|)
-expr_stmt|;
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|" as commit "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|cherryPickCommit
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|cmsg
 operator|.
 name|setMessage
