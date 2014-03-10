@@ -190,8 +190,6 @@ name|GwtModule
 argument_list|(
 literal|"com.google.gerrit.GerritGwtUI"
 argument_list|)
-annotation|@
-name|Ignore
 DECL|class|EditIteratorTest
 specifier|public
 class|class
