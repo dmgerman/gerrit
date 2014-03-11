@@ -5076,6 +5076,10 @@ argument_list|,
 name|changeId
 argument_list|,
 name|info
+argument_list|,
+name|expandAll
+argument_list|,
+name|collapseAll
 argument_list|)
 expr_stmt|;
 if|if
