@@ -11491,7 +11491,7 @@ name|reject
 argument_list|(
 name|inputCommand
 argument_list|,
-literal|"commit already exists"
+literal|"commit already exists (as current patchset)"
 argument_list|)
 expr_stmt|;
 return|return
@@ -11571,12 +11571,63 @@ name|reject
 argument_list|(
 name|inputCommand
 argument_list|,
-literal|"commit already exists"
+literal|"commit already exists (in the change)"
 argument_list|)
 expr_stmt|;
 return|return
 literal|false
 return|;
+block|}
+for|for
+control|(
+specifier|final
+name|Ref
+name|r
+range|:
+name|rp
+operator|.
+name|getRepository
+argument_list|()
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getRefs
+argument_list|(
+literal|"refs/changes"
+argument_list|)
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|r
+operator|.
+name|getObjectId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|inputCommand
+operator|.
+name|getNewId
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|reject
+argument_list|(
+name|inputCommand
+argument_list|,
+literal|"commit already exists (in the project)"
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 block|}
 for|for
 control|(
