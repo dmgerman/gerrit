@@ -456,12 +456,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (final CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
@@ -475,11 +474,6 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
-name|CodeReviewCommit
-name|newMergeTip
-init|=
-name|mergeTip
-decl_stmt|;
 while|while
 condition|(
 operator|!
@@ -504,7 +498,7 @@ try|try
 block|{
 if|if
 condition|(
-name|newMergeTip
+name|mergeTip
 operator|==
 literal|null
 condition|)
@@ -512,7 +506,7 @@ block|{
 comment|// The branch is unborn. Take a fast-forward resolution to
 comment|// create the branch.
 comment|//
-name|newMergeTip
+name|mergeTip
 operator|=
 name|n
 expr_stmt|;
@@ -563,7 +557,7 @@ comment|// If there is only one parent, a cherry-pick can be done by
 comment|// taking the delta relative to that one parent and redoing
 comment|// that on the current merge tip.
 comment|//
-name|newMergeTip
+name|mergeTip
 operator|=
 name|writeCherryPickCommit
 argument_list|(
@@ -574,7 +568,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|newMergeTip
+name|mergeTip
 operator|!=
 literal|null
 condition|)
@@ -583,14 +577,14 @@ name|newCommits
 operator|.
 name|put
 argument_list|(
-name|newMergeTip
+name|mergeTip
 operator|.
 name|patchsetId
 operator|.
 name|getParentKey
 argument_list|()
 argument_list|,
-name|newMergeTip
+name|mergeTip
 argument_list|)
 expr_stmt|;
 block|}
@@ -639,20 +633,20 @@ name|rw
 operator|.
 name|isMergedInto
 argument_list|(
-name|newMergeTip
+name|mergeTip
 argument_list|,
 name|n
 argument_list|)
 condition|)
 block|{
-name|newMergeTip
+name|mergeTip
 operator|=
 name|n
 expr_stmt|;
 block|}
 else|else
 block|{
-name|newMergeTip
+name|mergeTip
 operator|=
 name|args
 operator|.
@@ -684,7 +678,7 @@ name|args
 operator|.
 name|destBranch
 argument_list|,
-name|newMergeTip
+name|mergeTip
 argument_list|,
 name|n
 argument_list|)
@@ -708,7 +702,7 @@ name|args
 operator|.
 name|canMergeFlag
 argument_list|,
-name|newMergeTip
+name|mergeTip
 argument_list|,
 name|args
 operator|.
@@ -774,7 +768,7 @@ throw|;
 block|}
 block|}
 return|return
-name|newMergeTip
+name|mergeTip
 return|;
 block|}
 DECL|method|writeCherryPickCommit (final CodeReviewCommit mergeTip, final CodeReviewCommit n)
