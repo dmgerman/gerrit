@@ -201,9 +201,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|CodeReviewCommit
-name|newMergeTip
-init|=
+name|mergeTip
+operator|=
 name|args
 operator|.
 name|mergeUtil
@@ -218,7 +217,7 @@ name|rw
 argument_list|,
 name|toMerge
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// For every other commit do a pair-wise merge.
 while|while
 condition|(
@@ -229,7 +228,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|newMergeTip
+name|mergeTip
 operator|=
 name|args
 operator|.
@@ -290,7 +289,7 @@ name|args
 operator|.
 name|canMergeFlag
 argument_list|,
-name|newMergeTip
+name|mergeTip
 argument_list|,
 name|args
 operator|.
@@ -303,7 +302,7 @@ name|submitApproval
 argument_list|)
 expr_stmt|;
 return|return
-name|newMergeTip
+name|mergeTip
 return|;
 block|}
 annotation|@
