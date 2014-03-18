@@ -728,7 +728,7 @@ name|DownloadCommand
 operator|.
 name|CHECKOUT
 argument_list|,
-literal|"clone with commmit-msg hook"
+literal|"clone with commit-msg hook"
 argument_list|)
 expr_stmt|;
 name|this
