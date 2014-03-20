@@ -595,6 +595,16 @@ argument_list|>
 name|sectionNames
 parameter_list|()
 function_decl|;
+DECL|method|pagedProjectListPrev ()
+name|String
+name|pagedProjectListPrev
+parameter_list|()
+function_decl|;
+DECL|method|pagedProjectListNext ()
+name|String
+name|pagedProjectListNext
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
