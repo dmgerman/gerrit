@@ -267,7 +267,7 @@ else|else
 block|{
 name|DefaultActions
 operator|.
-name|invokeProjectAction
+name|invoke
 argument_list|(
 name|project
 argument_list|,
