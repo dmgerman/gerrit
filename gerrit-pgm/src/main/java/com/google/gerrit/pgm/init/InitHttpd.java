@@ -74,11 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|common
 operator|.
-name|init
-operator|.
-name|InitUtil
+name|FileUtil
 operator|.
 name|chmod
 import|;
