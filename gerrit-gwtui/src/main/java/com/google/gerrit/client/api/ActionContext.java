@@ -142,6 +142,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|projects
+operator|.
+name|BranchInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|rpc
 operator|.
 name|GerritCallback
@@ -275,6 +291,17 @@ name|NameKey
 name|p
 parameter_list|)
 comment|/*-{ this.project=p; }-*/
+function_decl|;
+DECL|method|set (BranchInfo b)
+specifier|final
+specifier|native
+name|void
+name|set
+parameter_list|(
+name|BranchInfo
+name|b
+parameter_list|)
+comment|/*-{ this.branch=b }-*/
 function_decl|;
 DECL|method|set (RevisionInfo r)
 specifier|final
