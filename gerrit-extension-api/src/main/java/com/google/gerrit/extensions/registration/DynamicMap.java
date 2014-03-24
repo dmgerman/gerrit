@@ -946,6 +946,29 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|emptyMap ()
+specifier|public
+specifier|static
+parameter_list|<
+name|T
+parameter_list|>
+name|DynamicMap
+argument_list|<
+name|T
+argument_list|>
+name|emptyMap
+parameter_list|()
+block|{
+return|return
+operator|new
+name|DynamicMap
+argument_list|<
+name|T
+argument_list|>
+argument_list|()
+block|{}
+return|;
+block|}
 block|}
 end_class
 
