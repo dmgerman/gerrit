@@ -377,10 +377,10 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|invokeProjectAction (final Project.NameKey project, ActionInfo action, RestApi api)
+DECL|method|invoke (final Project.NameKey project, ActionInfo action, RestApi api)
 specifier|static
 name|void
-name|invokeProjectAction
+name|invoke
 parameter_list|(
 specifier|final
 name|Project
