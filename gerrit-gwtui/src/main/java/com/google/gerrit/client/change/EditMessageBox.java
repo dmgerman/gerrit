@@ -612,6 +612,13 @@ name|ClickEvent
 name|e
 parameter_list|)
 block|{
+name|save
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|ChangeApi
 operator|.
 name|message
