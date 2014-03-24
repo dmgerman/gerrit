@@ -102,11 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|common
 operator|.
-name|util
-operator|.
-name|ConsoleUI
+name|Die
 import|;
 end_import
 
@@ -122,7 +120,7 @@ name|pgm
 operator|.
 name|util
 operator|.
-name|Die
+name|ConsoleUI
 import|;
 end_import
 

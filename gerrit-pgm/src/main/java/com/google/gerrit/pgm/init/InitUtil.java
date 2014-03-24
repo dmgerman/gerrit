@@ -74,9 +74,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
-operator|.
-name|util
+name|common
 operator|.
 name|Die
 import|;
