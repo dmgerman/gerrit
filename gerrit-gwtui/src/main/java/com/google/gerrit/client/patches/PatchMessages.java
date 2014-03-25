@@ -124,6 +124,14 @@ name|Date
 name|when
 parameter_list|)
 function_decl|;
+DECL|method|patchSkipRegion (String lineNumber)
+name|String
+name|patchSkipRegion
+parameter_list|(
+name|String
+name|lineNumber
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
