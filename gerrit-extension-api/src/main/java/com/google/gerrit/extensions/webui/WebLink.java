@@ -66,22 +66,6 @@ name|webui
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
-import|;
-end_import
-
 begin_interface
 DECL|interface|WebLink
 specifier|public
