@@ -393,6 +393,18 @@ name|void
 name|byProjectPrefix
 parameter_list|()
 block|{}
+annotation|@
+name|Ignore
+annotation|@
+name|Override
+annotation|@
+name|Test
+DECL|method|byDefault ()
+specifier|public
+name|void
+name|byDefault
+parameter_list|()
+block|{}
 comment|// End tests for features not supported in V7.
 annotation|@
 name|Test
