@@ -500,20 +500,6 @@ name|common
 operator|.
 name|collect
 operator|.
-name|ListMultimap
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|collect
-operator|.
 name|Lists
 import|;
 end_import
@@ -4038,7 +4024,9 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// All users ever added, even if they can't vote on one or all labels.
+comment|// Include a user in the output for this label if either:
+comment|//  - They are an explicit reviewer.
+comment|//  - They ever voted on this change.
 name|Set
 argument_list|<
 name|Account
@@ -4052,27 +4040,28 @@ operator|.
 name|newHashSet
 argument_list|()
 decl_stmt|;
-name|ListMultimap
-argument_list|<
-name|PatchSet
+name|allUsers
 operator|.
-name|Id
-argument_list|,
-name|PatchSetApproval
-argument_list|>
-name|allApprovals
-init|=
+name|addAll
+argument_list|(
 name|cd
 operator|.
-name|approvals
+name|reviewers
 argument_list|()
-decl_stmt|;
+operator|.
+name|values
+argument_list|()
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|PatchSetApproval
 name|psa
 range|:
-name|allApprovals
+name|cd
+operator|.
+name|approvals
+argument_list|()
 operator|.
 name|values
 argument_list|()
@@ -4089,27 +4078,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|List
-argument_list|<
-name|PatchSetApproval
-argument_list|>
-name|currentList
-init|=
-name|allApprovals
-operator|.
-name|get
-argument_list|(
-name|baseCtrl
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|currentPatchSetId
-argument_list|()
-argument_list|)
-decl_stmt|;
-comment|// Most recent, normalized vote on each label for the current patch set by
-comment|// each user (may be 0).
 name|Table
 argument_list|<
 name|Account
@@ -4148,16 +4116,9 @@ control|(
 name|PatchSetApproval
 name|psa
 range|:
-name|labelNormalizer
+name|cd
 operator|.
-name|normalize
-argument_list|(
-name|baseCtrl
-argument_list|,
-name|currentList
-argument_list|)
-operator|.
-name|getNormalized
+name|currentApprovals
 argument_list|()
 control|)
 block|{
@@ -4306,9 +4267,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Either the user cannot vote on this label, or there just wasn't a
-comment|// dummy approval for this label. Explicitly check whether the user
-comment|// can vote on this label.
+comment|// Either the user cannot vote on this label, or they were added as a
+comment|// reviewer but have not responded yet. Explicitly check whether the
+comment|// user can vote on this label.
 name|value
 operator|=
 name|labelNormalizer

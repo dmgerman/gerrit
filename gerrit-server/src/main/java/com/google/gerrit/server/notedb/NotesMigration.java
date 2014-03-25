@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-operator|.
-name|checkArgument
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -190,7 +174,19 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//cfg.setBoolean("notedb", "patchSetApprovals", "read", true);
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+literal|"notedb"
+argument_list|,
+literal|"patchSetApprovals"
+argument_list|,
+literal|"read"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|NotesMigration
@@ -250,14 +246,6 @@ argument_list|,
 literal|"read"
 argument_list|,
 literal|false
-argument_list|)
-expr_stmt|;
-name|checkArgument
-argument_list|(
-operator|!
-name|readPatchSetApprovals
-argument_list|,
-literal|"notedb.readPatchSetApprovals not yet supported"
 argument_list|)
 expr_stmt|;
 block|}
