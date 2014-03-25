@@ -520,6 +520,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"projects:"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"parentproject:"
 argument_list|)
 expr_stmt|;

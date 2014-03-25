@@ -522,6 +522,35 @@ return|return
 name|fields
 return|;
 block|}
+DECL|method|hasField (FieldDef<T, ?> field)
+specifier|public
+specifier|final
+name|boolean
+name|hasField
+parameter_list|(
+name|FieldDef
+argument_list|<
+name|T
+argument_list|,
+name|?
+argument_list|>
+name|field
+parameter_list|)
+block|{
+return|return
+name|fields
+operator|.
+name|get
+argument_list|(
+name|field
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|==
+name|field
+return|;
+block|}
 comment|/**    * Build all fields in the schema from an input object.    *<p>    * Null values are omitted, as are fields which cause errors, which are    * logged.    *    * @param obj input object.    * @param fillArgs arguments for filling fields.    * @return all non-null field values from the object.    */
 DECL|method|buildFields ( final T obj, final FillArgs fillArgs)
 specifier|public

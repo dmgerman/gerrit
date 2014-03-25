@@ -404,6 +404,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|field|LUCENE_VERSION
 specifier|private
 specifier|static

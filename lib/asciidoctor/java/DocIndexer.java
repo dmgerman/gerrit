@@ -487,6 +487,11 @@ specifier|public
 class|class
 name|DocIndexer
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 DECL|field|LUCENE_VERSION
 specifier|private
 specifier|static

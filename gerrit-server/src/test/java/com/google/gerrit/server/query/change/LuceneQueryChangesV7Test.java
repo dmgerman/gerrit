@@ -308,6 +308,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -370,6 +380,20 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|// Tests for features not supported in V7.
+annotation|@
+name|Ignore
+annotation|@
+name|Override
+annotation|@
+name|Test
+DECL|method|byProjectPrefix ()
+specifier|public
+name|void
+name|byProjectPrefix
+parameter_list|()
+block|{}
+comment|// End tests for features not supported in V7.
 annotation|@
 name|Test
 DECL|method|pagination ()
