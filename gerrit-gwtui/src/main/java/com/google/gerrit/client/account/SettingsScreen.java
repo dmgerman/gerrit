@@ -215,13 +215,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|Gerrit
 operator|.
 name|getConfig
 argument_list|()
 operator|.
-name|isGitBasicAuth
+name|isHttpPasswordSettingsEnabled
 argument_list|()
 condition|)
 block|{

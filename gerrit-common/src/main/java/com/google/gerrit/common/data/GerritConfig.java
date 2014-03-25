@@ -242,10 +242,12 @@ specifier|protected
 name|String
 name|reportBugText
 decl_stmt|;
-DECL|field|gitBasicAuth
+DECL|field|httpPasswordSettingsEnabled
 specifier|protected
 name|boolean
-name|gitBasicAuth
+name|httpPasswordSettingsEnabled
+init|=
+literal|true
 decl_stmt|;
 DECL|field|gitweb
 specifier|protected
@@ -535,28 +537,30 @@ operator|=
 name|t
 expr_stmt|;
 block|}
-DECL|method|isGitBasicAuth ()
+DECL|method|isHttpPasswordSettingsEnabled ()
 specifier|public
 name|boolean
-name|isGitBasicAuth
+name|isHttpPasswordSettingsEnabled
 parameter_list|()
 block|{
 return|return
-name|gitBasicAuth
+name|httpPasswordSettingsEnabled
 return|;
 block|}
-DECL|method|setGitBasicAuth (boolean gba)
+DECL|method|setHttpPasswordSettingsEnabled (boolean httpPasswordSettingsEnabled)
 specifier|public
 name|void
-name|setGitBasicAuth
+name|setHttpPasswordSettingsEnabled
 parameter_list|(
 name|boolean
-name|gba
+name|httpPasswordSettingsEnabled
 parameter_list|)
 block|{
-name|gitBasicAuth
+name|this
+operator|.
+name|httpPasswordSettingsEnabled
 operator|=
-name|gba
+name|httpPasswordSettingsEnabled
 expr_stmt|;
 block|}
 DECL|method|getEditFullNameUrl ()
