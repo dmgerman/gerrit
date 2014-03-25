@@ -78,6 +78,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|ProjectInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|RestApiException
@@ -106,6 +122,11 @@ name|in
 parameter_list|)
 throws|throws
 name|RestApiException
+function_decl|;
+DECL|method|get ()
+name|ProjectInfo
+name|get
+parameter_list|()
 function_decl|;
 DECL|method|branch (String ref)
 name|BranchApi

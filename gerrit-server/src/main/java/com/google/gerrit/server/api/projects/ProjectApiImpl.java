@@ -74,6 +74,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|common
@@ -135,6 +149,22 @@ operator|.
 name|projects
 operator|.
 name|ProjectInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|ProjectInfo
 import|;
 end_import
 
@@ -247,6 +277,22 @@ operator|.
 name|project
 operator|.
 name|CreateProject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|ProjectJson
 import|;
 end_import
 
@@ -392,6 +438,12 @@ specifier|final
 name|ProjectResource
 name|project
 decl_stmt|;
+DECL|field|projectJson
+specifier|private
+specifier|final
+name|ProjectJson
+name|projectJson
+decl_stmt|;
 DECL|field|name
 specifier|private
 specifier|final
@@ -408,7 +460,7 @@ name|branchApi
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, BranchApiImpl.Factory branchApiFactory, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
 name|Provider
@@ -426,6 +478,9 @@ name|projectApi
 parameter_list|,
 name|ProjectsCollection
 name|projects
+parameter_list|,
+name|ProjectJson
+name|projectJson
 parameter_list|,
 name|BranchApiImpl
 operator|.
@@ -446,6 +501,8 @@ name|projectApi
 argument_list|,
 name|projects
 argument_list|,
+name|projectJson
+argument_list|,
 name|branchApiFactory
 argument_list|,
 name|project
@@ -456,7 +513,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, BranchApiImpl.Factory branchApiFactory, @Assisted String name)
+DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
 name|Provider
@@ -474,6 +531,9 @@ name|projectApi
 parameter_list|,
 name|ProjectsCollection
 name|projects
+parameter_list|,
+name|ProjectJson
+name|projectJson
 parameter_list|,
 name|BranchApiImpl
 operator|.
@@ -494,6 +554,8 @@ name|projectApi
 argument_list|,
 name|projects
 argument_list|,
+name|projectJson
+argument_list|,
 name|branchApiFactory
 argument_list|,
 literal|null
@@ -502,7 +564,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, BranchApiImpl.Factory branchApiFactory, ProjectResource project, String name)
+DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, ProjectResource project, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
@@ -522,6 +584,9 @@ parameter_list|,
 name|ProjectsCollection
 name|projects
 parameter_list|,
+name|ProjectJson
+name|projectJson
+parameter_list|,
 name|BranchApiImpl
 operator|.
 name|Factory
@@ -551,6 +616,12 @@ operator|.
 name|projects
 operator|=
 name|projects
+expr_stmt|;
+name|this
+operator|.
+name|projectJson
+operator|=
+name|projectJson
 expr_stmt|;
 name|this
 operator|.
@@ -691,6 +762,30 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|get ()
+specifier|public
+name|ProjectInfo
+name|get
+parameter_list|()
+block|{
+name|Preconditions
+operator|.
+name|checkNotNull
+argument_list|(
+name|project
+argument_list|)
+expr_stmt|;
+return|return
+name|projectJson
+operator|.
+name|format
+argument_list|(
+name|project
+argument_list|)
+return|;
 block|}
 annotation|@
 name|Override

@@ -69,6 +69,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -204,6 +216,15 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
+name|String
+name|name
+init|=
+literal|"foo"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|name
+argument_list|,
 name|gApi
 operator|.
 name|projects
@@ -211,11 +232,17 @@ argument_list|()
 operator|.
 name|name
 argument_list|(
-literal|"foo"
+name|name
 argument_list|)
 operator|.
 name|create
 argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|.
+name|name
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -246,7 +273,7 @@ name|in
 operator|.
 name|name
 operator|=
-literal|"bar"
+literal|"foo"
 expr_stmt|;
 name|gApi
 operator|.
@@ -255,7 +282,7 @@ argument_list|()
 operator|.
 name|name
 argument_list|(
-literal|"foo"
+literal|"bar"
 argument_list|)
 operator|.
 name|create
