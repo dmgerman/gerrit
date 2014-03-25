@@ -74,6 +74,38 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|actions
+operator|.
+name|ActionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|NativeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -167,6 +199,18 @@ name|boolean
 name|canDelete
 parameter_list|()
 comment|/*-{ return this['can_delete'] ? true : false; }-*/
+function_decl|;
+DECL|method|actions ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|ActionInfo
+argument_list|>
+name|actions
+parameter_list|()
+comment|/*-{ return this.actions }-*/
 function_decl|;
 DECL|method|BranchInfo ()
 specifier|protected
