@@ -1196,6 +1196,13 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|cherryPicksQuery
+operator|.
+name|append
+argument_list|(
+literal|" -is:abandoned"
+argument_list|)
+expr_stmt|;
 name|ChangeList
 operator|.
 name|query
