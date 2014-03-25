@@ -66,11 +66,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
-operator|.
-name|Project
+name|common
 operator|.
 name|SubmitType
 import|;

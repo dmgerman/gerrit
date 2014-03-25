@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|Project
+name|SubmitType
 import|;
 end_import
 
@@ -106,14 +106,12 @@ comment|/** An internal server error occurred preventing computation.      *<p> 
 DECL|enumConstant|RULE_ERROR
 name|RULE_ERROR
 block|}
-DECL|method|OK (Project.SubmitType type)
+DECL|method|OK (SubmitType type)
 specifier|public
 specifier|static
 name|SubmitTypeRecord
 name|OK
 parameter_list|(
-name|Project
-operator|.
 name|SubmitType
 name|type
 parameter_list|)
@@ -150,8 +148,6 @@ name|status
 decl_stmt|;
 DECL|field|type
 specifier|public
-name|Project
-operator|.
 name|SubmitType
 name|type
 decl_stmt|;

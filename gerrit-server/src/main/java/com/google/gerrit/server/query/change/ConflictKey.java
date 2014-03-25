@@ -90,11 +90,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
-operator|.
-name|Project
+name|common
 operator|.
 name|SubmitType
 import|;
@@ -139,7 +137,7 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|1L
+literal|2L
 decl_stmt|;
 DECL|field|commit
 specifier|private

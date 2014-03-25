@@ -120,11 +120,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Project
+name|projects
+operator|.
+name|ProjectState
 import|;
 end_import
 
@@ -136,11 +138,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
-operator|.
-name|Project
+name|common
 operator|.
 name|InheritableBoolean
 import|;
@@ -154,11 +154,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
-operator|.
-name|Project
+name|common
 operator|.
 name|SubmitType
 import|;
@@ -404,9 +402,7 @@ function_decl|;
 DECL|method|state ()
 specifier|public
 specifier|final
-name|Project
-operator|.
-name|State
+name|ProjectState
 name|state
 parameter_list|()
 block|{
@@ -419,17 +415,13 @@ literal|null
 condition|)
 block|{
 return|return
-name|Project
-operator|.
-name|State
+name|ProjectState
 operator|.
 name|ACTIVE
 return|;
 block|}
 return|return
-name|Project
-operator|.
-name|State
+name|ProjectState
 operator|.
 name|valueOf
 argument_list|(

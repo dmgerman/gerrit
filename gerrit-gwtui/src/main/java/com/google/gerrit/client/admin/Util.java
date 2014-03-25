@@ -90,11 +90,29 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|api
 operator|.
-name|Project
+name|projects
+operator|.
+name|ProjectState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|SubmitType
 import|;
 end_import
 
@@ -206,15 +224,13 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|toLongString (final Project.SubmitType type)
+DECL|method|toLongString (final SubmitType type)
 specifier|public
 specifier|static
 name|String
 name|toLongString
 parameter_list|(
 specifier|final
-name|Project
-operator|.
 name|SubmitType
 name|type
 parameter_list|)
@@ -289,16 +305,14 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|toLongString (final Project.State type)
+DECL|method|toLongString (final ProjectState type)
 specifier|public
 specifier|static
 name|String
 name|toLongString
 parameter_list|(
 specifier|final
-name|Project
-operator|.
-name|State
+name|ProjectState
 name|type
 parameter_list|)
 block|{
