@@ -96,7 +96,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeField
+name|RegexPredicate
 import|;
 end_import
 
@@ -112,7 +112,7 @@ name|server
 operator|.
 name|index
 operator|.
-name|RegexPredicate
+name|Schema
 import|;
 end_import
 
@@ -170,18 +170,27 @@ specifier|final
 name|RunAutomaton
 name|pattern
 decl_stmt|;
-DECL|method|RegexTopicPredicate (String re)
+DECL|method|RegexTopicPredicate (Schema<ChangeData> schema, String re)
 name|RegexTopicPredicate
 parameter_list|(
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|schema
+parameter_list|,
 name|String
 name|re
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|ChangeField
+name|TopicPredicate
 operator|.
-name|TOPIC
+name|topicField
+argument_list|(
+name|schema
+argument_list|)
 argument_list|,
 name|re
 argument_list|)

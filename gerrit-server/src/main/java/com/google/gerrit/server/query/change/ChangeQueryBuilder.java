@@ -2598,6 +2598,13 @@ return|return
 operator|new
 name|RegexTopicPredicate
 argument_list|(
+name|schema
+argument_list|(
+name|args
+operator|.
+name|indexes
+argument_list|)
+argument_list|,
 name|name
 argument_list|)
 return|;
@@ -2605,6 +2612,13 @@ return|return
 operator|new
 name|TopicPredicate
 argument_list|(
+name|schema
+argument_list|(
+name|args
+operator|.
+name|indexes
+argument_list|)
+argument_list|,
 name|name
 argument_list|)
 return|;
