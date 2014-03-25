@@ -135,6 +135,13 @@ name|ProjectState
 name|getAllProjects
 parameter_list|()
 function_decl|;
+comment|/** @return the project state of the project storing meta data for all users. */
+DECL|method|getAllUsers ()
+specifier|public
+name|ProjectState
+name|getAllUsers
+parameter_list|()
+function_decl|;
 comment|/**    * Get the cached data for a project by its unique name.    *    * @param projectName name of the project.    * @return the cached data; null if no such project exists or a error occured.    * @see #checkedGet(com.google.gerrit.reviewdb.client.Project.NameKey)    */
 DECL|method|get (Project.NameKey projectName)
 specifier|public
