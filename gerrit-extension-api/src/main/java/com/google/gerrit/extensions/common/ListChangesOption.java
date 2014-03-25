@@ -178,6 +178,13 @@ name|DOWNLOAD_COMMANDS
 argument_list|(
 literal|13
 argument_list|)
+block|,
+comment|/** Include patch set weblinks. */
+DECL|enumConstant|WEB_LINKS
+name|WEB_LINKS
+argument_list|(
+literal|14
+argument_list|)
 block|;
 DECL|field|value
 specifier|private

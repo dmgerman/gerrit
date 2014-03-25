@@ -1854,6 +1854,10 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|ALL_REVISIONS
+argument_list|,
+name|ListChangesOption
+operator|.
+name|WEB_LINKS
 argument_list|)
 argument_list|)
 expr_stmt|;
