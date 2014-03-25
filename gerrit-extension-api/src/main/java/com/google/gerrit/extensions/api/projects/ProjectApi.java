@@ -68,12 +68,45 @@ name|projects
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
 begin_interface
 DECL|interface|ProjectApi
 specifier|public
 interface|interface
 name|ProjectApi
 block|{
+DECL|method|create ()
+name|ProjectApi
+name|create
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|create (ProjectInput in)
+name|ProjectApi
+name|create
+parameter_list|(
+name|ProjectInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|branch (String ref)
 name|BranchApi
 name|branch
