@@ -468,6 +468,16 @@ name|String
 name|userCannotVoteToolTip
 parameter_list|()
 function_decl|;
+DECL|method|stringListPanelAdd ()
+name|String
+name|stringListPanelAdd
+parameter_list|()
+function_decl|;
+DECL|method|stringListPanelDelete ()
+name|String
+name|stringListPanelDelete
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

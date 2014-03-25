@@ -256,6 +256,16 @@ name|JsArray
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|Preferences
 specifier|public
@@ -264,7 +274,7 @@ name|Preferences
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create (AccountGeneralPreferences in)
+DECL|method|create (AccountGeneralPreferences in, List<TopMenuItem> myMenus)
 specifier|public
 specifier|static
 name|Preferences
@@ -272,6 +282,12 @@ name|create
 parameter_list|(
 name|AccountGeneralPreferences
 name|in
+parameter_list|,
+name|List
+argument_list|<
+name|TopMenuItem
+argument_list|>
+name|myMenus
 parameter_list|)
 block|{
 name|Preferences
@@ -446,6 +462,13 @@ name|in
 operator|.
 name|getChangeScreen
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setMyMenus
+argument_list|(
+name|myMenus
 argument_list|)
 expr_stmt|;
 return|return
@@ -1173,6 +1196,55 @@ name|String
 name|s
 parameter_list|)
 comment|/*-{ this.change_screen = s }-*/
+function_decl|;
+DECL|method|setMyMenus (List<TopMenuItem> myMenus)
+specifier|final
+name|void
+name|setMyMenus
+parameter_list|(
+name|List
+argument_list|<
+name|TopMenuItem
+argument_list|>
+name|myMenus
+parameter_list|)
+block|{
+name|initMy
+argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|TopMenuItem
+name|n
+range|:
+name|myMenus
+control|)
+block|{
+name|addMy
+argument_list|(
+name|n
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|initMy ()
+specifier|final
+specifier|native
+name|void
+name|initMy
+parameter_list|()
+comment|/*-{ this.my = []; }-*/
+function_decl|;
+DECL|method|addMy (TopMenuItem m)
+specifier|final
+specifier|native
+name|void
+name|addMy
+parameter_list|(
+name|TopMenuItem
+name|m
+parameter_list|)
+comment|/*-{ this.my.push(m); }-*/
 function_decl|;
 DECL|method|Preferences ()
 specifier|protected

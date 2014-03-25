@@ -305,6 +305,17 @@ name|ImageResource
 name|warning
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"listAdd.png"
+argument_list|)
+DECL|method|listAdd ()
+specifier|public
+name|ImageResource
+name|listAdd
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
