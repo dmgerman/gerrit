@@ -404,11 +404,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|field|LUCENE_VERSION
 specifier|private
 specifier|static
@@ -418,7 +413,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_46
+name|LUCENE_47
 decl_stmt|;
 DECL|field|searcher
 specifier|private

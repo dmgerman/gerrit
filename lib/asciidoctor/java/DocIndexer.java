@@ -487,11 +487,6 @@ specifier|public
 class|class
 name|DocIndexer
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 DECL|field|LUCENE_VERSION
 specifier|private
 specifier|static
@@ -501,7 +496,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_46
+name|LUCENE_47
 decl_stmt|;
 DECL|field|SECTION_HEADER
 specifier|private
