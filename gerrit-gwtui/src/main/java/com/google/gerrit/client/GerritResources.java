@@ -154,6 +154,28 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"arrowUp.png"
+argument_list|)
+DECL|method|arrowUp ()
+specifier|public
+name|ImageResource
+name|arrowUp
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"arrowDown.png"
+argument_list|)
+DECL|method|arrowDown ()
+specifier|public
+name|ImageResource
+name|arrowDown
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"editText.png"
 argument_list|)
 DECL|method|edit ()
@@ -303,6 +325,17 @@ DECL|method|warning ()
 specifier|public
 name|ImageResource
 name|warning
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"listAdd.png"
+argument_list|)
+DECL|method|listAdd ()
+specifier|public
+name|ImageResource
+name|listAdd
 parameter_list|()
 function_decl|;
 block|}

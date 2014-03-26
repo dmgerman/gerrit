@@ -360,6 +360,12 @@ specifier|final
 name|AllProjectsCreator
 name|allProjectsCreator
 decl_stmt|;
+DECL|field|allUsersCreator
+specifier|private
+specifier|final
+name|AllUsersCreator
+name|allUsersCreator
+decl_stmt|;
 DECL|field|serverUser
 specifier|private
 specifier|final
@@ -390,7 +396,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator (SitePaths site, @Current SchemaVersion version, AllProjectsCreator ap, @GerritPersonIdent PersonIdent au, DataSourceType dst)
+DECL|method|SchemaCreator (SitePaths site, @Current SchemaVersion version, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -404,6 +410,9 @@ name|version
 parameter_list|,
 name|AllProjectsCreator
 name|ap
+parameter_list|,
+name|AllUsersCreator
+name|auc
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -424,13 +433,15 @@ name|version
 argument_list|,
 name|ap
 argument_list|,
+name|auc
+argument_list|,
 name|au
 argument_list|,
 name|dst
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator (@itePath File site, @Current SchemaVersion version, AllProjectsCreator ap, @GerritPersonIdent PersonIdent au, DataSourceType dst)
+DECL|method|SchemaCreator (@itePath File site, @Current SchemaVersion version, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -446,6 +457,9 @@ name|version
 parameter_list|,
 name|AllProjectsCreator
 name|ap
+parameter_list|,
+name|AllUsersCreator
+name|auc
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
@@ -463,6 +477,10 @@ expr_stmt|;
 name|allProjectsCreator
 operator|=
 name|ap
+expr_stmt|;
+name|allUsersCreator
+operator|=
+name|auc
 expr_stmt|;
 name|serverUser
 operator|=
@@ -589,6 +607,11 @@ argument_list|(
 name|batch
 argument_list|)
 argument_list|)
+operator|.
+name|create
+argument_list|()
+expr_stmt|;
+name|allUsersCreator
 operator|.
 name|create
 argument_list|()

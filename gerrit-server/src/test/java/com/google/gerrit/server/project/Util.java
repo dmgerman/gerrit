@@ -1390,6 +1390,17 @@ annotation|@
 name|Override
 specifier|public
 name|ProjectState
+name|getAllUsers
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|ProjectState
 name|get
 parameter_list|(
 name|Project

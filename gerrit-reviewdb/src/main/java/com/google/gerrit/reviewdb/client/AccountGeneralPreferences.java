@@ -370,6 +370,29 @@ name|format
 return|;
 block|}
 block|}
+DECL|method|createDefault ()
+specifier|public
+specifier|static
+name|AccountGeneralPreferences
+name|createDefault
+parameter_list|()
+block|{
+name|AccountGeneralPreferences
+name|p
+init|=
+operator|new
+name|AccountGeneralPreferences
+argument_list|()
+decl_stmt|;
+name|p
+operator|.
+name|resetToDefaults
+argument_list|()
+expr_stmt|;
+return|return
+name|p
+return|;
+block|}
 comment|/** Number of changes to show in a screen. */
 annotation|@
 name|Column

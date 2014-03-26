@@ -90,6 +90,46 @@ name|TopMenuItem
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|create (String name, String url)
+specifier|public
+specifier|static
+name|TopMenuItem
+name|create
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|String
+name|url
+parameter_list|)
+block|{
+name|TopMenuItem
+name|i
+init|=
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+name|i
+operator|.
+name|name
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+name|i
+operator|.
+name|url
+argument_list|(
+name|url
+argument_list|)
+expr_stmt|;
+return|return
+name|i
+return|;
+block|}
 DECL|method|getName ()
 specifier|public
 specifier|final
@@ -125,6 +165,30 @@ name|String
 name|getId
 parameter_list|()
 comment|/*-{ return this.id; }-*/
+function_decl|;
+DECL|method|name (String n)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|name
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ this.name = n }-*/
+function_decl|;
+DECL|method|url (String u)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|url
+parameter_list|(
+name|String
+name|u
+parameter_list|)
+comment|/*-{ this.url = u }-*/
 function_decl|;
 DECL|method|TopMenuItem ()
 specifier|protected

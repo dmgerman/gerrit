@@ -190,6 +190,26 @@ name|String
 name|showSizeBarInChangeTable
 parameter_list|()
 function_decl|;
+DECL|method|myMenu ()
+name|String
+name|myMenu
+parameter_list|()
+function_decl|;
+DECL|method|myMenuInfo ()
+name|String
+name|myMenuInfo
+parameter_list|()
+function_decl|;
+DECL|method|myMenuName ()
+name|String
+name|myMenuName
+parameter_list|()
+function_decl|;
+DECL|method|myMenuUrl ()
+name|String
+name|myMenuUrl
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenOldUi ()
 name|String
 name|changeScreenOldUi
