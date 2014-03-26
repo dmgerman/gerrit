@@ -478,6 +478,16 @@ name|String
 name|stringListPanelDelete
 parameter_list|()
 function_decl|;
+DECL|method|stringListPanelUp ()
+name|String
+name|stringListPanelUp
+parameter_list|()
+function_decl|;
+DECL|method|stringListPanelDown ()
+name|String
+name|stringListPanelDown
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
