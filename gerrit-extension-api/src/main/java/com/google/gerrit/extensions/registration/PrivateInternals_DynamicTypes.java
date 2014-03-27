@@ -857,19 +857,6 @@ name|type
 argument_list|)
 control|)
 block|{
-if|if
-condition|(
-name|b
-operator|.
-name|getKey
-argument_list|()
-operator|.
-name|getAnnotation
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 name|handles
 operator|.
 name|add
@@ -892,7 +879,6 @@ name|pluginName
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
