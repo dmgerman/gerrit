@@ -164,24 +164,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountGeneralPreferences
-operator|.
-name|ArchiveFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AuthType
 import|;
 end_import
@@ -199,6 +181,16 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -374,9 +366,9 @@ name|changeScreen
 decl_stmt|;
 DECL|field|archiveFormats
 specifier|protected
-name|Set
+name|List
 argument_list|<
-name|ArchiveFormat
+name|String
 argument_list|>
 name|archiveFormats
 decl_stmt|;
@@ -1197,9 +1189,9 @@ expr_stmt|;
 block|}
 DECL|method|getArchiveFormats ()
 specifier|public
-name|Set
+name|List
 argument_list|<
-name|ArchiveFormat
+name|String
 argument_list|>
 name|getArchiveFormats
 parameter_list|()
@@ -1208,14 +1200,14 @@ return|return
 name|archiveFormats
 return|;
 block|}
-DECL|method|setArchiveFormats (Set<ArchiveFormat> formats)
+DECL|method|setArchiveFormats (List<String> formats)
 specifier|public
 name|void
 name|setArchiveFormats
 parameter_list|(
-name|Set
+name|List
 argument_list|<
-name|ArchiveFormat
+name|String
 argument_list|>
 name|formats
 parameter_list|)
