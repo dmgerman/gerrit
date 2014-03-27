@@ -138,7 +138,24 @@ DECL|annotation|MergeabilityChecksExecutor
 specifier|public
 annotation_defn|@interface
 name|MergeabilityChecksExecutor
-block|{ }
+block|{
+DECL|enum|Priority
+specifier|public
+enum|enum
+name|Priority
+block|{
+DECL|enumConstant|BACKGROUND
+DECL|enumConstant|INTERACTIVE
+name|BACKGROUND
+block|,
+name|INTERACTIVE
+block|;   }
+DECL|method|value ()
+name|Priority
+name|value
+parameter_list|()
+function_decl|;
+block|}
 end_annotation_defn
 
 end_unit

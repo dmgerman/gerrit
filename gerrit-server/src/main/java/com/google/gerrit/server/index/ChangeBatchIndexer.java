@@ -1625,10 +1625,16 @@ try|try
 block|{
 name|mergeabilityChecker
 operator|.
-name|update
+name|newCheck
+argument_list|()
+operator|.
+name|addProject
 argument_list|(
 name|project
 argument_list|)
+operator|.
+name|run
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
