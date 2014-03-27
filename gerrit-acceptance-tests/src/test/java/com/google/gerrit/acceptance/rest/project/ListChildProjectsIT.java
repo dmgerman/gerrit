@@ -391,7 +391,7 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
@@ -508,6 +508,14 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
+operator|new
+name|Project
+operator|.
+name|NameKey
+argument_list|(
+literal|"All-Users"
+argument_list|)
+argument_list|,
 name|existingProject
 argument_list|,
 name|child1
