@@ -1011,10 +1011,13 @@ operator|.
 name|link_url
 argument_list|()
 argument_list|,
+name|parenthesize
+argument_list|(
 name|link
 operator|.
 name|link_name
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1050,10 +1053,7 @@ name|a
 operator|.
 name|setText
 argument_list|(
-name|parenthesize
-argument_list|(
 name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|Element
