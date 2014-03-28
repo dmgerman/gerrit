@@ -236,7 +236,7 @@ name|createQueue
 argument_list|(
 name|poolSize
 argument_list|,
-literal|"MergeabilityChecks"
+literal|"MergeabilityChecks-Background"
 argument_list|)
 return|;
 block|}
@@ -313,7 +313,7 @@ name|createQueue
 argument_list|(
 name|poolSize
 argument_list|,
-literal|"InteractiveMergeabilityChecks"
+literal|"MergeabilityChecks-Interactive"
 argument_list|)
 return|;
 block|}
