@@ -785,6 +785,38 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|getPluginName (File srcFile)
+specifier|public
+specifier|static
+name|String
+name|getPluginName
+parameter_list|(
+name|File
+name|srcFile
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|Objects
+operator|.
+name|firstNonNull
+argument_list|(
+name|getGerritPluginName
+argument_list|(
+name|srcFile
+argument_list|)
+argument_list|,
+name|nameOf
+argument_list|(
+name|srcFile
+argument_list|)
+argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
+return|;
+block|}
 DECL|field|pluginsDir
 specifier|private
 specifier|final
@@ -4305,7 +4337,7 @@ comment|// If multiple plugin files provide the same plugin name, then only
 comment|// the first plugin remains active and all other plugins with the same
 comment|// name are disabled.
 DECL|method|prunePlugins (File pluginsDir)
-specifier|private
+specifier|public
 specifier|static
 name|Multimap
 argument_list|<
@@ -4911,19 +4943,9 @@ name|map
 operator|.
 name|put
 argument_list|(
-name|Objects
-operator|.
-name|firstNonNull
-argument_list|(
-name|getGerritPluginName
+name|getPluginName
 argument_list|(
 name|srcFile
-argument_list|)
-argument_list|,
-name|nameOf
-argument_list|(
-name|srcFile
-argument_list|)
 argument_list|)
 argument_list|,
 name|srcFile
