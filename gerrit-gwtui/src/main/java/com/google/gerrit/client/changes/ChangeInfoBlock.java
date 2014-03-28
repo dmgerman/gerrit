@@ -1691,6 +1691,13 @@ name|change
 operator|=
 name|chg
 expr_stmt|;
+name|message
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|newTopic
 operator|=
 operator|new
@@ -1788,9 +1795,6 @@ name|get
 argument_list|()
 argument_list|,
 name|topic
-argument_list|,
-name|getMessageText
-argument_list|()
 argument_list|,
 operator|new
 name|GerritCallback
