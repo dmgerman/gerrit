@@ -336,7 +336,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Update the topic of a change. */
-DECL|method|topic (int id, String topic, String msg, AsyncCallback<String> cb)
+DECL|method|topic (int id, String topic, AsyncCallback<String> cb)
 specifier|public
 specifier|static
 name|void
@@ -347,9 +347,6 @@ name|id
 parameter_list|,
 name|String
 name|topic
-parameter_list|,
-name|String
-name|msg
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -375,20 +372,9 @@ argument_list|(
 name|topic
 argument_list|)
 expr_stmt|;
-name|msg
-operator|=
-name|emptyToNull
-argument_list|(
-name|msg
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|topic
-operator|!=
-literal|null
-operator|||
-name|msg
 operator|!=
 literal|null
 condition|)
@@ -406,13 +392,6 @@ operator|.
 name|topic
 argument_list|(
 name|topic
-argument_list|)
-expr_stmt|;
-name|input
-operator|.
-name|message
-argument_list|(
-name|msg
 argument_list|)
 expr_stmt|;
 name|call
