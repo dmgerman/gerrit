@@ -72,6 +72,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|events
@@ -81,6 +97,8 @@ import|;
 end_import
 
 begin_interface
+annotation|@
+name|ExtensionPoint
 DECL|interface|ChangeListener
 specifier|public
 interface|interface
