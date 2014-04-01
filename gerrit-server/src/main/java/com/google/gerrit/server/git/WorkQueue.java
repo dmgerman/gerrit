@@ -138,6 +138,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|IdGenerator
@@ -165,6 +181,20 @@ operator|.
 name|inject
 operator|.
 name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
 import|;
 end_import
 
@@ -565,6 +595,11 @@ specifier|private
 name|Executor
 name|defaultQueue
 decl_stmt|;
+DECL|field|defaultQueueSize
+specifier|private
+name|int
+name|defaultQueueSize
+decl_stmt|;
 DECL|field|idGenerator
 specifier|private
 specifier|final
@@ -582,12 +617,18 @@ name|queues
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WorkQueue (final IdGenerator idGenerator)
+DECL|method|WorkQueue (final IdGenerator idGenerator, @GerritServerConfig final Config cfg)
 name|WorkQueue
 parameter_list|(
 specifier|final
 name|IdGenerator
 name|idGenerator
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+specifier|final
+name|Config
+name|cfg
 parameter_list|)
 block|{
 name|this
@@ -606,6 +647,19 @@ argument_list|<
 name|Executor
 argument_list|>
 argument_list|()
+expr_stmt|;
+name|defaultQueueSize
+operator|=
+name|cfg
+operator|.
+name|getInt
+argument_list|(
+literal|"execution"
+argument_list|,
+literal|"defaultThreadPoolSize"
+argument_list|,
+literal|1
+argument_list|)
 expr_stmt|;
 block|}
 comment|/** Get the default work queue, for miscellaneous tasks. */
@@ -627,7 +681,7 @@ name|defaultQueue
 operator|=
 name|createQueue
 argument_list|(
-literal|1
+name|defaultQueueSize
 argument_list|,
 literal|"WorkQueue"
 argument_list|)

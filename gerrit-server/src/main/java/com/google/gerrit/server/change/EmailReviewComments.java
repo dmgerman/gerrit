@@ -220,7 +220,25 @@ name|server
 operator|.
 name|git
 operator|.
+name|EmailReviewCommentsExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|WorkQueue
+operator|.
+name|Executor
 import|;
 end_import
 
@@ -474,11 +492,11 @@ name|comments
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|workQueue
+DECL|field|sendEmailsExecutor
 specifier|private
 specifier|final
-name|WorkQueue
-name|workQueue
+name|Executor
+name|sendEmailsExecutor
 decl_stmt|;
 DECL|field|patchSetInfoFactory
 specifier|private
@@ -558,11 +576,14 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailReviewComments ( WorkQueue workQueue, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
+DECL|method|EmailReviewComments ( @mailReviewCommentsExecutor final Executor executor, PatchSetInfoFactory patchSetInfoFactory, CommentSender.Factory commentSenderFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext, @Assisted NotifyHandling notify, @Assisted Change change, @Assisted PatchSet patchSet, @Assisted Account.Id authorId, @Assisted ChangeMessage message, @Assisted List<PatchLineComment> comments)
 name|EmailReviewComments
 parameter_list|(
-name|WorkQueue
-name|workQueue
+annotation|@
+name|EmailReviewCommentsExecutor
+specifier|final
+name|Executor
+name|executor
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
@@ -619,9 +640,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|workQueue
+name|sendEmailsExecutor
 operator|=
-name|workQueue
+name|executor
 expr_stmt|;
 name|this
 operator|.
@@ -689,10 +710,7 @@ name|void
 name|sendAsync
 parameter_list|()
 block|{
-name|workQueue
-operator|.
-name|getDefaultQueue
-argument_list|()
+name|sendEmailsExecutor
 operator|.
 name|submit
 argument_list|(
