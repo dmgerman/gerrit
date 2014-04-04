@@ -354,7 +354,7 @@ literal|"ls-members"
 argument_list|,
 name|description
 operator|=
-literal|"Lists the members of a given group"
+literal|"List the members of a given group"
 argument_list|,
 name|runsAt
 operator|=
