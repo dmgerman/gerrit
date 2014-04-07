@@ -762,6 +762,11 @@ specifier|protected
 name|boolean
 name|copyAllScoresIfNoCodeChange
 decl_stmt|;
+DECL|field|defaultValue
+specifier|protected
+name|short
+name|defaultValue
+decl_stmt|;
 DECL|field|values
 specifier|protected
 name|List
@@ -853,6 +858,10 @@ name|sortValues
 argument_list|(
 name|valueList
 argument_list|)
+expr_stmt|;
+name|defaultValue
+operator|=
+literal|0
 expr_stmt|;
 name|abbreviation
 operator|=
@@ -1185,6 +1194,32 @@ name|v
 else|:
 literal|null
 return|;
+block|}
+DECL|method|getDefaultValue ()
+specifier|public
+name|short
+name|getDefaultValue
+parameter_list|()
+block|{
+return|return
+name|defaultValue
+return|;
+block|}
+DECL|method|setDefaultValue (short defaultValue)
+specifier|public
+name|void
+name|setDefaultValue
+parameter_list|(
+name|short
+name|defaultValue
+parameter_list|)
+block|{
+name|this
+operator|.
+name|defaultValue
+operator|=
+name|defaultValue
+expr_stmt|;
 block|}
 DECL|method|isCopyMinScore ()
 specifier|public

@@ -989,6 +989,14 @@ name|value
 expr_stmt|;
 name|lo
 operator|.
+name|defaultValue
+operator|=
+name|li
+operator|.
+name|defaultValue
+expr_stmt|;
+name|lo
+operator|.
 name|optional
 operator|=
 name|li

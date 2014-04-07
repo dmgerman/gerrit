@@ -820,6 +820,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|0
+argument_list|,
+name|codeReview
+operator|.
+name|getDefaultValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"MaxWithBlock"
 argument_list|,
 name|codeReview

@@ -1138,6 +1138,15 @@ name|blocking
 parameter_list|()
 comment|/*-{ return this.blocking ? true : false; }-*/
 function_decl|;
+DECL|method|defaultValue ()
+specifier|public
+specifier|final
+specifier|native
+name|short
+name|defaultValue
+parameter_list|()
+comment|/*-{ return this.default_value; }-*/
+function_decl|;
 DECL|method|_value ()
 specifier|final
 specifier|native
