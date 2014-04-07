@@ -1507,11 +1507,11 @@ name|UiField
 name|Element
 name|statusText
 decl_stmt|;
-DECL|field|projectQuery
+DECL|field|projectSettings
 annotation|@
 name|UiField
 name|Image
-name|projectQuery
+name|projectSettings
 decl_stmt|;
 DECL|field|projectLink
 annotation|@
@@ -2803,7 +2803,7 @@ name|ChangeInfo
 name|info
 parameter_list|)
 block|{
-name|projectQuery
+name|projectSettings
 operator|.
 name|addDomHandler
 argument_list|(
@@ -2827,7 +2827,7 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|toProjectDefaultDashboard
+name|toProject
 argument_list|(
 name|info
 operator|.
@@ -2861,7 +2861,7 @@ name|setTargetHistoryToken
 argument_list|(
 name|PageLinks
 operator|.
-name|toProject
+name|toProjectDefaultDashboard
 argument_list|(
 name|info
 operator|.
@@ -2917,10 +2917,7 @@ operator|.
 name|branch
 argument_list|()
 argument_list|,
-name|info
-operator|.
-name|topic
-argument_list|()
+literal|null
 argument_list|)
 argument_list|)
 argument_list|)
