@@ -208,6 +208,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -666,6 +680,15 @@ name|AnonymousUser
 argument_list|>
 name|anonymousUserProvider
 decl_stmt|;
+DECL|field|userProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|userProvider
+decl_stmt|;
 DECL|field|_env
 specifier|private
 specifier|final
@@ -674,7 +697,7 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebServlet (final LocalDiskRepositoryManager repoManager, final ProjectControl.Factory projectControl, final Provider<AnonymousUser> anonymousUserProvider, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
+DECL|method|GitWebServlet (final LocalDiskRepositoryManager repoManager, final ProjectControl.Factory projectControl, final Provider<AnonymousUser> anonymousUserProvider, final Provider<CurrentUser> userProvider, final SitePaths site, final GerritConfig gerritConfig, final GitWebConfig gitWebConfig)
 name|GitWebServlet
 parameter_list|(
 specifier|final
@@ -693,6 +716,13 @@ argument_list|<
 name|AnonymousUser
 argument_list|>
 name|anonymousUserProvider
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|userProvider
 parameter_list|,
 specifier|final
 name|SitePaths
@@ -726,6 +756,12 @@ operator|.
 name|anonymousUserProvider
 operator|=
 name|anonymousUserProvider
+expr_stmt|;
+name|this
+operator|.
+name|userProvider
+operator|=
+name|userProvider
 expr_stmt|;
 name|this
 operator|.
@@ -2264,6 +2300,17 @@ name|NoSuchProjectException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|userProvider
+operator|.
+name|get
+argument_list|()
+operator|.
+name|isIdentifiedUser
+argument_list|()
+condition|)
+block|{
 name|rsp
 operator|.
 name|sendError
@@ -2273,6 +2320,22 @@ operator|.
 name|SC_NOT_FOUND
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Allow anonymous users a chance to login.
+comment|// Avoid leaking information by not distinguishing between
+comment|// project not existing and no access rights.
+name|rsp
+operator|.
+name|sendError
+argument_list|(
+name|HttpServletResponse
+operator|.
+name|SC_UNAUTHORIZED
+argument_list|)
+expr_stmt|;
+block|}
 return|return;
 block|}
 specifier|final
