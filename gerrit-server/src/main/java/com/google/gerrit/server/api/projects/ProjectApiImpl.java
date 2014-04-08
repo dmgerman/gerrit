@@ -678,6 +678,21 @@ try|try
 block|{
 if|if
 condition|(
+name|name
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+literal|"Project already exists"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 name|in
 operator|.
 name|name
@@ -741,8 +756,6 @@ parameter_list|(
 name|BadRequestException
 decl||
 name|UnprocessableEntityException
-decl||
-name|ResourceConflictException
 decl||
 name|ResourceNotFoundException
 decl||
