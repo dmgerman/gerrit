@@ -869,6 +869,7 @@ name|String
 name|reviewer
 decl_stmt|;
 DECL|field|confirmed
+specifier|public
 name|Boolean
 name|confirmed
 decl_stmt|;
