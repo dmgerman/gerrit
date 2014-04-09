@@ -210,6 +210,11 @@ name|String
 name|myMenuUrl
 parameter_list|()
 function_decl|;
+DECL|method|myMenuReset ()
+name|String
+name|myMenuReset
+parameter_list|()
+function_decl|;
 DECL|method|changeScreenOldUi ()
 name|String
 name|changeScreenOldUi

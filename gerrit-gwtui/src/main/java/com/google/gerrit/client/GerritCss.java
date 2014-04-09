@@ -1163,6 +1163,11 @@ name|String
 name|sshKeyPanelInvalid
 parameter_list|()
 function_decl|;
+DECL|method|stringListPanelButtons ()
+name|String
+name|stringListPanelButtons
+parameter_list|()
+function_decl|;
 DECL|method|topMostCell ()
 name|String
 name|topMostCell
