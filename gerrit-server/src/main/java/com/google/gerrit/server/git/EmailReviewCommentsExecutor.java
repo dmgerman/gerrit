@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.patches
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -60,11 +60,25 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|client
+name|server
 operator|.
-name|patches
+name|git
 package|;
 end_package
+
+begin_import
+import|import static
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+import|;
+end_import
 
 begin_import
 import|import
@@ -72,13 +86,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwt
+name|inject
 operator|.
-name|i18n
-operator|.
-name|client
-operator|.
-name|Messages
+name|BindingAnnotation
 import|;
 end_import
 
@@ -86,54 +96,32 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|lang
 operator|.
-name|Date
+name|annotation
+operator|.
+name|Retention
 import|;
 end_import
 
-begin_interface
-DECL|interface|PatchMessages
+begin_comment
+comment|/**  * Marker on the global {@link WorkQueue.Executor} used by  * {@link EmailReviewComments}.  */
+end_comment
+
+begin_annotation_defn
+annotation|@
+name|Retention
+argument_list|(
+name|RUNTIME
+argument_list|)
+annotation|@
+name|BindingAnnotation
+DECL|annotation|EmailReviewCommentsExecutor
 specifier|public
-interface|interface
-name|PatchMessages
-extends|extends
-name|Messages
-block|{
-DECL|method|expandBefore (int cnt)
-name|String
-name|expandBefore
-parameter_list|(
-name|int
-name|cnt
-parameter_list|)
-function_decl|;
-DECL|method|expandAfter (int cnt)
-name|String
-name|expandAfter
-parameter_list|(
-name|int
-name|cnt
-parameter_list|)
-function_decl|;
-DECL|method|draftSaved (Date when)
-name|String
-name|draftSaved
-parameter_list|(
-name|Date
-name|when
-parameter_list|)
-function_decl|;
-DECL|method|patchSkipRegion (String lineNumber)
-name|String
-name|patchSkipRegion
-parameter_list|(
-name|String
-name|lineNumber
-parameter_list|)
-function_decl|;
-block|}
-end_interface
+annotation_defn|@interface
+name|EmailReviewCommentsExecutor
+block|{ }
+end_annotation_defn
 
 end_unit
 

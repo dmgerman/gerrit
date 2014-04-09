@@ -1582,7 +1582,6 @@ name|luceneConfig
 decl_stmt|;
 DECL|field|commitWithinMs
 specifier|private
-specifier|final
 name|long
 name|commitWithinMs
 decl_stmt|;
@@ -1683,6 +1682,8 @@ name|DEFAULT_MAX_BUFFERED_DOCS
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|commitWithinMs
 operator|=
 name|ConfigUtil
@@ -1709,6 +1710,29 @@ argument_list|,
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|commitWithinMs
+operator|=
+name|cfg
+operator|.
+name|getLong
+argument_list|(
+literal|"index"
+argument_list|,
+name|name
+argument_list|,
+literal|"commitWithin"
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|getLuceneConfig ()
 name|IndexWriterConfig

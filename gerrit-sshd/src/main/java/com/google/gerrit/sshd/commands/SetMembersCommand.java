@@ -444,7 +444,7 @@ literal|"set-members"
 argument_list|,
 name|description
 operator|=
-literal|"Modifies members of specific group or number of groups"
+literal|"Modify members of specific group or number of groups"
 argument_list|)
 DECL|class|SetMembersCommand
 specifier|public
