@@ -1456,7 +1456,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|setupNav (InlineHyperlink link, int key, String help, FileInfo info)
+DECL|method|setupNav (InlineHyperlink link, char key, String help, FileInfo info)
 specifier|private
 name|void
 name|setupNav
@@ -1464,7 +1464,7 @@ parameter_list|(
 name|InlineHyperlink
 name|link
 parameter_list|,
-name|int
+name|char
 name|key
 parameter_list|,
 name|String
@@ -1501,6 +1501,12 @@ name|link
 operator|.
 name|setTitle
 argument_list|(
+name|PatchUtil
+operator|.
+name|M
+operator|.
+name|fileNameWithShortcutKey
+argument_list|(
 name|FileInfo
 operator|.
 name|getFileName
@@ -1509,6 +1515,14 @@ name|info
 operator|.
 name|path
 argument_list|()
+argument_list|)
+argument_list|,
+name|Character
+operator|.
+name|toString
+argument_list|(
+name|key
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
