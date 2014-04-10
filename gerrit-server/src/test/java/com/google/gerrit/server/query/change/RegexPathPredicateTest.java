@@ -601,6 +601,8 @@ name|Id
 argument_list|(
 literal|1
 argument_list|)
+argument_list|,
+literal|1
 argument_list|)
 decl_stmt|;
 name|cd
