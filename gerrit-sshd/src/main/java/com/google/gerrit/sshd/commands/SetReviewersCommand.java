@@ -1004,6 +1004,12 @@ name|reviewer
 operator|=
 name|reviewer
 expr_stmt|;
+name|input
+operator|.
+name|confirmed
+operator|=
+literal|true
+expr_stmt|;
 name|String
 name|error
 decl_stmt|;
