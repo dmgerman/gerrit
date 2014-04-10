@@ -438,6 +438,7 @@ end_import
 
 begin_class
 DECL|class|EmailReviewComments
+specifier|public
 class|class
 name|EmailReviewComments
 implements|implements
