@@ -1369,6 +1369,8 @@ argument_list|,
 name|cherryPickCommit
 argument_list|,
 name|refControl
+argument_list|,
+name|currentUser
 argument_list|)
 return|;
 block|}
@@ -1416,7 +1418,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, PatchSet.Id patchSetId, RevCommit cherryPickCommit, RefControl refControl)
+DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, PatchSet.Id patchSetId, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser uploader)
 specifier|private
 name|Change
 operator|.
@@ -1442,6 +1444,9 @@ name|cherryPickCommit
 parameter_list|,
 name|RefControl
 name|refControl
+parameter_list|,
+name|IdentifiedUser
+name|uploader
 parameter_list|)
 throws|throws
 name|InvalidChangeOperationException
@@ -1520,6 +1525,14 @@ argument_list|(
 name|current
 operator|.
 name|isDraft
+argument_list|()
+argument_list|)
+operator|.
+name|setUploader
+argument_list|(
+name|uploader
+operator|.
+name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
