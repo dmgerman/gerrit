@@ -734,7 +734,7 @@ name|db
 argument_list|,
 name|n
 operator|.
-name|notes
+name|getControl
 argument_list|()
 argument_list|,
 name|n

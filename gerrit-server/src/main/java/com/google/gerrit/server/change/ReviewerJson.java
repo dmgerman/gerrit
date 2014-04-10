@@ -296,22 +296,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
-operator|.
-name|LabelNormalizer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -459,12 +443,6 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
-DECL|field|labelNormalizer
-specifier|private
-specifier|final
-name|LabelNormalizer
-name|labelNormalizer
-decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
@@ -477,7 +455,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, LabelNormalizer labelNormalizer, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, AccountInfo.Loader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -493,9 +471,6 @@ name|changeDataFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
-parameter_list|,
-name|LabelNormalizer
-name|labelNormalizer
 parameter_list|,
 name|AccountInfo
 operator|.
@@ -522,12 +497,6 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
-expr_stmt|;
-name|this
-operator|.
-name|labelNormalizer
-operator|=
-name|labelNormalizer
 expr_stmt|;
 name|this
 operator|.
@@ -716,7 +685,7 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|changeNotes
+name|ctl
 argument_list|,
 name|psId
 argument_list|,
@@ -727,7 +696,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format (ReviewerInfo out, ChangeControl ctl, List<PatchSetApproval> approvals)
+DECL|method|format (ReviewerInfo out, ChangeControl ctl, Iterable<PatchSetApproval> approvals)
 specifier|public
 name|ReviewerInfo
 name|format
@@ -738,7 +707,7 @@ parameter_list|,
 name|ChangeControl
 name|ctl
 parameter_list|,
-name|List
+name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -779,17 +748,7 @@ control|(
 name|PatchSetApproval
 name|ca
 range|:
-name|labelNormalizer
-operator|.
-name|normalize
-argument_list|(
-name|ctl
-argument_list|,
 name|approvals
-argument_list|)
-operator|.
-name|getNormalized
-argument_list|()
 control|)
 block|{
 for|for

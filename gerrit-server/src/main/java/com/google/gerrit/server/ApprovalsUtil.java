@@ -496,6 +496,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|project
+operator|.
+name|ChangeControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|util
 operator|.
 name|TimeUtil
@@ -728,16 +744,25 @@ specifier|final
 name|NotesMigration
 name|migration
 decl_stmt|;
+DECL|field|copier
+specifier|private
+specifier|final
+name|ApprovalCopier
+name|copier
+decl_stmt|;
 annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|ApprovalsUtil (NotesMigration migration)
+DECL|method|ApprovalsUtil (NotesMigration migration, ApprovalCopier copier)
 specifier|public
 name|ApprovalsUtil
 parameter_list|(
 name|NotesMigration
 name|migration
+parameter_list|,
+name|ApprovalCopier
+name|copier
 parameter_list|)
 block|{
 name|this
@@ -745,6 +770,12 @@ operator|.
 name|migration
 operator|=
 name|migration
+expr_stmt|;
+name|this
+operator|.
+name|copier
+operator|=
+name|copier
 expr_stmt|;
 block|}
 comment|/**    * Get all reviewers for a change.    *    * @param db review database.    * @param notes change notes.    * @return multimap of reviewers keyed by state, where each account appears    *     exactly once in {@link SetMultimap#values()}, and    *     {@link ReviewerState#REMOVED} is not present.    * @throws OrmException if reviewers for the change could not be read.    */
@@ -1569,9 +1600,9 @@ name|getApprovals
 argument_list|()
 return|;
 block|}
-DECL|method|byPatchSet (ReviewDb db, ChangeNotes notes, PatchSet.Id psId)
+DECL|method|byPatchSet (ReviewDb db, ChangeControl ctl, PatchSet.Id psId)
 specifier|public
-name|List
+name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -1580,8 +1611,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ChangeNotes
-name|notes
+name|ChangeControl
+name|ctl
 parameter_list|,
 name|PatchSet
 operator|.
@@ -1616,23 +1647,21 @@ argument_list|)
 return|;
 block|}
 return|return
-name|notes
+name|copier
 operator|.
-name|load
-argument_list|()
-operator|.
-name|getApprovals
-argument_list|()
-operator|.
-name|get
+name|getForPatchSet
 argument_list|(
+name|db
+argument_list|,
+name|ctl
+argument_list|,
 name|psId
 argument_list|)
 return|;
 block|}
-DECL|method|byPatchSetUser (ReviewDb db, ChangeNotes notes, PatchSet.Id psId, Account.Id accountId)
+DECL|method|byPatchSetUser (ReviewDb db, ChangeControl ctl, PatchSet.Id psId, Account.Id accountId)
 specifier|public
-name|List
+name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -1641,8 +1670,8 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|,
-name|ChangeNotes
-name|notes
+name|ChangeControl
+name|ctl
 parameter_list|,
 name|PatchSet
 operator|.
@@ -1684,23 +1713,18 @@ argument_list|)
 return|;
 block|}
 return|return
-name|ImmutableList
-operator|.
-name|copyOf
-argument_list|(
 name|filterApprovals
 argument_list|(
 name|byPatchSet
 argument_list|(
 name|db
 argument_list|,
-name|notes
+name|ctl
 argument_list|,
 name|psId
 argument_list|)
 argument_list|,
 name|accountId
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1734,17 +1758,21 @@ return|;
 block|}
 try|try
 block|{
+comment|// Submit approval is never copied, so bypass expensive byPatchSet call.
 return|return
 name|getSubmitter
 argument_list|(
 name|c
 argument_list|,
-name|byPatchSet
+name|byChange
 argument_list|(
 name|db
 argument_list|,
 name|notes
-argument_list|,
+argument_list|)
+operator|.
+name|get
+argument_list|(
 name|c
 argument_list|)
 argument_list|)

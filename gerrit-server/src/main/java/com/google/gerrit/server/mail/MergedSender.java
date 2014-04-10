@@ -450,7 +450,7 @@ argument_list|()
 argument_list|,
 name|changeData
 operator|.
-name|notes
+name|changeControl
 argument_list|()
 argument_list|,
 name|patchSet
