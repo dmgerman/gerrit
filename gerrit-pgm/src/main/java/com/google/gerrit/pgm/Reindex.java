@@ -506,7 +506,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ChangeKindCache
+name|ChangeKindCacheImpl
 import|;
 end_import
 
@@ -2545,7 +2545,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|ChangeKindCache
+name|ChangeKindCacheImpl
 operator|.
 name|module
 argument_list|()
