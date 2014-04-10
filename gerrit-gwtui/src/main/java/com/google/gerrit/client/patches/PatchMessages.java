@@ -132,6 +132,17 @@ name|String
 name|lineNumber
 parameter_list|)
 function_decl|;
+DECL|method|fileNameWithShortcutKey (String file, String key)
+name|String
+name|fileNameWithShortcutKey
+parameter_list|(
+name|String
+name|file
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
