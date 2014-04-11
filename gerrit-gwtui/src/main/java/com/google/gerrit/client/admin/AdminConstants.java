@@ -605,6 +605,16 @@ name|String
 name|pagedProjectListNext
 parameter_list|()
 function_decl|;
+DECL|method|pagedGroupListPrev ()
+name|String
+name|pagedGroupListPrev
+parameter_list|()
+function_decl|;
+DECL|method|pagedGroupListNext ()
+name|String
+name|pagedGroupListNext
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
