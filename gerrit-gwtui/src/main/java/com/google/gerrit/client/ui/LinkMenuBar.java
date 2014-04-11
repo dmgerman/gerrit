@@ -288,6 +288,13 @@ name|LinkMenuItem
 name|i
 parameter_list|)
 block|{
+name|i
+operator|.
+name|setMenuBar
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 name|i
@@ -307,6 +314,13 @@ name|int
 name|beforeIndex
 parameter_list|)
 block|{
+name|i
+operator|.
+name|setMenuBar
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|insert
 argument_list|(
 name|i
