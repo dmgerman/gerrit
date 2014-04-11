@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.client
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
-operator|.
-name|common
+name|client
 package|;
 end_package
 
@@ -72,87 +70,47 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwt
 operator|.
-name|extensions
+name|core
 operator|.
-name|api
+name|client
 operator|.
-name|projects
-operator|.
-name|ProjectState
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
+name|JavaScriptObject
 import|;
 end_import
 
 begin_class
-DECL|class|ProjectInfo
+DECL|class|WebLinkInfo
 specifier|public
 class|class
-name|ProjectInfo
+name|WebLinkInfo
+extends|extends
+name|JavaScriptObject
 block|{
-DECL|field|id
+DECL|method|name ()
 specifier|public
-name|String
-name|id
-decl_stmt|;
-DECL|field|name
-specifier|public
+specifier|final
+specifier|native
 name|String
 name|name
-decl_stmt|;
-DECL|field|parent
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|url ()
 specifier|public
+specifier|final
+specifier|native
 name|String
-name|parent
-decl_stmt|;
-DECL|field|description
-specifier|public
-name|String
-name|description
-decl_stmt|;
-DECL|field|state
-specifier|public
-name|ProjectState
-name|state
-decl_stmt|;
-DECL|field|branches
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|branches
-decl_stmt|;
-DECL|field|webLinks
-specifier|public
-name|List
-argument_list|<
+name|url
+parameter_list|()
+comment|/*-{ return this.url; }-*/
+function_decl|;
+DECL|method|WebLinkInfo ()
+specifier|protected
 name|WebLinkInfo
-argument_list|>
-name|webLinks
-decl_stmt|;
+parameter_list|()
+block|{   }
 block|}
 end_class
 

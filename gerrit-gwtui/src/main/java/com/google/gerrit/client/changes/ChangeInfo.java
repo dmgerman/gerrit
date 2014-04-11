@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|account
 operator|.
 name|AccountInfo
@@ -1827,38 +1841,6 @@ function_decl|;
 DECL|method|IncludedInInfo ()
 specifier|protected
 name|IncludedInInfo
-parameter_list|()
-block|{     }
-block|}
-DECL|class|WebLinkInfo
-specifier|public
-specifier|static
-class|class
-name|WebLinkInfo
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|name ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|name
-parameter_list|()
-comment|/*-{ return this.name; }-*/
-function_decl|;
-DECL|method|url ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|url
-parameter_list|()
-comment|/*-{ return this.url; }-*/
-function_decl|;
-DECL|method|WebLinkInfo ()
-specifier|protected
-name|WebLinkInfo
 parameter_list|()
 block|{     }
 block|}
