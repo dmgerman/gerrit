@@ -1044,7 +1044,7 @@ name|MenuItem
 argument_list|(
 literal|"Changes"
 argument_list|,
-literal|"#/"
+literal|"#/dashboard/self"
 argument_list|,
 literal|null
 argument_list|)
