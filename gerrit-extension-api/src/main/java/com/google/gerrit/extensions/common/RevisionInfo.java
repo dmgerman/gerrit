@@ -162,15 +162,15 @@ specifier|static
 class|class
 name|WebLinkInfo
 block|{
-DECL|field|linkName
+DECL|field|name
 specifier|public
 name|String
-name|linkName
+name|name
 decl_stmt|;
-DECL|field|linkUrl
+DECL|field|url
 specifier|public
 name|String
-name|linkUrl
+name|url
 decl_stmt|;
 DECL|method|WebLinkInfo (String name, String url)
 specifier|public
@@ -183,11 +183,15 @@ name|String
 name|url
 parameter_list|)
 block|{
-name|linkName
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
-name|linkUrl
+name|this
+operator|.
+name|url
 operator|=
 name|url
 expr_stmt|;

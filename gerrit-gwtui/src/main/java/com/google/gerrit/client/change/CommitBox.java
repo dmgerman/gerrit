@@ -1022,14 +1022,14 @@ name|addWebLink
 argument_list|(
 name|link
 operator|.
-name|link_url
+name|url
 argument_list|()
 argument_list|,
 name|parenthesize
 argument_list|(
 name|link
 operator|.
-name|link_name
+name|name
 argument_list|()
 argument_list|)
 argument_list|)

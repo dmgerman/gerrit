@@ -1838,23 +1838,23 @@ name|WebLinkInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|link_name ()
+DECL|method|name ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|link_name
+name|name
 parameter_list|()
-comment|/*-{ return this.link_name; }-*/
+comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|link_url ()
+DECL|method|url ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|link_url
+name|url
 parameter_list|()
-comment|/*-{ return this.link_url; }-*/
+comment|/*-{ return this.url; }-*/
 function_decl|;
 DECL|method|WebLinkInfo ()
 specifier|protected
