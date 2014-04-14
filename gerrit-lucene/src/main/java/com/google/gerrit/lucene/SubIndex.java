@@ -781,53 +781,6 @@ operator|.
 name|newConcurrentHashSet
 argument_list|()
 expr_stmt|;
-name|searcherManager
-operator|.
-name|addListener
-argument_list|(
-operator|new
-name|RefreshListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|beforeRefresh
-parameter_list|()
-throws|throws
-name|IOException
-block|{       }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|afterRefresh
-parameter_list|(
-name|boolean
-name|didRefresh
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-for|for
-control|(
-name|NrtFuture
-name|f
-range|:
-name|notDoneNrtFutures
-control|)
-block|{
-name|f
-operator|.
-name|removeIfDone
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 name|reopenThread
 operator|=
 operator|new
@@ -885,6 +838,59 @@ operator|.
 name|setDaemon
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+comment|// This must be added after the reopen thread is created. The reopen thread
+comment|// adds its own listener which copies its internally last-refreshed
+comment|// generation to the searching generation. removeIfDone() depends on the
+comment|// searching generation being up to date when calling
+comment|// reopenThread.waitForGeneration(gen, 0), therefore the reopen thread's
+comment|// internal listener needs to be called first.
+name|searcherManager
+operator|.
+name|addListener
+argument_list|(
+operator|new
+name|RefreshListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|beforeRefresh
+parameter_list|()
+throws|throws
+name|IOException
+block|{       }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|afterRefresh
+parameter_list|(
+name|boolean
+name|didRefresh
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+for|for
+control|(
+name|NrtFuture
+name|f
+range|:
+name|notDoneNrtFutures
+control|)
+block|{
+name|f
+operator|.
+name|removeIfDone
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|reopenThread
@@ -1153,6 +1159,11 @@ operator|.
 name|gen
 operator|=
 name|gen
+expr_stmt|;
+comment|// Tell the reopen thread we are waiting on this generation so it uses the
+comment|// min stale time when refreshing.
+name|isGenAvailableNowForCurrentSearcher
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
