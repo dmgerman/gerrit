@@ -788,6 +788,7 @@ name|projectName
 return|;
 block|}
 DECL|method|getRepository ()
+specifier|public
 name|Repository
 name|getRepository
 parameter_list|()
