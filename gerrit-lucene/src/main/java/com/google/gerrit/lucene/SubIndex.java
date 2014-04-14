@@ -903,6 +903,37 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+comment|// Closing the reopen thread sets its generation to Long.MAX_VALUE, but we
+comment|// still need to refresh the searcher manager to let pending NrtFutures
+comment|// know.
+comment|//
+comment|// Any futures created after this method (which may happen due to undefined
+comment|// shutdown ordering behavior) will finish immediately, even though they may
+comment|// not have flushed.
+try|try
+block|{
+name|searcherManager
+operator|.
+name|maybeRefreshBlocking
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"error finishing pending Lucene writes"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|writer
@@ -1292,6 +1323,23 @@ name|Executor
 name|executor
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isGenAvailableNowForCurrentSearcher
+argument_list|()
+operator|&&
+operator|!
+name|isCancelled
+argument_list|()
+condition|)
+block|{
+name|set
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|!
