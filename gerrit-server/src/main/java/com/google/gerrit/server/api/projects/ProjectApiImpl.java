@@ -712,7 +712,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RestApiException
+name|BadRequestException
 argument_list|(
 literal|"name must match input.name"
 argument_list|)
