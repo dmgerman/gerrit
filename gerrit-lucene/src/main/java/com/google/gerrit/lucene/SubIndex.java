@@ -795,53 +795,6 @@ operator|.
 name|newConcurrentHashSet
 argument_list|()
 expr_stmt|;
-name|searcherManager
-operator|.
-name|addListener
-argument_list|(
-operator|new
-name|RefreshListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|beforeRefresh
-parameter_list|()
-throws|throws
-name|IOException
-block|{       }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|afterRefresh
-parameter_list|(
-name|boolean
-name|didRefresh
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-for|for
-control|(
-name|NrtFuture
-name|f
-range|:
-name|notDoneNrtFutures
-control|)
-block|{
-name|f
-operator|.
-name|removeIfDone
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 name|reopenThread
 operator|=
 operator|new
@@ -901,6 +854,59 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// This must be added after the reopen thread is created. The reopen thread
+comment|// adds its own listener which copies its internally last-refreshed
+comment|// generation to the searching generation. removeIfDone() depends on the
+comment|// searching generation being up to date when calling
+comment|// reopenThread.waitForGeneration(gen, 0), therefore the reopen thread's
+comment|// internal listener needs to be called first.
+name|searcherManager
+operator|.
+name|addListener
+argument_list|(
+operator|new
+name|RefreshListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|beforeRefresh
+parameter_list|()
+throws|throws
+name|IOException
+block|{       }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|afterRefresh
+parameter_list|(
+name|boolean
+name|didRefresh
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+for|for
+control|(
+name|NrtFuture
+name|f
+range|:
+name|notDoneNrtFutures
+control|)
+block|{
+name|f
+operator|.
+name|removeIfDone
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|reopenThread
 operator|.
 name|start
@@ -917,6 +923,37 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+comment|// Closing the reopen thread sets its generation to Long.MAX_VALUE, but we
+comment|// still need to refresh the searcher manager to let pending NrtFutures
+comment|// know.
+comment|//
+comment|// Any futures created after this method (which may happen due to undefined
+comment|// shutdown ordering behavior) will finish immediately, even though they may
+comment|// not have flushed.
+try|try
+block|{
+name|searcherManager
+operator|.
+name|maybeRefreshBlocking
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"error finishing pending Lucene writes"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|writer
@@ -1148,6 +1185,11 @@ name|gen
 operator|=
 name|gen
 expr_stmt|;
+comment|// Tell the reopen thread we are waiting on this generation so it uses the
+comment|// min stale time when refreshing.
+name|isGenAvailableNowForCurrentSearcher
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1317,6 +1359,23 @@ name|Executor
 name|executor
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isGenAvailableNowForCurrentSearcher
+argument_list|()
+operator|&&
+operator|!
+name|isCancelled
+argument_list|()
+condition|)
+block|{
+name|set
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|!

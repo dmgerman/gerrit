@@ -1861,6 +1861,7 @@ range|:
 name|added
 control|)
 block|{
+comment|// New reviewers have value 0, don't bother normalizing.
 name|result
 operator|.
 name|reviewers

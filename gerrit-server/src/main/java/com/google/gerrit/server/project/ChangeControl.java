@@ -312,20 +312,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ApprovalsUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
 import|;
 end_import
@@ -1318,12 +1304,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|approvalsUtil
-specifier|private
-specifier|final
-name|ApprovalsUtil
-name|approvalsUtil
-decl_stmt|;
 DECL|field|changeDataFactory
 specifier|private
 specifier|final
@@ -1346,12 +1326,9 @@ name|notes
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeControl ( ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, @Assisted RefControl refControl, @Assisted Change change)
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, ChangeNotes.Factory notesFactory, @Assisted RefControl refControl, @Assisted Change change)
 name|ChangeControl
 parameter_list|(
-name|ApprovalsUtil
-name|approvalsUtil
-parameter_list|,
 name|ChangeData
 operator|.
 name|Factory
@@ -1375,8 +1352,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|approvalsUtil
-argument_list|,
 name|changeDataFactory
 argument_list|,
 name|refControl
@@ -1392,12 +1367,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeControl ( ApprovalsUtil approvalsUtil, ChangeData.Factory changeDataFactory, @Assisted RefControl refControl, @Assisted ChangeNotes notes)
+DECL|method|ChangeControl ( ChangeData.Factory changeDataFactory, @Assisted RefControl refControl, @Assisted ChangeNotes notes)
 name|ChangeControl
 parameter_list|(
-name|ApprovalsUtil
-name|approvalsUtil
-parameter_list|,
 name|ChangeData
 operator|.
 name|Factory
@@ -1414,12 +1386,6 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 block|{
-name|this
-operator|.
-name|approvalsUtil
-operator|=
-name|approvalsUtil
-expr_stmt|;
 name|this
 operator|.
 name|changeDataFactory
@@ -1468,8 +1434,6 @@ return|return
 operator|new
 name|ChangeControl
 argument_list|(
-name|approvalsUtil
-argument_list|,
 name|changeDataFactory
 argument_list|,
 name|getRefControl

@@ -2232,7 +2232,7 @@ return|;
 block|}
 DECL|method|safeGetApprovals (CodeReviewCommit n)
 specifier|private
-name|List
+name|Iterable
 argument_list|<
 name|PatchSetApproval
 argument_list|>
@@ -2256,7 +2256,7 @@ argument_list|()
 argument_list|,
 name|n
 operator|.
-name|notes
+name|getControl
 argument_list|()
 argument_list|,
 name|n
