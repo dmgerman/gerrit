@@ -769,7 +769,12 @@ throw|throw
 operator|new
 name|RestApiException
 argument_list|(
-literal|"Cannot create project"
+literal|"Cannot create project: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
