@@ -209,6 +209,16 @@ name|refresh
 parameter_list|()
 comment|/*-{ return this.refresh() }-*/
 function_decl|;
+comment|/** Refresh Gerrit's menu bar. */
+DECL|method|refreshMenuBar ()
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|refreshMenuBar
+parameter_list|()
+comment|/*-{ return this.refreshMenuBar() }-*/
+function_decl|;
 comment|/** Show message in Gerrit's ErrorDialog. */
 DECL|method|showError (String message)
 specifier|public
