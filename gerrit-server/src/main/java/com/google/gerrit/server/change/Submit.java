@@ -1153,6 +1153,15 @@ argument_list|)
 operator|.
 name|setVisible
 argument_list|(
+operator|!
+name|resource
+operator|.
+name|getPatchSet
+argument_list|()
+operator|.
+name|isDraft
+argument_list|()
+operator|&&
 name|resource
 operator|.
 name|getChange
