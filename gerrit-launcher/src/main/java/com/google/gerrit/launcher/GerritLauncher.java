@@ -393,7 +393,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|mainImpl (final String argv[])
-specifier|private
+specifier|public
 specifier|static
 name|int
 name|mainImpl
