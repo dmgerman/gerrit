@@ -2387,7 +2387,7 @@ comment|// Ignore write failures (matching JGit behavior).
 block|}
 block|}
 block|}
-DECL|field|ORM_EXCEPTION
+DECL|field|INSERT_EXCEPTION
 specifier|private
 specifier|static
 specifier|final
@@ -2395,23 +2395,23 @@ name|Function
 argument_list|<
 name|Exception
 argument_list|,
-name|OrmException
+name|InsertException
 argument_list|>
-name|ORM_EXCEPTION
+name|INSERT_EXCEPTION
 init|=
 operator|new
 name|Function
 argument_list|<
 name|Exception
 argument_list|,
-name|OrmException
+name|InsertException
 argument_list|>
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
-name|OrmException
+name|InsertException
 name|apply
 parameter_list|(
 name|Exception
@@ -2426,17 +2426,37 @@ name|OrmException
 condition|)
 block|{
 return|return
-operator|(
-name|OrmException
-operator|)
+operator|new
+name|InsertException
+argument_list|(
+literal|"ORM error"
+argument_list|,
 name|input
+argument_list|)
+return|;
+block|}
+if|if
+condition|(
+name|input
+operator|instanceof
+name|IOException
+condition|)
+block|{
+return|return
+operator|new
+name|InsertException
+argument_list|(
+literal|"IO error"
+argument_list|,
+name|input
+argument_list|)
 return|;
 block|}
 return|return
 operator|new
-name|OrmException
+name|InsertException
 argument_list|(
-literal|"Error updating database"
+literal|"Error inserting change/patchset"
 argument_list|,
 name|input
 argument_list|)
@@ -4795,7 +4815,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|InsertException
 name|err
 parameter_list|)
 block|{
@@ -4965,7 +4985,7 @@ name|CheckedFuture
 argument_list|<
 name|?
 argument_list|,
-name|OrmException
+name|InsertException
 argument_list|>
 argument_list|>
 name|futures
@@ -5038,7 +5058,7 @@ name|CheckedFuture
 argument_list|<
 name|?
 argument_list|,
-name|OrmException
+name|InsertException
 argument_list|>
 name|f
 range|:
@@ -5063,7 +5083,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|OrmException
+name|InsertException
 name|err
 parameter_list|)
 block|{
@@ -5071,7 +5091,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Can't insert changes for "
+literal|"Can't insert change/patchset for "
 operator|+
 name|project
 operator|.
@@ -9429,7 +9449,7 @@ name|CheckedFuture
 argument_list|<
 name|Void
 argument_list|,
-name|OrmException
+name|InsertException
 argument_list|>
 name|insertChange
 parameter_list|()
@@ -9558,7 +9578,7 @@ name|makeChecked
 argument_list|(
 name|future
 argument_list|,
-name|ORM_EXCEPTION
+name|INSERT_EXCEPTION
 argument_list|)
 return|;
 block|}
@@ -11415,7 +11435,7 @@ name|PatchSet
 operator|.
 name|Id
 argument_list|,
-name|OrmException
+name|InsertException
 argument_list|>
 name|insertPatchSet
 parameter_list|()
@@ -11555,7 +11575,7 @@ name|makeChecked
 argument_list|(
 name|future
 argument_list|,
-name|ORM_EXCEPTION
+name|INSERT_EXCEPTION
 argument_list|)
 return|;
 block|}
@@ -13952,6 +13972,22 @@ name|subOp
 operator|.
 name|update
 argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InsertException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Can't insert patchset"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
