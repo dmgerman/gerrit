@@ -168,6 +168,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|auth
+operator|.
+name|NoSuchUserException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|ConfigUtil
@@ -1361,10 +1377,8 @@ literal|0
 case|:
 throw|throw
 operator|new
-name|AccountException
+name|NoSuchUserException
 argument_list|(
-literal|"No such user:"
-operator|+
 name|username
 argument_list|)
 throw|;
