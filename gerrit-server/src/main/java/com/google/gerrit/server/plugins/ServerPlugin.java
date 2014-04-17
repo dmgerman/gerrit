@@ -379,9 +379,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|JarPlugin
+DECL|class|ServerPlugin
 class|class
-name|JarPlugin
+name|ServerPlugin
 extends|extends
 name|Plugin
 block|{
@@ -536,9 +536,9 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|JarPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, File srcJar, FileSnapshot snapshot, JarFile jarFile, Manifest manifest, File dataDir, ApiType apiType, ClassLoader classLoader, @Nullable Class<? extends Module> sysModule, @Nullable Class<? extends Module> sshModule, @Nullable Class<? extends Module> httpModule)
+DECL|method|ServerPlugin (String name, String pluginCanonicalWebUrl, PluginUser pluginUser, File srcJar, FileSnapshot snapshot, JarFile jarFile, Manifest manifest, File dataDir, ApiType apiType, ClassLoader classLoader, @Nullable Class<? extends Module> sysModule, @Nullable Class<? extends Module> sshModule, @Nullable Class<? extends Module> httpModule)
 specifier|public
-name|JarPlugin
+name|ServerPlugin
 parameter_list|(
 name|String
 name|name
