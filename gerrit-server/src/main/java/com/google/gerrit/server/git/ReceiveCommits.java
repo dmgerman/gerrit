@@ -4478,6 +4478,11 @@ name|isHead
 argument_list|(
 name|c
 argument_list|)
+operator|||
+name|isConfig
+argument_list|(
+name|c
+argument_list|)
 condition|)
 block|{
 name|autoCloseChanges
@@ -4522,6 +4527,11 @@ name|isHead
 argument_list|(
 name|c
 argument_list|)
+operator|||
+name|isConfig
+argument_list|(
+name|c
+argument_list|)
 condition|)
 block|{
 name|autoCloseChanges
@@ -4537,6 +4547,11 @@ case|:
 if|if
 condition|(
 name|isHead
+argument_list|(
+name|c
+argument_list|)
+operator|||
+name|isConfig
 argument_list|(
 name|c
 argument_list|)
