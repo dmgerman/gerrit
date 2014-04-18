@@ -2015,6 +2015,41 @@ name|getParentKey
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+literal|null
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Error while generating the list of descendants for"
+operator|+
+literal|" revision "
+operator|+
+name|revId
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|": Cannot find Change entry in"
+operator|+
+literal|" database for "
+operator|+
+name|p
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|ca
 operator|.
 name|neededBy
