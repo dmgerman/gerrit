@@ -10980,10 +10980,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|inputCommand
-operator|.
-name|getNewId
-argument_list|()
+name|newCommit
 argument_list|)
 condition|)
 block|{
