@@ -2278,7 +2278,7 @@ name|setAttribute
 argument_list|(
 literal|"src"
 argument_list|,
-literal|"gerrit_ui/gerrit_dbg.nocache.js"
+literal|"gerrit_ui/dbg_gerrit_ui.nocache.js"
 argument_list|)
 expr_stmt|;
 name|debug
