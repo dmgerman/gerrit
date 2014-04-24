@@ -723,6 +723,13 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|info
+operator|!=
+literal|null
+condition|)
+block|{
 name|info
 operator|.
 name|setTitle
@@ -730,6 +737,7 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getValues ()
 specifier|public
