@@ -359,7 +359,10 @@ block|{   }
 DECL|field|identifiedUser
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|IdentifiedUser
+argument_list|>
 name|identifiedUser
 decl_stmt|;
 DECL|field|repoManager
@@ -391,10 +394,13 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteBranch (IdentifiedUser identifiedUser, GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, GitReferenceUpdated referenceUpdated, ChangeHooks hooks)
+DECL|method|DeleteBranch (Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, Provider<ReviewDb> dbProvider, GitReferenceUpdated referenceUpdated, ChangeHooks hooks)
 name|DeleteBranch
 parameter_list|(
+name|Provider
+argument_list|<
 name|IdentifiedUser
+argument_list|>
 name|identifiedUser
 parameter_list|,
 name|GitRepositoryManager
@@ -651,6 +657,9 @@ argument_list|,
 name|u
 argument_list|,
 name|identifiedUser
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAccount
 argument_list|()
