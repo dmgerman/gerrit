@@ -187,6 +187,16 @@ name|String
 name|keyEsc
 parameter_list|()
 function_decl|;
+DECL|method|keyLeft ()
+name|String
+name|keyLeft
+parameter_list|()
+function_decl|;
+DECL|method|keyRight ()
+name|String
+name|keyRight
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

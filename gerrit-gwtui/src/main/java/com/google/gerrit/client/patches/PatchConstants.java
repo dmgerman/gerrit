@@ -230,6 +230,16 @@ name|String
 name|commentNext
 parameter_list|()
 function_decl|;
+DECL|method|focusSideA ()
+name|String
+name|focusSideA
+parameter_list|()
+function_decl|;
+DECL|method|focusSideB ()
+name|String
+name|focusSideB
+parameter_list|()
+function_decl|;
 DECL|method|fileList ()
 name|String
 name|fileList
