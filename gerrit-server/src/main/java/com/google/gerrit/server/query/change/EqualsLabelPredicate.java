@@ -743,7 +743,7 @@ block|}
 return|return
 name|LabelType
 operator|.
-name|withDefaultValues
+name|withDefaultValuesDoNotCheckName
 argument_list|(
 name|toFind
 argument_list|)
