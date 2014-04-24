@@ -4171,6 +4171,17 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|FileSystemView
+name|getNormalizedView
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 return|;
 block|}
