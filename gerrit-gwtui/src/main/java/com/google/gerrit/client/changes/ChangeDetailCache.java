@@ -857,7 +857,7 @@ name|setCanDeleteDraft
 argument_list|(
 name|can
 argument_list|(
-name|rev
+name|info
 operator|.
 name|actions
 argument_list|()
