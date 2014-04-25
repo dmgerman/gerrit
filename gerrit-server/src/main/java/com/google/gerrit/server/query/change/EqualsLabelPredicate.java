@@ -574,6 +574,18 @@ argument_list|,
 name|label
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|labelType
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|false
+return|;
+comment|// Label is not defined by this project.
+block|}
 name|boolean
 name|hasVote
 init|=
@@ -741,12 +753,7 @@ return|;
 block|}
 block|}
 return|return
-name|LabelType
-operator|.
-name|withDefaultValuesDoNotCheckName
-argument_list|(
-name|toFind
-argument_list|)
+literal|null
 return|;
 block|}
 DECL|method|match (Change change, int value, Account.Id approver, LabelType type)
