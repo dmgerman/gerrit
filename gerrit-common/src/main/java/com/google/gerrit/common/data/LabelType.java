@@ -181,23 +181,6 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-return|return
-name|withDefaultValuesDoNotCheckName
-argument_list|(
-name|name
-argument_list|)
-return|;
-block|}
-DECL|method|withDefaultValuesDoNotCheckName (String name)
-specifier|public
-specifier|static
-name|LabelType
-name|withDefaultValuesDoNotCheckName
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
 name|List
 argument_list|<
 name|LabelValue
