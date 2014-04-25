@@ -529,7 +529,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility functions to manipulate change edits.  *<p>  * This class contains methods to retrieve and publish edits.  */
+comment|/**  * Utility functions to manipulate change edits.  *<p>  * This class contains methods to retrieve, publish and delete edits.  */
 end_comment
 
 begin_class
@@ -943,6 +943,58 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// TODO(davido): This should happen in the same BatchRefUpdate.
+name|deleteRef
+argument_list|(
+name|repo
+argument_list|,
+name|edit
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|repo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    */
+DECL|method|delete (ChangeEdit edit)
+specifier|public
+name|void
+name|delete
+parameter_list|(
+name|ChangeEdit
+name|edit
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|Change
+name|change
+init|=
+name|edit
+operator|.
+name|getChange
+argument_list|()
+decl_stmt|;
+name|Repository
+name|repo
+init|=
+name|gitManager
+operator|.
+name|openRepository
+argument_list|(
+name|change
+operator|.
+name|getProject
+argument_list|()
+argument_list|)
+decl_stmt|;
+try|try
+block|{
 name|deleteRef
 argument_list|(
 name|repo
