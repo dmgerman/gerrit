@@ -344,6 +344,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|assistedinject
 operator|.
 name|Assisted
@@ -600,7 +612,10 @@ block|}
 DECL|field|identifiedUser
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|IdentifiedUser
+argument_list|>
 name|identifiedUser
 decl_stmt|;
 DECL|field|repoManager
@@ -628,10 +643,13 @@ name|ref
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateBranch (IdentifiedUser identifiedUser, GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, ChangeHooks hooks, @Assisted String ref)
+DECL|method|CreateBranch (Provider<IdentifiedUser> identifiedUser, GitRepositoryManager repoManager, GitReferenceUpdated referenceUpdated, ChangeHooks hooks, @Assisted String ref)
 name|CreateBranch
 parameter_list|(
+name|Provider
+argument_list|<
 name|IdentifiedUser
+argument_list|>
 name|identifiedUser
 parameter_list|,
 name|GitRepositoryManager
@@ -1055,6 +1073,9 @@ name|setRefLogIdent
 argument_list|(
 name|identifiedUser
 operator|.
+name|get
+argument_list|()
+operator|.
 name|newRefLogIdent
 argument_list|()
 argument_list|)
@@ -1120,6 +1141,9 @@ argument_list|,
 name|u
 argument_list|,
 name|identifiedUser
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAccount
 argument_list|()
