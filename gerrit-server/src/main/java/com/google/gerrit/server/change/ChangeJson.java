@@ -4844,6 +4844,15 @@ parameter_list|)
 block|{
 name|label
 operator|.
+name|defaultValue
+operator|=
+name|type
+operator|.
+name|getDefaultValue
+argument_list|()
+expr_stmt|;
+name|label
+operator|.
 name|values
 operator|=
 name|Maps
@@ -7346,6 +7355,11 @@ DECL|field|value
 specifier|public
 name|Short
 name|value
+decl_stmt|;
+DECL|field|defaultValue
+specifier|public
+name|Short
+name|defaultValue
 decl_stmt|;
 DECL|field|optional
 specifier|public

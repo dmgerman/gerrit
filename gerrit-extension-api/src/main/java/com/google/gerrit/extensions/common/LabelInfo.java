@@ -135,6 +135,11 @@ specifier|public
 name|Short
 name|value
 decl_stmt|;
+DECL|field|defaultValue
+specifier|public
+name|Short
+name|defaultValue
+decl_stmt|;
 DECL|field|optional
 specifier|public
 name|Boolean
