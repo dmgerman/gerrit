@@ -373,6 +373,11 @@ name|String
 name|menuDocumentationAPI
 parameter_list|()
 function_decl|;
+DECL|method|menuDocumentationProjectOwnerGuide ()
+name|String
+name|menuDocumentationProjectOwnerGuide
+parameter_list|()
+function_decl|;
 DECL|method|searchHint ()
 name|String
 name|searchHint
