@@ -228,13 +228,7 @@ name|out
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|,
-name|Account
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -361,9 +355,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|out
 operator|.

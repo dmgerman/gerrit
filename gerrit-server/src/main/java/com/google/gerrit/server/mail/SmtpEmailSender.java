@@ -700,9 +700,7 @@ name|rcpt
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -931,11 +929,7 @@ name|hdrs
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|EmailHeader
-argument_list|>
+argument_list|<>
 argument_list|(
 name|callerHeaders
 argument_list|)

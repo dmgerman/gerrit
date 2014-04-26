@@ -444,11 +444,7 @@ name|sectionsToReturn
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|SubmoduleSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sectionsToReturn
@@ -536,7 +532,6 @@ literal|"."
 argument_list|)
 argument_list|)
 expr_stmt|;
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -547,11 +542,7 @@ name|reposToBeFound
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|reposToBeFound
@@ -621,7 +612,6 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|SubmoduleSubscription
@@ -630,9 +620,7 @@ name|expectedSubscriptions
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SubmoduleSubscription
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|expectedSubscriptions
@@ -813,11 +801,7 @@ name|sectionsToReturn
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|SubmoduleSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sectionsToReturn
@@ -907,7 +891,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// "b" will not be in this list
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -918,11 +901,7 @@ name|reposToBeFound
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|reposToBeFound
@@ -983,7 +962,6 @@ argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|SubmoduleSubscription
@@ -992,9 +970,7 @@ name|expectedSubscriptions
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SubmoduleSubscription
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|expectedSubscriptions
@@ -1145,11 +1121,7 @@ name|sectionsToReturn
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|SubmoduleSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// The url is not to this server.
@@ -1228,11 +1200,7 @@ name|sectionsToReturn
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|SubmoduleSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sectionsToReturn
@@ -1310,11 +1278,7 @@ name|sectionsToReturn
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|SubmoduleSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|sectionsToReturn
@@ -1672,11 +1636,7 @@ name|andReturn
 argument_list|(
 operator|new
 name|TreeSet
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Collections
 operator|.
@@ -1709,11 +1669,7 @@ name|andReturn
 argument_list|(
 operator|new
 name|TreeSet
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Collections
 operator|.

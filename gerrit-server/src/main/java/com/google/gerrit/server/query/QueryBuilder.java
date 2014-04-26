@@ -451,16 +451,7 @@ name|opFactories
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|OperatorFactory
-argument_list|<
-name|T
-argument_list|,
-name|Q
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|Definition (Class<Q> clazz)
@@ -1106,9 +1097,7 @@ name|pat
 init|=
 operator|new
 name|WildPatternPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|op
 argument_list|)
@@ -1116,9 +1105,7 @@ decl_stmt|;
 return|return
 operator|new
 name|VariablePredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|var
 argument_list|,
@@ -1130,9 +1117,7 @@ block|}
 return|return
 operator|new
 name|VariablePredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|var
 argument_list|,
@@ -1202,12 +1187,7 @@ name|p
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Predicate
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 name|val
 operator|.

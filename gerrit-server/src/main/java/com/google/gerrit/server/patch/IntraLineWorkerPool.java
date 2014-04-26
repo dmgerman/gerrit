@@ -290,9 +290,7 @@ name|workerPool
 operator|=
 operator|new
 name|ArrayBlockingQueue
-argument_list|<
-name|Worker
-argument_list|>
+argument_list|<>
 argument_list|(
 name|workers
 argument_list|,
@@ -412,9 +410,7 @@ name|input
 operator|=
 operator|new
 name|ArrayBlockingQueue
-argument_list|<
-name|Input
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -423,9 +419,7 @@ name|result
 operator|=
 operator|new
 name|ArrayBlockingQueue
-argument_list|<
-name|Result
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)

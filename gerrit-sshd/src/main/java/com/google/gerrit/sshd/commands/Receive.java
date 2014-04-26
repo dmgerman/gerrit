@@ -570,11 +570,7 @@ name|reviewerId
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|ccId
@@ -590,11 +586,7 @@ name|ccId
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -1233,9 +1225,7 @@ name|hidden
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Ref
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

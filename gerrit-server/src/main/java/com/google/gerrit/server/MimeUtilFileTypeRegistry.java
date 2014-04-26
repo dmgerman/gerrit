@@ -482,9 +482,7 @@ name|mimeTypes
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|MimeType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -586,9 +584,7 @@ name|types
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|MimeType
-argument_list|>
+argument_list|<>
 argument_list|(
 name|mimeTypes
 argument_list|)

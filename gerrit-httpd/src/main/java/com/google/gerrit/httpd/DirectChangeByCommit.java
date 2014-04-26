@@ -452,11 +452,7 @@ name|ids
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try

@@ -929,7 +929,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|List
 argument_list|<
 name|AccountProjectWatchInfo
@@ -938,9 +937,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountProjectWatchInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

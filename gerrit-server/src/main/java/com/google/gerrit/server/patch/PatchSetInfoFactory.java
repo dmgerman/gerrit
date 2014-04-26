@@ -888,11 +888,7 @@ name|pInfos
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchSetInfo
-operator|.
-name|ParentInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|parents
 operator|.

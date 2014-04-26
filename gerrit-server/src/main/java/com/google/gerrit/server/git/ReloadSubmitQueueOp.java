@@ -286,11 +286,7 @@ name|pending
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Branch
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try

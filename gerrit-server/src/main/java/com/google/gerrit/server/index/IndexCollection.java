@@ -236,9 +236,7 @@ name|searchIndex
 operator|=
 operator|new
 name|AtomicReference
-argument_list|<
-name|ChangeIndex
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

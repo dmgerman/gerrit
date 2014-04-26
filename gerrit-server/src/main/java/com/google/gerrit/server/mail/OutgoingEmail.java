@@ -467,11 +467,7 @@ name|rcptTo
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|headers
@@ -550,11 +546,7 @@ name|headers
 operator|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|EmailHeader
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

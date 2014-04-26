@@ -605,9 +605,7 @@ name|util
 operator|=
 operator|new
 name|TestRepository
-argument_list|<
-name|Repository
-argument_list|>
+argument_list|<>
 argument_list|(
 name|db
 argument_list|)

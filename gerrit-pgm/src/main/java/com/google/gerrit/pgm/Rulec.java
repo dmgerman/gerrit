@@ -355,9 +355,7 @@ name|projectNames
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|dbInjector
@@ -463,11 +461,7 @@ name|names
 init|=
 operator|new
 name|LinkedHashSet
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

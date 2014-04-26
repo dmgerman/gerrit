@@ -549,14 +549,7 @@ name|effective
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|PermissionRule
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1772,9 +1765,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PermissionRange
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2894,9 +2885,7 @@ name|mine
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PermissionRule
-argument_list|>
+argument_list|<>
 argument_list|(
 name|rules
 operator|.

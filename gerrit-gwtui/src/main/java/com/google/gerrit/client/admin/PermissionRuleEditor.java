@@ -846,11 +846,7 @@ name|action
 operator|=
 operator|new
 name|ValueListBox
-argument_list|<
-name|PermissionRule
-operator|.
-name|Action
-argument_list|>
+argument_list|<>
 argument_list|(
 name|actionRenderer
 argument_list|)

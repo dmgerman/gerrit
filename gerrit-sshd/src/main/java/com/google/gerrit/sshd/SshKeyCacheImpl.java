@@ -891,9 +891,7 @@ name|kl
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SshKeyCacheEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)

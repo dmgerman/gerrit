@@ -1719,11 +1719,7 @@ name|ownerIds
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|(
 name|projectOwnerGroups
 argument_list|)
@@ -1737,9 +1733,7 @@ name|transformedBranches
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if

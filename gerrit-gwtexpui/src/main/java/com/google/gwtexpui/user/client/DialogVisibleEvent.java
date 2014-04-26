@@ -141,9 +141,7 @@ name|TYPE
 operator|=
 operator|new
 name|Type
-argument_list|<
-name|DialogVisibleHandler
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

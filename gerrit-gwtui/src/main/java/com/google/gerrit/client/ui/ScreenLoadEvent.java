@@ -129,9 +129,7 @@ name|TYPE
 init|=
 operator|new
 name|Type
-argument_list|<
-name|ScreenLoadHandler
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@

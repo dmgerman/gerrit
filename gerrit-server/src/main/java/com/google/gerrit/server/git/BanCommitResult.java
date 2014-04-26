@@ -117,9 +117,7 @@ name|newlyBannedCommits
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|ObjectId
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|alreadyBannedCommits
@@ -133,9 +131,7 @@ name|alreadyBannedCommits
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|ObjectId
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|ignoredObjectIds
@@ -149,9 +145,7 @@ name|ignoredObjectIds
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|ObjectId
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|BanCommitResult ()

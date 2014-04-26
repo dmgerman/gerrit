@@ -169,11 +169,7 @@ operator|new
 name|FakeQueryBuilder
 operator|.
 name|Definition
-argument_list|<
-name|ChangeData
-argument_list|,
-name|FakeQueryBuilder
-argument_list|>
+argument_list|<>
 argument_list|(
 name|FakeQueryBuilder
 operator|.

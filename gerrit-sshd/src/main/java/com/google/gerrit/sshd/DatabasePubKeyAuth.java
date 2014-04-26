@@ -600,9 +600,7 @@ name|keys
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|PublicKey
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|2
 argument_list|)
@@ -1210,9 +1208,7 @@ name|keys
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|PublicKey
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String

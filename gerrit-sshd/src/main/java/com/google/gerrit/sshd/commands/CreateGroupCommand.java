@@ -463,11 +463,7 @@ name|initialMembers
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -539,11 +535,7 @@ name|initialGroups
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@

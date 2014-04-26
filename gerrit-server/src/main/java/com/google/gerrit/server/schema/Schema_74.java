@@ -333,15 +333,7 @@ name|allGroups
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|AccountGroup
-operator|.
-name|Id
-argument_list|,
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -396,9 +388,7 @@ name|newIncludes
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupById
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|ArrayList
@@ -409,9 +399,7 @@ name|newIncludeAudits
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupByIdAud
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Iterate over all entries in account_group_includes

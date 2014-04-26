@@ -190,9 +190,7 @@ name|newRefs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Ref
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|lostRefs
@@ -205,9 +203,7 @@ name|lostRefs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LostRef
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|holder

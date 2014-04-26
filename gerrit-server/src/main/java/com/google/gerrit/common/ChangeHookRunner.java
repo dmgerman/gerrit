@@ -1276,11 +1276,7 @@ name|listeners
 init|=
 operator|new
 name|ConcurrentHashMap
-argument_list|<
-name|ChangeListener
-argument_list|,
-name|ChangeListenerHolder
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/** Listeners to receive all changes as they happen. */
@@ -2150,9 +2146,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -2351,9 +2345,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -2587,9 +2579,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -2892,9 +2882,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -3176,9 +3164,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -3377,9 +3363,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -3593,9 +3577,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -3809,9 +3791,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -4052,9 +4032,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -4225,9 +4203,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -4385,9 +4361,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -4504,9 +4478,7 @@ name|args
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addArg
@@ -5185,9 +5157,7 @@ name|task
 init|=
 operator|new
 name|FutureTask
-argument_list|<
-name|HookResult
-argument_list|>
+argument_list|<>
 argument_list|(
 name|syncHook
 argument_list|)
@@ -5473,9 +5443,7 @@ name|argv
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 operator|+

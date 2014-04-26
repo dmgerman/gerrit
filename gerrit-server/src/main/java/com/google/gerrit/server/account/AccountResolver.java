@@ -993,11 +993,7 @@ name|result
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String

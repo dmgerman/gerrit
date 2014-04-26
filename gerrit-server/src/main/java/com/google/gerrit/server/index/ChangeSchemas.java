@@ -1047,9 +1047,7 @@ block|{
 return|return
 operator|new
 name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|true
 argument_list|,
@@ -1119,9 +1117,7 @@ block|{
 return|return
 operator|new
 name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|false
 argument_list|,

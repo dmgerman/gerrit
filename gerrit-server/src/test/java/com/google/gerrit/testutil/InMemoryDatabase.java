@@ -513,9 +513,7 @@ name|database
 operator|=
 operator|new
 name|Database
-argument_list|<
-name|ReviewDb
-argument_list|>
+argument_list|<>
 argument_list|(
 name|dataSource
 argument_list|,

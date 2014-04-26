@@ -357,12 +357,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)
@@ -452,12 +447,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)

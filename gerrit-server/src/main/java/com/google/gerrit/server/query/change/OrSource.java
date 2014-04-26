@@ -188,6 +188,26 @@ name|HashSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 DECL|class|OrSource
 specifier|public
@@ -246,7 +266,7 @@ name|OrmException
 block|{
 comment|// TODO(spearce) This probably should be more lazy.
 comment|//
-name|ArrayList
+name|List
 argument_list|<
 name|ChangeData
 argument_list|>
@@ -254,12 +274,10 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|Change
 operator|.
@@ -269,11 +287,7 @@ name|have
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -350,9 +364,7 @@ block|}
 return|return
 operator|new
 name|ListResultSet
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|(
 name|r
 argument_list|)

@@ -2307,9 +2307,7 @@ name|localDb
 init|=
 operator|new
 name|ThreadLocal
-argument_list|<
-name|ReviewDb
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|bind

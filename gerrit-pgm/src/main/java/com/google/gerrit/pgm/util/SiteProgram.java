@@ -751,9 +751,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Module

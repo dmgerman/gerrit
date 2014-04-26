@@ -228,11 +228,7 @@ name|map
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|KeyCommand
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|name
@@ -450,9 +446,7 @@ name|sets
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|KeyCommandSet
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

@@ -202,9 +202,7 @@ name|m
 init|=
 operator|new
 name|PrivateInternals_DynamicMapImpl
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List

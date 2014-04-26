@@ -3624,11 +3624,7 @@ name|labels
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|LabelInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|labelTypes
 operator|.
@@ -4473,11 +4469,7 @@ name|labels
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|LabelInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|labelTypes
 operator|.

@@ -1549,9 +1549,7 @@ name|history
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Patch
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|comments
@@ -1577,13 +1575,7 @@ name|byKey
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Patch
-operator|.
-name|Key
-argument_list|,
-name|Patch
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final

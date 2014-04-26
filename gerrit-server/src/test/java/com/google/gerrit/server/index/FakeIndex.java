@@ -193,9 +193,7 @@ name|V1
 init|=
 operator|new
 name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|,
@@ -229,9 +227,7 @@ name|V2
 init|=
 operator|new
 name|Schema
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|2
 argument_list|,

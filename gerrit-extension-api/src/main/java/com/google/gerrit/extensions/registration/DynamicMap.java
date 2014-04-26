@@ -376,9 +376,7 @@ name|toProvider
 argument_list|(
 operator|new
 name|DynamicMapProvider
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|member
 argument_list|)
@@ -413,14 +411,7 @@ name|items
 operator|=
 operator|new
 name|ConcurrentHashMap
-argument_list|<
-name|NamePair
-argument_list|,
-name|Provider
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|16
 comment|/* initial size */
@@ -498,9 +489,7 @@ name|r
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -564,14 +553,7 @@ name|r
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|Provider
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

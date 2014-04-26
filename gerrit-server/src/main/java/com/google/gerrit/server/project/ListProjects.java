@@ -1604,9 +1604,7 @@ name|rejected
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1622,13 +1620,7 @@ name|treeMap
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|,
-name|ProjectNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try
@@ -2799,9 +2791,7 @@ name|sortedNodes
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ProjectNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Builds the inheritance tree using a list.

@@ -948,9 +948,7 @@ name|onStart
 operator|=
 operator|new
 name|CopyOnWriteArrayList
-argument_list|<
-name|StartPluginListener
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|onStart
@@ -971,9 +969,7 @@ name|onReload
 operator|=
 operator|new
 name|CopyOnWriteArrayList
-argument_list|<
-name|ReloadPluginListener
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|onReload

@@ -806,11 +806,7 @@ name|readOnlyAccountFields
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|FieldName
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 if|if
@@ -1350,11 +1346,7 @@ name|values
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

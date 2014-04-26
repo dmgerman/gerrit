@@ -1327,13 +1327,7 @@ name|all
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|,
-name|ProjectState
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|repoManager

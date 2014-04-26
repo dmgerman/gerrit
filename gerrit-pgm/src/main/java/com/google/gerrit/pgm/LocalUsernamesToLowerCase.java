@@ -471,9 +471,7 @@ name|workers
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Worker
-argument_list|>
+argument_list|<>
 argument_list|(
 name|threads
 argument_list|)

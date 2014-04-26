@@ -1405,11 +1405,7 @@ name|refControls
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|RefControl
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1999,9 +1995,7 @@ name|all
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|GroupReference
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2764,9 +2758,7 @@ name|all
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

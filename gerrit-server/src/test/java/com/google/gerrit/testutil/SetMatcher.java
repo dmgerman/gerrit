@@ -149,9 +149,7 @@ name|reportMatcher
 argument_list|(
 operator|new
 name|SetMatcher
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|expected
 argument_list|)

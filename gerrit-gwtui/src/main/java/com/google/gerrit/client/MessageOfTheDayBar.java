@@ -595,11 +595,7 @@ name|show
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|HostPageData
-operator|.
-name|Message
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

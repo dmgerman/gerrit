@@ -230,9 +230,7 @@ block|{
 return|return
 operator|new
 name|Database
-argument_list|<
-name|ReviewDb
-argument_list|>
+argument_list|<>
 argument_list|(
 name|datasource
 argument_list|,

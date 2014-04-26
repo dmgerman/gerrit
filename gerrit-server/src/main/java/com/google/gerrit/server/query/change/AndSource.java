@@ -518,7 +518,7 @@ argument_list|>
 name|that
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|Predicate
 argument_list|<
@@ -529,12 +529,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 argument_list|)
@@ -1017,9 +1012,7 @@ block|}
 return|return
 operator|new
 name|ListResultSet
-argument_list|<
-name|ChangeData
-argument_list|>
+argument_list|<>
 argument_list|(
 name|r
 argument_list|)

@@ -1250,13 +1250,7 @@ name|visibleGroups
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

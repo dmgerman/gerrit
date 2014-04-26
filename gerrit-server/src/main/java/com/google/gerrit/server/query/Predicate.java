@@ -212,9 +212,7 @@ block|}
 return|return
 operator|new
 name|AndPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 argument_list|)
@@ -268,9 +266,7 @@ block|}
 return|return
 operator|new
 name|AndPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 argument_list|)
@@ -319,9 +315,7 @@ block|}
 return|return
 operator|new
 name|OrPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 argument_list|)
@@ -375,9 +369,7 @@ block|}
 return|return
 operator|new
 name|OrPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 argument_list|)
@@ -582,9 +574,7 @@ name|INSTANCE
 init|=
 operator|new
 name|Any
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|Any ()

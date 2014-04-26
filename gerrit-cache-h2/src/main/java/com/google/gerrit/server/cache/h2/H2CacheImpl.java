@@ -745,9 +745,7 @@ name|h
 init|=
 operator|new
 name|ValueHolder
-argument_list|<
-name|V
-argument_list|>
+argument_list|<>
 argument_list|(
 name|val
 argument_list|)
@@ -1394,9 +1392,7 @@ name|h
 init|=
 operator|new
 name|ValueHolder
-argument_list|<
-name|V
-argument_list|>
+argument_list|<>
 argument_list|(
 name|loader
 operator|.
@@ -1688,9 +1684,7 @@ name|OTHER
 init|=
 operator|new
 name|KeyType
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|STRING
@@ -1949,9 +1943,7 @@ name|handles
 operator|=
 operator|new
 name|ArrayBlockingQueue
-argument_list|<
-name|SqlHandle
-argument_list|>
+argument_list|<>
 argument_list|(
 name|keep
 argument_list|)
@@ -2407,9 +2399,7 @@ name|h
 init|=
 operator|new
 name|ValueHolder
-argument_list|<
-name|V
-argument_list|>
+argument_list|<>
 argument_list|(
 name|val
 argument_list|)

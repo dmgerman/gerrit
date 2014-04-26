@@ -530,9 +530,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SshHostKey
-argument_list|>
+argument_list|<>
 argument_list|(
 name|hostKeys
 operator|.

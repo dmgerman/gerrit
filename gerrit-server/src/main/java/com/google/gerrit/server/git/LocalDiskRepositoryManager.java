@@ -1527,11 +1527,7 @@ name|n
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|(
 name|names
 argument_list|)
@@ -2221,11 +2217,7 @@ name|n
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|scanProjects

@@ -298,9 +298,7 @@ block|}
 return|return
 operator|new
 name|VariablePredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|getName
 argument_list|()

@@ -462,9 +462,7 @@ name|currentCall
 init|=
 operator|new
 name|ThreadLocal
-argument_list|<
-name|GerritCall
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|currentMethod
@@ -479,9 +477,7 @@ name|currentMethod
 init|=
 operator|new
 name|ThreadLocal
-argument_list|<
-name|MethodHandle
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|session

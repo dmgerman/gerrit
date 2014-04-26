@@ -572,9 +572,7 @@ name|trailingEdits
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|String
@@ -1770,9 +1768,7 @@ name|edits
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Edit
-argument_list|>
+argument_list|<>
 argument_list|(
 name|this
 operator|.

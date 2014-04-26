@@ -285,11 +285,7 @@ name|nameKeys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|(
 name|pList
 operator|.
@@ -341,9 +337,7 @@ name|projects
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|Project
-argument_list|>
+argument_list|<>
 argument_list|(
 operator|new
 name|Comparator
@@ -493,9 +487,7 @@ expr_stmt|;
 return|return
 operator|new
 name|ArrayList
-argument_list|<
-name|Project
-argument_list|>
+argument_list|<>
 argument_list|(
 name|projects
 argument_list|)

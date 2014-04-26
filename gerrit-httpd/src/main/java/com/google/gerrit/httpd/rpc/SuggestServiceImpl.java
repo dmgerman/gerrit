@@ -1117,7 +1117,6 @@ argument_list|,
 name|max
 argument_list|)
 decl_stmt|;
-specifier|final
 name|LinkedHashMap
 argument_list|<
 name|Account
@@ -1130,13 +1129,7 @@ name|r
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|,
-name|AccountInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1339,9 +1332,7 @@ block|}
 return|return
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|r
 operator|.
@@ -1895,9 +1886,7 @@ name|reviewer
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ReviewerInfo
-argument_list|>
+argument_list|<>
 argument_list|(
 name|suggestedAccounts
 operator|.

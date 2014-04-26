@@ -1055,9 +1055,7 @@ name|normalName
 operator|=
 operator|new
 name|ValueLabel
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|nameRenderer
 argument_list|)
@@ -1066,9 +1064,7 @@ name|deletedName
 operator|=
 operator|new
 name|ValueLabel
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|nameRenderer
 argument_list|)

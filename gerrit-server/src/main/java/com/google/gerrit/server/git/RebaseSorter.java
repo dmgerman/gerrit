@@ -280,9 +280,7 @@ name|sorted
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -294,9 +292,7 @@ name|sort
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
+argument_list|<>
 argument_list|(
 name|incoming
 argument_list|)
@@ -361,9 +357,7 @@ name|contents
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -429,9 +423,7 @@ name|missing
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

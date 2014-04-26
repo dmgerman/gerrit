@@ -367,11 +367,7 @@ name|labels
 operator|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|Short
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)

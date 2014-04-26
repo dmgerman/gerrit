@@ -1250,9 +1250,7 @@ name|m
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|m
@@ -1659,9 +1657,7 @@ name|pruneList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|schemaUpdater
@@ -1992,9 +1988,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|modules

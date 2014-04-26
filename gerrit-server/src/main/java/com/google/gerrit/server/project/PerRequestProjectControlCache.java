@@ -209,13 +209,7 @@ name|controls
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|,
-name|ProjectControl
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

@@ -1387,9 +1387,7 @@ block|{
 return|return
 operator|new
 name|ListResultSet
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Lists
 operator|.

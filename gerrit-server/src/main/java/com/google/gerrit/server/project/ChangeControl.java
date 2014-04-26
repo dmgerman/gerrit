@@ -2846,9 +2846,7 @@ name|out
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SubmitRecord
-argument_list|>
+argument_list|<>
 argument_list|(
 name|results
 operator|.
@@ -3021,11 +3019,7 @@ name|labels
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SubmitRecord
-operator|.
-name|Label
-argument_list|>
+argument_list|<>
 argument_list|(
 name|submitRecord
 operator|.

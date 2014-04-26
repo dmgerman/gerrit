@@ -340,9 +340,7 @@ name|NAMES_LC
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|NAMES_LC
@@ -1296,9 +1294,7 @@ name|rules
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PermissionRule
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)

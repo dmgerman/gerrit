@@ -1140,11 +1140,7 @@ name|internalGroups
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

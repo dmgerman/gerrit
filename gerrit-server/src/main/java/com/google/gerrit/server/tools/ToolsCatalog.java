@@ -407,11 +407,7 @@ name|toc
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|Entry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -511,9 +507,7 @@ name|all
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Entry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|toc
 operator|.
@@ -1008,9 +1002,7 @@ name|children
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Entry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1052,9 +1044,7 @@ name|children
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Entry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

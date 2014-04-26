@@ -875,9 +875,7 @@ name|local
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccessSection
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Set
@@ -888,9 +886,7 @@ name|ownerOf
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Map

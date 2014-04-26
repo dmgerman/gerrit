@@ -944,9 +944,7 @@ name|edits
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Edit
-argument_list|>
+argument_list|<>
 argument_list|(
 name|content
 operator|.
@@ -1046,9 +1044,7 @@ name|edits
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Edit
-argument_list|>
+argument_list|<>
 argument_list|(
 name|d
 operator|.
@@ -1193,9 +1189,7 @@ name|edits
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Edit
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -1545,9 +1539,7 @@ name|empty
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Edit
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|int

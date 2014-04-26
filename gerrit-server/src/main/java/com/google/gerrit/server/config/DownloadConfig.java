@@ -273,9 +273,7 @@ name|unmodifiableSet
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|DownloadScheme
-argument_list|>
+argument_list|<>
 argument_list|(
 name|allSchemes
 argument_list|)
@@ -312,9 +310,7 @@ name|unmodifiableSet
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|DownloadCommand
-argument_list|>
+argument_list|<>
 argument_list|(
 name|allCommands
 argument_list|)

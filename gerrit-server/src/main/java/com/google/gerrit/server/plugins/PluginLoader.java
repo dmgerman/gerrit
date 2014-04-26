@@ -1210,7 +1210,7 @@ return|;
 block|}
 else|else
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|Plugin
 argument_list|>
@@ -1218,9 +1218,7 @@ name|plugins
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Plugin
-argument_list|>
+argument_list|<>
 argument_list|(
 name|running
 operator|.

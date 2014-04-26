@@ -822,7 +822,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|List
 argument_list|<
 name|AccountGroupMember
@@ -831,12 +830,9 @@ name|memberships
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupMember
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|AccountGroupMemberAudit
@@ -845,9 +841,7 @@ name|membershipsAudit
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupMemberAudit
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -977,7 +971,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|List
 argument_list|<
 name|AccountGroupById
@@ -986,12 +979,9 @@ name|includeList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupById
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|AccountGroupByIdAud
@@ -1000,9 +990,7 @@ name|includesAudit
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountGroupByIdAud
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

@@ -1023,9 +1023,7 @@ name|approvalButtons
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ValueRadioButton
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|descBlock
@@ -2036,9 +2034,7 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|nativeValues
 operator|.
@@ -2484,9 +2480,7 @@ name|commentEditors
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CommentEditorPanel
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 if|if
@@ -3153,9 +3147,7 @@ name|d
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchLineComment
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List
@@ -3166,9 +3158,7 @@ name|paths
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|drafts
 operator|.
@@ -3436,11 +3426,7 @@ name|approvals
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for

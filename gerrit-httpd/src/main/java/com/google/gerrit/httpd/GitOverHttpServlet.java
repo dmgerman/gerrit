@@ -2369,9 +2369,7 @@ name|unmodifiableSet
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|ObjectId
-argument_list|>
+argument_list|<>
 argument_list|(
 name|rp
 operator|.

@@ -122,9 +122,7 @@ block|{
 return|return
 operator|new
 name|StoredValue
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|()
 return|;
 block|}
@@ -151,9 +149,7 @@ block|{
 return|return
 operator|new
 name|StoredValue
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|clazz
 argument_list|)

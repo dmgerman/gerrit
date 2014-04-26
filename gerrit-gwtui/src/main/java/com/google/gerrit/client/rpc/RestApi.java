@@ -1806,9 +1806,7 @@ name|httpCallback
 init|=
 operator|new
 name|HttpCallback
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|background
 argument_list|,
@@ -2037,9 +2035,7 @@ name|httpCallback
 init|=
 operator|new
 name|HttpCallback
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|background
 argument_list|,
@@ -2152,9 +2148,7 @@ name|httpCallback
 init|=
 operator|new
 name|HttpCallback
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|background
 argument_list|,

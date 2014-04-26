@@ -1677,9 +1677,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -2021,9 +2019,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -2155,9 +2151,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|modules
@@ -2437,9 +2431,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|modules
@@ -2500,9 +2492,7 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|modules

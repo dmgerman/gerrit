@@ -468,13 +468,7 @@ name|newCommits
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|,
-name|CodeReviewCommit
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|this

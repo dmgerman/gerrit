@@ -638,11 +638,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Ref
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -654,9 +650,7 @@ name|deferredTags
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Ref
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1047,11 +1041,7 @@ name|visibleChanges
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

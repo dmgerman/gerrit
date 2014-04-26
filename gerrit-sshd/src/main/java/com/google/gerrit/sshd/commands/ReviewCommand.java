@@ -767,9 +767,7 @@ name|patchSets
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|PatchSet
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -1965,9 +1963,7 @@ name|matches
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|PatchSet
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2345,9 +2341,7 @@ name|optionList
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ApproveOption
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|customLabels

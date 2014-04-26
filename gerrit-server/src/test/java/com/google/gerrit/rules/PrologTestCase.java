@@ -460,9 +460,7 @@ name|moduleList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Module
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|moduleList
@@ -581,9 +579,7 @@ name|tests
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Term
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for

@@ -921,13 +921,7 @@ name|patchMap
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Patch
-operator|.
-name|Key
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -1169,9 +1163,7 @@ name|clickHandlers
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ClickHandler
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|2
 argument_list|)

@@ -132,11 +132,7 @@ name|TAGS
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Tag
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|TAGS
@@ -200,9 +196,7 @@ name|names
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|values
@@ -216,9 +210,7 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|tag

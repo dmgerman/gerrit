@@ -524,13 +524,7 @@ name|newCommits
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|,
-name|CodeReviewCommit
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1461,9 +1455,7 @@ name|toInsert
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchSetAncestor
-argument_list|>
+argument_list|<>
 argument_list|(
 name|cnt
 argument_list|)

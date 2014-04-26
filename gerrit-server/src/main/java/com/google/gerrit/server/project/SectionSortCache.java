@@ -493,11 +493,7 @@ name|srcMap
 init|=
 operator|new
 name|IdentityHashMap
-argument_list|<
-name|AccessSection
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

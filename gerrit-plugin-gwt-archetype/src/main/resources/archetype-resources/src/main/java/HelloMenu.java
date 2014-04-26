@@ -170,11 +170,7 @@ name|menuEntries
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|TopMenu
-operator|.
-name|MenuEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|menuEntries

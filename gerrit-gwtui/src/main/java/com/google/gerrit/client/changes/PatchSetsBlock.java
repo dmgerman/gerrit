@@ -427,13 +427,7 @@ name|patchSetPanels
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|PatchSet
-operator|.
-name|Id
-argument_list|,
-name|PatchSetComplexDisclosurePanel
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|body
@@ -580,9 +574,7 @@ name|patchSetPanelsList
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PatchSetComplexDisclosurePanel
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for

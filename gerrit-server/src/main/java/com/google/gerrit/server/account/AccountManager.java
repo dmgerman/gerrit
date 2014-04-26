@@ -1359,9 +1359,7 @@ name|openId
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountExternalId
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1373,9 +1371,7 @@ name|v1
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|AccountExternalId
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

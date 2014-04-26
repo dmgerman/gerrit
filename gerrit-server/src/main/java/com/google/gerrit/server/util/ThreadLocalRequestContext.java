@@ -428,9 +428,7 @@ name|local
 init|=
 operator|new
 name|ThreadLocal
-argument_list|<
-name|RequestContext
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@

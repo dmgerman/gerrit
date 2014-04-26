@@ -1515,11 +1515,7 @@ decl_stmt|;
 return|return
 operator|new
 name|SqlStore
-argument_list|<
-name|K
-argument_list|,
-name|V
-argument_list|>
+argument_list|<>
 argument_list|(
 name|url
 argument_list|,

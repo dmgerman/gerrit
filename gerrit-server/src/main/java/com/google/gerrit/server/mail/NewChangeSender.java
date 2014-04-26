@@ -190,11 +190,7 @@ name|reviewers
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|extraCC
@@ -210,11 +206,7 @@ name|extraCC
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Account
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|NewChangeSender (EmailArguments ea, Change c)
@@ -381,9 +373,7 @@ name|names
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

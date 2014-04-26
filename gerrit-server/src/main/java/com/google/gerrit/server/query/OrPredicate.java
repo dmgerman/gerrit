@@ -209,8 +209,7 @@ argument_list|>
 name|that
 parameter_list|)
 block|{
-specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|Predicate
 argument_list|<
@@ -221,12 +220,7 @@ name|t
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Predicate
-argument_list|<
-name|T
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 operator|.
@@ -409,9 +403,7 @@ block|{
 return|return
 operator|new
 name|OrPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|children
 argument_list|)

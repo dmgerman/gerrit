@@ -505,11 +505,7 @@ name|retryOn
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Project
-operator|.
-name|NameKey
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

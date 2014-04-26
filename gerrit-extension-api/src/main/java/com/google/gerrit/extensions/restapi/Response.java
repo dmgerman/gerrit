@@ -118,9 +118,7 @@ block|{
 return|return
 operator|new
 name|Impl
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|200
 argument_list|,
@@ -148,9 +146,7 @@ block|{
 return|return
 operator|new
 name|Impl
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|201
 argument_list|,

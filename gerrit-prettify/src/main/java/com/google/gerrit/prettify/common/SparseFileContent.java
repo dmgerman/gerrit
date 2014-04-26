@@ -144,9 +144,7 @@ name|ranges
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Range
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1047,9 +1045,7 @@ name|lines
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|size
 argument_list|)
@@ -1341,9 +1337,7 @@ name|lines
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

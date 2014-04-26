@@ -978,7 +978,6 @@ argument_list|>
 name|combinedSetsByName
 parameter_list|()
 block|{
-specifier|final
 name|LinkedHashMap
 argument_list|<
 name|String
@@ -989,11 +988,7 @@ name|byName
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|KeyCommandSet
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1268,11 +1263,7 @@ name|rows
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|KeyCommand
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|FORMAT_KEYS
@@ -1785,9 +1776,7 @@ name|keys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|KeyCommand
-argument_list|>
+argument_list|<>
 argument_list|(
 name|set
 operator|.

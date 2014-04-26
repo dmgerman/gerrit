@@ -1004,9 +1004,7 @@ name|diagnostics
 init|=
 operator|new
 name|DiagnosticCollector
-argument_list|<
-name|JavaFileObject
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StandardJavaFileManager
@@ -1053,9 +1051,7 @@ name|options
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -1781,9 +1777,7 @@ name|fileList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|getAllFiles
@@ -1892,9 +1886,7 @@ name|pathList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|getRelativePaths

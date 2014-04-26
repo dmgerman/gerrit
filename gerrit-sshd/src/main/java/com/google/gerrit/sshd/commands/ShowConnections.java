@@ -688,9 +688,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|IoSession
-argument_list|>
+argument_list|<>
 argument_list|(
 name|acceptor
 operator|.

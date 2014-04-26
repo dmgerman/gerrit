@@ -419,9 +419,7 @@ name|queue
 init|=
 operator|new
 name|LinkedBlockingQueue
-argument_list|<
-name|ChangeEvent
-argument_list|>
+argument_list|<>
 argument_list|(
 name|MAX_EVENTS
 argument_list|)

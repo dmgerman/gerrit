@@ -565,9 +565,7 @@ name|sections
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Section
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|table
@@ -2170,11 +2168,7 @@ name|cids
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if

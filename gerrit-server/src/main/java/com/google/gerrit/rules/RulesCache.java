@@ -682,11 +682,7 @@ name|machineCache
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|ObjectId
-argument_list|,
-name|MachineRef
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|dead
@@ -700,9 +696,7 @@ name|dead
 init|=
 operator|new
 name|ReferenceQueue
-argument_list|<
-name|PrologMachineCopy
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|class|MachineRef

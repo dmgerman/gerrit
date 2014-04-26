@@ -161,9 +161,7 @@ name|KEY
 init|=
 operator|new
 name|AttributeKey
-argument_list|<
-name|SshSession
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|sessionId
