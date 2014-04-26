@@ -146,6 +146,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -610,6 +620,23 @@ condition|?
 name|real
 else|:
 name|mode
+return|;
+block|}
+DECL|method|getKnownMimeTypes ()
+specifier|public
+specifier|static
+name|Collection
+argument_list|<
+name|String
+argument_list|>
+name|getKnownMimeTypes
+parameter_list|()
+block|{
+return|return
+name|mimeModes
+operator|.
+name|keySet
+argument_list|()
 return|;
 block|}
 DECL|method|isModeLoaded (String n)
