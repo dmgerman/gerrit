@@ -220,6 +220,11 @@ name|RevisionInfo
 argument_list|>
 name|revisions
 decl_stmt|;
+DECL|field|_number
+specifier|public
+name|int
+name|_number
+decl_stmt|;
 block|}
 end_class
 

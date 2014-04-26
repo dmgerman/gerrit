@@ -387,6 +387,15 @@ operator|.
 name|updated
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|_number
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test

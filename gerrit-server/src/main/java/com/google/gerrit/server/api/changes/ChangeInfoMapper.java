@@ -759,6 +759,14 @@ name|i
 operator|.
 name|currentRevision
 expr_stmt|;
+name|o
+operator|.
+name|_number
+operator|=
+name|i
+operator|.
+name|_number
+expr_stmt|;
 block|}
 DECL|method|mapMessages (ChangeJson.ChangeInfo i, ChangeInfo o)
 specifier|private
