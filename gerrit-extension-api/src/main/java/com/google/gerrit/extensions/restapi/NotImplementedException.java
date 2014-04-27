@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.api.projects
+DECL|package|com.google.gerrit.extensions.restapi
 package|package
 name|com
 operator|.
@@ -62,90 +62,44 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
-operator|.
-name|projects
+name|restapi
 package|;
 end_package
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|NotImplementedException
-import|;
-end_import
+begin_comment
+comment|/** Method is not implemented in currently used implementation. */
+end_comment
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|RestApiException
-import|;
-end_import
-
-begin_interface
-DECL|interface|Projects
-specifier|public
-interface|interface
-name|Projects
-block|{
-DECL|method|name (String name)
-name|ProjectApi
-name|name
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
-DECL|class|NotImplemented
+begin_class
+DECL|class|NotImplementedException
 specifier|public
 class|class
-name|NotImplemented
-implements|implements
-name|Projects
-block|{
-annotation|@
-name|Override
-DECL|method|name (String name)
-specifier|public
-name|ProjectApi
-name|name
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
 name|NotImplementedException
-argument_list|()
-throw|;
+extends|extends
+name|UnsupportedOperationException
+block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+DECL|method|NotImplementedException ()
+specifier|public
+name|NotImplementedException
+parameter_list|()
+block|{
+name|super
+argument_list|(
+literal|"Not implemented."
+argument_list|)
+expr_stmt|;
 block|}
 block|}
-block|}
-end_interface
+end_class
 
 end_unit
 

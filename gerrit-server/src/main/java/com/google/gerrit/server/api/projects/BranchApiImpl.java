@@ -193,6 +193,10 @@ DECL|class|BranchApiImpl
 specifier|public
 class|class
 name|BranchApiImpl
+extends|extends
+name|BranchApi
+operator|.
+name|NotImplemented
 implements|implements
 name|BranchApi
 block|{
