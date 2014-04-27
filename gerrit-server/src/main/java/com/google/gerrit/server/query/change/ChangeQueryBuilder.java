@@ -1970,6 +1970,13 @@ name|equals
 argument_list|(
 name|statusName
 argument_list|)
+operator|||
+literal|"pending"
+operator|.
+name|equals
+argument_list|(
+name|statusName
+argument_list|)
 condition|)
 block|{
 return|return
