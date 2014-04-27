@@ -1710,7 +1710,7 @@ argument_list|)
 expr_stmt|;
 name|diffTable
 operator|.
-name|setUpPatchSetNav
+name|set
 argument_list|(
 name|list
 argument_list|,
@@ -1931,8 +1931,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|diffTable
-operator|.
-name|overview
 operator|.
 name|refresh
 argument_list|()
