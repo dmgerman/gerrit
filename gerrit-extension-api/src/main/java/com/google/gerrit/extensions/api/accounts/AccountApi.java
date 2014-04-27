@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.api
+DECL|package|com.google.gerrit.extensions.api.accounts
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|extensions
 operator|.
 name|api
+operator|.
+name|accounts
 package|;
 end_package
 
@@ -76,47 +78,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
+name|common
 operator|.
-name|accounts
-operator|.
-name|Accounts
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|changes
-operator|.
-name|Changes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|api
-operator|.
-name|projects
-operator|.
-name|Projects
+name|AccountInfo
 import|;
 end_import
 
@@ -136,29 +100,54 @@ name|NotImplementedException
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
 begin_interface
-DECL|interface|GerritApi
+DECL|interface|AccountApi
 specifier|public
 interface|interface
-name|GerritApi
+name|AccountApi
 block|{
-DECL|method|accounts ()
-specifier|public
-name|Accounts
-name|accounts
+DECL|method|get ()
+name|AccountInfo
+name|get
 parameter_list|()
+throws|throws
+name|RestApiException
 function_decl|;
-DECL|method|changes ()
-specifier|public
-name|Changes
-name|changes
-parameter_list|()
+DECL|method|starChange (String id)
+name|void
+name|starChange
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
 function_decl|;
-DECL|method|projects ()
-specifier|public
-name|Projects
-name|projects
-parameter_list|()
+DECL|method|unstarChange (String id)
+name|void
+name|unstarChange
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
 function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
@@ -166,29 +155,17 @@ specifier|public
 class|class
 name|NotImplemented
 implements|implements
-name|GerritApi
+name|AccountApi
 block|{
 annotation|@
 name|Override
-DECL|method|accounts ()
+DECL|method|get ()
 specifier|public
-name|Accounts
-name|accounts
+name|AccountInfo
+name|get
 parameter_list|()
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|changes ()
-specifier|public
-name|Changes
-name|changes
-parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -198,11 +175,35 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|projects ()
+DECL|method|starChange (String id)
 specifier|public
-name|Projects
-name|projects
-parameter_list|()
+name|void
+name|starChange
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|unstarChange (String id)
+specifier|public
+name|void
+name|unstarChange
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
