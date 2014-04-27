@@ -255,6 +255,11 @@ name|String
 name|expandAllCommentsOnCurrentLine
 parameter_list|()
 function_decl|;
+DECL|method|toggleSideA ()
+name|String
+name|toggleSideA
+parameter_list|()
+function_decl|;
 DECL|method|toggleIntraline ()
 name|String
 name|toggleIntraline
