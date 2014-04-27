@@ -80,6 +80,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|NotImplementedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestApiException
 import|;
 end_import
@@ -100,6 +116,34 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+DECL|class|NotImplemented
+specifier|public
+class|class
+name|NotImplemented
+implements|implements
+name|BranchApi
+block|{
+annotation|@
+name|Override
+DECL|method|create (BranchInput in)
+specifier|public
+name|BranchApi
+name|create
+parameter_list|(
+name|BranchInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+block|}
 block|}
 end_interface
 

@@ -102,6 +102,22 @@ name|Projects
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|NotImplementedException
+import|;
+end_import
+
 begin_interface
 DECL|interface|GerritApi
 specifier|public
@@ -120,6 +136,43 @@ name|Projects
 name|projects
 parameter_list|()
 function_decl|;
+comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
+DECL|class|NotImplemented
+specifier|public
+class|class
+name|NotImplemented
+implements|implements
+name|GerritApi
+block|{
+annotation|@
+name|Override
+DECL|method|changes ()
+specifier|public
+name|Changes
+name|changes
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|projects ()
+specifier|public
+name|Projects
+name|projects
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+block|}
 block|}
 end_interface
 

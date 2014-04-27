@@ -242,6 +242,10 @@ begin_class
 DECL|class|ChangesImpl
 class|class
 name|ChangesImpl
+extends|extends
+name|Changes
+operator|.
+name|NotImplemented
 implements|implements
 name|Changes
 block|{

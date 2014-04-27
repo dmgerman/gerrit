@@ -146,6 +146,10 @@ begin_class
 DECL|class|GerritApiImpl
 class|class
 name|GerritApiImpl
+extends|extends
+name|GerritApi
+operator|.
+name|NotImplemented
 implements|implements
 name|GerritApi
 block|{
