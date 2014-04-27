@@ -140,6 +140,22 @@ name|server
 operator|.
 name|plugins
 operator|.
+name|JarPluginProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|plugins
+operator|.
 name|PluginLoader
 import|;
 end_import
@@ -643,11 +659,12 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|getPluginInjector (File jarFile)
+DECL|method|getPluginInjector (final File jarFile)
 specifier|private
 name|Injector
 name|getPluginInjector
 parameter_list|(
+specifier|final
 name|File
 name|jarFile
 parameter_list|)
@@ -662,9 +679,9 @@ name|Objects
 operator|.
 name|firstNonNull
 argument_list|(
-name|PluginLoader
+name|JarPluginProvider
 operator|.
-name|getGerritJarPluginName
+name|getJarPluginName
 argument_list|(
 name|jarFile
 argument_list|)
