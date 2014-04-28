@@ -528,8 +528,6 @@ name|PatchLineComment
 argument_list|>
 name|plc
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|inlineComments
 operator|=
