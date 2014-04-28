@@ -1801,10 +1801,15 @@ operator|.
 name|getTime
 argument_list|()
 argument_list|,
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|jarEntry
 operator|.
 name|getSize
 argument_list|()
+argument_list|)
 argument_list|,
 name|attributesOf
 argument_list|(
