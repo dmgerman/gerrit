@@ -305,17 +305,6 @@ name|ImageResource
 name|warning
 parameter_list|()
 function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"dashboard.png"
-argument_list|)
-DECL|method|dashboard ()
-specifier|public
-name|ImageResource
-name|dashboard
-parameter_list|()
-function_decl|;
 block|}
 end_interface
 
