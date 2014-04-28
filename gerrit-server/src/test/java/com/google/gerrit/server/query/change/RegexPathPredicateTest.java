@@ -577,6 +577,8 @@ name|String
 modifier|...
 name|files
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|Arrays
 operator|.
