@@ -5289,6 +5289,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|req
+operator|==
+literal|null
+operator|||
 operator|!
 literal|"HEAD"
 operator|.
@@ -6689,7 +6693,7 @@ argument_list|)
 expr_stmt|;
 name|replyText
 argument_list|(
-literal|null
+name|req
 argument_list|,
 name|res
 argument_list|,
