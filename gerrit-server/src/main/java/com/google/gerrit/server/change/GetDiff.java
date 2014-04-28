@@ -913,6 +913,17 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|psf
+operator|.
+name|setLoadComments
+argument_list|(
+name|context
+operator|!=
+name|AccountDiffPreference
+operator|.
+name|WHOLE_FILE_CONTEXT
+argument_list|)
+expr_stmt|;
 name|PatchScript
 name|ps
 init|=
