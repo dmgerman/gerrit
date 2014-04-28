@@ -700,6 +700,13 @@ operator|.
 name|Id
 name|changeId
 decl_stmt|;
+DECL|field|loadHistory
+specifier|private
+name|boolean
+name|loadHistory
+init|=
+literal|true
+decl_stmt|;
 DECL|field|change
 specifier|private
 name|Change
@@ -877,6 +884,20 @@ name|patchSetB
 operator|.
 name|getParentKey
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|setLoadHistory (boolean load)
+specifier|public
+name|void
+name|setLoadHistory
+parameter_list|(
+name|boolean
+name|load
+parameter_list|)
+block|{
+name|loadHistory
+operator|=
+name|load
 expr_stmt|;
 block|}
 annotation|@
@@ -1545,13 +1566,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|history
-operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-expr_stmt|;
 name|comments
 operator|=
 operator|new
@@ -1587,11 +1601,23 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|loadHistory
+condition|)
+block|{
 comment|// This seems like a cheap trick. It doesn't properly account for a
 comment|// file that gets renamed between patch set 1 and patch set 2. We
 comment|// will wind up packing the wrong Patch object because we didn't do
 comment|// proper rename detection between the patch sets.
 comment|//
+name|history
+operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 specifier|final
@@ -1721,6 +1747,7 @@ argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 switch|switch
 condition|(
