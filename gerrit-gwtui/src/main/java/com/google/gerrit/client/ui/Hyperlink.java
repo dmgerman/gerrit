@@ -191,6 +191,7 @@ operator|.
 name|Hyperlink
 block|{
 DECL|field|impl
+specifier|public
 specifier|static
 specifier|final
 name|HyperlinkImpl
