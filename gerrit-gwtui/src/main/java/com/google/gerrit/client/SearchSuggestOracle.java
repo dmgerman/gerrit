@@ -660,6 +660,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"is:pending"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"is:draft"
 argument_list|)
 expr_stmt|;
@@ -710,6 +717,13 @@ operator|.
 name|add
 argument_list|(
 literal|"status:open"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
+literal|"status:pending"
 argument_list|)
 expr_stmt|;
 name|suggestions
