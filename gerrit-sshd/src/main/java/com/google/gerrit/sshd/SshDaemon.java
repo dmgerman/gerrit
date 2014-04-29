@@ -1644,11 +1644,6 @@ name|Config
 name|cfg
 decl_stmt|;
 annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
-annotation|@
 name|Inject
 DECL|method|SshDaemon (final CommandFactory commandFactory, final NoShell noShell, final PublickeyAuthenticator userAuth, final GerritGSSAuthenticator kerberosAuth, final KeyPairProvider hostKeyProvider, final IdGenerator idGenerator, @GerritServerConfig final Config cfg, final SshLog sshLog, @SshListenAddresses final List<SocketAddress> listen, @SshAdvertisedAddresses final List<String> advertised)
 name|SshDaemon
