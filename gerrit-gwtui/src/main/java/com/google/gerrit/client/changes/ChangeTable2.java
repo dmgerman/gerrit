@@ -1955,11 +1955,6 @@ name|c
 operator|.
 name|project_name_key
 argument_list|()
-argument_list|,
-name|c
-operator|.
-name|status
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
