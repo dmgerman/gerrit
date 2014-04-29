@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -113,6 +127,22 @@ operator|.
 name|client
 operator|.
 name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -183,6 +213,18 @@ name|String
 name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
+function_decl|;
+DECL|method|web_links ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|web_links
+parameter_list|()
+comment|/*-{ return this.web_links; }-*/
 function_decl|;
 DECL|method|state ()
 specifier|public
