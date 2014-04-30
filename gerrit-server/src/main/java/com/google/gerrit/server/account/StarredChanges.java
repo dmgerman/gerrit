@@ -468,6 +468,7 @@ end_import
 
 begin_class
 DECL|class|StarredChanges
+specifier|public
 class|class
 name|StarredChanges
 implements|implements
@@ -867,6 +868,7 @@ throw|;
 block|}
 block|}
 DECL|class|Create
+specifier|public
 specifier|static
 class|class
 name|Create
@@ -933,6 +935,7 @@ name|dbProvider
 expr_stmt|;
 block|}
 DECL|method|setChange (ChangeResource change)
+specifier|public
 name|Create
 name|setChange
 parameter_list|(
@@ -1151,6 +1154,7 @@ return|;
 block|}
 block|}
 DECL|class|Delete
+specifier|public
 specifier|static
 class|class
 name|Delete
@@ -1308,6 +1312,7 @@ return|;
 block|}
 block|}
 DECL|class|EmptyInput
+specifier|public
 specifier|static
 class|class
 name|EmptyInput
