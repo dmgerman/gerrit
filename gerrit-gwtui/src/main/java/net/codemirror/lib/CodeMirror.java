@@ -269,6 +269,18 @@ name|val
 parameter_list|)
 comment|/*-{     this.setOption(option, val);   }-*/
 function_decl|;
+DECL|method|getStringOption (String o)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|getStringOption
+parameter_list|(
+name|String
+name|o
+parameter_list|)
+comment|/*-{ return this.getOption(o) }-*/
+function_decl|;
 DECL|method|setValue (String v)
 specifier|public
 specifier|final
