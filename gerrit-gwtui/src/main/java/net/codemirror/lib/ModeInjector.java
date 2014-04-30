@@ -340,6 +340,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|gerrit_commit
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|gfm
 argument_list|()
 block|,

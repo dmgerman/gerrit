@@ -298,6 +298,18 @@ name|DataResource
 name|gas
 parameter_list|()
 function_decl|;
+DECL|method|gerrit_commit ()
+annotation|@
+name|Source
+argument_list|(
+literal|"gerrit/commit.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|gerrit_commit
+parameter_list|()
+function_decl|;
 DECL|method|gfm ()
 annotation|@
 name|Source
