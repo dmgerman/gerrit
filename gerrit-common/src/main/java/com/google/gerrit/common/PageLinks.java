@@ -362,6 +362,15 @@ name|ADMIN_PLUGINS
 init|=
 literal|"/admin/plugins/"
 decl_stmt|;
+DECL|field|MY_GROUPS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MY_GROUPS
+init|=
+literal|"/groups/self"
+decl_stmt|;
 DECL|method|toChange (final ChangeInfo c)
 specifier|public
 specifier|static
