@@ -128,6 +128,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|PluginData
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|pgm
 operator|.
 name|init
@@ -149,24 +163,6 @@ operator|.
 name|init
 operator|.
 name|InitPlugins
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|pgm
-operator|.
-name|init
-operator|.
-name|InitPlugins
-operator|.
-name|PluginData
 import|;
 end_import
 
@@ -352,7 +348,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|ArrayList
 import|;
 end_import
 
@@ -362,7 +358,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
