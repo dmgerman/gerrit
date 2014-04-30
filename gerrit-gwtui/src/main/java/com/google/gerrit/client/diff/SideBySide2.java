@@ -1539,6 +1539,13 @@ name|diff
 operator|=
 name|diffInfo
 expr_stmt|;
+name|fileSize
+operator|=
+name|bucketFileSize
+argument_list|(
+name|diffInfo
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|prefs
@@ -1547,13 +1554,6 @@ name|syntaxHighlighting
 argument_list|()
 condition|)
 block|{
-name|fileSize
-operator|=
-name|bucketFileSize
-argument_list|(
-name|diffInfo
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|fileSize
