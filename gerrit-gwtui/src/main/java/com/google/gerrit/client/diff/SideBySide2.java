@@ -1188,6 +1188,11 @@ specifier|private
 name|HandlerRegistration
 name|resizeHandler
 decl_stmt|;
+DECL|field|scrollSynchronizer
+specifier|private
+name|ScrollSynchronizer
+name|scrollSynchronizer
+decl_stmt|;
 DECL|field|diff
 specifier|private
 name|DiffInfo
@@ -3973,6 +3978,8 @@ argument_list|(
 name|cmB
 argument_list|)
 expr_stmt|;
+name|scrollSynchronizer
+operator|=
 operator|new
 name|ScrollSynchronizer
 argument_list|(
@@ -5781,6 +5788,22 @@ argument_list|()
 operator|-
 name|rest
 return|;
+block|}
+DECL|method|syncScroll (DisplaySide masterSide)
+name|void
+name|syncScroll
+parameter_list|(
+name|DisplaySide
+name|masterSide
+parameter_list|)
+block|{
+name|scrollSynchronizer
+operator|.
+name|syncScroll
+argument_list|(
+name|masterSide
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getContentType (DiffInfo.FileMeta meta)
 specifier|private

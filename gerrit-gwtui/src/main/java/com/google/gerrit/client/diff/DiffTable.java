@@ -679,6 +679,16 @@ name|hideA
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|parent
+operator|.
+name|syncScroll
+argument_list|(
+name|DisplaySide
+operator|.
+name|B
+argument_list|)
+expr_stmt|;
+comment|// match B's viewport
 block|}
 else|else
 block|{
