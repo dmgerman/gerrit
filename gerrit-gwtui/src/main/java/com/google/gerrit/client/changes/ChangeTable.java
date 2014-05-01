@@ -1400,11 +1400,6 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|()
-argument_list|,
-name|c
-operator|.
-name|getStatus
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
