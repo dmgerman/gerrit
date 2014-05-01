@@ -1717,6 +1717,8 @@ name|diffTable
 operator|.
 name|set
 argument_list|(
+name|prefs
+argument_list|,
 name|list
 argument_list|,
 name|diff
@@ -5781,6 +5783,13 @@ name|DisplaySide
 name|masterSide
 parameter_list|)
 block|{
+if|if
+condition|(
+name|scrollSynchronizer
+operator|!=
+literal|null
+condition|)
+block|{
 name|scrollSynchronizer
 operator|.
 name|syncScroll
@@ -5788,6 +5797,7 @@ argument_list|(
 name|masterSide
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getContentType (DiffInfo.FileMeta meta)
 specifier|private

@@ -404,6 +404,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|setHideEmptyPane
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -653,6 +660,18 @@ specifier|protected
 name|String
 name|theme
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|20
+argument_list|)
+DECL|field|hideEmptyPane
+specifier|protected
+name|boolean
+name|hideEmptyPane
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -826,6 +845,14 @@ operator|=
 name|p
 operator|.
 name|renderEntireFile
+expr_stmt|;
+name|this
+operator|.
+name|hideEmptyPane
+operator|=
+name|p
+operator|.
+name|hideEmptyPane
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -1330,6 +1357,32 @@ name|name
 argument_list|()
 else|:
 literal|null
+expr_stmt|;
+block|}
+DECL|method|isHideEmptyPane ()
+specifier|public
+name|boolean
+name|isHideEmptyPane
+parameter_list|()
+block|{
+return|return
+name|hideEmptyPane
+return|;
+block|}
+DECL|method|setHideEmptyPane (boolean hideEmptyPane)
+specifier|public
+name|void
+name|setHideEmptyPane
+parameter_list|(
+name|boolean
+name|hideEmptyPane
+parameter_list|)
+block|{
+name|this
+operator|.
+name|hideEmptyPane
+operator|=
+name|hideEmptyPane
 expr_stmt|;
 block|}
 block|}

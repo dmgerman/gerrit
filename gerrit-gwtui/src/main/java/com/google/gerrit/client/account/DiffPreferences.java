@@ -328,6 +328,16 @@ name|getTheme
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|hideEmptyPane
+argument_list|(
+name|in
+operator|.
+name|isHideEmptyPane
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -462,6 +472,14 @@ operator|.
 name|setTheme
 argument_list|(
 name|theme
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setHideEmptyPane
+argument_list|(
+name|hideEmptyPane
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -695,6 +713,18 @@ name|r
 parameter_list|)
 comment|/*-{ this.render_entire_file = r }-*/
 function_decl|;
+DECL|method|hideEmptyPane (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|hideEmptyPane
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.hide_empty_pane = s }-*/
+function_decl|;
 DECL|method|showLineNumbers (boolean s)
 specifier|public
 specifier|final
@@ -927,6 +957,15 @@ name|boolean
 name|renderEntireFile
 parameter_list|()
 comment|/*-{ return this.render_entire_file || false }-*/
+function_decl|;
+DECL|method|hideEmptyPane ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hideEmptyPane
+parameter_list|()
+comment|/*-{ return this.hide_empty_pane || false }-*/
 function_decl|;
 DECL|method|showLineNumbers ()
 specifier|public
