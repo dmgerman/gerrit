@@ -194,6 +194,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|DynamicSet
 import|;
 end_import
@@ -672,7 +688,7 @@ decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -756,7 +772,7 @@ name|page
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final Provider<WebSession> w, final SitePaths sp, final ThemeFactory themeFactory, final GerritConfig gc, final ServletContext servletContext, final DynamicSet<WebUiPlugin> webUiPlugins, final DynamicSet<MessageOfTheDay> motd, @GerritServerConfig final Config cfg, final StaticServlet ss)
+DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final DynamicItem<WebSession> w, final SitePaths sp, final ThemeFactory themeFactory, final GerritConfig gc, final ServletContext servletContext, final DynamicSet<WebUiPlugin> webUiPlugins, final DynamicSet<MessageOfTheDay> motd, @GerritServerConfig final Config cfg, final StaticServlet ss)
 name|HostPageServlet
 parameter_list|(
 specifier|final
@@ -767,7 +783,7 @@ argument_list|>
 name|cu
 parameter_list|,
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

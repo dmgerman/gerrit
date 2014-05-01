@@ -526,6 +526,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|DynamicMap
 import|;
 end_import
@@ -1587,7 +1603,7 @@ name|currentUser
 decl_stmt|;
 DECL|field|webSession
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -1608,7 +1624,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Globals (Provider<CurrentUser> currentUser, Provider<WebSession> webSession, Provider<ParameterParser> paramParser, AuditService auditService)
+DECL|method|Globals (Provider<CurrentUser> currentUser, DynamicItem<WebSession> webSession, Provider<ParameterParser> paramParser, AuditService auditService)
 name|Globals
 parameter_list|(
 name|Provider
@@ -1617,7 +1633,7 @@ name|CurrentUser
 argument_list|>
 name|currentUser
 parameter_list|,
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

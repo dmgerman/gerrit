@@ -178,6 +178,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|WebSession
@@ -319,18 +335,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -483,7 +487,7 @@ decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -503,11 +507,11 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritJsonServlet (final Provider<WebSession> w, final RemoteJsonService s, final AuditService a)
+DECL|method|GerritJsonServlet (final DynamicItem<WebSession> w, final RemoteJsonService s, final AuditService a)
 name|GerritJsonServlet
 parameter_list|(
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

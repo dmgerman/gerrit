@@ -136,6 +136,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|HtmlDomUtil
@@ -360,18 +376,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -556,7 +560,7 @@ decl_stmt|;
 DECL|field|webSession
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -576,11 +580,11 @@ name|headers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BecomeAnyAccountLoginServlet (final Provider<WebSession> ws, final SchemaFactory<ReviewDb> sf, final AccountManager am, final ServletContext servletContext, SiteHeaderFooter shf)
+DECL|method|BecomeAnyAccountLoginServlet (final DynamicItem<WebSession> ws, final SchemaFactory<ReviewDb> sf, final AccountManager am, final ServletContext servletContext, SiteHeaderFooter shf)
 name|BecomeAnyAccountLoginServlet
 parameter_list|(
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>

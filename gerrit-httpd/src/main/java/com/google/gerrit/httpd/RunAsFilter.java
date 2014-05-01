@@ -100,6 +100,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|restapi
@@ -193,18 +209,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -424,7 +428,7 @@ decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
@@ -438,13 +442,13 @@ name|accountResolver
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RunAsFilter (AuthConfig config, Provider<WebSession> session, AccountResolver accountResolver)
+DECL|method|RunAsFilter (AuthConfig config, DynamicItem<WebSession> session, AccountResolver accountResolver)
 name|RunAsFilter
 parameter_list|(
 name|AuthConfig
 name|config
 parameter_list|,
-name|Provider
+name|DynamicItem
 argument_list|<
 name|WebSession
 argument_list|>
