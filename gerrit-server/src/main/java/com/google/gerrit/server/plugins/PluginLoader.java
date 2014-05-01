@@ -3897,7 +3897,7 @@ name|Plugin
 name|plugin
 init|=
 operator|new
-name|JarPlugin
+name|ServerPlugin
 argument_list|(
 name|name
 argument_list|,
