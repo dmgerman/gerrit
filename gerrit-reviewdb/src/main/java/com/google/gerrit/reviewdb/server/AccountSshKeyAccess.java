@@ -220,6 +220,26 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE id.accountId = ? ORDER BY id.seq DESC LIMIT 1"
+argument_list|)
+DECL|method|byAccountLast (Account.Id id)
+name|ResultSet
+argument_list|<
+name|AccountSshKey
+argument_list|>
+name|byAccountLast
+parameter_list|(
+name|Account
+operator|.
+name|Id
+name|id
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
