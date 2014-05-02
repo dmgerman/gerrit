@@ -5967,13 +5967,13 @@ literal|"toplevel"
 expr_stmt|;
 name|ReviewInput
 operator|.
-name|Comment
+name|CommentInput
 name|comment
 init|=
 operator|new
 name|ReviewInput
 operator|.
-name|Comment
+name|CommentInput
 argument_list|()
 decl_stmt|;
 name|comment
@@ -6001,7 +6001,7 @@ name|List
 argument_list|<
 name|ReviewInput
 operator|.
-name|Comment
+name|CommentInput
 argument_list|>
 operator|>
 name|of
@@ -6015,7 +6015,7 @@ operator|.
 expr|<
 name|ReviewInput
 operator|.
-name|Comment
+name|CommentInput
 operator|>
 name|of
 argument_list|(

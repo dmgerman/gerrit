@@ -296,7 +296,7 @@ name|changes
 operator|.
 name|ReviewInput
 operator|.
-name|Comment
+name|CommentInput
 import|;
 end_import
 
@@ -350,11 +350,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
+name|common
 operator|.
-name|changes
-operator|.
-name|ReviewInput
+name|Comment
 operator|.
 name|Side
 import|;
@@ -2128,7 +2126,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|checkComments (RevisionResource revision, Map<String, List<Comment>> in)
+DECL|method|checkComments (RevisionResource revision, Map<String, List<CommentInput>> in)
 specifier|private
 name|void
 name|checkComments
@@ -2142,7 +2140,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 argument_list|>
 name|in
@@ -2162,7 +2160,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 argument_list|>
 argument_list|>
@@ -2226,7 +2224,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 argument_list|>
 name|ent
@@ -2290,7 +2288,7 @@ throw|;
 block|}
 name|List
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 name|list
 init|=
@@ -2315,7 +2313,7 @@ continue|continue;
 block|}
 name|Iterator
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 name|listItr
 init|=
@@ -2332,7 +2330,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|Comment
+name|CommentInput
 name|c
 init|=
 name|listItr
@@ -2417,7 +2415,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|insertComments (RevisionResource rsrc, Map<String, List<Comment>> in, DraftHandling draftsHandling)
+DECL|method|insertComments (RevisionResource rsrc, Map<String, List<CommentInput>> in, DraftHandling draftsHandling)
 specifier|private
 name|boolean
 name|insertComments
@@ -2431,7 +2429,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 argument_list|>
 name|in
@@ -2525,7 +2523,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|Comment
+name|CommentInput
 argument_list|>
 argument_list|>
 name|ent
@@ -2546,7 +2544,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Comment
+name|CommentInput
 name|c
 range|:
 name|ent
