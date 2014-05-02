@@ -636,6 +636,18 @@ specifier|protected
 name|boolean
 name|sizeBarInChangeTable
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|17
+argument_list|)
+DECL|field|legacycidInChangeTable
+specifier|protected
+name|boolean
+name|legacycidInChangeTable
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -1189,6 +1201,32 @@ operator|=
 name|sizeBarInChangeTable
 expr_stmt|;
 block|}
+DECL|method|isLegacycidInChangeTable ()
+specifier|public
+name|boolean
+name|isLegacycidInChangeTable
+parameter_list|()
+block|{
+return|return
+name|legacycidInChangeTable
+return|;
+block|}
+DECL|method|setLegacycidInChangeTable (boolean legacycidInChangeTable)
+specifier|public
+name|void
+name|setLegacycidInChangeTable
+parameter_list|(
+name|boolean
+name|legacycidInChangeTable
+parameter_list|)
+block|{
+name|this
+operator|.
+name|legacycidInChangeTable
+operator|=
+name|legacycidInChangeTable
+expr_stmt|;
+block|}
 DECL|method|resetToDefaults ()
 specifier|public
 name|void
@@ -1254,6 +1292,10 @@ expr_stmt|;
 name|sizeBarInChangeTable
 operator|=
 literal|true
+expr_stmt|;
+name|legacycidInChangeTable
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}

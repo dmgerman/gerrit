@@ -225,6 +225,11 @@ name|String
 name|changeTableColumnLastUpdate
 parameter_list|()
 function_decl|;
+DECL|method|changeTableColumnID ()
+name|String
+name|changeTableColumnID
+parameter_list|()
+function_decl|;
 DECL|method|changeTableNone ()
 name|String
 name|changeTableNone

@@ -436,6 +436,16 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|legacycidInChangeTable
+argument_list|(
+name|in
+operator|.
+name|isLegacycidInChangeTable
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|commentVisibilityStrategy
 argument_list|(
 name|in
@@ -718,6 +728,15 @@ name|boolean
 name|sizeBarInChangeTable
 parameter_list|()
 comment|/*-{ return this.size_bar_in_change_table || false }-*/
+function_decl|;
+DECL|method|legacycidInChangeTable ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|legacycidInChangeTable
+parameter_list|()
+comment|/*-{ return this.legacycid_in_change_table || false }-*/
 function_decl|;
 DECL|method|commentVisibilityStrategy ()
 specifier|public
@@ -1085,6 +1104,18 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.size_bar_in_change_table = s }-*/
+function_decl|;
+DECL|method|legacycidInChangeTable (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|legacycidInChangeTable
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.legacycid_in_change_table = s }-*/
 function_decl|;
 DECL|method|commentVisibilityStrategy (CommentVisibilityStrategy s)
 specifier|public

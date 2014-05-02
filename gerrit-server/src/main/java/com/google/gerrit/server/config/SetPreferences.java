@@ -391,6 +391,12 @@ literal|null
 operator|||
 name|i
 operator|.
+name|legacycidInChangeTable
+operator|!=
+literal|null
+operator|||
+name|i
+operator|.
 name|commentVisibilityStrategy
 operator|!=
 literal|null

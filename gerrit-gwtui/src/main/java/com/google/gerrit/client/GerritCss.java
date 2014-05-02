@@ -428,9 +428,19 @@ name|String
 name|dataCell
 parameter_list|()
 function_decl|;
+DECL|method|dataCellHidden ()
+name|String
+name|dataCellHidden
+parameter_list|()
+function_decl|;
 DECL|method|dataHeader ()
 name|String
 name|dataHeader
+parameter_list|()
+function_decl|;
+DECL|method|dataHeaderHidden ()
+name|String
+name|dataHeaderHidden
 parameter_list|()
 function_decl|;
 DECL|method|diffLinkCell ()

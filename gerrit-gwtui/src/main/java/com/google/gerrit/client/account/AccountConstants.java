@@ -190,6 +190,11 @@ name|String
 name|showSizeBarInChangeTable
 parameter_list|()
 function_decl|;
+DECL|method|showLegacycidInChangeTable ()
+name|String
+name|showLegacycidInChangeTable
+parameter_list|()
+function_decl|;
 DECL|method|myMenu ()
 name|String
 name|myMenu
