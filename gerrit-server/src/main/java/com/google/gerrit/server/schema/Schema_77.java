@@ -1060,7 +1060,9 @@ argument_list|()
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"UPDATE patch_set_approvals SET category_id = ? WHERE category_id = ?"
+literal|"UPDATE patch_set_approvals SET category_id = ?, granted=granted"
+operator|+
+literal|" WHERE category_id = ?"
 argument_list|)
 decl_stmt|;
 try|try
