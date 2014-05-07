@@ -1114,6 +1114,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|factory
+argument_list|(
+name|CreateChange
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
