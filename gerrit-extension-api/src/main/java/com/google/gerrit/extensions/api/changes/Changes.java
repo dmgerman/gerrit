@@ -204,6 +204,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|create (ChangeInfo in)
+name|ChangeApi
+name|create
+parameter_list|(
+name|ChangeInfo
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Shorthand for {@link #query(QueryParameter)} without any conditions (i.e. lists all changes).    */
 DECL|method|query ()
 name|List
@@ -519,6 +529,25 @@ name|branch
 parameter_list|,
 name|String
 name|id
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|create (ChangeInfo in)
+specifier|public
+name|ChangeApi
+name|create
+parameter_list|(
+name|ChangeInfo
+name|in
 parameter_list|)
 throws|throws
 name|RestApiException
