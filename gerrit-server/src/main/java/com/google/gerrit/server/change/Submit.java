@@ -1521,7 +1521,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Merge patch set %d into %s"
+literal|"Submit patch set %d into %s"
 argument_list|,
 name|resource
 operator|.
