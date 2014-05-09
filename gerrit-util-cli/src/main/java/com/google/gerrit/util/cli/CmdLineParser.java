@@ -2328,6 +2328,25 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|reject (String message)
+specifier|public
+name|CmdLineException
+name|reject
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+return|return
+operator|new
+name|CmdLineException
+argument_list|(
+name|parser
+argument_list|,
+name|message
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
