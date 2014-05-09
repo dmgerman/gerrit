@@ -1317,21 +1317,9 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-name|project
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|ExecutionException
+decl||
+name|InterruptedException
 name|e
 parameter_list|)
 block|{
@@ -1363,6 +1351,8 @@ name|Error
 name|e
 parameter_list|)
 block|{
+comment|// Can't join with RuntimeException because "RuntimeException |
+comment|// Error" becomes Throwable, which messes with signatures.
 name|failAndThrow
 argument_list|(
 name|project
