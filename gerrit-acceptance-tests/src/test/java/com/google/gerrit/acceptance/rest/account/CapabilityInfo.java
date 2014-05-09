@@ -158,6 +158,11 @@ specifier|public
 name|boolean
 name|viewConnections
 decl_stmt|;
+DECL|field|viewPlugins
+specifier|public
+name|boolean
+name|viewPlugins
+decl_stmt|;
 DECL|field|viewQueue
 specifier|public
 name|boolean

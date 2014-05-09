@@ -352,7 +352,7 @@ name|RequiresCapability
 argument_list|(
 name|GlobalCapability
 operator|.
-name|ADMINISTRATE_SERVER
+name|VIEW_PLUGINS
 argument_list|)
 DECL|class|ListPlugins
 specifier|public
