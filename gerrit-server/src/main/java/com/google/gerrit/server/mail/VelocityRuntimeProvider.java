@@ -297,6 +297,17 @@ name|p
 operator|.
 name|setProperty
 argument_list|(
+name|RuntimeConstants
+operator|.
+name|RUNTIME_REFERENCES_STRICT
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setProperty
+argument_list|(
 literal|"runtime.log.logsystem.log4j.category"
 argument_list|,
 literal|"velocity"
