@@ -2528,6 +2528,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|i
 operator|=
 name|toChangeInfo
@@ -2545,6 +2547,30 @@ name|absent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Omitting corrupt change "
+operator|+
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" from results"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|out
 operator|.
 name|put
