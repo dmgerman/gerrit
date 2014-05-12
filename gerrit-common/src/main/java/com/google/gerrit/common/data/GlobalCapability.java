@@ -286,6 +286,16 @@ name|VIEW_CONNECTIONS
 init|=
 literal|"viewConnections"
 decl_stmt|;
+comment|/** Can view all installed plugins. */
+DECL|field|VIEW_PLUGINS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VIEW_PLUGINS
+init|=
+literal|"viewPlugins"
+decl_stmt|;
 comment|/** Can view all pending tasks in the queue (not just the filtered set). */
 DECL|field|VIEW_QUEUE
 specifier|public
@@ -435,6 +445,13 @@ operator|.
 name|add
 argument_list|(
 name|VIEW_CONNECTIONS
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|VIEW_PLUGINS
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL

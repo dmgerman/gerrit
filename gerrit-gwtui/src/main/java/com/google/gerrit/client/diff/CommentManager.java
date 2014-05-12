@@ -430,6 +430,11 @@ specifier|private
 name|boolean
 name|attached
 decl_stmt|;
+DECL|field|expandAll
+specifier|private
+name|boolean
+name|expandAll
+decl_stmt|;
 DECL|method|CommentManager (SideBySide2 host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp)
 name|CommentManager
 parameter_list|(
@@ -529,6 +534,10 @@ name|boolean
 name|b
 parameter_list|)
 block|{
+name|expandAll
+operator|=
+name|b
+expr_stmt|;
 for|for
 control|(
 name|CommentGroup
@@ -1318,6 +1327,8 @@ name|side
 argument_list|)
 argument_list|,
 name|info
+argument_list|,
+name|expandAll
 argument_list|)
 decl_stmt|;
 if|if

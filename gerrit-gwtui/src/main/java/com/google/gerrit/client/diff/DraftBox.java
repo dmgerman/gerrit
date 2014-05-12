@@ -712,6 +712,12 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
+DECL|field|expandAll
+specifier|private
+specifier|final
+name|boolean
+name|expandAll
+decl_stmt|;
 DECL|field|comment
 specifier|private
 name|CommentInfo
@@ -819,7 +825,7 @@ name|UiField
 name|Button
 name|discard2
 decl_stmt|;
-DECL|method|DraftBox ( CommentGroup group, CommentLinkProcessor clp, PatchSet.Id id, CommentInfo info)
+DECL|method|DraftBox ( CommentGroup group, CommentLinkProcessor clp, PatchSet.Id id, CommentInfo info, boolean expandAllComments)
 name|DraftBox
 parameter_list|(
 name|CommentGroup
@@ -835,6 +841,9 @@ name|id
 parameter_list|,
 name|CommentInfo
 name|info
+parameter_list|,
+name|boolean
+name|expandAllComments
 parameter_list|)
 block|{
 name|super
@@ -854,6 +863,10 @@ expr_stmt|;
 name|psId
 operator|=
 name|id
+expr_stmt|;
+name|expandAll
+operator|=
+name|expandAllComments
 expr_stmt|;
 name|initWidget
 argument_list|(
@@ -1021,6 +1034,9 @@ parameter_list|)
 block|{
 name|autoClosed
 operator|=
+operator|!
+name|expandAll
+operator|&&
 name|info
 operator|.
 name|message

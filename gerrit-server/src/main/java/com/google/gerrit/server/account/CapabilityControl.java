@@ -714,6 +714,25 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can view the installed plugins. */
+DECL|method|canViewPlugins ()
+specifier|public
+name|boolean
+name|canViewPlugins
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|VIEW_PLUGINS
+argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
 comment|/** @return true if the user can view the entire queue. */
 DECL|method|canViewQueue ()
 specifier|public

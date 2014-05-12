@@ -200,6 +200,11 @@ specifier|public
 name|String
 name|viewConnections
 decl_stmt|;
+DECL|field|viewPlugins
+specifier|public
+name|String
+name|viewPlugins
+decl_stmt|;
 DECL|field|viewQueue
 specifier|public
 name|String
