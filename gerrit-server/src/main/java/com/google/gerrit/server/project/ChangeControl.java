@@ -1600,6 +1600,10 @@ block|{
 if|if
 condition|(
 name|ps
+operator|!=
+literal|null
+operator|&&
+name|ps
 operator|.
 name|isDraft
 argument_list|()
