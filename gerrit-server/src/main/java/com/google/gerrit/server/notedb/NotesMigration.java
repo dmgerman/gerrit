@@ -72,20 +72,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|server
@@ -146,9 +132,8 @@ specifier|public
 class|class
 name|NotesMigration
 block|{
-annotation|@
-name|VisibleForTesting
 DECL|method|allEnabled ()
+specifier|public
 specifier|static
 name|NotesMigration
 name|allEnabled

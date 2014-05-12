@@ -562,6 +562,18 @@ name|getCurrentUser
 argument_list|()
 return|;
 block|}
+DECL|method|getPatchSetId ()
+specifier|public
+name|PatchSet
+operator|.
+name|Id
+name|getPatchSetId
+parameter_list|()
+block|{
+return|return
+name|psId
+return|;
+block|}
 DECL|method|setPatchSetId (PatchSet.Id psId)
 specifier|public
 name|void
