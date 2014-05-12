@@ -1222,11 +1222,7 @@ name|getChangeId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Compare Change 1,1 with Change 1,2
-comment|// expected: +FILE_B
-comment|// actual: +FILE_B, -FILE_C
-comment|// -FILE_C is wrongly returned, it is not contained in Change 1,2
-comment|//         but was only added in Change 1,1
+comment|// Compare Change 1,1 with Change 1,2 (+FILE_B)
 name|List
 argument_list|<
 name|PatchListEntry
@@ -1242,7 +1238,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|3
+literal|2
 argument_list|,
 name|entries
 operator|.
@@ -1273,18 +1269,6 @@ operator|.
 name|get
 argument_list|(
 literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertDeleted
-argument_list|(
-name|FILE_C
-argument_list|,
-name|entries
-operator|.
-name|get
-argument_list|(
-literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1505,12 +1489,7 @@ name|getChangeId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Compare Change 1,1 with Change 1,2
-comment|// expected: +FILE_C
-comment|// actual: +FILE_B, +FILE_C
-comment|// +FILE_B is wrongly returned, it is neither contained in Change 1,1
-comment|//         nor in Change 1,2, but was only changed due to the rebase
-comment|//         on Change 2,1
+comment|// Compare Change 1,1 with Change 1,2 (+FILE_C)
 name|List
 argument_list|<
 name|PatchListEntry
@@ -1526,7 +1505,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|3
+literal|2
 argument_list|,
 name|entries
 operator|.
@@ -1550,25 +1529,13 @@ argument_list|)
 expr_stmt|;
 name|assertAdded
 argument_list|(
-name|FILE_B
-argument_list|,
-name|entries
-operator|.
-name|get
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertAdded
-argument_list|(
 name|FILE_C
 argument_list|,
 name|entries
 operator|.
 name|get
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
