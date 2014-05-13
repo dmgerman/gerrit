@@ -81,6 +81,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -236,6 +248,8 @@ name|getStatusCode
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|r
 operator|.
 name|getEntityContent
@@ -244,6 +258,7 @@ operator|.
 name|contains
 argument_list|(
 literal|"branch must be non-empty"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -303,6 +318,8 @@ name|getStatusCode
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|r
 operator|.
 name|getEntityContent
@@ -311,6 +328,7 @@ operator|.
 name|contains
 argument_list|(
 literal|"commit message must be non-empty"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -358,6 +376,8 @@ name|getStatusCode
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|r
 operator|.
 name|getEntityContent
@@ -366,6 +386,7 @@ operator|.
 name|contains
 argument_list|(
 literal|"unsupported change status"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
