@@ -1562,6 +1562,11 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
+name|setCopyLabels
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|insert
 argument_list|()
 expr_stmt|;
