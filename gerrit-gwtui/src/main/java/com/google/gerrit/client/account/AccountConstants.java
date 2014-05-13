@@ -310,9 +310,14 @@ name|String
 name|buttonSetUserName
 parameter_list|()
 function_decl|;
-DECL|method|buttonChangeUserName ()
+DECL|method|confirmSetUserNameTitle ()
 name|String
-name|buttonChangeUserName
+name|confirmSetUserNameTitle
+parameter_list|()
+function_decl|;
+DECL|method|confirmSetUserName ()
+name|String
+name|confirmSetUserName
 parameter_list|()
 function_decl|;
 DECL|method|buttonClearPassword ()
