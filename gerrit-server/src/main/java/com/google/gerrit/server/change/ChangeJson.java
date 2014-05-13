@@ -4430,6 +4430,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// We can only approximately reconstruct what the submit rule evaluator
+comment|// would have done. These should really come from a stored submit record.
 name|Set
 argument_list|<
 name|String
@@ -4485,13 +4487,6 @@ condition|(
 name|type
 operator|!=
 literal|null
-operator|&&
-name|a
-operator|.
-name|getValue
-argument_list|()
-operator|!=
-literal|0
 condition|)
 block|{
 name|labelNames
@@ -4504,6 +4499,8 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Not worth the effort to distinguish between votable/non-votable for 0
+comment|// values on closed changes, since they can't vote anyway.
 name|current
 operator|.
 name|put
@@ -4518,9 +4515,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// We can only approximately reconstruct what the submit rule evaluator
-comment|// would have done. These should really come from a stored submit record.
-comment|//
 comment|// Don't use Maps.newTreeMap(Comparator) due to OpenJDK bug 100167.
 name|Map
 argument_list|<
