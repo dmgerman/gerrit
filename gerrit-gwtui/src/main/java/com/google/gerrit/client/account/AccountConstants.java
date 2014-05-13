@@ -295,11 +295,6 @@ name|String
 name|confirmSetUserName
 parameter_list|()
 function_decl|;
-DECL|method|buttonChangeUserName ()
-name|String
-name|buttonChangeUserName
-parameter_list|()
-function_decl|;
 DECL|method|buttonClearPassword ()
 name|String
 name|buttonClearPassword
