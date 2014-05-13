@@ -285,6 +285,16 @@ name|String
 name|buttonSetUserName
 parameter_list|()
 function_decl|;
+DECL|method|confirmSetUserNameTitle ()
+name|String
+name|confirmSetUserNameTitle
+parameter_list|()
+function_decl|;
+DECL|method|confirmSetUserName ()
+name|String
+name|confirmSetUserName
+parameter_list|()
+function_decl|;
 DECL|method|buttonChangeUserName ()
 name|String
 name|buttonChangeUserName
