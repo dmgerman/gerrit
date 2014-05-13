@@ -305,6 +305,17 @@ name|ImageResource
 name|warning
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"important.png"
+argument_list|)
+DECL|method|important ()
+specifier|public
+name|ImageResource
+name|important
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
