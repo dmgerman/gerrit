@@ -2278,6 +2278,16 @@ argument_list|,
 name|key
 argument_list|,
 name|res
+argument_list|,
+name|holder
+operator|.
+name|plugin
+operator|.
+name|getSrcFile
+argument_list|()
+operator|.
+name|lastModified
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2626,7 +2636,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|sendAutoIndex (JarFile jar, String prefix, String pluginName, ResourceKey cacheKey, HttpServletResponse res)
+DECL|method|sendAutoIndex (JarFile jar, String prefix, String pluginName, ResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
 specifier|private
 name|void
 name|sendAutoIndex
@@ -2645,6 +2655,9 @@ name|cacheKey
 parameter_list|,
 name|HttpServletResponse
 name|res
+parameter_list|,
+name|long
+name|lastModifiedTime
 parameter_list|)
 throws|throws
 name|IOException
@@ -3225,10 +3238,12 @@ argument_list|,
 name|cacheKey
 argument_list|,
 name|res
+argument_list|,
+name|lastModifiedTime
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sendMarkdownAsHtml (String md, String pluginName, ResourceKey cacheKey, HttpServletResponse res)
+DECL|method|sendMarkdownAsHtml (String md, String pluginName, ResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
 specifier|private
 name|void
 name|sendMarkdownAsHtml
@@ -3244,6 +3259,9 @@ name|cacheKey
 parameter_list|,
 name|HttpServletResponse
 name|res
+parameter_list|,
+name|long
+name|lastModifiedTime
 parameter_list|)
 throws|throws
 name|UnsupportedEncodingException
@@ -3480,6 +3498,11 @@ operator|.
 name|setCharacterEncoding
 argument_list|(
 literal|"UTF-8"
+argument_list|)
+operator|.
+name|setLastModified
+argument_list|(
+name|lastModifiedTime
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4057,6 +4080,8 @@ argument_list|,
 name|key
 argument_list|,
 name|res
+argument_list|,
+name|time
 argument_list|)
 expr_stmt|;
 block|}
