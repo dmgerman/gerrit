@@ -2323,7 +2323,7 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
-literal|"u can't force update tag"
+literal|"u can't update tag"
 argument_list|,
 name|u
 operator|.
@@ -2332,7 +2332,7 @@ argument_list|(
 literal|"refs/tags/V10"
 argument_list|)
 operator|.
-name|canForceUpdate
+name|canUpdate
 argument_list|()
 argument_list|)
 expr_stmt|;
