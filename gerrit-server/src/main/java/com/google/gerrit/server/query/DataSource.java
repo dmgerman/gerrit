@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.query.change
+DECL|package|com.google.gerrit.server.query
 package|package
 name|com
 operator|.
@@ -63,8 +63,6 @@ operator|.
 name|server
 operator|.
 name|query
-operator|.
-name|change
 package|;
 end_package
 
@@ -74,33 +72,55 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|gwtorm
 operator|.
 name|server
 operator|.
-name|query
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
 operator|.
-name|DataSource
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|ResultSet
 import|;
 end_import
 
 begin_interface
-DECL|interface|ChangeDataSource
+DECL|interface|DataSource
 specifier|public
 interface|interface
-name|ChangeDataSource
-extends|extends
 name|DataSource
-argument_list|<
-name|ChangeData
-argument_list|>
+parameter_list|<
+name|T
+parameter_list|>
 block|{
-comment|/** @return true if all returned ChangeData.hasChange() will be true. */
-DECL|method|hasChange ()
+comment|/** @return an estimate of the number of results from {@link #read()}. */
+DECL|method|getCardinality ()
 specifier|public
-name|boolean
-name|hasChange
+name|int
+name|getCardinality
 parameter_list|()
+function_decl|;
+comment|/** @return read from the database and return the results. */
+DECL|method|read ()
+specifier|public
+name|ResultSet
+argument_list|<
+name|T
+argument_list|>
+name|read
+parameter_list|()
+throws|throws
+name|OrmException
 function_decl|;
 block|}
 end_interface
