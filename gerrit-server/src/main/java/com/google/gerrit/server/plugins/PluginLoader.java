@@ -812,9 +812,6 @@ argument_list|(
 name|srcFile
 argument_list|)
 argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
 return|;
 block|}
 DECL|field|pluginsDir
