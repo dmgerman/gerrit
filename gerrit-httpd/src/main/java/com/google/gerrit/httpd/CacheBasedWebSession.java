@@ -1078,6 +1078,15 @@ name|void
 name|saveCookie
 parameter_list|()
 block|{
+if|if
+condition|(
+name|response
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 specifier|final
 name|String
 name|token

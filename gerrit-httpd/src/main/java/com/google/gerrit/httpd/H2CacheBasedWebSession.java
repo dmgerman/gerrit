@@ -100,6 +100,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|registration
@@ -406,12 +420,14 @@ return|;
 block|}
 annotation|@
 name|Inject
-DECL|method|H2CacheBasedWebSession ( HttpServletRequest request, HttpServletResponse response, WebSessionManagerFactory managerFactory, @Named(WebSessionManager.CACHE_NAME) Cache<String, Val> cache, AuthConfig authConfig, Provider<AnonymousUser> anonymousProvider, RequestFactory identified)
+DECL|method|H2CacheBasedWebSession ( HttpServletRequest request, @Nullable HttpServletResponse response, WebSessionManagerFactory managerFactory, @Named(WebSessionManager.CACHE_NAME) Cache<String, Val> cache, AuthConfig authConfig, Provider<AnonymousUser> anonymousProvider, RequestFactory identified)
 name|H2CacheBasedWebSession
 parameter_list|(
 name|HttpServletRequest
 name|request
 parameter_list|,
+annotation|@
+name|Nullable
 name|HttpServletResponse
 name|response
 parameter_list|,
