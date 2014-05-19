@@ -3994,6 +3994,25 @@ literal|":"
 operator|+
 name|target
 decl_stmt|;
+comment|// TODO(davido): instead of assuming specific Buck's internal
+comment|// target directory for gwt_binary() artifacts, ask Buck for
+comment|// the location of user agent permutation GWT zip, e. g.:
+comment|// $ buck targets --show_output //gerrit-gwtui:ui_safari \
+comment|//    | awk '{print $2}'
+name|String
+name|child
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s/__gwt_binary_%s__"
+argument_list|,
+name|pkg
+argument_list|,
+name|target
+argument_list|)
+decl_stmt|;
 name|File
 name|zip
 init|=
@@ -4005,7 +4024,7 @@ name|File
 argument_list|(
 name|gen
 argument_list|,
-name|pkg
+name|child
 argument_list|)
 argument_list|,
 name|target
