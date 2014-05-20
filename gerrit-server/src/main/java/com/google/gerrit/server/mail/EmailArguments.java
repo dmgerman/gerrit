@@ -448,6 +448,7 @@ end_import
 
 begin_class
 DECL|class|EmailArguments
+specifier|public
 class|class
 name|EmailArguments
 block|{
