@@ -608,7 +608,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|VerticalPanel
+name|UIObject
 import|;
 end_import
 
@@ -744,7 +744,7 @@ decl_stmt|;
 DECL|field|parentWebLinks
 annotation|@
 name|UiField
-name|VerticalPanel
+name|FlowPanel
 name|parentWebLinks
 decl_stmt|;
 DECL|field|authorNameEmail
