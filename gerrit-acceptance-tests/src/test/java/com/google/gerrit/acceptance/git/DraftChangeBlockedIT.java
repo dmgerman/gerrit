@@ -98,7 +98,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|grant
+name|block
 import|;
 end_import
 
@@ -352,7 +352,7 @@ operator|.
 name|getConfig
 argument_list|()
 decl_stmt|;
-name|grant
+name|block
 argument_list|(
 name|cfg
 argument_list|,
@@ -364,9 +364,6 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/drafts/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|saveProjectConfig
 argument_list|(

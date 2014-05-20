@@ -278,7 +278,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|doNotInherit
+name|allow
 import|;
 end_import
 
@@ -296,7 +296,43 @@ name|project
 operator|.
 name|Util
 operator|.
-name|grant
+name|block
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|Util
+operator|.
+name|deny
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|Util
+operator|.
+name|doNotInherit
 import|;
 end_import
 
@@ -622,7 +658,7 @@ name|void
 name|testOwnerProject
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -688,7 +724,7 @@ name|void
 name|testBranchDelegation1
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -699,7 +735,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -786,7 +822,7 @@ name|void
 name|testBranchDelegation2
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -797,7 +833,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -808,7 +844,7 @@ argument_list|,
 literal|"refs/heads/x/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -978,7 +1014,7 @@ name|void
 name|testInheritRead_SingleBranchDeniesUpload
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -992,7 +1028,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1006,7 +1042,7 @@ argument_list|,
 literal|"refs/for/refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1100,7 +1136,7 @@ name|void
 name|testBlockPushDrafts
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1114,7 +1150,7 @@ argument_list|,
 literal|"refs/for/refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -1127,9 +1163,6 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/drafts/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -1182,7 +1215,7 @@ name|void
 name|testBlockPushDraftsUnblockAdmin
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -1195,11 +1228,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/drafts/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1270,7 +1300,7 @@ name|void
 name|testInheritRead_SingleBranchDoesNotOverrideInherited
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1284,7 +1314,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1298,7 +1328,7 @@ argument_list|,
 literal|"refs/for/refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1376,7 +1406,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1390,7 +1420,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1463,7 +1493,7 @@ name|localKey
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1502,7 +1532,7 @@ name|void
 name|testInheritRead_OverrideWithDeny
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1516,7 +1546,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|deny
 argument_list|(
 name|local
 argument_list|,
@@ -1526,9 +1556,6 @@ name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
-operator|.
-name|setDeny
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -1559,7 +1586,7 @@ name|void
 name|testInheritRead_AppendWithDenyOfRef
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1573,7 +1600,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|deny
 argument_list|(
 name|local
 argument_list|,
@@ -1583,9 +1610,6 @@ name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setDeny
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -1661,7 +1685,7 @@ name|void
 name|testInheritRead_OverridesAndDeniesOfRef
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1675,7 +1699,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|deny
 argument_list|(
 name|local
 argument_list|,
@@ -1685,11 +1709,8 @@ name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
-operator|.
-name|setDeny
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1774,7 +1795,7 @@ name|void
 name|testInheritSubmit_OverridesAndDeniesOfRef
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1788,7 +1809,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|deny
 argument_list|(
 name|local
 argument_list|,
@@ -1798,11 +1819,8 @@ name|REGISTERED_USERS
 argument_list|,
 literal|"refs/*"
 argument_list|)
-operator|.
-name|setDeny
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1877,7 +1895,7 @@ name|void
 name|testCannotUploadToAnyRef
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -1891,7 +1909,7 @@ argument_list|,
 literal|"refs/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1902,7 +1920,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -1962,7 +1980,7 @@ name|void
 name|testUsernamePatternNonRegex
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2039,7 +2057,7 @@ name|void
 name|testUsernamePatternWithRegex
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2116,7 +2134,7 @@ name|void
 name|testUsernameEmailPatternWithRegex
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2194,7 +2212,7 @@ name|void
 name|testSortWithRegex
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2205,7 +2223,7 @@ argument_list|,
 literal|"^refs/heads/.*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -2281,7 +2299,7 @@ name|void
 name|testBlockRule_ParentBlocksChild
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2292,7 +2310,7 @@ argument_list|,
 literal|"refs/tags/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -2305,9 +2323,6 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/tags/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -2345,7 +2360,7 @@ name|void
 name|testBlockRule_ParentBlocksChildEvenIfAlreadyBlockedInChild
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2356,7 +2371,7 @@ argument_list|,
 literal|"refs/tags/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2366,11 +2381,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/tags/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -2383,9 +2395,6 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/tags/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -2423,7 +2432,7 @@ name|void
 name|testBlockLabelRange_ParentBlocksChild
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2442,7 +2451,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -2463,9 +2472,6 @@ name|DEVS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -2555,7 +2561,7 @@ name|void
 name|testBlockLabelRange_ParentBlocksChildEvenIfAlreadyBlockedInChild
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2574,7 +2580,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2592,11 +2598,8 @@ name|DEVS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -2617,9 +2620,6 @@ name|DEVS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|u
@@ -2709,7 +2709,7 @@ name|void
 name|testUnblockNoForce
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2719,11 +2719,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2773,7 +2770,7 @@ block|{
 name|PermissionRule
 name|r
 init|=
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2786,17 +2783,12 @@ argument_list|)
 decl_stmt|;
 name|r
 operator|.
-name|setBlock
-argument_list|()
-expr_stmt|;
-name|r
-operator|.
 name|setForce
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2851,7 +2843,7 @@ block|{
 name|PermissionRule
 name|r
 init|=
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2864,17 +2856,12 @@ argument_list|)
 decl_stmt|;
 name|r
 operator|.
-name|setBlock
-argument_list|()
-expr_stmt|;
-name|r
-operator|.
 name|setForce
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2921,7 +2908,7 @@ name|void
 name|testUnblockMoreSpecificRef_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2931,11 +2918,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -2982,7 +2966,7 @@ name|void
 name|testUnblockLargerScope_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -2992,11 +2976,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3043,7 +3024,7 @@ name|void
 name|testUnblockInLocal_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -3056,11 +3037,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3107,7 +3085,7 @@ name|void
 name|testUnblockInParentBlockInLocal
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -3120,11 +3098,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|util
 operator|.
@@ -3138,7 +3113,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -3148,9 +3123,6 @@ name|DEVS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
 name|ProjectControl
 name|d
@@ -3188,7 +3160,7 @@ name|void
 name|testUnblockVisibilityByREGISTEREDUsers
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -3198,11 +3170,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3249,7 +3218,7 @@ name|void
 name|testUnblockInLocalVisibilityByRegisteredUsers_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -3262,11 +3231,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3313,7 +3279,7 @@ name|void
 name|testUnblockForceEditTopicName
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -3323,11 +3289,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3379,7 +3342,7 @@ name|void
 name|testUnblockInLocalForceEditTopicName_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -3392,11 +3355,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3448,7 +3408,7 @@ name|void
 name|testUnblockRange
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -3466,11 +3426,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3552,7 +3509,7 @@ name|void
 name|testUnblockRangeOnMoreSpecificRef_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -3570,11 +3527,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3657,7 +3611,7 @@ name|void
 name|testUnblockRangeOnLargerScope_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|local
 argument_list|,
@@ -3675,11 +3629,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3762,7 +3713,7 @@ name|void
 name|testUnblockInLocalRange_Fails
 parameter_list|()
 block|{
-name|grant
+name|block
 argument_list|(
 name|util
 operator|.
@@ -3782,11 +3733,8 @@ name|ANONYMOUS_USERS
 argument_list|,
 literal|"refs/heads/*"
 argument_list|)
-operator|.
-name|setBlock
-argument_list|()
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3866,7 +3814,7 @@ name|void
 name|testUnblockRangeForChangeOwner
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -3948,7 +3896,7 @@ name|void
 name|testUnblockRangeForNotChangeOwner
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,

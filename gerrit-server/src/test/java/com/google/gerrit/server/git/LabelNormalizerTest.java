@@ -116,7 +116,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|category
+name|allow
 import|;
 end_import
 
@@ -134,7 +134,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|grant
+name|category
 import|;
 end_import
 
@@ -1080,7 +1080,7 @@ init|=
 name|loadAllProjects
 argument_list|()
 decl_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|pc
 argument_list|,
@@ -1099,7 +1099,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|pc
 argument_list|,
@@ -1203,7 +1203,7 @@ init|=
 name|loadAllProjects
 argument_list|()
 decl_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|pc
 argument_list|,
@@ -1222,7 +1222,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|pc
 argument_list|,
@@ -1400,7 +1400,7 @@ init|=
 name|loadAllProjects
 argument_list|()
 decl_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|pc
 argument_list|,

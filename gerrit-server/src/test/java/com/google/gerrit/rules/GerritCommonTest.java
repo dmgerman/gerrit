@@ -96,7 +96,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|category
+name|allow
 import|;
 end_import
 
@@ -114,7 +114,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|grant
+name|category
 import|;
 end_import
 
@@ -572,7 +572,7 @@ argument_list|(
 name|local
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
@@ -596,7 +596,7 @@ argument_list|,
 literal|"refs/heads/*"
 argument_list|)
 expr_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
