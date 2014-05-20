@@ -741,7 +741,10 @@ annotation|@
 name|Override
 DECL|method|apply (TopLevelResource rsrc)
 specifier|public
-name|Object
+name|List
+argument_list|<
+name|?
+argument_list|>
 name|apply
 parameter_list|(
 name|TopLevelResource
