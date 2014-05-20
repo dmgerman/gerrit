@@ -143,32 +143,15 @@ throws|throws
 name|RestApiException
 function_decl|;
 DECL|method|list ()
-name|List
-argument_list|<
-name|ProjectInfo
-argument_list|>
+name|ListRequest
 name|list
 parameter_list|()
-throws|throws
-name|RestApiException
 function_decl|;
-DECL|method|list (ListParameter listParameter)
-name|List
-argument_list|<
-name|ProjectInfo
-argument_list|>
-name|list
-parameter_list|(
-name|ListParameter
-name|listParameter
-parameter_list|)
-throws|throws
-name|RestApiException
-function_decl|;
-DECL|class|ListParameter
+DECL|class|ListRequest
 specifier|public
+specifier|abstract
 class|class
-name|ListParameter
+name|ListRequest
 block|{
 DECL|field|description
 specifier|private
@@ -190,29 +173,21 @@ specifier|private
 name|int
 name|start
 decl_stmt|;
-DECL|method|ListParameter ()
+DECL|method|get ()
 specifier|public
-name|ListParameter
+specifier|abstract
+name|List
+argument_list|<
+name|ProjectInfo
+argument_list|>
+name|get
 parameter_list|()
-block|{}
-DECL|method|ListParameter (String prefix)
-specifier|public
-name|ListParameter
-parameter_list|(
-name|String
-name|prefix
-parameter_list|)
-block|{
-name|this
-operator|.
-name|prefix
-operator|=
-name|prefix
-expr_stmt|;
-block|}
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|withDescription (boolean description)
 specifier|public
-name|ListParameter
+name|ListRequest
 name|withDescription
 parameter_list|(
 name|boolean
@@ -231,7 +206,7 @@ return|;
 block|}
 DECL|method|withPrefix (String prefix)
 specifier|public
-name|ListParameter
+name|ListRequest
 name|withPrefix
 parameter_list|(
 name|String
@@ -250,7 +225,7 @@ return|;
 block|}
 DECL|method|withLimit (int limit)
 specifier|public
-name|ListParameter
+name|ListRequest
 name|withLimit
 parameter_list|(
 name|int
@@ -269,7 +244,7 @@ return|;
 block|}
 DECL|method|withStart (int start)
 specifier|public
-name|ListParameter
+name|ListRequest
 name|withStart
 parameter_list|(
 name|int
@@ -358,36 +333,9 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
-name|List
-argument_list|<
-name|ProjectInfo
-argument_list|>
+name|ListRequest
 name|list
 parameter_list|()
-throws|throws
-name|RestApiException
-block|{
-throw|throw
-operator|new
-name|NotImplementedException
-argument_list|()
-throw|;
-block|}
-annotation|@
-name|Override
-DECL|method|list (ListParameter listParameter)
-specifier|public
-name|List
-argument_list|<
-name|ProjectInfo
-argument_list|>
-name|list
-parameter_list|(
-name|ListParameter
-name|listParameter
-parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new

@@ -214,34 +214,24 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Shorthand for {@link #query(QueryParameter)} without any conditions (i.e. lists all changes).    */
 DECL|method|query ()
-name|List
-argument_list|<
-name|ChangeInfo
-argument_list|>
+name|QueryRequest
 name|query
 parameter_list|()
-throws|throws
-name|RestApiException
 function_decl|;
-DECL|method|query (QueryParameter queryParameter)
-name|List
-argument_list|<
-name|ChangeInfo
-argument_list|>
+DECL|method|query (String query)
+name|QueryRequest
 name|query
 parameter_list|(
-name|QueryParameter
-name|queryParameter
+name|String
+name|query
 parameter_list|)
-throws|throws
-name|RestApiException
 function_decl|;
-DECL|class|QueryParameter
+DECL|class|QueryRequest
 specifier|public
+specifier|abstract
 class|class
-name|QueryParameter
+name|QueryRequest
 block|{
 DECL|field|query
 specifier|private
@@ -275,29 +265,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|QueryParameter ()
+DECL|method|get ()
 specifier|public
-name|QueryParameter
+specifier|abstract
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|get
 parameter_list|()
-block|{}
-DECL|method|QueryParameter (String query)
-specifier|public
-name|QueryParameter
-parameter_list|(
-name|String
-name|query
-parameter_list|)
-block|{
-name|this
-operator|.
-name|query
-operator|=
-name|query
-expr_stmt|;
-block|}
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|withQuery (String query)
 specifier|public
-name|QueryParameter
+name|QueryRequest
 name|withQuery
 parameter_list|(
 name|String
@@ -316,7 +298,7 @@ return|;
 block|}
 DECL|method|withLimit (int limit)
 specifier|public
-name|QueryParameter
+name|QueryRequest
 name|withLimit
 parameter_list|(
 name|int
@@ -335,7 +317,7 @@ return|;
 block|}
 DECL|method|withStart (int start)
 specifier|public
-name|QueryParameter
+name|QueryRequest
 name|withStart
 parameter_list|(
 name|int
@@ -354,7 +336,7 @@ return|;
 block|}
 DECL|method|withOption (ListChangesOption options)
 specifier|public
-name|QueryParameter
+name|QueryRequest
 name|withOption
 parameter_list|(
 name|ListChangesOption
@@ -376,7 +358,7 @@ return|;
 block|}
 DECL|method|withOptions (ListChangesOption... options)
 specifier|public
-name|QueryParameter
+name|QueryRequest
 name|withOptions
 parameter_list|(
 name|ListChangesOption
@@ -404,7 +386,7 @@ return|;
 block|}
 DECL|method|withOptions (EnumSet<ListChangesOption> options)
 specifier|public
-name|QueryParameter
+name|QueryRequest
 name|withOptions
 parameter_list|(
 name|EnumSet
@@ -562,14 +544,9 @@ annotation|@
 name|Override
 DECL|method|query ()
 specifier|public
-name|List
-argument_list|<
-name|ChangeInfo
-argument_list|>
+name|QueryRequest
 name|query
 parameter_list|()
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
@@ -579,19 +556,14 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|query (QueryParameter queryParameter)
+DECL|method|query (String query)
 specifier|public
-name|List
-argument_list|<
-name|ChangeInfo
-argument_list|>
+name|QueryRequest
 name|query
 parameter_list|(
-name|QueryParameter
-name|queryParameter
+name|String
+name|query
 parameter_list|)
-throws|throws
-name|RestApiException
 block|{
 throw|throw
 operator|new
