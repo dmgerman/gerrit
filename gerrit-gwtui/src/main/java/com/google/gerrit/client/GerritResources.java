@@ -341,12 +341,12 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"important.png"
+literal|"merge.png"
 argument_list|)
-DECL|method|important ()
+DECL|method|merge ()
 specifier|public
 name|ImageResource
-name|important
+name|merge
 parameter_list|()
 function_decl|;
 block|}
