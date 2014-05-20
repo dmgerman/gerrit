@@ -1081,13 +1081,11 @@ block|{
 try|try
 block|{
 return|return
-operator|new
 name|ChangeInfoMapper
-argument_list|(
-name|s
-argument_list|)
 operator|.
-name|map
+name|INSTANCE
+operator|.
+name|apply
 argument_list|(
 name|changeJson
 operator|.
