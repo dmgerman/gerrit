@@ -1311,6 +1311,11 @@ name|Anchor
 argument_list|(
 name|gw
 operator|.
+name|getLinkName
+argument_list|()
+argument_list|,
+name|gw
+operator|.
 name|toRevision
 argument_list|(
 name|project
@@ -1320,11 +1325,6 @@ operator|.
 name|commit
 argument_list|()
 argument_list|)
-argument_list|,
-name|gw
-operator|.
-name|getLinkName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|a
