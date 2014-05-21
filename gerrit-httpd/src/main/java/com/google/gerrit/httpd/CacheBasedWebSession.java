@@ -503,6 +503,13 @@ name|identified
 expr_stmt|;
 if|if
 condition|(
+name|request
+operator|.
+name|getRequestURI
+argument_list|()
+operator|==
+literal|null
+operator|||
 operator|!
 name|GitSmartHttpTools
 operator|.
