@@ -100,7 +100,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|category
+name|allow
 import|;
 end_import
 
@@ -118,7 +118,7 @@ name|project
 operator|.
 name|Util
 operator|.
-name|grant
+name|category
 import|;
 end_import
 
@@ -544,7 +544,7 @@ operator|.
 name|getUUID
 argument_list|()
 decl_stmt|;
-name|grant
+name|allow
 argument_list|(
 name|cfg
 argument_list|,
