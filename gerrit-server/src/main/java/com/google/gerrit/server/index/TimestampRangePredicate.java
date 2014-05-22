@@ -184,6 +184,10 @@ name|Date
 import|;
 end_import
 
+begin_comment
+comment|// TODO: Migrate this to IntegerRangePredicate
+end_comment
+
 begin_class
 DECL|class|TimestampRangePredicate
 specifier|public

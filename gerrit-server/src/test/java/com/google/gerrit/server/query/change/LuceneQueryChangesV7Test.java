@@ -405,6 +405,18 @@ name|void
 name|byDefault
 parameter_list|()
 block|{}
+annotation|@
+name|Ignore
+annotation|@
+name|Override
+annotation|@
+name|Test
+DECL|method|bySize ()
+specifier|public
+name|void
+name|bySize
+parameter_list|()
+block|{}
 comment|// End tests for features not supported in V7.
 annotation|@
 name|Test

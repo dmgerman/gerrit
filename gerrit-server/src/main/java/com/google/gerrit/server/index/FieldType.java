@@ -109,6 +109,26 @@ argument_list|(
 literal|"INTEGER"
 argument_list|)
 decl_stmt|;
+comment|/** A single-integer-valued field matched using range queries. */
+DECL|field|INTEGER_RANGE
+specifier|public
+specifier|static
+specifier|final
+name|FieldType
+argument_list|<
+name|Integer
+argument_list|>
+name|INTEGER_RANGE
+init|=
+operator|new
+name|FieldType
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|(
+literal|"INTEGER_RANGE"
+argument_list|)
+decl_stmt|;
 comment|/** A single integer-valued field. */
 DECL|field|LONG
 specifier|public
