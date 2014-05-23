@@ -413,7 +413,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_47
+name|LUCENE_48
 decl_stmt|;
 DECL|field|searcher
 specifier|private
