@@ -379,12 +379,6 @@ specifier|final
 name|SignedToken
 name|restToken
 decl_stmt|;
-DECL|field|allowGoogleAccountUpgrade
-specifier|private
-specifier|final
-name|boolean
-name|allowGoogleAccountUpgrade
-decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|AuthConfig (@erritServerConfig final Config cfg)
@@ -763,36 +757,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|authType
-operator|==
-name|AuthType
-operator|.
-name|OPENID
-condition|)
-block|{
-name|allowGoogleAccountUpgrade
-operator|=
-name|cfg
-operator|.
-name|getBoolean
-argument_list|(
-literal|"auth"
-argument_list|,
-literal|"allowgoogleaccountupgrade"
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|allowGoogleAccountUpgrade
-operator|=
-literal|false
-expr_stmt|;
-block|}
 block|}
 DECL|method|toPatterns (Config cfg, String name)
 specifier|private
@@ -1041,16 +1005,6 @@ return|return
 name|restToken
 return|;
 block|}
-DECL|method|isAllowGoogleAccountUpgrade ()
-specifier|public
-name|boolean
-name|isAllowGoogleAccountUpgrade
-parameter_list|()
-block|{
-return|return
-name|allowGoogleAccountUpgrade
-return|;
-block|}
 comment|/** OpenID identities which the server permits for authentication. */
 DECL|method|getAllowedOpenIDs ()
 specifier|public
@@ -1211,27 +1165,6 @@ name|AccountExternalId
 name|id
 parameter_list|)
 block|{
-if|if
-condition|(
-name|id
-operator|.
-name|isScheme
-argument_list|(
-name|AccountExternalId
-operator|.
-name|LEGACY_GAE
-argument_list|)
-condition|)
-block|{
-comment|// Assume this is a trusted token, its a legacy import from
-comment|// a fairly well respected provider and only takes effect if
-comment|// the administrator has the import still enabled
-comment|//
-return|return
-name|isAllowGoogleAccountUpgrade
-argument_list|()
-return|;
-block|}
 if|if
 condition|(
 name|id
