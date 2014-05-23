@@ -410,6 +410,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -553,7 +565,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|repoManager
@@ -598,11 +613,14 @@ name|replacePatchSetFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetNotificationSender (ReviewDb db, ChangeHooks hooks, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, ApprovalsUtil approvalsUtil, AccountResolver accountResolver, CreateChangeSender.Factory createChangeSenderFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, ChangeIndexer indexer)
+DECL|method|PatchSetNotificationSender (Provider<ReviewDb> db, ChangeHooks hooks, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, ApprovalsUtil approvalsUtil, AccountResolver accountResolver, CreateChangeSender.Factory createChangeSenderFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, ChangeIndexer indexer)
 specifier|public
 name|PatchSetNotificationSender
 parameter_list|(
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|ChangeHooks
@@ -847,6 +865,9 @@ operator|.
 name|addReviewers
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|update
 argument_list|,
@@ -957,6 +978,9 @@ operator|.
 name|addReviewers
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|update
 argument_list|,
@@ -978,6 +1002,9 @@ operator|.
 name|getReviewers
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|notes
 argument_list|)
@@ -1008,6 +1035,9 @@ operator|.
 name|messageUUID
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
