@@ -540,12 +540,6 @@ name|ImmutableMap
 operator|.
 name|of
 argument_list|(
-literal|"google"
-argument_list|,
-name|OpenIdUrls
-operator|.
-name|URL_GOOGLE
-argument_list|,
 literal|"yahoo"
 argument_list|,
 name|OpenIdUrls
