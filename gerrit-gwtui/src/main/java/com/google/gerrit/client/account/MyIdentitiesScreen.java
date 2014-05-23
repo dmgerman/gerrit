@@ -1682,9 +1682,7 @@ name|k
 operator|.
 name|isScheme
 argument_list|(
-name|OpenIdUrls
-operator|.
-name|URL_GOOGLE
+literal|"https://www.google.com/accounts/o8/id"
 argument_list|)
 condition|)
 block|{

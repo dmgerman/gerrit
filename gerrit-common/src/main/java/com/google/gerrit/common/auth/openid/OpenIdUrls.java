@@ -101,15 +101,6 @@ name|URL_YAHOO
 init|=
 literal|"https://me.yahoo.com"
 decl_stmt|;
-DECL|field|URL_GOOGLE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|URL_GOOGLE
-init|=
-literal|"https://www.google.com/accounts/o8/id"
-decl_stmt|;
 block|}
 end_class
 
