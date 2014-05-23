@@ -2286,6 +2286,29 @@ return|return
 name|changedLines
 return|;
 block|}
+DECL|method|setChangedLines (int insertions, int deletions)
+specifier|public
+name|void
+name|setChangedLines
+parameter_list|(
+name|int
+name|insertions
+parameter_list|,
+name|int
+name|deletions
+parameter_list|)
+block|{
+name|changedLines
+operator|=
+operator|new
+name|ChangedLines
+argument_list|(
+name|insertions
+argument_list|,
+name|deletions
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getId ()
 specifier|public
 name|Change
