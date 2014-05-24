@@ -270,6 +270,30 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -279,6 +303,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|PutDescription
 specifier|public
 class|class
@@ -314,18 +340,24 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutDescription (GroupCache groupCache, ReviewDb db)
+DECL|method|PutDescription (GroupCache groupCache, Provider<ReviewDb> db)
 name|PutDescription
 parameter_list|(
 name|GroupCache
 name|groupCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|)
 block|{
@@ -424,6 +456,9 @@ name|group
 init|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroups
 argument_list|()
 operator|.
@@ -466,6 +501,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountGroups
 argument_list|()

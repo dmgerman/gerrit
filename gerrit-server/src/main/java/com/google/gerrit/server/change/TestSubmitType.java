@@ -306,6 +306,18 @@ begin_import
 import|import
 name|com
 operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
 name|googlecode
 operator|.
 name|prolog_cafe
@@ -378,7 +390,10 @@ block|{
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|changeDataFactory
@@ -417,10 +432,13 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitType (ReviewDb db, ChangeData.Factory changeDataFactory, RulesCache rules)
+DECL|method|TestSubmitType (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RulesCache rules)
 name|TestSubmitType
 parameter_list|(
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|ChangeData
@@ -528,6 +546,9 @@ operator|new
 name|SubmitRuleEvaluator
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|rsrc
 operator|.
@@ -557,6 +578,9 @@ operator|.
 name|create
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|rsrc
 operator|.

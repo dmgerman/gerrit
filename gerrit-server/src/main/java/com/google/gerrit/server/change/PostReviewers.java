@@ -416,6 +416,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -688,6 +702,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -771,6 +797,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|PostReviewers
 specifier|public
 class|class
@@ -892,7 +920,10 @@ decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
-name|IdentifiedUser
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
 name|currentUser
 decl_stmt|;
 DECL|field|identifiedUserFactory
@@ -935,7 +966,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, AddReviewerSender.Factory addReviewerSenderFactory, Provider<GroupsCollection> groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, IdentifiedUser currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json, ChangeIndexer indexer)
+DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, AddReviewerSender.Factory addReviewerSenderFactory, Provider<GroupsCollection> groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, Provider<CurrentUser> currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json, ChangeIndexer indexer)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -983,7 +1014,10 @@ operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
-name|IdentifiedUser
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
 name|currentUser
 parameter_list|,
 name|IdentifiedUser
@@ -2043,6 +2077,17 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|IdentifiedUser
+name|identifiedUser
+init|=
+operator|(
+name|IdentifiedUser
+operator|)
+name|currentUser
+operator|.
+name|get
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|PatchSetApproval
@@ -2061,7 +2106,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|currentUser
+name|identifiedUser
 operator|.
 name|getAccountId
 argument_list|()
@@ -2105,7 +2150,7 @@ name|cm
 operator|.
 name|setFrom
 argument_list|(
-name|currentUser
+name|identifiedUser
 operator|.
 name|getAccountId
 argument_list|()

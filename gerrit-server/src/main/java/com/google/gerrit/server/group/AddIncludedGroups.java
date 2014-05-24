@@ -436,6 +436,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -455,6 +467,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|AddIncludedGroups
 specifier|public
 class|class
@@ -609,7 +623,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|json
@@ -620,7 +637,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, ReviewDb db, GroupJson json)
+DECL|method|AddIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, GroupJson json)
 specifier|public
 name|AddIncludedGroups
 parameter_list|(
@@ -633,7 +650,10 @@ parameter_list|,
 name|GroupIncludeCache
 name|groupIncludeCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|GroupJson
@@ -880,6 +900,9 @@ name|agi
 init|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupById
 argument_list|()
 operator|.
@@ -959,6 +982,9 @@ condition|)
 block|{
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupByIdAud
 argument_list|()
 operator|.
@@ -968,6 +994,9 @@ name|newIncludedGroupsAudits
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountGroupById
 argument_list|()
@@ -1017,6 +1046,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Singleton
 DECL|class|PutIncludedGroup
 specifier|static
 class|class
@@ -1165,6 +1196,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|UpdateIncludedGroup
 specifier|static
 class|class

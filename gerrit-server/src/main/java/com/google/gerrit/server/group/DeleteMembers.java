@@ -404,6 +404,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -423,6 +435,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|DeleteMembers
 specifier|public
 class|class
@@ -453,7 +467,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|self
@@ -467,7 +484,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteMembers (Provider<AccountsCollection> accounts, AccountCache accountCache, ReviewDb db, Provider<CurrentUser> self)
+DECL|method|DeleteMembers (Provider<AccountsCollection> accounts, AccountCache accountCache, Provider<ReviewDb> db, Provider<CurrentUser> self)
 name|DeleteMembers
 parameter_list|(
 name|Provider
@@ -479,7 +496,10 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|Provider
@@ -700,6 +720,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupMembers
 argument_list|()
 operator|.
@@ -814,6 +837,9 @@ name|a
 range|:
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupMembersAudit
 argument_list|()
 operator|.
@@ -906,6 +932,9 @@ block|}
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupMembersAudit
 argument_list|()
 operator|.
@@ -915,6 +944,9 @@ name|auditUpdates
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountGroupMembersAudit
 argument_list|()
@@ -970,6 +1002,9 @@ name|m
 range|:
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupMembers
 argument_list|()
 operator|.
@@ -996,6 +1031,8 @@ return|return
 name|members
 return|;
 block|}
+annotation|@
+name|Singleton
 DECL|class|DeleteMember
 specifier|static
 class|class

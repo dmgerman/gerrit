@@ -222,6 +222,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -337,7 +349,10 @@ block|{
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|repoManager
@@ -348,10 +363,13 @@ name|repoManager
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IncludedIn (ReviewDb db, GitRepositoryManager repoManager)
+DECL|method|IncludedIn (Provider<ReviewDb> db, GitRepositoryManager repoManager)
 name|IncludedIn
 parameter_list|(
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|GitRepositoryManager
@@ -402,6 +420,9 @@ name|PatchSet
 name|ps
 init|=
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchSets
 argument_list|()

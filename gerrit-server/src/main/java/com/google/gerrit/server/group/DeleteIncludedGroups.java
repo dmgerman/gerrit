@@ -418,6 +418,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -437,6 +449,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|DeleteIncludedGroups
 specifier|public
 class|class
@@ -467,7 +481,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|self
@@ -481,7 +498,7 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, ReviewDb db, Provider<CurrentUser> self)
+DECL|method|DeleteIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, Provider<CurrentUser> self)
 name|DeleteIncludedGroups
 parameter_list|(
 name|Provider
@@ -493,7 +510,10 @@ parameter_list|,
 name|GroupIncludeCache
 name|groupIncludeCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|Provider
@@ -726,6 +746,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupById
 argument_list|()
 operator|.
@@ -811,11 +834,13 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|AccountGroupById
 name|g
 range|:
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountGroupById
 argument_list|()
@@ -910,6 +935,9 @@ name|a
 range|:
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupByIdAud
 argument_list|()
 operator|.
@@ -972,6 +1000,9 @@ block|}
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupByIdAud
 argument_list|()
 operator|.
@@ -981,6 +1012,8 @@ name|auditUpdates
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Singleton
 DECL|class|DeleteIncludedGroup
 specifier|static
 class|class

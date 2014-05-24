@@ -176,6 +176,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -266,6 +278,8 @@ name|GlobalCapability
 operator|.
 name|RUN_GC
 argument_list|)
+annotation|@
+name|Singleton
 DECL|class|GetStatistics
 specifier|public
 class|class

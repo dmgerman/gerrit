@@ -516,6 +516,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -535,6 +547,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|AddMembers
 specifier|public
 class|class
@@ -716,12 +730,15 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, Provider<AccountsCollection> accounts, AccountResolver accountResolver, AccountCache accountCache, AccountInfo.Loader.Factory infoFactory, ReviewDb db)
+DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, Provider<AccountsCollection> accounts, AccountResolver accountResolver, AccountCache accountCache, AccountInfo.Loader.Factory infoFactory, Provider<ReviewDb> db)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -749,7 +766,10 @@ operator|.
 name|Factory
 name|infoFactory
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|)
 block|{
@@ -1038,6 +1058,9 @@ name|m
 init|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupMembers
 argument_list|()
 operator|.
@@ -1111,6 +1134,9 @@ expr_stmt|;
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroupMembersAudit
 argument_list|()
 operator|.
@@ -1120,6 +1146,9 @@ name|newAccountGroupMemberAudits
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountGroupMembers
 argument_list|()
@@ -1466,6 +1495,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|UpdateMember
 specifier|static
 class|class

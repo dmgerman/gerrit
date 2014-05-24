@@ -202,6 +202,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|GerritPersonIdent
 import|;
 end_import
@@ -460,6 +474,30 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -674,7 +712,19 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
 begin_class
+annotation|@
+name|Singleton
 DECL|class|CherryPickChange
 specifier|public
 class|class
@@ -696,7 +746,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|gitManager
@@ -705,16 +758,19 @@ specifier|final
 name|GitRepositoryManager
 name|gitManager
 decl_stmt|;
-DECL|field|myIdent
+DECL|field|serverTimeZone
 specifier|private
 specifier|final
-name|PersonIdent
-name|myIdent
+name|TimeZone
+name|serverTimeZone
 decl_stmt|;
 DECL|field|currentUser
 specifier|private
 specifier|final
-name|IdentifiedUser
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
 name|currentUser
 decl_stmt|;
 DECL|field|commitValidatorsFactory
@@ -750,11 +806,14 @@ name|mergeUtilFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CherryPickChange (final ReviewDb db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final IdentifiedUser currentUser, final CommitValidators.Factory commitValidatorsFactory, final ChangeInserter.Factory changeInserterFactory, final PatchSetInserter.Factory patchSetInserterFactory, final MergeUtil.Factory mergeUtilFactory)
+DECL|method|CherryPickChange (final Provider<ReviewDb> db, @GerritPersonIdent final PersonIdent myIdent, final GitRepositoryManager gitManager, final Provider<CurrentUser> currentUser, final CommitValidators.Factory commitValidatorsFactory, final ChangeInserter.Factory changeInserterFactory, final PatchSetInserter.Factory patchSetInserterFactory, final MergeUtil.Factory mergeUtilFactory)
 name|CherryPickChange
 parameter_list|(
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 annotation|@
@@ -768,7 +827,10 @@ name|GitRepositoryManager
 name|gitManager
 parameter_list|,
 specifier|final
-name|IdentifiedUser
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
 name|currentUser
 parameter_list|,
 specifier|final
@@ -810,9 +872,12 @@ name|gitManager
 expr_stmt|;
 name|this
 operator|.
-name|myIdent
+name|serverTimeZone
 operator|=
 name|myIdent
+operator|.
+name|getTimeZone
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -904,6 +969,9 @@ name|patch
 init|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|patchSets
 argument_list|()
 operator|.
@@ -956,6 +1024,9 @@ name|project
 init|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|changes
 argument_list|()
 operator|.
@@ -965,6 +1036,17 @@ name|changeId
 argument_list|)
 operator|.
 name|getProject
+argument_list|()
+decl_stmt|;
+name|IdentifiedUser
+name|identifiedUser
+init|=
+operator|(
+name|IdentifiedUser
+operator|)
+name|currentUser
+operator|.
+name|get
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -1079,19 +1161,16 @@ decl_stmt|;
 name|PersonIdent
 name|committerIdent
 init|=
-name|currentUser
+name|identifiedUser
 operator|.
 name|newCommitterIdent
 argument_list|(
-name|myIdent
+name|TimeUtil
 operator|.
-name|getWhen
+name|nowTs
 argument_list|()
 argument_list|,
-name|myIdent
-operator|.
-name|getTimeZone
-argument_list|()
+name|serverTimeZone
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1114,7 +1193,7 @@ operator|.
 name|getAuthorIdent
 argument_list|()
 argument_list|,
-name|myIdent
+name|committerIdent
 argument_list|,
 name|message
 argument_list|)
@@ -1294,6 +1373,9 @@ name|destChanges
 init|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|changes
 argument_list|()
 operator|.
@@ -1305,6 +1387,9 @@ operator|.
 name|NameKey
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|changes
 argument_list|()
@@ -1386,7 +1471,7 @@ name|cherryPickCommit
 argument_list|,
 name|refControl
 argument_list|,
-name|currentUser
+name|identifiedUser
 argument_list|)
 return|;
 block|}
@@ -1412,6 +1497,8 @@ argument_list|,
 name|cherryPickCommit
 argument_list|,
 name|refControl
+argument_list|,
+name|identifiedUser
 argument_list|)
 return|;
 block|}
@@ -1434,7 +1521,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, PatchSet.Id patchSetId, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser uploader)
+DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, PatchSet.Id patchSetId, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
 specifier|private
 name|Change
 operator|.
@@ -1462,7 +1549,7 @@ name|RefControl
 name|refControl
 parameter_list|,
 name|IdentifiedUser
-name|uploader
+name|identifiedUser
 parameter_list|)
 throws|throws
 name|InvalidChangeOperationException
@@ -1515,11 +1602,13 @@ operator|.
 name|getPatchSetId
 argument_list|()
 decl_stmt|;
-specifier|final
 name|PatchSet
 name|current
 init|=
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|patchSets
 argument_list|()
@@ -1556,7 +1645,7 @@ argument_list|)
 operator|.
 name|setUploader
 argument_list|(
-name|uploader
+name|identifiedUser
 operator|.
 name|getAccountId
 argument_list|()
@@ -1577,7 +1666,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|createNewChange (Repository git, RevWalk revWalk, Change.Key changeKey, Project.NameKey project, PatchSet.Id patchSetId, Ref destRef, RevCommit cherryPickCommit, RefControl refControl)
+DECL|method|createNewChange (Repository git, RevWalk revWalk, Change.Key changeKey, Project.NameKey project, PatchSet.Id patchSetId, Ref destRef, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
 specifier|private
 name|Change
 operator|.
@@ -1613,6 +1702,9 @@ name|cherryPickCommit
 parameter_list|,
 name|RefControl
 name|refControl
+parameter_list|,
+name|IdentifiedUser
+name|identifiedUser
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1636,11 +1728,14 @@ name|Id
 argument_list|(
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|nextChangeId
 argument_list|()
 argument_list|)
 argument_list|,
-name|currentUser
+name|identifiedUser
 operator|.
 name|getAccountId
 argument_list|()
@@ -1742,7 +1837,7 @@ argument_list|()
 argument_list|,
 name|cherryPickCommit
 argument_list|,
-name|currentUser
+name|identifiedUser
 argument_list|)
 decl_stmt|;
 try|try
@@ -1869,6 +1964,8 @@ argument_list|,
 name|change
 argument_list|,
 name|cherryPickCommit
+argument_list|,
+name|identifiedUser
 argument_list|)
 argument_list|)
 operator|.
@@ -1882,7 +1979,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|buildChangeMessage (PatchSet.Id patchSetId, Change dest, RevCommit cherryPickCommit)
+DECL|method|buildChangeMessage (PatchSet.Id patchSetId, Change dest, RevCommit cherryPickCommit, IdentifiedUser identifiedUser)
 specifier|private
 name|ChangeMessage
 name|buildChangeMessage
@@ -1897,6 +1994,9 @@ name|dest
 parameter_list|,
 name|RevCommit
 name|cherryPickCommit
+parameter_list|,
+name|IdentifiedUser
+name|identifiedUser
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1922,10 +2022,13 @@ operator|.
 name|messageUUID
 argument_list|(
 name|db
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
-name|currentUser
+name|identifiedUser
 operator|.
 name|getAccountId
 argument_list|()

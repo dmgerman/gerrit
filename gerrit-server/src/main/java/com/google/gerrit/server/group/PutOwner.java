@@ -332,6 +332,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -341,6 +353,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|PutOwner
 specifier|public
 class|class
@@ -385,7 +399,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|json
@@ -396,7 +413,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutOwner (Provider<GroupsCollection> groupsCollection, GroupCache groupCache, ReviewDb db, GroupJson json)
+DECL|method|PutOwner (Provider<GroupsCollection> groupsCollection, GroupCache groupCache, Provider<ReviewDb> db, GroupJson json)
 name|PutOwner
 parameter_list|(
 name|Provider
@@ -408,7 +425,10 @@ parameter_list|,
 name|GroupCache
 name|groupCache
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|GroupJson
@@ -536,6 +556,9 @@ name|group
 operator|=
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountGroups
 argument_list|()
 operator|.
@@ -605,6 +628,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountGroups
 argument_list|()

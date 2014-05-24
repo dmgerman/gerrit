@@ -272,6 +272,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -281,6 +293,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|SetDiffPreferences
 specifier|public
 class|class
@@ -387,12 +401,15 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetDiffPreferences (Provider<CurrentUser> self, ReviewDb db)
+DECL|method|SetDiffPreferences (Provider<CurrentUser> self, Provider<ReviewDb> db)
 name|SetDiffPreferences
 parameter_list|(
 name|Provider
@@ -401,7 +418,10 @@ name|CurrentUser
 argument_list|>
 name|self
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|)
 block|{
@@ -501,6 +521,9 @@ name|p
 decl_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accounts
 argument_list|()
 operator|.
@@ -514,6 +537,9 @@ block|{
 name|p
 operator|=
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accountDiffPreferences
 argument_list|()
@@ -902,6 +928,9 @@ expr_stmt|;
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accountDiffPreferences
 argument_list|()
 operator|.
@@ -917,6 +946,9 @@ argument_list|)
 expr_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|commit
 argument_list|()
 expr_stmt|;
@@ -924,6 +956,9 @@ block|}
 finally|finally
 block|{
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|rollback
 argument_list|()

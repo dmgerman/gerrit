@@ -438,6 +438,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -467,6 +479,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|StarredChanges
 specifier|public
 class|class
@@ -867,6 +881,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|Create
 specifier|public
 specifier|static
@@ -1061,6 +1077,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|Put
 specifier|static
 class|class
@@ -1153,6 +1171,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|Delete
 specifier|public
 specifier|static

@@ -192,6 +192,18 @@ name|Inject
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
 begin_class
 annotation|@
 name|RequiresCapability
@@ -200,6 +212,8 @@ name|GlobalCapability
 operator|.
 name|ADMINISTRATE_SERVER
 argument_list|)
+annotation|@
+name|Singleton
 DECL|class|DisablePlugin
 class|class
 name|DisablePlugin

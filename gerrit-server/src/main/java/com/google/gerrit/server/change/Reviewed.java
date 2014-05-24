@@ -184,6 +184,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -202,6 +214,8 @@ specifier|static
 class|class
 name|Input
 block|{   }
+annotation|@
+name|Singleton
 DECL|class|PutReviewed
 specifier|static
 class|class
@@ -353,6 +367,8 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Singleton
 DECL|class|DeleteReviewed
 specifier|static
 class|class

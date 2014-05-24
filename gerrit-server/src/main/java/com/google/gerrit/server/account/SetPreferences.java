@@ -494,6 +494,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -551,6 +563,8 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|SetPreferences
 specifier|public
 class|class
@@ -678,7 +692,10 @@ decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 decl_stmt|;
 DECL|field|metaDataUpdateFactory
@@ -697,7 +714,7 @@ name|allUsersName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SetPreferences (Provider<CurrentUser> self, AccountCache cache, ReviewDb db, MetaDataUpdate.User metaDataUpdateFactory, AllUsersName allUsersName)
+DECL|method|SetPreferences (Provider<CurrentUser> self, AccountCache cache, Provider<ReviewDb> db, MetaDataUpdate.User metaDataUpdateFactory, AllUsersName allUsersName)
 name|SetPreferences
 parameter_list|(
 name|Provider
@@ -709,7 +726,10 @@ parameter_list|,
 name|AccountCache
 name|cache
 parameter_list|,
+name|Provider
+argument_list|<
 name|ReviewDb
+argument_list|>
 name|db
 parameter_list|,
 name|MetaDataUpdate
@@ -856,6 +876,9 @@ argument_list|)
 decl_stmt|;
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accounts
 argument_list|()
 operator|.
@@ -870,6 +893,9 @@ name|Account
 name|a
 init|=
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|accounts
 argument_list|()
@@ -1242,6 +1268,9 @@ expr_stmt|;
 block|}
 name|db
 operator|.
+name|get
+argument_list|()
+operator|.
 name|accounts
 argument_list|()
 operator|.
@@ -1256,6 +1285,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|commit
 argument_list|()
@@ -1308,6 +1340,9 @@ name|close
 argument_list|()
 expr_stmt|;
 name|db
+operator|.
+name|get
+argument_list|()
 operator|.
 name|rollback
 argument_list|()
