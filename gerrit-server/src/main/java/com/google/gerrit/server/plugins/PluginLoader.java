@@ -1760,6 +1760,13 @@ argument_list|(
 name|env
 argument_list|)
 expr_stmt|;
+name|env
+operator|.
+name|onStopPlugin
+argument_list|(
+name|plugin
+argument_list|)
+expr_stmt|;
 name|running
 operator|.
 name|remove
