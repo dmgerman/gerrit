@@ -261,7 +261,7 @@ block|{
 return|return
 name|plugin
 operator|+
-literal|"."
+literal|"-"
 operator|+
 name|name
 return|;
