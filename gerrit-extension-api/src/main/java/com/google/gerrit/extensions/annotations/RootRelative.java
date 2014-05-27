@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation applied to HttpServletRequest and HttpServletResponse  * when they are inherited from Gerrit instead of being injected by  * a plugin's ServletModule.  This means that the path returned by  * {@link javax.servlet.http.HttpServletRequest#getPathInfo} is  * relative to the Gerrit root instead of a path within the plugin's  * URL space.  */
+comment|/**  * Annotation applied to HttpServletRequest and HttpServletResponse  * when they are inherited from Gerrit instead of being injected by  * a plugin's ServletModule.  This means that the path returned by  * 'javax.servlet.http.HttpServletRequest#getPathInfo()' is  * relative to the Gerrit root instead of a path within the plugin's  * URL space.  */
 end_comment
 
 begin_annotation_defn
