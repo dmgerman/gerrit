@@ -467,13 +467,11 @@ operator|.
 name|Factory
 name|api
 decl_stmt|;
-DECL|field|createChangeFactory
+DECL|field|createChange
 specifier|private
 specifier|final
 name|CreateChange
-operator|.
-name|Factory
-name|createChangeFactory
+name|createChange
 decl_stmt|;
 DECL|field|queryProvider
 specifier|private
@@ -486,7 +484,7 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesImpl (ChangesCollection changes, ChangeApiImpl.Factory api, CreateChange.Factory createChangeFactory, Provider<QueryChanges> queryProvider)
+DECL|method|ChangesImpl (ChangesCollection changes, ChangeApiImpl.Factory api, CreateChange createChange, Provider<QueryChanges> queryProvider)
 name|ChangesImpl
 parameter_list|(
 name|ChangesCollection
@@ -498,9 +496,7 @@ name|Factory
 name|api
 parameter_list|,
 name|CreateChange
-operator|.
-name|Factory
-name|createChangeFactory
+name|createChange
 parameter_list|,
 name|Provider
 argument_list|<
@@ -523,9 +519,9 @@ name|api
 expr_stmt|;
 name|this
 operator|.
-name|createChangeFactory
+name|createChange
 operator|=
-name|createChangeFactory
+name|createChange
 expr_stmt|;
 name|this
 operator|.
@@ -694,10 +690,7 @@ operator|.
 name|ChangeInfo
 name|out
 init|=
-name|createChangeFactory
-operator|.
-name|create
-argument_list|()
+name|createChange
 operator|.
 name|apply
 argument_list|(

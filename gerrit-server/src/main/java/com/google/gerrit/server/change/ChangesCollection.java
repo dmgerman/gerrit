@@ -427,17 +427,15 @@ argument_list|>
 argument_list|>
 name|views
 decl_stmt|;
-DECL|field|createChangeFactory
+DECL|field|createChange
 specifier|private
 specifier|final
 name|CreateChange
-operator|.
-name|Factory
-name|createChangeFactory
+name|createChange
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<ReviewDb> dbProvider, Provider<CurrentUser> user, ChangeControl.GenericFactory changeControlFactory, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, CreateChange.Factory createChangeFactory)
+DECL|method|ChangesCollection ( Provider<ReviewDb> dbProvider, Provider<CurrentUser> user, ChangeControl.GenericFactory changeControlFactory, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, CreateChange createChange)
 name|ChangesCollection
 parameter_list|(
 name|Provider
@@ -473,9 +471,7 @@ argument_list|>
 name|views
 parameter_list|,
 name|CreateChange
-operator|.
-name|Factory
-name|createChangeFactory
+name|createChange
 parameter_list|)
 block|{
 name|this
@@ -510,9 +506,9 @@ name|views
 expr_stmt|;
 name|this
 operator|.
-name|createChangeFactory
+name|createChange
 operator|=
-name|createChangeFactory
+name|createChange
 expr_stmt|;
 block|}
 annotation|@
@@ -934,10 +930,7 @@ throws|throws
 name|RestApiException
 block|{
 return|return
-name|createChangeFactory
-operator|.
-name|create
-argument_list|()
+name|createChange
 return|;
 block|}
 block|}
