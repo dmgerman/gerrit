@@ -1587,8 +1587,18 @@ specifier|final
 name|Revisions
 name|revisions
 decl_stmt|;
+DECL|field|webLinks
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|WebLinks
+argument_list|>
+name|webLinks
+decl_stmt|;
 DECL|field|options
 specifier|private
+specifier|final
 name|EnumSet
 argument_list|<
 name|ListChangesOption
@@ -1601,29 +1611,6 @@ name|AccountInfo
 operator|.
 name|Loader
 name|accountLoader
-decl_stmt|;
-DECL|field|lastControl
-specifier|private
-name|ChangeControl
-name|lastControl
-decl_stmt|;
-DECL|field|reviewed
-specifier|private
-name|Set
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
-name|reviewed
-decl_stmt|;
-DECL|field|webLinks
-specifier|private
-name|Provider
-argument_list|<
-name|WebLinks
-argument_list|>
-name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
@@ -2003,6 +1990,19 @@ name|DETAILED_ACCOUNTS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|reviewed
+init|=
+name|Sets
+operator|.
+name|newHashSet
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|has
@@ -2011,7 +2011,9 @@ name|REVIEWED
 argument_list|)
 condition|)
 block|{
-name|ensureReviewedLoaded
+name|reviewed
+operator|=
+name|loadReviewed
 argument_list|(
 name|Collections
 operator|.
@@ -2028,6 +2030,8 @@ init|=
 name|toChangeInfo
 argument_list|(
 name|cd
+argument_list|,
+name|reviewed
 argument_list|,
 name|limitToPsId
 argument_list|)
@@ -2171,6 +2175,19 @@ name|all
 argument_list|)
 expr_stmt|;
 block|}
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|reviewed
+init|=
+name|Sets
+operator|.
+name|newHashSet
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|has
@@ -2179,7 +2196,9 @@ name|REVIEWED
 argument_list|)
 condition|)
 block|{
-name|ensureReviewedLoaded
+name|reviewed
+operator|=
+name|loadReviewed
 argument_list|(
 name|all
 argument_list|)
@@ -2246,6 +2265,8 @@ argument_list|(
 name|out
 argument_list|,
 name|changes
+argument_list|,
+name|reviewed
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2277,7 +2298,7 @@ name|option
 argument_list|)
 return|;
 block|}
-DECL|method|toChangeInfo (Map<Change.Id, ChangeInfo> out, List<ChangeData> changes)
+DECL|method|toChangeInfo (Map<Change.Id, ChangeInfo> out, List<ChangeData> changes, Set<Change.Id> reviewed)
 specifier|private
 name|List
 argument_list|<
@@ -2300,6 +2321,14 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|changes
+parameter_list|,
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|reviewed
 parameter_list|)
 throws|throws
 name|OrmException
@@ -2355,6 +2384,8 @@ operator|=
 name|toChangeInfo
 argument_list|(
 name|cd
+argument_list|,
+name|reviewed
 argument_list|,
 name|Optional
 operator|.
@@ -2417,13 +2448,21 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|toChangeInfo (ChangeData cd, Optional<PatchSet.Id> limitToPsId)
+DECL|method|toChangeInfo (ChangeData cd, Set<Change.Id> reviewed, Optional<PatchSet.Id> limitToPsId)
 specifier|private
 name|ChangeInfo
 name|toChangeInfo
 parameter_list|(
 name|ChangeData
 name|cd
+parameter_list|,
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|reviewed
 parameter_list|,
 name|Optional
 argument_list|<
@@ -2436,6 +2475,22 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|ChangeControl
+name|ctl
+init|=
+name|cd
+operator|.
+name|changeControl
+argument_list|()
+operator|.
+name|forUser
+argument_list|(
+name|userProvider
+operator|.
+name|get
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|ChangeInfo
 name|out
 init|=
@@ -2682,6 +2737,8 @@ name|labels
 operator|=
 name|labelsFor
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|has
@@ -2739,6 +2796,8 @@ name|permittedLabels
 operator|=
 name|permittedLabels
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|)
 expr_stmt|;
@@ -2749,6 +2808,8 @@ name|removableReviewers
 operator|=
 name|removableReviewers
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|out
@@ -2791,6 +2852,8 @@ name|messages
 operator|=
 name|messages
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|src
@@ -2826,6 +2889,8 @@ name|revisions
 operator|=
 name|revisions
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|limitToPsId
@@ -2932,10 +2997,7 @@ name|changes
 operator|.
 name|parse
 argument_list|(
-name|control
-argument_list|(
-name|cd
-argument_list|)
+name|ctl
 argument_list|)
 argument_list|,
 name|userProvider
@@ -2962,70 +3024,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|lastControl
-operator|=
-literal|null
-expr_stmt|;
 return|return
 name|out
 return|;
 block|}
-DECL|method|control (ChangeData cd)
-specifier|private
-name|ChangeControl
-name|control
-parameter_list|(
-name|ChangeData
-name|cd
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-if|if
-condition|(
-name|lastControl
-operator|!=
-literal|null
-operator|&&
-name|cd
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|lastControl
-operator|.
-name|getChange
-argument_list|()
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-condition|)
-block|{
-return|return
-name|lastControl
-return|;
-block|}
-return|return
-name|lastControl
-operator|=
-name|cd
-operator|.
-name|changeControl
-argument_list|()
-operator|.
-name|forUser
-argument_list|(
-name|userProvider
-operator|.
-name|get
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|submitRecords (ChangeData cd)
+DECL|method|submitRecords (ChangeControl ctl, ChangeData cd)
 specifier|private
 name|List
 argument_list|<
@@ -3033,6 +3036,9 @@ name|SubmitRecord
 argument_list|>
 name|submitRecords
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -3056,14 +3062,6 @@ name|getSubmitRecords
 argument_list|()
 return|;
 block|}
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|ctl
@@ -3132,7 +3130,7 @@ name|getSubmitRecords
 argument_list|()
 return|;
 block|}
-DECL|method|labelsFor (ChangeData cd, boolean standard, boolean detailed)
+DECL|method|labelsFor (ChangeControl ctl, ChangeData cd, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -3142,6 +3140,9 @@ name|LabelInfo
 argument_list|>
 name|labelsFor
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -3167,14 +3168,6 @@ return|return
 literal|null
 return|;
 block|}
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|ctl
@@ -3211,6 +3204,8 @@ block|{
 return|return
 name|labelsForOpenChange
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|labelTypes
@@ -3237,7 +3232,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|labelsForOpenChange (ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
+DECL|method|labelsForOpenChange (ChangeControl ctl, ChangeData cd, LabelTypes labelTypes, boolean standard, boolean detailed)
 specifier|private
 name|Map
 argument_list|<
@@ -3247,6 +3242,9 @@ name|LabelInfo
 argument_list|>
 name|labelsForOpenChange
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -3272,6 +3270,8 @@ name|labels
 init|=
 name|initLabels
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|labelTypes
@@ -3286,6 +3286,8 @@ condition|)
 block|{
 name|setAllApprovals
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|labels
@@ -3414,7 +3416,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|initLabels (ChangeData cd, LabelTypes labelTypes, boolean standard)
+DECL|method|initLabels (ChangeControl ctl, ChangeData cd, LabelTypes labelTypes, boolean standard)
 specifier|private
 name|Map
 argument_list|<
@@ -3424,6 +3426,9 @@ name|LabelInfo
 argument_list|>
 name|initLabels
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -3462,6 +3467,8 @@ name|rec
 range|:
 name|submitRecords
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|)
 control|)
@@ -3807,11 +3814,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setAllApprovals (ChangeData cd, Map<String, LabelInfo> labels)
+DECL|method|setAllApprovals (ChangeControl baseCtrl, ChangeData cd, Map<String, LabelInfo> labels)
 specifier|private
 name|void
 name|setAllApprovals
 parameter_list|(
+name|ChangeControl
+name|baseCtrl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -3826,23 +3836,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ChangeControl
-name|baseCtrl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|baseCtrl
-operator|==
-literal|null
-condition|)
-block|{
-return|return;
-block|}
 comment|// Include a user in the output for this label if either:
 comment|//  - They are an explicit reviewer.
 comment|//  - They ever voted on this change.
@@ -4719,7 +4712,7 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|permittedLabels (ChangeData cd)
+DECL|method|permittedLabels (ChangeControl ctl, ChangeData cd)
 specifier|private
 name|Map
 argument_list|<
@@ -4732,20 +4725,15 @@ argument_list|>
 argument_list|>
 name|permittedLabels
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|ctl
@@ -4785,6 +4773,8 @@ name|rec
 range|:
 name|submitRecords
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|)
 control|)
@@ -4981,7 +4971,7 @@ name|asMap
 argument_list|()
 return|;
 block|}
-DECL|method|messages (ChangeData cd, Map<PatchSet.Id, PatchSet> map)
+DECL|method|messages (ChangeControl ctl, ChangeData cd, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Collection
 argument_list|<
@@ -4989,6 +4979,9 @@ name|ChangeMessageInfo
 argument_list|>
 name|messages
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -5005,25 +4998,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|ctl
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|List
 argument_list|<
 name|ChangeMessage
@@ -5257,7 +5231,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|removableReviewers (ChangeData cd, Collection<LabelInfo> labels)
+DECL|method|removableReviewers (ChangeControl ctl, ChangeData cd, Collection<LabelInfo> labels)
 specifier|private
 name|Collection
 argument_list|<
@@ -5265,6 +5239,9 @@ name|AccountInfo
 argument_list|>
 name|removableReviewers
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -5277,25 +5254,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|ctl
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|Set
 argument_list|<
 name|Account
@@ -5458,10 +5416,15 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|ensureReviewedLoaded (Iterable<ChangeData> all)
+DECL|method|loadReviewed (Iterable<ChangeData> all)
 specifier|private
-name|void
-name|ensureReviewedLoaded
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
+name|loadReviewed
 parameter_list|(
 name|Iterable
 argument_list|<
@@ -5472,13 +5435,19 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+name|Set
+argument_list|<
+name|Change
+operator|.
+name|Id
+argument_list|>
 name|reviewed
-operator|=
+init|=
 name|Sets
 operator|.
 name|newHashSet
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|userProvider
@@ -5676,6 +5645,9 @@ block|}
 block|}
 block|}
 block|}
+return|return
+name|reviewed
+return|;
 block|}
 DECL|method|isChangeReviewed (Account.Id self, ChangeData cd, List<ChangeMessage> msgs)
 specifier|private
@@ -5805,7 +5777,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|revisions (ChangeData cd, Optional<PatchSet.Id> limitToPsId, String project, Map<PatchSet.Id, PatchSet> map)
+DECL|method|revisions (ChangeControl ctl, ChangeData cd, Optional<PatchSet.Id> limitToPsId, String project, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Map
 argument_list|<
@@ -5815,6 +5787,9 @@ name|RevisionInfo
 argument_list|>
 name|revisions
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -5842,25 +5817,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|ctl
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|Map
 argument_list|<
 name|String
@@ -5937,6 +5893,8 @@ argument_list|()
 argument_list|,
 name|toRevisionInfo
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|in
@@ -6135,11 +6093,14 @@ return|return
 name|map
 return|;
 block|}
-DECL|method|toRevisionInfo (ChangeData cd, PatchSet in, String project)
+DECL|method|toRevisionInfo (ChangeControl ctl, ChangeData cd, PatchSet in, String project)
 specifier|private
 name|RevisionInfo
 name|toRevisionInfo
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -6210,6 +6171,8 @@ name|fetch
 operator|=
 name|makeFetchMap
 argument_list|(
+name|ctl
+argument_list|,
 name|cd
 argument_list|,
 name|in
@@ -6402,10 +6365,7 @@ name|changes
 operator|.
 name|parse
 argument_list|(
-name|control
-argument_list|(
-name|cd
-argument_list|)
+name|ctl
 argument_list|)
 argument_list|,
 name|in
@@ -6711,7 +6671,7 @@ return|return
 name|commit
 return|;
 block|}
-DECL|method|makeFetchMap (ChangeData cd, PatchSet in)
+DECL|method|makeFetchMap (ChangeControl ctl, ChangeData cd, PatchSet in)
 specifier|private
 name|Map
 argument_list|<
@@ -6721,6 +6681,9 @@ name|FetchInfo
 argument_list|>
 name|makeFetchMap
 parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -6802,14 +6765,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|ChangeControl
-name|ctl
-init|=
-name|control
-argument_list|(
-name|cd
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 operator|!
