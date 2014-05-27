@@ -1529,12 +1529,6 @@ specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 decl_stmt|;
-DECL|field|changes
-specifier|private
-specifier|final
-name|ChangesCollection
-name|changes
-decl_stmt|;
 DECL|field|fileInfoJson
 specifier|private
 specifier|final
@@ -1614,7 +1608,7 @@ name|accountLoader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, ChangeData.Factory cdf, PatchSetInfoFactory psi, ChangesCollection changes, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, Provider<WebLinks> webLinks)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, Provider<WebLinks> webLinks)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1652,9 +1646,6 @@ name|cdf
 parameter_list|,
 name|PatchSetInfoFactory
 name|psi
-parameter_list|,
-name|ChangesCollection
-name|changes
 parameter_list|,
 name|FileInfoJson
 name|fileInfoJson
@@ -1738,12 +1729,6 @@ operator|.
 name|patchSetInfoFactory
 operator|=
 name|psi
-expr_stmt|;
-name|this
-operator|.
-name|changes
-operator|=
-name|changes
 expr_stmt|;
 name|this
 operator|.
@@ -2993,9 +2978,8 @@ name|from
 argument_list|(
 name|changeViews
 argument_list|,
-name|changes
-operator|.
-name|parse
+operator|new
+name|ChangeResource
 argument_list|(
 name|ctl
 argument_list|)
@@ -6361,9 +6345,8 @@ argument_list|,
 operator|new
 name|RevisionResource
 argument_list|(
-name|changes
-operator|.
-name|parse
+operator|new
+name|ChangeResource
 argument_list|(
 name|ctl
 argument_list|)
