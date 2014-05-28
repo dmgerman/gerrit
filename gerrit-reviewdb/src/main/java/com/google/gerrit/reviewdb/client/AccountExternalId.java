@@ -145,16 +145,6 @@ name|SCHEME_USERNAME
 init|=
 literal|"username:"
 decl_stmt|;
-comment|/** Very old scheme from Gerrit Code Review 1.x imports. */
-DECL|field|LEGACY_GAE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|LEGACY_GAE
-init|=
-literal|"Google Account "
-decl_stmt|;
 DECL|class|Key
 specifier|public
 specifier|static
