@@ -580,13 +580,6 @@ specifier|static
 class|class
 name|CapabilityInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#capability"
-decl_stmt|;
 DECL|field|id
 specifier|public
 name|String

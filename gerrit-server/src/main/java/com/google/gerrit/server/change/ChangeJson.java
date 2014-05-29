@@ -7016,14 +7016,6 @@ specifier|static
 class|class
 name|ChangeInfo
 block|{
-DECL|field|kind
-specifier|public
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#change"
-decl_stmt|;
 DECL|field|id
 specifier|public
 name|String

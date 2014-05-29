@@ -848,13 +848,6 @@ specifier|static
 class|class
 name|PluginInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#plugin"
-decl_stmt|;
 DECL|field|id
 name|String
 name|id

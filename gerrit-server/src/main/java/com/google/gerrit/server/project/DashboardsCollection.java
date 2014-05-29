@@ -1548,13 +1548,6 @@ specifier|static
 class|class
 name|DashboardInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#dashboard"
-decl_stmt|;
 DECL|field|id
 name|String
 name|id

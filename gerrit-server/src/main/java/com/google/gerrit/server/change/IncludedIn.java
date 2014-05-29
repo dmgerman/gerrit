@@ -588,12 +588,6 @@ specifier|static
 class|class
 name|IncludedInInfo
 block|{
-DECL|field|kind
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#includedininfo"
-decl_stmt|;
 DECL|field|branches
 name|Collection
 argument_list|<

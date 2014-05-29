@@ -396,14 +396,6 @@ specifier|public
 class|class
 name|ConfigInfo
 block|{
-DECL|field|kind
-specifier|public
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#project_config"
-decl_stmt|;
 DECL|field|description
 specifier|public
 name|String

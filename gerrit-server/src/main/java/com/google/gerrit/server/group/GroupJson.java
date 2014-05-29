@@ -867,13 +867,6 @@ name|GroupInfo
 extends|extends
 name|GroupBaseInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#group"
-decl_stmt|;
 DECL|field|url
 specifier|public
 name|String

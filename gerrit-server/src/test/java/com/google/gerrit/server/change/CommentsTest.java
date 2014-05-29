@@ -1783,15 +1783,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"gerritcodereview#comment"
-argument_list|,
-name|ci
-operator|.
-name|kind
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 name|plc
 operator|.
 name|getMessage

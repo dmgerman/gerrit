@@ -312,7 +312,7 @@ specifier|native
 name|void
 name|prePost
 parameter_list|()
-comment|/*-{     var m=this.comments;     if (m) {       for (var p in m) {         var l=m[p];         for (var i=0;i<l.length;i++) {           var c=l[i];           delete c['kind'];           delete c['path'];           delete c['updated'];         }       }     }   }-*/
+comment|/*-{     var m=this.comments;     if (m) {       for (var p in m) {         var l=m[p];         for (var i=0;i<l.length;i++) {           var c=l[i];           delete c['path'];           delete c['updated'];         }       }     }   }-*/
 function_decl|;
 DECL|method|mergeLabels (ReviewInput o)
 specifier|public

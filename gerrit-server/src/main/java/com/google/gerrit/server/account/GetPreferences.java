@@ -804,13 +804,6 @@ specifier|static
 class|class
 name|PreferenceInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#preferences"
-decl_stmt|;
 DECL|field|changesPerPage
 name|Short
 name|changesPerPage

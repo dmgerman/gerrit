@@ -1871,12 +1871,6 @@ argument_list|<
 name|SuggestedReviewerInfo
 argument_list|>
 block|{
-DECL|field|kind
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#suggestedreviewer"
-decl_stmt|;
 DECL|field|account
 specifier|public
 name|AccountInfo

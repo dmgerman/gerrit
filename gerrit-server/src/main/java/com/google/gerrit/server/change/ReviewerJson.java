@@ -992,13 +992,6 @@ name|ReviewerInfo
 extends|extends
 name|AccountInfo
 block|{
-DECL|field|kind
-specifier|final
-name|String
-name|kind
-init|=
-literal|"gerritcodereview#reviewer"
-decl_stmt|;
 DECL|field|approvals
 name|Map
 argument_list|<
