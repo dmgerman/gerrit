@@ -1046,8 +1046,6 @@ return|return
 name|result
 return|;
 block|}
-annotation|@
-name|Singleton
 DECL|class|PutIncludedGroup
 specifier|static
 class|class
