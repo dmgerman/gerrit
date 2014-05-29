@@ -3231,6 +3231,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|isSignedIn
+argument_list|()
+condition|)
+block|{
 name|keysAction
 operator|.
 name|add
@@ -3272,6 +3280,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|keysAction
 operator|.
 name|add
