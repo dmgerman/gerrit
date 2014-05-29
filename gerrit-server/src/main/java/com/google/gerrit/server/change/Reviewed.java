@@ -206,10 +206,12 @@ end_import
 
 begin_class
 DECL|class|Reviewed
+specifier|public
 class|class
 name|Reviewed
 block|{
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -217,6 +219,7 @@ block|{   }
 annotation|@
 name|Singleton
 DECL|class|PutReviewed
+specifier|public
 specifier|static
 class|class
 name|PutReviewed
@@ -370,6 +373,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|DeleteReviewed
+specifier|public
 specifier|static
 class|class
 name|DeleteReviewed
