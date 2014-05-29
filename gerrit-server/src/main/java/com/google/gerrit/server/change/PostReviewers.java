@@ -876,10 +876,7 @@ decl_stmt|;
 DECL|field|groupsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 decl_stmt|;
 DECL|field|groupMembersFactory
@@ -966,7 +963,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, AddReviewerSender.Factory addReviewerSenderFactory, Provider<GroupsCollection> groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, Provider<CurrentUser> currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json, ChangeIndexer indexer)
+DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, AddReviewerSender.Factory addReviewerSenderFactory, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, Provider<CurrentUser> currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json, ChangeIndexer indexer)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -985,10 +982,7 @@ operator|.
 name|Factory
 name|addReviewerSenderFactory
 parameter_list|,
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 parameter_list|,
 name|GroupMembers
@@ -1364,9 +1358,6 @@ name|Basic
 name|group
 init|=
 name|groupsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parseInternal
 argument_list|(

@@ -875,10 +875,7 @@ decl_stmt|;
 DECL|field|revisions
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|Revisions
-argument_list|>
 name|revisions
 decl_stmt|;
 DECL|field|gitManager
@@ -895,7 +892,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListFiles (Provider<ReviewDb> db, Provider<CurrentUser> self, FileInfoJson fileInfoJson, Provider<Revisions> revisions, GitRepositoryManager gitManager, PatchListCache patchListCache)
+DECL|method|ListFiles (Provider<ReviewDb> db, Provider<CurrentUser> self, FileInfoJson fileInfoJson, Revisions revisions, GitRepositoryManager gitManager, PatchListCache patchListCache)
 name|ListFiles
 parameter_list|(
 name|Provider
@@ -913,10 +910,7 @@ parameter_list|,
 name|FileInfoJson
 name|fileInfoJson
 parameter_list|,
-name|Provider
-argument_list|<
 name|Revisions
-argument_list|>
 name|revisions
 parameter_list|,
 name|GitRepositoryManager
@@ -1036,9 +1030,6 @@ name|RevisionResource
 name|baseResource
 init|=
 name|revisions
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

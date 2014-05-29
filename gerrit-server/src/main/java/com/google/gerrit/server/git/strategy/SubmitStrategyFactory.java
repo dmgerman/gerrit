@@ -334,6 +334,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -451,6 +463,8 @@ comment|/** Factory to create a {@link SubmitStrategy} for a {@link SubmitType}.
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|SubmitStrategyFactory
 specifier|public
 class|class

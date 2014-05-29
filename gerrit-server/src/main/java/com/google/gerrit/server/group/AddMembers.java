@@ -699,10 +699,7 @@ decl_stmt|;
 DECL|field|accounts
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AccountsCollection
-argument_list|>
 name|accounts
 decl_stmt|;
 DECL|field|accountResolver
@@ -738,7 +735,7 @@ name|db
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, Provider<AccountsCollection> accounts, AccountResolver accountResolver, AccountCache accountCache, AccountInfo.Loader.Factory infoFactory, Provider<ReviewDb> db)
+DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountInfo.Loader.Factory infoFactory, Provider<ReviewDb> db)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -747,10 +744,7 @@ parameter_list|,
 name|AuthConfig
 name|authConfig
 parameter_list|,
-name|Provider
-argument_list|<
 name|AccountsCollection
-argument_list|>
 name|accounts
 parameter_list|,
 name|AccountResolver
@@ -1212,9 +1206,6 @@ block|{
 return|return
 name|accounts
 operator|.
-name|get
-argument_list|()
-operator|.
 name|parse
 argument_list|(
 name|nameOrEmail
@@ -1372,10 +1363,7 @@ block|{     }
 DECL|field|put
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AddMembers
-argument_list|>
 name|put
 decl_stmt|;
 DECL|field|id
@@ -1384,13 +1372,10 @@ specifier|final
 name|String
 name|id
 decl_stmt|;
-DECL|method|PutMember (Provider<AddMembers> put, String id)
+DECL|method|PutMember (AddMembers put, String id)
 name|PutMember
 parameter_list|(
-name|Provider
-argument_list|<
 name|AddMembers
-argument_list|>
 name|put
 parameter_list|,
 name|String
@@ -1459,9 +1444,6 @@ name|list
 init|=
 name|put
 operator|.
-name|get
-argument_list|()
-operator|.
 name|apply
 argument_list|(
 name|resource
@@ -1519,21 +1501,15 @@ block|{     }
 DECL|field|get
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GetMember
-argument_list|>
 name|get
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|UpdateMember (Provider<GetMember> get)
+DECL|method|UpdateMember (GetMember get)
 name|UpdateMember
 parameter_list|(
-name|Provider
-argument_list|<
 name|GetMember
-argument_list|>
 name|get
 parameter_list|)
 block|{
@@ -1565,9 +1541,6 @@ block|{
 comment|// Do nothing, the user is already a member.
 return|return
 name|get
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(

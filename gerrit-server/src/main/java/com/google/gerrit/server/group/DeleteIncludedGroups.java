@@ -466,10 +466,7 @@ block|{
 DECL|field|groupsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 decl_stmt|;
 DECL|field|groupIncludeCache
@@ -498,13 +495,10 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, Provider<CurrentUser> self)
+DECL|method|DeleteIncludedGroups (GroupsCollection groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, Provider<CurrentUser> self)
 name|DeleteIncludedGroups
 parameter_list|(
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 parameter_list|,
 name|GroupIncludeCache
@@ -660,9 +654,6 @@ name|Basic
 name|d
 init|=
 name|groupsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

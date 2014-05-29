@@ -608,10 +608,7 @@ block|}
 DECL|field|groupsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 decl_stmt|;
 DECL|field|groupIncludeCache
@@ -637,14 +634,11 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddIncludedGroups (Provider<GroupsCollection> groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, GroupJson json)
+DECL|method|AddIncludedGroups (GroupsCollection groupsCollection, GroupIncludeCache groupIncludeCache, Provider<ReviewDb> db, GroupJson json)
 specifier|public
 name|AddIncludedGroups
 parameter_list|(
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 parameter_list|,
 name|GroupIncludeCache
@@ -819,9 +813,6 @@ name|Basic
 name|d
 init|=
 name|groupsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(
@@ -1068,10 +1059,7 @@ block|{     }
 DECL|field|put
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AddIncludedGroups
-argument_list|>
 name|put
 decl_stmt|;
 DECL|field|id
@@ -1080,13 +1068,10 @@ specifier|final
 name|String
 name|id
 decl_stmt|;
-DECL|method|PutIncludedGroup (Provider<AddIncludedGroups> put, String id)
+DECL|method|PutIncludedGroup (AddIncludedGroups put, String id)
 name|PutIncludedGroup
 parameter_list|(
-name|Provider
-argument_list|<
 name|AddIncludedGroups
-argument_list|>
 name|put
 parameter_list|,
 name|String
@@ -1157,9 +1142,6 @@ argument_list|>
 name|list
 init|=
 name|put
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(

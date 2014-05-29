@@ -283,10 +283,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GetEmails
-argument_list|>
 name|list
 decl_stmt|;
 DECL|field|self
@@ -308,7 +305,7 @@ name|createEmailFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Emails (DynamicMap<RestView<AccountResource.Email>> views, Provider<GetEmails> list, Provider<CurrentUser> self, CreateEmail.Factory createEmailFactory)
+DECL|method|Emails (DynamicMap<RestView<AccountResource.Email>> views, GetEmails list, Provider<CurrentUser> self, CreateEmail.Factory createEmailFactory)
 name|Emails
 parameter_list|(
 name|DynamicMap
@@ -322,10 +319,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|GetEmails
-argument_list|>
 name|list
 parameter_list|,
 name|Provider
@@ -378,9 +372,6 @@ parameter_list|()
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@

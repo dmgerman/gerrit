@@ -78,9 +78,7 @@ name|extensions
 operator|.
 name|api
 operator|.
-name|accounts
-operator|.
-name|Accounts
+name|GerritApi
 import|;
 end_import
 
@@ -96,7 +94,9 @@ name|extensions
 operator|.
 name|api
 operator|.
-name|GerritApi
+name|accounts
+operator|.
+name|Accounts
 import|;
 end_import
 
@@ -145,18 +145,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -188,51 +176,33 @@ block|{
 DECL|field|accounts
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|Accounts
-argument_list|>
 name|accounts
 decl_stmt|;
 DECL|field|changes
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|Changes
-argument_list|>
 name|changes
 decl_stmt|;
 DECL|field|projects
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|Projects
-argument_list|>
 name|projects
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritApiImpl (Provider<Accounts> accounts, Provider<Changes> changes, Provider<Projects> projects)
+DECL|method|GerritApiImpl (Accounts accounts, Changes changes, Projects projects)
 name|GerritApiImpl
 parameter_list|(
-name|Provider
-argument_list|<
 name|Accounts
-argument_list|>
 name|accounts
 parameter_list|,
-name|Provider
-argument_list|<
 name|Changes
-argument_list|>
 name|changes
 parameter_list|,
-name|Provider
-argument_list|<
 name|Projects
-argument_list|>
 name|projects
 parameter_list|)
 block|{
@@ -265,9 +235,6 @@ parameter_list|()
 block|{
 return|return
 name|accounts
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -280,9 +247,6 @@ parameter_list|()
 block|{
 return|return
 name|changes
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -295,9 +259,6 @@ parameter_list|()
 block|{
 return|return
 name|projects
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 block|}

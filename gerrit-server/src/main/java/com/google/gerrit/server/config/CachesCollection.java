@@ -309,10 +309,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListCaches
-argument_list|>
 name|list
 decl_stmt|;
 DECL|field|self
@@ -340,7 +337,7 @@ name|cacheMap
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CachesCollection (DynamicMap<RestView<CacheResource>> views, Provider<ListCaches> list, Provider<CurrentUser> self, DynamicMap<Cache<?, ?>> cacheMap)
+DECL|method|CachesCollection (DynamicMap<RestView<CacheResource>> views, ListCaches list, Provider<CurrentUser> self, DynamicMap<Cache<?, ?>> cacheMap)
 name|CachesCollection
 parameter_list|(
 name|DynamicMap
@@ -352,10 +349,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListCaches
-argument_list|>
 name|list
 parameter_list|,
 name|Provider
@@ -414,9 +408,6 @@ parameter_list|()
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@

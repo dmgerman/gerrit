@@ -200,18 +200,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -285,10 +273,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListBranches
-argument_list|>
 name|list
 decl_stmt|;
 DECL|field|createBranchFactory
@@ -301,7 +286,7 @@ name|createBranchFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BranchesCollection (DynamicMap<RestView<BranchResource>> views, Provider<ListBranches> list, CreateBranch.Factory createBranchFactory)
+DECL|method|BranchesCollection (DynamicMap<RestView<BranchResource>> views, ListBranches list, CreateBranch.Factory createBranchFactory)
 name|BranchesCollection
 parameter_list|(
 name|DynamicMap
@@ -313,10 +298,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListBranches
-argument_list|>
 name|list
 parameter_list|,
 name|CreateBranch
@@ -357,9 +339,6 @@ parameter_list|()
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -427,9 +406,6 @@ argument_list|>
 name|branches
 init|=
 name|list
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(

@@ -377,19 +377,13 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListIncludedGroups
-argument_list|>
 name|list
 decl_stmt|;
 DECL|field|groupsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 decl_stmt|;
 DECL|field|dbProvider
@@ -404,15 +398,12 @@ decl_stmt|;
 DECL|field|put
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AddIncludedGroups
-argument_list|>
 name|put
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IncludedGroupsCollection (DynamicMap<RestView<IncludedGroupResource>> views, Provider<ListIncludedGroups> list, Provider<GroupsCollection> groupsCollection, Provider<ReviewDb> dbProvider, Provider<AddIncludedGroups> put)
+DECL|method|IncludedGroupsCollection (DynamicMap<RestView<IncludedGroupResource>> views, ListIncludedGroups list, GroupsCollection groupsCollection, Provider<ReviewDb> dbProvider, AddIncludedGroups put)
 name|IncludedGroupsCollection
 parameter_list|(
 name|DynamicMap
@@ -424,16 +415,10 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListIncludedGroups
-argument_list|>
 name|list
 parameter_list|,
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 parameter_list|,
 name|Provider
@@ -442,10 +427,7 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
-name|Provider
-argument_list|<
 name|AddIncludedGroups
-argument_list|>
 name|put
 parameter_list|)
 block|{
@@ -493,9 +475,6 @@ parameter_list|()
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -547,9 +526,6 @@ name|Basic
 name|member
 init|=
 name|groupsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

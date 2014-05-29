@@ -359,15 +359,12 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListReviewers
-argument_list|>
 name|list
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Reviewers (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, AccountsCollection accounts, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, Provider<ListReviewers> list)
+DECL|method|Reviewers (Provider<ReviewDb> dbProvider, ApprovalsUtil approvalsUtil, AccountsCollection accounts, ReviewerResource.Factory resourceFactory, DynamicMap<RestView<ReviewerResource>> views, ListReviewers list)
 name|Reviewers
 parameter_list|(
 name|Provider
@@ -396,10 +393,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListReviewers
-argument_list|>
 name|list
 parameter_list|)
 block|{
@@ -471,9 +465,6 @@ parameter_list|()
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@
