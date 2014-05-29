@@ -326,22 +326,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|ChangeKindCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AnonymousCowardName
@@ -1423,12 +1407,6 @@ specifier|final
 name|AccountCache
 name|accountCache
 decl_stmt|;
-DECL|field|changeKindCache
-specifier|private
-specifier|final
-name|ChangeKindCache
-name|changeKindCache
-decl_stmt|;
 DECL|field|eventFactory
 specifier|private
 specifier|final
@@ -1458,7 +1436,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final ChangeKindCache changeKindCache, final EventFactory eventFactory, final SitePaths sitePaths, final DynamicSet<ChangeListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final SitePaths sitePaths, final DynamicSet<ChangeListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1493,10 +1471,6 @@ parameter_list|,
 specifier|final
 name|AccountCache
 name|accountCache
-parameter_list|,
-specifier|final
-name|ChangeKindCache
-name|changeKindCache
 parameter_list|,
 specifier|final
 name|EventFactory
@@ -1550,12 +1524,6 @@ operator|.
 name|accountCache
 operator|=
 name|accountCache
-expr_stmt|;
-name|this
-operator|.
-name|changeKindCache
-operator|=
-name|changeKindCache
 expr_stmt|;
 name|this
 operator|.
@@ -2373,21 +2341,6 @@ name|getAccount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|event
-operator|.
-name|kind
-operator|=
-name|changeKindCache
-operator|.
-name|getChangeKind
-argument_list|(
-name|db
-argument_list|,
-name|change
-argument_list|,
-name|patchSet
-argument_list|)
-expr_stmt|;
 name|fireEvent
 argument_list|(
 name|change
@@ -2450,6 +2403,8 @@ operator|.
 name|valueOf
 argument_list|(
 name|event
+operator|.
+name|patchSet
 operator|.
 name|kind
 argument_list|)

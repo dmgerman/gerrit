@@ -402,6 +402,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|change
+operator|.
+name|ChangeKindCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|config
 operator|.
 name|CanonicalWebUrl
@@ -971,9 +987,15 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
+DECL|field|changeKindCache
+specifier|private
+specifier|final
+name|ChangeKindCache
+name|changeKindCache
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil)
+DECL|method|EventFactory (AccountCache accountCache, @CanonicalWebUrl @Nullable Provider<String> urlProvider, PatchSetInfoFactory psif, PatchListCache patchListCache, SchemaFactory<ReviewDb> schema, @GerritPersonIdent PersonIdent myIdent, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, ChangeKindCache changeKindCache)
 name|EventFactory
 parameter_list|(
 name|AccountCache
@@ -1019,6 +1041,9 @@ name|changeDataFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|ChangeKindCache
+name|changeKindCache
 parameter_list|)
 block|{
 name|this
@@ -1074,6 +1099,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|changeKindCache
+operator|=
+name|changeKindCache
 expr_stmt|;
 block|}
 comment|/**    * Create a ChangeAttribute for the given change suitable for serialization to    * JSON.    *    * @param change    * @return object suitable for serialization to JSON    */
@@ -3084,6 +3115,21 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+name|p
+operator|.
+name|kind
+operator|=
+name|changeKindCache
+operator|.
+name|getChangeKind
+argument_list|(
+name|db
+argument_list|,
+name|change
+argument_list|,
+name|patchSet
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
