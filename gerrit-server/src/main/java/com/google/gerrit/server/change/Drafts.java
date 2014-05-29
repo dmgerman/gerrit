@@ -296,10 +296,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListDrafts
-argument_list|>
 name|list
 decl_stmt|;
 DECL|field|dbProvider
@@ -313,7 +310,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Drafts (DynamicMap<RestView<DraftResource>> views, Provider<CurrentUser> user, Provider<ListDrafts> list, Provider<ReviewDb> dbProvider)
+DECL|method|Drafts (DynamicMap<RestView<DraftResource>> views, Provider<CurrentUser> user, ListDrafts list, Provider<ReviewDb> dbProvider)
 name|Drafts
 parameter_list|(
 name|DynamicMap
@@ -331,10 +328,7 @@ name|CurrentUser
 argument_list|>
 name|user
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListDrafts
-argument_list|>
 name|list
 parameter_list|,
 name|Provider
@@ -405,9 +399,6 @@ argument_list|()
 expr_stmt|;
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@

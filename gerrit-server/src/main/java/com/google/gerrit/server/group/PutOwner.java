@@ -384,10 +384,7 @@ block|}
 DECL|field|groupsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 decl_stmt|;
 DECL|field|groupCache
@@ -413,13 +410,10 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutOwner (Provider<GroupsCollection> groupsCollection, GroupCache groupCache, Provider<ReviewDb> db, GroupJson json)
+DECL|method|PutOwner (GroupsCollection groupsCollection, GroupCache groupCache, Provider<ReviewDb> db, GroupJson json)
 name|PutOwner
 parameter_list|(
-name|Provider
-argument_list|<
 name|GroupsCollection
-argument_list|>
 name|groupsCollection
 parameter_list|,
 name|GroupCache
@@ -589,9 +583,6 @@ name|Basic
 name|owner
 init|=
 name|groupsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

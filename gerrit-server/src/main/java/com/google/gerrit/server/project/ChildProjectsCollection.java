@@ -251,10 +251,7 @@ decl_stmt|;
 DECL|field|projectsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ProjectsCollection
-argument_list|>
 name|projectsCollection
 decl_stmt|;
 DECL|field|views
@@ -271,7 +268,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChildProjectsCollection (Provider<ListChildProjects> list, Provider<ProjectsCollection> projectsCollection, DynamicMap<RestView<ChildProjectResource>> views)
+DECL|method|ChildProjectsCollection (Provider<ListChildProjects> list, ProjectsCollection projectsCollection, DynamicMap<RestView<ChildProjectResource>> views)
 name|ChildProjectsCollection
 parameter_list|(
 name|Provider
@@ -280,10 +277,7 @@ name|ListChildProjects
 argument_list|>
 name|list
 parameter_list|,
-name|Provider
-argument_list|<
 name|ProjectsCollection
-argument_list|>
 name|projectsCollection
 parameter_list|,
 name|DynamicMap
@@ -359,9 +353,6 @@ name|ProjectResource
 name|p
 init|=
 name|projectsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

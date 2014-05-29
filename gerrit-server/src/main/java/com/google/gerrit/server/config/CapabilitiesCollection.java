@@ -166,18 +166,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -212,15 +200,12 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListCapabilities
-argument_list|>
 name|list
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CapabilitiesCollection (DynamicMap<RestView<CapabilityResource>> views, Provider<ListCapabilities> list)
+DECL|method|CapabilitiesCollection (DynamicMap<RestView<CapabilityResource>> views, ListCapabilities list)
 name|CapabilitiesCollection
 parameter_list|(
 name|DynamicMap
@@ -232,10 +217,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListCapabilities
-argument_list|>
 name|list
 parameter_list|)
 block|{
@@ -267,9 +249,6 @@ name|ResourceNotFoundException
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@

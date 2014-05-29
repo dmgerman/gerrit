@@ -529,14 +529,11 @@ operator|.
 name|Factory
 name|registerNewEmailFactory
 decl_stmt|;
-DECL|field|putPreferredProvider
+DECL|field|putPreferred
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|PutPreferred
-argument_list|>
-name|putPreferredProvider
+name|putPreferred
 decl_stmt|;
 DECL|field|email
 specifier|private
@@ -546,7 +543,7 @@ name|email
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateEmail (Provider<CurrentUser> self, Realm realm, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, Provider<PutPreferred> putPreferredProvider, @Assisted String email)
+DECL|method|CreateEmail (Provider<CurrentUser> self, Realm realm, AuthConfig authConfig, AccountManager accountManager, RegisterNewEmailSender.Factory registerNewEmailFactory, PutPreferred putPreferred, @Assisted String email)
 name|CreateEmail
 parameter_list|(
 name|Provider
@@ -569,11 +566,8 @@ operator|.
 name|Factory
 name|registerNewEmailFactory
 parameter_list|,
-name|Provider
-argument_list|<
 name|PutPreferred
-argument_list|>
-name|putPreferredProvider
+name|putPreferred
 parameter_list|,
 annotation|@
 name|Assisted
@@ -613,9 +607,9 @@ name|registerNewEmailFactory
 expr_stmt|;
 name|this
 operator|.
-name|putPreferredProvider
+name|putPreferred
 operator|=
-name|putPreferredProvider
+name|putPreferred
 expr_stmt|;
 name|this
 operator|.
@@ -913,10 +907,7 @@ operator|.
 name|preferred
 condition|)
 block|{
-name|putPreferredProvider
-operator|.
-name|get
-argument_list|()
+name|putPreferred
 operator|.
 name|apply
 argument_list|(

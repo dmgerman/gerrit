@@ -452,10 +452,7 @@ block|{
 DECL|field|accounts
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AccountsCollection
-argument_list|>
 name|accounts
 decl_stmt|;
 DECL|field|accountCache
@@ -484,13 +481,10 @@ name|self
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteMembers (Provider<AccountsCollection> accounts, AccountCache accountCache, Provider<ReviewDb> db, Provider<CurrentUser> self)
+DECL|method|DeleteMembers (AccountsCollection accounts, AccountCache accountCache, Provider<ReviewDb> db, Provider<CurrentUser> self)
 name|DeleteMembers
 parameter_list|(
-name|Provider
-argument_list|<
 name|AccountsCollection
-argument_list|>
 name|accounts
 parameter_list|,
 name|AccountCache
@@ -644,9 +638,6 @@ name|Account
 name|a
 init|=
 name|accounts
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

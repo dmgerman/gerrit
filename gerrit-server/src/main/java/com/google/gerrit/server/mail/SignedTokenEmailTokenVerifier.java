@@ -166,6 +166,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -217,6 +229,8 @@ comment|/** Verifies the token sent by {@link RegisterNewEmailSender}. */
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|SignedTokenEmailTokenVerifier
 specifier|public
 class|class

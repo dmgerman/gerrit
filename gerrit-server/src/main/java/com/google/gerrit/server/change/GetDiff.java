@@ -478,18 +478,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -668,10 +656,7 @@ decl_stmt|;
 DECL|field|revisions
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|Revisions
-argument_list|>
 name|revisions
 decl_stmt|;
 annotation|@
@@ -738,7 +723,7 @@ name|intraline
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetDiff (ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Provider<Revisions> revisions)
+DECL|method|GetDiff (ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions)
 name|GetDiff
 parameter_list|(
 name|ProjectCache
@@ -749,10 +734,7 @@ operator|.
 name|Factory
 name|patchScriptFactoryFactory
 parameter_list|,
-name|Provider
-argument_list|<
 name|Revisions
-argument_list|>
 name|revisions
 parameter_list|)
 block|{
@@ -813,9 +795,6 @@ name|RevisionResource
 name|baseResource
 init|=
 name|revisions
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

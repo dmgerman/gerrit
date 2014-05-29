@@ -384,10 +384,7 @@ decl_stmt|;
 DECL|field|accounts
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AccountsCollection
-argument_list|>
 name|accounts
 decl_stmt|;
 DECL|field|db
@@ -402,15 +399,12 @@ decl_stmt|;
 DECL|field|put
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|AddMembers
-argument_list|>
 name|put
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MembersCollection (DynamicMap<RestView<MemberResource>> views, Provider<ListMembers> list, Provider<AccountsCollection> accounts, Provider<ReviewDb> db, Provider<AddMembers> put)
+DECL|method|MembersCollection (DynamicMap<RestView<MemberResource>> views, Provider<ListMembers> list, AccountsCollection accounts, Provider<ReviewDb> db, AddMembers put)
 name|MembersCollection
 parameter_list|(
 name|DynamicMap
@@ -428,10 +422,7 @@ name|ListMembers
 argument_list|>
 name|list
 parameter_list|,
-name|Provider
-argument_list|<
 name|AccountsCollection
-argument_list|>
 name|accounts
 parameter_list|,
 name|Provider
@@ -440,10 +431,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|Provider
-argument_list|<
 name|AddMembers
-argument_list|>
 name|put
 parameter_list|)
 block|{
@@ -542,9 +530,6 @@ name|IdentifiedUser
 name|user
 init|=
 name|accounts
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

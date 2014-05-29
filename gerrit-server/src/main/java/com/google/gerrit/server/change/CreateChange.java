@@ -860,10 +860,7 @@ decl_stmt|;
 DECL|field|projectsCollection
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ProjectsCollection
-argument_list|>
 name|projectsCollection
 decl_stmt|;
 DECL|field|commitValidatorsFactory
@@ -890,7 +887,7 @@ name|json
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> userProvider, Provider<ProjectsCollection> projectsCollection, CommitValidators.Factory commitValidatorsFactory, ChangeInserter.Factory changeInserterFactory, ChangeJson json)
+DECL|method|CreateChange (Provider<ReviewDb> db, GitRepositoryManager gitManager, @GerritPersonIdent PersonIdent myIdent, Provider<CurrentUser> userProvider, ProjectsCollection projectsCollection, CommitValidators.Factory commitValidatorsFactory, ChangeInserter.Factory changeInserterFactory, ChangeJson json)
 name|CreateChange
 parameter_list|(
 name|Provider
@@ -913,10 +910,7 @@ name|CurrentUser
 argument_list|>
 name|userProvider
 parameter_list|,
-name|Provider
-argument_list|<
 name|ProjectsCollection
-argument_list|>
 name|projectsCollection
 parameter_list|,
 name|CommitValidators
@@ -1148,9 +1142,6 @@ name|ProjectResource
 name|rsrc
 init|=
 name|projectsCollection
-operator|.
-name|get
-argument_list|()
 operator|.
 name|parse
 argument_list|(

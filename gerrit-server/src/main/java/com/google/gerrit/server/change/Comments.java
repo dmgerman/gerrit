@@ -257,10 +257,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|ListComments
-argument_list|>
 name|list
 decl_stmt|;
 DECL|field|dbProvider
@@ -274,7 +271,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Comments (DynamicMap<RestView<CommentResource>> views, Provider<ListComments> list, Provider<ReviewDb> dbProvider)
+DECL|method|Comments (DynamicMap<RestView<CommentResource>> views, ListComments list, Provider<ReviewDb> dbProvider)
 name|Comments
 parameter_list|(
 name|DynamicMap
@@ -286,10 +283,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|Provider
-argument_list|<
 name|ListComments
-argument_list|>
 name|list
 parameter_list|,
 name|Provider
@@ -349,9 +343,6 @@ parameter_list|()
 block|{
 return|return
 name|list
-operator|.
-name|get
-argument_list|()
 return|;
 block|}
 annotation|@
