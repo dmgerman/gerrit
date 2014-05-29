@@ -100,6 +100,16 @@ name|RestApiException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|RevisionApi
 specifier|public
@@ -169,6 +179,29 @@ DECL|method|canRebase ()
 name|boolean
 name|canRebase
 parameter_list|()
+function_decl|;
+DECL|method|setReviewed (String path, boolean reviewed)
+name|void
+name|setReviewed
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|boolean
+name|reviewed
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|reviewed ()
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|reviewed
+parameter_list|()
+throws|throws
+name|RestApiException
 function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
@@ -306,6 +339,47 @@ specifier|public
 name|boolean
 name|canRebase
 parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setReviewed (String path, boolean reviewed)
+specifier|public
+name|void
+name|setReviewed
+parameter_list|(
+name|String
+name|path
+parameter_list|,
+name|boolean
+name|reviewed
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|reviewed ()
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|reviewed
+parameter_list|()
+throws|throws
+name|RestApiException
 block|{
 throw|throw
 operator|new
