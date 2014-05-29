@@ -424,6 +424,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -515,6 +527,8 @@ comment|/**  * Copies approvals between patch sets.  *<p>  * The result of a cop
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|ApprovalCopier
 specifier|public
 class|class

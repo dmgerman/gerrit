@@ -340,6 +340,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -363,6 +375,8 @@ comment|/**  * Normalizes votes on labels according to project config and permis
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|LabelNormalizer
 specifier|public
 class|class
