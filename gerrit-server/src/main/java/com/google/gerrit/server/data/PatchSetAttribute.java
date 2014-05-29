@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|ChangeKind
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -124,6 +140,11 @@ DECL|field|isDraft
 specifier|public
 name|boolean
 name|isDraft
+decl_stmt|;
+DECL|field|kind
+specifier|public
+name|ChangeKind
+name|kind
 decl_stmt|;
 DECL|field|approvals
 specifier|public
