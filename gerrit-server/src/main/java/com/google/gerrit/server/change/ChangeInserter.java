@@ -677,7 +677,7 @@ name|sendMail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, ChangeUpdate.Factory updateFactory, Provider<ApprovalsUtil> approvals, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, MergeabilityChecker mergeabilityChecker, CreateChangeSender.Factory createChangeSenderFactory, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, ChangeUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, MergeabilityChecker mergeabilityChecker, CreateChangeSender.Factory createChangeSenderFactory, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
 name|ChangeInserter
 parameter_list|(
 name|Provider
@@ -690,12 +690,6 @@ name|ChangeUpdate
 operator|.
 name|Factory
 name|updateFactory
-parameter_list|,
-name|Provider
-argument_list|<
-name|ApprovalsUtil
-argument_list|>
-name|approvals
 parameter_list|,
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
