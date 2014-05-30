@@ -1119,10 +1119,6 @@ specifier|final
 name|Element
 name|cur
 init|=
-name|DOM
-operator|.
-name|getParent
-argument_list|(
 name|fmt
 operator|.
 name|getElement
@@ -1131,7 +1127,9 @@ name|row
 argument_list|,
 name|C_ARROW
 argument_list|)
-argument_list|)
+operator|.
+name|getParentElement
+argument_list|()
 decl_stmt|;
 specifier|final
 name|int
@@ -1262,10 +1260,6 @@ specifier|final
 name|Element
 name|tr
 init|=
-name|DOM
-operator|.
-name|getParent
-argument_list|(
 name|fmt
 operator|.
 name|getElement
@@ -1274,7 +1268,9 @@ name|currentRow
 argument_list|,
 name|C_ARROW
 argument_list|)
-argument_list|)
+operator|.
+name|getParentElement
+argument_list|()
 decl_stmt|;
 name|UIObject
 operator|.
@@ -1332,10 +1328,6 @@ specifier|final
 name|Element
 name|tr
 init|=
-name|DOM
-operator|.
-name|getParent
-argument_list|(
 name|fmt
 operator|.
 name|getElement
@@ -1344,7 +1336,9 @@ name|newRow
 argument_list|,
 name|C_ARROW
 argument_list|)
-argument_list|)
+operator|.
+name|getParentElement
+argument_list|()
 decl_stmt|;
 name|UIObject
 operator|.
