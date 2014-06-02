@@ -66,11 +66,8 @@ name|change
 package|;
 end_package
 
-begin_interface
-DECL|interface|Constants
-interface|interface
-name|Constants
-extends|extends
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -81,6 +78,15 @@ name|i18n
 operator|.
 name|client
 operator|.
+name|Constants
+import|;
+end_import
+
+begin_interface
+DECL|interface|ChangeConstants
+interface|interface
+name|ChangeConstants
+extends|extends
 name|Constants
 block|{
 DECL|method|previousChange ()

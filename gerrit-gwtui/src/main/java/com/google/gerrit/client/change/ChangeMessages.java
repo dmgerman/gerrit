@@ -66,12 +66,8 @@ name|change
 package|;
 end_package
 
-begin_interface
-DECL|interface|Messages
-specifier|public
-interface|interface
-name|Messages
-extends|extends
+begin_import
+import|import
 name|com
 operator|.
 name|google
@@ -82,6 +78,16 @@ name|i18n
 operator|.
 name|client
 operator|.
+name|Messages
+import|;
+end_import
+
+begin_interface
+DECL|interface|ChangeMessages
+specifier|public
+interface|interface
+name|ChangeMessages
+extends|extends
 name|Messages
 block|{
 DECL|method|patchSets (int currentlyViewedPatchSet, int currentPatchSet)
