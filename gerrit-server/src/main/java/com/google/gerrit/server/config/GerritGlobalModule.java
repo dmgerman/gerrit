@@ -2498,6 +2498,13 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
+name|GcConfig
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
 name|ApprovalsUtil
 operator|.
 name|class
