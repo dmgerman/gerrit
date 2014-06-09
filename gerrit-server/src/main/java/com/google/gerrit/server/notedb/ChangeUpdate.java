@@ -778,6 +778,11 @@ name|SubmitRecord
 argument_list|>
 name|submitRecords
 decl_stmt|;
+DECL|field|changeMessage
+specifier|private
+name|String
+name|changeMessage
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted ChangeControl ctl)
@@ -1263,6 +1268,22 @@ operator|.
 name|psId
 operator|=
 name|psId
+expr_stmt|;
+block|}
+DECL|method|setChangeMessage (String changeMessage)
+specifier|public
+name|void
+name|setChangeMessage
+parameter_list|(
+name|String
+name|changeMessage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|changeMessage
+operator|=
+name|changeMessage
 expr_stmt|;
 block|}
 DECL|method|putReviewer (Account.Id reviewer, ReviewerState type)
@@ -1786,6 +1807,28 @@ argument_list|(
 literal|"\n\n"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|changeMessage
+operator|!=
+literal|null
+condition|)
+block|{
+name|msg
+operator|.
+name|append
+argument_list|(
+name|changeMessage
+argument_list|)
+expr_stmt|;
+name|msg
+operator|.
+name|append
+argument_list|(
+literal|"\n\n"
+argument_list|)
+expr_stmt|;
+block|}
 name|addFooter
 argument_list|(
 name|msg
@@ -2203,6 +2246,10 @@ operator|==
 literal|null
 operator|&&
 name|submitRecords
+operator|==
+literal|null
+operator|&&
+name|changeMessage
 operator|==
 literal|null
 return|;
