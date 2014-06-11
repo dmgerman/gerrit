@@ -336,6 +336,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeMessagesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|CurrentUser
 import|;
 end_import
@@ -1311,6 +1325,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|id
 argument_list|)
 decl_stmt|;
@@ -1377,6 +1393,12 @@ specifier|private
 specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
+decl_stmt|;
+DECL|field|cmUtil
+specifier|private
+specifier|final
+name|ChangeMessagesUtil
+name|cmUtil
 decl_stmt|;
 DECL|field|patchListCache
 specifier|private
@@ -1518,7 +1540,7 @@ name|changedLines
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -1542,6 +1564,9 @@ name|notesFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|ChangeMessagesUtil
+name|cmUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1600,6 +1625,12 @@ name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
+name|cmUtil
+operator|=
+name|cmUtil
+expr_stmt|;
+name|this
+operator|.
 name|patchListCache
 operator|=
 name|patchListCache
@@ -1617,7 +1648,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -1641,6 +1672,9 @@ name|notesFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|ChangeMessagesUtil
+name|cmUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1697,6 +1731,12 @@ name|approvalsUtil
 expr_stmt|;
 name|this
 operator|.
+name|cmUtil
+operator|=
+name|cmUtil
+expr_stmt|;
+name|this
+operator|.
 name|patchListCache
 operator|=
 name|patchListCache
@@ -1721,7 +1761,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted ChangeControl c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted ChangeControl c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -1745,6 +1785,9 @@ name|notesFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|ChangeMessagesUtil
+name|cmUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1798,6 +1841,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|cmUtil
+operator|=
+name|cmUtil
 expr_stmt|;
 name|this
 operator|.
@@ -3082,18 +3131,14 @@ condition|)
 block|{
 name|messages
 operator|=
-name|db
-operator|.
-name|changeMessages
-argument_list|()
+name|cmUtil
 operator|.
 name|byChange
 argument_list|(
-name|legacyId
+name|db
+argument_list|,
+name|notes
 argument_list|)
-operator|.
-name|toList
-argument_list|()
 expr_stmt|;
 block|}
 return|return

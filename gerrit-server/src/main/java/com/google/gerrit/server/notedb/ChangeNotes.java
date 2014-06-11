@@ -861,7 +861,7 @@ block|}
 argument_list|)
 decl_stmt|;
 DECL|field|MESSAGE_BY_TIME
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Ordering

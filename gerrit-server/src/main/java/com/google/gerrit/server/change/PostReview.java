@@ -574,6 +574,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|ChangeMessagesUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ChangeUtil
 import|;
 end_import
@@ -915,6 +929,12 @@ specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 decl_stmt|;
+DECL|field|cmUtil
+specifier|private
+specifier|final
+name|ChangeMessagesUtil
+name|cmUtil
+decl_stmt|;
 DECL|field|indexer
 specifier|private
 specifier|final
@@ -1001,7 +1021,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReview (Provider<ReviewDb> db, ChangesCollection changes, ChangeData.Factory changeDataFactory, ChangeUpdate.Factory updateFactory, ApprovalsUtil approvalsUtil, ChangeIndexer indexer, AccountsCollection accounts, EmailReviewComments.Factory email, ChangeHooks hooks)
+DECL|method|PostReview (Provider<ReviewDb> db, ChangesCollection changes, ChangeData.Factory changeDataFactory, ChangeUpdate.Factory updateFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, ChangeIndexer indexer, AccountsCollection accounts, EmailReviewComments.Factory email, ChangeHooks hooks)
 name|PostReview
 parameter_list|(
 name|Provider
@@ -1025,6 +1045,9 @@ name|updateFactory
 parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
+parameter_list|,
+name|ChangeMessagesUtil
+name|cmUtil
 parameter_list|,
 name|ChangeIndexer
 name|indexer
@@ -1070,6 +1093,12 @@ operator|.
 name|approvalsUtil
 operator|=
 name|approvalsUtil
+expr_stmt|;
+name|this
+operator|.
+name|cmUtil
+operator|=
+name|cmUtil
 expr_stmt|;
 name|this
 operator|.
@@ -1323,6 +1352,8 @@ argument_list|,
 name|input
 operator|.
 name|message
+argument_list|,
+name|update
 argument_list|)
 expr_stmt|;
 if|if
@@ -3795,7 +3826,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertMessage (RevisionResource rsrc, String msg)
+DECL|method|insertMessage (RevisionResource rsrc, String msg, ChangeUpdate update)
 specifier|private
 name|boolean
 name|insertMessage
@@ -3805,6 +3836,9 @@ name|rsrc
 parameter_list|,
 name|String
 name|msg
+parameter_list|,
+name|ChangeUpdate
+name|update
 parameter_list|)
 throws|throws
 name|OrmException
@@ -3999,22 +4033,18 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|cmUtil
+operator|.
+name|addChangeMessage
+argument_list|(
 name|db
 operator|.
 name|get
 argument_list|()
-operator|.
-name|changeMessages
-argument_list|()
-operator|.
-name|insert
-argument_list|(
-name|Collections
-operator|.
-name|singleton
-argument_list|(
+argument_list|,
+name|update
+argument_list|,
 name|message
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
