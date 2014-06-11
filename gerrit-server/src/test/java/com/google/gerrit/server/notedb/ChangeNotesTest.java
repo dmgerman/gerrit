@@ -6075,7 +6075,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Second change message.\n"
+literal|"First change message.\n"
 argument_list|,
 name|cm
 operator|.
@@ -6126,7 +6126,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"First change message.\n"
+literal|"Second change message.\n"
 argument_list|,
 name|cm
 operator|.
@@ -6153,7 +6153,7 @@ name|cm
 operator|.
 name|get
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 operator|.
 name|getAuthor
@@ -6168,7 +6168,7 @@ name|cm
 operator|.
 name|get
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 operator|.
 name|getPatchSetId
