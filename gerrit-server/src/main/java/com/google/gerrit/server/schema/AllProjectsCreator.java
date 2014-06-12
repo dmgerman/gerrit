@@ -1718,13 +1718,6 @@ argument_list|)
 decl_stmt|;
 name|type
 operator|.
-name|setAbbreviation
-argument_list|(
-literal|"CR"
-argument_list|)
-expr_stmt|;
-name|type
-operator|.
 name|setCopyMinScore
 argument_list|(
 literal|true

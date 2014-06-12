@@ -402,11 +402,11 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|defaultAbbreviation (String name)
-specifier|public
+DECL|method|getAbbreviation (String name)
+specifier|private
 specifier|static
 name|String
-name|defaultAbbreviation
+name|getAbbreviation
 parameter_list|(
 name|String
 name|name
@@ -848,7 +848,7 @@ literal|0
 expr_stmt|;
 name|abbreviation
 operator|=
-name|defaultAbbreviation
+name|getAbbreviation
 argument_list|(
 name|name
 argument_list|)
@@ -980,32 +980,6 @@ argument_list|(
 name|name
 argument_list|)
 return|;
-block|}
-DECL|method|getAbbreviation ()
-specifier|public
-name|String
-name|getAbbreviation
-parameter_list|()
-block|{
-return|return
-name|abbreviation
-return|;
-block|}
-DECL|method|setAbbreviation (String abbreviation)
-specifier|public
-name|void
-name|setAbbreviation
-parameter_list|(
-name|String
-name|abbreviation
-parameter_list|)
-block|{
-name|this
-operator|.
-name|abbreviation
-operator|=
-name|abbreviation
-expr_stmt|;
 block|}
 DECL|method|getFunctionName ()
 specifier|public

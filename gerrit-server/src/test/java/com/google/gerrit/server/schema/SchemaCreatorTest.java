@@ -810,16 +810,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"CR"
-argument_list|,
-name|codeReview
-operator|.
-name|getAbbreviation
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|0
 argument_list|,
 name|codeReview

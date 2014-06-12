@@ -1397,9 +1397,7 @@ name|catStmt
 operator|.
 name|executeQuery
 argument_list|(
-literal|"SELECT category_id, name, abbreviated_name, function_name, "
-operator|+
-literal|" copy_min_score"
+literal|"SELECT category_id, name, function_name, copy_min_score"
 operator|+
 literal|" FROM approval_categories"
 operator|+
@@ -1534,18 +1532,6 @@ operator|.
 name|setId
 argument_list|(
 name|id
-argument_list|)
-expr_stmt|;
-name|type
-operator|.
-name|setAbbreviation
-argument_list|(
-name|catRs
-operator|.
-name|getString
-argument_list|(
-literal|"abbreviated_name"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|type
