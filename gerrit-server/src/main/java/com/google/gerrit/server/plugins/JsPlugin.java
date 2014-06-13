@@ -236,18 +236,6 @@ name|File
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|jar
-operator|.
-name|JarFile
-import|;
-end_import
-
 begin_class
 DECL|class|JsPlugin
 class|class
