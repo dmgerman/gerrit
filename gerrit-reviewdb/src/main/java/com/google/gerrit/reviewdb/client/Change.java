@@ -1216,6 +1216,12 @@ name|other
 operator|.
 name|mergeable
 expr_stmt|;
+name|lastSha1MergeTested
+operator|=
+name|other
+operator|.
+name|lastSha1MergeTested
+expr_stmt|;
 block|}
 end_constructor
 
