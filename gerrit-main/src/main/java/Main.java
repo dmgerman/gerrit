@@ -130,7 +130,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-literal|1.7
+literal|1.8
 operator|<=
 name|parse
 argument_list|(
@@ -148,7 +148,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"fatal: Gerrit Code Review requires Java 7 or later"
+literal|"fatal: Gerrit Code Review requires Java 8 or later"
 argument_list|)
 expr_stmt|;
 name|System

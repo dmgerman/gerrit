@@ -305,16 +305,6 @@ literal|"cannot create cache.directory"
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|postRun ()
-specifier|public
-name|void
-name|postRun
-parameter_list|()
-throws|throws
-name|Exception
-block|{   }
 block|}
 end_class
 
