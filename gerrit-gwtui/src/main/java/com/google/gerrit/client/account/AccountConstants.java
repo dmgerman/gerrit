@@ -170,9 +170,29 @@ name|String
 name|reversePatchSetOrder
 parameter_list|()
 function_decl|;
-DECL|method|showUsernameInReviewCategory ()
+DECL|method|reviewCategoryLabel ()
 name|String
-name|showUsernameInReviewCategory
+name|reviewCategoryLabel
+parameter_list|()
+function_decl|;
+DECL|method|messageShowInReviewCategoryNone ()
+name|String
+name|messageShowInReviewCategoryNone
+parameter_list|()
+function_decl|;
+DECL|method|messageShowInReviewCategoryName ()
+name|String
+name|messageShowInReviewCategoryName
+parameter_list|()
+function_decl|;
+DECL|method|messageShowInReviewCategoryEmail ()
+name|String
+name|messageShowInReviewCategoryEmail
+parameter_list|()
+function_decl|;
+DECL|method|messageShowInReviewCategoryAbbrev ()
+name|String
+name|messageShowInReviewCategoryAbbrev
 parameter_list|()
 function_decl|;
 DECL|method|buttonSaveChanges ()

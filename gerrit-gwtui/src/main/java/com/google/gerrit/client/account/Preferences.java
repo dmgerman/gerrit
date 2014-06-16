@@ -148,6 +148,24 @@ name|client
 operator|.
 name|AccountGeneralPreferences
 operator|.
+name|ReviewCategoryStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGeneralPreferences
+operator|.
 name|DateFormat
 import|;
 end_import
@@ -406,16 +424,6 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
-name|showUsernameInReviewCategory
-argument_list|(
-name|in
-operator|.
-name|isShowUsernameInReviewCategory
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
 name|relativeDateInChangeTable
 argument_list|(
 name|in
@@ -451,6 +459,16 @@ argument_list|(
 name|in
 operator|.
 name|getCommentVisibilityStrategy
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|reviewCategoryStrategy
+argument_list|(
+name|in
+operator|.
+name|getReviewCategoryStrategy
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -702,15 +720,6 @@ name|reversePatchSetOrder
 parameter_list|()
 comment|/*-{ return this.reverse_patch_set_order || false }-*/
 function_decl|;
-DECL|method|showUsernameInReviewCategory ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|showUsernameInReviewCategory
-parameter_list|()
-comment|/*-{ return this.show_username_in_review_category || false }-*/
-function_decl|;
 DECL|method|relativeDateInChangeTable ()
 specifier|public
 specifier|final
@@ -737,6 +746,45 @@ name|boolean
 name|legacycidInChangeTable
 parameter_list|()
 comment|/*-{ return this.legacycid_in_change_table || false }-*/
+function_decl|;
+DECL|method|reviewCategoryStrategy ()
+specifier|public
+specifier|final
+name|ReviewCategoryStrategy
+name|reviewCategoryStrategy
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|reviewCategeoryStrategyRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|ReviewCategoryStrategy
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+name|ReviewCategoryStrategy
+operator|.
+name|NONE
+return|;
+block|}
+DECL|method|reviewCategeoryStrategyRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|reviewCategeoryStrategyRaw
+parameter_list|()
+comment|/*-{ return this.review_category_strategy }-*/
 function_decl|;
 DECL|method|commentVisibilityStrategy ()
 specifier|public
@@ -1069,18 +1117,6 @@ name|r
 parameter_list|)
 comment|/*-{ this.reverse_patch_set_order = r }-*/
 function_decl|;
-DECL|method|showUsernameInReviewCategory (boolean s)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|showUsernameInReviewCategory
-parameter_list|(
-name|boolean
-name|s
-parameter_list|)
-comment|/*-{ this.show_username_in_review_category = s }-*/
-function_decl|;
 DECL|method|relativeDateInChangeTable (boolean d)
 specifier|public
 specifier|final
@@ -1116,6 +1152,43 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.legacycid_in_change_table = s }-*/
+function_decl|;
+DECL|method|reviewCategoryStrategy (ReviewCategoryStrategy s)
+specifier|public
+specifier|final
+name|void
+name|reviewCategoryStrategy
+parameter_list|(
+name|ReviewCategoryStrategy
+name|s
+parameter_list|)
+block|{
+name|reviewCategoryStrategyRaw
+argument_list|(
+name|s
+operator|!=
+literal|null
+condition|?
+name|s
+operator|.
+name|toString
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|reviewCategoryStrategyRaw (String s)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|reviewCategoryStrategyRaw
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+comment|/*-{ this.review_category_strategy = s }-*/
 function_decl|;
 DECL|method|commentVisibilityStrategy (CommentVisibilityStrategy s)
 specifier|public
