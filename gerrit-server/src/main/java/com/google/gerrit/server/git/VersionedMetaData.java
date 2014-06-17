@@ -1111,7 +1111,6 @@ condition|)
 block|{
 return|return;
 block|}
-specifier|final
 name|ObjectId
 name|res
 init|=
@@ -1136,11 +1135,30 @@ name|update
 operator|.
 name|allowEmpty
 argument_list|()
+operator|&&
+operator|(
+name|commit
+operator|.
+name|getTreeId
+argument_list|()
+operator|==
+literal|null
+operator|)
 condition|)
 block|{
 comment|// If there are no changes to the content, don't create the commit.
 return|return;
 block|}
+if|if
+condition|(
+name|commit
+operator|.
+name|getTreeId
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
 name|commit
 operator|.
 name|setTreeId
@@ -1148,6 +1166,18 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// In this case, the caller populated the tree without using DirCache.
+name|res
+operator|=
+name|commit
+operator|.
+name|getTreeId
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|src
