@@ -5639,6 +5639,13 @@ argument_list|(
 name|msgs
 argument_list|)
 expr_stmt|;
+name|Collections
+operator|.
+name|reverse
+argument_list|(
+name|msgs
+argument_list|)
+expr_stmt|;
 name|Account
 operator|.
 name|Id
