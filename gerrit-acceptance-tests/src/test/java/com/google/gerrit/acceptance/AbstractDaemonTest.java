@@ -1454,6 +1454,35 @@ name|s
 argument_list|)
 return|;
 block|}
+DECL|method|query (String q)
+specifier|protected
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|query
+parameter_list|(
+name|String
+name|q
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+return|return
+name|gApi
+operator|.
+name|changes
+argument_list|()
+operator|.
+name|query
+argument_list|(
+name|q
+argument_list|)
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
 DECL|method|newGson ()
 specifier|protected
 specifier|static
