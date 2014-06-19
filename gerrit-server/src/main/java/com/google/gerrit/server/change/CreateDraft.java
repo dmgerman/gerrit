@@ -118,9 +118,27 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
+operator|.
+name|api
 operator|.
 name|changes
+operator|.
+name|DraftInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
 operator|.
 name|Side
 import|;
@@ -263,24 +281,6 @@ operator|.
 name|server
 operator|.
 name|PatchLineCommentsUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|PutDraft
-operator|.
-name|Input
 import|;
 end_import
 
@@ -407,7 +407,7 @@ name|RestModifyView
 argument_list|<
 name|RevisionResource
 argument_list|,
-name|Input
+name|DraftInput
 argument_list|>
 block|{
 DECL|field|db
@@ -489,7 +489,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (RevisionResource rsrc, Input in)
+DECL|method|apply (RevisionResource rsrc, DraftInput in)
 specifier|public
 name|Response
 argument_list|<
@@ -500,7 +500,7 @@ parameter_list|(
 name|RevisionResource
 name|rsrc
 parameter_list|,
-name|Input
+name|DraftInput
 name|in
 parameter_list|)
 throws|throws
@@ -605,8 +605,7 @@ name|in
 operator|.
 name|range
 operator|.
-name|getEndLine
-argument_list|()
+name|endLine
 condition|)
 block|{
 throw|throw
@@ -640,8 +639,7 @@ name|in
 operator|.
 name|range
 operator|.
-name|getEndLine
-argument_list|()
+name|endLine
 else|:
 literal|0
 decl_stmt|;
@@ -764,7 +762,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|setRange
+name|fromRange
 argument_list|(
 name|in
 operator|.

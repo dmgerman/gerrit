@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.changes
+DECL|package|com.google.gerrit.extensions.common
 package|package
 name|com
 operator|.
@@ -60,15 +60,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|changes
+name|common
 package|;
 end_package
-
-begin_comment
-comment|/** The side on which a comment was added. */
-end_comment
 
 begin_enum
 DECL|enum|Side

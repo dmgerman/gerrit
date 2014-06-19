@@ -184,7 +184,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|Comment
+name|CommentInfo
 import|;
 end_import
 
@@ -200,7 +200,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|CommentInfo
+name|Side
 import|;
 end_import
 
@@ -408,8 +408,6 @@ name|newCommentInfo
 argument_list|(
 literal|"file1"
 argument_list|,
-name|Comment
-operator|.
 name|Side
 operator|.
 name|REVISION
@@ -571,8 +569,6 @@ name|newCommentInfo
 argument_list|(
 name|file
 argument_list|,
-name|Comment
-operator|.
 name|Side
 operator|.
 name|REVISION
@@ -716,8 +712,6 @@ name|newCommentInfo
 argument_list|(
 literal|"file1"
 argument_list|,
-name|Comment
-operator|.
 name|Side
 operator|.
 name|REVISION
@@ -881,8 +875,6 @@ name|newCommentInfo
 argument_list|(
 literal|"file1"
 argument_list|,
-name|Comment
-operator|.
 name|Side
 operator|.
 name|REVISION
@@ -972,8 +964,6 @@ name|newCommentInfo
 argument_list|(
 literal|"file1"
 argument_list|,
-name|Comment
-operator|.
 name|Side
 operator|.
 name|REVISION
@@ -1538,8 +1528,6 @@ condition|)
 block|{
 name|assertThat
 argument_list|(
-name|Comment
-operator|.
 name|Side
 operator|.
 name|REVISION
@@ -1554,7 +1542,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|newCommentInfo (String path, Comment.Side side, int line, String message)
+DECL|method|newCommentInfo (String path, Side side, int line, String message)
 specifier|private
 name|ReviewInput
 operator|.
@@ -1564,8 +1552,6 @@ parameter_list|(
 name|String
 name|path
 parameter_list|,
-name|Comment
-operator|.
 name|Side
 name|side
 parameter_list|,

@@ -382,8 +382,6 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|Comment
-operator|.
 name|Side
 import|;
 end_import
