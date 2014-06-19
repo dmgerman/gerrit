@@ -150,6 +150,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|factory
+argument_list|(
+name|FileApiImpl
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

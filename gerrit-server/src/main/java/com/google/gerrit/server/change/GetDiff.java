@@ -2094,6 +2094,25 @@ name|toList
 argument_list|()
 return|;
 block|}
+DECL|method|setBase (String base)
+specifier|public
+name|GetDiff
+name|setBase
+parameter_list|(
+name|String
+name|base
+parameter_list|)
+block|{
+name|this
+operator|.
+name|base
+operator|=
+name|base
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|class|Content
 specifier|private
 specifier|static

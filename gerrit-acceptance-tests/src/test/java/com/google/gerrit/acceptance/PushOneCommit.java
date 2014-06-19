@@ -613,7 +613,7 @@ init|=
 literal|"a.txt"
 decl_stmt|;
 DECL|field|FILE_CONTENT
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
