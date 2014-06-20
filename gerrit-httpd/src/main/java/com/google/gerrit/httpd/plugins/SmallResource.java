@@ -360,6 +360,24 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|isUnchanged (long lastModified)
+name|boolean
+name|isUnchanged
+parameter_list|(
+name|long
+name|lastModified
+parameter_list|)
+block|{
+return|return
+name|this
+operator|.
+name|lastModified
+operator|==
+name|lastModified
+return|;
+block|}
 block|}
 end_class
 

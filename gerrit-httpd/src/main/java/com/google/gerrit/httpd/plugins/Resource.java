@@ -171,8 +171,30 @@ name|SC_NOT_FOUND
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+name|boolean
+name|isUnchanged
+parameter_list|(
+name|long
+name|latestModifiedDate
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 decl_stmt|;
+DECL|method|isUnchanged (long latestModifiedDate)
+specifier|abstract
+name|boolean
+name|isUnchanged
+parameter_list|(
+name|long
+name|latestModifiedDate
+parameter_list|)
+function_decl|;
 DECL|method|weigh ()
 specifier|abstract
 name|int
