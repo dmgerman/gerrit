@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.api.changes
+DECL|package|com.google.gerrit.extensions.api.changes
 package|package
 name|com
 operator|.
@@ -60,7 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
 name|api
 operator|.
@@ -78,11 +78,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
+name|common
 operator|.
-name|changes
-operator|.
-name|Changes
+name|CommentInfo
 import|;
 end_import
 
@@ -94,92 +92,41 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|config
+name|restapi
 operator|.
-name|FactoryModule
+name|RestApiException
 import|;
 end_import
 
-begin_class
-DECL|class|Module
+begin_interface
+DECL|interface|DraftApi
 specifier|public
-class|class
-name|Module
+interface|interface
+name|DraftApi
 extends|extends
-name|FactoryModule
+name|CommentApi
 block|{
-annotation|@
-name|Override
-DECL|method|configure ()
-specifier|protected
+DECL|method|update (DraftInput in)
+name|CommentInfo
+name|update
+parameter_list|(
+name|DraftInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|delete ()
 name|void
-name|configure
+name|delete
 parameter_list|()
-block|{
-name|bind
-argument_list|(
-name|Changes
-operator|.
-name|class
-argument_list|)
-operator|.
-name|to
-argument_list|(
-name|ChangesImpl
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|ChangeApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|CommentApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|DraftApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|RevisionApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|factory
-argument_list|(
-name|FileApiImpl
-operator|.
-name|Factory
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
+throws|throws
+name|RestApiException
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

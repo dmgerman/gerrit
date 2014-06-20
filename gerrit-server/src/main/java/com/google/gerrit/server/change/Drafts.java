@@ -276,6 +276,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|Drafts
+specifier|public
 class|class
 name|Drafts
 implements|implements

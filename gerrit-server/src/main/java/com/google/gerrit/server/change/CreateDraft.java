@@ -140,6 +140,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|CommentInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|Side
 import|;
 end_import
@@ -400,6 +416,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|CreateDraft
+specifier|public
 class|class
 name|CreateDraft
 implements|implements
@@ -427,6 +444,12 @@ operator|.
 name|Factory
 name|updateFactory
 decl_stmt|;
+DECL|field|commentJson
+specifier|private
+specifier|final
+name|CommentJson
+name|commentJson
+decl_stmt|;
 DECL|field|plcUtil
 specifier|private
 specifier|final
@@ -441,7 +464,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateDraft (Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache)
+DECL|method|CreateDraft (Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, CommentJson commentJson, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache)
 name|CreateDraft
 parameter_list|(
 name|Provider
@@ -454,6 +477,9 @@ name|ChangeUpdate
 operator|.
 name|Factory
 name|updateFactory
+parameter_list|,
+name|CommentJson
+name|commentJson
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
@@ -473,6 +499,12 @@ operator|.
 name|updateFactory
 operator|=
 name|updateFactory
+expr_stmt|;
+name|this
+operator|.
+name|commentJson
+operator|=
+name|commentJson
 expr_stmt|;
 name|this
 operator|.
@@ -815,12 +847,13 @@ name|Response
 operator|.
 name|created
 argument_list|(
-operator|new
-name|CommentInfo
+name|commentJson
+operator|.
+name|format
 argument_list|(
 name|c
 argument_list|,
-literal|null
+literal|false
 argument_list|)
 argument_list|)
 return|;

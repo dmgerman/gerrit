@@ -122,22 +122,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|ChangeNotes
@@ -198,6 +182,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|ListComments
+specifier|public
 class|class
 name|ListComments
 extends|extends
@@ -205,7 +190,7 @@ name|ListDrafts
 block|{
 annotation|@
 name|Inject
-DECL|method|ListComments (Provider<ReviewDb> db, AccountLoader.Factory alf, PatchLineCommentsUtil plcUtil)
+DECL|method|ListComments (Provider<ReviewDb> db, CommentJson commentJson, PatchLineCommentsUtil plcUtil)
 name|ListComments
 parameter_list|(
 name|Provider
@@ -214,10 +199,8 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|AccountLoader
-operator|.
-name|Factory
-name|alf
+name|CommentJson
+name|commentJson
 parameter_list|,
 name|PatchLineCommentsUtil
 name|plcUtil
@@ -227,7 +210,7 @@ name|super
 argument_list|(
 name|db
 argument_list|,
-name|alf
+name|commentJson
 argument_list|,
 name|plcUtil
 argument_list|)
