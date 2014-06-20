@@ -397,15 +397,12 @@ decl_stmt|;
 DECL|field|delete
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|DeleteDraft
-argument_list|>
 name|delete
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutDraft (Provider<ReviewDb> db, Provider<DeleteDraft> delete)
+DECL|method|PutDraft (Provider<ReviewDb> db, DeleteDraft delete)
 name|PutDraft
 parameter_list|(
 name|Provider
@@ -414,10 +411,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|Provider
-argument_list|<
 name|DeleteDraft
-argument_list|>
 name|delete
 parameter_list|)
 block|{
@@ -488,9 +482,6 @@ condition|)
 block|{
 return|return
 name|delete
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(
