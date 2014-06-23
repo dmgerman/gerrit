@@ -922,6 +922,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -955,6 +957,11 @@ argument_list|,
 name|acct
 operator|.
 name|getPreferredEmail
+argument_list|()
+argument_list|,
+name|acct
+operator|.
+name|getUserName
 argument_list|()
 argument_list|)
 return|;
@@ -996,6 +1003,8 @@ argument_list|,
 literal|null
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}
@@ -1029,6 +1038,11 @@ argument_list|,
 name|acct
 operator|.
 name|getPreferredEmail
+argument_list|()
+argument_list|,
+name|acct
+operator|.
+name|getUsername
 argument_list|()
 argument_list|)
 return|;

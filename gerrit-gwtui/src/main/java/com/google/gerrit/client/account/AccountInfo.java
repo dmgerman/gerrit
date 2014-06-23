@@ -133,6 +133,15 @@ name|email
 parameter_list|()
 comment|/*-{ return this.email; }-*/
 function_decl|;
+DECL|method|username ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|username
+parameter_list|()
+comment|/*-{ return this.username; }-*/
+function_decl|;
 comment|/**    * @return true if the server supplied avatar information about this account.    *         The information may be an empty list, indicating no avatars are    *         available, such as when no plugin is installed. This method returns    *         false if the server did not check on avatars for the account.    */
 DECL|method|has_avatar_info ()
 specifier|public
@@ -225,7 +234,7 @@ name|avatars
 parameter_list|()
 comment|/*-{ return this.avatars }-*/
 function_decl|;
-DECL|method|create (int id, String name, String email)
+DECL|method|create (int id, String name, String email, String username)
 specifier|public
 specifier|static
 specifier|native
@@ -240,8 +249,11 @@ name|name
 parameter_list|,
 name|String
 name|email
+parameter_list|,
+name|String
+name|username
 parameter_list|)
-comment|/*-{     return {'_account_id': id, 'name': name, 'email': email};   }-*/
+comment|/*-{     return {'_account_id': id, 'name': name, 'email': email,         'username': username};   }-*/
 function_decl|;
 DECL|method|AccountInfo ()
 specifier|protected

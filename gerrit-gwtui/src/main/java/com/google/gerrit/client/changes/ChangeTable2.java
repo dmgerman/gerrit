@@ -2946,6 +2946,15 @@ name|email
 argument_list|()
 return|;
 case|case
+name|USERNAME
+case|:
+return|return
+name|accountInfo
+operator|.
+name|username
+argument_list|()
+return|;
+case|case
 name|ABBREV
 case|:
 return|return

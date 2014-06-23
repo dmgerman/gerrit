@@ -310,6 +310,9 @@ block|,
 DECL|enumConstant|EMAIL
 name|EMAIL
 block|,
+DECL|enumConstant|USERNAME
+name|USERNAME
+block|,
 DECL|enumConstant|ABBREV
 name|ABBREV
 block|}
