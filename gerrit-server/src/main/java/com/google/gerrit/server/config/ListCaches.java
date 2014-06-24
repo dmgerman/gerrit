@@ -581,6 +581,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|type
+operator|=
+name|CacheType
+operator|.
+name|MEM
+expr_stmt|;
+block|}
 block|}
 DECL|method|duration (double ns)
 specifier|private
