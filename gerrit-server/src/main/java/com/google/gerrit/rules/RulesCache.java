@@ -1283,6 +1283,8 @@ parameter_list|,
 name|Reader
 name|rules
 parameter_list|)
+throws|throws
+name|CompileException
 block|{
 name|BufferingPrologControl
 name|ctl
@@ -1305,6 +1307,8 @@ operator|.
 name|PUSHBACK_SIZE
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -1336,6 +1340,25 @@ block|{
 return|return
 literal|null
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|CompileException
+argument_list|(
+literal|"Error while consulting rules from "
+operator|+
+name|name
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 return|return
 name|save
