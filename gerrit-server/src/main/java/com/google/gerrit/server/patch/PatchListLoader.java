@@ -2137,6 +2137,17 @@ comment|// It is not safe to continue further down in this method as throwing
 comment|// an exception most likely means that the merge tree was not created
 comment|// and m.getMergeResults() is empty. This would mean that all paths are
 comment|// unmerged and Gerrit UI would show all paths in the patch list.
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error attempting automerge "
+operator|+
+name|refName
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
