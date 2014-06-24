@@ -3421,6 +3421,15 @@ argument_list|)
 expr_stmt|;
 name|res
 operator|.
+name|setDateHeader
+argument_list|(
+literal|"Last-Modified"
+argument_list|,
+name|lastModifiedTime
+argument_list|)
+expr_stmt|;
+name|res
+operator|.
 name|getOutputStream
 argument_list|()
 operator|.
