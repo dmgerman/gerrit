@@ -1011,8 +1011,8 @@ argument_list|)
 return|;
 block|}
 DECL|method|newRule (ProjectConfig project, AccountGroup.UUID groupUUID)
-specifier|static
 specifier|public
+specifier|static
 name|PermissionRule
 name|newRule
 parameter_list|(
@@ -1057,8 +1057,8 @@ argument_list|)
 return|;
 block|}
 DECL|method|allow (ProjectConfig project, String permissionName, int min, int max, AccountGroup.UUID group, String ref)
-specifier|static
 specifier|public
+specifier|static
 name|PermissionRule
 name|allow
 parameter_list|(
@@ -1121,8 +1121,8 @@ argument_list|)
 return|;
 block|}
 DECL|method|block (ProjectConfig project, String permissionName, int min, int max, AccountGroup.UUID group, String ref)
-specifier|static
 specifier|public
+specifier|static
 name|PermissionRule
 name|block
 parameter_list|(
@@ -1195,8 +1195,8 @@ name|r
 return|;
 block|}
 DECL|method|allow (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
-specifier|static
 specifier|public
+specifier|static
 name|PermissionRule
 name|allow
 parameter_list|(
@@ -1234,8 +1234,8 @@ argument_list|)
 return|;
 block|}
 DECL|method|block (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
-specifier|static
 specifier|public
+specifier|static
 name|PermissionRule
 name|block
 parameter_list|(
@@ -1283,8 +1283,8 @@ name|r
 return|;
 block|}
 DECL|method|deny (ProjectConfig project, String permissionName, AccountGroup.UUID group, String ref)
-specifier|static
 specifier|public
+specifier|static
 name|PermissionRule
 name|deny
 parameter_list|(
@@ -1332,8 +1332,8 @@ name|r
 return|;
 block|}
 DECL|method|doNotInherit (ProjectConfig project, String permissionName, String ref)
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|doNotInherit
 parameter_list|(
@@ -1372,8 +1372,8 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|grant (ProjectConfig project, String permissionName, PermissionRule rule, String ref)
-specifier|static
 specifier|private
+specifier|static
 name|PermissionRule
 name|grant
 parameter_list|(
