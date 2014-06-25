@@ -987,7 +987,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 name|e
 operator|.
 name|needMerge
@@ -999,6 +998,16 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|e
+operator|.
+name|needMerge
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
