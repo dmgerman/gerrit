@@ -254,6 +254,11 @@ argument_list|()
 argument_list|,
 name|webLink
 operator|.
+name|getImageUrl
+argument_list|()
+argument_list|,
+name|webLink
+operator|.
 name|getPatchSetUrl
 argument_list|(
 name|project
@@ -309,6 +314,11 @@ argument_list|(
 name|webLink
 operator|.
 name|getLinkName
+argument_list|()
+argument_list|,
+name|webLink
+operator|.
+name|getImageUrl
 argument_list|()
 argument_list|,
 name|webLink

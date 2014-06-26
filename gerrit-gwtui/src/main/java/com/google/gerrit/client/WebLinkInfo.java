@@ -97,6 +97,15 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
+DECL|method|imageUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|imageUrl
+parameter_list|()
+comment|/*-{ return this.image_url; }-*/
+function_decl|;
 DECL|method|url ()
 specifier|public
 specifier|final
