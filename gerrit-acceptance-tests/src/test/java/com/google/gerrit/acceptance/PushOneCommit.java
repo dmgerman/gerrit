@@ -598,6 +598,7 @@ init|=
 literal|"test commit"
 decl_stmt|;
 DECL|field|FILE_NAME
+specifier|public
 specifier|static
 specifier|final
 name|String

@@ -658,6 +658,7 @@ end_import
 
 begin_class
 DECL|class|Files
+specifier|public
 class|class
 name|Files
 implements|implements
@@ -795,7 +796,7 @@ argument_list|)
 return|;
 block|}
 DECL|class|ListFiles
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 class|class
@@ -956,6 +957,25 @@ name|patchListCache
 operator|=
 name|patchListCache
 expr_stmt|;
+block|}
+DECL|method|setReviewed (boolean r)
+specifier|public
+name|ListFiles
+name|setReviewed
+parameter_list|(
+name|boolean
+name|r
+parameter_list|)
+block|{
+name|this
+operator|.
+name|reviewed
+operator|=
+name|r
+expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 annotation|@
 name|Override
