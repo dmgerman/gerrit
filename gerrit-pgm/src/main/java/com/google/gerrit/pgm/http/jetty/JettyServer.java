@@ -218,6 +218,26 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|pgm
+operator|.
+name|http
+operator|.
+name|jetty
+operator|.
+name|HttpLog
+operator|.
+name|HttpLogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -1427,7 +1447,7 @@ name|baseResource
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|JettyServer (@erritServerConfig final Config cfg, final SitePaths site, final JettyEnv env)
+DECL|method|JettyServer (@erritServerConfig final Config cfg, final SitePaths site, final JettyEnv env, final HttpLogFactory httpLogFactory)
 name|JettyServer
 parameter_list|(
 annotation|@
@@ -1443,6 +1463,10 @@ parameter_list|,
 specifier|final
 name|JettyEnv
 name|env
+parameter_list|,
+specifier|final
+name|HttpLogFactory
+name|httpLogFactory
 parameter_list|)
 throws|throws
 name|MalformedURLException
@@ -1514,13 +1538,10 @@ name|handler
 operator|.
 name|setRequestLog
 argument_list|(
-operator|new
-name|HttpLog
-argument_list|(
-name|site
-argument_list|,
-name|cfg
-argument_list|)
+name|httpLogFactory
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|handler
