@@ -244,15 +244,6 @@ name|GarbageCollectionRunner
 implements|implements
 name|Runnable
 block|{
-DECL|field|LOG_NAME
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|LOG_NAME
-init|=
-literal|"gc_log"
-decl_stmt|;
 DECL|field|gcLog
 specifier|private
 specifier|static
@@ -264,6 +255,8 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
+name|GarbageCollection
+operator|.
 name|LOG_NAME
 argument_list|)
 decl_stmt|;
