@@ -334,6 +334,45 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|ScheduleConfig (Config rc, String section, String subsection, String keyInterval, String keyStartTime)
+specifier|public
+name|ScheduleConfig
+parameter_list|(
+name|Config
+name|rc
+parameter_list|,
+name|String
+name|section
+parameter_list|,
+name|String
+name|subsection
+parameter_list|,
+name|String
+name|keyInterval
+parameter_list|,
+name|String
+name|keyStartTime
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|rc
+argument_list|,
+name|section
+argument_list|,
+name|subsection
+argument_list|,
+name|keyInterval
+argument_list|,
+name|keyStartTime
+argument_list|,
+name|DateTime
+operator|.
+name|now
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* For testing we need to be able to pass now */
 DECL|method|ScheduleConfig (Config rc, String section, String subsection, DateTime now)
 name|ScheduleConfig
@@ -352,6 +391,45 @@ name|now
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|rc
+argument_list|,
+name|section
+argument_list|,
+name|subsection
+argument_list|,
+name|KEY_INTERVAL
+argument_list|,
+name|KEY_STARTTIME
+argument_list|,
+name|now
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ScheduleConfig (Config rc, String section, String subsection, String keyInterval, String keyStartTime, DateTime now)
+specifier|private
+name|ScheduleConfig
+parameter_list|(
+name|Config
+name|rc
+parameter_list|,
+name|String
+name|section
+parameter_list|,
+name|String
+name|subsection
+parameter_list|,
+name|String
+name|keyInterval
+parameter_list|,
+name|String
+name|keyStartTime
+parameter_list|,
+name|DateTime
+name|now
+parameter_list|)
+block|{
+name|this
 operator|.
 name|interval
 operator|=
@@ -362,6 +440,8 @@ argument_list|,
 name|section
 argument_list|,
 name|subsection
+argument_list|,
+name|keyInterval
 argument_list|)
 expr_stmt|;
 if|if
@@ -382,6 +462,8 @@ argument_list|,
 name|section
 argument_list|,
 name|subsection
+argument_list|,
+name|keyStartTime
 argument_list|,
 name|now
 argument_list|,
@@ -419,7 +501,7 @@ return|return
 name|interval
 return|;
 block|}
-DECL|method|interval (Config rc, String section, String subsection)
+DECL|method|interval (Config rc, String section, String subsection, String keyInterval)
 specifier|private
 specifier|static
 name|long
@@ -433,6 +515,9 @@ name|section
 parameter_list|,
 name|String
 name|subsection
+parameter_list|,
+name|String
+name|keyInterval
 parameter_list|)
 block|{
 name|long
@@ -454,7 +539,7 @@ name|section
 argument_list|,
 name|subsection
 argument_list|,
-name|KEY_INTERVAL
+name|keyInterval
 argument_list|,
 operator|-
 literal|1
@@ -483,7 +568,7 @@ literal|"{0} schedule parameter \"{0}.{1}\" is not configured"
 argument_list|,
 name|section
 argument_list|,
-name|KEY_INTERVAL
+name|keyInterval
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -507,7 +592,7 @@ literal|"Invalid {0} schedule parameter \"{0}.{1}\""
 argument_list|,
 name|section
 argument_list|,
-name|KEY_INTERVAL
+name|keyInterval
 argument_list|)
 argument_list|,
 name|e
@@ -522,7 +607,7 @@ return|return
 name|interval
 return|;
 block|}
-DECL|method|initialDelay (Config rc, String section, String subsection, DateTime now, long interval)
+DECL|method|initialDelay (Config rc, String section, String subsection, String keyStartTime, DateTime now, long interval)
 specifier|private
 specifier|static
 name|long
@@ -536,6 +621,9 @@ name|section
 parameter_list|,
 name|String
 name|subsection
+parameter_list|,
+name|String
+name|keyStartTime
 parameter_list|,
 name|DateTime
 name|now
@@ -560,7 +648,7 @@ name|section
 argument_list|,
 name|subsection
 argument_list|,
-name|KEY_STARTTIME
+name|keyStartTime
 argument_list|)
 decl_stmt|;
 try|try
@@ -767,7 +855,7 @@ literal|"{0} schedule parameter \"{0}.{1}\" is not configured"
 argument_list|,
 name|section
 argument_list|,
-name|KEY_STARTTIME
+name|keyStartTime
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -791,7 +879,7 @@ literal|"Invalid {0} schedule parameter \"{0}.{1}\""
 argument_list|,
 name|section
 argument_list|,
-name|KEY_STARTTIME
+name|keyStartTime
 argument_list|)
 argument_list|,
 name|e2
