@@ -488,7 +488,12 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+name|ms
+argument_list|(
+literal|1
+argument_list|,
+name|DAYS
+argument_list|)
 argument_list|,
 name|initialDelay
 argument_list|(
