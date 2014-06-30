@@ -368,6 +368,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|EXTENSION
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|EXTENSION
+init|=
+literal|".config"
+decl_stmt|;
 DECL|field|site
 specifier|private
 specifier|final
@@ -901,6 +910,8 @@ operator|.
 name|getConfig
 argument_list|(
 name|pluginName
+operator|+
+name|EXTENSION
 argument_list|)
 operator|.
 name|get
@@ -955,6 +966,8 @@ operator|.
 name|getConfig
 argument_list|(
 name|pluginName
+operator|+
+name|EXTENSION
 argument_list|)
 operator|.
 name|getWithInheritance
@@ -1008,6 +1021,8 @@ operator|.
 name|getConfig
 argument_list|(
 name|pluginName
+operator|+
+name|EXTENSION
 argument_list|)
 return|;
 block|}
