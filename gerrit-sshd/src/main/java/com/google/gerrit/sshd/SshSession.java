@@ -334,6 +334,26 @@ return|return
 name|identity
 return|;
 block|}
+DECL|method|getRemoteAddress ()
+specifier|public
+name|SocketAddress
+name|getRemoteAddress
+parameter_list|()
+block|{
+return|return
+name|remoteAddress
+return|;
+block|}
+DECL|method|getRemoteAddressAsString ()
+specifier|public
+name|String
+name|getRemoteAddressAsString
+parameter_list|()
+block|{
+return|return
+name|remoteAsString
+return|;
+block|}
 DECL|method|getUsername ()
 name|String
 name|getUsername
@@ -435,24 +455,6 @@ return|return
 name|authError
 operator|!=
 literal|null
-return|;
-block|}
-DECL|method|getRemoteAddress ()
-name|SocketAddress
-name|getRemoteAddress
-parameter_list|()
-block|{
-return|return
-name|remoteAddress
-return|;
-block|}
-DECL|method|getRemoteAddressAsString ()
-name|String
-name|getRemoteAddressAsString
-parameter_list|()
-block|{
-return|return
-name|remoteAsString
 return|;
 block|}
 DECL|method|format (final SocketAddress remote)
