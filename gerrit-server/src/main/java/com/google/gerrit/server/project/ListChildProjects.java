@@ -178,6 +178,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllProjectsNameProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -271,14 +287,14 @@ name|projectNodeFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListChildProjects (ProjectCache projectCache, AllProjectsName allProjects, ProjectJson json, ProjectNode.Factory projectNodeFactory)
+DECL|method|ListChildProjects (ProjectCache projectCache, AllProjectsNameProvider allProjectsNameProvider, ProjectJson json, ProjectNode.Factory projectNodeFactory)
 name|ListChildProjects
 parameter_list|(
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|AllProjectsName
-name|allProjects
+name|AllProjectsNameProvider
+name|allProjectsNameProvider
 parameter_list|,
 name|ProjectJson
 name|json
@@ -299,7 +315,10 @@ name|this
 operator|.
 name|allProjects
 operator|=
-name|allProjects
+name|allProjectsNameProvider
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
