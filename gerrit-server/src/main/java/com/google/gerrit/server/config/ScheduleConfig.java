@@ -364,6 +364,13 @@ argument_list|,
 name|subsection
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|interval
+operator|>
+literal|0
+condition|)
+block|{
 name|this
 operator|.
 name|initialDelay
@@ -381,6 +388,16 @@ argument_list|,
 name|interval
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|initialDelay
+operator|=
+name|interval
+expr_stmt|;
+block|}
 block|}
 DECL|method|getInitialDelay ()
 specifier|public
