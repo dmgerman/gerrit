@@ -387,12 +387,6 @@ literal|null
 operator|||
 name|i
 operator|.
-name|showUsernameInReviewCategory
-operator|!=
-literal|null
-operator|||
-name|i
-operator|.
 name|relativeDateInChangeTable
 operator|!=
 literal|null
@@ -406,6 +400,12 @@ operator|||
 name|i
 operator|.
 name|legacycidInChangeTable
+operator|!=
+literal|null
+operator|||
+name|i
+operator|.
+name|reviewCategoryStrategy
 operator|!=
 literal|null
 operator|||
