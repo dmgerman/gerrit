@@ -430,7 +430,7 @@ operator|.
 name|getDefaultQueue
 argument_list|()
 operator|.
-name|scheduleWithFixedDelay
+name|scheduleAtFixedRate
 argument_list|(
 name|gcRunner
 argument_list|,
