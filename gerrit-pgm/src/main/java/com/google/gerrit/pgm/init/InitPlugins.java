@@ -138,7 +138,7 @@ name|server
 operator|.
 name|plugins
 operator|.
-name|PluginLoader
+name|JarPluginProvider
 import|;
 end_import
 
@@ -391,7 +391,7 @@ block|{
 name|File
 name|tmpPlugin
 init|=
-name|PluginLoader
+name|JarPluginProvider
 operator|.
 name|storeInTemp
 argument_list|(

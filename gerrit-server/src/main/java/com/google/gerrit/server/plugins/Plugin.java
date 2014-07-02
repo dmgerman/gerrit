@@ -490,6 +490,11 @@ specifier|final
 name|FileSnapshot
 name|snapshot
 decl_stmt|;
+DECL|field|cleanupHandle
+specifier|private
+name|CleanupHandle
+name|cleanupHandle
+decl_stmt|;
 DECL|field|manager
 specifier|protected
 name|LifecycleManager
@@ -581,6 +586,32 @@ name|endsWith
 argument_list|(
 literal|".disabled"
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getCleanupHandle ()
+specifier|public
+name|CleanupHandle
+name|getCleanupHandle
+parameter_list|()
+block|{
+return|return
+name|cleanupHandle
+return|;
+block|}
+DECL|method|setCleanupHandle (CleanupHandle cleanupHandle)
+specifier|public
+name|void
+name|setCleanupHandle
+parameter_list|(
+name|CleanupHandle
+name|cleanupHandle
+parameter_list|)
+block|{
+name|this
+operator|.
+name|cleanupHandle
+operator|=
+name|cleanupHandle
 expr_stmt|;
 block|}
 DECL|method|getPluginUser ()
