@@ -172,8 +172,6 @@ name|ProjectWebLink
 argument_list|>
 name|projectLinks
 decl_stmt|;
-annotation|@
-name|Inject
 DECL|method|WebLinks (DynamicSet<PatchSetWebLink> patchSetLinks, DynamicSet<ProjectWebLink> projectLinks)
 specifier|public
 name|WebLinks
