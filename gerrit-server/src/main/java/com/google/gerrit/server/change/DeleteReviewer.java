@@ -759,7 +759,7 @@ name|msg
 operator|.
 name|append
 argument_list|(
-literal|"Removed the following approvals:\n\n"
+literal|"Removed the following votes:\n\n"
 argument_list|)
 expr_stmt|;
 block|}
