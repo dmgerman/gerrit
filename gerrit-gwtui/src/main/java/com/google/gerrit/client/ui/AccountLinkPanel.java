@@ -454,8 +454,6 @@ operator|new
 name|AvatarImage
 argument_list|(
 name|info
-argument_list|,
-literal|16
 argument_list|)
 argument_list|)
 expr_stmt|;
