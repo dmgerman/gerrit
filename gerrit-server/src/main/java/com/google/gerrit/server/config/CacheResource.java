@@ -212,6 +212,67 @@ operator|=
 name|cacheProvider
 expr_stmt|;
 block|}
+DECL|method|CacheResource (String pluginName, String cacheName, final Cache<?, ?> cache)
+specifier|public
+name|CacheResource
+parameter_list|(
+name|String
+name|pluginName
+parameter_list|,
+name|String
+name|cacheName
+parameter_list|,
+specifier|final
+name|Cache
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
+name|cache
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|pluginName
+argument_list|,
+name|cacheName
+argument_list|,
+operator|new
+name|Provider
+argument_list|<
+name|Cache
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Cache
+argument_list|<
+name|?
+argument_list|,
+name|?
+argument_list|>
+name|get
+parameter_list|()
+block|{
+return|return
+name|cache
+return|;
+block|}
+block|}
+block|)
+empty_stmt|;
+block|}
+end_class
+
+begin_function
 DECL|method|getName ()
 specifier|public
 name|String
@@ -222,6 +283,9 @@ return|return
 name|name
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getCache ()
 specifier|public
 name|Cache
@@ -240,6 +304,9 @@ name|get
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|cacheNameOf (String plugin, String name)
 specifier|public
 specifier|static
@@ -278,8 +345,8 @@ name|name
 return|;
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
