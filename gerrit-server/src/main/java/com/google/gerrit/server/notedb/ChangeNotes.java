@@ -3860,6 +3860,7 @@ decl_stmt|;
 annotation|@
 name|VisibleForTesting
 DECL|method|ChangeNotes (GitRepositoryManager repoManager, Change change)
+specifier|public
 name|ChangeNotes
 parameter_list|(
 name|GitRepositoryManager
