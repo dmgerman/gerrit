@@ -4265,7 +4265,7 @@ if|if
 condition|(
 name|req
 operator|.
-name|getPathInfo
+name|getRequestURI
 argument_list|()
 operator|.
 name|equals
@@ -4359,7 +4359,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%s/static/%s"
+literal|"/plugins/%s/static/%s"
 argument_list|,
 name|plugin
 operator|.
