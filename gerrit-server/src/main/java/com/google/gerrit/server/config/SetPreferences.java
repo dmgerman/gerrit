@@ -381,12 +381,6 @@ literal|null
 operator|||
 name|i
 operator|.
-name|copySelfOnEmail
-operator|!=
-literal|null
-operator|||
-name|i
-operator|.
 name|dateFormat
 operator|!=
 literal|null
@@ -424,6 +418,12 @@ operator|||
 name|i
 operator|.
 name|reviewCategoryStrategy
+operator|!=
+literal|null
+operator|||
+name|i
+operator|.
+name|emailStrategy
 operator|!=
 literal|null
 condition|)

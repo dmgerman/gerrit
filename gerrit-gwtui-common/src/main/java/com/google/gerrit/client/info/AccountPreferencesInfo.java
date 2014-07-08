@@ -198,6 +198,24 @@ name|client
 operator|.
 name|AccountGeneralPreferences
 operator|.
+name|EmailStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|AccountGeneralPreferences
+operator|.
 name|ReviewCategoryStrategy
 import|;
 end_import
@@ -381,16 +399,6 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
-name|copySelfOnEmail
-argument_list|(
-name|defaultPrefs
-operator|.
-name|isCopySelfOnEmails
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|p
-operator|.
 name|dateFormat
 argument_list|(
 name|defaultPrefs
@@ -466,6 +474,16 @@ argument_list|(
 name|defaultPrefs
 operator|.
 name|getDiffView
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|emailStrategy
+argument_list|(
+name|defaultPrefs
+operator|.
+name|getEmailStrategy
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -582,15 +600,6 @@ name|String
 name|downloadCommandRaw
 parameter_list|()
 comment|/*-{ return this.download_command }-*/
-function_decl|;
-DECL|method|copySelfOnEmail ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|copySelfOnEmail
-parameter_list|()
-comment|/*-{ return this.copy_self_on_email || false }-*/
 function_decl|;
 DECL|method|dateFormat ()
 specifier|public
@@ -778,6 +787,43 @@ name|diffViewRaw
 parameter_list|()
 comment|/*-{ return this.diff_view }-*/
 function_decl|;
+DECL|method|emailStrategy ()
+specifier|public
+specifier|final
+name|EmailStrategy
+name|emailStrategy
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|emailStrategyRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|EmailStrategy
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+DECL|method|emailStrategyRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|emailStrategyRaw
+parameter_list|()
+comment|/*-{ return this.email_strategy }-*/
+function_decl|;
 DECL|method|my ()
 specifier|public
 specifier|final
@@ -874,18 +920,6 @@ name|String
 name|d
 parameter_list|)
 comment|/*-{ this.download_command = d }-*/
-function_decl|;
-DECL|method|copySelfOnEmail (boolean c)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|copySelfOnEmail
-parameter_list|(
-name|boolean
-name|c
-parameter_list|)
-comment|/*-{ this.copy_self_on_email = c }-*/
 function_decl|;
 DECL|method|dateFormat (DateFormat f)
 specifier|public
@@ -1082,6 +1116,43 @@ name|String
 name|d
 parameter_list|)
 comment|/*-{ this.diff_view = d }-*/
+function_decl|;
+DECL|method|emailStrategy (EmailStrategy s)
+specifier|public
+specifier|final
+name|void
+name|emailStrategy
+parameter_list|(
+name|EmailStrategy
+name|s
+parameter_list|)
+block|{
+name|emailStrategyRaw
+argument_list|(
+name|s
+operator|!=
+literal|null
+condition|?
+name|s
+operator|.
+name|toString
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|emailStrategyRaw (String s)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|emailStrategyRaw
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+comment|/*-{ this.email_strategy = s }-*/
 function_decl|;
 DECL|method|setMyMenus (List<TopMenuItem> myMenus)
 specifier|public

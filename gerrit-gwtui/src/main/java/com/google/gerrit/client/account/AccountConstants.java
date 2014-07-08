@@ -150,11 +150,6 @@ name|String
 name|useFlashClipboard
 parameter_list|()
 function_decl|;
-DECL|method|copySelfOnEmails ()
-name|String
-name|copySelfOnEmails
-parameter_list|()
-function_decl|;
 DECL|method|reviewCategoryLabel ()
 name|String
 name|reviewCategoryLabel
@@ -723,6 +718,26 @@ function_decl|;
 DECL|method|welcomeContinue ()
 name|String
 name|welcomeContinue
+parameter_list|()
+function_decl|;
+DECL|method|messageEnabled ()
+name|String
+name|messageEnabled
+parameter_list|()
+function_decl|;
+DECL|method|messageCCMeOnMyComments ()
+name|String
+name|messageCCMeOnMyComments
+parameter_list|()
+function_decl|;
+DECL|method|messageDisabled ()
+name|String
+name|messageDisabled
+parameter_list|()
+function_decl|;
+DECL|method|emailFieldLabel ()
+name|String
+name|emailFieldLabel
 parameter_list|()
 function_decl|;
 block|}
