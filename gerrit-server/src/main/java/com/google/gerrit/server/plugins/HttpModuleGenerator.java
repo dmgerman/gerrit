@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.webui
+DECL|package|com.google.gerrit.server.plugins
 package|package
 name|com
 operator|.
@@ -60,82 +60,30 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|webui
+name|plugins
 package|;
 end_package
 
-begin_comment
-comment|/** Configures a web UI plugin written using JavaScript. */
-end_comment
-
-begin_class
-DECL|class|JavaScriptPlugin
+begin_interface
+DECL|interface|HttpModuleGenerator
 specifier|public
-class|class
-name|JavaScriptPlugin
+interface|interface
+name|HttpModuleGenerator
 extends|extends
-name|WebUiPlugin
+name|ModuleGenerator
 block|{
-DECL|field|INIT_JS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|INIT_JS
-init|=
-literal|"init.js"
-decl_stmt|;
-DECL|field|STATIC_INIT_JS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|STATIC_INIT_JS
-init|=
-literal|"static/"
-operator|+
-name|INIT_JS
-decl_stmt|;
-DECL|field|fileName
-specifier|private
-specifier|final
-name|String
-name|fileName
-decl_stmt|;
-comment|/**    * @param fileName of JavaScript source file under {@code static/}    *        subdirectory within the plugin's JAR.    */
-DECL|method|JavaScriptPlugin (String fileName)
-specifier|public
-name|JavaScriptPlugin
+DECL|method|export (String javascript)
+name|void
+name|export
 parameter_list|(
 name|String
-name|fileName
+name|javascript
 parameter_list|)
-block|{
-name|this
-operator|.
-name|fileName
-operator|=
-name|fileName
-expr_stmt|;
+function_decl|;
 block|}
-annotation|@
-name|Override
-DECL|method|getJavaScriptResourcePath ()
-specifier|public
-name|String
-name|getJavaScriptResourcePath
-parameter_list|()
-block|{
-return|return
-literal|"static/"
-operator|+
-name|fileName
-return|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

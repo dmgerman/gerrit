@@ -746,7 +746,7 @@ DECL|field|httpGen
 specifier|private
 name|Provider
 argument_list|<
-name|ModuleGenerator
+name|HttpModuleGenerator
 argument_list|>
 name|httpGen
 decl_stmt|;
@@ -1398,7 +1398,7 @@ name|injector
 operator|.
 name|getProvider
 argument_list|(
-name|ModuleGenerator
+name|HttpModuleGenerator
 operator|.
 name|class
 argument_list|)
@@ -1488,7 +1488,7 @@ name|httpModule
 return|;
 block|}
 DECL|method|newHttpModuleGenerator ()
-name|ModuleGenerator
+name|HttpModuleGenerator
 name|newHttpModuleGenerator
 parameter_list|()
 block|{
