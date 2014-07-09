@@ -273,6 +273,14 @@ operator|new
 name|FileResource
 argument_list|(
 name|parent
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|,
+name|parent
+operator|.
+name|getRef
+argument_list|()
 argument_list|,
 name|id
 operator|.
