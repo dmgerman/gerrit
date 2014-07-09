@@ -202,6 +202,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -435,23 +447,14 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|BanCommit
 specifier|public
 class|class
 name|BanCommit
 block|{
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create ()
-name|BanCommit
-name|create
-parameter_list|()
-function_decl|;
-block|}
-comment|/**   * Loads a list of commits to reject from {@code refs/meta/reject-commits}.   *   * @param repo repository from which the rejected commits should be loaded   * @return NoteMap of commits to be rejected, null if there are none.   * @throws IOException the map cannot be loaded.   */
+comment|/**    * Loads a list of commits to reject from {@code refs/meta/reject-commits}.    *    * @param repo repository from which the rejected commits should be loaded    * @return NoteMap of commits to be rejected, null if there are none.    * @throws IOException the map cannot be loaded.    */
 DECL|method|loadRejectCommitsMap (Repository repo)
 specifier|public
 specifier|static

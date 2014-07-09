@@ -409,12 +409,10 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|banCommitFactory
+DECL|field|banCommit
 specifier|private
 name|BanCommit
-operator|.
-name|Factory
-name|banCommitFactory
+name|banCommit
 decl_stmt|;
 annotation|@
 name|Override
@@ -432,10 +430,7 @@ specifier|final
 name|BanCommitResult
 name|result
 init|=
-name|banCommitFactory
-operator|.
-name|create
-argument_list|()
+name|banCommit
 operator|.
 name|ban
 argument_list|(

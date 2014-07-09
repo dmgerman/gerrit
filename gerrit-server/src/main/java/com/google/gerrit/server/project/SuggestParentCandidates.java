@@ -126,6 +126,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -175,22 +187,13 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|SuggestParentCandidates
 specifier|public
 class|class
 name|SuggestParentCandidates
 block|{
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create ()
-name|SuggestParentCandidates
-name|create
-parameter_list|()
-function_decl|;
-block|}
 DECL|field|projectControlFactory
 specifier|private
 specifier|final

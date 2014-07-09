@@ -1013,12 +1013,10 @@ name|gApi
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|suggestParentCandidatesFactory
+DECL|field|suggestParentCandidates
 specifier|private
 name|SuggestParentCandidates
-operator|.
-name|Factory
-name|suggestParentCandidatesFactory
+name|suggestParentCandidates
 decl_stmt|;
 annotation|@
 name|Override
@@ -1242,10 +1240,7 @@ name|NameKey
 argument_list|>
 name|parentCandidates
 init|=
-name|suggestParentCandidatesFactory
-operator|.
-name|create
-argument_list|()
+name|suggestParentCandidates
 operator|.
 name|getNameKeys
 argument_list|()
