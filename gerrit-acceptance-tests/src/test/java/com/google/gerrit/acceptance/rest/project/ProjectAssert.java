@@ -232,7 +232,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Collection
 import|;
 end_import
 
@@ -252,7 +252,7 @@ specifier|public
 class|class
 name|ProjectAssert
 block|{
-DECL|method|assertProjects (Iterable<Project.NameKey> expected, List<ProjectInfo> actual)
+DECL|method|assertProjects (Iterable<Project.NameKey> expected, Collection<ProjectInfo> actual)
 specifier|public
 specifier|static
 name|void
@@ -266,7 +266,7 @@ name|NameKey
 argument_list|>
 name|expected
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|ProjectInfo
 argument_list|>
@@ -310,6 +310,7 @@ name|ProjectInfo
 name|info
 parameter_list|)
 block|{
+comment|// 'name' is not set if returned in a map, use the id instead.
 return|return
 operator|new
 name|Project
@@ -319,6 +320,21 @@ argument_list|(
 name|info
 operator|.
 name|name
+operator|!=
+literal|null
+condition|?
+name|info
+operator|.
+name|name
+else|:
+name|Url
+operator|.
+name|decode
+argument_list|(
+name|info
+operator|.
+name|id
+argument_list|)
 argument_list|)
 operator|.
 name|equals
