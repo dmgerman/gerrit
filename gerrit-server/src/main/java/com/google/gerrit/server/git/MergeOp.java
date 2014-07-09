@@ -5325,6 +5325,13 @@ expr_stmt|;
 comment|// TODO(yyonas): we need to be able to change the author of the message
 comment|// is not the person for whom the change was made. addMergedMessage
 comment|// did this in the past.
+if|if
+condition|(
+name|msg
+operator|!=
+literal|null
+condition|)
+block|{
 name|cmUtil
 operator|.
 name|addChangeMessage
@@ -5336,6 +5343,7 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
+block|}
 name|db
 operator|.
 name|commit
@@ -6277,6 +6285,13 @@ name|getLastUpdatedOn
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|msg
+operator|!=
+literal|null
+condition|)
+block|{
 name|cmUtil
 operator|.
 name|addChangeMessage
@@ -6288,6 +6303,7 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
+block|}
 name|db
 operator|.
 name|commit

@@ -437,13 +437,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-if|if
-condition|(
-name|changeMessage
-operator|!=
-literal|null
-condition|)
-block|{
 name|update
 operator|.
 name|setChangeMessage
@@ -469,7 +462,6 @@ name|changeMessage
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class
