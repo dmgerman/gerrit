@@ -243,8 +243,6 @@ DECL|field|submit
 specifier|private
 specifier|final
 name|ReloadSubmitQueueOp
-operator|.
-name|Factory
 name|submit
 decl_stmt|;
 DECL|field|delay
@@ -264,12 +262,10 @@ name|handle
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Lifecycle (ReloadSubmitQueueOp.Factory submit, @GerritServerConfig Config config)
+DECL|method|Lifecycle (ReloadSubmitQueueOp submit, @GerritServerConfig Config config)
 name|Lifecycle
 parameter_list|(
 name|ReloadSubmitQueueOp
-operator|.
-name|Factory
 name|submit
 parameter_list|,
 annotation|@
@@ -332,9 +328,6 @@ name|handle
 operator|=
 name|submit
 operator|.
-name|create
-argument_list|()
-operator|.
 name|startWithFixedDelay
 argument_list|(
 name|INITIAL_DELAY_S
@@ -350,9 +343,6 @@ block|{
 name|handle
 operator|=
 name|submit
-operator|.
-name|create
-argument_list|()
 operator|.
 name|start
 argument_list|(
