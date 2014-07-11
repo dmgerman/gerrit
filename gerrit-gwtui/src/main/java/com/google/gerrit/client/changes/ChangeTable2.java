@@ -2388,6 +2388,9 @@ block|}
 name|String
 name|user
 decl_stmt|;
+name|String
+name|info
+decl_stmt|;
 name|ReviewCategoryStrategy
 name|reviewCategoryStrategy
 init|=
@@ -2423,6 +2426,16 @@ condition|)
 block|{
 name|user
 operator|=
+name|label
+operator|.
+name|rejected
+argument_list|()
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
+name|info
+operator|=
 name|getReviewCategoryDisplayInfo
 argument_list|(
 name|reviewCategoryStrategy
@@ -2437,7 +2450,7 @@ if|if
 condition|(
 name|displayInfo
 operator|&&
-name|user
+name|info
 operator|!=
 literal|null
 condition|)
@@ -2472,7 +2485,7 @@ argument_list|(
 operator|new
 name|InlineLabel
 argument_list|(
-name|user
+name|info
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2525,6 +2538,16 @@ condition|)
 block|{
 name|user
 operator|=
+name|label
+operator|.
+name|approved
+argument_list|()
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
+name|info
+operator|=
 name|getReviewCategoryDisplayInfo
 argument_list|(
 name|reviewCategoryStrategy
@@ -2539,7 +2562,7 @@ if|if
 condition|(
 name|displayInfo
 operator|&&
-name|user
+name|info
 operator|!=
 literal|null
 condition|)
@@ -2574,7 +2597,7 @@ argument_list|(
 operator|new
 name|InlineLabel
 argument_list|(
-name|user
+name|info
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2626,6 +2649,16 @@ literal|null
 condition|)
 block|{
 name|user
+operator|=
+name|label
+operator|.
+name|disliked
+argument_list|()
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
+name|info
 operator|=
 name|getReviewCategoryDisplayInfo
 argument_list|(
@@ -2654,7 +2687,7 @@ if|if
 condition|(
 name|displayInfo
 operator|&&
-name|user
+name|info
 operator|!=
 literal|null
 condition|)
@@ -2665,7 +2698,7 @@ name|vstr
 operator|+
 literal|" "
 operator|+
-name|user
+name|info
 expr_stmt|;
 block|}
 name|fmt
@@ -2712,6 +2745,16 @@ condition|)
 block|{
 name|user
 operator|=
+name|label
+operator|.
+name|recommended
+argument_list|()
+operator|.
+name|name
+argument_list|()
+expr_stmt|;
+name|info
+operator|=
 name|getReviewCategoryDisplayInfo
 argument_list|(
 name|reviewCategoryStrategy
@@ -2736,7 +2779,7 @@ if|if
 condition|(
 name|displayInfo
 operator|&&
-name|user
+name|info
 operator|!=
 literal|null
 condition|)
@@ -2747,7 +2790,7 @@ name|vstr
 operator|+
 literal|" "
 operator|+
-name|user
+name|info
 expr_stmt|;
 block|}
 name|fmt
@@ -2815,8 +2858,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 operator|!
 name|displayInfo
+operator|||
+name|reviewCategoryStrategy
+operator|==
+name|ReviewCategoryStrategy
+operator|.
+name|ABBREV
+operator|)
 operator|&&
 name|user
 operator|!=
