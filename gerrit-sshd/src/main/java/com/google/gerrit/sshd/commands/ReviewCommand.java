@@ -638,7 +638,7 @@ literal|"review"
 argument_list|,
 name|description
 operator|=
-literal|"Verify, approve and/or submit one or more patch sets"
+literal|"Apply reviews to one or more patch sets"
 argument_list|)
 DECL|class|ReviewCommand
 specifier|public
@@ -1213,7 +1213,7 @@ control|)
 block|{
 try|try
 block|{
-name|approveOne
+name|reviewPatchSet
 argument_list|(
 name|patchSet
 argument_list|)
@@ -1281,7 +1281,7 @@ literal|false
 expr_stmt|;
 name|writeError
 argument_list|(
-literal|"fatal: internal server error while approving "
+literal|"fatal: internal server error while reviewing "
 operator|+
 name|patchSet
 operator|.
@@ -1295,7 +1295,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"internal error while approving "
+literal|"internal error while reviewing "
 operator|+
 name|patchSet
 operator|.
@@ -1319,7 +1319,7 @@ name|UnloggedFailure
 argument_list|(
 literal|1
 argument_list|,
-literal|"one or more approvals failed;"
+literal|"one or more reviews failed;"
 operator|+
 literal|" review output above"
 argument_list|)
@@ -1380,10 +1380,10 @@ name|review
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|approveOne (final PatchSet patchSet)
+DECL|method|reviewPatchSet (final PatchSet patchSet)
 specifier|private
 name|void
-name|approveOne
+name|reviewPatchSet
 parameter_list|(
 specifier|final
 name|PatchSet
