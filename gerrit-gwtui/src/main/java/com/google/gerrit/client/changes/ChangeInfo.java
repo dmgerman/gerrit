@@ -1690,15 +1690,6 @@ name|email
 parameter_list|()
 comment|/*-{ return this.email; }-*/
 function_decl|;
-DECL|method|username ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|username
-parameter_list|()
-comment|/*-{ return this.username; }-*/
-function_decl|;
 DECL|method|dateRaw ()
 specifier|private
 specifier|final
