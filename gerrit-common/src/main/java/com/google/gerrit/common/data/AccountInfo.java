@@ -109,6 +109,11 @@ specifier|protected
 name|String
 name|preferredEmail
 decl_stmt|;
+DECL|field|username
+specifier|protected
+name|String
+name|username
+decl_stmt|;
 DECL|method|AccountInfo ()
 specifier|protected
 name|AccountInfo
@@ -162,6 +167,13 @@ operator|=
 name|a
 operator|.
 name|getPreferredEmail
+argument_list|()
+expr_stmt|;
+name|username
+operator|=
+name|a
+operator|.
+name|getUserName
 argument_list|()
 expr_stmt|;
 block|}
@@ -229,6 +241,17 @@ operator|=
 name|email
 expr_stmt|;
 block|}
+comment|/** @return the username of the account holder */
+DECL|method|getUsername ()
+specifier|public
+name|String
+name|getUsername
+parameter_list|()
+block|{
+return|return
+name|username
+return|;
+block|}
 comment|/**    * Formats an account name.    *<p>    * If the account has a full name, it returns only the full name. Otherwise it    * returns a longer form that includes the email address.    */
 DECL|method|getName (String anonymousCowardName)
 specifier|public
@@ -272,7 +295,7 @@ name|anonymousCowardName
 argument_list|)
 return|;
 block|}
-comment|/**    * Formats an account as an name and an email address.    *<p>    * Example output:    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated</li>    *<li>{@code A U. Thor (12)}: missing email address</li>    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name</li>    *<li>{@code Anonymous Coward (12)}: missing name and email address</li>    *</ul>    */
+comment|/**    * Formats an account as a name and an email address.    *<p>    * Example output:    *<ul>    *<li>{@code A U. Thor&lt;author@example.com&gt;}: full populated</li>    *<li>{@code A U. Thor (12)}: missing email address</li>    *<li>{@code Anonymous Coward&lt;author@example.com&gt;}: missing name</li>    *<li>{@code Anonymous Coward (12)}: missing name and email address</li>    *</ul>    */
 DECL|method|getNameEmail (String anonymousCowardName)
 specifier|public
 name|String

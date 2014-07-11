@@ -190,6 +190,11 @@ name|String
 name|messageShowInReviewCategoryEmail
 parameter_list|()
 function_decl|;
+DECL|method|messageShowInReviewCategoryUsername ()
+name|String
+name|messageShowInReviewCategoryUsername
+parameter_list|()
+function_decl|;
 DECL|method|messageShowInReviewCategoryAbbrev ()
 name|String
 name|messageShowInReviewCategoryAbbrev

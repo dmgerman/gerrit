@@ -342,6 +342,11 @@ name|ident
 operator|.
 name|getEmail
 argument_list|()
+argument_list|,
+name|ident
+operator|.
+name|getUsername
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -95,6 +95,12 @@ specifier|protected
 name|String
 name|email
 decl_stmt|;
+comment|/** Username of the user. */
+DECL|field|username
+specifier|protected
+name|String
+name|username
+decl_stmt|;
 comment|/** Time (in UTC) when the identity was constructed. */
 DECL|field|when
 specifier|protected
@@ -164,6 +170,16 @@ name|email
 operator|=
 name|e
 expr_stmt|;
+block|}
+DECL|method|getUsername ()
+specifier|public
+name|String
+name|getUsername
+parameter_list|()
+block|{
+return|return
+name|username
+return|;
 block|}
 DECL|method|getDate ()
 specifier|public
