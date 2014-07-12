@@ -282,10 +282,7 @@ enum|enum
 name|IndexType
 block|{
 DECL|enumConstant|LUCENE
-DECL|enumConstant|SOLR
 name|LUCENE
-block|,
-name|SOLR
 block|}
 comment|/** Type of secondary index. */
 DECL|method|getIndexType (Injector injector)
