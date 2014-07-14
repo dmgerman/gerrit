@@ -2050,11 +2050,11 @@ argument_list|()
 operator|.
 name|render
 argument_list|(
-name|Resources
+name|Gerrit
 operator|.
-name|I
+name|RESOURCES
 operator|.
-name|remove_reviewer
+name|removeReviewer
 argument_list|()
 argument_list|)
 argument_list|)
