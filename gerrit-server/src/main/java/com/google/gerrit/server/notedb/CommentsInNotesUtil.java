@@ -3120,7 +3120,7 @@ operator|=
 name|serverIdent
 expr_stmt|;
 block|}
-comment|/**    * Build a note that contains the metadata for and the contents of all of the    * comments in the given list of comments.    *    * @param comments    *            A list of the comments to be written to the returned note    *            byte array.    *            All of the comments in this list must have the same side and    *            must share the same PatchSet.Id.    * @return the note. Null if there are no comments in the list.    */
+comment|/**    * Build a note that contains the metadata for and the contents of all of the    * comments in the given list of comments.    *    * @param comments    *            A list of the comments to be written to the returned note    *            byte array.    *            All of the comments in this list must have the same side and    *            must share the same PatchSet.Id.    *            This list must not be empty because we cannot build a note    *            for no comments.    * @return the note. Null if there are no comments in the list.    */
 DECL|method|buildNote (List<PatchLineComment> comments)
 specifier|public
 name|byte
@@ -3138,18 +3138,6 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-if|if
-condition|(
-name|comments
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 name|ByteArrayOutputStream
 name|buf
 init|=
@@ -3668,6 +3656,17 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|allComments
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|,
+literal|"No comments to write; to delete, use removeNoteFromNoteMap()."
+argument_list|)
+expr_stmt|;
 name|ObjectId
 name|commitOID
 init|=
@@ -3736,6 +3735,36 @@ argument_list|(
 name|commitOID
 argument_list|,
 name|noteId
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|removeNote (NoteMap noteMap, RevId commitId)
+specifier|public
+name|void
+name|removeNote
+parameter_list|(
+name|NoteMap
+name|noteMap
+parameter_list|,
+name|RevId
+name|commitId
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|noteMap
+operator|.
+name|remove
+argument_list|(
+name|ObjectId
+operator|.
+name|fromString
+argument_list|(
+name|commitId
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
