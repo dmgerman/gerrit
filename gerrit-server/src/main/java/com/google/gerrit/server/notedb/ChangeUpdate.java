@@ -1433,6 +1433,9 @@ name|ctl
 operator|.
 name|getNotes
 argument_list|()
+operator|.
+name|load
+argument_list|()
 decl_stmt|;
 name|NoteMap
 name|noteMap
