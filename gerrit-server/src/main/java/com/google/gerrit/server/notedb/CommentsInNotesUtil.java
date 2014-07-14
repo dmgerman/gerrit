@@ -280,6 +280,24 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|PatchLineComment
+operator|.
+name|Status
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -789,7 +807,7 @@ name|UUID
 init|=
 literal|"UUID"
 decl_stmt|;
-DECL|method|parseCommentsFromNotes (Repository repo, String refName, RevWalk walk, Change.Id changeId, Multimap<PatchSet.Id, PatchLineComment> commentsForBase, Multimap<PatchSet.Id, PatchLineComment> commentsForPs)
+DECL|method|parseCommentsFromNotes (Repository repo, String refName, RevWalk walk, Change.Id changeId, Multimap<PatchSet.Id, PatchLineComment> commentsForBase, Multimap<PatchSet.Id, PatchLineComment> commentsForPs, Status status)
 specifier|public
 specifier|static
 name|NoteMap
@@ -828,6 +846,9 @@ argument_list|,
 name|PatchLineComment
 argument_list|>
 name|commentsForPs
+parameter_list|,
+name|Status
+name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -926,6 +947,8 @@ argument_list|(
 name|bytes
 argument_list|,
 name|changeId
+argument_list|,
+name|status
 argument_list|)
 decl_stmt|;
 if|if
@@ -1014,7 +1037,7 @@ return|return
 name|noteMap
 return|;
 block|}
-DECL|method|parseNote (byte[] note, Change.Id changeId)
+DECL|method|parseNote (byte[] note, Change.Id changeId, Status status)
 specifier|public
 specifier|static
 name|List
@@ -1031,6 +1054,9 @@ name|Change
 operator|.
 name|Id
 name|changeId
+parameter_list|,
+name|Status
+name|status
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -1194,6 +1220,8 @@ argument_list|,
 name|isForBase
 argument_list|,
 name|enc
+argument_list|,
+name|status
 argument_list|)
 expr_stmt|;
 name|result
@@ -1278,7 +1306,7 @@ name|getParentKey
 argument_list|()
 return|;
 block|}
-DECL|method|parseComment (byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Charset enc)
+DECL|method|parseComment (byte[] note, MutableInteger curr, String currentFileName, PatchSet.Id psId, RevId revId, boolean isForBase, Charset enc, Status status)
 specifier|private
 specifier|static
 name|PatchLineComment
@@ -1307,6 +1335,9 @@ name|isForBase
 parameter_list|,
 name|Charset
 name|enc
+parameter_list|,
+name|Status
+name|status
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
@@ -1643,6 +1674,13 @@ operator|.
 name|setRevId
 argument_list|(
 name|revId
+argument_list|)
+expr_stmt|;
+name|plc
+operator|.
+name|setStatus
+argument_list|(
+name|status
 argument_list|)
 expr_stmt|;
 name|curr
