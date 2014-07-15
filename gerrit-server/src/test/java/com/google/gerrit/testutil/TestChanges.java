@@ -196,6 +196,38 @@ name|server
 operator|.
 name|config
 operator|.
+name|AllUsersName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AllUsersNameProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|FactoryModule
 import|;
 end_import
@@ -213,6 +245,22 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|ChangeDraftUpdate
 import|;
 end_import
 
@@ -403,7 +451,7 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, Change c, final IdentifiedUser user)
+DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, Change c, final AllUsersNameProvider allUsers, final IdentifiedUser user)
 specifier|public
 specifier|static
 name|ChangeUpdate
@@ -417,6 +465,10 @@ name|repoManager
 parameter_list|,
 name|Change
 name|c
+parameter_list|,
+specifier|final
+name|AllUsersNameProvider
+name|allUsers
 parameter_list|,
 specifier|final
 name|IdentifiedUser
@@ -450,6 +502,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|factory
+argument_list|(
+name|ChangeDraftUpdate
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|bind
 argument_list|(
 name|IdentifiedUser
@@ -460,6 +521,18 @@ operator|.
 name|toInstance
 argument_list|(
 name|user
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|AllUsersName
+operator|.
+name|class
+argument_list|)
+operator|.
+name|toProvider
+argument_list|(
+name|allUsers
 argument_list|)
 expr_stmt|;
 block|}
@@ -483,6 +556,8 @@ name|repoManager
 argument_list|,
 name|c
 argument_list|,
+name|allUsers
+argument_list|,
 name|user
 argument_list|)
 argument_list|,
@@ -501,7 +576,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|stubChangeControl ( GitRepositoryManager repoManager, Change c, IdentifiedUser user)
+DECL|method|stubChangeControl ( GitRepositoryManager repoManager, Change c, AllUsersNameProvider allUsers, IdentifiedUser user)
 specifier|public
 specifier|static
 name|ChangeControl
@@ -512,6 +587,9 @@ name|repoManager
 parameter_list|,
 name|Change
 name|c
+parameter_list|,
+name|AllUsersNameProvider
+name|allUsers
 parameter_list|,
 name|IdentifiedUser
 name|user
@@ -564,6 +642,8 @@ operator|new
 name|ChangeNotes
 argument_list|(
 name|repoManager
+argument_list|,
+name|allUsers
 argument_list|,
 name|c
 argument_list|)
