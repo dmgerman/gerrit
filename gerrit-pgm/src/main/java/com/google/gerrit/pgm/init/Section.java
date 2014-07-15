@@ -348,7 +348,7 @@ name|getString
 argument_list|(
 name|section
 argument_list|,
-literal|null
+name|subsection
 argument_list|,
 name|name
 argument_list|)
