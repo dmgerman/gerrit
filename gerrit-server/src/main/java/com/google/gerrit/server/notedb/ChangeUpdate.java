@@ -1571,27 +1571,6 @@ name|inserter
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|commit (MetaDataUpdate md)
-specifier|public
-name|RevCommit
-name|commit
-parameter_list|(
-name|MetaDataUpdate
-name|md
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-throw|throw
-operator|new
-name|UnsupportedOperationException
-argument_list|(
-literal|"use commit()"
-argument_list|)
-throw|;
-block|}
 DECL|method|commit ()
 specifier|public
 name|RevCommit
