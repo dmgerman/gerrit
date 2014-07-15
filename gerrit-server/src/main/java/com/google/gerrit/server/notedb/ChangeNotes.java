@@ -1072,6 +1072,13 @@ argument_list|()
 operator|.
 name|compare
 argument_list|(
+name|filename1
+argument_list|,
+name|filename2
+argument_list|)
+operator|.
+name|compare
+argument_list|(
 name|c1
 operator|.
 name|getLine
@@ -1081,13 +1088,6 @@ name|c2
 operator|.
 name|getLine
 argument_list|()
-argument_list|)
-operator|.
-name|compare
-argument_list|(
-name|filename1
-argument_list|,
-name|filename2
 argument_list|)
 operator|.
 name|compare
