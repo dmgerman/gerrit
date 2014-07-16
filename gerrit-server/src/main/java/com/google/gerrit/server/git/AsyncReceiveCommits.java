@@ -972,7 +972,20 @@ name|log
 operator|.
 name|warn
 argument_list|(
-literal|"Error in ReceiveCommits"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Error in ReceiveCommits while processing changes for project %s"
+argument_list|,
+name|rc
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
