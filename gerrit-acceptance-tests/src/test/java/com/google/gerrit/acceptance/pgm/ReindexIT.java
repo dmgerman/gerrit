@@ -194,10 +194,8 @@ condition|)
 block|{
 name|TempFileUtil
 operator|.
-name|recursivelyDelete
-argument_list|(
-name|sitePath
-argument_list|)
+name|cleanup
+argument_list|()
 expr_stmt|;
 block|}
 block|}
