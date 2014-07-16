@@ -145,6 +145,9 @@ literal|"gerrit_test_"
 argument_list|,
 literal|""
 argument_list|)
+operator|.
+name|getCanonicalFile
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
