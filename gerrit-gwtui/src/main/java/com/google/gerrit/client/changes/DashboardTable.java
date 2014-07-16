@@ -565,7 +565,7 @@ decl_stmt|;
 name|String
 name|query
 init|=
-name|removeLimit
+name|removeLimitAndAge
 argument_list|(
 name|queries
 operator|.
@@ -651,10 +651,10 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|removeLimit (String query)
+DECL|method|removeLimitAndAge (String query)
 specifier|private
 name|String
-name|removeLimit
+name|removeLimitAndAge
 parameter_list|(
 name|String
 name|query
@@ -694,6 +694,22 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"limit:"
+argument_list|)
+operator|&&
+operator|!
+name|o
+operator|.
+name|startsWith
+argument_list|(
+literal|"age:"
+argument_list|)
+operator|&&
+operator|!
+name|o
+operator|.
+name|startsWith
+argument_list|(
+literal|"-age:"
 argument_list|)
 condition|)
 block|{
