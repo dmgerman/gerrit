@@ -948,7 +948,7 @@ literal|null
 argument_list|,
 literal|"useRecursiveMerge"
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 return|;
 block|}
