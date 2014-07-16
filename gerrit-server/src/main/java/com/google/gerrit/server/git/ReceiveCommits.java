@@ -5381,6 +5381,23 @@ argument_list|,
 literal|"internal server error"
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|error
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Replacement for project %s was not attempted"
+argument_list|,
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 if|if
@@ -11237,7 +11254,17 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot read database before replacement"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot read database before replacement for project %s"
+argument_list|,
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -11289,7 +11316,17 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Cannot read repository before replacement"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot read repository before replacement for project %s"
+argument_list|,
+name|project
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 argument_list|,
 name|err
 argument_list|)
