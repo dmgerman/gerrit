@@ -1204,6 +1204,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCreateChildProjectUnderNonExistingParent_UnprocessableEntity ()
 specifier|public
 name|void
@@ -1419,6 +1421,8 @@ name|projectState
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCreateProjectWithNonExistingOwner_UnprocessableEntity ()
 specifier|public
 name|void
