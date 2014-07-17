@@ -280,6 +280,12 @@ specifier|final
 name|String
 name|httpEmailHeader
 decl_stmt|;
+DECL|field|httpExternalIdHeader
+specifier|private
+specifier|final
+name|String
+name|httpExternalIdHeader
+decl_stmt|;
 DECL|field|registerPageUrl
 specifier|private
 specifier|final
@@ -437,6 +443,19 @@ argument_list|,
 literal|null
 argument_list|,
 literal|"httpemailheader"
+argument_list|)
+expr_stmt|;
+name|httpExternalIdHeader
+operator|=
+name|cfg
+operator|.
+name|getString
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|null
+argument_list|,
+literal|"httpexternalidheader"
 argument_list|)
 expr_stmt|;
 name|loginUrl
@@ -918,6 +937,16 @@ parameter_list|()
 block|{
 return|return
 name|httpEmailHeader
+return|;
+block|}
+DECL|method|getHttpExternalIdHeader ()
+specifier|public
+name|String
+name|getHttpExternalIdHeader
+parameter_list|()
+block|{
+return|return
+name|httpExternalIdHeader
 return|;
 block|}
 DECL|method|getLoginUrl ()
