@@ -445,6 +445,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|rst
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|ruby
 argument_list|()
 block|,
@@ -474,6 +481,13 @@ operator|.
 name|I
 operator|.
 name|sql
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
+name|stex
 argument_list|()
 block|,
 name|Modes
