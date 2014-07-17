@@ -171,19 +171,7 @@ name|void
 name|close
 parameter_list|()
 function_decl|;
-comment|/**    * Insert a change document into the index.    *<p>    * Results may not be immediately visible to searchers, but should be visible    * within a reasonable amount of time.    *    * @param cd change document    *    * @throws IOException if the change could not be inserted.    */
-DECL|method|insert (ChangeData cd)
-specifier|public
-name|void
-name|insert
-parameter_list|(
-name|ChangeData
-name|cd
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. Results may not be immediately visible to searchers, but    * should be visible within a reasonable amount of time.    *    * @param cd change document    *    * @throws IOException    */
+comment|/**    * Update a change document in the index.    *<p>    * Semantically equivalent to deleting the document and reinserting it with    * new field values. A document that does not already exist is created. Results    * may not be immediately visible to searchers, but should be visible within a    * reasonable amount of time.    *    * @param cd change document    *    * @throws IOException    */
 DECL|method|replace (ChangeData cd)
 specifier|public
 name|void
