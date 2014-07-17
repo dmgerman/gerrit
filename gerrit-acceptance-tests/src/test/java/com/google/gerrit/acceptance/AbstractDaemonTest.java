@@ -1078,6 +1078,11 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|TempFileUtil
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|createChange ()
 specifier|protected

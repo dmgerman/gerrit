@@ -763,8 +763,6 @@ return|return
 operator|new
 name|GerritServer
 argument_list|(
-name|site
-argument_list|,
 name|i
 argument_list|,
 name|daemon
@@ -1175,11 +1173,6 @@ name|getLoopbackAddress
 argument_list|()
 return|;
 block|}
-DECL|field|sitePath
-specifier|private
-name|File
-name|sitePath
-decl_stmt|;
 DECL|field|daemon
 specifier|private
 name|Daemon
@@ -1210,13 +1203,10 @@ specifier|private
 name|InetSocketAddress
 name|httpAddress
 decl_stmt|;
-DECL|method|GerritServer (File sitePath, Injector testInjector, Daemon daemon, ExecutorService daemonService)
+DECL|method|GerritServer (Injector testInjector, Daemon daemon, ExecutorService daemonService)
 specifier|private
 name|GerritServer
 parameter_list|(
-name|File
-name|sitePath
-parameter_list|,
 name|Injector
 name|testInjector
 parameter_list|,
@@ -1231,12 +1221,6 @@ name|IOException
 throws|,
 name|ConfigInvalidException
 block|{
-name|this
-operator|.
-name|sitePath
-operator|=
-name|sitePath
-expr_stmt|;
 name|this
 operator|.
 name|testInjector
@@ -1419,21 +1403,6 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|sitePath
-operator|!=
-literal|null
-condition|)
-block|{
-name|TempFileUtil
-operator|.
-name|recursivelyDelete
-argument_list|(
-name|sitePath
 argument_list|)
 expr_stmt|;
 block|}
