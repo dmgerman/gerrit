@@ -3634,6 +3634,12 @@ argument_list|)
 return|;
 block|}
 block|}
+DECL|field|change
+specifier|private
+specifier|final
+name|Change
+name|change
+decl_stmt|;
 DECL|field|approvals
 specifier|private
 name|ImmutableListMultimap
@@ -3740,6 +3746,9 @@ argument_list|(
 name|repoManager
 argument_list|,
 name|change
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -3751,6 +3760,26 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|change
+operator|=
+operator|new
+name|Change
+argument_list|(
+name|change
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getChange ()
+specifier|public
+name|Change
+name|getChange
+parameter_list|()
+block|{
+return|return
+name|change
+return|;
 block|}
 DECL|method|getApprovals ()
 specifier|public
@@ -3963,7 +3992,7 @@ name|repoManager
 argument_list|,
 name|allUsers
 argument_list|,
-name|getChange
+name|getChangeId
 argument_list|()
 argument_list|,
 name|author

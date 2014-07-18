@@ -209,20 +209,24 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
-DECL|field|change
+DECL|field|changeId
 specifier|private
 specifier|final
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 decl_stmt|;
-DECL|method|AbstractChangeNotes (GitRepositoryManager repoManager, Change change)
+DECL|method|AbstractChangeNotes (GitRepositoryManager repoManager, Change.Id changeId)
 name|AbstractChangeNotes
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 parameter_list|)
 block|{
 name|this
@@ -233,13 +237,9 @@ name|repoManager
 expr_stmt|;
 name|this
 operator|.
-name|change
+name|changeId
 operator|=
-operator|new
-name|Change
-argument_list|(
-name|change
-argument_list|)
+name|changeId
 expr_stmt|;
 block|}
 DECL|method|getChangeId ()
@@ -251,20 +251,7 @@ name|getChangeId
 parameter_list|()
 block|{
 return|return
-name|change
-operator|.
-name|getId
-argument_list|()
-return|;
-block|}
-DECL|method|getChange ()
-specifier|public
-name|Change
-name|getChange
-parameter_list|()
-block|{
-return|return
-name|change
+name|changeId
 return|;
 block|}
 DECL|method|load ()

@@ -514,13 +514,15 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|create (Change change, Account.Id accountId)
+DECL|method|create (Change.Id changeId, Account.Id accountId)
 specifier|public
 name|DraftCommentNotes
 name|create
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|Account
 operator|.
@@ -536,7 +538,7 @@ name|repoManager
 argument_list|,
 name|draftsProject
 argument_list|,
-name|change
+name|changeId
 argument_list|,
 name|accountId
 argument_list|)
@@ -614,12 +616,14 @@ specifier|private
 name|NoteMap
 name|noteMap
 decl_stmt|;
-DECL|method|Parser (Change change, RevWalk walk, ObjectId tip, GitRepositoryManager repoManager, AllUsersName draftsProject, Account.Id author)
+DECL|method|Parser (Change.Id changeId, RevWalk walk, ObjectId tip, GitRepositoryManager repoManager, AllUsersName draftsProject, Account.Id author)
 specifier|private
 name|Parser
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|RevWalk
 name|walk
@@ -647,10 +651,7 @@ name|this
 operator|.
 name|changeId
 operator|=
-name|change
-operator|.
-name|getId
-argument_list|()
+name|changeId
 expr_stmt|;
 name|this
 operator|.
@@ -799,7 +800,7 @@ specifier|private
 name|NoteMap
 name|noteMap
 decl_stmt|;
-DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, AllUsersName draftsProject, Change change, Account.Id author)
+DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, AllUsersName draftsProject, Change.Id changeId, Account.Id author)
 name|DraftCommentNotes
 parameter_list|(
 name|GitRepositoryManager
@@ -809,7 +810,9 @@ name|AllUsersName
 name|draftsProject
 parameter_list|,
 name|Change
-name|change
+operator|.
+name|Id
+name|changeId
 parameter_list|,
 name|Account
 operator|.
@@ -821,7 +824,7 @@ name|super
 argument_list|(
 name|repoManager
 argument_list|,
-name|change
+name|changeId
 argument_list|)
 expr_stmt|;
 name|this
@@ -1046,7 +1049,7 @@ init|=
 operator|new
 name|Parser
 argument_list|(
-name|getChange
+name|getChangeId
 argument_list|()
 argument_list|,
 name|walk
