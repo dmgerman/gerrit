@@ -1463,6 +1463,10 @@ throws|,
 name|IncorrectObjectTypeException
 throws|,
 name|IOException
+throws|,
+name|MergeIdenticalTreeException
+throws|,
+name|MergeConflictException
 block|{
 specifier|final
 name|ThreeWayMerger
@@ -1520,9 +1524,13 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|MergeIdenticalTreeException
+argument_list|(
+literal|"identical tree"
+argument_list|)
+throw|;
 block|}
 name|CommitBuilder
 name|mergeCommit
@@ -1585,9 +1593,13 @@ return|;
 block|}
 else|else
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|MergeConflictException
+argument_list|(
+literal|"merge conflict"
+argument_list|)
+throw|;
 block|}
 block|}
 DECL|method|createCherryPickCommitMessage (final CodeReviewCommit n)
