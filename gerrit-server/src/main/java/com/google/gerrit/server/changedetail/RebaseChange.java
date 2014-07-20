@@ -1088,7 +1088,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Cannot rebase a change with multiple parents. Parents commits: "
+literal|"Cannot rebase a change with multiple parents. Parent commits: "
 operator|+
 name|patchSetAncestors
 operator|.
