@@ -670,7 +670,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canModifyAccount
 argument_list|()
 condition|)
 block|{
@@ -733,7 +733,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canModifyAccount
 argument_list|()
 condition|)
 block|{
@@ -741,7 +741,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"must be administrator to use no_confirmation"
+literal|"not allowed to use no_confirmation"
 argument_list|)
 throw|;
 block|}

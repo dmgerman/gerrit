@@ -638,6 +638,25 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
+comment|/** @return true if the user can modify an account for another user. */
+DECL|method|canModifyAccount ()
+specifier|public
+name|boolean
+name|canModifyAccount
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|MODIFY_ACCOUNT
+argument_list|)
+operator|||
+name|canAdministrateServer
+argument_list|()
+return|;
+block|}
 comment|/** @return true if the user can view all accounts. */
 DECL|method|canViewAllAccounts ()
 specifier|public

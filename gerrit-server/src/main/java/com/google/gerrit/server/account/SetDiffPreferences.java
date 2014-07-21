@@ -477,7 +477,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canModifyAccount
 argument_list|()
 condition|)
 block|{
@@ -485,7 +485,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"restricted to administrator"
+literal|"restricted to members of Modify Accounts"
 argument_list|)
 throw|;
 block|}

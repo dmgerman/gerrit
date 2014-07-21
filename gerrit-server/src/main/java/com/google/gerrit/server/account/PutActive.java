@@ -262,7 +262,7 @@ name|RequiresCapability
 argument_list|(
 name|GlobalCapability
 operator|.
-name|ADMINISTRATE_SERVER
+name|MODIFY_ACCOUNT
 argument_list|)
 annotation|@
 name|Singleton

@@ -146,6 +146,16 @@ name|CREATE_ACCOUNT
 init|=
 literal|"createAccount"
 decl_stmt|;
+comment|/** Can modify any account on the server. */
+DECL|field|MODIFY_ACCOUNT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MODIFY_ACCOUNT
+init|=
+literal|"modifyAccount"
+decl_stmt|;
 comment|/** Can create any group on the server. */
 DECL|field|CREATE_GROUP
 specifier|public
@@ -396,6 +406,13 @@ operator|.
 name|add
 argument_list|(
 name|KILL_TASK
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|MODIFY_ACCOUNT
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
