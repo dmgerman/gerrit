@@ -627,7 +627,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canGenerateHttpPassword
 argument_list|()
 condition|)
 block|{
@@ -657,7 +657,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canGenerateHttpPassword
 argument_list|()
 condition|)
 block|{
@@ -667,7 +667,7 @@ name|AuthException
 argument_list|(
 literal|"not allowed to set HTTP password directly, "
 operator|+
-literal|"need to be Gerrit administrator"
+literal|"requires the Generate HTTP Password permission"
 argument_list|)
 throw|;
 block|}

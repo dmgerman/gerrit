@@ -388,6 +388,13 @@ name|NAMES_ALL
 operator|.
 name|add
 argument_list|(
+name|GENERATE_HTTP_PASSWORD
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
 name|KILL_TASK
 argument_list|)
 expr_stmt|;
