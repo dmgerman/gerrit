@@ -1055,7 +1055,7 @@ name|ps
 operator|.
 name|setUploader
 argument_list|(
-name|submitAudit
+name|cherryPickUser
 operator|.
 name|getAccountId
 argument_list|()
