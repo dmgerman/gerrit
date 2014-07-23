@@ -1737,7 +1737,6 @@ argument_list|(
 name|rsrc
 argument_list|)
 decl_stmt|;
-empty_stmt|;
 for|for
 control|(
 name|EmailInfo
