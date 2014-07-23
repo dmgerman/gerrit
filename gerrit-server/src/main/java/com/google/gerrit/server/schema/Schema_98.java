@@ -213,7 +213,7 @@ name|stmt
 operator|.
 name|executeUpdate
 argument_list|(
-literal|"UPDATE ACCOUNTS SET "
+literal|"UPDATE accounts SET "
 operator|+
 literal|"REVIEW_CATEGORY_STRATEGY='NAME' "
 operator|+
