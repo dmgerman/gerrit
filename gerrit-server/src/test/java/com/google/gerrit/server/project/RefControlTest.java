@@ -3128,10 +3128,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testUnblockVisibilityByREGISTEREDUsers ()
+DECL|method|testUnblockVisibilityByRegisteredUsers ()
 specifier|public
 name|void
-name|testUnblockVisibilityByREGISTEREDUsers
+name|testUnblockVisibilityByRegisteredUsers
 parameter_list|()
 block|{
 name|block
