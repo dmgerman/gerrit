@@ -810,6 +810,14 @@ argument_list|,
 literal|"Cannot insert a published comment into a ChangeDraftUpdate"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|migration
+operator|.
+name|readComments
+argument_list|()
+condition|)
+block|{
 name|checkArgument
 argument_list|(
 operator|!
@@ -827,6 +835,7 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|upsertComments
 operator|.
 name|add
@@ -901,6 +910,21 @@ argument_list|,
 literal|"Cannot update a published comment into a ChangeDraftUpdate"
 argument_list|)
 expr_stmt|;
+comment|// Here, we check to see if this comment existed previously as a draft.
+comment|// However, this could cause a race condition if there is a delete and an
+comment|// update operation happening concurrently (or two deletes) and they both
+comment|// believe that the comment exists. If a delete happens first, then
+comment|// the update will fail. However, this is an acceptable risk since the
+comment|// caller wanted the comment deleted anyways, so the end result will be the
+comment|// same either way.
+if|if
+condition|(
+name|migration
+operator|.
+name|readComments
+argument_list|()
+condition|)
+block|{
 name|checkArgument
 argument_list|(
 name|draftNotes
@@ -913,6 +937,7 @@ argument_list|,
 literal|"Cannot update this comment because it didn't exist previously"
 argument_list|)
 expr_stmt|;
+block|}
 name|upsertComments
 operator|.
 name|add
@@ -935,6 +960,15 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+comment|// See the comment above about potential race condition.
+if|if
+condition|(
+name|migration
+operator|.
+name|readComments
+argument_list|()
+condition|)
+block|{
 name|checkArgument
 argument_list|(
 name|draftNotes
@@ -949,6 +983,25 @@ operator|+
 literal|" because it didn't previously exist as a draft"
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|migration
+operator|.
+name|write
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|draftNotes
+operator|.
+name|containsComment
+argument_list|(
+name|c
+argument_list|)
+condition|)
+block|{
 name|deleteComments
 operator|.
 name|add
@@ -956,6 +1009,8 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 comment|/**    * Deletes a PatchLineComment from the list of drafts only if it existed    * previously as a draft. If it wasn't a draft previously, this is a no-op.    */
 DECL|method|deleteCommentIfPresent (PatchLineComment c)
@@ -1031,6 +1086,14 @@ argument_list|,
 name|psId
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|migration
+operator|.
+name|write
+argument_list|()
+condition|)
+block|{
 name|checkArgument
 argument_list|(
 name|comment
@@ -1041,6 +1104,7 @@ operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|checkArgument
 argument_list|(
 name|comment
@@ -1142,6 +1206,19 @@ init|=
 name|draftNotes
 operator|.
 name|getDraftPsComments
+argument_list|()
+decl_stmt|;
+name|boolean
+name|draftsEmpty
+init|=
+name|baseDrafts
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|psDrafts
+operator|.
+name|isEmpty
 argument_list|()
 decl_stmt|;
 comment|// There is no need to rewrite the note for one of the sides of the patch
@@ -1394,6 +1471,9 @@ name|psDrafts
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+operator|!
+name|draftsEmpty
 argument_list|)
 expr_stmt|;
 return|return

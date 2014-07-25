@@ -244,6 +244,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchLineCommentsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountResolver
@@ -1339,6 +1353,11 @@ operator|.
 name|Factory
 name|changeDataFactory
 decl_stmt|;
+DECL|field|plcUtil
+specifier|final
+name|PatchLineCommentsUtil
+name|plcUtil
+decl_stmt|;
 DECL|field|accountResolver
 specifier|final
 name|AccountResolver
@@ -1406,7 +1425,7 @@ annotation|@
 name|Inject
 annotation|@
 name|VisibleForTesting
-DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, @GerritServerConfig Config cfg)
+DECL|method|Arguments (Provider<ReviewDb> dbProvider, Provider<ChangeQueryRewriter> rewriter, IdentifiedUser.GenericFactory userFactory, Provider<CurrentUser> self, CapabilityControl.Factory capabilityControlFactory, ChangeControl.GenericFactory changeControlGenericFactory, ChangeData.Factory changeDataFactory, PatchLineCommentsUtil plcUtil, AccountResolver accountResolver, GroupBackend groupBackend, AllProjectsName allProjectsName, PatchListCache patchListCache, GitRepositoryManager repoManager, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, IndexCollection indexes, SubmitStrategyFactory submitStrategyFactory, ConflictsCache conflictsCache, TrackingFooters trackingFooters, @GerritServerConfig Config cfg)
 specifier|public
 name|Arguments
 parameter_list|(
@@ -1447,6 +1466,9 @@ name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
+parameter_list|,
+name|PatchLineCommentsUtil
+name|plcUtil
 parameter_list|,
 name|AccountResolver
 name|accountResolver
@@ -1531,6 +1553,12 @@ operator|.
 name|changeDataFactory
 operator|=
 name|changeDataFactory
+expr_stmt|;
+name|this
+operator|.
+name|plcUtil
+operator|=
+name|plcUtil
 expr_stmt|;
 name|this
 operator|.

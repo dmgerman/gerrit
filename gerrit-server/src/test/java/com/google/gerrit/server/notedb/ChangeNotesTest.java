@@ -6686,9 +6686,19 @@ name|otherUser
 argument_list|)
 decl_stmt|;
 name|String
-name|uuid
+name|uuid1
 init|=
-literal|"uuid"
+literal|"uuid1"
+decl_stmt|;
+name|String
+name|uuid2
+init|=
+literal|"uuid2"
+decl_stmt|;
+name|String
+name|uuid3
+init|=
+literal|"uuid3"
 decl_stmt|;
 name|String
 name|message1
@@ -6763,7 +6773,7 @@ name|psId
 argument_list|,
 literal|"file1"
 argument_list|,
-name|uuid
+name|uuid1
 argument_list|,
 name|range1
 argument_list|,
@@ -6840,7 +6850,7 @@ name|psId
 argument_list|,
 literal|"file1"
 argument_list|,
-name|uuid
+name|uuid2
 argument_list|,
 name|range2
 argument_list|,
@@ -6917,7 +6927,7 @@ name|psId
 argument_list|,
 literal|"file2"
 argument_list|,
-name|uuid
+name|uuid3
 argument_list|,
 name|range3
 argument_list|,
@@ -7067,7 +7077,7 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
-literal|"UUID: uuid\n"
+literal|"UUID: uuid1\n"
 operator|+
 literal|"Bytes: 9\n"
 operator|+
@@ -7090,7 +7100,7 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
-literal|"UUID: uuid\n"
+literal|"UUID: uuid2\n"
 operator|+
 literal|"Bytes: 9\n"
 operator|+
@@ -7117,7 +7127,7 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
-literal|"UUID: uuid\n"
+literal|"UUID: uuid3\n"
 operator|+
 literal|"Bytes: 9\n"
 operator|+
@@ -7156,9 +7166,14 @@ name|otherUser
 argument_list|)
 decl_stmt|;
 name|String
-name|uuid
+name|uuid1
 init|=
-literal|"uuid"
+literal|"uuid1"
+decl_stmt|;
+name|String
+name|uuid2
+init|=
+literal|"uuid2"
 decl_stmt|;
 name|String
 name|message1
@@ -7220,7 +7235,7 @@ name|psId
 argument_list|,
 literal|"file1"
 argument_list|,
-name|uuid
+name|uuid1
 argument_list|,
 name|range1
 argument_list|,
@@ -7297,7 +7312,7 @@ name|psId
 argument_list|,
 literal|"file1"
 argument_list|,
-name|uuid
+name|uuid2
 argument_list|,
 name|range2
 argument_list|,
@@ -7447,7 +7462,7 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
-literal|"UUID: uuid\n"
+literal|"UUID: uuid1\n"
 operator|+
 literal|"Bytes: 9\n"
 operator|+
@@ -7470,7 +7485,7 @@ literal|"\n"
 operator|+
 literal|"Author: Other Account<2@gerrit>\n"
 operator|+
-literal|"UUID: uuid\n"
+literal|"UUID: uuid2\n"
 operator|+
 literal|"Bytes: 9\n"
 operator|+
@@ -7509,9 +7524,14 @@ name|otherUser
 argument_list|)
 decl_stmt|;
 name|String
-name|uuid
+name|uuid1
 init|=
-literal|"uuid"
+literal|"uuid1"
+decl_stmt|;
+name|String
+name|uuid2
+init|=
+literal|"uuid2"
 decl_stmt|;
 name|String
 name|messageForBase
@@ -7565,7 +7585,7 @@ name|psId
 argument_list|,
 literal|"filename"
 argument_list|,
-name|uuid
+name|uuid1
 argument_list|,
 name|range
 argument_list|,
@@ -7627,7 +7647,7 @@ name|psId
 argument_list|,
 literal|"filename"
 argument_list|,
-name|uuid
+name|uuid2
 argument_list|,
 name|range
 argument_list|,
@@ -7781,9 +7801,14 @@ name|newChange
 argument_list|()
 decl_stmt|;
 name|String
-name|uuid
+name|uuid1
 init|=
-literal|"uuid"
+literal|"uuid1"
+decl_stmt|;
+name|String
+name|uuid2
+init|=
+literal|"uuid2"
 decl_stmt|;
 name|CommentRange
 name|range
@@ -7858,7 +7883,7 @@ name|psId
 argument_list|,
 name|filename
 argument_list|,
-name|uuid
+name|uuid1
 argument_list|,
 name|range
 argument_list|,
@@ -7917,7 +7942,7 @@ name|psId
 argument_list|,
 name|filename
 argument_list|,
-name|uuid
+name|uuid2
 argument_list|,
 name|range
 argument_list|,
