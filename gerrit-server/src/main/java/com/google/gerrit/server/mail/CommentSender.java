@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|PatchLineCommentsUtil
+operator|.
+name|getCommentPsId
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1143,17 +1159,24 @@ block|{
 name|String
 name|prefix
 init|=
-name|String
-operator|.
-name|format
+literal|"PS"
+operator|+
+name|getCommentPsId
 argument_list|(
-literal|"Line %d: "
-argument_list|,
+name|comment
+argument_list|)
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|", Line "
+operator|+
 name|range
 operator|.
 name|getStartLine
 argument_list|()
-argument_list|)
+operator|+
+literal|": "
 decl_stmt|;
 for|for
 control|(

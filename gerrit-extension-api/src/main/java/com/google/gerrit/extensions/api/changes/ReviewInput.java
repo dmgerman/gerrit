@@ -210,15 +210,22 @@ specifier|static
 enum|enum
 name|DraftHandling
 block|{
+comment|/** Delete pending drafts on this revision only. */
 DECL|enumConstant|DELETE
-DECL|enumConstant|PUBLISH
-DECL|enumConstant|KEEP
 name|DELETE
 block|,
+comment|/** Publish pending drafts on this revision only. */
+DECL|enumConstant|PUBLISH
 name|PUBLISH
 block|,
+comment|/** Leave pending drafts alone. */
+DECL|enumConstant|KEEP
 name|KEEP
-block|}
+block|,
+comment|/** Publish pending drafts on all revisions. */
+DECL|enumConstant|PUBLISH_ALL_REVISIONS
+name|PUBLISH_ALL_REVISIONS
+block|;   }
 DECL|enum|NotifyHandling
 specifier|public
 specifier|static
