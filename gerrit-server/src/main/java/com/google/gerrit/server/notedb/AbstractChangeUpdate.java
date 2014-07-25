@@ -465,6 +465,19 @@ operator|=
 name|when
 expr_stmt|;
 block|}
+DECL|method|getChangeNotes ()
+specifier|public
+name|ChangeNotes
+name|getChangeNotes
+parameter_list|()
+block|{
+return|return
+name|ctl
+operator|.
+name|getNotes
+argument_list|()
+return|;
+block|}
 DECL|method|getChange ()
 specifier|public
 name|Change
@@ -722,6 +735,18 @@ block|{
 return|return
 literal|null
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|removeRef
+parameter_list|(
+name|String
+name|refName
+parameter_list|)
+block|{
+comment|// Do nothing.
 block|}
 annotation|@
 name|Override
