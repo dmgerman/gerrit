@@ -2506,7 +2506,7 @@ name|c
 range|:
 name|input
 operator|.
-name|comments
+name|publishedComments
 argument_list|()
 control|)
 block|{

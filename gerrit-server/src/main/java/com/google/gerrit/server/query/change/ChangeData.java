@@ -1521,13 +1521,13 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|comments
+DECL|field|publishedComments
 specifier|private
 name|Collection
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|comments
+name|publishedComments
 decl_stmt|;
 DECL|field|visibleTo
 specifier|private
@@ -3122,29 +3122,29 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|comments ()
+DECL|method|publishedComments ()
 specifier|public
 name|Collection
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|comments
+name|publishedComments
 parameter_list|()
 throws|throws
 name|OrmException
 block|{
 if|if
 condition|(
-name|comments
+name|publishedComments
 operator|==
 literal|null
 condition|)
 block|{
-name|comments
+name|publishedComments
 operator|=
 name|plcUtil
 operator|.
-name|byChange
+name|publishedByChange
 argument_list|(
 name|db
 argument_list|,
@@ -3154,7 +3154,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|comments
+name|publishedComments
 return|;
 block|}
 DECL|method|messages ()

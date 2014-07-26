@@ -2172,7 +2172,7 @@ name|attribute
 argument_list|,
 name|d
 operator|.
-name|comments
+name|publishedComments
 argument_list|()
 argument_list|)
 expr_stmt|;
