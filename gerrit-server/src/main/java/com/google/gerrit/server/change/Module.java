@@ -175,6 +175,24 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
+name|ChangeEditResource
+operator|.
+name|CHANGE_EDIT_KIND
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -390,6 +408,16 @@ name|binder
 argument_list|()
 argument_list|,
 name|REVISION_KIND
+argument_list|)
+expr_stmt|;
+name|DynamicMap
+operator|.
+name|mapOf
+argument_list|(
+name|binder
+argument_list|()
+argument_list|,
+name|CHANGE_EDIT_KIND
 argument_list|)
 expr_stmt|;
 name|get
