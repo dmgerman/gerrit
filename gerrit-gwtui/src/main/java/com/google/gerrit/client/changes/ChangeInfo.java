@@ -1331,6 +1331,38 @@ name|ApprovalInfo
 parameter_list|()
 block|{     }
 block|}
+DECL|class|EditInfo
+specifier|public
+specifier|static
+class|class
+name|EditInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|name ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|name
+parameter_list|()
+comment|/*-{ return this.name; }-*/
+function_decl|;
+DECL|method|commit ()
+specifier|public
+specifier|final
+specifier|native
+name|CommitInfo
+name|commit
+parameter_list|()
+comment|/*-{ return this.commit; }-*/
+function_decl|;
+DECL|method|EditInfo ()
+specifier|protected
+name|EditInfo
+parameter_list|()
+block|{     }
+block|}
 DECL|class|RevisionInfo
 specifier|public
 specifier|static
