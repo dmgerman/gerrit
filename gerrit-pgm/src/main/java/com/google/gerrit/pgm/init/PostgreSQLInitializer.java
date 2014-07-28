@@ -84,6 +84,24 @@ name|username
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|pgm
+operator|.
+name|init
+operator|.
+name|api
+operator|.
+name|Section
+import|;
+end_import
+
 begin_class
 DECL|class|PostgreSQLInitializer
 class|class

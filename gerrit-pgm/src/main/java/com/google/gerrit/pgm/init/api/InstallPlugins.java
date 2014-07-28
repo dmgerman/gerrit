@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2009 The Android Open Source Project
+comment|// Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.init
+DECL|package|com.google.gerrit.pgm.init.api
 package|package
 name|com
 operator|.
@@ -63,38 +63,63 @@ operator|.
 name|pgm
 operator|.
 name|init
+operator|.
+name|api
 package|;
 end_package
 
-begin_comment
-comment|/** A single step in the site initialization process. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|BindingAnnotation
+import|;
+end_import
 
-begin_interface
-DECL|interface|InitStep
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Retention
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|RetentionPolicy
+import|;
+end_import
+
+begin_annotation_defn
+annotation|@
+name|BindingAnnotation
+annotation|@
+name|Retention
+argument_list|(
+name|RetentionPolicy
+operator|.
+name|RUNTIME
+argument_list|)
+DECL|annotation|InstallPlugins
 specifier|public
-interface|interface
-name|InitStep
-block|{
-DECL|method|run ()
-specifier|public
-name|void
-name|run
-parameter_list|()
-throws|throws
-name|Exception
-function_decl|;
-comment|/** Executed after the site has been initialized */
-DECL|method|postRun ()
-specifier|public
-name|void
-name|postRun
-parameter_list|()
-throws|throws
-name|Exception
-function_decl|;
-block|}
-end_interface
+annotation_defn|@interface
+name|InstallPlugins
+block|{ }
+end_annotation_defn
 
 end_unit
 

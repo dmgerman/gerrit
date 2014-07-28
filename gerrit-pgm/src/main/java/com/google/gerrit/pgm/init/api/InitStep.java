@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2009 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,22 +52,8 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.init
+DECL|package|com.google.gerrit.pgm.init.api
 package|package
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|pgm
-operator|.
-name|init
-package|;
-end_package
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -79,29 +65,35 @@ operator|.
 name|init
 operator|.
 name|api
-operator|.
-name|Section
-import|;
-end_import
+package|;
+end_package
 
 begin_comment
-comment|/** Abstraction of initializer for the database section */
+comment|/** A single step in the site initialization process. */
 end_comment
 
 begin_interface
-DECL|interface|DatabaseConfigInitializer
+DECL|interface|InitStep
+specifier|public
 interface|interface
-name|DatabaseConfigInitializer
+name|InitStep
 block|{
-comment|/**    * Performs database platform specific configuration steps and writes    * configuration parameters into the given database section    */
-DECL|method|initConfig (Section databaseSection)
+DECL|method|run ()
 specifier|public
 name|void
-name|initConfig
-parameter_list|(
-name|Section
-name|databaseSection
-parameter_list|)
+name|run
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/** Executed after the site has been initialized */
+DECL|method|postRun ()
+specifier|public
+name|void
+name|postRun
+parameter_list|()
+throws|throws
+name|Exception
 function_decl|;
 block|}
 end_interface

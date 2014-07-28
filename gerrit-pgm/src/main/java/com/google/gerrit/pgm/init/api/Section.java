@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.init
+DECL|package|com.google.gerrit.pgm.init.api
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|pgm
 operator|.
 name|init
+operator|.
+name|api
 package|;
 end_package
 
@@ -316,6 +318,7 @@ name|subsection
 expr_stmt|;
 block|}
 DECL|method|get (String name)
+specifier|public
 name|String
 name|get
 parameter_list|(

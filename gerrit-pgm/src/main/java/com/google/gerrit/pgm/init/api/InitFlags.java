@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.init
+DECL|package|com.google.gerrit.pgm.init.api
 package|package
 name|com
 operator|.
@@ -63,8 +63,24 @@ operator|.
 name|pgm
 operator|.
 name|init
+operator|.
+name|api
 package|;
 end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
 
 begin_import
 import|import
@@ -222,8 +238,11 @@ argument_list|>
 name|installPlugins
 decl_stmt|;
 annotation|@
+name|VisibleForTesting
+annotation|@
 name|Inject
 DECL|method|InitFlags (final SitePaths site, final @InstallPlugins List<String> installPlugins)
+specifier|public
 name|InitFlags
 parameter_list|(
 specifier|final

@@ -162,7 +162,7 @@ name|pgm
 operator|.
 name|init
 operator|.
-name|ConsoleUI
+name|InitPlugins
 import|;
 end_import
 
@@ -178,7 +178,9 @@ name|pgm
 operator|.
 name|init
 operator|.
-name|InitPlugins
+name|api
+operator|.
+name|ConsoleUI
 import|;
 end_import
 
