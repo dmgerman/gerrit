@@ -222,7 +222,7 @@ specifier|final
 name|String
 name|RESOURCE_FILE
 init|=
-literal|"com/google/gerrit/pgm/libraries.config"
+literal|"com/google/gerrit/pgm/init/libraries.config"
 decl_stmt|;
 DECL|field|downloadProvider
 specifier|private
