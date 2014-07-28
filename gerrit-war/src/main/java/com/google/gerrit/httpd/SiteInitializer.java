@@ -74,6 +74,8 @@ name|gerrit
 operator|.
 name|pgm
 operator|.
+name|init
+operator|.
 name|BaseInit
 import|;
 end_import
