@@ -142,6 +142,11 @@ specifier|final
 name|boolean
 name|allowDrafts
 decl_stmt|;
+DECL|field|maxBatchChanges
+specifier|final
+name|int
+name|maxBatchChanges
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ReceiveConfig (@erritServerConfig Config config)
@@ -196,6 +201,19 @@ argument_list|,
 literal|"allowDrafts"
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|maxBatchChanges
+operator|=
+name|config
+operator|.
+name|getInt
+argument_list|(
+literal|"receive"
+argument_list|,
+literal|"maxBatchChanges"
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
