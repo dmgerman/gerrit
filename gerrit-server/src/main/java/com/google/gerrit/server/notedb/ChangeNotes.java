@@ -518,7 +518,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|PatchLineComment
+operator|.
+name|Status
 import|;
 end_import
 
@@ -534,9 +536,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
-operator|.
-name|Status
+name|PatchSet
 import|;
 end_import
 
@@ -1404,6 +1404,8 @@ specifier|private
 specifier|static
 class|class
 name|Parser
+implements|implements
+name|AutoCloseable
 block|{
 DECL|field|changeId
 specifier|private
@@ -1643,6 +1645,20 @@ operator|=
 name|ArrayListMultimap
 operator|.
 name|create
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+name|repo
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -4253,13 +4269,7 @@ name|reader
 argument_list|)
 decl_stmt|;
 try|try
-block|{
-name|Change
-name|change
-init|=
-name|getChange
-argument_list|()
-decl_stmt|;
+init|(
 name|Parser
 name|parser
 init|=
@@ -4274,7 +4284,8 @@ name|walk
 argument_list|,
 name|repoManager
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|parser
 operator|.
 name|parseAll

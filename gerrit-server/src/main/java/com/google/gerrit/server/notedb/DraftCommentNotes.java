@@ -550,6 +550,8 @@ specifier|private
 specifier|static
 class|class
 name|Parser
+implements|implements
+name|AutoCloseable
 block|{
 DECL|field|changeId
 specifier|private
@@ -694,6 +696,20 @@ operator|=
 name|ArrayListMultimap
 operator|.
 name|create
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
+name|repo
+operator|.
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -1043,6 +1059,8 @@ argument_list|(
 name|reader
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|Parser
 name|parser
 init|=
@@ -1062,7 +1080,8 @@ name|draftsProject
 argument_list|,
 name|author
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|parser
 operator|.
 name|parseDraftComments
@@ -1092,6 +1111,15 @@ name|parser
 operator|.
 name|noteMap
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|walk
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
