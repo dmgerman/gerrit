@@ -277,7 +277,7 @@ name|repo
 operator|=
 name|repoManager
 operator|.
-name|openRepository
+name|openMetadataRepository
 argument_list|(
 name|getProjectName
 argument_list|()

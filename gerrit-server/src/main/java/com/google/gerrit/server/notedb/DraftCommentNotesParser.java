@@ -423,7 +423,7 @@ name|repo
 operator|=
 name|repoManager
 operator|.
-name|openRepository
+name|openMetadataRepository
 argument_list|(
 name|draftsProject
 argument_list|)

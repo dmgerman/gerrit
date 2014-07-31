@@ -302,6 +302,26 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|enabled ()
+specifier|public
+name|boolean
+name|enabled
+parameter_list|()
+block|{
+return|return
+name|readChangeMessages
+argument_list|()
+operator|||
+name|readComments
+argument_list|()
+operator|||
+name|readPatchSetApprovals
+argument_list|()
+operator|||
+name|write
+argument_list|()
+return|;
+block|}
 DECL|method|write ()
 specifier|public
 name|boolean
