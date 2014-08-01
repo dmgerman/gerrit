@@ -128,19 +128,20 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|roundTimestampToSecond (Timestamp t)
+DECL|method|roundToSecond (Timestamp t)
 specifier|public
 specifier|static
 name|Timestamp
-name|roundTimestampToSecond
+name|roundToSecond
 parameter_list|(
 name|Timestamp
 name|t
 parameter_list|)
 block|{
-name|long
-name|milliseconds
-init|=
+return|return
+operator|new
+name|Timestamp
+argument_list|(
 operator|(
 name|t
 operator|.
@@ -151,12 +152,6 @@ literal|1000
 operator|)
 operator|*
 literal|1000
-decl_stmt|;
-return|return
-operator|new
-name|Timestamp
-argument_list|(
-name|milliseconds
 argument_list|)
 return|;
 block|}

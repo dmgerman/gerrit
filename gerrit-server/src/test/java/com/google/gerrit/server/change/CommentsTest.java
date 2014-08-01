@@ -3101,7 +3101,7 @@ name|assertEquals
 argument_list|(
 name|TimeUtil
 operator|.
-name|roundTimestampToSecond
+name|roundToSecond
 argument_list|(
 name|plc
 operator|.
@@ -3111,7 +3111,7 @@ argument_list|)
 argument_list|,
 name|TimeUtil
 operator|.
-name|roundTimestampToSecond
+name|roundToSecond
 argument_list|(
 name|ci
 operator|.
