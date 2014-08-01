@@ -86,7 +86,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|ArrayList
 import|;
 end_import
 
@@ -116,9 +116,11 @@ argument_list|>
 name|newlyBannedCommits
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
-argument_list|()
+argument_list|(
+literal|4
+argument_list|)
 decl_stmt|;
 DECL|field|alreadyBannedCommits
 specifier|private
@@ -130,9 +132,11 @@ argument_list|>
 name|alreadyBannedCommits
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
-argument_list|()
+argument_list|(
+literal|4
+argument_list|)
 decl_stmt|;
 DECL|field|ignoredObjectIds
 specifier|private
@@ -144,15 +148,12 @@ argument_list|>
 name|ignoredObjectIds
 init|=
 operator|new
-name|LinkedList
+name|ArrayList
 argument_list|<>
-argument_list|()
+argument_list|(
+literal|4
+argument_list|)
 decl_stmt|;
-DECL|method|BanCommitResult ()
-specifier|public
-name|BanCommitResult
-parameter_list|()
-block|{   }
 DECL|method|commitBanned (final ObjectId commitId)
 specifier|public
 name|void
