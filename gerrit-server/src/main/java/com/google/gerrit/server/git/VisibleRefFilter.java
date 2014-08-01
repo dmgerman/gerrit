@@ -122,22 +122,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Project
 import|;
 end_import
@@ -681,10 +665,10 @@ name|values
 argument_list|()
 control|)
 block|{
-name|PatchSet
+name|Change
 operator|.
 name|Id
-name|psId
+name|changeId
 decl_stmt|;
 if|if
 condition|(
@@ -707,9 +691,9 @@ elseif|else
 if|if
 condition|(
 operator|(
-name|psId
+name|changeId
 operator|=
-name|PatchSet
+name|Change
 operator|.
 name|Id
 operator|.
@@ -725,7 +709,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Reference to a patch set is visible if the change is visible.
+comment|// Reference related to a change is visible if the change is visible.
 comment|//
 if|if
 condition|(
@@ -735,10 +719,7 @@ name|visibleChanges
 operator|.
 name|contains
 argument_list|(
-name|psId
-operator|.
-name|getParentKey
-argument_list|()
+name|changeId
 argument_list|)
 condition|)
 block|{
