@@ -208,6 +208,11 @@ argument_list|)
 return|;
 block|}
 block|}
+DECL|method|LoginUrlToken ()
+specifier|private
+name|LoginUrlToken
+parameter_list|()
+block|{   }
 block|}
 end_class
 
