@@ -3305,7 +3305,7 @@ literal|"All comments being added must all have the same PatchSet.Id. The"
 operator|+
 literal|"comment below does not have the same PatchSet.Id as the others "
 operator|+
-literal|"(%d).\n%s"
+literal|"(%s).\n%s"
 argument_list|,
 name|psId
 operator|.
@@ -3331,7 +3331,7 @@ literal|"All comments being added must all have the same side. The"
 operator|+
 literal|"comment below does not have the same side as the others "
 operator|+
-literal|"(%d).\n%s"
+literal|"(%s).\n%s"
 argument_list|,
 name|side
 argument_list|,
