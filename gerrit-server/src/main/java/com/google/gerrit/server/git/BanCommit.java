@@ -675,7 +675,7 @@ throw|throw
 operator|new
 name|PermissionDeniedException
 argument_list|(
-literal|"No project owner: not permitted to ban commits"
+literal|"Not project owner: not permitted to ban commits"
 argument_list|)
 throw|;
 block|}
@@ -695,7 +695,7 @@ operator|.
 name|newEmptyMap
 argument_list|()
 decl_stmt|;
-comment|// add a note for each banned commit to notes
+comment|// Add a note for each banned commit to notes.
 specifier|final
 name|Project
 operator|.
@@ -769,7 +769,7 @@ name|MissingObjectException
 name|e
 parameter_list|)
 block|{
-comment|// ignore exception, also not existing commits can be banned
+comment|// Ignore exception, non-existing commits can be banned.
 block|}
 catch|catch
 parameter_list|(
