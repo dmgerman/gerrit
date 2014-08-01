@@ -531,7 +531,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"no project owner"
+literal|"not project owner"
 argument_list|)
 throw|;
 block|}
