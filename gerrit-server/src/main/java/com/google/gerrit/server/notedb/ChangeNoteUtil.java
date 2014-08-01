@@ -257,7 +257,9 @@ name|r
 operator|.
 name|append
 argument_list|(
-literal|"/meta"
+name|RefNames
+operator|.
+name|META_SUFFIX
 argument_list|)
 expr_stmt|;
 return|return

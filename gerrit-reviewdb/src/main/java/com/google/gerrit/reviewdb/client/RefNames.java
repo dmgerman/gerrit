@@ -144,6 +144,16 @@ name|REFS_CACHE_AUTOMERGE
 init|=
 literal|"refs/cache-automerge/"
 decl_stmt|;
+comment|/** Suffix of a meta ref in the notedb. */
+DECL|field|META_SUFFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_SUFFIX
+init|=
+literal|"/meta"
+decl_stmt|;
 DECL|method|refsUsers (Account.Id accountId)
 specifier|public
 specifier|static
