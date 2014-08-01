@@ -401,10 +401,9 @@ name|in
 return|;
 block|}
 block|}
-annotation|@
-name|Inject
 DECL|field|banCommit
 specifier|private
+specifier|final
 name|com
 operator|.
 name|google
@@ -418,6 +417,32 @@ operator|.
 name|BanCommit
 name|banCommit
 decl_stmt|;
+annotation|@
+name|Inject
+DECL|method|BanCommit (com.google.gerrit.server.git.BanCommit banCommit)
+name|BanCommit
+parameter_list|(
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|BanCommit
+name|banCommit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|banCommit
+operator|=
+name|banCommit
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|apply (ProjectResource rsrc, Input input)
