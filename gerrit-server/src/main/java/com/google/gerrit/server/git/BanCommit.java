@@ -454,8 +454,8 @@ specifier|public
 class|class
 name|BanCommit
 block|{
-comment|/**    * Loads a list of commits to reject from {@code refs/meta/reject-commits}.    *    * @param repo repository from which the rejected commits should be loaded    * @return NoteMap of commits to be rejected, null if there are none.    * @throws IOException the map cannot be loaded.    */
-DECL|method|loadRejectCommitsMap (Repository repo)
+comment|/**    * Loads a list of commits to reject from {@code refs/meta/reject-commits}.    *    * @param repo repository from which the rejected commits should be loaded    * @param walk open revwalk on repo.    * @return NoteMap of commits to be rejected, null if there are none.    * @throws IOException the map cannot be loaded.    */
+DECL|method|loadRejectCommitsMap (Repository repo, RevWalk walk)
 specifier|public
 specifier|static
 name|NoteMap
@@ -463,6 +463,9 @@ name|loadRejectCommitsMap
 parameter_list|(
 name|Repository
 name|repo
+parameter_list|,
+name|RevWalk
+name|walk
 parameter_list|)
 throws|throws
 name|IOException
@@ -495,21 +498,10 @@ name|newEmptyMap
 argument_list|()
 return|;
 block|}
-name|RevWalk
-name|rw
-init|=
-operator|new
-name|RevWalk
-argument_list|(
-name|repo
-argument_list|)
-decl_stmt|;
-try|try
-block|{
 name|RevCommit
 name|map
 init|=
-name|rw
+name|walk
 operator|.
 name|parseCommit
 argument_list|(
@@ -524,7 +516,7 @@ name|NoteMap
 operator|.
 name|read
 argument_list|(
-name|rw
+name|walk
 operator|.
 name|getObjectReader
 argument_list|()
@@ -532,15 +524,6 @@ argument_list|,
 name|map
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

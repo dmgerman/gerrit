@@ -3632,6 +3632,11 @@ operator|.
 name|loadRejectCommitsMap
 argument_list|(
 name|repo
+argument_list|,
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -14617,6 +14622,8 @@ operator|.
 name|validateForReceiveCommits
 argument_list|(
 name|receiveEvent
+argument_list|,
+name|rejectCommits
 argument_list|)
 argument_list|)
 expr_stmt|;

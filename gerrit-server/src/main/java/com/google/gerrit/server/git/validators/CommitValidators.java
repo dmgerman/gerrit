@@ -230,22 +230,6 @@ name|server
 operator|.
 name|git
 operator|.
-name|BanCommit
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|git
-operator|.
 name|ProjectConfig
 import|;
 end_import
@@ -793,7 +777,7 @@ operator|=
 name|commitValidationListeners
 expr_stmt|;
 block|}
-DECL|method|validateForReceiveCommits ( CommitReceivedEvent receiveEvent)
+DECL|method|validateForReceiveCommits ( CommitReceivedEvent receiveEvent, NoteMap rejectCommits)
 specifier|public
 name|List
 argument_list|<
@@ -803,6 +787,9 @@ name|validateForReceiveCommits
 parameter_list|(
 name|CommitReceivedEvent
 name|receiveEvent
+parameter_list|,
+name|NoteMap
+name|rejectCommits
 parameter_list|)
 throws|throws
 name|CommitValidationException
@@ -951,7 +938,7 @@ argument_list|(
 operator|new
 name|BannedCommitsValidator
 argument_list|(
-name|repo
+name|rejectCommits
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3220,25 +3207,25 @@ name|BannedCommitsValidator
 implements|implements
 name|CommitValidationListener
 block|{
-DECL|field|repo
+DECL|field|rejectCommits
 specifier|private
 specifier|final
-name|Repository
-name|repo
+name|NoteMap
+name|rejectCommits
 decl_stmt|;
-DECL|method|BannedCommitsValidator (Repository repo)
+DECL|method|BannedCommitsValidator (NoteMap rejectCommits)
 specifier|public
 name|BannedCommitsValidator
 parameter_list|(
-name|Repository
-name|repo
+name|NoteMap
+name|rejectCommits
 parameter_list|)
 block|{
 name|this
 operator|.
-name|repo
+name|rejectCommits
 operator|=
-name|repo
+name|rejectCommits
 expr_stmt|;
 block|}
 annotation|@
@@ -3259,16 +3246,6 @@ name|CommitValidationException
 block|{
 try|try
 block|{
-name|NoteMap
-name|rejectCommits
-init|=
-name|BanCommit
-operator|.
-name|loadRejectCommitsMap
-argument_list|(
-name|repo
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|rejectCommits
