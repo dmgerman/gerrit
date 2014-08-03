@@ -1102,6 +1102,34 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Delete change edit. */
+DECL|method|deleteEdit (int id, AsyncCallback<JavaScriptObject> cb)
+specifier|public
+specifier|static
+name|void
+name|deleteEdit
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|JavaScriptObject
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|edit
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|delete
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Rebase a revision onto the branch tip. */
 DECL|method|rebase (int id, String commit, AsyncCallback<ChangeInfo> cb)
 specifier|public
