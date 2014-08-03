@@ -236,6 +236,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -822,6 +838,15 @@ name|EditInfo
 name|edit
 parameter_list|()
 comment|/*-{ return this.edit; }-*/
+function_decl|;
+DECL|method|has_edit ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_edit
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('edit') }-*/
 function_decl|;
 DECL|method|has_permitted_labels ()
 specifier|public
@@ -1899,6 +1924,25 @@ block|}
 return|return
 operator|-
 literal|1
+return|;
+block|}
+DECL|method|id ()
+specifier|public
+specifier|final
+name|String
+name|id
+parameter_list|()
+block|{
+return|return
+name|PatchSet
+operator|.
+name|Id
+operator|.
+name|toId
+argument_list|(
+name|_number
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|RevisionInfo ()
