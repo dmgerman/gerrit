@@ -128,6 +128,24 @@ name|changes
 operator|.
 name|ChangeInfo
 operator|.
+name|EditInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|ChangeInfo
+operator|.
 name|RevisionInfo
 import|;
 end_import
@@ -278,6 +296,17 @@ name|ChangeInfo
 name|c
 parameter_list|)
 comment|/*-{ this.change=c; }-*/
+function_decl|;
+DECL|method|set (EditInfo e)
+specifier|final
+specifier|native
+name|void
+name|set
+parameter_list|(
+name|EditInfo
+name|e
+parameter_list|)
+comment|/*-{ this.edit=e; }-*/
 function_decl|;
 DECL|method|set (Project.NameKey p)
 specifier|final
