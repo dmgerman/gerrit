@@ -629,7 +629,7 @@ specifier|native
 name|boolean
 name|mergeable
 parameter_list|()
-comment|/*-{ return this.mergeable; }-*/
+comment|/*-{ return this.mergeable || false; }-*/
 function_decl|;
 DECL|method|insertions ()
 specifier|public
