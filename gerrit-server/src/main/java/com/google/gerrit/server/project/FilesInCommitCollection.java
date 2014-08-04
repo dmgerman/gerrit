@@ -260,7 +260,7 @@ name|FileResource
 argument_list|(
 name|parent
 operator|.
-name|getNameKey
+name|getProject
 argument_list|()
 argument_list|,
 name|parent

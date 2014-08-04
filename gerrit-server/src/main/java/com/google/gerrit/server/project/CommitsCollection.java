@@ -510,9 +510,6 @@ operator|new
 name|CommitResource
 argument_list|(
 name|parent
-operator|.
-name|getControl
-argument_list|()
 argument_list|,
 name|commit
 argument_list|)
