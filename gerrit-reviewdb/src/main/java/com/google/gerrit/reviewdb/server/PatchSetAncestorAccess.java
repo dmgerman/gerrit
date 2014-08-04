@@ -79,8 +79,6 @@ operator|.
 name|client
 operator|.
 name|Change
-operator|.
-name|Id
 import|;
 end_import
 
@@ -259,13 +257,15 @@ name|Query
 argument_list|(
 literal|"WHERE key.patchSetId.changeId = ?"
 argument_list|)
-DECL|method|byChange (Id id)
+DECL|method|byChange (Change.Id id)
 name|ResultSet
 argument_list|<
 name|PatchSetAncestor
 argument_list|>
 name|byChange
 parameter_list|(
+name|Change
+operator|.
 name|Id
 name|id
 parameter_list|)

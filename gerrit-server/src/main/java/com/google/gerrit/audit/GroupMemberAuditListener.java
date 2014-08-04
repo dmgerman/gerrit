@@ -108,24 +108,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|AccountGroupById
 import|;
 end_import
@@ -196,10 +178,12 @@ argument_list|>
 name|removed
 parameter_list|)
 function_decl|;
-DECL|method|onAddGroupsToGroup (Id actor, Collection<AccountGroupById> added)
+DECL|method|onAddGroupsToGroup (Account.Id actor, Collection<AccountGroupById> added)
 name|void
 name|onAddGroupsToGroup
 parameter_list|(
+name|Account
+operator|.
 name|Id
 name|actor
 parameter_list|,
@@ -210,10 +194,12 @@ argument_list|>
 name|added
 parameter_list|)
 function_decl|;
-DECL|method|onDeleteGroupsFromGroup (Id actor, Collection<AccountGroupById> deleted)
+DECL|method|onDeleteGroupsFromGroup (Account.Id actor, Collection<AccountGroupById> deleted)
 name|void
 name|onDeleteGroupsFromGroup
 parameter_list|(
+name|Account
+operator|.
 name|Id
 name|actor
 parameter_list|,
