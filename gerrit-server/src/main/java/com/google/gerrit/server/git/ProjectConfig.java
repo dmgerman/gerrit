@@ -1810,6 +1810,18 @@ operator|=
 name|projectName
 expr_stmt|;
 block|}
+DECL|method|getName ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getName
+parameter_list|()
+block|{
+return|return
+name|projectName
+return|;
+block|}
 DECL|method|getProject ()
 specifier|public
 name|Project
