@@ -452,6 +452,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -864,7 +880,7 @@ name|draftUpdate
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -872,6 +888,11 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -922,6 +943,8 @@ name|this
 argument_list|(
 name|serverIdent
 argument_list|,
+name|anonymousCowardName
+argument_list|,
 name|repoManager
 argument_list|,
 name|migration
@@ -951,7 +974,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, @Assisted Date when, CommentsInNotesUtil commentsUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -959,6 +982,11 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -1010,6 +1038,8 @@ block|{
 name|this
 argument_list|(
 name|serverIdent
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|repoManager
 argument_list|,
@@ -1076,7 +1106,7 @@ return|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, @Assisted ChangeControl ctl, @Assisted Date when, @Assisted Comparator<String> labelNameComparator, CommentsInNotesUtil commentsUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -1084,6 +1114,11 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -1148,6 +1183,8 @@ argument_list|,
 name|ctl
 argument_list|,
 name|serverIdent
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|when
 argument_list|)

@@ -312,6 +312,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|AnonymousCowardName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -599,7 +615,7 @@ name|deleteComments
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, GitRepositoryManager repoManager, NotesMigration migration, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, AllUsersName allUsers, CommentsInNotesUtil commentsUtil, @Assisted ChangeControl ctl, @Assisted Date when)
+DECL|method|ChangeDraftUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, AllUsersName allUsers, CommentsInNotesUtil commentsUtil, @Assisted ChangeControl ctl, @Assisted Date when)
 specifier|private
 name|ChangeDraftUpdate
 parameter_list|(
@@ -607,6 +623,11 @@ annotation|@
 name|GerritPersonIdent
 name|PersonIdent
 name|serverIdent
+parameter_list|,
+annotation|@
+name|AnonymousCowardName
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -654,6 +675,8 @@ argument_list|,
 name|ctl
 argument_list|,
 name|serverIdent
+argument_list|,
+name|anonymousCowardName
 argument_list|,
 name|when
 argument_list|)

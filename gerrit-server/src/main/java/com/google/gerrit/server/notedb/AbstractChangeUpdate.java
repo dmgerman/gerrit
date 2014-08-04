@@ -108,6 +108,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -385,6 +401,12 @@ specifier|final
 name|ChangeControl
 name|ctl
 decl_stmt|;
+DECL|field|anonymousCowardName
+specifier|protected
+specifier|final
+name|String
+name|anonymousCowardName
+decl_stmt|;
 DECL|field|serverIdent
 specifier|protected
 specifier|final
@@ -404,7 +426,7 @@ operator|.
 name|Id
 name|psId
 decl_stmt|;
-DECL|method|AbstractChangeUpdate (NotesMigration migration, GitRepositoryManager repoManager, MetaDataUpdate.User updateFactory, ChangeControl ctl, PersonIdent serverIdent, Date when)
+DECL|method|AbstractChangeUpdate (NotesMigration migration, GitRepositoryManager repoManager, MetaDataUpdate.User updateFactory, ChangeControl ctl, PersonIdent serverIdent, String anonymousCowardName, Date when)
 name|AbstractChangeUpdate
 parameter_list|(
 name|NotesMigration
@@ -423,6 +445,9 @@ name|ctl
 parameter_list|,
 name|PersonIdent
 name|serverIdent
+parameter_list|,
+name|String
+name|anonymousCowardName
 parameter_list|,
 name|Date
 name|when
@@ -457,6 +482,12 @@ operator|.
 name|serverIdent
 operator|=
 name|serverIdent
+expr_stmt|;
+name|this
+operator|.
+name|anonymousCowardName
+operator|=
+name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
@@ -836,10 +867,16 @@ return|return
 operator|new
 name|PersonIdent
 argument_list|(
+operator|new
+name|AccountInfo
+argument_list|(
 name|author
+argument_list|)
 operator|.
-name|getFullName
-argument_list|()
+name|getName
+argument_list|(
+name|anonymousCowardName
+argument_list|)
 argument_list|,
 name|author
 operator|.
