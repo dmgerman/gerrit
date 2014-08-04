@@ -156,20 +156,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|annotations
-operator|.
-name|VisibleForTesting
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|Lists
@@ -419,6 +405,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
 import|;
 end_import
 
@@ -769,6 +767,8 @@ comment|/**  * Utility functions to parse PatchLineComments out of a note byte a
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|CommentsInNotesUtil
 specifier|public
 class|class
@@ -3197,8 +3197,6 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
-annotation|@
-name|VisibleForTesting
 annotation|@
 name|Inject
 DECL|method|CommentsInNotesUtil (AccountCache accountCache, @GerritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName)
