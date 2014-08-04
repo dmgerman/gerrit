@@ -823,11 +823,6 @@ name|noteId
 argument_list|)
 expr_stmt|;
 block|}
-name|inserter
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 name|NotesBranchUtil
 name|notesBranchUtil
 init|=
