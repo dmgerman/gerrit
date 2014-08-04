@@ -6905,6 +6905,8 @@ name|ctl
 operator|.
 name|canCreate
 argument_list|(
+name|db
+argument_list|,
 name|rp
 operator|.
 name|getRevWalk

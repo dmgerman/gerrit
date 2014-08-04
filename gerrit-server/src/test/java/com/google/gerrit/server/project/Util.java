@@ -2387,6 +2387,10 @@ name|repoManager
 argument_list|,
 name|changeControlFactory
 argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
 name|canonicalWebUrl
 argument_list|,
 operator|new

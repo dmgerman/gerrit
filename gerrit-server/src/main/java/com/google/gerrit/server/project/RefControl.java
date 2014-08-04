@@ -232,6 +232,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|server
+operator|.
+name|ReviewDb
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -1170,12 +1186,15 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param rw revision pool {@code object} was parsed in; must be reset before    *     calling this method.    * @param object the object the user will start the reference with.    * @param existsOnServer the object exists on server or not.    * @return {@code true} if the user specified can create a new Git ref    */
-DECL|method|canCreate (RevWalk rw, RevObject object, boolean existsOnServer)
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param db db for checking change visibility.    * @param rw revision pool {@code object} was parsed in; must be reset before    *     calling this method.    * @param object the object the user will start the reference with.    * @param existsOnServer the object exists on server or not.    * @return {@code true} if the user specified can create a new Git ref    */
+DECL|method|canCreate (ReviewDb db, RevWalk rw, RevObject object, boolean existsOnServer)
 specifier|public
 name|boolean
 name|canCreate
 parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,
@@ -1314,6 +1333,8 @@ name|projectControl
 operator|.
 name|canReadCommit
 argument_list|(
+name|db
+argument_list|,
 name|rw
 argument_list|,
 operator|(
