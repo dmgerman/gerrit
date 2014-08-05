@@ -88,24 +88,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|Util
-operator|.
-name|allow
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|junit
@@ -295,6 +277,22 @@ operator|.
 name|project
 operator|.
 name|ProjectCache
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|project
+operator|.
+name|Util
 import|;
 end_import
 
@@ -657,6 +655,8 @@ operator|.
 name|getUUID
 argument_list|()
 decl_stmt|;
+name|Util
+operator|.
 name|allow
 argument_list|(
 name|cfg
@@ -668,6 +668,8 @@ argument_list|,
 name|registeredUsers
 argument_list|)
 expr_stmt|;
+name|Util
+operator|.
 name|allow
 argument_list|(
 name|cfg
