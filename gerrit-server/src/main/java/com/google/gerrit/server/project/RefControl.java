@@ -1252,7 +1252,8 @@ operator|instanceof
 name|RevCommit
 condition|)
 block|{
-return|return
+if|if
+condition|(
 name|admin
 operator|||
 operator|(
@@ -1266,22 +1267,49 @@ operator|.
 name|CREATE
 argument_list|)
 operator|)
-operator|||
-operator|(
+condition|)
+block|{
+comment|// Admin or project owner; bypass visibility check.
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
 name|canPerform
 argument_list|(
 name|Permission
 operator|.
 name|CREATE
 argument_list|)
-operator|&&
-operator|(
+condition|)
+block|{
+comment|// No create permissions.
+return|return
+literal|false
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 operator|!
 name|existsOnServer
 operator|&&
 name|canUpdate
 argument_list|()
-operator|||
+condition|)
+block|{
+comment|// If the object doesn't exist on the server, check that the user has
+comment|// push permissions.
+return|return
+literal|true
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|projectControl
 operator|.
 name|canReadCommit
@@ -1293,8 +1321,16 @@ name|RevCommit
 operator|)
 name|object
 argument_list|)
-operator|)
-operator|)
+condition|)
+block|{
+comment|// The object exists on the server and is readable by this user, so they
+comment|// do not require push permission create this ref.
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 elseif|else
