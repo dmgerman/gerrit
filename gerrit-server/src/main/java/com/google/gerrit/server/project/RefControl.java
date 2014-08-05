@@ -1170,7 +1170,7 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param rw revision pool {@code object} was parsed in.    * @param object the object the user will start the reference with.    * @param existsOnServer the object exists on server or not.    * @return {@code true} if the user specified can create a new Git ref    */
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param rw revision pool {@code object} was parsed in; must be reset before    *     calling this method.    * @param object the object the user will start the reference with.    * @param existsOnServer the object exists on server or not.    * @return {@code true} if the user specified can create a new Git ref    */
 DECL|method|canCreate (RevWalk rw, RevObject object, boolean existsOnServer)
 specifier|public
 name|boolean

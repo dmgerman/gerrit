@@ -6891,6 +6891,14 @@ name|getRefName
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|rp
+operator|.
+name|getRevWalk
+argument_list|()
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|ctl

@@ -1007,6 +1007,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+name|rw
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
