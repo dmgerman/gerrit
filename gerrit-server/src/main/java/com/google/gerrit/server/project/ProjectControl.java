@@ -1754,7 +1754,7 @@ name|allRefsAreVisible
 parameter_list|()
 block|{
 return|return
-name|allRefsAreVisibleExcept
+name|allRefsAreVisible
 argument_list|(
 name|Collections
 operator|.
@@ -1766,16 +1766,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|allRefsAreVisibleExcept (Set<String> except)
+DECL|method|allRefsAreVisible (Set<String> ignore)
 specifier|public
 name|boolean
-name|allRefsAreVisibleExcept
+name|allRefsAreVisible
 parameter_list|(
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|except
+name|ignore
 parameter_list|)
 block|{
 return|return
@@ -1789,7 +1789,7 @@ name|Permission
 operator|.
 name|READ
 argument_list|,
-name|except
+name|ignore
 argument_list|)
 return|;
 block|}
@@ -2639,7 +2639,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|canPerformOnAllRefs (String permission, Set<String> except)
+DECL|method|canPerformOnAllRefs (String permission, Set<String> ignore)
 specifier|private
 name|boolean
 name|canPerformOnAllRefs
@@ -2651,7 +2651,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|except
+name|ignore
 parameter_list|)
 block|{
 name|boolean
@@ -2716,7 +2716,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|except
+name|ignore
 operator|.
 name|contains
 argument_list|(
