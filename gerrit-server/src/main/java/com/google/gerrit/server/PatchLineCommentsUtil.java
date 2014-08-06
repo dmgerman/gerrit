@@ -821,6 +821,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|byCommentStatus
 argument_list|(
 name|db
@@ -839,6 +841,7 @@ argument_list|,
 name|Status
 operator|.
 name|PUBLISHED
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -885,7 +888,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
+name|sort
+argument_list|(
 name|comments
+argument_list|)
 return|;
 block|}
 DECL|method|draftByChange (ReviewDb db, ChangeNotes notes)
@@ -915,6 +921,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|byCommentStatus
 argument_list|(
 name|db
@@ -933,6 +941,7 @@ argument_list|,
 name|Status
 operator|.
 name|DRAFT
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1007,7 +1016,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
+name|sort
+argument_list|(
 name|comments
+argument_list|)
 return|;
 block|}
 DECL|method|byCommentStatus ( ResultSet<PatchLineComment> comments, final PatchLineComment.Status status)
@@ -1108,6 +1120,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1120,6 +1134,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|List
@@ -1209,7 +1224,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
+name|sort
+argument_list|(
 name|comments
+argument_list|)
 return|;
 block|}
 DECL|method|publishedByChangeFile (ReviewDb db, ChangeNotes notes, Change.Id changeId, String file)
@@ -1247,6 +1265,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1261,6 +1281,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|notes
@@ -1309,19 +1330,11 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
-name|Collections
-operator|.
+return|return
 name|sort
 argument_list|(
 name|comments
-argument_list|,
-name|ChangeNotes
-operator|.
-name|PatchLineCommentComparator
 argument_list|)
-expr_stmt|;
-return|return
-name|comments
 return|;
 block|}
 DECL|method|publishedByPatchSet (ReviewDb db, ChangeNotes notes, PatchSet.Id psId)
@@ -1356,6 +1369,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1368,6 +1383,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|notes
@@ -1419,7 +1435,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
+name|sort
+argument_list|(
 name|comments
+argument_list|)
 return|;
 block|}
 DECL|method|draftByPatchSetAuthor (ReviewDb db, PatchSet.Id psId, Account.Id author, ChangeNotes notes)
@@ -1459,6 +1478,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1473,6 +1494,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|List
@@ -1526,19 +1548,11 @@ name|values
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Collections
-operator|.
+return|return
 name|sort
 argument_list|(
 name|comments
-argument_list|,
-name|ChangeNotes
-operator|.
-name|PatchLineCommentComparator
 argument_list|)
-expr_stmt|;
-return|return
-name|comments
 return|;
 block|}
 DECL|method|draftByChangeFileAuthor (ReviewDb db, ChangeNotes notes, String file, Account.Id author)
@@ -1576,6 +1590,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1595,6 +1611,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|List
@@ -1642,19 +1659,11 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
-name|Collections
-operator|.
+return|return
 name|sort
 argument_list|(
 name|comments
-argument_list|,
-name|ChangeNotes
-operator|.
-name|PatchLineCommentComparator
 argument_list|)
-expr_stmt|;
-return|return
-name|comments
 return|;
 block|}
 DECL|method|draftByChangeAuthor (ReviewDb db, ChangeNotes notes, Account.Id author)
@@ -1689,6 +1698,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1704,6 +1715,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|List
@@ -1748,7 +1760,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
+name|sort
+argument_list|(
 name|comments
+argument_list|)
 return|;
 block|}
 DECL|method|draftByAuthor (ReviewDb db, Account.Id author)
@@ -1780,6 +1795,8 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|sort
+argument_list|(
 name|db
 operator|.
 name|patchComments
@@ -1792,6 +1809,7 @@ argument_list|)
 operator|.
 name|toList
 argument_list|()
+argument_list|)
 return|;
 block|}
 name|Set
@@ -1910,7 +1928,10 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|sort
+argument_list|(
 name|comments
+argument_list|)
 return|;
 block|}
 DECL|method|insertComments (ReviewDb db, ChangeUpdate update, Iterable<PatchLineComment> comments)
@@ -2445,6 +2466,37 @@ return|;
 block|}
 block|}
 argument_list|)
+return|;
+block|}
+DECL|method|sort (List<PatchLineComment> comments)
+specifier|private
+specifier|static
+name|List
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|sort
+parameter_list|(
+name|List
+argument_list|<
+name|PatchLineComment
+argument_list|>
+name|comments
+parameter_list|)
+block|{
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|comments
+argument_list|,
+name|ChangeNotes
+operator|.
+name|PatchLineCommentComparator
+argument_list|)
+expr_stmt|;
+return|return
+name|comments
 return|;
 block|}
 block|}
