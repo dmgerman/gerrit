@@ -514,6 +514,11 @@ name|assertFalse
 argument_list|(
 name|sshSession
 operator|.
+name|getError
+argument_list|()
+argument_list|,
+name|sshSession
+operator|.
 name|hasError
 argument_list|()
 argument_list|)
@@ -568,6 +573,11 @@ argument_list|)
 decl_stmt|;
 name|assertFalse
 argument_list|(
+name|sshSession
+operator|.
+name|getError
+argument_list|()
+argument_list|,
 name|sshSession
 operator|.
 name|hasError

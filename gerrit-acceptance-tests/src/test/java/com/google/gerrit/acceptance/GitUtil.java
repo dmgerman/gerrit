@@ -775,6 +775,27 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|s
+operator|.
+name|hasError
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"gerrit create-project returned error: "
+operator|+
+name|s
+operator|.
+name|getError
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|cloneProject (String url)
 specifier|public
