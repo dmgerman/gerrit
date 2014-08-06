@@ -110,7 +110,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|BaseCommand
+name|CommandMetaData
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|gerrit
 operator|.
 name|sshd
 operator|.
-name|CommandMetaData
+name|SshCommand
 import|;
 end_import
 
@@ -137,20 +137,6 @@ operator|.
 name|inject
 operator|.
 name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|sshd
-operator|.
-name|server
-operator|.
-name|Environment
 import|;
 end_import
 
@@ -185,7 +171,7 @@ specifier|final
 class|class
 name|ListProjectsCommand
 extends|extends
-name|BaseCommand
+name|SshCommand
 block|{
 annotation|@
 name|Inject
@@ -196,24 +182,7 @@ name|impl
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|start (final Environment env)
-specifier|public
-name|void
-name|start
-parameter_list|(
-specifier|final
-name|Environment
-name|env
-parameter_list|)
-block|{
-name|startThread
-argument_list|(
-operator|new
-name|CommandRunnable
-argument_list|()
-block|{
-annotation|@
-name|Override
+DECL|method|run ()
 specifier|public
 name|void
 name|run
@@ -221,11 +190,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|parseCommandLine
-argument_list|(
-name|impl
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -311,7 +275,19 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+annotation|@
+name|Override
+DECL|method|parseCommandLine ()
+specifier|protected
+name|void
+name|parseCommandLine
+parameter_list|()
+throws|throws
+name|UnloggedFailure
+block|{
+name|parseCommandLine
+argument_list|(
+name|impl
 argument_list|)
 expr_stmt|;
 block|}
