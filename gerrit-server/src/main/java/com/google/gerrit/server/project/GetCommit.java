@@ -198,24 +198,14 @@ name|CommitResource
 name|rsrc
 parameter_list|)
 block|{
-name|RevCommit
-name|c
-init|=
+return|return
+name|toCommitInfo
+argument_list|(
 name|rsrc
 operator|.
 name|getCommit
 argument_list|()
-decl_stmt|;
-name|CommitInfo
-name|info
-init|=
-name|toCommitInfo
-argument_list|(
-name|c
 argument_list|)
-decl_stmt|;
-return|return
-name|info
 return|;
 block|}
 DECL|method|toCommitInfo (RevCommit commit)
