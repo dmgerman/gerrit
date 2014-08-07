@@ -1956,6 +1956,12 @@ argument_list|(
 name|startLine
 argument_list|)
 expr_stmt|;
+name|ptr
+operator|.
+name|value
+operator|+=
+literal|1
+expr_stmt|;
 return|return
 name|range
 return|;

@@ -378,6 +378,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchLineCommentsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
@@ -1327,6 +1341,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
+literal|null
+argument_list|,
 name|id
 argument_list|)
 decl_stmt|;
@@ -1399,6 +1415,12 @@ specifier|private
 specifier|final
 name|ChangeMessagesUtil
 name|cmUtil
+decl_stmt|;
+DECL|field|plcUtil
+specifier|private
+specifier|final
+name|PatchLineCommentsUtil
+name|plcUtil
 decl_stmt|;
 DECL|field|patchListCache
 specifier|private
@@ -1499,13 +1521,13 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|comments
+DECL|field|publishedComments
 specifier|private
 name|Collection
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|comments
+name|publishedComments
 decl_stmt|;
 DECL|field|visibleTo
 specifier|private
@@ -1540,7 +1562,7 @@ name|changedLines
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change.Id id)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change.Id id)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -1567,6 +1589,9 @@ name|approvalsUtil
 parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
+parameter_list|,
+name|PatchLineCommentsUtil
+name|plcUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1631,6 +1656,12 @@ name|cmUtil
 expr_stmt|;
 name|this
 operator|.
+name|plcUtil
+operator|=
+name|plcUtil
+expr_stmt|;
+name|this
+operator|.
 name|patchListCache
 operator|=
 name|patchListCache
@@ -1648,7 +1679,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted Change c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -1675,6 +1706,9 @@ name|approvalsUtil
 parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
+parameter_list|,
+name|PatchLineCommentsUtil
+name|plcUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1737,6 +1771,12 @@ name|cmUtil
 expr_stmt|;
 name|this
 operator|.
+name|plcUtil
+operator|=
+name|plcUtil
+expr_stmt|;
+name|this
+operator|.
 name|patchListCache
 operator|=
 name|patchListCache
@@ -1761,7 +1801,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted ChangeControl c)
+DECL|method|ChangeData ( GitRepositoryManager repoManager, ChangeControl.GenericFactory changeControlFactory, IdentifiedUser.GenericFactory userFactory, ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache, NotesMigration notesMigration, @Assisted ReviewDb db, @Assisted ChangeControl c)
 specifier|private
 name|ChangeData
 parameter_list|(
@@ -1788,6 +1828,9 @@ name|approvalsUtil
 parameter_list|,
 name|ChangeMessagesUtil
 name|cmUtil
+parameter_list|,
+name|PatchLineCommentsUtil
+name|plcUtil
 parameter_list|,
 name|PatchListCache
 name|patchListCache
@@ -1847,6 +1890,12 @@ operator|.
 name|cmUtil
 operator|=
 name|cmUtil
+expr_stmt|;
+name|this
+operator|.
+name|plcUtil
+operator|=
+name|plcUtil
 expr_stmt|;
 name|this
 operator|.
@@ -3073,42 +3122,39 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|comments ()
+DECL|method|publishedComments ()
 specifier|public
 name|Collection
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|comments
+name|publishedComments
 parameter_list|()
 throws|throws
 name|OrmException
 block|{
 if|if
 condition|(
-name|comments
+name|publishedComments
 operator|==
 literal|null
 condition|)
 block|{
-name|comments
+name|publishedComments
 operator|=
-name|db
+name|plcUtil
 operator|.
-name|patchComments
-argument_list|()
-operator|.
-name|byChange
+name|publishedByChange
 argument_list|(
-name|legacyId
-argument_list|)
-operator|.
-name|toList
+name|db
+argument_list|,
+name|notes
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|comments
+name|publishedComments
 return|;
 block|}
 DECL|method|messages ()

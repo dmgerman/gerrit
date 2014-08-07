@@ -184,6 +184,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchLineCommentsUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|account
 operator|.
 name|AccountInfo
@@ -301,6 +315,12 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|plcUtil
+specifier|protected
+specifier|final
+name|PatchLineCommentsUtil
+name|plcUtil
+decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
@@ -313,7 +333,7 @@ name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListDrafts (Provider<ReviewDb> db, AccountInfo.Loader.Factory alf)
+DECL|method|ListDrafts (Provider<ReviewDb> db, AccountInfo.Loader.Factory alf, PatchLineCommentsUtil plcUtil)
 name|ListDrafts
 parameter_list|(
 name|Provider
@@ -328,6 +348,9 @@ name|Loader
 operator|.
 name|Factory
 name|alf
+parameter_list|,
+name|PatchLineCommentsUtil
+name|plcUtil
 parameter_list|)
 block|{
 name|this
@@ -341,6 +364,12 @@ operator|.
 name|accountLoaderFactory
 operator|=
 name|alf
+expr_stmt|;
+name|this
+operator|.
+name|plcUtil
+operator|=
+name|plcUtil
 expr_stmt|;
 block|}
 DECL|method|listComments (RevisionResource rsrc)
@@ -358,16 +387,15 @@ throws|throws
 name|OrmException
 block|{
 return|return
+name|plcUtil
+operator|.
+name|draftByPatchSetAuthor
+argument_list|(
 name|db
 operator|.
 name|get
 argument_list|()
-operator|.
-name|patchComments
-argument_list|()
-operator|.
-name|draftByPatchSetAuthor
-argument_list|(
+argument_list|,
 name|rsrc
 operator|.
 name|getPatchSet
@@ -379,6 +407,11 @@ argument_list|,
 name|rsrc
 operator|.
 name|getAccountId
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getNotes
 argument_list|()
 argument_list|)
 return|;

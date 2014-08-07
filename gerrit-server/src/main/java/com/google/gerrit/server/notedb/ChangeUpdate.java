@@ -1602,6 +1602,14 @@ name|load
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|migration
+operator|.
+name|readComments
+argument_list|()
+condition|)
+block|{
 name|checkArgument
 argument_list|(
 operator|!
@@ -1619,6 +1627,7 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|c
@@ -1680,12 +1689,56 @@ parameter_list|(
 name|PatchLineComment
 name|c
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|verifyComment
 argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|notes
+operator|==
+literal|null
+condition|)
+block|{
+name|notes
+operator|=
+name|getChangeNotes
+argument_list|()
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+block|}
+comment|// This could allow callers to update a published comment if migration.write
+comment|// is on and migration.readComments is off because we will not be able to
+comment|// verify that the comment didn't already exist as a published comment
+comment|// since we don't have a ReviewDb.
+if|if
+condition|(
+name|migration
+operator|.
+name|readComments
+argument_list|()
+condition|)
+block|{
+name|checkArgument
+argument_list|(
+operator|!
+name|notes
+operator|.
+name|containsCommentPublished
+argument_list|(
+name|c
+argument_list|)
+argument_list|,
+literal|"Cannot update a comment that has already been published and saved"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|c
@@ -1771,6 +1824,16 @@ name|load
 argument_list|()
 expr_stmt|;
 block|}
+comment|// See comment above in upsertPublishedComment() about potential risk with
+comment|// this check.
+if|if
+condition|(
+name|migration
+operator|.
+name|readComments
+argument_list|()
+condition|)
+block|{
 name|checkArgument
 argument_list|(
 operator|!
@@ -1784,6 +1847,7 @@ argument_list|,
 literal|"Cannot update a comment that has already been published and saved"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|c

@@ -206,7 +206,7 @@ name|setBoolean
 argument_list|(
 literal|"notedb"
 argument_list|,
-literal|"publishedComments"
+literal|"comments"
 argument_list|,
 literal|"read"
 argument_list|,
@@ -239,11 +239,11 @@ specifier|final
 name|boolean
 name|readChangeMessages
 decl_stmt|;
-DECL|field|readPublishedComments
+DECL|field|readComments
 specifier|private
 specifier|final
 name|boolean
-name|readPublishedComments
+name|readComments
 decl_stmt|;
 annotation|@
 name|Inject
@@ -301,7 +301,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|readPublishedComments
+name|readComments
 operator|=
 name|cfg
 operator|.
@@ -309,7 +309,7 @@ name|getBoolean
 argument_list|(
 literal|"notedb"
 argument_list|,
-literal|"publishedComments"
+literal|"comments"
 argument_list|,
 literal|"read"
 argument_list|,
@@ -347,14 +347,14 @@ return|return
 name|readChangeMessages
 return|;
 block|}
-DECL|method|readPublishedComments ()
+DECL|method|readComments ()
 specifier|public
 name|boolean
-name|readPublishedComments
+name|readComments
 parameter_list|()
 block|{
 return|return
-name|readPublishedComments
+name|readComments
 return|;
 block|}
 block|}

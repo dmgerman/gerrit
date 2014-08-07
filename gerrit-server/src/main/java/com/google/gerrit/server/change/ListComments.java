@@ -203,12 +203,6 @@ name|ListComments
 extends|extends
 name|ListDrafts
 block|{
-DECL|field|plcUtil
-specifier|private
-specifier|final
-name|PatchLineCommentsUtil
-name|plcUtil
-decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|ListComments (Provider<ReviewDb> db, AccountInfo.Loader.Factory alf, PatchLineCommentsUtil plcUtil)
@@ -236,13 +230,9 @@ argument_list|(
 name|db
 argument_list|,
 name|alf
+argument_list|,
+name|plcUtil
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|plcUtil
-operator|=
-name|plcUtil
 expr_stmt|;
 block|}
 annotation|@

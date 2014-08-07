@@ -3601,6 +3601,7 @@ name|patchSetId
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// No need to delete from notedb; draft patch sets will be filtered out.
 name|db
 operator|.
 name|patchComments
@@ -3619,7 +3620,6 @@ name|patchSetId
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// No need to delete from notedb; draft patch sets will be filtered out.
 name|db
 operator|.
 name|patchSetApprovals
