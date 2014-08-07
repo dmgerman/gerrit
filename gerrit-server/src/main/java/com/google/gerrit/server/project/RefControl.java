@@ -320,7 +320,35 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|Constants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Ref
 import|;
 end_import
 
@@ -391,6 +419,26 @@ operator|.
 name|revwalk
 operator|.
 name|RevWalk
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -474,6 +522,22 @@ specifier|public
 class|class
 name|RefControl
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|RefControl
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|projectControl
 specifier|private
 specifier|final
@@ -1186,8 +1250,8 @@ name|PUSH
 argument_list|)
 return|;
 block|}
-comment|/**    * Determines whether the user can create a new Git ref.    *    * @param db db for checking change visibility.    * @param rw revision pool {@code object} was parsed in; must be reset before    *     calling this method.    * @param object the object the user will start the reference with.    * @param existsOnServer the object exists on server or not.    * @return {@code true} if the user specified can create a new Git ref    */
-DECL|method|canCreate (ReviewDb db, RevWalk rw, RevObject object, boolean existsOnServer)
+comment|/**    * Determines whether the user can create a new Git ref.    *    * @param db db for checking change visibility.    * @param rw revision pool {@code object} was parsed in; must be reset before    *     calling this method.    * @param object the object the user will start the reference with.    * @return {@code true} if the user specified can create a new Git ref    */
+DECL|method|canCreate (ReviewDb db, RevWalk rw, RevObject object)
 specifier|public
 name|boolean
 name|canCreate
@@ -1200,9 +1264,6 @@ name|rw
 parameter_list|,
 name|RevObject
 name|object
-parameter_list|,
-name|boolean
-name|existsOnServer
 parameter_list|)
 block|{
 if|if
@@ -1313,15 +1374,12 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|existsOnServer
-operator|&&
 name|canUpdate
 argument_list|()
 condition|)
 block|{
-comment|// If the object doesn't exist on the server, check that the user has
-comment|// push permissions.
+comment|// If the user has push permissions, they can create the ref regardless
+comment|// of whether they are pushing any new objects along with the create.
 return|return
 literal|true
 return|;
@@ -1329,9 +1387,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|projectControl
-operator|.
-name|canReadCommit
+name|isMergedIntoBranchOrTag
 argument_list|(
 name|db
 argument_list|,
@@ -1344,8 +1400,10 @@ name|object
 argument_list|)
 condition|)
 block|{
-comment|// The object exists on the server and is readable by this user, so they
-comment|// do not require push permission create this ref.
+comment|// If the user has no push permissions, check whether the object is
+comment|// merged into a branch or tag readable by this user. If so, they are
+comment|// not effectively "pushing" more objects, so they can create the ref
+comment|// even if they don't have push permission.
 return|return
 literal|true
 return|;
@@ -1525,6 +1583,139 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+DECL|method|isMergedIntoBranchOrTag (ReviewDb db, RevWalk rw, RevCommit commit)
+specifier|private
+name|boolean
+name|isMergedIntoBranchOrTag
+parameter_list|(
+name|ReviewDb
+name|db
+parameter_list|,
+name|RevWalk
+name|rw
+parameter_list|,
+name|RevCommit
+name|commit
+parameter_list|)
+block|{
+try|try
+block|{
+name|Repository
+name|repo
+init|=
+name|projectControl
+operator|.
+name|openRepository
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Ref
+argument_list|>
+name|refs
+init|=
+name|repo
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getRefs
+argument_list|(
+name|Constants
+operator|.
+name|R_HEADS
+argument_list|)
+decl_stmt|;
+name|refs
+operator|.
+name|putAll
+argument_list|(
+name|repo
+operator|.
+name|getRefDatabase
+argument_list|()
+operator|.
+name|getRefs
+argument_list|(
+name|Constants
+operator|.
+name|R_TAGS
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|projectControl
+operator|.
+name|isMergedIntoVisibleRef
+argument_list|(
+name|repo
+argument_list|,
+name|db
+argument_list|,
+name|rw
+argument_list|,
+name|commit
+argument_list|,
+name|refs
+argument_list|)
+return|;
+block|}
+finally|finally
+block|{
+name|repo
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Cannot verify permissions to commit object %s in repository %s"
+argument_list|,
+name|commit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|projectControl
+operator|.
+name|getProject
+argument_list|()
+operator|.
+name|getNameKey
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|log
+operator|.
+name|error
+argument_list|(
+name|msg
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**    * Determines whether the user can delete the Git ref controlled by this    * object.    *    * @return {@code true} if the user specified can delete a Git ref.    */
 DECL|method|canDelete ()

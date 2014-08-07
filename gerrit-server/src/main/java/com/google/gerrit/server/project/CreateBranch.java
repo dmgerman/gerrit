@@ -1064,8 +1064,6 @@ argument_list|,
 name|rw
 argument_list|,
 name|object
-argument_list|,
-literal|true
 argument_list|)
 condition|)
 block|{
