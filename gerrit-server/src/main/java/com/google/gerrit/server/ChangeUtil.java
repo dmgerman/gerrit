@@ -3689,7 +3689,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|nextPatchSetId (PatchSet.Id id)
-specifier|private
+specifier|public
 specifier|static
 name|PatchSet
 operator|.
