@@ -529,7 +529,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility functions to manipulate change edits.  *<p>  * This class contains methods to retrieve, publish and delete edits.  */
+comment|/**  * Utility functions to manipulate change edits.  *<p>  * This class contains methods to retrieve, publish and delete edits.  * For changing edits see {@link ChangeEditModifier}.  */
 end_comment
 
 begin_class

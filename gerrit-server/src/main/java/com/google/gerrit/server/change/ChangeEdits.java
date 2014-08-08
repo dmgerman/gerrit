@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.project
+DECL|package|com.google.gerrit.server.change
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|project
+name|change
 package|;
 end_package
 
@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|registration
 operator|.
-name|BinaryResult
+name|DynamicMap
 import|;
 end_import
 
@@ -94,7 +94,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|ChildCollection
 import|;
 end_import
 
@@ -110,7 +110,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestReadView
+name|IdString
 import|;
 end_import
 
@@ -122,11 +122,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|change
+name|restapi
 operator|.
-name|FileContentUtil
+name|RestView
 import|;
 end_import
 
@@ -151,90 +151,115 @@ operator|.
 name|inject
 operator|.
 name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
 begin_class
 annotation|@
 name|Singleton
-DECL|class|GetContent
-specifier|public
+DECL|class|ChangeEdits
 class|class
-name|GetContent
+name|ChangeEdits
 implements|implements
-name|RestReadView
+name|ChildCollection
 argument_list|<
-name|FileResource
+name|ChangeResource
+argument_list|,
+name|ChangeEditResource
 argument_list|>
 block|{
-DECL|field|fileContentUtil
+DECL|field|views
 specifier|private
 specifier|final
-name|FileContentUtil
-name|fileContentUtil
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|ChangeEditResource
+argument_list|>
+argument_list|>
+name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetContent (FileContentUtil fileContentUtil)
-name|GetContent
+DECL|method|ChangeEdits (DynamicMap<RestView<ChangeEditResource>> views)
+name|ChangeEdits
 parameter_list|(
-name|FileContentUtil
-name|fileContentUtil
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|ChangeEditResource
+argument_list|>
+argument_list|>
+name|views
 parameter_list|)
 block|{
 name|this
 operator|.
-name|fileContentUtil
+name|views
 operator|=
-name|fileContentUtil
+name|views
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (FileResource rsrc)
+DECL|method|views ()
 specifier|public
-name|BinaryResult
-name|apply
-parameter_list|(
-name|FileResource
-name|rsrc
-parameter_list|)
-throws|throws
-name|ResourceNotFoundException
-throws|,
-name|IOException
+name|DynamicMap
+argument_list|<
+name|RestView
+argument_list|<
+name|ChangeEditResource
+argument_list|>
+argument_list|>
+name|views
+parameter_list|()
 block|{
 return|return
-name|fileContentUtil
-operator|.
-name|getContent
-argument_list|(
-name|rsrc
-operator|.
-name|getProject
-argument_list|()
-argument_list|,
-name|rsrc
-operator|.
-name|getRev
-argument_list|()
-argument_list|,
-name|rsrc
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
+name|views
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|list ()
+specifier|public
+name|RestView
+argument_list|<
+name|ChangeResource
+argument_list|>
+name|list
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"not yet implemented"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|parse (ChangeResource change, IdString id)
+specifier|public
+name|ChangeEditResource
+name|parse
+parameter_list|(
+name|ChangeResource
+name|change
+parameter_list|,
+name|IdString
+name|id
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"not yet implemented"
+argument_list|)
+throw|;
 block|}
 block|}
 end_class
