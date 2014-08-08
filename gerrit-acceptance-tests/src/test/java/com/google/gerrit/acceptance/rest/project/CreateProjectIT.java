@@ -1956,11 +1956,6 @@ block|}
 block|}
 finally|finally
 block|{
-name|tw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 name|rw
 operator|.
 name|release
