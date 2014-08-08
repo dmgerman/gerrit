@@ -815,8 +815,6 @@ name|getObjectReader
 argument_list|()
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|tw
 operator|.
 name|addTree
@@ -953,15 +951,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|}
-finally|finally
-block|{
-name|tw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 name|list

@@ -446,8 +446,6 @@ name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
-try|try
-block|{
 specifier|final
 name|ObjectLoader
 name|object
@@ -512,15 +510,6 @@ operator|.
 name|base64
 argument_list|()
 return|;
-block|}
-finally|finally
-block|{
-name|tw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 finally|finally
 block|{
