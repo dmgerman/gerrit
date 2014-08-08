@@ -499,6 +499,13 @@ argument_list|(
 name|objectId
 argument_list|)
 decl_stmt|;
+name|rw
+operator|.
+name|parseBody
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -548,6 +555,10 @@ control|)
 block|{
 name|rw
 operator|.
+name|parseBody
+argument_list|(
+name|rw
+operator|.
 name|parseCommit
 argument_list|(
 name|commit
@@ -555,6 +566,7 @@ operator|.
 name|getParent
 argument_list|(
 name|i
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
