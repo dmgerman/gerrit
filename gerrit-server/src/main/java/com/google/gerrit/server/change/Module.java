@@ -1241,6 +1241,17 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|factory
+argument_list|(
+name|ChangeEdits
+operator|.
+name|DeleteEdit
+operator|.
+name|Factory
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
