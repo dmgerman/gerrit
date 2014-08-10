@@ -1173,6 +1173,49 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Rebase change edit on latest patch set. */
+DECL|method|rebaseEdit (int id, AsyncCallback<JavaScriptObject> cb)
+specifier|public
+specifier|static
+name|void
+name|rebaseEdit
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|JavaScriptObject
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|JavaScriptObject
+name|in
+init|=
+name|JavaScriptObject
+operator|.
+name|createObject
+argument_list|()
+decl_stmt|;
+name|change
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"rebase_edit"
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Rebase a revision onto the branch tip. */
 DECL|method|rebase (int id, String commit, AsyncCallback<ChangeInfo> cb)
 specifier|public

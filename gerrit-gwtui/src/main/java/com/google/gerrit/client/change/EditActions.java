@@ -234,6 +234,33 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|rebaseEdit (Change.Id id)
+specifier|static
+name|void
+name|rebaseEdit
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|id
+parameter_list|)
+block|{
+name|ChangeApi
+operator|.
+name|rebaseEdit
+argument_list|(
+name|id
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|cs
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|cs ( final Change.Id id)
 specifier|public
 specifier|static
