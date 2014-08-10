@@ -110,6 +110,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RevId
 import|;
 end_import
@@ -156,6 +172,20 @@ name|Ref
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|revwalk
+operator|.
+name|RevCommit
+import|;
+end_import
+
 begin_comment
 comment|/**  * A single user's edit for a change.  *<p>  * There is max. one edit per user per change. Edits are stored on refs:  * refs/users/UU/UUUU/edit-CCCC where UU/UUUU is sharded representation  * of user account and CCCC is change number.  */
 end_comment
@@ -184,7 +214,19 @@ specifier|final
 name|Ref
 name|ref
 decl_stmt|;
-DECL|method|ChangeEdit (IdentifiedUser user, Change change, Ref ref)
+DECL|field|editCommit
+specifier|private
+specifier|final
+name|RevCommit
+name|editCommit
+decl_stmt|;
+DECL|field|basePatchSet
+specifier|private
+specifier|final
+name|PatchSet
+name|basePatchSet
+decl_stmt|;
+DECL|method|ChangeEdit (IdentifiedUser user, Change change, Ref ref, RevCommit editCommit, PatchSet basePatchSet)
 specifier|public
 name|ChangeEdit
 parameter_list|(
@@ -196,6 +238,12 @@ name|change
 parameter_list|,
 name|Ref
 name|ref
+parameter_list|,
+name|RevCommit
+name|editCommit
+parameter_list|,
+name|PatchSet
+name|basePatchSet
 parameter_list|)
 block|{
 name|checkNotNull
@@ -213,6 +261,16 @@ argument_list|(
 name|ref
 argument_list|)
 expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|editCommit
+argument_list|)
+expr_stmt|;
+name|checkNotNull
+argument_list|(
+name|basePatchSet
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|user
@@ -230,6 +288,18 @@ operator|.
 name|ref
 operator|=
 name|ref
+expr_stmt|;
+name|this
+operator|.
+name|editCommit
+operator|=
+name|editCommit
+expr_stmt|;
+name|this
+operator|.
+name|basePatchSet
+operator|=
+name|basePatchSet
 expr_stmt|;
 block|}
 DECL|method|getChange ()
@@ -305,6 +375,26 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|getEditCommit ()
+specifier|public
+name|RevCommit
+name|getEditCommit
+parameter_list|()
+block|{
+return|return
+name|editCommit
+return|;
+block|}
+DECL|method|getBasePatchSet ()
+specifier|public
+name|PatchSet
+name|getBasePatchSet
+parameter_list|()
+block|{
+return|return
+name|basePatchSet
 return|;
 block|}
 block|}

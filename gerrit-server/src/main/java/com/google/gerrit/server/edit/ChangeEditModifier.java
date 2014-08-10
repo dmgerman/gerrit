@@ -614,15 +614,9 @@ name|CurrentUser
 argument_list|>
 name|currentUser
 decl_stmt|;
-DECL|field|editUtil
-specifier|private
-specifier|final
-name|ChangeEditUtil
-name|editUtil
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditModifier (@erritPersonIdent PersonIdent gerritIdent, GitRepositoryManager gitManager, Provider<ReviewDb> dbProvider, Provider<CurrentUser> currentUser, ChangeEditUtil editUtil)
+DECL|method|ChangeEditModifier (@erritPersonIdent PersonIdent gerritIdent, GitRepositoryManager gitManager, Provider<ReviewDb> dbProvider, Provider<CurrentUser> currentUser)
 name|ChangeEditModifier
 parameter_list|(
 annotation|@
@@ -644,9 +638,6 @@ argument_list|<
 name|CurrentUser
 argument_list|>
 name|currentUser
-parameter_list|,
-name|ChangeEditUtil
-name|editUtil
 parameter_list|)
 block|{
 name|this
@@ -660,12 +651,6 @@ operator|.
 name|currentUser
 operator|=
 name|currentUser
-expr_stmt|;
-name|this
-operator|.
-name|editUtil
-operator|=
-name|editUtil
 expr_stmt|;
 name|this
 operator|.
@@ -1132,14 +1117,10 @@ decl_stmt|;
 name|PatchSet
 name|basePs
 init|=
-name|editUtil
+name|edit
 operator|.
 name|getBasePatchSet
-argument_list|(
-name|edit
-argument_list|,
-name|prevEdit
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|RevCommit
 name|base
