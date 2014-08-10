@@ -125,6 +125,21 @@ name|String
 name|projectStateHelp
 parameter_list|()
 function_decl|;
+DECL|method|dialogCreateChangeTitle ()
+name|String
+name|dialogCreateChangeTitle
+parameter_list|()
+function_decl|;
+DECL|method|dialogCreateChangeHeading ()
+name|String
+name|dialogCreateChangeHeading
+parameter_list|()
+function_decl|;
+DECL|method|newChangeBranchSuggestion ()
+name|String
+name|newChangeBranchSuggestion
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

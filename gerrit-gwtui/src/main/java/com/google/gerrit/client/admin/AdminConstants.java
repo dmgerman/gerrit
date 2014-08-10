@@ -630,6 +630,26 @@ name|String
 name|pagedListNext
 parameter_list|()
 function_decl|;
+DECL|method|buttonCreate ()
+name|String
+name|buttonCreate
+parameter_list|()
+function_decl|;
+DECL|method|buttonCreateDescription ()
+name|String
+name|buttonCreateDescription
+parameter_list|()
+function_decl|;
+DECL|method|buttonCreateChange ()
+name|String
+name|buttonCreateChange
+parameter_list|()
+function_decl|;
+DECL|method|buttonCreateChangeDescription ()
+name|String
+name|buttonCreateChangeDescription
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
