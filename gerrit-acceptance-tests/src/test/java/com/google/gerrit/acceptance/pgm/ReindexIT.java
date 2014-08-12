@@ -86,9 +86,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
+name|launcher
 operator|.
-name|TempFileUtil
+name|GerritLauncher
 import|;
 end_import
 
@@ -100,9 +100,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|launcher
+name|testutil
 operator|.
-name|GerritLauncher
+name|TempFileUtil
 import|;
 end_import
 
