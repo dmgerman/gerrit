@@ -5204,6 +5204,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|emptyExceptSubject ()
 specifier|public
 name|void
