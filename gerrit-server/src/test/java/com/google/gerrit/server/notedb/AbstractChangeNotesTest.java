@@ -880,6 +880,11 @@ specifier|protected
 name|InMemoryRepository
 name|repo
 decl_stmt|;
+DECL|field|repoManager
+specifier|protected
+name|InMemoryRepositoryManager
+name|repoManager
+decl_stmt|;
 DECL|field|serverIdent
 specifier|protected
 name|PersonIdent
@@ -901,11 +906,6 @@ DECL|field|injector
 specifier|private
 name|Injector
 name|injector
-decl_stmt|;
-DECL|field|repoManager
-specifier|private
-name|InMemoryRepositoryManager
-name|repoManager
 decl_stmt|;
 DECL|field|systemTimeZone
 specifier|private
