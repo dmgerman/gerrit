@@ -97,6 +97,16 @@ name|ActionInfo
 argument_list|>
 name|actions
 decl_stmt|;
+DECL|field|fetch
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|FetchInfo
+argument_list|>
+name|fetch
+decl_stmt|;
 DECL|field|files
 specifier|public
 name|Map

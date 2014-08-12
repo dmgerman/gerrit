@@ -1588,6 +1588,8 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|// TODO(davido): Turn the boolean options to ChangeEditOption enum,
+comment|// like it's already the case for ListChangesOption/ListGroupsOption
 DECL|class|Detail
 specifier|static
 class|class
@@ -1651,6 +1653,21 @@ argument_list|)
 DECL|field|list
 name|boolean
 name|list
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--download-commands"
+argument_list|,
+name|metaVar
+operator|=
+literal|"download-commands"
+argument_list|)
+DECL|field|downloadCommands
+name|boolean
+name|downloadCommands
 decl_stmt|;
 annotation|@
 name|Inject
@@ -1762,6 +1779,8 @@ name|edit
 operator|.
 name|get
 argument_list|()
+argument_list|,
+name|downloadCommands
 argument_list|)
 decl_stmt|;
 if|if
