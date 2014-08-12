@@ -1049,6 +1049,7 @@ name|n
 expr_stmt|;
 block|}
 DECL|method|setStart (int n)
+specifier|public
 name|void
 name|setStart
 parameter_list|(
