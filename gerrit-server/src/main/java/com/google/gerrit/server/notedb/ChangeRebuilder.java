@@ -525,12 +525,6 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 decl_stmt|;
-DECL|field|repoManager
-specifier|private
-specifier|final
-name|GitRepositoryManager
-name|repoManager
-decl_stmt|;
 DECL|field|controlFactory
 specifier|private
 specifier|final
@@ -601,12 +595,6 @@ operator|.
 name|dbProvider
 operator|=
 name|dbProvider
-expr_stmt|;
-name|this
-operator|.
-name|repoManager
-operator|=
-name|repoManager
 expr_stmt|;
 name|this
 operator|.
