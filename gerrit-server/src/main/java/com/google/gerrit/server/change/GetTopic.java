@@ -112,6 +112,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GetTopic
+specifier|public
 class|class
 name|GetTopic
 implements|implements

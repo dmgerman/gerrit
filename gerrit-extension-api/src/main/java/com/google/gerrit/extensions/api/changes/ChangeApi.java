@@ -231,6 +231,23 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|topic ()
+name|String
+name|topic
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|topic (String topic)
+name|void
+name|topic
+parameter_list|(
+name|String
+name|topic
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|addReviewer (AddReviewerInput in)
 name|void
 name|addReviewer
@@ -451,6 +468,41 @@ name|revert
 parameter_list|(
 name|RevertInput
 name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|topic ()
+specifier|public
+name|String
+name|topic
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|topic (String topic)
+specifier|public
+name|void
+name|topic
+parameter_list|(
+name|String
+name|topic
 parameter_list|)
 throws|throws
 name|RestApiException

@@ -440,6 +440,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|PutTopic
+specifier|public
 class|class
 name|PutTopic
 implements|implements
@@ -491,6 +492,7 @@ name|ChangeMessagesUtil
 name|cmUtil
 decl_stmt|;
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -498,6 +500,7 @@ block|{
 annotation|@
 name|DefaultInput
 DECL|field|topic
+specifier|public
 name|String
 name|topic
 decl_stmt|;
