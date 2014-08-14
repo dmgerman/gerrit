@@ -1606,7 +1606,7 @@ if|if
 condition|(
 name|migration
 operator|.
-name|readComments
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -1721,7 +1721,7 @@ if|if
 condition|(
 name|migration
 operator|.
-name|readComments
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -1830,7 +1830,7 @@ if|if
 condition|(
 name|migration
 operator|.
-name|readComments
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -2452,7 +2452,7 @@ if|if
 condition|(
 name|migration
 operator|.
-name|write
+name|writeChanges
 argument_list|()
 condition|)
 block|{

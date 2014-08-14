@@ -871,7 +871,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -933,7 +933,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -1961,7 +1961,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -2058,7 +2058,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -2122,7 +2122,7 @@ condition|(
 operator|!
 name|migration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{

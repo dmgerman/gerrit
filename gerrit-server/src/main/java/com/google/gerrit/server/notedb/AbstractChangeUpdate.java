@@ -619,7 +619,7 @@ if|if
 condition|(
 name|migration
 operator|.
-name|write
+name|writeChanges
 argument_list|()
 operator|&&
 name|getRevision
@@ -738,7 +738,7 @@ if|if
 condition|(
 name|migration
 operator|.
-name|write
+name|writeChanges
 argument_list|()
 condition|)
 block|{

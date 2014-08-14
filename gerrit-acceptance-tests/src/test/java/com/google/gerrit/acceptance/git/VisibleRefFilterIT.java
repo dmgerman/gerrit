@@ -529,7 +529,7 @@ name|setBoolean
 argument_list|(
 literal|"notedb"
 argument_list|,
-literal|null
+literal|"changes"
 argument_list|,
 literal|"write"
 argument_list|,
@@ -1210,7 +1210,7 @@ if|if
 condition|(
 name|notesMigration
 operator|.
-name|write
+name|writeChanges
 argument_list|()
 operator|||
 operator|!

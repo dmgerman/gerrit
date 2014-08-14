@@ -877,7 +877,7 @@ name|first
 operator|.
 name|notesMigration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{
@@ -1164,7 +1164,7 @@ name|cd
 operator|.
 name|notesMigration
 operator|.
-name|readPatchSetApprovals
+name|readChanges
 argument_list|()
 condition|)
 block|{
