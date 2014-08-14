@@ -226,6 +226,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -920,6 +934,21 @@ name|anonymousCowardName
 argument_list|)
 return|;
 block|}
+comment|/** Writes commit to a BatchMetaDataUpdate without committing the batch. */
+DECL|method|writeCommit (BatchMetaDataUpdate batch)
+specifier|abstract
+specifier|public
+name|void
+name|writeCommit
+parameter_list|(
+name|BatchMetaDataUpdate
+name|batch
+parameter_list|)
+throws|throws
+name|OrmException
+throws|,
+name|IOException
+function_decl|;
 comment|/**    * @return the NameKey for the project where the update will be stored,    *    which is not necessarily the same as the change's project.    */
 DECL|method|getProjectName ()
 specifier|abstract
