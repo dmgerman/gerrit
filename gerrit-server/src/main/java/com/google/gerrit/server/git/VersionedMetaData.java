@@ -1150,15 +1150,33 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Reuse tree from parent commit unless there are contents in newTree or
+comment|// there is no tree for a parent commit.
 name|ObjectId
 name|res
 init|=
+name|newTree
+operator|.
+name|getEntryCount
+argument_list|()
+operator|!=
+literal|0
+operator|||
+name|srcTree
+operator|==
+literal|null
+condition|?
 name|newTree
 operator|.
 name|writeTree
 argument_list|(
 name|inserter
 argument_list|)
+else|:
+name|srcTree
+operator|.
+name|copy
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1188,6 +1206,13 @@ block|{
 comment|// If there are no changes to the content, don't create the commit.
 return|return;
 block|}
+comment|// If changes are made to the DirCache and those changes are written as
+comment|// a commit and then the tree ID is set for the CommitBuilder, then
+comment|// those previous DirCache changes will be ignored and the commit's
+comment|// tree will be replaced with the ID in the CommitBuilder. The same is
+comment|// true if you explicitly set tree ID in a commit and then make changes
+comment|// to the DirCache; that tree ID will be ignored and replaced by that of
+comment|// the tree for the updated DirCache.
 if|if
 condition|(
 name|commit

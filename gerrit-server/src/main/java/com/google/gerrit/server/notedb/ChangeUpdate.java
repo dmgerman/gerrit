@@ -2482,6 +2482,8 @@ name|batch
 operator|.
 name|write
 argument_list|(
+name|this
+argument_list|,
 name|builder
 argument_list|)
 expr_stmt|;
