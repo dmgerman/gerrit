@@ -151,9 +151,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|GerritSDMLauncher
+DECL|class|GerritGwtDebugLauncher
 class|class
-name|GerritSDMLauncher
+name|GerritGwtDebugLauncher
 block|{
 DECL|field|log
 specifier|private
@@ -166,7 +166,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|GerritSDMLauncher
+name|GerritGwtDebugLauncher
 operator|.
 name|class
 argument_list|)
@@ -184,11 +184,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|GerritSDMLauncher
+name|GerritGwtDebugLauncher
 name|launcher
 init|=
 operator|new
-name|GerritSDMLauncher
+name|GerritGwtDebugLauncher
 argument_list|()
 decl_stmt|;
 name|launcher
