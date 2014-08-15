@@ -138,6 +138,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|RefNames
 import|;
 end_import
@@ -167,6 +183,22 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|Realm
 import|;
 end_import
 
@@ -674,9 +706,15 @@ name|CommitValidationListener
 argument_list|>
 name|commitValidationListeners
 decl_stmt|;
+DECL|field|realm
+specifier|private
+specifier|final
+name|Realm
+name|realm
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommitValidators (@erritPersonIdent final PersonIdent gerritIdent, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritServerConfig final Config config, final DynamicSet<CommitValidationListener> commitValidationListeners, @Assisted final SshInfo sshInfo, @Assisted final Repository repo, @Assisted final RefControl refControl)
+DECL|method|CommitValidators (@erritPersonIdent final PersonIdent gerritIdent, @CanonicalWebUrl @Nullable final String canonicalWebUrl, @GerritServerConfig final Config config, final DynamicSet<CommitValidationListener> commitValidationListeners, @Assisted final SshInfo sshInfo, @Assisted final Repository repo, @Assisted final RefControl refControl, Realm realm)
 name|CommitValidators
 parameter_list|(
 annotation|@
@@ -723,6 +761,9 @@ name|Assisted
 specifier|final
 name|RefControl
 name|refControl
+parameter_list|,
+name|Realm
+name|realm
 parameter_list|)
 block|{
 name|this
@@ -775,6 +816,12 @@ operator|.
 name|commitValidationListeners
 operator|=
 name|commitValidationListeners
+expr_stmt|;
+name|this
+operator|.
+name|realm
+operator|=
+name|realm
 expr_stmt|;
 block|}
 DECL|method|validateForReceiveCommits ( CommitReceivedEvent receiveEvent, NoteMap rejectCommits)
@@ -839,6 +886,8 @@ argument_list|(
 name|refControl
 argument_list|,
 name|canonicalWebUrl
+argument_list|,
+name|realm
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -852,6 +901,8 @@ argument_list|(
 name|refControl
 argument_list|,
 name|canonicalWebUrl
+argument_list|,
+name|realm
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1081,6 +1132,8 @@ argument_list|(
 name|refControl
 argument_list|,
 name|canonicalWebUrl
+argument_list|,
+name|realm
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2775,7 +2828,13 @@ specifier|final
 name|String
 name|canonicalWebUrl
 decl_stmt|;
-DECL|method|AuthorUploaderValidator (RefControl refControl, String canonicalWebUrl)
+DECL|field|realm
+specifier|private
+specifier|final
+name|Realm
+name|realm
+decl_stmt|;
+DECL|method|AuthorUploaderValidator (RefControl refControl, String canonicalWebUrl, Realm realm)
 specifier|public
 name|AuthorUploaderValidator
 parameter_list|(
@@ -2784,6 +2843,9 @@ name|refControl
 parameter_list|,
 name|String
 name|canonicalWebUrl
+parameter_list|,
+name|Realm
+name|realm
 parameter_list|)
 block|{
 name|this
@@ -2797,6 +2859,12 @@ operator|.
 name|canonicalWebUrl
 operator|=
 name|canonicalWebUrl
+expr_stmt|;
+name|this
+operator|.
+name|realm
+operator|=
+name|realm
 expr_stmt|;
 block|}
 annotation|@
@@ -2888,6 +2956,8 @@ argument_list|,
 name|currentUser
 argument_list|,
 name|canonicalWebUrl
+argument_list|,
+name|realm
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2930,7 +3000,13 @@ specifier|final
 name|String
 name|canonicalWebUrl
 decl_stmt|;
-DECL|method|CommitterUploaderValidator (RefControl refControl, String canonicalWebUrl)
+DECL|field|realm
+specifier|private
+specifier|final
+name|Realm
+name|realm
+decl_stmt|;
+DECL|method|CommitterUploaderValidator (RefControl refControl, String canonicalWebUrl, Realm realm)
 specifier|public
 name|CommitterUploaderValidator
 parameter_list|(
@@ -2939,6 +3015,9 @@ name|refControl
 parameter_list|,
 name|String
 name|canonicalWebUrl
+parameter_list|,
+name|Realm
+name|realm
 parameter_list|)
 block|{
 name|this
@@ -2952,6 +3031,12 @@ operator|.
 name|canonicalWebUrl
 operator|=
 name|canonicalWebUrl
+expr_stmt|;
+name|this
+operator|.
+name|realm
+operator|=
+name|realm
 expr_stmt|;
 block|}
 annotation|@
@@ -3043,6 +3128,8 @@ argument_list|,
 name|currentUser
 argument_list|,
 name|canonicalWebUrl
+argument_list|,
+name|realm
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3312,7 +3399,7 @@ throw|;
 block|}
 block|}
 block|}
-DECL|method|getInvalidEmailError (RevCommit c, String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl)
+DECL|method|getInvalidEmailError (RevCommit c, String type, PersonIdent who, IdentifiedUser currentUser, String canonicalWebUrl, Realm realm)
 specifier|private
 specifier|static
 name|CommitValidationMessage
@@ -3332,6 +3419,9 @@ name|currentUser
 parameter_list|,
 name|String
 name|canonicalWebUrl
+parameter_list|,
+name|Realm
+name|realm
 parameter_list|)
 block|{
 name|StringBuilder
@@ -3433,13 +3523,41 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|currentUser
+operator|.
+name|getEmailAddresses
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"ERROR:  The following addresses are currently registered:\n"
+literal|"ERROR:  The following address is currently "
+operator|+
+literal|"registered for you:\n"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"ERROR:  The following addresses are currently "
+operator|+
+literal|"registered for you:\n"
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|String
@@ -3470,6 +3588,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|canonicalWebUrl
+operator|!=
+literal|null
+operator|&&
+name|canRegisterNewEmail
+argument_list|(
+name|realm
+argument_list|)
+condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3477,13 +3607,6 @@ argument_list|(
 literal|"ERROR:\n"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|canonicalWebUrl
-operator|!=
-literal|null
-condition|)
-block|{
 name|sb
 operator|.
 name|append
@@ -3538,6 +3661,29 @@ name|toString
 argument_list|()
 argument_list|,
 literal|false
+argument_list|)
+return|;
+block|}
+DECL|method|canRegisterNewEmail (Realm realm)
+specifier|private
+specifier|static
+name|boolean
+name|canRegisterNewEmail
+parameter_list|(
+name|Realm
+name|realm
+parameter_list|)
+block|{
+return|return
+name|realm
+operator|.
+name|allowsEdit
+argument_list|(
+name|Account
+operator|.
+name|FieldName
+operator|.
+name|REGISTER_NEW_EMAIL
 argument_list|)
 return|;
 block|}
