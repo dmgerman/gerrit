@@ -153,6 +153,7 @@ name|String
 name|id
 parameter_list|()
 function_decl|;
+comment|/**    * Look up the current revision for the change.    *<p>    *<strong>Note:</strong> This method eagerly reads the revision. Methods that    * mutate the revision do not necessarily re-read the revision. Therefore,    * calling a getter method on an instance after calling a mutation method on    * that same instance is not guaranteed to reflect the mutation. It is not    * recommended to store references to {@code RevisionApi} instances.    *    * @return API for accessing the revision.    * @throws RestApiException if an error occurred.    */
 DECL|method|current ()
 name|RevisionApi
 name|current
@@ -160,6 +161,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Look up a revision of a change by number.    *    * @see #current()    */
 DECL|method|revision (int id)
 name|RevisionApi
 name|revision
@@ -170,6 +172,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Look up a revision of a change by commit SHA-1.    *    * @see #current()    */
 DECL|method|revision (String id)
 name|RevisionApi
 name|revision
@@ -214,6 +217,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert ()
 name|ChangeApi
 name|revert
@@ -221,6 +225,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Create a new change that reverts this change.    *    * @see Changes#id(int)    */
 DECL|method|revert (RevertInput in)
 name|ChangeApi
 name|revert

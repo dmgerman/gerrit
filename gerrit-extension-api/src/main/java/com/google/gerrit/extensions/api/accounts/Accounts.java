@@ -106,6 +106,7 @@ specifier|public
 interface|interface
 name|Accounts
 block|{
+comment|/**    * Look up an account by ID.    *<p>    *<strong>Note:</strong> This method eagerly reads the account. Methods that    * mutate the account do not necessarily re-read the account. Therefore, calling    * a getter method on an instance after calling a mutation method on that same    * instance is not guaranteed to reflect the mutation. It is not recommended    * to store references to {@code AccountApi} instances.    *    * @param id any identifier supported by the REST API, including numeric ID,    *     email, or username.    * @return API for accessing the account.    * @throws RestApiException if an error occurred.    */
 DECL|method|id (String id)
 name|AccountApi
 name|id
@@ -116,6 +117,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Look up the account of the current in-scope user.    *    * @see #id(String)    */
 DECL|method|self ()
 name|AccountApi
 name|self
