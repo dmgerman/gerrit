@@ -166,6 +166,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -180,6 +190,9 @@ name|GwtModule
 argument_list|(
 literal|"com.google.gerrit.GerritGwtUI"
 argument_list|)
+annotation|@
+name|Ignore
+comment|// TODO(davido): Enable this again when gwt-test-utils lib is fixed.
 DECL|class|EditIteratorTest
 specifier|public
 class|class
