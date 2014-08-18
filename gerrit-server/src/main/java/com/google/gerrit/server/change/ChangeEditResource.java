@@ -188,6 +188,10 @@ name|TypeLiteral
 import|;
 end_import
 
+begin_comment
+comment|/**  * Represents change edit resource, that is actualy two kinds of resources:  *<ul>  *<li>the change edit itself</li>  *<li>a path within the edit</li>  *</ul>  * distinguished by whether path is null or not.  */
+end_comment
+
 begin_class
 DECL|class|ChangeEditResource
 specifier|public
@@ -232,7 +236,13 @@ specifier|final
 name|ChangeEdit
 name|edit
 decl_stmt|;
-DECL|method|ChangeEditResource (ChangeResource change, ChangeEdit edit)
+DECL|field|path
+specifier|private
+specifier|final
+name|String
+name|path
+decl_stmt|;
+DECL|method|ChangeEditResource (ChangeResource change, ChangeEdit edit, String path)
 specifier|public
 name|ChangeEditResource
 parameter_list|(
@@ -241,6 +251,9 @@ name|change
 parameter_list|,
 name|ChangeEdit
 name|edit
+parameter_list|,
+name|String
+name|path
 parameter_list|)
 block|{
 name|this
@@ -254,6 +267,12 @@ operator|.
 name|edit
 operator|=
 name|edit
+expr_stmt|;
+name|this
+operator|.
+name|path
+operator|=
+name|path
 expr_stmt|;
 block|}
 comment|// TODO(davido): Make this cacheable.
@@ -313,6 +332,16 @@ parameter_list|()
 block|{
 return|return
 name|edit
+return|;
+block|}
+DECL|method|getPath ()
+specifier|public
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
 return|;
 block|}
 DECL|method|getAccountId ()
