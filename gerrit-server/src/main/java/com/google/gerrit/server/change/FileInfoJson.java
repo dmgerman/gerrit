@@ -184,6 +184,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RevId
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|patch
@@ -358,12 +374,15 @@ argument_list|(
 name|change
 argument_list|,
 name|patchSet
+operator|.
+name|getRevision
+argument_list|()
 argument_list|,
 literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|toFileInfoMap (Change change, PatchSet patchSet, @Nullable PatchSet base)
+DECL|method|toFileInfoMap (Change change, RevId revision, @Nullable PatchSet base)
 name|Map
 argument_list|<
 name|String
@@ -375,8 +394,8 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|PatchSet
-name|patchSet
+name|RevId
+name|revision
 parameter_list|,
 annotation|@
 name|Nullable
@@ -417,10 +436,7 @@ name|ObjectId
 operator|.
 name|fromString
 argument_list|(
-name|patchSet
-operator|.
-name|getRevision
-argument_list|()
+name|revision
 operator|.
 name|get
 argument_list|()

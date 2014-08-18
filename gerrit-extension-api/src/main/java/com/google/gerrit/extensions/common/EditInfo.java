@@ -66,6 +66,16 @@ name|common
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 DECL|class|EditInfo
 specifier|public
@@ -76,6 +86,16 @@ DECL|field|commit
 specifier|public
 name|CommitInfo
 name|commit
+decl_stmt|;
+DECL|field|files
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|FileInfo
+argument_list|>
+name|files
 decl_stmt|;
 block|}
 end_class

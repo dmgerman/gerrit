@@ -1118,6 +1118,9 @@ name|resource
 operator|.
 name|getPatchSet
 argument_list|()
+operator|.
+name|getRevision
+argument_list|()
 argument_list|,
 name|basePatchSet
 argument_list|)

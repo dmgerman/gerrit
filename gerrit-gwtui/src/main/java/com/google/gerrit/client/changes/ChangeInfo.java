@@ -1357,6 +1357,27 @@ name|commit
 parameter_list|()
 comment|/*-{ return this.commit; }-*/
 function_decl|;
+DECL|method|has_files ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_files
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('files') }-*/
+function_decl|;
+DECL|method|files ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|FileInfo
+argument_list|>
+name|files
+parameter_list|()
+comment|/*-{ return this.files; }-*/
+function_decl|;
 DECL|method|EditInfo ()
 specifier|protected
 name|EditInfo
