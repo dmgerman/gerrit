@@ -757,9 +757,6 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
-operator|.
-name|load
-argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -929,6 +926,9 @@ name|checkArgument
 argument_list|(
 name|draftNotes
 operator|.
+name|load
+argument_list|()
+operator|.
 name|containsComment
 argument_list|(
 name|c
@@ -954,6 +954,8 @@ parameter_list|(
 name|PatchLineComment
 name|c
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|verifyComment
 argument_list|(
@@ -973,14 +975,17 @@ name|checkArgument
 argument_list|(
 name|draftNotes
 operator|.
+name|load
+argument_list|()
+operator|.
 name|containsComment
 argument_list|(
 name|c
 argument_list|)
 argument_list|,
-literal|"Cannot delete this comment"
+literal|"Cannot delete this comment because it didn't previously exist as a"
 operator|+
-literal|" because it didn't previously exist as a draft"
+literal|" draft"
 argument_list|)
 expr_stmt|;
 block|}
@@ -995,6 +1000,9 @@ block|{
 if|if
 condition|(
 name|draftNotes
+operator|.
+name|load
+argument_list|()
 operator|.
 name|containsComment
 argument_list|(
@@ -1021,10 +1029,15 @@ parameter_list|(
 name|PatchLineComment
 name|c
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 if|if
 condition|(
 name|draftNotes
+operator|.
+name|load
+argument_list|()
 operator|.
 name|containsComment
 argument_list|(
@@ -1155,6 +1168,9 @@ name|NoteMap
 name|noteMap
 init|=
 name|draftNotes
+operator|.
+name|load
+argument_list|()
 operator|.
 name|getNoteMap
 argument_list|()
