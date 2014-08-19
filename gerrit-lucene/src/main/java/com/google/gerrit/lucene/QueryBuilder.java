@@ -496,7 +496,7 @@ name|lucene
 operator|.
 name|util
 operator|.
-name|BytesRef
+name|BytesRefBuilder
 import|;
 end_import
 
@@ -1263,16 +1263,12 @@ name|int
 name|value
 parameter_list|)
 block|{
-name|BytesRef
-name|bytes
+name|BytesRefBuilder
+name|builder
 init|=
 operator|new
-name|BytesRef
-argument_list|(
-name|NumericUtils
-operator|.
-name|BUF_SIZE_INT
-argument_list|)
+name|BytesRefBuilder
+argument_list|()
 decl_stmt|;
 name|NumericUtils
 operator|.
@@ -1282,7 +1278,7 @@ name|value
 argument_list|,
 literal|0
 argument_list|,
-name|bytes
+name|builder
 argument_list|)
 expr_stmt|;
 return|return
@@ -1291,7 +1287,10 @@ name|Term
 argument_list|(
 name|name
 argument_list|,
-name|bytes
+name|builder
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}

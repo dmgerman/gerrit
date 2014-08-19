@@ -1131,6 +1131,27 @@ operator|.
 name|DELTA
 argument_list|)
 decl_stmt|;
+comment|// For upgrade to Lucene 4.10.0 index format only.
+DECL|field|V12
+specifier|static
+specifier|final
+name|Schema
+argument_list|<
+name|ChangeData
+argument_list|>
+name|V12
+init|=
+name|release
+argument_list|(
+name|V11
+operator|.
+name|getFields
+argument_list|()
+operator|.
+name|values
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|method|release (Collection<FieldDef<ChangeData, ?>> fields)
 specifier|private
 specifier|static
