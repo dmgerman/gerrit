@@ -125,8 +125,6 @@ operator|.
 name|client
 operator|.
 name|Branch
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -143,6 +141,8 @@ operator|.
 name|client
 operator|.
 name|Branch
+operator|.
+name|NameKey
 import|;
 end_import
 

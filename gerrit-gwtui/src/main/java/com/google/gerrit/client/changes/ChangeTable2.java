@@ -122,11 +122,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|account
 operator|.
-name|ChangeInfo
-operator|.
-name|LabelInfo
+name|AccountInfo
 import|;
 end_import
 
@@ -140,9 +138,11 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|changes
 operator|.
-name|AccountInfo
+name|ChangeInfo
+operator|.
+name|LabelInfo
 import|;
 end_import
 

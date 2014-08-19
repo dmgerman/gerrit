@@ -72,16 +72,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintWriter
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -225,6 +215,16 @@ operator|.
 name|rebind
 operator|.
 name|SourceWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
 import|;
 end_import
 

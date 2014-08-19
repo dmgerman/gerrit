@@ -212,7 +212,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|RefNames
+name|PatchSet
 import|;
 end_import
 
@@ -228,7 +228,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|RefNames
 import|;
 end_import
 

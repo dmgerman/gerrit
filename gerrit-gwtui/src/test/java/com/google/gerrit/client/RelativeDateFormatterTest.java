@@ -66,18 +66,6 @@ end_package
 
 begin_import
 import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
 name|com
 operator|.
 name|google
@@ -88,39 +76,7 @@ name|client
 operator|.
 name|RelativeDateFormatter
 operator|.
-name|YEAR_IN_MILLIS
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|RelativeDateFormatter
-operator|.
-name|SECOND_IN_MILLIS
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|RelativeDateFormatter
-operator|.
-name|MINUTE_IN_MILLIS
+name|DAY_IN_MILLIS
 import|;
 end_import
 
@@ -152,17 +108,51 @@ name|client
 operator|.
 name|RelativeDateFormatter
 operator|.
-name|DAY_IN_MILLIS
+name|MINUTE_IN_MILLIS
 import|;
 end_import
 
 begin_import
-import|import
-name|java
+import|import static
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|Date
+name|gerrit
+operator|.
+name|client
+operator|.
+name|RelativeDateFormatter
+operator|.
+name|SECOND_IN_MILLIS
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|RelativeDateFormatter
+operator|.
+name|YEAR_IN_MILLIS
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -187,6 +177,16 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Date
 import|;
 end_import
 

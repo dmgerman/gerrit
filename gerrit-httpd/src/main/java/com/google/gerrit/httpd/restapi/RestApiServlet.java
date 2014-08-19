@@ -174,20 +174,6 @@ name|http
 operator|.
 name|HttpServletResponse
 operator|.
-name|SC_NO_CONTENT
-import|;
-end_import
-
-begin_import
-import|import static
-name|javax
-operator|.
-name|servlet
-operator|.
-name|http
-operator|.
-name|HttpServletResponse
-operator|.
 name|SC_FORBIDDEN
 import|;
 end_import
@@ -245,6 +231,20 @@ operator|.
 name|HttpServletResponse
 operator|.
 name|SC_NOT_MODIFIED
+import|;
+end_import
+
+begin_import
+import|import static
+name|javax
+operator|.
+name|servlet
+operator|.
+name|http
+operator|.
+name|HttpServletResponse
+operator|.
+name|SC_NO_CONTENT
 import|;
 end_import
 

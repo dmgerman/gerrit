@@ -110,7 +110,9 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicSet
+name|DynamicMap
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -126,9 +128,7 @@ name|extensions
 operator|.
 name|registration
 operator|.
-name|DynamicMap
-operator|.
-name|Entry
+name|DynamicSet
 import|;
 end_import
 

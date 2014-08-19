@@ -124,7 +124,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchLineComment
+name|CommentRange
 import|;
 end_import
 
@@ -140,7 +140,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|CommentRange
+name|PatchLineComment
 import|;
 end_import
 

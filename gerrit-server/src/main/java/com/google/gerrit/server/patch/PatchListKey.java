@@ -192,7 +192,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
+name|AccountDiffPreference
+operator|.
+name|Whitespace
 import|;
 end_import
 
@@ -208,9 +210,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
+name|Project
 import|;
 end_import
 

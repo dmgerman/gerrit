@@ -92,7 +92,7 @@ name|gwtjsonrpc
 operator|.
 name|common
 operator|.
-name|AsyncCallback
+name|AllowCrossSiteRequest
 import|;
 end_import
 
@@ -106,7 +106,7 @@ name|gwtjsonrpc
 operator|.
 name|common
 operator|.
-name|AllowCrossSiteRequest
+name|AsyncCallback
 import|;
 end_import
 
@@ -148,7 +148,9 @@ name|gwtjsonrpc
 operator|.
 name|common
 operator|.
-name|VoidResult
+name|RpcImpl
+operator|.
+name|Version
 import|;
 end_import
 
@@ -162,9 +164,7 @@ name|gwtjsonrpc
 operator|.
 name|common
 operator|.
-name|RpcImpl
-operator|.
-name|Version
+name|VoidResult
 import|;
 end_import
 
