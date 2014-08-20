@@ -990,7 +990,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|pagedGroupListPrev
+name|pagedListPrev
 argument_list|()
 argument_list|,
 literal|true
@@ -1014,7 +1014,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|pagedGroupListNext
+name|pagedListNext
 argument_list|()
 argument_list|,
 literal|true

@@ -1183,7 +1183,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|pagedProjectListPrev
+name|pagedListPrev
 argument_list|()
 argument_list|,
 literal|true
@@ -1207,7 +1207,7 @@ name|Util
 operator|.
 name|C
 operator|.
-name|pagedProjectListNext
+name|pagedListNext
 argument_list|()
 argument_list|,
 literal|true
