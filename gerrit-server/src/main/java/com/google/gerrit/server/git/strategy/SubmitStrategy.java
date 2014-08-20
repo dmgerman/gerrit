@@ -276,6 +276,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -443,11 +455,14 @@ operator|.
 name|GenericFactory
 name|identifiedUserFactory
 decl_stmt|;
-DECL|field|myIdent
+DECL|field|serverIdent
 specifier|protected
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
-name|myIdent
+argument_list|>
+name|serverIdent
 decl_stmt|;
 DECL|field|db
 specifier|protected
@@ -528,7 +543,7 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final PersonIdent myIdent, final ReviewDb db, final ChangeControl.GenericFactory changeControlFactory, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final ApprovalsUtil approvalsUtil, final MergeUtil mergeUtil, final ChangeIndexer indexer)
+DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final Provider<PersonIdent> serverIdent, final ReviewDb db, final ChangeControl.GenericFactory changeControlFactory, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final ApprovalsUtil approvalsUtil, final MergeUtil mergeUtil, final ChangeIndexer indexer)
 name|Arguments
 parameter_list|(
 specifier|final
@@ -538,8 +553,11 @@ name|GenericFactory
 name|identifiedUserFactory
 parameter_list|,
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
-name|myIdent
+argument_list|>
+name|serverIdent
 parameter_list|,
 specifier|final
 name|ReviewDb
@@ -601,9 +619,9 @@ name|identifiedUserFactory
 expr_stmt|;
 name|this
 operator|.
-name|myIdent
+name|serverIdent
 operator|=
-name|myIdent
+name|serverIdent
 expr_stmt|;
 name|this
 operator|.

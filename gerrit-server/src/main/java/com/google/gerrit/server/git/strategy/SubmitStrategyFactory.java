@@ -336,6 +336,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -485,7 +497,10 @@ decl_stmt|;
 DECL|field|myIdent
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|myIdent
 decl_stmt|;
 DECL|field|changeControlFactory
@@ -542,7 +557,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent final PersonIdent myIdent, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent Provider<PersonIdent> myIdent, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -553,8 +568,10 @@ name|identifiedUserFactory
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
-specifier|final
+name|Provider
+argument_list|<
 name|PersonIdent
+argument_list|>
 name|myIdent
 parameter_list|,
 specifier|final
@@ -814,8 +831,6 @@ argument_list|,
 name|patchSetInfoFactory
 argument_list|,
 name|rebaseChange
-argument_list|,
-name|myIdent
 argument_list|)
 return|;
 default|default:
