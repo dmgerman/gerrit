@@ -615,24 +615,14 @@ argument_list|>
 name|sectionNames
 parameter_list|()
 function_decl|;
-DECL|method|pagedProjectListPrev ()
+DECL|method|pagedListPrev ()
 name|String
-name|pagedProjectListPrev
+name|pagedListPrev
 parameter_list|()
 function_decl|;
-DECL|method|pagedProjectListNext ()
+DECL|method|pagedListNext ()
 name|String
-name|pagedProjectListNext
-parameter_list|()
-function_decl|;
-DECL|method|pagedGroupListPrev ()
-name|String
-name|pagedGroupListPrev
-parameter_list|()
-function_decl|;
-DECL|method|pagedGroupListNext ()
-name|String
-name|pagedGroupListNext
+name|pagedListNext
 parameter_list|()
 function_decl|;
 block|}
