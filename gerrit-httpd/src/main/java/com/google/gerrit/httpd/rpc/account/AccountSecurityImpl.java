@@ -170,6 +170,22 @@ name|common
 operator|.
 name|errors
 operator|.
+name|InvalidUserNameException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|errors
+operator|.
 name|NoSuchEntityException
 import|;
 end_import
@@ -931,6 +947,33 @@ name|USER_NAME
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|newName
+operator|==
+literal|null
+operator|||
+operator|!
+name|newName
+operator|.
+name|matches
+argument_list|(
+name|Account
+operator|.
+name|USER_NAME_PATTERN
+argument_list|)
+condition|)
+block|{
+name|callback
+operator|.
+name|onFailure
+argument_list|(
+operator|new
+name|InvalidUserNameException
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|Handler
 operator|.
 name|wrap
@@ -958,9 +1001,7 @@ argument_list|(
 operator|new
 name|PermissionDeniedException
 argument_list|(
-literal|"Not allowed to change"
-operator|+
-literal|" username"
+literal|"Not allowed to change username"
 argument_list|)
 argument_list|)
 expr_stmt|;
