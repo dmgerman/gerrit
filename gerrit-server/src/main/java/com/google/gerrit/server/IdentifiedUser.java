@@ -372,6 +372,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|DisableReverseDnsLookup
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|group
 operator|.
 name|SystemGroupBackend
@@ -688,9 +704,15 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
+DECL|field|disableReverseDnsLookup
+specifier|private
+specifier|final
+name|Boolean
+name|disableReverseDnsLookup
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GenericFactory ( @ullable CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, AccountCache accountCache, GroupBackend groupBackend)
+DECL|method|GenericFactory ( @ullable CapabilityControl.Factory capabilityControlFactory, AuthConfig authConfig, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl Provider<String> canonicalUrl, @DisableReverseDnsLookup Boolean disableReverseDnsLookup, AccountCache accountCache, GroupBackend groupBackend)
 specifier|public
 name|GenericFactory
 parameter_list|(
@@ -716,6 +738,11 @@ argument_list|<
 name|String
 argument_list|>
 name|canonicalUrl
+parameter_list|,
+annotation|@
+name|DisableReverseDnsLookup
+name|Boolean
+name|disableReverseDnsLookup
 parameter_list|,
 name|AccountCache
 name|accountCache
@@ -759,6 +786,12 @@ operator|.
 name|groupBackend
 operator|=
 name|groupBackend
+expr_stmt|;
+name|this
+operator|.
+name|disableReverseDnsLookup
+operator|=
+name|disableReverseDnsLookup
 expr_stmt|;
 block|}
 DECL|method|create (final Account.Id id)
@@ -818,6 +851,8 @@ name|accountCache
 argument_list|,
 name|groupBackend
 argument_list|,
+name|disableReverseDnsLookup
+argument_list|,
 literal|null
 argument_list|,
 name|db
@@ -857,6 +892,8 @@ argument_list|,
 name|accountCache
 argument_list|,
 name|groupBackend
+argument_list|,
+name|disableReverseDnsLookup
 argument_list|,
 name|Providers
 operator|.
@@ -907,6 +944,8 @@ argument_list|,
 name|accountCache
 argument_list|,
 name|groupBackend
+argument_list|,
+name|disableReverseDnsLookup
 argument_list|,
 name|Providers
 operator|.
@@ -974,6 +1013,12 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 decl_stmt|;
+DECL|field|disableReverseDnsLookup
+specifier|private
+specifier|final
+name|Boolean
+name|disableReverseDnsLookup
+decl_stmt|;
 DECL|field|remotePeerProvider
 specifier|private
 specifier|final
@@ -994,7 +1039,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, final @DisableReverseDnsLookup Boolean disableReverseDnsLookup, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
 name|CapabilityControl
@@ -1028,6 +1073,12 @@ parameter_list|,
 specifier|final
 name|GroupBackend
 name|groupBackend
+parameter_list|,
+specifier|final
+annotation|@
+name|DisableReverseDnsLookup
+name|Boolean
+name|disableReverseDnsLookup
 parameter_list|,
 specifier|final
 annotation|@
@@ -1084,6 +1135,12 @@ name|groupBackend
 expr_stmt|;
 name|this
 operator|.
+name|disableReverseDnsLookup
+operator|=
+name|disableReverseDnsLookup
+expr_stmt|;
+name|this
+operator|.
 name|remotePeerProvider
 operator|=
 name|remotePeerProvider
@@ -1121,6 +1178,8 @@ argument_list|,
 name|accountCache
 argument_list|,
 name|groupBackend
+argument_list|,
+name|disableReverseDnsLookup
 argument_list|,
 name|remotePeerProvider
 argument_list|,
@@ -1161,6 +1220,8 @@ argument_list|,
 name|accountCache
 argument_list|,
 name|groupBackend
+argument_list|,
+name|disableReverseDnsLookup
 argument_list|,
 name|remotePeerProvider
 argument_list|,
@@ -1246,6 +1307,12 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
+DECL|field|disableReverseDnsLookup
+specifier|private
+specifier|final
+name|Boolean
+name|disableReverseDnsLookup
+decl_stmt|;
 annotation|@
 name|Nullable
 DECL|field|remotePeerProvider
@@ -1325,7 +1392,7 @@ specifier|private
 name|CurrentUser
 name|realUser
 decl_stmt|;
-DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id, @Nullable CurrentUser realUser)
+DECL|method|IdentifiedUser ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, final String anonymousCowardName, final Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, final Boolean disableReverseDnsLookup, @Nullable final Provider<SocketAddress> remotePeerProvider, @Nullable final Provider<ReviewDb> dbProvider, final Account.Id id, @Nullable CurrentUser realUser)
 specifier|private
 name|IdentifiedUser
 parameter_list|(
@@ -1356,6 +1423,10 @@ parameter_list|,
 specifier|final
 name|GroupBackend
 name|groupBackend
+parameter_list|,
+specifier|final
+name|Boolean
+name|disableReverseDnsLookup
 parameter_list|,
 annotation|@
 name|Nullable
@@ -1421,6 +1492,12 @@ operator|.
 name|anonymousCowardName
 operator|=
 name|anonymousCowardName
+expr_stmt|;
+name|this
+operator|.
+name|disableReverseDnsLookup
+operator|=
+name|disableReverseDnsLookup
 expr_stmt|;
 name|this
 operator|.
@@ -2246,10 +2323,10 @@ name|in
 operator|!=
 literal|null
 condition|?
+name|getHost
+argument_list|(
 name|in
-operator|.
-name|getCanonicalHostName
-argument_list|()
+argument_list|)
 else|:
 name|sa
 operator|.
@@ -2539,6 +2616,42 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+DECL|method|getHost (final InetAddress in)
+specifier|private
+name|String
+name|getHost
+parameter_list|(
+specifier|final
+name|InetAddress
+name|in
+parameter_list|)
+block|{
+if|if
+condition|(
+name|Boolean
+operator|.
+name|FALSE
+operator|.
+name|equals
+argument_list|(
+name|disableReverseDnsLookup
+argument_list|)
+condition|)
+block|{
+return|return
+name|in
+operator|.
+name|getCanonicalHostName
+argument_list|()
+return|;
+block|}
+return|return
+name|in
+operator|.
+name|getHostAddress
+argument_list|()
 return|;
 block|}
 block|}
