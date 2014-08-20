@@ -789,7 +789,10 @@ name|mergeOneCommit
 argument_list|(
 name|args
 operator|.
-name|myIdent
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|args
 operator|.
@@ -971,7 +974,10 @@ argument_list|()
 argument_list|,
 name|args
 operator|.
-name|myIdent
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getTimeZone
 argument_list|()
@@ -1001,7 +1007,10 @@ name|cherryPickCommitterIdent
 operator|=
 name|args
 operator|.
-name|myIdent
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 specifier|final

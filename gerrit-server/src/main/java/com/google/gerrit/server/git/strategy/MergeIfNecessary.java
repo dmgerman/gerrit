@@ -238,7 +238,10 @@ name|mergeOneCommit
 argument_list|(
 name|args
 operator|.
-name|myIdent
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|args
 operator|.

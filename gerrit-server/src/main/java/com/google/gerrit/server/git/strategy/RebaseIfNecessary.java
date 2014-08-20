@@ -336,20 +336,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|PersonIdent
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -421,13 +407,7 @@ name|CodeReviewCommit
 argument_list|>
 name|newCommits
 decl_stmt|;
-DECL|field|committerIdent
-specifier|private
-specifier|final
-name|PersonIdent
-name|committerIdent
-decl_stmt|;
-DECL|method|RebaseIfNecessary (SubmitStrategy.Arguments args, PatchSetInfoFactory patchSetInfoFactory, RebaseChange rebaseChange, PersonIdent committerIdent)
+DECL|method|RebaseIfNecessary (SubmitStrategy.Arguments args, PatchSetInfoFactory patchSetInfoFactory, RebaseChange rebaseChange)
 name|RebaseIfNecessary
 parameter_list|(
 name|SubmitStrategy
@@ -440,9 +420,6 @@ name|patchSetInfoFactory
 parameter_list|,
 name|RebaseChange
 name|rebaseChange
-parameter_list|,
-name|PersonIdent
-name|committerIdent
 parameter_list|)
 block|{
 name|super
@@ -470,12 +447,6 @@ operator|new
 name|HashMap
 argument_list|<>
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|committerIdent
-operator|=
-name|committerIdent
 expr_stmt|;
 block|}
 annotation|@
@@ -689,7 +660,12 @@ name|args
 operator|.
 name|mergeUtil
 argument_list|,
-name|committerIdent
+name|args
+operator|.
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|false
 argument_list|,
@@ -982,7 +958,10 @@ name|mergeOneCommit
 argument_list|(
 name|args
 operator|.
-name|myIdent
+name|serverIdent
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|args
 operator|.
