@@ -378,6 +378,22 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--base-dir"
+argument_list|,
+name|usage
+operator|=
+literal|"base directory"
+argument_list|)
+DECL|field|basedir
+specifier|private
+name|File
+name|basedir
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
 literal|"--tmp"
 argument_list|,
 name|usage
@@ -569,6 +585,11 @@ argument_list|(
 name|SafeMode
 operator|.
 name|UNSAFE
+argument_list|)
+operator|.
+name|baseDir
+argument_list|(
+name|basedir
 argument_list|)
 expr_stmt|;
 comment|// XXX(fishywang): ideally we should just output to a string and add the
