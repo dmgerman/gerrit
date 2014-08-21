@@ -76,7 +76,37 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|ChangeHooks
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
 import|;
 end_import
 
@@ -697,7 +727,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Branch.NameKey destBranch, RevCommit mergeTip, RevWalk rw, Repository db, Project destProject, List<Change> submitted, Map<Change.Id, CodeReviewCommit> commits)
+DECL|method|create (Branch.NameKey destBranch, RevCommit mergeTip, RevWalk rw, Repository db, Project destProject, List<Change> submitted, Map<Change.Id, CodeReviewCommit> commits, Account account)
 name|SubmoduleOp
 name|create
 parameter_list|(
@@ -733,6 +763,9 @@ argument_list|,
 name|CodeReviewCommit
 argument_list|>
 name|commits
+parameter_list|,
+name|Account
+name|account
 parameter_list|)
 function_decl|;
 block|}
@@ -862,9 +895,21 @@ name|NameKey
 argument_list|>
 name|updatedSubscribers
 decl_stmt|;
+DECL|field|account
+specifier|private
+specifier|final
+name|Account
+name|account
+decl_stmt|;
+DECL|field|changeHooks
+specifier|private
+specifier|final
+name|ChangeHooks
+name|changeHooks
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated)
+DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Assisted Account account, ChangeHooks changeHooks)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -946,6 +991,14 @@ name|repoManager
 parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
+parameter_list|,
+annotation|@
+name|Assisted
+name|Account
+name|account
+parameter_list|,
+name|ChangeHooks
+name|changeHooks
 parameter_list|)
 block|{
 name|this
@@ -1019,6 +1072,18 @@ operator|.
 name|gitRefUpdated
 operator|=
 name|gitRefUpdated
+expr_stmt|;
+name|this
+operator|.
+name|account
+operator|=
+name|account
+expr_stmt|;
+name|this
+operator|.
+name|changeHooks
+operator|=
+name|changeHooks
 expr_stmt|;
 name|updatedSubscribers
 operator|=
@@ -2366,6 +2431,17 @@ name|getParentKey
 argument_list|()
 argument_list|,
 name|rfu
+argument_list|)
+expr_stmt|;
+name|changeHooks
+operator|.
+name|doRefUpdatedHook
+argument_list|(
+name|subscriber
+argument_list|,
+name|rfu
+argument_list|,
+name|account
 argument_list|)
 expr_stmt|;
 comment|// TODO since this is performed "in the background" no mail will be
