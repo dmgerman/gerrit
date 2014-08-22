@@ -1247,6 +1247,24 @@ argument_list|)
 throw|;
 block|}
 block|}
+if|if
+condition|(
+name|deleteDraftPatchSet
+condition|)
+block|{
+if|if
+condition|(
+name|submitChange
+condition|)
+block|{
+throw|throw
+name|error
+argument_list|(
+literal|"delete and submit actions are mutually exclusive"
+argument_list|)
+throw|;
+block|}
+block|}
 name|boolean
 name|ok
 init|=
