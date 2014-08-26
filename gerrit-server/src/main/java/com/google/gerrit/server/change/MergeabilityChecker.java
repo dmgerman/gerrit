@@ -2354,11 +2354,24 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|error
+argument_list|(
 name|String
-name|msg
-init|=
-literal|"Failed to update mergeability flags for project "
-operator|+
+operator|.
+name|format
+argument_list|(
+literal|"cannot update mergeability flag of change %d in project %s after update of %s"
+argument_list|,
+name|change
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|change
 operator|.
 name|getDest
@@ -2366,9 +2379,7 @@ argument_list|()
 operator|.
 name|getParentKey
 argument_list|()
-operator|+
-literal|" on update of "
-operator|+
+argument_list|,
 name|change
 operator|.
 name|getDest
@@ -2376,12 +2387,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-decl_stmt|;
-name|log
-operator|.
-name|error
-argument_list|(
-name|msg
+argument_list|)
 argument_list|,
 name|e
 argument_list|)
