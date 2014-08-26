@@ -2261,6 +2261,18 @@ name|currentPatchSetId
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Cannot compute mergeability if current patch set is missing.
+return|return
+literal|false
+return|;
+block|}
 name|Mergeable
 name|m
 init|=
