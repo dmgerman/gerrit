@@ -172,9 +172,41 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|config
+operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|MergeUtil
 import|;
 end_import
 
@@ -354,6 +386,20 @@ name|jgit
 operator|.
 name|lib
 operator|.
+name|Config
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
 name|Constants
 import|;
 end_import
@@ -494,7 +540,7 @@ name|jgit
 operator|.
 name|merge
 operator|.
-name|MergeStrategy
+name|ResolveMerger
 import|;
 end_import
 
@@ -508,7 +554,7 @@ name|jgit
 operator|.
 name|merge
 operator|.
-name|ResolveMerger
+name|ThreeWayMergeStrategy
 import|;
 end_import
 
@@ -768,9 +814,15 @@ specifier|final
 name|PatchListCache
 name|patchListCache
 decl_stmt|;
+DECL|field|mergeStrategy
+specifier|private
+specifier|final
+name|ThreeWayMergeStrategy
+name|mergeStrategy
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchListLoader (GitRepositoryManager mgr, PatchListCache plc)
+DECL|method|PatchListLoader (GitRepositoryManager mgr, PatchListCache plc, @GerritServerConfig Config cfg)
 name|PatchListLoader
 parameter_list|(
 name|GitRepositoryManager
@@ -778,6 +830,11 @@ name|mgr
 parameter_list|,
 name|PatchListCache
 name|plc
+parameter_list|,
+annotation|@
+name|GerritServerConfig
+name|Config
+name|cfg
 parameter_list|)
 block|{
 name|repoManager
@@ -787,6 +844,15 @@ expr_stmt|;
 name|patchListCache
 operator|=
 name|plc
+expr_stmt|;
+name|mergeStrategy
+operator|=
+name|MergeUtil
+operator|.
+name|getMergeStrategy
+argument_list|(
+name|cfg
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -1792,7 +1858,6 @@ block|}
 block|}
 DECL|method|aFor (final PatchListKey key, final Repository repo, final RevWalk rw, final RevCommit b)
 specifier|private
-specifier|static
 name|RevObject
 name|aFor
 parameter_list|(
@@ -1895,6 +1960,8 @@ argument_list|,
 name|rw
 argument_list|,
 name|b
+argument_list|,
+name|mergeStrategy
 argument_list|)
 return|;
 default|default:
@@ -1904,7 +1971,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|automerge (Repository repo, RevWalk rw, RevCommit b)
+DECL|method|automerge (Repository repo, RevWalk rw, RevCommit b, ThreeWayMergeStrategy mergeStrategy)
 specifier|public
 specifier|static
 name|RevTree
@@ -1918,6 +1985,9 @@ name|rw
 parameter_list|,
 name|RevCommit
 name|b
+parameter_list|,
+name|ThreeWayMergeStrategy
+name|mergeStrategy
 parameter_list|)
 throws|throws
 name|IOException
@@ -1931,11 +2001,13 @@ name|rw
 argument_list|,
 name|b
 argument_list|,
+name|mergeStrategy
+argument_list|,
 literal|true
 argument_list|)
 return|;
 block|}
-DECL|method|automerge (Repository repo, RevWalk rw, RevCommit b, boolean save)
+DECL|method|automerge (Repository repo, RevWalk rw, RevCommit b, ThreeWayMergeStrategy mergeStrategy, boolean save)
 specifier|public
 specifier|static
 name|RevTree
@@ -1949,6 +2021,9 @@ name|rw
 parameter_list|,
 name|RevCommit
 name|b
+parameter_list|,
+name|ThreeWayMergeStrategy
+name|mergeStrategy
 parameter_list|,
 name|boolean
 name|save
@@ -2025,18 +2100,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-name|ObjectId
-name|treeId
-decl_stmt|;
 name|ResolveMerger
 name|m
 init|=
 operator|(
 name|ResolveMerger
 operator|)
-name|MergeStrategy
-operator|.
-name|RESOLVE
+name|mergeStrategy
 operator|.
 name|newMerger
 argument_list|(
@@ -2152,6 +2222,9 @@ return|return
 literal|null
 return|;
 block|}
+name|ObjectId
+name|treeId
+decl_stmt|;
 if|if
 condition|(
 name|couldMerge
@@ -2721,15 +2794,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|ins
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|save
@@ -2766,11 +2830,20 @@ block|}
 return|return
 name|rw
 operator|.
-name|parseTree
+name|lookupTree
 argument_list|(
 name|treeId
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+name|ins
+operator|.
+name|release
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|emptyTree (final Repository repo)
 specifier|private
