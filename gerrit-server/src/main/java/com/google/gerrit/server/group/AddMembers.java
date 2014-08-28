@@ -1250,12 +1250,25 @@ literal|null
 condition|)
 block|{
 comment|// account does not exist, try to create it
-return|return
+name|Account
+name|a
+init|=
 name|createAccountByLdap
 argument_list|(
 name|nameOrEmail
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|a
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|a
 return|;
+block|}
 block|}
 break|break;
 default|default:
