@@ -15217,6 +15217,11 @@ argument_list|,
 name|CodeReviewCommit
 argument_list|>
 argument_list|()
+argument_list|,
+name|currentUser
+operator|.
+name|getAccount
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|subOp
