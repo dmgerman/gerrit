@@ -3015,6 +3015,17 @@ name|endCharacter
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|e
+operator|.
+name|setLine
+argument_list|(
+name|c
+operator|.
+name|range
+operator|.
+name|endLine
+argument_list|)
+expr_stmt|;
 block|}
 name|ups
 operator|.
