@@ -923,7 +923,7 @@ name|changeHooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Assisted Account account, ChangeHooks changeHooks)
+DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable @Assisted Account account, ChangeHooks changeHooks)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
@@ -1006,6 +1006,8 @@ parameter_list|,
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|,
+annotation|@
+name|Nullable
 annotation|@
 name|Assisted
 name|Account
