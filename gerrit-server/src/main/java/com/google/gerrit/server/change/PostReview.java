@@ -2228,7 +2228,7 @@ name|message
 operator|=
 name|Strings
 operator|.
-name|emptyToNull
+name|nullToEmpty
 argument_list|(
 name|c
 operator|.
