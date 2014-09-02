@@ -1402,9 +1402,13 @@ argument_list|)
 expr_stmt|;
 name|config
 operator|.
-name|commit
+name|commitToNewRef
 argument_list|(
 name|md
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
 block|}
