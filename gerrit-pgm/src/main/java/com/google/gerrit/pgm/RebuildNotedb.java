@@ -1206,7 +1206,7 @@ argument_list|)
 argument_list|,
 name|MoreExecutors
 operator|.
-name|sameThreadExecutor
+name|directExecutor
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1725,7 +1725,7 @@ block|{
 return|return
 name|MoreExecutors
 operator|.
-name|sameThreadExecutor
+name|newDirectExecutorService
 argument_list|()
 return|;
 block|}
