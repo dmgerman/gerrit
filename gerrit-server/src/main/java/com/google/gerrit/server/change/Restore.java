@@ -912,6 +912,11 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|f
+operator|.
+name|checkedGet
+argument_list|()
+expr_stmt|;
 name|hooks
 operator|.
 name|doChangeRestoredHook
@@ -961,11 +966,6 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|f
-operator|.
-name|checkedGet
-argument_list|()
-expr_stmt|;
 return|return
 name|result
 return|;
