@@ -1309,6 +1309,13 @@ specifier|private
 name|InMemoryRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|migration
+annotation|@
+name|Inject
+specifier|private
+name|NotesMigration
+name|migration
+decl_stmt|;
 DECL|field|plcUtil
 annotation|@
 name|Inject
@@ -2773,6 +2780,8 @@ name|stubChangeControl
 argument_list|(
 name|repoManager
 argument_list|,
+name|migration
+argument_list|,
 name|c
 argument_list|,
 name|allUsers
@@ -2821,6 +2830,8 @@ argument_list|(
 name|injector
 argument_list|,
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|c
 argument_list|,

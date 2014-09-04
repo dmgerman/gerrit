@@ -306,6 +306,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -510,7 +526,7 @@ return|return
 name|c
 return|;
 block|}
-DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, Change c, final AllUsersNameProvider allUsers, final IdentifiedUser user)
+DECL|method|newUpdate (Injector injector, GitRepositoryManager repoManager, NotesMigration migration, Change c, final AllUsersNameProvider allUsers, final IdentifiedUser user)
 specifier|public
 specifier|static
 name|ChangeUpdate
@@ -521,6 +537,9 @@ name|injector
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|Change
 name|c
@@ -613,6 +632,8 @@ name|stubChangeControl
 argument_list|(
 name|repoManager
 argument_list|,
+name|migration
+argument_list|,
 name|c
 argument_list|,
 name|allUsers
@@ -635,7 +656,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|stubChangeControl ( GitRepositoryManager repoManager, Change c, AllUsersNameProvider allUsers, IdentifiedUser user)
+DECL|method|stubChangeControl ( GitRepositoryManager repoManager, NotesMigration migration, Change c, AllUsersNameProvider allUsers, IdentifiedUser user)
 specifier|public
 specifier|static
 name|ChangeControl
@@ -643,6 +664,9 @@ name|stubChangeControl
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|Change
 name|c
@@ -702,18 +726,16 @@ name|ChangeNotes
 argument_list|(
 name|repoManager
 argument_list|,
+name|migration
+argument_list|,
 name|allUsers
 argument_list|,
 name|c
 argument_list|)
-decl_stmt|;
-name|notes
-operator|=
-name|notes
 operator|.
 name|load
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|expect
 argument_list|(
 name|ctl

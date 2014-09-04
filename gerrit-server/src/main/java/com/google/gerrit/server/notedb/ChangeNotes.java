@@ -962,6 +962,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|migration
+specifier|private
+specifier|final
+name|NotesMigration
+name|migration
+decl_stmt|;
 DECL|field|allUsersProvider
 specifier|private
 specifier|final
@@ -972,12 +978,15 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, AllUsersNameProvider allUsersProvider)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersNameProvider allUsersProvider)
 specifier|public
 name|Factory
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AllUsersNameProvider
 name|allUsersProvider
@@ -988,6 +997,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -1010,6 +1025,8 @@ operator|new
 name|ChangeNotes
 argument_list|(
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|allUsersProvider
 argument_list|,
@@ -1119,12 +1136,15 @@ name|draftCommentNotes
 decl_stmt|;
 annotation|@
 name|VisibleForTesting
-DECL|method|ChangeNotes (GitRepositoryManager repoManager, AllUsersNameProvider allUsersProvider, Change change)
+DECL|method|ChangeNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersNameProvider allUsersProvider, Change change)
 specifier|public
 name|ChangeNotes
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AllUsersNameProvider
 name|allUsersProvider
@@ -1136,6 +1156,8 @@ block|{
 name|super
 argument_list|(
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|change
 operator|.
@@ -1397,6 +1419,8 @@ operator|new
 name|DraftCommentNotes
 argument_list|(
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|allUsers
 argument_list|,
@@ -1803,8 +1827,10 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|loadDefaults ()
-specifier|private
+specifier|protected
 name|void
 name|loadDefaults
 parameter_list|()
