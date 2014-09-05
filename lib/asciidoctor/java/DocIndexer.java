@@ -496,7 +496,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_48
+name|LUCENE_4_10_0
 decl_stmt|;
 DECL|field|SECTION_HEADER
 specifier|private
@@ -796,8 +796,6 @@ argument_list|,
 operator|new
 name|StandardAnalyzer
 argument_list|(
-name|LUCENE_VERSION
-argument_list|,
 name|CharArraySet
 operator|.
 name|EMPTY_SET
