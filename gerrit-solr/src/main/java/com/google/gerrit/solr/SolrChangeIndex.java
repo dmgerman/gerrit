@@ -610,20 +610,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|lucene
-operator|.
-name|util
-operator|.
-name|Version
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|solr
 operator|.
 name|client
@@ -1073,21 +1059,6 @@ literal|"index.url must be supplied"
 argument_list|)
 throw|;
 block|}
-comment|// Version is only used to determine the list of stop words used by the
-comment|// analyzer, so use the latest version rather than trying to match the Solr
-comment|// server version.
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
-name|Version
-name|v
-init|=
-name|Version
-operator|.
-name|LUCENE_CURRENT
-decl_stmt|;
 name|queryBuilder
 operator|=
 operator|new
@@ -1098,8 +1069,6 @@ argument_list|,
 operator|new
 name|StandardAnalyzer
 argument_list|(
-name|v
-argument_list|,
 name|CharArraySet
 operator|.
 name|EMPTY_SET
