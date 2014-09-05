@@ -972,9 +972,7 @@ name|getIndexWriter
 argument_list|()
 operator|.
 name|close
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
