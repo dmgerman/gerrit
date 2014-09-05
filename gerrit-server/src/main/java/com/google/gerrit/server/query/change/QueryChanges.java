@@ -612,7 +612,13 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--start"
+argument_list|,
+name|aliases
+operator|=
+block|{
 literal|"-S"
+block|}
 argument_list|,
 name|metaVar
 operator|=

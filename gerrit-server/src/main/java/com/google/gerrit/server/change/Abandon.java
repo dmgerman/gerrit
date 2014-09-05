@@ -1015,6 +1015,11 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+name|indexFuture
+operator|.
+name|checkedGet
+argument_list|()
+expr_stmt|;
 name|hooks
 operator|.
 name|doChangeAbandonedHook
@@ -1061,11 +1066,6 @@ argument_list|(
 name|change
 argument_list|)
 decl_stmt|;
-name|indexFuture
-operator|.
-name|checkedGet
-argument_list|()
-expr_stmt|;
 return|return
 name|result
 return|;
