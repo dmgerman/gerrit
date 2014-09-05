@@ -847,7 +847,10 @@ name|filterTagsSeperately
 condition|?
 name|filter
 argument_list|(
-name|refs
+name|db
+operator|.
+name|getAllRefs
+argument_list|()
 argument_list|)
 operator|.
 name|values

@@ -395,7 +395,7 @@ name|appendIfNotNull
 argument_list|(
 name|manifestString
 argument_list|,
-literal|"Gerrit-Module: "
+literal|"Gerrit-SshModule: "
 argument_list|,
 name|sshModuleClass
 argument_list|)
@@ -413,7 +413,7 @@ name|appendIfNotNull
 argument_list|(
 name|manifestString
 argument_list|,
-literal|"Gerrit-SshModule: "
+literal|"Gerrit-Module: "
 argument_list|,
 name|sysModuleClass
 argument_list|)
@@ -700,6 +700,18 @@ argument_list|(
 literal|"com.google.gerrit.sshd.CommandModule"
 argument_list|)
 decl_stmt|;
+name|sshModuleClass
+operator|=
+literal|null
+expr_stmt|;
+name|httpModuleClass
+operator|=
+literal|null
+expr_stmt|;
+name|sysModuleClass
+operator|=
+literal|null
+expr_stmt|;
 for|for
 control|(
 name|Class
@@ -711,6 +723,16 @@ range|:
 name|classes
 control|)
 block|{
+if|if
+condition|(
+name|clazz
+operator|.
+name|isLocalClass
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
 if|if
 condition|(
 name|sshModuleBaseClass
