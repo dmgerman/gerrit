@@ -1118,8 +1118,6 @@ name|DraftCommentNotes
 name|draftCommentNotes
 decl_stmt|;
 annotation|@
-name|Inject
-annotation|@
 name|VisibleForTesting
 DECL|method|ChangeNotes (GitRepositoryManager repoManager, AllUsersNameProvider allUsersProvider, Change change)
 specifier|public
