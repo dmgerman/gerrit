@@ -76,7 +76,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -695,7 +695,7 @@ specifier|final
 name|String
 name|pluginName
 init|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

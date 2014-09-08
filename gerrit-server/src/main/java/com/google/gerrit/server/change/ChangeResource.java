@@ -76,7 +76,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -511,7 +511,7 @@ operator|.
 name|getRevision
 argument_list|()
 decl_stmt|;
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

@@ -110,7 +110,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -1280,7 +1280,7 @@ name|String
 argument_list|>
 name|plugins
 init|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

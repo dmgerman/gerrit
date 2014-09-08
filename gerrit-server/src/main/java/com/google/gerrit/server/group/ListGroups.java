@@ -76,7 +76,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -1079,7 +1079,7 @@ name|output
 operator|.
 name|put
 argument_list|(
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

@@ -104,7 +104,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -735,7 +735,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -1221,7 +1221,7 @@ decl_stmt|;
 name|String
 name|name
 init|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

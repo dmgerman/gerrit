@@ -78,7 +78,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -183,7 +183,7 @@ argument_list|)
 decl_stmt|;
 name|name
 operator|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

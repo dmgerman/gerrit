@@ -76,7 +76,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -981,7 +981,7 @@ name|args
 operator|.
 name|contributorAgreements
 operator|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -998,7 +998,7 @@ name|args
 operator|.
 name|signedOffBy
 operator|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -1027,7 +1027,7 @@ name|InheritableBoolean
 operator|.
 name|FALSE
 else|:
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -1044,7 +1044,7 @@ name|args
 operator|.
 name|changeIdRequired
 operator|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

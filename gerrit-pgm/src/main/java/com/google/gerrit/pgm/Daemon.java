@@ -108,7 +108,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -2092,7 +2092,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -2400,7 +2400,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

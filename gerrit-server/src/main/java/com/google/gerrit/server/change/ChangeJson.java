@@ -360,7 +360,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -5341,7 +5341,7 @@ name|ai
 operator|.
 name|_id
 argument_list|,
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

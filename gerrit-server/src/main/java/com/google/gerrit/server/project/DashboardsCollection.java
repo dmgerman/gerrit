@@ -108,7 +108,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -1327,7 +1327,7 @@ name|put
 argument_list|(
 literal|"title"
 argument_list|,
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -1494,7 +1494,7 @@ specifier|final
 name|String
 name|defaultId
 init|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

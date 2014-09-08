@@ -78,7 +78,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 import|;

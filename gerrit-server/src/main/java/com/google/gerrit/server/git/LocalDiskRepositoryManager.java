@@ -92,7 +92,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -1035,7 +1035,7 @@ name|site
 operator|.
 name|resolve
 argument_list|(
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

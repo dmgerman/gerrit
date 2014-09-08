@@ -76,7 +76,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -597,7 +597,7 @@ name|format
 argument_list|(
 literal|"Changed parent to %s.\n"
 argument_list|,
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

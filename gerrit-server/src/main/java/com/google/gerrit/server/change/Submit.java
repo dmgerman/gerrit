@@ -96,7 +96,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -1248,7 +1248,7 @@ name|this
 operator|.
 name|label
 operator|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
@@ -1278,7 +1278,7 @@ operator|=
 operator|new
 name|ParameterizedString
 argument_list|(
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(

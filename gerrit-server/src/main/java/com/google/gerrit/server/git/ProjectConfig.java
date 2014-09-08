@@ -138,7 +138,7 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
+name|MoreObjects
 import|;
 end_import
 
@@ -4393,7 +4393,7 @@ block|}
 name|String
 name|functionName
 init|=
-name|Objects
+name|MoreObjects
 operator|.
 name|firstNonNull
 argument_list|(
