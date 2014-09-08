@@ -596,7 +596,7 @@ block|{
 return|return
 name|MoreExecutors
 operator|.
-name|sameThreadExecutor
+name|newDirectExecutorService
 argument_list|()
 return|;
 block|}
