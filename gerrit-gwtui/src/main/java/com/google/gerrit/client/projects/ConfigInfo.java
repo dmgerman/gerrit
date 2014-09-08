@@ -322,6 +322,15 @@ name|use_contributor_agreements
 parameter_list|()
 comment|/*-{ return this.use_contributor_agreements; }-*/
 function_decl|;
+DECL|method|create_new_change_for_all_not_in_target ()
+specifier|public
+specifier|final
+specifier|native
+name|InheritedBooleanInfo
+name|create_new_change_for_all_not_in_target
+parameter_list|()
+comment|/*-{ return this.create_new_change_for_all_not_in_target; }-*/
+function_decl|;
 DECL|method|use_signed_off_by ()
 specifier|public
 specifier|final

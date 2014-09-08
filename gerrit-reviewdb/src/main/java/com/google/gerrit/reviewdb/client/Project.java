@@ -399,6 +399,11 @@ specifier|protected
 name|String
 name|themeName
 decl_stmt|;
+DECL|field|createNewChangeForAllNotInTarget
+specifier|protected
+name|InheritableBoolean
+name|createNewChangeForAllNotInTarget
+decl_stmt|;
 DECL|method|Project ()
 specifier|protected
 name|Project
@@ -449,6 +454,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|useContentMerge
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|createNewChangeForAllNotInTarget
 operator|=
 name|InheritableBoolean
 operator|.
@@ -619,6 +630,32 @@ block|{
 name|requireChangeID
 operator|=
 name|cid
+expr_stmt|;
+block|}
+DECL|method|getCreateNewChangeForAllNotInTarget ()
+specifier|public
+name|InheritableBoolean
+name|getCreateNewChangeForAllNotInTarget
+parameter_list|()
+block|{
+return|return
+name|createNewChangeForAllNotInTarget
+return|;
+block|}
+DECL|method|setCreateNewChangeForAllNotInTarget ( InheritableBoolean useAllNotInTarget)
+specifier|public
+name|void
+name|setCreateNewChangeForAllNotInTarget
+parameter_list|(
+name|InheritableBoolean
+name|useAllNotInTarget
+parameter_list|)
+block|{
+name|this
+operator|.
+name|createNewChangeForAllNotInTarget
+operator|=
+name|useAllNotInTarget
 expr_stmt|;
 block|}
 DECL|method|setMaxObjectSizeLimit (final String limit)
@@ -824,6 +861,12 @@ operator|=
 name|update
 operator|.
 name|maxObjectSizeLimit
+expr_stmt|;
+name|createNewChangeForAllNotInTarget
+operator|=
+name|update
+operator|.
+name|createNewChangeForAllNotInTarget
 expr_stmt|;
 block|}
 comment|/**    * Returns the name key of the parent project.    *    * @return name key of the parent project, {@code null} if this project    *         is the wild project, {@code null} or the name key of the wild    *         project if this project is a direct child of the wild project    */

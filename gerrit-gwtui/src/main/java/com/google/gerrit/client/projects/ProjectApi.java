@@ -617,7 +617,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -639,6 +639,9 @@ name|useContentMerge
 parameter_list|,
 name|InheritableBoolean
 name|useSignedOffBy
+parameter_list|,
+name|InheritableBoolean
+name|createNewChangeForAllNotInTarget
 parameter_list|,
 name|InheritableBoolean
 name|requireChangeId
@@ -713,6 +716,13 @@ operator|.
 name|setRequireChangeId
 argument_list|(
 name|requireChangeId
+argument_list|)
+expr_stmt|;
+name|in
+operator|.
+name|setCreateNewChangeForAllNotInTarget
+argument_list|(
+name|createNewChangeForAllNotInTarget
 argument_list|)
 expr_stmt|;
 name|in
@@ -1341,6 +1351,36 @@ name|String
 name|v
 parameter_list|)
 comment|/*-{ if(v)this.require_change_id=v; }-*/
+function_decl|;
+DECL|method|setCreateNewChangeForAllNotInTarget (InheritableBoolean v)
+specifier|final
+name|void
+name|setCreateNewChangeForAllNotInTarget
+parameter_list|(
+name|InheritableBoolean
+name|v
+parameter_list|)
+block|{
+name|setCreateNewChangeForAllNotInTargetRaw
+argument_list|(
+name|v
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setCreateNewChangeForAllNotInTargetRaw (String v)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|setCreateNewChangeForAllNotInTargetRaw
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.create_new_change_for_all_not_in_target=v; }-*/
 function_decl|;
 DECL|method|setMaxObjectSizeLimit (String l)
 specifier|final
