@@ -240,6 +240,54 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
+name|resources
+operator|.
+name|Resource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|resources
+operator|.
+name|ResourceKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|resources
+operator|.
+name|SmallResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
 name|restapi
 operator|.
 name|RestApiServlet
@@ -1908,11 +1956,11 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|ResourceKey
+name|PluginResourceKey
 name|key
 init|=
 operator|new
-name|ResourceKey
+name|PluginResourceKey
 argument_list|(
 name|holder
 operator|.
@@ -2789,7 +2837,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|sendAutoIndex (PluginContentScanner scanner, String prefix, String pluginName, ResourceKey cacheKey, HttpServletResponse res,long lastModifiedTime)
+DECL|method|sendAutoIndex (PluginContentScanner scanner, String prefix, String pluginName, PluginResourceKey cacheKey, HttpServletResponse res,long lastModifiedTime)
 specifier|private
 name|void
 name|sendAutoIndex
@@ -2803,7 +2851,7 @@ parameter_list|,
 name|String
 name|pluginName
 parameter_list|,
-name|ResourceKey
+name|PluginResourceKey
 name|cacheKey
 parameter_list|,
 name|HttpServletResponse
@@ -3344,7 +3392,7 @@ name|lastModifiedTime
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sendMarkdownAsHtml (String md, String pluginName, ResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
+DECL|method|sendMarkdownAsHtml (String md, String pluginName, PluginResourceKey cacheKey, HttpServletResponse res, long lastModifiedTime)
 specifier|private
 name|void
 name|sendMarkdownAsHtml
@@ -3355,7 +3403,7 @@ parameter_list|,
 name|String
 name|pluginName
 parameter_list|,
-name|ResourceKey
+name|PluginResourceKey
 name|cacheKey
 parameter_list|,
 name|HttpServletResponse
@@ -4054,7 +4102,7 @@ name|absent
 argument_list|()
 return|;
 block|}
-DECL|method|sendMarkdownAsHtml (PluginContentScanner scanner, PluginEntry entry, String pluginName, ResourceKey key, HttpServletResponse res)
+DECL|method|sendMarkdownAsHtml (PluginContentScanner scanner, PluginEntry entry, String pluginName, PluginResourceKey key, HttpServletResponse res)
 specifier|private
 name|void
 name|sendMarkdownAsHtml
@@ -4068,7 +4116,7 @@ parameter_list|,
 name|String
 name|pluginName
 parameter_list|,
-name|ResourceKey
+name|PluginResourceKey
 name|key
 parameter_list|,
 name|HttpServletResponse
@@ -4190,7 +4238,7 @@ name|time
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sendResource (PluginContentScanner scanner, PluginEntry entry, ResourceKey key, HttpServletResponse res)
+DECL|method|sendResource (PluginContentScanner scanner, PluginEntry entry, PluginResourceKey key, HttpServletResponse res)
 specifier|private
 name|void
 name|sendResource
@@ -4201,7 +4249,7 @@ parameter_list|,
 name|PluginEntry
 name|entry
 parameter_list|,
-name|ResourceKey
+name|PluginResourceKey
 name|key
 parameter_list|,
 name|HttpServletResponse
@@ -4494,7 +4542,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|sendJsPlugin (Plugin plugin, ResourceKey key, HttpServletRequest req, HttpServletResponse res)
+DECL|method|sendJsPlugin (Plugin plugin, PluginResourceKey key, HttpServletRequest req, HttpServletResponse res)
 specifier|private
 name|void
 name|sendJsPlugin
@@ -4502,7 +4550,7 @@ parameter_list|(
 name|Plugin
 name|plugin
 parameter_list|,
-name|ResourceKey
+name|PluginResourceKey
 name|key
 parameter_list|,
 name|HttpServletRequest

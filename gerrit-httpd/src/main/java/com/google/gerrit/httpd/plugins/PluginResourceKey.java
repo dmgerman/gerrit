@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|httpd
+operator|.
+name|resources
+operator|.
+name|ResourceKey
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|plugins
@@ -83,9 +99,11 @@ import|;
 end_import
 
 begin_class
-DECL|class|ResourceKey
+DECL|class|PluginResourceKey
 specifier|final
 class|class
+name|PluginResourceKey
+implements|implements
 name|ResourceKey
 block|{
 DECL|field|plugin
@@ -102,8 +120,8 @@ specifier|final
 name|String
 name|resource
 decl_stmt|;
-DECL|method|ResourceKey (Plugin p, String r)
-name|ResourceKey
+DECL|method|PluginResourceKey (Plugin p, String r)
+name|PluginResourceKey
 parameter_list|(
 name|Plugin
 name|p
@@ -129,6 +147,7 @@ name|r
 expr_stmt|;
 block|}
 DECL|method|weigh ()
+specifier|public
 name|int
 name|weigh
 parameter_list|()
@@ -179,14 +198,14 @@ if|if
 condition|(
 name|other
 operator|instanceof
-name|ResourceKey
+name|PluginResourceKey
 condition|)
 block|{
-name|ResourceKey
+name|PluginResourceKey
 name|rk
 init|=
 operator|(
-name|ResourceKey
+name|PluginResourceKey
 operator|)
 name|other
 decl_stmt|;

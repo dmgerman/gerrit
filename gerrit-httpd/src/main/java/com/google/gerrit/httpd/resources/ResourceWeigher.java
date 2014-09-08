@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.plugins
+DECL|package|com.google.gerrit.httpd.resources
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|plugins
+name|resources
 package|;
 end_package
 
@@ -82,6 +82,7 @@ end_import
 
 begin_class
 DECL|class|ResourceWeigher
+specifier|public
 class|class
 name|ResourceWeigher
 implements|implements

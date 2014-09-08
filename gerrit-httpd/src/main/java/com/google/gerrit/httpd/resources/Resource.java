@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.plugins
+DECL|package|com.google.gerrit.httpd.resources
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|plugins
+name|resources
 package|;
 end_package
 
@@ -92,6 +92,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -116,11 +126,24 @@ end_import
 
 begin_class
 DECL|class|Resource
+specifier|public
 specifier|abstract
 class|class
 name|Resource
+implements|implements
+name|Serializable
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|NOT_FOUND
+specifier|public
 specifier|static
 specifier|final
 name|Resource
@@ -130,8 +153,17 @@ operator|new
 name|Resource
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
+specifier|public
 name|int
 name|weigh
 parameter_list|()
@@ -142,6 +174,7 @@ return|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|void
 name|send
 parameter_list|(
@@ -173,6 +206,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+specifier|public
 name|boolean
 name|isUnchanged
 parameter_list|(
@@ -187,6 +221,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|method|isUnchanged (long latestModifiedDate)
+specifier|public
 specifier|abstract
 name|boolean
 name|isUnchanged
@@ -196,12 +231,14 @@ name|latestModifiedDate
 parameter_list|)
 function_decl|;
 DECL|method|weigh ()
+specifier|public
 specifier|abstract
 name|int
 name|weigh
 parameter_list|()
 function_decl|;
 DECL|method|send (HttpServletRequest req, HttpServletResponse res)
+specifier|public
 specifier|abstract
 name|void
 name|send
