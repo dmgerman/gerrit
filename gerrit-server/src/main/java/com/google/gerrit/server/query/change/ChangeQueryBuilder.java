@@ -2054,11 +2054,7 @@ return|return
 name|ChangeStatusPredicate
 operator|.
 name|closed
-argument_list|(
-name|args
-operator|.
-name|db
-argument_list|)
+argument_list|()
 return|;
 block|}
 elseif|else
@@ -2102,11 +2098,7 @@ return|return
 name|ChangeStatusPredicate
 operator|.
 name|open
-argument_list|(
-name|args
-operator|.
-name|db
-argument_list|)
+argument_list|()
 return|;
 block|}
 annotation|@

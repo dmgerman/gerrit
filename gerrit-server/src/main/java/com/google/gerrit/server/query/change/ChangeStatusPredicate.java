@@ -140,22 +140,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|index
@@ -207,18 +191,6 @@ operator|.
 name|server
 operator|.
 name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
 import|;
 end_import
 
@@ -330,7 +302,7 @@ name|build
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|open (Provider<ReviewDb> dbProvider)
+DECL|method|open ()
 specifier|public
 specifier|static
 name|Predicate
@@ -338,13 +310,7 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|open
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|)
+parameter_list|()
 block|{
 name|List
 argument_list|<
@@ -420,7 +386,7 @@ name|r
 argument_list|)
 return|;
 block|}
-DECL|method|closed (Provider<ReviewDb> dbProvider)
+DECL|method|closed ()
 specifier|public
 specifier|static
 name|Predicate
@@ -428,13 +394,7 @@ argument_list|<
 name|ChangeData
 argument_list|>
 name|closed
-parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|)
+parameter_list|()
 block|{
 name|List
 argument_list|<
