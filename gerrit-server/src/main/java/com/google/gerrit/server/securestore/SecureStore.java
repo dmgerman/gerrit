@@ -82,6 +82,16 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|ExtensionPoint
@@ -93,6 +103,21 @@ block|{
 DECL|method|get (String section, String subsection, String name)
 name|String
 name|get
+parameter_list|(
+name|String
+name|section
+parameter_list|,
+name|String
+name|subsection
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+function_decl|;
+DECL|method|getList (String section, String subsection, String name)
+name|String
+index|[]
+name|getList
 parameter_list|(
 name|String
 name|section
@@ -119,6 +144,26 @@ name|name
 parameter_list|,
 name|String
 name|value
+parameter_list|)
+function_decl|;
+DECL|method|setList (String section, String subsection, String name, List<String> values)
+name|void
+name|setList
+parameter_list|(
+name|String
+name|section
+parameter_list|,
+name|String
+name|subsection
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|values
 parameter_list|)
 function_decl|;
 DECL|method|unset (String section, String subsection, String name)
