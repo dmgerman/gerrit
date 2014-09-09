@@ -1277,6 +1277,16 @@ argument_list|)
 decl_stmt|;
 name|copyLabel
 operator|.
+name|setTitle
+argument_list|(
+name|c
+operator|.
+name|subject
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|copyLabel
+operator|.
 name|setStyleName
 argument_list|(
 name|style
