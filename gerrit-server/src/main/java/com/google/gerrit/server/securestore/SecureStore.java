@@ -68,22 +68,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -93,8 +77,6 @@ import|;
 end_import
 
 begin_interface
-annotation|@
-name|ExtensionPoint
 DECL|interface|SecureStore
 specifier|public
 interface|interface
