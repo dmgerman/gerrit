@@ -72,10 +72,16 @@ specifier|public
 interface|interface
 name|WebLink
 block|{
-comment|/**    * The link-name displayed in UI.    *    * @return name of link.    */
+comment|/**    * The link-name displayed in UI.    *    * @return name of link or title of the link if image URL is available.    */
 DECL|method|getLinkName ()
 name|String
 name|getLinkName
+parameter_list|()
+function_decl|;
+comment|/**    * URL of image to be displayed    *    * @return URL to image for link or null for using a text-only link.    * Recommended image size is 16x16.    */
+DECL|method|getImageUrl ()
+name|String
+name|getImageUrl
 parameter_list|()
 function_decl|;
 block|}
