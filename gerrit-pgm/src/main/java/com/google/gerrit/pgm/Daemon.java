@@ -2595,6 +2595,8 @@ operator|new
 name|GerritOptions
 argument_list|(
 name|headless
+argument_list|,
+name|slave
 argument_list|)
 argument_list|)
 expr_stmt|;
