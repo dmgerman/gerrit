@@ -2325,6 +2325,50 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/** Can this user edit the hashtag name? */
+DECL|method|canEditHashtags ()
+specifier|public
+name|boolean
+name|canEditHashtags
+parameter_list|()
+block|{
+return|return
+name|isOwner
+argument_list|()
+comment|// owner (aka creator) of the change can edit hashtags
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// branch owner can edit hashtags
+operator|||
+name|getProjectControl
+argument_list|()
+operator|.
+name|isOwner
+argument_list|()
+comment|// project owner can edit hashtags
+operator|||
+name|getCurrentUser
+argument_list|()
+operator|.
+name|getCapabilities
+argument_list|()
+operator|.
+name|canAdministrateServer
+argument_list|()
+comment|// site administers are god
+operator|||
+name|getRefControl
+argument_list|()
+operator|.
+name|canEditHashtags
+argument_list|()
+return|;
+comment|// user can edit hashtag on a specific ref
+block|}
 DECL|method|getSubmitRecords (ReviewDb db, PatchSet patchSet)
 specifier|public
 name|List

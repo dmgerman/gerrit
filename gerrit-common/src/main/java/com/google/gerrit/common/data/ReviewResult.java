@@ -264,6 +264,10 @@ block|,
 comment|/** Not permitted to edit the topic name */
 DECL|enumConstant|EDIT_TOPIC_NAME_NOT_PERMITTED
 name|EDIT_TOPIC_NAME_NOT_PERMITTED
+block|,
+comment|/** Not permitted to edit the hashtags */
+DECL|enumConstant|EDIT_HASHTAGS_NOT_PERMITTED
+name|EDIT_HASHTAGS_NOT_PERMITTED
 block|}
 DECL|field|type
 specifier|protected

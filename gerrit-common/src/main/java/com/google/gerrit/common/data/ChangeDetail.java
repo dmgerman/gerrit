@@ -185,6 +185,11 @@ specifier|protected
 name|boolean
 name|canCherryPick
 decl_stmt|;
+DECL|field|canEditHashtags
+specifier|protected
+name|boolean
+name|canEditHashtags
+decl_stmt|;
 DECL|field|canPublish
 specifier|protected
 name|boolean
@@ -432,6 +437,31 @@ name|a
 parameter_list|)
 block|{
 name|canCherryPick
+operator|=
+name|a
+expr_stmt|;
+block|}
+DECL|method|getCanEditHashtags ()
+specifier|public
+name|boolean
+name|getCanEditHashtags
+parameter_list|()
+block|{
+return|return
+name|canEditHashtags
+return|;
+block|}
+DECL|method|setCanEditHashtags (final boolean a)
+specifier|public
+name|void
+name|setCanEditHashtags
+parameter_list|(
+specifier|final
+name|boolean
+name|a
+parameter_list|)
+block|{
+name|canEditHashtags
 operator|=
 name|a
 expr_stmt|;

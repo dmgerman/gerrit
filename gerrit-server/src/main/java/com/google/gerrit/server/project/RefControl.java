@@ -1985,6 +1985,22 @@ name|EDIT_TOPIC_NAME
 argument_list|)
 return|;
 block|}
+comment|/** @return true if this user can edit hashtag names. */
+DECL|method|canEditHashtags ()
+specifier|public
+name|boolean
+name|canEditHashtags
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|Permission
+operator|.
+name|EDIT_HASHTAGS
+argument_list|)
+return|;
+block|}
 comment|/** @return true if this user can force edit topic names. */
 DECL|method|canForceEditTopicName ()
 specifier|public
