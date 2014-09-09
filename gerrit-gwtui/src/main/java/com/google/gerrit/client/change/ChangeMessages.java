@@ -90,14 +90,14 @@ name|ChangeMessages
 extends|extends
 name|Messages
 block|{
-DECL|method|patchSets (int currentlyViewedPatchSet, int currentPatchSet)
+DECL|method|patchSets (String currentlyViewedPatchSet, String currentPatchSet)
 name|String
 name|patchSets
 parameter_list|(
-name|int
+name|String
 name|currentlyViewedPatchSet
 parameter_list|,
-name|int
+name|String
 name|currentPatchSet
 parameter_list|)
 function_decl|;

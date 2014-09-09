@@ -130,6 +130,11 @@ name|String
 name|notCurrent
 parameter_list|()
 function_decl|;
+DECL|method|changeEdit ()
+name|String
+name|changeEdit
+parameter_list|()
+function_decl|;
 DECL|method|myDashboardTitle ()
 name|String
 name|myDashboardTitle

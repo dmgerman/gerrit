@@ -236,6 +236,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|PatchSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Project
 import|;
 end_import
@@ -754,6 +770,18 @@ name|current_revision
 parameter_list|()
 comment|/*-{ return this.current_revision; }-*/
 function_decl|;
+DECL|method|set_current_revision (String r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|set_current_revision
+parameter_list|(
+name|String
+name|r
+parameter_list|)
+comment|/*-{ this.current_revision = r; }-*/
+function_decl|;
 DECL|method|revisions ()
 specifier|public
 specifier|final
@@ -789,6 +817,36 @@ argument_list|>
 name|messages
 parameter_list|()
 comment|/*-{ return this.messages; }-*/
+function_decl|;
+DECL|method|set_edit (EditInfo edit)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|set_edit
+parameter_list|(
+name|EditInfo
+name|edit
+parameter_list|)
+comment|/*-{ this.edit = edit; }-*/
+function_decl|;
+DECL|method|edit ()
+specifier|public
+specifier|final
+specifier|native
+name|EditInfo
+name|edit
+parameter_list|()
+comment|/*-{ return this.edit; }-*/
+function_decl|;
+DECL|method|has_edit ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_edit
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('edit') }-*/
 function_decl|;
 DECL|method|has_permitted_labels ()
 specifier|public
@@ -1348,6 +1406,18 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
+DECL|method|set_name (String n)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|set_name
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ this.name = n; }-*/
+function_decl|;
 DECL|method|commit ()
 specifier|public
 specifier|final
@@ -1356,6 +1426,27 @@ name|CommitInfo
 name|commit
 parameter_list|()
 comment|/*-{ return this.commit; }-*/
+function_decl|;
+DECL|method|has_actions ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_actions
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('actions') }-*/
+function_decl|;
+DECL|method|actions ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|ActionInfo
+argument_list|>
+name|actions
+parameter_list|()
+comment|/*-{ return this.actions; }-*/
 function_decl|;
 DECL|method|has_files ()
 specifier|public
@@ -1392,6 +1483,48 @@ name|RevisionInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|fromEdit (EditInfo edit)
+specifier|public
+specifier|static
+name|RevisionInfo
+name|fromEdit
+parameter_list|(
+name|EditInfo
+name|edit
+parameter_list|)
+block|{
+name|RevisionInfo
+name|revisionInfo
+init|=
+name|createObject
+argument_list|()
+operator|.
+name|cast
+argument_list|()
+decl_stmt|;
+name|revisionInfo
+operator|.
+name|takeFromEdit
+argument_list|(
+name|edit
+argument_list|)
+expr_stmt|;
+return|return
+name|revisionInfo
+return|;
+block|}
+DECL|method|takeFromEdit (EditInfo edit)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|takeFromEdit
+parameter_list|(
+name|EditInfo
+name|edit
+parameter_list|)
+comment|/*-{       this._number = 0;       this.name = edit.name;       this.commit = edit.commit;     }-*/
+function_decl|;
 DECL|method|_number ()
 specifier|public
 specifier|final
@@ -1427,6 +1560,15 @@ name|boolean
 name|has_draft_comments
 parameter_list|()
 comment|/*-{ return this.has_draft_comments || false; }-*/
+function_decl|;
+DECL|method|is_edit ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|is_edit
+parameter_list|()
+comment|/*-{ return this._number == 0; }-*/
 function_decl|;
 DECL|method|commit ()
 specifier|public
@@ -1537,6 +1679,15 @@ argument_list|>
 name|list
 parameter_list|)
 block|{
+specifier|final
+name|int
+name|parent_number
+init|=
+name|findEditParent
+argument_list|(
+name|list
+argument_list|)
+decl_stmt|;
 name|Collections
 operator|.
 name|sort
@@ -1568,21 +1719,252 @@ name|RevisionInfo
 name|b
 parameter_list|)
 block|{
-return|return
+name|int
+name|a_number
+init|=
 name|a
 operator|.
 name|_number
 argument_list|()
-operator|-
+decl_stmt|;
+name|int
+name|b_number
+init|=
 name|b
+operator|.
+name|_number
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|a_number
+operator|==
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|b_number
+operator|==
+name|parent_number
+operator|+
+literal|1
+condition|)
+block|{
+name|a_number
+operator|=
+name|parent_number
+expr_stmt|;
+block|}
+else|else
+block|{
+name|a_number
+operator|=
+name|parent_number
+operator|+
+literal|1
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|b_number
+operator|==
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|a_number
+operator|==
+name|parent_number
+operator|+
+literal|1
+condition|)
+block|{
+name|b_number
+operator|=
+name|parent_number
+expr_stmt|;
+block|}
+else|else
+block|{
+name|b_number
+operator|=
+name|parent_number
+operator|+
+literal|1
+expr_stmt|;
+block|}
+block|}
+return|return
+name|a_number
+operator|-
+name|b_number
+return|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|findEditParent (JsArray<RevisionInfo> list)
+specifier|private
+specifier|static
+name|int
+name|findEditParent
+parameter_list|(
+name|JsArray
+argument_list|<
+name|RevisionInfo
+argument_list|>
+name|list
+parameter_list|)
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|list
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+comment|// edit under revisions?
+name|RevisionInfo
+name|editInfo
+init|=
+name|list
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|editInfo
+operator|.
+name|_number
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// parent commit is parent patch set revision
+name|CommitInfo
+name|commit
+init|=
+name|editInfo
+operator|.
+name|commit
+argument_list|()
+operator|.
+name|parents
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|String
+name|parentRevision
+init|=
+name|commit
+operator|.
+name|commit
+argument_list|()
+decl_stmt|;
+comment|// find parent
+for|for
+control|(
+name|int
+name|j
+init|=
+literal|0
+init|;
+name|j
+operator|<
+name|list
+operator|.
+name|length
+argument_list|()
+condition|;
+name|j
+operator|++
+control|)
+block|{
+name|RevisionInfo
+name|parentInfo
+init|=
+name|list
+operator|.
+name|get
+argument_list|(
+name|j
+argument_list|)
+decl_stmt|;
+name|String
+name|name
+init|=
+name|parentInfo
+operator|.
+name|name
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|name
+operator|.
+name|equals
+argument_list|(
+name|parentRevision
+argument_list|)
+condition|)
+block|{
+comment|// found parent pacth set number
+return|return
+name|parentInfo
 operator|.
 name|_number
 argument_list|()
 return|;
 block|}
 block|}
+block|}
+block|}
+return|return
+operator|-
+literal|1
+return|;
+block|}
+DECL|method|id ()
+specifier|public
+specifier|final
+name|String
+name|id
+parameter_list|()
+block|{
+return|return
+name|PatchSet
+operator|.
+name|Id
+operator|.
+name|toId
+argument_list|(
+name|_number
+argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 DECL|method|RevisionInfo ()
 specifier|protected
