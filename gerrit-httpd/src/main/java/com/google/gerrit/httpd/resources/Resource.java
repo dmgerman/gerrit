@@ -218,6 +218,15 @@ return|return
 literal|false
 return|;
 block|}
+specifier|protected
+name|Object
+name|readResolve
+parameter_list|()
+block|{
+return|return
+name|NOT_FOUND
+return|;
+block|}
 block|}
 decl_stmt|;
 DECL|method|isUnchanged (long latestModifiedDate)
