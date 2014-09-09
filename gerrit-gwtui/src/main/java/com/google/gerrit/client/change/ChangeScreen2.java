@@ -1568,12 +1568,6 @@ name|FileTable
 operator|.
 name|Mode
 name|fileTableMode
-init|=
-name|FileTable
-operator|.
-name|Mode
-operator|.
-name|REVIEW
 decl_stmt|;
 DECL|field|headerLine
 annotation|@
@@ -1839,7 +1833,7 @@ specifier|private
 name|EditFileAction
 name|editFileAction
 decl_stmt|;
-DECL|method|ChangeScreen2 (Change.Id changeId, String base, String revision, boolean openReplyBox)
+DECL|method|ChangeScreen2 (Change.Id changeId, String base, String revision, boolean openReplyBox, FileTable.Mode mode)
 specifier|public
 name|ChangeScreen2
 parameter_list|(
@@ -1856,6 +1850,11 @@ name|revision
 parameter_list|,
 name|boolean
 name|openReplyBox
+parameter_list|,
+name|FileTable
+operator|.
+name|Mode
+name|mode
 parameter_list|)
 block|{
 name|this
@@ -1887,6 +1886,12 @@ operator|.
 name|openReplyBox
 operator|=
 name|openReplyBox
+expr_stmt|;
+name|this
+operator|.
+name|fileTableMode
+operator|=
+name|mode
 expr_stmt|;
 name|add
 argument_list|(
@@ -3221,6 +3226,17 @@ operator|.
 name|Mode
 operator|.
 name|REVIEW
+argument_list|)
+expr_stmt|;
+name|addFile
+operator|.
+name|setVisible
+argument_list|(
+operator|!
+name|editMode
+operator|.
+name|isVisible
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|reviewMode

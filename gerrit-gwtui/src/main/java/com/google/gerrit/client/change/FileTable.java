@@ -832,6 +832,7 @@ end_import
 
 begin_class
 DECL|class|FileTable
+specifier|public
 class|class
 name|FileTable
 extends|extends
@@ -962,6 +963,8 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|enum|Mode
+specifier|public
+specifier|static
 enum|enum
 name|Mode
 block|{
@@ -2384,7 +2387,7 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|toChange
+name|toChangeInEditMode
 argument_list|(
 name|curr
 operator|.
@@ -2460,7 +2463,7 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|toChange
+name|toChangeInEditMode
 argument_list|(
 name|curr
 operator|.

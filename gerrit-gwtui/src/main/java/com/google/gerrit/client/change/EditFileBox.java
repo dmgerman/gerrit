@@ -693,7 +693,7 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|toChange
+name|toChangeInEditMode
 argument_list|(
 name|id
 operator|.

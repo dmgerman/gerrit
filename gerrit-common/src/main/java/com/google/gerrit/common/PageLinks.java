@@ -392,6 +392,26 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|toChangeInEditMode (Change.Id c)
+specifier|public
+specifier|static
+name|String
+name|toChangeInEditMode
+parameter_list|(
+name|Change
+operator|.
+name|Id
+name|c
+parameter_list|)
+block|{
+return|return
+literal|"/c/"
+operator|+
+name|c
+operator|+
+literal|",edit/"
+return|;
+block|}
 DECL|method|toChange (final Change.Id c)
 specifier|public
 specifier|static
