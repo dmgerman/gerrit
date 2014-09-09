@@ -1109,6 +1109,25 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|list ()
+specifier|public
+name|Iterable
+argument_list|<
+name|EntryKey
+argument_list|>
+name|list
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"not used by tests"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class
