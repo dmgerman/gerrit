@@ -319,14 +319,14 @@ if|if
 condition|(
 literal|"open"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|value
 argument_list|)
 operator|||
 literal|"pending"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|value
 argument_list|)
@@ -342,7 +342,7 @@ if|if
 condition|(
 literal|"closed"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|value
 argument_list|)
@@ -368,6 +368,9 @@ operator|.
 name|get
 argument_list|(
 name|value
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|checkArgument
