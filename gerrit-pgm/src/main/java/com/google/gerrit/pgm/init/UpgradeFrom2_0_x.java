@@ -107,26 +107,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|pgm
-operator|.
-name|init
-operator|.
-name|api
-operator|.
-name|InitUtil
-operator|.
-name|saveSecure
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -211,6 +191,22 @@ operator|.
 name|config
 operator|.
 name|SitePaths
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|securestore
+operator|.
+name|SecureStore
 import|;
 end_import
 
@@ -464,7 +460,7 @@ decl_stmt|;
 DECL|field|sec
 specifier|private
 specifier|final
-name|FileBasedConfig
+name|SecureStore
 name|sec
 decl_stmt|;
 DECL|field|site_path
@@ -734,11 +730,6 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
-name|sec
-operator|.
-name|load
-argument_list|()
-expr_stmt|;
 specifier|final
 name|Properties
 name|oldprop
@@ -908,7 +899,7 @@ condition|)
 block|{
 name|sec
 operator|.
-name|setString
+name|set
 argument_list|(
 literal|"database"
 argument_list|,
@@ -951,7 +942,7 @@ argument_list|)
 expr_stmt|;
 name|sec
 operator|.
-name|setStringList
+name|setList
 argument_list|(
 literal|"ldap"
 argument_list|,
@@ -993,7 +984,7 @@ argument_list|)
 expr_stmt|;
 name|sec
 operator|.
-name|setStringList
+name|setList
 argument_list|(
 literal|"sendemail"
 argument_list|,
@@ -1007,11 +998,6 @@ name|asList
 argument_list|(
 name|values
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|saveSecure
-argument_list|(
-name|sec
 argument_list|)
 expr_stmt|;
 name|savePublic
@@ -1645,7 +1631,7 @@ condition|)
 block|{
 name|sec
 operator|.
-name|setString
+name|set
 argument_list|(
 literal|"database"
 argument_list|,

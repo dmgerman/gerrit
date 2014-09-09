@@ -228,22 +228,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|securestore
-operator|.
-name|SecureStoreProvider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -520,6 +504,24 @@ return|;
 block|}
 annotation|@
 name|Inject
+DECL|field|secureStore
+specifier|private
+name|SecureStore
+name|secureStore
+decl_stmt|;
+annotation|@
+name|Provides
+DECL|method|getSecureStore ()
+name|SecureStore
+name|getSecureStore
+parameter_list|()
+block|{
+return|return
+name|secureStore
+return|;
+block|}
+annotation|@
+name|Inject
 DECL|method|CopyConfigModule ()
 name|CopyConfigModule
 parameter_list|()
@@ -531,22 +533,7 @@ specifier|protected
 name|void
 name|configure
 parameter_list|()
-block|{
-name|bind
-argument_list|(
-name|SecureStore
-operator|.
-name|class
-argument_list|)
-operator|.
-name|toProvider
-argument_list|(
-name|SecureStoreProvider
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-block|}
+block|{   }
 block|}
 end_class
 
