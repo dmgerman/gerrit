@@ -755,6 +755,14 @@ argument_list|(
 name|getProjectName
 argument_list|()
 argument_list|,
+name|repoManager
+operator|.
+name|openMetadataRepository
+argument_list|(
+name|getProjectName
+argument_list|()
+argument_list|)
+argument_list|,
 name|getUser
 argument_list|()
 argument_list|,

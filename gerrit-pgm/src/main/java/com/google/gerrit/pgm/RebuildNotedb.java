@@ -1003,7 +1003,7 @@ name|allUsersRepo
 init|=
 name|repoManager
 operator|.
-name|openRepository
+name|openMetadataRepository
 argument_list|(
 name|allUsersName
 argument_list|)
@@ -1035,7 +1035,7 @@ name|repo
 init|=
 name|repoManager
 operator|.
-name|openRepository
+name|openMetadataRepository
 argument_list|(
 name|project
 argument_list|)
