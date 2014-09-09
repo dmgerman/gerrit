@@ -848,6 +848,15 @@ name|has_edit
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('edit') }-*/
 function_decl|;
+DECL|method|hashtags ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|hashtags
+parameter_list|()
+comment|/*-{ return this.hashtags; }-*/
+function_decl|;
 DECL|method|has_permitted_labels ()
 specifier|public
 specifier|final

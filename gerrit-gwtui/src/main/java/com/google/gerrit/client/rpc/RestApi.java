@@ -1778,6 +1778,36 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|delete (JavaScriptObject content, AsyncCallback<T> cb)
+specifier|public
+parameter_list|<
+name|T
+extends|extends
+name|JavaScriptObject
+parameter_list|>
+name|void
+name|delete
+parameter_list|(
+name|JavaScriptObject
+name|content
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|T
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|sendJSON
+argument_list|(
+name|DELETE
+argument_list|,
+name|content
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|send ( Method method, AsyncCallback<T> cb)
 specifier|private
 parameter_list|<

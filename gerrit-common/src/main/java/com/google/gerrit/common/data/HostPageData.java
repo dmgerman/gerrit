@@ -174,6 +174,11 @@ name|Message
 argument_list|>
 name|messages
 decl_stmt|;
+DECL|field|isNoteDbEnabled
+specifier|public
+name|boolean
+name|isNoteDbEnabled
+decl_stmt|;
 DECL|class|Theme
 specifier|public
 specifier|static

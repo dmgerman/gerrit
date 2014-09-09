@@ -340,6 +340,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|notedb
+operator|.
+name|NotesMigration
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwtexpui
 operator|.
 name|server
@@ -764,6 +780,12 @@ specifier|final
 name|StaticServlet
 name|staticServlet
 decl_stmt|;
+DECL|field|isNoteDbEnabled
+specifier|private
+specifier|final
+name|boolean
+name|isNoteDbEnabled
+decl_stmt|;
 DECL|field|page
 specifier|private
 specifier|volatile
@@ -772,7 +794,7 @@ name|page
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final DynamicItem<WebSession> w, final SitePaths sp, final ThemeFactory themeFactory, final GerritConfig gc, final ServletContext servletContext, final DynamicSet<WebUiPlugin> webUiPlugins, final DynamicSet<MessageOfTheDay> motd, @GerritServerConfig final Config cfg, final StaticServlet ss)
+DECL|method|HostPageServlet (final Provider<CurrentUser> cu, final DynamicItem<WebSession> w, final SitePaths sp, final ThemeFactory themeFactory, final GerritConfig gc, final ServletContext servletContext, final DynamicSet<WebUiPlugin> webUiPlugins, final DynamicSet<MessageOfTheDay> motd, @GerritServerConfig final Config cfg, final StaticServlet ss, final NotesMigration migration)
 name|HostPageServlet
 parameter_list|(
 specifier|final
@@ -828,6 +850,10 @@ parameter_list|,
 specifier|final
 name|StaticServlet
 name|ss
+parameter_list|,
+specifier|final
+name|NotesMigration
+name|migration
 parameter_list|)
 throws|throws
 name|IOException
@@ -888,6 +914,13 @@ expr_stmt|;
 name|staticServlet
 operator|=
 name|ss
+expr_stmt|;
+name|isNoteDbEnabled
+operator|=
+name|migration
+operator|.
+name|enabled
+argument_list|()
 expr_stmt|;
 specifier|final
 name|String
@@ -2168,6 +2201,12 @@ operator|.
 name|config
 operator|=
 name|config
+expr_stmt|;
+name|pageData
+operator|.
+name|isNoteDbEnabled
+operator|=
+name|isNoteDbEnabled
 expr_stmt|;
 specifier|final
 name|StringWriter

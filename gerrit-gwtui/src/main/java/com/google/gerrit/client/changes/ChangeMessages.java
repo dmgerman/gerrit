@@ -236,6 +236,14 @@ name|int
 name|insertions
 parameter_list|)
 function_decl|;
+DECL|method|removeHashtag (String name)
+name|String
+name|removeHashtag
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+function_decl|;
 DECL|method|removeReviewer (String fullName)
 name|String
 name|removeReviewer

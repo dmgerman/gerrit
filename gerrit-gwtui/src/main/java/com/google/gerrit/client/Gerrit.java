@@ -1464,6 +1464,12 @@ specifier|static
 name|String
 name|xGerritAuth
 decl_stmt|;
+DECL|field|isNoteDbEnabled
+specifier|private
+specifier|static
+name|boolean
+name|isNoteDbEnabled
+decl_stmt|;
 DECL|field|menuBars
 specifier|private
 specifier|static
@@ -2344,6 +2350,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|isNoteDbEnabled ()
+specifier|public
+specifier|static
+name|boolean
+name|isNoteDbEnabled
+parameter_list|()
+block|{
+return|return
+name|isNoteDbEnabled
+return|;
+block|}
 DECL|method|loginRedirect (String token)
 specifier|public
 specifier|static
@@ -2906,6 +2923,12 @@ operator|=
 name|result
 operator|.
 name|theme
+expr_stmt|;
+name|isNoteDbEnabled
+operator|=
+name|result
+operator|.
+name|isNoteDbEnabled
 expr_stmt|;
 if|if
 condition|(
