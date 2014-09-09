@@ -65,10 +65,10 @@ package|;
 end_package
 
 begin_class
-DECL|class|GerritUiOptions
+DECL|class|GerritOptions
 specifier|public
 class|class
-name|GerritUiOptions
+name|GerritOptions
 block|{
 DECL|field|headless
 specifier|private
@@ -76,9 +76,9 @@ specifier|final
 name|boolean
 name|headless
 decl_stmt|;
-DECL|method|GerritUiOptions (boolean headless)
+DECL|method|GerritOptions (boolean headless)
 specifier|public
-name|GerritUiOptions
+name|GerritOptions
 parameter_list|(
 name|boolean
 name|headless

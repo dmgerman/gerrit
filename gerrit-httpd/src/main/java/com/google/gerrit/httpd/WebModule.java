@@ -524,15 +524,15 @@ specifier|final
 name|GitWebConfig
 name|gitWebConfig
 decl_stmt|;
-DECL|field|uiOptions
+DECL|field|options
 specifier|private
 specifier|final
-name|GerritUiOptions
-name|uiOptions
+name|GerritOptions
+name|options
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebModule (final AuthConfig authConfig, final UrlModule.UrlConfig urlConfig, @CanonicalWebUrl @Nullable final String canonicalUrl, GerritUiOptions uiOptions, final Injector creatingInjector)
+DECL|method|WebModule (final AuthConfig authConfig, final UrlModule.UrlConfig urlConfig, @CanonicalWebUrl @Nullable final String canonicalUrl, GerritOptions options, final Injector creatingInjector)
 name|WebModule
 parameter_list|(
 specifier|final
@@ -553,8 +553,8 @@ specifier|final
 name|String
 name|canonicalUrl
 parameter_list|,
-name|GerritUiOptions
-name|uiOptions
+name|GerritOptions
+name|options
 parameter_list|,
 specifier|final
 name|Injector
@@ -590,9 +590,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|uiOptions
+name|options
 operator|=
-name|uiOptions
+name|options
 expr_stmt|;
 name|this
 operator|.
@@ -777,7 +777,7 @@ name|UrlModule
 argument_list|(
 name|urlConfig
 argument_list|,
-name|uiOptions
+name|options
 argument_list|)
 argument_list|)
 expr_stmt|;

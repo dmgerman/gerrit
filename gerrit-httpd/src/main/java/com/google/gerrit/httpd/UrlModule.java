@@ -612,19 +612,19 @@ specifier|final
 name|UrlConfig
 name|cfg
 decl_stmt|;
-DECL|field|uiOptions
+DECL|field|options
 specifier|private
-name|GerritUiOptions
-name|uiOptions
+name|GerritOptions
+name|options
 decl_stmt|;
-DECL|method|UrlModule (UrlConfig cfg, GerritUiOptions uiOptions)
+DECL|method|UrlModule (UrlConfig cfg, GerritOptions options)
 name|UrlModule
 parameter_list|(
 name|UrlConfig
 name|cfg
 parameter_list|,
-name|GerritUiOptions
-name|uiOptions
+name|GerritOptions
+name|options
 parameter_list|)
 block|{
 name|this
@@ -635,9 +635,9 @@ name|cfg
 expr_stmt|;
 name|this
 operator|.
-name|uiOptions
+name|options
 operator|=
-name|uiOptions
+name|options
 expr_stmt|;
 block|}
 annotation|@
@@ -684,7 +684,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|uiOptions
+name|options
 operator|.
 name|enableDefaultUi
 argument_list|()
