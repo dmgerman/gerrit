@@ -226,6 +226,16 @@ name|QUERY_LIMIT
 init|=
 literal|"queryLimit"
 decl_stmt|;
+comment|/** Default result limit per executed query. */
+DECL|field|DEFAULT_MAX_QUERY_LIMIT
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_QUERY_LIMIT
+init|=
+literal|500
+decl_stmt|;
 comment|/** Ability to impersonate another user. */
 DECL|field|RUN_AS
 specifier|public
@@ -595,7 +605,7 @@ name|MAX_VALUE
 argument_list|,
 literal|0
 argument_list|,
-literal|500
+name|DEFAULT_MAX_QUERY_LIMIT
 argument_list|)
 return|;
 block|}
