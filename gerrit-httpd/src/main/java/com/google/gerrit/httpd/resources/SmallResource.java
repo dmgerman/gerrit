@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.plugins
+DECL|package|com.google.gerrit.httpd.resources
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|plugins
+name|resources
 package|;
 end_package
 
@@ -130,6 +130,7 @@ end_import
 
 begin_class
 DECL|class|SmallResource
+specifier|public
 specifier|final
 class|class
 name|SmallResource
@@ -159,6 +160,7 @@ name|long
 name|lastModified
 decl_stmt|;
 DECL|method|SmallResource (byte[] data)
+specifier|public
 name|SmallResource
 parameter_list|(
 name|byte
@@ -174,6 +176,7 @@ name|data
 expr_stmt|;
 block|}
 DECL|method|setLastModified (long when)
+specifier|public
 name|SmallResource
 name|setLastModified
 parameter_list|(
@@ -192,6 +195,7 @@ name|this
 return|;
 block|}
 DECL|method|setContentType (String contentType)
+specifier|public
 name|SmallResource
 name|setContentType
 parameter_list|(
@@ -210,6 +214,7 @@ name|this
 return|;
 block|}
 DECL|method|setCharacterEncoding (@ullable String enc)
+specifier|public
 name|SmallResource
 name|setCharacterEncoding
 parameter_list|(
@@ -232,6 +237,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|weigh ()
+specifier|public
 name|int
 name|weigh
 parameter_list|()
@@ -252,6 +258,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|send (HttpServletRequest req, HttpServletResponse res)
+specifier|public
 name|void
 name|send
 parameter_list|(
@@ -363,6 +370,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|isUnchanged (long lastModified)
+specifier|public
 name|boolean
 name|isUnchanged
 parameter_list|(
