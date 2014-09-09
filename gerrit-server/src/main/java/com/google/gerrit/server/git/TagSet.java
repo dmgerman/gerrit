@@ -2003,7 +2003,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|skip (Ref ref)
-specifier|private
 specifier|static
 name|boolean
 name|skip
