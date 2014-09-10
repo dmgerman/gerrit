@@ -67,16 +67,20 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
 name|common
 operator|.
-name|annotations
+name|data
 operator|.
-name|VisibleForTesting
+name|GlobalCapability
+operator|.
+name|DEFAULT_MAX_QUERY_LIMIT
 import|;
 end_import
 
@@ -553,16 +557,6 @@ name|closed
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|VisibleForTesting
-DECL|field|MAX_LIMIT
-specifier|static
-specifier|final
-name|int
-name|MAX_LIMIT
-init|=
-literal|1000
-decl_stmt|;
 comment|/**    * Get the set of statuses that changes matching the given predicate may have.    *    * @param in predicate    * @return the maximal set of statuses that any changes matching the input    *     predicates may have, based on examining boolean and    *     {@link ChangeStatusPredicate}s.    */
 DECL|method|getPossibleStatus (Predicate<ChangeData> in)
 specifier|public
@@ -1016,7 +1010,7 @@ argument_list|(
 name|in
 argument_list|)
 argument_list|,
-name|MAX_LIMIT
+name|DEFAULT_MAX_QUERY_LIMIT
 argument_list|)
 decl_stmt|;
 comment|// Increase the limit rather than skipping, since we don't know how many
@@ -1034,17 +1028,6 @@ argument_list|(
 name|limit
 argument_list|,
 literal|1
-argument_list|)
-expr_stmt|;
-name|limit
-operator|=
-name|Math
-operator|.
-name|min
-argument_list|(
-name|limit
-argument_list|,
-name|MAX_LIMIT
 argument_list|)
 expr_stmt|;
 name|Predicate
