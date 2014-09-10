@@ -617,9 +617,7 @@ block|{
 return|return
 name|ChangeStatusPredicate
 operator|.
-name|VALUES
-operator|.
-name|get
+name|canonicalize
 argument_list|(
 name|input
 operator|.
