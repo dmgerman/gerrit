@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -69,16 +69,26 @@ package|;
 end_package
 
 begin_class
-DECL|class|CommitValidationMessage
+DECL|class|ValidationMessage
 specifier|public
 class|class
-name|CommitValidationMessage
-extends|extends
 name|ValidationMessage
 block|{
-DECL|method|CommitValidationMessage (String message, boolean isError)
+DECL|field|message
+specifier|private
+specifier|final
+name|String
+name|message
+decl_stmt|;
+DECL|field|isError
+specifier|private
+specifier|final
+name|boolean
+name|isError
+decl_stmt|;
+DECL|method|ValidationMessage (String message, boolean isError)
 specifier|public
-name|CommitValidationMessage
+name|ValidationMessage
 parameter_list|(
 name|String
 name|message
@@ -87,13 +97,38 @@ name|boolean
 name|isError
 parameter_list|)
 block|{
-name|super
-argument_list|(
+name|this
+operator|.
 name|message
-argument_list|,
-name|isError
-argument_list|)
+operator|=
+name|message
 expr_stmt|;
+name|this
+operator|.
+name|isError
+operator|=
+name|isError
+expr_stmt|;
+block|}
+DECL|method|getMessage ()
+specifier|public
+name|String
+name|getMessage
+parameter_list|()
+block|{
+return|return
+name|message
+return|;
+block|}
+DECL|method|isError ()
+specifier|public
+name|boolean
+name|isError
+parameter_list|()
+block|{
+return|return
+name|isError
+return|;
 block|}
 block|}
 end_class
