@@ -1838,16 +1838,6 @@ name|dataHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|Gerrit
-operator|.
-name|getGitwebLink
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 name|fmt
 operator|.
 name|addStyleName
@@ -1867,7 +1857,6 @@ name|dataHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|updateDeleteHandler
 operator|=
 operator|new
@@ -2960,13 +2949,6 @@ argument_list|,
 name|dataCellStyle
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|c
-operator|!=
-literal|null
-condition|)
-block|{
 name|fmt
 operator|.
 name|addStyleName
@@ -2978,7 +2960,6 @@ argument_list|,
 name|dataCellStyle
 argument_list|)
 expr_stmt|;
-block|}
 name|setRowItem
 argument_list|(
 name|row
