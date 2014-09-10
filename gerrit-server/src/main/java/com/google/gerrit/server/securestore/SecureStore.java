@@ -90,6 +90,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Abstract class for providing new SecureStore implementation for Gerrit.  *  * SecureStore is responsible for storing sensitive data like passwords in a  * secure manner.  *  * It is implementator's responsibility to encrypt and store values.  *  * To deploy new SecureStore one needs to provide a jar file with explicitly one  * class that extends {@code SecureStore} and put it in Gerrit server. Then run:  *  * `java -jar gerrit.war SwitchSecureStore -d $gerrit_site --new-secure-store-lib  *  $path_to_new_secure_store.jar`  *  * on stopped Gerrit instance.  */
+end_comment
+
 begin_class
 DECL|class|SecureStore
 specifier|public
@@ -97,6 +101,7 @@ specifier|abstract
 class|class
 name|SecureStore
 block|{
+comment|/**    * Describes {@link SecureStore} entry    */
 DECL|class|EntryKey
 specifier|public
 specifier|static
@@ -121,6 +126,7 @@ specifier|final
 name|String
 name|subsection
 decl_stmt|;
+comment|/**      * Creates EntryKey.      *      * @param section      * @param subsection      * @param name      */
 DECL|method|EntryKey (String section, String subsection, String name)
 specifier|public
 name|EntryKey
@@ -155,6 +161,7 @@ name|subsection
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Extract decrypted value of stored property from SecureStore or {@code null}    * when property was not found.    *    * @param section    * @param subsection    * @param name    * @return decrypted String value or {@code null} if not found    */
 DECL|method|get (String section, String subsection, String name)
 specifier|public
 specifier|final
@@ -208,6 +215,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**    * Extract list of values from SecureStore and decrypt every value in that    * list or {@code null} when property was not found.    *    * @param section    * @param subsection    * @param name    * @return decrypted list of string values or {@code null}    */
 DECL|method|getList (String section, String subsection, String name)
 specifier|public
 specifier|abstract
@@ -225,6 +233,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**    * Store single value in SecureStore.    *    * This method is responsible for encrypting value and storing it.    *    * @param section    * @param subsection    * @param name    * @param value plain text value    */
 DECL|method|set (String section, String subsection, String name, String value)
 specifier|public
 specifier|final
@@ -261,6 +270,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Store list of values in SecureStore.    *    * This method is responsible for encrypting all values in the list and storing them.    *    * @param section    * @param subsection    * @param name    * @param values list of plain text values    */
 DECL|method|setList (String section, String subsection, String name, List<String> values)
 specifier|public
 specifier|abstract
@@ -283,6 +293,7 @@ argument_list|>
 name|values
 parameter_list|)
 function_decl|;
+comment|/**    * Remove value for given {@code section}, {@code subsection} and {@code name}    * from SecureStore.    *    * @param section    * @param subsection    * @param name    */
 DECL|method|unset (String section, String subsection, String name)
 specifier|public
 specifier|abstract
@@ -299,6 +310,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
+comment|/**    * @return list of stored entries.    */
 DECL|method|list ()
 specifier|public
 specifier|abstract
