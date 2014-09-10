@@ -1488,6 +1488,11 @@ specifier|private
 name|Widget
 name|replyButton
 decl_stmt|;
+DECL|field|editExists
+specifier|private
+name|boolean
+name|editExists
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|onLoad ()
@@ -1510,7 +1515,7 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen2.Style style, Widget editButton, Widget replyButton)
+DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen2.Style style, Widget editButton, Widget replyButton, boolean editExists)
 specifier|public
 name|void
 name|set
@@ -1535,6 +1540,9 @@ name|editButton
 parameter_list|,
 name|Widget
 name|replyButton
+parameter_list|,
+name|boolean
+name|editExists
 parameter_list|)
 block|{
 name|this
@@ -1566,6 +1574,12 @@ operator|.
 name|replyButton
 operator|=
 name|replyButton
+expr_stmt|;
+name|this
+operator|.
+name|editExists
+operator|=
+name|editExists
 expr_stmt|;
 block|}
 DECL|method|setValue (NativeMap<FileInfo> fileMap, Timestamp myLastReply, NativeMap<JsArray<CommentInfo>> comments, NativeMap<JsArray<CommentInfo>> drafts, Mode mode)
@@ -2267,11 +2281,41 @@ operator|.
 name|path
 argument_list|()
 decl_stmt|;
+specifier|final
+name|PatchSet
+operator|.
+name|Id
+name|id
+init|=
+name|editExists
+operator|&&
+name|curr
+operator|.
+name|get
+argument_list|()
+operator|!=
+literal|0
+condition|?
+operator|new
+name|PatchSet
+operator|.
+name|Id
+argument_list|(
+name|curr
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
+literal|0
+argument_list|)
+else|:
+name|curr
+decl_stmt|;
 name|ChangeFileApi
 operator|.
 name|getContent
 argument_list|(
-name|curr
+name|id
 argument_list|,
 name|path
 argument_list|,
@@ -2298,7 +2342,7 @@ init|=
 operator|new
 name|EditFileAction
 argument_list|(
-name|curr
+name|id
 argument_list|,
 name|result
 argument_list|,
