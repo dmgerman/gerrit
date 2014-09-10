@@ -124,20 +124,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AllProjectsNameProvider
@@ -212,18 +198,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -282,7 +256,7 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig (TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, Provider<CurrentUser> currentUser)
+DECL|method|GetConfig (TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|GetConfig
 parameter_list|(
@@ -309,12 +283,6 @@ name|ProjectResource
 argument_list|>
 argument_list|>
 name|views
-parameter_list|,
-name|Provider
-argument_list|<
-name|CurrentUser
-argument_list|>
-name|currentUser
 parameter_list|)
 block|{
 name|this
