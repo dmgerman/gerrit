@@ -3990,7 +3990,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Merge topic '%s'"
+literal|"Merge changes from topic '%s'"
 argument_list|,
 name|Iterables
 operator|.
@@ -4019,7 +4019,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Merge topics '%s'"
+literal|"Merge changes from topics '%s'"
 argument_list|,
 name|Joiner
 operator|.
