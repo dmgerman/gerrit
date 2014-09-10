@@ -1835,10 +1835,8 @@ if|if
 condition|(
 name|editInfo
 operator|.
-name|_number
+name|is_edit
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// parent commit is parent patch set revision
