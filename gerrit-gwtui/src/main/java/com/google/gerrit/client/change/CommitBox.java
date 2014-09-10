@@ -1009,6 +1009,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|setParents
 argument_list|(
 name|change
@@ -1025,7 +1026,6 @@ name|parents
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|setWebLinks (ChangeInfo change, String revision, RevisionInfo revInfo)
 specifier|private

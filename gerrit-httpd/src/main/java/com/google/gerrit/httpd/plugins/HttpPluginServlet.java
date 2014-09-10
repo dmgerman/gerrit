@@ -4577,7 +4577,7 @@ operator|.
 name|getRequestURI
 argument_list|()
 operator|.
-name|equals
+name|endsWith
 argument_list|(
 name|getJsPluginPath
 argument_list|(
