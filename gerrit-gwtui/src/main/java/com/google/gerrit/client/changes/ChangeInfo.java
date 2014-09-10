@@ -1790,7 +1790,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|findEditParent (JsArray<RevisionInfo> list)
-specifier|private
+specifier|public
 specifier|static
 name|int
 name|findEditParent

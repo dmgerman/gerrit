@@ -90,14 +90,14 @@ name|ChangeMessages
 extends|extends
 name|Messages
 block|{
-DECL|method|patchSets (String currentlyViewedPatchSet, String currentPatchSet)
+DECL|method|patchSets (String currentlyViewedPatchSet, int currentPatchSet)
 name|String
 name|patchSets
 parameter_list|(
 name|String
 name|currentlyViewedPatchSet
 parameter_list|,
-name|String
+name|int
 name|currentPatchSet
 parameter_list|)
 function_decl|;
@@ -171,6 +171,14 @@ name|sameTopic
 parameter_list|(
 name|String
 name|count
+parameter_list|)
+function_decl|;
+DECL|method|editPatchSet (int patchSet)
+name|String
+name|editPatchSet
+parameter_list|(
+name|int
+name|patchSet
 parameter_list|)
 function_decl|;
 block|}
