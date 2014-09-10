@@ -92,6 +92,22 @@ name|extensions
 operator|.
 name|webui
 operator|.
+name|BranchWebLink
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|webui
+operator|.
 name|PatchSetWebLink
 import|;
 end_import
@@ -165,9 +181,18 @@ name|ProjectWebLink
 argument_list|>
 name|projectLinks
 decl_stmt|;
+DECL|field|branchLinks
+specifier|private
+specifier|final
+name|DynamicSet
+argument_list|<
+name|BranchWebLink
+argument_list|>
+name|branchLinks
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebLinksProvider (DynamicSet<PatchSetWebLink> patchSetLinks, DynamicSet<ProjectWebLink> projectLinks)
+DECL|method|WebLinksProvider (DynamicSet<PatchSetWebLink> patchSetLinks, DynamicSet<ProjectWebLink> projectLinks, DynamicSet<BranchWebLink> branchLinks)
 specifier|public
 name|WebLinksProvider
 parameter_list|(
@@ -182,6 +207,12 @@ argument_list|<
 name|ProjectWebLink
 argument_list|>
 name|projectLinks
+parameter_list|,
+name|DynamicSet
+argument_list|<
+name|BranchWebLink
+argument_list|>
+name|branchLinks
 parameter_list|)
 block|{
 name|this
@@ -195,6 +226,12 @@ operator|.
 name|projectLinks
 operator|=
 name|projectLinks
+expr_stmt|;
+name|this
+operator|.
+name|branchLinks
+operator|=
+name|branchLinks
 expr_stmt|;
 block|}
 annotation|@
@@ -214,6 +251,8 @@ argument_list|(
 name|patchSetLinks
 argument_list|,
 name|projectLinks
+argument_list|,
+name|branchLinks
 argument_list|)
 decl_stmt|;
 return|return

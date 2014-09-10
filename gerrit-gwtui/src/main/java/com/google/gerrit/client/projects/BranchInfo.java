@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|actions
 operator|.
 name|ActionInfo
@@ -127,6 +141,22 @@ operator|.
 name|client
 operator|.
 name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArray
 import|;
 end_import
 
@@ -211,6 +241,18 @@ argument_list|>
 name|actions
 parameter_list|()
 comment|/*-{ return this.actions }-*/
+function_decl|;
+DECL|method|web_links ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|web_links
+parameter_list|()
+comment|/*-{ return this.web_links; }-*/
 function_decl|;
 DECL|method|BranchInfo ()
 specifier|protected
