@@ -1820,15 +1820,10 @@ name|toChange
 argument_list|(
 name|changeId
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|r
 operator|.
-name|_number
+name|id
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
