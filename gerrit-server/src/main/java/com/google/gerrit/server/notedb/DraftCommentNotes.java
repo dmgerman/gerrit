@@ -417,6 +417,12 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 decl_stmt|;
+DECL|field|migration
+specifier|private
+specifier|final
+name|NotesMigration
+name|migration
+decl_stmt|;
 DECL|field|draftsProject
 specifier|private
 specifier|final
@@ -427,12 +433,15 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|Factory (GitRepositoryManager repoManager, AllUsersNameProvider allUsers)
+DECL|method|Factory (GitRepositoryManager repoManager, NotesMigration migration, AllUsersNameProvider allUsers)
 specifier|public
 name|Factory
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AllUsersNameProvider
 name|allUsers
@@ -443,6 +452,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -475,6 +490,8 @@ operator|new
 name|DraftCommentNotes
 argument_list|(
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|draftsProject
 argument_list|,
@@ -534,11 +551,14 @@ specifier|private
 name|NoteMap
 name|noteMap
 decl_stmt|;
-DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, AllUsersName draftsProject, Change.Id changeId, Account.Id author)
+DECL|method|DraftCommentNotes (GitRepositoryManager repoManager, NotesMigration migration, AllUsersName draftsProject, Change.Id changeId, Account.Id author)
 name|DraftCommentNotes
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|AllUsersName
 name|draftsProject
@@ -557,6 +577,8 @@ block|{
 name|super
 argument_list|(
 name|repoManager
+argument_list|,
+name|migration
 argument_list|,
 name|changeId
 argument_list|)
@@ -867,6 +889,16 @@ operator|+
 literal|" is read-only"
 argument_list|)
 throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|loadDefaults ()
+specifier|protected
+name|void
+name|loadDefaults
+parameter_list|()
+block|{
+comment|// Do nothing; tables are final and initialized in constructor.
 block|}
 annotation|@
 name|Override

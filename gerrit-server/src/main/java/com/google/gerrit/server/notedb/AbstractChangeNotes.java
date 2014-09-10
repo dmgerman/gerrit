@@ -198,16 +198,17 @@ parameter_list|>
 extends|extends
 name|VersionedMetaData
 block|{
-DECL|field|loaded
-specifier|private
-name|boolean
-name|loaded
-decl_stmt|;
 DECL|field|repoManager
 specifier|protected
 specifier|final
 name|GitRepositoryManager
 name|repoManager
+decl_stmt|;
+DECL|field|migration
+specifier|protected
+specifier|final
+name|NotesMigration
+name|migration
 decl_stmt|;
 DECL|field|changeId
 specifier|private
@@ -217,11 +218,19 @@ operator|.
 name|Id
 name|changeId
 decl_stmt|;
-DECL|method|AbstractChangeNotes (GitRepositoryManager repoManager, Change.Id changeId)
+DECL|field|loaded
+specifier|private
+name|boolean
+name|loaded
+decl_stmt|;
+DECL|method|AbstractChangeNotes (GitRepositoryManager repoManager, NotesMigration migration, Change.Id changeId)
 name|AbstractChangeNotes
 parameter_list|(
 name|GitRepositoryManager
 name|repoManager
+parameter_list|,
+name|NotesMigration
+name|migration
 parameter_list|,
 name|Change
 operator|.
@@ -234,6 +243,12 @@ operator|.
 name|repoManager
 operator|=
 name|repoManager
+expr_stmt|;
+name|this
+operator|.
+name|migration
+operator|=
+name|migration
 expr_stmt|;
 name|this
 operator|.
@@ -264,10 +279,31 @@ name|OrmException
 block|{
 if|if
 condition|(
-operator|!
 name|loaded
 condition|)
 block|{
+return|return
+name|self
+argument_list|()
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|migration
+operator|.
+name|enabled
+argument_list|()
+condition|)
+block|{
+name|loadDefaults
+argument_list|()
+expr_stmt|;
+return|return
+name|self
+argument_list|()
+return|;
+block|}
 name|Repository
 name|repo
 decl_stmt|;
@@ -334,12 +370,19 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 return|return
 name|self
 argument_list|()
 return|;
 block|}
+comment|/** Load default values for any instance variables when notedb is disabled. */
+DECL|method|loadDefaults ()
+specifier|protected
+specifier|abstract
+name|void
+name|loadDefaults
+parameter_list|()
+function_decl|;
 comment|/**    * @return the NameKey for the project where the notes should be stored,    *    which is not necessarily the same as the change's project.    */
 DECL|method|getProjectName ()
 specifier|protected
