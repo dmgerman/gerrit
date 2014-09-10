@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|//Copyright (C) 2013 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -8,23 +8,15 @@ comment|//
 end_comment
 
 begin_comment
-comment|// Licensed under the Apache License, Version 2.0 (the "License");
+comment|//Licensed under the Apache License, Version 2.0 (the "License");
 end_comment
 
 begin_comment
-comment|// you may not use this file except in compliance with the License.
+comment|//you may not use this file except in compliance with the License.
 end_comment
 
 begin_comment
-comment|// You may obtain a copy of the License at
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// http://www.apache.org/licenses/LICENSE-2.0
+comment|//You may obtain a copy of the License at
 end_comment
 
 begin_comment
@@ -32,23 +24,31 @@ comment|//
 end_comment
 
 begin_comment
-comment|// Unless required by applicable law or agreed to in writing, software
+comment|//http://www.apache.org/licenses/LICENSE-2.0
 end_comment
 
 begin_comment
-comment|// distributed under the License is distributed on an "AS IS" BASIS,
+comment|//
 end_comment
 
 begin_comment
-comment|// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+comment|//Unless required by applicable law or agreed to in writing, software
 end_comment
 
 begin_comment
-comment|// See the License for the specific language governing permissions and
+comment|//distributed under the License is distributed on an "AS IS" BASIS,
 end_comment
 
 begin_comment
-comment|// limitations under the License.
+comment|//WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+end_comment
+
+begin_comment
+comment|//See the License for the specific language governing permissions and
+end_comment
+
+begin_comment
+comment|//limitations under the License.
 end_comment
 
 begin_package
@@ -90,9 +90,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
-operator|.
-name|ChangeApi
+name|VoidResult
 import|;
 end_import
 
@@ -106,9 +104,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|rpc
+name|changes
 operator|.
-name|GerritCallback
+name|ChangeFileApi
 import|;
 end_import
 
@@ -154,7 +152,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Change
+name|PatchSet
 import|;
 end_import
 
@@ -171,22 +169,6 @@ operator|.
 name|client
 operator|.
 name|GWT
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|core
-operator|.
-name|client
-operator|.
-name|JavaScriptObject
 import|;
 end_import
 
@@ -302,6 +284,24 @@ name|user
 operator|.
 name|client
 operator|.
+name|rpc
+operator|.
+name|AsyncCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
 name|ui
 operator|.
 name|Button
@@ -397,9 +397,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|EditMessageBox
+DECL|class|EditFileBox
 class|class
-name|EditMessageBox
+name|EditFileBox
 extends|extends
 name|Composite
 block|{
@@ -411,7 +411,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|EditMessageBox
+name|EditFileBox
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -430,30 +430,37 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|changeId
-specifier|private
+DECL|field|id
 specifier|final
-name|Change
+specifier|private
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|id
 decl_stmt|;
-DECL|field|revision
-specifier|private
+DECL|field|fileName
 specifier|final
-name|String
-name|revision
-decl_stmt|;
-DECL|field|originalMessage
 specifier|private
 name|String
-name|originalMessage
+name|fileName
 decl_stmt|;
-DECL|field|message
+DECL|field|fileContent
+specifier|final
+specifier|private
+name|String
+name|fileContent
+decl_stmt|;
+DECL|field|file
+annotation|@
+name|UiField
+name|FileTextBox
+name|file
+decl_stmt|;
+DECL|field|content
 annotation|@
 name|UiField
 name|NpTextArea
-name|message
+name|content
 decl_stmt|;
 DECL|field|save
 annotation|@
@@ -467,41 +474,38 @@ name|UiField
 name|Button
 name|cancel
 decl_stmt|;
-DECL|method|EditMessageBox ( Change.Id changeId, String revision, String msg)
-name|EditMessageBox
+DECL|method|EditFileBox ( PatchSet.Id id, String fileC, String fileName)
+name|EditFileBox
 parameter_list|(
-name|Change
+name|PatchSet
 operator|.
 name|Id
-name|changeId
+name|id
 parameter_list|,
 name|String
-name|revision
+name|fileC
 parameter_list|,
 name|String
-name|msg
+name|fileName
 parameter_list|)
 block|{
 name|this
 operator|.
-name|changeId
+name|id
 operator|=
-name|changeId
+name|id
 expr_stmt|;
 name|this
 operator|.
-name|revision
+name|fileName
 operator|=
-name|revision
+name|fileName
 expr_stmt|;
 name|this
 operator|.
-name|originalMessage
+name|fileContent
 operator|=
-name|msg
-operator|.
-name|trim
-argument_list|()
+name|fileC
 expr_stmt|;
 name|initWidget
 argument_list|(
@@ -513,29 +517,10 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|message
-operator|.
-name|getElement
-argument_list|()
-operator|.
-name|setAttribute
-argument_list|(
-literal|"wrap"
-argument_list|,
-literal|"off"
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|setText
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
 operator|new
 name|TextBoxChangeListener
 argument_list|(
-name|message
+name|content
 argument_list|)
 block|{
 specifier|public
@@ -551,6 +536,18 @@ operator|.
 name|setEnabled
 argument_list|(
 operator|!
+name|file
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|!
 name|newText
 operator|.
 name|trim
@@ -558,7 +555,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|originalMessage
+name|fileContent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -574,22 +571,37 @@ name|void
 name|onLoad
 parameter_list|()
 block|{
-if|if
-condition|(
-name|message
+name|file
 operator|.
-name|getText
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|message
+name|set
+argument_list|(
+name|id
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|file
 operator|.
 name|setText
 argument_list|(
-name|originalMessage
+name|fileName
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|setEnabled
+argument_list|(
+name|fileName
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|content
+operator|.
+name|setText
+argument_list|(
+name|fileContent
 argument_list|)
 expr_stmt|;
 name|save
@@ -599,7 +611,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
 name|Scheduler
 operator|.
 name|get
@@ -618,7 +629,7 @@ name|void
 name|execute
 parameter_list|()
 block|{
-name|message
+name|content
 operator|.
 name|setFocus
 argument_list|(
@@ -643,36 +654,26 @@ name|ClickEvent
 name|e
 parameter_list|)
 block|{
-name|save
+name|ChangeFileApi
 operator|.
-name|setEnabled
+name|putContent
 argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|ChangeApi
-operator|.
-name|message
-argument_list|(
-name|changeId
-operator|.
-name|get
-argument_list|()
+name|id
 argument_list|,
-name|revision
-argument_list|,
-name|message
+name|file
 operator|.
 name|getText
 argument_list|()
+argument_list|,
+name|content
 operator|.
-name|trim
+name|getText
 argument_list|()
 argument_list|,
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
-name|JavaScriptObject
+name|VoidResult
 argument_list|>
 argument_list|()
 block|{
@@ -682,8 +683,8 @@ specifier|public
 name|void
 name|onSuccess
 parameter_list|(
-name|JavaScriptObject
-name|msg
+name|VoidResult
+name|result
 parameter_list|)
 block|{
 name|Gerrit
@@ -692,9 +693,12 @@ name|display
 argument_list|(
 name|PageLinks
 operator|.
-name|toChange
+name|toChangeInEditMode
 argument_list|(
-name|changeId
+name|id
+operator|.
+name|getParentKey
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -702,6 +706,16 @@ name|hide
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{           }
 block|}
 argument_list|)
 expr_stmt|;
@@ -719,13 +733,6 @@ name|ClickEvent
 name|e
 parameter_list|)
 block|{
-name|message
-operator|.
-name|setText
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
 name|hide
 argument_list|()
 expr_stmt|;

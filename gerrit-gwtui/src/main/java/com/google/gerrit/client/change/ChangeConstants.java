@@ -109,6 +109,21 @@ name|String
 name|reviewedFileTitle
 parameter_list|()
 function_decl|;
+DECL|method|editFileInline ()
+name|String
+name|editFileInline
+parameter_list|()
+function_decl|;
+DECL|method|removeFileInline ()
+name|String
+name|removeFileInline
+parameter_list|()
+function_decl|;
+DECL|method|restoreFileInline ()
+name|String
+name|restoreFileInline
+parameter_list|()
+function_decl|;
 DECL|method|openLastFile ()
 name|String
 name|openLastFile

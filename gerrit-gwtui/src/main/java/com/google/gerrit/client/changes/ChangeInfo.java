@@ -1448,6 +1448,27 @@ name|actions
 parameter_list|()
 comment|/*-{ return this.actions; }-*/
 function_decl|;
+DECL|method|has_fetch ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|has_fetch
+parameter_list|()
+comment|/*-{ return this.hasOwnProperty('fetch') }-*/
+function_decl|;
+DECL|method|fetch ()
+specifier|public
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|FetchInfo
+argument_list|>
+name|fetch
+parameter_list|()
+comment|/*-{ return this.fetch; }-*/
+function_decl|;
 DECL|method|has_files ()
 specifier|public
 specifier|final

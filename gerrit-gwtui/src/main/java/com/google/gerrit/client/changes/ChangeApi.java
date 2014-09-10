@@ -572,6 +572,30 @@ literal|"edit"
 argument_list|)
 return|;
 block|}
+DECL|method|editWithCommands (int id)
+specifier|public
+specifier|static
+name|RestApi
+name|editWithCommands
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|edit
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|addParameter
+argument_list|(
+literal|"download-commands"
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
 DECL|method|includedIn (int id, AsyncCallback<IncludedInInfo> cb)
 specifier|public
 specifier|static

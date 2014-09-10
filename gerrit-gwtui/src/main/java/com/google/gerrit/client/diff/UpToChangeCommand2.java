@@ -236,15 +236,10 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|revision
 operator|.
-name|get
+name|getId
 argument_list|()
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
