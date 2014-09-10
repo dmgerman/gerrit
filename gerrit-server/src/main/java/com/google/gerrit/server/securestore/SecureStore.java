@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
+name|Lists
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -76,10 +90,11 @@ name|List
 import|;
 end_import
 
-begin_interface
-DECL|interface|SecureStore
+begin_class
+DECL|class|SecureStore
 specifier|public
-interface|interface
+specifier|abstract
+class|class
 name|SecureStore
 block|{
 DECL|class|EntryKey
@@ -141,6 +156,8 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|get (String section, String subsection, String name)
+specifier|public
+specifier|final
 name|String
 name|get
 parameter_list|(
@@ -153,8 +170,47 @@ parameter_list|,
 name|String
 name|name
 parameter_list|)
-function_decl|;
+block|{
+name|String
+index|[]
+name|values
+init|=
+name|getList
+argument_list|(
+name|section
+argument_list|,
+name|subsection
+argument_list|,
+name|name
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|values
+operator|!=
+literal|null
+operator|&&
+name|values
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+return|return
+name|values
+index|[
+literal|0
+index|]
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
 DECL|method|getList (String section, String subsection, String name)
+specifier|public
+specifier|abstract
 name|String
 index|[]
 name|getList
@@ -170,6 +226,8 @@ name|name
 parameter_list|)
 function_decl|;
 DECL|method|set (String section, String subsection, String name, String value)
+specifier|public
+specifier|final
 name|void
 name|set
 parameter_list|(
@@ -185,8 +243,27 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
-function_decl|;
+block|{
+name|setList
+argument_list|(
+name|section
+argument_list|,
+name|subsection
+argument_list|,
+name|name
+argument_list|,
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|value
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setList (String section, String subsection, String name, List<String> values)
+specifier|public
+specifier|abstract
 name|void
 name|setList
 parameter_list|(
@@ -207,6 +284,8 @@ name|values
 parameter_list|)
 function_decl|;
 DECL|method|unset (String section, String subsection, String name)
+specifier|public
+specifier|abstract
 name|void
 name|unset
 parameter_list|(
@@ -221,6 +300,8 @@ name|name
 parameter_list|)
 function_decl|;
 DECL|method|list ()
+specifier|public
+specifier|abstract
 name|Iterable
 argument_list|<
 name|EntryKey
@@ -229,7 +310,7 @@ name|list
 parameter_list|()
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 

@@ -1885,7 +1885,7 @@ name|secureStores
 init|=
 name|scanner
 operator|.
-name|findImplementationsOf
+name|findSubClassesOf
 argument_list|(
 name|SecureStore
 operator|.
