@@ -632,6 +632,9 @@ operator|.
 name|trimResults
 argument_list|()
 operator|.
+name|omitEmptyStrings
+argument_list|()
+operator|.
 name|split
 argument_list|(
 name|input
