@@ -1978,7 +1978,7 @@ name|void
 name|testUsernamePatternCanUploadToAnyRef
 parameter_list|()
 block|{
-name|grant
+name|allow
 argument_list|(
 name|local
 argument_list|,
