@@ -2240,15 +2240,10 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|id
 operator|.
-name|get
+name|getId
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
