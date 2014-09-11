@@ -247,6 +247,81 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Create a new change. */
+DECL|method|createChange (String project, String branch, String subject, AsyncCallback<ChangeInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|createChange
+parameter_list|(
+name|String
+name|project
+parameter_list|,
+name|String
+name|branch
+parameter_list|,
+name|String
+name|subject
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|CreateChangeInput
+name|input
+init|=
+name|CreateChangeInput
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|input
+operator|.
+name|project
+argument_list|(
+name|emptyToNull
+argument_list|(
+name|project
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|input
+operator|.
+name|branch
+argument_list|(
+name|emptyToNull
+argument_list|(
+name|branch
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|input
+operator|.
+name|subject
+argument_list|(
+name|emptyToNull
+argument_list|(
+name|subject
+argument_list|)
+argument_list|)
+expr_stmt|;
+operator|new
+name|RestApi
+argument_list|(
+literal|"/changes/"
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|input
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Restore a previously abandoned change to be open again. */
 DECL|method|restore (int id, String msg, AsyncCallback<ChangeInfo> cb)
 specifier|public
@@ -1332,6 +1407,70 @@ block|}
 DECL|method|Input ()
 specifier|protected
 name|Input
+parameter_list|()
+block|{     }
+block|}
+DECL|class|CreateChangeInput
+specifier|private
+specifier|static
+class|class
+name|CreateChangeInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|create ()
+specifier|static
+name|CreateChangeInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|CreateChangeInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|branch (String b)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|branch
+parameter_list|(
+name|String
+name|b
+parameter_list|)
+comment|/*-{ if(b)this.branch=b; }-*/
+function_decl|;
+DECL|method|project (String p)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|project
+parameter_list|(
+name|String
+name|p
+parameter_list|)
+comment|/*-{ if(p)this.project=p; }-*/
+function_decl|;
+DECL|method|subject (String s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|subject
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+comment|/*-{ if(s)this.subject=s; }-*/
+function_decl|;
+DECL|method|CreateChangeInput ()
+specifier|protected
+name|CreateChangeInput
 parameter_list|()
 block|{     }
 block|}
