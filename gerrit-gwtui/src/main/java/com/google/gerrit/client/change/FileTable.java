@@ -386,24 +386,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|PatchSet
-operator|.
-name|Id
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwt
 operator|.
 name|core
@@ -1528,14 +1510,18 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|set (Id base, Id curr, ChangeScreen2.Style style, Widget editButton, Widget replyButton)
+DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen2.Style style, Widget editButton, Widget replyButton)
 specifier|public
 name|void
 name|set
 parameter_list|(
+name|PatchSet
+operator|.
 name|Id
 name|base
 parameter_list|,
+name|PatchSet
+operator|.
 name|Id
 name|curr
 parameter_list|,
