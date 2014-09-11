@@ -74,6 +74,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -196,6 +210,30 @@ argument_list|>
 name|content
 parameter_list|()
 comment|/*-{ return this.content; }-*/
+function_decl|;
+DECL|method|web_links_a ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|web_links_a
+parameter_list|()
+comment|/*-{ return this.web_links_a; }-*/
+function_decl|;
+DECL|method|web_links_b ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|web_links_b
+parameter_list|()
+comment|/*-{ return this.web_links_b; }-*/
 function_decl|;
 DECL|method|change_type ()
 specifier|public
