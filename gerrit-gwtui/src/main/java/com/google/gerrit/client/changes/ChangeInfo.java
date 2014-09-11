@@ -1418,6 +1418,15 @@ name|n
 parameter_list|)
 comment|/*-{ this.name = n; }-*/
 function_decl|;
+DECL|method|base_revision ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|base_revision
+parameter_list|()
+comment|/*-{ return this.base_revision; }-*/
+function_decl|;
 DECL|method|commit ()
 specifier|public
 specifier|final
@@ -1544,7 +1553,7 @@ parameter_list|(
 name|EditInfo
 name|edit
 parameter_list|)
-comment|/*-{       this._number = 0;       this.name = edit.name;       this.commit = edit.commit;     }-*/
+comment|/*-{       this._number = 0;       this.name = edit.name;       this.commit = edit.commit;       this.edit_base = edit.base_revision;     }-*/
 function_decl|;
 DECL|method|_number ()
 specifier|public
@@ -1611,6 +1620,15 @@ name|CommitInfo
 name|c
 parameter_list|)
 comment|/*-{ this.commit = c; }-*/
+function_decl|;
+DECL|method|edit_base ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|edit_base
+parameter_list|()
+comment|/*-{ return this.edit_base; }-*/
 function_decl|;
 DECL|method|has_files ()
 specifier|public
@@ -1839,29 +1857,12 @@ name|is_edit
 argument_list|()
 condition|)
 block|{
-comment|// parent commit is parent patch set revision
-name|CommitInfo
-name|commit
-init|=
-name|editInfo
-operator|.
-name|commit
-argument_list|()
-operator|.
-name|parents
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 name|String
 name|parentRevision
 init|=
-name|commit
+name|editInfo
 operator|.
-name|commit
+name|edit_base
 argument_list|()
 decl_stmt|;
 comment|// find parent

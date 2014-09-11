@@ -187,7 +187,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A single user's edit for a change.  *<p>  * There is max. one edit per user per change. Edits are stored on refs:  * refs/users/UU/UUUU/edit-CCCC where UU/UUUU is sharded representation  * of user account and CCCC is change number.  */
+comment|/**  * A single user's edit for a change.  *<p>  * There is max. one edit per user per change. Edits are stored on refs:  * refs/users/UU/UUUU/edit-CCCC/P where UU/UUUU is sharded representation  * of user account, CCCC is change number and P is the patch set number it  * is based on.  */
 end_comment
 
 begin_class
@@ -371,6 +371,11 @@ name|getAccountId
 argument_list|()
 argument_list|,
 name|change
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|basePatchSet
 operator|.
 name|getId
 argument_list|()
