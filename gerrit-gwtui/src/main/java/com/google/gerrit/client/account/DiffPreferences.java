@@ -280,6 +280,16 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|autoHideDiffTableHeader
+argument_list|(
+name|in
+operator|.
+name|isAutoHideDiffTableHeader
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|hideLineNumbers
 argument_list|(
 name|in
@@ -432,6 +442,14 @@ operator|.
 name|setHideTopMenu
 argument_list|(
 name|hideTopMenu
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|setAutoHideDiffTableHeader
+argument_list|(
+name|autoHideDiffTableHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -664,6 +682,18 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.hide_top_menu = s }-*/
+function_decl|;
+DECL|method|autoHideDiffTableHeader (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|autoHideDiffTableHeader
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.auto_hide_diff_table_header = s }-*/
 function_decl|;
 DECL|method|hideLineNumbers (boolean s)
 specifier|public
@@ -921,6 +951,15 @@ name|boolean
 name|hideTopMenu
 parameter_list|()
 comment|/*-{ return this.hide_top_menu || false }-*/
+function_decl|;
+DECL|method|autoHideDiffTableHeader ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|autoHideDiffTableHeader
+parameter_list|()
+comment|/*-{ return this.auto_hide_diff_table_header || false }-*/
 function_decl|;
 DECL|method|hideLineNumbers ()
 specifier|public

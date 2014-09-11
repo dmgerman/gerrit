@@ -411,6 +411,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|setAutoHideDiffTableHeader
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -672,6 +679,18 @@ specifier|protected
 name|boolean
 name|hideEmptyPane
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|21
+argument_list|)
+DECL|field|autoHideDiffTableHeader
+specifier|protected
+name|boolean
+name|autoHideDiffTableHeader
+decl_stmt|;
 DECL|method|AccountDiffPreference ()
 specifier|protected
 name|AccountDiffPreference
@@ -853,6 +872,14 @@ operator|=
 name|p
 operator|.
 name|hideEmptyPane
+expr_stmt|;
+name|this
+operator|.
+name|autoHideDiffTableHeader
+operator|=
+name|p
+operator|.
+name|autoHideDiffTableHeader
 expr_stmt|;
 block|}
 DECL|method|getAccountId ()
@@ -1384,6 +1411,30 @@ name|hideEmptyPane
 operator|=
 name|hideEmptyPane
 expr_stmt|;
+block|}
+DECL|method|setAutoHideDiffTableHeader (boolean hide)
+specifier|public
+name|void
+name|setAutoHideDiffTableHeader
+parameter_list|(
+name|boolean
+name|hide
+parameter_list|)
+block|{
+name|autoHideDiffTableHeader
+operator|=
+name|hide
+expr_stmt|;
+block|}
+DECL|method|isAutoHideDiffTableHeader ()
+specifier|public
+name|boolean
+name|isAutoHideDiffTableHeader
+parameter_list|()
+block|{
+return|return
+name|autoHideDiffTableHeader
+return|;
 block|}
 block|}
 end_class
