@@ -140,24 +140,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
-operator|.
-name|NameKey
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
 name|Change
 import|;
 end_import
@@ -475,11 +457,13 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doRefUpdatedHook (NameKey refName, RefUpdate refUpdate, Account account)
+DECL|method|doRefUpdatedHook (Branch.NameKey refName, RefUpdate refUpdate, Account account)
 specifier|public
 name|void
 name|doRefUpdatedHook
 parameter_list|(
+name|Branch
+operator|.
 name|NameKey
 name|refName
 parameter_list|,
@@ -492,11 +476,13 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doRefUpdatedHook (NameKey refName, ObjectId oldId, ObjectId newId, Account account)
+DECL|method|doRefUpdatedHook (Branch.NameKey refName, ObjectId oldId, ObjectId newId, Account account)
 specifier|public
 name|void
 name|doRefUpdatedHook
 parameter_list|(
+name|Branch
+operator|.
 name|NameKey
 name|refName
 parameter_list|,

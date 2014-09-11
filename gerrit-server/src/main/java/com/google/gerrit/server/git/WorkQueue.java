@@ -123,8 +123,6 @@ operator|.
 name|client
 operator|.
 name|Project
-operator|.
-name|NameKey
 import|;
 end_import
 
@@ -2025,6 +2023,8 @@ annotation|@
 name|Override
 DECL|method|getProjectNameKey ()
 specifier|public
+name|Project
+operator|.
 name|NameKey
 name|getProjectNameKey
 parameter_list|()
