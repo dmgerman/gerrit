@@ -1084,6 +1084,8 @@ name|getLinkName
 argument_list|()
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -1137,12 +1139,17 @@ name|link
 operator|.
 name|imageUrl
 argument_list|()
+argument_list|,
+name|link
+operator|.
+name|target
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addWebLink (String href, String name, String imageUrl)
+DECL|method|addWebLink (String href, String name, String imageUrl, String target)
 specifier|private
 name|void
 name|addWebLink
@@ -1155,6 +1162,9 @@ name|name
 parameter_list|,
 name|String
 name|imageUrl
+parameter_list|,
+name|String
+name|target
 parameter_list|)
 block|{
 name|Anchor
@@ -1171,6 +1181,27 @@ argument_list|(
 name|href
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|target
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|target
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|a
+operator|.
+name|setTarget
+argument_list|(
+name|target
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|imageUrl

@@ -115,6 +115,15 @@ name|url
 parameter_list|()
 comment|/*-{ return this.url; }-*/
 function_decl|;
+DECL|method|target ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|target
+parameter_list|()
+comment|/*-{ return this.target; }-*/
+function_decl|;
 DECL|method|WebLinkInfo ()
 specifier|protected
 name|WebLinkInfo

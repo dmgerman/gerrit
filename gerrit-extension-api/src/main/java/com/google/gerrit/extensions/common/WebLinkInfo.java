@@ -87,7 +87,12 @@ specifier|public
 name|String
 name|url
 decl_stmt|;
-DECL|method|WebLinkInfo (String name, String imageUrl, String url)
+DECL|field|target
+specifier|public
+name|String
+name|target
+decl_stmt|;
+DECL|method|WebLinkInfo (String name, String imageUrl, String url, String target)
 specifier|public
 name|WebLinkInfo
 parameter_list|(
@@ -99,6 +104,9 @@ name|imageUrl
 parameter_list|,
 name|String
 name|url
+parameter_list|,
+name|String
+name|target
 parameter_list|)
 block|{
 name|this
@@ -118,6 +126,12 @@ operator|.
 name|url
 operator|=
 name|url
+expr_stmt|;
+name|this
+operator|.
+name|target
+operator|=
+name|target
 expr_stmt|;
 block|}
 block|}
