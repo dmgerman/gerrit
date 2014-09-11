@@ -312,6 +312,13 @@ name|NativeString
 name|b64
 parameter_list|)
 block|{
+if|if
+condition|(
+name|b64
+operator|!=
+literal|null
+condition|)
+block|{
 name|wrapped
 operator|.
 name|onSuccess
@@ -325,6 +332,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
