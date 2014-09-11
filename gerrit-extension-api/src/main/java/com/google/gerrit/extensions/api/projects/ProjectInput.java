@@ -192,6 +192,11 @@ specifier|public
 name|InheritableBoolean
 name|requireChangeId
 decl_stmt|;
+DECL|field|createNewChangeForAllNotInTarget
+specifier|public
+name|InheritableBoolean
+name|createNewChangeForAllNotInTarget
+decl_stmt|;
 DECL|field|maxObjectSizeLimit
 specifier|public
 name|String

@@ -205,6 +205,11 @@ name|String
 name|useSignedOffBy
 parameter_list|()
 function_decl|;
+DECL|method|createNewChangeForAllNotInTarget ()
+name|String
+name|createNewChangeForAllNotInTarget
+parameter_list|()
+function_decl|;
 DECL|method|requireChangeID ()
 name|String
 name|requireChangeID

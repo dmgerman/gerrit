@@ -206,6 +206,11 @@ specifier|public
 name|InheritableBoolean
 name|contentMerge
 decl_stmt|;
+DECL|field|newChangeForAllNotInTarget
+specifier|public
+name|InheritableBoolean
+name|newChangeForAllNotInTarget
+decl_stmt|;
 DECL|field|changeIdRequired
 specifier|public
 name|InheritableBoolean
@@ -245,6 +250,12 @@ operator|.
 name|INHERIT
 expr_stmt|;
 name|changeIdRequired
+operator|=
+name|InheritableBoolean
+operator|.
+name|INHERIT
+expr_stmt|;
+name|newChangeForAllNotInTarget
 operator|=
 name|InheritableBoolean
 operator|.

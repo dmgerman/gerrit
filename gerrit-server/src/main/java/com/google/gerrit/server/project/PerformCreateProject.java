@@ -1429,6 +1429,15 @@ argument_list|)
 expr_stmt|;
 name|newProject
 operator|.
+name|setCreateNewChangeForAllNotInTarget
+argument_list|(
+name|createProjectArgs
+operator|.
+name|newChangeForAllNotInTarget
+argument_list|)
+expr_stmt|;
+name|newProject
+operator|.
 name|setRequireChangeID
 argument_list|(
 name|createProjectArgs
