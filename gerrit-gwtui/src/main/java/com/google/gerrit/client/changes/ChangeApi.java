@@ -248,7 +248,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Create a new change. */
-DECL|method|createChange (String project, String branch, String subject, AsyncCallback<ChangeInfo> cb)
+DECL|method|createChange (String project, String branch, String subject, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -262,6 +262,9 @@ name|branch
 parameter_list|,
 name|String
 name|subject
+parameter_list|,
+name|String
+name|base
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -305,6 +308,16 @@ argument_list|(
 name|emptyToNull
 argument_list|(
 name|subject
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|input
+operator|.
+name|base_change
+argument_list|(
+name|emptyToNull
+argument_list|(
+name|base
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1467,6 +1480,18 @@ name|String
 name|s
 parameter_list|)
 comment|/*-{ if(s)this.subject=s; }-*/
+function_decl|;
+DECL|method|base_change (String b)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|base_change
+parameter_list|(
+name|String
+name|b
+parameter_list|)
+comment|/*-{ if(b)this.base_change=b; }-*/
 function_decl|;
 DECL|method|CreateChangeInput ()
 specifier|protected
