@@ -135,6 +135,13 @@ argument_list|,
 literal|"refs/users/01/1-drafts/2"
 argument_list|)
 expr_stmt|;
+name|assertRef
+argument_list|(
+literal|1
+argument_list|,
+literal|"refs/users/01/1/edit/2"
+argument_list|)
+expr_stmt|;
 name|assertNotRef
 argument_list|(
 literal|null
