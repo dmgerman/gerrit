@@ -1294,7 +1294,7 @@ literal|"refs/heads/master"
 argument_list|,
 literal|"refs/tags/master-tag"
 argument_list|,
-literal|"refs/users/01/1000001/edit-1"
+literal|"refs/users/01/1000001/edit-1/1"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1430,9 +1430,9 @@ comment|// See comment in subsetOfBranchesVisibleNotIncludingHead.
 literal|"refs/tags/master-tag"
 argument_list|,
 comment|// All edits are visible due to accessDatabase capability.
-literal|"refs/users/00/1000000/edit-1"
+literal|"refs/users/00/1000000/edit-1/1"
 argument_list|,
-literal|"refs/users/01/1000001/edit-1"
+literal|"refs/users/01/1000001/edit-1/1"
 argument_list|)
 expr_stmt|;
 block|}
