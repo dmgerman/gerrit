@@ -339,6 +339,11 @@ name|project
 argument_list|,
 name|commit
 argument_list|)
+argument_list|,
+name|webLink
+operator|.
+name|getTarget
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -411,6 +416,11 @@ name|revision
 argument_list|,
 name|file
 argument_list|)
+argument_list|,
+name|webLink
+operator|.
+name|getTarget
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -473,6 +483,11 @@ name|getProjectUrl
 argument_list|(
 name|project
 argument_list|)
+argument_list|,
+name|webLink
+operator|.
+name|getTarget
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -540,6 +555,11 @@ name|project
 argument_list|,
 name|branch
 argument_list|)
+argument_list|,
+name|webLink
+operator|.
+name|getTarget
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -72,6 +72,49 @@ specifier|public
 interface|interface
 name|WebLink
 block|{
+DECL|class|Target
+specifier|public
+specifier|static
+class|class
+name|Target
+block|{
+DECL|field|BLANK
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|BLANK
+init|=
+literal|"_blank"
+decl_stmt|;
+DECL|field|SELF
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|SELF
+init|=
+literal|"_self"
+decl_stmt|;
+DECL|field|PARENT
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|PARENT
+init|=
+literal|"_parent"
+decl_stmt|;
+DECL|field|TOP
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|TOP
+init|=
+literal|"_top"
+decl_stmt|;
+block|}
 comment|/**    * The link-name displayed in UI.    *    * @return name of link or title of the link if image URL is available.    */
 DECL|method|getLinkName ()
 name|String
@@ -82,6 +125,12 @@ comment|/**    * URL of image to be displayed    *    * @return URL to image for
 DECL|method|getImageUrl ()
 name|String
 name|getImageUrl
+parameter_list|()
+function_decl|;
+comment|/**    * Target window in which the link should be opened (e.g. "_blank", "_self".).    *    * @return link target, if null the link is opened in the current window    */
+DECL|method|getTarget ()
+name|String
+name|getTarget
 parameter_list|()
 function_decl|;
 block|}
