@@ -222,6 +222,16 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeSet
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -241,6 +251,8 @@ DECL|method|apply (ChangeResource req)
 specifier|public
 name|Response
 argument_list|<
+name|?
+extends|extends
 name|Set
 argument_list|<
 name|String
@@ -310,7 +322,14 @@ name|Response
 operator|.
 name|ok
 argument_list|(
+operator|new
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
 name|hashtags
+argument_list|)
 argument_list|)
 return|;
 block|}
