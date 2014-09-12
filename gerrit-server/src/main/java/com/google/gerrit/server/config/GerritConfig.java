@@ -224,6 +224,12 @@ condition|(
 name|secure
 operator|!=
 literal|null
+operator|&&
+name|secure
+operator|.
+name|length
+operator|>
+literal|0
 condition|)
 block|{
 return|return
