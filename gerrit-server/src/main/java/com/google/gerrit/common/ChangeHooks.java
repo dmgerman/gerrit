@@ -274,6 +274,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_comment
 comment|/** Invokes hooks on server actions. */
 end_comment
@@ -580,6 +590,42 @@ parameter_list|,
 name|ObjectId
 name|newId
 parameter_list|)
+function_decl|;
+comment|/**    * Fire the hashtags changed Hook.    * @param change The change    * @param account The gerrit user changing the hashtags    * @param added List of hashtags that were added to the change    * @param removed List of hashtags that were removed from the change    * @param hashtags List of hashtags on the change after adding or removing    * @param db The database    * @throws OrmException    */
+DECL|method|doHashtagsChangedHook (Change change, Account account, Set<String>added, Set<String> removed, Set<String> hashtags, ReviewDb db)
+specifier|public
+name|void
+name|doHashtagsChangedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|added
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|removed
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|hashtags
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
 function_decl|;
 comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @param db The database    * @throws OrmException    */
 DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)

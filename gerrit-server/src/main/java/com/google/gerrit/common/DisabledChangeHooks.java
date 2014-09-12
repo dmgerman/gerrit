@@ -260,6 +260,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_comment
 comment|/** Does not invoke hooks. */
 end_comment
@@ -531,6 +541,41 @@ name|account
 parameter_list|,
 name|String
 name|oldTopic
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
+DECL|method|doHashtagsChangedHook (Change change, Account account, Set<String> added, Set<String> removed, Set<String> hashtags, ReviewDb db)
+specifier|public
+name|void
+name|doHashtagsChangedHook
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|Account
+name|account
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|added
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|removed
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|hashtags
 parameter_list|,
 name|ReviewDb
 name|db
