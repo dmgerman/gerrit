@@ -202,7 +202,7 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+literal|"(dev)"
 return|;
 block|}
 try|try
@@ -296,7 +296,7 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+literal|"(unknown version)"
 return|;
 block|}
 block|}
