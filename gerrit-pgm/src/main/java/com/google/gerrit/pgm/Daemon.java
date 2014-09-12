@@ -1361,7 +1361,7 @@ literal|"--slave"
 argument_list|,
 name|usage
 operator|=
-literal|"Support fetch only; implies --disable-httpd"
+literal|"Support fetch only"
 argument_list|)
 DECL|field|slave
 specifier|private
@@ -1689,20 +1689,6 @@ throw|throw
 name|die
 argument_list|(
 literal|"No services enabled, nothing to do"
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
-name|slave
-operator|&&
-name|httpd
-condition|)
-block|{
-throw|throw
-name|die
-argument_list|(
-literal|"Cannot combine --slave and --enable-httpd"
 argument_list|)
 throw|;
 block|}
