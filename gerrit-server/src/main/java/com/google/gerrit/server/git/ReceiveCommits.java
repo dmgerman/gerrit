@@ -8792,8 +8792,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|// If tip is a merge commit or %base was specified,
-comment|// ignore newChangeForAllNotInTarget
+comment|// If tip is a merge commit, or the root commit or
+comment|// if %base was specified, ignore newChangeForAllNotInTarget
 if|if
 condition|(
 name|tip
@@ -8808,6 +8808,13 @@ operator|.
 name|base
 operator|!=
 literal|null
+operator|||
+name|tip
+operator|.
+name|getParentCount
+argument_list|()
+operator|==
+literal|0
 condition|)
 block|{
 name|newChangeForAllNotInTarget
