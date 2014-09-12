@@ -116,13 +116,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|common
 operator|.
-name|init
-operator|.
-name|api
-operator|.
-name|ConsoleUI
+name|IoUtil
 import|;
 end_import
 
@@ -136,9 +132,11 @@ name|gerrit
 operator|.
 name|pgm
 operator|.
-name|util
+name|init
 operator|.
-name|IoUtil
+name|api
+operator|.
+name|ConsoleUI
 import|;
 end_import
 
