@@ -150,7 +150,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|GerritUiOptions
+name|GerritOptions
 import|;
 end_import
 
@@ -2588,7 +2588,7 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|GerritUiOptions
+name|GerritOptions
 operator|.
 name|class
 argument_list|)
@@ -2596,7 +2596,7 @@ operator|.
 name|toInstance
 argument_list|(
 operator|new
-name|GerritUiOptions
+name|GerritOptions
 argument_list|(
 name|headless
 argument_list|)
