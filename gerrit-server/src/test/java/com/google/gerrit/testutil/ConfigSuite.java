@@ -297,7 +297,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Suite to run tests with different {@code gerrit.config} values.  *<p>  * For each {@link Config} method in the class and base classes, a new group of  * tests is created with the {@link Parameter} field set to the config.  *  *<pre>  * {@literal @}RunWith(ConfigSuite.class)  * public abstract class MyAbstractTest {  *   {@literal @}ConfigSuite.Parameter  *   protected Config cfg;  *  *   {@literal @}ConfigSuite.Config  *   public static Config firstConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "a");  *   }  * }  *  * public class MyTest extends MyAbstractTest {  *   {@literal @}ConfigSuite.Config  *   public static Config secondConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "b");  *   }  *  *   {@literal @}Test  *   public void myTest() {  *     // Test using cfg.  *   }  * }  *</pre>  *  * This creates a suite of tests with three groups:  *<ul>  *<li><strong>default</strong>: {@code MyTest.myTest}</li>  *<li><strong>firstConfig</strong>: {@code MyTest.myTest[firstConfig]}</li>  *<li><strong>secondConfig</strong>: {@code MyTest.myTest[secondConfig]}</li>  *</ul>  */
+comment|/**  * Suite to run tests with different {@code gerrit.config} values.  *<p>  * For each {@link Config} method in the class and base classes, a new group of  * tests is created with the {@link Parameter} field set to the config.  *  *<pre>  * {@literal @}RunWith(ConfigSuite.class)  * public abstract class MyAbstractTest {  *   {@literal @}ConfigSuite.Parameter  *   protected Config cfg;  *  *   {@literal @}ConfigSuite.Config  *   public static Config firstConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "a");  *   }  * }  *  * public class MyTest extends MyAbstractTest {  *   {@literal @}ConfigSuite.Config  *   public static Config secondConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "b");  *   }  *  *   {@literal @}Test  *   public void myTest() {  *     // Test using cfg.  *   }  * }  *</pre>  *  * This creates a suite of tests with three groups:  *<ul>  *<li><strong>default</strong>: {@code MyTest.myTest}</li>  *<li><strong>firstConfig</strong>: {@code MyTest.myTest[firstConfig]}</li>  *<li><strong>secondConfig</strong>: {@code MyTest.myTest[secondConfig]}</li>  *</ul>  *  * Additionally, config values used by<strong>default</strong> can be set  * in a method annotated with {@code @ConfigSuite.Default}.  */
 end_comment
 
 begin_class
@@ -317,6 +317,24 @@ name|DEFAULT
 init|=
 literal|"default"
 decl_stmt|;
+annotation|@
+name|Target
+argument_list|(
+block|{
+name|METHOD
+block|}
+argument_list|)
+annotation|@
+name|Retention
+argument_list|(
+name|RUNTIME
+argument_list|)
+DECL|annotation|Default
+specifier|public
+specifier|static
+annotation_defn|@interface
+name|Default
+block|{   }
 annotation|@
 name|Target
 argument_list|(
@@ -534,6 +552,14 @@ argument_list|>
 name|clazz
 parameter_list|)
 block|{
+name|Method
+name|defaultConfig
+init|=
+name|getDefaultConfig
+argument_list|(
+name|clazz
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|Method
@@ -586,7 +612,7 @@ name|field
 argument_list|,
 literal|null
 argument_list|,
-literal|null
+name|defaultConfig
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -637,6 +663,77 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|getDefaultConfig (Class<?> clazz)
+specifier|private
+specifier|static
+name|Method
+name|getDefaultConfig
+parameter_list|(
+name|Class
+argument_list|<
+name|?
+argument_list|>
+name|clazz
+parameter_list|)
+block|{
+name|Method
+name|result
+init|=
+literal|null
+decl_stmt|;
+for|for
+control|(
+name|Method
+name|m
+range|:
+name|clazz
+operator|.
+name|getMethods
+argument_list|()
+control|)
+block|{
+name|Default
+name|ann
+init|=
+name|m
+operator|.
+name|getAnnotation
+argument_list|(
+name|Default
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ann
+operator|!=
+literal|null
+condition|)
+block|{
+name|checkArgument
+argument_list|(
+name|result
+operator|==
+literal|null
+argument_list|,
+literal|"Multiple methods annotated with @ConfigSuite.Method: %s, %s"
+argument_list|,
+name|result
+argument_list|,
+name|m
+argument_list|)
+expr_stmt|;
+name|result
+operator|=
+name|m
+expr_stmt|;
+block|}
+block|}
+return|return
+name|result
+return|;
 block|}
 DECL|method|getConfigs (Class<?> clazz)
 specifier|private
