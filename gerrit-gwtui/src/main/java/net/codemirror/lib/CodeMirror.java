@@ -510,7 +510,7 @@ parameter_list|,
 name|String
 name|lineClass
 parameter_list|)
-comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
+comment|/*-{     try {       this.addLineClass(line, where, lineClass);     } catch (err) {       if ("TypeError: Cannot read property 'parrent' of undefinded" == err.toString()) {         // ignore CodeMirror bug after going to new line         return;       }       throw err;     }   }-*/
 function_decl|;
 DECL|method|removeLineClass (int line, LineClassWhere where, String className)
 specifier|public
@@ -1363,6 +1363,15 @@ name|head
 parameter_list|)
 function_decl|;
 block|}
+DECL|method|getValue ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|getValue
+parameter_list|()
+comment|/*-{     return this.getValue();   }-*/
+function_decl|;
 block|}
 end_class
 

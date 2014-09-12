@@ -187,6 +187,17 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"mediaFloppy.png"
+argument_list|)
+DECL|method|save ()
+specifier|public
+name|ImageResource
+name|save
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"starOpen.gif"
 argument_list|)
 DECL|method|starOpen ()
