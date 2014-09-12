@@ -816,6 +816,8 @@ name|patchSets
 init|=
 name|allPatchSets
 argument_list|(
+name|rsrc
+argument_list|,
 name|changes
 operator|.
 name|keySet
@@ -1204,7 +1206,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|allPatchSets (Collection<Change.Id> ids)
+DECL|method|allPatchSets (RevisionResource rsrc, Collection<Change.Id> ids)
 specifier|private
 name|Map
 argument_list|<
@@ -1216,6 +1218,9 @@ name|PatchSet
 argument_list|>
 name|allPatchSets
 parameter_list|(
+name|RevisionResource
+name|rsrc
+parameter_list|,
 name|Collection
 argument_list|<
 name|Change
@@ -1336,6 +1341,36 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|rsrc
+operator|.
+name|getEdit
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|r
+operator|.
+name|put
+argument_list|(
+name|rsrc
+operator|.
+name|getPatchSet
+argument_list|()
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
+name|getPatchSet
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|r

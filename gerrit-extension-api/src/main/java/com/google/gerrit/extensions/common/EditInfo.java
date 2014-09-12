@@ -87,6 +87,11 @@ specifier|public
 name|CommitInfo
 name|commit
 decl_stmt|;
+DECL|field|baseRevision
+specifier|public
+name|String
+name|baseRevision
+decl_stmt|;
 DECL|field|actions
 specifier|public
 name|Map
