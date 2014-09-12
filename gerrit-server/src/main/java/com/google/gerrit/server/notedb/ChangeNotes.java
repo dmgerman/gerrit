@@ -1943,6 +1943,13 @@ operator|.
 name|of
 argument_list|()
 expr_stmt|;
+name|hashtags
+operator|=
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
