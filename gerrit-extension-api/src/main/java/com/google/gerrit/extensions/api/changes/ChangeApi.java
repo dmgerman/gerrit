@@ -302,6 +302,17 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Set hashtags on a change    **/
+DECL|method|setHashtags (HashtagsInput input)
+name|void
+name|setHashtags
+parameter_list|(
+name|HashtagsInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
 specifier|public
@@ -601,6 +612,25 @@ specifier|public
 name|ChangeInfo
 name|info
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|setHashtags (HashtagsInput input)
+specifier|public
+name|void
+name|setHashtags
+parameter_list|(
+name|HashtagsInput
+name|input
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
