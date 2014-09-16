@@ -81,24 +81,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|PostHashtags
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -179,6 +161,24 @@ operator|.
 name|acceptance
 operator|.
 name|RestResponse
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|changes
+operator|.
+name|HashtagsInput
 import|;
 end_import
 
@@ -1234,11 +1234,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Input
+name|HashtagsInput
 name|input
 init|=
 operator|new
-name|Input
+name|HashtagsInput
 argument_list|()
 decl_stmt|;
 if|if
