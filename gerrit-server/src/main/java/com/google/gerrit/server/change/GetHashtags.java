@@ -318,14 +318,7 @@ name|Response
 operator|.
 name|ok
 argument_list|(
-operator|new
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
-argument_list|(
 name|hashtags
-argument_list|)
 argument_list|)
 return|;
 block|}

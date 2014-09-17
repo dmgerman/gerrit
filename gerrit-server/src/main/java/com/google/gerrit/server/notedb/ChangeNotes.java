@@ -210,6 +210,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|ImmutableSortedSet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Ordering
 import|;
 end_import
@@ -1251,6 +1265,7 @@ return|return
 name|reviewers
 return|;
 block|}
+comment|/**    *    * @return a ImmutableSet of all hashtags for this change sorted in alphabetical order.    */
 DECL|method|getHashtags ()
 specifier|public
 name|ImmutableSet
@@ -1261,7 +1276,12 @@ name|getHashtags
 parameter_list|()
 block|{
 return|return
+name|ImmutableSortedSet
+operator|.
+name|copyOf
+argument_list|(
 name|hashtags
+argument_list|)
 return|;
 block|}
 comment|/**    * @return a list of all users who have ever been a reviewer on this change.    */
