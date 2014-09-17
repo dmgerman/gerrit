@@ -1091,6 +1091,15 @@ name|keyType
 argument_list|()
 argument_list|,
 name|limit
+argument_list|,
+name|def
+operator|.
+name|expireAfterWrite
+argument_list|(
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|H2CacheImpl
@@ -1262,6 +1271,15 @@ name|keyType
 argument_list|()
 argument_list|,
 name|limit
+argument_list|,
+name|def
+operator|.
+name|expireAfterWrite
+argument_list|(
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Cache
@@ -1457,7 +1475,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|newSqlStore ( String name, TypeLiteral<K> keyType, long maxSize)
+DECL|method|newSqlStore ( String name, TypeLiteral<K> keyType, long maxSize, Long expireAfterWrite)
 specifier|private
 parameter_list|<
 name|V
@@ -1483,6 +1501,9 @@ name|keyType
 parameter_list|,
 name|long
 name|maxSize
+parameter_list|,
+name|Long
+name|expireAfterWrite
 parameter_list|)
 block|{
 name|File
@@ -1522,6 +1543,17 @@ argument_list|,
 name|keyType
 argument_list|,
 name|maxSize
+argument_list|,
+name|expireAfterWrite
+operator|==
+literal|null
+condition|?
+literal|0
+else|:
+name|expireAfterWrite
+operator|.
+name|longValue
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -1787,6 +1787,12 @@ specifier|final
 name|long
 name|maxSize
 decl_stmt|;
+DECL|field|expireAfterWrite
+specifier|private
+specifier|final
+name|long
+name|expireAfterWrite
+decl_stmt|;
 DECL|field|handles
 specifier|private
 specifier|final
@@ -1830,7 +1836,7 @@ specifier|private
 name|int
 name|estimatedSize
 decl_stmt|;
-DECL|method|SqlStore (String jdbcUrl, TypeLiteral<K> keyType, long maxSize)
+DECL|method|SqlStore (String jdbcUrl, TypeLiteral<K> keyType, long maxSize, long expireAfterWrite)
 name|SqlStore
 parameter_list|(
 name|String
@@ -1844,6 +1850,9 @@ name|keyType
 parameter_list|,
 name|long
 name|maxSize
+parameter_list|,
+name|long
+name|expireAfterWrite
 parameter_list|)
 block|{
 name|this
@@ -1868,6 +1877,12 @@ operator|.
 name|maxSize
 operator|=
 name|maxSize
+expr_stmt|;
+name|this
+operator|.
+name|expireAfterWrite
+operator|=
+name|expireAfterWrite
 expr_stmt|;
 name|int
 name|cores
@@ -2281,7 +2296,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"SELECT v FROM data WHERE k=?"
+literal|"SELECT v, created FROM data WHERE k=?"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2319,6 +2334,38 @@ name|next
 argument_list|()
 condition|)
 block|{
+name|missCount
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+name|Timestamp
+name|created
+init|=
+name|r
+operator|.
+name|getTimestamp
+argument_list|(
+literal|2
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|expired
+argument_list|(
+name|created
+argument_list|)
+condition|)
+block|{
+name|invalidate
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
 name|missCount
 operator|.
 name|incrementAndGet
@@ -2437,6 +2484,47 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|expired (Timestamp created)
+specifier|private
+name|boolean
+name|expired
+parameter_list|(
+name|Timestamp
+name|created
+parameter_list|)
+block|{
+if|if
+condition|(
+name|expireAfterWrite
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+name|long
+name|age
+init|=
+name|TimeUtil
+operator|.
+name|nowMs
+argument_list|()
+operator|-
+name|created
+operator|.
+name|getTime
+argument_list|()
+decl_stmt|;
+return|return
+literal|1000
+operator|*
+name|expireAfterWrite
+operator|<
+name|age
+return|;
 block|}
 DECL|method|touch (SqlHandle c, K key)
 specifier|private
@@ -3052,6 +3140,8 @@ literal|" k"
 operator|+
 literal|",OCTET_LENGTH(k) + OCTET_LENGTH(v)"
 operator|+
+literal|",created"
+operator|+
 literal|" FROM data"
 operator|+
 literal|" ORDER BY accessed"
@@ -3083,6 +3173,16 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+name|Timestamp
+name|created
+init|=
+name|r
+operator|.
+name|getTimestamp
+argument_list|(
+literal|3
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|mem
@@ -3093,6 +3193,12 @@ name|key
 argument_list|)
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|expired
+argument_list|(
+name|created
+argument_list|)
 condition|)
 block|{
 name|touch
