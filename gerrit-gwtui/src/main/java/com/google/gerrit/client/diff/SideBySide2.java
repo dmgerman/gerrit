@@ -4943,6 +4943,22 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setAutoHideDiffHeader (boolean hide)
+name|void
+name|setAutoHideDiffHeader
+parameter_list|(
+name|boolean
+name|hide
+parameter_list|)
+block|{
+name|diffTable
+operator|.
+name|setAutoHideDiffHeader
+argument_list|(
+name|hide
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|render (DiffInfo diff)
 specifier|private
 name|void
