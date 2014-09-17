@@ -76,7 +76,7 @@ comment|/** */
 DECL|enumConstant|CLEAN_MERGE
 name|CLEAN_MERGE
 argument_list|(
-literal|"Change has been successfully merged into the git repository."
+literal|"Change has been successfully merged into the git repository"
 argument_list|)
 block|,
 comment|/** */
