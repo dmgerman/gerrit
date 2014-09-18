@@ -356,6 +356,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|OutOfScopeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Provider
 import|;
 end_import
@@ -982,9 +994,13 @@ name|CurrentUser
 name|getCurrentUser
 parameter_list|()
 block|{
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|OutOfScopeException
+argument_list|(
+literal|"No user on email thread"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
