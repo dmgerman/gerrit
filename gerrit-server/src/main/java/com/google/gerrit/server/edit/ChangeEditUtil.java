@@ -262,6 +262,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -592,13 +606,13 @@ specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|IdentifiedUser
+name|CurrentUser
 argument_list|>
 name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditUtil (GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, Provider<ReviewDb> db, Provider<IdentifiedUser> user)
+DECL|method|ChangeEditUtil (GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, Provider<ReviewDb> db, Provider<CurrentUser> user)
 name|ChangeEditUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -622,7 +636,7 @@ name|db
 parameter_list|,
 name|Provider
 argument_list|<
-name|IdentifiedUser
+name|CurrentUser
 argument_list|>
 name|user
 parameter_list|)
