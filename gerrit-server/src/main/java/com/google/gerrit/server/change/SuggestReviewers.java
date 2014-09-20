@@ -962,6 +962,14 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|limit
+operator|=
+name|this
+operator|.
+name|maxSuggestedReviewers
+expr_stmt|;
+name|this
+operator|.
 name|fullTextMaxMatches
 operator|=
 name|cfg
