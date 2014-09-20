@@ -547,6 +547,11 @@ name|closeDiv
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|setStyleName
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
 name|setTitle
 argument_list|(
 name|action

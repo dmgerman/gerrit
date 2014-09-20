@@ -4003,6 +4003,13 @@ argument_list|)
 decl_stmt|;
 name|createChange
 operator|.
+name|setStyleName
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|createChange
+operator|.
 name|setTitle
 argument_list|(
 name|Util
