@@ -1198,9 +1198,11 @@ name|PageLinks
 operator|.
 name|toChangeQuery
 argument_list|(
-literal|"hashtag:"
+literal|"hashtag:\""
 operator|+
 name|hashtagName
+operator|+
+literal|"\""
 argument_list|)
 argument_list|)
 operator|.
