@@ -1213,6 +1213,11 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+literal|"#"
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|hashtagName
 argument_list|)
 operator|.
