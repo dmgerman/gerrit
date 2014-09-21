@@ -818,8 +818,22 @@ name|old
 operator|.
 name|pluginName
 argument_list|)
+operator|&&
+operator|!
+name|pluginName
+operator|.
+name|equals
+argument_list|(
+name|old
+operator|.
+name|pluginName
+argument_list|)
 condition|)
 block|{
+comment|// We allow to replace:
+comment|// 1. Gerrit core items, e.g. websession cache
+comment|//    can be replaced by plugin implementation
+comment|// 2. Reload of current plugin
 throw|throw
 operator|new
 name|ProvisionException
