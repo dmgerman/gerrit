@@ -607,10 +607,7 @@ decl_stmt|;
 DECL|field|postReviewers
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|PostReviewers
-argument_list|>
 name|postReviewers
 decl_stmt|;
 DECL|field|changeJson
@@ -630,7 +627,7 @@ name|postHashtags
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Abandon abandon, Revert revert, Restore restore, GetTopic getTopic, PutTopic putTopic, Provider<PostReviewers> postReviewers, Provider<ChangeJson> changeJson, PostHashtags postHashtags, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Abandon abandon, Revert revert, Restore restore, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, Provider<ChangeJson> changeJson, PostHashtags postHashtags, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Changes
@@ -659,10 +656,7 @@ parameter_list|,
 name|PutTopic
 name|putTopic
 parameter_list|,
-name|Provider
-argument_list|<
 name|PostReviewers
-argument_list|>
 name|postReviewers
 parameter_list|,
 name|Provider
@@ -1199,9 +1193,6 @@ block|{
 try|try
 block|{
 name|postReviewers
-operator|.
-name|get
-argument_list|()
 operator|.
 name|apply
 argument_list|(
