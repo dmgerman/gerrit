@@ -188,7 +188,6 @@ end_import
 
 begin_class
 DECL|class|EditFileAction
-specifier|public
 class|class
 name|EditFileAction
 block|{
@@ -215,7 +214,9 @@ decl_stmt|;
 DECL|field|style
 specifier|private
 specifier|final
-name|String
+name|ChangeScreen2
+operator|.
+name|Style
 name|style
 decl_stmt|;
 DECL|field|editMessageButton
@@ -240,8 +241,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|EditFileAction ( PatchSet.Id id, String content, String file, String style, Widget editButton, Widget relativeTo)
-specifier|public
+DECL|method|EditFileAction ( PatchSet.Id id, String content, String file, ChangeScreen2.Style style, Widget editButton, Widget relativeTo)
 name|EditFileAction
 parameter_list|(
 name|PatchSet
@@ -255,7 +255,9 @@ parameter_list|,
 name|String
 name|file
 parameter_list|,
-name|String
+name|ChangeScreen2
+operator|.
+name|Style
 name|style
 parameter_list|,
 name|Widget
@@ -357,15 +359,11 @@ operator|.
 name|setStyleName
 argument_list|(
 name|style
+operator|.
+name|replyBox
+argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|editMessageButton
-operator|!=
-literal|null
-condition|)
-block|{
 name|p
 operator|.
 name|addAutoHidePartner
@@ -376,7 +374,6 @@ name|getElement
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|p
 operator|.
 name|addCloseHandler
