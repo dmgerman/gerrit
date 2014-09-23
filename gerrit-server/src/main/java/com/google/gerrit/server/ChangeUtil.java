@@ -80,7 +80,7 @@ name|PatchSetInserter
 operator|.
 name|ValidatePolicy
 operator|.
-name|RECEIVE_COMMITS
+name|GERRIT
 import|;
 end_import
 
@@ -2980,7 +2980,7 @@ argument_list|)
 operator|.
 name|setValidatePolicy
 argument_list|(
-name|RECEIVE_COMMITS
+name|GERRIT
 argument_list|)
 operator|.
 name|setDraft
