@@ -13181,6 +13181,16 @@ name|getCreatedOn
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|update
+operator|.
+name|setPatchSetId
+argument_list|(
+name|newPatchSet
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|db
 operator|.
 name|changes
