@@ -243,7 +243,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores user as a request attribute, so the servlet container access log like  * {@link HttpLog} can include the the user for the request outside of the  * request scope.  */
+comment|/**  * Stores user as a request attribute, so servlets can access it outside of the  * request scope.  */
 end_comment
 
 begin_class
