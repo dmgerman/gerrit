@@ -123,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Order the Ref Pattern by the most specific. This sort is done by:  *<ul>  *<li>1 - The minor value of Levenshtein string distance between the branch  * name and the regex string shortest example. A shorter distance is a more  * specific match.  *<li>2 - Finites first, infinities after.  *<li>3 - Number of transitions.  *<li>4 - Length of the expression text.  *</ul>  *  * Levenshtein distance is a measure of the similarity between two strings.  * The distance is the number of deletions, insertions, or substitutions  * required to transform one string into another.  *  * For example, if given refs/heads/m* and refs/heads/*, the distances are 5  * and 6. It means that refs/heads/m* is more specific because it's closer to  * refs/heads/master than refs/heads/*.  *  * Another example could be refs/heads/* and refs/heads/[a-zA-Z]*, the  * distances are both 6. Both are infinite, but refs/heads/[a-zA-Z]* has more  * transitions, which after all turns it more specific.  */
+comment|/**  * Order the Ref Pattern by the most specific. This sort is done by:  *<ul>  *<li>1 - The minor value of Levenshtein string distance between the branch  * name and the regex string shortest example. A shorter distance is a more  * specific match.  *<li>2 - Finites first, infinities after.  *<li>3 - Number of transitions.  More transitions is more specific.  *<li>4 - Length of the expression text.  *</ul>  *  * Levenshtein distance is a measure of the similarity between two strings.  * The distance is the number of deletions, insertions, or substitutions  * required to transform one string into another.  *  * For example, if given refs/heads/m* and refs/heads/*, the distances are 5  * and 6. It means that refs/heads/m* is more specific because it's closer to  * refs/heads/master than refs/heads/*.  *  * Another example could be refs/heads/* and refs/heads/[a-zA-Z]*, the  * distances are both 6. Both are infinite, but refs/heads/[a-zA-Z]* has more  * transitions, which after all turns it more specific.  */
 end_comment
 
 begin_class
@@ -286,12 +286,12 @@ name|cmp
 operator|=
 name|transitions
 argument_list|(
-name|pattern1
+name|pattern2
 argument_list|)
 operator|-
 name|transitions
 argument_list|(
-name|pattern2
+name|pattern1
 argument_list|)
 expr_stmt|;
 block|}
@@ -365,20 +365,6 @@ block|{
 name|example
 operator|=
 name|pattern
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|pattern
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-operator|+
-literal|'1'
 expr_stmt|;
 block|}
 elseif|else
