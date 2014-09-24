@@ -66,18 +66,17 @@ name|webui
 package|;
 end_package
 
-begin_interface
-DECL|interface|WebLink
+begin_comment
+comment|/**  * Class that holds target defaults for WebLink anchors.  */
+end_comment
+
+begin_class
+DECL|class|WebLinkTarget
 specifier|public
-interface|interface
-name|WebLink
-block|{
-DECL|class|Target
-specifier|public
-specifier|static
 class|class
-name|Target
+name|WebLinkTarget
 block|{
+comment|/**    * Opens the link in a new window or tab    */
 DECL|field|BLANK
 specifier|public
 specifier|final
@@ -87,6 +86,7 @@ name|BLANK
 init|=
 literal|"_blank"
 decl_stmt|;
+comment|/**    * Opens the link in the frame it was clicked.    */
 DECL|field|SELF
 specifier|public
 specifier|final
@@ -96,6 +96,7 @@ name|SELF
 init|=
 literal|"_self"
 decl_stmt|;
+comment|/**    * Opens link in parent frame.    */
 DECL|field|PARENT
 specifier|public
 specifier|final
@@ -105,6 +106,7 @@ name|PARENT
 init|=
 literal|"_parent"
 decl_stmt|;
+comment|/**    * Opens link in the full body of the window.    */
 DECL|field|TOP
 specifier|public
 specifier|final
@@ -115,26 +117,7 @@ init|=
 literal|"_top"
 decl_stmt|;
 block|}
-comment|/**    * The link-name displayed in UI.    *    * @return name of link or title of the link if image URL is available.    */
-DECL|method|getLinkName ()
-name|String
-name|getLinkName
-parameter_list|()
-function_decl|;
-comment|/**    * URL of image to be displayed    *    * @return URL to image for link or null for using a text-only link.    * Recommended image size is 16x16.    */
-DECL|method|getImageUrl ()
-name|String
-name|getImageUrl
-parameter_list|()
-function_decl|;
-comment|/**    * Target window in which the link should be opened (e.g. "_blank", "_self".).    *    * @return link target, if null the link is opened in the current window    */
-DECL|method|getTarget ()
-name|String
-name|getTarget
-parameter_list|()
-function_decl|;
-block|}
-end_interface
+end_class
 
 end_unit
 

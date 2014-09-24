@@ -82,6 +82,22 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|ExtensionPoint
@@ -89,13 +105,11 @@ DECL|interface|PatchSetWebLink
 specifier|public
 interface|interface
 name|PatchSetWebLink
-extends|extends
-name|WebLink
 block|{
-comment|/**    * URL to patch set in external service.    *    * @param projectName Name of the project    * @param commit Commit of the patch set    * @return url to patch set in external service.    */
-DECL|method|getPatchSetUrl (final String projectName, final String commit)
-name|String
-name|getPatchSetUrl
+comment|/**    * URL to patch set in external service.    *    * @param projectName Name of the project    * @param commit Commit of the patch set    * @return WebLinkInfo that links to patch set in external service.    */
+DECL|method|getPathSetWebLink (final String projectName, final String commit)
+name|WebLinkInfo
+name|getPathSetWebLink
 parameter_list|(
 specifier|final
 name|String

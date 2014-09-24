@@ -82,6 +82,22 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|ExtensionPoint
@@ -89,13 +105,11 @@ DECL|interface|FileWebLink
 specifier|public
 interface|interface
 name|FileWebLink
-extends|extends
-name|WebLink
 block|{
-comment|/**    * URL to file in external service.    *    * @param projectName Name of the project    * @param revision Name of the revision (e.g. branch or commit ID)    * @param fileName Name of the file    * @return url to project in external service.    */
-DECL|method|getFileUrl (String projectName, String revision, String fileName)
-name|String
-name|getFileUrl
+comment|/**    * URL to file in external service.    *    * @param projectName Name of the project    * @param revision Name of the revision (e.g. branch or commit ID)    * @param fileName Name of the file    * @return WebLinkInfo that links to project in external service.    */
+DECL|method|getFileWebLink (String projectName, String revision, String fileName)
+name|WebLinkInfo
+name|getFileWebLink
 parameter_list|(
 name|String
 name|projectName

@@ -82,6 +82,22 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|ExtensionPoint
@@ -89,13 +105,11 @@ DECL|interface|ProjectWebLink
 specifier|public
 interface|interface
 name|ProjectWebLink
-extends|extends
-name|WebLink
 block|{
-comment|/**    * URL to project in external service.    *    * @param projectName Name of the project    * @return url to project in external service.    */
-DECL|method|getProjectUrl (String projectName)
-name|String
-name|getProjectUrl
+comment|/**    * URL to project in external service.    *    * @param projectName Name of the project    * @return WebLinkInfo that links to project in external service.    */
+DECL|method|getProjectWeblink (String projectName)
+name|WebLinkInfo
+name|getProjectWeblink
 parameter_list|(
 name|String
 name|projectName

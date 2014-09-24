@@ -82,6 +82,22 @@ name|ExtensionPoint
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|WebLinkInfo
+import|;
+end_import
+
 begin_interface
 annotation|@
 name|ExtensionPoint
@@ -89,13 +105,11 @@ DECL|interface|BranchWebLink
 specifier|public
 interface|interface
 name|BranchWebLink
-extends|extends
-name|WebLink
 block|{
-comment|/**    * URL to branch in external service.    *    * @param projectName Name of the project    * @param branchName Name of the branch    * @return url to branch in external service.    */
-DECL|method|getBranchUrl (String projectName, String branchName)
-name|String
-name|getBranchUrl
+comment|/**    * URL to branch in external service.    *    * @param projectName Name of the project    * @param branchName Name of the branch    * @return WebLinkInfo that links to branch in external service.    */
+DECL|method|getBranchWebLink (String projectName, String branchName)
+name|WebLinkInfo
+name|getBranchWebLink
 parameter_list|(
 name|String
 name|projectName
