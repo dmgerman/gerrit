@@ -1705,7 +1705,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getPatchLinks
+name|getFileLinks
 argument_list|(
 name|project
 operator|.
