@@ -1048,6 +1048,13 @@ argument_list|)
 expr_stmt|;
 name|saveProject
 operator|.
+name|setStyleName
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|saveProject
+operator|.
 name|addClickHandler
 argument_list|(
 operator|new
