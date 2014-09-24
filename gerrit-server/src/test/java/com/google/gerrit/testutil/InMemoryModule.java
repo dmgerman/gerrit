@@ -964,6 +964,25 @@ operator|new
 name|Config
 argument_list|()
 decl_stmt|;
+name|setDefaults
+argument_list|(
+name|cfg
+argument_list|)
+expr_stmt|;
+return|return
+name|cfg
+return|;
+block|}
+DECL|method|setDefaults (Config cfg)
+specifier|public
+specifier|static
+name|void
+name|setDefaults
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|)
+block|{
 name|cfg
 operator|.
 name|setEnum
@@ -1102,9 +1121,6 @@ name|getVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return
-name|cfg
-return|;
 block|}
 DECL|field|cfg
 specifier|private
