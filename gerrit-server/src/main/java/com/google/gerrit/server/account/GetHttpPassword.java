@@ -241,7 +241,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canGenerateHttpPassword
+name|canAdministrateServer
 argument_list|()
 condition|)
 block|{

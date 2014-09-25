@@ -196,16 +196,6 @@ name|FLUSH_CACHES
 init|=
 literal|"flushCaches"
 decl_stmt|;
-comment|/** Can generate HTTP passwords for user other than self. */
-DECL|field|GENERATE_HTTP_PASSWORD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|GENERATE_HTTP_PASSWORD
-init|=
-literal|"generateHttpPassword"
-decl_stmt|;
 comment|/** Can terminate any task using the kill command. */
 DECL|field|KILL_TASK
 specifier|public
@@ -402,13 +392,6 @@ operator|.
 name|add
 argument_list|(
 name|FLUSH_CACHES
-argument_list|)
-expr_stmt|;
-name|NAMES_ALL
-operator|.
-name|add
-argument_list|(
-name|GENERATE_HTTP_PASSWORD
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL
