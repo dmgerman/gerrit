@@ -359,7 +359,7 @@ argument_list|)
 operator|.
 name|setMaxConnPerRoute
 argument_list|(
-literal|10
+literal|512
 argument_list|)
 operator|.
 name|setMaxConnTotal
