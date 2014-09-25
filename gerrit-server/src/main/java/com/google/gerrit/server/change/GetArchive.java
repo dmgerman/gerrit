@@ -138,6 +138,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|RestReadView
 import|;
 end_import
@@ -645,6 +661,21 @@ return|return
 name|allowed
 return|;
 block|}
+DECL|method|getExtensions ()
+specifier|public
+name|ImmutableMap
+argument_list|<
+name|String
+argument_list|,
+name|ArchiveFormat
+argument_list|>
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+name|extensions
+return|;
+block|}
 block|}
 DECL|field|repoManager
 specifier|private
@@ -709,6 +740,8 @@ throws|throws
 name|BadRequestException
 throws|,
 name|IOException
+throws|,
+name|MethodNotAllowedException
 block|{
 if|if
 condition|(
@@ -755,6 +788,23 @@ operator|new
 name|BadRequestException
 argument_list|(
 literal|"unknown archive format"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|f
+operator|==
+name|ArchiveFormat
+operator|.
+name|ZIP
+condition|)
+block|{
+throw|throw
+operator|new
+name|MethodNotAllowedException
+argument_list|(
+literal|"zip format is disabled"
 argument_list|)
 throw|;
 block|}
