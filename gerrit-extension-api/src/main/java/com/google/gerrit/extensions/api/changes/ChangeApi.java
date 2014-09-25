@@ -142,6 +142,16 @@ name|EnumSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|ChangeApi
 specifier|public
@@ -310,6 +320,17 @@ parameter_list|(
 name|HashtagsInput
 name|input
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Get hashtags on a change.    * @return hashtags    * @throws RestApiException    */
+DECL|method|getHashtags ()
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getHashtags
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
@@ -631,6 +652,25 @@ parameter_list|(
 name|HashtagsInput
 name|input
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getHashtags ()
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getHashtags
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
