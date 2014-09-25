@@ -352,13 +352,13 @@ return|return
 name|links
 return|;
 block|}
-DECL|method|getPatchLinks (String project, String revision, String file)
+DECL|method|getFileLinks (String project, String revision, String file)
 specifier|public
 name|Iterable
 argument_list|<
 name|WebLinkInfo
 argument_list|>
-name|getPatchLinks
+name|getFileLinks
 parameter_list|(
 name|String
 name|project
