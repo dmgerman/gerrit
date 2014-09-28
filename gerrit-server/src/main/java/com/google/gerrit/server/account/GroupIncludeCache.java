@@ -103,7 +103,7 @@ interface|interface
 name|GroupIncludeCache
 block|{
 comment|/** @return groups directly a member of the passed group. */
-DECL|method|membersOf (AccountGroup.UUID group)
+DECL|method|subgroupsOf (AccountGroup.UUID group)
 specifier|public
 name|Set
 argument_list|<
@@ -111,7 +111,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|membersOf
+name|subgroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -120,7 +120,7 @@ name|group
 parameter_list|)
 function_decl|;
 comment|/** @return any groups the passed group belongs to. */
-DECL|method|memberIn (AccountGroup.UUID groupId)
+DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|Set
 argument_list|<
@@ -128,7 +128,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|memberIn
+name|parentGroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -148,10 +148,10 @@ argument_list|>
 name|allExternalMembers
 parameter_list|()
 function_decl|;
-DECL|method|evictMembersOf (AccountGroup.UUID groupId)
+DECL|method|evictSubgroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|void
-name|evictMembersOf
+name|evictSubgroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -159,10 +159,10 @@ name|UUID
 name|groupId
 parameter_list|)
 function_decl|;
-DECL|method|evictMemberIn (AccountGroup.UUID groupId)
+DECL|method|evictParentGroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|void
-name|evictMemberIn
+name|evictParentGroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.

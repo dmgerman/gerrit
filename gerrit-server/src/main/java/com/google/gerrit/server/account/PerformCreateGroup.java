@@ -777,7 +777,7 @@ argument_list|)
 expr_stmt|;
 name|groupIncludeCache
 operator|.
-name|evictMembersOf
+name|evictSubgroupsOf
 argument_list|(
 name|uuid
 argument_list|)
@@ -1088,7 +1088,7 @@ control|)
 block|{
 name|groupIncludeCache
 operator|.
-name|evictMemberIn
+name|evictParentGroupsOf
 argument_list|(
 name|uuid
 argument_list|)

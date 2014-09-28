@@ -801,7 +801,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|field|groupsByInclude
+DECL|field|parentGroups
 specifier|private
 specifier|final
 name|Cache
@@ -813,7 +813,7 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|>
-name|groupsByInclude
+name|parentGroups
 decl_stmt|;
 DECL|field|config
 specifier|private
@@ -888,7 +888,7 @@ name|connectionPoolConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Helper (@erritServerConfig final Config config, @Named(LdapModule.GROUPS_BYINCLUDE_CACHE) Cache<String, ImmutableSet<String>> groupsByInclude)
+DECL|method|Helper (@erritServerConfig final Config config, @Named(LdapModule.PARENT_GROUPS_CACHE) Cache<String, ImmutableSet<String>> parentGroups)
 name|Helper
 parameter_list|(
 annotation|@
@@ -902,7 +902,7 @@ name|Named
 argument_list|(
 name|LdapModule
 operator|.
-name|GROUPS_BYINCLUDE_CACHE
+name|PARENT_GROUPS_CACHE
 argument_list|)
 name|Cache
 argument_list|<
@@ -913,7 +913,7 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|>
-name|groupsByInclude
+name|parentGroups
 parameter_list|)
 block|{
 name|this
@@ -1104,9 +1104,9 @@ expr_stmt|;
 block|}
 name|this
 operator|.
-name|groupsByInclude
+name|parentGroups
 operator|=
-name|groupsByInclude
+name|parentGroups
 expr_stmt|;
 name|this
 operator|.
@@ -2191,9 +2191,9 @@ name|ImmutableSet
 argument_list|<
 name|String
 argument_list|>
-name|cachedGroupDNs
+name|cachedParentsDNs
 init|=
-name|groupsByInclude
+name|parentGroups
 operator|.
 name|getIfPresent
 argument_list|(
@@ -2202,7 +2202,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|cachedGroupDNs
+name|cachedParentsDNs
 operator|==
 literal|null
 condition|)
@@ -2326,20 +2326,20 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-name|cachedGroupDNs
+name|cachedParentsDNs
 operator|=
 name|dns
 operator|.
 name|build
 argument_list|()
 expr_stmt|;
-name|groupsByInclude
+name|parentGroups
 operator|.
 name|put
 argument_list|(
 name|groupDN
 argument_list|,
-name|cachedGroupDNs
+name|cachedParentsDNs
 argument_list|)
 expr_stmt|;
 block|}
@@ -2348,7 +2348,7 @@ control|(
 name|String
 name|dn
 range|:
-name|cachedGroupDNs
+name|cachedParentsDNs
 control|)
 block|{
 name|recursivelyExpandGroups
