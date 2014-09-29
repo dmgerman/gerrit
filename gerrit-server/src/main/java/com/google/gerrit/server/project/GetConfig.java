@@ -186,19 +186,17 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|Singleton
 import|;
 end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
+name|javax
 operator|.
 name|inject
 operator|.
-name|Singleton
+name|Inject
 import|;
 end_import
 

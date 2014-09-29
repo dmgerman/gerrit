@@ -100,9 +100,7 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
+name|javax
 operator|.
 name|inject
 operator|.
