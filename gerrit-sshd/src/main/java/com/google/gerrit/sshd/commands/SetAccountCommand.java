@@ -430,7 +430,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|PutPreferred
+name|PutName
 import|;
 end_import
 
@@ -446,7 +446,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|PutName
+name|PutPreferred
 import|;
 end_import
 
