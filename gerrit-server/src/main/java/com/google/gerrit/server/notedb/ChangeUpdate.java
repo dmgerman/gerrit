@@ -426,20 +426,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|account
 operator|.
 name|AccountCache
@@ -930,7 +916,7 @@ name|draftUpdate
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, IdentifiedUser user, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil)
+DECL|method|ChangeUpdate ( @erritPersonIdent PersonIdent serverIdent, @AnonymousCowardName String anonymousCowardName, GitRepositoryManager repoManager, NotesMigration migration, AccountCache accountCache, MetaDataUpdate.User updateFactory, DraftCommentNotes.Factory draftNotesFactory, Provider<AllUsersName> allUsers, ChangeDraftUpdate.Factory draftUpdateFactory, ProjectCache projectCache, @Assisted ChangeControl ctl, CommentsInNotesUtil commentsUtil)
 specifier|private
 name|ChangeUpdate
 parameter_list|(
@@ -976,9 +962,6 @@ name|draftUpdateFactory
 parameter_list|,
 name|ProjectCache
 name|projectCache
-parameter_list|,
-name|IdentifiedUser
-name|user
 parameter_list|,
 annotation|@
 name|Assisted
