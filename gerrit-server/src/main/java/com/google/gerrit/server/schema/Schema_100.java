@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2011 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -91,21 +91,21 @@ import|;
 end_import
 
 begin_class
-DECL|class|Schema_59
+DECL|class|Schema_100
 specifier|public
 class|class
-name|Schema_59
+name|Schema_100
 extends|extends
 name|SchemaVersion
 block|{
 annotation|@
 name|Inject
-DECL|method|Schema_59 (Provider<Schema_58> prior)
-name|Schema_59
+DECL|method|Schema_100 (Provider<Schema_99> prior)
+name|Schema_100
 parameter_list|(
 name|Provider
 argument_list|<
-name|Schema_58
+name|Schema_99
 argument_list|>
 name|prior
 parameter_list|)
@@ -116,7 +116,7 @@ name|prior
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Don't migrate columns; they are removed in Schema_100.
+comment|// No database migration; merges are rechecked on reindex.
 block|}
 end_class
 

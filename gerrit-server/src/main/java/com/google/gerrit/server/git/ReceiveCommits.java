@@ -13702,13 +13702,6 @@ expr_stmt|;
 block|}
 name|change
 operator|.
-name|setLastSha1MergeTested
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|change
-operator|.
 name|setCurrentPatchSet
 argument_list|(
 name|info

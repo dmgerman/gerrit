@@ -5990,16 +5990,6 @@ operator|.
 name|MERGED
 argument_list|)
 expr_stmt|;
-comment|// It could be possible that the change being merged
-comment|// has never had its mergeability tested. So we insure
-comment|// merged changes has mergeable field true.
-name|c
-operator|.
-name|setMergeable
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
