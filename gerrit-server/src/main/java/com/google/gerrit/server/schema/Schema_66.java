@@ -74,17 +74,19 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
+name|Inject
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|com
+operator|.
+name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|Provider
 import|;
 end_import
 

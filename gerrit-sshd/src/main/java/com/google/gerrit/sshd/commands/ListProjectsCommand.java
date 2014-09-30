@@ -130,21 +130,23 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|util
+name|google
 operator|.
-name|List
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|inject
+name|util
 operator|.
-name|Inject
+name|List
 import|;
 end_import
 

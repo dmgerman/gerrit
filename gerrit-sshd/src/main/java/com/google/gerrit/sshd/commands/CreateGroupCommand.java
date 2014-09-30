@@ -286,6 +286,18 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Inject
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|kohsuke
@@ -325,16 +337,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|inject
-operator|.
-name|Inject
 import|;
 end_import
 

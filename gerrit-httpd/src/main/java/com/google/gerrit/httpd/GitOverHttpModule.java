@@ -88,19 +88,21 @@ name|google
 operator|.
 name|inject
 operator|.
-name|servlet
-operator|.
-name|ServletModule
+name|Inject
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|com
+operator|.
+name|google
 operator|.
 name|inject
 operator|.
-name|Inject
+name|servlet
+operator|.
+name|ServletModule
 import|;
 end_import
 
