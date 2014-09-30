@@ -108,7 +108,7 @@ name|extensions
 operator|.
 name|webui
 operator|.
-name|PatchSetWebLink
+name|FileWebLink
 import|;
 end_import
 
@@ -124,7 +124,7 @@ name|extensions
 operator|.
 name|webui
 operator|.
-name|FileWebLink
+name|PatchSetWebLink
 import|;
 end_import
 

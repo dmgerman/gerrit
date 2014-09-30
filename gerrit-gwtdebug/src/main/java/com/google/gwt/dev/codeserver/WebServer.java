@@ -314,7 +314,7 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|ServletException
+name|DispatcherType
 import|;
 end_import
 
@@ -324,7 +324,7 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|DispatcherType
+name|ServletException
 import|;
 end_import
 
