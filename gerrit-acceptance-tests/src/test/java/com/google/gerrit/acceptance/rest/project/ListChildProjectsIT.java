@@ -222,18 +222,6 @@ begin_import
 import|import
 name|com
 operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
 name|jcraft
 operator|.
 name|jsch
@@ -291,6 +279,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 

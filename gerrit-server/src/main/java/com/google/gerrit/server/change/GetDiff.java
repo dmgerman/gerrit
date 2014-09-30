@@ -564,18 +564,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Inject
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Provider
 import|;
 end_import
@@ -749,6 +737,16 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|inject
+operator|.
+name|Inject
 import|;
 end_import
 
