@@ -4141,11 +4141,25 @@ argument_list|,
 name|inserter
 argument_list|,
 name|mergeStrategyName
+argument_list|()
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|method|mergeStrategyName ()
+specifier|public
+name|String
+name|mergeStrategyName
+parameter_list|()
+block|{
+return|return
+name|mergeStrategyName
 argument_list|(
 name|useContentMerge
 argument_list|,
 name|useRecursiveMerge
-argument_list|)
 argument_list|)
 return|;
 block|}
