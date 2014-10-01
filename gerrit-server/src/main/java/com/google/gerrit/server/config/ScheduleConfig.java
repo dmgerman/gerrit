@@ -68,6 +68,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|eclipse
@@ -373,7 +387,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* For testing we need to be able to pass now */
+annotation|@
+name|VisibleForTesting
 DECL|method|ScheduleConfig (Config rc, String section, String subsection, DateTime now)
 name|ScheduleConfig
 parameter_list|(
@@ -406,8 +421,9 @@ name|now
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|ScheduleConfig (Config rc, String section, String subsection, String keyInterval, String keyStartTime, DateTime now)
-specifier|private
 name|ScheduleConfig
 parameter_list|(
 name|Config
@@ -481,6 +497,7 @@ name|interval
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Milliseconds between constructor invocation and first event time.    *<p>    * If there is any lag between the constructor invocation and queuing the    * object into an executor the event will run later, as there is no method    * to adjust for the scheduling delay.    */
 DECL|method|getInitialDelay ()
 specifier|public
 name|long
@@ -491,6 +508,7 @@ return|return
 name|initialDelay
 return|;
 block|}
+comment|/** Number of milliseconds between events. */
 DECL|method|getInterval ()
 specifier|public
 name|long
