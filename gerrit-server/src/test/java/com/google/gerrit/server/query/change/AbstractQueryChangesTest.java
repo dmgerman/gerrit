@@ -168,18 +168,6 @@ name|junit
 operator|.
 name|Assume
 operator|.
-name|assumeFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
 name|assumeTrue
 import|;
 end_import
@@ -7814,8 +7802,6 @@ name|Exception
 block|{
 name|assumeTrue
 argument_list|(
-literal|"notedb disabled"
-argument_list|,
 name|notesMigration
 operator|.
 name|enabled
@@ -7987,10 +7973,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assumeFalse
+name|assumeTrue
 argument_list|(
-literal|"notedb enabled"
-argument_list|,
+operator|!
 name|notesMigration
 operator|.
 name|enabled
