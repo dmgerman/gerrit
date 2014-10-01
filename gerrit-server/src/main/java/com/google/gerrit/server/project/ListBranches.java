@@ -304,18 +304,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -508,15 +496,12 @@ decl_stmt|;
 DECL|field|webLinks
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListBranches (GitRepositoryManager repoManager, DynamicMap<RestView<BranchResource>> branchViews, Provider<WebLinks> webLinks)
+DECL|method|ListBranches (GitRepositoryManager repoManager, DynamicMap<RestView<BranchResource>> branchViews, WebLinks webLinks)
 specifier|public
 name|ListBranches
 parameter_list|(
@@ -532,10 +517,7 @@ argument_list|>
 argument_list|>
 name|branchViews
 parameter_list|,
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 parameter_list|)
 block|{
@@ -1229,9 +1211,6 @@ name|WebLinkInfo
 name|link
 range|:
 name|webLinks
-operator|.
-name|get
-argument_list|()
 operator|.
 name|getBranchLinks
 argument_list|(

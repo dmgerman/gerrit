@@ -570,18 +570,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -786,10 +774,7 @@ decl_stmt|;
 DECL|field|webLinks
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 decl_stmt|;
 annotation|@
@@ -856,7 +841,7 @@ name|intraline
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetDiff (ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, Provider<WebLinks> webLinks)
+DECL|method|GetDiff (ProjectCache projectCache, PatchScriptFactory.Factory patchScriptFactoryFactory, Revisions revisions, WebLinks webLinks)
 name|GetDiff
 parameter_list|(
 name|ProjectCache
@@ -870,10 +855,7 @@ parameter_list|,
 name|Revisions
 name|revisions
 parameter_list|,
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 parameter_list|)
 block|{
@@ -1701,9 +1683,6 @@ name|WebLinkInfo
 name|link
 range|:
 name|webLinks
-operator|.
-name|get
-argument_list|()
 operator|.
 name|getFileLinks
 argument_list|(

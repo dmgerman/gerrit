@@ -1574,10 +1574,7 @@ decl_stmt|;
 DECL|field|webLinks
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 decl_stmt|;
 DECL|field|options
@@ -1610,7 +1607,7 @@ name|accountLoader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, Provider<WebLinks> webLinks, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, WebLinks webLinks, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1683,10 +1680,7 @@ parameter_list|,
 name|Revisions
 name|revisions
 parameter_list|,
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 parameter_list|,
 name|ChangeMessagesUtil
@@ -6576,9 +6570,6 @@ name|WebLinkInfo
 name|link
 range|:
 name|webLinks
-operator|.
-name|get
-argument_list|()
 operator|.
 name|getPatchSetLinks
 argument_list|(

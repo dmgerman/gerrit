@@ -506,18 +506,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|eclipse
@@ -972,10 +960,7 @@ decl_stmt|;
 DECL|field|webLinks
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 decl_stmt|;
 annotation|@
@@ -1440,7 +1425,7 @@ name|groupUuid
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListProjects (CurrentUser currentUser, ProjectCache projectCache, GroupCache groupCache, GroupControl.Factory groupControlFactory, GitRepositoryManager repoManager, ProjectNode.Factory projectNodeFactory, Provider<WebLinks> webLinks)
+DECL|method|ListProjects (CurrentUser currentUser, ProjectCache projectCache, GroupCache groupCache, GroupControl.Factory groupControlFactory, GitRepositoryManager repoManager, ProjectNode.Factory projectNodeFactory, WebLinks webLinks)
 specifier|protected
 name|ListProjects
 parameter_list|(
@@ -1466,10 +1451,7 @@ operator|.
 name|Factory
 name|projectNodeFactory
 parameter_list|,
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 parameter_list|)
 block|{
@@ -2552,9 +2534,6 @@ name|WebLinkInfo
 name|link
 range|:
 name|webLinks
-operator|.
-name|get
-argument_list|()
 operator|.
 name|getProjectLinks
 argument_list|(

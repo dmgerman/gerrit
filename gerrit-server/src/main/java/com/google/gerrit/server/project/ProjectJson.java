@@ -224,18 +224,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|Provider
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|Singleton
 import|;
 end_import
@@ -257,24 +245,18 @@ decl_stmt|;
 DECL|field|webLinks
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ProjectJson (AllProjectsNameProvider allProjectsNameProvider, Provider<WebLinks> webLinks)
+DECL|method|ProjectJson (AllProjectsNameProvider allProjectsNameProvider, WebLinks webLinks)
 name|ProjectJson
 parameter_list|(
 name|AllProjectsNameProvider
 name|allProjectsNameProvider
 parameter_list|,
-name|Provider
-argument_list|<
 name|WebLinks
-argument_list|>
 name|webLinks
 parameter_list|)
 block|{
@@ -419,9 +401,6 @@ name|WebLinkInfo
 name|link
 range|:
 name|webLinks
-operator|.
-name|get
-argument_list|()
 operator|.
 name|getProjectLinks
 argument_list|(
