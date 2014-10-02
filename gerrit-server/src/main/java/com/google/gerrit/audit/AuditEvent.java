@@ -128,9 +128,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|common
 operator|.
-name|CurrentUser
+name|TimeUtil
 import|;
 end_import
 
@@ -144,9 +144,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
-operator|.
-name|TimeUtil
+name|CurrentUser
 import|;
 end_import
 

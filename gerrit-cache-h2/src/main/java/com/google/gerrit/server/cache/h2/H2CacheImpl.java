@@ -154,11 +154,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|common
 operator|.
-name|cache
-operator|.
-name|PersistentCache
+name|TimeUtil
 import|;
 end_import
 
@@ -172,9 +170,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|util
+name|cache
 operator|.
-name|TimeUtil
+name|PersistentCache
 import|;
 end_import
 

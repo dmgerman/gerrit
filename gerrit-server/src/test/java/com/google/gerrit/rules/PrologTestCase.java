@@ -108,9 +108,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|util
+name|common
 operator|.
 name|TimeUtil
 import|;
