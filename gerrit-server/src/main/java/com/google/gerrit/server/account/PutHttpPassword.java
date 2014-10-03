@@ -857,7 +857,9 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|LEN
+name|enc
+operator|.
+name|length
 argument_list|)
 decl_stmt|;
 for|for
@@ -869,7 +871,9 @@ literal|0
 init|;
 name|i
 operator|<
-name|LEN
+name|enc
+operator|.
+name|length
 condition|;
 name|i
 operator|++
