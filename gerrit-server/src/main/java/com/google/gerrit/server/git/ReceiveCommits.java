@@ -7791,7 +7791,13 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--reviewer"
+argument_list|,
+name|aliases
+operator|=
+block|{
 literal|"-r"
+block|}
 argument_list|,
 name|metaVar
 operator|=
@@ -7882,7 +7888,13 @@ name|Option
 argument_list|(
 name|name
 operator|=
+literal|"--label"
+argument_list|,
+name|aliases
+operator|=
+block|{
 literal|"-l"
+block|}
 argument_list|,
 name|metaVar
 operator|=
