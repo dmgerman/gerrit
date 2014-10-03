@@ -1747,6 +1747,20 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"And then amend the commit:\n"
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"  git commit --amend\n"
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|CommitValidationMessage
