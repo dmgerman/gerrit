@@ -377,7 +377,7 @@ specifier|final
 name|int
 name|LEN
 init|=
-literal|12
+literal|31
 decl_stmt|;
 DECL|field|rng
 specifier|private
