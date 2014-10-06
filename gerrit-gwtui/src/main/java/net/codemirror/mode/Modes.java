@@ -478,18 +478,6 @@ name|DataResource
 name|r
 parameter_list|()
 function_decl|;
-DECL|method|rst ()
-annotation|@
-name|Source
-argument_list|(
-literal|"rst/rst.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-name|DataResource
-name|rst
-parameter_list|()
-function_decl|;
 DECL|method|ruby ()
 annotation|@
 name|Source
@@ -548,18 +536,6 @@ annotation|@
 name|DoNotEmbed
 name|DataResource
 name|sql
-parameter_list|()
-function_decl|;
-DECL|method|stex ()
-annotation|@
-name|Source
-argument_list|(
-literal|"stex/stex.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-name|DataResource
-name|stex
 parameter_list|()
 function_decl|;
 DECL|method|tcl ()
