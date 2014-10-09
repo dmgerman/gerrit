@@ -690,13 +690,13 @@ operator|.
 name|Factory
 name|createFactory
 decl_stmt|;
-DECL|field|deleteEditFactory
+DECL|field|deleteFileFactory
 specifier|private
 specifier|final
-name|DeleteEdit
+name|DeleteFile
 operator|.
 name|Factory
-name|deleteEditFactory
+name|deleteFileFactory
 decl_stmt|;
 DECL|field|detail
 specifier|private
@@ -721,7 +721,7 @@ name|post
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEdits (DynamicMap<RestView<ChangeEditResource>> views, Create.Factory createFactory, Provider<Detail> detail, ChangeEditUtil editUtil, Post post, DeleteEdit.Factory deleteEditFactory)
+DECL|method|ChangeEdits (DynamicMap<RestView<ChangeEditResource>> views, Create.Factory createFactory, Provider<Detail> detail, ChangeEditUtil editUtil, Post post, DeleteFile.Factory deleteFileFactory)
 name|ChangeEdits
 parameter_list|(
 name|DynamicMap
@@ -750,10 +750,10 @@ parameter_list|,
 name|Post
 name|post
 parameter_list|,
-name|DeleteEdit
+name|DeleteFile
 operator|.
 name|Factory
-name|deleteEditFactory
+name|deleteFileFactory
 parameter_list|)
 block|{
 name|this
@@ -788,9 +788,9 @@ name|post
 expr_stmt|;
 name|this
 operator|.
-name|deleteEditFactory
+name|deleteFileFactory
 operator|=
-name|deleteEditFactory
+name|deleteFileFactory
 expr_stmt|;
 block|}
 annotation|@
@@ -972,7 +972,7 @@ annotation|@
 name|Override
 DECL|method|delete (ChangeResource parent, IdString id)
 specifier|public
-name|DeleteEdit
+name|DeleteFile
 name|delete
 parameter_list|(
 name|ChangeResource
@@ -984,26 +984,18 @@ parameter_list|)
 throws|throws
 name|RestApiException
 block|{
+comment|// It's safe to assume that id can never be null, because
+comment|// otherwise we would end up in dedicated endpoint for
+comment|// deleting of change edits and not a file in change edit
 return|return
-name|deleteEditFactory
+name|deleteFileFactory
 operator|.
 name|create
 argument_list|(
-name|parent
-operator|.
-name|getChange
-argument_list|()
-argument_list|,
-name|id
-operator|!=
-literal|null
-condition|?
 name|id
 operator|.
 name|get
 argument_list|()
-else|:
-literal|null
 argument_list|)
 return|;
 block|}
@@ -1313,16 +1305,16 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|class|DeleteEdit
+DECL|class|DeleteFile
 specifier|static
 class|class
-name|DeleteEdit
+name|DeleteFile
 implements|implements
 name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|DeleteEdit
+name|DeleteFile
 operator|.
 name|Input
 argument_list|>
@@ -1337,13 +1329,10 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change change, String path)
-name|DeleteEdit
+DECL|method|create (String path)
+name|DeleteFile
 name|create
 parameter_list|(
-name|Change
-name|change
-parameter_list|,
 name|String
 name|path
 parameter_list|)
@@ -1378,8 +1367,8 @@ name|path
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteEdit (ChangeEditUtil editUtil, ChangeEditModifier editModifier, Provider<ReviewDb> db, @Assisted @Nullable String path)
-name|DeleteEdit
+DECL|method|DeleteFile (ChangeEditUtil editUtil, ChangeEditModifier editModifier, Provider<ReviewDb> db, @Assisted String path)
+name|DeleteFile
 parameter_list|(
 name|ChangeEditUtil
 name|editUtil
@@ -1395,8 +1384,6 @@ name|db
 parameter_list|,
 annotation|@
 name|Assisted
-annotation|@
-name|Nullable
 name|String
 name|path
 parameter_list|)
@@ -1428,7 +1415,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource rsrc, DeleteEdit.Input in)
+DECL|method|apply (ChangeResource rsrc, DeleteFile.Input in)
 specifier|public
 name|Response
 argument_list|<
@@ -1439,7 +1426,7 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|DeleteEdit
+name|DeleteFile
 operator|.
 name|Input
 name|in
@@ -1479,10 +1466,6 @@ name|edit
 operator|.
 name|isPresent
 argument_list|()
-operator|&&
-name|path
-operator|==
-literal|null
 condition|)
 block|{
 comment|// Edit is wiped out
@@ -1497,19 +1480,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|edit
-operator|.
-name|isPresent
-argument_list|()
-operator|&&
-name|path
-operator|!=
-literal|null
-condition|)
+else|else
 block|{
 comment|// Edit is created on top of current patch set by deleting path.
 comment|// Even if the latest patch set changed since the user triggered
@@ -1568,17 +1539,6 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Bad request
-throw|throw
-operator|new
-name|BadRequestException
-argument_list|(
-literal|"change edit doesn't exist and no path was provided"
-argument_list|)
-throw|;
 block|}
 return|return
 name|Response

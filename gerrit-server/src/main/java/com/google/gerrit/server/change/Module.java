@@ -1287,7 +1287,7 @@ name|factory
 argument_list|(
 name|ChangeEdits
 operator|.
-name|DeleteEdit
+name|DeleteFile
 operator|.
 name|Factory
 operator|.
