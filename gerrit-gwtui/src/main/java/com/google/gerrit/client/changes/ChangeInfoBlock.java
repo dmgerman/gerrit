@@ -1340,7 +1340,7 @@ name|R_MERGE_TEST
 argument_list|,
 literal|1
 argument_list|,
-name|chg
+name|changeDetail
 operator|.
 name|isMergeable
 argument_list|()

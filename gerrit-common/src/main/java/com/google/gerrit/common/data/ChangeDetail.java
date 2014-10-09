@@ -282,6 +282,11 @@ specifier|protected
 name|boolean
 name|canSubmit
 decl_stmt|;
+DECL|field|mergeable
+specifier|protected
+name|boolean
+name|mergeable
+decl_stmt|;
 DECL|field|messages
 specifier|protected
 name|List
@@ -1099,6 +1104,30 @@ parameter_list|()
 block|{
 return|return
 name|canEdit
+return|;
+block|}
+DECL|method|setMergeable (boolean m)
+specifier|public
+name|void
+name|setMergeable
+parameter_list|(
+name|boolean
+name|m
+parameter_list|)
+block|{
+name|mergeable
+operator|=
+name|m
+expr_stmt|;
+block|}
+DECL|method|isMergeable ()
+specifier|public
+name|boolean
+name|isMergeable
+parameter_list|()
+block|{
+return|return
+name|mergeable
 return|;
 block|}
 block|}
