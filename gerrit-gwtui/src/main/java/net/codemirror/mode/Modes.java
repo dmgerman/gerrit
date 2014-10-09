@@ -322,18 +322,6 @@ name|DataResource
 name|gfm
 parameter_list|()
 function_decl|;
-DECL|method|go ()
-annotation|@
-name|Source
-argument_list|(
-literal|"go/go.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-name|DataResource
-name|go
-parameter_list|()
-function_decl|;
 DECL|method|groovy ()
 annotation|@
 name|Source
