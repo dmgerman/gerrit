@@ -118,7 +118,7 @@ name|http
 operator|.
 name|HttpStatus
 operator|.
-name|SC_BAD_REQUEST
+name|SC_NOT_FOUND
 import|;
 end_import
 
@@ -2735,7 +2735,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|SC_BAD_REQUEST
+name|SC_NOT_FOUND
 argument_list|,
 name|r
 operator|.

@@ -108,7 +108,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|BadRequestException
+name|ResourceNotFoundException
 import|;
 end_import
 
@@ -306,7 +306,7 @@ parameter_list|)
 throws|throws
 name|AuthException
 throws|,
-name|BadRequestException
+name|ResourceNotFoundException
 throws|,
 name|IOException
 throws|,
@@ -351,10 +351,8 @@ else|else
 block|{
 throw|throw
 operator|new
-name|BadRequestException
-argument_list|(
-literal|"change edit doesn't exist"
-argument_list|)
+name|ResourceNotFoundException
+argument_list|()
 throw|;
 block|}
 return|return
