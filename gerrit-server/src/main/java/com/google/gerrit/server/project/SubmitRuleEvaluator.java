@@ -84,6 +84,22 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -573,8 +589,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|submitRule
-operator|=
+name|Term
+name|sr
+init|=
 name|env
 operator|.
 name|once
@@ -587,7 +604,7 @@ operator|new
 name|VariableTerm
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|fastEvalLabels
@@ -630,7 +647,7 @@ literal|"gerrit"
 argument_list|,
 name|userRuleWrapperName
 argument_list|,
-name|submitRule
+name|sr
 argument_list|,
 operator|new
 name|VariableTerm
@@ -662,7 +679,7 @@ name|RuleEvalException
 argument_list|(
 literal|"Exception calling "
 operator|+
-name|submitRule
+name|sr
 operator|+
 literal|" on change "
 operator|+
@@ -708,6 +725,12 @@ name|filterRuleWrapperName
 argument_list|)
 expr_stmt|;
 block|}
+name|List
+argument_list|<
+name|Term
+argument_list|>
+name|r
+decl_stmt|;
 if|if
 condition|(
 name|resultsTerm
@@ -716,17 +739,13 @@ name|isList
 argument_list|()
 condition|)
 block|{
-name|List
-argument_list|<
-name|Term
-argument_list|>
 name|r
-init|=
+operator|=
 name|Lists
 operator|.
 name|newArrayList
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|Term
@@ -773,15 +792,23 @@ name|dereference
 argument_list|()
 expr_stmt|;
 block|}
-return|return
-name|r
-return|;
 block|}
-return|return
+else|else
+block|{
+name|r
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
+expr_stmt|;
+block|}
+name|submitRule
+operator|=
+name|sr
+expr_stmt|;
+return|return
+name|r
 return|;
 block|}
 finally|finally
@@ -1268,6 +1295,15 @@ name|Term
 name|getSubmitRule
 parameter_list|()
 block|{
+name|checkState
+argument_list|(
+name|submitRule
+operator|!=
+literal|null
+argument_list|,
+literal|"getSubmitRule() invalid before evaluation"
+argument_list|)
+expr_stmt|;
 return|return
 name|submitRule
 return|;
