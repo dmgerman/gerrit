@@ -755,7 +755,7 @@ name|changeControl
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * @param ps patch set to evaluate, rather than current patch set.    * @return this    */
+comment|/**    * @param ps patch set of the change to evaluate. If not set, the current    * patch set will be loaded from {@link #canSubmit()} or {@link    * #getSubmitType}.    * @return this    */
 DECL|method|setPatchSet (PatchSet ps)
 specifier|public
 name|SubmitRuleEvaluator
@@ -782,6 +782,18 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
+argument_list|,
+literal|"Patch set %s does not match change %s"
+argument_list|,
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|patchSet
@@ -913,9 +925,34 @@ name|SubmitRecord
 argument_list|>
 name|canSubmit
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
+try|try
+block|{
+name|initPatchSet
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+return|return
+name|ruleError
+argument_list|(
+literal|"Error looking up patch set "
+operator|+
+name|control
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+return|;
+block|}
 name|Change
 name|c
 init|=
@@ -978,8 +1015,7 @@ name|Status
 operator|.
 name|DRAFT
 operator|||
-name|getPatchSet
-argument_list|()
+name|patchSet
 operator|.
 name|isDraft
 argument_list|()
@@ -1089,15 +1125,7 @@ name|SubmitRecord
 argument_list|>
 name|cannotSubmitDraft
 parameter_list|()
-throws|throws
-name|OrmException
 block|{
-name|PatchSet
-name|ps
-init|=
-name|getPatchSet
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 if|if
@@ -1121,9 +1149,9 @@ name|createRuleError
 argument_list|(
 literal|"Patch set "
 operator|+
-name|ps
+name|patchSet
 operator|.
-name|getPatchSetId
+name|getId
 argument_list|()
 operator|+
 literal|" not found"
@@ -1165,9 +1193,12 @@ block|{
 name|String
 name|msg
 init|=
-literal|"Cannot read patch set "
+literal|"Cannot check visibility of patch set "
 operator|+
-name|ps
+name|patchSet
+operator|.
+name|getId
+argument_list|()
 decl_stmt|;
 name|log
 operator|.
@@ -1872,6 +1903,33 @@ name|SubmitTypeRecord
 name|getSubmitType
 parameter_list|()
 block|{
+try|try
+block|{
+name|initPatchSet
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|OrmException
+name|e
+parameter_list|)
+block|{
+return|return
+name|typeError
+argument_list|(
+literal|"Error looking up patch set "
+operator|+
+name|control
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+return|;
+block|}
 name|List
 argument_list|<
 name|Term
@@ -2400,6 +2458,15 @@ parameter_list|()
 throws|throws
 name|RuleEvalException
 block|{
+name|checkState
+argument_list|(
+name|patchSet
+operator|!=
+literal|null
+argument_list|,
+literal|"getPrologEnvironment() called before initPatchSet()"
+argument_list|)
+expr_stmt|;
 name|ProjectState
 name|projectState
 init|=
@@ -2967,10 +3034,10 @@ return|return
 name|submitRule
 return|;
 block|}
-DECL|method|getPatchSet ()
+DECL|method|initPatchSet ()
 specifier|private
-name|PatchSet
-name|getPatchSet
+name|void
+name|initPatchSet
 parameter_list|()
 throws|throws
 name|OrmException
@@ -2990,9 +3057,6 @@ name|currentPatchSet
 argument_list|()
 expr_stmt|;
 block|}
-return|return
-name|patchSet
-return|;
 block|}
 DECL|method|getProjectName ()
 specifier|private
