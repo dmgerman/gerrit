@@ -3159,7 +3159,7 @@ name|isMergeable
 argument_list|()
 return|;
 block|}
-DECL|method|submitRecords (ChangeControl ctl, ChangeData cd)
+DECL|method|submitRecords (ChangeData cd)
 specifier|private
 name|List
 argument_list|<
@@ -3167,9 +3167,6 @@ name|SubmitRecord
 argument_list|>
 name|submitRecords
 parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)
@@ -3190,20 +3187,6 @@ return|return
 name|cd
 operator|.
 name|getSubmitRecords
-argument_list|()
-return|;
-block|}
-if|if
-condition|(
-name|ctl
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|ImmutableList
-operator|.
-name|of
 argument_list|()
 return|;
 block|}
@@ -3602,8 +3585,6 @@ name|rec
 range|:
 name|submitRecords
 argument_list|(
-name|ctl
-argument_list|,
 name|cd
 argument_list|)
 control|)
@@ -4908,8 +4889,6 @@ name|rec
 range|:
 name|submitRecords
 argument_list|(
-name|ctl
-argument_list|,
 name|cd
 argument_list|)
 control|)
