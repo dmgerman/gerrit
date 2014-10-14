@@ -2307,7 +2307,7 @@ argument_list|()
 argument_list|,
 name|revision
 operator|.
-name|getChange
+name|getControl
 argument_list|()
 argument_list|)
 operator|.

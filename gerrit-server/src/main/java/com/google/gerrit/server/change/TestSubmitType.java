@@ -584,7 +584,7 @@ argument_list|()
 argument_list|,
 name|rsrc
 operator|.
-name|getChange
+name|getControl
 argument_list|()
 argument_list|)
 argument_list|,
