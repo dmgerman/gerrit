@@ -90,6 +90,20 @@ name|common
 operator|.
 name|base
 operator|.
+name|Joiner
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
 name|Optional
 import|;
 end_import
@@ -707,16 +721,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
+switch|switch
 condition|(
 name|match
 operator|.
 name|size
 argument_list|()
-operator|!=
-literal|1
 condition|)
 block|{
+case|case
+literal|0
+case|:
 throw|throw
 operator|new
 name|ResourceNotFoundException
@@ -724,7 +739,9 @@ argument_list|(
 name|id
 argument_list|)
 throw|;
-block|}
+case|case
+literal|1
+case|:
 return|return
 name|match
 operator|.
@@ -733,6 +750,34 @@ argument_list|(
 literal|0
 argument_list|)
 return|;
+default|default:
+throw|throw
+operator|new
+name|ResourceNotFoundException
+argument_list|(
+literal|"Multiple patch sets for \""
+operator|+
+name|id
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"\": "
+operator|+
+name|Joiner
+operator|.
+name|on
+argument_list|(
+literal|"; "
+argument_list|)
+operator|.
+name|join
+argument_list|(
+name|match
+argument_list|)
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|visible (ChangeResource change, PatchSet ps)
 specifier|private
