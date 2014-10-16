@@ -768,7 +768,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo.FileMeta meta, boolean editExists, int currentPatchSet)
+DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo.FileMeta meta, boolean editExists, int currentPatchSet, boolean open)
 name|void
 name|setUpPatchSetNav
 parameter_list|(
@@ -788,6 +788,9 @@ name|editExists
 parameter_list|,
 name|int
 name|currentPatchSet
+parameter_list|,
+name|boolean
+name|open
 parameter_list|)
 block|{
 name|InlineHyperlink
@@ -980,6 +983,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|open
+operator|&&
 name|idActive
 operator|!=
 literal|null

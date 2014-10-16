@@ -985,7 +985,7 @@ return|return
 name|changeType
 return|;
 block|}
-DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, DiffInfo info, boolean editExists, int currentPatchSet)
+DECL|method|set (DiffPreferences prefs, JsArray<RevisionInfo> list, DiffInfo info, boolean editExists, int currentPatchSet, boolean open)
 name|void
 name|set
 parameter_list|(
@@ -1006,6 +1006,9 @@ name|editExists
 parameter_list|,
 name|int
 name|currentPatchSet
+parameter_list|,
+name|boolean
+name|open
 parameter_list|)
 block|{
 name|this
@@ -1040,6 +1043,8 @@ argument_list|,
 name|editExists
 argument_list|,
 name|currentPatchSet
+argument_list|,
+name|open
 argument_list|)
 expr_stmt|;
 name|patchSetSelectBoxB
@@ -1056,6 +1061,8 @@ argument_list|,
 name|editExists
 argument_list|,
 name|currentPatchSet
+argument_list|,
+name|open
 argument_list|)
 expr_stmt|;
 name|JsArrayString
