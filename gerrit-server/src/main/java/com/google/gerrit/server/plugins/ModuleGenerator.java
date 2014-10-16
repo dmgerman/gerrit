@@ -160,19 +160,16 @@ parameter_list|()
 throws|throws
 name|InvalidPluginException
 function_decl|;
-DECL|field|NOP
-specifier|public
+DECL|class|NOP
 specifier|static
-specifier|final
-name|ModuleGenerator
+class|class
 name|NOP
-init|=
-operator|new
+implements|implements
 name|ModuleGenerator
-argument_list|()
 block|{
 annotation|@
 name|Override
+DECL|method|setPluginName (String name)
 specifier|public
 name|void
 name|setPluginName
@@ -185,6 +182,7 @@ comment|// do nothing
 block|}
 annotation|@
 name|Override
+DECL|method|listen (TypeLiteral<?> tl, Class<?> clazz)
 specifier|public
 name|void
 name|listen
@@ -206,6 +204,7 @@ comment|// do nothing
 block|}
 annotation|@
 name|Override
+DECL|method|export (Export export, Class<?> type)
 specifier|public
 name|void
 name|export
@@ -224,6 +223,7 @@ comment|// do nothing
 block|}
 annotation|@
 name|Override
+DECL|method|create ()
 specifier|public
 name|Module
 name|create
@@ -236,7 +236,6 @@ literal|null
 return|;
 block|}
 block|}
-decl_stmt|;
 block|}
 end_interface
 

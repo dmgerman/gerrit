@@ -82,6 +82,31 @@ name|String
 name|javascript
 parameter_list|)
 function_decl|;
+DECL|class|NOP
+specifier|static
+class|class
+name|NOP
+extends|extends
+name|ModuleGenerator
+operator|.
+name|NOP
+implements|implements
+name|HttpModuleGenerator
+block|{
+annotation|@
+name|Override
+DECL|method|export (String javascript)
+specifier|public
+name|void
+name|export
+parameter_list|(
+name|String
+name|javascript
+parameter_list|)
+block|{
+comment|// do nothing
+block|}
+block|}
 block|}
 end_interface
 

@@ -508,9 +508,11 @@ operator|.
 name|newSshModuleGenerator
 argument_list|()
 else|:
+operator|new
 name|ModuleGenerator
 operator|.
 name|NOP
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -526,9 +528,11 @@ operator|.
 name|newHttpModuleGenerator
 argument_list|()
 else|:
-name|ModuleGenerator
+operator|new
+name|HttpModuleGenerator
 operator|.
 name|NOP
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|discover ()
