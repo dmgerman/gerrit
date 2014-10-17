@@ -198,6 +198,22 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|rpc
+operator|.
+name|Natives
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|ui
 operator|.
 name|InlineHyperlink
@@ -752,7 +768,7 @@ operator|=
 name|path
 expr_stmt|;
 block|}
-DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo.FileMeta meta, List<WebLinkInfo> webLinks, boolean editExists, int currentPatchSet)
+DECL|method|setUpPatchSetNav (JsArray<RevisionInfo> list, DiffInfo.FileMeta meta, boolean editExists, int currentPatchSet)
 name|void
 name|setUpPatchSetNav
 parameter_list|(
@@ -766,12 +782,6 @@ name|DiffInfo
 operator|.
 name|FileMeta
 name|meta
-parameter_list|,
-name|List
-argument_list|<
-name|WebLinkInfo
-argument_list|>
-name|webLinks
 parameter_list|,
 name|boolean
 name|editExists
@@ -1025,6 +1035,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|List
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|webLinks
+init|=
+name|Natives
+operator|.
+name|asList
+argument_list|(
+name|meta
+operator|.
+name|web_links
+argument_list|()
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|webLinks
