@@ -160,9 +160,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
+name|junit
 operator|.
-name|Config
+name|TestRepository
 import|;
 end_import
 
@@ -174,9 +174,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|junit
+name|lib
 operator|.
-name|TestRepository
+name|Config
 import|;
 end_import
 

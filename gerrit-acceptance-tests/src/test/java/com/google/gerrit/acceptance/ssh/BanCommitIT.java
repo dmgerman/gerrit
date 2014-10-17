@@ -162,7 +162,9 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|NoHttpd
+name|GitUtil
+operator|.
+name|Commit
 import|;
 end_import
 
@@ -176,9 +178,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GitUtil
-operator|.
-name|Commit
+name|NoHttpd
 import|;
 end_import
 
