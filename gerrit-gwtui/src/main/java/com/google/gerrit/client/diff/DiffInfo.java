@@ -211,30 +211,6 @@ name|content
 parameter_list|()
 comment|/*-{ return this.content; }-*/
 function_decl|;
-DECL|method|web_links_a ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArray
-argument_list|<
-name|WebLinkInfo
-argument_list|>
-name|web_links_a
-parameter_list|()
-comment|/*-{ return this.web_links_a; }-*/
-function_decl|;
-DECL|method|web_links_b ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArray
-argument_list|<
-name|WebLinkInfo
-argument_list|>
-name|web_links_b
-parameter_list|()
-comment|/*-{ return this.web_links_b; }-*/
-function_decl|;
 DECL|method|change_type ()
 specifier|public
 specifier|final
@@ -670,6 +646,18 @@ name|int
 name|lines
 parameter_list|()
 comment|/*-{ return this.lines || 0 }-*/
+function_decl|;
+DECL|method|web_links ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|web_links
+parameter_list|()
+comment|/*-{ return this.web_links; }-*/
 function_decl|;
 DECL|method|FileMeta ()
 specifier|protected
