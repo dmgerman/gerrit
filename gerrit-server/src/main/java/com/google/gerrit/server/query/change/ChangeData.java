@@ -1938,6 +1938,16 @@ name|getNotes
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|db ()
+specifier|public
+name|ReviewDb
+name|db
+parameter_list|()
+block|{
+return|return
+name|db
+return|;
+block|}
 DECL|method|isFromSource (ChangeDataSource s)
 specifier|public
 name|boolean

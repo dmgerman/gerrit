@@ -232,6 +232,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -530,6 +544,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// Note: no guarantees are made about the user passed in the ChangeControl; do
+comment|// not depend on this directly. Either use .forUser(otherUser) to get a
+comment|// control for a specific known user, or use CURRENT_USER, which may be null
+comment|// for rule types that may not depend on the current user.
 DECL|field|CHANGE_CONTROL
 specifier|public
 specifier|static
@@ -543,6 +561,23 @@ init|=
 name|create
 argument_list|(
 name|ChangeControl
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|field|CURRENT_USER
+specifier|public
+specifier|static
+specifier|final
+name|StoredValue
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|CURRENT_USER
+init|=
+name|create
+argument_list|(
+name|CurrentUser
 operator|.
 name|class
 argument_list|)
