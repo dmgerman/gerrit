@@ -300,7 +300,7 @@ name|NO_PATCH_SET
 argument_list|)
 return|;
 block|}
-comment|/**    * Create an error commit.    *<p>    * Should only be used for error statuses such that there is no possible    * non-zero commit on which we could call {@link    * #setStatusCode(CommitMergeStatus)}, enumerated in the methods above.    *    * @param ctl control for change that caused this error    * @param CommitMergeStatus status    * @return new commit instance    */
+comment|/**    * Create an error commit.    *<p>    * Should only be used for error statuses such that there is no possible    * non-zero commit on which we could call {@link    * #setStatusCode(CommitMergeStatus)}, enumerated in the methods above.    *    * @param ctl control for change that caused this error    * @param s status    * @return new commit instance    */
 DECL|method|error (ChangeControl ctl, CommitMergeStatus s)
 specifier|private
 specifier|static
