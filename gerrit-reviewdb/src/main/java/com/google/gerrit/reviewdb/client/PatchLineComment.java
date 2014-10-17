@@ -1213,6 +1213,24 @@ end_function
 begin_function
 annotation|@
 name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|key
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
+end_function
+
+begin_function
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

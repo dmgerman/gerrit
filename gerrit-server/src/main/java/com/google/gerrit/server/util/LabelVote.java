@@ -644,6 +644,25 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+literal|17
+operator|*
+name|value
+operator|+
+name|name
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
