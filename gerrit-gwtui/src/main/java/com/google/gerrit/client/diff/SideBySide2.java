@@ -1876,6 +1876,22 @@ argument_list|(
 name|list
 argument_list|)
 expr_stmt|;
+comment|// TODO(davido): Change edit feature doesn't support drafts atm,
+comment|// so we cannot use info.status().isOpen()
+name|boolean
+name|renderChangeEditIcon
+init|=
+name|info
+operator|.
+name|status
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|NEW
+decl_stmt|;
 name|diffTable
 operator|.
 name|set
@@ -1891,6 +1907,8 @@ operator|!=
 literal|null
 argument_list|,
 name|currentPatchSet
+argument_list|,
+name|renderChangeEditIcon
 argument_list|)
 expr_stmt|;
 name|header
