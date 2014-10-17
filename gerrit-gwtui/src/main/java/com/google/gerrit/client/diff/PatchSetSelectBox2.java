@@ -950,9 +950,14 @@ block|}
 if|if
 condition|(
 name|meta
-operator|!=
+operator|==
 literal|null
-operator|&&
+condition|)
+block|{
+return|return;
+block|}
+if|if
+condition|(
 operator|!
 name|Patch
 operator|.
@@ -983,10 +988,6 @@ name|Gerrit
 operator|.
 name|isSignedIn
 argument_list|()
-operator|&&
-name|meta
-operator|!=
-literal|null
 operator|&&
 operator|!
 name|Patch
