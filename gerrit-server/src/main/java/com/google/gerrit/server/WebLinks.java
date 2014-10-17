@@ -204,6 +204,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -310,7 +320,7 @@ expr_stmt|;
 block|}
 DECL|method|getPatchSetLinks (String project, String commit)
 specifier|public
-name|Iterable
+name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
@@ -329,10 +339,12 @@ name|WebLinkInfo
 argument_list|>
 name|links
 init|=
-name|Lists
-operator|.
-name|newArrayList
-argument_list|()
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+literal|4
+argument_list|)
 decl_stmt|;
 for|for
 control|(
