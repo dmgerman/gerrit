@@ -461,16 +461,6 @@ name|projectCache
 operator|.
 name|all
 argument_list|()
-argument_list|,
-operator|-
-literal|1
-argument_list|,
-operator|-
-literal|1
-argument_list|,
-literal|null
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 if|if
