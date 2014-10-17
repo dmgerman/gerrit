@@ -224,7 +224,6 @@ name|ChangeQueryBuilder
 operator|.
 name|Arguments
 argument_list|(
-comment|//
 operator|new
 name|InvalidProvider
 argument_list|<
@@ -232,7 +231,6 @@ name|ReviewDb
 argument_list|>
 argument_list|()
 argument_list|,
-comment|//
 operator|new
 name|InvalidProvider
 argument_list|<
@@ -240,7 +238,6 @@ name|ChangeQueryRewriter
 argument_list|>
 argument_list|()
 argument_list|,
-comment|//
 literal|null
 argument_list|,
 literal|null
@@ -255,7 +252,8 @@ literal|null
 argument_list|,
 literal|null
 argument_list|,
-comment|//
+literal|null
+argument_list|,
 literal|null
 argument_list|,
 literal|null

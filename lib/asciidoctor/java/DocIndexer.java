@@ -496,7 +496,7 @@ name|LUCENE_VERSION
 init|=
 name|Version
 operator|.
-name|LUCENE_4_10_0
+name|LUCENE_4_10_1
 decl_stmt|;
 DECL|field|SECTION_HEADER
 specifier|private
