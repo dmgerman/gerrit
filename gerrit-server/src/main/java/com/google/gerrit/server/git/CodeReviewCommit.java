@@ -260,17 +260,60 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|error (final CommitMergeStatus s)
+DECL|method|revisionGone (ChangeControl ctl)
+specifier|static
+name|CodeReviewCommit
+name|revisionGone
+parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|)
+block|{
+return|return
+name|error
+argument_list|(
+name|ctl
+argument_list|,
+name|CommitMergeStatus
+operator|.
+name|REVISION_GONE
+argument_list|)
+return|;
+block|}
+DECL|method|noPatchSet (ChangeControl ctl)
+specifier|static
+name|CodeReviewCommit
+name|noPatchSet
+parameter_list|(
+name|ChangeControl
+name|ctl
+parameter_list|)
+block|{
+return|return
+name|error
+argument_list|(
+name|ctl
+argument_list|,
+name|CommitMergeStatus
+operator|.
+name|NO_PATCH_SET
+argument_list|)
+return|;
+block|}
+comment|/**    * Create an error commit.    *<p>    * Should only be used for error statuses such that there is no possible    * non-zero commit on which we could call {@link    * #setStatusCode(CommitMergeStatus)}, enumerated in the methods above.    *    * @param ctl control for change that caused this error    * @param CommitMergeStatus status    * @return new commit instance    */
+DECL|method|error (ChangeControl ctl, CommitMergeStatus s)
+specifier|private
 specifier|static
 name|CodeReviewCommit
 name|error
 parameter_list|(
-specifier|final
+name|ChangeControl
+name|ctl
+parameter_list|,
 name|CommitMergeStatus
 name|s
 parameter_list|)
 block|{
-specifier|final
 name|CodeReviewCommit
 name|r
 init|=
@@ -283,6 +326,13 @@ name|zeroId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|r
+operator|.
+name|setControl
+argument_list|(
+name|ctl
+argument_list|)
+expr_stmt|;
 name|r
 operator|.
 name|statusCode
