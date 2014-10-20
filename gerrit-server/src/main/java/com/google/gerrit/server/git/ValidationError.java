@@ -172,6 +172,20 @@ operator|+
 literal|"]"
 return|;
 block|}
+DECL|interface|Sink
+specifier|public
+interface|interface
+name|Sink
+block|{
+DECL|method|error (ValidationError error)
+name|void
+name|error
+parameter_list|(
+name|ValidationError
+name|error
+parameter_list|)
+function_decl|;
+block|}
 block|}
 end_class
 
