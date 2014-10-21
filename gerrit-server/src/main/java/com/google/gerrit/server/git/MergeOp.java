@@ -1132,6 +1132,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|joda
+operator|.
+name|time
+operator|.
+name|format
+operator|.
+name|ISODateTimeFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1318,6 +1332,12 @@ literal|12
 argument_list|,
 name|HOURS
 argument_list|)
+decl_stmt|;
+DECL|field|logPrefix
+specifier|private
+specifier|final
+name|String
+name|logPrefix
 decl_stmt|;
 DECL|field|repoManager
 specifier|private
@@ -1710,6 +1730,33 @@ name|ChangeMessagesUtil
 name|cmUtil
 parameter_list|)
 block|{
+name|logPrefix
+operator|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"[%s@%s]: "
+argument_list|,
+name|branch
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|ISODateTimeFormat
+operator|.
+name|hourMinuteSecond
+argument_list|()
+operator|.
+name|print
+argument_list|(
+name|TimeUtil
+operator|.
+name|nowMs
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|repoManager
 operator|=
 name|grm
@@ -1946,6 +1993,13 @@ name|NoSuchChangeException
 throws|,
 name|IOException
 block|{
+name|logDebug
+argument_list|(
+literal|"Beginning merge attempt on {}"
+argument_list|,
+name|destBranch
+argument_list|)
+expr_stmt|;
 name|setDestProject
 argument_list|()
 expr_stmt|;
@@ -2028,6 +2082,16 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Beginning merge iteration with {} left to merge"
+argument_list|,
+name|toMerge
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|toMergeNextTurn
 operator|.
 name|clear
@@ -2064,6 +2128,11 @@ condition|(
 name|reopen
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Reopening branch"
+argument_list|)
+expr_stmt|;
 name|branchUpdate
 operator|=
 name|openBranch
@@ -2188,6 +2257,23 @@ block|{
 comment|// change has missing dependencies, but all commits which are
 comment|// missing are still attempted to be merged with another submit
 comment|// strategy, retry to merge this commit in the next turn
+name|logDebug
+argument_list|(
+literal|"Revision {} of patch set {} has missing dependencies with"
+operator|+
+literal|" different submit types, reconsidering on next run"
+argument_list|,
+name|commit
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|commit
+operator|.
+name|getPatchsetId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|it
 operator|.
 name|remove
@@ -2217,6 +2303,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Adding {} changes potentially submittable on next run"
+argument_list|,
+name|potentiallyStillSubmittable
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|potentiallyStillSubmittableOnNextRun
 operator|.
 name|addAll
@@ -2240,6 +2336,16 @@ operator|.
 name|putAll
 argument_list|(
 name|toMergeNextTurn
+argument_list|)
+expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Adding {} changes to merge on next run"
+argument_list|,
+name|toMerge
+operator|.
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2307,24 +2413,18 @@ name|NoSuchProjectException
 name|noProject
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Project %s no longer exists, abandoning open changes"
-argument_list|,
+literal|"Project "
+operator|+
 name|destBranch
 operator|.
 name|getParentKey
 argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
+operator|+
+literal|" no longer exists,"
+operator|+
+literal|" abandoning open changes"
 argument_list|)
 expr_stmt|;
 name|abandonAllOpenChanges
@@ -2476,6 +2576,16 @@ name|CodeReviewCommit
 name|commit
 parameter_list|)
 block|{
+name|PatchSet
+operator|.
+name|Id
+name|psId
+init|=
+name|commit
+operator|.
+name|getPatchsetId
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|commit
@@ -2492,6 +2602,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Patch set {} is not submittable: no list of missing commits"
+argument_list|,
+name|psId
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2522,9 +2639,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot check if missing commits can be submitted"
 argument_list|,
@@ -2548,6 +2663,20 @@ block|{
 comment|// The commit doesn't have a patch set, so it cannot be
 comment|// submitted to the branch.
 comment|//
+name|logDebug
+argument_list|(
+literal|"Patch set {} is not submittable: dependency {} has no"
+operator|+
+literal|" associated patch set"
+argument_list|,
+name|psId
+argument_list|,
+name|missingCommit
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2572,9 +2701,43 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|PatchSet
+operator|.
+name|Id
+name|missingId
+init|=
+name|missingCommit
+operator|.
+name|getPatchsetId
+argument_list|()
+decl_stmt|;
 comment|// If the missing commit is not the current patch set,
 comment|// the change must be rebased to use the proper parent.
 comment|//
+name|logDebug
+argument_list|(
+literal|"Patch set {} is not submittable: depends on patch set {} of"
+operator|+
+literal|" change {}, but current patch set is {}"
+argument_list|,
+name|psId
+argument_list|,
+name|missingId
+argument_list|,
+name|missingId
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
+name|missingCommit
+operator|.
+name|change
+argument_list|()
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -2603,6 +2766,24 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+name|logDebug
+argument_list|(
+literal|"Running submit strategy {} for {} commits"
+argument_list|,
+name|strategy
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+argument_list|,
+name|toMerge
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|mergeTip
 operator|=
 name|strategy
@@ -2620,6 +2801,19 @@ name|strategy
 operator|.
 name|getRefLogIdent
 argument_list|()
+expr_stmt|;
+name|logDebug
+argument_list|(
+literal|"Produced {} new commits"
+argument_list|,
+name|strategy
+operator|.
+name|getNewCommits
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|commits
 operator|.
@@ -3065,6 +3259,16 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Found {} existing heads"
+argument_list|,
+name|alreadyAccepted
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|alreadyAccepted
 return|;
@@ -3259,6 +3463,13 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logError
+argument_list|(
+literal|"Missing current patch set on change "
+operator|+
+name|changeId
+argument_list|)
+expr_stmt|;
 name|commits
 operator|.
 name|put
@@ -3344,6 +3555,13 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logError
+argument_list|(
+literal|"Missing patch set or revision on change "
+operator|+
+name|changeId
+argument_list|)
+expr_stmt|;
 name|commits
 operator|.
 name|put
@@ -3401,6 +3619,16 @@ name|IllegalArgumentException
 name|iae
 parameter_list|)
 block|{
+name|logError
+argument_list|(
+literal|"Invalid revision on patch set "
+operator|+
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|commits
 operator|.
 name|put
@@ -3444,6 +3672,22 @@ comment|// TODO this is actually an error, the branch is gone but we
 comment|// want to merge the issue. We can't safely do that if the
 comment|// tip is not reachable.
 comment|//
+name|logError
+argument_list|(
+literal|"Revision "
+operator|+
+name|idstr
+operator|+
+literal|" of patch set "
+operator|+
+name|ps
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|" is not contained in any ref"
+argument_list|)
+expr_stmt|;
 name|commits
 operator|.
 name|put
@@ -3492,22 +3736,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Invalid commit "
 operator|+
-name|id
-operator|.
-name|name
-argument_list|()
+name|idstr
 operator|+
-literal|" on "
+literal|" on patch set "
 operator|+
-name|chg
+name|ps
 operator|.
-name|getKey
+name|getId
 argument_list|()
 argument_list|,
 name|e
@@ -3604,6 +3843,23 @@ name|MergeValidationException
 name|mve
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Revision {} of patch set {} failed validation: {}"
+argument_list|,
+name|idstr
+argument_list|,
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|mve
+operator|.
+name|getStatus
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|commit
 operator|.
 name|setStatusCode
@@ -3648,6 +3904,18 @@ name|branchTip
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Revision {} of patch set {} is already merged"
+argument_list|,
+name|idstr
+argument_list|,
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|commit
 operator|.
 name|setStatusCode
@@ -3673,9 +3941,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot mark change "
 operator|+
@@ -3751,6 +4017,20 @@ operator|==
 literal|null
 condition|)
 block|{
+name|logError
+argument_list|(
+literal|"No submit type for revision "
+operator|+
+name|idstr
+operator|+
+literal|" of patch set "
+operator|+
+name|ps
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|commit
 operator|.
 name|setStatusCode
@@ -3857,9 +4137,7 @@ operator|.
 name|OK
 condition|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Failed to get submit type for "
 operator|+
@@ -3888,9 +4166,7 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Failed to get submit type for "
 operator|+
@@ -3931,13 +4207,35 @@ condition|(
 name|branchTip
 operator|==
 name|mergeTip
-operator|||
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Branch already at merge tip {}, no update to perform"
+argument_list|,
+name|mergeTip
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|mergeTip
 operator|==
 literal|null
 condition|)
 block|{
-comment|// nothing to do
+name|logDebug
+argument_list|(
+literal|"No merge tip, no update to perform"
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -3957,6 +4255,15 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Loading new configuration from {}"
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_CONFIG
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|ProjectConfig
@@ -4050,14 +4357,43 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-switch|switch
-condition|(
+name|RefUpdate
+operator|.
+name|Result
+name|result
+init|=
 name|branchUpdate
 operator|.
 name|update
 argument_list|(
 name|rw
 argument_list|)
+decl_stmt|;
+name|logDebug
+argument_list|(
+literal|"Update of {}: {}..{} returned status {}"
+argument_list|,
+name|branchUpdate
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|branchUpdate
+operator|.
+name|getOldObjectId
+argument_list|()
+argument_list|,
+name|branchUpdate
+operator|.
+name|getNewObjectId
+argument_list|()
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
+switch|switch
+condition|(
+name|result
 condition|)
 block|{
 case|case
@@ -4269,6 +4605,16 @@ name|RefUpdate
 name|branchUpdate
 parameter_list|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Firing ref updated hooks for {}"
+argument_list|,
+name|branchUpdate
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|gitRefUpdated
 operator|.
 name|fire
@@ -4416,6 +4762,13 @@ parameter_list|)
 throws|throws
 name|NoSuchChangeException
 block|{
+name|logDebug
+argument_list|(
+literal|"Updating change status for {} changes"
+argument_list|,
+name|submitted
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 specifier|final
@@ -4464,6 +4817,18 @@ block|{
 comment|// Shouldn't ever happen, but leave the change alone. We'll pick
 comment|// it up on the next pass.
 comment|//
+name|logDebug
+argument_list|(
+literal|"Submitted change {} did not appear in set of new commits"
+operator|+
+literal|" produced by merge strategy"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 specifier|final
@@ -4475,6 +4840,23 @@ operator|.
 name|getMessage
 argument_list|()
 decl_stmt|;
+name|logDebug
+argument_list|(
+literal|"Status of change {} on {}: {}"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|c
+operator|.
+name|getDest
+argument_list|()
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 switch|switch
@@ -4591,6 +4973,16 @@ break|break;
 case|case
 name|MISSING_DEPENDENCY
 case|:
+name|logDebug
+argument_list|(
+literal|"Change {} is missing dependency"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|potentiallyStillSubmittable
 operator|.
 name|add
@@ -4626,9 +5018,7 @@ name|OrmException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 literal|"Error updating change status for "
 operator|+
@@ -4647,9 +5037,7 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 literal|"Error updating change status for "
 operator|+
@@ -4694,6 +5082,16 @@ name|mergeTip
 operator|)
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Updating submodule subscriptions for {} changes"
+argument_list|,
+name|submitted
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|SubmoduleOp
 name|subOp
 init|=
@@ -4738,16 +5136,11 @@ name|SubmoduleException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
-literal|"The gitLinks were not updated according to the subscriptions "
-operator|+
+literal|"The gitLinks were not updated according to the subscriptions"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4817,6 +5210,25 @@ operator|<
 name|waitUntil
 condition|)
 block|{
+name|long
+name|recheckIn
+init|=
+name|waitUntil
+operator|-
+name|now
+decl_stmt|;
+name|logDebug
+argument_list|(
+literal|"Submit for {} is still possible; rechecking in {}ms"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|recheckIn
+argument_list|)
+expr_stmt|;
 comment|// If we waited a short while we might still be able to get
 comment|// this change submitted. Reschedule an attempt in a bit.
 comment|//
@@ -4826,9 +5238,7 @@ name|recheckAfter
 argument_list|(
 name|destBranch
 argument_list|,
-name|waitUntil
-operator|-
-name|now
+name|recheckIn
 argument_list|,
 name|MILLISECONDS
 argument_list|)
@@ -4850,6 +5260,16 @@ comment|// It would be possible to submit the change if the missing
 comment|// dependencies are also submitted. Perhaps the user just
 comment|// forgot to submit those.
 comment|//
+name|logDebug
+argument_list|(
+literal|"Submit for {} is still possible after missing dependencies"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|StringBuilder
 name|m
 init|=
@@ -4951,6 +5371,16 @@ comment|// It is impossible to submit this change as-is. The author
 comment|// needs to rebase it in order to work around the missing
 comment|// dependencies.
 comment|//
+name|logDebug
+argument_list|(
+literal|"Submit for {} is not possible"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|StringBuilder
 name|m
 init|=
@@ -5369,6 +5799,16 @@ name|IOException
 throws|,
 name|NoSuchChangeException
 block|{
+name|logDebug
+argument_list|(
+literal|"Setting change {} merged"
+argument_list|,
+name|c
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ChangeUpdate
 name|update
 init|=
@@ -5559,9 +5999,7 @@ name|OrmException
 name|ex
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot run hook for submitted patch set "
 operator|+
@@ -5706,9 +6144,7 @@ name|PatchSetInfoNotAvailableException
 name|e1
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot read merged patch set "
 operator|+
@@ -5816,9 +6252,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot send email for submitted patch set "
 operator|+
@@ -5884,9 +6318,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot send email for submitted patch set "
 operator|+
@@ -6039,12 +6471,26 @@ name|ChangeNotes
 name|notes
 parameter_list|)
 block|{
+name|Change
+operator|.
+name|Id
+name|id
+init|=
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|submitter
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+name|long
+name|sinceMs
+init|=
 name|TimeUtil
 operator|.
 name|nowMs
@@ -6057,15 +6503,51 @@ argument_list|()
 operator|.
 name|getTime
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|sinceMs
 operator|>
 name|MAX_SUBMIT_WINDOW
 condition|)
 block|{
+name|logDebug
+argument_list|(
+literal|"Change {} submitted {}ms ago, unsubmitting"
+argument_list|,
+name|id
+argument_list|,
+name|sinceMs
+argument_list|)
+expr_stmt|;
 return|return
 name|RetryStatus
 operator|.
 name|UNSUBMIT
 return|;
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Change {} submitted {}ms ago, within window"
+argument_list|,
+name|id
+argument_list|,
+name|sinceMs
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"No submitter for change {}"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 try|try
 block|{
@@ -6148,21 +6630,62 @@ operator|.
 name|getTime
 argument_list|()
 decl_stmt|;
-return|return
+name|long
+name|sinceMs
+init|=
 name|msgMs
 operator|-
 name|lastMs
+decl_stmt|;
+if|if
+condition|(
+name|sinceMs
 operator|>
 name|MAX_SUBMIT_WINDOW
-condition|?
+condition|)
+block|{
+name|logDebug
+argument_list|(
+literal|"Last message for change {} was {}ms ago, unsubmitting"
+argument_list|,
+name|id
+argument_list|,
+name|sinceMs
+argument_list|)
+expr_stmt|;
+return|return
 name|RetryStatus
 operator|.
 name|UNSUBMIT
-else|:
+return|;
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Last message for change {} was {}ms ago, within window"
+argument_list|,
+name|id
+argument_list|,
+name|sinceMs
+argument_list|)
+expr_stmt|;
+return|return
 name|RetryStatus
 operator|.
 name|RETRY_NO_MESSAGE
 return|;
+block|}
+block|}
+else|else
+block|{
+name|logDebug
+argument_list|(
+literal|"Last message for change {} differed, adding message"
+argument_list|,
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 return|return
@@ -6177,9 +6700,7 @@ name|OrmException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 literal|"Cannot check previous merge failure, unsubmitting"
 argument_list|,
@@ -6213,6 +6734,16 @@ name|NoSuchChangeException
 throws|,
 name|IOException
 block|{
+name|logDebug
+argument_list|(
+literal|"Possibly sending merge failure notification for {}"
+argument_list|,
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|PatchSetApproval
 name|submitter
 init|=
@@ -6246,11 +6777,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
-literal|"Cannot get submitter"
+literal|"Cannot get submitter for change "
+operator|+
+name|notes
+operator|.
+name|getChangeId
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -6480,9 +7014,7 @@ name|OrmException
 name|err
 parameter_list|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
 literal|"Cannot record merge failure message"
 argument_list|,
@@ -6612,9 +7144,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot send email notifications about merge failure"
 argument_list|,
@@ -6680,9 +7210,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot send email notifications about merge failure"
 argument_list|,
@@ -6727,9 +7255,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Failed to index new change message"
 argument_list|,
@@ -6794,9 +7320,7 @@ name|OrmException
 name|ex
 parameter_list|)
 block|{
-name|log
-operator|.
-name|error
+name|logError
 argument_list|(
 literal|"Cannot run hook for merge failed "
 operator|+
@@ -6893,16 +7417,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|log
-operator|.
-name|warn
+name|logWarn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Cannot abandon changes for deleted project %s"
-argument_list|,
+literal|"Cannot abandon changes for deleted project "
+operator|+
 name|destBranch
 operator|.
 name|getParentKey
@@ -6910,7 +7428,6 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|,
 name|err
 argument_list|)
@@ -7134,6 +7651,162 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|logDebug (String msg, Object... args)
+specifier|private
+name|void
+name|logDebug
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Object
+modifier|...
+name|args
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|logPrefix
+operator|+
+name|msg
+argument_list|,
+name|args
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logWarn (String msg, Throwable t)
+specifier|private
+name|void
+name|logWarn
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|logPrefix
+operator|+
+name|msg
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logWarn (String msg)
+specifier|private
+name|void
+name|logWarn
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isWarnEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|logPrefix
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logError (String msg, Throwable t)
+specifier|private
+name|void
+name|logError
+parameter_list|(
+name|String
+name|msg
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isErrorEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|logPrefix
+operator|+
+name|msg
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|logError (String msg)
+specifier|private
+name|void
+name|logError
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isErrorEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|error
+argument_list|(
+name|logPrefix
+operator|+
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
