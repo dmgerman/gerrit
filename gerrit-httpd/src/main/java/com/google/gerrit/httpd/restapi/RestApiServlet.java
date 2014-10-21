@@ -3008,6 +3008,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3036,6 +3038,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3061,6 +3065,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3089,6 +3095,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3124,6 +3132,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3149,6 +3159,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3184,6 +3196,8 @@ name|e
 operator|.
 name|caching
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3207,6 +3221,8 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3231,6 +3247,8 @@ operator|+
 name|JSON_TYPE
 operator|+
 literal|" in request"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -3255,6 +3273,8 @@ operator|+
 name|JSON_TYPE
 operator|+
 literal|" in request"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -6852,6 +6872,8 @@ argument_list|,
 name|SC_INTERNAL_SERVER_ERROR
 argument_list|,
 literal|"Internal server error"
+argument_list|,
+name|err
 argument_list|)
 expr_stmt|;
 block|}
@@ -6859,7 +6881,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg)
+DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, @Nullable Throwable err)
 specifier|public
 specifier|static
 name|void
@@ -6876,6 +6898,11 @@ name|statusCode
 parameter_list|,
 name|String
 name|msg
+parameter_list|,
+annotation|@
+name|Nullable
+name|Throwable
+name|err
 parameter_list|)
 throws|throws
 name|IOException
@@ -6893,13 +6920,15 @@ argument_list|,
 name|CacheControl
 operator|.
 name|NONE
+argument_list|,
+name|err
 argument_list|)
 expr_stmt|;
 block|}
 end_function
 
 begin_function
-DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, CacheControl c)
+DECL|method|replyError (HttpServletRequest req, HttpServletResponse res, int statusCode, String msg, CacheControl c, @Nullable Throwable err)
 specifier|public
 specifier|static
 name|void
@@ -6919,6 +6948,11 @@ name|msg
 parameter_list|,
 name|CacheControl
 name|c
+parameter_list|,
+annotation|@
+name|Nullable
+name|Throwable
+name|err
 parameter_list|)
 throws|throws
 name|IOException
@@ -6950,6 +6984,23 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|err
+operator|!=
+literal|null
+condition|)
+block|{
+name|RequestUtil
+operator|.
+name|setErrorTraceAttribute
+argument_list|(
+name|req
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_function
 

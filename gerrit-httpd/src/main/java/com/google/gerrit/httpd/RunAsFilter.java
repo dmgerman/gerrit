@@ -66,6 +66,24 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|restapi
+operator|.
+name|RestApiServlet
+operator|.
+name|replyError
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|servlet
@@ -540,8 +558,6 @@ operator|!
 name|enabled
 condition|)
 block|{
-name|RestApiServlet
-operator|.
 name|replyError
 argument_list|(
 name|req
@@ -553,6 +569,8 @@ argument_list|,
 name|RUN_AS
 operator|+
 literal|" disabled by auth.enableRunAs = false"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return;
@@ -580,8 +598,6 @@ name|canRunAs
 argument_list|()
 condition|)
 block|{
-name|RestApiServlet
-operator|.
 name|replyError
 argument_list|(
 name|req
@@ -593,6 +609,8 @@ argument_list|,
 literal|"not permitted to use "
 operator|+
 name|RUN_AS
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return;
@@ -629,8 +647,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|RestApiServlet
-operator|.
 name|replyError
 argument_list|(
 name|req
@@ -642,6 +658,8 @@ argument_list|,
 literal|"cannot resolve "
 operator|+
 name|RUN_AS
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return;
@@ -653,8 +671,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|RestApiServlet
-operator|.
 name|replyError
 argument_list|(
 name|req
@@ -666,6 +682,8 @@ argument_list|,
 literal|"no account matches "
 operator|+
 name|RUN_AS
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 return|return;
