@@ -581,11 +581,6 @@ name|String
 name|selected
 parameter_list|()
 function_decl|;
-DECL|method|replyBox ()
-name|String
-name|replyBox
-parameter_list|()
-function_decl|;
 block|}
 DECL|field|icon
 annotation|@
