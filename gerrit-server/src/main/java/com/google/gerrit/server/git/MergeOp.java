@@ -1601,131 +1601,106 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (final GitRepositoryManager grm, final SchemaFactory<ReviewDb> sf, final ChangeNotes.Factory nf, final ProjectCache pc, final GitReferenceUpdated gru, final MergedSender.Factory msf, final MergeFailSender.Factory mfsf, final PatchSetInfoFactory psif, final IdentifiedUser.GenericFactory iuf, final ChangeControl.GenericFactory changeControlFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final MergeQueue mergeQueue, @Assisted final Branch.NameKey branch, final ChangeHooks hooks, final AccountCache accountCache, final TagCache tagCache, final SubmitStrategyFactory submitStrategyFactory, final SubmoduleOp.Factory subOpFactory, final WorkQueue workQueue, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeValidators.Factory mergeValidatorsFactory, final ApprovalsUtil approvalsUtil, final ChangeMessagesUtil cmUtil)
+DECL|method|MergeOp (GitRepositoryManager grm, SchemaFactory<ReviewDb> sf, ChangeNotes.Factory nf, ProjectCache pc, GitReferenceUpdated gru, MergedSender.Factory msf, MergeFailSender.Factory mfsf, PatchSetInfoFactory psif, IdentifiedUser.GenericFactory iuf, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeUpdate.Factory updateFactory, MergeQueue mergeQueue, @Assisted Branch.NameKey branch, ChangeHooks hooks, AccountCache accountCache, TagCache tagCache, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, WorkQueue workQueue, RequestScopePropagator requestScopePropagator, ChangeIndexer indexer, MergeValidators.Factory mergeValidatorsFactory, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil)
 name|MergeOp
 parameter_list|(
-specifier|final
 name|GitRepositoryManager
 name|grm
 parameter_list|,
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
 parameter_list|,
-specifier|final
 name|ChangeNotes
 operator|.
 name|Factory
 name|nf
 parameter_list|,
-specifier|final
 name|ProjectCache
 name|pc
 parameter_list|,
-specifier|final
 name|GitReferenceUpdated
 name|gru
 parameter_list|,
-specifier|final
 name|MergedSender
 operator|.
 name|Factory
 name|msf
 parameter_list|,
-specifier|final
 name|MergeFailSender
 operator|.
 name|Factory
 name|mfsf
 parameter_list|,
-specifier|final
 name|PatchSetInfoFactory
 name|psif
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|iuf
 parameter_list|,
-specifier|final
 name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
 parameter_list|,
-specifier|final
 name|ChangeData
 operator|.
 name|Factory
 name|changeDataFactory
 parameter_list|,
-specifier|final
 name|ChangeUpdate
 operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
-specifier|final
 name|MergeQueue
 name|mergeQueue
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|branch
 parameter_list|,
-specifier|final
 name|ChangeHooks
 name|hooks
 parameter_list|,
-specifier|final
 name|AccountCache
 name|accountCache
 parameter_list|,
-specifier|final
 name|TagCache
 name|tagCache
 parameter_list|,
-specifier|final
 name|SubmitStrategyFactory
 name|submitStrategyFactory
 parameter_list|,
-specifier|final
 name|SubmoduleOp
 operator|.
 name|Factory
 name|subOpFactory
 parameter_list|,
-specifier|final
 name|WorkQueue
 name|workQueue
 parameter_list|,
-specifier|final
 name|RequestScopePropagator
 name|requestScopePropagator
 parameter_list|,
-specifier|final
 name|ChangeIndexer
 name|indexer
 parameter_list|,
-specifier|final
 name|MergeValidators
 operator|.
 name|Factory
 name|mergeValidatorsFactory
 parameter_list|,
-specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
-specifier|final
 name|ChangeMessagesUtil
 name|cmUtil
 parameter_list|)
@@ -2022,7 +1997,6 @@ name|reopen
 init|=
 literal|false
 decl_stmt|;
-specifier|final
 name|ListMultimap
 argument_list|<
 name|SubmitType
@@ -2047,7 +2021,6 @@ name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|ListMultimap
 argument_list|<
 name|SubmitType
@@ -2061,7 +2034,6 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -2097,7 +2069,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-specifier|final
 name|Set
 argument_list|<
 name|SubmitType
@@ -2116,7 +2087,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|SubmitType
 name|submitType
 range|:
@@ -2139,7 +2109,6 @@ name|openBranch
 argument_list|()
 expr_stmt|;
 block|}
-specifier|final
 name|SubmitStrategy
 name|strategy
 init|=
@@ -2209,7 +2178,6 @@ expr_stmt|;
 block|}
 for|for
 control|(
-specifier|final
 name|Iterator
 argument_list|<
 name|CodeReviewCommit
@@ -2228,7 +2196,6 @@ argument_list|()
 condition|;
 control|)
 block|{
-specifier|final
 name|CodeReviewCommit
 name|commit
 init|=
@@ -2356,14 +2323,12 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|CodeReviewCommit
 name|commit
 range|:
 name|potentiallyStillSubmittableOnNextRun
 control|)
 block|{
-specifier|final
 name|Capable
 name|capable
 init|=
@@ -2503,12 +2468,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|containsMissingCommits ( final ListMultimap<SubmitType, CodeReviewCommit> map, final CodeReviewCommit commit)
+DECL|method|containsMissingCommits ( ListMultimap<SubmitType, CodeReviewCommit> map, CodeReviewCommit commit)
 specifier|private
 name|boolean
 name|containsMissingCommits
 parameter_list|(
-specifier|final
 name|ListMultimap
 argument_list|<
 name|SubmitType
@@ -2517,7 +2481,6 @@ name|CodeReviewCommit
 argument_list|>
 name|map
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|commit
 parameter_list|)
@@ -2537,7 +2500,6 @@ return|;
 block|}
 for|for
 control|(
-specifier|final
 name|CodeReviewCommit
 name|missingCommit
 range|:
@@ -2566,12 +2528,11 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|isSubmitForMissingCommitsStillPossible (final CodeReviewCommit commit)
+DECL|method|isSubmitForMissingCommitsStillPossible (CodeReviewCommit commit)
 specifier|private
 name|boolean
 name|isSubmitForMissingCommitsStillPossible
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|commit
 parameter_list|)
@@ -2747,16 +2708,14 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|preMerge (final SubmitStrategy strategy, final List<CodeReviewCommit> toMerge)
+DECL|method|preMerge (SubmitStrategy strategy, List<CodeReviewCommit> toMerge)
 specifier|private
 name|void
 name|preMerge
 parameter_list|(
-specifier|final
 name|SubmitStrategy
 name|strategy
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -2826,12 +2785,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|createStrategy (final SubmitType submitType)
+DECL|method|createStrategy (SubmitType submitType)
 specifier|private
 name|SubmitStrategy
 name|createStrategy
 parameter_list|(
-specifier|final
 name|SubmitType
 name|submitType
 parameter_list|)
@@ -2876,7 +2834,6 @@ name|MergeException
 throws|,
 name|NoSuchProjectException
 block|{
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -2921,7 +2878,6 @@ name|IOException
 name|err
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|m
 init|=
@@ -3004,7 +2960,6 @@ name|NoSuchChangeException
 block|{
 try|try
 block|{
-specifier|final
 name|RefUpdate
 name|branchUpdate
 init|=
@@ -3080,7 +3035,6 @@ else|else
 block|{
 for|for
 control|(
-specifier|final
 name|Change
 name|c
 range|:
@@ -3135,7 +3089,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getAlreadyAccepted (final CodeReviewCommit branchTip)
+DECL|method|getAlreadyAccepted (CodeReviewCommit branchTip)
 specifier|private
 name|Set
 argument_list|<
@@ -3143,14 +3097,12 @@ name|RevCommit
 argument_list|>
 name|getAlreadyAccepted
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|branchTip
 parameter_list|)
 throws|throws
 name|MergeException
 block|{
-specifier|final
 name|Set
 argument_list|<
 name|RevCommit
@@ -3181,7 +3133,6 @@ try|try
 block|{
 for|for
 control|(
-specifier|final
 name|Ref
 name|r
 range|:
@@ -3273,7 +3224,7 @@ return|return
 name|alreadyAccepted
 return|;
 block|}
-DECL|method|validateChangeList ( final List<Change> submitted)
+DECL|method|validateChangeList ( List<Change> submitted)
 specifier|private
 name|ListMultimap
 argument_list|<
@@ -3283,7 +3234,6 @@ name|Change
 argument_list|>
 name|validateChangeList
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|Change
@@ -3295,7 +3245,6 @@ name|MergeException
 throws|,
 name|NoSuchChangeException
 block|{
-specifier|final
 name|ListMultimap
 argument_list|<
 name|SubmitType
@@ -3309,7 +3258,6 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -3352,7 +3300,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|Set
 argument_list|<
 name|ObjectId
@@ -3366,7 +3313,6 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Ref
 name|r
 range|:
@@ -3394,7 +3340,6 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|Change
 name|chg
 range|:
@@ -3442,7 +3387,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -3493,7 +3437,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|PatchSet
 name|ps
 decl_stmt|;
@@ -3585,7 +3528,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|String
 name|idstr
 init|=
@@ -3597,7 +3539,6 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
-specifier|final
 name|ObjectId
 name|id
 decl_stmt|;
@@ -3711,7 +3652,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|CodeReviewCommit
 name|commit
 decl_stmt|;
@@ -4186,16 +4126,14 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|updateBranch (final SubmitStrategy strategy, final RefUpdate branchUpdate)
+DECL|method|updateBranch (SubmitStrategy strategy, RefUpdate branchUpdate)
 specifier|private
 name|RefUpdate
 name|updateBranch
 parameter_list|(
-specifier|final
 name|SubmitStrategy
 name|strategy
 parameter_list|,
-specifier|final
 name|RefUpdate
 name|branchUpdate
 parameter_list|)
@@ -4747,12 +4685,11 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|updateChangeStatus (final List<Change> submitted)
+DECL|method|updateChangeStatus (List<Change> submitted)
 specifier|private
 name|void
 name|updateChangeStatus
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|Change
@@ -4771,14 +4708,12 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-specifier|final
 name|Change
 name|c
 range|:
 name|submitted
 control|)
 block|{
-specifier|final
 name|CodeReviewCommit
 name|commit
 init|=
@@ -4792,7 +4727,6 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CommitMergeStatus
 name|s
 init|=
@@ -4831,7 +4765,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-specifier|final
 name|String
 name|txt
 init|=
@@ -5052,12 +4985,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|updateSubscriptions (final List<Change> submitted)
+DECL|method|updateSubscriptions (List<Change> submitted)
 specifier|private
 name|void
 name|updateSubscriptions
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|Change
@@ -5146,21 +5078,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|isSubmitStillPossible (final CodeReviewCommit commit)
+DECL|method|isSubmitStillPossible (CodeReviewCommit commit)
 specifier|private
 name|Capable
 name|isSubmitStillPossible
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|commit
 parameter_list|)
 block|{
-specifier|final
 name|Capable
 name|capable
 decl_stmt|;
-specifier|final
 name|Change
 name|c
 init|=
@@ -5169,7 +5098,6 @@ operator|.
 name|change
 argument_list|()
 decl_stmt|;
-specifier|final
 name|boolean
 name|submitStillPossible
 init|=
@@ -5178,7 +5106,6 @@ argument_list|(
 name|commit
 argument_list|)
 decl_stmt|;
-specifier|final
 name|long
 name|now
 init|=
@@ -5187,7 +5114,6 @@ operator|.
 name|nowMs
 argument_list|()
 decl_stmt|;
-specifier|final
 name|long
 name|waitUntil
 init|=
@@ -5591,12 +5517,11 @@ return|return
 name|capable
 return|;
 block|}
-DECL|method|loadChangeInfo (final CodeReviewCommit commit)
+DECL|method|loadChangeInfo (CodeReviewCommit commit)
 specifier|private
 name|void
 name|loadChangeInfo
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|commit
 parameter_list|)
@@ -5698,21 +5623,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|message (final Change c, final String body)
+DECL|method|message (Change c, String body)
 specifier|private
 name|ChangeMessage
 name|message
 parameter_list|(
-specifier|final
 name|Change
 name|c
 parameter_list|,
-specifier|final
 name|String
 name|body
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|uuid
 decl_stmt|;
@@ -7155,7 +7077,6 @@ return|return;
 block|}
 try|try
 block|{
-specifier|final
 name|MergeFailSender
 name|cm
 init|=
