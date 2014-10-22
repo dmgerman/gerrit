@@ -66,13 +66,78 @@ name|events
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeEvent
 specifier|public
 specifier|abstract
 class|class
 name|ChangeEvent
-block|{ }
+block|{
+DECL|method|getType ()
+specifier|public
+specifier|abstract
+name|String
+name|getType
+parameter_list|()
+function_decl|;
+DECL|method|getProjectNameKey ()
+specifier|public
+specifier|abstract
+name|Project
+operator|.
+name|NameKey
+name|getProjectNameKey
+parameter_list|()
+function_decl|;
+DECL|method|getChangeKey ()
+specifier|public
+specifier|abstract
+name|Change
+operator|.
+name|Key
+name|getChangeKey
+parameter_list|()
+function_decl|;
+DECL|method|getRefName ()
+specifier|public
+specifier|abstract
+name|String
+name|getRefName
+parameter_list|()
+function_decl|;
+block|}
 end_class
 
 end_unit
