@@ -920,6 +920,36 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Synchronously delete a change by id.    *    * @param id change to delete.    */
+DECL|method|delete (int id)
+specifier|public
+name|void
+name|delete
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+for|for
+control|(
+name|ChangeIndex
+name|i
+range|:
+name|getWriteIndexes
+argument_list|()
+control|)
+block|{
+name|i
+operator|.
+name|delete
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**    * Synchronously delete a change.    *    * @param change change to delete.    * @param db review database.    */
 DECL|method|delete (ReviewDb db, Change change)
 specifier|public
