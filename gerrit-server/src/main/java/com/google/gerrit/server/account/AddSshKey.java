@@ -547,7 +547,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canModifyAccount
+name|canAdministrateServer
 argument_list|()
 condition|)
 block|{

@@ -825,25 +825,6 @@ name|canAdministrateServer
 argument_list|()
 return|;
 block|}
-comment|/** @return true if the user can generate HTTP passwords for users other than self. */
-DECL|method|canGenerateHttpPassword ()
-specifier|public
-name|boolean
-name|canGenerateHttpPassword
-parameter_list|()
-block|{
-return|return
-name|canPerform
-argument_list|(
-name|GlobalCapability
-operator|.
-name|GENERATE_HTTP_PASSWORD
-argument_list|)
-operator|||
-name|canAdministrateServer
-argument_list|()
-return|;
-block|}
 comment|/** @return true if the user can impersonate another user. */
 DECL|method|canRunAs ()
 specifier|public

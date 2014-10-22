@@ -155,11 +155,6 @@ specifier|public
 name|String
 name|flushCaches
 decl_stmt|;
-DECL|field|generateHttpPassword
-specifier|public
-name|String
-name|generateHttpPassword
-decl_stmt|;
 DECL|field|killTask
 specifier|public
 name|String
