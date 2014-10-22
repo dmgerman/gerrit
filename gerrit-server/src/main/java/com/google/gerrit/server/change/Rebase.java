@@ -570,6 +570,11 @@ name|rebase
 argument_list|(
 name|rsrc
 operator|.
+name|getChange
+argument_list|()
+argument_list|,
+name|rsrc
+operator|.
 name|getPatchSet
 argument_list|()
 operator|.
