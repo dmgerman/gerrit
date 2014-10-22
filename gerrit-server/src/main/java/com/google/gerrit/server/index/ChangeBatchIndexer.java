@@ -84,6 +84,26 @@ end_import
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|QueueProvider
+operator|.
+name|QueueType
+operator|.
+name|BATCH
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|eclipse
@@ -1104,7 +1124,7 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, @GerritServerConfig Config config)
+DECL|method|ChangeBatchIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, @GerritServerConfig Config config)
 name|ChangeBatchIndexer
 parameter_list|(
 name|SchemaFactory
@@ -1123,6 +1143,9 @@ name|repoManager
 parameter_list|,
 annotation|@
 name|IndexExecutor
+argument_list|(
+name|BATCH
+argument_list|)
 name|ListeningExecutorService
 name|executor
 parameter_list|,
@@ -1437,6 +1460,8 @@ name|indexerFactory
 operator|.
 name|create
 argument_list|(
+name|executor
+argument_list|,
 name|index
 argument_list|)
 argument_list|,

@@ -90,6 +90,26 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|git
+operator|.
+name|QueueProvider
+operator|.
+name|QueueType
+operator|.
+name|INTERACTIVE
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|index
 operator|.
 name|IndexRewriteImpl
@@ -2070,7 +2090,7 @@ name|closedIndex
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, @Assisted Schema<ChangeData> schema, @Assisted @Nullable String base)
+DECL|method|LuceneChangeIndex ( @erritServerConfig Config cfg, SitePaths sitePaths, @IndexExecutor(INTERACTIVE) ListeningExecutorService executor, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, FillArgs fillArgs, @Assisted Schema<ChangeData> schema, @Assisted @Nullable String base)
 name|LuceneChangeIndex
 parameter_list|(
 annotation|@
@@ -2083,6 +2103,9 @@ name|sitePaths
 parameter_list|,
 annotation|@
 name|IndexExecutor
+argument_list|(
+name|INTERACTIVE
+argument_list|)
 name|ListeningExecutorService
 name|executor
 parameter_list|,

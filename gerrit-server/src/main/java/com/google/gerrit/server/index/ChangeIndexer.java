@@ -465,18 +465,24 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create (ChangeIndex index)
+DECL|method|create (ListeningExecutorService executor, ChangeIndex index)
 name|ChangeIndexer
 name|create
 parameter_list|(
+name|ListeningExecutorService
+name|executor
+parameter_list|,
 name|ChangeIndex
 name|index
 parameter_list|)
 function_decl|;
-DECL|method|create (IndexCollection indexes)
+DECL|method|create (ListeningExecutorService executor, IndexCollection indexes)
 name|ChangeIndexer
 name|create
 parameter_list|(
+name|ListeningExecutorService
+name|executor
+parameter_list|,
 name|IndexCollection
 name|indexes
 parameter_list|)
@@ -608,14 +614,9 @@ name|executor
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, @Assisted ChangeIndex index)
+DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, @Assisted ListeningExecutorService executor, @Assisted ChangeIndex index)
 name|ChangeIndexer
 parameter_list|(
-annotation|@
-name|IndexExecutor
-name|ListeningExecutorService
-name|executor
-parameter_list|,
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -629,6 +630,11 @@ name|changeDataFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|context
+parameter_list|,
+annotation|@
+name|Assisted
+name|ListeningExecutorService
+name|executor
 parameter_list|,
 annotation|@
 name|Assisted
@@ -675,14 +681,9 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ChangeIndexer (@ndexExecutor ListeningExecutorService executor, SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, @Assisted IndexCollection indexes)
+DECL|method|ChangeIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, ThreadLocalRequestContext context, @Assisted ListeningExecutorService executor, @Assisted IndexCollection indexes)
 name|ChangeIndexer
 parameter_list|(
-annotation|@
-name|IndexExecutor
-name|ListeningExecutorService
-name|executor
-parameter_list|,
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -696,6 +697,11 @@ name|changeDataFactory
 parameter_list|,
 name|ThreadLocalRequestContext
 name|context
+parameter_list|,
+annotation|@
+name|Assisted
+name|ListeningExecutorService
+name|executor
 parameter_list|,
 annotation|@
 name|Assisted

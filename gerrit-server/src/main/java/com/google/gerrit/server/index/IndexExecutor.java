@@ -102,6 +102,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|QueueProvider
+operator|.
+name|QueueType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|BindingAnnotation
@@ -136,7 +154,13 @@ DECL|annotation|IndexExecutor
 specifier|public
 annotation_defn|@interface
 name|IndexExecutor
-block|{ }
+block|{
+DECL|method|value ()
+name|QueueType
+name|value
+parameter_list|()
+function_decl|;
+block|}
 end_annotation_defn
 
 end_unit
