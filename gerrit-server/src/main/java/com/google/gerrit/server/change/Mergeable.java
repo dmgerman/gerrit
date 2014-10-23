@@ -651,22 +651,6 @@ operator|=
 name|force
 expr_stmt|;
 block|}
-DECL|method|setReindex (boolean reindex)
-specifier|public
-name|void
-name|setReindex
-parameter_list|(
-name|boolean
-name|reindex
-parameter_list|)
-block|{
-name|this
-operator|.
-name|reindex
-operator|=
-name|reindex
-expr_stmt|;
-block|}
 DECL|field|gitManager
 specifier|private
 specifier|final
@@ -720,11 +704,6 @@ DECL|field|force
 specifier|private
 name|boolean
 name|force
-decl_stmt|;
-DECL|field|reindex
-specifier|private
-name|boolean
-name|reindex
 decl_stmt|;
 annotation|@
 name|Inject
@@ -801,10 +780,6 @@ operator|.
 name|cache
 operator|=
 name|cache
-expr_stmt|;
-name|reindex
-operator|=
-literal|true
 expr_stmt|;
 block|}
 annotation|@
@@ -1426,8 +1401,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|reindex
-operator|&&
 name|c
 operator|!=
 literal|null

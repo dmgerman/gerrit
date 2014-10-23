@@ -540,6 +540,37 @@ return|return
 name|newObjectId
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s[%s,%s: %s -> %s]"
+argument_list|,
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+argument_list|,
+name|projectName
+argument_list|,
+name|ref
+argument_list|,
+name|oldObjectId
+argument_list|,
+name|newObjectId
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class
