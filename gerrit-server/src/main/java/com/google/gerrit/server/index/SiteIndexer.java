@@ -875,10 +875,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ChangeBatchIndexer
+DECL|class|SiteIndexer
 specifier|public
 class|class
-name|ChangeBatchIndexer
+name|SiteIndexer
 block|{
 DECL|field|log
 specifier|private
@@ -891,7 +891,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|ChangeBatchIndexer
+name|SiteIndexer
 operator|.
 name|class
 argument_list|)
@@ -1103,8 +1103,8 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeBatchIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, @GerritServerConfig Config config)
-name|ChangeBatchIndexer
+DECL|method|SiteIndexer (SchemaFactory<ReviewDb> schemaFactory, ChangeData.Factory changeDataFactory, GitRepositoryManager repoManager, @IndexExecutor(BATCH) ListeningExecutorService executor, ChangeIndexer.Factory indexerFactory, @GerritServerConfig Config config)
+name|SiteIndexer
 parameter_list|(
 name|SchemaFactory
 argument_list|<
@@ -1183,7 +1183,7 @@ expr_stmt|;
 block|}
 DECL|method|setNumChanges (int num)
 specifier|public
-name|ChangeBatchIndexer
+name|SiteIndexer
 name|setNumChanges
 parameter_list|(
 name|int
@@ -1200,7 +1200,7 @@ return|;
 block|}
 DECL|method|setProgressOut (OutputStream out)
 specifier|public
-name|ChangeBatchIndexer
+name|SiteIndexer
 name|setProgressOut
 parameter_list|(
 name|OutputStream
@@ -1220,7 +1220,7 @@ return|;
 block|}
 DECL|method|setVerboseOut (OutputStream out)
 specifier|public
-name|ChangeBatchIndexer
+name|SiteIndexer
 name|setVerboseOut
 parameter_list|(
 name|OutputStream

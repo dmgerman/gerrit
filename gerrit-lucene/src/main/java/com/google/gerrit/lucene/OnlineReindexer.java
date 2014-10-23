@@ -106,22 +106,6 @@ name|server
 operator|.
 name|index
 operator|.
-name|ChangeBatchIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
 name|ChangeIndex
 import|;
 end_import
@@ -139,6 +123,22 @@ operator|.
 name|index
 operator|.
 name|IndexCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|SiteIndexer
 import|;
 end_import
 
@@ -269,7 +269,7 @@ decl_stmt|;
 DECL|field|batchIndexer
 specifier|private
 specifier|final
-name|ChangeBatchIndexer
+name|SiteIndexer
 name|batchIndexer
 decl_stmt|;
 DECL|field|projectCache
@@ -286,13 +286,13 @@ name|version
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OnlineReindexer ( IndexCollection indexes, ChangeBatchIndexer batchIndexer, ProjectCache projectCache, @Assisted int version)
+DECL|method|OnlineReindexer ( IndexCollection indexes, SiteIndexer batchIndexer, ProjectCache projectCache, @Assisted int version)
 name|OnlineReindexer
 parameter_list|(
 name|IndexCollection
 name|indexes
 parameter_list|,
-name|ChangeBatchIndexer
+name|SiteIndexer
 name|batchIndexer
 parameter_list|,
 name|ProjectCache
@@ -446,7 +446,7 @@ name|index
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ChangeBatchIndexer
+name|SiteIndexer
 operator|.
 name|Result
 name|result
