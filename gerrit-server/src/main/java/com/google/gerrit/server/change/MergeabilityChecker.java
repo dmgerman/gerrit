@@ -402,24 +402,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|Mergeable
-operator|.
-name|MergeableInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|MetaDataUpdate
@@ -1178,9 +1160,11 @@ range|:
 name|changes
 control|)
 block|{
+comment|// Don't try to guess whether Mergeable will reindex; just turn
+comment|// off reindexing in that code path and do it explicitly below.
 name|ListenableFuture
 argument_list|<
-name|Boolean
+name|Void
 argument_list|>
 name|b
 init|=
@@ -1194,6 +1178,9 @@ argument_list|(
 name|c
 argument_list|,
 name|force
+argument_list|,
+operator|!
+name|reindex
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1215,9 +1202,9 @@ argument_list|,
 operator|new
 name|AsyncFunction
 argument_list|<
-name|Boolean
+name|Void
 argument_list|,
-name|Object
+name|Void
 argument_list|>
 argument_list|()
 block|{
@@ -1231,27 +1218,19 @@ name|Override
 specifier|public
 name|ListenableFuture
 argument_list|<
-name|Object
+name|Void
 argument_list|>
 name|apply
 parameter_list|(
-name|Boolean
-name|indexUpdated
+name|Void
+name|o
 parameter_list|)
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-operator|!
-name|indexUpdated
-condition|)
 block|{
 return|return
 operator|(
 name|ListenableFuture
 argument_list|<
-name|Object
+name|Void
 argument_list|>
 operator|)
 name|indexer
@@ -1262,15 +1241,6 @@ name|c
 operator|.
 name|getId
 argument_list|()
-argument_list|)
-return|;
-block|}
-return|return
-name|Futures
-operator|.
-name|immediateFuture
-argument_list|(
-literal|null
 argument_list|)
 return|;
 block|}
@@ -2066,7 +2036,7 @@ name|Task
 implements|implements
 name|Callable
 argument_list|<
-name|Boolean
+name|Void
 argument_list|>
 block|{
 DECL|field|change
@@ -2081,12 +2051,18 @@ specifier|final
 name|boolean
 name|force
 decl_stmt|;
+DECL|field|reindex
+specifier|private
+specifier|final
+name|boolean
+name|reindex
+decl_stmt|;
 DECL|field|reviewDb
 specifier|private
 name|ReviewDb
 name|reviewDb
 decl_stmt|;
-DECL|method|Task (Change change, boolean force)
+DECL|method|Task (Change change, boolean force, boolean reindex)
 name|Task
 parameter_list|(
 name|Change
@@ -2094,6 +2070,9 @@ name|change
 parameter_list|,
 name|boolean
 name|force
+parameter_list|,
+name|boolean
+name|reindex
 parameter_list|)
 block|{
 name|this
@@ -2108,12 +2087,18 @@ name|force
 operator|=
 name|force
 expr_stmt|;
+name|this
+operator|.
+name|reindex
+operator|=
+name|reindex
+expr_stmt|;
 block|}
 annotation|@
 name|Override
 DECL|method|call ()
 specifier|public
-name|Boolean
+name|Void
 name|call
 parameter_list|()
 throws|throws
@@ -2270,7 +2255,7 @@ condition|)
 block|{
 comment|// Cannot compute mergeability if current patch set is missing.
 return|return
-literal|false
+literal|null
 return|;
 block|}
 name|Mergeable
@@ -2288,6 +2273,13 @@ argument_list|(
 name|force
 argument_list|)
 expr_stmt|;
+name|m
+operator|.
+name|setReindex
+argument_list|(
+name|reindex
+argument_list|)
+expr_stmt|;
 name|ChangeControl
 name|control
 init|=
@@ -2296,9 +2288,6 @@ operator|.
 name|controlFor
 argument_list|(
 name|change
-operator|.
-name|getId
-argument_list|()
 argument_list|,
 name|context
 operator|.
@@ -2306,9 +2295,6 @@ name|getCurrentUser
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|MergeableInfo
-name|info
-init|=
 name|m
 operator|.
 name|apply
@@ -2325,16 +2311,9 @@ argument_list|,
 name|ps
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 return|return
-name|change
-operator|.
-name|isMergeable
-argument_list|()
-operator|!=
-name|info
-operator|.
-name|mergeable
+literal|null
 return|;
 block|}
 catch|catch
@@ -2345,7 +2324,7 @@ parameter_list|)
 block|{
 comment|// change is closed
 return|return
-literal|false
+literal|null
 return|;
 block|}
 catch|catch
