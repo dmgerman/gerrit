@@ -548,9 +548,6 @@ name|rsrc
 operator|.
 name|getChange
 argument_list|()
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
