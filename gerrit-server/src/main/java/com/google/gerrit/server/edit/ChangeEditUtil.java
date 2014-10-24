@@ -1314,13 +1314,26 @@ operator|.
 name|getTree
 argument_list|()
 argument_list|)
+operator|&&
+name|edit
+operator|.
+name|getFullMessage
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|parent
+operator|.
+name|getFullMessage
+argument_list|()
+argument_list|)
 condition|)
 block|{
 throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"identical tree"
+literal|"identical tree and message"
 argument_list|)
 throw|;
 block|}
@@ -1654,7 +1667,7 @@ name|mergeCommit
 operator|.
 name|setMessage
 argument_list|(
-name|parent
+name|edit
 operator|.
 name|getFullMessage
 argument_list|()
