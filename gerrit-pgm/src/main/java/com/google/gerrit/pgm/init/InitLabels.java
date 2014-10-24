@@ -273,6 +273,9 @@ name|allProjectsConfig
 operator|.
 name|load
 argument_list|()
+operator|.
+name|getConfig
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -330,6 +333,9 @@ init|=
 name|allProjectsConfig
 operator|.
 name|load
+argument_list|()
+operator|.
+name|getConfig
 argument_list|()
 decl_stmt|;
 if|if
