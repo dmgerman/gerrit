@@ -378,8 +378,6 @@ name|gerrit
 operator|.
 name|pgm
 operator|.
-name|shell
-operator|.
 name|JythonShell
 import|;
 end_import
