@@ -1437,6 +1437,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -1514,6 +1516,8 @@ operator|=
 name|result
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3027,6 +3031,8 @@ name|SubmitInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess

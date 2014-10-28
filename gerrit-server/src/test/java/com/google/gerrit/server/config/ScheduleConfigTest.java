@@ -142,20 +142,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|errors
-operator|.
-name|ConfigInvalidException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|lib
 operator|.
 name|Config
@@ -518,8 +504,6 @@ specifier|public
 name|void
 name|testCustomKeys
 parameter_list|()
-throws|throws
-name|ConfigInvalidException
 block|{
 name|Config
 name|rc
@@ -658,8 +642,6 @@ parameter_list|,
 name|String
 name|interval
 parameter_list|)
-throws|throws
-name|ConfigInvalidException
 block|{
 return|return
 operator|new
@@ -695,8 +677,6 @@ parameter_list|,
 name|String
 name|interval
 parameter_list|)
-throws|throws
-name|ConfigInvalidException
 block|{
 name|Config
 name|rc

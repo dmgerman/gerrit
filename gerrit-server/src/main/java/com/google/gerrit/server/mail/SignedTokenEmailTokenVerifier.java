@@ -293,6 +293,8 @@ name|getEmailRegistrationToken
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|encode (Account.Id accountId, String emailAddress)
 specifier|public
 name|String
@@ -382,6 +384,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|decode (String tokenString)
 specifier|public
 name|ParsedToken

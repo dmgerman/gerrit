@@ -1739,8 +1739,6 @@ name|account
 parameter_list|)
 throws|throws
 name|NamingException
-throws|,
-name|AccountException
 block|{
 specifier|final
 name|LdapSchema

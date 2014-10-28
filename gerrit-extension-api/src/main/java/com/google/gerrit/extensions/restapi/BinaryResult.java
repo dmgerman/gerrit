@@ -485,6 +485,8 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/** Close the result and release any resources it holds. */
+annotation|@
+name|Override
 DECL|method|close ()
 specifier|public
 name|void

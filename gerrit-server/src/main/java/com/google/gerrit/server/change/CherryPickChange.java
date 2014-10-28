@@ -88,22 +88,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|EmailException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|reviewdb
 operator|.
 name|client
@@ -968,8 +952,6 @@ parameter_list|)
 throws|throws
 name|NoSuchChangeException
 throws|,
-name|EmailException
-throws|,
 name|OrmException
 throws|,
 name|MissingObjectException
@@ -1501,8 +1483,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|,
-name|patchSetId
-argument_list|,
 name|cherryPickCommit
 argument_list|,
 name|refControl
@@ -1557,7 +1537,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, PatchSet.Id patchSetId, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
+DECL|method|insertPatchSet (Repository git, RevWalk revWalk, Change change, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
 specifier|private
 name|Change
 operator|.
@@ -1572,11 +1552,6 @@ name|revWalk
 parameter_list|,
 name|Change
 name|change
-parameter_list|,
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
 parameter_list|,
 name|RevCommit
 name|cherryPickCommit

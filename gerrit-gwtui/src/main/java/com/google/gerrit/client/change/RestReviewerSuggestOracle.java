@@ -468,6 +468,8 @@ operator|=
 name|reviewer
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDisplayString ()
 specifier|public
 name|String
@@ -517,6 +519,8 @@ operator|+
 literal|")"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getReplacementString ()
 specifier|public
 name|String

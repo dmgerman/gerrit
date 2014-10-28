@@ -817,9 +817,6 @@ block|}
 name|Audit
 name|note
 init|=
-operator|(
-name|Audit
-operator|)
 name|method
 operator|.
 name|getAnnotation

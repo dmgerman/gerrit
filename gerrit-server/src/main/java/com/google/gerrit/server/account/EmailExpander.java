@@ -292,6 +292,8 @@ literal|" "
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|expand (final String user)
 specifier|public
 name|String

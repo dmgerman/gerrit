@@ -242,22 +242,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|GroupCache
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|group
 operator|.
 name|CreateGroup
@@ -293,18 +277,6 @@ operator|.
 name|reflect
 operator|.
 name|TypeToken
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Inject
 import|;
 end_import
 
@@ -358,13 +330,6 @@ name|ListGroupsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
-annotation|@
-name|Inject
-DECL|field|groupCache
-specifier|private
-name|GroupCache
-name|groupCache
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testListAllGroups ()

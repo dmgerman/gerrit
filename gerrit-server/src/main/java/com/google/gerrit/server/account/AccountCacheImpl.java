@@ -618,6 +618,8 @@ operator|=
 name|byUsername
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|get (Account.Id accountId)
 specifier|public
 name|AccountState
@@ -665,6 +667,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getIfPresent (Account.Id accountId)
 specifier|public
 name|AccountState
@@ -758,6 +762,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|evict (Account.Id accountId)
 specifier|public
 name|void
@@ -785,6 +791,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|evictByUsername (String username)
 specifier|public
 name|void

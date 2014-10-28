@@ -295,6 +295,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|dryRun (final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
 specifier|public
 name|boolean

@@ -2398,8 +2398,6 @@ argument_list|,
 name|rsp
 argument_list|,
 name|project
-argument_list|,
-name|repo
 argument_list|)
 expr_stmt|;
 block|}
@@ -2612,7 +2610,7 @@ return|return
 name|params
 return|;
 block|}
-DECL|method|exec (final HttpServletRequest req, final HttpServletResponse rsp, final ProjectControl project, final Repository repo)
+DECL|method|exec (final HttpServletRequest req, final HttpServletResponse rsp, final ProjectControl project)
 specifier|private
 name|void
 name|exec
@@ -2628,10 +2626,6 @@ parameter_list|,
 specifier|final
 name|ProjectControl
 name|project
-parameter_list|,
-specifier|final
-name|Repository
-name|repo
 parameter_list|)
 throws|throws
 name|IOException
@@ -3609,6 +3603,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3759,6 +3755,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

@@ -222,6 +222,8 @@ name|void
 name|configureCommands
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
 DECL|method|command (String subCmd)
 specifier|protected
 name|LinkedBindingBuilder

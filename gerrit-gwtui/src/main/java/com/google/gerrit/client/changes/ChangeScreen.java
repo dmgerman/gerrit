@@ -2407,6 +2407,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3013,6 +3015,8 @@ name|ChangeInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3021,6 +3025,8 @@ name|Throwable
 name|caught
 parameter_list|)
 block|{}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -3090,6 +3096,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3227,6 +3235,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3377,6 +3387,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3536,6 +3548,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3672,6 +3686,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -3922,6 +3938,8 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure
@@ -4089,6 +4107,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure

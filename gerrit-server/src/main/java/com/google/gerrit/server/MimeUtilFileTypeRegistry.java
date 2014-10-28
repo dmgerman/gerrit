@@ -455,6 +455,8 @@ argument_list|()
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
@@ -639,6 +641,8 @@ literal|0
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSafeInline (final MimeType type)
 specifier|public
 name|boolean

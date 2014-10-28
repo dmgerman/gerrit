@@ -1692,6 +1692,8 @@ return|return
 name|startTime
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|cancel (boolean mayInterruptIfRunning)
 specifier|public
 name|boolean
@@ -1767,6 +1769,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (Delayed o)
 specifier|public
 name|int
@@ -1785,6 +1789,8 @@ name|o
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|get ()
 specifier|public
 name|V
@@ -1802,6 +1808,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|get (long timeout, TimeUnit unit)
 specifier|public
 name|V
@@ -1831,6 +1839,8 @@ name|unit
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDelay (TimeUnit unit)
 specifier|public
 name|long
@@ -1849,6 +1859,8 @@ name|unit
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isCancelled ()
 specifier|public
 name|boolean
@@ -1862,6 +1874,8 @@ name|isCancelled
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDone ()
 specifier|public
 name|boolean
@@ -1875,6 +1889,8 @@ name|isDone
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isPeriodic ()
 specifier|public
 name|boolean
@@ -1888,6 +1904,8 @@ name|isPeriodic
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void

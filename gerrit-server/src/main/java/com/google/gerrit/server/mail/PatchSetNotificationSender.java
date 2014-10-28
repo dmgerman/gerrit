@@ -94,20 +94,6 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHooks
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
 name|data
 operator|.
 name|LabelTypes
@@ -294,22 +280,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|index
-operator|.
-name|ChangeIndexer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|mail
 operator|.
 name|MailUtil
@@ -363,22 +333,6 @@ operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|patch
-operator|.
-name|PatchSetInfoNotAvailableException
 import|;
 end_import
 
@@ -613,7 +567,7 @@ name|replacePatchSetFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetNotificationSender (Provider<ReviewDb> db, ChangeHooks hooks, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, ApprovalsUtil approvalsUtil, AccountResolver accountResolver, CreateChangeSender.Factory createChangeSenderFactory, ReplacePatchSetSender.Factory replacePatchSetFactory, ChangeIndexer indexer)
+DECL|method|PatchSetNotificationSender (Provider<ReviewDb> db, GitRepositoryManager repoManager, PatchSetInfoFactory patchSetInfoFactory, ApprovalsUtil approvalsUtil, AccountResolver accountResolver, CreateChangeSender.Factory createChangeSenderFactory, ReplacePatchSetSender.Factory replacePatchSetFactory)
 specifier|public
 name|PatchSetNotificationSender
 parameter_list|(
@@ -622,9 +576,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
-parameter_list|,
-name|ChangeHooks
-name|hooks
 parameter_list|,
 name|GitRepositoryManager
 name|repoManager
@@ -647,9 +598,6 @@ name|ReplacePatchSetSender
 operator|.
 name|Factory
 name|replacePatchSetFactory
-parameter_list|,
-name|ChangeIndexer
-name|indexer
 parameter_list|)
 block|{
 name|this
@@ -732,8 +680,6 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|PatchSetInfoNotAvailableException
 block|{
 specifier|final
 name|Repository

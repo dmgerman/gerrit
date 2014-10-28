@@ -705,8 +705,6 @@ parameter_list|(
 name|String
 name|content
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 return|return
 name|newRawInput
@@ -733,8 +731,6 @@ name|byte
 index|[]
 name|bytes
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Preconditions
 operator|.

@@ -150,12 +150,9 @@ argument_list|<
 name|ChangeData
 argument_list|>
 block|{
-DECL|method|RegexPathPredicate (String fieldName, String re)
+DECL|method|RegexPathPredicate (String re)
 name|RegexPathPredicate
 parameter_list|(
-name|String
-name|fieldName
-parameter_list|,
 name|String
 name|re
 parameter_list|)

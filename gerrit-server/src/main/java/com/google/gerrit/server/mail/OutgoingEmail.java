@@ -798,7 +798,7 @@ parameter_list|()
 throws|throws
 name|EmailException
 function_decl|;
-comment|/** Setup the message headers and envelope (TO, CC, BCC). */
+comment|/**    * Setup the message headers and envelope (TO, CC, BCC).    *    * @throws EmailException if an error occurred.    */
 DECL|method|init ()
 specifier|protected
 name|void
@@ -1777,6 +1777,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * @param to account.    * @throws OrmException    * @return whether this email is visible to the given account.    */
 DECL|method|isVisibleTo (final Account.Id to)
 specifier|protected
 name|boolean

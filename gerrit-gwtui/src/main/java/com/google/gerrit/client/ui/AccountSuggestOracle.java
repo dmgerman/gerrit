@@ -200,6 +200,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -235,6 +237,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -336,6 +340,8 @@ operator|=
 name|k
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDisplayString ()
 specifier|public
 name|String
@@ -356,6 +362,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getReplacementString ()
 specifier|public
 name|String

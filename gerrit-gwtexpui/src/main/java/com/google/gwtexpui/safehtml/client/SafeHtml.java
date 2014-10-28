@@ -341,6 +341,8 @@ operator|new
 name|SafeHtmlCss
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|wikiList
@@ -350,6 +352,8 @@ return|return
 literal|"wikiList"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|wikiPreFormat
@@ -359,6 +363,8 @@ return|return
 literal|"wikiPreFormat"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|wikiQuote
@@ -368,6 +374,8 @@ return|return
 literal|"wikiQuote"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|ensureInjected
@@ -377,6 +385,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -386,6 +396,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getText
@@ -1712,6 +1724,8 @@ argument_list|)
 return|;
 block|}
 comment|/** @return a clean HTML string safe for inclusion in any context. */
+annotation|@
+name|Override
 DECL|method|asString ()
 specifier|public
 specifier|abstract

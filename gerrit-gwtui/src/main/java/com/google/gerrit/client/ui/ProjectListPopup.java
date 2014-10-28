@@ -710,6 +710,7 @@ block|}
 block|}
 return|;
 block|}
+comment|/**    * Invoked after moving pointer to a project.    *    * @param projectName project name.    */
 DECL|method|onMovePointerTo (String projectName)
 specifier|protected
 name|void
@@ -719,6 +720,7 @@ name|String
 name|projectName
 parameter_list|)
 block|{   }
+comment|/**    * Invoked after opening a project row.    *    * @param projectName project name.    */
 DECL|method|openRow (String projectName)
 specifier|protected
 name|void

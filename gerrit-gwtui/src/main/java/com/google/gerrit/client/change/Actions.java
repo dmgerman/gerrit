@@ -1615,8 +1615,6 @@ name|changeId
 argument_list|,
 name|revision
 argument_list|,
-name|project
-argument_list|,
 name|subject
 argument_list|)
 expr_stmt|;

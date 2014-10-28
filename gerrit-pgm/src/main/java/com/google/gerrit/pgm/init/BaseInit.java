@@ -953,6 +953,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**    * Invoked before site init is called.    *    * @param init initializer instance.    * @throws Exception    */
 DECL|method|beforeInit (SiteInit init)
 specifier|protected
 name|boolean
@@ -968,6 +969,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**    * Invoked after site init is called.    *    * @param run completed run instance.    * @throws Exception    */
 DECL|method|afterInit (SiteRun run)
 specifier|protected
 name|void

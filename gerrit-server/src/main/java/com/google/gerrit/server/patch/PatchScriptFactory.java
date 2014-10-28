@@ -1550,8 +1550,6 @@ name|NoSuchChangeException
 throws|,
 name|AuthException
 throws|,
-name|InvalidChangeOperationException
-throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException
@@ -1694,8 +1692,6 @@ throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException
-throws|,
-name|InvalidChangeOperationException
 block|{
 name|Optional
 argument_list|<

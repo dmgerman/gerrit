@@ -1190,6 +1190,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/**    * @param project project state.    * @return whether the project is editable.    */
+end_comment
+
 begin_function
 DECL|method|isEditable (ProjectState project)
 specifier|public
@@ -1206,6 +1210,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/**    * @param project project state.    * @return any warning associated with the project.    */
+end_comment
+
 begin_function
 DECL|method|getWarning (ProjectState project)
 specifier|public
@@ -1221,6 +1229,10 @@ literal|null
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
+end_comment
 
 begin_function
 DECL|method|onUpdate (Project.NameKey project, String oldValue, String newValue)
@@ -1242,6 +1254,10 @@ parameter_list|)
 block|{   }
 end_function
 
+begin_comment
+comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
+end_comment
+
 begin_function
 DECL|method|onUpdate (Project.NameKey project, Boolean oldValue, Boolean newValue)
 specifier|public
@@ -1262,6 +1278,10 @@ parameter_list|)
 block|{   }
 end_function
 
+begin_comment
+comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
+end_comment
+
 begin_function
 DECL|method|onUpdate (Project.NameKey project, Integer oldValue, Integer newValue)
 specifier|public
@@ -1281,6 +1301,10 @@ name|newValue
 parameter_list|)
 block|{   }
 end_function
+
+begin_comment
+comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
+end_comment
 
 begin_function
 DECL|method|onUpdate (Project.NameKey project, Long oldValue, Long newValue)

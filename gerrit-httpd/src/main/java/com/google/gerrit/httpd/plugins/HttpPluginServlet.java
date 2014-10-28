@@ -348,22 +348,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|documentation
 operator|.
 name|MarkdownFormatter
@@ -575,20 +559,6 @@ operator|.
 name|servlet
 operator|.
 name|GuiceFilter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
 import|;
 end_import
 
@@ -1045,7 +1015,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpPluginServlet ( MimeUtilFileTypeRegistry mimeUtil, @CanonicalWebUrl Provider<String> webUrl, @Named(HttpPluginModule.PLUGIN_RESOURCES) Cache<ResourceKey, Resource> cache, @GerritServerConfig Config cfg, SshInfo sshInfo, RestApiServlet.Globals globals, PluginsCollection plugins)
+DECL|method|HttpPluginServlet ( MimeUtilFileTypeRegistry mimeUtil, @CanonicalWebUrl Provider<String> webUrl, @Named(HttpPluginModule.PLUGIN_RESOURCES) Cache<ResourceKey, Resource> cache, SshInfo sshInfo, RestApiServlet.Globals globals, PluginsCollection plugins)
 name|HttpPluginServlet
 parameter_list|(
 name|MimeUtilFileTypeRegistry
@@ -1073,11 +1043,6 @@ argument_list|,
 name|Resource
 argument_list|>
 name|cache
-parameter_list|,
-annotation|@
-name|GerritServerConfig
-name|Config
-name|cfg
 parameter_list|,
 name|SshInfo
 name|sshInfo

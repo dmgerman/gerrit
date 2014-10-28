@@ -1745,6 +1745,8 @@ name|HTML
 implements|implements
 name|HasDoubleClickHandlers
 block|{
+annotation|@
+name|Override
 DECL|method|addDoubleClickHandler (DoubleClickHandler handler)
 specifier|public
 name|HandlerRegistration

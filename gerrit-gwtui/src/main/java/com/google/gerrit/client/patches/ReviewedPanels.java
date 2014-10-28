@@ -916,6 +916,8 @@ operator|new
 name|PatchValidator
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isValid

@@ -213,7 +213,7 @@ DECL|class|RevertAction
 class|class
 name|RevertAction
 block|{
-DECL|method|call (Button b, final Change.Id id, final String revision, String project, final String commitSubject)
+DECL|method|call (Button b, final Change.Id id, final String revision, final String commitSubject)
 specifier|static
 name|void
 name|call
@@ -230,9 +230,6 @@ parameter_list|,
 specifier|final
 name|String
 name|revision
-parameter_list|,
-name|String
-name|project
 parameter_list|,
 specifier|final
 name|String

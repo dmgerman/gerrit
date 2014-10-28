@@ -595,7 +595,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-empty_stmt|;
 DECL|method|focusOnClick (Element e, DisplaySide side)
 specifier|static
 name|void
@@ -1218,8 +1217,6 @@ name|addDiffChunk
 argument_list|(
 name|cmB
 argument_list|,
-name|endB
-argument_list|,
 name|endA
 argument_list|,
 name|aLen
@@ -1240,8 +1237,6 @@ block|{
 name|addDiffChunk
 argument_list|(
 name|cmA
-argument_list|,
-name|endA
 argument_list|,
 name|endB
 argument_list|,
@@ -1891,16 +1886,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addDiffChunk (CodeMirror cmToPad, int lineToPad, int lineOnOther, int chunkSize, boolean edit)
+DECL|method|addDiffChunk (CodeMirror cmToPad, int lineOnOther, int chunkSize, boolean edit)
 specifier|private
 name|void
 name|addDiffChunk
 parameter_list|(
 name|CodeMirror
 name|cmToPad
-parameter_list|,
-name|int
-name|lineToPad
 parameter_list|,
 name|int
 name|lineOnOther

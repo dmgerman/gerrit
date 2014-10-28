@@ -279,6 +279,8 @@ name|CacheControl
 name|c
 parameter_list|)
 function_decl|;
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 specifier|abstract
@@ -450,6 +452,8 @@ return|return
 literal|204
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|value ()
 specifier|public
 name|Object

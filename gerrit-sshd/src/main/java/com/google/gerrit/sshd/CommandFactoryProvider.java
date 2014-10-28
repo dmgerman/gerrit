@@ -687,6 +687,8 @@ operator|new
 name|CommandFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Command
 name|createCommand
@@ -815,6 +817,8 @@ name|newReference
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setInputStream (final InputStream in)
 specifier|public
 name|void
@@ -832,6 +836,8 @@ operator|=
 name|in
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setOutputStream (final OutputStream out)
 specifier|public
 name|void
@@ -849,6 +855,8 @@ operator|=
 name|out
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setErrorStream (final OutputStream err)
 specifier|public
 name|void
@@ -866,6 +874,8 @@ operator|=
 name|err
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setExitCallback (final ExitCallback callback)
 specifier|public
 name|void
@@ -883,6 +893,8 @@ operator|=
 name|callback
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setSession (final ServerSession session)
 specifier|public
 name|void
@@ -922,6 +934,8 @@ name|commandLine
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|start (final Environment env)
 specifier|public
 name|void
@@ -960,6 +974,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

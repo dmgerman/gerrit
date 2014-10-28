@@ -863,8 +863,6 @@ operator|new
 name|SignedOffByValidator
 argument_list|(
 name|refControl
-argument_list|,
-name|canonicalWebUrl
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1092,8 +1090,6 @@ operator|new
 name|SignedOffByValidator
 argument_list|(
 name|refControl
-argument_list|,
-name|canonicalWebUrl
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2538,15 +2534,12 @@ specifier|final
 name|RefControl
 name|refControl
 decl_stmt|;
-DECL|method|SignedOffByValidator (RefControl refControl, String canonicalWebUrl)
+DECL|method|SignedOffByValidator (RefControl refControl)
 specifier|public
 name|SignedOffByValidator
 parameter_list|(
 name|RefControl
 name|refControl
-parameter_list|,
-name|String
-name|canonicalWebUrl
 parameter_list|)
 block|{
 name|this

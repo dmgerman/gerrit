@@ -352,6 +352,8 @@ specifier|private
 name|boolean
 name|isFocused
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getText ()
 specifier|public
 name|String
@@ -374,6 +376,8 @@ name|getText
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setText (String text)
 specifier|public
 name|void
@@ -841,6 +845,8 @@ literal|false
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|setFocus (boolean focus)
 specifier|public
 name|void

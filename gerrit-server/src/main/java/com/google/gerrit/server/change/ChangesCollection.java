@@ -672,8 +672,6 @@ parameter_list|(
 name|ChangeControl
 name|control
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 operator|new

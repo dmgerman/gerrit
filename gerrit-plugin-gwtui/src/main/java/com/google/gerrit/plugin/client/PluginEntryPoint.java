@@ -103,6 +103,8 @@ name|void
 name|onPluginLoad
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
 DECL|method|onModuleLoad ()
 specifier|public
 specifier|final

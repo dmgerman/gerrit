@@ -279,24 +279,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-operator|.
-name|Type
-operator|.
-name|UPDATE
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -1013,20 +995,6 @@ operator|.
 name|server
 operator|.
 name|ChangeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|GerritPersonIdent
 import|;
 end_import
 
@@ -3283,7 +3251,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, @GerritPersonIdent final PersonIdent gerritIdent, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeabilityChecker mergeabilityChecker, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration)
+DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final CreateChangeSender.Factory createChangeSenderFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final MergeabilityChecker mergeabilityChecker, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -3402,12 +3370,6 @@ name|CanonicalWebUrl
 specifier|final
 name|String
 name|canonicalWebUrl
-parameter_list|,
-annotation|@
-name|GerritPersonIdent
-specifier|final
-name|PersonIdent
-name|gerritIdent
 parameter_list|,
 specifier|final
 name|WorkQueue
@@ -4724,8 +4686,6 @@ operator|==
 name|OK
 condition|)
 block|{
-try|try
-block|{
 if|if
 condition|(
 name|c
@@ -4733,10 +4693,14 @@ operator|.
 name|getType
 argument_list|()
 operator|==
+name|ReceiveCommand
+operator|.
+name|Type
+operator|.
 name|UPDATE
 condition|)
 block|{
-comment|// otherwise known as a fast-forward
+comment|// aka fast-forward
 name|tagCache
 operator|.
 name|updateFastForward
@@ -4928,28 +4892,6 @@ argument_list|,
 name|currentUser
 operator|.
 name|getAccount
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|NoSuchChangeException
-name|e
-parameter_list|)
-block|{
-name|c
-operator|.
-name|setResult
-argument_list|(
-name|REJECTED_OTHER_REASON
-argument_list|,
-literal|"No such change: "
-operator|+
-name|e
-operator|.
-name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10282,7 +10224,7 @@ name|changes
 init|=
 name|p
 operator|.
-name|changes
+name|destChanges
 operator|.
 name|toList
 argument_list|()
@@ -10757,13 +10699,13 @@ operator|.
 name|Key
 name|changeKey
 decl_stmt|;
-DECL|field|changes
+DECL|field|destChanges
 specifier|final
 name|ResultSet
 argument_list|<
 name|Change
 argument_list|>
-name|changes
+name|destChanges
 decl_stmt|;
 DECL|method|ChangeLookup (RevCommit c, Change.Key key)
 name|ChangeLookup
@@ -10787,7 +10729,7 @@ name|changeKey
 operator|=
 name|key
 expr_stmt|;
-name|changes
+name|destChanges
 operator|=
 name|db
 operator|.
@@ -13633,8 +13575,6 @@ name|newPatchSet
 argument_list|,
 name|info
 argument_list|,
-name|change
-argument_list|,
 name|changeCtl
 argument_list|,
 name|approvals
@@ -15147,10 +15087,6 @@ specifier|final
 name|RevCommit
 name|c
 parameter_list|)
-throws|throws
-name|MissingObjectException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(
@@ -15267,8 +15203,6 @@ specifier|final
 name|ReceiveCommand
 name|cmd
 parameter_list|)
-throws|throws
-name|NoSuchChangeException
 block|{
 specifier|final
 name|RevWalk
@@ -16013,8 +15947,6 @@ name|Ref
 argument_list|>
 name|changeRefsById
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(

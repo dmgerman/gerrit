@@ -650,12 +650,7 @@ operator|!
 name|control
 operator|.
 name|canRemoveMember
-argument_list|(
-name|a
-operator|.
-name|getId
 argument_list|()
-argument_list|)
 condition|)
 block|{
 throw|throw

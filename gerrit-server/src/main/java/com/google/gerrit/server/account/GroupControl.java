@@ -810,32 +810,22 @@ return|return
 name|isOwner
 return|;
 block|}
-DECL|method|canAddMember (Account.Id id)
+DECL|method|canAddMember ()
 specifier|public
 name|boolean
 name|canAddMember
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canRemoveMember (Account.Id id)
+DECL|method|canRemoveMember ()
 specifier|public
 name|boolean
 name|canRemoveMember
-parameter_list|(
-name|Account
-operator|.
-name|Id
-name|id
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|isOwner
@@ -885,48 +875,33 @@ name|canSeeMembers
 argument_list|()
 return|;
 block|}
-DECL|method|canAddGroup (AccountGroup.UUID uuid)
+DECL|method|canAddGroup ()
 specifier|public
 name|boolean
 name|canAddGroup
-parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|uuid
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canRemoveGroup (AccountGroup.UUID uuid)
+DECL|method|canRemoveGroup ()
 specifier|public
 name|boolean
 name|canRemoveGroup
-parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|uuid
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|isOwner
 argument_list|()
 return|;
 block|}
-DECL|method|canSeeGroup (AccountGroup.UUID uuid)
+DECL|method|canSeeGroup ()
 specifier|public
 name|boolean
 name|canSeeGroup
-parameter_list|(
-name|AccountGroup
-operator|.
-name|UUID
-name|uuid
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|canSeeMembers

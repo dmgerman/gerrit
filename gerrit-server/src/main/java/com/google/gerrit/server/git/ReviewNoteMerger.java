@@ -159,6 +159,8 @@ name|ReviewNoteMerger
 implements|implements
 name|NoteMerger
 block|{
+annotation|@
+name|Override
 DECL|method|merge (Note base, Note ours, Note theirs, ObjectReader reader, ObjectInserter inserter)
 specifier|public
 name|Note

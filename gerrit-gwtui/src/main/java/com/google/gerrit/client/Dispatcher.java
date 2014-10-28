@@ -2396,9 +2396,7 @@ argument_list|(
 name|token
 argument_list|,
 name|mine
-argument_list|(
-name|token
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3691,16 +3689,12 @@ name|screen
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mine (final String token)
+DECL|method|mine ()
 specifier|private
 specifier|static
 name|Screen
 name|mine
-parameter_list|(
-specifier|final
-name|String
-name|token
-parameter_list|)
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -5094,6 +5088,8 @@ argument_list|(
 name|token
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -5266,6 +5262,8 @@ argument_list|(
 name|token
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -5653,6 +5651,8 @@ argument_list|(
 name|token
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -5975,6 +5975,8 @@ argument_list|(
 name|token
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -7037,6 +7039,8 @@ operator|=
 name|token
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|onFailure (Throwable reason)
 specifier|public
 specifier|final
@@ -7110,6 +7114,8 @@ argument_list|(
 name|token
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess

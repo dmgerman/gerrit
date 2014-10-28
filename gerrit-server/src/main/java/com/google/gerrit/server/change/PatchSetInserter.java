@@ -1365,8 +1365,6 @@ parameter_list|(
 name|ChangeMessage
 name|changeMessage
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|this
 operator|.

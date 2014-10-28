@@ -1529,6 +1529,8 @@ name|CommentInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -1841,6 +1843,8 @@ name|JavaScriptObject
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess

@@ -405,6 +405,8 @@ specifier|private
 name|StringBuilder
 name|buf
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getSafeHtmlLine (int lineNo)
 specifier|public
 name|SafeHtml
@@ -428,6 +430,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|size ()
 specifier|public
 name|int

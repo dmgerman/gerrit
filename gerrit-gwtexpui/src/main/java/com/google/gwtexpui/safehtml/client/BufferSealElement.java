@@ -93,6 +93,8 @@ operator|=
 name|safeHtmlBuilder
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final boolean v)
 specifier|public
 name|void
@@ -114,6 +116,8 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final char v)
 specifier|public
 name|void
@@ -135,6 +139,8 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final double v)
 specifier|public
 name|void
@@ -156,6 +162,8 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final float v)
 specifier|public
 name|void
@@ -177,6 +185,8 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final int v)
 specifier|public
 name|void
@@ -198,6 +208,8 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final long v)
 specifier|public
 name|void
@@ -219,6 +231,8 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (final String v)
 specifier|public
 name|void

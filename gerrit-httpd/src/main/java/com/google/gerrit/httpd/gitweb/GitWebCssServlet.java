@@ -264,14 +264,11 @@ name|GitWebCssServlet
 block|{
 annotation|@
 name|Inject
-DECL|method|Site (SitePaths paths, GitWebConfig gwc)
+DECL|method|Site (SitePaths paths)
 name|Site
 parameter_list|(
 name|SitePaths
 name|paths
-parameter_list|,
-name|GitWebConfig
-name|gwc
 parameter_list|)
 throws|throws
 name|IOException
@@ -281,8 +278,6 @@ argument_list|(
 name|paths
 operator|.
 name|site_css
-argument_list|,
-name|gwc
 argument_list|)
 expr_stmt|;
 block|}
@@ -313,8 +308,6 @@ name|gwc
 operator|.
 name|getGitwebCSS
 argument_list|()
-argument_list|,
-name|gwc
 argument_list|)
 expr_stmt|;
 block|}
@@ -348,16 +341,12 @@ name|byte
 index|[]
 name|gz_css
 decl_stmt|;
-DECL|method|GitWebCssServlet (final File src, final GitWebConfig gitWebConfig)
+DECL|method|GitWebCssServlet (final File src)
 name|GitWebCssServlet
 parameter_list|(
 specifier|final
 name|File
 name|src
-parameter_list|,
-specifier|final
-name|GitWebConfig
-name|gitWebConfig
 parameter_list|)
 throws|throws
 name|IOException

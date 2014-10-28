@@ -169,6 +169,8 @@ operator|new
 name|Callback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuggestionsReady
@@ -419,6 +421,8 @@ name|newHtml
 parameter_list|)
 comment|/*-{ return inString.replace(RegExp(pat, 'gi'), newHtml); }-*/
 function_decl|;
+annotation|@
+name|Override
 DECL|method|getDisplayString ()
 specifier|public
 name|String
@@ -429,6 +433,8 @@ return|return
 name|displayString
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getReplacementString ()
 specifier|public
 name|String

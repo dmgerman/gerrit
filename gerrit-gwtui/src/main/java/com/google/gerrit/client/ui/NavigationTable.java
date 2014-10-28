@@ -965,7 +965,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** Invoked when the user double clicks on a table cell. */
+comment|/**    * Invoked when the user double clicks on a table cell.    *    * @param row row number.    * @param column column number.    */
 DECL|method|onCellDoubleClick (int row, int column)
 specifier|protected
 name|void
@@ -984,7 +984,7 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Invoked when the user clicks on a table cell. */
+comment|/**    * Invoked when the user clicks on a table cell.    *    * @param event click event.    * @param row row number.    * @param column column number.    */
 DECL|method|onCellSingleClick (Event event, int row, int column)
 specifier|protected
 name|void

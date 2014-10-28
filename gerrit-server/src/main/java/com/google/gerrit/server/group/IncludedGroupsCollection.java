@@ -554,12 +554,7 @@ name|getControl
 argument_list|()
 operator|.
 name|canSeeGroup
-argument_list|(
-name|member
-operator|.
-name|getGroupUUID
 argument_list|()
-argument_list|)
 condition|)
 block|{
 return|return

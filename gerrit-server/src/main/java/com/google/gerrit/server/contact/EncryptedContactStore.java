@@ -985,6 +985,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|store (final Account account, final ContactInformation info)
 specifier|public
 name|void

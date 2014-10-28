@@ -663,12 +663,7 @@ operator|!
 name|control
 operator|.
 name|canRemoveGroup
-argument_list|(
-name|d
-operator|.
-name|getGroupUUID
 argument_list|()
-argument_list|)
 condition|)
 block|{
 throw|throw
@@ -868,8 +863,6 @@ name|AccountGroupById
 argument_list|>
 name|toRemoved
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 specifier|final
 name|Account

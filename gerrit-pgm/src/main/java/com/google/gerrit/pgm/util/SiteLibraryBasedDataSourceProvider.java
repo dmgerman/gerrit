@@ -251,8 +251,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|site
-argument_list|,
 name|cfg
 argument_list|,
 name|ctx
@@ -267,6 +265,8 @@ operator|.
 name|lib_dir
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|get ()
 specifier|public
 specifier|synchronized

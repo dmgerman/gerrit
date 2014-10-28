@@ -264,7 +264,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
-empty_stmt|;
+block|{}
 block|}
 block|}
 DECL|method|getStatusCode ()

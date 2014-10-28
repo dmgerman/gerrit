@@ -869,14 +869,14 @@ argument_list|<
 name|T
 argument_list|>
 block|{
-DECL|field|key
+DECL|field|handleKey
 specifier|private
 specifier|final
 name|Key
 argument_list|<
 name|T
 argument_list|>
-name|key
+name|handleKey
 decl_stmt|;
 DECL|field|item
 specifier|private
@@ -896,14 +896,14 @@ name|T
 argument_list|>
 name|defaultItem
 decl_stmt|;
-DECL|method|ReloadableHandle (Key<T> key, NamedProvider<T> item, NamedProvider<T> defaultItem)
+DECL|method|ReloadableHandle (Key<T> handleKey, NamedProvider<T> item, NamedProvider<T> defaultItem)
 name|ReloadableHandle
 parameter_list|(
 name|Key
 argument_list|<
 name|T
 argument_list|>
-name|key
+name|handleKey
 parameter_list|,
 name|NamedProvider
 argument_list|<
@@ -920,9 +920,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|key
+name|handleKey
 operator|=
-name|key
+name|handleKey
 expr_stmt|;
 name|this
 operator|.
@@ -949,7 +949,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-name|key
+name|handleKey
 return|;
 block|}
 annotation|@

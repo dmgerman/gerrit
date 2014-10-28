@@ -589,6 +589,8 @@ operator|=
 name|newUsername
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|call ()
 specifier|public
 name|VoidResult

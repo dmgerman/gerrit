@@ -614,6 +614,8 @@ operator|=
 name|queryBuilder
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|myAccount (final AsyncCallback<Account> callback)
 specifier|public
 name|void
@@ -672,6 +674,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|changePreferences (final AccountGeneralPreferences pref, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void
@@ -700,6 +704,8 @@ name|VoidResult
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|VoidResult
 name|run
@@ -816,6 +822,8 @@ name|VoidResult
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|VoidResult
 name|run
@@ -886,6 +894,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|myProjectWatch ( final AsyncCallback<List<AccountProjectWatchInfo>> callback)
 specifier|public
 name|void
@@ -916,6 +926,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1033,6 +1045,8 @@ name|AccountProjectWatchInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -1078,6 +1092,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addProjectWatch (final String projectName, final String filter, final AsyncCallback<AccountProjectWatchInfo> callback)
 specifier|public
 name|void
@@ -1110,6 +1126,8 @@ name|AccountProjectWatchInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|AccountProjectWatchInfo
 name|run
@@ -1281,6 +1299,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|updateProjectWatch (final AccountProjectWatch watch, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void
@@ -1335,6 +1355,8 @@ name|VoidResult
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|VoidResult
 name|run
@@ -1370,6 +1392,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|deleteProjectWatches (final Set<AccountProjectWatch.Key> keys, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void
@@ -1403,6 +1427,8 @@ name|VoidResult
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|VoidResult
 name|run
@@ -1479,6 +1505,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|myAgreements (final AsyncCallback<AgreementInfo> callback)
 specifier|public
 name|void

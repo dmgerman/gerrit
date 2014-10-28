@@ -434,22 +434,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|group
-operator|.
-name|GroupJson
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|NoSuchProjectException
@@ -754,7 +738,7 @@ name|allProjectsName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListAccess (Provider<CurrentUser> self, ProjectControl.GenericFactory projectControlFactory, ProjectCache projectCache, ProjectJson projectJson, MetaDataUpdate.Server metaDataUpdateFactory, GroupControl.Factory groupControlFactory, GroupBackend groupBackend, GroupJson groupJson, AllProjectsName allProjectsName)
+DECL|method|ListAccess (Provider<CurrentUser> self, ProjectControl.GenericFactory projectControlFactory, ProjectCache projectCache, ProjectJson projectJson, MetaDataUpdate.Server metaDataUpdateFactory, GroupControl.Factory groupControlFactory, GroupBackend groupBackend, AllProjectsName allProjectsName)
 specifier|public
 name|ListAccess
 parameter_list|(
@@ -787,9 +771,6 @@ name|groupControlFactory
 parameter_list|,
 name|GroupBackend
 name|groupBackend
-parameter_list|,
-name|GroupJson
-name|groupJson
 parameter_list|,
 name|AllProjectsName
 name|allProjectsName

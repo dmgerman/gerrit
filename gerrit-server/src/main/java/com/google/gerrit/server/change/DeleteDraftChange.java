@@ -254,22 +254,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|patch
-operator|.
-name|PatchSetInfoFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|NoSuchChangeException
@@ -399,7 +383,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftChange (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, ChangeUtil changeUtil, @GerritServerConfig Config cfg)
+DECL|method|DeleteDraftChange (Provider<ReviewDb> dbProvider, ChangeUtil changeUtil, @GerritServerConfig Config cfg)
 specifier|public
 name|DeleteDraftChange
 parameter_list|(
@@ -408,9 +392,6 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|dbProvider
-parameter_list|,
-name|PatchSetInfoFactory
-name|patchSetInfoFactory
 parameter_list|,
 name|ChangeUtil
 name|changeUtil

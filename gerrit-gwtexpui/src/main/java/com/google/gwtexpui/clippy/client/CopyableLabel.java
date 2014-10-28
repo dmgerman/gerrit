@@ -965,6 +965,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getText ()
 specifier|public
 name|String
@@ -975,6 +977,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setText (final String newText)
 specifier|public
 name|void
@@ -1154,6 +1158,8 @@ operator|new
 name|Command
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute

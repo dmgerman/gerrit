@@ -511,10 +511,6 @@ parameter_list|,
 name|BatchRefUpdate
 name|batch
 parameter_list|)
-throws|throws
-name|RepositoryNotFoundException
-throws|,
-name|IOException
 block|{
 name|MetaDataUpdate
 name|md

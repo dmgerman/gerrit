@@ -127,6 +127,8 @@ name|String
 name|v
 parameter_list|)
 function_decl|;
+annotation|@
+name|Override
 DECL|method|toString ()
 name|String
 name|toString

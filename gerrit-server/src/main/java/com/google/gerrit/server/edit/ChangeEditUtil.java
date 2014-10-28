@@ -686,8 +686,6 @@ throws|throws
 name|AuthException
 throws|,
 name|IOException
-throws|,
-name|InvalidChangeOperationException
 block|{
 if|if
 condition|(
@@ -984,8 +982,6 @@ name|basePatchSet
 argument_list|,
 name|squashEdit
 argument_list|(
-name|repo
-argument_list|,
 name|rw
 argument_list|,
 name|inserter
@@ -1096,8 +1092,6 @@ name|ref
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|InvalidChangeOperationException
 block|{
 try|try
 block|{
@@ -1263,14 +1257,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|squashEdit (Repository repo, RevWalk rw, ObjectInserter inserter, RevCommit edit, PatchSet basePatchSet)
+DECL|method|squashEdit (RevWalk rw, ObjectInserter inserter, RevCommit edit, PatchSet basePatchSet)
 specifier|private
 name|RevCommit
 name|squashEdit
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,

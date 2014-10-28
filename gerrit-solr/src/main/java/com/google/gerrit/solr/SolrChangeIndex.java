@@ -1725,14 +1725,14 @@ name|QuerySource
 implements|implements
 name|ChangeDataSource
 block|{
-DECL|field|indexes
+DECL|field|servers
 specifier|private
 specifier|final
 name|List
 argument_list|<
 name|SolrServer
 argument_list|>
-name|indexes
+name|servers
 decl_stmt|;
 DECL|field|query
 specifier|private
@@ -1768,7 +1768,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|indexes
+name|servers
 operator|=
 name|indexes
 expr_stmt|;
@@ -1911,7 +1911,7 @@ control|(
 name|SolrServer
 name|index
 range|:
-name|indexes
+name|servers
 control|)
 block|{
 name|docs
@@ -2083,10 +2083,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
-block|{
-try|try
 block|{
 name|SolrInputDocument
 name|result
@@ -2125,21 +2121,6 @@ return|return
 name|result
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
 DECL|method|add (SolrInputDocument doc, Values<ChangeData> values)
 specifier|private
 name|void
@@ -2154,8 +2135,6 @@ name|ChangeData
 argument_list|>
 name|values
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|String
 name|name
@@ -2208,9 +2187,6 @@ name|addField
 argument_list|(
 name|name
 argument_list|,
-operator|(
-name|Integer
-operator|)
 name|value
 argument_list|)
 expr_stmt|;
@@ -2243,9 +2219,6 @@ name|addField
 argument_list|(
 name|name
 argument_list|,
-operator|(
-name|Long
-operator|)
 name|value
 argument_list|)
 expr_stmt|;
@@ -2390,9 +2363,6 @@ name|addField
 argument_list|(
 name|name
 argument_list|,
-operator|(
-name|String
-operator|)
 name|value
 argument_list|)
 expr_stmt|;

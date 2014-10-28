@@ -722,6 +722,8 @@ name|AgreementInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -771,6 +773,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -1555,6 +1559,8 @@ name|VoidResult
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -1708,6 +1714,8 @@ operator|new
 name|RequestCallback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onError
@@ -1729,6 +1737,8 @@ name|center
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onResponseReceived

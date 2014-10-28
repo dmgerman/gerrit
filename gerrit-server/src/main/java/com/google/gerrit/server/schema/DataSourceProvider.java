@@ -194,22 +194,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|SitePaths
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|jdbc
@@ -376,12 +360,6 @@ name|DEFAULT_POOL_LIMIT
 init|=
 literal|8
 decl_stmt|;
-DECL|field|site
-specifier|private
-specifier|final
-name|SitePaths
-name|site
-decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -407,13 +385,10 @@ name|ds
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DataSourceProvider (SitePaths site, @GerritServerConfig Config cfg, Context ctx, DataSourceType dst)
+DECL|method|DataSourceProvider (@erritServerConfig Config cfg, Context ctx, DataSourceType dst)
 specifier|protected
 name|DataSourceProvider
 parameter_list|(
-name|SitePaths
-name|site
-parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
@@ -426,12 +401,6 @@ name|DataSourceType
 name|dst
 parameter_list|)
 block|{
-name|this
-operator|.
-name|site
-operator|=
-name|site
-expr_stmt|;
 name|this
 operator|.
 name|cfg
@@ -471,8 +440,6 @@ name|ds
 operator|=
 name|open
 argument_list|(
-name|site
-argument_list|,
 name|cfg
 argument_list|,
 name|ctx
@@ -544,15 +511,11 @@ name|SINGLE_USER
 block|,
 name|MULTI_USER
 block|}
-DECL|method|open (final SitePaths site, final Config cfg, final Context context, final DataSourceType dst)
+DECL|method|open (final Config cfg, final Context context, final DataSourceType dst)
 specifier|private
 name|DataSource
 name|open
 parameter_list|(
-specifier|final
-name|SitePaths
-name|site
-parameter_list|,
 specifier|final
 name|Config
 name|cfg

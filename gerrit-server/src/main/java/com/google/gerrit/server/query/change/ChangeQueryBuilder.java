@@ -1183,12 +1183,6 @@ name|?
 argument_list|>
 name|ip
 init|=
-operator|(
-name|IntPredicate
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|find
 argument_list|(
 name|p
@@ -1987,8 +1981,6 @@ parameter_list|(
 name|String
 name|value
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 name|ChangeIndex
 name|index
@@ -2144,8 +2136,6 @@ parameter_list|(
 name|String
 name|value
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 if|if
 condition|(
@@ -2494,10 +2484,6 @@ name|ParentProjectPredicate
 argument_list|(
 name|args
 operator|.
-name|db
-argument_list|,
-name|args
-operator|.
 name|projectCache
 argument_list|,
 name|args
@@ -2719,8 +2705,6 @@ parameter_list|(
 name|String
 name|file
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 return|return
 name|file
@@ -2742,8 +2726,6 @@ parameter_list|(
 name|String
 name|file
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 if|if
 condition|(
@@ -2759,8 +2741,6 @@ return|return
 operator|new
 name|RegexPathPredicate
 argument_list|(
-name|FIELD_FILE
-argument_list|,
 name|file
 argument_list|)
 return|;
@@ -2792,8 +2772,6 @@ parameter_list|(
 name|String
 name|path
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 if|if
 condition|(
@@ -2809,8 +2787,6 @@ return|return
 operator|new
 name|RegexPathPredicate
 argument_list|(
-name|FIELD_PATH
-argument_list|,
 name|path
 argument_list|)
 return|;
@@ -3127,8 +3103,6 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
-throws|throws
-name|QueryParseException
 block|{
 name|ChangeIndex
 name|index
@@ -4555,8 +4529,6 @@ parameter_list|)
 block|{
 comment|// Skip.
 block|}
-try|try
-block|{
 name|predicates
 operator|.
 name|add
@@ -4567,15 +4539,6 @@ name|query
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|QueryParseException
-name|e
-parameter_list|)
-block|{
-comment|// Skip.
-block|}
 try|try
 block|{
 name|predicates
@@ -4599,8 +4562,6 @@ parameter_list|)
 block|{
 comment|// Skip.
 block|}
-try|try
-block|{
 name|predicates
 operator|.
 name|add
@@ -4611,17 +4572,6 @@ name|query
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|QueryParseException
-name|e
-parameter_list|)
-block|{
-comment|// Skip.
-block|}
-try|try
-block|{
 name|predicates
 operator|.
 name|add
@@ -4632,15 +4582,6 @@ name|query
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|QueryParseException
-name|e
-parameter_list|)
-block|{
-comment|// Skip.
-block|}
 try|try
 block|{
 name|predicates

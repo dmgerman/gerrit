@@ -623,7 +623,7 @@ name|handler
 range|:
 name|parser
 operator|.
-name|options
+name|optionsList
 control|)
 block|{
 if|if
@@ -1540,7 +1540,7 @@ name|index
 argument_list|(
 name|parser
 operator|.
-name|options
+name|optionsList
 argument_list|)
 expr_stmt|;
 block|}
@@ -1825,13 +1825,13 @@ name|SuppressWarnings
 argument_list|(
 literal|"rawtypes"
 argument_list|)
-DECL|field|options
+DECL|field|optionsList
 specifier|private
 name|List
 argument_list|<
 name|OptionHandler
 argument_list|>
-name|options
+name|optionsList
 decl_stmt|;
 DECL|field|help
 specifier|private
@@ -1979,7 +1979,7 @@ block|{
 name|ensureOptionsInitialized
 argument_list|()
 expr_stmt|;
-name|options
+name|optionsList
 operator|.
 name|add
 argument_list|(
@@ -1998,7 +1998,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|options
+name|optionsList
 operator|==
 literal|null
 condition|)
@@ -2009,7 +2009,7 @@ operator|new
 name|HelpOption
 argument_list|()
 expr_stmt|;
-name|options
+name|optionsList
 operator|=
 name|Lists
 operator|.

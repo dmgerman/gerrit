@@ -188,22 +188,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -726,7 +710,7 @@ name|currentUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditModifier (@erritPersonIdent PersonIdent gerritIdent, GitRepositoryManager gitManager, Provider<ReviewDb> dbProvider, Provider<CurrentUser> currentUser)
+DECL|method|ChangeEditModifier (@erritPersonIdent PersonIdent gerritIdent, GitRepositoryManager gitManager, Provider<CurrentUser> currentUser)
 name|ChangeEditModifier
 parameter_list|(
 annotation|@
@@ -736,12 +720,6 @@ name|gerritIdent
 parameter_list|,
 name|GitRepositoryManager
 name|gitManager
-parameter_list|,
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
 parameter_list|,
 name|Provider
 argument_list|<
@@ -1763,8 +1741,6 @@ name|writeNewTree
 argument_list|(
 name|op
 argument_list|,
-name|repo
-argument_list|,
 name|rw
 argument_list|,
 name|inserter
@@ -2066,7 +2042,7 @@ return|return
 name|res
 return|;
 block|}
-DECL|method|writeNewTree (TreeOperation op, Repository repo, RevWalk rw, ObjectInserter ins, RevCommit prevEdit, ObjectReader reader, String fileName, byte[] content, RevCommit base)
+DECL|method|writeNewTree (TreeOperation op, RevWalk rw, ObjectInserter ins, RevCommit prevEdit, ObjectReader reader, String fileName, byte[] content, RevCommit base)
 specifier|private
 specifier|static
 name|ObjectId
@@ -2074,9 +2050,6 @@ name|writeNewTree
 parameter_list|(
 name|TreeOperation
 name|op
-parameter_list|,
-name|Repository
-name|repo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -2119,8 +2092,6 @@ name|editTree
 argument_list|(
 name|op
 argument_list|,
-name|repo
-argument_list|,
 name|rw
 argument_list|,
 name|base
@@ -2146,7 +2117,7 @@ name|ins
 argument_list|)
 return|;
 block|}
-DECL|method|editTree (TreeOperation op, Repository repo, RevWalk rw, RevCommit base, DirCacheEditor dce, ObjectInserter ins, String path, byte[] content)
+DECL|method|editTree (TreeOperation op, RevWalk rw, RevCommit base, DirCacheEditor dce, ObjectInserter ins, String path, byte[] content)
 specifier|private
 specifier|static
 name|void
@@ -2154,9 +2125,6 @@ name|editTree
 parameter_list|(
 name|TreeOperation
 name|op
-parameter_list|,
-name|Repository
-name|repo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -2216,8 +2184,6 @@ name|getPathEdit
 argument_list|(
 name|op
 argument_list|,
-name|repo
-argument_list|,
 name|rw
 argument_list|,
 name|base
@@ -2238,7 +2204,7 @@ name|finish
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getPathEdit (TreeOperation op, Repository repo, RevWalk rw, RevCommit base, String path, ObjectInserter ins, byte[] content)
+DECL|method|getPathEdit (TreeOperation op, RevWalk rw, RevCommit base, String path, ObjectInserter ins, byte[] content)
 specifier|private
 specifier|static
 name|PathEdit
@@ -2246,9 +2212,6 @@ name|getPathEdit
 parameter_list|(
 name|TreeOperation
 name|op
-parameter_list|,
-name|Repository
-name|repo
 parameter_list|,
 name|RevWalk
 name|rw
@@ -2294,8 +2257,6 @@ argument_list|)
 else|:
 name|getObjectIdForRestoreOperation
 argument_list|(
-name|repo
-argument_list|,
 name|rw
 argument_list|,
 name|base
@@ -2340,15 +2301,12 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|getObjectIdForRestoreOperation (Repository repo, RevWalk rw, RevCommit base, String path)
+DECL|method|getObjectIdForRestoreOperation (RevWalk rw, RevCommit base, String path)
 specifier|private
 specifier|static
 name|ObjectId
 name|getObjectIdForRestoreOperation
 parameter_list|(
-name|Repository
-name|repo
-parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,

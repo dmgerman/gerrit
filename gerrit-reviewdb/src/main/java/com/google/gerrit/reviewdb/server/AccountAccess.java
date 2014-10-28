@@ -173,6 +173,8 @@ argument_list|>
 block|{
 comment|/** Locate an account by our locally generated identity. */
 annotation|@
+name|Override
+annotation|@
 name|PrimaryKey
 argument_list|(
 literal|"accountId"

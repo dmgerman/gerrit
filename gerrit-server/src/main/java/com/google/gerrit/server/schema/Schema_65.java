@@ -903,8 +903,6 @@ name|adminGroupUUIDs
 init|=
 name|getAdministrateServerGroups
 argument_list|(
-name|db
-argument_list|,
 name|config
 argument_list|)
 decl_stmt|;
@@ -1967,7 +1965,7 @@ return|return
 name|group
 return|;
 block|}
-DECL|method|getAdministrateServerGroups ( ReviewDb db, ProjectConfig cfg)
+DECL|method|getAdministrateServerGroups ( ProjectConfig cfg)
 specifier|private
 name|List
 argument_list|<
@@ -1977,9 +1975,6 @@ name|UUID
 argument_list|>
 name|getAdministrateServerGroups
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|ProjectConfig
 name|cfg
 parameter_list|)

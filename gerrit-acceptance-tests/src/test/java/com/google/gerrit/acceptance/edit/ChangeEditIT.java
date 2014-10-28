@@ -825,15 +825,6 @@ name|reviewDbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|pushFactory
-specifier|private
-name|PushOneCommit
-operator|.
-name|Factory
-name|pushFactory
-decl_stmt|;
-annotation|@
-name|Inject
 DECL|field|editUtil
 name|ChangeEditUtil
 name|editUtil
@@ -851,11 +842,6 @@ DECL|field|fileUtil
 specifier|private
 name|FileContentUtil
 name|fileUtil
-decl_stmt|;
-DECL|field|db
-specifier|private
-name|ReviewDb
-name|db
 decl_stmt|;
 DECL|field|change
 specifier|private

@@ -388,20 +388,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1483,8 +1469,6 @@ argument_list|(
 name|note
 argument_list|,
 name|curr
-argument_list|,
-name|changeId
 argument_list|)
 decl_stmt|;
 if|if
@@ -1870,7 +1854,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * @return a comment range. If the comment range line in the note only has    *    one number, we return a CommentRange with that one number as the end    *    line and the other fields as -1. If the comment range line in the note    *    contains a whole comment range, then we return a CommentRange with all    *    fields set. If the line is not correctly formatted, return null.    */
-DECL|method|parseCommentRange (byte[] note, MutableInteger ptr, Change.Id changeId)
+DECL|method|parseCommentRange (byte[] note, MutableInteger ptr)
 specifier|private
 specifier|static
 name|CommentRange
@@ -1882,14 +1866,7 @@ name|note
 parameter_list|,
 name|MutableInteger
 name|ptr
-parameter_list|,
-name|Change
-operator|.
-name|Id
-name|changeId
 parameter_list|)
-throws|throws
-name|ConfigInvalidException
 block|{
 name|CommentRange
 name|range
@@ -3046,8 +3023,6 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|writer
 operator|.
@@ -3255,10 +3230,6 @@ name|PatchLineComment
 argument_list|>
 name|comments
 parameter_list|)
-throws|throws
-name|OrmException
-throws|,
-name|IOException
 block|{
 name|ByteArrayOutputStream
 name|buf
@@ -3774,8 +3745,6 @@ name|ObjectInserter
 name|inserter
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|IOException
 block|{
 name|checkArgument

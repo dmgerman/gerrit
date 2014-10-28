@@ -89,6 +89,12 @@ specifier|public
 enum|enum
 name|Type
 block|{
+DECL|enumConstant|SuppressWarnings
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"hiding"
+argument_list|)
 DECL|enumConstant|NONE
 DECL|enumConstant|PUBLIC
 DECL|enumConstant|PRIVATE

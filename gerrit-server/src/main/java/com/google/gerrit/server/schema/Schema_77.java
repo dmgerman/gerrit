@@ -708,8 +708,6 @@ argument_list|)
 expr_stmt|;
 name|migrateLabelsToAllProjects
 argument_list|(
-name|db
-argument_list|,
 name|labelTypes
 argument_list|)
 expr_stmt|;
@@ -836,20 +834,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|migrateLabelsToAllProjects (ReviewDb db, LegacyLabelTypes labelTypes)
+DECL|method|migrateLabelsToAllProjects (LegacyLabelTypes labelTypes)
 specifier|private
 name|void
 name|migrateLabelsToAllProjects
 parameter_list|(
-name|ReviewDb
-name|db
-parameter_list|,
 name|LegacyLabelTypes
 name|labelTypes
 parameter_list|)
 throws|throws
-name|SQLException
-throws|,
 name|RepositoryNotFoundException
 throws|,
 name|IOException

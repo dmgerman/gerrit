@@ -3593,10 +3593,6 @@ parameter_list|(
 name|ChangeData
 name|cd
 parameter_list|)
-throws|throws
-name|IOException
-block|{
-try|try
 block|{
 name|Document
 name|result
@@ -3646,21 +3642,6 @@ return|return
 name|result
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
 DECL|method|add (Document doc, Values<ChangeData> values)
 specifier|private
 name|void
@@ -3675,8 +3656,6 @@ name|ChangeData
 argument_list|>
 name|values
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|String
 name|name
@@ -3866,9 +3845,6 @@ name|IntField
 argument_list|(
 name|name
 argument_list|,
-operator|(
-name|int
-operator|)
 name|t
 argument_list|,
 name|store

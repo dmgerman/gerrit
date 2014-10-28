@@ -1281,8 +1281,6 @@ throws|throws
 name|GitAPIException
 throws|,
 name|IOException
-throws|,
-name|RestApiException
 block|{
 name|PushOneCommit
 operator|.
@@ -1311,8 +1309,6 @@ name|testPushForNonExistingBranch
 parameter_list|()
 throws|throws
 name|GitAPIException
-throws|,
-name|OrmException
 throws|,
 name|IOException
 block|{

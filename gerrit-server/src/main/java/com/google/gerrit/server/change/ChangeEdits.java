@@ -1269,8 +1269,6 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
-throws|,
-name|InvalidChangeOperationException
 block|{
 name|editModifier
 operator|.
@@ -2051,8 +2049,6 @@ throws|,
 name|ResourceConflictException
 throws|,
 name|OrmException
-throws|,
-name|InvalidChangeOperationException
 block|{
 name|editModifier
 operator|.

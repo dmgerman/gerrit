@@ -678,6 +678,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|asEditor ()
 specifier|public
 name|ValueBoxEditor
@@ -889,6 +891,8 @@ operator|=
 name|enabled
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showErrors (List<EditorError> errors)
 specifier|public
 name|void

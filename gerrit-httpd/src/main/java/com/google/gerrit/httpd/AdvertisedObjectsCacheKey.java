@@ -159,6 +159,8 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object other)
 specifier|public
 name|boolean
