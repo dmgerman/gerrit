@@ -105,8 +105,10 @@ DECL|interface|PatchSetWebLink
 specifier|public
 interface|interface
 name|PatchSetWebLink
+extends|extends
+name|WebLink
 block|{
-comment|/**    * URL to patch set in external service.    *    * @param projectName Name of the project    * @param commit Commit of the patch set    * @return WebLinkInfo that links to patch set in external service.    */
+comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo}    * describing a link from a patch set to an external service.    *    *<p>In order for the web link to be visible    * {@link com.google.gerrit.extensions.common.WebLinkInfo#url}    * and {@link com.google.gerrit.extensions.common.WebLinkInfo#name}    * must be set.<p>    *    * @param projectName Name of the project    * @param commit Commit of the patch set    * @return WebLinkInfo that links to patch set in external service,    * null if there should be no link.    */
 DECL|method|getPathSetWebLink (final String projectName, final String commit)
 name|WebLinkInfo
 name|getPathSetWebLink

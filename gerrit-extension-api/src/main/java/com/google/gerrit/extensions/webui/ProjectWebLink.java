@@ -105,8 +105,10 @@ DECL|interface|ProjectWebLink
 specifier|public
 interface|interface
 name|ProjectWebLink
+extends|extends
+name|WebLink
 block|{
-comment|/**    * URL to project in external service.    *    * @param projectName Name of the project    * @return WebLinkInfo that links to project in external service.    */
+comment|/**    * {@link com.google.gerrit.extensions.common.WebLinkInfo}    * describing a link from a project to an external service.    *    *<p>In order for the web link to be visible    * {@link com.google.gerrit.extensions.common.WebLinkInfo#url}    * and {@link com.google.gerrit.extensions.common.WebLinkInfo#name}    * must be set.<p>    *    * @param projectName Name of the project    * @return WebLinkInfo that links to project in external service,    * null if there should be no link.    */
 DECL|method|getProjectWeblink (String projectName)
 name|WebLinkInfo
 name|getProjectWeblink
