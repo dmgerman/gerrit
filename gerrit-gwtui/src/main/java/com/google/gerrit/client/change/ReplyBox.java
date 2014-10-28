@@ -1610,10 +1610,15 @@ name|UiHandler
 argument_list|(
 literal|"post"
 argument_list|)
-DECL|method|onPost (ClickEvent e)
+DECL|method|onPost (@uppressWarningsR) ClickEvent e)
 name|void
 name|onPost
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1744,10 +1749,15 @@ name|UiHandler
 argument_list|(
 literal|"cancel"
 argument_list|)
-DECL|method|onCancel (ClickEvent e)
+DECL|method|onCancel (@uppressWarningsR) ClickEvent e)
 name|void
 name|onCancel
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

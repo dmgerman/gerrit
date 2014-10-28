@@ -1296,10 +1296,15 @@ name|UiHandler
 argument_list|(
 literal|"update"
 argument_list|)
-DECL|method|onUpdate (ClickEvent event)
+DECL|method|onUpdate (@uppressWarningsR) ClickEvent event)
 name|void
 name|onUpdate
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1313,10 +1318,15 @@ name|UiHandler
 argument_list|(
 literal|"save"
 argument_list|)
-DECL|method|onSave (ClickEvent event)
+DECL|method|onSave (@uppressWarningsR) ClickEvent event)
 name|void
 name|onSave
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)

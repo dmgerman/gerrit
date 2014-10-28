@@ -1150,10 +1150,15 @@ name|UiHandler
 argument_list|(
 literal|"deletePermission"
 argument_list|)
-DECL|method|onDeleteHover (MouseOverEvent event)
+DECL|method|onDeleteHover (@uppressWarningsR) MouseOverEvent event)
 name|void
 name|onDeleteHover
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|MouseOverEvent
 name|event
 parameter_list|)
@@ -1177,10 +1182,15 @@ name|UiHandler
 argument_list|(
 literal|"deletePermission"
 argument_list|)
-DECL|method|onDeleteNonHover (MouseOutEvent event)
+DECL|method|onDeleteNonHover (@uppressWarningsR) MouseOutEvent event)
 name|void
 name|onDeleteNonHover
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|MouseOutEvent
 name|event
 parameter_list|)
@@ -1204,10 +1214,15 @@ name|UiHandler
 argument_list|(
 literal|"deletePermission"
 argument_list|)
-DECL|method|onDeletePermission (ClickEvent event)
+DECL|method|onDeletePermission (@uppressWarningsR) ClickEvent event)
 name|void
 name|onDeletePermission
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1246,10 +1261,15 @@ name|UiHandler
 argument_list|(
 literal|"undoDelete"
 argument_list|)
-DECL|method|onUndoDelete (ClickEvent event)
+DECL|method|onUndoDelete (@uppressWarningsR) ClickEvent event)
 name|void
 name|onUndoDelete
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1288,10 +1308,15 @@ name|UiHandler
 argument_list|(
 literal|"beginAddRule"
 argument_list|)
-DECL|method|onBeginAddRule (ClickEvent event)
+DECL|method|onBeginAddRule (@uppressWarningsR) ClickEvent event)
 name|void
 name|onBeginAddRule
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1364,10 +1389,15 @@ name|UiHandler
 argument_list|(
 literal|"addRule"
 argument_list|)
-DECL|method|onAddGroupByClick (ClickEvent event)
+DECL|method|onAddGroupByClick (@uppressWarningsR) ClickEvent event)
 name|void
 name|onAddGroupByClick
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1447,10 +1477,15 @@ name|UiHandler
 argument_list|(
 literal|"groupToAdd"
 argument_list|)
-DECL|method|onAbortAddGroup (CloseEvent<GroupReferenceBox> event)
+DECL|method|onAbortAddGroup ( @uppressWarningsR) CloseEvent<GroupReferenceBox> event)
 name|void
 name|onAbortAddGroup
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|CloseEvent
 argument_list|<
 name|GroupReferenceBox
@@ -1467,10 +1502,15 @@ name|UiHandler
 argument_list|(
 literal|"hideAddGroup"
 argument_list|)
-DECL|method|hideAddGroup (ClickEvent event)
+DECL|method|hideAddGroup (@uppressWarningsR) ClickEvent event)
 name|void
 name|hideAddGroup
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)

@@ -637,6 +637,7 @@ name|env
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Set up the Prolog environment.    *    * @param env Prolog environment.    */
 DECL|method|setUpEnvironment (PrologEnvironment env)
 specifier|protected
 name|void

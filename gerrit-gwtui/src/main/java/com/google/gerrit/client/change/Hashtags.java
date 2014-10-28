@@ -992,10 +992,15 @@ name|UiHandler
 argument_list|(
 literal|"openForm"
 argument_list|)
-DECL|method|onOpenForm (ClickEvent e)
+DECL|method|onOpenForm (@uppressWarningsR) ClickEvent e)
 name|void
 name|onOpenForm
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1298,10 +1303,15 @@ name|UiHandler
 argument_list|(
 literal|"cancel"
 argument_list|)
-DECL|method|onCancel (ClickEvent e)
+DECL|method|onCancel (@uppressWarningsR) ClickEvent e)
 name|void
 name|onCancel
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1335,10 +1345,15 @@ name|UiHandler
 argument_list|(
 literal|"add"
 argument_list|)
-DECL|method|onAdd (ClickEvent e)
+DECL|method|onAdd (@uppressWarningsR) ClickEvent e)
 name|void
 name|onAdd
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

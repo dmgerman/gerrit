@@ -1886,10 +1886,15 @@ name|UiHandler
 argument_list|(
 literal|"preferences"
 argument_list|)
-DECL|method|onPreferences (ClickEvent e)
+DECL|method|onPreferences (@uppressWarningsR) ClickEvent e)
 name|void
 name|onPreferences
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

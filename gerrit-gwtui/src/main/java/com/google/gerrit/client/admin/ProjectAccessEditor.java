@@ -656,10 +656,15 @@ name|UiHandler
 argument_list|(
 literal|"addSection"
 argument_list|)
-DECL|method|onAddSection (ClickEvent event)
+DECL|method|onAddSection (@uppressWarningsR) ClickEvent event)
 name|void
 name|onAddSection
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)

@@ -1292,10 +1292,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteRule"
 argument_list|)
-DECL|method|onDeleteRule (ClickEvent event)
+DECL|method|onDeleteRule (@uppressWarningsR) ClickEvent event)
 name|void
 name|onDeleteRule
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1334,10 +1339,15 @@ name|UiHandler
 argument_list|(
 literal|"undoDelete"
 argument_list|)
-DECL|method|onUndoDelete (ClickEvent event)
+DECL|method|onUndoDelete (@uppressWarningsR) ClickEvent event)
 name|void
 name|onUndoDelete
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)

@@ -3950,10 +3950,15 @@ name|UiHandler
 argument_list|(
 literal|"includedIn"
 argument_list|)
-DECL|method|onIncludedIn (ClickEvent e)
+DECL|method|onIncludedIn (@uppressWarningsR) ClickEvent e)
 name|void
 name|onIncludedIn
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -3969,10 +3974,15 @@ name|UiHandler
 argument_list|(
 literal|"download"
 argument_list|)
-DECL|method|onDownload (ClickEvent e)
+DECL|method|onDownload (@uppressWarningsR) ClickEvent e)
 name|void
 name|onDownload
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -3988,10 +3998,15 @@ name|UiHandler
 argument_list|(
 literal|"patchSets"
 argument_list|)
-DECL|method|onPatchSets (ClickEvent e)
+DECL|method|onPatchSets (@uppressWarningsR) ClickEvent e)
 name|void
 name|onPatchSets
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4007,10 +4022,15 @@ name|UiHandler
 argument_list|(
 literal|"reply"
 argument_list|)
-DECL|method|onReply (ClickEvent e)
+DECL|method|onReply (@uppressWarningsR) ClickEvent e)
 name|void
 name|onReply
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4089,10 +4109,15 @@ name|UiHandler
 argument_list|(
 literal|"editMessage"
 argument_list|)
-DECL|method|onEditMessage (ClickEvent e)
+DECL|method|onEditMessage (@uppressWarningsR) ClickEvent e)
 name|void
 name|onEditMessage
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4108,10 +4133,15 @@ name|UiHandler
 argument_list|(
 literal|"openAll"
 argument_list|)
-DECL|method|onOpenAll (ClickEvent e)
+DECL|method|onOpenAll (@uppressWarningsR) ClickEvent e)
 name|void
 name|onOpenAll
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4127,10 +4157,15 @@ name|UiHandler
 argument_list|(
 literal|"editMode"
 argument_list|)
-DECL|method|onEditMode (ClickEvent e)
+DECL|method|onEditMode (@uppressWarningsR) ClickEvent e)
 name|void
 name|onEditMode
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4173,10 +4208,15 @@ name|UiHandler
 argument_list|(
 literal|"reviewMode"
 argument_list|)
-DECL|method|onReviewMode (ClickEvent e)
+DECL|method|onReviewMode (@uppressWarningsR) ClickEvent e)
 name|void
 name|onReviewMode
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4219,10 +4259,15 @@ name|UiHandler
 argument_list|(
 literal|"addFile"
 argument_list|)
-DECL|method|onAddFile (ClickEvent e)
+DECL|method|onAddFile (@uppressWarningsR) ClickEvent e)
 name|void
 name|onAddFile
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4286,10 +4331,15 @@ name|UiHandler
 argument_list|(
 literal|"expandAll"
 argument_list|)
-DECL|method|onExpandAll (ClickEvent e)
+DECL|method|onExpandAll (@uppressWarningsR) ClickEvent e)
 name|void
 name|onExpandAll
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4355,10 +4405,15 @@ name|UiHandler
 argument_list|(
 literal|"collapseAll"
 argument_list|)
-DECL|method|onCollapseAll (ClickEvent e)
+DECL|method|onCollapseAll (@uppressWarningsR) ClickEvent e)
 name|void
 name|onCollapseAll
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -4424,10 +4479,15 @@ name|UiHandler
 argument_list|(
 literal|"diffBase"
 argument_list|)
-DECL|method|onChangeRevision (ChangeEvent e)
+DECL|method|onChangeRevision (@uppressWarningsR) ChangeEvent e)
 name|void
 name|onChangeRevision
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ChangeEvent
 name|e
 parameter_list|)

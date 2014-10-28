@@ -870,10 +870,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteSection"
 argument_list|)
-DECL|method|onDeleteHover (MouseOverEvent event)
+DECL|method|onDeleteHover (@uppressWarningsR) MouseOverEvent event)
 name|void
 name|onDeleteHover
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|MouseOverEvent
 name|event
 parameter_list|)
@@ -899,10 +904,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteSection"
 argument_list|)
-DECL|method|onDeleteNonHover (MouseOutEvent event)
+DECL|method|onDeleteNonHover (@uppressWarningsR) MouseOutEvent event)
 name|void
 name|onDeleteNonHover
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|MouseOutEvent
 name|event
 parameter_list|)
@@ -928,10 +938,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteSection"
 argument_list|)
-DECL|method|onDeleteSection (ClickEvent event)
+DECL|method|onDeleteSection (@uppressWarningsR) ClickEvent event)
 name|void
 name|onDeleteSection
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1056,10 +1071,15 @@ name|UiHandler
 argument_list|(
 literal|"undoDelete"
 argument_list|)
-DECL|method|onUndoDelete (ClickEvent event)
+DECL|method|onUndoDelete (@uppressWarningsR) ClickEvent event)
 name|void
 name|onUndoDelete
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)

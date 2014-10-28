@@ -1116,10 +1116,15 @@ name|UiHandler
 argument_list|(
 literal|"edit"
 argument_list|)
-DECL|method|onEdit (ClickEvent event)
+DECL|method|onEdit (@uppressWarningsR) ClickEvent event)
 name|void
 name|onEdit
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1270,10 +1275,15 @@ block|,
 literal|"cancel2"
 block|}
 argument_list|)
-DECL|method|onCancel (ClickEvent event)
+DECL|method|onCancel (@uppressWarningsR) ClickEvent event)
 name|void
 name|onCancel
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1297,10 +1307,15 @@ name|UiHandler
 argument_list|(
 literal|"commit"
 argument_list|)
-DECL|method|onCommit (ClickEvent event)
+DECL|method|onCommit (@uppressWarningsR) ClickEvent event)
 name|void
 name|onCommit
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)
@@ -1759,10 +1774,15 @@ name|UiHandler
 argument_list|(
 literal|"review"
 argument_list|)
-DECL|method|onReview (ClickEvent event)
+DECL|method|onReview (@uppressWarningsR) ClickEvent event)
 name|void
 name|onReview
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|event
 parameter_list|)

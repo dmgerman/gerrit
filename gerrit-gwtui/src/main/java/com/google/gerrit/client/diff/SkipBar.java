@@ -1123,10 +1123,15 @@ name|UiHandler
 argument_list|(
 literal|"skipNum"
 argument_list|)
-DECL|method|onExpandAll (ClickEvent e)
+DECL|method|onExpandAll (@uppressWarningsR) ClickEvent e)
 name|void
 name|onExpandAll
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1185,10 +1190,15 @@ name|UiHandler
 argument_list|(
 literal|"upArrow"
 argument_list|)
-DECL|method|onExpandBefore (ClickEvent e)
+DECL|method|onExpandBefore (@uppressWarningsR) ClickEvent e)
 name|void
 name|onExpandBefore
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1209,10 +1219,15 @@ name|UiHandler
 argument_list|(
 literal|"downArrow"
 argument_list|)
-DECL|method|onExpandAfter (ClickEvent e)
+DECL|method|onExpandAfter (@uppressWarningsR) ClickEvent e)
 name|void
 name|onExpandAfter
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

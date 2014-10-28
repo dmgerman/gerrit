@@ -341,7 +341,7 @@ name|obj
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Creates a value to store, returns null by default. */
+comment|/**    * Creates a value to store, returns null by default.    *    * @param engine Prolog engine.    * @return new value.    */
 DECL|method|createValue (Prolog engine)
 specifier|protected
 name|T
