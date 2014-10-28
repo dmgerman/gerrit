@@ -144,20 +144,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -178,16 +164,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|GetDiffPreferencesIT
 specifier|public
@@ -204,7 +180,7 @@ name|void
 name|getDiffPreferencesOfNonExistingAccount_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -232,9 +208,7 @@ name|void
 name|getDiffPreferences
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|OrmException
+name|Exception
 block|{
 name|RestResponse
 name|r

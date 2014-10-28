@@ -190,16 +190,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -222,7 +212,7 @@ name|void
 name|listTasks
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -364,7 +354,7 @@ name|void
 name|listTasksWithoutViewQueueCapability
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r

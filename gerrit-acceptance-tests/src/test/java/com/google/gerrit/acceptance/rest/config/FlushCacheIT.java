@@ -312,7 +312,7 @@ name|void
 name|flushCache
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -426,7 +426,7 @@ name|void
 name|flushCache_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -459,7 +459,7 @@ name|void
 name|flushCache_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -492,7 +492,7 @@ name|void
 name|flushCacheWithGerritPrefix
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -525,7 +525,7 @@ name|void
 name|flushWebSessionsCache
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -558,7 +558,7 @@ name|void
 name|flushWebSessionsCache_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ProjectConfig
 name|cfg

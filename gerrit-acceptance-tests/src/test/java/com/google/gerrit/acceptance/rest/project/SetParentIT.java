@@ -186,18 +186,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jcraft
-operator|.
-name|jsch
-operator|.
-name|JSchException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -215,16 +203,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -251,9 +229,7 @@ name|void
 name|setParent_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|String
 name|parent
@@ -319,9 +295,7 @@ name|void
 name|setParent
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|String
 name|parent
@@ -445,7 +419,7 @@ name|void
 name|setParentForAllProjects_Conflict
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -498,9 +472,7 @@ name|void
 name|setInvalidParent_Conflict
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -667,7 +639,7 @@ name|void
 name|setNonExistingParent_UnprocessibleEntity
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r

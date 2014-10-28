@@ -242,16 +242,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|DeleteBranchIT
 specifier|public
@@ -320,7 +310,7 @@ name|void
 name|deleteBranch_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -370,7 +360,7 @@ name|void
 name|deleteBranchByAdmin
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r

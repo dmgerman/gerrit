@@ -221,7 +221,7 @@ name|void
 name|testGetGroup
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|AccountGroup
 name|adminGroup

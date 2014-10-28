@@ -288,7 +288,7 @@ name|void
 name|createProjectFoo
 parameter_list|()
 throws|throws
-name|RestApiException
+name|Exception
 block|{
 name|String
 name|name
@@ -334,7 +334,7 @@ name|void
 name|createProjectFooBar
 parameter_list|()
 throws|throws
-name|RestApiException
+name|Exception
 block|{
 name|ProjectInput
 name|in
@@ -380,7 +380,7 @@ name|void
 name|createProjectDuplicate
 parameter_list|()
 throws|throws
-name|RestApiException
+name|Exception
 block|{
 name|ProjectInput
 name|in

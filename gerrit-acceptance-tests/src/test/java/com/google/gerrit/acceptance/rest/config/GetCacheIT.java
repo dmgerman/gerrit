@@ -202,16 +202,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|GetCacheIT
 specifier|public
@@ -228,7 +218,7 @@ name|void
 name|getCache
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -443,7 +433,7 @@ name|void
 name|getCache_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -476,7 +466,7 @@ name|void
 name|getCache_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -509,7 +499,7 @@ name|void
 name|getCacheWithGerritPrefix
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r

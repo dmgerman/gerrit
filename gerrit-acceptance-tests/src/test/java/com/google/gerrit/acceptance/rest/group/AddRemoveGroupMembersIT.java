@@ -648,7 +648,7 @@ name|void
 name|addToNonExistingGroup_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -674,7 +674,7 @@ name|void
 name|removeFromNonExistingGroup_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -786,7 +786,7 @@ name|void
 name|addExistingMember_OK
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(

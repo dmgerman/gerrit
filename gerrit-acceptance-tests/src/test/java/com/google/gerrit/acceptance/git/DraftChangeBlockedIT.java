@@ -194,36 +194,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|api
-operator|.
-name|errors
-operator|.
-name|GitAPIException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -322,11 +292,7 @@ name|void
 name|testPushDraftChange_Blocked
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|OrmException
-throws|,
-name|IOException
+name|Exception
 block|{
 comment|// create draft by pushing to 'refs/drafts/'
 name|PushOneCommit
@@ -355,11 +321,7 @@ name|void
 name|testPushDraftChangeMagic_Blocked
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|OrmException
-throws|,
-name|IOException
+name|Exception
 block|{
 comment|// create draft by using 'draft' option
 name|PushOneCommit
