@@ -10210,6 +10210,11 @@ name|pending
 operator|.
 name|size
 argument_list|()
+operator|+
+name|newChanges
+operator|.
+name|size
+argument_list|()
 operator|>
 name|maxBatchChanges
 condition|)
