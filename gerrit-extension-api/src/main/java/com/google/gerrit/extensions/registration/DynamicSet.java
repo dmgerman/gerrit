@@ -634,6 +634,29 @@ name|base
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|DynamicSet ()
+specifier|public
+name|DynamicSet
+parameter_list|()
+block|{
+name|this
+argument_list|(
+name|Collections
+operator|.
+expr|<
+name|AtomicReference
+argument_list|<
+name|Provider
+argument_list|<
+name|T
+argument_list|>
+argument_list|>
+operator|>
+name|emptySet
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|iterator ()
