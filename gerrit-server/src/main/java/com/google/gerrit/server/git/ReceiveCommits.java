@@ -15379,8 +15379,6 @@ operator|.
 name|Key
 argument_list|,
 name|Change
-operator|.
-name|Id
 argument_list|>
 name|byKey
 init|=
@@ -15517,8 +15515,6 @@ expr_stmt|;
 block|}
 specifier|final
 name|Change
-operator|.
-name|Id
 name|onto
 init|=
 name|byKey
@@ -15552,6 +15548,9 @@ operator|new
 name|ReplaceRequest
 argument_list|(
 name|onto
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|c
 argument_list|,
@@ -15564,15 +15563,7 @@ name|req
 operator|.
 name|change
 operator|=
-name|db
-operator|.
-name|changes
-argument_list|()
-operator|.
-name|get
-argument_list|(
 name|onto
-argument_list|)
 expr_stmt|;
 name|toClose
 operator|.
@@ -16069,8 +16060,6 @@ operator|.
 name|Key
 argument_list|,
 name|Change
-operator|.
-name|Id
 argument_list|>
 name|openChangesByKey
 parameter_list|(
@@ -16090,8 +16079,6 @@ operator|.
 name|Key
 argument_list|,
 name|Change
-operator|.
-name|Id
 argument_list|>
 name|r
 init|=
@@ -16126,9 +16113,6 @@ name|getKey
 argument_list|()
 argument_list|,
 name|c
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
