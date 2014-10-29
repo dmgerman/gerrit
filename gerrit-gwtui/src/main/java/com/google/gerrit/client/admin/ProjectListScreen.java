@@ -1705,6 +1705,13 @@ name|a
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|webLinks
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|WebLinkInfo
@@ -1723,6 +1730,7 @@ name|toAnchor
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
