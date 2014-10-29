@@ -862,7 +862,7 @@ condition|)
 block|{
 name|deleteDraftChange
 argument_list|(
-name|patchSetId
+name|change
 argument_list|)
 expr_stmt|;
 block|}
@@ -915,15 +915,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|deleteDraftChange (PatchSet.Id patchSetId)
+DECL|method|deleteDraftChange (Change change)
 specifier|private
 name|void
 name|deleteDraftChange
 parameter_list|(
-name|PatchSet
-operator|.
-name|Id
-name|patchSetId
+name|Change
+name|change
 parameter_list|)
 throws|throws
 name|OrmException
@@ -938,7 +936,7 @@ name|changeUtil
 operator|.
 name|deleteDraftChange
 argument_list|(
-name|patchSetId
+name|change
 argument_list|)
 expr_stmt|;
 block|}
