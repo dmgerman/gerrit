@@ -378,7 +378,7 @@ name|void
 name|flushAll
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -500,7 +500,7 @@ name|void
 name|flushAll_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -541,7 +541,7 @@ name|void
 name|flushAll_BadRequest
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -589,7 +589,7 @@ name|void
 name|flush
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -800,7 +800,7 @@ name|void
 name|flush_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -848,7 +848,7 @@ name|void
 name|flush_BadRequest
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -889,7 +889,7 @@ name|void
 name|flush_UnprocessableEntity
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -1025,7 +1025,7 @@ name|void
 name|flushWebSessions_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|ProjectConfig
 name|cfg

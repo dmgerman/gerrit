@@ -226,18 +226,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jcraft
-operator|.
-name|jsch
-operator|.
-name|JSchException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -329,11 +317,7 @@ name|void
 name|noConflictingChanges
 parameter_list|()
 throws|throws
-name|JSchException
-throws|,
-name|IOException
-throws|,
-name|GitAPIException
+name|Exception
 block|{
 name|PushOneCommit
 operator|.
@@ -384,11 +368,7 @@ name|void
 name|conflictingChanges
 parameter_list|()
 throws|throws
-name|JSchException
-throws|,
-name|IOException
-throws|,
-name|GitAPIException
+name|Exception
 block|{
 name|PushOneCommit
 operator|.

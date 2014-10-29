@@ -368,16 +368,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
 DECL|class|GroupPropertiesIT
 specifier|public
@@ -401,7 +391,7 @@ name|void
 name|testGroupName
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|AccountGroup
 operator|.
@@ -718,7 +708,7 @@ name|void
 name|testGroupDescription
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|AccountGroup
 operator|.
@@ -1011,7 +1001,7 @@ name|void
 name|testGroupOptions
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|AccountGroup
 operator|.
@@ -1224,7 +1214,7 @@ name|void
 name|testGroupOwner
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|AccountGroup
 operator|.

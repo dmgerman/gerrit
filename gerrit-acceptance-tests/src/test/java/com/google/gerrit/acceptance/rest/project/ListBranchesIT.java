@@ -208,18 +208,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jcraft
-operator|.
-name|jsch
-operator|.
-name|JSchException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -227,22 +215,6 @@ operator|.
 name|http
 operator|.
 name|HttpStatus
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|api
-operator|.
-name|errors
-operator|.
-name|GitAPIException
 import|;
 end_import
 
@@ -302,7 +274,7 @@ name|void
 name|listBranchesOfNonExistingProject_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -370,9 +342,7 @@ name|void
 name|listBranchesOfEmptyProject
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|Project
 operator|.
@@ -473,9 +443,7 @@ name|void
 name|listBranches
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|GitAPIException
+name|Exception
 block|{
 name|pushTo
 argument_list|(

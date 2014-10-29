@@ -379,7 +379,7 @@ name|void
 name|listOneGroupMember
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(

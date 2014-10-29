@@ -262,16 +262,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Arrays
@@ -314,7 +304,7 @@ name|void
 name|listCaches
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -574,7 +564,7 @@ name|void
 name|listCaches_Forbidden
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -607,7 +597,7 @@ name|void
 name|listCacheNames
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -704,7 +694,7 @@ name|void
 name|listCacheNamesTextList
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -810,7 +800,7 @@ name|void
 name|listCaches_BadRequest
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r

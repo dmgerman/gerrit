@@ -222,7 +222,7 @@ name|void
 name|getNonExistingAccount_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -250,7 +250,7 @@ name|void
 name|getAccount
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 comment|// by formatted string
 name|testGetAccount

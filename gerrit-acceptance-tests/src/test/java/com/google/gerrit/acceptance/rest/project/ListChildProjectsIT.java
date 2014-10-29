@@ -204,18 +204,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jcraft
-operator|.
-name|jsch
-operator|.
-name|JSchException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -282,7 +270,7 @@ name|void
 name|listChildrenOfNonExistingProject_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -308,7 +296,7 @@ name|void
 name|listNoChildren
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|RestResponse
 name|r
@@ -368,9 +356,7 @@ name|void
 name|listChildren
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|Project
 operator|.
@@ -503,9 +489,7 @@ name|void
 name|listChildrenRecursively
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|Project
 operator|.

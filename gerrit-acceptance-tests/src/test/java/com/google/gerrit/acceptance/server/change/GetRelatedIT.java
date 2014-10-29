@@ -346,22 +346,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|api
-operator|.
-name|errors
-operator|.
-name|GitAPIException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
@@ -418,10 +402,6 @@ name|void
 name|getRelatedNoResult
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
-throws|,
 name|Exception
 block|{
 name|PushOneCommit
@@ -486,10 +466,6 @@ name|void
 name|getRelatedLinear
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
-throws|,
 name|Exception
 block|{
 name|add
@@ -646,10 +622,6 @@ name|void
 name|getRelatedReorder
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
-throws|,
 name|Exception
 block|{
 comment|// Create two commits and push.
@@ -975,10 +947,6 @@ name|void
 name|getRelatedReorderAndExtend
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
-throws|,
 name|Exception
 block|{
 comment|// Create two commits and push.

@@ -192,18 +192,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jcraft
-operator|.
-name|jsch
-operator|.
-name|JSchException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -250,7 +238,7 @@ name|void
 name|getNonExistingChildProject_NotFound
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|assertEquals
 argument_list|(
@@ -283,9 +271,7 @@ name|void
 name|getNonChildProject_NotFound
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|SshSession
 name|sshSession
@@ -385,9 +371,7 @@ name|void
 name|getChildProject
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|SshSession
 name|sshSession
@@ -502,9 +486,7 @@ name|void
 name|getGrandChildProject_NotFound
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|SshSession
 name|sshSession
@@ -606,9 +588,7 @@ name|void
 name|getGrandChildProjectWithRecursiveFlag
 parameter_list|()
 throws|throws
-name|IOException
-throws|,
-name|JSchException
+name|Exception
 block|{
 name|SshSession
 name|sshSession
