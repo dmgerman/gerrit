@@ -168,16 +168,6 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|ServletContext
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
 name|http
 operator|.
 name|HttpServlet
@@ -243,13 +233,9 @@ name|compressed
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|LegacyGerritServlet (final ServletContext servletContext)
+DECL|method|LegacyGerritServlet ()
 name|LegacyGerritServlet
-parameter_list|(
-specifier|final
-name|ServletContext
-name|servletContext
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{

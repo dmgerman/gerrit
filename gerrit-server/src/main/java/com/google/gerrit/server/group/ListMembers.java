@@ -554,8 +554,6 @@ name|AccountGroup
 name|group
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
-throws|,
 name|OrmException
 block|{
 return|return
@@ -582,8 +580,6 @@ name|UUID
 name|groupId
 parameter_list|)
 throws|throws
-name|MethodNotAllowedException
-throws|,
 name|OrmException
 block|{
 specifier|final

@@ -324,6 +324,8 @@ argument_list|<
 name|T
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|onFailure (final Throwable caught)
 specifier|public
 name|void

@@ -513,8 +513,6 @@ specifier|final
 name|AuditService
 name|auditService
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|this
 operator|.

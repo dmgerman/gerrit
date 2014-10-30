@@ -227,6 +227,8 @@ name|stdout
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|parseCommandLine ()
 specifier|protected
 name|void

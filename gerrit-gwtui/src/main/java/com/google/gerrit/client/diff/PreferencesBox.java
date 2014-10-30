@@ -1541,10 +1541,15 @@ name|UiHandler
 argument_list|(
 literal|"ignoreWhitespace"
 argument_list|)
-DECL|method|onIgnoreWhitespace (ChangeEvent e)
+DECL|method|onIgnoreWhitespace (@uppressWarningsR) ChangeEvent e)
 name|void
 name|onIgnoreWhitespace
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ChangeEvent
 name|e
 parameter_list|)
@@ -2509,10 +2514,15 @@ name|UiHandler
 argument_list|(
 literal|"mode"
 argument_list|)
-DECL|method|onMode (ChangeEvent e)
+DECL|method|onMode (@uppressWarningsR) ChangeEvent e)
 name|void
 name|onMode
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ChangeEvent
 name|e
 parameter_list|)
@@ -2780,10 +2790,15 @@ name|UiHandler
 argument_list|(
 literal|"theme"
 argument_list|)
-DECL|method|onTheme (ChangeEvent e)
+DECL|method|onTheme (@uppressWarningsR) ChangeEvent e)
 name|void
 name|onTheme
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ChangeEvent
 name|e
 parameter_list|)
@@ -2892,10 +2907,15 @@ name|UiHandler
 argument_list|(
 literal|"apply"
 argument_list|)
-DECL|method|onApply (ClickEvent e)
+DECL|method|onApply (@uppressWarningsR) ClickEvent e)
 name|void
 name|onApply
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -2909,10 +2929,15 @@ name|UiHandler
 argument_list|(
 literal|"save"
 argument_list|)
-DECL|method|onSave (ClickEvent e)
+DECL|method|onSave (@uppressWarningsR) ClickEvent e)
 name|void
 name|onSave
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

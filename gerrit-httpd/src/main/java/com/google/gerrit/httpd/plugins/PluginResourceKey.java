@@ -146,6 +146,8 @@ operator|=
 name|r
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|weigh ()
 specifier|public
 name|int

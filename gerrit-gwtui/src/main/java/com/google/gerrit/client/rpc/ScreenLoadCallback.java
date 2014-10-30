@@ -179,6 +179,8 @@ operator|=
 name|s
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|onSuccess (final T result)
 specifier|public
 specifier|final

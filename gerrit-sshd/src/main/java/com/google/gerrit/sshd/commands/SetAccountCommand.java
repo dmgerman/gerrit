@@ -1425,8 +1425,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 throws|,
-name|UnloggedFailure
-throws|,
 name|OrmException
 throws|,
 name|IOException
@@ -1766,8 +1764,6 @@ name|String
 name|email
 parameter_list|)
 throws|throws
-name|UnloggedFailure
-throws|,
 name|RestApiException
 throws|,
 name|OrmException

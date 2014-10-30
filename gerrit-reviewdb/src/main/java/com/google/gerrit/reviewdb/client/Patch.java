@@ -367,6 +367,8 @@ operator|=
 name|c
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCode ()
 specifier|public
 name|char
@@ -493,6 +495,8 @@ operator|=
 name|c
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCode ()
 specifier|public
 name|char

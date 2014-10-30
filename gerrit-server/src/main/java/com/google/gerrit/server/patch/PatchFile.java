@@ -432,8 +432,6 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|repo
-argument_list|,
 name|reader
 argument_list|,
 name|patchList
@@ -449,8 +447,6 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|repo
-argument_list|,
 name|reader
 argument_list|,
 name|bCommit

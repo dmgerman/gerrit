@@ -104,22 +104,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|config
-operator|.
-name|SitePaths
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|index
 operator|.
 name|ChangeSchemas
@@ -424,7 +408,7 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getIndex (LuceneChangeIndex.Factory factory, SitePaths sitePaths)
+DECL|method|getIndex (LuceneChangeIndex.Factory factory)
 name|LuceneChangeIndex
 name|getIndex
 parameter_list|(
@@ -432,9 +416,6 @@ name|LuceneChangeIndex
 operator|.
 name|Factory
 name|factory
-parameter_list|,
-name|SitePaths
-name|sitePaths
 parameter_list|)
 block|{
 name|Schema

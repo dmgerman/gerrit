@@ -1495,10 +1495,15 @@ name|UiHandler
 argument_list|(
 literal|"icon"
 argument_list|)
-DECL|method|onIconClick (ClickEvent e)
+DECL|method|onIconClick (@uppressWarningsR) ClickEvent e)
 name|void
 name|onIconClick
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

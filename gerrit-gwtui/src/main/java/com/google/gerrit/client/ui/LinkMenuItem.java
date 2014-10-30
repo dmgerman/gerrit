@@ -226,6 +226,8 @@ operator|=
 name|bar
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|onScreenLoad (ScreenLoadEvent event)
 specifier|public
 name|void

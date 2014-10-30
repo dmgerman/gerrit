@@ -465,10 +465,15 @@ name|UiHandler
 argument_list|(
 literal|"show"
 argument_list|)
-DECL|method|onShow (ClickEvent e)
+DECL|method|onShow (@uppressWarningsR) ClickEvent e)
 name|void
 name|onShow
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -482,10 +487,15 @@ name|UiHandler
 argument_list|(
 literal|"ignore"
 argument_list|)
-DECL|method|onIgnore (ClickEvent e)
+DECL|method|onIgnore (@uppressWarningsR) ClickEvent e)
 name|void
 name|onIgnore
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

@@ -559,10 +559,6 @@ return|return
 operator|new
 name|RegexPathPredicate
 argument_list|(
-name|ChangeQueryBuilder
-operator|.
-name|FIELD_PATH
-argument_list|,
 name|pattern
 argument_list|)
 return|;

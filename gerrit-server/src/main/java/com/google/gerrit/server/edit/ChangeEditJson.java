@@ -352,16 +352,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Map
@@ -457,8 +447,6 @@ parameter_list|,
 name|boolean
 name|downloadCommands
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|EditInfo
 name|out
@@ -531,8 +519,6 @@ parameter_list|(
 name|RevCommit
 name|editCommit
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|CommitInfo
 name|commit

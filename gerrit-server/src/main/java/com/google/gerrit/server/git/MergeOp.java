@@ -3246,8 +3246,6 @@ name|submitted
 parameter_list|)
 throws|throws
 name|MergeException
-throws|,
-name|NoSuchChangeException
 block|{
 name|ListMultimap
 argument_list|<
@@ -3923,8 +3921,6 @@ block|}
 name|SubmitType
 name|submitType
 decl_stmt|;
-try|try
-block|{
 name|submitType
 operator|=
 name|getSubmitType
@@ -3937,23 +3933,6 @@ argument_list|,
 name|ps
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|OrmException
-name|err
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|MergeException
-argument_list|(
-literal|"Cannot check submit type"
-argument_list|,
-name|err
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 name|submitType
@@ -4034,8 +4013,6 @@ parameter_list|,
 name|PatchSet
 name|ps
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 try|try
 block|{
@@ -5717,8 +5694,6 @@ throws|throws
 name|OrmException
 throws|,
 name|IOException
-throws|,
-name|NoSuchChangeException
 block|{
 name|logDebug
 argument_list|(
@@ -6340,8 +6315,6 @@ name|ChangeMessage
 name|msg
 parameter_list|)
 throws|throws
-name|OrmException
-throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException

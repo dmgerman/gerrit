@@ -578,16 +578,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
-operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Comparator
@@ -736,6 +726,8 @@ name|PatchLineComment
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -1888,21 +1880,6 @@ operator|.
 name|submitRecords
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ParseException
-name|e1
-parameter_list|)
-block|{
-comment|// TODO(yyonas): figure out how to handle this exception
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|e1
-argument_list|)
-throw|;
 block|}
 finally|finally
 block|{

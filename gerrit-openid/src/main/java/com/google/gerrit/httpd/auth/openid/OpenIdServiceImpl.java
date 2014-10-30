@@ -674,16 +674,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URL
 import|;
 end_import
@@ -974,10 +964,6 @@ parameter_list|,
 name|ProxyProperties
 name|proxyProperties
 parameter_list|)
-throws|throws
-name|ConsumerException
-throws|,
-name|MalformedURLException
 block|{
 if|if
 condition|(

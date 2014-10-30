@@ -232,6 +232,8 @@ name|String
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|render
@@ -244,6 +246,8 @@ return|return
 name|ref
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|render
@@ -287,6 +291,8 @@ name|String
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|parse

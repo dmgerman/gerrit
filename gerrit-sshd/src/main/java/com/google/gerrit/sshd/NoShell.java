@@ -402,6 +402,8 @@ operator|=
 name|shell
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|create ()
 specifier|public
 name|Command
@@ -513,6 +515,8 @@ operator|=
 name|sshScope
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setInputStream (final InputStream in)
 specifier|public
 name|void
@@ -530,6 +534,8 @@ operator|=
 name|in
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setOutputStream (final OutputStream out)
 specifier|public
 name|void
@@ -547,6 +553,8 @@ operator|=
 name|out
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setErrorStream (final OutputStream err)
 specifier|public
 name|void
@@ -564,6 +572,8 @@ operator|=
 name|err
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setExitCallback (final ExitCallback callback)
 specifier|public
 name|void
@@ -581,6 +591,8 @@ operator|=
 name|callback
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setSession (final ServerSession session)
 specifier|public
 name|void
@@ -619,6 +631,8 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|start (final Environment env)
 specifier|public
 name|void
@@ -707,6 +721,8 @@ literal|127
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|destroy ()
 specifier|public
 name|void

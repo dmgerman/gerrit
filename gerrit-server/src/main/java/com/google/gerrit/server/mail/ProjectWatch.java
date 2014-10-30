@@ -750,14 +750,6 @@ argument_list|(
 name|matching
 argument_list|,
 name|nc
-argument_list|,
-name|state
-operator|.
-name|getProject
-argument_list|()
-operator|.
-name|getNameKey
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -916,7 +908,7 @@ return|;
 block|}
 block|}
 block|}
-DECL|method|add (Watchers matching, NotifyConfig nc, Project.NameKey project)
+DECL|method|add (Watchers matching, NotifyConfig nc)
 specifier|private
 name|void
 name|add
@@ -926,11 +918,6 @@ name|matching
 parameter_list|,
 name|NotifyConfig
 name|nc
-parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
 parameter_list|)
 throws|throws
 name|OrmException

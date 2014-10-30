@@ -108,22 +108,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|SystemConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -228,7 +212,7 @@ name|downloadCommands
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DownloadConfig (@erritServerConfig final Config cfg, final SystemConfig s)
+DECL|method|DownloadConfig (@erritServerConfig final Config cfg)
 name|DownloadConfig
 parameter_list|(
 annotation|@
@@ -236,10 +220,6 @@ name|GerritServerConfig
 specifier|final
 name|Config
 name|cfg
-parameter_list|,
-specifier|final
-name|SystemConfig
-name|s
 parameter_list|)
 block|{
 name|List

@@ -558,10 +558,15 @@ name|UiHandler
 argument_list|(
 literal|"keepOld"
 argument_list|)
-DECL|method|onKeepOld (ClickEvent e)
+DECL|method|onKeepOld (@uppressWarningsR) ClickEvent e)
 name|void
 name|onKeepOld
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -591,10 +596,15 @@ name|UiHandler
 argument_list|(
 literal|"keepNew"
 argument_list|)
-DECL|method|onKeepNew (ClickEvent e)
+DECL|method|onKeepNew (@uppressWarningsR) ClickEvent e)
 name|void
 name|onKeepNew
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

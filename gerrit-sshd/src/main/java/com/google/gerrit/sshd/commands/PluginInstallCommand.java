@@ -355,10 +355,15 @@ name|name
 operator|=
 literal|"-"
 argument_list|)
-DECL|method|useInput (boolean on)
+DECL|method|useInput (@uppressWarningsR) boolean on)
 name|void
 name|useInput
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|on
 parameter_list|)

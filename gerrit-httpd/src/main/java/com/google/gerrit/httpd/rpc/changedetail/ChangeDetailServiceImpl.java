@@ -192,6 +192,8 @@ operator|=
 name|patchSetDetail
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|patchSetDetail (PatchSet.Id id, AsyncCallback<PatchSetDetail> callback)
 specifier|public
 name|void
@@ -221,6 +223,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|patchSetDetail2 (PatchSet.Id baseId, PatchSet.Id id, AccountDiffPreference diffPrefs, AsyncCallback<PatchSetDetail> callback)
 specifier|public
 name|void

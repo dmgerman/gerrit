@@ -737,6 +737,8 @@ name|trim
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String

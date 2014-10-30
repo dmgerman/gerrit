@@ -1027,6 +1027,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/** Invalidate the cached information about the given project. */
+annotation|@
+name|Override
 DECL|method|evict (final Project.NameKey p)
 specifier|public
 name|void

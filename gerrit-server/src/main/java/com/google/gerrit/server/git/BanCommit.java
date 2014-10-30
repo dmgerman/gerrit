@@ -656,10 +656,6 @@ name|PermissionDeniedException
 throws|,
 name|IOException
 throws|,
-name|InterruptedException
-throws|,
-name|MergeException
-throws|,
 name|ConcurrentRefUpdateException
 block|{
 if|if
@@ -787,11 +783,6 @@ operator|.
 name|notACommit
 argument_list|(
 name|commitToBan
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 continue|continue;

@@ -190,7 +190,7 @@ name|commitId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|notACommit (final ObjectId id, final String message)
+DECL|method|notACommit (final ObjectId id)
 specifier|public
 name|void
 name|notACommit
@@ -198,10 +198,6 @@ parameter_list|(
 specifier|final
 name|ObjectId
 name|id
-parameter_list|,
-specifier|final
-name|String
-name|message
 parameter_list|)
 block|{
 name|ignoredObjectIds

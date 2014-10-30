@@ -1064,8 +1064,6 @@ name|newCommitMessage
 argument_list|(
 name|cmp
 argument_list|,
-name|repo
-argument_list|,
 name|reader
 argument_list|,
 literal|null
@@ -1295,11 +1293,8 @@ name|newCommitMessage
 argument_list|(
 name|cmp
 argument_list|,
-name|repo
-argument_list|,
 name|reader
 argument_list|,
-comment|//
 name|againstParent
 condition|?
 literal|null
@@ -1421,7 +1416,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|newCommitMessage (final RawTextComparator cmp, final Repository db, final ObjectReader reader, final RevCommit aCommit, final RevCommit bCommit)
+DECL|method|newCommitMessage (final RawTextComparator cmp, final ObjectReader reader, final RevCommit aCommit, final RevCommit bCommit)
 specifier|private
 name|PatchListEntry
 name|newCommitMessage
@@ -1429,10 +1424,6 @@ parameter_list|(
 specifier|final
 name|RawTextComparator
 name|cmp
-parameter_list|,
-specifier|final
-name|Repository
-name|db
 parameter_list|,
 specifier|final
 name|ObjectReader
@@ -1602,8 +1593,6 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|db
-argument_list|,
 name|reader
 argument_list|,
 name|aCommit
@@ -1620,8 +1609,6 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|db
-argument_list|,
 name|reader
 argument_list|,
 name|bCommit

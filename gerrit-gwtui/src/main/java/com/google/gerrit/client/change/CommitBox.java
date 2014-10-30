@@ -804,10 +804,15 @@ name|UiHandler
 argument_list|(
 literal|"more"
 argument_list|)
-DECL|method|onMore (ClickEvent e)
+DECL|method|onMore (@uppressWarningsR) ClickEvent e)
 name|void
 name|onMore
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

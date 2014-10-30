@@ -285,6 +285,8 @@ name|SubmitInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuccess
@@ -297,6 +299,8 @@ name|redisplay
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onFailure

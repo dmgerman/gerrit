@@ -519,10 +519,10 @@ specifier|private
 name|Injector
 name|httpInjector
 decl_stmt|;
-DECL|field|manager
+DECL|field|serverManager
 specifier|private
 name|LifecycleManager
-name|manager
+name|serverManager
 decl_stmt|;
 DECL|field|reloadableHandles
 specifier|private
@@ -924,6 +924,8 @@ throw|;
 block|}
 block|}
 annotation|@
+name|Override
+annotation|@
 name|Nullable
 DECL|method|getVersion ()
 specifier|public
@@ -952,6 +954,8 @@ name|IMPLEMENTATION_VERSION
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|canReload ()
 name|boolean
 name|canReload
@@ -1037,6 +1041,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|start (PluginGuiceEnvironment env)
 name|void
 name|start
@@ -1095,7 +1101,7 @@ argument_list|(
 name|env
 argument_list|)
 decl_stmt|;
-name|manager
+name|serverManager
 operator|=
 operator|new
 name|LifecycleManager
@@ -1163,7 +1169,7 @@ name|sysModule
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(
@@ -1196,7 +1202,7 @@ operator|.
 name|sysModule
 argument_list|)
 expr_stmt|;
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(
@@ -1279,7 +1285,7 @@ argument_list|(
 name|modules
 argument_list|)
 expr_stmt|;
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(
@@ -1319,7 +1325,7 @@ argument_list|(
 name|modules
 argument_list|)
 expr_stmt|;
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(
@@ -1396,7 +1402,7 @@ argument_list|(
 name|modules
 argument_list|)
 expr_stmt|;
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(
@@ -1436,7 +1442,7 @@ argument_list|(
 name|modules
 argument_list|)
 expr_stmt|;
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(
@@ -1445,7 +1451,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|manager
+name|serverManager
 operator|.
 name|start
 argument_list|()
@@ -1670,6 +1676,8 @@ name|modules
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stop (PluginGuiceEnvironment env)
 name|void
 name|stop
@@ -1680,7 +1688,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|manager
+name|serverManager
 operator|!=
 literal|null
 condition|)
@@ -1697,7 +1705,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|manager
+name|serverManager
 operator|.
 name|stop
 argument_list|()
@@ -1713,7 +1721,7 @@ name|oldContext
 argument_list|)
 expr_stmt|;
 block|}
-name|manager
+name|serverManager
 operator|=
 literal|null
 expr_stmt|;
@@ -1731,6 +1739,8 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getSysInjector ()
 specifier|public
 name|Injector
@@ -1741,6 +1751,8 @@ return|return
 name|sysInjector
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|Nullable
 DECL|method|getSshInjector ()
@@ -1754,6 +1766,8 @@ name|sshInjector
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|Nullable
 DECL|method|getHttpInjector ()
 specifier|public
@@ -1765,6 +1779,8 @@ return|return
 name|httpInjector
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|add (RegistrationHandle handle)
 specifier|public
 name|void
@@ -1776,7 +1792,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|manager
+name|serverManager
 operator|!=
 literal|null
 condition|)
@@ -1817,7 +1833,7 @@ name|handle
 argument_list|)
 expr_stmt|;
 block|}
-name|manager
+name|serverManager
 operator|.
 name|add
 argument_list|(

@@ -167,6 +167,8 @@ argument_list|<
 name|RestoredSender
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|create (Change change)
 name|RestoredSender
 name|create

@@ -238,6 +238,8 @@ block|{}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|fireEvent (GwtEvent<?> event)
 specifier|public
 name|void
@@ -258,6 +260,8 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addValueChangeHandler ( ValueChangeHandler<T> handler)
 specifier|public
 name|HandlerRegistration

@@ -686,10 +686,15 @@ name|UiHandler
 argument_list|(
 literal|"send"
 argument_list|)
-DECL|method|onSend (ClickEvent e)
+DECL|method|onSend (@uppressWarningsR) ClickEvent e)
 name|void
 name|onSend
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

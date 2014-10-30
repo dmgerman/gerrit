@@ -1381,13 +1381,6 @@ literal|null
 condition|)
 block|{
 return|return
-operator|(
-operator|(
-name|List
-argument_list|<
-name|BranchInfo
-argument_list|>
-operator|)
 name|Lists
 operator|.
 name|newArrayList
@@ -1405,6 +1398,8 @@ name|BranchInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|apply
@@ -1441,7 +1436,6 @@ block|}
 block|}
 argument_list|)
 argument_list|)
-operator|)
 return|;
 block|}
 elseif|else
@@ -1541,13 +1535,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-operator|(
-operator|(
-name|List
-argument_list|<
-name|BranchInfo
-argument_list|>
-operator|)
 name|Lists
 operator|.
 name|newArrayList
@@ -1565,6 +1552,8 @@ name|BranchInfo
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|apply
@@ -1587,7 +1576,6 @@ block|}
 block|}
 argument_list|)
 argument_list|)
-operator|)
 return|;
 block|}
 catch|catch

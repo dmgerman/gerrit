@@ -389,6 +389,8 @@ operator|=
 name|changeControlFactory
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final AccountDiffPreference dp, final AsyncCallback<PatchScript> callback)
 specifier|public
 name|void

@@ -811,12 +811,7 @@ operator|!
 name|control
 operator|.
 name|canAddGroup
-argument_list|(
-name|d
-operator|.
-name|getGroupUUID
 argument_list|()
-argument_list|)
 condition|)
 block|{
 throw|throw

@@ -621,6 +621,8 @@ argument_list|)
 return|;
 block|}
 comment|/** Iterate through all entries in an undefined order. */
+annotation|@
+name|Override
 DECL|method|iterator ()
 specifier|public
 name|Iterator

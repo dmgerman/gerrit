@@ -478,6 +478,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|setPluginName (String name)
 specifier|public
 name|void

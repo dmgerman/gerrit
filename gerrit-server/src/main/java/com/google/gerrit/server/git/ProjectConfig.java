@@ -4141,8 +4141,6 @@ parameter_list|(
 name|Config
 name|rc
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Map
 argument_list|<
@@ -7532,6 +7530,8 @@ name|defaultValue
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|error (ValidationError error)
 specifier|public
 name|void

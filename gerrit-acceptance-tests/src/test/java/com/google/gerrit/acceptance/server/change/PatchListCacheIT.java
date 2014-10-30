@@ -354,20 +354,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -1643,8 +1629,6 @@ parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
 throws|,
-name|OrmException
-throws|,
 name|RestApiException
 block|{
 return|return
@@ -1683,8 +1667,6 @@ name|revisionIdB
 parameter_list|)
 throws|throws
 name|PatchListNotAvailableException
-throws|,
-name|OrmException
 block|{
 return|return
 name|patchListCache
@@ -1714,8 +1696,6 @@ parameter_list|,
 name|ObjectId
 name|revisionIdB
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 return|return
 operator|new

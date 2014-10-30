@@ -1568,7 +1568,7 @@ name|cells
 argument_list|)
 return|;
 block|}
-DECL|method|addApprovals (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, PatchSetInfo info, Change change, ChangeControl changeCtl, Map<String, Short> approvals)
+DECL|method|addApprovals (ReviewDb db, ChangeUpdate update, LabelTypes labelTypes, PatchSet ps, PatchSetInfo info, ChangeControl changeCtl, Map<String, Short> approvals)
 specifier|public
 name|void
 name|addApprovals
@@ -1587,9 +1587,6 @@ name|ps
 parameter_list|,
 name|PatchSetInfo
 name|info
-parameter_list|,
-name|Change
-name|change
 parameter_list|,
 name|ChangeControl
 name|changeCtl
@@ -1617,10 +1614,6 @@ block|{
 name|checkApprovals
 argument_list|(
 name|approvals
-argument_list|,
-name|labelTypes
-argument_list|,
-name|change
 argument_list|,
 name|changeCtl
 argument_list|)
@@ -1826,7 +1819,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkApprovals (Map<String, Short> approvals, LabelTypes labelTypes, Change change, ChangeControl changeCtl)
+DECL|method|checkApprovals (Map<String, Short> approvals, ChangeControl changeCtl)
 specifier|private
 specifier|static
 name|void
@@ -1839,12 +1832,6 @@ argument_list|,
 name|Short
 argument_list|>
 name|approvals
-parameter_list|,
-name|LabelTypes
-name|labelTypes
-parameter_list|,
-name|Change
-name|change
 parameter_list|,
 name|ChangeControl
 name|changeCtl

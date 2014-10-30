@@ -1163,8 +1163,6 @@ parameter_list|,
 name|ChangeKind
 name|kind
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|int
 name|n

@@ -1088,6 +1088,8 @@ return|return
 name|basePath
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|openRepository (Project.NameKey name)
 specifier|public
 name|Repository
@@ -1365,6 +1367,8 @@ name|e2
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|createRepository (Project.NameKey name)
 specifier|public
 name|Repository
@@ -1756,6 +1760,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getProjectDescription (final Project.NameKey name)
 specifier|public
 name|String
@@ -1903,6 +1909,8 @@ return|return
 name|description
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setProjectDescription (final Project.NameKey name, final String description)
 specifier|public
 name|void

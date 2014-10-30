@@ -490,6 +490,8 @@ name|PatchLineComment
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -1123,6 +1125,8 @@ literal|"img"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|createFileCommentEditorOnSideA ()
 specifier|protected
 name|void
@@ -1143,6 +1147,8 @@ name|FILE_SIDE_A
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|createFileCommentEditorOnSideB ()
 specifier|protected
 name|void
@@ -2408,8 +2414,6 @@ argument_list|(
 name|fora
 argument_list|,
 name|row
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -2443,8 +2447,6 @@ argument_list|(
 name|forb
 argument_list|,
 name|row
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 name|borderRowOfFileComment
@@ -2556,8 +2558,6 @@ argument_list|(
 name|all
 argument_list|,
 name|row
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -2578,8 +2578,6 @@ argument_list|(
 name|fora
 argument_list|,
 name|row
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -2600,8 +2598,6 @@ argument_list|(
 name|forb
 argument_list|,
 name|row
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -2766,7 +2762,7 @@ operator|.
 name|UNIFIED
 return|;
 block|}
-DECL|method|insert (final List<PatchLineComment> in, int row, boolean expandComment)
+DECL|method|insert (final List<PatchLineComment> in, int row)
 specifier|private
 name|int
 name|insert
@@ -2780,9 +2776,6 @@ name|in
 parameter_list|,
 name|int
 name|row
-parameter_list|,
-name|boolean
-name|expandComment
 parameter_list|)
 block|{
 for|for
@@ -2851,8 +2844,6 @@ name|ci
 operator|.
 name|hasNext
 argument_list|()
-argument_list|,
-name|expandComment
 argument_list|)
 expr_stmt|;
 name|row

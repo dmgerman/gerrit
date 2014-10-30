@@ -484,16 +484,6 @@ name|javax
 operator|.
 name|servlet
 operator|.
-name|ServletContext
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|servlet
-operator|.
 name|ServletException
 import|;
 end_import
@@ -594,7 +584,7 @@ name|headers
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|BecomeAnyAccountLoginServlet (final DynamicItem<WebSession> ws, final SchemaFactory<ReviewDb> sf, final AccountManager am, final ServletContext servletContext, SiteHeaderFooter shf)
+DECL|method|BecomeAnyAccountLoginServlet (final DynamicItem<WebSession> ws, final SchemaFactory<ReviewDb> sf, final AccountManager am, SiteHeaderFooter shf)
 name|BecomeAnyAccountLoginServlet
 parameter_list|(
 specifier|final
@@ -614,10 +604,6 @@ parameter_list|,
 specifier|final
 name|AccountManager
 name|am
-parameter_list|,
-specifier|final
-name|ServletContext
-name|servletContext
 parameter_list|,
 name|SiteHeaderFooter
 name|shf
@@ -737,8 +723,6 @@ name|res
 operator|=
 name|byUserName
 argument_list|(
-name|rsp
-argument_list|,
 name|req
 operator|.
 name|getParameter
@@ -765,8 +749,6 @@ name|res
 operator|=
 name|byPreferredEmail
 argument_list|(
-name|rsp
-argument_list|,
 name|req
 operator|.
 name|getParameter
@@ -793,8 +775,6 @@ name|res
 operator|=
 name|byAccountId
 argument_list|(
-name|rsp
-argument_list|,
 name|req
 operator|.
 name|getParameter
@@ -1470,15 +1450,11 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|byUserName (final HttpServletResponse rsp, final String userName)
+DECL|method|byUserName (final String userName)
 specifier|private
 name|AuthResult
 name|byUserName
 parameter_list|(
-specifier|final
-name|HttpServletResponse
-name|rsp
-parameter_list|,
 specifier|final
 name|String
 name|userName
@@ -1557,15 +1533,11 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|byPreferredEmail (final HttpServletResponse rsp, final String email)
+DECL|method|byPreferredEmail (final String email)
 specifier|private
 name|AuthResult
 name|byPreferredEmail
 parameter_list|(
-specifier|final
-name|HttpServletResponse
-name|rsp
-parameter_list|,
 specifier|final
 name|String
 name|email
@@ -1654,15 +1626,11 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|byAccountId (final HttpServletResponse rsp, final String idStr)
+DECL|method|byAccountId (final String idStr)
 specifier|private
 name|AuthResult
 name|byAccountId
 parameter_list|(
-specifier|final
-name|HttpServletResponse
-name|rsp
-parameter_list|,
 specifier|final
 name|String
 name|idStr

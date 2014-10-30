@@ -2109,8 +2109,6 @@ block|{
 name|checkPreconditions
 argument_list|(
 name|req
-argument_list|,
-name|rsrc
 argument_list|)
 expr_stmt|;
 block|}
@@ -2450,8 +2448,6 @@ expr_stmt|;
 name|checkPreconditions
 argument_list|(
 name|req
-argument_list|,
-name|rsrc
 argument_list|)
 expr_stmt|;
 name|viewData
@@ -3700,16 +3696,13 @@ block|}
 end_function
 
 begin_function
-DECL|method|checkPreconditions (HttpServletRequest req, RestResource rsrc)
+DECL|method|checkPreconditions (HttpServletRequest req)
 specifier|private
 name|void
 name|checkPreconditions
 parameter_list|(
 name|HttpServletRequest
 name|req
-parameter_list|,
-name|RestResource
-name|rsrc
 parameter_list|)
 throws|throws
 name|PreconditionFailedException

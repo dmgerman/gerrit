@@ -534,16 +534,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|List
@@ -1182,8 +1172,6 @@ parameter_list|,
 name|boolean
 name|setDefault
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|DashboardInfo
 name|info
@@ -1614,8 +1602,6 @@ parameter_list|,
 name|String
 name|name
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|this
 operator|.

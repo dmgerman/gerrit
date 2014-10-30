@@ -335,6 +335,8 @@ operator|=
 name|version
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|start ()
 specifier|public
 name|void
@@ -501,6 +503,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|stop ()
 specifier|public
 name|void

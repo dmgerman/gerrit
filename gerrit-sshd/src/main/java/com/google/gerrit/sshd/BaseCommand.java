@@ -794,6 +794,8 @@ name|newReference
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setInputStream (final InputStream in)
 specifier|public
 name|void
@@ -811,6 +813,8 @@ operator|=
 name|in
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setOutputStream (final OutputStream out)
 specifier|public
 name|void
@@ -828,6 +832,8 @@ operator|=
 name|out
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setErrorStream (final OutputStream err)
 specifier|public
 name|void
@@ -845,6 +851,8 @@ operator|=
 name|err
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setExitCallback (final ExitCallback callback)
 specifier|public
 name|void

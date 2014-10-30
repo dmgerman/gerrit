@@ -296,22 +296,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
-operator|.
-name|ChangeNotes
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -609,11 +593,6 @@ name|rsrc
 operator|.
 name|getUserControl
 argument_list|()
-argument_list|,
-name|rsrc
-operator|.
-name|getNotes
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|loader
@@ -669,7 +648,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|format (ReviewerInfo out, ChangeControl ctl, ChangeNotes changeNotes)
+DECL|method|format (ReviewerInfo out, ChangeControl ctl)
 specifier|public
 name|ReviewerInfo
 name|format
@@ -679,9 +658,6 @@ name|out
 parameter_list|,
 name|ChangeControl
 name|ctl
-parameter_list|,
-name|ChangeNotes
-name|changeNotes
 parameter_list|)
 throws|throws
 name|OrmException

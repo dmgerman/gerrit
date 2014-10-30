@@ -2568,8 +2568,6 @@ name|draftsHandling
 parameter_list|)
 throws|throws
 name|OrmException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(

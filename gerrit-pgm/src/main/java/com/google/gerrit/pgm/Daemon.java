@@ -1295,11 +1295,15 @@ name|usage
 operator|=
 literal|"Disable the internal HTTP daemon"
 argument_list|)
-DECL|method|setDisableHttpd (final boolean arg)
+DECL|method|setDisableHttpd (@uppressWarningsR) boolean arg)
 name|void
 name|setDisableHttpd
 parameter_list|(
-specifier|final
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|arg
 parameter_list|)
@@ -1338,11 +1342,15 @@ name|usage
 operator|=
 literal|"Disable the internal SSH daemon"
 argument_list|)
-DECL|method|setDisableSshd (final boolean arg)
+DECL|method|setDisableSshd (@uppressWarningsR) boolean arg)
 name|void
 name|setDisableSshd
 parameter_list|(
-specifier|final
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|arg
 parameter_list|)

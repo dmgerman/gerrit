@@ -679,6 +679,8 @@ name|AccountGroupMember
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -856,12 +858,7 @@ condition|(
 name|control
 operator|.
 name|canSeeGroup
-argument_list|(
-name|m
-operator|.
-name|getIncludeUUID
 argument_list|()
-argument_list|)
 condition|)
 block|{
 name|gic
@@ -896,6 +893,8 @@ name|AccountGroupById
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare

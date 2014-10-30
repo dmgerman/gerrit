@@ -1346,13 +1346,13 @@ specifier|final
 name|Commit
 name|commit
 decl_stmt|;
-DECL|field|subject
+DECL|field|resSubj
 specifier|private
 specifier|final
 name|String
-name|subject
+name|resSubj
 decl_stmt|;
-DECL|method|Result (String ref, PushResult result, Commit commit, String subject)
+DECL|method|Result (String ref, PushResult resSubj, Commit commit, String subject)
 specifier|private
 name|Result
 parameter_list|(
@@ -1360,7 +1360,7 @@ name|String
 name|ref
 parameter_list|,
 name|PushResult
-name|result
+name|resSubj
 parameter_list|,
 name|Commit
 name|commit
@@ -1379,7 +1379,7 @@ name|this
 operator|.
 name|result
 operator|=
-name|result
+name|resSubj
 expr_stmt|;
 name|this
 operator|.
@@ -1389,7 +1389,7 @@ name|commit
 expr_stmt|;
 name|this
 operator|.
-name|subject
+name|resSubj
 operator|=
 name|subject
 expr_stmt|;
@@ -1527,7 +1527,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|subject
+name|resSubj
 argument_list|,
 name|c
 operator|.

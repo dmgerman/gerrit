@@ -168,6 +168,8 @@ name|Id
 argument_list|>
 block|{
 annotation|@
+name|Override
+annotation|@
 name|PrimaryKey
 argument_list|(
 literal|"groupId"

@@ -1652,10 +1652,15 @@ name|UiHandler
 argument_list|(
 literal|"message"
 argument_list|)
-DECL|method|onMessageDoubleClick (DoubleClickEvent e)
+DECL|method|onMessageDoubleClick (@uppressWarningsR) DoubleClickEvent e)
 name|void
 name|onMessageDoubleClick
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|DoubleClickEvent
 name|e
 parameter_list|)
@@ -2300,10 +2305,15 @@ name|UiHandler
 argument_list|(
 literal|"editArea"
 argument_list|)
-DECL|method|onBlur (BlurEvent e)
+DECL|method|onBlur (@uppressWarningsR) BlurEvent e)
 name|void
 name|onBlur
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|BlurEvent
 name|e
 parameter_list|)

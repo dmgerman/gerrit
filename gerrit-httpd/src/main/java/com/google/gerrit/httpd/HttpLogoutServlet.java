@@ -174,22 +174,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|account
-operator|.
-name|AccountManager
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AuthConfig
@@ -344,7 +328,7 @@ name|audit
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AccountManager accountManager, final AuditService audit)
+DECL|method|HttpLogoutServlet (final AuthConfig authConfig, final DynamicItem<WebSession> webSession, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final AuditService audit)
 name|HttpLogoutServlet
 parameter_list|(
 specifier|final
@@ -368,10 +352,6 @@ argument_list|<
 name|String
 argument_list|>
 name|urlProvider
-parameter_list|,
-specifier|final
-name|AccountManager
-name|accountManager
 parameter_list|,
 specifier|final
 name|AuditService

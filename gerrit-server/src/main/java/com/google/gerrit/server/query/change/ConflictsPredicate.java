@@ -869,8 +869,6 @@ name|submitType
 init|=
 name|getSubmitType
 argument_list|(
-name|otherChange
-argument_list|,
 name|object
 argument_list|)
 decl_stmt|;
@@ -1170,9 +1168,6 @@ specifier|private
 name|SubmitType
 name|getSubmitType
 parameter_list|(
-name|Change
-name|change
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|)

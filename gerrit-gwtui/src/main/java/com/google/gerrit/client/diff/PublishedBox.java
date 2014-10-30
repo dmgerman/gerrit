@@ -803,6 +803,8 @@ name|message
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setOpen (boolean open)
 name|void
 name|setOpen

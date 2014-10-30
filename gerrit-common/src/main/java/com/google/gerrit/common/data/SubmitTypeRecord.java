@@ -156,6 +156,8 @@ specifier|public
 name|String
 name|errorMessage
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

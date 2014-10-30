@@ -176,6 +176,8 @@ name|revision
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getWidget ()
 name|Widget
 name|getWidget

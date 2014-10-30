@@ -2500,8 +2500,6 @@ name|Text
 operator|.
 name|forCommit
 argument_list|(
-name|db
-argument_list|,
 name|reader
 argument_list|,
 name|within

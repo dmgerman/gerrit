@@ -247,6 +247,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|listComments (RevisionResource rsrc)
 specifier|protected
 name|Iterable

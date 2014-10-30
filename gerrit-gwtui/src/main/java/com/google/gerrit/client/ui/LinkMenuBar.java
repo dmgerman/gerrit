@@ -521,6 +521,8 @@ name|i
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|onScreenLoad (ScreenLoadEvent event)
 specifier|public
 name|void

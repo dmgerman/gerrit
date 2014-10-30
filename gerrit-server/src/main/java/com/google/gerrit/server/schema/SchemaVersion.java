@@ -614,6 +614,8 @@ operator|new
 name|StatementExecutor
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -823,7 +825,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** Invoke before updateSchema adds new columns/tables. */
+comment|/**    * Invoked before updateSchema adds new columns/tables.    *    * @param db open database handle.    * @throws OrmException if a Gerrit-specific exception occurred.    * @throws SQLException if an underlying SQL exception occurred.    */
 DECL|method|preUpdateSchema (ReviewDb db)
 specifier|protected
 name|void
@@ -907,7 +909,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Invoked between updateSchema (adds new columns/tables) and pruneSchema    * (removes deleted columns/tables).    */
+comment|/**    * Invoked between updateSchema (adds new columns/tables) and pruneSchema    * (removes deleted columns/tables).    *    * @param db open database handle.    * @param ui interface for interacting with the user.    * @throws OrmException if a Gerrit-specific exception occurred.    * @throws SQLException if an underlying SQL exception occurred.    */
 DECL|method|migrateData (ReviewDb db, UpdateUI ui)
 specifier|protected
 name|void

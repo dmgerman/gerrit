@@ -2888,6 +2888,8 @@ operator|new
 name|ClickHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onClick
@@ -4561,6 +4563,8 @@ name|psIdToCompareWith
 expr_stmt|;
 block|}
 comment|/**      * Add the files contained in the list of patches to the table, one per row.      */
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(

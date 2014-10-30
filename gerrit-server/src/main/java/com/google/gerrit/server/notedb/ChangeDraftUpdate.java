@@ -1523,8 +1523,6 @@ name|commitId
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|OrmException
 block|{
 if|if
 condition|(

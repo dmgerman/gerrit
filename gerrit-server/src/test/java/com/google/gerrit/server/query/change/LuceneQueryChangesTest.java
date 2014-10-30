@@ -212,6 +212,8 @@ name|LuceneQueryChangesTest
 extends|extends
 name|AbstractQueryChangesTest
 block|{
+annotation|@
+name|Override
 DECL|method|createInjector ()
 specifier|protected
 name|Injector

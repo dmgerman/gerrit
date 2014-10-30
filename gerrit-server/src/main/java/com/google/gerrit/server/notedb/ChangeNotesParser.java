@@ -722,16 +722,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
-operator|.
-name|ParseException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collection
@@ -1061,8 +1051,6 @@ throws|throws
 name|ConfigInvalidException
 throws|,
 name|IOException
-throws|,
-name|ParseException
 block|{
 name|walk
 operator|.
@@ -1305,8 +1293,6 @@ name|commit
 parameter_list|)
 throws|throws
 name|ConfigInvalidException
-throws|,
-name|IOException
 block|{
 if|if
 condition|(
@@ -2075,8 +2061,6 @@ throws|throws
 name|IOException
 throws|,
 name|ConfigInvalidException
-throws|,
-name|ParseException
 block|{
 name|commentNoteMap
 operator|=

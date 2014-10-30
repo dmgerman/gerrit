@@ -682,6 +682,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setFrom (final Account.Id id)
 specifier|public
 name|void
@@ -781,6 +783,8 @@ name|cm
 expr_stmt|;
 block|}
 comment|/** Format the message body by calling {@link #appendText(String)}. */
+annotation|@
+name|Override
 DECL|method|format ()
 specifier|protected
 name|void
@@ -879,7 +883,7 @@ parameter_list|()
 throws|throws
 name|EmailException
 function_decl|;
-comment|/** Format the message footer by calling {@link #appendText(String)}. */
+comment|/**    * Format the message footer by calling {@link #appendText(String)}.    *    * @throws EmailException if an error occurred.    */
 DECL|method|formatFooter ()
 specifier|protected
 name|void
@@ -889,6 +893,8 @@ throws|throws
 name|EmailException
 block|{   }
 comment|/** Setup the message headers and envelope (TO, CC, BCC). */
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|protected
 name|void
@@ -1929,6 +1935,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|add (final RecipientType rt, final Account.Id to)
 specifier|protected
 name|void
@@ -1969,6 +1977,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|isVisibleTo (final Account.Id to)
 specifier|protected
 name|boolean

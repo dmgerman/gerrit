@@ -3712,6 +3712,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Update cursor after selecting a comment.    *    * @param newComment comment that was selected.    */
 DECL|method|updateCursor (final PatchLineComment newComment)
 specifier|protected
 name|void
@@ -4805,7 +4806,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|bindComment (final int row, final int col, final PatchLineComment line, final boolean isLast, boolean expandComment)
+DECL|method|bindComment (final int row, final int col, final PatchLineComment line, boolean expandComment)
 specifier|protected
 name|void
 name|bindComment
@@ -4821,10 +4822,6 @@ parameter_list|,
 specifier|final
 name|PatchLineComment
 name|line
-parameter_list|,
-specifier|final
-name|boolean
-name|isLast
 parameter_list|,
 name|boolean
 name|expandComment

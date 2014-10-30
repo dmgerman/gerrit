@@ -1005,6 +1005,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|myExternalIds (AsyncCallback<List<AccountExternalId>> callback)
 specifier|public
 name|void
@@ -1031,6 +1033,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|deleteExternalIds (final Set<AccountExternalId.Key> keys, final AsyncCallback<Set<AccountExternalId.Key>> callback)
 specifier|public
 name|void
@@ -1071,6 +1075,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|updateContact (final String name, final String emailAddr, final ContactInformation info, final AsyncCallback<Account> callback)
 specifier|public
 name|void
@@ -1107,6 +1113,8 @@ name|Account
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Account
 name|run
@@ -1412,6 +1420,8 @@ name|b
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|enterAgreement (final String agreementName, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void
@@ -1440,6 +1450,8 @@ name|VoidResult
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|VoidResult
 name|run
@@ -1688,6 +1700,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateEmail (final String tokenString, final AsyncCallback<VoidResult> callback)
 specifier|public
 name|void

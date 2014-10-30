@@ -1272,10 +1272,15 @@ name|UiHandler
 argument_list|(
 literal|"followUp"
 argument_list|)
-DECL|method|onFollowUp (ClickEvent e)
+DECL|method|onFollowUp (@uppressWarningsR) ClickEvent e)
 name|void
 name|onFollowUp
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1313,10 +1318,15 @@ name|UiHandler
 argument_list|(
 literal|"abandon"
 argument_list|)
-DECL|method|onAbandon (ClickEvent e)
+DECL|method|onAbandon (@uppressWarningsR) ClickEvent e)
 name|void
 name|onAbandon
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1350,10 +1360,15 @@ name|UiHandler
 argument_list|(
 literal|"publish"
 argument_list|)
-DECL|method|onPublish (ClickEvent e)
+DECL|method|onPublish (@uppressWarningsR) ClickEvent e)
 name|void
 name|onPublish
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1373,10 +1388,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteEdit"
 argument_list|)
-DECL|method|onDeleteEdit (ClickEvent e)
+DECL|method|onDeleteEdit (@uppressWarningsR) ClickEvent e)
 name|void
 name|onDeleteEdit
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1394,10 +1414,15 @@ name|UiHandler
 argument_list|(
 literal|"publishEdit"
 argument_list|)
-DECL|method|onPublishEdit (ClickEvent e)
+DECL|method|onPublishEdit (@uppressWarningsR) ClickEvent e)
 name|void
 name|onPublishEdit
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1415,10 +1440,15 @@ name|UiHandler
 argument_list|(
 literal|"rebaseEdit"
 argument_list|)
-DECL|method|onRebaseEdit (ClickEvent e)
+DECL|method|onRebaseEdit (@uppressWarningsR) ClickEvent e)
 name|void
 name|onRebaseEdit
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1436,10 +1466,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteRevision"
 argument_list|)
-DECL|method|onDeleteRevision (ClickEvent e)
+DECL|method|onDeleteRevision (@uppressWarningsR) ClickEvent e)
 name|void
 name|onDeleteRevision
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1459,10 +1494,15 @@ name|UiHandler
 argument_list|(
 literal|"deleteChange"
 argument_list|)
-DECL|method|onDeleteChange (ClickEvent e)
+DECL|method|onDeleteChange (@uppressWarningsR) ClickEvent e)
 name|void
 name|onDeleteChange
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1480,10 +1520,15 @@ name|UiHandler
 argument_list|(
 literal|"restore"
 argument_list|)
-DECL|method|onRestore (ClickEvent e)
+DECL|method|onRestore (@uppressWarningsR) ClickEvent e)
 name|void
 name|onRestore
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1517,10 +1562,15 @@ name|UiHandler
 argument_list|(
 literal|"rebase"
 argument_list|)
-DECL|method|onRebase (ClickEvent e)
+DECL|method|onRebase (@uppressWarningsR) ClickEvent e)
 name|void
 name|onRebase
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1540,10 +1590,15 @@ name|UiHandler
 argument_list|(
 literal|"submit"
 argument_list|)
-DECL|method|onSubmit (ClickEvent e)
+DECL|method|onSubmit (@uppressWarningsR) ClickEvent e)
 name|void
 name|onSubmit
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1568,10 +1623,15 @@ name|UiHandler
 argument_list|(
 literal|"cherrypick"
 argument_list|)
-DECL|method|onCherryPick (ClickEvent e)
+DECL|method|onCherryPick (@uppressWarningsR) ClickEvent e)
 name|void
 name|onCherryPick
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1597,10 +1657,15 @@ name|UiHandler
 argument_list|(
 literal|"revert"
 argument_list|)
-DECL|method|onRevert (ClickEvent e)
+DECL|method|onRevert (@uppressWarningsR) ClickEvent e)
 name|void
 name|onRevert
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -1614,8 +1679,6 @@ argument_list|,
 name|changeId
 argument_list|,
 name|revision
-argument_list|,
-name|project
 argument_list|,
 name|subject
 argument_list|)

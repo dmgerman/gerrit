@@ -746,6 +746,8 @@ argument_list|(
 name|message
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onTextChanged
@@ -776,6 +778,8 @@ block|}
 block|}
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMessageText ()
 specifier|public
 name|String

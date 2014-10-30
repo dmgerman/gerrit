@@ -618,6 +618,8 @@ name|AnyTag
 implements|implements
 name|Tag
 block|{
+annotation|@
+name|Override
 DECL|method|assertSafe (String name, String value)
 specifier|public
 name|void
@@ -639,6 +641,8 @@ name|AnchorTag
 implements|implements
 name|Tag
 block|{
+annotation|@
+name|Override
 DECL|method|assertSafe (String name, String value)
 specifier|public
 name|void
@@ -677,6 +681,8 @@ name|FormTag
 implements|implements
 name|Tag
 block|{
+annotation|@
+name|Override
 DECL|method|assertSafe (String name, String value)
 specifier|public
 name|void
@@ -715,6 +721,8 @@ name|SrcTag
 implements|implements
 name|Tag
 block|{
+annotation|@
+name|Override
 DECL|method|assertSafe (String name, String value)
 specifier|public
 name|void

@@ -932,6 +932,8 @@ throws|throws
 name|OrmException
 function_decl|;
 block|}
+annotation|@
+name|Override
 DECL|method|suggestAccount (final String query, final Boolean active, final int limit, final AsyncCallback<List<AccountInfo>> callback)
 specifier|public
 name|void
@@ -974,6 +976,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1426,6 +1430,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|suggestAccountGroup (final String query, final int limit, final AsyncCallback<List<GroupReference>> callback)
 specifier|public
 name|void
@@ -1462,6 +1468,8 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|suggestAccountGroupForProject (final Project.NameKey project, final String query, final int limit, final AsyncCallback<List<GroupReference>> callback)
 specifier|public
 name|void
@@ -1506,6 +1514,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1719,6 +1729,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<

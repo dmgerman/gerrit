@@ -574,8 +574,6 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-decl||
-name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
@@ -778,8 +776,6 @@ throws|,
 name|InvalidPluginException
 throws|,
 name|MalformedURLException
-throws|,
-name|ClassNotFoundException
 block|{
 name|JarFile
 name|jarFile

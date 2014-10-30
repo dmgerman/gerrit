@@ -476,6 +476,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Compute the operation result.    *    * @return the result of the operation. Return {@link VoidResult#INSTANCE} if    *         there is no meaningful return value for the operation.    * @throws Exception the operation failed. The caller will log the exception    *         and the stack trace, if it is worth logging on the server side.    */
+annotation|@
+name|Override
 DECL|method|call ()
 specifier|public
 specifier|abstract

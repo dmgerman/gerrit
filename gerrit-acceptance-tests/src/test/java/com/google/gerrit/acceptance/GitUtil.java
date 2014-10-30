@@ -1046,8 +1046,6 @@ name|path
 parameter_list|)
 throws|throws
 name|GitAPIException
-throws|,
-name|IOException
 block|{
 name|gApi
 operator|.

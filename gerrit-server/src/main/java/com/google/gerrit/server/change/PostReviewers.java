@@ -1268,8 +1268,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
-name|EmailException
-throws|,
 name|IOException
 block|{
 name|Account
@@ -1347,8 +1345,6 @@ throws|,
 name|UnprocessableEntityException
 throws|,
 name|OrmException
-throws|,
-name|EmailException
 throws|,
 name|IOException
 block|{
@@ -1726,8 +1722,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 throws|,
-name|EmailException
-throws|,
 name|IOException
 block|{
 name|ReviewDb
@@ -2046,10 +2040,6 @@ name|PatchSetApproval
 argument_list|>
 name|added
 parameter_list|)
-throws|throws
-name|OrmException
-throws|,
-name|EmailException
 block|{
 if|if
 condition|(

@@ -1254,22 +1254,6 @@ name|server
 operator|.
 name|project
 operator|.
-name|ProjectControl
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
 name|SubmitRuleEvaluator
 import|;
 end_import
@@ -1637,7 +1621,7 @@ name|accountLoader
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ProjectControl.GenericFactory pcf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, WebLinks webLinks, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountInfo.Loader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<RestView<ChangeResource>> changeViews, Revisions revisions, WebLinks webLinks, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1662,11 +1646,6 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|uf
-parameter_list|,
-name|ProjectControl
-operator|.
-name|GenericFactory
-name|pcf
 parameter_list|,
 name|ChangeData
 operator|.
@@ -2359,8 +2338,6 @@ name|Id
 argument_list|>
 name|reviewed
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|List
 argument_list|<
@@ -2841,8 +2818,6 @@ name|removableReviewers
 argument_list|(
 name|ctl
 argument_list|,
-name|cd
-argument_list|,
 name|out
 operator|.
 name|labels
@@ -2923,8 +2898,6 @@ argument_list|(
 name|ctl
 argument_list|,
 name|cd
-argument_list|,
-name|limitToPsId
 argument_list|,
 name|out
 operator|.
@@ -3402,8 +3375,6 @@ name|labels
 init|=
 name|initLabels
 argument_list|(
-name|ctl
-argument_list|,
 name|cd
 argument_list|,
 name|labelTypes
@@ -3548,7 +3519,7 @@ return|return
 name|labels
 return|;
 block|}
-DECL|method|initLabels (ChangeControl ctl, ChangeData cd, LabelTypes labelTypes, boolean standard)
+DECL|method|initLabels (ChangeData cd, LabelTypes labelTypes, boolean standard)
 specifier|private
 name|Map
 argument_list|<
@@ -3558,9 +3529,6 @@ name|LabelInfo
 argument_list|>
 name|initLabels
 parameter_list|(
-name|ChangeControl
-name|ctl
-parameter_list|,
 name|ChangeData
 name|cd
 parameter_list|,
@@ -3786,8 +3754,6 @@ operator|.
 name|Id
 name|accountId
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 if|if
 condition|(
@@ -5355,7 +5321,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|removableReviewers (ChangeControl ctl, ChangeData cd, Collection<LabelInfo> labels)
+DECL|method|removableReviewers (ChangeControl ctl, Collection<LabelInfo> labels)
 specifier|private
 name|Collection
 argument_list|<
@@ -5366,17 +5332,12 @@ parameter_list|(
 name|ChangeControl
 name|ctl
 parameter_list|,
-name|ChangeData
-name|cd
-parameter_list|,
 name|Collection
 argument_list|<
 name|LabelInfo
 argument_list|>
 name|labels
 parameter_list|)
-throws|throws
-name|OrmException
 block|{
 name|Set
 argument_list|<
@@ -5876,7 +5837,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|revisions (ChangeControl ctl, ChangeData cd, Optional<PatchSet.Id> limitToPsId, String project, Map<PatchSet.Id, PatchSet> map)
+DECL|method|revisions (ChangeControl ctl, ChangeData cd, String project, Map<PatchSet.Id, PatchSet> map)
 specifier|private
 name|Map
 argument_list|<
@@ -5891,14 +5852,6 @@ name|ctl
 parameter_list|,
 name|ChangeData
 name|cd
-parameter_list|,
-name|Optional
-argument_list|<
-name|PatchSet
-operator|.
-name|Id
-argument_list|>
-name|limitToPsId
 parameter_list|,
 name|String
 name|project
@@ -6271,8 +6224,6 @@ operator|=
 name|makeFetchMap
 argument_list|(
 name|ctl
-argument_list|,
-name|cd
 argument_list|,
 name|in
 argument_list|)
@@ -6755,7 +6706,7 @@ return|return
 name|commit
 return|;
 block|}
-DECL|method|makeFetchMap (ChangeControl ctl, ChangeData cd, PatchSet in)
+DECL|method|makeFetchMap (ChangeControl ctl, PatchSet in)
 specifier|private
 name|Map
 argument_list|<
@@ -6767,9 +6718,6 @@ name|makeFetchMap
 parameter_list|(
 name|ChangeControl
 name|ctl
-parameter_list|,
-name|ChangeData
-name|cd
 parameter_list|,
 name|PatchSet
 name|in

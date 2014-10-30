@@ -172,20 +172,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|lib
-operator|.
-name|Repository
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|revwalk
 operator|.
 name|RevCommit
@@ -396,15 +382,12 @@ argument_list|(
 name|NO_BYTES
 argument_list|)
 decl_stmt|;
-DECL|method|forCommit (Repository db, ObjectReader reader, AnyObjectId commitId)
+DECL|method|forCommit (ObjectReader reader, AnyObjectId commitId)
 specifier|public
 specifier|static
 name|Text
 name|forCommit
 parameter_list|(
-name|Repository
-name|db
-parameter_list|,
 name|ObjectReader
 name|reader
 parameter_list|,

@@ -631,8 +631,6 @@ specifier|public
 name|Config
 name|getConfig
 parameter_list|()
-throws|throws
-name|ConfigInvalidException
 block|{
 return|return
 name|cfg
@@ -643,8 +641,6 @@ specifier|public
 name|GroupList
 name|getGroups
 parameter_list|()
-throws|throws
-name|ConfigInvalidException
 block|{
 return|return
 name|groupList

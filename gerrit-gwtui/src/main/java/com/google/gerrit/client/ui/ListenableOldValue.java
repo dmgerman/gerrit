@@ -95,6 +95,8 @@ return|return
 name|oldValue
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|set (final T value)
 specifier|public
 name|void

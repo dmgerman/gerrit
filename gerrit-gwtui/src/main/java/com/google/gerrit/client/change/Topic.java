@@ -777,10 +777,15 @@ name|UiHandler
 argument_list|(
 literal|"cancel"
 argument_list|)
-DECL|method|onCancel (ClickEvent e)
+DECL|method|onCancel (@uppressWarningsR) ClickEvent e)
 name|void
 name|onCancel
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
@@ -863,10 +868,15 @@ name|UiHandler
 argument_list|(
 literal|"save"
 argument_list|)
-DECL|method|onSave (ClickEvent e)
+DECL|method|onSave (@uppressWarningsR) ClickEvent e)
 name|void
 name|onSave
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)

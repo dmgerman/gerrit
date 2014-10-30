@@ -607,6 +607,8 @@ specifier|protected
 name|boolean
 name|isFileCommentBorderRowExist
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|createFileCommentEditorOnSideA ()
 specifier|protected
 name|void
@@ -627,6 +629,8 @@ name|FILE_SIDE_A
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|createFileCommentEditorOnSideB ()
 specifier|protected
 name|void
@@ -885,8 +889,6 @@ argument_list|()
 expr_stmt|;
 name|allocateTableHeader
 argument_list|(
-name|script
-argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
@@ -1046,13 +1048,6 @@ block|{
 name|appendSkipLine
 argument_list|(
 name|nc
-argument_list|,
-name|hunk
-operator|.
-name|getCurB
-argument_list|()
-operator|-
-name|lastB
 argument_list|)
 expr_stmt|;
 name|lines
@@ -1574,13 +1569,6 @@ block|{
 name|appendSkipLine
 argument_list|(
 name|nc
-argument_list|,
-name|b
-operator|.
-name|size
-argument_list|()
-operator|-
-name|lastB
 argument_list|)
 expr_stmt|;
 name|lines
@@ -2456,8 +2444,6 @@ name|ai
 operator|.
 name|hasNext
 argument_list|()
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 name|bindComment
@@ -2473,8 +2459,6 @@ name|bi
 operator|.
 name|hasNext
 argument_list|()
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 name|row
@@ -2490,8 +2474,6 @@ argument_list|,
 name|row
 argument_list|,
 name|A
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 name|row
@@ -2503,8 +2485,6 @@ argument_list|,
 name|row
 argument_list|,
 name|B
-argument_list|,
-name|expandComments
 argument_list|)
 expr_stmt|;
 block|}
@@ -2924,7 +2904,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|finish (final Iterator<PatchLineComment> i, int row, final int col, boolean expandComment)
+DECL|method|finish (final Iterator<PatchLineComment> i, int row, final int col)
 specifier|private
 name|int
 name|finish
@@ -2942,9 +2922,6 @@ parameter_list|,
 specifier|final
 name|int
 name|col
-parameter_list|,
-name|boolean
-name|expandComment
 parameter_list|)
 block|{
 while|while
@@ -3001,8 +2978,6 @@ name|i
 operator|.
 name|hasNext
 argument_list|()
-argument_list|,
-name|expandComment
 argument_list|)
 expr_stmt|;
 name|row
@@ -3013,14 +2988,11 @@ return|return
 name|row
 return|;
 block|}
-DECL|method|allocateTableHeader (PatchScript script, final SafeHtmlBuilder m)
+DECL|method|allocateTableHeader (final SafeHtmlBuilder m)
 specifier|private
 name|void
 name|allocateTableHeader
 parameter_list|(
-name|PatchScript
-name|script
-parameter_list|,
 specifier|final
 name|SafeHtmlBuilder
 name|m
@@ -3362,7 +3334,7 @@ name|closeTr
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|appendSkipLine (final SafeHtmlBuilder m, final int skipCnt)
+DECL|method|appendSkipLine (final SafeHtmlBuilder m)
 specifier|private
 name|void
 name|appendSkipLine
@@ -3370,10 +3342,6 @@ parameter_list|(
 specifier|final
 name|SafeHtmlBuilder
 name|m
-parameter_list|,
-specifier|final
-name|int
-name|skipCnt
 parameter_list|)
 block|{
 name|m

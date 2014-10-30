@@ -447,8 +447,6 @@ name|doGetFile
 argument_list|(
 name|ent
 argument_list|,
-name|req
-argument_list|,
 name|rsp
 argument_list|)
 expr_stmt|;
@@ -477,16 +475,13 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-DECL|method|doGetFile (Entry ent, HttpServletRequest req, HttpServletResponse rsp)
+DECL|method|doGetFile (Entry ent, HttpServletResponse rsp)
 specifier|private
 name|void
 name|doGetFile
 parameter_list|(
 name|Entry
 name|ent
-parameter_list|,
-name|HttpServletRequest
-name|req
 parameter_list|,
 name|HttpServletResponse
 name|rsp

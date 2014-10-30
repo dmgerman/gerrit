@@ -370,20 +370,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|git
 operator|.
 name|VersionedMetaData
@@ -683,7 +669,7 @@ name|draftUpdateFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeRebuilder (Provider<ReviewDb> dbProvider, ChangeControl.GenericFactory controlFactory, IdentifiedUser.GenericFactory userFactory, PatchListCache patchListCache, PatchLineCommentsUtil plcUtil, ChangeUpdate.Factory updateFactory, ChangeDraftUpdate.Factory draftUpdateFactory)
+DECL|method|ChangeRebuilder (Provider<ReviewDb> dbProvider, ChangeControl.GenericFactory controlFactory, IdentifiedUser.GenericFactory userFactory, PatchListCache patchListCache, ChangeUpdate.Factory updateFactory, ChangeDraftUpdate.Factory draftUpdateFactory)
 name|ChangeRebuilder
 parameter_list|(
 name|Provider
@@ -704,9 +690,6 @@ name|userFactory
 parameter_list|,
 name|PatchListCache
 name|patchListCache
-parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
 parameter_list|,
 name|ChangeUpdate
 operator|.

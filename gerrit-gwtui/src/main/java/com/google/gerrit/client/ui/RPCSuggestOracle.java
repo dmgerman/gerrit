@@ -128,6 +128,8 @@ operator|.
 name|Callback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSuggestionsReady
@@ -184,6 +186,8 @@ operator|=
 name|ora
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|requestSuggestions (SuggestOracle.Request req, SuggestOracle.Callback cb)
 specifier|public
 name|void
@@ -218,6 +222,8 @@ name|myCallback
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDisplayStringHTML ()
 specifier|public
 name|boolean

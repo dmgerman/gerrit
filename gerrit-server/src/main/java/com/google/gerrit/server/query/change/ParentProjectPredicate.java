@@ -122,22 +122,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|server
-operator|.
-name|ReviewDb
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|CurrentUser
@@ -288,15 +272,9 @@ specifier|final
 name|String
 name|value
 decl_stmt|;
-DECL|method|ParentProjectPredicate (Provider<ReviewDb> dbProvider, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
+DECL|method|ParentProjectPredicate (ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
 name|ParentProjectPredicate
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
@@ -320,8 +298,6 @@ name|super
 argument_list|(
 name|predicates
 argument_list|(
-name|dbProvider
-argument_list|,
 name|projectCache
 argument_list|,
 name|listChildProjects
@@ -339,7 +315,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-DECL|method|predicates ( Provider<ReviewDb> dbProvider, ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
+DECL|method|predicates ( ProjectCache projectCache, Provider<ListChildProjects> listChildProjects, Provider<CurrentUser> self, String value)
 specifier|private
 specifier|static
 name|List
@@ -351,12 +327,6 @@ argument_list|>
 argument_list|>
 name|predicates
 parameter_list|(
-name|Provider
-argument_list|<
-name|ReviewDb
-argument_list|>
-name|dbProvider
-parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,

@@ -1229,6 +1229,8 @@ return|return
 name|output
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -1483,7 +1485,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final SitePaths sitePaths, final DynamicSet<ChangeListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final DynamicSet<ChangeListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1522,10 +1524,6 @@ parameter_list|,
 specifier|final
 name|EventFactory
 name|eventFactory
-parameter_list|,
-specifier|final
-name|SitePaths
-name|sitePaths
 parameter_list|,
 specifier|final
 name|DynamicSet
@@ -1999,6 +1997,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addChangeListener (ChangeListener listener, IdentifiedUser user)
 specifier|public
 name|void
@@ -2027,6 +2027,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeChangeListener (ChangeListener listener)
 specifier|public
 name|void
@@ -2185,6 +2187,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Fire the update hook      *      */
+annotation|@
+name|Override
 DECL|method|doRefUpdateHook (final Project project, final String refname, final Account uploader, final ObjectId oldId, final ObjectId newId)
 specifier|public
 name|HookResult
@@ -2280,13 +2284,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|HookResult
-name|hookResult
-decl_stmt|;
-try|try
-block|{
-name|hookResult
-operator|=
+return|return
 name|runSyncHook
 argument_list|(
 name|project
@@ -2298,31 +2296,11 @@ name|refUpdateHook
 argument_list|,
 name|args
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|TimeoutException
-name|e
-parameter_list|)
-block|{
-name|hookResult
-operator|=
-operator|new
-name|HookResult
-argument_list|(
-operator|-
-literal|1
-argument_list|,
-literal|"Synchronous hook timed out"
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|hookResult
 return|;
 block|}
 comment|/**      * Fire the Patchset Created Hook.      *      * @param change The change itself.      * @param patchSet The Patchset that was created.      * @throws OrmException      */
+annotation|@
+name|Override
 DECL|method|doPatchsetCreatedHook (final Change change, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
@@ -2605,6 +2583,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doDraftPublishedHook (final Change change, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
@@ -2852,6 +2832,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doCommentAddedHook (final Change change, final Account account, final PatchSet patchSet, final String comment, final Map<String, Short> approvals, final ReviewDb db)
 specifier|public
 name|void
@@ -3261,6 +3243,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
@@ -3479,6 +3463,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doMergeFailedHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
 specifier|public
 name|void
@@ -3722,6 +3708,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doChangeAbandonedHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
 specifier|public
 name|void
@@ -3965,6 +3953,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doChangeRestoredHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
 specifier|public
 name|void
@@ -4208,6 +4198,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doRefUpdatedHook (final Branch.NameKey refName, final RefUpdate refUpdate, final Account account)
 specifier|public
 name|void
@@ -4246,6 +4238,8 @@ name|account
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doRefUpdatedHook (final Branch.NameKey refName, final ObjectId oldId, final ObjectId newId, final Account account)
 specifier|public
 name|void
@@ -4416,6 +4410,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doReviewerAddedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db)
 specifier|public
 name|void
@@ -4608,6 +4604,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doTopicChangedHook (final Change change, final Account account, final String oldTopic, final ReviewDb db)
 specifier|public
 name|void
@@ -4855,6 +4853,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|doHashtagsChangedHook (Change change, Account account, Set<String> added, Set<String> removed, Set<String> hashtags, ReviewDb db)
 specifier|public
 name|void
@@ -5137,6 +5137,8 @@ name|args
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|doClaSignupHook (Account account, ContributorAgreement cla)
 specifier|public
 name|void
@@ -5807,8 +5809,6 @@ name|String
 argument_list|>
 name|args
 parameter_list|)
-throws|throws
-name|TimeoutException
 block|{
 if|if
 condition|(

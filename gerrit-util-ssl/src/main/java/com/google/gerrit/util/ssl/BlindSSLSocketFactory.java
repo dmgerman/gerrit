@@ -225,6 +225,8 @@ operator|new
 name|X509TrustManager
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|X509Certificate
 index|[]
@@ -235,6 +237,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkClientTrusted
@@ -247,6 +251,8 @@ name|String
 name|authType
 parameter_list|)
 block|{       }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkServerTrusted

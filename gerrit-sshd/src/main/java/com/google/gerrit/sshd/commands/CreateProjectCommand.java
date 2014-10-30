@@ -370,20 +370,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
-operator|.
-name|server
-operator|.
-name|OrmException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -786,10 +772,15 @@ name|usage
 operator|=
 literal|"if contributor agreement is required"
 argument_list|)
-DECL|method|setUseContributorArgreements (boolean on)
+DECL|method|setUseContributorArgreements (@uppressWarningsR) boolean on)
 name|void
 name|setUseContributorArgreements
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|on
 parameter_list|)
@@ -818,10 +809,15 @@ name|usage
 operator|=
 literal|"if signed-off-by is required"
 argument_list|)
-DECL|method|setUseSignedOffBy (boolean on)
+DECL|method|setUseSignedOffBy (@uppressWarningsR) boolean on)
 name|void
 name|setUseSignedOffBy
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|on
 parameter_list|)
@@ -844,10 +840,15 @@ name|usage
 operator|=
 literal|"allow automatic conflict resolving within files"
 argument_list|)
-DECL|method|setUseContentMerge (boolean on)
+DECL|method|setUseContentMerge (@uppressWarningsR) boolean on)
 name|void
 name|setUseContentMerge
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|on
 parameter_list|)
@@ -876,10 +877,15 @@ name|usage
 operator|=
 literal|"if change-id is required"
 argument_list|)
-DECL|method|setRequireChangeId (boolean on)
+DECL|method|setRequireChangeId (@uppressWarningsR) boolean on)
 name|void
 name|setRequireChangeId
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|on
 parameter_list|)
@@ -908,10 +914,15 @@ name|usage
 operator|=
 literal|"if a new change will be created for every commit not in target branch"
 argument_list|)
-DECL|method|setNewChangeForAllNotInTarget (boolean on)
+DECL|method|setNewChangeForAllNotInTarget (@uppressWarningsR) boolean on)
 name|void
 name|setNewChangeForAllNotInTarget
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|boolean
 name|on
 parameter_list|)
@@ -1328,8 +1339,6 @@ block|}
 catch|catch
 parameter_list|(
 name|RestApiException
-decl||
-name|OrmException
 decl||
 name|NoSuchProjectException
 name|err

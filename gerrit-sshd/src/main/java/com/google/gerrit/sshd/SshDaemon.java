@@ -1586,6 +1586,12 @@ name|SshInfo
 implements|,
 name|LifecycleListener
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"hiding"
+argument_list|)
+comment|// Don't use AbstractCloseable's logger.
 DECL|field|log
 specifier|private
 specifier|static
@@ -1647,11 +1653,11 @@ name|HostKey
 argument_list|>
 name|hostKeys
 decl_stmt|;
-DECL|field|acceptor
+DECL|field|daemonAcceptor
 specifier|private
 specifier|volatile
 name|IoAcceptor
-name|acceptor
+name|daemonAcceptor
 decl_stmt|;
 DECL|field|cfg
 specifier|private
@@ -2390,7 +2396,7 @@ name|getIoAcceptor
 parameter_list|()
 block|{
 return|return
-name|acceptor
+name|daemonAcceptor
 return|;
 block|}
 annotation|@
@@ -2404,7 +2410,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|acceptor
+name|daemonAcceptor
 operator|==
 literal|null
 operator|&&
@@ -2438,7 +2444,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|acceptor
+name|daemonAcceptor
 operator|=
 name|createAcceptor
 argument_list|()
@@ -2477,7 +2483,7 @@ argument_list|(
 literal|":0"
 argument_list|)
 decl_stmt|;
-name|acceptor
+name|daemonAcceptor
 operator|.
 name|bind
 argument_list|(
@@ -2496,7 +2502,7 @@ name|Iterables
 operator|.
 name|getOnlyElement
 argument_list|(
-name|acceptor
+name|daemonAcceptor
 operator|.
 name|getBoundAddresses
 argument_list|()
@@ -2604,14 +2610,14 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|acceptor
+name|daemonAcceptor
 operator|!=
 literal|null
 condition|)
 block|{
 try|try
 block|{
-name|acceptor
+name|daemonAcceptor
 operator|.
 name|close
 argument_list|(
@@ -2647,7 +2653,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|acceptor
+name|daemonAcceptor
 operator|=
 literal|null
 expr_stmt|;

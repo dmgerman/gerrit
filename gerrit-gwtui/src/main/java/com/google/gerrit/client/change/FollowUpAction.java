@@ -233,6 +233,8 @@ operator|+
 name|key
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|send (String message)
 name|void
 name|send

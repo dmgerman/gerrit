@@ -538,10 +538,15 @@ name|UiHandler
 argument_list|(
 literal|"dismiss"
 argument_list|)
-DECL|method|onDismiss (ClickEvent e)
+DECL|method|onDismiss (@uppressWarningsR) ClickEvent e)
 name|void
 name|onDismiss
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|ClickEvent
 name|e
 parameter_list|)
