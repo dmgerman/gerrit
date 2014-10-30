@@ -199,12 +199,6 @@ operator|.
 name|Id
 name|changeId
 decl_stmt|;
-DECL|field|revision
-specifier|private
-specifier|final
-name|String
-name|revision
-decl_stmt|;
 DECL|field|originalMessage
 specifier|private
 specifier|final
@@ -241,16 +235,13 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|EditMessageAction ( Change.Id changeId, String revision, String originalMessage, ChangeScreen2.Style style, Widget editButton, Widget replyButton)
+DECL|method|EditMessageAction ( Change.Id changeId, String originalMessage, ChangeScreen2.Style style, Widget editButton, Widget replyButton)
 name|EditMessageAction
 parameter_list|(
 name|Change
 operator|.
 name|Id
 name|changeId
-parameter_list|,
-name|String
-name|revision
 parameter_list|,
 name|String
 name|originalMessage
@@ -272,12 +263,6 @@ operator|.
 name|changeId
 operator|=
 name|changeId
-expr_stmt|;
-name|this
-operator|.
-name|revision
-operator|=
-name|revision
 expr_stmt|;
 name|this
 operator|.
@@ -336,8 +321,6 @@ operator|new
 name|EditMessageBox
 argument_list|(
 name|changeId
-argument_list|,
-name|revision
 argument_list|,
 name|originalMessage
 argument_list|)

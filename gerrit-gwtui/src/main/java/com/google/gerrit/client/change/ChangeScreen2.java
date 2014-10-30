@@ -3603,8 +3603,6 @@ operator|.
 name|legacy_id
 argument_list|()
 argument_list|,
-name|revision
-argument_list|,
 name|info
 operator|.
 name|revision
