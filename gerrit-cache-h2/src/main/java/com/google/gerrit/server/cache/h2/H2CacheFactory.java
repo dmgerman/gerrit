@@ -999,8 +999,6 @@ name|SuppressWarnings
 argument_list|(
 block|{
 literal|"unchecked"
-block|,
-literal|"cast"
 block|}
 argument_list|)
 annotation|@
