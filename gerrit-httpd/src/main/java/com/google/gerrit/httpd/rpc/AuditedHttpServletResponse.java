@@ -128,7 +128,11 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Override
+name|SuppressWarnings
+argument_list|(
+literal|"all"
+argument_list|)
+comment|// @Override for servlet API 3.0+ only.
 DECL|method|getStatus ()
 specifier|public
 name|int
