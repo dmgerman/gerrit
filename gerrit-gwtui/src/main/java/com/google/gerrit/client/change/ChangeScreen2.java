@@ -3359,10 +3359,9 @@ name|info
 operator|.
 name|status
 argument_list|()
-operator|==
-name|Status
 operator|.
-name|NEW
+name|isOpen
+argument_list|()
 condition|)
 block|{
 name|RevisionInfo
