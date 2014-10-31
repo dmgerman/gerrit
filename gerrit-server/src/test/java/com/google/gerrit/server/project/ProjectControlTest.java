@@ -700,9 +700,7 @@ name|repo
 operator|=
 operator|new
 name|TestRepository
-argument_list|<
-name|InMemoryRepository
-argument_list|>
+argument_list|<>
 argument_list|(
 name|inMemoryRepo
 argument_list|)

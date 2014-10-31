@@ -1148,11 +1148,7 @@ operator|new
 name|QueryBuilder
 operator|.
 name|Definition
-argument_list|<
-name|ChangeData
-argument_list|,
-name|ChangeQueryBuilder
-argument_list|>
+argument_list|<>
 argument_list|(
 name|ChangeQueryBuilder
 operator|.

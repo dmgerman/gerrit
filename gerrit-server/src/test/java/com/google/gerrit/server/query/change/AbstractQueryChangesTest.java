@@ -8858,9 +8858,7 @@ expr_stmt|;
 return|return
 operator|new
 name|TestRepository
-argument_list|<
-name|InMemoryRepository
-argument_list|>
+argument_list|<>
 argument_list|(
 name|repoManager
 operator|.

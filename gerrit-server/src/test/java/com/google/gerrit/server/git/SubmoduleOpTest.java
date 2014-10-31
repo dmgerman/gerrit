@@ -3034,9 +3034,7 @@ name|incorrectSubscriptions
 init|=
 operator|new
 name|ListResultSet
-argument_list|<
-name|SubmoduleSubscription
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Collections
 operator|.

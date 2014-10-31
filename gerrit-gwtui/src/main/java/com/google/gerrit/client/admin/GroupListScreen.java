@@ -662,9 +662,7 @@ name|startPosition
 argument_list|,
 operator|new
 name|IgnoreOutdatedFilterResultsCallbackWrapper
-argument_list|<
-name|GroupMap
-argument_list|>
+argument_list|<>
 argument_list|(
 name|this
 argument_list|,

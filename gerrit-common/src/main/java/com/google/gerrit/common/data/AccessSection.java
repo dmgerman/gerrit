@@ -621,9 +621,7 @@ block|}
 return|return
 operator|new
 name|HashSet
-argument_list|<
-name|Permission
-argument_list|>
+argument_list|<>
 argument_list|(
 name|getPermissions
 argument_list|()

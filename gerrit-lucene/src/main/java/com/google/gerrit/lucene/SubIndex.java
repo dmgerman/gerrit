@@ -799,9 +799,7 @@ name|reopenThread
 operator|=
 operator|new
 name|ControlledRealTimeReopenThread
-argument_list|<
-name|IndexSearcher
-argument_list|>
+argument_list|<>
 argument_list|(
 name|writer
 argument_list|,

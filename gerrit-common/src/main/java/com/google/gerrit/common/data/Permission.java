@@ -1500,9 +1500,7 @@ block|}
 return|return
 operator|new
 name|HashSet
-argument_list|<
-name|PermissionRule
-argument_list|>
+argument_list|<>
 argument_list|(
 name|getRules
 argument_list|()
@@ -1512,9 +1510,7 @@ name|equals
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|PermissionRule
-argument_list|>
+argument_list|<>
 argument_list|(
 name|other
 operator|.

@@ -300,11 +300,7 @@ operator|new
 name|QueryRewriter
 operator|.
 name|Definition
-argument_list|<
-name|ChangeData
-argument_list|,
-name|BasicChangeRewrites
-argument_list|>
+argument_list|<>
 argument_list|(
 name|BasicChangeRewrites
 operator|.

@@ -1157,9 +1157,7 @@ name|subname
 argument_list|,
 operator|new
 name|IgnoreOutdatedFilterResultsCallbackWrapper
-argument_list|<
-name|ProjectMap
-argument_list|>
+argument_list|<>
 argument_list|(
 name|this
 argument_list|,

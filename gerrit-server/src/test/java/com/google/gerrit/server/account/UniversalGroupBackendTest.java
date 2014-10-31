@@ -491,9 +491,7 @@ name|backends
 operator|=
 operator|new
 name|DynamicSet
-argument_list|<
-name|GroupBackend
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|backends
@@ -992,9 +990,7 @@ name|backends
 operator|=
 operator|new
 name|DynamicSet
-argument_list|<
-name|GroupBackend
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|backends

@@ -417,9 +417,7 @@ block|}
 return|return
 operator|new
 name|NotPredicate
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|that
 argument_list|)
