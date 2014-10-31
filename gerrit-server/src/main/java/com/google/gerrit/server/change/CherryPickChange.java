@@ -1029,10 +1029,8 @@ literal|"Cherry Pick: Destination branch cannot be null or empty"
 argument_list|)
 throw|;
 block|}
-name|Project
-operator|.
-name|NameKey
-name|project
+name|Change
+name|change
 init|=
 name|db
 operator|.
@@ -1046,6 +1044,13 @@ name|get
 argument_list|(
 name|changeId
 argument_list|)
+decl_stmt|;
+name|Project
+operator|.
+name|NameKey
+name|project
+init|=
+name|change
 operator|.
 name|getProject
 argument_list|()
@@ -1515,6 +1520,11 @@ argument_list|,
 name|refControl
 argument_list|,
 name|identifiedUser
+argument_list|,
+name|change
+operator|.
+name|getTopic
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1677,7 +1687,7 @@ name|getId
 argument_list|()
 return|;
 block|}
-DECL|method|createNewChange (Repository git, RevWalk revWalk, Change.Key changeKey, Project.NameKey project, PatchSet.Id patchSetId, Ref destRef, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser)
+DECL|method|createNewChange (Repository git, RevWalk revWalk, Change.Key changeKey, Project.NameKey project, PatchSet.Id patchSetId, Ref destRef, RevCommit cherryPickCommit, RefControl refControl, IdentifiedUser identifiedUser, String topic)
 specifier|private
 name|Change
 operator|.
@@ -1716,6 +1726,9 @@ name|refControl
 parameter_list|,
 name|IdentifiedUser
 name|identifiedUser
+parameter_list|,
+name|String
+name|topic
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1770,6 +1783,13 @@ name|nowTs
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|change
+operator|.
+name|setTopic
+argument_list|(
+name|topic
+argument_list|)
+expr_stmt|;
 name|ChangeInserter
 name|ins
 init|=
