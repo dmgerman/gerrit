@@ -829,9 +829,14 @@ name|PatchListNotAvailableException
 name|e
 parameter_list|)
 block|{
-name|patchList
-operator|=
-literal|null
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Failed to get patch list"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
