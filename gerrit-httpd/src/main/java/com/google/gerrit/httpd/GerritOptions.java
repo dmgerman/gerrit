@@ -76,12 +76,21 @@ specifier|final
 name|boolean
 name|headless
 decl_stmt|;
-DECL|method|GerritOptions (boolean headless)
+DECL|field|slave
+specifier|private
+specifier|final
+name|boolean
+name|slave
+decl_stmt|;
+DECL|method|GerritOptions (boolean headless, boolean slave)
 specifier|public
 name|GerritOptions
 parameter_list|(
 name|boolean
 name|headless
+parameter_list|,
+name|boolean
+name|slave
 parameter_list|)
 block|{
 name|this
@@ -89,6 +98,12 @@ operator|.
 name|headless
 operator|=
 name|headless
+expr_stmt|;
+name|this
+operator|.
+name|slave
+operator|=
+name|slave
 expr_stmt|;
 block|}
 DECL|method|enableDefaultUi ()
@@ -100,6 +115,17 @@ block|{
 return|return
 operator|!
 name|headless
+return|;
+block|}
+DECL|method|enableMasterFeatures ()
+specifier|public
+name|boolean
+name|enableMasterFeatures
+parameter_list|()
+block|{
+return|return
+operator|!
+name|slave
 return|;
 block|}
 block|}
