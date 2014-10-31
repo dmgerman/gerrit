@@ -1341,12 +1341,6 @@ name|void
 name|canRebase
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
-throws|,
-name|RestApiException
-throws|,
 name|Exception
 block|{
 name|PushOneCommit
