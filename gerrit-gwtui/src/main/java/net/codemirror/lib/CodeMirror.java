@@ -209,6 +209,30 @@ name|cfg
 parameter_list|)
 comment|/*-{     var m = $wnd.CodeMirror(parent, cfg);     m._sbs2_side = side;     return m;   }-*/
 function_decl|;
+DECL|method|create (Element parent, Configuration cfg)
+specifier|public
+specifier|static
+name|CodeMirror
+name|create
+parameter_list|(
+name|Element
+name|parent
+parameter_list|,
+name|Configuration
+name|cfg
+parameter_list|)
+block|{
+return|return
+name|create
+argument_list|(
+literal|null
+argument_list|,
+name|parent
+argument_list|,
+name|cfg
+argument_list|)
+return|;
+block|}
 DECL|method|setOption (String option, boolean value)
 specifier|public
 specifier|final
@@ -501,7 +525,7 @@ parameter_list|,
 name|String
 name|lineClass
 parameter_list|)
-comment|/*-{     try {       this.addLineClass(line, where, lineClass);     } catch (err) {       if ("TypeError: Cannot read property 'parrent' of undefinded" == err.toString()) {         // ignore CodeMirror bug after going to new line         return;       }       throw err;     }   }-*/
+comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
 function_decl|;
 DECL|method|removeLineClass (int line, LineClassWhere where, String className)
 specifier|public

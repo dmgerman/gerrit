@@ -4936,6 +4936,8 @@ name|editMessage
 argument_list|,
 name|reply
 argument_list|,
+name|fileTableMode
+argument_list|,
 name|edit
 operator|!=
 literal|null
@@ -4961,8 +4963,6 @@ argument_list|,
 name|emptyComment
 argument_list|,
 name|emptyComment
-argument_list|,
-name|fileTableMode
 argument_list|)
 expr_stmt|;
 block|}
@@ -5341,6 +5341,8 @@ name|editMessage
 argument_list|,
 name|reply
 argument_list|,
+name|fileTableMode
+argument_list|,
 name|edit
 operator|!=
 literal|null
@@ -5367,8 +5369,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-argument_list|,
-name|fileTableMode
 argument_list|)
 expr_stmt|;
 block|}

@@ -92,6 +92,22 @@ name|client
 operator|.
 name|rpc
 operator|.
+name|GerritCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
 name|NativeString
 import|;
 end_import
@@ -125,6 +141,22 @@ operator|.
 name|client
 operator|.
 name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Patch
 import|;
 end_import
 
@@ -409,8 +441,69 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Get the contents of a file or commit message in a PatchSet or change    * edit.    **/
+DECL|method|getContentOrMessage (PatchSet.Id id, String path, AsyncCallback<String> cb)
+specifier|public
+specifier|static
+name|void
+name|getContentOrMessage
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|path
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|String
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+if|if
+condition|(
+name|Patch
+operator|.
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+name|getMessage
+argument_list|(
+name|id
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|contentEditOrPs
+argument_list|(
+name|id
+argument_list|,
+name|path
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|wrapper
+argument_list|(
+name|cb
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/** Put contents into a File in a change edit. */
-DECL|method|putContent (PatchSet.Id id, String filename, String content, AsyncCallback<VoidResult> result)
+DECL|method|putContent (PatchSet.Id id, String filename, String content, GerritCallback<VoidResult> result)
 specifier|public
 specifier|static
 name|void
@@ -427,7 +520,7 @@ parameter_list|,
 name|String
 name|content
 parameter_list|,
-name|AsyncCallback
+name|GerritCallback
 argument_list|<
 name|VoidResult
 argument_list|>
@@ -452,9 +545,77 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Put message into a change edit. */
-DECL|method|putMessage (PatchSet.Id id, String m, AsyncCallback<VoidResult> r)
+comment|/** Put contents into a File or commit message in a change edit. */
+DECL|method|putContentOrMessage (PatchSet.Id id, String path, String content, GerritCallback<VoidResult> result)
 specifier|public
+specifier|static
+name|void
+name|putContentOrMessage
+parameter_list|(
+name|PatchSet
+operator|.
+name|Id
+name|id
+parameter_list|,
+name|String
+name|path
+parameter_list|,
+name|String
+name|content
+parameter_list|,
+name|GerritCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|result
+parameter_list|)
+block|{
+if|if
+condition|(
+name|Patch
+operator|.
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+name|putMessage
+argument_list|(
+name|id
+argument_list|,
+name|content
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|contentEdit
+argument_list|(
+name|id
+operator|.
+name|getParentKey
+argument_list|()
+argument_list|,
+name|path
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|content
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/** Put message into a change edit. */
+DECL|method|putMessage (PatchSet.Id id, String m, GerritCallback<VoidResult> r)
+specifier|private
 specifier|static
 name|void
 name|putMessage
@@ -467,7 +628,7 @@ parameter_list|,
 name|String
 name|m
 parameter_list|,
-name|AsyncCallback
+name|GerritCallback
 argument_list|<
 name|VoidResult
 argument_list|>
@@ -488,7 +649,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Put message into a change edit. */
-DECL|method|putMessage (Change.Id id, String m, AsyncCallback<VoidResult> r)
+DECL|method|putMessage (Change.Id id, String m, GerritCallback<VoidResult> r)
 specifier|public
 specifier|static
 name|void
@@ -502,7 +663,7 @@ parameter_list|,
 name|String
 name|m
 parameter_list|,
-name|AsyncCallback
+name|GerritCallback
 argument_list|<
 name|VoidResult
 argument_list|>
