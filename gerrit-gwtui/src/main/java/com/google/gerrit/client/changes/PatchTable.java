@@ -1693,6 +1693,12 @@ operator|.
 name|BINARY
 argument_list|)
 operator|||
+operator|(
+name|Gerrit
+operator|.
+name|isSignedIn
+argument_list|()
+operator|&&
 name|Gerrit
 operator|.
 name|getUserAccount
@@ -1710,6 +1716,7 @@ name|DiffView
 operator|.
 name|UNIFIED_DIFF
 argument_list|)
+operator|)
 operator|)
 return|;
 block|}
