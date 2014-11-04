@@ -310,7 +310,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|MergeabilityCache
+name|MergeabilityCacheImpl
 import|;
 end_import
 
@@ -1137,7 +1137,7 @@ end_expr_stmt
 begin_expr_stmt
 name|install
 argument_list|(
-name|MergeabilityCache
+name|MergeabilityCacheImpl
 operator|.
 name|module
 argument_list|()
