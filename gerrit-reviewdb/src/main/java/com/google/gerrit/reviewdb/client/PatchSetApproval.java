@@ -557,6 +557,8 @@ specifier|protected
 name|Timestamp
 name|granted
 decl_stmt|;
+comment|// DELETED: id = 4 (changeOpen)
+comment|// DELETED: id = 5 (changeSortKey)
 DECL|method|PatchSetApproval ()
 specifier|protected
 name|PatchSetApproval
