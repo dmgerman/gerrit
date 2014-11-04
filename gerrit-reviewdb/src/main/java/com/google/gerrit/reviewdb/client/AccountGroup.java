@@ -510,6 +510,7 @@ specifier|protected
 name|Id
 name|groupId
 decl_stmt|;
+comment|// DELETED: id = 3 (ownerGroupId)
 comment|/** A textual description of the group's purpose. */
 annotation|@
 name|Column
@@ -533,6 +534,8 @@ specifier|protected
 name|String
 name|description
 decl_stmt|;
+comment|// DELETED: id = 5 (groupType)
+comment|// DELETED: id = 6 (externalName)
 annotation|@
 name|Column
 argument_list|(
@@ -545,6 +548,7 @@ specifier|protected
 name|boolean
 name|visibleToAll
 decl_stmt|;
+comment|// DELETED: id = 8 (emailOnlyAuthors)
 comment|/** Globally unique identifier name for this group. */
 annotation|@
 name|Column

@@ -561,6 +561,7 @@ specifier|protected
 name|boolean
 name|reversePatchSetOrder
 decl_stmt|;
+comment|// DELETED: id = 11 (showUserInReview)
 annotation|@
 name|Column
 argument_list|(

@@ -1329,6 +1329,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|// DELETED: id = 11 (nbrPatchSets)
+end_comment
+
+begin_comment
 comment|/** The current patch set. */
 end_comment
 
@@ -1388,6 +1392,14 @@ name|String
 name|topic
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+comment|// DELETED: id = 15 (lastSha1MergeTested)
+end_comment
+
+begin_comment
+comment|// DELETED: id = 16 (mergeable)
+end_comment
 
 begin_constructor
 DECL|method|Change ()
