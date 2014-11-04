@@ -1438,7 +1438,11 @@ argument_list|,
 name|MergeUtil
 operator|.
 name|createDryRunInserter
-argument_list|()
+argument_list|(
+name|key
+operator|.
+name|repo
+argument_list|)
 argument_list|,
 name|key
 operator|.
