@@ -70,13 +70,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -355,16 +359,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|assertEquals
+name|assertThat
 argument_list|(
-name|HttpStatus
-operator|.
-name|SC_OK
-argument_list|,
 name|r
 operator|.
 name|getStatusCode
 argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|HttpStatus
+operator|.
+name|SC_OK
 argument_list|)
 expr_stmt|;
 name|List
@@ -378,11 +385,14 @@ argument_list|(
 name|r
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertThat
+argument_list|(
+name|result
+argument_list|)
+operator|.
+name|containsExactlyElementsIn
 argument_list|(
 name|expected
-argument_list|,
-name|result
 argument_list|)
 expr_stmt|;
 block|}
