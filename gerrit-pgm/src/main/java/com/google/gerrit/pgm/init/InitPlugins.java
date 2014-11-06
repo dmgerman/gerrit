@@ -148,6 +148,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Injector
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -518,6 +530,11 @@ specifier|final
 name|PluginsDistribution
 name|pluginsDistribution
 decl_stmt|;
+DECL|field|postRunInjector
+specifier|private
+name|Injector
+name|postRunInjector
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|InitPlugins (final ConsoleUI ui, final SitePaths site, InitFlags initFlags, InitPluginStepsLoader pluginLoader, PluginsDistribution pluginsDistribution)
@@ -608,6 +625,26 @@ name|Exception
 block|{
 name|postInitPlugins
 argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Inject
+argument_list|(
+name|optional
+operator|=
+literal|true
+argument_list|)
+DECL|method|setPostRunInjector (Injector injector)
+name|void
+name|setPostRunInjector
+parameter_list|(
+name|Injector
+name|injector
+parameter_list|)
+block|{
+name|postRunInjector
+operator|=
+name|injector
 expr_stmt|;
 block|}
 DECL|method|installPlugins ()
@@ -897,6 +934,13 @@ name|getInitSteps
 argument_list|()
 control|)
 block|{
+name|postRunInjector
+operator|.
+name|injectMembers
+argument_list|(
+name|initStep
+argument_list|)
+expr_stmt|;
 name|initStep
 operator|.
 name|postRun

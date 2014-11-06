@@ -727,11 +727,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|postRun ()
+DECL|method|postRun (Injector injector)
 specifier|public
 name|void
 name|postRun
-parameter_list|()
+parameter_list|(
+name|Injector
+name|injector
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -756,6 +759,13 @@ condition|)
 block|{
 continue|continue;
 block|}
+name|injector
+operator|.
+name|injectMembers
+argument_list|(
+name|step
+argument_list|)
+expr_stmt|;
 name|step
 operator|.
 name|postRun
