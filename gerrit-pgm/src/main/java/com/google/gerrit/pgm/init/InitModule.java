@@ -348,6 +348,16 @@ argument_list|()
 operator|.
 name|to
 argument_list|(
+name|InitAdminUser
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|step
+argument_list|()
+operator|.
+name|to
+argument_list|(
 name|InitLabels
 operator|.
 name|class
