@@ -1568,7 +1568,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Modify commit message in existing change edit.    *    * @param edit change edit    * @param msg new commit message    * @return result    * @throws AuthException    * @throws InvalidChangeOperationException    * @throws IOException    */
+comment|/**    * Modify commit message in existing change edit.    *    * @param edit change edit    * @param msg new commit message    * @return result    * @throws AuthException    * @throws InvalidChangeOperationException    * @throws IOException    * @throws UnchangedCommitMessageException    */
 DECL|method|modifyMessage (ChangeEdit edit, String msg)
 specifier|public
 name|RefUpdate
@@ -1588,6 +1588,8 @@ throws|,
 name|InvalidChangeOperationException
 throws|,
 name|IOException
+throws|,
+name|UnchangedCommitMessageException
 block|{
 name|checkState
 argument_list|(
@@ -1663,10 +1665,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|InvalidChangeOperationException
-argument_list|(
-literal|"New commit message cannot be same as existing commit message"
-argument_list|)
+name|UnchangedCommitMessageException
+argument_list|()
 throw|;
 block|}
 name|IdentifiedUser

@@ -532,6 +532,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|edit
+operator|.
+name|UnchangedCommitMessageException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|InvalidChangeOperationException
@@ -2295,13 +2311,13 @@ argument_list|)
 expr_stmt|;
 name|fail
 argument_list|(
-literal|"InvalidChangeOperationException expected"
+literal|"UnchangedCommitMessageException expected"
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|InvalidChangeOperationException
+name|UnchangedCommitMessageException
 name|ex
 parameter_list|)
 block|{
