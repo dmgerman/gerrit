@@ -1124,8 +1124,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-operator|new
 name|Result
+operator|.
+name|create
 argument_list|(
 name|list
 argument_list|(
@@ -1247,8 +1248,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-operator|new
 name|Result
+operator|.
+name|create
 argument_list|(
 name|list
 argument_list|()
@@ -1326,8 +1328,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-operator|new
 name|Result
+operator|.
+name|create
 argument_list|(
 name|list
 argument_list|()
@@ -1425,8 +1428,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-operator|new
 name|Result
+operator|.
+name|create
 argument_list|(
 name|list
 argument_list|(

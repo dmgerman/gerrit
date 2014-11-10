@@ -629,10 +629,11 @@ return|return
 operator|new
 name|AuthUser
 argument_list|(
-operator|new
 name|AuthUser
 operator|.
 name|UUID
+operator|.
+name|create
 argument_list|(
 name|username
 argument_list|)

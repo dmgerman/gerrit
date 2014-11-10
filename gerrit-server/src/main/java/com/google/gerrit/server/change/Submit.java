@@ -3265,7 +3265,7 @@ name|delete
 argument_list|(
 name|normalized
 operator|.
-name|getDeleted
+name|deleted
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3348,7 +3348,7 @@ name|psa
 range|:
 name|normalized
 operator|.
-name|getUpdated
+name|updated
 argument_list|()
 control|)
 block|{
@@ -3385,7 +3385,7 @@ name|psa
 range|:
 name|normalized
 operator|.
-name|getDeleted
+name|deleted
 argument_list|()
 control|)
 block|{

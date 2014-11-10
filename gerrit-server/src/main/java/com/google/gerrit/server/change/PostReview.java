@@ -4003,8 +4003,9 @@ name|labelDelta
 operator|.
 name|add
 argument_list|(
-operator|new
 name|LabelVote
+operator|.
+name|create
 argument_list|(
 name|name
 argument_list|,

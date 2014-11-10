@@ -120,7 +120,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -134,7 +134,7 @@ literal|2
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -153,7 +153,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -167,7 +167,7 @@ literal|1
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -186,7 +186,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -199,7 +199,7 @@ literal|0
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -218,7 +218,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -231,7 +231,7 @@ literal|1
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -250,7 +250,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -263,7 +263,7 @@ literal|1
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -282,7 +282,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -295,7 +295,7 @@ literal|2
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -410,7 +410,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -424,7 +424,7 @@ literal|2
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -443,7 +443,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -457,7 +457,7 @@ literal|1
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -476,7 +476,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -489,7 +489,7 @@ literal|0
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -508,7 +508,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -521,7 +521,7 @@ literal|1
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -540,7 +540,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -553,7 +553,7 @@ literal|1
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -572,7 +572,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -585,7 +585,7 @@ literal|2
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -604,7 +604,7 @@ literal|"Code-Review"
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -617,7 +617,7 @@ literal|2
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;
