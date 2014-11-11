@@ -673,6 +673,11 @@ name|String
 argument_list|>
 name|pluginsToInstall
 decl_stmt|;
+DECL|field|sysInjector
+specifier|private
+name|Injector
+name|sysInjector
+decl_stmt|;
 DECL|method|BaseInit (PluginsDistribution pluginsDistribution, List<String> pluginsToInstall)
 specifier|protected
 name|BaseInit
@@ -904,7 +909,12 @@ operator|.
 name|initializer
 operator|.
 name|postRun
-argument_list|()
+argument_list|(
+name|createSysInjector
+argument_list|(
+name|init
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1979,6 +1989,13 @@ name|SiteInit
 name|init
 parameter_list|)
 block|{
+if|if
+condition|(
+name|sysInjector
+operator|==
+literal|null
+condition|)
+block|{
 specifier|final
 name|List
 argument_list|<
@@ -1988,7 +2005,9 @@ name|modules
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|Module
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|modules
@@ -2038,7 +2057,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-return|return
+name|sysInjector
+operator|=
 name|createDbInjector
 argument_list|(
 name|SINGLE_USER
@@ -2048,6 +2068,10 @@ name|createChildInjector
 argument_list|(
 name|modules
 argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|sysInjector
 return|;
 block|}
 DECL|method|recursiveDelete (File path)
