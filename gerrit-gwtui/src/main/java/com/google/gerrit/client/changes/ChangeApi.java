@@ -1326,7 +1326,7 @@ argument_list|)
 operator|.
 name|view
 argument_list|(
-literal|"publish_edit"
+literal|"edit:publish"
 argument_list|)
 operator|.
 name|post
@@ -1369,7 +1369,7 @@ argument_list|)
 operator|.
 name|view
 argument_list|(
-literal|"rebase_edit"
+literal|"edit:rebase"
 argument_list|)
 operator|.
 name|post
