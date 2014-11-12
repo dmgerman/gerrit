@@ -176,6 +176,16 @@ name|ResultSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_class
 DECL|class|FakeIndex
 class|class
@@ -511,6 +521,19 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
+annotation|@
+name|Override
+DECL|method|delete (int id)
+specifier|public
+name|void
+name|delete
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+block|{   }
 block|}
 end_class
 

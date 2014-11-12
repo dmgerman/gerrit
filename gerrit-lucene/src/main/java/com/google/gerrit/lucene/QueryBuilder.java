@@ -579,6 +579,25 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|idTerm (int id)
+specifier|public
+specifier|static
+name|Term
+name|idTerm
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|intTerm
+argument_list|(
+name|ID_FIELD
+argument_list|,
+name|id
+argument_list|)
+return|;
+block|}
 DECL|field|schema
 specifier|private
 specifier|final
