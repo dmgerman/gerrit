@@ -232,20 +232,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|ChangeUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|CurrentUser
 import|;
 end_import
@@ -452,7 +438,7 @@ name|changeIndexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangesCollection ( Provider<ReviewDb> dbProvider, Provider<CurrentUser> user, ChangeControl.GenericFactory changeControlFactory, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeUtil changeUtil, ChangeIndexer changeIndexer)
+DECL|method|ChangesCollection ( Provider<ReviewDb> dbProvider, Provider<CurrentUser> user, ChangeControl.GenericFactory changeControlFactory, Provider<QueryChanges> queryFactory, DynamicMap<RestView<ChangeResource>> views, ChangeIndexer changeIndexer)
 name|ChangesCollection
 parameter_list|(
 name|Provider
@@ -486,9 +472,6 @@ name|ChangeResource
 argument_list|>
 argument_list|>
 name|views
-parameter_list|,
-name|ChangeUtil
-name|changeUtil
 parameter_list|,
 name|ChangeIndexer
 name|changeIndexer
