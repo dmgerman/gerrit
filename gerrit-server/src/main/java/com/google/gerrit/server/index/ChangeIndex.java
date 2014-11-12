@@ -195,6 +195,18 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**    * Delete a change document from the index by id.    *    * @param id change document id    *    * @throws IOException    */
+DECL|method|delete (int id)
+specifier|public
+name|void
+name|delete
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**    * Delete all change documents from the index.    *    * @throws IOException    */
 DECL|method|deleteAll ()
 specifier|public
