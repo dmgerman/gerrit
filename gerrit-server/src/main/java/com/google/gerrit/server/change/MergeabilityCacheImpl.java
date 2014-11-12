@@ -2115,12 +2115,6 @@ argument_list|,
 name|submitType
 argument_list|,
 name|mergeStrategy
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 return|;
