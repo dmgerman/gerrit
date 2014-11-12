@@ -88,6 +88,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|query
@@ -173,16 +189,6 @@ operator|.
 name|server
 operator|.
 name|ResultSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -403,13 +409,15 @@ throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|delete (ChangeData cd)
+DECL|method|delete (Change.Id id)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ChangeData
-name|cd
+name|Change
+operator|.
+name|Id
+name|id
 parameter_list|)
 block|{
 throw|throw
@@ -504,19 +512,6 @@ name|UnsupportedOperationException
 argument_list|()
 throw|;
 block|}
-annotation|@
-name|Override
-DECL|method|delete (int id)
-specifier|public
-name|void
-name|delete
-parameter_list|(
-name|int
-name|id
-parameter_list|)
-throws|throws
-name|IOException
-block|{   }
 block|}
 end_class
 

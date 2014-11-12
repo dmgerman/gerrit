@@ -3330,9 +3330,10 @@ name|indexer
 operator|.
 name|delete
 argument_list|(
-name|db
-argument_list|,
 name|change
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -140,6 +140,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|index
@@ -579,13 +595,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|idTerm (int id)
+DECL|method|idTerm (Change.Id id)
 specifier|public
 specifier|static
 name|Term
 name|idTerm
 parameter_list|(
-name|int
+name|Change
+operator|.
+name|Id
 name|id
 parameter_list|)
 block|{
@@ -595,6 +613,9 @@ argument_list|(
 name|ID_FIELD
 argument_list|,
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}

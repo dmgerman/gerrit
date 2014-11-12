@@ -649,7 +649,13 @@ name|changeIndexer
 operator|.
 name|delete
 argument_list|(
+operator|new
+name|Change
+operator|.
+name|Id
+argument_list|(
 name|changeId
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|query
@@ -183,25 +199,15 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**    * Delete a change document from the index.    *    * @param cd change document    *    * @throws IOException    */
-DECL|method|delete (ChangeData cd)
+comment|/**    * Delete a change document from the index by id.    *    * @param id change id    *    * @throws IOException    */
+DECL|method|delete (Change.Id id)
 specifier|public
 name|void
 name|delete
 parameter_list|(
-name|ChangeData
-name|cd
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-comment|/**    * Delete a change document from the index by id.    *    * @param id change document id    *    * @throws IOException    */
-DECL|method|delete (int id)
-specifier|public
-name|void
-name|delete
-parameter_list|(
-name|int
+name|Change
+operator|.
+name|Id
 name|id
 parameter_list|)
 throws|throws
