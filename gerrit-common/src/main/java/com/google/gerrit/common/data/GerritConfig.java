@@ -382,6 +382,16 @@ specifier|protected
 name|boolean
 name|newFeatures
 decl_stmt|;
+DECL|field|replyLabel
+specifier|protected
+name|String
+name|replyLabel
+decl_stmt|;
+DECL|field|replyTitle
+specifier|protected
+name|String
+name|replyTitle
+decl_stmt|;
 DECL|method|getLoginUrl ()
 specifier|public
 name|String
@@ -1239,6 +1249,54 @@ block|{
 name|newFeatures
 operator|=
 name|n
+expr_stmt|;
+block|}
+DECL|method|getReplyTitle ()
+specifier|public
+name|String
+name|getReplyTitle
+parameter_list|()
+block|{
+return|return
+name|replyTitle
+return|;
+block|}
+DECL|method|setReplyTitle (String r)
+specifier|public
+name|void
+name|setReplyTitle
+parameter_list|(
+name|String
+name|r
+parameter_list|)
+block|{
+name|replyTitle
+operator|=
+name|r
+expr_stmt|;
+block|}
+DECL|method|getReplyLabel ()
+specifier|public
+name|String
+name|getReplyLabel
+parameter_list|()
+block|{
+return|return
+name|replyLabel
+return|;
+block|}
+DECL|method|setReplyLabel (String r)
+specifier|public
+name|void
+name|setReplyLabel
+parameter_list|(
+name|String
+name|r
+parameter_list|)
+block|{
+name|replyLabel
+operator|=
+name|r
 expr_stmt|;
 block|}
 block|}
