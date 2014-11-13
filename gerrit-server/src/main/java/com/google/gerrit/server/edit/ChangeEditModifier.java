@@ -2280,9 +2280,9 @@ name|CHANGE_ENTRY
 case|:
 name|checkNotNull
 argument_list|(
-literal|"new content required"
-argument_list|,
 name|content
+argument_list|,
+literal|"new content required"
 argument_list|)
 expr_stmt|;
 name|dce
