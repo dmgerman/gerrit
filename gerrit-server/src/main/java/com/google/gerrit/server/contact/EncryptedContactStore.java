@@ -895,7 +895,7 @@ init|)
 block|{
 return|return
 operator|new
-name|PGPPublicKeyRingCollection
+name|BcPGPPublicKeyRingCollection
 argument_list|(
 name|in
 argument_list|)
