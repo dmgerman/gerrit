@@ -1567,6 +1567,20 @@ name|Version
 operator|.
 name|LUCENE_4_10_0
 decl_stmt|;
+comment|// We are using 4.10.2 but there is no difference in the index
+comment|// format since 4.10.1, so we reuse the version here.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
+name|Version
+name|lucene4101
+init|=
+name|Version
+operator|.
+name|LUCENE_4_10_1
+decl_stmt|;
 for|for
 control|(
 name|Map
@@ -1744,9 +1758,7 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|,
-name|Version
-operator|.
-name|LUCENE_4_10_1
+name|lucene4101
 argument_list|)
 expr_stmt|;
 block|}
