@@ -304,11 +304,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|AccountDiffPreference
+name|Theme
 import|;
 end_import
 
@@ -325,8 +325,6 @@ operator|.
 name|client
 operator|.
 name|AccountDiffPreference
-operator|.
-name|Theme
 import|;
 end_import
 
