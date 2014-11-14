@@ -170,24 +170,6 @@ name|account
 operator|.
 name|GetPreferences
 operator|.
-name|MY
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|GetPreferences
-operator|.
 name|URL_ALIAS
 import|;
 end_import
@@ -517,6 +499,22 @@ operator|.
 name|git
 operator|.
 name|MetaDataUpdate
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|UserConfigSections
 import|;
 end_import
 
@@ -1468,6 +1466,8 @@ name|unsetSection
 argument_list|(
 name|cfg
 argument_list|,
+name|UserConfigSections
+operator|.
 name|MY
 argument_list|)
 expr_stmt|;
@@ -1562,6 +1562,8 @@ name|cfg
 operator|.
 name|unset
 argument_list|(
+name|UserConfigSections
+operator|.
 name|MY
 argument_list|,
 name|section
@@ -1576,6 +1578,8 @@ name|cfg
 operator|.
 name|setString
 argument_list|(
+name|UserConfigSections
+operator|.
 name|MY
 argument_list|,
 name|section
