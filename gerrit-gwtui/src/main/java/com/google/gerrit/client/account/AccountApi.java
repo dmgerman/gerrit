@@ -282,6 +282,67 @@ literal|"self"
 argument_list|)
 return|;
 block|}
+comment|/** Retrieve the account edit preferences */
+DECL|method|getEditPreferences (AsyncCallback<EditPreferences> cb)
+specifier|public
+specifier|static
+name|void
+name|getEditPreferences
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|EditPreferences
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|view
+argument_list|(
+literal|"preferences.edit"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Put the account edit preferences */
+DECL|method|putEditPreferences (EditPreferences in, AsyncCallback<VoidResult> cb)
+specifier|public
+specifier|static
+name|void
+name|putEditPreferences
+parameter_list|(
+name|EditPreferences
+name|in
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|self
+argument_list|()
+operator|.
+name|view
+argument_list|(
+literal|"preferences.edit"
+argument_list|)
+operator|.
+name|put
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|suggest (String query, int limit, AsyncCallback<JsArray<AccountInfo>> cb)
 specifier|public
 specifier|static
