@@ -104,9 +104,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|FileInfo
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
 import|;
 end_import
 
@@ -118,13 +120,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
+name|FileInfo
 import|;
 end_import
 

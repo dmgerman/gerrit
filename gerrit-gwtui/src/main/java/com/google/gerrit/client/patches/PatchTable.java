@@ -695,8 +695,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|isSkipDeleted
-argument_list|()
+name|skipDeleted
 operator|&&
 name|patch
 operator|.
@@ -717,8 +716,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|isSkipUncommented
-argument_list|()
+name|skipUncommented
 operator|&&
 name|patch
 operator|.

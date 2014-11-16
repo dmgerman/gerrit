@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|prettify
+name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|SparseFileContent
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -90,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|prettify
 operator|.
-name|client
+name|common
 operator|.
-name|AccountDiffPreference
+name|SparseFileContent
 import|;
 end_import
 
@@ -369,7 +369,7 @@ name|edits
 decl_stmt|;
 DECL|field|diffPrefs
 specifier|protected
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 decl_stmt|;
 DECL|field|fileName
@@ -516,12 +516,12 @@ operator|=
 name|all
 expr_stmt|;
 block|}
-DECL|method|setDiffPrefs (AccountDiffPreference how)
+DECL|method|setDiffPrefs (DiffPreferencesInfo how)
 specifier|public
 name|void
 name|setDiffPrefs
 parameter_list|(
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|how
 parameter_list|)
 block|{
@@ -598,8 +598,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|isSyntaxHighlighting
-argument_list|()
+name|syntaxHighlighting
 operator|&&
 name|getFileType
 argument_list|()
@@ -1110,8 +1109,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|getLineLength
-argument_list|()
+name|lineLength
 operator|<=
 name|col
 condition|)
@@ -1186,8 +1184,7 @@ name|free
 init|=
 name|diffPrefs
 operator|.
-name|getLineLength
-argument_list|()
+name|lineLength
 operator|-
 name|col
 decl_stmt|;
@@ -1216,8 +1213,7 @@ name|free
 operator|=
 name|diffPrefs
 operator|.
-name|getLineLength
-argument_list|()
+name|lineLength
 expr_stmt|;
 block|}
 name|int
@@ -1561,8 +1557,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|isIntralineDifference
-argument_list|()
+name|intralineDifference
 condition|)
 block|{
 name|html
@@ -1670,8 +1665,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|isShowWhitespaceErrors
-argument_list|()
+name|showWhitespaceErrors
 condition|)
 block|{
 comment|// We need to do whitespace errors before showing tabs, because
@@ -1696,8 +1690,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|isShowLineEndings
-argument_list|()
+name|showLineEndings
 condition|)
 block|{
 name|html
@@ -1712,8 +1705,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|isShowTabs
-argument_list|()
+name|showTabs
 condition|)
 block|{
 name|String
@@ -1723,8 +1715,7 @@ literal|1
 operator|<
 name|diffPrefs
 operator|.
-name|getTabSize
-argument_list|()
+name|tabSize
 condition|?
 literal|"\t"
 else|:
@@ -2738,8 +2729,7 @@ if|if
 condition|(
 name|diffPrefs
 operator|.
-name|isShowTabs
-argument_list|()
+name|showTabs
 condition|)
 block|{
 name|i
@@ -2754,8 +2744,7 @@ name|i
 operator|<
 name|diffPrefs
 operator|.
-name|getTabSize
-argument_list|()
+name|tabSize
 condition|;
 name|i
 operator|++

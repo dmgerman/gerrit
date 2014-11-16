@@ -102,11 +102,13 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
 import|;
 end_import
 
@@ -122,9 +124,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
+name|Account
 import|;
 end_import
 

@@ -592,6 +592,22 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|DiffPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
 name|EditPreferencesInfo
 import|;
 end_import
@@ -609,22 +625,6 @@ operator|.
 name|client
 operator|.
 name|GerritTopMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
 import|;
 end_import
 
@@ -1562,7 +1562,7 @@ decl_stmt|;
 DECL|field|myAccountDiffPref
 specifier|private
 specifier|static
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|myAccountDiffPref
 decl_stmt|;
 DECL|field|editPrefs
@@ -2359,25 +2359,25 @@ return|return
 name|myPrefs
 return|;
 block|}
-comment|/** @return the currently signed in users's diff preferences; null if no diff preferences defined for the account */
-DECL|method|getAccountDiffPreference ()
+comment|/** @return the currently signed in users's diff preferences, or default values */
+DECL|method|getDiffPreferences ()
 specifier|public
 specifier|static
-name|AccountDiffPreference
-name|getAccountDiffPreference
+name|DiffPreferencesInfo
+name|getDiffPreferences
 parameter_list|()
 block|{
 return|return
 name|myAccountDiffPref
 return|;
 block|}
-DECL|method|setAccountDiffPreference (AccountDiffPreference accountDiffPref)
+DECL|method|setDiffPreferences (DiffPreferencesInfo accountDiffPref)
 specifier|public
 specifier|static
 name|void
-name|setAccountDiffPreference
+name|setDiffPreferences
 parameter_list|(
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|accountDiffPref
 parameter_list|)
 block|{

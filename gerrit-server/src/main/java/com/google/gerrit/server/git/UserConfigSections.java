@@ -92,6 +92,16 @@ name|EDIT
 init|=
 literal|"edit"
 decl_stmt|;
+comment|/** The diff user preferences. */
+DECL|field|DIFF
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DIFF
+init|=
+literal|"diff"
+decl_stmt|;
 DECL|method|UserConfigSections ()
 specifier|private
 name|UserConfigSections

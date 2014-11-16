@@ -120,11 +120,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -150,7 +150,7 @@ name|ListenableAccountDiffPreference
 extends|extends
 name|ListenableOldValue
 argument_list|<
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 argument_list|>
 block|{
 DECL|method|ListenableAccountDiffPreference ()
@@ -211,7 +211,7 @@ parameter_list|)
 block|{
 name|Gerrit
 operator|.
-name|setAccountDiffPreference
+name|setDiffPreferences
 argument_list|(
 name|get
 argument_list|()
@@ -263,7 +263,7 @@ argument_list|()
 operator|&&
 name|Gerrit
 operator|.
-name|getAccountDiffPreference
+name|getDiffPreferences
 argument_list|()
 operator|!=
 literal|null
@@ -273,7 +273,7 @@ name|set
 argument_list|(
 name|Gerrit
 operator|.
-name|getAccountDiffPreference
+name|getDiffPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -282,12 +282,10 @@ else|else
 block|{
 name|set
 argument_list|(
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 operator|.
-name|createDefault
-argument_list|(
-literal|null
-argument_list|)
+name|defaults
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

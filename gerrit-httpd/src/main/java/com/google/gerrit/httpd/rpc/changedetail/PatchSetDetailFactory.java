@@ -138,6 +138,40 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|DiffPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -173,40 +207,6 @@ operator|.
 name|client
 operator|.
 name|Account
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
 import|;
 end_import
 
@@ -686,7 +686,7 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( @ssistedR) @ullable PatchSet.Id psIdBase, @Assisted(R) PatchSet.Id psIdNew, @Nullable AccountDiffPreference diffPrefs)
+DECL|method|create ( @ssistedR) @ullable PatchSet.Id psIdBase, @Assisted(R) PatchSet.Id psIdNew, @Nullable DiffPreferencesInfo diffPrefs)
 name|PatchSetDetailFactory
 name|create
 parameter_list|(
@@ -714,7 +714,7 @@ name|psIdNew
 parameter_list|,
 annotation|@
 name|Nullable
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 parameter_list|)
 function_decl|;
@@ -792,7 +792,7 @@ decl_stmt|;
 DECL|field|diffPrefs
 specifier|private
 specifier|final
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 decl_stmt|;
 DECL|field|oldId
@@ -820,7 +820,7 @@ name|patchSet
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PatchSetDetailFactory (final PatchSetInfoFactory psif, final ReviewDb db, final PatchListCache patchListCache, final Provider<CurrentUser> userProvider, final ChangeControl.GenericFactory changeControlFactory, final PatchLineCommentsUtil plcUtil, ChangeEditUtil editUtil, @Assisted(R) @Nullable final PatchSet.Id psIdBase, @Assisted(R) final PatchSet.Id psIdNew, @Assisted @Nullable final AccountDiffPreference diffPrefs)
+DECL|method|PatchSetDetailFactory (final PatchSetInfoFactory psif, final ReviewDb db, final PatchListCache patchListCache, final Provider<CurrentUser> userProvider, final ChangeControl.GenericFactory changeControlFactory, final PatchLineCommentsUtil plcUtil, ChangeEditUtil editUtil, @Assisted(R) @Nullable final PatchSet.Id psIdBase, @Assisted(R) final PatchSet.Id psIdNew, @Assisted @Nullable final DiffPreferencesInfo diffPrefs)
 name|PatchSetDetailFactory
 parameter_list|(
 specifier|final
@@ -884,7 +884,7 @@ name|Assisted
 annotation|@
 name|Nullable
 specifier|final
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 parameter_list|)
 block|{
@@ -1163,8 +1163,7 @@ name|keyFor
 argument_list|(
 name|diffPrefs
 operator|.
-name|getIgnoreWhitespace
-argument_list|()
+name|ignoreWhitespace
 argument_list|)
 argument_list|)
 expr_stmt|;

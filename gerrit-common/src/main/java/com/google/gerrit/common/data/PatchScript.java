@@ -74,6 +74,40 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|DiffPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|prettify
 operator|.
 name|common
@@ -95,40 +129,6 @@ operator|.
 name|common
 operator|.
 name|SparseFileContent
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
 import|;
 end_import
 
@@ -284,7 +284,7 @@ name|header
 decl_stmt|;
 DECL|field|diffPrefs
 specifier|protected
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 decl_stmt|;
 DECL|field|a
@@ -377,7 +377,7 @@ specifier|transient
 name|String
 name|commitIdB
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin, final String cma, final String cmb)
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final DiffPreferencesInfo dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin, final String cma, final String cmb)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -415,7 +415,7 @@ argument_list|>
 name|h
 parameter_list|,
 specifier|final
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|dp
 parameter_list|,
 specifier|final
@@ -710,7 +710,7 @@ return|;
 block|}
 DECL|method|getDiffPrefs ()
 specifier|public
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|getDiffPrefs
 parameter_list|()
 block|{
@@ -718,12 +718,12 @@ return|return
 name|diffPrefs
 return|;
 block|}
-DECL|method|setDiffPrefs (AccountDiffPreference dp)
+DECL|method|setDiffPrefs (DiffPreferencesInfo dp)
 specifier|public
 name|void
 name|setDiffPrefs
 parameter_list|(
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|dp
 parameter_list|)
 block|{
@@ -751,8 +751,7 @@ block|{
 return|return
 name|diffPrefs
 operator|.
-name|getIgnoreWhitespace
-argument_list|()
+name|ignoreWhitespace
 operator|!=
 name|Whitespace
 operator|.
@@ -798,8 +797,7 @@ block|{
 return|return
 name|diffPrefs
 operator|.
-name|isExpandAllComments
-argument_list|()
+name|expandAllComments
 return|;
 block|}
 DECL|method|getA ()
@@ -871,14 +869,13 @@ name|ctx
 init|=
 name|diffPrefs
 operator|.
-name|getContext
-argument_list|()
+name|context
 decl_stmt|;
 if|if
 condition|(
 name|ctx
 operator|==
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 operator|.
 name|WHOLE_FILE_CONTEXT
 condition|)

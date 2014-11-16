@@ -1861,8 +1861,7 @@ operator|.
 name|getDiffPrefs
 argument_list|()
 operator|.
-name|isSyntaxHighlighting
-argument_list|()
+name|syntaxHighlighting
 decl_stmt|;
 if|if
 condition|(
@@ -1975,8 +1974,7 @@ operator|.
 name|getDiffPrefs
 argument_list|()
 operator|.
-name|isSyntaxHighlighting
-argument_list|()
+name|syntaxHighlighting
 decl_stmt|;
 for|for
 control|(

@@ -90,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -207,7 +207,7 @@ name|RemoteJsonService
 block|{
 annotation|@
 name|Audit
-DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, AccountDiffPreference diffPrefs, AsyncCallback<PatchScript> callback)
+DECL|method|patchScript (Patch.Key key, PatchSet.Id a, PatchSet.Id b, DiffPreferencesInfo diffPrefs, AsyncCallback<PatchScript> callback)
 name|void
 name|patchScript
 parameter_list|(
@@ -226,7 +226,7 @@ operator|.
 name|Id
 name|b
 parameter_list|,
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 parameter_list|,
 name|AsyncCallback

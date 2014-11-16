@@ -90,11 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -209,7 +209,7 @@ parameter_list|)
 function_decl|;
 annotation|@
 name|Audit
-DECL|method|patchSetDetail2 (PatchSet.Id baseId, PatchSet.Id key, AccountDiffPreference diffPrefs, AsyncCallback<PatchSetDetail> callback)
+DECL|method|patchSetDetail2 (PatchSet.Id baseId, PatchSet.Id key, DiffPreferencesInfo diffPrefs, AsyncCallback<PatchSetDetail> callback)
 name|void
 name|patchSetDetail2
 parameter_list|(
@@ -223,7 +223,7 @@ operator|.
 name|Id
 name|key
 parameter_list|,
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPrefs
 parameter_list|,
 name|AsyncCallback

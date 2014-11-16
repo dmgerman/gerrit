@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -119,7 +119,7 @@ name|version
 decl_stmt|;
 DECL|field|accountDiffPref
 specifier|public
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|accountDiffPref
 decl_stmt|;
 DECL|field|xGerritAuth

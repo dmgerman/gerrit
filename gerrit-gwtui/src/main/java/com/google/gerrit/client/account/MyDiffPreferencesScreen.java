@@ -154,7 +154,7 @@ name|create
 argument_list|(
 name|Gerrit
 operator|.
-name|getAccountDiffPreference
+name|getDiffPreferences
 argument_list|()
 argument_list|)
 argument_list|)

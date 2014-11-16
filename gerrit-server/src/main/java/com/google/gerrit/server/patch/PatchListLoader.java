@@ -150,11 +150,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 operator|.
 name|Whitespace
 import|;

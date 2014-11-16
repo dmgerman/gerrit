@@ -74,11 +74,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 operator|.
 name|WHOLE_FILE_CONTEXT
 import|;
@@ -1422,7 +1422,7 @@ name|create
 argument_list|(
 name|Gerrit
 operator|.
-name|getAccountDiffPreference
+name|getDiffPreferences
 argument_list|()
 argument_list|)
 expr_stmt|;

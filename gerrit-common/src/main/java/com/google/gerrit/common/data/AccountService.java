@@ -106,11 +106,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
 name|client
 operator|.
-name|Account
+name|DiffPreferencesInfo
 import|;
 end_import
 
@@ -126,7 +126,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountDiffPreference
+name|Account
 import|;
 end_import
 
@@ -272,11 +272,11 @@ annotation|@
 name|Audit
 annotation|@
 name|SignInRequired
-DECL|method|changeDiffPreferences (AccountDiffPreference diffPref, AsyncCallback<VoidResult> callback)
+DECL|method|changeDiffPreferences (DiffPreferencesInfo diffPref, AsyncCallback<VoidResult> callback)
 name|void
 name|changeDiffPreferences
 parameter_list|(
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|diffPref
 parameter_list|,
 name|AsyncCallback

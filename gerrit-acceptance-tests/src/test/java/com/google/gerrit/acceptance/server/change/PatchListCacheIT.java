@@ -154,9 +154,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|client
 operator|.
-name|RestApiException
+name|DiffPreferencesInfo
+operator|.
+name|Whitespace
 import|;
 end_import
 
@@ -168,13 +170,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|restapi
 operator|.
-name|AccountDiffPreference
-operator|.
-name|Whitespace
+name|RestApiException
 import|;
 end_import
 

@@ -124,6 +124,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|DiffPreferencesInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|httpd
 operator|.
 name|rpc
@@ -145,22 +161,6 @@ operator|.
 name|rpc
 operator|.
 name|Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|AccountDiffPreference
 import|;
 end_import
 
@@ -375,7 +375,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final AccountDiffPreference dp, final AsyncCallback<PatchScript> callback)
+DECL|method|patchScript (final Patch.Key patchKey, final PatchSet.Id psa, final PatchSet.Id psb, final DiffPreferencesInfo dp, final AsyncCallback<PatchScript> callback)
 specifier|public
 name|void
 name|patchScript
@@ -399,7 +399,7 @@ name|Id
 name|psb
 parameter_list|,
 specifier|final
-name|AccountDiffPreference
+name|DiffPreferencesInfo
 name|dp
 parameter_list|,
 specifier|final
