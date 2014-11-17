@@ -138,20 +138,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|ArrayListMultimap
@@ -567,6 +553,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -1611,7 +1607,7 @@ name|checkState
 argument_list|(
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|update
 operator|.
@@ -1662,7 +1658,7 @@ name|checkState
 argument_list|(
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|update
 operator|.

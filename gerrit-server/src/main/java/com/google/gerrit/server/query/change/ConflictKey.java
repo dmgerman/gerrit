@@ -74,20 +74,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -119,6 +105,16 @@ operator|.
 name|io
 operator|.
 name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -361,7 +357,7 @@ block|{
 return|return
 name|Objects
 operator|.
-name|hashCode
+name|hash
 argument_list|(
 name|commit
 argument_list|,

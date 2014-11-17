@@ -136,20 +136,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|cache
 operator|.
 name|CacheLoader
@@ -561,6 +547,16 @@ operator|.
 name|util
 operator|.
 name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -1086,7 +1082,7 @@ decl_stmt|;
 return|return
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|prior
 argument_list|,
@@ -1097,7 +1093,7 @@ argument_list|)
 operator|&&
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|next
 argument_list|,
@@ -1108,7 +1104,7 @@ argument_list|)
 operator|&&
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|strategyName
 argument_list|,
@@ -1133,7 +1129,7 @@ block|{
 return|return
 name|Objects
 operator|.
-name|hashCode
+name|hash
 argument_list|(
 name|prior
 argument_list|,
@@ -1242,7 +1238,7 @@ if|if
 condition|(
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|key
 operator|.

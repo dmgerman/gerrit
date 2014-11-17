@@ -118,20 +118,6 @@ name|google
 operator|.
 name|common
 operator|.
-name|base
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
 name|collect
 operator|.
 name|ImmutableList
@@ -384,6 +370,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/**  * Normalizes votes on labels according to project config and permissions.  *<p>  * Votes are recorded in the database for a user based on the state of the  * project at that time: what labels are defined for the project, and what the  * user is allowed to vote on. Both of those can change between the time a vote  * is originally made and a later point, for example when a change is submitted.  * This class normalizes old votes against current project configuration.  */
 end_comment
@@ -575,7 +571,7 @@ decl_stmt|;
 return|return
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|unchanged
 argument_list|,
@@ -586,7 +582,7 @@ argument_list|)
 operator|&&
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|updated
 argument_list|,
@@ -597,7 +593,7 @@ argument_list|)
 operator|&&
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|deleted
 argument_list|,
@@ -622,7 +618,7 @@ block|{
 return|return
 name|Objects
 operator|.
-name|hashCode
+name|hash
 argument_list|(
 name|unchanged
 argument_list|,

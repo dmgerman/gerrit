@@ -82,20 +82,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -121,6 +107,16 @@ operator|.
 name|net
 operator|.
 name|URLClassLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -426,7 +422,7 @@ block|{
 return|return
 name|Objects
 operator|.
-name|hashCode
+name|hash
 argument_list|(
 name|storeName
 argument_list|)

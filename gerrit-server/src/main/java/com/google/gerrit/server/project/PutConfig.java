@@ -104,20 +104,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Strings
 import|;
 end_import
@@ -641,6 +627,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -1336,7 +1332,7 @@ condition|(
 operator|!
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|baseRev
 argument_list|,

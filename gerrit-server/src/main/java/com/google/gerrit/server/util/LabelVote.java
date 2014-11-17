@@ -92,20 +92,6 @@ name|common
 operator|.
 name|base
 operator|.
-name|Objects
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
 name|Strings
 import|;
 end_import
@@ -139,6 +125,16 @@ operator|.
 name|client
 operator|.
 name|PatchSetApproval
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -622,7 +618,7 @@ decl_stmt|;
 return|return
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|name
 argument_list|,

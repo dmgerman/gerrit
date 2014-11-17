@@ -66,15 +66,11 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|io
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Objects
+name|File
 import|;
 end_import
 
@@ -82,9 +78,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|File
+name|Objects
 import|;
 end_import
 
@@ -174,7 +170,7 @@ decl_stmt|;
 return|return
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|name
 argument_list|,
@@ -185,7 +181,7 @@ argument_list|)
 operator|&&
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|version
 argument_list|,
@@ -196,7 +192,7 @@ argument_list|)
 operator|&&
 name|Objects
 operator|.
-name|equal
+name|equals
 argument_list|(
 name|pluginFile
 argument_list|,
@@ -226,7 +222,7 @@ block|{
 return|return
 name|Objects
 operator|.
-name|hashCode
+name|hash
 argument_list|(
 name|name
 argument_list|,
