@@ -68,6 +68,26 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|PermissionRule
+operator|.
+name|Action
+operator|.
+name|ALLOW
+import|;
+end_import
+
+begin_import
+import|import static
 name|java
 operator|.
 name|nio
@@ -1145,6 +1165,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|rule
+operator|.
+name|getAction
+argument_list|()
+operator|==
+name|ALLOW
+operator|&&
 name|ref
 operator|.
 name|getUUID
