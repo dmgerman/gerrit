@@ -236,6 +236,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|MergeTip
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MergeUtil
 import|;
 end_import
@@ -710,15 +726,18 @@ operator|=
 name|args
 expr_stmt|;
 block|}
-comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param mergeTip the merge tip.    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy. Implementations are responsible for ordering    *        of commits, and should not modify the input in place.    * @return the new merge tip.    * @throws MergeException    */
-DECL|method|run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
+comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param currentTip the mergeTip    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy. Implementations are responsible for ordering    *        of commits, and should not modify the input in place.    * @return the new merge tip.    * @throws MergeException    */
+DECL|method|run (final CodeReviewCommit currentTip, final Collection<CodeReviewCommit> toMerge)
 specifier|public
-name|CodeReviewCommit
+specifier|final
+name|MergeTip
 name|run
 parameter_list|(
+specifier|final
 name|CodeReviewCommit
-name|mergeTip
+name|currentTip
 parameter_list|,
+specifier|final
 name|Collection
 argument_list|<
 name|CodeReviewCommit
@@ -735,21 +754,21 @@ expr_stmt|;
 return|return
 name|_run
 argument_list|(
-name|mergeTip
+name|currentTip
 argument_list|,
 name|toMerge
 argument_list|)
 return|;
 block|}
 comment|/** @see #run(CodeReviewCommit, Collection) */
-DECL|method|_run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit currentTip, Collection<CodeReviewCommit> toMerge)
 specifier|protected
 specifier|abstract
-name|CodeReviewCommit
+name|MergeTip
 name|_run
 parameter_list|(
 name|CodeReviewCommit
-name|mergeTip
+name|currentTip
 parameter_list|,
 name|Collection
 argument_list|<

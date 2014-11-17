@@ -134,6 +134,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|MergeTip
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -177,14 +193,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
+DECL|method|_run (final CodeReviewCommit branchTip, final Collection<CodeReviewCommit> toMerge)
 specifier|protected
-name|CodeReviewCommit
+name|MergeTip
 name|_run
 parameter_list|(
+specifier|final
 name|CodeReviewCommit
-name|mergeTip
+name|branchTip
 parameter_list|,
+specifier|final
 name|Collection
 argument_list|<
 name|CodeReviewCommit
@@ -194,6 +212,17 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+name|MergeTip
+name|mergeTip
+init|=
+operator|new
+name|MergeTip
+argument_list|(
+name|branchTip
+argument_list|,
+name|toMerge
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -213,8 +242,9 @@ argument_list|,
 name|toMerge
 argument_list|)
 decl_stmt|;
+specifier|final
 name|CodeReviewCommit
-name|newMergeTip
+name|newMergeTipCommit
 init|=
 name|args
 operator|.
@@ -222,7 +252,7 @@ name|mergeUtil
 operator|.
 name|getFirstFastForward
 argument_list|(
-name|mergeTip
+name|branchTip
 argument_list|,
 name|args
 operator|.
@@ -231,6 +261,18 @@ argument_list|,
 name|sorted
 argument_list|)
 decl_stmt|;
+name|mergeTip
+operator|.
+name|moveTipTo
+argument_list|(
+name|newMergeTipCommit
+argument_list|,
+name|newMergeTipCommit
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 operator|!
@@ -240,6 +282,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+specifier|final
 name|CodeReviewCommit
 name|n
 init|=
@@ -277,7 +320,7 @@ name|args
 operator|.
 name|canMergeFlag
 argument_list|,
-name|newMergeTip
+name|newMergeTipCommit
 argument_list|,
 name|args
 operator|.
@@ -290,7 +333,7 @@ name|submitApproval
 argument_list|)
 expr_stmt|;
 return|return
-name|newMergeTip
+name|mergeTip
 return|;
 block|}
 annotation|@

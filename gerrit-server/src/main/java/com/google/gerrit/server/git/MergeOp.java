@@ -1621,7 +1621,7 @@ name|branchTip
 decl_stmt|;
 DECL|field|mergeTip
 specifier|private
-name|CodeReviewCommit
+name|MergeTip
 name|mergeTip
 decl_stmt|;
 DECL|field|inserter
@@ -2179,6 +2179,9 @@ argument_list|(
 name|submitType
 argument_list|)
 decl_stmt|;
+name|MergeTip
+name|mergeTip
+init|=
 name|preMerge
 argument_list|(
 name|strategy
@@ -2190,7 +2193,7 @@ argument_list|(
 name|submitType
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|RefUpdate
 name|update
 init|=
@@ -2213,6 +2216,8 @@ name|get
 argument_list|(
 name|submitType
 argument_list|)
+argument_list|,
+name|mergeTip
 argument_list|)
 expr_stmt|;
 name|updateSubscriptions
@@ -2381,6 +2386,8 @@ block|}
 name|updateChangeStatus
 argument_list|(
 name|toUpdate
+argument_list|,
+name|mergeTip
 argument_list|)
 expr_stmt|;
 for|for
@@ -2772,7 +2779,7 @@ return|;
 block|}
 DECL|method|preMerge (SubmitStrategy strategy, List<CodeReviewCommit> toMerge)
 specifier|private
-name|void
+name|MergeTip
 name|preMerge
 parameter_list|(
 name|SubmitStrategy
@@ -2846,6 +2853,9 @@ name|getNewCommits
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|mergeTip
+return|;
 block|}
 DECL|method|createStrategy (SubmitType submitType)
 specifier|private
@@ -3921,6 +3931,11 @@ argument_list|(
 name|chg
 argument_list|,
 literal|null
+argument_list|,
+name|commit
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4168,18 +4183,32 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+name|CodeReviewCommit
+name|currentTip
+init|=
+name|mergeTip
+operator|!=
+literal|null
+condition|?
+name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
+else|:
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|branchTip
 operator|==
-name|mergeTip
+name|currentTip
 condition|)
 block|{
 name|logDebug
 argument_list|(
 literal|"Branch already at merge tip {}, no update to perform"
 argument_list|,
-name|mergeTip
+name|currentTip
 operator|.
 name|name
 argument_list|()
@@ -4192,7 +4221,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|mergeTip
+name|currentTip
 operator|==
 literal|null
 condition|)
@@ -4253,7 +4282,7 @@ name|load
 argument_list|(
 name|repo
 argument_list|,
-name|mergeTip
+name|currentTip
 argument_list|)
 expr_stmt|;
 block|}
@@ -4271,7 +4300,7 @@ literal|"Submit would store invalid"
 operator|+
 literal|" project configuration "
 operator|+
-name|mergeTip
+name|currentTip
 operator|.
 name|name
 argument_list|()
@@ -4309,7 +4338,7 @@ name|branchUpdate
 operator|.
 name|setNewObjectId
 argument_list|(
-name|mergeTip
+name|currentTip
 argument_list|)
 expr_stmt|;
 name|branchUpdate
@@ -4401,7 +4430,7 @@ operator|.
 name|getOldObjectId
 argument_list|()
 argument_list|,
-name|mergeTip
+name|currentTip
 argument_list|)
 expr_stmt|;
 block|}
@@ -4600,6 +4629,9 @@ argument_list|,
 name|getAccount
 argument_list|(
 name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4709,7 +4741,7 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|updateChangeStatus (List<Change> submitted)
+DECL|method|updateChangeStatus (List<Change> submitted, MergeTip mergeTip)
 specifier|private
 name|void
 name|updateChangeStatus
@@ -4719,6 +4751,9 @@ argument_list|<
 name|Change
 argument_list|>
 name|submitted
+parameter_list|,
+name|MergeTip
+name|mergeTip
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -4822,6 +4857,34 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+name|String
+name|commitName
+init|=
+name|commit
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+comment|// If mergeTip is null merge failed and mergeResultRev will not be read.
+name|String
+name|mergeResultRev
+init|=
+name|mergeTip
+operator|!=
+literal|null
+condition|?
+name|mergeTip
+operator|.
+name|getMergeResults
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|commitName
+argument_list|)
+else|:
+literal|null
+decl_stmt|;
 try|try
 block|{
 switch|switch
@@ -4847,6 +4910,8 @@ argument_list|(
 name|commit
 argument_list|)
 argument_list|)
+argument_list|,
+name|mergeResultRev
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4878,6 +4943,8 @@ argument_list|(
 name|commit
 argument_list|)
 argument_list|)
+argument_list|,
+name|mergeResultRev
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4889,6 +4956,8 @@ argument_list|(
 name|c
 argument_list|,
 literal|null
+argument_list|,
+name|mergeResultRev
 argument_list|)
 expr_stmt|;
 break|break;
@@ -5043,6 +5112,9 @@ operator|||
 name|branchTip
 operator|!=
 name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -5066,6 +5138,9 @@ argument_list|(
 name|destBranch
 argument_list|,
 name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 argument_list|,
 name|rw
 argument_list|,
@@ -5083,6 +5158,9 @@ argument_list|,
 name|getAccount
 argument_list|(
 name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -5734,7 +5812,7 @@ return|return
 name|m
 return|;
 block|}
-DECL|method|setMerged (Change c, ChangeMessage msg)
+DECL|method|setMerged (Change c, ChangeMessage msg, String mergeResultRev)
 specifier|private
 name|void
 name|setMerged
@@ -5744,6 +5822,9 @@ name|c
 parameter_list|,
 name|ChangeMessage
 name|msg
+parameter_list|,
+name|String
+name|mergeResultRev
 parameter_list|)
 throws|throws
 name|OrmException
@@ -5964,6 +6045,8 @@ argument_list|,
 name|merged
 argument_list|,
 name|db
+argument_list|,
+name|mergeResultRev
 argument_list|)
 expr_stmt|;
 block|}
