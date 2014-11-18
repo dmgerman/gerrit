@@ -1112,8 +1112,6 @@ name|ref
 parameter_list|)
 throws|throws
 name|GitAPIException
-throws|,
-name|IOException
 block|{
 name|GitUtil
 operator|.
@@ -1146,8 +1144,6 @@ name|ref
 parameter_list|)
 throws|throws
 name|GitAPIException
-throws|,
-name|IOException
 throws|,
 name|ConcurrentRefUpdateException
 throws|,
