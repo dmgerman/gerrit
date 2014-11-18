@@ -9884,7 +9884,10 @@ name|maxBatchChanges
 init|=
 name|receiveConfig
 operator|.
-name|maxBatchChanges
+name|getEffectiveMaxBatchChangesLimit
+argument_list|(
+name|currentUser
+argument_list|)
 decl_stmt|;
 for|for
 control|(

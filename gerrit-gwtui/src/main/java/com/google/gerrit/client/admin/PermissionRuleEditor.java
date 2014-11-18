@@ -1277,6 +1277,26 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|name
+operator|.
+name|equals
+argument_list|(
+name|GlobalCapability
+operator|.
+name|BATCH_CHANGES_LIMIT
+argument_list|)
+condition|)
+block|{
+name|min
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|isDeleted ()
 name|boolean

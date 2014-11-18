@@ -130,6 +130,11 @@ specifier|public
 name|String
 name|administrateServer
 decl_stmt|;
+DECL|field|batchChangesLimit
+specifier|public
+name|String
+name|batchChangesLimit
+decl_stmt|;
 DECL|field|createAccount
 specifier|public
 name|String
