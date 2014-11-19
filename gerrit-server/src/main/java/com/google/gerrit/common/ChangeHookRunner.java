@@ -294,7 +294,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -1097,16 +1097,16 @@ name|listener
 decl_stmt|;
 DECL|field|user
 specifier|final
-name|IdentifiedUser
+name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|ChangeListenerHolder (ChangeListener l, IdentifiedUser u)
+DECL|method|ChangeListenerHolder (ChangeListener l, CurrentUser u)
 name|ChangeListenerHolder
 parameter_list|(
 name|ChangeListener
 name|l
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|u
 parameter_list|)
 block|{
@@ -1999,7 +1999,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addChangeListener (ChangeListener listener, IdentifiedUser user)
+DECL|method|addChangeListener (ChangeListener listener, CurrentUser user)
 specifier|public
 name|void
 name|addChangeListener
@@ -2007,7 +2007,7 @@ parameter_list|(
 name|ChangeListener
 name|listener
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|)
 block|{
@@ -5420,7 +5420,7 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isVisibleTo (Change change, IdentifiedUser user, ReviewDb db)
+DECL|method|isVisibleTo (Change change, CurrentUser user, ReviewDb db)
 specifier|private
 name|boolean
 name|isVisibleTo
@@ -5428,7 +5428,7 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|,
 name|ReviewDb
@@ -5487,7 +5487,7 @@ name|db
 argument_list|)
 return|;
 block|}
-DECL|method|isVisibleTo (Branch.NameKey branchName, IdentifiedUser user)
+DECL|method|isVisibleTo (Branch.NameKey branchName, CurrentUser user)
 specifier|private
 name|boolean
 name|isVisibleTo
@@ -5497,7 +5497,7 @@ operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|)
 block|{

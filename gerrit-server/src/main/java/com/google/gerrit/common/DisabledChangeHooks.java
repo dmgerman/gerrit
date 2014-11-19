@@ -202,7 +202,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|CurrentUser
 import|;
 end_import
 
@@ -285,7 +285,7 @@ name|ChangeHooks
 block|{
 annotation|@
 name|Override
-DECL|method|addChangeListener (ChangeListener listener, IdentifiedUser user)
+DECL|method|addChangeListener (ChangeListener listener, CurrentUser user)
 specifier|public
 name|void
 name|addChangeListener
@@ -293,7 +293,7 @@ parameter_list|(
 name|ChangeListener
 name|listener
 parameter_list|,
-name|IdentifiedUser
+name|CurrentUser
 name|user
 parameter_list|)
 block|{   }
