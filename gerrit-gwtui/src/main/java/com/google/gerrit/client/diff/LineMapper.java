@@ -867,7 +867,9 @@ name|Objects
 operator|.
 name|hash
 argument_list|(
-name|this
+name|line
+argument_list|,
+name|aligned
 argument_list|)
 return|;
 block|}
