@@ -1420,6 +1420,16 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|setWindowTitle
+argument_list|(
+name|FileInfo
+operator|.
+name|getFileName
+argument_list|(
+name|path
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
