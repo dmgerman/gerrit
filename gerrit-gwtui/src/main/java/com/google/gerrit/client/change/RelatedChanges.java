@@ -541,7 +541,6 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|enum|Tab
-specifier|private
 enum|enum
 name|Tab
 block|{
@@ -850,6 +849,12 @@ name|tooltip
 expr_stmt|;
 block|}
 block|}
+DECL|field|savedTab
+specifier|private
+specifier|static
+name|Tab
+name|savedTab
+decl_stmt|;
 DECL|field|tabs
 specifier|private
 specifier|final
@@ -1012,7 +1017,9 @@ name|panel
 init|=
 operator|new
 name|RelatedChangesTab
-argument_list|()
+argument_list|(
+name|tabInfo
+argument_list|)
 decl_stmt|;
 name|add
 argument_list|(
@@ -1590,6 +1597,20 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|setSavedTab (Tab subject)
+specifier|static
+name|void
+name|setSavedTab
+parameter_list|(
+name|Tab
+name|subject
+parameter_list|)
+block|{
+name|savedTab
+operator|=
+name|subject
+expr_stmt|;
+block|}
 DECL|method|getTab (Tab tabInfo)
 specifier|private
 name|RelatedChangesTab
@@ -2026,6 +2047,24 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+block|}
+if|if
+condition|(
+name|tabInfo
+operator|==
+name|savedTab
+operator|&&
+name|enabled
+condition|)
+block|{
+name|selectTab
+argument_list|(
+name|savedTab
+operator|.
+name|ordinal
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
