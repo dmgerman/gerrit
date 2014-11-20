@@ -116,6 +116,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Account
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|Branch
 import|;
 end_import
@@ -415,7 +431,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-DECL|method|newChange (Project.NameKey project, IdentifiedUser user)
+DECL|method|newChange (Project.NameKey project, Account.Id userId)
 specifier|public
 specifier|static
 name|Change
@@ -426,8 +442,10 @@ operator|.
 name|NameKey
 name|project
 parameter_list|,
-name|IdentifiedUser
-name|user
+name|Account
+operator|.
+name|Id
+name|userId
 parameter_list|)
 block|{
 return|return
@@ -435,7 +453,7 @@ name|newChange
 argument_list|(
 name|project
 argument_list|,
-name|user
+name|userId
 argument_list|,
 name|nextChangeId
 operator|.
@@ -444,7 +462,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|newChange (Project.NameKey project, IdentifiedUser user, int id)
+DECL|method|newChange (Project.NameKey project, Account.Id userId, int id)
 specifier|public
 specifier|static
 name|Change
@@ -455,8 +473,10 @@ operator|.
 name|NameKey
 name|project
 parameter_list|,
-name|IdentifiedUser
-name|user
+name|Account
+operator|.
+name|Id
+name|userId
 parameter_list|,
 name|int
 name|id
@@ -491,13 +511,7 @@ argument_list|)
 argument_list|,
 name|changeId
 argument_list|,
-name|user
-operator|.
-name|getAccount
-argument_list|()
-operator|.
-name|getId
-argument_list|()
+name|userId
 argument_list|,
 operator|new
 name|Branch

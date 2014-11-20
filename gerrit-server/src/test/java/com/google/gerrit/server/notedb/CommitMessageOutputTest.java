@@ -302,6 +302,9 @@ argument_list|(
 name|project
 argument_list|,
 name|changeOwner
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|,
 literal|1
 argument_list|)
@@ -556,6 +559,9 @@ argument_list|(
 name|project
 argument_list|,
 name|changeOwner
+operator|.
+name|getAccountId
+argument_list|()
 argument_list|,
 literal|1
 argument_list|)
