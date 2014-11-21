@@ -108,11 +108,6 @@ specifier|public
 name|boolean
 name|flushCaches
 decl_stmt|;
-DECL|field|generateHttpPassword
-specifier|public
-name|boolean
-name|generateHttpPassword
-decl_stmt|;
 DECL|field|killTask
 specifier|public
 name|boolean
