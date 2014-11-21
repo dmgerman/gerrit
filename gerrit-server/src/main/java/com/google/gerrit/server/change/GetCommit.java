@@ -190,13 +190,13 @@ end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|kohsuke
 operator|.
-name|inject
+name|args4j
 operator|.
-name|Singleton
+name|Option
 import|;
 end_import
 
@@ -213,8 +213,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|GetCommit
 specifier|public
 class|class
@@ -230,6 +228,22 @@ specifier|private
 specifier|final
 name|ChangeJson
 name|json
+decl_stmt|;
+annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--links"
+argument_list|,
+name|usage
+operator|=
+literal|"Add weblinks"
+argument_list|)
+DECL|field|addLinks
+specifier|private
+name|boolean
+name|addLinks
 decl_stmt|;
 annotation|@
 name|Inject
@@ -285,6 +299,16 @@ name|resource
 operator|.
 name|getPatchSet
 argument_list|()
+argument_list|,
+name|resource
+operator|.
+name|getChange
+argument_list|()
+operator|.
+name|getProject
+argument_list|()
+argument_list|,
+name|addLinks
 argument_list|)
 argument_list|)
 decl_stmt|;

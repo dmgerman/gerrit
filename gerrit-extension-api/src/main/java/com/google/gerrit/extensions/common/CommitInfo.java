@@ -115,6 +115,14 @@ specifier|public
 name|String
 name|message
 decl_stmt|;
+DECL|field|webLinks
+specifier|public
+name|List
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|webLinks
+decl_stmt|;
 block|}
 end_class
 

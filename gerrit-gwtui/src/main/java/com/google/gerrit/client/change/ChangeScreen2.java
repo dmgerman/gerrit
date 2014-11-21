@@ -2121,10 +2121,6 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|ALL_REVISIONS
-argument_list|,
-name|ListChangesOption
-operator|.
-name|WEB_LINKS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5830,7 +5826,7 @@ return|return;
 block|}
 name|ChangeApi
 operator|.
-name|revision
+name|commitWithLinks
 argument_list|(
 name|changeId
 operator|.
@@ -5841,15 +5837,7 @@ name|rev
 operator|.
 name|name
 argument_list|()
-argument_list|)
-operator|.
-name|view
-argument_list|(
-literal|"commit"
-argument_list|)
-operator|.
-name|get
-argument_list|(
+argument_list|,
 name|group
 operator|.
 name|add
@@ -5888,7 +5876,7 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{         }
+block|{           }
 block|}
 argument_list|)
 argument_list|)

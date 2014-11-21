@@ -1693,18 +1693,6 @@ name|fetch
 parameter_list|()
 comment|/*-{ return this.fetch; }-*/
 function_decl|;
-DECL|method|web_links ()
-specifier|public
-specifier|final
-specifier|native
-name|JsArray
-argument_list|<
-name|WebLinkInfo
-argument_list|>
-name|web_links
-parameter_list|()
-comment|/*-{ return this.web_links; }-*/
-function_decl|;
 DECL|method|sortRevisionInfoByNumber (JsArray<RevisionInfo> list)
 specifier|public
 specifier|static
@@ -2073,6 +2061,18 @@ name|String
 name|message
 parameter_list|()
 comment|/*-{ return this.message; }-*/
+function_decl|;
+DECL|method|web_links ()
+specifier|public
+specifier|final
+specifier|native
+name|JsArray
+argument_list|<
+name|WebLinkInfo
+argument_list|>
+name|web_links
+parameter_list|()
+comment|/*-{ return this.web_links; }-*/
 function_decl|;
 DECL|method|CommitInfo ()
 specifier|protected

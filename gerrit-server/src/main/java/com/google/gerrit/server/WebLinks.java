@@ -270,6 +270,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -536,7 +552,7 @@ name|branchLinks
 expr_stmt|;
 block|}
 comment|/**    *    * @param project Project name.    * @param commit SHA1 of commit.    * @return Links for patch sets.    */
-DECL|method|getPatchSetLinks (final String project, final String commit)
+DECL|method|getPatchSetLinks (final Project.NameKey project, final String commit)
 specifier|public
 name|FluentIterable
 argument_list|<
@@ -545,7 +561,9 @@ argument_list|>
 name|getPatchSetLinks
 parameter_list|(
 specifier|final
-name|String
+name|Project
+operator|.
+name|NameKey
 name|project
 parameter_list|,
 specifier|final
@@ -588,6 +606,9 @@ operator|.
 name|getPathSetWebLink
 argument_list|(
 name|project
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|commit
 argument_list|)
