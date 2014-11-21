@@ -148,7 +148,7 @@ literal|"batchChangesLimit"
 decl_stmt|;
 comment|/**    * Default maximum number of changes that may be pushed in a batch, 0 means no    * limit. This is just used as a suggestion for prepopulating the field in the    * access UI.    */
 DECL|field|DEFAULT_MAX_BATCH_CHANGES_LIMIT
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int
