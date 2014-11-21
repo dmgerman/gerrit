@@ -1132,6 +1132,7 @@ throw|;
 block|}
 block|}
 DECL|interface|AssistedFactory
+specifier|public
 interface|interface
 name|AssistedFactory
 block|{
