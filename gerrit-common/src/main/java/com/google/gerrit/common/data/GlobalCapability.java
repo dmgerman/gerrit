@@ -146,6 +146,16 @@ name|BATCH_CHANGES_LIMIT
 init|=
 literal|"batchChangesLimit"
 decl_stmt|;
+comment|/**    * Default maximum number of changes that may be pushed in a batch, 0 means no    * limit. This is just used as a suggestion for prepopulating the field in the    * access UI.    */
+DECL|field|DEFAULT_MAX_BATCH_CHANGES_LIMIT
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MAX_BATCH_CHANGES_LIMIT
+init|=
+literal|0
+decl_stmt|;
 comment|/** Can create any account on the server. */
 DECL|field|CREATE_ACCOUNT
 specifier|public
@@ -155,16 +165,6 @@ name|String
 name|CREATE_ACCOUNT
 init|=
 literal|"createAccount"
-decl_stmt|;
-comment|/** Can modify any account on the server. */
-DECL|field|MODIFY_ACCOUNT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|MODIFY_ACCOUNT
-init|=
-literal|"modifyAccount"
 decl_stmt|;
 comment|/** Can create any group on the server. */
 DECL|field|CREATE_GROUP
@@ -215,6 +215,16 @@ name|String
 name|KILL_TASK
 init|=
 literal|"killTask"
+decl_stmt|;
+comment|/** Can modify any account on the server. */
+DECL|field|MODIFY_ACCOUNT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MODIFY_ACCOUNT
+init|=
+literal|"modifyAccount"
 decl_stmt|;
 comment|/** Queue a user can access to submit their tasks to. */
 DECL|field|PRIORITY
@@ -325,16 +335,6 @@ name|String
 name|VIEW_QUEUE
 init|=
 literal|"viewQueue"
-decl_stmt|;
-comment|/**    * Default maximum number of changes that may be pushed in a batch, 0 means no    * limit. This is just used as a suggestion for prepopulating the field in the    * access UI.    */
-DECL|field|DEFAULT_MAX_BATCH_CHANGES
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|DEFAULT_MAX_BATCH_CHANGES
-init|=
-literal|0
 decl_stmt|;
 DECL|field|NAMES_ALL
 specifier|private
@@ -676,7 +676,7 @@ name|MAX_VALUE
 argument_list|,
 literal|0
 argument_list|,
-name|DEFAULT_MAX_BATCH_CHANGES
+name|DEFAULT_MAX_BATCH_CHANGES_LIMIT
 argument_list|)
 return|;
 block|}
