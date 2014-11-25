@@ -436,22 +436,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|change
-operator|.
-name|ChangeJson
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|config
 operator|.
 name|AllProjectsName
@@ -1520,8 +1504,6 @@ return|;
 block|}
 DECL|method|getChange (String changeId, ListChangesOption... options)
 specifier|protected
-name|ChangeJson
-operator|.
 name|ChangeInfo
 name|getChange
 parameter_list|(
@@ -1548,8 +1530,6 @@ return|;
 block|}
 DECL|method|getChange (RestSession session, String changeId, ListChangesOption... options)
 specifier|protected
-name|ChangeJson
-operator|.
 name|ChangeInfo
 name|getChange
 parameter_list|(
@@ -1628,8 +1608,6 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|,
-name|ChangeJson
-operator|.
 name|ChangeInfo
 operator|.
 name|class

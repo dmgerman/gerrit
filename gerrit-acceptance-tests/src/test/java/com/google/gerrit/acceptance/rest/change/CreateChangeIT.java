@@ -154,22 +154,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|change
-operator|.
-name|ChangeJson
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -520,8 +504,6 @@ name|getStatusCode
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ChangeJson
-operator|.
 name|ChangeInfo
 name|info
 init|=
@@ -535,8 +517,6 @@ operator|.
 name|getReader
 argument_list|()
 argument_list|,
-name|ChangeJson
-operator|.
 name|ChangeInfo
 operator|.
 name|class

@@ -74,11 +74,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|change
-operator|.
-name|ChangeJson
+name|common
 operator|.
 name|ChangeInfo
 import|;
