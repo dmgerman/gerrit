@@ -144,6 +144,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|ProblemInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -502,13 +518,13 @@ specifier|private
 name|RevCommit
 name|currPsCommit
 decl_stmt|;
-DECL|field|messages
+DECL|field|problems
 specifier|private
 name|List
 argument_list|<
-name|String
+name|ProblemInfo
 argument_list|>
-name|messages
+name|problems
 decl_stmt|;
 annotation|@
 name|Inject
@@ -559,7 +575,7 @@ name|rw
 operator|=
 literal|null
 expr_stmt|;
-name|messages
+name|problems
 operator|=
 operator|new
 name|ArrayList
@@ -571,7 +587,7 @@ DECL|method|check (Change c)
 specifier|public
 name|List
 argument_list|<
-name|String
+name|ProblemInfo
 argument_list|>
 name|check
 parameter_list|(
@@ -592,7 +608,7 @@ name|checkImpl
 argument_list|()
 expr_stmt|;
 return|return
-name|messages
+name|problems
 return|;
 block|}
 finally|finally
@@ -689,9 +705,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 literal|"Missing change owner: "
 operator|+
@@ -758,9 +772,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1156,9 +1168,7 @@ operator|>
 literal|1
 condition|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1238,9 +1248,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 literal|"Failed to look up destination ref: "
 operator|+
@@ -1256,9 +1264,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 literal|"Destination ref not found (may be new branch): "
 operator|+
@@ -1320,9 +1326,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 literal|"Error checking whether patch set "
 operator|+
@@ -1355,9 +1359,7 @@ operator|.
 name|MERGED
 condition|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1414,9 +1416,7 @@ operator|.
 name|MERGED
 condition|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1484,9 +1484,7 @@ name|MissingObjectException
 name|e
 parameter_list|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1510,9 +1508,7 @@ name|IncorrectObjectTypeException
 name|e
 parameter_list|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1536,9 +1532,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|String
 operator|.
@@ -1560,6 +1554,36 @@ return|return
 literal|null
 return|;
 block|}
+DECL|method|problem (String msg)
+specifier|private
+name|void
+name|problem
+parameter_list|(
+name|String
+name|msg
+parameter_list|)
+block|{
+name|ProblemInfo
+name|p
+init|=
+operator|new
+name|ProblemInfo
+argument_list|()
+decl_stmt|;
+name|p
+operator|.
+name|message
+operator|=
+name|msg
+expr_stmt|;
+name|problems
+operator|.
+name|add
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|error (String msg, Throwable t)
 specifier|private
 name|boolean
@@ -1572,9 +1596,7 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|messages
-operator|.
-name|add
+name|problem
 argument_list|(
 name|msg
 argument_list|)
