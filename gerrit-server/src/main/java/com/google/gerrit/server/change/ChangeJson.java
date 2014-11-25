@@ -6180,6 +6180,15 @@ argument_list|()
 expr_stmt|;
 name|out
 operator|.
+name|ref
+operator|=
+name|in
+operator|.
+name|getRefName
+argument_list|()
+expr_stmt|;
+name|out
+operator|.
 name|draft
 operator|=
 name|in

@@ -113,6 +113,11 @@ specifier|public
 name|int
 name|_number
 decl_stmt|;
+DECL|field|ref
+specifier|public
+name|String
+name|ref
+decl_stmt|;
 DECL|field|fetch
 specifier|public
 name|Map
