@@ -200,6 +200,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -282,7 +298,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -460,16 +476,14 @@ decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReviewerJson (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ReviewerJson (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, ApprovalsUtil approvalsUtil, AccountLoader.Factory accountLoaderFactory)
 name|ReviewerJson
 parameter_list|(
 name|Provider
@@ -486,9 +500,7 @@ parameter_list|,
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -552,9 +564,7 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|loader
 init|=
 name|accountLoaderFactory
@@ -695,9 +705,15 @@ name|ctl
 argument_list|,
 name|psId
 argument_list|,
+operator|new
+name|Account
+operator|.
+name|Id
+argument_list|(
 name|out
 operator|.
-name|_id
+name|_accountId
+argument_list|)
 argument_list|)
 argument_list|)
 return|;
@@ -1010,6 +1026,9 @@ block|{
 name|super
 argument_list|(
 name|id
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

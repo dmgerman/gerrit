@@ -132,6 +132,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -340,7 +356,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -699,9 +715,7 @@ decl_stmt|;
 DECL|field|infoFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoFactory
@@ -723,7 +737,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountInfo.Loader.Factory infoFactory, Provider<ReviewDb> db, AuditService auditService)
+DECL|method|AddMembers (AccountManager accountManager, AuthConfig authConfig, AccountsCollection accounts, AccountResolver accountResolver, AccountCache accountCache, AccountLoader.Factory infoFactory, Provider<ReviewDb> db, AuditService auditService)
 name|AddMembers
 parameter_list|(
 name|AccountManager
@@ -741,9 +755,7 @@ parameter_list|,
 name|AccountCache
 name|accountCache
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoFactory
@@ -917,9 +929,7 @@ operator|.
 name|getAccountId
 argument_list|()
 decl_stmt|;
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|loader
 init|=
 name|infoFactory

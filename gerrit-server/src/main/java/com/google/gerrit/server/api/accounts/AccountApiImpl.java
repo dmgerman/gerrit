@@ -96,6 +96,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|IdString
@@ -146,7 +162,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -294,9 +310,7 @@ decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -319,12 +333,10 @@ name|starredChangesDelete
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountApiImpl (AccountInfo.Loader.Factory ailf, ChangesCollection changes, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, @Assisted AccountResource account)
+DECL|method|AccountApiImpl (AccountLoader.Factory ailf, ChangesCollection changes, StarredChanges.Create starredChangesCreate, StarredChanges.Delete starredChangesDelete, @Assisted AccountResource account)
 name|AccountApiImpl
 parameter_list|(
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|ailf
@@ -399,9 +411,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 block|{
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accountLoader
 init|=
 name|accountLoaderFactory
@@ -435,12 +445,7 @@ name|fill
 argument_list|()
 expr_stmt|;
 return|return
-name|AccountInfoMapper
-operator|.
-name|fromAcountInfo
-argument_list|(
 name|ai
-argument_list|)
 return|;
 block|}
 catch|catch

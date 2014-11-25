@@ -106,6 +106,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|Url
@@ -156,7 +172,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -212,15 +228,13 @@ DECL|field|range
 name|CommentRange
 name|range
 decl_stmt|;
-DECL|method|CommentInfo (PatchLineComment c, AccountInfo.Loader accountLoader)
+DECL|method|CommentInfo (PatchLineComment c, AccountLoader accountLoader)
 name|CommentInfo
 parameter_list|(
 name|PatchLineComment
 name|c
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accountLoader
 parameter_list|)
 block|{

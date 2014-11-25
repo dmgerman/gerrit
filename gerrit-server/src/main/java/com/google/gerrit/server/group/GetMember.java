@@ -76,6 +76,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|RestReadView
@@ -94,7 +110,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -152,21 +168,17 @@ block|{
 DECL|field|infoFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetMember (AccountInfo.Loader.Factory infoFactory)
+DECL|method|GetMember (AccountLoader.Factory infoFactory)
 name|GetMember
 parameter_list|(
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoFactory
@@ -192,9 +204,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|loader
 init|=
 name|infoFactory

@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -108,7 +124,11 @@ block|,
 comment|/** Unique user identity to login to Gerrit, may be deprecated. */
 DECL|enumConstant|USERNAME
 name|USERNAME
-block|}
+block|,
+comment|/** Numeric account ID, may be deprecated. */
+DECL|enumConstant|ID
+name|ID
+block|;   }
 DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract

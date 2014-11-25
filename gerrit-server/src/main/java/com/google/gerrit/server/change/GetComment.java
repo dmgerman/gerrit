@@ -94,7 +94,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -151,21 +151,17 @@ block|{
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetComment (AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|GetComment (AccountLoader.Factory accountLoaderFactory)
 name|GetComment
 parameter_list|(
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -191,9 +187,7 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accountLoader
 init|=
 name|accountLoaderFactory

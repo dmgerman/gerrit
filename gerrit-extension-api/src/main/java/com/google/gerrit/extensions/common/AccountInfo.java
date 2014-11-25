@@ -66,6 +66,16 @@ name|common
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|AccountInfo
 specifier|public
@@ -92,6 +102,29 @@ specifier|public
 name|String
 name|username
 decl_stmt|;
+DECL|field|avatars
+specifier|public
+name|List
+argument_list|<
+name|AvatarInfo
+argument_list|>
+name|avatars
+decl_stmt|;
+DECL|method|AccountInfo (Integer id)
+specifier|public
+name|AccountInfo
+parameter_list|(
+name|Integer
+name|id
+parameter_list|)
+block|{
+name|this
+operator|.
+name|_accountId
+operator|=
+name|id
+expr_stmt|;
+block|}
 block|}
 end_class
 

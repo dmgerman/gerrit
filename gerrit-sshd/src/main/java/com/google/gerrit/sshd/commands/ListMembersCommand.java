@@ -120,6 +120,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -140,7 +156,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -399,7 +415,7 @@ name|groupCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListMembersCommandImpl (GroupCache groupCache, Factory groupDetailFactory, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ListMembersCommandImpl (GroupCache groupCache, Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
 specifier|protected
 name|ListMembersCommandImpl
 parameter_list|(
@@ -409,9 +425,7 @@ parameter_list|,
 name|Factory
 name|groupDetailFactory
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -564,12 +578,14 @@ name|formatter
 operator|.
 name|addColumn
 argument_list|(
-name|member
-operator|.
-name|_id
+name|Integer
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+name|member
+operator|.
+name|_accountId
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|formatter
