@@ -199,17 +199,20 @@ name|super
 argument_list|(
 name|gb
 argument_list|,
-name|config
-argument_list|,
 name|threadContext
 argument_list|,
 name|serverCtx
 argument_list|,
+name|config
+operator|.
+name|getStringList
+argument_list|(
 literal|"receive"
 argument_list|,
 literal|null
 argument_list|,
 literal|"allowGroup"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// If no group was set, default to "registered users"
