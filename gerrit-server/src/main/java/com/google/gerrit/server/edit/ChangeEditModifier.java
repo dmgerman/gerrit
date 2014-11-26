@@ -1224,7 +1224,7 @@ throw|throw
 operator|new
 name|InvalidChangeOperationException
 argument_list|(
-literal|"Rebase edit against root commit not implemented"
+literal|"Rebase edit against root commit not supported"
 argument_list|)
 throw|;
 block|}
@@ -1783,7 +1783,7 @@ throw|throw
 operator|new
 name|InvalidChangeOperationException
 argument_list|(
-literal|"Modify edit against root commit not implemented"
+literal|"Modify edit against root commit not supported"
 argument_list|)
 throw|;
 block|}
