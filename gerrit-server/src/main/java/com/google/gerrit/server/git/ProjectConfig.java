@@ -3248,12 +3248,10 @@ name|n
 operator|.
 name|setHeader
 argument_list|(
-name|ConfigUtil
+name|rc
 operator|.
 name|getEnum
 argument_list|(
-name|rc
-argument_list|,
 name|NOTIFY
 argument_list|,
 name|sectionName

@@ -1697,12 +1697,10 @@ specifier|final
 name|AuthType
 name|authType
 init|=
-name|ConfigUtil
+name|cfg
 operator|.
 name|getEnum
 argument_list|(
-name|cfg
-argument_list|,
 literal|"auth"
 argument_list|,
 literal|null

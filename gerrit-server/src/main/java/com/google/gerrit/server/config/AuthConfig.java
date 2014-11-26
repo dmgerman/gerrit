@@ -863,12 +863,10 @@ name|cfg
 parameter_list|)
 block|{
 return|return
-name|ConfigUtil
+name|cfg
 operator|.
 name|getEnum
 argument_list|(
-name|cfg
-argument_list|,
 literal|"auth"
 argument_list|,
 literal|null

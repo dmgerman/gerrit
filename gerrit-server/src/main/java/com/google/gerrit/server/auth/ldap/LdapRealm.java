@@ -877,12 +877,10 @@ name|setting
 parameter_list|)
 block|{
 return|return
-name|ConfigUtil
+name|c
 operator|.
 name|getEnum
 argument_list|(
-name|c
-argument_list|,
 literal|"ldap"
 argument_list|,
 literal|null

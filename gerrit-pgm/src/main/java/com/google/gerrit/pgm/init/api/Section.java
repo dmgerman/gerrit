@@ -828,14 +828,12 @@ decl_stmt|;
 name|T
 name|oldValue
 init|=
-name|ConfigUtil
-operator|.
-name|getEnum
-argument_list|(
 name|flags
 operator|.
 name|cfg
-argument_list|,
+operator|.
+name|getEnum
+argument_list|(
 name|section
 argument_list|,
 name|subsection

@@ -587,12 +587,10 @@ expr_stmt|;
 block|}
 name|smtpEncryption
 operator|=
-name|ConfigUtil
+name|cfg
 operator|.
 name|getEnum
 argument_list|(
-name|cfg
-argument_list|,
 literal|"sendemail"
 argument_list|,
 literal|null
