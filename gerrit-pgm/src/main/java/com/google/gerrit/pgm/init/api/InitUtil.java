@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.init
+DECL|package|com.google.gerrit.pgm.init.api
 package|package
 name|com
 operator|.
@@ -63,6 +63,8 @@ operator|.
 name|pgm
 operator|.
 name|init
+operator|.
+name|api
 package|;
 end_package
 
@@ -308,10 +310,12 @@ end_comment
 
 begin_class
 DECL|class|InitUtil
+specifier|public
 class|class
 name|InitUtil
 block|{
 DECL|method|die (String why)
+specifier|public
 specifier|static
 name|Die
 name|die
@@ -329,6 +333,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|die (String why, Throwable cause)
+specifier|public
 specifier|static
 name|Die
 name|die
@@ -351,6 +356,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|savePublic (final FileBasedConfig sec)
+specifier|public
 specifier|static
 name|void
 name|savePublic
@@ -378,6 +384,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|saveSecure (final FileBasedConfig sec)
+specifier|public
 specifier|static
 name|void
 name|saveSecure
@@ -515,6 +522,7 @@ block|}
 block|}
 block|}
 DECL|method|mkdir (final File path)
+specifier|public
 specifier|static
 name|void
 name|mkdir
@@ -550,6 +558,7 @@ throw|;
 block|}
 block|}
 DECL|method|version ()
+specifier|public
 specifier|static
 name|String
 name|version
@@ -571,6 +580,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|username ()
+specifier|public
 specifier|static
 name|String
 name|username
@@ -586,6 +596,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|hostname ()
+specifier|public
 specifier|static
 name|String
 name|hostname
@@ -602,6 +613,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isLocal (final String hostname)
+specifier|public
 specifier|static
 name|boolean
 name|isLocal
@@ -637,6 +649,7 @@ return|;
 block|}
 block|}
 DECL|method|dnOf (String name)
+specifier|public
 specifier|static
 name|String
 name|dnOf
@@ -735,6 +748,7 @@ name|name
 return|;
 block|}
 DECL|method|domainOf (String name)
+specifier|public
 specifier|static
 name|String
 name|domainOf
@@ -813,6 +827,7 @@ name|name
 return|;
 block|}
 DECL|method|extract (final File dst, final Class<?> sibling, final String name)
+specifier|public
 specifier|static
 name|void
 name|extract
@@ -992,6 +1007,7 @@ name|in
 return|;
 block|}
 DECL|method|copy (final File dst, final ByteBuffer buf)
+specifier|public
 specifier|static
 name|void
 name|copy
@@ -1198,6 +1214,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|toURI (String url)
+specifier|public
 specifier|static
 name|URI
 name|toURI
@@ -1273,6 +1290,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|isAnyAddress (final URI u)
+specifier|public
 specifier|static
 name|boolean
 name|isAnyAddress
@@ -1314,6 +1332,7 @@ operator|)
 return|;
 block|}
 DECL|method|portOf (final URI uri)
+specifier|public
 specifier|static
 name|int
 name|portOf
