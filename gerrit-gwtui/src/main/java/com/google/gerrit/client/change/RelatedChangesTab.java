@@ -939,6 +939,14 @@ specifier|final
 name|SimplePanel
 name|panel
 decl_stmt|;
+DECL|field|subject
+specifier|private
+specifier|final
+name|RelatedChanges
+operator|.
+name|Tab
+name|subject
+decl_stmt|;
 DECL|field|showBranches
 specifier|private
 name|boolean
@@ -969,15 +977,26 @@ specifier|private
 name|NavigationList
 name|view
 decl_stmt|;
-DECL|method|RelatedChangesTab ()
+DECL|method|RelatedChangesTab (RelatedChanges.Tab subject)
 name|RelatedChangesTab
-parameter_list|()
+parameter_list|(
+name|RelatedChanges
+operator|.
+name|Tab
+name|subject
+parameter_list|)
 block|{
 name|panel
 operator|=
 operator|new
 name|SimplePanel
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|subject
+operator|=
+name|subject
 expr_stmt|;
 block|}
 annotation|@
@@ -3287,6 +3306,9 @@ name|stopPropagation
 argument_list|()
 expr_stmt|;
 block|}
+name|saveSelectedTab
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -3575,6 +3597,23 @@ break|break;
 block|}
 block|}
 block|}
+name|saveSelectedTab
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|saveSelectedTab ()
+specifier|private
+name|void
+name|saveSelectedTab
+parameter_list|()
+block|{
+name|RelatedChanges
+operator|.
+name|setSavedTab
+argument_list|(
+name|subject
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
