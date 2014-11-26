@@ -643,6 +643,27 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testToHeaderString_NameEmail7 ()
+specifier|public
+name|void
+name|testToHeaderString_NameEmail7
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"=?UTF-8?Q?A_=E2=82=AC_B_=28Code_Review=29?=<a@a>"
+argument_list|,
+name|format
+argument_list|(
+literal|"A \u20ac B (Code Review)"
+argument_list|,
+literal|"a@a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testToHeaderString_Email1 ()
 specifier|public
 name|void
