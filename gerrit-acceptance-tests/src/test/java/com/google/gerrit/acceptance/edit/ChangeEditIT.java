@@ -4785,7 +4785,7 @@ operator|.
 name|getChangeId
 argument_list|()
 operator|+
-literal|"/publish_edit"
+literal|"/edit:publish"
 return|;
 block|}
 DECL|method|urlRebase ()
@@ -4802,7 +4802,7 @@ operator|.
 name|getChangeId
 argument_list|()
 operator|+
-literal|"/rebase_edit"
+literal|"/edit:rebase"
 return|;
 block|}
 DECL|method|toEditInfo (boolean files)

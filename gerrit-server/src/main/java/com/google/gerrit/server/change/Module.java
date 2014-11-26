@@ -1156,7 +1156,7 @@ name|child
 argument_list|(
 name|CHANGE_KIND
 argument_list|,
-literal|"publish_edit"
+literal|"edit:publish"
 argument_list|)
 operator|.
 name|to
@@ -1170,7 +1170,7 @@ name|child
 argument_list|(
 name|CHANGE_KIND
 argument_list|,
-literal|"rebase_edit"
+literal|"edit:rebase"
 argument_list|)
 operator|.
 name|to
