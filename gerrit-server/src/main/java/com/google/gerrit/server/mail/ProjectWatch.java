@@ -1236,7 +1236,7 @@ name|args
 operator|.
 name|groupIncludes
 operator|.
-name|membersOf
+name|subgroupsOf
 argument_list|(
 name|uuid
 argument_list|)
