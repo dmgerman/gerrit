@@ -200,7 +200,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -324,16 +324,14 @@ decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListDrafts (Provider<ReviewDb> db, AccountInfo.Loader.Factory alf, PatchLineCommentsUtil plcUtil)
+DECL|method|ListDrafts (Provider<ReviewDb> db, AccountLoader.Factory alf, PatchLineCommentsUtil plcUtil)
 name|ListDrafts
 parameter_list|(
 name|Provider
@@ -342,9 +340,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|alf
@@ -463,9 +459,7 @@ operator|.
 name|newTreeMap
 argument_list|()
 decl_stmt|;
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accountLoader
 init|=
 name|includeAuthorInfo

@@ -124,7 +124,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -205,7 +205,7 @@ name|ListDrafts
 block|{
 annotation|@
 name|Inject
-DECL|method|ListComments (Provider<ReviewDb> db, AccountInfo.Loader.Factory alf, PatchLineCommentsUtil plcUtil)
+DECL|method|ListComments (Provider<ReviewDb> db, AccountLoader.Factory alf, PatchLineCommentsUtil plcUtil)
 name|ListComments
 parameter_list|(
 name|Provider
@@ -214,9 +214,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|alf

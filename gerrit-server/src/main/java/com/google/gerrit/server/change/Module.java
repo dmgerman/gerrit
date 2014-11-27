@@ -236,7 +236,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -1250,9 +1250,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 argument_list|(
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 operator|.

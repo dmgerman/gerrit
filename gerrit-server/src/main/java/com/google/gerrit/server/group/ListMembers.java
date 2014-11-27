@@ -164,6 +164,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|MethodNotAllowedException
@@ -262,7 +278,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -414,9 +430,7 @@ decl_stmt|;
 DECL|field|accountLoader
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accountLoader
 decl_stmt|;
 annotation|@
@@ -437,7 +451,7 @@ name|recursive
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListMembers (GroupCache groupCache, GroupDetailFactory.Factory groupDetailFactory, AccountInfo.Loader.Factory accountLoaderFactory)
+DECL|method|ListMembers (GroupCache groupCache, GroupDetailFactory.Factory groupDetailFactory, AccountLoader.Factory accountLoaderFactory)
 specifier|protected
 name|ListMembers
 parameter_list|(
@@ -449,9 +463,7 @@ operator|.
 name|Factory
 name|groupDetailFactory
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory

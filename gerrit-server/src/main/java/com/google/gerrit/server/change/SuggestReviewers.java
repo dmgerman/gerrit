@@ -178,6 +178,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|BadRequestException
@@ -352,7 +368,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -635,9 +651,7 @@ decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -836,15 +850,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|SuggestReviewers (AccountVisibility av, AccountInfo.Loader.Factory accountLoaderFactory, AccountControl.Factory accountControlFactory, AccountCache accountCache, GroupMembers.Factory groupMembersFactory, IdentifiedUser.GenericFactory identifiedUserFactory, Provider<CurrentUser> currentUser, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, GroupBackend groupBackend, ReviewerSuggestionCache reviewerSuggestionCache)
+DECL|method|SuggestReviewers (AccountVisibility av, AccountLoader.Factory accountLoaderFactory, AccountControl.Factory accountControlFactory, AccountCache accountCache, GroupMembers.Factory groupMembersFactory, IdentifiedUser.GenericFactory identifiedUserFactory, Provider<CurrentUser> currentUser, Provider<ReviewDb> dbProvider, @GerritServerConfig Config cfg, GroupBackend groupBackend, ReviewerSuggestionCache reviewerSuggestionCache)
 name|SuggestReviewers
 parameter_list|(
 name|AccountVisibility
 name|av
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -1576,6 +1588,9 @@ name|p
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 name|visibilityControl
@@ -1632,6 +1647,9 @@ argument_list|(
 name|p
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 argument_list|,
@@ -1717,6 +1735,9 @@ argument_list|(
 name|p
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1924,6 +1945,9 @@ name|a
 operator|.
 name|getId
 argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|,
 name|visibilityControl
@@ -1972,6 +1996,9 @@ argument_list|(
 name|a
 operator|.
 name|getId
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|)
 argument_list|,

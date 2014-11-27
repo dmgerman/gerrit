@@ -114,9 +114,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|account
+name|common
 operator|.
 name|AccountInfo
 import|;

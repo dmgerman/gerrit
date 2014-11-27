@@ -462,22 +462,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|AccountsCollection
 import|;
 end_import
@@ -495,6 +479,22 @@ operator|.
 name|account
 operator|.
 name|GroupMembers
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|AccountLoader
 import|;
 end_import
 
@@ -890,9 +890,7 @@ decl_stmt|;
 DECL|field|accountLoaderFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
@@ -963,7 +961,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, AddReviewerSender.Factory addReviewerSenderFactory, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountInfo.Loader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, Provider<CurrentUser> currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json, ChangeIndexer indexer)
+DECL|method|PostReviewers (AccountsCollection accounts, ReviewerResource.Factory reviewerFactory, ApprovalsUtil approvalsUtil, AddReviewerSender.Factory addReviewerSenderFactory, GroupsCollection groupsCollection, GroupMembers.Factory groupMembersFactory, AccountLoader.Factory accountLoaderFactory, Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, Provider<CurrentUser> currentUser, IdentifiedUser.GenericFactory identifiedUserFactory, @GerritServerConfig Config cfg, ChangeHooks hooks, AccountCache accountCache, ReviewerJson json, ChangeIndexer indexer)
 name|PostReviewers
 parameter_list|(
 name|AccountsCollection
@@ -990,9 +988,7 @@ operator|.
 name|Factory
 name|groupMembersFactory
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory

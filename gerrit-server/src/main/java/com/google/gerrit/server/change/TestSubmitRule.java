@@ -134,6 +134,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -230,7 +246,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|AccountInfo
+name|AccountLoader
 import|;
 end_import
 
@@ -425,9 +441,7 @@ decl_stmt|;
 DECL|field|accountInfoFactory
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|accountInfoFactory
@@ -454,7 +468,7 @@ name|RUN
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|TestSubmitRule (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RulesCache rules, AccountInfo.Loader.Factory infoFactory)
+DECL|method|TestSubmitRule (Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RulesCache rules, AccountLoader.Factory infoFactory)
 name|TestSubmitRule
 parameter_list|(
 name|Provider
@@ -471,9 +485,7 @@ parameter_list|,
 name|RulesCache
 name|rules
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoFactory
@@ -659,9 +671,7 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accounts
 init|=
 name|accountInfoFactory
@@ -762,15 +772,13 @@ name|None
 argument_list|>
 name|impossible
 decl_stmt|;
-DECL|method|Record (SubmitRecord r, AccountInfo.Loader accounts)
+DECL|method|Record (SubmitRecord r, AccountLoader accounts)
 name|Record
 parameter_list|(
 name|SubmitRecord
 name|r
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|accounts
 parameter_list|)
 block|{

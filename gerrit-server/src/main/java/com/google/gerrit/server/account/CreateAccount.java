@@ -182,6 +182,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|BadRequestException
@@ -675,9 +691,7 @@ decl_stmt|;
 DECL|field|infoLoader
 specifier|private
 specifier|final
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoLoader
@@ -696,7 +710,7 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateAccount (ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountInfo.Loader.Factory infoLoader, @Assisted String username, AuditService auditService)
+DECL|method|CreateAccount (ReviewDb db, Provider<IdentifiedUser> currentUser, GroupsCollection groupsCollection, SshKeyCache sshKeyCache, AccountCache accountCache, AccountByEmailCache byEmailCache, AccountLoader.Factory infoLoader, @Assisted String username, AuditService auditService)
 name|CreateAccount
 parameter_list|(
 name|ReviewDb
@@ -720,9 +734,7 @@ parameter_list|,
 name|AccountByEmailCache
 name|byEmailCache
 parameter_list|,
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 operator|.
 name|Factory
 name|infoLoader
@@ -1354,9 +1366,7 @@ operator|.
 name|email
 argument_list|)
 expr_stmt|;
-name|AccountInfo
-operator|.
-name|Loader
+name|AccountLoader
 name|loader
 init|=
 name|infoLoader

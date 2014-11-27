@@ -152,9 +152,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|Url
+name|AccountInfo
 import|;
 end_import
 
@@ -166,11 +166,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|account
+name|restapi
 operator|.
-name|AccountInfo
+name|Url
 import|;
 end_import
 
