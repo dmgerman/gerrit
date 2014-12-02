@@ -2434,10 +2434,15 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|onEditMessage (int idx)
+DECL|method|onEditMessage (@uppressWarningsR) int idx)
 name|void
 name|onEditMessage
 parameter_list|(
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 name|int
 name|idx
 parameter_list|)
