@@ -426,7 +426,7 @@ argument_list|)
 operator|.
 name|loader
 argument_list|(
-name|parentGroupsLoader
+name|ParentGroupsLoader
 operator|.
 name|class
 argument_list|)
@@ -457,7 +457,7 @@ argument_list|)
 operator|.
 name|loader
 argument_list|(
-name|subgroupsLoader
+name|SubgroupsLoader
 operator|.
 name|class
 argument_list|)
@@ -879,10 +879,10 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|class|subgroupsLoader
+DECL|class|SubgroupsLoader
 specifier|static
 class|class
-name|subgroupsLoader
+name|SubgroupsLoader
 extends|extends
 name|CacheLoader
 argument_list|<
@@ -909,8 +909,8 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|subgroupsLoader (final SchemaFactory<ReviewDb> sf)
-name|subgroupsLoader
+DECL|method|SubgroupsLoader (final SchemaFactory<ReviewDb> sf)
+name|SubgroupsLoader
 parameter_list|(
 specifier|final
 name|SchemaFactory
@@ -1059,10 +1059,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|class|parentGroupsLoader
+DECL|class|ParentGroupsLoader
 specifier|static
 class|class
-name|parentGroupsLoader
+name|ParentGroupsLoader
 extends|extends
 name|CacheLoader
 argument_list|<
@@ -1089,8 +1089,8 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|parentGroupsLoader (final SchemaFactory<ReviewDb> sf)
-name|parentGroupsLoader
+DECL|method|ParentGroupsLoader (final SchemaFactory<ReviewDb> sf)
+name|ParentGroupsLoader
 parameter_list|(
 specifier|final
 name|SchemaFactory
