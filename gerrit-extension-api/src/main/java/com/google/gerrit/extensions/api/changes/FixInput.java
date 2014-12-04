@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.api.changes
 package|package
 name|com
 operator|.
@@ -62,44 +62,18 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
+operator|.
+name|changes
 package|;
 end_package
 
 begin_class
-DECL|class|ProblemInfo
+DECL|class|FixInput
 specifier|public
 class|class
-name|ProblemInfo
-block|{
-DECL|enum|Status
-specifier|public
-specifier|static
-enum|enum
-name|Status
-block|{
-DECL|enumConstant|FIXED
-DECL|enumConstant|FIX_FAILED
-name|FIXED
-block|,
-name|FIX_FAILED
-block|;   }
-DECL|field|message
-specifier|public
-name|String
-name|message
-decl_stmt|;
-DECL|field|status
-specifier|public
-name|Status
-name|status
-decl_stmt|;
-DECL|field|outcome
-specifier|public
-name|String
-name|outcome
-decl_stmt|;
-block|}
+name|FixInput
+block|{ }
 end_class
 
 end_unit
