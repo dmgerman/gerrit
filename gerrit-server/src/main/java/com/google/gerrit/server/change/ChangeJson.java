@@ -2342,6 +2342,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|RuntimeException
 name|e
 parameter_list|)
 block|{
@@ -2721,6 +2723,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|RuntimeException
 name|e
 parameter_list|)
 block|{
