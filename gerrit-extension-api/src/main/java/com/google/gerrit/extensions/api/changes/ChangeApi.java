@@ -296,7 +296,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** {@code get} with {@link ListChangesOption} set to ALL. */
+comment|/** {@code get} with {@link ListChangesOption} set to all except CHECK. */
 DECL|method|get ()
 name|ChangeInfo
 name|get
@@ -304,7 +304,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** {@code get} with {@link ListChangesOption} set to NONE. */
+comment|/** {@code get} with {@link ListChangesOption} set to none. */
 DECL|method|info ()
 name|ChangeInfo
 name|info

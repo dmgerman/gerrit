@@ -1980,6 +1980,9 @@ name|check
 argument_list|(
 name|c
 argument_list|)
+operator|.
+name|problems
+argument_list|()
 argument_list|,
 operator|new
 name|Function

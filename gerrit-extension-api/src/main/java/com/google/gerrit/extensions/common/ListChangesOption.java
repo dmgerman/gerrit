@@ -185,6 +185,13 @@ name|WEB_LINKS
 argument_list|(
 literal|14
 argument_list|)
+block|,
+comment|/** Include consistency check results. */
+DECL|enumConstant|CHECK
+name|CHECK
+argument_list|(
+literal|15
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
