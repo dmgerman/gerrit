@@ -3507,6 +3507,21 @@ init|=
 name|currentPatchSet
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|ps
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|OrmException
+argument_list|(
+literal|"Missing patch set for mergeability check"
+argument_list|)
+throw|;
+block|}
 name|Repository
 name|repo
 init|=
