@@ -963,10 +963,7 @@ name|MergeUtil
 operator|.
 name|mergeStrategyName
 argument_list|(
-name|project
-operator|.
-name|isUseContentMerge
-argument_list|()
+literal|true
 argument_list|,
 name|useRecursiveMerge
 argument_list|)
