@@ -116,6 +116,7 @@ end_import
 
 begin_class
 DECL|class|NoContactStore
+specifier|public
 class|class
 name|NoContactStore
 implements|implements
