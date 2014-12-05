@@ -456,7 +456,9 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Not found"
+literal|"Not found: "
+operator|+
+name|changeId
 argument_list|,
 name|r
 operator|.

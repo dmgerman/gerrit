@@ -93,28 +93,26 @@ specifier|public
 name|ResourceNotFoundException
 parameter_list|()
 block|{   }
-comment|/** @param id portion of the resource URI that does not exist. */
-DECL|method|ResourceNotFoundException (String id)
+DECL|method|ResourceNotFoundException (String msg)
 specifier|public
 name|ResourceNotFoundException
 parameter_list|(
 name|String
-name|id
+name|msg
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|id
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** @param id portion of the resource URI that does not exist. */
-DECL|method|ResourceNotFoundException (String id, Throwable cause)
+DECL|method|ResourceNotFoundException (String msg, Throwable cause)
 specifier|public
 name|ResourceNotFoundException
 parameter_list|(
 name|String
-name|id
+name|msg
 parameter_list|,
 name|Throwable
 name|cause
@@ -122,7 +120,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|id
+name|msg
 argument_list|,
 name|cause
 argument_list|)
@@ -139,6 +137,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+literal|"Not found: "
+operator|+
 name|id
 operator|.
 name|get
