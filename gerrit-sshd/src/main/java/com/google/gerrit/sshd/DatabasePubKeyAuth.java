@@ -70,20 +70,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -163,6 +149,18 @@ operator|.
 name|inject
 operator|.
 name|Inject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|Singleton
 import|;
 end_import
 
@@ -415,6 +413,8 @@ comment|/**  * Authenticates by public key through {@link AccountSshKey} entitie
 end_comment
 
 begin_class
+annotation|@
+name|Singleton
 DECL|class|DatabasePubKeyAuth
 class|class
 name|DatabasePubKeyAuth
@@ -690,9 +690,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Override
-DECL|method|authenticate (String username, PublicKey suppliedKey, ServerSession session)
+DECL|method|authenticate (String username, final PublicKey suppliedKey, final ServerSession session)
 specifier|public
 name|boolean
 name|authenticate
@@ -700,13 +698,16 @@ parameter_list|(
 name|String
 name|username
 parameter_list|,
+specifier|final
 name|PublicKey
 name|suppliedKey
 parameter_list|,
+specifier|final
 name|ServerSession
 name|session
 parameter_list|)
 block|{
+specifier|final
 name|SshSession
 name|sd
 init|=
@@ -719,18 +720,6 @@ operator|.
 name|KEY
 argument_list|)
 decl_stmt|;
-name|Preconditions
-operator|.
-name|checkState
-argument_list|(
-name|sd
-operator|.
-name|getCurrentUser
-argument_list|()
-operator|==
-literal|null
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|PeerDaemonUser
@@ -835,6 +824,7 @@ name|US
 argument_list|)
 expr_stmt|;
 block|}
+specifier|final
 name|Iterable
 argument_list|<
 name|SshKeyCacheEntry
@@ -848,6 +838,7 @@ argument_list|(
 name|username
 argument_list|)
 decl_stmt|;
+specifier|final
 name|SshKeyCacheEntry
 name|key
 init|=
@@ -865,6 +856,7 @@ operator|==
 literal|null
 condition|)
 block|{
+specifier|final
 name|String
 name|err
 decl_stmt|;
@@ -925,6 +917,7 @@ comment|// user name on the server.
 comment|//
 for|for
 control|(
+specifier|final
 name|SshKeyCacheEntry
 name|otherKey
 range|:

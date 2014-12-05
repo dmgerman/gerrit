@@ -755,7 +755,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|CachingPublicKeyAuthenticator
+name|DatabasePubKeyAuth
 operator|.
 name|class
 argument_list|)
