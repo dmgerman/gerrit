@@ -800,8 +800,6 @@ argument_list|(
 operator|new
 name|Key
 argument_list|(
-name|project
-argument_list|,
 name|repo
 argument_list|,
 name|prior
@@ -929,13 +927,10 @@ name|Repository
 name|repo
 decl_stmt|;
 comment|// Passed through to loader on miss.
-DECL|method|Key (ProjectState project, Repository repo, ObjectId prior, ObjectId next, boolean useRecursiveMerge)
+DECL|method|Key (Repository repo, ObjectId prior, ObjectId next, boolean useRecursiveMerge)
 specifier|private
 name|Key
 parameter_list|(
-name|ProjectState
-name|project
-parameter_list|,
 name|Repository
 name|repo
 parameter_list|,
@@ -1778,8 +1773,6 @@ argument_list|(
 operator|new
 name|Key
 argument_list|(
-name|project
-argument_list|,
 name|repo
 argument_list|,
 name|prior
