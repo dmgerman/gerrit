@@ -83,20 +83,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Scopes
-operator|.
-name|SINGLETON
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
