@@ -349,7 +349,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|cache (ChangeInfo res)
-specifier|private
+specifier|static
 name|Response
 argument_list|<
 name|ChangeInfo

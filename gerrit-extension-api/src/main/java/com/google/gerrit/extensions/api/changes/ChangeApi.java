@@ -296,7 +296,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** {@code get} with {@link ListChangesOption} set to ALL. */
+comment|/** {@code get} with {@link ListChangesOption} set to all except CHECK. */
 DECL|method|get ()
 name|ChangeInfo
 name|get
@@ -304,7 +304,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** {@code get} with {@link ListChangesOption} set to NONE. */
+comment|/** {@code get} with {@link ListChangesOption} set to none. */
 DECL|method|info ()
 name|ChangeInfo
 name|info
@@ -331,6 +331,23 @@ name|String
 argument_list|>
 name|getHashtags
 parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|check ()
+name|ChangeInfo
+name|check
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|check (FixInput fix)
+name|ChangeInfo
+name|check
+parameter_list|(
+name|FixInput
+name|fix
+parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
@@ -671,6 +688,41 @@ name|String
 argument_list|>
 name|getHashtags
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|check ()
+specifier|public
+name|ChangeInfo
+name|check
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|check (FixInput fix)
+specifier|public
+name|ChangeInfo
+name|check
+parameter_list|(
+name|FixInput
+name|fix
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
