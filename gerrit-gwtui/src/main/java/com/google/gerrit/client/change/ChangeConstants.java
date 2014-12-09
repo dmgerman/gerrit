@@ -224,6 +224,16 @@ name|String
 name|indirectAncestor
 parameter_list|()
 function_decl|;
+DECL|method|merged ()
+name|String
+name|merged
+parameter_list|()
+function_decl|;
+DECL|method|abandoned ()
+name|String
+name|abandoned
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

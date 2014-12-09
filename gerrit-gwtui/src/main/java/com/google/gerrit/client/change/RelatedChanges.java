@@ -514,6 +514,16 @@ name|String
 name|indirect
 parameter_list|()
 function_decl|;
+DECL|method|abandoned ()
+name|String
+name|abandoned
+parameter_list|()
+function_decl|;
+DECL|method|merged ()
+name|String
+name|merged
+parameter_list|()
+function_decl|;
 DECL|method|notCurrent ()
 name|String
 name|notCurrent
@@ -2309,6 +2319,47 @@ name|String
 name|id
 parameter_list|()
 comment|/*-{ return this.change_id }-*/
+function_decl|;
+DECL|method|status ()
+specifier|public
+specifier|final
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|statusRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|Change
+operator|.
+name|Status
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+DECL|method|statusRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|statusRaw
+parameter_list|()
+comment|/*-{ return this.status; }-*/
 function_decl|;
 DECL|method|commit ()
 specifier|public
