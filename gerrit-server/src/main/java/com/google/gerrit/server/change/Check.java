@@ -288,9 +288,9 @@ throws|throws
 name|OrmException
 block|{
 return|return
-name|GetChange
+name|Response
 operator|.
-name|cache
+name|withMustRevalidate
 argument_list|(
 name|json
 operator|.
@@ -369,9 +369,9 @@ argument_list|)
 throw|;
 block|}
 return|return
-name|GetChange
+name|Response
 operator|.
-name|cache
+name|withMustRevalidate
 argument_list|(
 name|json
 operator|.
