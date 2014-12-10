@@ -306,6 +306,20 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+name|Change
+operator|.
+name|Status
+operator|.
+name|NEW
+condition|)
+block|{
 try|try
 block|{
 comment|// Try to mark interested owners with TO and CC or BCC line.
@@ -430,6 +444,7 @@ operator|.
 name|NEW_PATCHSETS
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|isOwnerOfProjectOrBranch (Account.Id user)
 specifier|private
