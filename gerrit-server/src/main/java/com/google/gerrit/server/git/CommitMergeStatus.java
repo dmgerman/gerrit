@@ -112,6 +112,17 @@ literal|"Please rebase the change locally and upload the rebased commit for revi
 argument_list|)
 block|,
 comment|/** */
+DECL|enumConstant|REBASE_MERGE_CONFLICT
+name|REBASE_MERGE_CONFLICT
+argument_list|(
+literal|"The change could not be merged due to a conflict.\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"Please rebase the change locally and upload the rebased commit for review."
+argument_list|)
+block|,
+comment|/** */
 DECL|enumConstant|MISSING_DEPENDENCY
 name|MISSING_DEPENDENCY
 argument_list|(

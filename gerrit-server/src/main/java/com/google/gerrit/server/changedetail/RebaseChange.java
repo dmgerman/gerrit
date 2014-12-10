@@ -346,6 +346,22 @@ name|server
 operator|.
 name|git
 operator|.
+name|MergeConflictException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
 name|MergeUtil
 import|;
 end_import
@@ -974,7 +990,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|PathConflictException
+name|MergeConflictException
 name|e
 parameter_list|)
 block|{
@@ -1536,7 +1552,7 @@ name|IOException
 throws|,
 name|InvalidChangeOperationException
 throws|,
-name|PathConflictException
+name|MergeConflictException
 block|{
 if|if
 condition|(
@@ -1826,7 +1842,7 @@ parameter_list|)
 throws|throws
 name|IOException
 throws|,
-name|PathConflictException
+name|MergeConflictException
 block|{
 specifier|final
 name|RevCommit
@@ -1898,9 +1914,9 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|PathConflictException
+name|MergeConflictException
 argument_list|(
-literal|"The change could not be rebased due to a path conflict during merge."
+literal|"The change could not be rebased due to a conflict during merge."
 argument_list|)
 throw|;
 block|}
