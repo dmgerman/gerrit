@@ -118,7 +118,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeListener
+name|EventListener
 import|;
 end_import
 
@@ -3132,7 +3132,7 @@ argument_list|(
 name|binder
 argument_list|()
 argument_list|,
-name|ChangeListener
+name|EventListener
 operator|.
 name|class
 argument_list|)

@@ -218,7 +218,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeEvent
+name|Event
 import|;
 end_import
 
@@ -285,12 +285,12 @@ name|ChangeHooks
 block|{
 annotation|@
 name|Override
-DECL|method|addChangeListener (ChangeListener listener, CurrentUser user)
+DECL|method|addEventListener (EventListener listener, CurrentUser user)
 specifier|public
 name|void
-name|addChangeListener
+name|addEventListener
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|listener
 parameter_list|,
 name|CurrentUser
@@ -586,12 +586,12 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|removeChangeListener (ChangeListener listener)
+DECL|method|removeEventListener (EventListener listener)
 specifier|public
 name|void
-name|removeChangeListener
+name|removeEventListener
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|listener
 parameter_list|)
 block|{   }
@@ -624,7 +624,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
+DECL|method|postEvent (Change change, Event event, ReviewDb db)
 specifier|public
 name|void
 name|postEvent
@@ -632,7 +632,7 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|,
 name|ReviewDb
@@ -641,7 +641,7 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|postEvent (Branch.NameKey branchName, ChangeEvent event)
+DECL|method|postEvent (Branch.NameKey branchName, Event event)
 specifier|public
 name|void
 name|postEvent
@@ -651,7 +651,7 @@ operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{   }

@@ -218,7 +218,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeEvent
+name|Event
 import|;
 end_import
 
@@ -294,24 +294,24 @@ specifier|public
 interface|interface
 name|ChangeHooks
 block|{
-DECL|method|addChangeListener (ChangeListener listener, CurrentUser user)
+DECL|method|addEventListener (EventListener listener, CurrentUser user)
 specifier|public
 name|void
-name|addChangeListener
+name|addEventListener
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|listener
 parameter_list|,
 name|CurrentUser
 name|user
 parameter_list|)
 function_decl|;
-DECL|method|removeChangeListener (ChangeListener listener)
+DECL|method|removeEventListener (EventListener listener)
 specifier|public
 name|void
-name|removeChangeListener
+name|removeEventListener
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|listener
 parameter_list|)
 function_decl|;
@@ -631,7 +631,7 @@ throws|throws
 name|OrmException
 function_decl|;
 comment|/**    * Post a stream event that is related to a change    *    * @param change The change that the event is related to    * @param event The event to post    * @param db The database    * @throws OrmException    */
-DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
+DECL|method|postEvent (Change change, Event event, ReviewDb db)
 specifier|public
 name|void
 name|postEvent
@@ -639,7 +639,7 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|,
 name|ReviewDb
@@ -649,7 +649,7 @@ throws|throws
 name|OrmException
 function_decl|;
 comment|/**    * Post a stream event that is related to a branch    *    * @param branchName The branch that the event is related to    * @param event The event to post    */
-DECL|method|postEvent (Branch.NameKey branchName, ChangeEvent event)
+DECL|method|postEvent (Branch.NameKey branchName, Event event)
 specifier|public
 name|void
 name|postEvent
@@ -659,7 +659,7 @@ operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 function_decl|;

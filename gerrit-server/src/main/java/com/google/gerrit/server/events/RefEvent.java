@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2010 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,36 +52,8 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common
+DECL|package|com.google.gerrit.server.events
 package|package
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-package|;
-end_package
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|annotations
-operator|.
-name|ExtensionPoint
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|google
@@ -91,30 +63,41 @@ operator|.
 name|server
 operator|.
 name|events
-operator|.
-name|ChangeEvent
-import|;
-end_import
+package|;
+end_package
 
-begin_interface
-annotation|@
-name|ExtensionPoint
-DECL|interface|ChangeListener
+begin_class
+DECL|class|RefEvent
 specifier|public
-interface|interface
-name|ChangeListener
+specifier|abstract
+class|class
+name|RefEvent
+extends|extends
+name|ProjectEvent
 block|{
-DECL|method|onChangeEvent (ChangeEvent event)
-specifier|public
-name|void
-name|onChangeEvent
+DECL|method|RefEvent (String type)
+specifier|protected
+name|RefEvent
 parameter_list|(
-name|ChangeEvent
-name|event
+name|String
+name|type
 parameter_list|)
+block|{
+name|super
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getRefName ()
+specifier|public
+specifier|abstract
+name|String
+name|getRefName
+parameter_list|()
 function_decl|;
 block|}
-end_interface
+end_class
 
 end_unit
 
