@@ -8052,24 +8052,6 @@ operator|=
 name|notesMigration
 expr_stmt|;
 block|}
-DECL|method|isDraft ()
-name|boolean
-name|isDraft
-parameter_list|()
-block|{
-return|return
-name|draft
-return|;
-block|}
-DECL|method|isSubmit ()
-name|boolean
-name|isSubmit
-parameter_list|()
-block|{
-return|return
-name|submit
-return|;
-block|}
 DECL|method|getMailRecipients ()
 name|MailRecipients
 name|getMailRecipients
@@ -8083,32 +8065,6 @@ name|reviewer
 argument_list|,
 name|cc
 argument_list|)
-return|;
-block|}
-DECL|method|getHashtags ()
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|getHashtags
-parameter_list|()
-block|{
-return|return
-name|hashtags
-return|;
-block|}
-DECL|method|getLabels ()
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Short
-argument_list|>
-name|getLabels
-parameter_list|()
-block|{
-return|return
-name|labels
 return|;
 block|}
 DECL|method|parse (CmdLineParser clp, Repository repo, Set<String> refs)
@@ -8411,21 +8367,6 @@ name|split
 argument_list|)
 return|;
 block|}
-DECL|method|setCmdLineParser (CmdLineParser clp)
-name|void
-name|setCmdLineParser
-parameter_list|(
-name|CmdLineParser
-name|clp
-parameter_list|)
-block|{
-name|this
-operator|.
-name|clp
-operator|=
-name|clp
-expr_stmt|;
-block|}
 block|}
 DECL|method|parseMagicBranch (final ReceiveCommand cmd)
 specifier|private
@@ -8499,10 +8440,9 @@ argument_list|)
 decl_stmt|;
 name|magicBranch
 operator|.
-name|setCmdLineParser
-argument_list|(
 name|clp
-argument_list|)
+operator|=
+name|clp
 expr_stmt|;
 try|try
 block|{
@@ -8737,8 +8677,7 @@ if|if
 condition|(
 name|magicBranch
 operator|.
-name|isDraft
-argument_list|()
+name|draft
 operator|&&
 operator|(
 operator|!
@@ -8819,13 +8758,11 @@ if|if
 condition|(
 name|magicBranch
 operator|.
-name|isDraft
-argument_list|()
+name|draft
 operator|&&
 name|magicBranch
 operator|.
-name|isSubmit
-argument_list|()
+name|submit
 condition|)
 block|{
 name|reject
@@ -8841,8 +8778,7 @@ if|if
 condition|(
 name|magicBranch
 operator|.
-name|isSubmit
-argument_list|()
+name|submit
 operator|&&
 operator|!
 name|projectControl
@@ -10774,8 +10710,7 @@ name|setDraft
 argument_list|(
 name|magicBranch
 operator|.
-name|isDraft
-argument_list|()
+name|draft
 argument_list|)
 expr_stmt|;
 name|cmd
@@ -11025,8 +10960,7 @@ name|approvals
 operator|=
 name|magicBranch
 operator|.
-name|getLabels
-argument_list|()
+name|labels
 expr_stmt|;
 name|ins
 operator|.
@@ -11034,8 +10968,7 @@ name|setHashtags
 argument_list|(
 name|magicBranch
 operator|.
-name|getHashtags
-argument_list|()
+name|hashtags
 argument_list|)
 expr_stmt|;
 block|}
@@ -11164,8 +11097,7 @@ literal|null
 operator|&&
 name|magicBranch
 operator|.
-name|isSubmit
-argument_list|()
+name|submit
 condition|)
 block|{
 name|submit
@@ -12667,8 +12599,7 @@ literal|null
 operator|&&
 name|magicBranch
 operator|.
-name|isDraft
-argument_list|()
+name|draft
 condition|)
 block|{
 name|newPatchSet
@@ -13111,8 +13042,7 @@ name|approvals
 operator|=
 name|magicBranch
 operator|.
-name|getLabels
-argument_list|()
+name|labels
 expr_stmt|;
 name|Set
 argument_list|<
@@ -13122,8 +13052,7 @@ name|hashtags
 init|=
 name|magicBranch
 operator|.
-name|getHashtags
-argument_list|()
+name|hashtags
 decl_stmt|;
 if|if
 condition|(
@@ -13957,8 +13886,7 @@ literal|null
 operator|&&
 name|magicBranch
 operator|.
-name|isSubmit
-argument_list|()
+name|submit
 condition|)
 block|{
 name|submit
