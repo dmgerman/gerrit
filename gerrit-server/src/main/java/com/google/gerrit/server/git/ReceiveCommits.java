@@ -8901,6 +8901,7 @@ argument_list|,
 literal|"submit not allowed"
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 name|RevWalk
 name|walk
