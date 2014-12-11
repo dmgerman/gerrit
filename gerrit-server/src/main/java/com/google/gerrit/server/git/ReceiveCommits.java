@@ -4434,9 +4434,7 @@ operator|==
 name|NOT_ATTEMPTED
 condition|)
 block|{
-name|newChanges
-operator|=
-name|selectNewChanges
+name|selectNewAndReplacedChangesFromMagicBranch
 argument_list|()
 expr_stmt|;
 block|}
@@ -9727,27 +9725,19 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|selectNewChanges ()
+DECL|method|selectNewAndReplacedChangesFromMagicBranch ()
 specifier|private
-name|List
-argument_list|<
-name|CreateRequest
-argument_list|>
-name|selectNewChanges
+name|void
+name|selectNewAndReplacedChangesFromMagicBranch
 parameter_list|()
 block|{
-specifier|final
-name|List
-argument_list|<
-name|CreateRequest
-argument_list|>
 name|newChanges
-init|=
+operator|=
 name|Lists
 operator|.
 name|newArrayList
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 specifier|final
 name|RevWalk
 name|walk
@@ -10009,13 +9999,14 @@ argument_list|)
 condition|)
 block|{
 comment|// Not a change the user can propose? Abort as early as possible.
-comment|//
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 comment|// Don't allow merges to be uploaded in commit chain via all-not-in-target
 if|if
@@ -10140,12 +10131,14 @@ argument_list|,
 literal|"invalid Change-Id"
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 name|changeKey
 operator|=
@@ -10200,12 +10193,14 @@ operator|+
 name|maxBatchChanges
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 block|}
 for|for
@@ -10237,12 +10232,14 @@ argument_list|,
 literal|"squash commits first"
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 name|List
 argument_list|<
@@ -10288,12 +10285,14 @@ operator|+
 literal|" has duplicates"
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 if|if
 condition|(
@@ -10334,12 +10333,14 @@ continue|continue;
 block|}
 else|else
 block|{
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 block|}
 if|if
@@ -10375,12 +10376,14 @@ argument_list|,
 literal|"invalid Change-Id"
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 name|newChangeIds
 operator|.
@@ -10442,12 +10445,14 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -10473,12 +10478,14 @@ argument_list|,
 literal|"database error"
 argument_list|)
 expr_stmt|;
-return|return
+name|newChanges
+operator|=
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
-return|;
+expr_stmt|;
+return|return;
 block|}
 if|if
 condition|(
@@ -10502,12 +10509,7 @@ argument_list|,
 literal|"no new changes"
 argument_list|)
 expr_stmt|;
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
+return|return;
 block|}
 for|for
 control|(
@@ -10527,9 +10529,6 @@ name|cmd
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|newChanges
-return|;
 block|}
 DECL|method|markHeadsAsUninteresting ( final RevWalk walk, Set<ObjectId> existing, @Nullable String forRef)
 specifier|private
