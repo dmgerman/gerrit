@@ -9829,13 +9829,6 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-assert|assert
-name|magicBranch
-operator|.
-name|ctl
-operator|!=
-literal|null
-assert|;
 name|Ref
 name|targetRef
 init|=
