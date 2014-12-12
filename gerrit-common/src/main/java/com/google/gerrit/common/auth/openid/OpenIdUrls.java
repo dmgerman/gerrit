@@ -92,6 +92,15 @@ name|LASTID_COOKIE
 init|=
 literal|"gerrit.last_openid"
 decl_stmt|;
+DECL|field|URL_LAUNCHPAD
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|URL_LAUNCHPAD
+init|=
+literal|"https://login.launchpad.net/+openid"
+decl_stmt|;
 DECL|field|URL_YAHOO
 specifier|public
 specifier|static

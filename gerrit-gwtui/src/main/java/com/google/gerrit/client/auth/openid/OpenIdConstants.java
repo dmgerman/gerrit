@@ -97,6 +97,11 @@ name|String
 name|nameGoogle
 parameter_list|()
 function_decl|;
+DECL|method|nameLaunchpad ()
+name|String
+name|nameLaunchpad
+parameter_list|()
+function_decl|;
 DECL|method|nameYahoo ()
 name|String
 name|nameYahoo

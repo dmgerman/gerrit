@@ -540,6 +540,12 @@ name|ImmutableMap
 operator|.
 name|of
 argument_list|(
+literal|"launchpad"
+argument_list|,
+name|OpenIdUrls
+operator|.
+name|URL_LAUNCHPAD
+argument_list|,
 literal|"yahoo"
 argument_list|,
 name|OpenIdUrls
