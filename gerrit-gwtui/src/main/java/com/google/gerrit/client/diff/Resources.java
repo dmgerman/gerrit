@@ -166,44 +166,34 @@ name|Style
 name|style
 parameter_list|()
 function_decl|;
-DECL|method|go_prev ()
+DECL|method|goPrev ()
 annotation|@
 name|Source
 argument_list|(
-literal|"go-prev.png"
+literal|"goPrev.png"
 argument_list|)
 name|ImageResource
-name|go_prev
+name|goPrev
 parameter_list|()
 function_decl|;
-DECL|method|go_next ()
+DECL|method|goNext ()
 annotation|@
 name|Source
 argument_list|(
-literal|"go-next.png"
+literal|"goNext.png"
 argument_list|)
 name|ImageResource
-name|go_next
+name|goNext
 parameter_list|()
 function_decl|;
-DECL|method|go_up ()
+DECL|method|goUp ()
 annotation|@
 name|Source
 argument_list|(
-literal|"go-up.png"
+literal|"goUp.png"
 argument_list|)
 name|ImageResource
-name|go_up
-parameter_list|()
-function_decl|;
-DECL|method|gear ()
-annotation|@
-name|Source
-argument_list|(
-literal|"gear.png"
-argument_list|)
-name|ImageResource
-name|gear
+name|goUp
 parameter_list|()
 function_decl|;
 DECL|interface|Style
@@ -247,19 +237,19 @@ name|String
 name|date
 parameter_list|()
 function_decl|;
-DECL|method|go_prev ()
+DECL|method|goPrev ()
 name|String
-name|go_prev
+name|goPrev
 parameter_list|()
 function_decl|;
-DECL|method|go_next ()
+DECL|method|goNext ()
 name|String
-name|go_next
+name|goNext
 parameter_list|()
 function_decl|;
-DECL|method|go_up ()
+DECL|method|goUp ()
 name|String
-name|go_up
+name|goUp
 parameter_list|()
 function_decl|;
 block|}

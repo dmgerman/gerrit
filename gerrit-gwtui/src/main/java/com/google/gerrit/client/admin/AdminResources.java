@@ -151,17 +151,6 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"editText.png"
-argument_list|)
-DECL|method|editText ()
-specifier|public
-name|ImageResource
-name|editText
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
 literal|"deleteNormal.png"
 argument_list|)
 DECL|method|deleteNormal ()

@@ -114,22 +114,6 @@ name|CssResource
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|ImageResource
-import|;
-end_import
-
 begin_interface
 DECL|interface|Resources
 specifier|public
@@ -184,36 +168,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|star_open ()
-annotation|@
-name|Source
-argument_list|(
-literal|"star_open.png"
-argument_list|)
-name|ImageResource
-name|star_open
-parameter_list|()
-function_decl|;
-DECL|method|star_filled ()
-annotation|@
-name|Source
-argument_list|(
-literal|"star_filled.png"
-argument_list|)
-name|ImageResource
-name|star_filled
-parameter_list|()
-function_decl|;
-DECL|method|remove_reviewer ()
-annotation|@
-name|Source
-argument_list|(
-literal|"remove_reviewer.png"
-argument_list|)
-name|ImageResource
-name|remove_reviewer
-parameter_list|()
-function_decl|;
 DECL|method|style ()
 annotation|@
 name|Source
