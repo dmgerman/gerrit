@@ -292,7 +292,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHooks
+name|EventListener
 import|;
 end_import
 
@@ -306,7 +306,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|EventListener
+name|EventSource
 import|;
 end_import
 
@@ -1004,9 +1004,9 @@ name|factory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|hooks
-name|ChangeHooks
-name|hooks
+DECL|field|source
+name|EventSource
+name|source
 decl_stmt|;
 annotation|@
 name|Before
@@ -1037,7 +1037,7 @@ operator|.
 name|id
 argument_list|)
 decl_stmt|;
-name|hooks
+name|source
 operator|.
 name|addEventListener
 argument_list|(

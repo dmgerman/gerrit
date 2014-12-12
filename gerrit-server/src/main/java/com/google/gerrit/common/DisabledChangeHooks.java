@@ -282,6 +282,8 @@ class|class
 name|DisabledChangeHooks
 implements|implements
 name|ChangeHooks
+implements|,
+name|EventSource
 block|{
 annotation|@
 name|Override

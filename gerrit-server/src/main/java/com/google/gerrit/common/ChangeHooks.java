@@ -202,20 +202,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|CurrentUser
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|events
 operator|.
 name|Event
@@ -294,27 +280,6 @@ specifier|public
 interface|interface
 name|ChangeHooks
 block|{
-DECL|method|addEventListener (EventListener listener, CurrentUser user)
-specifier|public
-name|void
-name|addEventListener
-parameter_list|(
-name|EventListener
-name|listener
-parameter_list|,
-name|CurrentUser
-name|user
-parameter_list|)
-function_decl|;
-DECL|method|removeEventListener (EventListener listener)
-specifier|public
-name|void
-name|removeEventListener
-parameter_list|(
-name|EventListener
-name|listener
-parameter_list|)
-function_decl|;
 comment|/**    * Fire the Patchset Created Hook.    *    * @param change The change itself.    * @param patchSet The Patchset that was created.    * @throws OrmException    */
 DECL|method|doPatchsetCreatedHook (Change change, PatchSet patchSet, ReviewDb db)
 specifier|public
