@@ -659,6 +659,20 @@ name|Event
 name|event
 parameter_list|)
 block|{   }
+annotation|@
+name|Override
+DECL|method|postEvent (Event event, ReviewDb db)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Event
+name|event
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+block|{   }
 block|}
 end_class
 

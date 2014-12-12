@@ -183,6 +183,20 @@ name|Event
 name|event
 parameter_list|)
 function_decl|;
+comment|/**    * Post a stream event generically.    *<p>    * If you are creating a RefEvent or ChangeEvent from scratch,    * it is more efficient to use the specific postEvent methods    * for those use cases.    *    * @param event The event to post.    * @param db The database.    */
+DECL|method|postEvent (Event event, ReviewDb db)
+name|void
+name|postEvent
+parameter_list|(
+name|Event
+name|event
+parameter_list|,
+name|ReviewDb
+name|db
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
