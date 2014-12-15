@@ -541,9 +541,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|hashtag
-operator|.
-name|toLowerCase
-argument_list|()
 return|;
 block|}
 DECL|method|extractTags (Set<String> input)
