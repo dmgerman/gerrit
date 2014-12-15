@@ -412,6 +412,28 @@ name|ImageResource
 name|goUp
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"sideBySideDiff.png"
+argument_list|)
+DECL|method|sideBySideDiff ()
+specifier|public
+name|ImageResource
+name|sideBySideDiff
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"unifiedDiff.png"
+argument_list|)
+DECL|method|unifiedDiff ()
+specifier|public
+name|ImageResource
+name|unifiedDiff
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

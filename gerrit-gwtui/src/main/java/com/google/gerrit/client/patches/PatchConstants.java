@@ -390,6 +390,16 @@ name|String
 name|patchSkipRegionEnd
 parameter_list|()
 function_decl|;
+DECL|method|sideBySideDiff ()
+name|String
+name|sideBySideDiff
+parameter_list|()
+function_decl|;
+DECL|method|unifiedDiff ()
+name|String
+name|unifiedDiff
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
