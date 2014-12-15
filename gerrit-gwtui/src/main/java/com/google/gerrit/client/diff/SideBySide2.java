@@ -4387,6 +4387,11 @@ name|prefsAction
 argument_list|,
 name|getLinks
 argument_list|()
+argument_list|,
+name|diff
+operator|.
+name|side_by_side_web_links
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

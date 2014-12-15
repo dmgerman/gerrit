@@ -436,6 +436,25 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|webLinksOnly ()
+specifier|public
+name|DiffApi
+name|webLinksOnly
+parameter_list|()
+block|{
+name|call
+operator|.
+name|addParameter
+argument_list|(
+literal|"weblinks-only"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|ignoreWhitespace (AccountDiffPreference.Whitespace w)
 specifier|public
 name|DiffApi

@@ -808,6 +808,11 @@ name|String
 name|linkMenuItemNotLast
 parameter_list|()
 function_decl|;
+DECL|method|linkPanel ()
+name|String
+name|linkPanel
+parameter_list|()
+function_decl|;
 DECL|method|maxObjectSizeLimitEffectiveLabel ()
 name|String
 name|maxObjectSizeLimitEffectiveLabel
