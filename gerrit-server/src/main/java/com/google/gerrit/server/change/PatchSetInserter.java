@@ -942,11 +942,6 @@ specifier|private
 name|ChangeMessage
 name|changeMessage
 decl_stmt|;
-DECL|field|copyLabels
-specifier|private
-name|boolean
-name|copyLabels
-decl_stmt|;
 DECL|field|sshInfo
 specifier|private
 name|SshInfo
@@ -1387,25 +1382,6 @@ operator|.
 name|changeMessage
 operator|=
 name|changeMessage
-expr_stmt|;
-return|return
-name|this
-return|;
-block|}
-DECL|method|setCopyLabels (boolean copyLabels)
-specifier|public
-name|PatchSetInserter
-name|setCopyLabels
-parameter_list|(
-name|boolean
-name|copyLabels
-parameter_list|)
-block|{
-name|this
-operator|.
-name|copyLabels
-operator|=
-name|copyLabels
 expr_stmt|;
 return|return
 name|this
@@ -1959,11 +1935,6 @@ name|changeMessage
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|copyLabels
-condition|)
-block|{
 name|approvalCopier
 operator|.
 name|copy
@@ -1975,7 +1946,6 @@ argument_list|,
 name|patchSet
 argument_list|)
 expr_stmt|;
-block|}
 name|db
 operator|.
 name|commit

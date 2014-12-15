@@ -3161,11 +3161,6 @@ argument_list|(
 name|msg
 argument_list|)
 operator|.
-name|setCopyLabels
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|setValidatePolicy
 argument_list|(
 name|RECEIVE_COMMITS

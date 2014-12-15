@@ -1658,11 +1658,6 @@ argument_list|,
 name|rebasedCommit
 argument_list|)
 operator|.
-name|setCopyLabels
-argument_list|(
-literal|true
-argument_list|)
-operator|.
 name|setValidatePolicy
 argument_list|(
 name|validate
