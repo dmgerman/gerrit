@@ -226,6 +226,22 @@ name|extensions
 operator|.
 name|registration
 operator|.
+name|DynamicItem
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|registration
+operator|.
 name|DynamicSet
 import|;
 end_import
@@ -1593,14 +1609,16 @@ name|syncHookTimeout
 decl_stmt|;
 DECL|field|dispatcher
 specifier|private
-specifier|final
+name|DynamicItem
+argument_list|<
 name|EventDispatcher
+argument_list|>
 name|dispatcher
 decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (WorkQueue queue, GitRepositoryManager repoManager, @GerritServerConfig Config config, @AnonymousCowardName String anonymousCowardName, SitePaths sitePath, ProjectCache projectCache, AccountCache accountCache, EventFactory eventFactory, EventDispatcher dispatcher)
+DECL|method|ChangeHookRunner (WorkQueue queue, GitRepositoryManager repoManager, @GerritServerConfig Config config, @AnonymousCowardName String anonymousCowardName, SitePaths sitePath, ProjectCache projectCache, AccountCache accountCache, EventFactory eventFactory, DynamicItem<EventDispatcher> dispatcher)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1632,7 +1650,10 @@ parameter_list|,
 name|EventFactory
 name|eventFactory
 parameter_list|,
+name|DynamicItem
+argument_list|<
 name|EventDispatcher
+argument_list|>
 name|dispatcher
 parameter_list|)
 block|{
@@ -2257,6 +2278,9 @@ name|headName
 expr_stmt|;
 name|dispatcher
 operator|.
+name|get
+argument_list|()
+operator|.
 name|postEvent
 argument_list|(
 name|project
@@ -2403,6 +2427,9 @@ name|uploader
 argument_list|)
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
@@ -2700,6 +2727,9 @@ name|uploader
 argument_list|)
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
@@ -3084,6 +3114,9 @@ argument_list|)
 expr_stmt|;
 name|dispatcher
 operator|.
+name|get
+argument_list|()
+operator|.
 name|postEvent
 argument_list|(
 name|change
@@ -3438,6 +3471,9 @@ name|mergeResultRev
 expr_stmt|;
 name|dispatcher
 operator|.
+name|get
+argument_list|()
+operator|.
 name|postEvent
 argument_list|(
 name|change
@@ -3691,6 +3727,9 @@ operator|=
 name|reason
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
@@ -3951,6 +3990,9 @@ name|reason
 expr_stmt|;
 name|dispatcher
 operator|.
+name|get
+argument_list|()
+operator|.
 name|postEvent
 argument_list|(
 name|change
@@ -4206,6 +4248,9 @@ operator|=
 name|reason
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
@@ -4505,6 +4550,9 @@ argument_list|)
 expr_stmt|;
 name|dispatcher
 operator|.
+name|get
+argument_list|()
+operator|.
 name|postEvent
 argument_list|(
 name|refName
@@ -4696,6 +4744,9 @@ name|account
 argument_list|)
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
@@ -4894,6 +4945,9 @@ operator|=
 name|oldTopic
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
@@ -5185,6 +5239,9 @@ name|removed
 argument_list|)
 expr_stmt|;
 name|dispatcher
+operator|.
+name|get
+argument_list|()
 operator|.
 name|postEvent
 argument_list|(
