@@ -102,11 +102,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
-operator|.
-name|Project
+name|FooterConstants
 import|;
 end_import
 
@@ -118,11 +116,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|git
+name|client
 operator|.
-name|MergeUtil
+name|Project
 import|;
 end_import
 
@@ -1234,7 +1232,7 @@ name|c
 operator|.
 name|getFooterLines
 argument_list|(
-name|MergeUtil
+name|FooterConstants
 operator|.
 name|CHANGE_ID
 argument_list|)
