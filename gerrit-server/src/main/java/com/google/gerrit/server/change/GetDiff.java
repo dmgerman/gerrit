@@ -1347,7 +1347,7 @@ operator|.
 name|getBeginA
 argument_list|()
 argument_list|,
-literal|"nextA = %d; want %d"
+literal|"nextA = %s; want %s"
 argument_list|,
 name|content
 operator|.
@@ -1370,7 +1370,7 @@ operator|.
 name|getBeginB
 argument_list|()
 argument_list|,
-literal|"nextB = %d; want %d"
+literal|"nextB = %s; want %s"
 argument_list|,
 name|content
 operator|.
