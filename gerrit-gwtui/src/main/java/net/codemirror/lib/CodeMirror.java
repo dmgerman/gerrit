@@ -341,15 +341,6 @@ name|h
 parameter_list|)
 comment|/*-{ this.setSize(null, h); }-*/
 function_decl|;
-DECL|method|defaultCharWidth ()
-specifier|public
-specifier|final
-specifier|native
-name|double
-name|defaultCharWidth
-parameter_list|()
-comment|/*-{ return this.defaultCharWidth() }-*/
-function_decl|;
 DECL|method|getLine (int n)
 specifier|public
 specifier|final
@@ -1105,6 +1096,15 @@ name|Element
 name|getMoverElement
 parameter_list|()
 comment|/*-{     return this.display.mover;   }-*/
+function_decl|;
+DECL|method|getMeasureElement ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getMeasureElement
+parameter_list|()
+comment|/*-{     return this.display.measure;   }-*/
 function_decl|;
 DECL|method|getScrollbarV ()
 specifier|public
