@@ -1268,13 +1268,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Collections
-operator|.
-name|sort
-argument_list|(
-name|names
-argument_list|)
-expr_stmt|;
 name|renderLabels
 argument_list|(
 name|names

@@ -778,13 +778,6 @@ name|labels
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Collections
-operator|.
-name|sort
-argument_list|(
-name|names
-argument_list|)
-expr_stmt|;
 name|resize
 argument_list|(
 name|names
