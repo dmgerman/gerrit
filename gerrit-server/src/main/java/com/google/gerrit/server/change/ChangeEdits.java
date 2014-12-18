@@ -1621,10 +1621,6 @@ argument_list|(
 name|name
 operator|=
 literal|"--list"
-argument_list|,
-name|metaVar
-operator|=
-literal|"LIST"
 argument_list|)
 DECL|field|list
 name|boolean
@@ -1636,10 +1632,6 @@ argument_list|(
 name|name
 operator|=
 literal|"--download-commands"
-argument_list|,
-name|metaVar
-operator|=
-literal|"download-commands"
 argument_list|)
 DECL|field|downloadCommands
 name|boolean
