@@ -107,19 +107,6 @@ name|int
 name|limit
 parameter_list|()
 function_decl|;
-DECL|method|restart (ChangeData last)
-name|ResultSet
-argument_list|<
-name|ChangeData
-argument_list|>
-name|restart
-parameter_list|(
-name|ChangeData
-name|last
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
 DECL|method|restart (int start)
 name|ResultSet
 argument_list|<
