@@ -213,8 +213,6 @@ argument_list|<>
 argument_list|(
 literal|1
 argument_list|,
-literal|false
-argument_list|,
 name|ImmutableList
 operator|.
 expr|<
@@ -246,8 +244,6 @@ name|Schema
 argument_list|<>
 argument_list|(
 literal|2
-argument_list|,
-literal|false
 argument_list|,
 name|ImmutableList
 operator|.

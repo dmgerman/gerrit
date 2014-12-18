@@ -331,12 +331,6 @@ name|values
 return|;
 block|}
 block|}
-DECL|field|release
-specifier|private
-specifier|final
-name|boolean
-name|release
-decl_stmt|;
 DECL|field|fields
 specifier|private
 specifier|final
@@ -358,13 +352,10 @@ specifier|private
 name|int
 name|version
 decl_stmt|;
-DECL|method|Schema (boolean release, Iterable<FieldDef<T, ?>> fields)
+DECL|method|Schema (Iterable<FieldDef<T, ?>> fields)
 specifier|protected
 name|Schema
 parameter_list|(
-name|boolean
-name|release
-parameter_list|,
 name|Iterable
 argument_list|<
 name|FieldDef
@@ -381,23 +372,18 @@ name|this
 argument_list|(
 literal|0
 argument_list|,
-name|release
-argument_list|,
 name|fields
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
-DECL|method|Schema (int version, boolean release, Iterable<FieldDef<T, ?>> fields)
+DECL|method|Schema (int version, Iterable<FieldDef<T, ?>> fields)
 specifier|public
 name|Schema
 parameter_list|(
 name|int
 name|version
-parameter_list|,
-name|boolean
-name|release
 parameter_list|,
 name|Iterable
 argument_list|<
@@ -416,12 +402,6 @@ operator|.
 name|version
 operator|=
 name|version
-expr_stmt|;
-name|this
-operator|.
-name|release
-operator|=
-name|release
 expr_stmt|;
 name|ImmutableMap
 operator|.
@@ -478,17 +458,6 @@ operator|.
 name|build
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|isRelease ()
-specifier|public
-specifier|final
-name|boolean
-name|isRelease
-parameter_list|()
-block|{
-return|return
-name|release
-return|;
 block|}
 DECL|method|getVersion ()
 specifier|public
