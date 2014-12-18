@@ -419,12 +419,12 @@ argument_list|>
 name|tests
 decl_stmt|;
 DECL|field|machine
-specifier|private
+specifier|protected
 name|PrologMachineCopy
 name|machine
 decl_stmt|;
 DECL|field|envFactory
-specifier|private
+specifier|protected
 name|PrologEnvironment
 operator|.
 name|Factory

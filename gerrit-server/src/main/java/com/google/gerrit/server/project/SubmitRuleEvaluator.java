@@ -260,6 +260,20 @@ name|gerrit
 operator|.
 name|rules
 operator|.
+name|ReductionLimitException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|rules
+operator|.
 name|StoredValues
 import|;
 end_import
@@ -363,20 +377,6 @@ operator|.
 name|lang
 operator|.
 name|Prolog
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|googlecode
-operator|.
-name|prolog_cafe
-operator|.
-name|lang
-operator|.
-name|PrologException
 import|;
 end_import
 
@@ -738,6 +738,11 @@ name|logErrors
 init|=
 literal|true
 decl_stmt|;
+DECL|field|reductionsConsumed
+specifier|private
+name|int
+name|reductionsConsumed
+decl_stmt|;
 DECL|field|submitRule
 specifier|private
 name|Term
@@ -928,6 +933,17 @@ name|log
 expr_stmt|;
 return|return
 name|this
+return|;
+block|}
+comment|/** @return Prolog reductions consumed during evaluation. */
+DECL|method|getReductionsConsumed ()
+specifier|public
+name|int
+name|getReductionsConsumed
+parameter_list|()
+block|{
+return|return
+name|reductionsConsumed
 return|;
 block|}
 comment|/**    * Evaluate the submit rules.    *    * @return List of {@link SubmitRecord} objects returned from the evaluated    *     rules, including any errors.    */
@@ -2442,6 +2458,41 @@ block|}
 block|}
 catch|catch
 parameter_list|(
+name|ReductionLimitException
+name|err
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuleEvalException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s on change %d of %s"
+argument_list|,
+name|err
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|cd
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|getProjectName
+argument_list|()
+argument_list|)
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|RuntimeException
 name|err
 parameter_list|)
@@ -2450,25 +2501,39 @@ throw|throw
 operator|new
 name|RuleEvalException
 argument_list|(
-literal|"Exception calling "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Exception calling %s on change %d of %s"
+argument_list|,
 name|sr
-operator|+
-literal|" on change "
-operator|+
+argument_list|,
 name|cd
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|" of "
-operator|+
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|getProjectName
 argument_list|()
+argument_list|)
 argument_list|,
 name|err
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|reductionsConsumed
+operator|=
+name|env
+operator|.
+name|getReductions
+argument_list|()
+expr_stmt|;
 block|}
 name|Term
 name|resultsTerm
@@ -2912,7 +2977,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|PrologException
+name|ReductionLimitException
 name|err
 parameter_list|)
 block|{
@@ -2920,19 +2985,25 @@ throw|throw
 operator|new
 name|RuleEvalException
 argument_list|(
-literal|"Exception calling "
-operator|+
-name|filterRule
-operator|+
-literal|" on change "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s on change %d of %s"
+argument_list|,
+name|err
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
 name|cd
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|" of "
-operator|+
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|parentState
 operator|.
 name|getProject
@@ -2940,8 +3011,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|err
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -2955,19 +3025,22 @@ throw|throw
 operator|new
 name|RuleEvalException
 argument_list|(
-literal|"Exception calling "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Exception calling %s on change %d of %s"
+argument_list|,
 name|filterRule
-operator|+
-literal|" on change "
-operator|+
+argument_list|,
 name|cd
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|" of "
-operator|+
+operator|.
+name|get
+argument_list|()
+argument_list|,
 name|parentState
 operator|.
 name|getProject
@@ -2975,10 +3048,21 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+argument_list|)
 argument_list|,
 name|err
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|reductionsConsumed
+operator|+=
+name|env
+operator|.
+name|getReductions
+argument_list|()
+expr_stmt|;
 block|}
 name|childEnv
 operator|=
