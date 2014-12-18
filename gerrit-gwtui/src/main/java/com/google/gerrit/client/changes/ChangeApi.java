@@ -625,11 +625,9 @@ argument_list|(
 name|id
 argument_list|)
 operator|.
-name|addParameter
+name|addParameterTrue
 argument_list|(
 literal|"list"
-argument_list|,
-literal|true
 argument_list|)
 operator|.
 name|get
@@ -676,11 +674,9 @@ argument_list|(
 name|id
 argument_list|)
 operator|.
-name|addParameter
+name|addParameterTrue
 argument_list|(
 literal|"download-commands"
-argument_list|,
-literal|true
 argument_list|)
 return|;
 block|}
