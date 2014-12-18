@@ -1620,6 +1620,13 @@ block|}
 block|}
 block|}
 block|}
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|labelNames
+argument_list|)
+expr_stmt|;
 name|int
 name|baseColumns
 init|=
