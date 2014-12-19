@@ -90,10 +90,10 @@ specifier|public
 name|long
 name|runTimeMilliseconds
 decl_stmt|;
-DECL|field|resumeSortKey
+DECL|field|moreChanges
 specifier|public
-name|String
-name|resumeSortKey
+name|boolean
+name|moreChanges
 decl_stmt|;
 block|}
 end_class

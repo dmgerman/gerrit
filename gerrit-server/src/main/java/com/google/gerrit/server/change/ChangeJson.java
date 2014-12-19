@@ -3402,15 +3402,6 @@ argument_list|()
 expr_stmt|;
 name|out
 operator|.
-name|_sortkey
-operator|=
-name|in
-operator|.
-name|getSortKey
-argument_list|()
-expr_stmt|;
-name|out
-operator|.
 name|starred
 operator|=
 name|userProvider

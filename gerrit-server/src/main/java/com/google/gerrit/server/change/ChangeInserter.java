@@ -1110,13 +1110,6 @@ argument_list|(
 name|patchSetInfo
 argument_list|)
 expr_stmt|;
-name|ChangeUtil
-operator|.
-name|computeSortKey
-argument_list|(
-name|change
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|getChange ()
 specifier|public

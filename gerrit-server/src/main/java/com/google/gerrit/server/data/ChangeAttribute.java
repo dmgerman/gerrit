@@ -153,11 +153,6 @@ specifier|public
 name|Long
 name|lastUpdated
 decl_stmt|;
-DECL|field|sortKey
-specifier|public
-name|String
-name|sortKey
-decl_stmt|;
 DECL|field|open
 specifier|public
 name|Boolean

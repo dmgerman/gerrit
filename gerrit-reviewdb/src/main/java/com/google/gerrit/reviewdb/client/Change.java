@@ -1436,27 +1436,8 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** A {@link #lastUpdatedOn} ASC,{@link #changeId} ASC for sorting. */
+comment|// DELETED: id = 6 (sortkey)
 end_comment
-
-begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|6
-argument_list|,
-name|length
-operator|=
-literal|16
-argument_list|)
-DECL|field|sortKey
-specifier|protected
-name|String
-name|sortKey
-decl_stmt|;
-end_decl_stmt
 
 begin_decl_stmt
 annotation|@
@@ -1721,12 +1702,6 @@ name|other
 operator|.
 name|lastUpdatedOn
 expr_stmt|;
-name|sortKey
-operator|=
-name|other
-operator|.
-name|sortKey
-expr_stmt|;
 name|owner
 operator|=
 name|other
@@ -1903,37 +1878,6 @@ block|{
 return|return
 name|rowVersion
 return|;
-block|}
-end_function
-
-begin_function
-DECL|method|getSortKey ()
-specifier|public
-name|String
-name|getSortKey
-parameter_list|()
-block|{
-return|return
-name|sortKey
-return|;
-block|}
-end_function
-
-begin_function
-DECL|method|setSortKey (final String newSortKey)
-specifier|public
-name|void
-name|setSortKey
-parameter_list|(
-specifier|final
-name|String
-name|newSortKey
-parameter_list|)
-block|{
-name|sortKey
-operator|=
-name|newSortKey
-expr_stmt|;
 block|}
 end_function
 

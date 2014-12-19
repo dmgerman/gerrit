@@ -190,11 +190,6 @@ specifier|public
 name|Integer
 name|deletions
 decl_stmt|;
-DECL|field|_sortkey
-specifier|public
-name|String
-name|_sortkey
-decl_stmt|;
 DECL|field|baseChange
 specifier|public
 name|String

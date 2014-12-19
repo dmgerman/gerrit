@@ -1405,15 +1405,6 @@ literal|1000L
 expr_stmt|;
 name|a
 operator|.
-name|sortKey
-operator|=
-name|change
-operator|.
-name|getSortKey
-argument_list|()
-expr_stmt|;
-name|a
-operator|.
 name|open
 operator|=
 name|change
