@@ -2327,6 +2327,15 @@ argument_list|)
 expr_stmt|;
 name|ru
 operator|.
+name|setRefLogMessage
+argument_list|(
+literal|"inline edit (amend)"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|ru
+operator|.
 name|setForceUpdate
 argument_list|(
 literal|true
