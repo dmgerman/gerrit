@@ -939,7 +939,7 @@ name|results
 init|=
 name|imp
 operator|.
-name|queryChanges
+name|queryByStrings
 argument_list|(
 name|queries
 argument_list|)

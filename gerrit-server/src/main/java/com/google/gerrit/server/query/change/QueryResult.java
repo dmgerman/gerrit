@@ -90,6 +90,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|query
@@ -121,11 +135,13 @@ specifier|abstract
 class|class
 name|QueryResult
 block|{
-DECL|method|create (String query, Predicate<ChangeData> predicate, int limit, List<ChangeData> changes)
+DECL|method|create (@ullable String query, Predicate<ChangeData> predicate, int limit, List<ChangeData> changes)
 specifier|static
 name|QueryResult
 name|create
 parameter_list|(
+annotation|@
+name|Nullable
 name|String
 name|query
 parameter_list|,
@@ -195,8 +211,10 @@ name|moreChanges
 argument_list|)
 return|;
 block|}
-comment|/** @return the original query string. */
+comment|/**    * @return the original query string, or null if the query was created    *     programmatically.    */
 DECL|method|query ()
+annotation|@
+name|Nullable
 specifier|public
 specifier|abstract
 name|String
