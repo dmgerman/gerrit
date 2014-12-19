@@ -168,7 +168,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 import|;
 end_import
 
@@ -366,7 +366,7 @@ block|}
 DECL|field|event
 specifier|private
 specifier|final
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 name|event
 decl_stmt|;
 DECL|field|refOperationValidationListeners
@@ -414,7 +414,7 @@ expr_stmt|;
 name|event
 operator|=
 operator|new
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 argument_list|()
 expr_stmt|;
 name|event
@@ -531,7 +531,7 @@ return|return
 name|messages
 return|;
 block|}
-DECL|method|throwException (Iterable<ValidationMessage> messages, RefOperationReceivedEvent event)
+DECL|method|throwException (Iterable<ValidationMessage> messages, RefReceivedEvent event)
 specifier|private
 name|void
 name|throwException
@@ -542,7 +542,7 @@ name|ValidationMessage
 argument_list|>
 name|messages
 parameter_list|,
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 name|event
 parameter_list|)
 throws|throws

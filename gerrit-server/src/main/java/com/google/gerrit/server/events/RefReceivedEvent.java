@@ -127,10 +127,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RefOperationReceivedEvent
+DECL|class|RefReceivedEvent
 specifier|public
 class|class
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 extends|extends
 name|ChangeEvent
 block|{

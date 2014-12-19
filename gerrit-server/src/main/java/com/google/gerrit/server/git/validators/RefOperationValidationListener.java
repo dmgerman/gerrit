@@ -96,7 +96,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 import|;
 end_import
 
@@ -139,14 +139,14 @@ interface|interface
 name|RefOperationValidationListener
 block|{
 comment|/**    * Validate a ref operation before it is performed.    *    * @param refEvent ref operation specification    * @return empty list or informational messages on success    * @throws ValidationException if the ref operation fails to validate    */
-DECL|method|onRefOperation (RefOperationReceivedEvent refEvent)
+DECL|method|onRefOperation (RefReceivedEvent refEvent)
 name|List
 argument_list|<
 name|ValidationMessage
 argument_list|>
 name|onRefOperation
 parameter_list|(
-name|RefOperationReceivedEvent
+name|RefReceivedEvent
 name|refEvent
 parameter_list|)
 throws|throws
