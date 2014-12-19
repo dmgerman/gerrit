@@ -628,14 +628,17 @@ control|)
 block|{
 if|if
 condition|(
-name|w
-operator|.
-name|isNotify
+name|add
 argument_list|(
+name|matching
+argument_list|,
+name|w
+argument_list|,
 name|type
 argument_list|)
 condition|)
 block|{
+comment|// We only want to prevent matching All-Projects if this filter hits
 name|projectWatchers
 operator|.
 name|add
@@ -644,13 +647,6 @@ name|w
 operator|.
 name|getAccountId
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|matching
-argument_list|,
-name|w
 argument_list|)
 expr_stmt|;
 block|}
@@ -690,13 +686,6 @@ operator|.
 name|getAccountId
 argument_list|()
 argument_list|)
-operator|&&
-name|w
-operator|.
-name|isNotify
-argument_list|(
-name|type
-argument_list|)
 condition|)
 block|{
 name|add
@@ -704,6 +693,8 @@ argument_list|(
 name|matching
 argument_list|,
 name|w
+argument_list|,
+name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -1263,9 +1254,9 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|add (Watchers matching, AccountProjectWatch w)
+DECL|method|add (Watchers matching, AccountProjectWatch w, NotifyType type)
 specifier|private
-name|void
+name|boolean
 name|add
 parameter_list|(
 name|Watchers
@@ -1273,6 +1264,9 @@ name|matching
 parameter_list|,
 name|AccountProjectWatch
 name|w
+parameter_list|,
+name|NotifyType
+name|type
 parameter_list|)
 throws|throws
 name|OrmException
@@ -1311,6 +1305,18 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// If we are set to notify on this type, add the user.
+comment|// Otherwise, still return true to stop notifications for this user.
+if|if
+condition|(
+name|w
+operator|.
+name|isNotify
+argument_list|(
+name|type
+argument_list|)
+condition|)
+block|{
 name|matching
 operator|.
 name|bcc
@@ -1326,6 +1332,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1335,6 +1345,9 @@ parameter_list|)
 block|{
 comment|// Ignore broken filter expressions.
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|filterMatch (CurrentUser user, String filter)
 specifier|private
