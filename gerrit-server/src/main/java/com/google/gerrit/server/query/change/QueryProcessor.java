@@ -343,7 +343,7 @@ return|;
 block|}
 DECL|method|setLimit (int n)
 specifier|public
-name|void
+name|QueryProcessor
 name|setLimit
 parameter_list|(
 name|int
@@ -354,10 +354,13 @@ name|limitFromCaller
 operator|=
 name|n
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 DECL|method|setStart (int n)
 specifier|public
-name|void
+name|QueryProcessor
 name|setStart
 parameter_list|(
 name|int
@@ -368,6 +371,9 @@ name|start
 operator|=
 name|n
 expr_stmt|;
+return|return
+name|this
+return|;
 block|}
 comment|/**    * Query for changes that match the query string.    *    * @see #queryChanges(List)    * @param queryString the query string to parse.    * @return results of the query.    */
 DECL|method|queryByString (String queryString)
