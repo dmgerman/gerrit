@@ -1502,10 +1502,7 @@ name|valid
 operator|=
 name|user
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|addr
 argument_list|)

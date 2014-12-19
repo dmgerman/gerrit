@@ -14676,10 +14676,7 @@ name|defaultName
 operator|&&
 name|currentUser
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|c
 operator|.

@@ -489,10 +489,7 @@ operator|.
 name|getUser
 argument_list|()
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|id
 operator|.

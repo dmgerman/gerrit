@@ -1201,10 +1201,7 @@ operator|&&
 operator|!
 name|self
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|emailAddr
 argument_list|)

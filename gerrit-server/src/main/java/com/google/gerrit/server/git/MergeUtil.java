@@ -2668,10 +2668,7 @@ literal|1
 operator|&&
 name|who
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|emails
 operator|.

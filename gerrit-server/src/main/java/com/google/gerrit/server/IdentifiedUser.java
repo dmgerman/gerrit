@@ -1691,6 +1691,25 @@ return|return
 name|diffPref
 return|;
 block|}
+DECL|method|hasEmailAddress (String email)
+specifier|public
+name|boolean
+name|hasEmailAddress
+parameter_list|(
+name|String
+name|email
+parameter_list|)
+block|{
+return|return
+name|getEmailAddresses
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|email
+argument_list|)
+return|;
+block|}
 DECL|method|getEmailAddresses ()
 specifier|public
 name|Set

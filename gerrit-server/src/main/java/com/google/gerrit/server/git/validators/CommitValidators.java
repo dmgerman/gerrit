@@ -2576,10 +2576,7 @@ name|sboMe
 operator||=
 name|currentUser
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|e
 argument_list|)
@@ -2710,10 +2707,7 @@ condition|(
 operator|!
 name|currentUser
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|author
 operator|.
@@ -2865,10 +2859,7 @@ condition|(
 operator|!
 name|currentUser
 operator|.
-name|getEmailAddresses
-argument_list|()
-operator|.
-name|contains
+name|hasEmailAddress
 argument_list|(
 name|committer
 operator|.
