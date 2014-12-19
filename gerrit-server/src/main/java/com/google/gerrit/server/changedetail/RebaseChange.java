@@ -1809,42 +1809,35 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Rebases a commit.    *    * @param git repository to find commits in    * @param inserter inserter to handle new trees and blobs    * @param original The commit to rebase    * @param base Base to rebase against    * @param mergeUtil merge utilities for the destination project    * @param committerIdent committer identity    * @return the id of the rebased commit    * @throws IOException Merged failed    * @throws PathConflictException the rebase failed due to a path conflict    */
-DECL|method|rebaseCommit (final Repository git, final ObjectInserter inserter, final RevCommit original, final RevCommit base, final MergeUtil mergeUtil, final PersonIdent committerIdent)
+comment|/**    * Rebase a commit.    *    * @param git repository to find commits in.    * @param inserter inserter to handle new trees and blobs.    * @param original the commit to rebase.    * @param base base to rebase against.    * @param mergeUtil merge utilities for the destination project.    * @param committerIdent committer identity.    * @return the id of the rebased commit.    * @throws MergeConflictException the rebase failed due to a merge conflict.    * @throws IOException the merge failed for another reason.    */
+DECL|method|rebaseCommit (Repository git, ObjectInserter inserter, RevCommit original, RevCommit base, MergeUtil mergeUtil, PersonIdent committerIdent)
 specifier|private
 name|ObjectId
 name|rebaseCommit
 parameter_list|(
-specifier|final
 name|Repository
 name|git
 parameter_list|,
-specifier|final
 name|ObjectInserter
 name|inserter
 parameter_list|,
-specifier|final
 name|RevCommit
 name|original
 parameter_list|,
-specifier|final
 name|RevCommit
 name|base
 parameter_list|,
-specifier|final
 name|MergeUtil
 name|mergeUtil
 parameter_list|,
-specifier|final
 name|PersonIdent
 name|committerIdent
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
 name|MergeConflictException
+throws|,
+name|IOException
 block|{
-specifier|final
 name|RevCommit
 name|parentCommit
 init|=
@@ -1873,7 +1866,6 @@ literal|"Change is already up to date."
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|ThreeWayMerger
 name|merger
 init|=
@@ -1920,7 +1912,6 @@ literal|"The change could not be rebased due to a conflict during merge."
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|CommitBuilder
 name|cb
 init|=
@@ -1972,7 +1963,6 @@ argument_list|(
 name|committerIdent
 argument_list|)
 expr_stmt|;
-specifier|final
 name|ObjectId
 name|objectId
 init|=
