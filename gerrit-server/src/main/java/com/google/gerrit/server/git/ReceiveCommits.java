@@ -1596,6 +1596,24 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|QueryProcessor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|ssh
 operator|.
 name|SshInfo
@@ -3194,12 +3212,19 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration)
+DECL|method|ReceiveCommits (final ReviewDb db, final Provider<QueryProcessor> queryProcessor, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeQueue mergeQueue, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
 name|ReviewDb
 name|db
+parameter_list|,
+specifier|final
+name|Provider
+argument_list|<
+name|QueryProcessor
+argument_list|>
+name|queryProcessor
 parameter_list|,
 specifier|final
 name|SchemaFactory
@@ -4018,6 +4043,8 @@ operator|new
 name|ReceiveCommitsAdvertiseRefsHook
 argument_list|(
 name|db
+argument_list|,
+name|queryProcessor
 argument_list|,
 name|projectControl
 operator|.

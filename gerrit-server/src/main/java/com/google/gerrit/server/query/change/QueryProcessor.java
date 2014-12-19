@@ -306,7 +306,18 @@ name|getMax
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getQueryBuilder ()
+specifier|public
+name|ChangeQueryBuilder
+name|getQueryBuilder
+parameter_list|()
+block|{
+return|return
+name|queryBuilder
+return|;
+block|}
 DECL|method|setLimit (int n)
+specifier|public
 name|void
 name|setLimit
 parameter_list|(
