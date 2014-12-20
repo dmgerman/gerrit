@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.testutil
+DECL|package|com.google.gerrit.server.account
 package|package
 name|com
 operator|.
@@ -60,7 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|testutil
+name|server
+operator|.
+name|account
 package|;
 end_package
 
@@ -114,40 +116,8 @@ name|ReviewDb
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|AuthRequest
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
-name|Realm
-import|;
-end_import
-
 begin_comment
-comment|/** Fake implementation of {@link Realm} for testing. */
+comment|/** Fake implementation of {@link Realm} that does not communicate. */
 end_comment
 
 begin_class
@@ -155,8 +125,8 @@ DECL|class|FakeRealm
 specifier|public
 class|class
 name|FakeRealm
-implements|implements
-name|Realm
+extends|extends
+name|AbstractRealm
 block|{
 annotation|@
 name|Override
