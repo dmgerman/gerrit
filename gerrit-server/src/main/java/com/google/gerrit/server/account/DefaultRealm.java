@@ -185,8 +185,8 @@ DECL|class|DefaultRealm
 specifier|public
 class|class
 name|DefaultRealm
-implements|implements
-name|Realm
+extends|extends
+name|AbstractRealm
 block|{
 DECL|field|emailExpander
 specifier|private

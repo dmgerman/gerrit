@@ -98,6 +98,30 @@ name|ReviewDb
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_interface
 DECL|interface|Realm
 specifier|public
@@ -175,6 +199,32 @@ name|who
 parameter_list|,
 name|Account
 name|account
+parameter_list|)
+function_decl|;
+comment|/** @return true if the user has the given email address. */
+DECL|method|hasEmailAddress (IdentifiedUser who, String email)
+specifier|public
+name|boolean
+name|hasEmailAddress
+parameter_list|(
+name|IdentifiedUser
+name|who
+parameter_list|,
+name|String
+name|email
+parameter_list|)
+function_decl|;
+comment|/** @return all known email addresses for the identified user. */
+DECL|method|getEmailAddresses (IdentifiedUser who)
+specifier|public
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|getEmailAddresses
+parameter_list|(
+name|IdentifiedUser
+name|who
 parameter_list|)
 function_decl|;
 comment|/**    * Locate an account whose local username is the given account name.    *<p>    * Generally this only works for local realms, such as one backed by an LDAP    * directory, or where there is an {@link EmailExpander} configured that knows    * how to convert the accountName into an email address, and then locate the    * user by that email address.    */
