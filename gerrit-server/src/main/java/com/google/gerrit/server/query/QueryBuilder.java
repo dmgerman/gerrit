@@ -722,7 +722,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**    * Locate a predicate in the predicate tree.    *    * @param p the predicate to find.    * @param clazz type of the predicate instance.    * @param name name of the operator.    * @return the predicate, null if not found.    */
+comment|/**    * Locate a predicate in the predicate tree.    *    * @param p the predicate to find.    * @param clazz type of the predicate instance.    * @param name name of the operator.    * @return the first instance of a predicate having the given type, as found    *     by a depth-first search.    */
 annotation|@
 name|SuppressWarnings
 argument_list|(
