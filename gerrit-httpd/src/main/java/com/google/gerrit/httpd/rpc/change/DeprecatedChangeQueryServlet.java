@@ -82,7 +82,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|QueryProcessor
+name|OutputStreamQuery
 import|;
 end_import
 
@@ -100,7 +100,7 @@ name|query
 operator|.
 name|change
 operator|.
-name|QueryProcessor
+name|OutputStreamQuery
 operator|.
 name|OutputFormat
 import|;
@@ -229,32 +229,32 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|field|processor
+DECL|field|queryProvider
 specifier|private
 specifier|final
 name|Provider
 argument_list|<
-name|QueryProcessor
+name|OutputStreamQuery
 argument_list|>
-name|processor
+name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeprecatedChangeQueryServlet (Provider<QueryProcessor> processor)
+DECL|method|DeprecatedChangeQueryServlet (Provider<OutputStreamQuery> queryProvider)
 name|DeprecatedChangeQueryServlet
 parameter_list|(
 name|Provider
 argument_list|<
-name|QueryProcessor
+name|OutputStreamQuery
 argument_list|>
-name|processor
+name|queryProvider
 parameter_list|)
 block|{
 name|this
 operator|.
-name|processor
+name|queryProvider
 operator|=
-name|processor
+name|queryProvider
 expr_stmt|;
 block|}
 annotation|@
@@ -287,10 +287,10 @@ argument_list|(
 literal|"UTF-8"
 argument_list|)
 expr_stmt|;
-name|QueryProcessor
+name|OutputStreamQuery
 name|p
 init|=
-name|processor
+name|queryProvider
 operator|.
 name|get
 argument_list|()

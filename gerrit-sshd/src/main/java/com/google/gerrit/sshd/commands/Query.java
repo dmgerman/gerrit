@@ -80,7 +80,27 @@ name|query
 operator|.
 name|change
 operator|.
-name|QueryProcessor
+name|OutputStreamQuery
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|OutputStreamQuery
+operator|.
+name|OutputFormat
 import|;
 end_import
 
@@ -180,7 +200,7 @@ annotation|@
 name|Inject
 DECL|field|processor
 specifier|private
-name|QueryProcessor
+name|OutputStreamQuery
 name|processor
 decl_stmt|;
 annotation|@
@@ -198,12 +218,10 @@ name|usage
 operator|=
 literal|"Output display format"
 argument_list|)
-DECL|method|setFormat (QueryProcessor.OutputFormat format)
+DECL|method|setFormat (OutputFormat format)
 name|void
 name|setFormat
 parameter_list|(
-name|QueryProcessor
-operator|.
 name|OutputFormat
 name|format
 parameter_list|)
@@ -577,8 +595,6 @@ name|setOutput
 argument_list|(
 name|out
 argument_list|,
-name|QueryProcessor
-operator|.
 name|OutputFormat
 operator|.
 name|TEXT
