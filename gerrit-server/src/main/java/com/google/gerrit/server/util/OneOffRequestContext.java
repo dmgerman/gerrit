@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.reviewdb.server
+DECL|package|com.google.gerrit.server.util
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
 name|server
+operator|.
+name|util
 package|;
 end_package
 
@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
-name|client
+name|server
 operator|.
-name|Change
+name|ReviewDb
 import|;
 end_import
 
@@ -88,11 +88,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|gerrit
 operator|.
 name|server
 operator|.
-name|Access
+name|InternalUser
 import|;
 end_import
 
@@ -120,7 +120,7 @@ name|gwtorm
 operator|.
 name|server
 operator|.
-name|PrimaryKey
+name|SchemaFactory
 import|;
 end_import
 
@@ -130,11 +130,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|server
-operator|.
-name|Query
+name|Inject
 import|;
 end_import
 
@@ -144,107 +142,111 @@ name|com
 operator|.
 name|google
 operator|.
-name|gwtorm
+name|inject
 operator|.
-name|server
-operator|.
-name|ResultSet
+name|Singleton
 import|;
 end_import
 
-begin_interface
-DECL|interface|ChangeAccess
+begin_comment
+comment|/**  * Helper to create one-off request contexts.  *<p>  * Each call to {@link #open()} opens a new {@link ReviewDb}, so this class  * should only be used in a bounded try/finally block.  *<p>  * The user in the request context is {@link InternalUser}.  */
+end_comment
+
+begin_class
+annotation|@
+name|Singleton
+DECL|class|OneOffRequestContext
 specifier|public
-interface|interface
-name|ChangeAccess
-extends|extends
-name|Access
-argument_list|<
-name|Change
-argument_list|,
-name|Change
-operator|.
-name|Id
-argument_list|>
+class|class
+name|OneOffRequestContext
 block|{
-annotation|@
-name|Override
-annotation|@
-name|PrimaryKey
-argument_list|(
-literal|"changeId"
-argument_list|)
-DECL|method|get (Change.Id id)
-name|Change
-name|get
-parameter_list|(
-name|Change
+DECL|field|userFactory
+specifier|private
+specifier|final
+name|InternalUser
 operator|.
-name|Id
-name|id
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE changeKey = ?"
-argument_list|)
-DECL|method|byKey (Change.Key key)
-name|ResultSet
+name|Factory
+name|userFactory
+decl_stmt|;
+DECL|field|schemaFactory
+specifier|private
+specifier|final
+name|SchemaFactory
 argument_list|<
-name|Change
+name|ReviewDb
 argument_list|>
-name|byKey
-parameter_list|(
-name|Change
-operator|.
-name|Key
-name|key
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
+name|schemaFactory
+decl_stmt|;
+DECL|field|requestContext
+specifier|private
+specifier|final
+name|ThreadLocalRequestContext
+name|requestContext
+decl_stmt|;
 annotation|@
-name|Query
-argument_list|(
-literal|"WHERE changeKey>= ? AND changeKey<= ?"
-argument_list|)
-DECL|method|byKeyRange (Change.Key reva, Change.Key revb)
-name|ResultSet
-argument_list|<
-name|Change
-argument_list|>
-name|byKeyRange
+name|Inject
+DECL|method|OneOffRequestContext (InternalUser.Factory userFactory, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
+name|OneOffRequestContext
 parameter_list|(
-name|Change
+name|InternalUser
 operator|.
-name|Key
-name|reva
+name|Factory
+name|userFactory
 parameter_list|,
-name|Change
-operator|.
-name|Key
-name|revb
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-DECL|method|all ()
-name|ResultSet
+name|SchemaFactory
 argument_list|<
-name|Change
+name|ReviewDb
 argument_list|>
-name|all
+name|schemaFactory
+parameter_list|,
+name|ThreadLocalRequestContext
+name|requestContext
+parameter_list|)
+block|{
+name|this
+operator|.
+name|userFactory
+operator|=
+name|userFactory
+expr_stmt|;
+name|this
+operator|.
+name|schemaFactory
+operator|=
+name|schemaFactory
+expr_stmt|;
+name|this
+operator|.
+name|requestContext
+operator|=
+name|requestContext
+expr_stmt|;
+block|}
+DECL|method|open ()
+specifier|public
+name|ManualRequestContext
+name|open
 parameter_list|()
 throws|throws
 name|OrmException
-function_decl|;
+block|{
+return|return
+operator|new
+name|ManualRequestContext
+argument_list|(
+name|userFactory
+operator|.
+name|create
+argument_list|()
+argument_list|,
+name|schemaFactory
+argument_list|,
+name|requestContext
+argument_list|)
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

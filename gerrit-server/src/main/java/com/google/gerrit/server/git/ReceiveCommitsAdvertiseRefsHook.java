@@ -770,6 +770,11 @@ operator|.
 name|get
 argument_list|()
 operator|.
+name|enforceVisibility
+argument_list|(
+literal|true
+argument_list|)
+operator|.
 name|setLimit
 argument_list|(
 name|limit

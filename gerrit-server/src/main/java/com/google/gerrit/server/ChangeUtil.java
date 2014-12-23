@@ -85,6 +85,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeData
+operator|.
+name|asChanges
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -495,6 +515,24 @@ operator|.
 name|project
 operator|.
 name|RefControl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|InternalChangeQuery
 import|;
 end_import
 
@@ -1554,6 +1592,15 @@ name|ReviewDb
 argument_list|>
 name|db
 decl_stmt|;
+DECL|field|queryProvider
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|InternalChangeQuery
+argument_list|>
+name|queryProvider
+decl_stmt|;
 DECL|field|revertedSenderFactory
 specifier|private
 specifier|final
@@ -1598,7 +1645,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeUtil (Provider<CurrentUser> userProvider, CommitValidators.Factory commitValidatorsFactory, Provider<ReviewDb> db, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer)
+DECL|method|ChangeUtil (Provider<CurrentUser> userProvider, CommitValidators.Factory commitValidatorsFactory, Provider<ReviewDb> db, Provider<InternalChangeQuery> queryProvider, RevertedSender.Factory revertedSenderFactory, ChangeInserter.Factory changeInserterFactory, PatchSetInserter.Factory patchSetInserterFactory, GitRepositoryManager gitManager, GitReferenceUpdated gitRefUpdated, ChangeIndexer indexer)
 name|ChangeUtil
 parameter_list|(
 name|Provider
@@ -1617,6 +1664,12 @@ argument_list|<
 name|ReviewDb
 argument_list|>
 name|db
+parameter_list|,
+name|Provider
+argument_list|<
+name|InternalChangeQuery
+argument_list|>
+name|queryProvider
 parameter_list|,
 name|RevertedSender
 operator|.
@@ -1660,6 +1713,12 @@ operator|.
 name|db
 operator|=
 name|db
+expr_stmt|;
+name|this
+operator|.
+name|queryProvider
+operator|=
+name|queryProvider
 expr_stmt|;
 name|this
 operator|.
@@ -3703,12 +3762,11 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|db
+name|asChanges
+argument_list|(
+name|queryProvider
 operator|.
 name|get
-argument_list|()
-operator|.
-name|changes
 argument_list|()
 operator|.
 name|byBranchKey
@@ -3729,9 +3787,7 @@ operator|.
 name|id
 argument_list|()
 argument_list|)
-operator|.
-name|toList
-argument_list|()
+argument_list|)
 return|;
 block|}
 throw|throw
