@@ -759,16 +759,9 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|path
+name|restore_path
 argument_list|(
 name|filename
-argument_list|)
-expr_stmt|;
-name|in
-operator|.
-name|restore
-argument_list|(
-literal|true
 argument_list|)
 expr_stmt|;
 name|ChangeApi
@@ -1031,27 +1024,16 @@ name|Input
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|path (String p)
+DECL|method|restore_path (String p)
 specifier|final
 specifier|native
 name|void
-name|path
+name|restore_path
 parameter_list|(
 name|String
 name|p
 parameter_list|)
-comment|/*-{ if(p)this.path=p; }-*/
-function_decl|;
-DECL|method|restore (boolean r)
-specifier|final
-specifier|native
-name|void
-name|restore
-parameter_list|(
-name|boolean
-name|r
-parameter_list|)
-comment|/*-{ if(r)this.restore=r; }-*/
+comment|/*-{ if(p)this.restore_path=p; }-*/
 function_decl|;
 DECL|method|create ()
 specifier|static
