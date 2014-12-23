@@ -3778,6 +3778,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Find changes matching the given identifier.    *    * @param id change identifier, either a numeric ID, a Change-Id, or    *     project~branch~id triplet.    * @return all matching changes, even if they are not visible to the current    *     user.    */
 DECL|method|findChanges (String id)
 specifier|public
 name|List
