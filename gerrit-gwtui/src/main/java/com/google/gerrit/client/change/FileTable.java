@@ -1120,7 +1120,7 @@ block|}
 DECL|method|onRestore (NativeEvent e, int idx)
 specifier|private
 specifier|static
-name|void
+name|boolean
 name|onRestore
 parameter_list|(
 name|NativeEvent
@@ -1152,7 +1152,23 @@ argument_list|(
 name|idx
 argument_list|)
 expr_stmt|;
+name|e
+operator|.
+name|preventDefault
+argument_list|()
+expr_stmt|;
+name|e
+operator|.
+name|stopPropagation
+argument_list|()
+expr_stmt|;
+return|return
+literal|false
+return|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 DECL|method|onReviewed (NativeEvent e, int idx)
 specifier|private
