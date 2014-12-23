@@ -69,6 +69,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -123,6 +139,22 @@ operator|.
 name|server
 operator|.
 name|CurrentUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|IndexPredicate
 import|;
 end_import
 
@@ -508,6 +540,28 @@ name|queries
 argument_list|)
 return|;
 block|}
+static|static
+block|{
+comment|// In addition to this assumption, this queryChanges assumes the basic
+comment|// rewrites do not touch visibleto predicates either.
+name|checkState
+argument_list|(
+operator|!
+name|IsVisibleToPredicate
+operator|.
+name|class
+operator|.
+name|isAssignableFrom
+argument_list|(
+name|IndexPredicate
+operator|.
+name|class
+argument_list|)
+argument_list|,
+literal|"QueryProcessor assumes visibleto is not used by the index rewriter."
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|queryChanges (List<String> queryStrings, List<Predicate<ChangeData>> queries)
 specifier|private
 name|List
@@ -609,17 +663,6 @@ range|:
 name|queries
 control|)
 block|{
-name|q
-operator|=
-name|Predicate
-operator|.
-name|and
-argument_list|(
-name|q
-argument_list|,
-name|visibleToMe
-argument_list|)
-expr_stmt|;
 name|int
 name|limit
 init|=
@@ -715,15 +758,6 @@ name|s
 argument_list|)
 throw|;
 block|}
-name|predicates
-operator|.
-name|add
-argument_list|(
-name|s
-argument_list|)
-expr_stmt|;
-comment|// Don't trust QueryRewriter to have left the visible predicate.
-comment|// TODO(dborowitz): Probably we can.
 name|AndSource
 name|a
 init|=
@@ -742,6 +776,13 @@ argument_list|,
 name|start
 argument_list|)
 decl_stmt|;
+name|predicates
+operator|.
+name|add
+argument_list|(
+name|a
+argument_list|)
+expr_stmt|;
 name|sources
 operator|.
 name|add
