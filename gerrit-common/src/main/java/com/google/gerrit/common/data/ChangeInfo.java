@@ -188,11 +188,6 @@ specifier|protected
 name|Timestamp
 name|lastUpdatedOn
 decl_stmt|;
-DECL|field|sortKey
-specifier|protected
-name|String
-name|sortKey
-decl_stmt|;
 DECL|field|patchSetId
 specifier|protected
 name|PatchSet
@@ -317,13 +312,6 @@ operator|=
 name|c
 operator|.
 name|getLastUpdatedOn
-argument_list|()
-expr_stmt|;
-name|sortKey
-operator|=
-name|c
-operator|.
-name|getSortKey
 argument_list|()
 expr_stmt|;
 name|patchSetId
@@ -511,16 +499,6 @@ parameter_list|()
 block|{
 return|return
 name|lastUpdatedOn
-return|;
-block|}
-DECL|method|getSortKey ()
-specifier|public
-name|String
-name|getSortKey
-parameter_list|()
-block|{
-return|return
-name|sortKey
 return|;
 block|}
 block|}

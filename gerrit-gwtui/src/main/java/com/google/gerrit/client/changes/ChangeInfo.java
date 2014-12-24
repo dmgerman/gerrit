@@ -728,15 +728,6 @@ name|reviewed
 parameter_list|()
 comment|/*-{ return this.reviewed ? true : false; }-*/
 function_decl|;
-DECL|method|_sortkey ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|_sortkey
-parameter_list|()
-comment|/*-{ return this._sortkey; }-*/
-function_decl|;
 DECL|method|all_labels ()
 specifier|public
 specifier|final
