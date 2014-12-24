@@ -68,13 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -269,16 +273,19 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|0
-argument_list|,
 name|GerritLauncher
 operator|.
 name|mainImpl
 argument_list|(
 name|args
 argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
