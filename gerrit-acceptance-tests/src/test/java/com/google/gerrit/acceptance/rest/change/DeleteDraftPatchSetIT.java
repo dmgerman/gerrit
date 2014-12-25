@@ -394,7 +394,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Patch set is not a draft."
+literal|"Patch set is not a draft"
 argument_list|)
 expr_stmt|;
 name|assertThat

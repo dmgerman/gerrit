@@ -651,7 +651,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Draft workflow is disabled."
+literal|"Draft workflow is disabled"
 argument_list|)
 throw|;
 block|}

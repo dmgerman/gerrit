@@ -587,7 +587,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Patch set is not a draft."
+literal|"Patch set is not a draft"
 argument_list|)
 throw|;
 block|}
@@ -601,7 +601,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"Draft workflow is disabled."
+literal|"Draft workflow is disabled"
 argument_list|)
 throw|;
 block|}
