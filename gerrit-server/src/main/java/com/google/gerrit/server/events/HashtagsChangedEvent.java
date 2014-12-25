@@ -160,7 +160,7 @@ specifier|final
 name|String
 name|type
 init|=
-literal|"hashtags-edited"
+literal|"hashtags-changed"
 decl_stmt|;
 DECL|field|change
 specifier|public
