@@ -70,6 +70,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|acceptance
@@ -145,18 +161,6 @@ operator|.
 name|Util
 operator|.
 name|block
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -1585,16 +1589,19 @@ operator|+
 name|q
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-name|HttpStatus
-operator|.
-name|SC_OK
-argument_list|,
 name|r
 operator|.
 name|getStatusCode
 argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|HttpStatus
+operator|.
+name|SC_OK
 argument_list|)
 expr_stmt|;
 return|return

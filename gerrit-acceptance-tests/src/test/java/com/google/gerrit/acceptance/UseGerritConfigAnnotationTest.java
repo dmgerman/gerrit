@@ -66,13 +66,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -163,10 +167,8 @@ name|void
 name|testOne
 parameter_list|()
 block|{
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|"z"
-argument_list|,
 name|serverConfig
 operator|.
 name|getString
@@ -177,6 +179,11 @@ literal|null
 argument_list|,
 literal|"y"
 argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"z"
 argument_list|)
 expr_stmt|;
 block|}
@@ -217,10 +224,8 @@ name|void
 name|testMultiple
 parameter_list|()
 block|{
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|"z"
-argument_list|,
 name|serverConfig
 operator|.
 name|getString
@@ -232,11 +237,14 @@ argument_list|,
 literal|"y"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|assertEquals
+operator|.
+name|isEqualTo
 argument_list|(
-literal|"c"
-argument_list|,
+literal|"z"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
 name|serverConfig
 operator|.
 name|getString
@@ -247,6 +255,11 @@ literal|null
 argument_list|,
 literal|"b"
 argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"c"
 argument_list|)
 expr_stmt|;
 block|}
