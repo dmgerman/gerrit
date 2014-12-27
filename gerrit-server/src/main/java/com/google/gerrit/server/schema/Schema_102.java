@@ -196,12 +196,12 @@ name|SchemaVersion
 block|{
 annotation|@
 name|Inject
-DECL|method|Schema_102 (Provider<Schema_100> prior)
+DECL|method|Schema_102 (Provider<Schema_101> prior)
 name|Schema_102
 parameter_list|(
 name|Provider
 argument_list|<
-name|Schema_100
+name|Schema_101
 argument_list|>
 name|prior
 parameter_list|)
