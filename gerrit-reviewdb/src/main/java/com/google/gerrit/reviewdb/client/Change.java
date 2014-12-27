@@ -1592,6 +1592,29 @@ begin_comment
 comment|// DELETED: id = 16 (mergeable)
 end_comment
 
+begin_comment
+comment|/**    * First line of first patch set's commit message.    *    * Unlike {@link #subject}, this string does not change if future patch sets    * change the first line.    */
+end_comment
+
+begin_decl_stmt
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|17
+argument_list|,
+name|notNull
+operator|=
+literal|false
+argument_list|)
+DECL|field|originalSubject
+specifier|protected
+name|String
+name|originalSubject
+decl_stmt|;
+end_decl_stmt
+
 begin_constructor
 DECL|method|Change ()
 specifier|protected
@@ -1737,6 +1760,12 @@ operator|=
 name|other
 operator|.
 name|subject
+expr_stmt|;
+name|originalSubject
+operator|=
+name|other
+operator|.
+name|originalSubject
 expr_stmt|;
 name|topic
 operator|=
@@ -1942,6 +1971,25 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|method|getOriginalSubject ()
+specifier|public
+name|String
+name|getOriginalSubject
+parameter_list|()
+block|{
+return|return
+name|originalSubject
+operator|!=
+literal|null
+condition|?
+name|originalSubject
+else|:
+name|subject
+return|;
+block|}
+end_function
+
 begin_comment
 comment|/** Get the id of the most current {@link PatchSet} in this change. */
 end_comment
@@ -1991,6 +2039,25 @@ name|PatchSetInfo
 name|ps
 parameter_list|)
 block|{
+if|if
+condition|(
+name|originalSubject
+operator|==
+literal|null
+operator|&&
+name|subject
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Change was created before schema upgrade. Use the last subject
+comment|// associated with this change, as the most recent discussion will
+comment|// be under that thread in an email client such as GMail.
+name|originalSubject
+operator|=
+name|subject
+expr_stmt|;
+block|}
 name|currentPatchSetId
 operator|=
 name|ps
@@ -2008,6 +2075,19 @@ operator|.
 name|getSubject
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|originalSubject
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Newly created changes remember the first commit's subject.
+name|originalSubject
+operator|=
+name|subject
+expr_stmt|;
+block|}
 block|}
 end_function
 
