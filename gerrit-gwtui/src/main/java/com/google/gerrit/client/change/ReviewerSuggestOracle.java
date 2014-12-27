@@ -283,10 +283,10 @@ comment|/** REST API based suggestion Oracle for reviewers. */
 end_comment
 
 begin_class
-DECL|class|RestReviewerSuggestOracle
+DECL|class|ReviewerSuggestOracle
 specifier|public
 class|class
-name|RestReviewerSuggestOracle
+name|ReviewerSuggestOracle
 extends|extends
 name|SuggestAfterTypingNCharsOracle
 block|{

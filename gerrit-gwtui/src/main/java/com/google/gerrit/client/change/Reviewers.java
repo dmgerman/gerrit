@@ -838,7 +838,7 @@ name|ccText
 decl_stmt|;
 DECL|field|reviewerSuggestOracle
 specifier|private
-name|RestReviewerSuggestOracle
+name|ReviewerSuggestOracle
 name|reviewerSuggestOracle
 decl_stmt|;
 DECL|field|nameTxtBox
@@ -865,7 +865,7 @@ block|{
 name|reviewerSuggestOracle
 operator|=
 operator|new
-name|RestReviewerSuggestOracle
+name|ReviewerSuggestOracle
 argument_list|()
 expr_stmt|;
 name|nameTxtBox
