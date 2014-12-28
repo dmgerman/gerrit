@@ -250,6 +250,18 @@ name|DataResource
 name|d
 parameter_list|()
 function_decl|;
+DECL|method|dart ()
+annotation|@
+name|Source
+argument_list|(
+literal|"dart/dart.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|dart
+parameter_list|()
+function_decl|;
 DECL|method|diff ()
 annotation|@
 name|Source
@@ -260,6 +272,18 @@ annotation|@
 name|DoNotEmbed
 name|DataResource
 name|diff
+parameter_list|()
+function_decl|;
+DECL|method|dockerfile ()
+annotation|@
+name|Source
+argument_list|(
+literal|"dockerfile/dockerfile.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|dockerfile
 parameter_list|()
 function_decl|;
 DECL|method|dtd ()
@@ -524,6 +548,18 @@ annotation|@
 name|DoNotEmbed
 name|DataResource
 name|smalltalk
+parameter_list|()
+function_decl|;
+DECL|method|soy ()
+annotation|@
+name|Source
+argument_list|(
+literal|"soy/soy.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|soy
 parameter_list|()
 function_decl|;
 DECL|method|sql ()
