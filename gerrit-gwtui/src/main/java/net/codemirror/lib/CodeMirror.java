@@ -871,7 +871,7 @@ parameter_list|,
 name|BeforeSelectionChangeHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/LineCharacter;         Lnet/codemirror/lib/LineCharacter;)(cm,e.anchor,e.head);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, o) {       var e = o.ranges[o.ranges.length-1];       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/LineCharacter;         Lnet/codemirror/lib/LineCharacter;)(cm,e.anchor,e.head);     }));   }-*/
 function_decl|;
 DECL|method|getCursor ()
 specifier|public
