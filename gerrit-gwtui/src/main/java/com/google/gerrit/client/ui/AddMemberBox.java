@@ -416,7 +416,7 @@ operator|new
 name|SuggestBox
 argument_list|(
 operator|new
-name|RPCSuggestOracle
+name|RemoteSuggestOracle
 argument_list|(
 name|suggestOracle
 argument_list|)
