@@ -90,21 +90,6 @@ name|LineWidget
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create ()
-specifier|public
-specifier|static
-name|LineWidget
-name|create
-parameter_list|()
-block|{
-return|return
-name|createObject
-argument_list|()
-operator|.
-name|cast
-argument_list|()
-return|;
-block|}
 DECL|method|clear ()
 specifier|public
 specifier|final
@@ -112,7 +97,7 @@ specifier|native
 name|void
 name|clear
 parameter_list|()
-comment|/*-{ this.clear(); }-*/
+comment|/*-{ this.clear() }-*/
 function_decl|;
 DECL|method|changed ()
 specifier|public
@@ -121,7 +106,7 @@ specifier|native
 name|void
 name|changed
 parameter_list|()
-comment|/*-{ this.changed(); }-*/
+comment|/*-{ this.changed() }-*/
 function_decl|;
 DECL|method|onRedraw (Runnable thunk)
 specifier|public
@@ -133,7 +118,7 @@ parameter_list|(
 name|Runnable
 name|thunk
 parameter_list|)
-comment|/*-{     this.on("redraw", $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+comment|/*-{     this.on("redraw", $entry(function() {       thunk.@java.lang.Runnable::run()();     }))   }-*/
 function_decl|;
 DECL|method|onFirstRedraw (Runnable thunk)
 specifier|public

@@ -90,7 +90,7 @@ name|CodeMirrorDoc
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|replaceRange (String replacement, LineCharacter from, LineCharacter to)
+DECL|method|replaceRange (String replacement, Pos from, Pos to)
 specifier|public
 specifier|final
 specifier|native
@@ -100,15 +100,15 @@ parameter_list|(
 name|String
 name|replacement
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|from
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|to
 parameter_list|)
 comment|/*-{     this.replaceRange(replacement, from, to);   }-*/
 function_decl|;
-DECL|method|insertText (String insertion, LineCharacter at)
+DECL|method|insertText (String insertion, Pos at)
 specifier|public
 specifier|final
 specifier|native
@@ -118,7 +118,7 @@ parameter_list|(
 name|String
 name|insertion
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|at
 parameter_list|)
 comment|/*-{     this.replaceRange(insertion, at);   }-*/

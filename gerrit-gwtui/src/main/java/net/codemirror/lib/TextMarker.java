@@ -106,21 +106,6 @@ name|TextMarker
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create ()
-specifier|public
-specifier|static
-name|TextMarker
-name|create
-parameter_list|()
-block|{
-return|return
-name|createObject
-argument_list|()
-operator|.
-name|cast
-argument_list|()
-return|;
-block|}
 DECL|method|clear ()
 specifier|public
 specifier|final
@@ -176,46 +161,22 @@ name|FromTo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create (LineCharacter from, LineCharacter to)
+DECL|method|create (Pos f, Pos t)
 specifier|public
 specifier|static
+specifier|final
+specifier|native
 name|FromTo
 name|create
 parameter_list|(
-name|LineCharacter
-name|from
+name|Pos
+name|f
 parameter_list|,
-name|LineCharacter
-name|to
+name|Pos
+name|t
 parameter_list|)
-block|{
-name|FromTo
-name|fromTo
-init|=
-name|createObject
-argument_list|()
-operator|.
-name|cast
-argument_list|()
-decl_stmt|;
-name|fromTo
-operator|.
-name|setFrom
-argument_list|(
-name|from
-argument_list|)
-expr_stmt|;
-name|fromTo
-operator|.
-name|setTo
-argument_list|(
-name|to
-argument_list|)
-expr_stmt|;
-return|return
-name|fromTo
-return|;
-block|}
+comment|/*-{       return {from: f, to: t}     }-*/
+function_decl|;
 DECL|method|create (CommentRange range)
 specifier|public
 specifier|static
@@ -229,7 +190,7 @@ block|{
 return|return
 name|create
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -246,7 +207,7 @@ name|start_character
 argument_list|()
 argument_list|)
 argument_list|,
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -265,47 +226,47 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getFrom ()
+DECL|method|from ()
 specifier|public
 specifier|final
 specifier|native
-name|LineCharacter
-name|getFrom
-parameter_list|()
-comment|/*-{ return this.from; }-*/
-function_decl|;
-DECL|method|getTo ()
-specifier|public
-specifier|final
-specifier|native
-name|LineCharacter
-name|getTo
-parameter_list|()
-comment|/*-{ return this.to; }-*/
-function_decl|;
-DECL|method|setFrom (LineCharacter from)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setFrom
-parameter_list|(
-name|LineCharacter
+name|Pos
 name|from
-parameter_list|)
-comment|/*-{ this.from = from; }-*/
+parameter_list|()
+comment|/*-{ return this.from }-*/
 function_decl|;
-DECL|method|setTo (LineCharacter to)
+DECL|method|to ()
+specifier|public
+specifier|final
+specifier|native
+name|Pos
+name|to
+parameter_list|()
+comment|/*-{ return this.to }-*/
+function_decl|;
+DECL|method|from (Pos f)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|setTo
+name|from
 parameter_list|(
-name|LineCharacter
-name|to
+name|Pos
+name|f
 parameter_list|)
-comment|/*-{ this.to = to; }-*/
+comment|/*-{ this.from = f }-*/
+function_decl|;
+DECL|method|to (Pos t)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|to
+parameter_list|(
+name|Pos
+name|t
+parameter_list|)
+comment|/*-{ this.to = t }-*/
 function_decl|;
 DECL|method|FromTo ()
 specifier|protected

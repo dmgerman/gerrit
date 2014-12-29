@@ -1139,10 +1139,10 @@ if|if
 condition|(
 name|r
 operator|.
-name|getTo
+name|to
 argument_list|()
 operator|.
-name|getLine
+name|line
 argument_list|()
 operator|>=
 name|line
@@ -1154,12 +1154,12 @@ name|setSelection
 argument_list|(
 name|r
 operator|.
-name|getFrom
+name|from
 argument_list|()
 argument_list|,
 name|r
 operator|.
-name|getTo
+name|to
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -204,7 +204,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|LineCharacter
+name|Pos
 import|;
 end_import
 
@@ -239,12 +239,12 @@ name|refresh
 decl_stmt|;
 DECL|field|from
 specifier|private
-name|LineCharacter
+name|Pos
 name|from
 decl_stmt|;
 DECL|field|to
 specifier|private
-name|LineCharacter
+name|Pos
 name|to
 decl_stmt|;
 DECL|field|scale
@@ -322,16 +322,16 @@ parameter_list|)
 block|{
 name|at
 argument_list|(
-name|CodeMirror
+name|Pos
 operator|.
-name|pos
+name|create
 argument_list|(
 name|line
 argument_list|)
 argument_list|,
-name|CodeMirror
+name|Pos
 operator|.
-name|pos
+name|create
 argument_list|(
 name|line
 operator|+
@@ -340,14 +340,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|at (LineCharacter from, LineCharacter to)
+DECL|method|at (Pos from, Pos to)
 name|void
 name|at
 parameter_list|(
-name|LineCharacter
+name|Pos
 name|from
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|to
 parameter_list|)
 block|{
@@ -645,7 +645,7 @@ name|line
 init|=
 name|from
 operator|.
-name|getLine
+name|line
 argument_list|()
 decl_stmt|;
 name|int
@@ -653,7 +653,7 @@ name|h
 init|=
 name|to
 operator|.
-name|getLine
+name|line
 argument_list|()
 operator|-
 name|line
@@ -718,7 +718,7 @@ operator|.
 name|getScrollInfo
 argument_list|()
 operator|.
-name|getClientHeight
+name|clientHeight
 argument_list|()
 decl_stmt|;
 name|cm

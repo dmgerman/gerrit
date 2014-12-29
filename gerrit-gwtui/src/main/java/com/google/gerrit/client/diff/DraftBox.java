@@ -1616,13 +1616,13 @@ argument_list|(
 name|getFromTo
 argument_list|()
 operator|.
-name|getFrom
+name|from
 argument_list|()
 argument_list|,
 name|getFromTo
 argument_list|()
 operator|.
-name|getTo
+name|to
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -330,7 +330,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|LineCharacter
+name|Pos
 import|;
 end_import
 
@@ -1507,12 +1507,12 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|LineCharacter
+name|Pos
 name|last
 init|=
-name|CodeMirror
+name|Pos
 operator|.
-name|pos
+name|create
 argument_list|(
 literal|0
 argument_list|,
@@ -1532,7 +1532,7 @@ name|edits
 argument_list|)
 control|)
 block|{
-name|LineCharacter
+name|Pos
 name|from
 init|=
 name|iter
@@ -1545,7 +1545,7 @@ name|skip
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|LineCharacter
+name|Pos
 name|to
 init|=
 name|iter
@@ -1562,12 +1562,12 @@ if|if
 condition|(
 name|from
 operator|.
-name|getLine
+name|line
 argument_list|()
 operator|==
 name|last
 operator|.
-name|getLine
+name|line
 argument_list|()
 condition|)
 block|{
@@ -1598,13 +1598,13 @@ name|cm
 operator|.
 name|markText
 argument_list|(
-name|CodeMirror
+name|Pos
 operator|.
-name|pos
+name|create
 argument_list|(
 name|from
 operator|.
-name|getLine
+name|line
 argument_list|()
 argument_list|,
 literal|0
@@ -1654,12 +1654,12 @@ argument_list|()
 argument_list|,
 name|from
 operator|.
-name|getLine
+name|line
 argument_list|()
 argument_list|,
 name|to
 operator|.
-name|getLine
+name|line
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2034,7 +2034,7 @@ name|getLineNumber
 argument_list|(
 name|cm
 operator|.
-name|getActiveLine
+name|activeLine
 argument_list|()
 argument_list|)
 else|:
@@ -2213,7 +2213,7 @@ name|targetCm
 operator|.
 name|setCursor
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -2249,7 +2249,7 @@ literal|0.5
 operator|*
 name|cmB
 operator|.
-name|getScrollbarV
+name|scrollbarV
 argument_list|()
 operator|.
 name|getClientHeight

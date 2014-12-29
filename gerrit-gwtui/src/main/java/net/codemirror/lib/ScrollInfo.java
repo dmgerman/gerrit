@@ -90,61 +90,61 @@ name|ScrollInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|getLeft ()
+DECL|method|left ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getLeft
+name|left
 parameter_list|()
-comment|/*-{ return this.left; }-*/
+comment|/*-{ return this.left }-*/
 function_decl|;
-DECL|method|getTop ()
+DECL|method|top ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getTop
+name|top
 parameter_list|()
-comment|/*-{ return this.top; }-*/
+comment|/*-{ return this.top }-*/
 function_decl|;
 comment|/**    * Pixel height of the full content being scrolled. This may only be an    * estimate given by CodeMirror. Line widgets further down in the document may    * not be measured, so line heights can be incorrect until drawn.    */
-DECL|method|getHeight ()
+DECL|method|height ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getHeight
+name|height
 parameter_list|()
-comment|/*-{ return this.height; }-*/
+comment|/*-{ return this.height }-*/
 function_decl|;
-DECL|method|getWidth ()
+DECL|method|width ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getWidth
+name|width
 parameter_list|()
-comment|/*-{ return this.width; }-*/
+comment|/*-{ return this.width }-*/
 function_decl|;
 comment|/** Visible height of the viewport, excluding scrollbars. */
-DECL|method|getClientHeight ()
+DECL|method|clientHeight ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getClientHeight
+name|clientHeight
 parameter_list|()
-comment|/*-{ return this.clientHeight; }-*/
+comment|/*-{ return this.clientHeight }-*/
 function_decl|;
-DECL|method|getClientWidth ()
+DECL|method|clientWidth ()
 specifier|public
 specifier|final
 specifier|native
 name|double
-name|getClientWidth
+name|clientWidth
 parameter_list|()
-comment|/*-{ return this.clientWidth; }-*/
+comment|/*-{ return this.clientWidth }-*/
 function_decl|;
 DECL|method|ScrollInfo ()
 specifier|protected
