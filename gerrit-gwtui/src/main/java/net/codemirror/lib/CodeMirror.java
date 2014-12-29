@@ -377,6 +377,33 @@ name|n
 parameter_list|)
 comment|/*-{ return this.getLine(n) }-*/
 function_decl|;
+DECL|method|barHeight ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|barHeight
+parameter_list|()
+comment|/*-{ return this.display.barHeight }-*/
+function_decl|;
+DECL|method|barWidth ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|barWidth
+parameter_list|()
+comment|/*-{ return this.display.barWidth }-*/
+function_decl|;
+DECL|method|lastLine ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|lastLine
+parameter_list|()
+comment|/*-{ return this.lastLine() }-*/
+function_decl|;
 DECL|method|refresh ()
 specifier|public
 specifier|final
@@ -798,11 +825,26 @@ name|thunk
 parameter_list|)
 comment|/*-{     this.operation(function() {       thunk.@java.lang.Runnable::run()();     });   }-*/
 function_decl|;
-DECL|method|on (String event, Runnable thunk)
+DECL|method|off (String event, RegisteredHandler h)
 specifier|public
 specifier|final
 specifier|native
 name|void
+name|off
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|RegisteredHandler
+name|h
+parameter_list|)
+comment|/*-{     this.off(event, h)   }-*/
+function_decl|;
+DECL|method|on (String event, Runnable thunk)
+specifier|public
+specifier|final
+specifier|native
+name|RegisteredHandler
 name|on
 parameter_list|(
 name|String
@@ -811,7 +853,7 @@ parameter_list|,
 name|Runnable
 name|thunk
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+comment|/*-{     var h = $entry(function() { thunk.@java.lang.Runnable::run()() });     this.on(event, h);     return h;   }-*/
 function_decl|;
 DECL|method|on (String event, EventHandler handler)
 specifier|public
@@ -1300,6 +1342,20 @@ block|{
 DECL|method|LineHandle ()
 specifier|protected
 name|LineHandle
+parameter_list|()
+block|{     }
+block|}
+DECL|class|RegisteredHandler
+specifier|public
+specifier|static
+class|class
+name|RegisteredHandler
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|RegisteredHandler ()
+specifier|protected
+name|RegisteredHandler
 parameter_list|()
 block|{     }
 block|}

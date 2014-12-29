@@ -1566,7 +1566,7 @@ expr_stmt|;
 name|clearRange
 argument_list|()
 expr_stmt|;
-name|getMark
+name|getAnnotation
 argument_list|()
 operator|.
 name|remove

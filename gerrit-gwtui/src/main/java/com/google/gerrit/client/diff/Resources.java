@@ -110,22 +110,6 @@ name|resources
 operator|.
 name|client
 operator|.
-name|CssResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
 name|ImageResource
 import|;
 end_import
@@ -160,10 +144,24 @@ DECL|method|style ()
 annotation|@
 name|Source
 argument_list|(
-literal|"CommentBoxUi.css"
+literal|"CommentBox.css"
 argument_list|)
+name|CommentBox
+operator|.
 name|Style
 name|style
+parameter_list|()
+function_decl|;
+DECL|method|scrollbarStyle ()
+annotation|@
+name|Source
+argument_list|(
+literal|"Scrollbar.css"
+argument_list|)
+name|Scrollbar
+operator|.
+name|Style
+name|scrollbarStyle
 parameter_list|()
 function_decl|;
 DECL|method|goPrev ()
@@ -196,63 +194,6 @@ name|ImageResource
 name|goUp
 parameter_list|()
 function_decl|;
-DECL|interface|Style
-interface|interface
-name|Style
-extends|extends
-name|CssResource
-block|{
-DECL|method|commentWidgets ()
-name|String
-name|commentWidgets
-parameter_list|()
-function_decl|;
-DECL|method|commentBox ()
-name|String
-name|commentBox
-parameter_list|()
-function_decl|;
-DECL|method|contents ()
-name|String
-name|contents
-parameter_list|()
-function_decl|;
-DECL|method|message ()
-name|String
-name|message
-parameter_list|()
-function_decl|;
-DECL|method|header ()
-name|String
-name|header
-parameter_list|()
-function_decl|;
-DECL|method|summary ()
-name|String
-name|summary
-parameter_list|()
-function_decl|;
-DECL|method|date ()
-name|String
-name|date
-parameter_list|()
-function_decl|;
-DECL|method|goPrev ()
-name|String
-name|goPrev
-parameter_list|()
-function_decl|;
-DECL|method|goNext ()
-name|String
-name|goNext
-parameter_list|()
-function_decl|;
-DECL|method|goUp ()
-name|String
-name|goUp
-parameter_list|()
-function_decl|;
-block|}
 block|}
 end_interface
 
