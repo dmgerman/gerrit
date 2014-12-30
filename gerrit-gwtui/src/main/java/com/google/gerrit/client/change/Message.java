@@ -1107,7 +1107,7 @@ name|s
 operator|.
 name|length
 argument_list|()
-operator|<
+operator|<=
 name|len
 operator|||
 name|len
@@ -1119,6 +1119,17 @@ return|return
 name|s
 return|;
 block|}
+name|int
+name|i
+init|=
+operator|(
+name|len
+operator|-
+literal|3
+operator|)
+operator|/
+literal|2
+decl_stmt|;
 return|return
 name|s
 operator|.
@@ -1126,9 +1137,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|len
-operator|-
-literal|10
+name|i
 argument_list|)
 operator|+
 literal|"..."
@@ -1142,7 +1151,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-literal|10
+name|i
 argument_list|)
 return|;
 block|}
