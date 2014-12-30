@@ -694,7 +694,7 @@ operator|.
 name|background
 argument_list|()
 operator|.
-name|post
+name|put
 argument_list|(
 name|in
 argument_list|,

@@ -632,7 +632,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-name|post
+name|put
 argument_list|(
 name|ACCOUNT_KIND
 argument_list|,

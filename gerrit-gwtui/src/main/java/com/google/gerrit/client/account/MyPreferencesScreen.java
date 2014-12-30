@@ -2967,7 +2967,7 @@ argument_list|(
 literal|"preferences"
 argument_list|)
 operator|.
-name|post
+name|put
 argument_list|(
 name|Preferences
 operator|.
