@@ -113,9 +113,9 @@ name|String
 name|signInDialogTitle
 parameter_list|()
 function_decl|;
-DECL|method|signInDialogClose ()
+DECL|method|signInDialogGoAnonymous ()
 name|String
-name|signInDialogClose
+name|signInDialogGoAnonymous
 parameter_list|()
 function_decl|;
 DECL|method|linkIdentityDialogTitle ()
