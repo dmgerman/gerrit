@@ -146,7 +146,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|LineCharacter
+name|Pos
 import|;
 end_import
 
@@ -205,15 +205,15 @@ specifier|private
 name|JsArrayString
 name|lines
 decl_stmt|;
-DECL|method|assertLineChsEqual (LineCharacter a, LineCharacter b)
+DECL|method|assertLineChsEqual (Pos a, Pos b)
 specifier|private
 name|void
 name|assertLineChsEqual
 parameter_list|(
-name|LineCharacter
+name|Pos
 name|a
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|b
 parameter_list|)
 block|{
@@ -221,26 +221,26 @@ name|assertEquals
 argument_list|(
 name|a
 operator|.
-name|getLine
+name|line
 argument_list|()
 operator|+
 literal|","
 operator|+
 name|a
 operator|.
-name|getCh
+name|ch
 argument_list|()
 argument_list|,
 name|b
 operator|.
-name|getLine
+name|line
 argument_list|()
 operator|+
 literal|","
 operator|+
 name|b
 operator|.
-name|getCh
+name|ch
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -306,7 +306,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -325,7 +325,7 @@ argument_list|)
 expr_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -365,7 +365,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -402,7 +402,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -441,7 +441,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -480,7 +480,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -517,7 +517,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -563,7 +563,7 @@ argument_list|)
 expr_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -609,7 +609,7 @@ argument_list|)
 expr_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -648,7 +648,7 @@ argument_list|)
 decl_stmt|;
 name|assertLineChsEqual
 argument_list|(
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(

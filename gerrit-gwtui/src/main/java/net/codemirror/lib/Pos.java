@@ -79,63 +79,37 @@ import|;
 end_import
 
 begin_comment
-comment|/** {line, ch} objects used within CodeMirror. */
+comment|/** Pos (or {line, ch}) objects used within CodeMirror. */
 end_comment
 
 begin_class
-DECL|class|LineCharacter
+DECL|class|Pos
 specifier|public
 class|class
-name|LineCharacter
+name|Pos
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|create (int line, int ch)
-specifier|public
-specifier|static
-name|LineCharacter
-name|create
-parameter_list|(
-name|int
-name|line
-parameter_list|,
-name|int
-name|ch
-parameter_list|)
-block|{
-return|return
-name|createImpl
-argument_list|(
-name|line
-argument_list|,
-name|ch
-argument_list|)
-return|;
-block|}
 DECL|method|create (int line)
 specifier|public
 specifier|static
-name|LineCharacter
+specifier|final
+specifier|native
+name|Pos
 name|create
 parameter_list|(
 name|int
 name|line
 parameter_list|)
-block|{
-return|return
-name|createImpl
-argument_list|(
-name|line
-argument_list|,
-literal|0
-argument_list|)
-return|;
-block|}
-DECL|method|createImpl (int line, int ch)
-specifier|private
+comment|/*-{     return $wnd.CodeMirror.Pos(line)   }-*/
+function_decl|;
+DECL|method|create (int line, int ch)
+specifier|public
 specifier|static
-name|LineCharacter
-name|createImpl
+specifier|final
+specifier|native
+name|Pos
+name|create
 parameter_list|(
 name|int
 name|line
@@ -143,79 +117,87 @@ parameter_list|,
 name|int
 name|ch
 parameter_list|)
-block|{
-name|LineCharacter
-name|lineCh
-init|=
-name|createObject
-argument_list|()
-operator|.
-name|cast
-argument_list|()
-decl_stmt|;
-name|lineCh
-operator|.
-name|setLine
-argument_list|(
+comment|/*-{     return $wnd.CodeMirror.Pos(line, ch)   }-*/
+function_decl|;
+DECL|method|line (int l)
+specifier|public
+specifier|final
+specifier|native
+name|void
 name|line
-argument_list|)
-expr_stmt|;
-name|lineCh
-operator|.
-name|setCh
-argument_list|(
+parameter_list|(
+name|int
+name|l
+parameter_list|)
+comment|/*-{ this.line = l }-*/
+function_decl|;
+DECL|method|ch (int c)
+specifier|public
+specifier|final
+specifier|native
+name|void
 name|ch
-argument_list|)
-expr_stmt|;
+parameter_list|(
+name|int
+name|c
+parameter_list|)
+comment|/*-{ this.ch = c }-*/
+function_decl|;
+DECL|method|line ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|line
+parameter_list|()
+comment|/*-{ return this.line }-*/
+function_decl|;
+DECL|method|ch ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|ch
+parameter_list|()
+comment|/*-{ return this.ch || 0 }-*/
+function_decl|;
+DECL|method|equals (Pos o)
+specifier|public
+specifier|final
+name|boolean
+name|equals
+parameter_list|(
+name|Pos
+name|o
+parameter_list|)
+block|{
 return|return
-name|lineCh
+name|this
+operator|==
+name|o
+operator|||
+operator|(
+name|line
+argument_list|()
+operator|==
+name|o
+operator|.
+name|line
+argument_list|()
+operator|&&
+name|ch
+argument_list|()
+operator|==
+name|o
+operator|.
+name|ch
+argument_list|()
+operator|)
 return|;
 block|}
-DECL|method|setLine (int line)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setLine
-parameter_list|(
-name|int
-name|line
-parameter_list|)
-comment|/*-{ this.line = line; }-*/
-function_decl|;
-DECL|method|setCh (int ch)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setCh
-parameter_list|(
-name|int
-name|ch
-parameter_list|)
-comment|/*-{ this.ch = ch; }-*/
-function_decl|;
-DECL|method|getLine ()
-specifier|public
-specifier|final
-specifier|native
-name|int
-name|getLine
-parameter_list|()
-comment|/*-{ return this.line; }-*/
-function_decl|;
-DECL|method|getCh ()
-specifier|public
-specifier|final
-specifier|native
-name|int
-name|getCh
-parameter_list|()
-comment|/*-{ return this.ch; }-*/
-function_decl|;
-DECL|method|LineCharacter ()
+DECL|method|Pos ()
 specifier|protected
-name|LineCharacter
+name|Pos
 parameter_list|()
 block|{   }
 block|}

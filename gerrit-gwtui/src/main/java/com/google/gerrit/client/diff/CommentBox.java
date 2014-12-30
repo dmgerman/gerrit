@@ -162,6 +162,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|CssResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|user
 operator|.
 name|client
@@ -247,18 +263,73 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
+DECL|interface|Style
+interface|interface
+name|Style
+extends|extends
+name|CssResource
+block|{
+DECL|method|commentWidgets ()
+name|String
+name|commentWidgets
+parameter_list|()
+function_decl|;
+DECL|method|commentBox ()
+name|String
+name|commentBox
+parameter_list|()
+function_decl|;
+DECL|method|contents ()
+name|String
+name|contents
+parameter_list|()
+function_decl|;
+DECL|method|message ()
+name|String
+name|message
+parameter_list|()
+function_decl|;
+DECL|method|header ()
+name|String
+name|header
+parameter_list|()
+function_decl|;
+DECL|method|summary ()
+name|String
+name|summary
+parameter_list|()
+function_decl|;
+DECL|method|date ()
+name|String
+name|date
+parameter_list|()
+function_decl|;
+DECL|method|goPrev ()
+name|String
+name|goPrev
+parameter_list|()
+function_decl|;
+DECL|method|goNext ()
+name|String
+name|goNext
+parameter_list|()
+function_decl|;
+DECL|method|goUp ()
+name|String
+name|goUp
+parameter_list|()
+function_decl|;
+block|}
 DECL|field|group
 specifier|private
 specifier|final
 name|CommentGroup
 name|group
 decl_stmt|;
-DECL|field|mark
+DECL|field|annotation
 specifier|private
-name|OverviewBar
-operator|.
-name|MarkHandle
-name|mark
+name|ScrollbarAnnotation
+name|annotation
 decl_stmt|;
 DECL|field|fromTo
 specifier|private
@@ -318,12 +389,12 @@ name|markText
 argument_list|(
 name|fromTo
 operator|.
-name|getFrom
+name|from
 argument_list|()
 argument_list|,
 name|fromTo
 operator|.
-name|getTo
+name|to
 argument_list|()
 argument_list|,
 name|Configuration
@@ -465,28 +536,24 @@ name|getCommentManager
 argument_list|()
 return|;
 block|}
-DECL|method|getMark ()
-name|OverviewBar
-operator|.
-name|MarkHandle
-name|getMark
+DECL|method|getAnnotation ()
+name|ScrollbarAnnotation
+name|getAnnotation
 parameter_list|()
 block|{
 return|return
-name|mark
+name|annotation
 return|;
 block|}
-DECL|method|setMark (OverviewBar.MarkHandle mh)
+DECL|method|setAnnotation (ScrollbarAnnotation mh)
 name|void
-name|setMark
+name|setAnnotation
 parameter_list|(
-name|OverviewBar
-operator|.
-name|MarkHandle
+name|ScrollbarAnnotation
 name|mh
 parameter_list|)
 block|{
-name|mark
+name|annotation
 operator|=
 name|mh
 expr_stmt|;
@@ -526,12 +593,12 @@ name|markText
 argument_list|(
 name|fromTo
 operator|.
-name|getFrom
+name|from
 argument_list|()
 argument_list|,
 name|fromTo
 operator|.
-name|getTo
+name|to
 argument_list|()
 argument_list|,
 name|Configuration

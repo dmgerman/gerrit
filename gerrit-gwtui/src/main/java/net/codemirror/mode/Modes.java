@@ -182,7 +182,7 @@ DECL|method|clike ()
 annotation|@
 name|Source
 argument_list|(
-literal|"clike/clike.js"
+literal|"clike.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -194,7 +194,7 @@ DECL|method|clojure ()
 annotation|@
 name|Source
 argument_list|(
-literal|"clojure/clojure.js"
+literal|"clojure.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -202,23 +202,11 @@ name|DataResource
 name|clojure
 parameter_list|()
 function_decl|;
-DECL|method|commonlisp ()
-annotation|@
-name|Source
-argument_list|(
-literal|"commonlisp/commonlisp.js"
-argument_list|)
-annotation|@
-name|DoNotEmbed
-name|DataResource
-name|commonlisp
-parameter_list|()
-function_decl|;
 DECL|method|coffeescript ()
 annotation|@
 name|Source
 argument_list|(
-literal|"coffeescript/coffeescript.js"
+literal|"coffeescript.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -226,11 +214,23 @@ name|DataResource
 name|coffeescript
 parameter_list|()
 function_decl|;
+DECL|method|commonlisp ()
+annotation|@
+name|Source
+argument_list|(
+literal|"commonlisp.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|commonlisp
+parameter_list|()
+function_decl|;
 DECL|method|css ()
 annotation|@
 name|Source
 argument_list|(
-literal|"css/css.js"
+literal|"css.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -242,7 +242,7 @@ DECL|method|d ()
 annotation|@
 name|Source
 argument_list|(
-literal|"d/d.js"
+literal|"d.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -250,11 +250,23 @@ name|DataResource
 name|d
 parameter_list|()
 function_decl|;
+DECL|method|dart ()
+annotation|@
+name|Source
+argument_list|(
+literal|"dart.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|dart
+parameter_list|()
+function_decl|;
 DECL|method|diff ()
 annotation|@
 name|Source
 argument_list|(
-literal|"diff/diff.js"
+literal|"diff.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -262,11 +274,23 @@ name|DataResource
 name|diff
 parameter_list|()
 function_decl|;
+DECL|method|dockerfile ()
+annotation|@
+name|Source
+argument_list|(
+literal|"dockerfile.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|dockerfile
+parameter_list|()
+function_decl|;
 DECL|method|dtd ()
 annotation|@
 name|Source
 argument_list|(
-literal|"dtd/dtd.js"
+literal|"dtd.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -278,7 +302,7 @@ DECL|method|erlang ()
 annotation|@
 name|Source
 argument_list|(
-literal|"erlang/erlang.js"
+literal|"erlang.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -290,7 +314,7 @@ DECL|method|gas ()
 annotation|@
 name|Source
 argument_list|(
-literal|"gas/gas.js"
+literal|"gas.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -314,7 +338,7 @@ DECL|method|gfm ()
 annotation|@
 name|Source
 argument_list|(
-literal|"gfm/gfm.js"
+literal|"gfm.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -326,7 +350,7 @@ DECL|method|groovy ()
 annotation|@
 name|Source
 argument_list|(
-literal|"groovy/groovy.js"
+literal|"groovy.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -338,7 +362,7 @@ DECL|method|haskell ()
 annotation|@
 name|Source
 argument_list|(
-literal|"haskell/haskell.js"
+literal|"haskell.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -350,7 +374,7 @@ DECL|method|htmlmixed ()
 annotation|@
 name|Source
 argument_list|(
-literal|"htmlmixed/htmlmixed.js"
+literal|"htmlmixed.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -362,7 +386,7 @@ DECL|method|javascript ()
 annotation|@
 name|Source
 argument_list|(
-literal|"javascript/javascript.js"
+literal|"javascript.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -374,7 +398,7 @@ DECL|method|lua ()
 annotation|@
 name|Source
 argument_list|(
-literal|"lua/lua.js"
+literal|"lua.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -386,7 +410,7 @@ DECL|method|markdown ()
 annotation|@
 name|Source
 argument_list|(
-literal|"markdown/markdown.js"
+literal|"markdown.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -398,7 +422,7 @@ DECL|method|perl ()
 annotation|@
 name|Source
 argument_list|(
-literal|"perl/perl.js"
+literal|"perl.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -410,7 +434,7 @@ DECL|method|php ()
 annotation|@
 name|Source
 argument_list|(
-literal|"php/php.js"
+literal|"php.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -422,7 +446,7 @@ DECL|method|pig ()
 annotation|@
 name|Source
 argument_list|(
-literal|"pig/pig.js"
+literal|"pig.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -434,7 +458,7 @@ DECL|method|properties ()
 annotation|@
 name|Source
 argument_list|(
-literal|"properties/properties.js"
+literal|"properties.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -446,7 +470,7 @@ DECL|method|python ()
 annotation|@
 name|Source
 argument_list|(
-literal|"python/python.js"
+literal|"python.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -458,7 +482,7 @@ DECL|method|r ()
 annotation|@
 name|Source
 argument_list|(
-literal|"r/r.js"
+literal|"r.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -466,11 +490,23 @@ name|DataResource
 name|r
 parameter_list|()
 function_decl|;
+DECL|method|rst ()
+annotation|@
+name|Source
+argument_list|(
+literal|"rst.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|rst
+parameter_list|()
+function_decl|;
 DECL|method|ruby ()
 annotation|@
 name|Source
 argument_list|(
-literal|"ruby/ruby.js"
+literal|"ruby.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -482,7 +518,7 @@ DECL|method|scheme ()
 annotation|@
 name|Source
 argument_list|(
-literal|"scheme/scheme.js"
+literal|"scheme.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -494,7 +530,7 @@ DECL|method|shell ()
 annotation|@
 name|Source
 argument_list|(
-literal|"shell/shell.js"
+literal|"shell.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -506,7 +542,7 @@ DECL|method|smalltalk ()
 annotation|@
 name|Source
 argument_list|(
-literal|"smalltalk/smalltalk.js"
+literal|"smalltalk.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -514,11 +550,23 @@ name|DataResource
 name|smalltalk
 parameter_list|()
 function_decl|;
+DECL|method|soy ()
+annotation|@
+name|Source
+argument_list|(
+literal|"soy.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|soy
+parameter_list|()
+function_decl|;
 DECL|method|sql ()
 annotation|@
 name|Source
 argument_list|(
-literal|"sql/sql.js"
+literal|"sql.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -526,11 +574,23 @@ name|DataResource
 name|sql
 parameter_list|()
 function_decl|;
+DECL|method|stex ()
+annotation|@
+name|Source
+argument_list|(
+literal|"stex.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|stex
+parameter_list|()
+function_decl|;
 DECL|method|tcl ()
 annotation|@
 name|Source
 argument_list|(
-literal|"tcl/tcl.js"
+literal|"tcl.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -542,7 +602,7 @@ DECL|method|velocity ()
 annotation|@
 name|Source
 argument_list|(
-literal|"velocity/velocity.js"
+literal|"velocity.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -554,7 +614,7 @@ DECL|method|verilog ()
 annotation|@
 name|Source
 argument_list|(
-literal|"verilog/verilog.js"
+literal|"verilog.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -566,7 +626,7 @@ DECL|method|xml ()
 annotation|@
 name|Source
 argument_list|(
-literal|"xml/xml.js"
+literal|"xml.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
@@ -578,7 +638,7 @@ DECL|method|yaml ()
 annotation|@
 name|Source
 argument_list|(
-literal|"yaml/yaml.js"
+literal|"yaml.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed

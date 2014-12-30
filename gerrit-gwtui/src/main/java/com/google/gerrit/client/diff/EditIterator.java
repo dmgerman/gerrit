@@ -90,7 +90,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|LineCharacter
+name|Pos
 import|;
 end_import
 
@@ -145,7 +145,7 @@ name|start
 expr_stmt|;
 block|}
 DECL|method|advance (int numOfChar)
-name|LineCharacter
+name|Pos
 name|advance
 parameter_list|(
 name|int
@@ -194,10 +194,10 @@ operator|<
 name|len
 condition|)
 block|{
-name|LineCharacter
+name|Pos
 name|at
 init|=
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(
@@ -237,7 +237,7 @@ literal|0
 condition|)
 block|{
 return|return
-name|LineCharacter
+name|Pos
 operator|.
 name|create
 argument_list|(

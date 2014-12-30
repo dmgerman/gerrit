@@ -191,48 +191,21 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|create ( DisplaySide side, Element parent, Configuration cfg)
+DECL|method|create (Element p, Configuration cfg)
 specifier|public
 specifier|static
 specifier|native
 name|CodeMirror
 name|create
 parameter_list|(
-name|DisplaySide
-name|side
-parameter_list|,
 name|Element
-name|parent
+name|p
 parameter_list|,
 name|Configuration
 name|cfg
 parameter_list|)
-comment|/*-{     var m = $wnd.CodeMirror(parent, cfg);     m._sbs2_side = side;     return m;   }-*/
+comment|/*-{     return $wnd.CodeMirror(p, cfg);   }-*/
 function_decl|;
-DECL|method|create (Element parent, Configuration cfg)
-specifier|public
-specifier|static
-name|CodeMirror
-name|create
-parameter_list|(
-name|Element
-name|parent
-parameter_list|,
-name|Configuration
-name|cfg
-parameter_list|)
-block|{
-return|return
-name|create
-argument_list|(
-literal|null
-argument_list|,
-name|parent
-argument_list|,
-name|cfg
-argument_list|)
-return|;
-block|}
 DECL|method|setOption (String option, boolean value)
 specifier|public
 specifier|final
@@ -246,7 +219,7 @@ parameter_list|,
 name|boolean
 name|value
 parameter_list|)
-comment|/*-{     this.setOption(option, value);   }-*/
+comment|/*-{     this.setOption(option, value)   }-*/
 function_decl|;
 DECL|method|setOption (String option, double value)
 specifier|public
@@ -261,7 +234,7 @@ parameter_list|,
 name|double
 name|value
 parameter_list|)
-comment|/*-{     this.setOption(option, value);   }-*/
+comment|/*-{     this.setOption(option, value)   }-*/
 function_decl|;
 DECL|method|setOption (String option, String value)
 specifier|public
@@ -276,7 +249,7 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
-comment|/*-{     this.setOption(option, value);   }-*/
+comment|/*-{     this.setOption(option, value)   }-*/
 function_decl|;
 DECL|method|setOption (String option, JavaScriptObject val)
 specifier|public
@@ -291,7 +264,7 @@ parameter_list|,
 name|JavaScriptObject
 name|val
 parameter_list|)
-comment|/*-{     this.setOption(option, val);   }-*/
+comment|/*-{     this.setOption(option, val)   }-*/
 function_decl|;
 DECL|method|getStringOption (String o)
 specifier|public
@@ -305,6 +278,15 @@ name|o
 parameter_list|)
 comment|/*-{ return this.getOption(o) }-*/
 function_decl|;
+DECL|method|getValue ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|getValue
+parameter_list|()
+comment|/*-{ return this.getValue() }-*/
+function_decl|;
 DECL|method|setValue (String v)
 specifier|public
 specifier|final
@@ -315,7 +297,7 @@ parameter_list|(
 name|String
 name|v
 parameter_list|)
-comment|/*-{ this.setValue(v); }-*/
+comment|/*-{ this.setValue(v) }-*/
 function_decl|;
 DECL|method|setWidth (double w)
 specifier|public
@@ -327,7 +309,7 @@ parameter_list|(
 name|double
 name|w
 parameter_list|)
-comment|/*-{ this.setSize(w, null); }-*/
+comment|/*-{ this.setSize(w, null) }-*/
 function_decl|;
 DECL|method|setWidth (String w)
 specifier|public
@@ -339,7 +321,7 @@ parameter_list|(
 name|String
 name|w
 parameter_list|)
-comment|/*-{ this.setSize(w, null); }-*/
+comment|/*-{ this.setSize(w, null) }-*/
 function_decl|;
 DECL|method|setHeight (double h)
 specifier|public
@@ -351,7 +333,7 @@ parameter_list|(
 name|double
 name|h
 parameter_list|)
-comment|/*-{ this.setSize(null, h); }-*/
+comment|/*-{ this.setSize(null, h) }-*/
 function_decl|;
 DECL|method|setHeight (String h)
 specifier|public
@@ -363,7 +345,7 @@ parameter_list|(
 name|String
 name|h
 parameter_list|)
-comment|/*-{ this.setSize(null, h); }-*/
+comment|/*-{ this.setSize(null, h) }-*/
 function_decl|;
 DECL|method|getLine (int n)
 specifier|public
@@ -377,6 +359,33 @@ name|n
 parameter_list|)
 comment|/*-{ return this.getLine(n) }-*/
 function_decl|;
+DECL|method|barHeight ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|barHeight
+parameter_list|()
+comment|/*-{ return this.display.barHeight }-*/
+function_decl|;
+DECL|method|barWidth ()
+specifier|public
+specifier|final
+specifier|native
+name|double
+name|barWidth
+parameter_list|()
+comment|/*-{ return this.display.barWidth }-*/
+function_decl|;
+DECL|method|lastLine ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|lastLine
+parameter_list|()
+comment|/*-{ return this.lastLine() }-*/
+function_decl|;
 DECL|method|refresh ()
 specifier|public
 specifier|final
@@ -384,34 +393,25 @@ specifier|native
 name|void
 name|refresh
 parameter_list|()
-comment|/*-{ this.refresh(); }-*/
+comment|/*-{ this.refresh() }-*/
 function_decl|;
-DECL|method|getWrapperElement ()
-specifier|public
-specifier|final
-specifier|native
-name|Element
-name|getWrapperElement
-parameter_list|()
-comment|/*-{ return this.getWrapperElement(); }-*/
-function_decl|;
-DECL|method|markText (LineCharacter from, LineCharacter to, Configuration options)
+DECL|method|markText (Pos from, Pos to, Configuration options)
 specifier|public
 specifier|final
 specifier|native
 name|TextMarker
 name|markText
 parameter_list|(
-name|LineCharacter
+name|Pos
 name|from
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|to
 parameter_list|,
 name|Configuration
 name|options
 parameter_list|)
-comment|/*-{     return this.markText(from, to, options);   }-*/
+comment|/*-{     return this.markText(from, to, options)   }-*/
 function_decl|;
 DECL|enum|LineClassWhere
 specifier|public
@@ -419,13 +419,56 @@ enum|enum
 name|LineClassWhere
 block|{
 DECL|enumConstant|TEXT
-DECL|enumConstant|BACKGROUND
-DECL|enumConstant|WRAP
 name|TEXT
+block|{
+annotation|@
+name|Override
+name|String
+name|value
+parameter_list|()
+block|{
+return|return
+literal|"text"
+return|;
+block|}
+block|}
 block|,
+DECL|enumConstant|BACKGROUND
 name|BACKGROUND
+block|{
+annotation|@
+name|Override
+name|String
+name|value
+parameter_list|()
+block|{
+return|return
+literal|"background"
+return|;
+block|}
+block|}
 block|,
+DECL|enumConstant|WRAP
 name|WRAP
+block|{
+annotation|@
+name|Override
+name|String
+name|value
+parameter_list|()
+block|{
+return|return
+literal|"wrap"
+return|;
+block|}
+block|}
+block|;
+DECL|method|value ()
+specifier|abstract
+name|String
+name|value
+parameter_list|()
+function_decl|;
 block|}
 DECL|method|addLineClass (int line, LineClassWhere where, String className)
 specifier|public
@@ -449,10 +492,7 @@ name|line
 argument_list|,
 name|where
 operator|.
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
+name|value
 argument_list|()
 argument_list|,
 name|className
@@ -475,7 +515,7 @@ parameter_list|,
 name|String
 name|lineClass
 parameter_list|)
-comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
+comment|/*-{     this.addLineClass(line, where, lineClass)   }-*/
 function_decl|;
 DECL|method|addLineClass (LineHandle line, LineClassWhere where, String className)
 specifier|public
@@ -499,10 +539,7 @@ name|line
 argument_list|,
 name|where
 operator|.
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
+name|value
 argument_list|()
 argument_list|,
 name|className
@@ -525,7 +562,7 @@ parameter_list|,
 name|String
 name|lineClass
 parameter_list|)
-comment|/*-{     this.addLineClass(line, where, lineClass);   }-*/
+comment|/*-{     this.addLineClass(line, where, lineClass)   }-*/
 function_decl|;
 DECL|method|removeLineClass (int line, LineClassWhere where, String className)
 specifier|public
@@ -549,10 +586,7 @@ name|line
 argument_list|,
 name|where
 operator|.
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
+name|value
 argument_list|()
 argument_list|,
 name|className
@@ -575,7 +609,7 @@ parameter_list|,
 name|String
 name|lineClass
 parameter_list|)
-comment|/*-{     this.removeLineClass(line, where, lineClass);   }-*/
+comment|/*-{     this.removeLineClass(line, where, lineClass)   }-*/
 function_decl|;
 DECL|method|removeLineClass (LineHandle line, LineClassWhere where, String className)
 specifier|public
@@ -599,10 +633,7 @@ name|line
 argument_list|,
 name|where
 operator|.
-name|name
-argument_list|()
-operator|.
-name|toLowerCase
+name|value
 argument_list|()
 argument_list|,
 name|className
@@ -625,25 +656,22 @@ parameter_list|,
 name|String
 name|lineClass
 parameter_list|)
-comment|/*-{     this.removeLineClass(line, where, lineClass);   }-*/
+comment|/*-{     this.removeLineClass(line, where, lineClass)   }-*/
 function_decl|;
-DECL|method|addWidget (LineCharacter pos, Element node, boolean scrollIntoView)
+DECL|method|addWidget (Pos pos, Element node)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|addWidget
 parameter_list|(
-name|LineCharacter
+name|Pos
 name|pos
 parameter_list|,
 name|Element
 name|node
-parameter_list|,
-name|boolean
-name|scrollIntoView
 parameter_list|)
-comment|/*-{     this.addWidget(pos, node, scrollIntoView);   }-*/
+comment|/*-{     this.addWidget(pos, node, false)   }-*/
 function_decl|;
 DECL|method|addLineWidget (int line, Element node, Configuration options)
 specifier|public
@@ -661,7 +689,7 @@ parameter_list|,
 name|Configuration
 name|options
 parameter_list|)
-comment|/*-{     return this.addLineWidget(line, node, options);   }-*/
+comment|/*-{     return this.addLineWidget(line, node, options)   }-*/
 function_decl|;
 DECL|method|lineAtHeight (double height)
 specifier|public
@@ -673,7 +701,7 @@ parameter_list|(
 name|double
 name|height
 parameter_list|)
-comment|/*-{     return this.lineAtHeight(height);   }-*/
+comment|/*-{     return this.lineAtHeight(height)   }-*/
 function_decl|;
 DECL|method|lineAtHeight (double height, String mode)
 specifier|public
@@ -688,7 +716,7 @@ parameter_list|,
 name|String
 name|mode
 parameter_list|)
-comment|/*-{     return this.lineAtHeight(height, mode);   }-*/
+comment|/*-{     return this.lineAtHeight(height, mode)   }-*/
 function_decl|;
 DECL|method|heightAtLine (int line)
 specifier|public
@@ -700,7 +728,7 @@ parameter_list|(
 name|int
 name|line
 parameter_list|)
-comment|/*-{     return this.heightAtLine(line);   }-*/
+comment|/*-{     return this.heightAtLine(line)   }-*/
 function_decl|;
 DECL|method|heightAtLine (int line, String mode)
 specifier|public
@@ -715,22 +743,22 @@ parameter_list|,
 name|String
 name|mode
 parameter_list|)
-comment|/*-{     return this.heightAtLine(line, mode);   }-*/
+comment|/*-{     return this.heightAtLine(line, mode)   }-*/
 function_decl|;
-DECL|method|charCoords (LineCharacter pos, String mode)
+DECL|method|charCoords (Pos pos, String mode)
 specifier|public
 specifier|final
 specifier|native
 name|Rect
 name|charCoords
 parameter_list|(
-name|LineCharacter
+name|Pos
 name|pos
 parameter_list|,
 name|String
 name|mode
 parameter_list|)
-comment|/*-{     return this.charCoords(pos, mode);   }-*/
+comment|/*-{     return this.charCoords(pos, mode)   }-*/
 function_decl|;
 DECL|method|getDoc ()
 specifier|public
@@ -739,7 +767,7 @@ specifier|native
 name|CodeMirrorDoc
 name|getDoc
 parameter_list|()
-comment|/*-{     return this.getDoc();   }-*/
+comment|/*-{     return this.getDoc()   }-*/
 function_decl|;
 DECL|method|scrollTo (double x, double y)
 specifier|public
@@ -754,7 +782,7 @@ parameter_list|,
 name|double
 name|y
 parameter_list|)
-comment|/*-{     this.scrollTo(x, y);   }-*/
+comment|/*-{     this.scrollTo(x, y)   }-*/
 function_decl|;
 DECL|method|scrollToY (double y)
 specifier|public
@@ -766,7 +794,7 @@ parameter_list|(
 name|double
 name|y
 parameter_list|)
-comment|/*-{     this.scrollTo(null, y);   }-*/
+comment|/*-{     this.scrollTo(null, y)   }-*/
 function_decl|;
 DECL|method|getScrollInfo ()
 specifier|public
@@ -775,7 +803,7 @@ specifier|native
 name|ScrollInfo
 name|getScrollInfo
 parameter_list|()
-comment|/*-{     return this.getScrollInfo();   }-*/
+comment|/*-{     return this.getScrollInfo()   }-*/
 function_decl|;
 DECL|method|getViewport ()
 specifier|public
@@ -784,7 +812,7 @@ specifier|native
 name|Viewport
 name|getViewport
 parameter_list|()
-comment|/*-{     return this.getViewport();   }-*/
+comment|/*-{     return this.getViewport()   }-*/
 function_decl|;
 DECL|method|operation (Runnable thunk)
 specifier|public
@@ -796,13 +824,28 @@ parameter_list|(
 name|Runnable
 name|thunk
 parameter_list|)
-comment|/*-{     this.operation(function() {       thunk.@java.lang.Runnable::run()();     });   }-*/
+comment|/*-{     this.operation(function() {       thunk.@java.lang.Runnable::run()();     })   }-*/
+function_decl|;
+DECL|method|off (String event, RegisteredHandler h)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|off
+parameter_list|(
+name|String
+name|event
+parameter_list|,
+name|RegisteredHandler
+name|h
+parameter_list|)
+comment|/*-{     this.off(event, h)   }-*/
 function_decl|;
 DECL|method|on (String event, Runnable thunk)
 specifier|public
 specifier|final
 specifier|native
-name|void
+name|RegisteredHandler
 name|on
 parameter_list|(
 name|String
@@ -811,7 +854,7 @@ parameter_list|,
 name|Runnable
 name|thunk
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function() {       thunk.@java.lang.Runnable::run()();     }));   }-*/
+comment|/*-{     var h = $entry(function() { thunk.@java.lang.Runnable::run()() });     this.on(event, h);     return h;   }-*/
 function_decl|;
 DECL|method|on (String event, EventHandler handler)
 specifier|public
@@ -826,7 +869,7 @@ parameter_list|,
 name|EventHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.EventHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lcom/google/gwt/dom/client/NativeEvent;)(cm, e);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.EventHandler::handle(         Lnet/codemirror/lib/CodeMirror;         Lcom/google/gwt/dom/client/NativeEvent;)(cm, e);     }))   }-*/
 function_decl|;
 DECL|method|on (String event, RenderLineHandler handler)
 specifier|public
@@ -841,7 +884,7 @@ parameter_list|,
 name|RenderLineHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, h, ele) {       handler.@net.codemirror.lib.CodeMirror.RenderLineHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/CodeMirror$LineHandle;         Lcom/google/gwt/dom/client/Element;)(cm, h, ele);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, h, e) {       handler.@net.codemirror.lib.CodeMirror.RenderLineHandler::handle(         Lnet/codemirror/lib/CodeMirror;         Lnet/codemirror/lib/CodeMirror$LineHandle;         Lcom/google/gwt/dom/client/Element;)(cm, h, e);     }))   }-*/
 function_decl|;
 DECL|method|on (String event, GutterClickHandler handler)
 specifier|public
@@ -856,7 +899,7 @@ parameter_list|,
 name|GutterClickHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(         Lnet/codemirror/lib/CodeMirror;ILjava/lang/String;         Lcom/google/gwt/dom/client/NativeEvent;)(cm, l, g, e);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, l, g, e) {       handler.@net.codemirror.lib.CodeMirror.GutterClickHandler::handle(         Lnet/codemirror/lib/CodeMirror;         I         Ljava/lang/String;         Lcom/google/gwt/dom/client/NativeEvent;)(cm, l, g, e);     }))   }-*/
 function_decl|;
 DECL|method|on (String event, BeforeSelectionChangeHandler handler)
 specifier|public
@@ -871,28 +914,40 @@ parameter_list|,
 name|BeforeSelectionChangeHandler
 name|handler
 parameter_list|)
-comment|/*-{     this.on(event, $entry(function(cm, e) {       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(         Lnet/codemirror/lib/CodeMirror;Lnet/codemirror/lib/LineCharacter;         Lnet/codemirror/lib/LineCharacter;)(cm,e.anchor,e.head);     }));   }-*/
+comment|/*-{     this.on(event, $entry(function(cm, o) {       var e = o.ranges[o.ranges.length-1];       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(         Lnet/codemirror/lib/CodeMirror;         Lnet/codemirror/lib/Pos;         Lnet/codemirror/lib/Pos;)(cm, e.anchor, e.head);     }))   }-*/
+function_decl|;
+DECL|method|setCursor (Pos p)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|setCursor
+parameter_list|(
+name|Pos
+name|p
+parameter_list|)
+comment|/*-{ this.setCursor(p) }-*/
 function_decl|;
 DECL|method|getCursor ()
 specifier|public
 specifier|final
 specifier|native
-name|LineCharacter
+name|Pos
 name|getCursor
 parameter_list|()
-comment|/*-{     return this.getCursor();   }-*/
+comment|/*-{ return this.getCursor() }-*/
 function_decl|;
 DECL|method|getCursor (String start)
 specifier|public
 specifier|final
 specifier|native
-name|LineCharacter
+name|Pos
 name|getCursor
 parameter_list|(
 name|String
 name|start
 parameter_list|)
-comment|/*-{     return this.getCursor(start);   }-*/
+comment|/*-{     return this.getCursor(start)   }-*/
 function_decl|;
 DECL|method|getSelectedRange ()
 specifier|public
@@ -918,44 +973,32 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setSelection (LineCharacter anchor)
+DECL|method|setSelection (Pos p)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|setSelection
 parameter_list|(
-name|LineCharacter
-name|anchor
+name|Pos
+name|p
 parameter_list|)
-comment|/*-{     this.setSelection(anchor);   }-*/
+comment|/*-{ this.setSelection(p) }-*/
 function_decl|;
-DECL|method|setSelection (LineCharacter anchor, LineCharacter head)
+DECL|method|setSelection (Pos anchor, Pos head)
 specifier|public
 specifier|final
 specifier|native
 name|void
 name|setSelection
 parameter_list|(
-name|LineCharacter
+name|Pos
 name|anchor
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|head
 parameter_list|)
-comment|/*-{     this.setSelection(anchor, head);   }-*/
-function_decl|;
-DECL|method|setCursor (LineCharacter lineCh)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setCursor
-parameter_list|(
-name|LineCharacter
-name|lineCh
-parameter_list|)
-comment|/*-{     this.setCursor(lineCh);   }-*/
+comment|/*-{     this.setSelection(anchor, head)   }-*/
 function_decl|;
 DECL|method|somethingSelected ()
 specifier|public
@@ -964,7 +1007,7 @@ specifier|native
 name|boolean
 name|somethingSelected
 parameter_list|()
-comment|/*-{     return this.somethingSelected();   }-*/
+comment|/*-{     return this.somethingSelected()   }-*/
 function_decl|;
 DECL|method|hasActiveLine ()
 specifier|public
@@ -973,28 +1016,28 @@ specifier|native
 name|boolean
 name|hasActiveLine
 parameter_list|()
-comment|/*-{     return !!this.state.activeLine;   }-*/
+comment|/*-{     return !!this.state.activeLine   }-*/
 function_decl|;
-DECL|method|getActiveLine ()
+DECL|method|activeLine ()
 specifier|public
 specifier|final
 specifier|native
 name|LineHandle
-name|getActiveLine
+name|activeLine
 parameter_list|()
-comment|/*-{     return this.state.activeLine;   }-*/
+comment|/*-{     return this.state.activeLine   }-*/
 function_decl|;
-DECL|method|setActiveLine (LineHandle line)
+DECL|method|activeLine (LineHandle line)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|setActiveLine
+name|activeLine
 parameter_list|(
 name|LineHandle
 name|line
 parameter_list|)
-comment|/*-{     this.state.activeLine = line;   }-*/
+comment|/*-{     this.state.activeLine = line   }-*/
 function_decl|;
 DECL|method|addKeyMap (KeyMap map)
 specifier|public
@@ -1006,7 +1049,7 @@ parameter_list|(
 name|KeyMap
 name|map
 parameter_list|)
-comment|/*-{ this.addKeyMap(map); }-*/
+comment|/*-{ this.addKeyMap(map) }-*/
 function_decl|;
 DECL|method|removeKeyMap (KeyMap map)
 specifier|public
@@ -1018,36 +1061,7 @@ parameter_list|(
 name|KeyMap
 name|map
 parameter_list|)
-comment|/*-{ this.removeKeyMap(map); }-*/
-function_decl|;
-DECL|method|pos (int line, int ch)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|LineCharacter
-name|pos
-parameter_list|(
-name|int
-name|line
-parameter_list|,
-name|int
-name|ch
-parameter_list|)
-comment|/*-{     return $wnd.CodeMirror.Pos(line, ch);   }-*/
-function_decl|;
-DECL|method|pos (int line)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|LineCharacter
-name|pos
-parameter_list|(
-name|int
-name|line
-parameter_list|)
-comment|/*-{     return $wnd.CodeMirror.Pos(line);   }-*/
+comment|/*-{ this.removeKeyMap(map) }-*/
 function_decl|;
 DECL|method|getLineHandle (int line)
 specifier|public
@@ -1059,7 +1073,7 @@ parameter_list|(
 name|int
 name|line
 parameter_list|)
-comment|/*-{     return this.getLineHandle(line);   }-*/
+comment|/*-{     return this.getLineHandle(line)   }-*/
 function_decl|;
 DECL|method|getLineHandleVisualStart (int line)
 specifier|public
@@ -1071,7 +1085,7 @@ parameter_list|(
 name|int
 name|line
 parameter_list|)
-comment|/*-{     return this.getLineHandleVisualStart(line);   }-*/
+comment|/*-{     return this.getLineHandleVisualStart(line)   }-*/
 function_decl|;
 DECL|method|getLineNumber (LineHandle handle)
 specifier|public
@@ -1083,7 +1097,7 @@ parameter_list|(
 name|LineHandle
 name|handle
 parameter_list|)
-comment|/*-{     return this.getLineNumber(handle);   }-*/
+comment|/*-{     return this.getLineNumber(handle)   }-*/
 function_decl|;
 DECL|method|focus ()
 specifier|public
@@ -1092,7 +1106,16 @@ specifier|native
 name|void
 name|focus
 parameter_list|()
-comment|/*-{     this.focus();   }-*/
+comment|/*-{     this.focus()   }-*/
+function_decl|;
+DECL|method|getWrapperElement ()
+specifier|public
+specifier|final
+specifier|native
+name|Element
+name|getWrapperElement
+parameter_list|()
+comment|/*-{     return this.getWrapperElement()   }-*/
 function_decl|;
 DECL|method|getGutterElement ()
 specifier|public
@@ -1101,43 +1124,43 @@ specifier|native
 name|Element
 name|getGutterElement
 parameter_list|()
-comment|/*-{     return this.getGutterElement();   }-*/
+comment|/*-{     return this.getGutterElement()   }-*/
 function_decl|;
-DECL|method|getSizer ()
+DECL|method|sizer ()
 specifier|public
 specifier|final
 specifier|native
 name|Element
-name|getSizer
+name|sizer
 parameter_list|()
-comment|/*-{     return this.display.sizer;   }-*/
+comment|/*-{     return this.display.sizer   }-*/
 function_decl|;
-DECL|method|getMoverElement ()
+DECL|method|mover ()
 specifier|public
 specifier|final
 specifier|native
 name|Element
-name|getMoverElement
+name|mover
 parameter_list|()
-comment|/*-{     return this.display.mover;   }-*/
+comment|/*-{     return this.display.mover   }-*/
 function_decl|;
-DECL|method|getMeasureElement ()
+DECL|method|measure ()
 specifier|public
 specifier|final
 specifier|native
 name|Element
-name|getMeasureElement
+name|measure
 parameter_list|()
-comment|/*-{     return this.display.measure;   }-*/
+comment|/*-{     return this.display.measure   }-*/
 function_decl|;
-DECL|method|getScrollbarV ()
+DECL|method|scrollbarV ()
 specifier|public
 specifier|final
 specifier|native
 name|Element
-name|getScrollbarV
+name|scrollbarV
 parameter_list|()
-comment|/*-{     return this.display.scrollbarV;   }-*/
+comment|/*-{     return this.display.scrollbarV   }-*/
 function_decl|;
 DECL|method|cloneKeyMap (String name)
 specifier|public
@@ -1162,7 +1185,7 @@ parameter_list|(
 name|String
 name|cmd
 parameter_list|)
-comment|/*-{     this.execCommand(cmd);   }-*/
+comment|/*-{     this.execCommand(cmd)   }-*/
 function_decl|;
 DECL|method|addKeyMap (String name, KeyMap km)
 specifier|public
@@ -1178,48 +1201,16 @@ parameter_list|,
 name|KeyMap
 name|km
 parameter_list|)
-comment|/*-{     $wnd.CodeMirror.keyMap[name] = km;   }-*/
+comment|/*-{     $wnd.CodeMirror.keyMap[name] = km   }-*/
 function_decl|;
-DECL|method|handleVimKey (CodeMirror cm, String key)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|void
-name|handleVimKey
-parameter_list|(
-name|CodeMirror
-name|cm
-parameter_list|,
-name|String
-name|key
-parameter_list|)
-comment|/*-{     $wnd.CodeMirror.Vim.handleKey(cm, key);   }-*/
-function_decl|;
-DECL|method|mapVimKey (String alias, String actual)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|void
-name|mapVimKey
-parameter_list|(
-name|String
-name|alias
-parameter_list|,
-name|String
-name|actual
-parameter_list|)
-comment|/*-{     $wnd.CodeMirror.Vim.map(alias, actual);   }-*/
-function_decl|;
-DECL|method|hasVimSearchHighlight ()
+DECL|method|vim ()
 specifier|public
 specifier|final
 specifier|native
-name|boolean
-name|hasVimSearchHighlight
+name|Vim
+name|vim
 parameter_list|()
-comment|/*-{     return this.state.vim&& this.state.vim.searchState_&&         !!this.state.vim.searchState_.getOverlay();   }-*/
+comment|/*-{     return this;   }-*/
 function_decl|;
 DECL|method|side ()
 specifier|public
@@ -1229,6 +1220,18 @@ name|DisplaySide
 name|side
 parameter_list|()
 comment|/*-{ return this._sbs2_side }-*/
+function_decl|;
+DECL|method|side (DisplaySide side)
+specifier|public
+specifier|final
+specifier|native
+name|CodeMirror
+name|side
+parameter_list|(
+name|DisplaySide
+name|side
+parameter_list|)
+comment|/*-{     this._sbs2_side = side;     return this;   }-*/
 function_decl|;
 DECL|method|CodeMirror ()
 specifier|protected
@@ -1243,23 +1246,23 @@ name|Viewport
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|getFrom ()
+DECL|method|from ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|getFrom
+name|from
 parameter_list|()
-comment|/*-{ return this.from; }-*/
+comment|/*-{ return this.from }-*/
 function_decl|;
-DECL|method|getTo ()
+DECL|method|to ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|getTo
+name|to
 parameter_list|()
-comment|/*-{ return this.to; }-*/
+comment|/*-{ return this.to }-*/
 function_decl|;
 DECL|method|contains (int line)
 specifier|public
@@ -1272,14 +1275,14 @@ name|line
 parameter_list|)
 block|{
 return|return
-name|getFrom
+name|from
 argument_list|()
 operator|<=
 name|line
 operator|&&
 name|line
 operator|<
-name|getTo
+name|to
 argument_list|()
 return|;
 block|}
@@ -1300,6 +1303,20 @@ block|{
 DECL|method|LineHandle ()
 specifier|protected
 name|LineHandle
+parameter_list|()
+block|{     }
+block|}
+DECL|class|RegisteredHandler
+specifier|public
+specifier|static
+class|class
+name|RegisteredHandler
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|RegisteredHandler ()
+specifier|protected
+name|RegisteredHandler
 parameter_list|()
 block|{     }
 block|}
@@ -1371,7 +1388,7 @@ specifier|public
 interface|interface
 name|BeforeSelectionChangeHandler
 block|{
-DECL|method|handle (CodeMirror instance, LineCharacter anchor, LineCharacter head)
+DECL|method|handle (CodeMirror instance, Pos anchor, Pos head)
 specifier|public
 name|void
 name|handle
@@ -1379,23 +1396,14 @@ parameter_list|(
 name|CodeMirror
 name|instance
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|anchor
 parameter_list|,
-name|LineCharacter
+name|Pos
 name|head
 parameter_list|)
 function_decl|;
 block|}
-DECL|method|getValue ()
-specifier|public
-specifier|final
-specifier|native
-name|String
-name|getValue
-parameter_list|()
-comment|/*-{     return this.getValue();   }-*/
-function_decl|;
 block|}
 end_class
 
