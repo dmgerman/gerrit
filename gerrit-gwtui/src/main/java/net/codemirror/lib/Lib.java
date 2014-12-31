@@ -169,7 +169,7 @@ decl_stmt|;
 annotation|@
 name|Source
 argument_list|(
-literal|"cm4.css"
+literal|"cm.css"
 argument_list|)
 DECL|method|css ()
 name|ExternalTextResource
@@ -179,7 +179,7 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"cm4.js"
+literal|"cm.js"
 argument_list|)
 annotation|@
 name|DoNotEmbed
