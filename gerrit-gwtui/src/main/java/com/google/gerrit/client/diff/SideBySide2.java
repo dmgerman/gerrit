@@ -1020,7 +1020,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|ModeInjector
+name|Pos
 import|;
 end_import
 
@@ -1030,9 +1030,9 @@ name|net
 operator|.
 name|codemirror
 operator|.
-name|lib
+name|mode
 operator|.
-name|Pos
+name|ModeInjector
 import|;
 end_import
 

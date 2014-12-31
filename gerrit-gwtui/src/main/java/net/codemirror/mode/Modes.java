@@ -128,22 +128,6 @@ name|DoNotEmbed
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|TextResource
-import|;
-end_import
-
 begin_interface
 DECL|interface|Modes
 specifier|public
@@ -168,16 +152,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|mode_map ()
-annotation|@
-name|Source
-argument_list|(
-literal|"mode_map"
-argument_list|)
-name|TextResource
-name|mode_map
-parameter_list|()
-function_decl|;
 DECL|method|clike ()
 annotation|@
 name|Source
@@ -646,7 +620,7 @@ name|DataResource
 name|yaml
 parameter_list|()
 function_decl|;
-comment|// When adding a resource, update static initializer in ModeInjector.
+comment|// When adding a resource, update static initializer in ModeInfo.
 block|}
 end_interface
 

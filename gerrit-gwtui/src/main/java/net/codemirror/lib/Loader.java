@@ -266,6 +266,7 @@ end_import
 
 begin_class
 DECL|class|Loader
+specifier|public
 class|class
 name|Loader
 block|{
@@ -442,6 +443,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|injectScript (SafeUri js, final AsyncCallback<Void> callback)
+specifier|public
 specifier|static
 name|void
 name|injectScript

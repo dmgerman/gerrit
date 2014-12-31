@@ -452,7 +452,7 @@ name|net
 operator|.
 name|codemirror
 operator|.
-name|lib
+name|mode
 operator|.
 name|ModeInjector
 import|;
