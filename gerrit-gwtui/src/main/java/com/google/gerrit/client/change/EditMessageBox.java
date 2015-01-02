@@ -106,7 +106,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ChangeFileApi
+name|ChangeEditApi
 import|;
 end_import
 
@@ -640,11 +640,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|ChangeFileApi
+name|ChangeEditApi
 operator|.
 name|putMessage
 argument_list|(
 name|changeId
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|message
 operator|.

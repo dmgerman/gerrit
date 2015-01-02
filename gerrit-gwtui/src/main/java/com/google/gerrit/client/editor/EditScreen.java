@@ -152,7 +152,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ChangeFileApi
+name|ChangeEditApi
 import|;
 end_import
 
@@ -1169,9 +1169,9 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ChangeFileApi
+name|ChangeEditApi
 operator|.
-name|getContentOrMessage
+name|get
 argument_list|(
 name|revision
 argument_list|,
@@ -2068,11 +2068,17 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
-name|ChangeFileApi
+name|ChangeEditApi
 operator|.
-name|putContentOrMessage
+name|put
 argument_list|(
 name|revision
+operator|.
+name|getParentKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|path
 argument_list|,

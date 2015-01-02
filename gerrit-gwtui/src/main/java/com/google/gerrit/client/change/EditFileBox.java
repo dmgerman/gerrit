@@ -106,7 +106,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ChangeFileApi
+name|ChangeEditApi
 import|;
 end_import
 
@@ -661,11 +661,17 @@ name|ClickEvent
 name|e
 parameter_list|)
 block|{
-name|ChangeFileApi
+name|ChangeEditApi
 operator|.
-name|putContent
+name|put
 argument_list|(
 name|id
+operator|.
+name|getParentKey
+argument_list|()
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|file
 operator|.

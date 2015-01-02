@@ -78,7 +78,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|ChangeFileApi
+name|ChangeEditApi
 import|;
 end_import
 
@@ -371,9 +371,9 @@ name|void
 name|loadFileContent
 parameter_list|()
 block|{
-name|ChangeFileApi
+name|ChangeEditApi
 operator|.
-name|getContent
+name|get
 argument_list|(
 name|id
 argument_list|,
