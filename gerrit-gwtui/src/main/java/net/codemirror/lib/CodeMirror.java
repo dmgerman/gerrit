@@ -451,6 +451,30 @@ name|v
 parameter_list|)
 comment|/*-{ this.setValue(v) }-*/
 function_decl|;
+DECL|method|changeGeneration (boolean closeEvent)
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|changeGeneration
+parameter_list|(
+name|boolean
+name|closeEvent
+parameter_list|)
+comment|/*-{ return this.changeGeneration(closeEvent) }-*/
+function_decl|;
+DECL|method|isClean (int generation)
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isClean
+parameter_list|(
+name|int
+name|generation
+parameter_list|)
+comment|/*-{ return this.isClean(generation) }-*/
+function_decl|;
 DECL|method|setWidth (double w)
 specifier|public
 specifier|final
@@ -1093,6 +1117,18 @@ name|handler
 parameter_list|)
 comment|/*-{     this.on(event, $entry(function(cm, o) {       var e = o.ranges[o.ranges.length-1];       handler.@net.codemirror.lib.CodeMirror.BeforeSelectionChangeHandler::handle(         Lnet/codemirror/lib/CodeMirror;         Lnet/codemirror/lib/Pos;         Lnet/codemirror/lib/Pos;)(cm, e.anchor, e.head);     }))   }-*/
 function_decl|;
+DECL|method|on (ChangesHandler handler)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|on
+parameter_list|(
+name|ChangesHandler
+name|handler
+parameter_list|)
+comment|/*-{     this.on('changes', $entry(function(cm, o) {       handler.@net.codemirror.lib.CodeMirror.ChangesHandler::handle(         Lnet/codemirror/lib/CodeMirror;)(cm);     }))   }-*/
+function_decl|;
 DECL|method|setCursor (Pos p)
 specifier|public
 specifier|final
@@ -1558,6 +1594,21 @@ name|anchor
 parameter_list|,
 name|Pos
 name|head
+parameter_list|)
+function_decl|;
+block|}
+DECL|interface|ChangesHandler
+specifier|public
+interface|interface
+name|ChangesHandler
+block|{
+DECL|method|handle (CodeMirror instance)
+specifier|public
+name|void
+name|handle
+parameter_list|(
+name|CodeMirror
+name|instance
 parameter_list|)
 function_decl|;
 block|}
