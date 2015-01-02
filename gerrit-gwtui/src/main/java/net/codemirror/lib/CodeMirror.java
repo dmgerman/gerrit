@@ -72,6 +72,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|Gerrit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|diff
 operator|.
 name|DisplaySide
@@ -139,6 +153,22 @@ operator|.
 name|client
 operator|.
 name|NativeEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|Window
 import|;
 end_import
 
@@ -346,18 +376,6 @@ name|w
 parameter_list|)
 comment|/*-{ this.setSize(w, null) }-*/
 function_decl|;
-DECL|method|setWidth (String w)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|setWidth
-parameter_list|(
-name|String
-name|w
-parameter_list|)
-comment|/*-{ this.setSize(w, null) }-*/
-function_decl|;
 DECL|method|setHeight (double h)
 specifier|public
 specifier|final
@@ -370,18 +388,55 @@ name|h
 parameter_list|)
 comment|/*-{ this.setSize(null, h) }-*/
 function_decl|;
-DECL|method|setHeight (String h)
+DECL|method|getHeight ()
 specifier|public
 specifier|final
-specifier|native
+name|int
+name|getHeight
+parameter_list|()
+block|{
+return|return
+name|getWrapperElement
+argument_list|()
+operator|.
+name|getClientHeight
+argument_list|()
+return|;
+block|}
+DECL|method|adjustHeight (int localHeader)
+specifier|public
+specifier|final
 name|void
-name|setHeight
+name|adjustHeight
 parameter_list|(
-name|String
-name|h
+name|int
+name|localHeader
 parameter_list|)
-comment|/*-{ this.setSize(null, h) }-*/
-function_decl|;
+block|{
+name|int
+name|rest
+init|=
+name|Gerrit
+operator|.
+name|getHeaderFooterHeight
+argument_list|()
+operator|+
+name|localHeader
+operator|+
+literal|5
+decl_stmt|;
+comment|// Estimate
+name|setHeight
+argument_list|(
+name|Window
+operator|.
+name|getClientHeight
+argument_list|()
+operator|-
+name|rest
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getLine (int n)
 specifier|public
 specifier|final
