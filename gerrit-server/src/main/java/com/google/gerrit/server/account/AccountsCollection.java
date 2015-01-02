@@ -369,6 +369,15 @@ operator|.
 name|GenericFactory
 name|userFactory
 decl_stmt|;
+DECL|field|list
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|SuggestAccounts
+argument_list|>
+name|list
+decl_stmt|;
 DECL|field|views
 specifier|private
 specifier|final
@@ -391,7 +400,7 @@ name|createAccountFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountsCollection (Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
+DECL|method|AccountsCollection (Provider<CurrentUser> self, AccountResolver resolver, AccountControl.Factory accountControlFactory, IdentifiedUser.GenericFactory userFactory, Provider<SuggestAccounts> list, DynamicMap<RestView<AccountResource>> views, CreateAccount.Factory createAccountFactory)
 name|AccountsCollection
 parameter_list|(
 name|Provider
@@ -412,6 +421,12 @@ name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
+parameter_list|,
+name|Provider
+argument_list|<
+name|SuggestAccounts
+argument_list|>
+name|list
 parameter_list|,
 name|DynamicMap
 argument_list|<
@@ -451,6 +466,12 @@ operator|.
 name|userFactory
 operator|=
 name|userFactory
+expr_stmt|;
+name|this
+operator|.
+name|list
+operator|=
+name|list
 expr_stmt|;
 name|this
 operator|.
@@ -744,11 +765,12 @@ parameter_list|()
 throws|throws
 name|ResourceNotFoundException
 block|{
-throw|throw
-operator|new
-name|ResourceNotFoundException
+return|return
+name|list
+operator|.
+name|get
 argument_list|()
-throw|;
+return|;
 block|}
 annotation|@
 name|Override

@@ -183,52 +183,6 @@ name|SuggestService
 extends|extends
 name|RemoteJsonService
 block|{
-DECL|method|suggestAccount (String query, Boolean enabled, int limit, AsyncCallback<List<AccountInfo>> callback)
-name|void
-name|suggestAccount
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|Boolean
-name|enabled
-parameter_list|,
-name|int
-name|limit
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|AccountInfo
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-comment|/**    * @see #suggestAccountGroupForProject(com.google.gerrit.reviewdb.client.Project.NameKey, String, int, AsyncCallback)    */
-annotation|@
-name|Deprecated
-DECL|method|suggestAccountGroup (String query, int limit, AsyncCallback<List<GroupReference>> callback)
-name|void
-name|suggestAccountGroup
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|int
-name|limit
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|GroupReference
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
 DECL|method|suggestAccountGroupForProject (Project.NameKey project, String query, int limit, AsyncCallback<List<GroupReference>> callback)
 name|void
 name|suggestAccountGroupForProject
@@ -249,34 +203,6 @@ argument_list|<
 name|List
 argument_list|<
 name|GroupReference
-argument_list|>
-argument_list|>
-name|callback
-parameter_list|)
-function_decl|;
-comment|/**    * @see #suggestChangeReviewer(com.google.gerrit.reviewdb.client.Change.Id, String, int, AsyncCallback)    */
-annotation|@
-name|Deprecated
-DECL|method|suggestReviewer (Project.NameKey project, String query, int limit, AsyncCallback<List<ReviewerInfo>> callback)
-name|void
-name|suggestReviewer
-parameter_list|(
-name|Project
-operator|.
-name|NameKey
-name|project
-parameter_list|,
-name|String
-name|query
-parameter_list|,
-name|int
-name|limit
-parameter_list|,
-name|AsyncCallback
-argument_list|<
-name|List
-argument_list|<
-name|ReviewerInfo
 argument_list|>
 argument_list|>
 name|callback
