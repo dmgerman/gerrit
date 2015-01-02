@@ -107,6 +107,11 @@ specifier|private
 name|Query
 name|query
 decl_stmt|;
+DECL|field|last
+specifier|private
+name|String
+name|last
+decl_stmt|;
 DECL|method|RemoteSuggestOracle (SuggestOracle src)
 specifier|public
 name|RemoteSuggestOracle
@@ -119,6 +124,16 @@ name|oracle
 operator|=
 name|src
 expr_stmt|;
+block|}
+DECL|method|getLast ()
+specifier|public
+name|String
+name|getLast
+parameter_list|()
+block|{
+return|return
+name|last
+return|;
 block|}
 annotation|@
 name|Override
@@ -255,6 +270,13 @@ comment|// Propose this request's response as the suggestions.
 name|query
 operator|=
 literal|null
+expr_stmt|;
+name|last
+operator|=
+name|request
+operator|.
+name|getQuery
+argument_list|()
 expr_stmt|;
 name|callback
 operator|.
