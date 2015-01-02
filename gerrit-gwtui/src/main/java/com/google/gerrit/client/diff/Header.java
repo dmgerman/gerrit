@@ -766,6 +766,7 @@ end_import
 
 begin_class
 DECL|class|Header
+specifier|public
 class|class
 name|Header
 extends|extends
@@ -1058,7 +1059,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|formatPath (String path, String project, String commit)
-specifier|private
+specifier|public
 specifier|static
 name|SafeHtml
 name|formatPath
