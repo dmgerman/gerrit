@@ -844,6 +844,13 @@ name|nowTs
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|account
+operator|.
+name|setActive
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|Collection
 argument_list|<
 name|AccountExternalId
