@@ -642,6 +642,18 @@ name|SafeHtmlBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|codemirror
+operator|.
+name|lib
+operator|.
+name|CodeMirror
+import|;
+end_import
+
 begin_comment
 comment|/** An HtmlPanel for displaying and editing a draft */
 end_comment
@@ -1950,8 +1962,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|CodeMirror
+name|cm
+init|=
 name|getCm
 argument_list|()
+decl_stmt|;
+name|cm
+operator|.
+name|vim
+argument_list|()
+operator|.
+name|handleKey
+argument_list|(
+literal|"<Esc>"
+argument_list|)
+expr_stmt|;
+name|cm
 operator|.
 name|focus
 argument_list|()
