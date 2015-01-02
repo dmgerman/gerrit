@@ -140,7 +140,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|AccountScreen
+name|Hyperlink
 import|;
 end_import
 
@@ -156,7 +156,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|Hyperlink
+name|Screen
 import|;
 end_import
 
@@ -318,7 +318,7 @@ specifier|public
 class|class
 name|GroupListScreen
 extends|extends
-name|AccountScreen
+name|Screen
 block|{
 DECL|field|prev
 specifier|private
@@ -367,6 +367,11 @@ specifier|public
 name|GroupListScreen
 parameter_list|()
 block|{
+name|setRequiresSignIn
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|configurePageSize
 argument_list|()
 expr_stmt|;
@@ -379,6 +384,9 @@ name|String
 name|params
 parameter_list|)
 block|{
+name|this
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|String
@@ -497,9 +505,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|configurePageSize
-argument_list|()
-expr_stmt|;
 block|}
 DECL|method|configurePageSize ()
 specifier|private
