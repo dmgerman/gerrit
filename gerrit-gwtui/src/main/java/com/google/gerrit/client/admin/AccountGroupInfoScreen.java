@@ -186,7 +186,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|RPCSuggestOracle
+name|RemoteSuggestOracle
 import|;
 end_import
 
@@ -888,7 +888,7 @@ operator|new
 name|SuggestBox
 argument_list|(
 operator|new
-name|RPCSuggestOracle
+name|RemoteSuggestOracle
 argument_list|(
 name|accountGroupOracle
 argument_list|)

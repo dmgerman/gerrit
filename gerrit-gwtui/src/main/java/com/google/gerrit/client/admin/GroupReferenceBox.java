@@ -94,7 +94,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|RPCSuggestOracle
+name|RemoteSuggestOracle
 import|;
 end_import
 
@@ -554,7 +554,7 @@ name|SuggestBox
 argument_list|(
 comment|//
 operator|new
-name|RPCSuggestOracle
+name|RemoteSuggestOracle
 argument_list|(
 name|oracle
 argument_list|)

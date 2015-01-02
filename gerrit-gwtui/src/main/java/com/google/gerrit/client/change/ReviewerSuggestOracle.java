@@ -242,19 +242,11 @@ end_import
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|google
+name|util
 operator|.
-name|gwt
-operator|.
-name|user
-operator|.
-name|client
-operator|.
-name|ui
-operator|.
-name|SuggestOracle
+name|ArrayList
 import|;
 end_import
 
@@ -264,7 +256,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collections
 import|;
 end_import
 
@@ -299,7 +291,7 @@ name|changeId
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|_onRequestSuggestions (final Request req, final Callback callback)
+DECL|method|_onRequestSuggestions (final Request req, final Callback cb)
 specifier|protected
 name|void
 name|_onRequestSuggestions
@@ -310,7 +302,7 @@ name|req
 parameter_list|,
 specifier|final
 name|Callback
-name|callback
+name|cb
 parameter_list|)
 block|{
 name|ChangeApi
@@ -358,7 +350,6 @@ argument_list|>
 name|result
 parameter_list|)
 block|{
-specifier|final
 name|List
 argument_list|<
 name|RestReviewerSuggestion
@@ -377,7 +368,6 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-specifier|final
 name|SuggestReviewerInfo
 name|reviewer
 range|:
@@ -401,7 +391,42 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|callback
+name|cb
+operator|.
+name|onSuggestionsReady
+argument_list|(
+name|req
+argument_list|,
+operator|new
+name|Response
+argument_list|(
+name|r
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|err
+parameter_list|)
+block|{
+name|List
+argument_list|<
+name|Suggestion
+argument_list|>
+name|r
+init|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+decl_stmt|;
+name|cb
 operator|.
 name|onSuggestionsReady
 argument_list|(
@@ -443,8 +468,6 @@ specifier|static
 class|class
 name|RestReviewerSuggestion
 implements|implements
-name|SuggestOracle
-operator|.
 name|Suggestion
 block|{
 DECL|field|reviewer
