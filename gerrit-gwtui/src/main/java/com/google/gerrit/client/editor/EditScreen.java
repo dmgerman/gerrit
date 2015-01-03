@@ -1082,7 +1082,7 @@ name|onLoad
 argument_list|()
 expr_stmt|;
 name|CallbackGroup
-name|cmGroup
+name|group1
 init|=
 operator|new
 name|CallbackGroup
@@ -1090,7 +1090,7 @@ argument_list|()
 decl_stmt|;
 specifier|final
 name|CallbackGroup
-name|group
+name|group2
 init|=
 operator|new
 name|CallbackGroup
@@ -1100,7 +1100,7 @@ name|CodeMirror
 operator|.
 name|initLibrary
 argument_list|(
-name|cmGroup
+name|group1
 operator|.
 name|add
 argument_list|(
@@ -1118,7 +1118,7 @@ name|Void
 argument_list|>
 name|themeCallback
 init|=
-name|group
+name|group2
 operator|.
 name|addEmpty
 argument_list|()
@@ -1173,12 +1173,12 @@ operator|.
 name|get
 argument_list|()
 argument_list|,
-name|group
+name|group1
 operator|.
 name|add
 argument_list|(
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|ChangeInfo
 argument_list|>
@@ -1223,6 +1223,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{           }
 block|}
 argument_list|)
 argument_list|)
@@ -1235,7 +1245,7 @@ name|revision
 argument_list|,
 name|path
 argument_list|,
-name|cmGroup
+name|group1
 operator|.
 name|add
 argument_list|(
@@ -1253,7 +1263,7 @@ name|Void
 argument_list|>
 name|modeCallback
 init|=
-name|group
+name|group2
 operator|.
 name|addEmpty
 argument_list|()
@@ -1327,7 +1337,7 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|group
+name|group2
 operator|.
 name|addListener
 argument_list|(
@@ -1363,12 +1373,12 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|cmGroup
+name|group1
 operator|.
 name|done
 argument_list|()
 expr_stmt|;
-name|group
+name|group2
 operator|.
 name|done
 argument_list|()

@@ -2020,7 +2020,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|EditInfo
 argument_list|>
@@ -2041,6 +2041,16 @@ operator|=
 name|result
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{             }
 block|}
 argument_list|)
 argument_list|)
