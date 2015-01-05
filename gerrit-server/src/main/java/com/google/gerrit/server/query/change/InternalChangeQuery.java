@@ -87,6 +87,26 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|query
+operator|.
+name|change
+operator|.
+name|ChangeStatusPredicate
+operator|.
+name|open
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -180,37 +200,50 @@ specifier|public
 class|class
 name|InternalChangeQuery
 block|{
+DECL|method|project (Project.NameKey projectName)
+specifier|private
+specifier|static
+name|Predicate
+argument_list|<
+name|ChangeData
+argument_list|>
+name|project
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ProjectPredicate
+argument_list|(
+name|projectName
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|field|qp
 specifier|private
 specifier|final
 name|QueryProcessor
 name|qp
 decl_stmt|;
-DECL|field|qb
-specifier|private
-specifier|final
-name|ChangeQueryBuilder
-name|qb
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalChangeQuery (QueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder)
+DECL|method|InternalChangeQuery (QueryProcessor queryProcessor)
 name|InternalChangeQuery
 parameter_list|(
 name|QueryProcessor
 name|queryProcessor
-parameter_list|,
-name|ChangeQueryBuilder
-name|queryBuilder
 parameter_list|)
 block|{
 name|qp
 operator|=
 name|queryProcessor
-expr_stmt|;
-name|qb
-operator|=
-name|queryBuilder
 expr_stmt|;
 block|}
 DECL|method|setLimit (int n)
@@ -233,7 +266,7 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|byProjectOpen (Project.NameKey project)
+DECL|method|byProjectOpen (Project.NameKey projectName)
 specifier|public
 name|List
 argument_list|<
@@ -244,7 +277,7 @@ parameter_list|(
 name|Project
 operator|.
 name|NameKey
-name|project
+name|projectName
 parameter_list|)
 throws|throws
 name|OrmException
@@ -254,19 +287,12 @@ name|query
 argument_list|(
 name|and
 argument_list|(
-name|qb
-operator|.
 name|project
 argument_list|(
-name|project
-operator|.
-name|get
-argument_list|()
+name|projectName
 argument_list|)
 argument_list|,
-name|qb
-operator|.
-name|status_open
+name|open
 argument_list|()
 argument_list|)
 argument_list|)
