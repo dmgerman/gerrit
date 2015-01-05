@@ -1389,7 +1389,7 @@ name|args
 operator|.
 name|queryBuilder
 operator|.
-name|create
+name|asUser
 argument_list|(
 name|args
 operator|.
@@ -1405,7 +1405,7 @@ name|args
 operator|.
 name|queryBuilder
 operator|.
-name|create
+name|asUser
 argument_list|(
 name|user
 argument_list|)

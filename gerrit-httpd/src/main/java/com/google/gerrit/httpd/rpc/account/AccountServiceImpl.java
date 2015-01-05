@@ -530,13 +530,11 @@ DECL|field|queryBuilder
 specifier|private
 specifier|final
 name|ChangeQueryBuilder
-operator|.
-name|Factory
 name|queryBuilder
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final AccountCache accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory, final ChangeQueryBuilder.Factory queryBuilder)
+DECL|method|AccountServiceImpl (final Provider<ReviewDb> schema, final Provider<IdentifiedUser> identifiedUser, final AccountCache accountCache, final ProjectControl.Factory projectControlFactory, final AgreementInfoFactory.Factory agreementInfoFactory, final ChangeQueryBuilder queryBuilder)
 name|AccountServiceImpl
 parameter_list|(
 specifier|final
@@ -571,8 +569,6 @@ name|agreementInfoFactory
 parameter_list|,
 specifier|final
 name|ChangeQueryBuilder
-operator|.
-name|Factory
 name|queryBuilder
 parameter_list|)
 block|{
@@ -1177,14 +1173,6 @@ block|{
 try|try
 block|{
 name|queryBuilder
-operator|.
-name|create
-argument_list|(
-name|currentUser
-operator|.
-name|get
-argument_list|()
-argument_list|)
 operator|.
 name|parse
 argument_list|(

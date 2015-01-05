@@ -286,12 +286,10 @@ name|start
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (ChangeQueryBuilder.Factory queryBuilder, CurrentUser currentUser, ChangeQueryRewriter queryRewriter)
+DECL|method|QueryProcessor (ChangeQueryBuilder queryBuilder, CurrentUser currentUser, ChangeQueryRewriter queryRewriter)
 name|QueryProcessor
 parameter_list|(
 name|ChangeQueryBuilder
-operator|.
-name|Factory
 name|queryBuilder
 parameter_list|,
 name|CurrentUser
@@ -306,11 +304,6 @@ operator|.
 name|queryBuilder
 operator|=
 name|queryBuilder
-operator|.
-name|create
-argument_list|(
-name|currentUser
-argument_list|)
 expr_stmt|;
 name|this
 operator|.
