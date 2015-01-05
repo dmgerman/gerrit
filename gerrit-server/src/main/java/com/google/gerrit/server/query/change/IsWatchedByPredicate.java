@@ -270,7 +270,7 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|IsWatchedByPredicate (ChangeQueryBuilder.Arguments args, CurrentUser user, boolean checkIsVisible)
+DECL|method|IsWatchedByPredicate (ChangeQueryBuilder.Arguments args, boolean checkIsVisible)
 name|IsWatchedByPredicate
 parameter_list|(
 name|ChangeQueryBuilder
@@ -278,20 +278,17 @@ operator|.
 name|Arguments
 name|args
 parameter_list|,
-name|CurrentUser
-name|user
-parameter_list|,
 name|boolean
 name|checkIsVisible
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
 name|super
 argument_list|(
 name|filters
 argument_list|(
 name|args
-argument_list|,
-name|user
 argument_list|,
 name|checkIsVisible
 argument_list|)
@@ -301,10 +298,13 @@ name|this
 operator|.
 name|user
 operator|=
-name|user
+name|args
+operator|.
+name|getCurrentUser
+argument_list|()
 expr_stmt|;
 block|}
-DECL|method|filters ( ChangeQueryBuilder.Arguments args, CurrentUser user, boolean checkIsVisible)
+DECL|method|filters ( ChangeQueryBuilder.Arguments args, boolean checkIsVisible)
 specifier|private
 specifier|static
 name|List
@@ -321,13 +321,20 @@ operator|.
 name|Arguments
 name|args
 parameter_list|,
-name|CurrentUser
-name|user
-parameter_list|,
 name|boolean
 name|checkIsVisible
 parameter_list|)
+throws|throws
+name|QueryParseException
 block|{
+name|CurrentUser
+name|user
+init|=
+name|args
+operator|.
+name|getCurrentUser
+argument_list|()
+decl_stmt|;
 name|List
 argument_list|<
 name|Predicate
@@ -349,8 +356,6 @@ operator|new
 name|ChangeQueryBuilder
 argument_list|(
 name|args
-argument_list|,
-name|user
 argument_list|)
 decl_stmt|;
 for|for
