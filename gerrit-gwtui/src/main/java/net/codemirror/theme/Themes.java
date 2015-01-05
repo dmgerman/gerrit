@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2013 The Android Open Source Project
+comment|// Copyright (C) 2014 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,13 +52,13 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|net.codemirror.lib
+DECL|package|net.codemirror.theme
 package|package
 name|net
 operator|.
 name|codemirror
 operator|.
-name|lib
+name|theme
 package|;
 end_package
 
@@ -106,88 +106,97 @@ name|resources
 operator|.
 name|client
 operator|.
-name|DataResource
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
-name|DataResource
-operator|.
-name|DoNotEmbed
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gwt
-operator|.
-name|resources
-operator|.
-name|client
-operator|.
 name|ExternalTextResource
 import|;
 end_import
 
 begin_interface
-DECL|interface|Lib
+DECL|interface|Themes
+specifier|public
 interface|interface
-name|Lib
+name|Themes
 extends|extends
 name|ClientBundle
 block|{
 DECL|field|I
+specifier|public
 specifier|static
 specifier|final
-name|Lib
+name|Themes
 name|I
 init|=
 name|GWT
 operator|.
 name|create
 argument_list|(
-name|Lib
+name|Themes
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|eclipse ()
 annotation|@
 name|Source
 argument_list|(
-literal|"cm.css"
+literal|"eclipse.css"
 argument_list|)
-DECL|method|css ()
 name|ExternalTextResource
-name|css
+name|eclipse
 parameter_list|()
 function_decl|;
+DECL|method|elegant ()
 annotation|@
 name|Source
 argument_list|(
-literal|"cm.js"
+literal|"elegant.css"
 argument_list|)
-annotation|@
-name|DoNotEmbed
-DECL|method|js ()
-name|DataResource
-name|js
+name|ExternalTextResource
+name|elegant
 parameter_list|()
 function_decl|;
+DECL|method|midnight ()
+annotation|@
+name|Source
+argument_list|(
+literal|"midnight.css"
+argument_list|)
+name|ExternalTextResource
+name|midnight
+parameter_list|()
+function_decl|;
+DECL|method|neat ()
+annotation|@
+name|Source
+argument_list|(
+literal|"neat.css"
+argument_list|)
+name|ExternalTextResource
+name|neat
+parameter_list|()
+function_decl|;
+DECL|method|night ()
+annotation|@
+name|Source
+argument_list|(
+literal|"night.css"
+argument_list|)
+name|ExternalTextResource
+name|night
+parameter_list|()
+function_decl|;
+DECL|method|twilight ()
+annotation|@
+name|Source
+argument_list|(
+literal|"twilight.css"
+argument_list|)
+name|ExternalTextResource
+name|twilight
+parameter_list|()
+function_decl|;
+comment|// When adding a resource, update:
+comment|// - static initializer in ThemeLoader
+comment|// - enum value in com.google.gerrit.extensions.common.Theme
 block|}
 end_interface
 
