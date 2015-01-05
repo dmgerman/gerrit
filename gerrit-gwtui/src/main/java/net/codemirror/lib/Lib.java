@@ -188,6 +188,18 @@ name|DataResource
 name|js
 parameter_list|()
 function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"style.css"
+argument_list|)
+DECL|method|style ()
+name|CodeMirror
+operator|.
+name|Style
+name|style
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

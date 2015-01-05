@@ -996,9 +996,12 @@ block|{
 name|double
 name|h
 init|=
-name|host
+name|cmB
 operator|.
-name|getLineHeightPx
+name|extras
+argument_list|()
+operator|.
+name|lineHeightPx
 argument_list|()
 decl_stmt|;
 for|for
@@ -2025,6 +2028,9 @@ name|line
 init|=
 name|cm
 operator|.
+name|extras
+argument_list|()
+operator|.
 name|hasActiveLine
 argument_list|()
 condition|?
@@ -2033,6 +2039,9 @@ operator|.
 name|getLineNumber
 argument_list|(
 name|cm
+operator|.
+name|extras
+argument_list|()
 operator|.
 name|activeLine
 argument_list|()

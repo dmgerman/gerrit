@@ -164,6 +164,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|resources
+operator|.
+name|client
+operator|.
+name|CssResource
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|user
 operator|.
 name|client
@@ -256,12 +272,83 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+DECL|interface|Style
+interface|interface
+name|Style
+extends|extends
+name|CssResource
+block|{
+DECL|method|activeLine ()
+name|String
+name|activeLine
+parameter_list|()
+function_decl|;
+DECL|method|showTabs ()
+name|String
+name|showTabs
+parameter_list|()
+function_decl|;
+DECL|method|margin ()
+name|String
+name|margin
+parameter_list|()
+function_decl|;
+block|}
+DECL|method|style ()
+specifier|static
+name|Style
+name|style
+parameter_list|()
+block|{
+return|return
+name|Lib
+operator|.
+name|I
+operator|.
+name|style
+argument_list|()
+return|;
+block|}
 DECL|method|create (Element p, Configuration cfg)
 specifier|public
 specifier|static
-specifier|native
 name|CodeMirror
 name|create
+parameter_list|(
+name|Element
+name|p
+parameter_list|,
+name|Configuration
+name|cfg
+parameter_list|)
+block|{
+name|CodeMirror
+name|cm
+init|=
+name|newCM
+argument_list|(
+name|p
+argument_list|,
+name|cfg
+argument_list|)
+decl_stmt|;
+name|Extras
+operator|.
+name|attach
+argument_list|(
+name|cm
+argument_list|)
+expr_stmt|;
+return|return
+name|cm
+return|;
+block|}
+DECL|method|newCM (Element p, Configuration cfg)
+specifier|private
+specifier|static
+specifier|native
+name|CodeMirror
+name|newCM
 parameter_list|(
 name|Element
 name|p
@@ -1099,36 +1186,6 @@ name|somethingSelected
 parameter_list|()
 comment|/*-{     return this.somethingSelected()   }-*/
 function_decl|;
-DECL|method|hasActiveLine ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|hasActiveLine
-parameter_list|()
-comment|/*-{     return !!this.state.activeLine   }-*/
-function_decl|;
-DECL|method|activeLine ()
-specifier|public
-specifier|final
-specifier|native
-name|LineHandle
-name|activeLine
-parameter_list|()
-comment|/*-{     return this.state.activeLine   }-*/
-function_decl|;
-DECL|method|activeLine (LineHandle line)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|activeLine
-parameter_list|(
-name|LineHandle
-name|line
-parameter_list|)
-comment|/*-{     this.state.activeLine = line   }-*/
-function_decl|;
 DECL|method|addKeyMap (KeyMap map)
 specifier|public
 specifier|final
@@ -1305,24 +1362,34 @@ function_decl|;
 DECL|method|side ()
 specifier|public
 specifier|final
-specifier|native
 name|DisplaySide
 name|side
 parameter_list|()
-comment|/*-{ return this._sbs2_side }-*/
-function_decl|;
-DECL|method|side (DisplaySide side)
+block|{
+return|return
+name|extras
+argument_list|()
+operator|.
+name|side
+argument_list|()
+return|;
+block|}
+DECL|method|extras ()
 specifier|public
 specifier|final
-specifier|native
-name|CodeMirror
-name|side
-parameter_list|(
-name|DisplaySide
-name|side
-parameter_list|)
-comment|/*-{     this._sbs2_side = side;     return this;   }-*/
-function_decl|;
+name|Extras
+name|extras
+parameter_list|()
+block|{
+return|return
+name|Extras
+operator|.
+name|get
+argument_list|(
+name|this
+argument_list|)
+return|;
+block|}
 DECL|method|CodeMirror ()
 specifier|protected
 name|CodeMirror

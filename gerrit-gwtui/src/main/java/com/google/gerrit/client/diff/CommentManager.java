@@ -626,6 +626,9 @@ name|line
 init|=
 name|src
 operator|.
+name|extras
+argument_list|()
+operator|.
 name|hasActiveLine
 argument_list|()
 condition|?
@@ -634,6 +637,9 @@ operator|.
 name|getLineNumber
 argument_list|(
 name|src
+operator|.
+name|extras
+argument_list|()
 operator|.
 name|activeLine
 argument_list|()
@@ -1839,6 +1845,9 @@ if|if
 condition|(
 name|cm
 operator|.
+name|extras
+argument_list|()
+operator|.
 name|hasActiveLine
 argument_list|()
 condition|)
@@ -1861,6 +1870,9 @@ operator|.
 name|getLineNumber
 argument_list|(
 name|cm
+operator|.
+name|extras
+argument_list|()
 operator|.
 name|activeLine
 argument_list|()
@@ -1912,6 +1924,9 @@ if|if
 condition|(
 name|cm
 operator|.
+name|extras
+argument_list|()
+operator|.
 name|hasActiveLine
 argument_list|()
 condition|)
@@ -1934,6 +1949,9 @@ operator|.
 name|getLineNumber
 argument_list|(
 name|cm
+operator|.
+name|extras
+argument_list|()
 operator|.
 name|activeLine
 argument_list|()
@@ -2002,6 +2020,9 @@ if|if
 condition|(
 name|cm
 operator|.
+name|extras
+argument_list|()
+operator|.
 name|hasActiveLine
 argument_list|()
 condition|)
@@ -2010,6 +2031,9 @@ name|LineHandle
 name|handle
 init|=
 name|cm
+operator|.
+name|extras
+argument_list|()
 operator|.
 name|activeLine
 argument_list|()
@@ -2075,6 +2099,9 @@ if|if
 condition|(
 name|cm
 operator|.
+name|extras
+argument_list|()
+operator|.
 name|hasActiveLine
 argument_list|()
 condition|)
@@ -2106,6 +2133,9 @@ operator|.
 name|getLineNumber
 argument_list|(
 name|cm
+operator|.
+name|extras
+argument_list|()
 operator|.
 name|activeLine
 argument_list|()

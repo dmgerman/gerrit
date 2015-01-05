@@ -430,6 +430,16 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Lib
+operator|.
+name|I
+operator|.
+name|style
+argument_list|()
+operator|.
+name|ensureInjected
+argument_list|()
+expr_stmt|;
 name|cb
 operator|.
 name|onSuccess
