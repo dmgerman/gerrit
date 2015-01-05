@@ -432,12 +432,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|field|schemaVersion
-specifier|private
-specifier|final
-name|SchemaVersion
-name|schemaVersion
-decl_stmt|;
 DECL|field|schemaCreator
 specifier|private
 specifier|final
@@ -464,24 +458,15 @@ name|created
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InMemoryDatabase (SchemaVersion schemaVersion, SchemaCreator schemaCreator)
+DECL|method|InMemoryDatabase (SchemaCreator schemaCreator)
 name|InMemoryDatabase
 parameter_list|(
-name|SchemaVersion
-name|schemaVersion
-parameter_list|,
 name|SchemaCreator
 name|schemaCreator
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-name|this
-operator|.
-name|schemaVersion
-operator|=
-name|schemaVersion
-expr_stmt|;
 name|this
 operator|.
 name|schemaCreator
@@ -811,9 +796,9 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|schemaVersion
+name|SchemaVersion
 operator|.
-name|getVersionNbr
+name|getBinaryVersion
 argument_list|()
 argument_list|,
 name|act

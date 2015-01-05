@@ -594,22 +594,6 @@ name|server
 operator|.
 name|schema
 operator|.
-name|Current
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
 name|DataSourceType
 import|;
 end_import
@@ -627,22 +611,6 @@ operator|.
 name|schema
 operator|.
 name|SchemaCreator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|schema
-operator|.
-name|SchemaVersion
 import|;
 end_import
 
@@ -1235,15 +1203,6 @@ operator|.
 name|REQUEST
 argument_list|)
 expr_stmt|;
-name|install
-argument_list|(
-operator|new
-name|SchemaVersion
-operator|.
-name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|bind
 argument_list|(
 name|File
@@ -1680,15 +1639,10 @@ annotation|@
 name|Provides
 annotation|@
 name|Singleton
-DECL|method|getInMemoryDatabase (@urrent SchemaVersion schemaVersion, SchemaCreator schemaCreator)
+DECL|method|getInMemoryDatabase (SchemaCreator schemaCreator)
 name|InMemoryDatabase
 name|getInMemoryDatabase
 parameter_list|(
-annotation|@
-name|Current
-name|SchemaVersion
-name|schemaVersion
-parameter_list|,
 name|SchemaCreator
 name|schemaCreator
 parameter_list|)
@@ -1699,8 +1653,6 @@ return|return
 operator|new
 name|InMemoryDatabase
 argument_list|(
-name|schemaVersion
-argument_list|,
 name|schemaCreator
 argument_list|)
 return|;
