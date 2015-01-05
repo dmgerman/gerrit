@@ -917,7 +917,7 @@ operator|.
 name|opFactories
 expr_stmt|;
 block|}
-comment|/**    * Parse a user supplied query string into a predicate.    *    * @param query the query string.    * @return predicate representing the user query.    * @throws QueryParseException the query string is invalid and cannot be    *         parsed by this parser. This may be due to a syntax error, may be    *         due to an operator not being supported, or due to an invalid value    *         being passed to a recognized operator.    */
+comment|/**    * Parse a user-supplied query string into a predicate.    *    * @param query the query string.    * @return predicate representing the user query.    * @throws QueryParseException the query string is invalid and cannot be    *         parsed by this parser. This may be due to a syntax error, may be    *         due to an operator not being supported, or due to an invalid value    *         being passed to a recognized operator.    */
 DECL|method|parse (final String query)
 specifier|public
 name|Predicate
@@ -943,6 +943,70 @@ argument_list|(
 name|query
 argument_list|)
 argument_list|)
+return|;
+block|}
+comment|/**    * Parse multiple user-supplied query strings into a list of predicates.    *    * @param queries the query strings.    * @return predicates representing the user query, in the same order as the    *         input.    * @throws QueryParseException one of the query strings is invalid and cannot    *         be parsed by this parser. This may be due to a syntax error, may be    *         due to an operator not being supported, or due to an invalid value    *         being passed to a recognized operator.    *    */
+DECL|method|parse (final List<String> queries)
+specifier|public
+name|List
+argument_list|<
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+argument_list|>
+name|parse
+parameter_list|(
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|queries
+parameter_list|)
+throws|throws
+name|QueryParseException
+block|{
+name|List
+argument_list|<
+name|Predicate
+argument_list|<
+name|T
+argument_list|>
+argument_list|>
+name|predicates
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|queries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|String
+name|query
+range|:
+name|queries
+control|)
+block|{
+name|predicates
+operator|.
+name|add
+argument_list|(
+name|parse
+argument_list|(
+name|query
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|predicates
 return|;
 block|}
 DECL|method|toPredicate (final Tree r)

@@ -194,11 +194,14 @@ name|qb
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|InternalChangeQuery (QueryProcessor queryProcessor)
+DECL|method|InternalChangeQuery (QueryProcessor queryProcessor, ChangeQueryBuilder queryBuilder)
 name|InternalChangeQuery
 parameter_list|(
 name|QueryProcessor
 name|queryProcessor
+parameter_list|,
+name|ChangeQueryBuilder
+name|queryBuilder
 parameter_list|)
 block|{
 name|qp
@@ -207,10 +210,7 @@ name|queryProcessor
 expr_stmt|;
 name|qb
 operator|=
-name|qp
-operator|.
-name|getQueryBuilder
-argument_list|()
+name|queryBuilder
 expr_stmt|;
 block|}
 DECL|method|setLimit (int n)

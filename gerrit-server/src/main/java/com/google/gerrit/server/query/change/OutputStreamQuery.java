@@ -528,6 +528,12 @@ name|TEXT
 block|,
 name|JSON
 block|}
+DECL|field|queryBuilder
+specifier|private
+specifier|final
+name|ChangeQueryBuilder
+name|queryBuilder
+decl_stmt|;
 DECL|field|queryProcessor
 specifier|private
 specifier|final
@@ -622,9 +628,12 @@ name|out
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OutputStreamQuery (QueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
+DECL|method|OutputStreamQuery ( ChangeQueryBuilder queryBuilder, QueryProcessor queryProcessor, EventFactory eventFactory, TrackingFooters trackingFooters, CurrentUser user)
 name|OutputStreamQuery
 parameter_list|(
+name|ChangeQueryBuilder
+name|queryBuilder
+parameter_list|,
 name|QueryProcessor
 name|queryProcessor
 parameter_list|,
@@ -638,6 +647,12 @@ name|CurrentUser
 name|user
 parameter_list|)
 block|{
+name|this
+operator|.
+name|queryBuilder
+operator|=
+name|queryBuilder
+expr_stmt|;
 name|this
 operator|.
 name|queryProcessor
@@ -972,9 +987,14 @@ name|results
 init|=
 name|queryProcessor
 operator|.
-name|queryByString
+name|queryChanges
+argument_list|(
+name|queryBuilder
+operator|.
+name|parse
 argument_list|(
 name|queryString
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|ChangeAttribute

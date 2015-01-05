@@ -359,6 +359,12 @@ specifier|final
 name|ChangeJson
 name|json
 decl_stmt|;
+DECL|field|qb
+specifier|private
+specifier|final
+name|ChangeQueryBuilder
+name|qb
+decl_stmt|;
 DECL|field|imp
 specifier|private
 specifier|final
@@ -556,11 +562,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Inject
-DECL|method|QueryChanges (ChangeJson json, QueryProcessor qp, Provider<CurrentUser> user)
+DECL|method|QueryChanges (ChangeJson json, ChangeQueryBuilder qb, QueryProcessor qp, Provider<CurrentUser> user)
 name|QueryChanges
 parameter_list|(
 name|ChangeJson
 name|json
+parameter_list|,
+name|ChangeQueryBuilder
+name|qb
 parameter_list|,
 name|QueryProcessor
 name|qp
@@ -577,6 +586,12 @@ operator|.
 name|json
 operator|=
 name|json
+expr_stmt|;
+name|this
+operator|.
+name|qb
+operator|=
+name|qb
 expr_stmt|;
 name|this
 operator|.
@@ -939,9 +954,14 @@ name|results
 init|=
 name|imp
 operator|.
-name|queryByStrings
+name|queryChanges
+argument_list|(
+name|qb
+operator|.
+name|parse
 argument_list|(
 name|queries
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|List
