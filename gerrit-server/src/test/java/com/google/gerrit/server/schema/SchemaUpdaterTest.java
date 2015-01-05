@@ -623,15 +623,6 @@ argument_list|(
 name|paths
 argument_list|)
 expr_stmt|;
-name|install
-argument_list|(
-operator|new
-name|SchemaVersion
-operator|.
-name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|Config
 name|cfg
 init|=

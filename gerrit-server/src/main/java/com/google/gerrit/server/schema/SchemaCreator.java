@@ -378,12 +378,6 @@ specifier|final
 name|DataSourceType
 name|dataSourceType
 decl_stmt|;
-DECL|field|versionNbr
-specifier|private
-specifier|final
-name|int
-name|versionNbr
-decl_stmt|;
 DECL|field|admin
 specifier|private
 name|AccountGroup
@@ -396,17 +390,12 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SchemaCreator (SitePaths site, @Current SchemaVersion version, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
+DECL|method|SchemaCreator (SitePaths site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
 specifier|public
 name|SchemaCreator
 parameter_list|(
 name|SitePaths
 name|site
-parameter_list|,
-annotation|@
-name|Current
-name|SchemaVersion
-name|version
 parameter_list|,
 name|AllProjectsCreator
 name|ap
@@ -429,8 +418,6 @@ name|site
 operator|.
 name|site_path
 argument_list|,
-name|version
-argument_list|,
 name|ap
 argument_list|,
 name|auc
@@ -441,7 +428,7 @@ name|dst
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator (@itePath File site, @Current SchemaVersion version, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
+DECL|method|SchemaCreator (@itePath File site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
 specifier|public
 name|SchemaCreator
 parameter_list|(
@@ -449,11 +436,6 @@ annotation|@
 name|SitePath
 name|File
 name|site
-parameter_list|,
-annotation|@
-name|Current
-name|SchemaVersion
-name|version
 parameter_list|,
 name|AllProjectsCreator
 name|ap
@@ -489,13 +471,6 @@ expr_stmt|;
 name|dataSourceType
 operator|=
 name|dst
-expr_stmt|;
-name|versionNbr
-operator|=
-name|version
-operator|.
-name|getVersionNbr
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|create (final ReviewDb db)
@@ -564,7 +539,10 @@ name|sVer
 operator|.
 name|versionNbr
 operator|=
-name|versionNbr
+name|SchemaVersion
+operator|.
+name|getBinaryVersion
+argument_list|()
 expr_stmt|;
 name|db
 operator|.

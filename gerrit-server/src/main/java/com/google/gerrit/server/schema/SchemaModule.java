@@ -254,15 +254,6 @@ name|void
 name|configure
 parameter_list|()
 block|{
-name|install
-argument_list|(
-operator|new
-name|SchemaVersion
-operator|.
-name|Module
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|bind
 argument_list|(
 name|PersonIdent
