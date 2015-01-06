@@ -234,6 +234,18 @@ operator|.
 name|ref
 return|;
 block|}
+DECL|method|getRevision ()
+specifier|public
+name|String
+name|getRevision
+parameter_list|()
+block|{
+return|return
+name|branchInfo
+operator|.
+name|revision
+return|;
+block|}
 block|}
 end_class
 

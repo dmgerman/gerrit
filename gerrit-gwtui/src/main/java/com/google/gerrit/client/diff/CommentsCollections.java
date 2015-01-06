@@ -140,22 +140,6 @@ name|client
 operator|.
 name|rpc
 operator|.
-name|GerritCallback
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|rpc
-operator|.
 name|NativeMap
 import|;
 end_import
@@ -205,6 +189,24 @@ operator|.
 name|client
 operator|.
 name|JsArray
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
+name|rpc
+operator|.
+name|AsyncCallback
 import|;
 end_import
 
@@ -385,7 +387,7 @@ block|}
 block|}
 DECL|method|publishedBase ()
 specifier|private
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -400,7 +402,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -441,12 +443,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{       }
 block|}
 return|;
 block|}
 DECL|method|publishedRevision ()
 specifier|private
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -461,7 +473,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -502,12 +514,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{       }
 block|}
 return|;
 block|}
 DECL|method|draftsBase ()
 specifier|private
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -522,7 +544,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -563,12 +585,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{       }
 block|}
 return|;
 block|}
 DECL|method|draftsRevision ()
 specifier|private
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -583,7 +615,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|NativeMap
 argument_list|<
@@ -624,6 +656,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{       }
 block|}
 return|;
 block|}

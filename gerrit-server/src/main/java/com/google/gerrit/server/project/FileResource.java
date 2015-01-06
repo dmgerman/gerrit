@@ -104,25 +104,23 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
+name|TypeLiteral
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|google
+name|eclipse
 operator|.
-name|inject
+name|jgit
 operator|.
-name|TypeLiteral
+name|lib
+operator|.
+name|ObjectId
 import|;
 end_import
 
@@ -161,15 +159,13 @@ decl_stmt|;
 DECL|field|project
 specifier|private
 specifier|final
-name|Project
-operator|.
-name|NameKey
+name|ProjectControl
 name|project
 decl_stmt|;
 DECL|field|rev
 specifier|private
 specifier|final
-name|String
+name|ObjectId
 name|rev
 decl_stmt|;
 DECL|field|path
@@ -178,16 +174,14 @@ specifier|final
 name|String
 name|path
 decl_stmt|;
-DECL|method|FileResource (Project.NameKey project, String rev, String path)
+DECL|method|FileResource (ProjectControl project, ObjectId rev, String path)
 specifier|public
 name|FileResource
 parameter_list|(
-name|Project
-operator|.
-name|NameKey
+name|ProjectControl
 name|project
 parameter_list|,
-name|String
+name|ObjectId
 name|rev
 parameter_list|,
 name|String
@@ -215,9 +209,7 @@ expr_stmt|;
 block|}
 DECL|method|getProject ()
 specifier|public
-name|Project
-operator|.
-name|NameKey
+name|ProjectControl
 name|getProject
 parameter_list|()
 block|{
@@ -227,7 +219,7 @@ return|;
 block|}
 DECL|method|getRev ()
 specifier|public
-name|String
+name|ObjectId
 name|getRev
 parameter_list|()
 block|{
