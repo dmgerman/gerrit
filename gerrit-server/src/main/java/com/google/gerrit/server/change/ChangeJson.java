@@ -1178,7 +1178,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Project
+name|PatchSetInfo
+operator|.
+name|ParentInfo
 import|;
 end_import
 
@@ -1194,9 +1196,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSetInfo
-operator|.
-name|ParentInfo
+name|Project
 import|;
 end_import
 

@@ -330,7 +330,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|Pos
+name|LineWidget
 import|;
 end_import
 
@@ -342,7 +342,7 @@ name|codemirror
 operator|.
 name|lib
 operator|.
-name|LineWidget
+name|Pos
 import|;
 end_import
 
