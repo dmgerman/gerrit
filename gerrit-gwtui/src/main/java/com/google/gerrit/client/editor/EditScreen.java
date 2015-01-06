@@ -1595,6 +1595,17 @@ argument_list|()
 operator|.
 name|lineLength
 argument_list|(
+name|Patch
+operator|.
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+condition|?
+literal|72
+else|:
 name|prefs
 operator|.
 name|lineLength
