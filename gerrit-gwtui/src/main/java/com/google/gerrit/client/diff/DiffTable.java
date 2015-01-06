@@ -435,11 +435,6 @@ name|String
 name|noIntraline
 parameter_list|()
 function_decl|;
-DECL|method|activeLine ()
-name|String
-name|activeLine
-parameter_list|()
-function_decl|;
 DECL|method|range ()
 name|String
 name|range
@@ -448,11 +443,6 @@ function_decl|;
 DECL|method|rangeHighlight ()
 name|String
 name|rangeHighlight
-parameter_list|()
-function_decl|;
-DECL|method|showTabs ()
-name|String
-name|showTabs
 parameter_list|()
 function_decl|;
 DECL|method|showLineNumbers ()
@@ -468,11 +458,6 @@ function_decl|;
 DECL|method|hideB ()
 name|String
 name|hideB
-parameter_list|()
-function_decl|;
-DECL|method|columnMargin ()
-name|String
-name|columnMargin
 parameter_list|()
 function_decl|;
 DECL|method|padding ()
