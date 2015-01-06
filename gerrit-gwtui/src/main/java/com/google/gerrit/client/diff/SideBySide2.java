@@ -478,6 +478,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Patch
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -2162,6 +2178,17 @@ argument_list|)
 expr_stmt|;
 name|setLineLength
 argument_list|(
+name|Patch
+operator|.
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+condition|?
+literal|72
+else|:
 name|prefs
 operator|.
 name|lineLength
@@ -6146,6 +6173,15 @@ argument_list|(
 name|cb
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getPath ()
+name|String
+name|getPath
+parameter_list|()
+block|{
+return|return
+name|path
+return|;
 block|}
 DECL|method|getPrefs ()
 name|DiffPreferences
