@@ -390,6 +390,16 @@ argument_list|)
 operator|.
 name|is_edit
 argument_list|()
+operator|||
+name|info
+operator|.
+name|revision
+argument_list|(
+name|commit
+argument_list|)
+operator|.
+name|draft
+argument_list|()
 condition|)
 block|{
 name|setVisible
