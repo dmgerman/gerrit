@@ -2290,9 +2290,6 @@ argument_list|(
 name|style
 argument_list|)
 expr_stmt|;
-name|initReplyButton
-argument_list|()
-expr_stmt|;
 name|keysNavigation
 operator|=
 operator|new
@@ -2706,11 +2703,31 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|initReplyButton ()
+DECL|method|initReplyButton (ChangeInfo info, String revision)
 specifier|private
 name|void
 name|initReplyButton
-parameter_list|()
+parameter_list|(
+name|ChangeInfo
+name|info
+parameter_list|,
+name|String
+name|revision
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|info
+operator|.
+name|revision
+argument_list|(
+name|revision
+argument_list|)
+operator|.
+name|is_edit
+argument_list|()
+condition|)
 block|{
 name|reply
 operator|.
@@ -2751,6 +2768,14 @@ name|closeDiv
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|reply
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|gotoSibling (final int offset)
 specifier|private
@@ -6593,6 +6618,13 @@ expr_stmt|;
 name|renderDiffBaseListBox
 argument_list|(
 name|info
+argument_list|)
+expr_stmt|;
+name|initReplyButton
+argument_list|(
+name|info
+argument_list|,
+name|revision
 argument_list|)
 expr_stmt|;
 name|initIncludedInAction
