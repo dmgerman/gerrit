@@ -636,7 +636,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Objects
+name|Map
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -646,9 +648,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
+name|Objects
 import|;
 end_import
 

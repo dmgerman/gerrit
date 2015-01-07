@@ -192,9 +192,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
-operator|.
-name|Pattern
+name|Set
 import|;
 end_import
 
@@ -204,7 +202,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
