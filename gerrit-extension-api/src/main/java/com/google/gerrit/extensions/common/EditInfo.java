@@ -92,16 +92,6 @@ specifier|public
 name|String
 name|baseRevision
 decl_stmt|;
-DECL|field|actions
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|ActionInfo
-argument_list|>
-name|actions
-decl_stmt|;
 DECL|field|fetch
 specifier|public
 name|Map
