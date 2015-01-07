@@ -1343,7 +1343,7 @@ specifier|native
 name|Element
 name|scrollbarV
 parameter_list|()
-comment|/*-{     return this.display.scrollbarV   }-*/
+comment|/*-{     return this.display.scrollbars.vert.node;   }-*/
 function_decl|;
 DECL|method|cloneKeyMap (String name)
 specifier|public
