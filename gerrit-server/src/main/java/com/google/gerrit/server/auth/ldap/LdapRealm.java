@@ -1570,6 +1570,9 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 name|who
