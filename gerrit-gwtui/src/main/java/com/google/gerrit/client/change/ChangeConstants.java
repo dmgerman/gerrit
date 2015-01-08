@@ -234,6 +234,21 @@ name|String
 name|abandoned
 parameter_list|()
 function_decl|;
+DECL|method|deleteChangeEdit ()
+name|String
+name|deleteChangeEdit
+parameter_list|()
+function_decl|;
+DECL|method|deleteDraftChange ()
+name|String
+name|deleteDraftChange
+parameter_list|()
+function_decl|;
+DECL|method|deleteDraftRevision ()
+name|String
+name|deleteDraftRevision
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
