@@ -294,7 +294,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|predicates ( Arguments args, Set<Change.Id> ids)
+DECL|method|predicates (Set<Change.Id> ids)
 specifier|private
 specifier|static
 name|List
@@ -306,9 +306,6 @@ argument_list|>
 argument_list|>
 name|predicates
 parameter_list|(
-name|Arguments
-name|args
-parameter_list|,
 name|Set
 argument_list|<
 name|Change
@@ -354,8 +351,6 @@ argument_list|(
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
-name|args
-argument_list|,
 name|id
 argument_list|)
 argument_list|)
@@ -412,8 +407,6 @@ name|super
 argument_list|(
 name|predicates
 argument_list|(
-name|args
-argument_list|,
 name|user
 operator|.
 name|getStarredChanges

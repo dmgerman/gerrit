@@ -741,8 +741,6 @@ argument_list|(
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
-name|args
-argument_list|,
 name|c
 operator|.
 name|getId

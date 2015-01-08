@@ -2168,8 +2168,6 @@ return|return
 operator|new
 name|LegacyChangeIdPredicate
 argument_list|(
-name|args
-argument_list|,
 name|Change
 operator|.
 name|Id
@@ -2199,8 +2197,6 @@ return|return
 operator|new
 name|ChangeIdPredicate
 argument_list|(
-name|args
-argument_list|,
 name|parseChangeId
 argument_list|(
 name|query
@@ -2265,8 +2261,6 @@ argument_list|,
 operator|new
 name|ChangeIdPredicate
 argument_list|(
-name|args
-argument_list|,
 name|parseChangeId
 argument_list|(
 name|triplet
@@ -2320,8 +2314,6 @@ return|return
 operator|new
 name|CommentPredicate
 argument_list|(
-name|args
-argument_list|,
 name|index
 argument_list|,
 name|value
@@ -2642,8 +2634,6 @@ return|return
 operator|new
 name|CommitPredicate
 argument_list|(
-name|args
-argument_list|,
 name|AbbreviatedObjectId
 operator|.
 name|fromString
@@ -3407,8 +3397,6 @@ return|return
 operator|new
 name|MessagePredicate
 argument_list|(
-name|args
-argument_list|,
 name|index
 argument_list|,
 name|text
