@@ -338,17 +338,6 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"removeReviewer.png"
-argument_list|)
-DECL|method|removeReviewer ()
-specifier|public
-name|ImageResource
-name|removeReviewer
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
 literal|"deleteNormal.png"
 argument_list|)
 DECL|method|deleteNormal ()
