@@ -2452,11 +2452,6 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|view
-operator|.
-name|resizeCodeMirror
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|UiHandler
