@@ -363,9 +363,8 @@ operator|.
 name|open
 argument_list|()
 argument_list|,
+operator|new
 name|ChangeStatusPredicate
-operator|.
-name|forStatus
 argument_list|(
 name|Change
 operator|.
@@ -405,9 +404,8 @@ operator|.
 name|open
 argument_list|()
 argument_list|,
+operator|new
 name|ChangeStatusPredicate
-operator|.
-name|forStatus
 argument_list|(
 name|Change
 operator|.

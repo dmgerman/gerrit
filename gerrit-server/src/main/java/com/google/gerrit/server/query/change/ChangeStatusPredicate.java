@@ -529,31 +529,6 @@ name|value
 argument_list|)
 throw|;
 block|}
-DECL|method|forStatus (Change.Status status)
-specifier|public
-specifier|static
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-name|forStatus
-parameter_list|(
-name|Change
-operator|.
-name|Status
-name|status
-parameter_list|)
-block|{
-return|return
-name|parse
-argument_list|(
-name|status
-operator|.
-name|name
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|open ()
 specifier|public
 specifier|static
@@ -591,7 +566,6 @@ name|Status
 name|status
 decl_stmt|;
 DECL|method|ChangeStatusPredicate (Change.Status status)
-specifier|private
 name|ChangeStatusPredicate
 parameter_list|(
 name|Change
