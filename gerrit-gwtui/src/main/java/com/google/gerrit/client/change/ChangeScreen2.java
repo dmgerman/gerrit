@@ -3642,13 +3642,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initEditMode (ChangeInfo info)
+DECL|method|initEditMode (ChangeInfo info, String revision)
 specifier|private
 name|void
 name|initEditMode
 parameter_list|(
 name|ChangeInfo
 name|info
+parameter_list|,
+name|String
+name|revision
 parameter_list|)
 block|{
 if|if
@@ -7058,6 +7061,8 @@ expr_stmt|;
 name|initEditMode
 argument_list|(
 name|info
+argument_list|,
+name|revision
 argument_list|)
 expr_stmt|;
 name|actions
