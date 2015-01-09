@@ -256,6 +256,8 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|mime
+operator|.
 name|FileTypeRegistry
 import|;
 end_import

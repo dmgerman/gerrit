@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server
+DECL|package|com.google.gerrit.server.mime
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|server
+operator|.
+name|mime
 package|;
 end_package
 
@@ -77,22 +79,6 @@ operator|.
 name|config
 operator|.
 name|GerritServerConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|HostPlatform
 import|;
 end_import
 
@@ -312,19 +298,22 @@ name|cfg
 decl_stmt|;
 DECL|field|mimeUtil
 specifier|private
+specifier|final
 name|MimeUtil2
 name|mimeUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MimeUtilFileTypeRegistry (@erritServerConfig final Config gsc)
+DECL|method|MimeUtilFileTypeRegistry (@erritServerConfig Config gsc, MimeUtil2 mu2)
 name|MimeUtilFileTypeRegistry
 parameter_list|(
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|gsc
+parameter_list|,
+name|MimeUtil2
+name|mu2
 parameter_list|)
 block|{
 name|cfg
@@ -333,60 +322,7 @@ name|gsc
 expr_stmt|;
 name|mimeUtil
 operator|=
-operator|new
-name|MimeUtil2
-argument_list|()
-expr_stmt|;
-name|register
-argument_list|(
-literal|"eu.medsea.mimeutil.detector.ExtensionMimeDetector"
-argument_list|)
-expr_stmt|;
-name|register
-argument_list|(
-literal|"eu.medsea.mimeutil.detector.MagicMimeMimeDetector"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|HostPlatform
-operator|.
-name|isWin32
-argument_list|()
-condition|)
-block|{
-name|register
-argument_list|(
-literal|"eu.medsea.mimeutil.detector.WindowsRegistryMimeDetector"
-argument_list|)
-expr_stmt|;
-block|}
-name|register
-argument_list|(
-name|DefaultFileExtensionRegistry
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|register (String name)
-specifier|private
-name|void
-name|register
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|mimeUtil
-operator|.
-name|registerMimeDetector
-argument_list|(
-name|name
-argument_list|)
+name|mu2
 expr_stmt|;
 block|}
 comment|/**    * Get specificity of mime types with generic types forced to low values    *    * "application/octet-stream" is forced to -1.    * "text/plain" is forced to 0.    * All other mime types return the specificity reported by mimeType itself.    *    * @param mimeType The mimeType to get the corrected specificity for.    * @return The corrected specificity.    */
