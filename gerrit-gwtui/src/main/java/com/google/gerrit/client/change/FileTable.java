@@ -1410,11 +1410,6 @@ operator|.
 name|Style
 name|style
 decl_stmt|;
-DECL|field|editButton
-specifier|private
-name|Widget
-name|editButton
-decl_stmt|;
 DECL|field|replyButton
 specifier|private
 name|Widget
@@ -1452,7 +1447,7 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen2.Style style, Widget editButton, Widget replyButton, Mode mode, boolean editExists)
+DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen2.Style style, Widget replyButton, Mode mode, boolean editExists)
 specifier|public
 name|void
 name|set
@@ -1471,9 +1466,6 @@ name|ChangeScreen2
 operator|.
 name|Style
 name|style
-parameter_list|,
-name|Widget
-name|editButton
 parameter_list|,
 name|Widget
 name|replyButton
@@ -1502,12 +1494,6 @@ operator|.
 name|style
 operator|=
 name|style
-expr_stmt|;
-name|this
-operator|.
-name|editButton
-operator|=
-name|editButton
 expr_stmt|;
 name|this
 operator|.
