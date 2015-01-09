@@ -120,32 +120,31 @@ name|thunk
 parameter_list|)
 comment|/*-{     this[key] = function() { $entry(thunk.@java.lang.Runnable::run()()); };     return this;   }-*/
 function_decl|;
-DECL|method|on (String key, boolean b)
+comment|/** Do not handle inside of CodeMirror; instead push up the DOM tree. */
+DECL|method|propagate (String key)
 specifier|public
 specifier|final
 specifier|native
 name|KeyMap
-name|on
+name|propagate
 parameter_list|(
 name|String
 name|key
-parameter_list|,
-name|boolean
-name|b
 parameter_list|)
-comment|/*-{     this[key] = b;     return this;   }-*/
+comment|/*-{     this[key] = false;     return this;   }-*/
 function_decl|;
-DECL|method|remove (String key)
+comment|/** Delegate undefined keys to another KeyMap implementation. */
+DECL|method|fallthrough (KeyMap m)
 specifier|public
 specifier|final
 specifier|native
 name|KeyMap
-name|remove
+name|fallthrough
 parameter_list|(
-name|String
-name|key
+name|KeyMap
+name|m
 parameter_list|)
-comment|/*-{ delete this[key]; }-*/
+comment|/*-{     this.fallthrough = m;     return this;   }-*/
 function_decl|;
 DECL|method|KeyMap ()
 specifier|protected

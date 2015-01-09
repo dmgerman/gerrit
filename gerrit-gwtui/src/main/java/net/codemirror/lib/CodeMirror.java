@@ -1345,19 +1345,6 @@ name|scrollbarV
 parameter_list|()
 comment|/*-{     return this.display.scrollbars.vert.node;   }-*/
 function_decl|;
-DECL|method|cloneKeyMap (String name)
-specifier|public
-specifier|static
-specifier|final
-specifier|native
-name|KeyMap
-name|cloneKeyMap
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-comment|/*-{     var i = $wnd.CodeMirror.keyMap[name];     var o = {};     for (n in i)       if (i.hasOwnProperty(n))         o[n] = i[n];     return o;   }-*/
-function_decl|;
 DECL|method|execCommand (String cmd)
 specifier|public
 specifier|final
@@ -1369,6 +1356,19 @@ name|String
 name|cmd
 parameter_list|)
 comment|/*-{     this.execCommand(cmd)   }-*/
+function_decl|;
+DECL|method|getKeyMap (String name)
+specifier|public
+specifier|static
+specifier|final
+specifier|native
+name|KeyMap
+name|getKeyMap
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+comment|/*-{     return $wnd.CodeMirror.keyMap[name];   }-*/
 function_decl|;
 DECL|method|addKeyMap (String name, KeyMap km)
 specifier|public

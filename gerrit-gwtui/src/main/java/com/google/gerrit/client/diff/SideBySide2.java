@@ -1090,11 +1090,9 @@ operator|.
 name|create
 argument_list|()
 operator|.
-name|on
+name|propagate
 argument_list|(
 literal|"Ctrl-F"
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 DECL|interface|Binder
