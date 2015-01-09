@@ -176,6 +176,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|StatementExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -653,12 +667,13 @@ operator|.
 name|getDialect
 argument_list|()
 decl_stmt|;
+comment|// Use a new executor so we can ignore errors.
 try|try
 init|(
-name|Statement
-name|stmt
+name|StatementExecutor
+name|e
 init|=
-name|newStatement
+name|newExecutor
 argument_list|(
 name|db
 argument_list|)
@@ -690,49 +705,47 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|stmt
+name|dialect
 operator|.
-name|executeUpdate
+name|dropIndex
 argument_list|(
-literal|"DROP INDEX "
-operator|+
-name|entry
-operator|.
-name|getKey
-argument_list|()
-operator|+
-literal|" ON "
-operator|+
+name|e
+argument_list|,
 name|entry
 operator|.
 name|getValue
 argument_list|()
 operator|.
 name|table
+argument_list|,
+name|entry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|stmt
+name|e
 operator|.
-name|executeUpdate
+name|execute
 argument_list|(
 literal|"CREATE INDEX account_project_watches_byP ON "
 operator|+
 literal|"account_project_watches (project_name)"
 argument_list|)
 expr_stmt|;
-name|stmt
+name|e
 operator|.
-name|executeUpdate
+name|execute
 argument_list|(
 literal|"CREATE INDEX patch_set_approvals_closedByU ON "
 operator|+
 literal|"patch_set_approvals (change_open, account_id, change_sort_key)"
 argument_list|)
 expr_stmt|;
-name|stmt
+name|e
 operator|.
-name|executeUpdate
+name|execute
 argument_list|(
 literal|"CREATE INDEX submodule_subscr_acc_bys ON "
 operator|+
@@ -762,9 +775,9 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|stmt
+name|e
 operator|.
-name|executeUpdate
+name|execute
 argument_list|(
 literal|"ALTER INDEX "
 operator|+
@@ -788,13 +801,13 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|SQLException
+name|OrmException
 name|e
 parameter_list|)
 block|{
-comment|// we don't care
-comment|// better we would check if index was already renamed
-comment|// gwtorm doesn't expose this functionality
+comment|// We don't care; better, we could check if index was already renamed, but
+comment|// gwtorm didn't expose this functionality at the time this schema upgrade
+comment|// was written.
 block|}
 block|}
 DECL|method|addCheckConstraint (Statement stmt)

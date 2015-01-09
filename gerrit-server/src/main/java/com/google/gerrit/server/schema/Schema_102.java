@@ -148,6 +148,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|StatementExecutor
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -173,16 +187,6 @@ operator|.
 name|sql
 operator|.
 name|SQLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|sql
-operator|.
-name|Statement
 import|;
 end_import
 
@@ -270,10 +274,10 @@ argument_list|()
 decl_stmt|;
 try|try
 init|(
-name|Statement
-name|stmt
+name|StatementExecutor
+name|e
 init|=
-name|newStatement
+name|newExecutor
 argument_list|(
 name|db
 argument_list|)
@@ -296,6 +300,11 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
+name|String
+name|table
+init|=
+literal|"changes"
+decl_stmt|;
 name|Set
 argument_list|<
 name|String
@@ -311,7 +320,7 @@ operator|.
 name|getConnection
 argument_list|()
 argument_list|,
-literal|"changes"
+name|table
 argument_list|)
 decl_stmt|;
 for|for
@@ -335,22 +344,28 @@ name|matches
 argument_list|()
 condition|)
 block|{
-name|stmt
+name|dialect
 operator|.
-name|executeUpdate
+name|dropIndex
 argument_list|(
-literal|"DROP INDEX "
-operator|+
+name|e
+argument_list|,
+name|table
+argument_list|,
 name|index
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|stmt
+name|dialect
 operator|.
-name|executeUpdate
+name|dropIndex
 argument_list|(
-literal|"DROP INDEX changes_byProjectOpen"
+name|e
+argument_list|,
+name|table
+argument_list|,
+literal|"changes_byProjectOpen"
 argument_list|)
 expr_stmt|;
 if|if
@@ -360,13 +375,17 @@ operator|instanceof
 name|DialectPostgreSQL
 condition|)
 block|{
-name|stmt
+name|e
 operator|.
-name|executeUpdate
+name|execute
 argument_list|(
 literal|"CREATE INDEX changes_byProjectOpen"
 operator|+
-literal|" ON changes (dest_project_name, last_updated_on)"
+literal|" ON "
+operator|+
+name|table
+operator|+
+literal|" (dest_project_name, last_updated_on)"
 operator|+
 literal|" WHERE open = 'Y'"
 argument_list|)
@@ -374,13 +393,17 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|stmt
+name|e
 operator|.
-name|executeUpdate
+name|execute
 argument_list|(
 literal|"CREATE INDEX changes_byProjectOpen"
 operator|+
-literal|" ON changes (open, dest_project_name, last_updated_on)"
+literal|" ON "
+operator|+
+name|table
+operator|+
+literal|" (open, dest_project_name, last_updated_on)"
 argument_list|)
 expr_stmt|;
 block|}
