@@ -375,7 +375,8 @@ operator|.
 name|getDialect
 argument_list|()
 decl_stmt|;
-specifier|final
+try|try
+init|(
 name|Statement
 name|stmt
 init|=
@@ -383,8 +384,7 @@ name|c
 operator|.
 name|createStatement
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 for|for
 control|(
@@ -451,14 +451,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
-finally|finally
-block|{
-name|stmt
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch

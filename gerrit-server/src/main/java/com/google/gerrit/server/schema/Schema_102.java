@@ -273,13 +273,10 @@ init|(
 name|Statement
 name|stmt
 init|=
-name|schema
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|createStatement
-argument_list|()
+name|newStatement
+argument_list|(
+name|db
+argument_list|)
 init|)
 block|{
 comment|// Drop left over indexes that were missed to be removed in schema 84.

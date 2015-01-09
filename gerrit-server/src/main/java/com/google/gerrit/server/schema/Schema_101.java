@@ -510,6 +510,8 @@ argument_list|(
 literal|"fixing primary keys..."
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|JdbcExecutor
 name|executor
 init|=
@@ -518,8 +520,7 @@ name|JdbcExecutor
 argument_list|(
 name|conn
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 for|for
 control|(
@@ -587,14 +588,6 @@ name|message
 argument_list|(
 literal|"done"
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|executor
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -835,6 +828,8 @@ name|toLowerCase
 argument_list|()
 expr_stmt|;
 block|}
+try|try
+init|(
 name|ResultSet
 name|cols
 init|=
@@ -848,8 +843,7 @@ literal|null
 argument_list|,
 name|tableName
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|PrimaryKey
 name|pk
@@ -965,14 +959,6 @@ block|}
 return|return
 name|pk
 return|;
-block|}
-finally|finally
-block|{
-name|cols
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|recreatePK (StatementExecutor executor, String tableName, PrimaryKey pk, UpdateUI ui)

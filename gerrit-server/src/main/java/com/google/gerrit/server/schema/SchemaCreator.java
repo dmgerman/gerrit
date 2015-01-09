@@ -498,7 +498,8 @@ name|JdbcSchema
 operator|)
 name|db
 decl_stmt|;
-specifier|final
+try|try
+init|(
 name|JdbcExecutor
 name|e
 init|=
@@ -507,8 +508,7 @@ name|JdbcExecutor
 argument_list|(
 name|jdbc
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|jdbc
 operator|.
@@ -516,14 +516,6 @@ name|updateSchema
 argument_list|(
 name|e
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|e
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 specifier|final

@@ -343,7 +343,6 @@ name|OrmException
 throws|,
 name|SQLException
 block|{
-specifier|final
 name|JdbcSchema
 name|s
 init|=
@@ -352,7 +351,8 @@ name|JdbcSchema
 operator|)
 name|db
 decl_stmt|;
-specifier|final
+try|try
+init|(
 name|JdbcExecutor
 name|e
 init|=
@@ -361,7 +361,8 @@ name|JdbcExecutor
 argument_list|(
 name|s
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|renameTables
 argument_list|(
 name|db
@@ -380,6 +381,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 name|renameIndexes
 argument_list|(
 name|db
@@ -610,36 +612,21 @@ operator|instanceof
 name|DialectMySQL
 condition|)
 block|{
+try|try
+init|(
 name|Statement
 name|stmt
 init|=
-operator|(
-operator|(
-name|JdbcSchema
-operator|)
+name|newStatement
+argument_list|(
 name|db
-operator|)
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|createStatement
-argument_list|()
-decl_stmt|;
-try|try
+argument_list|)
+init|)
 block|{
 name|addCheckConstraint
 argument_list|(
 name|stmt
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stmt
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -652,8 +639,6 @@ parameter_list|(
 name|ReviewDb
 name|db
 parameter_list|)
-throws|throws
-name|SQLException
 block|{
 name|SqlDialect
 name|dialect
@@ -668,23 +653,16 @@ operator|.
 name|getDialect
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|Statement
 name|stmt
 init|=
-operator|(
-operator|(
-name|JdbcSchema
-operator|)
+name|newStatement
+argument_list|(
 name|db
-operator|)
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|createStatement
-argument_list|()
-decl_stmt|;
-try|try
+argument_list|)
+init|)
 block|{
 comment|// MySQL doesn't have alter index stmt, drop& create
 if|if
@@ -817,14 +795,6 @@ block|{
 comment|// we don't care
 comment|// better we would check if index was already renamed
 comment|// gwtorm doesn't expose this functionality
-block|}
-finally|finally
-block|{
-name|stmt
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|addCheckConstraint (Statement stmt)

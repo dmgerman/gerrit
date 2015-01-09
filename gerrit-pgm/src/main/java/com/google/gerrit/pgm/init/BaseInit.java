@@ -1859,7 +1859,8 @@ name|msg
 argument_list|)
 condition|)
 block|{
-specifier|final
+try|try
+init|(
 name|JdbcSchema
 name|db
 init|=
@@ -1870,20 +1871,8 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
-block|{
-specifier|final
-name|JdbcExecutor
-name|e
-init|=
-operator|new
-name|JdbcExecutor
-argument_list|(
-name|db
-argument_list|)
-decl_stmt|;
-try|try
+init|;               JdbcExecutor e = new JdbcExecutor(db)
+block|)
 block|{
 for|for
 control|(
@@ -1902,27 +1891,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-finally|finally
-block|{
-name|e
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
 block|}
-block|}
+end_class
+
+begin_function
 DECL|method|createSiteRun (final SiteInit init)
 specifier|private
 name|SiteRun
@@ -1947,6 +1922,9 @@ name|class
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|createSysInjector (final SiteInit init)
 specifier|private
 name|Injector
@@ -2040,6 +2018,9 @@ return|return
 name|sysInjector
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|recursiveDelete (File path)
 specifier|private
 specifier|static
@@ -2108,8 +2089,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

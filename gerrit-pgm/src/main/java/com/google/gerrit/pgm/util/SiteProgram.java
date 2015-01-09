@@ -1395,7 +1395,7 @@ name|String
 name|dbProductName
 decl_stmt|;
 try|try
-block|{
+init|(
 name|Connection
 name|conn
 init|=
@@ -1406,8 +1406,7 @@ argument_list|()
 operator|.
 name|getConnection
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|dbProductName
 operator|=
@@ -1422,15 +1421,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|conn
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
