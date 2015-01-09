@@ -186,7 +186,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|FileTypeRegistry
+name|git
+operator|.
+name|GitRepositoryManager
 import|;
 end_import
 
@@ -200,9 +202,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|mime
 operator|.
-name|GitRepositoryManager
+name|FileTypeRegistry
 import|;
 end_import
 
