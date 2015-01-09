@@ -658,31 +658,26 @@ name|changeControl
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CatServlet (final GitRepositoryManager grm, final Provider<ReviewDb> sf, final FileTypeRegistry ftr, final ChangeControl.GenericFactory ccf, final Provider<CurrentUser> usrprv)
+DECL|method|CatServlet (GitRepositoryManager grm, Provider<ReviewDb> sf, FileTypeRegistry ftr, ChangeControl.GenericFactory ccf, Provider<CurrentUser> usrprv)
 name|CatServlet
 parameter_list|(
-specifier|final
 name|GitRepositoryManager
 name|grm
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|ReviewDb
 argument_list|>
 name|sf
 parameter_list|,
-specifier|final
 name|FileTypeRegistry
 name|ftr
 parameter_list|,
-specifier|final
 name|ChangeControl
 operator|.
 name|GenericFactory
 name|ccf
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|CurrentUser
