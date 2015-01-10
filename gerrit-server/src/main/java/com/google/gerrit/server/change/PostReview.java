@@ -2799,6 +2799,14 @@ argument_list|,
 name|c
 operator|.
 name|line
+operator|!=
+literal|null
+condition|?
+name|c
+operator|.
+name|line
+else|:
+literal|0
 argument_list|,
 name|rsrc
 operator|.
