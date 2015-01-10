@@ -794,7 +794,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|fromRange
+name|setRange
 argument_list|(
 name|in
 operator|.

@@ -986,7 +986,7 @@ condition|)
 block|{
 name|e
 operator|.
-name|fromRange
+name|setRange
 argument_list|(
 name|in
 operator|.
