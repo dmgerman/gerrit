@@ -2504,6 +2504,12 @@ condition|(
 name|c
 operator|.
 name|line
+operator|!=
+literal|null
+operator|&&
+name|c
+operator|.
+name|line
 operator|<
 literal|0
 condition|)
