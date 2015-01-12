@@ -390,7 +390,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|Collection
 import|;
 end_import
 
@@ -400,7 +400,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Collections
 import|;
 end_import
 
@@ -710,8 +710,8 @@ operator|=
 name|args
 expr_stmt|;
 block|}
-comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param mergeTip the merge tip.    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy.    * @return the new merge tip.    * @throws MergeException    */
-DECL|method|run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
+comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param mergeTip the merge tip.    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy. Implementations are responsible for ordering    *        of commits, and should not modify the input in place.    * @return the new merge tip.    * @throws MergeException    */
+DECL|method|run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
 specifier|public
 name|CodeReviewCommit
 name|run
@@ -719,7 +719,7 @@ parameter_list|(
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
@@ -741,8 +741,8 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-comment|/** @see #run(CodeReviewCommit, List) */
-DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
+comment|/** @see #run(CodeReviewCommit, Collection) */
+DECL|method|_run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
 specifier|protected
 specifier|abstract
 name|CodeReviewCommit
@@ -751,7 +751,7 @@ parameter_list|(
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
@@ -776,7 +776,7 @@ parameter_list|)
 throws|throws
 name|MergeException
 function_decl|;
-comment|/**    * Returns the identity that should be used for reflog entries when updating    * the destination branch.    *<p>    * The reflog identity may only be set during {@link #run(CodeReviewCommit,    * List)}, and this method is invalid to call beforehand.    *    * @return the ref log identity, which may be {@code null}.    */
+comment|/**    * Returns the identity that should be used for reflog entries when updating    * the destination branch.    *<p>    * The reflog identity may only be set during {@link #run(CodeReviewCommit,    * Collection)}, and this method is invalid to call beforehand.    *    * @return the ref log identity, which may be {@code null}.    */
 DECL|method|getRefLogIdent ()
 specifier|public
 specifier|final
@@ -788,7 +788,7 @@ return|return
 name|refLogIdent
 return|;
 block|}
-comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *<p>    * By default this method returns an empty map, but subclasses may override    * this method to provide any newly created commits.    *    * This method may only be called after {@link #run(CodeReviewCommit, List)}.    *    * @return new commits created for changes that were merged.    */
+comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *<p>    * By default this method returns an empty map, but subclasses may override    * this method to provide any newly created commits.    *    * This method may only be called after {@link #run(CodeReviewCommit,    * Collection)}.    *    * @return new commits created for changes that were merged.    */
 DECL|method|getNewCommits ()
 specifier|public
 name|Map

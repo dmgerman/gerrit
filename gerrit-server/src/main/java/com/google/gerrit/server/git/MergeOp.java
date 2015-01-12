@@ -3331,11 +3331,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|int
-name|commitOrder
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
 name|Change
@@ -3729,13 +3724,6 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|commit
-operator|.
-name|originalOrder
-operator|=
-name|commitOrder
-operator|++
 expr_stmt|;
 name|commits
 operator|.

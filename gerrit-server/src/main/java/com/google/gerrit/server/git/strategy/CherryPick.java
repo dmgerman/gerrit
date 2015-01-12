@@ -446,6 +446,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -557,7 +567,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
@@ -565,7 +575,7 @@ parameter_list|(
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
@@ -574,10 +584,25 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+name|List
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|sorted
+init|=
+name|CodeReviewCommit
+operator|.
+name|ORDER
+operator|.
+name|sortedCopy
+argument_list|(
+name|toMerge
+argument_list|)
+decl_stmt|;
 while|while
 condition|(
 operator|!
-name|toMerge
+name|sorted
 operator|.
 name|isEmpty
 argument_list|()
@@ -586,7 +611,7 @@ block|{
 name|CodeReviewCommit
 name|n
 init|=
-name|toMerge
+name|sorted
 operator|.
 name|remove
 argument_list|(

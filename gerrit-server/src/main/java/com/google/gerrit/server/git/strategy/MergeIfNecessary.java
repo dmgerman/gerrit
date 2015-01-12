@@ -122,6 +122,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -151,7 +161,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, Collection<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
@@ -159,7 +169,7 @@ parameter_list|(
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
 name|CodeReviewCommit
 argument_list|>
@@ -168,6 +178,12 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+name|List
+argument_list|<
+name|CodeReviewCommit
+argument_list|>
+name|sorted
+init|=
 name|args
 operator|.
 name|mergeUtil
@@ -180,7 +196,7 @@ name|mergeSorter
 argument_list|,
 name|toMerge
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|mergeTip
@@ -192,7 +208,7 @@ comment|// The branch is unborn. Take a fast-forward resolution to
 comment|// create the branch.
 name|mergeTip
 operator|=
-name|toMerge
+name|sorted
 operator|.
 name|remove
 argument_list|(
@@ -214,14 +230,14 @@ name|args
 operator|.
 name|rw
 argument_list|,
-name|toMerge
+name|sorted
 argument_list|)
 expr_stmt|;
 comment|// For every other commit do a pair-wise merge.
 while|while
 condition|(
 operator|!
-name|toMerge
+name|sorted
 operator|.
 name|isEmpty
 argument_list|()
@@ -264,7 +280,7 @@ name|destBranch
 argument_list|,
 name|mergeTip
 argument_list|,
-name|toMerge
+name|sorted
 operator|.
 name|remove
 argument_list|(
