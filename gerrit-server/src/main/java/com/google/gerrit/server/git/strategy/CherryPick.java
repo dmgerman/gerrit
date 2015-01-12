@@ -513,20 +513,17 @@ name|CodeReviewCommit
 argument_list|>
 name|newCommits
 decl_stmt|;
-DECL|method|CherryPick (final SubmitStrategy.Arguments args, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated)
+DECL|method|CherryPick (SubmitStrategy.Arguments args, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated)
 name|CherryPick
 parameter_list|(
-specifier|final
 name|SubmitStrategy
 operator|.
 name|Arguments
 name|args
 parameter_list|,
-specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
 parameter_list|,
-specifier|final
 name|GitReferenceUpdated
 name|gitRefUpdated
 parameter_list|)
@@ -560,7 +557,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
@@ -568,7 +565,6 @@ parameter_list|(
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -587,7 +583,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-specifier|final
 name|CodeReviewCommit
 name|n
 init|=
@@ -818,7 +813,6 @@ name|n
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|PatchSetApproval
 name|submitApproval
 init|=
@@ -919,7 +913,6 @@ argument_list|(
 name|n
 argument_list|)
 expr_stmt|;
-specifier|final
 name|PatchSetApproval
 name|submitAudit
 init|=
@@ -1011,7 +1004,6 @@ operator|=
 name|serverNow
 expr_stmt|;
 block|}
-specifier|final
 name|String
 name|cherryPickCmtMsg
 init|=
@@ -1024,7 +1016,6 @@ argument_list|(
 name|n
 argument_list|)
 decl_stmt|;
-specifier|final
 name|CodeReviewCommit
 name|newCommit
 init|=
@@ -1080,7 +1071,6 @@ name|currentPatchSetId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|PatchSet
 name|ps
 init|=
@@ -1127,7 +1117,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-specifier|final
 name|RefUpdate
 name|ru
 decl_stmt|;
@@ -1222,7 +1211,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|PatchSetApproval
@@ -1493,7 +1481,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|int
 name|cnt
 init|=
@@ -1613,16 +1600,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|dryRun (final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|dryRun
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)

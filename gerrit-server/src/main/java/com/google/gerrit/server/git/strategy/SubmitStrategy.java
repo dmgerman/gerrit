@@ -425,7 +425,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class that submit strategies must extend. A submit strategy for a  * certain {@link SubmitType} defines how the submitted commits should be  * merged.  */
+comment|/**  * Base class that submit strategies must extend.  *<p>  * A submit strategy for a certain {@link SubmitType} defines how the submitted  * commits should be merged.  */
 end_comment
 
 begin_class
@@ -435,11 +435,6 @@ specifier|abstract
 class|class
 name|SubmitStrategy
 block|{
-DECL|field|refLogIdent
-specifier|private
-name|PersonIdent
-name|refLogIdent
-decl_stmt|;
 DECL|class|Arguments
 specifier|static
 class|class
@@ -541,70 +536,57 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (final IdentifiedUser.GenericFactory identifiedUserFactory, final Provider<PersonIdent> serverIdent, final ReviewDb db, final ChangeControl.GenericFactory changeControlFactory, final Repository repo, final RevWalk rw, final ObjectInserter inserter, final RevFlag canMergeFlag, final Set<RevCommit> alreadyAccepted, final Branch.NameKey destBranch, final ApprovalsUtil approvalsUtil, final MergeUtil mergeUtil, final ChangeIndexer indexer)
+DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer)
 name|Arguments
 parameter_list|(
-specifier|final
 name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|identifiedUserFactory
 parameter_list|,
-specifier|final
 name|Provider
 argument_list|<
 name|PersonIdent
 argument_list|>
 name|serverIdent
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
 parameter_list|,
-specifier|final
 name|Repository
 name|repo
 parameter_list|,
-specifier|final
 name|RevWalk
 name|rw
 parameter_list|,
-specifier|final
 name|ObjectInserter
 name|inserter
 parameter_list|,
-specifier|final
 name|RevFlag
 name|canMergeFlag
 parameter_list|,
-specifier|final
 name|Set
 argument_list|<
 name|RevCommit
 argument_list|>
 name|alreadyAccepted
 parameter_list|,
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|destBranch
 parameter_list|,
-specifier|final
 name|ApprovalsUtil
 name|approvalsUtil
 parameter_list|,
-specifier|final
 name|MergeUtil
 name|mergeUtil
 parameter_list|,
-specifier|final
 name|ChangeIndexer
 name|indexer
 parameter_list|)
@@ -709,10 +691,14 @@ specifier|final
 name|Arguments
 name|args
 decl_stmt|;
-DECL|method|SubmitStrategy (final Arguments args)
+DECL|field|refLogIdent
+specifier|private
+name|PersonIdent
+name|refLogIdent
+decl_stmt|;
+DECL|method|SubmitStrategy (Arguments args)
 name|SubmitStrategy
 parameter_list|(
-specifier|final
 name|Arguments
 name|args
 parameter_list|)
@@ -724,18 +710,15 @@ operator|=
 name|args
 expr_stmt|;
 block|}
-comment|/**    * Runs this submit strategy. If possible the provided commits will be merged    * with this submit strategy.    *    * @param mergeTip the mergeTip    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy    * @return the new mergeTip    * @throws MergeException    */
-DECL|method|run (final CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
+comment|/**    * Runs this submit strategy.    *<p>    * If possible, the provided commits will be merged with this submit strategy.    *    * @param mergeTip the merge tip.    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy.    * @return the new merge tip.    * @throws MergeException    */
+DECL|method|run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
 specifier|public
-specifier|final
 name|CodeReviewCommit
 name|run
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -758,7 +741,7 @@ name|toMerge
 argument_list|)
 return|;
 block|}
-comment|/**    * Runs this submit strategy. If possible the provided commits will be merged    * with this submit strategy.    *    * @param mergeTip the mergeTip    * @param toMerge the list of submitted commits that should be merged using    *        this submit strategy    * @return the new mergeTip    * @throws MergeException    */
+comment|/** @see #run(CodeReviewCommit, List) */
 DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
 specifier|protected
 specifier|abstract
@@ -777,7 +760,7 @@ parameter_list|)
 throws|throws
 name|MergeException
 function_decl|;
-comment|/**    * Checks whether the given commit can be merged.    *    * Subclasses must ensure that invoking this method does neither modify the    * git repository nor the Gerrit database.    *    * @param mergeTip the mergeTip    * @param toMerge the commit for which it should be checked whether it can be    *        merged or not    * @return {@code true} if the given commit can be merged, otherwise    *         {@code false}    * @throws MergeException    */
+comment|/**    * Checks whether the given commit can be merged.    *    * Implementations must ensure that invoking this method modifies neither the    * git repository nor the Gerrit database.    *    * @param mergeTip the merge tip.    * @param toMerge the commit that should be checked.    * @return {@code true} if the given commit can be merged, otherwise    *         {@code false}    * @throws MergeException    */
 DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 specifier|abstract
@@ -793,7 +776,7 @@ parameter_list|)
 throws|throws
 name|MergeException
 function_decl|;
-comment|/**    * Returns the PersonIdent that should be used for the ref log entries when    * updating the destination branch. The ref log identity may be set after the    * {@link #run(CodeReviewCommit, List)} method finished.    *    * Do only call this method after the {@link #run(CodeReviewCommit, List)}    * method has been invoked.    *    * @return the ref log identity, may be {@code null}    */
+comment|/**    * Returns the identity that should be used for reflog entries when updating    * the destination branch.    *<p>    * The reflog identity may only be set during {@link #run(CodeReviewCommit,    * List)}, and this method is invalid to call beforehand.    *    * @return the ref log identity, which may be {@code null}.    */
 DECL|method|getRefLogIdent ()
 specifier|public
 specifier|final
@@ -805,7 +788,7 @@ return|return
 name|refLogIdent
 return|;
 block|}
-comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *    * By default this method is returning an empty map, but subclasses may    * overwrite this method to provide newly created commits.    *    * Do only call this method after the {@link #run(CodeReviewCommit, List)}    * method has been invoked.    *    * @return new commits created for changes that are getting merged    */
+comment|/**    * Returns all commits that have been newly created for the changes that are    * getting merged.    *<p>    * By default this method returns an empty map, but subclasses may override    * this method to provide any newly created commits.    *    * This method may only be called after {@link #run(CodeReviewCommit, List)}.    *    * @return new commits created for changes that were merged.    */
 DECL|method|getNewCommits ()
 specifier|public
 name|Map
@@ -826,7 +809,7 @@ name|emptyMap
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns whether a merge that failed with    * {@link Result#LOCK_FAILURE} should be retried.    *    * May be overwritten by subclasses.    *    * @return {@code true} if a merge that failed with    *         {@link Result#LOCK_FAILURE} should be retried, otherwise    *         {@code false}    */
+comment|/**    * Returns whether a merge that failed with {@link Result#LOCK_FAILURE} should    * be retried.    *<p>    * May be overridden by subclasses.    *    * @return {@code true} if a merge that failed with    *         {@link Result#LOCK_FAILURE} should be retried, otherwise    *         {@code false}    */
 DECL|method|retryOnLockFailure ()
 specifier|public
 name|boolean
@@ -837,14 +820,13 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Sets the ref log identity if it wasn't set yet.    *    * @param submitApproval the approval that submitted the patch set    */
-DECL|method|setRefLogIdent (final PatchSetApproval submitApproval)
+comment|/**    * Set the ref log identity if it wasn't set yet.    *    * @param submitApproval the approval that submitted the patch set    */
+DECL|method|setRefLogIdent (PatchSetApproval submitApproval)
 specifier|protected
 specifier|final
 name|void
 name|setRefLogIdent
 parameter_list|(
-specifier|final
 name|PatchSetApproval
 name|submitApproval
 parameter_list|)

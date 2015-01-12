@@ -451,16 +451,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (final CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -489,7 +487,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-specifier|final
 name|CodeReviewCommit
 name|n
 init|=
@@ -599,7 +596,6 @@ else|else
 block|{
 try|try
 block|{
-specifier|final
 name|IdentifiedUser
 name|uploader
 init|=
@@ -622,7 +618,6 @@ name|getAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|PatchSet
 name|newPatchSet
 init|=
@@ -989,7 +984,6 @@ name|n
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|PatchSetApproval
 name|submitApproval
 init|=
@@ -1056,12 +1050,11 @@ return|return
 name|newMergeTip
 return|;
 block|}
-DECL|method|sort (final List<CodeReviewCommit> toSort)
+DECL|method|sort (List<CodeReviewCommit> toSort)
 specifier|private
 name|void
 name|sort
 parameter_list|(
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -1073,7 +1066,6 @@ name|MergeException
 block|{
 try|try
 block|{
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -1152,16 +1144,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|dryRun (final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|dryRun
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)

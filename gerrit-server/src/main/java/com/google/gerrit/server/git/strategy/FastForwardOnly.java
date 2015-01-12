@@ -150,10 +150,9 @@ name|FastForwardOnly
 extends|extends
 name|SubmitStrategy
 block|{
-DECL|method|FastForwardOnly (final SubmitStrategy.Arguments args)
+DECL|method|FastForwardOnly (SubmitStrategy.Arguments args)
 name|FastForwardOnly
 parameter_list|(
-specifier|final
 name|SubmitStrategy
 operator|.
 name|Arguments
@@ -168,16 +167,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|_run (final CodeReviewCommit mergeTip, final List<CodeReviewCommit> toMerge)
+DECL|method|_run (CodeReviewCommit mergeTip, List<CodeReviewCommit> toMerge)
 specifier|protected
 name|CodeReviewCommit
 name|_run
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|List
 argument_list|<
 name|CodeReviewCommit
@@ -200,7 +197,6 @@ argument_list|,
 name|toMerge
 argument_list|)
 expr_stmt|;
-specifier|final
 name|CodeReviewCommit
 name|newMergeTip
 init|=
@@ -228,7 +224,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-specifier|final
 name|CodeReviewCommit
 name|n
 init|=
@@ -249,7 +244,6 @@ name|NOT_FAST_FORWARD
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|PatchSetApproval
 name|submitApproval
 init|=
@@ -297,16 +291,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|dryRun (final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|dryRun
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)

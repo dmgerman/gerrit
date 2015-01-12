@@ -134,10 +134,9 @@ name|MergeIfNecessary
 extends|extends
 name|SubmitStrategy
 block|{
-DECL|method|MergeIfNecessary (final SubmitStrategy.Arguments args)
+DECL|method|MergeIfNecessary (SubmitStrategy.Arguments args)
 name|MergeIfNecessary
 parameter_list|(
-specifier|final
 name|SubmitStrategy
 operator|.
 name|Arguments
@@ -274,7 +273,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|PatchSetApproval
 name|submitApproval
 init|=
@@ -310,16 +308,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|dryRun (final CodeReviewCommit mergeTip, final CodeReviewCommit toMerge)
+DECL|method|dryRun (CodeReviewCommit mergeTip, CodeReviewCommit toMerge)
 specifier|public
 name|boolean
 name|dryRun
 parameter_list|(
-specifier|final
 name|CodeReviewCommit
 name|mergeTip
 parameter_list|,
-specifier|final
 name|CodeReviewCommit
 name|toMerge
 parameter_list|)
