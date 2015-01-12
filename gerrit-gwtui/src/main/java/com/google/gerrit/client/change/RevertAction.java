@@ -156,7 +156,7 @@ name|client
 operator|.
 name|ui
 operator|.
-name|CommentedActionDialog
+name|TextAreaActionDialog
 import|;
 end_import
 
@@ -245,7 +245,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 operator|new
-name|CommentedActionDialog
+name|TextAreaActionDialog
 argument_list|(
 name|Util
 operator|.

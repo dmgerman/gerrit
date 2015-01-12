@@ -1511,8 +1511,8 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Rebase a revision onto the branch tip. */
-DECL|method|rebase (int id, String commit, AsyncCallback<ChangeInfo> cb)
+comment|/** Rebase a revision onto the branch tip or another change. */
+DECL|method|rebase (int id, String commit, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -1524,6 +1524,9 @@ parameter_list|,
 name|String
 name|commit
 parameter_list|,
+name|String
+name|base
+parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|ChangeInfo
@@ -1531,14 +1534,21 @@ argument_list|>
 name|cb
 parameter_list|)
 block|{
-name|JavaScriptObject
-name|in
+name|RebaseInput
+name|rebaseInput
 init|=
-name|JavaScriptObject
+name|RebaseInput
 operator|.
-name|createObject
+name|create
 argument_list|()
 decl_stmt|;
+name|rebaseInput
+operator|.
+name|setBase
+argument_list|(
+name|base
+argument_list|)
+expr_stmt|;
 name|call
 argument_list|(
 name|id
@@ -1550,7 +1560,7 @@ argument_list|)
 operator|.
 name|post
 argument_list|(
-name|in
+name|rebaseInput
 argument_list|,
 name|cb
 argument_list|)
@@ -1741,6 +1751,45 @@ function_decl|;
 DECL|method|CherryPickInput ()
 specifier|protected
 name|CherryPickInput
+parameter_list|()
+block|{     }
+block|}
+DECL|class|RebaseInput
+specifier|private
+specifier|static
+class|class
+name|RebaseInput
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|setBase (String b)
+specifier|final
+specifier|native
+name|void
+name|setBase
+parameter_list|(
+name|String
+name|b
+parameter_list|)
+comment|/*-{ this.base = b; }-*/
+function_decl|;
+DECL|method|create ()
+specifier|static
+name|RebaseInput
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|RebaseInput
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
+DECL|method|RebaseInput ()
+specifier|protected
+name|RebaseInput
 parameter_list|()
 block|{     }
 block|}

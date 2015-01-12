@@ -730,6 +730,26 @@ name|String
 name|cherryPickTitle
 parameter_list|()
 function_decl|;
+DECL|method|buttonRebaseChangeSend ()
+name|String
+name|buttonRebaseChangeSend
+parameter_list|()
+function_decl|;
+DECL|method|rebaseConfirmMessage ()
+name|String
+name|rebaseConfirmMessage
+parameter_list|()
+function_decl|;
+DECL|method|rebasePlaceholderMessage ()
+name|String
+name|rebasePlaceholderMessage
+parameter_list|()
+function_decl|;
+DECL|method|rebaseTitle ()
+name|String
+name|rebaseTitle
+parameter_list|()
+function_decl|;
 DECL|method|buttonAbandonChangeBegin ()
 name|String
 name|buttonAbandonChangeBegin

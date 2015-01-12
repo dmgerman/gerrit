@@ -1495,6 +1495,22 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|getPatchSet ()
+specifier|public
+name|PatchSet
+name|getPatchSet
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
+return|return
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSet
+argument_list|()
+return|;
+block|}
 DECL|method|getPatchSetId ()
 specifier|public
 name|PatchSet

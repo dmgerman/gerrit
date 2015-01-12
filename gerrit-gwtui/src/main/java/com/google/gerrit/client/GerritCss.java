@@ -793,6 +793,16 @@ name|String
 name|projectNameColumn
 parameter_list|()
 function_decl|;
+DECL|method|rebaseContentPanel ()
+name|String
+name|rebaseContentPanel
+parameter_list|()
+function_decl|;
+DECL|method|rebaseSuggestBox ()
+name|String
+name|rebaseSuggestBox
+parameter_list|()
+function_decl|;
 DECL|method|registerScreenExplain ()
 name|String
 name|registerScreenExplain

@@ -1187,6 +1187,15 @@ name|RebaseAction
 operator|.
 name|call
 argument_list|(
+name|rebase
+argument_list|,
+name|project
+argument_list|,
+name|changeInfo
+operator|.
+name|branch
+argument_list|()
+argument_list|,
 name|changeId
 argument_list|,
 name|revision

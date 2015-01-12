@@ -307,7 +307,7 @@ specifier|abstract
 class|class
 name|CreateChangeDialog
 extends|extends
-name|CommentedActionDialog
+name|TextAreaActionDialog
 block|{
 DECL|field|newChange
 specifier|private

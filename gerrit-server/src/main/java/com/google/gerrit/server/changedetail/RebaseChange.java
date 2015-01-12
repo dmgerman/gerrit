@@ -768,8 +768,8 @@ operator|=
 name|patchSetInserterFactory
 expr_stmt|;
 block|}
-comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param change the change to perform the rebase for    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
-DECL|method|rebase (Change change, PatchSet.Id patchSetId, final IdentifiedUser uploader)
+comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param change the change to perform the rebase for    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @param newBaseRev the commit that should be the new base    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
+DECL|method|rebase (Change change, PatchSet.Id patchSetId, final IdentifiedUser uploader, final String newBaseRev)
 specifier|public
 name|void
 name|rebase
@@ -785,6 +785,10 @@ parameter_list|,
 specifier|final
 name|IdentifiedUser
 name|uploader
+parameter_list|,
+specifier|final
+name|String
+name|newBaseRev
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
@@ -887,10 +891,20 @@ operator|.
 name|newObjectInserter
 argument_list|()
 expr_stmt|;
-specifier|final
 name|String
 name|baseRev
 init|=
+name|newBaseRev
+decl_stmt|;
+if|if
+condition|(
+name|baseRev
+operator|==
+literal|null
+condition|)
+block|{
+name|baseRev
+operator|=
 name|findBaseRevision
 argument_list|(
 name|patchSetId
@@ -913,7 +927,35 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
+expr_stmt|;
+block|}
+name|ObjectId
+name|baseObjectId
+init|=
+name|git
+operator|.
+name|resolve
+argument_list|(
+name|baseRev
+argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|baseObjectId
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidChangeOperationException
+argument_list|(
+literal|"Cannot rebase: Failed to resolve baseRev: "
+operator|+
+name|baseRev
+argument_list|)
+throw|;
+block|}
 specifier|final
 name|RevCommit
 name|baseCommit
@@ -922,12 +964,7 @@ name|rw
 operator|.
 name|parseCommit
 argument_list|(
-name|ObjectId
-operator|.
-name|fromString
-argument_list|(
-name|baseRev
-argument_list|)
+name|baseObjectId
 argument_list|)
 decl_stmt|;
 name|PersonIdent
