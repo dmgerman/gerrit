@@ -792,7 +792,7 @@ name|REJECTED_CURRENT_BRANCH
 case|:
 name|log
 operator|.
-name|warn
+name|error
 argument_list|(
 literal|"Cannot delete "
 operator|+
