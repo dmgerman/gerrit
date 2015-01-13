@@ -130,6 +130,11 @@ name|String
 name|cancelUnsavedChanges
 parameter_list|()
 function_decl|;
+DECL|method|gotoLineNumber ()
+name|String
+name|gotoLineNumber
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
