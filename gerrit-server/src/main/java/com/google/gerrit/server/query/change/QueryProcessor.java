@@ -690,6 +690,19 @@ expr_stmt|;
 comment|// Always bump limit by 1, even if this results in exceeding the permitted
 comment|// max for this user. The only way to see if there are more changes is to
 comment|// ask for one more result from the query.
+if|if
+condition|(
+name|limit
+operator|==
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+name|limit
+operator|--
+expr_stmt|;
+block|}
 name|Predicate
 argument_list|<
 name|ChangeData
