@@ -78,8 +78,6 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSetApproval
-operator|.
 name|LabelId
 import|;
 end_import

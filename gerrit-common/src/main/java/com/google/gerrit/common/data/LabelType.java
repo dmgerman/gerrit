@@ -78,7 +78,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSetApproval
+name|LabelId
 import|;
 end_import
 
@@ -95,8 +95,6 @@ operator|.
 name|client
 operator|.
 name|PatchSetApproval
-operator|.
-name|LabelId
 import|;
 end_import
 
