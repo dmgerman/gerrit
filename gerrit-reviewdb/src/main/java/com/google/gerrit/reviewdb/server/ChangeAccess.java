@@ -188,51 +188,6 @@ name|OrmException
 function_decl|;
 annotation|@
 name|Query
-argument_list|(
-literal|"WHERE changeKey = ?"
-argument_list|)
-DECL|method|byKey (Change.Key key)
-name|ResultSet
-argument_list|<
-name|Change
-argument_list|>
-name|byKey
-parameter_list|(
-name|Change
-operator|.
-name|Key
-name|key
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
-argument_list|(
-literal|"WHERE changeKey>= ? AND changeKey<= ?"
-argument_list|)
-DECL|method|byKeyRange (Change.Key reva, Change.Key revb)
-name|ResultSet
-argument_list|<
-name|Change
-argument_list|>
-name|byKeyRange
-parameter_list|(
-name|Change
-operator|.
-name|Key
-name|reva
-parameter_list|,
-name|Change
-operator|.
-name|Key
-name|revb
-parameter_list|)
-throws|throws
-name|OrmException
-function_decl|;
-annotation|@
-name|Query
 DECL|method|all ()
 name|ResultSet
 argument_list|<

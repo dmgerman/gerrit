@@ -284,6 +284,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|patch
 operator|.
 name|PatchSetInfoFactory
@@ -457,6 +473,12 @@ specifier|final
 name|ChangeUtil
 name|changeUtil
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|allowDrafts
 specifier|private
 specifier|final
@@ -465,7 +487,7 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DeleteDraftPatchSet (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, ChangeUtil changeUtil, @GerritServerConfig Config cfg)
+DECL|method|DeleteDraftPatchSet (Provider<ReviewDb> dbProvider, PatchSetInfoFactory patchSetInfoFactory, ChangeUtil changeUtil, ChangeIndexer indexer, @GerritServerConfig Config cfg)
 specifier|public
 name|DeleteDraftPatchSet
 parameter_list|(
@@ -480,6 +502,9 @@ name|patchSetInfoFactory
 parameter_list|,
 name|ChangeUtil
 name|changeUtil
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -504,6 +529,12 @@ operator|.
 name|changeUtil
 operator|=
 name|changeUtil
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -1021,9 +1052,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|updateChange (final ReviewDb db, final Change change, final PatchSetInfo psInfo)
+DECL|method|updateChange (final ReviewDb db, Change change, final PatchSetInfo psInfo)
 specifier|private
-specifier|static
 name|void
 name|updateChange
 parameter_list|(
@@ -1031,7 +1061,6 @@ specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|Change
 name|change
 parameter_list|,
@@ -1041,7 +1070,11 @@ name|psInfo
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
+name|change
+operator|=
 name|db
 operator|.
 name|changes
@@ -1098,6 +1131,15 @@ name|c
 return|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|db
+argument_list|,
+name|change
 argument_list|)
 expr_stmt|;
 block|}

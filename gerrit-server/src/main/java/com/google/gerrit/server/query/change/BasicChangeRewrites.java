@@ -204,6 +204,13 @@ argument_list|,
 operator|new
 name|InvalidProvider
 argument_list|<
+name|InternalChangeQuery
+argument_list|>
+argument_list|()
+argument_list|,
+operator|new
+name|InvalidProvider
+argument_list|<
 name|ChangeQueryRewriter
 argument_list|>
 argument_list|()
