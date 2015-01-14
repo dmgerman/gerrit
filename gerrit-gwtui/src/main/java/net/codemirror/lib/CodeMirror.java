@@ -997,6 +997,18 @@ name|y
 parameter_list|)
 comment|/*-{     this.scrollTo(null, y)   }-*/
 function_decl|;
+DECL|method|scrollToLine (int line)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|scrollToLine
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+comment|/*-{     line = line - 1;     this.setCursor({line:line,ch:0});     var myHeight = this.getScrollInfo().clientHeight;     var coords = this.charCoords({line: line, ch: 0}, "local");     this.scrollTo(null, (coords.top + coords.bottom - myHeight) / 2);   }-*/
+function_decl|;
 DECL|method|getScrollInfo ()
 specifier|public
 specifier|final
