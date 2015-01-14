@@ -270,6 +270,11 @@ name|String
 name|showPreferences
 parameter_list|()
 function_decl|;
+DECL|method|modifyInEditScreen ()
+name|String
+name|modifyInEditScreen
+parameter_list|()
+function_decl|;
 DECL|method|toggleReviewed ()
 name|String
 name|toggleReviewed
