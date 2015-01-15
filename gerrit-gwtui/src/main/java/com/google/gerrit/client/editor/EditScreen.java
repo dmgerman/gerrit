@@ -891,12 +891,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|scrollToLine
-specifier|private
-specifier|static
-name|int
-name|scrollToLine
-decl_stmt|;
 DECL|field|revision
 specifier|private
 specifier|final
@@ -910,6 +904,12 @@ specifier|private
 specifier|final
 name|String
 name|path
+decl_stmt|;
+DECL|field|startLine
+specifier|private
+specifier|final
+name|int
+name|startLine
 decl_stmt|;
 DECL|field|prefs
 specifier|private
@@ -998,7 +998,7 @@ specifier|private
 name|int
 name|generation
 decl_stmt|;
-DECL|method|EditScreen (Patch.Key patch)
+DECL|method|EditScreen (Patch.Key patch, int startLine)
 specifier|public
 name|EditScreen
 parameter_list|(
@@ -1006,6 +1006,9 @@ name|Patch
 operator|.
 name|Key
 name|patch
+parameter_list|,
+name|int
+name|startLine
 parameter_list|)
 block|{
 name|this
@@ -1025,6 +1028,12 @@ name|patch
 operator|.
 name|get
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|startLine
+operator|=
+name|startLine
 expr_stmt|;
 name|prefs
 operator|=
@@ -1684,8 +1693,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|scrollToLine
-operator|!=
+name|startLine
+operator|>
 literal|0
 condition|)
 block|{
@@ -1693,12 +1702,8 @@ name|cm
 operator|.
 name|scrollToLine
 argument_list|(
-name|scrollToLine
+name|startLine
 argument_list|)
-expr_stmt|;
-name|scrollToLine
-operator|=
-literal|0
 expr_stmt|;
 block|}
 name|updateActiveLine
@@ -2395,21 +2400,6 @@ name|inject
 argument_list|(
 name|cb
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|scrollToLine (int line)
-specifier|public
-specifier|static
-name|void
-name|scrollToLine
-parameter_list|(
-name|int
-name|line
-parameter_list|)
-block|{
-name|scrollToLine
-operator|=
-name|line
 expr_stmt|;
 block|}
 block|}
