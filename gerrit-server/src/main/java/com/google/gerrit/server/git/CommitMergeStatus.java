@@ -104,7 +104,7 @@ comment|/** */
 DECL|enumConstant|PATH_CONFLICT
 name|PATH_CONFLICT
 argument_list|(
-literal|"The change could not be merged due to a path conflict.\n"
+literal|"Change could not be merged due to a path conflict.\n"
 operator|+
 literal|"\n"
 operator|+
@@ -115,7 +115,7 @@ comment|/** */
 DECL|enumConstant|REBASE_MERGE_CONFLICT
 name|REBASE_MERGE_CONFLICT
 argument_list|(
-literal|"The change could not be merged due to a conflict.\n"
+literal|"Change could not be merged due to a conflict.\n"
 operator|+
 literal|"\n"
 operator|+

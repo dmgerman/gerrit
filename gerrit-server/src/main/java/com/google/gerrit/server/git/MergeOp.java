@@ -3129,7 +3129,7 @@ name|message
 argument_list|(
 name|c
 argument_list|,
-literal|"Your change could not be merged, "
+literal|"Change could not be merged, "
 operator|+
 literal|"because the destination branch does not exist anymore."
 argument_list|)
