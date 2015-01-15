@@ -399,7 +399,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Colors modified regions for {@link SideBySide2}. */
+comment|/** Colors modified regions for {@link SideBySide}. */
 end_comment
 
 begin_class
@@ -526,12 +526,12 @@ if|if
 condition|(
 name|l
 operator|instanceof
-name|SideBySide2
+name|SideBySide
 condition|)
 block|{
 operator|(
 operator|(
-name|SideBySide2
+name|SideBySide
 operator|)
 name|l
 operator|)
@@ -597,7 +597,7 @@ function_decl|;
 DECL|field|host
 specifier|private
 specifier|final
-name|SideBySide2
+name|SideBySide
 name|host
 decl_stmt|;
 DECL|field|cmA
@@ -664,10 +664,10 @@ name|Element
 argument_list|>
 name|paddingDivs
 decl_stmt|;
-DECL|method|ChunkManager (SideBySide2 host, CodeMirror cmA, CodeMirror cmB, Scrollbar scrollbar)
+DECL|method|ChunkManager (SideBySide host, CodeMirror cmA, CodeMirror cmB, Scrollbar scrollbar)
 name|ChunkManager
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|host
 parameter_list|,
 name|CodeMirror

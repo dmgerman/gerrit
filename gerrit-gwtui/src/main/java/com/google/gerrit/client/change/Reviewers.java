@@ -750,7 +750,7 @@ name|suggestBox
 decl_stmt|;
 DECL|field|style
 specifier|private
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -895,11 +895,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (ChangeScreen2.Style style, Element ccText)
+DECL|method|init (ChangeScreen.Style style, Element ccText)
 name|void
 name|init
 parameter_list|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

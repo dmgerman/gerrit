@@ -286,7 +286,7 @@ specifier|public
 class|class
 name|DashboardTable
 extends|extends
-name|ChangeTable2
+name|ChangeTable
 block|{
 DECL|field|sections
 specifier|private

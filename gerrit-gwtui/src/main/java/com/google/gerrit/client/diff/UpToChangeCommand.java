@@ -161,9 +161,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|UpToChangeCommand2
+DECL|class|UpToChangeCommand
 class|class
-name|UpToChangeCommand2
+name|UpToChangeCommand
 extends|extends
 name|KeyCommand
 block|{
@@ -175,8 +175,8 @@ operator|.
 name|Id
 name|revision
 decl_stmt|;
-DECL|method|UpToChangeCommand2 (PatchSet.Id revision, int mask, int key)
-name|UpToChangeCommand2
+DECL|method|UpToChangeCommand (PatchSet.Id revision, int mask, int key)
+name|UpToChangeCommand
 parameter_list|(
 name|PatchSet
 operator|.

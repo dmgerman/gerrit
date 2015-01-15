@@ -533,7 +533,7 @@ operator|=
 literal|true
 argument_list|)
 DECL|field|patchSetSelectBoxA
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 name|patchSetSelectBoxA
 decl_stmt|;
 annotation|@
@@ -544,12 +544,12 @@ operator|=
 literal|true
 argument_list|)
 DECL|field|patchSetSelectBoxB
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 name|patchSetSelectBoxB
 decl_stmt|;
 DECL|field|parent
 specifier|private
-name|SideBySide2
+name|SideBySide
 name|parent
 decl_stmt|;
 DECL|field|header
@@ -567,10 +567,10 @@ specifier|private
 name|ChangeType
 name|changeType
 decl_stmt|;
-DECL|method|DiffTable (SideBySide2 parent, PatchSet.Id base, PatchSet.Id revision, String path)
+DECL|method|DiffTable (SideBySide parent, PatchSet.Id base, PatchSet.Id revision, String path)
 name|DiffTable
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|parent
 parameter_list|,
 name|PatchSet
@@ -590,7 +590,7 @@ block|{
 name|patchSetSelectBoxA
 operator|=
 operator|new
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 argument_list|(
 name|parent
 argument_list|,
@@ -611,7 +611,7 @@ expr_stmt|;
 name|patchSetSelectBoxB
 operator|=
 operator|new
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 argument_list|(
 name|parent
 argument_list|,
@@ -629,7 +629,7 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 operator|.
 name|link
 argument_list|(

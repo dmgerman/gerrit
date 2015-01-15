@@ -1381,10 +1381,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ChangeScreen2
+DECL|class|ChangeScreen
 specifier|public
 class|class
-name|ChangeScreen2
+name|ChangeScreen
 extends|extends
 name|Screen
 block|{
@@ -1396,7 +1396,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|ChangeScreen2
+name|ChangeScreen
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -1474,7 +1474,7 @@ function_decl|;
 block|}
 DECL|method|get (NativeEvent in)
 specifier|static
-name|ChangeScreen2
+name|ChangeScreen
 name|get
 parameter_list|(
 name|NativeEvent
@@ -1531,12 +1531,12 @@ if|if
 condition|(
 name|l
 operator|instanceof
-name|ChangeScreen2
+name|ChangeScreen
 condition|)
 block|{
 return|return
 operator|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|)
 name|l
 return|;
@@ -1943,9 +1943,9 @@ specifier|private
 name|AddFileAction
 name|addFileAction
 decl_stmt|;
-DECL|method|ChangeScreen2 (Change.Id changeId, String base, String revision, boolean openReplyBox, FileTable.Mode mode)
+DECL|method|ChangeScreen (Change.Id changeId, String base, String revision, boolean openReplyBox, FileTable.Mode mode)
 specifier|public
-name|ChangeScreen2
+name|ChangeScreen
 parameter_list|(
 name|Change
 operator|.

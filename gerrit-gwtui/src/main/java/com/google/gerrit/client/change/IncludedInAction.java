@@ -131,7 +131,7 @@ specifier|final
 name|IncludedInBox
 name|includedInBox
 decl_stmt|;
-DECL|method|IncludedInAction ( Change.Id changeId, ChangeScreen2.Style style, UIObject relativeTo, Widget includedInButton)
+DECL|method|IncludedInAction ( Change.Id changeId, ChangeScreen.Style style, UIObject relativeTo, Widget includedInButton)
 name|IncludedInAction
 parameter_list|(
 name|Change
@@ -139,7 +139,7 @@ operator|.
 name|Id
 name|changeId
 parameter_list|,
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

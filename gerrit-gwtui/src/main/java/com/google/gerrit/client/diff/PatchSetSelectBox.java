@@ -473,9 +473,9 @@ comment|/** HTMLPanel to select among patch sets */
 end_comment
 
 begin_class
-DECL|class|PatchSetSelectBox2
+DECL|class|PatchSetSelectBox
 class|class
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 extends|extends
 name|Composite
 block|{
@@ -487,7 +487,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -538,7 +538,7 @@ name|style
 decl_stmt|;
 DECL|field|parent
 specifier|private
-name|SideBySide2
+name|SideBySide
 name|parent
 decl_stmt|;
 DECL|field|side
@@ -579,13 +579,13 @@ name|idActive
 decl_stmt|;
 DECL|field|other
 specifier|private
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 name|other
 decl_stmt|;
-DECL|method|PatchSetSelectBox2 (SideBySide2 parent, DisplaySide side, Change.Id changeId, PatchSet.Id revision, String path)
-name|PatchSetSelectBox2
+DECL|method|PatchSetSelectBox (SideBySide parent, DisplaySide side, Change.Id changeId, PatchSet.Id revision, String path)
+name|PatchSetSelectBox
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|parent
 parameter_list|,
 name|DisplaySide
@@ -1077,15 +1077,15 @@ return|return
 name|anchor
 return|;
 block|}
-DECL|method|link (PatchSetSelectBox2 a, PatchSetSelectBox2 b)
+DECL|method|link (PatchSetSelectBox a, PatchSetSelectBox b)
 specifier|static
 name|void
 name|link
 parameter_list|(
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 name|a
 parameter_list|,
-name|PatchSetSelectBox2
+name|PatchSetSelectBox
 name|b
 parameter_list|)
 block|{

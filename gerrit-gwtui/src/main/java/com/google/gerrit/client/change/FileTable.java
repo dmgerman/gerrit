@@ -1405,7 +1405,7 @@ name|scrollToPath
 decl_stmt|;
 DECL|field|style
 specifier|private
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -1447,7 +1447,7 @@ name|ensureInjected
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen2.Style style, Widget replyButton, Mode mode, boolean editExists)
+DECL|method|set (PatchSet.Id base, PatchSet.Id curr, ChangeScreen.Style style, Widget replyButton, Mode mode, boolean editExists)
 specifier|public
 name|void
 name|set
@@ -1462,7 +1462,7 @@ operator|.
 name|Id
 name|curr
 parameter_list|,
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

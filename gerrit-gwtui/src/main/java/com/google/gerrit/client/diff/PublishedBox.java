@@ -1035,7 +1035,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getSideBySide2
+name|getSideBySide
 argument_list|()
 operator|.
 name|getToken
@@ -1189,7 +1189,7 @@ argument_list|(
 name|getCommentManager
 argument_list|()
 operator|.
-name|getSideBySide2
+name|getSideBySide
 argument_list|()
 operator|.
 name|getToken

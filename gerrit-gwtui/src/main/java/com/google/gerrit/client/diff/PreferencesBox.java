@@ -843,7 +843,7 @@ block|}
 DECL|field|view
 specifier|private
 specifier|final
-name|SideBySide2
+name|SideBySide
 name|view
 decl_stmt|;
 DECL|field|prefs
@@ -999,10 +999,10 @@ name|UiField
 name|Button
 name|save
 decl_stmt|;
-DECL|method|PreferencesBox (SideBySide2 view)
+DECL|method|PreferencesBox (SideBySide view)
 name|PreferencesBox
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|view
 parameter_list|)
 block|{

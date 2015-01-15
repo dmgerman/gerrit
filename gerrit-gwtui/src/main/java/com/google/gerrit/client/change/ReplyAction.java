@@ -340,7 +340,7 @@ decl_stmt|;
 DECL|field|style
 specifier|private
 specifier|final
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -389,7 +389,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|ReplyAction ( ChangeInfo info, String revision, ChangeScreen2.Style style, CommentLinkProcessor clp, Widget replyButton, Widget quickApproveButton)
+DECL|method|ReplyAction ( ChangeInfo info, String revision, ChangeScreen.Style style, CommentLinkProcessor clp, Widget replyButton, Widget quickApproveButton)
 name|ReplyAction
 parameter_list|(
 name|ChangeInfo
@@ -398,7 +398,7 @@ parameter_list|,
 name|String
 name|revision
 parameter_list|,
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

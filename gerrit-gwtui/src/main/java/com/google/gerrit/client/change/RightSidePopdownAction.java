@@ -245,7 +245,7 @@ block|{
 DECL|field|style
 specifier|private
 specifier|final
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -267,10 +267,10 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|RightSidePopdownAction ( ChangeScreen2.Style style, UIObject relativeTo, Widget button)
+DECL|method|RightSidePopdownAction ( ChangeScreen.Style style, UIObject relativeTo, Widget button)
 name|RightSidePopdownAction
 parameter_list|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

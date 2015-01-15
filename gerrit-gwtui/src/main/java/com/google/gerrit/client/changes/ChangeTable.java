@@ -559,10 +559,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|ChangeTable2
+DECL|class|ChangeTable
 specifier|public
 class|class
-name|ChangeTable2
+name|ChangeTable
 extends|extends
 name|NavigationTable
 argument_list|<
@@ -686,9 +686,9 @@ name|String
 argument_list|>
 name|labelNames
 decl_stmt|;
-DECL|method|ChangeTable2 ()
+DECL|method|ChangeTable ()
 specifier|public
-name|ChangeTable2
+name|ChangeTable
 parameter_list|()
 block|{
 name|super
@@ -3635,7 +3635,7 @@ class|class
 name|Section
 block|{
 DECL|field|parent
-name|ChangeTable2
+name|ChangeTable
 name|parent
 decl_stmt|;
 DECL|field|titleText

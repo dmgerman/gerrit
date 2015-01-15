@@ -643,10 +643,10 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|ChangeScreen2
+name|ChangeScreen
 name|screen
 init|=
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|get
 argument_list|(
@@ -819,7 +819,7 @@ name|hashtagTextBox
 decl_stmt|;
 DECL|field|style
 specifier|private
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -919,11 +919,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (ChangeScreen2.Style style)
+DECL|method|init (ChangeScreen.Style style)
 name|void
 name|init
 parameter_list|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

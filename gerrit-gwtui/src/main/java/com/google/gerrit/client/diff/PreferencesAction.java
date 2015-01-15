@@ -182,7 +182,7 @@ block|{
 DECL|field|view
 specifier|private
 specifier|final
-name|SideBySide2
+name|SideBySide
 name|view
 decl_stmt|;
 DECL|field|prefs
@@ -206,10 +206,10 @@ specifier|private
 name|Widget
 name|partner
 decl_stmt|;
-DECL|method|PreferencesAction (SideBySide2 view, DiffPreferences prefs)
+DECL|method|PreferencesAction (SideBySide view, DiffPreferences prefs)
 name|PreferencesAction
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|view
 parameter_list|,
 name|DiffPreferences

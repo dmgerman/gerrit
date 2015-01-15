@@ -240,7 +240,7 @@ decl_stmt|;
 DECL|field|screen
 specifier|private
 specifier|final
-name|ChangeScreen2
+name|ChangeScreen
 name|screen
 decl_stmt|;
 DECL|field|delay
@@ -253,10 +253,10 @@ specifier|private
 name|boolean
 name|running
 decl_stmt|;
-DECL|method|UpdateCheckTimer (ChangeScreen2 screen)
+DECL|method|UpdateCheckTimer (ChangeScreen screen)
 name|UpdateCheckTimer
 parameter_list|(
-name|ChangeScreen2
+name|ChangeScreen
 name|screen
 parameter_list|)
 block|{

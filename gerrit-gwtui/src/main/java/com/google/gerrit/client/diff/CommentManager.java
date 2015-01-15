@@ -341,7 +341,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Tracks comment widgets for {@link SideBySide2}. */
+comment|/** Tracks comment widgets for {@link SideBySide}. */
 end_comment
 
 begin_class
@@ -352,7 +352,7 @@ block|{
 DECL|field|host
 specifier|private
 specifier|final
-name|SideBySide2
+name|SideBySide
 name|host
 decl_stmt|;
 DECL|field|base
@@ -435,10 +435,10 @@ specifier|private
 name|boolean
 name|expandAll
 decl_stmt|;
-DECL|method|CommentManager (SideBySide2 host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp)
+DECL|method|CommentManager (SideBySide host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp)
 name|CommentManager
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|host
 parameter_list|,
 name|PatchSet
@@ -517,9 +517,9 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getSideBySide2 ()
-name|SideBySide2
-name|getSideBySide2
+DECL|method|getSideBySide ()
+name|SideBySide
+name|getSideBySide
 parameter_list|()
 block|{
 return|return

@@ -226,7 +226,7 @@ decl_stmt|;
 DECL|field|style
 specifier|private
 specifier|final
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -247,7 +247,7 @@ specifier|private
 name|PopupPanel
 name|popup
 decl_stmt|;
-DECL|method|AddFileAction (Change.Id changeId, RevisionInfo revision, ChangeScreen2.Style style, Widget addButton)
+DECL|method|AddFileAction (Change.Id changeId, RevisionInfo revision, ChangeScreen.Style style, Widget addButton)
 name|AddFileAction
 parameter_list|(
 name|Change
@@ -258,7 +258,7 @@ parameter_list|,
 name|RevisionInfo
 name|revision
 parameter_list|,
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

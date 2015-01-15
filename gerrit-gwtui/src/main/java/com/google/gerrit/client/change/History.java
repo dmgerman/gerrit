@@ -567,7 +567,7 @@ expr_stmt|;
 block|}
 name|autoOpen
 argument_list|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|myLastReply
 argument_list|(

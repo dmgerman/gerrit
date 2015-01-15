@@ -876,7 +876,7 @@ name|client
 operator|.
 name|change
 operator|.
-name|ChangeScreen2
+name|ChangeScreen
 import|;
 end_import
 
@@ -1020,7 +1020,7 @@ name|client
 operator|.
 name|diff
 operator|.
-name|SideBySide2
+name|SideBySide
 import|;
 end_import
 
@@ -4264,7 +4264,7 @@ operator|==
 literal|null
 condition|?
 operator|new
-name|ChangeScreen2
+name|ChangeScreen
 argument_list|(
 name|id
 argument_list|,
@@ -4560,7 +4560,7 @@ argument_list|(
 name|token
 argument_list|,
 operator|new
-name|ChangeScreen2
+name|ChangeScreen
 argument_list|(
 name|id
 argument_list|,
@@ -4809,7 +4809,7 @@ name|preferUnified
 argument_list|()
 condition|)
 block|{
-name|unified1
+name|unified
 argument_list|(
 name|token
 argument_list|,
@@ -4821,7 +4821,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|sbs2
+name|sbs
 argument_list|(
 name|token
 argument_list|,
@@ -4849,7 +4849,7 @@ name|panel
 argument_list|)
 condition|)
 block|{
-name|sbs2
+name|sbs
 argument_list|(
 name|token
 argument_list|,
@@ -4876,7 +4876,7 @@ name|panel
 argument_list|)
 condition|)
 block|{
-name|unified1
+name|unified
 argument_list|(
 name|token
 argument_list|,
@@ -4897,7 +4897,7 @@ name|panel
 argument_list|)
 condition|)
 block|{
-name|sbs2
+name|sbs
 argument_list|(
 name|token
 argument_list|,
@@ -4960,11 +4960,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|unified1 (final String token, final PatchSet.Id baseId, final Patch.Key id)
+DECL|method|unified (final String token, final PatchSet.Id baseId, final Patch.Key id)
 specifier|private
 specifier|static
 name|void
-name|unified1
+name|unified
 parameter_list|(
 specifier|final
 name|String
@@ -5032,11 +5032,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sbs2 (final String token, final PatchSet.Id baseId, final Patch.Key id, final DisplaySide side, final int line, final boolean edit)
+DECL|method|sbs (final String token, final PatchSet.Id baseId, final Patch.Key id, final DisplaySide side, final int line, final boolean edit)
 specifier|private
 specifier|static
 name|void
-name|sbs2
+name|sbs
 parameter_list|(
 specifier|final
 name|String
@@ -5099,7 +5099,7 @@ name|id
 argument_list|)
 else|:
 operator|new
-name|SideBySide2
+name|SideBySide
 argument_list|(
 name|baseId
 argument_list|,

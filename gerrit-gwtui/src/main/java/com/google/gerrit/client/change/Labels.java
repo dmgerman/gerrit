@@ -570,10 +570,10 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|ChangeScreen2
+name|ChangeScreen
 name|screen
 init|=
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|get
 argument_list|(
@@ -714,16 +714,16 @@ return|;
 block|}
 DECL|field|style
 specifier|private
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
 decl_stmt|;
-DECL|method|init (ChangeScreen2.Style style)
+DECL|method|init (ChangeScreen.Style style)
 name|void
 name|init
 parameter_list|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style
@@ -1455,12 +1455,12 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|formatUserList (ChangeScreen2.Style style, Collection<? extends AccountInfo> in, Set<Integer> removable, Map<Integer, VotableInfo> votable)
+DECL|method|formatUserList (ChangeScreen.Style style, Collection<? extends AccountInfo> in, Set<Integer> removable, Map<Integer, VotableInfo> votable)
 specifier|static
 name|SafeHtml
 name|formatUserList
 parameter_list|(
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

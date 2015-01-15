@@ -2200,7 +2200,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|UpToChangeCommand2
+name|UpToChangeCommand
 argument_list|(
 name|patchSetId
 argument_list|,

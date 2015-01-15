@@ -147,7 +147,7 @@ specifier|final
 name|DownloadBox
 name|downloadBox
 decl_stmt|;
-DECL|method|DownloadAction ( ChangeInfo info, String revision, ChangeScreen2.Style style, UIObject relativeTo, Widget downloadButton)
+DECL|method|DownloadAction ( ChangeInfo info, String revision, ChangeScreen.Style style, UIObject relativeTo, Widget downloadButton)
 name|DownloadAction
 parameter_list|(
 name|ChangeInfo
@@ -156,7 +156,7 @@ parameter_list|,
 name|String
 name|revision
 parameter_list|,
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

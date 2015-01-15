@@ -264,12 +264,12 @@ name|changes
 decl_stmt|;
 DECL|field|table
 specifier|private
-name|ChangeTable2
+name|ChangeTable
 name|table
 decl_stmt|;
 DECL|field|section
 specifier|private
-name|ChangeTable2
+name|ChangeTable
 operator|.
 name|Section
 name|section
@@ -421,7 +421,7 @@ expr_stmt|;
 name|table
 operator|=
 operator|new
-name|ChangeTable2
+name|ChangeTable
 argument_list|()
 block|{
 block|{
@@ -551,7 +551,7 @@ expr_stmt|;
 name|section
 operator|=
 operator|new
-name|ChangeTable2
+name|ChangeTable
 operator|.
 name|Section
 argument_list|()

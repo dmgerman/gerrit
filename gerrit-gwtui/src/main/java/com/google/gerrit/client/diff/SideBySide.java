@@ -166,7 +166,7 @@ name|client
 operator|.
 name|change
 operator|.
-name|ChangeScreen2
+name|ChangeScreen
 import|;
 end_import
 
@@ -1101,10 +1101,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SideBySide2
+DECL|class|SideBySide
 specifier|public
 class|class
-name|SideBySide2
+name|SideBySide
 extends|extends
 name|Screen
 block|{
@@ -1133,7 +1133,7 @@ name|UiBinder
 argument_list|<
 name|FlowPanel
 argument_list|,
-name|SideBySide2
+name|SideBySide
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -1344,9 +1344,9 @@ specifier|private
 name|int
 name|reloadVersionId
 decl_stmt|;
-DECL|method|SideBySide2 ( PatchSet.Id base, PatchSet.Id revision, String path, DisplaySide startSide, int startLine)
+DECL|method|SideBySide ( PatchSet.Id base, PatchSet.Id revision, String path, DisplaySide startSide, int startLine)
 specifier|public
-name|SideBySide2
+name|SideBySide
 parameter_list|(
 name|PatchSet
 operator|.
@@ -2042,7 +2042,7 @@ operator|.
 name|Entry
 argument_list|>
 argument_list|(
-name|SideBySide2
+name|SideBySide
 operator|.
 name|this
 argument_list|)
@@ -2064,7 +2064,7 @@ operator|=
 operator|new
 name|CommentManager
 argument_list|(
-name|SideBySide2
+name|SideBySide
 operator|.
 name|this
 argument_list|,
@@ -3258,7 +3258,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|UpToChangeCommand2
+name|UpToChangeCommand
 argument_list|(
 name|revision
 argument_list|,
@@ -5700,7 +5700,7 @@ name|rev
 argument_list|)
 argument_list|,
 operator|new
-name|ChangeScreen2
+name|ChangeScreen
 argument_list|(
 name|changeId
 argument_list|,

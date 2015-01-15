@@ -131,7 +131,7 @@ specifier|final
 name|PatchSetsBox
 name|revisionBox
 decl_stmt|;
-DECL|method|PatchSetsAction ( Change.Id changeId, String revision, ChangeScreen2.Style style, UIObject relativeTo, Widget downloadButton)
+DECL|method|PatchSetsAction ( Change.Id changeId, String revision, ChangeScreen.Style style, UIObject relativeTo, Widget downloadButton)
 name|PatchSetsAction
 parameter_list|(
 name|Change
@@ -142,7 +142,7 @@ parameter_list|,
 name|String
 name|revision
 parameter_list|,
-name|ChangeScreen2
+name|ChangeScreen
 operator|.
 name|Style
 name|style

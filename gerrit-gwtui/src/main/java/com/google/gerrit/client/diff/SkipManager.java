@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Collapses common regions with {@link SkipBar} for {@link SideBySide2}. */
+comment|/** Collapses common regions with {@link SkipBar} for {@link SideBySide}. */
 end_comment
 
 begin_class
@@ -196,7 +196,7 @@ block|{
 DECL|field|host
 specifier|private
 specifier|final
-name|SideBySide2
+name|SideBySide
 name|host
 decl_stmt|;
 DECL|field|commentManager
@@ -218,10 +218,10 @@ specifier|private
 name|SkipBar
 name|line0
 decl_stmt|;
-DECL|method|SkipManager (SideBySide2 host, CommentManager commentManager)
+DECL|method|SkipManager (SideBySide host, CommentManager commentManager)
 name|SkipManager
 parameter_list|(
-name|SideBySide2
+name|SideBySide
 name|host
 parameter_list|,
 name|CommentManager
