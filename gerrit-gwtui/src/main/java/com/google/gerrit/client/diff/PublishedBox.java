@@ -582,11 +582,11 @@ name|UiField
 name|Element
 name|buttons
 decl_stmt|;
-DECL|field|address
+DECL|field|edit
 annotation|@
 name|UiField
 name|Button
-name|address
+name|edit
 decl_stmt|;
 DECL|field|reply
 annotation|@
@@ -1065,11 +1065,11 @@ block|}
 annotation|@
 name|UiHandler
 argument_list|(
-literal|"address"
+literal|"edit"
 argument_list|)
-DECL|method|onAddress (ClickEvent e)
+DECL|method|onEdit (ClickEvent e)
 name|void
-name|onAddress
+name|onEdit
 parameter_list|(
 name|ClickEvent
 name|e
