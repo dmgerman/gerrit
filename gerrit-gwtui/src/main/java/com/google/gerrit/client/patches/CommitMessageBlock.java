@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.patches
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|patches
 package|;
 end_package
 
@@ -77,6 +77,38 @@ operator|.
 name|client
 operator|.
 name|Gerrit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|StarredChanges
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|Util
 import|;
 end_import
 
@@ -364,7 +396,6 @@ end_import
 
 begin_class
 DECL|class|CommitMessageBlock
-specifier|public
 class|class
 name|CommitMessageBlock
 extends|extends
@@ -380,7 +411,7 @@ name|HTMLPanel
 argument_list|,
 name|CommitMessageBlock
 argument_list|>
-block|{   }
+block|{}
 DECL|field|uiBinder
 specifier|private
 specifier|static
@@ -427,7 +458,6 @@ name|PreElement
 name|commitBodyPre
 decl_stmt|;
 DECL|method|CommitMessageBlock ()
-specifier|public
 name|CommitMessageBlock
 parameter_list|()
 block|{
@@ -443,7 +473,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CommitMessageBlock (KeyCommandSet keysAction)
-specifier|public
 name|CommitMessageBlock
 parameter_list|(
 name|KeyCommandSet
@@ -468,7 +497,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|display (String commitMessage, CommentLinkProcessor commentLinkProcessor)
-specifier|public
 name|void
 name|display
 parameter_list|(
@@ -494,7 +522,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|display (final PatchSet.Id patchSetId, final String revision, Boolean starred, final String commitMessage, CommentLinkProcessor commentLinkProcessor)
-specifier|public
 name|void
 name|display
 parameter_list|(
