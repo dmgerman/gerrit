@@ -4812,7 +4812,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|sbs
+name|codemirror
 argument_list|(
 name|token
 argument_list|,
@@ -4840,7 +4840,7 @@ name|panel
 argument_list|)
 condition|)
 block|{
-name|sbs
+name|codemirror
 argument_list|(
 name|token
 argument_list|,
@@ -4888,7 +4888,7 @@ name|panel
 argument_list|)
 condition|)
 block|{
-name|sbs
+name|codemirror
 argument_list|(
 name|token
 argument_list|,
@@ -5023,11 +5023,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|sbs (final String token, final PatchSet.Id baseId, final Patch.Key id, final DisplaySide side, final int line, final boolean edit)
+DECL|method|codemirror (final String token, final PatchSet.Id baseId, final Patch.Key id, final DisplaySide side, final int line, final boolean edit)
 specifier|private
 specifier|static
 name|void
-name|sbs
+name|codemirror
 parameter_list|(
 specifier|final
 name|String
