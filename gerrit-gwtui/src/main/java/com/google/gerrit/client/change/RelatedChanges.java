@@ -1861,6 +1861,12 @@ name|T
 name|result
 parameter_list|)
 block|{
+if|if
+condition|(
+name|isAttached
+argument_list|()
+condition|)
+block|{
 name|JsArray
 argument_list|<
 name|ChangeAndCommit
@@ -1923,6 +1929,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
 DECL|method|onFailure (Throwable err)
@@ -1933,6 +1940,12 @@ parameter_list|(
 name|Throwable
 name|err
 parameter_list|)
+block|{
+if|if
+condition|(
+name|isAttached
+argument_list|()
+condition|)
 block|{
 name|setTabTitle
 argument_list|(
@@ -1969,6 +1982,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|onDone (boolean enabled)
 specifier|private
