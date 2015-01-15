@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.change
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|change
 package|;
 end_package
 
@@ -77,6 +77,22 @@ operator|.
 name|client
 operator|.
 name|ErrorDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|Util
 import|;
 end_import
 
@@ -112,14 +128,12 @@ end_import
 
 begin_class
 DECL|class|SubmitFailureDialog
-specifier|public
 class|class
 name|SubmitFailureDialog
 extends|extends
 name|ErrorDialog
 block|{
 DECL|method|isConflict (Throwable err)
-specifier|public
 specifier|static
 name|boolean
 name|isConflict
@@ -147,7 +161,6 @@ argument_list|()
 return|;
 block|}
 DECL|method|SubmitFailureDialog (String msg)
-specifier|public
 name|SubmitFailureDialog
 parameter_list|(
 name|String

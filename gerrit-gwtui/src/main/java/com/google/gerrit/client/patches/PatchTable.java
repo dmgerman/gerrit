@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client.changes
+DECL|package|com.google.gerrit.client.patches
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|patches
 package|;
 end_package
 
@@ -91,6 +91,22 @@ operator|.
 name|client
 operator|.
 name|Gerrit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|Util
 import|;
 end_import
 
@@ -632,14 +648,12 @@ end_import
 
 begin_class
 DECL|class|PatchTable
-specifier|public
 class|class
 name|PatchTable
 extends|extends
 name|Composite
 block|{
 DECL|interface|PatchValidator
-specifier|public
 interface|interface
 name|PatchValidator
 block|{
@@ -654,7 +668,6 @@ parameter_list|)
 function_decl|;
 block|}
 DECL|field|PREFERENCE_VALIDATOR
-specifier|public
 specifier|final
 name|PatchValidator
 name|PREFERENCE_VALIDATOR
@@ -796,7 +809,6 @@ name|boolean
 name|registerKeys
 decl_stmt|;
 DECL|method|PatchTable (ListenableAccountDiffPreference prefs)
-specifier|public
 name|PatchTable
 parameter_list|(
 name|ListenableAccountDiffPreference
@@ -820,7 +832,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|PatchTable ()
-specifier|public
 name|PatchTable
 parameter_list|()
 block|{
@@ -833,7 +844,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|indexOf (Patch.Key patch)
-specifier|public
 name|int
 name|indexOf
 parameter_list|(
@@ -934,7 +944,6 @@ name|patchMap
 return|;
 block|}
 DECL|method|display (PatchSet.Id base, PatchSetDetail detail)
-specifier|public
 name|void
 name|display
 parameter_list|(
@@ -1024,7 +1033,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getBase ()
-specifier|public
 name|PatchSet
 operator|.
 name|Id
@@ -1036,7 +1044,6 @@ name|base
 return|;
 block|}
 DECL|method|setSavePointerId (final String id)
-specifier|public
 name|void
 name|setSavePointerId
 parameter_list|(
@@ -1051,7 +1058,6 @@ name|id
 expr_stmt|;
 block|}
 DECL|method|isLoaded ()
-specifier|public
 name|boolean
 name|isLoaded
 parameter_list|()
@@ -1063,7 +1069,6 @@ literal|null
 return|;
 block|}
 DECL|method|onTableLoaded (final Command cmd)
-specifier|public
 name|void
 name|onTableLoaded
 parameter_list|(
@@ -1094,7 +1099,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|addClickHandler (final ClickHandler clickHandler)
-specifier|public
 name|void
 name|addClickHandler
 parameter_list|(
@@ -1147,7 +1151,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|setRegisterKeys (final boolean on)
-specifier|public
 name|void
 name|setRegisterKeys
 parameter_list|(
@@ -1177,7 +1180,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|movePointerTo (final Patch.Key k)
-specifier|public
 name|void
 name|movePointerTo
 parameter_list|(
@@ -1205,7 +1207,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|setActive (boolean active)
-specifier|public
 name|void
 name|setActive
 parameter_list|(
@@ -1236,7 +1237,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|notifyDraftDelta (final Patch.Key k, final int delta)
-specifier|public
 name|void
 name|notifyDraftDelta
 parameter_list|(
@@ -1364,7 +1364,6 @@ expr_stmt|;
 block|}
 comment|/**    * @return a link to the previous file in this patch set, or null.    */
 DECL|method|getPreviousPatchLink (int index)
-specifier|public
 name|InlineHyperlink
 name|getPreviousPatchLink
 parameter_list|(
@@ -1416,7 +1415,6 @@ return|;
 block|}
 comment|/**    * @return a link to the next file in this patch set, or null.    */
 DECL|method|getNextPatchLink (int index)
-specifier|public
 name|InlineHyperlink
 name|getNextPatchLink
 parameter_list|(
@@ -1470,7 +1468,6 @@ return|;
 block|}
 comment|/**    * @return a link to the the given patch.    * @param index The patch to link to    * @param before A string to display at the beginning of the href text    * @param after A string to display at the end of the href text    */
 DECL|method|createLink (int index, SafeHtml before, SafeHtml after)
-specifier|public
 name|PatchLink
 name|createLink
 parameter_list|(
@@ -1691,7 +1688,6 @@ name|fileName
 return|;
 block|}
 DECL|method|getDisplayFileName (Patch patch)
-specifier|public
 specifier|static
 name|String
 name|getDisplayFileName
@@ -1711,7 +1707,6 @@ argument_list|)
 return|;
 block|}
 DECL|method|getDisplayFileName (Patch.Key patchKey)
-specifier|public
 specifier|static
 name|String
 name|getDisplayFileName
@@ -1755,7 +1750,6 @@ return|;
 block|}
 comment|/**    * Update the reviewed status for the given patch.    */
 DECL|method|updateReviewedStatus (Patch.Key patchKey, boolean reviewed)
-specifier|public
 name|void
 name|updateReviewedStatus
 parameter_list|(
@@ -1787,7 +1781,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getPreferences ()
-specifier|public
 name|ListenableAccountDiffPreference
 name|getPreferences
 parameter_list|()
@@ -2303,7 +2296,6 @@ expr_stmt|;
 block|}
 comment|/** Activates / Deactivates the key navigation and the highlighting of the current row for this table */
 DECL|method|setActive (boolean active)
-specifier|public
 name|void
 name|setActive
 parameter_list|(
@@ -4929,7 +4921,6 @@ block|}
 block|}
 comment|/**    * Gets the next patch    *    * @param currentIndex    * @param validators    * @param loopAround loops back around to the front and traverses if this is    *        true    * @return index of next valid patch, or -1 if no valid patches    */
 DECL|method|getNextPatch (int currentIndex, boolean loopAround, PatchValidator... validators)
-specifier|public
 name|int
 name|getNextPatch
 parameter_list|(
@@ -5058,7 +5049,6 @@ return|;
 block|}
 comment|/**    * @return the index to the previous patch    */
 DECL|method|getPreviousPatch (int currentIndex, PatchValidator... validators)
-specifier|public
 name|int
 name|getPreviousPatch
 parameter_list|(

@@ -106,7 +106,7 @@ name|client
 operator|.
 name|changes
 operator|.
-name|PatchTable
+name|Util
 import|;
 end_import
 
@@ -120,27 +120,11 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|changes
+name|patches
 operator|.
 name|PatchTable
 operator|.
 name|PatchValidator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|client
-operator|.
-name|changes
-operator|.
-name|Util
 import|;
 end_import
 
@@ -402,18 +386,15 @@ end_import
 
 begin_class
 DECL|class|ReviewedPanels
-specifier|public
 class|class
 name|ReviewedPanels
 block|{
 DECL|field|top
-specifier|public
 specifier|final
 name|FlowPanel
 name|top
 decl_stmt|;
 DECL|field|bottom
-specifier|public
 specifier|final
 name|FlowPanel
 name|bottom
@@ -446,7 +427,6 @@ name|CheckBox
 name|checkBoxBottom
 decl_stmt|;
 DECL|method|ReviewedPanels ()
-specifier|public
 name|ReviewedPanels
 parameter_list|()
 block|{
@@ -485,7 +465,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|populate (Patch.Key pk, PatchTable pt, int patchIndex)
-specifier|public
 name|void
 name|populate
 parameter_list|(
@@ -673,7 +652,6 @@ name|checkBox
 return|;
 block|}
 DECL|method|getValue ()
-specifier|public
 name|boolean
 name|getValue
 parameter_list|()
@@ -686,7 +664,6 @@ argument_list|()
 return|;
 block|}
 DECL|method|setValue (final boolean value)
-specifier|public
 name|void
 name|setValue
 parameter_list|(
@@ -711,7 +688,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setReviewedByCurrentUser (boolean reviewed)
-specifier|public
 name|void
 name|setReviewedByCurrentUser
 parameter_list|(
@@ -861,7 +837,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|go ()
-specifier|public
 name|void
 name|go
 parameter_list|()
