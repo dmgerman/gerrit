@@ -1482,23 +1482,8 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** Is the change currently open? Set to {@link #status}.isOpen(). */
+comment|// DELETED: id = 9 (open)
 end_comment
-
-begin_decl_stmt
-annotation|@
-name|Column
-argument_list|(
-name|id
-operator|=
-literal|9
-argument_list|)
-DECL|field|open
-specifier|protected
-name|boolean
-name|open
-decl_stmt|;
-end_decl_stmt
 
 begin_comment
 comment|/** Current state code; see {@link Status}. */
@@ -1736,12 +1721,6 @@ operator|=
 name|other
 operator|.
 name|dest
-expr_stmt|;
-name|open
-operator|=
-name|other
-operator|.
-name|open
 expr_stmt|;
 name|status
 operator|=
@@ -2110,23 +2089,15 @@ block|}
 end_function
 
 begin_function
-DECL|method|setStatus (final Status newStatus)
+DECL|method|setStatus (Status newStatus)
 specifier|public
 name|void
 name|setStatus
 parameter_list|(
-specifier|final
 name|Status
 name|newStatus
 parameter_list|)
 block|{
-name|open
-operator|=
-name|newStatus
-operator|.
-name|isOpen
-argument_list|()
-expr_stmt|;
 name|status
 operator|=
 name|newStatus
