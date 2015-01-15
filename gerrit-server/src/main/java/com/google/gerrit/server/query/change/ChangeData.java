@@ -2974,8 +2974,6 @@ name|String
 name|commitMessage
 parameter_list|()
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|IOException
 throws|,
 name|OrmException
@@ -2987,9 +2985,17 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
 name|loadCommitData
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 return|return
 name|commitMessage
@@ -3004,8 +3010,6 @@ argument_list|>
 name|commitFooters
 parameter_list|()
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|IOException
 throws|,
 name|OrmException
@@ -3017,9 +3021,17 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
 name|loadCommitData
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 return|return
 name|commitFooters
@@ -3027,12 +3039,10 @@ return|;
 block|}
 DECL|method|loadCommitData ()
 specifier|private
-name|void
+name|boolean
 name|loadCommitData
 parameter_list|()
 throws|throws
-name|NoSuchChangeException
-throws|,
 name|OrmException
 throws|,
 name|RepositoryNotFoundException
@@ -3074,13 +3084,9 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|NoSuchChangeException
-argument_list|(
-name|legacyId
-argument_list|)
-throw|;
+return|return
+literal|false
+return|;
 block|}
 name|String
 name|sha1
@@ -3167,6 +3173,9 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
 block|}
 comment|/**    * @return patches for the change.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|patches ()
@@ -3461,7 +3470,7 @@ expr_stmt|;
 block|}
 DECL|method|isMergeable ()
 specifier|public
-name|boolean
+name|Boolean
 name|isMergeable
 parameter_list|()
 throws|throws
@@ -3480,6 +3489,17 @@ init|=
 name|change
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 if|if
 condition|(
 name|c
@@ -3514,13 +3534,9 @@ operator|==
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Missing patch set for mergeability check"
-argument_list|)
-throw|;
+return|return
+literal|null
+return|;
 block|}
 name|Repository
 name|repo
