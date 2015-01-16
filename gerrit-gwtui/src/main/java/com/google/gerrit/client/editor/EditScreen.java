@@ -1034,6 +1034,8 @@ operator|.
 name|startLine
 operator|=
 name|startLine
+operator|-
+literal|1
 expr_stmt|;
 name|prefs
 operator|=
