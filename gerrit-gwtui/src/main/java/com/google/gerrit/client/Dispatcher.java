@@ -4880,11 +4880,11 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"edit"
-operator|.
-name|equals
-argument_list|(
 name|panel
+operator|.
+name|startsWith
+argument_list|(
+literal|"edit"
 argument_list|)
 condition|)
 block|{
