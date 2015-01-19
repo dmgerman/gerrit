@@ -1118,7 +1118,7 @@ name|MenuItem
 argument_list|(
 literal|"Drafts"
 argument_list|,
-literal|"#/q/is:draft"
+literal|"#/q/owner:self+is:draft"
 argument_list|,
 literal|null
 argument_list|)

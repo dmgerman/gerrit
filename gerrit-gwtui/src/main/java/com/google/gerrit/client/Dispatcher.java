@@ -2680,7 +2680,7 @@ block|{
 return|return
 name|toChangeQuery
 argument_list|(
-literal|"is:draft"
+literal|"owner:self is:draft"
 argument_list|)
 return|;
 block|}

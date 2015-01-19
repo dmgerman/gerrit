@@ -516,7 +516,7 @@ name|PageLinks
 operator|.
 name|toChangeQuery
 argument_list|(
-literal|"is:draft"
+literal|"owner:self is:draft"
 argument_list|)
 argument_list|)
 expr_stmt|;
