@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|//Copyright (C) 2013 The Android Open Source Project
+comment|//Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Dispatcher
+name|Gerrit
 import|;
 end_import
 
@@ -90,7 +90,23 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|Gerrit
+name|VoidResult
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|changes
+operator|.
+name|ChangeEditApi
 import|;
 end_import
 
@@ -136,11 +152,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|common
 operator|.
-name|client
-operator|.
-name|Change
+name|PageLinks
 import|;
 end_import
 
@@ -156,7 +170,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|Change
 import|;
 end_import
 
@@ -326,6 +340,24 @@ name|user
 operator|.
 name|client
 operator|.
+name|rpc
+operator|.
+name|AsyncCallback
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|user
+operator|.
+name|client
+operator|.
 name|ui
 operator|.
 name|Button
@@ -405,9 +437,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|AddFileBox
+DECL|class|DeleteFileBox
 class|class
-name|AddFileBox
+name|DeleteFileBox
 extends|extends
 name|Composite
 block|{
@@ -419,7 +451,7 @@ name|UiBinder
 argument_list|<
 name|HTMLPanel
 argument_list|,
-name|AddFileBox
+name|DeleteFileBox
 argument_list|>
 block|{}
 DECL|field|uiBinder
@@ -446,17 +478,11 @@ operator|.
 name|Id
 name|changeId
 decl_stmt|;
-DECL|field|revision
-specifier|private
-specifier|final
-name|RevisionInfo
-name|revision
-decl_stmt|;
-DECL|field|open
+DECL|field|delete
 annotation|@
 name|UiField
 name|Button
-name|open
+name|delete
 decl_stmt|;
 DECL|field|cancel
 annotation|@
@@ -475,8 +501,8 @@ DECL|field|path
 name|RemoteSuggestBox
 name|path
 decl_stmt|;
-DECL|method|AddFileBox (Change.Id changeId, RevisionInfo revision)
-name|AddFileBox
+DECL|method|DeleteFileBox (Change.Id changeId, RevisionInfo revision)
+name|DeleteFileBox
 parameter_list|(
 name|Change
 operator|.
@@ -492,12 +518,6 @@ operator|.
 name|changeId
 operator|=
 name|changeId
-expr_stmt|;
-name|this
-operator|.
-name|revision
-operator|=
-name|revision
 expr_stmt|;
 name|path
 operator|=
@@ -537,7 +557,7 @@ argument_list|>
 name|event
 parameter_list|)
 block|{
-name|open
+name|delete
 argument_list|(
 name|event
 operator|.
@@ -623,11 +643,11 @@ block|}
 annotation|@
 name|UiHandler
 argument_list|(
-literal|"open"
+literal|"delete"
 argument_list|)
-DECL|method|onOpen (@uppressWarningsR) ClickEvent e)
+DECL|method|onDelete (@uppressWarningsR) ClickEvent e)
 name|void
-name|onOpen
+name|onDelete
 parameter_list|(
 annotation|@
 name|SuppressWarnings
@@ -638,7 +658,7 @@ name|ClickEvent
 name|e
 parameter_list|)
 block|{
-name|open
+name|delete
 argument_list|(
 name|path
 operator|.
@@ -647,10 +667,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|open (String path)
+DECL|method|delete (String path)
 specifier|private
 name|void
-name|open
+name|delete
 parameter_list|(
 name|String
 name|path
@@ -659,29 +679,58 @@ block|{
 name|hide
 argument_list|()
 expr_stmt|;
+name|ChangeEditApi
+operator|.
+name|delete
+argument_list|(
+name|changeId
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|path
+argument_list|,
+operator|new
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onSuccess
+parameter_list|(
+name|VoidResult
+name|result
+parameter_list|)
+block|{
 name|Gerrit
 operator|.
 name|display
 argument_list|(
-name|Dispatcher
+name|PageLinks
 operator|.
-name|toEditScreen
-argument_list|(
-operator|new
-name|PatchSet
-operator|.
-name|Id
+name|toChangeInEditMode
 argument_list|(
 name|changeId
-argument_list|,
-name|revision
-operator|.
-name|_number
-argument_list|()
 argument_list|)
-argument_list|,
-name|path
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|caught
+parameter_list|)
+block|{           }
+block|}
 argument_list|)
 expr_stmt|;
 block|}
