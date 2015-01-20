@@ -544,6 +544,66 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Rename a file in the pending edit. */
+DECL|method|rename (int id, String path, String newPath, AsyncCallback<VoidResult> cb)
+specifier|public
+specifier|static
+name|void
+name|rename
+parameter_list|(
+name|int
+name|id
+parameter_list|,
+name|String
+name|path
+parameter_list|,
+name|String
+name|newPath
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|VoidResult
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|Input
+name|in
+init|=
+name|Input
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|in
+operator|.
+name|old_path
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+name|in
+operator|.
+name|new_path
+argument_list|(
+name|newPath
+argument_list|)
+expr_stmt|;
+name|ChangeApi
+operator|.
+name|edit
+argument_list|(
+name|id
+argument_list|)
+operator|.
+name|post
+argument_list|(
+name|in
+argument_list|,
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Restore (undo delete/modify) a file in the pending edit. */
 DECL|method|restore (int id, String path, AsyncCallback<VoidResult> cb)
 specifier|public
@@ -677,6 +737,28 @@ name|String
 name|p
 parameter_list|)
 comment|/*-{ this.restore_path=p }-*/
+function_decl|;
+DECL|method|old_path (String p)
+specifier|final
+specifier|native
+name|void
+name|old_path
+parameter_list|(
+name|String
+name|p
+parameter_list|)
+comment|/*-{ this.old_path=p }-*/
+function_decl|;
+DECL|method|new_path (String p)
+specifier|final
+specifier|native
+name|void
+name|new_path
+parameter_list|(
+name|String
+name|p
+parameter_list|)
+comment|/*-{ this.new_path=p }-*/
 function_decl|;
 DECL|method|Input ()
 specifier|protected
