@@ -190,6 +190,22 @@ name|server
 operator|.
 name|index
 operator|.
+name|IndexConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
 name|IndexPredicate
 import|;
 end_import
@@ -352,6 +368,12 @@ specifier|final
 name|ChangeQueryRewriter
 name|queryRewriter
 decl_stmt|;
+DECL|field|indexConfig
+specifier|private
+specifier|final
+name|IndexConfig
+name|indexConfig
+decl_stmt|;
 DECL|field|limitFromCaller
 specifier|private
 name|int
@@ -371,7 +393,7 @@ literal|true
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeQueryRewriter queryRewriter)
+DECL|method|QueryProcessor (Provider<ReviewDb> db, Provider<CurrentUser> userProvider, ChangeControl.GenericFactory changeControlFactory, ChangeQueryRewriter queryRewriter, IndexConfig indexConfig)
 name|QueryProcessor
 parameter_list|(
 name|Provider
@@ -393,6 +415,9 @@ name|changeControlFactory
 parameter_list|,
 name|ChangeQueryRewriter
 name|queryRewriter
+parameter_list|,
+name|IndexConfig
+name|indexConfig
 parameter_list|)
 block|{
 name|this
@@ -418,6 +443,12 @@ operator|.
 name|queryRewriter
 operator|=
 name|queryRewriter
+expr_stmt|;
+name|this
+operator|.
+name|indexConfig
+operator|=
+name|indexConfig
 expr_stmt|;
 block|}
 DECL|method|enforceVisibility (boolean enforce)
@@ -694,9 +725,8 @@ if|if
 condition|(
 name|limit
 operator|==
-name|Integer
-operator|.
-name|MAX_VALUE
+name|getBackendSupportedLimit
+argument_list|()
 condition|)
 block|{
 name|limit
@@ -984,6 +1014,19 @@ operator|.
 name|MAX_VALUE
 return|;
 block|}
+DECL|method|getBackendSupportedLimit ()
+specifier|private
+name|int
+name|getBackendSupportedLimit
+parameter_list|()
+block|{
+return|return
+name|indexConfig
+operator|.
+name|getMaxLimit
+argument_list|()
+return|;
+block|}
 DECL|method|getEffectiveLimit (Predicate<ChangeData> p)
 specifier|private
 name|int
@@ -1006,9 +1049,17 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-literal|3
+literal|4
 argument_list|)
 decl_stmt|;
+name|possibleLimits
+operator|.
+name|add
+argument_list|(
+name|getBackendSupportedLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|possibleLimits
 operator|.
 name|add

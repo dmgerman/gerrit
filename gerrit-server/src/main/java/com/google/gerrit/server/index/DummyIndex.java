@@ -272,6 +272,18 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{   }
+DECL|method|getMaxLimit ()
+specifier|public
+name|int
+name|getMaxLimit
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|MAX_VALUE
+return|;
+block|}
 block|}
 end_class
 
