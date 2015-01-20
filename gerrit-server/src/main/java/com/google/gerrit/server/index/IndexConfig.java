@@ -82,13 +82,30 @@ name|checkArgument
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|auto
+operator|.
+name|value
+operator|.
+name|AutoValue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation-specific configuration for secondary indexes.  *<p>  * Contains configuration that is tied to a specific index implementation but is  * otherwise global, i.e. not tied to a specific {@link ChangeIndex} and schema  * version.  */
 end_comment
 
 begin_class
+annotation|@
+name|AutoValue
 DECL|class|IndexConfig
 specifier|public
+specifier|abstract
 class|class
 name|IndexConfig
 block|{
@@ -100,8 +117,7 @@ name|createDefault
 parameter_list|()
 block|{
 return|return
-operator|new
-name|IndexConfig
+name|create
 argument_list|(
 name|Integer
 operator|.
@@ -109,15 +125,11 @@ name|MAX_VALUE
 argument_list|)
 return|;
 block|}
-DECL|field|maxLimit
-specifier|private
-specifier|final
-name|int
-name|maxLimit
-decl_stmt|;
-DECL|method|IndexConfig (int maxLimit)
+DECL|method|create (int maxLimit)
 specifier|public
+specifier|static
 name|IndexConfig
+name|create
 parameter_list|(
 name|int
 name|maxLimit
@@ -134,23 +146,21 @@ argument_list|,
 name|maxLimit
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|maxLimit
-operator|=
-name|maxLimit
-expr_stmt|;
-block|}
-DECL|method|getMaxLimit ()
-specifier|public
-name|int
-name|getMaxLimit
-parameter_list|()
-block|{
 return|return
+operator|new
+name|AutoValue_IndexConfig
+argument_list|(
 name|maxLimit
+argument_list|)
 return|;
 block|}
+DECL|method|maxLimit ()
+specifier|public
+specifier|abstract
+name|int
+name|maxLimit
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

@@ -1023,7 +1023,7 @@ block|{
 return|return
 name|indexConfig
 operator|.
-name|getMaxLimit
+name|maxLimit
 argument_list|()
 return|;
 block|}
