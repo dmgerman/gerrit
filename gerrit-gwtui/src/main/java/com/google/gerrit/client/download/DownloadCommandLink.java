@@ -759,7 +759,7 @@ expr_stmt|;
 name|String
 name|sshPort
 init|=
-literal|"29418"
+literal|null
 decl_stmt|;
 name|String
 name|sshAddr
@@ -838,7 +838,21 @@ name|cmd
 operator|.
 name|append
 argument_list|(
-literal|"&& scp -p -P "
+literal|"&& scp -p "
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|sshPort
+operator|!=
+literal|null
+condition|)
+block|{
+name|cmd
+operator|.
+name|append
+argument_list|(
+literal|"-P "
 argument_list|)
 expr_stmt|;
 name|cmd
@@ -855,6 +869,7 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 name|cmd
 operator|.
 name|append
