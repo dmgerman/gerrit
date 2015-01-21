@@ -1579,6 +1579,11 @@ specifier|private
 name|EditInfo
 name|edit
 decl_stmt|;
+DECL|field|canSubmit
+specifier|private
+name|boolean
+name|canSubmit
+decl_stmt|;
 DECL|field|keysNavigation
 specifier|private
 name|KeyCommandSet
@@ -3430,6 +3435,10 @@ operator|.
 name|closeDiv
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|canSubmit
+operator|=
+literal|true
 expr_stmt|;
 block|}
 if|if
@@ -6415,7 +6424,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|loadSubmitType (final Change.Status status, final boolean canSubmit)
+DECL|method|loadSubmitType (final Change.Status status, final boolean isSubmittable)
 specifier|private
 name|void
 name|loadSubmitType
@@ -6428,12 +6437,12 @@ name|status
 parameter_list|,
 specifier|final
 name|boolean
-name|canSubmit
+name|isSubmittable
 parameter_list|)
 block|{
 if|if
 condition|(
-name|canSubmit
+name|isSubmittable
 condition|)
 block|{
 name|submit
@@ -6506,7 +6515,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|canSubmit
+name|isSubmittable
 condition|)
 block|{
 if|if
