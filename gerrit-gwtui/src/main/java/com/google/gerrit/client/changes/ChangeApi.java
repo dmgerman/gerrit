@@ -182,6 +182,22 @@ name|reviewdb
 operator|.
 name|client
 operator|.
+name|Change
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
 name|PatchSet
 import|;
 end_import
@@ -283,12 +299,12 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Create a new change. */
-DECL|method|createChange (String project, String branch, String subject, String base, AsyncCallback<ChangeInfo> cb)
+comment|/** Create a draft change. */
+DECL|method|createDraftChange (String project, String branch, String subject, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
-name|createChange
+name|createDraftChange
 parameter_list|(
 name|String
 name|project
@@ -355,6 +371,20 @@ name|emptyToNull
 argument_list|(
 name|base
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|input
+operator|.
+name|status
+argument_list|(
+name|Change
+operator|.
+name|Status
+operator|.
+name|DRAFT
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 operator|new
@@ -1576,6 +1606,18 @@ name|String
 name|b
 parameter_list|)
 comment|/*-{ if(b)this.base_change=b; }-*/
+function_decl|;
+DECL|method|status (String s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|status
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+comment|/*-{ if(s)this.status=s; }-*/
 function_decl|;
 DECL|method|CreateChangeInput ()
 specifier|protected
