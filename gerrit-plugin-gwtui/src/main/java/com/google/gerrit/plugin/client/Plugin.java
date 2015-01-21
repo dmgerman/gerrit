@@ -219,6 +219,16 @@ name|refreshMenuBar
 parameter_list|()
 comment|/*-{ return this.refreshMenuBar() }-*/
 function_decl|;
+comment|/** Check if user is signed in. */
+DECL|method|isSignedIn ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isSignedIn
+parameter_list|()
+comment|/*-{ return this.isSignedIn() }-*/
+function_decl|;
 comment|/** Show message in Gerrit's ErrorDialog. */
 DECL|method|showError (String message)
 specifier|public
