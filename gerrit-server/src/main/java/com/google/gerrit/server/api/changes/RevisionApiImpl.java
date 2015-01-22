@@ -418,7 +418,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|CreateDraft
+name|CreateDraftComment
 import|;
 end_import
 
@@ -450,7 +450,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|Drafts
+name|DraftComments
 import|;
 end_import
 
@@ -514,7 +514,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ListDrafts
+name|ListDraftComments
 import|;
 end_import
 
@@ -881,19 +881,19 @@ decl_stmt|;
 DECL|field|listDrafts
 specifier|private
 specifier|final
-name|ListDrafts
+name|ListDraftComments
 name|listDrafts
 decl_stmt|;
 DECL|field|createDraft
 specifier|private
 specifier|final
-name|CreateDraft
+name|CreateDraftComment
 name|createDraft
 decl_stmt|;
 DECL|field|drafts
 specifier|private
 specifier|final
-name|Drafts
+name|DraftComments
 name|drafts
 decl_stmt|;
 DECL|field|draftFactory
@@ -920,7 +920,7 @@ name|commentFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, Publish publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListComments listComments, ListDrafts listDrafts, CreateDraft createDraft, Drafts drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, @Assisted RevisionResource r)
+DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, Publish publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListComments listComments, ListDraftComments listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, @Assisted RevisionResource r)
 name|RevisionApiImpl
 parameter_list|(
 name|Changes
@@ -988,13 +988,13 @@ parameter_list|,
 name|ListComments
 name|listComments
 parameter_list|,
-name|ListDrafts
+name|ListDraftComments
 name|listDrafts
 parameter_list|,
-name|CreateDraft
+name|CreateDraftComment
 name|createDraft
 parameter_list|,
-name|Drafts
+name|DraftComments
 name|drafts
 parameter_list|,
 name|DraftApiImpl

@@ -205,14 +205,14 @@ import|;
 end_import
 
 begin_class
-DECL|class|DraftResource
+DECL|class|DraftCommentResource
 specifier|public
 class|class
-name|DraftResource
+name|DraftCommentResource
 implements|implements
 name|RestResource
 block|{
-DECL|field|DRAFT_KIND
+DECL|field|DRAFT_COMMENT_KIND
 specifier|public
 specifier|static
 specifier|final
@@ -220,17 +220,17 @@ name|TypeLiteral
 argument_list|<
 name|RestView
 argument_list|<
-name|DraftResource
+name|DraftCommentResource
 argument_list|>
 argument_list|>
-name|DRAFT_KIND
+name|DRAFT_COMMENT_KIND
 init|=
 operator|new
 name|TypeLiteral
 argument_list|<
 name|RestView
 argument_list|<
-name|DraftResource
+name|DraftCommentResource
 argument_list|>
 argument_list|>
 argument_list|()
@@ -248,8 +248,8 @@ specifier|final
 name|PatchLineComment
 name|comment
 decl_stmt|;
-DECL|method|DraftResource (RevisionResource rev, PatchLineComment c)
-name|DraftResource
+DECL|method|DraftCommentResource (RevisionResource rev, PatchLineComment c)
+name|DraftCommentResource
 parameter_list|(
 name|RevisionResource
 name|rev

@@ -148,7 +148,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|DeleteDraft
+name|DeleteDraftComment
 import|;
 end_import
 
@@ -164,7 +164,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|DraftResource
+name|DraftCommentResource
 import|;
 end_import
 
@@ -180,7 +180,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|GetDraft
+name|GetDraftComment
 import|;
 end_import
 
@@ -196,7 +196,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|PutDraft
+name|PutDraftComment
 import|;
 end_import
 
@@ -261,11 +261,11 @@ DECL|interface|Factory
 interface|interface
 name|Factory
 block|{
-DECL|method|create (DraftResource d)
+DECL|method|create (DraftCommentResource d)
 name|DraftApiImpl
 name|create
 parameter_list|(
-name|DraftResource
+name|DraftCommentResource
 name|d
 parameter_list|)
 function_decl|;
@@ -273,44 +273,44 @@ block|}
 DECL|field|deleteDraft
 specifier|private
 specifier|final
-name|DeleteDraft
+name|DeleteDraftComment
 name|deleteDraft
 decl_stmt|;
 DECL|field|getDraft
 specifier|private
 specifier|final
-name|GetDraft
+name|GetDraftComment
 name|getDraft
 decl_stmt|;
 DECL|field|putDraft
 specifier|private
 specifier|final
-name|PutDraft
+name|PutDraftComment
 name|putDraft
 decl_stmt|;
 DECL|field|draft
 specifier|private
 specifier|final
-name|DraftResource
+name|DraftCommentResource
 name|draft
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DraftApiImpl (DeleteDraft deleteDraft, GetDraft getDraft, PutDraft putDraft, @Assisted DraftResource draft)
+DECL|method|DraftApiImpl (DeleteDraftComment deleteDraft, GetDraftComment getDraft, PutDraftComment putDraft, @Assisted DraftCommentResource draft)
 name|DraftApiImpl
 parameter_list|(
-name|DeleteDraft
+name|DeleteDraftComment
 name|deleteDraft
 parameter_list|,
-name|GetDraft
+name|GetDraftComment
 name|getDraft
 parameter_list|,
-name|PutDraft
+name|PutDraftComment
 name|putDraft
 parameter_list|,
 annotation|@
 name|Assisted
-name|DraftResource
+name|DraftCommentResource
 name|draft
 parameter_list|)
 block|{
