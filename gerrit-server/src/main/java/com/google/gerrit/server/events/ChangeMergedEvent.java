@@ -193,6 +193,11 @@ specifier|public
 name|AccountAttribute
 name|submitter
 decl_stmt|;
+DECL|field|newRev
+specifier|public
+name|String
+name|newRev
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getType ()

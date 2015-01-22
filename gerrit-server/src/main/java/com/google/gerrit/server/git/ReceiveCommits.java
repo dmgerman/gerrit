@@ -13906,6 +13906,11 @@ argument_list|,
 name|newPatchSet
 argument_list|,
 name|db
+argument_list|,
+name|newCommit
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -15727,6 +15732,11 @@ operator|.
 name|newPatchSet
 argument_list|,
 name|db
+argument_list|,
+name|commit
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|sendMergedEmail

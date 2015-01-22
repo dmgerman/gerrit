@@ -3245,7 +3245,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db)
+DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db, String mergeResultRev)
 specifier|public
 name|void
 name|doChangeMergedHook
@@ -3265,6 +3265,9 @@ parameter_list|,
 specifier|final
 name|ReviewDb
 name|db
+parameter_list|,
+name|String
+name|mergeResultRev
 parameter_list|)
 throws|throws
 name|OrmException
@@ -3323,6 +3326,12 @@ name|asPatchSetAttribute
 argument_list|(
 name|patchSet
 argument_list|)
+expr_stmt|;
+name|event
+operator|.
+name|newRev
+operator|=
+name|mergeResultRev
 expr_stmt|;
 name|fireEvent
 argument_list|(
@@ -3448,6 +3457,15 @@ operator|.
 name|patchSet
 operator|.
 name|revision
+argument_list|)
+expr_stmt|;
+name|addArg
+argument_list|(
+name|args
+argument_list|,
+literal|"--newrev"
+argument_list|,
+name|mergeResultRev
 argument_list|)
 expr_stmt|;
 name|runHook

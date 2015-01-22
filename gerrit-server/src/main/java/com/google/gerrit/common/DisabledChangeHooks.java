@@ -322,7 +322,7 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doChangeMergedHook (Change change, Account account, PatchSet patchSet, ReviewDb db)
+DECL|method|doChangeMergedHook (Change change, Account account, PatchSet patchSet, ReviewDb db, String mergeResultRev)
 specifier|public
 name|void
 name|doChangeMergedHook
@@ -338,6 +338,9 @@ name|patchSet
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|String
+name|mergeResultRev
 parameter_list|)
 block|{   }
 annotation|@

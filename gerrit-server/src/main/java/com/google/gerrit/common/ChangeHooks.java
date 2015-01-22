@@ -383,8 +383,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Change Merged Hook.    *    * @param change The change itself.    * @param account The gerrit user who submitted the change.    * @param patchSet The patchset that was merged.    * @throws OrmException    */
-DECL|method|doChangeMergedHook (Change change, Account account, PatchSet patchSet, ReviewDb db)
+comment|/**    * Fire the Change Merged Hook.    *    * @param change The change itself.    * @param account The gerrit user who submitted the change.    * @param patchSet The patchset that was merged.    * @param mergeResultRev The SHA-1 of the merge result revision.    * @throws OrmException    */
+DECL|method|doChangeMergedHook (Change change, Account account, PatchSet patchSet, ReviewDb db, String mergeResultRev)
 specifier|public
 name|void
 name|doChangeMergedHook
@@ -400,6 +400,9 @@ name|patchSet
 parameter_list|,
 name|ReviewDb
 name|db
+parameter_list|,
+name|String
+name|mergeResultRev
 parameter_list|)
 throws|throws
 name|OrmException
