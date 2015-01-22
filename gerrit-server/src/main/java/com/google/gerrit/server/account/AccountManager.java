@@ -471,45 +471,37 @@ name|auditService
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|AccountManager (final SchemaFactory<ReviewDb> schema, final AccountCache byIdCache, final AccountByEmailCache byEmailCache, final Realm accountMapper, final IdentifiedUser.GenericFactory userFactory, final ChangeUserName.Factory changeUserNameFactory, final ProjectCache projectCache, final AuditService auditService)
+DECL|method|AccountManager (SchemaFactory<ReviewDb> schema, AccountCache byIdCache, AccountByEmailCache byEmailCache, Realm accountMapper, IdentifiedUser.GenericFactory userFactory, ChangeUserName.Factory changeUserNameFactory, ProjectCache projectCache, AuditService auditService)
 name|AccountManager
 parameter_list|(
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
 argument_list|>
 name|schema
 parameter_list|,
-specifier|final
 name|AccountCache
 name|byIdCache
 parameter_list|,
-specifier|final
 name|AccountByEmailCache
 name|byEmailCache
 parameter_list|,
-specifier|final
 name|Realm
 name|accountMapper
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 operator|.
 name|GenericFactory
 name|userFactory
 parameter_list|,
-specifier|final
 name|ChangeUserName
 operator|.
 name|Factory
 name|changeUserNameFactory
 parameter_list|,
-specifier|final
 name|ProjectCache
 name|projectCache
 parameter_list|,
-specifier|final
 name|AuditService
 name|auditService
 parameter_list|)
@@ -574,14 +566,13 @@ name|auditService
 expr_stmt|;
 block|}
 comment|/**    * @return user identified by this external identity string, or null.    */
-DECL|method|lookup (final String externalId)
+DECL|method|lookup (String externalId)
 specifier|public
 name|Account
 operator|.
 name|Id
 name|lookup
 parameter_list|(
-specifier|final
 name|String
 name|externalId
 parameter_list|)
@@ -590,7 +581,6 @@ name|AccountException
 block|{
 try|try
 block|{
-specifier|final
 name|ReviewDb
 name|db
 init|=
@@ -601,7 +591,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-specifier|final
 name|AccountExternalId
 name|ext
 init|=
@@ -685,7 +674,6 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-specifier|final
 name|ReviewDb
 name|db
 init|=
@@ -696,7 +684,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-specifier|final
 name|AccountExternalId
 operator|.
 name|Key
@@ -707,7 +694,6 @@ argument_list|(
 name|who
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AccountExternalId
 name|id
 init|=
@@ -831,27 +817,23 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|update (final ReviewDb db, final AuthRequest who, final AccountExternalId extId)
+DECL|method|update (ReviewDb db, AuthRequest who, AccountExternalId extId)
 specifier|private
 name|void
 name|update
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|,
-specifier|final
 name|AccountExternalId
 name|extId
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|IdentifiedUser
 name|user
 init|=
@@ -873,7 +855,6 @@ decl_stmt|;
 comment|// If the email address was modified by the authentication provider,
 comment|// update our records to match the changed email.
 comment|//
-specifier|final
 name|String
 name|newEmail
 init|=
@@ -882,7 +863,6 @@ operator|.
 name|getEmailAddress
 argument_list|()
 decl_stmt|;
-specifier|final
 name|String
 name|oldEmail
 init|=
@@ -1206,17 +1186,15 @@ return|return
 name|toUpdate
 return|;
 block|}
-DECL|method|eq (final String a, final String b)
+DECL|method|eq (String a, String b)
 specifier|private
 specifier|static
 name|boolean
 name|eq
 parameter_list|(
-specifier|final
 name|String
 name|a
 parameter_list|,
-specifier|final
 name|String
 name|b
 parameter_list|)
@@ -1246,16 +1224,14 @@ argument_list|)
 operator|)
 return|;
 block|}
-DECL|method|create (final ReviewDb db, final AuthRequest who)
+DECL|method|create (ReviewDb db, AuthRequest who)
 specifier|private
 name|AuthResult
 name|create
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|)
@@ -1264,7 +1240,6 @@ name|OrmException
 throws|,
 name|AccountException
 block|{
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1281,7 +1256,6 @@ name|nextAccountId
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Account
 name|account
 init|=
@@ -1296,7 +1270,6 @@ name|nowTs
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AccountExternalId
 name|extId
 init|=
@@ -1337,7 +1310,6 @@ name|getEmailAddress
 argument_list|()
 argument_list|)
 expr_stmt|;
-specifier|final
 name|boolean
 name|isFirstAccount
 init|=
@@ -1442,7 +1414,6 @@ operator|.
 name|ADMINISTRATE_SERVER
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -1464,7 +1435,6 @@ operator|.
 name|getUUID
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountGroup
 name|g
 init|=
@@ -1484,7 +1454,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountGroup
 operator|.
 name|Id
@@ -1495,7 +1464,6 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountGroupMember
 name|m
 init|=
@@ -1591,7 +1559,6 @@ name|NameAlreadyUsedException
 name|e
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|message
 init|=
@@ -1630,7 +1597,6 @@ name|InvalidUserNameException
 name|e
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|message
 init|=
@@ -1669,7 +1635,6 @@ name|OrmException
 name|e
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|message
 init|=
@@ -1727,32 +1692,26 @@ argument_list|)
 return|;
 block|}
 comment|/**    * This method handles an exception that occurred during the setting of the    * user name for a newly created account. If the realm does not allow the user    * to set a user name manually this method deletes the newly created account    * and throws an {@link AccountUserNameException}. In any case the error    * message is logged.    *    * @param db the database    * @param account the newly created account    * @param extId the newly created external id    * @param errorMessage the error message    * @param e the exception that occurred during the setting of the user name    *        for the new account    * @param logException flag that decides whether the exception should be    *        included into the log    * @throws AccountUserNameException thrown if the realm does not allow the    *         user to manually set the user name    * @throws OrmException thrown if cleaning the database failed    */
-DECL|method|handleSettingUserNameFailure (final ReviewDb db, final Account account, final AccountExternalId extId, final String errorMessage, final Exception e, final boolean logException)
+DECL|method|handleSettingUserNameFailure (ReviewDb db, Account account, AccountExternalId extId, String errorMessage, Exception e, boolean logException)
 specifier|private
 name|void
 name|handleSettingUserNameFailure
 parameter_list|(
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|AccountExternalId
 name|extId
 parameter_list|,
-specifier|final
 name|String
 name|errorMessage
 parameter_list|,
-specifier|final
 name|Exception
 name|e
 parameter_list|,
-specifier|final
 name|boolean
 name|logException
 parameter_list|)
@@ -1850,24 +1809,21 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|createId (final Account.Id newId, final AuthRequest who)
+DECL|method|createId (Account.Id newId, AuthRequest who)
 specifier|private
 specifier|static
 name|AccountExternalId
 name|createId
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
 name|newId
 parameter_list|,
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|ext
 init|=
@@ -1893,12 +1849,11 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Link another authentication identity to an existing account.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws AccountException the identity belongs to a different account, or it    *         cannot be linked at this time.    */
-DECL|method|link (final Account.Id to, AuthRequest who)
+DECL|method|link (Account.Id to, AuthRequest who)
 specifier|public
 name|AuthResult
 name|link
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -1912,7 +1867,6 @@ name|AccountException
 throws|,
 name|OrmException
 block|{
-specifier|final
 name|ReviewDb
 name|db
 init|=
@@ -1936,7 +1890,6 @@ argument_list|,
 name|who
 argument_list|)
 expr_stmt|;
-specifier|final
 name|AccountExternalId
 operator|.
 name|Key
@@ -2045,7 +1998,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|Account
 name|a
 init|=
@@ -2147,12 +2099,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * Unlink an authentication identity from an existing account.    *    * @param from account to unlink the identity from.    * @param who the identity to delete    * @return the result of unlinking the identity from the user.    * @throws AccountException the identity belongs to a different account, or it    *         cannot be unlinked at this time.    */
-DECL|method|unlink (final Account.Id from, AuthRequest who)
+DECL|method|unlink (Account.Id from, AuthRequest who)
 specifier|public
 name|AuthResult
 name|unlink
 parameter_list|(
-specifier|final
 name|Account
 operator|.
 name|Id
@@ -2166,7 +2117,6 @@ name|AccountException
 throws|,
 name|OrmException
 block|{
-specifier|final
 name|ReviewDb
 name|db
 init|=
@@ -2190,7 +2140,6 @@ argument_list|,
 name|who
 argument_list|)
 expr_stmt|;
-specifier|final
 name|AccountExternalId
 operator|.
 name|Key
@@ -2268,7 +2217,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|Account
 name|a
 init|=
@@ -2378,7 +2326,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|id (final AuthRequest who)
+DECL|method|id (AuthRequest who)
 specifier|private
 specifier|static
 name|AccountExternalId
@@ -2386,7 +2334,6 @@ operator|.
 name|Key
 name|id
 parameter_list|(
-specifier|final
 name|AuthRequest
 name|who
 parameter_list|)
