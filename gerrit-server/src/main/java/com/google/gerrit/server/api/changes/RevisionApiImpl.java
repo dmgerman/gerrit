@@ -562,7 +562,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|Publish
+name|PublishDraftPatchSet
 import|;
 end_import
 
@@ -801,7 +801,7 @@ decl_stmt|;
 DECL|field|publish
 specifier|private
 specifier|final
-name|Publish
+name|PublishDraftPatchSet
 name|publish
 decl_stmt|;
 DECL|field|putReviewed
@@ -920,7 +920,7 @@ name|commentFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, Publish publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListComments listComments, ListDraftComments listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, @Assisted RevisionResource r)
+DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, PublishDraftPatchSet publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListComments listComments, ListDraftComments listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, @Assisted RevisionResource r)
 name|RevisionApiImpl
 parameter_list|(
 name|Changes
@@ -941,7 +941,7 @@ parameter_list|,
 name|Submit
 name|submit
 parameter_list|,
-name|Publish
+name|PublishDraftPatchSet
 name|publish
 parameter_list|,
 name|Reviewed
@@ -1288,7 +1288,7 @@ argument_list|(
 name|revision
 argument_list|,
 operator|new
-name|Publish
+name|PublishDraftPatchSet
 operator|.
 name|Input
 argument_list|()

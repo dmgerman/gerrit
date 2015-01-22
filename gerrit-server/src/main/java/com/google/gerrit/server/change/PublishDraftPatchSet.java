@@ -266,7 +266,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|Publish
+name|PublishDraftPatchSet
 operator|.
 name|Input
 import|;
@@ -427,10 +427,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|Publish
+DECL|class|PublishDraftPatchSet
 specifier|public
 class|class
-name|Publish
+name|PublishDraftPatchSet
 implements|implements
 name|RestModifyView
 argument_list|<
@@ -493,9 +493,9 @@ name|allowDrafts
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Publish (Provider<ReviewDb> dbProvider, ChangeUpdate.Factory updateFactory, PatchSetNotificationSender sender, ChangeHooks hooks, ChangeIndexer indexer, @GerritServerConfig Config cfg)
+DECL|method|PublishDraftPatchSet (Provider<ReviewDb> dbProvider, ChangeUpdate.Factory updateFactory, PatchSetNotificationSender sender, ChangeHooks hooks, ChangeIndexer indexer, @GerritServerConfig Config cfg)
 specifier|public
-name|Publish
+name|PublishDraftPatchSet
 parameter_list|(
 name|Provider
 argument_list|<
@@ -1052,12 +1052,12 @@ decl_stmt|;
 DECL|field|publish
 specifier|private
 specifier|final
-name|Publish
+name|PublishDraftPatchSet
 name|publish
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CurrentRevision (Provider<ReviewDb> dbProvider, Publish publish)
+DECL|method|CurrentRevision (Provider<ReviewDb> dbProvider, PublishDraftPatchSet publish)
 name|CurrentRevision
 parameter_list|(
 name|Provider
@@ -1066,7 +1066,7 @@ name|ReviewDb
 argument_list|>
 name|dbProvider
 parameter_list|,
-name|Publish
+name|PublishDraftPatchSet
 name|publish
 parameter_list|)
 block|{

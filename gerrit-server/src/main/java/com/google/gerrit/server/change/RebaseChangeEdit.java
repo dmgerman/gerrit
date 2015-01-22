@@ -555,7 +555,7 @@ name|RestModifyView
 argument_list|<
 name|ChangeResource
 argument_list|,
-name|Publish
+name|PublishDraftPatchSet
 operator|.
 name|Input
 argument_list|>
@@ -626,7 +626,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ChangeResource rsrc, Publish.Input in)
+DECL|method|apply (ChangeResource rsrc, PublishDraftPatchSet.Input in)
 specifier|public
 name|Response
 argument_list|<
@@ -637,7 +637,7 @@ parameter_list|(
 name|ChangeResource
 name|rsrc
 parameter_list|,
-name|Publish
+name|PublishDraftPatchSet
 operator|.
 name|Input
 name|in

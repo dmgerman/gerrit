@@ -593,7 +593,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|Publish
+name|PublishDraftPatchSet
 operator|.
 name|CurrentRevision
 operator|.
@@ -817,7 +817,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|Publish
+name|PublishDraftPatchSet
 operator|.
 name|class
 argument_list|)
