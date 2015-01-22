@@ -415,10 +415,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|CreateDraft
+DECL|class|CreateDraftComment
 specifier|public
 class|class
-name|CreateDraft
+name|CreateDraftComment
 implements|implements
 name|RestModifyView
 argument_list|<
@@ -464,8 +464,8 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateDraft (Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, CommentJson commentJson, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache)
-name|CreateDraft
+DECL|method|CreateDraftComment (Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, CommentJson commentJson, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache)
+name|CreateDraftComment
 parameter_list|(
 name|Provider
 argument_list|<

@@ -1361,7 +1361,7 @@ DECL|field|drafts
 annotation|@
 name|Inject
 specifier|private
-name|Drafts
+name|DraftComments
 name|drafts
 decl_stmt|;
 DECL|field|getComment
@@ -1470,7 +1470,7 @@ name|DynamicMap
 argument_list|<
 name|RestView
 argument_list|<
-name|DraftResource
+name|DraftCommentResource
 argument_list|>
 argument_list|>
 name|draftViews
@@ -1489,7 +1489,7 @@ name|DynamicMap
 argument_list|<
 name|RestView
 argument_list|<
-name|DraftResource
+name|DraftCommentResource
 argument_list|>
 argument_list|>
 argument_list|>
@@ -1502,7 +1502,7 @@ name|DynamicMap
 argument_list|<
 name|RestView
 argument_list|<
-name|DraftResource
+name|DraftCommentResource
 argument_list|>
 argument_list|>
 argument_list|>

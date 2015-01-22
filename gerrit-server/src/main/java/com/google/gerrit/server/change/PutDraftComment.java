@@ -377,14 +377,14 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|PutDraft
+DECL|class|PutDraftComment
 specifier|public
 class|class
-name|PutDraft
+name|PutDraftComment
 implements|implements
 name|RestModifyView
 argument_list|<
-name|DraftResource
+name|DraftCommentResource
 argument_list|,
 name|DraftInput
 argument_list|>
@@ -401,7 +401,7 @@ decl_stmt|;
 DECL|field|delete
 specifier|private
 specifier|final
-name|DeleteDraft
+name|DeleteDraftComment
 name|delete
 decl_stmt|;
 DECL|field|plcUtil
@@ -432,8 +432,8 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutDraft (Provider<ReviewDb> db, DeleteDraft delete, PatchLineCommentsUtil plcUtil, ChangeUpdate.Factory updateFactory, CommentJson commentJson, PatchListCache patchListCache)
-name|PutDraft
+DECL|method|PutDraftComment (Provider<ReviewDb> db, DeleteDraftComment delete, PatchLineCommentsUtil plcUtil, ChangeUpdate.Factory updateFactory, CommentJson commentJson, PatchListCache patchListCache)
+name|PutDraftComment
 parameter_list|(
 name|Provider
 argument_list|<
@@ -441,7 +441,7 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
-name|DeleteDraft
+name|DeleteDraftComment
 name|delete
 parameter_list|,
 name|PatchLineCommentsUtil
@@ -498,7 +498,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (DraftResource rsrc, DraftInput in)
+DECL|method|apply (DraftCommentResource rsrc, DraftInput in)
 specifier|public
 name|Response
 argument_list|<
@@ -506,7 +506,7 @@ name|CommentInfo
 argument_list|>
 name|apply
 parameter_list|(
-name|DraftResource
+name|DraftCommentResource
 name|rsrc
 parameter_list|,
 name|DraftInput
