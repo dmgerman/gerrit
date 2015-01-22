@@ -986,7 +986,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|ChangeCache
+name|SearchingChangeCacheImpl
 import|;
 end_import
 
@@ -2140,7 +2140,7 @@ argument_list|)
 expr_stmt|;
 name|install
 argument_list|(
-name|ChangeCache
+name|SearchingChangeCacheImpl
 operator|.
 name|module
 argument_list|()
@@ -3080,7 +3080,7 @@ argument_list|)
 operator|.
 name|to
 argument_list|(
-name|ChangeCache
+name|SearchingChangeCacheImpl
 operator|.
 name|class
 argument_list|)
