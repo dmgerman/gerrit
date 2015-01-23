@@ -2331,7 +2331,7 @@ name|accountId
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 condition|)
@@ -2344,7 +2344,7 @@ name|accountId
 argument_list|,
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|Optional
@@ -2368,14 +2368,14 @@ name|LabelId
 argument_list|(
 name|l
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 argument_list|)
 argument_list|,
 name|l
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|,
 operator|new

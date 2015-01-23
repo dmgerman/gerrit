@@ -2494,8 +2494,9 @@ block|}
 name|AdvertisedObjectsCacheKey
 name|cacheKey
 init|=
-operator|new
 name|AdvertisedObjectsCacheKey
+operator|.
+name|create
 argument_list|(
 operator|(
 operator|(

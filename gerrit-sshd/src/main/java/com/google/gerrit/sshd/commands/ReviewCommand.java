@@ -1068,7 +1068,7 @@ name|checkName
 argument_list|(
 name|v
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1079,12 +1079,12 @@ name|put
 argument_list|(
 name|v
 operator|.
-name|getLabel
+name|label
 argument_list|()
 argument_list|,
 name|v
 operator|.
-name|getValue
+name|value
 argument_list|()
 argument_list|)
 expr_stmt|;

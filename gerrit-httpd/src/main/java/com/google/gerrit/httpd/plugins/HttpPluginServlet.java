@@ -1946,8 +1946,9 @@ decl_stmt|;
 name|PluginResourceKey
 name|key
 init|=
-operator|new
 name|PluginResourceKey
+operator|.
+name|create
 argument_list|(
 name|holder
 operator|.

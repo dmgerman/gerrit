@@ -2826,8 +2826,9 @@ name|msg
 argument_list|,
 name|FOOTER_LABEL
 argument_list|,
-operator|new
 name|LabelVote
+operator|.
+name|create
 argument_list|(
 name|e
 operator|.
