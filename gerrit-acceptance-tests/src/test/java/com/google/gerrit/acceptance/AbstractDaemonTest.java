@@ -1223,6 +1223,37 @@ name|baseConfig
 return|;
 block|}
 block|}
+DECL|method|wholeTopicEnabledConfig ()
+specifier|protected
+specifier|static
+name|Config
+name|wholeTopicEnabledConfig
+parameter_list|()
+block|{
+name|Config
+name|cfg
+init|=
+operator|new
+name|Config
+argument_list|()
+decl_stmt|;
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+literal|"change"
+argument_list|,
+literal|null
+argument_list|,
+literal|"submitWholeTopic"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|cfg
+return|;
+block|}
 DECL|method|beforeTest (Config cfg, boolean memory, boolean enableHttpd)
 specifier|private
 name|void
