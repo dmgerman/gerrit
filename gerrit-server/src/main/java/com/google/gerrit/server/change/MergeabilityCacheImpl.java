@@ -1694,6 +1694,9 @@ comment|/*inserter*/
 argument_list|,
 name|canMerge
 argument_list|,
+literal|null
+comment|/*batchRefUpdate*/
+argument_list|,
 name|accepted
 argument_list|,
 name|key
