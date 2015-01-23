@@ -66,6 +66,22 @@ name|common
 package|;
 end_package
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|Comment
+import|;
+end_import
+
 begin_class
 DECL|class|CommentInfo
 specifier|public

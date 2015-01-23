@@ -200,7 +200,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|SubmitType
 import|;

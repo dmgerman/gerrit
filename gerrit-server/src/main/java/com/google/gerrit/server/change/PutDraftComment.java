@@ -124,9 +124,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|CommentInfo
+name|Side
 import|;
 end_import
 
@@ -142,7 +142,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|Side
+name|CommentInfo
 import|;
 end_import
 

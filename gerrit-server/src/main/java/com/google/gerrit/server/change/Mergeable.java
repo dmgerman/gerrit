@@ -92,9 +92,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|MergeableInfo
+name|SubmitType
 import|;
 end_import
 
@@ -110,7 +110,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|SubmitType
+name|MergeableInfo
 import|;
 end_import
 

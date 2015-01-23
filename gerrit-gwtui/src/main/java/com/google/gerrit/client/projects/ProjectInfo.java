@@ -90,9 +90,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
-operator|.
-name|projects
+name|client
 operator|.
 name|ProjectState
 import|;

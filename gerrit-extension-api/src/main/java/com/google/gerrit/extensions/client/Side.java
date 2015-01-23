@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.extensions.common
+DECL|package|com.google.gerrit.extensions.client
 package|package
 name|com
 operator|.
@@ -62,30 +62,21 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 package|;
 end_package
 
 begin_enum
-DECL|enum|SubmitType
+DECL|enum|Side
 specifier|public
 enum|enum
-name|SubmitType
+name|Side
 block|{
-DECL|enumConstant|FAST_FORWARD_ONLY
-name|FAST_FORWARD_ONLY
+DECL|enumConstant|PARENT
+DECL|enumConstant|REVISION
+name|PARENT
 block|,
-DECL|enumConstant|MERGE_IF_NECESSARY
-name|MERGE_IF_NECESSARY
-block|,
-DECL|enumConstant|REBASE_IF_NECESSARY
-name|REBASE_IF_NECESSARY
-block|,
-DECL|enumConstant|MERGE_ALWAYS
-name|MERGE_ALWAYS
-block|,
-DECL|enumConstant|CHERRY_PICK
-name|CHERRY_PICK
+name|REVISION
 block|}
 end_enum
 

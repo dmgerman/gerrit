@@ -68,6 +68,22 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
+name|SubmitType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util

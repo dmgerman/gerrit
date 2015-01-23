@@ -136,9 +136,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|ChangeInfo
+name|ChangeStatus
 import|;
 end_import
 
@@ -154,7 +154,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|ChangeStatus
+name|ChangeInfo
 import|;
 end_import
 

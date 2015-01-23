@@ -94,7 +94,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ChangeStatus
 import|;

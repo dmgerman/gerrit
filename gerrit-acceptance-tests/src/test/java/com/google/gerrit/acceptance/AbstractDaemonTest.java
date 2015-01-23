@@ -300,9 +300,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
-name|ChangeInfo
+name|ListChangesOption
 import|;
 end_import
 
@@ -318,7 +318,7 @@ name|extensions
 operator|.
 name|common
 operator|.
-name|ListChangesOption
+name|ChangeInfo
 import|;
 end_import
 

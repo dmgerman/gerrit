@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -94,7 +94,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -112,7 +112,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -130,7 +130,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -148,7 +148,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -166,7 +166,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -184,7 +184,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -202,7 +202,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -220,7 +220,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -238,7 +238,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -256,7 +256,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -274,7 +274,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -292,7 +292,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -310,7 +310,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -328,7 +328,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -346,7 +346,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 operator|.
@@ -744,6 +744,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|client
+operator|.
+name|ListChangesOption
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|common
 operator|.
 name|AccountInfo
@@ -875,22 +891,6 @@ operator|.
 name|common
 operator|.
 name|LabelInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|common
-operator|.
-name|ListChangesOption
 import|;
 end_import
 

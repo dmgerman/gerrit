@@ -688,7 +688,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|ListChangesOption
 import|;
@@ -704,7 +704,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|SubmitType
 import|;

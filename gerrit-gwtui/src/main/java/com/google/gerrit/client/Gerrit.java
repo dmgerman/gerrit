@@ -558,7 +558,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|webui
+name|client
 operator|.
 name|GerritTopMenu
 import|;

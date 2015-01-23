@@ -92,9 +92,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|api
-operator|.
-name|projects
+name|client
 operator|.
 name|ProjectState
 import|;
@@ -110,7 +108,7 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|client
 operator|.
 name|SubmitType
 import|;
