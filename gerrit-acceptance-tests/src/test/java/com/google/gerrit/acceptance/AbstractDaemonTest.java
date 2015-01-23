@@ -1248,11 +1248,11 @@ name|baseConfig
 return|;
 block|}
 block|}
-DECL|method|wholeTopicEnabledConfig ()
+DECL|method|submitWholeTopicEnabledConfig ()
 specifier|protected
 specifier|static
 name|Config
-name|wholeTopicEnabledConfig
+name|submitWholeTopicEnabledConfig
 parameter_list|()
 block|{
 name|Config
@@ -1326,6 +1326,27 @@ argument_list|,
 literal|"allowDrafts"
 argument_list|,
 literal|true
+argument_list|)
+return|;
+block|}
+DECL|method|isSubmitWholeTopicEnabled ()
+specifier|protected
+name|boolean
+name|isSubmitWholeTopicEnabled
+parameter_list|()
+block|{
+return|return
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"change"
+argument_list|,
+literal|null
+argument_list|,
+literal|"submitWholeTopic"
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
