@@ -2175,7 +2175,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|byTopic
+name|byTopicOpen
 argument_list|(
 name|topic
 argument_list|)
@@ -2834,7 +2834,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|byTopic
+name|byTopicOpen
 argument_list|(
 name|topic
 argument_list|)

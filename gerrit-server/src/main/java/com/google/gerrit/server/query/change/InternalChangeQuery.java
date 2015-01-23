@@ -686,13 +686,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byTopic (String topic)
+DECL|method|byTopicOpen (String topic)
 specifier|public
 name|List
 argument_list|<
 name|ChangeData
 argument_list|>
-name|byTopic
+name|byTopicOpen
 parameter_list|(
 name|String
 name|topic
@@ -703,9 +703,15 @@ block|{
 return|return
 name|query
 argument_list|(
+name|and
+argument_list|(
 name|topic
 argument_list|(
 name|topic
+argument_list|)
+argument_list|,
+name|open
+argument_list|()
 argument_list|)
 argument_list|)
 return|;
