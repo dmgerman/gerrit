@@ -2150,10 +2150,12 @@ condition|(
 name|submitWholeTopic
 operator|&&
 operator|!
-name|topic
+name|Strings
 operator|.
-name|isEmpty
-argument_list|()
+name|isNullOrEmpty
+argument_list|(
+name|topic
+argument_list|)
 condition|)
 block|{
 name|List
