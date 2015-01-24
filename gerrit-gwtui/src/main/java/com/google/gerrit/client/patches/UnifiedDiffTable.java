@@ -2313,6 +2313,10 @@ block|{
 if|if
 condition|(
 name|cd
+operator|==
+literal|null
+operator|||
+name|cd
 operator|.
 name|isEmpty
 argument_list|()

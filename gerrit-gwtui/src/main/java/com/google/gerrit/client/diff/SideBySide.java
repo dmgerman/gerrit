@@ -4310,17 +4310,6 @@ argument_list|>
 name|getLinks
 parameter_list|()
 block|{
-comment|// skip change edits
-if|if
-condition|(
-name|revision
-operator|.
-name|get
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 name|InlineHyperlink
 name|toUnifiedDiffLink
 init|=
@@ -4375,16 +4364,6 @@ argument_list|(
 name|toUnifiedDiffLink
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-name|Collections
-operator|.
-name|emptyList
-argument_list|()
-return|;
-block|}
 block|}
 DECL|method|getUnifiedDiffUrl ()
 specifier|private
