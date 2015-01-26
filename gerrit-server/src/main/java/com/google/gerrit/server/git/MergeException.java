@@ -87,11 +87,10 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
-DECL|method|MergeException (final String msg)
+DECL|method|MergeException (String msg)
 specifier|public
 name|MergeException
 parameter_list|(
-specifier|final
 name|String
 name|msg
 parameter_list|)
@@ -99,20 +98,30 @@ block|{
 name|super
 argument_list|(
 name|msg
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MergeException (final String msg, final Throwable why)
+DECL|method|MergeException (Throwable why)
 specifier|public
 name|MergeException
 parameter_list|(
-specifier|final
+name|Throwable
+name|why
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|why
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|MergeException (String msg, Throwable why)
+specifier|public
+name|MergeException
+parameter_list|(
 name|String
 name|msg
 parameter_list|,
-specifier|final
 name|Throwable
 name|why
 parameter_list|)
