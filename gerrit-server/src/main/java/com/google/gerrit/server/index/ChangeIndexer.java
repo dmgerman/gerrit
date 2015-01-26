@@ -524,6 +524,49 @@ name|indexes
 parameter_list|)
 function_decl|;
 block|}
+DECL|method|allAsList ( List<? extends ListenableFuture<?>> futures)
+specifier|public
+specifier|static
+name|CheckedFuture
+argument_list|<
+name|?
+argument_list|,
+name|IOException
+argument_list|>
+name|allAsList
+parameter_list|(
+name|List
+argument_list|<
+name|?
+extends|extends
+name|ListenableFuture
+argument_list|<
+name|?
+argument_list|>
+argument_list|>
+name|futures
+parameter_list|)
+block|{
+comment|// allAsList propagates the first seen exception, wrapped in
+comment|// ExecutionException, so we can reuse the same mapper as for a single
+comment|// future. Assume the actual contents of the exception are not useful to
+comment|// callers. All exceptions are already logged by IndexTask.
+return|return
+name|Futures
+operator|.
+name|makeChecked
+argument_list|(
+name|Futures
+operator|.
+name|allAsList
+argument_list|(
+name|futures
+argument_list|)
+argument_list|,
+name|MAPPER
+argument_list|)
+return|;
+block|}
 DECL|field|MAPPER
 specifier|private
 specifier|static
@@ -886,23 +929,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// allAsList propagates the first seen exception, wrapped in
-comment|// ExecutionException, so we can reuse the same mapper as for a single
-comment|// future. Assume the actual contents of the exception are not useful to
-comment|// callers. All exceptions are already logged by IndexTask.
 return|return
-name|Futures
-operator|.
-name|makeChecked
-argument_list|(
-name|Futures
-operator|.
 name|allAsList
 argument_list|(
 name|futures
-argument_list|)
-argument_list|,
-name|MAPPER
 argument_list|)
 return|;
 block|}
