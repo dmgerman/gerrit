@@ -90,6 +90,18 @@ name|Provider
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
+name|ProvisionException
+import|;
+end_import
+
 begin_class
 DECL|class|Schema_83
 specifier|public
@@ -100,19 +112,35 @@ name|SchemaVersion
 block|{
 annotation|@
 name|Inject
-DECL|method|Schema_83 (Provider<Schema_82> prior)
+DECL|method|Schema_83 ()
 name|Schema_83
-parameter_list|(
-name|Provider
-argument_list|<
-name|Schema_82
-argument_list|>
-name|prior
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
-name|prior
+operator|new
+name|Provider
+argument_list|<
+name|SchemaVersion
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|SchemaVersion
+name|get
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|ProvisionException
+argument_list|(
+literal|"Upgrade first to 2.8 or 2.9"
+argument_list|)
+throw|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
