@@ -290,7 +290,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeListener
+name|EventListener
 import|;
 end_import
 
@@ -560,7 +560,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeEvent
+name|ChangeMergedEvent
 import|;
 end_import
 
@@ -576,7 +576,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeMergedEvent
+name|Event
 import|;
 end_import
 
@@ -1009,19 +1009,19 @@ argument_list|)
 decl_stmt|;
 name|hooks
 operator|.
-name|addChangeListener
+name|addEventListener
 argument_list|(
 operator|new
-name|ChangeListener
+name|EventListener
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
 name|void
-name|onChangeEvent
+name|onEvent
 parameter_list|(
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{
@@ -1033,7 +1033,7 @@ name|ChangeMergedEvent
 condition|)
 block|{
 name|ChangeMergedEvent
-name|cMEvent
+name|changeMergedEvent
 init|=
 operator|(
 name|ChangeMergedEvent
@@ -1044,13 +1044,13 @@ name|mergeResults
 operator|.
 name|put
 argument_list|(
-name|cMEvent
+name|changeMergedEvent
 operator|.
 name|change
 operator|.
 name|number
 argument_list|,
-name|cMEvent
+name|changeMergedEvent
 operator|.
 name|newRev
 argument_list|)

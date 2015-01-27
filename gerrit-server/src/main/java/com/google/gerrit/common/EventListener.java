@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2014 The Android Open Source Project
+comment|// Copyright (C) 2010 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.events
+DECL|package|com.google.gerrit.common
 package|package
 name|com
 operator|.
@@ -60,9 +60,7 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
-operator|.
-name|events
+name|common
 package|;
 end_package
 
@@ -74,11 +72,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|annotations
 operator|.
-name|Project
+name|ExtensionPoint
 import|;
 end_import
 
@@ -92,92 +90,31 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|IdentifiedUser
+name|events
+operator|.
+name|Event
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|transport
-operator|.
-name|ReceiveCommand
-import|;
-end_import
-
-begin_class
-DECL|class|RefReceivedEvent
-specifier|public
-class|class
-name|RefReceivedEvent
-extends|extends
-name|RefEvent
-block|{
-DECL|field|command
-specifier|public
-name|ReceiveCommand
-name|command
-decl_stmt|;
-DECL|field|project
-specifier|public
-name|Project
-name|project
-decl_stmt|;
-DECL|field|user
-specifier|public
-name|IdentifiedUser
-name|user
-decl_stmt|;
-DECL|method|RefReceivedEvent ()
-specifier|public
-name|RefReceivedEvent
-parameter_list|()
-block|{
-name|super
-argument_list|(
-literal|"ref-received"
-argument_list|)
-expr_stmt|;
-block|}
+begin_interface
 annotation|@
-name|Override
-DECL|method|getProjectNameKey ()
+name|ExtensionPoint
+DECL|interface|EventListener
 specifier|public
-name|Project
-operator|.
-name|NameKey
-name|getProjectNameKey
-parameter_list|()
+interface|interface
+name|EventListener
 block|{
-return|return
-name|project
-operator|.
-name|getNameKey
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRefName ()
+DECL|method|onEvent (Event event)
 specifier|public
-name|String
-name|getRefName
-parameter_list|()
-block|{
-return|return
-name|command
-operator|.
-name|getRefName
-argument_list|()
-return|;
+name|void
+name|onEvent
+parameter_list|(
+name|Event
+name|event
+parameter_list|)
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

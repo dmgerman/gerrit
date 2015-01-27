@@ -422,22 +422,6 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|events
-operator|.
 name|ChangeMergedEvent
 import|;
 end_import
@@ -487,6 +471,22 @@ operator|.
 name|events
 operator|.
 name|DraftPublishedEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|events
+operator|.
+name|Event
 import|;
 end_import
 
@@ -1084,15 +1084,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|class|ChangeListenerHolder
+DECL|class|EventListenerHolder
 specifier|private
 specifier|static
 class|class
-name|ChangeListenerHolder
+name|EventListenerHolder
 block|{
 DECL|field|listener
 specifier|final
-name|ChangeListener
+name|EventListener
 name|listener
 decl_stmt|;
 DECL|field|user
@@ -1100,10 +1100,10 @@ specifier|final
 name|CurrentUser
 name|user
 decl_stmt|;
-DECL|method|ChangeListenerHolder (ChangeListener l, CurrentUser u)
-name|ChangeListenerHolder
+DECL|method|EventListenerHolder (EventListener l, CurrentUser u)
+name|EventListenerHolder
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|l
 parameter_list|,
 name|CurrentUser
@@ -1310,9 +1310,9 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|ChangeListener
+name|EventListener
 argument_list|,
-name|ChangeListenerHolder
+name|EventListenerHolder
 argument_list|>
 name|listeners
 init|=
@@ -1327,7 +1327,7 @@ specifier|private
 specifier|final
 name|DynamicSet
 argument_list|<
-name|ChangeListener
+name|EventListener
 argument_list|>
 name|unrestrictedListeners
 decl_stmt|;
@@ -1485,7 +1485,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final DynamicSet<ChangeListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final DynamicSet<EventListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1528,7 +1528,7 @@ parameter_list|,
 specifier|final
 name|DynamicSet
 argument_list|<
-name|ChangeListener
+name|EventListener
 argument_list|>
 name|unrestrictedListeners
 parameter_list|)
@@ -1999,12 +1999,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|addChangeListener (ChangeListener listener, CurrentUser user)
+DECL|method|addEventListener (EventListener listener, CurrentUser user)
 specifier|public
 name|void
-name|addChangeListener
+name|addEventListener
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|listener
 parameter_list|,
 name|CurrentUser
@@ -2018,7 +2018,7 @@ argument_list|(
 name|listener
 argument_list|,
 operator|new
-name|ChangeListenerHolder
+name|EventListenerHolder
 argument_list|(
 name|listener
 argument_list|,
@@ -2029,12 +2029,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|removeChangeListener (ChangeListener listener)
+DECL|method|removeEventListener (EventListener listener)
 specifier|public
 name|void
-name|removeChangeListener
+name|removeEventListener
 parameter_list|(
-name|ChangeListener
+name|EventListener
 name|listener
 parameter_list|)
 block|{
@@ -5238,7 +5238,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (final Change change, final ChangeEvent event, final ReviewDb db)
+DECL|method|postEvent (final Change change, final Event event, final ReviewDb db)
 specifier|public
 name|void
 name|postEvent
@@ -5248,7 +5248,7 @@ name|Change
 name|change
 parameter_list|,
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|,
 specifier|final
@@ -5270,7 +5270,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (final Branch.NameKey branchName, final ChangeEvent event)
+DECL|method|postEvent (final Branch.NameKey branchName, final Event event)
 specifier|public
 name|void
 name|postEvent
@@ -5282,7 +5282,7 @@ name|NameKey
 name|branchName
 parameter_list|,
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{
@@ -5294,19 +5294,19 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEventForUnrestrictedListeners (final ChangeEvent event)
+DECL|method|fireEventForUnrestrictedListeners (final Event event)
 specifier|private
 name|void
 name|fireEventForUnrestrictedListeners
 parameter_list|(
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{
 for|for
 control|(
-name|ChangeListener
+name|EventListener
 name|listener
 range|:
 name|unrestrictedListeners
@@ -5314,14 +5314,14 @@ control|)
 block|{
 name|listener
 operator|.
-name|onChangeEvent
+name|onEvent
 argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireEvent (final Change change, final ChangeEvent event, final ReviewDb db)
+DECL|method|fireEvent (final Change change, final Event event, final ReviewDb db)
 specifier|private
 name|void
 name|fireEvent
@@ -5331,7 +5331,7 @@ name|Change
 name|change
 parameter_list|,
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|,
 specifier|final
@@ -5343,7 +5343,7 @@ name|OrmException
 block|{
 for|for
 control|(
-name|ChangeListenerHolder
+name|EventListenerHolder
 name|holder
 range|:
 name|listeners
@@ -5370,7 +5370,7 @@ name|holder
 operator|.
 name|listener
 operator|.
-name|onChangeEvent
+name|onEvent
 argument_list|(
 name|event
 argument_list|)
@@ -5383,7 +5383,7 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEvent (Branch.NameKey branchName, final ChangeEvent event)
+DECL|method|fireEvent (Branch.NameKey branchName, final Event event)
 specifier|private
 name|void
 name|fireEvent
@@ -5394,13 +5394,13 @@ name|NameKey
 name|branchName
 parameter_list|,
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{
 for|for
 control|(
-name|ChangeListenerHolder
+name|EventListenerHolder
 name|holder
 range|:
 name|listeners
@@ -5425,7 +5425,7 @@ name|holder
 operator|.
 name|listener
 operator|.
-name|onChangeEvent
+name|onEvent
 argument_list|(
 name|event
 argument_list|)

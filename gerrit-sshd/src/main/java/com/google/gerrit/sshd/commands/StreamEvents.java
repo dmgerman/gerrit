@@ -108,7 +108,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeListener
+name|EventListener
 import|;
 end_import
 
@@ -170,7 +170,7 @@ name|server
 operator|.
 name|events
 operator|.
-name|ChangeEvent
+name|Event
 import|;
 end_import
 
@@ -413,7 +413,7 @@ specifier|private
 specifier|final
 name|LinkedBlockingQueue
 argument_list|<
-name|ChangeEvent
+name|Event
 argument_list|>
 name|queue
 init|=
@@ -461,21 +461,21 @@ decl_stmt|;
 DECL|field|listener
 specifier|private
 specifier|final
-name|ChangeListener
+name|EventListener
 name|listener
 init|=
 operator|new
-name|ChangeListener
+name|EventListener
 argument_list|()
 block|{
 annotation|@
 name|Override
 specifier|public
 name|void
-name|onChangeEvent
+name|onEvent
 parameter_list|(
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{
@@ -644,7 +644,7 @@ argument_list|)
 expr_stmt|;
 name|hooks
 operator|.
-name|addChangeListener
+name|addEventListener
 argument_list|(
 name|listener
 argument_list|,
@@ -666,7 +666,7 @@ parameter_list|)
 block|{
 name|hooks
 operator|.
-name|removeChangeListener
+name|removeEventListener
 argument_list|(
 name|listener
 argument_list|)
@@ -699,7 +699,7 @@ parameter_list|()
 block|{
 name|hooks
 operator|.
-name|removeChangeListener
+name|removeEventListener
 argument_list|(
 name|listener
 argument_list|)
@@ -758,13 +758,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|offer (final ChangeEvent event)
+DECL|method|offer (final Event event)
 specifier|private
 name|void
 name|offer
 parameter_list|(
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 parameter_list|)
 block|{
@@ -813,7 +813,7 @@ block|}
 block|}
 DECL|method|poll ()
 specifier|private
-name|ChangeEvent
+name|Event
 name|poll
 parameter_list|()
 block|{
@@ -822,7 +822,7 @@ init|(
 name|taskLock
 init|)
 block|{
-name|ChangeEvent
+name|Event
 name|event
 init|=
 name|queue
@@ -884,7 +884,7 @@ comment|// accepting output. Either way terminate this instance.
 comment|//
 name|hooks
 operator|.
-name|removeChangeListener
+name|removeEventListener
 argument_list|(
 name|listener
 argument_list|)
@@ -915,7 +915,7 @@ literal|false
 expr_stmt|;
 block|}
 specifier|final
-name|ChangeEvent
+name|Event
 name|event
 init|=
 name|poll
