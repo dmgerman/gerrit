@@ -444,11 +444,9 @@ parameter_list|()
 block|{
 name|call
 operator|.
-name|addParameter
+name|addParameterTrue
 argument_list|(
 literal|"weblinks-only"
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 return|return
