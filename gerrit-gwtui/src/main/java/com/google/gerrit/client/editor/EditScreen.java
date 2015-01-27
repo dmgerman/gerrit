@@ -1544,8 +1544,12 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
+name|group1
+operator|.
+name|add
+argument_list|(
 operator|new
-name|GerritCallback
+name|AsyncCallback
 argument_list|<
 name|DiffInfo
 argument_list|>
@@ -1566,7 +1570,18 @@ operator|=
 name|diffInfo
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onFailure
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{           }
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
