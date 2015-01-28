@@ -1758,10 +1758,13 @@ expr_stmt|;
 block|}
 name|assertThat
 argument_list|(
+operator|(
+name|Iterable
+argument_list|<
+name|?
+argument_list|>
+operator|)
 name|expectedReviewerIds
-operator|.
-name|isEmpty
-argument_list|()
 argument_list|)
 operator|.
 name|named
@@ -1771,7 +1774,7 @@ operator|+
 name|expectedReviewerIds
 argument_list|)
 operator|.
-name|isTrue
+name|isEmpty
 argument_list|()
 expr_stmt|;
 block|}
