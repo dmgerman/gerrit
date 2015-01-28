@@ -1401,8 +1401,8 @@ block|}
 block|}
 comment|/** Split a command line into a string array. */
 DECL|method|split (String commandLine)
-specifier|static
 specifier|public
+specifier|static
 name|String
 index|[]
 name|split

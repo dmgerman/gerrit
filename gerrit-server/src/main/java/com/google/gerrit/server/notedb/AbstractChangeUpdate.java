@@ -944,8 +944,8 @@ return|;
 block|}
 comment|/** Writes commit to a BatchMetaDataUpdate without committing the batch. */
 DECL|method|writeCommit (BatchMetaDataUpdate batch)
-specifier|abstract
 specifier|public
+specifier|abstract
 name|void
 name|writeCommit
 parameter_list|(
@@ -959,8 +959,8 @@ name|IOException
 function_decl|;
 comment|/**    * @return the NameKey for the project where the update will be stored,    *    which is not necessarily the same as the change's project.    */
 DECL|method|getProjectName ()
-specifier|abstract
 specifier|protected
+specifier|abstract
 name|Project
 operator|.
 name|NameKey

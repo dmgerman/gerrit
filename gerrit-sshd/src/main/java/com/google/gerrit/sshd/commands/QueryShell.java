@@ -3763,8 +3763,8 @@ expr_stmt|;
 block|}
 DECL|class|Function
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Function
 block|{

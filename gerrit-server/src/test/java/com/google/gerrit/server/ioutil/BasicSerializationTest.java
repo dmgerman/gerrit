@@ -1111,6 +1111,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|assertEquals
 argument_list|(
 name|expect
@@ -1124,6 +1125,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|r (final byte[] buf)
 specifier|private

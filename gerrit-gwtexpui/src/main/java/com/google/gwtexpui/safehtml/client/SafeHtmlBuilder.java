@@ -1428,8 +1428,8 @@ return|;
 block|}
 DECL|class|Impl
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Impl
 block|{

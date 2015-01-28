@@ -209,8 +209,8 @@ name|SparseHtmlFile
 block|{
 DECL|class|EditFilter
 specifier|public
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|EditFilter
 block|{

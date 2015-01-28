@@ -764,8 +764,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|EntryKey
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|EntryKey
 block|{

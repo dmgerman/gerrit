@@ -602,8 +602,8 @@ expr_stmt|;
 block|}
 DECL|method|get (String p, JavaScriptObject r)
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 name|void
 name|get
 parameter_list|(
@@ -646,8 +646,8 @@ expr_stmt|;
 block|}
 DECL|method|put (String p, JavaScriptObject r)
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 name|void
 name|put
 parameter_list|(
@@ -694,8 +694,8 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 DECL|method|put (String p, String c, JavaScriptObject r)
 name|void
 name|put
@@ -746,8 +746,8 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 DECL|method|put (String p, JavaScriptObject c, JavaScriptObject r)
 name|void
 name|put
@@ -798,8 +798,8 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 DECL|method|post (String p, String c, JavaScriptObject r)
 name|void
 name|post
@@ -850,8 +850,8 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 DECL|method|post (String p, JavaScriptObject c, JavaScriptObject r)
 name|void
 name|post
@@ -893,8 +893,8 @@ expr_stmt|;
 block|}
 DECL|method|delete (String p, JavaScriptObject r)
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 name|void
 name|delete
 parameter_list|(
@@ -907,8 +907,8 @@ parameter_list|)
 comment|/*-{ $wnd.Gerrit.del(p, r) }-*/
 function_decl|;
 specifier|private
-specifier|native
 specifier|static
+specifier|native
 parameter_list|<
 name|T
 extends|extends

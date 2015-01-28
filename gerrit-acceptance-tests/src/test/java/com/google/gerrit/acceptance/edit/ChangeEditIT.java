@@ -896,8 +896,8 @@ name|AbstractDaemonTest
 block|{
 DECL|field|FILE_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FILE_NAME
 init|=
@@ -905,8 +905,8 @@ literal|"foo"
 decl_stmt|;
 DECL|field|FILE_NAME2
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FILE_NAME2
 init|=
@@ -914,8 +914,8 @@ literal|"foo2"
 decl_stmt|;
 DECL|field|FILE_NAME3
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FILE_NAME3
 init|=
@@ -923,8 +923,8 @@ literal|"foo3"
 decl_stmt|;
 DECL|field|CONTENT_OLD
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|byte
 index|[]
 name|CONTENT_OLD
@@ -938,8 +938,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|CONTENT_NEW
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|byte
 index|[]
 name|CONTENT_NEW
@@ -953,8 +953,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|CONTENT_NEW2_STR
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CONTENT_NEW2_STR
 init|=
@@ -962,8 +962,8 @@ literal|"quxÃÃÃÃÂµ"
 decl_stmt|;
 DECL|field|CONTENT_NEW2
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|byte
 index|[]
 name|CONTENT_NEW2

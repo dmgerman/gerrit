@@ -1560,8 +1560,8 @@ block|}
 block|}
 block|}
 DECL|method|unloadPlugin (Plugin plugin)
-specifier|synchronized
 specifier|private
+specifier|synchronized
 name|void
 name|unloadPlugin
 parameter_list|(

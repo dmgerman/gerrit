@@ -3921,6 +3921,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|msg
 operator|.
 name|append
@@ -3928,6 +3929,7 @@ argument_list|(
 literal|"; "
 argument_list|)
 expr_stmt|;
+block|}
 name|msg
 operator|.
 name|append
@@ -3955,6 +3957,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|msg
 operator|.
 name|append
@@ -3962,6 +3965,7 @@ argument_list|(
 literal|"; "
 argument_list|)
 expr_stmt|;
+block|}
 name|msg
 operator|.
 name|append
@@ -3989,6 +3993,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|msg
 operator|.
 name|append
@@ -3996,6 +4001,7 @@ argument_list|(
 literal|"; "
 argument_list|)
 expr_stmt|;
+block|}
 name|msg
 operator|.
 name|append

@@ -225,8 +225,8 @@ name|cfg
 return|;
 block|}
 DECL|method|parseAnnotation (Config cfg, GerritConfig c)
-specifier|static
 specifier|private
+specifier|static
 name|void
 name|parseAnnotation
 parameter_list|(

@@ -704,8 +704,8 @@ annotation|@
 name|AutoValue
 DECL|class|Result
 specifier|public
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Result
 block|{

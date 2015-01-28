@@ -86,8 +86,8 @@ block|{
 comment|/**      * Opens the link in a new window or tab      */
 DECL|field|BLANK
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|BLANK
 init|=
@@ -96,8 +96,8 @@ decl_stmt|;
 comment|/**      * Opens the link in the frame it was clicked.      */
 DECL|field|SELF
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SELF
 init|=
@@ -106,8 +106,8 @@ decl_stmt|;
 comment|/**      * Opens link in parent frame.      */
 DECL|field|PARENT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PARENT
 init|=
@@ -116,8 +116,8 @@ decl_stmt|;
 comment|/**      * Opens link in the full body of the window.      */
 DECL|field|TOP
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|TOP
 init|=

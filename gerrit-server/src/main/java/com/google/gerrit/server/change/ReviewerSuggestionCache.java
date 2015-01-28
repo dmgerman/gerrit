@@ -283,7 +283,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The suggest oracle may be called many times in rapid succession during the course of one operation.  * It would be easy to have a simple Cache<Boolean, List<Account>> with a short expiration time of 30s.  * Cache only has a single key we're just using Cache for the expiration behavior.  */
+comment|/**  * The suggest oracle may be called many times in rapid succession during the  * course of one operation.  * It would be easy to have a simple Cache<Boolean, List<Account>> with a short  * expiration time of 30s.  * Cache only has a single key we're just using Cache for the expiration behavior.  */
 end_comment
 
 begin_class

@@ -632,6 +632,7 @@ name|contents
 operator|!=
 literal|null
 condition|)
+block|{
 name|isNew
 operator|=
 name|contents
@@ -640,6 +641,7 @@ name|length
 operator|==
 literal|0
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -648,6 +650,7 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|FileNotFoundException
@@ -657,7 +660,9 @@ operator|+
 name|site_path
 argument_list|)
 throw|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|FileNotFoundException
@@ -667,6 +672,7 @@ operator|+
 name|site_path
 argument_list|)
 throw|;
+block|}
 block|}
 else|else
 block|{

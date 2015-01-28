@@ -270,8 +270,8 @@ name|JavaScriptObject
 block|{
 DECL|field|DEFAULT_SIZE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_SIZE
 init|=

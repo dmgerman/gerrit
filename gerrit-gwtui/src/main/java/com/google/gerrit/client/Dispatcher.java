@@ -6588,8 +6588,8 @@ return|;
 block|}
 DECL|class|AsyncSplit
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|AsyncSplit
 implements|implements

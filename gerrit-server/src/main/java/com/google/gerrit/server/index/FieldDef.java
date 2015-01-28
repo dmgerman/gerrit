@@ -171,8 +171,8 @@ block|{
 comment|/** Definition of a single (non-repeatable) field. */
 DECL|class|Single
 specifier|public
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Single
 parameter_list|<
@@ -231,8 +231,8 @@ block|}
 comment|/** Definition of a repeatable field. */
 DECL|class|Repeatable
 specifier|public
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Repeatable
 parameter_list|<

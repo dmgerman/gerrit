@@ -299,7 +299,9 @@ parameter_list|(
 name|IOException
 name|e2
 parameter_list|)
-block|{           }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 block|}

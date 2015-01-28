@@ -1715,8 +1715,8 @@ block|{     }
 block|}
 DECL|class|AbstractAnnotationVisitor
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|AbstractAnnotationVisitor
 extends|extends

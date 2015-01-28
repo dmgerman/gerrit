@@ -844,8 +844,8 @@ block|}
 block|}
 DECL|class|Format
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Format
 block|{
@@ -1140,8 +1140,8 @@ block|}
 block|}
 DECL|class|Function
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Function
 block|{

@@ -1528,8 +1528,8 @@ return|;
 block|}
 DECL|class|Event
 specifier|private
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Event
 implements|implements

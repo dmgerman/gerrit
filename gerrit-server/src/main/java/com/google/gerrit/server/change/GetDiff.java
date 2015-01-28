@@ -837,8 +837,8 @@ argument_list|>
 block|{
 DECL|field|CHANGE_TYPE
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|ImmutableMap
 argument_list|<
 name|Patch

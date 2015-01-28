@@ -233,8 +233,8 @@ argument_list|>
 block|{
 DECL|field|TIMESTAMP_FORMAT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|TIMESTAMP_FORMAT
 init|=

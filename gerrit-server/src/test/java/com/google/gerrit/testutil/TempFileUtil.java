@@ -126,8 +126,8 @@ argument_list|()
 decl_stmt|;
 DECL|method|createTempDirectory ()
 specifier|public
-specifier|synchronized
 specifier|static
+specifier|synchronized
 name|File
 name|createTempDirectory
 parameter_list|()

@@ -1963,15 +1963,15 @@ return|;
 block|}
 DECL|field|myArchive
 specifier|private
-specifier|volatile
 specifier|static
+specifier|volatile
 name|File
 name|myArchive
 decl_stmt|;
 DECL|field|myHome
 specifier|private
-specifier|volatile
 specifier|static
+specifier|volatile
 name|File
 name|myHome
 decl_stmt|;

@@ -348,8 +348,8 @@ function_decl|;
 DECL|method|install (String u)
 specifier|private
 specifier|static
-specifier|native
 specifier|final
+specifier|native
 name|Plugin
 name|install
 parameter_list|(

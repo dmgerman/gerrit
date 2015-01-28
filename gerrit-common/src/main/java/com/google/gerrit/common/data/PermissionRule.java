@@ -837,6 +837,7 @@ operator|<=
 name|getMin
 argument_list|()
 condition|)
+block|{
 name|r
 operator|.
 name|append
@@ -844,6 +845,7 @@ argument_list|(
 literal|'+'
 argument_list|)
 expr_stmt|;
+block|}
 name|r
 operator|.
 name|append
@@ -866,6 +868,7 @@ operator|<=
 name|getMax
 argument_list|()
 condition|)
+block|{
 name|r
 operator|.
 name|append
@@ -873,6 +876,7 @@ argument_list|(
 literal|'+'
 argument_list|)
 expr_stmt|;
+block|}
 name|r
 operator|.
 name|append
