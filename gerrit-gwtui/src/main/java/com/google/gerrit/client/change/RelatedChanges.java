@@ -1115,6 +1115,30 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|getTab
+argument_list|(
+name|Tab
+operator|.
+name|SAME_TOPIC
+argument_list|)
+operator|.
+name|setShowBranches
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|getTab
+argument_list|(
+name|Tab
+operator|.
+name|SAME_TOPIC
+argument_list|)
+operator|.
+name|setShowProjects
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|set (final ChangeInfo info, final String revision)
 name|void
@@ -1354,46 +1378,6 @@ operator|.
 name|append
 argument_list|(
 literal|"status:open"
-argument_list|)
-expr_stmt|;
-name|topicQuery
-operator|.
-name|append
-argument_list|(
-literal|" "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|op
-argument_list|(
-literal|"project"
-argument_list|,
-name|info
-operator|.
-name|project
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|topicQuery
-operator|.
-name|append
-argument_list|(
-literal|" "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|op
-argument_list|(
-literal|"branch"
-argument_list|,
-name|info
-operator|.
-name|branch
-argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|topicQuery
@@ -2263,6 +2247,16 @@ name|branch
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|c
+operator|.
+name|set_project
+argument_list|(
+name|i
+operator|.
+name|project
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|arr
 operator|.
 name|push
@@ -2392,6 +2386,14 @@ name|branch
 parameter_list|()
 comment|/*-{ return this.branch }-*/
 function_decl|;
+DECL|method|project ()
+specifier|final
+specifier|native
+name|String
+name|project
+parameter_list|()
+comment|/*-{ return this.project }-*/
+function_decl|;
 DECL|method|set_id (String i)
 specifier|final
 specifier|native
@@ -2424,6 +2426,17 @@ name|String
 name|b
 parameter_list|)
 comment|/*-{ if(b)this.branch=b; }-*/
+function_decl|;
+DECL|method|set_project (String b)
+specifier|final
+specifier|native
+name|void
+name|set_project
+parameter_list|(
+name|String
+name|b
+parameter_list|)
+comment|/*-{ if(b)this.project=b; }-*/
 function_decl|;
 DECL|method|legacy_id ()
 specifier|public

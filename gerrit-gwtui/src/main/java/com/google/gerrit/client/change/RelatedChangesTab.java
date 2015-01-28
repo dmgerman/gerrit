@@ -968,6 +968,11 @@ specifier|private
 name|boolean
 name|showBranches
 decl_stmt|;
+DECL|field|showProjects
+specifier|private
+name|boolean
+name|showProjects
+decl_stmt|;
 DECL|field|showIndirectAncestors
 specifier|private
 name|boolean
@@ -1040,6 +1045,21 @@ operator|.
 name|showBranches
 operator|=
 name|showBranches
+expr_stmt|;
+block|}
+DECL|method|setShowProjects (boolean showProjects)
+name|void
+name|setShowProjects
+parameter_list|(
+name|boolean
+name|showProjects
+parameter_list|)
+block|{
+name|this
+operator|.
+name|showProjects
+operator|=
+name|showProjects
 expr_stmt|;
 block|}
 DECL|method|setShowIndirectAncestors (boolean showIndirectAncestors)
@@ -1970,6 +1990,27 @@ argument_list|(
 literal|"onclick"
 argument_list|,
 name|OPEN
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|showProjects
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|info
+operator|.
+name|project
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|": "
 argument_list|)
 expr_stmt|;
 block|}
