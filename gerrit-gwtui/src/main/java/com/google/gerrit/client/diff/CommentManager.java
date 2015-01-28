@@ -435,7 +435,12 @@ specifier|private
 name|boolean
 name|expandAll
 decl_stmt|;
-DECL|method|CommentManager (SideBySide host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp)
+DECL|field|open
+specifier|private
+name|boolean
+name|open
+decl_stmt|;
+DECL|method|CommentManager (SideBySide host, PatchSet.Id base, PatchSet.Id revision, String path, CommentLinkProcessor clp, boolean open)
 name|CommentManager
 parameter_list|(
 name|SideBySide
@@ -456,6 +461,9 @@ name|path
 parameter_list|,
 name|CommentLinkProcessor
 name|clp
+parameter_list|,
+name|boolean
+name|open
 parameter_list|)
 block|{
 name|this
@@ -487,6 +495,12 @@ operator|.
 name|commentLinkProcessor
 operator|=
 name|clp
+expr_stmt|;
+name|this
+operator|.
+name|open
+operator|=
+name|open
 expr_stmt|;
 name|published
 operator|=
@@ -1044,6 +1058,8 @@ name|side
 argument_list|)
 argument_list|,
 name|info
+argument_list|,
+name|open
 argument_list|)
 decl_stmt|;
 name|group

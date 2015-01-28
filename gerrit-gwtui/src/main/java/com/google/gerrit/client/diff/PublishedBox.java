@@ -595,7 +595,7 @@ DECL|field|avatar
 name|AvatarImage
 name|avatar
 decl_stmt|;
-DECL|method|PublishedBox ( CommentGroup group, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info)
+DECL|method|PublishedBox ( CommentGroup group, CommentLinkProcessor clp, PatchSet.Id psId, CommentInfo info, boolean open)
 name|PublishedBox
 parameter_list|(
 name|CommentGroup
@@ -611,6 +611,9 @@ name|psId
 parameter_list|,
 name|CommentInfo
 name|info
+parameter_list|,
+name|boolean
+name|open
 parameter_list|)
 block|{
 name|super
@@ -795,6 +798,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|fix
+operator|.
+name|setVisible
+argument_list|(
+name|open
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
