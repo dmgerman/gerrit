@@ -4631,6 +4631,10 @@ operator|+
 literal|", "
 operator|+
 name|msg
+operator|+
+literal|'\n'
+operator|+
+name|branchUpdate
 argument_list|)
 throw|;
 default|default:
@@ -4645,6 +4649,10 @@ argument_list|()
 operator|.
 name|name
 argument_list|()
+operator|+
+literal|'\n'
+operator|+
+name|branchUpdate
 argument_list|)
 throw|;
 block|}
