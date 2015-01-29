@@ -1550,8 +1550,10 @@ argument_list|)
 decl_stmt|;
 name|env
 operator|.
-name|setCfgInjector
+name|setDbCfgInjector
 argument_list|(
+name|dbInjector
+argument_list|,
 name|cfgInjector
 argument_list|)
 expr_stmt|;

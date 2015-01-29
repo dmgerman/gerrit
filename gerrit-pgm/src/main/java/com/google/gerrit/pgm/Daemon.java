@@ -2097,8 +2097,10 @@ operator|.
 name|class
 argument_list|)
 operator|.
-name|setCfgInjector
+name|setDbCfgInjector
 argument_list|(
+name|dbInjector
+argument_list|,
 name|cfgInjector
 argument_list|)
 expr_stmt|;
