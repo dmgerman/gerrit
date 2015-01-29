@@ -3225,6 +3225,20 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|logDebug
+argument_list|(
+literal|"Opened branch {}: {}, (parsed to {})"
+argument_list|,
+name|destBranch
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|oldRef
+argument_list|,
+name|branchTip
+argument_list|)
+expr_stmt|;
 return|return
 name|branchUpdate
 return|;
@@ -4150,6 +4164,13 @@ name|chg
 argument_list|)
 expr_stmt|;
 block|}
+name|logDebug
+argument_list|(
+literal|"Submitting on this run: {}"
+argument_list|,
+name|toSubmit
+argument_list|)
+expr_stmt|;
 return|return
 name|toSubmit
 return|;
