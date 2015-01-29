@@ -4260,9 +4260,14 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+name|Objects
+operator|.
+name|equals
+argument_list|(
 name|branchTip
-operator|==
+argument_list|,
 name|currentTip
+argument_list|)
 condition|)
 block|{
 name|logDebug
