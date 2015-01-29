@@ -2886,6 +2886,22 @@ operator|==
 literal|null
 condition|)
 block|{
+name|reloadChange
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|change
+return|;
+block|}
+DECL|method|reloadChange ()
+specifier|public
+name|Change
+name|reloadChange
+parameter_list|()
+throws|throws
+name|OrmException
+block|{
 name|change
 operator|=
 name|db
@@ -2898,7 +2914,6 @@ argument_list|(
 name|legacyId
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|change
 return|;
