@@ -650,6 +650,21 @@ name|String
 name|buttonCreateChangeDescription
 parameter_list|()
 function_decl|;
+DECL|method|buttonEditConfig ()
+name|String
+name|buttonEditConfig
+parameter_list|()
+function_decl|;
+DECL|method|buttonEditConfigDescription ()
+name|String
+name|buttonEditConfigDescription
+parameter_list|()
+function_decl|;
+DECL|method|editConfigMessage ()
+name|String
+name|editConfigMessage
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
