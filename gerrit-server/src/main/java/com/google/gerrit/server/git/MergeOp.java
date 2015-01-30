@@ -3166,14 +3166,12 @@ block|}
 block|}
 name|logDebug
 argument_list|(
-literal|"Opened branch {}: {}, (parsed to {})"
+literal|"Opened branch {}: {}"
 argument_list|,
 name|destBranch
 operator|.
 name|get
 argument_list|()
-argument_list|,
-name|oldRef
 argument_list|,
 name|branchTip
 argument_list|)
