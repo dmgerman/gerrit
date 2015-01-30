@@ -70,6 +70,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|common
+operator|.
+name|annotations
+operator|.
+name|VisibleForTesting
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gerrit
 operator|.
 name|reviewdb
@@ -194,9 +208,11 @@ parameter_list|()
 function_decl|;
 block|}
 annotation|@
+name|VisibleForTesting
+annotation|@
 name|Inject
 DECL|method|InternalUser (CapabilityControl.Factory capabilityControlFactory)
-specifier|protected
+specifier|public
 name|InternalUser
 parameter_list|(
 name|CapabilityControl
