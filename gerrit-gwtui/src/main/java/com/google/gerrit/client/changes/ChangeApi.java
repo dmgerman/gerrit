@@ -76,6 +76,20 @@ name|gerrit
 operator|.
 name|client
 operator|.
+name|Gerrit
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
 name|changes
 operator|.
 name|ChangeInfo
@@ -299,12 +313,12 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Create a draft change. */
-DECL|method|createDraftChange (String project, String branch, String subject, String base, AsyncCallback<ChangeInfo> cb)
+comment|/** Create a new change.    *    * The new change is created as DRAFT unless the draft workflow is disabled    * by `change.allowDrafts = false` in the configuration, in which case the    * new change is created as NEW.    *    */
+DECL|method|createChange (String project, String branch, String subject, String base, AsyncCallback<ChangeInfo> cb)
 specifier|public
 specifier|static
 name|void
-name|createDraftChange
+name|createChange
 parameter_list|(
 name|String
 name|project
@@ -373,6 +387,17 @@ name|base
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|getConfig
+argument_list|()
+operator|.
+name|isAllowDraftChanges
+argument_list|()
+condition|)
+block|{
 name|input
 operator|.
 name|status
@@ -387,6 +412,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 operator|new
 name|RestApi
 argument_list|(

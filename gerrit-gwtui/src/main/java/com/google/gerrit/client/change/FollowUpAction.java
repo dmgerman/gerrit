@@ -245,7 +245,7 @@ parameter_list|)
 block|{
 name|ChangeApi
 operator|.
-name|createDraftChange
+name|createChange
 argument_list|(
 name|project
 argument_list|,

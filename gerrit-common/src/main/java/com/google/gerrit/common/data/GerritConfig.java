@@ -364,6 +364,11 @@ specifier|protected
 name|String
 name|replyTitle
 decl_stmt|;
+DECL|field|allowDraftChanges
+specifier|protected
+name|boolean
+name|allowDraftChanges
+decl_stmt|;
 DECL|method|getLoginUrl ()
 specifier|public
 name|String
@@ -1215,6 +1220,30 @@ block|{
 name|replyLabel
 operator|=
 name|r
+expr_stmt|;
+block|}
+DECL|method|isAllowDraftChanges ()
+specifier|public
+name|boolean
+name|isAllowDraftChanges
+parameter_list|()
+block|{
+return|return
+name|allowDraftChanges
+return|;
+block|}
+DECL|method|setAllowDraftChanges (boolean b)
+specifier|public
+name|void
+name|setAllowDraftChanges
+parameter_list|(
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|allowDraftChanges
+operator|=
+name|b
 expr_stmt|;
 block|}
 block|}
