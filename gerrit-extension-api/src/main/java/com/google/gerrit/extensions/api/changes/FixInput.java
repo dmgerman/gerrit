@@ -73,7 +73,13 @@ DECL|class|FixInput
 specifier|public
 class|class
 name|FixInput
-block|{ }
+block|{
+DECL|field|deletePatchSetIfCommitMissing
+specifier|public
+name|boolean
+name|deletePatchSetIfCommitMissing
+decl_stmt|;
+block|}
 end_class
 
 end_unit
