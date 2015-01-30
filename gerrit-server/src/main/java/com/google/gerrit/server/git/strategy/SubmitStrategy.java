@@ -310,20 +310,6 @@ name|jgit
 operator|.
 name|lib
 operator|.
-name|BatchRefUpdate
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
 name|ObjectInserter
 import|;
 end_import
@@ -525,12 +511,6 @@ specifier|final
 name|RevFlag
 name|canMergeFlag
 decl_stmt|;
-DECL|field|batchRefUpdate
-specifier|protected
-specifier|final
-name|BatchRefUpdate
-name|batchRefUpdate
-decl_stmt|;
 DECL|field|alreadyAccepted
 specifier|protected
 specifier|final
@@ -572,7 +552,7 @@ specifier|final
 name|MergeSorter
 name|mergeSorter
 decl_stmt|;
-DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, BatchRefUpdate batchRefUpdate, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer)
+DECL|method|Arguments (IdentifiedUser.GenericFactory identifiedUserFactory, Provider<PersonIdent> serverIdent, ReviewDb db, ChangeControl.GenericFactory changeControlFactory, Repository repo, RevWalk rw, ObjectInserter inserter, RevFlag canMergeFlag, Set<RevCommit> alreadyAccepted, Branch.NameKey destBranch, ApprovalsUtil approvalsUtil, MergeUtil mergeUtil, ChangeIndexer indexer)
 name|Arguments
 parameter_list|(
 name|IdentifiedUser
@@ -605,9 +585,6 @@ name|inserter
 parameter_list|,
 name|RevFlag
 name|canMergeFlag
-parameter_list|,
-name|BatchRefUpdate
-name|batchRefUpdate
 parameter_list|,
 name|Set
 argument_list|<
@@ -671,12 +648,6 @@ operator|.
 name|inserter
 operator|=
 name|inserter
-expr_stmt|;
-name|this
-operator|.
-name|batchRefUpdate
-operator|=
-name|batchRefUpdate
 expr_stmt|;
 name|this
 operator|.

@@ -1028,8 +1028,6 @@ literal|null
 argument_list|,
 name|canMergeFlag
 argument_list|,
-literal|null
-argument_list|,
 name|getAlreadyAccepted
 argument_list|(
 name|repo

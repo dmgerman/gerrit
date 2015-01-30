@@ -744,10 +744,6 @@ argument_list|,
 name|ValidatePolicy
 operator|.
 name|NONE
-argument_list|,
-name|args
-operator|.
-name|batchRefUpdate
 argument_list|)
 decl_stmt|;
 name|List
