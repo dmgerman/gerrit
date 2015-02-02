@@ -1617,6 +1617,12 @@ block|{
 if|if
 condition|(
 operator|!
+name|ready
+condition|)
+block|{
+if|if
+condition|(
+operator|!
 name|dataDir
 operator|.
 name|exists
@@ -1654,6 +1660,7 @@ name|ready
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
