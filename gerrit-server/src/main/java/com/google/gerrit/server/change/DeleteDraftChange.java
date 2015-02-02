@@ -533,7 +533,7 @@ throw|throw
 operator|new
 name|MethodNotAllowedException
 argument_list|(
-literal|"Draft workflow is disabled"
+literal|"draft workflow is disabled"
 argument_list|)
 throw|;
 block|}

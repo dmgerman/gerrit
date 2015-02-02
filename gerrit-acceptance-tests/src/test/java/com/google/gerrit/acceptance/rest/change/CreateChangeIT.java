@@ -572,7 +572,7 @@ argument_list|)
 operator|.
 name|contains
 argument_list|(
-literal|"cannot upload drafts"
+literal|"draft workflow is disabled"
 argument_list|)
 expr_stmt|;
 block|}
