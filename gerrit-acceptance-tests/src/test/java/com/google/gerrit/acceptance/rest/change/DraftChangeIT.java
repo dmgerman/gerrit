@@ -825,7 +825,7 @@ name|r
 operator|.
 name|assertErrorStatus
 argument_list|(
-literal|"cannot upload drafts"
+literal|"draft workflow is disabled"
 argument_list|)
 expr_stmt|;
 block|}

@@ -1235,7 +1235,7 @@ throw|throw
 operator|new
 name|MethodNotAllowedException
 argument_list|(
-literal|"cannot upload drafts"
+literal|"draft workflow is disabled"
 argument_list|)
 throw|;
 block|}
