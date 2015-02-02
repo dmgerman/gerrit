@@ -94,6 +94,22 @@ name|extensions
 operator|.
 name|restapi
 operator|.
+name|MethodNotAllowedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
 name|ResourceConflictException
 import|;
 end_import
@@ -453,6 +469,8 @@ name|AuthException
 throws|,
 name|ResourceNotFoundException
 throws|,
+name|MethodNotAllowedException
+throws|,
 name|OrmException
 throws|,
 name|IOException
@@ -513,7 +531,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ResourceConflictException
+name|MethodNotAllowedException
 argument_list|(
 literal|"Draft workflow is disabled"
 argument_list|)
