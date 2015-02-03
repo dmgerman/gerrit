@@ -376,7 +376,8 @@ name|length
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -386,7 +387,8 @@ name|getInputStream
 argument_list|(
 name|ze
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|processor
 operator|.
 name|process
@@ -396,6 +398,7 @@ argument_list|,
 name|in
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
