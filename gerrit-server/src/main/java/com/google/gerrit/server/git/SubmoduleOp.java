@@ -1597,23 +1597,31 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|String
-name|msgbuf
+comment|// Initialize the message buffer
+name|StringBuilder
+name|sb
 init|=
-name|msg
+operator|new
+name|StringBuilder
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|msgbuf
-operator|==
+name|msg
+operator|!=
 literal|null
 condition|)
 block|{
-comment|// Initialize the message buffer
-name|msgbuf
-operator|=
-literal|""
+name|sb
+operator|.
+name|append
+argument_list|(
+name|msg
+argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 comment|// The first updatedBranch on a cascade event of automatic
 comment|// updates of repos is added to updatedSubscribers set so
 comment|// if we face a situation having
@@ -1687,16 +1695,20 @@ name|CLEAN_REBASE
 operator|)
 condition|)
 block|{
-name|msgbuf
-operator|+=
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|"\n"
-expr_stmt|;
-name|msgbuf
-operator|+=
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|c
 operator|.
 name|getFullMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1818,7 +1830,10 @@ name|modules
 argument_list|,
 name|paths
 argument_list|,
-name|msgbuf
+name|sb
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
