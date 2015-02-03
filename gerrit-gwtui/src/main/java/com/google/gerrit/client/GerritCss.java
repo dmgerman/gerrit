@@ -113,11 +113,6 @@ name|String
 name|accountLinkPanel
 parameter_list|()
 function_decl|;
-DECL|method|accountName ()
-name|String
-name|accountName
-parameter_list|()
-function_decl|;
 DECL|method|accountPassword ()
 name|String
 name|accountPassword
@@ -143,11 +138,6 @@ name|String
 name|addMemberTextBox
 parameter_list|()
 function_decl|;
-DECL|method|addReviewer ()
-name|String
-name|addReviewer
-parameter_list|()
-function_decl|;
 DECL|method|addSshKeyPanel ()
 name|String
 name|addSshKeyPanel
@@ -158,34 +148,9 @@ name|String
 name|addWatchPanel
 parameter_list|()
 function_decl|;
-DECL|method|approvalTable ()
-name|String
-name|approvalTable
-parameter_list|()
-function_decl|;
-DECL|method|approvalhint ()
-name|String
-name|approvalhint
-parameter_list|()
-function_decl|;
-DECL|method|approvalrole ()
-name|String
-name|approvalrole
-parameter_list|()
-function_decl|;
-DECL|method|approvalscore ()
-name|String
-name|approvalscore
-parameter_list|()
-function_decl|;
 DECL|method|avatarInfoPanel ()
 name|String
 name|avatarInfoPanel
-parameter_list|()
-function_decl|;
-DECL|method|blockHeader ()
-name|String
-name|blockHeader
 parameter_list|()
 function_decl|;
 DECL|method|bottomheader ()
@@ -228,26 +193,6 @@ name|String
 name|cellsNextToFileComment
 parameter_list|()
 function_decl|;
-DECL|method|changeComments ()
-name|String
-name|changeComments
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoBlock ()
-name|String
-name|changeInfoBlock
-parameter_list|()
-function_decl|;
-DECL|method|changeInfoTopicPanel ()
-name|String
-name|changeInfoTopicPanel
-parameter_list|()
-function_decl|;
-DECL|method|changeScreen ()
-name|String
-name|changeScreen
-parameter_list|()
-function_decl|;
 DECL|method|changeScreenDescription ()
 name|String
 name|changeScreenDescription
@@ -276,16 +221,6 @@ function_decl|;
 DECL|method|changeTypeCell ()
 name|String
 name|changeTypeCell
-parameter_list|()
-function_decl|;
-DECL|method|changeid ()
-name|String
-name|changeid
-parameter_list|()
-function_decl|;
-DECL|method|closedstate ()
-name|String
-name|closedstate
 parameter_list|()
 function_decl|;
 DECL|method|commentCell ()
@@ -318,11 +253,6 @@ name|String
 name|commentPanelAuthorCell
 parameter_list|()
 function_decl|;
-DECL|method|commentPanelBorder ()
-name|String
-name|commentPanelBorder
-parameter_list|()
-function_decl|;
 DECL|method|commentPanelButtons ()
 name|String
 name|commentPanelButtons
@@ -346,11 +276,6 @@ function_decl|;
 DECL|method|commentPanelLast ()
 name|String
 name|commentPanelLast
-parameter_list|()
-function_decl|;
-DECL|method|commentPanelMenuBar ()
-name|String
-name|commentPanelMenuBar
 parameter_list|()
 function_decl|;
 DECL|method|commentPanelMessage ()
@@ -378,16 +303,6 @@ name|String
 name|commentedActionMessage
 parameter_list|()
 function_decl|;
-DECL|method|complexHeader ()
-name|String
-name|complexHeader
-parameter_list|()
-function_decl|;
-DECL|method|content ()
-name|String
-name|content
-parameter_list|()
-function_decl|;
 DECL|method|contributorAgreementAlreadySubmitted ()
 name|String
 name|contributorAgreementAlreadySubmitted
@@ -406,16 +321,6 @@ function_decl|;
 DECL|method|contributorAgreementShortDescription ()
 name|String
 name|contributorAgreementShortDescription
-parameter_list|()
-function_decl|;
-DECL|method|coverMessage ()
-name|String
-name|coverMessage
-parameter_list|()
-function_decl|;
-DECL|method|createGroupLink ()
-name|String
-name|createGroupLink
 parameter_list|()
 function_decl|;
 DECL|method|createProjectPanel ()
@@ -466,11 +371,6 @@ function_decl|;
 DECL|method|diffTextFileHeader ()
 name|String
 name|diffTextFileHeader
-parameter_list|()
-function_decl|;
-DECL|method|diffTextForBinaryInSideBySide ()
-name|String
-name|diffTextForBinaryInSideBySide
 parameter_list|()
 function_decl|;
 DECL|method|diffTextHunkHeader ()
@@ -543,11 +443,6 @@ name|String
 name|downloadLinkList
 parameter_list|()
 function_decl|;
-DECL|method|downloadLinkListCell ()
-name|String
-name|downloadLinkListCell
-parameter_list|()
-function_decl|;
 DECL|method|downloadLink_Active ()
 name|String
 name|downloadLink_Active
@@ -588,11 +483,6 @@ name|String
 name|errorDialogGlass
 parameter_list|()
 function_decl|;
-DECL|method|errorDialogText ()
-name|String
-name|errorDialogText
-parameter_list|()
-function_decl|;
 DECL|method|errorDialogTitle ()
 name|String
 name|errorDialogTitle
@@ -618,11 +508,6 @@ name|String
 name|fileLine
 parameter_list|()
 function_decl|;
-DECL|method|fileLineCONTEXT ()
-name|String
-name|fileLineCONTEXT
-parameter_list|()
-function_decl|;
 DECL|method|fileLineDELETE ()
 name|String
 name|fileLineDELETE
@@ -631,16 +516,6 @@ function_decl|;
 DECL|method|fileLineINSERT ()
 name|String
 name|fileLineINSERT
-parameter_list|()
-function_decl|;
-DECL|method|fileLineMode ()
-name|String
-name|fileLineMode
-parameter_list|()
-function_decl|;
-DECL|method|fileLineNone ()
-name|String
-name|fileLineNone
 parameter_list|()
 function_decl|;
 DECL|method|filePathCell ()
@@ -666,11 +541,6 @@ function_decl|;
 DECL|method|groupDescriptionPanel ()
 name|String
 name|groupDescriptionPanel
-parameter_list|()
-function_decl|;
-DECL|method|groupExternalNameFilterTextBox ()
-name|String
-name|groupExternalNameFilterTextBox
 parameter_list|()
 function_decl|;
 DECL|method|groupIncludesTable ()
@@ -713,11 +583,6 @@ name|String
 name|groupOwnerTextBox
 parameter_list|()
 function_decl|;
-DECL|method|groupTypeSelectListBox ()
-name|String
-name|groupTypeSelectListBox
-parameter_list|()
-function_decl|;
 DECL|method|groupUUIDPanel ()
 name|String
 name|groupUUIDPanel
@@ -726,11 +591,6 @@ function_decl|;
 DECL|method|header ()
 name|String
 name|header
-parameter_list|()
-function_decl|;
-DECL|method|hyperlink ()
-name|String
-name|hyperlink
 parameter_list|()
 function_decl|;
 DECL|method|iconCell ()
@@ -758,19 +618,9 @@ name|String
 name|infoBlock
 parameter_list|()
 function_decl|;
-DECL|method|infoTable ()
-name|String
-name|infoTable
-parameter_list|()
-function_decl|;
 DECL|method|inputFieldTypeHint ()
 name|String
 name|inputFieldTypeHint
-parameter_list|()
-function_decl|;
-DECL|method|labelList ()
-name|String
-name|labelList
 parameter_list|()
 function_decl|;
 DECL|method|labelNotApplicable ()
@@ -781,11 +631,6 @@ function_decl|;
 DECL|method|leftMostCell ()
 name|String
 name|leftMostCell
-parameter_list|()
-function_decl|;
-DECL|method|lineHeader ()
-name|String
-name|lineHeader
 parameter_list|()
 function_decl|;
 DECL|method|lineNumber ()
@@ -848,21 +693,6 @@ name|String
 name|menuScreenMenuBar
 parameter_list|()
 function_decl|;
-DECL|method|missingApproval ()
-name|String
-name|missingApproval
-parameter_list|()
-function_decl|;
-DECL|method|missingApprovalList ()
-name|String
-name|missingApprovalList
-parameter_list|()
-function_decl|;
-DECL|method|monospace ()
-name|String
-name|monospace
-parameter_list|()
-function_decl|;
 DECL|method|needsReview ()
 name|String
 name|needsReview
@@ -873,29 +703,9 @@ name|String
 name|negscore
 parameter_list|()
 function_decl|;
-DECL|method|noLineLineNumber ()
-name|String
-name|noLineLineNumber
-parameter_list|()
-function_decl|;
 DECL|method|noborder ()
 name|String
 name|noborder
-parameter_list|()
-function_decl|;
-DECL|method|notVotable ()
-name|String
-name|notVotable
-parameter_list|()
-function_decl|;
-DECL|method|outdated ()
-name|String
-name|outdated
-parameter_list|()
-function_decl|;
-DECL|method|parentsTable ()
-name|String
-name|parentsTable
 parameter_list|()
 function_decl|;
 DECL|method|patchBrowserPopup ()
@@ -911,11 +721,6 @@ function_decl|;
 DECL|method|patchCellReverseDiff ()
 name|String
 name|patchCellReverseDiff
-parameter_list|()
-function_decl|;
-DECL|method|patchComments ()
-name|String
-name|patchComments
 parameter_list|()
 function_decl|;
 DECL|method|patchContentTable ()
@@ -938,34 +743,9 @@ name|String
 name|patchNoDifference
 parameter_list|()
 function_decl|;
-DECL|method|patchScreenDisplayControls ()
-name|String
-name|patchScreenDisplayControls
-parameter_list|()
-function_decl|;
 DECL|method|patchSetActions ()
 name|String
 name|patchSetActions
-parameter_list|()
-function_decl|;
-DECL|method|patchSetInfoBlock ()
-name|String
-name|patchSetInfoBlock
-parameter_list|()
-function_decl|;
-DECL|method|patchSetLink ()
-name|String
-name|patchSetLink
-parameter_list|()
-function_decl|;
-DECL|method|patchSetRevision ()
-name|String
-name|patchSetRevision
-parameter_list|()
-function_decl|;
-DECL|method|patchSetUserIdentity ()
-name|String
-name|patchSetUserIdentity
 parameter_list|()
 function_decl|;
 DECL|method|patchSizeCell ()
@@ -993,16 +773,6 @@ name|String
 name|projectActions
 parameter_list|()
 function_decl|;
-DECL|method|projectAdminLabelRangeLine ()
-name|String
-name|projectAdminLabelRangeLine
-parameter_list|()
-function_decl|;
-DECL|method|projectAdminLabelValue ()
-name|String
-name|projectAdminLabelValue
-parameter_list|()
-function_decl|;
 DECL|method|projectFilterLabel ()
 name|String
 name|projectFilterLabel
@@ -1016,11 +786,6 @@ function_decl|;
 DECL|method|projectNameColumn ()
 name|String
 name|projectNameColumn
-parameter_list|()
-function_decl|;
-DECL|method|publishCommentsScreen ()
-name|String
-name|publishCommentsScreen
 parameter_list|()
 function_decl|;
 DECL|method|registerScreenExplain ()
@@ -1038,16 +803,6 @@ name|String
 name|registerScreenSection
 parameter_list|()
 function_decl|;
-DECL|method|removeReviewer ()
-name|String
-name|removeReviewer
-parameter_list|()
-function_decl|;
-DECL|method|removeReviewerCell ()
-name|String
-name|removeReviewerCell
-parameter_list|()
-function_decl|;
 DECL|method|reviewedPanelBottom ()
 name|String
 name|reviewedPanelBottom
@@ -1056,11 +811,6 @@ function_decl|;
 DECL|method|rightBorder ()
 name|String
 name|rightBorder
-parameter_list|()
-function_decl|;
-DECL|method|rightmost ()
-name|String
-name|rightmost
 parameter_list|()
 function_decl|;
 DECL|method|rpcStatus ()
@@ -1078,11 +828,6 @@ name|String
 name|screenHeader
 parameter_list|()
 function_decl|;
-DECL|method|screenNoHeader ()
-name|String
-name|screenNoHeader
-parameter_list|()
-function_decl|;
 DECL|method|searchPanel ()
 name|String
 name|searchPanel
@@ -1098,11 +843,6 @@ name|String
 name|sectionHeader
 parameter_list|()
 function_decl|;
-DECL|method|selectPatchSetOldVersion ()
-name|String
-name|selectPatchSetOldVersion
-parameter_list|()
-function_decl|;
 DECL|method|sideBySideScreenLinkTable ()
 name|String
 name|sideBySideScreenLinkTable
@@ -1111,11 +851,6 @@ function_decl|;
 DECL|method|singleLine ()
 name|String
 name|singleLine
-parameter_list|()
-function_decl|;
-DECL|method|skipLine ()
-name|String
-name|skipLine
 parameter_list|()
 function_decl|;
 DECL|method|smallHeading ()
@@ -1221,11 +956,6 @@ function_decl|;
 DECL|method|userInfoPopup ()
 name|String
 name|userInfoPopup
-parameter_list|()
-function_decl|;
-DECL|method|useridentity ()
-name|String
-name|useridentity
 parameter_list|()
 function_decl|;
 DECL|method|usernameField ()
