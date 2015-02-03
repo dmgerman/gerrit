@@ -1700,6 +1700,31 @@ return|return
 name|out
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|isVisibleToAll (AccountGroup.UUID uuid)
+specifier|public
+name|boolean
+name|isVisibleToAll
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+return|return
+name|handles
+argument_list|(
+name|uuid
+argument_list|)
+operator|&&
+name|helper
+operator|.
+name|groupsVisibleToAll
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

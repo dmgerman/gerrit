@@ -316,6 +316,8 @@ argument_list|(
 name|who
 argument_list|,
 name|group
+argument_list|,
+name|groupBackend
 argument_list|)
 return|;
 block|}
@@ -524,6 +526,8 @@ name|get
 argument_list|()
 argument_list|,
 name|group
+argument_list|,
+name|groupBackend
 argument_list|)
 return|;
 block|}
@@ -635,7 +639,13 @@ specifier|private
 name|Boolean
 name|isOwner
 decl_stmt|;
-DECL|method|GroupControl (CurrentUser who, GroupDescription.Basic gd)
+DECL|field|groupBackend
+specifier|private
+specifier|final
+name|GroupBackend
+name|groupBackend
+decl_stmt|;
+DECL|method|GroupControl (CurrentUser who, GroupDescription.Basic gd, GroupBackend gb)
 name|GroupControl
 parameter_list|(
 name|CurrentUser
@@ -645,6 +655,9 @@ name|GroupDescription
 operator|.
 name|Basic
 name|gd
+parameter_list|,
+name|GroupBackend
+name|gb
 parameter_list|)
 block|{
 name|user
@@ -654,6 +667,10 @@ expr_stmt|;
 name|group
 operator|=
 name|gd
+expr_stmt|;
+name|groupBackend
+operator|=
+name|gb
 expr_stmt|;
 block|}
 DECL|method|getGroup ()
@@ -685,29 +702,8 @@ name|boolean
 name|isVisible
 parameter_list|()
 block|{
-name|AccountGroup
-name|accountGroup
-init|=
-name|GroupDescriptions
-operator|.
-name|toAccountGroup
-argument_list|(
-name|group
-argument_list|)
-decl_stmt|;
 comment|/* Check for canAdministrateServer may seem redundant, but allows      * for visibility of all groups that are not an internal group to      * server administrators.      */
 return|return
-operator|(
-name|accountGroup
-operator|!=
-literal|null
-operator|&&
-name|accountGroup
-operator|.
-name|isVisibleToAll
-argument_list|()
-operator|)
-operator|||
 name|user
 operator|instanceof
 name|InternalUser
@@ -732,6 +728,16 @@ argument_list|()
 operator|.
 name|canAdministrateServer
 argument_list|()
+operator|||
+name|groupBackend
+operator|.
+name|isVisibleToAll
+argument_list|(
+name|group
+operator|.
+name|getGroupUUID
+argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|isOwner ()

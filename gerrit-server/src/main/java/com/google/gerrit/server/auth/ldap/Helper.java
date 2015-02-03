@@ -619,6 +619,12 @@ specifier|final
 name|boolean
 name|useConnectionPooling
 decl_stmt|;
+DECL|field|groupsVisibleToAll
+specifier|private
+specifier|final
+name|boolean
+name|groupsVisibleToAll
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|Helper (@erritServerConfig final Config config, @Named(LdapModule.PARENT_GROUPS_CACHE) Cache<String, ImmutableSet<String>> parentGroups)
@@ -724,6 +730,21 @@ argument_list|,
 literal|"sslverify"
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|groupsVisibleToAll
+operator|=
+name|config
+operator|.
+name|getBoolean
+argument_list|(
+literal|"ldap"
+argument_list|,
+literal|"groupsVisibleToAll"
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -2141,6 +2162,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+DECL|method|groupsVisibleToAll ()
+specifier|public
+name|boolean
+name|groupsVisibleToAll
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|groupsVisibleToAll
+return|;
 block|}
 DECL|class|LdapSchema
 class|class

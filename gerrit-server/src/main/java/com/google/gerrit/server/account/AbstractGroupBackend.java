@@ -136,6 +136,23 @@ name|ids
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|isVisibleToAll (AccountGroup.UUID uuid)
+specifier|public
+name|boolean
+name|isVisibleToAll
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 

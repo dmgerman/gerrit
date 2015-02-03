@@ -265,6 +265,17 @@ argument_list|>
 name|ids
 parameter_list|)
 function_decl|;
+comment|/**    * @return {@code true} if the group with the given UUID is visible to all    *         registered users.    */
+DECL|method|isVisibleToAll (AccountGroup.UUID uuid)
+name|boolean
+name|isVisibleToAll
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|uuid
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
