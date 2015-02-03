@@ -11380,6 +11380,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+comment|//$FALL-THROUGH$
 default|default:
 name|addMessage
 argument_list|(

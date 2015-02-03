@@ -1279,6 +1279,7 @@ name|refPrefix
 argument_list|)
 expr_stmt|;
 block|}
+comment|//$FALL-THROUGH$
 default|default:
 block|{
 throw|throw

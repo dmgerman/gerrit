@@ -1934,6 +1934,7 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+comment|//$FALL-THROUGH$
 default|default:
 throw|throw
 operator|new
