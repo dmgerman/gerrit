@@ -5431,16 +5431,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|OutputStream
-name|e
+try|try
+init|(
+name|OutputStreamWriter
+name|w
 init|=
-name|BaseEncoding
-operator|.
-name|base64
-argument_list|()
-operator|.
-name|encodingStream
-argument_list|(
 operator|new
 name|OutputStreamWriter
 argument_list|(
@@ -5448,8 +5443,14 @@ name|out
 argument_list|,
 name|ISO_8859_1
 argument_list|)
+init|;               OutputStream e = BaseEncoding.base64()
+operator|.
+name|encodingStream
+argument_list|(
+name|w
 argument_list|)
-decl_stmt|;
+block|)
+block|{
 name|src
 operator|.
 name|writeTo
@@ -5464,8 +5465,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-expr_stmt|;
 block|}
+empty_stmt|;
+block|}
+end_function
+
+begin_expr_stmt
 name|res
 operator|.
 name|setHeader
@@ -5475,6 +5480,9 @@ argument_list|,
 literal|"base64"
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|res
 operator|.
 name|setHeader
@@ -5487,6 +5495,9 @@ name|getContentType
 argument_list|()
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_return
 return|return
 name|b64
 operator|.
@@ -5500,12 +5511,11 @@ argument_list|(
 literal|"ISO-8859-1"
 argument_list|)
 return|;
-block|}
-end_function
+end_return
 
 begin_function
+unit|}    private
 DECL|method|stackGzip (HttpServletResponse res, final BinaryResult src)
-specifier|private
 specifier|static
 name|BinaryResult
 name|stackGzip
