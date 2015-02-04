@@ -857,10 +857,6 @@ name|skipped
 operator|=
 literal|false
 expr_stmt|;
-name|last
-operator|=
-literal|null
-expr_stmt|;
 name|ResultSet
 argument_list|<
 name|ChangeData
@@ -910,10 +906,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-name|last
-operator|=
-name|data
-expr_stmt|;
 name|nextStart
 operator|++
 expr_stmt|;
