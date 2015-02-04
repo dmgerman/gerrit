@@ -598,6 +598,18 @@ specifier|protected
 name|String
 name|reviewCategoryStrategy
 decl_stmt|;
+annotation|@
+name|Column
+argument_list|(
+name|id
+operator|=
+literal|19
+argument_list|)
+DECL|field|muteCommonPathPrefixes
+specifier|protected
+name|boolean
+name|muteCommonPathPrefixes
+decl_stmt|;
 DECL|method|AccountGeneralPreferences ()
 specifier|public
 name|AccountGeneralPreferences
@@ -1094,6 +1106,32 @@ operator|=
 name|legacycidInChangeTable
 expr_stmt|;
 block|}
+DECL|method|isMuteCommonPathPrefixes ()
+specifier|public
+name|boolean
+name|isMuteCommonPathPrefixes
+parameter_list|()
+block|{
+return|return
+name|muteCommonPathPrefixes
+return|;
+block|}
+DECL|method|setMuteCommonPathPrefixes ( boolean muteCommonPathPrefixes)
+specifier|public
+name|void
+name|setMuteCommonPathPrefixes
+parameter_list|(
+name|boolean
+name|muteCommonPathPrefixes
+parameter_list|)
+block|{
+name|this
+operator|.
+name|muteCommonPathPrefixes
+operator|=
+name|muteCommonPathPrefixes
+expr_stmt|;
+block|}
 DECL|method|resetToDefaults ()
 specifier|public
 name|void
@@ -1151,6 +1189,10 @@ expr_stmt|;
 name|legacycidInChangeTable
 operator|=
 literal|false
+expr_stmt|;
+name|muteCommonPathPrefixes
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}

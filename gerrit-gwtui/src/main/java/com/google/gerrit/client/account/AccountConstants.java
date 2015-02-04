@@ -205,6 +205,11 @@ name|String
 name|showLegacycidInChangeTable
 parameter_list|()
 function_decl|;
+DECL|method|muteCommonPathPrefixes ()
+name|String
+name|muteCommonPathPrefixes
+parameter_list|()
+function_decl|;
 DECL|method|myMenu ()
 name|String
 name|myMenu

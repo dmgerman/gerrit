@@ -408,6 +408,16 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|muteCommonPathPrefixes
+argument_list|(
+name|in
+operator|.
+name|isMuteCommonPathPrefixes
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|reviewCategoryStrategy
 argument_list|(
 name|in
@@ -671,6 +681,15 @@ name|boolean
 name|legacycidInChangeTable
 parameter_list|()
 comment|/*-{ return this.legacycid_in_change_table || false }-*/
+function_decl|;
+DECL|method|muteCommonPathPrefixes ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|muteCommonPathPrefixes
+parameter_list|()
+comment|/*-{ return this.mute_common_path_prefixes || false }-*/
 function_decl|;
 DECL|method|reviewCategoryStrategy ()
 specifier|public
@@ -991,6 +1010,18 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.legacycid_in_change_table = s }-*/
+function_decl|;
+DECL|method|muteCommonPathPrefixes (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|muteCommonPathPrefixes
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.mute_common_path_prefixes = s }-*/
 function_decl|;
 DECL|method|reviewCategoryStrategy (ReviewCategoryStrategy s)
 specifier|public

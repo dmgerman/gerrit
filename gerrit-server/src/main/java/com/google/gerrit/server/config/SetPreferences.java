@@ -399,6 +399,12 @@ literal|null
 operator|||
 name|i
 operator|.
+name|muteCommonPathPrefixes
+operator|!=
+literal|null
+operator|||
+name|i
+operator|.
 name|reviewCategoryStrategy
 operator|!=
 literal|null
