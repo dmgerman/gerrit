@@ -3124,6 +3124,13 @@ name|cfg
 argument_list|,
 literal|"cipher"
 argument_list|,
+operator|(
+name|NamedFactory
+argument_list|<
+name|Cipher
+argument_list|>
+index|[]
+operator|)
 name|a
 operator|.
 name|toArray
