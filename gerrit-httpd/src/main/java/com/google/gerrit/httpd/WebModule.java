@@ -619,6 +619,9 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|installAuthModule
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|options
@@ -627,9 +630,6 @@ name|enableMasterFeatures
 argument_list|()
 condition|)
 block|{
-name|installAuthModule
-argument_list|()
-expr_stmt|;
 name|install
 argument_list|(
 operator|new
