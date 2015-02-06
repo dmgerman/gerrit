@@ -3337,6 +3337,16 @@ parameter_list|)
 throws|throws
 name|MergeException
 block|{
+name|logDebug
+argument_list|(
+literal|"Validating {} changes"
+argument_list|,
+name|submitted
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ListMultimap
 argument_list|<
 name|SubmitType
