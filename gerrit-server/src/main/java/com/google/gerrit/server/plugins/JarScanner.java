@@ -590,9 +590,7 @@ name|File
 name|srcFile
 parameter_list|)
 throws|throws
-name|InvalidPluginException
-block|{
-try|try
+name|IOException
 block|{
 name|this
 operator|.
@@ -604,25 +602,6 @@ argument_list|(
 name|srcFile
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|InvalidPluginException
-argument_list|(
-literal|"Cannot scan plugin file "
-operator|+
-name|srcFile
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 annotation|@
 name|Override
