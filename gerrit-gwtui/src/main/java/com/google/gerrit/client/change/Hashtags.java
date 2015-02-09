@@ -1236,7 +1236,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"â"
+literal|"Ã"
 argument_list|)
 operator|.
 name|closeElement
