@@ -951,6 +951,15 @@ argument_list|(
 name|UTF_8
 argument_list|)
 decl_stmt|;
+DECL|field|CONTENT_NEW2_STR
+specifier|private
+specifier|final
+specifier|static
+name|String
+name|CONTENT_NEW2_STR
+init|=
+literal|"quxÃÃÃÃÂµ"
+decl_stmt|;
 DECL|field|CONTENT_NEW2
 specifier|private
 specifier|final
@@ -959,7 +968,7 @@ name|byte
 index|[]
 name|CONTENT_NEW2
 init|=
-literal|"quxÃÃÃÃÂµ"
+name|CONTENT_NEW2_STR
 operator|.
 name|getBytes
 argument_list|(
@@ -2857,7 +2866,7 @@ name|format
 argument_list|(
 literal|"New commit message\n\n"
 operator|+
-name|CONTENT_NEW2
+name|CONTENT_NEW2_STR
 operator|+
 literal|"\n\nChange-Id: %s"
 argument_list|,
