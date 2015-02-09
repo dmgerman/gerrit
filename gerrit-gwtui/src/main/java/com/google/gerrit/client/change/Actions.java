@@ -1032,23 +1032,6 @@ name|canSubmit
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isSubmitEnabled ()
-name|boolean
-name|isSubmitEnabled
-parameter_list|()
-block|{
-return|return
-name|submit
-operator|.
-name|isVisible
-argument_list|()
-operator|&&
-name|submit
-operator|.
-name|isEnabled
-argument_list|()
-return|;
-block|}
 annotation|@
 name|UiHandler
 argument_list|(
