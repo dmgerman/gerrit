@@ -322,10 +322,7 @@ decl_stmt|;
 return|return
 name|owner
 operator|.
-name|getEffectiveGroups
-argument_list|()
-operator|.
-name|contains
+name|memberOf
 argument_list|(
 name|uuid
 argument_list|)
