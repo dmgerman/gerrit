@@ -90,6 +90,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -257,6 +273,22 @@ operator|.
 name|git
 operator|.
 name|RebaseSorter
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|UpdateException
 import|;
 end_import
 
@@ -948,9 +980,15 @@ decl||
 name|IOException
 decl||
 name|InvalidChangeOperationException
+decl||
+name|UpdateException
+decl||
+name|RestApiException
 name|e
 parameter_list|)
 block|{
+comment|// TODO(dborowitz): Allow Submit to unwrap ResourceConflictException
+comment|// so it can turn into a 409.
 throw|throw
 operator|new
 name|MergeException

@@ -120,6 +120,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -331,6 +347,22 @@ operator|.
 name|git
 operator|.
 name|MergeUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|UpdateException
 import|;
 end_import
 
@@ -742,7 +774,7 @@ operator|=
 name|patchSetInserterFactory
 expr_stmt|;
 block|}
-comment|/**    * Rebase the change of the given patch set.    *<p>    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *<p>    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param git the repository.    * @param rw the RevWalk.    * @param rsrc revision to rebase.    * @param newBaseRev the commit that should be the new base.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws EmailException if sending the e-mail to notify about the new patch    *     set fails.    * @throws OrmException if accessing the database fails.    * @throws IOException if accessing the repository fails.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    */
+comment|/**    * Rebase the change of the given patch set.    *<p>    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *<p>    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param git the repository.    * @param rw the RevWalk.    * @param rsrc revision to rebase.    * @param newBaseRev the commit that should be the new base.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws EmailException if sending the e-mail to notify about the new patch    *     set fails.    * @throws OrmException if accessing the database fails.    * @throws IOException if accessing the repository fails.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    * @throws RestApiException if updating the change fails due to an underlying    *     API call failing.    * @throws UpdateException if updating the change fails.    */
 DECL|method|rebase (Repository git, RevWalk rw, RevisionResource rsrc, String newBaseRev)
 specifier|public
 name|void
@@ -769,9 +801,11 @@ name|OrmException
 throws|,
 name|IOException
 throws|,
-name|ResourceConflictException
-throws|,
 name|InvalidChangeOperationException
+throws|,
+name|UpdateException
+throws|,
+name|RestApiException
 block|{
 name|Change
 name|change
@@ -1308,7 +1342,7 @@ return|return
 name|baseRev
 return|;
 block|}
-comment|/**    * Rebase the change of the given patch set on the given base commit.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks is only done for the creation    * of the new patch set if {@code sendEmail} and {@code runHooks} are true,    * respectively.    *    * @param git the repository.    * @param inserter the object inserter.    * @param change the change to rebase.    * @param patchSetId the patch set ID to rebase.    * @param uploader the user that creates the rebased patch set.    * @param baseCommit the commit that should be the new base.    * @param mergeUtil merge utilities for the destination project.    * @param committerIdent the committer's identity.    * @param runHooks if hooks should be run for the new patch set.    * @param validate if commit validation should be run for the new patch set.    * @param rw the RevWalk.    * @return the new patch set, which is based on the given base commit.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws OrmException if accessing the database fails.    * @throws IOException if rebase is not possible.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    */
+comment|/**    * Rebase the change of the given patch set on the given base commit.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks is only done for the creation    * of the new patch set if {@code sendEmail} and {@code runHooks} are true,    * respectively.    *    * @param git the repository.    * @param inserter the object inserter.    * @param change the change to rebase.    * @param patchSetId the patch set ID to rebase.    * @param uploader the user that creates the rebased patch set.    * @param baseCommit the commit that should be the new base.    * @param mergeUtil merge utilities for the destination project.    * @param committerIdent the committer's identity.    * @param runHooks if hooks should be run for the new patch set.    * @param validate if commit validation should be run for the new patch set.    * @param rw the RevWalk.    * @return the new patch set, which is based on the given base commit.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws OrmException if accessing the database fails.    * @throws IOException if rebase is not possible.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    * @throws RestApiException if updating the change fails due to an underlying    *     API call failing.    * @throws UpdateException if updating the change fails.    */
 DECL|method|rebase (Repository git, RevWalk rw, ObjectInserter inserter, Change change, PatchSet.Id patchSetId, IdentifiedUser uploader, RevCommit baseCommit, MergeUtil mergeUtil, PersonIdent committerIdent, boolean runHooks, ValidatePolicy validate)
 specifier|public
 name|PatchSet
@@ -1359,6 +1393,10 @@ throws|,
 name|InvalidChangeOperationException
 throws|,
 name|MergeConflictException
+throws|,
+name|UpdateException
+throws|,
+name|RestApiException
 block|{
 if|if
 condition|(

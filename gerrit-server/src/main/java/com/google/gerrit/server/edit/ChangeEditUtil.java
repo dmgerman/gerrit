@@ -150,6 +150,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -343,6 +359,22 @@ operator|.
 name|git
 operator|.
 name|GitRepositoryManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|UpdateException
 import|;
 end_import
 
@@ -971,7 +1003,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws ResourceConflictException    */
+comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws UpdateException    * @throws RestApiException    */
 DECL|method|publish (ChangeEdit edit)
 specifier|public
 name|void
@@ -987,7 +1019,9 @@ name|IOException
 throws|,
 name|OrmException
 throws|,
-name|ResourceConflictException
+name|RestApiException
+throws|,
+name|UpdateException
 block|{
 name|Change
 name|change
@@ -1416,6 +1450,10 @@ name|squashed
 parameter_list|)
 throws|throws
 name|NoSuchChangeException
+throws|,
+name|RestApiException
+throws|,
+name|UpdateException
 throws|,
 name|InvalidChangeOperationException
 throws|,

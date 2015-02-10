@@ -176,7 +176,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|RestApiException
 import|;
 end_import
 
@@ -273,6 +273,22 @@ operator|.
 name|git
 operator|.
 name|MergeException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|git
+operator|.
+name|UpdateException
 import|;
 end_import
 
@@ -496,19 +512,15 @@ name|CherryPickInput
 name|input
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
-name|BadRequestException
-throws|,
-name|ResourceConflictException
-throws|,
-name|ResourceNotFoundException
-throws|,
 name|OrmException
 throws|,
 name|IOException
 throws|,
 name|EmailException
+throws|,
+name|UpdateException
+throws|,
+name|RestApiException
 block|{
 specifier|final
 name|ChangeControl
