@@ -158,6 +158,11 @@ name|String
 name|bottomheader
 parameter_list|()
 function_decl|;
+DECL|method|branchTablePrevNextLinks ()
+name|String
+name|branchTablePrevNextLinks
+parameter_list|()
+function_decl|;
 DECL|method|cAPPROVAL ()
 name|String
 name|cAPPROVAL

@@ -158,6 +158,16 @@ name|String
 name|confirmationDialogCancel
 parameter_list|()
 function_decl|;
+DECL|method|branchCreationDialogTitle ()
+name|String
+name|branchCreationDialogTitle
+parameter_list|()
+function_decl|;
+DECL|method|branchCreationConfirmationMessage ()
+name|String
+name|branchCreationConfirmationMessage
+parameter_list|()
+function_decl|;
 DECL|method|branchDeletionDialogTitle ()
 name|String
 name|branchDeletionDialogTitle
