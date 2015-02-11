@@ -6409,11 +6409,6 @@ condition|(
 name|canSubmit
 condition|)
 block|{
-name|actions
-operator|.
-name|setSubmitEnabled
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|status
@@ -7506,6 +7501,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+name|actions
+operator|.
+name|reloadRevisionActions
+argument_list|(
+name|actionMap
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|renderOwner (ChangeInfo info)
 specifier|private
