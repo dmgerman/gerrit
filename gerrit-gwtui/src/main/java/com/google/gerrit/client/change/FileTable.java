@@ -310,6 +310,20 @@ name|gerrit
 operator|.
 name|common
 operator|.
+name|Nullable
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
 name|PageLinks
 import|;
 end_import
@@ -1514,7 +1528,7 @@ operator|=
 name|editExists
 expr_stmt|;
 block|}
-DECL|method|setValue (NativeMap<FileInfo> fileMap, Timestamp myLastReply, NativeMap<JsArray<CommentInfo>> comments, NativeMap<JsArray<CommentInfo>> drafts)
+DECL|method|setValue (NativeMap<FileInfo> fileMap, Timestamp myLastReply, @Nullable NativeMap<JsArray<CommentInfo>> comments, @Nullable NativeMap<JsArray<CommentInfo>> drafts)
 name|void
 name|setValue
 parameter_list|(
@@ -1527,6 +1541,8 @@ parameter_list|,
 name|Timestamp
 name|myLastReply
 parameter_list|,
+annotation|@
+name|Nullable
 name|NativeMap
 argument_list|<
 name|JsArray
@@ -1536,6 +1552,8 @@ argument_list|>
 argument_list|>
 name|comments
 parameter_list|,
+annotation|@
+name|Nullable
 name|NativeMap
 argument_list|<
 name|JsArray
@@ -2991,7 +3009,7 @@ specifier|private
 name|int
 name|deleted
 decl_stmt|;
-DECL|method|DisplayCommand (NativeMap<FileInfo> map, JsArray<FileInfo> list, Timestamp myLastReply, NativeMap<JsArray<CommentInfo>> comments, NativeMap<JsArray<CommentInfo>> drafts)
+DECL|method|DisplayCommand (NativeMap<FileInfo> map, JsArray<FileInfo> list, Timestamp myLastReply, @Nullable NativeMap<JsArray<CommentInfo>> comments, @Nullable NativeMap<JsArray<CommentInfo>> drafts)
 specifier|private
 name|DisplayCommand
 parameter_list|(
@@ -3010,6 +3028,8 @@ parameter_list|,
 name|Timestamp
 name|myLastReply
 parameter_list|,
+annotation|@
+name|Nullable
 name|NativeMap
 argument_list|<
 name|JsArray
@@ -3019,6 +3039,8 @@ argument_list|>
 argument_list|>
 name|comments
 parameter_list|,
+annotation|@
+name|Nullable
 name|NativeMap
 argument_list|<
 name|JsArray
@@ -4702,13 +4724,25 @@ name|CommentInfo
 argument_list|>
 name|r
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|m
+operator|!=
+literal|null
+condition|)
+block|{
+name|r
+operator|=
 name|m
 operator|.
 name|get
 argument_list|(
 name|p
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|r
