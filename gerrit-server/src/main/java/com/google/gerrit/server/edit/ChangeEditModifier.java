@@ -1059,7 +1059,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Rebase change edit on latest patch set    *    * @param edit change edit that contains edit to rebase    * @param current patch set to rebase the edit on    * @throws AuthException    * @throws InvalidChangeOperationException    * @throws IOException    */
+comment|/**    * Rebase change edit on latest patch set    *    * @param edit change edit that contains edit to rebase    * @param current patch set to rebase the edit on    * @throws AuthException    * @throws ResourceConflictException thrown if rebase fails due to merge conflicts    * @throws InvalidChangeOperationException    * @throws IOException    */
 DECL|method|rebaseEdit (ChangeEdit edit, PatchSet current)
 specifier|public
 name|void
@@ -1073,6 +1073,8 @@ name|current
 parameter_list|)
 throws|throws
 name|AuthException
+throws|,
+name|ResourceConflictException
 throws|,
 name|InvalidChangeOperationException
 throws|,
@@ -1489,7 +1491,7 @@ block|{
 comment|// TODO(davido): Allow to resolve conflicts inline
 throw|throw
 operator|new
-name|InvalidChangeOperationException
+name|ResourceConflictException
 argument_list|(
 literal|"merge conflict"
 argument_list|)
