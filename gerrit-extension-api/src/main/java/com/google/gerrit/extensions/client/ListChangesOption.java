@@ -192,6 +192,13 @@ name|CHECK
 argument_list|(
 literal|15
 argument_list|)
+block|,
+comment|/** Include allowed change actions client could perform. */
+DECL|enumConstant|CHANGE_ACTIONS
+name|CHANGE_ACTIONS
+argument_list|(
+literal|16
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
