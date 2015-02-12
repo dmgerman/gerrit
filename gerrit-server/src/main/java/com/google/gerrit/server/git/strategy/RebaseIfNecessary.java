@@ -739,8 +739,6 @@ argument_list|()
 argument_list|,
 literal|false
 argument_list|,
-literal|false
-argument_list|,
 name|ValidatePolicy
 operator|.
 name|NONE
