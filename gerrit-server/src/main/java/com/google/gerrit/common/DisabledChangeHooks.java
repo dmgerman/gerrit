@@ -283,6 +283,8 @@ name|DisabledChangeHooks
 implements|implements
 name|ChangeHooks
 implements|,
+name|EventDispatcher
+implements|,
 name|EventSource
 block|{
 annotation|@
