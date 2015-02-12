@@ -2774,7 +2774,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sbs
+name|unified
 operator|.
 name|setTargetHistoryToken
 argument_list|(
