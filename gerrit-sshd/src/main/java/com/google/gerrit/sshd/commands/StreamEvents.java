@@ -94,7 +94,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|ChangeHooks
+name|EventListener
 import|;
 end_import
 
@@ -108,7 +108,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|EventListener
+name|EventSource
 import|;
 end_import
 
@@ -407,10 +407,10 @@ name|currentUser
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|hooks
+DECL|field|source
 specifier|private
-name|ChangeHooks
-name|hooks
+name|EventSource
+name|source
 decl_stmt|;
 annotation|@
 name|Inject
@@ -677,7 +677,7 @@ argument_list|(
 name|out
 argument_list|)
 expr_stmt|;
-name|hooks
+name|source
 operator|.
 name|addEventListener
 argument_list|(
@@ -699,7 +699,7 @@ name|int
 name|rc
 parameter_list|)
 block|{
-name|hooks
+name|source
 operator|.
 name|removeEventListener
 argument_list|(
@@ -732,7 +732,7 @@ name|void
 name|destroy
 parameter_list|()
 block|{
-name|hooks
+name|source
 operator|.
 name|removeEventListener
 argument_list|(
@@ -917,7 +917,7 @@ comment|// The other side either requested a shutdown by calling our
 comment|// destroy() above, or it closed the stream and is no longer
 comment|// accepting output. Either way terminate this instance.
 comment|//
-name|hooks
+name|source
 operator|.
 name|removeEventListener
 argument_list|(

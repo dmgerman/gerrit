@@ -1016,6 +1016,8 @@ name|ChangeHookRunner
 implements|implements
 name|ChangeHooks
 implements|,
+name|EventSource
+implements|,
 name|LifecycleListener
 block|{
 comment|/** A logger for this class. */
@@ -1061,6 +1063,20 @@ expr_stmt|;
 name|bind
 argument_list|(
 name|ChangeHooks
+operator|.
+name|class
+argument_list|)
+operator|.
+name|to
+argument_list|(
+name|ChangeHookRunner
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
+name|EventSource
 operator|.
 name|class
 argument_list|)
