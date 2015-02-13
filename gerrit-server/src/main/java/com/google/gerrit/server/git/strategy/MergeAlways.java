@@ -227,8 +227,9 @@ comment|// The branch is unborn. Take a fast-forward resolution to
 comment|// create the branch.
 name|mergeTip
 operator|=
-operator|new
 name|MergeTip
+operator|.
+name|from
 argument_list|(
 name|sorted
 operator|.
@@ -252,8 +253,9 @@ else|else
 block|{
 name|mergeTip
 operator|=
-operator|new
 name|MergeTip
+operator|.
+name|from
 argument_list|(
 name|branchTip
 argument_list|,
