@@ -743,7 +743,7 @@ argument_list|)
 return|;
 block|}
 comment|/**    * Retrieve edits for a change and user. Max. one change edit can    * exist per user and change.    *    * @param change    * @param user to retrieve change edits for    * @return edit for this change for this user, if present.    * @throws IOException    */
-DECL|method|byChange (Change change, IdentifiedUser me)
+DECL|method|byChange (Change change, IdentifiedUser user)
 specifier|public
 name|Optional
 argument_list|<
@@ -755,7 +755,7 @@ name|Change
 name|change
 parameter_list|,
 name|IdentifiedUser
-name|me
+name|user
 parameter_list|)
 throws|throws
 name|IOException
@@ -780,7 +780,7 @@ name|editRefPrefix
 init|=
 name|editRefPrefix
 argument_list|(
-name|me
+name|user
 operator|.
 name|getAccountId
 argument_list|()
@@ -882,7 +882,7 @@ argument_list|(
 operator|new
 name|ChangeEdit
 argument_list|(
-name|me
+name|user
 argument_list|,
 name|change
 argument_list|,
