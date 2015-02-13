@@ -1995,6 +1995,11 @@ name|changeStatus
 operator|.
 name|isOpen
 argument_list|()
+argument_list|,
+name|diff
+operator|.
+name|binary
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|header
