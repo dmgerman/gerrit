@@ -705,13 +705,18 @@ name|AuthException
 throws|,
 name|IOException
 block|{
-if|if
-condition|(
-operator|!
+name|CurrentUser
+name|currentUser
+init|=
 name|user
 operator|.
 name|get
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|currentUser
 operator|.
 name|isIdentifiedUser
 argument_list|()
@@ -725,6 +730,36 @@ literal|"Authentication required"
 argument_list|)
 throw|;
 block|}
+return|return
+name|byChange
+argument_list|(
+name|change
+argument_list|,
+operator|(
+name|IdentifiedUser
+operator|)
+name|currentUser
+argument_list|)
+return|;
+block|}
+comment|/**    * Retrieve edits for a change and user. Max. one change edit can    * exist per user and change.    *    * @param change    * @param user to retrieve change edits for    * @return edit for this change for this user, if present.    * @throws IOException    */
+DECL|method|byChange (Change change, IdentifiedUser me)
+specifier|public
+name|Optional
+argument_list|<
+name|ChangeEdit
+argument_list|>
+name|byChange
+parameter_list|(
+name|Change
+name|change
+parameter_list|,
+name|IdentifiedUser
+name|me
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|Repository
 name|repo
 init|=
@@ -740,17 +775,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|IdentifiedUser
-name|me
-init|=
-operator|(
-name|IdentifiedUser
-operator|)
-name|user
-operator|.
-name|get
-argument_list|()
-decl_stmt|;
 name|String
 name|editRefPrefix
 init|=
@@ -1203,6 +1227,7 @@ block|}
 block|}
 comment|/**    * Returns reference for this change edit with sharded user and change number:    * refs/users/UU/UUUU/edit-CCCC/P.    *    * @param accountId accout id    * @param changeId change number    * @param psId patch set number    * @return reference for this change edit    */
 DECL|method|editRefName (Account.Id accountId, Change.Id changeId, PatchSet.Id psId)
+specifier|public
 specifier|static
 name|String
 name|editRefName
