@@ -1635,6 +1635,7 @@ block|}
 comment|// TODO(davido): Turn the boolean options to ChangeEditOption enum,
 comment|// like it's already the case for ListChangesOption/ListGroupsOption
 DECL|class|Detail
+specifier|public
 specifier|static
 class|class
 name|Detail

@@ -297,6 +297,13 @@ return|return
 name|obj
 return|;
 block|}
+DECL|method|isNone ()
+specifier|public
+specifier|abstract
+name|boolean
+name|isNone
+parameter_list|()
+function_decl|;
 DECL|method|statusCode ()
 specifier|public
 specifier|abstract
@@ -398,6 +405,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|isNone ()
+specifier|public
+name|boolean
+name|isNone
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|statusCode ()
 specifier|public
 name|int
@@ -492,6 +511,18 @@ specifier|private
 name|None
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
+DECL|method|isNone ()
+specifier|public
+name|boolean
+name|isNone
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|statusCode ()
