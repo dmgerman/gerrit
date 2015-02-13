@@ -1758,6 +1758,11 @@ name|getAccountId
 argument_list|()
 argument_list|)
 operator|.
+name|setSendMail
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|insert
 argument_list|()
 expr_stmt|;

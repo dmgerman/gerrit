@@ -980,8 +980,6 @@ name|committerIdent
 argument_list|,
 literal|true
 argument_list|,
-literal|true
-argument_list|,
 name|ValidatePolicy
 operator|.
 name|GERRIT
@@ -1491,8 +1489,8 @@ return|return
 name|baseRev
 return|;
 block|}
-comment|/**    * Rebases the change of the given patch set on the given base commit.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks is only done for the creation of    * the new patch set if `sendEmail` and `runHooks` are set to true.    *    * @param git the repository    * @param revWalk the RevWalk    * @param inserter the object inserter    * @param patchSetId the id of the patch set    * @param change the change that should be rebased    * @param uploader the user that creates the rebased patch set    * @param baseCommit the commit that should be the new base    * @param mergeUtil merge utilities for the destination project    * @param committerIdent the committer's identity    * @param sendMail if a mail notification should be sent for the new patch set    * @param runHooks if hooks should be run for the new patch set    * @param validate if commit validation should be run for the new patch set    * @return the new patch set which is based on the given base commit    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
-DECL|method|rebase (final Repository git, final RevWalk revWalk, final ObjectInserter inserter, final PatchSet.Id patchSetId, final Change change, final IdentifiedUser uploader, final RevCommit baseCommit, final MergeUtil mergeUtil, PersonIdent committerIdent, boolean sendMail, boolean runHooks, ValidatePolicy validate)
+comment|/**    * Rebases the change of the given patch set on the given base commit.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks is only done for the creation of    * the new patch set if `sendEmail` and `runHooks` are set to true.    *    * @param git the repository    * @param revWalk the RevWalk    * @param inserter the object inserter    * @param patchSetId the id of the patch set    * @param change the change that should be rebased    * @param uploader the user that creates the rebased patch set    * @param baseCommit the commit that should be the new base    * @param mergeUtil merge utilities for the destination project    * @param committerIdent the committer's identity    * @param runHooks if hooks should be run for the new patch set    * @param validate if commit validation should be run for the new patch set    * @return the new patch set which is based on the given base commit    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
+DECL|method|rebase (final Repository git, final RevWalk revWalk, final ObjectInserter inserter, final PatchSet.Id patchSetId, final Change change, final IdentifiedUser uploader, final RevCommit baseCommit, final MergeUtil mergeUtil, PersonIdent committerIdent, boolean runHooks, ValidatePolicy validate)
 specifier|public
 name|PatchSet
 name|rebase
@@ -1533,9 +1531,6 @@ name|mergeUtil
 parameter_list|,
 name|PersonIdent
 name|committerIdent
-parameter_list|,
-name|boolean
-name|sendMail
 parameter_list|,
 name|boolean
 name|runHooks
@@ -1697,7 +1692,7 @@ argument_list|)
 operator|.
 name|setSendMail
 argument_list|(
-name|sendMail
+literal|false
 argument_list|)
 operator|.
 name|setRunHooks
