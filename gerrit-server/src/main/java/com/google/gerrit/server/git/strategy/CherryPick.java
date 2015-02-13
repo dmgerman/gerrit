@@ -660,31 +660,11 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// The branch is unborn. Take a fast-forward resolution to
-comment|// create the branch.
-comment|//
 name|mergeTip
 operator|=
-operator|new
-name|MergeTip
+name|cherryPickUnbornRoot
 argument_list|(
 name|n
-argument_list|,
-name|Lists
-operator|.
-name|newArrayList
-argument_list|(
-name|n
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|n
-operator|.
-name|setStatusCode
-argument_list|(
-name|CommitMergeStatus
-operator|.
-name|CLEAN_MERGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -699,16 +679,9 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// Refuse to merge a root commit into an existing branch,
-comment|// we cannot obtain a delta for the cherry-pick to apply.
-comment|//
-name|n
-operator|.
-name|setStatusCode
+name|cherryPickRootOntoBranch
 argument_list|(
-name|CommitMergeStatus
-operator|.
-name|CANNOT_CHERRY_PICK_ROOT
+name|n
 argument_list|)
 expr_stmt|;
 block|}
@@ -723,10 +696,138 @@ operator|==
 literal|1
 condition|)
 block|{
+name|mergeTip
+operator|=
+name|cherryPickOne
+argument_list|(
+name|n
+argument_list|,
+name|mergeTip
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cherryPickMultipleParents
+argument_list|(
+name|n
+argument_list|,
+name|mergeTip
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchChangeException
+decl||
+name|IOException
+decl||
+name|OrmException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|MergeException
+argument_list|(
+literal|"Cannot merge "
+operator|+
+name|n
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+return|return
+name|mergeTip
+return|;
+block|}
+DECL|method|cherryPickUnbornRoot (CodeReviewCommit n)
+specifier|private
+name|MergeTip
+name|cherryPickUnbornRoot
+parameter_list|(
+name|CodeReviewCommit
+name|n
+parameter_list|)
+block|{
+comment|// The branch is unborn. Take fast-forward resolution to create the branch.
+name|MergeTip
+name|mergeTip
+init|=
+operator|new
+name|MergeTip
+argument_list|(
+name|n
+argument_list|,
+name|Lists
+operator|.
+name|newArrayList
+argument_list|(
+name|n
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|n
+operator|.
+name|setStatusCode
+argument_list|(
+name|CommitMergeStatus
+operator|.
+name|CLEAN_MERGE
+argument_list|)
+expr_stmt|;
+return|return
+name|mergeTip
+return|;
+block|}
+DECL|method|cherryPickRootOntoBranch (CodeReviewCommit n)
+specifier|private
+name|void
+name|cherryPickRootOntoBranch
+parameter_list|(
+name|CodeReviewCommit
+name|n
+parameter_list|)
+block|{
+comment|// Refuse to merge a root commit into an existing branch, we cannot obtain a
+comment|// delta for the cherry-pick to apply.
+name|n
+operator|.
+name|setStatusCode
+argument_list|(
+name|CommitMergeStatus
+operator|.
+name|CANNOT_CHERRY_PICK_ROOT
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|cherryPickOne (CodeReviewCommit n, MergeTip mergeTip)
+specifier|private
+name|MergeTip
+name|cherryPickOne
+parameter_list|(
+name|CodeReviewCommit
+name|n
+parameter_list|,
+name|MergeTip
+name|mergeTip
+parameter_list|)
+throws|throws
+name|NoSuchChangeException
+throws|,
+name|OrmException
+throws|,
+name|IOException
+block|{
 comment|// If there is only one parent, a cherry-pick can be done by
 comment|// taking the delta relative to that one parent and redoing
 comment|// that on the current merge tip.
-comment|//
 try|try
 block|{
 name|CodeReviewCommit
@@ -775,6 +876,9 @@ name|getCurrentTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|mergeTip
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -791,10 +895,9 @@ operator|.
 name|PATH_CONFLICT
 argument_list|)
 expr_stmt|;
-name|mergeTip
-operator|=
+return|return
 literal|null
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -811,20 +914,32 @@ operator|.
 name|ALREADY_MERGED
 argument_list|)
 expr_stmt|;
-name|mergeTip
-operator|=
+return|return
 literal|null
-expr_stmt|;
+return|;
 block|}
 block|}
-else|else
+DECL|method|cherryPickMultipleParents (CodeReviewCommit n, MergeTip mergeTip)
+specifier|private
+name|void
+name|cherryPickMultipleParents
+parameter_list|(
+name|CodeReviewCommit
+name|n
+parameter_list|,
+name|MergeTip
+name|mergeTip
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|MergeException
 block|{
-comment|// There are multiple parents, so this is a merge commit. We
-comment|// don't want to cherry-pick the merge as clients can't easily
-comment|// rebase their history with that merge present and replaced
-comment|// by an equivalent merge with a different first parent. So
-comment|// instead behave as though MERGE_IF_NECESSARY was configured.
-comment|//
+comment|// There are multiple parents, so this is a merge commit. We don't want
+comment|// to cherry-pick the merge as clients can't easily rebase their history
+comment|// with that merge present and replaced by an equivalent merge with a
+comment|// different first parent. So instead behave as though MERGE_IF_NECESSARY
+comment|// was configured.
 if|if
 condition|(
 operator|!
@@ -874,10 +989,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|mergeTip
-operator|.
-name|moveTipTo
-argument_list|(
+name|CodeReviewCommit
+name|result
+init|=
 name|args
 operator|.
 name|mergeUtil
@@ -918,6 +1032,12 @@ argument_list|()
 argument_list|,
 name|n
 argument_list|)
+decl_stmt|;
+name|mergeTip
+operator|.
+name|moveTipTo
+argument_list|(
+name|result
 argument_list|,
 name|n
 operator|.
@@ -926,7 +1046,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|PatchSetApproval
 name|submitApproval
 init|=
@@ -962,42 +1081,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// One or more dependencies were not met. The status was
-comment|// already marked on the commit so we have nothing further
-comment|// to perform at this time.
-comment|//
+comment|// One or more dependencies were not met. The status was already marked on
+comment|// the commit so we have nothing further to perform at this time.
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|NoSuchChangeException
-decl||
-name|IOException
-decl||
-name|OrmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|MergeException
-argument_list|(
-literal|"Cannot merge "
-operator|+
-name|n
-operator|.
-name|name
-argument_list|()
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
-return|return
-name|mergeTip
-return|;
 block|}
 DECL|method|writeCherryPickCommit (CodeReviewCommit mergeTip, CodeReviewCommit n)
 specifier|private
