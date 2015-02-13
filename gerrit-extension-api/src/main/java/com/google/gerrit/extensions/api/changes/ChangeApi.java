@@ -112,6 +112,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|EditInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|SuggestedReviewerInfo
 import|;
 end_import
@@ -351,6 +367,14 @@ comment|/** {@code get} with {@link ListChangesOption} set to none. */
 DECL|method|info ()
 name|ChangeInfo
 name|info
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Retrieve change edit when exists. */
+DECL|method|getEdit ()
+name|EditInfo
+name|getEdit
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -814,6 +838,22 @@ DECL|method|info ()
 specifier|public
 name|ChangeInfo
 name|info
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|getEdit ()
+specifier|public
+name|EditInfo
+name|getEdit
 parameter_list|()
 throws|throws
 name|RestApiException
