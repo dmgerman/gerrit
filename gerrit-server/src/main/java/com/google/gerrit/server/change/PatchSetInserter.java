@@ -1992,10 +1992,7 @@ name|IOException
 block|{
 name|ctx
 operator|.
-name|getBatchRefUpdate
-argument_list|()
-operator|.
-name|addCommand
+name|addRefUpdate
 argument_list|(
 operator|new
 name|ReceiveCommand

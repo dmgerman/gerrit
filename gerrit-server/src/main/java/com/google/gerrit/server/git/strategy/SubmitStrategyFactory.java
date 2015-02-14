@@ -184,11 +184,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|extensions
+name|git
 operator|.
-name|events
-operator|.
-name|GitReferenceUpdated
+name|BatchUpdate
 import|;
 end_import
 
@@ -519,6 +517,14 @@ name|PersonIdent
 argument_list|>
 name|myIdent
 decl_stmt|;
+DECL|field|batchUpdateFactory
+specifier|private
+specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+decl_stmt|;
 DECL|field|changeControlFactory
 specifier|private
 specifier|final
@@ -532,12 +538,6 @@ specifier|private
 specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
-decl_stmt|;
-DECL|field|gitRefUpdated
-specifier|private
-specifier|final
-name|GitReferenceUpdated
-name|gitRefUpdated
 decl_stmt|;
 DECL|field|rebaseChange
 specifier|private
@@ -573,7 +573,7 @@ name|indexer
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent Provider<PersonIdent> myIdent, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final GitReferenceUpdated gitRefUpdated, final RebaseChange rebaseChange, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
+DECL|method|SubmitStrategyFactory ( final IdentifiedUser.GenericFactory identifiedUserFactory, @GerritPersonIdent Provider<PersonIdent> myIdent, final BatchUpdate.Factory batchUpdateFactory, final ChangeControl.GenericFactory changeControlFactory, final PatchSetInfoFactory patchSetInfoFactory, final RebaseChange rebaseChange, final ProjectCache projectCache, final ApprovalsUtil approvalsUtil, final MergeUtil.Factory mergeUtilFactory, final ChangeIndexer indexer)
 name|SubmitStrategyFactory
 parameter_list|(
 specifier|final
@@ -591,6 +591,12 @@ argument_list|>
 name|myIdent
 parameter_list|,
 specifier|final
+name|BatchUpdate
+operator|.
+name|Factory
+name|batchUpdateFactory
+parameter_list|,
+specifier|final
 name|ChangeControl
 operator|.
 name|GenericFactory
@@ -599,10 +605,6 @@ parameter_list|,
 specifier|final
 name|PatchSetInfoFactory
 name|patchSetInfoFactory
-parameter_list|,
-specifier|final
-name|GitReferenceUpdated
-name|gitRefUpdated
 parameter_list|,
 specifier|final
 name|RebaseChange
@@ -641,6 +643,12 @@ name|myIdent
 expr_stmt|;
 name|this
 operator|.
+name|batchUpdateFactory
+operator|=
+name|batchUpdateFactory
+expr_stmt|;
+name|this
+operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
@@ -650,12 +658,6 @@ operator|.
 name|patchSetInfoFactory
 operator|=
 name|patchSetInfoFactory
-expr_stmt|;
-name|this
-operator|.
-name|gitRefUpdated
-operator|=
-name|gitRefUpdated
 expr_stmt|;
 name|this
 operator|.
@@ -754,6 +756,8 @@ name|myIdent
 argument_list|,
 name|db
 argument_list|,
+name|batchUpdateFactory
+argument_list|,
 name|changeControlFactory
 argument_list|,
 name|repo
@@ -797,8 +801,6 @@ argument_list|(
 name|args
 argument_list|,
 name|patchSetInfoFactory
-argument_list|,
-name|gitRefUpdated
 argument_list|)
 return|;
 case|case

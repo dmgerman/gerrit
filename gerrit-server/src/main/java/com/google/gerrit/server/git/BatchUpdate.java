@@ -658,6 +658,26 @@ return|return
 name|batchRefUpdate
 return|;
 block|}
+DECL|method|addRefUpdate (ReceiveCommand cmd)
+specifier|public
+name|void
+name|addRefUpdate
+parameter_list|(
+name|ReceiveCommand
+name|cmd
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|getBatchRefUpdate
+argument_list|()
+operator|.
+name|addCommand
+argument_list|(
+name|cmd
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|class|ChangeContext
 specifier|public
@@ -1144,16 +1164,6 @@ name|newReader
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|batchRefUpdate
-operator|=
-name|repo
-operator|.
-name|getRefDatabase
-argument_list|()
-operator|.
-name|newBatchUpdate
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|getRepository ()
@@ -1199,31 +1209,6 @@ argument_list|()
 expr_stmt|;
 return|return
 name|inserter
-return|;
-block|}
-DECL|method|addRefUpdate (ReceiveCommand cmd)
-specifier|public
-name|BatchUpdate
-name|addRefUpdate
-parameter_list|(
-name|ReceiveCommand
-name|cmd
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|initRepository
-argument_list|()
-expr_stmt|;
-name|batchRefUpdate
-operator|.
-name|addCommand
-argument_list|(
-name|cmd
-argument_list|)
-expr_stmt|;
-return|return
-name|this
 return|;
 block|}
 DECL|method|addOp (ChangeControl ctl, Op op)
