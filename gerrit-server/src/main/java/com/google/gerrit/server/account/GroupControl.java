@@ -714,10 +714,7 @@ name|InternalUser
 operator|||
 name|user
 operator|.
-name|getEffectiveGroups
-argument_list|()
-operator|.
-name|contains
+name|memberOf
 argument_list|(
 name|group
 operator|.
@@ -788,10 +785,7 @@ operator|=
 name|getCurrentUser
 argument_list|()
 operator|.
-name|getEffectiveGroups
-argument_list|()
-operator|.
-name|contains
+name|memberOf
 argument_list|(
 name|ownerUUID
 argument_list|)

@@ -261,8 +261,8 @@ DECL|class|InternalGroupBackend
 specifier|public
 class|class
 name|InternalGroupBackend
-implements|implements
-name|GroupBackend
+extends|extends
+name|AbstractGroupBackend
 block|{
 DECL|field|ACT_GROUP_TO_GROUP_REF
 specifier|private

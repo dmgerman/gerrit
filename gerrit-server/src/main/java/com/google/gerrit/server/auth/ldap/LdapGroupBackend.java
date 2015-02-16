@@ -308,7 +308,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupBackend
+name|AbstractGroupBackend
 import|;
 end_import
 
@@ -595,8 +595,8 @@ DECL|class|LdapGroupBackend
 specifier|public
 class|class
 name|LdapGroupBackend
-implements|implements
-name|GroupBackend
+extends|extends
+name|AbstractGroupBackend
 block|{
 DECL|field|log
 specifier|private

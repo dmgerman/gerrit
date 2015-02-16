@@ -184,7 +184,7 @@ name|server
 operator|.
 name|account
 operator|.
-name|GroupBackend
+name|AbstractGroupBackend
 import|;
 end_import
 
@@ -321,8 +321,8 @@ DECL|class|SystemGroupBackend
 specifier|public
 class|class
 name|SystemGroupBackend
-implements|implements
-name|GroupBackend
+extends|extends
+name|AbstractGroupBackend
 block|{
 comment|/** Common UUID assigned to the "Anonymous Users" group. */
 DECL|field|ANONYMOUS_USERS
