@@ -79,8 +79,6 @@ operator|.
 name|client
 operator|.
 name|AccountGroup
-operator|.
-name|UUID
 import|;
 end_import
 
@@ -109,7 +107,7 @@ name|GroupBackend
 block|{
 annotation|@
 name|Override
-DECL|method|memberOfAny (IdentifiedUser user, Iterable<UUID> ids)
+DECL|method|memberOfAny (IdentifiedUser user, Iterable<AccountGroup.UUID> ids)
 specifier|public
 name|boolean
 name|memberOfAny
@@ -119,6 +117,8 @@ name|user
 parameter_list|,
 name|Iterable
 argument_list|<
+name|AccountGroup
+operator|.
 name|UUID
 argument_list|>
 name|ids
