@@ -640,6 +640,11 @@ specifier|protected
 name|boolean
 name|copyAllScoresIfNoCodeChange
 decl_stmt|;
+DECL|field|copyAllScoresIfNoChange
+specifier|protected
+name|boolean
+name|copyAllScoresIfNoChange
+decl_stmt|;
 DECL|field|defaultValue
 specifier|protected
 name|short
@@ -1168,6 +1173,32 @@ operator|.
 name|copyAllScoresIfNoCodeChange
 operator|=
 name|copyAllScoresIfNoCodeChange
+expr_stmt|;
+block|}
+DECL|method|isCopyAllScoresIfNoChange ()
+specifier|public
+name|boolean
+name|isCopyAllScoresIfNoChange
+parameter_list|()
+block|{
+return|return
+name|copyAllScoresIfNoChange
+return|;
+block|}
+DECL|method|setCopyAllScoresIfNoChange (boolean copyAllScoresIfNoChange)
+specifier|public
+name|void
+name|setCopyAllScoresIfNoChange
+parameter_list|(
+name|boolean
+name|copyAllScoresIfNoChange
+parameter_list|)
+block|{
+name|this
+operator|.
+name|copyAllScoresIfNoChange
+operator|=
+name|copyAllScoresIfNoChange
 expr_stmt|;
 block|}
 DECL|method|isMaxNegative (PatchSetApproval ca)

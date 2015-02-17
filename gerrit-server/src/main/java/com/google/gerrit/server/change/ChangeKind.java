@@ -84,9 +84,13 @@ comment|/** Conflict-free merge between the new parent and the prior patch set. 
 DECL|enumConstant|TRIVIAL_REBASE
 name|TRIVIAL_REBASE
 block|,
-comment|/** Same tree and same parents. */
+comment|/** Same tree and same parent tree. */
 DECL|enumConstant|NO_CODE_CHANGE
 name|NO_CODE_CHANGE
+block|,
+comment|/** Same tree, parent tree, same commit message. */
+DECL|enumConstant|NO_CHANGE
+name|NO_CHANGE
 block|; }
 end_enum
 

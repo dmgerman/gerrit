@@ -13347,6 +13347,9 @@ block|{
 case|case
 name|TRIVIAL_REBASE
 case|:
+case|case
+name|NO_CHANGE
+case|:
 name|message
 operator|+=
 literal|": Patch Set "
