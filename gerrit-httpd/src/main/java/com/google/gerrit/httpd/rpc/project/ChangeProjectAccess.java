@@ -646,11 +646,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|updateProjectConfig (ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig (ProjectControl ctl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 name|ProjectAccess
 name|updateProjectConfig
 parameter_list|(
+name|ProjectControl
+name|ctl
+parameter_list|,
 name|ProjectConfig
 name|config
 parameter_list|,

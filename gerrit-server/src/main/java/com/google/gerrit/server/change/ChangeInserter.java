@@ -460,7 +460,7 @@ name|server
 operator|.
 name|project
 operator|.
-name|RefControl
+name|ProjectControl
 import|;
 end_import
 
@@ -648,11 +648,11 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (RefControl ctl, Change c, RevCommit rc)
+DECL|method|create (ProjectControl ctl, Change c, RevCommit rc)
 name|ChangeInserter
 name|create
 parameter_list|(
-name|RefControl
+name|ProjectControl
 name|ctl
 parameter_list|,
 name|Change
@@ -752,11 +752,11 @@ specifier|final
 name|WorkQueue
 name|workQueue
 decl_stmt|;
-DECL|field|refControl
+DECL|field|projectControl
 specifier|private
 specifier|final
-name|RefControl
-name|refControl
+name|ProjectControl
+name|projectControl
 decl_stmt|;
 DECL|field|change
 specifier|private
@@ -842,7 +842,7 @@ name|sendMail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, ChangeUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, ChangeIndexer indexer, CreateChangeSender.Factory createChangeSenderFactory, HashtagsUtil hashtagsUtil, AccountCache accountCache, WorkQueue workQueue, @Assisted RefControl refControl, @Assisted Change change, @Assisted RevCommit commit)
+DECL|method|ChangeInserter (Provider<ReviewDb> dbProvider, ChangeUpdate.Factory updateFactory, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, ChangeHooks hooks, ApprovalsUtil approvalsUtil, ChangeMessagesUtil cmUtil, ChangeIndexer indexer, CreateChangeSender.Factory createChangeSenderFactory, HashtagsUtil hashtagsUtil, AccountCache accountCache, WorkQueue workQueue, @Assisted ProjectControl projectControl, @Assisted Change change, @Assisted RevCommit commit)
 name|ChangeInserter
 parameter_list|(
 name|Provider
@@ -890,8 +890,8 @@ name|workQueue
 parameter_list|,
 annotation|@
 name|Assisted
-name|RefControl
-name|refControl
+name|ProjectControl
+name|projectControl
 parameter_list|,
 annotation|@
 name|Assisted
@@ -972,9 +972,9 @@ name|workQueue
 expr_stmt|;
 name|this
 operator|.
-name|refControl
+name|projectControl
 operator|=
-name|refControl
+name|projectControl
 expr_stmt|;
 name|this
 operator|.
@@ -1371,10 +1371,7 @@ decl_stmt|;
 name|ChangeControl
 name|ctl
 init|=
-name|refControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|projectControl
 operator|.
 name|controlFor
 argument_list|(
@@ -1458,10 +1455,7 @@ expr_stmt|;
 name|LabelTypes
 name|labelTypes
 init|=
-name|refControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|projectControl
 operator|.
 name|getLabelTypes
 argument_list|()
@@ -1937,10 +1931,7 @@ expr_stmt|;
 name|ChangeControl
 name|otherControl
 init|=
-name|refControl
-operator|.
-name|getProjectControl
-argument_list|()
+name|projectControl
 operator|.
 name|controlFor
 argument_list|(

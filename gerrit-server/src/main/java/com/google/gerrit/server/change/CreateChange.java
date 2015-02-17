@@ -1714,6 +1714,9 @@ operator|.
 name|create
 argument_list|(
 name|refControl
+operator|.
+name|getProjectControl
+argument_list|()
 argument_list|,
 name|change
 argument_list|,
