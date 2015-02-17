@@ -3104,7 +3104,7 @@ name|int
 name|red
 init|=
 name|p
-operator|>
+operator|>=
 literal|50
 condition|?
 literal|255
@@ -3127,7 +3127,7 @@ name|int
 name|green
 init|=
 name|p
-operator|<
+operator|<=
 literal|50
 condition|?
 literal|255
