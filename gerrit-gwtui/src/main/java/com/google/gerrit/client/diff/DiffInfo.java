@@ -291,6 +291,15 @@ name|web_links
 parameter_list|()
 comment|/*-{ return this.web_links; }-*/
 function_decl|;
+DECL|method|binary ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|binary
+parameter_list|()
+comment|/*-{ return this.binary || false; }-*/
+function_decl|;
 DECL|method|side_by_side_web_links ()
 specifier|public
 specifier|final

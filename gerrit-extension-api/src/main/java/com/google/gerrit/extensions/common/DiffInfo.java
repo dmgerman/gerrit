@@ -137,6 +137,12 @@ name|DiffWebLinkInfo
 argument_list|>
 name|webLinks
 decl_stmt|;
+comment|// Binary file
+DECL|field|binary
+specifier|public
+name|Boolean
+name|binary
+decl_stmt|;
 DECL|enum|IntraLineStatus
 specifier|public
 specifier|static

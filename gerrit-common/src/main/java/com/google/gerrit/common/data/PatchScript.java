@@ -360,7 +360,12 @@ specifier|protected
 name|boolean
 name|intralineTimeout
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt)
+DECL|field|binary
+specifier|protected
+name|boolean
+name|binary
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -458,6 +463,9 @@ parameter_list|,
 specifier|final
 name|boolean
 name|idt
+parameter_list|,
+name|boolean
+name|bin
 parameter_list|)
 block|{
 name|changeId
@@ -543,6 +551,10 @@ expr_stmt|;
 name|intralineTimeout
 operator|=
 name|idt
+expr_stmt|;
+name|binary
+operator|=
+name|bin
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -882,6 +894,16 @@ argument_list|)
 operator|.
 name|getHunks
 argument_list|()
+return|;
+block|}
+DECL|method|isBinary ()
+specifier|public
+name|boolean
+name|isBinary
+parameter_list|()
+block|{
+return|return
+name|binary
 return|;
 block|}
 block|}

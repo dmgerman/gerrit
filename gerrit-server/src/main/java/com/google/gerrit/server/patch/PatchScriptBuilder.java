@@ -1357,6 +1357,17 @@ argument_list|,
 name|intralineFailure
 argument_list|,
 name|intralineTimeout
+argument_list|,
+name|content
+operator|.
+name|getPatchType
+argument_list|()
+operator|==
+name|Patch
+operator|.
+name|PatchType
+operator|.
+name|BINARY
 argument_list|)
 return|;
 block|}
