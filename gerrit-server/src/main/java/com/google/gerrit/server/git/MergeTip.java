@@ -82,20 +82,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|Nullable
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -124,45 +110,6 @@ specifier|public
 class|class
 name|MergeTip
 block|{
-DECL|method|from (@ullable CodeReviewCommit initial, Collection<CodeReviewCommit> toMerge)
-specifier|public
-specifier|static
-name|MergeTip
-name|from
-parameter_list|(
-annotation|@
-name|Nullable
-name|CodeReviewCommit
-name|initial
-parameter_list|,
-name|Collection
-argument_list|<
-name|CodeReviewCommit
-argument_list|>
-name|toMerge
-parameter_list|)
-block|{
-if|if
-condition|(
-name|initial
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-return|return
-operator|new
-name|MergeTip
-argument_list|(
-name|initial
-argument_list|,
-name|toMerge
-argument_list|)
-return|;
-block|}
 DECL|field|branchTip
 specifier|private
 name|CodeReviewCommit
@@ -180,7 +127,7 @@ name|mergeResults
 decl_stmt|;
 comment|/**    * @param initial Tip before the merge operation.    * @param toMerge List of CodeReview commits to be merged in merge operation.    */
 DECL|method|MergeTip (CodeReviewCommit initial, Collection<CodeReviewCommit> toMerge)
-specifier|private
+specifier|public
 name|MergeTip
 parameter_list|(
 name|CodeReviewCommit

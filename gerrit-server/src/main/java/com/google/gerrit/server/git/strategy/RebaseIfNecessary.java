@@ -509,9 +509,8 @@ block|{
 name|MergeTip
 name|mergeTip
 init|=
+operator|new
 name|MergeTip
-operator|.
-name|from
 argument_list|(
 name|branchTip
 argument_list|,
