@@ -108,7 +108,9 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|Side
+name|Comment
+operator|.
+name|Range
 import|;
 end_import
 
@@ -124,9 +126,7 @@ name|extensions
 operator|.
 name|client
 operator|.
-name|Comment
-operator|.
-name|Range
+name|Side
 import|;
 end_import
 
