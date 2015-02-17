@@ -1196,15 +1196,27 @@ return|return
 name|sysModule
 return|;
 block|}
-DECL|method|setCfgInjector (Injector cfgInjector)
+DECL|method|setDbCfgInjector (Injector dbInjector, Injector cfgInjector)
 specifier|public
 name|void
-name|setCfgInjector
+name|setDbCfgInjector
 parameter_list|(
+name|Injector
+name|dbInjector
+parameter_list|,
 name|Injector
 name|cfgInjector
 parameter_list|)
 block|{
+specifier|final
+name|Module
+name|db
+init|=
+name|copy
+argument_list|(
+name|dbInjector
+argument_list|)
+decl_stmt|;
 specifier|final
 name|Module
 name|cm
@@ -1239,6 +1251,11 @@ block|{
 name|install
 argument_list|(
 name|copyConfigModule
+argument_list|)
+expr_stmt|;
+name|install
+argument_list|(
+name|db
 argument_list|)
 expr_stmt|;
 name|install
