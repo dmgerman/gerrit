@@ -112,6 +112,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|ObjectId
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -149,9 +163,9 @@ DECL|field|mergeResults
 specifier|private
 name|Map
 argument_list|<
-name|String
+name|ObjectId
 argument_list|,
-name|String
+name|ObjectId
 argument_list|>
 name|mergeResults
 decl_stmt|;
@@ -219,19 +233,19 @@ name|put
 argument_list|(
 name|commit
 operator|.
-name|getName
+name|copy
 argument_list|()
 argument_list|,
 name|commit
 operator|.
-name|getName
+name|copy
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Moves this MergeTip to newTip and appends mergeResult.    *    * @param newTip The new tip; may not be null.    * @param mergedFrom The result of the merge of newTip.    */
-DECL|method|moveTipTo (CodeReviewCommit newTip, String mergedFrom)
+comment|/**    * Moves this MergeTip to newTip and appends mergeResult.    *    * @param newTip The new tip; may not be null.    * @param mergedFrom The result of the merge of {@code newTip}.    */
+DECL|method|moveTipTo (CodeReviewCommit newTip, ObjectId mergedFrom)
 specifier|public
 name|void
 name|moveTipTo
@@ -239,7 +253,7 @@ parameter_list|(
 name|CodeReviewCommit
 name|newTip
 parameter_list|,
-name|String
+name|ObjectId
 name|mergedFrom
 parameter_list|)
 block|{
@@ -262,7 +276,7 @@ name|mergedFrom
 argument_list|,
 name|newTip
 operator|.
-name|getName
+name|copy
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -272,9 +286,9 @@ DECL|method|getMergeResults ()
 specifier|public
 name|Map
 argument_list|<
-name|String
+name|ObjectId
 argument_list|,
-name|String
+name|ObjectId
 argument_list|>
 name|getMergeResults
 parameter_list|()

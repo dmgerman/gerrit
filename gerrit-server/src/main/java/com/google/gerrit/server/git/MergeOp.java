@@ -3984,9 +3984,6 @@ argument_list|,
 literal|null
 argument_list|,
 name|commit
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4929,16 +4926,8 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
-name|String
-name|commitName
-init|=
-name|commit
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 comment|// If mergeTip is null merge failed and mergeResultRev will not be read.
-name|String
+name|ObjectId
 name|mergeResultRev
 init|=
 name|mergeTip
@@ -4952,7 +4941,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|commitName
+name|commit
 argument_list|)
 else|:
 literal|null
@@ -5884,7 +5873,7 @@ return|return
 name|m
 return|;
 block|}
-DECL|method|setMerged (Change c, ChangeMessage msg, String mergeResultRev)
+DECL|method|setMerged (Change c, ChangeMessage msg, ObjectId mergeResultRev)
 specifier|private
 name|void
 name|setMerged
@@ -5895,7 +5884,7 @@ parameter_list|,
 name|ChangeMessage
 name|msg
 parameter_list|,
-name|String
+name|ObjectId
 name|mergeResultRev
 parameter_list|)
 throws|throws
@@ -6119,6 +6108,9 @@ argument_list|,
 name|db
 argument_list|,
 name|mergeResultRev
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

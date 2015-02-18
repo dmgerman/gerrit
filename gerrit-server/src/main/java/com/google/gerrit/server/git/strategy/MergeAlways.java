@@ -331,9 +331,6 @@ argument_list|(
 name|newTip
 argument_list|,
 name|mergedFrom
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

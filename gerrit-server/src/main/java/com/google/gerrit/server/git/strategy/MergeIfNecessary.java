@@ -287,9 +287,6 @@ argument_list|(
 name|branchTip
 argument_list|,
 name|branchTip
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// For every other commit do a pair-wise merge.
@@ -359,9 +356,6 @@ argument_list|(
 name|branchTip
 argument_list|,
 name|mergedFrom
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

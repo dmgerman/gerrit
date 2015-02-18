@@ -847,9 +847,6 @@ argument_list|(
 name|merge
 argument_list|,
 name|merge
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|newCommits
@@ -978,9 +975,6 @@ argument_list|(
 name|n
 argument_list|,
 name|n
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1037,9 +1031,6 @@ argument_list|(
 name|result
 argument_list|,
 name|n
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
