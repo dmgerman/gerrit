@@ -872,7 +872,10 @@ operator|&&
 operator|!
 name|reviewer
 operator|.
-name|memberOf
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 name|group
 argument_list|)

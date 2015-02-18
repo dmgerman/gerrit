@@ -610,7 +610,10 @@ block|{
 return|return
 name|user
 operator|.
-name|memberOfAny
+name|getEffectiveGroups
+argument_list|()
+operator|.
+name|containsAnyOf
 argument_list|(
 name|ids
 argument_list|)

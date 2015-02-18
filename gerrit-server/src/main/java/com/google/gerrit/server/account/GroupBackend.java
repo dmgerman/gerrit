@@ -248,23 +248,6 @@ name|IdentifiedUser
 name|user
 parameter_list|)
 function_decl|;
-comment|/**    * Check if the user is member of any of the given groups.    *    * @return {@code true} if the user is a member of at least one of the    *         given groups, {@code false} otherwise    */
-DECL|method|memberOfAny (IdentifiedUser user, Iterable<AccountGroup.UUID> ids)
-name|boolean
-name|memberOfAny
-parameter_list|(
-name|IdentifiedUser
-name|user
-parameter_list|,
-name|Iterable
-argument_list|<
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|ids
-parameter_list|)
-function_decl|;
 comment|/**    * @return {@code true} if the group with the given UUID is visible to all    *         registered users.    */
 DECL|method|isVisibleToAll (AccountGroup.UUID uuid)
 name|boolean
