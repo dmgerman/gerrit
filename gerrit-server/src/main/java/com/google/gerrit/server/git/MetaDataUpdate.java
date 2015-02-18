@@ -793,6 +793,11 @@ specifier|private
 name|boolean
 name|allowEmpty
 decl_stmt|;
+DECL|field|insertChangeId
+specifier|private
+name|boolean
+name|insertChangeId
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|MetaDataUpdate (GitReferenceUpdated gitRefUpdated, @Assisted Project.NameKey projectName, @Assisted Repository db, @Assisted @Nullable BatchRefUpdate batch)
@@ -957,6 +962,22 @@ operator|=
 name|allowEmpty
 expr_stmt|;
 block|}
+DECL|method|setInsertChangeId (boolean insertChangeId)
+specifier|public
+name|void
+name|setInsertChangeId
+parameter_list|(
+name|boolean
+name|insertChangeId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|insertChangeId
+operator|=
+name|insertChangeId
+expr_stmt|;
+block|}
 comment|/** @return batch in which to run the update, or {@code null} for no batch. */
 DECL|method|getBatch ()
 name|BatchRefUpdate
@@ -1009,6 +1030,15 @@ parameter_list|()
 block|{
 return|return
 name|allowEmpty
+return|;
+block|}
+DECL|method|insertChangeId ()
+name|boolean
+name|insertChangeId
+parameter_list|()
+block|{
+return|return
+name|insertChangeId
 return|;
 block|}
 DECL|method|getCommitBuilder ()
