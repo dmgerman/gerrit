@@ -10908,6 +10908,9 @@ operator|.
 name|create
 argument_list|(
 name|ctl
+operator|.
+name|getProjectControl
+argument_list|()
 argument_list|,
 name|change
 argument_list|,

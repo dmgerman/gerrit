@@ -1216,6 +1216,8 @@ block|}
 return|return
 name|updateProjectConfig
 argument_list|(
+name|projectControl
+argument_list|,
 name|config
 argument_list|,
 name|md
@@ -1233,12 +1235,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|updateProjectConfig (ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
+DECL|method|updateProjectConfig (ProjectControl ctl, ProjectConfig config, MetaDataUpdate md, boolean parentProjectUpdate)
 specifier|protected
 specifier|abstract
 name|T
 name|updateProjectConfig
 parameter_list|(
+name|ProjectControl
+name|ctl
+parameter_list|,
 name|ProjectConfig
 name|config
 parameter_list|,
