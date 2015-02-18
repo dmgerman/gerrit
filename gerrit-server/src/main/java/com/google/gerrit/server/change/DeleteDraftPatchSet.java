@@ -1018,7 +1018,7 @@ name|Id
 name|patchSetId
 parameter_list|)
 throws|throws
-name|ResourceNotFoundException
+name|OrmException
 block|{
 try|try
 block|{
@@ -1060,12 +1060,9 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ResourceNotFoundException
+name|OrmException
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
