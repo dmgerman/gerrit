@@ -657,11 +657,11 @@ operator|==
 literal|null
 condition|)
 block|{
-name|mergeTip
-operator|=
 name|cherryPickUnbornRoot
 argument_list|(
 name|n
+argument_list|,
+name|mergeTip
 argument_list|)
 expr_stmt|;
 block|}
@@ -693,8 +693,6 @@ operator|==
 literal|1
 condition|)
 block|{
-name|mergeTip
-operator|=
 name|cherryPickOne
 argument_list|(
 name|n
@@ -744,32 +742,28 @@ return|return
 name|mergeTip
 return|;
 block|}
-DECL|method|cherryPickUnbornRoot (CodeReviewCommit n)
+DECL|method|cherryPickUnbornRoot (CodeReviewCommit n, MergeTip mergeTip)
 specifier|private
-name|MergeTip
+name|void
 name|cherryPickUnbornRoot
 parameter_list|(
 name|CodeReviewCommit
 name|n
+parameter_list|,
+name|MergeTip
+name|mergeTip
 parameter_list|)
 block|{
 comment|// The branch is unborn. Take fast-forward resolution to create the branch.
-name|MergeTip
 name|mergeTip
-init|=
-operator|new
-name|MergeTip
+operator|.
+name|moveTipTo
 argument_list|(
 name|n
 argument_list|,
-name|Lists
-operator|.
-name|newArrayList
-argument_list|(
 name|n
 argument_list|)
-argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|n
 operator|.
 name|setStatusCode
@@ -779,9 +773,6 @@ operator|.
 name|CLEAN_MERGE
 argument_list|)
 expr_stmt|;
-return|return
-name|mergeTip
-return|;
 block|}
 DECL|method|cherryPickRootOntoBranch (CodeReviewCommit n)
 specifier|private
@@ -806,7 +797,7 @@ expr_stmt|;
 block|}
 DECL|method|cherryPickOne (CodeReviewCommit n, MergeTip mergeTip)
 specifier|private
-name|MergeTip
+name|void
 name|cherryPickOne
 parameter_list|(
 name|CodeReviewCommit
@@ -822,9 +813,12 @@ name|OrmException
 throws|,
 name|IOException
 block|{
-comment|// If there is only one parent, a cherry-pick can be done by
-comment|// taking the delta relative to that one parent and redoing
-comment|// that on the current merge tip.
+comment|// If there is only one parent, a cherry-pick can be done by taking the
+comment|// delta relative to that one parent and redoing that on the current merge
+comment|// tip.
+comment|//
+comment|// Keep going in the case of a single merge failure; the goal is to
+comment|// cherry-pick as many commits as possible.
 try|try
 block|{
 name|CodeReviewCommit
@@ -870,9 +864,6 @@ name|getCurrentTip
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return
-name|mergeTip
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -889,9 +880,6 @@ operator|.
 name|PATH_CONFLICT
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -908,9 +896,6 @@ operator|.
 name|ALREADY_MERGED
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 block|}
 DECL|method|cherryPickMultipleParents (CodeReviewCommit n, MergeTip mergeTip)
