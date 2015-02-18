@@ -603,10 +603,6 @@ block|{
 name|MergeTip
 name|mergeTip
 init|=
-name|branchTip
-operator|!=
-literal|null
-condition|?
 operator|new
 name|MergeTip
 argument_list|(
@@ -614,8 +610,6 @@ name|branchTip
 argument_list|,
 name|toMerge
 argument_list|)
-else|:
-literal|null
 decl_stmt|;
 name|List
 argument_list|<
@@ -656,6 +650,9 @@ block|{
 if|if
 condition|(
 name|mergeTip
+operator|.
+name|getCurrentTip
+argument_list|()
 operator|==
 literal|null
 condition|)

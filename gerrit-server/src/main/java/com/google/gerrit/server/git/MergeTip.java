@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -77,6 +93,20 @@ operator|.
 name|collect
 operator|.
 name|Maps
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|Nullable
 import|;
 end_import
 
@@ -101,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class describing a merge tip during merge operation.  */
+comment|/**  * Class describing a merge tip during merge operation.  *<p>  * The current tip of a {@link MergeTip} may be null if the merge operation is  * against an unborn branch, and has not yet been attempted. This is distinct  * from a null {@link MergeTip} instance, which may be used to indicate that a  * merge failed or another error state.  */
 end_comment
 
 begin_class
@@ -125,11 +155,13 @@ name|String
 argument_list|>
 name|mergeResults
 decl_stmt|;
-comment|/**    * @param initial Tip before the merge operation.    * @param toMerge List of CodeReview commits to be merged in merge operation.    */
-DECL|method|MergeTip (CodeReviewCommit initial, Collection<CodeReviewCommit> toMerge)
+comment|/**    * @param initial Tip before the merge operation; may be null, indicating an    *     unborn branch.    * @param toMerge List of CodeReview commits to be merged in merge operation;    *     may not be null or empty.    */
+DECL|method|MergeTip (@ullable CodeReviewCommit initial, Collection<CodeReviewCommit> toMerge)
 specifier|public
 name|MergeTip
 parameter_list|(
+annotation|@
+name|Nullable
 name|CodeReviewCommit
 name|initial
 parameter_list|,
@@ -140,6 +172,23 @@ argument_list|>
 name|toMerge
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|toMerge
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|toMerge
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|,
+literal|"toMerge may not be null or empty: %s"
+argument_list|,
+name|toMerge
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|mergeResults
@@ -181,7 +230,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Moves this MergeTip to newTip and appends mergeResult.    *    * @param newTip The new tip    * @param mergedFrom The result of the merge of newTip    */
+comment|/**    * Moves this MergeTip to newTip and appends mergeResult.    *    * @param newTip The new tip; may not be null.    * @param mergedFrom The result of the merge of newTip.    */
 DECL|method|moveTipTo (CodeReviewCommit newTip, String mergedFrom)
 specifier|public
 name|void
@@ -194,6 +243,13 @@ name|String
 name|mergedFrom
 parameter_list|)
 block|{
+name|checkArgument
+argument_list|(
+name|newTip
+operator|!=
+literal|null
+argument_list|)
+expr_stmt|;
 name|branchTip
 operator|=
 name|newTip
@@ -211,7 +267,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * The merge results of all the merges of this merge operation.    *    * @return The merge results of the merge operation Map<<sha1 of the commit to    *         be merged>,<sha1 of the merge result>>    */
+comment|/**    * The merge results of all the merges of this merge operation.    *    * @return The merge results of the merge operation as a map of SHA-1 to be    *     merged to SHA-1 of the merge result.    */
 DECL|method|getMergeResults ()
 specifier|public
 name|Map
@@ -224,12 +280,12 @@ name|getMergeResults
 parameter_list|()
 block|{
 return|return
-name|this
-operator|.
 name|mergeResults
 return|;
 block|}
-comment|/**    *    * @return The current tip of the current merge operation.    */
+comment|/**    * @return The current tip of the current merge operation; may be null,    *     indicating an unborn branch.    */
+annotation|@
+name|Nullable
 DECL|method|getCurrentTip ()
 specifier|public
 name|CodeReviewCommit
