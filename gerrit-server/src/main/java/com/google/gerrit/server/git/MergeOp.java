@@ -6080,6 +6080,10 @@ condition|(
 name|submitter
 operator|!=
 literal|null
+operator|&&
+name|mergeResultRev
+operator|!=
+literal|null
 condition|)
 block|{
 try|try
