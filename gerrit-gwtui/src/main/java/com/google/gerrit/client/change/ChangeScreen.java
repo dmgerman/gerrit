@@ -2149,17 +2149,12 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
-comment|// Revision loading may be slower than the rest, so do it
-comment|// asynchronous to have the rest fast.
 name|loadConfigInfo
 argument_list|(
 name|info
 argument_list|,
 name|base
 argument_list|)
-expr_stmt|;
-name|loadRevisionInfo
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -5621,6 +5616,9 @@ name|renderChangeInfo
 argument_list|(
 name|info
 argument_list|)
+expr_stmt|;
+name|loadRevisionInfo
+argument_list|()
 expr_stmt|;
 block|}
 block|}
