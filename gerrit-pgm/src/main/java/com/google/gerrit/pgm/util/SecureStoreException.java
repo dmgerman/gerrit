@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.server.securestore
+DECL|package|com.google.gerrit.pgm.util
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|pgm
 operator|.
-name|securestore
+name|util
 package|;
 end_package
 

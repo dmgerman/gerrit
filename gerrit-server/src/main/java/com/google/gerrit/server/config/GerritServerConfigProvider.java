@@ -250,14 +250,12 @@ name|secureStore
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritServerConfigProvider (final SitePaths site, final SecureStore secureStore)
+DECL|method|GerritServerConfigProvider (SitePaths site, SecureStore secureStore)
 name|GerritServerConfigProvider
 parameter_list|(
-specifier|final
 name|SitePaths
 name|site
 parameter_list|,
-specifier|final
 name|SecureStore
 name|secureStore
 parameter_list|)

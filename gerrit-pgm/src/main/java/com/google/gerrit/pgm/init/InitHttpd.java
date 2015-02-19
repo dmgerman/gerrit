@@ -1026,7 +1026,7 @@ name|flags
 operator|.
 name|sec
 operator|.
-name|getString
+name|get
 argument_list|(
 literal|"http"
 argument_list|,
@@ -1058,7 +1058,7 @@ name|flags
 operator|.
 name|sec
 operator|.
-name|setString
+name|set
 argument_list|(
 literal|"httpd"
 argument_list|,

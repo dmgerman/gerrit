@@ -104,6 +104,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|securestore
+operator|.
+name|SecureStore
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -231,9 +247,15 @@ specifier|final
 name|String
 name|subsection
 decl_stmt|;
+DECL|field|secureStore
+specifier|private
+specifier|final
+name|SecureStore
+name|secureStore
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Section (final InitFlags flags, final SitePaths site, final ConsoleUI ui, @Assisted(R) final String section, @Assisted(R) @Nullable final String subsection)
+DECL|method|Section (final InitFlags flags, final SitePaths site, final SecureStore secureStore, final ConsoleUI ui, @Assisted(R) final String section, @Assisted(R) @Nullable final String subsection)
 specifier|public
 name|Section
 parameter_list|(
@@ -244,6 +266,10 @@ parameter_list|,
 specifier|final
 name|SitePaths
 name|site
+parameter_list|,
+specifier|final
+name|SecureStore
+name|secureStore
 parameter_list|,
 specifier|final
 name|ConsoleUI
@@ -299,6 +325,12 @@ operator|.
 name|subsection
 operator|=
 name|subsection
+expr_stmt|;
+name|this
+operator|.
+name|secureStore
+operator|=
+name|secureStore
 expr_stmt|;
 block|}
 DECL|method|get (String name)
@@ -1001,7 +1033,7 @@ name|flags
 operator|.
 name|sec
 operator|.
-name|getString
+name|get
 argument_list|(
 name|section
 argument_list|,
@@ -1225,7 +1257,7 @@ name|flags
 operator|.
 name|sec
 operator|.
-name|getString
+name|get
 argument_list|(
 name|section
 argument_list|,
@@ -1254,11 +1286,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|flags
+name|secureStore
 operator|.
-name|sec
-operator|.
-name|setString
+name|set
 argument_list|(
 name|section
 argument_list|,
@@ -1272,9 +1302,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|flags
-operator|.
-name|sec
+name|secureStore
 operator|.
 name|unset
 argument_list|(
