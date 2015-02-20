@@ -167,6 +167,7 @@ name|Basic
 name|member
 decl_stmt|;
 DECL|method|IncludedGroupResource (GroupResource group, GroupDescription.Basic member)
+specifier|public
 name|IncludedGroupResource
 parameter_list|(
 name|GroupResource

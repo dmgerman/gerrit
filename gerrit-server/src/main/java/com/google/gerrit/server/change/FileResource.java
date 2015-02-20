@@ -189,6 +189,7 @@ name|Key
 name|key
 decl_stmt|;
 DECL|method|FileResource (RevisionResource rev, String name)
+specifier|public
 name|FileResource
 parameter_list|(
 name|RevisionResource

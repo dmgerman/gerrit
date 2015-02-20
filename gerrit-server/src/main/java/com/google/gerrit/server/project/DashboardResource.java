@@ -157,6 +157,7 @@ argument_list|()
 block|{}
 decl_stmt|;
 DECL|method|projectDefault (ProjectControl ctl)
+specifier|public
 specifier|static
 name|DashboardResource
 name|projectDefault
@@ -212,6 +213,7 @@ name|boolean
 name|projectDefault
 decl_stmt|;
 DECL|method|DashboardResource (ProjectControl control, String refName, String pathName, Config config, boolean projectDefault)
+specifier|public
 name|DashboardResource
 parameter_list|(
 name|ProjectControl

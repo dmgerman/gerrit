@@ -147,6 +147,7 @@ name|ProjectControl
 name|child
 decl_stmt|;
 DECL|method|ChildProjectResource (ProjectResource project, ProjectControl child)
+specifier|public
 name|ChildProjectResource
 parameter_list|(
 name|ProjectResource

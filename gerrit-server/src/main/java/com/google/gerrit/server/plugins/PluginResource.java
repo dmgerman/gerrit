@@ -155,6 +155,7 @@ name|String
 name|name
 decl_stmt|;
 DECL|method|PluginResource (Plugin plugin)
+specifier|public
 name|PluginResource
 parameter_list|(
 name|Plugin
@@ -178,6 +179,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|PluginResource (String name)
+specifier|public
 name|PluginResource
 parameter_list|(
 name|String

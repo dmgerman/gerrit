@@ -203,6 +203,7 @@ name|PatchLineComment
 name|comment
 decl_stmt|;
 DECL|method|CommentResource (RevisionResource rev, PatchLineComment c)
+specifier|public
 name|CommentResource
 parameter_list|(
 name|RevisionResource

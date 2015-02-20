@@ -332,6 +332,7 @@ name|user
 return|;
 block|}
 DECL|class|Capability
+specifier|public
 specifier|static
 class|class
 name|Capability
@@ -351,6 +352,7 @@ name|String
 name|capability
 decl_stmt|;
 DECL|method|Capability (IdentifiedUser user, String capability)
+specifier|public
 name|Capability
 parameter_list|(
 name|IdentifiedUser

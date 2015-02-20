@@ -249,6 +249,7 @@ name|PatchLineComment
 name|comment
 decl_stmt|;
 DECL|method|DraftCommentResource (RevisionResource rev, PatchLineComment c)
+specifier|public
 name|DraftCommentResource
 parameter_list|(
 name|RevisionResource
