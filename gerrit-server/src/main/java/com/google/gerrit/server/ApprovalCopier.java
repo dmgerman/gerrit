@@ -94,7 +94,7 @@ name|change
 operator|.
 name|ChangeKind
 operator|.
-name|NO_CODE_CHANGE
+name|NO_CHANGE
 import|;
 end_import
 
@@ -112,7 +112,7 @@ name|change
 operator|.
 name|ChangeKind
 operator|.
-name|NO_CHANGE
+name|NO_CODE_CHANGE
 import|;
 end_import
 
