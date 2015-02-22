@@ -746,6 +746,10 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
+name|OAUTH
+case|:
+comment|// OAuth support is bound in WebAppInitializer and Daemon.
+case|case
 name|OPENID
 case|:
 case|case
@@ -778,6 +782,8 @@ argument_list|(
 name|urlConfig
 argument_list|,
 name|uiOptions
+argument_list|,
+name|authConfig
 argument_list|)
 argument_list|)
 expr_stmt|;
