@@ -393,7 +393,7 @@ name|site
 operator|.
 name|gerrit_war
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 operator|+
 literal|" init -d "

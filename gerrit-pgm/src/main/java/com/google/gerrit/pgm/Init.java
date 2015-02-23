@@ -967,7 +967,6 @@ name|SiteRun
 name|run
 parameter_list|)
 block|{
-specifier|final
 name|String
 index|[]
 name|argv
@@ -979,13 +978,15 @@ name|site
 operator|.
 name|gerrit_sh
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 block|,
 literal|"start"
 block|}
 decl_stmt|;
-specifier|final
 name|Process
 name|proc
 decl_stmt|;
@@ -1100,7 +1101,6 @@ control|)
 block|{
 try|try
 block|{
-specifier|final
 name|int
 name|rc
 init|=

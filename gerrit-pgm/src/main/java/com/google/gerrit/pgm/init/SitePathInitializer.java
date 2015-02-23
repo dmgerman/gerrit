@@ -992,6 +992,9 @@ decl_stmt|;
 name|extract
 argument_list|(
 name|ex
+operator|.
+name|toPath
+argument_list|()
 argument_list|,
 name|OutgoingEmail
 operator|.
