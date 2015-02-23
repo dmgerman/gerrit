@@ -360,6 +360,7 @@ end_import
 
 begin_class
 DECL|class|SuggestAccounts
+specifier|public
 class|class
 name|SuggestAccounts
 implements|implements
@@ -423,6 +424,11 @@ name|limit
 init|=
 literal|10
 decl_stmt|;
+DECL|field|query
+specifier|private
+name|String
+name|query
+decl_stmt|;
 annotation|@
 name|Option
 argument_list|(
@@ -445,6 +451,7 @@ operator|=
 literal|"maximum number of users to return"
 argument_list|)
 DECL|method|setLimit (int n)
+specifier|public
 name|void
 name|setLimit
 parameter_list|(
@@ -513,11 +520,22 @@ name|usage
 operator|=
 literal|"match users"
 argument_list|)
-DECL|field|query
-specifier|private
+DECL|method|setQuery (String query)
+specifier|public
+name|void
+name|setQuery
+parameter_list|(
 name|String
 name|query
-decl_stmt|;
+parameter_list|)
+block|{
+name|this
+operator|.
+name|query
+operator|=
+name|query
+expr_stmt|;
+block|}
 annotation|@
 name|Inject
 DECL|method|SuggestAccounts (AccountControl.Factory accountControlFactory, AccountLoader.Factory accountLoaderFactory, ReviewDb db, @GerritServerConfig Config cfg)

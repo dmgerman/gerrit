@@ -78,6 +78,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|NotImplementedException
@@ -97,6 +113,16 @@ operator|.
 name|restapi
 operator|.
 name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -125,6 +151,116 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Suggest users for a given query.    *<p>    * Example code:    * {@code suggestAccounts().withQuery("Reviewer").withLimit(5).get()}    *    * @return API for setting parameters and getting result.    */
+DECL|method|suggestAccounts ()
+name|SuggestAccountsRequest
+name|suggestAccounts
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Suggest users for a given query.    *<p>    * Shortcut API for {@code suggestAccounts().withQuery(String)}.    *    * @see #suggestAccounts()    */
+DECL|method|suggestAccounts (String query)
+name|SuggestAccountsRequest
+name|suggestAccounts
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * API for setting parameters and getting result.    * Used for {@code suggestAccounts()}.    *    * @see #suggestAccounts()    */
+DECL|class|SuggestAccountsRequest
+specifier|public
+specifier|abstract
+class|class
+name|SuggestAccountsRequest
+block|{
+DECL|field|query
+specifier|private
+name|String
+name|query
+decl_stmt|;
+DECL|field|limit
+specifier|private
+name|int
+name|limit
+decl_stmt|;
+comment|/**      * Executes query and returns a list of accounts.      */
+DECL|method|get ()
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**      * Set query.      *      * @param query needs to be in human-readable form.      */
+DECL|method|withQuery (String query)
+specifier|public
+name|SuggestAccountsRequest
+name|withQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+name|this
+operator|.
+name|query
+operator|=
+name|query
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+comment|/**      * Set limit for returned list of accounts.      * Optional; server-default is used when not provided.      */
+DECL|method|withLimit (int limit)
+specifier|public
+name|SuggestAccountsRequest
+name|withLimit
+parameter_list|(
+name|int
+name|limit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|limit
+operator|=
+name|limit
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|getQuery ()
+specifier|public
+name|String
+name|getQuery
+parameter_list|()
+block|{
+return|return
+name|query
+return|;
+block|}
+DECL|method|getLimit ()
+specifier|public
+name|int
+name|getLimit
+parameter_list|()
+block|{
+return|return
+name|limit
+return|;
+block|}
+block|}
 comment|/**    * A default implementation which allows source compatibility    * when adding new methods to the interface.    **/
 DECL|class|NotImplemented
 specifier|public
@@ -159,6 +295,41 @@ specifier|public
 name|AccountApi
 name|self
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|suggestAccounts ()
+specifier|public
+name|SuggestAccountsRequest
+name|suggestAccounts
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|suggestAccounts (String query)
+specifier|public
+name|SuggestAccountsRequest
+name|suggestAccounts
+parameter_list|(
+name|String
+name|query
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
