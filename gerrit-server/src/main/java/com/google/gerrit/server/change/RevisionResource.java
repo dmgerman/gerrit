@@ -561,6 +561,28 @@ return|return
 name|s
 return|;
 block|}
+DECL|method|isCurrent ()
+specifier|public
+name|boolean
+name|isCurrent
+parameter_list|()
+block|{
+return|return
+name|ps
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|getChange
+argument_list|()
+operator|.
+name|currentPatchSetId
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

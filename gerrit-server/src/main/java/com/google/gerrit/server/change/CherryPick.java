@@ -790,6 +790,11 @@ argument_list|()
 operator|.
 name|canUpload
 argument_list|()
+operator|&&
+name|resource
+operator|.
+name|isCurrent
+argument_list|()
 argument_list|)
 return|;
 block|}

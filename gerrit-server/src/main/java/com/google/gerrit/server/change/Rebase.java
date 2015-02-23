@@ -1347,6 +1347,11 @@ argument_list|()
 operator|&&
 name|resource
 operator|.
+name|isCurrent
+argument_list|()
+operator|&&
+name|resource
+operator|.
 name|getControl
 argument_list|()
 operator|.
