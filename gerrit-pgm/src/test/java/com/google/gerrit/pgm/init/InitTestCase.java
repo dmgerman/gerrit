@@ -86,7 +86,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -94,9 +94,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -111,22 +113,24 @@ name|LocalDiskRepositoryTestCase
 block|{
 DECL|method|newSitePath ()
 specifier|protected
-name|File
+name|Path
 name|newSitePath
 parameter_list|()
 throws|throws
 name|IOException
 block|{
 return|return
-operator|new
-name|File
-argument_list|(
 name|createWorkRepository
 argument_list|()
 operator|.
 name|getWorkTree
 argument_list|()
-argument_list|,
+operator|.
+name|toPath
+argument_list|()
+operator|.
+name|resolve
+argument_list|(
 literal|"test_site"
 argument_list|)
 return|;

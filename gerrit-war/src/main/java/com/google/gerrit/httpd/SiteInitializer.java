@@ -120,9 +120,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -285,11 +299,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|File
+name|Path
 name|site
 init|=
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|sitePath
 argument_list|)
@@ -298,17 +313,15 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Initializing site at %s"
-argument_list|,
+literal|"Initializing site at "
+operator|+
 name|site
 operator|.
-name|getAbsolutePath
+name|toRealPath
 argument_list|()
-argument_list|)
+operator|.
+name|normalize
+argument_list|()
 argument_list|)
 expr_stmt|;
 operator|new
@@ -339,7 +352,7 @@ name|connectToDb
 argument_list|()
 init|)
 block|{
-name|File
+name|Path
 name|site
 init|=
 name|getSiteFromReviewDb
@@ -360,8 +373,9 @@ condition|)
 block|{
 name|site
 operator|=
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|initPath
 argument_list|)
@@ -378,17 +392,15 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Initializing site at %s"
-argument_list|,
+literal|"Initializing site at "
+operator|+
 name|site
 operator|.
-name|getAbsolutePath
+name|toRealPath
 argument_list|()
-argument_list|)
+operator|.
+name|normalize
+argument_list|()
 argument_list|)
 expr_stmt|;
 operator|new
@@ -461,7 +473,7 @@ return|;
 block|}
 DECL|method|getSiteFromReviewDb (Connection conn)
 specifier|private
-name|File
+name|Path
 name|getSiteFromReviewDb
 parameter_list|(
 name|Connection
@@ -498,8 +510,9 @@ argument_list|()
 condition|)
 block|{
 return|return
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|rs
 operator|.

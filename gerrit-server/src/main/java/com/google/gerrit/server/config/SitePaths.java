@@ -120,6 +120,18 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
 begin_comment
 comment|/** Important paths within a {@link SitePath}. */
 end_comment
@@ -331,22 +343,26 @@ name|isNew
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SitePaths (final @SitePath File sitePath)
+DECL|method|SitePaths (final @SitePath Path sitePath)
 specifier|public
 name|SitePaths
 parameter_list|(
 specifier|final
 annotation|@
 name|SitePath
-name|File
+name|Path
 name|sitePath
 parameter_list|)
 throws|throws
 name|FileNotFoundException
 block|{
+comment|// TODO(dborowitz): Convert all of these to Paths.
 name|site_path
 operator|=
 name|sitePath
+operator|.
+name|toFile
+argument_list|()
 expr_stmt|;
 name|bin_dir
 operator|=

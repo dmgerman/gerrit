@@ -176,7 +176,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|FileNotFoundException
 import|;
 end_import
 
@@ -184,9 +184,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|FileNotFoundException
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -213,8 +215,9 @@ init|=
 operator|new
 name|SitePaths
 argument_list|(
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 literal|"."
 argument_list|)

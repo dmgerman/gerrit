@@ -978,7 +978,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -986,9 +986,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -1156,7 +1170,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|sitePath
 specifier|private
-name|File
+name|Path
 name|sitePath
 decl_stmt|;
 DECL|field|dbInjector
@@ -1266,8 +1280,9 @@ condition|)
 block|{
 name|sitePath
 operator|=
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|path
 argument_list|)
@@ -1753,7 +1768,7 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|File
+name|Path
 operator|.
 name|class
 argument_list|)
@@ -2100,7 +2115,7 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|File
+name|Path
 operator|.
 name|class
 argument_list|)
