@@ -199,7 +199,7 @@ decl_stmt|;
 DECL|field|tmp_dir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|tmp_dir
 decl_stmt|;
 DECL|field|logs_dir
@@ -364,6 +364,11 @@ operator|.
 name|toFile
 argument_list|()
 expr_stmt|;
+name|Path
+name|p
+init|=
+name|sitePath
+decl_stmt|;
 name|bin_dir
 operator|=
 operator|new
@@ -396,11 +401,10 @@ argument_list|)
 expr_stmt|;
 name|tmp_dir
 operator|=
-operator|new
-name|File
+name|p
+operator|.
+name|resolve
 argument_list|(
-name|site_path
-argument_list|,
 literal|"tmp"
 argument_list|)
 expr_stmt|;

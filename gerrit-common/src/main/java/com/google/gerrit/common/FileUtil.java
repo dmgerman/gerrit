@@ -142,6 +142,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -257,6 +269,33 @@ name|path
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|chmod (final int mode, final Path path)
+specifier|public
+specifier|static
+name|void
+name|chmod
+parameter_list|(
+specifier|final
+name|int
+name|mode
+parameter_list|,
+specifier|final
+name|Path
+name|path
+parameter_list|)
+block|{
+comment|// TODO(dborowitz): Is there a portable way to do this with NIO?
+name|chmod
+argument_list|(
+name|mode
+argument_list|,
+name|path
+operator|.
+name|toFile
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|chmod (final int mode, final File path)
 specifier|public
