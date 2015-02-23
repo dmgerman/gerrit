@@ -146,6 +146,18 @@ name|nio
 operator|.
 name|file
 operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
 name|Path
 import|;
 end_import
@@ -444,6 +456,42 @@ literal|false
 comment|/* all */
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+DECL|method|lastModified (Path p)
+specifier|public
+specifier|static
+name|long
+name|lastModified
+parameter_list|(
+name|Path
+name|p
+parameter_list|)
+block|{
+comment|// Replicate File#lastModified() behavior of returning 0 on errors.
+try|try
+block|{
+return|return
+name|Files
+operator|.
+name|getLastModifiedTime
+argument_list|(
+name|p
+argument_list|)
+operator|.
+name|toMillis
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|0
+return|;
 block|}
 block|}
 DECL|method|FileUtil ()

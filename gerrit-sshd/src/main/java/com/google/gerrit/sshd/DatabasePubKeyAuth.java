@@ -65,6 +65,34 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -304,16 +332,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|FileNotFoundException
 import|;
 end_import
@@ -324,7 +342,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileReader
+name|IOException
 import|;
 end_import
 
@@ -332,9 +350,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -1113,7 +1145,7 @@ block|{
 DECL|field|path
 specifier|private
 specifier|final
-name|File
+name|Path
 name|path
 decl_stmt|;
 DECL|field|modified
@@ -1130,11 +1162,10 @@ name|PublicKey
 argument_list|>
 name|keys
 decl_stmt|;
-DECL|method|PeerKeyCache (final File path)
+DECL|method|PeerKeyCache (Path path)
 name|PeerKeyCache
 parameter_list|(
-specifier|final
-name|File
+name|Path
 name|path
 parameter_list|)
 block|{
@@ -1148,10 +1179,12 @@ name|this
 operator|.
 name|modified
 operator|=
-name|path
+name|FileUtil
 operator|.
 name|lastModified
-argument_list|()
+argument_list|(
+name|path
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1163,7 +1196,7 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|read (File path)
+DECL|method|read (Path path)
 specifier|private
 specifier|static
 name|Set
@@ -1172,27 +1205,24 @@ name|PublicKey
 argument_list|>
 name|read
 parameter_list|(
-name|File
+name|Path
 name|path
 parameter_list|)
 block|{
 try|try
-block|{
-specifier|final
+init|(
 name|BufferedReader
 name|br
 init|=
-operator|new
-name|BufferedReader
-argument_list|(
-operator|new
-name|FileReader
+name|Files
+operator|.
+name|newBufferedReader
 argument_list|(
 name|path
+argument_list|,
+name|UTF_8
 argument_list|)
-argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|Set
@@ -1322,15 +1352,6 @@ name|keys
 argument_list|)
 return|;
 block|}
-finally|finally
-block|{
-name|br
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 catch|catch
 parameter_list|(
 name|FileNotFoundException
@@ -1369,13 +1390,13 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|logBadKey (File path, String line, Exception e)
+DECL|method|logBadKey (Path path, String line, Exception e)
 specifier|private
 specifier|static
 name|void
 name|logBadKey
 parameter_list|(
-name|File
+name|Path
 name|path
 parameter_list|,
 name|String
@@ -1407,12 +1428,14 @@ name|isCurrent
 parameter_list|()
 block|{
 return|return
-name|path
+name|modified
+operator|==
+name|FileUtil
 operator|.
 name|lastModified
-argument_list|()
-operator|==
-name|modified
+argument_list|(
+name|path
+argument_list|)
 return|;
 block|}
 DECL|method|reload ()
