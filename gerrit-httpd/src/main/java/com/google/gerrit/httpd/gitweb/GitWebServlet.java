@@ -123,6 +123,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -434,16 +448,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -517,6 +521,18 @@ operator|.
 name|file
 operator|.
 name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -660,7 +676,7 @@ decl_stmt|;
 DECL|field|gitwebCgi
 specifier|private
 specifier|final
-name|File
+name|Path
 name|gitwebCgi
 decl_stmt|;
 DECL|field|gitwebUrl
@@ -1052,7 +1068,7 @@ name|tmp_dir
 argument_list|)
 expr_stmt|;
 block|}
-name|File
+name|Path
 name|myconf
 init|=
 name|Files
@@ -1067,14 +1083,20 @@ literal|"gitweb_config"
 argument_list|,
 literal|".perl"
 argument_list|)
-operator|.
-name|toFile
-argument_list|()
 decl_stmt|;
 comment|// To make our configuration file only readable or writable by us;
 comment|// this reduces the chances of someone tampering with the file.
 comment|//
+comment|// TODO(dborowitz): Is there a portable way to do this with NIO?
+name|File
+name|myconfFile
+init|=
 name|myconf
+operator|.
+name|toFile
+argument_list|()
+decl_stmt|;
+name|myconfFile
 operator|.
 name|setWritable
 argument_list|(
@@ -1084,7 +1106,7 @@ literal|false
 comment|/* all */
 argument_list|)
 expr_stmt|;
-name|myconf
+name|myconfFile
 operator|.
 name|setReadable
 argument_list|(
@@ -1094,7 +1116,7 @@ literal|false
 comment|/* all */
 argument_list|)
 expr_stmt|;
-name|myconf
+name|myconfFile
 operator|.
 name|setExecutable
 argument_list|(
@@ -1104,7 +1126,7 @@ literal|false
 comment|/* all */
 argument_list|)
 expr_stmt|;
-name|myconf
+name|myconfFile
 operator|.
 name|setWritable
 argument_list|(
@@ -1114,7 +1136,7 @@ literal|true
 comment|/* owner only */
 argument_list|)
 expr_stmt|;
-name|myconf
+name|myconfFile
 operator|.
 name|setReadable
 argument_list|(
@@ -1141,25 +1163,31 @@ literal|"GITWEB_CONFIG"
 argument_list|,
 name|myconf
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|PrintWriter
 name|p
 init|=
 operator|new
 name|PrintWriter
 argument_list|(
-operator|new
-name|FileWriter
+name|Files
+operator|.
+name|newBufferedWriter
 argument_list|(
 name|myconf
+argument_list|,
+name|UTF_8
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|p
 operator|.
@@ -1185,8 +1213,7 @@ expr_stmt|;
 comment|// We are mounted at the same level in the context as the main
 comment|// UI, so we can include the same header and footer scheme.
 comment|//
-specifier|final
-name|File
+name|Path
 name|hdr
 init|=
 name|site
@@ -1195,10 +1222,12 @@ name|site_header
 decl_stmt|;
 if|if
 condition|(
-name|hdr
+name|Files
 operator|.
-name|isFile
-argument_list|()
+name|isRegularFile
+argument_list|(
+name|hdr
+argument_list|)
 condition|)
 block|{
 name|p
@@ -1216,8 +1245,7 @@ literal|";\n"
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
-name|File
+name|Path
 name|ftr
 init|=
 name|site
@@ -1226,10 +1254,12 @@ name|site_footer
 decl_stmt|;
 if|if
 condition|(
-name|ftr
+name|Files
 operator|.
-name|isFile
-argument_list|()
+name|isRegularFile
+argument_list|(
+name|ftr
+argument_list|)
 condition|)
 block|{
 name|p
@@ -1291,8 +1321,7 @@ argument_list|(
 literal|"@stylesheets = ('gitweb-default.css');\n"
 argument_list|)
 expr_stmt|;
-specifier|final
-name|File
+name|Path
 name|css
 init|=
 name|site
@@ -1301,10 +1330,12 @@ name|site_css
 decl_stmt|;
 if|if
 condition|(
-name|css
+name|Files
 operator|.
-name|isFile
-argument_list|()
+name|isRegularFile
+argument_list|(
+name|css
+argument_list|)
 condition|)
 block|{
 name|p
@@ -1835,8 +1866,7 @@ expr_stmt|;
 comment|// If the administrator has created a site-specific gitweb_config,
 comment|// load that before we perform any final overrides.
 comment|//
-specifier|final
-name|File
+name|Path
 name|sitecfg
 init|=
 name|site
@@ -1845,10 +1875,12 @@ name|site_gitweb
 decl_stmt|;
 if|if
 condition|(
-name|sitecfg
+name|Files
 operator|.
-name|isFile
-argument_list|()
+name|isRegularFile
+argument_list|(
+name|sitecfg
+argument_list|)
 condition|)
 block|{
 name|p
@@ -1894,13 +1926,15 @@ literal|"}\n"
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
-name|File
+name|Path
 name|root
 init|=
 name|repoManager
 operator|.
 name|getBasePath
+argument_list|()
+operator|.
+name|toPath
 argument_list|()
 decl_stmt|;
 name|p
@@ -1997,26 +2031,19 @@ literal|"$feature{'forks'}{'default'} = [0];\n"
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|p
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-name|myconf
+name|myconfFile
 operator|.
 name|setReadOnly
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|quoteForPerl (File value)
+DECL|method|quoteForPerl (Path value)
 specifier|private
+specifier|static
 name|String
 name|quoteForPerl
 parameter_list|(
-name|File
+name|Path
 name|value
 parameter_list|)
 block|{
@@ -2025,13 +2052,17 @@ name|quoteForPerl
 argument_list|(
 name|value
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 return|;
 block|}
 DECL|method|quoteForPerl (String value)
 specifier|private
+specifier|static
 name|String
 name|quoteForPerl
 parameter_list|(
@@ -2688,7 +2719,10 @@ index|[]
 block|{
 name|gitwebCgi
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 block|}
 argument_list|,
@@ -2701,10 +2735,13 @@ argument_list|)
 argument_list|,
 name|gitwebCgi
 operator|.
-name|getAbsoluteFile
+name|toAbsolutePath
 argument_list|()
 operator|.
-name|getParentFile
+name|getParent
+argument_list|()
+operator|.
+name|toFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3140,7 +3177,10 @@ literal|"SCRIPT_FILENAME"
 argument_list|,
 name|gitwebCgi
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
