@@ -154,26 +154,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|FileNotFoundException
 import|;
 end_import
@@ -229,6 +209,30 @@ operator|.
 name|charset
 operator|.
 name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -1211,13 +1215,13 @@ throw|;
 block|}
 block|}
 comment|/** Parse an XHTML file from the local drive and return the instance. */
-DECL|method|parseFile (File path)
+DECL|method|parseFile (Path path)
 specifier|public
 specifier|static
 name|Document
 name|parseFile
 parameter_list|(
-name|File
+name|Path
 name|path
 parameter_list|)
 throws|throws
@@ -1228,8 +1232,9 @@ init|(
 name|InputStream
 name|in
 init|=
-operator|new
-name|FileInputStream
+name|Files
+operator|.
+name|newInputStream
 argument_list|(
 name|path
 argument_list|)
@@ -1289,13 +1294,13 @@ throw|;
 block|}
 block|}
 comment|/** Read a UTF-8 text file from the local drive. */
-DECL|method|readFile (File parentDir, String name)
+DECL|method|readFile (Path parentDir, String name)
 specifier|public
 specifier|static
 name|String
 name|readFile
 parameter_list|(
-name|File
+name|Path
 name|parentDir
 parameter_list|,
 name|String
@@ -1315,24 +1320,24 @@ return|return
 literal|null
 return|;
 block|}
-name|File
+name|Path
 name|path
 init|=
-operator|new
-name|File
-argument_list|(
 name|parentDir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
 try|try
 init|(
-name|FileInputStream
+name|InputStream
 name|in
 init|=
-operator|new
-name|FileInputStream
+name|Files
+operator|.
+name|newInputStream
 argument_list|(
 name|path
 argument_list|)

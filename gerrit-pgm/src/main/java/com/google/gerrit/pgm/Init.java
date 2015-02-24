@@ -374,7 +374,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -382,9 +382,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -542,11 +544,11 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|Init (File sitePath)
+DECL|method|Init (Path sitePath)
 specifier|public
 name|Init
 parameter_list|(
-name|File
+name|Path
 name|sitePath
 parameter_list|)
 block|{
@@ -739,7 +741,7 @@ parameter_list|()
 block|{
 name|bind
 argument_list|(
-name|File
+name|Path
 operator|.
 name|class
 argument_list|)

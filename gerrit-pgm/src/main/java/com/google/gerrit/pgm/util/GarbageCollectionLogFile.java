@@ -200,19 +200,31 @@ name|FileNotFoundException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
 begin_class
 DECL|class|GarbageCollectionLogFile
 specifier|public
 class|class
 name|GarbageCollectionLogFile
 block|{
-DECL|method|start (File sitePath)
+DECL|method|start (Path sitePath)
 specifier|public
 specifier|static
 name|LifecycleListener
 name|start
 parameter_list|(
-name|File
+name|Path
 name|sitePath
 parameter_list|)
 throws|throws

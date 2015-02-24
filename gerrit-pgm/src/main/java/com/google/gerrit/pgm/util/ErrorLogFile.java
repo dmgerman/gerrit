@@ -208,6 +208,18 @@ name|FileNotFoundException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
 begin_class
 DECL|class|ErrorLogFile
 specifier|public
@@ -302,14 +314,14 @@ name|dst
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|start (final File sitePath)
+DECL|method|start (final Path sitePath)
 specifier|public
 specifier|static
 name|LifecycleListener
 name|start
 parameter_list|(
 specifier|final
-name|File
+name|Path
 name|sitePath
 parameter_list|)
 throws|throws

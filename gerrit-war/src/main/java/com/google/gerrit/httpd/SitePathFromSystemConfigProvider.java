@@ -168,9 +168,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -185,7 +199,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Provides {@link java.io.File} annotated with {@link SitePath}. */
+comment|/** Provides {@link Path} annotated with {@link SitePath}. */
 end_comment
 
 begin_class
@@ -195,13 +209,13 @@ name|SitePathFromSystemConfigProvider
 implements|implements
 name|Provider
 argument_list|<
-name|File
+name|Path
 argument_list|>
 block|{
 DECL|field|path
 specifier|private
 specifier|final
-name|File
+name|Path
 name|path
 decl_stmt|;
 annotation|@
@@ -230,7 +244,7 @@ annotation|@
 name|Override
 DECL|method|get ()
 specifier|public
-name|File
+name|Path
 name|get
 parameter_list|()
 block|{
@@ -241,7 +255,7 @@ block|}
 DECL|method|read (SchemaFactory<ReviewDb> schemaFactory)
 specifier|private
 specifier|static
-name|File
+name|Path
 name|read
 parameter_list|(
 name|SchemaFactory
@@ -292,8 +306,9 @@ case|case
 literal|1
 case|:
 return|return
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|all
 operator|.

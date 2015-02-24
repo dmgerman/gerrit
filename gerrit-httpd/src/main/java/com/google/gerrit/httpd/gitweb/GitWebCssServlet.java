@@ -168,7 +168,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -176,9 +176,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -341,11 +355,11 @@ name|byte
 index|[]
 name|gz_css
 decl_stmt|;
-DECL|method|GitWebCssServlet (final File src)
+DECL|method|GitWebCssServlet (final Path src)
 name|GitWebCssServlet
 parameter_list|(
 specifier|final
-name|File
+name|Path
 name|src
 parameter_list|)
 throws|throws
@@ -359,12 +373,12 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|File
+name|Path
 name|dir
 init|=
 name|src
 operator|.
-name|getParentFile
+name|getParent
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -373,7 +387,10 @@ name|name
 init|=
 name|src
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -398,9 +415,14 @@ condition|)
 block|{
 name|modified
 operator|=
-name|src
+name|Files
 operator|.
-name|lastModified
+name|getLastModifiedTime
+argument_list|(
+name|src
+argument_list|)
+operator|.
+name|toMillis
 argument_list|()
 expr_stmt|;
 name|raw_css

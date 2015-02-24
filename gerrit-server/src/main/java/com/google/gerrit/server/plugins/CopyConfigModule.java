@@ -316,9 +316,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -341,7 +343,7 @@ annotation|@
 name|SitePath
 DECL|field|sitePath
 specifier|private
-name|File
+name|Path
 name|sitePath
 decl_stmt|;
 annotation|@
@@ -349,7 +351,7 @@ name|Provides
 annotation|@
 name|SitePath
 DECL|method|getSitePath ()
-name|File
+name|Path
 name|getSitePath
 parameter_list|()
 block|{

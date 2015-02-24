@@ -448,9 +448,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -508,9 +522,10 @@ argument_list|(
 name|cfg
 argument_list|)
 expr_stmt|;
+comment|// TODO(dborowitz): Use jimfs.
 name|bind
 argument_list|(
-name|File
+name|Path
 operator|.
 name|class
 argument_list|)
@@ -524,8 +539,9 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 literal|"UNIT_TEST_GERRIT_SITE"
 argument_list|)

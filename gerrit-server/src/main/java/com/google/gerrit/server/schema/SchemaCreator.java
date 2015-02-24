@@ -312,7 +312,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -320,9 +320,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -351,7 +353,7 @@ specifier|final
 annotation|@
 name|SitePath
 DECL|field|site_path
-name|File
+name|Path
 name|site_path
 decl_stmt|;
 DECL|field|allProjectsCreator
@@ -417,6 +419,9 @@ argument_list|(
 name|site
 operator|.
 name|site_path
+operator|.
+name|toPath
+argument_list|()
 argument_list|,
 name|ap
 argument_list|,
@@ -428,13 +433,13 @@ name|dst
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SchemaCreator (@itePath File site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
+DECL|method|SchemaCreator (@itePath Path site, AllProjectsCreator ap, AllUsersCreator auc, @GerritPersonIdent PersonIdent au, DataSourceType dst)
 specifier|public
 name|SchemaCreator
 parameter_list|(
 annotation|@
 name|SitePath
-name|File
+name|Path
 name|site
 parameter_list|,
 name|AllProjectsCreator
@@ -808,7 +813,13 @@ name|sitePath
 operator|=
 name|site_path
 operator|.
-name|getCanonicalPath
+name|toRealPath
+argument_list|()
+operator|.
+name|normalize
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 expr_stmt|;
 block|}
@@ -824,7 +835,13 @@ name|sitePath
 operator|=
 name|site_path
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|normalize
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 expr_stmt|;
 block|}
