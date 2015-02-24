@@ -1409,7 +1409,9 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Different secure store was previously configured: %s."
+literal|"Different secure store was previously configured: %s. "
+operator|+
+literal|"Use SwitchSecureStore program to switch between implementations."
 argument_list|,
 name|currentSecureStoreClassName
 argument_list|)
@@ -1885,7 +1887,7 @@ name|secureStores
 init|=
 name|scanner
 operator|.
-name|findImplementationsOf
+name|findSubClassesOf
 argument_list|(
 name|SecureStore
 operator|.
