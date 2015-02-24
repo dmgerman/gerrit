@@ -250,6 +250,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|SimpleDateFormat
@@ -577,6 +589,9 @@ argument_list|(
 name|name
 argument_list|,
 name|srcFile
+operator|.
+name|toPath
+argument_list|()
 argument_list|,
 name|snapshot
 argument_list|,
@@ -773,7 +788,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|loadJarPlugin (String name, File srcJar, FileSnapshot snapshot, File tmp, PluginDescription description)
+DECL|method|loadJarPlugin (String name, Path srcJar, FileSnapshot snapshot, File tmp, PluginDescription description)
 specifier|private
 name|ServerPlugin
 name|loadJarPlugin
@@ -781,7 +796,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|File
+name|Path
 name|srcJar
 parameter_list|,
 name|FileSnapshot
@@ -995,6 +1010,9 @@ operator|.
 name|user
 argument_list|,
 name|srcJar
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 name|snapshot
 argument_list|,
@@ -1044,12 +1062,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|createJarScanner (File srcJar)
+DECL|method|createJarScanner (Path srcJar)
 specifier|private
 name|JarScanner
 name|createJarScanner
 parameter_list|(
-name|File
+name|Path
 name|srcJar
 parameter_list|)
 throws|throws

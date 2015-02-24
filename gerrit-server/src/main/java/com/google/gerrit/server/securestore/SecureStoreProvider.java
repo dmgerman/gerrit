@@ -196,9 +196,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -234,7 +236,7 @@ decl_stmt|;
 DECL|field|libdir
 specifier|private
 specifier|final
-name|File
+name|Path
 name|libdir
 decl_stmt|;
 DECL|field|injector

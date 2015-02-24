@@ -230,9 +230,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -248,13 +250,13 @@ specifier|private
 name|Injector
 name|httpInjector
 decl_stmt|;
-DECL|method|JsPlugin (String name, File srcFile, PluginUser pluginUser, FileSnapshot snapshot)
+DECL|method|JsPlugin (String name, Path srcFile, PluginUser pluginUser, FileSnapshot snapshot)
 name|JsPlugin
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|File
+name|Path
 name|srcFile
 parameter_list|,
 name|PluginUser
@@ -296,7 +298,10 @@ init|=
 name|getSrcFile
 argument_list|()
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 name|int
@@ -363,7 +368,10 @@ init|=
 name|getSrcFile
 argument_list|()
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 name|httpInjector

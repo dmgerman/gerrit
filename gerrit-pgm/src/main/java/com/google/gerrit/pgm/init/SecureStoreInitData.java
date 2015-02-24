@@ -70,9 +70,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -83,7 +85,7 @@ name|SecureStoreInitData
 block|{
 DECL|field|jarFile
 specifier|final
-name|File
+name|Path
 name|jarFile
 decl_stmt|;
 DECL|field|className
@@ -91,10 +93,10 @@ specifier|final
 name|String
 name|className
 decl_stmt|;
-DECL|method|SecureStoreInitData (File jar, String className)
+DECL|method|SecureStoreInitData (Path jar, String className)
 name|SecureStoreInitData
 parameter_list|(
-name|File
+name|Path
 name|jar
 parameter_list|,
 name|String

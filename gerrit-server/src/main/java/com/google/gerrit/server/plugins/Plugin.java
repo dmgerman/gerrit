@@ -212,6 +212,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -457,7 +469,7 @@ decl_stmt|;
 DECL|field|srcFile
 specifier|private
 specifier|final
-name|File
+name|Path
 name|srcFile
 decl_stmt|;
 DECL|field|apiType
@@ -511,14 +523,14 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|Plugin (String name, File srcFile, PluginUser pluginUser, FileSnapshot snapshot, ApiType apiType)
+DECL|method|Plugin (String name, Path srcFile, PluginUser pluginUser, FileSnapshot snapshot, ApiType apiType)
 specifier|public
 name|Plugin
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|File
+name|Path
 name|srcFile
 parameter_list|,
 name|PluginUser
@@ -537,6 +549,7 @@ name|name
 operator|=
 name|name
 expr_stmt|;
+comment|// TODO(dborowitz): Rename to srcPath or something.
 name|this
 operator|.
 name|srcFile
@@ -579,7 +592,10 @@ name|disabled
 operator|=
 name|srcFile
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 operator|.
 name|endsWith
@@ -625,7 +641,7 @@ return|;
 block|}
 DECL|method|getSrcFile ()
 specifier|public
-name|File
+name|Path
 name|getSrcFile
 parameter_list|()
 block|{

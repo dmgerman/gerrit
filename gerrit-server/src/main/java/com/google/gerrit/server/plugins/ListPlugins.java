@@ -634,7 +634,7 @@ operator|.
 name|getSrcFile
 argument_list|()
 operator|.
-name|getName
+name|getFileName
 argument_list|()
 argument_list|)
 expr_stmt|;

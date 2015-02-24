@@ -193,7 +193,7 @@ decl_stmt|;
 DECL|field|lib_dir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|lib_dir
 decl_stmt|;
 DECL|field|tmp_dir
@@ -389,11 +389,10 @@ argument_list|)
 expr_stmt|;
 name|lib_dir
 operator|=
-operator|new
-name|File
+name|p
+operator|.
+name|resolve
 argument_list|(
-name|site_path
-argument_list|,
 literal|"lib"
 argument_list|)
 expr_stmt|;

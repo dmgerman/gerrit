@@ -571,6 +571,9 @@ argument_list|(
 name|name
 argument_list|,
 name|srcJar
+operator|.
+name|toPath
+argument_list|()
 argument_list|,
 name|pluginUser
 argument_list|,
@@ -882,6 +885,9 @@ parameter_list|()
 block|{
 return|return
 name|getSrcFile
+argument_list|()
+operator|.
+name|toFile
 argument_list|()
 return|;
 block|}

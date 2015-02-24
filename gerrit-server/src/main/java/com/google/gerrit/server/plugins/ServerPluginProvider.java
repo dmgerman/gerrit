@@ -128,6 +128,10 @@ begin_comment
 comment|/**  * Provider of one Server plugin from one external file  *  * Allows to load one plugin from one external file or  * one directory by declaring the ability to handle it.  *  * In order to load multiple files into a single plugin,  * group them into a directory tree and then load the directory  * root as a single plugin.  */
 end_comment
 
+begin_comment
+comment|// TODO(dborowitz): Convert to NIO; ensure clients can migrate.
+end_comment
+
 begin_interface
 annotation|@
 name|ExtensionPoint

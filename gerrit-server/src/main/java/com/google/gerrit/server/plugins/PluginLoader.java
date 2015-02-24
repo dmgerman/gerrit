@@ -538,6 +538,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|AbstractMap
@@ -1314,7 +1326,10 @@ operator|.
 name|getSrcFile
 argument_list|()
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 expr_stmt|;
 name|log
@@ -1355,6 +1370,9 @@ expr_stmt|;
 name|active
 operator|.
 name|getSrcFile
+argument_list|()
+operator|.
+name|toFile
 argument_list|()
 operator|.
 name|renameTo
@@ -1736,6 +1754,9 @@ operator|.
 name|getSrcFile
 argument_list|()
 operator|.
+name|toFile
+argument_list|()
+operator|.
 name|renameTo
 argument_list|(
 name|off
@@ -1906,6 +1927,9 @@ operator|.
 name|getSrcFile
 argument_list|()
 operator|.
+name|toFile
+argument_list|()
+operator|.
 name|getName
 argument_list|()
 decl_stmt|;
@@ -1950,6 +1974,9 @@ decl_stmt|;
 name|off
 operator|.
 name|getSrcFile
+argument_list|()
+operator|.
+name|toFile
 argument_list|()
 operator|.
 name|renameTo
@@ -2292,6 +2319,9 @@ argument_list|,
 name|active
 operator|.
 name|getSrcFile
+argument_list|()
+operator|.
+name|toFile
 argument_list|()
 argument_list|,
 name|active
@@ -3600,6 +3630,9 @@ argument_list|(
 name|name
 argument_list|,
 name|srcPlugin
+operator|.
+name|toPath
+argument_list|()
 argument_list|,
 name|snapshot
 argument_list|)
@@ -3705,7 +3738,7 @@ return|return
 name|url
 return|;
 block|}
-DECL|method|loadJsPlugin (String name, File srcJar, FileSnapshot snapshot)
+DECL|method|loadJsPlugin (String name, Path srcJar, FileSnapshot snapshot)
 specifier|private
 name|Plugin
 name|loadJsPlugin
@@ -3713,7 +3746,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|File
+name|Path
 name|srcJar
 parameter_list|,
 name|FileSnapshot

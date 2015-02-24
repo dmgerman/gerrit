@@ -84,16 +84,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -169,6 +159,18 @@ operator|.
 name|net
 operator|.
 name|URLClassLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -310,14 +312,16 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|loadJARs (File... jars)
+DECL|method|loadJARs (Iterable<Path> jars)
 specifier|public
 specifier|static
 name|void
 name|loadJARs
 parameter_list|(
-name|File
-modifier|...
+name|Iterable
+argument_list|<
+name|Path
+argument_list|>
 name|jars
 parameter_list|)
 block|{
@@ -432,7 +436,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|File
+name|Path
 name|path
 range|:
 name|jars
@@ -445,7 +449,7 @@ name|url
 init|=
 name|path
 operator|.
-name|toURI
+name|toUri
 argument_list|()
 operator|.
 name|toURL
@@ -518,6 +522,28 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
+DECL|method|loadJARs (Path... jars)
+specifier|public
+specifier|static
+name|void
+name|loadJARs
+parameter_list|(
+name|Path
+modifier|...
+name|jars
+parameter_list|)
+block|{
+name|loadJARs
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|jars
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|noAddURL (String m, Throwable why)
 specifier|private

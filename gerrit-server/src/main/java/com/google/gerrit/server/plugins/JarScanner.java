@@ -368,16 +368,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -401,6 +391,18 @@ operator|.
 name|annotation
 operator|.
 name|Annotation
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -602,12 +604,12 @@ specifier|final
 name|JarFile
 name|jarFile
 decl_stmt|;
-DECL|method|JarScanner (File srcFile)
+DECL|method|JarScanner (Path src)
 specifier|public
 name|JarScanner
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|src
 parameter_list|)
 throws|throws
 name|IOException
@@ -619,7 +621,10 @@ operator|=
 operator|new
 name|JarFile
 argument_list|(
-name|srcFile
+name|src
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
