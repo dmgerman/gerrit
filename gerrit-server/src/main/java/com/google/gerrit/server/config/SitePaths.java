@@ -229,7 +229,7 @@ decl_stmt|;
 DECL|field|hooks_dir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|hooks_dir
 decl_stmt|;
 DECL|field|static_dir
@@ -443,11 +443,10 @@ argument_list|)
 expr_stmt|;
 name|hooks_dir
 operator|=
-operator|new
-name|File
+name|p
+operator|.
+name|resolve
 argument_list|(
-name|site_path
-argument_list|,
 literal|"hooks"
 argument_list|)
 expr_stmt|;
