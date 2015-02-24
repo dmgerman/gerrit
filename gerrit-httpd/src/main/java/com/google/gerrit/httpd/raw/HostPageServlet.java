@@ -68,15 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|java
+name|com
 operator|.
-name|nio
+name|google
 operator|.
-name|file
+name|gerrit
 operator|.
-name|Files
+name|common
 operator|.
-name|getLastModifiedTime
+name|FileUtil
+operator|.
+name|lastModified
 import|;
 end_import
 
@@ -571,20 +573,6 @@ operator|.
 name|file
 operator|.
 name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|attribute
-operator|.
-name|FileTime
 import|;
 end_import
 
@@ -2073,7 +2061,7 @@ decl_stmt|;
 DECL|field|time
 specifier|private
 specifier|final
-name|FileTime
+name|long
 name|time
 decl_stmt|;
 DECL|method|FileInfo (Path p)
@@ -2082,8 +2070,6 @@ parameter_list|(
 name|Path
 name|p
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|path
 operator|=
@@ -2091,7 +2077,7 @@ name|p
 expr_stmt|;
 name|time
 operator|=
-name|getLastModifiedTime
+name|lastModified
 argument_list|(
 name|path
 argument_list|)
@@ -2101,19 +2087,13 @@ DECL|method|isStale ()
 name|boolean
 name|isStale
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 return|return
-operator|!
 name|time
-operator|.
-name|equals
-argument_list|(
-name|getLastModifiedTime
+operator|!=
+name|lastModified
 argument_list|(
 name|path
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -2378,8 +2358,6 @@ DECL|method|isStale ()
 name|boolean
 name|isStale
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 return|return
 name|css

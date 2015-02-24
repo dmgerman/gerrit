@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|FileUtil
+operator|.
+name|lastModified
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -138,16 +154,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -171,6 +177,18 @@ operator|.
 name|file
 operator|.
 name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|NoSuchFileException
 import|;
 end_import
 
@@ -326,7 +344,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|FileNotFoundException
+name|NoSuchFileException
 name|e
 parameter_list|)
 block|{
@@ -337,15 +355,10 @@ expr_stmt|;
 block|}
 name|modified
 operator|=
-name|Files
-operator|.
-name|getLastModifiedTime
+name|lastModified
 argument_list|(
 name|src
 argument_list|)
-operator|.
-name|toMillis
-argument_list|()
 expr_stmt|;
 block|}
 else|else

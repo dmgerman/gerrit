@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|FileUtil
+operator|.
+name|lastModified
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -231,41 +247,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-DECL|method|lastModified (Path p)
-specifier|private
-specifier|static
-name|long
-name|lastModified
-parameter_list|(
-name|Path
-name|p
-parameter_list|)
-block|{
-try|try
-block|{
-return|return
-name|Files
-operator|.
-name|getLastModifiedTime
-argument_list|(
-name|p
-argument_list|)
-operator|.
-name|toMillis
-argument_list|()
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-return|return
-literal|0
-return|;
 block|}
 block|}
 DECL|method|listJars (Path dir)

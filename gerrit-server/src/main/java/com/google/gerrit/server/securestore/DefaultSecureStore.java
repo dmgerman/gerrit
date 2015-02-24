@@ -206,9 +206,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|ArrayList
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -216,11 +218,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|util
 operator|.
-name|file
-operator|.
-name|Path
+name|ArrayList
 import|;
 end_import
 

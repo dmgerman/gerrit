@@ -74,6 +74,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|FileUtil
+operator|.
+name|lastModified
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|plugins
@@ -2352,9 +2368,7 @@ decl_stmt|;
 name|long
 name|pluginLastModified
 init|=
-name|Files
-operator|.
-name|getLastModifiedTime
+name|lastModified
 argument_list|(
 name|holder
 operator|.
@@ -2363,9 +2377,6 @@ operator|.
 name|getSrcFile
 argument_list|()
 argument_list|)
-operator|.
-name|toMillis
-argument_list|()
 decl_stmt|;
 if|if
 condition|(

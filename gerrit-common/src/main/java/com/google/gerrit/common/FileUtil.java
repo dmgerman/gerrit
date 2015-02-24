@@ -458,6 +458,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**    * Get the last modified time of a path.    *<p>    * Equivalent to {@code File#lastModified()}, returning 0 on errors, including    * file not found. Callers that prefer exceptions can use {@link    * Files#getLastModifiedTime(Path, java.nio.file.LinkOption...)}.    *    * @param p path.    * @return last modified time, in milliseconds since epoch.    */
 DECL|method|lastModified (Path p)
 specifier|public
 specifier|static
@@ -468,7 +469,6 @@ name|Path
 name|p
 parameter_list|)
 block|{
-comment|// Replicate File#lastModified() behavior of returning 0 on errors.
 try|try
 block|{
 return|return

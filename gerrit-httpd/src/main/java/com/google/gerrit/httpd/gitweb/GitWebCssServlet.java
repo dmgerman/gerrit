@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|FileUtil
+operator|.
+name|lastModified
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -169,18 +185,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Files
 import|;
 end_import
 
@@ -415,15 +419,10 @@ condition|)
 block|{
 name|modified
 operator|=
-name|Files
-operator|.
-name|getLastModifiedTime
+name|lastModified
 argument_list|(
 name|src
 argument_list|)
-operator|.
-name|toMillis
-argument_list|()
 expr_stmt|;
 name|raw_css
 operator|=
