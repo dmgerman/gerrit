@@ -76,7 +76,7 @@ name|gerrit
 operator|.
 name|common
 operator|.
-name|Die
+name|FileUtil
 import|;
 end_import
 
@@ -185,16 +185,6 @@ operator|.
 name|log4j
 operator|.
 name|PatternLayout
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 
@@ -327,10 +317,13 @@ parameter_list|)
 throws|throws
 name|FileNotFoundException
 block|{
-specifier|final
-name|File
+name|Path
 name|logdir
 init|=
+name|FileUtil
+operator|.
+name|mkdirsOrDie
+argument_list|(
 operator|new
 name|SitePaths
 argument_list|(
@@ -338,32 +331,10 @@ name|sitePath
 argument_list|)
 operator|.
 name|logs_dir
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|logdir
-operator|.
-name|exists
-argument_list|()
-operator|&&
-operator|!
-name|logdir
-operator|.
-name|mkdirs
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|Die
-argument_list|(
-literal|"Cannot create log directory: "
-operator|+
-name|logdir
+argument_list|,
+literal|"Cannot create log directory"
 argument_list|)
-throw|;
-block|}
+decl_stmt|;
 if|if
 condition|(
 name|SystemLog
@@ -406,14 +377,13 @@ block|}
 block|}
 return|;
 block|}
-DECL|method|initLogSystem (final File logdir)
+DECL|method|initLogSystem (Path logdir)
 specifier|private
 specifier|static
 name|void
 name|initLogSystem
 parameter_list|(
-specifier|final
-name|File
+name|Path
 name|logdir
 parameter_list|)
 block|{

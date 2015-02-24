@@ -294,7 +294,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -302,9 +302,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -407,13 +409,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|createAppender (File logdir, String name, Layout layout)
+DECL|method|createAppender (Path logdir, String name, Layout layout)
 specifier|public
 specifier|static
 name|Appender
 name|createAppender
 parameter_list|(
-name|File
+name|Path
 name|logdir
 parameter_list|,
 name|String
@@ -456,18 +458,17 @@ name|dst
 operator|.
 name|setFile
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|resolve
 argument_list|(
 name|logdir
 argument_list|)
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 name|name
 argument_list|)
 operator|.
-name|getPath
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -644,23 +645,25 @@ return|return
 name|async
 return|;
 block|}
-DECL|method|resolve (final File logs_dir)
+DECL|method|resolve (Path p)
 specifier|private
 specifier|static
-name|File
+name|Path
 name|resolve
 parameter_list|(
-specifier|final
-name|File
-name|logs_dir
+name|Path
+name|p
 parameter_list|)
 block|{
 try|try
 block|{
 return|return
-name|logs_dir
+name|p
 operator|.
-name|getCanonicalFile
+name|toRealPath
+argument_list|()
+operator|.
+name|normalize
 argument_list|()
 return|;
 block|}
@@ -671,9 +674,12 @@ name|e
 parameter_list|)
 block|{
 return|return
-name|logs_dir
+name|p
 operator|.
-name|getAbsoluteFile
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|normalize
 argument_list|()
 return|;
 block|}

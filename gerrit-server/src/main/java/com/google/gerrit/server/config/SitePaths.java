@@ -205,7 +205,7 @@ decl_stmt|;
 DECL|field|logs_dir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|logs_dir
 decl_stmt|;
 DECL|field|plugins_dir
@@ -425,11 +425,10 @@ argument_list|)
 expr_stmt|;
 name|logs_dir
 operator|=
-operator|new
-name|File
+name|p
+operator|.
+name|resolve
 argument_list|(
-name|site_path
-argument_list|,
 literal|"logs"
 argument_list|)
 expr_stmt|;
