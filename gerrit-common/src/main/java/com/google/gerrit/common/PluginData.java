@@ -68,9 +68,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -102,13 +104,13 @@ specifier|final
 name|String
 name|version
 decl_stmt|;
-DECL|field|pluginFile
+DECL|field|pluginPath
 specifier|public
 specifier|final
-name|File
-name|pluginFile
+name|Path
+name|pluginPath
 decl_stmt|;
-DECL|method|PluginData (String name, String version, File pluginFile)
+DECL|method|PluginData (String name, String version, Path pluginPath)
 specifier|public
 name|PluginData
 parameter_list|(
@@ -118,8 +120,8 @@ parameter_list|,
 name|String
 name|version
 parameter_list|,
-name|File
-name|pluginFile
+name|Path
+name|pluginPath
 parameter_list|)
 block|{
 name|this
@@ -136,9 +138,9 @@ name|version
 expr_stmt|;
 name|this
 operator|.
-name|pluginFile
+name|pluginPath
 operator|=
-name|pluginFile
+name|pluginPath
 expr_stmt|;
 block|}
 annotation|@
@@ -194,11 +196,11 @@ name|Objects
 operator|.
 name|equals
 argument_list|(
-name|pluginFile
+name|pluginPath
 argument_list|,
 name|o
 operator|.
-name|pluginFile
+name|pluginPath
 argument_list|)
 return|;
 block|}
@@ -228,7 +230,7 @@ name|name
 argument_list|,
 name|version
 argument_list|,
-name|pluginFile
+name|pluginPath
 argument_list|)
 return|;
 block|}

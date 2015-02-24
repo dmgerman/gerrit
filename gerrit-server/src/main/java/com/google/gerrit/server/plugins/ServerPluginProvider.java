@@ -118,18 +118,16 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
 begin_comment
 comment|/**  * Provider of one Server plugin from one external file  *  * Allows to load one plugin from one external file or  * one directory by declaring the ability to handle it.  *  * In order to load multiple files into a single plugin,  * group them into a directory tree and then load the directory  * root as a single plugin.  */
-end_comment
-
-begin_comment
-comment|// TODO(dborowitz): Convert to NIO; ensure clients can migrate.
 end_comment
 
 begin_interface
@@ -161,11 +159,11 @@ decl_stmt|;
 DECL|field|dataDir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|dataDir
 decl_stmt|;
 comment|/**      * Creates a new PluginDescription for ServerPluginProvider.      *      * @param user Gerrit user for interacting with plugins      * @param canonicalUrl plugin root Web URL      * @param dataDir directory for plugin data      */
-DECL|method|PluginDescription (PluginUser user, String canonicalUrl, File dataDir)
+DECL|method|PluginDescription (PluginUser user, String canonicalUrl, Path dataDir)
 specifier|public
 name|PluginDescription
 parameter_list|(
@@ -175,7 +173,7 @@ parameter_list|,
 name|String
 name|canonicalUrl
 parameter_list|,
-name|File
+name|Path
 name|dataDir
 parameter_list|)
 block|{
@@ -199,31 +197,31 @@ name|dataDir
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Declares the availability to manage an external file or directory    *    * @param srcFile the external file or directory    * @return true if file or directory can be loaded into a Server Plugin    */
-DECL|method|handles (File srcFile)
+comment|/**    * Declares the availability to manage an external file or directory    *    * @param srcPath the external file or directory    * @return true if file or directory can be loaded into a Server Plugin    */
+DECL|method|handles (Path srcPath)
 name|boolean
 name|handles
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 function_decl|;
-comment|/**    * Returns the plugin name of an external file or directory    *    * Should be called only if {@link #handles(File) handles(srcFile)}    * returns true and thus srcFile is a supported plugin format.    * An IllegalArgumentException is thrown otherwise as srcFile    * is not a valid file format for extracting its plugin name.    *    * @param srcFile external file or directory    * @return plugin name    */
-DECL|method|getPluginName (File srcFile)
+comment|/**    * Returns the plugin name of an external file or directory    *    * Should be called only if {@link #handles(Path) handles(srcFile)}    * returns true and thus srcFile is a supported plugin format.    * An IllegalArgumentException is thrown otherwise as srcFile    * is not a valid file format for extracting its plugin name.    *    * @param srcPath external file or directory    * @return plugin name    */
+DECL|method|getPluginName (Path srcPath)
 name|String
 name|getPluginName
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 function_decl|;
-comment|/**    * Loads an external file or directory into a Server plugin.    *    * Should be called only if {@link #handles(File) handles(srcFile)}    * returns true and thus srcFile is a supported plugin format.    * An IllegalArgumentException is thrown otherwise as srcFile    * is not a valid file format for extracting its plugin name.    *    * @param srcFile external file or directory    * @param snapshot snapshot of the external file    * @param pluginDescriptor descriptor of the ServerPlugin to load    * @throws InvalidPluginException if plugin is supposed to be handled    *         but cannot be loaded for any other reason    */
-DECL|method|get (File srcFile, FileSnapshot snapshot, PluginDescription pluginDescriptor)
+comment|/**    * Loads an external file or directory into a Server plugin.    *    * Should be called only if {@link #handles(Path) handles(srcFile)}    * returns true and thus srcFile is a supported plugin format.    * An IllegalArgumentException is thrown otherwise as srcFile    * is not a valid file format for extracting its plugin name.    *    * @param srcPath external file or directory    * @param snapshot snapshot of the external file    * @param pluginDescriptor descriptor of the ServerPlugin to load    * @throws InvalidPluginException if plugin is supposed to be handled    *         but cannot be loaded for any other reason    */
+DECL|method|get (Path srcPath, FileSnapshot snapshot, PluginDescription pluginDescriptor)
 name|ServerPlugin
 name|get
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|,
 name|FileSnapshot
 name|snapshot

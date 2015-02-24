@@ -170,26 +170,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -255,6 +235,18 @@ operator|.
 name|file
 operator|.
 name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -364,7 +356,7 @@ decl_stmt|;
 DECL|field|tmpDir
 specifier|private
 specifier|final
-name|File
+name|Path
 name|tmpDir
 decl_stmt|;
 annotation|@
@@ -376,34 +368,33 @@ name|SitePaths
 name|sitePaths
 parameter_list|)
 block|{
-comment|// TODO(dborowitz): Convert to NIO.
 name|tmpDir
 operator|=
 name|sitePaths
 operator|.
 name|tmp_dir
-operator|.
-name|toFile
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|handles (File srcFile)
+DECL|method|handles (Path srcPath)
 specifier|public
 name|boolean
 name|handles
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 block|{
 name|String
 name|fileName
 init|=
-name|srcFile
+name|srcPath
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 return|return
@@ -426,13 +417,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getPluginName (File srcFile)
+DECL|method|getPluginName (Path srcPath)
 specifier|public
 name|String
 name|getPluginName
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 block|{
 try|try
@@ -444,14 +435,14 @@ name|firstNonNull
 argument_list|(
 name|getJarPluginName
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 argument_list|,
 name|PluginLoader
 operator|.
 name|nameOf
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 argument_list|)
 return|;
@@ -468,7 +459,7 @@ name|IllegalArgumentException
 argument_list|(
 literal|"Invalid plugin file "
 operator|+
-name|srcFile
+name|srcPath
 operator|+
 literal|": cannot get plugin name"
 argument_list|,
@@ -477,14 +468,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getJarPluginName (File srcFile)
+DECL|method|getJarPluginName (Path srcPath)
 specifier|public
 specifier|static
 name|String
 name|getJarPluginName
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 throws|throws
 name|IOException
@@ -497,7 +488,10 @@ init|=
 operator|new
 name|JarFile
 argument_list|(
-name|srcFile
+name|srcPath
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 init|)
 block|{
@@ -519,13 +513,13 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|get (File srcFile, FileSnapshot snapshot, PluginDescription description)
+DECL|method|get (Path srcPath, FileSnapshot snapshot, PluginDescription description)
 specifier|public
 name|ServerPlugin
 name|get
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|,
 name|FileSnapshot
 name|snapshot
@@ -543,7 +537,7 @@ name|name
 init|=
 name|getPluginName
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 decl_stmt|;
 name|String
@@ -551,22 +545,23 @@ name|extension
 init|=
 name|getExtension
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 decl_stmt|;
 try|try
 init|(
-name|FileInputStream
+name|InputStream
 name|in
 init|=
-operator|new
-name|FileInputStream
+name|Files
+operator|.
+name|newInputStream
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 init|)
 block|{
-name|File
+name|Path
 name|tmp
 init|=
 name|asTemp
@@ -588,10 +583,7 @@ name|loadJarPlugin
 argument_list|(
 name|name
 argument_list|,
-name|srcFile
-operator|.
-name|toPath
-argument_list|()
+name|srcPath
 argument_list|,
 name|snapshot
 argument_list|,
@@ -614,7 +606,7 @@ name|InvalidPluginException
 argument_list|(
 literal|"Cannot load Jar plugin "
 operator|+
-name|srcFile
+name|srcPath
 argument_list|,
 name|e
 argument_list|)
@@ -633,22 +625,25 @@ return|return
 literal|"gerrit"
 return|;
 block|}
-DECL|method|getExtension (File file)
+DECL|method|getExtension (Path path)
 specifier|private
 specifier|static
 name|String
 name|getExtension
 parameter_list|(
-name|File
-name|file
+name|Path
+name|path
 parameter_list|)
 block|{
 return|return
 name|getExtension
 argument_list|(
-name|file
+name|path
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 return|;
@@ -729,7 +724,7 @@ block|}
 DECL|method|storeInTemp (String pluginName, InputStream in, SitePaths sitePaths)
 specifier|public
 specifier|static
-name|File
+name|Path
 name|storeInTemp
 parameter_list|(
 name|String
@@ -782,13 +777,10 @@ argument_list|,
 name|sitePaths
 operator|.
 name|tmp_dir
-operator|.
-name|toFile
-argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|loadJarPlugin (String name, Path srcJar, FileSnapshot snapshot, File tmp, PluginDescription description)
+DECL|method|loadJarPlugin (String name, Path srcJar, FileSnapshot snapshot, Path tmp, PluginDescription description)
 specifier|private
 name|ServerPlugin
 name|loadJarPlugin
@@ -802,7 +794,7 @@ parameter_list|,
 name|FileSnapshot
 name|snapshot
 parameter_list|,
-name|File
+name|Path
 name|tmp
 parameter_list|,
 name|PluginDescription
@@ -822,6 +814,9 @@ operator|new
 name|JarFile
 argument_list|(
 name|tmp
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -881,33 +876,34 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|File
+name|Path
 name|classes
 init|=
-operator|new
-name|File
-argument_list|(
-operator|new
-name|File
-argument_list|(
-operator|new
-name|File
+name|Paths
+operator|.
+name|get
 argument_list|(
 name|overlay
 argument_list|)
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 name|name
 argument_list|)
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"main"
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|classes
+name|Files
 operator|.
 name|isDirectory
-argument_list|()
+argument_list|(
+name|classes
+argument_list|)
 condition|)
 block|{
 name|log
@@ -923,9 +919,6 @@ argument_list|,
 name|name
 argument_list|,
 name|classes
-operator|.
-name|getPath
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -935,7 +928,7 @@ name|add
 argument_list|(
 name|classes
 operator|.
-name|toURI
+name|toUri
 argument_list|()
 operator|.
 name|toURL
@@ -950,7 +943,7 @@ name|add
 argument_list|(
 name|tmp
 operator|.
-name|toURI
+name|toUri
 argument_list|()
 operator|.
 name|toURL
@@ -1010,9 +1003,6 @@ operator|.
 name|user
 argument_list|,
 name|srcJar
-operator|.
-name|toFile
-argument_list|()
 argument_list|,
 name|snapshot
 argument_list|,

@@ -67,6 +67,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|FileUtil
+operator|.
+name|lastModified
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -195,16 +211,6 @@ operator|.
 name|file
 operator|.
 name|FileSnapshot
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
 import|;
 end_import
 
@@ -523,7 +529,7 @@ argument_list|>
 argument_list|>
 name|reloadableHandles
 decl_stmt|;
-DECL|method|Plugin (String name, Path srcFile, PluginUser pluginUser, FileSnapshot snapshot, ApiType apiType)
+DECL|method|Plugin (String name, Path srcPath, PluginUser pluginUser, FileSnapshot snapshot, ApiType apiType)
 specifier|public
 name|Plugin
 parameter_list|(
@@ -531,7 +537,7 @@ name|String
 name|name
 parameter_list|,
 name|Path
-name|srcFile
+name|srcPath
 parameter_list|,
 name|PluginUser
 name|pluginUser
@@ -549,12 +555,11 @@ name|name
 operator|=
 name|name
 expr_stmt|;
-comment|// TODO(dborowitz): Rename to srcPath or something.
 name|this
 operator|.
 name|srcFile
 operator|=
-name|srcFile
+name|srcPath
 expr_stmt|;
 name|this
 operator|.
@@ -590,7 +595,7 @@ name|this
 operator|.
 name|disabled
 operator|=
-name|srcFile
+name|srcPath
 operator|.
 name|getFileName
 argument_list|()
@@ -864,11 +869,11 @@ name|boolean
 name|canReload
 parameter_list|()
 function_decl|;
-DECL|method|isModified (File jar)
+DECL|method|isModified (Path jar)
 name|boolean
 name|isModified
 parameter_list|(
-name|File
+name|Path
 name|jar
 parameter_list|)
 block|{
@@ -878,10 +883,10 @@ operator|.
 name|lastModified
 argument_list|()
 operator|!=
-name|jar
-operator|.
 name|lastModified
-argument_list|()
+argument_list|(
+name|jar
+argument_list|)
 return|;
 block|}
 block|}

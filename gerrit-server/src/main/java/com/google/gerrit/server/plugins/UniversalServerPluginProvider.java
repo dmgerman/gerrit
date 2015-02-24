@@ -148,9 +148,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -229,13 +231,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|get (File srcFile, FileSnapshot snapshot, PluginDescription pluginDescription)
+DECL|method|get (Path srcPath, FileSnapshot snapshot, PluginDescription pluginDescription)
 specifier|public
 name|ServerPlugin
 name|get
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|,
 name|FileSnapshot
 name|snapshot
@@ -249,12 +251,12 @@ block|{
 return|return
 name|providerOf
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 operator|.
 name|get
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|,
 name|snapshot
 argument_list|,
@@ -264,36 +266,36 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getPluginName (File srcFile)
+DECL|method|getPluginName (Path srcPath)
 specifier|public
 name|String
 name|getPluginName
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 block|{
 return|return
 name|providerOf
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 operator|.
 name|getPluginName
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|handles (File srcFile)
+DECL|method|handles (Path srcPath)
 specifier|public
 name|boolean
 name|handles
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 block|{
 name|List
@@ -304,7 +306,7 @@ name|providers
 init|=
 name|providersForHandlingPlugin
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 decl_stmt|;
 switch|switch
@@ -332,7 +334,7 @@ throw|throw
 operator|new
 name|MultipleProvidersForPluginException
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|,
 name|providers
 argument_list|)
@@ -351,13 +353,13 @@ return|return
 literal|"gerrit"
 return|;
 block|}
-DECL|method|providerOf (File srcFile)
+DECL|method|providerOf (Path srcPath)
 specifier|private
 name|ServerPluginProvider
 name|providerOf
 parameter_list|(
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 block|{
 name|List
@@ -368,7 +370,7 @@ name|providers
 init|=
 name|providersForHandlingPlugin
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 decl_stmt|;
 switch|switch
@@ -399,9 +401,9 @@ name|IllegalArgumentException
 argument_list|(
 literal|"No ServerPluginProvider found/loaded to handle plugin file "
 operator|+
-name|srcFile
+name|srcPath
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 argument_list|)
 throw|;
@@ -410,14 +412,14 @@ throw|throw
 operator|new
 name|MultipleProvidersForPluginException
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|,
 name|providers
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|providersForHandlingPlugin ( final File srcFile)
+DECL|method|providersForHandlingPlugin ( final Path srcPath)
 specifier|private
 name|List
 argument_list|<
@@ -426,8 +428,8 @@ argument_list|>
 name|providersForHandlingPlugin
 parameter_list|(
 specifier|final
-name|File
-name|srcFile
+name|Path
+name|srcPath
 parameter_list|)
 block|{
 name|List
@@ -456,7 +458,7 @@ name|serverPluginProvider
 operator|.
 name|handles
 argument_list|(
-name|srcFile
+name|srcPath
 argument_list|)
 decl_stmt|;
 name|log
@@ -465,7 +467,7 @@ name|debug
 argument_list|(
 literal|"File {} handled by {} ? => {}"
 argument_list|,
-name|srcFile
+name|srcPath
 argument_list|,
 name|serverPluginProvider
 operator|.

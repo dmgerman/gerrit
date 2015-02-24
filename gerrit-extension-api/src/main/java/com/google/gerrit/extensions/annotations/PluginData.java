@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Local path where a plugin can store its own private data.  *<p>  * A plugin or extension may receive this string by Guice injection to discover  * a directory where it can store configuration or other data that is private:  *  *<pre>  * {@literal @Inject}  * MyType(@PluginData java.io.File myDir) {  *   new FileInputStream(new File(myDir,&quot;my.config&quot;));  * }  *</pre>  */
+comment|/**  * Local path where a plugin can store its own private data.  *<p>  * A plugin or extension may receive this string by Guice injection to discover  * a directory where it can store configuration or other data that is private:  *<p>  * This binding is on both {@link java.io.File} and {@link java.nio.file.Path},  * pointing to the same location. The {@code File} version should be considered  * deprecated and may be removed in a future version.  *  *<pre>  * {@literal @Inject}  * MyType(@PluginData java.nio.file.Path myDir) {  *   this.in = Files.newInputStream(myDir.resolve(&quot;my.config&quot;));  * }  *</pre>  */
 end_comment
 
 begin_annotation_defn
