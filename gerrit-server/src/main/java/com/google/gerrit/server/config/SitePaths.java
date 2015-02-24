@@ -223,7 +223,7 @@ decl_stmt|;
 DECL|field|mail_dir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|mail_dir
 decl_stmt|;
 DECL|field|hooks_dir
@@ -440,9 +440,6 @@ name|resolve
 argument_list|(
 literal|"mail"
 argument_list|)
-operator|.
-name|toFile
-argument_list|()
 expr_stmt|;
 name|hooks_dir
 operator|=
