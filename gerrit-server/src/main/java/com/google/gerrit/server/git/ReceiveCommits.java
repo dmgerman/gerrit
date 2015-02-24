@@ -13191,6 +13191,10 @@ block|{
 if|if
 condition|(
 name|magicBranch
+operator|!=
+literal|null
+operator|&&
+name|magicBranch
 operator|.
 name|edit
 condition|)
