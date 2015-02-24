@@ -642,6 +642,11 @@ operator|+
 name|qValueStr
 argument_list|)
 expr_stmt|;
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
