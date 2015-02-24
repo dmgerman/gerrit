@@ -872,9 +872,6 @@ name|site
 operator|.
 name|etc_dir
 operator|.
-name|toPath
-argument_list|()
-operator|.
 name|resolve
 argument_list|(
 literal|"tmp.sshkeygen"

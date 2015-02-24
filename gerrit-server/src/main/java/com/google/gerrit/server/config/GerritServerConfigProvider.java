@@ -290,6 +290,9 @@ argument_list|(
 name|site
 operator|.
 name|gerrit_config
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 name|FS
 operator|.
@@ -318,7 +321,7 @@ name|site
 operator|.
 name|gerrit_config
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 operator|+
 literal|"; assuming defaults"

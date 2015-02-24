@@ -278,9 +278,6 @@ name|resolve
 argument_list|(
 literal|"etc"
 argument_list|)
-operator|.
-name|toFile
-argument_list|()
 argument_list|,
 name|site
 operator|.

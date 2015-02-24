@@ -406,26 +406,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -457,6 +437,30 @@ operator|.
 name|net
 operator|.
 name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -624,7 +628,7 @@ operator|.
 name|Factory
 name|connFactory
 decl_stmt|;
-DECL|method|EncryptedContactStore (final URL storeUrl, final String storeAPPSEC, final File pubKey, final SchemaFactory<ReviewDb> schema, final ContactStoreConnection.Factory connFactory)
+DECL|method|EncryptedContactStore (final URL storeUrl, final String storeAPPSEC, final Path pubKey, final SchemaFactory<ReviewDb> schema, final ContactStoreConnection.Factory connFactory)
 name|EncryptedContactStore
 parameter_list|(
 specifier|final
@@ -636,7 +640,7 @@ name|String
 name|storeAPPSEC
 parameter_list|,
 specifier|final
-name|File
+name|Path
 name|pubKey
 parameter_list|,
 specifier|final
@@ -784,14 +788,13 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|readPubRing (final File pub)
+DECL|method|readPubRing (Path pub)
 specifier|private
 specifier|static
 name|PGPPublicKeyRingCollection
 name|readPubRing
 parameter_list|(
-specifier|final
-name|File
+name|Path
 name|pub
 parameter_list|)
 block|{
@@ -800,8 +803,9 @@ init|(
 name|InputStream
 name|fin
 init|=
-operator|new
-name|FileInputStream
+name|Files
+operator|.
+name|newInputStream
 argument_list|(
 name|pub
 argument_list|)

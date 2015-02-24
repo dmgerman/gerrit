@@ -218,6 +218,18 @@ name|Singleton
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
 begin_comment
 comment|/** Initialize the {@code sendemail} configuration section. */
 end_comment
@@ -364,12 +376,14 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+name|Files
+operator|.
+name|exists
+argument_list|(
 name|site
 operator|.
 name|gerrit_config
-operator|.
-name|exists
-argument_list|()
+argument_list|)
 condition|)
 block|{
 name|username

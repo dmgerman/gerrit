@@ -236,16 +236,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|lang
 operator|.
 name|reflect
@@ -283,6 +273,30 @@ operator|.
 name|net
 operator|.
 name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -349,7 +363,6 @@ name|Factory
 name|connFactory
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|url
 init|=
@@ -397,7 +410,6 @@ literal|" needed to encrypt contact information"
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|URL
 name|storeUrl
 decl_stmt|;
@@ -430,7 +442,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|String
 name|storeAPPSEC
 init|=
@@ -445,8 +456,7 @@ argument_list|,
 literal|"appsec"
 argument_list|)
 decl_stmt|;
-specifier|final
-name|File
+name|Path
 name|pubkey
 init|=
 name|site
@@ -456,10 +466,12 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|pubkey
+name|Files
 operator|.
 name|exists
-argument_list|()
+argument_list|(
+name|pubkey
+argument_list|)
 condition|)
 block|{
 throw|throw
@@ -470,7 +482,7 @@ literal|"PGP public key file \""
 operator|+
 name|pubkey
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 operator|+
 literal|"\" not found"
