@@ -352,7 +352,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -360,9 +360,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -497,11 +499,11 @@ name|NrtFuture
 argument_list|>
 name|notDoneNrtFutures
 decl_stmt|;
-DECL|method|SubIndex (File file, GerritIndexWriterConfig writerConfig)
+DECL|method|SubIndex (Path path, GerritIndexWriterConfig writerConfig)
 name|SubIndex
 parameter_list|(
-name|File
-name|file
+name|Path
+name|path
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
@@ -515,12 +517,18 @@ name|FSDirectory
 operator|.
 name|open
 argument_list|(
-name|file
+name|path
+operator|.
+name|toFile
+argument_list|()
 argument_list|)
 argument_list|,
-name|file
+name|path
 operator|.
-name|getName
+name|getFileName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|writerConfig

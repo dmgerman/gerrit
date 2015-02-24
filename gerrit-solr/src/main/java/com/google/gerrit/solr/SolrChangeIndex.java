@@ -2228,6 +2228,9 @@ name|solrIndexConfig
 argument_list|(
 name|sitePaths
 argument_list|)
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 name|FS
 operator|.

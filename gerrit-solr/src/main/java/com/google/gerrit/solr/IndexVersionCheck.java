@@ -200,7 +200,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|IOException
 import|;
 end_import
 
@@ -208,9 +208,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|IOException
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -275,7 +277,7 @@ decl_stmt|;
 DECL|method|solrIndexConfig (SitePaths sitePaths)
 specifier|public
 specifier|static
-name|File
+name|Path
 name|solrIndexConfig
 parameter_list|(
 name|SitePaths
@@ -283,13 +285,12 @@ name|sitePaths
 parameter_list|)
 block|{
 return|return
-operator|new
-name|File
-argument_list|(
 name|sitePaths
 operator|.
 name|index_dir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"gerrit_index.config"
 argument_list|)
 return|;
@@ -325,8 +326,8 @@ name|start
 parameter_list|()
 block|{
 comment|// TODO Query schema version from a special meta-document
-name|File
-name|file
+name|Path
+name|path
 init|=
 name|solrIndexConfig
 argument_list|(
@@ -341,7 +342,10 @@ init|=
 operator|new
 name|FileBasedConfig
 argument_list|(
-name|file
+name|path
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 name|FS
 operator|.
@@ -443,7 +447,7 @@ name|ProvisionException
 argument_list|(
 literal|"unable to read "
 operator|+
-name|file
+name|path
 argument_list|)
 throw|;
 block|}
@@ -459,7 +463,7 @@ name|ProvisionException
 argument_list|(
 literal|"invalid config file "
 operator|+
-name|file
+name|path
 argument_list|)
 throw|;
 block|}

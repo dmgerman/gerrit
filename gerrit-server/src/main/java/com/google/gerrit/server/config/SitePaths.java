@@ -247,7 +247,7 @@ decl_stmt|;
 DECL|field|index_dir
 specifier|public
 specifier|final
-name|File
+name|Path
 name|index_dir
 decl_stmt|;
 DECL|field|gerrit_sh
@@ -476,11 +476,10 @@ argument_list|)
 expr_stmt|;
 name|index_dir
 operator|=
-operator|new
-name|File
+name|p
+operator|.
+name|resolve
 argument_list|(
-name|site_path
-argument_list|,
 literal|"index"
 argument_list|)
 expr_stmt|;
