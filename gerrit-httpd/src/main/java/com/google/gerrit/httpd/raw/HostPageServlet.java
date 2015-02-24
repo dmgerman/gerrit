@@ -1593,6 +1593,9 @@ argument_list|(
 name|HtmlDomUtil
 operator|.
 name|ENC
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rsp

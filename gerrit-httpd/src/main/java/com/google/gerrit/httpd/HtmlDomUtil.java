@@ -66,6 +66,20 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|io
+operator|.
+name|ByteStreams
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|w3c
@@ -190,16 +204,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStreamReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|StringWriter
 import|;
 end_import
@@ -208,9 +212,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|UnsupportedEncodingException
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
 import|;
 end_import
 
@@ -283,18 +301,6 @@ operator|.
 name|transform
 operator|.
 name|Transformer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|TransformerConfigurationException
 import|;
 end_import
 
@@ -413,10 +419,12 @@ DECL|field|ENC
 specifier|public
 specifier|static
 specifier|final
-name|String
+name|Charset
 name|ENC
 init|=
-literal|"UTF-8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 decl_stmt|;
 comment|/** DOCTYPE for a standards mode HTML document. */
 DECL|field|HTML_STRICT
@@ -429,14 +437,13 @@ init|=
 literal|"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd"
 decl_stmt|;
 comment|/** Convert a document to a UTF-8 byte sequence. */
-DECL|method|toUTF8 (final Document hostDoc)
+DECL|method|toUTF8 (Document hostDoc)
 specifier|public
 specifier|static
 name|byte
 index|[]
 name|toUTF8
 parameter_list|(
-specifier|final
 name|Document
 name|hostDoc
 parameter_list|)
@@ -456,14 +463,13 @@ argument_list|)
 return|;
 block|}
 comment|/** Compress the document. */
-DECL|method|compress (final byte[] raw)
+DECL|method|compress (byte[] raw)
 specifier|public
 specifier|static
 name|byte
 index|[]
 name|compress
 parameter_list|(
-specifier|final
 name|byte
 index|[]
 name|raw
@@ -471,7 +477,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|ByteArrayOutputStream
 name|out
 init|=
@@ -479,7 +484,6 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
-specifier|final
 name|GZIPOutputStream
 name|gz
 init|=
@@ -514,13 +518,12 @@ argument_list|()
 return|;
 block|}
 comment|/** Convert a document to a String, assuming later encoding to UTF-8. */
-DECL|method|toString (final Document hostDoc)
+DECL|method|toString (Document hostDoc)
 specifier|public
 specifier|static
 name|String
 name|toString
 parameter_list|(
-specifier|final
 name|Document
 name|hostDoc
 parameter_list|)
@@ -529,7 +532,6 @@ name|IOException
 block|{
 try|try
 block|{
-specifier|final
 name|StringWriter
 name|out
 init|=
@@ -537,7 +539,6 @@ operator|new
 name|StringWriter
 argument_list|()
 decl_stmt|;
-specifier|final
 name|DOMSource
 name|domSource
 init|=
@@ -547,7 +548,6 @@ argument_list|(
 name|hostDoc
 argument_list|)
 decl_stmt|;
-specifier|final
 name|StreamResult
 name|streamResult
 init|=
@@ -557,7 +557,6 @@ argument_list|(
 name|out
 argument_list|)
 decl_stmt|;
-specifier|final
 name|TransformerFactory
 name|tf
 init|=
@@ -566,7 +565,6 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-specifier|final
 name|Transformer
 name|serializer
 init|=
@@ -584,6 +582,9 @@ operator|.
 name|ENCODING
 argument_list|,
 name|ENC
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|serializer
@@ -639,38 +640,10 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|TransformerConfigurationException
-name|e
-parameter_list|)
-block|{
-specifier|final
-name|IOException
-name|r
-init|=
-operator|new
-name|IOException
-argument_list|(
-literal|"Error transforming page"
-argument_list|)
-decl_stmt|;
-name|r
-operator|.
-name|initCause
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-throw|throw
-name|r
-throw|;
-block|}
-catch|catch
-parameter_list|(
 name|TransformerException
 name|e
 parameter_list|)
 block|{
-specifier|final
 name|IOException
 name|r
 init|=
@@ -693,22 +666,19 @@ throw|;
 block|}
 block|}
 comment|/** Find an element by its "id" attribute; null if no element is found. */
-DECL|method|find (final Node parent, final String name)
+DECL|method|find (Node parent, String name)
 specifier|public
 specifier|static
 name|Element
 name|find
 parameter_list|(
-specifier|final
 name|Node
 name|parent
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
 block|{
-specifier|final
 name|NodeList
 name|list
 init|=
@@ -735,7 +705,6 @@ name|i
 operator|++
 control|)
 block|{
-specifier|final
 name|Node
 name|n
 init|=
@@ -753,7 +722,6 @@ operator|instanceof
 name|Element
 condition|)
 block|{
-specifier|final
 name|Element
 name|e
 init|=
@@ -782,7 +750,6 @@ name|e
 return|;
 block|}
 block|}
-specifier|final
 name|Element
 name|r
 init|=
@@ -810,26 +777,22 @@ literal|null
 return|;
 block|}
 comment|/** Append an HTML&lt;input type="hidden"&gt; to the form. */
-DECL|method|addHidden (final Element form, final String name, final String value)
+DECL|method|addHidden (Element form, String name, String value)
 specifier|public
 specifier|static
 name|void
 name|addHidden
 parameter_list|(
-specifier|final
 name|Element
 name|form
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|,
-specifier|final
 name|String
 name|value
 parameter_list|)
 block|{
-specifier|final
 name|Element
 name|in
 init|=
@@ -914,20 +877,18 @@ throw|;
 block|}
 block|}
 comment|/** Clone a document so it can be safely modified on a per-request basis. */
-DECL|method|clone (final Document doc)
+DECL|method|clone (Document doc)
 specifier|public
 specifier|static
 name|Document
 name|clone
 parameter_list|(
-specifier|final
 name|Document
 name|doc
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
 name|Document
 name|d
 decl_stmt|;
@@ -956,7 +917,6 @@ literal|"Cannot clone document"
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|Node
 name|n
 init|=
@@ -984,39 +944,37 @@ name|d
 return|;
 block|}
 comment|/** Parse an XHTML file from our CLASSPATH and return the instance. */
-DECL|method|parseFile (final Class<?> context, final String name)
+DECL|method|parseFile (Class<?> context, String name)
 specifier|public
 specifier|static
 name|Document
 name|parseFile
 parameter_list|(
-specifier|final
 name|Class
 argument_list|<
 name|?
 argument_list|>
 name|context
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|InputStream
 name|in
-decl_stmt|;
-name|in
-operator|=
+init|=
 name|context
 operator|.
 name|getResourceAsStream
 argument_list|(
 name|name
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -1028,13 +986,6 @@ return|return
 literal|null
 return|;
 block|}
-try|try
-block|{
-try|try
-block|{
-try|try
-block|{
-specifier|final
 name|Document
 name|doc
 init|=
@@ -1058,51 +1009,9 @@ block|}
 catch|catch
 parameter_list|(
 name|SAXException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Error reading "
-operator|+
-name|name
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|ParserConfigurationException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Error reading "
-operator|+
-name|name
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IOException
 name|e
 parameter_list|)
@@ -1120,26 +1029,23 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|compact (final Document doc)
+DECL|method|compact (Document doc)
 specifier|private
 specifier|static
 name|void
 name|compact
 parameter_list|(
-specifier|final
 name|Document
 name|doc
 parameter_list|)
 block|{
 try|try
 block|{
-specifier|final
 name|String
 name|expr
 init|=
 literal|"//text()[normalize-space(.) = '']"
 decl_stmt|;
-specifier|final
 name|XPathFactory
 name|xp
 init|=
@@ -1148,7 +1054,6 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-specifier|final
 name|XPathExpression
 name|e
 init|=
@@ -1229,27 +1134,26 @@ comment|// Don't do the whitespace removal.
 block|}
 block|}
 comment|/** Read a Read a UTF-8 text file from our CLASSPATH and return it. */
-DECL|method|readFile (final Class<?> context, final String name)
+DECL|method|readFile (Class<?> context, String name)
 specifier|public
 specifier|static
 name|String
 name|readFile
 parameter_list|(
-specifier|final
 name|Class
 argument_list|<
 name|?
 argument_list|>
 name|context
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -1259,7 +1163,8 @@ name|getResourceAsStream
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -1271,12 +1176,18 @@ return|return
 literal|null
 return|;
 block|}
-try|try
-block|{
 return|return
-name|asString
+operator|new
+name|String
+argument_list|(
+name|ByteStreams
+operator|.
+name|toByteArray
 argument_list|(
 name|in
+argument_list|)
+argument_list|,
+name|ENC
 argument_list|)
 return|;
 block|}
@@ -1300,13 +1211,12 @@ throw|;
 block|}
 block|}
 comment|/** Parse an XHTML file from the local drive and return the instance. */
-DECL|method|parseFile (final File path)
+DECL|method|parseFile (File path)
 specifier|public
 specifier|static
 name|Document
 name|parseFile
 parameter_list|(
-specifier|final
 name|File
 name|path
 parameter_list|)
@@ -1314,8 +1224,7 @@ throws|throws
 name|IOException
 block|{
 try|try
-block|{
-specifier|final
+init|(
 name|InputStream
 name|in
 init|=
@@ -1324,12 +1233,8 @@ name|FileInputStream
 argument_list|(
 name|path
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
-try|try
-block|{
-specifier|final
 name|Document
 name|doc
 init|=
@@ -1352,52 +1257,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|SAXException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Error reading "
-operator|+
-name|path
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|ParserConfigurationException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Error reading "
-operator|+
-name|path
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
 name|FileNotFoundException
 name|e
 parameter_list|)
@@ -1408,6 +1267,10 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|SAXException
+decl||
+name|ParserConfigurationException
+decl||
 name|IOException
 name|e
 parameter_list|)
@@ -1426,17 +1289,15 @@ throw|;
 block|}
 block|}
 comment|/** Read a UTF-8 text file from the local drive. */
-DECL|method|readFile (final File parentDir, final String name)
+DECL|method|readFile (File parentDir, String name)
 specifier|public
 specifier|static
 name|String
 name|readFile
 parameter_list|(
-specifier|final
 name|File
 name|parentDir
 parameter_list|,
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -1454,7 +1315,6 @@ return|return
 literal|null
 return|;
 block|}
-specifier|final
 name|File
 name|path
 init|=
@@ -1467,15 +1327,29 @@ name|name
 argument_list|)
 decl_stmt|;
 try|try
-block|{
-return|return
-name|asString
-argument_list|(
+init|(
+name|FileInputStream
+name|in
+init|=
 operator|new
 name|FileInputStream
 argument_list|(
 name|path
 argument_list|)
+init|)
+block|{
+return|return
+operator|new
+name|String
+argument_list|(
+name|ByteStreams
+operator|.
+name|toByteArray
+argument_list|(
+name|in
+argument_list|)
+argument_list|,
+name|ENC
 argument_list|)
 return|;
 block|}
@@ -1508,101 +1382,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|asString (final InputStream in)
-specifier|private
-specifier|static
-name|String
-name|asString
-parameter_list|(
-specifier|final
-name|InputStream
-name|in
-parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
-throws|,
-name|IOException
-block|{
-try|try
-block|{
-specifier|final
-name|StringBuilder
-name|w
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-specifier|final
-name|InputStreamReader
-name|r
-init|=
-operator|new
-name|InputStreamReader
-argument_list|(
-name|in
-argument_list|,
-name|ENC
-argument_list|)
-decl_stmt|;
-specifier|final
-name|char
-index|[]
-name|buf
-init|=
-operator|new
-name|char
-index|[
-literal|512
-index|]
-decl_stmt|;
-name|int
-name|n
-decl_stmt|;
-while|while
-condition|(
-operator|(
-name|n
-operator|=
-name|r
-operator|.
-name|read
-argument_list|(
-name|buf
-argument_list|)
-operator|)
-operator|>
-literal|0
-condition|)
-block|{
-name|w
-operator|.
-name|append
-argument_list|(
-name|buf
-argument_list|,
-literal|0
-argument_list|,
-name|n
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|w
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 DECL|method|newBuilder ()
 specifier|private
 specifier|static
@@ -1612,7 +1391,6 @@ parameter_list|()
 throws|throws
 name|ParserConfigurationException
 block|{
-specifier|final
 name|DocumentBuilderFactory
 name|factory
 init|=
