@@ -404,6 +404,18 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
 begin_class
 DECL|class|AllProjectsConfig
 specifier|public
@@ -518,7 +530,7 @@ name|File
 name|getPath
 parameter_list|()
 block|{
-name|File
+name|Path
 name|basePath
 init|=
 name|site
@@ -559,13 +571,15 @@ name|FileKey
 operator|.
 name|resolve
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|basePath
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 name|project
 argument_list|)
+operator|.
+name|toFile
+argument_list|()
 argument_list|,
 name|FS
 operator|.

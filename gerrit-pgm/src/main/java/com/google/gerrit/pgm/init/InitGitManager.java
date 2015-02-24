@@ -94,6 +94,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|common
+operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|pgm
 operator|.
 name|init
@@ -168,9 +182,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -250,7 +266,7 @@ argument_list|(
 literal|"Git Repositories"
 argument_list|)
 expr_stmt|;
-name|File
+name|Path
 name|d
 init|=
 name|gerrit
@@ -278,30 +294,15 @@ literal|"gerrit.basePath is required"
 argument_list|)
 throw|;
 block|}
-if|if
-condition|(
-operator|!
-name|d
+name|FileUtil
 operator|.
-name|exists
-argument_list|()
-operator|&&
-operator|!
-name|d
-operator|.
-name|mkdirs
-argument_list|()
-condition|)
-block|{
-throw|throw
-name|die
+name|mkdirsOrDie
 argument_list|(
-literal|"Cannot create "
-operator|+
 name|d
+argument_list|,
+literal|"Cannot create"
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 block|}
 annotation|@
 name|Override

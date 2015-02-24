@@ -174,16 +174,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -206,7 +196,7 @@ name|void
 name|testCreate
 parameter_list|()
 throws|throws
-name|FileNotFoundException
+name|Exception
 block|{
 specifier|final
 name|SitePaths

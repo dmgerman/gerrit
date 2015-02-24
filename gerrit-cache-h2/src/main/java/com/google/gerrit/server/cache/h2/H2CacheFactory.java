@@ -727,9 +727,6 @@ name|resolve
 argument_list|(
 name|name
 argument_list|)
-operator|.
-name|toPath
-argument_list|()
 decl_stmt|;
 if|if
 condition|(

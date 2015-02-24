@@ -67,22 +67,16 @@ package|;
 end_package
 
 begin_import
-import|import static
+import|import
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|common
 operator|.
-name|init
-operator|.
-name|api
-operator|.
-name|InitUtil
-operator|.
-name|die
+name|FileUtil
 import|;
 end_import
 
@@ -166,9 +160,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -289,8 +285,7 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
-name|File
+name|Path
 name|loc
 init|=
 name|site
@@ -300,33 +295,15 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|loc
+name|FileUtil
 operator|.
-name|exists
-argument_list|()
-operator|&&
-operator|!
-name|loc
-operator|.
-name|mkdirs
-argument_list|()
-condition|)
-block|{
-throw|throw
-name|die
+name|mkdirsOrDie
 argument_list|(
-literal|"cannot create cache.directory "
-operator|+
 name|loc
-operator|.
-name|getAbsolutePath
-argument_list|()
+argument_list|,
+literal|"cannot create cache.directory"
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 block|}
 annotation|@
 name|Override

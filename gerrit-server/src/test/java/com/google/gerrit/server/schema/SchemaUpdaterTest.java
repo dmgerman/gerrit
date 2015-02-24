@@ -913,7 +913,10 @@ name|paths
 operator|.
 name|site_path
 operator|.
-name|getCanonicalPath
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|,
 name|sc

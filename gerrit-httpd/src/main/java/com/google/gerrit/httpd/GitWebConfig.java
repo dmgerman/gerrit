@@ -868,9 +868,6 @@ name|resolve
 argument_list|(
 name|cfgCgi
 argument_list|)
-operator|.
-name|toPath
-argument_list|()
 expr_stmt|;
 if|if
 condition|(

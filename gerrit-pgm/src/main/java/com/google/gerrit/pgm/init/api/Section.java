@@ -144,9 +144,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -729,7 +731,7 @@ return|;
 block|}
 DECL|method|path (final String title, final String name, final String defValue)
 specifier|public
-name|File
+name|Path
 name|path
 parameter_list|(
 specifier|final

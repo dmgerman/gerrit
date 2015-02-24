@@ -1933,9 +1933,6 @@ name|repoManager
 operator|.
 name|getBasePath
 argument_list|()
-operator|.
-name|toPath
-argument_list|()
 decl_stmt|;
 name|p
 operator|.

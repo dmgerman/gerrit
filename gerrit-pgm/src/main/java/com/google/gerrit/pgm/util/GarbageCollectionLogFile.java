@@ -186,7 +186,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
+name|IOException
 import|;
 end_import
 
@@ -218,7 +218,7 @@ name|Path
 name|sitePath
 parameter_list|)
 throws|throws
-name|FileNotFoundException
+name|IOException
 block|{
 name|Path
 name|logdir

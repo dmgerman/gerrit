@@ -494,7 +494,7 @@ name|sitePaths
 operator|.
 name|site_path
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 return|;
 block|}

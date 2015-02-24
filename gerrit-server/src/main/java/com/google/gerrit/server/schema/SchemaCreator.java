@@ -419,9 +419,6 @@ argument_list|(
 name|site
 operator|.
 name|site_path
-operator|.
-name|toPath
-argument_list|()
 argument_list|,
 name|ap
 argument_list|,

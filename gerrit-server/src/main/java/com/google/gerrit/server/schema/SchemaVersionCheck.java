@@ -357,7 +357,7 @@ name|site
 operator|.
 name|site_path
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 argument_list|)
 throw|;
@@ -402,7 +402,7 @@ name|site
 operator|.
 name|site_path
 operator|.
-name|getAbsolutePath
+name|toAbsolutePath
 argument_list|()
 argument_list|)
 throw|;
