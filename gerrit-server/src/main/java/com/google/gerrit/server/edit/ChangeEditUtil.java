@@ -1227,6 +1227,7 @@ block|}
 block|}
 comment|/**    * Returns reference for this change edit with sharded user and change number:    * refs/users/UU/UUUU/edit-CCCC/P.    *    * @param accountId accout id    * @param changeId change number    * @param psId patch set number    * @return reference for this change edit    */
 DECL|method|editRefName (Account.Id accountId, Change.Id changeId, PatchSet.Id psId)
+specifier|public
 specifier|static
 name|String
 name|editRefName
