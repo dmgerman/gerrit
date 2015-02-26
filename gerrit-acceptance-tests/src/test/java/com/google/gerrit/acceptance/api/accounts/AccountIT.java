@@ -421,11 +421,11 @@ literal|0
 argument_list|)
 operator|.
 name|username
+argument_list|)
 operator|.
-name|equals
+name|isEqualTo
 argument_list|(
 name|adminUsername
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
