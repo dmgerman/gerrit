@@ -190,7 +190,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|ClickHandler
+name|ClickEvent
 import|;
 end_import
 
@@ -208,7 +208,7 @@ name|dom
 operator|.
 name|client
 operator|.
-name|ClickEvent
+name|ClickHandler
 import|;
 end_import
 
