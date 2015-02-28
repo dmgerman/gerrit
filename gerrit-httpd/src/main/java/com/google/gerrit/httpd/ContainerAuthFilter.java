@@ -66,6 +66,54 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|MoreObjects
+operator|.
+name|firstNonNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+operator|.
+name|emptyToNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|net
+operator|.
+name|HttpHeaders
+operator|.
+name|AUTHORIZATION
+import|;
+end_import
+
+begin_import
+import|import static
 name|javax
 operator|.
 name|servlet
@@ -116,6 +164,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|httpd
+operator|.
+name|restapi
+operator|.
+name|RestApiServlet
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|server
 operator|.
 name|AccessPath
@@ -151,6 +215,22 @@ operator|.
 name|account
 operator|.
 name|AccountState
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|AuthConfig
 import|;
 end_import
 
@@ -313,7 +393,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Trust the authentication which is done by the container.  *<p>  * Check whether the container has already authenticated the user. If yes, then  * lookup the account and set the account ID in our current session.  *<p>  * This filter should only be configured to run, when authentication is  * configured to trust container authentication. This filter is intended only to  * protect the {@link GitOverHttpServlet} and its handled URLs, which provide remote  * repository access over HTTP.  */
+comment|/**  * Trust the authentication which is done by the container.  *<p>  * Check whether the container has already authenticated the user. If yes, then  * lookup the account and set the account ID in our current session.  *<p>  * This filter should only be configured to run, when authentication is  * configured to trust container authentication. This filter is intended to  * protect the {@link GitOverHttpServlet} and its handled URLs, which provide remote  * repository access over HTTP. It also protects {@link RestApiServlet}.  */
 end_comment
 
 begin_class
@@ -346,9 +426,15 @@ specifier|final
 name|Config
 name|config
 decl_stmt|;
+DECL|field|loginHttpHeader
+specifier|private
+specifier|final
+name|String
+name|loginHttpHeader
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ContainerAuthFilter (DynamicItem<WebSession> session, AccountCache accountCache, @GerritServerConfig Config config)
+DECL|method|ContainerAuthFilter (DynamicItem<WebSession> session, AccountCache accountCache, AuthConfig authConfig, @GerritServerConfig Config config)
 name|ContainerAuthFilter
 parameter_list|(
 name|DynamicItem
@@ -359,6 +445,9 @@ name|session
 parameter_list|,
 name|AccountCache
 name|accountCache
+parameter_list|,
+name|AuthConfig
+name|authConfig
 parameter_list|,
 annotation|@
 name|GerritServerConfig
@@ -383,6 +472,21 @@ operator|.
 name|config
 operator|=
 name|config
+expr_stmt|;
+name|loginHttpHeader
+operator|=
+name|firstNonNull
+argument_list|(
+name|emptyToNull
+argument_list|(
+name|authConfig
+operator|.
+name|getLoginHttpHeader
+argument_list|()
+argument_list|)
+argument_list|,
+name|AUTHORIZATION
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -479,10 +583,14 @@ block|{
 name|String
 name|username
 init|=
-name|req
+name|RemoteUserUtil
 operator|.
 name|getRemoteUser
-argument_list|()
+argument_list|(
+name|req
+argument_list|,
+name|loginHttpHeader
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
