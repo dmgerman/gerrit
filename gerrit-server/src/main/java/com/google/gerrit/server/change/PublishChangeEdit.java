@@ -172,7 +172,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|NotImplementedException
 import|;
 end_import
 
@@ -188,7 +188,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceNotFoundException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -426,10 +426,8 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
-argument_list|(
-literal|"not yet implemented"
-argument_list|)
+name|NotImplementedException
+argument_list|()
 throw|;
 block|}
 annotation|@
@@ -445,10 +443,8 @@ parameter_list|()
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
-argument_list|(
-literal|"not yet implemented"
-argument_list|)
+name|NotImplementedException
+argument_list|()
 throw|;
 block|}
 annotation|@
@@ -464,17 +460,11 @@ parameter_list|,
 name|IdString
 name|id
 parameter_list|)
-throws|throws
-name|ResourceNotFoundException
-throws|,
-name|Exception
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
-argument_list|(
-literal|"not yet implemented"
-argument_list|)
+name|NotImplementedException
+argument_list|()
 throw|;
 block|}
 annotation|@
