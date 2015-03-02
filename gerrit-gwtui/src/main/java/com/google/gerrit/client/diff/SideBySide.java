@@ -5832,6 +5832,66 @@ block|}
 block|}
 return|;
 block|}
+DECL|method|adjustCommitMessageLine (int line)
+specifier|private
+name|int
+name|adjustCommitMessageLine
+parameter_list|(
+name|int
+name|line
+parameter_list|)
+block|{
+comment|/* When commit messages are shown in the side-by-side screen they include       a header block that looks like this:        1 Parent:     deadbeef (Parent commit title)       2 Author:     A. U. Thor<author@example.com>       3 AuthorDate: 2015-02-27 19:20:52 +0900       4 Commit:     A. U. Thor<author@example.com>       5 CommitDate: 2015-02-27 19:20:52 +0900       6 [blank line]       7 Commit message title       8       9 Commit message body      10 ...      11 ...      If the commit is a merge commit, both parent commits are listed in the     first two lines instead of a 'Parent' line:        1 Merge Of:   deadbeef (Parent 1 commit title)       2             beefdead (Parent 2 commit title)      */
+comment|// Offset to compensate for header lines until the blank line
+comment|// after 'CommitDate'
+name|int
+name|offset
+init|=
+literal|6
+decl_stmt|;
+comment|// Adjust for merge commits, which have two parent lines
+if|if
+condition|(
+name|diff
+operator|.
+name|text_b
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"Merge"
+argument_list|)
+condition|)
+block|{
+name|offset
+operator|+=
+literal|1
+expr_stmt|;
+block|}
+comment|// If the cursor is inside the header line, reset to the first line of the
+comment|// commit message. Otherwise if the cursor is on an actual line of the commit
+comment|// message, adjust the line number to compensate for the header lines, so the
+comment|// focus is on the correct line.
+if|if
+condition|(
+name|line
+operator|<=
+name|offset
+condition|)
+block|{
+return|return
+literal|1
+return|;
+block|}
+else|else
+block|{
+return|return
+name|line
+operator|-
+name|offset
+return|;
+block|}
+block|}
 DECL|method|modifyInEditScreen (final CodeMirror cm)
 specifier|private
 name|Runnable
@@ -5877,6 +5937,26 @@ argument_list|)
 operator|+
 literal|1
 decl_stmt|;
+if|if
+condition|(
+name|Patch
+operator|.
+name|COMMIT_MSG
+operator|.
+name|equals
+argument_list|(
+name|path
+argument_list|)
+condition|)
+block|{
+name|line
+operator|=
+name|adjustCommitMessageLine
+argument_list|(
+name|line
+argument_list|)
+expr_stmt|;
+block|}
 name|String
 name|token
 init|=
