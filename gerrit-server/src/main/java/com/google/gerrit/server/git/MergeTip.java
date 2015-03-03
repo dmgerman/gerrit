@@ -83,6 +83,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -186,21 +202,22 @@ argument_list|>
 name|toMerge
 parameter_list|)
 block|{
-name|checkArgument
+name|checkNotNull
 argument_list|(
 name|toMerge
-operator|!=
-literal|null
-operator|&&
+argument_list|,
+literal|"toMerge may not be null"
+argument_list|)
+expr_stmt|;
+name|checkArgument
+argument_list|(
 operator|!
 name|toMerge
 operator|.
 name|isEmpty
 argument_list|()
 argument_list|,
-literal|"toMerge may not be null or empty: %s"
-argument_list|,
-name|toMerge
+literal|"toMerge may not be empty"
 argument_list|)
 expr_stmt|;
 name|this
