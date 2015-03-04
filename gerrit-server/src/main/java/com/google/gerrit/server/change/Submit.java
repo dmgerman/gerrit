@@ -2839,9 +2839,12 @@ name|batch
 init|=
 name|approve
 argument_list|(
-name|change
+name|rsrc
 operator|.
-name|currentPatchSetId
+name|getPatchSet
+argument_list|()
+operator|.
+name|getId
 argument_list|()
 argument_list|,
 name|cd
