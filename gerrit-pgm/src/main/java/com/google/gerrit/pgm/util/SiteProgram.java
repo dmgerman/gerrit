@@ -753,6 +753,13 @@ DECL|field|sitePath
 specifier|private
 name|Path
 name|sitePath
+init|=
+name|Paths
+operator|.
+name|get
+argument_list|(
+literal|"."
+argument_list|)
 decl_stmt|;
 DECL|method|SiteProgram ()
 specifier|protected
@@ -1516,7 +1523,8 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-name|sitePath
+name|getSitePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|bind
@@ -1726,7 +1734,8 @@ argument_list|)
 operator|.
 name|toInstance
 argument_list|(
-name|sitePath
+name|getSitePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
