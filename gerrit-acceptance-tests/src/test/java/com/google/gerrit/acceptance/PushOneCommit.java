@@ -905,6 +905,11 @@ specifier|private
 name|Tag
 name|tag
 decl_stmt|;
+DECL|field|force
+specifier|private
+name|boolean
+name|force
+decl_stmt|;
 annotation|@
 name|AssistedInject
 DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i)
@@ -1371,6 +1376,8 @@ argument_list|,
 name|tag
 operator|!=
 literal|null
+argument_list|,
+name|force
 argument_list|)
 argument_list|,
 name|c
@@ -1394,6 +1401,22 @@ operator|.
 name|tag
 operator|=
 name|tag
+expr_stmt|;
+block|}
+DECL|method|setForce (boolean force)
+specifier|public
+name|void
+name|setForce
+parameter_list|(
+name|boolean
+name|force
+parameter_list|)
+block|{
+name|this
+operator|.
+name|force
+operator|=
+name|force
 expr_stmt|;
 block|}
 DECL|class|Result
