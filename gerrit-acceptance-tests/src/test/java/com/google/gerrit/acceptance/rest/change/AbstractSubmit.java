@@ -1449,6 +1449,38 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getSubmitType
+argument_list|()
+operator|==
+name|SubmitType
+operator|.
+name|CHERRY_PICK
+condition|)
+block|{
+name|assertThat
+argument_list|(
+name|Iterables
+operator|.
+name|getLast
+argument_list|(
+name|info
+operator|.
+name|messages
+argument_list|)
+operator|.
+name|message
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"Change has been successfully cherry-picked as "
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|assertThat
 argument_list|(
 name|Iterables
@@ -1468,6 +1500,7 @@ argument_list|(
 literal|"Change has been successfully merged into the git repository by Administrator"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|createProject ()
 specifier|protected
