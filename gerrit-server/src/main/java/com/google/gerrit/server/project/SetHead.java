@@ -410,6 +410,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input
@@ -417,6 +418,7 @@ block|{
 annotation|@
 name|DefaultInput
 DECL|field|ref
+specifier|public
 name|String
 name|ref
 decl_stmt|;
