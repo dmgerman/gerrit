@@ -61,7 +61,7 @@ name|prolog_cafe
 operator|.
 name|compiler
 operator|.
-name|CompileException
+name|Compiler
 import|;
 end_import
 
@@ -73,9 +73,9 @@ name|googlecode
 operator|.
 name|prolog_cafe
 operator|.
-name|compiler
+name|exceptions
 operator|.
-name|Compiler
+name|CompileException
 import|;
 end_import
 

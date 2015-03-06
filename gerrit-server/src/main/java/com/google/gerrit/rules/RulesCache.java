@@ -236,7 +236,7 @@ name|googlecode
 operator|.
 name|prolog_cafe
 operator|.
-name|compiler
+name|exceptions
 operator|.
 name|CompileException
 import|;
@@ -1565,15 +1565,6 @@ operator|new
 name|BufferingPrologControl
 argument_list|()
 decl_stmt|;
-name|ctl
-operator|.
-name|setMaxArity
-argument_list|(
-name|PrologEnvironment
-operator|.
-name|MAX_ARITY
-argument_list|)
-expr_stmt|;
 name|ctl
 operator|.
 name|setMaxDatabaseSize

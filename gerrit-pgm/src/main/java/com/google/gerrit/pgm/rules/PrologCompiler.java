@@ -52,13 +52,15 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.rules
+DECL|package|com.google.gerrit.pgm.rules
 package|package
 name|com
 operator|.
 name|google
 operator|.
 name|gerrit
+operator|.
+name|pgm
 operator|.
 name|rules
 package|;
@@ -176,7 +178,7 @@ name|prolog_cafe
 operator|.
 name|compiler
 operator|.
-name|CompileException
+name|Compiler
 import|;
 end_import
 
@@ -188,9 +190,9 @@ name|googlecode
 operator|.
 name|prolog_cafe
 operator|.
-name|compiler
+name|exceptions
 operator|.
-name|Compiler
+name|CompileException
 import|;
 end_import
 

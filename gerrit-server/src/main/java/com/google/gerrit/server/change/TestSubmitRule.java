@@ -797,7 +797,7 @@ argument_list|>
 name|impossible
 decl_stmt|;
 DECL|field|prologReductionCount
-name|Integer
+name|Long
 name|prologReductionCount
 decl_stmt|;
 DECL|method|Record (SubmitRecord r, AccountLoader accounts)

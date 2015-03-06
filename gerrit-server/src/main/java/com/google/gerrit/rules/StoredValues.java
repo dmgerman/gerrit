@@ -418,9 +418,9 @@ name|googlecode
 operator|.
 name|prolog_cafe
 operator|.
-name|lang
+name|exceptions
 operator|.
-name|Prolog
+name|SystemException
 import|;
 end_import
 
@@ -434,7 +434,7 @@ name|prolog_cafe
 operator|.
 name|lang
 operator|.
-name|SystemException
+name|Prolog
 import|;
 end_import
 

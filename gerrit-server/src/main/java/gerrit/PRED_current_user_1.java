@@ -152,9 +152,23 @@ name|googlecode
 operator|.
 name|prolog_cafe
 operator|.
-name|lang
+name|exceptions
 operator|.
 name|EvaluationException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|googlecode
+operator|.
+name|prolog_cafe
+operator|.
+name|exceptions
+operator|.
+name|PrologException
 import|;
 end_import
 
@@ -211,20 +225,6 @@ operator|.
 name|lang
 operator|.
 name|Prolog
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|googlecode
-operator|.
-name|prolog_cafe
-operator|.
-name|lang
-operator|.
-name|PrologException
 import|;
 end_import
 

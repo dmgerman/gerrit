@@ -518,7 +518,7 @@ name|googlecode
 operator|.
 name|prolog_cafe
 operator|.
-name|compiler
+name|exceptions
 operator|.
 name|CompileException
 import|;
