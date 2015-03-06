@@ -509,7 +509,7 @@ name|searchBox
 operator|.
 name|setStyleName
 argument_list|(
-literal|"gwt-TextBox"
+literal|"searchTextBox"
 argument_list|)
 expr_stmt|;
 name|searchBox
@@ -546,6 +546,13 @@ name|searchButton
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|searchButton
+operator|.
+name|setStyleName
+argument_list|(
+literal|"searchButton"
+argument_list|)
+expr_stmt|;
 name|searchButton
 operator|.
 name|addClickHandler
