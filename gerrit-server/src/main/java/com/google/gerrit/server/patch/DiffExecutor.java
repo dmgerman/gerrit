@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Marker on {@link ExecutorService} used by  * {@link IntraLineLoader}.  */
+comment|/**  * Marker on {@link ExecutorService} used by  * {@link IntraLineLoader} and {@link PatchListLoader}.  */
 end_comment
 
 begin_annotation_defn
