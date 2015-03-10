@@ -1905,6 +1905,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|ObjectInserter
 name|oi
 init|=
@@ -1912,8 +1914,7 @@ name|repo
 operator|.
 name|newObjectInserter
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|CommitBuilder
 name|cb
@@ -2080,14 +2081,6 @@ expr_stmt|;
 throw|throw
 name|e
 throw|;
-block|}
-finally|finally
-block|{
-name|oi
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

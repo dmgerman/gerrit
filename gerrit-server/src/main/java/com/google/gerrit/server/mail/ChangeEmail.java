@@ -2306,6 +2306,8 @@ operator|.
 name|maximumDiffSize
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|DiffFormatter
 name|fmt
 init|=
@@ -2314,7 +2316,8 @@ name|DiffFormatter
 argument_list|(
 name|buf
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|Repository
 name|git
 decl_stmt|;
@@ -2440,16 +2443,12 @@ return|;
 block|}
 finally|finally
 block|{
-name|fmt
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 name|git
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

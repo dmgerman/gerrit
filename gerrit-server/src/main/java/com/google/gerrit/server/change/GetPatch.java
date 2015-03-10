@@ -675,6 +675,8 @@ name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|DiffFormatter
 name|fmt
 init|=
@@ -683,7 +685,8 @@ name|DiffFormatter
 argument_list|(
 name|out
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|fmt
 operator|.
 name|setRepository
@@ -712,6 +715,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -723,7 +727,7 @@ name|IOException
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|repo
@@ -808,7 +812,7 @@ condition|)
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

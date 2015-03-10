@@ -924,7 +924,7 @@ condition|)
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -964,6 +964,8 @@ condition|)
 block|{
 return|return;
 block|}
+try|try
+init|(
 name|TagWalk
 name|rw
 init|=
@@ -972,7 +974,8 @@ name|TagWalk
 argument_list|(
 name|git
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|rw
 operator|.
 name|setRetainBody
@@ -980,8 +983,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 for|for
 control|(
 name|Ref
@@ -1140,14 +1141,6 @@ name|projectName
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 block|}

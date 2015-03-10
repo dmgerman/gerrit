@@ -1412,6 +1412,8 @@ name|IOException
 throws|,
 name|OrmException
 block|{
+try|try
+init|(
 name|ObjectInserter
 name|inserter
 init|=
@@ -1419,8 +1421,7 @@ name|repo
 operator|.
 name|newObjectInserter
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|update
 operator|.
@@ -1435,14 +1436,6 @@ name|writeCommit
 argument_list|(
 name|batch
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|inserter
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 block|}

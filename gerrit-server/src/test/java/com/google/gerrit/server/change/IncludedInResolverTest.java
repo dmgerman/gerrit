@@ -468,6 +468,12 @@ name|setUp
 argument_list|()
 expr_stmt|;
 comment|/*- The following graph will be created.        o   tag 2.5, 2.5_annotated, 2.5_annotated_twice       |\       | o tag 2.0.1       | o tag 2.0       o | tag 1.3       |/       o   c3        | o tag 1.0.1       |/       o   tag 1.0       o   c2       o   c1       */
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|Git
 name|git
 init|=
@@ -871,7 +877,7 @@ name|Exception
 block|{
 name|revWalk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|super

@@ -933,13 +933,21 @@ argument_list|(
 name|schema
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|Repository
 name|realDb
 init|=
 name|createWorkRepository
 argument_list|()
-decl_stmt|;
+init|)
+block|{
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 specifier|final
 name|Git
 name|git
@@ -1110,6 +1118,7 @@ expr_stmt|;
 name|doVerify
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**    * It tests SubmoduleOp.update in a scenario considering:    *<ul>    *<li>no subscriptions existing to destination project</li>    *<li>a commit is merged to "dest-project"</li>    *<li>commit contains .gitmodules file with content</li>    *</ul>    *    *<pre>    *     [submodule "source"]    *       path = source    *       url = http://localhost:8080/source    *       branch = .    *</pre>    *<p>    * It expects to insert a new row in subscriptions table. The row inserted    * specifies:    *<ul>    *<li>target "dest-project" on branch "refs/heads/master"</li>    *<li>source "a" on branch "refs/heads/master"</li>    *<li>path "a"</li>    *</ul>    *</p>    *    * @throws Exception If an exception occurs.    */
 annotation|@
@@ -2124,13 +2133,27 @@ argument_list|(
 name|schema
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|Repository
 name|sourceRepository
 init|=
 name|createWorkRepository
 argument_list|()
-decl_stmt|;
+init|;
+name|Repository
+name|targetRepository
+operator|=
+name|createWorkRepository
+argument_list|()
+init|)
+block|{
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 specifier|final
 name|Git
 name|sourceGit
@@ -2139,6 +2162,22 @@ operator|new
 name|Git
 argument_list|(
 name|sourceRepository
+argument_list|)
+decl_stmt|;
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+specifier|final
+name|Git
+name|targetGit
+init|=
+operator|new
+name|Git
+argument_list|(
+name|targetRepository
 argument_list|)
 decl_stmt|;
 name|addRegularFileToIndex
@@ -2294,23 +2333,6 @@ argument_list|(
 name|submittedChange
 argument_list|)
 expr_stmt|;
-specifier|final
-name|Repository
-name|targetRepository
-init|=
-name|createWorkRepository
-argument_list|()
-decl_stmt|;
-specifier|final
-name|Git
-name|targetGit
-init|=
-operator|new
-name|Git
-argument_list|(
-name|targetRepository
-argument_list|)
-decl_stmt|;
 name|addGitLinkToIndex
 argument_list|(
 literal|"a"
@@ -2648,6 +2670,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**    * It tests SubmoduleOp.update in a scenario considering established circular    * reference in submodule_subscriptions table.    *<p>    * In the tested scenario there is no .gitmodules file in a merged commit to a    * destination project/branch that is a source one to one called    * "target-project".    *<p>    * submodule_subscriptions table will be incorrect due source appearing as a    * subscriber or target-project: according to database target-project has as    * source the source-project, and source-project has as source the    * target-project.    *<p>    * It expects to update the git link called "source-project" to be in target    * repository and ignoring the incorrect row in database establishing the    * circular reference.    *</p>    *    * @throws Exception If an exception occurs.    */
 annotation|@
 name|Test
@@ -2672,13 +2695,27 @@ argument_list|(
 name|schema
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|Repository
 name|sourceRepository
 init|=
 name|createWorkRepository
 argument_list|()
-decl_stmt|;
+init|;
+name|Repository
+name|targetRepository
+operator|=
+name|createWorkRepository
+argument_list|()
+init|)
+block|{
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 specifier|final
 name|Git
 name|sourceGit
@@ -2687,6 +2724,22 @@ operator|new
 name|Git
 argument_list|(
 name|sourceRepository
+argument_list|)
+decl_stmt|;
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
+specifier|final
+name|Git
+name|targetGit
+init|=
+operator|new
+name|Git
+argument_list|(
+name|targetRepository
 argument_list|)
 decl_stmt|;
 name|addRegularFileToIndex
@@ -2842,23 +2895,6 @@ argument_list|(
 name|submittedChange
 argument_list|)
 expr_stmt|;
-specifier|final
-name|Repository
-name|targetRepository
-init|=
-name|createWorkRepository
-argument_list|()
-decl_stmt|;
-specifier|final
-name|Git
-name|targetGit
-init|=
-operator|new
-name|Git
-argument_list|(
-name|targetRepository
-argument_list|)
-decl_stmt|;
 name|addGitLinkToIndex
 argument_list|(
 literal|"a"
@@ -3203,6 +3239,7 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**    * It calls SubmoduleOp.update considering only one insert on Subscriptions    * table.    *<p>    * It considers a commit containing a .gitmodules file was merged in    * refs/heads/master of a dest-project.    *</p>    *<p>    * The .gitmodules file content should indicate a source project called    * "source".    *</p>    *    * @param gitModulesFileContent The .gitmodules file content. During the test    *        this file is created, so the commit containing it.    * @param sourceBranchName The branch name of source project "pointed by"    *        .gitmodules file.    * @throws Exception If an exception occurs.    */
 DECL|method|doOneSubscriptionInsert (final String gitModulesFileContent, final String sourceBranchName)
@@ -3382,13 +3419,21 @@ argument_list|(
 name|schema
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|Repository
 name|realDb
 init|=
 name|createWorkRepository
 argument_list|()
-decl_stmt|;
+init|)
+block|{
+comment|// TODO(dborowitz): Use try/finally when this doesn't double-close the repo.
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 specifier|final
 name|Git
 name|git
@@ -3777,6 +3822,7 @@ operator|.
 name|update
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**    * It creates and adds a regular file to git index of a repository.    *    * @param fileName The file name.    * @param content File content.    * @param repository The Repository instance.    * @throws IOException If an I/O exception occurs.    */
 DECL|method|addRegularFileToIndex (final String fileName, final String content, final Repository repository)
