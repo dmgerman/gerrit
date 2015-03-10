@@ -793,6 +793,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -801,8 +803,7 @@ name|RevWalk
 argument_list|(
 name|r
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|batchUpdate
 operator|.
@@ -814,14 +815,6 @@ name|NullProgressMonitor
 operator|.
 name|INSTANCE
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 name|StringBuilder

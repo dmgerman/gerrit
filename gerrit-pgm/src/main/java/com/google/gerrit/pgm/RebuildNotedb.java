@@ -1564,6 +1564,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -1572,8 +1574,7 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|bru
 operator|.
@@ -1585,14 +1586,6 @@ name|NullProgressMonitor
 operator|.
 name|INSTANCE
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 block|}

@@ -863,7 +863,7 @@ finally|finally
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2963,7 +2963,8 @@ return|return
 literal|null
 return|;
 block|}
-specifier|final
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -2972,7 +2973,8 @@ name|RevWalk
 argument_list|(
 name|reader
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 specifier|final
 name|RevTree
 name|tree
@@ -2996,6 +2998,7 @@ argument_list|,
 name|tree
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 DECL|method|isBothFile (FileMode a, FileMode b)

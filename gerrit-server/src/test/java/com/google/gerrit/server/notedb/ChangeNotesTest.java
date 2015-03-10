@@ -2971,6 +2971,8 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|RevWalk
 name|walk
 init|=
@@ -2979,8 +2981,7 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|RevCommit
 name|commit
@@ -3014,14 +3015,6 @@ argument_list|(
 literal|"Hashtags: tag1,tag2\n"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|walk
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -3575,6 +3568,8 @@ argument_list|(
 name|batch
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -3583,8 +3578,7 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|batch
 operator|.
@@ -3784,11 +3778,6 @@ block|{
 name|batch
 operator|.
 name|close
-argument_list|()
-expr_stmt|;
-name|rw
-operator|.
-name|release
 argument_list|()
 expr_stmt|;
 block|}
@@ -4045,6 +4034,8 @@ name|getRefName
 argument_list|()
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -4053,8 +4044,7 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|bru
 operator|.
@@ -4066,14 +4056,6 @@ name|NullProgressMonitor
 operator|.
 name|INSTANCE
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -5466,6 +5448,8 @@ argument_list|(
 name|c
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|RevWalk
 name|walk
 init|=
@@ -5474,7 +5458,8 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ArrayList
 argument_list|<
 name|Note
@@ -5625,6 +5610,7 @@ argument_list|,
 name|noteString
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
@@ -5851,6 +5837,8 @@ argument_list|(
 name|c
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|RevWalk
 name|walk
 init|=
@@ -5859,7 +5847,8 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ArrayList
 argument_list|<
 name|Note
@@ -5983,6 +5972,7 @@ argument_list|,
 name|noteString
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test

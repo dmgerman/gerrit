@@ -313,7 +313,7 @@ name|Exception
 block|{
 name|walk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -733,6 +733,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|ObjectInserter
 name|ins
 init|=
@@ -743,8 +745,7 @@ argument_list|()
 operator|.
 name|newObjectInserter
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|CommitBuilder
 name|cb
@@ -828,14 +829,6 @@ expr_stmt|;
 return|return
 name|commit
 return|;
-block|}
-finally|finally
-block|{
-name|ins
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|assertParseSucceeds (String body)

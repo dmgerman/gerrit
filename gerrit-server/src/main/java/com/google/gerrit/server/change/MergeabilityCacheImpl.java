@@ -1571,6 +1571,8 @@ operator|.
 name|getAllRefs
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -1584,8 +1586,7 @@ name|load
 operator|.
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|RevFlag
 name|canMerge
@@ -1710,14 +1711,6 @@ argument_list|,
 name|rev
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 finally|finally

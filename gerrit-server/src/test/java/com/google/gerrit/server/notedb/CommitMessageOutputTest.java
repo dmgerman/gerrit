@@ -1362,6 +1362,8 @@ operator|)
 name|id
 return|;
 block|}
+try|try
+init|(
 name|RevWalk
 name|walk
 init|=
@@ -1370,8 +1372,7 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|RevCommit
 name|commit
@@ -1393,14 +1394,6 @@ expr_stmt|;
 return|return
 name|commit
 return|;
-block|}
-finally|finally
-block|{
-name|walk
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|assertBodyEquals (String expected, ObjectId commitId)

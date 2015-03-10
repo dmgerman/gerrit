@@ -1256,6 +1256,8 @@ operator|.
 name|NO_CODE_CHANGE
 return|;
 block|}
+try|try
+init|(
 name|RevWalk
 name|walk
 init|=
@@ -1266,8 +1268,7 @@ name|key
 operator|.
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|RevCommit
 name|prior
@@ -1481,11 +1482,6 @@ operator|.
 name|repo
 operator|=
 literal|null
-expr_stmt|;
-name|walk
-operator|.
-name|release
-argument_list|()
 expr_stmt|;
 block|}
 block|}
