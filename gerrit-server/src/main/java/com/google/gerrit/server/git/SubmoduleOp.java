@@ -2669,7 +2669,7 @@ condition|)
 block|{
 name|recRw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2709,7 +2709,8 @@ name|IncorrectObjectTypeException
 throws|,
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -2718,8 +2719,7 @@ name|RevWalk
 argument_list|(
 name|pdb
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|DirCache
@@ -2779,14 +2779,6 @@ expr_stmt|;
 return|return
 name|dc
 return|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|logAndThrowSubmoduleException (final String errorMsg, final Exception e)

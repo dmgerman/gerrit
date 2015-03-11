@@ -1777,7 +1777,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|ObjectInserter
 name|oi
 init|=
@@ -1785,8 +1786,7 @@ name|repository
 operator|.
 name|newObjectInserter
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|DirCacheEntry
@@ -1837,14 +1837,6 @@ return|return
 name|e
 return|;
 block|}
-finally|finally
-block|{
-name|oi
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|setHEAD ()
 specifier|private
@@ -1854,7 +1846,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
+try|try
+init|(
 name|ObjectInserter
 name|oi
 init|=
@@ -1862,8 +1855,7 @@ name|repository
 operator|.
 name|newObjectInserter
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|CommitBuilder
@@ -1980,14 +1972,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|oi
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

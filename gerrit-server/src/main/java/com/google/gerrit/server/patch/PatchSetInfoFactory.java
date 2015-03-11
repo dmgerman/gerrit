@@ -640,8 +640,7 @@ argument_list|)
 throw|;
 block|}
 try|try
-block|{
-specifier|final
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -650,8 +649,7 @@ name|RevWalk
 argument_list|(
 name|repo
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|RevCommit
@@ -706,15 +704,6 @@ expr_stmt|;
 return|return
 name|info
 return|;
-block|}
-finally|finally
-block|{
-name|rw
-operator|.
-name|release
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

@@ -397,6 +397,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|RevWalk
 name|rw
 init|=
@@ -405,7 +407,8 @@ name|RevWalk
 argument_list|(
 name|reader
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|RevCommit
 name|c
 decl_stmt|;
@@ -674,6 +677,7 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|appendPersonIdent (StringBuilder b, String field, PersonIdent person)
 specifier|private
