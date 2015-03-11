@@ -294,22 +294,13 @@ name|PluginLoader
 extends|extends
 name|DialogBox
 block|{
-DECL|field|MAX_LOAD_TIME_MILLIS
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_LOAD_TIME_MILLIS
-init|=
-literal|5000
-decl_stmt|;
 DECL|field|self
 specifier|private
 specifier|static
 name|PluginLoader
 name|self
 decl_stmt|;
-DECL|method|load (List<String> plugins, AsyncCallback<VoidResult> callback)
+DECL|method|load (List<String> plugins, int loadTimeout, AsyncCallback<VoidResult> callback)
 specifier|public
 specifier|static
 name|void
@@ -320,6 +311,9 @@ argument_list|<
 name|String
 argument_list|>
 name|plugins
+parameter_list|,
+name|int
+name|loadTimeout
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -358,6 +352,8 @@ operator|=
 operator|new
 name|PluginLoader
 argument_list|(
+name|loadTimeout
+argument_list|,
 name|callback
 argument_list|)
 expr_stmt|;
@@ -392,6 +388,12 @@ name|loadedOne
 argument_list|()
 expr_stmt|;
 block|}
+DECL|field|loadTimeout
+specifier|private
+specifier|final
+name|int
+name|loadTimeout
+decl_stmt|;
 DECL|field|callback
 specifier|private
 specifier|final
@@ -426,10 +428,13 @@ specifier|private
 name|boolean
 name|visible
 decl_stmt|;
-DECL|method|PluginLoader (AsyncCallback<VoidResult> cb)
+DECL|method|PluginLoader (int loadTimeout, AsyncCallback<VoidResult> cb)
 specifier|private
 name|PluginLoader
 parameter_list|(
+name|int
+name|loadTimeout
+parameter_list|,
 name|AsyncCallback
 argument_list|<
 name|VoidResult
@@ -449,6 +454,12 @@ expr_stmt|;
 name|callback
 operator|=
 name|cb
+expr_stmt|;
+name|this
+operator|.
+name|loadTimeout
+operator|=
+name|loadTimeout
 expr_stmt|;
 name|progress
 operator|=
@@ -661,7 +672,7 @@ name|cycle
 operator|*
 literal|250
 operator|/
-name|MAX_LOAD_TIME_MILLIS
+name|loadTimeout
 argument_list|)
 expr_stmt|;
 block|}
@@ -697,7 +708,7 @@ name|timeout
 operator|.
 name|schedule
 argument_list|(
-name|MAX_LOAD_TIME_MILLIS
+name|loadTimeout
 argument_list|)
 expr_stmt|;
 block|}
