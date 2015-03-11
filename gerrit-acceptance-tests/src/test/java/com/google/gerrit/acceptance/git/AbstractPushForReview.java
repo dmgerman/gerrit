@@ -1246,6 +1246,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -1266,8 +1268,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master/%l=Code-Review+2"
 argument_list|)
 expr_stmt|;
@@ -1386,6 +1386,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -1406,8 +1408,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/changes/"
 operator|+
 name|r
@@ -1670,6 +1670,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -1690,8 +1692,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master/%hashtag="
 operator|+
 name|hashtag2
@@ -1902,6 +1902,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -1922,8 +1924,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master%hashtag="
 operator|+
 name|hashtag3

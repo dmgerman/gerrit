@@ -1907,6 +1907,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 return|return
@@ -1914,8 +1916,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 return|;
@@ -2019,6 +2019,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -2046,8 +2048,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 name|ref
 argument_list|)
 return|;
@@ -2914,6 +2914,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 return|return
@@ -2921,8 +2923,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 name|ref
 argument_list|)
 return|;

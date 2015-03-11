@@ -674,7 +674,7 @@ specifier|public
 interface|interface
 name|Factory
 block|{
-DECL|method|create ( ReviewDb db, PersonIdent i)
+DECL|method|create ( ReviewDb db, PersonIdent i, Git git)
 name|PushOneCommit
 name|create
 parameter_list|(
@@ -683,9 +683,12 @@ name|db
 parameter_list|,
 name|PersonIdent
 name|i
+parameter_list|,
+name|Git
+name|git
 parameter_list|)
 function_decl|;
-DECL|method|create ( ReviewDb db, PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|create ( ReviewDb db, PersonIdent i, Git git, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 name|create
 parameter_list|(
@@ -694,6 +697,9 @@ name|db
 parameter_list|,
 name|PersonIdent
 name|i
+parameter_list|,
+name|Git
+name|git
 parameter_list|,
 annotation|@
 name|Assisted
@@ -720,7 +726,7 @@ name|String
 name|content
 parameter_list|)
 function_decl|;
-DECL|method|create ( ReviewDb db, PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
+DECL|method|create ( ReviewDb db, PersonIdent i, Git git, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Assisted(R) String changeId)
 name|PushOneCommit
 name|create
 parameter_list|(
@@ -729,6 +735,9 @@ name|db
 parameter_list|,
 name|PersonIdent
 name|i
+parameter_list|,
+name|Git
+name|git
 parameter_list|,
 annotation|@
 name|Assisted
@@ -877,6 +886,12 @@ specifier|final
 name|PersonIdent
 name|i
 decl_stmt|;
+DECL|field|git
+specifier|private
+specifier|final
+name|Git
+name|git
+decl_stmt|;
 DECL|field|subject
 specifier|private
 specifier|final
@@ -912,7 +927,7 @@ name|force
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted Git git)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -938,6 +953,11 @@ annotation|@
 name|Assisted
 name|PersonIdent
 name|i
+parameter_list|,
+annotation|@
+name|Assisted
+name|Git
+name|git
 parameter_list|)
 block|{
 name|this
@@ -952,6 +972,8 @@ name|db
 argument_list|,
 name|i
 argument_list|,
+name|git
+argument_list|,
 name|SUBJECT
 argument_list|,
 name|FILE_NAME
@@ -962,7 +984,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted Git git, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -988,6 +1010,11 @@ annotation|@
 name|Assisted
 name|PersonIdent
 name|i
+parameter_list|,
+annotation|@
+name|Assisted
+name|Git
+name|git
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1026,6 +1053,8 @@ name|db
 argument_list|,
 name|i
 argument_list|,
+name|git
+argument_list|,
 name|subject
 argument_list|,
 name|fileName
@@ -1038,7 +1067,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
+DECL|method|PushOneCommit (ChangeNotes.Factory notesFactory, ApprovalsUtil approvalsUtil, Provider<InternalChangeQuery> queryProvider, @Assisted ReviewDb db, @Assisted PersonIdent i, @Assisted Git git, @Assisted(R) String subject, @Assisted(R) String fileName, @Assisted(R) String content, @Nullable @Assisted(R) String changeId)
 name|PushOneCommit
 parameter_list|(
 name|ChangeNotes
@@ -1064,6 +1093,11 @@ annotation|@
 name|Assisted
 name|PersonIdent
 name|i
+parameter_list|,
+annotation|@
+name|Assisted
+name|Git
+name|git
 parameter_list|,
 annotation|@
 name|Assisted
@@ -1132,6 +1166,12 @@ name|i
 expr_stmt|;
 name|this
 operator|.
+name|git
+operator|=
+name|git
+expr_stmt|;
+name|this
+operator|.
 name|subject
 operator|=
 name|subject
@@ -1155,14 +1195,11 @@ operator|=
 name|changeId
 expr_stmt|;
 block|}
-DECL|method|to (Git git, String ref)
+DECL|method|to (String ref)
 specifier|public
 name|Result
 name|to
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|String
 name|ref
 parameter_list|)
@@ -1183,20 +1220,15 @@ expr_stmt|;
 return|return
 name|execute
 argument_list|(
-name|git
-argument_list|,
 name|ref
 argument_list|)
 return|;
 block|}
-DECL|method|rm (Git git, String ref)
+DECL|method|rm (String ref)
 specifier|public
 name|Result
 name|rm
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|String
 name|ref
 parameter_list|)
@@ -1215,20 +1247,15 @@ expr_stmt|;
 return|return
 name|execute
 argument_list|(
-name|git
-argument_list|,
 name|ref
 argument_list|)
 return|;
 block|}
-DECL|method|execute (Git git, String ref)
+DECL|method|execute (String ref)
 specifier|private
 name|Result
 name|execute
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|String
 name|ref
 parameter_list|)

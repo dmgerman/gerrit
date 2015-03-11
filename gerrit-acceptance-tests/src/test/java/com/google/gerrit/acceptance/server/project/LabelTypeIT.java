@@ -873,6 +873,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"first subject"
 argument_list|,
 name|file
@@ -889,8 +891,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -927,6 +927,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"second subject"
 argument_list|,
 name|file
@@ -945,8 +947,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 expr_stmt|;
@@ -1002,6 +1002,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"first subject"
 argument_list|,
 name|file
@@ -1018,8 +1020,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1056,6 +1056,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"second subject"
 argument_list|,
 name|file
@@ -1074,8 +1076,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 expr_stmt|;
@@ -1125,6 +1125,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -1136,8 +1138,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1159,6 +1159,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"non-conflicting"
 argument_list|,
 literal|"b.txt"
@@ -1175,8 +1177,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1217,6 +1217,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|subject
 argument_list|,
 name|file
@@ -1233,8 +1235,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1319,6 +1319,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -1330,8 +1332,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1353,6 +1353,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"non-conflicting"
 argument_list|,
 literal|"b.txt"
@@ -1369,8 +1371,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1411,6 +1411,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|subject
 argument_list|,
 name|file
@@ -1427,8 +1429,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1526,6 +1526,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -1544,8 +1546,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1694,6 +1694,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -1712,8 +1714,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;

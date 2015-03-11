@@ -339,6 +339,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"Create Project Level Config"
 argument_list|,
 name|configName
@@ -353,8 +355,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 name|RefNames
 operator|.
 name|REFS_CONFIG
@@ -561,6 +561,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|parentGit
+argument_list|,
 literal|"Create Project Level Config"
 argument_list|,
 name|configName
@@ -575,8 +577,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|parentGit
-argument_list|,
 name|RefNames
 operator|.
 name|REFS_CONFIG
@@ -628,6 +628,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"Create Project Level Config"
 argument_list|,
 name|configName
@@ -642,8 +644,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 name|RefNames
 operator|.
 name|REFS_CONFIG

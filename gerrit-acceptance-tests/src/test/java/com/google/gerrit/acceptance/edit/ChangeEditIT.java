@@ -2389,6 +2389,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -2408,8 +2410,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 operator|.
@@ -6302,6 +6302,8 @@ name|db
 argument_list|,
 name|ident
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -6320,8 +6322,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 operator|.
@@ -6357,6 +6357,8 @@ name|db
 argument_list|,
 name|ident
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -6377,8 +6379,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 operator|.
@@ -6411,6 +6411,8 @@ name|db
 argument_list|,
 name|ident
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -6429,8 +6431,6 @@ name|push
 operator|.
 name|rm
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 operator|.

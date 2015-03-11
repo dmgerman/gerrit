@@ -797,6 +797,8 @@ name|user
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 return|return
@@ -804,8 +806,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 operator|.

@@ -737,6 +737,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"first subject"
 argument_list|,
 name|file
@@ -753,8 +755,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -1328,6 +1328,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"first subject"
 argument_list|,
 name|file
@@ -1344,8 +1346,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;

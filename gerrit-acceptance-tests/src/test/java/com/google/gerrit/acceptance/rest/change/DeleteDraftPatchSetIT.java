@@ -707,6 +707,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|Result
@@ -716,8 +718,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/drafts/master"
 argument_list|)
 decl_stmt|;
@@ -733,6 +733,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -753,8 +755,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/drafts/master"
 argument_list|)
 operator|.

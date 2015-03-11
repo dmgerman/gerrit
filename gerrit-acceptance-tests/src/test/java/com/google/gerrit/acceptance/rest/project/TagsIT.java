@@ -357,6 +357,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|push1
@@ -375,8 +377,6 @@ name|push1
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master%submit"
 argument_list|)
 decl_stmt|;
@@ -418,6 +418,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|push2
@@ -436,8 +438,6 @@ name|push2
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master%submit"
 argument_list|)
 decl_stmt|;
@@ -699,6 +699,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|push1
@@ -717,8 +719,6 @@ name|push1
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master%submit"
 argument_list|)
 decl_stmt|;
@@ -758,6 +758,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|push2
@@ -776,8 +778,6 @@ name|push2
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/hidden%submit"
 argument_list|)
 decl_stmt|;
@@ -1057,6 +1057,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|push1
@@ -1075,8 +1077,6 @@ name|push1
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master%submit"
 argument_list|)
 decl_stmt|;

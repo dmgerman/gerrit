@@ -1663,6 +1663,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|subject
 argument_list|,
 literal|"another_file.txt"
@@ -1679,8 +1681,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -2193,6 +2193,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -2208,8 +2210,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/heads/foo"
 argument_list|)
 expr_stmt|;
@@ -2322,6 +2322,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -2333,8 +2335,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -2355,6 +2355,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -2366,8 +2368,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -2445,6 +2445,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -2456,8 +2458,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -2522,6 +2522,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -2533,8 +2535,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -2697,6 +2697,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -2717,8 +2719,6 @@ name|push1
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -2789,6 +2789,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 name|PushOneCommit
 operator|.
 name|SUBJECT
@@ -2809,8 +2811,6 @@ name|push2
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 decl_stmt|;
@@ -3835,6 +3835,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"test commit"
 argument_list|,
 literal|"a.txt"
@@ -3852,8 +3854,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/for/master"
 argument_list|)
 return|;
@@ -3883,6 +3883,8 @@ name|admin
 operator|.
 name|getIdent
 argument_list|()
+argument_list|,
+name|git
 argument_list|)
 decl_stmt|;
 return|return
@@ -3890,8 +3892,6 @@ name|push
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/drafts/master"
 argument_list|)
 return|;

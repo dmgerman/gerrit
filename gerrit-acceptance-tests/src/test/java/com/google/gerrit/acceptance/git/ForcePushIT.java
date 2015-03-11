@@ -231,6 +231,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"change1"
 argument_list|,
 literal|"a.txt"
@@ -247,8 +249,6 @@ name|push1
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 decl_stmt|;
@@ -309,6 +309,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"change2"
 argument_list|,
 literal|"b.txt"
@@ -332,8 +334,6 @@ name|push2
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 decl_stmt|;
@@ -401,6 +401,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"change1"
 argument_list|,
 literal|"a.txt"
@@ -417,8 +419,6 @@ name|push1
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 decl_stmt|;
@@ -479,6 +479,8 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
+name|git
+argument_list|,
 literal|"change2"
 argument_list|,
 literal|"b.txt"
@@ -502,8 +504,6 @@ name|push2
 operator|.
 name|to
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/heads/master"
 argument_list|)
 decl_stmt|;
