@@ -99,22 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|cloneProject
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -139,6 +123,20 @@ operator|.
 name|acceptance
 operator|.
 name|AbstractDaemonTest
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|GitUtil
 import|;
 end_import
 
@@ -359,6 +357,7 @@ specifier|protected
 enum|enum
 name|Protocol
 block|{
+comment|// TODO(dborowitz): TEST.
 DECL|enumConstant|SSH
 DECL|enumConstant|HTTP
 name|SSH
@@ -441,6 +440,8 @@ throw|;
 block|}
 name|testRepo
 operator|=
+name|GitUtil
+operator|.
 name|cloneProject
 argument_list|(
 name|project

@@ -96,22 +96,6 @@ name|acceptance
 operator|.
 name|GitUtil
 operator|.
-name|cloneProject
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
 name|fetch
 import|;
 end_import
@@ -563,8 +547,6 @@ init|=
 name|cloneProject
 argument_list|(
 name|childProject
-argument_list|,
-name|sshSession
 argument_list|)
 decl_stmt|;
 name|fetch
