@@ -1429,6 +1429,15 @@ decl_stmt|;
 if|if
 condition|(
 name|fetchMemberOf
+operator|&&
+name|schema
+operator|.
+name|type
+operator|.
+name|accountMemberField
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|accountQueryList
