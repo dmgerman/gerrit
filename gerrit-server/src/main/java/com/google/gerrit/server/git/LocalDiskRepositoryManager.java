@@ -2725,43 +2725,6 @@ operator|.
 name|CONTINUE
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|visitFile (Path file, BasicFileAttributes attrs)
-specifier|public
-name|FileVisitResult
-name|visitFile
-parameter_list|(
-name|Path
-name|file
-parameter_list|,
-name|BasicFileAttributes
-name|attrs
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-comment|// Skip repositories named only `.git`
-if|if
-condition|(
-name|isRepo
-argument_list|(
-name|file
-argument_list|)
-condition|)
-block|{
-name|addProject
-argument_list|(
-name|file
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|FileVisitResult
-operator|.
-name|CONTINUE
-return|;
-block|}
 DECL|method|isRepo (Path p)
 specifier|private
 name|boolean
