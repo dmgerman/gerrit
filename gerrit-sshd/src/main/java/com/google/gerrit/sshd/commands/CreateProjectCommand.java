@@ -1288,11 +1288,6 @@ operator|.
 name|projects
 argument_list|()
 operator|.
-name|name
-argument_list|(
-name|projectName
-argument_list|)
-operator|.
 name|create
 argument_list|(
 name|input

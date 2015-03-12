@@ -183,6 +183,28 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * Create a project using the default configuration.    *    * @param name project name.    * @return API for accessing the newly-created project.    * @throws RestApiException if an error occurred.    */
+DECL|method|create (String name)
+name|ProjectApi
+name|create
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Create a project.    *    * @param in project creation input; name must be set.    * @return API for accessing the newly-created project.    * @throws RestApiException if an error occurred.    */
+DECL|method|create (ProjectInput in)
+name|ProjectApi
+name|create
+parameter_list|(
+name|ProjectInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|list ()
 name|ListRequest
 name|list
@@ -664,6 +686,44 @@ DECL|method|name (String name)
 specifier|public
 name|ProjectApi
 name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|create (ProjectInput in)
+specifier|public
+name|ProjectApi
+name|create
+parameter_list|(
+name|ProjectInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|create (String name)
+specifier|public
+name|ProjectApi
+name|create
 parameter_list|(
 name|String
 name|name
