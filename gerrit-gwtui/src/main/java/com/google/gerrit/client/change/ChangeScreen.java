@@ -3786,6 +3786,8 @@ argument_list|,
 name|style
 argument_list|,
 name|addFile
+argument_list|,
+name|files
 argument_list|)
 expr_stmt|;
 name|deleteFileAction

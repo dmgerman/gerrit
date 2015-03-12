@@ -452,6 +452,12 @@ specifier|final
 name|RevisionInfo
 name|revision
 decl_stmt|;
+DECL|field|fileTable
+specifier|private
+specifier|final
+name|FileTable
+name|fileTable
+decl_stmt|;
 DECL|field|open
 annotation|@
 name|UiField
@@ -475,7 +481,7 @@ DECL|field|path
 name|RemoteSuggestBox
 name|path
 decl_stmt|;
-DECL|method|AddFileBox (Change.Id changeId, RevisionInfo revision)
+DECL|method|AddFileBox (Change.Id changeId, RevisionInfo revision, FileTable files)
 name|AddFileBox
 parameter_list|(
 name|Change
@@ -485,6 +491,9 @@ name|changeId
 parameter_list|,
 name|RevisionInfo
 name|revision
+parameter_list|,
+name|FileTable
+name|files
 parameter_list|)
 block|{
 name|this
@@ -498,6 +507,12 @@ operator|.
 name|revision
 operator|=
 name|revision
+expr_stmt|;
+name|this
+operator|.
+name|fileTable
+operator|=
+name|files
 expr_stmt|;
 name|path
 operator|=
@@ -574,6 +589,11 @@ name|event
 parameter_list|)
 block|{
 name|hide
+argument_list|()
+expr_stmt|;
+name|fileTable
+operator|.
+name|registerKeys
 argument_list|()
 expr_stmt|;
 block|}
@@ -704,6 +724,11 @@ name|e
 parameter_list|)
 block|{
 name|hide
+argument_list|()
+expr_stmt|;
+name|fileTable
+operator|.
+name|registerKeys
 argument_list|()
 expr_stmt|;
 block|}
