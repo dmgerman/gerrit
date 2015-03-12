@@ -174,6 +174,11 @@ name|Message
 argument_list|>
 name|messages
 decl_stmt|;
+DECL|field|pluginsLoadTimeout
+specifier|public
+name|Integer
+name|pluginsLoadTimeout
+decl_stmt|;
 DECL|field|isNoteDbEnabled
 specifier|public
 name|boolean

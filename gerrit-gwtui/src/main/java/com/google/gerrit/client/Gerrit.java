@@ -3755,6 +3755,10 @@ name|hpd
 operator|.
 name|plugins
 argument_list|,
+name|hpd
+operator|.
+name|pluginsLoadTimeout
+argument_list|,
 name|cbg
 operator|.
 name|addFinal
