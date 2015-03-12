@@ -94,22 +94,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GitUtil
-operator|.
-name|createProject
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|rest
 operator|.
 name|project
@@ -349,8 +333,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1
 operator|.
 name|get
@@ -372,8 +354,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child2
 operator|.
 name|get
@@ -395,8 +375,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1_1
 operator|.
 name|get
@@ -488,8 +466,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1
 operator|.
 name|get
@@ -498,8 +474,6 @@ argument_list|)
 expr_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 literal|"p2"
 argument_list|)
 expr_stmt|;
@@ -518,8 +492,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1_1
 operator|.
 name|get
@@ -543,8 +515,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1_2
 operator|.
 name|get
@@ -568,8 +538,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1_1_1
 operator|.
 name|get
@@ -593,8 +561,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child1_1_1_1
 operator|.
 name|get

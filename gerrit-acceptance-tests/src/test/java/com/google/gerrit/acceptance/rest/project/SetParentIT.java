@@ -85,22 +85,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|createProject
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -207,8 +191,6 @@ literal|"parent"
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|parent
 argument_list|,
 literal|null
@@ -276,8 +258,6 @@ literal|"parent"
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|parent
 argument_list|,
 literal|null
@@ -510,8 +490,6 @@ literal|"child"
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|child
 argument_list|,
 name|project
@@ -567,8 +545,6 @@ literal|"grandchild"
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|grandchild
 argument_list|,
 operator|new

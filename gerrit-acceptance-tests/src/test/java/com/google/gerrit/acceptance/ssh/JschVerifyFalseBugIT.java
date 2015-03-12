@@ -99,22 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|createProject
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -321,8 +305,6 @@ name|i
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|p
 argument_list|)
 expr_stmt|;

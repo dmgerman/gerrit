@@ -94,22 +94,6 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GitUtil
-operator|.
-name|createProject
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
 name|rest
 operator|.
 name|project
@@ -436,8 +420,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someProject
 operator|.
 name|get
@@ -827,8 +809,6 @@ control|)
 block|{
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 operator|new
 name|Project
 operator|.
@@ -925,8 +905,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someProject
 operator|.
 name|get
@@ -948,8 +926,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someOtherProject
 operator|.
 name|get
@@ -971,8 +947,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|projectAwesome
 operator|.
 name|get
@@ -1076,8 +1050,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someProject
 operator|.
 name|get
@@ -1099,8 +1071,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someOtherProject
 operator|.
 name|get
@@ -1122,8 +1092,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|projectAwesome
 operator|.
 name|get
@@ -1301,8 +1269,6 @@ control|)
 block|{
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 operator|new
 name|Project
 operator|.
@@ -1416,8 +1382,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someProject
 operator|.
 name|get
@@ -1439,8 +1403,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someOtherProject
 operator|.
 name|get
@@ -1462,8 +1424,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|projectAwesome
 operator|.
 name|get
@@ -1569,8 +1529,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someParentProject
 operator|.
 name|get
@@ -1592,8 +1550,6 @@ argument_list|)
 decl_stmt|;
 name|createProject
 argument_list|(
-name|sshSession
-argument_list|,
 name|someChildProject
 operator|.
 name|get
