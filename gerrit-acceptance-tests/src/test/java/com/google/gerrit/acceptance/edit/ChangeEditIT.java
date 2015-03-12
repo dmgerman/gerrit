@@ -116,22 +116,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|createProject
-import|;
-end_import
-
-begin_import
-import|import static
 name|java
 operator|.
 name|nio
@@ -335,6 +319,20 @@ operator|.
 name|acceptance
 operator|.
 name|RestSession
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|acceptance
+operator|.
+name|TestProjectInput
 import|;
 end_import
 
@@ -2604,6 +2602,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|createEmptyCommit
+operator|=
+literal|false
+argument_list|)
 DECL|method|updateRootCommitMessage ()
 specifier|public
 name|void
@@ -2612,17 +2617,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|createProject
-argument_list|(
-name|sshSession
-argument_list|,
-literal|"root-msg-test"
-argument_list|,
-literal|null
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
 name|git
 operator|=
 name|cloneProject
@@ -2632,7 +2626,9 @@ operator|.
 name|getUrl
 argument_list|()
 operator|+
-literal|"/root-msg-test"
+literal|"/"
+operator|+
+name|project
 argument_list|)
 expr_stmt|;
 name|changeId
