@@ -354,21 +354,21 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|BYINCLUDE_NAME
+DECL|field|PARENT_GROUPS_NAME
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|BYINCLUDE_NAME
+name|PARENT_GROUPS_NAME
 init|=
 literal|"groups_byinclude"
 decl_stmt|;
-DECL|field|MEMBERS_NAME
+DECL|field|SUBGROUPS_NAME
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|MEMBERS_NAME
+name|SUBGROUPS_NAME
 init|=
 literal|"groups_members"
 decl_stmt|;
@@ -402,7 +402,7 @@ parameter_list|()
 block|{
 name|cache
 argument_list|(
-name|BYINCLUDE_NAME
+name|PARENT_GROUPS_NAME
 argument_list|,
 name|AccountGroup
 operator|.
@@ -426,14 +426,14 @@ argument_list|)
 operator|.
 name|loader
 argument_list|(
-name|MemberInLoader
+name|parentGroupsLoader
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 name|cache
 argument_list|(
-name|MEMBERS_NAME
+name|SUBGROUPS_NAME
 argument_list|,
 name|AccountGroup
 operator|.
@@ -457,7 +457,7 @@ argument_list|)
 operator|.
 name|loader
 argument_list|(
-name|MembersOfLoader
+name|subgroupsLoader
 operator|.
 name|class
 argument_list|)
@@ -516,7 +516,7 @@ block|}
 block|}
 return|;
 block|}
-DECL|field|membersOf
+DECL|field|subgroups
 specifier|private
 specifier|final
 name|LoadingCache
@@ -532,9 +532,9 @@ operator|.
 name|UUID
 argument_list|>
 argument_list|>
-name|membersOf
+name|subgroups
 decl_stmt|;
-DECL|field|memberIn
+DECL|field|parentGroups
 specifier|private
 specifier|final
 name|LoadingCache
@@ -550,7 +550,7 @@ operator|.
 name|UUID
 argument_list|>
 argument_list|>
-name|memberIn
+name|parentGroups
 decl_stmt|;
 DECL|field|external
 specifier|private
@@ -570,13 +570,13 @@ name|external
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GroupIncludeCacheImpl ( @amedMEMBERS_NAME) LoadingCache<AccountGroup.UUID, Set<AccountGroup.UUID>> membersOf, @Named(BYINCLUDE_NAME) LoadingCache<AccountGroup.UUID, Set<AccountGroup.UUID>> memberIn, @Named(EXTERNAL_NAME) LoadingCache<String, Set<AccountGroup.UUID>> external)
+DECL|method|GroupIncludeCacheImpl ( @amedSUBGROUPS_NAME) LoadingCache<AccountGroup.UUID, Set<AccountGroup.UUID>> subgroups, @Named(PARENT_GROUPS_NAME) LoadingCache<AccountGroup.UUID, Set<AccountGroup.UUID>> parentGroups, @Named(EXTERNAL_NAME) LoadingCache<String, Set<AccountGroup.UUID>> external)
 name|GroupIncludeCacheImpl
 parameter_list|(
 annotation|@
 name|Named
 argument_list|(
-name|MEMBERS_NAME
+name|SUBGROUPS_NAME
 argument_list|)
 name|LoadingCache
 argument_list|<
@@ -591,12 +591,12 @@ operator|.
 name|UUID
 argument_list|>
 argument_list|>
-name|membersOf
+name|subgroups
 parameter_list|,
 annotation|@
 name|Named
 argument_list|(
-name|BYINCLUDE_NAME
+name|PARENT_GROUPS_NAME
 argument_list|)
 name|LoadingCache
 argument_list|<
@@ -611,7 +611,7 @@ operator|.
 name|UUID
 argument_list|>
 argument_list|>
-name|memberIn
+name|parentGroups
 parameter_list|,
 annotation|@
 name|Named
@@ -634,15 +634,15 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|membersOf
+name|subgroups
 operator|=
-name|membersOf
+name|subgroups
 expr_stmt|;
 name|this
 operator|.
-name|memberIn
+name|parentGroups
 operator|=
-name|memberIn
+name|parentGroups
 expr_stmt|;
 name|this
 operator|.
@@ -653,7 +653,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|membersOf (AccountGroup.UUID groupId)
+DECL|method|subgroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|Set
 argument_list|<
@@ -661,7 +661,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|membersOf
+name|subgroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -672,7 +672,7 @@ block|{
 try|try
 block|{
 return|return
-name|membersOf
+name|subgroups
 operator|.
 name|get
 argument_list|(
@@ -705,7 +705,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|memberIn (AccountGroup.UUID groupId)
+DECL|method|parentGroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|Set
 argument_list|<
@@ -713,7 +713,7 @@ name|AccountGroup
 operator|.
 name|UUID
 argument_list|>
-name|memberIn
+name|parentGroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -724,7 +724,7 @@ block|{
 try|try
 block|{
 return|return
-name|memberIn
+name|parentGroups
 operator|.
 name|get
 argument_list|(
@@ -757,10 +757,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evictMembersOf (AccountGroup.UUID groupId)
+DECL|method|evictSubgroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|void
-name|evictMembersOf
+name|evictSubgroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -775,7 +775,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|membersOf
+name|subgroups
 operator|.
 name|invalidate
 argument_list|(
@@ -786,10 +786,10 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|evictMemberIn (AccountGroup.UUID groupId)
+DECL|method|evictParentGroupsOf (AccountGroup.UUID groupId)
 specifier|public
 name|void
-name|evictMemberIn
+name|evictParentGroupsOf
 parameter_list|(
 name|AccountGroup
 operator|.
@@ -804,7 +804,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|memberIn
+name|parentGroups
 operator|.
 name|invalidate
 argument_list|(
@@ -879,10 +879,10 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|class|MembersOfLoader
+DECL|class|subgroupsLoader
 specifier|static
 class|class
-name|MembersOfLoader
+name|subgroupsLoader
 extends|extends
 name|CacheLoader
 argument_list|<
@@ -909,8 +909,8 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MembersOfLoader (final SchemaFactory<ReviewDb> sf)
-name|MembersOfLoader
+DECL|method|subgroupsLoader (final SchemaFactory<ReviewDb> sf)
+name|subgroupsLoader
 parameter_list|(
 specifier|final
 name|SchemaFactory
@@ -1059,10 +1059,10 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|class|MemberInLoader
+DECL|class|parentGroupsLoader
 specifier|static
 class|class
-name|MemberInLoader
+name|parentGroupsLoader
 extends|extends
 name|CacheLoader
 argument_list|<
@@ -1089,8 +1089,8 @@ name|schema
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MemberInLoader (final SchemaFactory<ReviewDb> sf)
-name|MemberInLoader
+DECL|method|parentGroupsLoader (final SchemaFactory<ReviewDb> sf)
+name|parentGroupsLoader
 parameter_list|(
 specifier|final
 name|SchemaFactory

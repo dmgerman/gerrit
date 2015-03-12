@@ -272,11 +272,11 @@ name|GROUP_EXIST_CACHE
 init|=
 literal|"ldap_group_existence"
 decl_stmt|;
-DECL|field|GROUPS_BYINCLUDE_CACHE
+DECL|field|PARENT_GROUPS_CACHE
 specifier|static
 specifier|final
 name|String
-name|GROUPS_BYINCLUDE_CACHE
+name|PARENT_GROUPS_CACHE
 init|=
 literal|"ldap_groups_byinclude"
 decl_stmt|;
@@ -392,7 +392,7 @@ argument_list|)
 expr_stmt|;
 name|cache
 argument_list|(
-name|GROUPS_BYINCLUDE_CACHE
+name|PARENT_GROUPS_CACHE
 argument_list|,
 name|String
 operator|.

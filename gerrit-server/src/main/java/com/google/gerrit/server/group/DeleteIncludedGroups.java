@@ -759,7 +759,7 @@ control|)
 block|{
 name|groupIncludeCache
 operator|.
-name|evictMemberIn
+name|evictParentGroupsOf
 argument_list|(
 name|g
 operator|.
@@ -770,7 +770,7 @@ expr_stmt|;
 block|}
 name|groupIncludeCache
 operator|.
-name|evictMembersOf
+name|evictSubgroupsOf
 argument_list|(
 name|internalGroup
 operator|.

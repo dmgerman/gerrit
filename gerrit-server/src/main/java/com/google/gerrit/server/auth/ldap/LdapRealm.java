@@ -676,6 +676,12 @@ name|FieldName
 argument_list|>
 name|readOnlyAccountFields
 decl_stmt|;
+DECL|field|fetchMemberOfEagerly
+specifier|private
+specifier|final
+name|boolean
+name|fetchMemberOfEagerly
+decl_stmt|;
 DECL|field|config
 specifier|private
 specifier|final
@@ -861,6 +867,17 @@ name|USER_NAME
 argument_list|)
 expr_stmt|;
 block|}
+name|fetchMemberOfEagerly
+operator|=
+name|optional
+argument_list|(
+name|config
+argument_list|,
+literal|"fetchMemberOfEagerly"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|scope (final Config c, final String setting)
 specifier|static
@@ -1625,6 +1642,8 @@ argument_list|,
 name|ctx
 argument_list|,
 name|username
+argument_list|,
+name|fetchMemberOfEagerly
 argument_list|)
 decl_stmt|;
 if|if
@@ -1753,6 +1772,11 @@ comment|// do one more call to get their group membership. Since we are
 comment|// in the middle of authenticating the user, its likely we will
 comment|// need to know what access rights they have soon.
 comment|//
+if|if
+condition|(
+name|fetchMemberOfEagerly
+condition|)
+block|{
 name|membershipCache
 operator|.
 name|put
@@ -1771,6 +1795,7 @@ name|m
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|who
 return|;

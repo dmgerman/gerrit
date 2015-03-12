@@ -502,7 +502,7 @@ name|search
 argument_list|(
 name|includeCache
 operator|.
-name|membersOf
+name|subgroupsOf
 argument_list|(
 name|id
 argument_list|)
@@ -767,7 +767,7 @@ name|g
 range|:
 name|includeCache
 operator|.
-name|memberIn
+name|parentGroupsOf
 argument_list|(
 name|id
 argument_list|)
