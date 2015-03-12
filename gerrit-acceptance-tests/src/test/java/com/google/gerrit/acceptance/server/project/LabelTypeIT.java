@@ -873,7 +873,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"first subject"
 argument_list|,
@@ -927,7 +927,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"second subject"
 argument_list|,
@@ -1002,7 +1002,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"first subject"
 argument_list|,
@@ -1056,7 +1056,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"second subject"
 argument_list|,
@@ -1126,7 +1126,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -1159,7 +1159,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"non-conflicting"
 argument_list|,
@@ -1217,7 +1217,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|subject
 argument_list|,
@@ -1320,7 +1320,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -1353,7 +1353,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"non-conflicting"
 argument_list|,
@@ -1411,7 +1411,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|subject
 argument_list|,
@@ -1526,7 +1526,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -1694,7 +1694,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.

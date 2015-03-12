@@ -736,22 +736,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|api
-operator|.
-name|errors
-operator|.
-name|GitAPIException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|diff
 operator|.
 name|DiffFormatter
@@ -1127,9 +1111,7 @@ name|Result
 name|change
 init|=
 name|createChange
-argument_list|(
-name|git
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|submit
 argument_list|(
@@ -1186,8 +1168,6 @@ name|change1
 init|=
 name|createChange
 argument_list|(
-name|git
-argument_list|,
 literal|"Change 1"
 argument_list|,
 literal|"a.txt"
@@ -1204,8 +1184,6 @@ name|change2
 init|=
 name|createChange
 argument_list|(
-name|git
-argument_list|,
 literal|"Change 2"
 argument_list|,
 literal|"b.txt"
@@ -1222,8 +1200,6 @@ name|change3
 init|=
 name|createChange
 argument_list|(
-name|git
-argument_list|,
 literal|"Change 3"
 argument_list|,
 literal|"c.txt"
@@ -1480,57 +1456,13 @@ name|FALSE
 expr_stmt|;
 block|}
 block|}
-DECL|method|createChange (Git git)
+DECL|method|createChange (String subject, String fileName, String content)
 specifier|protected
 name|PushOneCommit
 operator|.
 name|Result
 name|createChange
 parameter_list|(
-name|Git
-name|git
-parameter_list|)
-throws|throws
-name|GitAPIException
-throws|,
-name|IOException
-block|{
-name|PushOneCommit
-name|push
-init|=
-name|pushFactory
-operator|.
-name|create
-argument_list|(
-name|db
-argument_list|,
-name|admin
-operator|.
-name|getIdent
-argument_list|()
-argument_list|,
-name|git
-argument_list|)
-decl_stmt|;
-return|return
-name|push
-operator|.
-name|to
-argument_list|(
-literal|"refs/for/master"
-argument_list|)
-return|;
-block|}
-DECL|method|createChange (Git git, String subject, String fileName, String content)
-specifier|protected
-name|PushOneCommit
-operator|.
-name|Result
-name|createChange
-parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|String
 name|subject
 parameter_list|,
@@ -1541,9 +1473,7 @@ name|String
 name|content
 parameter_list|)
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
+name|Exception
 block|{
 name|PushOneCommit
 name|push
@@ -1559,7 +1489,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|subject
 argument_list|,
@@ -1577,16 +1507,13 @@ literal|"refs/for/master"
 argument_list|)
 return|;
 block|}
-DECL|method|createChange (Git git, String subject, String fileName, String content, String topic)
+DECL|method|createChange (String subject, String fileName, String content, String topic)
 specifier|protected
 name|PushOneCommit
 operator|.
 name|Result
 name|createChange
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|String
 name|subject
 parameter_list|,
@@ -1600,9 +1527,7 @@ name|String
 name|topic
 parameter_list|)
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
+name|Exception
 block|{
 name|PushOneCommit
 name|push
@@ -1618,7 +1543,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|subject
 argument_list|,

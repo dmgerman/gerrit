@@ -85,22 +85,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|checkout
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -208,9 +192,7 @@ name|Result
 name|change
 init|=
 name|createChange
-argument_list|(
-name|git
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|submit
 argument_list|(
@@ -299,17 +281,11 @@ init|=
 name|getRemoteHead
 argument_list|()
 decl_stmt|;
-name|checkout
+name|testRepo
+operator|.
+name|reset
 argument_list|(
-name|git
-argument_list|,
 name|initialHead
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -319,8 +295,6 @@ name|change2
 init|=
 name|createChange
 argument_list|(
-name|git
-argument_list|,
 literal|"Change 2"
 argument_list|,
 literal|"b"
@@ -328,17 +302,11 @@ argument_list|,
 literal|"b"
 argument_list|)
 decl_stmt|;
-name|checkout
+name|testRepo
+operator|.
+name|reset
 argument_list|(
-name|git
-argument_list|,
 name|initialHead
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -348,8 +316,6 @@ name|change3
 init|=
 name|createChange
 argument_list|(
-name|git
-argument_list|,
 literal|"Change 3"
 argument_list|,
 literal|"c"
@@ -357,17 +323,11 @@ argument_list|,
 literal|"c"
 argument_list|)
 decl_stmt|;
-name|checkout
+name|testRepo
+operator|.
+name|reset
 argument_list|(
-name|git
-argument_list|,
 name|initialHead
-operator|.
-name|getId
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -377,8 +337,6 @@ name|change4
 init|=
 name|createChange
 argument_list|(
-name|git
-argument_list|,
 literal|"Change 4"
 argument_list|,
 literal|"d"

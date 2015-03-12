@@ -454,7 +454,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|PatchSet

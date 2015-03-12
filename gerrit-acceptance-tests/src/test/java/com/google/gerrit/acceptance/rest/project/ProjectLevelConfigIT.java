@@ -96,22 +96,6 @@ name|acceptance
 operator|.
 name|GitUtil
 operator|.
-name|checkout
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
 name|cloneProject
 import|;
 end_import
@@ -214,6 +198,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|junit
+operator|.
+name|TestRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Config
@@ -269,10 +267,10 @@ operator|+
 literal|":refs/heads/config"
 argument_list|)
 expr_stmt|;
-name|checkout
+name|testRepo
+operator|.
+name|reset
 argument_list|(
-name|git
-argument_list|,
 literal|"refs/heads/config"
 argument_list|)
 expr_stmt|;
@@ -339,7 +337,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"Create Project Level Config"
 argument_list|,
@@ -529,6 +527,22 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|parentTestRepo
+init|=
+operator|new
+name|TestRepository
+argument_list|<>
+argument_list|(
+name|parentGit
+operator|.
+name|getRepository
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|fetch
 argument_list|(
 name|parentGit
@@ -540,10 +554,10 @@ operator|+
 literal|":refs/heads/config"
 argument_list|)
 expr_stmt|;
-name|checkout
+name|parentTestRepo
+operator|.
+name|reset
 argument_list|(
-name|parentGit
-argument_list|,
 literal|"refs/heads/config"
 argument_list|)
 expr_stmt|;
@@ -561,7 +575,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|parentGit
+name|parentTestRepo
 argument_list|,
 literal|"Create Project Level Config"
 argument_list|,
@@ -628,7 +642,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"Create Project Level Config"
 argument_list|,

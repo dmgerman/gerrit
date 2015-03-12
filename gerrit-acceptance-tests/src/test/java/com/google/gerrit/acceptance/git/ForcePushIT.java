@@ -231,7 +231,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"change1"
 argument_list|,
@@ -309,7 +309,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"change2"
 argument_list|,
@@ -401,7 +401,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"change1"
 argument_list|,
@@ -479,7 +479,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"change2"
 argument_list|,

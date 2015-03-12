@@ -728,20 +728,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|api
-operator|.
-name|Git
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|lib
 operator|.
 name|ObjectId
@@ -1068,8 +1054,6 @@ name|changeId
 operator|=
 name|newChange
 argument_list|(
-name|git
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -1085,8 +1069,6 @@ argument_list|)
 expr_stmt|;
 name|amendChange
 argument_list|(
-name|git
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -1114,8 +1096,6 @@ name|changeId2
 operator|=
 name|newChange2
 argument_list|(
-name|git
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -2389,7 +2369,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -2617,8 +2597,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|git
-operator|=
+name|setRepo
+argument_list|(
 name|cloneProject
 argument_list|(
 name|sshSession
@@ -2630,13 +2610,12 @@ literal|"/"
 operator|+
 name|project
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|changeId
 operator|=
 name|newChange
 argument_list|(
-name|git
-argument_list|,
 name|admin
 operator|.
 name|getIdent
@@ -6277,14 +6256,11 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|newChange (Git git, PersonIdent ident)
+DECL|method|newChange (PersonIdent ident)
 specifier|private
 name|String
 name|newChange
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|PersonIdent
 name|ident
 parameter_list|)
@@ -6302,7 +6278,7 @@ name|db
 argument_list|,
 name|ident
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -6329,14 +6305,11 @@ name|getChangeId
 argument_list|()
 return|;
 block|}
-DECL|method|amendChange (Git git, PersonIdent ident, String changeId)
+DECL|method|amendChange (PersonIdent ident, String changeId)
 specifier|private
 name|String
 name|amendChange
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|PersonIdent
 name|ident
 parameter_list|,
@@ -6357,7 +6330,7 @@ name|db
 argument_list|,
 name|ident
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -6386,14 +6359,11 @@ name|getChangeId
 argument_list|()
 return|;
 block|}
-DECL|method|newChange2 (Git git, PersonIdent ident)
+DECL|method|newChange2 (PersonIdent ident)
 specifier|private
 name|String
 name|newChange2
 parameter_list|(
-name|Git
-name|git
-parameter_list|,
 name|PersonIdent
 name|ident
 parameter_list|)
@@ -6411,7 +6381,7 @@ name|db
 argument_list|,
 name|ident
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.

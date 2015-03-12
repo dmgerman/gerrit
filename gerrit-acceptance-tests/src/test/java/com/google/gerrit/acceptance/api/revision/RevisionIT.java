@@ -560,22 +560,6 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|api
-operator|.
-name|errors
-operator|.
-name|GitAPIException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
 name|lib
 operator|.
 name|ObjectId
@@ -623,16 +607,6 @@ operator|.
 name|io
 operator|.
 name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -1663,7 +1637,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|subject
 argument_list|,
@@ -2193,7 +2167,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -2323,7 +2297,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -2356,7 +2330,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -2446,7 +2420,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 expr_stmt|;
 name|PushOneCommit
@@ -2523,7 +2497,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|PushOneCommit
@@ -2697,7 +2671,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -2789,7 +2763,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 name|PushOneCommit
 operator|.
@@ -3817,9 +3791,7 @@ name|String
 name|content
 parameter_list|)
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
+name|Exception
 block|{
 name|PushOneCommit
 name|push
@@ -3835,7 +3807,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"test commit"
 argument_list|,
@@ -3866,9 +3838,7 @@ name|Result
 name|createDraft
 parameter_list|()
 throws|throws
-name|GitAPIException
-throws|,
-name|IOException
+name|Exception
 block|{
 name|PushOneCommit
 name|push
@@ -3884,7 +3854,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 return|return

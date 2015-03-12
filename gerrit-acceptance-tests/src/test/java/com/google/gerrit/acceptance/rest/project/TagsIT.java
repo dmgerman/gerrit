@@ -358,7 +358,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|push1
@@ -419,7 +419,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|push2
@@ -700,7 +700,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|push1
@@ -759,7 +759,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|push2
@@ -1058,7 +1058,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|)
 decl_stmt|;
 name|push1

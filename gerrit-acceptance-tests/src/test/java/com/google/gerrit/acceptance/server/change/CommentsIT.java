@@ -737,7 +737,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"first subject"
 argument_list|,
@@ -1328,7 +1328,7 @@ operator|.
 name|getIdent
 argument_list|()
 argument_list|,
-name|git
+name|testRepo
 argument_list|,
 literal|"first subject"
 argument_list|,
