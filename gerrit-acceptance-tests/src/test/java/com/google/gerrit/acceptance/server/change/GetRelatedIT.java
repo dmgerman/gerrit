@@ -1706,9 +1706,6 @@ literal|1
 argument_list|)
 operator|.
 name|_revisionNumber
-operator|.
-name|intValue
-argument_list|()
 argument_list|)
 operator|.
 name|named

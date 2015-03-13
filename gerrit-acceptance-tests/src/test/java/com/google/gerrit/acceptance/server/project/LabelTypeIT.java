@@ -2106,9 +2106,6 @@ literal|0
 argument_list|)
 operator|.
 name|value
-operator|.
-name|intValue
-argument_list|()
 argument_list|)
 operator|.
 name|isEqualTo
