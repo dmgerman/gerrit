@@ -74,20 +74,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
-operator|.
-name|collect
-operator|.
-name|ImmutableList
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gerrit
 operator|.
 name|extensions
@@ -250,7 +236,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|SortedMap
 import|;
 end_import
 
@@ -400,11 +386,13 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|List
+name|SortedMap
 argument_list|<
+name|String
+argument_list|,
 name|ProjectInfo
 argument_list|>
-name|get
+name|getAsMap
 parameter_list|()
 throws|throws
 name|RestApiException
@@ -421,8 +409,10 @@ return|;
 block|}
 DECL|method|list (ListRequest request)
 specifier|private
-name|List
+name|SortedMap
 argument_list|<
+name|String
+argument_list|,
 name|ProjectInfo
 argument_list|>
 name|list
@@ -482,18 +472,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|ImmutableList
-operator|.
-name|copyOf
-argument_list|(
 name|lp
 operator|.
 name|apply
 argument_list|()
-operator|.
-name|values
-argument_list|()
-argument_list|)
 return|;
 block|}
 block|}

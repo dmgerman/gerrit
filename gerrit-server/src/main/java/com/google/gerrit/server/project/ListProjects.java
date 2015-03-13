@@ -742,6 +742,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|SortedMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -1635,7 +1645,7 @@ return|;
 block|}
 DECL|method|apply ()
 specifier|public
-name|Map
+name|SortedMap
 argument_list|<
 name|String
 argument_list|,
@@ -1661,7 +1671,7 @@ return|;
 block|}
 DECL|method|display (OutputStream displayOutputStream)
 specifier|public
-name|Map
+name|SortedMap
 argument_list|<
 name|String
 argument_list|,
@@ -1735,7 +1745,7 @@ name|found
 init|=
 literal|0
 decl_stmt|;
-name|Map
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,
