@@ -603,7 +603,7 @@ operator|)
 name|webLink
 operator|)
 operator|.
-name|getPathSetWebLink
+name|getPatchSetWebLink
 argument_list|(
 name|project
 operator|.
