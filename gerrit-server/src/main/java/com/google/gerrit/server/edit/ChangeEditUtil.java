@@ -1165,7 +1165,7 @@ argument_list|()
 argument_list|,
 name|Integer
 operator|.
-name|valueOf
+name|parseInt
 argument_list|(
 name|psId
 argument_list|)
@@ -1176,6 +1176,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|NumberFormatException
 name|e
 parameter_list|)
 block|{
