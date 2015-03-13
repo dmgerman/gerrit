@@ -260,10 +260,6 @@ name|Singleton
 DECL|class|ProjectsImpl
 class|class
 name|ProjectsImpl
-extends|extends
-name|Projects
-operator|.
-name|NotImplemented
 implements|implements
 name|Projects
 block|{
