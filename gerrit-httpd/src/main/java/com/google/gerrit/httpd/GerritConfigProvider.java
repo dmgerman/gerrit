@@ -873,6 +873,9 @@ case|case
 name|DEVELOPMENT_BECOME_ANY_ACCOUNT
 case|:
 case|case
+name|OAUTH
+case|:
+case|case
 name|OPENID
 case|:
 case|case
