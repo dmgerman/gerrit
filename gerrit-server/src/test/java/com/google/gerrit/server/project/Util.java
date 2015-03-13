@@ -985,6 +985,7 @@ block|{
 DECL|field|ADMIN
 specifier|public
 specifier|static
+specifier|final
 name|AccountGroup
 operator|.
 name|UUID
@@ -1001,6 +1002,7 @@ decl_stmt|;
 DECL|field|DEVS
 specifier|public
 specifier|static
+specifier|final
 name|AccountGroup
 operator|.
 name|UUID

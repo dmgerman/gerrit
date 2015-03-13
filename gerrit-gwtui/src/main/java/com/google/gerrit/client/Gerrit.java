@@ -1392,6 +1392,7 @@ decl_stmt|;
 DECL|field|THEMER
 specifier|public
 specifier|static
+specifier|final
 name|Themer
 name|THEMER
 init|=
