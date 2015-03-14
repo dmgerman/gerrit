@@ -65,20 +65,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|StandardOpenOption
-operator|.
-name|DELETE_ON_CLOSE
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -711,32 +697,13 @@ literal|"Caching not enabled"
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 name|Files
 operator|.
-name|createDirectory
+name|createDirectories
 argument_list|(
 name|ruleDir
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Cannot create "
-operator|+
-name|ruleDir
-argument_list|)
-throw|;
-block|}
 name|File
 name|tempDir
 init|=
@@ -1625,8 +1592,6 @@ operator|.
 name|newOutputStream
 argument_list|(
 name|tmpjar
-argument_list|,
-name|DELETE_ON_CLOSE
 argument_list|)
 init|;
 name|JarOutputStream
