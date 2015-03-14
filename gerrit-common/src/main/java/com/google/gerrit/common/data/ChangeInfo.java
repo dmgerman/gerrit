@@ -489,10 +489,6 @@ return|;
 block|}
 DECL|method|getLastUpdatedOn ()
 specifier|public
-name|java
-operator|.
-name|sql
-operator|.
 name|Timestamp
 name|getLastUpdatedOn
 parameter_list|()
