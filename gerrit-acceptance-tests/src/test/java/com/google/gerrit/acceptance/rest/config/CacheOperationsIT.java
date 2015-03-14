@@ -395,9 +395,6 @@ operator|.
 name|entries
 operator|.
 name|mem
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 operator|.
 name|isGreaterThan
@@ -624,9 +621,6 @@ operator|.
 name|entries
 operator|.
 name|mem
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 operator|.
 name|isGreaterThan
@@ -670,9 +664,6 @@ operator|.
 name|entries
 operator|.
 name|mem
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 operator|.
 name|isGreaterThan
@@ -800,9 +791,6 @@ operator|.
 name|entries
 operator|.
 name|mem
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 operator|.
 name|isGreaterThan
@@ -954,9 +942,6 @@ operator|.
 name|entries
 operator|.
 name|mem
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 operator|.
 name|isGreaterThan
@@ -1046,9 +1031,6 @@ operator|.
 name|entries
 operator|.
 name|mem
-operator|.
-name|longValue
-argument_list|()
 argument_list|)
 operator|.
 name|isGreaterThan

@@ -1286,7 +1286,7 @@ name|value
 operator|=
 name|Integer
 operator|.
-name|valueOf
+name|parseInt
 argument_list|(
 name|p
 operator|.
@@ -1297,7 +1297,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IllegalArgumentException
+name|NumberFormatException
 name|e
 parameter_list|)
 block|{
