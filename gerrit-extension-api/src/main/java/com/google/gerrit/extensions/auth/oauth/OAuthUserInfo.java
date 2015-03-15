@@ -98,7 +98,13 @@ specifier|final
 name|String
 name|displayName
 decl_stmt|;
-DECL|method|OAuthUserInfo (String externalId, String userName, String emailAddress, String displayName)
+DECL|field|claimedIdentity
+specifier|private
+specifier|final
+name|String
+name|claimedIdentity
+decl_stmt|;
+DECL|method|OAuthUserInfo (String externalId, String userName, String emailAddress, String displayName, String claimedIdentity)
 specifier|public
 name|OAuthUserInfo
 parameter_list|(
@@ -113,6 +119,9 @@ name|emailAddress
 parameter_list|,
 name|String
 name|displayName
+parameter_list|,
+name|String
+name|claimedIdentity
 parameter_list|)
 block|{
 name|this
@@ -138,6 +147,12 @@ operator|.
 name|displayName
 operator|=
 name|displayName
+expr_stmt|;
+name|this
+operator|.
+name|claimedIdentity
+operator|=
+name|claimedIdentity
 expr_stmt|;
 block|}
 DECL|method|getExternalId ()
@@ -178,6 +193,16 @@ parameter_list|()
 block|{
 return|return
 name|displayName
+return|;
+block|}
+DECL|method|getClaimedIdentity ()
+specifier|public
+name|String
+name|getClaimedIdentity
+parameter_list|()
+block|{
+return|return
+name|claimedIdentity
 return|;
 block|}
 block|}
