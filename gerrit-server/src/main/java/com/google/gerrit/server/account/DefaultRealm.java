@@ -267,15 +267,6 @@ operator|==
 name|AuthType
 operator|.
 name|HTTP
-operator|||
-name|authConfig
-operator|.
-name|getAuthType
-argument_list|()
-operator|==
-name|AuthType
-operator|.
-name|OAUTH
 condition|)
 block|{
 switch|switch
