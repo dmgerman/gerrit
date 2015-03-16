@@ -367,7 +367,7 @@ name|NOT_ARCHIVED
 init|=
 literal|"NOT_ARCHIVED"
 decl_stmt|;
-DECL|method|main (final String argv[])
+DECL|method|main (final String[] argv)
 specifier|public
 specifier|static
 name|void
@@ -375,8 +375,8 @@ name|main
 parameter_list|(
 specifier|final
 name|String
-name|argv
 index|[]
+name|argv
 parameter_list|)
 throws|throws
 name|Exception
@@ -392,7 +392,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mainImpl (final String argv[])
+DECL|method|mainImpl (final String[] argv)
 specifier|public
 specifier|static
 name|int
@@ -400,8 +400,8 @@ name|mainImpl
 parameter_list|(
 specifier|final
 name|String
-name|argv
 index|[]
+name|argv
 parameter_list|)
 throws|throws
 name|Exception

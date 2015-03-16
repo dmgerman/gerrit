@@ -573,8 +573,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|int
-name|srcIdx
 index|[]
+name|srcIdx
 decl_stmt|;
 if|if
 condition|(

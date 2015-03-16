@@ -3674,8 +3674,8 @@ init|=
 name|suggestRow
 decl_stmt|;
 name|int
-name|spans
 index|[]
+name|spans
 init|=
 operator|new
 name|int

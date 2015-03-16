@@ -1633,8 +1633,8 @@ literal|0
 condition|)
 block|{
 name|String
-name|lines
 index|[]
+name|lines
 init|=
 name|c
 operator|.

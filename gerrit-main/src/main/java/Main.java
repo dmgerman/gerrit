@@ -63,7 +63,7 @@ comment|// the archive lookup code and we cannot import a class in
 comment|// the default package. So this is just a tiny springboard
 comment|// to jump into the real main code.
 comment|//
-DECL|method|main (final String argv[])
+DECL|method|main (final String[] argv)
 specifier|public
 specifier|static
 name|void
@@ -71,8 +71,8 @@ name|main
 parameter_list|(
 specifier|final
 name|String
-name|argv
 index|[]
+name|argv
 parameter_list|)
 throws|throws
 name|Exception

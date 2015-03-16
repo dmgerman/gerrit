@@ -1094,8 +1094,8 @@ name|name
 parameter_list|)
 block|{
 name|String
-name|s
 index|[]
+name|s
 init|=
 name|config
 operator|.

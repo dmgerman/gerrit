@@ -892,8 +892,8 @@ name|lists
 parameter_list|)
 block|{
 name|int
-name|end
 index|[]
+name|end
 init|=
 operator|new
 name|int

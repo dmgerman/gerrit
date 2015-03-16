@@ -558,8 +558,8 @@ DECL|field|lines
 specifier|private
 specifier|final
 name|Integer
-name|lines
 index|[]
+name|lines
 init|=
 block|{
 literal|0

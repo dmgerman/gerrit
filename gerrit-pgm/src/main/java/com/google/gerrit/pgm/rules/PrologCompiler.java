@@ -1609,8 +1609,8 @@ argument_list|)
 init|)
 block|{
 name|byte
-name|buffer
 index|[]
+name|buffer
 init|=
 operator|new
 name|byte

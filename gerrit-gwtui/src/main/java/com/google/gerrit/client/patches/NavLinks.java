@@ -461,8 +461,8 @@ decl_stmt|;
 DECL|field|cmds
 specifier|private
 name|KeyCommand
-name|cmds
 index|[]
+name|cmds
 init|=
 operator|new
 name|KeyCommand

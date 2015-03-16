@@ -3029,8 +3029,8 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|String
-name|t
 index|[]
+name|t
 init|=
 name|s
 operator|.
