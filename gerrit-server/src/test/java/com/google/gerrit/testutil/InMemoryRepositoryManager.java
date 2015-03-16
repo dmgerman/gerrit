@@ -382,6 +382,7 @@ annotation|@
 name|Override
 DECL|method|openRepository (Project.NameKey name)
 specifier|public
+specifier|synchronized
 name|InMemoryRepository
 name|openRepository
 parameter_list|(
@@ -404,6 +405,7 @@ annotation|@
 name|Override
 DECL|method|createRepository (Project.NameKey name)
 specifier|public
+specifier|synchronized
 name|InMemoryRepository
 name|createRepository
 parameter_list|(
@@ -494,8 +496,9 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|openMetadataRepository (Project.NameKey name)
+DECL|method|openMetadataRepository ( Project.NameKey name)
 specifier|public
+specifier|synchronized
 name|InMemoryRepository
 name|openMetadataRepository
 parameter_list|(
@@ -518,6 +521,7 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
+specifier|synchronized
 name|SortedSet
 argument_list|<
 name|Project
@@ -584,6 +588,7 @@ annotation|@
 name|Override
 DECL|method|getProjectDescription (Project.NameKey name)
 specifier|public
+specifier|synchronized
 name|String
 name|getProjectDescription
 parameter_list|(
@@ -611,6 +616,7 @@ annotation|@
 name|Override
 DECL|method|setProjectDescription (Project.NameKey name, String description)
 specifier|public
+specifier|synchronized
 name|void
 name|setProjectDescription
 parameter_list|(
@@ -649,6 +655,7 @@ block|}
 block|}
 DECL|method|get (Project.NameKey name)
 specifier|private
+specifier|synchronized
 name|Repo
 name|get
 parameter_list|(
