@@ -872,7 +872,7 @@ parameter_list|(
 name|String
 name|o
 parameter_list|)
-comment|/*-{     $wnd[o] = $entry(@com.google.gerrit.client.change.RelatedChangesTab::onOpen(Lcom/google/gwt/dom/client/NativeEvent;Lcom/google/gwt/dom/client/Element;));     return o + '(event,this)';   }-*/
+comment|/*-{     $wnd[o] = $entry(@com.google.gerrit.client.change.RelatedChangesTab::onOpen(       Lcom/google/gwt/dom/client/NativeEvent;Lcom/google/gwt/dom/client/Element;));     return o + '(event,this)';   }-*/
 function_decl|;
 DECL|method|onOpen (NativeEvent evt, Element e)
 specifier|private
