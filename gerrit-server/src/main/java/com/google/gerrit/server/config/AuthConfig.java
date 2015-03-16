@@ -1130,7 +1130,9 @@ case|:
 case|case
 name|CUSTOM_EXTENSION
 case|:
-comment|// Its safe to assume yes for an HTTP authentication type, as the
+case|case
+name|OAUTH
+case|:
 comment|// only way in is through some external system that the admin trusts
 comment|//
 return|return
