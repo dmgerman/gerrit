@@ -600,11 +600,13 @@ name|FlowPanel
 name|body
 decl_stmt|;
 DECL|field|labelIdx
-DECL|field|fieldIdx
 specifier|protected
 name|int
 name|labelIdx
-decl_stmt|,
+decl_stmt|;
+DECL|field|fieldIdx
+specifier|protected
+name|int
 name|fieldIdx
 decl_stmt|;
 DECL|field|save

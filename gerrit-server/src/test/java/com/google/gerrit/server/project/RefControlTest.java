@@ -2073,7 +2073,8 @@ literal|"u"
 argument_list|,
 name|DEVS
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|ProjectControl
 name|d
 init|=
 name|util
@@ -2150,7 +2151,8 @@ literal|"d.v"
 argument_list|,
 name|DEVS
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|ProjectControl
 name|d
 init|=
 name|util
@@ -2314,7 +2316,8 @@ name|local
 argument_list|,
 name|DEVS
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|ProjectControl
 name|d
 init|=
 name|util

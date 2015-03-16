@@ -1345,7 +1345,8 @@ name|String
 name|userName
 init|=
 literal|"-"
-decl_stmt|,
+decl_stmt|;
+name|String
 name|accountId
 init|=
 literal|"-"

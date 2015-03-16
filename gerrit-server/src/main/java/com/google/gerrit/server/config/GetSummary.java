@@ -591,11 +591,13 @@ name|int
 name|tasksRunning
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|tasksReady
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|tasksSleeping
 init|=
 literal|0

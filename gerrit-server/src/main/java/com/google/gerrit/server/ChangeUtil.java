@@ -1072,7 +1072,8 @@ name|OrmException
 block|{
 name|int
 name|p
-decl_stmt|,
+decl_stmt|;
+name|int
 name|s
 decl_stmt|;
 synchronized|synchronized

@@ -344,7 +344,8 @@ parameter_list|)
 block|{
 name|int
 name|min
-decl_stmt|,
+decl_stmt|;
+name|int
 name|max
 decl_stmt|;
 switch|switch

@@ -501,7 +501,8 @@ argument_list|)
 expr_stmt|;
 name|int
 name|begin
-decl_stmt|,
+decl_stmt|;
+name|int
 name|end
 decl_stmt|;
 if|if

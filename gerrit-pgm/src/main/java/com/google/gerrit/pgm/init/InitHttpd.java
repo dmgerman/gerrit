@@ -477,7 +477,8 @@ name|boolean
 name|proxy
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|ssl
 init|=
 literal|false

@@ -317,11 +317,13 @@ name|Anchor
 name|changeAvatar
 decl_stmt|;
 DECL|field|labelIdx
-DECL|field|fieldIdx
 specifier|private
 name|int
 name|labelIdx
-decl_stmt|,
+decl_stmt|;
+DECL|field|fieldIdx
+specifier|private
+name|int
 name|fieldIdx
 decl_stmt|;
 DECL|field|info

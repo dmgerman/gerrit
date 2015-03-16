@@ -2497,11 +2497,13 @@ name|boolean
 name|sboAuthor
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|sboCommitter
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|sboMe
 init|=
 literal|false

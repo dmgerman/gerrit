@@ -1009,11 +1009,13 @@ name|Path
 name|css
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+name|Path
 name|js
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+name|Path
 name|logo
 init|=
 literal|null

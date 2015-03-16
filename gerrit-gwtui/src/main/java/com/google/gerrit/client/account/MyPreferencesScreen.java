@@ -992,7 +992,9 @@ decl_stmt|;
 specifier|final
 name|int
 name|labelIdx
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|fieldIdx
 decl_stmt|;
 if|if
