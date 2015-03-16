@@ -146,6 +146,20 @@ name|common
 operator|.
 name|collect
 operator|.
+name|Iterables
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|collect
+operator|.
 name|Lists
 import|;
 end_import
@@ -211,6 +225,18 @@ operator|.
 name|model
 operator|.
 name|InitializationError
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
+name|Annotation
 import|;
 end_import
 
@@ -297,7 +323,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Suite to run tests with different {@code gerrit.config} values.  *<p>  * For each {@link Config} method in the class and base classes, a new group of  * tests is created with the {@link Parameter} field set to the config.  *  *<pre>  * {@literal @}RunWith(ConfigSuite.class)  * public abstract class MyAbstractTest {  *   {@literal @}ConfigSuite.Parameter  *   protected Config cfg;  *  *   {@literal @}ConfigSuite.Config  *   public static Config firstConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "a");  *   }  * }  *  * public class MyTest extends MyAbstractTest {  *   {@literal @}ConfigSuite.Config  *   public static Config secondConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "b");  *   }  *  *   {@literal @}Test  *   public void myTest() {  *     // Test using cfg.  *   }  * }  *</pre>  *  * This creates a suite of tests with three groups:  *<ul>  *<li><strong>default</strong>: {@code MyTest.myTest}</li>  *<li><strong>firstConfig</strong>: {@code MyTest.myTest[firstConfig]}</li>  *<li><strong>secondConfig</strong>: {@code MyTest.myTest[secondConfig]}</li>  *</ul>  *  * Additionally, config values used by<strong>default</strong> can be set  * in a method annotated with {@code @ConfigSuite.Default}.  */
+comment|/**  * Suite to run tests with different {@code gerrit.config} values.  *<p>  * For each {@link Config} method in the class and base classes, a new group of  * tests is created with the {@link Parameter} field set to the config.  *  *<pre>  * {@literal @}RunWith(ConfigSuite.class)  * public abstract class MyAbstractTest {  *   {@literal @}ConfigSuite.Parameter  *   protected Config cfg;  *  *   {@literal @}ConfigSuite.Config  *   public static Config firstConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "a");  *   }  * }  *  * public class MyTest extends MyAbstractTest {  *   {@literal @}ConfigSuite.Config  *   public static Config secondConfig() {  *     Config cfg = new Config();  *     cfg.setString("gerrit", null, "testValue", "b");  *   }  *  *   {@literal @}Test  *   public void myTest() {  *     // Test using cfg.  *   }  * }  *</pre>  *  * This creates a suite of tests with three groups:  *<ul>  *<li><strong>default</strong>: {@code MyTest.myTest}</li>  *<li><strong>firstConfig</strong>: {@code MyTest.myTest[firstConfig]}</li>  *<li><strong>secondConfig</strong>: {@code MyTest.myTest[secondConfig]}</li>  *</ul>  *  * Additionally, config values used by<strong>default</strong> can be set  * in a method annotated with {@code @ConfigSuite.Default}.  *<p>  * The name of the config method corresponding to the currently-running test can  * be stored in a field annotated with {@code @ConfigSuite.Name}.  */
 end_comment
 
 begin_class
@@ -371,6 +397,24 @@ specifier|static
 annotation_defn|@interface
 name|Parameter
 block|{   }
+annotation|@
+name|Target
+argument_list|(
+block|{
+name|FIELD
+block|}
+argument_list|)
+annotation|@
+name|Retention
+argument_list|(
+name|RUNTIME
+argument_list|)
+DECL|annotation|Name
+specifier|public
+specifier|static
+annotation_defn|@interface
+name|Name
+block|{   }
 DECL|class|ConfigRunner
 specifier|private
 specifier|static
@@ -391,13 +435,19 @@ specifier|final
 name|Field
 name|parameterField
 decl_stmt|;
+DECL|field|nameField
+specifier|private
+specifier|final
+name|Field
+name|nameField
+decl_stmt|;
 DECL|field|name
 specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|method|ConfigRunner (Class<?> clazz, Field parameterField, String name, Method configMethod)
+DECL|method|ConfigRunner (Class<?> clazz, Field parameterField, Field nameField, String name, Method configMethod)
 specifier|private
 name|ConfigRunner
 parameter_list|(
@@ -409,6 +459,9 @@ name|clazz
 parameter_list|,
 name|Field
 name|parameterField
+parameter_list|,
+name|Field
+name|nameField
 parameter_list|,
 name|String
 name|name
@@ -429,6 +482,12 @@ operator|.
 name|parameterField
 operator|=
 name|parameterField
+expr_stmt|;
+name|this
+operator|.
+name|nameField
+operator|=
+name|nameField
 expr_stmt|;
 name|this
 operator|.
@@ -477,6 +536,23 @@ name|configMethod
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|nameField
+operator|!=
+literal|null
+condition|)
+block|{
+name|nameField
+operator|.
+name|set
+argument_list|(
+name|test
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|test
 return|;
@@ -572,11 +648,36 @@ name|clazz
 argument_list|)
 decl_stmt|;
 name|Field
-name|field
+name|parameterField
 init|=
-name|getParameterField
+name|getOnlyField
 argument_list|(
 name|clazz
+argument_list|,
+name|Parameter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+name|checkArgument
+argument_list|(
+name|parameterField
+operator|!=
+literal|null
+argument_list|,
+literal|"No @ConfigSuite.Field found"
+argument_list|)
+expr_stmt|;
+name|Field
+name|nameField
+init|=
+name|getOnlyField
+argument_list|(
+name|clazz
+argument_list|,
+name|Name
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 name|List
@@ -608,7 +709,9 @@ name|ConfigRunner
 argument_list|(
 name|clazz
 argument_list|,
-name|field
+name|parameterField
+argument_list|,
+name|nameField
 argument_list|,
 literal|null
 argument_list|,
@@ -633,7 +736,9 @@ name|ConfigRunner
 argument_list|(
 name|clazz
 argument_list|,
-name|field
+name|parameterField
+argument_list|,
+name|nameField
 argument_list|,
 name|m
 operator|.
@@ -994,17 +1099,25 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|getParameterField (Class<?> clazz)
+DECL|method|getOnlyField (Class<?> clazz, Class<? extends Annotation> ann)
 specifier|private
 specifier|static
 name|Field
-name|getParameterField
+name|getOnlyField
 parameter_list|(
 name|Class
 argument_list|<
 name|?
 argument_list|>
 name|clazz
+parameter_list|,
+name|Class
+argument_list|<
+name|?
+extends|extends
+name|Annotation
+argument_list|>
+name|ann
 parameter_list|)
 block|{
 name|List
@@ -1037,9 +1150,7 @@ name|f
 operator|.
 name|getAnnotation
 argument_list|(
-name|Parameter
-operator|.
-name|class
+name|ann
 argument_list|)
 operator|!=
 literal|null
@@ -1060,20 +1171,27 @@ name|fields
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|<=
 literal|1
 argument_list|,
-literal|"expected 1 @ConfigSuite.Parameter field, found: %s"
+literal|"expected 1 @ConfigSuite.%s field, found: %s"
+argument_list|,
+name|ann
+operator|.
+name|getSimpleName
+argument_list|()
 argument_list|,
 name|fields
 argument_list|)
 expr_stmt|;
 return|return
-name|fields
+name|Iterables
 operator|.
-name|get
+name|getFirst
 argument_list|(
-literal|0
+name|fields
+argument_list|,
+literal|null
 argument_list|)
 return|;
 block|}

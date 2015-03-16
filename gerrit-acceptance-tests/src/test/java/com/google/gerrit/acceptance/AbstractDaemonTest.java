@@ -980,6 +980,15 @@ name|Config
 name|baseConfig
 decl_stmt|;
 annotation|@
+name|ConfigSuite
+operator|.
+name|Name
+DECL|field|configName
+specifier|private
+name|String
+name|configName
+decl_stmt|;
+annotation|@
 name|Inject
 DECL|field|allProjects
 specifier|protected
