@@ -118,9 +118,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|api
 operator|.
-name|AuthException
+name|projects
+operator|.
+name|PutDescriptionInput
 import|;
 end_import
 
@@ -136,7 +138,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|DefaultInput
+name|AuthException
 import|;
 end_import
 
@@ -320,24 +322,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|PutDescription
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -422,6 +406,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|PutDescription
+specifier|public
 class|class
 name|PutDescription
 implements|implements
@@ -429,25 +414,9 @@ name|RestModifyView
 argument_list|<
 name|ProjectResource
 argument_list|,
-name|Input
+name|PutDescriptionInput
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{
-annotation|@
-name|DefaultInput
-DECL|field|description
-name|String
-name|description
-decl_stmt|;
-DECL|field|commitMessage
-name|String
-name|commitMessage
-decl_stmt|;
-block|}
 DECL|field|cache
 specifier|private
 specifier|final
@@ -521,7 +490,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (ProjectResource resource, Input input)
+DECL|method|apply (ProjectResource resource, PutDescriptionInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -532,7 +501,7 @@ parameter_list|(
 name|ProjectResource
 name|resource
 parameter_list|,
-name|Input
+name|PutDescriptionInput
 name|input
 parameter_list|)
 throws|throws
@@ -554,7 +523,7 @@ block|{
 name|input
 operator|=
 operator|new
-name|Input
+name|PutDescriptionInput
 argument_list|()
 expr_stmt|;
 comment|// Delete would set description to null.

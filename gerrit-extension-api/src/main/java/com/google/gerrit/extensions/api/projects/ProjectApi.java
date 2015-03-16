@@ -156,6 +156,23 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|description ()
+name|String
+name|description
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|description (PutDescriptionInput in)
+name|void
+name|description
+parameter_list|(
+name|PutDescriptionInput
+name|in
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|children ()
 name|List
 argument_list|<
@@ -250,6 +267,41 @@ specifier|public
 name|ProjectInfo
 name|get
 parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|description ()
+specifier|public
+name|String
+name|description
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|description (PutDescriptionInput in)
+specifier|public
+name|void
+name|description
+parameter_list|(
+name|PutDescriptionInput
+name|in
+parameter_list|)
 throws|throws
 name|RestApiException
 block|{
