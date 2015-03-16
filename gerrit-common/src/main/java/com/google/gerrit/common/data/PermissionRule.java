@@ -574,6 +574,7 @@ name|cmp
 operator|==
 literal|0
 condition|)
+block|{
 name|cmp
 operator|=
 name|range
@@ -586,12 +587,14 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|cmp
 operator|==
 literal|0
 condition|)
+block|{
 name|cmp
 operator|=
 name|group
@@ -607,6 +610,7 @@ name|o
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cmp
 return|;

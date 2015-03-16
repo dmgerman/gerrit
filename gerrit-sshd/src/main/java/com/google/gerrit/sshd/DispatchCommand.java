@@ -627,6 +627,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|bc
 operator|.
 name|setName
@@ -634,7 +635,9 @@ argument_list|(
 name|commandName
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|bc
 operator|.
 name|setName
@@ -647,6 +650,7 @@ operator|+
 name|commandName
 argument_list|)
 expr_stmt|;
+block|}
 name|bc
 operator|.
 name|setArguments

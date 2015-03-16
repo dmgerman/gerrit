@@ -927,9 +927,11 @@ name|cmp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|cmp
 return|;
+block|}
 return|return
 name|a
 operator|.

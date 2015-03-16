@@ -1105,6 +1105,7 @@ name|args
 operator|.
 name|length
 condition|)
+block|{
 name|tmp
 operator|.
 name|add
@@ -1116,6 +1117,7 @@ operator|++
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 block|}
 if|if

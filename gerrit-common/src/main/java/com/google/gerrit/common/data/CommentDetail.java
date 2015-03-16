@@ -708,6 +708,7 @@ name|parentUuid
 operator|==
 literal|null
 condition|)
+block|{
 name|rootComments
 operator|.
 name|add
@@ -715,6 +716,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Add the comments in the list, starting with the head and then going through all the
 comment|// comments that have it as a parent, and so on

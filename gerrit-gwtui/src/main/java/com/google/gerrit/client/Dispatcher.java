@@ -5431,6 +5431,7 @@ argument_list|,
 name|token
 argument_list|)
 condition|)
+block|{
 return|return
 operator|new
 name|ValidateEmailScreen
@@ -5441,6 +5442,7 @@ name|token
 argument_list|)
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|matchExact
@@ -5450,11 +5452,13 @@ argument_list|,
 name|token
 argument_list|)
 condition|)
+block|{
 return|return
 operator|new
 name|NewAgreementScreen
 argument_list|()
 return|;
+block|}
 if|if
 condition|(
 name|matchPrefix

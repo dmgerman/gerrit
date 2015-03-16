@@ -1768,6 +1768,7 @@ operator|.
 name|getRowCount
 argument_list|()
 condition|)
+block|{
 name|table
 operator|.
 name|removeRow
@@ -1780,6 +1781,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 specifier|final
@@ -2522,6 +2524,7 @@ operator|.
 name|getRowCount
 argument_list|()
 condition|)
+block|{
 name|table
 operator|.
 name|removeRow
@@ -2534,6 +2537,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 specifier|final

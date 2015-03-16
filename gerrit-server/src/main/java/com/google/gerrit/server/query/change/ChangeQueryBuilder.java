@@ -2770,6 +2770,7 @@ argument_list|(
 literal|"^"
 argument_list|)
 condition|)
+block|{
 return|return
 operator|new
 name|RegexProjectPredicate
@@ -2777,6 +2778,7 @@ argument_list|(
 name|name
 argument_list|)
 return|;
+block|}
 return|return
 operator|new
 name|ProjectPredicate
@@ -2864,6 +2866,7 @@ argument_list|(
 literal|"^"
 argument_list|)
 condition|)
+block|{
 return|return
 name|ref
 argument_list|(
@@ -2880,6 +2883,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 return|;
+block|}
 return|return
 name|ref
 argument_list|(
@@ -2912,6 +2916,7 @@ operator|.
 name|R_HEADS
 argument_list|)
 condition|)
+block|{
 return|return
 name|Branch
 operator|.
@@ -2919,6 +2924,7 @@ name|R_HEADS
 operator|+
 name|name
 return|;
+block|}
 return|return
 name|name
 return|;
@@ -2968,6 +2974,7 @@ argument_list|(
 literal|"^"
 argument_list|)
 condition|)
+block|{
 return|return
 operator|new
 name|RegexTopicPredicate
@@ -2975,6 +2982,7 @@ argument_list|(
 name|name
 argument_list|)
 return|;
+block|}
 return|return
 operator|new
 name|TopicPredicate
@@ -3006,6 +3014,7 @@ argument_list|(
 literal|"^"
 argument_list|)
 condition|)
+block|{
 return|return
 operator|new
 name|RegexRefPredicate
@@ -3013,6 +3022,7 @@ argument_list|(
 name|ref
 argument_list|)
 return|;
+block|}
 return|return
 operator|new
 name|RefPredicate

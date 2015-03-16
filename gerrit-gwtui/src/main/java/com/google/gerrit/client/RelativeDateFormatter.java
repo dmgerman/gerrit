@@ -208,6 +208,7 @@ name|ageMillis
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 name|Util
 operator|.
@@ -216,6 +217,7 @@ operator|.
 name|inTheFuture
 argument_list|()
 return|;
+block|}
 comment|// seconds
 if|if
 condition|(

@@ -1485,6 +1485,7 @@ name|inquote
 operator|||
 name|inDblQuote
 condition|)
+block|{
 name|r
 operator|.
 name|append
@@ -1492,6 +1493,7 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1528,6 +1530,7 @@ if|if
 condition|(
 name|inquote
 condition|)
+block|{
 name|r
 operator|.
 name|append
@@ -1535,12 +1538,15 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|inDblQuote
 operator|=
 operator|!
 name|inDblQuote
 expr_stmt|;
+block|}
 continue|continue;
 case|case
 literal|'\''
@@ -1549,6 +1555,7 @@ if|if
 condition|(
 name|inDblQuote
 condition|)
+block|{
 name|r
 operator|.
 name|append
@@ -1556,12 +1563,15 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|inquote
 operator|=
 operator|!
 name|inquote
 expr_stmt|;
+block|}
 continue|continue;
 case|case
 literal|'\\'
@@ -1577,6 +1587,7 @@ operator|.
 name|length
 argument_list|()
 condition|)
+block|{
 name|r
 operator|.
 name|append
@@ -1585,7 +1596,9 @@ name|b
 argument_list|)
 expr_stmt|;
 comment|// literal within a quote
+block|}
 else|else
+block|{
 name|r
 operator|.
 name|append
@@ -1599,6 +1612,7 @@ operator|++
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 continue|continue;
 default|default:
 name|r

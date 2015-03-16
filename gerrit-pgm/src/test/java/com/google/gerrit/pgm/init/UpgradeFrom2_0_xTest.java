@@ -784,10 +784,7 @@ name|equals
 argument_list|(
 name|n
 argument_list|)
-condition|)
-continue|continue;
-if|if
-condition|(
+operator|||
 literal|"secure.config"
 operator|.
 name|equals
@@ -795,7 +792,9 @@ argument_list|(
 name|n
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 try|try
 init|(
 name|InputStream

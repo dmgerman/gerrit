@@ -1463,6 +1463,7 @@ name|getParentKey
 argument_list|()
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|Failure
@@ -1472,6 +1473,7 @@ name|NoSuchEntityException
 argument_list|()
 argument_list|)
 throw|;
+block|}
 block|}
 name|db
 operator|.

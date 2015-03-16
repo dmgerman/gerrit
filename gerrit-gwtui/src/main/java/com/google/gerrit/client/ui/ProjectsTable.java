@@ -478,6 +478,7 @@ operator|.
 name|getRowCount
 argument_list|()
 condition|)
+block|{
 name|table
 operator|.
 name|removeRow
@@ -490,6 +491,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|ProjectInfo
@@ -564,6 +566,7 @@ argument_list|,
 name|toIndex
 argument_list|)
 control|)
+block|{
 name|insert
 argument_list|(
 name|table
@@ -574,6 +577,7 @@ argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
+block|}
 name|finishDisplay
 argument_list|()
 expr_stmt|;

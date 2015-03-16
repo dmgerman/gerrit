@@ -734,6 +734,7 @@ name|b
 range|:
 name|data
 control|)
+block|{
 name|r
 operator|.
 name|append
@@ -748,6 +749,7 @@ literal|0xff
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|r
 operator|.

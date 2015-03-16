@@ -1790,6 +1790,7 @@ name|space
 operator|<
 literal|0
 condition|)
+block|{
 name|space
 operator|=
 name|auth
@@ -1797,12 +1798,14 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|comma
 operator|<
 literal|0
 condition|)
+block|{
 name|comma
 operator|=
 name|auth
@@ -1810,6 +1813,7 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
+block|}
 specifier|final
 name|int
 name|e
