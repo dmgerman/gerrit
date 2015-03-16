@@ -201,8 +201,8 @@ operator|=
 literal|"Create a new branch"
 argument_list|)
 DECL|class|CreateBranchCommand
-specifier|final
 specifier|public
+specifier|final
 class|class
 name|CreateBranchCommand
 extends|extends
