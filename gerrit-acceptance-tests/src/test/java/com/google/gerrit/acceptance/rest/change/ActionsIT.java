@@ -134,6 +134,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|acceptance
+operator|.
+name|RestSession
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|extensions
 operator|.
 name|api
@@ -659,8 +673,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getActions (String changeId)
-specifier|private
+DECL|method|getActions (RestSession adminSession, String changeId)
+specifier|static
 name|Map
 argument_list|<
 name|String
@@ -669,6 +683,9 @@ name|ActionInfo
 argument_list|>
 name|getActions
 parameter_list|(
+name|RestSession
+name|adminSession
+parameter_list|,
 name|String
 name|changeId
 parameter_list|)
@@ -710,6 +727,31 @@ block|{}
 operator|.
 name|getType
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|getActions (String changeId)
+specifier|private
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ActionInfo
+argument_list|>
+name|getActions
+parameter_list|(
+name|String
+name|changeId
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|getActions
+argument_list|(
+name|adminSession
+argument_list|,
+name|changeId
 argument_list|)
 return|;
 block|}
@@ -890,11 +932,14 @@ name|topic
 argument_list|)
 return|;
 block|}
-DECL|method|approve (String changeId)
-specifier|private
+DECL|method|approve (RestSession adminSession, String changeId)
+specifier|static
 name|void
 name|approve
 parameter_list|(
+name|RestSession
+name|adminSession
+parameter_list|,
 name|String
 name|changeId
 parameter_list|)
@@ -945,6 +990,25 @@ name|r
 operator|.
 name|consume
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|approve (String changeId)
+specifier|private
+name|void
+name|approve
+parameter_list|(
+name|String
+name|changeId
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|approve
+argument_list|(
+name|adminSession
+argument_list|,
+name|changeId
+argument_list|)
 expr_stmt|;
 block|}
 block|}
