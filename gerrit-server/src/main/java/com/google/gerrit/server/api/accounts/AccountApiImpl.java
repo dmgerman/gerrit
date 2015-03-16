@@ -275,10 +275,6 @@ DECL|class|AccountApiImpl
 specifier|public
 class|class
 name|AccountApiImpl
-extends|extends
-name|AccountApi
-operator|.
-name|NotImplemented
 implements|implements
 name|AccountApi
 block|{

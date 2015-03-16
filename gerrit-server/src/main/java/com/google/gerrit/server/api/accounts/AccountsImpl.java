@@ -327,10 +327,6 @@ DECL|class|AccountsImpl
 specifier|public
 class|class
 name|AccountsImpl
-extends|extends
-name|Accounts
-operator|.
-name|NotImplemented
 implements|implements
 name|Accounts
 block|{

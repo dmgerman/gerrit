@@ -694,10 +694,6 @@ begin_class
 DECL|class|ChangeApiImpl
 class|class
 name|ChangeApiImpl
-extends|extends
-name|ChangeApi
-operator|.
-name|NotImplemented
 implements|implements
 name|ChangeApi
 block|{

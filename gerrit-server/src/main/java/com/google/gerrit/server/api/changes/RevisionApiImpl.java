@@ -760,10 +760,6 @@ begin_class
 DECL|class|RevisionApiImpl
 class|class
 name|RevisionApiImpl
-extends|extends
-name|RevisionApi
-operator|.
-name|NotImplemented
 implements|implements
 name|RevisionApi
 block|{

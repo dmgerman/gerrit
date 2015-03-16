@@ -280,10 +280,6 @@ begin_class
 DECL|class|FileApiImpl
 class|class
 name|FileApiImpl
-extends|extends
-name|FileApi
-operator|.
-name|NotImplemented
 implements|implements
 name|FileApi
 block|{
