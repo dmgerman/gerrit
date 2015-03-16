@@ -1054,22 +1054,14 @@ name|contains
 argument_list|(
 name|c
 argument_list|)
-condition|)
-block|{         }
-elseif|else
-if|if
-condition|(
+operator|||
 name|toInclude
 operator|.
 name|contains
 argument_list|(
 name|c
 argument_list|)
-condition|)
-block|{         }
-elseif|else
-if|if
-condition|(
+operator|||
 name|c
 operator|.
 name|getParentCount
@@ -1077,7 +1069,9 @@ argument_list|()
 operator|>
 literal|1
 condition|)
-block|{         }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(

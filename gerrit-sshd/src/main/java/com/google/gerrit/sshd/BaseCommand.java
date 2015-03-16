@@ -1497,12 +1497,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
+operator|(
 name|e
 operator|instanceof
 name|UnloggedFailure
+operator|)
 condition|)
-block|{     }
-else|else
 block|{
 specifier|final
 name|StringBuilder

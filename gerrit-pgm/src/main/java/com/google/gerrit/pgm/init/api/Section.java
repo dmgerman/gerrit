@@ -484,17 +484,6 @@ operator|.
 name|size
 argument_list|()
 operator|==
-literal|0
-condition|)
-block|{     }
-elseif|else
-if|if
-condition|(
-name|all
-operator|.
-name|size
-argument_list|()
-operator|==
 literal|1
 condition|)
 block|{
@@ -512,7 +501,16 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|all
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|0
+condition|)
 block|{
 name|all
 operator|.

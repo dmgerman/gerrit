@@ -1137,7 +1137,9 @@ name|FileMode
 operator|.
 name|GITLINK
 condition|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(
