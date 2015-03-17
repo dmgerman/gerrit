@@ -167,10 +167,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|FancyFlexTableImplIE6
+DECL|class|FancyFlexTableImplIE8
 specifier|public
 class|class
-name|FancyFlexTableImplIE6
+name|FancyFlexTableImplIE8
 extends|extends
 name|FancyFlexTableImpl
 block|{
