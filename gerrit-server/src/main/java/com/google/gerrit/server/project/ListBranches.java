@@ -1041,7 +1041,6 @@ expr_stmt|;
 block|}
 continue|continue;
 block|}
-specifier|final
 name|RefControl
 name|refControl
 init|=
@@ -1144,11 +1143,9 @@ specifier|public
 name|int
 name|compare
 parameter_list|(
-specifier|final
 name|BranchInfo
 name|a
 parameter_list|,
-specifier|final
 name|BranchInfo
 name|b
 parameter_list|)
