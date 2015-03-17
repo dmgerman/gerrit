@@ -118,6 +118,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|ActionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|ETagView
@@ -284,6 +300,16 @@ name|Config
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -361,7 +387,15 @@ annotation|@
 name|Override
 DECL|method|apply (RevisionResource rsrc)
 specifier|public
-name|Object
+name|Response
+argument_list|<
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ActionInfo
+argument_list|>
+argument_list|>
 name|apply
 parameter_list|(
 name|RevisionResource
