@@ -1537,6 +1537,13 @@ name|change
 operator|.
 name|getTopic
 argument_list|()
+operator|+
+literal|"-"
+operator|+
+name|newDest
+operator|.
+name|getShortName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|addMessageToSourceChange

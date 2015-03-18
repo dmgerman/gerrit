@@ -1397,7 +1397,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"someTopic"
+literal|"someTopic-foo"
 argument_list|)
 expr_stmt|;
 name|cherry
