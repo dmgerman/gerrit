@@ -2236,6 +2236,16 @@ operator|.
 name|includeDiff
 return|;
 block|}
+DECL|field|HEAP_EST_SIZE
+specifier|private
+specifier|static
+name|int
+name|HEAP_EST_SIZE
+init|=
+literal|32
+operator|*
+literal|1024
+decl_stmt|;
 comment|/** Show patch set as unified difference. */
 DECL|method|getUnifiedDiff ()
 specifier|public
@@ -2289,6 +2299,15 @@ return|return
 literal|""
 return|;
 block|}
+name|int
+name|maxSize
+init|=
+name|args
+operator|.
+name|settings
+operator|.
+name|maximumDiffSize
+decl_stmt|;
 name|TemporaryBuffer
 operator|.
 name|Heap
@@ -2299,11 +2318,16 @@ name|TemporaryBuffer
 operator|.
 name|Heap
 argument_list|(
-name|args
+name|Math
 operator|.
-name|settings
-operator|.
-name|maximumDiffSize
+name|min
+argument_list|(
+name|HEAP_EST_SIZE
+argument_list|,
+name|maxSize
+argument_list|)
+argument_list|,
+name|maxSize
 argument_list|)
 decl_stmt|;
 try|try

@@ -1666,6 +1666,20 @@ name|FORM_TYPE
 init|=
 literal|"application/x-www-form-urlencoded"
 decl_stmt|;
+DECL|field|HEAP_EST_SIZE
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|HEAP_EST_SIZE
+init|=
+literal|10
+operator|*
+literal|8
+operator|*
+literal|1024
+decl_stmt|;
+comment|// Presize 10 blocks.
 comment|/**    * Garbage prefix inserted before JSON output to prevent XSSI.    *<p>    * This prefix is ")]}'\n" and is designed to prevent a web browser from    * executing the response body if the resource URI were to be referenced using    * a&lt;script src="...&gt; HTML tag from another web site. Clients using the    * HTTP interface will need to always strip the first line of response data to    * remove this magic header.    */
 DECL|field|JSON_MAGIC
 specifier|public
@@ -5022,6 +5036,8 @@ name|buf
 init|=
 name|heap
 argument_list|(
+name|HEAP_EST_SIZE
+argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
@@ -5798,6 +5814,8 @@ name|buf
 init|=
 name|heap
 argument_list|(
+name|HEAP_EST_SIZE
+argument_list|,
 name|Integer
 operator|.
 name|MAX_VALUE
@@ -7712,6 +7730,37 @@ block|}
 end_function
 
 begin_function
+DECL|method|base64MaxSize (long n)
+specifier|private
+specifier|static
+name|int
+name|base64MaxSize
+parameter_list|(
+name|long
+name|n
+parameter_list|)
+block|{
+return|return
+literal|4
+operator|*
+name|IntMath
+operator|.
+name|divide
+argument_list|(
+operator|(
+name|int
+operator|)
+name|n
+argument_list|,
+literal|3
+argument_list|,
+name|CEILING
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|method|base64 (BinaryResult bin)
 specifier|private
 specifier|static
@@ -7725,25 +7774,29 @@ throws|throws
 name|IOException
 block|{
 name|int
-name|max
+name|maxSize
 init|=
-literal|4
-operator|*
-name|IntMath
-operator|.
-name|divide
+name|base64MaxSize
 argument_list|(
-operator|(
-name|int
-operator|)
 name|bin
 operator|.
 name|getContentLength
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|int
+name|estSize
+init|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|base64MaxSize
+argument_list|(
+name|HEAP_EST_SIZE
+argument_list|)
 argument_list|,
-literal|3
-argument_list|,
-name|CEILING
+name|maxSize
 argument_list|)
 decl_stmt|;
 name|TemporaryBuffer
@@ -7753,7 +7806,9 @@ name|buf
 init|=
 name|heap
 argument_list|(
-name|max
+name|estSize
+argument_list|,
+name|maxSize
 argument_list|)
 decl_stmt|;
 name|OutputStream
@@ -7816,6 +7871,8 @@ name|buf
 init|=
 name|heap
 argument_list|(
+name|HEAP_EST_SIZE
+argument_list|,
 literal|20
 operator|<<
 literal|20
@@ -7919,12 +7976,15 @@ block|}
 end_function
 
 begin_function
-DECL|method|heap (int max)
+DECL|method|heap (int est, int max)
 specifier|private
 specifier|static
 name|Heap
 name|heap
 parameter_list|(
+name|int
+name|est
+parameter_list|,
 name|int
 name|max
 parameter_list|)
@@ -7935,6 +7995,8 @@ name|TemporaryBuffer
 operator|.
 name|Heap
 argument_list|(
+name|est
+argument_list|,
 name|max
 argument_list|)
 return|;
