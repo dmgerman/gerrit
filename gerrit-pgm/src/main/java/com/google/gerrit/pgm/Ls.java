@@ -270,6 +270,16 @@ operator|&=
 operator|!
 name|name
 operator|.
+name|startsWith
+argument_list|(
+literal|"WEB-INF/pgm-lib/"
+argument_list|)
+expr_stmt|;
+name|show
+operator|&=
+operator|!
+name|name
+operator|.
 name|equals
 argument_list|(
 literal|"WEB-INF/web.xml"
