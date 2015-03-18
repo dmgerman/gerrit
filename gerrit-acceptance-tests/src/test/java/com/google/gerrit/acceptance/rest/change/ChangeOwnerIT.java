@@ -452,14 +452,13 @@ operator|.
 name|open
 argument_list|()
 expr_stmt|;
-name|setRepo
-argument_list|(
+name|testRepo
+operator|=
 name|cloneProject
 argument_list|(
 name|project
 argument_list|,
 name|sshSession
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|sshSession

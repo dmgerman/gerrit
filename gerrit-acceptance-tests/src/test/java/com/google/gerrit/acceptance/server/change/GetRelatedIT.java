@@ -552,7 +552,7 @@ argument_list|()
 decl_stmt|;
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/for/master"
 argument_list|,
@@ -742,7 +742,7 @@ argument_list|()
 decl_stmt|;
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/for/master"
 argument_list|,
@@ -793,7 +793,7 @@ argument_list|)
 expr_stmt|;
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/for/master"
 argument_list|,
@@ -1009,9 +1009,7 @@ comment|// Create two commits and push.
 name|ObjectId
 name|initial
 init|=
-name|testRepo
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
@@ -1092,7 +1090,7 @@ argument_list|()
 decl_stmt|;
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/for/master"
 argument_list|,
@@ -1177,7 +1175,7 @@ argument_list|()
 decl_stmt|;
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/for/master"
 argument_list|,
@@ -1553,7 +1551,7 @@ argument_list|()
 decl_stmt|;
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/for/master"
 argument_list|,

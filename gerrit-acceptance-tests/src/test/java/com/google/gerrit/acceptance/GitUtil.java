@@ -182,20 +182,6 @@ name|jgit
 operator|.
 name|api
 operator|.
-name|Git
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|api
-operator|.
 name|PushCommand
 import|;
 end_import
@@ -753,14 +739,17 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|fetch (Git git, String spec)
+DECL|method|fetch (TestRepository<?> testRepo, String spec)
 specifier|public
 specifier|static
 name|void
 name|fetch
 parameter_list|(
-name|Git
-name|git
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|testRepo
 parameter_list|,
 name|String
 name|spec
@@ -771,7 +760,10 @@ block|{
 name|FetchCommand
 name|fetch
 init|=
+name|testRepo
+operator|.
 name|git
+argument_list|()
 operator|.
 name|fetch
 argument_list|()
@@ -793,14 +785,17 @@ name|call
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|pushHead (Git git, String ref, boolean pushTags)
+DECL|method|pushHead (TestRepository<?> testRepo, String ref, boolean pushTags)
 specifier|public
 specifier|static
 name|PushResult
 name|pushHead
 parameter_list|(
-name|Git
-name|git
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|testRepo
 parameter_list|,
 name|String
 name|ref
@@ -814,7 +809,7 @@ block|{
 return|return
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 name|ref
 argument_list|,
@@ -824,14 +819,17 @@ literal|false
 argument_list|)
 return|;
 block|}
-DECL|method|pushHead (Git git, String ref, boolean pushTags, boolean force)
+DECL|method|pushHead (TestRepository<?> testRepo, String ref, boolean pushTags, boolean force)
 specifier|public
 specifier|static
 name|PushResult
 name|pushHead
 parameter_list|(
-name|Git
-name|git
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|testRepo
 parameter_list|,
 name|String
 name|ref
@@ -848,7 +846,10 @@ block|{
 name|PushCommand
 name|pushCmd
 init|=
+name|testRepo
+operator|.
 name|git
+argument_list|()
 operator|.
 name|push
 argument_list|()

@@ -439,8 +439,8 @@ name|p
 argument_list|)
 throw|;
 block|}
-name|setRepo
-argument_list|(
+name|testRepo
+operator|=
 name|cloneProject
 argument_list|(
 name|project
@@ -453,7 +453,6 @@ name|project
 operator|.
 name|get
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

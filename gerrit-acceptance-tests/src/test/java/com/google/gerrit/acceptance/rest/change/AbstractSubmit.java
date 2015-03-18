@@ -704,9 +704,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|api
+name|diff
 operator|.
-name|Git
+name|DiffFormatter
 import|;
 end_import
 
@@ -718,9 +718,9 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
-name|diff
+name|junit
 operator|.
-name|DiffFormatter
+name|TestRepository
 import|;
 end_import
 
@@ -2261,13 +2261,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertCherryPick (Git localGit, boolean contentMerge)
+DECL|method|assertCherryPick (TestRepository<?> testRepo, boolean contentMerge)
 specifier|protected
 name|void
 name|assertCherryPick
 parameter_list|(
-name|Git
-name|localGit
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|testRepo
 parameter_list|,
 name|boolean
 name|contentMerge
@@ -2277,7 +2280,7 @@ name|IOException
 block|{
 name|assertRebase
 argument_list|(
-name|localGit
+name|testRepo
 argument_list|,
 name|contentMerge
 argument_list|)
@@ -2315,13 +2318,16 @@ name|isNotEmpty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|assertRebase (Git localGit, boolean contentMerge)
+DECL|method|assertRebase (TestRepository<?> testRepo, boolean contentMerge)
 specifier|protected
 name|void
 name|assertRebase
 parameter_list|(
-name|Git
-name|localGit
+name|TestRepository
+argument_list|<
+name|?
+argument_list|>
+name|testRepo
 parameter_list|,
 name|boolean
 name|contentMerge
@@ -2332,7 +2338,7 @@ block|{
 name|Repository
 name|repo
 init|=
-name|localGit
+name|testRepo
 operator|.
 name|getRepository
 argument_list|()

@@ -422,9 +422,7 @@ expr_stmt|;
 name|String
 name|headCommit
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
@@ -449,9 +447,7 @@ expr_stmt|;
 name|String
 name|devCommit
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
@@ -654,9 +650,7 @@ expr_stmt|;
 name|String
 name|headCommit
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
@@ -773,9 +767,7 @@ expr_stmt|;
 name|String
 name|devCommit
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
