@@ -869,6 +869,13 @@ argument_list|)
 condition|)
 block|{
 comment|// Both link to the same account, that's what we expected.
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"OAuth2: claimed identity equals current id"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -929,6 +936,18 @@ condition|)
 block|{
 comment|// Claimed account already exists: link to it.
 comment|//
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"OAuth2: linking claimed identity to {}"
+argument_list|,
+name|claimedId
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|accountManager
@@ -981,6 +1000,16 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"OAuth2: claimed identity is empty"
+argument_list|)
+expr_stmt|;
 block|}
 name|areq
 operator|.
