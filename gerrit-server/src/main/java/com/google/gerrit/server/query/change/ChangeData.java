@@ -3652,6 +3652,17 @@ condition|(
 name|ps
 operator|==
 literal|null
+operator|||
+operator|!
+name|changeControl
+argument_list|()
+operator|.
+name|isPatchVisible
+argument_list|(
+name|ps
+argument_list|,
+name|db
+argument_list|)
 condition|)
 block|{
 return|return
