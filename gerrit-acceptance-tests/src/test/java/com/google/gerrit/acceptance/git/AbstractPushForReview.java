@@ -443,6 +443,8 @@ name|setRepo
 argument_list|(
 name|cloneProject
 argument_list|(
+name|project
+argument_list|,
 name|url
 operator|+
 literal|"/"

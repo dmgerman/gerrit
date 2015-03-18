@@ -833,18 +833,12 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Change 1,2 (+FILE_A, -FILE_D))
-name|git
+name|testRepo
 operator|.
 name|cherryPick
-argument_list|()
-operator|.
-name|include
 argument_list|(
 name|c
 argument_list|)
-operator|.
-name|call
-argument_list|()
 expr_stmt|;
 name|pushHead
 argument_list|(
@@ -1183,18 +1177,12 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Change 1,2 (+FILE_A, +FILE_C, -FILE_D)
-name|git
+name|testRepo
 operator|.
 name|cherryPick
-argument_list|()
-operator|.
-name|include
 argument_list|(
 name|a
 argument_list|)
-operator|.
-name|call
-argument_list|()
 expr_stmt|;
 name|RevCommit
 name|b

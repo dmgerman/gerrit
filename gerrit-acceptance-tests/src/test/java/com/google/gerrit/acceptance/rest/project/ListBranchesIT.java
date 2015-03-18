@@ -420,7 +420,7 @@ literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
 name|String
-name|masterCommit
+name|headCommit
 init|=
 name|git
 operator|.
@@ -429,7 +429,7 @@ argument_list|()
 operator|.
 name|getRef
 argument_list|(
-literal|"master"
+literal|"HEAD"
 argument_list|)
 operator|.
 name|getTarget
@@ -456,7 +456,7 @@ argument_list|()
 operator|.
 name|getRef
 argument_list|(
-literal|"master"
+literal|"HEAD"
 argument_list|)
 operator|.
 name|getTarget
@@ -524,7 +524,7 @@ name|BranchInfo
 argument_list|(
 literal|"refs/heads/master"
 argument_list|,
-name|masterCommit
+name|headCommit
 argument_list|,
 literal|false
 argument_list|)
@@ -652,7 +652,7 @@ literal|"refs/heads/master"
 argument_list|)
 expr_stmt|;
 name|String
-name|masterCommit
+name|headCommit
 init|=
 name|git
 operator|.
@@ -661,7 +661,7 @@ argument_list|()
 operator|.
 name|getRef
 argument_list|(
-literal|"master"
+literal|"HEAD"
 argument_list|)
 operator|.
 name|getTarget
@@ -725,7 +725,7 @@ name|BranchInfo
 argument_list|(
 literal|"refs/heads/master"
 argument_list|,
-name|masterCommit
+name|headCommit
 argument_list|,
 literal|false
 argument_list|)
@@ -780,7 +780,7 @@ argument_list|()
 operator|.
 name|getRef
 argument_list|(
-literal|"master"
+literal|"HEAD"
 argument_list|)
 operator|.
 name|getTarget
