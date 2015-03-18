@@ -305,17 +305,6 @@ return|return
 literal|"ie8"
 return|;
 block|}
-if|if
-condition|(
-name|v
-operator|>=
-literal|6000
-condition|)
-block|{
-return|return
-literal|"ie6"
-return|;
-block|}
 block|}
 return|return
 literal|null

@@ -83,14 +83,14 @@ import|;
 end_import
 
 begin_comment
-comment|/** IE6 requires us to initialize the document before we can use it. */
+comment|/** MSIE requires us to initialize the document before we can use it. */
 end_comment
 
 begin_class
-DECL|class|PrivateScopeImplIE6
+DECL|class|PrivateScopeImplIE8
 specifier|public
 class|class
-name|PrivateScopeImplIE6
+name|PrivateScopeImplIE8
 extends|extends
 name|PrivateScopeImpl
 block|{
