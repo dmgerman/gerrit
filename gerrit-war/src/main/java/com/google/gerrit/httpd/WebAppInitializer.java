@@ -564,7 +564,7 @@ name|server
 operator|.
 name|patch
 operator|.
-name|IntraLineWorkerPool
+name|DiffExecutorModule
 import|;
 end_import
 
@@ -2249,9 +2249,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|IntraLineWorkerPool
-operator|.
-name|Module
+name|DiffExecutorModule
 argument_list|()
 argument_list|)
 expr_stmt|;
