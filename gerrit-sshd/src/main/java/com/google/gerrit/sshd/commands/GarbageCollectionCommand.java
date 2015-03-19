@@ -361,6 +361,22 @@ name|boolean
 name|showProgress
 decl_stmt|;
 annotation|@
+name|Option
+argument_list|(
+name|name
+operator|=
+literal|"--aggressive"
+argument_list|,
+name|usage
+operator|=
+literal|"run aggressive garbage collection"
+argument_list|)
+DECL|field|aggressive
+specifier|private
+name|boolean
+name|aggressive
+decl_stmt|;
+annotation|@
 name|Argument
 argument_list|(
 name|index
@@ -560,6 +576,8 @@ operator|.
 name|run
 argument_list|(
 name|projectNames
+argument_list|,
+name|aggressive
 argument_list|,
 name|showProgress
 condition|?
