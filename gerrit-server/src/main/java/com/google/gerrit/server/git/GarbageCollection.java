@@ -445,6 +445,37 @@ name|PrintWriter
 name|writer
 parameter_list|)
 block|{
+return|return
+name|run
+argument_list|(
+name|projectNames
+argument_list|,
+literal|false
+argument_list|,
+name|writer
+argument_list|)
+return|;
+block|}
+DECL|method|run (List<Project.NameKey> projectNames, boolean aggressive, PrintWriter writer)
+specifier|public
+name|GarbageCollectionResult
+name|run
+parameter_list|(
+name|List
+argument_list|<
+name|Project
+operator|.
+name|NameKey
+argument_list|>
+name|projectNames
+parameter_list|,
+name|boolean
+name|aggressive
+parameter_list|,
+name|PrintWriter
+name|writer
+parameter_list|)
+block|{
 name|GarbageCollectionResult
 name|result
 init|=
@@ -542,6 +573,8 @@ argument_list|(
 name|p
 argument_list|,
 name|repo
+argument_list|,
+name|aggressive
 argument_list|)
 expr_stmt|;
 name|print
@@ -568,6 +601,13 @@ operator|.
 name|gc
 argument_list|()
 decl_stmt|;
+name|gc
+operator|.
+name|setAggressive
+argument_list|(
+name|aggressive
+argument_list|)
+expr_stmt|;
 name|logGcInfo
 argument_list|(
 name|p
@@ -878,7 +918,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|logGcConfiguration (Project.NameKey projectName, Repository repo)
+DECL|method|logGcConfiguration (Project.NameKey projectName, Repository repo, boolean aggressive)
 specifier|private
 specifier|static
 name|void
@@ -891,6 +931,9 @@ name|projectName
 parameter_list|,
 name|Repository
 name|repo
+parameter_list|,
+name|boolean
+name|aggressive
 parameter_list|)
 block|{
 name|StringBuilder
@@ -908,6 +951,23 @@ operator|.
 name|getConfig
 argument_list|()
 decl_stmt|;
+name|b
+operator|.
+name|append
+argument_list|(
+literal|"gc.aggressive="
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|aggressive
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"; "
+argument_list|)
+expr_stmt|;
 name|b
 operator|.
 name|append

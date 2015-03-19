@@ -354,6 +354,11 @@ specifier|public
 name|boolean
 name|showProgress
 decl_stmt|;
+DECL|field|aggressive
+specifier|public
+name|boolean
+name|aggressive
+decl_stmt|;
 block|}
 DECL|field|canGC
 specifier|private
@@ -486,6 +491,10 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
+argument_list|,
+name|input
+operator|.
+name|aggressive
 argument_list|,
 name|input
 operator|.
