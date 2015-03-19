@@ -243,6 +243,16 @@ comment|/* final */
 name|LibraryDownloader
 name|bouncyCastleSSL
 decl_stmt|;
+DECL|field|db2Driver
+comment|/* final */
+name|LibraryDownloader
+name|db2Driver
+decl_stmt|;
+DECL|field|db2DriverLicense
+comment|/* final */
+name|LibraryDownloader
+name|db2DriverLicense
+decl_stmt|;
 DECL|field|mysqlDriver
 comment|/* final */
 name|LibraryDownloader
@@ -549,7 +559,7 @@ name|dl
 operator|.
 name|setSHA1
 argument_list|(
-name|get
+name|getOptional
 argument_list|(
 name|cfg
 argument_list|,
@@ -613,6 +623,35 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getOptional (Config cfg, String name, String key)
+specifier|private
+specifier|static
+name|String
+name|getOptional
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|String
+name|key
+parameter_list|)
+block|{
+return|return
+name|doGet
+argument_list|(
+name|cfg
+argument_list|,
+name|name
+argument_list|,
+name|key
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 DECL|method|get (Config cfg, String name, String key)
 specifier|private
 specifier|static
@@ -627,6 +666,39 @@ name|name
 parameter_list|,
 name|String
 name|key
+parameter_list|)
+block|{
+return|return
+name|doGet
+argument_list|(
+name|cfg
+argument_list|,
+name|name
+argument_list|,
+name|key
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+DECL|method|doGet (Config cfg, String name, String key, boolean required)
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|doGet
+parameter_list|(
+name|Config
+name|cfg
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|String
+name|key
+parameter_list|,
+name|boolean
+name|required
 parameter_list|)
 block|{
 name|String
@@ -645,6 +717,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|val
 operator|==
 literal|null
@@ -653,6 +726,9 @@ name|val
 operator|.
 name|isEmpty
 argument_list|()
+operator|)
+operator|&&
+name|required
 condition|)
 block|{
 throw|throw
