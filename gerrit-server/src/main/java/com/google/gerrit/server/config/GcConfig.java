@@ -132,6 +132,12 @@ specifier|final
 name|ScheduleConfig
 name|scheduleConfig
 decl_stmt|;
+DECL|field|aggressive
+specifier|private
+specifier|final
+name|boolean
+name|aggressive
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|GcConfig (@erritServerConfig Config cfg)
@@ -155,6 +161,21 @@ operator|.
 name|CONFIG_GC_SECTION
 argument_list|)
 expr_stmt|;
+name|aggressive
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+name|ConfigConstants
+operator|.
+name|CONFIG_GC_SECTION
+argument_list|,
+literal|"aggressive"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getScheduleConfig ()
 specifier|public
@@ -164,6 +185,16 @@ parameter_list|()
 block|{
 return|return
 name|scheduleConfig
+return|;
+block|}
+DECL|method|isAggressive ()
+specifier|public
+name|boolean
+name|isAggressive
+parameter_list|()
+block|{
+return|return
+name|aggressive
 return|;
 block|}
 block|}

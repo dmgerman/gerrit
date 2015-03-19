@@ -118,6 +118,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GcConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -369,6 +385,12 @@ specifier|final
 name|GarbageCollectionQueue
 name|gcQueue
 decl_stmt|;
+DECL|field|gcConfig
+specifier|private
+specifier|final
+name|GcConfig
+name|gcConfig
+decl_stmt|;
 DECL|interface|Factory
 specifier|public
 interface|interface
@@ -382,7 +404,7 @@ function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|GarbageCollection (GitRepositoryManager repoManager, GarbageCollectionQueue gcQueue)
+DECL|method|GarbageCollection (GitRepositoryManager repoManager, GarbageCollectionQueue gcQueue, GcConfig config)
 name|GarbageCollection
 parameter_list|(
 name|GitRepositoryManager
@@ -390,6 +412,9 @@ name|repoManager
 parameter_list|,
 name|GarbageCollectionQueue
 name|gcQueue
+parameter_list|,
+name|GcConfig
+name|config
 parameter_list|)
 block|{
 name|this
@@ -403,6 +428,12 @@ operator|.
 name|gcQueue
 operator|=
 name|gcQueue
+expr_stmt|;
+name|this
+operator|.
+name|gcConfig
+operator|=
+name|config
 expr_stmt|;
 block|}
 DECL|method|run (List<Project.NameKey> projectNames)
@@ -450,7 +481,10 @@ name|run
 argument_list|(
 name|projectNames
 argument_list|,
-literal|false
+name|gcConfig
+operator|.
+name|isAggressive
+argument_list|()
 argument_list|,
 name|writer
 argument_list|)
