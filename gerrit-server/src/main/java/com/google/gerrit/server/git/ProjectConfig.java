@@ -7230,6 +7230,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|label
 operator|.
 name|isCopyAllScoresIfNoChange
@@ -7246,7 +7247,7 @@ name|name
 argument_list|,
 name|KEY_COPY_ALL_SCORES_IF_NO_CHANGE
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
