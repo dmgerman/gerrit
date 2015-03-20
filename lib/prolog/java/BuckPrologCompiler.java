@@ -488,6 +488,8 @@ operator|+
 name|name
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|FileInputStream
 name|in
 init|=
@@ -496,8 +498,7 @@ name|FileInputStream
 argument_list|(
 name|f
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|e
 operator|.
@@ -562,11 +563,6 @@ block|}
 block|}
 finally|finally
 block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|out
 operator|.
 name|closeEntry
