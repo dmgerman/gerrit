@@ -233,7 +233,7 @@ DECL|class|RebaseAction
 class|class
 name|RebaseAction
 block|{
-DECL|method|call (final Button b, final String project, final String branch, final Change.Id id, final String revision)
+DECL|method|call (final Button b, final String project, final String branch, final Change.Id id, final String revision, final boolean enabled)
 specifier|static
 name|void
 name|call
@@ -259,6 +259,10 @@ parameter_list|,
 specifier|final
 name|String
 name|revision
+parameter_list|,
+specifier|final
+name|boolean
+name|enabled
 parameter_list|)
 block|{
 name|b
@@ -276,6 +280,8 @@ argument_list|,
 name|branch
 argument_list|,
 name|id
+argument_list|,
+name|enabled
 argument_list|)
 block|{
 annotation|@

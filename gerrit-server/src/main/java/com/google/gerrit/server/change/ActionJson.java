@@ -202,6 +202,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|changedetail
+operator|.
+name|RebaseChange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|extensions
 operator|.
 name|webui
@@ -322,9 +338,15 @@ argument_list|>
 argument_list|>
 name|changeViews
 decl_stmt|;
+DECL|field|rebaseChange
+specifier|private
+specifier|final
+name|RebaseChange
+name|rebaseChange
+decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ActionJson ( Revisions revisions, DynamicMap<RestView<ChangeResource>> changeViews)
+DECL|method|ActionJson ( Revisions revisions, DynamicMap<RestView<ChangeResource>> changeViews, RebaseChange rebaseChange)
 name|ActionJson
 parameter_list|(
 name|Revisions
@@ -338,6 +360,9 @@ name|ChangeResource
 argument_list|>
 argument_list|>
 name|changeViews
+parameter_list|,
+name|RebaseChange
+name|rebaseChange
 parameter_list|)
 block|{
 name|this
@@ -351,6 +376,12 @@ operator|.
 name|changeViews
 operator|=
 name|changeViews
+expr_stmt|;
+name|this
+operator|.
+name|rebaseChange
+operator|=
+name|rebaseChange
 expr_stmt|;
 block|}
 DECL|method|format (RevisionResource rsrc)
@@ -500,6 +531,8 @@ operator|new
 name|ChangeResource
 argument_list|(
 name|ctl
+argument_list|,
+name|rebaseChange
 argument_list|)
 argument_list|,
 name|userProvider
