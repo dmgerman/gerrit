@@ -161,6 +161,7 @@ name|HttpServletRequest
 name|req
 parameter_list|)
 block|{
+comment|// CS IGNORE LineLength FOR NEXT 3 LINES. REASON: URL.
 comment|// Based on com.google.guice.ServletDefinition$1#getPathInfo() from:
 comment|// https://github.com/google/guice/blob/41c126f99d6309886a0ded2ac729033d755e1593/extensions/servlet/src/com/google/inject/servlet/ServletDefinition.java
 name|String
