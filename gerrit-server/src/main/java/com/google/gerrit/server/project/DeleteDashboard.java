@@ -202,24 +202,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|project
-operator|.
-name|DeleteDashboard
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|inject
 operator|.
 name|Inject
@@ -271,19 +253,11 @@ name|RestModifyView
 argument_list|<
 name|DashboardResource
 argument_list|,
+name|SetDashboard
+operator|.
 name|Input
 argument_list|>
 block|{
-DECL|class|Input
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|commitMessage
-name|String
-name|commitMessage
-decl_stmt|;
-block|}
 DECL|field|defaultSetter
 specifier|private
 specifier|final
@@ -314,7 +288,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (DashboardResource resource, Input input)
+DECL|method|apply (DashboardResource resource, SetDashboard.Input input)
 specifier|public
 name|Response
 argument_list|<
@@ -325,6 +299,8 @@ parameter_list|(
 name|DashboardResource
 name|resource
 parameter_list|,
+name|SetDashboard
+operator|.
 name|Input
 name|input
 parameter_list|)
