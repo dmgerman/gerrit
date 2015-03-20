@@ -375,6 +375,7 @@ block|}
 block|}
 DECL|class|MultiVersionModule
 specifier|private
+specifier|static
 class|class
 name|MultiVersionModule
 extends|extends

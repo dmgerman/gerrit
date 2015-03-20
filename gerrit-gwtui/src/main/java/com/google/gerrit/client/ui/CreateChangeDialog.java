@@ -606,6 +606,7 @@ argument_list|()
 return|;
 block|}
 DECL|class|BranchSuggestion
+specifier|static
 class|class
 name|BranchSuggestion
 implements|implements

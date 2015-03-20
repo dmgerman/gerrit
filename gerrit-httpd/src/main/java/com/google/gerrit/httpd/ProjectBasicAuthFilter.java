@@ -1177,6 +1177,7 @@ argument_list|)
 return|;
 block|}
 DECL|class|Response
+specifier|static
 class|class
 name|Response
 extends|extends

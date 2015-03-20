@@ -1916,6 +1916,7 @@ block|}
 block|}
 DECL|class|PermissionRuleInfo
 specifier|public
+specifier|static
 class|class
 name|PermissionRuleInfo
 block|{

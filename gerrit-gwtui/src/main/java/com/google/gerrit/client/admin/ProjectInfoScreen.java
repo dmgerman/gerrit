@@ -4783,6 +4783,7 @@ return|;
 block|}
 DECL|class|LabeledWidgetsGrid
 specifier|private
+specifier|static
 class|class
 name|LabeledWidgetsGrid
 extends|extends

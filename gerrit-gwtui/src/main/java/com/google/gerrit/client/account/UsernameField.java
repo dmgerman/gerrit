@@ -959,6 +959,7 @@ expr_stmt|;
 block|}
 DECL|class|UserNameValidator
 specifier|private
+specifier|static
 specifier|final
 class|class
 name|UserNameValidator

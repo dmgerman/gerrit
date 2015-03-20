@@ -1943,6 +1943,7 @@ end_function
 begin_class
 DECL|class|RebuildListener
 specifier|private
+specifier|static
 class|class
 name|RebuildListener
 implements|implements

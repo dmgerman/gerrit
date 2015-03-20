@@ -321,6 +321,7 @@ expr_stmt|;
 block|}
 DECL|class|AgreementTable
 specifier|private
+specifier|static
 class|class
 name|AgreementTable
 extends|extends

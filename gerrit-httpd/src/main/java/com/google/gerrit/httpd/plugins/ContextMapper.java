@@ -259,6 +259,7 @@ return|;
 block|}
 DECL|class|WrappedRequest
 specifier|private
+specifier|static
 class|class
 name|WrappedRequest
 extends|extends

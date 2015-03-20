@@ -423,6 +423,7 @@ expr_stmt|;
 block|}
 DECL|class|PluginTable
 specifier|private
+specifier|static
 class|class
 name|PluginTable
 extends|extends

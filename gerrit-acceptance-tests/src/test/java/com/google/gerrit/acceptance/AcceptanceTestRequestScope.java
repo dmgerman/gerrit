@@ -348,6 +348,7 @@ argument_list|)
 decl_stmt|;
 DECL|class|Context
 specifier|public
+specifier|static
 class|class
 name|Context
 implements|implements

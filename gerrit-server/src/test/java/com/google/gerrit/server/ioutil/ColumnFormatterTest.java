@@ -114,6 +114,7 @@ name|ColumnFormatterTest
 block|{
 comment|/**    * Holds an in-memory {@link java.io.PrintWriter} object and allows    * comparisons of its contents to a supplied string via an assert statement.    */
 DECL|class|PrintWriterComparator
+specifier|static
 class|class
 name|PrintWriterComparator
 block|{
