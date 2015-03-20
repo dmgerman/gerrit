@@ -1662,13 +1662,7 @@ operator|.
 name|READY
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-literal|0
-operator|<
-name|delay
-condition|)
+else|else
 block|{
 return|return
 name|State
@@ -1676,11 +1670,6 @@ operator|.
 name|SLEEPING
 return|;
 block|}
-return|return
-name|State
-operator|.
-name|OTHER
-return|;
 block|}
 DECL|method|getStartTime ()
 specifier|public
