@@ -152,20 +152,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|googlecode
-operator|.
-name|prolog_cafe
-operator|.
-name|repl
-operator|.
-name|PrologMain
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|kohsuke
@@ -495,32 +481,6 @@ name|err
 operator|.
 name|println
 argument_list|()
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"based on "
-operator|+
-name|PrologMain
-operator|.
-name|VERSION
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"         "
-operator|+
-name|PrologMain
-operator|.
-name|COPYRIGHT
-argument_list|)
 expr_stmt|;
 name|System
 operator|.
