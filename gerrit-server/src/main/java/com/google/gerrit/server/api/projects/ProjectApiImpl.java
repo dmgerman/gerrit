@@ -69,6 +69,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|account
+operator|.
+name|CapabilityUtils
+operator|.
+name|checkRequiresCapability
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -294,11 +312,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|extensions
+name|server
 operator|.
-name|restapi
-operator|.
-name|UnprocessableEntityException
+name|CurrentUser
 import|;
 end_import
 
@@ -519,6 +535,15 @@ name|name
 parameter_list|)
 function_decl|;
 block|}
+DECL|field|user
+specifier|private
+specifier|final
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|user
+decl_stmt|;
 DECL|field|createProjectFactory
 specifier|private
 specifier|final
@@ -598,9 +623,15 @@ name|branchApi
 decl_stmt|;
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, @Assisted ProjectResource project)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, @Assisted ProjectResource project)
 name|ProjectApiImpl
 parameter_list|(
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
 name|Provider
 argument_list|<
 name|CreateProject
@@ -647,6 +678,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|user
+argument_list|,
 name|createProjectFactory
 argument_list|,
 name|projectApi
@@ -673,9 +706,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|AssistedInject
-DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, @Assisted String name)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, @Assisted String name)
 name|ProjectApiImpl
 parameter_list|(
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
 name|Provider
 argument_list|<
 name|CreateProject
@@ -722,6 +761,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|user
+argument_list|,
 name|createProjectFactory
 argument_list|,
 name|projectApi
@@ -746,10 +787,16 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ProjectApiImpl (Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, ProjectResource project, String name)
+DECL|method|ProjectApiImpl (Provider<CurrentUser> user, Provider<CreateProject.Factory> createProjectFactory, ProjectApiImpl.Factory projectApi, ProjectsCollection projects, GetDescription getDescription, PutDescription putDescription, ChildProjectApiImpl.Factory childApi, ChildProjectsCollection children, ProjectJson projectJson, BranchApiImpl.Factory branchApiFactory, ProjectResource project, String name)
 specifier|private
 name|ProjectApiImpl
 parameter_list|(
+name|Provider
+argument_list|<
+name|CurrentUser
+argument_list|>
+name|user
+parameter_list|,
 name|Provider
 argument_list|<
 name|CreateProject
@@ -795,6 +842,12 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|this
+operator|.
+name|user
+operator|=
+name|user
+expr_stmt|;
 name|this
 operator|.
 name|createProjectFactory
@@ -938,6 +991,17 @@ literal|"name must match input.name"
 argument_list|)
 throw|;
 block|}
+name|checkRequiresCapability
+argument_list|(
+name|user
+argument_list|,
+literal|null
+argument_list|,
+name|CreateProject
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|createProjectFactory
 operator|.
 name|get
@@ -973,12 +1037,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|BadRequestException
-decl||
-name|UnprocessableEntityException
-decl||
-name|ResourceNotFoundException
-decl||
 name|ProjectCreationFailedException
 decl||
 name|IOException
