@@ -237,8 +237,6 @@ DECL|method|apply (ChangeResource req)
 specifier|public
 name|Response
 argument_list|<
-name|?
-extends|extends
 name|Set
 argument_list|<
 name|String
