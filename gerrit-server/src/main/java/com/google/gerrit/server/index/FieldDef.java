@@ -67,6 +67,36 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkArgument
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|CharMatcher
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -406,7 +436,10 @@ name|this
 operator|.
 name|name
 operator|=
+name|checkName
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -420,6 +453,44 @@ name|stored
 operator|=
 name|stored
 expr_stmt|;
+block|}
+DECL|method|checkName (String name)
+specifier|private
+specifier|static
+name|String
+name|checkName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|CharMatcher
+name|m
+init|=
+name|CharMatcher
+operator|.
+name|anyOf
+argument_list|(
+literal|"abcdefghijklmnopqrstuvwxyz0123456789_"
+argument_list|)
+decl_stmt|;
+name|checkArgument
+argument_list|(
+name|m
+operator|.
+name|matchesAllOf
+argument_list|(
+name|name
+argument_list|)
+argument_list|,
+literal|"illegal field name: %s"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+return|return
+name|name
+return|;
 block|}
 comment|/** @return name of the field. */
 DECL|method|getName ()

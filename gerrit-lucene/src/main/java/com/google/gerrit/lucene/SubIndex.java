@@ -251,6 +251,20 @@ operator|.
 name|search
 operator|.
 name|ReferenceManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|lucene
+operator|.
+name|search
+operator|.
+name|ReferenceManager
 operator|.
 name|RefreshListener
 import|;
@@ -267,20 +281,6 @@ operator|.
 name|search
 operator|.
 name|SearcherFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
-name|search
-operator|.
-name|SearcherManager
 import|;
 end_import
 
@@ -478,7 +478,10 @@ decl_stmt|;
 DECL|field|searcherManager
 specifier|private
 specifier|final
-name|SearcherManager
+name|ReferenceManager
+argument_list|<
+name|IndexSearcher
+argument_list|>
 name|searcherManager
 decl_stmt|;
 DECL|field|reopenThread
@@ -499,7 +502,7 @@ name|NrtFuture
 argument_list|>
 name|notDoneNrtFutures
 decl_stmt|;
-DECL|method|SubIndex (Path path, GerritIndexWriterConfig writerConfig)
+DECL|method|SubIndex (Path path, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|SubIndex
 parameter_list|(
 name|Path
@@ -507,6 +510,9 @@ name|path
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
+parameter_list|,
+name|SearcherFactory
+name|searcherFactory
 parameter_list|)
 throws|throws
 name|IOException
@@ -518,9 +524,6 @@ operator|.
 name|open
 argument_list|(
 name|path
-operator|.
-name|toFile
-argument_list|()
 argument_list|)
 argument_list|,
 name|path
@@ -532,10 +535,12 @@ name|toString
 argument_list|()
 argument_list|,
 name|writerConfig
+argument_list|,
+name|searcherFactory
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SubIndex (Directory dir, final String dirName, GerritIndexWriterConfig writerConfig)
+DECL|method|SubIndex (Directory dir, final String dirName, GerritIndexWriterConfig writerConfig, SearcherFactory searcherFactory)
 name|SubIndex
 parameter_list|(
 name|Directory
@@ -547,6 +552,9 @@ name|dirName
 parameter_list|,
 name|GerritIndexWriterConfig
 name|writerConfig
+parameter_list|,
+name|SearcherFactory
+name|searcherFactory
 parameter_list|)
 throws|throws
 name|IOException
@@ -782,7 +790,7 @@ expr_stmt|;
 name|searcherManager
 operator|=
 operator|new
-name|SearcherManager
+name|WrappableSearcherManager
 argument_list|(
 name|writer
 operator|.
@@ -791,9 +799,7 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|,
-operator|new
-name|SearcherFactory
-argument_list|()
+name|searcherFactory
 argument_list|)
 expr_stmt|;
 name|notDoneNrtFutures
@@ -866,6 +872,8 @@ comment|// generation to the searching generation. removeIfDone() depends on the
 comment|// searching generation being up to date when calling
 comment|// reopenThread.waitForGeneration(gen, 0), therefore the reopen thread's
 comment|// internal listener needs to be called first.
+comment|// TODO(dborowitz): This may have been fixed by
+comment|// http://issues.apache.org/jira/browse/LUCENE-5461
 name|searcherManager
 operator|.
 name|addListener
@@ -967,16 +975,6 @@ operator|.
 name|getIndexWriter
 argument_list|()
 operator|.
-name|commit
-argument_list|()
-expr_stmt|;
-try|try
-block|{
-name|writer
-operator|.
-name|getIndexWriter
-argument_list|()
-operator|.
 name|close
 argument_list|()
 expr_stmt|;
@@ -988,7 +986,6 @@ name|e
 parameter_list|)
 block|{
 comment|// Ignore.
-block|}
 block|}
 catch|catch
 parameter_list|(

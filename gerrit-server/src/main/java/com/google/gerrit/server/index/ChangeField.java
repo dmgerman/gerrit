@@ -489,7 +489,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fields indexed on change documents.  *<p>  * Each field corresponds to both a field name supported by  * {@link ChangeQueryBuilder} for querying that field, and a method on  * {@link ChangeData} used for populating the corresponding document fields in  * the secondary index.  */
+comment|/**  * Fields indexed on change documents.  *<p>  * Each field corresponds to both a field name supported by  * {@link ChangeQueryBuilder} for querying that field, and a method on  * {@link ChangeData} used for populating the corresponding document fields in  * the secondary index.  *<p>  * Field names are all lowercase alphanumeric plus underscore; index  * implementations may create unambiguous derived field names containing other  * characters.  */
 end_comment
 
 begin_class
