@@ -1346,6 +1346,9 @@ case|:
 case|case
 name|JSON_RPC
 case|:
+case|case
+name|UNKNOWN
+case|:
 name|owner
 operator|=
 name|isOwner
