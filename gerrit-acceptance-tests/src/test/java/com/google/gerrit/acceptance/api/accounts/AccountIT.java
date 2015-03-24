@@ -323,7 +323,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|getChange
+name|info
 argument_list|(
 name|triplet
 argument_list|)
@@ -349,7 +349,7 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-name|getChange
+name|info
 argument_list|(
 name|triplet
 argument_list|)
