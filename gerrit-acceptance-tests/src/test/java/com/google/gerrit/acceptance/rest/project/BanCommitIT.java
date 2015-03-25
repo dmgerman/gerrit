@@ -367,7 +367,7 @@ name|pushResult
 init|=
 name|pushHead
 argument_list|(
-name|git
+name|testRepo
 argument_list|,
 literal|"refs/heads/master"
 argument_list|,

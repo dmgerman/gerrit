@@ -201,9 +201,7 @@ block|{
 name|ObjectId
 name|initial
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
@@ -261,9 +259,7 @@ comment|// Reset HEAD to initial so the new change is a non-fast forward
 name|RefUpdate
 name|ru
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|updateRef
@@ -358,9 +354,7 @@ block|{
 name|ObjectId
 name|initial
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|getRef
@@ -431,9 +425,7 @@ comment|// Reset HEAD to initial so the new change is a non-fast forward
 name|RefUpdate
 name|ru
 init|=
-name|git
-operator|.
-name|getRepository
+name|repo
 argument_list|()
 operator|.
 name|updateRef

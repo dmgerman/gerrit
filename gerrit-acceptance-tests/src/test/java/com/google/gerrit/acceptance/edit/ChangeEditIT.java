@@ -2597,19 +2597,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|setRepo
-argument_list|(
+comment|// Re-clone empty repo; TestRepository doesn't let us reset to unborn head.
+name|testRepo
+operator|=
 name|cloneProject
 argument_list|(
-name|sshSession
-operator|.
-name|getUrl
-argument_list|()
-operator|+
-literal|"/"
-operator|+
 name|project
-argument_list|)
+argument_list|,
+name|sshSession
 argument_list|)
 expr_stmt|;
 name|changeId
