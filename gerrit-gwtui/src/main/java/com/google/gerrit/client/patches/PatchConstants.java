@@ -270,9 +270,9 @@ name|String
 name|showPreferences
 parameter_list|()
 function_decl|;
-DECL|method|modifyInEditScreen ()
+DECL|method|openEditScreen ()
 name|String
-name|modifyInEditScreen
+name|openEditScreen
 parameter_list|()
 function_decl|;
 DECL|method|toggleReviewed ()
