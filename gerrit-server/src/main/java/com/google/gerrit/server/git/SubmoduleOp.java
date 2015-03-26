@@ -2489,6 +2489,11 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
+name|oi
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|ObjectId
 name|commitId
 init|=
