@@ -76,9 +76,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|api
 operator|.
-name|RestReadView
+name|projects
+operator|.
+name|BranchInfo
 import|;
 end_import
 
@@ -90,13 +92,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|project
+name|restapi
 operator|.
-name|ListBranches
-operator|.
-name|BranchInfo
+name|RestReadView
 import|;
 end_import
 

@@ -446,6 +446,7 @@ init|=
 literal|15
 decl_stmt|;
 DECL|class|Input
+specifier|public
 specifier|static
 class|class
 name|Input

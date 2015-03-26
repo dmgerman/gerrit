@@ -280,8 +280,6 @@ DECL|method|apply (ChangeResource req, HashtagsInput input)
 specifier|public
 name|Response
 argument_list|<
-name|?
-extends|extends
 name|Set
 argument_list|<
 name|String
@@ -311,6 +309,12 @@ block|{
 return|return
 name|Response
 operator|.
+expr|<
+name|Set
+argument_list|<
+name|String
+argument_list|>
+operator|>
 name|ok
 argument_list|(
 name|hashtagsUtil
