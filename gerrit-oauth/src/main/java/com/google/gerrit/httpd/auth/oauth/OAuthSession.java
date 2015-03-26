@@ -653,8 +653,6 @@ name|oauth
 operator|.
 name|getAccessToken
 argument_list|(
-literal|null
-argument_list|,
 operator|new
 name|OAuthVerifier
 argument_list|(
@@ -739,9 +737,7 @@ argument_list|(
 name|oauth
 operator|.
 name|getAuthorizationUrl
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 operator|+
 literal|"&state="
 operator|+
