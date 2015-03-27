@@ -460,7 +460,7 @@ name|projectCache
 operator|.
 name|checkedGet
 argument_list|(
-name|allProjects
+name|project
 argument_list|)
 operator|.
 name|getConfig
@@ -486,7 +486,7 @@ argument_list|)
 expr_stmt|;
 name|saveProjectConfig
 argument_list|(
-name|allProjects
+name|project
 argument_list|,
 name|cfg
 argument_list|)

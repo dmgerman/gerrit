@@ -1048,13 +1048,15 @@ argument_list|(
 literal|"test.devs"
 argument_list|)
 decl_stmt|;
-DECL|field|CR
+DECL|method|codeReview ()
 specifier|public
 specifier|static
 specifier|final
 name|LabelType
-name|CR
-init|=
+name|codeReview
+parameter_list|()
+block|{
+return|return
 name|category
 argument_list|(
 literal|"Code-Review"
@@ -1096,7 +1098,8 @@ argument_list|,
 literal|"This shall not be merged"
 argument_list|)
 argument_list|)
-decl_stmt|;
+return|;
+block|}
 DECL|method|value (int value, String text)
 specifier|public
 specifier|static
@@ -1891,6 +1894,12 @@ argument_list|(
 name|repo
 argument_list|)
 expr_stmt|;
+name|LabelType
+name|cr
+init|=
+name|codeReview
+argument_list|()
+decl_stmt|;
 name|allProjects
 operator|.
 name|getLabelSections
@@ -1898,12 +1907,12 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|CR
+name|cr
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|CR
+name|cr
 argument_list|)
 expr_stmt|;
 name|add
