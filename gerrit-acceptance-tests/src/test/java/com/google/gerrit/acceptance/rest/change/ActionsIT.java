@@ -215,7 +215,10 @@ name|changeId
 init|=
 name|createChangeWithTopic
 argument_list|(
+name|name
+argument_list|(
 literal|"foo1"
+argument_list|)
 argument_list|)
 operator|.
 name|getChangeId
@@ -280,7 +283,10 @@ name|changeId
 init|=
 name|createChangeWithTopic
 argument_list|(
+name|name
+argument_list|(
 literal|"foo1"
+argument_list|)
 argument_list|)
 operator|.
 name|getChangeId
@@ -332,7 +338,10 @@ name|changeId
 init|=
 name|createChangeWithTopic
 argument_list|(
+name|name
+argument_list|(
 literal|"foo2"
+argument_list|)
 argument_list|)
 operator|.
 name|getChangeId
@@ -346,7 +355,10 @@ expr_stmt|;
 comment|// create another change with the same topic
 name|createChangeWithTopic
 argument_list|(
+name|name
+argument_list|(
 literal|"foo2"
+argument_list|)
 argument_list|)
 operator|.
 name|getChangeId
@@ -457,7 +469,10 @@ name|changeId
 init|=
 name|createChangeWithTopic
 argument_list|(
+name|name
+argument_list|(
 literal|"foo2"
+argument_list|)
 argument_list|)
 operator|.
 name|getChangeId
@@ -474,7 +489,10 @@ name|changeId2
 init|=
 name|createChangeWithTopic
 argument_list|(
+name|name
+argument_list|(
 literal|"foo2"
+argument_list|)
 argument_list|)
 operator|.
 name|getChangeId
