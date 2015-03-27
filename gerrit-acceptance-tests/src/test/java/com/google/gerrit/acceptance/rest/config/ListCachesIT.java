@@ -377,9 +377,9 @@ operator|.
 name|mem
 argument_list|)
 operator|.
-name|isEqualTo
+name|isAtLeast
 argument_list|(
-literal|1
+literal|1L
 argument_list|)
 expr_stmt|;
 name|assertThat
