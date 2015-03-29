@@ -111,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Plugin static resource entry  *  * Bean representing a static resource inside a plugin.  * All static resources are available at<plugin web url>/static  * and served by the HttpPluginServlet.  */
+comment|/**  * Plugin static resource entry  *  * Bean representing a static resource inside a plugin.  * All static resources are available at {@code<plugin web url>/static}  * and served by the HttpPluginServlet.  */
 end_comment
 
 begin_class

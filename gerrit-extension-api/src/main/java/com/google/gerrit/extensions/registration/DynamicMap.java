@@ -303,7 +303,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *<p>    * Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * DynamicMap.mapOf(binder(), new TypeLiteral<Thing<Bar>>(){});    * bind(new TypeLiteral<Thing<Bar>>() {})    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
+comment|/**    * Declare a singleton {@code DynamicMap<T>} with a binder.    *<p>    * Maps must be defined in a Guice module before they can be bound:    *    *<pre>    * {@code    * DynamicMap.mapOf(binder(), new TypeLiteral<Thing<Bar>>(){});    * bind(new TypeLiteral<Thing<Bar>>() {})    *   .annotatedWith(Exports.named(&quot;foo&quot;))    *   .to(Impl.class);    * }    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of value in the map.    */
 DECL|method|mapOf (Binder binder, TypeLiteral<T> member)
 specifier|public
 specifier|static
