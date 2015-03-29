@@ -106,29 +106,17 @@ specifier|public
 interface|interface
 name|OAuthServiceProvider
 block|{
-comment|/**    * Retrieve the request token.    *    * @return request token    */
-DECL|method|getRequestToken ()
-name|OAuthToken
-name|getRequestToken
-parameter_list|()
-function_decl|;
-comment|/**    * Returns the URL where you should redirect your users to authenticate    * your application.    *    * @param requestToken the request token you need to authorize    * @return the URL where you should redirect your users    */
-DECL|method|getAuthorizationUrl (OAuthToken requestToken)
+comment|/**    * Returns the URL where you should redirect your users to authenticate    * your application.    *    * @return the OAuth service URL to redirect your users for authentication    */
+DECL|method|getAuthorizationUrl ()
 name|String
 name|getAuthorizationUrl
-parameter_list|(
-name|OAuthToken
-name|requestToken
-parameter_list|)
+parameter_list|()
 function_decl|;
-comment|/**    * Retrieve the access token    *    * @param requestToken request token (obtained previously)    * @param verifier verifier code    * @return access token    */
-DECL|method|getAccessToken (OAuthToken requestToken, OAuthVerifier verifier)
+comment|/**    * Retrieve the access token    *    * @param verifier verifier code    * @return access token    */
+DECL|method|getAccessToken (OAuthVerifier verifier)
 name|OAuthToken
 name|getAccessToken
 parameter_list|(
-name|OAuthToken
-name|requestToken
-parameter_list|,
 name|OAuthVerifier
 name|verifier
 parameter_list|)
