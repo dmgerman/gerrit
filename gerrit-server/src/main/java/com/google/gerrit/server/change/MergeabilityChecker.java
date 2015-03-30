@@ -2111,6 +2111,36 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"mergeability-check-change-"
+operator|+
+name|change
+operator|.
+name|getId
+argument_list|()
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"-project-"
+operator|+
+name|change
+operator|.
+name|getDest
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|call ()
 specifier|public
 name|Boolean
