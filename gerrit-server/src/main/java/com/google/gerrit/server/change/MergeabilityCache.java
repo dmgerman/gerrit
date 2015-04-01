@@ -217,7 +217,7 @@ annotation|@
 name|Override
 DECL|method|getIfPresent (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy)
 specifier|public
-name|boolean
+name|Boolean
 name|getIfPresent
 parameter_list|(
 name|ObjectId
@@ -273,7 +273,7 @@ parameter_list|)
 function_decl|;
 DECL|method|getIfPresent (ObjectId commit, Ref intoRef, SubmitType submitType, String mergeStrategy)
 specifier|public
-name|boolean
+name|Boolean
 name|getIfPresent
 parameter_list|(
 name|ObjectId
