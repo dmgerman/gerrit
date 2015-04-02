@@ -267,6 +267,10 @@ name|text
 argument_list|,
 name|FILE_NAME
 argument_list|,
+name|TRIM
+argument_list|,
+name|TRIM
+argument_list|,
 name|errors
 argument_list|)
 decl_stmt|;
