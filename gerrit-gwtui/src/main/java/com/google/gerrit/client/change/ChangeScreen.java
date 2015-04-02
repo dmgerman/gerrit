@@ -7344,6 +7344,49 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Although this is related to the revision, we can process it early to
+comment|// render it faster.
+if|if
+condition|(
+operator|!
+name|info
+operator|.
+name|status
+argument_list|()
+operator|.
+name|isOpen
+argument_list|()
+operator|||
+operator|!
+name|revision
+operator|.
+name|equals
+argument_list|(
+name|info
+operator|.
+name|current_revision
+argument_list|()
+argument_list|)
+operator|||
+name|info
+operator|.
+name|revision
+argument_list|(
+name|revision
+argument_list|)
+operator|.
+name|is_edit
+argument_list|()
+condition|)
+block|{
+name|setVisible
+argument_list|(
+name|strategy
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Properly render revision actions initially while waiting for
 comment|// the callback to populate them correctly.
 name|NativeMap
@@ -7373,13 +7416,6 @@ name|quickApprove
 operator|.
 name|setVisible
 argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|setVisible
-argument_list|(
-name|strategy
-argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
@@ -7605,13 +7641,6 @@ name|quickApprove
 operator|.
 name|setVisible
 argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|setVisible
-argument_list|(
-name|strategy
-argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
