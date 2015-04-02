@@ -115,6 +115,11 @@ name|String
 name|statusLongDraft
 parameter_list|()
 function_decl|;
+DECL|method|submittable ()
+name|String
+name|submittable
+parameter_list|()
+function_decl|;
 DECL|method|readyToSubmit ()
 name|String
 name|readyToSubmit
