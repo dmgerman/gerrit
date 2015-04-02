@@ -1292,6 +1292,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|allowGlobalCapabilities
+argument_list|(
+name|REGISTERED_USERS
+argument_list|,
+name|GlobalCapability
+operator|.
+name|ACCESS_DATABASE
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|deny
 argument_list|(
 name|Permission
@@ -1312,15 +1323,6 @@ argument_list|,
 name|REGISTERED_USERS
 argument_list|,
 literal|"refs/heads/branch"
-argument_list|)
-expr_stmt|;
-name|allowGlobalCapability
-argument_list|(
-name|GlobalCapability
-operator|.
-name|ACCESS_DATABASE
-argument_list|,
-name|REGISTERED_USERS
 argument_list|)
 expr_stmt|;
 name|Change
@@ -1419,6 +1421,19 @@ argument_list|,
 literal|"refs/users/01/1000001/edit-1/1"
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|removeGlobalCapabilities
+argument_list|(
+name|REGISTERED_USERS
+argument_list|,
+name|GlobalCapability
+operator|.
+name|ACCESS_DATABASE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**    * Assert that refs seen by a non-admin user match expected.    *    * @param expected expected refs, in order. If notedb is disabled by the    *     configuration, any notedb refs (i.e. ending in "/meta") are removed    *     from the expected list before comparing to the actual results.    * @throws Exception    */
 DECL|method|assertRefs (String... expected)

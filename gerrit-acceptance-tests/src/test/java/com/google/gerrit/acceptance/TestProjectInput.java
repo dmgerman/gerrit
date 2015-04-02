@@ -166,13 +166,6 @@ specifier|public
 annotation_defn|@interface
 name|TestProjectInput
 block|{
-DECL|method|name ()
-name|String
-name|name
-parameter_list|()
-default|default
-literal|""
-function_decl|;
 DECL|method|parent ()
 name|String
 name|parent
@@ -187,6 +180,13 @@ name|createEmptyCommit
 parameter_list|()
 default|default
 literal|true
+function_decl|;
+DECL|method|description ()
+name|String
+name|description
+parameter_list|()
+default|default
+literal|""
 function_decl|;
 comment|// These may be null in a ProjectInput, but annotations do not allow null
 comment|// default values. Thus these defaults should match ProjectConfig.

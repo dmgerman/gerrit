@@ -451,7 +451,12 @@ decl_stmt|;
 name|String
 name|triplet
 init|=
-literal|"p~master~"
+name|project
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"~master~"
 operator|+
 name|r
 operator|.
@@ -487,7 +492,10 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"p"
+name|project
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertThat

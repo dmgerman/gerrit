@@ -301,7 +301,12 @@ decl_stmt|;
 name|String
 name|triplet
 init|=
-literal|"p~master~"
+name|project
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|"~master~"
 operator|+
 name|r
 operator|.

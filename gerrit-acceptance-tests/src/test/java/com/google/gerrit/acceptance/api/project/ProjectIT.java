@@ -291,7 +291,10 @@ block|{
 name|String
 name|name
 init|=
+name|name
+argument_list|(
 literal|"foo"
+argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
@@ -330,7 +333,10 @@ block|{
 name|String
 name|name
 init|=
+name|name
+argument_list|(
 literal|"foo"
+argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
@@ -386,7 +392,10 @@ name|in
 operator|.
 name|name
 operator|=
+name|name
+argument_list|(
 literal|"foo"
+argument_list|)
 expr_stmt|;
 name|gApi
 operator|.
@@ -432,7 +441,10 @@ name|in
 operator|.
 name|name
 operator|=
+name|name
+argument_list|(
 literal|"baz"
+argument_list|)
 expr_stmt|;
 name|gApi
 operator|.
@@ -626,7 +638,10 @@ argument_list|()
 operator|.
 name|create
 argument_list|(
+name|name
+argument_list|(
 literal|"foo"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|gApi
@@ -636,7 +651,10 @@ argument_list|()
 operator|.
 name|create
 argument_list|(
+name|name
+argument_list|(
 literal|"bar"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
@@ -761,7 +779,10 @@ argument_list|()
 operator|.
 name|withPrefix
 argument_list|(
+name|name
+argument_list|(
 literal|"fox"
+argument_list|)
 argument_list|)
 operator|.
 name|get
@@ -791,7 +812,10 @@ argument_list|()
 operator|.
 name|withPrefix
 argument_list|(
+name|name
+argument_list|(
 literal|"fo"
+argument_list|)
 argument_list|)
 operator|.
 name|get
