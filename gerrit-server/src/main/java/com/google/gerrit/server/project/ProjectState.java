@@ -616,7 +616,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|Reader
 import|;
 end_import
 
@@ -1379,8 +1379,8 @@ name|pmc
 argument_list|)
 return|;
 block|}
-comment|/**    * Like {@link #newPrologEnvironment()} but instead of reading the rules.pl    * read the provided input stream.    *    * @param name a name of the input stream. Could be any name.    * @param in InputStream to read prolog rules from    * @throws CompileException    */
-DECL|method|newPrologEnvironment (String name, InputStream in)
+comment|/**    * Like {@link #newPrologEnvironment()} but instead of reading the rules.pl    * read the provided input stream.    *    * @param name a name of the input stream. Could be any name.    * @param in stream to read prolog rules from    * @throws CompileException    */
+DECL|method|newPrologEnvironment (String name, Reader in)
 specifier|public
 name|PrologEnvironment
 name|newPrologEnvironment
@@ -1388,7 +1388,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|InputStream
+name|Reader
 name|in
 parameter_list|)
 throws|throws

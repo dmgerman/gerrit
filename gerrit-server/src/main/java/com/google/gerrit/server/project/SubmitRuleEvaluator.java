@@ -99,20 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -462,7 +448,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayInputStream
+name|StringReader
 import|;
 end_import
 
@@ -2722,14 +2708,9 @@ argument_list|(
 literal|"stdin"
 argument_list|,
 operator|new
-name|ByteArrayInputStream
+name|StringReader
 argument_list|(
 name|rule
-operator|.
-name|getBytes
-argument_list|(
-name|UTF_8
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

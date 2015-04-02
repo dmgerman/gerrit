@@ -454,26 +454,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStreamReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|PushbackReader
 import|;
 end_import
@@ -1046,7 +1026,7 @@ return|return
 name|pcm
 return|;
 block|}
-DECL|method|loadMachine (String name, InputStream in)
+DECL|method|loadMachine (String name, Reader in)
 specifier|public
 name|PrologMachineCopy
 name|loadMachine
@@ -1054,7 +1034,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|InputStream
+name|Reader
 name|in
 parameter_list|)
 throws|throws
@@ -1067,11 +1047,7 @@ name|consultRules
 argument_list|(
 name|name
 argument_list|,
-operator|new
-name|InputStreamReader
-argument_list|(
 name|in
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
