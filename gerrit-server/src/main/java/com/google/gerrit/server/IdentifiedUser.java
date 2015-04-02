@@ -2112,12 +2112,7 @@ return|;
 block|}
 DECL|method|clearStarredChanges ()
 specifier|public
-name|Set
-argument_list|<
-name|Change
-operator|.
-name|Id
-argument_list|>
+name|void
 name|clearStarredChanges
 parameter_list|()
 block|{
@@ -2130,9 +2125,6 @@ name|starredChanges
 operator|=
 literal|null
 expr_stmt|;
-return|return
-name|starredChanges
-return|;
 block|}
 DECL|method|asyncStarredChanges ()
 specifier|public
