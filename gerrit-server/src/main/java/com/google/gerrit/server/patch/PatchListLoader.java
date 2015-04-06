@@ -2843,6 +2843,8 @@ name|TemporaryBuffer
 operator|.
 name|LocalFile
 argument_list|(
+literal|null
+argument_list|,
 literal|10
 operator|*
 literal|1024
