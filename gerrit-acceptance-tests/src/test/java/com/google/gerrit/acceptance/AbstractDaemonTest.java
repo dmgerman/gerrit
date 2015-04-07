@@ -1060,7 +1060,7 @@ decl_stmt|;
 annotation|@
 name|Inject
 DECL|field|atrScope
-specifier|private
+specifier|protected
 name|AcceptanceTestRequestScope
 name|atrScope
 decl_stmt|;
