@@ -2613,7 +2613,12 @@ try|try
 block|{
 name|acceptor
 operator|.
-name|dispose
+name|close
+argument_list|(
+literal|true
+argument_list|)
+operator|.
+name|await
 argument_list|()
 expr_stmt|;
 name|log
@@ -2621,6 +2626,22 @@ operator|.
 name|info
 argument_list|(
 literal|"Stopped Gerrit SSHD"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Exception caught while closing"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
