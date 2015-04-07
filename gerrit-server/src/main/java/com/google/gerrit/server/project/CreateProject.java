@@ -226,22 +226,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
-operator|.
-name|errors
-operator|.
-name|ProjectCreationFailedException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|extensions
 operator|.
 name|annotations
@@ -1376,11 +1360,11 @@ name|UnprocessableEntityException
 throws|,
 name|ResourceConflictException
 throws|,
-name|ProjectCreationFailedException
-throws|,
 name|ResourceNotFoundException
 throws|,
 name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 if|if
 condition|(
@@ -1883,7 +1867,13 @@ name|CreateProjectArgs
 name|args
 parameter_list|)
 throws|throws
-name|ProjectCreationFailedException
+name|BadRequestException
+throws|,
+name|ResourceConflictException
+throws|,
+name|IOException
+throws|,
+name|ConfigInvalidException
 block|{
 specifier|final
 name|Project
@@ -2086,7 +2076,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ProjectCreationFailedException
+name|ResourceConflictException
 argument_list|(
 literal|"Cannot create "
 operator|+
@@ -2100,8 +2090,6 @@ operator|+
 literal|" The other project has the same name, only spelled in a"
 operator|+
 literal|" different case."
-argument_list|,
-name|e
 argument_list|)
 throw|;
 block|}
@@ -2113,13 +2101,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|ProjectCreationFailedException
+name|BadRequestException
 argument_list|(
-literal|"Cannot create "
+literal|"invalid project name: "
 operator|+
 name|nameKey
-argument_list|,
-name|badName
 argument_list|)
 throw|;
 block|}
@@ -2156,7 +2142,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ProjectCreationFailedException
+name|ResourceConflictException
 argument_list|(
 literal|"project \""
 operator|+
@@ -2202,19 +2188,13 @@ name|err
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|ProjectCreationFailedException
-argument_list|(
-name|msg
-argument_list|,
 name|ioErr
-argument_list|)
 throw|;
 block|}
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ConfigInvalidException
 name|e
 parameter_list|)
 block|{
@@ -2235,13 +2215,7 @@ name|e
 argument_list|)
 expr_stmt|;
 throw|throw
-operator|new
-name|ProjectCreationFailedException
-argument_list|(
-name|msg
-argument_list|,
 name|e
-argument_list|)
 throw|;
 block|}
 block|}
@@ -2572,7 +2546,7 @@ argument_list|>
 name|branches
 parameter_list|)
 throws|throws
-name|ProjectCreationFailedException
+name|BadRequestException
 block|{
 if|if
 condition|(
@@ -2675,7 +2649,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|ProjectCreationFailedException
+name|BadRequestException
 argument_list|(
 name|String
 operator|.
