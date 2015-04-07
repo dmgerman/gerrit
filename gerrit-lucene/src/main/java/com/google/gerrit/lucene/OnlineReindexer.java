@@ -476,12 +476,24 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Online reindex of schema version {} failed"
+literal|"Online reindex of schema version {} failed. Successfully"
+operator|+
+literal|" indexed {} changes, failed to index {} changes"
 argument_list|,
 name|version
 argument_list|(
 name|index
 argument_list|)
+argument_list|,
+name|result
+operator|.
+name|doneCount
+argument_list|()
+argument_list|,
+name|result
+operator|.
+name|failedCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;

@@ -1669,6 +1669,9 @@ name|key
 operator|.
 name|getNewId
 argument_list|()
+operator|.
+name|name
+argument_list|()
 operator|+
 literal|" on path "
 operator|+
@@ -1683,12 +1686,18 @@ name|diffEntry
 operator|.
 name|getOldId
 argument_list|()
+operator|.
+name|name
+argument_list|()
 operator|+
 literal|".."
 operator|+
 name|diffEntry
 operator|.
 name|getNewId
+argument_list|()
+operator|.
+name|name
 argument_list|()
 argument_list|)
 expr_stmt|;

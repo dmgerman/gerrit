@@ -4299,6 +4299,30 @@ name|isSignedIn
 argument_list|()
 condition|)
 block|{
+comment|// In Firefox this event is mistakenly called when F5 is pressed so
+comment|// differentiate F5 from 't' by checking the charCode(F5=0, t=116).
+if|if
+condition|(
+name|event
+operator|.
+name|getNativeEvent
+argument_list|()
+operator|.
+name|getCharCode
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|Window
+operator|.
+name|Location
+operator|.
+name|reload
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 name|topic

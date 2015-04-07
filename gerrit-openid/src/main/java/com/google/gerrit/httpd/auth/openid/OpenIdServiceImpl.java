@@ -1204,6 +1204,17 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"OpenID: openid-realm={}"
+argument_list|,
+name|state
+operator|.
+name|contextUrl
+argument_list|)
+expr_stmt|;
 name|aReq
 operator|.
 name|setRealm

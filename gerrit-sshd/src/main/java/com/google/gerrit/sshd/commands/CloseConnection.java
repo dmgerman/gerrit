@@ -208,9 +208,9 @@ name|sshd
 operator|.
 name|common
 operator|.
-name|io
+name|future
 operator|.
-name|IoAcceptor
+name|CloseFuture
 import|;
 end_import
 
@@ -226,7 +226,7 @@ name|common
 operator|.
 name|io
 operator|.
-name|IoCloseFuture
+name|IoAcceptor
 import|;
 end_import
 
@@ -577,7 +577,7 @@ operator|+
 literal|"..."
 argument_list|)
 expr_stmt|;
-name|IoCloseFuture
+name|CloseFuture
 name|future
 init|=
 name|io
