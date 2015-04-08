@@ -2392,6 +2392,14 @@ name|name
 operator|.
 name|contains
 argument_list|(
+literal|".git/"
+argument_list|)
+comment|// no path segments that end with '.git' as "foo.git/bar"
+operator|||
+name|name
+operator|.
+name|contains
+argument_list|(
 literal|"?"
 argument_list|)
 comment|// common unix wildcard
