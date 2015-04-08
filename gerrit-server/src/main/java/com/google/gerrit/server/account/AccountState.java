@@ -349,7 +349,7 @@ name|internalGroups
 return|;
 block|}
 DECL|method|getUserName (Collection<AccountExternalId> ids)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|getUserName
