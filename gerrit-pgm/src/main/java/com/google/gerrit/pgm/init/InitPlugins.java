@@ -252,6 +252,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -649,6 +659,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"Installing plugins.\n"
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|PluginData
@@ -878,7 +895,7 @@ name|ui
 operator|.
 name|message
 argument_list|(
-literal|"No plugins found."
+literal|"No plugins found to install.\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -891,15 +908,48 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"Initializing plugins.\n"
+argument_list|)
+expr_stmt|;
+name|Collection
+argument_list|<
+name|InitStep
+argument_list|>
+name|initSteps
+init|=
+name|pluginLoader
+operator|.
+name|getInitSteps
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|initSteps
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"No plugins found with init steps.\n"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 for|for
 control|(
 name|InitStep
 name|initStep
 range|:
-name|pluginLoader
-operator|.
-name|getInitSteps
-argument_list|()
+name|initSteps
 control|)
 block|{
 name|initStep
@@ -907,6 +957,7 @@ operator|.
 name|run
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|postInitPlugins ()
