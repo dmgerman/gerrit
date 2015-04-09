@@ -463,7 +463,7 @@ literal|"--skip-plugins"
 argument_list|,
 name|usage
 operator|=
-literal|"Don't install plugin"
+literal|"Don't install plugins"
 argument_list|)
 DECL|field|skipPlugins
 specifier|private
