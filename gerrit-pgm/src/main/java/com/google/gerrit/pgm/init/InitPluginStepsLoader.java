@@ -629,7 +629,7 @@ name|ui
 operator|.
 name|message
 argument_list|(
-literal|"WARN: InitStep from plugin %s does not implement %s (Exception: %s)"
+literal|"WARN: InitStep from plugin %s does not implement %s (Exception: %s)\n"
 argument_list|,
 name|jar
 operator|.
@@ -639,6 +639,33 @@ argument_list|,
 name|InitStep
 operator|.
 name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|NoClassDefFoundError
+name|e
+parameter_list|)
+block|{
+name|ui
+operator|.
+name|message
+argument_list|(
+literal|"WARN: Failed to run InitStep from plugin %s (Missing class: %s)\n"
+argument_list|,
+name|jar
 operator|.
 name|getName
 argument_list|()
@@ -664,7 +691,7 @@ name|ui
 operator|.
 name|message
 argument_list|(
-literal|"WARN: Cannot load and get plugin init step for %s (Exception: %s)"
+literal|"WARN: Cannot load and get plugin init step for %s (Exception: %s)\n"
 argument_list|,
 name|jar
 argument_list|,
