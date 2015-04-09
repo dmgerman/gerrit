@@ -2392,6 +2392,14 @@ name|name
 operator|.
 name|contains
 argument_list|(
+literal|".git/"
+argument_list|)
+comment|// no path segments that end with '.git' as "foo.git/bar"
+operator|||
+name|name
+operator|.
+name|contains
+argument_list|(
 literal|"?"
 argument_list|)
 comment|// common unix wildcard
@@ -2641,8 +2649,9 @@ name|Path
 name|p
 parameter_list|)
 block|{
-return|return
-operator|!
+name|String
+name|name
+init|=
 name|p
 operator|.
 name|getFileName
@@ -2650,6 +2659,10 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+decl_stmt|;
+return|return
+operator|!
+name|name
 operator|.
 name|equals
 argument_list|(
@@ -2658,18 +2671,13 @@ operator|.
 name|DOT_GIT
 argument_list|)
 operator|&&
-name|FileKey
+name|name
 operator|.
-name|isGitRepository
+name|endsWith
 argument_list|(
-name|p
+name|Constants
 operator|.
-name|toFile
-argument_list|()
-argument_list|,
-name|FS
-operator|.
-name|DETECTED
+name|DOT_GIT
 argument_list|)
 return|;
 block|}
