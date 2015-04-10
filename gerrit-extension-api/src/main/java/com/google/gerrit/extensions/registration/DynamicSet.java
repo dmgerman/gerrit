@@ -313,7 +313,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *<p>    * Sets must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.setOf(binder(), new TypeLiteral<Thing<Foo>>() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
+comment|/**    * Declare a singleton {@code DynamicSet<T>} with a binder.    *<p>    * Sets must be defined in a Guice module before they can be bound:    *<pre>    * {@code    *   DynamicSet.setOf(binder(), new TypeLiteral<Thing<Foo>>() {});    * }    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry in the set.    */
 DECL|method|setOf (Binder binder, TypeLiteral<T> member)
 specifier|public
 specifier|static

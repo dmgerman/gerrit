@@ -732,7 +732,7 @@ name|projectStateFactory
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the configuration for the specified plugin that is stored in the    * plugin configuration file 'etc/<plugin-name>.config'.    *    * The plugin configuration is only loaded once and is then cached.    *    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the 'etc/<plugin-name>.config' file    */
+comment|/**    * Returns the configuration for the specified plugin that is stored in the    * plugin configuration file '{@code etc/<plugin-name>.config}'.    *    * The plugin configuration is only loaded once and is then cached.    *    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the    *         '{@code etc/<plugin-name>.config}' file    */
 DECL|method|getGlobalPluginConfig (String pluginName)
 specifier|public
 specifier|synchronized
@@ -885,7 +885,7 @@ return|return
 name|cfg
 return|;
 block|}
-comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '<plugin-name>.config' file in the 'refs/meta/config' branch of the    * specified project.    *    * @param projectName the name of the project for which the plugin    *        configuration should be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '<plugin-name>.config' file of    *         the specified project    * @throws NoSuchProjectException thrown if the specified project does not    *         exist    */
+comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '{@code<plugin-name>.config}' file in the 'refs/meta/config' branch of    * the specified project.    *    * @param projectName the name of the project for which the plugin    *        configuration should be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '{@code<plugin-name>.config}'    *         file of the specified project    * @throws NoSuchProjectException thrown if the specified project does not    *         exist    */
 DECL|method|getProjectPluginConfig (Project.NameKey projectName, String pluginName)
 specifier|public
 name|Config
@@ -914,7 +914,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '<plugin-name>.config' file in the 'refs/meta/config' branch of the    * specified project.    *    * @param projectState the project for which the plugin configuration should    *        be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '<plugin-name>.config' file of    *         the specified project    */
+comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '{@code<plugin-name>.config}' file in the 'refs/meta/config' branch of    * the specified project.    *    * @param projectState the project for which the plugin configuration should    *        be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '{@code<plugin-name>.config}'    *         file of the specified project    */
 DECL|method|getProjectPluginConfig (ProjectState projectState, String pluginName)
 specifier|public
 name|Config
@@ -941,7 +941,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '<plugin-name>.config' file in the 'refs/meta/config' branch of the    * specified project. Parameters which are not set in the    * '<plugin-name>.config' of this project are inherited from the parent    * project's '<plugin-name>.config' files.    *    * E.g.: child project: [mySection "mySubsection"] myKey = childValue    *    * parent project: [mySection "mySubsection"] myKey = parentValue anotherKey =    * someValue    *    * return: [mySection "mySubsection"] myKey = childValue anotherKey =    * someValue    *    * @param projectName the name of the project for which the plugin    *        configuration should be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '<plugin-name>.config' file of    *         the specified project with inheriting non-set parameters from the    *         parent projects    * @throws NoSuchProjectException thrown if the specified project does not    *         exist    */
+comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '{@code<plugin-name>.config}' file in the 'refs/meta/config' branch of    * the specified project. Parameters which are not set in the    * '{@code<plugin-name>.config}' of this project are inherited from the    * parent project's '{@code<plugin-name>.config}' files.    *    * E.g.: child project: [mySection "mySubsection"] myKey = childValue    *    * parent project: [mySection "mySubsection"] myKey = parentValue anotherKey =    * someValue    *    * return: [mySection "mySubsection"] myKey = childValue anotherKey =    * someValue    *    * @param projectName the name of the project for which the plugin    *        configuration should be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '{@code<plugin-name>.config}'    *         file of the specified project with inheriting non-set parameters    *         from the parent projects    * @throws NoSuchProjectException thrown if the specified project does not    *         exist    */
 DECL|method|getProjectPluginConfigWithInheritance (Project.NameKey projectName, String pluginName)
 specifier|public
 name|Config
@@ -970,7 +970,7 @@ name|getWithInheritance
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '<plugin-name>.config' file in the 'refs/meta/config' branch of the    * specified project. Parameters which are not set in the    * '<plugin-name>.config' of this project are inherited from the parent    * project's '<plugin-name>.config' files.    *    * E.g.: child project: [mySection "mySubsection"] myKey = childValue    *    * parent project: [mySection "mySubsection"] myKey = parentValue anotherKey =    * someValue    *    * return: [mySection "mySubsection"] myKey = childValue anotherKey =    * someValue    *    * @param projectState the project for which the plugin configuration should    *        be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '<plugin-name>.config' file of    *         the specified project with inheriting non-set parameters from the    *         parent projects    */
+comment|/**    * Returns the configuration for the specified plugin that is stored in the    * '{@code<plugin-name>.config}' file in the 'refs/meta/config' branch of    * the specified project. Parameters which are not set in the    * '{@code<plugin-name>.config}' of this project are inherited from the    * parent project's '{@code<plugin-name>.config}' files.    *    * E.g.: child project: [mySection "mySubsection"] myKey = childValue    *    * parent project: [mySection "mySubsection"] myKey = parentValue anotherKey =    * someValue    *    * return: [mySection "mySubsection"] myKey = childValue anotherKey =    * someValue    *    * @param projectState the project for which the plugin configuration should    *        be returned    * @param pluginName the name of the plugin for which the configuration should    *        be returned    * @return the plugin configuration from the '{@code<plugin-name>.config}'    *         file of the specified project with inheriting non-set parameters    *         from the parent projects    */
 DECL|method|getProjectPluginConfigWithInheritance (ProjectState projectState, String pluginName)
 specifier|public
 name|Config
