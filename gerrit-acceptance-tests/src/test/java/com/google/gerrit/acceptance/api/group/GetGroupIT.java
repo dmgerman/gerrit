@@ -112,7 +112,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|RestResponse
+name|NoHttpd
 import|;
 end_import
 
@@ -158,17 +158,9 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_class
+annotation|@
+name|NoHttpd
 DECL|class|GetGroupIT
 specifier|public
 class|class
@@ -202,11 +194,8 @@ literal|"Administrators"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// by UUID
 name|testGetGroup
 argument_list|(
-literal|"/groups/"
-operator|+
 name|adminGroup
 operator|.
 name|getGroupUUID
@@ -218,11 +207,8 @@ argument_list|,
 name|adminGroup
 argument_list|)
 expr_stmt|;
-comment|// by name
 name|testGetGroup
 argument_list|(
-literal|"/groups/"
-operator|+
 name|adminGroup
 operator|.
 name|getName
@@ -231,11 +217,8 @@ argument_list|,
 name|adminGroup
 argument_list|)
 expr_stmt|;
-comment|// by legacy numeric ID
 name|testGetGroup
 argument_list|(
-literal|"/groups/"
-operator|+
 name|adminGroup
 operator|.
 name|getId
@@ -248,47 +231,38 @@ name|adminGroup
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|testGetGroup (String url, AccountGroup expectedGroup)
+DECL|method|testGetGroup (Object id, AccountGroup expectedGroup)
 specifier|private
 name|void
 name|testGetGroup
 parameter_list|(
-name|String
-name|url
+name|Object
+name|id
 parameter_list|,
 name|AccountGroup
 name|expectedGroup
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
-name|RestResponse
-name|r
-init|=
-name|adminSession
-operator|.
-name|get
-argument_list|(
-name|url
-argument_list|)
-decl_stmt|;
 name|GroupInfo
 name|group
 init|=
-name|newGson
+name|gApi
+operator|.
+name|groups
 argument_list|()
 operator|.
-name|fromJson
+name|id
 argument_list|(
-name|r
+name|id
 operator|.
-name|getReader
+name|toString
 argument_list|()
-argument_list|,
-name|GroupInfo
-operator|.
-name|class
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|assertGroupInfo
 argument_list|(
