@@ -162,11 +162,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|group
+name|common
 operator|.
-name|CreateGroup
+name|GroupInfo
 import|;
 end_import
 
@@ -182,9 +182,7 @@ name|server
 operator|.
 name|group
 operator|.
-name|GroupJson
-operator|.
-name|GroupInfo
+name|CreateGroup
 import|;
 end_import
 

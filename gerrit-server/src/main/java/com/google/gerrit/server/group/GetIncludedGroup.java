@@ -76,9 +76,9 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|restapi
+name|common
 operator|.
-name|RestReadView
+name|GroupInfo
 import|;
 end_import
 
@@ -90,13 +90,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|group
+name|restapi
 operator|.
-name|GroupJson
-operator|.
-name|GroupInfo
+name|RestReadView
 import|;
 end_import
 

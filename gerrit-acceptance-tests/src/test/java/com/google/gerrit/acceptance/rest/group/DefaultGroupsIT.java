@@ -178,11 +178,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
+name|extensions
 operator|.
-name|client
+name|common
 operator|.
-name|AccountGroup
+name|GroupInfo
 import|;
 end_import
 
@@ -194,13 +194,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|reviewdb
 operator|.
-name|group
+name|client
 operator|.
-name|GroupJson
-operator|.
-name|GroupInfo
+name|AccountGroup
 import|;
 end_import
 
