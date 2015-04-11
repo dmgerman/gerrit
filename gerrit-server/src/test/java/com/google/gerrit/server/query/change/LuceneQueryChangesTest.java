@@ -88,6 +88,20 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|lifecycle
+operator|.
+name|LifecycleManager
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|reviewdb
 operator|.
 name|client
@@ -107,18 +121,6 @@ operator|.
 name|testutil
 operator|.
 name|InMemoryModule
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Guice
 import|;
 end_import
 
@@ -214,11 +216,14 @@ name|AbstractQueryChangesTest
 block|{
 annotation|@
 name|Override
-DECL|method|createInjector ()
+DECL|method|createInjector (LifecycleManager lifecycle)
 specifier|protected
 name|Injector
 name|createInjector
-parameter_list|()
+parameter_list|(
+name|LifecycleManager
+name|lifecycle
+parameter_list|)
 block|{
 name|Config
 name|luceneConfig
@@ -237,15 +242,13 @@ name|luceneConfig
 argument_list|)
 expr_stmt|;
 return|return
-name|Guice
+name|InMemoryModule
 operator|.
 name|createInjector
 argument_list|(
-operator|new
-name|InMemoryModule
-argument_list|(
+name|lifecycle
+argument_list|,
 name|luceneConfig
-argument_list|)
 argument_list|)
 return|;
 block|}
