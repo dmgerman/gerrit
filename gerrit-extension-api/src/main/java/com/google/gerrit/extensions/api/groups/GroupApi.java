@@ -94,6 +94,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|GroupOptionsInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|RestApiException
@@ -106,6 +122,7 @@ specifier|public
 interface|interface
 name|GroupApi
 block|{
+comment|/** @return group info with no {@code ListGroupsOption}s set. */
 DECL|method|get ()
 name|GroupInfo
 name|get
@@ -113,10 +130,135 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** @return group info with all {@code ListGroupsOption}s set. */
 DECL|method|detail ()
 name|GroupInfo
 name|detail
 parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group name. */
+DECL|method|name ()
+name|String
+name|name
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group name.    *    * @param name new name.    * @throws RestApiException    */
+DECL|method|name (String name)
+name|void
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return owning group info. */
+DECL|method|owner ()
+name|GroupInfo
+name|owner
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group owner.    *    * @param owner identifier of new group owner.    * @throws RestApiException    */
+DECL|method|owner (String owner)
+name|void
+name|owner
+parameter_list|(
+name|String
+name|owner
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group description. */
+DECL|method|description ()
+name|String
+name|description
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group decsription.    *    * @param description new description.    * @throws RestApiException    */
+DECL|method|description (String description)
+name|void
+name|description
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group options. */
+DECL|method|options ()
+name|GroupOptionsInfo
+name|options
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group options.    *    * @param options new options.    * @throws RestApiException    */
+DECL|method|options (GroupOptionsInfo options)
+name|void
+name|options
+parameter_list|(
+name|GroupOptionsInfo
+name|options
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+DECL|method|addMembers (String... members)
+name|void
+name|addMembers
+parameter_list|(
+name|String
+modifier|...
+name|members
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Remove members from a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+DECL|method|removeMembers (String... members)
+name|void
+name|removeMembers
+parameter_list|(
+name|String
+modifier|...
+name|members
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Add groups to be included in this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+DECL|method|addGroups (String... groups)
+name|void
+name|addGroups
+parameter_list|(
+name|String
+modifier|...
+name|groups
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Remove included groups from this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+DECL|method|removeGroups (String... groups)
+name|void
+name|removeGroups
+parameter_list|(
+name|String
+modifier|...
+name|groups
+parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;

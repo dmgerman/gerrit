@@ -216,24 +216,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|PutOptions
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gwtorm
 operator|.
 name|server
@@ -300,21 +282,9 @@ name|RestModifyView
 argument_list|<
 name|GroupResource
 argument_list|,
-name|Input
+name|GroupOptionsInfo
 argument_list|>
 block|{
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-DECL|field|visibleToAll
-specifier|public
-name|Boolean
-name|visibleToAll
-decl_stmt|;
-block|}
 DECL|field|groupCache
 specifier|private
 specifier|final
@@ -360,7 +330,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (GroupResource resource, Input input)
+DECL|method|apply (GroupResource resource, GroupOptionsInfo input)
 specifier|public
 name|GroupOptionsInfo
 name|apply
@@ -368,7 +338,7 @@ parameter_list|(
 name|GroupResource
 name|resource
 parameter_list|,
-name|Input
+name|GroupOptionsInfo
 name|input
 parameter_list|)
 throws|throws
