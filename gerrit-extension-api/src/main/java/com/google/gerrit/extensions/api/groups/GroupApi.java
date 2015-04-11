@@ -80,6 +80,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|GroupInfo
 import|;
 end_import
@@ -113,6 +129,16 @@ operator|.
 name|restapi
 operator|.
 name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -214,6 +240,31 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/**    * List group members, non-recursively.    *    * @return group members.    * @throws RestApiException    */
+DECL|method|members ()
+name|List
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|members
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * List group members.    *    * @param recursive whether to recursively included groups.    * @return group members.    * @throws RestApiException    */
+DECL|method|members (boolean recursive)
+name|List
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|members
+parameter_list|(
+name|boolean
+name|recursive
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
 DECL|method|addMembers (String... members)
 name|void
@@ -238,7 +289,18 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Add groups to be included in this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * List included groups.    *    * @return included groups.    * @throws RestApiException    */
+DECL|method|includedGroups ()
+name|List
+argument_list|<
+name|GroupInfo
+argument_list|>
+name|includedGroups
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/*    * Add groups to be included in this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|addGroups (String... groups)
 name|void
 name|addGroups
