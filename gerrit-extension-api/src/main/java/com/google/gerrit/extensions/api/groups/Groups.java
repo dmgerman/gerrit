@@ -193,6 +193,28 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+comment|/** Create a new group with the given name and default options. */
+DECL|method|create (String name)
+name|GroupApi
+name|create
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** Create a new group. */
+DECL|method|create (GroupInput input)
+name|GroupApi
+name|create
+parameter_list|(
+name|GroupInput
+name|input
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
 comment|/** @return new request for listing groups. */
 DECL|method|list ()
 name|ListRequest

@@ -164,9 +164,11 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
-name|common
+name|api
 operator|.
-name|GroupInfo
+name|groups
+operator|.
+name|GroupInput
 import|;
 end_import
 
@@ -178,11 +180,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|server
+name|extensions
 operator|.
-name|group
+name|common
 operator|.
-name|CreateGroup
+name|GroupInfo
 import|;
 end_import
 
@@ -653,15 +655,11 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-name|CreateGroup
-operator|.
-name|Input
+name|GroupInput
 name|in
 init|=
 operator|new
-name|CreateGroup
-operator|.
-name|Input
+name|GroupInput
 argument_list|()
 decl_stmt|;
 name|in
