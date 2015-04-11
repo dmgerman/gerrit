@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest.group
+DECL|package|com.google.gerrit.acceptance.api.group
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|rest
+name|api
 operator|.
 name|group
 package|;
@@ -94,13 +94,13 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|rest
+name|api
 operator|.
-name|account
+name|group
 operator|.
-name|AccountAssert
+name|GroupAssert
 operator|.
-name|assertAccountInfo
+name|assertGroupInfo
 import|;
 end_import
 
@@ -116,11 +116,11 @@ name|acceptance
 operator|.
 name|rest
 operator|.
-name|group
+name|account
 operator|.
-name|GroupAssert
+name|AccountAssert
 operator|.
-name|assertGroupInfo
+name|assertAccountInfo
 import|;
 end_import
 
