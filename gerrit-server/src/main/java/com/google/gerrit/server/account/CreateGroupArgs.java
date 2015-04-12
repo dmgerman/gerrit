@@ -150,18 +150,6 @@ name|Id
 argument_list|>
 name|initialMembers
 decl_stmt|;
-DECL|field|initialGroups
-specifier|public
-name|Collection
-argument_list|<
-name|?
-extends|extends
-name|AccountGroup
-operator|.
-name|UUID
-argument_list|>
-name|initialGroups
-decl_stmt|;
 DECL|method|getGroup ()
 specifier|public
 name|AccountGroup
