@@ -705,6 +705,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|DfsRepositoryDescription
+name|desc
+init|=
+operator|new
+name|DfsRepositoryDescription
+argument_list|(
+literal|"clone of "
+operator|+
+name|project
+operator|.
+name|get
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|InMemoryRepository
 name|dest
 init|=
@@ -716,14 +730,7 @@ argument_list|()
 operator|.
 name|setRepositoryDescription
 argument_list|(
-operator|new
-name|DfsRepositoryDescription
-argument_list|(
-name|project
-operator|.
-name|get
-argument_list|()
-argument_list|)
+name|desc
 argument_list|)
 comment|// SshTransport depends on a real FS to read ~/.ssh/config, but
 comment|// InMemoryRepository by default uses a null FS.

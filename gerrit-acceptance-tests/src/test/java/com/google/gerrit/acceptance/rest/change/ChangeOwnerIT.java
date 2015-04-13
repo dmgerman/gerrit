@@ -92,38 +92,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|cloneProject
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|acceptance
-operator|.
-name|GitUtil
-operator|.
-name|initSsh
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|common
 operator|.
 name|data
@@ -200,7 +168,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|SshSession
+name|TestAccount
 import|;
 end_import
 
@@ -214,7 +182,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|TestAccount
+name|TestProjectInput
 import|;
 end_import
 
@@ -421,6 +389,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|setApiUser
+argument_list|(
+name|user
+argument_list|)
+expr_stmt|;
 name|sessionOwner
 operator|=
 operator|new
@@ -430,41 +403,6 @@ name|server
 argument_list|,
 name|user
 argument_list|)
-expr_stmt|;
-name|SshSession
-name|sshSession
-init|=
-operator|new
-name|SshSession
-argument_list|(
-name|server
-argument_list|,
-name|user
-argument_list|)
-decl_stmt|;
-name|initSsh
-argument_list|(
-name|user
-argument_list|)
-expr_stmt|;
-name|sshSession
-operator|.
-name|open
-argument_list|()
-expr_stmt|;
-name|testRepo
-operator|=
-name|cloneProject
-argument_list|(
-name|project
-argument_list|,
-name|sshSession
-argument_list|)
-expr_stmt|;
-name|sshSession
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 name|user2
 operator|=
@@ -486,6 +424,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|cloneAs
+operator|=
+literal|"user"
+argument_list|)
 DECL|method|testChangeOwner_OwnerACLNotGranted ()
 specifier|public
 name|void
@@ -509,6 +454,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|cloneAs
+operator|=
+literal|"user"
+argument_list|)
 DECL|method|testChangeOwner_OwnerACLGranted ()
 specifier|public
 name|void
@@ -535,6 +487,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|TestProjectInput
+argument_list|(
+name|cloneAs
+operator|=
+literal|"user"
+argument_list|)
 DECL|method|testChangeOwner_NotOwnerACLGranted ()
 specifier|public
 name|void

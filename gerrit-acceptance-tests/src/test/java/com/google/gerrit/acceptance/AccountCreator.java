@@ -65,6 +65,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1028,6 +1044,31 @@ argument_list|,
 literal|"user2@example.com"
 argument_list|,
 literal|"User2"
+argument_list|)
+return|;
+block|}
+DECL|method|get (String username)
+specifier|public
+name|TestAccount
+name|get
+parameter_list|(
+name|String
+name|username
+parameter_list|)
+block|{
+return|return
+name|checkNotNull
+argument_list|(
+name|accounts
+operator|.
+name|get
+argument_list|(
+name|username
+argument_list|)
+argument_list|,
+literal|"No TestAccount created for %s"
+argument_list|,
+name|username
 argument_list|)
 return|;
 block|}

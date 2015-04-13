@@ -166,6 +166,7 @@ specifier|public
 annotation_defn|@interface
 name|TestProjectInput
 block|{
+comment|// Fields from ProjectInput for creating the project.
 DECL|method|parent ()
 name|String
 name|parent
@@ -239,6 +240,15 @@ default|default
 name|InheritableBoolean
 operator|.
 name|INHERIT
+function_decl|;
+comment|// Fields specific to acceptance test behavior.
+comment|/** Username to use for initial clone, passed to {@link AccountCreator}. */
+DECL|method|cloneAs ()
+name|String
+name|cloneAs
+parameter_list|()
+default|default
+literal|"admin"
 function_decl|;
 block|}
 end_annotation_defn

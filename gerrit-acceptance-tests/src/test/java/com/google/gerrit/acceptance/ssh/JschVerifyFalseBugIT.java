@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|com
 operator|.
 name|google
@@ -92,9 +92,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|GitUtil
-operator|.
-name|cloneProject
+name|AbstractDaemonTest
 import|;
 end_import
 
@@ -108,7 +106,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|AbstractDaemonTest
+name|GitUtil
 import|;
 end_import
 
@@ -324,6 +322,8 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+name|GitUtil
+operator|.
 name|cloneProject
 argument_list|(
 operator|new
