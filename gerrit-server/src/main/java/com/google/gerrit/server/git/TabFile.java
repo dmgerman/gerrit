@@ -244,9 +244,7 @@ name|rows
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Row
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -404,11 +402,7 @@ name|map
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|rows
 operator|.
@@ -483,9 +477,7 @@ name|rows
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Row
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 operator|.
@@ -748,9 +740,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|T
-argument_list|>
+argument_list|<>
 argument_list|(
 name|m
 argument_list|)
