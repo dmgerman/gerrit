@@ -186,7 +186,7 @@ name|NameKey
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|NameKey (final Project.NameKey proj, final String n)
+DECL|method|NameKey (final Project.NameKey proj, final String branchName)
 specifier|public
 name|NameKey
 parameter_list|(
@@ -198,16 +198,17 @@ name|proj
 parameter_list|,
 specifier|final
 name|String
-name|n
+name|branchName
 parameter_list|)
 block|{
 name|projectName
 operator|=
 name|proj
 expr_stmt|;
+name|set
+argument_list|(
 name|branchName
-operator|=
-name|n
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -235,7 +236,12 @@ parameter_list|)
 block|{
 name|branchName
 operator|=
+name|RefNames
+operator|.
+name|fullName
+argument_list|(
 name|newValue
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

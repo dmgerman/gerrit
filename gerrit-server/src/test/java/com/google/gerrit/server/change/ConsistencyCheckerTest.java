@@ -2581,6 +2581,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|String
+name|ref
+init|=
+literal|"refs/heads/master"
+decl_stmt|;
 name|RefUpdate
 name|ru
 init|=
@@ -2591,7 +2596,7 @@ argument_list|()
 operator|.
 name|updateRef
 argument_list|(
-literal|"refs/heads/master"
+name|ref
 argument_list|)
 decl_stmt|;
 name|ru
@@ -2672,7 +2677,9 @@ name|assertProblems
 argument_list|(
 name|c
 argument_list|,
-literal|"Destination ref not found (may be new branch): master"
+literal|"Destination ref not found (may be new branch): "
+operator|+
+name|ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -2732,7 +2739,7 @@ name|rev
 operator|+
 literal|") is not merged into destination ref"
 operator|+
-literal|" master ("
+literal|" refs/heads/master ("
 operator|+
 name|tip
 operator|.
@@ -2845,7 +2852,7 @@ argument_list|()
 operator|+
 literal|") is merged into destination ref"
 operator|+
-literal|" master ("
+literal|" refs/heads/master ("
 operator|+
 name|commit
 operator|.
@@ -3003,7 +3010,7 @@ argument_list|()
 operator|+
 literal|") is merged into destination ref"
 operator|+
-literal|" master ("
+literal|" refs/heads/master ("
 operator|+
 name|commit
 operator|.

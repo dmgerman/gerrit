@@ -1967,13 +1967,7 @@ name|problem
 argument_list|(
 literal|"Destination ref not found (may be new branch): "
 operator|+
-name|change
-operator|.
-name|getDest
-argument_list|()
-operator|.
-name|get
-argument_list|()
+name|refName
 argument_list|)
 expr_stmt|;
 return|return;
