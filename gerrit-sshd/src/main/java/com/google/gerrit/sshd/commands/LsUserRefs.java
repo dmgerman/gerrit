@@ -160,7 +160,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|RefNames
 import|;
 end_import
 
@@ -783,9 +783,9 @@ name|ref
 operator|.
 name|startsWith
 argument_list|(
-name|Branch
+name|RefNames
 operator|.
-name|R_HEADS
+name|REFS_HEADS
 argument_list|)
 condition|)
 block|{
