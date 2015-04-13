@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Constants
-operator|.
-name|R_HEADS
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -111,6 +95,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
 import|;
 end_import
 
@@ -189,11 +189,14 @@ name|getRefName
 parameter_list|()
 block|{
 return|return
-name|R_HEADS
-operator|+
+name|RefNames
+operator|.
+name|fullName
+argument_list|(
 name|change
 operator|.
 name|branch
+argument_list|)
 return|;
 block|}
 DECL|method|getChangeKey ()
