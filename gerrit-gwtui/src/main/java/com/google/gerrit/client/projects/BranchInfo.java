@@ -124,7 +124,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Branch
+name|RefNames
 import|;
 end_import
 
@@ -176,31 +176,13 @@ name|getShortName
 parameter_list|()
 block|{
 return|return
-name|ref
-argument_list|()
+name|RefNames
 operator|.
-name|startsWith
+name|shortName
 argument_list|(
-name|Branch
-operator|.
-name|R_HEADS
-argument_list|)
-condition|?
 name|ref
-argument_list|()
-operator|.
-name|substring
-argument_list|(
-name|Branch
-operator|.
-name|R_HEADS
-operator|.
-name|length
 argument_list|()
 argument_list|)
-else|:
-name|ref
-argument_list|()
 return|;
 block|}
 DECL|method|ref ()
