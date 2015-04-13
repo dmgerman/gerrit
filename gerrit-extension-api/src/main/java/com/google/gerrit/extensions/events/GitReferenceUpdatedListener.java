@@ -119,6 +119,21 @@ name|String
 name|getNewObjectId
 parameter_list|()
 function_decl|;
+DECL|method|isCreate ()
+name|boolean
+name|isCreate
+parameter_list|()
+function_decl|;
+DECL|method|isDelete ()
+name|boolean
+name|isDelete
+parameter_list|()
+function_decl|;
+DECL|method|isNonFastForward ()
+name|boolean
+name|isNonFastForward
+parameter_list|()
+function_decl|;
 block|}
 DECL|method|onGitReferenceUpdated (Event event)
 name|void

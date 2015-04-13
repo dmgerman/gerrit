@@ -3406,6 +3406,12 @@ name|getProject
 argument_list|()
 argument_list|,
 name|update
+argument_list|,
+name|ReceiveCommand
+operator|.
+name|Type
+operator|.
+name|DELETE
 argument_list|)
 expr_stmt|;
 block|}
