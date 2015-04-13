@@ -449,6 +449,13 @@ name|Modes
 operator|.
 name|I
 operator|.
+name|puppet
+argument_list|()
+block|,
+name|Modes
+operator|.
+name|I
+operator|.
 name|python
 argument_list|()
 block|,
