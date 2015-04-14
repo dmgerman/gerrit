@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.acceptance.rest.group
+DECL|package|com.google.gerrit.acceptance.api.group
 package|package
 name|com
 operator|.
@@ -62,7 +62,7 @@ name|gerrit
 operator|.
 name|acceptance
 operator|.
-name|rest
+name|api
 operator|.
 name|group
 package|;
@@ -110,6 +110,22 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|common
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|Url
@@ -129,24 +145,6 @@ operator|.
 name|client
 operator|.
 name|AccountGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|group
-operator|.
-name|GroupJson
-operator|.
-name|GroupInfo
 import|;
 end_import
 

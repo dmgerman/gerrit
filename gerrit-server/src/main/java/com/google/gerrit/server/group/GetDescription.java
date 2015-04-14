@@ -144,6 +144,7 @@ begin_class
 annotation|@
 name|Singleton
 DECL|class|GetDescription
+specifier|public
 class|class
 name|GetDescription
 implements|implements

@@ -1,0 +1,331 @@
+begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|// Copyright (C) 2015 The Android Open Source Project
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// Licensed under the Apache License, Version 2.0 (the "License");
+end_comment
+
+begin_comment
+comment|// you may not use this file except in compliance with the License.
+end_comment
+
+begin_comment
+comment|// You may obtain a copy of the License at
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// http://www.apache.org/licenses/LICENSE-2.0
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// Unless required by applicable law or agreed to in writing, software
+end_comment
+
+begin_comment
+comment|// distributed under the License is distributed on an "AS IS" BASIS,
+end_comment
+
+begin_comment
+comment|// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+end_comment
+
+begin_comment
+comment|// See the License for the specific language governing permissions and
+end_comment
+
+begin_comment
+comment|// limitations under the License.
+end_comment
+
+begin_package
+DECL|package|com.google.gerrit.extensions.api.groups
+package|package
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
+name|groups
+package|;
+end_package
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|AccountInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|GroupInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
+name|GroupOptionsInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|restapi
+operator|.
+name|RestApiException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_interface
+DECL|interface|GroupApi
+specifier|public
+interface|interface
+name|GroupApi
+block|{
+comment|/** @return group info with no {@code ListGroupsOption}s set. */
+DECL|method|get ()
+name|GroupInfo
+name|get
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group info with all {@code ListGroupsOption}s set. */
+DECL|method|detail ()
+name|GroupInfo
+name|detail
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group name. */
+DECL|method|name ()
+name|String
+name|name
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group name.    *    * @param name new name.    * @throws RestApiException    */
+DECL|method|name (String name)
+name|void
+name|name
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return owning group info. */
+DECL|method|owner ()
+name|GroupInfo
+name|owner
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group owner.    *    * @param owner identifier of new group owner.    * @throws RestApiException    */
+DECL|method|owner (String owner)
+name|void
+name|owner
+parameter_list|(
+name|String
+name|owner
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group description. */
+DECL|method|description ()
+name|String
+name|description
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group decsription.    *    * @param description new description.    * @throws RestApiException    */
+DECL|method|description (String description)
+name|void
+name|description
+parameter_list|(
+name|String
+name|description
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/** @return group options. */
+DECL|method|options ()
+name|GroupOptionsInfo
+name|options
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Set group options.    *    * @param options new options.    * @throws RestApiException    */
+DECL|method|options (GroupOptionsInfo options)
+name|void
+name|options
+parameter_list|(
+name|GroupOptionsInfo
+name|options
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * List group members, non-recursively.    *    * @return group members.    * @throws RestApiException    */
+DECL|method|members ()
+name|List
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|members
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * List group members.    *    * @param recursive whether to recursively included groups.    * @return group members.    * @throws RestApiException    */
+DECL|method|members (boolean recursive)
+name|List
+argument_list|<
+name|AccountInfo
+argument_list|>
+name|members
+parameter_list|(
+name|boolean
+name|recursive
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Add members to a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+DECL|method|addMembers (String... members)
+name|void
+name|addMembers
+parameter_list|(
+name|String
+modifier|...
+name|members
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Remove members from a group.    *    * @param members list of member identifiers, in any format accepted by    *     {@link com.google.gerrit.extensions.api.accounts.Accounts#id(String)}    * @throws RestApiException    */
+DECL|method|removeMembers (String... members)
+name|void
+name|removeMembers
+parameter_list|(
+name|String
+modifier|...
+name|members
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * List included groups.    *    * @return included groups.    * @throws RestApiException    */
+DECL|method|includedGroups ()
+name|List
+argument_list|<
+name|GroupInfo
+argument_list|>
+name|includedGroups
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/*    * Add groups to be included in this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+DECL|method|addGroups (String... groups)
+name|void
+name|addGroups
+parameter_list|(
+name|String
+modifier|...
+name|groups
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Remove included groups from this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+DECL|method|removeGroups (String... groups)
+name|void
+name|removeGroups
+parameter_list|(
+name|String
+modifier|...
+name|groups
+parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+block|}
+end_interface
+
+end_unit
+

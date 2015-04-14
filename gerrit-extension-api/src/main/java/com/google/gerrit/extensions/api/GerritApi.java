@@ -114,6 +114,24 @@ name|extensions
 operator|.
 name|api
 operator|.
+name|groups
+operator|.
+name|Groups
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|api
+operator|.
 name|projects
 operator|.
 name|Projects
@@ -154,6 +172,12 @@ name|Changes
 name|changes
 parameter_list|()
 function_decl|;
+DECL|method|groups ()
+specifier|public
+name|Groups
+name|groups
+parameter_list|()
+function_decl|;
 DECL|method|projects ()
 specifier|public
 name|Projects
@@ -188,6 +212,20 @@ DECL|method|changes ()
 specifier|public
 name|Changes
 name|changes
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|groups ()
+specifier|public
+name|Groups
+name|groups
 parameter_list|()
 block|{
 throw|throw
