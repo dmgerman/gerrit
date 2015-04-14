@@ -2677,7 +2677,7 @@ name|endsWith
 argument_list|(
 name|Constants
 operator|.
-name|DOT_GIT
+name|DOT_GIT_EXT
 argument_list|)
 return|;
 block|}
