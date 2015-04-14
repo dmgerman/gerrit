@@ -519,18 +519,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setIgnoreWhitespaceRaw (String i)
-specifier|private
-specifier|final
-specifier|native
-name|void
-name|setIgnoreWhitespaceRaw
-parameter_list|(
-name|String
-name|i
-parameter_list|)
-comment|/*-{ this.ignore_whitespace = i }-*/
-function_decl|;
 DECL|method|theme (Theme i)
 specifier|public
 specifier|final
@@ -561,18 +549,157 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setThemeRaw (String i)
-specifier|private
+DECL|method|showLineNumbers (boolean s)
+specifier|public
 specifier|final
-specifier|native
 name|void
-name|setThemeRaw
+name|showLineNumbers
 parameter_list|(
-name|String
-name|i
+name|boolean
+name|s
 parameter_list|)
-comment|/*-{ this.theme = i }-*/
-function_decl|;
+block|{
+name|hideLineNumbers
+argument_list|(
+operator|!
+name|s
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ignoreWhitespace ()
+specifier|public
+specifier|final
+name|Whitespace
+name|ignoreWhitespace
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|ignoreWhitespaceRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|Whitespace
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+name|Whitespace
+operator|.
+name|IGNORE_NONE
+return|;
+block|}
+DECL|method|theme ()
+specifier|public
+specifier|final
+name|Theme
+name|theme
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|themeRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|Theme
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+name|Theme
+operator|.
+name|DEFAULT
+return|;
+block|}
+DECL|method|tabSize ()
+specifier|public
+specifier|final
+name|int
+name|tabSize
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"tab_size"
+argument_list|,
+literal|8
+argument_list|)
+return|;
+block|}
+DECL|method|context ()
+specifier|public
+specifier|final
+name|int
+name|context
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"context"
+argument_list|,
+literal|10
+argument_list|)
+return|;
+block|}
+DECL|method|lineLength ()
+specifier|public
+specifier|final
+name|int
+name|lineLength
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"line_length"
+argument_list|,
+literal|100
+argument_list|)
+return|;
+block|}
+DECL|method|showLineNumbers ()
+specifier|public
+specifier|final
+name|boolean
+name|showLineNumbers
+parameter_list|()
+block|{
+return|return
+operator|!
+name|hideLineNumbers
+argument_list|()
+return|;
+block|}
+DECL|method|autoReview ()
+specifier|public
+specifier|final
+name|boolean
+name|autoReview
+parameter_list|()
+block|{
+return|return
+operator|!
+name|manualReview
+argument_list|()
+return|;
+block|}
 DECL|method|tabSize (int t)
 specifier|public
 specifier|final
@@ -753,149 +880,6 @@ name|s
 parameter_list|)
 comment|/*-{ this.hide_empty_pane = s }-*/
 function_decl|;
-DECL|method|showLineNumbers (boolean s)
-specifier|public
-specifier|final
-name|void
-name|showLineNumbers
-parameter_list|(
-name|boolean
-name|s
-parameter_list|)
-block|{
-name|hideLineNumbers
-argument_list|(
-operator|!
-name|s
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|ignoreWhitespace ()
-specifier|public
-specifier|final
-name|Whitespace
-name|ignoreWhitespace
-parameter_list|()
-block|{
-name|String
-name|s
-init|=
-name|ignoreWhitespaceRaw
-argument_list|()
-decl_stmt|;
-return|return
-name|s
-operator|!=
-literal|null
-condition|?
-name|Whitespace
-operator|.
-name|valueOf
-argument_list|(
-name|s
-argument_list|)
-else|:
-name|Whitespace
-operator|.
-name|IGNORE_NONE
-return|;
-block|}
-DECL|method|ignoreWhitespaceRaw ()
-specifier|private
-specifier|final
-specifier|native
-name|String
-name|ignoreWhitespaceRaw
-parameter_list|()
-comment|/*-{ return this.ignore_whitespace }-*/
-function_decl|;
-DECL|method|theme ()
-specifier|public
-specifier|final
-name|Theme
-name|theme
-parameter_list|()
-block|{
-name|String
-name|s
-init|=
-name|themeRaw
-argument_list|()
-decl_stmt|;
-return|return
-name|s
-operator|!=
-literal|null
-condition|?
-name|Theme
-operator|.
-name|valueOf
-argument_list|(
-name|s
-argument_list|)
-else|:
-name|Theme
-operator|.
-name|DEFAULT
-return|;
-block|}
-DECL|method|themeRaw ()
-specifier|private
-specifier|final
-specifier|native
-name|String
-name|themeRaw
-parameter_list|()
-comment|/*-{ return this.theme }-*/
-function_decl|;
-DECL|method|tabSize ()
-specifier|public
-specifier|final
-name|int
-name|tabSize
-parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"tab_size"
-argument_list|,
-literal|8
-argument_list|)
-return|;
-block|}
-DECL|method|context ()
-specifier|public
-specifier|final
-name|int
-name|context
-parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"context"
-argument_list|,
-literal|10
-argument_list|)
-return|;
-block|}
-DECL|method|lineLength ()
-specifier|public
-specifier|final
-name|int
-name|lineLength
-parameter_list|()
-block|{
-return|return
-name|get
-argument_list|(
-literal|"line_length"
-argument_list|,
-literal|100
-argument_list|)
-return|;
-block|}
 DECL|method|intralineDifference ()
 specifier|public
 specifier|final
@@ -1004,32 +988,48 @@ name|hideEmptyPane
 parameter_list|()
 comment|/*-{ return this.hide_empty_pane || false }-*/
 function_decl|;
-DECL|method|showLineNumbers ()
-specifier|public
+DECL|method|setThemeRaw (String i)
+specifier|private
 specifier|final
-name|boolean
-name|showLineNumbers
-parameter_list|()
-block|{
-return|return
-operator|!
-name|hideLineNumbers
-argument_list|()
-return|;
-block|}
-DECL|method|autoReview ()
-specifier|public
+specifier|native
+name|void
+name|setThemeRaw
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.theme = i }-*/
+function_decl|;
+DECL|method|setIgnoreWhitespaceRaw (String i)
+specifier|private
 specifier|final
-name|boolean
-name|autoReview
+specifier|native
+name|void
+name|setIgnoreWhitespaceRaw
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.ignore_whitespace = i }-*/
+function_decl|;
+DECL|method|ignoreWhitespaceRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|ignoreWhitespaceRaw
 parameter_list|()
-block|{
-return|return
-operator|!
-name|manualReview
-argument_list|()
-return|;
-block|}
+comment|/*-{ return this.ignore_whitespace }-*/
+function_decl|;
+DECL|method|themeRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|themeRaw
+parameter_list|()
+comment|/*-{ return this.theme }-*/
+function_decl|;
 DECL|method|get (String n, int d)
 specifier|private
 specifier|final
