@@ -3298,7 +3298,8 @@ return|;
 block|}
 name|int
 name|bits
-decl_stmt|,
+decl_stmt|;
+name|int
 name|val
 decl_stmt|;
 do|do
@@ -3343,8 +3344,8 @@ argument_list|()
 throw|;
 block|}
 DECL|method|next (int numBits)
-specifier|final
 specifier|protected
+specifier|final
 name|int
 name|next
 parameter_list|(
@@ -3364,8 +3365,8 @@ operator|/
 literal|8
 decl_stmt|;
 name|byte
-name|next
 index|[]
+name|next
 init|=
 operator|new
 name|byte
