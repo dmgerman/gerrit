@@ -534,6 +534,11 @@ name|String
 name|subject
 parameter_list|()
 function_decl|;
+DECL|method|submittable ()
+name|String
+name|submittable
+parameter_list|()
+function_decl|;
 DECL|method|tabPanel ()
 name|String
 name|tabPanel
@@ -1129,6 +1134,18 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|getTab
+argument_list|(
+name|Tab
+operator|.
+name|SAME_TOPIC
+argument_list|)
+operator|.
+name|setShowSubmittable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|set (final ChangeInfo info, final String revision)
 name|void
@@ -1390,29 +1407,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|topicQuery
-operator|.
-name|append
-argument_list|(
-literal|" "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|op
-argument_list|(
-literal|"-change"
-argument_list|,
-name|info
-operator|.
-name|legacy_id
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|ChangeList
 operator|.
 name|query
@@ -1433,6 +1427,14 @@ argument_list|,
 name|ListChangesOption
 operator|.
 name|CURRENT_COMMIT
+argument_list|,
+name|ListChangesOption
+operator|.
+name|DETAILED_LABELS
+argument_list|,
+name|ListChangesOption
+operator|.
+name|LABELS
 argument_list|)
 argument_list|,
 operator|new
@@ -2247,6 +2249,16 @@ name|project
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|c
+operator|.
+name|set_submittable
+argument_list|(
+name|i
+operator|.
+name|submittable
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|arr
 operator|.
 name|push
@@ -2342,6 +2354,14 @@ name|String
 name|project
 parameter_list|()
 comment|/*-{ return this.project }-*/
+function_decl|;
+DECL|method|submittable ()
+specifier|final
+specifier|native
+name|boolean
+name|submittable
+parameter_list|()
+comment|/*-{ return this._submittable ? true : false; }-*/
 function_decl|;
 DECL|method|set_id (String i)
 specifier|final
@@ -2524,6 +2544,17 @@ name|int
 name|n
 parameter_list|)
 comment|/*-{ this._current_revision_number=n; }-*/
+function_decl|;
+DECL|method|set_submittable (boolean s)
+specifier|final
+specifier|native
+name|void
+name|set_submittable
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this._submittable=s; }-*/
 function_decl|;
 DECL|method|ChangeAndCommit ()
 specifier|protected
