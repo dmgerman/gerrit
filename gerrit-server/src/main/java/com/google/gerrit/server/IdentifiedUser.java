@@ -1124,7 +1124,7 @@ name|dbProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, Realm realm, final @AnonymousCowardName String anonymousCowardName, final @CanonicalWebUrl Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, final @DisableReverseDnsLookup Boolean disableReverseDnsLookup, final @RemotePeer Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
+DECL|method|RequestFactory ( CapabilityControl.Factory capabilityControlFactory, final AuthConfig authConfig, Realm realm, @AnonymousCowardName final String anonymousCowardName, @CanonicalWebUrl final Provider<String> canonicalUrl, final AccountCache accountCache, final GroupBackend groupBackend, @DisableReverseDnsLookup final Boolean disableReverseDnsLookup, @RemotePeer final Provider<SocketAddress> remotePeerProvider, final Provider<ReviewDb> dbProvider)
 name|RequestFactory
 parameter_list|(
 name|CapabilityControl
@@ -1139,15 +1139,15 @@ parameter_list|,
 name|Realm
 name|realm
 parameter_list|,
-specifier|final
 annotation|@
 name|AnonymousCowardName
+specifier|final
 name|String
 name|anonymousCowardName
 parameter_list|,
-specifier|final
 annotation|@
 name|CanonicalWebUrl
+specifier|final
 name|Provider
 argument_list|<
 name|String
@@ -1162,15 +1162,15 @@ specifier|final
 name|GroupBackend
 name|groupBackend
 parameter_list|,
-specifier|final
 annotation|@
 name|DisableReverseDnsLookup
+specifier|final
 name|Boolean
 name|disableReverseDnsLookup
 parameter_list|,
-specifier|final
 annotation|@
 name|RemotePeer
+specifier|final
 name|Provider
 argument_list|<
 name|SocketAddress

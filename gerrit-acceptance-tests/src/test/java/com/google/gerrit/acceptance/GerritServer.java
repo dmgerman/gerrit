@@ -523,8 +523,8 @@ block|{
 annotation|@
 name|AutoValue
 DECL|class|Description
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Description
 block|{

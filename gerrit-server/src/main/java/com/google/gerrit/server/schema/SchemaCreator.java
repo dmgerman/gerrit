@@ -348,10 +348,10 @@ specifier|public
 class|class
 name|SchemaCreator
 block|{
-specifier|private
-specifier|final
 annotation|@
 name|SitePath
+specifier|private
+specifier|final
 DECL|field|site_path
 name|Path
 name|site_path

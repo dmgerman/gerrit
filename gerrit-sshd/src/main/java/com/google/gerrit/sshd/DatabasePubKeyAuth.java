@@ -528,7 +528,7 @@ name|peerKeyCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DatabasePubKeyAuth (final SshKeyCacheImpl skc, final SshLog l, final IdentifiedUser.GenericFactory uf, final PeerDaemonUser.Factory pf, final SitePaths site, final KeyPairProvider hostKeyProvider, final @GerritServerConfig Config cfg, final SshScope s)
+DECL|method|DatabasePubKeyAuth (final SshKeyCacheImpl skc, final SshLog l, final IdentifiedUser.GenericFactory uf, final PeerDaemonUser.Factory pf, final SitePaths site, final KeyPairProvider hostKeyProvider, @GerritServerConfig final Config cfg, final SshScope s)
 name|DatabasePubKeyAuth
 parameter_list|(
 specifier|final
@@ -559,9 +559,9 @@ specifier|final
 name|KeyPairProvider
 name|hostKeyProvider
 parameter_list|,
-specifier|final
 annotation|@
 name|GerritServerConfig
+specifier|final
 name|Config
 name|cfg
 parameter_list|,

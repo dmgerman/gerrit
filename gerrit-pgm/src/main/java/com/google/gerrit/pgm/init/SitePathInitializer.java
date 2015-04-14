@@ -487,7 +487,7 @@ name|secureStoreInitData
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SitePathInitializer (final Injector injector, final ConsoleUI ui, final InitFlags flags, final SitePaths site, final Section.Factory sectionFactory, final @Nullable SecureStoreInitData secureStoreInitData)
+DECL|method|SitePathInitializer (final Injector injector, final ConsoleUI ui, final InitFlags flags, final SitePaths site, final Section.Factory sectionFactory, @Nullable final SecureStoreInitData secureStoreInitData)
 specifier|public
 name|SitePathInitializer
 parameter_list|(
@@ -513,9 +513,9 @@ operator|.
 name|Factory
 name|sectionFactory
 parameter_list|,
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|SecureStoreInitData
 name|secureStoreInitData
 parameter_list|)

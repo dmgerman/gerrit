@@ -1131,10 +1131,10 @@ name|queryProvider
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|cfg
-specifier|protected
 annotation|@
 name|GerritServerConfig
+DECL|field|cfg
+specifier|protected
 name|Config
 name|cfg
 decl_stmt|;

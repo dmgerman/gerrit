@@ -2387,7 +2387,7 @@ return|return
 name|res
 return|;
 block|}
-DECL|method|writeNewTree (TreeOperation op, RevWalk rw, ObjectInserter ins, RevCommit prevEdit, ObjectReader reader, String fileName, @Nullable String newFile, final @Nullable ObjectId content)
+DECL|method|writeNewTree (TreeOperation op, RevWalk rw, ObjectInserter ins, RevCommit prevEdit, ObjectReader reader, String fileName, @Nullable String newFile, @Nullable final ObjectId content)
 specifier|private
 specifier|static
 name|ObjectId
@@ -2416,9 +2416,9 @@ name|Nullable
 name|String
 name|newFile
 parameter_list|,
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|ObjectId
 name|content
 parameter_list|)

@@ -1270,11 +1270,11 @@ annotation|@
 name|ConfigSuite
 operator|.
 name|Config
+annotation|@
+name|GerritServerConfig
 DECL|method|noteDbEnabled ()
 specifier|public
 specifier|static
-annotation|@
-name|GerritServerConfig
 name|Config
 name|noteDbEnabled
 parameter_list|()

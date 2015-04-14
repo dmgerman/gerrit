@@ -1543,7 +1543,7 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, final @GerritServerConfig Config config, final @AnonymousCowardName String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final DynamicSet<EventListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, @GerritServerConfig final Config config, @AnonymousCowardName final String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final DynamicSet<EventListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
@@ -1555,15 +1555,15 @@ specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
-specifier|final
 annotation|@
 name|GerritServerConfig
+specifier|final
 name|Config
 name|config
 parameter_list|,
-specifier|final
 annotation|@
 name|AnonymousCowardName
+specifier|final
 name|String
 name|anonymousCowardName
 parameter_list|,

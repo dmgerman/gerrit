@@ -257,7 +257,7 @@ annotation|@
 name|VisibleForTesting
 annotation|@
 name|Inject
-DECL|method|InitFlags (final SitePaths site, final SecureStore secureStore, final @InstallPlugins List<String> installPlugins)
+DECL|method|InitFlags (final SitePaths site, final SecureStore secureStore, @InstallPlugins final List<String> installPlugins)
 specifier|public
 name|InitFlags
 parameter_list|(
@@ -269,9 +269,9 @@ specifier|final
 name|SecureStore
 name|secureStore
 parameter_list|,
-specifier|final
 annotation|@
 name|InstallPlugins
+specifier|final
 name|List
 argument_list|<
 name|String

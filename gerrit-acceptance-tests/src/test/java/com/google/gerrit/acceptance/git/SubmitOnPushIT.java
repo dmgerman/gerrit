@@ -478,10 +478,10 @@ name|changeNotesFactory
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|field|serverIdent
-specifier|private
 annotation|@
 name|GerritPersonIdent
+DECL|field|serverIdent
+specifier|private
 name|PersonIdent
 name|serverIdent
 decl_stmt|;

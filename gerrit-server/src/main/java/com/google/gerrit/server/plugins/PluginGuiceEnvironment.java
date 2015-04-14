@@ -3708,9 +3708,9 @@ name|class
 argument_list|)
 argument_list|)
 expr_stmt|;
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|Binding
 argument_list|<
 name|HttpServletRequest
@@ -3731,9 +3731,9 @@ name|class
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|final
 annotation|@
 name|Nullable
+specifier|final
 name|Binding
 argument_list|<
 name|HttpServletResponse

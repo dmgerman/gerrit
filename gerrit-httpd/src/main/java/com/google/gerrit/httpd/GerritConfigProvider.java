@@ -547,7 +547,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ContactStore cs, final ServletContext sc, final DownloadConfig dc, final GetArchive.AllowedFormats af, final @AnonymousCowardName String acn)
+DECL|method|GerritConfigProvider (final Realm r, @GerritServerConfig final Config gsc, final AuthConfig ac, final GitWebConfig gwc, final AllProjectsName wp, final SshInfo si, final ContactStore cs, final ServletContext sc, final DownloadConfig dc, final GetArchive.AllowedFormats af, @AnonymousCowardName final String acn)
 name|GerritConfigProvider
 parameter_list|(
 specifier|final
@@ -594,9 +594,9 @@ operator|.
 name|AllowedFormats
 name|af
 parameter_list|,
-specifier|final
 annotation|@
 name|AnonymousCowardName
+specifier|final
 name|String
 name|acn
 parameter_list|)

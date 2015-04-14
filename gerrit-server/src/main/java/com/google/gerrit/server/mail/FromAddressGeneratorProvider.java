@@ -299,7 +299,7 @@ name|generator
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|FromAddressGeneratorProvider (@erritServerConfig final Config cfg, final @AnonymousCowardName String anonymousCowardName, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
+DECL|method|FromAddressGeneratorProvider (@erritServerConfig final Config cfg, @AnonymousCowardName final String anonymousCowardName, @GerritPersonIdent final PersonIdent myIdent, final AccountCache accountCache)
 name|FromAddressGeneratorProvider
 parameter_list|(
 annotation|@
@@ -308,9 +308,9 @@ specifier|final
 name|Config
 name|cfg
 parameter_list|,
-specifier|final
 annotation|@
 name|AnonymousCowardName
+specifier|final
 name|String
 name|anonymousCowardName
 parameter_list|,
