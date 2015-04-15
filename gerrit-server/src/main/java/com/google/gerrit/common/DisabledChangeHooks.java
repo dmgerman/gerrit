@@ -628,6 +628,22 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|doProjectCreatedHook (Project.NameKey project, String headName)
+specifier|public
+name|void
+name|doProjectCreatedHook
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|String
+name|headName
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
 DECL|method|postEvent (Change change, Event event, ReviewDb db)
 specifier|public
 name|void

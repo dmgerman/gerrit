@@ -209,6 +209,13 @@ name|TopicChangedEvent
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|registerClass
+argument_list|(
+operator|new
+name|ProjectCreatedEvent
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** Register an event.    *    *  @param event The event to register.    *  registered.    **/
 DECL|method|registerClass (Event event)

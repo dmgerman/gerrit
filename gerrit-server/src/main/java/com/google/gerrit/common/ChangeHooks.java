@@ -579,6 +579,21 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+comment|/**    * Fire the project created hook    *    * @param project The project that was created    * @param headName The head name of the created project    */
+DECL|method|doProjectCreatedHook (Project.NameKey project, String headName)
+specifier|public
+name|void
+name|doProjectCreatedHook
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|String
+name|headName
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
