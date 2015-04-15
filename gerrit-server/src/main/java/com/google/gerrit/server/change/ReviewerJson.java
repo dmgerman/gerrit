@@ -891,7 +891,7 @@ argument_list|(
 literal|true
 argument_list|)
 operator|.
-name|canSubmit
+name|evaluate
 argument_list|()
 control|)
 block|{
