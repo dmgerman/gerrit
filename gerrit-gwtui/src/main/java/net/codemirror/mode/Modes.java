@@ -452,6 +452,18 @@ name|DataResource
 name|properties
 parameter_list|()
 function_decl|;
+DECL|method|puppet ()
+annotation|@
+name|Source
+argument_list|(
+literal|"puppet.js"
+argument_list|)
+annotation|@
+name|DoNotEmbed
+name|DataResource
+name|puppet
+parameter_list|()
+function_decl|;
 DECL|method|python ()
 annotation|@
 name|Source
