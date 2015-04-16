@@ -486,14 +486,11 @@ operator|new
 name|LifecycleManager
 argument_list|()
 expr_stmt|;
+operator|new
 name|InMemoryModule
+argument_list|()
 operator|.
-name|createInjector
-argument_list|(
-name|lifecycle
-argument_list|)
-operator|.
-name|injectMembers
+name|inject
 argument_list|(
 name|this
 argument_list|)
