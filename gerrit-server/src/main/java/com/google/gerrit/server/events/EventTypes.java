@@ -210,7 +210,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Register an event.    *    *  @param event The event to register.    *  @throws IllegalArgumentException if the event's type is already    *  registered.    **/
+comment|/** Register an event.    *    *  @param event The event to register.    *  registered.    **/
 DECL|method|registerClass (Event event)
 specifier|public
 specifier|static
@@ -229,26 +229,6 @@ operator|.
 name|getType
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|typesByString
-operator|.
-name|containsKey
-argument_list|(
-name|type
-argument_list|)
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Event type already registered: "
-operator|+
-name|type
-argument_list|)
-throw|;
-block|}
 name|typesByString
 operator|.
 name|put
