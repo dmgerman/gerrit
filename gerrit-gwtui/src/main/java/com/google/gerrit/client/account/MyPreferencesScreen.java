@@ -1571,6 +1571,13 @@ argument_list|(
 name|diffView
 argument_list|)
 expr_stmt|;
+name|e
+operator|.
+name|listenTo
+argument_list|(
+name|reviewCategoryStrategy
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
