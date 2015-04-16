@@ -12990,9 +12990,9 @@ argument_list|()
 argument_list|,
 name|newCommit
 argument_list|,
-name|ChangeEditUtil
+name|RefNames
 operator|.
-name|editRefName
+name|refsEdit
 argument_list|(
 name|currentUser
 operator|.
