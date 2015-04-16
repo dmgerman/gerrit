@@ -556,6 +556,27 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Stream Events ("
+operator|+
+name|currentUser
+operator|.
+name|getAccount
+argument_list|()
+operator|.
+name|getUserName
+argument_list|()
+operator|+
+literal|")"
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/** True if {@link #droppedOutputEvent} needs to be sent. */
