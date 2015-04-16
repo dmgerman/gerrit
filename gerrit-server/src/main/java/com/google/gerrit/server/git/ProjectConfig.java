@@ -2207,6 +2207,28 @@ name|values
 argument_list|()
 return|;
 block|}
+DECL|method|putNotifyConfig (String name, NotifyConfig nc)
+specifier|public
+name|void
+name|putNotifyConfig
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|NotifyConfig
+name|nc
+parameter_list|)
+block|{
+name|notifySections
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|nc
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getLabelSections ()
 specifier|public
 name|Map
