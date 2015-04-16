@@ -300,7 +300,7 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/*    * Add groups to be included in this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * Add groups to be included in this one.    *    * @param groups list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|addGroups (String... groups)
 name|void
 name|addGroups
@@ -312,7 +312,7 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/**    * Remove included groups from this one.    *    * @param members list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
+comment|/**    * Remove included groups from this one.    *    * @param groups list of group identifiers, in any format accepted by    *     {@link Groups#id(String)}    * @throws RestApiException    */
 DECL|method|removeGroups (String... groups)
 name|void
 name|removeGroups
