@@ -1697,13 +1697,13 @@ init|=
 operator|new
 name|SubmoduleSectionParser
 argument_list|(
+name|repoManager
+argument_list|,
 name|bbc
 argument_list|,
 name|THIS_SERVER
 argument_list|,
 name|superProjectBranch
-argument_list|,
-name|repoManager
 argument_list|)
 decl_stmt|;
 name|List
