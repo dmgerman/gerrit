@@ -937,13 +937,12 @@ name|changeHooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmoduleOp (@ssisted final Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable final Provider<String> urlProvider, final SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted final Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent final PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable @Assisted Account account, ChangeHooks changeHooks)
+DECL|method|SubmoduleOp (@ssisted Branch.NameKey destBranch, @Assisted RevCommit mergeTip, @Assisted RevWalk rw, @CanonicalWebUrl @Nullable Provider<String> urlProvider, SchemaFactory<ReviewDb> sf, @Assisted Repository db, @Assisted Project destProject, @Assisted List<Change> submitted, @Assisted Map<Change.Id, CodeReviewCommit> commits, @GerritPersonIdent PersonIdent myIdent, GitRepositoryManager repoManager, GitReferenceUpdated gitRefUpdated, @Nullable @Assisted Account account, ChangeHooks changeHooks)
 specifier|public
 name|SubmoduleOp
 parameter_list|(
 annotation|@
 name|Assisted
-specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -963,14 +962,12 @@ annotation|@
 name|CanonicalWebUrl
 annotation|@
 name|Nullable
-specifier|final
 name|Provider
 argument_list|<
 name|String
 argument_list|>
 name|urlProvider
 parameter_list|,
-specifier|final
 name|SchemaFactory
 argument_list|<
 name|ReviewDb
@@ -997,7 +994,6 @@ name|submitted
 parameter_list|,
 annotation|@
 name|Assisted
-specifier|final
 name|Map
 argument_list|<
 name|Change
@@ -1010,7 +1006,6 @@ name|commits
 parameter_list|,
 annotation|@
 name|GerritPersonIdent
-specifier|final
 name|PersonIdent
 name|myIdent
 parameter_list|,
