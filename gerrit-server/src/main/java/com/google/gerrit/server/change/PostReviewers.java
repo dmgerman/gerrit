@@ -1956,6 +1956,11 @@ operator|.
 name|reviewers
 argument_list|)
 expr_stmt|;
+name|indexFuture
+operator|.
+name|checkedGet
+argument_list|()
+expr_stmt|;
 name|emailReviewers
 argument_list|(
 name|rsrc
@@ -1965,11 +1970,6 @@ argument_list|()
 argument_list|,
 name|added
 argument_list|)
-expr_stmt|;
-name|indexFuture
-operator|.
-name|checkedGet
-argument_list|()
 expr_stmt|;
 if|if
 condition|(

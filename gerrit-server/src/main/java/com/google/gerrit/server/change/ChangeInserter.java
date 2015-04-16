@@ -1641,6 +1641,11 @@ name|commitMessageNotForChange
 argument_list|()
 expr_stmt|;
 block|}
+name|f
+operator|.
+name|checkedGet
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|sendMail
@@ -1781,11 +1786,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|f
-operator|.
-name|checkedGet
-argument_list|()
-expr_stmt|;
 name|gitRefUpdated
 operator|.
 name|fire
