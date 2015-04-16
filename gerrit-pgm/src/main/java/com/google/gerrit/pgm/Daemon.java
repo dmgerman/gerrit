@@ -1585,6 +1585,11 @@ specifier|private
 name|AbstractModule
 name|luceneModule
 decl_stmt|;
+DECL|field|emailModule
+specifier|private
+name|Module
+name|emailModule
+decl_stmt|;
 DECL|field|serverStarted
 specifier|private
 name|Runnable
@@ -2105,6 +2110,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|VisibleForTesting
+DECL|method|setEmailModuleForTesting (Module module)
+specifier|public
+name|void
+name|setEmailModuleForTesting
+parameter_list|(
+name|Module
+name|module
+parameter_list|)
+block|{
+name|emailModule
+operator|=
+name|module
+expr_stmt|;
+block|}
+annotation|@
+name|VisibleForTesting
 DECL|method|setLuceneModule (LuceneIndexModule m)
 specifier|public
 name|void
@@ -2456,6 +2477,23 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|emailModule
+operator|!=
+literal|null
+condition|)
+block|{
+name|modules
+operator|.
+name|add
+argument_list|(
+name|emailModule
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|modules
 operator|.
 name|add
@@ -2467,6 +2505,7 @@ name|Module
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|modules
 operator|.
 name|add
