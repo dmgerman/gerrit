@@ -476,7 +476,7 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (NotifyHandling notify, Change change)
+DECL|method|create (NotifyHandling notify, Change.Id id)
 specifier|public
 name|CommentSender
 name|create
@@ -485,7 +485,9 @@ name|NotifyHandling
 name|notify
 parameter_list|,
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 parameter_list|)
 function_decl|;
 block|}
@@ -516,12 +518,15 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CommentSender (EmailArguments ea, @Assisted NotifyHandling notify, @Assisted Change c, PatchLineCommentsUtil plcUtil)
+DECL|method|CommentSender (EmailArguments ea, PatchLineCommentsUtil plcUtil, @Assisted NotifyHandling notify, @Assisted Change.Id id)
 specifier|public
 name|CommentSender
 parameter_list|(
 name|EmailArguments
 name|ea
+parameter_list|,
+name|PatchLineCommentsUtil
+name|plcUtil
 parameter_list|,
 annotation|@
 name|Assisted
@@ -531,19 +536,25 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Change
-name|c
-parameter_list|,
-name|PatchLineCommentsUtil
-name|plcUtil
+operator|.
+name|Id
+name|id
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|super
 argument_list|(
 name|ea
 argument_list|,
-name|c
-argument_list|,
 literal|"comment"
+argument_list|,
+name|newChangeData
+argument_list|(
+name|ea
+argument_list|,
+name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

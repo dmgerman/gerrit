@@ -104,6 +104,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -142,19 +156,21 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change change)
+DECL|method|create (Change.Id id)
 specifier|public
 name|MergeFailSender
 name|create
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|MergeFailSender (EmailArguments ea, @Assisted Change c)
+DECL|method|MergeFailSender (EmailArguments ea, @Assisted Change.Id id)
 specifier|public
 name|MergeFailSender
 parameter_list|(
@@ -164,16 +180,25 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Change
-name|c
+operator|.
+name|Id
+name|id
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|super
 argument_list|(
 name|ea
 argument_list|,
-name|c
-argument_list|,
 literal|"merge-failed"
+argument_list|,
+name|newChangeData
+argument_list|(
+name|ea
+argument_list|,
+name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

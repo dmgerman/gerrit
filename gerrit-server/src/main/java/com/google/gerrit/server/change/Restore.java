@@ -956,6 +956,9 @@ operator|.
 name|create
 argument_list|(
 name|change
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|cm

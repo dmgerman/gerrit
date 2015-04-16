@@ -843,6 +843,9 @@ operator|.
 name|create
 argument_list|(
 name|updatedChange
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|cm
@@ -1016,6 +1019,9 @@ operator|.
 name|create
 argument_list|(
 name|updatedChange
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|cm

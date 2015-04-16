@@ -122,6 +122,20 @@ name|com
 operator|.
 name|google
 operator|.
+name|gwtorm
+operator|.
+name|server
+operator|.
+name|OrmException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -169,18 +183,20 @@ argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|create (Change change)
+DECL|method|create (Change.Id change)
 name|AbandonedSender
 name|create
 parameter_list|(
 name|Change
+operator|.
+name|Id
 name|change
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|AbandonedSender (EmailArguments ea, @Assisted Change c)
+DECL|method|AbandonedSender (EmailArguments ea, @Assisted Change.Id id)
 specifier|public
 name|AbandonedSender
 parameter_list|(
@@ -190,16 +206,25 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Change
-name|c
+operator|.
+name|Id
+name|id
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|super
 argument_list|(
 name|ea
 argument_list|,
-name|c
-argument_list|,
 literal|"abandon"
+argument_list|,
+name|newChangeData
+argument_list|(
+name|ea
+argument_list|,
+name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

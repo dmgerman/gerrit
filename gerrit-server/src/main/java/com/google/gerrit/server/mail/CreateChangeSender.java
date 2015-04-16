@@ -258,19 +258,21 @@ specifier|static
 interface|interface
 name|Factory
 block|{
-DECL|method|create (Change change)
+DECL|method|create (Change.Id id)
 specifier|public
 name|CreateChangeSender
 name|create
 parameter_list|(
 name|Change
-name|change
+operator|.
+name|Id
+name|id
 parameter_list|)
 function_decl|;
 block|}
 annotation|@
 name|Inject
-DECL|method|CreateChangeSender (EmailArguments ea, @Assisted Change c)
+DECL|method|CreateChangeSender (EmailArguments ea, @Assisted Change.Id id)
 specifier|public
 name|CreateChangeSender
 parameter_list|(
@@ -280,14 +282,23 @@ parameter_list|,
 annotation|@
 name|Assisted
 name|Change
-name|c
+operator|.
+name|Id
+name|id
 parameter_list|)
+throws|throws
+name|OrmException
 block|{
 name|super
 argument_list|(
 name|ea
 argument_list|,
-name|c
+name|newChangeData
+argument_list|(
+name|ea
+argument_list|,
+name|id
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

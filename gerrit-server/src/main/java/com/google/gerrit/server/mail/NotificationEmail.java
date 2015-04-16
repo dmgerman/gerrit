@@ -154,22 +154,6 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|reviewdb
-operator|.
-name|client
-operator|.
-name|Project
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
 name|server
 operator|.
 name|mail
@@ -243,13 +227,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|project
-specifier|protected
-name|Project
-operator|.
-name|NameKey
-name|project
-decl_stmt|;
 DECL|field|branch
 specifier|protected
 name|Branch
@@ -257,7 +234,7 @@ operator|.
 name|NameKey
 name|branch
 decl_stmt|;
-DECL|method|NotificationEmail (EmailArguments ea, String mc, Project.NameKey project, Branch.NameKey branch)
+DECL|method|NotificationEmail (EmailArguments ea, String mc, Branch.NameKey branch)
 specifier|protected
 name|NotificationEmail
 parameter_list|(
@@ -266,11 +243,6 @@ name|ea
 parameter_list|,
 name|String
 name|mc
-parameter_list|,
-name|Project
-operator|.
-name|NameKey
-name|project
 parameter_list|,
 name|Branch
 operator|.
@@ -284,12 +256,6 @@ name|ea
 argument_list|,
 name|mc
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|project
-operator|=
-name|project
 expr_stmt|;
 name|this
 operator|.
@@ -584,7 +550,10 @@ name|put
 argument_list|(
 literal|"projectName"
 argument_list|,
-name|project
+name|branch
+operator|.
+name|getParentKey
+argument_list|()
 operator|.
 name|get
 argument_list|()
