@@ -2015,7 +2015,10 @@ operator|.
 name|append
 argument_list|(
 literal|"Updated "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|subscriber
 operator|.
 name|getParentKey
@@ -2023,6 +2026,11 @@ argument_list|()
 operator|.
 name|get
 argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|Repository
@@ -2488,6 +2496,11 @@ name|insert
 argument_list|(
 name|commit
 argument_list|)
+expr_stmt|;
+name|oi
+operator|.
+name|flush
+argument_list|()
 expr_stmt|;
 name|ObjectId
 name|commitId
