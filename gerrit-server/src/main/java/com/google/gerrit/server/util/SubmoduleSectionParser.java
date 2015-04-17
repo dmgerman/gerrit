@@ -124,9 +124,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|project
 operator|.
-name|GitRepositoryManager
+name|ProjectCache
 import|;
 end_import
 
@@ -256,11 +256,11 @@ name|superProjectBranch
 parameter_list|)
 function_decl|;
 block|}
-DECL|field|repoManager
+DECL|field|projectCache
 specifier|private
 specifier|final
-name|GitRepositoryManager
-name|repoManager
+name|ProjectCache
+name|projectCache
 decl_stmt|;
 DECL|field|bbc
 specifier|private
@@ -284,12 +284,12 @@ name|superProjectBranch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|SubmoduleSectionParser (GitRepositoryManager repoManager, @Assisted BlobBasedConfig bbc, @Assisted String thisServer, @Assisted Branch.NameKey superProjectBranch)
+DECL|method|SubmoduleSectionParser (ProjectCache projectCache, @Assisted BlobBasedConfig bbc, @Assisted String thisServer, @Assisted Branch.NameKey superProjectBranch)
 specifier|public
 name|SubmoduleSectionParser
 parameter_list|(
-name|GitRepositoryManager
-name|repoManager
+name|ProjectCache
+name|projectCache
 parameter_list|,
 annotation|@
 name|Assisted
@@ -311,9 +311,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|repoManager
+name|projectCache
 operator|=
-name|repoManager
+name|projectCache
 expr_stmt|;
 name|this
 operator|.
@@ -678,15 +678,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|repoManager
+name|Project
 operator|.
-name|list
-argument_list|()
-operator|.
-name|contains
-argument_list|(
+name|NameKey
+name|projectKey
+init|=
 operator|new
 name|Project
 operator|.
@@ -694,7 +690,17 @@ name|NameKey
 argument_list|(
 name|projectName
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|projectCache
+operator|.
+name|get
+argument_list|(
+name|projectKey
 argument_list|)
+operator|!=
+literal|null
 condition|)
 block|{
 return|return
@@ -708,13 +714,7 @@ name|Branch
 operator|.
 name|NameKey
 argument_list|(
-operator|new
-name|Project
-operator|.
-name|NameKey
-argument_list|(
-name|projectName
-argument_list|)
+name|projectKey
 argument_list|,
 name|branch
 argument_list|)
