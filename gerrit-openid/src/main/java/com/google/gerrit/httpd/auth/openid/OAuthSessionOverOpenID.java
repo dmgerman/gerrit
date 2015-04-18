@@ -689,16 +689,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|isLoggedIn
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
 name|log
 operator|.
 name|debug

@@ -1332,12 +1332,6 @@ argument_list|(
 name|req
 argument_list|)
 operator|)
-operator|&&
-operator|!
-name|oauthSession
-operator|.
-name|isLoggedIn
-argument_list|()
 condition|)
 block|{
 name|oauthSession
