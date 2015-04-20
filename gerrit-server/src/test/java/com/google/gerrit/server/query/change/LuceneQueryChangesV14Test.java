@@ -227,6 +227,20 @@ parameter_list|()
 block|{
 comment|// Ignore.
 block|}
+annotation|@
+name|Override
+annotation|@
+name|Ignore
+annotation|@
+name|Test
+DECL|method|byTopic ()
+specifier|public
+name|void
+name|byTopic
+parameter_list|()
+block|{
+comment|// Ignore.
+block|}
 block|}
 end_class
 
