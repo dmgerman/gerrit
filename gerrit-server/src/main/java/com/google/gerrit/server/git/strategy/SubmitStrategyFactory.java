@@ -168,7 +168,7 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|changedetail
+name|change
 operator|.
 name|RebaseChange
 import|;
