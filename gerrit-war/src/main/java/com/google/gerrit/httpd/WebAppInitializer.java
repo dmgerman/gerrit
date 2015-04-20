@@ -452,7 +452,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|GarbageCollectionRunner
+name|GarbageCollectionModule
 import|;
 end_import
 
@@ -2550,9 +2550,8 @@ name|modules
 operator|.
 name|add
 argument_list|(
-name|GarbageCollectionRunner
-operator|.
-name|module
+operator|new
+name|GarbageCollectionModule
 argument_list|()
 argument_list|)
 expr_stmt|;

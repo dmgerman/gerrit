@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.pgm.util
+DECL|package|com.google.gerrit.server.git
 package|package
 name|com
 operator|.
@@ -60,9 +60,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|pgm
+name|server
 operator|.
-name|util
+name|git
 package|;
 end_package
 
@@ -122,9 +122,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|git
+name|util
 operator|.
-name|GarbageCollection
+name|SystemLog
 import|;
 end_import
 
@@ -134,13 +134,9 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|inject
 operator|.
-name|server
-operator|.
-name|util
-operator|.
-name|SystemLog
+name|Inject
 import|;
 end_import
 
@@ -184,16 +180,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|file
@@ -207,18 +193,18 @@ DECL|class|GarbageCollectionLogFile
 specifier|public
 class|class
 name|GarbageCollectionLogFile
-block|{
-DECL|method|start (Path sitePath)
-specifier|public
-specifier|static
+implements|implements
 name|LifecycleListener
-name|start
+block|{
+annotation|@
+name|Inject
+DECL|method|GarbageCollectionLogFile (SitePaths sitePaths)
+specifier|public
+name|GarbageCollectionLogFile
 parameter_list|(
-name|Path
-name|sitePath
+name|SitePaths
+name|sitePaths
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|Path
 name|logdir
@@ -227,11 +213,7 @@ name|FileUtil
 operator|.
 name|mkdirsOrDie
 argument_list|(
-operator|new
-name|SitePaths
-argument_list|(
-name|sitePath
-argument_list|)
+name|sitePaths
 operator|.
 name|logs_dir
 argument_list|,
@@ -252,20 +234,18 @@ name|logdir
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-operator|new
-name|LifecycleListener
-argument_list|()
-block|{
+block|}
 annotation|@
 name|Override
+DECL|method|start ()
 specifier|public
 name|void
 name|start
 parameter_list|()
-block|{       }
+block|{   }
 annotation|@
 name|Override
+DECL|method|stop ()
 specifier|public
 name|void
 name|stop
@@ -283,9 +263,6 @@ operator|.
 name|removeAllAppenders
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-return|;
 block|}
 DECL|method|initLogSystem (Path logdir)
 specifier|private
