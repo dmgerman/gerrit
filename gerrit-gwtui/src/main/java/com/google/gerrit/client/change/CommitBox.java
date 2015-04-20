@@ -146,9 +146,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|actions
+name|account
 operator|.
-name|ActionInfo
+name|AccountInfo
 import|;
 end_import
 
@@ -162,9 +162,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|account
+name|actions
 operator|.
-name|AccountInfo
+name|ActionInfo
 import|;
 end_import
 

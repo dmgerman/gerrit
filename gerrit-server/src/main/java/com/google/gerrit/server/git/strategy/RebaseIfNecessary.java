@@ -156,7 +156,9 @@ name|server
 operator|.
 name|change
 operator|.
-name|RebaseChange
+name|PatchSetInserter
+operator|.
+name|ValidatePolicy
 import|;
 end_import
 
@@ -172,9 +174,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|PatchSetInserter
-operator|.
-name|ValidatePolicy
+name|RebaseChange
 import|;
 end_import
 
