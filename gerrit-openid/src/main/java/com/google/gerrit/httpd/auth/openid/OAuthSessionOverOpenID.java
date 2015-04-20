@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.httpd.auth.oauth
+DECL|package|com.google.gerrit.httpd.auth.openid
 package|package
 name|com
 operator|.
@@ -64,7 +64,7 @@ name|httpd
 operator|.
 name|auth
 operator|.
-name|oauth
+name|openid
 package|;
 end_package
 
@@ -211,6 +211,20 @@ operator|.
 name|httpd
 operator|.
 name|CanonicalWebUrl
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|httpd
+operator|.
+name|LoginUrlToken
 import|;
 end_import
 
@@ -432,14 +446,25 @@ name|HttpServletResponse
 import|;
 end_import
 
+begin_comment
+comment|/** OAuth protocol implementation */
+end_comment
+
 begin_class
 annotation|@
 name|SessionScoped
-comment|/* OAuth protocol implementation */
-DECL|class|OAuthSession
+DECL|class|OAuthSessionOverOpenID
 class|class
-name|OAuthSession
+name|OAuthSessionOverOpenID
 block|{
+DECL|field|GERRIT_LOGIN
+specifier|static
+specifier|final
+name|String
+name|GERRIT_LOGIN
+init|=
+literal|"/login"
+decl_stmt|;
 DECL|field|log
 specifier|private
 specifier|static
@@ -451,7 +476,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|OAuthSession
+name|OAuthSessionOverOpenID
 operator|.
 name|class
 argument_list|)
@@ -515,8 +540,8 @@ name|redirectToken
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|OAuthSession (DynamicItem<WebSession> webSession, AccountManager accountManager, CanonicalWebUrl urlProvider)
-name|OAuthSession
+DECL|method|OAuthSessionOverOpenID (DynamicItem<WebSession> webSession, AccountManager accountManager, CanonicalWebUrl urlProvider)
+name|OAuthSessionOverOpenID
 parameter_list|(
 name|DynamicItem
 argument_list|<
@@ -750,29 +775,11 @@ argument_list|)
 expr_stmt|;
 name|redirectToken
 operator|=
-name|request
+name|LoginUrlToken
 operator|.
-name|getRequestURI
-argument_list|()
-expr_stmt|;
-comment|// We are here in content of filter.
-comment|// Due to this Jetty limitation:
-comment|// https://bz.apache.org/bugzilla/show_bug.cgi?id=28323
-comment|// we cannot use LoginUrlToken.getToken() method,
-comment|// because it relies on getPathInfo() and it is always null here.
-name|redirectToken
-operator|=
-name|redirectToken
-operator|.
-name|substring
+name|getToken
 argument_list|(
 name|request
-operator|.
-name|getContextPath
-argument_list|()
-operator|.
-name|length
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|response
@@ -842,6 +849,8 @@ argument_list|)
 decl_stmt|;
 name|AuthResult
 name|arsp
+init|=
+literal|null
 decl_stmt|;
 try|try
 block|{
@@ -913,13 +922,6 @@ argument_list|)
 condition|)
 block|{
 comment|// Both link to the same account, that's what we expected.
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"OAuth2: claimed identity equals current id"
-argument_list|)
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -980,18 +982,6 @@ condition|)
 block|{
 comment|// Claimed account already exists: link to it.
 comment|//
-name|log
-operator|.
-name|info
-argument_list|(
-literal|"OAuth2: linking claimed identity to {}"
-argument_list|,
-name|claimedId
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|accountManager
@@ -1044,16 +1034,6 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-block|}
-else|else
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"OAuth2: claimed identity is empty"
-argument_list|)
-expr_stmt|;
 block|}
 name|areq
 operator|.
@@ -1137,23 +1117,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|String
-name|suffix
-init|=
-name|redirectToken
-operator|.
-name|substring
-argument_list|(
-name|OAuthWebFilter
-operator|.
-name|GERRIT_LOGIN
-operator|.
-name|length
-argument_list|()
-operator|+
-literal|1
-argument_list|)
-decl_stmt|;
 name|StringBuilder
 name|rdr
 init|=
@@ -1176,7 +1139,7 @@ name|Url
 operator|.
 name|decode
 argument_list|(
-name|suffix
+name|redirectToken
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -2386,6 +2386,13 @@ condition|(
 name|file
 operator|!=
 literal|null
+operator|&&
+name|file
+operator|.
+name|getResult
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|content

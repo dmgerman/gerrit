@@ -128,6 +128,22 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -196,9 +212,9 @@ decl_stmt|;
 name|String
 name|refName
 init|=
-name|ChangeEditUtil
+name|RefNames
 operator|.
-name|editRefName
+name|refsEdit
 argument_list|(
 name|accountId
 argument_list|,

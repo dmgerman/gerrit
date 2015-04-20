@@ -745,6 +745,11 @@ name|String
 name|rebaseConfirmMessage
 parameter_list|()
 function_decl|;
+DECL|method|rebaseNotPossibleMessage ()
+name|String
+name|rebaseNotPossibleMessage
+parameter_list|()
+function_decl|;
 DECL|method|rebasePlaceholderMessage ()
 name|String
 name|rebasePlaceholderMessage

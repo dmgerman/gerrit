@@ -100,42 +100,6 @@ end_import
 
 begin_import
 import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|edit
-operator|.
-name|ChangeEditUtil
-operator|.
-name|editRefName
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|edit
-operator|.
-name|ChangeEditUtil
-operator|.
-name|editRefPrefix
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|eclipse
@@ -299,6 +263,22 @@ operator|.
 name|client
 operator|.
 name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|RefNames
 import|;
 end_import
 
@@ -926,7 +906,9 @@ decl_stmt|;
 name|String
 name|refPrefix
 init|=
-name|editRefPrefix
+name|RefNames
+operator|.
+name|refsEditPrefix
 argument_list|(
 name|me
 operator|.
@@ -1021,7 +1003,9 @@ decl_stmt|;
 name|String
 name|editRefName
 init|=
-name|editRefName
+name|RefNames
+operator|.
+name|refsEdit
 argument_list|(
 name|me
 operator|.
@@ -1124,7 +1108,9 @@ decl_stmt|;
 name|String
 name|refName
 init|=
-name|editRefName
+name|RefNames
+operator|.
+name|refsEdit
 argument_list|(
 name|me
 operator|.

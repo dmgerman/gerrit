@@ -682,6 +682,15 @@ operator|!=
 name|AuthType
 operator|.
 name|OAUTH
+operator|&&
+name|authConfig
+operator|.
+name|getAuthType
+argument_list|()
+operator|!=
+name|AuthType
+operator|.
+name|OPENID
 condition|)
 block|{
 name|serve
