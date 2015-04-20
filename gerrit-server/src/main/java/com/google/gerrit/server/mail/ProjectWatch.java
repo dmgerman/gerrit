@@ -754,11 +754,7 @@ name|log
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Project %s has invalid notify %s filter \"%s\""
+literal|"Project {} has invalid notify {} filter \"{}\": {}"
 argument_list|,
 name|state
 operator|.
@@ -777,9 +773,11 @@ name|nc
 operator|.
 name|getFilter
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
