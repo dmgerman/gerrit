@@ -2851,6 +2851,8 @@ operator|new
 name|ChangeResource
 argument_list|(
 name|ctl
+argument_list|,
+literal|null
 argument_list|)
 argument_list|,
 name|ps1
@@ -2865,6 +2867,8 @@ operator|new
 name|ChangeResource
 argument_list|(
 name|ctl
+argument_list|,
+literal|null
 argument_list|)
 argument_list|,
 name|ps2

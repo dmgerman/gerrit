@@ -1296,6 +1296,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|changedetail
+operator|.
+name|RebaseChange
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|git
 operator|.
 name|LabelNormalizer
@@ -1765,6 +1781,12 @@ specifier|final
 name|ActionJson
 name|actionJson
 decl_stmt|;
+DECL|field|rebaseChange
+specifier|private
+specifier|final
+name|RebaseChange
+name|rebaseChange
+decl_stmt|;
 DECL|field|accountLoader
 specifier|private
 name|AccountLoader
@@ -1777,7 +1799,7 @@ name|fix
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson)
+DECL|method|ChangeJson ( Provider<ReviewDb> db, LabelNormalizer ln, Provider<CurrentUser> user, AnonymousUser au, IdentifiedUser.GenericFactory uf, ChangeData.Factory cdf, PatchSetInfoFactory psi, FileInfoJson fileInfoJson, AccountLoader.Factory ailf, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, WebLinks webLinks, ChangeMessagesUtil cmUtil, PatchLineCommentsUtil plcUtil, Provider<ConsistencyChecker> checkerProvider, ActionJson actionJson, RebaseChange rebaseChange)
 name|ChangeJson
 parameter_list|(
 name|Provider
@@ -1848,6 +1870,9 @@ name|checkerProvider
 parameter_list|,
 name|ActionJson
 name|actionJson
+parameter_list|,
+name|RebaseChange
+name|rebaseChange
 parameter_list|)
 block|{
 name|this
@@ -1945,6 +1970,12 @@ operator|.
 name|actionJson
 operator|=
 name|actionJson
+expr_stmt|;
+name|this
+operator|.
+name|rebaseChange
+operator|=
+name|rebaseChange
 expr_stmt|;
 name|options
 operator|=
@@ -6979,6 +7010,8 @@ operator|new
 name|ChangeResource
 argument_list|(
 name|ctl
+argument_list|,
+name|rebaseChange
 argument_list|)
 argument_list|,
 name|in

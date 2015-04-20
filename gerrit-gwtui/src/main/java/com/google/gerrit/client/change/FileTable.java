@@ -1657,6 +1657,31 @@ name|reviewed
 expr_stmt|;
 block|}
 block|}
+DECL|method|unregisterKeys ()
+name|void
+name|unregisterKeys
+parameter_list|()
+block|{
+name|register
+operator|=
+literal|false
+expr_stmt|;
+if|if
+condition|(
+name|table
+operator|!=
+literal|null
+condition|)
+block|{
+name|table
+operator|.
+name|setRegisterKeys
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|registerKeys ()
 name|void
 name|registerKeys
