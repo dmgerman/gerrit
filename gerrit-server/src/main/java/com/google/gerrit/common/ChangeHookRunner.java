@@ -1543,47 +1543,38 @@ decl_stmt|;
 comment|/**      * Create a new ChangeHookRunner.      *      * @param queue Queue to use when processing hooks.      * @param repoManager The repository manager.      * @param config Config file to use.      * @param sitePath The sitepath of this gerrit install.      * @param projectCache the project cache instance for the server.      */
 annotation|@
 name|Inject
-DECL|method|ChangeHookRunner (final WorkQueue queue, final GitRepositoryManager repoManager, @GerritServerConfig final Config config, @AnonymousCowardName final String anonymousCowardName, final SitePaths sitePath, final ProjectCache projectCache, final AccountCache accountCache, final EventFactory eventFactory, final DynamicSet<EventListener> unrestrictedListeners)
+DECL|method|ChangeHookRunner (WorkQueue queue, GitRepositoryManager repoManager, @GerritServerConfig Config config, @AnonymousCowardName String anonymousCowardName, SitePaths sitePath, ProjectCache projectCache, AccountCache accountCache, EventFactory eventFactory, DynamicSet<EventListener> unrestrictedListeners)
 specifier|public
 name|ChangeHookRunner
 parameter_list|(
-specifier|final
 name|WorkQueue
 name|queue
 parameter_list|,
-specifier|final
 name|GitRepositoryManager
 name|repoManager
 parameter_list|,
 annotation|@
 name|GerritServerConfig
-specifier|final
 name|Config
 name|config
 parameter_list|,
 annotation|@
 name|AnonymousCowardName
-specifier|final
 name|String
 name|anonymousCowardName
 parameter_list|,
-specifier|final
 name|SitePaths
 name|sitePath
 parameter_list|,
-specifier|final
 name|ProjectCache
 name|projectCache
 parameter_list|,
-specifier|final
 name|AccountCache
 name|accountCache
 parameter_list|,
-specifier|final
 name|EventFactory
 name|eventFactory
 parameter_list|,
-specifier|final
 name|DynamicSet
 argument_list|<
 name|EventListener
@@ -1976,12 +1967,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Get the Repository for the given project name, or null on error.      *      * @param name Project to get repo for,      * @return Repository or null.      */
-DECL|method|openRepository (final Project.NameKey name)
+DECL|method|openRepository (Project.NameKey name)
 specifier|private
 name|Repository
 name|openRepository
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -2068,33 +2058,27 @@ block|}
 comment|/**      * Fire the update hook      *      */
 annotation|@
 name|Override
-DECL|method|doRefUpdateHook (final Project project, final String refname, final Account uploader, final ObjectId oldId, final ObjectId newId)
+DECL|method|doRefUpdateHook (Project project, String refname, Account uploader, ObjectId oldId, ObjectId newId)
 specifier|public
 name|HookResult
 name|doRefUpdateHook
 parameter_list|(
-specifier|final
 name|Project
 name|project
 parameter_list|,
-specifier|final
 name|String
 name|refname
 parameter_list|,
-specifier|final
 name|Account
 name|uploader
 parameter_list|,
-specifier|final
 name|ObjectId
 name|oldId
 parameter_list|,
-specifier|final
 name|ObjectId
 name|newId
 parameter_list|)
 block|{
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -2180,27 +2164,23 @@ block|}
 comment|/**      * Fire the Patchset Created Hook.      *      * @param change The change itself.      * @param patchSet The Patchset that was created.      * @throws OrmException      */
 annotation|@
 name|Override
-DECL|method|doPatchsetCreatedHook (final Change change, final PatchSet patchSet, final ReviewDb db)
+DECL|method|doPatchsetCreatedHook (Change change, PatchSet patchSet, ReviewDb db)
 specifier|public
 name|void
 name|doPatchsetCreatedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|PatchSetCreatedEvent
 name|event
 init|=
@@ -2208,7 +2188,6 @@ operator|new
 name|PatchSetCreatedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|uploader
 init|=
@@ -2222,7 +2201,6 @@ name|getUploader
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -2281,7 +2259,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -2464,27 +2441,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doDraftPublishedHook (final Change change, final PatchSet patchSet, final ReviewDb db)
+DECL|method|doDraftPublishedHook (Change change, PatchSet patchSet, ReviewDb db)
 specifier|public
 name|void
 name|doDraftPublishedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|DraftPublishedEvent
 name|event
 init|=
@@ -2492,7 +2465,6 @@ operator|new
 name|DraftPublishedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|uploader
 init|=
@@ -2506,7 +2478,6 @@ name|getUploader
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -2565,7 +2536,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -2713,28 +2683,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doCommentAddedHook (final Change change, final Account account, final PatchSet patchSet, final String comment, final Map<String, Short> approvals, final ReviewDb db)
+DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, ReviewDb db)
 specifier|public
 name|void
 name|doCommentAddedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|String
 name|comment
 parameter_list|,
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -2743,14 +2708,12 @@ name|Short
 argument_list|>
 name|approvals
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|CommentAddedEvent
 name|event
 init|=
@@ -2758,7 +2721,6 @@ operator|new
 name|CommentAddedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -2899,7 +2861,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -3124,24 +3085,20 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doChangeMergedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db, String mergeResultRev)
+DECL|method|doChangeMergedHook (Change change, Account account, PatchSet patchSet, ReviewDb db, String mergeResultRev)
 specifier|public
 name|void
 name|doChangeMergedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|,
@@ -3151,7 +3108,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|ChangeMergedEvent
 name|event
 init|=
@@ -3159,7 +3115,6 @@ operator|new
 name|ChangeMergedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -3221,7 +3176,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -3362,35 +3316,29 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doMergeFailedHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
+DECL|method|doMergeFailedHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
 specifier|public
 name|void
 name|doMergeFailedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|String
 name|reason
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|MergeFailedEvent
 name|event
 init|=
@@ -3398,7 +3346,6 @@ operator|new
 name|MergeFailedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -3460,7 +3407,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -3607,35 +3553,29 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doChangeAbandonedHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
+DECL|method|doChangeAbandonedHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
 specifier|public
 name|void
 name|doChangeAbandonedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|String
 name|reason
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|ChangeAbandonedEvent
 name|event
 init|=
@@ -3643,7 +3583,6 @@ operator|new
 name|ChangeAbandonedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -3705,7 +3644,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -3852,35 +3790,29 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doChangeRestoredHook (final Change change, final Account account, final PatchSet patchSet, final String reason, final ReviewDb db)
+DECL|method|doChangeRestoredHook (Change change, Account account, PatchSet patchSet, String reason, ReviewDb db)
 specifier|public
 name|void
 name|doChangeRestoredHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|String
 name|reason
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|ChangeRestoredEvent
 name|event
 init|=
@@ -3888,7 +3820,6 @@ operator|new
 name|ChangeRestoredEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -3950,7 +3881,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -4097,22 +4027,19 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doRefUpdatedHook (final Branch.NameKey refName, final RefUpdate refUpdate, final Account account)
+DECL|method|doRefUpdatedHook (Branch.NameKey refName, RefUpdate refUpdate, Account account)
 specifier|public
 name|void
 name|doRefUpdatedHook
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|refName
 parameter_list|,
-specifier|final
 name|RefUpdate
 name|refUpdate
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|)
@@ -4137,31 +4064,26 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doRefUpdatedHook (final Branch.NameKey refName, final ObjectId oldId, final ObjectId newId, final Account account)
+DECL|method|doRefUpdatedHook (Branch.NameKey refName, ObjectId oldId, ObjectId newId, Account account)
 specifier|public
 name|void
 name|doRefUpdatedHook
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|refName
 parameter_list|,
-specifier|final
 name|ObjectId
 name|oldId
 parameter_list|,
-specifier|final
 name|ObjectId
 name|newId
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|)
 block|{
-specifier|final
 name|RefUpdatedEvent
 name|event
 init|=
@@ -4210,7 +4132,6 @@ argument_list|,
 name|event
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -4309,31 +4230,26 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doReviewerAddedHook (final Change change, final Account account, final PatchSet patchSet, final ReviewDb db)
+DECL|method|doReviewerAddedHook (Change change, Account account, PatchSet patchSet, ReviewDb db)
 specifier|public
 name|void
 name|doReviewerAddedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|PatchSet
 name|patchSet
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|ReviewerAddedEvent
 name|event
 init|=
@@ -4341,7 +4257,6 @@ operator|new
 name|ReviewerAddedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -4397,7 +4312,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -4503,31 +4417,26 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|doTopicChangedHook (final Change change, final Account account, final String oldTopic, final ReviewDb db)
+DECL|method|doTopicChangedHook (Change change, Account account, String oldTopic, ReviewDb db)
 specifier|public
 name|void
 name|doTopicChangedHook
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Account
 name|account
 parameter_list|,
-specifier|final
 name|String
 name|oldTopic
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|TopicChangedEvent
 name|event
 init|=
@@ -4535,7 +4444,6 @@ operator|new
 name|TopicChangedEvent
 argument_list|()
 decl_stmt|;
-specifier|final
 name|AccountState
 name|owner
 init|=
@@ -4586,7 +4494,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -4865,7 +4772,6 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -5055,7 +4961,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -5117,20 +5022,17 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (final Change change, final Event event, final ReviewDb db)
+DECL|method|postEvent (Change change, Event event, ReviewDb db)
 specifier|public
 name|void
 name|postEvent
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Event
 name|event
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
@@ -5149,18 +5051,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (final Branch.NameKey branchName, final Event event)
+DECL|method|postEvent (Branch.NameKey branchName, Event event)
 specifier|public
 name|void
 name|postEvent
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-specifier|final
 name|Event
 name|event
 parameter_list|)
@@ -5173,12 +5073,11 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEventForUnrestrictedListeners (final Event event)
+DECL|method|fireEventForUnrestrictedListeners (Event event)
 specifier|private
 name|void
 name|fireEventForUnrestrictedListeners
 parameter_list|(
-specifier|final
 name|Event
 name|event
 parameter_list|)
@@ -5200,20 +5099,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireEvent (final Change change, final Event event, final ReviewDb db)
+DECL|method|fireEvent (Change change, Event event, ReviewDb db)
 specifier|private
 name|void
 name|fireEvent
 parameter_list|(
-specifier|final
 name|Change
 name|change
 parameter_list|,
-specifier|final
 name|Event
 name|event
 parameter_list|,
-specifier|final
 name|ReviewDb
 name|db
 parameter_list|)
@@ -5262,7 +5158,7 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEvent (Branch.NameKey branchName, final Event event)
+DECL|method|fireEvent (Branch.NameKey branchName, Event event)
 specifier|private
 name|void
 name|fireEvent
@@ -5272,7 +5168,6 @@ operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-specifier|final
 name|Event
 name|event
 parameter_list|)
@@ -5334,7 +5229,6 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
 name|ProjectState
 name|pe
 init|=
@@ -5359,7 +5253,6 @@ return|return
 literal|false
 return|;
 block|}
-specifier|final
 name|ProjectControl
 name|pc
 init|=
@@ -5398,7 +5291,6 @@ name|CurrentUser
 name|user
 parameter_list|)
 block|{
-specifier|final
 name|ProjectState
 name|pe
 init|=
@@ -5423,7 +5315,6 @@ return|return
 literal|false
 return|;
 block|}
-specifier|final
 name|ProjectControl
 name|pc
 init|=
@@ -5529,12 +5420,11 @@ name|a
 return|;
 block|}
 comment|/**      * Get the display name for the given account.      *      * @param account Account to get name for.      * @return Name for this account.      */
-DECL|method|getDisplayName (final Account account)
+DECL|method|getDisplayName (Account account)
 specifier|private
 name|String
 name|getDisplayName
 parameter_list|(
-specifier|final
 name|Account
 name|account
 parameter_list|)
@@ -6024,7 +5914,6 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-specifier|final
 name|List
 argument_list|<
 name|String
@@ -6063,7 +5952,6 @@ argument_list|(
 name|args
 argument_list|)
 expr_stmt|;
-specifier|final
 name|ProcessBuilder
 name|pb
 init|=
@@ -6095,7 +5983,6 @@ name|project
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -6285,7 +6172,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|int
 name|exitValue
 init|=
