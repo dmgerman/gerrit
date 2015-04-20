@@ -1033,7 +1033,8 @@ block|{
 name|int
 name|i
 init|=
-literal|0
+operator|-
+literal|1
 decl_stmt|;
 name|int
 name|ret
@@ -1066,6 +1067,9 @@ range|:
 name|labels
 control|)
 block|{
+name|i
+operator|++
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1172,9 +1176,6 @@ operator|-
 literal|1
 return|;
 block|}
-name|i
-operator|++
-expr_stmt|;
 block|}
 name|set_submittable
 argument_list|(
