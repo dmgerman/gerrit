@@ -2257,6 +2257,11 @@ name|i
 operator|.
 name|submittable
 argument_list|()
+operator|&&
+name|i
+operator|.
+name|mergeable
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|arr
