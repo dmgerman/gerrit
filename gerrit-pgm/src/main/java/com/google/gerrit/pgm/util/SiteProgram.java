@@ -274,7 +274,7 @@ name|server
 operator|.
 name|git
 operator|.
-name|LocalDiskRepositoryManager
+name|GitRepositoryManagerModule
 import|;
 end_import
 
@@ -1365,11 +1365,14 @@ name|modules
 operator|.
 name|add
 argument_list|(
-operator|new
-name|LocalDiskRepositoryManager
+name|cfgInjector
 operator|.
-name|Module
-argument_list|()
+name|getInstance
+argument_list|(
+name|GitRepositoryManagerModule
+operator|.
+name|class
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|modules
