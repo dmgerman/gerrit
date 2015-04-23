@@ -2031,31 +2031,10 @@ name|msgbuf
 init|=
 operator|new
 name|StringBuilder
-argument_list|()
+argument_list|(
+literal|"Updated git submodules\n"
+argument_list|)
 decl_stmt|;
-name|msgbuf
-operator|.
-name|append
-argument_list|(
-literal|"Updated "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|subscriber
-operator|.
-name|getParentKey
-argument_list|()
-operator|.
-name|get
-argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|'\n'
-argument_list|)
-expr_stmt|;
 name|Repository
 name|pdb
 init|=
