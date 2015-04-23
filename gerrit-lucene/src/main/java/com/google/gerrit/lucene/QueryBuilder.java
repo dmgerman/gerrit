@@ -1207,6 +1207,8 @@ block|}
 else|else
 block|{
 throw|throw
+name|FieldType
+operator|.
 name|badFieldType
 argument_list|(
 name|p
@@ -1830,29 +1832,6 @@ name|getTime
 argument_list|()
 operator|/
 literal|60000
-argument_list|)
-return|;
-block|}
-DECL|method|badFieldType (FieldType<?> t)
-specifier|public
-specifier|static
-name|IllegalArgumentException
-name|badFieldType
-parameter_list|(
-name|FieldType
-argument_list|<
-name|?
-argument_list|>
-name|t
-parameter_list|)
-block|{
-return|return
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"unknown index field type "
-operator|+
-name|t
 argument_list|)
 return|;
 block|}

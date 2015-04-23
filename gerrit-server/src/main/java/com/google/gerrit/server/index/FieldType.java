@@ -277,6 +277,29 @@ return|return
 name|name
 return|;
 block|}
+DECL|method|badFieldType (FieldType<?> t)
+specifier|public
+specifier|static
+name|IllegalArgumentException
+name|badFieldType
+parameter_list|(
+name|FieldType
+argument_list|<
+name|?
+argument_list|>
+name|t
+parameter_list|)
+block|{
+return|return
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"unknown index field type "
+operator|+
+name|t
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

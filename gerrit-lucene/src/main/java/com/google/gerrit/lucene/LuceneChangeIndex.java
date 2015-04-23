@@ -4066,7 +4066,7 @@ block|}
 else|else
 block|{
 throw|throw
-name|QueryBuilder
+name|FieldType
 operator|.
 name|badFieldType
 argument_list|(
