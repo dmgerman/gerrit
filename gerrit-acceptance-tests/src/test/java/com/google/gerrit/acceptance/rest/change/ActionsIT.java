@@ -690,7 +690,7 @@ argument_list|)
 operator|.
 name|isEqualTo
 argument_list|(
-literal|"Clicking the button would fail for other changes in the topic."
+literal|"Clicking the button would fail for other changes in the topic"
 argument_list|)
 expr_stmt|;
 block|}
