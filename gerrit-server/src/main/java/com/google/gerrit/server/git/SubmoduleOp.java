@@ -1178,6 +1178,8 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -1577,6 +1579,8 @@ name|msg
 parameter_list|)
 throws|throws
 name|SubmoduleException
+throws|,
+name|IOException
 block|{
 try|try
 block|{
@@ -1707,6 +1711,13 @@ name|CLEAN_REBASE
 operator|)
 condition|)
 block|{
+name|myRw
+operator|.
+name|parseBody
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
 name|sb
 operator|.
 name|append
