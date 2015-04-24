@@ -192,6 +192,22 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|server
+operator|.
+name|util
+operator|.
+name|SystemLog
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|testutil
 operator|.
 name|TempFileUtil
@@ -551,6 +567,19 @@ expr_stmt|;
 name|mergeTestConfig
 argument_list|(
 name|cfg
+argument_list|)
+expr_stmt|;
+comment|// Set the log4j configuration to an invalid one to prevent system logs
+comment|// from getting configured and creating log files.
+name|System
+operator|.
+name|setProperty
+argument_list|(
+name|SystemLog
+operator|.
+name|LOG4J_CONFIGURATION
+argument_list|,
+literal|"invalidConfiguration"
 argument_list|)
 expr_stmt|;
 name|cfg
