@@ -3572,12 +3572,12 @@ return|return
 name|submitRecords
 return|;
 block|}
-DECL|method|setMergeable (boolean mergeable)
+DECL|method|setMergeable (Boolean mergeable)
 specifier|public
 name|void
 name|setMergeable
 parameter_list|(
-name|boolean
+name|Boolean
 name|mergeable
 parameter_list|)
 block|{

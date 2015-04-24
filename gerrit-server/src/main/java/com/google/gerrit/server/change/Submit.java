@@ -2036,6 +2036,17 @@ return|return
 name|BLOCKED_TOPIC_TOOLTIP
 return|;
 block|}
+comment|// Recheck mergeability rather than using value stored in the index,
+comment|// which may be stale.
+comment|// TODO(dborowitz): This is ugly; consider providing a way to not read
+comment|// stored fields from the index in the first place.
+name|c
+operator|.
+name|setMergeable
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
