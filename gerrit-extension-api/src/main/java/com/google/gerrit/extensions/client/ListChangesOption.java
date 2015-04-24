@@ -199,6 +199,13 @@ name|CHANGE_ACTIONS
 argument_list|(
 literal|16
 argument_list|)
+block|,
+comment|/** Include a copy of commit messages including review footers. */
+DECL|enumConstant|COMMIT_FOOTERS
+name|COMMIT_FOOTERS
+argument_list|(
+literal|17
+argument_list|)
 block|;
 DECL|field|value
 specifier|private
