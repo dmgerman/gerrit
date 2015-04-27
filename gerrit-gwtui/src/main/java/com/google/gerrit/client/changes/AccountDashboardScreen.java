@@ -138,7 +138,37 @@ name|client
 operator|.
 name|ui
 operator|.
+name|InlineHyperlink
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|client
+operator|.
+name|ui
+operator|.
 name|Screen
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|PageLinks
 import|;
 end_import
 
@@ -444,9 +474,24 @@ operator|.
 name|Section
 argument_list|()
 expr_stmt|;
+name|String
+name|who
+init|=
+name|mine
+condition|?
+literal|"self"
+else|:
+name|ownerId
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 name|outgoing
 operator|.
-name|setTitleText
+name|setTitleWidget
+argument_list|(
+operator|new
+name|InlineHyperlink
 argument_list|(
 name|Util
 operator|.
@@ -454,11 +499,25 @@ name|C
 operator|.
 name|outgoingReviews
 argument_list|()
+argument_list|,
+name|PageLinks
+operator|.
+name|toChangeQuery
+argument_list|(
+name|queryOutGoing
+argument_list|(
+name|who
+argument_list|)
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|incoming
 operator|.
-name|setTitleText
+name|setTitleWidget
+argument_list|(
+operator|new
+name|InlineHyperlink
 argument_list|(
 name|Util
 operator|.
@@ -466,6 +525,17 @@ name|C
 operator|.
 name|incomingReviews
 argument_list|()
+argument_list|,
+name|PageLinks
+operator|.
+name|toChangeQuery
+argument_list|(
+name|queryInComing
+argument_list|(
+name|who
+argument_list|)
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|incoming
@@ -477,7 +547,10 @@ argument_list|)
 expr_stmt|;
 name|closed
 operator|.
-name|setTitleText
+name|setTitleWidget
+argument_list|(
+operator|new
+name|InlineHyperlink
 argument_list|(
 name|Util
 operator|.
@@ -485,6 +558,17 @@ name|C
 operator|.
 name|recentlyClosed
 argument_list|()
+argument_list|,
+name|PageLinks
+operator|.
+name|toChangeQuery
+argument_list|(
+name|queryClosed
+argument_list|(
+name|who
+argument_list|)
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|table
@@ -522,6 +606,64 @@ operator|+
 name|ownerId
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|queryOutGoing (String who)
+specifier|private
+specifier|static
+name|String
+name|queryOutGoing
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+block|{
+return|return
+literal|"is:open owner:"
+operator|+
+name|who
+return|;
+block|}
+DECL|method|queryInComing (String who)
+specifier|private
+specifier|static
+name|String
+name|queryInComing
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+block|{
+return|return
+literal|"is:open reviewer:"
+operator|+
+name|who
+operator|+
+literal|" -owner:"
+operator|+
+name|who
+return|;
+block|}
+DECL|method|queryClosed (String who)
+specifier|private
+specifier|static
+name|String
+name|queryClosed
+parameter_list|(
+name|String
+name|who
+parameter_list|)
+block|{
+return|return
+literal|"is:closed (owner:"
+operator|+
+name|who
+operator|+
+literal|" OR reviewer:"
+operator|+
+name|who
+operator|+
+literal|")"
+return|;
 block|}
 annotation|@
 name|Override
@@ -605,27 +747,22 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
-literal|"is:open owner:"
-operator|+
+name|queryOutGoing
+argument_list|(
 name|who
+argument_list|)
 argument_list|,
-literal|"is:open reviewer:"
-operator|+
+name|queryInComing
+argument_list|(
 name|who
-operator|+
-literal|" -owner:"
-operator|+
-name|who
+argument_list|)
 argument_list|,
-literal|"is:closed (owner:"
-operator|+
+name|queryClosed
+argument_list|(
 name|who
+argument_list|)
 operator|+
-literal|" OR reviewer:"
-operator|+
-name|who
-operator|+
-literal|") -age:4w limit:10"
+literal|" -age:4w limit:10"
 argument_list|)
 expr_stmt|;
 block|}
