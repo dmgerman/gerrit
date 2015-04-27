@@ -504,7 +504,7 @@ name|PageLinks
 operator|.
 name|toChangeQuery
 argument_list|(
-name|queryOutGoing
+name|queryOutgoing
 argument_list|(
 name|who
 argument_list|)
@@ -530,7 +530,7 @@ name|PageLinks
 operator|.
 name|toChangeQuery
 argument_list|(
-name|queryInComing
+name|queryIncoming
 argument_list|(
 name|who
 argument_list|)
@@ -607,11 +607,11 @@ name|ownerId
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|queryOutGoing (String who)
+DECL|method|queryOutgoing (String who)
 specifier|private
 specifier|static
 name|String
-name|queryOutGoing
+name|queryOutgoing
 parameter_list|(
 name|String
 name|who
@@ -623,11 +623,11 @@ operator|+
 name|who
 return|;
 block|}
-DECL|method|queryInComing (String who)
+DECL|method|queryIncoming (String who)
 specifier|private
 specifier|static
 name|String
-name|queryInComing
+name|queryIncoming
 parameter_list|(
 name|String
 name|who
@@ -747,12 +747,12 @@ operator|.
 name|class
 argument_list|)
 argument_list|,
-name|queryOutGoing
+name|queryOutgoing
 argument_list|(
 name|who
 argument_list|)
 argument_list|,
-name|queryInComing
+name|queryIncoming
 argument_list|(
 name|who
 argument_list|)
