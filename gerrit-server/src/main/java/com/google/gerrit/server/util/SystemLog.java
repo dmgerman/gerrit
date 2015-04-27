@@ -339,7 +339,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|LOG4J_CONFIGURATION
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
