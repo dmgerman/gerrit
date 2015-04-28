@@ -288,7 +288,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|ListComments
+name|ListRevisionComments
 name|list
 decl_stmt|;
 DECL|field|dbProvider
@@ -308,7 +308,7 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|Comments (DynamicMap<RestView<CommentResource>> views, ListComments list, Provider<ReviewDb> dbProvider, PatchLineCommentsUtil plcUtil)
+DECL|method|Comments (DynamicMap<RestView<CommentResource>> views, ListRevisionComments list, Provider<ReviewDb> dbProvider, PatchLineCommentsUtil plcUtil)
 name|Comments
 parameter_list|(
 name|DynamicMap
@@ -320,7 +320,7 @@ argument_list|>
 argument_list|>
 name|views
 parameter_list|,
-name|ListComments
+name|ListRevisionComments
 name|list
 parameter_list|,
 name|Provider
@@ -380,7 +380,7 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
-name|ListComments
+name|ListRevisionComments
 name|list
 parameter_list|()
 block|{
