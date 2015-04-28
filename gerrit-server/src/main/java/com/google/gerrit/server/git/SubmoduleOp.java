@@ -1287,7 +1287,7 @@ name|destBranch
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|List
+name|Set
 argument_list|<
 name|SubmoduleSubscription
 argument_list|>
@@ -1427,7 +1427,7 @@ name|newSubscriptions
 operator|=
 name|Collections
 operator|.
-name|emptyList
+name|emptySet
 argument_list|()
 expr_stmt|;
 block|}
