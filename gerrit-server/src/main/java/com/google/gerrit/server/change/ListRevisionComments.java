@@ -190,7 +190,7 @@ name|ListRevisionDrafts
 block|{
 annotation|@
 name|Inject
-DECL|method|ListRevisionComments (Provider<ReviewDb> db, CommentJson commentJson, PatchLineCommentsUtil plcUtil)
+DECL|method|ListRevisionComments (Provider<ReviewDb> db, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil)
 name|ListRevisionComments
 parameter_list|(
 name|Provider
@@ -199,7 +199,10 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 parameter_list|,
 name|PatchLineCommentsUtil

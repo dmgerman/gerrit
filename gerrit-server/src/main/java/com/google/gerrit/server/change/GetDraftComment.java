@@ -132,6 +132,18 @@ name|google
 operator|.
 name|inject
 operator|.
+name|Provider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|inject
+operator|.
 name|Singleton
 import|;
 end_import
@@ -152,15 +164,21 @@ block|{
 DECL|field|commentJson
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetDraftComment (CommentJson commentJson)
+DECL|method|GetDraftComment (Provider<CommentJson> commentJson)
 name|GetDraftComment
 parameter_list|(
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 parameter_list|)
 block|{
@@ -186,6 +204,9 @@ name|OrmException
 block|{
 return|return
 name|commentJson
+operator|.
+name|get
+argument_list|()
 operator|.
 name|format
 argument_list|(

@@ -238,7 +238,11 @@ name|db
 decl_stmt|;
 DECL|field|commentJson
 specifier|protected
+specifier|final
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 decl_stmt|;
 DECL|field|plcUtil
@@ -249,7 +253,7 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ListRevisionDrafts (Provider<ReviewDb> db, CommentJson commentJson, PatchLineCommentsUtil plcUtil)
+DECL|method|ListRevisionDrafts (Provider<ReviewDb> db, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil)
 name|ListRevisionDrafts
 parameter_list|(
 name|Provider
@@ -258,7 +262,10 @@ name|ReviewDb
 argument_list|>
 name|db
 parameter_list|,
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 parameter_list|,
 name|PatchLineCommentsUtil
@@ -362,15 +369,21 @@ block|{
 return|return
 name|commentJson
 operator|.
+name|get
+argument_list|()
+operator|.
+name|setFillAccounts
+argument_list|(
+name|includeAuthorInfo
+argument_list|()
+argument_list|)
+operator|.
 name|format
 argument_list|(
 name|listComments
 argument_list|(
 name|rsrc
 argument_list|)
-argument_list|,
-name|includeAuthorInfo
-argument_list|()
 argument_list|)
 return|;
 block|}
