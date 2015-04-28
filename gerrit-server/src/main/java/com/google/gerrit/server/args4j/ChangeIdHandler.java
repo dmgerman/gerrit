@@ -464,8 +464,6 @@ name|NameKey
 argument_list|(
 name|project
 argument_list|,
-literal|"refs/heads/"
-operator|+
 name|tokens
 index|[
 literal|1
