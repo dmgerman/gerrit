@@ -1791,6 +1791,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|type
+operator|.
+name|setCopyAllScoresOnTrivialRebase
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|c
 operator|.
 name|getLabelSections
