@@ -178,6 +178,15 @@ name|InitLabels
 implements|implements
 name|InitStep
 block|{
+DECL|field|KEY_COPY_ALL_SCORES_IF_NO_CODE_CHANGE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|KEY_COPY_ALL_SCORES_IF_NO_CODE_CHANGE
+init|=
+literal|"copyAllScoresIfNoCodeChange"
+decl_stmt|;
 DECL|field|KEY_LABEL
 specifier|private
 specifier|static
@@ -381,6 +390,19 @@ block|,
 literal|"+1 Verified"
 block|}
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|cfg
+operator|.
+name|setBoolean
+argument_list|(
+name|KEY_LABEL
+argument_list|,
+name|LABEL_VERIFIED
+argument_list|,
+name|KEY_COPY_ALL_SCORES_IF_NO_CODE_CHANGE
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|allProjectsConfig
