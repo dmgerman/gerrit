@@ -1726,7 +1726,7 @@ argument_list|(
 name|filtered
 argument_list|)
 operator|.
-name|containsSequence
+name|containsExactlyElementsIn
 argument_list|(
 name|Ordering
 operator|.
@@ -1743,6 +1743,9 @@ name|out
 argument_list|)
 argument_list|)
 argument_list|)
+operator|.
+name|inOrder
+argument_list|()
 expr_stmt|;
 block|}
 block|}

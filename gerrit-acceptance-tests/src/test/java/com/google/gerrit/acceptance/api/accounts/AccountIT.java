@@ -411,7 +411,7 @@ name|size
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 literal|1
 argument_list|)
@@ -460,7 +460,7 @@ name|size
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 name|result
 operator|.

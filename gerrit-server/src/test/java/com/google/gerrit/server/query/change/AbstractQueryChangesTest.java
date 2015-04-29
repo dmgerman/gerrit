@@ -8654,12 +8654,6 @@ name|Exception
 block|{
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|Integer
-argument_list|>
-operator|)
 name|query
 argument_list|(
 name|query

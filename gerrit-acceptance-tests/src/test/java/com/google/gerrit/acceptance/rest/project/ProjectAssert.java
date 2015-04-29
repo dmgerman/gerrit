@@ -610,12 +610,6 @@ expr_stmt|;
 block|}
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|expectedOwners
 argument_list|)
 operator|.

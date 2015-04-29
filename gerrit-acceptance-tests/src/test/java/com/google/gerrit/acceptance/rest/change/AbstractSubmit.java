@@ -1314,12 +1314,6 @@ argument_list|)
 decl_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|info
 operator|.
 name|messages
@@ -1330,12 +1324,6 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|info
 operator|.
 name|messages

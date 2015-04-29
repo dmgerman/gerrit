@@ -608,7 +608,7 @@ operator|.
 name|_number
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 name|r
 operator|.
@@ -631,7 +631,7 @@ operator|.
 name|_accountId
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 name|admin
 operator|.
@@ -1021,7 +1021,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 literal|2
 argument_list|)
@@ -1087,7 +1087,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 literal|2
 argument_list|)
@@ -1153,7 +1153,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 literal|2
 argument_list|)
@@ -1219,7 +1219,7 @@ name|get
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 literal|3
 argument_list|)
@@ -1449,12 +1449,6 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|getReviewers
 argument_list|(
 name|r
@@ -1556,12 +1550,6 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|getReviewers
 argument_list|(
 name|r
@@ -1619,12 +1607,6 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|getReviewers
 argument_list|(
 name|r
@@ -2224,12 +2206,6 @@ argument_list|()
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|result
 operator|.
 name|messages
@@ -2335,12 +2311,6 @@ argument_list|)
 expr_stmt|;
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|?
-argument_list|>
-operator|)
 name|result
 operator|.
 name|messages
@@ -2413,7 +2383,7 @@ operator|.
 name|_accountId
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 name|admin
 operator|.

@@ -1981,7 +1981,7 @@ name|getParentCount
 argument_list|()
 argument_list|)
 operator|.
-name|is
+name|isEqualTo
 argument_list|(
 literal|2
 argument_list|)

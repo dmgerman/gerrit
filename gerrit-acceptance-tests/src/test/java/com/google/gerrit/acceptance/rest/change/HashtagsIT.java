@@ -1188,12 +1188,6 @@ block|{
 return|return
 name|assertThat
 argument_list|(
-operator|(
-name|Iterable
-argument_list|<
-name|String
-argument_list|>
-operator|)
 name|gApi
 operator|.
 name|changes
