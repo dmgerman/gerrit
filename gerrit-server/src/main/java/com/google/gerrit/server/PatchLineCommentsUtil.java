@@ -2490,7 +2490,7 @@ name|comments
 argument_list|,
 name|ChangeNotes
 operator|.
-name|PatchLineCommentComparator
+name|PLC_ORDER
 argument_list|)
 expr_stmt|;
 return|return
