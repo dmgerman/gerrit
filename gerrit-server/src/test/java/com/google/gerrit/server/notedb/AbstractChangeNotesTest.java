@@ -1738,10 +1738,10 @@ return|return
 name|label
 return|;
 block|}
-DECL|method|newPublishedPatchLineComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1)
+DECL|method|newPublishedComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1)
 specifier|protected
 name|PatchLineComment
-name|newPublishedPatchLineComment
+name|newPublishedComment
 parameter_list|(
 name|PatchSet
 operator|.
@@ -1780,7 +1780,7 @@ name|commitSHA1
 parameter_list|)
 block|{
 return|return
-name|newPatchLineComment
+name|newComment
 argument_list|(
 name|psId
 argument_list|,
@@ -1812,10 +1812,10 @@ name|PUBLISHED
 argument_list|)
 return|;
 block|}
-DECL|method|newPatchLineComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1, PatchLineComment.Status status)
+DECL|method|newComment (PatchSet.Id psId, String filename, String UUID, CommentRange range, int line, IdentifiedUser commenter, String parentUUID, Timestamp t, String message, short side, String commitSHA1, PatchLineComment.Status status)
 specifier|protected
 name|PatchLineComment
-name|newPatchLineComment
+name|newComment
 parameter_list|(
 name|PatchSet
 operator|.

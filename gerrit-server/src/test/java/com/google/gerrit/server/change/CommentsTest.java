@@ -2255,7 +2255,7 @@ argument_list|(
 operator|new
 name|RevId
 argument_list|(
-literal|"ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD"
+literal|"abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2305,7 +2305,7 @@ argument_list|(
 operator|new
 name|RevId
 argument_list|(
-literal|"ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD"
+literal|"abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2355,7 +2355,7 @@ argument_list|(
 operator|new
 name|RevId
 argument_list|(
-literal|"CDEFCDEFCDEFCDEFCDEFCDEFCDEFCDEFCDEFCDEF"
+literal|"cdefcdefcdefcdefcdefcdefcdefcdefcdefcdef"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2409,7 +2409,7 @@ argument_list|(
 operator|new
 name|RevId
 argument_list|(
-literal|"BCDEBCDEBCDEBCDEBCDEBCDEBCDEBCDEBCDEBCDE"
+literal|"bcdebcdebcdebcdebcdebcdebcdebcdebcdebcde"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2463,7 +2463,7 @@ argument_list|(
 operator|new
 name|RevId
 argument_list|(
-literal|"BCDEBCDEBCDEBCDEBCDEBCDEBCDEBCDEBCDEBCDE"
+literal|"bcdebcdebcdebcdebcdebcdebcdebcdebcdebcde"
 argument_list|)
 argument_list|)
 expr_stmt|;
