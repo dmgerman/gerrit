@@ -415,10 +415,7 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
-name|RestView
-argument_list|<
-name|RevisionResource
-argument_list|>
+name|ListDraftComments
 name|list
 parameter_list|()
 throws|throws

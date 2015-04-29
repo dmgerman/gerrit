@@ -380,10 +380,7 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
-name|RestView
-argument_list|<
-name|RevisionResource
-argument_list|>
+name|ListComments
 name|list
 parameter_list|()
 block|{
