@@ -83,6 +83,12 @@ specifier|abstract
 class|class
 name|Comment
 block|{
+comment|/**    * Patch set number containing this commit.    *<p>    * Only set in contexts where comments may come from multiple patch sets.    */
+DECL|field|patchSet
+specifier|public
+name|Integer
+name|patchSet
+decl_stmt|;
 DECL|field|id
 specifier|public
 name|String
