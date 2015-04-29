@@ -710,14 +710,14 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-DECL|field|PatchLineCommentComparator
+DECL|field|PLC_ORDER
 specifier|public
 specifier|static
 name|Comparator
 argument_list|<
 name|PatchLineComment
 argument_list|>
-name|PatchLineCommentComparator
+name|PLC_ORDER
 init|=
 operator|new
 name|Comparator
