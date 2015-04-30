@@ -1566,6 +1566,25 @@ name|postReview
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|hasMessage ()
+name|boolean
+name|hasMessage
+parameter_list|()
+block|{
+return|return
+operator|!
+name|message
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 DECL|method|postReview ()
 specifier|private
 name|void

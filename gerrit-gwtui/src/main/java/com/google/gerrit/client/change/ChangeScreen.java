@@ -1466,6 +1466,11 @@ name|String
 name|selected
 parameter_list|()
 function_decl|;
+DECL|method|highlight ()
+name|String
+name|highlight
+parameter_list|()
+function_decl|;
 DECL|method|hashtagName ()
 name|String
 name|hashtagName
@@ -1568,6 +1573,11 @@ DECL|field|changeInfo
 specifier|private
 name|ChangeInfo
 name|changeInfo
+decl_stmt|;
+DECL|field|hasDraftComments
+specifier|private
+name|boolean
+name|hasDraftComments
 decl_stmt|;
 DECL|field|commentLinkProcessor
 specifier|private
@@ -2480,6 +2490,22 @@ name|closeDiv
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|hasDraftComments
+condition|)
+block|{
+name|reply
+operator|.
+name|setStyleName
+argument_list|(
+name|style
+operator|.
+name|highlight
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|reply
 operator|.
 name|setVisible
@@ -6458,6 +6484,14 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+name|hasDraftComments
+operator|=
+operator|!
+name|result
+operator|.
+name|isEmpty
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -7588,6 +7622,8 @@ argument_list|(
 name|info
 argument_list|,
 name|revision
+argument_list|,
+name|hasDraftComments
 argument_list|,
 name|style
 argument_list|,
