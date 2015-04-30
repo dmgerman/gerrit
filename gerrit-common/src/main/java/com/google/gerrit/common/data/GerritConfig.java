@@ -258,11 +258,6 @@ specifier|protected
 name|boolean
 name|useContactInfo
 decl_stmt|;
-DECL|field|allowRegisterNewEmail
-specifier|protected
-name|boolean
-name|allowRegisterNewEmail
-decl_stmt|;
 DECL|field|authType
 specifier|protected
 name|AuthType
