@@ -1165,6 +1165,23 @@ name|TopMenu
 operator|.
 name|MenuItem
 argument_list|(
+literal|"Edits"
+argument_list|,
+literal|"#/q/has:edit"
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|my
+operator|.
+name|add
+argument_list|(
+operator|new
+name|TopMenu
+operator|.
+name|MenuItem
+argument_list|(
 literal|"Watched Changes"
 argument_list|,
 literal|"#/q/is:watched+is:open"
