@@ -149,11 +149,14 @@ block|{
 DECL|enumConstant|DELETE
 DECL|enumConstant|PUBLISH
 DECL|enumConstant|KEEP
+DECL|enumConstant|PUBLISH_ALL_REVISIONS
 name|DELETE
 block|,
 name|PUBLISH
 block|,
 name|KEEP
+block|,
+name|PUBLISH_ALL_REVISIONS
 block|}
 DECL|method|create ()
 specifier|public
