@@ -65,24 +65,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|CommentsInNotesUtil
-operator|.
-name|getCommentPsId
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -622,6 +604,31 @@ specifier|public
 class|class
 name|PatchLineCommentsUtil
 block|{
+DECL|method|getCommentPsId (PatchLineComment plc)
+specifier|public
+specifier|static
+name|PatchSet
+operator|.
+name|Id
+name|getCommentPsId
+parameter_list|(
+name|PatchLineComment
+name|plc
+parameter_list|)
+block|{
+return|return
+name|plc
+operator|.
+name|getKey
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+operator|.
+name|getParentKey
+argument_list|()
+return|;
+block|}
 DECL|field|repoManager
 specifier|private
 specifier|final

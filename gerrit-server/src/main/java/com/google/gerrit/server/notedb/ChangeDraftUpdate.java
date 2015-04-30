@@ -108,11 +108,9 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|notedb
+name|PatchLineCommentsUtil
 operator|.
-name|CommentsInNotesUtil
-operator|.
-name|addCommentToMap
+name|getCommentPsId
 import|;
 end_import
 
@@ -130,7 +128,7 @@ name|notedb
 operator|.
 name|CommentsInNotesUtil
 operator|.
-name|getCommentPsId
+name|addCommentToMap
 import|;
 end_import
 

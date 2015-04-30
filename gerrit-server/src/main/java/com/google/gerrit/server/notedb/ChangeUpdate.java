@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchLineCommentsUtil
+operator|.
+name|getCommentPsId
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNoteUtil
@@ -187,24 +203,6 @@ operator|.
 name|CommentsInNotesUtil
 operator|.
 name|addCommentToMap
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|CommentsInNotesUtil
-operator|.
-name|getCommentPsId
 import|;
 end_import
 
