@@ -403,12 +403,9 @@ block|}
 name|assertThat
 argument_list|(
 name|futures
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 name|threads
 argument_list|)

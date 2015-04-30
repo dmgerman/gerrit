@@ -623,12 +623,9 @@ argument_list|)
 operator|.
 name|patches
 argument_list|()
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 literal|1
 argument_list|)

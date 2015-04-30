@@ -406,12 +406,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|result
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 literal|1
 argument_list|)
@@ -455,12 +452,9 @@ decl_stmt|;
 name|assertThat
 argument_list|(
 name|resultShortcutApi
-operator|.
-name|size
-argument_list|()
 argument_list|)
 operator|.
-name|isEqualTo
+name|hasSize
 argument_list|(
 name|result
 operator|.
