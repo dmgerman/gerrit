@@ -1437,6 +1437,22 @@ throw|;
 block|}
 else|else
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Failed to update config of project %s."
+argument_list|,
+name|projectName
+argument_list|)
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|ResourceConflictException

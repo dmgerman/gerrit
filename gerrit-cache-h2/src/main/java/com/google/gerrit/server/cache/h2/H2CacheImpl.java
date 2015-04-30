@@ -2206,8 +2206,13 @@ argument_list|(
 literal|"Cannot build BloomFilter for "
 operator|+
 name|url
-argument_list|,
+operator|+
+literal|": "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|c
