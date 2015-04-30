@@ -186,6 +186,15 @@ name|META_SUFFIX
 init|=
 literal|"/meta"
 decl_stmt|;
+DECL|field|EDIT_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EDIT_PREFIX
+init|=
+literal|"edit-"
+decl_stmt|;
 DECL|method|fullName (String ref)
 specifier|public
 specifier|static
@@ -500,7 +509,12 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"/edit-"
+literal|'/'
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|EDIT_PREFIX
 argument_list|)
 operator|.
 name|append
@@ -513,7 +527,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"/"
+literal|'/'
 argument_list|)
 operator|.
 name|toString

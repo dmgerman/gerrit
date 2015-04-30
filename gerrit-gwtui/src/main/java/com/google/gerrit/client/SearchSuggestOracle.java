@@ -604,6 +604,13 @@ name|suggestions
 operator|.
 name|add
 argument_list|(
+literal|"has:edit"
+argument_list|)
+expr_stmt|;
+name|suggestions
+operator|.
+name|add
+argument_list|(
 literal|"has:star"
 argument_list|)
 expr_stmt|;
