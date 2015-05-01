@@ -760,7 +760,7 @@ name|changeControl
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * @param ps patch set of the change to evaluate. If not set, the current    * patch set will be loaded from {@link #canSubmit()} or {@link    * #getSubmitType}.    * @return this    */
+comment|/**    * @param ps patch set of the change to evaluate. If not set, the current    * patch set will be loaded from {@link #evaluate()} or {@link    * #getSubmitType}.    * @return this    */
 DECL|method|setPatchSet (PatchSet ps)
 specifier|public
 name|SubmitRuleEvaluator
@@ -827,7 +827,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @param allow whether to allow {@link #canSubmit()} on closed changes.    * @return this    */
+comment|/**    * @param allow whether to allow {@link #evaluate()} on closed changes.    * @return this    */
 DECL|method|setAllowClosed (boolean allow)
 specifier|public
 name|SubmitRuleEvaluator
@@ -845,7 +845,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**    * @param allow whether to allow {@link #canSubmit()} on closed changes.    * @return this    */
+comment|/**    * @param allow whether to allow {@link #evaluate()} on draft changes.    * @return this    */
 DECL|method|setAllowDraft (boolean allow)
 specifier|public
 name|SubmitRuleEvaluator
@@ -933,13 +933,13 @@ name|reductionsConsumed
 return|;
 block|}
 comment|/**    * Evaluate the submit rules.    *    * @return List of {@link SubmitRecord} objects returned from the evaluated    *     rules, including any errors.    */
-DECL|method|canSubmit ()
+DECL|method|evaluate ()
 specifier|public
 name|List
 argument_list|<
 name|SubmitRecord
 argument_list|>
-name|canSubmit
+name|evaluate
 parameter_list|()
 block|{
 try|try

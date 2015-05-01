@@ -4068,7 +4068,7 @@ argument_list|(
 name|patchSet
 argument_list|)
 operator|.
-name|canSubmit
+name|evaluate
 argument_list|()
 decl_stmt|;
 name|Optional
@@ -4130,7 +4130,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"ChangeControl.canSubmit returned empty list for %s in %s"
+literal|"SubmitRuleEvaluator.evaluate returned empty list for %s in %s"
 argument_list|,
 name|patchSet
 operator|.

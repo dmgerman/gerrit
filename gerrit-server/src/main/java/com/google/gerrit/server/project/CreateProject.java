@@ -1807,11 +1807,7 @@ argument_list|()
 operator|.
 name|apply
 argument_list|(
-operator|new
-name|ProjectResource
-argument_list|(
 name|projectControl
-argument_list|)
 argument_list|,
 name|in
 argument_list|)
