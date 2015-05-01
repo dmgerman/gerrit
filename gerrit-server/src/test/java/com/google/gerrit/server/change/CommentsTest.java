@@ -3300,11 +3300,11 @@ argument_list|)
 operator|.
 name|containsExactly
 argument_list|(
+name|plc3
+argument_list|,
 name|plc1
 argument_list|,
 name|plc2
-argument_list|,
-name|plc3
 argument_list|)
 operator|.
 name|inOrder
