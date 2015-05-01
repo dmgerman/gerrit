@@ -447,7 +447,10 @@ decl_stmt|;
 DECL|field|commentJson
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 decl_stmt|;
 DECL|field|plcUtil
@@ -464,7 +467,7 @@ name|patchListCache
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|CreateDraftComment (Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, CommentJson commentJson, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache)
+DECL|method|CreateDraftComment (Provider<ReviewDb> db, ChangeUpdate.Factory updateFactory, Provider<CommentJson> commentJson, PatchLineCommentsUtil plcUtil, PatchListCache patchListCache)
 name|CreateDraftComment
 parameter_list|(
 name|Provider
@@ -478,7 +481,10 @@ operator|.
 name|Factory
 name|updateFactory
 parameter_list|,
+name|Provider
+argument_list|<
 name|CommentJson
+argument_list|>
 name|commentJson
 parameter_list|,
 name|PatchLineCommentsUtil
@@ -849,11 +855,17 @@ name|created
 argument_list|(
 name|commentJson
 operator|.
+name|get
+argument_list|()
+operator|.
+name|setFillAccounts
+argument_list|(
+literal|false
+argument_list|)
+operator|.
 name|format
 argument_list|(
 name|c
-argument_list|,
-literal|false
 argument_list|)
 argument_list|)
 return|;

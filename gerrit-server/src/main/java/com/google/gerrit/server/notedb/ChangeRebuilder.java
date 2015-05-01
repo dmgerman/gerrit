@@ -99,24 +99,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|notedb
-operator|.
-name|CommentsInNotesUtil
-operator|.
-name|getCommentPsId
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -343,6 +325,20 @@ operator|.
 name|server
 operator|.
 name|IdentifiedUser
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|PatchLineCommentsUtil
 import|;
 end_import
 
@@ -2023,6 +2019,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|PatchLineCommentsUtil
+operator|.
 name|getCommentPsId
 argument_list|(
 name|c

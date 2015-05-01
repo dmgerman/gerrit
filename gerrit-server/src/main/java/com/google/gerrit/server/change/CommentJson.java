@@ -238,18 +238,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
-name|Singleton
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -309,8 +297,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Singleton
 DECL|class|CommentJson
 class|class
 name|CommentJson
@@ -322,6 +308,13 @@ name|AccountLoader
 operator|.
 name|Factory
 name|accountLoaderFactory
+decl_stmt|;
+DECL|field|fillAccounts
+specifier|private
+name|boolean
+name|fillAccounts
+init|=
+literal|true
 decl_stmt|;
 annotation|@
 name|Inject
@@ -341,34 +334,30 @@ operator|=
 name|accountLoaderFactory
 expr_stmt|;
 block|}
+DECL|method|setFillAccounts (boolean fillAccounts)
+name|CommentJson
+name|setFillAccounts
+parameter_list|(
+name|boolean
+name|fillAccounts
+parameter_list|)
+block|{
+name|this
+operator|.
+name|fillAccounts
+operator|=
+name|fillAccounts
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 DECL|method|format (PatchLineComment c)
 name|CommentInfo
 name|format
 parameter_list|(
 name|PatchLineComment
 name|c
-parameter_list|)
-throws|throws
-name|OrmException
-block|{
-return|return
-name|format
-argument_list|(
-name|c
-argument_list|,
-literal|true
-argument_list|)
-return|;
-block|}
-DECL|method|format (PatchLineComment c, boolean fill)
-name|CommentInfo
-name|format
-parameter_list|(
-name|PatchLineComment
-name|c
-parameter_list|,
-name|boolean
-name|fill
 parameter_list|)
 throws|throws
 name|OrmException
@@ -380,7 +369,7 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|fill
+name|fillAccounts
 condition|)
 block|{
 name|loader
@@ -405,7 +394,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|fill
+name|fillAccounts
 condition|)
 block|{
 name|loader
@@ -418,7 +407,7 @@ return|return
 name|commentInfo
 return|;
 block|}
-DECL|method|format (Iterable<PatchLineComment> l, boolean fill)
+DECL|method|format (Iterable<PatchLineComment> l)
 name|Map
 argument_list|<
 name|String
@@ -435,9 +424,6 @@ argument_list|<
 name|PatchLineComment
 argument_list|>
 name|l
-parameter_list|,
-name|boolean
-name|fill
 parameter_list|)
 throws|throws
 name|OrmException
@@ -461,7 +447,7 @@ decl_stmt|;
 name|AccountLoader
 name|accountLoader
 init|=
-name|fill
+name|fillAccounts
 condition|?
 name|accountLoaderFactory
 operator|.

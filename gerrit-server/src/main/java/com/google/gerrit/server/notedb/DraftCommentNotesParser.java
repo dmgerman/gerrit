@@ -154,7 +154,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|PatchSet
+name|RefNames
 import|;
 end_import
 
@@ -170,7 +170,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|RefNames
+name|RevId
 import|;
 end_import
 
@@ -307,29 +307,15 @@ name|DraftCommentNotesParser
 implements|implements
 name|AutoCloseable
 block|{
-DECL|field|draftBaseComments
+DECL|field|comments
 specifier|final
 name|Multimap
 argument_list|<
-name|PatchSet
-operator|.
-name|Id
+name|RevId
 argument_list|,
 name|PatchLineComment
 argument_list|>
-name|draftBaseComments
-decl_stmt|;
-DECL|field|draftPsComments
-specifier|final
-name|Multimap
-argument_list|<
-name|PatchSet
-operator|.
-name|Id
-argument_list|,
-name|PatchLineComment
-argument_list|>
-name|draftPsComments
+name|comments
 decl_stmt|;
 DECL|field|noteMap
 name|NoteMap
@@ -434,14 +420,7 @@ name|author
 operator|=
 name|author
 expr_stmt|;
-name|draftBaseComments
-operator|=
-name|ArrayListMultimap
-operator|.
-name|create
-argument_list|()
-expr_stmt|;
-name|draftPsComments
+name|comments
 operator|=
 name|ArrayListMultimap
 operator|.
@@ -505,9 +484,7 @@ name|walk
 argument_list|,
 name|changeId
 argument_list|,
-name|draftBaseComments
-argument_list|,
-name|draftPsComments
+name|comments
 argument_list|,
 name|PatchLineComment
 operator|.

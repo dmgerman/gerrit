@@ -548,7 +548,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ListComments
+name|ListRevisionComments
 import|;
 end_import
 
@@ -564,7 +564,7 @@ name|server
 operator|.
 name|change
 operator|.
-name|ListDraftComments
+name|ListRevisionDrafts
 import|;
 end_import
 
@@ -921,13 +921,13 @@ decl_stmt|;
 DECL|field|listComments
 specifier|private
 specifier|final
-name|ListComments
+name|ListRevisionComments
 name|listComments
 decl_stmt|;
 DECL|field|listDrafts
 specifier|private
 specifier|final
-name|ListDraftComments
+name|ListRevisionDrafts
 name|listDrafts
 decl_stmt|;
 DECL|field|createDraft
@@ -972,7 +972,7 @@ name|revisionActions
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, PublishDraftPatchSet publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListComments listComments, ListDraftComments listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, GetRevisionActions revisionActions, @Assisted RevisionResource r)
+DECL|method|RevisionApiImpl (Changes changes, CherryPick cherryPick, DeleteDraftPatchSet deleteDraft, Rebase rebase, RebaseChange rebaseChange, Submit submit, PublishDraftPatchSet publish, Reviewed.PutReviewed putReviewed, Reviewed.DeleteReviewed deleteReviewed, Provider<Files> files, Provider<Files.ListFiles> listFiles, Provider<PostReview> review, Provider<Mergeable> mergeable, FileApiImpl.Factory fileApi, ListRevisionComments listComments, ListRevisionDrafts listDrafts, CreateDraftComment createDraft, DraftComments drafts, DraftApiImpl.Factory draftFactory, Comments comments, CommentApiImpl.Factory commentFactory, GetRevisionActions revisionActions, @Assisted RevisionResource r)
 name|RevisionApiImpl
 parameter_list|(
 name|Changes
@@ -1037,10 +1037,10 @@ operator|.
 name|Factory
 name|fileApi
 parameter_list|,
-name|ListComments
+name|ListRevisionComments
 name|listComments
 parameter_list|,
-name|ListDraftComments
+name|ListRevisionDrafts
 name|listDrafts
 parameter_list|,
 name|CreateDraftComment

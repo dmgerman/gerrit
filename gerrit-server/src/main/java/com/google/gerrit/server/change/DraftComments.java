@@ -311,7 +311,7 @@ decl_stmt|;
 DECL|field|list
 specifier|private
 specifier|final
-name|ListDraftComments
+name|ListRevisionDrafts
 name|list
 decl_stmt|;
 DECL|field|dbProvider
@@ -331,7 +331,7 @@ name|plcUtil
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|DraftComments (DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListDraftComments list, Provider<ReviewDb> dbProvider, PatchLineCommentsUtil plcUtil)
+DECL|method|DraftComments (DynamicMap<RestView<DraftCommentResource>> views, Provider<CurrentUser> user, ListRevisionDrafts list, Provider<ReviewDb> dbProvider, PatchLineCommentsUtil plcUtil)
 name|DraftComments
 parameter_list|(
 name|DynamicMap
@@ -349,7 +349,7 @@ name|CurrentUser
 argument_list|>
 name|user
 parameter_list|,
-name|ListDraftComments
+name|ListRevisionDrafts
 name|list
 parameter_list|,
 name|Provider
@@ -415,10 +415,7 @@ annotation|@
 name|Override
 DECL|method|list ()
 specifier|public
-name|RestView
-argument_list|<
-name|RevisionResource
-argument_list|>
+name|ListRevisionDrafts
 name|list
 parameter_list|()
 throws|throws
