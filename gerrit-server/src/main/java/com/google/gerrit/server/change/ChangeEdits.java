@@ -1086,6 +1086,7 @@ argument_list|)
 return|;
 block|}
 DECL|class|Create
+specifier|public
 specifier|static
 class|class
 name|Create
@@ -1390,6 +1391,7 @@ return|;
 block|}
 block|}
 DECL|class|DeleteFile
+specifier|public
 specifier|static
 class|class
 name|DeleteFile
@@ -2386,6 +2388,7 @@ comment|/**    * Handler to delete a file.    *<p>    * This deletes the file fr
 annotation|@
 name|Singleton
 DECL|class|DeleteContent
+specifier|public
 specifier|static
 class|class
 name|DeleteContent
@@ -2498,6 +2501,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|Get
+specifier|public
 specifier|static
 class|class
 name|Get
@@ -2611,6 +2615,7 @@ block|}
 annotation|@
 name|Singleton
 DECL|class|GetMeta
+specifier|public
 specifier|static
 class|class
 name|GetMeta
@@ -2754,11 +2759,13 @@ name|r
 return|;
 block|}
 DECL|class|FileInfo
+specifier|public
 specifier|static
 class|class
 name|FileInfo
 block|{
 DECL|field|webLinks
+specifier|public
 name|List
 argument_list|<
 name|DiffWebLinkInfo

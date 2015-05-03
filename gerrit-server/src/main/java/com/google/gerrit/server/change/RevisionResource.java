@@ -512,6 +512,7 @@ name|this
 return|;
 block|}
 DECL|method|getEdit ()
+specifier|public
 name|Optional
 argument_list|<
 name|ChangeEdit

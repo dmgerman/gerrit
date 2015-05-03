@@ -266,6 +266,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getRevision ()
+specifier|public
 name|RevisionResource
 name|getRevision
 parameter_list|()
