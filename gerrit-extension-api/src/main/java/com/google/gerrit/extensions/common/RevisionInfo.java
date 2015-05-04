@@ -163,6 +163,11 @@ name|ActionInfo
 argument_list|>
 name|actions
 decl_stmt|;
+DECL|field|commitWithFooters
+specifier|public
+name|String
+name|commitWithFooters
+decl_stmt|;
 block|}
 end_class
 
