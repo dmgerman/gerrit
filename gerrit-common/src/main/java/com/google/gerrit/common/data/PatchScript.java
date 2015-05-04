@@ -365,7 +365,19 @@ specifier|protected
 name|boolean
 name|binary
 decl_stmt|;
-DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin)
+DECL|field|commitIdA
+specifier|protected
+specifier|transient
+name|String
+name|commitIdA
+decl_stmt|;
+DECL|field|commitIdB
+specifier|protected
+specifier|transient
+name|String
+name|commitIdB
+decl_stmt|;
+DECL|method|PatchScript (final Change.Key ck, final ChangeType ct, final String on, final String nn, final FileMode om, final FileMode nm, final List<String> h, final AccountDiffPreference dp, final SparseFileContent ca, final SparseFileContent cb, final List<Edit> e, final DisplayMethod ma, final DisplayMethod mb, final String mta, final String mtb, final CommentDetail cd, final List<Patch> hist, final boolean hf, final boolean id, final boolean idf, final boolean idt, boolean bin, final String cma, final String cmb)
 specifier|public
 name|PatchScript
 parameter_list|(
@@ -466,6 +478,14 @@ name|idt
 parameter_list|,
 name|boolean
 name|bin
+parameter_list|,
+specifier|final
+name|String
+name|cma
+parameter_list|,
+specifier|final
+name|String
+name|cmb
 parameter_list|)
 block|{
 name|changeId
@@ -555,6 +575,14 @@ expr_stmt|;
 name|binary
 operator|=
 name|bin
+expr_stmt|;
+name|commitIdA
+operator|=
+name|cma
+expr_stmt|;
+name|commitIdB
+operator|=
+name|cmb
 expr_stmt|;
 block|}
 DECL|method|PatchScript ()
@@ -904,6 +932,26 @@ parameter_list|()
 block|{
 return|return
 name|binary
+return|;
+block|}
+DECL|method|getCommitIdA ()
+specifier|public
+name|String
+name|getCommitIdA
+parameter_list|()
+block|{
+return|return
+name|commitIdA
+return|;
+block|}
+DECL|method|getCommitIdB ()
+specifier|public
+name|String
+name|getCommitIdB
+parameter_list|()
+block|{
+return|return
+name|commitIdB
 return|;
 block|}
 block|}

@@ -164,6 +164,13 @@ specifier|static
 class|class
 name|FileMeta
 block|{
+comment|// The ID of the commit containing the file
+DECL|field|commitId
+specifier|public
+specifier|transient
+name|String
+name|commitId
+decl_stmt|;
 comment|// The name of the file
 DECL|field|name
 specifier|public
