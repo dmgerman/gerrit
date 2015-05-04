@@ -140,6 +140,18 @@ name|FieldName
 name|field
 parameter_list|)
 function_decl|;
+comment|/** Returns the account fields that the end-user can modify. */
+DECL|method|getEditableFields ()
+specifier|public
+name|Set
+argument_list|<
+name|Account
+operator|.
+name|FieldName
+argument_list|>
+name|getEditableFields
+parameter_list|()
+function_decl|;
 DECL|method|authenticate (AuthRequest who)
 specifier|public
 name|AuthRequest

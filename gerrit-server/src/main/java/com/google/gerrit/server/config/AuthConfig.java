@@ -316,6 +316,12 @@ specifier|final
 name|boolean
 name|gitBasicAuth
 decl_stmt|;
+DECL|field|useContributorAgreements
+specifier|private
+specifier|final
+name|boolean
+name|useContributorAgreements
+decl_stmt|;
 DECL|field|loginUrl
 specifier|private
 specifier|final
@@ -609,6 +615,19 @@ argument_list|(
 literal|"auth"
 argument_list|,
 literal|"gitBasicAuth"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|useContributorAgreements
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+literal|"auth"
+argument_list|,
+literal|"contributoragreements"
 argument_list|,
 literal|false
 argument_list|)
@@ -1088,6 +1107,17 @@ parameter_list|()
 block|{
 return|return
 name|gitBasicAuth
+return|;
+block|}
+comment|/** Whether contributor agreements are used. */
+DECL|method|isUseContributorAgreements ()
+specifier|public
+name|boolean
+name|isUseContributorAgreements
+parameter_list|()
+block|{
+return|return
+name|useContributorAgreements
 return|;
 block|}
 DECL|method|isIdentityTrustable (final Collection<AccountExternalId> ids)
