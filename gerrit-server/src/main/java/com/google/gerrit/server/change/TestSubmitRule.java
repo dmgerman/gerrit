@@ -652,7 +652,7 @@ operator|.
 name|rule
 argument_list|)
 operator|.
-name|canSubmit
+name|evaluate
 argument_list|()
 decl_stmt|;
 name|List
