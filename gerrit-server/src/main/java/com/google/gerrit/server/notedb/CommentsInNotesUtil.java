@@ -92,6 +92,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|PatchLineCommentsUtil
+operator|.
+name|PLC_ORDER
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|notedb
 operator|.
 name|ChangeNoteUtil
@@ -3791,8 +3807,6 @@ name|sort
 argument_list|(
 name|comments
 argument_list|,
-name|ChangeNotes
-operator|.
 name|PLC_ORDER
 argument_list|)
 expr_stmt|;

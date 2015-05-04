@@ -613,6 +613,15 @@ name|in_reply_to
 parameter_list|()
 comment|/*-{ return this.in_reply_to }-*/
 function_decl|;
+DECL|method|patch_set ()
+specifier|public
+specifier|final
+specifier|native
+name|int
+name|patch_set
+parameter_list|()
+comment|/*-{ return this.patch_set }-*/
+function_decl|;
 DECL|method|side ()
 specifier|public
 specifier|final

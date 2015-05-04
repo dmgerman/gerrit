@@ -712,6 +712,44 @@ literal|"actions"
 argument_list|)
 return|;
 block|}
+DECL|method|comments (int id)
+specifier|public
+specifier|static
+name|RestApi
+name|comments
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|call
+argument_list|(
+name|id
+argument_list|,
+literal|"comments"
+argument_list|)
+return|;
+block|}
+DECL|method|drafts (int id)
+specifier|public
+specifier|static
+name|RestApi
+name|drafts
+parameter_list|(
+name|int
+name|id
+parameter_list|)
+block|{
+return|return
+name|call
+argument_list|(
+name|id
+argument_list|,
+literal|"drafts"
+argument_list|)
+return|;
+block|}
 DECL|method|edit (int id, AsyncCallback<EditInfo> cb)
 specifier|public
 specifier|static

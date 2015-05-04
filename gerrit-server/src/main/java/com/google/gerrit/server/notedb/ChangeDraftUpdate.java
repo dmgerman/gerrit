@@ -108,22 +108,6 @@ name|gerrit
 operator|.
 name|server
 operator|.
-name|PatchLineCommentsUtil
-operator|.
-name|getCommentPsId
-import|;
-end_import
-
-begin_import
-import|import static
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
 name|notedb
 operator|.
 name|CommentsInNotesUtil
@@ -1122,37 +1106,6 @@ name|PatchLineComment
 name|comment
 parameter_list|)
 block|{
-name|checkState
-argument_list|(
-name|psId
-operator|!=
-literal|null
-argument_list|,
-literal|"setPatchSetId must be called first"
-argument_list|)
-expr_stmt|;
-name|checkArgument
-argument_list|(
-name|getCommentPsId
-argument_list|(
-name|comment
-argument_list|)
-operator|.
-name|equals
-argument_list|(
-name|psId
-argument_list|)
-argument_list|,
-literal|"Comment on %s does not match configured patch set %s"
-argument_list|,
-name|getCommentPsId
-argument_list|(
-name|comment
-argument_list|)
-argument_list|,
-name|psId
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|migration
@@ -1768,17 +1721,7 @@ name|commit
 operator|.
 name|setMessage
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Comment on patch set %d"
-argument_list|,
-name|psId
-operator|.
-name|get
-argument_list|()
-argument_list|)
+literal|"Update draft comments"
 argument_list|)
 expr_stmt|;
 return|return
