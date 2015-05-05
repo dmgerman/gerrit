@@ -376,6 +376,26 @@ parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|commentsAsList ()
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|commentsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
+DECL|method|draftsAsList ()
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|draftsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|createDraft (DraftInput in)
 name|DraftApi
 name|createDraft
@@ -729,6 +749,44 @@ name|CommentInfo
 argument_list|>
 argument_list|>
 name|comments
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|commentsAsList ()
+specifier|public
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|commentsAsList
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|draftsAsList ()
+specifier|public
+name|List
+argument_list|<
+name|CommentInfo
+argument_list|>
+name|draftsAsList
 parameter_list|()
 throws|throws
 name|RestApiException
