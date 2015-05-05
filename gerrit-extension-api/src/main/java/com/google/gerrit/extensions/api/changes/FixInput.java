@@ -79,6 +79,11 @@ specifier|public
 name|boolean
 name|deletePatchSetIfCommitMissing
 decl_stmt|;
+DECL|field|expectMergedAs
+specifier|public
+name|String
+name|expectMergedAs
+decl_stmt|;
 block|}
 end_class
 

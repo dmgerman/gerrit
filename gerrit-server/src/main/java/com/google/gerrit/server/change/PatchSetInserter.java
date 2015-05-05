@@ -99,6 +99,22 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
+name|checkState
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -1018,6 +1034,11 @@ operator|.
 name|Id
 name|uploader
 decl_stmt|;
+DECL|field|allowClosed
+specifier|private
+name|boolean
+name|allowClosed
+decl_stmt|;
 annotation|@
 name|Inject
 DECL|method|PatchSetInserter (ChangeHooks hooks, ReviewDb db, ChangeUpdate.Factory updateFactory, ChangeControl.GenericFactory ctlFactory, ApprovalsUtil approvalsUtil, ApprovalCopier approvalCopier, ChangeMessagesUtil cmUtil, PatchSetInfoFactory patchSetInfoFactory, GitReferenceUpdated gitRefUpdated, CommitValidators.Factory commitValidatorsFactory, ChangeIndexer indexer, ReplacePatchSetSender.Factory replacePatchSetFactory, @Assisted Repository git, @Assisted RevWalk revWalk, @Assisted ChangeControl ctl, @Assisted RevCommit commit)
@@ -1344,6 +1365,25 @@ name|getId
 argument_list|()
 return|;
 block|}
+DECL|method|getPatchSet ()
+specifier|public
+name|PatchSet
+name|getPatchSet
+parameter_list|()
+block|{
+name|checkState
+argument_list|(
+name|patchSet
+operator|!=
+literal|null
+argument_list|,
+literal|"getPatchSet() only valid after patch set is created"
+argument_list|)
+expr_stmt|;
+return|return
+name|patchSet
+return|;
+block|}
 DECL|method|setMessage (String message)
 specifier|public
 name|PatchSetInserter
@@ -1354,7 +1394,12 @@ name|message
 parameter_list|)
 throws|throws
 name|OrmException
+throws|,
+name|IOException
 block|{
+name|init
+argument_list|()
+expr_stmt|;
 name|changeMessage
 operator|=
 operator|new
@@ -1542,6 +1587,25 @@ operator|.
 name|sendMail
 operator|=
 name|sendMail
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|setAllowClosed (boolean allowClosed)
+specifier|public
+name|PatchSetInserter
+name|setAllowClosed
+parameter_list|(
+name|boolean
+name|allowClosed
+parameter_list|)
+block|{
+name|this
+operator|.
+name|allowClosed
+operator|=
+name|allowClosed
 expr_stmt|;
 return|return
 name|this
@@ -1762,6 +1826,9 @@ argument_list|()
 operator|.
 name|isOpen
 argument_list|()
+operator|&&
+operator|!
+name|allowClosed
 condition|)
 block|{
 throw|throw
@@ -1909,6 +1976,9 @@ argument_list|()
 operator|.
 name|isClosed
 argument_list|()
+operator|&&
+operator|!
+name|allowClosed
 condition|)
 block|{
 return|return
@@ -1945,6 +2015,9 @@ operator|.
 name|Status
 operator|.
 name|DRAFT
+operator|&&
+operator|!
+name|allowClosed
 condition|)
 block|{
 name|change
