@@ -3452,6 +3452,12 @@ argument_list|,
 name|rsrc
 argument_list|,
 name|viewData
+operator|==
+literal|null
+condition|?
+literal|null
+else|:
+name|viewData
 operator|.
 name|view
 argument_list|)
