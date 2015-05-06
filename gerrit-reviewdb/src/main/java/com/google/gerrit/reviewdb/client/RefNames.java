@@ -133,6 +133,20 @@ name|REFS_USER
 init|=
 literal|"refs/users/"
 decl_stmt|;
+comment|/** Default user preference settings */
+DECL|field|REFS_USER_DEFAULT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_USER_DEFAULT
+init|=
+name|RefNames
+operator|.
+name|REFS_USER
+operator|+
+literal|"default"
+decl_stmt|;
 comment|/** Configurations of project-specific dashboards (canned search queries). */
 DECL|field|REFS_DASHBOARDS
 specifier|public

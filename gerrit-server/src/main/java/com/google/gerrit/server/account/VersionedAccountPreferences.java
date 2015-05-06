@@ -192,19 +192,6 @@ name|VersionedAccountPreferences
 extends|extends
 name|VersionedMetaData
 block|{
-DECL|field|REFS_USER_DEFAULT
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|REFS_USER_DEFAULT
-init|=
-name|RefNames
-operator|.
-name|REFS_USER
-operator|+
-literal|"default"
-decl_stmt|;
 DECL|field|PREFERENCES
 specifier|private
 specifier|static
@@ -250,6 +237,8 @@ return|return
 operator|new
 name|VersionedAccountPreferences
 argument_list|(
+name|RefNames
+operator|.
 name|REFS_USER_DEFAULT
 argument_list|)
 return|;
@@ -287,6 +276,8 @@ name|isDefaults
 parameter_list|()
 block|{
 return|return
+name|RefNames
+operator|.
 name|REFS_USER_DEFAULT
 operator|.
 name|equals

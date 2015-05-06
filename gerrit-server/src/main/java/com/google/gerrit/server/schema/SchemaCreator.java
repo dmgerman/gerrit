@@ -585,6 +585,16 @@ argument_list|()
 expr_stmt|;
 name|allUsersCreator
 operator|.
+name|setAdministrators
+argument_list|(
+name|GroupReference
+operator|.
+name|forGroup
+argument_list|(
+name|admin
+argument_list|)
+argument_list|)
+operator|.
 name|create
 argument_list|()
 expr_stmt|;
