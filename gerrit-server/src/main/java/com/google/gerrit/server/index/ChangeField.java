@@ -1635,7 +1635,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
 return|;
 block|}
 name|Set
@@ -1890,7 +1893,10 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+name|ImmutableSet
+operator|.
+name|of
+argument_list|()
 return|;
 block|}
 return|return
