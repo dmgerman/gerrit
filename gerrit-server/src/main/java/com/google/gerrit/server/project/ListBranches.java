@@ -979,6 +979,17 @@ operator|.
 name|REFS_CONFIG
 argument_list|)
 expr_stmt|;
+name|addRef
+argument_list|(
+name|db
+argument_list|,
+name|refs
+argument_list|,
+name|RefNames
+operator|.
+name|REFS_USER_DEFAULT
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
