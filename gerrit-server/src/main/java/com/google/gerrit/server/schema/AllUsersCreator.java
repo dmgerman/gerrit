@@ -633,7 +633,7 @@ name|getAccessSection
 argument_list|(
 name|RefNames
 operator|.
-name|REFS_USER
+name|REFS_USERS
 operator|+
 literal|"*"
 argument_list|,
@@ -665,7 +665,7 @@ name|getAccessSection
 argument_list|(
 name|RefNames
 operator|.
-name|REFS_USER_DEFAULT
+name|REFS_USERS_DEFAULT
 argument_list|,
 literal|true
 argument_list|)

@@ -80,7 +80,7 @@ name|client
 operator|.
 name|RefNames
 operator|.
-name|REFS_USER
+name|REFS_USERS
 import|;
 end_import
 
@@ -362,7 +362,7 @@ name|name
 operator|.
 name|startsWith
 argument_list|(
-name|REFS_USER
+name|REFS_USERS
 argument_list|)
 condition|)
 block|{
@@ -373,7 +373,7 @@ name|name
 operator|.
 name|substring
 argument_list|(
-name|REFS_USER
+name|REFS_USERS
 operator|.
 name|length
 argument_list|()

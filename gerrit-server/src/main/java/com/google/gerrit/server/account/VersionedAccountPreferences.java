@@ -239,7 +239,7 @@ name|VersionedAccountPreferences
 argument_list|(
 name|RefNames
 operator|.
-name|REFS_USER_DEFAULT
+name|REFS_USERS_DEFAULT
 argument_list|)
 return|;
 block|}
@@ -278,7 +278,7 @@ block|{
 return|return
 name|RefNames
 operator|.
-name|REFS_USER_DEFAULT
+name|REFS_USERS_DEFAULT
 operator|.
 name|equals
 argument_list|(

@@ -987,7 +987,7 @@ name|refs
 argument_list|,
 name|RefNames
 operator|.
-name|REFS_USER_DEFAULT
+name|REFS_USERS_DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
