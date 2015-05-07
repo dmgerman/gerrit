@@ -281,7 +281,8 @@ if|if
 condition|(
 name|d
 operator|.
-name|urlType
+name|getUrlType
+argument_list|()
 operator|==
 name|urlType
 condition|)

@@ -255,22 +255,6 @@ operator|.
 name|CLIENT_SSL_CERT_LDAP
 return|;
 block|}
-DECL|method|isCustomExtension ()
-specifier|public
-specifier|final
-name|boolean
-name|isCustomExtension
-parameter_list|()
-block|{
-return|return
-name|authType
-argument_list|()
-operator|==
-name|AuthType
-operator|.
-name|CUSTOM_EXTENSION
-return|;
-block|}
 DECL|method|canEdit (Account.FieldName f)
 specifier|public
 specifier|final
