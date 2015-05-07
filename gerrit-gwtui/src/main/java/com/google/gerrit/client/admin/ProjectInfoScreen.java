@@ -4654,8 +4654,6 @@ name|super
 argument_list|(
 name|project
 argument_list|,
-literal|null
-argument_list|,
 name|isAllowsAnonymous
 argument_list|)
 expr_stmt|;

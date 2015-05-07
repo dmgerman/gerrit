@@ -318,111 +318,20 @@ name|Anchor
 implements|implements
 name|ClickHandler
 block|{
-DECL|class|DownloadRefUrlLink
-specifier|public
-specifier|static
-class|class
-name|DownloadRefUrlLink
-extends|extends
-name|DownloadUrlLink
-block|{
-DECL|field|projectName
-specifier|protected
-name|String
-name|projectName
-decl_stmt|;
-DECL|field|ref
-specifier|protected
-name|String
-name|ref
-decl_stmt|;
-DECL|method|DownloadRefUrlLink (DownloadScheme urlType, String text, String project, String ref)
-specifier|protected
-name|DownloadRefUrlLink
-parameter_list|(
-name|DownloadScheme
-name|urlType
-parameter_list|,
-name|String
-name|text
-parameter_list|,
-name|String
-name|project
-parameter_list|,
-name|String
-name|ref
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|urlType
-argument_list|,
-name|text
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|projectName
-operator|=
-name|project
-expr_stmt|;
-name|this
-operator|.
-name|ref
-operator|=
-name|ref
-expr_stmt|;
-block|}
-DECL|method|appendRef (StringBuilder r)
-specifier|protected
-name|void
-name|appendRef
-parameter_list|(
-name|StringBuilder
-name|r
-parameter_list|)
-block|{
-if|if
-condition|(
-name|ref
-operator|!=
-literal|null
-condition|)
-block|{
-name|r
-operator|.
-name|append
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-name|r
-operator|.
-name|append
-argument_list|(
-name|ref
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
 DECL|class|AnonGitLink
 specifier|public
 specifier|static
 class|class
 name|AnonGitLink
 extends|extends
-name|DownloadRefUrlLink
+name|DownloadUrlLink
 block|{
-DECL|method|AnonGitLink (String project, String ref)
+DECL|method|AnonGitLink (String project)
 specifier|public
 name|AnonGitLink
 parameter_list|(
 name|String
 name|project
-parameter_list|,
-name|String
-name|ref
 parameter_list|)
 block|{
 name|super
@@ -441,8 +350,6 @@ literal|"Git"
 argument_list|)
 argument_list|,
 name|project
-argument_list|,
-name|ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -481,11 +388,6 @@ argument_list|(
 name|projectName
 argument_list|)
 expr_stmt|;
-name|appendRef
-argument_list|(
-name|r
-argument_list|)
-expr_stmt|;
 return|return
 name|r
 operator|.
@@ -500,17 +402,14 @@ specifier|static
 class|class
 name|AnonHttpLink
 extends|extends
-name|DownloadRefUrlLink
+name|DownloadUrlLink
 block|{
-DECL|method|AnonHttpLink (String project, String ref)
+DECL|method|AnonHttpLink (String project)
 specifier|public
 name|AnonHttpLink
 parameter_list|(
 name|String
 name|project
-parameter_list|,
-name|String
-name|ref
 parameter_list|)
 block|{
 name|super
@@ -529,8 +428,6 @@ literal|"HTTP"
 argument_list|)
 argument_list|,
 name|project
-argument_list|,
-name|ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -593,11 +490,6 @@ argument_list|(
 name|projectName
 argument_list|)
 expr_stmt|;
-name|appendRef
-argument_list|(
-name|r
-argument_list|)
-expr_stmt|;
 return|return
 name|r
 operator|.
@@ -612,17 +504,14 @@ specifier|static
 class|class
 name|SshLink
 extends|extends
-name|DownloadRefUrlLink
+name|DownloadUrlLink
 block|{
-DECL|method|SshLink (String project, String ref)
+DECL|method|SshLink (String project)
 specifier|public
 name|SshLink
 parameter_list|(
 name|String
 name|project
-parameter_list|,
-name|String
-name|ref
 parameter_list|)
 block|{
 name|super
@@ -634,8 +523,6 @@ argument_list|,
 literal|"SSH"
 argument_list|,
 name|project
-argument_list|,
-name|ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -764,11 +651,6 @@ argument_list|(
 name|projectName
 argument_list|)
 expr_stmt|;
-name|appendRef
-argument_list|(
-name|r
-argument_list|)
-expr_stmt|;
 return|return
 name|r
 operator|.
@@ -783,22 +665,19 @@ specifier|static
 class|class
 name|HttpLink
 extends|extends
-name|DownloadRefUrlLink
+name|DownloadUrlLink
 block|{
 DECL|field|anonymous
 specifier|protected
 name|boolean
 name|anonymous
 decl_stmt|;
-DECL|method|HttpLink (String project, String ref, boolean anonymous)
+DECL|method|HttpLink (String project, boolean anonymous)
 specifier|public
 name|HttpLink
 parameter_list|(
 name|String
 name|project
-parameter_list|,
-name|String
-name|ref
 parameter_list|,
 name|boolean
 name|anonymous
@@ -813,8 +692,6 @@ argument_list|,
 literal|"HTTP"
 argument_list|,
 name|project
-argument_list|,
-name|ref
 argument_list|)
 expr_stmt|;
 name|this
@@ -1024,11 +901,6 @@ argument_list|(
 name|projectName
 argument_list|)
 expr_stmt|;
-name|appendRef
-argument_list|(
-name|r
-argument_list|)
-expr_stmt|;
 return|return
 name|r
 operator|.
@@ -1077,7 +949,7 @@ name|siteHasUsernames
 argument_list|()
 return|;
 block|}
-DECL|method|createDownloadUrlLinks (String project, String ref, boolean allowAnonymous)
+DECL|method|createDownloadUrlLinks (String project, boolean allowAnonymous)
 specifier|public
 specifier|static
 name|List
@@ -1088,9 +960,6 @@ name|createDownloadUrlLinks
 parameter_list|(
 name|String
 name|project
-parameter_list|,
-name|String
-name|ref
 parameter_list|,
 name|boolean
 name|allowAnonymous
@@ -1166,8 +1035,6 @@ operator|.
 name|AnonGitLink
 argument_list|(
 name|project
-argument_list|,
-name|ref
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1207,8 +1074,6 @@ operator|.
 name|AnonHttpLink
 argument_list|(
 name|project
-argument_list|,
-name|ref
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1259,8 +1124,6 @@ operator|.
 name|SshLink
 argument_list|(
 name|project
-argument_list|,
-name|ref
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1306,8 +1169,6 @@ operator|.
 name|HttpLink
 argument_list|(
 name|project
-argument_list|,
-name|ref
 argument_list|,
 name|allowAnonymous
 argument_list|)
@@ -1360,6 +1221,11 @@ specifier|protected
 name|DownloadScheme
 name|urlType
 decl_stmt|;
+DECL|field|projectName
+specifier|protected
+name|String
+name|projectName
+decl_stmt|;
 DECL|field|urlData
 specifier|protected
 name|String
@@ -1375,7 +1241,7 @@ operator|.
 name|getHostPageBaseURL
 argument_list|()
 decl_stmt|;
-DECL|method|DownloadUrlLink (DownloadScheme urlType, String text)
+DECL|method|DownloadUrlLink (DownloadScheme urlType, String text, String project)
 specifier|public
 name|DownloadUrlLink
 parameter_list|(
@@ -1384,6 +1250,9 @@ name|urlType
 parameter_list|,
 name|String
 name|text
+parameter_list|,
+name|String
+name|project
 parameter_list|)
 block|{
 name|super
@@ -1441,6 +1310,12 @@ operator|.
 name|urlType
 operator|=
 name|urlType
+expr_stmt|;
+name|this
+operator|.
+name|projectName
+operator|=
+name|project
 expr_stmt|;
 block|}
 DECL|method|getUrlData ()
