@@ -143,6 +143,16 @@ DECL|method|value ()
 name|String
 name|value
 parameter_list|()
+default|default
+literal|""
+function_decl|;
+DECL|method|values ()
+name|String
+index|[]
+name|values
+parameter_list|()
+default|default
+literal|""
 function_decl|;
 block|}
 end_annotation_defn

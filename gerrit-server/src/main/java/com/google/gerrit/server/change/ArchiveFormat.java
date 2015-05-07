@@ -136,6 +136,20 @@ name|TxzFormat
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|archive
+operator|.
+name|ZipFormat
+import|;
+end_import
+
 begin_enum
 DECL|enum|ArchiveFormat
 specifier|public
@@ -181,9 +195,17 @@ operator|new
 name|TxzFormat
 argument_list|()
 argument_list|)
+block|,
+DECL|enumConstant|ZIP
+name|ZIP
+argument_list|(
+literal|"application/x-zip"
+argument_list|,
+operator|new
+name|ZipFormat
+argument_list|()
+argument_list|)
 block|;
-comment|// Zip is not supported because it may be interpreted by a Java plugin as a
-comment|// valid JAR file, whose code would have access to cookies on the domain.
 DECL|field|format
 specifier|private
 specifier|final
