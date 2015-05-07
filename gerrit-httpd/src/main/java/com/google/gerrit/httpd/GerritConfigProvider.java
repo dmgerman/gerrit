@@ -274,22 +274,6 @@ name|server
 operator|.
 name|config
 operator|.
-name|DownloadConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
 name|GerritServerConfig
 import|;
 end_import
@@ -420,12 +404,6 @@ specifier|final
 name|AuthConfig
 name|authConfig
 decl_stmt|;
-DECL|field|downloadConfig
-specifier|private
-specifier|final
-name|DownloadConfig
-name|downloadConfig
-decl_stmt|;
 DECL|field|archiveFormats
 specifier|private
 specifier|final
@@ -460,7 +438,7 @@ name|anonymousCowardName
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GerritConfigProvider (Realm r, @GerritServerConfig Config gsc, AuthConfig ac, GitWebConfig gwc, SshInfo si, ServletContext sc, DownloadConfig dc, GetArchive.AllowedFormats af, @AnonymousCowardName String acn)
+DECL|method|GerritConfigProvider (Realm r, @GerritServerConfig Config gsc, AuthConfig ac, GitWebConfig gwc, SshInfo si, ServletContext sc, GetArchive.AllowedFormats af, @AnonymousCowardName String acn)
 name|GerritConfigProvider
 parameter_list|(
 name|Realm
@@ -482,9 +460,6 @@ name|si
 parameter_list|,
 name|ServletContext
 name|sc
-parameter_list|,
-name|DownloadConfig
-name|dc
 parameter_list|,
 name|GetArchive
 operator|.
@@ -508,10 +483,6 @@ expr_stmt|;
 name|authConfig
 operator|=
 name|ac
-expr_stmt|;
-name|downloadConfig
-operator|=
-name|dc
 expr_stmt|;
 name|archiveFormats
 operator|=
@@ -794,16 +765,6 @@ literal|null
 argument_list|,
 literal|"gitHttpUrl"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|config
-operator|.
-name|setDownloadSchemes
-argument_list|(
-name|downloadConfig
-operator|.
-name|getDownloadSchemes
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|config

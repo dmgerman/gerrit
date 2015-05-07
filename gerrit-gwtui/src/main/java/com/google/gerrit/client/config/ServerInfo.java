@@ -108,6 +108,15 @@ name|contactStore
 parameter_list|()
 comment|/*-{ return this.contact_store; }-*/
 function_decl|;
+DECL|method|download ()
+specifier|public
+specifier|final
+specifier|native
+name|DownloadInfo
+name|download
+parameter_list|()
+comment|/*-{ return this.download; }-*/
+function_decl|;
 DECL|method|gerrit ()
 specifier|public
 specifier|final
