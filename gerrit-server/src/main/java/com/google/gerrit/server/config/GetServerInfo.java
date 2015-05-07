@@ -746,6 +746,15 @@ name|scheme
 operator|.
 name|isEnabled
 argument_list|()
+operator|&&
+name|scheme
+operator|.
+name|getUrl
+argument_list|(
+literal|"${project}"
+argument_list|)
+operator|!=
+literal|null
 condition|)
 block|{
 name|schemes
