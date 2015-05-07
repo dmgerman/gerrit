@@ -901,16 +901,6 @@ argument_list|)
 expr_stmt|;
 name|config
 operator|.
-name|setDownloadCommands
-argument_list|(
-name|downloadConfig
-operator|.
-name|getDownloadCommands
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|config
-operator|.
 name|setAuthType
 argument_list|(
 name|authConfig
