@@ -2830,17 +2830,6 @@ name|set
 argument_list|(
 name|StoredValues
 operator|.
-name|PATCH_SET
-argument_list|,
-name|patchSet
-argument_list|)
-expr_stmt|;
-name|env
-operator|.
-name|set
-argument_list|(
-name|StoredValues
-operator|.
 name|CHANGE_CONTROL
 argument_list|,
 name|control
