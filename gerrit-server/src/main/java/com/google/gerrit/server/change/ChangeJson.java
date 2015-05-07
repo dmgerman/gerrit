@@ -4939,6 +4939,15 @@ operator|.
 name|newHashSet
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|detailed
+condition|)
+block|{
+comment|// Users expect to see all reviewers on closed changes, even if they
+comment|// didn't vote on the latest patch set. If we don't need detailed labels,
+comment|// we aren't including 0 votes for all users below, so we can just look at
+comment|// the latest patch set (in the next loop).
 for|for
 control|(
 name|PatchSetApproval
@@ -4963,6 +4972,7 @@ name|getAccountId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// We can only approximately reconstruct what the submit rule evaluator
 comment|// would have done. These should really come from a stored submit record.
@@ -5003,6 +5013,16 @@ name|currentApprovals
 argument_list|()
 control|)
 block|{
+name|allUsers
+operator|.
+name|add
+argument_list|(
+name|a
+operator|.
+name|getAccountId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|LabelType
 name|type
 init|=
