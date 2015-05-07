@@ -237,6 +237,31 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|serverInfo (AsyncCallback<ServerInfo> cb)
+specifier|public
+specifier|static
+name|void
+name|serverInfo
+parameter_list|(
+name|AsyncCallback
+argument_list|<
+name|ServerInfo
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+operator|new
+name|RestApi
+argument_list|(
+literal|"/config/server/info"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
