@@ -673,8 +673,10 @@ name|DownloadInfo
 block|{
 DECL|field|schemes
 specifier|public
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|DownloadSchemeInfo
 argument_list|>
 name|schemes
@@ -710,7 +712,7 @@ block|{
 name|schemes
 operator|=
 operator|new
-name|ArrayList
+name|HashMap
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -748,16 +750,16 @@ condition|)
 block|{
 name|schemes
 operator|.
-name|add
-argument_list|(
-operator|new
-name|DownloadSchemeInfo
+name|put
 argument_list|(
 name|e
 operator|.
 name|getExportName
 argument_list|()
 argument_list|,
+operator|new
+name|DownloadSchemeInfo
+argument_list|(
 name|scheme
 argument_list|,
 name|downloadCommands
@@ -786,11 +788,6 @@ specifier|static
 class|class
 name|DownloadSchemeInfo
 block|{
-DECL|field|name
-specifier|public
-name|String
-name|name
-decl_stmt|;
 DECL|field|url
 specifier|public
 name|String
@@ -816,13 +813,10 @@ name|String
 argument_list|>
 name|commands
 decl_stmt|;
-DECL|method|DownloadSchemeInfo (String schemeName, DownloadScheme scheme, DynamicMap<DownloadCommand> downloadCommands)
+DECL|method|DownloadSchemeInfo (DownloadScheme scheme, DynamicMap<DownloadCommand> downloadCommands)
 specifier|public
 name|DownloadSchemeInfo
 parameter_list|(
-name|String
-name|schemeName
-parameter_list|,
 name|DownloadScheme
 name|scheme
 parameter_list|,
@@ -833,10 +827,6 @@ argument_list|>
 name|downloadCommands
 parameter_list|)
 block|{
-name|name
-operator|=
-name|schemeName
-expr_stmt|;
 name|url
 operator|=
 name|scheme
