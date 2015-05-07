@@ -1195,7 +1195,7 @@ control|)
 block|{
 name|cd
 operator|.
-name|patches
+name|patchSets
 argument_list|()
 expr_stmt|;
 block|}
@@ -1248,7 +1248,7 @@ literal|null
 operator|&&
 name|cd
 operator|.
-name|patches
+name|patchSets
 operator|==
 literal|null
 condition|)
@@ -1717,13 +1717,13 @@ specifier|private
 name|PatchSet
 name|currentPatchSet
 decl_stmt|;
-DECL|field|patches
+DECL|field|patchSets
 specifier|private
 name|Collection
 argument_list|<
 name|PatchSet
 argument_list|>
-name|patches
+name|patchSets
 decl_stmt|;
 DECL|field|allApprovals
 specifier|private
@@ -2985,7 +2985,7 @@ control|(
 name|PatchSet
 name|p
 range|:
-name|patches
+name|patchSets
 argument_list|()
 control|)
 block|{
@@ -3297,25 +3297,25 @@ literal|true
 return|;
 block|}
 comment|/**    * @return patches for the change.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|patches ()
+DECL|method|patchSets ()
 specifier|public
 name|Collection
 argument_list|<
 name|PatchSet
 argument_list|>
-name|patches
+name|patchSets
 parameter_list|()
 throws|throws
 name|OrmException
 block|{
 if|if
 condition|(
-name|patches
+name|patchSets
 operator|==
 literal|null
 condition|)
 block|{
-name|patches
+name|patchSets
 operator|=
 name|db
 operator|.
@@ -3332,14 +3332,14 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
-name|patches
+name|patchSets
 return|;
 block|}
-comment|/**    * @return patch with the given ID, or null if it does not exist.    * @throws OrmException an error occurred reading the database.    */
-DECL|method|patch (PatchSet.Id psId)
+comment|/**    * @return patch set with the given ID, or null if it does not exist.    * @throws OrmException an error occurred reading the database.    */
+DECL|method|patchSet (PatchSet.Id psId)
 specifier|public
 name|PatchSet
-name|patch
+name|patchSet
 parameter_list|(
 name|PatchSet
 operator|.
@@ -3375,7 +3375,7 @@ control|(
 name|PatchSet
 name|ps
 range|:
-name|patches
+name|patchSets
 argument_list|()
 control|)
 block|{

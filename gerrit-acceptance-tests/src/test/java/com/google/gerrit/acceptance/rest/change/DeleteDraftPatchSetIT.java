@@ -621,7 +621,7 @@ argument_list|(
 name|changeId
 argument_list|)
 operator|.
-name|patches
+name|patchSets
 argument_list|()
 argument_list|)
 operator|.

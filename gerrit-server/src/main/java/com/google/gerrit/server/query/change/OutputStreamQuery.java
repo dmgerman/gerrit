@@ -1155,7 +1155,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|patches
+name|patchSets
 argument_list|()
 argument_list|,
 name|includeApprovals
@@ -1191,7 +1191,7 @@ name|c
 argument_list|,
 name|d
 operator|.
-name|patches
+name|patchSets
 argument_list|()
 argument_list|,
 name|includeApprovals

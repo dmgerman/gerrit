@@ -6741,7 +6741,7 @@ name|src
 operator|=
 name|cd
 operator|.
-name|patches
+name|patchSets
 argument_list|()
 expr_stmt|;
 block|}
@@ -6762,7 +6762,7 @@ name|ps
 operator|=
 name|cd
 operator|.
-name|patch
+name|patchSet
 argument_list|(
 name|limitToPsId
 operator|.

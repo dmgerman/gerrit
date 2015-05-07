@@ -1107,7 +1107,7 @@ name|patchSets
 init|=
 name|cd
 operator|.
-name|patches
+name|patchSets
 argument_list|()
 decl_stmt|;
 name|TreeMap
