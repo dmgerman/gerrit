@@ -3335,6 +3335,25 @@ return|return
 name|patchSets
 return|;
 block|}
+DECL|method|setPatchSets (Collection<PatchSet> patchSets)
+specifier|public
+name|void
+name|setPatchSets
+parameter_list|(
+name|Collection
+argument_list|<
+name|PatchSet
+argument_list|>
+name|patchSets
+parameter_list|)
+block|{
+name|this
+operator|.
+name|patchSets
+operator|=
+name|patchSets
+expr_stmt|;
+block|}
 comment|/**    * @return patch set with the given ID, or null if it does not exist.    * @throws OrmException an error occurred reading the database.    */
 DECL|method|patchSet (PatchSet.Id psId)
 specifier|public
