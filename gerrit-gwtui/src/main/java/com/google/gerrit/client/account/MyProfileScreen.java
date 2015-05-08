@@ -468,7 +468,10 @@ argument_list|(
 operator|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
+argument_list|()
+operator|.
+name|auth
 argument_list|()
 operator|.
 name|siteHasUsernames
@@ -530,7 +533,10 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
+argument_list|()
+operator|.
+name|auth
 argument_list|()
 operator|.
 name|siteHasUsernames
@@ -845,7 +851,10 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
+argument_list|()
+operator|.
+name|auth
 argument_list|()
 operator|.
 name|siteHasUsernames
