@@ -2516,6 +2516,13 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
+name|GitWebConfig
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
 name|GcConfig
 operator|.
 name|class

@@ -104,7 +104,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|GitwebLink
+name|config
+operator|.
+name|GitWebInfo
 import|;
 end_import
 
@@ -892,13 +894,15 @@ name|NONE
 argument_list|)
 expr_stmt|;
 block|}
-specifier|final
-name|GitwebLink
+name|GitWebInfo
 name|c
 init|=
 name|Gerrit
 operator|.
-name|getGitwebLink
+name|info
+argument_list|()
+operator|.
+name|gitWeb
 argument_list|()
 decl_stmt|;
 if|if

@@ -84,11 +84,6 @@ specifier|protected
 name|String
 name|reportBugText
 decl_stmt|;
-DECL|field|gitweb
-specifier|protected
-name|GitwebConfig
-name|gitweb
-decl_stmt|;
 DECL|field|gitDaemonUrl
 specifier|protected
 name|String
@@ -185,31 +180,6 @@ block|{
 name|reportBugText
 operator|=
 name|t
-expr_stmt|;
-block|}
-DECL|method|getGitwebLink ()
-specifier|public
-name|GitwebConfig
-name|getGitwebLink
-parameter_list|()
-block|{
-return|return
-name|gitweb
-return|;
-block|}
-DECL|method|setGitwebLink (final GitwebConfig w)
-specifier|public
-name|void
-name|setGitwebLink
-parameter_list|(
-specifier|final
-name|GitwebConfig
-name|w
-parameter_list|)
-block|{
-name|gitweb
-operator|=
-name|w
 expr_stmt|;
 block|}
 DECL|method|getGitDaemonUrl ()

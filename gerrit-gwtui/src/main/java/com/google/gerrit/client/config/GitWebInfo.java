@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.client
+DECL|package|com.google.gerrit.client.config
 package|package
 name|com
 operator|.
@@ -61,6 +61,8 @@ operator|.
 name|gerrit
 operator|.
 name|client
+operator|.
+name|config
 package|;
 end_package
 
@@ -79,22 +81,6 @@ operator|.
 name|ChangeInfo
 operator|.
 name|RevisionInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|GitWebType
 import|;
 end_import
 
@@ -170,6 +156,22 @@ name|google
 operator|.
 name|gwt
 operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JavaScriptObject
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
 name|http
 operator|.
 name|client
@@ -198,64 +200,39 @@ name|Map
 import|;
 end_import
 
-begin_comment
-comment|/** Link to an external gitweb server. */
-end_comment
-
 begin_class
-DECL|class|GitwebLink
+DECL|class|GitWebInfo
 specifier|public
 class|class
-name|GitwebLink
+name|GitWebInfo
+extends|extends
+name|JavaScriptObject
 block|{
-DECL|field|baseUrl
-specifier|protected
+DECL|method|url ()
+specifier|public
+specifier|final
+specifier|native
 name|String
-name|baseUrl
-decl_stmt|;
-DECL|field|type
-specifier|protected
-name|GitWebType
-name|type
-decl_stmt|;
-DECL|method|GitwebLink (com.google.gerrit.common.data.GitwebConfig link)
+name|url
+parameter_list|()
+comment|/*-{ return this.url; }-*/
+function_decl|;
+DECL|method|type ()
 specifier|public
-name|GitwebLink
-parameter_list|(
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|common
-operator|.
-name|data
-operator|.
-name|GitwebConfig
-name|link
-parameter_list|)
-block|{
-name|baseUrl
-operator|=
-name|link
-operator|.
-name|baseUrl
-expr_stmt|;
+specifier|final
+specifier|native
+name|GitWebTypeInfo
 name|type
-operator|=
-name|link
-operator|.
-name|type
-expr_stmt|;
-block|}
-comment|/**    * Can we link to a patch set if it's a draft    *    * @param ps Patch set to check draft status    * @return true if it's not a draft, or we can link to drafts    */
-DECL|method|canLink (final PatchSet ps)
+parameter_list|()
+comment|/*-{ return this.type; }-*/
+function_decl|;
+comment|/**    * Checks whether the given patch set can be linked.    *    * Draft patch sets can only be linked if linking of drafts was enabled by    * configuration.    *    * @param ps patch set to check whether it can be linked    * @return true if the patch set can be linked, otherwise false    */
+DECL|method|canLink (PatchSet ps)
 specifier|public
+specifier|final
 name|boolean
 name|canLink
 parameter_list|(
-specifier|final
 name|PatchSet
 name|ps
 parameter_list|)
@@ -268,13 +245,16 @@ name|isDraft
 argument_list|()
 operator|||
 name|type
+argument_list|()
 operator|.
-name|getLinkDrafts
+name|linkDrafts
 argument_list|()
 return|;
 block|}
+comment|/**    * Checks whether the given revision can be linked.    *    * Draft revisions can only be linked if linking of drafts was enabled by    * configuration.    *    * @param revision revision to check whether it can be linked    * @return true if the revision can be linked, otherwise false    */
 DECL|method|canLink (RevisionInfo revision)
 specifier|public
+specifier|final
 name|boolean
 name|canLink
 parameter_list|(
@@ -289,13 +269,16 @@ name|draft
 argument_list|()
 operator|||
 name|type
+argument_list|()
 operator|.
-name|getLinkDrafts
+name|linkDrafts
 argument_list|()
 return|;
 block|}
+comment|/**    * Returns the name for GitWeb links.    *    * @return the name for GitWeb links    */
 DECL|method|getLinkName ()
 specifier|public
+specifier|final
 name|String
 name|getLinkName
 parameter_list|()
@@ -304,15 +287,18 @@ return|return
 literal|"("
 operator|+
 name|type
+argument_list|()
 operator|.
-name|getLinkName
+name|name
 argument_list|()
 operator|+
 literal|")"
 return|;
 block|}
+comment|/**    * Returns the GitWeb link to a revision.    *    * @param project the name of the project    * @param commit the commit ID    * @return GitWeb link to a revision    */
 DECL|method|toRevision (String project, String commit)
 specifier|public
+specifier|final
 name|String
 name|toRevision
 parameter_list|(
@@ -330,8 +316,9 @@ operator|new
 name|ParameterizedString
 argument_list|(
 name|type
+argument_list|()
 operator|.
-name|getRevision
+name|revision
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -373,7 +360,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|baseUrl
+name|url
+argument_list|()
 operator|+
 name|pattern
 operator|.
@@ -383,18 +371,18 @@ name|p
 argument_list|)
 return|;
 block|}
-DECL|method|toRevision (final Project.NameKey project, final PatchSet ps)
+comment|/**    * Returns the GitWeb link to a revision.    *    * @param project the name of the project    * @param ps the patch set    * @return GitWeb link to a revision    */
+DECL|method|toRevision (Project.NameKey project, PatchSet ps)
 specifier|public
+specifier|final
 name|String
 name|toRevision
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
 name|project
 parameter_list|,
-specifier|final
 name|PatchSet
 name|ps
 parameter_list|)
@@ -417,12 +405,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|toProject (final Project.NameKey project)
+comment|/**    * Returns the GitWeb link to a project.    *    * @param project the project name key    * @return GitWeb link to a project    */
+DECL|method|toProject (Project.NameKey project)
 specifier|public
+specifier|final
 name|String
 name|toProject
 parameter_list|(
-specifier|final
 name|Project
 operator|.
 name|NameKey
@@ -436,12 +425,12 @@ operator|new
 name|ParameterizedString
 argument_list|(
 name|type
+argument_list|()
 operator|.
-name|getProject
+name|project
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -471,7 +460,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|baseUrl
+name|url
+argument_list|()
 operator|+
 name|pattern
 operator|.
@@ -481,12 +471,13 @@ name|p
 argument_list|)
 return|;
 block|}
-DECL|method|toBranch (final Branch.NameKey branch)
+comment|/**    * Returns the GitWeb link to a branch.    *    * @param branch the branch name key    * @return GitWeb link to a branch    */
+DECL|method|toBranch (Branch.NameKey branch)
 specifier|public
+specifier|final
 name|String
 name|toBranch
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
@@ -500,12 +491,12 @@ operator|new
 name|ParameterizedString
 argument_list|(
 name|type
+argument_list|()
 operator|.
-name|getBranch
+name|branch
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -553,7 +544,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|baseUrl
+name|url
+argument_list|()
 operator|+
 name|pattern
 operator|.
@@ -563,8 +555,10 @@ name|p
 argument_list|)
 return|;
 block|}
+comment|/**    * Returns the GitWeb link to a file.    *    * @param project the branch name key    * @param commit the commit ID    * @param file the path of the file    * @return GitWeb link to a file    */
 DECL|method|toFile (String project, String commit, String file)
 specifier|public
+specifier|final
 name|String
 name|toFile
 parameter_list|(
@@ -645,8 +639,9 @@ operator|new
 name|ParameterizedString
 argument_list|(
 name|type
+argument_list|()
 operator|.
-name|getRootTree
+name|rootTree
 argument_list|()
 argument_list|)
 else|:
@@ -654,13 +649,15 @@ operator|new
 name|ParameterizedString
 argument_list|(
 name|type
+argument_list|()
 operator|.
-name|getFile
+name|file
 argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
-name|baseUrl
+name|url
+argument_list|()
 operator|+
 name|pattern
 operator|.
@@ -670,18 +667,18 @@ name|p
 argument_list|)
 return|;
 block|}
-DECL|method|toFileHistory (final Branch.NameKey branch, final String file)
+comment|/**    * Returns the GitWeb link to a file history.    *    * @param branch the branch name key    * @param file the path of the file    * @return GitWeb link to a file history    */
+DECL|method|toFileHistory (Branch.NameKey branch, String file)
 specifier|public
+specifier|final
 name|String
 name|toFileHistory
 parameter_list|(
-specifier|final
 name|Branch
 operator|.
 name|NameKey
 name|branch
 parameter_list|,
-specifier|final
 name|String
 name|file
 parameter_list|)
@@ -693,12 +690,12 @@ operator|new
 name|ParameterizedString
 argument_list|(
 name|type
+argument_list|()
 operator|.
-name|getFileHistory
+name|fileHistory
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
 name|Map
 argument_list|<
 name|String
@@ -758,7 +755,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|baseUrl
+name|url
+argument_list|()
 operator|+
 name|pattern
 operator|.
@@ -770,6 +768,7 @@ return|;
 block|}
 DECL|method|encode (String segment)
 specifier|private
+specifier|final
 name|String
 name|encode
 parameter_list|(
@@ -780,8 +779,9 @@ block|{
 if|if
 condition|(
 name|type
+argument_list|()
 operator|.
-name|isUrlEncode
+name|urlEncode
 argument_list|()
 condition|)
 block|{
@@ -791,6 +791,7 @@ operator|.
 name|encodeQueryString
 argument_list|(
 name|type
+argument_list|()
 operator|.
 name|replacePathSeparator
 argument_list|(
@@ -806,6 +807,11 @@ name|segment
 return|;
 block|}
 block|}
+DECL|method|GitWebInfo ()
+specifier|protected
+name|GitWebInfo
+parameter_list|()
+block|{   }
 block|}
 end_class
 

@@ -83,100 +83,147 @@ import|;
 end_import
 
 begin_class
-DECL|class|ServerInfo
+DECL|class|GitWebTypeInfo
 specifier|public
 class|class
-name|ServerInfo
+name|GitWebTypeInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|auth ()
+comment|/**    * Replace the standard path separator ('/') in a branch name or project    * name with a custom path separator configured by the property    * gitweb.pathSeparator.    * @param urlSegment The branch or project to replace the path separator in    * @return the urlSegment with the standard path separator replaced by the    * custom path separator    */
+DECL|method|replacePathSeparator (String urlSegment)
 specifier|public
 specifier|final
-specifier|native
-name|AuthInfo
-name|auth
-parameter_list|()
-comment|/*-{ return this.auth; }-*/
-function_decl|;
-DECL|method|contactStore ()
-specifier|public
-specifier|final
-specifier|native
-name|ContactStoreInfo
-name|contactStore
-parameter_list|()
-comment|/*-{ return this.contact_store; }-*/
-function_decl|;
-DECL|method|download ()
-specifier|public
-specifier|final
-specifier|native
-name|DownloadInfo
-name|download
-parameter_list|()
-comment|/*-{ return this.download; }-*/
-function_decl|;
-DECL|method|gerrit ()
-specifier|public
-specifier|final
-specifier|native
-name|GerritInfo
-name|gerrit
-parameter_list|()
-comment|/*-{ return this.gerrit; }-*/
-function_decl|;
-DECL|method|gitWeb ()
-specifier|public
-specifier|final
-specifier|native
-name|GitWebInfo
-name|gitWeb
-parameter_list|()
-comment|/*-{ return this.git_web; }-*/
-function_decl|;
-DECL|method|hasContactStore ()
-specifier|public
-specifier|final
-name|boolean
-name|hasContactStore
-parameter_list|()
+name|String
+name|replacePathSeparator
+parameter_list|(
+name|String
+name|urlSegment
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+literal|"/"
+operator|.
+name|equals
+argument_list|(
+name|pathSeparator
+argument_list|()
+argument_list|)
+condition|)
 block|{
 return|return
-name|contactStore
+name|urlSegment
+operator|.
+name|replace
+argument_list|(
+literal|"/"
+argument_list|,
+name|pathSeparator
 argument_list|()
-operator|!=
-literal|null
+argument_list|)
 return|;
 block|}
-DECL|method|ServerInfo ()
-specifier|protected
-name|ServerInfo
-parameter_list|()
-block|{   }
-DECL|class|ContactStoreInfo
-specifier|public
-specifier|static
-class|class
-name|ContactStoreInfo
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|url ()
+return|return
+name|urlSegment
+return|;
+block|}
+DECL|method|name ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|url
+name|name
 parameter_list|()
-comment|/*-{ return this.url; }-*/
+comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|ContactStoreInfo ()
-specifier|protected
-name|ContactStoreInfo
+DECL|method|revision ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|revision
 parameter_list|()
-block|{     }
-block|}
+comment|/*-{ return this.revision; }-*/
+function_decl|;
+DECL|method|project ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|project
+parameter_list|()
+comment|/*-{ return this.project; }-*/
+function_decl|;
+DECL|method|branch ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|branch
+parameter_list|()
+comment|/*-{ return this.branch; }-*/
+function_decl|;
+DECL|method|rootTree ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|rootTree
+parameter_list|()
+comment|/*-{ return this.root_tree; }-*/
+function_decl|;
+DECL|method|file ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|file
+parameter_list|()
+comment|/*-{ return this.file; }-*/
+function_decl|;
+DECL|method|fileHistory ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|fileHistory
+parameter_list|()
+comment|/*-{ return this.file_history; }-*/
+function_decl|;
+DECL|method|pathSeparator ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|pathSeparator
+parameter_list|()
+comment|/*-{ return this.path_separator; }-*/
+function_decl|;
+DECL|method|linkDrafts ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|linkDrafts
+parameter_list|()
+comment|/*-{ return this.link_drafts || false; }-*/
+function_decl|;
+DECL|method|urlEncode ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|urlEncode
+parameter_list|()
+comment|/*-{ return this.url_encode || false; }-*/
+function_decl|;
+DECL|method|GitWebTypeInfo ()
+specifier|protected
+name|GitWebTypeInfo
+parameter_list|()
+block|{   }
 block|}
 end_class
 
