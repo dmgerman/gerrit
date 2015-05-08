@@ -66,16 +66,6 @@ name|data
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 DECL|class|GerritConfig
 specifier|public
@@ -128,14 +118,6 @@ DECL|field|changeUpdateDelay
 specifier|protected
 name|int
 name|changeUpdateDelay
-decl_stmt|;
-DECL|field|archiveFormats
-specifier|protected
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|archiveFormats
 decl_stmt|;
 DECL|field|largeChangeSize
 specifier|protected
@@ -426,36 +408,6 @@ operator|.
 name|largeChangeSize
 operator|=
 name|largeChangeSize
-expr_stmt|;
-block|}
-DECL|method|getArchiveFormats ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getArchiveFormats
-parameter_list|()
-block|{
-return|return
-name|archiveFormats
-return|;
-block|}
-DECL|method|setArchiveFormats (List<String> formats)
-specifier|public
-name|void
-name|setArchiveFormats
-parameter_list|(
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|formats
-parameter_list|)
-block|{
-name|archiveFormats
-operator|=
-name|formats
 expr_stmt|;
 block|}
 DECL|method|getReplyTitle ()

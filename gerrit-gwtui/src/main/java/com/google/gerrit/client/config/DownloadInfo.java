@@ -132,11 +132,47 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -178,6 +214,53 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|archives ()
+specifier|public
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|archives
+parameter_list|()
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|archives
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|f
+range|:
+name|Natives
+operator|.
+name|asList
+argument_list|(
+name|_archives
+argument_list|()
+argument_list|)
+control|)
+block|{
+name|archives
+operator|.
+name|add
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|archives
+return|;
+block|}
 DECL|method|scheme (String n)
 specifier|public
 specifier|final
@@ -201,6 +284,15 @@ argument_list|>
 name|_schemes
 parameter_list|()
 comment|/*-{ return this.schemes; }-*/
+function_decl|;
+DECL|method|_archives ()
+specifier|private
+specifier|final
+specifier|native
+name|JsArrayString
+name|_archives
+parameter_list|()
+comment|/*-{ return this.archives; }-*/
 function_decl|;
 DECL|method|DownloadInfo ()
 specifier|protected
