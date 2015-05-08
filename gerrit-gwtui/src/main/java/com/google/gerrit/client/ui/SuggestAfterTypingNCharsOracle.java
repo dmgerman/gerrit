@@ -155,10 +155,13 @@ argument_list|()
 operator|>=
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getSuggestFrom
+name|suggest
+argument_list|()
+operator|.
+name|from
 argument_list|()
 condition|)
 block|{

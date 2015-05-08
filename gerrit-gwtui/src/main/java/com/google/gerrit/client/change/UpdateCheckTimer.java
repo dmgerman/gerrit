@@ -229,10 +229,13 @@ name|POLL_PERIOD
 init|=
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getChangeUpdateDelay
+name|change
+argument_list|()
+operator|.
+name|updateDelay
 argument_list|()
 operator|*
 literal|1000

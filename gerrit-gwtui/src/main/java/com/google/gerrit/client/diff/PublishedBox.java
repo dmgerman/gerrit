@@ -1337,10 +1337,13 @@ block|}
 return|return
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getAnonymousCowardName
+name|user
+argument_list|()
+operator|.
+name|anonymousCowardName
 argument_list|()
 return|;
 block|}

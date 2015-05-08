@@ -208,6 +208,24 @@ name|allUsers
 parameter_list|()
 comment|/*-{ return this.all_users; }-*/
 function_decl|;
+DECL|method|reportBugUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|reportBugUrl
+parameter_list|()
+comment|/*-{ return this.report_bug_url; }-*/
+function_decl|;
+DECL|method|reportBugText ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|reportBugText
+parameter_list|()
+comment|/*-{ return this.report_bug_text; }-*/
+function_decl|;
 DECL|method|GerritInfo ()
 specifier|protected
 name|GerritInfo
