@@ -1370,6 +1370,9 @@ name|a
 operator|.
 name|getPreferredEmail
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|Store
 operator|.
