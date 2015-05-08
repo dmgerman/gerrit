@@ -394,6 +394,8 @@ literal|"publish"
 block|,
 literal|"followup"
 block|,
+literal|"hashtags"
+block|,
 literal|"/"
 block|}
 decl_stmt|;
