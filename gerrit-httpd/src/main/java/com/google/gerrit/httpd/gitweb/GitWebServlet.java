@@ -1121,6 +1121,11 @@ literal|true
 comment|/* owner only */
 argument_list|)
 expr_stmt|;
+name|myconf
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 name|_env
 operator|.
 name|set
