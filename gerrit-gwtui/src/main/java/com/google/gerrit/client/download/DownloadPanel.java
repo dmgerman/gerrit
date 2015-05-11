@@ -364,12 +364,7 @@ block|}
 name|commands
 operator|.
 name|select
-argument_list|(
-name|pref
-operator|.
-name|getDownloadCommand
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|urls
 operator|.
