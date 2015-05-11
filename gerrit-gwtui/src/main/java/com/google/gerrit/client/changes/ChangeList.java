@@ -180,6 +180,8 @@ name|URI
 init|=
 literal|"/changes/"
 decl_stmt|;
+comment|// If changing default options, also update in
+comment|// ChangeIT#defaultSearchDoesNotTouchDatabase().
 DECL|field|OPTIONS
 specifier|private
 specifier|static
