@@ -244,15 +244,12 @@ argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
-DECL|method|DownloadPanel (String project, String ref, boolean allowAnonymous)
+DECL|method|DownloadPanel (String project, boolean allowAnonymous)
 specifier|public
 name|DownloadPanel
 parameter_list|(
 name|String
 name|project
-parameter_list|,
-name|String
-name|ref
 parameter_list|,
 name|boolean
 name|allowAnonymous
@@ -288,8 +285,6 @@ operator|.
 name|createDownloadUrlLinks
 argument_list|(
 name|project
-argument_list|,
-name|ref
 argument_list|,
 name|allowAnonymous
 argument_list|)
