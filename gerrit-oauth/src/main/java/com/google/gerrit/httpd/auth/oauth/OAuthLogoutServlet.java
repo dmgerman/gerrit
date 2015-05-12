@@ -346,6 +346,18 @@ argument_list|,
 name|rsp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|req
+operator|.
+name|getSession
+argument_list|(
+literal|false
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
 name|oauthSession
 operator|.
 name|get
@@ -354,6 +366,7 @@ operator|.
 name|logout
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
