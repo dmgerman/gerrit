@@ -166,27 +166,11 @@ name|DownloadUrlPanel
 extends|extends
 name|FlowPanel
 block|{
-DECL|field|commandPanel
-specifier|private
-specifier|final
-name|DownloadCommandPanel
-name|commandPanel
-decl_stmt|;
-DECL|method|DownloadUrlPanel (final DownloadCommandPanel commandPanel)
+DECL|method|DownloadUrlPanel ()
 specifier|public
 name|DownloadUrlPanel
-parameter_list|(
-specifier|final
-name|DownloadCommandPanel
-name|commandPanel
-parameter_list|)
+parameter_list|()
 block|{
-name|this
-operator|.
-name|commandPanel
-operator|=
-name|commandPanel
-expr_stmt|;
 name|setStyleName
 argument_list|(
 name|Gerrit
@@ -311,22 +295,6 @@ name|select
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|setCurrentUrl (DownloadUrlLink link)
-name|void
-name|setCurrentUrl
-parameter_list|(
-name|DownloadUrlLink
-name|link
-parameter_list|)
-block|{
-name|commandPanel
-operator|.
-name|setCurrentUrl
-argument_list|(
-name|link
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|add (Collection<DownloadUrlLink> links)
 specifier|public

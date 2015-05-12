@@ -410,6 +410,109 @@ name|project
 argument_list|)
 return|;
 block|}
+DECL|method|cloneCommandNames ()
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|cloneCommandNames
+parameter_list|()
+block|{
+return|return
+name|Natives
+operator|.
+name|keys
+argument_list|(
+name|_cloneCommands
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|cloneCommands (String project)
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|DownloadCommandInfo
+argument_list|>
+name|cloneCommands
+parameter_list|(
+name|String
+name|project
+parameter_list|)
+block|{
+name|Set
+argument_list|<
+name|DownloadCommandInfo
+argument_list|>
+name|commands
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|commandName
+range|:
+name|cloneCommandNames
+argument_list|()
+control|)
+block|{
+name|commands
+operator|.
+name|add
+argument_list|(
+operator|new
+name|DownloadCommandInfo
+argument_list|(
+name|commandName
+argument_list|,
+name|cloneCommand
+argument_list|(
+name|commandName
+argument_list|,
+name|project
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|commands
+return|;
+block|}
+DECL|method|cloneCommand (String commandName, String project)
+specifier|public
+specifier|final
+name|String
+name|cloneCommand
+parameter_list|(
+name|String
+name|commandName
+parameter_list|,
+name|String
+name|project
+parameter_list|)
+block|{
+return|return
+name|cloneCommand
+argument_list|(
+name|commandName
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\$\\{project\\}"
+argument_list|,
+name|project
+argument_list|)
+return|;
+block|}
 DECL|method|getUrl (String project)
 specifier|public
 specifier|final
@@ -480,6 +583,18 @@ name|n
 parameter_list|)
 comment|/*-{ return this.commands[n]; }-*/
 function_decl|;
+DECL|method|cloneCommand (String n)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|cloneCommand
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.clone_commands[n]; }-*/
+function_decl|;
 DECL|method|_commands ()
 specifier|private
 specifier|final
@@ -491,6 +606,18 @@ argument_list|>
 name|_commands
 parameter_list|()
 comment|/*-{ return this.commands; }-*/
+function_decl|;
+DECL|method|_cloneCommands ()
+specifier|private
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|NativeString
+argument_list|>
+name|_cloneCommands
+parameter_list|()
+comment|/*-{ return this.clone_commands; }-*/
 function_decl|;
 DECL|method|DownloadSchemeInfo ()
 specifier|protected
