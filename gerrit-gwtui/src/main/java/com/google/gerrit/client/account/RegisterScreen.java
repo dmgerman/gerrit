@@ -811,13 +811,11 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getSshdAddress
+name|hasSshd
 argument_list|()
-operator|!=
-literal|null
 condition|)
 block|{
 specifier|final

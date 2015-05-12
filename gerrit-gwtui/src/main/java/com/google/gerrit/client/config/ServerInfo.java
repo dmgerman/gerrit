@@ -144,6 +144,15 @@ name|gitWeb
 parameter_list|()
 comment|/*-{ return this.git_web; }-*/
 function_decl|;
+DECL|method|sshd ()
+specifier|public
+specifier|final
+specifier|native
+name|SshdInfo
+name|sshd
+parameter_list|()
+comment|/*-{ return this.sshd; }-*/
+function_decl|;
 DECL|method|suggest ()
 specifier|public
 specifier|final
@@ -171,6 +180,20 @@ parameter_list|()
 block|{
 return|return
 name|contactStore
+argument_list|()
+operator|!=
+literal|null
+return|;
+block|}
+DECL|method|hasSshd ()
+specifier|public
+specifier|final
+name|boolean
+name|hasSshd
+parameter_list|()
+block|{
+return|return
+name|sshd
 argument_list|()
 operator|!=
 literal|null
@@ -260,6 +283,20 @@ function_decl|;
 DECL|method|ContactStoreInfo ()
 specifier|protected
 name|ContactStoreInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|SshdInfo
+specifier|public
+specifier|static
+class|class
+name|SshdInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|SshdInfo ()
+specifier|protected
+name|SshdInfo
 parameter_list|()
 block|{     }
 block|}
