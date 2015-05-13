@@ -734,17 +734,15 @@ return|return
 name|defaultQueue
 return|;
 block|}
-comment|/** Create a new executor queue with one thread. */
-DECL|method|createQueue (final int poolsize, final String prefix)
+comment|/** Create a new executor queue. */
+DECL|method|createQueue (int poolsize, String prefix)
 specifier|public
 name|Executor
 name|createQueue
 parameter_list|(
-specifier|final
 name|int
 name|poolsize
 parameter_list|,
-specifier|final
 name|String
 name|prefix
 parameter_list|)
