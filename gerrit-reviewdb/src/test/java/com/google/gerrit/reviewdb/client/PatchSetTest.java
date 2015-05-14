@@ -68,49 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
+name|truth
 operator|.
-name|junit
+name|Truth
 operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
+name|assertThat
 import|;
 end_import
 
@@ -289,7 +257,7 @@ name|String
 name|refName
 parameter_list|)
 block|{
-name|assertTrue
+name|assertThat
 argument_list|(
 name|PatchSet
 operator|.
@@ -298,8 +266,23 @@ argument_list|(
 name|refName
 argument_list|)
 argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
-name|assertEquals
+name|assertThat
+argument_list|(
+name|PatchSet
+operator|.
+name|Id
+operator|.
+name|fromRef
+argument_list|(
+name|refName
+argument_list|)
+argument_list|)
+operator|.
+name|isEqualTo
 argument_list|(
 operator|new
 name|PatchSet
@@ -316,15 +299,6 @@ argument_list|)
 argument_list|,
 name|psId
 argument_list|)
-argument_list|,
-name|PatchSet
-operator|.
-name|Id
-operator|.
-name|fromRef
-argument_list|(
-name|refName
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -338,7 +312,7 @@ name|String
 name|refName
 parameter_list|)
 block|{
-name|assertFalse
+name|assertThat
 argument_list|(
 name|PatchSet
 operator|.
@@ -347,8 +321,11 @@ argument_list|(
 name|refName
 argument_list|)
 argument_list|)
+operator|.
+name|isFalse
+argument_list|()
 expr_stmt|;
-name|assertNull
+name|assertThat
 argument_list|(
 name|PatchSet
 operator|.
@@ -359,6 +336,9 @@ argument_list|(
 name|refName
 argument_list|)
 argument_list|)
+operator|.
+name|isNull
+argument_list|()
 expr_stmt|;
 block|}
 block|}
