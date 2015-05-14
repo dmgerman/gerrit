@@ -86,6 +86,11 @@ specifier|public
 name|Integer
 name|lineLength
 decl_stmt|;
+DECL|field|cursorBlinkRate
+specifier|public
+name|Integer
+name|cursorBlinkRate
+decl_stmt|;
 DECL|field|hideTopMenu
 specifier|public
 name|Boolean
@@ -146,6 +151,12 @@ operator|.
 name|lineLength
 operator|=
 literal|100
+expr_stmt|;
+name|i
+operator|.
+name|cursorBlinkRate
+operator|=
+literal|0
 expr_stmt|;
 name|i
 operator|.
