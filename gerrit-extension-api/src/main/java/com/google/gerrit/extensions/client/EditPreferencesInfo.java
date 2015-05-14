@@ -116,6 +116,11 @@ specifier|public
 name|Theme
 name|theme
 decl_stmt|;
+DECL|field|keyMapType
+specifier|public
+name|KeyMapType
+name|keyMapType
+decl_stmt|;
 DECL|method|defaults ()
 specifier|public
 specifier|static
@@ -177,6 +182,14 @@ operator|.
 name|theme
 operator|=
 name|Theme
+operator|.
+name|DEFAULT
+expr_stmt|;
+name|i
+operator|.
+name|keyMapType
+operator|=
+name|KeyMapType
 operator|.
 name|DEFAULT
 expr_stmt|;

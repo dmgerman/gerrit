@@ -94,6 +94,22 @@ name|extensions
 operator|.
 name|client
 operator|.
+name|KeyMapType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|client
+operator|.
 name|Theme
 import|;
 end_import
@@ -213,6 +229,15 @@ operator|.
 name|theme
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|keyMapType
+argument_list|(
+name|in
+operator|.
+name|keyMapType
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -283,6 +308,13 @@ operator|=
 name|theme
 argument_list|()
 expr_stmt|;
+name|p
+operator|.
+name|keyMapType
+operator|=
+name|keyMapType
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|theme (Theme i)
 specifier|public
@@ -325,6 +357,48 @@ name|String
 name|i
 parameter_list|)
 comment|/*-{ this.theme = i }-*/
+function_decl|;
+DECL|method|keyMapType (KeyMapType i)
+specifier|public
+specifier|final
+name|void
+name|keyMapType
+parameter_list|(
+name|KeyMapType
+name|i
+parameter_list|)
+block|{
+name|setkeyMapTypeRaw
+argument_list|(
+name|i
+operator|!=
+literal|null
+condition|?
+name|i
+operator|.
+name|toString
+argument_list|()
+else|:
+name|KeyMapType
+operator|.
+name|DEFAULT
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setkeyMapTypeRaw (String i)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|setkeyMapTypeRaw
+parameter_list|(
+name|String
+name|i
+parameter_list|)
+comment|/*-{ this.key_map_type = i }-*/
 function_decl|;
 DECL|method|tabSize (int t)
 specifier|public
@@ -448,6 +522,45 @@ name|String
 name|themeRaw
 parameter_list|()
 comment|/*-{ return this.theme }-*/
+function_decl|;
+DECL|method|keyMapType ()
+specifier|public
+specifier|final
+name|KeyMapType
+name|keyMapType
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|keyMapTypeRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|KeyMapType
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+name|KeyMapType
+operator|.
+name|DEFAULT
+return|;
+block|}
+DECL|method|keyMapTypeRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|keyMapTypeRaw
+parameter_list|()
+comment|/*-{ return this.key_map_type }-*/
 function_decl|;
 DECL|method|tabSize ()
 specifier|public
