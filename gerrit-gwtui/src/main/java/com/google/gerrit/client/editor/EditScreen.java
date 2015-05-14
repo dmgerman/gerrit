@@ -2944,6 +2944,16 @@ argument_list|)
 operator|.
 name|set
 argument_list|(
+literal|"autoCloseBrackets"
+argument_list|,
+name|prefs
+operator|.
+name|autoCloseBrackets
+argument_list|()
+argument_list|)
+operator|.
+name|set
+argument_list|(
 literal|"scrollbarStyle"
 argument_list|,
 literal|"overlay"

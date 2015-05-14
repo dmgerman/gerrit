@@ -121,6 +121,11 @@ specifier|public
 name|Boolean
 name|matchBrackets
 decl_stmt|;
+DECL|field|autoCloseBrackets
+specifier|public
+name|Boolean
+name|autoCloseBrackets
+decl_stmt|;
 DECL|field|theme
 specifier|public
 name|Theme
@@ -198,6 +203,12 @@ operator|.
 name|matchBrackets
 operator|=
 literal|true
+expr_stmt|;
+name|i
+operator|.
+name|autoCloseBrackets
+operator|=
+literal|false
 expr_stmt|;
 name|i
 operator|.
