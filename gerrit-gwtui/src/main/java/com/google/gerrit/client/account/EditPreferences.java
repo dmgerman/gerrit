@@ -231,6 +231,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|matchBrackets
+argument_list|(
+name|in
+operator|.
+name|matchBrackets
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|theme
 argument_list|(
 name|in
@@ -315,6 +324,13 @@ operator|.
 name|hideLineNumbers
 operator|=
 name|hideLineNumbers
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|matchBrackets
+operator|=
+name|matchBrackets
 argument_list|()
 expr_stmt|;
 name|p
@@ -512,6 +528,18 @@ name|s
 parameter_list|)
 comment|/*-{ this.hide_line_numbers = s }-*/
 function_decl|;
+DECL|method|matchBrackets (boolean m)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|matchBrackets
+parameter_list|(
+name|boolean
+name|m
+parameter_list|)
+comment|/*-{ this.match_brackets = m }-*/
+function_decl|;
 DECL|method|theme ()
 specifier|public
 specifier|final
@@ -682,6 +710,15 @@ name|boolean
 name|hideLineNumbers
 parameter_list|()
 comment|/*-{ return this.hide_line_numbers || false }-*/
+function_decl|;
+DECL|method|matchBrackets ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|matchBrackets
+parameter_list|()
+comment|/*-{ return this.match_brackets || false }-*/
 function_decl|;
 DECL|method|get (String n, int d)
 specifier|private

@@ -116,6 +116,11 @@ specifier|public
 name|Boolean
 name|hideLineNumbers
 decl_stmt|;
+DECL|field|matchBrackets
+specifier|public
+name|Boolean
+name|matchBrackets
+decl_stmt|;
 DECL|field|theme
 specifier|public
 name|Theme
@@ -187,6 +192,12 @@ operator|.
 name|hideLineNumbers
 operator|=
 literal|false
+expr_stmt|;
+name|i
+operator|.
+name|matchBrackets
+operator|=
+literal|true
 expr_stmt|;
 name|i
 operator|.
