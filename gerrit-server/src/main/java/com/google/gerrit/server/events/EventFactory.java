@@ -1355,7 +1355,7 @@ name|refName
 operator|=
 name|refName
 operator|.
-name|getShortName
+name|get
 argument_list|()
 expr_stmt|;
 return|return
