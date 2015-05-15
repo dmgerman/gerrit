@@ -1800,6 +1800,13 @@ init|=
 name|createSecureStoreModule
 argument_list|()
 decl_stmt|;
+name|modules
+operator|.
+name|add
+argument_list|(
+name|secureStore
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|sitePath
@@ -2047,13 +2054,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|modules
-operator|.
-name|add
-argument_list|(
-name|secureStore
-argument_list|)
-expr_stmt|;
 name|modules
 operator|.
 name|add
