@@ -390,11 +390,6 @@ argument_list|,
 literal|"asdf\n"
 argument_list|)
 operator|.
-name|parent
-argument_list|(
-name|c
-argument_list|)
-operator|.
 name|create
 argument_list|()
 decl_stmt|;
@@ -466,11 +461,6 @@ argument_list|,
 literal|"qwerty"
 argument_list|)
 operator|.
-name|parent
-argument_list|(
-name|c
-argument_list|)
-operator|.
 name|create
 argument_list|()
 decl_stmt|;
@@ -500,11 +490,6 @@ argument_list|(
 literal|"qwerty"
 argument_list|,
 literal|"qwerty\nqwerty\n"
-argument_list|)
-operator|.
-name|parent
-argument_list|(
-name|c2
 argument_list|)
 operator|.
 name|create
