@@ -1982,10 +1982,15 @@ name|prefs
 operator|.
 name|intralineDifference
 argument_list|(
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
 name|e
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
