@@ -4143,10 +4143,15 @@ operator|.
 name|intralineDifference
 argument_list|(
 operator|!
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
 name|prefs
 operator|.
 name|intralineDifference
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|setShowIntraline
