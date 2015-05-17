@@ -233,7 +233,7 @@ block|,
 name|PERMISSIONS
 block|,
 name|ALL
-block|;     }
+block|}
 DECL|field|branches
 specifier|private
 specifier|final

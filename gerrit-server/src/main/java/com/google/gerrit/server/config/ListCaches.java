@@ -353,7 +353,7 @@ DECL|enumConstant|TEXT_LIST
 name|LIST
 block|,
 name|TEXT_LIST
-block|;   }
+block|}
 annotation|@
 name|Option
 argument_list|(
@@ -620,7 +620,7 @@ DECL|enumConstant|DISK
 name|MEM
 block|,
 name|DISK
-block|;   }
+block|}
 DECL|class|CacheInfo
 specifier|public
 specifier|static

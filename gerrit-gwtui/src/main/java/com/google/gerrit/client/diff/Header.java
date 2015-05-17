@@ -823,7 +823,7 @@ DECL|enumConstant|LOADED
 name|AUTO_REVIEW
 block|,
 name|LOADED
-block|;   }
+block|}
 DECL|field|reviewed
 annotation|@
 name|UiField

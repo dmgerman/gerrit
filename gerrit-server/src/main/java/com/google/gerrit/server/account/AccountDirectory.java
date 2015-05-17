@@ -128,7 +128,7 @@ block|,
 comment|/** Numeric account ID, may be deprecated. */
 DECL|enumConstant|ID
 name|ID
-block|;   }
+block|}
 DECL|method|fillAccountInfo ( Iterable<? extends AccountInfo> in, Set<FillOptions> options)
 specifier|public
 specifier|abstract

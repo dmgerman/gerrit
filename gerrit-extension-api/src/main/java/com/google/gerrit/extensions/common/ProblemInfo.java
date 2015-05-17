@@ -83,7 +83,7 @@ DECL|enumConstant|FIX_FAILED
 name|FIXED
 block|,
 name|FIX_FAILED
-block|;   }
+block|}
 DECL|field|message
 specifier|public
 name|String

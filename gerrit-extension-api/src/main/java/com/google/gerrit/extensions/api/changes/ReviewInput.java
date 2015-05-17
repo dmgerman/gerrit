@@ -225,7 +225,7 @@ block|,
 comment|/** Publish pending drafts on all revisions. */
 DECL|enumConstant|PUBLISH_ALL_REVISIONS
 name|PUBLISH_ALL_REVISIONS
-block|;   }
+block|}
 DECL|enum|NotifyHandling
 specifier|public
 specifier|static

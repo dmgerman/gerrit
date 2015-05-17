@@ -383,7 +383,7 @@ DECL|enumConstant|FLUSH
 name|FLUSH_ALL
 block|,
 name|FLUSH
-block|;   }
+block|}
 DECL|field|cacheMap
 specifier|private
 specifier|final

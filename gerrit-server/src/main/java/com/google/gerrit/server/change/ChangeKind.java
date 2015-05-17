@@ -91,7 +91,7 @@ block|,
 comment|/** Same tree, parent tree, same commit message. */
 DECL|enumConstant|NO_CHANGE
 name|NO_CHANGE
-block|; }
+block|}
 end_enum
 
 end_unit
