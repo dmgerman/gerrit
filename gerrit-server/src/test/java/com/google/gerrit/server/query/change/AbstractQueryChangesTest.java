@@ -742,6 +742,22 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|testutil
+operator|.
+name|InMemoryRepositoryManager
+operator|.
+name|Repo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|inject
 operator|.
 name|Inject
@@ -783,24 +799,6 @@ operator|.
 name|util
 operator|.
 name|Providers
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|internal
-operator|.
-name|storage
-operator|.
-name|dfs
-operator|.
-name|InMemoryRepository
 import|;
 end_import
 
@@ -1545,7 +1543,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -1636,7 +1634,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -1730,7 +1728,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -1898,7 +1896,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2035,7 +2033,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2267,7 +2265,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2485,7 +2483,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2639,7 +2637,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2741,7 +2739,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2846,7 +2844,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -2946,7 +2944,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo1
 init|=
@@ -2957,7 +2955,7 @@ argument_list|)
 decl_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo2
 init|=
@@ -3041,7 +3039,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo1
 init|=
@@ -3052,7 +3050,7 @@ argument_list|)
 decl_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo2
 init|=
@@ -3140,7 +3138,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -3264,7 +3262,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -3416,7 +3414,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -3537,7 +3535,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -3670,7 +3668,7 @@ argument_list|)
 expr_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -3905,7 +3903,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -4108,7 +4106,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -4243,7 +4241,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -4392,7 +4390,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -4509,7 +4507,7 @@ argument_list|)
 expr_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -4713,7 +4711,7 @@ argument_list|)
 expr_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -4895,7 +4893,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5077,7 +5075,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5188,7 +5186,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5273,7 +5271,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5389,7 +5387,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5483,7 +5481,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5593,7 +5591,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5681,7 +5679,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -5857,7 +5855,7 @@ name|thirtyHours
 expr_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -6044,7 +6042,7 @@ argument_list|)
 expr_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -6181,7 +6179,7 @@ argument_list|)
 expr_stmt|;
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -6280,7 +6278,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -6542,7 +6540,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -6875,7 +6873,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -7244,7 +7242,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -7376,7 +7374,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -7512,7 +7510,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -7745,7 +7743,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -7949,7 +7947,7 @@ name|Exception
 block|{
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 init|=
@@ -8197,14 +8195,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|newChange ( TestRepository<InMemoryRepository> repo, @Nullable RevCommit commit, @Nullable String key, @Nullable Integer owner, @Nullable String branch)
+DECL|method|newChange ( TestRepository<Repo> repo, @Nullable RevCommit commit, @Nullable String key, @Nullable Integer owner, @Nullable String branch)
 specifier|protected
 name|ChangeInserter
 name|newChange
 parameter_list|(
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|repo
 parameter_list|,
@@ -8544,7 +8542,7 @@ DECL|method|createProject (String name)
 specifier|protected
 name|TestRepository
 argument_list|<
-name|InMemoryRepository
+name|Repo
 argument_list|>
 name|createProject
 parameter_list|(

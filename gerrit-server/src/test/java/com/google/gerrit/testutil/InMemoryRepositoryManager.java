@@ -275,13 +275,21 @@ argument_list|)
 return|;
 block|}
 DECL|class|Description
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|Description
 extends|extends
 name|DfsRepositoryDescription
 block|{
+DECL|field|name
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|name
+decl_stmt|;
 DECL|field|desc
 specifier|private
 name|String
@@ -305,6 +313,12 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|name
+operator|=
+name|name
+expr_stmt|;
 name|desc
 operator|=
 literal|"In-memory repository "
@@ -315,9 +329,21 @@ name|get
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getProject ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 block|}
 DECL|class|Repo
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|Repo
@@ -383,7 +409,7 @@ name|Override
 DECL|method|openRepository (Project.NameKey name)
 specifier|public
 specifier|synchronized
-name|InMemoryRepository
+name|Repo
 name|openRepository
 parameter_list|(
 name|Project
@@ -406,7 +432,7 @@ name|Override
 DECL|method|createRepository (Project.NameKey name)
 specifier|public
 specifier|synchronized
-name|InMemoryRepository
+name|Repo
 name|createRepository
 parameter_list|(
 name|Project
@@ -499,7 +525,7 @@ name|Override
 DECL|method|openMetadataRepository ( Project.NameKey name)
 specifier|public
 specifier|synchronized
-name|InMemoryRepository
+name|Repo
 name|openMetadataRepository
 parameter_list|(
 name|Project
