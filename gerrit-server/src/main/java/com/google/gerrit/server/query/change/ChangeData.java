@@ -2894,6 +2894,20 @@ return|return
 name|change
 return|;
 block|}
+DECL|method|setChange (Change c)
+specifier|public
+name|void
+name|setChange
+parameter_list|(
+name|Change
+name|c
+parameter_list|)
+block|{
+name|change
+operator|=
+name|c
+expr_stmt|;
+block|}
 DECL|method|reloadChange ()
 specifier|public
 name|Change
@@ -3347,6 +3361,12 @@ argument_list|>
 name|patchSets
 parameter_list|)
 block|{
+name|this
+operator|.
+name|currentPatchSet
+operator|=
+literal|null
+expr_stmt|;
 name|this
 operator|.
 name|patchSets
