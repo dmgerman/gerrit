@@ -983,7 +983,7 @@ name|jarScanner
 init|=
 name|createJarScanner
 argument_list|(
-name|srcJar
+name|tmp
 argument_list|)
 decl_stmt|;
 name|ServerPlugin

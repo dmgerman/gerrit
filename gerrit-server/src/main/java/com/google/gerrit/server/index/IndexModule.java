@@ -649,18 +649,10 @@ name|IndexExecutor
 argument_list|(
 name|BATCH
 argument_list|)
-DECL|method|getBatchIndexExecutor ( @ndexExecutorINTERACTIVE) ListeningExecutorService interactive, @GerritServerConfig Config config, WorkQueue workQueue)
+DECL|method|getBatchIndexExecutor ( @erritServerConfig Config config, WorkQueue workQueue)
 name|ListeningExecutorService
 name|getBatchIndexExecutor
 parameter_list|(
-annotation|@
-name|IndexExecutor
-argument_list|(
-name|INTERACTIVE
-argument_list|)
-name|ListeningExecutorService
-name|interactive
-parameter_list|,
 annotation|@
 name|GerritServerConfig
 name|Config
@@ -727,9 +719,16 @@ operator|<=
 literal|0
 condition|)
 block|{
-return|return
-name|interactive
-return|;
+name|threads
+operator|=
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|availableProcessors
+argument_list|()
+expr_stmt|;
 block|}
 return|return
 name|MoreExecutors
