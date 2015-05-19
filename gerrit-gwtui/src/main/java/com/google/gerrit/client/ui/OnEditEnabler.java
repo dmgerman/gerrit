@@ -634,7 +634,7 @@ expr_stmt|;
 comment|// Resetting the "original text" on focus ensures that we are
 comment|// up to date with non-user updates of the text (calls to
 comment|// setText()...) and also up to date with user changes which
-comment|// occured after enabling "widget".
+comment|// occurred after enabling "widget".
 name|tb
 operator|.
 name|addFocusHandler
