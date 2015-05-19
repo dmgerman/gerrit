@@ -1823,6 +1823,7 @@ block|}
 block|}
 DECL|class|PermissionInfo
 specifier|public
+specifier|static
 class|class
 name|PermissionInfo
 block|{
