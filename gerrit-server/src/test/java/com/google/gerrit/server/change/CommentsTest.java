@@ -3883,9 +3883,6 @@ expr_stmt|;
 block|}
 name|assertThat
 argument_list|(
-operator|(
-name|int
-operator|)
 name|ci
 operator|.
 name|line
