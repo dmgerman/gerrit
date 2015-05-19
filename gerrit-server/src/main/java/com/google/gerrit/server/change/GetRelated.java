@@ -2258,6 +2258,11 @@ specifier|public
 name|Integer
 name|_currentRevisionNumber
 decl_stmt|;
+DECL|method|ChangeAndCommit ()
+specifier|public
+name|ChangeAndCommit
+parameter_list|()
+block|{     }
 DECL|method|ChangeAndCommit (@ullable Change change, @Nullable PatchSet ps, RevCommit c)
 name|ChangeAndCommit
 parameter_list|(
