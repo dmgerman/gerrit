@@ -1603,7 +1603,7 @@ name|diffLinks
 operator|=
 name|diffInfo
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 expr_stmt|;
 block|}
@@ -2615,7 +2615,7 @@ name|asList
 argument_list|(
 name|editInfo
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 argument_list|)
 argument_list|)

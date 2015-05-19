@@ -935,7 +935,7 @@ name|changeId
 operator|=
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 expr_stmt|;
 name|display
@@ -1080,7 +1080,7 @@ operator|.
 name|getUserAccountInfo
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1483,7 +1483,7 @@ name|asList
 argument_list|(
 name|info
 operator|.
-name|all_labels
+name|allLabels
 argument_list|()
 operator|.
 name|values
@@ -1534,7 +1534,7 @@ name|put
 argument_list|(
 name|ai
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 argument_list|,
 name|ai
@@ -1571,7 +1571,7 @@ operator|.
 name|owner
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1590,7 +1590,7 @@ if|if
 condition|(
 name|info
 operator|.
-name|removable_reviewers
+name|removableReviewers
 argument_list|()
 operator|!=
 literal|null
@@ -1607,7 +1607,7 @@ name|asList
 argument_list|(
 name|info
 operator|.
-name|removable_reviewers
+name|removableReviewers
 argument_list|()
 argument_list|)
 control|)
@@ -1618,7 +1618,7 @@ name|add
 argument_list|(
 name|a
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1705,7 +1705,7 @@ operator|.
 name|getUserAccountInfo
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -1716,7 +1716,7 @@ operator|.
 name|owner
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 operator|!=
 name|currentUser
@@ -1826,7 +1826,7 @@ name|id
 init|=
 name|ai
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 decl_stmt|;
 name|VotableInfo
@@ -1866,7 +1866,7 @@ if|if
 condition|(
 name|ai
 operator|.
-name|has_value
+name|hasValue
 argument_list|()
 condition|)
 block|{

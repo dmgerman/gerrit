@@ -227,39 +227,39 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|start_line ()
+DECL|method|startLine ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|start_line
+name|startLine
 parameter_list|()
 comment|/*-{ return this.start_line; }-*/
 function_decl|;
-DECL|method|start_character ()
+DECL|method|startCharacter ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|start_character
+name|startCharacter
 parameter_list|()
 comment|/*-{ return this.start_character; }-*/
 function_decl|;
-DECL|method|end_line ()
+DECL|method|endLine ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|end_line
+name|endLine
 parameter_list|()
 comment|/*-{ return this.end_line; }-*/
 function_decl|;
-DECL|method|end_character ()
+DECL|method|endCharacter ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|end_character
+name|endCharacter
 parameter_list|()
 comment|/*-{ return this.end_character; }-*/
 function_decl|;

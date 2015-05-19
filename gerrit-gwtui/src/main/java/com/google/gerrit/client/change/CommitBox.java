@@ -967,7 +967,7 @@ literal|"Change-Id: "
 operator|+
 name|change
 operator|.
-name|change_id
+name|changeId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -977,7 +977,7 @@ name|setPreviewText
 argument_list|(
 name|change
 operator|.
-name|change_id
+name|changeId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1187,7 +1187,7 @@ operator|.
 name|commit
 argument_list|()
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 decl_stmt|;
 if|if
@@ -1541,7 +1541,7 @@ name|links
 init|=
 name|c
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 decl_stmt|;
 if|if
@@ -1656,7 +1656,7 @@ operator|.
 name|owner
 argument_list|()
 operator|.
-name|has_avatar_info
+name|hasAvatarInfo
 argument_list|()
 condition|)
 block|{

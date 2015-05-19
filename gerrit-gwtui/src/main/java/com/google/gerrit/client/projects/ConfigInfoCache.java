@@ -399,7 +399,7 @@ name|put
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get

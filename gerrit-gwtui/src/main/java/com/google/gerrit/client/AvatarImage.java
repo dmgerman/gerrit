@@ -449,7 +449,7 @@ if|if
 condition|(
 name|account
 operator|.
-name|has_avatar_info
+name|hasAvatarInfo
 argument_list|()
 condition|)
 block|{
@@ -767,7 +767,7 @@ block|{
 return|return
 name|account
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 operator|==
 literal|0

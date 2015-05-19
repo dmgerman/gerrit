@@ -1349,7 +1349,7 @@ if|if
 condition|(
 name|info
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|()
 operator|!=
 literal|null
@@ -1364,7 +1364,7 @@ name|get
 argument_list|(
 name|info
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|()
 argument_list|)
 decl_stmt|;

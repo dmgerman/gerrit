@@ -2379,7 +2379,7 @@ name|lv
 operator|.
 name|info
 operator|.
-name|value_set
+name|valueSet
 argument_list|()
 argument_list|)
 condition|)
@@ -2606,7 +2606,7 @@ name|lv
 operator|.
 name|info
 operator|.
-name|for_user
+name|forUser
 argument_list|(
 name|Gerrit
 operator|.
@@ -2688,7 +2688,7 @@ name|lv
 operator|.
 name|info
 operator|.
-name|value_text
+name|valueText
 argument_list|(
 name|LabelValue
 operator|.
@@ -2828,7 +2828,7 @@ name|lv
 operator|.
 name|info
 operator|.
-name|for_user
+name|forUser
 argument_list|(
 name|Gerrit
 operator|.
@@ -3014,7 +3014,7 @@ name|lv
 operator|.
 name|info
 operator|.
-name|value_text
+name|valueText
 argument_list|(
 literal|"+1"
 argument_list|)

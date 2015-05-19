@@ -375,7 +375,7 @@ name|id
 init|=
 name|c
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 decl_stmt|;
 name|Gerrit

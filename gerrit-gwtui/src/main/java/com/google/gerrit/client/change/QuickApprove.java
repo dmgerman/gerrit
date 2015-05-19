@@ -376,7 +376,7 @@ condition|(
 operator|!
 name|info
 operator|.
-name|has_permitted_labels
+name|hasPermittedLabels
 argument_list|()
 operator|||
 operator|!
@@ -406,7 +406,7 @@ argument_list|(
 name|commit
 argument_list|)
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 operator|||
 name|info
@@ -467,7 +467,7 @@ name|asList
 argument_list|(
 name|info
 operator|.
-name|all_labels
+name|allLabels
 argument_list|()
 operator|.
 name|values
@@ -484,7 +484,7 @@ name|values
 init|=
 name|info
 operator|.
-name|permitted_values
+name|permittedValues
 argument_list|(
 name|label
 operator|.
@@ -529,7 +529,7 @@ name|equals
 argument_list|(
 name|label
 operator|.
-name|max_value
+name|maxValue
 argument_list|()
 argument_list|)
 condition|)
@@ -562,7 +562,7 @@ name|changeId
 operator|=
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 expr_stmt|;
 name|revision

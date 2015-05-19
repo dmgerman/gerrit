@@ -396,7 +396,7 @@ if|if
 condition|(
 name|info
 operator|.
-name|patch_set
+name|patchSet
 argument_list|()
 operator|!=
 name|defaultPs
@@ -419,7 +419,7 @@ argument_list|()
 argument_list|,
 name|info
 operator|.
-name|patch_set
+name|patchSet
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -433,7 +433,7 @@ name|toString
 argument_list|(
 name|info
 operator|.
-name|patch_set
+name|patchSet
 argument_list|()
 argument_list|)
 argument_list|)
@@ -463,7 +463,7 @@ if|if
 condition|(
 name|info
 operator|.
-name|has_line
+name|hasLine
 argument_list|()
 condition|)
 block|{

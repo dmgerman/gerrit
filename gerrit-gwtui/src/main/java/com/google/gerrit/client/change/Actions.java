@@ -600,7 +600,7 @@ name|changeId
 operator|=
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 expr_stmt|;
 name|project
@@ -635,7 +635,7 @@ name|key
 operator|=
 name|info
 operator|.
-name|change_id
+name|changeId
 argument_list|()
 expr_stmt|;
 name|changeInfo
@@ -657,7 +657,7 @@ name|actionMap
 init|=
 name|revInfo
 operator|.
-name|has_actions
+name|hasActions
 argument_list|()
 condition|?
 name|revInfo
@@ -706,7 +706,7 @@ name|actions
 init|=
 name|info
 operator|.
-name|has_actions
+name|hasActions
 argument_list|()
 condition|?
 name|info

@@ -1109,7 +1109,7 @@ block|{
 return|return
 name|item
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 return|;
 block|}
@@ -1142,7 +1142,7 @@ name|id
 init|=
 name|c
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 decl_stmt|;
 name|Gerrit
@@ -1831,7 +1831,7 @@ name|createIcon
 argument_list|(
 name|c
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
 name|c
@@ -1859,7 +1859,7 @@ name|valueOf
 argument_list|(
 name|c
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|)
 argument_list|,
@@ -2020,7 +2020,7 @@ name|ProjectLink
 argument_list|(
 name|c
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2038,7 +2038,7 @@ name|BranchLink
 argument_list|(
 name|c
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|,
 name|c
@@ -3565,7 +3565,7 @@ name|text
 argument_list|,
 name|c
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|)
 expr_stmt|;

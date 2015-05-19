@@ -1185,7 +1185,7 @@ name|revision
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -1279,7 +1279,7 @@ literal|"change"
 argument_list|,
 name|info
 operator|.
-name|change_id
+name|changeId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1299,7 +1299,7 @@ literal|"-change"
 argument_list|,
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -1513,7 +1513,7 @@ literal|"conflicts"
 argument_list|,
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -2146,7 +2146,7 @@ if|if
 condition|(
 name|i
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 operator|!=
 literal|null
@@ -2160,7 +2160,7 @@ name|containsKey
 argument_list|(
 name|i
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 condition|)
@@ -2174,7 +2174,7 @@ name|revision
 argument_list|(
 name|i
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2188,7 +2188,7 @@ argument_list|()
 decl_stmt|;
 name|c
 operator|.
-name|set_id
+name|setId
 argument_list|(
 name|i
 operator|.
@@ -2198,7 +2198,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|set_commit
+name|setCommit
 argument_list|(
 name|currentRevision
 operator|.
@@ -2208,11 +2208,11 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|set_change_number
+name|setChangeNumber
 argument_list|(
 name|i
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -2221,7 +2221,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|set_revision_number
+name|setRevisionNumber
 argument_list|(
 name|currentRevision
 operator|.
@@ -2231,7 +2231,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|set_branch
+name|setBranch
 argument_list|(
 name|i
 operator|.
@@ -2241,7 +2241,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|set_project
+name|setProject
 argument_list|(
 name|i
 operator|.
@@ -2251,7 +2251,7 @@ argument_list|)
 expr_stmt|;
 name|c
 operator|.
-name|set_submittable
+name|setSubmittable
 argument_list|(
 name|i
 operator|.
@@ -2368,61 +2368,61 @@ name|submittable
 parameter_list|()
 comment|/*-{ return this._submittable ? true : false; }-*/
 function_decl|;
-DECL|method|set_id (String i)
+DECL|method|setId (String i)
 specifier|final
 specifier|native
 name|void
-name|set_id
+name|setId
 parameter_list|(
 name|String
 name|i
 parameter_list|)
 comment|/*-{ if(i)this.change_id=i; }-*/
 function_decl|;
-DECL|method|set_commit (CommitInfo c)
+DECL|method|setCommit (CommitInfo c)
 specifier|final
 specifier|native
 name|void
-name|set_commit
+name|setCommit
 parameter_list|(
 name|CommitInfo
 name|c
 parameter_list|)
 comment|/*-{ if(c)this.commit=c; }-*/
 function_decl|;
-DECL|method|set_branch (String b)
+DECL|method|setBranch (String b)
 specifier|final
 specifier|native
 name|void
-name|set_branch
+name|setBranch
 parameter_list|(
 name|String
 name|b
 parameter_list|)
 comment|/*-{ if(b)this.branch=b; }-*/
 function_decl|;
-DECL|method|set_project (String b)
+DECL|method|setProject (String b)
 specifier|final
 specifier|native
 name|void
-name|set_project
+name|setProject
 parameter_list|(
 name|String
 name|b
 parameter_list|)
 comment|/*-{ if(b)this.project=b; }-*/
 function_decl|;
-DECL|method|legacy_id ()
+DECL|method|legacyId ()
 specifier|public
 specifier|final
 name|Change
 operator|.
 name|Id
-name|legacy_id
+name|legacyId
 parameter_list|()
 block|{
 return|return
-name|has_change_number
+name|hasChangeNumber
 argument_list|()
 condition|?
 operator|new
@@ -2430,27 +2430,27 @@ name|Change
 operator|.
 name|Id
 argument_list|(
-name|_change_number
+name|_changeNumber
 argument_list|()
 argument_list|)
 else|:
 literal|null
 return|;
 block|}
-DECL|method|patch_set_id ()
+DECL|method|patchSetId ()
 specifier|public
 specifier|final
 name|PatchSet
 operator|.
 name|Id
-name|patch_set_id
+name|patchSetId
 parameter_list|()
 block|{
 return|return
-name|has_change_number
+name|hasChangeNumber
 argument_list|()
 operator|&&
-name|has_revision_number
+name|hasRevisionNumber
 argument_list|()
 condition|?
 operator|new
@@ -2458,103 +2458,103 @@ name|PatchSet
 operator|.
 name|Id
 argument_list|(
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
-name|_revision_number
+name|_revisionNumber
 argument_list|()
 argument_list|)
 else|:
 literal|null
 return|;
 block|}
-DECL|method|has_change_number ()
+DECL|method|hasChangeNumber ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_change_number
+name|hasChangeNumber
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('_change_number') }-*/
 function_decl|;
-DECL|method|has_revision_number ()
+DECL|method|hasRevisionNumber ()
 specifier|final
 specifier|native
 name|boolean
-name|has_revision_number
+name|hasRevisionNumber
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('_revision_number') }-*/
 function_decl|;
-DECL|method|has_current_revision_number ()
+DECL|method|hasCurrentRevisionNumber ()
 specifier|final
 specifier|native
 name|boolean
-name|has_current_revision_number
+name|hasCurrentRevisionNumber
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('_current_revision_number') }-*/
 function_decl|;
-DECL|method|_change_number ()
+DECL|method|_changeNumber ()
 specifier|final
 specifier|native
 name|int
-name|_change_number
+name|_changeNumber
 parameter_list|()
 comment|/*-{ return this._change_number }-*/
 function_decl|;
-DECL|method|_revision_number ()
+DECL|method|_revisionNumber ()
 specifier|final
 specifier|native
 name|int
-name|_revision_number
+name|_revisionNumber
 parameter_list|()
 comment|/*-{ return this._revision_number }-*/
 function_decl|;
-DECL|method|_current_revision_number ()
+DECL|method|_currentRevisionNumber ()
 specifier|final
 specifier|native
 name|int
-name|_current_revision_number
+name|_currentRevisionNumber
 parameter_list|()
 comment|/*-{ return this._current_revision_number }-*/
 function_decl|;
-DECL|method|set_change_number (int n)
+DECL|method|setChangeNumber (int n)
 specifier|final
 specifier|native
 name|void
-name|set_change_number
+name|setChangeNumber
 parameter_list|(
 name|int
 name|n
 parameter_list|)
 comment|/*-{ this._change_number=n; }-*/
 function_decl|;
-DECL|method|set_revision_number (int n)
+DECL|method|setRevisionNumber (int n)
 specifier|final
 specifier|native
 name|void
-name|set_revision_number
+name|setRevisionNumber
 parameter_list|(
 name|int
 name|n
 parameter_list|)
 comment|/*-{ this._revision_number=n; }-*/
 function_decl|;
-DECL|method|set_current_revision_number (int n)
+DECL|method|setCurrentRevisionNumber (int n)
 specifier|final
 specifier|native
 name|void
-name|set_current_revision_number
+name|setCurrentRevisionNumber
 parameter_list|(
 name|int
 name|n
 parameter_list|)
 comment|/*-{ this._current_revision_number=n; }-*/
 function_decl|;
-DECL|method|set_submittable (boolean s)
+DECL|method|setSubmittable (boolean s)
 specifier|final
 specifier|native
 name|void
-name|set_submittable
+name|setSubmittable
 parameter_list|(
 name|boolean
 name|s

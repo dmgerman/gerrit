@@ -845,14 +845,14 @@ name|diffColor
 init|=
 name|diff
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 operator|==
 literal|null
 operator|||
 name|diff
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 operator|==
 literal|null
@@ -1187,7 +1187,7 @@ name|a
 argument_list|,
 name|region
 operator|.
-name|edit_a
+name|editA
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1201,7 +1201,7 @@ name|b
 argument_list|,
 name|region
 operator|.
-name|edit_b
+name|editB
 argument_list|()
 argument_list|)
 expr_stmt|;

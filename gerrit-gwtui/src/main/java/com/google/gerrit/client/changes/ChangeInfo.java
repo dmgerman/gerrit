@@ -409,13 +409,13 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|all_labels
+name|allLabels
 argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
-name|all_labels
+name|allLabels
 argument_list|()
 operator|.
 name|copyKeysIntoChildren
@@ -425,13 +425,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|project_name_key ()
+DECL|method|projectNameKey ()
 specifier|public
 specifier|final
 name|Project
 operator|.
 name|NameKey
-name|project_name_key
+name|projectNameKey
 parameter_list|()
 block|{
 return|return
@@ -445,13 +445,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|legacy_id ()
+DECL|method|legacyId ()
 specifier|public
 specifier|final
 name|Change
 operator|.
 name|Id
-name|legacy_id
+name|legacyId
 parameter_list|()
 block|{
 return|return
@@ -475,7 +475,7 @@ block|{
 name|Timestamp
 name|ts
 init|=
-name|_get_cts
+name|_getCts
 argument_list|()
 decl_stmt|;
 if|if
@@ -495,7 +495,7 @@ name|createdRaw
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_set_cts
+name|_setCts
 argument_list|(
 name|ts
 argument_list|)
@@ -544,25 +544,25 @@ operator|-
 literal|1
 argument_list|)
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 return|;
 block|}
-DECL|method|_get_cts ()
+DECL|method|_getCts ()
 specifier|private
 specifier|final
 specifier|native
 name|Timestamp
-name|_get_cts
+name|_getCts
 parameter_list|()
 comment|/*-{ return this._cts; }-*/
 function_decl|;
-DECL|method|_set_cts (Timestamp ts)
+DECL|method|_setCts (Timestamp ts)
 specifier|private
 specifier|final
 specifier|native
 name|void
-name|_set_cts
+name|_setCts
 parameter_list|(
 name|Timestamp
 name|ts
@@ -586,11 +586,11 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|id_abbreviated ()
+DECL|method|idAbbreviated ()
 specifier|public
 specifier|final
 name|String
-name|id_abbreviated
+name|idAbbreviated
 parameter_list|()
 block|{
 return|return
@@ -599,7 +599,7 @@ name|Change
 operator|.
 name|Key
 argument_list|(
-name|change_id
+name|changeId
 argument_list|()
 argument_list|)
 operator|.
@@ -639,7 +639,7 @@ name|labels
 parameter_list|()
 block|{
 return|return
-name|all_labels
+name|allLabels
 argument_list|()
 operator|.
 name|keySet
@@ -682,12 +682,12 @@ name|topic
 parameter_list|()
 comment|/*-{ return this.topic; }-*/
 function_decl|;
-DECL|method|change_id ()
+DECL|method|changeId ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|change_id
+name|changeId
 parameter_list|()
 comment|/*-{ return this.change_id; }-*/
 function_decl|;
@@ -781,7 +781,7 @@ name|reviewed
 parameter_list|()
 comment|/*-{ return this.reviewed ? true : false; }-*/
 function_decl|;
-DECL|method|all_labels ()
+DECL|method|allLabels ()
 specifier|public
 specifier|final
 specifier|native
@@ -789,7 +789,7 @@ name|NativeMap
 argument_list|<
 name|LabelInfo
 argument_list|>
-name|all_labels
+name|allLabels
 parameter_list|()
 comment|/*-{ return this.labels; }-*/
 function_decl|;
@@ -805,33 +805,33 @@ name|n
 parameter_list|)
 comment|/*-{ return this.labels[n]; }-*/
 function_decl|;
-DECL|method|current_revision ()
+DECL|method|currentRevision ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|current_revision
+name|currentRevision
 parameter_list|()
 comment|/*-{ return this.current_revision; }-*/
 function_decl|;
-DECL|method|set_current_revision (String r)
+DECL|method|setCurrentRevision (String r)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|set_current_revision
+name|setCurrentRevision
 parameter_list|(
 name|String
 name|r
 parameter_list|)
 comment|/*-{ this.current_revision = r; }-*/
 function_decl|;
-DECL|method|set_submittable (boolean x)
+DECL|method|setSubmittable (boolean x)
 specifier|private
 specifier|final
 specifier|native
 name|void
-name|set_submittable
+name|setSubmittable
 parameter_list|(
 name|boolean
 name|x
@@ -874,12 +874,12 @@ name|messages
 parameter_list|()
 comment|/*-{ return this.messages; }-*/
 function_decl|;
-DECL|method|set_edit (EditInfo edit)
+DECL|method|setEdit (EditInfo edit)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|set_edit
+name|setEdit
 parameter_list|(
 name|EditInfo
 name|edit
@@ -895,12 +895,12 @@ name|edit
 parameter_list|()
 comment|/*-{ return this.edit; }-*/
 function_decl|;
-DECL|method|has_edit ()
+DECL|method|hasEdit ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_edit
+name|hasEdit
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('edit') }-*/
 function_decl|;
@@ -913,16 +913,16 @@ name|hashtags
 parameter_list|()
 comment|/*-{ return this.hashtags; }-*/
 function_decl|;
-DECL|method|has_permitted_labels ()
+DECL|method|hasPermittedLabels ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_permitted_labels
+name|hasPermittedLabels
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('permitted_labels') }-*/
 function_decl|;
-DECL|method|permitted_labels ()
+DECL|method|permittedLabels ()
 specifier|public
 specifier|final
 specifier|native
@@ -930,23 +930,23 @@ name|NativeMap
 argument_list|<
 name|JsArrayString
 argument_list|>
-name|permitted_labels
+name|permittedLabels
 parameter_list|()
 comment|/*-{ return this.permitted_labels; }-*/
 function_decl|;
-DECL|method|permitted_values (String n)
+DECL|method|permittedValues (String n)
 specifier|public
 specifier|final
 specifier|native
 name|JsArrayString
-name|permitted_values
+name|permittedValues
 parameter_list|(
 name|String
 name|n
 parameter_list|)
 comment|/*-{ return this.permitted_labels[n]; }-*/
 function_decl|;
-DECL|method|removable_reviewers ()
+DECL|method|removableReviewers ()
 specifier|public
 specifier|final
 specifier|native
@@ -954,16 +954,16 @@ name|JsArray
 argument_list|<
 name|AccountInfo
 argument_list|>
-name|removable_reviewers
+name|removableReviewers
 parameter_list|()
 comment|/*-{ return this.removable_reviewers; }-*/
 function_decl|;
-DECL|method|has_actions ()
+DECL|method|hasActions ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_actions
+name|hasActions
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('actions') }-*/
 function_decl|;
@@ -1052,7 +1052,7 @@ name|Natives
 operator|.
 name|asList
 argument_list|(
-name|all_labels
+name|allLabels
 argument_list|()
 operator|.
 name|values
@@ -1073,7 +1073,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|permitted_labels
+name|permittedLabels
 argument_list|()
 operator|.
 name|containsKey
@@ -1090,7 +1090,7 @@ block|}
 name|JsArrayString
 name|values
 init|=
-name|permitted_values
+name|permittedValues
 argument_list|(
 name|label
 operator|.
@@ -1132,7 +1132,7 @@ condition|)
 block|{
 comment|// more than one label is missing, so it's unclear which to quick
 comment|// approve, return -1
-name|set_submittable
+name|setSubmittable
 argument_list|(
 literal|false
 argument_list|)
@@ -1166,7 +1166,7 @@ comment|// Submit cannot happen, do not quick approve.
 case|case
 name|IMPOSSIBLE
 case|:
-name|set_submittable
+name|setSubmittable
 argument_list|(
 literal|false
 argument_list|)
@@ -1177,7 +1177,7 @@ literal|1
 return|;
 block|}
 block|}
-name|set_submittable
+name|setSubmittable
 argument_list|(
 name|ret
 operator|==
@@ -1337,11 +1337,11 @@ name|all
 parameter_list|()
 comment|/*-{ return this.all; }-*/
 function_decl|;
-DECL|method|for_user (int user)
+DECL|method|forUser (int user)
 specifier|public
 specifier|final
 name|ApprovalInfo
-name|for_user
+name|forUser
 parameter_list|(
 name|int
 name|user
@@ -1387,7 +1387,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 operator|==
 name|user
@@ -1439,12 +1439,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|value_text (String n)
+DECL|method|valueText (String n)
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|value_text
+name|valueText
 parameter_list|(
 name|String
 name|n
@@ -1486,11 +1486,11 @@ name|_value
 parameter_list|()
 comment|/*-{       if (this.value) return this.value;       if (this.disliked) return -1;       if (this.recommended) return 1;       return 0;     }-*/
 function_decl|;
-DECL|method|max_value ()
+DECL|method|maxValue ()
 specifier|public
 specifier|final
 name|String
-name|max_value
+name|maxValue
 parameter_list|()
 block|{
 return|return
@@ -1498,7 +1498,7 @@ name|LabelValue
 operator|.
 name|formatValue
 argument_list|(
-name|value_set
+name|valueSet
 argument_list|()
 operator|.
 name|last
@@ -1506,14 +1506,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|value_set ()
+DECL|method|valueSet ()
 specifier|public
 specifier|final
 name|SortedSet
 argument_list|<
 name|Short
 argument_list|>
-name|value_set
+name|valueSet
 parameter_list|()
 block|{
 name|SortedSet
@@ -1624,12 +1624,12 @@ name|ApprovalInfo
 extends|extends
 name|AccountInfo
 block|{
-DECL|method|has_value ()
+DECL|method|hasValue ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_value
+name|hasValue
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('value'); }-*/
 function_decl|;
@@ -1665,24 +1665,24 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|set_name (String n)
+DECL|method|setName (String n)
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|set_name
+name|setName
 parameter_list|(
 name|String
 name|n
 parameter_list|)
 comment|/*-{ this.name = n; }-*/
 function_decl|;
-DECL|method|base_revision ()
+DECL|method|baseRevision ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|base_revision
+name|baseRevision
 parameter_list|()
 comment|/*-{ return this.base_revision; }-*/
 function_decl|;
@@ -1695,12 +1695,12 @@ name|commit
 parameter_list|()
 comment|/*-{ return this.commit; }-*/
 function_decl|;
-DECL|method|has_actions ()
+DECL|method|hasActions ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_actions
+name|hasActions
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('actions') }-*/
 function_decl|;
@@ -1716,12 +1716,12 @@ name|actions
 parameter_list|()
 comment|/*-{ return this.actions; }-*/
 function_decl|;
-DECL|method|has_fetch ()
+DECL|method|hasFetch ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_fetch
+name|hasFetch
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('fetch') }-*/
 function_decl|;
@@ -1737,12 +1737,12 @@ name|fetch
 parameter_list|()
 comment|/*-{ return this.fetch; }-*/
 function_decl|;
-DECL|method|has_files ()
+DECL|method|hasFiles ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_files
+name|hasFiles
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('files') }-*/
 function_decl|;
@@ -1841,21 +1841,21 @@ name|draft
 parameter_list|()
 comment|/*-{ return this.draft || false; }-*/
 function_decl|;
-DECL|method|has_draft_comments ()
+DECL|method|hasDraftComments ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_draft_comments
+name|hasDraftComments
 parameter_list|()
 comment|/*-{ return this.has_draft_comments || false; }-*/
 function_decl|;
-DECL|method|is_edit ()
+DECL|method|isEdit ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|is_edit
+name|isEdit
 parameter_list|()
 comment|/*-{ return this._number == 0; }-*/
 function_decl|;
@@ -1868,33 +1868,33 @@ name|commit
 parameter_list|()
 comment|/*-{ return this.commit; }-*/
 function_decl|;
-DECL|method|set_commit (CommitInfo c)
+DECL|method|setCommit (CommitInfo c)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|set_commit
+name|setCommit
 parameter_list|(
 name|CommitInfo
 name|c
 parameter_list|)
 comment|/*-{ this.commit = c; }-*/
 function_decl|;
-DECL|method|edit_base ()
+DECL|method|editBase ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|edit_base
+name|editBase
 parameter_list|()
 comment|/*-{ return this.edit_base; }-*/
 function_decl|;
-DECL|method|has_files ()
+DECL|method|hasFiles ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_files
+name|hasFiles
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('files') }-*/
 function_decl|;
@@ -1910,12 +1910,12 @@ name|files
 parameter_list|()
 comment|/*-{ return this.files; }-*/
 function_decl|;
-DECL|method|has_actions ()
+DECL|method|hasActions ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_actions
+name|hasActions
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('actions') }-*/
 function_decl|;
@@ -1931,12 +1931,12 @@ name|actions
 parameter_list|()
 comment|/*-{ return this.actions; }-*/
 function_decl|;
-DECL|method|has_fetch ()
+DECL|method|hasFetch ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_fetch
+name|hasFetch
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('fetch') }-*/
 function_decl|;
@@ -2029,7 +2029,7 @@ return|return
 operator|!
 name|r
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|?
 literal|2
@@ -2100,7 +2100,7 @@ if|if
 condition|(
 name|editInfo
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -2109,7 +2109,7 @@ name|parentRevision
 init|=
 name|editInfo
 operator|.
-name|edit_base
+name|editBase
 argument_list|()
 decl_stmt|;
 comment|// find parent
@@ -2321,7 +2321,7 @@ name|message
 parameter_list|()
 comment|/*-{ return this.message; }-*/
 function_decl|;
-DECL|method|web_links ()
+DECL|method|webLinks ()
 specifier|public
 specifier|final
 specifier|native
@@ -2329,7 +2329,7 @@ name|JsArray
 argument_list|<
 name|WebLinkInfo
 argument_list|>
-name|web_links
+name|webLinks
 parameter_list|()
 comment|/*-{ return this.web_links; }-*/
 function_decl|;
@@ -2472,12 +2472,12 @@ name|MergeableInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|submit_type ()
+DECL|method|submitType ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|submit_type
+name|submitType
 parameter_list|()
 comment|/*-{ return this.submit_type }-*/
 function_decl|;

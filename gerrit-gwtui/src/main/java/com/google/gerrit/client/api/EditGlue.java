@@ -214,7 +214,7 @@ name|edit
 argument_list|(
 name|change
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get

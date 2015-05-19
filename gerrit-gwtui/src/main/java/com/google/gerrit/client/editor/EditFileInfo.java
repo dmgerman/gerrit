@@ -120,7 +120,7 @@ name|EditFileInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|web_links ()
+DECL|method|webLinks ()
 specifier|public
 specifier|final
 specifier|native
@@ -128,7 +128,7 @@ name|JsArray
 argument_list|<
 name|DiffWebLinkInfo
 argument_list|>
-name|web_links
+name|webLinks
 parameter_list|()
 comment|/*-{ return this.web_links; }-*/
 function_decl|;

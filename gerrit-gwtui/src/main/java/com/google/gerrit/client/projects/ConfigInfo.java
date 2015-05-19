@@ -293,56 +293,56 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description }-*/
 function_decl|;
-DECL|method|require_change_id ()
+DECL|method|requireChangeId ()
 specifier|public
 specifier|final
 specifier|native
 name|InheritedBooleanInfo
-name|require_change_id
+name|requireChangeId
 parameter_list|()
 comment|/*-{ return this.require_change_id; }-*/
 function_decl|;
-DECL|method|use_content_merge ()
+DECL|method|useContentMerge ()
 specifier|public
 specifier|final
 specifier|native
 name|InheritedBooleanInfo
-name|use_content_merge
+name|useContentMerge
 parameter_list|()
 comment|/*-{ return this.use_content_merge; }-*/
 function_decl|;
-DECL|method|use_contributor_agreements ()
+DECL|method|useContributorAgreements ()
 specifier|public
 specifier|final
 specifier|native
 name|InheritedBooleanInfo
-name|use_contributor_agreements
+name|useContributorAgreements
 parameter_list|()
 comment|/*-{ return this.use_contributor_agreements; }-*/
 function_decl|;
-DECL|method|create_new_change_for_all_not_in_target ()
+DECL|method|createNewChangeForAllNotInTarget ()
 specifier|public
 specifier|final
 specifier|native
 name|InheritedBooleanInfo
-name|create_new_change_for_all_not_in_target
+name|createNewChangeForAllNotInTarget
 parameter_list|()
 comment|/*-{ return this.create_new_change_for_all_not_in_target; }-*/
 function_decl|;
-DECL|method|use_signed_off_by ()
+DECL|method|useSignedOffBy ()
 specifier|public
 specifier|final
 specifier|native
 name|InheritedBooleanInfo
-name|use_signed_off_by
+name|useSignedOffBy
 parameter_list|()
 comment|/*-{ return this.use_signed_off_by; }-*/
 function_decl|;
-DECL|method|submit_type ()
+DECL|method|submitType ()
 specifier|public
 specifier|final
 name|SubmitType
-name|submit_type
+name|submitType
 parameter_list|()
 block|{
 return|return
@@ -350,7 +350,7 @@ name|SubmitType
 operator|.
 name|valueOf
 argument_list|(
-name|submit_typeRaw
+name|submitTypeRaw
 argument_list|()
 argument_list|)
 return|;
@@ -397,12 +397,12 @@ name|actions
 parameter_list|()
 comment|/*-{ return this.actions; }-*/
 function_decl|;
-DECL|method|submit_typeRaw ()
+DECL|method|submitTypeRaw ()
 specifier|private
 specifier|final
 specifier|native
 name|String
-name|submit_typeRaw
+name|submitTypeRaw
 parameter_list|()
 comment|/*-{ return this.submit_type }-*/
 function_decl|;
@@ -446,12 +446,12 @@ name|stateRaw
 parameter_list|()
 comment|/*-{ return this.state }-*/
 function_decl|;
-DECL|method|max_object_size_limit ()
+DECL|method|maxObjectSizeLimit ()
 specifier|public
 specifier|final
 specifier|native
 name|MaxObjectSizeLimitInfo
-name|max_object_size_limit
+name|maxObjectSizeLimit
 parameter_list|()
 comment|/*-{ return this.max_object_size_limit; }-*/
 function_decl|;
@@ -751,20 +751,20 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value ? true : false; }-*/
 function_decl|;
-DECL|method|inherited_value ()
+DECL|method|inheritedValue ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|inherited_value
+name|inheritedValue
 parameter_list|()
 comment|/*-{ return this.inherited_value ? true : false; }-*/
 function_decl|;
-DECL|method|configured_value ()
+DECL|method|configuredValue ()
 specifier|public
 specifier|final
 name|InheritableBoolean
-name|configured_value
+name|configuredValue
 parameter_list|()
 block|{
 return|return
@@ -772,17 +772,17 @@ name|InheritableBoolean
 operator|.
 name|valueOf
 argument_list|(
-name|configured_valueRaw
+name|configuredValueRaw
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|configured_valueRaw ()
+DECL|method|configuredValueRaw ()
 specifier|private
 specifier|final
 specifier|native
 name|String
-name|configured_valueRaw
+name|configuredValueRaw
 parameter_list|()
 comment|/*-{ return this.configured_value }-*/
 function_decl|;
@@ -840,21 +840,21 @@ name|value
 parameter_list|()
 comment|/*-{ return this.value; }-*/
 function_decl|;
-DECL|method|inherited_value ()
+DECL|method|inheritedValue ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|inherited_value
+name|inheritedValue
 parameter_list|()
 comment|/*-{ return this.inherited_value; }-*/
 function_decl|;
-DECL|method|configured_value ()
+DECL|method|configuredValue ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|configured_value
+name|configuredValue
 parameter_list|()
 comment|/*-{ return this.configured_value }-*/
 function_decl|;
@@ -1002,22 +1002,22 @@ name|init
 parameter_list|()
 comment|/*-{ this.values = []; }-*/
 function_decl|;
-DECL|method|add_value (String v)
+DECL|method|addValue (String v)
 specifier|final
 specifier|native
 name|void
-name|add_value
+name|addValue
 parameter_list|(
 name|String
 name|v
 parameter_list|)
 comment|/*-{ this.values.push(v); }-*/
 function_decl|;
-DECL|method|set_value (String v)
+DECL|method|setValue (String v)
 specifier|final
 specifier|native
 name|void
-name|set_value
+name|setValue
 parameter_list|(
 name|String
 name|v
@@ -1066,7 +1066,7 @@ range|:
 name|values
 control|)
 block|{
-name|add_value
+name|addValue
 argument_list|(
 name|v
 argument_list|)
@@ -1086,7 +1086,7 @@ name|String
 name|v
 parameter_list|)
 block|{
-name|set_value
+name|setValue
 argument_list|(
 name|v
 argument_list|)

@@ -953,7 +953,7 @@ name|canEdit
 operator|=
 name|info
 operator|.
-name|has_actions
+name|hasActions
 argument_list|()
 operator|&&
 name|info
@@ -972,7 +972,7 @@ name|changeId
 operator|=
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 expr_stmt|;
 name|display

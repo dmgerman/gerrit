@@ -282,7 +282,7 @@ name|toChange
 argument_list|(
 name|result
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|)
 argument_list|)
