@@ -109,7 +109,7 @@ specifier|public
 interface|interface
 name|Event
 block|{
-comment|/**      * The name of the Gerrit project that has been garbage collected      * @return      */
+comment|/** @return The name of the project that has been garbage collected. */
 DECL|method|getProjectName ()
 name|String
 name|getProjectName
