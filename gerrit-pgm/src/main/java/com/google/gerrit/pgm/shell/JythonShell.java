@@ -1172,7 +1172,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Exception occured while loading file "
+literal|"Exception occurred while loading file "
 operator|+
 name|p
 operator|+
@@ -1192,7 +1192,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"SecurityException occured while loading file "
+literal|"SecurityException occurred while loading file "
 operator|+
 name|p
 operator|+
@@ -1261,7 +1261,7 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Exception occured while loading "
+literal|"Exception occurred while loading "
 operator|+
 name|p
 operator|+
