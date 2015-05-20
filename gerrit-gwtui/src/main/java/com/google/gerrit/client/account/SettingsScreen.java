@@ -271,10 +271,13 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|isUseContributorAgreements
+name|auth
+argument_list|()
+operator|.
+name|useContributorAgreements
 argument_list|()
 condition|)
 block|{

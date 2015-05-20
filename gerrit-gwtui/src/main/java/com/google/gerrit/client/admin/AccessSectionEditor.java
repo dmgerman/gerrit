@@ -1748,13 +1748,13 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getWildProject
+name|gerrit
 argument_list|()
 operator|.
-name|equals
+name|isAllProjects
 argument_list|(
 name|projectAccess
 operator|.

@@ -700,7 +700,10 @@ block|{
 return|return
 name|Gerrit
 operator|.
-name|getConfig
+name|info
+argument_list|()
+operator|.
+name|auth
 argument_list|()
 operator|.
 name|canEdit

@@ -463,10 +463,10 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|isUseContactInfo
+name|hasContactStore
 argument_list|()
 condition|)
 block|{
@@ -820,10 +820,10 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|isUseContactInfo
+name|hasContactStore
 argument_list|()
 condition|)
 block|{
