@@ -705,12 +705,12 @@ name|inserter
 argument_list|,
 name|n
 operator|.
-name|getPatchsetId
+name|change
 argument_list|()
 argument_list|,
 name|n
 operator|.
-name|change
+name|getPatchsetId
 argument_list|()
 argument_list|,
 name|uploader
