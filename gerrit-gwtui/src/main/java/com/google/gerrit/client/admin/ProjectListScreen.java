@@ -1375,7 +1375,7 @@ name|asList
 argument_list|(
 name|k
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 argument_list|)
 decl_stmt|;

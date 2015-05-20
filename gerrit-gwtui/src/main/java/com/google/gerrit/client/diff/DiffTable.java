@@ -954,7 +954,7 @@ name|changeType
 operator|=
 name|info
 operator|.
-name|change_type
+name|changeType
 argument_list|()
 expr_stmt|;
 name|patchSetSelectBoxA
@@ -965,7 +965,7 @@ name|list
 argument_list|,
 name|info
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 argument_list|,
 name|editExists
@@ -985,7 +985,7 @@ name|list
 argument_list|,
 name|info
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 argument_list|,
 name|editExists
@@ -1002,7 +1002,7 @@ name|hdr
 init|=
 name|info
 operator|.
-name|diff_header
+name|diffHeader
 argument_list|()
 decl_stmt|;
 if|if

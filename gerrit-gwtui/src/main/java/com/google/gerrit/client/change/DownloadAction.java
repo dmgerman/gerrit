@@ -195,7 +195,7 @@ name|Id
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
 name|info

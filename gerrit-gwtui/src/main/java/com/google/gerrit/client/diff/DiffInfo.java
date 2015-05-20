@@ -240,30 +240,30 @@ name|SYMLINK
 init|=
 literal|"x-git/symlink"
 decl_stmt|;
-DECL|method|meta_a ()
+DECL|method|metaA ()
 specifier|public
 specifier|final
 specifier|native
 name|FileMeta
-name|meta_a
+name|metaA
 parameter_list|()
 comment|/*-{ return this.meta_a; }-*/
 function_decl|;
-DECL|method|meta_b ()
+DECL|method|metaB ()
 specifier|public
 specifier|final
 specifier|native
 name|FileMeta
-name|meta_b
+name|metaB
 parameter_list|()
 comment|/*-{ return this.meta_b; }-*/
 function_decl|;
-DECL|method|diff_header ()
+DECL|method|diffHeader ()
 specifier|public
 specifier|final
 specifier|native
 name|JsArrayString
-name|diff_header
+name|diffHeader
 parameter_list|()
 comment|/*-{ return this.diff_header; }-*/
 function_decl|;
@@ -279,7 +279,7 @@ name|content
 parameter_list|()
 comment|/*-{ return this.content; }-*/
 function_decl|;
-DECL|method|web_links ()
+DECL|method|webLinks ()
 specifier|public
 specifier|final
 specifier|native
@@ -287,7 +287,7 @@ name|JsArray
 argument_list|<
 name|DiffWebLinkInfo
 argument_list|>
-name|web_links
+name|webLinks
 parameter_list|()
 comment|/*-{ return this.web_links; }-*/
 function_decl|;
@@ -300,14 +300,14 @@ name|binary
 parameter_list|()
 comment|/*-{ return this.binary || false; }-*/
 function_decl|;
-DECL|method|side_by_side_web_links ()
+DECL|method|sideBySideWebLinks ()
 specifier|public
 specifier|final
 name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
-name|side_by_side_web_links
+name|sideBySideWebLinks
 parameter_list|()
 block|{
 return|return
@@ -319,14 +319,14 @@ name|SIDE_BY_SIDE
 argument_list|)
 return|;
 block|}
-DECL|method|unified_web_links ()
+DECL|method|unifiedWebLinks ()
 specifier|public
 specifier|final
 name|List
 argument_list|<
 name|WebLinkInfo
 argument_list|>
-name|unified_web_links
+name|unifiedWebLinks
 parameter_list|()
 block|{
 return|return
@@ -372,7 +372,7 @@ name|Natives
 operator|.
 name|asList
 argument_list|(
-name|web_links
+name|webLinks
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -441,11 +441,11 @@ return|return
 name|filteredDiffWebLinks
 return|;
 block|}
-DECL|method|change_type ()
+DECL|method|changeType ()
 specifier|public
 specifier|final
 name|ChangeType
-name|change_type
+name|changeType
 parameter_list|()
 block|{
 return|return
@@ -453,31 +453,31 @@ name|ChangeType
 operator|.
 name|valueOf
 argument_list|(
-name|change_typeRaw
+name|changeTypeRaw
 argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|change_typeRaw ()
+DECL|method|changeTypeRaw ()
 specifier|private
 specifier|final
 specifier|native
 name|String
-name|change_typeRaw
+name|changeTypeRaw
 parameter_list|()
 comment|/*-{ return this.change_type }-*/
 function_decl|;
-DECL|method|intraline_status ()
+DECL|method|intralineStatus ()
 specifier|public
 specifier|final
 name|IntraLineStatus
-name|intraline_status
+name|intralineStatus
 parameter_list|()
 block|{
 name|String
 name|s
 init|=
-name|intraline_statusRaw
+name|intralineStatusRaw
 argument_list|()
 decl_stmt|;
 return|return
@@ -497,20 +497,20 @@ operator|.
 name|OFF
 return|;
 block|}
-DECL|method|intraline_statusRaw ()
+DECL|method|intralineStatusRaw ()
 specifier|private
 specifier|final
 specifier|native
 name|String
-name|intraline_statusRaw
+name|intralineStatusRaw
 parameter_list|()
 comment|/*-{ return this.intraline_status }-*/
 function_decl|;
-DECL|method|has_skip ()
+DECL|method|hasSkip ()
 specifier|public
 specifier|final
 name|boolean
-name|has_skip
+name|hasSkip
 parameter_list|()
 block|{
 name|JsArray
@@ -564,11 +564,11 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|text_a ()
+DECL|method|textA ()
 specifier|public
 specifier|final
 name|String
-name|text_a
+name|textA
 parameter_list|()
 block|{
 name|StringBuilder
@@ -667,11 +667,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|text_b ()
+DECL|method|textB ()
 specifier|public
 specifier|final
 name|String
-name|text_b
+name|textB
 parameter_list|()
 block|{
 name|StringBuilder
@@ -859,12 +859,12 @@ name|name
 parameter_list|()
 comment|/*-{ return this.name; }-*/
 function_decl|;
-DECL|method|content_type ()
+DECL|method|contentType ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|content_type
+name|contentType
 parameter_list|()
 comment|/*-{ return this.content_type; }-*/
 function_decl|;
@@ -877,7 +877,7 @@ name|lines
 parameter_list|()
 comment|/*-{ return this.lines || 0 }-*/
 function_decl|;
-DECL|method|web_links ()
+DECL|method|webLinks ()
 specifier|public
 specifier|final
 specifier|native
@@ -885,7 +885,7 @@ name|JsArray
 argument_list|<
 name|WebLinkInfo
 argument_list|>
-name|web_links
+name|webLinks
 parameter_list|()
 comment|/*-{ return this.web_links; }-*/
 function_decl|;
@@ -948,7 +948,7 @@ name|common
 parameter_list|()
 comment|/*-{ return this.common || false; }-*/
 function_decl|;
-DECL|method|edit_a ()
+DECL|method|editA ()
 specifier|public
 specifier|final
 specifier|native
@@ -956,11 +956,11 @@ name|JsArray
 argument_list|<
 name|Span
 argument_list|>
-name|edit_a
+name|editA
 parameter_list|()
 comment|/*-{ return this.edit_a }-*/
 function_decl|;
-DECL|method|edit_b ()
+DECL|method|editB ()
 specifier|public
 specifier|final
 specifier|native
@@ -968,7 +968,7 @@ name|JsArray
 argument_list|<
 name|Span
 argument_list|>
-name|edit_b
+name|editB
 parameter_list|()
 comment|/*-{ return this.edit_b }-*/
 function_decl|;

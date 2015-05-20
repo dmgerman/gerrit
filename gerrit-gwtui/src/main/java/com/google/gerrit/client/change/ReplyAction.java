@@ -433,7 +433,7 @@ name|Id
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
 name|info
@@ -495,7 +495,7 @@ name|equals
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -503,7 +503,7 @@ name|allLabels
 operator|=
 name|info
 operator|.
-name|all_labels
+name|allLabels
 argument_list|()
 expr_stmt|;
 name|permittedLabels
@@ -512,12 +512,12 @@ name|current
 operator|&&
 name|info
 operator|.
-name|has_permitted_labels
+name|hasPermittedLabels
 argument_list|()
 condition|?
 name|info
 operator|.
-name|permitted_labels
+name|permittedLabels
 argument_list|()
 else|:
 name|NativeMap

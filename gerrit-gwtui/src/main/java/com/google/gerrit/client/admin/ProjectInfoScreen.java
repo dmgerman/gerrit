@@ -2180,7 +2180,7 @@ name|startsWith
 argument_list|(
 name|inheritedBoolean
 operator|.
-name|configured_value
+name|configuredValue
 argument_list|()
 operator|.
 name|name
@@ -2307,7 +2307,7 @@ literal|" ("
 operator|+
 name|inheritedBoolean
 operator|.
-name|inherited_value
+name|inheritedValue
 argument_list|()
 operator|+
 literal|")"
@@ -2412,7 +2412,7 @@ name|contributorAgreements
 argument_list|,
 name|result
 operator|.
-name|use_contributor_agreements
+name|useContributorAgreements
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2422,7 +2422,7 @@ name|signedOffBy
 argument_list|,
 name|result
 operator|.
-name|use_signed_off_by
+name|useSignedOffBy
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2432,7 +2432,7 @@ name|contentMerge
 argument_list|,
 name|result
 operator|.
-name|use_content_merge
+name|useContentMerge
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2442,7 +2442,7 @@ name|newChangeForAllNotInTarget
 argument_list|,
 name|result
 operator|.
-name|create_new_change_for_all_not_in_target
+name|createNewChangeForAllNotInTarget
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2452,7 +2452,7 @@ name|requireChangeID
 argument_list|,
 name|result
 operator|.
-name|require_change_id
+name|requireChangeId
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2460,7 +2460,7 @@ name|setSubmitType
 argument_list|(
 name|result
 operator|.
-name|submit_type
+name|submitType
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2478,10 +2478,10 @@ name|setText
 argument_list|(
 name|result
 operator|.
-name|max_object_size_limit
+name|maxObjectSizeLimit
 argument_list|()
 operator|.
-name|configured_value
+name|configuredValue
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2489,10 +2489,10 @@ if|if
 condition|(
 name|result
 operator|.
-name|max_object_size_limit
+name|maxObjectSizeLimit
 argument_list|()
 operator|.
-name|inherited_value
+name|inheritedValue
 argument_list|()
 operator|!=
 literal|null
@@ -2517,7 +2517,7 @@ name|effectiveMaxObjectSizeLimit
 argument_list|(
 name|result
 operator|.
-name|max_object_size_limit
+name|maxObjectSizeLimit
 argument_list|()
 operator|.
 name|value
@@ -2537,10 +2537,10 @@ name|globalMaxObjectSizeLimit
 argument_list|(
 name|result
 operator|.
-name|max_object_size_limit
+name|maxObjectSizeLimit
 argument_list|()
 operator|.
-name|inherited_value
+name|inheritedValue
 argument_list|()
 argument_list|)
 argument_list|)

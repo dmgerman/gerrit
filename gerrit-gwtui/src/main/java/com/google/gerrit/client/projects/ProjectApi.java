@@ -677,7 +677,7 @@ control|)
 block|{
 name|d
 operator|.
-name|add_branch
+name|addBranch
 argument_list|(
 name|ref
 argument_list|)
@@ -1919,11 +1919,11 @@ name|init
 parameter_list|()
 comment|/*-{ this.branches = []; }-*/
 function_decl|;
-DECL|method|add_branch (String b)
+DECL|method|addBranch (String b)
 specifier|final
 specifier|native
 name|void
-name|add_branch
+name|addBranch
 parameter_list|(
 name|String
 name|b

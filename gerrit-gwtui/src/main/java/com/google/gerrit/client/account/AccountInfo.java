@@ -106,12 +106,12 @@ name|AccountInfo
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|_account_id ()
+DECL|method|_accountId ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|_account_id
+name|_accountId
 parameter_list|()
 comment|/*-{ return this._account_id || 0; }-*/
 function_decl|;
@@ -143,12 +143,12 @@ parameter_list|()
 comment|/*-{ return this.username; }-*/
 function_decl|;
 comment|/**    * @return true if the server supplied avatar information about this account.    *         The information may be an empty list, indicating no avatars are    *         available, such as when no plugin is installed. This method returns    *         false if the server did not check on avatars for the account.    */
-DECL|method|has_avatar_info ()
+DECL|method|hasAvatarInfo ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_avatar_info
+name|hasAvatarInfo
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('avatars') }-*/
 function_decl|;

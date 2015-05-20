@@ -577,14 +577,14 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|old_path
+name|oldPath
 argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
 name|in
 operator|.
-name|new_path
+name|newPath
 argument_list|(
 name|newPath
 argument_list|)
@@ -634,7 +634,7 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|restore_path
+name|restorePath
 argument_list|(
 name|path
 argument_list|)
@@ -727,33 +727,33 @@ name|cast
 argument_list|()
 return|;
 block|}
-DECL|method|restore_path (String p)
+DECL|method|restorePath (String p)
 specifier|final
 specifier|native
 name|void
-name|restore_path
+name|restorePath
 parameter_list|(
 name|String
 name|p
 parameter_list|)
 comment|/*-{ this.restore_path=p }-*/
 function_decl|;
-DECL|method|old_path (String p)
+DECL|method|oldPath (String p)
 specifier|final
 specifier|native
 name|void
-name|old_path
+name|oldPath
 parameter_list|(
 name|String
 name|p
 parameter_list|)
 comment|/*-{ this.old_path=p }-*/
 function_decl|;
-DECL|method|new_path (String p)
+DECL|method|newPath (String p)
 specifier|final
 specifier|native
 name|void
-name|new_path
+name|newPath
 parameter_list|(
 name|String
 name|p

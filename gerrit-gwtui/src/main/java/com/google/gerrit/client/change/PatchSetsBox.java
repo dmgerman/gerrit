@@ -1161,7 +1161,7 @@ condition|)
 block|{
 name|edit
 operator|.
-name|set_name
+name|setName
 argument_list|(
 name|edit
 operator|.
@@ -1545,7 +1545,7 @@ if|if
 condition|(
 name|r
 operator|.
-name|has_draft_comments
+name|hasDraftComments
 argument_list|()
 condition|)
 block|{

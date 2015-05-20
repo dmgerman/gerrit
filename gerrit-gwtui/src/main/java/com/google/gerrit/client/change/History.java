@@ -656,7 +656,7 @@ operator|.
 name|author
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 decl_stmt|;
 name|List
@@ -744,7 +744,7 @@ operator|.
 name|author
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 decl_stmt|;
 name|List

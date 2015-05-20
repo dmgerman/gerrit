@@ -2087,7 +2087,7 @@ expr_stmt|;
 block|}
 name|i
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|(
 name|c
 operator|.
@@ -2169,7 +2169,7 @@ argument_list|()
 argument_list|,
 name|i
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|()
 argument_list|,
 name|i

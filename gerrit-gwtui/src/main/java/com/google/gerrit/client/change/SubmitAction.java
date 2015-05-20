@@ -245,7 +245,7 @@ name|changeId
 init|=
 name|changeInfo
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 decl_stmt|;
 name|ChangeApi

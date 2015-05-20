@@ -212,7 +212,7 @@ name|description
 parameter_list|()
 comment|/*-{ return this.description; }-*/
 function_decl|;
-DECL|method|web_links ()
+DECL|method|webLinks ()
 specifier|public
 specifier|final
 specifier|native
@@ -220,7 +220,7 @@ name|JsArray
 argument_list|<
 name|WebLinkInfo
 argument_list|>
-name|web_links
+name|webLinks
 parameter_list|()
 comment|/*-{ return this.web_links; }-*/
 function_decl|;

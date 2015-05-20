@@ -3458,7 +3458,7 @@ if|if
 condition|(
 name|k
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 operator|!=
 literal|null
@@ -3475,7 +3475,7 @@ name|asList
 argument_list|(
 name|k
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 argument_list|)
 control|)

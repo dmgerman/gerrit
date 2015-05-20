@@ -761,7 +761,7 @@ name|editWithCommands
 argument_list|(
 name|change
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -823,7 +823,7 @@ name|detail
 argument_list|(
 name|change
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -846,7 +846,7 @@ name|equals
 argument_list|(
 name|change
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 condition|?
@@ -1812,7 +1812,7 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|download_scheme
+name|downloadScheme
 argument_list|(
 name|scheme
 argument_list|)
@@ -1992,16 +1992,16 @@ name|cast
 argument_list|()
 return|;
 block|}
-DECL|method|download_scheme (DownloadScheme s)
+DECL|method|downloadScheme (DownloadScheme s)
 specifier|final
 name|void
-name|download_scheme
+name|downloadScheme
 parameter_list|(
 name|DownloadScheme
 name|s
 parameter_list|)
 block|{
-name|download_scheme0
+name|downloadScheme0
 argument_list|(
 name|s
 operator|.
@@ -2010,12 +2010,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|download_scheme0 (String n)
+DECL|method|downloadScheme0 (String n)
 specifier|private
 specifier|final
 specifier|native
 name|void
-name|download_scheme0
+name|downloadScheme0
 parameter_list|(
 name|String
 name|n

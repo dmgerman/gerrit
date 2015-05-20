@@ -183,30 +183,30 @@ name|path
 parameter_list|()
 comment|/*-{ return this.path; }-*/
 function_decl|;
-DECL|method|old_path ()
+DECL|method|oldPath ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|old_path
+name|oldPath
 parameter_list|()
 comment|/*-{ return this.old_path; }-*/
 function_decl|;
-DECL|method|lines_inserted ()
+DECL|method|linesInserted ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|lines_inserted
+name|linesInserted
 parameter_list|()
 comment|/*-{ return this.lines_inserted || 0; }-*/
 function_decl|;
-DECL|method|lines_deleted ()
+DECL|method|linesDeleted ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|lines_deleted
+name|linesDeleted
 parameter_list|()
 comment|/*-{ return this.lines_deleted || 0; }-*/
 function_decl|;

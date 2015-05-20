@@ -1899,7 +1899,7 @@ condition|)
 block|{
 name|edit
 operator|.
-name|set_name
+name|setName
 argument_list|(
 name|edit
 operator|.
@@ -1912,7 +1912,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|set_edit
+name|setEdit
 argument_list|(
 name|edit
 argument_list|)
@@ -1947,7 +1947,7 @@ name|revision
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 operator|.
@@ -4019,12 +4019,12 @@ name|newCM
 argument_list|(
 name|diff
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 argument_list|,
 name|diff
 operator|.
-name|text_a
+name|textA
 argument_list|()
 argument_list|,
 name|diffTable
@@ -4038,12 +4038,12 @@ name|newCM
 argument_list|(
 name|diff
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 argument_list|,
 name|diff
 operator|.
-name|text_b
+name|textB
 argument_list|()
 argument_list|,
 name|diffTable
@@ -4258,7 +4258,7 @@ argument_list|()
 argument_list|,
 name|diff
 operator|.
-name|side_by_side_web_links
+name|sideBySideWebLinks
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4593,7 +4593,7 @@ block|{
 return|return
 name|diff
 operator|.
-name|intraline_status
+name|intralineStatus
 argument_list|()
 return|;
 block|}
@@ -4644,7 +4644,7 @@ name|getContentType
 argument_list|(
 name|diff
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 argument_list|)
 return|;
@@ -4953,7 +4953,7 @@ name|getContentType
 argument_list|(
 name|diff
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 argument_list|)
 argument_list|)
@@ -4968,7 +4968,7 @@ name|getContentType
 argument_list|(
 name|diff
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 argument_list|)
 argument_list|)
@@ -5854,7 +5854,7 @@ if|if
 condition|(
 name|diff
 operator|.
-name|text_b
+name|textB
 argument_list|()
 operator|.
 name|startsWith
@@ -6158,7 +6158,7 @@ literal|null
 operator|&&
 name|meta
 operator|.
-name|content_type
+name|contentType
 argument_list|()
 operator|!=
 literal|null
@@ -6173,7 +6173,7 @@ name|findMode
 argument_list|(
 name|meta
 operator|.
-name|content_type
+name|contentType
 argument_list|()
 argument_list|,
 name|path
@@ -6221,7 +6221,7 @@ name|getContentType
 argument_list|(
 name|diffInfo
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 argument_list|)
 argument_list|)
@@ -6232,7 +6232,7 @@ name|getContentType
 argument_list|(
 name|diffInfo
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 argument_list|)
 argument_list|)
@@ -6424,7 +6424,7 @@ name|getContentType
 argument_list|(
 name|info
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 argument_list|)
 argument_list|)
@@ -6435,7 +6435,7 @@ name|getContentType
 argument_list|(
 name|info
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 argument_list|)
 argument_list|)
@@ -6630,7 +6630,7 @@ name|a
 init|=
 name|diff
 operator|.
-name|meta_a
+name|metaA
 argument_list|()
 decl_stmt|;
 name|FileMeta
@@ -6638,7 +6638,7 @@ name|b
 init|=
 name|diff
 operator|.
-name|meta_b
+name|metaB
 argument_list|()
 decl_stmt|;
 name|FileSize

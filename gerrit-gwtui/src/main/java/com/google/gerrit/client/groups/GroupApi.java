@@ -829,7 +829,7 @@ control|)
 block|{
 name|input
 operator|.
-name|add_member
+name|addMember
 argument_list|(
 name|member
 argument_list|)
@@ -930,7 +930,7 @@ control|)
 block|{
 name|in
 operator|.
-name|add_member
+name|addMember
 argument_list|(
 name|id
 operator|.
@@ -1119,7 +1119,7 @@ control|)
 block|{
 name|input
 operator|.
-name|add_group
+name|addGroup
 argument_list|(
 name|includedGroup
 argument_list|)
@@ -1231,7 +1231,7 @@ control|)
 block|{
 name|in
 operator|.
-name|add_group
+name|addGroup
 argument_list|(
 name|g
 operator|.
@@ -1468,11 +1468,11 @@ name|init
 parameter_list|()
 comment|/*-{ this.members = []; }-*/
 function_decl|;
-DECL|method|add_member (String n)
+DECL|method|addMember (String n)
 specifier|final
 specifier|native
 name|void
-name|add_member
+name|addMember
 parameter_list|(
 name|String
 name|n
@@ -1525,11 +1525,11 @@ name|init
 parameter_list|()
 comment|/*-{ this.groups = []; }-*/
 function_decl|;
-DECL|method|add_group (String n)
+DECL|method|addGroup (String n)
 specifier|final
 specifier|native
 name|void
-name|add_group
+name|addGroup
 parameter_list|(
 name|String
 name|n

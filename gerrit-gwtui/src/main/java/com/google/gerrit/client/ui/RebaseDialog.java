@@ -470,7 +470,7 @@ name|equals
 argument_list|(
 name|ci
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|)
 condition|)
@@ -487,7 +487,7 @@ name|valueOf
 argument_list|(
 name|ci
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -934,7 +934,7 @@ name|valueOf
 argument_list|(
 name|change
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -964,7 +964,7 @@ name|valueOf
 argument_list|(
 name|change
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get

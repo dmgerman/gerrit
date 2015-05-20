@@ -2447,7 +2447,7 @@ argument_list|(
 name|revision
 argument_list|)
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -2533,7 +2533,7 @@ literal|0
 operator|&&
 name|changeInfo
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 operator|.
 name|equals
@@ -2655,7 +2655,7 @@ name|Id
 argument_list|(
 name|changeInfo
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
 name|revisions
@@ -2707,7 +2707,7 @@ name|IncludedInAction
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
 name|style
@@ -2755,7 +2755,7 @@ name|actions
 init|=
 name|info
 operator|.
-name|has_actions
+name|hasActions
 argument_list|()
 condition|?
 name|info
@@ -2838,7 +2838,7 @@ if|if
 condition|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 operator|!=
 literal|null
@@ -2852,7 +2852,7 @@ name|containsKey
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 condition|)
@@ -2865,7 +2865,7 @@ name|revision
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 operator|.
@@ -3011,7 +3011,7 @@ name|PatchSetsAction
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|,
 name|revision
@@ -3160,7 +3160,7 @@ name|toProject
 argument_list|(
 name|info
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3221,7 +3221,7 @@ name|toProject
 argument_list|(
 name|info
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3256,7 +3256,7 @@ name|toProjectDefaultDashboard
 argument_list|(
 name|info
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|)
 argument_list|)
@@ -3295,7 +3295,7 @@ name|query
 argument_list|(
 name|info
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|,
 name|info
@@ -3507,7 +3507,7 @@ if|if
 condition|(
 name|rev
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -3563,7 +3563,7 @@ if|if
 condition|(
 name|rev
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -3585,7 +3585,7 @@ name|equals
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 return|;
@@ -5393,7 +5393,7 @@ condition|)
 block|{
 name|edit
 operator|.
-name|set_name
+name|setName
 argument_list|(
 name|edit
 operator|.
@@ -5406,7 +5406,7 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|set_edit
+name|setEdit
 argument_list|(
 name|edit
 argument_list|)
@@ -5415,7 +5415,7 @@ if|if
 condition|(
 name|edit
 operator|.
-name|has_files
+name|hasFiles
 argument_list|()
 condition|)
 block|{
@@ -5506,13 +5506,13 @@ if|if
 condition|(
 name|rev
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
 name|info
 operator|.
-name|set_current_revision
+name|setCurrentRevision
 argument_list|(
 name|rev
 operator|.
@@ -5572,13 +5572,13 @@ if|if
 condition|(
 name|r
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
 name|info
 operator|.
-name|set_current_revision
+name|setCurrentRevision
 argument_list|(
 name|r
 operator|.
@@ -5632,7 +5632,7 @@ if|if
 condition|(
 name|rev
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -5707,7 +5707,7 @@ name|get
 argument_list|(
 name|info
 operator|.
-name|project_name_key
+name|projectNameKey
 argument_list|()
 argument_list|,
 name|group
@@ -5800,7 +5800,7 @@ operator|.
 name|getUserAccountInfo
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 decl_stmt|;
 for|for
@@ -5853,7 +5853,7 @@ operator|.
 name|author
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 operator|==
 name|self
@@ -6475,7 +6475,7 @@ if|if
 condition|(
 name|c
 operator|.
-name|patch_set
+name|patchSet
 argument_list|()
 operator|==
 name|id
@@ -6679,7 +6679,7 @@ if|if
 condition|(
 name|rev
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -6722,7 +6722,7 @@ parameter_list|)
 block|{
 name|rev
 operator|.
-name|set_commit
+name|setCommit
 argument_list|(
 name|info
 argument_list|)
@@ -6921,7 +6921,7 @@ name|revision
 argument_list|,
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -7015,7 +7015,7 @@ name|changeWithNoRevisions
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 operator|.
 name|get
@@ -7408,7 +7408,7 @@ name|valueOf
 argument_list|(
 name|info
 operator|.
-name|legacy_id
+name|legacyId
 argument_list|()
 argument_list|)
 argument_list|)
@@ -7494,7 +7494,7 @@ name|changeScreenTitleId
 argument_list|(
 name|info
 operator|.
-name|id_abbreviated
+name|idAbbreviated
 argument_list|()
 argument_list|)
 argument_list|)
@@ -7555,7 +7555,7 @@ name|equals
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 operator|||
@@ -7566,7 +7566,7 @@ argument_list|(
 name|revision
 argument_list|)
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -7636,21 +7636,21 @@ name|equals
 argument_list|(
 name|info
 operator|.
-name|current_revision
+name|currentRevision
 argument_list|()
 argument_list|)
 operator|&&
 operator|!
 name|revisionInfo
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
 name|revisionInfo
 operator|.
-name|is_edit
+name|isEdit
 argument_list|()
 condition|)
 block|{
@@ -8015,7 +8015,7 @@ operator|.
 name|owner
 argument_list|()
 operator|.
-name|_account_id
+name|_accountId
 argument_list|()
 argument_list|)
 argument_list|,

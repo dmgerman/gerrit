@@ -980,7 +980,7 @@ name|asList
 argument_list|(
 name|meta
 operator|.
-name|web_links
+name|webLinks
 argument_list|()
 argument_list|)
 decl_stmt|;

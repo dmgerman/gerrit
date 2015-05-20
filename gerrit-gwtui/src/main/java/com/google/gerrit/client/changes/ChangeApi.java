@@ -379,7 +379,7 @@ argument_list|)
 expr_stmt|;
 name|input
 operator|.
-name|base_change
+name|baseChange
 argument_list|(
 name|emptyToNull
 argument_list|(
@@ -1307,7 +1307,7 @@ argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|wait_for_merge
+name|waitForMerge
 argument_list|(
 literal|true
 argument_list|)
@@ -1712,12 +1712,12 @@ name|s
 parameter_list|)
 comment|/*-{ if(s)this.subject=s; }-*/
 function_decl|;
-DECL|method|base_change (String b)
+DECL|method|baseChange (String b)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|base_change
+name|baseChange
 parameter_list|(
 name|String
 name|b
@@ -1839,11 +1839,11 @@ name|SubmitInput
 extends|extends
 name|JavaScriptObject
 block|{
-DECL|method|wait_for_merge (boolean b)
+DECL|method|waitForMerge (boolean b)
 specifier|final
 specifier|native
 name|void
-name|wait_for_merge
+name|waitForMerge
 parameter_list|(
 name|boolean
 name|b

@@ -221,7 +221,7 @@ name|line
 argument_list|(
 name|range
 operator|.
-name|end_line
+name|endLine
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -294,7 +294,7 @@ argument_list|)
 expr_stmt|;
 name|n
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|(
 name|r
 operator|.
@@ -306,7 +306,7 @@ if|if
 condition|(
 name|r
 operator|.
-name|has_range
+name|hasRange
 argument_list|()
 condition|)
 block|{
@@ -319,7 +319,7 @@ operator|.
 name|range
 argument_list|()
 operator|.
-name|end_line
+name|endLine
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -339,7 +339,7 @@ if|if
 condition|(
 name|r
 operator|.
-name|has_line
+name|hasLine
 argument_list|()
 condition|)
 block|{
@@ -409,11 +409,11 @@ argument_list|)
 expr_stmt|;
 name|n
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|(
 name|s
 operator|.
-name|in_reply_to
+name|inReplyTo
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -431,7 +431,7 @@ if|if
 condition|(
 name|s
 operator|.
-name|has_range
+name|hasRange
 argument_list|()
 condition|)
 block|{
@@ -444,7 +444,7 @@ operator|.
 name|range
 argument_list|()
 operator|.
-name|end_line
+name|endLine
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -464,7 +464,7 @@ if|if
 condition|(
 name|s
 operator|.
-name|has_line
+name|hasLine
 argument_list|()
 condition|)
 block|{
@@ -531,12 +531,12 @@ name|r
 parameter_list|)
 comment|/*-{ this.range = r }-*/
 function_decl|;
-DECL|method|in_reply_to (String i)
+DECL|method|inReplyTo (String i)
 specifier|public
 specifier|final
 specifier|native
 name|void
-name|in_reply_to
+name|inReplyTo
 parameter_list|(
 name|String
 name|i
@@ -604,21 +604,21 @@ name|id
 parameter_list|()
 comment|/*-{ return this.id }-*/
 function_decl|;
-DECL|method|in_reply_to ()
+DECL|method|inReplyTo ()
 specifier|public
 specifier|final
 specifier|native
 name|String
-name|in_reply_to
+name|inReplyTo
 parameter_list|()
 comment|/*-{ return this.in_reply_to }-*/
 function_decl|;
-DECL|method|patch_set ()
+DECL|method|patchSet ()
 specifier|public
 specifier|final
 specifier|native
 name|int
-name|patch_set
+name|patchSet
 parameter_list|()
 comment|/*-{ return this.patch_set }-*/
 function_decl|;
@@ -762,21 +762,21 @@ name|line
 parameter_list|()
 comment|/*-{ return this.line || 0 }-*/
 function_decl|;
-DECL|method|has_line ()
+DECL|method|hasLine ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_line
+name|hasLine
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('line') }-*/
 function_decl|;
-DECL|method|has_range ()
+DECL|method|hasRange ()
 specifier|public
 specifier|final
 specifier|native
 name|boolean
-name|has_range
+name|hasRange
 parameter_list|()
 comment|/*-{ return this.hasOwnProperty('range') }-*/
 function_decl|;
