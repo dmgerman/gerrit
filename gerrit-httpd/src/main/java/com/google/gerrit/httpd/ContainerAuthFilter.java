@@ -325,15 +325,6 @@ name|ContainerAuthFilter
 implements|implements
 name|Filter
 block|{
-DECL|field|REALM_NAME
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|REALM_NAME
-init|=
-literal|"Gerrit Code Review"
-decl_stmt|;
 DECL|field|session
 specifier|private
 specifier|final
