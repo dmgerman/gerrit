@@ -3600,7 +3600,7 @@ argument_list|()
 operator|+
 literal|"} (status:open OR status:closed)"
 argument_list|)
-comment|// Options should match defaults in ChangeList.
+comment|// Options should match defaults in ChangeTable.
 operator|.
 name|withOption
 argument_list|(

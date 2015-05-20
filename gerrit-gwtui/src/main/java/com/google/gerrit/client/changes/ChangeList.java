@@ -152,7 +152,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|EnumSet
+name|Set
 import|;
 end_import
 
@@ -180,33 +180,8 @@ name|URI
 init|=
 literal|"/changes/"
 decl_stmt|;
-comment|// If changing default options, also update in
-comment|// ChangeIT#defaultSearchDoesNotTouchDatabase().
-DECL|field|OPTIONS
-specifier|private
-specifier|static
-specifier|final
-name|EnumSet
-argument_list|<
-name|ListChangesOption
-argument_list|>
-name|OPTIONS
-init|=
-name|EnumSet
-operator|.
-name|of
-argument_list|(
-name|ListChangesOption
-operator|.
-name|LABELS
-argument_list|,
-name|ListChangesOption
-operator|.
-name|DETAILED_ACCOUNTS
-argument_list|)
-decl_stmt|;
 comment|/** Run multiple queries in a single remote invocation. */
-DECL|method|queryMultiple ( final AsyncCallback<JsArray<ChangeList>> callback, EnumSet<ListChangesOption> options, String... queries)
+DECL|method|queryMultiple ( final AsyncCallback<JsArray<ChangeList>> callback, Set<ListChangesOption> options, String... queries)
 specifier|public
 specifier|static
 name|void
@@ -222,7 +197,7 @@ argument_list|>
 argument_list|>
 name|callback
 parameter_list|,
-name|EnumSet
+name|Set
 argument_list|<
 name|ListChangesOption
 argument_list|>
@@ -276,18 +251,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|OPTIONS
-operator|.
-name|addAll
-argument_list|(
-name|options
-argument_list|)
-expr_stmt|;
 name|addOptions
 argument_list|(
 name|call
 argument_list|,
-name|OPTIONS
+name|options
 argument_list|)
 expr_stmt|;
 if|if
@@ -388,7 +356,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|query (String query, EnumSet<ListChangesOption> options, AsyncCallback<ChangeList> callback)
+DECL|method|query (String query, Set<ListChangesOption> options, AsyncCallback<ChangeList> callback)
 specifier|public
 specifier|static
 name|void
@@ -397,7 +365,7 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|EnumSet
+name|Set
 argument_list|<
 name|ListChangesOption
 argument_list|>
@@ -433,7 +401,7 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|next (String query, int start, int limit, AsyncCallback<ChangeList> callback)
+DECL|method|next (String query, int start, int limit, Set<ListChangesOption> options, AsyncCallback<ChangeList> callback)
 specifier|public
 specifier|static
 name|void
@@ -447,6 +415,12 @@ name|start
 parameter_list|,
 name|int
 name|limit
+parameter_list|,
+name|Set
+argument_list|<
+name|ListChangesOption
+argument_list|>
+name|options
 parameter_list|,
 name|AsyncCallback
 argument_list|<
@@ -484,7 +458,7 @@ name|addOptions
 argument_list|(
 name|call
 argument_list|,
-name|OPTIONS
+name|options
 argument_list|)
 expr_stmt|;
 if|if
@@ -512,7 +486,7 @@ name|callback
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addOptions (RestApi call, EnumSet<ListChangesOption> s)
+DECL|method|addOptions (RestApi call, Set<ListChangesOption> s)
 specifier|public
 specifier|static
 name|void
@@ -521,7 +495,7 @@ parameter_list|(
 name|RestApi
 name|call
 parameter_list|,
-name|EnumSet
+name|Set
 argument_list|<
 name|ListChangesOption
 argument_list|>

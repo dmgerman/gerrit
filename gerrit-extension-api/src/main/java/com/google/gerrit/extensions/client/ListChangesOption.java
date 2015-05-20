@@ -76,6 +76,16 @@ name|EnumSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_comment
 comment|/** Output options available for retrieval change details. */
 end_comment
@@ -351,13 +361,13 @@ return|return
 name|r
 return|;
 block|}
-DECL|method|toBits (EnumSet<ListChangesOption> set)
+DECL|method|toBits (Set<ListChangesOption> set)
 specifier|public
 specifier|static
 name|int
 name|toBits
 parameter_list|(
-name|EnumSet
+name|Set
 argument_list|<
 name|ListChangesOption
 argument_list|>
