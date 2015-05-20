@@ -762,12 +762,18 @@ operator|=
 name|patchSetInserterFactory
 expr_stmt|;
 block|}
-comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param change the change to perform the rebase for    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @param newBaseRev the commit that should be the new base    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
-DECL|method|rebase (Change change, PatchSet.Id patchSetId, final IdentifiedUser uploader, final String newBaseRev)
+comment|/**    * Rebases the change of the given patch set.    *    * It is verified that the current user is allowed to do the rebase.    *    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *    * The rebased commit is added as new patch set to the change.    *    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param git the repository    * @param revWalk the RevWalk    * @param change the change to perform the rebase for    * @param patchSetId the id of the patch set    * @param uploader the user that creates the rebased patch set    * @param newBaseRev the commit that should be the new base    * @throws NoSuchChangeException thrown if the change to which the patch set    *         belongs does not exist or is not visible to the user    * @throws EmailException thrown if sending the e-mail to notify about the new    *         patch set fails    * @throws OrmException thrown in case accessing the database fails    * @throws IOException thrown if rebase is not possible or not needed    * @throws InvalidChangeOperationException thrown if rebase is not allowed    */
+DECL|method|rebase (Repository git, RevWalk revWalk, Change change, PatchSet.Id patchSetId, IdentifiedUser uploader, String newBaseRev)
 specifier|public
 name|void
 name|rebase
 parameter_list|(
+name|Repository
+name|git
+parameter_list|,
+name|RevWalk
+name|revWalk
+parameter_list|,
 name|Change
 name|change
 parameter_list|,
@@ -776,11 +782,9 @@ operator|.
 name|Id
 name|patchSetId
 parameter_list|,
-specifier|final
 name|IdentifiedUser
 name|uploader
 parameter_list|,
-specifier|final
 name|String
 name|newBaseRev
 parameter_list|)
@@ -795,7 +799,6 @@ name|IOException
 throws|,
 name|InvalidChangeOperationException
 block|{
-specifier|final
 name|Change
 operator|.
 name|Id
@@ -806,7 +809,6 @@ operator|.
 name|getParentKey
 argument_list|()
 decl_stmt|;
-specifier|final
 name|ChangeControl
 name|changeControl
 init|=
@@ -843,31 +845,9 @@ throw|;
 block|}
 try|try
 init|(
-name|Repository
-name|git
-init|=
-name|gitManager
-operator|.
-name|openRepository
-argument_list|(
-name|change
-operator|.
-name|getProject
-argument_list|()
-argument_list|)
-init|;
-name|RevWalk
-name|rw
-operator|=
-operator|new
-name|RevWalk
-argument_list|(
-name|git
-argument_list|)
-init|;
 name|ObjectInserter
 name|inserter
-operator|=
+init|=
 name|git
 operator|.
 name|newObjectInserter
@@ -904,7 +884,7 @@ argument_list|()
 argument_list|,
 name|git
 argument_list|,
-name|rw
+name|revWalk
 argument_list|)
 expr_stmt|;
 block|}
@@ -935,11 +915,10 @@ name|baseRev
 argument_list|)
 throw|;
 block|}
-specifier|final
 name|RevCommit
 name|baseCommit
 init|=
-name|rw
+name|revWalk
 operator|.
 name|parseCommit
 argument_list|(
@@ -965,7 +944,7 @@ name|rebase
 argument_list|(
 name|git
 argument_list|,
-name|rw
+name|revWalk
 argument_list|,
 name|inserter
 argument_list|,
