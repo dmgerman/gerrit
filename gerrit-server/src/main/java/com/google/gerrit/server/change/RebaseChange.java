@@ -590,6 +590,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -626,6 +646,22 @@ specifier|public
 class|class
 name|RebaseChange
 block|{
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|RebaseChange
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|changeControlFactory
 specifier|private
 specifier|final
@@ -1008,7 +1044,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Finds the revision of commit on which the given patch set should be based.      *      * @param patchSetId the id of the patch set for which the new base commit      *        should be found      * @param db the ReviewDb      * @param destBranch the destination branch      * @param git the repository      * @return the revision of commit on which the given patch set should be based      * @throws IOException thrown if rebase is not possible or not needed      * @throws OrmException thrown in case accessing the database fails      */
+comment|/**      * Finds the revision of commit on which the given patch set should be based.      *      * @param patchSetId the id of the patch set for which the new base commit      *        should be found      * @param db the ReviewDb      * @param destBranch the destination branch      * @param git the repository      * @return the revision of commit on which the given patch set should be based      * @throws InvalidChangeOperationException if rebase is not possible or not      *     allowed      * @throws IOException thrown if accessing the repository fails      * @throws OrmException thrown if accessing the database fails      */
 DECL|method|findBaseRevision (PatchSet.Id patchSetId, ReviewDb db, Branch.NameKey destBranch, Repository git)
 specifier|private
 specifier|static
@@ -1032,6 +1068,8 @@ name|Repository
 name|git
 parameter_list|)
 throws|throws
+name|InvalidChangeOperationException
+throws|,
 name|IOException
 throws|,
 name|OrmException
@@ -1072,7 +1110,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"Cannot rebase a change with multiple parents. Parent commits: "
 operator|+
@@ -1095,7 +1133,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"Cannot rebase a change without any parents (is this the initial commit?)."
 argument_list|)
@@ -1186,7 +1224,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"Cannot rebase a change with an abandoned parent: "
 operator|+
@@ -1229,7 +1267,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"Change is already based on the latest patch set of the dependent change."
 argument_list|)
@@ -1295,7 +1333,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"The destination branch does not exist: "
 operator|+
@@ -1331,7 +1369,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"Change is already up to date."
 argument_list|)
@@ -1685,6 +1723,8 @@ throws|throws
 name|MergeConflictException
 throws|,
 name|IOException
+throws|,
+name|InvalidChangeOperationException
 block|{
 name|RevCommit
 name|parentCommit
@@ -1708,7 +1748,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|InvalidChangeOperationException
 argument_list|(
 literal|"Change is already up to date."
 argument_list|)
@@ -1983,7 +2023,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|InvalidChangeOperationException
 name|e
 parameter_list|)
 block|{
@@ -1994,9 +2034,28 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+literal|"Error checking if patch set "
+operator|+
+name|patchSetId
+operator|+
+literal|" on "
+operator|+
+name|branch
+operator|+
+literal|" can be rebased"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
