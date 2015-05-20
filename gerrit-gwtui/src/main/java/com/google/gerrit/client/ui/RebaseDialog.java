@@ -673,7 +673,7 @@ condition|)
 block|{
 name|ChangeList
 operator|.
-name|next
+name|query
 argument_list|(
 literal|"project:"
 operator|+
@@ -684,10 +684,6 @@ operator|+
 name|branch
 operator|+
 literal|" AND is:open NOT age:90d"
-argument_list|,
-literal|0
-argument_list|,
-literal|1000
 argument_list|,
 name|Collections
 operator|.
@@ -730,6 +726,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|,
+literal|0
+argument_list|,
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}

@@ -447,13 +447,9 @@ argument_list|()
 expr_stmt|;
 name|ChangeList
 operator|.
-name|next
+name|query
 argument_list|(
 name|query
-argument_list|,
-name|start
-argument_list|,
-name|pageSize
 argument_list|,
 name|ChangeTable
 operator|.
@@ -461,6 +457,10 @@ name|OPTIONS
 argument_list|,
 name|loadCallback
 argument_list|()
+argument_list|,
+name|start
+argument_list|,
+name|pageSize
 argument_list|)
 expr_stmt|;
 block|}
