@@ -692,7 +692,7 @@ argument_list|()
 decl_stmt|;
 name|ChangeList
 operator|.
-name|query
+name|queryMultiple
 argument_list|(
 operator|new
 name|ScreenLoadCallback
