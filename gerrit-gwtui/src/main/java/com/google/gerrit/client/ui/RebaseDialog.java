@@ -726,10 +726,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-argument_list|,
-literal|0
-argument_list|,
-literal|1000
 argument_list|)
 expr_stmt|;
 block|}
