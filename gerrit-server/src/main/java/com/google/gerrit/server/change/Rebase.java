@@ -1085,7 +1085,7 @@ throw|throw
 operator|new
 name|ResourceConflictException
 argument_list|(
-literal|"base change is targetting wrong branch: "
+literal|"base change is targeting wrong branch: "
 operator|+
 name|baseChange
 operator|.
@@ -1147,9 +1147,7 @@ operator|.
 name|getKey
 argument_list|()
 operator|+
-literal|" is a descendant of the current "
-operator|+
-literal|" change - recursion not allowed"
+literal|" is a descendant of the current  change - recursion not allowed"
 argument_list|)
 throw|;
 block|}
@@ -1233,12 +1231,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|parseBase (final String base)
+DECL|method|parseBase (String base)
 specifier|private
 name|PatchSet
 name|parseBase
 parameter_list|(
-specifier|final
 name|String
 name|base
 parameter_list|)
@@ -1274,7 +1271,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// try parsing the base as a ref string
+comment|// Try parsing the base as a ref string.
 return|return
 name|db
 operator|.
@@ -1287,7 +1284,7 @@ name|basePatchSetId
 argument_list|)
 return|;
 block|}
-comment|// try parsing base as a change number (assume current patch set)
+comment|// Try parsing base as a change number (assume current patch set).
 name|PatchSet
 name|basePatchSet
 init|=
@@ -1369,9 +1366,9 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-comment|// probably a SHA1
+comment|// Probably a SHA-1.
 block|}
-comment|// try parsing as SHA1
+comment|// Try parsing as SHA-1.
 if|if
 condition|(
 name|basePatchSet
@@ -1433,12 +1430,11 @@ return|return
 name|basePatchSet
 return|;
 block|}
-DECL|method|hasOneParent (final PatchSet.Id patchSetId)
+DECL|method|hasOneParent (PatchSet.Id patchSetId)
 specifier|private
 name|boolean
 name|hasOneParent
 parameter_list|(
-specifier|final
 name|PatchSet
 operator|.
 name|Id
@@ -1447,7 +1443,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|// prevent rebase of exotic changes (merge commit, no ancestor).
+comment|// Prevent rebase of exotic changes (merge commit, no ancestor).
 return|return
 operator|(
 name|dbProvider
