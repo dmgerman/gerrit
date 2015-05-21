@@ -1633,9 +1633,14 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Unloading plugin %s"
+literal|"Unloading plugin %s, version %s"
 argument_list|,
 name|name
+argument_list|,
+name|plugin
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2389,6 +2394,9 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Plugin
+name|newPlugin
+init|=
 name|runPlugin
 argument_list|(
 name|name
@@ -2399,6 +2407,28 @@ name|getSrcFile
 argument_list|()
 argument_list|,
 name|active
+argument_list|)
+decl_stmt|;
+name|log
+operator|.
+name|info
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Reloaded plugin %s, version %s"
+argument_list|,
+name|newPlugin
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|newPlugin
+operator|.
+name|getVersion
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2630,16 +2660,11 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Reloading plugin %s, version %s"
+literal|"Reloading plugin %s"
 argument_list|,
 name|active
 operator|.
 name|getName
-argument_list|()
-argument_list|,
-name|active
-operator|.
-name|getVersion
 argument_list|()
 argument_list|)
 argument_list|)
@@ -2661,10 +2686,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|active
-operator|==
-literal|null
-operator|&&
 operator|!
 name|loadedPlugin
 operator|.
@@ -2680,7 +2701,15 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Loaded plugin %s, version %s"
+literal|"%s plugin %s, version %s"
+argument_list|,
+name|active
+operator|==
+literal|null
+condition|?
+literal|"Loaded"
+else|:
+literal|"Reloaded"
 argument_list|,
 name|loadedPlugin
 operator|.
