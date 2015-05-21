@@ -1478,6 +1478,8 @@ parameter_list|(
 name|OrmException
 decl||
 name|EmailException
+decl||
+name|IOException
 name|e
 parameter_list|)
 block|{
