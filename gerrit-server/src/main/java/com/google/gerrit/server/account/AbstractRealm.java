@@ -122,7 +122,9 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|AccountExternalId
+name|Account
+operator|.
+name|FieldName
 import|;
 end_import
 
@@ -138,9 +140,7 @@ name|reviewdb
 operator|.
 name|client
 operator|.
-name|Account
-operator|.
-name|FieldName
+name|AccountExternalId
 import|;
 end_import
 

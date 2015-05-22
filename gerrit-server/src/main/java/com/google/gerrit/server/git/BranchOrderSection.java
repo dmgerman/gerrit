@@ -72,13 +72,11 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
+name|common
 operator|.
-name|reviewdb
+name|collect
 operator|.
-name|client
-operator|.
-name|RefNames
+name|ImmutableList
 import|;
 end_import
 
@@ -88,11 +86,13 @@ name|com
 operator|.
 name|google
 operator|.
-name|common
+name|gerrit
 operator|.
-name|collect
+name|reviewdb
 operator|.
-name|ImmutableList
+name|client
+operator|.
+name|RefNames
 import|;
 end_import
 
