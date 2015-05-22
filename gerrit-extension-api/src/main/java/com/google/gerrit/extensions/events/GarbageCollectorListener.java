@@ -115,7 +115,7 @@ name|String
 name|getProjectName
 parameter_list|()
 function_decl|;
-comment|/**      * Properties describing the result of the garbage collection performed by      * JGit      *      * @see org.eclipse.jgit.api.GarbageCollectCommand#call()      */
+comment|/**      * Properties describing the result of the garbage collection performed by      * JGit      *      * @see<a href="http://download.eclipse.org/jgit/site/3.7.0.201502260915-r/apidocs/org/eclipse/jgit/api/GarbageCollectCommand.html#call%28%29">GarbageCollectCommand</a>      */
 DECL|method|getStatistics ()
 name|Properties
 name|getStatistics
