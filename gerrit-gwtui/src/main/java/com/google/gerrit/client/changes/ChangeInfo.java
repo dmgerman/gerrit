@@ -2504,6 +2504,26 @@ name|IncludedInInfo
 extends|extends
 name|JavaScriptObject
 block|{
+DECL|method|externalNames ()
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|externalNames
+parameter_list|()
+block|{
+return|return
+name|Natives
+operator|.
+name|keys
+argument_list|(
+name|external
+argument_list|()
+argument_list|)
+return|;
+block|}
 DECL|method|branches ()
 specifier|public
 specifier|final
@@ -2521,6 +2541,30 @@ name|JsArrayString
 name|tags
 parameter_list|()
 comment|/*-{ return this.tags; }-*/
+function_decl|;
+DECL|method|external (String n)
+specifier|public
+specifier|final
+specifier|native
+name|JsArrayString
+name|external
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.external[n]; }-*/
+function_decl|;
+DECL|method|external ()
+specifier|private
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|JsArrayString
+argument_list|>
+name|external
+parameter_list|()
+comment|/*-{ return this.external; }-*/
 function_decl|;
 DECL|method|IncludedInInfo ()
 specifier|protected
