@@ -1065,6 +1065,7 @@ throw|;
 block|}
 block|}
 DECL|method|schema (@ullable IndexCollection indexes)
+specifier|private
 specifier|static
 name|Schema
 argument_list|<
