@@ -1575,7 +1575,7 @@ finally|finally
 block|{
 name|reader
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -2566,7 +2566,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|release
+name|close
 parameter_list|()
 block|{         }
 block|}
@@ -3235,7 +3235,7 @@ finally|finally
 block|{
 name|ins
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -3293,7 +3293,7 @@ finally|finally
 block|{
 name|oi
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

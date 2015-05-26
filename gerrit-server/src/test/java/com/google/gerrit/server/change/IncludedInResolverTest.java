@@ -867,7 +867,7 @@ name|Exception
 block|{
 name|revWalk
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|super

@@ -2432,7 +2432,7 @@ finally|finally
 block|{
 name|fmt
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|git

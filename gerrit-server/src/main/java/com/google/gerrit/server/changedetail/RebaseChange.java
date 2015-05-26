@@ -1002,7 +1002,7 @@ condition|)
 block|{
 name|inserter
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
@@ -1015,7 +1015,7 @@ condition|)
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}

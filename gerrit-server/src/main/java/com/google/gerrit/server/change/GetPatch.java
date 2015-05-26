@@ -723,7 +723,7 @@ name|IOException
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 name|repo
@@ -808,7 +808,7 @@ condition|)
 block|{
 name|rw
 operator|.
-name|release
+name|close
 argument_list|()
 expr_stmt|;
 block|}
