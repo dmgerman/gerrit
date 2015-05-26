@@ -6475,7 +6475,8 @@ name|reviewed
 return|;
 block|}
 DECL|method|isChangeReviewed (Account.Id self, ChangeData cd, Iterable<ChangeMessage> msgs)
-specifier|private
+specifier|public
+specifier|static
 name|boolean
 name|isChangeReviewed
 parameter_list|(
