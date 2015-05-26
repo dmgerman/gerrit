@@ -469,7 +469,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper to sort {@link ChangeData}s based on {@link RevWalk} ordering.  *<p>  * Split changes by project, and map each change to a single commit based on the  * latest patch set. The set of patch sets considered may be limited by calling  * {@link #includePatchSets(Set)}. Perform a standard {@link RevWalk} on each  * project repository, and record the order in which each change's commit is  * seen.  *<p>  * Once an order within each project is determined, groups of changes are sorted  * based on the project name. This is slightly more stable than sorting on  * something like the commit or change timestamp, as it will not unexpectedly  * reorder large groups of changes on subsequent calls if one of the changes was  * updated.  */
+comment|/**  * Helper to sort {@link ChangeData}s based on {@link RevWalk} ordering.  *<p>  * Split changes by project, and map each change to a single commit based on the  * latest patch set. The set of patch sets considered may be limited by calling  * {@link #includePatchSets(Iterable)}. Perform a standard {@link RevWalk} on  * each project repository, and record the order in which each change's commit  * is seen.  *<p>  * Once an order within each project is determined, groups of changes are sorted  * based on the project name. This is slightly more stable than sorting on  * something like the commit or change timestamp, as it will not unexpectedly  * reorder large groups of changes on subsequent calls if one of the changes was  * updated.  */
 end_comment
 
 begin_class
