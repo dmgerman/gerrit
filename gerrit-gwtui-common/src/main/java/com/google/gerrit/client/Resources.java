@@ -107,6 +107,28 @@ block|{
 annotation|@
 name|Source
 argument_list|(
+literal|"addFileComment.png"
+argument_list|)
+DECL|method|addFileComment ()
+specifier|public
+name|ImageResource
+name|addFileComment
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"arrowDown.png"
+argument_list|)
+DECL|method|arrowDown ()
+specifier|public
+name|ImageResource
+name|arrowDown
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"arrowRight.png"
 argument_list|)
 DECL|method|arrowRight ()
@@ -129,210 +151,12 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"arrowDown.png"
+literal|"deleteHover.png"
 argument_list|)
-DECL|method|arrowDown ()
+DECL|method|deleteHover ()
 specifier|public
 name|ImageResource
-name|arrowDown
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"editText.png"
-argument_list|)
-DECL|method|edit ()
-specifier|public
-name|ImageResource
-name|edit
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"mediaFloppy.png"
-argument_list|)
-DECL|method|save ()
-specifier|public
-name|ImageResource
-name|save
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"starOpen.png"
-argument_list|)
-DECL|method|starOpen ()
-specifier|public
-name|ImageResource
-name|starOpen
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"starFilled.png"
-argument_list|)
-DECL|method|starFilled ()
-specifier|public
-name|ImageResource
-name|starFilled
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"greenCheck.png"
-argument_list|)
-DECL|method|greenCheck ()
-specifier|public
-name|ImageResource
-name|greenCheck
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"redNot.png"
-argument_list|)
-DECL|method|redNot ()
-specifier|public
-name|ImageResource
-name|redNot
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"editUndo.png"
-argument_list|)
-DECL|method|editUndo ()
-specifier|public
-name|ImageResource
-name|editUndo
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"downloadIcon.png"
-argument_list|)
-DECL|method|downloadIcon ()
-specifier|public
-name|ImageResource
-name|downloadIcon
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"queryIcon.png"
-argument_list|)
-DECL|method|queryIcon ()
-specifier|public
-name|ImageResource
-name|queryIcon
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"addFileComment.png"
-argument_list|)
-DECL|method|addFileComment ()
-specifier|public
-name|ImageResource
-name|addFileComment
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"diffy26.png"
-argument_list|)
-DECL|method|gerritAvatar26 ()
-specifier|public
-name|ImageResource
-name|gerritAvatar26
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"draftComments.png"
-argument_list|)
-DECL|method|draftComments ()
-specifier|public
-name|ImageResource
-name|draftComments
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"readOnly.png"
-argument_list|)
-DECL|method|readOnly ()
-specifier|public
-name|ImageResource
-name|readOnly
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"gear.png"
-argument_list|)
-DECL|method|gear ()
-specifier|public
-name|ImageResource
-name|gear
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"info.png"
-argument_list|)
-DECL|method|info ()
-specifier|public
-name|ImageResource
-name|info
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"warning.png"
-argument_list|)
-DECL|method|warning ()
-specifier|public
-name|ImageResource
-name|warning
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"listAdd.png"
-argument_list|)
-DECL|method|listAdd ()
-specifier|public
-name|ImageResource
-name|listAdd
-parameter_list|()
-function_decl|;
-annotation|@
-name|Source
-argument_list|(
-literal|"merge.png"
-argument_list|)
-DECL|method|merge ()
-specifier|public
-name|ImageResource
-name|merge
+name|deleteHover
 parameter_list|()
 function_decl|;
 annotation|@
@@ -349,34 +173,67 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"deleteHover.png"
+literal|"diffy26.png"
 argument_list|)
-DECL|method|deleteHover ()
+DECL|method|gerritAvatar26 ()
 specifier|public
 name|ImageResource
-name|deleteHover
+name|gerritAvatar26
 parameter_list|()
 function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"undoNormal.png"
+literal|"downloadIcon.png"
 argument_list|)
-DECL|method|undoNormal ()
+DECL|method|downloadIcon ()
 specifier|public
 name|ImageResource
-name|undoNormal
+name|downloadIcon
 parameter_list|()
 function_decl|;
 annotation|@
 name|Source
 argument_list|(
-literal|"goPrev.png"
+literal|"draftComments.png"
 argument_list|)
-DECL|method|goPrev ()
+DECL|method|draftComments ()
 specifier|public
 name|ImageResource
-name|goPrev
+name|draftComments
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"editText.png"
+argument_list|)
+DECL|method|edit ()
+specifier|public
+name|ImageResource
+name|edit
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"editUndo.png"
+argument_list|)
+DECL|method|editUndo ()
+specifier|public
+name|ImageResource
+name|editUndo
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"gear.png"
+argument_list|)
+DECL|method|gear ()
+specifier|public
+name|ImageResource
+name|gear
 parameter_list|()
 function_decl|;
 annotation|@
@@ -393,12 +250,111 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"goPrev.png"
+argument_list|)
+DECL|method|goPrev ()
+specifier|public
+name|ImageResource
+name|goPrev
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"goUp.png"
 argument_list|)
 DECL|method|goUp ()
 specifier|public
 name|ImageResource
 name|goUp
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"greenCheck.png"
+argument_list|)
+DECL|method|greenCheck ()
+specifier|public
+name|ImageResource
+name|greenCheck
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"info.png"
+argument_list|)
+DECL|method|info ()
+specifier|public
+name|ImageResource
+name|info
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"listAdd.png"
+argument_list|)
+DECL|method|listAdd ()
+specifier|public
+name|ImageResource
+name|listAdd
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"mediaFloppy.png"
+argument_list|)
+DECL|method|save ()
+specifier|public
+name|ImageResource
+name|save
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"merge.png"
+argument_list|)
+DECL|method|merge ()
+specifier|public
+name|ImageResource
+name|merge
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"queryIcon.png"
+argument_list|)
+DECL|method|queryIcon ()
+specifier|public
+name|ImageResource
+name|queryIcon
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"readOnly.png"
+argument_list|)
+DECL|method|readOnly ()
+specifier|public
+name|ImageResource
+name|readOnly
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"redNot.png"
+argument_list|)
+DECL|method|redNot ()
+specifier|public
+name|ImageResource
+name|redNot
 parameter_list|()
 function_decl|;
 annotation|@
@@ -415,12 +371,56 @@ function_decl|;
 annotation|@
 name|Source
 argument_list|(
+literal|"starFilled.png"
+argument_list|)
+DECL|method|starFilled ()
+specifier|public
+name|ImageResource
+name|starFilled
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"starOpen.png"
+argument_list|)
+DECL|method|starOpen ()
+specifier|public
+name|ImageResource
+name|starOpen
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"undoNormal.png"
+argument_list|)
+DECL|method|undoNormal ()
+specifier|public
+name|ImageResource
+name|undoNormal
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
 literal|"unifiedDiff.png"
 argument_list|)
 DECL|method|unifiedDiff ()
 specifier|public
 name|ImageResource
 name|unifiedDiff
+parameter_list|()
+function_decl|;
+annotation|@
+name|Source
+argument_list|(
+literal|"warning.png"
+argument_list|)
+DECL|method|warning ()
+specifier|public
+name|ImageResource
+name|warning
 parameter_list|()
 function_decl|;
 block|}
