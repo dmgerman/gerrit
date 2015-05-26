@@ -124,14 +124,28 @@ init|=
 literal|"refs/meta/config"
 decl_stmt|;
 comment|/** Preference settings for a user {@code refs/users} */
-DECL|field|REFS_USER
+DECL|field|REFS_USERS
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|REFS_USER
+name|REFS_USERS
 init|=
 literal|"refs/users/"
+decl_stmt|;
+comment|/** Default user preference settings */
+DECL|field|REFS_USERS_DEFAULT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFS_USERS_DEFAULT
+init|=
+name|RefNames
+operator|.
+name|REFS_USERS
+operator|+
+literal|"default"
 decl_stmt|;
 comment|/** Configurations of project-specific dashboards (canned search queries). */
 DECL|field|REFS_DASHBOARDS
@@ -254,7 +268,7 @@ name|r
 operator|.
 name|append
 argument_list|(
-name|REFS_USER
+name|REFS_USERS
 argument_list|)
 expr_stmt|;
 name|int
