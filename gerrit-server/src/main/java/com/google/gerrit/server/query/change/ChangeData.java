@@ -1518,8 +1518,9 @@ name|c
 parameter_list|)
 function_decl|;
 block|}
-comment|/**    * Create an instance for testing only.    *<p>    * Attempting to lazy load data will fail with NPEs.    *    * @param id change ID    * @return instance for testing.    */
+comment|/**    * Create an instance for testing only.    *<p>    * Attempting to lazy load data will fail with NPEs. Callers may consider    * manually setting fields that can be set.    *    * @param id change ID    * @return instance for testing.    */
 DECL|method|createForTest (Change.Id id, int currentPatchSetId)
+specifier|public
 specifier|static
 name|ChangeData
 name|createForTest
