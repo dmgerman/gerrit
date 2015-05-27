@@ -3600,7 +3600,7 @@ argument_list|()
 operator|+
 literal|"} (status:open OR status:closed)"
 argument_list|)
-comment|// Options should match defaults in ChangeTable.
+comment|// Options should match defaults in AccountDashboardScreen.
 operator|.
 name|withOption
 argument_list|(
@@ -3614,6 +3614,13 @@ argument_list|(
 name|ListChangesOption
 operator|.
 name|DETAILED_ACCOUNTS
+argument_list|)
+operator|.
+name|withOption
+argument_list|(
+name|ListChangesOption
+operator|.
+name|REVIEWED
 argument_list|)
 operator|.
 name|get

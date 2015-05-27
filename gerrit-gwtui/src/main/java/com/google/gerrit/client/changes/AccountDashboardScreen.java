@@ -304,6 +304,8 @@ name|Screen
 implements|implements
 name|ChangeListScreen
 block|{
+comment|// If changing default options, also update in
+comment|// ChangeIT#defaultSearchDoesNotTouchDatabase().
 DECL|field|MY_DASHBOARD_OPTIONS
 specifier|private
 specifier|static
