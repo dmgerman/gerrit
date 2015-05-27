@@ -89,18 +89,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -180,6 +168,13 @@ name|AbstractDaemonTest
 block|{
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|)
 DECL|method|getNonExistingAccount_NotFound ()
 specifier|public
 name|void
@@ -187,8 +182,6 @@ name|getNonExistingAccount_NotFound
 parameter_list|()
 throws|throws
 name|Exception
-block|{
-try|try
 block|{
 name|gApi
 operator|.
@@ -203,20 +196,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected account to not exist"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 annotation|@
 name|Test
