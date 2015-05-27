@@ -338,6 +338,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|index
+operator|.
+name|ChangeIndexer
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|project
 operator|.
 name|ChangeControl
@@ -592,6 +608,12 @@ operator|.
 name|GenericFactory
 name|changeControlFactory
 decl_stmt|;
+DECL|field|indexer
+specifier|private
+specifier|final
+name|ChangeIndexer
+name|indexer
+decl_stmt|;
 DECL|field|db
 specifier|private
 specifier|final
@@ -612,7 +634,7 @@ name|user
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeEditUtil (GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, Provider<ReviewDb> db, Provider<CurrentUser> user)
+DECL|method|ChangeEditUtil (GitRepositoryManager gitManager, PatchSetInserter.Factory patchSetInserterFactory, ChangeControl.GenericFactory changeControlFactory, ChangeIndexer indexer, Provider<ReviewDb> db, Provider<CurrentUser> user)
 name|ChangeEditUtil
 parameter_list|(
 name|GitRepositoryManager
@@ -627,6 +649,9 @@ name|ChangeControl
 operator|.
 name|GenericFactory
 name|changeControlFactory
+parameter_list|,
+name|ChangeIndexer
+name|indexer
 parameter_list|,
 name|Provider
 argument_list|<
@@ -658,6 +683,12 @@ operator|.
 name|changeControlFactory
 operator|=
 name|changeControlFactory
+expr_stmt|;
+name|this
+operator|.
+name|indexer
+operator|=
+name|indexer
 expr_stmt|;
 name|this
 operator|.
@@ -981,6 +1012,9 @@ literal|"only edit for current patch set can be published"
 argument_list|)
 throw|;
 block|}
+name|Change
+name|updatedChange
+init|=
 name|insertPatchSet
 argument_list|(
 name|edit
@@ -1007,13 +1041,25 @@ argument_list|,
 name|basePatchSet
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// TODO(davido): This should happen in the same BatchRefUpdate.
 name|deleteRef
 argument_list|(
 name|repo
 argument_list|,
 name|edit
+argument_list|)
+expr_stmt|;
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|updatedChange
 argument_list|)
 expr_stmt|;
 block|}
@@ -1069,6 +1115,18 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|indexer
+operator|.
+name|index
+argument_list|(
+name|db
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|change
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getBasePatchSet (Change change, Ref ref)
 specifier|private
@@ -1271,7 +1329,7 @@ return|;
 block|}
 DECL|method|insertPatchSet (ChangeEdit edit, Change change, Repository repo, RevWalk rw, PatchSet basePatchSet, RevCommit squashed)
 specifier|private
-name|void
+name|Change
 name|insertPatchSet
 parameter_list|(
 name|ChangeEdit
@@ -1383,6 +1441,7 @@ argument_list|,
 name|squashed
 argument_list|)
 decl_stmt|;
+return|return
 name|insr
 operator|.
 name|setPatchSet
@@ -1429,7 +1488,7 @@ argument_list|)
 operator|.
 name|insert
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 DECL|method|deleteRef (Repository repo, ChangeEdit edit)
 specifier|private
