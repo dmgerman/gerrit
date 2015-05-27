@@ -361,7 +361,7 @@ block|}
 block|}
 DECL|method|byPatchSet (ReviewDb db, ChangeNotes notes, PatchSet.Id psId)
 specifier|public
-name|List
+name|Iterable
 argument_list|<
 name|ChangeMessage
 argument_list|>
@@ -391,8 +391,6 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|sortChangeMessages
-argument_list|(
 name|db
 operator|.
 name|changeMessages
@@ -401,7 +399,6 @@ operator|.
 name|byPatchSet
 argument_list|(
 name|psId
-argument_list|)
 argument_list|)
 return|;
 block|}
