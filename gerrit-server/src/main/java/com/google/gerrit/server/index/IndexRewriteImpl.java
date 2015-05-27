@@ -256,24 +256,6 @@ name|query
 operator|.
 name|change
 operator|.
-name|BasicChangeRewrites
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
 name|ChangeData
 import|;
 end_import
@@ -910,22 +892,13 @@ specifier|final
 name|IndexCollection
 name|indexes
 decl_stmt|;
-DECL|field|basicRewrites
-specifier|private
-specifier|final
-name|BasicChangeRewrites
-name|basicRewrites
-decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|IndexRewriteImpl (IndexCollection indexes, BasicChangeRewrites basicRewrites)
+DECL|method|IndexRewriteImpl (IndexCollection indexes)
 name|IndexRewriteImpl
 parameter_list|(
 name|IndexCollection
 name|indexes
-parameter_list|,
-name|BasicChangeRewrites
-name|basicRewrites
 parameter_list|)
 block|{
 name|this
@@ -933,12 +906,6 @@ operator|.
 name|indexes
 operator|=
 name|indexes
-expr_stmt|;
-name|this
-operator|.
-name|basicRewrites
-operator|=
-name|basicRewrites
 expr_stmt|;
 block|}
 annotation|@
@@ -985,15 +952,6 @@ operator|.
 name|getSearchIndex
 argument_list|()
 decl_stmt|;
-name|in
-operator|=
-name|basicRewrites
-operator|.
-name|rewrite
-argument_list|(
-name|in
-argument_list|)
-expr_stmt|;
 comment|// Increase the limit rather than skipping, since we don't know how many
 comment|// skipped results would have been filtered out by the enclosing AndSource.
 name|limit

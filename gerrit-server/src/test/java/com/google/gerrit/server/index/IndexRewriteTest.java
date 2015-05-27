@@ -330,24 +330,6 @@ name|query
 operator|.
 name|change
 operator|.
-name|BasicChangeRewrites
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|query
-operator|.
-name|change
-operator|.
 name|ChangeData
 import|;
 end_import
@@ -511,10 +493,6 @@ operator|new
 name|IndexRewriteImpl
 argument_list|(
 name|indexes
-argument_list|,
-operator|new
-name|BasicChangeRewrites
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -745,17 +723,14 @@ name|in
 init|=
 name|parse
 argument_list|(
-literal|"-status:abandoned (status:open OR status:merged)"
+literal|"-status:abandoned (file:a OR file:b)"
 argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
 name|query
 argument_list|(
-name|parse
-argument_list|(
-literal|"status:new OR status:submitted OR status:draft OR status:merged"
-argument_list|)
+name|in
 argument_list|)
 argument_list|,
 name|rewrite
