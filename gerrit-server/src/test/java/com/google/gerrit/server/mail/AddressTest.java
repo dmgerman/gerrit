@@ -446,6 +446,49 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testParse_NewTLD ()
+specifier|public
+name|void
+name|testParse_NewTLD
+parameter_list|()
+block|{
+name|Address
+name|a
+init|=
+name|Address
+operator|.
+name|parse
+argument_list|(
+literal|"A U Thor<author@example.systems>"
+argument_list|)
+decl_stmt|;
+name|assertThat
+argument_list|(
+name|a
+operator|.
+name|name
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"A U Thor"
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
+name|a
+operator|.
+name|email
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|"author@example.systems"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testParseInvalid ()
 specifier|public
 name|void
