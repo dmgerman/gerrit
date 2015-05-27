@@ -3125,12 +3125,7 @@ name|ChangeData
 argument_list|>
 name|changesByTopic
 init|=
-name|queryProvider
-operator|.
-name|get
-argument_list|()
-operator|.
-name|byTopicOpen
+name|getChangesByTopic
 argument_list|(
 name|topic
 argument_list|)
