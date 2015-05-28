@@ -92,6 +92,24 @@ name|gerrit
 operator|.
 name|extensions
 operator|.
+name|api
+operator|.
+name|accounts
+operator|.
+name|EmailInput
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
 name|restapi
 operator|.
 name|AuthException
@@ -111,22 +129,6 @@ operator|.
 name|restapi
 operator|.
 name|BadRequestException
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|extensions
-operator|.
-name|restapi
-operator|.
-name|DefaultInput
 import|;
 end_import
 
@@ -284,24 +286,6 @@ name|server
 operator|.
 name|account
 operator|.
-name|CreateEmail
-operator|.
-name|Input
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|account
-operator|.
 name|GetEmails
 operator|.
 name|EmailInfo
@@ -438,7 +422,7 @@ name|RestModifyView
 argument_list|<
 name|AccountResource
 argument_list|,
-name|Input
+name|EmailInput
 argument_list|>
 block|{
 DECL|field|log
@@ -455,30 +439,6 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|class|Input
-specifier|public
-specifier|static
-class|class
-name|Input
-block|{
-annotation|@
-name|DefaultInput
-DECL|field|email
-specifier|public
-name|String
-name|email
-decl_stmt|;
-DECL|field|preferred
-specifier|public
-name|boolean
-name|preferred
-decl_stmt|;
-DECL|field|noConfirmation
-specifier|public
-name|boolean
-name|noConfirmation
-decl_stmt|;
-block|}
 DECL|interface|Factory
 specifier|public
 specifier|static
@@ -620,7 +580,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|apply (AccountResource rsrc, Input input)
+DECL|method|apply (AccountResource rsrc, EmailInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -631,7 +591,7 @@ parameter_list|(
 name|AccountResource
 name|rsrc
 parameter_list|,
-name|Input
+name|EmailInput
 name|input
 parameter_list|)
 throws|throws
@@ -692,7 +652,7 @@ block|{
 name|input
 operator|=
 operator|new
-name|Input
+name|EmailInput
 argument_list|()
 expr_stmt|;
 block|}
@@ -757,7 +717,7 @@ name|input
 argument_list|)
 return|;
 block|}
-DECL|method|apply (IdentifiedUser user, Input input)
+DECL|method|apply (IdentifiedUser user, EmailInput input)
 specifier|public
 name|Response
 argument_list|<
@@ -768,7 +728,7 @@ parameter_list|(
 name|IdentifiedUser
 name|user
 parameter_list|,
-name|Input
+name|EmailInput
 name|input
 parameter_list|)
 throws|throws
