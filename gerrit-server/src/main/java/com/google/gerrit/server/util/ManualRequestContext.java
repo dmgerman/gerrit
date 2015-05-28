@@ -192,6 +192,7 @@ name|RequestContext
 name|old
 decl_stmt|;
 DECL|method|ManualRequestContext (CurrentUser user, SchemaFactory<ReviewDb> schemaFactory, ThreadLocalRequestContext requestContext)
+specifier|public
 name|ManualRequestContext
 parameter_list|(
 name|CurrentUser
