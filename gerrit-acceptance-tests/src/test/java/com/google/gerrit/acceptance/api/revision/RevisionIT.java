@@ -520,7 +520,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestApiException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -2196,7 +2196,7 @@ name|exception
 operator|.
 name|expect
 argument_list|(
-name|RestApiException
+name|ResourceConflictException
 operator|.
 name|class
 argument_list|)
@@ -2372,7 +2372,7 @@ name|exception
 operator|.
 name|expect
 argument_list|(
-name|RestApiException
+name|ResourceConflictException
 operator|.
 name|class
 argument_list|)
