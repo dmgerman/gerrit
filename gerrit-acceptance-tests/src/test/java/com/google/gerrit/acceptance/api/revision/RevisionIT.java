@@ -133,18 +133,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -2204,8 +2192,22 @@ operator|.
 name|submit
 argument_list|()
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|RestApiException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"Cherry pick failed: identical tree"
+argument_list|)
+expr_stmt|;
 name|orig
 operator|.
 name|revision
@@ -2224,32 +2226,6 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Cherry-pick identical tree error expected"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RestApiException
-name|e
-parameter_list|)
-block|{
-name|assertThat
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-literal|"Cherry pick failed: identical tree"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -2392,8 +2368,22 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|RestApiException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"Cherry pick failed: merge conflict"
+argument_list|)
+expr_stmt|;
 name|orig
 operator|.
 name|revision
@@ -2412,32 +2402,6 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Cherry-pick merge conflict error expected"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RestApiException
-name|e
-parameter_list|)
-block|{
-name|assertThat
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-operator|.
-name|isEqualTo
-argument_list|(
-literal|"Cherry pick failed: merge conflict"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

@@ -109,18 +109,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -260,8 +248,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|gApi
 operator|.
 name|projects
@@ -278,20 +273,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ResourceNotFoundException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 annotation|@
 name|Test
@@ -315,8 +296,15 @@ argument_list|(
 name|user
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|gApi
 operator|.
 name|projects
@@ -336,20 +324,6 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ResourceNotFoundException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 annotation|@
 name|Test

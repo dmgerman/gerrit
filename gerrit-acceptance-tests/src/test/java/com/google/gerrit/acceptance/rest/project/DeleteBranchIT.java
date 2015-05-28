@@ -123,18 +123,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -560,28 +548,21 @@ operator|.
 name|delete
 argument_list|()
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ResourceNotFoundException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|branch
 argument_list|()
 operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected ResourceNotFoundException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceNotFoundException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 DECL|method|assertDeleteForbidden ()
 specifier|private
@@ -591,28 +572,21 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|AuthException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|branch
 argument_list|()
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected AuthException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|AuthException
-name|expected
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 name|branch
 argument_list|()
 operator|.
