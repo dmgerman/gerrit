@@ -199,14 +199,12 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|fail
+name|Rule
 import|;
 end_import
 
@@ -217,6 +215,18 @@ operator|.
 name|junit
 operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
 import|;
 end_import
 
@@ -276,6 +286,18 @@ specifier|public
 class|class
 name|SocketUtilTest
 block|{
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testIsIPv6 ()
@@ -744,8 +766,31 @@ literal|80
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
+block|}
+annotation|@
+name|Test
+DECL|method|testParseInvalidIPv6 ()
+specifier|public
+name|void
+name|testParseInvalidIPv6
+parameter_list|()
 block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"invalid IPv6: [:3"
+argument_list|)
+expr_stmt|;
 name|parse
 argument_list|(
 literal|"[:3"
@@ -753,31 +798,31 @@ argument_list|,
 literal|80
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"did not throw exception"
-argument_list|)
-expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
+annotation|@
+name|Test
+DECL|method|testParseInvalidPort ()
+specifier|public
+name|void
+name|testParseInvalidPort
+parameter_list|()
 block|{
-name|assertEquals
-argument_list|(
-literal|"invalid IPv6: [:3"
-argument_list|,
-name|e
+name|exception
 operator|.
-name|getMessage
-argument_list|()
+name|expect
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
-block|}
-try|try
-block|{
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"invalid port: localhost:A"
+argument_list|)
+expr_stmt|;
 name|parse
 argument_list|(
 literal|"localhost:A"
@@ -785,29 +830,6 @@ argument_list|,
 literal|80
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"did not throw exception"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-name|assertEquals
-argument_list|(
-literal|"invalid port: localhost:A"
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

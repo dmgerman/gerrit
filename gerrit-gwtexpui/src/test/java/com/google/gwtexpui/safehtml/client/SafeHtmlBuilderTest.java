@@ -139,14 +139,12 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|fail
+name|Rule
 import|;
 end_import
 
@@ -160,12 +158,36 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
+import|;
+end_import
+
 begin_class
 DECL|class|SafeHtmlBuilderTest
 specifier|public
 class|class
 name|SafeHtmlBuilderTest
 block|{
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testEmpty ()
@@ -1779,8 +1801,24 @@ name|href
 init|=
 literal|"javascript:window.close();"
 decl_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"javascript unsafe in href: "
+operator|+
+name|href
+argument_list|)
+expr_stmt|;
 operator|new
 name|SafeHtmlBuilder
 argument_list|()
@@ -1795,31 +1833,6 @@ argument_list|,
 name|href
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"accepted javascript in a href"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-name|assertEquals
-argument_list|(
-literal|"javascript unsafe in href: "
-operator|+
-name|href
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1835,8 +1848,24 @@ name|href
 init|=
 literal|"javascript:window.close();"
 decl_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"javascript unsafe in href: "
+operator|+
+name|href
+argument_list|)
+expr_stmt|;
 operator|new
 name|SafeHtmlBuilder
 argument_list|()
@@ -1853,31 +1882,6 @@ argument_list|,
 name|href
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"accepted javascript in img src"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-name|assertEquals
-argument_list|(
-literal|"javascript unsafe in href: "
-operator|+
-name|href
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1893,8 +1897,24 @@ name|href
 init|=
 literal|"javascript:window.close();"
 decl_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|RuntimeException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"javascript unsafe in href: "
+operator|+
+name|href
+argument_list|)
+expr_stmt|;
 operator|new
 name|SafeHtmlBuilder
 argument_list|()
@@ -1911,31 +1931,6 @@ argument_list|,
 name|href
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"accepted javascript in form action"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|RuntimeException
-name|e
-parameter_list|)
-block|{
-name|assertEquals
-argument_list|(
-literal|"javascript unsafe in href: "
-operator|+
-name|href
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|escape (final char c)
 specifier|private

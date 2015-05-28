@@ -127,18 +127,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -160,7 +148,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
 import|;
 end_import
 
@@ -228,6 +238,18 @@ specifier|public
 class|class
 name|SitePathsTest
 block|{
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testCreate_NotExisting ()
@@ -465,28 +487,21 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|NotDirectoryException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 operator|new
 name|SitePaths
 argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Did not throw exception"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NotDirectoryException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 finally|finally
 block|{

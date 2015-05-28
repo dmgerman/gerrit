@@ -157,18 +157,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -918,7 +906,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
 import|;
 end_import
 
@@ -1025,6 +1035,18 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
 DECL|method|updateConfig (Config cfg)
 specifier|private
 specifier|static
@@ -8514,29 +8536,20 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|query
 operator|.
 name|get
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"expected BadRequestException for query: "
-operator|+
-name|query
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BadRequestException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
-block|}
 block|}
 DECL|method|createProject (String name)
 specifier|protected

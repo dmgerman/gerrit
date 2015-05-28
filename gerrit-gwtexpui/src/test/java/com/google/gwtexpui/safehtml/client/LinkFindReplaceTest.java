@@ -121,14 +121,12 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|fail
+name|Rule
 import|;
 end_import
 
@@ -142,12 +140,36 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
+import|;
+end_import
+
 begin_class
 DECL|class|LinkFindReplaceTest
 specifier|public
 class|class
 name|LinkFindReplaceTest
 block|{
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testNoEscaping ()
@@ -335,8 +357,15 @@ name|void
 name|testInvalidSchemeInReplace
 parameter_list|()
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 operator|new
 name|LinkFindReplace
 argument_list|(
@@ -350,18 +379,6 @@ argument_list|(
 literal|"find"
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalStateException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|expected
-parameter_list|)
-block|{     }
 block|}
 annotation|@
 name|Test
@@ -371,8 +388,15 @@ name|void
 name|testInvalidSchemeWithBackreference
 parameter_list|()
 block|{
-try|try
-block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 operator|new
 name|LinkFindReplace
 argument_list|(
@@ -386,18 +410,6 @@ argument_list|(
 literal|"Look at this script: alert(1);"
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalStateException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|expected
-parameter_list|)
-block|{     }
 block|}
 annotation|@
 name|Test

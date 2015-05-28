@@ -67,18 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
-begin_import
 import|import
 name|com
 operator|.
@@ -248,7 +236,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|ExpectedException
 import|;
 end_import
 
@@ -272,6 +282,18 @@ DECL|field|walk
 specifier|private
 name|RevWalk
 name|walk
+decl_stmt|;
+annotation|@
+name|Rule
+DECL|field|exception
+specifier|public
+name|ExpectedException
+name|exception
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
@@ -905,29 +927,20 @@ name|commit
 argument_list|)
 init|)
 block|{
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ConfigInvalidException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|parser
 operator|.
 name|parseAll
 argument_list|()
 expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected parse to fail:\n"
-operator|+
-name|commit
-operator|.
-name|getFullMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ConfigInvalidException
-name|e
-parameter_list|)
-block|{
-comment|// Expected.
 block|}
 block|}
 DECL|method|newParser (ObjectId tip)
