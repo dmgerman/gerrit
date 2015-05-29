@@ -9420,9 +9420,9 @@ argument_list|)
 operator|.
 name|named
 argument_list|(
-name|ids
+name|query
 operator|.
-name|toString
+name|getQuery
 argument_list|()
 argument_list|)
 operator|.
