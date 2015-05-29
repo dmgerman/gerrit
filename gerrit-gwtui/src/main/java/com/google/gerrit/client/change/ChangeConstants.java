@@ -109,11 +109,6 @@ name|String
 name|reviewedFileTitle
 parameter_list|()
 function_decl|;
-DECL|method|editMessage ()
-name|String
-name|editMessage
-parameter_list|()
-function_decl|;
 DECL|method|editFileInline ()
 name|String
 name|editFileInline

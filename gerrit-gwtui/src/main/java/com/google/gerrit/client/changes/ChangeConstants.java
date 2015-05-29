@@ -320,11 +320,6 @@ name|String
 name|keyEditTopic
 parameter_list|()
 function_decl|;
-DECL|method|keyEditMessage ()
-name|String
-name|keyEditMessage
-parameter_list|()
-function_decl|;
 DECL|method|keyAddReviewers ()
 name|String
 name|keyAddReviewers
@@ -693,21 +688,6 @@ function_decl|;
 DECL|method|revertChangeTitle ()
 name|String
 name|revertChangeTitle
-parameter_list|()
-function_decl|;
-DECL|method|headingEditCommitMessage ()
-name|String
-name|headingEditCommitMessage
-parameter_list|()
-function_decl|;
-DECL|method|editCommitMessageToolTip ()
-name|String
-name|editCommitMessageToolTip
-parameter_list|()
-function_decl|;
-DECL|method|titleEditCommitMessage ()
-name|String
-name|titleEditCommitMessage
 parameter_list|()
 function_decl|;
 DECL|method|buttonCherryPickChangeBegin ()
