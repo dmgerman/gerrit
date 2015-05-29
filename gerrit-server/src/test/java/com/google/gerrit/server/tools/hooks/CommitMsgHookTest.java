@@ -70,6 +70,22 @@ end_package
 
 begin_import
 import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|truth
+operator|.
+name|TruthJUnit
+operator|.
+name|assume
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -101,18 +117,6 @@ operator|.
 name|Assert
 operator|.
 name|fail
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
 import|;
 end_import
 
@@ -274,7 +278,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
+name|BeforeClass
 import|;
 end_import
 
@@ -285,18 +289,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|TestName
 import|;
 end_import
 
@@ -364,53 +356,29 @@ name|SOB2
 init|=
 literal|"Signed-off-by: J Committer<jc@example.com>\n"
 decl_stmt|;
-DECL|field|test
 annotation|@
-name|Rule
-specifier|public
-name|TestName
-name|test
-init|=
-operator|new
-name|TestName
-argument_list|()
-decl_stmt|;
+name|BeforeClass
 DECL|method|skipIfWin32Platform ()
-specifier|private
+specifier|public
+specifier|static
 name|void
 name|skipIfWin32Platform
 parameter_list|()
 block|{
-if|if
-condition|(
+name|assume
+argument_list|()
+operator|.
+name|that
+argument_list|(
 name|HostPlatform
 operator|.
 name|isWin32
 argument_list|()
-condition|)
-block|{
-name|System
+argument_list|)
 operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|" - Skipping "
-operator|+
-name|test
-operator|.
-name|getMethodName
+name|isFalse
 argument_list|()
-operator|+
-literal|" on this system"
-argument_list|)
 expr_stmt|;
-name|assumeTrue
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -424,9 +392,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|skipIfWin32Platform
-argument_list|()
-expr_stmt|;
 name|super
 operator|.
 name|setUp
