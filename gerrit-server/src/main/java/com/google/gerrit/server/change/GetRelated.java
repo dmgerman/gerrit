@@ -67,6 +67,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|index
+operator|.
+name|ChangeField
+operator|.
+name|GROUP
+import|;
+end_import
+
+begin_import
 import|import
 name|com
 operator|.
@@ -263,22 +281,6 @@ operator|.
 name|git
 operator|.
 name|GroupCollector
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|index
-operator|.
-name|ChangeField
 import|;
 end_import
 
@@ -684,8 +686,6 @@ argument_list|()
 operator|.
 name|hasField
 argument_list|(
-name|ChangeField
-operator|.
 name|GROUP
 argument_list|)
 condition|)
