@@ -76,6 +76,22 @@ name|base
 operator|.
 name|Preconditions
 operator|.
+name|checkNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+operator|.
 name|checkState
 import|;
 end_import
@@ -3027,7 +3043,12 @@ name|this
 operator|.
 name|query
 operator|=
+name|checkNotNull
+argument_list|(
 name|query
+argument_list|,
+literal|"null query from Lucene"
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
