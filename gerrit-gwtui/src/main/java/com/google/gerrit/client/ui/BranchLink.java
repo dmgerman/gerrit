@@ -509,7 +509,7 @@ name|PageLinks
 operator|.
 name|op
 argument_list|(
-literal|"topic"
+literal|"exacttopic"
 argument_list|,
 name|topic
 argument_list|)
