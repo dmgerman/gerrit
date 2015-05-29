@@ -2828,11 +2828,6 @@ name|IsMergeablePredicate
 argument_list|(
 name|args
 operator|.
-name|getSchema
-argument_list|()
-argument_list|,
-name|args
-operator|.
 name|fillArgs
 argument_list|)
 return|;
