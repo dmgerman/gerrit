@@ -66,37 +66,33 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assert_
 import|;
 end_import
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
+name|truth
 operator|.
-name|junit
+name|Truth
 operator|.
-name|Assert
-operator|.
-name|fail
+name|assertThat
 import|;
 end_import
 
@@ -615,17 +611,13 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|assertTrue
+name|assertThat
 argument_list|(
-literal|"has tests"
-argument_list|,
 name|tests
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|0
 argument_list|)
+operator|.
+name|isNotEmpty
+argument_list|()
 expr_stmt|;
 name|machine
 operator|=
@@ -1201,13 +1193,14 @@ operator|.
 name|println
 argument_list|()
 expr_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-literal|"No Errors"
-argument_list|,
-literal|0
-argument_list|,
 name|errors
+argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -1237,9 +1230,22 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
+name|assert_
+argument_list|()
+operator|.
+name|withFailureMessage
+argument_list|(
+literal|"Cannot invoke "
+operator|+
+name|pkg
+operator|+
+literal|":"
+operator|+
+name|name
+argument_list|)
+operator|.
+name|that
+argument_list|(
 name|env
 operator|.
 name|execute
@@ -1252,20 +1258,11 @@ literal|"call"
 argument_list|,
 name|head
 argument_list|)
-condition|)
-block|{
-name|fail
-argument_list|(
-literal|"Cannot invoke "
-operator|+
-name|pkg
-operator|+
-literal|":"
-operator|+
-name|name
 argument_list|)
+operator|.
+name|isTrue
+argument_list|()
 expr_stmt|;
-block|}
 block|}
 DECL|method|removePackage (Term test)
 specifier|private
