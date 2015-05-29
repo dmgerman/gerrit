@@ -562,31 +562,6 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|topic (String topic)
-specifier|private
-name|Predicate
-argument_list|<
-name|ChangeData
-argument_list|>
-name|topic
-parameter_list|(
-name|String
-name|topic
-parameter_list|)
-block|{
-return|return
-operator|new
-name|TopicPredicate
-argument_list|(
-name|schema
-argument_list|(
-name|indexes
-argument_list|)
-argument_list|,
-name|topic
-argument_list|)
-return|;
-block|}
 DECL|method|byKey (Change.Key key)
 specifier|public
 name|List
@@ -854,13 +829,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byTopicOpen (String topic)
+DECL|method|byExactTopicOpen (String topic)
 specifier|public
 name|List
 argument_list|<
 name|ChangeData
 argument_list|>
-name|byTopicOpen
+name|byExactTopicOpen
 parameter_list|(
 name|String
 name|topic
@@ -873,8 +848,14 @@ name|query
 argument_list|(
 name|and
 argument_list|(
-name|topic
+operator|new
+name|ExactTopicPredicate
 argument_list|(
+name|schema
+argument_list|(
+name|indexes
+argument_list|)
+argument_list|,
 name|topic
 argument_list|)
 argument_list|,

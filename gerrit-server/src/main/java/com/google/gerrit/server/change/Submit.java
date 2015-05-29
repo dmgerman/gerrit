@@ -4751,7 +4751,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|byTopicOpen
+name|byExactTopicOpen
 argument_list|(
 name|topic
 argument_list|)
