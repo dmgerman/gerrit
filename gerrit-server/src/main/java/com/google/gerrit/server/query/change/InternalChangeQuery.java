@@ -829,13 +829,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|byExactTopicOpen (String topic)
+DECL|method|byTopicOpen (String topic)
 specifier|public
 name|List
 argument_list|<
 name|ChangeData
 argument_list|>
-name|byExactTopicOpen
+name|byTopicOpen
 parameter_list|(
 name|String
 name|topic

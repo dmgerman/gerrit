@@ -263,9 +263,9 @@ import|;
 end_import
 
 begin_class
-DECL|class|TopicPredicate
+DECL|class|FuzzyTopicPredicate
 class|class
-name|TopicPredicate
+name|FuzzyTopicPredicate
 extends|extends
 name|IndexPredicate
 argument_list|<
@@ -316,8 +316,8 @@ name|get
 argument_list|()
 return|;
 block|}
-DECL|method|TopicPredicate (Schema<ChangeData> schema, String topic, ChangeIndex index)
-name|TopicPredicate
+DECL|method|FuzzyTopicPredicate (Schema<ChangeData> schema, String topic, ChangeIndex index)
+name|FuzzyTopicPredicate
 parameter_list|(
 name|Schema
 argument_list|<

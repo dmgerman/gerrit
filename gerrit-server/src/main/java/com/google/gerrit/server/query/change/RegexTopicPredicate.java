@@ -185,7 +185,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|TopicPredicate
+name|FuzzyTopicPredicate
 operator|.
 name|topicField
 argument_list|(

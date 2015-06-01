@@ -3111,13 +3111,13 @@ return|;
 block|}
 annotation|@
 name|Operator
-DECL|method|exacttopic (String name)
+DECL|method|topic (String name)
 specifier|public
 name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
-name|exacttopic
+name|topic
 parameter_list|(
 name|String
 name|name
@@ -3138,13 +3138,13 @@ return|;
 block|}
 annotation|@
 name|Operator
-DECL|method|topic (String name)
+DECL|method|intopic (String name)
 specifier|public
 name|Predicate
 argument_list|<
 name|ChangeData
 argument_list|>
-name|topic
+name|intopic
 parameter_list|(
 name|String
 name|name
@@ -3196,7 +3196,7 @@ return|;
 block|}
 return|return
 operator|new
-name|TopicPredicate
+name|FuzzyTopicPredicate
 argument_list|(
 name|args
 operator|.

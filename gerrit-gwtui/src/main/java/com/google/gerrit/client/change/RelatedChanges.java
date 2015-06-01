@@ -1398,7 +1398,7 @@ name|append
 argument_list|(
 name|op
 argument_list|(
-literal|"exacttopic"
+literal|"topic"
 argument_list|,
 name|info
 operator|.

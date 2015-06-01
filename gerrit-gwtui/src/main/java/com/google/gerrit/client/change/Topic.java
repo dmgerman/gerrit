@@ -718,7 +718,7 @@ name|PageLinks
 operator|.
 name|op
 argument_list|(
-literal|"exacttopic"
+literal|"topic"
 argument_list|,
 name|info
 operator|.
