@@ -5779,6 +5779,30 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|postEvent (Project.NameKey projectName, ProjectEvent event)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+name|ProjectEvent
+name|event
+parameter_list|)
+block|{
+name|fireEvent
+argument_list|(
+name|projectName
+argument_list|,
+name|event
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 DECL|method|postEvent (com.google.gerrit.server.events.Event event, ReviewDb db)
 specifier|public
 name|void

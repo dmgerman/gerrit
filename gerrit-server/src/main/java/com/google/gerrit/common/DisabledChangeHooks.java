@@ -234,6 +234,22 @@ name|server
 operator|.
 name|events
 operator|.
+name|ProjectEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|events
+operator|.
 name|RefEvent
 import|;
 end_import
@@ -688,6 +704,22 @@ name|NameKey
 name|branchName
 parameter_list|,
 name|RefEvent
+name|event
+parameter_list|)
+block|{   }
+annotation|@
+name|Override
+DECL|method|postEvent (Project.NameKey projectName, ProjectEvent event)
+specifier|public
+name|void
+name|postEvent
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+name|ProjectEvent
 name|event
 parameter_list|)
 block|{   }

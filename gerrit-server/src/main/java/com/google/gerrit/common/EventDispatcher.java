@@ -106,6 +106,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|Project
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -141,6 +157,22 @@ operator|.
 name|events
 operator|.
 name|Event
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|events
+operator|.
+name|ProjectEvent
 import|;
 end_import
 
@@ -212,6 +244,20 @@ name|NameKey
 name|branchName
 parameter_list|,
 name|RefEvent
+name|event
+parameter_list|)
+function_decl|;
+comment|/**    * Post a stream event that is related to a project.    *    * @param projectName The project that the event is related to.    * @param event The event to post.    */
+DECL|method|postEvent (Project.NameKey projectName, ProjectEvent event)
+name|void
+name|postEvent
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|projectName
+parameter_list|,
+name|ProjectEvent
 name|event
 parameter_list|)
 function_decl|;
