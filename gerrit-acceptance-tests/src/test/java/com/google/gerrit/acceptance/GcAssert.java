@@ -66,13 +66,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertTrue
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assert_
 import|;
 end_import
 
@@ -233,7 +237,10 @@ range|:
 name|projects
 control|)
 block|{
-name|assertTrue
+name|assert_
+argument_list|()
+operator|.
+name|withFailureMessage
 argument_list|(
 literal|"Project "
 operator|+
@@ -243,16 +250,18 @@ name|get
 argument_list|()
 operator|+
 literal|" has no pack files."
-argument_list|,
+argument_list|)
+operator|.
+name|that
+argument_list|(
 name|getPackFiles
 argument_list|(
 name|p
 argument_list|)
-operator|.
-name|length
-operator|>
-literal|0
 argument_list|)
+operator|.
+name|isNotEmpty
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -282,7 +291,10 @@ range|:
 name|projects
 control|)
 block|{
-name|assertTrue
+name|assert_
+argument_list|()
+operator|.
+name|withFailureMessage
 argument_list|(
 literal|"Project "
 operator|+
@@ -292,16 +304,18 @@ name|get
 argument_list|()
 operator|+
 literal|" has pack files."
-argument_list|,
+argument_list|)
+operator|.
+name|that
+argument_list|(
 name|getPackFiles
 argument_list|(
 name|p
 argument_list|)
-operator|.
-name|length
-operator|==
-literal|0
 argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 expr_stmt|;
 block|}
 block|}
