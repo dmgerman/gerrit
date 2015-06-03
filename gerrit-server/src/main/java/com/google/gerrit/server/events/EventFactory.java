@@ -3406,6 +3406,17 @@ name|Account
 name|account
 parameter_list|)
 block|{
+if|if
+condition|(
+name|account
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|AccountAttribute
 name|who
 init|=
