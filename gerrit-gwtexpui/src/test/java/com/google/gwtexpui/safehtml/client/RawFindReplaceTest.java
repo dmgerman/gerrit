@@ -68,13 +68,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -126,10 +130,8 @@ argument_list|,
 name|replace
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertThat
 argument_list|(
-name|find
-argument_list|,
 name|a
 operator|.
 name|pattern
@@ -138,11 +140,14 @@ operator|.
 name|getSource
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|assertEquals
+operator|.
+name|isEqualTo
 argument_list|(
-name|replace
-argument_list|,
+name|find
+argument_list|)
+expr_stmt|;
+name|assertThat
+argument_list|(
 name|a
 operator|.
 name|replace
@@ -150,8 +155,21 @@ argument_list|(
 name|find
 argument_list|)
 argument_list|)
+operator|.
+name|isEqualTo
+argument_list|(
+name|replace
+argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertThat
+argument_list|(
+name|a
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+operator|.
+name|isEqualTo
 argument_list|(
 literal|"find = "
 operator|+
@@ -160,11 +178,6 @@ operator|+
 literal|", replace = "
 operator|+
 name|replace
-argument_list|,
-name|a
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
