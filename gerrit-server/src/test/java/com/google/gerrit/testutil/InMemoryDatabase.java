@@ -66,13 +66,17 @@ end_package
 
 begin_import
 import|import static
-name|org
+name|com
 operator|.
-name|junit
+name|google
 operator|.
-name|Assert
+name|common
 operator|.
-name|assertEquals
+name|truth
+operator|.
+name|Truth
+operator|.
+name|assertThat
 import|;
 end_import
 
@@ -828,23 +832,20 @@ parameter_list|()
 throws|throws
 name|OrmException
 block|{
-specifier|final
-name|CurrentSchemaVersion
-name|act
-init|=
+name|assertThat
+argument_list|(
 name|getSchemaVersion
 argument_list|()
-decl_stmt|;
-name|assertEquals
+operator|.
+name|versionNbr
+argument_list|)
+operator|.
+name|isEqualTo
 argument_list|(
 name|SchemaVersion
 operator|.
 name|getBinaryVersion
 argument_list|()
-argument_list|,
-name|act
-operator|.
-name|versionNbr
 argument_list|)
 expr_stmt|;
 block|}
