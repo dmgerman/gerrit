@@ -142,7 +142,7 @@ name|core
 operator|.
 name|client
 operator|.
-name|JsArray
+name|JsArrayString
 import|;
 end_import
 
@@ -320,7 +320,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|AccountFieldNameInfo
+name|String
 name|f
 range|:
 name|Natives
@@ -336,10 +336,14 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|f
+name|Account
 operator|.
-name|get
-argument_list|()
+name|FieldName
+operator|.
+name|valueOf
+argument_list|(
+name|f
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -369,10 +373,7 @@ DECL|method|_editableAccountFields ()
 specifier|private
 specifier|final
 specifier|native
-name|JsArray
-argument_list|<
-name|AccountFieldNameInfo
-argument_list|>
+name|JsArrayString
 name|_editableAccountFields
 parameter_list|()
 comment|/*-{ return this.editable_account_fields; }-*/
@@ -382,49 +383,6 @@ specifier|protected
 name|AuthInfo
 parameter_list|()
 block|{   }
-DECL|class|AccountFieldNameInfo
-specifier|private
-specifier|static
-class|class
-name|AccountFieldNameInfo
-extends|extends
-name|JavaScriptObject
-block|{
-DECL|method|get ()
-specifier|final
-name|Account
-operator|.
-name|FieldName
-name|get
-parameter_list|()
-block|{
-return|return
-name|Account
-operator|.
-name|FieldName
-operator|.
-name|valueOf
-argument_list|(
-name|getRaw
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|getRaw ()
-specifier|private
-specifier|final
-specifier|native
-name|String
-name|getRaw
-parameter_list|()
-comment|/*-{ return this; }-*/
-function_decl|;
-DECL|method|AccountFieldNameInfo ()
-specifier|protected
-name|AccountFieldNameInfo
-parameter_list|()
-block|{     }
-block|}
 block|}
 end_class
 
