@@ -282,8 +282,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
-comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param account The gerrit user who added the comment.    * @param patchSet The patchset this comment is related to.    * @param comment The comment given.    * @param approvals Map of label IDs to scores.    * @param db The review database.    * @throws OrmException    */
-DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, ReviewDb db)
+comment|/**    * Fire the Comment Added Hook.    *    * @param change The change itself.    * @param account The gerrit user who added the comment.    * @param patchSet The patchset this comment is related to.    * @param comment The comment given.    * @param approvals Map of label IDs to scores    * @param oldApprovals Map of label IDs to old approval scores    * @param db The review database.    * @throws OrmException    */
+DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, Map<String, Short> oldApprovals, ReviewDb db)
 name|void
 name|doCommentAddedHook
 parameter_list|(
@@ -306,6 +306,14 @@ argument_list|,
 name|Short
 argument_list|>
 name|approvals
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
+name|oldApprovals
 parameter_list|,
 name|ReviewDb
 name|db

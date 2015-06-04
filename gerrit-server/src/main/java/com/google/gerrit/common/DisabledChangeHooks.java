@@ -411,7 +411,7 @@ parameter_list|)
 block|{   }
 annotation|@
 name|Override
-DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, ReviewDb db)
+DECL|method|doCommentAddedHook (Change change, Account account, PatchSet patchSet, String comment, Map<String, Short> approvals, Map<String, Short> oldApprovals, ReviewDb db)
 specifier|public
 name|void
 name|doCommentAddedHook
@@ -435,6 +435,14 @@ argument_list|,
 name|Short
 argument_list|>
 name|approvals
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Short
+argument_list|>
+name|oldApprovals
 parameter_list|,
 name|ReviewDb
 name|db
