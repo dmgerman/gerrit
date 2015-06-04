@@ -925,6 +925,35 @@ name|of
 argument_list|()
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|byCommit
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+return|return
+name|ImmutableList
+operator|.
+name|of
+argument_list|(
+name|byCommit
+operator|.
+name|values
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|// Walk from all patch set SHA-1s, and terminate as soon as we've found
 comment|// everything we're looking for. This is equivalent to just sorting the
 comment|// list of commits by the RevWalk's configured order.
