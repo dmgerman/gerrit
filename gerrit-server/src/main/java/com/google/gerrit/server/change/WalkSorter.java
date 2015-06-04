@@ -350,20 +350,6 @@ name|jgit
 operator|.
 name|revwalk
 operator|.
-name|RevSort
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|revwalk
-operator|.
 name|RevWalk
 import|;
 end_import
@@ -857,6 +843,10 @@ name|OrmException
 throws|,
 name|IOException
 block|{
+comment|// Use default sort; topo sorting is way too slow, as it slurps all
+comment|// interesting commits, and we don't mark anything uninteresting. If we
+comment|// really need to topo sort, we would need to identify the rootmost commits
+comment|// and mark their parents uninteresting, but that's nontrivial in itself.
 try|try
 init|(
 name|Repository
@@ -884,15 +874,6 @@ operator|.
 name|setRetainBody
 argument_list|(
 name|retainBody
-argument_list|)
-expr_stmt|;
-name|rw
-operator|.
-name|sort
-argument_list|(
-name|RevSort
-operator|.
-name|TOPO
 argument_list|)
 expr_stmt|;
 name|Multimap
