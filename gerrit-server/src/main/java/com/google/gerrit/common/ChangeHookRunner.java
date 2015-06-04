@@ -542,6 +542,22 @@ name|server
 operator|.
 name|events
 operator|.
+name|ChangeEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|events
+operator|.
 name|ChangeMergedEvent
 import|;
 end_import
@@ -5710,7 +5726,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (Change change, com.google.gerrit.server.events.Event event, ReviewDb db)
+DECL|method|postEvent (Change change, ChangeEvent event, ReviewDb db)
 specifier|public
 name|void
 name|postEvent
@@ -5718,17 +5734,7 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|events
-operator|.
-name|Event
+name|ChangeEvent
 name|event
 parameter_list|,
 name|ReviewDb
@@ -5749,7 +5755,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|postEvent (Branch.NameKey branchName, com.google.gerrit.server.events.Event event)
+DECL|method|postEvent (Branch.NameKey branchName, RefEvent event)
 specifier|public
 name|void
 name|postEvent
@@ -5759,17 +5765,7 @@ operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|events
-operator|.
-name|Event
+name|RefEvent
 name|event
 parameter_list|)
 block|{
@@ -6136,7 +6132,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|fireEvent (Change change, com.google.gerrit.server.events.Event event, ReviewDb db)
+DECL|method|fireEvent (Change change, ChangeEvent event, ReviewDb db)
 specifier|private
 name|void
 name|fireEvent
@@ -6144,17 +6140,7 @@ parameter_list|(
 name|Change
 name|change
 parameter_list|,
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|events
-operator|.
-name|Event
+name|ChangeEvent
 name|event
 parameter_list|,
 name|ReviewDb
@@ -6259,7 +6245,7 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fireEvent (Branch.NameKey branchName, com.google.gerrit.server.events.Event event)
+DECL|method|fireEvent (Branch.NameKey branchName, RefEvent event)
 specifier|private
 name|void
 name|fireEvent
@@ -6269,17 +6255,7 @@ operator|.
 name|NameKey
 name|branchName
 parameter_list|,
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|events
-operator|.
-name|Event
+name|RefEvent
 name|event
 parameter_list|)
 block|{
