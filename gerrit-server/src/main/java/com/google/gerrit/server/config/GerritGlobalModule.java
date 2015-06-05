@@ -2532,7 +2532,7 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
-name|GitWebConfig
+name|GitwebConfig
 operator|.
 name|class
 argument_list|)

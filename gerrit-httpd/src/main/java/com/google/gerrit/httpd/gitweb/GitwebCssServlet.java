@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 import|;
 end_import
 
@@ -266,10 +266,10 @@ name|SuppressWarnings
 argument_list|(
 literal|"serial"
 argument_list|)
-DECL|class|GitWebCssServlet
+DECL|class|GitwebCssServlet
 specifier|abstract
 class|class
-name|GitWebCssServlet
+name|GitwebCssServlet
 extends|extends
 name|HttpServlet
 block|{
@@ -280,7 +280,7 @@ specifier|static
 class|class
 name|Site
 extends|extends
-name|GitWebCssServlet
+name|GitwebCssServlet
 block|{
 annotation|@
 name|Inject
@@ -309,14 +309,14 @@ specifier|static
 class|class
 name|Default
 extends|extends
-name|GitWebCssServlet
+name|GitwebCssServlet
 block|{
 annotation|@
 name|Inject
-DECL|method|Default (GitWebCgiConfig gwcc)
+DECL|method|Default (GitwebCgiConfig gwcc)
 name|Default
 parameter_list|(
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 name|gwcc
 parameter_list|)
 throws|throws
@@ -361,8 +361,8 @@ name|byte
 index|[]
 name|gz_css
 decl_stmt|;
-DECL|method|GitWebCssServlet (final Path src)
-name|GitWebCssServlet
+DECL|method|GitwebCssServlet (final Path src)
+name|GitwebCssServlet
 parameter_list|(
 specifier|final
 name|Path

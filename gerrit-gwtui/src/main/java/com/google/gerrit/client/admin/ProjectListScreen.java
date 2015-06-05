@@ -136,7 +136,7 @@ name|client
 operator|.
 name|config
 operator|.
-name|GitWebInfo
+name|GitwebInfo
 import|;
 end_import
 
@@ -1357,15 +1357,15 @@ name|ProjectInfo
 name|k
 parameter_list|)
 block|{
-name|GitWebInfo
-name|gitWebLink
+name|GitwebInfo
+name|gitwebLink
 init|=
 name|Gerrit
 operator|.
 name|info
 argument_list|()
 operator|.
-name|gitWeb
+name|gitweb
 argument_list|()
 decl_stmt|;
 name|List
@@ -1386,7 +1386,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|gitWebLink
+name|gitwebLink
 operator|!=
 literal|null
 operator|||
@@ -1425,7 +1425,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|gitWebLink
+name|gitwebLink
 operator|!=
 literal|null
 condition|)
@@ -1441,7 +1441,7 @@ name|a
 operator|.
 name|setText
 argument_list|(
-name|gitWebLink
+name|gitwebLink
 operator|.
 name|getLinkName
 argument_list|()
@@ -1451,7 +1451,7 @@ name|a
 operator|.
 name|setHref
 argument_list|(
-name|gitWebLink
+name|gitwebLink
 operator|.
 name|toProject
 argument_list|(

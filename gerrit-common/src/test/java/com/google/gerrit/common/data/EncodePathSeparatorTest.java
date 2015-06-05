@@ -107,7 +107,7 @@ argument_list|(
 literal|"a/b"
 argument_list|,
 operator|new
-name|GitWebType
+name|GitwebType
 argument_list|()
 operator|.
 name|replacePathSeparator
@@ -125,14 +125,14 @@ name|void
 name|testExclamationMark
 parameter_list|()
 block|{
-name|GitWebType
-name|gitWebType
+name|GitwebType
+name|gitwebType
 init|=
 operator|new
-name|GitWebType
+name|GitwebType
 argument_list|()
 decl_stmt|;
-name|gitWebType
+name|gitwebType
 operator|.
 name|setPathSeparator
 argument_list|(
@@ -143,7 +143,7 @@ name|assertEquals
 argument_list|(
 literal|"a!b"
 argument_list|,
-name|gitWebType
+name|gitwebType
 operator|.
 name|replacePathSeparator
 argument_list|(

@@ -140,7 +140,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|GitWebType
+name|GitwebType
 import|;
 end_import
 
@@ -191,10 +191,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|GitWebConfig
+DECL|class|GitwebConfig
 specifier|public
 class|class
-name|GitWebConfig
+name|GitwebConfig
 block|{
 DECL|field|log
 specifier|private
@@ -207,7 +207,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|GitWebConfig
+name|GitwebConfig
 operator|.
 name|class
 argument_list|)
@@ -300,18 +300,18 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**    * Get a GitWebType based on the given config.    *    * @param cfg Gerrit config.    * @return GitWebType from the given name, else null if not found.    */
+comment|/**    * Get a GitwebType based on the given config.    *    * @param cfg Gerrit config.    * @return GitwebType from the given name, else null if not found.    */
 DECL|method|typeFromConfig (Config cfg)
 specifier|public
 specifier|static
-name|GitWebType
+name|GitwebType
 name|typeFromConfig
 parameter_list|(
 name|Config
 name|cfg
 parameter_list|)
 block|{
-name|GitWebType
+name|GitwebType
 name|defaultType
 init|=
 name|defaultType
@@ -339,11 +339,11 @@ return|return
 literal|null
 return|;
 block|}
-name|GitWebType
+name|GitwebType
 name|type
 init|=
 operator|new
-name|GitWebType
+name|GitwebType
 argument_list|()
 decl_stmt|;
 name|type
@@ -654,18 +654,18 @@ block|}
 DECL|method|defaultType (String typeName)
 specifier|private
 specifier|static
-name|GitWebType
+name|GitwebType
 name|defaultType
 parameter_list|(
 name|String
 name|typeName
 parameter_list|)
 block|{
-name|GitWebType
+name|GitwebType
 name|type
 init|=
 operator|new
-name|GitWebType
+name|GitwebType
 argument_list|()
 decl_stmt|;
 switch|switch
@@ -857,15 +857,15 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|GitWebType
+name|GitwebType
 name|type
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebConfig (GitWebCgiConfig cgiConfig, @GerritServerConfig Config cfg)
-name|GitWebConfig
+DECL|method|GitwebConfig (GitwebCgiConfig cgiConfig, @GerritServerConfig Config cfg)
+name|GitwebConfig
 parameter_list|(
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 name|cgiConfig
 parameter_list|,
 annotation|@
@@ -906,7 +906,7 @@ argument_list|,
 literal|"url"
 argument_list|)
 decl_stmt|;
-name|GitWebType
+name|GitwebType
 name|type
 init|=
 name|typeFromConfig
@@ -1127,11 +1127,11 @@ name|type
 expr_stmt|;
 block|}
 block|}
-comment|/** @return GitWebType for gitweb viewer. */
-DECL|method|getGitWebType ()
+comment|/** @return GitwebType for gitweb viewer. */
+DECL|method|getGitwebType ()
 specifier|public
-name|GitWebType
-name|getGitWebType
+name|GitwebType
+name|getGitwebType
 parameter_list|()
 block|{
 return|return

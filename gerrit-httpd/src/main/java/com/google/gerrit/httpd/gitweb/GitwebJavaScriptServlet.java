@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 import|;
 end_import
 
@@ -272,9 +272,9 @@ literal|"serial"
 argument_list|)
 annotation|@
 name|Singleton
-DECL|class|GitWebJavaScriptServlet
+DECL|class|GitwebJavaScriptServlet
 class|class
-name|GitWebJavaScriptServlet
+name|GitwebJavaScriptServlet
 extends|extends
 name|HttpServlet
 block|{
@@ -293,11 +293,11 @@ name|raw
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebJavaScriptServlet (GitWebCgiConfig gitWebCgiConfig)
-name|GitWebJavaScriptServlet
+DECL|method|GitwebJavaScriptServlet (GitwebCgiConfig gitwebCgiConfig)
+name|GitwebJavaScriptServlet
 parameter_list|(
-name|GitWebCgiConfig
-name|gitWebCgiConfig
+name|GitwebCgiConfig
+name|gitwebCgiConfig
 parameter_list|)
 throws|throws
 name|IOException
@@ -309,7 +309,7 @@ decl_stmt|;
 name|Path
 name|src
 init|=
-name|gitWebCgiConfig
+name|gitwebCgiConfig
 operator|.
 name|getGitwebJs
 argument_list|()

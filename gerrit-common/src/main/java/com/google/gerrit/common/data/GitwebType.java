@@ -71,10 +71,10 @@ comment|/** Class to store information about different source browser types. */
 end_comment
 
 begin_class
-DECL|class|GitWebType
+DECL|class|GitwebType
 specifier|public
 class|class
-name|GitWebType
+name|GitwebType
 block|{
 DECL|field|name
 specifier|private

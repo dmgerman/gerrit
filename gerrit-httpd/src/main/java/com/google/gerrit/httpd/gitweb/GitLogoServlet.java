@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 import|;
 end_import
 
@@ -293,10 +293,10 @@ name|raw
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitLogoServlet (GitWebCgiConfig cfg)
+DECL|method|GitLogoServlet (GitwebCgiConfig cfg)
 name|GitLogoServlet
 parameter_list|(
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 name|cfg
 parameter_list|)
 throws|throws

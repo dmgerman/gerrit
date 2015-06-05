@@ -897,7 +897,7 @@ name|assertThat
 argument_list|(
 name|i
 operator|.
-name|gitWeb
+name|gitweb
 argument_list|)
 operator|.
 name|isNull
@@ -1313,7 +1313,7 @@ name|assertThat
 argument_list|(
 name|i
 operator|.
-name|gitWeb
+name|gitweb
 argument_list|)
 operator|.
 name|isNull

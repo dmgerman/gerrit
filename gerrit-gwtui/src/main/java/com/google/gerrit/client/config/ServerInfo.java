@@ -135,14 +135,14 @@ name|gerrit
 parameter_list|()
 comment|/*-{ return this.gerrit; }-*/
 function_decl|;
-DECL|method|gitWeb ()
+DECL|method|gitweb ()
 specifier|public
 specifier|final
 specifier|native
-name|GitWebInfo
-name|gitWeb
+name|GitwebInfo
+name|gitweb
 parameter_list|()
-comment|/*-{ return this.git_web; }-*/
+comment|/*-{ return this.gitweb; }-*/
 function_decl|;
 DECL|method|sshd ()
 specifier|public

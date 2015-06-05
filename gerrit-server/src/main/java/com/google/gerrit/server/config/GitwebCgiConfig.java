@@ -179,10 +179,10 @@ end_import
 begin_class
 annotation|@
 name|Singleton
-DECL|class|GitWebCgiConfig
+DECL|class|GitwebCgiConfig
 specifier|public
 class|class
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 block|{
 DECL|field|log
 specifier|private
@@ -195,20 +195,20 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
 DECL|method|disabled ()
 specifier|public
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 name|disabled
 parameter_list|()
 block|{
 return|return
 operator|new
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 argument_list|()
 return|;
 block|}
@@ -238,8 +238,8 @@ name|logoPng
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebCgiConfig (SitePaths sitePaths, @GerritServerConfig Config cfg)
-name|GitWebCgiConfig
+DECL|method|GitwebCgiConfig (SitePaths sitePaths, @GerritServerConfig Config cfg)
+name|GitwebCgiConfig
 parameter_list|(
 name|SitePaths
 name|sitePaths
@@ -252,7 +252,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|GitWebConfig
+name|GitwebConfig
 operator|.
 name|isDisabled
 argument_list|(
@@ -575,9 +575,9 @@ operator|=
 name|logo
 expr_stmt|;
 block|}
-DECL|method|GitWebCgiConfig ()
+DECL|method|GitwebCgiConfig ()
 specifier|private
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 parameter_list|()
 block|{
 name|this

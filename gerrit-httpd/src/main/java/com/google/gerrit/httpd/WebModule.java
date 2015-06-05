@@ -212,7 +212,7 @@ name|httpd
 operator|.
 name|gitweb
 operator|.
-name|GitWebModule
+name|GitwebModule
 import|;
 end_import
 
@@ -320,7 +320,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebCgiConfig
+name|GitwebCgiConfig
 import|;
 end_import
 
@@ -440,11 +440,11 @@ specifier|final
 name|boolean
 name|wantSSL
 decl_stmt|;
-DECL|field|gitWebCgiConfig
+DECL|field|gitwebCgiConfig
 specifier|private
 specifier|final
-name|GitWebCgiConfig
-name|gitWebCgiConfig
+name|GitwebCgiConfig
+name|gitwebCgiConfig
 decl_stmt|;
 DECL|field|options
 specifier|private
@@ -454,7 +454,7 @@ name|options
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|WebModule (AuthConfig authConfig, @CanonicalWebUrl @Nullable String canonicalUrl, GerritOptions options, GitWebCgiConfig gitWebCgiConfig)
+DECL|method|WebModule (AuthConfig authConfig, @CanonicalWebUrl @Nullable String canonicalUrl, GerritOptions options, GitwebCgiConfig gitwebCgiConfig)
 name|WebModule
 parameter_list|(
 name|AuthConfig
@@ -470,8 +470,8 @@ parameter_list|,
 name|GerritOptions
 name|options
 parameter_list|,
-name|GitWebCgiConfig
-name|gitWebCgiConfig
+name|GitwebCgiConfig
+name|gitwebCgiConfig
 parameter_list|)
 block|{
 name|this
@@ -503,9 +503,9 @@ name|options
 expr_stmt|;
 name|this
 operator|.
-name|gitWebCgiConfig
+name|gitwebCgiConfig
 operator|=
-name|gitWebCgiConfig
+name|gitwebCgiConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -614,7 +614,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|gitWebCgiConfig
+name|gitwebCgiConfig
 operator|.
 name|getGitwebCgi
 argument_list|()
@@ -625,7 +625,7 @@ block|{
 name|install
 argument_list|(
 operator|new
-name|GitWebModule
+name|GitwebModule
 argument_list|()
 argument_list|)
 expr_stmt|;
