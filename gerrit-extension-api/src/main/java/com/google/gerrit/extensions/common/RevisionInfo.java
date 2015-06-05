@@ -103,11 +103,6 @@ specifier|public
 name|Boolean
 name|draft
 decl_stmt|;
-DECL|field|hasDraftComments
-specifier|public
-name|Boolean
-name|hasDraftComments
-decl_stmt|;
 DECL|field|_number
 specifier|public
 name|int
