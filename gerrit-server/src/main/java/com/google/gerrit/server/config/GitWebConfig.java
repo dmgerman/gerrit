@@ -551,7 +551,7 @@ literal|"urlencode"
 argument_list|,
 name|defaultType
 operator|.
-name|isUrlEncode
+name|getUrlEncode
 argument_list|()
 argument_list|)
 argument_list|)

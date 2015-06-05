@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_comment
-comment|/** Class to store information about different gitweb types. */
+comment|/** Class to store information about different source browser types. */
 end_comment
 
 begin_class
@@ -76,49 +76,41 @@ specifier|public
 class|class
 name|GitWebType
 block|{
-comment|/** name of the type. */
 DECL|field|name
 specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|/** String for revision view url. */
-DECL|field|revision
-specifier|private
-name|String
-name|revision
-decl_stmt|;
-comment|/** ParameterizedString for project view url. */
-DECL|field|project
-specifier|private
-name|String
-name|project
-decl_stmt|;
-comment|/** ParameterizedString for branch view url. */
 DECL|field|branch
 specifier|private
 name|String
 name|branch
 decl_stmt|;
-comment|/** ParameterizedString for root tree view url. */
-DECL|field|rootTree
-specifier|private
-name|String
-name|rootTree
-decl_stmt|;
-comment|/** ParameterizedString for file view url. */
 DECL|field|file
 specifier|private
 name|String
 name|file
 decl_stmt|;
-comment|/** ParameterizedString for file history view url. */
 DECL|field|fileHistory
 specifier|private
 name|String
 name|fileHistory
 decl_stmt|;
-comment|/** Character to substitute the standard path separator '/' in branch and     * project names */
+DECL|field|project
+specifier|private
+name|String
+name|project
+decl_stmt|;
+DECL|field|revision
+specifier|private
+name|String
+name|revision
+decl_stmt|;
+DECL|field|rootTree
+specifier|private
+name|String
+name|rootTree
+decl_stmt|;
 DECL|field|pathSeparator
 specifier|private
 name|char
@@ -126,7 +118,6 @@ name|pathSeparator
 init|=
 literal|'/'
 decl_stmt|;
-comment|/** Whether to include links to draft patch sets */
 DECL|field|linkDrafts
 specifier|private
 name|boolean
@@ -134,7 +125,6 @@ name|linkDrafts
 init|=
 literal|true
 decl_stmt|;
-comment|/** Whether to encode URL segments */
 DECL|field|urlEncode
 specifier|private
 name|boolean
@@ -142,18 +132,7 @@ name|urlEncode
 init|=
 literal|true
 decl_stmt|;
-comment|/**    * Get the String for branch view.    *    * @return The String for branch view    */
-DECL|method|getBranch ()
-specifier|public
-name|String
-name|getBranch
-parameter_list|()
-block|{
-return|return
-name|branch
-return|;
-block|}
-comment|/**    * Get the String for link-name of the type.    *    * @return The String for link-name of the type    */
+comment|/** @return name displayed in links. */
 DECL|method|getLinkName ()
 specifier|public
 name|String
@@ -164,106 +143,12 @@ return|return
 name|name
 return|;
 block|}
-comment|/**    * Get the String for project view.    *    * @return The String for project view    */
-DECL|method|getProject ()
-specifier|public
-name|String
-name|getProject
-parameter_list|()
-block|{
-return|return
-name|project
-return|;
-block|}
-comment|/**    * Get the String for revision view.    *    * @return The String for revision view    */
-DECL|method|getRevision ()
-specifier|public
-name|String
-name|getRevision
-parameter_list|()
-block|{
-return|return
-name|revision
-return|;
-block|}
-comment|/**    * Get the String for root tree view.    *    * @return The String for root tree view    */
-DECL|method|getRootTree ()
-specifier|public
-name|String
-name|getRootTree
-parameter_list|()
-block|{
-return|return
-name|rootTree
-return|;
-block|}
-comment|/**    * Get the String for file view.    *    * @return The String for file view    */
-DECL|method|getFile ()
-specifier|public
-name|String
-name|getFile
-parameter_list|()
-block|{
-return|return
-name|file
-return|;
-block|}
-comment|/**    * Get the String for file history view.    *    * @return The String for file history view    */
-DECL|method|getFileHistory ()
-specifier|public
-name|String
-name|getFileHistory
-parameter_list|()
-block|{
-return|return
-name|fileHistory
-return|;
-block|}
-comment|/**    * Get the path separator used for branch and project names.    *    * @return The path separator.    */
-DECL|method|getPathSeparator ()
-specifier|public
-name|char
-name|getPathSeparator
-parameter_list|()
-block|{
-return|return
-name|pathSeparator
-return|;
-block|}
-comment|/**    * Get whether to link to draft patch sets    *    * @return True to link    */
-DECL|method|getLinkDrafts ()
-specifier|public
-name|boolean
-name|getLinkDrafts
-parameter_list|()
-block|{
-return|return
-name|linkDrafts
-return|;
-block|}
-comment|/**    * Set the pattern for branch view.    *    * @param pattern The pattern for branch view    */
-DECL|method|setBranch (final String pattern)
-specifier|public
-name|void
-name|setBranch
-parameter_list|(
-specifier|final
-name|String
-name|pattern
-parameter_list|)
-block|{
-name|branch
-operator|=
-name|pattern
-expr_stmt|;
-block|}
-comment|/**    * Set the pattern for link-name type.    *    * @param name The link-name type    */
-DECL|method|setLinkName (final String name)
+comment|/**    * Set the name displayed in links.    *    * @param name new name.    */
+DECL|method|setLinkName (String name)
 specifier|public
 name|void
 name|setLinkName
 parameter_list|(
-specifier|final
 name|String
 name|name
 parameter_list|)
@@ -275,87 +160,247 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**    * Set the pattern for project view.    *    * @param pattern The pattern for project view    */
-DECL|method|setProject (final String pattern)
+comment|/** @return parameterized string for the branch URL. */
+DECL|method|getBranch ()
+specifier|public
+name|String
+name|getBranch
+parameter_list|()
+block|{
+return|return
+name|branch
+return|;
+block|}
+comment|/**    * Set the parameterized string for the branch URL.    *    * @param str new string.    */
+DECL|method|setBranch (String str)
 specifier|public
 name|void
-name|setProject
+name|setBranch
 parameter_list|(
-specifier|final
 name|String
-name|pattern
+name|str
 parameter_list|)
 block|{
-name|project
+name|branch
 operator|=
-name|pattern
+name|str
 expr_stmt|;
 block|}
-comment|/**    * Set the pattern for revision view.    *    * @param pattern The pattern for revision view    */
-DECL|method|setRevision (final String pattern)
+comment|/** @return parameterized string for the file URL. */
+DECL|method|getFile ()
 specifier|public
-name|void
-name|setRevision
-parameter_list|(
-specifier|final
 name|String
-name|pattern
-parameter_list|)
+name|getFile
+parameter_list|()
 block|{
-name|revision
-operator|=
-name|pattern
-expr_stmt|;
+return|return
+name|file
+return|;
 block|}
-comment|/**    * Set the pattern for root tree view.    *    * @param pattern The pattern for root tree view    */
-DECL|method|setRootTree (final String pattern)
-specifier|public
-name|void
-name|setRootTree
-parameter_list|(
-specifier|final
-name|String
-name|pattern
-parameter_list|)
-block|{
-name|rootTree
-operator|=
-name|pattern
-expr_stmt|;
-block|}
-comment|/**    * Set the pattern for file view.    *    * @param pattern The pattern for file view    */
-DECL|method|setFile (final String pattern)
+comment|/**    * Set the parameterized string for the file URL.    *    * @param str new string.    */
+DECL|method|setFile (String str)
 specifier|public
 name|void
 name|setFile
 parameter_list|(
-specifier|final
 name|String
-name|pattern
+name|str
 parameter_list|)
 block|{
 name|file
 operator|=
-name|pattern
+name|str
 expr_stmt|;
 block|}
-comment|/**    * Set the pattern for file history view.    *    * @param pattern The pattern for file history view    */
-DECL|method|setFileHistory (final String pattern)
+comment|/** @return parameterized string for the file history URL. */
+DECL|method|getFileHistory ()
+specifier|public
+name|String
+name|getFileHistory
+parameter_list|()
+block|{
+return|return
+name|fileHistory
+return|;
+block|}
+comment|/**    * Set the parameterized string for the file history URL.    *    * @param str new string.    */
+DECL|method|setFileHistory (String str)
 specifier|public
 name|void
 name|setFileHistory
 parameter_list|(
-specifier|final
 name|String
-name|pattern
+name|str
 parameter_list|)
 block|{
 name|fileHistory
 operator|=
-name|pattern
+name|str
 expr_stmt|;
 block|}
-comment|/**    * Replace the standard path separator ('/') in a branch name or project    * name with a custom path separator configured by the property    * gitweb.pathSeparator.    * @param urlSegment The branch or project to replace the path separator in    * @return the urlSegment with the standard path separator replaced by the    * custom path separator    */
+comment|/** @return parameterized string for the project URL. */
+DECL|method|getProject ()
+specifier|public
+name|String
+name|getProject
+parameter_list|()
+block|{
+return|return
+name|project
+return|;
+block|}
+comment|/**    * Set the parameterized string for the project URL.    *    * @param str new string.    */
+DECL|method|setProject (String str)
+specifier|public
+name|void
+name|setProject
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+name|project
+operator|=
+name|str
+expr_stmt|;
+block|}
+comment|/** @return parameterized string for the revision URL. */
+DECL|method|getRevision ()
+specifier|public
+name|String
+name|getRevision
+parameter_list|()
+block|{
+return|return
+name|revision
+return|;
+block|}
+comment|/**    * Set the parameterized string for the revision URL.    *    * @param str new string.    */
+DECL|method|setRevision (String str)
+specifier|public
+name|void
+name|setRevision
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+name|revision
+operator|=
+name|str
+expr_stmt|;
+block|}
+comment|/** @return parameterized string for the root tree URL. */
+DECL|method|getRootTree ()
+specifier|public
+name|String
+name|getRootTree
+parameter_list|()
+block|{
+return|return
+name|rootTree
+return|;
+block|}
+comment|/**    * Set the parameterized string for the root tree URL.    *    * @param str new string.    */
+DECL|method|setRootTree (String str)
+specifier|public
+name|void
+name|setRootTree
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+name|rootTree
+operator|=
+name|str
+expr_stmt|;
+block|}
+comment|/** @return path separator used for branch and project names. */
+DECL|method|getPathSeparator ()
+specifier|public
+name|char
+name|getPathSeparator
+parameter_list|()
+block|{
+return|return
+name|pathSeparator
+return|;
+block|}
+comment|/**    * Set the custom path separator.    *    * @param separator new separator.    */
+DECL|method|setPathSeparator (char separator)
+specifier|public
+name|void
+name|setPathSeparator
+parameter_list|(
+name|char
+name|separator
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pathSeparator
+operator|=
+name|separator
+expr_stmt|;
+block|}
+comment|/** @return whether to generate links to draft patch sets. */
+DECL|method|getLinkDrafts ()
+specifier|public
+name|boolean
+name|getLinkDrafts
+parameter_list|()
+block|{
+return|return
+name|linkDrafts
+return|;
+block|}
+comment|/**    * Set whether to generate links to draft patch sets.    *    * @param linkDrafts new value.    */
+DECL|method|setLinkDrafts (boolean linkDrafts)
+specifier|public
+name|void
+name|setLinkDrafts
+parameter_list|(
+name|boolean
+name|linkDrafts
+parameter_list|)
+block|{
+name|this
+operator|.
+name|linkDrafts
+operator|=
+name|linkDrafts
+expr_stmt|;
+block|}
+comment|/** @return whether to URL encode path segments. */
+DECL|method|getUrlEncode ()
+specifier|public
+name|boolean
+name|getUrlEncode
+parameter_list|()
+block|{
+return|return
+name|urlEncode
+return|;
+block|}
+comment|/**    * Set whether to URL encode path segments.    *    * @param urlEncode new value.    */
+DECL|method|setUrlEncode (boolean urlEncode)
+specifier|public
+name|void
+name|setUrlEncode
+parameter_list|(
+name|boolean
+name|urlEncode
+parameter_list|)
+block|{
+name|this
+operator|.
+name|urlEncode
+operator|=
+name|urlEncode
+expr_stmt|;
+block|}
+comment|/**    * Replace standard path separator with custom configured path separator.    *    * @param urlSegment URL segment (e.g. branch or project name) in which to    *     replace the path separator.    * @return the segment with the standard path separator replaced by the custom    *   {@link #getPathSeparator()}.    */
 DECL|method|replacePathSeparator (String urlSegment)
 specifier|public
 name|String
@@ -386,65 +431,6 @@ block|}
 return|return
 name|urlSegment
 return|;
-block|}
-comment|/**    * Set the custom path separator    * @param separator The custom path separator    */
-DECL|method|setPathSeparator (char separator)
-specifier|public
-name|void
-name|setPathSeparator
-parameter_list|(
-name|char
-name|separator
-parameter_list|)
-block|{
-name|this
-operator|.
-name|pathSeparator
-operator|=
-name|separator
-expr_stmt|;
-block|}
-DECL|method|setLinkDrafts (boolean linkDrafts)
-specifier|public
-name|void
-name|setLinkDrafts
-parameter_list|(
-name|boolean
-name|linkDrafts
-parameter_list|)
-block|{
-name|this
-operator|.
-name|linkDrafts
-operator|=
-name|linkDrafts
-expr_stmt|;
-block|}
-DECL|method|isUrlEncode ()
-specifier|public
-name|boolean
-name|isUrlEncode
-parameter_list|()
-block|{
-return|return
-name|urlEncode
-return|;
-block|}
-DECL|method|setUrlEncode (boolean urlEncode)
-specifier|public
-name|void
-name|setUrlEncode
-parameter_list|(
-name|boolean
-name|urlEncode
-parameter_list|)
-block|{
-name|this
-operator|.
-name|urlEncode
-operator|=
-name|urlEncode
-expr_stmt|;
 block|}
 block|}
 end_class
