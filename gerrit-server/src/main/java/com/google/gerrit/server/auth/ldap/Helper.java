@@ -168,6 +168,22 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|account
+operator|.
+name|AuthenticationFailedException
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|auth
 operator|.
 name|NoSuchUserException
@@ -1319,7 +1335,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|AccountException
+name|AuthenticationFailedException
 argument_list|(
 literal|"Incorrect username or password"
 argument_list|,
