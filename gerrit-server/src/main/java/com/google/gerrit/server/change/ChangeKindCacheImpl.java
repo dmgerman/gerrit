@@ -404,6 +404,20 @@ name|eclipse
 operator|.
 name|jgit
 operator|.
+name|errors
+operator|.
+name|LargeObjectException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
 name|lib
 operator|.
 name|Config
@@ -1430,6 +1444,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|merger
@@ -1466,14 +1482,21 @@ operator|.
 name|TRIVIAL_REBASE
 return|;
 block|}
-else|else
+block|}
+catch|catch
+parameter_list|(
+name|LargeObjectException
+name|e
+parameter_list|)
 block|{
+comment|// Some object is too large for the merge attempt to succeed. Assume
+comment|// it was a rework.
+block|}
 return|return
 name|ChangeKind
 operator|.
 name|REWORK
 return|;
-block|}
 block|}
 finally|finally
 block|{
