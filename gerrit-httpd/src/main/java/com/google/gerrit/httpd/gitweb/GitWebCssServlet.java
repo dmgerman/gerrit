@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebConfig
+name|GitWebCgiConfig
 import|;
 end_import
 
@@ -313,20 +313,20 @@ name|GitWebCssServlet
 block|{
 annotation|@
 name|Inject
-DECL|method|Default (GitWebConfig gwc)
+DECL|method|Default (GitWebCgiConfig gwcc)
 name|Default
 parameter_list|(
-name|GitWebConfig
-name|gwc
+name|GitWebCgiConfig
+name|gwcc
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 name|super
 argument_list|(
-name|gwc
+name|gwcc
 operator|.
-name|getGitwebCSS
+name|getGitwebCss
 argument_list|()
 argument_list|)
 expr_stmt|;

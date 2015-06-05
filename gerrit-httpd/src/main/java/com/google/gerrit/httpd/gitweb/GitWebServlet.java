@@ -252,6 +252,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GitWebCgiConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|GitWebConfig
 import|;
 end_import
@@ -780,7 +796,7 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebServlet (LocalDiskRepositoryManager repoManager, ProjectControl.Factory projectControl, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitWebConfig gitWebConfig)
+DECL|method|GitWebServlet (LocalDiskRepositoryManager repoManager, ProjectControl.Factory projectControl, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitWebConfig gitWebConfig, GitWebCgiConfig gitWebCgiConfig)
 name|GitWebServlet
 parameter_list|(
 name|LocalDiskRepositoryManager
@@ -816,6 +832,9 @@ name|sshInfo
 parameter_list|,
 name|GitWebConfig
 name|gitWebConfig
+parameter_list|,
+name|GitWebCgiConfig
+name|gitWebCgiConfig
 parameter_list|)
 throws|throws
 name|IOException
@@ -848,9 +867,9 @@ name|this
 operator|.
 name|gitwebCgi
 operator|=
-name|gitWebConfig
+name|gitWebCgiConfig
 operator|.
-name|getGitwebCGI
+name|getGitwebCgi
 argument_list|()
 expr_stmt|;
 name|this

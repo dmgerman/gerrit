@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebConfig
+name|GitWebCgiConfig
 import|;
 end_import
 
@@ -293,11 +293,11 @@ name|raw
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitLogoServlet (GitWebConfig gitWebConfig)
+DECL|method|GitLogoServlet (GitWebCgiConfig cfg)
 name|GitLogoServlet
 parameter_list|(
-name|GitWebConfig
-name|gitWebConfig
+name|GitWebCgiConfig
+name|cfg
 parameter_list|)
 throws|throws
 name|IOException
@@ -309,9 +309,9 @@ decl_stmt|;
 name|Path
 name|src
 init|=
-name|gitWebConfig
+name|cfg
 operator|.
-name|getGitLogoPNG
+name|getGitLogoPng
 argument_list|()
 decl_stmt|;
 if|if

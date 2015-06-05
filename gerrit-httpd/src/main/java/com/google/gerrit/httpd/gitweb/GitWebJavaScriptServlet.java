@@ -108,7 +108,7 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebConfig
+name|GitWebCgiConfig
 import|;
 end_import
 
@@ -293,12 +293,11 @@ name|raw
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebJavaScriptServlet (final GitWebConfig gitWebConfig)
+DECL|method|GitWebJavaScriptServlet (GitWebCgiConfig gitWebCgiConfig)
 name|GitWebJavaScriptServlet
 parameter_list|(
-specifier|final
-name|GitWebConfig
-name|gitWebConfig
+name|GitWebCgiConfig
+name|gitWebCgiConfig
 parameter_list|)
 throws|throws
 name|IOException
@@ -310,9 +309,9 @@ decl_stmt|;
 name|Path
 name|src
 init|=
-name|gitWebConfig
+name|gitWebCgiConfig
 operator|.
-name|getGitwebJS
+name|getGitwebJs
 argument_list|()
 decl_stmt|;
 if|if
