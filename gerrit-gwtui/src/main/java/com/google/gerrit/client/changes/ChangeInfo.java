@@ -1841,15 +1841,6 @@ name|draft
 parameter_list|()
 comment|/*-{ return this.draft || false; }-*/
 function_decl|;
-DECL|method|hasDraftComments ()
-specifier|public
-specifier|final
-specifier|native
-name|boolean
-name|hasDraftComments
-parameter_list|()
-comment|/*-{ return this.has_draft_comments || false; }-*/
-function_decl|;
 DECL|method|isEdit ()
 specifier|public
 specifier|final
