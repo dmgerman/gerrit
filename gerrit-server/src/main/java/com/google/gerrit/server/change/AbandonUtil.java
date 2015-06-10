@@ -518,6 +518,11 @@ operator|.
 name|changes
 argument_list|()
 decl_stmt|;
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|ChangeData
@@ -544,6 +549,9 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|)
+expr_stmt|;
+name|count
+operator|++
 expr_stmt|;
 block|}
 catch|catch
@@ -584,6 +592,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|log
+operator|.
+name|info
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Auto-Abandoned %d of %d changes."
+argument_list|,
+name|count
+argument_list|,
+name|changesToAbandon
+operator|.
+name|size
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
