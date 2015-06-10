@@ -391,10 +391,13 @@ if|if
 condition|(
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|isAllowDraftChanges
+name|change
+argument_list|()
+operator|.
+name|allowDrafts
 argument_list|()
 condition|)
 block|{

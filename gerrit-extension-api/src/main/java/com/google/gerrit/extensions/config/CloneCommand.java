@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2008 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -52,7 +52,7 @@ comment|// limitations under the License.
 end_comment
 
 begin_package
-DECL|package|com.google.gerrit.common.data
+DECL|package|com.google.gerrit.extensions.config
 package|package
 name|com
 operator|.
@@ -60,59 +60,51 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|common
+name|extensions
 operator|.
-name|data
+name|config
 package|;
 end_package
 
-begin_comment
-comment|/** Link to an external gitweb server. */
-end_comment
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|annotations
+operator|.
+name|ExtensionPoint
+import|;
+end_import
 
 begin_class
-DECL|class|GitwebConfig
+annotation|@
+name|ExtensionPoint
+DECL|class|CloneCommand
 specifier|public
+specifier|abstract
 class|class
-name|GitwebConfig
+name|CloneCommand
 block|{
-DECL|field|baseUrl
+comment|/**    * Returns the clone command for the given download scheme and project.    *    * @param scheme the download scheme for which the command should be returned    * @param project the name of the project for which the clone command    *        should be returned    * @return the clone command    */
+DECL|method|getCommand (DownloadScheme scheme, String project)
 specifier|public
+specifier|abstract
 name|String
-name|baseUrl
-decl_stmt|;
-DECL|field|type
-specifier|public
-name|GitWebType
-name|type
-decl_stmt|;
-DECL|method|GitwebConfig ()
-specifier|protected
-name|GitwebConfig
-parameter_list|()
-block|{   }
-DECL|method|GitwebConfig (final String base, final GitWebType gitWebType)
-specifier|public
-name|GitwebConfig
+name|getCommand
 parameter_list|(
-specifier|final
-name|String
-name|base
+name|DownloadScheme
+name|scheme
 parameter_list|,
-specifier|final
-name|GitWebType
-name|gitWebType
+name|String
+name|project
 parameter_list|)
-block|{
-name|baseUrl
-operator|=
-name|base
-expr_stmt|;
-name|type
-operator|=
-name|gitWebType
-expr_stmt|;
-block|}
+function_decl|;
 block|}
 end_class
 

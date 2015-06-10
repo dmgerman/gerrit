@@ -1250,10 +1250,13 @@ name|activated
 init|=
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getArchiveFormats
+name|download
+argument_list|()
+operator|.
+name|archives
 argument_list|()
 decl_stmt|;
 if|if

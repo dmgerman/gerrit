@@ -148,11 +148,6 @@ specifier|public
 name|String
 name|xGerritAuth
 decl_stmt|;
-DECL|field|config
-specifier|public
-name|GerritConfig
-name|config
-decl_stmt|;
 DECL|field|theme
 specifier|public
 name|Theme

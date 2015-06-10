@@ -115,6 +115,15 @@ argument_list|<
 name|String
 argument_list|>
 block|{
+DECL|field|DEFAULT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT
+init|=
+literal|"Anonymous Coward"
+decl_stmt|;
 DECL|field|anonymousCoward
 specifier|private
 specifier|final
@@ -157,7 +166,7 @@ condition|)
 block|{
 name|anonymousCoward
 operator|=
-literal|"Anonymous Coward"
+name|DEFAULT
 expr_stmt|;
 block|}
 name|this

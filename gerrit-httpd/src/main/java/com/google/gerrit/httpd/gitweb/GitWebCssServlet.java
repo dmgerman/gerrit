@@ -92,7 +92,7 @@ name|gerrit
 operator|.
 name|httpd
 operator|.
-name|GitWebConfig
+name|HtmlDomUtil
 import|;
 end_import
 
@@ -104,9 +104,11 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|server
 operator|.
-name|HtmlDomUtil
+name|config
+operator|.
+name|GitWebConfig
 import|;
 end_import
 

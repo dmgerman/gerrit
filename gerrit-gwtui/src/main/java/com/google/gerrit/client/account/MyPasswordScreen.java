@@ -377,10 +377,13 @@ name|url
 init|=
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getHttpPasswordUrl
+name|auth
+argument_list|()
+operator|.
+name|httpPasswordUrl
 argument_list|()
 decl_stmt|;
 if|if

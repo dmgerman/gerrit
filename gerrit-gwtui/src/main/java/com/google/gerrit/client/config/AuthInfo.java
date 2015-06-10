@@ -120,6 +120,24 @@ name|com
 operator|.
 name|google
 operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
+name|client
+operator|.
+name|Account
+operator|.
+name|FieldName
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
 name|gwt
 operator|.
 name|core
@@ -189,6 +207,29 @@ argument_list|(
 name|authTypeRaw
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|isLdap ()
+specifier|public
+specifier|final
+name|boolean
+name|isLdap
+parameter_list|()
+block|{
+return|return
+name|authType
+argument_list|()
+operator|==
+name|AuthType
+operator|.
+name|LDAP
+operator|||
+name|authType
+argument_list|()
+operator|==
+name|AuthType
+operator|.
+name|LDAP_BIND
 return|;
 block|}
 DECL|method|isOpenId ()
@@ -351,6 +392,64 @@ return|return
 name|fields
 return|;
 block|}
+DECL|method|siteHasUsernames ()
+specifier|public
+specifier|final
+name|boolean
+name|siteHasUsernames
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isCustomExtension
+argument_list|()
+operator|&&
+name|httpPasswordUrl
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|canEdit
+argument_list|(
+name|FieldName
+operator|.
+name|USER_NAME
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
+block|}
+DECL|method|isHttpPasswordSettingsEnabled ()
+specifier|public
+specifier|final
+name|boolean
+name|isHttpPasswordSettingsEnabled
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isLdap
+argument_list|()
+operator|&&
+name|isGitBasicAuth
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
+block|}
 DECL|method|useContributorAgreements ()
 specifier|public
 specifier|final
@@ -359,6 +458,78 @@ name|boolean
 name|useContributorAgreements
 parameter_list|()
 comment|/*-{ return this.use_contributor_agreements || false; }-*/
+function_decl|;
+DECL|method|loginUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|loginUrl
+parameter_list|()
+comment|/*-{ return this.login_url; }-*/
+function_decl|;
+DECL|method|loginText ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|loginText
+parameter_list|()
+comment|/*-{ return this.login_text; }-*/
+function_decl|;
+DECL|method|switchAccountUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|switchAccountUrl
+parameter_list|()
+comment|/*-{ return this.switch_account_url; }-*/
+function_decl|;
+DECL|method|registerUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|registerUrl
+parameter_list|()
+comment|/*-{ return this.register_url; }-*/
+function_decl|;
+DECL|method|registerText ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|registerText
+parameter_list|()
+comment|/*-{ return this.register_text; }-*/
+function_decl|;
+DECL|method|editFullNameUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|editFullNameUrl
+parameter_list|()
+comment|/*-{ return this.edit_full_name_url; }-*/
+function_decl|;
+DECL|method|httpPasswordUrl ()
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|httpPasswordUrl
+parameter_list|()
+comment|/*-{ return this.http_password_url; }-*/
+function_decl|;
+DECL|method|isGitBasicAuth ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isGitBasicAuth
+parameter_list|()
+comment|/*-{ return this.is_git_basic_auth || false; }-*/
 function_decl|;
 DECL|method|authTypeRaw ()
 specifier|private

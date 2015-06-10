@@ -104,7 +104,9 @@ name|google
 operator|.
 name|gerrit
 operator|.
-name|httpd
+name|server
+operator|.
+name|config
 operator|.
 name|GitWebConfig
 import|;

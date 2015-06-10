@@ -3071,10 +3071,13 @@ name|largeChangeSize
 init|=
 name|Gerrit
 operator|.
-name|getConfig
+name|info
 argument_list|()
 operator|.
-name|getLargeChangeSize
+name|change
+argument_list|()
+operator|.
+name|largeChange
 argument_list|()
 decl_stmt|;
 name|int

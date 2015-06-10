@@ -132,11 +132,47 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gwt
+operator|.
+name|core
+operator|.
+name|client
+operator|.
+name|JsArrayString
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -178,6 +214,53 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|archives ()
+specifier|public
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|archives
+parameter_list|()
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|archives
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|f
+range|:
+name|Natives
+operator|.
+name|asList
+argument_list|(
+name|_archives
+argument_list|()
+argument_list|)
+control|)
+block|{
+name|archives
+operator|.
+name|add
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|archives
+return|;
+block|}
 DECL|method|scheme (String n)
 specifier|public
 specifier|final
@@ -201,6 +284,15 @@ argument_list|>
 name|_schemes
 parameter_list|()
 comment|/*-{ return this.schemes; }-*/
+function_decl|;
+DECL|method|_archives ()
+specifier|private
+specifier|final
+specifier|native
+name|JsArrayString
+name|_archives
+parameter_list|()
+comment|/*-{ return this.archives; }-*/
 function_decl|;
 DECL|method|DownloadInfo ()
 specifier|protected
@@ -318,6 +410,109 @@ name|project
 argument_list|)
 return|;
 block|}
+DECL|method|cloneCommandNames ()
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|cloneCommandNames
+parameter_list|()
+block|{
+return|return
+name|Natives
+operator|.
+name|keys
+argument_list|(
+name|_cloneCommands
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|cloneCommands (String project)
+specifier|public
+specifier|final
+name|Set
+argument_list|<
+name|DownloadCommandInfo
+argument_list|>
+name|cloneCommands
+parameter_list|(
+name|String
+name|project
+parameter_list|)
+block|{
+name|Set
+argument_list|<
+name|DownloadCommandInfo
+argument_list|>
+name|commands
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|commandName
+range|:
+name|cloneCommandNames
+argument_list|()
+control|)
+block|{
+name|commands
+operator|.
+name|add
+argument_list|(
+operator|new
+name|DownloadCommandInfo
+argument_list|(
+name|commandName
+argument_list|,
+name|cloneCommand
+argument_list|(
+name|commandName
+argument_list|,
+name|project
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|commands
+return|;
+block|}
+DECL|method|cloneCommand (String commandName, String project)
+specifier|public
+specifier|final
+name|String
+name|cloneCommand
+parameter_list|(
+name|String
+name|commandName
+parameter_list|,
+name|String
+name|project
+parameter_list|)
+block|{
+return|return
+name|cloneCommand
+argument_list|(
+name|commandName
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\$\\{project\\}"
+argument_list|,
+name|project
+argument_list|)
+return|;
+block|}
 DECL|method|getUrl (String project)
 specifier|public
 specifier|final
@@ -388,6 +583,18 @@ name|n
 parameter_list|)
 comment|/*-{ return this.commands[n]; }-*/
 function_decl|;
+DECL|method|cloneCommand (String n)
+specifier|public
+specifier|final
+specifier|native
+name|String
+name|cloneCommand
+parameter_list|(
+name|String
+name|n
+parameter_list|)
+comment|/*-{ return this.clone_commands[n]; }-*/
+function_decl|;
 DECL|method|_commands ()
 specifier|private
 specifier|final
@@ -399,6 +606,18 @@ argument_list|>
 name|_commands
 parameter_list|()
 comment|/*-{ return this.commands; }-*/
+function_decl|;
+DECL|method|_cloneCommands ()
+specifier|private
+specifier|final
+specifier|native
+name|NativeMap
+argument_list|<
+name|NativeString
+argument_list|>
+name|_cloneCommands
+parameter_list|()
+comment|/*-{ return this.clone_commands; }-*/
 function_decl|;
 DECL|method|DownloadSchemeInfo ()
 specifier|protected

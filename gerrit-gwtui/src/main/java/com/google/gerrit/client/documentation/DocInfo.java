@@ -124,6 +124,21 @@ name|url
 parameter_list|()
 comment|/*-{ return this.url; }-*/
 function_decl|;
+DECL|method|create ()
+specifier|public
+specifier|static
+name|DocInfo
+name|create
+parameter_list|()
+block|{
+return|return
+operator|(
+name|DocInfo
+operator|)
+name|createObject
+argument_list|()
+return|;
+block|}
 DECL|method|DocInfo ()
 specifier|protected
 name|DocInfo

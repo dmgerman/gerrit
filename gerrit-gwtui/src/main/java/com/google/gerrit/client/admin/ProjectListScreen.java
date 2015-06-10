@@ -120,7 +120,7 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|GitwebLink
+name|WebLinkInfo
 import|;
 end_import
 
@@ -134,7 +134,9 @@ name|gerrit
 operator|.
 name|client
 operator|.
-name|WebLinkInfo
+name|config
+operator|.
+name|GitWebInfo
 import|;
 end_import
 
@@ -1355,12 +1357,15 @@ name|ProjectInfo
 name|k
 parameter_list|)
 block|{
-name|GitwebLink
+name|GitWebInfo
 name|gitWebLink
 init|=
 name|Gerrit
 operator|.
-name|getGitwebLink
+name|info
+argument_list|()
+operator|.
+name|gitWeb
 argument_list|()
 decl_stmt|;
 name|List
