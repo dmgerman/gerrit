@@ -4273,7 +4273,7 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|release
+name|close
 parameter_list|()
 block|{       }
 block|}
