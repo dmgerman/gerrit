@@ -804,7 +804,7 @@ name|repo
 argument_list|,
 name|rw
 argument_list|,
-name|change
+name|control
 argument_list|,
 name|rsrc
 operator|.
