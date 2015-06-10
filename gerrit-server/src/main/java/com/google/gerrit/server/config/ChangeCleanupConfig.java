@@ -154,6 +154,14 @@ name|KEY_ABANDON_AFTER
 init|=
 literal|"abandonAfter"
 decl_stmt|;
+DECL|field|KEY_ABANDON_IF_MERGEABLE
+specifier|private
+specifier|static
+name|String
+name|KEY_ABANDON_IF_MERGEABLE
+init|=
+literal|"abandonIfMergeable"
+decl_stmt|;
 DECL|field|KEY_ABANDON_MESSAGE
 specifier|private
 specifier|static
@@ -187,6 +195,12 @@ specifier|private
 specifier|final
 name|long
 name|abandonAfter
+decl_stmt|;
+DECL|field|abandonIfMergeable
+specifier|private
+specifier|final
+name|boolean
+name|abandonIfMergeable
 decl_stmt|;
 DECL|field|abandonMessage
 specifier|private
@@ -225,6 +239,21 @@ operator|=
 name|readAbandonAfter
 argument_list|(
 name|cfg
+argument_list|)
+expr_stmt|;
+name|abandonIfMergeable
+operator|=
+name|cfg
+operator|.
+name|getBoolean
+argument_list|(
+name|SECTION
+argument_list|,
+literal|null
+argument_list|,
+name|KEY_ABANDON_IF_MERGEABLE
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|abandonMessage
@@ -352,6 +381,16 @@ parameter_list|()
 block|{
 return|return
 name|abandonAfter
+return|;
+block|}
+DECL|method|getAbandonIfMergeable ()
+specifier|public
+name|boolean
+name|getAbandonIfMergeable
+parameter_list|()
+block|{
+return|return
+name|abandonIfMergeable
 return|;
 block|}
 DECL|method|getAbandonMessage ()

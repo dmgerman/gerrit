@@ -478,6 +478,20 @@ argument_list|)
 operator|+
 literal|"m"
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|cfg
+operator|.
+name|getAbandonIfMergeable
+argument_list|()
+condition|)
+block|{
+name|query
+operator|+=
+literal|" -is:mergeable"
+expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|ChangeData
