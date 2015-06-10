@@ -184,10 +184,8 @@ name|KillTaskIT
 extends|extends
 name|AbstractDaemonTest
 block|{
-annotation|@
-name|Test
 DECL|method|killTask ()
-specifier|public
+specifier|private
 name|void
 name|killTask
 parameter_list|()
@@ -350,10 +348,8 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
 DECL|method|killTask_NotFound ()
-specifier|public
+specifier|private
 name|void
 name|killTask_NotFound
 parameter_list|()
@@ -451,6 +447,24 @@ name|HttpStatus
 operator|.
 name|SC_NOT_FOUND
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|killTaskTests_inOrder ()
+specifier|public
+name|void
+name|killTaskTests_inOrder
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// As killTask() changes the state of the server, we want to test it last
+name|killTask_NotFound
+argument_list|()
+expr_stmt|;
+name|killTask
+argument_list|()
 expr_stmt|;
 block|}
 block|}
