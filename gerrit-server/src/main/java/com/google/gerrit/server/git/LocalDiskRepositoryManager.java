@@ -1942,7 +1942,8 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|Repository
 name|e
 init|=
@@ -1950,8 +1951,7 @@ name|openRepository
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|getProjectDescription
@@ -1959,14 +1959,6 @@ argument_list|(
 name|e
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|e
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|getProjectDescription (final Repository e)
@@ -2094,8 +2086,7 @@ block|{
 comment|// Update git's description file, in case gitweb is being used
 comment|//
 try|try
-block|{
-specifier|final
+init|(
 name|Repository
 name|e
 init|=
@@ -2103,8 +2094,7 @@ name|openRepository
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|String
@@ -2231,15 +2221,6 @@ expr_stmt|;
 name|f
 operator|.
 name|commit
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|e
-operator|.
-name|close
 argument_list|()
 expr_stmt|;
 block|}

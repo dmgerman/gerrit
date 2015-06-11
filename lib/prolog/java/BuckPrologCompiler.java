@@ -335,6 +335,8 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+try|try
+init|(
 name|JarOutputStream
 name|out
 init|=
@@ -347,8 +349,7 @@ argument_list|(
 name|tmp
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|add
 argument_list|(
@@ -358,14 +359,6 @@ name|classes
 argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 if|if

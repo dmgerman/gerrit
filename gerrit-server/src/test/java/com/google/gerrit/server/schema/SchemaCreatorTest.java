@@ -687,6 +687,8 @@ argument_list|(
 name|allProjects
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -696,8 +698,7 @@ name|openRepository
 argument_list|(
 name|allProjects
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|c
 operator|.
@@ -724,14 +725,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 annotation|@

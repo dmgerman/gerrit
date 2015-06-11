@@ -907,6 +907,8 @@ argument_list|(
 name|c2
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -916,8 +918,7 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 comment|// master-tag -> master
 name|RefUpdate
@@ -1024,14 +1025,6 @@ name|Result
 operator|.
 name|NEW
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

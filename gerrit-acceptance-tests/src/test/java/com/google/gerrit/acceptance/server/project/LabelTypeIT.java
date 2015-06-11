@@ -2164,6 +2164,8 @@ operator|.
 name|submit
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -2173,8 +2175,7 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|assertThat
 argument_list|(
@@ -2196,14 +2197,6 @@ operator|.
 name|getCommitId
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

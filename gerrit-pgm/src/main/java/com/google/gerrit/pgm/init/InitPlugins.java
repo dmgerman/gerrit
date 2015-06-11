@@ -1035,6 +1035,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|JarFile
 name|jarFile
 init|=
@@ -1046,8 +1048,7 @@ operator|.
 name|toFile
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Manifest
 name|manifest
@@ -1077,14 +1078,6 @@ operator|.
 name|IMPLEMENTATION_VERSION
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|jarFile
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

@@ -582,6 +582,8 @@ operator|.
 name|newArrayList
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -592,8 +594,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|RevWalk
 name|rw
@@ -669,14 +670,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 name|Collections
 operator|.

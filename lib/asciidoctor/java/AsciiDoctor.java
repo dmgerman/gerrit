@@ -827,6 +827,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+try|try
+init|(
 name|ZipOutputStream
 name|zip
 init|=
@@ -839,7 +841,8 @@ argument_list|(
 name|zipFile
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 for|for
 control|(
 name|String
@@ -924,11 +927,7 @@ name|zip
 argument_list|)
 expr_stmt|;
 block|}
-name|zip
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 DECL|method|zipFile (File file, String name, ZipOutputStream zip)
 specifier|public
@@ -959,6 +958,8 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|FileInputStream
 name|input
 init|=
@@ -967,7 +968,8 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ByteStreams
 operator|.
 name|copy
@@ -977,11 +979,7 @@ argument_list|,
 name|zip
 argument_list|)
 expr_stmt|;
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 name|zip
 operator|.
 name|closeEntry

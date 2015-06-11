@@ -1757,6 +1757,8 @@ argument_list|(
 name|projectName
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|Repository
 name|git
 init|=
@@ -1766,8 +1768,7 @@ name|openRepository
 argument_list|(
 name|key
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ProjectConfig
 name|cfg
@@ -1793,14 +1794,6 @@ argument_list|(
 name|cfg
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|git
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

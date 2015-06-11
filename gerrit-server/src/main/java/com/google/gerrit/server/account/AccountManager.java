@@ -615,6 +615,8 @@ name|AccountException
 block|{
 try|try
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -622,8 +624,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|AccountExternalId
 name|ext
@@ -656,14 +657,6 @@ argument_list|()
 else|:
 literal|null
 return|;
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -708,6 +701,8 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -715,8 +710,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|AccountExternalId
 operator|.
@@ -824,14 +818,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -1901,6 +1887,8 @@ name|AccountException
 throws|,
 name|OrmException
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -1908,8 +1896,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|who
 operator|=
@@ -2123,14 +2110,6 @@ literal|false
 argument_list|)
 return|;
 block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**    * Update the link to another unique authentication identity to an existing account.    *    * Existing external identities with the same scheme will be removed and replaced    * with the new one.    *    * @param to account to link the identity onto.    * @param who the additional identity.    * @return the result of linking the identity to the user.    * @throws OrmException    * @throws AccountException the identity belongs to a different account, or it    *         cannot be linked at this time.    */
 DECL|method|updateLink (Account.Id to, AuthRequest who)
@@ -2151,6 +2130,8 @@ name|OrmException
 throws|,
 name|AccountException
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -2158,8 +2139,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|AccountExternalId
 operator|.
@@ -2250,14 +2230,6 @@ name|who
 argument_list|)
 return|;
 block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|filterKeysByScheme ( String keyScheme, ResultSet<AccountExternalId> externalIds)
 specifier|private
@@ -2345,6 +2317,8 @@ name|AccountException
 throws|,
 name|OrmException
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -2352,8 +2326,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|who
 operator|=
@@ -2544,14 +2517,6 @@ argument_list|,
 literal|false
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|id (AuthRequest who)

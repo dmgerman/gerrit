@@ -500,6 +500,8 @@ condition|)
 block|{
 return|return;
 block|}
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -507,8 +509,7 @@ name|dbFactory
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 if|if
 condition|(
@@ -826,14 +827,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|readEmail (AccountSshKey sshKey)

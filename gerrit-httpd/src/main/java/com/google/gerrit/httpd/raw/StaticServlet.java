@@ -1518,7 +1518,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|OutputStream
 name|out
 init|=
@@ -1526,8 +1527,7 @@ name|rsp
 operator|.
 name|getOutputStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|out
 operator|.
@@ -1535,14 +1535,6 @@ name|write
 argument_list|(
 name|tosend
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

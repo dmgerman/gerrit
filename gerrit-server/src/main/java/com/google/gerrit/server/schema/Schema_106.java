@@ -434,7 +434,7 @@ name|repoList
 control|)
 block|{
 try|try
-block|{
+init|(
 name|Repository
 name|repo
 init|=
@@ -444,8 +444,7 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|File
 name|metaConfigLog
@@ -615,15 +614,6 @@ name|println
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch

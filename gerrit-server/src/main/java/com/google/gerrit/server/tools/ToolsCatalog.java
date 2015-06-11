@@ -701,6 +701,8 @@ literal|"root/"
 operator|+
 name|path
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -712,7 +714,8 @@ name|getResourceAsStream
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -724,8 +727,6 @@ return|return
 literal|null
 return|;
 block|}
-try|try
-block|{
 specifier|final
 name|ByteArrayOutputStream
 name|out
@@ -734,8 +735,6 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 specifier|final
 name|byte
 index|[]
@@ -782,15 +781,6 @@ literal|0
 argument_list|,
 name|n
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 return|return

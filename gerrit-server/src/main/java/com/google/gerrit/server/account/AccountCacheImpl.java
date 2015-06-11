@@ -999,7 +999,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-specifier|final
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -1007,8 +1008,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|AccountState
@@ -1060,14 +1060,6 @@ block|}
 return|return
 name|state
 return|;
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|load (final ReviewDb db, final Account.Id who)
@@ -1306,7 +1298,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-specifier|final
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -1314,8 +1307,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|AccountExternalId
@@ -1376,14 +1368,6 @@ operator|.
 name|absent
 argument_list|()
 return|;
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

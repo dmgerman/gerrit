@@ -411,7 +411,8 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -419,8 +420,7 @@ name|database
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|todo
 operator|=
@@ -453,14 +453,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 specifier|final
 name|List

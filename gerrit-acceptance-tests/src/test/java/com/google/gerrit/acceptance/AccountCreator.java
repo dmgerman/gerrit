@@ -546,6 +546,8 @@ return|return
 name|account
 return|;
 block|}
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -553,8 +555,7 @@ name|reviewDbProvider
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Account
 operator|.
@@ -878,14 +879,6 @@ expr_stmt|;
 return|return
 name|account
 return|;
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|create (String username, String group)

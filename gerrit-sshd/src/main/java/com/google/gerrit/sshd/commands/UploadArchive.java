@@ -1019,9 +1019,9 @@ literal|"fatal: cannot perform upload-archive operation"
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 comment|// The archive is sent in DATA sideband channel
+try|try
+init|(
 name|SideBandOutputStream
 name|sidebandOut
 init|=
@@ -1038,7 +1038,8 @@ name|MAX_BUF
 argument_list|,
 name|out
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 operator|new
 name|ArchiveCommand
 argument_list|(
@@ -1102,11 +1103,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|sidebandOut
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1134,6 +1130,8 @@ name|f
 parameter_list|)
 block|{
 comment|// Report the error in ERROR sideband channel
+try|try
+init|(
 name|SideBandOutputStream
 name|sidebandError
 init|=
@@ -1150,7 +1148,8 @@ name|MAX_BUF
 argument_list|,
 name|out
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|sidebandError
 operator|.
 name|write
@@ -1171,11 +1170,7 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|sidebandError
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 throw|throw
 name|f
 throw|;

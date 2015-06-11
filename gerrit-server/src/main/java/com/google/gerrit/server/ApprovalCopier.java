@@ -852,6 +852,8 @@ operator|.
 name|navigableKeySet
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -867,8 +869,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 comment|// Walk patch sets strictly less than current in descending order.
 name|Collection
@@ -1057,14 +1058,6 @@ operator|.
 name|getNormalized
 argument_list|()
 return|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch

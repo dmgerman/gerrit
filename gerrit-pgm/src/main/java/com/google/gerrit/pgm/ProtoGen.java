@@ -368,6 +368,8 @@ block|{
 name|String
 name|header
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -378,8 +380,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"ProtoGenHeader.txt"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ByteBuffer
 name|buf
@@ -430,14 +431,6 @@ name|len
 argument_list|,
 literal|"UTF-8"
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|String

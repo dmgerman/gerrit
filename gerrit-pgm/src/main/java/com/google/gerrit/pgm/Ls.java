@@ -160,7 +160,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|ZipFile
 name|zf
 init|=
@@ -172,8 +173,7 @@ operator|.
 name|getDistributionArchive
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|Enumeration
@@ -324,14 +324,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-finally|finally
-block|{
-name|zf
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 literal|0

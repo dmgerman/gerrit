@@ -425,7 +425,8 @@ argument_list|(
 name|ENC
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|ServletOutputStream
 name|out
 init|=
@@ -433,8 +434,7 @@ name|rsp
 operator|.
 name|getOutputStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|out
 operator|.
@@ -442,14 +442,6 @@ name|write
 argument_list|(
 name|raw
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

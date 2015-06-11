@@ -433,7 +433,8 @@ argument_list|(
 literal|"text/plain"
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|PrintWriter
 name|w
 init|=
@@ -441,8 +442,7 @@ name|rsp
 operator|.
 name|getWriter
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|w
 operator|.
@@ -450,14 +450,6 @@ name|write
 argument_list|(
 name|out
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|w
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

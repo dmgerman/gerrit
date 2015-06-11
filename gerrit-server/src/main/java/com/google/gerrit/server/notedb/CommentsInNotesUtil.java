@@ -3245,6 +3245,8 @@ argument_list|,
 name|UTF_8
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|PrintWriter
 name|writer
 init|=
@@ -3253,7 +3255,8 @@ name|PrintWriter
 argument_list|(
 name|streamWriter
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|PatchLineComment
 name|first
 init|=
@@ -3715,11 +3718,7 @@ literal|"\n\n"
 argument_list|)
 expr_stmt|;
 block|}
-name|writer
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 return|return
 name|buf
 operator|.

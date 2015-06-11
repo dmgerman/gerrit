@@ -328,7 +328,7 @@ throws|,
 name|ResourceConflictException
 block|{
 try|try
-block|{
+init|(
 name|Repository
 name|repo
 init|=
@@ -341,8 +341,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|GarbageCollectCommand
 name|gc
@@ -401,15 +400,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

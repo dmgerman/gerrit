@@ -3771,6 +3771,8 @@ operator|.
 name|isNotNull
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|ChangeNotesParser
 name|notesWithComments
 init|=
@@ -3788,7 +3790,8 @@ name|rw
 argument_list|,
 name|repoManager
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|notesWithComments
 operator|.
 name|parseAll
@@ -3829,11 +3832,9 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|notesWithComments
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
+try|try
+init|(
 name|ChangeNotesParser
 name|notesWithApprovals
 init|=
@@ -3851,7 +3852,8 @@ name|rw
 argument_list|,
 name|repoManager
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|notesWithApprovals
 operator|.
 name|parseAll
@@ -3894,11 +3896,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|notesWithApprovals
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{

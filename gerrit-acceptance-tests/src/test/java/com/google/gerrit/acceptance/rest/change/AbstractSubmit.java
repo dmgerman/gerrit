@@ -1985,6 +1985,8 @@ argument_list|(
 name|expectedNum
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -2002,8 +2004,7 @@ operator|.
 name|project
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Ref
 name|ref
@@ -2054,14 +2055,6 @@ name|isEqualTo
 argument_list|(
 name|expectedId
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

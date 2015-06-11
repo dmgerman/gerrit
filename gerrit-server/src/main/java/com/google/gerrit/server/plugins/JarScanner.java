@@ -1353,6 +1353,8 @@ name|getSize
 argument_list|()
 index|]
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -1362,8 +1364,7 @@ name|getInputStream
 argument_list|(
 name|entry
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|IO
 operator|.
@@ -1379,14 +1380,6 @@ name|data
 operator|.
 name|length
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 return|return

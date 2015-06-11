@@ -742,6 +742,8 @@ argument_list|(
 name|input
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|Repository
 name|r
 init|=
@@ -754,8 +756,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|BatchRefUpdate
 name|batchUpdate
@@ -887,14 +888,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-block|}
-finally|finally
-block|{
-name|r
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 name|Response

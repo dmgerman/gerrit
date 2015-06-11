@@ -1028,7 +1028,8 @@ name|IOException
 throws|,
 name|PatchListNotAvailableException
 block|{
-specifier|final
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -1040,8 +1041,7 @@ name|key
 operator|.
 name|projectKey
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|readPatchList
@@ -1051,14 +1051,6 @@ argument_list|,
 name|repo
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|comparatorFor (Whitespace ws)
@@ -2857,6 +2849,8 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -2864,8 +2858,7 @@ name|buf
 operator|.
 name|openInputStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|resolved
 operator|.
@@ -2892,14 +2885,6 @@ argument_list|,
 name|in
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

@@ -603,7 +603,8 @@ operator|.
 name|MINUTES
 argument_list|)
 expr_stmt|;
-specifier|final
+try|try
+init|(
 name|ServletOutputStream
 name|os
 init|=
@@ -611,8 +612,7 @@ name|rsp
 operator|.
 name|getOutputStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|os
 operator|.
@@ -620,14 +620,6 @@ name|write
 argument_list|(
 name|toSend
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|os
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

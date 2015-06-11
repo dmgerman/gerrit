@@ -939,6 +939,8 @@ argument_list|,
 name|tempDir
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|FileOutputStream
 name|out
 init|=
@@ -947,8 +949,7 @@ name|FileOutputStream
 argument_list|(
 name|tmp
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|git
 operator|.
@@ -961,14 +962,6 @@ name|copyTo
 argument_list|(
 name|out
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 return|return
@@ -1023,6 +1016,8 @@ name|DiagnosticCollector
 argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|StandardJavaFileManager
 name|fileManager
 init|=
@@ -1036,8 +1031,7 @@ literal|null
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Iterable
 argument_list|<
@@ -1280,14 +1274,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-block|}
-finally|finally
-block|{
-name|fileManager
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|getMyClasspath ()
@@ -1669,6 +1655,8 @@ name|isFile
 argument_list|()
 condition|)
 block|{
+try|try
+init|(
 name|FileInputStream
 name|in
 init|=
@@ -1677,8 +1665,7 @@ name|FileInputStream
 argument_list|(
 name|f
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 while|while
 condition|(
@@ -1722,14 +1709,6 @@ name|nRead
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 name|out

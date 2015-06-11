@@ -335,6 +335,8 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 block|{
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -344,8 +346,7 @@ name|openRepository
 argument_list|(
 name|p
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|File
 name|packDir
@@ -395,14 +396,6 @@ block|}
 block|}
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

@@ -182,6 +182,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
+try|try
+init|(
 name|Statement
 name|stmt
 init|=
@@ -197,8 +199,7 @@ argument_list|()
 operator|.
 name|createStatement
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|stmt
 operator|.
@@ -206,14 +207,6 @@ name|executeUpdate
 argument_list|(
 literal|"UPDATE accounts set mute_common_path_prefixes = 'Y'"
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stmt
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

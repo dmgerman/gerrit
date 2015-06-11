@@ -721,6 +721,8 @@ name|ResourceNotFoundException
 argument_list|()
 throw|;
 block|}
+try|try
+init|(
 name|Repository
 name|git
 init|=
@@ -730,8 +732,7 @@ name|openRepository
 argument_list|(
 name|allUsersName
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|VersionedAccountPreferences
 name|p
@@ -770,14 +771,6 @@ argument_list|,
 name|git
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|git
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|class|PreferenceInfo

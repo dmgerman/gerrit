@@ -487,6 +487,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|br
 init|=
@@ -501,8 +503,7 @@ argument_list|,
 literal|"UTF-8"
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|String
 name|delimiter
@@ -687,14 +688,6 @@ block|}
 return|return
 name|commands
 return|;
-block|}
-finally|finally
-block|{
-name|br
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|isDone (String delimiter, String line, StringBuilder buffer)

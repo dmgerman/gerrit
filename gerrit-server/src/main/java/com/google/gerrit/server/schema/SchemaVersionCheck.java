@@ -306,8 +306,7 @@ name|start
 parameter_list|()
 block|{
 try|try
-block|{
-specifier|final
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -315,8 +314,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|CurrentSchemaVersion
@@ -434,15 +432,6 @@ operator|+
 literal|". Downgrade is not supported."
 argument_list|)
 throw|;
-block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch

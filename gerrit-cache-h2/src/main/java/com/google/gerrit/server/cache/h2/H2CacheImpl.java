@@ -1513,7 +1513,7 @@ name|into
 parameter_list|)
 block|{
 try|try
-block|{
+init|(
 name|ObjectOutputStream
 name|ser
 init|=
@@ -1526,8 +1526,7 @@ argument_list|(
 name|into
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ser
 operator|.
@@ -1541,15 +1540,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|ser
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(

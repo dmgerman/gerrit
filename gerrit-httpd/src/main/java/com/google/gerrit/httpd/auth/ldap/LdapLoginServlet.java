@@ -751,6 +751,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|ServletOutputStream
 name|out
 init|=
@@ -758,8 +760,7 @@ name|res
 operator|.
 name|getOutputStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|out
 operator|.
@@ -767,14 +768,6 @@ name|write
 argument_list|(
 name|bin
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

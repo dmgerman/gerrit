@@ -761,6 +761,8 @@ return|return
 literal|null
 return|;
 block|}
+try|try
+init|(
 name|ZipInputStream
 name|zip
 init|=
@@ -769,8 +771,7 @@ name|ZipInputStream
 argument_list|(
 name|index
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ZipEntry
 name|entry
@@ -789,6 +790,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+init|(
 name|IndexOutput
 name|out
 init|=
@@ -803,7 +806,8 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|int
 name|count
 decl_stmt|;
@@ -834,20 +838,8 @@ name|count
 argument_list|)
 expr_stmt|;
 block|}
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
-finally|finally
-block|{
-name|zip
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 comment|// We must NOT call dir.close() here, as DirectoryReader.open() expects an opened directory.
 return|return

@@ -707,6 +707,8 @@ name|CompileException
 throws|,
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -716,7 +718,8 @@ name|getResourceAsStream
 argument_list|(
 name|prologResource
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -732,8 +735,6 @@ name|prologResource
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 name|SymbolTerm
 name|pathTerm
 init|=
@@ -800,14 +801,6 @@ name|prologResource
 argument_list|)
 throw|;
 block|}
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|has (BufferingPrologControl env, String name)

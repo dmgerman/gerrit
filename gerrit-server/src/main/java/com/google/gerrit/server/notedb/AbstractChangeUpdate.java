@@ -628,6 +628,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -638,8 +640,7 @@ argument_list|(
 name|getProjectName
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|load
 argument_list|(
@@ -660,14 +661,6 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

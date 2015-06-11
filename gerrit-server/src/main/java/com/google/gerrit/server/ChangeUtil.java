@@ -2912,6 +2912,8 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -2924,8 +2926,7 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|RefUpdate
 name|update
@@ -3019,14 +3020,6 @@ name|Type
 operator|.
 name|DELETE
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|ReviewDb

@@ -377,7 +377,8 @@ index|[
 literal|2
 index|]
 decl_stmt|;
-specifier|final
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -385,8 +386,7 @@ name|conn
 operator|.
 name|getInputStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|IO
 operator|.
@@ -400,14 +400,6 @@ literal|0
 argument_list|,
 literal|2
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 if|if

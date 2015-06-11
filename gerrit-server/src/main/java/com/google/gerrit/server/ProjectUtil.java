@@ -162,7 +162,8 @@ name|RepositoryNotFoundException
 throws|,
 name|IOException
 block|{
-specifier|final
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -175,8 +176,7 @@ operator|.
 name|getParentKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|boolean
 name|exists
@@ -221,14 +221,6 @@ block|}
 return|return
 name|exists
 return|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

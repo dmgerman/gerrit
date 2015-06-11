@@ -1491,6 +1491,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -1500,8 +1502,7 @@ name|openRepository
 argument_list|(
 name|allProjects
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ProjectConfig
 name|pc
@@ -1522,14 +1523,6 @@ expr_stmt|;
 return|return
 name|pc
 return|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|save (ProjectConfig pc)

@@ -219,7 +219,8 @@ operator|+
 name|fileName
 expr_stmt|;
 block|}
-specifier|final
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -227,7 +228,8 @@ name|open
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|in
@@ -250,8 +252,6 @@ return|return
 literal|1
 return|;
 block|}
-try|try
-block|{
 try|try
 block|{
 specifier|final
@@ -309,14 +309,6 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 literal|0

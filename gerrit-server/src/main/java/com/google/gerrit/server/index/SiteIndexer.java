@@ -1803,27 +1803,30 @@ operator|.
 name|create
 argument_list|()
 decl_stmt|;
+comment|// TODO(dborowitz): Opening all repositories in a live server may be
+comment|// wasteful; see if we can determine which ones it is safe to close
+comment|// with RepositoryCache.close(repo).
+try|try
+init|(
 name|Repository
 name|repo
 init|=
-literal|null
-decl_stmt|;
-name|ReviewDb
-name|db
-init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|repo
-operator|=
 name|repoManager
 operator|.
 name|openRepository
 argument_list|(
 name|project
 argument_list|)
-expr_stmt|;
+init|;
+name|ReviewDb
+name|db
+operator|=
+name|schemaFactory
+operator|.
+name|open
+argument_list|()
+init|)
+block|{
 name|Map
 argument_list|<
 name|String
@@ -1842,13 +1845,6 @@ argument_list|(
 name|ALL
 argument_list|)
 decl_stmt|;
-name|db
-operator|=
-name|schemaFactory
-operator|.
-name|open
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|Change
@@ -1944,38 +1940,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|db
-operator|!=
-literal|null
-condition|)
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|repo
-operator|!=
-literal|null
-condition|)
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// TODO(dborowitz): Opening all repositories in a live server may be
-comment|// wasteful; see if we can determine which ones it is safe to close
-comment|// with RepositoryCache.close(repo).
 block|}
 return|return
 literal|null

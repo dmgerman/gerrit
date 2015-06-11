@@ -655,7 +655,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
-specifier|final
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -663,8 +664,7 @@ name|schema
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|SchemaVersion
@@ -772,14 +772,6 @@ name|db
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|getSchemaVersion (final ReviewDb db)

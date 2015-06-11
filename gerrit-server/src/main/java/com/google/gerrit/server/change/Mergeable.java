@@ -887,6 +887,8 @@ name|rec
 operator|.
 name|type
 expr_stmt|;
+try|try
+init|(
 name|Repository
 name|git
 init|=
@@ -899,8 +901,7 @@ operator|.
 name|getProject
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ObjectId
 name|commit
@@ -1179,14 +1180,6 @@ block|}
 block|}
 block|}
 block|}
-block|}
-finally|finally
-block|{
-name|git
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 name|result

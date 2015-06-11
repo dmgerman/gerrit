@@ -519,6 +519,8 @@ range|:
 name|names
 control|)
 block|{
+try|try
+init|(
 name|Repository
 name|git
 init|=
@@ -528,8 +530,7 @@ name|openRepository
 argument_list|(
 name|project
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 switch|switch
 condition|(
@@ -654,14 +655,6 @@ block|}
 name|error
 operator|=
 literal|true
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|git
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

@@ -267,6 +267,8 @@ parameter_list|)
 throws|throws
 name|OrmException
 block|{
+try|try
+init|(
 name|ReviewDb
 name|db
 init|=
@@ -274,8 +276,7 @@ name|schemaFactory
 operator|.
 name|open
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|List
 argument_list|<
@@ -348,14 +349,6 @@ literal|" rows instead"
 argument_list|)
 throw|;
 block|}
-block|}
-finally|finally
-block|{
-name|db
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

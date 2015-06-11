@@ -980,7 +980,8 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-specifier|final
+try|try
+init|(
 name|Repository
 name|repo
 init|=
@@ -993,8 +994,7 @@ operator|.
 name|getNameKey
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|ObjectId
@@ -1427,14 +1427,6 @@ operator|+
 literal|"\""
 argument_list|)
 throw|;
-block|}
-finally|finally
-block|{
-name|repo
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|getRefPrefix (final String refName)
