@@ -634,7 +634,7 @@ operator|.
 name|KILL_TASK
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|canMaintainServer
 argument_list|()
 return|;
 block|}
@@ -691,7 +691,7 @@ operator|.
 name|VIEW_CACHES
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|canMaintainServer
 argument_list|()
 return|;
 block|}
@@ -708,6 +708,25 @@ argument_list|(
 name|GlobalCapability
 operator|.
 name|FLUSH_CACHES
+argument_list|)
+operator|||
+name|canMaintainServer
+argument_list|()
+return|;
+block|}
+comment|/** @return true if the user can perform basic server maintenance. */
+DECL|method|canMaintainServer ()
+specifier|public
+name|boolean
+name|canMaintainServer
+parameter_list|()
+block|{
+return|return
+name|canPerform
+argument_list|(
+name|GlobalCapability
+operator|.
+name|MAINTAIN_SERVER
 argument_list|)
 operator|||
 name|canAdministrateServer
@@ -767,7 +786,7 @@ operator|.
 name|VIEW_QUEUE
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|canMaintainServer
 argument_list|()
 return|;
 block|}
@@ -821,7 +840,7 @@ operator|.
 name|RUN_GC
 argument_list|)
 operator|||
-name|canAdministrateServer
+name|canMaintainServer
 argument_list|()
 return|;
 block|}

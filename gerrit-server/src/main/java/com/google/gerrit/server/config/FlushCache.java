@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -79,6 +79,26 @@ operator|.
 name|data
 operator|.
 name|GlobalCapability
+operator|.
+name|FLUSH_CACHES
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GlobalCapability
+operator|.
+name|MAINTAIN_SERVER
 import|;
 end_import
 
@@ -94,7 +114,7 @@ name|extensions
 operator|.
 name|annotations
 operator|.
-name|RequiresCapability
+name|RequiresAnyCapability
 import|;
 end_import
 
@@ -216,11 +236,13 @@ end_import
 
 begin_class
 annotation|@
-name|RequiresCapability
+name|RequiresAnyCapability
 argument_list|(
-name|GlobalCapability
-operator|.
+block|{
 name|FLUSH_CACHES
+block|,
+name|MAINTAIN_SERVER
+block|}
 argument_list|)
 annotation|@
 name|Singleton
@@ -320,7 +342,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canMaintainServer
 argument_list|()
 condition|)
 block|{
@@ -332,7 +354,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"only site administrators can flush %s"
+literal|"only site maintainers can flush %s"
 argument_list|,
 name|WEB_SESSIONS
 argument_list|)

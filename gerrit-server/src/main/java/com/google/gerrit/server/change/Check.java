@@ -356,7 +356,7 @@ operator|.
 name|getCapabilities
 argument_list|()
 operator|.
-name|canAdministrateServer
+name|canMaintainServer
 argument_list|()
 condition|)
 block|{
@@ -364,7 +364,7 @@ throw|throw
 operator|new
 name|AuthException
 argument_list|(
-literal|"Not owner"
+literal|"Cannot fix change"
 argument_list|)
 throw|;
 block|}
