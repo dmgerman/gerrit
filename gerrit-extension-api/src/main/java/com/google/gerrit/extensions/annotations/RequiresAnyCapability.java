@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// Copyright (C) 2012 The Android Open Source Project
+comment|// Copyright (C) 2015 The Android Open Source Project
 end_comment
 
 begin_comment
@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Annotation on {@code com.google.gerrit.sshd.SshCommand} or  * {@code com.google.gerrit.httpd.restapi.RestApiServlet} declaring a  * capability must be granted.  */
+comment|/**  * Annotation on {@code com.google.gerrit.sshd.SshCommand} or  * {@code com.google.gerrit.httpd.restapi.RestApiServlet} declaring a set of  * capabilities of which at least one must be granted.  */
 end_comment
 
 begin_annotation_defn
@@ -135,18 +135,19 @@ name|Retention
 argument_list|(
 name|RUNTIME
 argument_list|)
-DECL|annotation|RequiresCapability
+DECL|annotation|RequiresAnyCapability
 specifier|public
 annotation_defn|@interface
-name|RequiresCapability
+name|RequiresAnyCapability
 block|{
-comment|/** Name of the capability required to invoke this action. */
+comment|/** Capabilities at least one of which is required to invoke this action. */
 DECL|method|value ()
 name|String
+index|[]
 name|value
 parameter_list|()
 function_decl|;
-comment|/** Scope of the named capability. */
+comment|/** Scope of the named capabilities. */
 DECL|method|scope ()
 DECL|field|CapabilityScope.CONTEXT
 name|CapabilityScope
