@@ -205,9 +205,9 @@ literal|"        [0..9] '4'\n"
 operator|+
 literal|"        [0..9] '2'\n"
 operator|+
-literal|"    [ZeroOrMore]\n"
+literal|"    [zeroOrMore]\n"
 operator|+
-literal|"  [ZeroOrMore]\n"
+literal|"  [zeroOrMore]\n"
 decl_stmt|;
 DECL|field|parser
 specifier|private
@@ -269,11 +269,11 @@ name|assertThat
 argument_list|(
 name|result
 operator|.
-name|hasErrors
+name|isSuccess
 argument_list|()
 argument_list|)
 operator|.
-name|isFalse
+name|isTrue
 argument_list|()
 expr_stmt|;
 comment|// next test is optional; we could stop here.
@@ -311,14 +311,14 @@ name|Expression
 parameter_list|()
 block|{
 return|return
-name|Sequence
+name|sequence
 argument_list|(
 name|Term
 argument_list|()
 argument_list|,
-name|ZeroOrMore
+name|zeroOrMore
 argument_list|(
-name|AnyOf
+name|anyOf
 argument_list|(
 literal|"+-"
 argument_list|)
@@ -335,14 +335,14 @@ name|Term
 parameter_list|()
 block|{
 return|return
-name|Sequence
+name|sequence
 argument_list|(
 name|Factor
 argument_list|()
 argument_list|,
-name|ZeroOrMore
+name|zeroOrMore
 argument_list|(
-name|AnyOf
+name|anyOf
 argument_list|(
 literal|"*/"
 argument_list|)
@@ -359,12 +359,12 @@ name|Factor
 parameter_list|()
 block|{
 return|return
-name|FirstOf
+name|firstOf
 argument_list|(
 name|Number
 argument_list|()
 argument_list|,
-name|Sequence
+name|sequence
 argument_list|(
 literal|'('
 argument_list|,
@@ -382,9 +382,9 @@ name|Number
 parameter_list|()
 block|{
 return|return
-name|OneOrMore
+name|oneOrMore
 argument_list|(
-name|CharRange
+name|charRange
 argument_list|(
 literal|'0'
 argument_list|,
