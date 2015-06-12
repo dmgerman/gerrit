@@ -216,6 +216,16 @@ name|KILL_TASK
 init|=
 literal|"killTask"
 decl_stmt|;
+comment|/**    * Can perform limited server maintenance.    *<p>    * Includes tasks such as reindexing changes and flushing caches that may need    * to be performed regularly. Does<strong>not</strong> grant arbitrary    * read/write/ACL management permissions as does {@link    * #ADMINISTRATE_SERVER}.    */
+DECL|field|MAINTAIN_SERVER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MAINTAIN_SERVER
+init|=
+literal|"maintainServer"
+decl_stmt|;
 comment|/** Can modify any account on the server. */
 DECL|field|MODIFY_ACCOUNT
 specifier|public
@@ -426,6 +436,13 @@ operator|.
 name|add
 argument_list|(
 name|KILL_TASK
+argument_list|)
+expr_stmt|;
+name|NAMES_ALL
+operator|.
+name|add
+argument_list|(
+name|MAINTAIN_SERVER
 argument_list|)
 expr_stmt|;
 name|NAMES_ALL

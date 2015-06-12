@@ -67,7 +67,7 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|google
@@ -79,6 +79,26 @@ operator|.
 name|data
 operator|.
 name|GlobalCapability
+operator|.
+name|KILL_TASK
+import|;
+end_import
+
+begin_import
+import|import static
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|common
+operator|.
+name|data
+operator|.
+name|GlobalCapability
+operator|.
+name|MAINTAIN_SERVER
 import|;
 end_import
 
@@ -94,7 +114,7 @@ name|extensions
 operator|.
 name|annotations
 operator|.
-name|RequiresCapability
+name|RequiresAnyCapability
 import|;
 end_import
 
@@ -290,11 +310,13 @@ begin_class
 annotation|@
 name|AdminHighPriorityCommand
 annotation|@
-name|RequiresCapability
+name|RequiresAnyCapability
 argument_list|(
-name|GlobalCapability
-operator|.
+block|{
 name|KILL_TASK
+block|,
+name|MAINTAIN_SERVER
+block|}
 argument_list|)
 DECL|class|KillCommand
 specifier|final

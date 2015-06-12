@@ -165,6 +165,11 @@ specifier|public
 name|String
 name|killTask
 decl_stmt|;
+DECL|field|maintainServer
+specifier|public
+name|String
+name|maintainServer
+decl_stmt|;
 DECL|field|modifyAccount
 specifier|public
 name|String

@@ -118,6 +118,11 @@ specifier|public
 name|boolean
 name|killTask
 decl_stmt|;
+DECL|field|maintainServer
+specifier|public
+name|boolean
+name|maintainServer
+decl_stmt|;
 DECL|field|modifyAccount
 specifier|public
 name|boolean

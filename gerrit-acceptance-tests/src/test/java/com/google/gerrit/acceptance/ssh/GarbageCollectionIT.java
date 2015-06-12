@@ -531,7 +531,9 @@ argument_list|)
 expr_stmt|;
 name|assertError
 argument_list|(
-literal|"Capability runGC is required to access this resource"
+literal|"One of the following capabilities is required to access this"
+operator|+
+literal|" resource: [runGC, maintainServer]"
 argument_list|,
 name|s
 operator|.

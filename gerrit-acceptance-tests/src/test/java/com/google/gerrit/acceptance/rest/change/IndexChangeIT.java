@@ -164,7 +164,7 @@ decl_stmt|;
 name|RestResponse
 name|r
 init|=
-name|userSession
+name|adminSession
 operator|.
 name|post
 argument_list|(

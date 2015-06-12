@@ -360,7 +360,7 @@ name|RequiresCapability
 argument_list|(
 name|GlobalCapability
 operator|.
-name|ADMINISTRATE_SERVER
+name|MAINTAIN_SERVER
 argument_list|)
 DECL|class|GetSummary
 specifier|public
