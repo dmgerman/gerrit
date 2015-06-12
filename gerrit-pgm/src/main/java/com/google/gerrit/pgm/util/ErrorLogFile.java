@@ -316,6 +316,11 @@ operator|.
 name|ERROR
 argument_list|)
 expr_stmt|;
+name|dst
+operator|.
+name|activateOptions
+argument_list|()
+expr_stmt|;
 specifier|final
 name|Logger
 name|root

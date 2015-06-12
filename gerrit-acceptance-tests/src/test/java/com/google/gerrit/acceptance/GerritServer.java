@@ -1122,6 +1122,10 @@ name|getPath
 argument_list|()
 block|,
 literal|"--headless"
+block|,
+literal|"--console-log"
+block|,
+literal|"--show-stack-trace"
 block|}
 argument_list|)
 decl_stmt|;
@@ -1134,18 +1138,11 @@ condition|)
 block|{
 name|System
 operator|.
-name|out
+name|err
 operator|.
 name|println
 argument_list|(
-literal|"Failed to start Gerrit daemon. Check "
-operator|+
-name|site
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|"/logs/error_log"
+literal|"Failed to start Gerrit daemon"
 argument_list|)
 expr_stmt|;
 name|serverStarted
@@ -1406,15 +1403,13 @@ argument_list|)
 expr_stmt|;
 name|cfg
 operator|.
-name|setString
+name|unset
 argument_list|(
 literal|"cache"
 argument_list|,
 literal|null
 argument_list|,
 literal|"directory"
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|cfg

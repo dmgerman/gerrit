@@ -1014,15 +1014,13 @@ argument_list|)
 expr_stmt|;
 name|cfg
 operator|.
-name|setString
+name|unset
 argument_list|(
 literal|"cache"
 argument_list|,
 literal|null
 argument_list|,
 literal|"directory"
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|cfg
