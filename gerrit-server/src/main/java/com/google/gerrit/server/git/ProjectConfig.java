@@ -4434,6 +4434,15 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|values
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|short
 name|dv
 init|=
@@ -4495,6 +4504,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|label
 operator|.
