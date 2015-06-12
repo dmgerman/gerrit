@@ -134,7 +134,7 @@ name|common
 operator|.
 name|data
 operator|.
-name|GitWebType
+name|GitwebType
 import|;
 end_import
 
@@ -468,15 +468,15 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
-DECL|field|gitWebConfig
+DECL|field|gitwebConfig
 specifier|private
 specifier|final
-name|GitWebConfig
-name|gitWebConfig
+name|GitwebConfig
+name|gitwebConfig
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, GitWebConfig gitWebConfig)
+DECL|method|GetServerInfo ( @erritServerConfig Config config, AuthConfig authConfig, Realm realm, DynamicMap<DownloadScheme> downloadSchemes, DynamicMap<DownloadCommand> downloadCommands, DynamicMap<CloneCommand> cloneCommands, GetArchive.AllowedFormats archiveFormats, AllProjectsName allProjectsName, AllUsersName allUsersName, @AnonymousCowardName String anonymousCowardName, GitwebConfig gitwebConfig)
 specifier|public
 name|GetServerInfo
 parameter_list|(
@@ -525,8 +525,8 @@ name|AnonymousCowardName
 name|String
 name|anonymousCowardName
 parameter_list|,
-name|GitWebConfig
-name|gitWebConfig
+name|GitwebConfig
+name|gitwebConfig
 parameter_list|)
 block|{
 name|this
@@ -591,9 +591,9 @@ name|anonymousCowardName
 expr_stmt|;
 name|this
 operator|.
-name|gitWebConfig
+name|gitwebConfig
 operator|=
-name|gitWebConfig
+name|gitwebConfig
 expr_stmt|;
 block|}
 annotation|@
@@ -673,11 +673,11 @@ argument_list|)
 expr_stmt|;
 name|info
 operator|.
-name|gitWeb
+name|gitweb
 operator|=
-name|getGitWebInfo
+name|getGitwebInfo
 argument_list|(
-name|gitWebConfig
+name|gitwebConfig
 argument_list|)
 expr_stmt|;
 name|info
@@ -1543,12 +1543,12 @@ return|return
 name|info
 return|;
 block|}
-DECL|method|getGitWebInfo (GitWebConfig cfg)
+DECL|method|getGitwebInfo (GitwebConfig cfg)
 specifier|private
-name|GitWebInfo
-name|getGitWebInfo
+name|GitwebInfo
+name|getGitwebInfo
 parameter_list|(
-name|GitWebConfig
+name|GitwebConfig
 name|cfg
 parameter_list|)
 block|{
@@ -1563,7 +1563,7 @@ literal|null
 operator|||
 name|cfg
 operator|.
-name|getGitWebType
+name|getGitwebType
 argument_list|()
 operator|==
 literal|null
@@ -1573,11 +1573,11 @@ return|return
 literal|null
 return|;
 block|}
-name|GitWebInfo
+name|GitwebInfo
 name|info
 init|=
 operator|new
-name|GitWebInfo
+name|GitwebInfo
 argument_list|()
 decl_stmt|;
 name|info
@@ -1595,7 +1595,7 @@ name|type
 operator|=
 name|cfg
 operator|.
-name|getGitWebType
+name|getGitwebType
 argument_list|()
 expr_stmt|;
 return|return
@@ -1796,10 +1796,10 @@ specifier|public
 name|GerritInfo
 name|gerrit
 decl_stmt|;
-DECL|field|gitWeb
+DECL|field|gitweb
 specifier|public
-name|GitWebInfo
-name|gitWeb
+name|GitwebInfo
+name|gitweb
 decl_stmt|;
 DECL|field|sshd
 specifier|public
@@ -2022,11 +2022,11 @@ name|String
 name|reportBugText
 decl_stmt|;
 block|}
-DECL|class|GitWebInfo
+DECL|class|GitwebInfo
 specifier|public
 specifier|static
 class|class
-name|GitWebInfo
+name|GitwebInfo
 block|{
 DECL|field|url
 specifier|public
@@ -2035,7 +2035,7 @@ name|url
 decl_stmt|;
 DECL|field|type
 specifier|public
-name|GitWebType
+name|GitwebType
 name|type
 decl_stmt|;
 block|}

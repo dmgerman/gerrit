@@ -83,10 +83,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|GitWebTypeInfo
+DECL|class|GitwebTypeInfo
 specifier|public
 class|class
-name|GitWebTypeInfo
+name|GitwebTypeInfo
 extends|extends
 name|JavaScriptObject
 block|{
@@ -219,9 +219,9 @@ name|urlEncode
 parameter_list|()
 comment|/*-{ return this.url_encode || false; }-*/
 function_decl|;
-DECL|method|GitWebTypeInfo ()
+DECL|method|GitwebTypeInfo ()
 specifier|protected
-name|GitWebTypeInfo
+name|GitwebTypeInfo
 parameter_list|()
 block|{   }
 block|}

@@ -252,7 +252,23 @@ name|server
 operator|.
 name|config
 operator|.
-name|GitWebConfig
+name|GitwebCgiConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
+name|GitwebConfig
 import|;
 end_import
 
@@ -680,9 +696,9 @@ literal|"serial"
 argument_list|)
 annotation|@
 name|Singleton
-DECL|class|GitWebServlet
+DECL|class|GitwebServlet
 class|class
-name|GitWebServlet
+name|GitwebServlet
 extends|extends
 name|HttpServlet
 block|{
@@ -697,7 +713,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|GitWebServlet
+name|GitwebServlet
 operator|.
 name|class
 argument_list|)
@@ -780,8 +796,8 @@ name|_env
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GitWebServlet (LocalDiskRepositoryManager repoManager, ProjectControl.Factory projectControl, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitWebConfig gitWebConfig)
-name|GitWebServlet
+DECL|method|GitwebServlet (LocalDiskRepositoryManager repoManager, ProjectControl.Factory projectControl, Provider<AnonymousUser> anonymousUserProvider, Provider<CurrentUser> userProvider, SitePaths site, @GerritServerConfig Config cfg, SshInfo sshInfo, GitwebConfig gitwebConfig, GitwebCgiConfig gitwebCgiConfig)
+name|GitwebServlet
 parameter_list|(
 name|LocalDiskRepositoryManager
 name|repoManager
@@ -814,8 +830,11 @@ parameter_list|,
 name|SshInfo
 name|sshInfo
 parameter_list|,
-name|GitWebConfig
-name|gitWebConfig
+name|GitwebConfig
+name|gitwebConfig
+parameter_list|,
+name|GitwebCgiConfig
+name|gitwebCgiConfig
 parameter_list|)
 throws|throws
 name|IOException
@@ -848,9 +867,9 @@ name|this
 operator|.
 name|gitwebCgi
 operator|=
-name|gitWebConfig
+name|gitwebCgiConfig
 operator|.
-name|getGitwebCGI
+name|getGitwebCgi
 argument_list|()
 expr_stmt|;
 name|this
@@ -866,7 +885,7 @@ specifier|final
 name|String
 name|url
 init|=
-name|gitWebConfig
+name|gitwebConfig
 operator|.
 name|getUrl
 argument_list|()
@@ -1750,7 +1769,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Link back to Gerrit (when possible, to matching review record).
-comment|// Supported Gitweb's hash values are:
+comment|// Supported gitweb's hash values are:
 comment|// - (missing),
 comment|// - HEAD,
 comment|// - refs/heads/<branch>,
@@ -3567,7 +3586,7 @@ name|remoteUser
 argument_list|)
 expr_stmt|;
 comment|// Override CGI settings using alternative URI provided by gitweb.url.
-comment|// This is required to trick Gitweb into thinking that it's served under
+comment|// This is required to trick gitweb into thinking that it's served under
 comment|// different URL. Setting just $my_uri on the perl's side isn't enough,
 comment|// because few actions (atom, blobdiff_plain, commitdiff_plain) rely on
 comment|// URL returned by $cgi->self_url().
@@ -3937,7 +3956,7 @@ block|}
 block|}
 block|}
 argument_list|,
-literal|"GitWeb-InputFeeder"
+literal|"Gitweb-InputFeeder"
 argument_list|)
 operator|.
 name|start
@@ -4044,7 +4063,7 @@ block|}
 block|}
 block|}
 argument_list|,
-literal|"GitWeb-ErrorLogger"
+literal|"Gitweb-ErrorLogger"
 argument_list|)
 operator|.
 name|start

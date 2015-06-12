@@ -144,7 +144,7 @@ name|client
 operator|.
 name|config
 operator|.
-name|GitWebInfo
+name|GitwebInfo
 import|;
 end_import
 
@@ -2086,7 +2086,7 @@ operator|.
 name|openSpan
 argument_list|()
 expr_stmt|;
-name|GitWebInfo
+name|GitwebInfo
 name|gw
 init|=
 name|Gerrit
@@ -2094,7 +2094,7 @@ operator|.
 name|info
 argument_list|()
 operator|.
-name|gitWeb
+name|gitweb
 argument_list|()
 decl_stmt|;
 if|if
@@ -2385,7 +2385,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-name|GitWebInfo
+name|GitwebInfo
 name|gw
 init|=
 name|Gerrit
@@ -2393,7 +2393,7 @@ operator|.
 name|info
 argument_list|()
 operator|.
-name|gitWeb
+name|gitweb
 argument_list|()
 decl_stmt|;
 if|if

@@ -201,10 +201,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|GitWebInfo
+DECL|class|GitwebInfo
 specifier|public
 class|class
-name|GitWebInfo
+name|GitwebInfo
 extends|extends
 name|JavaScriptObject
 block|{
@@ -221,7 +221,7 @@ DECL|method|type ()
 specifier|public
 specifier|final
 specifier|native
-name|GitWebTypeInfo
+name|GitwebTypeInfo
 name|type
 parameter_list|()
 comment|/*-{ return this.type; }-*/
@@ -275,7 +275,7 @@ name|linkDrafts
 argument_list|()
 return|;
 block|}
-comment|/**    * Returns the name for GitWeb links.    *    * @return the name for GitWeb links    */
+comment|/**    * Returns the name for gitweb links.    *    * @return the name for gitweb links    */
 DECL|method|getLinkName ()
 specifier|public
 specifier|final
@@ -295,7 +295,7 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|/**    * Returns the GitWeb link to a revision.    *    * @param project the name of the project    * @param commit the commit ID    * @return GitWeb link to a revision    */
+comment|/**    * Returns the gitweb link to a revision.    *    * @param project the name of the project    * @param commit the commit ID    * @return gitweb link to a revision    */
 DECL|method|toRevision (String project, String commit)
 specifier|public
 specifier|final
@@ -371,7 +371,7 @@ name|p
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the GitWeb link to a revision.    *    * @param project the name of the project    * @param ps the patch set    * @return GitWeb link to a revision    */
+comment|/**    * Returns the gitweb link to a revision.    *    * @param project the name of the project    * @param ps the patch set    * @return gitweb link to a revision    */
 DECL|method|toRevision (Project.NameKey project, PatchSet ps)
 specifier|public
 specifier|final
@@ -405,7 +405,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the GitWeb link to a project.    *    * @param project the project name key    * @return GitWeb link to a project    */
+comment|/**    * Returns the gitweb link to a project.    *    * @param project the project name key    * @return gitweb link to a project    */
 DECL|method|toProject (Project.NameKey project)
 specifier|public
 specifier|final
@@ -471,7 +471,7 @@ name|p
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the GitWeb link to a branch.    *    * @param branch the branch name key    * @return GitWeb link to a branch    */
+comment|/**    * Returns the gitweb link to a branch.    *    * @param branch the branch name key    * @return gitweb link to a branch    */
 DECL|method|toBranch (Branch.NameKey branch)
 specifier|public
 specifier|final
@@ -555,7 +555,7 @@ name|p
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the GitWeb link to a file.    *    * @param project the branch name key    * @param commit the commit ID    * @param file the path of the file    * @return GitWeb link to a file    */
+comment|/**    * Returns the gitweb link to a file.    *    * @param project the branch name key    * @param commit the commit ID    * @param file the path of the file    * @return gitweb link to a file    */
 DECL|method|toFile (String project, String commit, String file)
 specifier|public
 specifier|final
@@ -667,7 +667,7 @@ name|p
 argument_list|)
 return|;
 block|}
-comment|/**    * Returns the GitWeb link to a file history.    *    * @param branch the branch name key    * @param file the path of the file    * @return GitWeb link to a file history    */
+comment|/**    * Returns the gitweb link to a file history.    *    * @param branch the branch name key    * @param file the path of the file    * @return gitweb link to a file history    */
 DECL|method|toFileHistory (Branch.NameKey branch, String file)
 specifier|public
 specifier|final
@@ -807,9 +807,9 @@ name|segment
 return|;
 block|}
 block|}
-DECL|method|GitWebInfo ()
+DECL|method|GitwebInfo ()
 specifier|protected
-name|GitWebInfo
+name|GitwebInfo
 parameter_list|()
 block|{   }
 block|}

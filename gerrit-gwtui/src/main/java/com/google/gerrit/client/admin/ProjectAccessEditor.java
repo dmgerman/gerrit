@@ -106,7 +106,7 @@ name|client
 operator|.
 name|config
 operator|.
-name|GitWebInfo
+name|GitwebInfo
 import|;
 end_import
 
@@ -894,7 +894,7 @@ name|NONE
 argument_list|)
 expr_stmt|;
 block|}
-name|GitWebInfo
+name|GitwebInfo
 name|c
 init|=
 name|Gerrit
@@ -902,7 +902,7 @@ operator|.
 name|info
 argument_list|()
 operator|.
-name|gitWeb
+name|gitweb
 argument_list|()
 decl_stmt|;
 if|if

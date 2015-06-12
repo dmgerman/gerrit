@@ -67,22 +67,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|gerrit
-operator|.
-name|server
-operator|.
-name|config
-operator|.
-name|GitWebConfig
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -117,10 +101,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|GitWebConfigTest
+DECL|class|GitwebConfigTest
 specifier|public
 class|class
-name|GitWebConfigTest
+name|GitwebConfigTest
 block|{
 DECL|field|VALID_CHARACTERS
 specifier|private
@@ -165,7 +149,7 @@ literal|"valid character rejected: "
 operator|+
 name|c
 argument_list|,
-name|GitWebConfig
+name|GitwebConfig
 operator|.
 name|isValidPathSeparator
 argument_list|(
@@ -200,7 +184,7 @@ literal|"invalid character accepted: "
 operator|+
 name|c
 argument_list|,
-name|GitWebConfig
+name|GitwebConfig
 operator|.
 name|isValidPathSeparator
 argument_list|(

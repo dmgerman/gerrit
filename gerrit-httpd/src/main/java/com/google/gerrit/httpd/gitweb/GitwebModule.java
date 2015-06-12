@@ -81,10 +81,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|GitWebModule
+DECL|class|GitwebModule
 specifier|public
 class|class
-name|GitWebModule
+name|GitwebModule
 extends|extends
 name|ServletModule
 block|{
@@ -103,7 +103,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|GitWebServlet
+name|GitwebServlet
 operator|.
 name|class
 argument_list|)
@@ -127,7 +127,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|GitWebJavaScriptServlet
+name|GitwebJavaScriptServlet
 operator|.
 name|class
 argument_list|)
@@ -139,7 +139,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|GitWebCssServlet
+name|GitwebCssServlet
 operator|.
 name|Default
 operator|.
@@ -153,7 +153,7 @@ argument_list|)
 operator|.
 name|with
 argument_list|(
-name|GitWebCssServlet
+name|GitwebCssServlet
 operator|.
 name|Site
 operator|.
