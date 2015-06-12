@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Determines the name a plugin has been installed under.  *  * This implementation guesses the name a plugin runs under by looking at the  * JavaScript call stack and identifying the URL of the script file calling  * {@code Gerrit.install()}. The simple approach applied here is looking at  * the source URLs and extracting the name out of the string, e.g.:  * {@code "http://localhost:8080/plugins/{name}/static/foo.js"}.  */
+comment|/**  * Determines the name a plugin has been installed under.  *  * This implementation guesses the name a plugin runs under by looking at the  * JavaScript call stack and identifying the URL of the script file calling  * {@code Gerrit.install()}. The simple approach applied here is looking at  * the source URLs and extracting the name out of the string, e.g.:  * {@code "http://localhost:8080/plugins/[name]/static/foo.js"}.  */
 end_comment
 
 begin_class

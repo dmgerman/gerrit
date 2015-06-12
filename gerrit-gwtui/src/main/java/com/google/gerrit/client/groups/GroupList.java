@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Groups available from {@code /groups/} or {@code /accounts/{id}/groups}. */
+comment|/** Groups available from {@code /groups/} or {@code /accounts/[id]/groups}. */
 end_comment
 
 begin_class

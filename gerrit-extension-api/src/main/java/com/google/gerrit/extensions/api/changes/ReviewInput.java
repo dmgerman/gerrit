@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Input passed to {@code POST /changes/{id}/revisions/{id}/review}. */
+comment|/** Input passed to {@code POST /changes/[id]/revisions/[id]/review}. */
 end_comment
 
 begin_class
