@@ -1565,7 +1565,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|beforeTest (Description description)
-specifier|private
+specifier|protected
 name|void
 name|beforeTest
 parameter_list|(

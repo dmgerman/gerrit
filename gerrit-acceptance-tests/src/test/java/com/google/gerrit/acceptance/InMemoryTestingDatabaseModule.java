@@ -475,6 +475,14 @@ name|InMemoryTestingDatabaseModule
 extends|extends
 name|LifecycleModule
 block|{
+DECL|field|UNIT_TEST_GERRIT_SITE
+specifier|static
+specifier|final
+name|String
+name|UNIT_TEST_GERRIT_SITE
+init|=
+literal|"UNIT_TEST_GERRIT_SITE"
+decl_stmt|;
 DECL|field|cfg
 specifier|private
 specifier|final
@@ -543,7 +551,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"UNIT_TEST_GERRIT_SITE"
+name|UNIT_TEST_GERRIT_SITE
 argument_list|)
 argument_list|)
 expr_stmt|;
