@@ -667,7 +667,7 @@ name|AuthException
 argument_list|(
 literal|"not allowed to set HTTP password directly, "
 operator|+
-literal|"requires the Generate HTTP Password permission"
+literal|"requires the Administrate Server permission"
 argument_list|)
 throw|;
 block|}
