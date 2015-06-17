@@ -1390,6 +1390,11 @@ specifier|public
 name|Integer
 name|_currentRevisionNumber
 decl_stmt|;
+DECL|field|status
+specifier|public
+name|String
+name|status
+decl_stmt|;
 DECL|method|ChangeAndCommit ()
 specifier|public
 name|ChangeAndCommit
@@ -1471,6 +1476,19 @@ name|get
 argument_list|()
 else|:
 literal|null
+expr_stmt|;
+name|status
+operator|=
+name|change
+operator|.
+name|getStatus
+argument_list|()
+operator|.
+name|asChangeStatus
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 expr_stmt|;
 block|}
 name|commit
@@ -1627,6 +1645,13 @@ argument_list|(
 literal|"_currentRevisionNumber"
 argument_list|,
 name|_currentRevisionNumber
+argument_list|)
+operator|.
+name|add
+argument_list|(
+literal|"status"
+argument_list|,
+name|status
 argument_list|)
 operator|.
 name|toString

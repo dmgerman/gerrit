@@ -1804,7 +1804,7 @@ literal|false
 argument_list|)
 condition|)
 block|{
-comment|// PS1,1 has no groups, so disappeared from related chanegs.
+comment|// PS1,1 has no groups, so disappeared from related changes.
 name|assertRelated
 argument_list|(
 name|psId2_1
@@ -2145,6 +2145,12 @@ operator|.
 name|_currentRevisionNumber
 operator|=
 name|currentRevisionNum
+expr_stmt|;
+name|result
+operator|.
+name|status
+operator|=
+literal|"NEW"
 expr_stmt|;
 return|return
 name|result
