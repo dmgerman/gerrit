@@ -829,7 +829,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|generate ()
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|generate
