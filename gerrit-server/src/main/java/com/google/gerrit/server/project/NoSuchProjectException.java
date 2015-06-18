@@ -112,6 +112,14 @@ name|MESSAGE
 init|=
 literal|"Project not found: "
 decl_stmt|;
+DECL|field|project
+specifier|private
+specifier|final
+name|Project
+operator|.
+name|NameKey
+name|project
+decl_stmt|;
 DECL|method|NoSuchProjectException (final Project.NameKey key)
 specifier|public
 name|NoSuchProjectException
@@ -158,6 +166,22 @@ argument_list|,
 name|why
 argument_list|)
 expr_stmt|;
+name|project
+operator|=
+name|key
+expr_stmt|;
+block|}
+DECL|method|project ()
+specifier|public
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|()
+block|{
+return|return
+name|project
+return|;
 block|}
 block|}
 end_class

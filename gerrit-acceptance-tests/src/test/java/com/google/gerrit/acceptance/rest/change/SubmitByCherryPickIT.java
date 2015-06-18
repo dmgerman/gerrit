@@ -1996,9 +1996,11 @@ argument_list|)
 expr_stmt|;
 comment|// Merge fails; change3 contains the delta "b1" -> "b2", which cannot be
 comment|// applied against tip.
+comment|// As change4 sits on top of change 3 we need to trigger submission there
+comment|// to include it into the mergeing
 name|submitWithConflict
 argument_list|(
-name|change3
+name|change4
 operator|.
 name|getChangeId
 argument_list|()
