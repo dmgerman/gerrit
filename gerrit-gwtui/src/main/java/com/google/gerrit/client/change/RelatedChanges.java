@@ -2264,6 +2264,22 @@ name|mergeable
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|c
+operator|.
+name|setStatus
+argument_list|(
+name|i
+operator|.
+name|status
+argument_list|()
+operator|.
+name|asChangeStatus
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|arr
 operator|.
 name|push
@@ -2367,6 +2383,46 @@ name|boolean
 name|submittable
 parameter_list|()
 comment|/*-{ return this._submittable ? true : false; }-*/
+function_decl|;
+DECL|method|status ()
+specifier|final
+name|Change
+operator|.
+name|Status
+name|status
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+name|statusRaw
+argument_list|()
+decl_stmt|;
+return|return
+name|s
+operator|!=
+literal|null
+condition|?
+name|Change
+operator|.
+name|Status
+operator|.
+name|valueOf
+argument_list|(
+name|s
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+DECL|method|statusRaw ()
+specifier|private
+specifier|final
+specifier|native
+name|String
+name|statusRaw
+parameter_list|()
+comment|/*-{ return this.status; }-*/
 function_decl|;
 DECL|method|setId (String i)
 specifier|final
@@ -2560,6 +2616,17 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this._submittable=s; }-*/
+function_decl|;
+DECL|method|setStatus (String s)
+specifier|final
+specifier|native
+name|void
+name|setStatus
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+comment|/*-{ if(s)this.status=s; }-*/
 function_decl|;
 DECL|method|ChangeAndCommit ()
 specifier|protected
