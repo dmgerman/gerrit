@@ -1800,7 +1800,7 @@ name|subm
 operator|.
 name|waitForMerge
 operator|=
-literal|true
+literal|false
 expr_stmt|;
 name|RestResponse
 name|r
