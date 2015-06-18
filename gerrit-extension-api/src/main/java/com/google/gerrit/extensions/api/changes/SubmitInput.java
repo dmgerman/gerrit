@@ -74,6 +74,8 @@ specifier|public
 class|class
 name|SubmitInput
 block|{
+annotation|@
+name|Deprecated
 DECL|field|waitForMerge
 specifier|public
 name|boolean
