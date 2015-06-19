@@ -534,6 +534,11 @@ name|String
 name|subject
 parameter_list|()
 function_decl|;
+DECL|method|strikedSubject ()
+name|String
+name|strikedSubject
+parameter_list|()
+function_decl|;
 DECL|method|submittable ()
 name|String
 name|submittable
