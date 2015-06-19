@@ -210,6 +210,11 @@ name|String
 name|createNewChangeForAllNotInTarget
 parameter_list|()
 function_decl|;
+DECL|method|enableSignedPush ()
+name|String
+name|enableSignedPush
+parameter_list|()
+function_decl|;
 DECL|method|requireChangeID ()
 name|String
 name|requireChangeID

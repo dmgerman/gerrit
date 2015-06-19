@@ -171,6 +171,15 @@ name|user
 parameter_list|()
 comment|/*-{ return this.user; }-*/
 function_decl|;
+DECL|method|receive ()
+specifier|public
+specifier|final
+specifier|native
+name|ReceiveInfo
+name|receive
+parameter_list|()
+comment|/*-{ return this.receive; }-*/
+function_decl|;
 DECL|method|hasContactStore ()
 specifier|public
 specifier|final
@@ -343,6 +352,29 @@ function_decl|;
 DECL|method|UserConfigInfo ()
 specifier|protected
 name|UserConfigInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|ReceiveInfo
+specifier|public
+specifier|static
+class|class
+name|ReceiveInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|enableSignedPush ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|enableSignedPush
+parameter_list|()
+comment|/*-{ return this.enable_signed_push || false; }-*/
+function_decl|;
+DECL|method|ReceiveInfo ()
+specifier|protected
+name|ReceiveInfo
 parameter_list|()
 block|{     }
 block|}

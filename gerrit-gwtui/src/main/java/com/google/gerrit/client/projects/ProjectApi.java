@@ -736,7 +736,7 @@ name|cb
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
+DECL|method|setConfig (Project.NameKey name, String description, InheritableBoolean useContributorAgreements, InheritableBoolean useContentMerge, InheritableBoolean useSignedOffBy, InheritableBoolean createNewChangeForAllNotInTarget, InheritableBoolean requireChangeId, InheritableBoolean enableSignedPush, String maxObjectSizeLimit, SubmitType submitType, ProjectState state, Map<String, Map<String, ConfigParameterValue>> pluginConfigValues, AsyncCallback<ConfigInfo> cb)
 specifier|public
 specifier|static
 name|void
@@ -764,6 +764,9 @@ name|createNewChangeForAllNotInTarget
 parameter_list|,
 name|InheritableBoolean
 name|requireChangeId
+parameter_list|,
+name|InheritableBoolean
+name|enableSignedPush
 parameter_list|,
 name|String
 name|maxObjectSizeLimit
@@ -844,6 +847,21 @@ argument_list|(
 name|createNewChangeForAllNotInTarget
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|enableSignedPush
+operator|!=
+literal|null
+condition|)
+block|{
+name|in
+operator|.
+name|setEnableSignedPush
+argument_list|(
+name|enableSignedPush
+argument_list|)
+expr_stmt|;
+block|}
 name|in
 operator|.
 name|setMaxObjectSizeLimit
@@ -1500,6 +1518,36 @@ name|String
 name|v
 parameter_list|)
 comment|/*-{ if(v)this.create_new_change_for_all_not_in_target=v; }-*/
+function_decl|;
+DECL|method|setEnableSignedPush (InheritableBoolean v)
+specifier|final
+name|void
+name|setEnableSignedPush
+parameter_list|(
+name|InheritableBoolean
+name|v
+parameter_list|)
+block|{
+name|setEnableSignedPushRaw
+argument_list|(
+name|v
+operator|.
+name|name
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setEnableSignedPushRaw (String v)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|setEnableSignedPushRaw
+parameter_list|(
+name|String
+name|v
+parameter_list|)
+comment|/*-{ if(v)this.enable_signed_push=v; }-*/
 function_decl|;
 DECL|method|setMaxObjectSizeLimit (String l)
 specifier|final

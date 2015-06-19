@@ -1047,6 +1047,15 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|setEnableSignedPush
+argument_list|(
+name|InheritableBoolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
 name|AccessSection
 name|cap
 init|=
