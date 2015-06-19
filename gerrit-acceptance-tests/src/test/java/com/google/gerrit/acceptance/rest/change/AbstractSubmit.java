@@ -1841,10 +1841,9 @@ name|get
 argument_list|(
 literal|"/projects/"
 operator|+
-name|project
+name|change
 operator|.
-name|get
-argument_list|()
+name|project
 operator|+
 literal|"/branches/"
 operator|+
