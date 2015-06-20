@@ -4457,7 +4457,10 @@ name|set
 argument_list|(
 literal|"cursorBlinkRate"
 argument_list|,
-literal|0
+name|prefs
+operator|.
+name|cursorBlinkRate
+argument_list|()
 argument_list|)
 operator|.
 name|set

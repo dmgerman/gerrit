@@ -203,6 +203,15 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|.
+name|cursorBlinkRate
+argument_list|(
+name|in
+operator|.
+name|cursorBlinkRate
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
 name|context
 argument_list|(
 name|in
@@ -387,6 +396,13 @@ operator|.
 name|lineLength
 operator|=
 name|lineLength
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|cursorBlinkRate
+operator|=
+name|cursorBlinkRate
 argument_list|()
 expr_stmt|;
 name|p
@@ -683,6 +699,22 @@ literal|100
 argument_list|)
 return|;
 block|}
+DECL|method|cursorBlinkRate ()
+specifier|public
+specifier|final
+name|int
+name|cursorBlinkRate
+parameter_list|()
+block|{
+return|return
+name|get
+argument_list|(
+literal|"cursor_blink_rate"
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
 DECL|method|showLineNumbers ()
 specifier|public
 specifier|final
@@ -744,6 +776,18 @@ name|int
 name|c
 parameter_list|)
 comment|/*-{ this.context = c }-*/
+function_decl|;
+DECL|method|cursorBlinkRate (int r)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|cursorBlinkRate
+parameter_list|(
+name|int
+name|r
+parameter_list|)
+comment|/*-{ this.cursor_blink_rate = r }-*/
 function_decl|;
 DECL|method|intralineDifference (boolean i)
 specifier|public
