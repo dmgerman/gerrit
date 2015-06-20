@@ -236,6 +236,11 @@ specifier|public
 name|Boolean
 name|hideEmptyPane
 decl_stmt|;
+DECL|field|matchBrackets
+specifier|public
+name|Boolean
+name|matchBrackets
+decl_stmt|;
 DECL|field|theme
 specifier|public
 name|Theme
@@ -402,6 +407,12 @@ expr_stmt|;
 name|i
 operator|.
 name|hideEmptyPane
+operator|=
+literal|false
+expr_stmt|;
+name|i
+operator|.
+name|matchBrackets
 operator|=
 literal|false
 expr_stmt|;

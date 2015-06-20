@@ -363,6 +363,15 @@ operator|.
 name|skipDeleted
 argument_list|)
 expr_stmt|;
+name|p
+operator|.
+name|matchBrackets
+argument_list|(
+name|in
+operator|.
+name|matchBrackets
+argument_list|)
+expr_stmt|;
 return|return
 name|p
 return|;
@@ -508,6 +517,13 @@ operator|.
 name|hideEmptyPane
 operator|=
 name|hideEmptyPane
+argument_list|()
+expr_stmt|;
+name|p
+operator|.
+name|matchBrackets
+operator|=
+name|matchBrackets
 argument_list|()
 expr_stmt|;
 name|p
@@ -921,18 +937,6 @@ name|r
 parameter_list|)
 comment|/*-{ this.render_entire_file = r }-*/
 function_decl|;
-DECL|method|hideEmptyPane (boolean s)
-specifier|public
-specifier|final
-specifier|native
-name|void
-name|hideEmptyPane
-parameter_list|(
-name|boolean
-name|s
-parameter_list|)
-comment|/*-{ this.hide_empty_pane = s }-*/
-function_decl|;
 DECL|method|retainHeader (boolean r)
 specifier|public
 specifier|final
@@ -944,6 +948,18 @@ name|boolean
 name|r
 parameter_list|)
 comment|/*-{ this.retain_header = r }-*/
+function_decl|;
+DECL|method|hideEmptyPane (boolean s)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|hideEmptyPane
+parameter_list|(
+name|boolean
+name|s
+parameter_list|)
+comment|/*-{ this.hide_empty_pane = s }-*/
 function_decl|;
 DECL|method|skipUncommented (boolean s)
 specifier|public
@@ -968,6 +984,18 @@ name|boolean
 name|s
 parameter_list|)
 comment|/*-{ this.skip_deleted = s }-*/
+function_decl|;
+DECL|method|matchBrackets (boolean m)
+specifier|public
+specifier|final
+specifier|native
+name|void
+name|matchBrackets
+parameter_list|(
+name|boolean
+name|m
+parameter_list|)
+comment|/*-{ this.match_brackets = m }-*/
 function_decl|;
 DECL|method|intralineDifference ()
 specifier|public
@@ -1103,6 +1131,15 @@ name|boolean
 name|skipDeleted
 parameter_list|()
 comment|/*-{ return this.skip_deleted || false }-*/
+function_decl|;
+DECL|method|matchBrackets ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|matchBrackets
+parameter_list|()
+comment|/*-{ return this.match_brackets || false }-*/
 function_decl|;
 DECL|method|setThemeRaw (String i)
 specifier|private
