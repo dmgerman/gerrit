@@ -289,7 +289,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *<p>    * Items must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.itemOf(binder(), new TypeLiteral<Thing<Foo>>() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
+comment|/**    * Declare a singleton {@code DynamicItem<T>} with a binder.    *<p>    * Items must be defined in a Guice module before they can be bound:    *<pre>    *   DynamicSet.itemOf(binder(), new TypeLiteral&lt;Thing&lt;Foo&gt;&gt;() {});    *</pre>    *    * @param binder a new binder created in the module.    * @param member type of entry to store.    */
 DECL|method|itemOf (Binder binder, TypeLiteral<T> member)
 specifier|public
 specifier|static
