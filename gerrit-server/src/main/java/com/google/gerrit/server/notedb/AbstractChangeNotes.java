@@ -457,7 +457,10 @@ name|ref
 init|=
 name|repo
 operator|.
-name|getRef
+name|getRefDatabase
+argument_list|()
+operator|.
+name|exactRef
 argument_list|(
 name|getRefName
 argument_list|()

@@ -206,7 +206,6 @@ name|ref
 parameter_list|)
 block|{
 return|return
-operator|(
 name|ref
 operator|.
 name|startsWith
@@ -214,10 +213,9 @@ argument_list|(
 name|REFS
 argument_list|)
 condition|?
-literal|""
+name|ref
 else|:
 name|REFS_HEADS
-operator|)
 operator|+
 name|ref
 return|;

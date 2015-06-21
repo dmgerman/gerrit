@@ -198,6 +198,22 @@ name|gerrit
 operator|.
 name|reviewdb
 operator|.
+name|client
+operator|.
+name|RefNames
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|reviewdb
+operator|.
 name|server
 operator|.
 name|ReviewDb
@@ -1039,7 +1055,7 @@ operator|=
 name|updateFactory
 expr_stmt|;
 block|}
-DECL|method|cherryPick (Change change, PatchSet patch, final String message, final String destinationBranch, final RefControl refControl)
+DECL|method|cherryPick (Change change, PatchSet patch, final String message, final String ref, final RefControl refControl)
 specifier|public
 name|Change
 operator|.
@@ -1058,7 +1074,7 @@ name|message
 parameter_list|,
 specifier|final
 name|String
-name|destinationBranch
+name|ref
 parameter_list|,
 specifier|final
 name|RefControl
@@ -1081,16 +1097,12 @@ name|MergeException
 block|{
 if|if
 condition|(
-name|destinationBranch
-operator|==
-literal|null
-operator|||
-name|destinationBranch
+name|Strings
 operator|.
-name|length
-argument_list|()
-operator|==
-literal|0
+name|isNullOrEmpty
+argument_list|(
+name|ref
+argument_list|)
 condition|)
 block|{
 throw|throw
@@ -1110,6 +1122,16 @@ name|change
 operator|.
 name|getProject
 argument_list|()
+decl_stmt|;
+name|String
+name|destinationBranch
+init|=
+name|RefNames
+operator|.
+name|shortName
+argument_list|(
+name|ref
+argument_list|)
 decl_stmt|;
 name|IdentifiedUser
 name|identifiedUser
@@ -1149,9 +1171,12 @@ name|destRef
 init|=
 name|git
 operator|.
-name|getRef
+name|getRefDatabase
+argument_list|()
+operator|.
+name|exactRef
 argument_list|(
-name|destinationBranch
+name|ref
 argument_list|)
 decl_stmt|;
 if|if
@@ -1165,11 +1190,14 @@ throw|throw
 operator|new
 name|InvalidChangeOperationException
 argument_list|(
-literal|"Branch "
-operator|+
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Branch %s does not exist."
+argument_list|,
 name|destinationBranch
-operator|+
-literal|" does not exist."
+argument_list|)
 argument_list|)
 throw|;
 block|}
