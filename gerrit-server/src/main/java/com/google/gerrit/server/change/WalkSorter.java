@@ -505,7 +505,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper to sort {@link ChangeData}s based on {@link RevWalk} ordering.  *<p>  * Split changes by project, and map each change to a single commit based on the  * latest patch set. The set of patch sets considered may be limited by calling  * {@link #includePatchSets(Iterable)}. Perform a standard {@link RevWalk} on  * each project repository, and record the order in which each change's commit  * is seen.  *<p>  * Once an order within each project is determined, groups of changes are sorted  * based on the project name. This is slightly more stable than sorting on  * something like the commit or change timestamp, as it will not unexpectedly  * reorder large groups of changes on subsequent calls if one of the changes was  * updated.  */
+comment|/**  * Helper to sort {@link ChangeData}s based on {@link RevWalk} ordering.  *<p>  * Split changes by project, and map each change to a single commit based on the  * latest patch set. The set of patch sets considered may be limited by calling  * {@link #includePatchSets(Iterable)}. Perform a standard {@link RevWalk} on  * each project repository, do an approximate topo sort, and record the order in  * which each change's commit is seen.  *<p>  * Once an order within each project is determined, groups of changes are sorted  * based on the project name. This is slightly more stable than sorting on  * something like the commit or change timestamp, as it will not unexpectedly  * reorder large groups of changes on subsequent calls if one of the changes was  * updated.  */
 end_comment
 
 begin_class
@@ -987,7 +987,7 @@ comment|// list of commits by the RevWalk's configured order.
 comment|//
 comment|// Partially topo sort the list, ensuring no parent is emitted before a
 comment|// direct child that is also in the input set. This preserves the stable,
-comment|// expected sort in the case where many commit share the same timestamp,
+comment|// expected sort in the case where many commits share the same timestamp,
 comment|// e.g. a quick rebase. It also avoids JGit's topo sort, which slurps all
 comment|// interesting commits at the beginning, which is a problem since we don't
 comment|// know which commits to mark as uninteresting. Finding a reasonable set
@@ -1247,27 +1247,18 @@ argument_list|,
 name|done
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|RevCommit
-name|p
-range|:
+name|todo
+operator|.
+name|addAll
+argument_list|(
 name|pending
 operator|.
 name|get
 argument_list|(
 name|t
 argument_list|)
-control|)
-block|{
-name|todo
-operator|.
-name|add
-argument_list|(
-name|p
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
