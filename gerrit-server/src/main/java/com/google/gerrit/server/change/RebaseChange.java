@@ -772,8 +772,8 @@ operator|=
 name|patchSetInserterFactory
 expr_stmt|;
 block|}
-comment|/**    * Rebase the change of the given patch set.    *<p>    * It is verified that the current user is allowed to do the rebase.    *<p>    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *<p>    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param git the repository.    * @param rw the RevWalk.    * @param change the change to rebase.    * @param patchSetId the patch set ID to rebase.    * @param uploader the user that creates the rebased patch set.    * @param newBaseRev the commit that should be the new base.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws EmailException if sending the e-mail to notify about the new patch    *     set fails.    * @throws OrmException if accessing the database fails.    * @throws IOException if accessing the repository fails.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    */
-DECL|method|rebase (Repository git, RevWalk rw, Change change, PatchSet.Id patchSetId, IdentifiedUser uploader, String newBaseRev)
+comment|/**    * Rebase the change of the given patch set.    *<p>    * If the patch set has no dependency to an open change, then the change is    * rebased on the tip of the destination branch.    *<p>    * If the patch set depends on an open change, it is rebased on the latest    * patch set of this change.    *<p>    * The rebased commit is added as new patch set to the change.    *<p>    * E-mail notification and triggering of hooks happens for the creation of the    * new patch set.    *    * @param git the repository.    * @param rw the RevWalk.    * @param changeControl the control of the change to rebase.    * @param patchSetId the patch set ID to rebase.    * @param uploader the user that creates the rebased patch set.    * @param newBaseRev the commit that should be the new base.    * @throws NoSuchChangeException if the change to which the patch set belongs    *     does not exist or is not visible to the user.    * @throws EmailException if sending the e-mail to notify about the new patch    *     set fails.    * @throws OrmException if accessing the database fails.    * @throws IOException if accessing the repository fails.    * @throws InvalidChangeOperationException if rebase is not possible or not    *     allowed.    */
+DECL|method|rebase (Repository git, RevWalk rw, ChangeControl changeControl, PatchSet.Id patchSetId, IdentifiedUser uploader, String newBaseRev)
 specifier|public
 name|void
 name|rebase
@@ -784,8 +784,8 @@ parameter_list|,
 name|RevWalk
 name|rw
 parameter_list|,
-name|Change
-name|change
+name|ChangeControl
+name|changeControl
 parameter_list|,
 name|PatchSet
 operator|.
@@ -812,48 +812,13 @@ throws|,
 name|InvalidChangeOperationException
 block|{
 name|Change
-operator|.
-name|Id
-name|changeId
-init|=
-name|patchSetId
-operator|.
-name|getParentKey
-argument_list|()
-decl_stmt|;
-name|ChangeControl
-name|changeControl
-init|=
-name|changeControlFactory
-operator|.
-name|validateFor
-argument_list|(
 name|change
-argument_list|,
-name|uploader
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
+init|=
 name|changeControl
 operator|.
-name|canRebase
+name|getChange
 argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|InvalidChangeOperationException
-argument_list|(
-literal|"Cannot rebase: New patch sets"
-operator|+
-literal|" are not allowed to be added to change: "
-operator|+
-name|changeId
-argument_list|)
-throw|;
-block|}
+decl_stmt|;
 try|try
 init|(
 name|ObjectInserter
