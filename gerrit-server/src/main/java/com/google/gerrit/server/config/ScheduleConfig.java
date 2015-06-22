@@ -220,6 +220,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -748,6 +758,13 @@ operator|.
 name|forPattern
 argument_list|(
 literal|"E HH:mm"
+argument_list|)
+operator|.
+name|withLocale
+argument_list|(
+name|Locale
+operator|.
+name|US
 argument_list|)
 expr_stmt|;
 name|LocalDateTime
