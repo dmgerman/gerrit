@@ -963,7 +963,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws InvalidChangeOperationException    * @throws OrmException    * @throws ResourceConflictException    */
+comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws OrmException    * @throws ResourceConflictException    */
 DECL|method|publish (ChangeEdit edit)
 specifier|public
 name|void
@@ -976,8 +976,6 @@ throws|throws
 name|NoSuchChangeException
 throws|,
 name|IOException
-throws|,
-name|InvalidChangeOperationException
 throws|,
 name|OrmException
 throws|,
@@ -1057,6 +1055,8 @@ literal|"only edit for current patch set can be published"
 argument_list|)
 throw|;
 block|}
+try|try
+block|{
 name|Change
 name|updatedChange
 init|=
@@ -1107,6 +1107,24 @@ argument_list|,
 name|updatedChange
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InvalidChangeOperationException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|ResourceConflictException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 comment|/**    * Delete change edit.    *    * @param edit change edit to delete    * @throws IOException    */
