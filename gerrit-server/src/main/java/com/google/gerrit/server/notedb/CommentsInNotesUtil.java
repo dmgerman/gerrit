@@ -794,6 +794,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -2465,6 +2475,10 @@ argument_list|(
 name|dateString
 argument_list|,
 literal|null
+argument_list|,
+name|Locale
+operator|.
+name|US
 argument_list|)
 operator|.
 name|getTime
