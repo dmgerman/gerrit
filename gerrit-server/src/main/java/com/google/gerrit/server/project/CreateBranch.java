@@ -1247,7 +1247,10 @@ if|if
 condition|(
 name|repo
 operator|.
-name|getRef
+name|getRefDatabase
+argument_list|()
+operator|.
+name|exactRef
 argument_list|(
 name|ref
 argument_list|)
@@ -1292,7 +1295,10 @@ if|if
 condition|(
 name|repo
 operator|.
-name|getRef
+name|getRefDatabase
+argument_list|()
+operator|.
+name|exactRef
 argument_list|(
 name|refPrefix
 argument_list|)
@@ -1694,7 +1700,7 @@ name|rc
 init|=
 name|refDb
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|RefNames
 operator|.

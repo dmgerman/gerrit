@@ -1042,7 +1042,10 @@ name|branch
 init|=
 name|db
 operator|.
-name|getRef
+name|getRefDatabase
+argument_list|()
+operator|.
+name|exactRef
 argument_list|(
 name|notesBranch
 argument_list|)
@@ -1342,12 +1345,10 @@ literal|"Failed to lock the ref: "
 operator|+
 name|notesBranch
 argument_list|,
-name|db
+name|refUpdate
 operator|.
 name|getRef
-argument_list|(
-name|notesBranch
-argument_list|)
+argument_list|()
 argument_list|,
 name|result
 argument_list|)

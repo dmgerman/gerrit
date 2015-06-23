@@ -801,7 +801,7 @@ operator|.
 name|getRefDatabase
 argument_list|()
 operator|.
-name|getRef
+name|exactRef
 argument_list|(
 name|tagName
 argument_list|)
