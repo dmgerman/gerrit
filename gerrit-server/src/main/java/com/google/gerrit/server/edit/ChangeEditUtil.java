@@ -963,7 +963,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws AuthException    * @throws NoSuchChangeException    * @throws IOException    * @throws InvalidChangeOperationException    * @throws OrmException    * @throws ResourceConflictException    */
+comment|/**    * Promote change edit to patch set, by squashing the edit into    * its parent.    *    * @param edit change edit to publish    * @throws NoSuchChangeException    * @throws IOException    * @throws InvalidChangeOperationException    * @throws OrmException    * @throws ResourceConflictException    */
 DECL|method|publish (ChangeEdit edit)
 specifier|public
 name|void
@@ -973,8 +973,6 @@ name|ChangeEdit
 name|edit
 parameter_list|)
 throws|throws
-name|AuthException
-throws|,
 name|NoSuchChangeException
 throws|,
 name|IOException
