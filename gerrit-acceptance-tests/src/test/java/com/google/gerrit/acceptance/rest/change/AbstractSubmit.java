@@ -2478,14 +2478,22 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getRemoteLog ()
+DECL|method|getRemoteLog (Project.NameKey project, String branch)
 specifier|protected
 name|List
 argument_list|<
 name|RevCommit
 argument_list|>
 name|getRemoteLog
-parameter_list|()
+parameter_list|(
+name|Project
+operator|.
+name|NameKey
+name|project
+parameter_list|,
+name|String
+name|branch
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -2523,7 +2531,9 @@ name|repo
 operator|.
 name|getRef
 argument_list|(
-literal|"refs/heads/master"
+literal|"refs/heads/"
+operator|+
+name|branch
 argument_list|)
 operator|.
 name|getObjectId
@@ -2540,6 +2550,26 @@ name|rw
 argument_list|)
 return|;
 block|}
+block|}
+DECL|method|getRemoteLog ()
+specifier|protected
+name|List
+argument_list|<
+name|RevCommit
+argument_list|>
+name|getRemoteLog
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+return|return
+name|getRemoteLog
+argument_list|(
+name|project
+argument_list|,
+literal|"master"
+argument_list|)
+return|;
 block|}
 DECL|method|getHead (Repository repo, String name)
 specifier|private
