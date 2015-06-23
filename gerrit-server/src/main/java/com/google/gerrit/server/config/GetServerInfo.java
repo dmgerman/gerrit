@@ -1442,7 +1442,7 @@ name|getCommand
 argument_list|(
 name|scheme
 argument_list|,
-literal|"${project}"
+literal|"${project-path}/${project-base-name}"
 argument_list|)
 decl_stmt|;
 if|if
@@ -1452,6 +1452,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|c
+operator|=
+name|c
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\$\\{project-path\\}/\\$\\{project-base-name\\}"
+argument_list|,
+literal|"\\$\\{project\\}"
+argument_list|)
+expr_stmt|;
 name|info
 operator|.
 name|cloneCommands
