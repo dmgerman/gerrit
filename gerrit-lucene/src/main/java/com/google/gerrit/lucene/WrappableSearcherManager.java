@@ -570,6 +570,8 @@ operator|.
 name|newSearcher
 argument_list|(
 name|reader
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// Modification for Gerrit: Allow searcherFactory to transitively wrap the
