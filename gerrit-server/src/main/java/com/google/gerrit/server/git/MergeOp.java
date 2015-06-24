@@ -5164,24 +5164,7 @@ block|}
 catch|catch
 parameter_list|(
 name|OrmException
-name|err
-parameter_list|)
-block|{
-name|logWarn
-argument_list|(
-literal|"Error updating change status for "
-operator|+
-name|c
-operator|.
-name|getId
-argument_list|()
-argument_list|,
-name|err
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IOException
 name|err
 parameter_list|)
