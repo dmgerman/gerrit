@@ -142,6 +142,22 @@ name|server
 operator|.
 name|config
 operator|.
+name|GerritServerConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|config
+operator|.
 name|PluginConfigFactory
 import|;
 end_import
@@ -202,6 +218,20 @@ name|Singleton
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|Config
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Singleton
@@ -215,6 +245,12 @@ argument_list|<
 name|ProjectResource
 argument_list|>
 block|{
+DECL|field|gerritConfig
+specifier|private
+specifier|final
+name|Config
+name|gerritConfig
+decl_stmt|;
 DECL|field|config
 specifier|private
 specifier|final
@@ -256,10 +292,15 @@ name|views
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|GetConfig (TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views)
+DECL|method|GetConfig (@erritServerConfig Config gerritConfig, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views)
 specifier|public
 name|GetConfig
 parameter_list|(
+annotation|@
+name|GerritServerConfig
+name|Config
+name|gerritConfig
+parameter_list|,
 name|TransferConfig
 name|config
 parameter_list|,
@@ -285,6 +326,12 @@ argument_list|>
 name|views
 parameter_list|)
 block|{
+name|this
+operator|.
+name|gerritConfig
+operator|=
+name|gerritConfig
+expr_stmt|;
 name|this
 operator|.
 name|config
@@ -331,6 +378,8 @@ return|return
 operator|new
 name|ConfigInfo
 argument_list|(
+name|gerritConfig
+argument_list|,
 name|resource
 operator|.
 name|getControl
