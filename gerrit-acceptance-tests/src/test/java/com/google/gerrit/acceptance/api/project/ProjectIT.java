@@ -212,7 +212,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|ResourceConflictException
+name|BadRequestException
 import|;
 end_import
 
@@ -228,7 +228,7 @@ name|extensions
 operator|.
 name|restapi
 operator|.
-name|RestApiException
+name|ResourceConflictException
 import|;
 end_import
 
@@ -340,17 +340,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|RestApiException
-operator|.
-name|class
-argument_list|)
-DECL|method|createProjectFooBar ()
+DECL|method|createProjectWithMismatchedInput ()
 specifier|public
 name|void
-name|createProjectFooBar
+name|createProjectWithMismatchedInput
 parameter_list|()
 throws|throws
 name|Exception
@@ -371,6 +364,22 @@ argument_list|(
 literal|"foo"
 argument_list|)
 expr_stmt|;
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|BadRequestException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"name must match input.name"
+argument_list|)
+expr_stmt|;
 name|gApi
 operator|.
 name|projects
@@ -389,13 +398,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-argument_list|(
-name|expected
-operator|=
-name|ResourceConflictException
-operator|.
-name|class
-argument_list|)
 DECL|method|createProjectDuplicate ()
 specifier|public
 name|void
@@ -428,6 +430,22 @@ operator|.
 name|create
 argument_list|(
 name|in
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expect
+argument_list|(
+name|ResourceConflictException
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|expectMessage
+argument_list|(
+literal|"Project already exists"
 argument_list|)
 expr_stmt|;
 name|gApi
