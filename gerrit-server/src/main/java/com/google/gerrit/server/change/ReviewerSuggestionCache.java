@@ -826,7 +826,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|.
-name|expireAfterWrite
+name|refreshAfterWrite
 argument_list|(
 name|expiration
 argument_list|,
