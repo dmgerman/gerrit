@@ -4216,17 +4216,10 @@ name|req
 operator|.
 name|getReader
 argument_list|()
-init|)
+init|;           JsonReader json = new JsonReader(br)
+empty_stmt|;
+block|)
 block|{
-name|JsonReader
-name|json
-init|=
-operator|new
-name|JsonReader
-argument_list|(
-name|br
-argument_list|)
-decl_stmt|;
 name|json
 operator|.
 name|setLenient
@@ -4299,6 +4292,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_function
+
+begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4339,6 +4335,9 @@ name|type
 argument_list|)
 return|;
 block|}
+end_elseif
+
+begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4362,6 +4361,9 @@ return|return
 literal|null
 return|;
 block|}
+end_elseif
+
+begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4378,6 +4380,9 @@ name|type
 argument_list|)
 return|;
 block|}
+end_elseif
+
+begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4464,6 +4469,9 @@ argument_list|)
 return|;
 block|}
 block|}
+end_elseif
+
+begin_elseif
 elseif|else
 if|if
 condition|(
@@ -4509,6 +4517,9 @@ name|type
 argument_list|)
 return|;
 block|}
+end_elseif
+
+begin_else
 else|else
 block|{
 throw|throw
@@ -4521,12 +4532,11 @@ name|JSON_TYPE
 argument_list|)
 throw|;
 block|}
-block|}
-end_function
+end_else
 
 begin_function
+unit|}    private
 DECL|method|hasNoBody (HttpServletRequest req)
-specifier|private
 specifier|static
 name|boolean
 name|hasNoBody
