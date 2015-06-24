@@ -4217,7 +4217,6 @@ operator|.
 name|getReader
 argument_list|()
 init|;           JsonReader json = new JsonReader(br)
-empty_stmt|;
 block|)
 block|{
 name|json
