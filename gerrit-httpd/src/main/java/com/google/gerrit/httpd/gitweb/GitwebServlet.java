@@ -2535,12 +2535,6 @@ return|return;
 block|}
 try|try
 init|(
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"UnusedDeclaration"
-argument_list|)
-comment|// only open for existence-check
 name|Repository
 name|repo
 init|=
