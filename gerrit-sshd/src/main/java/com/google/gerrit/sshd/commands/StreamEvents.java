@@ -80,7 +80,7 @@ name|CommandMetaData
 operator|.
 name|Mode
 operator|.
-name|MASTER_OR_SLAVE
+name|MASTER
 import|;
 end_import
 
@@ -369,7 +369,7 @@ literal|"Monitor events occurring in real time"
 argument_list|,
 name|runsAt
 operator|=
-name|MASTER_OR_SLAVE
+name|MASTER
 argument_list|)
 DECL|class|StreamEvents
 specifier|final
