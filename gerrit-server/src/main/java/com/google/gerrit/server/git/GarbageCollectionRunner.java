@@ -360,7 +360,14 @@ name|gcLog
 operator|.
 name|warn
 argument_list|(
-literal|"Ignoring invalid gc schedule configuration"
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Ignoring invalid gc schedule configuration: %s"
+argument_list|,
+name|scheduleConfig
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
