@@ -898,6 +898,30 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Get changes to reindex caused by "
+operator|+
+name|event
+operator|.
+name|getRefName
+argument_list|()
+operator|+
+literal|" update of project "
+operator|+
+name|event
+operator|.
+name|getProjectName
+argument_list|()
+return|;
+block|}
 block|}
 DECL|class|Index
 specifier|private
@@ -999,6 +1023,30 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Index change "
+operator|+
+name|id
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" of project "
+operator|+
+name|event
+operator|.
+name|getProjectName
+argument_list|()
 return|;
 block|}
 block|}
