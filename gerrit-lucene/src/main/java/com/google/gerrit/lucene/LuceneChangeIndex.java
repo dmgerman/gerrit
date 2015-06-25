@@ -2363,6 +2363,9 @@ name|newSearcher
 parameter_list|(
 name|IndexReader
 name|reader
+parameter_list|,
+name|IndexReader
+name|previousReader
 parameter_list|)
 throws|throws
 name|IOException
