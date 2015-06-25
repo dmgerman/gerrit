@@ -1482,7 +1482,10 @@ block|{
 return|return
 name|args
 operator|.
-name|anonymousCowardName
+name|gerritPersonIdent
+operator|.
+name|getName
+argument_list|()
 return|;
 block|}
 specifier|final

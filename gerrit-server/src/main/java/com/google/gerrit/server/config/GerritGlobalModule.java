@@ -2569,6 +2569,13 @@ argument_list|)
 expr_stmt|;
 name|bind
 argument_list|(
+name|ChangeCleanupConfig
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|bind
+argument_list|(
 name|ApprovalsUtil
 operator|.
 name|class

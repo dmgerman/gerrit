@@ -150,6 +150,20 @@ name|gerrit
 operator|.
 name|server
 operator|.
+name|GerritPersonIdentProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
 name|IdentifiedUser
 import|;
 end_import
@@ -470,6 +484,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jgit
+operator|.
+name|lib
+operator|.
+name|PersonIdent
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -565,6 +593,11 @@ specifier|final
 name|String
 name|anonymousCowardName
 decl_stmt|;
+DECL|field|gerritPersonIdent
+specifier|final
+name|PersonIdent
+name|gerritPersonIdent
+decl_stmt|;
 DECL|field|urlProvider
 specifier|final
 name|Provider
@@ -626,7 +659,7 @@ name|outgoingEmailValidationListeners
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners)
+DECL|method|EmailArguments (GitRepositoryManager server, ProjectCache projectCache, GroupBackend groupBackend, GroupIncludeCache groupIncludes, AccountCache accountCache, PatchListCache patchListCache, ApprovalsUtil approvalsUtil, FromAddressGenerator fromAddressGenerator, EmailSender emailSender, PatchSetInfoFactory patchSetInfoFactory, GenericFactory identifiedUserFactory, CapabilityControl.Factory capabilityControlFactory, ChangeNotes.Factory changeNotesFactory, AnonymousUser anonymousUser, @AnonymousCowardName String anonymousCowardName, GerritPersonIdentProvider gerritPersonIdentProvider, @CanonicalWebUrl @Nullable Provider<String> urlProvider, AllProjectsName allProjectsName, ChangeQueryBuilder queryBuilder, Provider<ReviewDb> db, ChangeData.Factory changeDataFactory, RuntimeInstance velocityRuntime, EmailSettings settings, @SshAdvertisedAddresses List<String> sshAddresses, DynamicSet<OutgoingEmailValidationListener> outgoingEmailValidationListeners)
 name|EmailArguments
 parameter_list|(
 name|GitRepositoryManager
@@ -679,6 +712,9 @@ annotation|@
 name|AnonymousCowardName
 name|String
 name|anonymousCowardName
+parameter_list|,
+name|GerritPersonIdentProvider
+name|gerritPersonIdentProvider
 parameter_list|,
 annotation|@
 name|CanonicalWebUrl
@@ -817,6 +853,15 @@ operator|.
 name|anonymousCowardName
 operator|=
 name|anonymousCowardName
+expr_stmt|;
+name|this
+operator|.
+name|gerritPersonIdent
+operator|=
+name|gerritPersonIdentProvider
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
