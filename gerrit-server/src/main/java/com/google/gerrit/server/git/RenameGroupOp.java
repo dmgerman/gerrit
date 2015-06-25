@@ -608,27 +608,7 @@ block|}
 catch|catch
 parameter_list|(
 name|ConfigInvalidException
-name|err
-parameter_list|)
-block|{
-name|log
-operator|.
-name|error
-argument_list|(
-literal|"Cannot rename group "
-operator|+
-name|oldName
-operator|+
-literal|" in "
-operator|+
-name|projectName
-argument_list|,
-name|err
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IOException
 name|err
 parameter_list|)

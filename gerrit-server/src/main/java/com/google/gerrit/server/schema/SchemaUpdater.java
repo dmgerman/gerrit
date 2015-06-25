@@ -704,21 +704,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OrmException
-argument_list|(
-literal|"Cannot initialize schema"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|ConfigInvalidException
 name|e
 parameter_list|)

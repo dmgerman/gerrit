@@ -1765,26 +1765,7 @@ block|}
 catch|catch
 parameter_list|(
 name|RuntimeException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|error
-argument_list|(
-literal|"Error in operator "
-operator|+
-name|name
-operator|+
-literal|":"
-operator|+
-name|value
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IllegalAccessException
 name|e
 parameter_list|)

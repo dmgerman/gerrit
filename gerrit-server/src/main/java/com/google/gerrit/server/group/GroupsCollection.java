@@ -966,15 +966,13 @@ block|}
 catch|catch
 parameter_list|(
 name|IllegalArgumentException
-name|invalidId
-parameter_list|)
-block|{       }
-catch|catch
-parameter_list|(
+decl||
 name|NoSuchGroupException
 name|e
 parameter_list|)
-block|{       }
+block|{
+comment|// Ignored
+block|}
 block|}
 comment|// Might be a group name, be nice and accept unique names.
 name|GroupReference

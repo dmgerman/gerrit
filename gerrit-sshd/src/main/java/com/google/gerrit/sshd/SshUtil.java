@@ -443,21 +443,7 @@ block|}
 catch|catch
 parameter_list|(
 name|RuntimeException
-name|re
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|InvalidKeySpecException
-argument_list|(
-literal|"Cannot parse key"
-argument_list|,
-name|re
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|SshException
 name|e
 parameter_list|)

@@ -849,23 +849,7 @@ block|}
 catch|catch
 parameter_list|(
 name|NoSuchAlgorithmException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Cannot use CRAM-"
-operator|+
-name|alg
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|InvalidKeyException
 name|e
 parameter_list|)

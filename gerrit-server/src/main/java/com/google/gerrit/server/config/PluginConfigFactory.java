@@ -842,26 +842,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
-parameter_list|)
-block|{
-name|log
-operator|.
-name|warn
-argument_list|(
-literal|"Failed to load "
-operator|+
-name|pluginConfigFile
-operator|.
-name|toAbsolutePath
-argument_list|()
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|ConfigInvalidException
 name|e
 parameter_list|)
