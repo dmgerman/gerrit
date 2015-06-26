@@ -654,6 +654,22 @@ name|server
 operator|.
 name|change
 operator|.
+name|SubmittedTogether
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|server
+operator|.
+name|change
+operator|.
 name|SuggestReviewers
 import|;
 end_import
@@ -858,6 +874,12 @@ specifier|final
 name|Restore
 name|restore
 decl_stmt|;
+DECL|field|submittedTogether
+specifier|private
+specifier|final
+name|SubmittedTogether
+name|submittedTogether
+decl_stmt|;
 DECL|field|getTopic
 specifier|private
 specifier|final
@@ -925,7 +947,7 @@ name|editDetail
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Provider<SuggestReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, Provider<ChangeJson> changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, @Assisted ChangeResource change)
+DECL|method|ChangeApiImpl (Provider<CurrentUser> user, Changes changeApi, Revisions revisions, RevisionApiImpl.Factory revisionApi, Provider<SuggestReviewers> suggestReviewers, Abandon abandon, Revert revert, Restore restore, SubmittedTogether submittedTogether, GetTopic getTopic, PutTopic putTopic, PostReviewers postReviewers, Provider<ChangeJson> changeJson, PostHashtags postHashtags, GetHashtags getHashtags, ListChangeComments listComments, ListChangeDrafts listDrafts, Check check, ChangeEdits.Detail editDetail, @Assisted ChangeResource change)
 name|ChangeApiImpl
 parameter_list|(
 name|Provider
@@ -959,6 +981,9 @@ name|revert
 parameter_list|,
 name|Restore
 name|restore
+parameter_list|,
+name|SubmittedTogether
+name|submittedTogether
 parameter_list|,
 name|GetTopic
 name|getTopic
@@ -1048,6 +1073,12 @@ operator|.
 name|restore
 operator|=
 name|restore
+expr_stmt|;
+name|this
+operator|.
+name|submittedTogether
+operator|=
+name|submittedTogether
 expr_stmt|;
 name|this
 operator|.
@@ -1430,6 +1461,47 @@ operator|new
 name|RestApiException
 argument_list|(
 literal|"Cannot revert change"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|submittedTogether ()
+specifier|public
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|submittedTogether
+parameter_list|()
+throws|throws
+name|RestApiException
+block|{
+try|try
+block|{
+return|return
+name|submittedTogether
+operator|.
+name|apply
+argument_list|(
+name|change
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RestApiException
+argument_list|(
+literal|"Cannot query submittedTogether"
 argument_list|,
 name|e
 argument_list|)

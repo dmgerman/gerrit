@@ -314,6 +314,16 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
+DECL|method|submittedTogether ()
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|submittedTogether
+parameter_list|()
+throws|throws
+name|RestApiException
+function_decl|;
 DECL|method|topic ()
 name|String
 name|topic
@@ -1034,6 +1044,25 @@ parameter_list|(
 name|FixInput
 name|fix
 parameter_list|)
+throws|throws
+name|RestApiException
+block|{
+throw|throw
+operator|new
+name|NotImplementedException
+argument_list|()
+throw|;
+block|}
+annotation|@
+name|Override
+DECL|method|submittedTogether ()
+specifier|public
+name|List
+argument_list|<
+name|ChangeInfo
+argument_list|>
+name|submittedTogether
+parameter_list|()
 throws|throws
 name|RestApiException
 block|{
