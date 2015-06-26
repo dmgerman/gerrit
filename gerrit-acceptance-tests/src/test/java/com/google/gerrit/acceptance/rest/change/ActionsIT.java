@@ -166,20 +166,6 @@ name|com
 operator|.
 name|google
 operator|.
-name|gerrit
-operator|.
-name|testutil
-operator|.
-name|ConfigSuite
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
 name|gson
 operator|.
 name|reflect
@@ -213,20 +199,6 @@ operator|.
 name|errors
 operator|.
 name|GitAPIException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|eclipse
-operator|.
-name|jgit
-operator|.
-name|lib
-operator|.
-name|Config
 import|;
 end_import
 
@@ -268,22 +240,6 @@ name|ActionsIT
 extends|extends
 name|AbstractDaemonTest
 block|{
-annotation|@
-name|ConfigSuite
-operator|.
-name|Config
-DECL|method|submitWholeTopicEnabled ()
-specifier|public
-specifier|static
-name|Config
-name|submitWholeTopicEnabled
-parameter_list|()
-block|{
-return|return
-name|submitWholeTopicEnabledConfig
-argument_list|()
-return|;
-block|}
 annotation|@
 name|Test
 DECL|method|revisionActionsOneChangePerTopicUnapproved ()
