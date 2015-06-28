@@ -613,7 +613,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.get(p, r) }-*/
+comment|/*-{ $wnd.Gerrit.get_raw(p, r) }-*/
 function_decl|;
 specifier|public
 parameter_list|<
@@ -657,7 +657,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.put(p, r) }-*/
+comment|/*-{ $wnd.Gerrit.put_raw(p, r) }-*/
 function_decl|;
 specifier|public
 parameter_list|<
@@ -709,7 +709,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.put(p, c, r) }-*/
+comment|/*-{ $wnd.Gerrit.put_raw(p, c, r) }-*/
 function_decl|;
 specifier|public
 parameter_list|<
@@ -761,7 +761,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.put(p, c, r) }-*/
+comment|/*-{ $wnd.Gerrit.put_raw(p, c, r) }-*/
 function_decl|;
 specifier|public
 parameter_list|<
@@ -813,7 +813,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.post(p, c, r) }-*/
+comment|/*-{ $wnd.Gerrit.post_raw(p, c, r) }-*/
 function_decl|;
 specifier|public
 parameter_list|<
@@ -865,7 +865,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.post(p, c, r) }-*/
+comment|/*-{ $wnd.Gerrit.post_raw(p, c, r) }-*/
 function_decl|;
 DECL|method|delete (AsyncCallback<NoContent> cb)
 specifier|public
@@ -904,7 +904,7 @@ parameter_list|,
 name|JavaScriptObject
 name|r
 parameter_list|)
-comment|/*-{ $wnd.Gerrit.del(p, r) }-*/
+comment|/*-{ $wnd.Gerrit.del_raw(p, r) }-*/
 function_decl|;
 specifier|private
 specifier|static
