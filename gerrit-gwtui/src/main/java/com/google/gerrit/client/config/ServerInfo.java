@@ -266,6 +266,15 @@ name|updateDelay
 parameter_list|()
 comment|/*-{ return this.update_delay || 0; }-*/
 function_decl|;
+DECL|method|isSubmitWholeTopicEnabled ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|isSubmitWholeTopicEnabled
+parameter_list|()
+comment|/*-{         return this.submit_whole_topic; }-*/
+function_decl|;
 DECL|method|ChangeConfigInfo ()
 specifier|protected
 name|ChangeConfigInfo
