@@ -204,6 +204,16 @@ name|String
 name|sameTopicTooltip
 parameter_list|()
 function_decl|;
+DECL|method|submittedTogether ()
+name|String
+name|submittedTogether
+parameter_list|()
+function_decl|;
+DECL|method|submittedTogetherTooltip ()
+name|String
+name|submittedTogetherTooltip
+parameter_list|()
+function_decl|;
 DECL|method|noChanges ()
 name|String
 name|noChanges

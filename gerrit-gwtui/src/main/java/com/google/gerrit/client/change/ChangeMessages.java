@@ -173,6 +173,22 @@ name|String
 name|count
 parameter_list|)
 function_decl|;
+DECL|method|submittedTogether (int count)
+name|String
+name|submittedTogether
+parameter_list|(
+name|int
+name|count
+parameter_list|)
+function_decl|;
+DECL|method|submittedTogether (String count)
+name|String
+name|submittedTogether
+parameter_list|(
+name|String
+name|count
+parameter_list|)
+function_decl|;
 DECL|method|editPatchSet (int patchSet)
 name|String
 name|editPatchSet
