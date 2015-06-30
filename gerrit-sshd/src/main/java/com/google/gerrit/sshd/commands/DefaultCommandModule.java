@@ -599,7 +599,6 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
-comment|// The following commands can only be run on a server in Master mode
 name|command
 argument_list|(
 name|gerrit
@@ -852,15 +851,6 @@ argument_list|(
 name|gerrit
 argument_list|,
 name|AdminSetParent
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|command
-argument_list|(
-name|gerrit
-argument_list|,
-name|CreateAccountCommand
 operator|.
 name|class
 argument_list|)
