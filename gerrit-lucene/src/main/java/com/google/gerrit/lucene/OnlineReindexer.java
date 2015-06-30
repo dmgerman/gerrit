@@ -298,6 +298,11 @@ specifier|final
 name|int
 name|version
 decl_stmt|;
+DECL|field|index
+specifier|private
+name|ChangeIndex
+name|index
+decl_stmt|;
 DECL|field|running
 specifier|private
 specifier|final
@@ -482,9 +487,8 @@ name|void
 name|reindex
 parameter_list|()
 block|{
-name|ChangeIndex
 name|index
-init|=
+operator|=
 name|checkNotNull
 argument_list|(
 name|indexes
@@ -498,7 +502,7 @@ literal|"not an active write schema version: %s"
 argument_list|,
 name|version
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|log
 operator|.
 name|info
@@ -571,6 +575,27 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|log
+operator|.
+name|info
+argument_list|(
+literal|"Reindex to version {} complete"
+argument_list|,
+name|version
+argument_list|(
+name|index
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|activateIndex
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|activateIndex ()
+name|void
+name|activateIndex
+parameter_list|()
+block|{
 name|indexes
 operator|.
 name|setSearchIndex
@@ -582,7 +607,7 @@ name|log
 operator|.
 name|info
 argument_list|(
-literal|"Reindex complete, using schema version {}"
+literal|"Using schema version {}"
 argument_list|,
 name|version
 argument_list|(

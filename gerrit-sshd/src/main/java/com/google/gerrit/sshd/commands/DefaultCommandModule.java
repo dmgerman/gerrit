@@ -456,6 +456,15 @@ name|command
 argument_list|(
 name|index
 argument_list|,
+name|IndexActivateCommand
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|command
+argument_list|(
+name|index
+argument_list|,
 name|IndexStartCommand
 operator|.
 name|class

@@ -1124,6 +1124,39 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**    * Activate the latest index if the current index is not already the latest.    *    * @return true if index was activate, otherwise false.    * @throws ReindexerAlreadyRunningException    */
+DECL|method|activateLatestIndex ()
+specifier|public
+specifier|synchronized
+name|boolean
+name|activateLatestIndex
+parameter_list|()
+throws|throws
+name|ReindexerAlreadyRunningException
+block|{
+name|validateReindexerNotRunning
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isCurrentIndexVersionLatest
+argument_list|()
+condition|)
+block|{
+name|reindexer
+operator|.
+name|activateIndex
+argument_list|()
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 DECL|method|isCurrentIndexVersionLatest ()
 specifier|private
 name|boolean
