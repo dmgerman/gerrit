@@ -1259,6 +1259,44 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** Get audit log of a group. */
+DECL|method|getAuditLog (AccountGroup.UUID group, AsyncCallback<JsArray<GroupAuditEventInfo>> cb)
+specifier|public
+specifier|static
+name|void
+name|getAuditLog
+parameter_list|(
+name|AccountGroup
+operator|.
+name|UUID
+name|group
+parameter_list|,
+name|AsyncCallback
+argument_list|<
+name|JsArray
+argument_list|<
+name|GroupAuditEventInfo
+argument_list|>
+argument_list|>
+name|cb
+parameter_list|)
+block|{
+name|group
+argument_list|(
+name|group
+argument_list|)
+operator|.
+name|view
+argument_list|(
+literal|"log.audit"
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|cb
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|members (AccountGroup.UUID group)
 specifier|private
 specifier|static

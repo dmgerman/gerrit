@@ -335,6 +335,11 @@ name|String
 name|headingAgreements
 parameter_list|()
 function_decl|;
+DECL|method|headingAuditLog ()
+name|String
+name|headingAuditLog
+parameter_list|()
+function_decl|;
 DECL|method|headingProjectSubmitType ()
 name|String
 name|headingProjectSubmitType
@@ -420,6 +425,31 @@ name|String
 name|columnGroupVisibleToAll
 parameter_list|()
 function_decl|;
+DECL|method|columnDate ()
+name|String
+name|columnDate
+parameter_list|()
+function_decl|;
+DECL|method|columnType ()
+name|String
+name|columnType
+parameter_list|()
+function_decl|;
+DECL|method|columnByUser ()
+name|String
+name|columnByUser
+parameter_list|()
+function_decl|;
+DECL|method|typeAdded ()
+name|String
+name|typeAdded
+parameter_list|()
+function_decl|;
+DECL|method|typeRemoved ()
+name|String
+name|typeRemoved
+parameter_list|()
+function_decl|;
 DECL|method|columnBranchName ()
 name|String
 name|columnBranchName
@@ -483,6 +513,11 @@ function_decl|;
 DECL|method|groupTabMembers ()
 name|String
 name|groupTabMembers
+parameter_list|()
+function_decl|;
+DECL|method|groupTabAuditLog ()
+name|String
+name|groupTabAuditLog
 parameter_list|()
 function_decl|;
 DECL|method|projectListTitle ()
