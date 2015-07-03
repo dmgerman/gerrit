@@ -388,14 +388,9 @@ init|=
 name|getRemoteHead
 argument_list|()
 decl_stmt|;
-name|PushOneCommit
-operator|.
-name|Result
-name|change
-init|=
 name|createChange
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|PushOneCommit
 operator|.
 name|Result
