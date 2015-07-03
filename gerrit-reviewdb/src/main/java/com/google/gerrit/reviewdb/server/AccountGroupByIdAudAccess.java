@@ -227,6 +227,26 @@ parameter_list|)
 throws|throws
 name|OrmException
 function_decl|;
+annotation|@
+name|Query
+argument_list|(
+literal|"WHERE key.groupId = ?"
+argument_list|)
+DECL|method|byGroup (AccountGroup.Id groupId)
+name|ResultSet
+argument_list|<
+name|AccountGroupByIdAud
+argument_list|>
+name|byGroup
+parameter_list|(
+name|AccountGroup
+operator|.
+name|Id
+name|groupId
+parameter_list|)
+throws|throws
+name|OrmException
+function_decl|;
 block|}
 end_interface
 
