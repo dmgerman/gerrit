@@ -1274,12 +1274,6 @@ operator|new
 name|SubmitInput
 argument_list|()
 decl_stmt|;
-name|in
-operator|.
-name|waitForMerge
-operator|=
-literal|true
-expr_stmt|;
 name|submit
 argument_list|(
 name|in

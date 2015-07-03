@@ -217,7 +217,6 @@ parameter_list|)
 throws|throws
 name|RestApiException
 function_decl|;
-comment|/** {@code submit} with {@link SubmitInput#waitForMerge} set to true. */
 DECL|method|submit ()
 name|void
 name|submit
