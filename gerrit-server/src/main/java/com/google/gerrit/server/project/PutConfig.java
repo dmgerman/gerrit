@@ -763,9 +763,12 @@ block|}
 DECL|field|metaDataUpdateFactory
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
 DECL|field|projectCache
@@ -844,12 +847,15 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig (MetaDataUpdate.User metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, Provider<CurrentUser> currentUser)
+DECL|method|PutConfig (Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, Provider<CurrentUser> currentUser)
 name|PutConfig
 parameter_list|(
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 parameter_list|,
 name|ProjectCache
@@ -1074,6 +1080,9 @@ block|{
 name|md
 operator|=
 name|metaDataUpdateFactory
+operator|.
+name|get
+argument_list|()
 operator|.
 name|create
 argument_list|(
