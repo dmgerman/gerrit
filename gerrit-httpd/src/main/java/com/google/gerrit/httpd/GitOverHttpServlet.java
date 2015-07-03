@@ -988,7 +988,7 @@ name|url
 operator|.
 name|append
 argument_list|(
-literal|"^(?:/p/|/)(.*/(?:info/refs"
+literal|"^(?:/a)?(?:/p/|/)(.*/(?:info/refs"
 argument_list|)
 expr_stmt|;
 for|for
