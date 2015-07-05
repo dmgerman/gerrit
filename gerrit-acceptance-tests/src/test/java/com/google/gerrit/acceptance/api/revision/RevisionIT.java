@@ -1021,12 +1021,6 @@ name|admin2
 operator|.
 name|email
 expr_stmt|;
-name|in
-operator|.
-name|waitForMerge
-operator|=
-literal|true
-expr_stmt|;
 name|gApi
 operator|.
 name|changes

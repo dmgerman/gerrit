@@ -1796,12 +1796,6 @@ operator|new
 name|SubmitInput
 argument_list|()
 decl_stmt|;
-name|subm
-operator|.
-name|waitForMerge
-operator|=
-literal|false
-expr_stmt|;
 name|RestResponse
 name|r
 init|=
