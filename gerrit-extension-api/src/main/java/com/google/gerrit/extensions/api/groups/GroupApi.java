@@ -96,6 +96,22 @@ name|extensions
 operator|.
 name|common
 operator|.
+name|GroupAuditEventInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|extensions
+operator|.
+name|common
+operator|.
 name|GroupInfo
 import|;
 end_import
@@ -321,6 +337,19 @@ name|String
 modifier|...
 name|groups
 parameter_list|)
+throws|throws
+name|RestApiException
+function_decl|;
+comment|/**    * Returns the audit log of the group.    *    * @return list of audit events of the group.    * @throws RestApiException    */
+DECL|method|auditLog ()
+name|List
+argument_list|<
+name|?
+extends|extends
+name|GroupAuditEventInfo
+argument_list|>
+name|auditLog
+parameter_list|()
 throws|throws
 name|RestApiException
 function_decl|;
