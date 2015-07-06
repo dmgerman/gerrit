@@ -804,9 +804,12 @@ decl_stmt|;
 DECL|field|metaDataUpdateFactory
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 decl_stmt|;
 DECL|field|projectCache
@@ -885,7 +888,7 @@ name|hooks
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|PutConfig (@erritServerConfig Config gerritConfig, MetaDataUpdate.User metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, Provider<CurrentUser> currentUser)
+DECL|method|PutConfig (@erritServerConfig Config gerritConfig, Provider<MetaDataUpdate.User> metaDataUpdateFactory, ProjectCache projectCache, GitRepositoryManager gitMgr, ProjectState.Factory projectStateFactory, TransferConfig config, DynamicMap<ProjectConfigEntry> pluginConfigEntries, PluginConfigFactory cfgFactory, AllProjectsNameProvider allProjects, DynamicMap<RestView<ProjectResource>> views, ChangeHooks hooks, Provider<CurrentUser> currentUser)
 name|PutConfig
 parameter_list|(
 annotation|@
@@ -893,9 +896,12 @@ name|GerritServerConfig
 name|Config
 name|gerritConfig
 parameter_list|,
+name|Provider
+argument_list|<
 name|MetaDataUpdate
 operator|.
 name|User
+argument_list|>
 name|metaDataUpdateFactory
 parameter_list|,
 name|ProjectCache
@@ -1126,6 +1132,9 @@ block|{
 name|md
 operator|=
 name|metaDataUpdateFactory
+operator|.
+name|get
+argument_list|()
 operator|.
 name|create
 argument_list|(
