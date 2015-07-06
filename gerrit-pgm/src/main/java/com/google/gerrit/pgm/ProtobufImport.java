@@ -987,8 +987,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|Relation
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|Relation
 block|{

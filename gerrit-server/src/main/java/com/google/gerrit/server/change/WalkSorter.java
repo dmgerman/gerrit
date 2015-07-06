@@ -1688,8 +1688,8 @@ block|}
 annotation|@
 name|AutoValue
 DECL|class|PatchSetData
-specifier|static
 specifier|abstract
+specifier|static
 class|class
 name|PatchSetData
 block|{
