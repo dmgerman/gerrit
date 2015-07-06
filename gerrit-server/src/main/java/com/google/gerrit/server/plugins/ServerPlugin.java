@@ -893,6 +893,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|canReload ()
+specifier|protected
 name|boolean
 name|canReload
 parameter_list|()
@@ -980,6 +981,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|start (PluginGuiceEnvironment env)
+specifier|protected
 name|void
 name|start
 parameter_list|(
@@ -1460,6 +1462,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|stop (PluginGuiceEnvironment env)
+specifier|protected
 name|void
 name|stop
 parameter_list|(

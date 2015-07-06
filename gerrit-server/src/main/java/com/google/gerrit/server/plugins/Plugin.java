@@ -706,6 +706,7 @@ name|disabled
 return|;
 block|}
 DECL|method|start (PluginGuiceEnvironment env)
+specifier|protected
 specifier|abstract
 name|void
 name|start
@@ -717,6 +718,7 @@ throws|throws
 name|Exception
 function_decl|;
 DECL|method|stop (PluginGuiceEnvironment env)
+specifier|protected
 specifier|abstract
 name|void
 name|stop
@@ -864,6 +866,7 @@ literal|"]"
 return|;
 block|}
 DECL|method|canReload ()
+specifier|protected
 specifier|abstract
 name|boolean
 name|canReload

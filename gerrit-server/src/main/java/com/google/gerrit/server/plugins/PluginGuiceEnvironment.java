@@ -1188,6 +1188,7 @@ operator|)
 return|;
 block|}
 DECL|method|getSysModule ()
+specifier|public
 name|Module
 name|getSysModule
 parameter_list|()
@@ -1519,6 +1520,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|enter (Plugin plugin)
+specifier|public
 name|RequestContext
 name|enter
 parameter_list|(
@@ -1543,6 +1545,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|exit (RequestContext old)
+specifier|public
 name|void
 name|exit
 parameter_list|(
@@ -1559,6 +1562,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|onStartPlugin (Plugin plugin)
+specifier|public
 name|void
 name|onStartPlugin
 parameter_list|(
