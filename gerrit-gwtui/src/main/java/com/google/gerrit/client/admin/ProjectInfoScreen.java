@@ -4760,6 +4760,7 @@ return|;
 block|}
 DECL|class|ProjectDownloadPanel
 specifier|public
+specifier|static
 class|class
 name|ProjectDownloadPanel
 extends|extends
