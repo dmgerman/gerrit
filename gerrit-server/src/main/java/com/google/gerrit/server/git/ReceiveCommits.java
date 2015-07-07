@@ -5867,10 +5867,6 @@ control|)
 block|{
 if|if
 condition|(
-name|magicBranch
-operator|!=
-literal|null
-operator|&&
 name|replace
 operator|.
 name|inputCommand
