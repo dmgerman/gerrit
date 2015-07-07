@@ -203,9 +203,7 @@ specifier|final
 name|String
 name|REFS_GPG_KEYS
 init|=
-name|REFS
-operator|+
-literal|"gpg-keys"
+literal|"refs/meta/gpg-keys"
 decl_stmt|;
 DECL|method|fullName (String ref)
 specifier|public
