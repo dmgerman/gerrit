@@ -74,6 +74,38 @@ name|google
 operator|.
 name|gerrit
 operator|.
+name|client
+operator|.
+name|GerritUiExtensionPoint
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
+name|plugin
+operator|.
+name|client
+operator|.
+name|extension
+operator|.
+name|Panel
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|gerrit
+operator|.
 name|plugin
 operator|.
 name|client
@@ -326,6 +358,51 @@ name|e
 parameter_list|)
 comment|/*-{ this.screen(new $wnd.RegExp(p), e) }-*/
 function_decl|;
+comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be    *        registered.    * @param entry callback function invoked to create the panel widgets.    */
+DECL|method|panel (GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry)
+specifier|public
+specifier|final
+name|void
+name|panel
+parameter_list|(
+name|GerritUiExtensionPoint
+name|extensionPoint
+parameter_list|,
+name|Panel
+operator|.
+name|EntryPoint
+name|entry
+parameter_list|)
+block|{
+name|panel
+argument_list|(
+name|extensionPoint
+operator|.
+name|name
+argument_list|()
+argument_list|,
+name|wrap
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|panel (String i, JavaScriptObject e)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|panel
+parameter_list|(
+name|String
+name|i
+parameter_list|,
+name|JavaScriptObject
+name|e
+parameter_list|)
+comment|/*-{ this.panel(i, e) }-*/
+function_decl|;
 DECL|method|Plugin ()
 specifier|protected
 name|Plugin
@@ -372,6 +449,21 @@ name|EntryPoint
 name|b
 parameter_list|)
 comment|/*-{     return $entry(function(c){       b.@com.google.gerrit.plugin.client.screen.Screen.EntryPoint::onLoad(Lcom/google/gerrit/plugin/client/screen/Screen;)(         @com.google.gerrit.plugin.client.screen.Screen::new(Lcom/google/gerrit/plugin/client/screen/Screen$Context;)(c));     });   }-*/
+function_decl|;
+DECL|method|wrap (Panel.EntryPoint b)
+specifier|private
+specifier|static
+specifier|final
+specifier|native
+name|JavaScriptObject
+name|wrap
+parameter_list|(
+name|Panel
+operator|.
+name|EntryPoint
+name|b
+parameter_list|)
+comment|/*-{     return $entry(function(c){       b.@com.google.gerrit.plugin.client.extension.Panel.EntryPoint::onLoad(Lcom/google/gerrit/plugin/client/extension/Panel;)(         @com.google.gerrit.plugin.client.extension.Panel::new(Lcom/google/gerrit/plugin/client/extension/Panel$Context;)(c));     });   }-*/
 function_decl|;
 block|}
 end_class
