@@ -722,13 +722,6 @@ argument_list|(
 name|uuid
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|ref
-operator|!=
-literal|null
-condition|)
-block|{
 return|return
 operator|new
 name|GroupDescription
@@ -789,10 +782,6 @@ literal|null
 return|;
 block|}
 block|}
-return|;
-block|}
-return|return
-literal|null
 return|;
 block|}
 annotation|@
