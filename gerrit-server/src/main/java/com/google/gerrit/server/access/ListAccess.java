@@ -1763,6 +1763,7 @@ block|}
 block|}
 DECL|class|AccessSectionInfo
 specifier|public
+specifier|static
 class|class
 name|AccessSectionInfo
 block|{
