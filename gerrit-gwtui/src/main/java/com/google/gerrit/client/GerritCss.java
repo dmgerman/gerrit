@@ -493,6 +493,11 @@ name|String
 name|errorDialogTitle
 parameter_list|()
 function_decl|;
+DECL|method|extensionPanel ()
+name|String
+name|extensionPanel
+parameter_list|()
+function_decl|;
 DECL|method|loadingPluginsDialog ()
 name|String
 name|loadingPluginsDialog

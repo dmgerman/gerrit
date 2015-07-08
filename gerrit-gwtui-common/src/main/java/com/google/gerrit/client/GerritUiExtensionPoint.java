@@ -74,6 +74,10 @@ comment|/* ChangeScreen */
 DECL|enumConstant|CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK
 name|CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK
 block|,
+comment|/* MyPasswordScreen */
+DECL|enumConstant|PASSWORD_SCREEN_BOTTOM
+name|PASSWORD_SCREEN_BOTTOM
+block|,
 comment|/* MyProfileScreen */
 DECL|enumConstant|PROFILE_SCREEN_BOTTOM
 name|PROFILE_SCREEN_BOTTOM
