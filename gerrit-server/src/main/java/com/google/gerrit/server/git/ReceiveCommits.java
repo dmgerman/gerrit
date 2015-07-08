@@ -3225,13 +3225,14 @@ name|Submit
 argument_list|>
 name|submitProvider
 decl_stmt|;
-DECL|field|mergeFactory
+DECL|field|mergeOpProvider
 specifier|private
 specifier|final
+name|Provider
+argument_list|<
 name|MergeOp
-operator|.
-name|Factory
-name|mergeFactory
+argument_list|>
+name|mergeOpProvider
 decl_stmt|;
 DECL|field|pluginConfigEntries
 specifier|private
@@ -3315,7 +3316,7 @@ name|batch
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|ReceiveCommits (final ReviewDb db, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final MergeOp.Factory mergeFactory, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil)
+DECL|method|ReceiveCommits (final ReviewDb db, final Provider<InternalChangeQuery> queryProvider, final SchemaFactory<ReviewDb> schemaFactory, final ChangeData.Factory changeDataFactory, final ChangeUpdate.Factory updateFactory, final AccountResolver accountResolver, final CmdLineParser.Factory optionParserFactory, final MergedSender.Factory mergedSenderFactory, final ReplacePatchSetSender.Factory replacePatchSetFactory, final GitReferenceUpdated gitRefUpdated, final PatchSetInfoFactory patchSetInfoFactory, final ChangeHooks hooks, final ApprovalsUtil approvalsUtil, final ApprovalCopier approvalCopier, final ChangeMessagesUtil cmUtil, final ProjectCache projectCache, final GitRepositoryManager repoManager, final TagCache tagCache, final AccountCache accountCache, final ChangeCache changeCache, final ChangesCollection changes, final ChangeInserter.Factory changeInserterFactory, final CommitValidators.Factory commitValidatorsFactory, @CanonicalWebUrl final String canonicalWebUrl, final WorkQueue workQueue, @ChangeUpdateExecutor ListeningExecutorService changeUpdateExector, final RequestScopePropagator requestScopePropagator, final ChangeIndexer indexer, final SshInfo sshInfo, final AllProjectsName allProjectsName, ReceiveConfig config, @Assisted final ProjectControl projectControl, @Assisted final Repository repo, final SubmoduleOp.Factory subOpFactory, final Provider<Submit> submitProvider, final Provider<MergeOp> mergeOpProvider, final ChangeKindCache changeKindCache, final DynamicMap<ProjectConfigEntry> pluginConfigEntries, final NotesMigration notesMigration, final ChangeEditUtil editUtil)
 name|ReceiveCommits
 parameter_list|(
 specifier|final
@@ -3490,10 +3491,11 @@ argument_list|>
 name|submitProvider
 parameter_list|,
 specifier|final
+name|Provider
+argument_list|<
 name|MergeOp
-operator|.
-name|Factory
-name|mergeFactory
+argument_list|>
+name|mergeOpProvider
 parameter_list|,
 specifier|final
 name|ChangeKindCache
@@ -3785,9 +3787,9 @@ name|submitProvider
 expr_stmt|;
 name|this
 operator|.
-name|mergeFactory
+name|mergeOpProvider
 operator|=
-name|mergeFactory
+name|mergeOpProvider
 expr_stmt|;
 name|this
 operator|.
@@ -11646,9 +11648,12 @@ throw|;
 block|}
 try|try
 block|{
-name|mergeFactory
+name|mergeOpProvider
 operator|.
-name|create
+name|get
+argument_list|()
+operator|.
+name|merge
 argument_list|(
 name|ChangeSet
 operator|.
@@ -11664,10 +11669,7 @@ name|changeCtl
 operator|.
 name|getCurrentUser
 argument_list|()
-argument_list|)
-operator|.
-name|merge
-argument_list|(
+argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
