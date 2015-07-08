@@ -71,6 +71,9 @@ enum|enum
 name|GerritUiExtensionPoint
 block|{
 comment|/* ChangeScreen */
+DECL|enumConstant|CHANGE_SCREEN_HEADER
+name|CHANGE_SCREEN_HEADER
+block|,
 DECL|enumConstant|CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK
 name|CHANGE_SCREEN_BELOW_CHANGE_INFO_BLOCK
 block|,
