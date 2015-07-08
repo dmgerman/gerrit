@@ -358,6 +358,56 @@ name|e
 parameter_list|)
 comment|/*-{ this.screen(new $wnd.RegExp(p), e) }-*/
 function_decl|;
+comment|/**    * Register a settings screen displayed at {@code /#/settings/x/plugin/token}.    *    * @param token literal anchor token appearing after the plugin name.    * @param entry callback function invoked to create the settings screen widgets.    */
+DECL|method|settingsScreen (String token, String menu, Screen.EntryPoint entry)
+specifier|public
+specifier|final
+name|void
+name|settingsScreen
+parameter_list|(
+name|String
+name|token
+parameter_list|,
+name|String
+name|menu
+parameter_list|,
+name|Screen
+operator|.
+name|EntryPoint
+name|entry
+parameter_list|)
+block|{
+name|settingsScreen
+argument_list|(
+name|token
+argument_list|,
+name|menu
+argument_list|,
+name|wrap
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|settingsScreen (String t, String m, JavaScriptObject e)
+specifier|private
+specifier|final
+specifier|native
+name|void
+name|settingsScreen
+parameter_list|(
+name|String
+name|t
+parameter_list|,
+name|String
+name|m
+parameter_list|,
+name|JavaScriptObject
+name|e
+parameter_list|)
+comment|/*-{ this.settingsScreen(t, m, e) }-*/
+function_decl|;
 comment|/**    * Register a panel for a UI extension point.    *    * @param extensionPoint the UI extension point for which the panel should be    *        registered.    * @param entry callback function invoked to create the panel widgets.    */
 DECL|method|panel (GerritUiExtensionPoint extensionPoint, Panel.EntryPoint entry)
 specifier|public

@@ -284,6 +284,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|getBody ()
+specifier|protected
+name|FlowPanel
+name|getBody
+parameter_list|()
+block|{
+return|return
+name|body
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|add (final Widget w)
 specifier|protected
 name|void

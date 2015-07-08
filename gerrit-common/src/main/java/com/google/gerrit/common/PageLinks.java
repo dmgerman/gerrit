@@ -272,6 +272,15 @@ name|SETTINGS_NEW_AGREEMENT
 init|=
 literal|"/settings/new-agreement"
 decl_stmt|;
+DECL|field|SETTINGS_EXTENSION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SETTINGS_EXTENSION
+init|=
+literal|"/settings/x/"
+decl_stmt|;
 DECL|field|REGISTER
 specifier|public
 specifier|static
@@ -873,6 +882,29 @@ operator|+
 literal|"uuid-"
 operator|+
 name|uuid
+return|;
+block|}
+DECL|method|toSettings (String pluginName, String path)
+specifier|public
+specifier|static
+name|String
+name|toSettings
+parameter_list|(
+name|String
+name|pluginName
+parameter_list|,
+name|String
+name|path
+parameter_list|)
+block|{
+return|return
+name|SETTINGS_EXTENSION
+operator|+
+name|pluginName
+operator|+
+literal|"/"
+operator|+
+name|path
 return|;
 block|}
 DECL|method|status (Status status)
