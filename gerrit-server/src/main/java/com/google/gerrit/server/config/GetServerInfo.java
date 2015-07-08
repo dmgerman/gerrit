@@ -326,6 +326,8 @@ name|server
 operator|.
 name|git
 operator|.
+name|gpg
+operator|.
 name|SignedPushModule
 import|;
 end_import
