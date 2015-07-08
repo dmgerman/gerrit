@@ -77,6 +77,13 @@ block|,
 comment|/* MyProfileScreen */
 DECL|enumConstant|PROFILE_SCREEN_BOTTOM
 name|PROFILE_SCREEN_BOTTOM
+block|,
+comment|/* ProjectInfoScreen */
+DECL|enumConstant|PROJECT_INFO_SCREEN_TOP
+DECL|enumConstant|PROJECT_INFO_SCREEN_BOTTOM
+name|PROJECT_INFO_SCREEN_TOP
+block|,
+name|PROJECT_INFO_SCREEN_BOTTOM
 block|;
 DECL|enum|Key
 specifier|public
@@ -84,7 +91,10 @@ enum|enum
 name|Key
 block|{
 DECL|enumConstant|CHANGE_ID
+DECL|enumConstant|PROJECT_NAME
 name|CHANGE_ID
+block|,
+name|PROJECT_NAME
 block|}
 block|}
 end_enum
