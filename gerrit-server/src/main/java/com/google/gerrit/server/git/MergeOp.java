@@ -1100,20 +1100,6 @@ name|google
 operator|.
 name|inject
 operator|.
-name|assistedinject
-operator|.
-name|Assisted
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|inject
-operator|.
 name|servlet
 operator|.
 name|RequestScoped
@@ -1466,23 +1452,6 @@ specifier|public
 class|class
 name|MergeOp
 block|{
-DECL|interface|Factory
-specifier|public
-interface|interface
-name|Factory
-block|{
-DECL|method|create (ChangeSet changes, IdentifiedUser caller)
-name|MergeOp
-name|create
-parameter_list|(
-name|ChangeSet
-name|changes
-parameter_list|,
-name|IdentifiedUser
-name|caller
-parameter_list|)
-function_decl|;
-block|}
 DECL|field|log
 specifier|private
 specifier|static
@@ -1687,21 +1656,8 @@ operator|.
 name|Scoper
 name|threadScoper
 decl_stmt|;
-DECL|field|changes
-specifier|private
-specifier|final
-name|ChangeSet
-name|changes
-decl_stmt|;
-DECL|field|caller
-specifier|private
-specifier|final
-name|IdentifiedUser
-name|caller
-decl_stmt|;
 DECL|field|logPrefix
 specifier|private
-specifier|final
 name|String
 name|logPrefix
 decl_stmt|;
@@ -1778,7 +1734,7 @@ name|mergeTips
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeHooks hooks, ChangeIndexer indexer, Injector injector, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, MergedSender.Factory mergedSenderFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, PatchSetInfoFactory patchSetInfoFactory, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schemaFactory, Submit submit, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, WorkQueue workQueue, @Assisted ChangeSet changes, @Assisted IdentifiedUser caller)
+DECL|method|MergeOp (AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeHooks hooks, ChangeIndexer indexer, Injector injector, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, MergedSender.Factory mergedSenderFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, PatchSetInfoFactory patchSetInfoFactory, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schemaFactory, Submit submit, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, WorkQueue workQueue)
 name|MergeOp
 parameter_list|(
 name|AccountCache
@@ -1872,16 +1828,6 @@ name|tagCache
 parameter_list|,
 name|WorkQueue
 name|workQueue
-parameter_list|,
-annotation|@
-name|Assisted
-name|ChangeSet
-name|changes
-parameter_list|,
-annotation|@
-name|Assisted
-name|IdentifiedUser
-name|caller
 parameter_list|)
 block|{
 name|this
@@ -2022,18 +1968,6 @@ name|workQueue
 operator|=
 name|workQueue
 expr_stmt|;
-name|this
-operator|.
-name|changes
-operator|=
-name|changes
-expr_stmt|;
-name|this
-operator|.
-name|caller
-operator|=
-name|caller
-expr_stmt|;
 name|commits
 operator|=
 operator|new
@@ -2047,25 +1981,6 @@ name|Lists
 operator|.
 name|newArrayList
 argument_list|()
-expr_stmt|;
-name|logPrefix
-operator|=
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"[%s]: "
-argument_list|,
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|changes
-operator|.
-name|hashCode
-argument_list|()
-argument_list|)
-argument_list|)
 expr_stmt|;
 name|pendingRefUpdates
 operator|=
@@ -2973,13 +2888,16 @@ block|}
 block|}
 comment|// For historic reasons we will first go into the submitted state
 comment|// TODO(sbeller): remove this when we get rid of Change.Status.SUBMITTED
-DECL|method|submitAllChanges (ChangeSet cs, boolean force)
+DECL|method|submitAllChanges (ChangeSet cs, IdentifiedUser caller, boolean force)
 specifier|private
 name|void
 name|submitAllChanges
 parameter_list|(
 name|ChangeSet
 name|cs
+parameter_list|,
+name|IdentifiedUser
+name|caller
 parameter_list|,
 name|boolean
 name|force
@@ -3121,11 +3039,17 @@ comment|// ok
 block|}
 block|}
 block|}
-DECL|method|merge (boolean checkPermissions)
+DECL|method|merge (ChangeSet changes, IdentifiedUser caller, boolean checkPermissions)
 specifier|public
 name|void
 name|merge
 parameter_list|(
+name|ChangeSet
+name|changes
+parameter_list|,
+name|IdentifiedUser
+name|caller
+parameter_list|,
 name|boolean
 name|checkPermissions
 parameter_list|)
@@ -3136,6 +3060,25 @@ name|OrmException
 throws|,
 name|ResourceConflictException
 block|{
+name|logPrefix
+operator|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"[%s]: "
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|changes
+operator|.
+name|hashCode
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|logDebug
 argument_list|(
 literal|"Beginning merge of {}"
@@ -3183,6 +3126,8 @@ name|submitAllChanges
 argument_list|(
 name|cs
 argument_list|,
+name|caller
+argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
@@ -3207,6 +3152,8 @@ expr_stmt|;
 name|submitAllChanges
 argument_list|(
 name|cs
+argument_list|,
+name|caller
 argument_list|,
 literal|true
 argument_list|)
@@ -3295,7 +3242,7 @@ name|logDebug
 argument_list|(
 literal|"Beginning merge attempt on {}"
 argument_list|,
-name|changes
+name|cs
 argument_list|)
 expr_stmt|;
 name|Map
