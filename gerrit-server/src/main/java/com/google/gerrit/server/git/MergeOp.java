@@ -1607,14 +1607,11 @@ specifier|final
 name|ProjectCache
 name|projectCache
 decl_stmt|;
-DECL|field|queryProvider
+DECL|field|internalChangeQuery
 specifier|private
 specifier|final
-name|Provider
-argument_list|<
 name|InternalChangeQuery
-argument_list|>
-name|queryProvider
+name|internalChangeQuery
 decl_stmt|;
 DECL|field|schemaFactory
 specifier|private
@@ -1778,7 +1775,7 @@ name|mergeTips
 decl_stmt|;
 annotation|@
 name|Inject
-DECL|method|MergeOp (AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeHooks hooks, ChangeIndexer indexer, Injector injector, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, MergedSender.Factory mergedSenderFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, PatchSetInfoFactory patchSetInfoFactory, ProjectCache projectCache, Provider<InternalChangeQuery> queryProvider, SchemaFactory<ReviewDb> schemaFactory, Submit submit, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, WorkQueue workQueue, @Assisted ChangeSet changes, @Assisted IdentifiedUser caller)
+DECL|method|MergeOp (AccountCache accountCache, ApprovalsUtil approvalsUtil, ChangeControl.GenericFactory changeControlFactory, ChangeData.Factory changeDataFactory, ChangeHooks hooks, ChangeIndexer indexer, Injector injector, ChangeMessagesUtil cmUtil, ChangeUpdate.Factory updateFactory, GitReferenceUpdated gitRefUpdated, GitRepositoryManager repoManager, IdentifiedUser.GenericFactory identifiedUserFactory, MergedSender.Factory mergedSenderFactory, MergeSuperSet mergeSuperSet, MergeValidators.Factory mergeValidatorsFactory, PatchSetInfoFactory patchSetInfoFactory, ProjectCache projectCache, InternalChangeQuery internalChangeQuery, SchemaFactory<ReviewDb> schemaFactory, Submit submit, SubmitStrategyFactory submitStrategyFactory, SubmoduleOp.Factory subOpFactory, TagCache tagCache, WorkQueue workQueue, @Assisted ChangeSet changes, @Assisted IdentifiedUser caller)
 name|MergeOp
 parameter_list|(
 name|AccountCache
@@ -1844,11 +1841,8 @@ parameter_list|,
 name|ProjectCache
 name|projectCache
 parameter_list|,
-name|Provider
-argument_list|<
 name|InternalChangeQuery
-argument_list|>
-name|queryProvider
+name|internalChangeQuery
 parameter_list|,
 name|SchemaFactory
 argument_list|<
@@ -1982,9 +1976,9 @@ name|projectCache
 expr_stmt|;
 name|this
 operator|.
-name|queryProvider
+name|internalChangeQuery
 operator|=
-name|queryProvider
+name|internalChangeQuery
 expr_stmt|;
 name|this
 operator|.
@@ -3379,10 +3373,7 @@ name|submitting
 init|=
 name|validateChangeList
 argument_list|(
-name|queryProvider
-operator|.
-name|get
-argument_list|()
+name|internalChangeQuery
 operator|.
 name|submitted
 argument_list|(
@@ -7534,10 +7525,7 @@ control|(
 name|ChangeData
 name|cd
 range|:
-name|queryProvider
-operator|.
-name|get
-argument_list|()
+name|internalChangeQuery
 operator|.
 name|byProjectOpen
 argument_list|(
