@@ -144,6 +144,15 @@ name|gitweb
 parameter_list|()
 comment|/*-{ return this.gitweb; }-*/
 function_decl|;
+DECL|method|plugin ()
+specifier|public
+specifier|final
+specifier|native
+name|PluginConfigInfo
+name|plugin
+parameter_list|()
+comment|/*-{ return this.plugin; }-*/
+function_decl|;
 DECL|method|sshd ()
 specifier|public
 specifier|final
@@ -301,6 +310,29 @@ function_decl|;
 DECL|method|ContactStoreInfo ()
 specifier|protected
 name|ContactStoreInfo
+parameter_list|()
+block|{     }
+block|}
+DECL|class|PluginConfigInfo
+specifier|public
+specifier|static
+class|class
+name|PluginConfigInfo
+extends|extends
+name|JavaScriptObject
+block|{
+DECL|method|hasAvatars ()
+specifier|public
+specifier|final
+specifier|native
+name|boolean
+name|hasAvatars
+parameter_list|()
+comment|/*-{ return this.has_avatars || false; }-*/
+function_decl|;
+DECL|method|PluginConfigInfo ()
+specifier|protected
+name|PluginConfigInfo
 parameter_list|()
 block|{     }
 block|}

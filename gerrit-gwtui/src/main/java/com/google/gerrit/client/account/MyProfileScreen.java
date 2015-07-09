@@ -356,6 +356,20 @@ argument_list|(
 name|h
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|info
+argument_list|()
+operator|.
+name|plugin
+argument_list|()
+operator|.
+name|hasAvatars
+argument_list|()
+condition|)
+block|{
 name|VerticalPanel
 name|v
 init|=
@@ -429,6 +443,7 @@ argument_list|(
 name|changeAvatar
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|LocaleInfo
@@ -760,6 +775,20 @@ name|Account
 name|account
 parameter_list|)
 block|{
+if|if
+condition|(
+name|Gerrit
+operator|.
+name|info
+argument_list|()
+operator|.
+name|plugin
+argument_list|()
+operator|.
+name|hasAvatars
+argument_list|()
+condition|)
+block|{
 name|avatar
 operator|.
 name|setAccount
@@ -838,10 +867,11 @@ parameter_list|(
 name|Throwable
 name|caught
 parameter_list|)
-block|{           }
+block|{             }
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|row
 init|=
