@@ -762,14 +762,6 @@ name|sig
 operator|.
 name|getKeyID
 argument_list|()
-argument_list|,
-name|cert
-operator|.
-name|getPusherIdent
-argument_list|()
-operator|.
-name|getUserId
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
