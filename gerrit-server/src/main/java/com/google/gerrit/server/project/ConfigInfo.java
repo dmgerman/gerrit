@@ -1285,6 +1285,12 @@ name|p
 operator|.
 name|value
 operator|=
+name|configEntry
+operator|.
+name|onRead
+argument_list|(
+name|project
+argument_list|,
 name|cfgWithInheritance
 operator|.
 name|getString
@@ -1298,6 +1304,7 @@ name|configEntry
 operator|.
 name|getDefaultValue
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|p
@@ -1340,6 +1347,12 @@ name|p
 operator|.
 name|values
 operator|=
+name|configEntry
+operator|.
+name|onRead
+argument_list|(
+name|project
+argument_list|,
 name|Arrays
 operator|.
 name|asList
@@ -1354,6 +1367,7 @@ name|getExportName
 argument_list|()
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1362,6 +1376,12 @@ name|p
 operator|.
 name|value
 operator|=
+name|configEntry
+operator|.
+name|onRead
+argument_list|(
+name|project
+argument_list|,
 name|configuredValue
 operator|!=
 literal|null
@@ -1372,6 +1392,7 @@ name|configEntry
 operator|.
 name|getDefaultValue
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

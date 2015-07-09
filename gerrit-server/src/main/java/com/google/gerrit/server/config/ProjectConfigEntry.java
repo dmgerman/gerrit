@@ -1271,6 +1271,58 @@ block|}
 end_function
 
 begin_comment
+comment|/**    * Called after reading the project config value. To modify the value before    * returning it to the client, override this method and return the modified    * value. Default implementation returns the same value.    *    * @param project the project.    * @param value the actual value of the config entry (computed out of the    *        configured value, the inherited value and the default value).    * @return the modified value.    */
+end_comment
+
+begin_function
+DECL|method|onRead (ProjectState project, String value)
+specifier|public
+name|String
+name|onRead
+parameter_list|(
+name|ProjectState
+name|project
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+name|value
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/**    * Called after reading the project config value of type ARRAY. To modify the    * values before returning it to the client, override this method and return    * the modified values. Default implementation returns the same values.    *    * @param project the project.    * @param values the actual values of the config entry (computed out of the    *        configured value, the inherited value and the default value).    * @return the modified values.    */
+end_comment
+
+begin_function
+DECL|method|onRead (ProjectState project, List<String> values)
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|onRead
+parameter_list|(
+name|ProjectState
+name|project
+parameter_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|values
+parameter_list|)
+block|{
+return|return
+name|values
+return|;
+block|}
+end_function
+
+begin_comment
 comment|/**    * Called after a project config is updated.    *    * @param project project name.    * @param oldValue old entry value.    * @param newValue new entry value.    */
 end_comment
 
